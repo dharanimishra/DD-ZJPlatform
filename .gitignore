@@ -4,3 +4,10 @@
 *.jar
 *.war
 *.ear
+
+# Eclipse and other stuff
+.metadata
+.classpath
+.project
+.settings
+Servers
