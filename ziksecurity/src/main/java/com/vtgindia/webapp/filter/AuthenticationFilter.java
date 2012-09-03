@@ -1,5 +1,6 @@
 package com.vtgindia.webapp.filter;
 
+import com.vtgindia.webapp.util.AuthenticationUtil;
 import com.vtgindia.webapp.util.ThreadLocalObject;
 import com.vtgindia.webapp.util.UserSecurityContext;
 import org.springframework.ldap.core.ContextSource;
@@ -46,7 +47,7 @@ public class AuthenticationFilter implements Filter {
                 String userid = httpRequest.getParameter("userid");
                 String password = httpRequest.getParameter("password");
 
-                if (authenticate(userid, password)) {
+                if (AuthenticationUtil.authenticate(userid, password)) {
                     UserSecurityContext userSecurityContext = new UserSecurityContext();
                     HttpSession httpSession = httpRequest.getSession();
                     httpSession.setAttribute(USER_SECURITY_OBJECT_ATTR, userSecurityContext);
