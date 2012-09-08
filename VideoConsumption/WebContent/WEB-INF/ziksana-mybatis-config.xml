@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<context id="context1">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost/test" userId="root"
+			password="passw0rd">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="com.springs.domain"
+			targetProject="UTD">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		
+		<sqlMapGenerator targetPackage="com.springs.persistence"
+			targetProject="UTD">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		
+		<javaClientGenerator targetPackage="com.ziksana.persistence"
+			targetProject="UTD" type="MIXEDMAPPER">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table schema="ziksana" tableName="componentnest"
+			enableSelectByExample="false" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false"
+			selectByExampleQueryId="false" domainObjectName="ComponentNest">
+			<property name="useActualColumnNames" value="true" />
+		</table>
+
+		<table schema="ziksana" tableName="componenttype"
+			enableSelectByExample="false" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false"
+			selectByExampleQueryId="false" domainObjectName="ComponentType">
+			<property name="useActualColumnNames" value="true" />
+		</table>
+
+		<table schema="ziksana" tableName="enrichment"
+			enableSelectByExample="false" enableDeleteByExample="false"
+			enableCountByExample="false" enableUpdateByExample="false"
+			selectByExampleQueryId="false" domainObjectName="Enrichment">
+			<property name="useActualColumnNames" value="true" />
+		</table>
+	</context>
+</generatorConfiguration>

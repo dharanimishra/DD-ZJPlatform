@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springs.persistence.ComponentNestMapper" >
+  <resultMap id="BaseResultMap" type="com.springs.domain.ComponentNest" >
+    <id column="nestid" property="nestid" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    nestid, description
+  </sql>
+  <insert id="insertSelective" parameterType="com.springs.domain.ComponentNest" >
+    insert into componentnest
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nestid != null" >
+        nestid,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nestid != null" >
+        #{nestid,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springs.domain.ComponentNest" >
+    update componentnest
+    <set >
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where nestid = #{nestid,jdbcType=INTEGER}
+  </update>
+</mapper>
