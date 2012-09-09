@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.CurriculumCourseMapper">
+	<resultMap id="BaseResultMap" type="com.ziksana.domain.course.CurriculumCourse">
+		<id column="CurriculumCourseId" property="curriculumCourseId" jdbcType="INTEGER" />
+		<result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" />
+		<result column="Active" property="active" jdbcType="BIT" />
+		<result column="CurriculumUseType" property="curriculumUseType"
+			jdbcType="INTEGER" />
+		<result column="CurriculumCourseIdentifier" property="curriculumCourseIdentifier"
+			jdbcType="VARCHAR" />
+		<result column="CourseVersionUsed" property="courseVersionUsed"
+			jdbcType="INTEGER" />
+		<result column="CourseWeightage" property="courseWeightage"
+			jdbcType="INTEGER" />
+		<result column="GradeType" property="gradeType" jdbcType="INTEGER" />
+		<result column="CourseCredit" property="courseCredit" jdbcType="INTEGER" />
+		<result column="ZiksanaOnlyIndicator" property="ziksanaOnlyIndicator"
+			jdbcType="BIT" />
+		<result column="ClassroomIndicator" property="classroomIndicator"
+			jdbcType="BIT" />
+		<result column="CombinedIndicator" property="combinedIndicator"
+			jdbcType="BIT" />
+		<result column="NoSyncConstraintIndicator" property="noSyncConstraintIndicator"
+			jdbcType="BIT" />
+		<result column="SyncAfterClass" property="syncAfterClass"
+			jdbcType="INTEGER" />
+		<result column="SyncBeforeClass" property="syncBeforeClass"
+			jdbcType="INTEGER" />
+		<result column="ValidFrom" property="validFrom"
+			jdbcType="TIMESTAMP" />
+		<result column="ValidTo" property="validTo"
+			jdbcType="TIMESTAMP" />
+		<result column="CourseWeightage" property="courseWeightage" jdbcType="INTEGER" />
+		<result column="OverallLearnerRating" property="overallLearnerRating"
+			jdbcType="INTEGER" />
+		<result column="OverallPeerRating" property="overallPeerRating"
+			jdbcType="INTEGER" />
+		<result column="ContentSecurityNeededIndicator" property="contentSecurityNeededIndicator"
+			jdbcType="BIT" />
+		<result column="TotalCredits" property="totalCredits" jdbcType="VARCHAR" />
+		<result column="ExtraCredits" property="extraCredits" jdbcType="VARCHAR" />
+		<result column="CourseLevelOveriddenIndicator" property="courseLevelOveriddenIndicator"
+			jdbcType="TINYINT" />
+		<result column="ProgramCurriculumId" property="programCurriculumId"
+			jdbcType="INTEGER" />
+		<result column="CourseId" property="courseId" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		CurriculumCourseId, CreationDate, Active, CurriculumUseType, CurriculumCourseIdentifier,
+		CourseVersionUsed,
+		CourseWeightage, GradeType, CourseCredit, ZiksanaOnlyIndicator, ClassroomIndicator,
+		CombinedIndicator, NoSyncConstraintIndicator, SyncAfterClass,
+		SyncBeforeClass, validFrom,
+		validTo, courseWeightage, OverallLearnerRating, OverallPeerRating,
+		ContentSecurityNeededIndicator,
+		TotalCredits, ExtraCredits, CourseLevelOveriddenIndicator, ProgramCurriculumId,
+		CourseId
+	</sql>
+	<insert id="insertSelective" parameterType="com.ziksana.domain.course.CurriculumCourse">
+		insert into corcurriculumcourse
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+				CurriculumCourseId,
+			<if test="creationDate != null">
+				CreationDate,
+			</if>
+			<if test="active != null">
+				Active,
+			</if>
+			<if test="curriculumUseType != null">
+				CurriculumUseType,
+			</if>
+			<if test="curriculumCourseIdentifier != null">
+				CurriculumCourseIdentifier,
+			</if>
+			<if test="courseVersionUsed != null">
+				CourseVersionUsed,
+			</if>
+			<if test="courseWeightage != null">
+				CourseWeightage,
+			</if>
+			<if test="gradeType != null">
+				GradeType,
+			</if>
+			<if test="courseCredit != null">
+				CourseCredit,
+			</if>
+			<if test="ziksanaOnlyIndicator != null">
+				ZiksanaOnlyIndicator,
+			</if>
+			<if test="classroomIndicator != null">
+				ClassroomIndicator,
+			</if>
+			<if test="combinedIndicator != null">
+				CombinedIndicator,
+			</if>
+			<if test="noSyncConstraintIndicator != null">
+				NoSyncConstraintIndicator,
+			</if>
+			<if test="syncAfterClass != null">
+				SyncAfterClass,
+			</if>
+			<if test="syncBeforeClass != null">
+				SyncBeforeClass,
+			</if>
+			<if test="validFrom != null">
+				validFrom,
+			</if>
+			<if test="validTo != null">
+				validTo,
+			</if>
+			<if test="courseWeightage != null">
+				courseWeightage,
+			</if>
+			<if test="overallLearnerRating != null">
+				OverallLearnerRating,
+			</if>
+			<if test="overallPeerRating != null">
+				OverallPeerRating,
+			</if>
+			<if test="contentSecurityNeededIndicator != null">
+				ContentSecurityNeededIndicator,
+			</if>
+			<if test="totalCredits != null">
+				TotalCredits,
+			</if>
+			<if test="extraCredits != null">
+				ExtraCredits,
+			</if>
+			<if test="courseLevelOveriddenIndicator != null">
+				CourseLevelOveriddenIndicator,
+			</if>
+			<if test="programCurriculumId != null">
+				ProgramCurriculumId,
+			</if>
+			<if test="courseId != null">
+				CourseId,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				#{curriculumCourseId,jdbcType=INTEGER},
+			<if test="creationDate != null">
+				#{creationDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="active != null">
+				#{active,jdbcType=BIT},
+			</if>
+			<if test="curriculumUseType != null">
+				#{curriculumUseType,jdbcType=INTEGER},
+			</if>
+			<if test="curriculumCourseIdentifier != null">
+				#{curriculumCourseIdentifier,jdbcType=VARCHAR},
+			</if>
+			<if test="courseVersionUsed != null">
+				#{courseVersionUsed,jdbcType=INTEGER},
+			</if>
+			<if test="courseWeightage != null">
+				#{courseWeightage,jdbcType=INTEGER},
+			</if>
+			<if test="gradeType != null">
+				#{gradeType,jdbcType=INTEGER},
+			</if>
+			<if test="courseCredit != null">
+				#{courseCredit,jdbcType=INTEGER},
+			</if>
+			<if test="ziksanaOnlyIndicator != null">
+				#{ziksanaOnlyIndicator,jdbcType=BIT},
+			</if>
+			<if test="classroomIndicator != null">
+				#{classroomIndicator,jdbcType=BIT},
+			</if>
+			<if test="combinedIndicator != null">
+				#{combinedIndicator,jdbcType=BIT},
+			</if>
+			<if test="noSyncConstraintIndicator != null">
+				#{noSyncConstraintIndicator,jdbcType=BIT},
+			</if>
+			<if test="syncAfterClass != null">
+				#{syncAfterClass,jdbcType=INTEGER},
+			</if>
+			<if test="syncBeforeClass != null">
+				#{syncBeforeClass,jdbcType=INTEGER},
+			</if>
+			<if test="validFrom != null">
+				#{validFrom,jdbcType=TIMESTAMP},
+			</if>
+			<if test="validTo != null">
+				#{validTo,jdbcType=TIMESTAMP},
+			</if>
+			<if test="courseWeightage != null">
+				#{courseWeightage,jdbcType=INTEGER},
+			</if>
+			<if test="overallLearnerRating != null">
+				#{overallLearnerRating,jdbcType=INTEGER},
+			</if>
+			<if test="overallPeerRating != null">
+				#{overallPeerRating,jdbcType=INTEGER},
+			</if>
+			<if test="contentSecurityNeededIndicator != null">
+				#{contentSecurityNeededIndicator,jdbcType=BIT},
+			</if>
+			<if test="totalCredits != null">
+				#{totalCredits,jdbcType=VARCHAR},
+			</if>
+			<if test="extraCredits != null">
+				#{extraCredits,jdbcType=VARCHAR},
+			</if>
+			<if test="courseLevelOveriddenIndicator != null">
+				#{courseLevelOveriddenIndicator,jdbcType=TINYINT},
+			</if>
+			<if test="programCurriculumId != null">
+				#{programCurriculumId,jdbcType=INTEGER},
+			</if>
+			<if test="courseId != null">
+				#{courseId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ziksana.domain.course.CurriculumCourse">
+		update corcurriculumcourse
+		<set>
+			<if test="creationDate != null">
+				CreationDate = #{creationDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="active != null">
+				Active = #{active,jdbcType=BIT},
+			</if>
+			<if test="curriculumUseType != null">
+				CurriculumUseType = #{curriculumUseType,jdbcType=INTEGER},
+			</if>
+			<if test="curriculumCourseIdentifier != null">
+				CurriculumCourseIdentifier =
+				#{curriculumCourseIdentifier,jdbcType=VARCHAR},
+			</if>
+			<if test="courseVersionUsed != null">
+				CourseVersionUsed = #{courseVersionUsed,jdbcType=INTEGER},
+			</if>
+			<if test="courseWeightage != null">
+				CourseWeightage = #{courseWeightage,jdbcType=INTEGER},
+			</if>
+			<if test="gradeType != null">
+				GradeType = #{gradeType,jdbcType=INTEGER},
+			</if>
+			<if test="courseCredit != null">
+				CourseCredit = #{courseCredit,jdbcType=INTEGER},
+			</if>
+			<if test="ziksanaOnlyIndicator != null">
+				ZiksanaOnlyIndicator = #{ziksanaOnlyIndicator,jdbcType=BIT},
+			</if>
+			<if test="classroomIndicator != null">
+				ClassroomIndicator = #{classroomIndicator,jdbcType=BIT},
+			</if>
+			<if test="combinedIndicator != null">
+				CombinedIndicator = #{combinedIndicator,jdbcType=BIT},
+			</if>
+			<if test="noSyncConstraintIndicator != null">
+				NoSyncConstraintIndicator =
+				#{noSyncConstraintIndicator,jdbcType=BIT},
+			</if>
+			<if test="syncAfterClass != null">
+				SyncAfterClass = #{syncAfterClass,jdbcType=INTEGER},
+			</if>
+			<if test="syncBeforeClass != null">
+				SyncBeforeClass = #{syncBeforeClass,jdbcType=INTEGER},
+			</if>
+			<if test="validFrom != null">
+				validFrom = #{validFrom,jdbcType=TIMESTAMP},
+			</if>
+			<if test="validTo != null">
+				validTo = #{validTo,jdbcType=TIMESTAMP},
+			</if>
+			<if test="courseWeightage != null">
+				courseWeightage = #{courseWeightage,jdbcType=INTEGER},
+			</if>
+			<if test="overallLearnerRating != null">
+				OverallLearnerRating = #{overallLearnerRating,jdbcType=INTEGER},
+			</if>
+			<if test="overallPeerRating != null">
+				OverallPeerRating = #{overallPeerRating,jdbcType=INTEGER},
+			</if>
+			<if test="contentSecurityNeededIndicator != null">
+				ContentSecurityNeededIndicator =
+				#{contentSecurityNeededIndicator,jdbcType=BIT},
+			</if>
+			<if test="totalCredits != null">
+				TotalCredits = #{totalCredits,jdbcType=VARCHAR},
+			</if>
+			<if test="extraCredits != null">
+				ExtraCredits = #{extraCredits,jdbcType=VARCHAR},
+			</if>
+			<if test="courseLevelOveriddenIndicator != null">
+				CourseLevelOveriddenIndicator=#{courseLevelOveriddenIndicator,jdbcType=TINYINT},
+			</if>
+			<if test="programCurriculumId != null">
+				ProgramCurriculumId = #{programCurriculumId,jdbcType=INTEGER},
+			</if>
+			<if test="courseId != null">
+				CourseId = #{courseId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where CurriculumCourseId = #{curriculumCourseId,jdbcType=INTEGER}
+	</update>
+</mapper>

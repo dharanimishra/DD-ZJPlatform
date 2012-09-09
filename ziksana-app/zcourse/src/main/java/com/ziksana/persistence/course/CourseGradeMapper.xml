@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.CourseGradeMapper" >
+  <resultMap id="BaseResultMap" type="com.ziksana.domain.course.CourseGrade" >
+    <id column="courseGradeId" property="courseGradeId" jdbcType="INTEGER" />
+    <result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="GradeStatus" property="gradeStatus" jdbcType="INTEGER" />
+    <result column="OverallGrade" property="overallGrade" jdbcType="INTEGER" />
+    <result column="AttendancebasedGrade" property="attendancebasedGrade" jdbcType="INTEGER" />
+    <result column="ParticipationbasedGrade" property="participationbasedGrade" jdbcType="INTEGER" />
+    <result column="PeerWorkbasedGrade" property="peerWorkbasedGrade" jdbcType="INTEGER" />
+    <result column="BadgebasedGrade" property="badgebasedGrade" jdbcType="INTEGER" />
+    <result column="ComparativePositioninTerm" property="comparativePositioninTerm" jdbcType="INTEGER" />
+    <result column="ComparativePositionOverall" property="comparativePositionOverall" jdbcType="INTEGER" />
+    <result column="OverallReflectionComment" property="overallReflectionComment" jdbcType="VARCHAR" />
+    <result column="SubscriptionCourseId" property="subscriptionCourseId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    coursegradeid, creationdate, gradestatus, overallgrade, attendancebasedgrade, participationbasedgrade, 
+    peerworkbasedgrade, badgebasedgrade, comparativepositioninterm, comparativepositionoverall, 
+    overallreflectioncomment, subscriptioncourseid
+  </sql>
+  <insert id="insertSelective" parameterType="com.ziksana.domain.course.CourseGrade" >
+    <selectKey resultType="java.lang.Integer" keyProperty="courseGradeId" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sbncoursegrade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      courseGradeId,
+      <if test="creationDate != null" >
+        CreationDate,
+      </if>
+      <if test="gradeStatus != null" >
+        GradeStatus,
+      </if>
+      <if test="overallGrade != null" >
+        OverallGrade,
+      </if>
+      <if test="attendancebasedGrade != null" >
+        AttendancebasedGrade,
+      </if>
+      <if test="participationbasedGrade != null" >
+        ParticipationbasedGrade,
+      </if>
+      <if test="peerWorkbasedGrade != null" >
+        PeerWorkbasedGrade,
+      </if>
+      <if test="badgebasedGrade != null" >
+        BadgebasedGrade,
+      </if>
+      <if test="comparativePositioninTerm != null" >
+        ComparativePositioninTerm,
+      </if>
+      <if test="comparativePositionOverall != null" >
+        ComparativePositionOverall,
+      </if>
+      <if test="overallReflectionComment != null" >
+        OverallReflectionComment,
+      </if>
+      <if test="subscriptionCourseId != null" >
+        SubscriptionCourseId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{courseGradeId,jdbcType=INTEGER},
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gradeStatus != null" >
+        #{gradeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="overallGrade != null" >
+        #{overallGrade,jdbcType=INTEGER},
+      </if>
+      <if test="attendancebasedGrade != null" >
+        #{attendancebasedGrade,jdbcType=INTEGER},
+      </if>
+      <if test="participationbasedGrade != null" >
+        #{participationbasedGrade,jdbcType=INTEGER},
+      </if>
+      <if test="peerWorkbasedGrade != null" >
+        #{peerWorkbasedGrade,jdbcType=INTEGER},
+      </if>
+      <if test="badgebasedGrade != null" >
+        #{badgebasedGrade,jdbcType=INTEGER},
+      </if>
+      <if test="comparativePositioninTerm != null" >
+        #{comparativePositioninTerm,jdbcType=INTEGER},
+      </if>
+      <if test="comparativePositionOverall != null" >
+        #{comparativePositionOverall,jdbcType=INTEGER},
+      </if>
+      <if test="overallReflectionComment != null" >
+        #{overallReflectionComment,jdbcType=VARCHAR},
+      </if>
+      <if test="subscriptionCourseId != null" >
+        #{subscriptionCourseId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziksana.domain.course.CourseGrade" >
+    update sbncoursegrade
+    <set >
+      <if test="creationDate != null" >
+        CreationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gradeStatus != null" >
+        GradeStatus = #{gradeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="overallGrade != null" >
+        OverallGrade = #{overallGrade,jdbcType=INTEGER},
+      </if>
+      <if test="attendancebasedGrade != null" >
+        AttendancebasedGrade = #{attendancebasedGrade,jdbcType=INTEGER},
+      </if>
+      <if test="participationbasedGrade != null" >
+        ParticipationbasedGrade = #{participationbasedGrade,jdbcType=INTEGER},
+      </if>
+      <if test="peerWorkbasedGrade != null" >
+        PeerWorkbasedGrade = #{peerWorkbasedGrade,jdbcType=INTEGER},
+      </if>
+      <if test="badgebasedGrade != null" >
+        BadgebasedGrade = #{badgebasedGrade,jdbcType=INTEGER},
+      </if>
+      <if test="comparativePositioninTerm != null" >
+        ComparativePositioninTerm = #{comparativePositioninTerm,jdbcType=INTEGER},
+      </if>
+      <if test="comparativePositionOverall != null" >
+        ComparativePositionOverall = #{comparativePositionOverall,jdbcType=INTEGER},
+      </if>
+      <if test="overallReflectionComment != null" >
+        OverallReflectionComment = #{overallReflectionComment,jdbcType=VARCHAR},
+      </if>
+      <if test="subscriptionCourseId != null" >
+        SubscriptionCourseId = #{subscriptionCourseId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where courseGradeId = #{courseGradeId,jdbcType=INTEGER}
+  </update>
+</mapper>
