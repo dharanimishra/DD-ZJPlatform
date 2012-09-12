@@ -1,7 +1,6 @@
 package com.ziksana.persistence.polls;
 
 import com.ziksana.domain.polls.PollTracker;
-import com.ziksana.domain.polls.PollTrackerExample;
 import com.ziksana.domain.polls.PollTrackerKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;

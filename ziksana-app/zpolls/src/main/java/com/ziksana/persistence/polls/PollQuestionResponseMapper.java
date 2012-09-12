@@ -1,7 +1,6 @@
 package com.ziksana.persistence.polls;
 
 import com.ziksana.domain.polls.PollQuestionResponse;
-import com.ziksana.domain.polls.PollQuestionResponseExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
