@@ -92,4 +92,12 @@ public interface PollQuestionMapper {
      * @mbggenerated Mon Sep 10 17:04:28 IST 2012
      */
     int updateByPrimaryKey(PollQuestion record);
+    
+    /**
+     * 
+     * @param pollId
+     * @return
+     */
+    PollQuestion getPoll(Integer pollId);
+    
 }
