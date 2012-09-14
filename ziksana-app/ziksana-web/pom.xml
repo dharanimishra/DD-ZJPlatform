@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>ziksana-web</artifactId>
 	<packaging>war</packaging>
-	<name>ziksana-web Maven Webapp</name>
+	<name>ziksana-web</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
