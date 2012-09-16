@@ -13,9 +13,9 @@
 		<module>zsecurity</module>
 		<module>zcourse</module>
 		<module>zmember</module>
-		<module>ziksana-web</module>
 		<module>zdomain</module>
 		<module>zpolls</module>
+		<module>ziksana-web</module>
 
 	</modules>
 
