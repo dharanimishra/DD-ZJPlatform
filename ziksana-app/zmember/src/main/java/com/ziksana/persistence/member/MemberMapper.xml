@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.member.MemberMapper">
+	<resultMap id="BaseResultMap" type="com.ziksana.domain.member.Member">
+		<id column="MemberId" property="memberId" jdbcType="INTEGER" />
+		<result column="MemberType" property="memberType" jdbcType="INTEGER" />
+		<result column="RelationshipStatus" property="relationshipStatus"
+			jdbcType="INTEGER" />
+		<result column="JoinedDate" property="joinedDate" jdbcType="TIMESTAMP" />
+		<result column="FirstName" property="firstName" jdbcType="VARCHAR" />
+		<result column="LastName" property="lastName" jdbcType="VARCHAR" />
+		<result column="MiddleName" property="middleName" jdbcType="VARCHAR" />
+		<result column="NickName" property="nickName" jdbcType="VARCHAR" />
+		<result column="Salutation" property="salutation" jdbcType="INTEGER" />
+		<result column="DateofBirth" property="dateofBirth" jdbcType="DATE" />
+		<result column="SunSign" property="sunSign" jdbcType="INTEGER" />
+		<result column="MoonSign" property="moonSign" jdbcType="INTEGER" />
+		<result column="Active" property="active" jdbcType="BIT" />
+		<result column="DoNotDistrubIndicator" property="doNotDistrubIndicator"
+			jdbcType="BIT" />
+		<result column="Gender" property="gender" jdbcType="INTEGER" />
+		<result column="PicturePath" property="picturePath" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		MemberId, MemberType, RelationshipStatus, JoinedDate, FirstName,
+		LastName,
+		MiddleName,
+		NickName, Salutation, DateofBirth, SunSign,
+		MoonSign, Active,
+		DoNotDistrubIndicator,
+		Gender, PicturePath
+	</sql>
+	<insert id="insertSelective" parameterType="com.ziksana.domain.member.Member">
+		insert into memmember
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			MemberId,
+			<if test="memberType != null">
+				MemberType,
+			</if>
+			<if test="relationshipStatus != null">
+				RelationshipStatus,
+			</if>
+			<if test="joinedDate != null">
+				JoinedDate,
+			</if>
+			<if test="firstName != null">
+				FirstName,
+			</if>
+			<if test="lastName != null">
+				LastName,
+			</if>
+			<if test="middleName != null">
+				MiddleName,
+			</if>
+			<if test="nickName != null">
+				NickName,
+			</if>
+			<if test="salutation != null">
+				Salutation,
+			</if>
+			<if test="dateofBirth != null">
+				DateofBirth,
+			</if>
+			<if test="sunSign != null">
+				SunSign,
+			</if>
+			<if test="moonSign != null">
+				MoonSign,
+			</if>
+			<if test="active != null">
+				Active,
+			</if>
+			<if test="doNotDistrubIndicator != null">
+				DoNotDistrubIndicator,
+			</if>
+			<if test="gender != null">
+				Gender,
+			</if>
+			<if test="picturePath != null">
+				PicturePath,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			#{MemberId,jdbcType=INTEGER},
+			<if test="memberType != null">
+				#{memberType,jdbcType=INTEGER},
+			</if>
+			<if test="relationshipStatus != null">
+				#{relationshipStatus,jdbcType=INTEGER},
+			</if>
+			<if test="joinedDate != null">
+				#{joinedDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="firstName != null">
+				#{firstName,jdbcType=VARCHAR},
+			</if>
+			<if test="lastName != null">
+				#{lastName,jdbcType=VARCHAR},
+			</if>
+			<if test="middleName != null">
+				#{middleName,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null">
+				#{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="salutation != null">
+				#{salutation,jdbcType=INTEGER},
+			</if>
+			<if test="dateofBirth != null">
+				#{dateofBirth,jdbcType=DATE},
+			</if>
+			<if test="sunSign != null">
+				#{sunSign,jdbcType=INTEGER},
+			</if>
+			<if test="moonSign != null">
+				#{moonSign,jdbcType=INTEGER},
+			</if>
+			<if test="active != null">
+				#{active,jdbcType=BIT},
+			</if>
+			<if test="doNotDistrubIndicator != null">
+				#{doNotDistrubIndicator,jdbcType=BIT},
+			</if>
+			<if test="gender != null">
+				#{gender,jdbcType=INTEGER},
+			</if>
+			<if test="picturePath != null">
+				#{picturePath,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ziksana.domain.member.Member">
+		update memmember
+		<set>
+			<if test="memberType != null">
+				MemberType = #{memberType,jdbcType=INTEGER},
+			</if>
+			<if test="relationshipStatus != null">
+				RelationshipStatus =
+				#{relationshipStatus,jdbcType=INTEGER},
+			</if>
+			<if test="joinedDate != null">
+				JoinedDate = #{joinedDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="firstName != null">
+				FirstName = #{firstName,jdbcType=VARCHAR},
+			</if>
+			<if test="lastName != null">
+				LastName = #{lastName,jdbcType=VARCHAR},
+			</if>
+			<if test="middleName != null">
+				MiddleName = #{middleName,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null">
+				NickName = #{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="salutation != null">
+				Salutation = #{salutation,jdbcType=INTEGER},
+			</if>
+			<if test="dateofBirth != null">
+				DateofBirth = #{dateofBirth,jdbcType=DATE},
+			</if>
+			<if test="sunSign != null">
+				SunSign = #{sunSign,jdbcType=INTEGER},
+			</if>
+			<if test="moonSign != null">
+				MoonSign = #{moonSign,jdbcType=INTEGER},
+			</if>
+			<if test="active != null">
+				Active = #{active,jdbcType=BIT},
+			</if>
+			<if test="doNotDistrubIndicator != null">
+				DoNotDistrubIndicator =
+				#{doNotDistrubIndicator,jdbcType=BIT},
+			</if>
+			<if test="gender != null">
+				Gender = #{gender,jdbcType=INTEGER},
+			</if>
+			<if test="picturePath != null">
+				PicturePath = #{picturePath,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where MemberId = #{memberId,jdbcType=INTEGER}
+	</update>
+
+	<!-- <resultMap id="resultMembersMap" type="com.ziksana.course.domain.Member"> 
+		<id property="ID" column="ID" jdbcType="INTEGER"/> <result column="MemberType" 
+		property="memberType" jdbcType="INTEGER" /> <result column="RelationshipStatus" 
+		property="relationshipStatus" jdbcType="INTEGER" /> <result column="JoinedDate" 
+		property="joinedDate" jdbcType="TIMESTAMP" /> <result column="FirstName" 
+		property="firstName" jdbcType="VARCHAR" /> <result column="LastName" property="lastName" 
+		jdbcType="VARCHAR" /> <result column="MiddleName" property="middleName" jdbcType="VARCHAR" 
+		/> <result column="NickName" property="nickName" jdbcType="VARCHAR" /> <result 
+		column="Salutation" property="salutation" jdbcType="INTEGER" /> <result column="DateofBirth" 
+		property="dateofBirth" jdbcType="DATE" /> <result column="SunSign" property="sunSign" 
+		jdbcType="INTEGER" /> <result column="MoonSign" property="moonSign" jdbcType="INTEGER" 
+		/> <result column="Active" property="active" jdbcType="BIT" /> <result column="DoNotDistrubIndicator" 
+		property="doNotDistrubIndicator" jdbcType="BIT" /> <result column="Gender" 
+		property="gender" jdbcType="INTEGER" /> <result column="Picture" property="picture" 
+		jdbcType="VARCHAR" /> MemberRoleId <collection property="memberRoles" javaType="ArrayList" 
+		ofType="com.ziksana.course.domain.MemberRole"> <id column="ID" property="ID" 
+		jdbcType="INTEGER" /> <result column="RoleType" property="roleType" jdbcType="INTEGER" 
+		/> <result column="RoleStartDate" property="roleStartDate" jdbcType="TIMESTAMP" 
+		/> <result column="Active" property="active" jdbcType="BIT" /> <result column="DoNotMarketIndicator" 
+		property="doNotMarketIndicator" jdbcType="BIT" /> <result column="MemberId" 
+		property="memberId" jdbcType="INTEGER" /> </collection> </resultMap> -->
+	<select id="getMemberDetails" resultMap="BaseResultMap">
+		SELECT
+		MemberId, MemberType,
+		RelationshipStatus, JoinedDate, FirstName, LastName, MiddleName,
+		NickName, Salutation,
+		DateofBirth, SunSign, MoonSign, Active,
+		DoNotDistrubIndicator, Gender, PicturePath
+		FROM MemMember
+	</select>
+
+	<update id="setMemberType" parameterType="int">
+		<set>
+			<if test="memberType!= null"> 
+			MemberType = #{memberType,jdbcType=VARCHAR}, 
+			</if>
+		</set>
+		where
+		MemberId = #{memberId,jdbcType=INTEGER}
+	</update>
+</mapper>
