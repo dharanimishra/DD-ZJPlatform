@@ -1,31 +1,64 @@
 package com.ziksana.service.course.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ziksana.domain.course.Course;
-import com.ziksana.domain.course.CourseCatalog;
-import com.ziksana.domain.course.CoursePlaybook;
-import com.ziksana.domain.course.LearningComponent;
-import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberRole;
-import com.ziksana.persistence.course.CourseMapper;
-import com.ziksana.persistence.course.CoursePlaybookMapper;
-import com.ziksana.persistence.course.InstitutionMapper;
-import com.ziksana.persistence.course.LearningProgramMapper;
-import com.ziksana.persistence.course.ProgrammCurriculumMapper;
-import com.ziksana.persistence.member.MemberMapper;
-import com.ziksana.persistence.member.MemberRoleMapper;
 import com.ziksana.service.course.CourseService;
 
 @Service
 public class CourseServiceImpl implements CourseService {
+
+	@Override
+	public Course getBaseCourseDetails(Course course) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Course> getListOfCourses(MemberRole memberRole) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public HashMap<String, List<String>> getCourseCatalog(Integer courseId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Course updateCourse(Course course) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean removeCourse(Course course) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int saveOrUpdateCourse(Course course) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int saveOrUpdateCourseComponents(Course course) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Course modifyCourseProperties(Course course) {
+		// TODO Auto-generated method stub
+		return null;
+	}/*
 
 	@Autowired
 	public CourseMapper corCourseMapper;
@@ -156,7 +189,7 @@ public class CourseServiceImpl implements CourseService {
 	private int saveMember(Member member) {
 		// Member member = null;
 		// courseDTO = constructCourseDTO(courseDTO);
-		/*
+		
 		 * //Member member = null; Integer memberRoleId = null;
 		 * //List<MemberRole> membeRoleList = null; List<Member> membeList =
 		 * null; //membeRoleList = new ArrayList<MemberRole>(); membeList = new
@@ -172,7 +205,7 @@ public class CourseServiceImpl implements CourseService {
 		 * if(membeList.size()>0){ for (Member membr : membeList) { memberRoleId
 		 * = membr.getMemberRoleId(); } courseDTO.setMemberRoleId(memberRoleId);
 		 * System.out.println("member role id from the db ::"+memberRoleId); }
-		 */
+		 
 
 		// status = saveMember(member);
 
@@ -201,14 +234,14 @@ public class CourseServiceImpl implements CourseService {
 
 	}
 
-	/*
+	
 	 * private CourseDTO constructCourseDTO(CourseDTO courseDTO) { courseDTO =
 	 * new CourseDTO(); courseDTO.setDescription("Course Descriptio220");
 	 * courseDTO.setCourseIdentifier("CD0220");
 	 * courseDTO.setName("Course Name220"); courseDTO.setMemberRoleId(10000);
 	 * 
 	 * return courseDTO; }
-	 */
+	 
 	
 	public HashMap<String, List<String>> getCourseCatalog(Integer courseId) {
 		Course corCourse = null;
@@ -241,7 +274,7 @@ public class CourseServiceImpl implements CourseService {
 			// pbComponentContentList = new
 			// ArrayList<CorCourseComponentContent>();
 
-			/*
+			
 			 * pbComponentContentList =
 			 * corPlaybookComponent.getComponentContentList();
 			 * 
@@ -260,7 +293,7 @@ public class CourseServiceImpl implements CourseService {
 			 * getContentDescription()); }
 			 * 
 			 * }
-			 */
+			 
 		}
 
 		return catalogMap;
@@ -291,4 +324,4 @@ public class CourseServiceImpl implements CourseService {
 		return null;
 	}
 
-}
+*/}
