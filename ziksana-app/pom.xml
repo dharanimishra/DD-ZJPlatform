@@ -11,10 +11,10 @@
 		<module>zutils</module>
 		<module>zconfig</module>
 		<module>zsecurity</module>
-		<module>zcourse</module>
 		<module>zmember</module>
 		<module>zdomain</module>
 		<module>zpolls</module>
+		<module>zcourse</module>
 		<module>ziksana-web</module>
 
 	</modules>
