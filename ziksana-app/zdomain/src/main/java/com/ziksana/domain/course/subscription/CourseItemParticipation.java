@@ -6,7 +6,6 @@ public class CourseItemParticipation {
 	/**
 	 * This field corresponds to the database column
 	 * sbncourseitemparticipation.courseItemParticipationId
-	 * 
 	 */
 	private Integer courseItemParticipationId;
 

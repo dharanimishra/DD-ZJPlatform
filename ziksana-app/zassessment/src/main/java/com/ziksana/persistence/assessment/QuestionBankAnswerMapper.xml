@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ziksana.persistence.assessment.QuestionBankAnswerMapper">
+  <resultMap id="BaseResultMap" type="com.ziksana.domain.assessment.QuestionBankAnswer">
+    <id column="QuestionBankAnswerId" jdbcType="INTEGER" property="questionBankAnswerId" />
+    <result column="CreationDate" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="Active" jdbcType="BIT" property="active" />
+    <result column="AnswerContent" jdbcType="VARCHAR" property="answerContent" />
+    <result column="CorrectnessIndicator" jdbcType="BIT" property="correctnessIndicator" />
+    <result column="AnswerSequence" jdbcType="INTEGER" property="answerSequence" />
+    <result column="AnswerReflectionComment" jdbcType="VARCHAR" property="answerReflectionComment" />
+    <result column="AnswerKeywordWeight" jdbcType="INTEGER" property="answerKeywordWeight" />
+    <result column="Status" jdbcType="INTEGER" property="status" />
+    <result column="QuestionBankId" jdbcType="INTEGER" property="questionBankId" />
+    <result column="MatchingQuestionBankAnswerId" jdbcType="INTEGER" property="matchingQuestionBankAnswerId" />
+    <result column="VisualSpotId" jdbcType="INTEGER" property="visualSpotId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    QuestionBankAnswerId, CreationDate, Active, AnswerContent, CorrectnessIndicator, 
+    AnswerSequence, AnswerReflectionComment, AnswerKeywordWeight, Status, QuestionBankId, 
+    MatchingQuestionBankAnswerId, VisualSpotId
+  </sql>
+  <insert id="insertSelective" parameterType="com.ziksana.domain.assessment.QuestionBankAnswer">
+    insert into asmquestionbankanswer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="questionBankAnswerId != null">
+        QuestionBankAnswerId,
+      </if>
+      <if test="creationDate != null">
+        CreationDate,
+      </if>
+      <if test="active != null">
+        Active,
+      </if>
+      <if test="answerContent != null">
+        AnswerContent,
+      </if>
+      <if test="correctnessIndicator != null">
+        CorrectnessIndicator,
+      </if>
+      <if test="answerSequence != null">
+        AnswerSequence,
+      </if>
+      <if test="answerReflectionComment != null">
+        AnswerReflectionComment,
+      </if>
+      <if test="answerKeywordWeight != null">
+        AnswerKeywordWeight,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="questionBankId != null">
+        QuestionBankId,
+      </if>
+      <if test="matchingQuestionBankAnswerId != null">
+        MatchingQuestionBankAnswerId,
+      </if>
+      <if test="visualSpotId != null">
+        VisualSpotId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="questionBankAnswerId != null">
+        #{questionBankAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="active != null">
+        #{active,jdbcType=BIT},
+      </if>
+      <if test="answerContent != null">
+        #{answerContent,jdbcType=VARCHAR},
+      </if>
+      <if test="correctnessIndicator != null">
+        #{correctnessIndicator,jdbcType=BIT},
+      </if>
+      <if test="answerSequence != null">
+        #{answerSequence,jdbcType=INTEGER},
+      </if>
+      <if test="answerReflectionComment != null">
+        #{answerReflectionComment,jdbcType=VARCHAR},
+      </if>
+      <if test="answerKeywordWeight != null">
+        #{answerKeywordWeight,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="questionBankId != null">
+        #{questionBankId,jdbcType=INTEGER},
+      </if>
+      <if test="matchingQuestionBankAnswerId != null">
+        #{matchingQuestionBankAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="visualSpotId != null">
+        #{visualSpotId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziksana.domain.assessment.QuestionBankAnswer">
+    update asmquestionbankanswer
+    <set>
+      <if test="creationDate != null">
+        CreationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="active != null">
+        Active = #{active,jdbcType=BIT},
+      </if>
+      <if test="answerContent != null">
+        AnswerContent = #{answerContent,jdbcType=VARCHAR},
+      </if>
+      <if test="correctnessIndicator != null">
+        CorrectnessIndicator = #{correctnessIndicator,jdbcType=BIT},
+      </if>
+      <if test="answerSequence != null">
+        AnswerSequence = #{answerSequence,jdbcType=INTEGER},
+      </if>
+      <if test="answerReflectionComment != null">
+        AnswerReflectionComment = #{answerReflectionComment,jdbcType=VARCHAR},
+      </if>
+      <if test="answerKeywordWeight != null">
+        AnswerKeywordWeight = #{answerKeywordWeight,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="questionBankId != null">
+        QuestionBankId = #{questionBankId,jdbcType=INTEGER},
+      </if>
+      <if test="matchingQuestionBankAnswerId != null">
+        MatchingQuestionBankAnswerId = #{matchingQuestionBankAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="visualSpotId != null">
+        VisualSpotId = #{visualSpotId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where QuestionBankAnswerId = #{questionBankAnswerId,jdbcType=INTEGER}
+  </update>
+</mapper>

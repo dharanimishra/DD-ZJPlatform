@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ziksana.persistence.assessment.QuestionBankMapper">
+  <resultMap id="BaseResultMap" type="com.ziksana.domain.assessment.QuestionBank">
+    <id column="QuestionBankId" jdbcType="INTEGER" property="questionBankId" />
+    <result column="CreationDate" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="Active" jdbcType="BIT" property="active" />
+    <result column="DifficultyLevel" jdbcType="INTEGER" property="difficultyLevel" />
+    <result column="ProficiencyLevel" jdbcType="INTEGER" property="proficiencyLevel" />
+    <result column="QuestionType" jdbcType="INTEGER" property="questionType" />
+    <result column="QuestionContent" jdbcType="VARCHAR" property="questionContent" />
+    <result column="AdditionalInfoPath" jdbcType="VARCHAR" property="additionalInfoPath" />
+    <result column="Instruction" jdbcType="VARCHAR" property="instruction" />
+    <result column="MultipleCorrectAnswerIndicator" jdbcType="BIT" property="multipleCorrectAnswerIndicator" />
+    <result column="GroupWorkIndicator" jdbcType="BIT" property="groupWorkIndicator" />
+    <result column="Status" jdbcType="INTEGER" property="status" />
+    <result column="QuestionApplicabilityType" jdbcType="INTEGER" property="questionApplicabilityType" />
+    <result column="SubjClassificationId" jdbcType="INTEGER" property="subjClassificationId" />
+    <result column="MemberId" jdbcType="INTEGER" property="memberId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    QuestionBankId, CreationDate, Active, DifficultyLevel, ProficiencyLevel, QuestionType, 
+    QuestionContent, AdditionalInfoPath, Instruction, MultipleCorrectAnswerIndicator, 
+    GroupWorkIndicator, Status, QuestionApplicabilityType, SubjClassificationId, MemberId
+  </sql>
+  <insert id="insertSelective" parameterType="com.ziksana.domain.assessment.QuestionBank">
+    insert into asmquestionbank
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="questionBankId != null">
+        QuestionBankId,
+      </if>
+      <if test="creationDate != null">
+        CreationDate,
+      </if>
+      <if test="active != null">
+        Active,
+      </if>
+      <if test="difficultyLevel != null">
+        DifficultyLevel,
+      </if>
+      <if test="proficiencyLevel != null">
+        ProficiencyLevel,
+      </if>
+      <if test="questionType != null">
+        QuestionType,
+      </if>
+      <if test="questionContent != null">
+        QuestionContent,
+      </if>
+      <if test="additionalInfoPath != null">
+        AdditionalInfoPath,
+      </if>
+      <if test="instruction != null">
+        Instruction,
+      </if>
+      <if test="multipleCorrectAnswerIndicator != null">
+        MultipleCorrectAnswerIndicator,
+      </if>
+      <if test="groupWorkIndicator != null">
+        GroupWorkIndicator,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="questionApplicabilityType != null">
+        QuestionApplicabilityType,
+      </if>
+      <if test="subjClassificationId != null">
+        SubjClassificationId,
+      </if>
+      <if test="memberId != null">
+        MemberId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="questionBankId != null">
+        #{questionBankId,jdbcType=INTEGER},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="active != null">
+        #{active,jdbcType=BIT},
+      </if>
+      <if test="difficultyLevel != null">
+        #{difficultyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="proficiencyLevel != null">
+        #{proficiencyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="questionType != null">
+        #{questionType,jdbcType=INTEGER},
+      </if>
+      <if test="questionContent != null">
+        #{questionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalInfoPath != null">
+        #{additionalInfoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="multipleCorrectAnswerIndicator != null">
+        #{multipleCorrectAnswerIndicator,jdbcType=BIT},
+      </if>
+      <if test="groupWorkIndicator != null">
+        #{groupWorkIndicator,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="questionApplicabilityType != null">
+        #{questionApplicabilityType,jdbcType=INTEGER},
+      </if>
+      <if test="subjClassificationId != null">
+        #{subjClassificationId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziksana.domain.assessment.QuestionBank">
+    update asmquestionbank
+    <set>
+      <if test="creationDate != null">
+        CreationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="active != null">
+        Active = #{active,jdbcType=BIT},
+      </if>
+      <if test="difficultyLevel != null">
+        DifficultyLevel = #{difficultyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="proficiencyLevel != null">
+        ProficiencyLevel = #{proficiencyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="questionType != null">
+        QuestionType = #{questionType,jdbcType=INTEGER},
+      </if>
+      <if test="questionContent != null">
+        QuestionContent = #{questionContent,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalInfoPath != null">
+        AdditionalInfoPath = #{additionalInfoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        Instruction = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="multipleCorrectAnswerIndicator != null">
+        MultipleCorrectAnswerIndicator = #{multipleCorrectAnswerIndicator,jdbcType=BIT},
+      </if>
+      <if test="groupWorkIndicator != null">
+        GroupWorkIndicator = #{groupWorkIndicator,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="questionApplicabilityType != null">
+        QuestionApplicabilityType = #{questionApplicabilityType,jdbcType=INTEGER},
+      </if>
+      <if test="subjClassificationId != null">
+        SubjClassificationId = #{subjClassificationId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        MemberId = #{memberId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where QuestionBankId = #{questionBankId,jdbcType=INTEGER}
+  </update>
+</mapper>

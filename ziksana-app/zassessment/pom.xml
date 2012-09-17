@@ -10,4 +10,12 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>zassessment</name>
   <description>Course Assessment and Tests</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.ziksana</groupId>
+  		<artifactId>zdomain</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  		<scope>import</scope>
+  	</dependency>
+  </dependencies>
 </project>
