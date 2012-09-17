@@ -2,7 +2,6 @@ package com.ziksana.domain.course;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class LearningProgram implements Serializable {
 	/**
