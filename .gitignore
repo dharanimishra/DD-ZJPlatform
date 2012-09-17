@@ -11,7 +11,5 @@
 .project
 .settings
 Servers
-
-\classes\*\*.xml
 *.bak
 
