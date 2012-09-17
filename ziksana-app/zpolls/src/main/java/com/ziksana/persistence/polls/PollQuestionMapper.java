@@ -3,6 +3,7 @@ package com.ziksana.persistence.polls;
 import com.ziksana.domain.polls.PollQuestion;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface PollQuestionMapper {
     /**
@@ -98,6 +99,7 @@ public interface PollQuestionMapper {
      * @param pollId
      * @return
      */
+    @Select("SELECT * FROM utlzpollquestion WHERE pollId = #{pollId}")
     PollQuestion getPoll(Integer pollId);
     
 }
