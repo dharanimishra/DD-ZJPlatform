@@ -1,3 +1,4 @@
+\target*
 *.class
 # Package Files #
 *.jar
@@ -10,3 +11,7 @@
 .project
 .settings
 Servers
+
+\classes\*\*.xml
+*.bak
+
