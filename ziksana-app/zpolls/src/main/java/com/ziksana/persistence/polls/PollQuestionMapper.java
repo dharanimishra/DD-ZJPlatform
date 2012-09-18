@@ -99,7 +99,7 @@ public interface PollQuestionMapper {
      * @param pollId
      * @return
      */
-    @Select("SELECT * FROM utlzpollquestion WHERE pollId = #{pollId}")
-    PollQuestion getPoll(Integer pollId);
+    @Select("SELECT * FROM utlzpollquestion WHERE ID = #{ID}")
+    PollQuestion getPoll(Integer id);
     
 }
