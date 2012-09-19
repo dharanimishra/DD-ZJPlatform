@@ -1,5 +1,8 @@
 package com.spring.controllers;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ziksana.domain.polls.PollQuestion;
+import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.service.polls.PollService;
 
 
@@ -16,6 +20,8 @@ import com.ziksana.service.polls.PollService;
 @RequestMapping(value = "/*")
 public class PollController {
 	
+	
+	
 	@Autowired
 	private PollService pollService;
 	
@@ -24,11 +30,24 @@ public class PollController {
 	
 	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
 	public @ResponseBody
-	PollQuestion getPoll(Integer pollId)
+	List<PollQuestion> getPoll(Integer memberRoleId)
 	{
-		return pollService.getPoll(pollId);
+		return pollService.getPoll(memberRoleId);
 		
 	}
+	
+	
+	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
+	public @ResponseBody
+	PollQuestionResponse answerPoll(Integer pollQuestionId,Integer pollAnswerId)
+	{
+		return pollService.answerPoll(pollQuestionId, pollAnswerId);
+		
+	}
+	
+	
+	
+	
 	
 	
 	

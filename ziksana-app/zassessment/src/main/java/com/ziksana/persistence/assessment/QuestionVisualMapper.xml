@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ziksana.persistence.assessment.QuestionVisualMapper">
+  <resultMap id="BaseResultMap" type="com.ziksana.domain.assessment.QuestionVisual">
+    <id column="QuestionVisualId" jdbcType="INTEGER" property="questionVisualId" />
+    <result column="CreationDate" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="Active" jdbcType="BIT" property="active" />
+    <result column="VisualType" jdbcType="INTEGER" property="visualType" />
+    <result column="VisualPath" jdbcType="VARCHAR" property="visualPath" />
+    <result column="InternalIndicator" jdbcType="BIT" property="internalIndicator" />
+    <result column="VisualSource" jdbcType="INTEGER" property="visualSource" />
+    <result column="QuestionBankId" jdbcType="INTEGER" property="questionBankId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    QuestionVisualId, CreationDate, Active, VisualType, VisualPath, InternalIndicator, 
+    VisualSource, QuestionBankId
+  </sql>
+  <insert id="insertSelective" parameterType="com.ziksana.domain.assessment.QuestionVisual">
+    insert into asmquestionvisual
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="questionVisualId != null">
+        QuestionVisualId,
+      </if>
+      <if test="creationDate != null">
+        CreationDate,
+      </if>
+      <if test="active != null">
+        Active,
+      </if>
+      <if test="visualType != null">
+        VisualType,
+      </if>
+      <if test="visualPath != null">
+        VisualPath,
+      </if>
+      <if test="internalIndicator != null">
+        InternalIndicator,
+      </if>
+      <if test="visualSource != null">
+        VisualSource,
+      </if>
+      <if test="questionBankId != null">
+        QuestionBankId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="questionVisualId != null">
+        #{questionVisualId,jdbcType=INTEGER},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="active != null">
+        #{active,jdbcType=BIT},
+      </if>
+      <if test="visualType != null">
+        #{visualType,jdbcType=INTEGER},
+      </if>
+      <if test="visualPath != null">
+        #{visualPath,jdbcType=VARCHAR},
+      </if>
+      <if test="internalIndicator != null">
+        #{internalIndicator,jdbcType=BIT},
+      </if>
+      <if test="visualSource != null">
+        #{visualSource,jdbcType=INTEGER},
+      </if>
+      <if test="questionBankId != null">
+        #{questionBankId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziksana.domain.assessment.QuestionVisual">
+    update asmquestionvisual
+    <set>
+      <if test="creationDate != null">
+        CreationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="active != null">
+        Active = #{active,jdbcType=BIT},
+      </if>
+      <if test="visualType != null">
+        VisualType = #{visualType,jdbcType=INTEGER},
+      </if>
+      <if test="visualPath != null">
+        VisualPath = #{visualPath,jdbcType=VARCHAR},
+      </if>
+      <if test="internalIndicator != null">
+        InternalIndicator = #{internalIndicator,jdbcType=BIT},
+      </if>
+      <if test="visualSource != null">
+        VisualSource = #{visualSource,jdbcType=INTEGER},
+      </if>
+      <if test="questionBankId != null">
+        QuestionBankId = #{questionBankId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where QuestionVisualId = #{questionVisualId,jdbcType=INTEGER}
+  </update>
+</mapper>

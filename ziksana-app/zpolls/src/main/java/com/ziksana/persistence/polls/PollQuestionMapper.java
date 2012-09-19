@@ -3,6 +3,7 @@ package com.ziksana.persistence.polls;
 import com.ziksana.domain.polls.PollQuestion;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface PollQuestionMapper {
     /**
@@ -98,6 +99,20 @@ public interface PollQuestionMapper {
      * @param pollId
      * @return
      */
-    PollQuestion getPoll(Integer pollId);
+    //@Select("select utlzpollquestion.* from utlzpoll NATURAL JOIN utlzpollquestion where   CURDATE()<utlzpoll.pollEndDate and  ID = #{ID}")
+    @Select({"SELECT utlzpollquestion.*",
+    		 "FROM utlzpollquestion LEFT JOIN utlzpollquestionresponse ON utlzpollquestion.id = utlzpollquestionresponse.id",
+             "WHERE utlzpollquestion.id = #{ID} and  utlzpollquestionresponse.id IS NULL"})
+    List<PollQuestion>  getPoll(Integer id);
+    
+    
+    /**
+     * 
+     * @param id
+     * @return
+     */
+    @Select("select count(*) from utlzpoll NATURAL JOIN utlzpollquestion where   CURDATE()<utlzpoll.pollEndDate and  ID = #{ID}")
+    int getTotalQuestions(Integer id);
+    
     
 }

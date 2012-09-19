@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
-import com.ziksana.domain.course.CourseProperty;
+import com.ziksana.domain.course.subscription.CourseProperty;
 
 public interface CoursePropertyMapper {
 	/**

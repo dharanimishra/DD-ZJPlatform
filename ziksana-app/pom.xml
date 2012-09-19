@@ -9,6 +9,7 @@
 
 	<modules>
 		<module>zutils</module>
+		<module>zcommon</module>
 		<module>zconfig</module>
 		<module>zsecurity</module>
 		<module>zcourse</module>
@@ -133,6 +134,12 @@
 			<version>${org.springframework.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -185,6 +192,24 @@
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib-ext-spring</artifactId>
 			<version>1.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.21</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.0.4</version>
 		</dependency>
 
 	</dependencies>

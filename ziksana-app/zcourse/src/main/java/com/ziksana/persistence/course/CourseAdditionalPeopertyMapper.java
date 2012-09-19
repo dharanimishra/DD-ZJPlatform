@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
-import com.ziksana.domain.course.CourseAdditionalPeoperty;
+import com.ziksana.domain.course.CourseAdditionalProperty;
 
 public interface CourseAdditionalPeopertyMapper {
 
@@ -33,12 +33,12 @@ public interface CourseAdditionalPeopertyMapper {
 			"#{sequence,jdbcType=INTEGER}, #{active,jdbcType=BIT}, #{courseId,jdbcType=INTEGER}, ",
 			"#{memberRoleId,jdbcType=INTEGER})" })
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseAddnlPropertyId", before = true, resultType = Integer.class)
-	int insert(CourseAdditionalPeoperty record);
+	int insert(CourseAdditionalProperty record);
 
 	/**
 	 * This method corresponds to the database table corcourseadditionalproperty
 	 */
-	int insertSelective(CourseAdditionalPeoperty record);
+	int insertSelective(CourseAdditionalProperty record);
 
 	/**
 	 * This method corresponds to the database table corcourseadditionalproperty
@@ -50,12 +50,12 @@ public interface CourseAdditionalPeopertyMapper {
 			"from corcourseadditionalproperty",
 			"where courseAddnlPropertyId = #{courseAddnlPropertyId,jdbcType=INTEGER}" })
 	@ResultMap("BaseResultMap")
-	CourseAdditionalPeoperty selectByPrimaryKey(Integer courseAddnlPropertyId);
+	CourseAdditionalProperty selectByPrimaryKey(Integer courseAddnlPropertyId);
 
 	/**
 	 * This method corresponds to the database table corcourseadditionalproperty
 	 */
-	int updateByPrimaryKeySelective(CourseAdditionalPeoperty record);
+	int updateByPrimaryKeySelective(CourseAdditionalProperty record);
 
 	/**
 	 * This method corresponds to the database table corcourseadditionalproperty
@@ -71,5 +71,5 @@ public interface CourseAdditionalPeopertyMapper {
 			"CourseId = #{courseId,jdbcType=INTEGER},",
 			"MemberRoleId = #{memberRoleId,jdbcType=INTEGER}",
 			"where courseAddnlPropertyId = #{courseAddnlPropertyId,jdbcType=INTEGER}" })
-	int updateByPrimaryKey(CourseAdditionalPeoperty record);
+	int updateByPrimaryKey(CourseAdditionalProperty record);
 }

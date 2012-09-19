@@ -6,4 +6,17 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>zconfig</artifactId>
+  
+  <dependencies>
+  
+  
+      <dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+		
+  
+  </dependencies>
+  
 </project>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ziksana.persistence.assessment.AssignmentTestMapper">
+  <resultMap id="BaseResultMap" type="com.ziksana.domain.assessment.AssignmentTest">
+    <id column="AssignmentTestId" jdbcType="INTEGER" property="assignmentTestId" />
+    <result column="Active" jdbcType="BIT" property="active" />
+    <result column="UsageStartDate" jdbcType="TIMESTAMP" property="usageStartDate" />
+    <result column="UsageEndDate" jdbcType="TIMESTAMP" property="usageEndDate" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="TestType" jdbcType="INTEGER" property="testType" />
+    <result column="AssignmentContent" jdbcType="VARCHAR" property="assignmentContent" />
+    <result column="DificultyLevel" jdbcType="INTEGER" property="dificultyLevel" />
+    <result column="Instruction" jdbcType="VARCHAR" property="instruction" />
+    <result column="ZeniCreatedIndicator" jdbcType="BIT" property="zeniCreatedIndicator" />
+    <result column="LearnerCreatedIndicator" jdbcType="BIT" property="learnerCreatedIndicator" />
+    <result column="MultipleAttemptsAllowedIndicator" jdbcType="BIT" property="multipleAttemptsAllowedIndicator" />
+    <result column="OpenforPeerEvaluationIndicator" jdbcType="BIT" property="openforPeerEvaluationIndicator" />
+    <result column="AsynchronousIndicator" jdbcType="BIT" property="asynchronousIndicator" />
+    <result column="ProctoringNeededIndicator" jdbcType="BIT" property="proctoringNeededIndicator" />
+    <result column="AnswerWithinTime" jdbcType="INTEGER" property="answerWithinTime" />
+    <result column="Status" jdbcType="INTEGER" property="status" />
+    <result column="LearningComponentId" jdbcType="INTEGER" property="learningComponentId" />
+    <result column="MemberRoleId" jdbcType="INTEGER" property="memberRoleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AssignmentTestId, Active, UsageStartDate, UsageEndDate, Name, TestType, AssignmentContent, 
+    DificultyLevel, Instruction, ZeniCreatedIndicator, LearnerCreatedIndicator, MultipleAttemptsAllowedIndicator, 
+    OpenforPeerEvaluationIndicator, AsynchronousIndicator, ProctoringNeededIndicator, 
+    AnswerWithinTime, Status, LearningComponentId, MemberRoleId
+  </sql>
+  <insert id="insertSelective" parameterType="com.ziksana.domain.assessment.AssignmentTest">
+    insert into asmassignmenttest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="assignmentTestId != null">
+        AssignmentTestId,
+      </if>
+      <if test="active != null">
+        Active,
+      </if>
+      <if test="usageStartDate != null">
+        UsageStartDate,
+      </if>
+      <if test="usageEndDate != null">
+        UsageEndDate,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="testType != null">
+        TestType,
+      </if>
+      <if test="assignmentContent != null">
+        AssignmentContent,
+      </if>
+      <if test="dificultyLevel != null">
+        DificultyLevel,
+      </if>
+      <if test="instruction != null">
+        Instruction,
+      </if>
+      <if test="zeniCreatedIndicator != null">
+        ZeniCreatedIndicator,
+      </if>
+      <if test="learnerCreatedIndicator != null">
+        LearnerCreatedIndicator,
+      </if>
+      <if test="multipleAttemptsAllowedIndicator != null">
+        MultipleAttemptsAllowedIndicator,
+      </if>
+      <if test="openforPeerEvaluationIndicator != null">
+        OpenforPeerEvaluationIndicator,
+      </if>
+      <if test="asynchronousIndicator != null">
+        AsynchronousIndicator,
+      </if>
+      <if test="proctoringNeededIndicator != null">
+        ProctoringNeededIndicator,
+      </if>
+      <if test="answerWithinTime != null">
+        AnswerWithinTime,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="learningComponentId != null">
+        LearningComponentId,
+      </if>
+      <if test="memberRoleId != null">
+        MemberRoleId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="assignmentTestId != null">
+        #{assignmentTestId,jdbcType=INTEGER},
+      </if>
+      <if test="active != null">
+        #{active,jdbcType=BIT},
+      </if>
+      <if test="usageStartDate != null">
+        #{usageStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usageEndDate != null">
+        #{usageEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="testType != null">
+        #{testType,jdbcType=INTEGER},
+      </if>
+      <if test="assignmentContent != null">
+        #{assignmentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dificultyLevel != null">
+        #{dificultyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="instruction != null">
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="zeniCreatedIndicator != null">
+        #{zeniCreatedIndicator,jdbcType=BIT},
+      </if>
+      <if test="learnerCreatedIndicator != null">
+        #{learnerCreatedIndicator,jdbcType=BIT},
+      </if>
+      <if test="multipleAttemptsAllowedIndicator != null">
+        #{multipleAttemptsAllowedIndicator,jdbcType=BIT},
+      </if>
+      <if test="openforPeerEvaluationIndicator != null">
+        #{openforPeerEvaluationIndicator,jdbcType=BIT},
+      </if>
+      <if test="asynchronousIndicator != null">
+        #{asynchronousIndicator,jdbcType=BIT},
+      </if>
+      <if test="proctoringNeededIndicator != null">
+        #{proctoringNeededIndicator,jdbcType=BIT},
+      </if>
+      <if test="answerWithinTime != null">
+        #{answerWithinTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="learningComponentId != null">
+        #{learningComponentId,jdbcType=INTEGER},
+      </if>
+      <if test="memberRoleId != null">
+        #{memberRoleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziksana.domain.assessment.AssignmentTest">
+    update asmassignmenttest
+    <set>
+      <if test="active != null">
+        Active = #{active,jdbcType=BIT},
+      </if>
+      <if test="usageStartDate != null">
+        UsageStartDate = #{usageStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usageEndDate != null">
+        UsageEndDate = #{usageEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="testType != null">
+        TestType = #{testType,jdbcType=INTEGER},
+      </if>
+      <if test="assignmentContent != null">
+        AssignmentContent = #{assignmentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dificultyLevel != null">
+        DificultyLevel = #{dificultyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="instruction != null">
+        Instruction = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="zeniCreatedIndicator != null">
+        ZeniCreatedIndicator = #{zeniCreatedIndicator,jdbcType=BIT},
+      </if>
+      <if test="learnerCreatedIndicator != null">
+        LearnerCreatedIndicator = #{learnerCreatedIndicator,jdbcType=BIT},
+      </if>
+      <if test="multipleAttemptsAllowedIndicator != null">
+        MultipleAttemptsAllowedIndicator = #{multipleAttemptsAllowedIndicator,jdbcType=BIT},
+      </if>
+      <if test="openforPeerEvaluationIndicator != null">
+        OpenforPeerEvaluationIndicator = #{openforPeerEvaluationIndicator,jdbcType=BIT},
+      </if>
+      <if test="asynchronousIndicator != null">
+        AsynchronousIndicator = #{asynchronousIndicator,jdbcType=BIT},
+      </if>
+      <if test="proctoringNeededIndicator != null">
+        ProctoringNeededIndicator = #{proctoringNeededIndicator,jdbcType=BIT},
+      </if>
+      <if test="answerWithinTime != null">
+        AnswerWithinTime = #{answerWithinTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="learningComponentId != null">
+        LearningComponentId = #{learningComponentId,jdbcType=INTEGER},
+      </if>
+      <if test="memberRoleId != null">
+        MemberRoleId = #{memberRoleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where AssignmentTestId = #{assignmentTestId,jdbcType=INTEGER}
+  </update>
+</mapper>
