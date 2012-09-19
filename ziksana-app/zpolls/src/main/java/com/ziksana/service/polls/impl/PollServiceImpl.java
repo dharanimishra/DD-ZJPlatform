@@ -4,6 +4,7 @@
 package com.ziksana.service.polls.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import com.ziksana.service.polls.PollService;
  * @author prabu
  * 
  */
+
 public class PollServiceImpl implements PollService {
 
 	private static Logger logger = Logger.getLogger(PollServiceImpl.class);
@@ -37,9 +39,9 @@ public class PollServiceImpl implements PollService {
 	 * @see com.ziksana.service.polls.PollService#getPoll(java.lang.Integer)
 	 */
 	@Override
-	public PollQuestion getPoll(Integer memberRoleId, Integer pollId, Date pollStartDate,Date pollEndDate) {
+	public List<PollQuestion> getPoll(Integer memberRoleId) {
 		logger.info("getPoll method is invoked");
-		return pollQuestionMapper.getPoll(pollId);
+		return pollQuestionMapper.getPoll(memberRoleId);
 
 	}
 
@@ -58,6 +60,13 @@ public class PollServiceImpl implements PollService {
 		pollQuestionResponseMapper.updateByPrimaryKey(pollQuestionResponse);
 		// TODO Auto-generated method stub
 		return pollQuestionResponse;
+	}
+
+	@Override
+	public int getTotalQuestions(Integer id) {
+		// TODO Auto-generated method stub
+		return pollQuestionMapper.getTotalQuestions(id);
+		
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.spring.controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,9 +30,9 @@ public class PollController {
 	
 	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
 	public @ResponseBody
-	PollQuestion getPoll(Integer memberRoleId, Integer pollId, Date pollStartDate,Date pollEndDate)
+	List<PollQuestion> getPoll(Integer memberRoleId)
 	{
-		return pollService.getPoll(memberRoleId, pollId, pollStartDate, pollEndDate);
+		return pollService.getPoll(memberRoleId);
 		
 	}
 	

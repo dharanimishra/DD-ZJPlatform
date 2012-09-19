@@ -99,7 +99,17 @@ public interface PollQuestionMapper {
      * @param pollId
      * @return
      */
-    @Select("SELECT * FROM utlzpollquestion WHERE ID = #{ID}")
-    PollQuestion getPoll(Integer id);
+    @Select("select utlzpollquestion.* from utlzpoll NATURAL JOIN utlzpollquestion where   CURDATE()<utlzpoll.pollEndDate and  ID = #{ID}")
+    List<PollQuestion>  getPoll(Integer id);
+    
+    
+    /**
+     * 
+     * @param id
+     * @return
+     */
+    @Select("select count(*) from utlzpoll NATURAL JOIN utlzpollquestion where   CURDATE()<utlzpoll.pollEndDate and  ID = #{ID}")
+    int getTotalQuestions(Integer id);
+    
     
 }

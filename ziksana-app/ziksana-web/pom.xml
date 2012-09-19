@@ -124,12 +124,7 @@
 			<type>jar</type>
 			<scope>import</scope>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-		</dependency>
-
+		
 				
 		<!-- dependencies for spring LDAP -->
         <dependency>
@@ -171,13 +166,8 @@
 		<!--  dependencies for Junit end here -->
 	
 
-		<dependency>
-			<groupId>com.ziksana</groupId>
-			<artifactId>zcourses</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>import</scope>
-		</dependency>
+		
+		
 		<dependency>
 			<groupId>com.ziksana</groupId>
 			<artifactId>zpolls</artifactId>
