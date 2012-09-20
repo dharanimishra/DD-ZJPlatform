@@ -16,12 +16,12 @@ import com.ziksana.domain.polls.PollQuestionResponse;
  */
 public interface PollService {
 	
-	public List<PollQuestion>  getPoll(Integer memberRoleId);
+	public List<PollQuestion>  getUnansweredPollQuestions(Integer memberRoleId);
 	
 	
-	public PollQuestionResponse answerPoll(Integer pollQuestionId, Integer pollAnswerId);
+	public PollQuestionResponse answerPoll(Integer memberRoleId, Integer pollQuestionId, Integer pollAnswerId);
  	
-	int getTotalQuestions(Integer id); 
+	int getTotalUnansweredQuestions(Integer memberRoleId); 
 	
 	
 }

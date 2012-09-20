@@ -30,18 +30,18 @@ public class PollController {
 	
 	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
 	public @ResponseBody
-	List<PollQuestion> getPoll(Integer memberRoleId)
+	List<PollQuestion> getUnansweredPollQuestions(Integer memberRoleId)
 	{
-		return pollService.getPoll(memberRoleId);
+		return pollService.getUnansweredPollQuestions(memberRoleId);
 		
 	}
 	
 	
 	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
 	public @ResponseBody
-	PollQuestionResponse answerPoll(Integer pollQuestionId,Integer pollAnswerId)
+	PollQuestionResponse answerPoll(Integer memberRoleId, Integer pollQuestionId,Integer pollAnswerId)
 	{
-		return pollService.answerPoll(pollQuestionId, pollAnswerId);
+		return pollService.answerPoll(memberRoleId, pollQuestionId, pollAnswerId);
 		
 	}
 	

@@ -100,10 +100,16 @@ public interface PollQuestionMapper {
      * @return
      */
     //@Select("select utlzpollquestion.* from utlzpoll NATURAL JOIN utlzpollquestion where   CURDATE()<utlzpoll.pollEndDate and  ID = #{ID}")
-    @Select({"SELECT utlzpollquestion.*",
-    		 "FROM utlzpollquestion LEFT JOIN utlzpollquestionresponse ON utlzpollquestion.id = utlzpollquestionresponse.id",
-             "WHERE utlzpollquestion.id = #{ID} and  utlzpollquestionresponse.id IS NULL"})
-    List<PollQuestion>  getPoll(Integer id);
+   
+ @Select({"Select utlzpollquestion.*", 
+" from ",  
+ " utlzpollquestion,polltracker,utlzpoll ", 
+" where ", 
+" utlzpoll.ID=utlzpollquestion.pollId and ", 
+" polltracker.answeringMemberRoleId= #{memberRoleId} and ",
+" utlzpollquestion.ID!=polltracker.pollQuestionId  and ",
+" curdate() < utlzpoll.PollEndDate "}) 
+  List<PollQuestion>  getPoll(Integer memberRoleId);
     
     
     /**
@@ -111,7 +117,14 @@ public interface PollQuestionMapper {
      * @param id
      * @return
      */
-    @Select("select count(*) from utlzpoll NATURAL JOIN utlzpollquestion where   CURDATE()<utlzpoll.pollEndDate and  ID = #{ID}")
+ @Select({"Select count(*) ", 
+	 " from ",  
+	  " utlzpollquestion,polltracker,utlzpoll ", 
+	 " where ", 
+	 " utlzpoll.ID=utlzpollquestion.pollId and ", 
+	 " polltracker.answeringMemberRoleId= #{memberRoleId} and ",
+	 " utlzpollquestion.ID!=polltracker.pollQuestionId  and ",
+	 " curdate() < utlzpoll.PollEndDate "})
     int getTotalQuestions(Integer id);
     
     
