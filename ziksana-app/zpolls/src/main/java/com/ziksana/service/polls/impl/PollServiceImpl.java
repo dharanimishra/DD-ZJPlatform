@@ -39,7 +39,7 @@ public class PollServiceImpl implements PollService {
 	 * @see com.ziksana.service.polls.PollService#getPoll(java.lang.Integer)
 	 */
 	@Override
-	public List<PollQuestion> getPoll(Integer memberRoleId) {
+	public List<PollQuestion> getUnansweredPollQuestions(Integer memberRoleId) {
 		logger.info("getPoll method is invoked");
 		return pollQuestionMapper.getPoll(memberRoleId);
 
@@ -52,7 +52,7 @@ public class PollServiceImpl implements PollService {
 	 * java.lang.Integer)
 	 */
 	@Override
-	public PollQuestionResponse answerPoll(Integer pollQuestionId,
+	public PollQuestionResponse answerPoll(Integer memberRoleId, Integer pollQuestionId,
 			Integer pollAnswerId) {
         logger.info("answerPoll method is invoked");
 		// Create pollquestionresponse object based on pollquestionid
@@ -63,7 +63,7 @@ public class PollServiceImpl implements PollService {
 	}
 
 	@Override
-	public int getTotalQuestions(Integer id) {
+	public int  getTotalUnansweredQuestions(Integer id) {
 		// TODO Auto-generated method stub
 		return pollQuestionMapper.getTotalQuestions(id);
 		

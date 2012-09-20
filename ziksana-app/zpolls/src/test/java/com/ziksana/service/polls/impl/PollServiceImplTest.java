@@ -35,7 +35,7 @@ public class PollServiceImplTest {
 	@Test
 	public void testGetPoll() {
 		
-		List<PollQuestion> pollQuestions = pollService.getPoll(new Integer(100));
+		List<PollQuestion> pollQuestions = pollService.getUnansweredPollQuestions(new Integer(101));
 		Assert.isTrue(pollQuestions.size() == 1);
 		System.out.println(" pollquestion question is "+pollQuestions.get(0).getQuestionText());
 			
@@ -44,7 +44,7 @@ public class PollServiceImplTest {
 	
 	@Test
 	public void testGetTotalQuestions() {
-		int totalQuestions = pollService.getTotalQuestions(new Integer(100));
+		int totalQuestions = pollService. getTotalUnansweredQuestions(new Integer(101));
 		Assert.isTrue(totalQuestions == 1, "total number of questions is not correct");
 	}
 	
