@@ -1,73 +1,25 @@
 package com.ziksana.service.course.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.member.MemberRole;
+import com.ziksana.persistence.course.CourseMapper;
+import com.ziksana.persistence.course.CoursePlaybookMapper;
+import com.ziksana.persistence.member.MemberMapper;
+import com.ziksana.persistence.member.MemberRoleMapper;
 import com.ziksana.service.course.CourseService;
 
 @Service
 public class CourseServiceImpl implements CourseService {
 
-	@Override
-	public Course getBaseCourseDetails(Course course) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Course> getListOfCourses(MemberRole memberRole) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public HashMap<String, List<String>> getCourseCatalog(Integer courseId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Course updateCourse(Course course) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean removeCourse(Course course) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public int saveOrUpdateCourse(Course course) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int saveOrUpdateCourseComponents(Course course) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Course modifyCourseProperties(Course course) {
-		// TODO Auto-generated method stub
-		return null;
-	}/*
-
 	@Autowired
 	public CourseMapper corCourseMapper;
-	@Autowired
-	public ProgrammCurriculumMapper corProgCurrMapper;
-	@Autowired
-	public LearningProgramMapper corAcademicProgramMapper;
-	@Autowired
-	public InstitutionMapper corInstitutionMapper;
 	@Autowired
 	public MemberRoleMapper memberRoleMapper;
 	@Autowired
@@ -79,19 +31,6 @@ public class CourseServiceImpl implements CourseService {
 		this.corCourseMapper = corCourseMapper;
 	}
 
-	public void setCorProgCurrMapper(ProgrammCurriculumMapper corProgCurrMapper) {
-		this.corProgCurrMapper = corProgCurrMapper;
-	}
-
-	public void setCorAcademicProgramMapper(
-			LearningProgramMapper corAcademicProgramMapper) {
-		this.corAcademicProgramMapper = corAcademicProgramMapper;
-	}
-
-	public void setCorInstitutionMapper(InstitutionMapper corInstitutionMapper) {
-		this.corInstitutionMapper = corInstitutionMapper;
-	}
-
 	public void setMemberRoleMapper(MemberRoleMapper memberRoleMapper) {
 		this.memberRoleMapper = memberRoleMapper;
 	}
@@ -99,10 +38,22 @@ public class CourseServiceImpl implements CourseService {
 	public void setMemberMapper(MemberMapper memberMapper) {
 		this.memberMapper = memberMapper;
 	}
+	
+	@Override
+	public Course getBaseCourseDetails(Course course) {
+		Course courseDetails = null;
 
+		Integer courseId = null;
 
+		courseId = course.getCourseId();
+
+		courseDetails = corCourseMapper.selectByPrimaryKey(courseId);
+
+		return courseDetails;
+	}
+
+	@Override
 	public List<Course> getListOfCourses(MemberRole memberRole) {
-		
 		List<Course> courseList = null;
 		
 		Integer memberRoleId = null;
@@ -116,21 +67,38 @@ public class CourseServiceImpl implements CourseService {
 		return courseList;
 	}
 
-	
-	public Course getBaseCourseDetails(Course course) {
-
-		Course courseDetails = null;
-
-		Integer courseId = null;
-
-		courseId = course.getCourseId();
-
-		courseDetails = corCourseMapper.selectByPrimaryKey(courseId);
-
-		return courseDetails;
+	@Override
+	public HashMap<String, List<String>> getCourseCatalog(Integer courseId) {
+		return null;
 	}
 
-	
+	@Override
+	public Course updateCourse(Course course) {
+		return null;
+	}
+
+	@Override
+	public boolean removeCourse(Course course) {
+		return false;
+	}
+
+	@Override
+	public int saveOrUpdateCourse(Course course) {
+		return 0;
+	}
+
+	@Override
+	public int saveOrUpdateCourseComponents(Course course) {
+		return 0;
+	}
+
+	@Override
+	public Course modifyCourseProperties(Course course) {
+		return null;
+	}/*
+
+
+
 	@Transactional(propagation = Propagation.REQUIRED, rollbackForClassName = "corCourseMapper")
 	public int createCourse(Course course) {
 		System.out.println("Entering into createm method in service ");
@@ -299,29 +267,13 @@ public class CourseServiceImpl implements CourseService {
 		return catalogMap;
 	}
 
-	public Course updateCourse(Course course) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean removeCourse(Course course) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	public int saveOrUpdateCourse(Course course) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public int saveOrUpdateCourseComponents(Course course) {
-		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	public Course modifyCourseProperties(Course course) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 */}

@@ -6,32 +6,32 @@ import com.ziksana.service.course.LearningProgramService;
 public class LearningProgramServiceImpl implements LearningProgramService {/*
 
 	@Override
-	public AcademicProgramDTO getAcademicProgramDetails() {
+	public AcademicProgram getAcademicProgramDetails() {
 
 		
 		return null;
 	}
 
 	@Override
-	public List<AcademicProgramDTO> getListOfAcademicPrograms() {
+	public List<AcademicProgram> getListOfAcademicPrograms() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AcademicProgramDTO addAcademicProgram() {
+	public AcademicProgram addAcademicProgram() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AcademicProgramDTO updateAcademicProgram() {
+	public AcademicProgram updateAcademicProgram() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AcademicProgramDTO removeAcademicProgram() {
+	public AcademicProgram removeAcademicProgram() {
 		// TODO Auto-generated method stub
 		return null;
 	}
