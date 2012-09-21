@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class LearningContent implements Serializable {
 	/**
@@ -88,7 +89,7 @@ public class LearningContent implements Serializable {
 	 */
 	private Integer linkedLearningContentId;
 
-	// private List<ContentParts> corlearningcontentParts;
+	private List<LearningContentParts> learningContentParts;
 
 	/**
 	 * This method returns the value of the database column
@@ -374,5 +375,19 @@ public class LearningContent implements Serializable {
 	 */
 	public void setLinkedLearningContentId(Integer linkedLearningContentId) {
 		this.linkedLearningContentId = linkedLearningContentId;
+	}
+
+	/**
+	 * @return the learningContentParts
+	 */
+	public List<LearningContentParts> getLearningContentParts() {
+		return learningContentParts;
+	}
+
+	/**
+	 * @param learningContentParts the learningContentParts to set
+	 */
+	public void setLearningContentParts(List<LearningContentParts> learningContentParts) {
+		this.learningContentParts = learningContentParts;
 	}
 }

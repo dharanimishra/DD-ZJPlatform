@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.LearningContentPartsMapper">
+	<resultMap id="BaseResultMap" type="com.ziksana.domain.course.LearningContentParts">
+		<id column="contentPartsId" property="contentPartsId" jdbcType="INTEGER" />
+		<result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" />
+		<result column="PartPath" property="partPath" jdbcType="VARCHAR" />
+		<result column="PartSequence" property="partSequence" jdbcType="INTEGER" />
+		<result column="LearningContentId" property="learningContentId" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		contentpartsid, creationdate, partpath, partsequence, learningcontentid
+	</sql>
+	<insert id="insertSelective" parameterType="com.ziksana.domain.course.LearningContentParts">
+		insert into corlearningcontentparts
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			contentPartsId,
+			<if test="creationDate != null">
+				CreationDate,
+			</if>
+			<if test="partPath != null">
+				PartPath,
+			</if>
+			<if test="partSequence != null">
+				PartSequence,
+			</if>
+			<if test="learningContentId != null">
+				LearningContentId,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			#{contentPartsId,jdbcType=INTEGER},
+			<if test="creationDate != null">
+				#{creationDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="partPath != null">
+				#{partPath,jdbcType=VARCHAR},
+			</if>
+			<if test="partSequence != null">
+				#{partSequence,jdbcType=INTEGER},
+			</if>
+			<if test="learningContentId != null">
+				#{learningContentId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ziksana.domain.course.LearningContentParts">
+		update corlearningcontentparts
+		<set>
+			<if test="creationDate != null">
+				CreationDate = #{creationDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="partPath != null">
+				PartPath = #{partPath,jdbcType=VARCHAR},
+			</if>
+			<if test="partSequence != null">
+				PartSequence = #{partSequence,jdbcType=INTEGER},
+			</if>
+			
+			<if test="learningContentId != null">
+				LearningContentId = #{learningContentId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where contentPartsId = #{contentPartsId,jdbcType=INTEGER}
+	</update>
+</mapper>

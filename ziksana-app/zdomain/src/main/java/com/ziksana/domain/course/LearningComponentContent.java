@@ -50,6 +50,8 @@ public class LearningComponentContent implements Serializable{
 	 * corlearningcomponentcontent.ContentVersionUsed
 	 */
 	private Integer contentVersionUsed;
+	
+	private LearningContent learningContent;
 
 	/**
 	 * This method returns the value of the database column
@@ -183,6 +185,20 @@ public class LearningComponentContent implements Serializable{
 	 */
 	public void setContentVersionUsed(Integer contentVersionUsed) {
 		this.contentVersionUsed = contentVersionUsed;
+	}
+
+	/**
+	 * @return the learningContent
+	 */
+	public LearningContent getLearningContent() {
+		return learningContent;
+	}
+
+	/**
+	 * @param learningContent the learningContent to set
+	 */
+	public void setLearningContent(LearningContent learningContent) {
+		this.learningContent = learningContent;
 	}
 
 }

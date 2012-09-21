@@ -13,40 +13,19 @@ import com.ziksana.domain.course.Course;
 public interface CourseMapper {
 
 	/**
-	 * . This method corresponds to the database table corcourse
+	 * This method corresponds to the database table corcourse
 	 */
-	@Delete({ "delete from corcourse", "where CourseId = #{CourseId,jdbcType=INTEGER}" })
+	@Delete({ "delete from corcourse",
+			"where CourseId = #{CourseId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer CourseId);
 
 	/**
-	 * . This method corresponds to the database table corcourse
-	 */
-	@Insert({
-			"insert into corcourse ( Name, ",
-			"CourseIdentifier, Description, ",
-			"ValidFrom, ValidTo, CourseStatus, ",
-			"Rating, ContentSecurityNeededIndicator, ",
-			"CourseWeightage, TotalCredits, ",
-			"ExtraCreditsIndicator, ExtraCredits, ",
-			"AdditionalPropertyIndicator, CourseDuration,ThumbnailPicturePath, TemplateIndicator, Version, MemberRoleId,SubjClassificationId)",
-			"values (#{name,jdbcType=VARCHAR}, ",
-			"#{courseIdentifier,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, ",
-			"#{ValidFrom,jdbcType=DATE}, #{ValidTo,jdbcType=DATE}, #{courseStatus,jdbcType=INTEGER}, ",
-			"#{rating,jdbcType=INTEGER}, #{contentSecurityNeededIndicator,jdbcType=BIT}, ",
-			"#{courseWeightage,jdbcType=INTEGER}, #{totalCredits,jdbcType=VARCHAR}, ",
-			"#{extraCreditsIndicator,jdbcType=BIT}, #{extraCredits,jdbcType=VARCHAR}, ",
-			"#{additionalPropertyIndicator,jdbcType=BIT}, #{courseDuration,jdbcType=INTEGER},#{thumbnailPicturePath,jdbcType=VARCHAR}, ",
-			"#{templateIndicator,jdbcType=TINYINT},  #{version,jdbcType=INTEGER}, #{memberRoleId,jdbcType=INTEGER},",
-			"#{SubjClassificationId,jdbcType=INTEGER})" })
-	int insert(Course record);
-
-	/**
-	 * . This method corresponds to the database table corcourse
+	 * This method corresponds to the database table corcourse
 	 */
 	int insertSelective(Course record);
 
 	/**
-	 * . This method corresponds to the database table corcourse
+	 * This method corresponds to the database table corcourse
 	 */
 	@Select({
 			"select",
@@ -59,12 +38,26 @@ public interface CourseMapper {
 	Course selectByPrimaryKey(Integer CourseId);
 
 	/**
-	 * . This method corresponds to the database table corcourse
+	 * This method corresponds to the database table corcourse
 	 */
 	int updateByPrimaryKeySelective(Course record);
 
+	@Select({
+			"select",
+			"courseid, name, courseidentifier, description, ValidFrom, ValidTo, coursestatus, rating, ",
+			"contentsecurityneededindicator, courseweightage, totalcredits, extracreditsindicator, ",
+			"extracredits, additionalpropertyindicator, courseduration, ",
+			"thumbnailpicturepath, templateindicator, version, memberroleid, ",
+			"subjclassificationid ",
+			"from corcourse where memberroleid = #{memberRoleId,jdbcType=INTEGER}" })
+	@ResultMap("BaseResultMap")
+	List<Course> getListOfCourses(Integer memberRoleId);
+
+	Course getCourseCatalog(Integer courseId);
+
 	/**
-	 * . This method corresponds to the database table corcourse
+	 * This method will modifies the course information to database table
+	 * corcourse
 	 */
 	@Update({
 			"update corcourse",
@@ -88,19 +81,55 @@ public interface CourseMapper {
 			"MemberRoleId={memberRoleId,jdbcType=INTEGER},",
 			"SubjClassificationId = #{subjClassificationId,jdbcType=INTEGER} ",
 			"where CourseId = #{courseId,jdbcType=INTEGER}" })
-	int updateByPrimaryKey(Course record);
+	Course updateCourse(Course course);
 
+	
+	/**
+	 * This method saves the course information to corcourse table
+	 */
+	@Insert({
+			"insert into corcourse ( Name, ",
+			"CourseIdentifier, Description, ",
+			"ValidFrom, ValidTo, CourseStatus, ",
+			"Rating, ContentSecurityNeededIndicator, ",
+			"CourseWeightage, TotalCredits, ",
+			"ExtraCreditsIndicator, ExtraCredits, ",
+			"AdditionalPropertyIndicator, CourseDuration,ThumbnailPicturePath, TemplateIndicator, Version, MemberRoleId,SubjClassificationId)",
+			"values (#{name,jdbcType=VARCHAR}, ",
+			"#{courseIdentifier,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, ",
+			"#{ValidFrom,jdbcType=DATE}, #{ValidTo,jdbcType=DATE}, #{courseStatus,jdbcType=INTEGER}, ",
+			"#{rating,jdbcType=INTEGER}, #{contentSecurityNeededIndicator,jdbcType=BIT}, ",
+			"#{courseWeightage,jdbcType=INTEGER}, #{totalCredits,jdbcType=VARCHAR}, ",
+			"#{extraCreditsIndicator,jdbcType=BIT}, #{extraCredits,jdbcType=VARCHAR}, ",
+			"#{additionalPropertyIndicator,jdbcType=BIT}, #{courseDuration,jdbcType=INTEGER},#{thumbnailPicturePath,jdbcType=VARCHAR}, ",
+			"#{templateIndicator,jdbcType=TINYINT},  #{version,jdbcType=INTEGER}, #{memberRoleId,jdbcType=INTEGER},",
+			"#{SubjClassificationId,jdbcType=INTEGER})" })
+	Course saveCourse(Course course);
+
+
+	/**
+	 * This method will retrieves the course learning components and its
+	 * contents from the database.
+	 * @param course
+	 * @return
+	 */
+	@ResultMap("CourseTreeMap")
+	Course getCourseComponents(Course course);
+	
+	
+	/**
+	 * This method will retrieves the list of courses by Member's(memberroleid).
+	 * @param course
+	 * @return
+	 */
 	@Select({
-			"select",
-			"courseid, name, courseidentifier, description, ValidFrom, ValidTo, coursestatus, rating, ",
-			"contentsecurityneededindicator, courseweightage, totalcredits, extracreditsindicator, ",
-			"extracredits, additionalpropertyindicator, courseduration, ",
-			"thumbnailpicturepath, templateindicator, version, memberroleid, ",
-			"subjclassificationid ",
-			"from corcourse where memberroleid = #{memberRoleId,jdbcType=INTEGER}" })
+		"select",
+		"courseid, name, courseidentifier, description, validfrom, validto, coursestatus, rating, ",
+		"contentsecurityneededindicator, courseweightage, totalcredits, extracreditsindicator, ",
+		"extracredits, additionalpropertyindicator, courseduration, ",
+		"thumbnailpicturepath, templateindicator, version, memberroleid, subjclassificationid ",
+		" from corcourse where memberroleid = #{memberRoleId,jdbcType=INTEGER}" })
 	@ResultMap("BaseResultMap")
-	List<Course> getListOfCourses(Integer memberRoleId);
-
-	Course getCourseCatalog(Integer courseId);
+	Course getCoursesByMemberRole(Integer memberRoleId);
 
 }
