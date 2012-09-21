@@ -25,7 +25,7 @@ import com.ziksana.service.polls.PollService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class PollServiceImplTest {
-
+        
 	@Autowired
     private PollService pollService;
 	
