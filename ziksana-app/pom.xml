@@ -18,6 +18,7 @@
 		<module>zdomain</module>
 		<module>zpolls</module>
 		<module>zsample</module>
+		<module>zassessment</module>
 	</modules>
 
 	<properties>
