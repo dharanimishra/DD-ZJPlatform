@@ -31,6 +31,11 @@ public class LearningContent implements Serializable {
 	 * corlearningcontent.ContentType
 	 */
 	private Integer contentType;
+	
+	/**
+	 * This attribute hold the description for attribute contentType
+	 */
+	private String contentTypesDesc;
 
 	/**
 	 * This field corresponds to the database column
@@ -389,5 +394,19 @@ public class LearningContent implements Serializable {
 	 */
 	public void setLearningContentParts(List<LearningContentParts> learningContentParts) {
 		this.learningContentParts = learningContentParts;
+	}
+
+	/**
+	 * @return the contentTypesDesc
+	 */
+	public String getContentTypesDesc() {
+		return contentTypesDesc;
+	}
+
+	/**
+	 * @param contentTypesDesc the contentTypesDesc to set
+	 */
+	public void setContentTypesDesc(String contentTypesDesc) {
+		this.contentTypesDesc = contentTypesDesc;
 	}
 }

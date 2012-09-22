@@ -1,7 +1,6 @@
 package com.ziksana.domain.course;
 
 import java.util.Date;
-import java.util.List;
 
 public class LearningComponent {
 
@@ -24,6 +23,12 @@ public class LearningComponent {
 	 * This field corresponds property CourseStatus
 	 */
 	private Integer courseStatus;
+
+
+	/**
+	 * Description of the course status attribute
+	 */
+	private String courseStatusDesc;
 
 	/**
 	 * This field corresponds property Weightage
@@ -53,7 +58,7 @@ public class LearningComponent {
 	/**
 	 * This field corresponds property memberRoleId
 	 */
-	private Integer memberRoleId;
+	private Integer authorMemberPersonaId;
 
 	/**
 	 * This field corresponds property subjClassificationId
@@ -65,81 +70,12 @@ public class LearningComponent {
 	 */
 	private String extraCredits;
 
-	private List<LearningComponentNest> learningComponentNestList;
-
-	/*
-	 * private List<CoursePlaybookView> coursePlaybookViewList;
-	 * 
-	 * private CourseLearningComponent courseLearningComponent;
-	 * 
-	 * private List<LearningElementWall> learningElementWallList;
-	 */
 
 	/**
-	 * The attributes(componentNestId, parentLearningComponentId,
-	 * nestLearningComponentId) need to add for tree construction.
-	 * Eg: LearningComponetId:100, having a child of another Learningcomponentid:200
-	 *  componentNestId : 1      , parentLearningComponentId : null  , nestLearningComponentId : 100
-	 *  componentNestId : 2      , parentLearningComponentId : 100  ,  nestLearningComponentId : 200
-	 * @param learningComponentNest
+	 * The Object contains the more information(associations, compositions) about LearningComponent
 	 */
-	public void addLearningComponentNest(
-			LearningComponentNest learningComponentNest) {
-
-		if (learningComponentNest != null
-				&& learningComponentNest.getComponentNestId() != null) {
-			learningComponentNestList.add(learningComponentNest);
-		}
-	}
-
-	/**
-	 * Association for the Learning component content. Each LearningComponent
-	 * can have association of one - to - many with LearningComponentContent.
-	 */
-	private List<LearningComponentContent> learningCompContentList;
-
-	/**
-	 * Constructor is for constructing the specific attributes.
-	 * 
-	 * @param learningComponentId
-	 * @param learningComponentTypeId
-	 */
-	public LearningComponent(Integer learningComponentId,
-			Integer learningComponentTypeId) {
-		this.learningComponentId = learningComponentId;
-		this.learningComponentTypeId = learningComponentTypeId;
-	}
-
-	/**
-	 * @param learningComponent
-	 */
-	public void addLearningComponentContent(
-			LearningComponentContent learningComponentContent) {
-
-		if (learningComponentContent != null
-				&& learningComponentContent.getLearningComponentContentId() != null) {
-
-			learningCompContentList.add(learningComponentContent);
-		}
-	}
-
-	/**
-	 * @param learningComponentId
-	 */
-	public void removeLearningComponentContent(
-			Integer learningComponentContentId) {
-
-		for (LearningComponentContent learningComponentContent : learningCompContentList) {
-
-			if (learningComponentContent.getLearningComponentContentId()
-					.equals(learningComponentContentId)) {
-				learningCompContentList.remove(learningComponentContent);
-			}
-
-		}
-
-	}
-
+	private LearningComponentDetails learningComponentDetails;
+	
 	/**
 	 * This method returns the value of the database column property
 	 * learningComponentId
@@ -315,21 +251,6 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @return the memberRoleId
-	 */
-	public Integer getMemberRoleId() {
-		return memberRoleId;
-	}
-
-	/**
-	 * @param memberRoleId
-	 *            the memberRoleId to set
-	 */
-	public void setMemberRoleId(Integer memberRoleId) {
-		this.memberRoleId = memberRoleId;
-	}
-
-	/**
 	 * @return the subjClassificationId
 	 */
 	public Integer getSubjClassificationId() {
@@ -360,81 +281,45 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @return the learningComponentNestList
+	 * @return the courseStatusDesc
 	 */
-	public List<LearningComponentNest> getLearningComponentNestList() {
-		return learningComponentNestList;
+	public String getCourseStatusDesc() {
+		return courseStatusDesc;
 	}
 
 	/**
-	 * @param learningComponentNestList
-	 *            the learningComponentNestList to set
+	 * @param courseStatusDesc the courseStatusDesc to set
 	 */
-	public void addLearningComponentNestList(
-			List<LearningComponentNest> learningComponentNestList) {
-		this.learningComponentNestList = learningComponentNestList;
-	}
-
-	/*	*//**
-	 * @return the coursePlaybookViewList
-	 */
-	/*
-	 * public List<CoursePlaybookView> getCoursePlaybookViewList() { return
-	 * coursePlaybookViewList; }
-	 */
-	/*
-	*//**
-	 * @param coursePlaybookViewList
-	 *            the coursePlaybookViewList to set
-	 */
-	/*
-	 * public void addCoursePlaybookViewList( List<CoursePlaybookView>
-	 * coursePlaybookViewList) { this.coursePlaybookViewList =
-	 * coursePlaybookViewList; }
-	 *//**
-	 * @return the courseLearningComponent
-	 */
-	/*
-	 * public CourseLearningComponent getCourseLearningComponent() { return
-	 * courseLearningComponent; }
-	 *//**
-	 * @param courseLearningComponent
-	 *            the courseLearningComponent to set
-	 */
-	/*
-	 * public void addCourseLearningComponent( CourseLearningComponent
-	 * courseLearningComponent) { this.courseLearningComponent =
-	 * courseLearningComponent; }
-	 */
-	/**
-	 * @return the learningCompContentList
-	 */
-	public List<LearningComponentContent> getLearningCompContentList() {
-		return learningCompContentList;
+	public void setCourseStatusDesc(String courseStatusDesc) {
+		this.courseStatusDesc = courseStatusDesc;
 	}
 
 	/**
-	 * @param learningCompContentList
-	 *            the learningCompContentList to set
+	 * @return the authorMemberPersonaId
 	 */
-	public void addLearningCompContentList(
-			List<LearningComponentContent> learningCompContentList) {
-		this.learningCompContentList = learningCompContentList;
+	public Integer getAuthorMemberPersona() {
+		return authorMemberPersonaId;
 	}
 
-	/*	*//**
-	 * @return the learningElementWallList
+	/**
+	 * @param authorMemberPersonaId the authorMemberPersonaId to set
 	 */
-	/*
-	 * public List<LearningElementWall> getLearningElementWallList() { return
-	 * learningElementWallList; }
-	 *//**
-	 * @param learningElementWallList
-	 *            the learningElementWallList to set
+	public void setAuthorMemberPersona(Integer authorMemberPersonaId) {
+		this.authorMemberPersonaId = authorMemberPersonaId;
+	}
+
+	/**
+	 * @return the learningComponentDetails
 	 */
-	/*
-	 * public void addLearningElementWallList( List<LearningElementWall>
-	 * learningElementWallList) { this.learningElementWallList =
-	 * learningElementWallList; }
+	public LearningComponentDetails getLearningComponentDetails() {
+		return learningComponentDetails;
+	}
+
+	/**
+	 * @param learningComponentDetails the learningComponentDetails to set
 	 */
+	public void setLearningComponentDetails(LearningComponentDetails learningComponentDetails) {
+		this.learningComponentDetails = learningComponentDetails;
+	}
+
 }
