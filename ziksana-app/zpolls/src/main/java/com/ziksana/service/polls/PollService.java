@@ -11,6 +11,8 @@ import com.ziksana.domain.polls.Poll;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionNResult;
 import com.ziksana.domain.polls.PollQuestionResponse;
+import com.ziksana.domain.polls.PollResponse;
+import com.ziksana.domain.polls.PollResult;
 
 /**
  * @author prabu
@@ -19,13 +21,20 @@ import com.ziksana.domain.polls.PollQuestionResponse;
 public interface PollService {
 	
 	public List<PollQuestion>  getUnansweredPollQuestions(Integer memberRoleId);
-	
+		
 	
 	public PollQuestionResponse answerPoll(Integer memberRoleId, Integer pollQuestionId, Integer pollAnswerId);
  	
 	public int getTotalUnansweredQuestions(Integer memberRoleId);
 	
+	
+	
 	public List<PollQuestionNResult> getPollQuestionsAndResults(Member memberPersona);
+	
+	
+	public void  pollResponse(Member memberPersona,PollResponse pollResponse);
+	
+	public PollResult getPollResult(Member memberPersona, PollQuestion pollQuestion);
 	
 	
 }

@@ -13,6 +13,8 @@ import com.ziksana.domain.member.Member;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionNResult;
 import com.ziksana.domain.polls.PollQuestionResponse;
+import com.ziksana.domain.polls.PollResponse;
+import com.ziksana.domain.polls.PollResult;
 
 import com.ziksana.persistence.polls.PollMapper;
 import com.ziksana.persistence.polls.PollQuestionMapper;
@@ -74,6 +76,25 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public List<PollQuestionNResult> getPollQuestionsAndResults(
 			Member memberPersona) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ziksana.service.polls.PollService#pollResponse(com.ziksana.domain.member.Member, com.ziksana.domain.polls.PollResponse)
+	 */
+	@Override
+	public void pollResponse(Member memberPersona, PollResponse pollResponse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ziksana.service.polls.PollService#getPollResult(com.ziksana.domain.member.Member, com.ziksana.domain.polls.PollQuestion)
+	 */
+	@Override
+	public PollResult getPollResult(Member memberPersona,
+			PollQuestion pollQuestion) {
 		// TODO Auto-generated method stub
 		return null;
 	}
