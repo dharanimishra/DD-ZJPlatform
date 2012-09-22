@@ -6,10 +6,18 @@ public class PollQuestion {
 	
 	private Poll poll;
 	  
-	  
-	  
-    
+	    
+	
     private Integer ID;
+
+    
+    private Integer creatorMemberRoleId;
+
+    
+    private Integer pollId;
+
+    
+    private Integer questionType;
 
     
     private Boolean active;
@@ -42,17 +50,48 @@ public class PollQuestion {
         this.ID = ID;
     }
 
-   
+    
+    public Integer getCreatorMemberRoleId() {
+        return creatorMemberRoleId;
+    }
+
+    
+    public void setCreatorMemberRoleId(Integer creatorMemberRoleId) {
+        this.creatorMemberRoleId = creatorMemberRoleId;
+    }
+
+    
+    public Integer getPollId() {
+        return pollId;
+    }
+
+    
+    public void setPollId(Integer pollId) {
+        this.pollId = pollId;
+    }
+
+    
+    public Integer getQuestionType() {
+        return questionType;
+    }
+
+    
+    public void setQuestionType(Integer questionType) {
+        this.questionType = questionType;
+    }
+
+    
     public Boolean getActive() {
         return active;
     }
 
-   
+    
     public void setActive(Boolean active) {
         this.active = active;
     }
 
-       public String getQuestionText() {
+    
+    public String getQuestionText() {
         return questionText;
     }
 
@@ -71,8 +110,7 @@ public class PollQuestion {
         this.answer1 = answer1 == null ? null : answer1.trim();
     }
 
-    
-    public String getAnswer2() {
+        public String getAnswer2() {
         return answer2;
     }
 
@@ -81,7 +119,8 @@ public class PollQuestion {
         this.answer2 = answer2 == null ? null : answer2.trim();
     }
 
-        public String getAnswer3() {
+    
+    public String getAnswer3() {
         return answer3;
     }
 
@@ -109,20 +148,22 @@ public class PollQuestion {
     public void setAnswer5(String answer5) {
         this.answer5 = answer5 == null ? null : answer5.trim();
     }
-    
-    
-    
-   	public Poll getPoll() {
-   		return poll;
-   	}
 
-   	
-   	public void setPoll(Poll poll) {
-   		this.poll = poll;
-   	}
 
-    
-    
+	/**
+	 * @return the poll
+	 */
+	public Poll getPoll() {
+		return poll;
+	}
+
+
+	/**
+	 * @param poll the poll to set
+	 */
+	public void setPoll(Poll poll) {
+		this.poll = poll;
+	}   
     
     
     
