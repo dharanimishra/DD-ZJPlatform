@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.member.Member;
+import com.ziksana.domain.polls.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionNResult;
 import com.ziksana.domain.polls.PollQuestionResponse;
@@ -75,7 +76,7 @@ public class PollServiceImpl implements PollService {
 
 	@Override
 	public List<PollQuestionNResult> getPollQuestionsAndResults(
-			Member memberPersona) {
+			MemberPersona memberPersona) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -84,7 +85,7 @@ public class PollServiceImpl implements PollService {
 	 * @see com.ziksana.service.polls.PollService#pollResponse(com.ziksana.domain.member.Member, com.ziksana.domain.polls.PollResponse)
 	 */
 	@Override
-	public void pollResponse(Member memberPersona, PollResponse pollResponse) {
+	public void pollResponse(MemberPersona memberPersona, PollResponse pollResponse) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -93,7 +94,7 @@ public class PollServiceImpl implements PollService {
 	 * @see com.ziksana.service.polls.PollService#getPollResult(com.ziksana.domain.member.Member, com.ziksana.domain.polls.PollQuestion)
 	 */
 	@Override
-	public PollResult getPollResult(Member memberPersona,
+	public PollResult getPollResult(MemberPersona memberPersona,
 			PollQuestion pollQuestion) {
 		// TODO Auto-generated method stub
 		return null;
