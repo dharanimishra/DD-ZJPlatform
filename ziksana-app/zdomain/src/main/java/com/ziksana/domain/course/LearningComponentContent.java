@@ -26,12 +26,22 @@ public class LearningComponentContent implements Serializable{
 	 * corlearningcomponentcontent.CourseStatus
 	 */
 	private Integer courseStatus;
+	
+	/**
+	 * This attribute hold the description for attribute courseStatus
+	 */
+	private String courseStatusDesc;
 
 	/**
 	 * This field corresponds to the database column
 	 * corlearningcomponentcontent.ContentType
 	 */
 	private Integer contentType;
+	
+	/**
+	 * This attribute hold the description for attribute contentType
+	 */
+	private String contentTypesDesc;
 
 	/**
 	 * This field corresponds to the database column
@@ -50,9 +60,14 @@ public class LearningComponentContent implements Serializable{
 	 * corlearningcomponentcontent.ContentVersionUsed
 	 */
 	private Integer contentVersionUsed;
-	
-	private LearningContent learningContent;
 
+	
+	/**
+	 * Contains the information about associations/composition and more information
+	 */
+	private LearrningComponentContentDetails  learrningComponentContentDetails;
+	
+	
 	/**
 	 * This method returns the value of the database column
 	 * corlearningcomponentcontent.learningComponentContentId
@@ -188,17 +203,46 @@ public class LearningComponentContent implements Serializable{
 	}
 
 	/**
-	 * @return the learningContent
+	 * @return the courseStatusDesc
 	 */
-	public LearningContent getLearningContent() {
-		return learningContent;
+	public String getCourseStatusDesc() {
+		return courseStatusDesc;
 	}
 
 	/**
-	 * @param learningContent the learningContent to set
+	 * @param courseStatusDesc the courseStatusDesc to set
 	 */
-	public void setLearningContent(LearningContent learningContent) {
-		this.learningContent = learningContent;
+	public void setCourseStatusDesc(String courseStatusDesc) {
+		this.courseStatusDesc = courseStatusDesc;
+	}
+
+	/**
+	 * @return the contentTypesDesc
+	 */
+	public String getContentTypesDesc() {
+		return contentTypesDesc;
+	}
+
+	/**
+	 * @param contentTypesDesc the contentTypesDesc to set
+	 */
+	public void setContentTypesDesc(String contentTypesDesc) {
+		this.contentTypesDesc = contentTypesDesc;
+	}
+
+	/**
+	 * @return the learrningComponentContentDetails
+	 */
+	public LearrningComponentContentDetails getLearrningComponentContentDetails() {
+		return learrningComponentContentDetails;
+	}
+
+	/**
+	 * @param learrningComponentContentDetails the learrningComponentContentDetails to set
+	 */
+	public void setLearrningComponentContentDetails(
+			LearrningComponentContentDetails learrningComponentContentDetails) {
+		this.learrningComponentContentDetails = learrningComponentContentDetails;
 	}
 
 }
