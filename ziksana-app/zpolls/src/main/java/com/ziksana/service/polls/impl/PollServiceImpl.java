@@ -9,7 +9,9 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.ziksana.domain.member.Member;
 import com.ziksana.domain.polls.PollQuestion;
+import com.ziksana.domain.polls.PollQuestionNResult;
 import com.ziksana.domain.polls.PollQuestionResponse;
 
 import com.ziksana.persistence.polls.PollMapper;
@@ -68,5 +70,15 @@ public class PollServiceImpl implements PollService {
 		return pollQuestionMapper.getTotalQuestions(id);
 		
 	}
+
+	@Override
+	public List<PollQuestionNResult> getPollQuestionsAndResults(
+			Member memberPersona) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
 
 }
