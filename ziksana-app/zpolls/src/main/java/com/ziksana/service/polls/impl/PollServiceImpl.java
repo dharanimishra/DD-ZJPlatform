@@ -10,10 +10,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.member.Member;
-import com.ziksana.domain.polls.MemberPersona;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionNResult;
-import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollResponse;
 import com.ziksana.domain.polls.PollResult;
 
@@ -50,23 +49,8 @@ public class PollServiceImpl implements PollService {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.ziksana.service.polls.PollService#answerPoll(java.lang.Integer,
-	 * java.lang.Integer)
-	 */
-	@Override
-	public PollQuestionResponse answerPoll(Integer memberRoleId, Integer pollQuestionId,
-			Integer pollAnswerId) {
-        logger.info("answerPoll method is invoked");
-		// Create pollquestionresponse object based on pollquestionid
-		PollQuestionResponse pollQuestionResponse = new PollQuestionResponse();
-		pollQuestionResponseMapper.updateByPrimaryKey(pollQuestionResponse);
-		// TODO Auto-generated method stub
-		return pollQuestionResponse;
-	}
-
+	
+	
 	@Override
 	public int  getTotalUnansweredQuestions(Integer id) {
 		// TODO Auto-generated method stub

@@ -7,11 +7,10 @@ import java.util.Date;
 import java.util.List;
 
 import com.ziksana.domain.member.Member;
-import com.ziksana.domain.polls.MemberPersona;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.Poll;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionNResult;
-import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollResponse;
 import com.ziksana.domain.polls.PollResult;
 
@@ -33,8 +32,6 @@ public interface PollService {
 	
     public List<PollQuestion>  getUnansweredPollQuestions(Integer memberRoleId);
 		
-	
-	public PollQuestionResponse answerPoll(Integer memberRoleId, Integer pollQuestionId, Integer pollAnswerId);
  	
 	public int getTotalUnansweredQuestions(Integer memberRoleId);
 	
