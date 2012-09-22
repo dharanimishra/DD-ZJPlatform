@@ -11,7 +11,9 @@ public class PollQuestionNResult {
 	    
 	    private PollQuestion pollQuestion;
 	    private PollResult pollResult;
-		/**
+	    private MemberPersona memberPersona;
+		
+	    /**
 		 * @return the pollQuestion
 		 */
 		public PollQuestion getPollQuestion() {
