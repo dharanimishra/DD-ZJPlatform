@@ -10,7 +10,7 @@ package com.ziksana.domain.polls;
 public class PollResult {
 	
 	
-	private PollQuestion pollQUestion;
+	private PollQuestion pollQuestion;
 	
 	
 	
@@ -108,14 +108,14 @@ public class PollResult {
 	 * @return the pollQUestion
 	 */
 	public PollQuestion getPollQUestion() {
-		return pollQUestion;
+		return pollQuestion;
 	}
 
 	/**
 	 * @param pollQUestion the pollQUestion to set
 	 */
-	public void setPollQUestion(PollQuestion pollQUestion) {
-		this.pollQUestion = pollQUestion;
+	public void setPollQUestion(PollQuestion pollQuestion) {
+		this.pollQuestion = pollQuestion;
 	}
 	
 	
