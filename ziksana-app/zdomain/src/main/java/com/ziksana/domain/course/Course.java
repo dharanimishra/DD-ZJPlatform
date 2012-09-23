@@ -122,26 +122,29 @@ public class Course {
 	 * This field corresponds to the property Version
 	 */
 	private Integer version;
-	
-	/**This field corresponds to the property createdBy { User who creates }
-	 */
-	private String createdBy;
-	
-	/**This field corresponds to the property createdOn { Creation Date)
-	 */
-	private Date createdOn;
-	
-	/**This field corresponds to the property createdBy {User who modified  }
-	 */
-	private String modifiedBy;
-	
-	/**This field corresponds to the property createdBy { modified date}
-	 */
-	private Date modifiedOn;
-	
 
 	/**
-	 * This method returns the value of the property Name 
+	 * This field corresponds to the property createdBy { User who creates }
+	 */
+	private String createdBy;
+
+	/**
+	 * This field corresponds to the property createdOn { Creation Date)
+	 */
+	private Date createdOn;
+
+	/**
+	 * This field corresponds to the property createdBy {User who modified }
+	 */
+	private String modifiedBy;
+
+	/**
+	 * This field corresponds to the property createdBy { modified date}
+	 */
+	private Date modifiedOn;
+
+	/**
+	 * This method returns the value of the property Name
 	 * 
 	 * @return the value of attribute Name
 	 */
@@ -401,7 +404,8 @@ public class Course {
 	}
 
 	/**
-	 * @param createdBy the createdBy to set
+	 * @param createdBy
+	 *            the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
@@ -415,7 +419,8 @@ public class Course {
 	}
 
 	/**
-	 * @param createdOn the createdOn to set
+	 * @param createdOn
+	 *            the createdOn to set
 	 */
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
@@ -429,7 +434,8 @@ public class Course {
 	}
 
 	/**
-	 * @param modifiedBy the modifiedBy to set
+	 * @param modifiedBy
+	 *            the modifiedBy to set
 	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
@@ -443,7 +449,8 @@ public class Course {
 	}
 
 	/**
-	 * @param modifiedOn the modifiedOn to set
+	 * @param modifiedOn
+	 *            the modifiedOn to set
 	 */
 	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;

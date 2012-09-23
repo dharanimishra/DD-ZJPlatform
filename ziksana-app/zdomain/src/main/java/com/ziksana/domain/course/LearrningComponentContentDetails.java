@@ -9,18 +9,17 @@ import java.util.List;
  * @author bhashasp
  */
 public class LearrningComponentContentDetails {
-	
 
 	private Integer learningComponentId;
-	
+
 	private Integer SynchronizeWithVideoId;
-	
+
 	private Integer baseLearningContentId;
-	
+
 	private LearningContent learningContent;
-	
+
 	private List<LearningComponentContentEnrichment> enrichmentList;
-	
+
 	private List<LearningComponentContentBookmark> bookmarkList;
 
 	/**
@@ -31,7 +30,8 @@ public class LearrningComponentContentDetails {
 	}
 
 	/**
-	 * @param learningComponentId the learningComponentId to set
+	 * @param learningComponentId
+	 *            the learningComponentId to set
 	 */
 	public void setLearningComponentId(Integer learningComponentId) {
 		this.learningComponentId = learningComponentId;
@@ -45,7 +45,8 @@ public class LearrningComponentContentDetails {
 	}
 
 	/**
-	 * @param synchronizeWithVideoId the synchronizeWithVideoId to set
+	 * @param synchronizeWithVideoId
+	 *            the synchronizeWithVideoId to set
 	 */
 	public void setSynchronizeWithVideoId(Integer synchronizeWithVideoId) {
 		SynchronizeWithVideoId = synchronizeWithVideoId;
@@ -59,7 +60,8 @@ public class LearrningComponentContentDetails {
 	}
 
 	/**
-	 * @param baseLearningContentId the baseLearningContentId to set
+	 * @param baseLearningContentId
+	 *            the baseLearningContentId to set
 	 */
 	public void setBaseLearningContentId(Integer baseLearningContentId) {
 		this.baseLearningContentId = baseLearningContentId;
@@ -73,7 +75,8 @@ public class LearrningComponentContentDetails {
 	}
 
 	/**
-	 * @param learningContent the learningContent to set
+	 * @param learningContent
+	 *            the learningContent to set
 	 */
 	public void setLearningContent(LearningContent learningContent) {
 		this.learningContent = learningContent;
@@ -87,9 +90,11 @@ public class LearrningComponentContentDetails {
 	}
 
 	/**
-	 * @param enrichmentList the enrichmentList to set
+	 * @param enrichmentList
+	 *            the enrichmentList to set
 	 */
-	public void setEnrichmentList(List<LearningComponentContentEnrichment> enrichmentList) {
+	public void setEnrichmentList(
+			List<LearningComponentContentEnrichment> enrichmentList) {
 		this.enrichmentList = enrichmentList;
 	}
 
@@ -101,11 +106,12 @@ public class LearrningComponentContentDetails {
 	}
 
 	/**
-	 * @param bookmarkList the bookmarkList to set
+	 * @param bookmarkList
+	 *            the bookmarkList to set
 	 */
-	public void setBookmarkList(List<LearningComponentContentBookmark> bookmarkList) {
+	public void setBookmarkList(
+			List<LearningComponentContentBookmark> bookmarkList) {
 		this.bookmarkList = bookmarkList;
 	}
-
 
 }

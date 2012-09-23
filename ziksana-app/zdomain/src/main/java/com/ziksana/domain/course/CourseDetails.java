@@ -9,8 +9,8 @@ public class CourseDetails {
 
 	private List<CourseLearningComponent> courseLearningComponentsList;
 	private CoursePlaybook coursePlaybook;
-	//private CourseContentSecurity courseContentSecurity; 
-	//private CourseLearningPlanner courseLearningPlanner;
+	// private CourseContentSecurity courseContentSecurity;
+	// private CourseLearningPlanner courseLearningPlanner;
 	private List<CourseAdditionalProperty> courseAdditionalPropertyList;
 
 	/**
@@ -18,13 +18,12 @@ public class CourseDetails {
 	 * Learning Components.
 	 */
 	protected List<LearningComponent> learningComponents;
-	
-	
+
 	/**
 	 * Association relation for Course and CurriculumCourse
 	 */
 	private CurriculumCourse curriculumCourse;
-	
+
 	/**
 	 * The Object contains the Course Tree structure related behaviour
 	 */
@@ -53,7 +52,8 @@ public class CourseDetails {
 	}
 
 	/**
-	 * @param courseTreeCatalog the courseTreeCatalog to set
+	 * @param courseTreeCatalog
+	 *            the courseTreeCatalog to set
 	 */
 	public void setCourseTreeCatalog(CourseTreeCatalog courseTreeCatalog) {
 		this.courseTreeCatalog = courseTreeCatalog;
@@ -67,7 +67,8 @@ public class CourseDetails {
 	}
 
 	/**
-	 * @param curriculumCourse the curriculumCourse to set
+	 * @param curriculumCourse
+	 *            the curriculumCourse to set
 	 */
 	public void setCurriculumCourse(CurriculumCourse curriculumCourse) {
 		this.curriculumCourse = curriculumCourse;
@@ -81,7 +82,8 @@ public class CourseDetails {
 	}
 
 	/**
-	 * @param courseLearningComponentsList the courseLearningComponentsList to set
+	 * @param courseLearningComponentsList
+	 *            the courseLearningComponentsList to set
 	 */
 	public void setCourseLearningComponentsList(
 			List<CourseLearningComponent> courseLearningComponentsList) {
@@ -96,7 +98,8 @@ public class CourseDetails {
 	}
 
 	/**
-	 * @param coursePlaybook the coursePlaybook to set
+	 * @param coursePlaybook
+	 *            the coursePlaybook to set
 	 */
 	public void setCoursePlaybook(CoursePlaybook coursePlaybook) {
 		this.coursePlaybook = coursePlaybook;
@@ -110,7 +113,8 @@ public class CourseDetails {
 	}
 
 	/**
-	 * @param courseAdditionalPropertyList the courseAdditionalPropertyList to set
+	 * @param courseAdditionalPropertyList
+	 *            the courseAdditionalPropertyList to set
 	 */
 	public void setCourseAdditionalPropertyList(
 			List<CourseAdditionalProperty> courseAdditionalPropertyList) {

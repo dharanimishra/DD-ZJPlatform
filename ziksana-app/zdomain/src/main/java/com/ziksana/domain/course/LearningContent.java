@@ -46,7 +46,7 @@ public class LearningContent {
 	 * This field corresponds to the property Status
 	 */
 	private Integer statusId;
-	
+
 	/**
 	 * This field corresponds to the property Status
 	 */
@@ -75,24 +75,27 @@ public class LearningContent {
 	 */
 	private String thumbnailPicturePath;
 
-
-	/**This field corresponds to the property createdBy { User who creates }
+	/**
+	 * This field corresponds to the property createdBy { User who creates }
 	 */
 	private String createdBy;
-	
-	/**This field corresponds to the property createdOn { Creation Date)
+
+	/**
+	 * This field corresponds to the property createdOn { Creation Date)
 	 */
 	private Date createdOn;
-	
-	/**This field corresponds to the property createdBy {User who modified  }
+
+	/**
+	 * This field corresponds to the property createdBy {User who modified }
 	 */
 	private String modifiedBy;
-	
-	/**This field corresponds to the property createdBy { modified date}
+
+	/**
+	 * This field corresponds to the property createdBy { modified date}
 	 */
 	private Date modifiedOn;
-	
-		/**
+
+	/**
 	 * This field corresponds to the property Version
 	 */
 	private Integer rightsOwningMemberPersonaId;
@@ -112,9 +115,8 @@ public class LearningContent {
 	 */
 	private Integer linkedLearningContentId;
 
-	
 	private List<LearningContentParts> learningContentParts;
-	
+
 	private LearningComponentContent baseComponentContent;
 
 	/**
@@ -310,7 +312,6 @@ public class LearningContent {
 		this.thumbnailPicturePath = thumbnailPicturePath;
 	}
 
-
 	/**
 	 * @return the subjClassificationId
 	 */
@@ -380,7 +381,8 @@ public class LearningContent {
 	}
 
 	/**
-	 * @param createdBy the createdBy to set
+	 * @param createdBy
+	 *            the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
@@ -394,7 +396,8 @@ public class LearningContent {
 	}
 
 	/**
-	 * @param createdOn the createdOn to set
+	 * @param createdOn
+	 *            the createdOn to set
 	 */
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
@@ -408,7 +411,8 @@ public class LearningContent {
 	}
 
 	/**
-	 * @param modifiedBy the modifiedBy to set
+	 * @param modifiedBy
+	 *            the modifiedBy to set
 	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
@@ -422,7 +426,8 @@ public class LearningContent {
 	}
 
 	/**
-	 * @param modifiedOn the modifiedOn to set
+	 * @param modifiedOn
+	 *            the modifiedOn to set
 	 */
 	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
@@ -436,7 +441,8 @@ public class LearningContent {
 	}
 
 	/**
-	 * @param rightsOwningMemberPersonaId the rightsOwningMemberPersonaId to set
+	 * @param rightsOwningMemberPersonaId
+	 *            the rightsOwningMemberPersonaId to set
 	 */
 	public void setRightsOwningMemberPersona(Integer rightsOwningMemberPersonaId) {
 		this.rightsOwningMemberPersonaId = rightsOwningMemberPersonaId;
@@ -450,7 +456,8 @@ public class LearningContent {
 	}
 
 	/**
-	 * @param authoringMemberPersonaId the authoringMemberPersonaId to set
+	 * @param authoringMemberPersonaId
+	 *            the authoringMemberPersonaId to set
 	 */
 	public void setAuthoringMemberPersona(Integer authoringMemberPersonaId) {
 		this.authoringMemberPersonaId = authoringMemberPersonaId;
@@ -464,7 +471,8 @@ public class LearningContent {
 	}
 
 	/**
-	 * @param statusId the statusId to set
+	 * @param statusId
+	 *            the statusId to set
 	 */
 	public void setStatusId(Integer statusId) {
 		this.statusId = statusId;
@@ -478,7 +486,8 @@ public class LearningContent {
 	}
 
 	/**
-	 * @param statusDesc the statusDesc to set
+	 * @param statusDesc
+	 *            the statusDesc to set
 	 */
 	public void setStatusDesc(String statusDesc) {
 		this.statusDesc = statusDesc;
@@ -492,9 +501,11 @@ public class LearningContent {
 	}
 
 	/**
-	 * @param baseComponentContent the baseComponentContent to set
+	 * @param baseComponentContent
+	 *            the baseComponentContent to set
 	 */
-	public void setBaseComponentContent(LearningComponentContent baseComponentContent) {
+	public void setBaseComponentContent(
+			LearningComponentContent baseComponentContent) {
 		this.baseComponentContent = baseComponentContent;
 	}
 }

@@ -53,22 +53,26 @@ public class LearningComponentContent {
 	 */
 	private Integer contentVersion;
 
-	/**This field corresponds to the property createdBy { User who creates }
+	/**
+	 * This field corresponds to the property createdBy { User who creates }
 	 */
 	private String createdBy;
-	
-	/**This field corresponds to the property createdOn { Creation Date)
+
+	/**
+	 * This field corresponds to the property createdOn { Creation Date)
 	 */
 	private Date createdOn;
-	
-	/**This field corresponds to the property createdBy {User who modified  }
+
+	/**
+	 * This field corresponds to the property createdBy {User who modified }
 	 */
 	private String modifiedBy;
-	
-	/**This field corresponds to the property createdBy { modified date}
+
+	/**
+	 * This field corresponds to the property createdBy { modified date}
 	 */
 	private Date modifiedOn;
-	
+
 	/**
 	 * Contains the information about associations/composition and more
 	 * information
@@ -263,7 +267,8 @@ public class LearningComponentContent {
 	}
 
 	/**
-	 * @param createdBy the createdBy to set
+	 * @param createdBy
+	 *            the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
@@ -277,7 +282,8 @@ public class LearningComponentContent {
 	}
 
 	/**
-	 * @param createdOn the createdOn to set
+	 * @param createdOn
+	 *            the createdOn to set
 	 */
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
@@ -291,7 +297,8 @@ public class LearningComponentContent {
 	}
 
 	/**
-	 * @param modifiedBy the modifiedBy to set
+	 * @param modifiedBy
+	 *            the modifiedBy to set
 	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
@@ -305,7 +312,8 @@ public class LearningComponentContent {
 	}
 
 	/**
-	 * @param modifiedOn the modifiedOn to set
+	 * @param modifiedOn
+	 *            the modifiedOn to set
 	 */
 	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;

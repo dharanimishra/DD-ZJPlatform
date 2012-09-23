@@ -47,7 +47,7 @@ public class LearningComponent {
 	 * Maximum Length:1
 	 */
 	private Boolean extraCreditsIndicator;
-	
+
 	/**
 	 * This field corresponds to the attribute learningObjIndictor
 	 */
@@ -69,25 +69,26 @@ public class LearningComponent {
 	 * This field corresponds to the attribute prescribedLODuration<br>
 	 */
 	private Boolean prescribedLODuration;
-	
 
-	/**This field corresponds to the property createdBy { User who creates }
+	/**
+	 * This field corresponds to the property createdBy { User who creates }
 	 */
 	private String createdBy;
-	
-	/**This field corresponds to the property createdOn { Creation Date)
+
+	/**
+	 * This field corresponds to the property createdOn { Creation Date)
 	 */
 	private Date createdOn;
-	
-	/**This field corresponds to the property createdBy {User who modified  }
+
+	/**
+	 * This field corresponds to the property createdBy {User who modified }
 	 */
 	private String modifiedBy;
-	
-	/**This field corresponds to the property createdBy { modified date}
+
+	/**
+	 * This field corresponds to the property createdBy { modified date}
 	 */
 	private Date modifiedOn;
-	
-
 
 	/**
 	 * This field corresponds property learningComponentTypeId
@@ -115,12 +116,12 @@ public class LearningComponent {
 	 */
 	private String extraCredits;
 
-
 	/**
-	 * The Object contains the more information(associations, compositions) about LearningComponent
+	 * The Object contains the more information(associations, compositions)
+	 * about LearningComponent
 	 */
 	private LearningComponentDetails learningComponentDetails;
-	
+
 	/**
 	 * This method returns the value of the database column property
 	 * learningComponentId
@@ -333,7 +334,8 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param courseStatusDesc the courseStatusDesc to set
+	 * @param courseStatusDesc
+	 *            the courseStatusDesc to set
 	 */
 	public void setCourseStatusDesc(String courseStatusDesc) {
 		this.courseStatusDesc = courseStatusDesc;
@@ -347,7 +349,8 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param authorMemberPersonaId the authorMemberPersonaId to set
+	 * @param authorMemberPersonaId
+	 *            the authorMemberPersonaId to set
 	 */
 	public void setAuthorMemberPersona(Integer authorMemberPersonaId) {
 		this.authorMemberPersonaId = authorMemberPersonaId;
@@ -361,11 +364,14 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param learningComponentDetails the learningComponentDetails to set
+	 * @param learningComponentDetails
+	 *            the learningComponentDetails to set
 	 */
-	public void setLearningComponentDetails(LearningComponentDetails learningComponentDetails) {
+	public void setLearningComponentDetails(
+			LearningComponentDetails learningComponentDetails) {
 		this.learningComponentDetails = learningComponentDetails;
 	}
+
 	/**
 	 * @return the learningObjIndictor
 	 */
@@ -374,7 +380,8 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param learningObjIndictor the learningObjIndictor to set
+	 * @param learningObjIndictor
+	 *            the learningObjIndictor to set
 	 */
 	public void setLearningObjIndictor(Integer learningObjIndictor) {
 		this.learningObjIndictor = learningObjIndictor;
@@ -388,7 +395,8 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param thumbnailPicturePath the thumbnailPicturePath to set
+	 * @param thumbnailPicturePath
+	 *            the thumbnailPicturePath to set
 	 */
 	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
@@ -402,7 +410,8 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param templateIndicator the templateIndicator to set
+	 * @param templateIndicator
+	 *            the templateIndicator to set
 	 */
 	public void setTemplateIndicator(Boolean templateIndicator) {
 		this.templateIndicator = templateIndicator;
@@ -416,7 +425,8 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param prescribedLODuration the prescribedLODuration to set
+	 * @param prescribedLODuration
+	 *            the prescribedLODuration to set
 	 */
 	public void setPrescribedLODuration(Boolean prescribedLODuration) {
 		this.prescribedLODuration = prescribedLODuration;
@@ -430,7 +440,8 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param createdBy the createdBy to set
+	 * @param createdBy
+	 *            the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
@@ -444,7 +455,8 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param createdOn the createdOn to set
+	 * @param createdOn
+	 *            the createdOn to set
 	 */
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
@@ -458,7 +470,8 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param modifiedBy the modifiedBy to set
+	 * @param modifiedBy
+	 *            the modifiedBy to set
 	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
@@ -472,11 +485,11 @@ public class LearningComponent {
 	}
 
 	/**
-	 * @param modifiedOn the modifiedOn to set
+	 * @param modifiedOn
+	 *            the modifiedOn to set
 	 */
 	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
-
 
 }

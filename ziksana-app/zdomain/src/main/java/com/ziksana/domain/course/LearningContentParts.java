@@ -20,8 +20,8 @@ public class LearningContentParts {
 	private String partPath;
 
 	/**
-	 * This field corresponds to the property partSequence
-	 * Sequence of the LearningContent part
+	 * This field corresponds to the property partSequence Sequence of the
+	 * LearningContent part
 	 */
 	private Integer partSequence;
 

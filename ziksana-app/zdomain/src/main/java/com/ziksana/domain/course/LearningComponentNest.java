@@ -27,23 +27,26 @@ public class LearningComponentNest {
 	 * This field corresponds property learningComponentNestId
 	 */
 	private Integer learningComponentNestId;
-	
-	/**This field corresponds to the property createdBy { User who creates }
+
+	/**
+	 * This field corresponds to the property createdBy { User who creates }
 	 */
 	private String createdBy;
-	
-	/**This field corresponds to the property createdOn { Creation Date)
+
+	/**
+	 * This field corresponds to the property createdOn { Creation Date)
 	 */
 	private Date createdOn;
-	
-	/**This field corresponds to the property createdBy {User who modified  }
+
+	/**
+	 * This field corresponds to the property createdBy {User who modified }
 	 */
 	private String modifiedBy;
-	
-	/**This field corresponds to the property createdBy { modified date}
+
+	/**
+	 * This field corresponds to the property createdBy { modified date}
 	 */
 	private Date modifiedOn;
-	
 
 	/**
 	 * This method returns the value of property componentNestId
@@ -148,7 +151,8 @@ public class LearningComponentNest {
 	}
 
 	/**
-	 * @param createdBy the createdBy to set
+	 * @param createdBy
+	 *            the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
@@ -162,7 +166,8 @@ public class LearningComponentNest {
 	}
 
 	/**
-	 * @param createdOn the createdOn to set
+	 * @param createdOn
+	 *            the createdOn to set
 	 */
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
@@ -176,7 +181,8 @@ public class LearningComponentNest {
 	}
 
 	/**
-	 * @param modifiedBy the modifiedBy to set
+	 * @param modifiedBy
+	 *            the modifiedBy to set
 	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
@@ -190,7 +196,8 @@ public class LearningComponentNest {
 	}
 
 	/**
-	 * @param modifiedOn the modifiedOn to set
+	 * @param modifiedOn
+	 *            the modifiedOn to set
 	 */
 	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
