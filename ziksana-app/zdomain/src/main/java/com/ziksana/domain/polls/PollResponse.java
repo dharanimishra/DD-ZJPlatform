@@ -47,6 +47,12 @@ public class PollResponse {
 	public void setAnswers(List<Integer> answers) {
 		this.answers = answers;
 	}
+	
+	
+	public Integer getPollQuestionId()
+	{
+		return pollQuestion.getID();
+	}
    
 
 	
