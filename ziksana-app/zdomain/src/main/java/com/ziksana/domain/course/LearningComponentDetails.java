@@ -8,10 +8,16 @@ import java.util.List;
  * @author bhashasp
  */
 public class LearningComponentDetails {
-	
 
-	private List<LearningComponentNest> learningComponentNestList;
-	
+	private LearningComponentNest learningComponentNest;
+
+	/**
+	 * @return the learningComponentNest
+	 */
+	public LearningComponentNest getLearningComponentNest() {
+		return learningComponentNest;
+	}
+
 	/**
 	 * The attributes(componentNestId, parentLearningComponentId,
 	 * nestLearningComponentId) need to add for tree construction.<br>
@@ -24,14 +30,11 @@ public class LearningComponentDetails {
 	 * nestLearningComponentId : 200
 	 * 
 	 * @param learningComponentNest
+	 *            the learningComponentNest to set
 	 */
 	public void addLearningComponentNest(
 			LearningComponentNest learningComponentNest) {
-
-		if (learningComponentNest != null
-				&& learningComponentNest.getComponentNestId() != null) {
-			learningComponentNestList.add(learningComponentNest);
-		}
+		this.learningComponentNest = learningComponentNest;
 	}
 
 	/**
@@ -41,7 +44,9 @@ public class LearningComponentDetails {
 	private List<LearningComponentContent> learningCompContentList;
 
 	/**
-	 * Adding LearningComponentContent to LearningComponent based on LearningComponent.componenttype
+	 * Adding LearningComponentContent to LearningComponent based on
+	 * LearningComponent.componenttype
+	 * 
 	 * @param learningComponent
 	 */
 	public void addLearningComponentContent(
@@ -55,6 +60,8 @@ public class LearningComponentDetails {
 	}
 
 	/**
+	 * Remove the LearningComponentContent from the list.
+	 * 
 	 * @param learningComponentId
 	 */
 	public void removeLearningComponentContent(
@@ -69,61 +76,30 @@ public class LearningComponentDetails {
 		}
 	}
 
-	 /* 
-	  private List<CoursePlaybookView> coursePlaybookViewList;
-	  
-	  private CourseLearningComponent courseLearningComponent;
-	  
-	  private List<LearningElementWall> learningElementWallList;
+	private CourseLearningComponent courseLearningComponent;
+
+	/*
+	 * private List<CoursePlaybookView> coursePlaybookViewList;
+	 * 
+	 * private List<LearningElementWall> learningElementWallList;
 	 */
 
 	/**
-	 * @return the learningComponentNestList
-	 */
-	public List<LearningComponentNest> getLearningComponentNestList() {
-		return learningComponentNestList;
-	}
-
-	/**
-	 * @param learningComponentNestList
-	 *            the learningComponentNestList to set
-	 */
-	public void addLearningComponentNestList(
-			List<LearningComponentNest> learningComponentNestList) {
-		this.learningComponentNestList = learningComponentNestList;
-	}
-
-	/*	*//**
-	 * @return the coursePlaybookViewList
-	 */
-	/*
-	 * public List<CoursePlaybookView> getCoursePlaybookViewList() { return
-	 * coursePlaybookViewList; }
-	 */
-	/*
-	*//**
-	 * @param coursePlaybookViewList
-	 *            the coursePlaybookViewList to set
-	 */
-	/*
-	 * public void addCoursePlaybookViewList( List<CoursePlaybookView>
-	 * coursePlaybookViewList) { this.coursePlaybookViewList =
-	 * coursePlaybookViewList; }
-	 *//**
 	 * @return the courseLearningComponent
 	 */
-	/*
-	 * public CourseLearningComponent getCourseLearningComponent() { return
-	 * courseLearningComponent; }
-	 *//**
+	public CourseLearningComponent getCourseLearningComponent() {
+		return courseLearningComponent;
+	}
+
+	/**
 	 * @param courseLearningComponent
 	 *            the courseLearningComponent to set
 	 */
-	/*
-	 * public void addCourseLearningComponent( CourseLearningComponent
-	 * courseLearningComponent) { this.courseLearningComponent =
-	 * courseLearningComponent; }
-	 */
+	public void addCourseLearningComponent(
+			CourseLearningComponent courseLearningComponent) {
+		this.courseLearningComponent = courseLearningComponent;
+	}
+
 	/**
 	 * @return the learningCompContentList
 	 */
@@ -140,20 +116,5 @@ public class LearningComponentDetails {
 		this.learningCompContentList = learningCompContentList;
 	}
 
-	/*	*//**
-	 * @return the learningElementWallList
-	 */
-	/*
-	 * public List<LearningElementWall> getLearningElementWallList() { return
-	 * learningElementWallList; }
-	 *//**
-	 * @param learningElementWallList
-	 *            the learningElementWallList to set
-	 */
-	/*
-	 * public void addLearningElementWallList( List<LearningElementWall>
-	 * learningElementWallList) { this.learningElementWallList =
-	 * learningElementWallList; }
-	 */
 
 }

@@ -1,263 +1,250 @@
 package com.ziksana.domain.course;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class LearningContent implements Serializable {
-	/**
-	 * serial version id
-	 */
-	private static final long serialVersionUID = 2095369225846100688L;
+public class LearningContent {
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.learningContentId
+	 * This field corresponds to the property learningContentId
 	 */
 	private Integer learningContentId;
 
 	/**
-	 * This field corresponds to the database column
-	 * corlearningcontent.CreationDate
+	 * This field corresponds to the property CreationDate
 	 */
 	private Date creationDate;
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.Active
+	 * This field corresponds to the property Active<br>
+	 * Maximum Length:1
 	 */
-	private Boolean active;
+	private Boolean activeFlag;
 
 	/**
-	 * This field corresponds to the database column
-	 * corlearningcontent.ContentType
+	 * This field corresponds to the property ContentType
 	 */
-	private Integer contentType;
-	
+	private Integer contentTypeId;
+
 	/**
 	 * This attribute hold the description for attribute contentType
 	 */
 	private String contentTypesDesc;
 
 	/**
-	 * This field corresponds to the database column
-	 * corlearningcontent.ContentPath
+	 * This field corresponds to the property ContentPath<br>
+	 * Maximum Length:45
 	 */
 	private String contentPath;
 
 	/**
-	 * This field corresponds to the database column
-	 * corlearningcontent.ContentFormat
+	 * This field corresponds to the property ContentFormat
 	 */
 	private Integer contentFormat;
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.Status
+	 * This field corresponds to the property Status
 	 */
-	private Integer status;
+	private Integer statusId;
+	
+	/**
+	 * This field corresponds to the property Status
+	 */
+	private String statusDesc;
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.Version
+	 * This field corresponds to the property Version
 	 */
 	private Integer version;
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.Version
+	 * This field corresponds to the property contentName<br>
+	 * Maximum Length:45
 	 */
 	private String contentName;
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.Version
+	 * This field corresponds to the property contentDescription<br>
+	 * Maximum Length:4800
 	 */
 	private String contentDescription;
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.Version
+	 * This field corresponds to the property thumbnailPicturePath<br>
+	 * Maximum Length:72
 	 */
 	private String thumbnailPicturePath;
 
-	/**
-	 * This field corresponds to the database column corlearningcontent.Version
+
+	/**This field corresponds to the property createdBy { User who creates }
 	 */
-	private Integer rightsOwningMemberRoleId;
+	private String createdBy;
+	
+	/**This field corresponds to the property createdOn { Creation Date)
+	 */
+	private Date createdOn;
+	
+	/**This field corresponds to the property createdBy {User who modified  }
+	 */
+	private String modifiedBy;
+	
+	/**This field corresponds to the property createdBy { modified date}
+	 */
+	private Date modifiedOn;
+	
+		/**
+	 * This field corresponds to the property Version
+	 */
+	private Integer rightsOwningMemberPersonaId;
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.Version
+	 * This field corresponds to the property Version
 	 */
-	private Integer authoringMemberRoleId;
+	private Integer authoringMemberPersonaId;
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.Version
+	 * This field corresponds to the property Version
 	 */
 	private Integer subjClassificationId;
 
 	/**
-	 * This field corresponds to the database column corlearningcontent.LinkedLearningContentId
+	 * This field corresponds to the property LinkedLearningContentId
 	 */
 	private Integer linkedLearningContentId;
 
+	
 	private List<LearningContentParts> learningContentParts;
+	
+	private LearningComponentContent baseComponentContent;
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontent.learningContentId
+	 * This method returns the value of the property learningContentId
 	 * 
-	 * @return the value of corlearningcontent.learningContentId
+	 * @return the value of learningContentId
 	 */
 	public Integer getLearningContentId() {
 		return learningContentId;
 	}
 
 	/**
-	 * This method sets the value of the database column corlearningcontent.learningContentId
+	 * This method sets the value of the property learningContentId
 	 * 
 	 * @param learningContentId
-	 *            the value for corlearningcontent.learningContentId
+	 *            the value for learningContentId
 	 */
 	public void setLearningContentId(Integer learningContentId) {
 		this.learningContentId = learningContentId;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontent.CreationDate
+	 * This method returns the value of the property CreationDate
 	 * 
-	 * @return the value of corlearningcontent.CreationDate
+	 * @return the value of CreationDate
 	 */
 	public Date getCreationDate() {
 		return creationDate;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontent.CreationDate
+	 * This method sets the value of the property CreationDate
 	 * 
 	 * @param creationDate
-	 *            the value for corlearningcontent.CreationDate
+	 *            the value for CreationDate
 	 */
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontent.Active
+	 * This method returns the value of the property Active
 	 * 
-	 * @return the value of corlearningcontent.Active
+	 * @return the value of Active
 	 */
-	public Boolean getActive() {
-		return active;
+	public Boolean getActiveFlag() {
+		return activeFlag;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontent.Active
+	 * This method sets the value of the property Active
 	 * 
 	 * @param active
-	 *            the value for corlearningcontent.Active
+	 *            the value for Active
 	 */
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setActive(Boolean activeFlag) {
+		this.activeFlag = activeFlag;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontent.ContentType
+	 * This method returns the value of the property ContentType
 	 * 
-	 * @return the value of corlearningcontent.ContentType
+	 * @return the value of ContentType
 	 */
-	public Integer getContentType() {
-		return contentType;
+	public Integer getContentTypeId() {
+		return contentTypeId;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontent.ContentType
+	 * This method sets the value of the property ContentType
 	 * 
 	 * @param contentType
-	 *            the value for corlearningcontent.ContentType
+	 *            the value for ContentType
 	 */
-	public void setContentType(Integer contentType) {
-		this.contentType = contentType;
+	public void setContentType(Integer contentTypeId) {
+		this.contentTypeId = contentTypeId;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontent.ContentPath
+	 * This method returns the value of the property ContentPath
 	 * 
-	 * @return the value of corlearningcontent.ContentPath
+	 * @return the value of ContentPath
 	 */
 	public String getContentPath() {
 		return contentPath;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontent.ContentPath
+	 * This method sets the value of the property ContentPath
 	 * 
 	 * @param contentPath
-	 *            the value for corlearningcontent.ContentPath
+	 *            the value for ContentPath
 	 */
 	public void setContentPath(String contentPath) {
 		this.contentPath = contentPath == null ? null : contentPath.trim();
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontent.ContentFormat
+	 * This method returns the value of the property ContentFormat
 	 * 
-	 * @return the value of corlearningcontent.ContentFormat
+	 * @return the value of ContentFormat
 	 */
 	public Integer getContentFormat() {
 		return contentFormat;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontent.ContentFormat
+	 * This method sets the value of the property ContentFormat
 	 * 
 	 * @param contentFormat
-	 *            the value for corlearningcontent.ContentFormat
+	 *            the value for ContentFormat
 	 */
 	public void setContentFormat(Integer contentFormat) {
 		this.contentFormat = contentFormat;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontent.Status
+	 * This method returns the value of the property Version
 	 * 
-	 * @return the value of corlearningcontent.Status
-	 */
-	public Integer getStatus() {
-		return status;
-	}
-
-	/**
-	 * This method sets the value of the database column
-	 * corlearningcontent.Status
-	 * 
-	 * @param status
-	 *            the value for corlearningcontent.Status
-	 */
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	/**
-	 * This method returns the value of the database column
-	 * corlearningcontent.Version
-	 * 
-	 * @return the value of corlearningcontent.Version
+	 * @return the value of Version
 	 */
 	public Integer getVersion() {
 		return version;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontent.Version
+	 * This method sets the value of the property Version
 	 * 
 	 * @param version
-	 *            the value for corlearningcontent.Version
+	 *            the value for Version
 	 */
 	public void setVersion(Integer version) {
 		this.version = version;
@@ -323,35 +310,6 @@ public class LearningContent implements Serializable {
 		this.thumbnailPicturePath = thumbnailPicturePath;
 	}
 
-	/**
-	 * @return the rightsOwningMemberRoleId
-	 */
-	public Integer getRightsOwningMemberRoleId() {
-		return rightsOwningMemberRoleId;
-	}
-
-	/**
-	 * @param rightsOwningMemberRoleId
-	 *            the rightsOwningMemberRoleId to set
-	 */
-	public void setRightsOwningMemberRoleId(Integer rightsOwningMemberRoleId) {
-		this.rightsOwningMemberRoleId = rightsOwningMemberRoleId;
-	}
-
-	/**
-	 * @return the authoringMemberRoleId
-	 */
-	public Integer getAuthoringMemberRoleId() {
-		return authoringMemberRoleId;
-	}
-
-	/**
-	 * @param authoringMemberRoleId
-	 *            the authoringMemberRoleId to set
-	 */
-	public void setAuthoringMemberRoleId(Integer authoringMemberRoleId) {
-		this.authoringMemberRoleId = authoringMemberRoleId;
-	}
 
 	/**
 	 * @return the subjClassificationId
@@ -376,7 +334,8 @@ public class LearningContent implements Serializable {
 	}
 
 	/**
-	 * @param linkedLearningContentId the linkedLearningContentId to set
+	 * @param linkedLearningContentId
+	 *            the linkedLearningContentId to set
 	 */
 	public void setLinkedLearningContentId(Integer linkedLearningContentId) {
 		this.linkedLearningContentId = linkedLearningContentId;
@@ -390,9 +349,11 @@ public class LearningContent implements Serializable {
 	}
 
 	/**
-	 * @param learningContentParts the learningContentParts to set
+	 * @param learningContentParts
+	 *            the learningContentParts to set
 	 */
-	public void setLearningContentParts(List<LearningContentParts> learningContentParts) {
+	public void setLearningContentParts(
+			List<LearningContentParts> learningContentParts) {
 		this.learningContentParts = learningContentParts;
 	}
 
@@ -404,9 +365,136 @@ public class LearningContent implements Serializable {
 	}
 
 	/**
-	 * @param contentTypesDesc the contentTypesDesc to set
+	 * @param contentTypesDesc
+	 *            the contentTypesDesc to set
 	 */
 	public void setContentTypesDesc(String contentTypesDesc) {
 		this.contentTypesDesc = contentTypesDesc;
+	}
+
+	/**
+	 * @return the createdBy
+	 */
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	/**
+	 * @param createdBy the createdBy to set
+	 */
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	/**
+	 * @return the createdOn
+	 */
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	/**
+	 * @param createdOn the createdOn to set
+	 */
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	/**
+	 * @return the modifiedBy
+	 */
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+
+	/**
+	 * @param modifiedBy the modifiedBy to set
+	 */
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	/**
+	 * @return the modifiedOn
+	 */
+	public Date getModifiedOn() {
+		return modifiedOn;
+	}
+
+	/**
+	 * @param modifiedOn the modifiedOn to set
+	 */
+	public void setModifiedOn(Date modifiedOn) {
+		this.modifiedOn = modifiedOn;
+	}
+
+	/**
+	 * @return the rightsOwningMemberPersonaId
+	 */
+	public Integer getRightsOwningMemberPersona() {
+		return rightsOwningMemberPersonaId;
+	}
+
+	/**
+	 * @param rightsOwningMemberPersonaId the rightsOwningMemberPersonaId to set
+	 */
+	public void setRightsOwningMemberPersona(Integer rightsOwningMemberPersonaId) {
+		this.rightsOwningMemberPersonaId = rightsOwningMemberPersonaId;
+	}
+
+	/**
+	 * @return the authoringMemberPersonaId
+	 */
+	public Integer getAuthoringMemberPersona() {
+		return authoringMemberPersonaId;
+	}
+
+	/**
+	 * @param authoringMemberPersonaId the authoringMemberPersonaId to set
+	 */
+	public void setAuthoringMemberPersona(Integer authoringMemberPersonaId) {
+		this.authoringMemberPersonaId = authoringMemberPersonaId;
+	}
+
+	/**
+	 * @return the statusId
+	 */
+	public Integer getStatusId() {
+		return statusId;
+	}
+
+	/**
+	 * @param statusId the statusId to set
+	 */
+	public void setStatusId(Integer statusId) {
+		this.statusId = statusId;
+	}
+
+	/**
+	 * @return the statusDesc
+	 */
+	public String getStatusDesc() {
+		return statusDesc;
+	}
+
+	/**
+	 * @param statusDesc the statusDesc to set
+	 */
+	public void setStatusDesc(String statusDesc) {
+		this.statusDesc = statusDesc;
+	}
+
+	/**
+	 * @return the baseComponentContent
+	 */
+	public LearningComponentContent getBaseComponentContent() {
+		return baseComponentContent;
+	}
+
+	/**
+	 * @param baseComponentContent the baseComponentContent to set
+	 */
+	public void setBaseComponentContent(LearningComponentContent baseComponentContent) {
+		this.baseComponentContent = baseComponentContent;
 	}
 }

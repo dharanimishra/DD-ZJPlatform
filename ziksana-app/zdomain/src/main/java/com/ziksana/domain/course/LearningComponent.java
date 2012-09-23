@@ -10,23 +10,24 @@ public class LearningComponent {
 	private Integer learningComponentId;
 
 	/**
-	 * This field corresponds property validfrom
+	 * This field corresponds property validfrom {Start Date}
 	 */
 	private Date validFrom;
 
 	/**
-	 * This field corresponds property validTo
+	 * This field corresponds property validTo{End Date}
 	 */
 	private Date validTo;
 
 	/**
-	 * This field corresponds property CourseStatus
+	 * This field corresponds property CourseStatus<br>
+	 * ID for Course Status
 	 */
 	private Integer courseStatus;
 
-
 	/**
-	 * Description of the course status attribute
+	 * Description of the course status attribute<br>
+	 * Description for Course Status{Id}
 	 */
 	private String courseStatusDesc;
 
@@ -36,14 +37,57 @@ public class LearningComponent {
 	private Integer weightage;
 
 	/**
-	 * This field corresponds property TotalCredits
+	 * This field corresponds property TotalCredits<br>
+	 * Maximum Length:5
 	 */
 	private String totalCredits;
 
 	/**
-	 * This field corresponds property ExtraCreditsIndicator
+	 * This field corresponds property ExtraCreditsIndicator<br>
+	 * Maximum Length:1
 	 */
 	private Boolean extraCreditsIndicator;
+	
+	/**
+	 * This field corresponds to the attribute learningObjIndictor
+	 */
+	private Integer learningObjIndictor;
+
+	/**
+	 * This field corresponds to the attribute thumbnailPicturePath<br>
+	 * Maximum Length:72
+	 */
+	private String thumbnailPicturePath;
+
+	/**
+	 * This field corresponds to the attribute templateIndicator<br>
+	 * Maximum Length:1
+	 */
+	private Boolean templateIndicator;
+
+	/**
+	 * This field corresponds to the attribute prescribedLODuration<br>
+	 */
+	private Boolean prescribedLODuration;
+	
+
+	/**This field corresponds to the property createdBy { User who creates }
+	 */
+	private String createdBy;
+	
+	/**This field corresponds to the property createdOn { Creation Date)
+	 */
+	private Date createdOn;
+	
+	/**This field corresponds to the property createdBy {User who modified  }
+	 */
+	private String modifiedBy;
+	
+	/**This field corresponds to the property createdBy { modified date}
+	 */
+	private Date modifiedOn;
+	
+
 
 	/**
 	 * This field corresponds property learningComponentTypeId
@@ -66,7 +110,8 @@ public class LearningComponent {
 	private Integer subjClassificationId;
 
 	/**
-	 * This field corresponds property ExtraCredits
+	 * This field corresponds property ExtraCredits<br>
+	 * Maximum Length:5
 	 */
 	private String extraCredits;
 
@@ -321,5 +366,117 @@ public class LearningComponent {
 	public void setLearningComponentDetails(LearningComponentDetails learningComponentDetails) {
 		this.learningComponentDetails = learningComponentDetails;
 	}
+	/**
+	 * @return the learningObjIndictor
+	 */
+	public Integer getLearningObjIndictor() {
+		return learningObjIndictor;
+	}
+
+	/**
+	 * @param learningObjIndictor the learningObjIndictor to set
+	 */
+	public void setLearningObjIndictor(Integer learningObjIndictor) {
+		this.learningObjIndictor = learningObjIndictor;
+	}
+
+	/**
+	 * @return the thumbnailPicturePath
+	 */
+	public String getThumbnailPicturePath() {
+		return thumbnailPicturePath;
+	}
+
+	/**
+	 * @param thumbnailPicturePath the thumbnailPicturePath to set
+	 */
+	public void setThumbnailPicturePath(String thumbnailPicturePath) {
+		this.thumbnailPicturePath = thumbnailPicturePath;
+	}
+
+	/**
+	 * @return the templateIndicator
+	 */
+	public Boolean getTemplateIndicator() {
+		return templateIndicator;
+	}
+
+	/**
+	 * @param templateIndicator the templateIndicator to set
+	 */
+	public void setTemplateIndicator(Boolean templateIndicator) {
+		this.templateIndicator = templateIndicator;
+	}
+
+	/**
+	 * @return the prescribedLODuration
+	 */
+	public Boolean getPrescribedLODuration() {
+		return prescribedLODuration;
+	}
+
+	/**
+	 * @param prescribedLODuration the prescribedLODuration to set
+	 */
+	public void setPrescribedLODuration(Boolean prescribedLODuration) {
+		this.prescribedLODuration = prescribedLODuration;
+	}
+
+	/**
+	 * @return the createdBy
+	 */
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	/**
+	 * @param createdBy the createdBy to set
+	 */
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	/**
+	 * @return the createdOn
+	 */
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	/**
+	 * @param createdOn the createdOn to set
+	 */
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	/**
+	 * @return the modifiedBy
+	 */
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+
+	/**
+	 * @param modifiedBy the modifiedBy to set
+	 */
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	/**
+	 * @return the modifiedOn
+	 */
+	public Date getModifiedOn() {
+		return modifiedOn;
+	}
+
+	/**
+	 * @param modifiedOn the modifiedOn to set
+	 */
+	public void setModifiedOn(Date modifiedOn) {
+		this.modifiedOn = modifiedOn;
+	}
+
 
 }

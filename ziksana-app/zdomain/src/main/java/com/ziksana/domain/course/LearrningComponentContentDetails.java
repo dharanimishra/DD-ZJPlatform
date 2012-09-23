@@ -3,11 +3,14 @@
  */
 package com.ziksana.domain.course;
 
+import java.util.List;
+
 /**
  * @author bhashasp
  */
 public class LearrningComponentContentDetails {
 	
+
 	private Integer learningComponentId;
 	
 	private Integer SynchronizeWithVideoId;
@@ -15,6 +18,10 @@ public class LearrningComponentContentDetails {
 	private Integer baseLearningContentId;
 	
 	private LearningContent learningContent;
+	
+	private List<LearningComponentContentEnrichment> enrichmentList;
+	
+	private List<LearningComponentContentBookmark> bookmarkList;
 
 	/**
 	 * @return the learningComponentId
@@ -70,6 +77,34 @@ public class LearrningComponentContentDetails {
 	 */
 	public void setLearningContent(LearningContent learningContent) {
 		this.learningContent = learningContent;
+	}
+
+	/**
+	 * @return the enrichmentList
+	 */
+	public List<LearningComponentContentEnrichment> getEnrichmentList() {
+		return enrichmentList;
+	}
+
+	/**
+	 * @param enrichmentList the enrichmentList to set
+	 */
+	public void setEnrichmentList(List<LearningComponentContentEnrichment> enrichmentList) {
+		this.enrichmentList = enrichmentList;
+	}
+
+	/**
+	 * @return the bookmarkList
+	 */
+	public List<LearningComponentContentBookmark> getBookmarkList() {
+		return bookmarkList;
+	}
+
+	/**
+	 * @param bookmarkList the bookmarkList to set
+	 */
+	public void setBookmarkList(List<LearningComponentContentBookmark> bookmarkList) {
+		this.bookmarkList = bookmarkList;
 	}
 
 

@@ -4,92 +4,104 @@ import java.util.Date;
 
 public class LearningContentParts {
 	/**
-	 * This field corresponds to the database column corlearningcontentparts.contentPartsId
+	 * This field corresponds to the property contentPartsId
 	 */
 	private Integer contentPartsId;
 
 	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentparts.CreationDate
+	 * This field corresponds to the property CreationDate
 	 */
 	private Date creationDate;
 
 	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentparts.PartPath
+	 * This field corresponds to the property PartPath<br>
+	 * Maximum Length:45
 	 */
 	private String partPath;
 
 	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentparts.partSequence
+	 * This field corresponds to the property partSequence
+	 * Sequence of the LearningContent part
 	 */
 	private Integer partSequence;
 
 	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentparts.learningContentId
+	 * This field corresponds to the property learningContentId
 	 */
 	private Integer learningContentId;
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentparts.contentPartsId
+	 * This field corresponds to the property createdBy { User who creates }
+	 */
+	private String createdBy;
+
+	/**
+	 * This field corresponds to the property createdOn { Creation Date)
+	 */
+	private Date createdOn;
+
+	/**
+	 * This field corresponds to the property createdBy {User who modified }
+	 */
+	private String modifiedBy;
+
+	/**
+	 * This field corresponds to the property createdBy { modified date}
+	 */
+	private Date modifiedOn;
+
+	/**
+	 * This method returns the value of the property contentPartsId
 	 * 
-	 * @return the value of corlearningcontentparts.contentPartsId
+	 * @return the value of property contentPartsId
 	 */
 	public Integer getContentPartsId() {
 		return contentPartsId;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentparts.contentPartsId
+	 * This method sets the value of the property contentPartsId
 	 * 
 	 * @param contentPartsId
-	 *            the value for corlearningcontentparts.contentPartsId
+	 *            the value for property contentPartsId
 	 */
 	public void setContentPartsId(Integer contentPartsId) {
 		this.contentPartsId = contentPartsId;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentparts.CreationDate
+	 * This method returns the value of the property CreationDate
 	 * 
-	 * @return the value of corlearningcontentparts.CreationDate
+	 * @return the value of property CreationDate
 	 */
 	public Date getCreationDate() {
 		return creationDate;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentparts.CreationDate
+	 * This method sets the value of the property CreationDate
 	 * 
 	 * @param creationDate
-	 *            the value for corlearningcontentparts.CreationDate
+	 *            the value for property CreationDate
 	 */
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentparts.PartPath
+	 * This method returns the value of the property PartPath
 	 * 
-	 * @return the value of corlearningcontentparts.PartPath
+	 * @return the value of property PartPath
 	 */
 	public String getPartPath() {
 		return partPath;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentparts.PartPath
+	 * This method sets the value of the property PartPath
 	 * 
 	 * @param partPath
-	 *            the value for corlearningcontentparts.PartPath
+	 *            the value for property PartPath
 	 */
 	public void setPartPath(String partPath) {
 		this.partPath = partPath == null ? null : partPath.trim();
@@ -123,5 +135,65 @@ public class LearningContentParts {
 	 */
 	public void setPartSequence(Integer partSequence) {
 		this.partSequence = partSequence;
+	}
+
+	/**
+	 * @return the createdBy
+	 */
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	/**
+	 * @param createdBy
+	 *            the createdBy to set
+	 */
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	/**
+	 * @return the createdOn
+	 */
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	/**
+	 * @param createdOn
+	 *            the createdOn to set
+	 */
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	/**
+	 * @return the modifiedBy
+	 */
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+
+	/**
+	 * @param modifiedBy
+	 *            the modifiedBy to set
+	 */
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+	/**
+	 * @return the modifiedOn
+	 */
+	public Date getModifiedOn() {
+		return modifiedOn;
+	}
+
+	/**
+	 * @param modifiedOn
+	 *            the modifiedOn to set
+	 */
+	public void setModifiedOn(Date modifiedOn) {
+		this.modifiedOn = modifiedOn;
 	}
 }
