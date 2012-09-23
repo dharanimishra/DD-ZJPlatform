@@ -11,7 +11,9 @@ public class PollQuestionNResult {
 	    
 	    private PollQuestion pollQuestion;
 	    private PollResult pollResult;
-		/**
+	    
+		
+	    /**
 		 * @return the pollQuestion
 		 */
 		public PollQuestion getPollQuestion() {
@@ -41,9 +43,30 @@ public class PollQuestionNResult {
 		public void setPollResult(PollResult pollResult) {
 			this.pollResult = pollResult;
 		}
-	    
-	    	    
-	
-	
+		
+		/**
+		 * This is a convenience method to determine the object is question or result. 
+		 * @return true if this object is pollquestion. It returns false 
+		 * if the object is pollresult.
+		 */
+		public boolean isThisQuestion()
+		{
+			if (null != pollQuestion)
+			{
+				return true;
+			}
+			else if (null != pollResult)
+			{
+				return false;
+			}
+			else
+			{
+				return false;
+			}
+			
+			
+		}
+		
+		
 	
 }

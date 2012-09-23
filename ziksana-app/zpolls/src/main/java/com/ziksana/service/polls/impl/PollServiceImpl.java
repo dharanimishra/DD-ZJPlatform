@@ -3,6 +3,7 @@
  */
 package com.ziksana.service.polls.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,9 +11,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.member.Member;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionNResult;
-import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollResponse;
 import com.ziksana.domain.polls.PollResult;
 
@@ -49,23 +50,8 @@ public class PollServiceImpl implements PollService {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.ziksana.service.polls.PollService#answerPoll(java.lang.Integer,
-	 * java.lang.Integer)
-	 */
-	@Override
-	public PollQuestionResponse answerPoll(Integer memberRoleId, Integer pollQuestionId,
-			Integer pollAnswerId) {
-        logger.info("answerPoll method is invoked");
-		// Create pollquestionresponse object based on pollquestionid
-		PollQuestionResponse pollQuestionResponse = new PollQuestionResponse();
-		pollQuestionResponseMapper.updateByPrimaryKey(pollQuestionResponse);
-		// TODO Auto-generated method stub
-		return pollQuestionResponse;
-	}
-
+	
+	
 	@Override
 	public int  getTotalUnansweredQuestions(Integer id) {
 		// TODO Auto-generated method stub
@@ -75,16 +61,39 @@ public class PollServiceImpl implements PollService {
 
 	@Override
 	public List<PollQuestionNResult> getPollQuestionsAndResults(
-			Member memberPersona) {
-		// TODO Auto-generated method stub
-		return null;
+			MemberPersona memberPersona) {
+		
+		
+		List<PollResult> pollResults =  pollQuestionMapper.getPollResults(memberPersona.getMemberRoleId());
+		
+		List<PollQuestionNResult> pollQuestionsNResults = new ArrayList<PollQuestionNResult>();
+		
+		for (PollResult pollResult : pollResults)
+		{
+			PollQuestionNResult pollQuestionResult = new PollQuestionNResult();
+			pollQuestionResult.setPollResult(pollResult);
+			pollQuestionsNResults.add(pollQuestionResult);
+		}
+		
+		List<PollQuestion> pollQuestions =  pollQuestionMapper.getPollQuestions(memberPersona.getMemberRoleId());
+		
+		for(PollQuestion pollQuestion: pollQuestions)
+		{
+			PollQuestionNResult pollQuestionResult = new PollQuestionNResult();
+			pollQuestionResult.setPollQuestion(pollQuestion);
+			pollQuestionsNResults.add(pollQuestionResult);
+			
+		}
+		
+		
+		return pollQuestionsNResults;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.ziksana.service.polls.PollService#pollResponse(com.ziksana.domain.member.Member, com.ziksana.domain.polls.PollResponse)
 	 */
 	@Override
-	public void pollResponse(Member memberPersona, PollResponse pollResponse) {
+	public void pollResponse(MemberPersona memberPersona, PollResponse pollResponse) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -93,7 +102,7 @@ public class PollServiceImpl implements PollService {
 	 * @see com.ziksana.service.polls.PollService#getPollResult(com.ziksana.domain.member.Member, com.ziksana.domain.polls.PollQuestion)
 	 */
 	@Override
-	public PollResult getPollResult(Member memberPersona,
+	public PollResult getPollResult(MemberPersona memberPersona,
 			PollQuestion pollQuestion) {
 		// TODO Auto-generated method stub
 		return null;
