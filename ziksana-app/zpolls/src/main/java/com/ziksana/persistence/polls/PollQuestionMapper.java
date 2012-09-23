@@ -126,52 +126,6 @@ public interface PollQuestionMapper {
 			" curdate() < utlzpoll.PollEndDate " })
 	int getTotalQuestions(Integer id);
 
-	@Select({
-			"SELECT ",
-			"utlzpollquestion.ID AS pollQuestionId,",
-			"utlzpollquestion.QuestionType,",
-			"utlzpollquestion.QuestionText,",
-			"utlzpollquestion.Answer1,",
-			"utlzpollquestion.Answer2,",
-			"utlzpollquestion.Answer3,",
-			"utlzpollquestion.Answer4,",
-			"utlzpollquestion.Answer5,",
-			"utlzpollquestionresponse.Answer1Count,",
-			"utlzpollquestionresponse.Answer2Count,",
-			"utlzpollquestionresponse.Answer3Count,",
-			"utlzpollquestionresponse.Answer4Count,",
-			"utlzpollquestionresponse.Answer5Count,",
-			"utlzpolltracker.answeringMemberRoleId",
-			" FROM",
-			" utlzpoll",
-			" JOIN utlzpollquestion ON utlzpoll.ID = utlzpollquestion.PollId",
-			" LEFT JOIN utlzpollquestionresponse ON utlzpollquestion.ID = utlzpollquestionresponse.pollQuestionID",
-			" LEFT JOIN utlzpolltracker ON utlzpollquestionresponse.pollQuestionId=utlzpolltracker.pollQuestionId",
-			" WHERE CURDATE() < utlzpoll.PollEndDate AND",
-			" utlzpoll.Active=1 AND",
-			" utlzpollquestion.Active=1 AND",
-			" utlzpolltracker.answeringMemberRoleId=#{memberRoleId}",
-			" UNION",
-			"select",
-			" ID AS pollQuestionId,",
-			"QuestionType,",
-			"QuestionText,",
-			"Answer1,",
-			"Answer2,",
-			"Answer3,",
-			"Answer4,",
-			"Answer5,",
-			"0 AS Answer1Count,",
-			"0 AS Answer2Count,",
-			"0 AS Answer3Count,",
-			"0 AS Answer4Count,",
-			"0 AS Answer5Count,",
-			"NULL AS answeringMemberRoleId ",
-			" from ",
-			" utlzpollquestion ",
-			" where ",
-			" utlzpollquestion.ID  not in (select pollquestionid from utlzpolltracker where answeringmemberroleid=#{memberRoleId}) " })
-	List<PollData> getPollData(Integer userMemberRoleId);
 	
 	
 	
