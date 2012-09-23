@@ -53,6 +53,7 @@ public class PollServiceImplTest {
 	
 	@Test
 	public void testGetPollQuestionsAndResults() {
+		String questionText = "who wins the t20 world cup?";
 		MemberPersona memberPersona = new MemberPersona();
 		memberPersona.setMemberRoleId(Integer.valueOf(102));
 		List<PollQuestionNResult> pollQuestionNResults = pollService.getPollQuestionsAndResults(memberPersona);
@@ -60,7 +61,10 @@ public class PollServiceImplTest {
 		for (PollQuestionNResult pollQuestionNResult: pollQuestionNResults)
 		{
 			if(pollQuestionNResult.isThisQuestion())
+			{
 			System.out.println("the questions is "+pollQuestionNResult.getPollQuestion());
+			Assert.isTrue(pollQuestionNResult.getPollQuestion().getQuestionText().equals(questionText));
+			}
 			
 		}
 		
