@@ -117,6 +117,18 @@ public class PollResult {
 	public void setPollQUestion(PollQuestion pollQuestion) {
 		this.pollQuestion = pollQuestion;
 	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return String.format("The question is %s, answer1 count is %s, answer2 countis %s, " +
+				"answer3 count is %s, answer4 count is %s, answer5 count is %s", 
+				pollQuestion.getQuestionText(),answer1Count,answer2Count,answer3Count,answer4Count,answer5Count);
+	}
 	
 	
 	
