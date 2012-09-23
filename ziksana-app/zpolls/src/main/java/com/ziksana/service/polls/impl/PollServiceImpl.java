@@ -3,6 +3,7 @@
  */
 package com.ziksana.service.polls.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -61,8 +62,31 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public List<PollQuestionNResult> getPollQuestionsAndResults(
 			MemberPersona memberPersona) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		
+		List<PollResult> pollResults =  pollQuestionMapper.getPollResults(memberPersona.getMemberRoleId());
+		
+		List<PollQuestionNResult> pollQuestionsNResults = new ArrayList<PollQuestionNResult>();
+		
+		for (PollResult pollResult : pollResults)
+		{
+			PollQuestionNResult pollQuestionResult = new PollQuestionNResult();
+			pollQuestionResult.setPollResult(pollResult);
+			pollQuestionsNResults.add(pollQuestionResult);
+		}
+		
+		List<PollQuestion> pollQuestions =  pollQuestionMapper.getPollQuestions(memberPersona.getMemberRoleId());
+		
+		for(PollQuestion pollQuestion: pollQuestions)
+		{
+			PollQuestionNResult pollQuestionResult = new PollQuestionNResult();
+			pollQuestionResult.setPollQuestion(pollQuestion);
+			pollQuestionsNResults.add(pollQuestionResult);
+			
+		}
+		
+		
+		return pollQuestionsNResults;
 	}
 
 	/* (non-Javadoc)

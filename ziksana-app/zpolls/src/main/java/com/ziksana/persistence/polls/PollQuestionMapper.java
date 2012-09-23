@@ -1,6 +1,8 @@
 package com.ziksana.persistence.polls;
 
 import com.ziksana.domain.polls.PollQuestion;
+import com.ziksana.domain.polls.PollResult;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -148,7 +150,7 @@ public interface PollQuestionMapper {
 			" WHERE CURDATE() < utlzpoll.PollEndDate AND",
 			" utlzpoll.Active=1 AND",
 			" utlzpollquestion.Active=1 AND",
-			" utlzpolltracker.answeringMemberRoleId=102",
+			" utlzpolltracker.answeringMemberRoleId=#{memberRoleId}",
 			" UNION",
 			"select",
 			" ID AS pollQuestionId,",
@@ -168,7 +170,65 @@ public interface PollQuestionMapper {
 			" from ",
 			" utlzpollquestion ",
 			" where ",
-			" utlzpollquestion.ID  not in (select pollquestionid from utlzpolltracker where answeringmemberroleid=102) " })
-	List<PollData> getPollData();
+			" utlzpollquestion.ID  not in (select pollquestionid from utlzpolltracker where answeringmemberroleid=#{memberRoleId}) " })
+	List<PollData> getPollData(Integer userMemberRoleId);
+	
+	
+	
+	
+	@Select({
+		"SELECT ",
+		"utlzpollquestion.ID AS pollQuestionId,", 
+		"utlzpollquestion.QuestionType,",
+		"utlzpollquestion.QuestionText,",
+		"utlzpollquestion.Answer1,",
+		"utlzpollquestion.Answer2,",
+		"utlzpollquestion.Answer3,",
+		"utlzpollquestion.Answer4,",
+		"utlzpollquestion.Answer5,",
+		"utlzpollquestionresponse.Answer1Count,",
+		"utlzpollquestionresponse.Answer2Count,",
+		"utlzpollquestionresponse.Answer3Count,",
+		"utlzpollquestionresponse.Answer4Count,",
+		"utlzpollquestionresponse.Answer5Count,",
+		"utlzpolltracker.answeringMemberRoleId ",
+		"FROM ",
+		"utlzpoll ",
+		"JOIN utlzpollquestion ON utlzpoll.ID = utlzpollquestion.PollId ",
+		"LEFT JOIN utlzpollquestionresponse ON utlzpollquestion.ID = utlzpollquestionresponse.pollQuestionID ",
+		"LEFT JOIN utlzpolltracker ON utlzpollquestionresponse.pollQuestionId=utlzpolltracker.pollQuestionId ",
+		"WHERE CURDATE() < utlzpoll.PollEndDate AND ",
+		"utlzpoll.Active=1 AND ",
+		"utlzpollquestion.Active=1 AND ",
+		"utlzpolltracker.answeringMemberRoleId=#{userMemberRoleId} "
+
+	})
+	List<PollResult> getPollResults(Integer userMemberRoleId);
+	
+	
+	
+	
+	
+	@Select({
+		"select ",
+		"ID AS pollQuestionId,", 
+		"QuestionType,",
+		"QuestionText,",
+		"Answer1,",
+		"Answer2,",
+		"Answer3,",
+		"Answer4,",
+		"Answer5 ",
+		"from ",
+		"utlzpollquestion ",
+		"where ",
+		"utlzpollquestion.ID  not in (select pollquestionid from utlzpolltracker where answeringmemberroleid=#{userMemberRoleId}) "
+		
+	})
+	List<PollQuestion> getPollQuestions(Integer userMemberRoleId);
+	
+	
+	
+	
 
 }
