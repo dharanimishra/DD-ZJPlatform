@@ -94,7 +94,10 @@ public class PollServiceImpl implements PollService {
 	 */
 	@Override
 	public void pollResponse(MemberPersona memberPersona, PollResponse pollResponse) {
-		// TODO Auto-generated method stub
+		
+		 pollQuestionResponseMapper.createPollTrackerEntry(pollResponse.getPollQuestion().getID(), memberPersona.getMemberRoleId());
+		 pollQuestionResponseMapper.createPollResponse(pollResponse);
+		
 		
 	}
 

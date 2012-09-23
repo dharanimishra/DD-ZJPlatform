@@ -5,6 +5,7 @@ package com.ziksana.service.polls.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -17,6 +18,7 @@ import org.springframework.util.Assert;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionNResult;
+import com.ziksana.domain.polls.PollResponse;
 import com.ziksana.persistence.polls.PollQuestionMapper;
 import com.ziksana.service.polls.PollService;
 
@@ -32,7 +34,7 @@ public class PollServiceImplTest {
     private PollService pollService;
 	
 	
-	
+	/*
 			
 	@Test
 	public void testGetPoll() {
@@ -50,6 +52,7 @@ public class PollServiceImplTest {
 		Assert.isTrue(totalQuestions == 1, "total number of questions is not correct");
 	}
 	
+	*/
 	
 	@Test
 	public void testGetPollQuestionsAndResults() {
@@ -72,6 +75,28 @@ public class PollServiceImplTest {
 		
 		
 	}
+	
+	
+	@Test
+	public void testGetPollResponse() {
+		MemberPersona memberPersona = new MemberPersona();
+		memberPersona.setMemberRoleId(Integer.valueOf(102));
+		PollResponse pollResponse = new PollResponse();
+		PollQuestion pollQuestion = new PollQuestion();
+		pollQuestion.setID(Integer.valueOf(3));
+		pollResponse.setPollQuestion(pollQuestion);
+		List<Integer> answers = new ArrayList();
+		answers.add(Integer.valueOf(1));
+		pollResponse.setAnswers(answers);
+		pollService.pollResponse(memberPersona, pollResponse);
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 }
