@@ -163,6 +163,18 @@ public class PollQuestion {
 	 */
 	public void setPoll(Poll poll) {
 		this.poll = poll;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return String.format("The question is %s, answer1 is %s, answer2 is %s, " +
+				"answer3 is %s, answer4 is %s, answer5 is %s", 
+				questionText,answer1,answer2,answer3,answer4,answer5);
 	}   
     
     
