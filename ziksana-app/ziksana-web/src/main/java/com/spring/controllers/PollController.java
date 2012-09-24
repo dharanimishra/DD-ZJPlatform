@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ziksana.domain.polls.PollQuestion;
-import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.service.polls.PollService;
 
 
@@ -37,13 +36,6 @@ public class PollController {
 	}
 	
 	
-	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
-	public @ResponseBody
-	PollQuestionResponse answerPoll(Integer memberRoleId, Integer pollQuestionId,Integer pollAnswerId)
-	{
-		return pollService.answerPoll(memberRoleId, pollQuestionId, pollAnswerId);
-		
-	}
 	
 	
 	
