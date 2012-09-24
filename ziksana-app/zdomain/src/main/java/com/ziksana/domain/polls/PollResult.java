@@ -13,8 +13,6 @@ public class PollResult {
 	private PollQuestion pollQuestion;
 	
 	
-	
-	
     private Integer ID;
 
     
@@ -36,7 +34,21 @@ public class PollResult {
     private Integer totalRespondents;
 
     
-    public Integer getID() {
+    
+    
+    
+    
+    
+    /**
+	 * @param pollQuestion
+	 */
+	public PollResult(PollQuestion pollQuestion) {
+		
+		this.pollQuestion = pollQuestion;
+	}
+
+
+	public Integer getID() {
         return ID;
     }
 

@@ -45,7 +45,7 @@ public class PollQuestionNResult {
 		}
 		
 		/**
-		 * This is a convenience method to determine the object is question or result. 
+		 * This is a convenience method to determine whether the object is question or result. 
 		 * @return true if this object is pollquestion. It returns false 
 		 * if the object is pollresult.
 		 */

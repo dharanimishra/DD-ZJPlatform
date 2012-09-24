@@ -66,13 +66,11 @@ public class PollServiceImplTest {
 	public void testPollResponse() {
 		MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
 		memberPersona.setMemberRoleId(Integer.valueOf(100));
-		PollResponse pollResponse = new PollResponse();
 		PollQuestion pollQuestion = new PollQuestion();
 		pollQuestion.setID(Integer.valueOf(2));
-		pollResponse.setPollQuestion(pollQuestion);
 		List<Integer> answers = new ArrayList();
 		answers.add(Integer.valueOf(1));
-		pollResponse.setAnswers(answers);
+		PollResponse pollResponse = new PollResponse(pollQuestion,answers);
 		pollService.pollResponse(memberPersona, pollResponse);
 		
 		
