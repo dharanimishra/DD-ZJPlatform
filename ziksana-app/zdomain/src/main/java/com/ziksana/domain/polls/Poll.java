@@ -14,13 +14,13 @@ public class Poll {
     private Integer pollType;
 
     
-    private Date pollStartDate;
+    private Date pollStartDate = null;
 
     
-    private Date pollEndDate;
+    private Date pollEndDate = null;
 
     
-    private Date displayEndDate;
+    private Date displayEndDate = null;
 
     
     private Integer pollVisibility;
@@ -66,31 +66,41 @@ public class Poll {
 
     
     public Date getPollStartDate() {
-        return pollStartDate;
+        if (null == pollStartDate)
+        	throw new NullPointerException("pollStartDate is null.");
+    	
+        return new Date(pollStartDate.getTime());
+        
     }
 
     
     public void setPollStartDate(Date pollStartDate) {
-        this.pollStartDate = pollStartDate;
+        this.pollStartDate = new Date(pollStartDate.getTime());
     }
 
     
     public Date getPollEndDate() {
-        return pollEndDate;
+    	if (null == pollEndDate)
+        	throw new NullPointerException("pollStartDate is null.");
+    	
+    	return new Date(pollEndDate.getTime());
     }
 
     
     public void setPollEndDate(Date pollEndDate) {
-        this.pollEndDate = pollEndDate;
+        this.pollEndDate = new Date(pollEndDate.getTime());
     }
 
     
     public Date getDisplayEndDate() {
-        return displayEndDate;
+        
+    	if (null == displayEndDate)
+        	throw new NullPointerException("pollStartDate is null.");
+        return new Date(displayEndDate.getTime());
     }
 
         public void setDisplayEndDate(Date displayEndDate) {
-        this.displayEndDate = displayEndDate;
+        this.displayEndDate = new Date(displayEndDate.getTime());
     }
 
     
@@ -132,6 +142,21 @@ public class Poll {
     public void setTargetedMemberRoleType(Integer targetedMemberRoleType) {
         this.targetedMemberRoleType = targetedMemberRoleType;
     }
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Poll [ID=" + ID + ", creatorMemberRoleId="
+				+ creatorMemberRoleId + ", pollType=" + pollType
+				+ ", pollStartDate=" + pollStartDate + ", pollEndDate="
+				+ pollEndDate + ", displayEndDate=" + displayEndDate
+				+ ", pollVisibility=" + pollVisibility + ", totalResponses="
+				+ totalResponses + ", targetedMemberRoleType="
+				+ targetedMemberRoleType + "]";
+	}
 	
 	
 	

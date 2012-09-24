@@ -1,6 +1,6 @@
 package com.ziksana.domain.polls;
 
-// import com.ziksana.util.image.ImageContainer;
+
 
 public class PollQuestionOption {
 

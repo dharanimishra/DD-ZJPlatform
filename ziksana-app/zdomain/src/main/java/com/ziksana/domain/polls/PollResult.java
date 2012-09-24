@@ -119,14 +119,14 @@ public class PollResult {
 	/**
 	 * @return the pollQUestion
 	 */
-	public PollQuestion getPollQUestion() {
+	public PollQuestion getPollQuestion() {
 		return pollQuestion;
 	}
 
 	/**
 	 * @param pollQUestion the pollQUestion to set
 	 */
-	public void setPollQUestion(PollQuestion pollQuestion) {
+	public void setPollQuestion(PollQuestion pollQuestion) {
 		this.pollQuestion = pollQuestion;
 	}
 
