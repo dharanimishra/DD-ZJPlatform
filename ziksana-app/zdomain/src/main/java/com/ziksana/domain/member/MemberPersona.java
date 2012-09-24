@@ -21,7 +21,7 @@ public class MemberPersona {
 
 	private int            memberRoleId;
 	private MemberRoleType roleType;
-	private Date           roleStartDate;
+	private Date           roleStartDate = null;
 	private Boolean        active;
 	private Boolean        doNotMarketIndicator;
 	private Integer        thumbnailPicturePath;
@@ -49,11 +49,11 @@ public class MemberPersona {
 	}
 
 	public Date getRoleStartDate() {
-		return roleStartDate;
+		return new Date(roleStartDate.getTime());
 	}
 
 	public void setRoleStartDate(Date roleStartDate) {
-		this.roleStartDate = roleStartDate;
+		this.roleStartDate = new Date(roleStartDate.getTime());
 	}
 
 	public Boolean getActive() {
