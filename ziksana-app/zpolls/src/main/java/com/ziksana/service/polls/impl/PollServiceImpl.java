@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -45,7 +46,7 @@ public class PollServiceImpl implements PollService {
 	public List<PollQuestionNResult> getPollQuestionsAndResults(
 			MemberPersona memberPersona) {
 		
-		
+		Validate.notNull(memberPersona, "MemberPersona cannot be null.");
 		List<PollResult> pollResults =  pollQuestionMapper.getPollResults(memberPersona.getMemberRoleId());
 		
 		List<PollQuestionNResult> pollQuestionsNResults = new ArrayList<PollQuestionNResult>();
@@ -76,7 +77,8 @@ public class PollServiceImpl implements PollService {
 	 */
 	@Override
 	public void pollResponse(MemberPersona memberPersona, PollResponse pollResponse) {
-		
+		 Validate.notNull(memberPersona, "MemberPersona cannot be null.");
+		 Validate.notNull(pollResponse,  "PollQuestion cannot be null.");		
 		 pollQuestionResponseMapper.createPollTrackerEntry(pollResponse.getPollQuestion().getID(), memberPersona.getMemberRoleId());
 		 pollQuestionResponseMapper.createPollResponse(pollResponse);
 		
@@ -90,6 +92,8 @@ public class PollServiceImpl implements PollService {
 	public PollResult getPollResult(MemberPersona memberPersona,
 			PollQuestion pollQuestion) {
 		
+		Validate.notNull(memberPersona, "MemberPersona cannot be null.");
+		Validate.notNull(pollQuestion,  "PollQuestion cannot be null.");
 		PollResult pollResult = pollQuestionResponseMapper.getPollResultByQuestion(pollQuestion.getID(), memberPersona.getMemberRoleId());
 		return pollResult;
 		

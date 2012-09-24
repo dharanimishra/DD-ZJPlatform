@@ -11,7 +11,7 @@ public class Poll {
     private Integer creatorMemberRoleId;
 
     
-    private Integer pollType;
+    private PollType pollType;
 
     
     private Date pollStartDate = null;
@@ -55,12 +55,12 @@ public class Poll {
     }
 
     
-    public Integer getPollType() {
+    public PollType getPollType() {
         return pollType;
     }
 
     
-    public void setPollType(Integer pollType) {
+    public void setPollType(PollType pollType) {
         this.pollType = pollType;
     }
 
