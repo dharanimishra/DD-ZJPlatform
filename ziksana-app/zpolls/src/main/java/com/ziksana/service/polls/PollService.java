@@ -30,11 +30,7 @@ public interface PollService {
 	
 	public PollResult getPollResult(MemberPersona memberPersona, PollQuestion pollQuestion);
 	
-    public List<PollQuestion>  getUnansweredPollQuestions(Integer memberRoleId);
-		
- 	
-	public int getTotalUnansweredQuestions(Integer memberRoleId);
-	
+    
 	
 	
 }

@@ -29,9 +29,10 @@ public class PollController {
 	
 	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
 	public @ResponseBody
-	List<PollQuestion> getUnansweredPollQuestions(Integer memberRoleId)
+	List<PollQuestion> getPollQuestions(Integer memberRoleId)
 	{
-		return pollService.getUnansweredPollQuestions(memberRoleId);
+		//TODO
+		return null;
 		
 	}
 	

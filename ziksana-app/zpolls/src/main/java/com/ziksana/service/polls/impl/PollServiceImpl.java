@@ -31,33 +31,15 @@ public class PollServiceImpl implements PollService {
 
 	private static Logger logger = Logger.getLogger(PollServiceImpl.class);
 	
-	@Autowired
-	public PollMapper pollMapper;
+	
 	@Autowired
 	public PollQuestionMapper pollQuestionMapper;
 	@Autowired
 	public PollQuestionResponseMapper pollQuestionResponseMapper;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.ziksana.service.polls.PollService#getPoll(java.lang.Integer)
-	 */
-	@Override
-	public List<PollQuestion> getUnansweredPollQuestions(Integer memberRoleId) {
-		logger.info("getPoll method is invoked");
-		return pollQuestionMapper.getPoll(memberRoleId);
-
-	}
+	
 
 	
-	
-	@Override
-	public int  getTotalUnansweredQuestions(Integer id) {
-		// TODO Auto-generated method stub
-		return pollQuestionMapper.getTotalQuestions(id);
-		
-	}
 
 	@Override
 	public List<PollQuestionNResult> getPollQuestionsAndResults(
