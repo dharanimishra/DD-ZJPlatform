@@ -16,6 +16,11 @@ import com.ziksana.domain.polls.PollResponse;
 public class PollSqlProvider {
     
 	public String updatePollResponseSql(PollResponse pollResponse) {
+		
+		if (null == pollResponse)
+			throw new IllegalArgumentException("PollResponse object is null");
+		
+		
 		List<Integer> answers = pollResponse.getAnswers();
 		//String setString = "answer" + answerId.intValue() + "Count";
 		BEGIN(); // Clears ThreadLocal variable
