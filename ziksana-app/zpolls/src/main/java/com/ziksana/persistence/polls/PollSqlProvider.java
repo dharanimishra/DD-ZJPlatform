@@ -42,5 +42,20 @@ public class PollSqlProvider {
 		return SQL();
 
 	}
+	
+	
+	public String getPollResultSql() {
+		BEGIN();
+		SELECT("utlzpollquestionresponse.*");
+		FROM("utlzpollquestionresponse");
+		FROM("utlzpolltracker");
+		WHERE("utlzpollquestionresponse.pollQuestionId=utlzpolltracker.pollQuestionId");
+		WHERE("utlzpolltracker.pollQuestionId=#{pollQuestionId}");
+		WHERE("utlzpolltracker.answeringMemberRoleId=#{answeringMemberRoleId}");
+		return SQL();
+	}
+	
+	
+	
 
 }

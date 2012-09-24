@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionNResult;
 import com.ziksana.domain.polls.PollResponse;
+import com.ziksana.domain.polls.PollResult;
 import com.ziksana.persistence.polls.PollQuestionMapper;
 import com.ziksana.service.polls.PollService;
 
@@ -34,25 +36,7 @@ public class PollServiceImplTest {
     private PollService pollService;
 	
 	
-	/*
-			
-	@Test
-	public void testGetPoll() {
-		
-		List<PollQuestion> pollQuestions = pollService.getUnansweredPollQuestions(Integer.valueOf(101));
-		Assert.isTrue(pollQuestions.size() == 1);
-		System.out.println(" pollquestion question is "+pollQuestions.get(0).getQuestionText());
-			
-	}
 	
-	
-	@Test
-	public void testGetTotalQuestions() {
-		int totalQuestions = pollService. getTotalUnansweredQuestions(Integer.valueOf(101));
-		Assert.isTrue(totalQuestions == 1, "total number of questions is not correct");
-	}
-	
-	*/
 	
 	@Test
 	public void testGetPollQuestionsAndResults() {
@@ -78,12 +62,12 @@ public class PollServiceImplTest {
 	
 	
 	@Test
-	public void testGetPollResponse() {
+	public void testPollResponse() {
 		MemberPersona memberPersona = new MemberPersona();
-		memberPersona.setMemberRoleId(Integer.valueOf(102));
+		memberPersona.setMemberRoleId(Integer.valueOf(100));
 		PollResponse pollResponse = new PollResponse();
 		PollQuestion pollQuestion = new PollQuestion();
-		pollQuestion.setID(Integer.valueOf(3));
+		pollQuestion.setID(Integer.valueOf(2));
 		pollResponse.setPollQuestion(pollQuestion);
 		List<Integer> answers = new ArrayList();
 		answers.add(Integer.valueOf(1));
@@ -93,6 +77,17 @@ public class PollServiceImplTest {
 		
 	}
 	
+	
+	@Test
+	public void testGetPollResult() {
+		MemberPersona memberPersona = new MemberPersona();
+		memberPersona.setMemberRoleId(Integer.valueOf(102));
+		PollQuestion pollQuestion = new PollQuestion();
+		pollQuestion.setID(Integer.valueOf(3));
+		PollResult pollResult =  pollService.getPollResult(memberPersona, pollQuestion);
+		Assert.isTrue(pollResult.getAnswer1Count() == 2);
+		
+	}
 	
 	
 	
