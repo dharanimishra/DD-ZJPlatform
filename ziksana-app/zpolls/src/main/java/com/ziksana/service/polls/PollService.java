@@ -10,9 +10,10 @@ import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.Poll;
 import com.ziksana.domain.polls.PollQuestion;
-import com.ziksana.domain.polls.PollQuestionNResult;
-import com.ziksana.domain.polls.PollResponse;
-import com.ziksana.domain.polls.PollResult;
+import com.ziksana.domain.polls.PollQuestionResponse;
+import com.ziksana.domain.polls.PollQuestionResult;
+import com.ziksana.domain.polls.PollResultNQuestion;
+
 
 /**
  * @author prabu
@@ -23,12 +24,12 @@ public interface PollService {
 	
 	
 	
-	public List<PollQuestionNResult> getPollQuestionsAndResults(MemberPersona memberPersona);
+	public List<PollResultNQuestion> getPollQuestionsAndResults(MemberPersona memberPersona);
 	
 	
-	public void  pollResponse(MemberPersona memberPersona,PollResponse pollResponse);
+	public void  pollResponse(MemberPersona memberPersona,PollQuestionResponse pollResponse);
 	
-	public PollResult getPollResult(MemberPersona memberPersona, PollQuestion pollQuestion);
+	public PollQuestionResult getPollResult(MemberPersona memberPersona, PollQuestion pollQuestion);
 	
     
 	

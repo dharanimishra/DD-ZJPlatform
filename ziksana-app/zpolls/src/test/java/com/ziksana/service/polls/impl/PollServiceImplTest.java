@@ -19,9 +19,9 @@ import org.springframework.util.Assert;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.domain.polls.PollQuestion;
-import com.ziksana.domain.polls.PollQuestionNResult;
-import com.ziksana.domain.polls.PollResponse;
-import com.ziksana.domain.polls.PollResult;
+import com.ziksana.domain.polls.PollQuestionResponse;
+import com.ziksana.domain.polls.PollQuestionResult;
+import com.ziksana.domain.polls.PollResultNQuestion;
 import com.ziksana.persistence.polls.PollQuestionMapper;
 import com.ziksana.service.polls.PollService;
 
@@ -39,22 +39,21 @@ public class PollServiceImplTest {
 	
 	
 	
-    @Ignore  @Test
+    @Test
 	public void testGetPollQuestionsAndResults() {
 		String questionText = "who wins the t20 world cup?";
 		MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
 		memberPersona.setMemberRoleId(Integer.valueOf(102));
-		List<PollQuestionNResult> pollQuestionNResults = pollService.getPollQuestionsAndResults(memberPersona);
+		List<PollResultNQuestion> pollQuestionNResults = pollService.getPollQuestionsAndResults(memberPersona);
 		
-		for (PollQuestionNResult pollQuestionNResult: pollQuestionNResults)
+		
+		for (PollResultNQuestion pollQuestionNResult: pollQuestionNResults)
 		{
-			if(pollQuestionNResult.isThisQuestion())
-			{
-			System.out.println("the questions is "+pollQuestionNResult.getPollQuestion());
-			Assert.isTrue(pollQuestionNResult.getPollQuestion().getQuestionText().equals(questionText));
-			}
+			
+			System.out.println(" the obejct is "+pollQuestionNResult);
 			
 		}
+		
 		
 		Assert.isTrue(pollQuestionNResults.size() == 3);
 		
@@ -62,7 +61,7 @@ public class PollServiceImplTest {
 	}
 	
 	
-    @Ignore  @Test
+    @Ignore @Test
 	public void testPollResponse() {
 		MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
 		memberPersona.setMemberRoleId(Integer.valueOf(100));
@@ -70,21 +69,23 @@ public class PollServiceImplTest {
 		pollQuestion.setID(Integer.valueOf(2));
 		List<Integer> answers = new ArrayList();
 		answers.add(Integer.valueOf(1));
-		PollResponse pollResponse = new PollResponse(pollQuestion,answers);
+		PollQuestionResponse pollResponse = new PollQuestionResponse();
+		pollResponse.setPollQuestion(pollQuestion);
+		pollResponse.setAnswers(answers);
 		pollService.pollResponse(memberPersona, pollResponse);
 		
 		
 	}
 	
 	
-	@Test
+    @Test
 	public void testGetPollResult() {
 		MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
 		memberPersona.setMemberRoleId(Integer.valueOf(102));
 		PollQuestion pollQuestion = new PollQuestion();
-		pollQuestion.setID(Integer.valueOf(3));
-		PollResult pollResult =  pollService.getPollResult(memberPersona, pollQuestion);
-		Assert.isTrue(pollResult.getAnswer1Count() == 2);
+		pollQuestion.setID(Integer.valueOf(2));
+		PollQuestionResult pollResult =  pollService.getPollResult(memberPersona, pollQuestion);
+		Assert.isTrue(pollResult.getAnswer1Count() == 5);
 		
 	}
 	

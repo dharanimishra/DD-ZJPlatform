@@ -7,23 +7,14 @@ import java.util.List;
 
 /**
  * @author prabu
- * 
+ *
  */
-public class PollResponse {
-
+public class PollQuestionResponse {
+	
 	private PollQuestion pollQuestion;
 
 	private List<Integer> answers;
 
-	/**
-	 * @param pollQuestion
-	 * @param answers
-	 */
-	public PollResponse(PollQuestion pollQuestion, List<Integer> answers) {
-
-		this.pollQuestion = pollQuestion;
-		this.answers = answers;
-	}
 
 	/**
 	 * @return the pollQuestion
@@ -33,14 +24,30 @@ public class PollResponse {
 	}
 
 	/**
+	 * @param pollQuestion the pollQuestion to set
+	 */
+	public void setPollQuestion(PollQuestion pollQuestion) {
+		this.pollQuestion = pollQuestion;
+	}
+
+	/**
 	 * @return the answers
 	 */
 	public List<Integer> getAnswers() {
 		return answers;
 	}
 
-	public Integer getPollQuestionId() {
+	/**
+	 * @param answers the answers to set
+	 */
+	public void setAnswers(List<Integer> answers) {
+		this.answers = answers;
+	}
+	
+	public Integer getPollQuestionId()
+	{
 		return pollQuestion.getID();
 	}
+	
 
 }

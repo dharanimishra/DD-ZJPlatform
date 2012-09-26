@@ -1,7 +1,8 @@
 package com.ziksana.persistence.polls;
 
 import com.ziksana.domain.polls.PollQuestion;
-import com.ziksana.domain.polls.PollResult;
+import com.ziksana.domain.polls.PollQuestionResult;
+
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -157,7 +158,7 @@ public interface PollQuestionMapper {
 		"utlzpolltracker.answeringMemberRoleId=#{userMemberRoleId} "
 
 	})
-	List<PollResult> getPollResults(Integer userMemberRoleId);
+	List<PollQuestionResult> getPollResults(Integer userMemberRoleId);
 	
 	
 	
@@ -179,7 +180,7 @@ public interface PollQuestionMapper {
 		"utlzpollquestion.ID  not in (select pollquestionid from utlzpolltracker where answeringmemberroleid=#{userMemberRoleId}) "
 		
 	})
-	List<PollQuestion> getPollQuestions(Integer userMemberRoleId);
+	List<PollQuestionEntity> getPollQuestions(Integer userMemberRoleId);
 	
 	
 	

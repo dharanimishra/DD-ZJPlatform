@@ -7,7 +7,8 @@ import static org.apache.ibatis.jdbc.SqlBuilder.*;
 
 import java.util.List;
 
-import com.ziksana.domain.polls.PollResponse;
+import com.ziksana.domain.polls.PollQuestionResponse;
+
 
 /**
  * @author prabu
@@ -15,7 +16,7 @@ import com.ziksana.domain.polls.PollResponse;
  */
 public class PollSqlProvider {
     
-	public String updatePollResponseSql(PollResponse pollResponse) {
+	public String updatePollResponseSql(PollQuestionResponse pollResponse) {
 		
 		if (null == pollResponse)
 			throw new IllegalArgumentException("PollResponse object is null");

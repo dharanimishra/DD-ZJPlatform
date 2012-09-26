@@ -11,14 +11,17 @@ import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.ziksana.common.exception.PollException;
 import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
-import com.ziksana.domain.polls.PollQuestionNResult;
-import com.ziksana.domain.polls.PollResponse;
-import com.ziksana.domain.polls.PollResult;
+import com.ziksana.domain.polls.PollQuestionOption;
+import com.ziksana.domain.polls.PollQuestionResponse;
+import com.ziksana.domain.polls.PollQuestionResult;
+import com.ziksana.domain.polls.PollResultNQuestion;
 
 import com.ziksana.persistence.polls.PollMapper;
+import com.ziksana.persistence.polls.PollQuestionEntity;
 import com.ziksana.persistence.polls.PollQuestionMapper;
 import com.ziksana.persistence.polls.PollQuestionResponseMapper;
 import com.ziksana.service.polls.PollService;
@@ -43,27 +46,50 @@ public class PollServiceImpl implements PollService {
 	
 
 	@Override
-	public List<PollQuestionNResult> getPollQuestionsAndResults(
+	public List<PollResultNQuestion> getPollQuestionsAndResults(
 			MemberPersona memberPersona) {
 		
 		Validate.notNull(memberPersona, "MemberPersona cannot be null.");
-		List<PollResult> pollResults =  pollQuestionMapper.getPollResults(memberPersona.getMemberRoleId());
+		List<PollQuestionResult> pollResults =  pollQuestionMapper.getPollResults(memberPersona.getMemberRoleId());
 		
-		List<PollQuestionNResult> pollQuestionsNResults = new ArrayList<PollQuestionNResult>();
+		List<PollResultNQuestion> pollQuestionsNResults = new ArrayList<PollResultNQuestion>();
 		
-		for (PollResult pollResult : pollResults)
+		for (PollQuestionResult pollResult : pollResults)
 		{
-			PollQuestionNResult pollQuestionResult = new PollQuestionNResult();
-			pollQuestionResult.setPollResult(pollResult);
+			PollResultNQuestion pollQuestionResult = new PollResultNQuestion();
+			try {
+				pollQuestionResult.setPollResult(pollResult);
+			} catch (PollException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			pollQuestionsNResults.add(pollQuestionResult);
 		}
 		
-		List<PollQuestion> pollQuestions =  pollQuestionMapper.getPollQuestions(memberPersona.getMemberRoleId());
+		List<PollQuestionEntity> pollQuestions =  pollQuestionMapper.getPollQuestions(memberPersona.getMemberRoleId());
 		
-		for(PollQuestion pollQuestion: pollQuestions)
+		for(PollQuestionEntity pollQuestionEntity: pollQuestions)
 		{
-			PollQuestionNResult pollQuestionResult = new PollQuestionNResult();
-			pollQuestionResult.setPollQuestion(pollQuestion);
+			PollResultNQuestion pollQuestionResult = new PollResultNQuestion();
+			//Transformation from pollquestion entity to pollquestion domain object 
+			//needs to happen here 
+			
+			PollQuestion pollQuestion = new PollQuestion();
+			pollQuestion.setID(pollQuestionEntity.getID());
+			System.out.println("QUESTION TEXT IS "+pollQuestionEntity.getQuestionText());
+			pollQuestion.setQuestionText(pollQuestionEntity.getQuestionText());
+			List<PollQuestionOption> options = new ArrayList<PollQuestionOption>();
+			addOptions(options, pollQuestionEntity);
+				
+			pollQuestion.setOptions(options);
+			
+			
+			try {
+				pollQuestionResult.setPollQuestion(pollQuestion);
+			} catch (PollException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			pollQuestionsNResults.add(pollQuestionResult);
 			
 		}
@@ -76,11 +102,11 @@ public class PollServiceImpl implements PollService {
 	 * @see com.ziksana.service.polls.PollService#pollResponse(com.ziksana.domain.member.Member, com.ziksana.domain.polls.PollResponse)
 	 */
 	@Override
-	public void pollResponse(MemberPersona memberPersona, PollResponse pollResponse) {
+	public void pollResponse(MemberPersona memberPersona, PollQuestionResponse pollQuestionResponse) {
 		 Validate.notNull(memberPersona, "MemberPersona cannot be null.");
-		 Validate.notNull(pollResponse,  "PollQuestion cannot be null.");		
-		 pollQuestionResponseMapper.createPollTrackerEntry(pollResponse.getPollQuestion().getID(), memberPersona.getMemberRoleId());
-		 pollQuestionResponseMapper.createPollResponse(pollResponse);
+		 Validate.notNull(pollQuestionResponse,  "PollQuestion cannot be null.");		
+		 pollQuestionResponseMapper.createPollTrackerEntry(pollQuestionResponse.getPollQuestion().getID(), memberPersona.getMemberRoleId());
+		 pollQuestionResponseMapper.createPollResponse(pollQuestionResponse);
 		
 		
 	}
@@ -89,18 +115,45 @@ public class PollServiceImpl implements PollService {
 	 * @see com.ziksana.service.polls.PollService#getPollResult(com.ziksana.domain.member.Member, com.ziksana.domain.polls.PollQuestion)
 	 */
 	@Override
-	public PollResult getPollResult(MemberPersona memberPersona,
+	public PollQuestionResult getPollResult(MemberPersona memberPersona,
 			PollQuestion pollQuestion) {
 		
 		Validate.notNull(memberPersona, "MemberPersona cannot be null.");
 		Validate.notNull(pollQuestion,  "PollQuestion cannot be null.");
-		PollResult pollResult = pollQuestionResponseMapper.getPollResultByQuestion(pollQuestion.getID(), memberPersona.getMemberRoleId());
+		PollQuestionResult pollResult = pollQuestionResponseMapper.getPollResultByQuestion(pollQuestion.getID(), memberPersona.getMemberRoleId());
 		return pollResult;
 		
 		
 	}
 	
 	
+	private void addOptions(List<PollQuestionOption> options, PollQuestionEntity pollQuestionEntity)
+	{
+		if (pollQuestionEntity.getAnswer1() != null)
+		options.add(getOption(pollQuestionEntity.getAnswer1()));
+		
+		if (pollQuestionEntity.getAnswer2() != null)
+		options.add(getOption(pollQuestionEntity.getAnswer2()));
+		
+		if (pollQuestionEntity.getAnswer3() != null)
+		options.add(getOption(pollQuestionEntity.getAnswer3()));
+		
+		if (pollQuestionEntity.getAnswer4() != null)
+		options.add(getOption(pollQuestionEntity.getAnswer4()));
+		
+		if (pollQuestionEntity.getAnswer5() != null)
+		options.add(getOption(pollQuestionEntity.getAnswer5()));
+		
+		
+		
+	}
+	
+	private PollQuestionOption getOption(String text)
+	{
+		PollQuestionOption pollQuestionOption = new PollQuestionOption();
+		pollQuestionOption.setText(text);
+		return pollQuestionOption;
+	}
 	
 
 }

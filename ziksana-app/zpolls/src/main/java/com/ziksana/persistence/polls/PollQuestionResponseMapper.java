@@ -10,8 +10,9 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 
 
-import com.ziksana.domain.polls.PollResponse;
-import com.ziksana.domain.polls.PollResult;
+import com.ziksana.domain.polls.PollQuestionResponse;
+import com.ziksana.domain.polls.PollQuestionResult;
+
 
 public interface PollQuestionResponseMapper {
    
@@ -24,13 +25,13 @@ public interface PollQuestionResponseMapper {
       
       
       @UpdateProvider(type = PollSqlProvider.class, method = "updatePollResponseSql")		  
-      public void  createPollResponse(PollResponse pollResponse);
+      public void  createPollResponse(PollQuestionResponse pollQuestionResponse);
       
       @InsertProvider(type = PollSqlProvider.class, method = "createPollTrackerSql")
       public void createPollTrackerEntry(@Param("pollQuestionId") Integer pollQuestionId, @Param("answeringMemberRoleId") Integer answeringMemberRoleId);
       
       @SelectProvider(type = PollSqlProvider.class, method = "getPollResultSql")
-      public PollResult getPollResultByQuestion(@Param("pollQuestionId") Integer pollQuestionId, @Param("answeringMemberRoleId") Integer answeringMemberRoleId);
+      public PollQuestionResult getPollResultByQuestion(@Param("pollQuestionId") Integer pollQuestionId, @Param("answeringMemberRoleId") Integer answeringMemberRoleId);
       
       
       
