@@ -44,8 +44,15 @@ public class PollQuestionResponse {
 		this.answers = answers;
 	}
 	
+	/**
+	 * This is a convenience method , required by mybatis mapper. 
+	 * @return
+	 */
 	public Integer getPollQuestionId()
 	{
+		if (pollQuestion == null)
+			throw new NullPointerException(" Poll Question object is null");
+		
 		return pollQuestion.getID();
 	}
 	

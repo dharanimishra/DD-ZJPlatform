@@ -129,6 +129,10 @@ public class PollServiceImpl implements PollService {
 	
 	private void addOptions(List<PollQuestionOption> options, PollQuestionEntity pollQuestionEntity)
 	{
+		assert pollQuestionEntity != null;
+		
+				
+				
 		if (pollQuestionEntity.getAnswer1() != null)
 		options.add(getOption(pollQuestionEntity.getAnswer1()));
 		

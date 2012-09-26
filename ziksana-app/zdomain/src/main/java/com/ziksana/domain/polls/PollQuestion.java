@@ -9,10 +9,12 @@ import com.ziksana.domain.member.MemberPersona;
 
 
 
-public class PollQuestion {
+public class PollQuestion implements Comparable<PollQuestion> {
 	
 	  
 	
+	
+
 	private Integer                  ID            = null;
     private Poll                     parent        = null;
     private MemberPersona            creatorMember = null;
@@ -105,7 +107,21 @@ public class PollQuestion {
     public String toString() {
     	// TODO: create a string and return
     	return String.format("Question text is %s ", questionText);
-    }   
+    }
+    
+    
+    /**
+     * currently we are using pollEndDate for comparison.If it returned 0, 
+     * that doesnt mean both objects are equal. 
+     */
+	@Override
+	public int compareTo(PollQuestion question) {
+		
+		return parent.getPollEndDate().compareTo(question.getPoll().getPollEndDate());
+			
+		
+	}
+	
     
     
 }
