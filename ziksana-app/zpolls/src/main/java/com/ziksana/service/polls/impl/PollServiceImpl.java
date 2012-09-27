@@ -80,7 +80,6 @@ public class PollServiceImpl implements PollService {
 			pollQuestion.setQuestionText(pollQuestionEntity.getQuestionText());
 			List<PollQuestionOption> options = new ArrayList<PollQuestionOption>();
 			addOptions(options, pollQuestionEntity);
-				
 			pollQuestion.setOptions(options);
 			
 			
