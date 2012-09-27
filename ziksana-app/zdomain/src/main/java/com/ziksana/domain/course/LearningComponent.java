@@ -2,7 +2,22 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-public class LearningComponent {
+import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.domain.utilz.SubjectClassification;
+
+/**
+ * @author bhashasp
+ */
+public class LearningComponent extends AuditHistory{
+	
+
+	public LearningComponent(){
+		
+	}
+	public LearningComponent(LearningComponentType learningComponentType) {
+		this.learningComponentType = learningComponentType;
+	}
 
 	/**
 	 * This field corresponds property ID
@@ -21,15 +36,8 @@ public class LearningComponent {
 
 	/**
 	 * This field corresponds property CourseStatus<br>
-	 * ID for Course Status
 	 */
-	private Integer courseStatus;
-
-	/**
-	 * Description of the course status attribute<br>
-	 * Description for Course Status{Id}
-	 */
-	private String courseStatusDesc;
+	private CourseStatus courseStatus;
 
 	/**
 	 * This field corresponds property Weightage
@@ -71,45 +79,24 @@ public class LearningComponent {
 	private Boolean prescribedLODuration;
 
 	/**
-	 * This field corresponds to the property createdBy { User who creates }
-	 */
-	private String createdBy;
-
-	/**
-	 * This field corresponds to the property createdOn { Creation Date)
-	 */
-	private Date createdOn;
-
-	/**
-	 * This field corresponds to the property createdBy {User who modified }
-	 */
-	private String modifiedBy;
-
-	/**
-	 * This field corresponds to the property createdBy { modified date}
-	 */
-	private Date modifiedOn;
-
-	/**
 	 * This field corresponds property learningComponentTypeId
 	 */
-	private Integer learningComponentTypeId;
+	private LearningComponentType learningComponentType;
 
 	/**
-	 * This field corresponds property courseId
+	 * This field corresponds property course
 	 */
-	private Integer courseId;
+	private Course course;
 
 	/**
-	 * This field corresponds property memberRoleId
+	 * This field corresponds property memberPersona
 	 */
-	private Integer authorMemberPersonaId;
+	private MemberPersona authoredMember;
 
 	/**
-	 * This field corresponds property subjClassificationId
+	 * This field corresponds property subjClassification
 	 */
-	private Integer subjClassificationId;
-
+	private SubjectClassification subjClassification;
 	/**
 	 * This field corresponds property ExtraCredits<br>
 	 * Maximum Length:5
@@ -121,241 +108,6 @@ public class LearningComponent {
 	 * about LearningComponent
 	 */
 	private LearningComponentDetails learningComponentDetails;
-
-	/**
-	 * This method returns the value of the database column property
-	 * learningComponentId
-	 * 
-	 * @return the value of property learningComponentId
-	 */
-	public Integer getLearningComponentId() {
-		return learningComponentId;
-	}
-
-	/**
-	 * This method sets the value of the database column property
-	 * learningComponentId
-	 * 
-	 * @param learningComponentId
-	 *            the value for property learningComponentId
-	 */
-	public void setLearningComponentId(Integer learningComponentId) {
-		this.learningComponentId = learningComponentId;
-	}
-
-	/**
-	 * This method returns the value of the database column property validfrom
-	 * 
-	 * @return the value of property validfrom
-	 */
-	public Date getValidFrom() {
-		return validFrom;
-	}
-
-	/**
-	 * This method sets the value of the database column property validfrom
-	 * 
-	 * @param validfrom
-	 *            the value for property validfrom
-	 */
-	public void setValidFrom(Date validFrom) {
-		this.validFrom = validFrom;
-	}
-
-	/**
-	 * This method returns the value of the database column property validTo
-	 * 
-	 * @return the value of property validTo
-	 */
-	public Date getValidTo() {
-		return validTo;
-	}
-
-	/**
-	 * This method sets the value of the database column property validTo
-	 * 
-	 * @param validTo
-	 *            the value for property validTo
-	 */
-	public void setValidTo(Date validTo) {
-		this.validTo = validTo;
-	}
-
-	/**
-	 * This method returns the value of the database column property
-	 * CourseStatus
-	 * 
-	 * @return the value of property CourseStatus
-	 */
-	public Integer getCourseStatus() {
-		return courseStatus;
-	}
-
-	/**
-	 * This method sets the value of the database column property CourseStatus
-	 * 
-	 * @param courseStatus
-	 *            the value for property CourseStatus
-	 */
-	public void setCourseStatus(Integer courseStatus) {
-		this.courseStatus = courseStatus;
-	}
-
-	/**
-	 * This method returns the value of the database column property Weightage
-	 * 
-	 * @return the value of property Weightage
-	 */
-	public Integer getWeightage() {
-		return weightage;
-	}
-
-	/**
-	 * This method sets the value of the database column property Weightage
-	 * 
-	 * @param weightage
-	 *            the value for property Weightage
-	 */
-	public void setWeightage(Integer weightage) {
-		this.weightage = weightage;
-	}
-
-	/**
-	 * This method returns the value of the database column property
-	 * TotalCredits
-	 * 
-	 * @return the value of property TotalCredits
-	 */
-	public String getTotalCredits() {
-		return totalCredits;
-	}
-
-	/**
-	 * This method sets the value of the database column property TotalCredits
-	 * 
-	 * @param totalCredits
-	 *            the value for property TotalCredits
-	 */
-	public void setTotalCredits(String totalCredits) {
-		this.totalCredits = totalCredits == null ? null : totalCredits.trim();
-	}
-
-	/**
-	 * This method returns the value of the database column property
-	 * ExtraCreditsIndicator
-	 * 
-	 * @return the value of property ExtraCreditsIndicator
-	 */
-	public Boolean getExtraCreditsIndicator() {
-		return extraCreditsIndicator;
-	}
-
-	/**
-	 * This method sets the value of the database column property
-	 * ExtraCreditsIndicator
-	 * 
-	 * @param extraCreditsIndicator
-	 *            the value for property ExtraCreditsIndicator
-	 */
-	public void setExtraCreditsIndicator(Boolean extraCreditsIndicator) {
-		this.extraCreditsIndicator = extraCreditsIndicator;
-	}
-
-	/**
-	 * This method returns the value of the database column property
-	 * ExtraCredits
-	 * 
-	 * @return the value of property ExtraCredits
-	 */
-	public String getExtraCredits() {
-		return extraCredits;
-	}
-
-	/**
-	 * This method sets the value of the database column property ExtraCredits
-	 * 
-	 * @param extraCredits
-	 *            the value for property ExtraCredits
-	 */
-	public void setExtraCredits(String extraCredits) {
-		this.extraCredits = extraCredits == null ? null : extraCredits.trim();
-	}
-
-	/**
-	 * @return the courseId
-	 */
-	public Integer getCourseId() {
-		return courseId;
-	}
-
-	/**
-	 * @param courseId
-	 *            the courseId to set
-	 */
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
-	}
-
-	/**
-	 * @return the subjClassificationId
-	 */
-	public Integer getSubjClassificationId() {
-		return subjClassificationId;
-	}
-
-	/**
-	 * @param subjClassificationId
-	 *            the subjClassificationId to set
-	 */
-	public void setSubjClassificationId(Integer subjClassificationId) {
-		this.subjClassificationId = subjClassificationId;
-	}
-
-	/**
-	 * @return the learningComponentTypeId
-	 */
-	public Integer getLearningComponentTypeId() {
-		return learningComponentTypeId;
-	}
-
-	/**
-	 * @param learningComponentTypeId
-	 *            the learningComponentTypeId to set
-	 */
-	public void setLearningComponentTypeId(Integer learningComponentTypeId) {
-		this.learningComponentTypeId = learningComponentTypeId;
-	}
-
-	/**
-	 * @return the courseStatusDesc
-	 */
-	public String getCourseStatusDesc() {
-		return courseStatusDesc;
-	}
-
-	/**
-	 * @param courseStatusDesc
-	 *            the courseStatusDesc to set
-	 */
-	public void setCourseStatusDesc(String courseStatusDesc) {
-		this.courseStatusDesc = courseStatusDesc;
-	}
-
-	/**
-	 * @return the authorMemberPersonaId
-	 */
-	public Integer getAuthorMemberPersona() {
-		return authorMemberPersonaId;
-	}
-
-	/**
-	 * @param authorMemberPersonaId
-	 *            the authorMemberPersonaId to set
-	 */
-	public void setAuthorMemberPersona(Integer authorMemberPersonaId) {
-		this.authorMemberPersonaId = authorMemberPersonaId;
-	}
-
 	/**
 	 * @return the learningComponentDetails
 	 */
@@ -370,6 +122,132 @@ public class LearningComponent {
 	public void setLearningComponentDetails(
 			LearningComponentDetails learningComponentDetails) {
 		this.learningComponentDetails = learningComponentDetails;
+	}
+
+
+	/**
+	 * This method returns the value of the database column property
+	 * learningComponentId
+	 * @return the value of property learningComponentId
+	 */
+	public Integer getLearningComponentId() {
+		return learningComponentId;
+	}
+
+	/**
+	 * This method sets the value of the database column property
+	 * learningComponentId
+	 * @param learningComponentId
+	 *            the value for property learningComponentId
+	 */
+	public void setLearningComponentId(Integer learningComponentId) {
+		this.learningComponentId = learningComponentId;
+	}
+
+	/**
+	 * This method returns the value of the database column property validfrom
+	 * @return the value of property validfrom
+	 */
+	public Date getValidFrom() {
+		return validFrom;
+	}
+
+	/**
+	 * This method sets the value of the database column property validfrom
+	 * @param validfrom
+	 *            the value for property validfrom
+	 */
+	public void setValidFrom(Date validFrom) {
+		this.validFrom = validFrom;
+	}
+
+	/**
+	 * This method returns the value of the database column property validTo
+	 * @return the value of property validTo
+	 */
+	public Date getValidTo() {
+		return validTo;
+	}
+
+	/**
+	 * This method sets the value of the database column property validTo
+	 * @param validTo
+	 *            the value for property validTo
+	 */
+	public void setValidTo(Date validTo) {
+		this.validTo = validTo;
+	}
+
+	/**
+	 * This method returns the value of the database column property Weightage
+	 * @return the value of property Weightage
+	 */
+	public Integer getWeightage() {
+		return weightage;
+	}
+
+	/**
+	 * This method sets the value of the database column property Weightage
+	 * @param weightage
+	 *            the value for property Weightage
+	 */
+	public void setWeightage(Integer weightage) {
+		this.weightage = weightage;
+	}
+
+	/**
+	 * This method returns the value of the database column property
+	 * TotalCredits
+	 * @return the value of property TotalCredits
+	 */
+	public String getTotalCredits() {
+		return totalCredits;
+	}
+
+	/**
+	 * This method sets the value of the database column property TotalCredits
+	 * @param totalCredits
+	 *            the value for property TotalCredits
+	 */
+	public void setTotalCredits(String totalCredits) {
+		this.totalCredits = totalCredits == null ? null : totalCredits.trim();
+	}
+
+	/**
+	 * This method returns the value of the database column property
+	 * ExtraCreditsIndicator
+	 * @return the value of property ExtraCreditsIndicator
+	 */
+	public Boolean getExtraCreditsIndicator() {
+		return extraCreditsIndicator;
+	}
+
+	/**
+	 * This method sets the value of the database column property
+	 * ExtraCreditsIndicator
+	 * @param extraCreditsIndicator
+	 *            the value for property ExtraCreditsIndicator
+	 */
+	public void setExtraCreditsIndicator(Boolean extraCreditsIndicator) {
+		this.extraCreditsIndicator = extraCreditsIndicator;
+	}
+
+	/**
+	 * This method returns the value of the database column property
+	 * ExtraCredits
+	 * @return the value of property ExtraCredits
+	 */
+	public String getExtraCredits() {
+		return extraCredits;
+	}
+
+	/**
+	 * This method sets the value of the database column property ExtraCredits
+	 * @param extraCredits
+	 *            the value for property ExtraCredits
+	 */
+	public void setExtraCredits(String extraCredits) {
+		this.extraCredits = extraCredits == null ? null : extraCredits.trim();
 	}
 
 	/**
@@ -431,65 +309,81 @@ public class LearningComponent {
 	public void setPrescribedLODuration(Boolean prescribedLODuration) {
 		this.prescribedLODuration = prescribedLODuration;
 	}
-
 	/**
-	 * @return the createdBy
+	 * @return the courseStatus
 	 */
-	public String getCreatedBy() {
-		return createdBy;
+	public CourseStatus getCourseStatus() {
+		return courseStatus;
 	}
 
 	/**
-	 * @param createdBy
-	 *            the createdBy to set
+	 * @param courseStatus the courseStatus to set
 	 */
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
+	public void setCourseStatus(CourseStatus courseStatus) {
+		this.courseStatus = courseStatus;
 	}
 
 	/**
-	 * @return the createdOn
+	 * @return the learningComponentType
 	 */
-	public Date getCreatedOn() {
-		return createdOn;
+	public LearningComponentType getLearningComponentType() {
+		return learningComponentType;
 	}
 
 	/**
-	 * @param createdOn
-	 *            the createdOn to set
+	 * @param learningComponentType the learningComponentType to set
 	 */
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
+	public void setLearningComponentType(LearningComponentType learningComponentType) {
+		this.learningComponentType = learningComponentType;
 	}
 
 	/**
-	 * @return the modifiedBy
+	 * @return the course
 	 */
-	public String getModifiedBy() {
-		return modifiedBy;
+	public Course getCourse() {
+		return course;
 	}
 
 	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
+	 * @param course the course to set
 	 */
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	/**
-	 * @return the modifiedOn
+	 * @return the authoredMember
 	 */
-	public Date getModifiedOn() {
-		return modifiedOn;
+	public MemberPersona getAuthoredMember() {
+		return authoredMember;
 	}
 
 	/**
-	 * @param modifiedOn
-	 *            the modifiedOn to set
+	 * @param authoredMember the authoredMember to set
 	 */
-	public void setModifiedOn(Date modifiedOn) {
-		this.modifiedOn = modifiedOn;
+	public void setAuthoredMember(MemberPersona authoredMember) {
+		this.authoredMember = authoredMember;
 	}
 
+	/**
+	 * @return the subjClassification
+	 */
+	public SubjectClassification getSubjClassification() {
+		return subjClassification;
+	}
+
+	/**
+	 * @param subjClassification the subjClassification to set
+	 */
+	public void setSubjClassification(SubjectClassification subjClassification) {
+		this.subjClassification = subjClassification;
+	}
+
+	@Override
+	public String toString() {
+		return "LearningComponent [validFrom=" + validFrom + ", validTo="
+				+ validTo + ", courseStatus=" + courseStatus
+				+ ", learningObjIndictor=" + learningObjIndictor
+				+ ", learningComponentType=" + learningComponentType + "]";
+	}
 }

@@ -2,7 +2,15 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-public class LearningComponentContent {
+import com.ziksana.domain.common.AuditHistory;
+
+public class LearningComponentContent extends AuditHistory{
+
+	public LearningComponentContent(LearningComponent learningComponent,
+			LearningContent baseLearningContentId) {
+		this.learningComponent = learningComponent;
+		this.baseLearningContentId = baseLearningContentId;
+	}
 
 	/**
 	 * This field corresponds property learningComponentContentId
@@ -19,24 +27,12 @@ public class LearningComponentContent {
 	 * This field corresponds to the property CourseStatus<br>
 	 * ID for Course Status
 	 */
-	private Integer courseStatus;
-
-	/**
-	 * Description of the course status attribute<br>
-	 * Description for Course Status Id
-	 */
-	private String courseStatusDesc;
+	private CourseStatus courseStatus;
 
 	/**
 	 * This field corresponds property ContentType
 	 */
-	private Integer contentType;
-
-	/**
-	 * This attribute hold the description for attribute contentType<br>
-	 * Description for contentType {Id}
-	 */
-	private String contentTypesDesc;
+	private ContentType contentType;
 
 	/**
 	 * This field corresponds property ContentDescription,br> Maximum Length:45
@@ -51,33 +47,19 @@ public class LearningComponentContent {
 	/**
 	 * This field corresponds property ContentVersionUsed
 	 */
-	private Integer contentVersion;
+	private Integer contentVersionUsed;
 
-	/**
-	 * This field corresponds to the property createdBy { User who creates }
-	 */
-	private String createdBy;
+	private LearningComponent learningComponent;
 
-	/**
-	 * This field corresponds to the property createdOn { Creation Date)
-	 */
-	private Date createdOn;
+	private LearningComponentContent SynchronizeWithVideoId;
 
-	/**
-	 * This field corresponds to the property createdBy {User who modified }
-	 */
-	private String modifiedBy;
-
-	/**
-	 * This field corresponds to the property createdBy { modified date}
-	 */
-	private Date modifiedOn;
+	private LearningContent baseLearningContentId;
 
 	/**
 	 * Contains the information about associations/composition and more
 	 * information
 	 */
-	private LearrningComponentContentDetails learrningComponentContentDetails;
+	private LearningComponentContentDetails learningComponentContentDetails;
 
 	/**
 	 * This method returns the value of the property learningComponentContentId
@@ -117,44 +99,8 @@ public class LearningComponentContent {
 		this.creationDate = creationDate;
 	}
 
-	/**
-	 * This method returns the value of the property CourseStatus
-	 * 
-	 * @return the value of property CourseStatus
-	 */
-	public Integer getCourseStatus() {
-		return courseStatus;
-	}
-
-	/**
-	 * This method sets the value of the property CourseStatus
-	 * 
-	 * @param courseStatus
-	 *            the value for property CourseStatus
-	 */
-	public void setCourseStatus(Integer courseStatus) {
-		this.courseStatus = courseStatus;
-	}
-
-	/**
-	 * This method returns the value of the property ContentType
-	 * 
-	 * @return the value of property ContentType
-	 */
-	public Integer getContentType() {
-		return contentType;
-	}
-
-	/**
-	 * This method sets the value of the property ContentType
-	 * 
-	 * @param contentType
-	 *            the value for property ContentType
-	 */
-	public void setContentType(Integer contentType) {
-		this.contentType = contentType;
-	}
-
+	
+	
 	/**
 	 * This method returns the value of the property ContentDescription
 	 * 
@@ -199,8 +145,8 @@ public class LearningComponentContent {
 	 * 
 	 * @return the value of property ContentVersionUsed
 	 */
-	public Integer getContentVersion() {
-		return contentVersion;
+	public Integer getContentVersionUsed() {
+		return contentVersionUsed;
 	}
 
 	/**
@@ -209,114 +155,93 @@ public class LearningComponentContent {
 	 * @param contentVersionUsed
 	 *            the value for property ContentVersionUsed
 	 */
-	public void setContentVersion(Integer contentVersion) {
-		this.contentVersion = contentVersion;
+	public void setContentVersionUsed(Integer contentVersionUsed) {
+		this.contentVersionUsed = contentVersionUsed;
 	}
-
-	/**
-	 * @return the courseStatusDesc
-	 */
-	public String getCourseStatusDesc() {
-		return courseStatusDesc;
-	}
-
-	/**
-	 * @param courseStatusDesc
-	 *            the courseStatusDesc to set
-	 */
-	public void setCourseStatusDesc(String courseStatusDesc) {
-		this.courseStatusDesc = courseStatusDesc;
-	}
-
-	/**
-	 * @return the contentTypesDesc
-	 */
-	public String getContentTypesDesc() {
-		return contentTypesDesc;
-	}
-
-	/**
-	 * @param contentTypesDesc
-	 *            the contentTypesDesc to set
-	 */
-	public void setContentTypesDesc(String contentTypesDesc) {
-		this.contentTypesDesc = contentTypesDesc;
-	}
-
 	/**
 	 * @return the learrningComponentContentDetails
 	 */
-	public LearrningComponentContentDetails getLearrningComponentContentDetails() {
-		return learrningComponentContentDetails;
+	public LearningComponentContentDetails getLearrningComponentContentDetails() {
+		return learningComponentContentDetails;
 	}
 
 	/**
-	 * @param learrningComponentContentDetails
+	 * @param learningComponentContentDetails
 	 *            the learrningComponentContentDetails to set
 	 */
 	public void setLearrningComponentContentDetails(
-			LearrningComponentContentDetails learrningComponentContentDetails) {
-		this.learrningComponentContentDetails = learrningComponentContentDetails;
+			LearningComponentContentDetails learningComponentContentDetails) {
+		this.learningComponentContentDetails = learningComponentContentDetails;
 	}
 
 	/**
-	 * @return the createdBy
+	 * @return the courseStatus
 	 */
-	public String getCreatedBy() {
-		return createdBy;
+	public CourseStatus getCourseStatus() {
+		return courseStatus;
 	}
 
 	/**
-	 * @param createdBy
-	 *            the createdBy to set
+	 * @param courseStatus the courseStatus to set
 	 */
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
+	public void setCourseStatus(CourseStatus courseStatus) {
+		this.courseStatus = courseStatus;
 	}
 
 	/**
-	 * @return the createdOn
+	 * @return the contentType
 	 */
-	public Date getCreatedOn() {
-		return createdOn;
+	public ContentType getContentType() {
+		return contentType;
 	}
 
 	/**
-	 * @param createdOn
-	 *            the createdOn to set
+	 * @param contentType the contentType to set
 	 */
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
+	public void setContentType(ContentType contentType) {
+		this.contentType = contentType;
 	}
 
 	/**
-	 * @return the modifiedBy
+	 * @return the learningComponent
 	 */
-	public String getModifiedBy() {
-		return modifiedBy;
+	public LearningComponent getLearningComponent() {
+		return learningComponent;
 	}
 
 	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
+	 * @param learningComponent the learningComponent to set
 	 */
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
+	public void setLearningComponent(LearningComponent learningComponent) {
+		this.learningComponent = learningComponent;
 	}
 
 	/**
-	 * @return the modifiedOn
+	 * @return the synchronizeWithVideoId
 	 */
-	public Date getModifiedOn() {
-		return modifiedOn;
+	public LearningComponentContent getSynchronizeWithVideoId() {
+		return SynchronizeWithVideoId;
 	}
 
 	/**
-	 * @param modifiedOn
-	 *            the modifiedOn to set
+	 * @param synchronizeWithVideoId the synchronizeWithVideoId to set
 	 */
-	public void setModifiedOn(Date modifiedOn) {
-		this.modifiedOn = modifiedOn;
+	public void setSynchronizeWithVideoId(LearningComponentContent synchronizeWithVideoId) {
+		SynchronizeWithVideoId = synchronizeWithVideoId;
+	}
+
+	/**
+	 * @return the baseLearningContentId
+	 */
+	public LearningContent getBaseLearningContentId() {
+		return baseLearningContentId;
+	}
+
+	/**
+	 * @param baseLearningContentId the baseLearningContentId to set
+	 */
+	public void setBaseLearningContentId(LearningContent baseLearningContentId) {
+		this.baseLearningContentId = baseLearningContentId;
 	}
 
 }

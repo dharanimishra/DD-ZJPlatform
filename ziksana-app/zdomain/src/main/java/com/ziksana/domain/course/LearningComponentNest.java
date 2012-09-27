@@ -2,7 +2,17 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-public class LearningComponentNest {
+import com.ziksana.domain.common.AuditHistory;
+
+public class LearningComponentNest extends AuditHistory{
+	
+	public LearningComponentNest(LearningComponent learningComponentParent,
+			LearningComponent learningComponentNest) {
+		super();
+		this.learningComponentParent = learningComponentParent;
+		this.learningComponentNest = learningComponentNest;
+	}
+
 	/**
 	 * This field corresponds property componentNestId
 	 */
@@ -21,36 +31,15 @@ public class LearningComponentNest {
 	/**
 	 * This field corresponds property learningComponentParentId
 	 */
-	private Integer learningComponentParentId;
+	private LearningComponent learningComponentParent;
 
 	/**
 	 * This field corresponds property learningComponentNestId
 	 */
-	private Integer learningComponentNestId;
-
-	/**
-	 * This field corresponds to the property createdBy { User who creates }
-	 */
-	private String createdBy;
-
-	/**
-	 * This field corresponds to the property createdOn { Creation Date)
-	 */
-	private Date createdOn;
-
-	/**
-	 * This field corresponds to the property createdBy {User who modified }
-	 */
-	private String modifiedBy;
-
-	/**
-	 * This field corresponds to the property createdBy { modified date}
-	 */
-	private Date modifiedOn;
+	private LearningComponent learningComponentNest;
 
 	/**
 	 * This method returns the value of property componentNestId
-	 * 
 	 * @return the value of property componentNestId
 	 */
 	public Integer getComponentNestId() {
@@ -59,7 +48,6 @@ public class LearningComponentNest {
 
 	/**
 	 * This method sets the value of property componentNestId
-	 * 
 	 * @param componentNestId
 	 *            the value for property componentNestId
 	 */
@@ -69,7 +57,6 @@ public class LearningComponentNest {
 
 	/**
 	 * This method returns the value of property CreationDate
-	 * 
 	 * @return the value of property CreationDate
 	 */
 	public Date getCreationDate() {
@@ -78,7 +65,6 @@ public class LearningComponentNest {
 
 	/**
 	 * This method sets the value of property CreationDate
-	 * 
 	 * @param creationDate
 	 *            the value for property CreationDate
 	 */
@@ -88,7 +74,6 @@ public class LearningComponentNest {
 
 	/**
 	 * This method returns the value of property NestLevel
-	 * 
 	 * @return the value of property NestLevel
 	 */
 	public Integer getNestLevel() {
@@ -97,7 +82,6 @@ public class LearningComponentNest {
 
 	/**
 	 * This method sets the value of property NestLevel
-	 * 
 	 * @param nestLevel
 	 *            the value for property NestLevel
 	 */
@@ -106,100 +90,41 @@ public class LearningComponentNest {
 	}
 
 	/**
-	 * This method returns the value of property ParentLearningComponentId
-	 * 
-	 * @return the value of property ParentLearningComponentId
+	 * @return the learningComponentParent
 	 */
-	public Integer getLearningComponentParentId() {
-		return learningComponentParentId;
+	public LearningComponent getLearningComponentParent() {
+		return learningComponentParent;
 	}
 
 	/**
-	 * This method sets the value of property ParentLearningComponentId
-	 * 
-	 * @param parentLearningComponentId
-	 *            the value for property ParentLearningComponentId
+	 * @param learningComponentParent the learningComponentParent to set
 	 */
-	public void setLearningComponentParentId(Integer learningComponentParentId) {
-		this.learningComponentParentId = learningComponentParentId;
+	public void setLearningComponentParent(LearningComponent learningComponentParent) {
+		this.learningComponentParent = learningComponentParent;
 	}
 
 	/**
-	 * This method returns the value of property NestLearningComponentId
-	 * 
-	 * @return the value of property NestLearningComponentId
+	 * @return the learningComponentNest
 	 */
-	public Integer getLearningComponentNestId() {
-		return learningComponentNestId;
+	public LearningComponent getLearningComponentNest() {
+		return learningComponentNest;
 	}
 
 	/**
-	 * This method sets the value of property NestLearningComponentId
-	 * 
-	 * @param nestLearningComponentId
-	 *            the value for property NestLearningComponentId
+	 * @param learningComponentNest the learningComponentNest to set
 	 */
-	public void setLearningComponentNestId(Integer learningComponentNestId) {
-		this.learningComponentNestId = learningComponentNestId;
+	public void setLearningComponentNest(LearningComponent learningComponentNest) {
+		this.learningComponentNest = learningComponentNest;
 	}
 
-	/**
-	 * @return the createdBy
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
 	 */
-	public String getCreatedBy() {
-		return createdBy;
+	@Override
+	public String toString() {
+		return "LearningComponentNest [nestLevel=" + nestLevel
+				+ ", learningComponentParent=" + learningComponentParent
+				+ ", learningComponentNest=" + learningComponentNest + "]";
 	}
 
-	/**
-	 * @param createdBy
-	 *            the createdBy to set
-	 */
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	/**
-	 * @return the createdOn
-	 */
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	/**
-	 * @param createdOn
-	 *            the createdOn to set
-	 */
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-
-	/**
-	 * @return the modifiedBy
-	 */
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-
-	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
-	 */
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-
-	/**
-	 * @return the modifiedOn
-	 */
-	public Date getModifiedOn() {
-		return modifiedOn;
-	}
-
-	/**
-	 * @param modifiedOn
-	 *            the modifiedOn to set
-	 */
-	public void setModifiedOn(Date modifiedOn) {
-		this.modifiedOn = modifiedOn;
-	}
 }

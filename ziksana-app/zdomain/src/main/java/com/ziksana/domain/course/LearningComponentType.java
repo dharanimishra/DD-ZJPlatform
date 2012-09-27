@@ -2,8 +2,14 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.domain.member.MemberPersona;
+
 public class LearningComponentType {
 
+	public LearningComponentType(ComponentType componentType){
+		this.componentType = componentType;
+		
+	}
 	/**
 	 * This field corresponds to the property learningCompTypeId
 	 */
@@ -17,40 +23,14 @@ public class LearningComponentType {
 	/**
 	 * This field corresponds to the property ComponentTypeName
 	 */
-	private String componentTypeName;
-
-	/**
-	 * This field corresponds to the property ComponentTypeDescription<br>
-	 * Maximum Length:120
-	 */
-	private String componentTypeDescription;
+	private ComponentType componentType;
 
 	/**
 	 * This field corresponds to the property Active
 	 */
 	private Boolean active;
 
-	private Integer creatingMemberPersonaId;
-
-	/**
-	 * This field corresponds to the property createdBy { User who creates }
-	 */
-	private String createdBy;
-
-	/**
-	 * This field corresponds to the property createdOn { Creation Date)
-	 */
-	private Date createdOn;
-
-	/**
-	 * This field corresponds to the property createdBy {User who modified }
-	 */
-	private String modifiedBy;
-
-	/**
-	 * This field corresponds to the property createdBy { modified date}
-	 */
-	private Date modifiedOn;
+	private MemberPersona creatingMember;
 
 	/**
 	 * . This method returns the value of the property CreationDate
@@ -62,8 +42,7 @@ public class LearningComponentType {
 	}
 
 	/**
-	 * . This method sets the value of the property CreationDate
-	 * 
+	 *This method sets the value of the property CreationDate
 	 * @param creationDate
 	 *            the value for property CreationDate
 	 */
@@ -71,49 +50,9 @@ public class LearningComponentType {
 		this.creationDate = creationDate;
 	}
 
-	/**
-	 * . This method returns the value of the property ComponentTypeName
-	 * 
-	 * @return the value of property ComponentTypeName
-	 */
-	public String getComponentTypeName() {
-		return componentTypeName;
-	}
 
 	/**
-	 * . This method sets the value of the property ComponentTypeName
-	 * 
-	 * @param componentTypeName
-	 *            the value for property ComponentTypeName
-	 */
-	public void setComponentTypeName(String componentTypeName) {
-		this.componentTypeName = componentTypeName == null ? null
-				: componentTypeName.trim();
-	}
-
-	/**
-	 * . This method returns the value of the property ComponentTypeDescription
-	 * 
-	 * @return the value of property ComponentTypeDescription
-	 */
-	public String getComponentTypeDescription() {
-		return componentTypeDescription;
-	}
-
-	/**
-	 * . This method sets the value of the property ComponentTypeDescription
-	 * 
-	 * @param componentTypeDescription
-	 *            the value for property ComponentTypeDescription
-	 */
-	public void setComponentTypeDescription(String componentTypeDescription) {
-		this.componentTypeDescription = componentTypeDescription == null ? null
-				: componentTypeDescription.trim();
-	}
-
-	/**
-	 * . This method returns the value of the property Active
-	 * 
+	 *This method returns the value of the property Active
 	 * @return the value of property Active
 	 */
 	public Boolean getActive() {
@@ -121,8 +60,7 @@ public class LearningComponentType {
 	}
 
 	/**
-	 * . This method sets the value of the property Active
-	 * 
+	 *This method sets the value of the property Active
 	 * @param active
 	 *            the value for property Active
 	 */
@@ -146,77 +84,32 @@ public class LearningComponentType {
 	}
 
 	/**
-	 * @return the creatingMemberPersonaId
+	 * @return the componentTypeName
 	 */
-	public Integer getCreatingMemberPersona() {
-		return creatingMemberPersonaId;
+	public ComponentType getComponentType() {
+		return componentType;
 	}
 
 	/**
-	 * @param creatingMemberRoleId
-	 *            the creatingMemberPersonaId to set
+	 * @param componentTypeName the componentTypeName to set
 	 */
-	public void setCreatingMemberPersona(Integer creatingMemberPersonaId) {
-		this.creatingMemberPersonaId = creatingMemberPersonaId;
+	public void setComponentType(ComponentType componentType) {
+		this.componentType = componentType;
 	}
 
 	/**
-	 * @return the createdBy
+	 * @return the creatingMember
 	 */
-	public String getCreatedBy() {
-		return createdBy;
+	public MemberPersona getCreatingMember() {
+		return creatingMember;
 	}
 
 	/**
-	 * @param createdBy
-	 *            the createdBy to set
+	 * @param creatingMember the creatingMember to set
 	 */
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
+	public void setCreatingMember(MemberPersona creatingMember) {
+		this.creatingMember = creatingMember;
 	}
 
-	/**
-	 * @return the createdOn
-	 */
-	public Date getCreatedOn() {
-		return createdOn;
-	}
 
-	/**
-	 * @param createdOn
-	 *            the createdOn to set
-	 */
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-
-	/**
-	 * @return the modifiedBy
-	 */
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-
-	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
-	 */
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-
-	/**
-	 * @return the modifiedOn
-	 */
-	public Date getModifiedOn() {
-		return modifiedOn;
-	}
-
-	/**
-	 * @param modifiedOn
-	 *            the modifiedOn to set
-	 */
-	public void setModifiedOn(Date modifiedOn) {
-		this.modifiedOn = modifiedOn;
-	}
 }

@@ -2,67 +2,66 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-public class Course {
+import com.ziksana.common.exception.CourseException;
+import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.domain.utilz.SubjectClassification;
 
-	/**
-	 * This field corresponds to the property courseId<br>
-	 * {Generated ID}
-	 */
+public class Course extends AuditHistory{
+
+	//TODO: Separator will change, based on requirement
+	private static String NAME_IDENTIFIER_SEPARATOR = "-";
+
+	public Course() {
+		setCourseStatus(CourseStatus.DRAFT);
+	}
+
+	public Course(Integer courseId) {
+		this.courseId = courseId;
+		setCourseStatus(CourseStatus.ADMINISTER_EVAL);
+	}
+
 	private Integer courseId;
-
 	/**
 	 * This field corresponds to the property Name<br>
-	 * Name of the Course Maximum Length:45
+	 * Maximum Length:45
 	 */
 	private String name;
-
 	/**
 	 * This field corresponds to the property CourseIdentifier<br>
-	 * Identifier for the Course Maximum Length:45
+	 * Identifier for the Course<br>
+	 * Maximum Length:45
 	 */
 	private String courseIdentifier;
-
 	/**
 	 * This field corresponds to the property Description<br>
 	 * Maximum Length:240
 	 */
 	private String description;
-
 	/**
 	 * This field corresponds to the property ValidFrom<br>
-	 * Course Start Date is for When Course is associate to curriculumm
+	 * Course Start Date is need When Course is associate to curriculumm
 	 */
 	private Date validFrom;
-
 	/**
 	 * This field corresponds to the property ValidTo<br>
 	 * Course End Date is for When Course is associate to curriculumm
 	 */
 	private Date validTo;
-
 	/**
-	 * This field corresponds to the property CourseStatus<br>
+	 * This field corresponds to the CourseStatus<br>
 	 * ID for Course Status
 	 */
-	private Integer courseStatus;
-
+	private CourseStatus courseStatus;
 	/**
-	 * Description of the course status attribute<br>
-	 * Description for Course Status Id
+	 * This field corresponds to the Rating
 	 */
-	private String courseStatusDesc;
-
-	/**
-	 * This field corresponds to the property Rating
-	 */
-	private Integer rating;
-
+	private Rating rating;
 	/**
 	 * This field corresponds to the attribute ContentSecurityNeededIndicator<br>
 	 * Maximum Length:1
 	 */
 	private Boolean securityNeededIndicator;
-
 	/**
 	 * This field corresponds to the property TotalCredits<br>
 	 * Maximum Length:5
@@ -106,12 +105,12 @@ public class Course {
 	/**
 	 * This field corresponds to the property subjClassificationId
 	 */
-	private Integer subjClassificationId;
+	private SubjectClassification subjClassificationId;
 
 	/**
 	 * This field corresponds to the property memberRoleId
 	 */
-	private Integer accountableMemberPersonaId;
+	private MemberPersona accountableMember;
 
 	/**
 	 * This object corresponds to the details about the Course components
@@ -122,27 +121,6 @@ public class Course {
 	 * This field corresponds to the property Version
 	 */
 	private Integer version;
-
-	/**
-	 * This field corresponds to the property createdBy { User who creates }
-	 */
-	private String createdBy;
-
-	/**
-	 * This field corresponds to the property createdOn { Creation Date)
-	 */
-	private Date createdOn;
-
-	/**
-	 * This field corresponds to the property createdBy {User who modified }
-	 */
-	private String modifiedBy;
-
-	/**
-	 * This field corresponds to the property createdBy { modified date}
-	 */
-	private Date modifiedOn;
-
 	/**
 	 * This method returns the value of the property Name
 	 * 
@@ -151,29 +129,15 @@ public class Course {
 	public String getName() {
 		return name;
 	}
-
-	/**
-	 * This method sets the value of the property Name
-	 * 
-	 * @param name
-	 *            the value for attribute Name
-	 */
-	public void setName(String name) {
-		this.name = name == null ? null : name.trim();
-	}
-
 	/**
 	 * This method returns the value of the attribute CourseIdentifier
-	 * 
 	 * @return the value of attribute CourseIdentifier
 	 */
 	public String getCourseIdentifier() {
 		return courseIdentifier;
 	}
-
 	/**
 	 * This method sets the value of the attribute CourseIdentifier
-	 * 
 	 * @param courseIdentifier
 	 *            the value for attribute CourseIdentifier
 	 */
@@ -181,10 +145,39 @@ public class Course {
 		this.courseIdentifier = courseIdentifier == null ? null
 				: courseIdentifier.trim();
 	}
+	/**
+	 * Sets the name and identifier from UI input field {name}, and separates both by defined separtor
+	 * @param name
+	 * @throws CourseException
+	 */
+	public void setCourseName(String name) throws CourseException {
+		if (name == null) {
+			throw new CourseException("Null name passed");
+		}
+		String courseNameArr[] = name.split(NAME_IDENTIFIER_SEPARATOR, 2);
 
+		if (courseNameArr.length < 2) {
+			throw new CourseException("Name is not given in a format [ identifier"+NAME_IDENTIFIER_SEPARATOR+"name ]");
+		}
+		this.name = courseNameArr[1];
+		setCourseIdentifier(courseNameArr[0]);
+	}
+	/**
+	 * This method gets the name and courseidentifier from database retrieval and appends
+	 * with defined separtor to display in UI
+	 * @param courseIdentifier
+	 * @param name
+	 * @throws CourseException
+	 */
+	public void setCourseNameFromData(String courseIdentifier, String name)
+			throws CourseException {
+		if (courseIdentifier == null || name == null) {
+			throw new CourseException(" Name or Course Identifier are Null");
+		}
+		this.name = courseIdentifier + NAME_IDENTIFIER_SEPARATOR + name;
+	}
 	/**
 	 * This method returns the value of the attribute Description
-	 * 
 	 * @return the value of attribute Description
 	 */
 	public String getDescription() {
@@ -193,7 +186,6 @@ public class Course {
 
 	/**
 	 * This method sets the value of the property Description
-	 * 
 	 * @param description
 	 *            the value for attribute Description
 	 */
@@ -203,7 +195,6 @@ public class Course {
 
 	/**
 	 * This method returns the value of the property Version
-	 * 
 	 * @return the value of attribute Version
 	 */
 	public Integer getVersion() {
@@ -223,7 +214,7 @@ public class Course {
 	/**
 	 * @return the subjClassificationId
 	 */
-	public Integer getSubjClassificationId() {
+	public SubjectClassification getSubjClassificationId() {
 		return subjClassificationId;
 	}
 
@@ -231,7 +222,7 @@ public class Course {
 	 * @param subjClassificationId
 	 *            the subjClassificationId to set
 	 */
-	public void setSubjClassificationId(Integer subjClassificationId) {
+	public void setSubjClassificationId(SubjectClassification subjClassificationId) {
 		this.subjClassificationId = subjClassificationId;
 	}
 
@@ -269,21 +260,6 @@ public class Course {
 		this.courseDetails = courseDetails;
 	}
 
-	/**
-	 * @return the accountableMemberPersonaId
-	 */
-	public Integer getAccountableMemberPersona() {
-		return accountableMemberPersonaId;
-	}
-
-	/**
-	 * @param accountableMemberPersonaId
-	 *            the accountableMemberPersonaId to set
-	 */
-	public void setAccountableMemberPersona(Integer accountableMemberPersonaId) {
-		this.accountableMemberPersonaId = accountableMemberPersonaId;
-	}
-
 	public Date getValidFrom() {
 		return validFrom;
 	}
@@ -298,37 +274,6 @@ public class Course {
 
 	public void setValidTo(Date validTo) {
 		this.validTo = validTo;
-	}
-
-	public Integer getCourseStatus() {
-		return courseStatus;
-	}
-
-	/**
-	 * @return the courseStatusDesc
-	 */
-	public String getCourseStatusDesc() {
-		return courseStatusDesc;
-	}
-
-	/**
-	 * @param courseStatusDesc
-	 *            the courseStatusDesc to set
-	 */
-	public void setCourseStatusDesc(String courseStatusDesc) {
-		this.courseStatusDesc = courseStatusDesc;
-	}
-
-	public void setCourseStatus(Integer courseStatus) {
-		this.courseStatus = courseStatus;
-	}
-
-	public Integer getRating() {
-		return rating;
-	}
-
-	public void setRating(Integer rating) {
-		this.rating = rating;
 	}
 
 	public Boolean getSecurityNeededIndicator() {
@@ -397,63 +342,53 @@ public class Course {
 	}
 
 	/**
-	 * @return the createdBy
+	 * @return the courseStatus
 	 */
-	public String getCreatedBy() {
-		return createdBy;
+	public CourseStatus getCourseStatus() {
+		return courseStatus;
 	}
 
 	/**
-	 * @param createdBy
-	 *            the createdBy to set
+	 * @param courseStatus
+	 *            the courseStatus to set
 	 */
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
+	public void setCourseStatus(CourseStatus courseStatus) {
+		this.courseStatus = courseStatus;
 	}
 
 	/**
-	 * @return the createdOn
+	 * @return the rating
 	 */
-	public Date getCreatedOn() {
-		return createdOn;
+	public Rating getRating() {
+		return rating;
 	}
 
 	/**
-	 * @param createdOn
-	 *            the createdOn to set
+	 * @param rating
+	 *            the rating to set
 	 */
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
+	/**
+	 * @return the accountableMember
+	 */
+	public MemberPersona getAccountableMember() {
+		return accountableMember;
 	}
 
 	/**
-	 * @return the modifiedBy
+	 * @param accountableMember the accountableMember to set
 	 */
-	public String getModifiedBy() {
-		return modifiedBy;
+	public void setAccountableMember(MemberPersona accountableMember) {
+		this.accountableMember = accountableMember;
 	}
 
-	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
-	 */
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
+
+	public String toString() {
+		return "Course [name=" + name + ", courseIdentifier="
+				+ courseIdentifier + ", courseStatus=" + courseStatus
+				+ ", courseDuration=" + courseDuration + "]";
 	}
 
-	/**
-	 * @return the modifiedOn
-	 */
-	public Date getModifiedOn() {
-		return modifiedOn;
 	}
-
-	/**
-	 * @param modifiedOn
-	 *            the modifiedOn to set
-	 */
-	public void setModifiedOn(Date modifiedOn) {
-		this.modifiedOn = modifiedOn;
-	}
-
-}

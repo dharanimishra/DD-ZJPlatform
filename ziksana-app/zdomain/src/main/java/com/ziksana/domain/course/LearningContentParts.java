@@ -2,7 +2,9 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-public class LearningContentParts {
+import com.ziksana.domain.common.AuditHistory;
+
+public class LearningContentParts extends AuditHistory{
 	/**
 	 * This field corresponds to the property contentPartsId
 	 */
@@ -31,28 +33,7 @@ public class LearningContentParts {
 	private Integer learningContentId;
 
 	/**
-	 * This field corresponds to the property createdBy { User who creates }
-	 */
-	private String createdBy;
-
-	/**
-	 * This field corresponds to the property createdOn { Creation Date)
-	 */
-	private Date createdOn;
-
-	/**
-	 * This field corresponds to the property createdBy {User who modified }
-	 */
-	private String modifiedBy;
-
-	/**
-	 * This field corresponds to the property createdBy { modified date}
-	 */
-	private Date modifiedOn;
-
-	/**
 	 * This method returns the value of the property contentPartsId
-	 * 
 	 * @return the value of property contentPartsId
 	 */
 	public Integer getContentPartsId() {
@@ -137,63 +118,11 @@ public class LearningContentParts {
 		this.partSequence = partSequence;
 	}
 
-	/**
-	 * @return the createdBy
-	 */
-	public String getCreatedBy() {
-		return createdBy;
+	@Override
+	public String toString() {
+		return "LearningContentParts [partPath=" + partPath + ", partSequence="
+				+ partSequence + ", learningContentId=" + learningContentId
+				+ "]";
 	}
 
-	/**
-	 * @param createdBy
-	 *            the createdBy to set
-	 */
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	/**
-	 * @return the createdOn
-	 */
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	/**
-	 * @param createdOn
-	 *            the createdOn to set
-	 */
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-
-	/**
-	 * @return the modifiedBy
-	 */
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-
-	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
-	 */
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-
-	/**
-	 * @return the modifiedOn
-	 */
-	public Date getModifiedOn() {
-		return modifiedOn;
-	}
-
-	/**
-	 * @param modifiedOn
-	 *            the modifiedOn to set
-	 */
-	public void setModifiedOn(Date modifiedOn) {
-		this.modifiedOn = modifiedOn;
-	}
 }

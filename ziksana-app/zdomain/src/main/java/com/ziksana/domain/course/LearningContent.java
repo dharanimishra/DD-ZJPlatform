@@ -1,9 +1,22 @@
 package com.ziksana.domain.course;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class LearningContent {
+import com.ziksana.common.exception.CourseException;
+import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.domain.utilz.SubjectClassification;
+
+public class LearningContent extends AuditHistory{
+
+	public LearningContent() {
+	}
+	
+	public LearningContent(ContentType contentType) {
+		this.contentType = contentType;
+	}
 
 	/**
 	 * This field corresponds to the property learningContentId
@@ -24,12 +37,7 @@ public class LearningContent {
 	/**
 	 * This field corresponds to the property ContentType
 	 */
-	private Integer contentTypeId;
-
-	/**
-	 * This attribute hold the description for attribute contentType
-	 */
-	private String contentTypesDesc;
+	private ContentType contentType;
 
 	/**
 	 * This field corresponds to the property ContentPath<br>
@@ -39,19 +47,14 @@ public class LearningContent {
 
 	/**
 	 * This field corresponds to the property ContentFormat
+
 	 */
-	private Integer contentFormat;
+	private ContentFormat contentFormat;
 
 	/**
 	 * This field corresponds to the property Status
 	 */
-	private Integer statusId;
-
-	/**
-	 * This field corresponds to the property Status
-	 */
-	private String statusDesc;
-
+	private ContentStatus status;
 	/**
 	 * This field corresponds to the property Version
 	 */
@@ -76,48 +79,28 @@ public class LearningContent {
 	private String thumbnailPicturePath;
 
 	/**
-	 * This field corresponds to the property createdBy { User who creates }
+	 * This field corresponds to the property Version
 	 */
-	private String createdBy;
-
-	/**
-	 * This field corresponds to the property createdOn { Creation Date)
-	 */
-	private Date createdOn;
-
-	/**
-	 * This field corresponds to the property createdBy {User who modified }
-	 */
-	private String modifiedBy;
-
-	/**
-	 * This field corresponds to the property createdBy { modified date}
-	 */
-	private Date modifiedOn;
+	private MemberPersona rightsOwningMember;
 
 	/**
 	 * This field corresponds to the property Version
 	 */
-	private Integer rightsOwningMemberPersonaId;
+	private MemberPersona authoringMember;
 
 	/**
 	 * This field corresponds to the property Version
 	 */
-	private Integer authoringMemberPersonaId;
-
-	/**
-	 * This field corresponds to the property Version
-	 */
-	private Integer subjClassificationId;
+	private SubjectClassification subjClassification;
 
 	/**
 	 * This field corresponds to the property LinkedLearningContentId
 	 */
-	private Integer linkedLearningContentId;
+	private LearningContent 			linkedLearningContent 	= null;
 
-	private List<LearningContentParts> learningContentParts;
-
-	private LearningComponentContent baseComponentContent;
+	private List<LearningContentParts> 	learningContentParts 	= null;
+	
+	private LearningComponentContent 	baseComponentContent 	= null;
 
 	/**
 	 * This method returns the value of the property learningContentId
@@ -177,25 +160,6 @@ public class LearningContent {
 	}
 
 	/**
-	 * This method returns the value of the property ContentType
-	 * 
-	 * @return the value of ContentType
-	 */
-	public Integer getContentTypeId() {
-		return contentTypeId;
-	}
-
-	/**
-	 * This method sets the value of the property ContentType
-	 * 
-	 * @param contentType
-	 *            the value for ContentType
-	 */
-	public void setContentType(Integer contentTypeId) {
-		this.contentTypeId = contentTypeId;
-	}
-
-	/**
 	 * This method returns the value of the property ContentPath
 	 * 
 	 * @return the value of ContentPath
@@ -215,22 +179,17 @@ public class LearningContent {
 	}
 
 	/**
-	 * This method returns the value of the property ContentFormat
-	 * 
-	 * @return the value of ContentFormat
+	 * @return the status
 	 */
-	public Integer getContentFormat() {
-		return contentFormat;
+	public ContentStatus getStatus() {
+		return status;
 	}
 
 	/**
-	 * This method sets the value of the property ContentFormat
-	 * 
-	 * @param contentFormat
-	 *            the value for ContentFormat
+	 * @param status the status to set
 	 */
-	public void setContentFormat(Integer contentFormat) {
-		this.contentFormat = contentFormat;
+	public void setStatus(ContentStatus status) {
+		this.status = status;
 	}
 
 	/**
@@ -252,24 +211,6 @@ public class LearningContent {
 		this.version = version;
 	}
 
-	/*	*//**
-	 * @return the corlearningcontentParts
-	 */
-	/*
-	 * public List<ContentParts> getcorlearningcontentParts() { return
-	 * corlearningcontentParts; }
-	 *//**
-	 * @param corlearningcontentParts
-	 *            the corlearningcontentParts to set
-	 */
-	/*
-	 * public void setcorlearningcontentParts(List<ContentParts>
-	 * corlearningcontentParts) { this.corlearningcontentParts =
-	 * corlearningcontentParts; }
-	 */
-	/**
-	 * @return the contentName
-	 */
 	public String getContentName() {
 		return contentName;
 	}
@@ -311,37 +252,6 @@ public class LearningContent {
 	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
 	}
-
-	/**
-	 * @return the subjClassificationId
-	 */
-	public Integer getSubjClassificationId() {
-		return subjClassificationId;
-	}
-
-	/**
-	 * @param subjClassificationId
-	 *            the subjClassificationId to set
-	 */
-	public void setSubjClassificationId(Integer subjClassificationId) {
-		this.subjClassificationId = subjClassificationId;
-	}
-
-	/**
-	 * @return the linkedLearningContentId
-	 */
-	public Integer getLinkedLearningContentId() {
-		return linkedLearningContentId;
-	}
-
-	/**
-	 * @param linkedLearningContentId
-	 *            the linkedLearningContentId to set
-	 */
-	public void setLinkedLearningContentId(Integer linkedLearningContentId) {
-		this.linkedLearningContentId = linkedLearningContentId;
-	}
-
 	/**
 	 * @return the learningContentParts
 	 */
@@ -353,144 +263,12 @@ public class LearningContent {
 	 * @param learningContentParts
 	 *            the learningContentParts to set
 	 */
-	public void setLearningContentParts(
-			List<LearningContentParts> learningContentParts) {
+	public void addLearningContentParts(
+			List<LearningContentParts> learningContentParts) throws CourseException {
+		
+		learningContentParts = new ArrayList<LearningContentParts>();
+		
 		this.learningContentParts = learningContentParts;
-	}
-
-	/**
-	 * @return the contentTypesDesc
-	 */
-	public String getContentTypesDesc() {
-		return contentTypesDesc;
-	}
-
-	/**
-	 * @param contentTypesDesc
-	 *            the contentTypesDesc to set
-	 */
-	public void setContentTypesDesc(String contentTypesDesc) {
-		this.contentTypesDesc = contentTypesDesc;
-	}
-
-	/**
-	 * @return the createdBy
-	 */
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-	/**
-	 * @param createdBy
-	 *            the createdBy to set
-	 */
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	/**
-	 * @return the createdOn
-	 */
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	/**
-	 * @param createdOn
-	 *            the createdOn to set
-	 */
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-
-	/**
-	 * @return the modifiedBy
-	 */
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-
-	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
-	 */
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-
-	/**
-	 * @return the modifiedOn
-	 */
-	public Date getModifiedOn() {
-		return modifiedOn;
-	}
-
-	/**
-	 * @param modifiedOn
-	 *            the modifiedOn to set
-	 */
-	public void setModifiedOn(Date modifiedOn) {
-		this.modifiedOn = modifiedOn;
-	}
-
-	/**
-	 * @return the rightsOwningMemberPersonaId
-	 */
-	public Integer getRightsOwningMemberPersona() {
-		return rightsOwningMemberPersonaId;
-	}
-
-	/**
-	 * @param rightsOwningMemberPersonaId
-	 *            the rightsOwningMemberPersonaId to set
-	 */
-	public void setRightsOwningMemberPersona(Integer rightsOwningMemberPersonaId) {
-		this.rightsOwningMemberPersonaId = rightsOwningMemberPersonaId;
-	}
-
-	/**
-	 * @return the authoringMemberPersonaId
-	 */
-	public Integer getAuthoringMemberPersona() {
-		return authoringMemberPersonaId;
-	}
-
-	/**
-	 * @param authoringMemberPersonaId
-	 *            the authoringMemberPersonaId to set
-	 */
-	public void setAuthoringMemberPersona(Integer authoringMemberPersonaId) {
-		this.authoringMemberPersonaId = authoringMemberPersonaId;
-	}
-
-	/**
-	 * @return the statusId
-	 */
-	public Integer getStatusId() {
-		return statusId;
-	}
-
-	/**
-	 * @param statusId
-	 *            the statusId to set
-	 */
-	public void setStatusId(Integer statusId) {
-		this.statusId = statusId;
-	}
-
-	/**
-	 * @return the statusDesc
-	 */
-	public String getStatusDesc() {
-		return statusDesc;
-	}
-
-	/**
-	 * @param statusDesc
-	 *            the statusDesc to set
-	 */
-	public void setStatusDesc(String statusDesc) {
-		this.statusDesc = statusDesc;
 	}
 
 	/**
@@ -507,5 +285,81 @@ public class LearningContent {
 	public void setBaseComponentContent(
 			LearningComponentContent baseComponentContent) {
 		this.baseComponentContent = baseComponentContent;
+	}
+
+	/**
+	 * @return the contentType
+	 */
+	public ContentType getContentType() {
+		return contentType;
+	}
+
+	/**
+	 * @param contentType the contentType to set
+	 */
+	public void setContentType(ContentType contentType) {
+		this.contentType = contentType;
+	}
+
+	/**
+	 * @return the rightsOwningMember
+	 */
+	public MemberPersona getRightsOwningMember() {
+		return rightsOwningMember;
+	}
+
+	/**
+	 * @param rightsOwningMember the rightsOwningMember to set
+	 */
+	public void setRightsOwningMember(MemberPersona rightsOwningMember) {
+		this.rightsOwningMember = rightsOwningMember;
+	}
+
+	/**
+	 * @return the authoringMember
+	 */
+	public MemberPersona getAuthoringMember() {
+		return authoringMember;
+	}
+
+	/**
+	 * @param authoringMember the authoringMember to set
+	 */
+	public void setAuthoringMember(MemberPersona authoringMember) {
+		this.authoringMember = authoringMember;
+	}
+
+	/**
+	 * @return the subjClassification
+	 */
+	public SubjectClassification getSubjClassification() {
+		return subjClassification;
+	}
+
+	/**
+	 * @param subjClassification the subjClassification to set
+	 */
+	public void setSubjClassification(SubjectClassification subjClassification) {
+		this.subjClassification = subjClassification;
+	}
+
+	/**
+	 * @return the linkedLearningContent
+	 */
+	public LearningContent getLinkedLearningContent() {
+		return linkedLearningContent;
+	}
+
+	/**
+	 * @param linkedLearningContent the linkedLearningContent to set
+	 */
+	public void setLinkedLearningContent(LearningContent linkedLearningContent) {
+		this.linkedLearningContent = linkedLearningContent;
+	}
+
+	@Override
+	public String toString() {
+		return "LearningContent [contentType=" + contentType
+				+ ", contentFormat=" + contentFormat + "]";
 	}
 }
