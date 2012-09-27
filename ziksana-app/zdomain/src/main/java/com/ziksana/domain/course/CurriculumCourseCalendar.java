@@ -2,89 +2,24 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-public class CurriculumCourseCalendar {
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.currCourseCalendarId
-	 */
+import com.ziksana.domain.common.AuditHistory;
+
+public class CurriculumCourseCalendar extends AuditHistory{
 	private Integer currCourseCalendarId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.CreationDate
-	 */
 	private Date creationDate;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.StartDate
-	 */
 	private Date startDate;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.EndDate
-	 */
 	private Date endDate;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.StartTime
-	 */
 	private Date startTime;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.EndTime
-	 */
 	private Date endTime;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.Duration
-	 */
 	private Integer duration;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.ZeniSuggestedIndicator
-	 */
 	private Boolean zeniSuggestedIndicator;
+	private CurriculumCourse curriculumCourse;
+	private Course course;
+	private CourseLearningComponent courseLearningComponent;
+	private CurriculumCourseCalendar curriculumCourseCalendar;
+	private CurriculumDelivery curriculumDelivery;
 
 	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.CurriculumCourseId
-	 */
-	private Integer curriculumCourseId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.CourseId
-	 */
-	private Integer courseId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.CourseLearningComponentId
-	 */
-	private Integer courseLearningComponentId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.CurriculumCourseCalendarId
-	 */
-	private Integer curriculumCourseCalendarId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcoursecalendar.CurriculumDeliveryId
-	 */
-	private Integer curriculumDeliveryId;
-
-	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.currCourseCalendarId
-	 * 
 	 * @return the value of corcurriculumcoursecalendar.currCourseCalendarId
 	 */
 	public Integer getCurrCourseCalendarId() {
@@ -92,9 +27,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.currCourseCalendarId
-	 * 
 	 * @param currCourseCalendarId
 	 *            the value for corcurriculumcoursecalendar.currCourseCalendarId
 	 */
@@ -103,9 +35,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.CreationDate
-	 * 
 	 * @return the value of corcurriculumcoursecalendar.CreationDate
 	 */
 	public Date getCreationDate() {
@@ -113,9 +42,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.CreationDate
-	 * 
 	 * @param creationDate
 	 *            the value for corcurriculumcoursecalendar.CreationDate
 	 */
@@ -124,9 +50,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.StartDate
-	 * 
 	 * @return the value of corcurriculumcoursecalendar.StartDate
 	 */
 	public Date getStartDate() {
@@ -134,9 +57,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.StartDate
-	 * 
 	 * @param startDate
 	 *            the value for corcurriculumcoursecalendar.StartDate
 	 */
@@ -145,9 +65,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.EndDate
-	 * 
 	 * @return the value of corcurriculumcoursecalendar.EndDate
 	 */
 	public Date getEndDate() {
@@ -155,9 +72,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.EndDate
-	 * 
 	 * @param endDate
 	 *            the value for corcurriculumcoursecalendar.EndDate
 	 */
@@ -166,9 +80,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.StartTime
-	 * 
 	 * @return the value of corcurriculumcoursecalendar.StartTime
 	 */
 	public Date getStartTime() {
@@ -176,9 +87,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.StartTime
-	 * 
 	 * @param startTime
 	 *            the value for corcurriculumcoursecalendar.StartTime
 	 */
@@ -187,9 +95,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.EndTime
-	 * 
 	 * @return the value of corcurriculumcoursecalendar.EndTime
 	 */
 	public Date getEndTime() {
@@ -197,9 +102,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.EndTime
-	 * 
 	 * @param endTime
 	 *            the value for corcurriculumcoursecalendar.EndTime
 	 */
@@ -208,9 +110,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.Duration
-	 * 
 	 * @return the value of corcurriculumcoursecalendar.Duration
 	 */
 	public Integer getDuration() {
@@ -218,9 +117,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.Duration
-	 * 
 	 * @param duration
 	 *            the value for corcurriculumcoursecalendar.Duration
 	 */
@@ -229,9 +125,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.ZeniSuggestedIndicator
-	 * 
 	 * @return the value of corcurriculumcoursecalendar.ZeniSuggestedIndicator
 	 */
 	public Boolean getZeniSuggestedIndicator() {
@@ -239,9 +132,6 @@ public class CurriculumCourseCalendar {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.ZeniSuggestedIndicator
-	 * 
 	 * @param zeniSuggestedIndicator
 	 *            the value for
 	 *            corcurriculumcoursecalendar.ZeniSuggestedIndicator
@@ -249,113 +139,73 @@ public class CurriculumCourseCalendar {
 	public void setZeniSuggestedIndicator(Boolean zeniSuggestedIndicator) {
 		this.zeniSuggestedIndicator = zeniSuggestedIndicator;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.CurriculumCourseId
-	 * 
-	 * @return the value of corcurriculumcoursecalendar.CurriculumCourseId
+	 * @return the curriculumCourse
 	 */
-	public Integer getCurriculumCourseId() {
-		return curriculumCourseId;
+	public CurriculumCourse getCurriculumCourse() {
+		return curriculumCourse;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.CurriculumCourseId
-	 * 
-	 * @param curriculumCourseId
-	 *            the value for corcurriculumcoursecalendar.CurriculumCourseId
+	 * @param curriculumCourse the curriculumCourse to set
 	 */
-	public void setCurriculumCourseId(Integer curriculumCourseId) {
-		this.curriculumCourseId = curriculumCourseId;
+	public void setCurriculumCourse(CurriculumCourse curriculumCourse) {
+		this.curriculumCourse = curriculumCourse;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.CourseId
-	 * 
-	 * @return the value of corcurriculumcoursecalendar.CourseId
+	 * @return the course
 	 */
-	public Integer getCourseId() {
-		return courseId;
+	public Course getCourse() {
+		return course;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.CourseId
-	 * 
-	 * @param courseId
-	 *            the value for corcurriculumcoursecalendar.CourseId
+	 * @param course the course to set
 	 */
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.CourseLearningComponentId
-	 * 
-	 * @return the value of
-	 *         corcurriculumcoursecalendar.CourseLearningComponentId
+	 * @return the courseLearningComponent
 	 */
-	public Integer getCourseLearningComponentId() {
-		return courseLearningComponentId;
+	public CourseLearningComponent getCourseLearningComponent() {
+		return courseLearningComponent;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.CourseLearningComponentId
-	 * 
-	 * @param courseLearningComponentId
-	 *            the value for
-	 *            corcurriculumcoursecalendar.CourseLearningComponentId
+	 * @param courseLearningComponent the courseLearningComponent to set
 	 */
-	public void setCourseLearningComponentId(Integer courseLearningComponentId) {
-		this.courseLearningComponentId = courseLearningComponentId;
+	public void setCourseLearningComponent(CourseLearningComponent courseLearningComponent) {
+		this.courseLearningComponent = courseLearningComponent;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.CurriculumCourseCalendarId
-	 * 
-	 * @return the value of
-	 *         corcurriculumcoursecalendar.CurriculumCourseCalendarId
+	 * @return the curriculumCourseCalendar
 	 */
-	public Integer getCurriculumCourseCalendarId() {
-		return curriculumCourseCalendarId;
+	public CurriculumCourseCalendar getCurriculumCourseCalendar() {
+		return curriculumCourseCalendar;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.CurriculumCourseCalendarId
-	 * 
-	 * @param curriculumCourseCalendarId
-	 *            the value for
-	 *            corcurriculumcoursecalendar.CurriculumCourseCalendarId
+	 * @param curriculumCourseCalendar the curriculumCourseCalendar to set
 	 */
-	public void setCurriculumCourseCalendarId(Integer curriculumCourseCalendarId) {
-		this.curriculumCourseCalendarId = curriculumCourseCalendarId;
+	public void setCurriculumCourseCalendar(CurriculumCourseCalendar curriculumCourseCalendar) {
+		this.curriculumCourseCalendar = curriculumCourseCalendar;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcoursecalendar.CurriculumDeliveryId
-	 * 
-	 * @return the value of corcurriculumcoursecalendar.CurriculumDeliveryId
+	 * @return the curriculumDelivery
 	 */
-	public Integer getCurriculumDeliveryId() {
-		return curriculumDeliveryId;
+	public CurriculumDelivery getCurriculumDelivery() {
+		return curriculumDelivery;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcoursecalendar.CurriculumDeliveryId
-	 * 
-	 * @param curriculumDeliveryId
-	 *            the value for corcurriculumcoursecalendar.CurriculumDeliveryId
+	 * @param curriculumDelivery the curriculumDelivery to set
 	 */
-	public void setCurriculumDeliveryId(Integer curriculumDeliveryId) {
-		this.curriculumDeliveryId = curriculumDeliveryId;
+	public void setCurriculumDelivery(CurriculumDelivery curriculumDelivery) {
+		this.curriculumDelivery = curriculumDelivery;
 	}
 }

@@ -2,335 +2,170 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-public class LearningContentReviewProgress {
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.reviewProgressId
-	 */
+import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.member.MemberPersona;
+
+public class LearningContentReviewProgress extends AuditHistory{
+
 	private Integer reviewProgressId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.StartDate
-	 */
 	private Date startDate;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.EndDate
-	 */
 	private Date endDate;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.TotalDuration
-	 */
 	private Integer totalDuration;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.DegreeofCompletion
-	 */
 	private Integer degreeofCompletion;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.CourseProgressStatus
-	 */
-	private Integer courseProgressStatus;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.Description
-	 */
+	private CourseProgressStatus courseProgressStatus;
 	private String description;
-
+	private Rating averageRating;
+	private Course course;
+	private LearningComponent learningComponentId;
+	private LearningComponentContent learningComponentContentId;
+	private MemberPersona authorMemberPersona;
+	
+	
 	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.AverageRating
-	 */
-	private Integer averageRating;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.CourseId
-	 */
-	private Integer courseId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.LearningComponentId
-	 */
-	private Integer learningComponentId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.LearningComponentContentId
-	 */
-	private Integer learningComponentContentId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningcontentreviewprogress.MemberRoleId
-	 */
-	private Integer memberRoleId;
-
-	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.reviewProgressId
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.reviewProgressId
+	 * @return the reviewProgressId
 	 */
 	public Integer getReviewProgressId() {
 		return reviewProgressId;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.reviewProgressId
-	 * 
-	 * @param reviewProgressId
-	 *            the value for
-	 *            corlearningcontentreviewprogress.reviewProgressId
+	 * @param reviewProgressId the reviewProgressId to set
 	 */
 	public void setReviewProgressId(Integer reviewProgressId) {
 		this.reviewProgressId = reviewProgressId;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.StartDate
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.StartDate
+	 * @return the startDate
 	 */
 	public Date getStartDate() {
 		return startDate;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.StartDate
-	 * 
-	 * @param startDate
-	 *            the value for corlearningcontentreviewprogress.StartDate
+	 * @param startDate the startDate to set
 	 */
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.EndDate
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.EndDate
+	 * @return the endDate
 	 */
 	public Date getEndDate() {
 		return endDate;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.EndDate
-	 * 
-	 * @param endDate
-	 *            the value for corlearningcontentreviewprogress.EndDate
+	 * @param endDate the endDate to set
 	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.TotalDuration
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.TotalDuration
+	 * @return the totalDuration
 	 */
 	public Integer getTotalDuration() {
 		return totalDuration;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.TotalDuration
-	 * 
-	 * @param totalDuration
-	 *            the value for corlearningcontentreviewprogress.TotalDuration
+	 * @param totalDuration the totalDuration to set
 	 */
 	public void setTotalDuration(Integer totalDuration) {
 		this.totalDuration = totalDuration;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.DegreeofCompletion
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.DegreeofCompletion
+	 * @return the degreeofCompletion
 	 */
 	public Integer getDegreeofCompletion() {
 		return degreeofCompletion;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.DegreeofCompletion
-	 * 
-	 * @param degreeofCompletion
-	 *            the value for
-	 *            corlearningcontentreviewprogress.DegreeofCompletion
+	 * @param degreeofCompletion the degreeofCompletion to set
 	 */
 	public void setDegreeofCompletion(Integer degreeofCompletion) {
 		this.degreeofCompletion = degreeofCompletion;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.CourseProgressStatus
-	 * 
-	 * @return the value of
-	 *         corlearningcontentreviewprogress.CourseProgressStatus
+	 * @return the courseProgressStatus
 	 */
-	public Integer getCourseProgressStatus() {
+	public CourseProgressStatus getCourseProgressStatus() {
 		return courseProgressStatus;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.CourseProgressStatus
-	 * 
-	 * @param courseProgressStatus
-	 *            the value for
-	 *            corlearningcontentreviewprogress.CourseProgressStatus
+	 * @param courseProgressStatus the courseProgressStatus to set
 	 */
-	public void setCourseProgressStatus(Integer courseProgressStatus) {
+	public void setCourseProgressStatus(CourseProgressStatus courseProgressStatus) {
 		this.courseProgressStatus = courseProgressStatus;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.Description
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.Description
+	 * @return the description
 	 */
 	public String getDescription() {
 		return description;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.Description
-	 * 
-	 * @param description
-	 *            the value for corlearningcontentreviewprogress.Description
+	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
-		this.description = description == null ? null : description.trim();
+		this.description = description;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.AverageRating
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.AverageRating
+	 * @return the averageRating
 	 */
-	public Integer getAverageRating() {
+	public Rating getAverageRating() {
 		return averageRating;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.AverageRating
-	 * 
-	 * @param averageRating
-	 *            the value for corlearningcontentreviewprogress.AverageRating
+	 * @param averageRating the averageRating to set
 	 */
-	public void setAverageRating(Integer averageRating) {
+	public void setAverageRating(Rating averageRating) {
 		this.averageRating = averageRating;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.CourseId
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.CourseId
+	 * @return the course
 	 */
-	public Integer getCourseId() {
-		return courseId;
+	public Course getCourse() {
+		return course;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.CourseId
-	 * 
-	 * @param courseId
-	 *            the value for corlearningcontentreviewprogress.CourseId
+	 * @param course the course to set
 	 */
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.LearningComponentId
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.LearningComponentId
+	 * @return the learningComponentId
 	 */
-	public Integer getLearningComponentId() {
+	public LearningComponent getLearningComponentId() {
 		return learningComponentId;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.LearningComponentId
-	 * 
-	 * @param learningComponentId
-	 *            the value for
-	 *            corlearningcontentreviewprogress.LearningComponentId
+	 * @param learningComponentId the learningComponentId to set
 	 */
-	public void setLearningComponentId(Integer learningComponentId) {
+	public void setLearningComponentId(LearningComponent learningComponentId) {
 		this.learningComponentId = learningComponentId;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.LearningComponentContentId
-	 * 
-	 * @return the value of
-	 *         corlearningcontentreviewprogress.LearningComponentContentId
+	 * @return the learningComponentContentId
 	 */
-	public Integer getLearningComponentContentId() {
+	public LearningComponentContent getLearningComponentContentId() {
 		return learningComponentContentId;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.LearningComponentContentId
-	 * 
-	 * @param learningComponentContentId
-	 *            the value for
-	 *            corlearningcontentreviewprogress.LearningComponentContentId
+	 * @param learningComponentContentId the learningComponentContentId to set
 	 */
-	public void setLearningComponentContentId(Integer learningComponentContentId) {
+	public void setLearningComponentContentId(
+			LearningComponentContent learningComponentContentId) {
 		this.learningComponentContentId = learningComponentContentId;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corlearningcontentreviewprogress.MemberRoleId
-	 * 
-	 * @return the value of corlearningcontentreviewprogress.MemberRoleId
+	 * @return the authorMemberPersona
 	 */
-	public Integer getMemberRoleId() {
-		return memberRoleId;
+	public MemberPersona getAuthorMemberPersona() {
+		return authorMemberPersona;
+	}
+	/**
+	 * @param authorMemberPersona the authorMemberPersona to set
+	 */
+	public void setAuthorMemberPersona(MemberPersona authorMemberPersona) {
+		this.authorMemberPersona = authorMemberPersona;
 	}
 
-	/**
-	 * This method sets the value of the database column
-	 * corlearningcontentreviewprogress.MemberRoleId
-	 * 
-	 * @param memberRoleId
-	 *            the value for corlearningcontentreviewprogress.MemberRoleId
-	 */
-	public void setMemberRoleId(Integer memberRoleId) {
-		this.memberRoleId = memberRoleId;
-	}
+
 }

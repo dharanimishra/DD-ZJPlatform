@@ -2,325 +2,170 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.member.MemberPersona;
+
 	/**
 	 * Domain class for the table corAnnouncement
 	 */
 
-public class Announcement {
-	/**
-	 * This field corresponds to the database column corannouncement.anouncementId
-	 */
+public class Announcement extends AuditHistory{
+	
 	private Integer anouncementId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corannouncement.AnnouncementDate
-	 */
 	private Date announcementDate;
-
-	/**
-	 * This field corresponds to the database column corannouncement.Message
-	 */
 	private String message;
-
-	/**
-	 * This field corresponds to the database column
-	 * corannouncement.MessageVisibility
-	 */
-	private Integer messageVisibility;
-
-	/**
-	 * This field corresponds to the database column corannouncement.ValidUntil
-	 */
+	private MessageVisibility messageVisibility;
 	private Date validUntil;
-
+	private MemberPersona postingMemberPersona;
+	private Institution institution;
+	private InstitutionUnit institutionUnit;
+	private CurriculumCourse curriculumCourse;
+	private LearningProgram learningProgram;
+	private Course course;
+	private CourseLearningComponent courseLearningComponent;
 	/**
-	 * This field corresponds to the database column
-	 * corannouncement.MemberRoleId
-	 */
-	private Integer memberRoleId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corannouncement.InstitutionId
-	 */
-	private Integer institutionId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corannouncement.InstitutionUnitId
-	 */
-	private Integer institutionUnitId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corannouncement.CurriculumCourseId
-	 */
-	private Integer curriculumCourseId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corannouncement.LearningProgramId
-	 */
-	private Integer learningProgramId;
-
-	/**
-	 * This field corresponds to the database column corannouncement.CourseId
-	 */
-	private Integer courseId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corannouncement.CourseLearningComponentId
-	 */
-	private Integer courseLearningComponentId;
-
-	/**
-	 * This method returns the value of the database column corannouncement.anouncementId
-	 * 
-	 * @return the value of corannouncement.anouncementId
+	 * @return the anouncementId
 	 */
 	public Integer getAnouncementId() {
 		return anouncementId;
 	}
-
 	/**
-	 * This method sets the value of the database column corannouncement.anouncementId
-	 * 
-	 * @param anouncementId
-	 *            the value for corannouncement.anouncementId
+	 * @param anouncementId the anouncementId to set
 	 */
 	public void setAnouncementId(Integer anouncementId) {
 		this.anouncementId = anouncementId;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.AnnouncementDate
-	 * 
-	 * @return the value of corannouncement.AnnouncementDate
+	 * @return the announcementDate
 	 */
 	public Date getAnnouncementDate() {
 		return announcementDate;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.AnnouncementDate
-	 * 
-	 * @param announcementDate
-	 *            the value for corannouncement.AnnouncementDate
+	 * @param announcementDate the announcementDate to set
 	 */
 	public void setAnnouncementDate(Date announcementDate) {
 		this.announcementDate = announcementDate;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.Message
-	 * 
-	 * @return the value of corannouncement.Message
+	 * @return the message
 	 */
 	public String getMessage() {
 		return message;
 	}
-
 	/**
-	 * This method sets the value of the database column corannouncement.Message
-	 * 
-	 * @param message
-	 *            the value for corannouncement.Message
+	 * @param message the message to set
 	 */
 	public void setMessage(String message) {
-		this.message = message == null ? null : message.trim();
+		this.message = message;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.MessageVisibility
-	 * 
-	 * @return the value of corannouncement.MessageVisibility
+	 * @return the messageVisibility
 	 */
-	public Integer getMessageVisibility() {
+	public MessageVisibility getMessageVisibility() {
 		return messageVisibility;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.MessageVisibility
-	 * 
-	 * @param messageVisibility
-	 *            the value for corannouncement.MessageVisibility
+	 * @param messageVisibility the messageVisibility to set
 	 */
-	public void setMessageVisibility(Integer messageVisibility) {
+	public void setMessageVisibility(MessageVisibility messageVisibility) {
 		this.messageVisibility = messageVisibility;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.ValidUntil
-	 * 
-	 * @return the value of corannouncement.ValidUntil
+	 * @return the validUntil
 	 */
 	public Date getValidUntil() {
 		return validUntil;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.ValidUntil
-	 * 
-	 * @param validUntil
-	 *            the value for corannouncement.ValidUntil
+	 * @param validUntil the validUntil to set
 	 */
 	public void setValidUntil(Date validUntil) {
 		this.validUntil = validUntil;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.MemberRoleId
-	 * 
-	 * @return the value of corannouncement.MemberRoleId
+	 * @return the postingMemberPersona
 	 */
-	public Integer getMemberRoleId() {
-		return memberRoleId;
+	public MemberPersona getPostingMemberPersona() {
+		return postingMemberPersona;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.MemberRoleId
-	 * 
-	 * @param memberRoleId
-	 *            the value for corannouncement.MemberRoleId
+	 * @param postingMemberPersona the postingMemberPersona to set
 	 */
-	public void setMemberRoleId(Integer memberRoleId) {
-		this.memberRoleId = memberRoleId;
+	public void setPostingMemberPersona(MemberPersona postingMemberPersona) {
+		this.postingMemberPersona = postingMemberPersona;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.InstitutionId
-	 * 
-	 * @return the value of corannouncement.InstitutionId
+	 * @return the institution
 	 */
-	public Integer getInstitutionId() {
-		return institutionId;
+	public Institution getInstitution() {
+		return institution;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.InstitutionId
-	 * 
-	 * @param institutionId
-	 *            the value for corannouncement.InstitutionId
+	 * @param institution the institution to set
 	 */
-	public void setInstitutionId(Integer institutionId) {
-		this.institutionId = institutionId;
+	public void setInstitution(Institution institution) {
+		this.institution = institution;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.InstitutionUnitId
-	 * 
-	 * @return the value of corannouncement.InstitutionUnitId
+	 * @return the institutionUnit
 	 */
-	public Integer getInstitutionUnitId() {
-		return institutionUnitId;
+	public InstitutionUnit getInstitutionUnit() {
+		return institutionUnit;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.InstitutionUnitId
-	 * 
-	 * @param institutionUnitId
-	 *            the value for corannouncement.InstitutionUnitId
+	 * @param institutionUnit the institutionUnit to set
 	 */
-	public void setInstitutionUnitId(Integer institutionUnitId) {
-		this.institutionUnitId = institutionUnitId;
+	public void setInstitutionUnit(InstitutionUnit institutionUnit) {
+		this.institutionUnit = institutionUnit;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.CurriculumCourseId
-	 * 
-	 * @return the value of corannouncement.CurriculumCourseId
+	 * @return the curriculumCourse
 	 */
-	public Integer getCurriculumCourseId() {
-		return curriculumCourseId;
+	public CurriculumCourse getCurriculumCourse() {
+		return curriculumCourse;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.CurriculumCourseId
-	 * 
-	 * @param curriculumCourseId
-	 *            the value for corannouncement.CurriculumCourseId
+	 * @param curriculumCourse the curriculumCourse to set
 	 */
-	public void setCurriculumCourseId(Integer curriculumCourseId) {
-		this.curriculumCourseId = curriculumCourseId;
+	public void setCurriculumCourse(CurriculumCourse curriculumCourse) {
+		this.curriculumCourse = curriculumCourse;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.LearningProgramId
-	 * 
-	 * @return the value of corannouncement.LearningProgramId
+	 * @return the learningProgram
 	 */
-	public Integer getLearningProgramId() {
-		return learningProgramId;
+	public LearningProgram getLearningProgram() {
+		return learningProgram;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.LearningProgramId
-	 * 
-	 * @param learningProgramId
-	 *            the value for corannouncement.LearningProgramId
+	 * @param learningProgram the learningProgram to set
 	 */
-	public void setLearningProgramId(Integer learningProgramId) {
-		this.learningProgramId = learningProgramId;
+	public void setLearningProgram(LearningProgram learningProgram) {
+		this.learningProgram = learningProgram;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.CourseId
-	 * 
-	 * @return the value of corannouncement.CourseId
+	 * @return the course
 	 */
-	public Integer getCourseId() {
-		return courseId;
+	public Course getCourse() {
+		return course;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.CourseId
-	 * 
-	 * @param courseId
-	 *            the value for corannouncement.CourseId
+	 * @param course the course to set
 	 */
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corannouncement.CourseLearningComponentId
-	 * 
-	 * @return the value of corannouncement.CourseLearningComponentId
+	 * @return the courseLearningComponent
 	 */
-	public Integer getCourseLearningComponentId() {
-		return courseLearningComponentId;
+	public CourseLearningComponent getCourseLearningComponent() {
+		return courseLearningComponent;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corannouncement.CourseLearningComponentId
-	 * 
-	 * @param courseLearningComponentId
-	 *            the value for corannouncement.CourseLearningComponentId
+	 * @param courseLearningComponent the courseLearningComponent to set
 	 */
-	public void setCourseLearningComponentId(Integer courseLearningComponentId) {
-		this.courseLearningComponentId = courseLearningComponentId;
+	public void setCourseLearningComponent(
+			CourseLearningComponent courseLearningComponent) {
+		this.courseLearningComponent = courseLearningComponent;
 	}
 }

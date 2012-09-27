@@ -1,102 +1,30 @@
 package com.ziksana.domain.course;
 
+import java.awt.TrayIcon.MessageType;
 import java.util.Date;
 
-public class LearningElementWall {
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.elementWallId
-	 */
+import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.member.MemberPersona;
+
+public class LearningElementWall extends AuditHistory{
+	
 	private Integer elementWallId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.StartDate
-	 */
 	private Date startDate;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.EndDate
-	 */
 	private Date endDate;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.Message
-	 */
 	private String message;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.VotingIndicator
-	 */
 	private Boolean votingIndicator;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.MessageVisibility
-	 */
-	private Integer messageVisibility;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.NumberofResponses
-	 */
+	private MessageVisibility messageVisibility;
 	private Integer numberofResponses;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.ResponseSentiment
-	 */
 	private Integer responseSentiment;
+	private MessageType messageType;
+	private LearningComponent learningComponent;
+	private MemberPersona postingMemberPersona;
+	private CurriculumCourse curriculumCourse;
+	private Course course;
+	private LearningContent learningContent;
+	private LearningProgram learningProgram;
 
 	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.MessageType
-	 */
-	private Integer messageType;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.LearningComponentId
-	 */
-	private Integer learningComponentId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.MemberRoleId
-	 */
-	private Integer memberRoleId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.CurriculumCourseId
-	 */
-	private Integer curriculumCourseId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.CourseId
-	 */
-	private Integer courseId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.LearningContentId
-	 */
-	private Integer learningContentId;
-
-	/**
-	 * This field corresponds to the database column
-	 * corlearningelementwall.LearningContentId
-	 */
-	private Integer learningProgramId;
-
-	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.elementWallId
-	 * 
 	 * @return the value of corlearningelementwall.elementWallId
 	 */
 	public Integer getElementWallId() {
@@ -104,9 +32,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.elementWallId
-	 * 
 	 * @param elementWallId
 	 *            the value for corlearningelementwall.elementWallId
 	 */
@@ -115,9 +40,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.StartDate
-	 * 
 	 * @return the value of corlearningelementwall.StartDate
 	 */
 	public Date getStartDate() {
@@ -125,9 +47,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.StartDate
-	 * 
 	 * @param startDate
 	 *            the value for corlearningelementwall.StartDate
 	 */
@@ -136,9 +55,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.EndDate
-	 * 
 	 * @return the value of corlearningelementwall.EndDate
 	 */
 	public Date getEndDate() {
@@ -146,9 +62,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.EndDate
-	 * 
 	 * @param endDate
 	 *            the value for corlearningelementwall.EndDate
 	 */
@@ -157,9 +70,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.Message
-	 * 
 	 * @return the value of corlearningelementwall.Message
 	 */
 	public String getMessage() {
@@ -167,9 +77,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.Message
-	 * 
 	 * @param message
 	 *            the value for corlearningelementwall.Message
 	 */
@@ -178,9 +85,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.VotingIndicator
-	 * 
 	 * @return the value of corlearningelementwall.VotingIndicator
 	 */
 	public Boolean getVotingIndicator() {
@@ -188,9 +92,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.VotingIndicator
-	 * 
 	 * @param votingIndicator
 	 *            the value for corlearningelementwall.VotingIndicator
 	 */
@@ -199,30 +100,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.MessageVisibility
-	 * 
-	 * @return the value of corlearningelementwall.MessageVisibility
-	 */
-	public Integer getMessageVisibility() {
-		return messageVisibility;
-	}
-
-	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.MessageVisibility
-	 * 
-	 * @param messageVisibility
-	 *            the value for corlearningelementwall.MessageVisibility
-	 */
-	public void setMessageVisibility(Integer messageVisibility) {
-		this.messageVisibility = messageVisibility;
-	}
-
-	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.NumberofResponses
-	 * 
 	 * @return the value of corlearningelementwall.NumberofResponses
 	 */
 	public Integer getNumberofResponses() {
@@ -230,9 +107,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.NumberofResponses
-	 * 
 	 * @param numberofResponses
 	 *            the value for corlearningelementwall.NumberofResponses
 	 */
@@ -241,9 +115,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.ResponseSentiment
-	 * 
 	 * @return the value of corlearningelementwall.ResponseSentiment
 	 */
 	public Integer getResponseSentiment() {
@@ -251,9 +122,6 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.ResponseSentiment
-	 * 
 	 * @param responseSentiment
 	 *            the value for corlearningelementwall.ResponseSentiment
 	 */
@@ -262,142 +130,114 @@ public class LearningElementWall {
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.MessageType
-	 * 
-	 * @return the value of corlearningelementwall.MessageType
+	 * @return the messageVisibility
 	 */
-	public Integer getMessageType() {
+	public MessageVisibility getMessageVisibility() {
+		return messageVisibility;
+	}
+
+	/**
+	 * @param messageVisibility the messageVisibility to set
+	 */
+	public void setMessageVisibility(MessageVisibility messageVisibility) {
+		this.messageVisibility = messageVisibility;
+	}
+
+	/**
+	 * @return the messageType
+	 */
+	public MessageType getMessageType() {
 		return messageType;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.MessageType
-	 * 
-	 * @param messageType
-	 *            the value for corlearningelementwall.MessageType
+	 * @param messageType the messageType to set
 	 */
-	public void setMessageType(Integer messageType) {
+	public void setMessageType(MessageType messageType) {
 		this.messageType = messageType;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.LearningComponentId
-	 * 
-	 * @return the value of corlearningelementwall.LearningComponentId
+	 * @return the learningComponent
 	 */
-	public Integer getLearningComponentId() {
-		return learningComponentId;
+	public LearningComponent getLearningComponent() {
+		return learningComponent;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.LearningComponentId
-	 * 
-	 * @param learningComponentId
-	 *            the value for corlearningelementwall.LearningComponentId
+	 * @param learningComponent the learningComponent to set
 	 */
-	public void setLearningComponentId(Integer learningComponentId) {
-		this.learningComponentId = learningComponentId;
+	public void setLearningComponent(LearningComponent learningComponent) {
+		this.learningComponent = learningComponent;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.MemberRoleId
-	 * 
-	 * @return the value of corlearningelementwall.MemberRoleId
+	 * @return the postingMemberPersona
 	 */
-	public Integer getMemberRoleId() {
-		return memberRoleId;
+	public MemberPersona getPostingMemberPersona() {
+		return postingMemberPersona;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.MemberRoleId
-	 * 
-	 * @param memberRoleId
-	 *            the value for corlearningelementwall.MemberRoleId
+	 * @param postingMemberPersona the postingMemberPersona to set
 	 */
-	public void setMemberRoleId(Integer memberRoleId) {
-		this.memberRoleId = memberRoleId;
+	public void setPostingMemberPersona(MemberPersona postingMemberPersona) {
+		this.postingMemberPersona = postingMemberPersona;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.CurriculumCourseId
-	 * 
-	 * @return the value of corlearningelementwall.CurriculumCourseId
+	 * @return the curriculumCourse
 	 */
-	public Integer getCurriculumCourseId() {
-		return curriculumCourseId;
+	public CurriculumCourse getCurriculumCourse() {
+		return curriculumCourse;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.CurriculumCourseId
-	 * 
-	 * @param curriculumCourseId
-	 *            the value for corlearningelementwall.CurriculumCourseId
+	 * @param curriculumCourse the curriculumCourse to set
 	 */
-	public void setCurriculumCourseId(Integer curriculumCourseId) {
-		this.curriculumCourseId = curriculumCourseId;
+	public void setCurriculumCourse(CurriculumCourse curriculumCourse) {
+		this.curriculumCourse = curriculumCourse;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.CourseId
-	 * 
-	 * @return the value of corlearningelementwall.CourseId
+	 * @return the course
 	 */
-	public Integer getCourseId() {
-		return courseId;
+	public Course getCourse() {
+		return course;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.CourseId
-	 * 
-	 * @param courseId
-	 *            the value for corlearningelementwall.CourseId
+	 * @param course the course to set
 	 */
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corlearningelementwall.LearningContentId
-	 * 
-	 * @return the value of corlearningelementwall.LearningContentId
+	 * @return the learningContent
 	 */
-	public Integer getLearningContentId() {
-		return learningContentId;
+	public LearningContent getLearningContent() {
+		return learningContent;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corlearningelementwall.LearningContentId
-	 * 
-	 * @param learningContentId
-	 *            the value for corlearningelementwall.LearningContentId
+	 * @param learningContent the learningContent to set
 	 */
-	public void setLearningContentId(Integer learningContentId) {
-		this.learningContentId = learningContentId;
+	public void setLearningContent(LearningContent learningContent) {
+		this.learningContent = learningContent;
 	}
 
 	/**
-	 * @return the learningProgramId
+	 * @return the learningProgram
 	 */
-	public Integer getLearningProgramId() {
-		return learningProgramId;
+	public LearningProgram getLearningProgram() {
+		return learningProgram;
 	}
 
 	/**
-	 * @param learningProgramId the learningProgramId to set
+	 * @param learningProgram the learningProgram to set
 	 */
-	public void setLearningProgramId(Integer learningProgramId) {
-		this.learningProgramId = learningProgramId;
+	public void setLearningProgram(LearningProgram learningProgram) {
+		this.learningProgram = learningProgram;
 	}
 }

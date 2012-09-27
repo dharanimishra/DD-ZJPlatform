@@ -1,68 +1,27 @@
 package com.ziksana.domain.course;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class CourseAdditionalProperty implements Serializable{
+import com.ziksana.domain.member.MemberPersona;
 
-	/**
-	 */
-	private static final long serialVersionUID = 6810726986036389416L;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.CourseAddnlPropertyId
-	 */
+/**
+ * @author bhashasp
+ */
+public class CourseAdditionalProperty{
+
+
 	private Integer courseAddnlPropertyId;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.CreationDate
-	 */
 	private Date creationDate;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.PropertyUsageType
-	 */
 	private Integer propertyUsageType;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.PropertyName
-	 */
 	private String propertyName;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.PropertyDataType
-	 */
 	private Integer propertyDataType;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.PropertyValue
-	 */
 	private String propertyValue;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.Sequence
-	 */
 	private Integer sequence;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.Active
-	 */
 	private Boolean active;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.CourseId
-	 */
-	private Integer courseId;
-	/**
-	 * This field corresponds to the database column
-	 * corcourseadditionalproperty.MemberRoleId
-	 */
-	private Integer memberRoleId;
+	private Course course;
+	private MemberPersona creatorMemberPersona;
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.CourseAddnlPropertyId
-	 * 
 	 * @return the value of corcourseadditionalproperty.CourseAddnlPropertyId
 	 */
 	public Integer getCourseAddnlPropertyId() {
@@ -70,9 +29,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.CourseAddnlPropertyId
-	 * 
 	 * @param CourseAddnlPropertyId
 	 *            the value for corcourseadditionalproperty.CourseAddnlPropertyId
 	 */
@@ -81,9 +37,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.CreationDate
-	 * 
 	 * @return the value of corcourseadditionalproperty.CreationDate
 	 */
 	public Date getCreationDate() {
@@ -91,9 +44,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.CreationDate
-	 * 
 	 * @param creationDate
 	 *            the value for corcourseadditionalproperty.CreationDate
 	 */
@@ -102,9 +52,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.PropertyUsageType
-	 * 
 	 * @return the value of corcourseadditionalproperty.PropertyUsageType
 	 */
 	public Integer getPropertyUsageType() {
@@ -112,9 +59,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.PropertyUsageType
-	 * 
 	 * @param propertyUsageType
 	 *            the value for corcourseadditionalproperty.PropertyUsageType
 	 */
@@ -123,9 +67,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.PropertyName
-	 * 
 	 * @return the value of corcourseadditionalproperty.PropertyName
 	 */
 	public String getPropertyName() {
@@ -133,9 +74,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.PropertyName
-	 * 
 	 * @param propertyName
 	 *            the value for corcourseadditionalproperty.PropertyName
 	 */
@@ -144,9 +82,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.PropertyDataType
-	 * 
 	 * @return the value of corcourseadditionalproperty.PropertyDataType
 	 */
 	public Integer getPropertyDataType() {
@@ -154,9 +89,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.PropertyDataType
-	 * 
 	 * @param propertyDataType
 	 *            the value for corcourseadditionalproperty.PropertyDataType
 	 */
@@ -165,9 +97,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.PropertyValue
-	 * 
 	 * @return the value of corcourseadditionalproperty.PropertyValue
 	 */
 	public String getPropertyValue() {
@@ -175,9 +104,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.PropertyValue
-	 * 
 	 * @param propertyValue
 	 *            the value for corcourseadditionalproperty.PropertyValue
 	 */
@@ -187,9 +113,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.Sequence
-	 * 
 	 * @return the value of corcourseadditionalproperty.Sequence
 	 */
 	public Integer getSequence() {
@@ -197,9 +120,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.Sequence
-	 * 
 	 * @param sequence
 	 *            the value for corcourseadditionalproperty.Sequence
 	 */
@@ -208,9 +128,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.Active
-	 * 
 	 * @return the value of corcourseadditionalproperty.Active
 	 */
 	public Boolean getActive() {
@@ -218,9 +135,6 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.Active
-	 * 
 	 * @param active
 	 *            the value for corcourseadditionalproperty.Active
 	 */
@@ -229,44 +143,31 @@ public class CourseAdditionalProperty implements Serializable{
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.CourseId
-	 * 
-	 * @return the value of corcourseadditionalproperty.CourseId
+	 * @return the course
 	 */
-	public Integer getCourseId() {
-		return courseId;
+	public Course getCourse() {
+		return course;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.CourseId
-	 * 
-	 * @param courseId
-	 *            the value for corcourseadditionalproperty.CourseId
+	 * @param course the course to set
 	 */
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	/**
-	 * This method returns the value of the database column
-	 * corcourseadditionalproperty.MemberRoleId
-	 * 
-	 * @return the value of corcourseadditionalproperty.MemberRoleId
+	 * @return the creatorMemberPersona
 	 */
-	public Integer getMemberRoleId() {
-		return memberRoleId;
+	public MemberPersona getCreatorMemberPersona() {
+		return creatorMemberPersona;
 	}
 
 	/**
-	 * This method sets the value of the database column
-	 * corcourseadditionalproperty.MemberRoleId
-	 * 
-	 * @param memberRoleId
-	 *            the value for corcourseadditionalproperty.MemberRoleId
+	 * @param creatorMemberPersona the creatorMemberPersona to set
 	 */
-	public void setMemberRoleId(Integer memberRoleId) {
-		this.memberRoleId = memberRoleId;
+	public void setCreatorMemberPersona(MemberPersona creatorMemberPersona) {
+		this.creatorMemberPersona = creatorMemberPersona;
 	}
+
 }

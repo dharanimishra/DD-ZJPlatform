@@ -7,6 +7,9 @@ import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utilz.SubjectClassification;
 
+/**
+ * @author bhashasp
+ */
 public class Course extends AuditHistory{
 
 	//TODO: Separator will change, based on requirement
@@ -23,107 +26,68 @@ public class Course extends AuditHistory{
 
 	private Integer courseId;
 	/**
-	 * This field corresponds to the property Name<br>
 	 * Maximum Length:45
 	 */
 	private String name;
 	/**
-	 * This field corresponds to the property CourseIdentifier<br>
-	 * Identifier for the Course<br>
-	 * Maximum Length:45
+	 * Identifier for the Course<br>Maximum Length:45
 	 */
 	private String courseIdentifier;
 	/**
-	 * This field corresponds to the property Description<br>
 	 * Maximum Length:240
 	 */
 	private String description;
 	/**
-	 * This field corresponds to the property ValidFrom<br>
-	 * Course Start Date is need When Course is associate to curriculumm
+	 * Course Start Date is for when Course is associate to curriculumm
 	 */
 	private Date validFrom;
 	/**
-	 * This field corresponds to the property ValidTo<br>
 	 * Course End Date is for When Course is associate to curriculumm
 	 */
-	private Date validTo;
+	private Date 			validTo;
+	private CourseStatus 	courseStatus;
+	private Rating 			rating;
 	/**
-	 * This field corresponds to the CourseStatus<br>
-	 * ID for Course Status
-	 */
-	private CourseStatus courseStatus;
-	/**
-	 * This field corresponds to the Rating
-	 */
-	private Rating rating;
-	/**
-	 * This field corresponds to the attribute ContentSecurityNeededIndicator<br>
 	 * Maximum Length:1
 	 */
 	private Boolean securityNeededIndicator;
 	/**
-	 * This field corresponds to the property TotalCredits<br>
 	 * Maximum Length:5
 	 */
 	private String totalCredits;
 
 	/**
-	 * This field corresponds to the attribute ExtraCreditsIndicator<br>
 	 * Maximum Length:1
 	 */
 	private Boolean extraCreditsIndicator;
-
 	/**
-	 * This field corresponds to the property ExtraCredits Maximum Length:5
+	 *  Maximum Length:5
 	 */
 	private String extraCredits;
-
 	/**
-	 * This field corresponds to the attribute AdditionalPropertyIndicator<br>
 	 * Maximum Length:1
 	 */
 	private Boolean additionalPropertyIndicator;
-
 	/**
-	 * This field corresponds to the attribute courseDuration in weeks
-	 */
-	private Integer courseDuration;
-
-	/**
-	 * This field corresponds to the attribute thumbnailPicturePath<br>
 	 * Maximum Length:72
 	 */
 	private String thumbnailPicturePath;
-
 	/**
-	 * This field corresponds to the attribute templateIndicator<br>
 	 * Maximum Length:1
 	 */
 	private Boolean templateIndicator;
+	private Integer courseDuration;
 
-	/**
-	 * This field corresponds to the property subjClassificationId
-	 */
-	private SubjectClassification subjClassificationId;
+	private SubjectClassification 	subjClassificationId 	= null;
 
-	/**
-	 * This field corresponds to the property memberRoleId
-	 */
-	private MemberPersona accountableMember;
+	private MemberPersona 			accountableMember 		= null;
 
-	/**
-	 * This object corresponds to the details about the Course components
-	 */
-	private CourseDetails courseDetails;
+	private CourseDetails 			courseDetails 			= null;
 
-	/**
-	 * This field corresponds to the property Version
-	 */
 	private Integer version;
+
 	/**
 	 * This method returns the value of the property Name
-	 * 
 	 * @return the value of attribute Name
 	 */
 	public String getName() {
@@ -203,7 +167,6 @@ public class Course extends AuditHistory{
 
 	/**
 	 * This method sets the value of the property Version
-	 * 
 	 * @param version
 	 *            the value for attribute Version
 	 */
@@ -228,7 +191,6 @@ public class Course extends AuditHistory{
 
 	/**
 	 * This method returns the value of the property courseId
-	 * 
 	 * @return the value of attribute courseId
 	 */
 	public Integer getCourseId() {
@@ -237,7 +199,6 @@ public class Course extends AuditHistory{
 
 	/**
 	 * This method sets the value of the property courseId
-	 * 
 	 * @param courseId
 	 *            the value for attribute courseId
 	 */
@@ -383,7 +344,6 @@ public class Course extends AuditHistory{
 	public void setAccountableMember(MemberPersona accountableMember) {
 		this.accountableMember = accountableMember;
 	}
-
 
 	public String toString() {
 		return "Course [name=" + name + ", courseIdentifier="

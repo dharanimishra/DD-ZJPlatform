@@ -2,72 +2,25 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-public class CourseLearningComponent {
-	/**
-	 * This field corresponds to the property courseLearningComponentId
-	 */
+import com.ziksana.domain.common.AuditHistory;
+
+public class CourseLearningComponent extends AuditHistory{
+	
 	private Integer courseLearningComponentId;
-
-	/**
-	 * This field corresponds to the property CreationDate
-	 */
 	private Date creationDate;
-
-	/**
-	 * This field corresponds to the property LearningComponentVersionUsed
-	 */
 	private Integer learningComponentVersionUsed;
-
-	/**
-	 * This field corresponds to the property Active
-	 */
 	private Boolean active;
-
-	/**
-	 * This field corresponds to the property Weightage
-	 */
 	private Integer weightage;
-
-	/**
-	 * This field corresponds to the property TotalCredits
-	 */
 	private String totalCredits;
-
-	/**
-	 * This field corresponds to the property ExtraCredits
-	 */
 	private String extraCredits;
-
-	/**
-	 * This field corresponds to the property duration
-	 */
 	private Integer duration;
-
-	/**
-	 * This field corresponds to the property
-	 * LearningComponentOveriddenIndicator
-	 */
 	private Boolean learningComponentOveriddenIndicator;
-
-	/**
-	 * This field corresponds to the property CourseId
-	 */
-	private Integer courseId;
-
-	/**
-	 * This field corresponds to the property LearningComponentId
-	 */
-	private Integer learningComponentId;
-
-	/**
-	 * This field corresponds to the property LearningComponentTypeId
-	 */
-	private Integer learningComponentTypeId;
+	private Course course;
+	private LearningComponent learningComponent;
+	private LearningComponentType learningComponentType;
 	
 
 	/**
-	 * This method returns the value of the property courseLearningComponentId
-	 * 
 	 * @return the value of property courseLearningComponentId
 	 */
 	public Integer getCourseLearningComponentId() {
@@ -75,8 +28,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method sets the value of the property courseLearningComponentId
-	 * 
 	 * @param courseLearningComponentId
 	 *            the value for property courseLearningComponentId
 	 */
@@ -85,8 +36,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method returns the value of the property CreationDate
-	 * 
 	 * @return the value of property CreationDate
 	 */
 	public Date getCreationDate() {
@@ -94,8 +43,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method sets the value of the property CreationDate
-	 * 
 	 * @param creationDate
 	 *            the value for property CreationDate
 	 */
@@ -104,9 +51,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method returns the value of the property
-	 * LearningComponentVersionUsed
-	 * 
 	 * @return the value of property LearningComponentVersionUsed
 	 */
 	public Integer getLearningComponentVersionUsed() {
@@ -114,8 +58,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method sets the value of the property LearningComponentVersionUsed
-	 * 
 	 * @param learningComponentVersionUsed
 	 *            the value for property LearningComponentVersionUsed
 	 */
@@ -125,8 +67,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method returns the value of the property Active
-	 * 
 	 * @return the value of property Active
 	 */
 	public Boolean getActive() {
@@ -134,8 +74,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method sets the value of the property Active
-	 * 
 	 * @param active
 	 *            the value for property Active
 	 */
@@ -153,8 +91,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method sets the value of the property Weightage
-	 * 
 	 * @param weightage
 	 *            the value for property Weightage
 	 */
@@ -163,8 +99,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method returns the value of the property TotalCredits
-	 * 
 	 * @return the value of property TotalCredits
 	 */
 	public String getTotalCredits() {
@@ -172,8 +106,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method sets the value of the property TotalCredits
-	 * 
 	 * @param totalCredits
 	 *            the value for property TotalCredits
 	 */
@@ -182,8 +114,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method returns the value of the property ExtraCredits
-	 * 
 	 * @return the value of property ExtraCredits
 	 */
 	public String getExtraCredits() {
@@ -191,8 +121,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method sets the value of the property ExtraCredits
-	 * 
 	 * @param extraCredits
 	 *            the value for property ExtraCredits
 	 */
@@ -201,8 +129,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method returns the value of the property duration
-	 * 
 	 * @return the value of property duration
 	 */
 	public Integer getDuration() {
@@ -210,8 +136,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method sets the value of the property ExtraCredits
-	 * 
 	 * @param duration
 	 *            the value for property duration
 	 */
@@ -220,9 +144,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method returns the value of the property
-	 * LearningComponentOveriddenIndicator
-	 * 
 	 * @return the value of property LearningComponentOveriddenIndicator
 	 */
 	public Boolean getLearningComponentOveriddenIndicator() {
@@ -230,9 +151,6 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method sets the value of the property
-	 * LearningComponentOveriddenIndicator
-	 * 
 	 * @param learningComponentOveriddenIndicator
 	 *            the value for property LearningComponentOveriddenIndicator
 	 */
@@ -242,60 +160,45 @@ public class CourseLearningComponent {
 	}
 
 	/**
-	 * This method returns the value of the property CourseId
-	 * 
-	 * @return the value of property CourseId
+	 * @return the course
 	 */
-	public Integer getCourseId() {
-		return courseId;
+	public Course getCourse() {
+		return course;
 	}
 
 	/**
-	 * This method sets the value of the property CourseId
-	 * 
-	 * @param courseId
-	 *            the value for property CourseId
+	 * @param course the course to set
 	 */
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	/**
-	 * This method returns the value of the property LearningComponentId
-	 * 
-	 * @return the value of property LearningComponentId
+	 * @return the learningComponent
 	 */
-	public Integer getLearningComponentId() {
-		return learningComponentId;
+	public LearningComponent getLearningComponent() {
+		return learningComponent;
 	}
 
 	/**
-	 * This method sets the value of the property LearningComponentId
-	 * 
-	 * @param learningComponentId
-	 *            the value for property LearningComponentId
+	 * @param learningComponent the learningComponent to set
 	 */
-	public void setLearningComponentId(Integer learningComponentId) {
-		this.learningComponentId = learningComponentId;
+	public void setLearningComponent(LearningComponent learningComponent) {
+		this.learningComponent = learningComponent;
 	}
 
 	/**
-	 * This method returns the value of the property LearningComponentTypeId
-	 * 
-	 * @return the value of property LearningComponentTypeId
+	 * @return the learningComponentType
 	 */
-	public Integer getLearningComponentTypeId() {
-		return learningComponentTypeId;
+	public LearningComponentType getLearningComponentType() {
+		return learningComponentType;
 	}
 
 	/**
-	 * This method sets the value of the property LearningComponentTypeId
-	 * 
-	 * @param learningComponentTypeId
-	 *            the value for property LearningComponentTypeId
+	 * @param learningComponentType the learningComponentType to set
 	 */
-	public void setLearningComponentTypeId(Integer learningComponentTypeId) {
-		this.learningComponentTypeId = learningComponentTypeId;
+	public void setLearningComponentType(LearningComponentType learningComponentType) {
+		this.learningComponentType = learningComponentType;
 	}
 
 }

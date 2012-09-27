@@ -1,657 +1,338 @@
 package com.ziksana.domain.course;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class CurriculumCourse implements Serializable {
+import com.ziksana.domain.common.AuditHistory;
 
-	/**
-	 */
-	private static final long serialVersionUID = -7729244753807278238L;
-	/**
-	 * This field corresponds to the database column corcurriculumcourse.curriculumCourseId
-	 */
+public class CurriculumCourse extends AuditHistory{
+
 	private Integer curriculumCourseId;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.CreationDate
-	 */
 	private Date creationDate;
-	/**
-	 * This field corresponds to the database column corcurriculumcourse.Active
-	 */
 	private Boolean active;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.CurriculumUseType
-	 */
-	private Integer curriculumUseType;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.CurriculumCourseIdentifier
-	 */
+	private CurriculumUseType curriculumUseType;
 	private String curriculumCourseIdentifier;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.CourseVersionUsed
-	 */
 	private Integer courseVersionUsed;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.CourseWeightage
-	 */
 	private Integer courseWeightage;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.GradeType
-	 */
-	private Integer gradeType;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.CourseCredit
-	 */
+	private GradeType gradeType;
 	private Integer courseCredit;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.ZiksanaOnlyIndicator
-	 */
 	private Boolean ziksanaOnlyIndicator;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.ClassroomIndicator
-	 */
 	private Boolean classroomIndicator;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.CombinedIndicator
-	 */
 	private Boolean combinedIndicator;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.NoSyncConstraintIndicator
-	 */
 	private Boolean noSyncConstraintIndicator;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.SyncAfterClass
-	 */
 	private Integer syncAfterClass;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.SyncBeforeClass
-	 */
 	private Integer syncBeforeClass;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.ValidFrom
-	 */
 	private Date validFrom;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.validTo
-	 */
 	private Date validTo;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.OverallLearnerRating
-	 */
-	private Integer overallLearnerRating;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.OverallPeerRating
-	 */
-	private Integer overallPeerRating;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.ContentSecurityNeededIndicator
-	 */
+	private Rating overallLearnerRating;
+	private Rating overallPeerRating;
 	private Boolean contentSecurityNeededIndicator;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.TotalCredits
-	 */
 	private String totalCredits;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.ExtraCredits
-	 */
 	private String extraCredits;
-
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.courseLevelOveriddenIndicator
-	 */
 	private boolean courseLevelOveriddenIndicator;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.ProgramCurriculumId
-	 */
-	private Integer programCurriculumId;
-	/**
-	 * This field corresponds to the database column
-	 * corcurriculumcourse.CourseId
-	 */
-	private Integer courseId;
+	private ProgrammCurriculum programCurriculum;
+	private Course course;
 
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.curriculumCourseId
-	 * 
-	 * @return the value of corcurriculumcourse.curriculumCourseId
+	 * @return the curriculumCourseId
 	 */
 	public Integer getCurriculumCourseId() {
 		return curriculumCourseId;
 	}
-
 	/**
-	 * This method sets the value of the database column corcurriculumcourse.curriculumCourseId
-	 * 
-	 * @param curriculumCourseId
-	 *            the value for corcurriculumcourse.curriculumCourseId
+	 * @param curriculumCourseId the curriculumCourseId to set
 	 */
 	public void setCurriculumCourseId(Integer curriculumCourseId) {
 		this.curriculumCourseId = curriculumCourseId;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.CreationDate
-	 * 
-	 * @return the value of corcurriculumcourse.CreationDate
+	 * @return the creationDate
 	 */
 	public Date getCreationDate() {
 		return creationDate;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.CreationDate
-	 * 
-	 * @param creationDate
-	 *            the value for corcurriculumcourse.CreationDate
+	 * @param creationDate the creationDate to set
 	 */
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.Active
-	 * 
-	 * @return the value of corcurriculumcourse.Active
+	 * @return the active
 	 */
 	public Boolean getActive() {
 		return active;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.Active
-	 * 
-	 * @param active
-	 *            the value for corcurriculumcourse.Active
+	 * @param active the active to set
 	 */
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.CurriculumUseType
-	 * 
-	 * @return the value of corcurriculumcourse.CurriculumUseType
+	 * @return the curriculumUseType
 	 */
-	public Integer getCurriculumUseType() {
+	public CurriculumUseType getCurriculumUseType() {
 		return curriculumUseType;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.CurriculumUseType
-	 * 
-	 * @param curriculumUseType
-	 *            the value for corcurriculumcourse.CurriculumUseType
+	 * @param curriculumUseType the curriculumUseType to set
 	 */
-	public void setCurriculumUseType(Integer curriculumUseType) {
+	public void setCurriculumUseType(CurriculumUseType curriculumUseType) {
 		this.curriculumUseType = curriculumUseType;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.CurriculumCourseIdentifier
-	 * 
-	 * @return the value of corcurriculumcourse.CurriculumCourseIdentifier
+	 * @return the curriculumCourseIdentifier
 	 */
 	public String getCurriculumCourseIdentifier() {
 		return curriculumCourseIdentifier;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.CurriculumCourseIdentifier
-	 * 
-	 * @param curriculumCourseIdentifier
-	 *            the value for corcurriculumcourse.CurriculumCourseIdentifier
+	 * @param curriculumCourseIdentifier the curriculumCourseIdentifier to set
 	 */
 	public void setCurriculumCourseIdentifier(String curriculumCourseIdentifier) {
-		this.curriculumCourseIdentifier = curriculumCourseIdentifier == null ? null
-				: curriculumCourseIdentifier.trim();
+		this.curriculumCourseIdentifier = curriculumCourseIdentifier;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.CourseVersionUsed
-	 * 
-	 * @return the value of corcurriculumcourse.CourseVersionUsed
+	 * @return the courseVersionUsed
 	 */
 	public Integer getCourseVersionUsed() {
 		return courseVersionUsed;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.CourseVersionUsed
-	 * 
-	 * @param courseVersionUsed
-	 *            the value for corcurriculumcourse.CourseVersionUsed
+	 * @param courseVersionUsed the courseVersionUsed to set
 	 */
 	public void setCourseVersionUsed(Integer courseVersionUsed) {
 		this.courseVersionUsed = courseVersionUsed;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.CourseWeightage
-	 * 
-	 * @return the value of corcurriculumcourse.CourseWeightage
+	 * @return the courseWeightage
 	 */
 	public Integer getCourseWeightage() {
 		return courseWeightage;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.CourseWeightage
-	 * 
-	 * @param courseWeightage
-	 *            the value for corcurriculumcourse.CourseWeightage
+	 * @param courseWeightage the courseWeightage to set
 	 */
 	public void setCourseWeightage(Integer courseWeightage) {
 		this.courseWeightage = courseWeightage;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.GradeType
-	 * 
-	 * @return the value of corcurriculumcourse.GradeType
+	 * @return the gradeType
 	 */
-	public Integer getGradeType() {
+	public GradeType getGradeType() {
 		return gradeType;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.GradeType
-	 * 
-	 * @param gradeType
-	 *            the value for corcurriculumcourse.GradeType
+	 * @param gradeType the gradeType to set
 	 */
-	public void setGradeType(Integer gradeType) {
+	public void setGradeType(GradeType gradeType) {
 		this.gradeType = gradeType;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.CourseCredit
-	 * 
-	 * @return the value of corcurriculumcourse.CourseCredit
+	 * @return the courseCredit
 	 */
 	public Integer getCourseCredit() {
 		return courseCredit;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.CourseCredit
-	 * 
-	 * @param courseCredit
-	 *            the value for corcurriculumcourse.CourseCredit
+	 * @param courseCredit the courseCredit to set
 	 */
 	public void setCourseCredit(Integer courseCredit) {
 		this.courseCredit = courseCredit;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.ZiksanaOnlyIndicator
-	 * 
-	 * @return the value of corcurriculumcourse.ZiksanaOnlyIndicator
+	 * @return the ziksanaOnlyIndicator
 	 */
 	public Boolean getZiksanaOnlyIndicator() {
 		return ziksanaOnlyIndicator;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.ZiksanaOnlyIndicator
-	 * 
-	 * @param ziksanaOnlyIndicator
-	 *            the value for corcurriculumcourse.ZiksanaOnlyIndicator
+	 * @param ziksanaOnlyIndicator the ziksanaOnlyIndicator to set
 	 */
 	public void setZiksanaOnlyIndicator(Boolean ziksanaOnlyIndicator) {
 		this.ziksanaOnlyIndicator = ziksanaOnlyIndicator;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.ClassroomIndicator
-	 * 
-	 * @return the value of corcurriculumcourse.ClassroomIndicator
+	 * @return the classroomIndicator
 	 */
 	public Boolean getClassroomIndicator() {
 		return classroomIndicator;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.ClassroomIndicator
-	 * 
-	 * @param classroomIndicator
-	 *            the value for corcurriculumcourse.ClassroomIndicator
+	 * @param classroomIndicator the classroomIndicator to set
 	 */
 	public void setClassroomIndicator(Boolean classroomIndicator) {
 		this.classroomIndicator = classroomIndicator;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.CombinedIndicator
-	 * 
-	 * @return the value of corcurriculumcourse.CombinedIndicator
+	 * @return the combinedIndicator
 	 */
 	public Boolean getCombinedIndicator() {
 		return combinedIndicator;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.CombinedIndicator
-	 * 
-	 * @param combinedIndicator
-	 *            the value for corcurriculumcourse.CombinedIndicator
+	 * @param combinedIndicator the combinedIndicator to set
 	 */
 	public void setCombinedIndicator(Boolean combinedIndicator) {
 		this.combinedIndicator = combinedIndicator;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.NoSyncConstraintIndicator
-	 * 
-	 * @return the value of corcurriculumcourse.NoSyncConstraintIndicator
+	 * @return the noSyncConstraintIndicator
 	 */
 	public Boolean getNoSyncConstraintIndicator() {
 		return noSyncConstraintIndicator;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.NoSyncConstraintIndicator
-	 * 
-	 * @param noSyncConstraintIndicator
-	 *            the value for corcurriculumcourse.NoSyncConstraintIndicator
+	 * @param noSyncConstraintIndicator the noSyncConstraintIndicator to set
 	 */
 	public void setNoSyncConstraintIndicator(Boolean noSyncConstraintIndicator) {
 		this.noSyncConstraintIndicator = noSyncConstraintIndicator;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.SyncAfterClass
-	 * 
-	 * @return the value of corcurriculumcourse.SyncAfterClass
+	 * @return the syncAfterClass
 	 */
 	public Integer getSyncAfterClass() {
 		return syncAfterClass;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.SyncAfterClass
-	 * 
-	 * @param syncAfterClass
-	 *            the value for corcurriculumcourse.SyncAfterClass
+	 * @param syncAfterClass the syncAfterClass to set
 	 */
 	public void setSyncAfterClass(Integer syncAfterClass) {
 		this.syncAfterClass = syncAfterClass;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.SyncBeforeClass
-	 * 
-	 * @return the value of corcurriculumcourse.SyncBeforeClass
+	 * @return the syncBeforeClass
 	 */
 	public Integer getSyncBeforeClass() {
 		return syncBeforeClass;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.SyncBeforeClass
-	 * 
-	 * @param syncBeforeClass
-	 *            the value for corcurriculumcourse.SyncBeforeClass
+	 * @param syncBeforeClass the syncBeforeClass to set
 	 */
 	public void setSyncBeforeClass(Integer syncBeforeClass) {
 		this.syncBeforeClass = syncBeforeClass;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.ValidFrom
-	 * 
-	 * @return the value of corcurriculumcourse.ValidFrom
+	 * @return the validFrom
 	 */
 	public Date getValidFrom() {
 		return validFrom;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.ValidFrom
-	 * 
-	 * @param ValidFrom
-	 *            the value for corcurriculumcourse.ValidFrom
+	 * @param validFrom the validFrom to set
 	 */
 	public void setValidFrom(Date validFrom) {
 		this.validFrom = validFrom;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.validTo
-	 * 
-	 * @return the value of corcurriculumcourse.validTo
+	 * @return the validTo
 	 */
 	public Date getValidTo() {
 		return validTo;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.validTo
-	 * 
-	 * @param validTo
-	 *            the value for corcurriculumcourse.validTo
+	 * @param validTo the validTo to set
 	 */
 	public void setValidTo(Date validTo) {
 		this.validTo = validTo;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.OverallLearnerRating
-	 * 
-	 * @return the value of corcurriculumcourse.OverallLearnerRating
+	 * @return the overallLearnerRating
 	 */
-	public Integer getOverallLearnerRating() {
+	public Rating getOverallLearnerRating() {
 		return overallLearnerRating;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.OverallLearnerRating
-	 * 
-	 * @param overallLearnerRating
-	 *            the value for corcurriculumcourse.OverallLearnerRating
+	 * @param overallLearnerRating the overallLearnerRating to set
 	 */
-	public void setOverallLearnerRating(Integer overallLearnerRating) {
+	public void setOverallLearnerRating(Rating overallLearnerRating) {
 		this.overallLearnerRating = overallLearnerRating;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.OverallPeerRating
-	 * 
-	 * @return the value of corcurriculumcourse.OverallPeerRating
+	 * @return the overallPeerRating
 	 */
-	public Integer getOverallPeerRating() {
+	public Rating getOverallPeerRating() {
 		return overallPeerRating;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.OverallPeerRating
-	 * 
-	 * @param overallPeerRating
-	 *            the value for corcurriculumcourse.OverallPeerRating
+	 * @param overallPeerRating the overallPeerRating to set
 	 */
-	public void setOverallPeerRating(Integer overallPeerRating) {
+	public void setOverallPeerRating(Rating overallPeerRating) {
 		this.overallPeerRating = overallPeerRating;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.ContentSecurityNeededIndicator
-	 * 
-	 * @return the value of corcurriculumcourse.ContentSecurityNeededIndicator
+	 * @return the contentSecurityNeededIndicator
 	 */
 	public Boolean getContentSecurityNeededIndicator() {
 		return contentSecurityNeededIndicator;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.ContentSecurityNeededIndicator
-	 * 
-	 * @param contentSecurityNeededIndicator
-	 *            the value for
-	 *            corcurriculumcourse.ContentSecurityNeededIndicator
+	 * @param contentSecurityNeededIndicator the contentSecurityNeededIndicator to set
 	 */
 	public void setContentSecurityNeededIndicator(
 			Boolean contentSecurityNeededIndicator) {
 		this.contentSecurityNeededIndicator = contentSecurityNeededIndicator;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.TotalCredits
-	 * 
-	 * @return the value of corcurriculumcourse.TotalCredits
+	 * @return the totalCredits
 	 */
 	public String getTotalCredits() {
 		return totalCredits;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.TotalCredits
-	 * 
-	 * @param totalCredits
-	 *            the value for corcurriculumcourse.TotalCredits
+	 * @param totalCredits the totalCredits to set
 	 */
 	public void setTotalCredits(String totalCredits) {
-		this.totalCredits = totalCredits == null ? null : totalCredits.trim();
+		this.totalCredits = totalCredits;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.ExtraCredits
-	 * 
-	 * @return the value of corcurriculumcourse.ExtraCredits
+	 * @return the extraCredits
 	 */
 	public String getExtraCredits() {
 		return extraCredits;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.ExtraCredits
-	 * 
-	 * @param extraCredits
-	 *            the value for corcurriculumcourse.ExtraCredits
+	 * @param extraCredits the extraCredits to set
 	 */
 	public void setExtraCredits(String extraCredits) {
-		this.extraCredits = extraCredits == null ? null : extraCredits.trim();
+		this.extraCredits = extraCredits;
 	}
-
-	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.ProgramCurriculumId
-	 * 
-	 * @return the value of corcurriculumcourse.ProgramCurriculumId
-	 */
-	public Integer getProgramCurriculumId() {
-		return programCurriculumId;
-	}
-
-	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.ProgramCurriculumId
-	 * 
-	 * @param programCurriculumId
-	 *            the value for corcurriculumcourse.ProgramCurriculumId
-	 */
-	public void setProgramCurriculumId(Integer programCurriculumId) {
-		this.programCurriculumId = programCurriculumId;
-	}
-
-	/**
-	 * This method returns the value of the database column
-	 * corcurriculumcourse.CourseId
-	 * 
-	 * @return the value of corcurriculumcourse.CourseId
-	 */
-	public Integer getCourseId() {
-		return courseId;
-	}
-
-	/**
-	 * This method sets the value of the database column
-	 * corcurriculumcourse.CourseId
-	 * 
-	 * @param courseId
-	 *            the value for corcurriculumcourse.CourseId
-	 */
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
-	}
-
 	/**
 	 * @return the courseLevelOveriddenIndicator
 	 */
 	public boolean isCourseLevelOveriddenIndicator() {
 		return courseLevelOveriddenIndicator;
 	}
-
 	/**
-	 * @param courseLevelOveriddenIndicator
-	 *            the courseLevelOveriddenIndicator to set
+	 * @param courseLevelOveriddenIndicator the courseLevelOveriddenIndicator to set
 	 */
 	public void setCourseLevelOveriddenIndicator(
 			boolean courseLevelOveriddenIndicator) {
 		this.courseLevelOveriddenIndicator = courseLevelOveriddenIndicator;
 	}
+	/**
+	 * @return the programCurriculum
+	 */
+	public ProgrammCurriculum getProgramCurriculum() {
+		return programCurriculum;
+	}
+	/**
+	 * @param programCurriculum the programCurriculum to set
+	 */
+	public void setProgramCurriculum(ProgrammCurriculum programCurriculum) {
+		this.programCurriculum = programCurriculum;
+	}
+	/**
+	 * @return the course
+	 */
+	public Course getCourse() {
+		return course;
+	}
+	/**
+	 * @param course the course to set
+	 */
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
 }
