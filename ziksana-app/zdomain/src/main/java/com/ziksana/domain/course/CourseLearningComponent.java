@@ -7,17 +7,17 @@ import com.ziksana.domain.common.AuditHistory;
 public class CourseLearningComponent extends AuditHistory{
 	
 	private Integer courseLearningComponentId;
-	private Date creationDate;
+	private Date creationDate = null;
 	private Integer learningComponentVersionUsed;
 	private Boolean active;
 	private Integer weightage;
 	private String totalCredits;
 	private String extraCredits;
-	private Integer duration;
+	private Integer duration = null;
 	private Boolean learningComponentOveriddenIndicator;
-	private Course course;
-	private LearningComponent learningComponent;
-	private LearningComponentType learningComponentType;
+	private Course course = null;
+	private LearningComponent learningComponent = null;
+	private LearningComponentType learningComponentType = null;
 	
 
 	/**

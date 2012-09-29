@@ -3,6 +3,8 @@
  */
 package com.ziksana.domain.course;
 
+import java.util.List;
+
 
 /**
  * @author bhashasp
@@ -12,17 +14,17 @@ public class LearningComponentContentDetails extends LearningComponentContent{
 	
 	public LearningComponentContentDetails(
 			LearningComponent learningComponent,
-			LearningContent baseLearningContentId) {
-		super( learningComponent, baseLearningContentId);
+			LearningContent baseLearningContent) {
+		super( learningComponent, baseLearningContent);
 		}
 
-	//private List<LearningComponentContentEnrichment> 	enrichmentList						= null;
+	private List<LearningComponentContentEnrichment> 	enrichmentList						= null;
 	//private List<LearningComponentContentBookmark> 		bookmarkList						= null;
 	//private List<LearningContentReviewProgress> 		learningContentReviewProgressList	= null;
 	//private List<LearningComponentContentEmbed>		learningCompContentEmbedList		= null;
 	//private List<LearningComponentContentFootstep>    learningCompContentFootstepList		= null; 
 	//private List<SubscriberNotes>						subscriberNotesList					= null;
-	//private List<LearningComponentContentHotspot>    	learningCompContentHotspotList		= null; 
+	private List<LearningComponentContentHotspot>    	learningCompContentHotspotList		= null; 
 	
 	private LearningContent 							learningContent						= null;
 	
@@ -39,6 +41,35 @@ public class LearningComponentContentDetails extends LearningComponentContent{
 	public void addLearningContent(LearningContent learningContent) {
 		
 		this.learningContent = learningContent;
+	}
+
+	/**
+	 * @return the enrichmentList
+	 */
+	public List<LearningComponentContentEnrichment> getEnrichmentList() {
+		return enrichmentList;
+	}
+
+	/**
+	 * @param enrichmentList the enrichmentList to set
+	 */
+	public void setEnrichmentList(List<LearningComponentContentEnrichment> enrichmentList) {
+		this.enrichmentList = enrichmentList;
+	}
+
+	/**
+	 * @return the learningCompContentHotspotList
+	 */
+	public List<LearningComponentContentHotspot> getLearningCompContentHotspotList() {
+		return learningCompContentHotspotList;
+	}
+
+	/**
+	 * @param learningCompContentHotspotList the learningCompContentHotspotList to set
+	 */
+	public void setLearningCompContentHotspotList(
+			List<LearningComponentContentHotspot> learningCompContentHotspotList) {
+		this.learningCompContentHotspotList = learningCompContentHotspotList;
 	}
 
 /*	*//**

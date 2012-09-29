@@ -21,7 +21,7 @@ public class LearningComponentNest extends AuditHistory{
 	/**
 	 * This field corresponds property CreationDate
 	 */
-	private Date creationDate;
+	private Date creationDate = null;
 
 	/**
 	 * This field corresponds property NestLevel
@@ -31,12 +31,12 @@ public class LearningComponentNest extends AuditHistory{
 	/**
 	 * This field corresponds property learningComponentParentId
 	 */
-	private LearningComponent learningComponentParent;
+	private LearningComponent learningComponentParent = null;
 
 	/**
 	 * This field corresponds property learningComponentNestId
 	 */
-	private LearningComponent learningComponentNest;
+	private LearningComponent learningComponentNest = null;
 
 	/**
 	 * This method returns the value of property componentNestId

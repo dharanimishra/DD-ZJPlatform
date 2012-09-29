@@ -27,17 +27,17 @@ public class LearningComponent extends AuditHistory{
 	/**
 	 * This field corresponds property validfrom {Start Date}
 	 */
-	private Date validFrom;
+	private Date validFrom = null;
 
 	/**
 	 * This field corresponds property validTo{End Date}
 	 */
-	private Date validTo;
+	private Date validTo = null;
 
 	/**
 	 * This field corresponds property CourseStatus<br>
 	 */
-	private CourseStatus courseStatus;
+	private CourseStatus courseStatus = null;
 
 	/**
 	 * This field corresponds property Weightage
@@ -59,7 +59,7 @@ public class LearningComponent extends AuditHistory{
 	/**
 	 * This field corresponds to the attribute learningObjIndictor
 	 */
-	private Integer learningObjIndictor;
+	private Integer learningObjIndictor = null;
 
 	/**
 	 * This field corresponds to the attribute thumbnailPicturePath<br>
@@ -76,27 +76,27 @@ public class LearningComponent extends AuditHistory{
 	/**
 	 * This field corresponds to the attribute prescribedLODuration<br>
 	 */
-	private Boolean prescribedLODuration;
+	private Boolean prescribedLODuration = null;
 
 	/**
 	 * This field corresponds property learningComponentTypeId
 	 */
-	private LearningComponentType learningComponentType;
+	private LearningComponentType learningComponentType = null;
 
 	/**
 	 * This field corresponds property course
 	 */
-	private Course course;
+	private Course course = null;
 
 	/**
 	 * This field corresponds property memberPersona
 	 */
-	private MemberPersona authoredMember;
+	private MemberPersona authoredMember = null;
 
 	/**
 	 * This field corresponds property subjClassification
 	 */
-	private SubjectClassification subjClassification;
+	private SubjectClassification subjClassification = null;
 	/**
 	 * This field corresponds property ExtraCredits<br>
 	 * Maximum Length:5
@@ -107,7 +107,7 @@ public class LearningComponent extends AuditHistory{
 	 * The Object contains the more information(associations, compositions)
 	 * about LearningComponent
 	 */
-	private LearningComponentDetails learningComponentDetails;
+	private LearningComponentDetails learningComponentDetails = null;
 	/**
 	 * @return the learningComponentDetails
 	 */

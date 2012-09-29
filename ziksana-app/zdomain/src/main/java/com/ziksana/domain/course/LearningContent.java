@@ -26,7 +26,7 @@ public class LearningContent extends AuditHistory{
 	/**
 	 * This field corresponds to the property CreationDate
 	 */
-	private Date creationDate;
+	private Date creationDate = null;
 
 	/**
 	 * This field corresponds to the property Active<br>
@@ -37,24 +37,24 @@ public class LearningContent extends AuditHistory{
 	/**
 	 * This field corresponds to the property ContentType
 	 */
-	private ContentType contentType;
+	private ContentType contentType = null;
 
 	/**
 	 * This field corresponds to the property ContentPath<br>
 	 * Maximum Length:45
 	 */
-	private String contentPath;
+	private String contentPath = null;
 
 	/**
 	 * This field corresponds to the property ContentFormat
 
 	 */
-	private ContentFormat contentFormat;
+	private ContentFormat contentFormat = null;
 
 	/**
 	 * This field corresponds to the property Status
 	 */
-	private ContentStatus status;
+	private ContentStatus status = null;
 	/**
 	 * This field corresponds to the property Version
 	 */
@@ -64,7 +64,7 @@ public class LearningContent extends AuditHistory{
 	 * This field corresponds to the property contentName<br>
 	 * Maximum Length:45
 	 */
-	private String contentName;
+	private String contentName = null;
 
 	/**
 	 * This field corresponds to the property contentDescription<br>
@@ -81,17 +81,17 @@ public class LearningContent extends AuditHistory{
 	/**
 	 * This field corresponds to the property Version
 	 */
-	private MemberPersona rightsOwningMember;
+	private MemberPersona rightsOwningMember = null;
 
 	/**
 	 * This field corresponds to the property Version
 	 */
-	private MemberPersona authoringMember;
+	private MemberPersona authoringMember = null;
 
 	/**
 	 * This field corresponds to the property Version
 	 */
-	private SubjectClassification subjClassification;
+	private SubjectClassification subjClassification = null;
 
 	/**
 	 * This field corresponds to the property LinkedLearningContentId

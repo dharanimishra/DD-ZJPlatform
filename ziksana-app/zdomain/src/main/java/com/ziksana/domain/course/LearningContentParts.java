@@ -13,24 +13,24 @@ public class LearningContentParts extends AuditHistory{
 	/**
 	 * This field corresponds to the property CreationDate
 	 */
-	private Date creationDate;
+	private Date creationDate = null;
 
 	/**
 	 * This field corresponds to the property PartPath<br>
 	 * Maximum Length:45
 	 */
-	private String partPath;
+	private String partPath = null;
 
 	/**
 	 * This field corresponds to the property partSequence Sequence of the
 	 * LearningContent part
 	 */
-	private Integer partSequence;
+	private Integer partSequence = null;
 
 	/**
 	 * This field corresponds to the property learningContentId
 	 */
-	private Integer learningContentId;
+	private LearningContent learningContent = null;
 
 	/**
 	 * This method returns the value of the property contentPartsId
@@ -88,20 +88,6 @@ public class LearningContentParts extends AuditHistory{
 		this.partPath = partPath == null ? null : partPath.trim();
 	}
 
-	/**
-	 * @return the LearningContentId
-	 */
-	public Integer getLearningContentId() {
-		return learningContentId;
-	}
-
-	/**
-	 * @param LearningContentId
-	 *            the LearningContentId to set
-	 */
-	public void setLearningContentId(Integer learningContentId) {
-		this.learningContentId = learningContentId;
-	}
 
 	/**
 	 * @return the partSequence
@@ -118,10 +104,24 @@ public class LearningContentParts extends AuditHistory{
 		this.partSequence = partSequence;
 	}
 
+	/**
+	 * @return the learningContent
+	 */
+	public LearningContent getLearningContent() {
+		return learningContent;
+	}
+
+	/**
+	 * @param learningContent the learningContent to set
+	 */
+	public void setLearningContent(LearningContent learningContent) {
+		this.learningContent = learningContent;
+	}
+
 	@Override
 	public String toString() {
 		return "LearningContentParts [partPath=" + partPath + ", partSequence="
-				+ partSequence + ", learningContentId=" + learningContentId
+				+ partSequence + ", learningContent=" + learningContent
 				+ "]";
 	}
 

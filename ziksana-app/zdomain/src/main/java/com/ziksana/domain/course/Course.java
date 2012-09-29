@@ -28,11 +28,11 @@ public class Course extends AuditHistory{
 	/**
 	 * Maximum Length:45
 	 */
-	private String name;
+	private String name = null;
 	/**
 	 * Identifier for the Course<br>Maximum Length:45
 	 */
-	private String courseIdentifier;
+	private String courseIdentifier = null;
 	/**
 	 * Maximum Length:240
 	 */
@@ -45,12 +45,12 @@ public class Course extends AuditHistory{
 	 * Course End Date is for When Course is associate to curriculumm
 	 */
 	private Date 			validTo;
-	private CourseStatus 	courseStatus;
+	private CourseStatus 	courseStatus = null;
 	private Rating 			rating;
 	/**
 	 * Maximum Length:1
 	 */
-	private Boolean securityNeededIndicator;
+	private Boolean securityNeededIndicator = null;
 	/**
 	 * Maximum Length:5
 	 */
@@ -76,7 +76,7 @@ public class Course extends AuditHistory{
 	 * Maximum Length:1
 	 */
 	private Boolean templateIndicator;
-	private Integer courseDuration;
+	private Integer courseDuration = null;
 
 	private SubjectClassification 	subjClassification	 	= null;
 

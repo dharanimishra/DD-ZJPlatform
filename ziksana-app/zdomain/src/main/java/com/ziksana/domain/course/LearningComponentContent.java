@@ -7,9 +7,9 @@ import com.ziksana.domain.common.AuditHistory;
 public class LearningComponentContent extends AuditHistory{
 
 	public LearningComponentContent(LearningComponent learningComponent,
-			LearningContent baseLearningContentId) {
+			LearningContent baseLearningContent) {
 		this.learningComponent = learningComponent;
-		this.baseLearningContentId = baseLearningContentId;
+		this.baseLearningContent = baseLearningContent;
 	}
 
 	/**
@@ -21,23 +21,23 @@ public class LearningComponentContent extends AuditHistory{
 	 * This field corresponds property CreationDate<br>
 	 * LearningComponent Content creation date.
 	 */
-	private Date creationDate;
+	private Date creationDate = null;
 
 	/**
 	 * This field corresponds to the property CourseStatus<br>
 	 * ID for Course Status
 	 */
-	private CourseStatus courseStatus;
+	private CourseStatus courseStatus = null;
 
 	/**
 	 * This field corresponds property ContentType
 	 */
-	private ContentType contentType;
+	private ContentType contentType = null;
 
 	/**
 	 * This field corresponds property ContentDescription,br> Maximum Length:45
 	 */
-	private String contentDescription;
+	private String contentDescription = null;
 
 	/**
 	 * This field corresponds property Active Maximum Length:1
@@ -49,17 +49,17 @@ public class LearningComponentContent extends AuditHistory{
 	 */
 	private Integer contentVersionUsed;
 
-	private LearningComponent learningComponent;
+	private LearningComponent learningComponent = null;
 
-	private LearningComponentContent SynchronizeWithVideoId;
+	private LearningComponentContent SynchronizeWithVideo = null;
 
-	private LearningContent baseLearningContentId;
+	private LearningContent baseLearningContent = null;
 
 	/**
 	 * Contains the information about associations/composition and more
 	 * information
 	 */
-	private LearningComponentContentDetails learningComponentContentDetails;
+	private LearningComponentContentDetails learningComponentContentDetails = null;
 
 	/**
 	 * This method returns the value of the property learningComponentContentId
@@ -217,31 +217,31 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * @return the synchronizeWithVideoId
+	 * @return the synchronizeWithVideo
 	 */
-	public LearningComponentContent getSynchronizeWithVideoId() {
-		return SynchronizeWithVideoId;
+	public LearningComponentContent getSynchronizeWithVideo() {
+		return SynchronizeWithVideo;
 	}
 
 	/**
-	 * @param synchronizeWithVideoId the synchronizeWithVideoId to set
+	 * @param synchronizeWithVideo the synchronizeWithVideo to set
 	 */
-	public void setSynchronizeWithVideoId(LearningComponentContent synchronizeWithVideoId) {
-		SynchronizeWithVideoId = synchronizeWithVideoId;
+	public void setSynchronizeWithVideo(LearningComponentContent synchronizeWithVideo) {
+		SynchronizeWithVideo = synchronizeWithVideo;
 	}
 
 	/**
-	 * @return the baseLearningContentId
+	 * @return the baseLearningContent
 	 */
-	public LearningContent getBaseLearningContentId() {
-		return baseLearningContentId;
+	public LearningContent getBaseLearningContent() {
+		return baseLearningContent;
 	}
 
 	/**
-	 * @param baseLearningContentId the baseLearningContentId to set
+	 * @param baseLearningContent the baseLearningContent to set
 	 */
-	public void setBaseLearningContentId(LearningContent baseLearningContentId) {
-		this.baseLearningContentId = baseLearningContentId;
+	public void setBaseLearningContent(LearningContent baseLearningContent) {
+		this.baseLearningContent = baseLearningContent;
 	}
 
 }
