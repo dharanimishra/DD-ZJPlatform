@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ziksana.common.exception.CourseException;
-import com.ziksana.domain.assessment.AssignmentTest;
-import com.ziksana.domain.course.subscription.SubscriptionCourseItemCalendar;
 
 /**
  * This object contains more information about Course
@@ -22,16 +20,16 @@ public class LearningComponentDetails extends LearningComponent{
 	private LearningComponentNest 				learningComponentNest 				= null;
 	
 	private CourseLearningComponent 			courseLearningComponent				= null;
-	private List<CoursePlaybookView> 			coursePlaybookViewList				= null;
-	private List<LearningElementWall> 			learningElementWallList				= null;
-	private SubscriptionCourseItemCalendar  	subscnCourseItemCalendar			= null; 
-	private CoursePlaybookView					coursePlaybookView					= null;
+	//private List<CoursePlaybookView> 			coursePlaybookViewList				= null;
+	//private List<LearningElementWall> 			learningElementWallList				= null;
+	//private SubscriptionCourseItemCalendar  	subscnCourseItemCalendar			= null; 
+/*	private CoursePlaybookView					coursePlaybookView					= null;
 	private List<LearningElementWall> 			learningElementWalls				= null;
 	private List<LearningContentReviewProgress> learningContentReviewProgressList	= null;
 	private List<AssignmentTest> 				assignmentTests						= null;
 	//private List<TestPackage> 				testPackageList						= null;
 	private List<LearningComponentTagcloud> 	learningComponentTagcloudList		= null;
-
+*/
 	/**
 	 * Add Learning Component Content as a course learning component.
 	 * @param learningComponent
@@ -142,125 +140,125 @@ public class LearningComponentDetails extends LearningComponent{
 		this.learningCompContentList = learningCompContentList;
 	}
 
-	/**
+/*	*//**
 	 * @return the coursePlaybookViewList
-	 */
+	 *//*
 	public List<CoursePlaybookView> getCoursePlaybookViewList() {
 		return coursePlaybookViewList;
 	}
 
-	/**
+	*//**
 	 * @param coursePlaybookViewList the coursePlaybookViewList to set
-	 */
+	 *//*
 	public void setCoursePlaybookViewList(
 			List<CoursePlaybookView> coursePlaybookViewList) {
 		this.coursePlaybookViewList = coursePlaybookViewList;
 	}
 
-	/**
+	*//**
 	 * @return the learningElementWallList
-	 */
+	 *//*
 	public List<LearningElementWall> getLearningElementWallList() {
 		return learningElementWallList;
 	}
 
-	/**
+	*//**
 	 * @param learningElementWallList the learningElementWallList to set
-	 */
+	 *//*
 	public void setLearningElementWallList(
 			List<LearningElementWall> learningElementWallList) {
 		this.learningElementWallList = learningElementWallList;
 	}
 
-	/**
+	*//**
 	 * @return the subscnCourseItemCalendar
-	 */
+	 *//*
 	public SubscriptionCourseItemCalendar getSubscnCourseItemCalendar() {
 		return subscnCourseItemCalendar;
 	}
 
-	/**
+	*//**
 	 * @param subscnCourseItemCalendar the subscnCourseItemCalendar to set
-	 */
+	 *//*
 	public void setSubscnCourseItemCalendar(
 			SubscriptionCourseItemCalendar subscnCourseItemCalendar) {
 		this.subscnCourseItemCalendar = subscnCourseItemCalendar;
 	}
 
-	/**
+	*//**
 	 * @return the coursePlaybookView
-	 */
+	 *//*
 	public CoursePlaybookView getCoursePlaybookView() {
 		return coursePlaybookView;
 	}
 
-	/**
+	*//**
 	 * @param coursePlaybookView the coursePlaybookView to set
-	 */
+	 *//*
 	public void setCoursePlaybookView(CoursePlaybookView coursePlaybookView) {
 		this.coursePlaybookView = coursePlaybookView;
 	}
 
-	/**
+	*//**
 	 * @return the learningElementWalls
-	 */
+	 *//*
 	public List<LearningElementWall> getLearningElementWalls() {
 		return learningElementWalls;
 	}
 
-	/**
+	*//**
 	 * @param learningElementWalls the learningElementWalls to set
-	 */
+	 *//*
 	public void setLearningElementWalls(
 			List<LearningElementWall> learningElementWalls) {
 		this.learningElementWalls = learningElementWalls;
 	}
 
-	/**
+	*//**
 	 * @return the learningContentReviewProgressList
-	 */
+	 *//*
 	public List<LearningContentReviewProgress> getLearningContentReviewProgressList() {
 		return learningContentReviewProgressList;
 	}
 
-	/**
+	*//**
 	 * @param learningContentReviewProgressList the learningContentReviewProgressList to set
-	 */
+	 *//*
 	public void setLearningContentReviewProgressList(
 			List<LearningContentReviewProgress> learningContentReviewProgressList) {
 		this.learningContentReviewProgressList = learningContentReviewProgressList;
 	}
 
-	/**
+	*//**
 	 * @return the assignmentTests
-	 */
+	 *//*
 	public List<AssignmentTest> getAssignmentTests() {
 		return assignmentTests;
 	}
 
-	/**
+	*//**
 	 * @param assignmentTests the assignmentTests to set
-	 */
+	 *//*
 	public void setAssignmentTests(List<AssignmentTest> assignmentTests) {
 		this.assignmentTests = assignmentTests;
 	}
 
-	/**
+	*//**
 	 * @return the learningComponentTagcloudList
-	 */
+	 *//*
 	public List<LearningComponentTagcloud> getLearningComponentTagcloudList() {
 		return learningComponentTagcloudList;
 	}
 
-	/**
+	*//**
 	 * @param learningComponentTagcloudList the learningComponentTagcloudList to set
-	 */
+	 *//*
 	public void setLearningComponentTagcloudList(
 			List<LearningComponentTagcloud> learningComponentTagcloudList) {
 		this.learningComponentTagcloudList = learningComponentTagcloudList;
 	}
 
-	/**
+*/	/**
 	 * @param learningCompContentList the learningCompContentList to set
 	 */
 	public void setLearningCompContentList(

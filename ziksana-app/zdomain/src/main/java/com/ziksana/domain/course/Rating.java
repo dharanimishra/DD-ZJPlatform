@@ -7,9 +7,9 @@ import com.ziksana.common.exception.CourseException;
  */
 public enum Rating {
 
-	//TODO: retrieve the ids from the static data service
-	NOT_HAPPY(1, "Not Happy"), NO_COMMENTS(2, "No Comments"), AVERAGE(3, "Average"), HAPPY(4, "Happy"), 
-	EXCELLENT(5, "Excellent");
+	// TODO: retrieve the ids from the static data service
+	NOT_HAPPY(1, "Not Happy"), NO_COMMENTS(2, "No Comments"), AVERAGE(3,
+			"Average"), HAPPY(4, "Happy"), EXCELLENT(5, "Excellent");
 
 	private final int id;
 	private final String name;

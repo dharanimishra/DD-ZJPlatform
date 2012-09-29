@@ -78,7 +78,7 @@ public class Course extends AuditHistory{
 	private Boolean templateIndicator;
 	private Integer courseDuration;
 
-	private SubjectClassification 	subjClassificationId 	= null;
+	private SubjectClassification 	subjClassification	 	= null;
 
 	private MemberPersona 			accountableMember 		= null;
 
@@ -173,22 +173,6 @@ public class Course extends AuditHistory{
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
-
-	/**
-	 * @return the subjClassificationId
-	 */
-	public SubjectClassification getSubjClassificationId() {
-		return subjClassificationId;
-	}
-
-	/**
-	 * @param subjClassificationId
-	 *            the subjClassificationId to set
-	 */
-	public void setSubjClassificationId(SubjectClassification subjClassificationId) {
-		this.subjClassificationId = subjClassificationId;
-	}
-
 	/**
 	 * This method returns the value of the property courseId
 	 * @return the value of attribute courseId
@@ -349,6 +333,20 @@ public class Course extends AuditHistory{
 		return "Course [name=" + name + ", courseIdentifier="
 				+ courseIdentifier + ", courseStatus=" + courseStatus
 				+ ", courseDuration=" + courseDuration + "]";
+	}
+
+	/**
+	 * @return the subjClassification
+	 */
+	public SubjectClassification getSubjClassification() {
+		return subjClassification;
+	}
+
+	/**
+	 * @param subjClassification the subjClassification to set
+	 */
+	public void setSubjClassification(SubjectClassification subjClassification) {
+		this.subjClassification = subjClassification;
 	}
 
 	}

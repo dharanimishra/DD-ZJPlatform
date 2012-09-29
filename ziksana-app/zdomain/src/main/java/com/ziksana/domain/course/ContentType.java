@@ -5,7 +5,7 @@ import com.ziksana.common.exception.CourseException;
 public enum ContentType {
 
 	// TODO: retrieve the ids from the static data service
-	VIDEO(1, "Video"), AUDIO(2, "Audio"), DOCUMENT(3, "Document"), MUTIMEDIA(4,
+	VIDEO(1, "Video"), AUDIO(2, "Audio"), DOCUMENT(3, "Document"), MULTIMEDIA(4,
 			"Multimedia"), THESIS(5, "Thesis");
 	
 
