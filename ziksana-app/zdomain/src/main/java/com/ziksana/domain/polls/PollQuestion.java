@@ -1,26 +1,21 @@
 package com.ziksana.domain.polls;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.ziksana.common.exception.PollException;
+import java.util.Iterator;
+import java.util.ArrayList;
 import com.ziksana.domain.member.MemberPersona;
-
-
-
+import com.ziksana.common.exception.PollException;
 
 public class PollQuestion implements Comparable<PollQuestion> {
-	
-	  
-	
-	
 
-	private Integer                  ID            = null;
-    private Poll                     parent        = null;
-    private MemberPersona            creatorMember = null;
-    private Boolean                  active        = null;
-    private String                   questionText  = null;
-    private List<PollQuestionOption> options       = null;
+    private Integer                  ID               = null;
+    private Poll                     parent           = null;
+    private MemberPersona            creatorMember    = null;
+    private Boolean                  active           = null;
+    private String                   questionText     = null;
+    private PollQuestionType         questionType     = null;
+    private List<PollQuestionOption> options          = null;
+    private Long                     totalRespondents = -1L;
 
     public PollQuestion() {
     	
@@ -66,10 +61,18 @@ public class PollQuestion implements Comparable<PollQuestion> {
         this.questionText = questionText == null ? null : questionText.trim();
     }
 
+    public PollQuestionType getQuestionType() {
+    	return questionType;
+    }
+    
+    public void setQuestionType(PollQuestionType type) {
+    	questionType = type;
+    }
+    
     public List<PollQuestionOption> getAllOptions() {
     	return options;
     }
-    
+
     public PollQuestionOption getOption(int index) {
         return options.get(index);
     }
@@ -84,9 +87,9 @@ public class PollQuestion implements Comparable<PollQuestion> {
     		options = new ArrayList<PollQuestionOption>();
     	}
     	
-    	options.add(new PollQuestionOption(option.trim()));
+    	options.add(new PollQuestionOption(options.size(), option.trim()));
     }
-    
+
     public void addOption(PollQuestionOption option) 
     		throws PollException {
     	if (option == null) {
@@ -97,6 +100,7 @@ public class PollQuestion implements Comparable<PollQuestion> {
     		options = new ArrayList<PollQuestionOption>();
     	}
 
+    	option.setIndex(options.size());
     	options.add(option);
     }
     
@@ -104,24 +108,76 @@ public class PollQuestion implements Comparable<PollQuestion> {
     	this.options = options;
     }
     
-    public String toString() {
-    	// TODO: create a string and return
-    	return String.format("Question text is %s ", questionText);
+    public void updateTotals() 
+    throws PollException {
+    	if (options == null) {
+    		throw new PollException("Options not set in Question ID [" + getID() + "]");
+    	}
+    	
+    	Iterator<PollQuestionOption> itr = options.iterator();
+    	long total = 0;
+    	while (itr.hasNext()) {
+    		try {
+    			total += itr.next().getOptionTotal();
+    		} catch (PollException exp) {
+    			// Ignore, as some options may not have any user response
+    		}
+    	}
+    	
+    	setTotalRespondents(total);
     }
     
+    public void setTotalRespondents(Long total) {
+    	totalRespondents = total;
+    }
     
-    /**
-     * currently we are using pollEndDate for comparison.If it returned 0, 
-     * that doesnt mean both objects are equal. 
-     */
-	@Override
-	public int compareTo(PollQuestion question) {
+    public Long getTotalRespondents() {
+    	return totalRespondents;
+    }
+    
+	/**
+	 * TODO: Equality based on ID may not be complete
+	 */
+    @Override
+	public boolean equals(Object obj) {
+		if (this == obj)                        { return true;  }
+		if (obj == null)                        { return false; }
+		if (obj.getClass() != this.getClass())  { return false; }
 		
-		return parent.getPollEndDate().compareTo(question.getPoll().getPollEndDate());
-			
+		PollQuestion question = (PollQuestion) obj;
+		if (getPoll().equals(question.getPoll()) && 
+		    getID() == question.getID()) {
+			return true;
+		}
 		
+		return false;
 	}
 	
+	@Override
+	public int hashCode() {
+		return getID();
+	}
     
+	/**
+	 * Provided to facilitate sorting (UI Poll widget).
+	 * Comparison is based on (parent) Poll.
+	 * In case parents are same, the question ID is used
+	 */
+	@Override
+	public int compareTo(PollQuestion question) {
+		if (question == null)       { return 1; }
+		if (this.equals(question))  { return 0; }
+		if (getPoll() == null)      { return -1; }
+		
+		if (getPoll().equals(question.getPoll())) {
+			return getID().compareTo(question.getID());
+		}
+		
+		return getPoll().compareTo(question.getPoll());
+	}
     
+    public String toString() {
+    	// TODO: create a string and return
+    	return super.toString();
+    }
 }

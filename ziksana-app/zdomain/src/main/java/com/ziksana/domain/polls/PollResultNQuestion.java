@@ -54,13 +54,4 @@ public class PollResultNQuestion {
 		this.question = pollQuestion;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "PollResultNQuestion [question=" + question + ", result="
-				+ result + "]";
-	}
-
 }

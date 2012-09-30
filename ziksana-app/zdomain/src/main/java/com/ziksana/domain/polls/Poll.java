@@ -1,164 +1,205 @@
 package com.ziksana.domain.polls;
 
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import com.ziksana.common.exception.PollException;
+import com.ziksana.domain.member.MemberRoleType;
+import com.ziksana.domain.member.MemberPersona;
 
-public class Poll {
+public class Poll implements Comparable<Poll> {
 
+	private Integer        ID                     = null;
+	private MemberPersona  creatorMember          = null;
+	private Date           pollStartDate          = null;
+	private Date           pollEndDate            = null;
+	private Date           pollDisplayEndDate     = null;
+	private Boolean        active                 = null;
+	private Long           totalResponses         = null;
+	private PollType       pollType               = null;
+	private PollVisibility pollVisibility         = null;
+	private MemberRoleType targetedMemberRoleType = null;
+
+	private List<PollQuestion> pollQuestions      = null;
 	
-    private Integer ID;
-
-    
-    private Integer creatorMemberRoleId;
-
-    
-    private PollType pollType;
-
-    
-    private Date pollStartDate = null;
-
-    
-    private Date pollEndDate = null;
-
-    
-    private Date displayEndDate = null;
-
-    
-    private Integer pollVisibility;
-
-    
-    private Boolean active;
-
-    
-    private Integer totalResponses;
-
-    
-    private Integer targetedMemberRoleType;
-
-    
-    public Integer getID() {
-        return ID;
-    }
-
-    
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
-
-    
-    public Integer getCreatorMemberRoleId() {
-        return creatorMemberRoleId;
-    }
-
-    
-    public void setCreatorMemberRoleId(Integer creatorMemberRoleId) {
-        this.creatorMemberRoleId = creatorMemberRoleId;
-    }
-
-    
-    public PollType getPollType() {
-        return pollType;
-    }
-
-    
-    public void setPollType(PollType pollType) {
-        this.pollType = pollType;
-    }
-
-    
-    public Date getPollStartDate() {
-        if (null == pollStartDate)
-        	throw new NullPointerException("pollStartDate is null.");
-    	
-        return new Date(pollStartDate.getTime());
-        
-    }
-
-    
-    public void setPollStartDate(Date pollStartDate) {
-        this.pollStartDate = new Date(pollStartDate.getTime());
-    }
-
-    
-    public Date getPollEndDate() {
-    	if (null == pollEndDate)
-        	throw new NullPointerException("pollStartDate is null.");
-    	
-    	return new Date(pollEndDate.getTime());
-    }
-
-    
-    public void setPollEndDate(Date pollEndDate) {
-        this.pollEndDate = new Date(pollEndDate.getTime());
-    }
-
-    
-    public Date getDisplayEndDate() {
-        
-    	if (null == displayEndDate)
-        	throw new NullPointerException("pollStartDate is null.");
-        return new Date(displayEndDate.getTime());
-    }
-
-        public void setDisplayEndDate(Date displayEndDate) {
-        this.displayEndDate = new Date(displayEndDate.getTime());
-    }
-
-    
-    public Integer getPollVisibility() {
-        return pollVisibility;
-    }
-
-    
-    public void setPollVisibility(Integer pollVisibility) {
-        this.pollVisibility = pollVisibility;
-    }
-
-    
-    public Boolean getActive() {
-        return active;
-    }
-
-    
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    
-    public Integer getTotalResponses() {
-        return totalResponses;
-    }
-
-    
-    public void setTotalResponses(Integer totalResponses) {
-        this.totalResponses = totalResponses;
-    }
-
-    
-    public Integer getTargetedMemberRoleType() {
-        return targetedMemberRoleType;
-    }
-
-    
-    public void setTargetedMemberRoleType(Integer targetedMemberRoleType) {
-        this.targetedMemberRoleType = targetedMemberRoleType;
-    }
-
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Poll [ID=" + ID + ", creatorMemberRoleId="
-				+ creatorMemberRoleId + ", pollType=" + pollType
-				+ ", pollStartDate=" + pollStartDate + ", pollEndDate="
-				+ pollEndDate + ", displayEndDate=" + displayEndDate
-				+ ", pollVisibility=" + pollVisibility + ", totalResponses="
-				+ totalResponses + ", targetedMemberRoleType="
-				+ targetedMemberRoleType + "]";
+	public Poll() {
+		pollType               = PollType.GENERAL;
+		pollVisibility         = PollVisibility.ALL;
 	}
 	
+	public Poll(Integer ID) {
+		this.ID                = ID;
+		pollType               = PollType.GENERAL;
+		pollVisibility         = PollVisibility.ALL;
+	}
+
+	public Integer getID() {
+		return ID;
+	}
+
+	public void setID(Integer ID) {
+		this.ID = ID;
+	}
+
+	public MemberPersona getCreatorMember() {
+		return creatorMember;
+	}
+
+	public void setCreatorMember(MemberPersona creatorMember) {
+		this.creatorMember = creatorMember;
+	}
+
+	public PollType getPollType() {
+		return pollType;
+	}
+
+	public void setPollType(PollType pollType) {
+		this.pollType = pollType;
+	}
+
+	public Date getPollStartDate() {
+		return pollStartDate;
+	}
+
+	public Date getPollEndDate() {
+		return pollEndDate;
+	}
+
+	public Date getDisplayEndDate() {
+		return pollDisplayEndDate;
+	}
+
+	public void setPollDates(Date pollStartDate, Date pollEndDate, 
+			                 Date pollDisplayEndDate) 
+	throws PollException {
+		if (pollStartDate == null || pollEndDate == null || 
+				pollDisplayEndDate == null) {
+			throw new PollException("setPollDates() : Null date passed");
+		}
+
+		if (pollStartDate.before(pollEndDate)  && 
+		    (pollEndDate.before(pollDisplayEndDate) || pollEndDate.equals(pollDisplayEndDate))) {
+			this.pollStartDate  = pollStartDate;
+			this.pollEndDate    = pollEndDate;
+			this.pollDisplayEndDate = pollDisplayEndDate;
+		} else {
+			throw new PollException("Poll Start & End Dates, not in proper sequence.");
+		}
+	}
+
+	public PollVisibility getPollVisibility() {
+		return pollVisibility;
+	}
+
+	public void setPollVisibility(PollVisibility pollVisibility) {
+		this.pollVisibility = pollVisibility;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public Long getTotalResponses() {
+		return totalResponses;
+	}
+
+	public void setTotalResponses(Long totalResponses) {
+		this.totalResponses = totalResponses;
+	}
+
+	public MemberRoleType getTargetedMemberRoleType() {
+		return targetedMemberRoleType;
+	}
+
+	public void setTargetedMemberRoleType(MemberRoleType targetedMemberRoleType) {
+		this.targetedMemberRoleType = targetedMemberRoleType;
+	}
 	
+	public PollQuestion getQuestion(int index) 
+	throws PollException {
+		if (pollQuestions == null) {
+			throw new PollException("Poll Questions not set in the Poll ID [" + ID + "]");
+		}
+		
+		try {
+			return pollQuestions.get(index);	
+		} catch (Exception exp) {
+			throw new PollException("Poll Question at index [" + index + "] not found", exp);
+		}
+	}
 	
+	public List<PollQuestion> getAllQuestions() {
+		return pollQuestions;
+	}
 	
+	public void addQuestion(PollQuestion question) {
+		if (pollQuestions == null) {
+			pollQuestions = new ArrayList<PollQuestion>();
+		}
+		
+		question.setPoll(this);
+		pollQuestions.add(question);
+	}
+	
+	public void setQuestions(List<PollQuestion> list) 
+	throws PollException {
+		if (list == null) {
+			throw new PollException("Cannot set PollQuestions as null in Poll ID [" + ID + "]");
+		}
+		
+		pollQuestions = list;
+		Iterator<PollQuestion> ir = pollQuestions.iterator();
+		while (ir.hasNext()) {
+			ir.next().setPoll(this);
+		}
+	}
+	
+	/**
+	 * TODO: Equality based on ID may not be complete
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)                        { return true;  }
+		if (obj == null)                        { return false; }
+		if (obj.getClass() != this.getClass())  { return false; }
+		
+		Poll poll = (Poll) obj;
+		if (getID() == poll.getID()) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return getID();
+	}
+	
+	/**
+	 * Provided to facilitate sorting (UI Poll widget).
+	 * Comparison is based on the Poll End Date. 
+	 * In case dates are same, the ID is used.
+	 */
+	@Override
+	public int compareTo(Poll poll) {
+		if (poll == null)       { return 1; }
+		if (this.equals(poll))  { return 0; }
+		
+		if (getPollEndDate().equals(poll.getPollEndDate())) {
+			return getID().compareTo(poll.getID());
+		}
+		
+		return getPollEndDate().compareTo(poll.getPollEndDate());
+	}
+	
+	public String toString() {
+		// TODO: create a string for the whole object
+		return super.toString();
+	}
 }

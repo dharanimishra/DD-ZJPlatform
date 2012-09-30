@@ -26,16 +26,14 @@ public enum PollVisibility {
 	}
 	
 	public static PollVisibility getVisibility(int ID) 
-	 {
+	throws PollException {
 		for (PollVisibility v : PollVisibility.values()) {
 			if (v.getID() == ID) {
 				return v;
 			}
 		}
 		
-		
-		String msg = String.format("PollVisibility ID %s not found", ID);
-		throw new IllegalArgumentException(msg);
+		throw new PollException("PollVisibility ID [" + ID + "] not found");
 	}
 	
 	public String toString() {
