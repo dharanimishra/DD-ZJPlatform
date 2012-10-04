@@ -11,7 +11,7 @@ import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ziksana.common.exception.PollException;
+import com.ziksana.exception.polls.PollException;
 import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
