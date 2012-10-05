@@ -3,7 +3,7 @@ package com.ziksana.domain.course;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ziksana.common.exception.CourseException;
+import com.ziksana.exception.course.CourseException;
 
 /**
  * This object contains more information about Course

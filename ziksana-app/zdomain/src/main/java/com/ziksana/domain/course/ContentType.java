@@ -1,6 +1,6 @@
 package com.ziksana.domain.course;
 
-import com.ziksana.common.exception.CourseException;
+import com.ziksana.exception.course.CourseException;
 
 public enum ContentType {
 

@@ -7,15 +7,21 @@ import com.ziksana.domain.member.MemberPersona;
 
 public class LearningComponentContentHotspot extends AuditHistory{
 
-	private Integer componentContentTagHotspotId;
-	private Date creationDate = null;
-	private String coordinates = null;
-	private String hotspotName = null;
-	private String hotspotDescription;
-	private Boolean active;
-	private LearningComponentContent learningComponentContent = null;
-	private MemberPersona memberPersona = null;
-	//private CurriculumCourse curriculumCourse;
+	public LearningComponentContentHotspot(String hotspotName,
+			String hotspotDescription, MemberPersona memberPersona) {
+		this.hotspotName = hotspotName;
+		this.hotspotDescription = hotspotDescription;
+		this.memberPersona = memberPersona;
+	}
+	private Integer 					componentContentTagHotspotId;
+	private Date 						creationDate 				= null;
+	private String 						coordinates 				= null;
+	private String 						hotspotName 				= null;
+	private String 						hotspotDescription 			= null;
+	private Boolean 					active 						= null;
+	private LearningComponentContent 	learningComponentContent 	= null;
+	private MemberPersona 				memberPersona 				= null;
+	//private CurriculumCourse 			curriculumCourse 			= null;
 	/**
 	 * @return the componentContentTagHotspotId
 	 */

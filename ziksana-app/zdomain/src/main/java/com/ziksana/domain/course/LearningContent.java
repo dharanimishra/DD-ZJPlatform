@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.ziksana.common.exception.CourseException;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utilz.SubjectClassification;
+import com.ziksana.exception.course.CourseException;
 
 public class LearningContent extends AuditHistory{
 
@@ -18,93 +18,38 @@ public class LearningContent extends AuditHistory{
 		this.contentType = contentType;
 	}
 
+	private Integer 		learningContentId;
+	private Date 			creationDate 	= null;
+	private Boolean 		activeFlag 		= null;
+	private ContentType 	contentType 	= null;
 	/**
-	 * This field corresponds to the property learningContentId
-	 */
-	private Integer learningContentId;
-
-	/**
-	 * This field corresponds to the property CreationDate
-	 */
-	private Date creationDate = null;
-
-	/**
-	 * This field corresponds to the property Active<br>
-	 * Maximum Length:1
-	 */
-	private Boolean activeFlag;
-
-	/**
-	 * This field corresponds to the property ContentType
-	 */
-	private ContentType contentType = null;
-
-	/**
-	 * This field corresponds to the property ContentPath<br>
 	 * Maximum Length:45
 	 */
-	private String contentPath = null;
-
+	private String 			contentPath 	= null;
+	private ContentFormat 	contentFormat 	= null;
+	private ContentStatus 	status 			= null;
+	private Integer 		version 		= null;
 	/**
-	 * This field corresponds to the property ContentFormat
-
-	 */
-	private ContentFormat contentFormat = null;
-
-	/**
-	 * This field corresponds to the property Status
-	 */
-	private ContentStatus status = null;
-	/**
-	 * This field corresponds to the property Version
-	 */
-	private Integer version;
-
-	/**
-	 * This field corresponds to the property contentName<br>
 	 * Maximum Length:45
 	 */
 	private String contentName = null;
-
 	/**
-	 * This field corresponds to the property contentDescription<br>
 	 * Maximum Length:4800
 	 */
 	private String contentDescription;
 
 	/**
-	 * This field corresponds to the property thumbnailPicturePath<br>
 	 * Maximum Length:72
 	 */
-	private String thumbnailPicturePath;
-
-	/**
-	 * This field corresponds to the property Version
-	 */
-	private MemberPersona rightsOwningMember = null;
-
-	/**
-	 * This field corresponds to the property Version
-	 */
-	private MemberPersona authoringMember = null;
-
-	/**
-	 * This field corresponds to the property Version
-	 */
-	private SubjectClassification subjClassification = null;
-
-	/**
-	 * This field corresponds to the property LinkedLearningContentId
-	 */
+	private String 						thumbnailPicturePath 	= null;
+	private MemberPersona 				rightsOwningMember 		= null;
+	private MemberPersona 				authoringMember 		= null;
+	private SubjectClassification 		subjClassification 		= null;
 	private LearningContent 			linkedLearningContent 	= null;
-
 	private List<LearningContentParts> 	learningContentParts 	= null;
-	
 	private LearningComponentContent 	baseComponentContent 	= null;
 
 	/**
-	 * This method returns the value of the property learningContentId
-	 * 
 	 * @return the value of learningContentId
 	 */
 	public Integer getLearningContentId() {
@@ -112,8 +57,6 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property learningContentId
-	 * 
 	 * @param learningContentId
 	 *            the value for learningContentId
 	 */
@@ -122,8 +65,6 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property CreationDate
-	 * 
 	 * @return the value of CreationDate
 	 */
 	public Date getCreationDate() {
@@ -131,8 +72,6 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property CreationDate
-	 * 
 	 * @param creationDate
 	 *            the value for CreationDate
 	 */
@@ -141,8 +80,6 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property Active
-	 * 
 	 * @return the value of Active
 	 */
 	public Boolean getActiveFlag() {
@@ -150,8 +87,6 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property Active
-	 * 
 	 * @param active
 	 *            the value for Active
 	 */
@@ -160,8 +95,6 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property ContentPath
-	 * 
 	 * @return the value of ContentPath
 	 */
 	public String getContentPath() {
@@ -169,8 +102,6 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property ContentPath
-	 * 
 	 * @param contentPath
 	 *            the value for ContentPath
 	 */
@@ -193,8 +124,6 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property Version
-	 * 
 	 * @return the value of Version
 	 */
 	public Integer getVersion() {
@@ -202,8 +131,6 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property Version
-	 * 
 	 * @param version
 	 *            the value for Version
 	 */

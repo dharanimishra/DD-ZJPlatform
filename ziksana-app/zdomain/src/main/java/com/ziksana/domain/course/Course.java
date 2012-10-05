@@ -1,22 +1,30 @@
 package com.ziksana.domain.course;
 
 import java.util.Date;
+import java.util.List;
 
-import com.ziksana.common.exception.CourseException;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utilz.SubjectClassification;
+import com.ziksana.exception.course.CourseException;
 
 /**
  * @author bhashasp
  */
 public class Course extends AuditHistory{
 
-	//TODO: Separator will change, based on requirement
-	private static String NAME_IDENTIFIER_SEPARATOR = "-";
-
 	public Course() {
 		setCourseStatus(CourseStatus.DRAFT);
+	}
+	
+	public Course(String name, String description, CourseStatus courseStatus,
+			Integer courseDuration,	MemberPersona accountableMember) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.courseStatus = courseStatus;
+		this.courseDuration = courseDuration;
+		this.accountableMember = accountableMember;
 	}
 
 	public Course(Integer courseId) {
@@ -24,29 +32,37 @@ public class Course extends AuditHistory{
 		setCourseStatus(CourseStatus.ADMINISTER_EVAL);
 	}
 
+	public Course(String name, String description, CourseStatus courseStatus,
+			Integer courseDuration,
+			MemberPersona accountableMember, List<LearningComponent> learningComponentList) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.courseStatus = courseStatus;
+		this.courseDuration = courseDuration;
+		this.accountableMember = accountableMember;
+		this.getCourseDetails().learningComponents =learningComponentList;
+	}
+
 	private Integer courseId;
 	/**
 	 * Maximum Length:45
 	 */
-	private String name = null;
-	/**
-	 * Identifier for the Course<br>Maximum Length:45
-	 */
-	private String courseIdentifier = null;
+	private String name;
 	/**
 	 * Maximum Length:240
 	 */
-	private String description;
+	private String description = null;
 	/**
 	 * Course Start Date is for when Course is associate to curriculumm
 	 */
-	private Date validFrom;
+	private Date validFrom = null;
 	/**
 	 * Course End Date is for When Course is associate to curriculumm
 	 */
-	private Date 			validTo;
-	private CourseStatus 	courseStatus = null;
-	private Rating 			rating;
+	private Date 			validTo = null;
+	private CourseStatus 	courseStatus;
+	private Rating 			rating = null;
 	/**
 	 * Maximum Length:1
 	 */
@@ -54,29 +70,29 @@ public class Course extends AuditHistory{
 	/**
 	 * Maximum Length:5
 	 */
-	private String totalCredits;
+	private String totalCredits = null;
 
 	/**
 	 * Maximum Length:1
 	 */
-	private Boolean extraCreditsIndicator;
+	private Boolean extraCreditsIndicator = null;
 	/**
 	 *  Maximum Length:5
 	 */
-	private String extraCredits;
+	private String extraCredits = null;
 	/**
 	 * Maximum Length:1
 	 */
-	private Boolean additionalPropertyIndicator;
+	private Boolean additionalPropertyIndicator = null;
 	/**
 	 * Maximum Length:72
 	 */
-	private String thumbnailPicturePath;
+	private String thumbnailPicturePath = null;
 	/**
 	 * Maximum Length:1
 	 */
-	private Boolean templateIndicator;
-	private Integer courseDuration = null;
+	private Boolean templateIndicator = null;
+	private Integer courseDuration;
 
 	private SubjectClassification 	subjClassification	 	= null;
 
@@ -84,7 +100,12 @@ public class Course extends AuditHistory{
 
 	private CourseDetails 			courseDetails 			= null;
 
-	private Integer version;
+	/**
+	 * Maximum Length:240
+	 */
+	private String 			VersionRemarks = null;
+
+	private Integer version = null;
 
 	/**
 	 * This method returns the value of the property Name
@@ -93,46 +114,40 @@ public class Course extends AuditHistory{
 	public String getName() {
 		return name;
 	}
-	/**
+/*	*//**
 	 * This method returns the value of the attribute CourseIdentifier
 	 * @return the value of attribute CourseIdentifier
-	 */
+	 *//*
 	public String getCourseIdentifier() {
 		return courseIdentifier;
 	}
-	/**
+	*//**
 	 * This method sets the value of the attribute CourseIdentifier
 	 * @param courseIdentifier
 	 *            the value for attribute CourseIdentifier
-	 */
+	 *//*
 	public void setCourseIdentifier(String courseIdentifier) {
 		this.courseIdentifier = courseIdentifier == null ? null
 				: courseIdentifier.trim();
 	}
-	/**
+*/	/**
 	 * Sets the name and identifier from UI input field {name}, and separates both by defined separtor
 	 * @param name
 	 * @throws CourseException
 	 */
-	public void setCourseName(String name) throws CourseException {
+	public void setName(String name) throws CourseException {
 		if (name == null) {
 			throw new CourseException("Null name passed");
 		}
-		String courseNameArr[] = name.split(NAME_IDENTIFIER_SEPARATOR, 2);
-
-		if (courseNameArr.length < 2) {
-			throw new CourseException("Name is not given in a format [ identifier"+NAME_IDENTIFIER_SEPARATOR+"name ]");
-		}
-		this.name = courseNameArr[1];
-		setCourseIdentifier(courseNameArr[0]);
+			this.name = name;
 	}
-	/**
+/*	*//**
 	 * This method gets the name and courseidentifier from database retrieval and appends
 	 * with defined separtor to display in UI
 	 * @param courseIdentifier
 	 * @param name
 	 * @throws CourseException
-	 */
+	 *//*
 	public void setCourseNameFromData(String courseIdentifier, String name)
 			throws CourseException {
 		if (courseIdentifier == null || name == null) {
@@ -140,7 +155,7 @@ public class Course extends AuditHistory{
 		}
 		this.name = courseIdentifier + NAME_IDENTIFIER_SEPARATOR + name;
 	}
-	/**
+*/	/**
 	 * This method returns the value of the attribute Description
 	 * @return the value of attribute Description
 	 */
@@ -329,12 +344,6 @@ public class Course extends AuditHistory{
 		this.accountableMember = accountableMember;
 	}
 
-	public String toString() {
-		return "Course [name=" + name + ", courseIdentifier="
-				+ courseIdentifier + ", courseStatus=" + courseStatus
-				+ ", courseDuration=" + courseDuration + "]";
-	}
-
 	/**
 	 * @return the subjClassification
 	 */
@@ -349,4 +358,24 @@ public class Course extends AuditHistory{
 		this.subjClassification = subjClassification;
 	}
 
+	/**
+	 * @return the versionRemarks
+	 */
+	public String getVersionRemarks() {
+		return VersionRemarks;
 	}
+
+	/**
+	 * @param versionRemarks the versionRemarks to set
+	 */
+	public void setVersionRemarks(String versionRemarks) {
+		VersionRemarks = versionRemarks;
+	}
+
+	public String toString() {
+		return "Course [name=" + name + ", courseStatus=" + courseStatus
+				+ ", courseDuration=" + courseDuration + "]";
+	}
+
+
+}

@@ -11,15 +11,15 @@ public class CourseAdditionalProperty{
 
 
 	private Integer courseAddnlPropertyId;
-	private Date creationDate = null;
-	private Integer propertyUsageType;
-	private String propertyName = null;
-	private Integer propertyDataType = null;
-	private String propertyValue = null;
-	private Integer sequence;
-	private Boolean active;
-	private Course course = null;
-	private MemberPersona creatorMemberPersona = null;
+	private Date 			creationDate 			= null;
+	private Integer 		propertyUsageType 		= null;
+	private String 			propertyName 			= null;
+	private Integer 		propertyDataType 		= null;
+	private String 			propertyValue 			= null;
+	private Integer 		sequence 				= null;
+	private Boolean 		active 					= null;
+	private Course 			course 					= null;
+	private MemberPersona 	creatorMemberPersona 	= null;
 
 	/**
 	 * @return the value of corcourseadditionalproperty.CourseAddnlPropertyId

@@ -12,58 +12,31 @@ public class LearningComponentContent extends AuditHistory{
 		this.baseLearningContent = baseLearningContent;
 	}
 
-	/**
-	 * This field corresponds property learningComponentContentId
-	 */
-	private Integer learningComponentContentId;
+	public LearningComponentContent(CourseStatus courseStatus,
+			ContentType contentType, LearningComponent learningComponent,
+			LearningComponentContent synchronizeWithVideo,
+			LearningContent baseLearningContent) {
+		super();
+		this.courseStatus = courseStatus;
+		this.contentType = contentType;
+		this.learningComponent = learningComponent;
+		SynchronizeWithVideo = synchronizeWithVideo;
+		this.baseLearningContent = baseLearningContent;
+	}
+
+	private Integer 						learningComponentContentId;
+	private Date 							creationDate 						= null;
+	private CourseStatus 					courseStatus 						= null;
+	private ContentType 					contentType 						= null;
+	private String 							contentDescription 					= null;
+	private Boolean 						active 								= null;
+	private Integer 						contentVersionUsed 					= null;
+	private LearningComponent 				learningComponent 					= null;
+	private LearningComponentContent 		SynchronizeWithVideo 				= null;
+	private LearningContent 				baseLearningContent 				= null;
+	private LearningComponentContentDetails learningComponentContentDetails 	= null;
 
 	/**
-	 * This field corresponds property CreationDate<br>
-	 * LearningComponent Content creation date.
-	 */
-	private Date creationDate = null;
-
-	/**
-	 * This field corresponds to the property CourseStatus<br>
-	 * ID for Course Status
-	 */
-	private CourseStatus courseStatus = null;
-
-	/**
-	 * This field corresponds property ContentType
-	 */
-	private ContentType contentType = null;
-
-	/**
-	 * This field corresponds property ContentDescription,br> Maximum Length:45
-	 */
-	private String contentDescription = null;
-
-	/**
-	 * This field corresponds property Active Maximum Length:1
-	 */
-	private Boolean active;
-
-	/**
-	 * This field corresponds property ContentVersionUsed
-	 */
-	private Integer contentVersionUsed;
-
-	private LearningComponent learningComponent = null;
-
-	private LearningComponentContent SynchronizeWithVideo = null;
-
-	private LearningContent baseLearningContent = null;
-
-	/**
-	 * Contains the information about associations/composition and more
-	 * information
-	 */
-	private LearningComponentContentDetails learningComponentContentDetails = null;
-
-	/**
-	 * This method returns the value of the property learningComponentContentId
-	 * 
 	 * @return the value of property learningComponentContentId
 	 */
 	public Integer getLearningComponentContentId() {
@@ -71,8 +44,6 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property learningComponentContentId
-	 * 
 	 * @param learningComponentContentId
 	 *            the value for property learningComponentContentId
 	 */
@@ -81,8 +52,6 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property CreationDate
-	 * 
 	 * @return the value of property CreationDate
 	 */
 	public Date getCreationDate() {
@@ -90,20 +59,14 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property CreationDate
-	 * 
 	 * @param creationDate
 	 *            the value for property CreationDate
 	 */
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
-	
 	
 	/**
-	 * This method returns the value of the property ContentDescription
-	 * 
 	 * @return the value of property ContentDescription
 	 */
 	public String getContentDescription() {
@@ -111,8 +74,6 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property ContentDescription
-	 * 
 	 * @param contentDescription
 	 *            the value for property ContentDescription
 	 */
@@ -122,8 +83,6 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property Active
-	 * 
 	 * @return the value of property Active
 	 */
 	public Boolean getActive() {
@@ -131,8 +90,6 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property Active
-	 * 
 	 * @param active
 	 *            the value for property Active
 	 */
@@ -141,8 +98,6 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property ContentVersionUsed
-	 * 
 	 * @return the value of property ContentVersionUsed
 	 */
 	public Integer getContentVersionUsed() {
@@ -150,8 +105,6 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property ContentVersionUsed
-	 * 
 	 * @param contentVersionUsed
 	 *            the value for property ContentVersionUsed
 	 */

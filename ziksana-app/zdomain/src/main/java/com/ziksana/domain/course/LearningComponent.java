@@ -9,105 +9,97 @@ import com.ziksana.domain.utilz.SubjectClassification;
 /**
  * @author bhashasp
  */
-public class LearningComponent extends AuditHistory{
-	
+public class LearningComponent extends AuditHistory {
 
-	public LearningComponent(){
-		
+	public LearningComponent(Date validFrom, Date validTo,
+			CourseStatus courseStatus, Boolean prescribedLODuration,
+			LearningComponentType learningComponentType, Course course,
+			MemberPersona authoredMember) {
+		super();
+		this.validFrom = validFrom;
+		this.validTo = validTo;
+		this.courseStatus = courseStatus;
+		this.prescribedLODuration = prescribedLODuration;
+		this.learningComponentType = learningComponentType;
+		this.course = course;
+		this.authoredMember = authoredMember;
 	}
+
+	public LearningComponent(Boolean prescribedLODuration,
+			LearningComponentType learningComponentType, Course course,
+			MemberPersona authoredMember) {
+		super();
+		this.prescribedLODuration = prescribedLODuration;
+		this.learningComponentType = learningComponentType;
+		this.course = course;
+		this.authoredMember = authoredMember;
+	}
+
+	public LearningComponent() {
+
+	}
+
 	public LearningComponent(LearningComponentType learningComponentType) {
 		this.learningComponentType = learningComponentType;
 	}
 
-	/**
-	 * This field corresponds property ID
-	 */
 	private Integer learningComponentId;
+	private String 			name;
+	private Date 			validFrom 		= null;
+	private Date 			validTo 		= null;
+	private CourseStatus 	courseStatus 	= null;
+	private Integer 		weightage 		= null;
 
 	/**
-	 * This field corresponds property validfrom {Start Date}
-	 */
-	private Date validFrom = null;
-
-	/**
-	 * This field corresponds property validTo{End Date}
-	 */
-	private Date validTo = null;
-
-	/**
-	 * This field corresponds property CourseStatus<br>
-	 */
-	private CourseStatus courseStatus = null;
-
-	/**
-	 * This field corresponds property Weightage
-	 */
-	private Integer weightage;
-
-	/**
-	 * This field corresponds property TotalCredits<br>
 	 * Maximum Length:5
 	 */
-	private String totalCredits;
+	private String totalCredits = null;
 
 	/**
-	 * This field corresponds property ExtraCreditsIndicator<br>
 	 * Maximum Length:1
 	 */
-	private Boolean extraCreditsIndicator;
+	private Boolean extraCreditsIndicator 	= null;
+
+	private Integer learningObjIndictor 	= null;
 
 	/**
-	 * This field corresponds to the attribute learningObjIndictor
-	 */
-	private Integer learningObjIndictor = null;
-
-	/**
-	 * This field corresponds to the attribute thumbnailPicturePath<br>
 	 * Maximum Length:72
 	 */
-	private String thumbnailPicturePath;
+	private String thumbnailPicturePath 	= null;
 
 	/**
-	 * This field corresponds to the attribute templateIndicator<br>
 	 * Maximum Length:1
 	 */
-	private Boolean templateIndicator;
+	private Boolean templateIndicator 		= null;
+
+	private Boolean prescribedLODuration 	= null;
 
 	/**
-	 * This field corresponds to the attribute prescribedLODuration<br>
+	 * Maximum Length:240
 	 */
-	private Boolean prescribedLODuration = null;
+	private String description = null;
+
+	private Integer version = null;
 
 	/**
-	 * This field corresponds property learningComponentTypeId
+	 * Maximum Length:240
 	 */
-	private LearningComponentType learningComponentType = null;
+	private String 					versionRemarks 			= null;
 
-	/**
-	 * This field corresponds property course
-	 */
-	private Course course = null;
+	private LearningComponentType 	learningComponentType 	= null;
 
-	/**
-	 * This field corresponds property memberPersona
-	 */
-	private MemberPersona authoredMember = null;
+	private Course 					course 					= null;
 
+	private MemberPersona 			authoredMember 			= null;
+
+	private SubjectClassification 	subjClassification 		= null;
 	/**
-	 * This field corresponds property subjClassification
-	 */
-	private SubjectClassification subjClassification = null;
-	/**
-	 * This field corresponds property ExtraCredits<br>
 	 * Maximum Length:5
 	 */
 	private String extraCredits;
 
-	/**
-	 * The Object contains the more information(associations, compositions)
-	 * about LearningComponent
-	 */
 	private LearningComponentDetails learningComponentDetails = null;
+
 	/**
 	 * @return the learningComponentDetails
 	 */
@@ -124,10 +116,10 @@ public class LearningComponent extends AuditHistory{
 		this.learningComponentDetails = learningComponentDetails;
 	}
 
-
 	/**
 	 * This method returns the value of the database column property
 	 * learningComponentId
+	 * 
 	 * @return the value of property learningComponentId
 	 */
 	public Integer getLearningComponentId() {
@@ -137,6 +129,7 @@ public class LearningComponent extends AuditHistory{
 	/**
 	 * This method sets the value of the database column property
 	 * learningComponentId
+	 * 
 	 * @param learningComponentId
 	 *            the value for property learningComponentId
 	 */
@@ -146,6 +139,7 @@ public class LearningComponent extends AuditHistory{
 
 	/**
 	 * This method returns the value of the database column property validfrom
+	 * 
 	 * @return the value of property validfrom
 	 */
 	public Date getValidFrom() {
@@ -154,6 +148,7 @@ public class LearningComponent extends AuditHistory{
 
 	/**
 	 * This method sets the value of the database column property validfrom
+	 * 
 	 * @param validfrom
 	 *            the value for property validfrom
 	 */
@@ -163,6 +158,7 @@ public class LearningComponent extends AuditHistory{
 
 	/**
 	 * This method returns the value of the database column property validTo
+	 * 
 	 * @return the value of property validTo
 	 */
 	public Date getValidTo() {
@@ -171,6 +167,7 @@ public class LearningComponent extends AuditHistory{
 
 	/**
 	 * This method sets the value of the database column property validTo
+	 * 
 	 * @param validTo
 	 *            the value for property validTo
 	 */
@@ -180,6 +177,7 @@ public class LearningComponent extends AuditHistory{
 
 	/**
 	 * This method returns the value of the database column property Weightage
+	 * 
 	 * @return the value of property Weightage
 	 */
 	public Integer getWeightage() {
@@ -188,6 +186,7 @@ public class LearningComponent extends AuditHistory{
 
 	/**
 	 * This method sets the value of the database column property Weightage
+	 * 
 	 * @param weightage
 	 *            the value for property Weightage
 	 */
@@ -198,6 +197,7 @@ public class LearningComponent extends AuditHistory{
 	/**
 	 * This method returns the value of the database column property
 	 * TotalCredits
+	 * 
 	 * @return the value of property TotalCredits
 	 */
 	public String getTotalCredits() {
@@ -206,6 +206,7 @@ public class LearningComponent extends AuditHistory{
 
 	/**
 	 * This method sets the value of the database column property TotalCredits
+	 * 
 	 * @param totalCredits
 	 *            the value for property TotalCredits
 	 */
@@ -216,6 +217,7 @@ public class LearningComponent extends AuditHistory{
 	/**
 	 * This method returns the value of the database column property
 	 * ExtraCreditsIndicator
+	 * 
 	 * @return the value of property ExtraCreditsIndicator
 	 */
 	public Boolean getExtraCreditsIndicator() {
@@ -225,6 +227,7 @@ public class LearningComponent extends AuditHistory{
 	/**
 	 * This method sets the value of the database column property
 	 * ExtraCreditsIndicator
+	 * 
 	 * @param extraCreditsIndicator
 	 *            the value for property ExtraCreditsIndicator
 	 */
@@ -235,6 +238,7 @@ public class LearningComponent extends AuditHistory{
 	/**
 	 * This method returns the value of the database column property
 	 * ExtraCredits
+	 * 
 	 * @return the value of property ExtraCredits
 	 */
 	public String getExtraCredits() {
@@ -243,6 +247,7 @@ public class LearningComponent extends AuditHistory{
 
 	/**
 	 * This method sets the value of the database column property ExtraCredits
+	 * 
 	 * @param extraCredits
 	 *            the value for property ExtraCredits
 	 */
@@ -309,6 +314,52 @@ public class LearningComponent extends AuditHistory{
 	public void setPrescribedLODuration(Boolean prescribedLODuration) {
 		this.prescribedLODuration = prescribedLODuration;
 	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the version
+	 */
+	public Integer getVersion() {
+		return version;
+	}
+
+	/**
+	 * @param version
+	 *            the version to set
+	 */
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+	/**
+	 * @return the versionRemarks
+	 */
+	public String getVersionRemarks() {
+		return versionRemarks;
+	}
+
+	/**
+	 * @param versionRemarks
+	 *            the versionRemarks to set
+	 */
+	public void setVersionRemarks(String versionRemarks) {
+		this.versionRemarks = versionRemarks;
+	}
+
 	/**
 	 * @return the courseStatus
 	 */
@@ -317,7 +368,8 @@ public class LearningComponent extends AuditHistory{
 	}
 
 	/**
-	 * @param courseStatus the courseStatus to set
+	 * @param courseStatus
+	 *            the courseStatus to set
 	 */
 	public void setCourseStatus(CourseStatus courseStatus) {
 		this.courseStatus = courseStatus;
@@ -331,9 +383,11 @@ public class LearningComponent extends AuditHistory{
 	}
 
 	/**
-	 * @param learningComponentType the learningComponentType to set
+	 * @param learningComponentType
+	 *            the learningComponentType to set
 	 */
-	public void setLearningComponentType(LearningComponentType learningComponentType) {
+	public void setLearningComponentType(
+			LearningComponentType learningComponentType) {
 		this.learningComponentType = learningComponentType;
 	}
 
@@ -345,7 +399,8 @@ public class LearningComponent extends AuditHistory{
 	}
 
 	/**
-	 * @param course the course to set
+	 * @param course
+	 *            the course to set
 	 */
 	public void setCourse(Course course) {
 		this.course = course;
@@ -359,7 +414,8 @@ public class LearningComponent extends AuditHistory{
 	}
 
 	/**
-	 * @param authoredMember the authoredMember to set
+	 * @param authoredMember
+	 *            the authoredMember to set
 	 */
 	public void setAuthoredMember(MemberPersona authoredMember) {
 		this.authoredMember = authoredMember;
@@ -373,7 +429,8 @@ public class LearningComponent extends AuditHistory{
 	}
 
 	/**
-	 * @param subjClassification the subjClassification to set
+	 * @param subjClassification
+	 *            the subjClassification to set
 	 */
 	public void setSubjClassification(SubjectClassification subjClassification) {
 		this.subjClassification = subjClassification;
@@ -385,5 +442,20 @@ public class LearningComponent extends AuditHistory{
 				+ validTo + ", courseStatus=" + courseStatus
 				+ ", learningObjIndictor=" + learningObjIndictor
 				+ ", learningComponentType=" + learningComponentType + "]";
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 }

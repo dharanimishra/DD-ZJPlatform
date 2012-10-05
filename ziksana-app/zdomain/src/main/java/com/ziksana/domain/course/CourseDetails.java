@@ -3,7 +3,7 @@ package com.ziksana.domain.course;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ziksana.common.exception.CourseException;
+import com.ziksana.exception.course.CourseException;
 
 /**
  * This contains the association/compositions and course tree construction behavious
@@ -13,7 +13,7 @@ import com.ziksana.common.exception.CourseException;
 public class CourseDetails extends Course {
 
 	private List<CourseAdditionalProperty> 			courseAdditionalPropertyList 		= null;
-	private List<LearningComponent> 				learningComponents 					= null;
+	List<LearningComponent> 						learningComponents 					= null;
 	private List<CourseLearningComponent> 			courseLearningComponentsList 		= null;
 	private LearningComponent 						learningComponent 					= null;
 	private LearningComponentContent 				learningComponentContent 			= null;
@@ -171,6 +171,14 @@ public class CourseDetails extends Course {
 		}
 	}
 
+	/**
+	 * @param learningComponent
+	 */
+	public LearningComponent getLearningComponent()
+			throws CourseException {
+
+			return learningComponent;
+	}
 
 	/**
 	 * @return the learningComponents

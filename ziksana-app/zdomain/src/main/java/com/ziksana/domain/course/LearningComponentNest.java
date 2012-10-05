@@ -8,38 +8,17 @@ public class LearningComponentNest extends AuditHistory{
 	
 	public LearningComponentNest(LearningComponent learningComponentParent,
 			LearningComponent learningComponentNest) {
-		super();
 		this.learningComponentParent = learningComponentParent;
 		this.learningComponentNest = learningComponentNest;
 	}
 
-	/**
-	 * This field corresponds property componentNestId
-	 */
-	private Integer componentNestId;
+	private Integer 			componentNestId;
+	private Date 				creationDate 			= null;
+	private Integer 			nestLevel 				= null;
+	private LearningComponent 	learningComponentParent	= null;
+	private LearningComponent 	learningComponentNest 	= null;
 
 	/**
-	 * This field corresponds property CreationDate
-	 */
-	private Date creationDate = null;
-
-	/**
-	 * This field corresponds property NestLevel
-	 */
-	private Integer nestLevel;
-
-	/**
-	 * This field corresponds property learningComponentParentId
-	 */
-	private LearningComponent learningComponentParent = null;
-
-	/**
-	 * This field corresponds property learningComponentNestId
-	 */
-	private LearningComponent learningComponentNest = null;
-
-	/**
-	 * This method returns the value of property componentNestId
 	 * @return the value of property componentNestId
 	 */
 	public Integer getComponentNestId() {
@@ -47,7 +26,6 @@ public class LearningComponentNest extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of property componentNestId
 	 * @param componentNestId
 	 *            the value for property componentNestId
 	 */
@@ -56,7 +34,6 @@ public class LearningComponentNest extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of property CreationDate
 	 * @return the value of property CreationDate
 	 */
 	public Date getCreationDate() {
@@ -64,7 +41,6 @@ public class LearningComponentNest extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of property CreationDate
 	 * @param creationDate
 	 *            the value for property CreationDate
 	 */
@@ -73,7 +49,6 @@ public class LearningComponentNest extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of property NestLevel
 	 * @return the value of property NestLevel
 	 */
 	public Integer getNestLevel() {
@@ -81,7 +56,6 @@ public class LearningComponentNest extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of property NestLevel
 	 * @param nestLevel
 	 *            the value for property NestLevel
 	 */

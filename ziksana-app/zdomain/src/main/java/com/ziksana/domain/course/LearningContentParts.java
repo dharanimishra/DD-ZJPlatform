@@ -5,35 +5,17 @@ import java.util.Date;
 import com.ziksana.domain.common.AuditHistory;
 
 public class LearningContentParts extends AuditHistory{
-	/**
-	 * This field corresponds to the property contentPartsId
-	 */
-	private Integer contentPartsId;
 
+	private Integer 	contentPartsId;
+	private Date 		creationDate 	= null;
 	/**
-	 * This field corresponds to the property CreationDate
-	 */
-	private Date creationDate = null;
-
-	/**
-	 * This field corresponds to the property PartPath<br>
 	 * Maximum Length:45
 	 */
-	private String partPath = null;
-
-	/**
-	 * This field corresponds to the property partSequence Sequence of the
-	 * LearningContent part
-	 */
-	private Integer partSequence = null;
-
-	/**
-	 * This field corresponds to the property learningContentId
-	 */
+	private String 			partPath 		= null;
+	private Integer 		partSequence 	= null;
 	private LearningContent learningContent = null;
 
 	/**
-	 * This method returns the value of the property contentPartsId
 	 * @return the value of property contentPartsId
 	 */
 	public Integer getContentPartsId() {
@@ -41,8 +23,6 @@ public class LearningContentParts extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property contentPartsId
-	 * 
 	 * @param contentPartsId
 	 *            the value for property contentPartsId
 	 */
@@ -51,8 +31,6 @@ public class LearningContentParts extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property CreationDate
-	 * 
 	 * @return the value of property CreationDate
 	 */
 	public Date getCreationDate() {
@@ -60,8 +38,6 @@ public class LearningContentParts extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property CreationDate
-	 * 
 	 * @param creationDate
 	 *            the value for property CreationDate
 	 */
@@ -70,8 +46,6 @@ public class LearningContentParts extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property PartPath
-	 * 
 	 * @return the value of property PartPath
 	 */
 	public String getPartPath() {
@@ -79,8 +53,6 @@ public class LearningContentParts extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property PartPath
-	 * 
 	 * @param partPath
 	 *            the value for property PartPath
 	 */

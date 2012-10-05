@@ -10,31 +10,13 @@ public class LearningComponentType {
 		this.componentType = componentType;
 		
 	}
-	/**
-	 * This field corresponds to the property learningCompTypeId
-	 */
-	private Integer learningCompTypeId;
+	private Integer 		learningCompTypeId;
+	private Date 			creationDate 		= null;
+	private ComponentType 	componentType 		= null;
+	private Boolean 		active		 		= null;
+	private MemberPersona 	creatingMember 		= null;
 
 	/**
-	 * This field corresponds to the property CreationDate
-	 */
-	private Date creationDate;
-
-	/**
-	 * This field corresponds to the property ComponentTypeName
-	 */
-	private ComponentType componentType;
-
-	/**
-	 * This field corresponds to the property Active
-	 */
-	private Boolean active;
-
-	private MemberPersona creatingMember;
-
-	/**
-	 * . This method returns the value of the property CreationDate
-	 * 
 	 * @return the value of property CreationDate
 	 */
 	public Date getCreationDate() {
@@ -42,7 +24,6 @@ public class LearningComponentType {
 	}
 
 	/**
-	 *This method sets the value of the property CreationDate
 	 * @param creationDate
 	 *            the value for property CreationDate
 	 */
@@ -50,9 +31,7 @@ public class LearningComponentType {
 		this.creationDate = creationDate;
 	}
 
-
 	/**
-	 *This method returns the value of the property Active
 	 * @return the value of property Active
 	 */
 	public Boolean getActive() {
@@ -60,7 +39,6 @@ public class LearningComponentType {
 	}
 
 	/**
-	 *This method sets the value of the property Active
 	 * @param active
 	 *            the value for property Active
 	 */

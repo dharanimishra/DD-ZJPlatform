@@ -6,19 +6,29 @@ import com.ziksana.domain.common.AuditHistory;
 
 public class LearningComponentContentEnrichment extends AuditHistory {
 
-	private Integer enrichmentId;
-	private Date startTime;
-	private Date endTime;
-	private LinkType linkType;
-	private String linkElement;
-	private Boolean internalIndicator;
-	private String linkDescription;
-	private String linkItemAuthor;
-	private Integer linkItemCost;
-	private LinkSource linkSource;
-	private Boolean zeniSuggestedIndicator;
-	private Boolean active;
-	private LearningComponentContent learningComponentContent;
+	public LearningComponentContentEnrichment(LinkType linkType,
+			String linkElement, String linkItemAuthor, LinkSource linkSource,
+			Boolean active) {
+		this.linkType = linkType;
+		this.linkElement = linkElement;
+		this.linkItemAuthor = linkItemAuthor;
+		this.linkSource = linkSource;
+		this.active = active;
+	}
+
+	private Integer 					enrichmentId;
+	private Date 						startTime 					= null;
+	private Date 						endTime 					= null;
+	private LinkType 					linkType 					= null;
+	private String 						linkElement 				= null;
+	private Boolean 					internalIndicator 			= null;
+	private String 						linkDescription 			= null;
+	private String 						linkItemAuthor 				= null;
+	private Integer 					linkItemCost 				= null;
+	private LinkSource 					linkSource 					= null;
+	private Boolean 					zeniSuggestedIndicator 		= null;
+	private Boolean 					active 						= null;
+	private LearningComponentContent 	learningComponentContent 	= null;
 
 	/**
 	 * @return the enrichmentId
