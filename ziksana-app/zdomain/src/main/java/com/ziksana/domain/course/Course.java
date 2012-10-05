@@ -19,7 +19,6 @@ public class Course extends AuditHistory{
 	
 	public Course(String name, String description, CourseStatus courseStatus,
 			Integer courseDuration,	MemberPersona accountableMember) {
-		super();
 		this.name = name;
 		this.description = description;
 		this.courseStatus = courseStatus;
@@ -35,7 +34,6 @@ public class Course extends AuditHistory{
 	public Course(String name, String description, CourseStatus courseStatus,
 			Integer courseDuration,
 			MemberPersona accountableMember, List<LearningComponent> learningComponentList) {
-		super();
 		this.name = name;
 		this.description = description;
 		this.courseStatus = courseStatus;
@@ -48,90 +46,67 @@ public class Course extends AuditHistory{
 	/**
 	 * Maximum Length:45
 	 */
-	private String name;
+	private String 					name 			= null;
 	/**
 	 * Maximum Length:240
 	 */
-	private String description = null;
+	private String 					description 	= null;
 	/**
 	 * Course Start Date is for when Course is associate to curriculumm
 	 */
-	private Date validFrom = null;
+	private Date 					validFromDate 	= null;
 	/**
 	 * Course End Date is for When Course is associate to curriculumm
 	 */
-	private Date 			validTo = null;
-	private CourseStatus 	courseStatus;
-	private Rating 			rating = null;
+	private Date 					validToDate 	= null;
+	private CourseStatus 			courseStatus 	= null;
+	private Rating 					rating 			= null;
 	/**
 	 * Maximum Length:1
 	 */
-	private Boolean securityNeededIndicator = null;
+	private Boolean 				securityIndicator = null;
+	//private CourseContentSecurity	courseContSecll;urity = null;
 	/**
 	 * Maximum Length:5
 	 */
-	private String totalCredits = null;
-
-	/**
-	 * Maximum Length:1
-	 */
-	private Boolean extraCreditsIndicator = null;
+	private String 					courseCredits 	= null;
 	/**
 	 *  Maximum Length:5
 	 */
-	private String extraCredits = null;
-	/**
-	 * Maximum Length:1
-	 */
-	private Boolean additionalPropertyIndicator = null;
+	private String 					extraCredits	= null;
+	private Boolean 	additionalInfoIndicator 	= null;
 	/**
 	 * Maximum Length:72
 	 */
-	private String thumbnailPicturePath = null;
-	/**
-	 * Maximum Length:1
-	 */
-	private Boolean templateIndicator = null;
-	private Integer courseDuration;
-
+	private String 					thumbnailPicturePath 	= null;
+	private Integer 				courseDuration			= null;
 	private SubjectClassification 	subjClassification	 	= null;
-
 	private MemberPersona 			accountableMember 		= null;
-
 	private CourseDetails 			courseDetails 			= null;
-
 	/**
 	 * Maximum Length:240
 	 */
-	private String 			VersionRemarks = null;
-
-	private Integer version = null;
+	private String 			VersionRemarks 	= null;
+	private Integer 		version 		= null;
 
 	/**
-	 * This method returns the value of the property Name
 	 * @return the value of attribute Name
 	 */
 	public String getName() {
 		return name;
 	}
 /*	*//**
-	 * This method returns the value of the attribute CourseIdentifier
-	 * @return the value of attribute CourseIdentifier
 	 *//*
 	public String getCourseIdentifier() {
 		return courseIdentifier;
 	}
 	*//**
-	 * This method sets the value of the attribute CourseIdentifier
-	 * @param courseIdentifier
-	 *            the value for attribute CourseIdentifier
 	 *//*
 	public void setCourseIdentifier(String courseIdentifier) {
 		this.courseIdentifier = courseIdentifier == null ? null
 				: courseIdentifier.trim();
 	}
 */	/**
-	 * Sets the name and identifier from UI input field {name}, and separates both by defined separtor
 	 * @param name
 	 * @throws CourseException
 	 */
@@ -141,22 +116,7 @@ public class Course extends AuditHistory{
 		}
 			this.name = name;
 	}
-/*	*//**
-	 * This method gets the name and courseidentifier from database retrieval and appends
-	 * with defined separtor to display in UI
-	 * @param courseIdentifier
-	 * @param name
-	 * @throws CourseException
-	 *//*
-	public void setCourseNameFromData(String courseIdentifier, String name)
-			throws CourseException {
-		if (courseIdentifier == null || name == null) {
-			throw new CourseException(" Name or Course Identifier are Null");
-		}
-		this.name = courseIdentifier + NAME_IDENTIFIER_SEPARATOR + name;
-	}
-*/	/**
-	 * This method returns the value of the attribute Description
+	/**
 	 * @return the value of attribute Description
 	 */
 	public String getDescription() {
@@ -164,7 +124,6 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property Description
 	 * @param description
 	 *            the value for attribute Description
 	 */
@@ -173,7 +132,34 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * This method returns the value of the property Version
+	 * @return the validFromDate
+	 */
+	public Date getValidFromDate() {
+		return validFromDate;
+	}
+
+	/**
+	 * @param validFromDate the validFromDate to set
+	 */
+	public void setValidFromDate(Date validFromDate) {
+		this.validFromDate = validFromDate;
+	}
+
+	/**
+	 * @return the validToDate
+	 */
+	public Date getValidToDate() {
+		return validToDate;
+	}
+
+	/**
+	 * @param validToDate the validToDate to set
+	 */
+	public void setValidToDate(Date validToDate) {
+		this.validToDate = validToDate;
+	}
+
+	/**
 	 * @return the value of attribute Version
 	 */
 	public Integer getVersion() {
@@ -181,7 +167,6 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property Version
 	 * @param version
 	 *            the value for attribute Version
 	 */
@@ -189,7 +174,6 @@ public class Course extends AuditHistory{
 		this.version = version;
 	}
 	/**
-	 * This method returns the value of the property courseId
 	 * @return the value of attribute courseId
 	 */
 	public Integer getCourseId() {
@@ -197,7 +181,6 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * This method sets the value of the property courseId
 	 * @param courseId
 	 *            the value for attribute courseId
 	 */
@@ -220,45 +203,6 @@ public class Course extends AuditHistory{
 		this.courseDetails = courseDetails;
 	}
 
-	public Date getValidFrom() {
-		return validFrom;
-	}
-
-	public void setValidFrom(Date validFrom) {
-		this.validFrom = validFrom;
-	}
-
-	public Date getValidTo() {
-		return validTo;
-	}
-
-	public void setValidTo(Date validTo) {
-		this.validTo = validTo;
-	}
-
-	public Boolean getSecurityNeededIndicator() {
-		return securityNeededIndicator;
-	}
-
-	public void setSecurityNeededIndicator(Boolean securityNeededIndicator) {
-		this.securityNeededIndicator = securityNeededIndicator;
-	}
-
-	public String getTotalCredits() {
-		return totalCredits;
-	}
-
-	public void setTotalCredits(String totalCredits) {
-		this.totalCredits = totalCredits;
-	}
-
-	public Boolean getExtraCreditsIndicator() {
-		return extraCreditsIndicator;
-	}
-
-	public void setExtraCreditsIndicator(Boolean extraCreditsIndicator) {
-		this.extraCreditsIndicator = extraCreditsIndicator;
-	}
 
 	public String getExtraCredits() {
 		return extraCredits;
@@ -268,13 +212,13 @@ public class Course extends AuditHistory{
 		this.extraCredits = extraCredits;
 	}
 
-	public Boolean getAdditionalPropertyIndicator() {
-		return additionalPropertyIndicator;
+	public Boolean getAdditionalInfoIndicator() {
+		return additionalInfoIndicator;
 	}
 
-	public void setAdditionalPropertyIndicator(
-			Boolean additionalPropertyIndicator) {
-		this.additionalPropertyIndicator = additionalPropertyIndicator;
+	public void setAdditionalInfoIndicator(
+			Boolean additionalInfoIndicator) {
+		this.additionalInfoIndicator = additionalInfoIndicator;
 	}
 
 	public Integer getCourseDuration() {
@@ -291,14 +235,6 @@ public class Course extends AuditHistory{
 
 	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
-	}
-
-	public Boolean getTemplateIndicator() {
-		return templateIndicator;
-	}
-
-	public void setTemplateIndicator(Boolean templateIndicator) {
-		this.templateIndicator = templateIndicator;
 	}
 
 	/**
@@ -330,6 +266,34 @@ public class Course extends AuditHistory{
 	public void setRating(Rating rating) {
 		this.rating = rating;
 	}
+	/**
+	 * @return the securityIndicator
+	 */
+	public Boolean getSecurityIndicator() {
+		return securityIndicator;
+	}
+
+	/**
+	 * @param securityIndicator the securityIndicator to set
+	 */
+	public void setSecurityIndicator(Boolean securityIndicator) {
+		this.securityIndicator = securityIndicator;
+	}
+
+	/**
+	 * @return the courseCredits
+	 */
+	public String getCourseCredits() {
+		return courseCredits;
+	}
+
+	/**
+	 * @param courseCredits the courseCredits to set
+	 */
+	public void setCourseCredits(String courseCredits) {
+		this.courseCredits = courseCredits;
+	}
+
 	/**
 	 * @return the accountableMember
 	 */

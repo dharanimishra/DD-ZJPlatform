@@ -48,8 +48,6 @@ public class CourseDetails extends Course {
 			learningComponent = new LearningComponent(learningCompType);
 		}
 		
-		learningComponent.setCourse(this);
-		
 		// Setting the component nest { parentlearningcomp=null, nestlearncomp=learningComponent }
 		learningComponentNest = new LearningComponentNest(null,
 				learningComponent);
@@ -200,9 +198,6 @@ public class CourseDetails extends Course {
 		}
 		this.learningComponents = learningComponents;
 
-		for (LearningComponent learningComponent : learningComponents) {
-			learningComponent.setCourse(this);
-		}
 	}
 /*
 	*//**

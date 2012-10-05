@@ -8,8 +8,10 @@ public class CourseLearningComponent extends AuditHistory{
 	
 	private Integer 				courseLearningComponentId;
 	private Date 					creationDate 						= null;
+	private Date					usageStartDate						= null;
+	private Date					usageEndDate						= null;
 	private Integer 				learningComponentVersionUsed 		= null;
-	private Boolean 				active 								= null;
+	private Boolean 				active 								= null;							
 	private Integer 				weightage 							= null;
 	private String 					totalCredits 						= null;
 	private String 					extraCredits 						= null;
@@ -48,6 +50,34 @@ public class CourseLearningComponent extends AuditHistory{
 	 */
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	/**
+	 * @return the usageStartDate
+	 */
+	public Date getUsageStartDate() {
+		return usageStartDate;
+	}
+
+	/**
+	 * @param usageStartDate the usageStartDate to set
+	 */
+	public void setUsageStartDate(Date usageStartDate) {
+		this.usageStartDate = usageStartDate;
+	}
+
+	/**
+	 * @return the usageEndDate
+	 */
+	public Date getUsageEndDate() {
+		return usageEndDate;
+	}
+
+	/**
+	 * @param usageEndDate the usageEndDate to set
+	 */
+	public void setUsageEndDate(Date usageEndDate) {
+		this.usageEndDate = usageEndDate;
 	}
 
 	/**

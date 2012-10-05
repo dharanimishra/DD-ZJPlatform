@@ -2,12 +2,13 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 
 /**
  * @author bhashasp
  */
-public class CourseAdditionalProperty{
+public class CourseAdditionalProperty extends AuditHistory{
 
 
 	private Integer courseAddnlPropertyId;
