@@ -1,15 +1,25 @@
-target
 *.class
+
 # Package Files #
 *.jar
 *.war
 *.ear
+*.zip
+*.tar
+*.tar.gz
 
 # Eclipse and other stuff
-.metadata
+.metadata/
 .classpath
 .project
-.settings
-Servers
-*.bak
+.settings/
+.settings/**/*
+target/
+target/**/*
+Servers/
 
+# OS, junk files
+[Tt]humbs.db
+*.DS_Store
+*.bak
+~$*
