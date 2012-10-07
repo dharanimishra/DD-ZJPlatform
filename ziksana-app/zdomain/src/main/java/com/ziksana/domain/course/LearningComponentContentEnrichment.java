@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
 public class LearningComponentContentEnrichment extends AuditHistory {
@@ -16,7 +17,7 @@ public class LearningComponentContentEnrichment extends AuditHistory {
 		this.active = active;
 	}
 
-	private Integer 					enrichmentId;
+	private ZID 						enrichmentId;
 	private Date 						startTime 					= null;
 	private Date 						endTime 					= null;
 	private LinkType 					linkType 					= null;
@@ -33,7 +34,7 @@ public class LearningComponentContentEnrichment extends AuditHistory {
 	/**
 	 * @return the enrichmentId
 	 */
-	public Integer getEnrichmentId() {
+	public ZID getEnrichmentId() {
 		return enrichmentId;
 	}
 
@@ -41,7 +42,7 @@ public class LearningComponentContentEnrichment extends AuditHistory {
 	 * @param enrichmentId
 	 *            the enrichmentId to set
 	 */
-	public void setEnrichmentId(Integer enrichmentId) {
+	public void setEnrichmentId(ZID enrichmentId) {
 		this.enrichmentId = enrichmentId;
 	}
 

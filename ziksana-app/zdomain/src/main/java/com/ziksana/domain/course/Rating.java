@@ -1,6 +1,5 @@
 package com.ziksana.domain.course;
 
-import com.ziksana.exception.course.CourseException;
 
 /**
  * @author bhashasp
@@ -8,11 +7,14 @@ import com.ziksana.exception.course.CourseException;
 public enum Rating {
 
 	// TODO: retrieve the ids from the static data service
-	NOT_HAPPY(1, "Not Happy"), NO_COMMENTS(2, "No Comments"), AVERAGE(3,
-			"Average"), HAPPY(4, "Happy"), EXCELLENT(5, "Excellent");
+	NOT_HAPPY(1, "Not Happy"),
+	NO_COMMENTS(2, "No Comments"),
+	AVERAGE(3,"Average"),
+	HAPPY(4, "Happy"),
+	EXCELLENT(5, "Excellent");
 
-	private final int id;
-	private final String name;
+	private final int 		id;
+	private final String 	name;
 
 	private Rating(int id, String name) {
 		this.id = id;
@@ -27,13 +29,13 @@ public enum Rating {
 		return name;
 	}
 
-	public static Rating getRating(int ID) throws CourseException {
+	public static Rating getRating(int ID) {
 		for (Rating t : Rating.values()) {
 			if (t.getID() == ID) {
 				return t;
 			}
 		}
-		throw new CourseException("Rating ID [" + ID + "] not found");
+		throw new IndexOutOfBoundsException("Rating ID [" + ID + "] not found");
 	}
 
 	public String toString() {

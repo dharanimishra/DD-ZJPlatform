@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utilz.SubjectClassification;
-import com.ziksana.exception.course.CourseException;
 
 public class LearningContent extends AuditHistory{
 
@@ -18,7 +18,7 @@ public class LearningContent extends AuditHistory{
 		this.contentType = contentType;
 	}
 
-	private Integer 		learningContentId;
+	private ZID	 		learningContentId;
 	private Date 			creationDate 	= null;
 	private Boolean 		activeFlag 		= null;
 	private ContentType 	contentType 	= null;
@@ -36,7 +36,7 @@ public class LearningContent extends AuditHistory{
 	/**
 	 * Maximum Length:4800
 	 */
-	private String contentDescription;
+	private String contentDescription = null;
 
 	/**
 	 * Maximum Length:72
@@ -46,31 +46,27 @@ public class LearningContent extends AuditHistory{
 	private MemberPersona 				authoringMember 		= null;
 	private SubjectClassification 		subjClassification 		= null;
 	private LearningContent 			linkedLearningContent 	= null;
-	private List<LearningContentParts> 	learningContentParts 	= null;
+	private List<LearningContentParts> 	learningContentPartsList 	= null;
 	private LearningComponentContent 	baseComponentContent 	= null;
-
 	/**
 	 * @return the value of learningContentId
 	 */
-	public Integer getLearningContentId() {
+	public ZID getLearningContentId() {
 		return learningContentId;
 	}
-
 	/**
 	 * @param learningContentId
 	 *            the value for learningContentId
 	 */
-	public void setLearningContentId(Integer learningContentId) {
+	public void setLearningContentId(ZID learningContentId) {
 		this.learningContentId = learningContentId;
 	}
-
 	/**
 	 * @return the value of CreationDate
 	 */
 	public Date getCreationDate() {
 		return creationDate;
 	}
-
 	/**
 	 * @param creationDate
 	 *            the value for CreationDate
@@ -78,14 +74,12 @@ public class LearningContent extends AuditHistory{
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
 	/**
 	 * @return the value of Active
 	 */
 	public Boolean getActiveFlag() {
 		return activeFlag;
 	}
-
 	/**
 	 * @param active
 	 *            the value for Active
@@ -93,14 +87,12 @@ public class LearningContent extends AuditHistory{
 	public void setActive(Boolean activeFlag) {
 		this.activeFlag = activeFlag;
 	}
-
 	/**
 	 * @return the value of ContentPath
 	 */
 	public String getContentPath() {
 		return contentPath;
 	}
-
 	/**
 	 * @param contentPath
 	 *            the value for ContentPath
@@ -108,21 +100,18 @@ public class LearningContent extends AuditHistory{
 	public void setContentPath(String contentPath) {
 		this.contentPath = contentPath == null ? null : contentPath.trim();
 	}
-
 	/**
 	 * @return the status
 	 */
 	public ContentStatus getStatus() {
 		return status;
 	}
-
 	/**
 	 * @param status the status to set
 	 */
 	public void setStatus(ContentStatus status) {
 		this.status = status;
 	}
-
 	/**
 	 * @return the value of Version
 	 */
@@ -182,22 +171,51 @@ public class LearningContent extends AuditHistory{
 	/**
 	 * @return the learningContentParts
 	 */
-	public List<LearningContentParts> getLearningContentParts() {
-		return learningContentParts;
+	public List<LearningContentParts> getAllLearningContentParts() {
+		return learningContentPartsList;
 	}
 
+	public void addLearningContentParts(LearningContentParts parts){
+		
+		if(learningContentPartsList == null){
+			learningContentPartsList = new ArrayList<LearningContentParts>();
+		}
+		
+		parts.setLearningContent(this);
+		learningContentPartsList.add(parts);
+		
+	}
 	/**
-	 * @param learningContentParts
-	 *            the learningContentParts to set
+	 * @param learningComponent
 	 */
-	public void addLearningContentParts(
-			List<LearningContentParts> learningContentParts) throws CourseException {
-		
-		learningContentParts = new ArrayList<LearningContentParts>();
-		
-		this.learningContentParts = learningContentParts;
-	}
+	public LearningContentParts getLearningContentParts(int index)
+			throws Exception {
 
+		if (learningContentPartsList == null) {
+			throw new Exception("learningContentParts is not set in the learning content ID ["+learningContentId+"]");
+		}
+		try {
+			return learningContentPartsList.get(index);
+		} catch (Exception e) {
+			throw new Exception("learning Content Parts at index [" + index
+					+ "] at not found");
+		}
+	}
+	
+	
+	public void setLearningContentParts(List<LearningContentParts> partsList) throws Exception{
+		
+		if(partsList == null){
+			throw new Exception("Cannot set learningContentParts as null in  learning content ID ["+learningContentId+"]");
+		}
+		
+		learningContentPartsList = partsList;
+		
+		for (LearningContentParts learningContentParts : partsList) {
+			learningContentParts.setLearningContent(this);
+		}
+		
+	}
 	/**
 	 * @return the baseComponentContent
 	 */

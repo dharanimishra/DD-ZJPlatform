@@ -3,16 +3,20 @@
  */
 package com.ziksana.domain.course;
 
-import com.ziksana.exception.course.CourseException;
 
 /**
  * @author bhashasp
  */
 public enum CourseStatus {
 
-	//TODO: retrieve the ids from the static data service
-	DRAFT(1, "Draft"), REVIEW(2, "Review"), PUBLISH(3, "Publish"), RELEASED(4, "Released"), 
-	SUBSCRIBED(5, "Subscribed"), SOCIALIZE(6, "Socialized"), ADMINISTER_EVAL(7, "Administer Evaluation");
+	// TODO: retrieve the ids from the static data service
+	DRAFT(1, "Draft"),
+	REVIEW(2, "Review"),
+	PUBLISH(3, "Publish"),
+	RELEASED(4,"Released"),
+	SUBSCRIBED(5, "Subscribed"),
+	SOCIALIZE(6, "Socialized"),
+	ADMINISTER_EVAL(7, "Administer Evaluation");
 
 	private final int id;
 	private final String name;
@@ -30,14 +34,14 @@ public enum CourseStatus {
 		return name;
 	}
 
-	public static CourseStatus getCourseStatus(int ID) throws CourseException {
+	public static CourseStatus getCourseStatus(int ID) {
 		for (CourseStatus t : CourseStatus.values()) {
 			if (t.getID() == ID) {
 				return t;
 			}
 		}
 
-		throw new CourseException("CourseStatus ID [" + ID + "] not found");
+		throw new IndexOutOfBoundsException("CourseStatus ID [" + ID + "] not found");
 	}
 
 	public String toString() {

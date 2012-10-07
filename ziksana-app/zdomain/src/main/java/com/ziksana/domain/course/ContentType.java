@@ -1,12 +1,14 @@
 package com.ziksana.domain.course;
 
-import com.ziksana.exception.course.CourseException;
 
 public enum ContentType {
 
 	// TODO: retrieve the ids from the static data service
-	VIDEO(1, "Video"), AUDIO(2, "Audio"), DOCUMENT(3, "Document"), MULTIMEDIA(4,
-			"Multimedia"), THESIS(5, "Thesis");
+	VIDEO(1, "Video"),
+	AUDIO(2, "Audio"),
+	DOCUMENT(3, "Document"),
+	MULTIMEDIA(4,"Multimedia"),
+	THESIS(5, "Thesis");
 	
 
 	private final int id;
@@ -26,14 +28,14 @@ public enum ContentType {
 		return name;
 	}
 
-	public static ContentType getContentType(int ID) throws CourseException {
+	public static ContentType getContentType(int ID) {
 		for (ContentType comntentType : ContentType.values()) {
 			if (comntentType.getID() == ID) {
 				return comntentType;
 			}
 		}
 
-		throw new CourseException("Content Type ID [" + ID + "] not found");
+		throw new IndexOutOfBoundsException("Content Type ID [" + ID + "] not found");
 	}
 
 	public String toString() {

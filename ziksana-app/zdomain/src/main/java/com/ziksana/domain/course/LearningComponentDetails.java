@@ -3,8 +3,6 @@ package com.ziksana.domain.course;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ziksana.exception.course.CourseException;
-
 /**
  * This object contains more information about Course
  * @author bhashasp
@@ -30,57 +28,6 @@ public class LearningComponentDetails extends LearningComponent{
 	//private List<TestPackage> 				testPackageList						= null;
 	private List<LearningComponentTagcloud> 	learningComponentTagcloudList		= null;
 */
-	/**
-	 * Add Learning Component Content as a course learning component.
-	 * @param learningComponent
-	 */
-	public LearningComponentContent getLearningComponentContent(int index) throws CourseException{
-		
-		if(learningCompContentList==null){
-			throw new CourseException("learningCompContents is set null");
-		}
-		try{
-			return learningCompContentList.get(index);
-		}catch(Exception e){
-			throw new CourseException("Learning Component  Content at index ["+index+"] at not found");
-		}
-	}
-
-	
-	/**
-	 * Adding LearningComponentContent to LearningComponent based on
-	 * LearningComponent.componenttype
-	 * @param learningComponent
-	 */
-	public void addLearningComponentContent(
-			LearningComponentContent learningComponentContent) {
-		if(learningCompContentList == null){
-			learningCompContentList = new ArrayList<LearningComponentContent>();
-		}
-			learningComponentContent.setLearningComponent(this);
-			
-			learningCompContentList.add(learningComponentContent);
-	}
-	/**
-	 * Remove the LearningComponentContent from the list.
-	 * 
-	 * @param learningComponentId
-	 */
-	public void removeLearningComponentContent(
-			Integer learningComponentContentId) throws CourseException{
-
-		if(learningCompContentList == null){
-			throw new CourseException("LearningComponentContent not set in Learning Component ID ["+getLearningComponentId()+"]");
-		}
-		
-		for (LearningComponentContent learningComponentContent : learningCompContentList) {
-
-			if (learningComponentContent.getLearningComponentContentId()
-					.equals(learningComponentContentId)) {
-				learningCompContentList.remove(learningComponentContent);
-			}
-		}
-	}
 
 	/**
 	 * @return the learningComponentNest
@@ -121,7 +68,62 @@ public class LearningComponentDetails extends LearningComponent{
 	 */
 	public void addCourseLearningComponent(
 			CourseLearningComponent courseLearningComponent) {
+		if(courseLearningComponent == null){
+			courseLearningComponent = new CourseLearningComponent();
+		}
+		
 		this.courseLearningComponent = courseLearningComponent;
+	}
+
+
+	/**
+	 * Add Learning Component Content as a course learning component.
+	 * @param learningComponent
+	 */
+	public LearningComponentContent getLearningComponentContent(int index) throws Exception{
+		
+		if(learningCompContentList==null){
+			throw new Exception("Learning Component Contents cannot set in the Learning Component ID ["+learningComponentId+"]");
+		}
+		try{
+			return learningCompContentList.get(index);
+		}catch(Exception e){
+			throw new Exception("Learning Component  Content at index ["+index+"] at not found");
+		}
+	}
+	
+	/**
+	 * Adding LearningComponentContent to LearningComponent based on
+	 * LearningComponent.componenttype
+	 * @param learningComponent
+	 */
+	public void addLearningComponentContent(
+			LearningComponentContent learningComponentContent) {
+		if(learningCompContentList == null){
+			learningCompContentList = new ArrayList<LearningComponentContent>();
+		}
+			learningComponentContent.setLearningComponent(this);
+			
+			learningCompContentList.add(learningComponentContent);
+	}
+	/**
+	 * Remove the LearningComponentContent from the list.
+	 * @param learningComponentId
+	 */
+	public void removeLearningComponentContent(
+			Integer learningComponentContentId) throws Exception{
+
+		if(learningCompContentList == null){
+			throw new Exception("LearningComponentContent not set in Learning Component ID ["+getLearningComponentId()+"]");
+		}
+		
+		for (LearningComponentContent learningComponentContent : learningCompContentList) {
+
+			if (learningComponentContent.getLearningComponentContentId()
+					.equals(learningComponentContentId)) {
+				learningCompContentList.remove(learningComponentContent);
+			}
+		}
 	}
 
 	/**
@@ -135,9 +137,17 @@ public class LearningComponentDetails extends LearningComponent{
 	 * @param learningCompContentList
 	 *            the learningCompContentList to set
 	 */
-	public void addLearningCompContentList(
-			List<LearningComponentContent> learningCompContentList) {
-		this.learningCompContentList = learningCompContentList;
+	public void setLearningCompContentList(
+			List<LearningComponentContent> compContentList) throws Exception{
+		if(compContentList == null){
+			throw new Exception("Cannot set Learning Component Contents as a null in Learning Component ID ["+learningComponentId+"]");
+		}
+
+		this.learningCompContentList = compContentList;
+		
+		for (LearningComponentContent learningComponentContent : compContentList) {
+			learningComponentContent.setLearningComponent(this);
+		}
 	}
 
 /*	*//**
@@ -259,14 +269,6 @@ public class LearningComponentDetails extends LearningComponent{
 	}
 
 */	/**
-	 * @param learningCompContentList the learningCompContentList to set
-	 */
-	public void setLearningCompContentList(
-			List<LearningComponentContent> learningCompContentList) {
-		this.learningCompContentList = learningCompContentList;
-	}
-
-	/**
 	 * @param learningComponentNest the learningComponentNest to set
 	 */
 	public void setLearningComponentNest(LearningComponentNest learningComponentNest) {

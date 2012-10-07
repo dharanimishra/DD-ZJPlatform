@@ -3,10 +3,10 @@ package com.ziksana.domain.course;
 import java.util.Date;
 import java.util.List;
 
+import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utilz.SubjectClassification;
-import com.ziksana.exception.course.CourseException;
 
 /**
  * @author bhashasp
@@ -26,7 +26,7 @@ public class Course extends AuditHistory{
 		this.accountableMember = accountableMember;
 	}
 
-	public Course(Integer courseId) {
+	public Course(ZID courseId) {
 		this.courseId = courseId;
 		setCourseStatus(CourseStatus.ADMINISTER_EVAL);
 	}
@@ -42,7 +42,7 @@ public class Course extends AuditHistory{
 		this.getCourseDetails().learningComponents =learningComponentList;
 	}
 
-	private Integer courseId;
+	private ZID courseId;
 	/**
 	 * Maximum Length:45
 	 */
@@ -65,7 +65,7 @@ public class Course extends AuditHistory{
 	 * Maximum Length:1
 	 */
 	private Boolean 				securityIndicator = null;
-	//private CourseContentSecurity	courseContSecll;urity = null;
+	//private CourseContentSecurity	courseContSecurity = null;
 	/**
 	 * Maximum Length:5
 	 */
@@ -83,6 +83,7 @@ public class Course extends AuditHistory{
 	private SubjectClassification 	subjClassification	 	= null;
 	private MemberPersona 			accountableMember 		= null;
 	private CourseDetails 			courseDetails 			= null;
+	private Integer					courseProgress			= null;
 	/**
 	 * Maximum Length:240
 	 */
@@ -108,11 +109,12 @@ public class Course extends AuditHistory{
 	}
 */	/**
 	 * @param name
-	 * @throws CourseException
+ * @throws Exception 
+	 * @throws NullPointerException
 	 */
-	public void setName(String name) throws CourseException {
+	public void setName(String name) throws Exception {
 		if (name == null) {
-			throw new CourseException("Null name passed");
+			throw new Exception("Null name passed");
 		}
 			this.name = name;
 	}
@@ -176,7 +178,7 @@ public class Course extends AuditHistory{
 	/**
 	 * @return the value of attribute courseId
 	 */
-	public Integer getCourseId() {
+	public ZID getCourseId() {
 		return courseId;
 	}
 
@@ -184,7 +186,7 @@ public class Course extends AuditHistory{
 	 * @param courseId
 	 *            the value for attribute courseId
 	 */
-	public void setCourseId(Integer courseId) {
+	public void setCourseId(ZID courseId) {
 		this.courseId = courseId;
 	}
 
@@ -203,6 +205,20 @@ public class Course extends AuditHistory{
 		this.courseDetails = courseDetails;
 	}
 
+
+	/**
+	 * @return the courseProgress
+	 */
+	public Integer getCourseProgress() {
+		return courseProgress;
+	}
+
+	/**
+	 * @param courseProgress the courseProgress to set
+	 */
+	public void setCourseProgress(Integer courseProgress) {
+		this.courseProgress = courseProgress;
+	}
 
 	public String getExtraCredits() {
 		return extraCredits;

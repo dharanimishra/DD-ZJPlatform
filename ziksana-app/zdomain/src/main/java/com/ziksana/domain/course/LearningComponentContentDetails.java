@@ -3,6 +3,7 @@
  */
 package com.ziksana.domain.course;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,8 +39,10 @@ public class LearningComponentContentDetails extends LearningComponentContent{
 	/**
 	 * @param learningContent the learningContent to set
 	 */
-	public void addLearningContent(LearningContent learningContent) {
-		
+	public void addLearningContent(LearningContent learningContent) throws Exception{
+		if(learningContent == null){
+			throw new Exception("Cannot set Learning Content as null in Component Content");
+		}
 		this.learningContent = learningContent;
 	}
 
@@ -51,12 +54,35 @@ public class LearningComponentContentDetails extends LearningComponentContent{
 	}
 
 	/**
-	 * @param enrichmentList the enrichmentList to set
+	 * @param enrhmichmentList the enrichmentList to set
 	 */
-	public void setEnrichmentList(List<LearningComponentContentEnrichment> enrichmentList) {
-		this.enrichmentList = enrichmentList;
+	public void setEnrichments(List<LearningComponentContentEnrichment> enrichist)  throws Exception{
+		
+		if(enrichist == null){
+			throw new Exception("Cannot set enrichments as null in Component Content ID");
+		}
+		
+		this.enrichmentList = enrichist;
+		
+		for (LearningComponentContentEnrichment learningComponentContentEnrichment : enrichist) {
+			learningComponentContentEnrichment.setLearningComponentContent(this);
+		}
 	}
 
+	
+	
+	/**add enrichment to list 
+	 * @param enrichment
+	 */
+	public void addEnrichment(LearningComponentContentEnrichment enrichment){
+		
+		if(enrichmentList == null){
+			enrichmentList = new ArrayList<LearningComponentContentEnrichment>();
+		}
+		
+		enrichment.setLearningComponentContent(this);
+		enrichmentList.add(enrichment);
+	}
 	/**
 	 * @return the learningCompContentHotspotList
 	 */

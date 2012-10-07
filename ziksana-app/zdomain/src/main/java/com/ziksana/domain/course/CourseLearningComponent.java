@@ -2,11 +2,12 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
 public class CourseLearningComponent extends AuditHistory{
 	
-	private Integer 				courseLearningComponentId;
+	private ZID		 				courseLearningComponentId;
 	private Date 					creationDate 						= null;
 	private Date					usageStartDate						= null;
 	private Date					usageEndDate						= null;
@@ -25,7 +26,7 @@ public class CourseLearningComponent extends AuditHistory{
 	/**
 	 * @return the value of property courseLearningComponentId
 	 */
-	public Integer getCourseLearningComponentId() {
+	public ZID getCourseLearningComponentId() {
 		return courseLearningComponentId;
 	}
 
@@ -33,7 +34,7 @@ public class CourseLearningComponent extends AuditHistory{
 	 * @param courseLearningComponentId
 	 *            the value for property courseLearningComponentId
 	 */
-	public void setCourseLearningComponentId(Integer courseLearningComponentId) {
+	public void setCourseLearningComponentId(ZID courseLearningComponentId) {
 		this.courseLearningComponentId = courseLearningComponentId;
 	}
 

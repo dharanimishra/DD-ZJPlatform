@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
 public class LearningComponentNest extends AuditHistory{
@@ -12,7 +13,7 @@ public class LearningComponentNest extends AuditHistory{
 		this.learningComponentNest = learningComponentNest;
 	}
 
-	private Integer 			componentNestId;
+	private ZID		 			componentNestId;
 	private Date 				creationDate 			= null;
 	private Integer 			nestLevel 				= null;
 	private LearningComponent 	learningComponentParent	= null;
@@ -21,7 +22,7 @@ public class LearningComponentNest extends AuditHistory{
 	/**
 	 * @return the value of property componentNestId
 	 */
-	public Integer getComponentNestId() {
+	public ZID getComponentNestId() {
 		return componentNestId;
 	}
 
@@ -29,7 +30,7 @@ public class LearningComponentNest extends AuditHistory{
 	 * @param componentNestId
 	 *            the value for property componentNestId
 	 */
-	public void setComponentNestId(Integer componentNestId) {
+	public void setComponentNestId(ZID componentNestId) {
 		this.componentNestId = componentNestId;
 	}
 

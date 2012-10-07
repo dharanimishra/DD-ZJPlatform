@@ -1,11 +1,11 @@
 package com.ziksana.domain.course;
 
-import com.ziksana.exception.course.CourseException;
 
 public enum ContentStatus {
 
 	// TODO: retrieve the ids from the static data service
-	ARCHIVED(1, "Archived"), OTHER(2, "Other");
+	ARCHIVED(1, "Archived"),
+	OTHER(2, "Other");
 	
 
 	private final int id;
@@ -25,14 +25,14 @@ public enum ContentStatus {
 		return name;
 	}
 
-	public static ContentStatus getContentStatus(int ID) throws CourseException {
+	public static ContentStatus getContentStatus(int ID) {
 		for (ContentStatus contentStatus : ContentStatus.values()) {
 			if (contentStatus.getID() == ID) {
 				return contentStatus;
 			}
 		}
 
-		throw new CourseException("Content Status ID [" + ID + "] not found");
+		throw new IndexOutOfBoundsException("Content Status ID [" + ID + "] not found");
 	}
 
 	public String toString() {

@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 
@@ -11,7 +12,15 @@ import com.ziksana.domain.member.MemberPersona;
 public class CourseAdditionalProperty extends AuditHistory{
 
 
-	private Integer courseAddnlPropertyId;
+	public CourseAdditionalProperty(Integer propertyUsageType,
+			String propertyName, Integer propertyDataType, String propertyValue) {
+		this.propertyUsageType = propertyUsageType;
+		this.propertyName = propertyName;
+		this.propertyDataType = propertyDataType;
+		this.propertyValue = propertyValue;
+	}
+
+	private ZID courseAddnlPropertyId;
 	private Date 			creationDate 			= null;
 	private Integer 		propertyUsageType 		= null;
 	private String 			propertyName 			= null;
@@ -25,7 +34,7 @@ public class CourseAdditionalProperty extends AuditHistory{
 	/**
 	 * @return the value of corcourseadditionalproperty.CourseAddnlPropertyId
 	 */
-	public Integer getCourseAddnlPropertyId() {
+	public ZID getCourseAddnlPropertyId() {
 		return courseAddnlPropertyId;
 	}
 
@@ -33,7 +42,7 @@ public class CourseAdditionalProperty extends AuditHistory{
 	 * @param CourseAddnlPropertyId
 	 *            the value for corcourseadditionalproperty.CourseAddnlPropertyId
 	 */
-	public void setCourseAddnlPropertyId(Integer courseAddnlPropertyId) {
+	public void setCourseAddnlPropertyId(ZID courseAddnlPropertyId) {
 		this.courseAddnlPropertyId = courseAddnlPropertyId;
 	}
 

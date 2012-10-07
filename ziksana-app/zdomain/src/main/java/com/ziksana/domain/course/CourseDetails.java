@@ -3,7 +3,7 @@ package com.ziksana.domain.course;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ziksana.exception.course.CourseException;
+
 
 /**
  * This contains the association/compositions and course tree construction behavious
@@ -20,6 +20,7 @@ public class CourseDetails extends Course {
 	private LearningComponentNest 					learningComponentNest 				= null;
 	private LearningContent 						learningContent 					= null;
 
+	// TODO: below associations/compositions will uncomment later.
 	//private CoursePlaybook 							coursePlaybook 						= null;
 	//private List<LearningElementWall> 				learningElementWalls 				= null;
 	//private List<CourseTagcloud> 					courseTagClouds 					= null;
@@ -28,7 +29,6 @@ public class CourseDetails extends Course {
 	//private List<LearningContentReviewProgress> 	learningContentReviewProgressList 	= null;
 	//private List<AssignmentTest> 					assignmentTests 					= null;
 	//private List<Announcement> 						announcements 						= null;
-	// TODO: below associations/compositions will uncomment later.
 	// private CourseContentSecurity 				courseContentSecurity 				= null;
 	// private CourseLearningPlanner 				courseLearningPlanner 				= null;
 	// private List<Engagement> 					engagements 						= null;
@@ -38,7 +38,7 @@ public class CourseDetails extends Course {
 	 * @param learningComponent
 	 */
 	public void addLearningComponent(LearningComponentType learningCompType, LearningComponent learningComponent)
-			throws CourseException {
+			 {
 
 		if (learningComponents == null) {
 			learningComponents = new ArrayList<LearningComponent>();
@@ -70,12 +70,12 @@ public class CourseDetails extends Course {
 	public void addChildNodeToLearningComponent(int parentLearningCompIndex,int childLearningCompIndex, 
 			LearningComponentType learningCompType, int learningCompContentIndex,
 			LearningComponentContent learningCompContent)
-			throws CourseException {
+			throws Exception {
 		LearningComponent childLearningComponent = null;
 
 		try {
 			if (learningComponents == null) {
-				throw new CourseException("Cannot set to Null");
+				throw new Exception("Cannot set to Null");
 			}
 			
 			// Adding a Learning component as a child to another
@@ -84,9 +84,9 @@ public class CourseDetails extends Course {
 
 				childLearningComponent = new LearningComponent(learningCompType);
 
-				childLearningComponent
+	/*			childLearningComponent
 						.setLearningComponentId(childLearningCompIndex);
-
+*/
 				learningComponentNest = new LearningComponentNest(
 						learningComponent, childLearningComponent);
 
@@ -112,7 +112,8 @@ public class CourseDetails extends Course {
 				learningContent = new LearningContent();
 				
 				List<LearningContentParts> learningContentParts = null;
-				learningContent.addLearningContentParts(learningContentParts);
+				
+				learningContent.setLearningContentParts(learningContentParts);
 				
 				learningCompContent = new LearningComponentContent(childLearningComponent, learningContent);
 				
@@ -126,7 +127,7 @@ public class CourseDetails extends Course {
 			}
 
 		} catch (Exception e) {
-			throw new CourseException("Error adding a chlild to learning component ID [ "+parentLearningCompIndex+" ]");
+			throw new Exception("Error adding a chlild to learning component ID [ "+parentLearningCompIndex+" ]");
 		}
 
 	}
@@ -135,10 +136,10 @@ public class CourseDetails extends Course {
 	 * @param learningComponentId
 	 */
 	public void removeLearningComponent(Integer learningComponentId)
-			throws CourseException {
+			throws Exception {
 
 		if (learningComponents == null) {
-			throw new CourseException(
+			throw new Exception(
 					"LearningComponents not set in Course ID [" + getCourseId()
 							+ "]");
 		}
@@ -156,15 +157,15 @@ public class CourseDetails extends Course {
 	 * @param learningComponent
 	 */
 	public LearningComponent getLearningComponent(int index)
-			throws CourseException {
+			throws Exception {
 
 		if (learningComponents == null) {
-			throw new CourseException("LearningComponent is set as a null");
+			throw new Exception("LearningComponent is set as a null");
 		}
 		try {
 			return learningComponents.get(index);
 		} catch (Exception e) {
-			throw new CourseException("Learning Component at index [" + index
+			throw new Exception("Learning Component at index [" + index
 					+ "] at not found");
 		}
 	}
@@ -173,7 +174,7 @@ public class CourseDetails extends Course {
 	 * @param learningComponent
 	 */
 	public LearningComponent getLearningComponent()
-			throws CourseException {
+			throws Exception {
 
 			return learningComponent;
 	}
@@ -190,10 +191,10 @@ public class CourseDetails extends Course {
 	 *            the learningComponents to set
 	 */
 	public void setLearningComponents(List<LearningComponent> learningComponents)
-			throws CourseException {
+			throws Exception {
 
 		if (learningComponents == null) {
-			throw new CourseException(
+			throw new Exception(
 					"Cannot set LearningComponents, Course is null");
 		}
 		this.learningComponents = learningComponents;

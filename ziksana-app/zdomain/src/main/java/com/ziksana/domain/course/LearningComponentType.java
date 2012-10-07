@@ -2,15 +2,16 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.common.id.ZID;
 import com.ziksana.domain.member.MemberPersona;
 
 public class LearningComponentType {
 
 	public LearningComponentType(ComponentType componentType){
 		this.componentType = componentType;
-		
 	}
-	private Integer 		learningCompTypeId;
+	
+	private ZID		 		learningCompTypeId;
 	private Date 			creationDate 		= null;
 	private ComponentType 	componentType 		= null;
 	private Boolean 		active		 		= null;
@@ -49,7 +50,7 @@ public class LearningComponentType {
 	/**
 	 * @return the learningCompTypeId
 	 */
-	public Integer getLearningCompTypeId() {
+	public ZID getLearningCompTypeId() {
 		return learningCompTypeId;
 	}
 
@@ -57,7 +58,7 @@ public class LearningComponentType {
 	 * @param learningCompTypeId
 	 *            the learningCompTypeId to set
 	 */
-	public void setLearningCompTypeId(Integer learningCompTypeId) {
+	public void setLearningCompTypeId(ZID learningCompTypeId) {
 		this.learningCompTypeId = learningCompTypeId;
 	}
 

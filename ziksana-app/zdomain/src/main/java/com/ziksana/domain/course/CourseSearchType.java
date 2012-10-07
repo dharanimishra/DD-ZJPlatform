@@ -1,6 +1,5 @@
 package com.ziksana.domain.course;
 
-import com.ziksana.exception.course.CourseException;
 
 /**This enum is for searching the course components (either Learning Object/Component Content).
  * @author bhashasp
@@ -9,7 +8,9 @@ public enum CourseSearchType {
 
 
 	// TODO: retrieve the ids from the static data service
-	LEARNINGCOMPONENT(1, "Learning Component"), COMPONENTCONTENT(2, "Component Content"), OTHER(3, "Other");
+	LEARNINGCOMPONENT(1, "Learning Component"),
+	COMPONENTCONTENT(2, "Component Content"),
+	OTHER(3, "Other");
 	
 
 	private final int id;
@@ -29,14 +30,14 @@ public enum CourseSearchType {
 		return name;
 	}
 
-	public static CourseSearchType getCourseSearchType(int ID) throws CourseException {
+	public static CourseSearchType getCourseSearchType(int ID) {
 		for (CourseSearchType courseSearchType : CourseSearchType.values()) {
 			if (courseSearchType.getID() == ID) {
 				return courseSearchType;
 			}
 		}
 
-		throw new CourseException("CourseSearch Type ID [" + ID + "] not found");
+		throw new IndexOutOfBoundsException("CourseSearch Type ID [" + ID + "] not found");
 	}
 
 	public String toString() {

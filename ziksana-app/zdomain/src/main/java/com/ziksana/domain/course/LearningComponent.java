@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utilz.SubjectClassification;
@@ -37,7 +38,7 @@ public class LearningComponent extends AuditHistory {
 		this.learningComponentType = learningComponentType;
 	}
 
-	private Integer 		learningComponentId;
+	protected ZID	 		learningComponentId;
 	private String 			name					= null;
 	/**
 	 * Maximum Length:240
@@ -69,14 +70,14 @@ public class LearningComponent extends AuditHistory {
 		/**
 	 * @return the learningComponentId
 	 */
-	public Integer getLearningComponentId() {
+	public ZID	 getLearningComponentId() {
 		return learningComponentId;
 	}
 
 	/**
 	 * @param learningComponentId the learningComponentId to set
 	 */
-	public void setLearningComponentId(Integer learningComponentId) {
+	public void setLearningComponentId(ZID learningComponentId) {
 		this.learningComponentId = learningComponentId;
 	}
 

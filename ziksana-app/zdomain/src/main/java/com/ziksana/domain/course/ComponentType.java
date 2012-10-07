@@ -1,14 +1,20 @@
 package com.ziksana.domain.course;
 
-import com.ziksana.exception.course.CourseException;
 
 
 public enum ComponentType {
 
 	// TODO: retrieve the ids from the static data service
-	MODULE(1, "Module"), SUBJECT(2, "Subject"), SUBJECT_AREA(3, "Subject Area"), SECTION(4,
-			"Section"), SUB_SECTION(5, "Sub Section"), TOPIC(6, "Topic"), CHAPTER(
-			7, "Chapter"),POLICY(5, "Policy"), PREREQUISTE(6, "Pre Requiste"),COREQUISTE(5, "Co Requiste");
+	MODULE        (1,  "Module"), 
+	SUBJECT       (2,  "Subject"), 
+	SUBJECT_AREA  (3,  "Subject Area"), 
+	SECTION       (4,  "Section"), 
+	SUB_SECTION   (5,  "Sub Section"), 
+	TOPIC         (6,  "Topic"), 
+	CHAPTER       (7,  "Chapter"),
+	POLICY        (8,  "Policy"), 
+	PREREQUISTE   (9,  "Pre Requiste"),
+	COREQUISTE    (10, "Co Requiste");
 	
 
 	private final int id;
@@ -28,14 +34,14 @@ public enum ComponentType {
 		return name;
 	}
 
-	public static ComponentType getComponentType(int ID) throws CourseException {
+	public static ComponentType getComponentType(int ID){
 		for (ComponentType compType : ComponentType.values()) {
 			if (compType.getID() == ID) {
 				return compType;
 			}
 		}
 
-		throw new CourseException("ComponentType ID [" + ID + "] not found");
+		throw new IndexOutOfBoundsException("ComponentType ID [" + ID + "] not found");
 	}
 
 	public String toString() {

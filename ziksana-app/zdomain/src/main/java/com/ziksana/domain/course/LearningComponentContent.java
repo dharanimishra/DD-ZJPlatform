@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
 public class LearningComponentContent extends AuditHistory{
@@ -16,15 +17,14 @@ public class LearningComponentContent extends AuditHistory{
 			ContentType contentType, LearningComponent learningComponent,
 			LearningComponentContent synchronizeWithVideo,
 			LearningContent baseLearningContent) {
-		super();
 		this.courseStatus = courseStatus;
 		this.contentType = contentType;
 		this.learningComponent = learningComponent;
-		SynchronizeWithVideo = synchronizeWithVideo;
+		this.synchronizeWithVideo = synchronizeWithVideo;
 		this.baseLearningContent = baseLearningContent;
 	}
 
-	private Integer 						learningComponentContentId;
+	private ZID		 						learningComponentContentId;
 	private Date 							creationDate 						= null;
 	private CourseStatus 					courseStatus 						= null;
 	private ContentType 					contentType 						= null;
@@ -32,14 +32,14 @@ public class LearningComponentContent extends AuditHistory{
 	private Boolean 						active 								= null;
 	private Integer 						contentVersionUsed 					= null;
 	private LearningComponent 				learningComponent 					= null;
-	private LearningComponentContent 		SynchronizeWithVideo 				= null;
+	private LearningComponentContent 		synchronizeWithVideo 				= null;
 	private LearningContent 				baseLearningContent 				= null;
 	private LearningComponentContentDetails learningComponentContentDetails 	= null;
 
 	/**
 	 * @return the value of property learningComponentContentId
 	 */
-	public Integer getLearningComponentContentId() {
+	public ZID getLearningComponentContentId() {
 		return learningComponentContentId;
 	}
 
@@ -47,7 +47,7 @@ public class LearningComponentContent extends AuditHistory{
 	 * @param learningComponentContentId
 	 *            the value for property learningComponentContentId
 	 */
-	public void setLearningComponentContentId(Integer learningComponentContentId) {
+	public void setLearningComponentContentId(ZID learningComponentContentId) {
 		this.learningComponentContentId = learningComponentContentId;
 	}
 
@@ -173,14 +173,14 @@ public class LearningComponentContent extends AuditHistory{
 	 * @return the synchronizeWithVideo
 	 */
 	public LearningComponentContent getSynchronizeWithVideo() {
-		return SynchronizeWithVideo;
+		return synchronizeWithVideo;
 	}
 
 	/**
 	 * @param synchronizeWithVideo the synchronizeWithVideo to set
 	 */
 	public void setSynchronizeWithVideo(LearningComponentContent synchronizeWithVideo) {
-		SynchronizeWithVideo = synchronizeWithVideo;
+		this.synchronizeWithVideo = synchronizeWithVideo;
 	}
 
 	/**
@@ -195,6 +195,17 @@ public class LearningComponentContent extends AuditHistory{
 	 */
 	public void setBaseLearningContent(LearningContent baseLearningContent) {
 		this.baseLearningContent = baseLearningContent;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "LearningComponentContent [courseStatus=" + courseStatus
+				+ ", contentType=" + contentType + ", learningComponent="
+				+ learningComponent + ", baseLearningContent="
+				+ baseLearningContent + "]";
 	}
 
 }
