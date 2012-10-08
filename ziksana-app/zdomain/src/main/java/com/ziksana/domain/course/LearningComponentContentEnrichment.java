@@ -2,7 +2,7 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-import com.ziksana.common.id.ZID;
+import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
 public class LearningComponentContentEnrichment extends AuditHistory {

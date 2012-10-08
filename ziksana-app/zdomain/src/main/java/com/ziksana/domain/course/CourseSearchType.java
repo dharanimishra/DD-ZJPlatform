@@ -9,8 +9,8 @@ public enum CourseSearchType {
 
 	// TODO: retrieve the ids from the static data service
 	LEARNINGCOMPONENT(1, "Learning Component"),
-	COMPONENTCONTENT(2, "Component Content"),
-	OTHER(3, "Other");
+	COMPONENTCONTENT (2, "Component Content"),
+	OTHER            (3, "Other");
 	
 
 	private final int id;

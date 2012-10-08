@@ -10,13 +10,13 @@ package com.ziksana.domain.course;
 public enum CourseStatus {
 
 	// TODO: retrieve the ids from the static data service
-	DRAFT(1, "Draft"),
-	REVIEW(2, "Review"),
-	PUBLISH(3, "Publish"),
-	RELEASED(4,"Released"),
-	SUBSCRIBED(5, "Subscribed"),
-	SOCIALIZE(6, "Socialized"),
-	ADMINISTER_EVAL(7, "Administer Evaluation");
+	DRAFT           (1, "Draft"),
+	REVIEW          (2, "Review"),
+	PUBLISH         (3, "Publish"),
+	RELEASED        (4,"Released"),
+	SUBSCRIBED      (5, "Subscribed"),
+	SOCIALIZE       (6, "Socialized"),
+	ADMINISTER_EVAL (7, "Administer Evaluation");
 
 	private final int id;
 	private final String name;

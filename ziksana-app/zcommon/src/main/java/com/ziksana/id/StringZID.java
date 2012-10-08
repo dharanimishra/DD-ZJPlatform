@@ -1,4 +1,4 @@
-package com.ziksana.common.id;
+package com.ziksana.id;
 
 public class StringZID implements ZID {
 	

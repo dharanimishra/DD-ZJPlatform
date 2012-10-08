@@ -5,7 +5,7 @@ public enum LinkSource {
 
 	//TODO: retrieve the ids from the static data service
 	LINK_SOURCE1(1, "Link Source1"),
-	LINK_SOURCE2(1, "Link Source2");
+	LINK_SOURCE2(2, "Link Source2");
 
 	private final int id;
 	private final String name;

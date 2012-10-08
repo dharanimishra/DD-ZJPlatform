@@ -3,7 +3,7 @@ package com.ziksana.domain.course;
 import java.util.Date;
 import java.util.List;
 
-import com.ziksana.common.id.ZID;
+import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utilz.SubjectClassification;

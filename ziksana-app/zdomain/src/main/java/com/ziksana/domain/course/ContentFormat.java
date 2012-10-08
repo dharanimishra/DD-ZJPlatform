@@ -4,8 +4,16 @@ package com.ziksana.domain.course;
 public enum ContentFormat {
 
 	// TODO: retrieve the ids from the static data service
-	FORMAT1(1, "Format1"),
-	FORMAT2(2, "Format2");
+	FORMAT1     (1, "Format1"),
+	FORMAT2     (2, "Format2"),
+	MSWORD97    (3, "MSWORD97"),
+	MSWORD2010  (4, "MSWORD2010"),
+	MSPPT2003   (5, "MSPPT2003"),
+	MSPPT2007   (6, "MSPPT2007"),
+	MSPPT2010   (7, "MSPPT2010"),
+	MP4H264MP3  (8, "MP4H264MP3"),
+	JPG         (9, "JPG"),
+	PNG         (10, "PNG");
 	
 
 	private final int id;

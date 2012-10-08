@@ -4,10 +4,10 @@ import java.util.Date;
 
 import javax.net.ssl.SSLEngineResult.Status;
 
-import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.Member;
 import com.ziksana.domain.utilz.SubjectClassification;
+import com.ziksana.id.ZID;
 
 public class QuestionBank extends AuditHistory{
 

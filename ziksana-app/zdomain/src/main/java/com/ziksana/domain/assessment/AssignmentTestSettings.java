@@ -2,8 +2,8 @@ package com.ziksana.domain.assessment;
 
 import java.util.Date;
 
-import com.ziksana.common.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.ZID;
 
 public class AssignmentTestSettings extends AuditHistory{
 	
