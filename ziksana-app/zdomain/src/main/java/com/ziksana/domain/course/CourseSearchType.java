@@ -1,5 +1,7 @@
 package com.ziksana.domain.course;
 
+import java.util.NoSuchElementException;
+
 
 /**This enum is for searching the course components (either Learning Object/Component Content).
  * @author bhashasp
@@ -37,7 +39,7 @@ public enum CourseSearchType {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("CourseSearch Type ID [" + ID + "] not found");
+		throw new NoSuchElementException("CourseSearch Type ID [" + ID + "] not found");
 	}
 
 	public String toString() {

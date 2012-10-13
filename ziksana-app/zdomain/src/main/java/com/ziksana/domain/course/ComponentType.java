@@ -1,5 +1,7 @@
 package com.ziksana.domain.course;
 
+import java.util.NoSuchElementException;
+
 
 
 public enum ComponentType {
@@ -41,7 +43,7 @@ public enum ComponentType {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("ComponentType ID [" + ID + "] not found");
+		throw new NoSuchElementException("ComponentType ID [" + ID + "] not found");
 	}
 
 	public String toString() {

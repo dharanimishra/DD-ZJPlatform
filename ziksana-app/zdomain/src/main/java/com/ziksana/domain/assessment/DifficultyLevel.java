@@ -1,12 +1,13 @@
 package com.ziksana.domain.assessment;
 
+import java.util.NoSuchElementException;
+
 
 public enum DifficultyLevel {
 
 	// TODO: retrieve the ids from the static data service
-	Beginner	(1, "Beginner"),
-	Advanced	(2, "Advanced"),
-	Expert		(3, "Expert");
+	BEGINNER	(1, "Beginner"),
+	INTERRMEDIATE	(1, "Beginner");
 
 	private final int id;
 	
@@ -32,7 +33,7 @@ public enum DifficultyLevel {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("DifficultyLevel ID [" + ID + "] not found");
+		throw new NoSuchElementException("DifficultyLevel ID [" + ID + "] not found");
 	}
 
 	public String toString() {

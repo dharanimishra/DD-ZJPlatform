@@ -1,11 +1,16 @@
 package com.ziksana.domain.assessment;
 
+import java.util.NoSuchElementException;
+
 public enum ProficiencyLevel {
 
 	// TODO: retrieve the ids from the static data service
-	Expert		(1, "Expert"),
-	Research	(2, "Research");
-
+	BEGINNER			(1, "Beginner"),
+	INTERMEDIATE		(2, "Intermediate"),
+	SENIOR				(3, "Senior"),
+	ADVANCED			(4, "Advanced"),
+	RECOGNIZED_EXPERT	(5, "Recpgnized Expert"),
+	RESEARCH			(6, "Research");
 	
 	private final int id;
 	
@@ -31,7 +36,7 @@ public enum ProficiencyLevel {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("ProficiencyLevel ID [" + ID + "] not found");
+		throw new NoSuchElementException("ProficiencyLevel ID [" + ID + "] not found");
 	}
 
 	public String toString() {

@@ -1,24 +1,18 @@
 package com.ziksana.persistence.assessment.personality;
 
-import com.ziksana.domain.assessment.personality.PersonalityModel;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface PersonalityModelMapper {
+public interface PersonalityModelMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmodel
-	 */
+	 *//*
 	@Delete({ "delete from pstmodel",
 			"where ModelId = #{modelId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer modelId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmodel
-	 */
+	 *//*
 	@Insert({
 			"insert into pstmodel (ModelId, Name, ",
 			"Description, Author, ",
@@ -30,14 +24,14 @@ public interface PersonalityModelMapper {
 			"#{source,jdbcType=INTEGER}, #{currency,jdbcType=INTEGER})" })
 	int insert(PersonalityModel record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmodel
-	 */
+	 *//*
 	int insertSelective(PersonalityModel record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmodel
-	 */
+	 *//*
 	@Select({
 			"select",
 			"ModelId, Name, Description, Author, Version, Active, CostPerUnit, Source, Currency",
@@ -45,14 +39,14 @@ public interface PersonalityModelMapper {
 	@ResultMap("BaseResultMap")
 	PersonalityModel selectByPrimaryKey(Integer modelId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmodel
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(PersonalityModel record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmodel
-	 */
+	 *//*
 	@Update({ "update pstmodel", "set Name = #{name,jdbcType=VARCHAR},",
 			"Description = #{description,jdbcType=VARCHAR},",
 			"Author = #{author,jdbcType=VARCHAR},",
@@ -63,4 +57,4 @@ public interface PersonalityModelMapper {
 			"Currency = #{currency,jdbcType=INTEGER}",
 			"where ModelId = #{modelId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(PersonalityModel record);
-}
+*/}

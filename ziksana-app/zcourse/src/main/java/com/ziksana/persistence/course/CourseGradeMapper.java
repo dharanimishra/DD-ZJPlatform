@@ -1,24 +1,16 @@
 package com.ziksana.persistence.course;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
-import org.apache.ibatis.annotations.Update;
 
-import com.ziksana.domain.course.subscription.CourseGrade;
-
-public interface CourseGradeMapper {
-	/**
+public interface CourseGradeMapper {/*
+	*//**
 	 * This method corresponds to the database table sbncoursegrade
-	 */
+	 *//*
 	@Delete({ "delete from sbncoursegrade", "where ID = #{ID,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer ID);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncoursegrade
-	 */
+	 *//*
 	@Insert({
 			"insert into sbncoursegrade (ID, CreationDate, ",
 			"GradeStatus, OverallGrade, ",
@@ -35,14 +27,14 @@ public interface CourseGradeMapper {
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "ID", before = true, resultType = Integer.class)
 	int insert(CourseGrade record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncoursegrade
-	 */
+	 *//*
 	int insertSelective(CourseGrade record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncoursegrade
-	 */
+	 *//*
 	@Select({
 			"select",
 			"ID, CreationDate, GradeStatus, OverallGrade, AttendancebasedGrade, ParticipationbasedGrade, ",
@@ -52,14 +44,14 @@ public interface CourseGradeMapper {
 	@ResultMap("BaseResultMap")
 	CourseGrade selectByPrimaryKey(Integer ID);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncoursegrade
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(CourseGrade record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncoursegrade
-	 */
+	 *//*
 	@Update({
 			"update sbncoursegrade",
 			"set CreationDate = #{creationDate,jdbcType=TIMESTAMP},",
@@ -75,4 +67,4 @@ public interface CourseGradeMapper {
 			"SubscriptionCourseId = #{subscriptionCourseId,jdbcType=INTEGER}",
 			"where ID = #{ID,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(CourseGrade record);
-}
+*/}

@@ -15,17 +15,9 @@ public class AssignmentTestLink extends AuditHistory {
 		
 	}
 	
-	public AssignmentTestLink(String linkReason, String description,
-			AssignmentTest sourceAssignmentTest,
-			AssignmentTest linkedAssignmentTest) {
-		this.linkReason = linkReason;
-		this.description = description;
-		this.sourceAssignmentTest = sourceAssignmentTest;
-		this.linkedAssignmentTest = linkedAssignmentTest;
-	}
 
 	private ZID 			testLinkId;
-	private String 			linkReason 			= null;
+	private LinkReason 		linkReason 			= null;
 	private String 			description 		= null;
 	private AssignmentTest 	sourceAssignmentTest = null;
 	private AssignmentTest 	linkedAssignmentTest = null;
@@ -46,13 +38,13 @@ public class AssignmentTestLink extends AuditHistory {
 	/**
 	 * @return the linkReason
 	 */
-	public String getLinkReason() {
+	public LinkReason getLinkReason() {
 		return linkReason;
 	}
 	/**
 	 * @param linkReason the linkReason to set
 	 */
-	public void setLinkReason(String linkReason) {
+	public void setLinkReason(LinkReason linkReason) {
 		this.linkReason = linkReason;
 	}
 	/**

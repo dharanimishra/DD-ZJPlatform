@@ -12,24 +12,24 @@ import com.ziksana.domain.member.MemberPersona;
 public class CourseAdditionalProperty extends AuditHistory{
 
 
-	public CourseAdditionalProperty(Integer propertyUsageType,
-			String propertyName, Integer propertyDataType, String propertyValue) {
-		this.propertyUsageType = propertyUsageType;
+	public CourseAdditionalProperty(PropertyUsageType propertyUsageType,
+			String propertyName, PropertyDataType propertyDataType, String propertyValue) {
+		this.setPropertyUsageType(propertyUsageType);
 		this.propertyName = propertyName;
-		this.propertyDataType = propertyDataType;
+		this.setPropertyDataType(propertyDataType);
 		this.propertyValue = propertyValue;
 	}
 
 	private ZID courseAddnlPropertyId;
-	private Date 			creationDate 			= null;
-	private Integer 		propertyUsageType 		= null;
-	private String 			propertyName 			= null;
-	private Integer 		propertyDataType 		= null;
-	private String 			propertyValue 			= null;
-	private Integer 		sequence 				= null;
-	private Boolean 		active 					= null;
-	private Course 			course 					= null;
-	private MemberPersona 	creatorMemberPersona 	= null;
+	private Date 				creationDate 			= null;
+	private PropertyUsageType 	propertyUsageType 		= null;
+	private String 				propertyName 			= null;
+	private PropertyDataType 	propertyDataType 		= null;
+	private String 				propertyValue 			= null;
+	private Sequence 			sequence 				= null;
+	private Boolean 			active 					= null;
+	private Course 				course 					= null;
+	private MemberPersona 		creatorMemberPersona 	= null;
 
 	/**
 	 * @return the value of corcourseadditionalproperty.CourseAddnlPropertyId
@@ -61,18 +61,11 @@ public class CourseAdditionalProperty extends AuditHistory{
 		this.creationDate = creationDate;
 	}
 
-	/**
-	 * @return the value of corcourseadditionalproperty.PropertyUsageType
-	 */
-	public Integer getPropertyUsageType() {
+	public PropertyUsageType getPropertyUsageType() {
 		return propertyUsageType;
 	}
 
-	/**
-	 * @param propertyUsageType
-	 *            the value for corcourseadditionalproperty.PropertyUsageType
-	 */
-	public void setPropertyUsageType(Integer propertyUsageType) {
+	public void setPropertyUsageType(PropertyUsageType propertyUsageType) {
 		this.propertyUsageType = propertyUsageType;
 	}
 
@@ -91,18 +84,11 @@ public class CourseAdditionalProperty extends AuditHistory{
 		this.propertyName = propertyName == null ? null : propertyName.trim();
 	}
 
-	/**
-	 * @return the value of corcourseadditionalproperty.PropertyDataType
-	 */
-	public Integer getPropertyDataType() {
+	public PropertyDataType getPropertyDataType() {
 		return propertyDataType;
 	}
 
-	/**
-	 * @param propertyDataType
-	 *            the value for corcourseadditionalproperty.PropertyDataType
-	 */
-	public void setPropertyDataType(Integer propertyDataType) {
+	public void setPropertyDataType(PropertyDataType propertyDataType) {
 		this.propertyDataType = propertyDataType;
 	}
 
@@ -122,18 +108,11 @@ public class CourseAdditionalProperty extends AuditHistory{
 				.trim();
 	}
 
-	/**
-	 * @return the value of corcourseadditionalproperty.Sequence
-	 */
-	public Integer getSequence() {
+	public Sequence getSequence() {
 		return sequence;
 	}
 
-	/**
-	 * @param sequence
-	 *            the value for corcourseadditionalproperty.Sequence
-	 */
-	public void setSequence(Integer sequence) {
+	public void setSequence(Sequence sequence) {
 		this.sequence = sequence;
 	}
 

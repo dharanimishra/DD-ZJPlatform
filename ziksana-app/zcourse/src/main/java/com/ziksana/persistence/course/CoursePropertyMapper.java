@@ -1,25 +1,17 @@
 package com.ziksana.persistence.course;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
-import org.apache.ibatis.annotations.Update;
 
-import com.ziksana.domain.course.subscription.CourseProperty;
-
-public interface CoursePropertyMapper {
-	/**
+public interface CoursePropertyMapper {/*
+	*//**
 	 * This method corresponds to the database table sbncourseproperty
-	 */
+	 *//*
 	@Delete({ "delete from sbncourseproperty",
 			"where coursepropertyid = #{coursePropertyId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer coursePropertyId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseproperty
-	 */
+	 *//*
 	@Insert({
 			"insert into sbncourseproperty (coursepropertyid, creationdate, ",
 			"propertyname, propertyvalue, ",
@@ -32,14 +24,14 @@ public interface CoursePropertyMapper {
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "coursePropertyId", before = true, resultType = Integer.class)
 	int insert(CourseProperty record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseproperty
-	 */
+	 *//*
 	int insertSelective(CourseProperty record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseproperty
-	 */
+	 *//*
 	@Select({
 			"select",
 			"coursepropertyid, creationdate, propertyname, propertyvalue, active, subscriptioncourseid, ",
@@ -48,14 +40,14 @@ public interface CoursePropertyMapper {
 	@ResultMap("BaseResultMap")
 	CourseProperty selectByPrimaryKey(Integer coursePropertyId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseproperty
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(CourseProperty record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseproperty
-	 */
+	 *//*
 	@Update({
 			"update sbncourseproperty",
 			"set CreationDate = #{creationDate,jdbcType=TIMESTAMP},",
@@ -66,4 +58,4 @@ public interface CoursePropertyMapper {
 			"CurrCoursePropertyId = #{currCoursePropertyId,jdbcType=INTEGER}",
 			"where coursePropertyId = #{coursePropertyId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(CourseProperty record);
-}
+*/}

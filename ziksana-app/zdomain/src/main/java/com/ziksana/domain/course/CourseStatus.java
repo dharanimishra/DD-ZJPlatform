@@ -3,6 +3,8 @@
  */
 package com.ziksana.domain.course;
 
+import java.util.NoSuchElementException;
+
 
 /**
  * @author bhashasp
@@ -10,14 +12,13 @@ package com.ziksana.domain.course;
 public enum CourseStatus {
 
 	// TODO: retrieve the ids from the static data service
-	DRAFT           (1, "Draft"),
-	REVIEW          (2, "Review"),
-	PUBLISH         (3, "Publish"),
-	RELEASED        (4,"Released"),
-	SUBSCRIBED      (5, "Subscribed"),
-	SOCIALIZE       (6, "Socialized"),
-	ADMINISTER_EVAL (7, "Administer Evaluation");
-
+	DRAFT           (1, "Under Construction"),
+	REVIEW          (2, "Under Review"),
+	ACTIVE         	(3, "Active"),
+	RELEASE        	(4,"Ready for release"),
+	HOLD      		(5, "Hold"),
+	ARCHIVED       	(6, "Archived");
+	
 	private final int id;
 	private final String name;
 
@@ -41,7 +42,7 @@ public enum CourseStatus {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("CourseStatus ID [" + ID + "] not found");
+		throw new NoSuchElementException("CourseStatus ID [" + ID + "] not found");
 	}
 
 	public String toString() {

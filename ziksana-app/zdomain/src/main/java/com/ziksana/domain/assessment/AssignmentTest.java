@@ -36,7 +36,7 @@ public class AssignmentTest extends AuditHistory{
 	private Integer 				totalPoints 					= null;
 	private Boolean 				proctoredIndicator 				= null;
 	private Integer 				answerWithinTime 				= null;
-	private Status 		status 							= null;
+	private Status 					status 							= null;
 	private LearningComponent 		learningComponent 				= null;
 	private AssignmentTestSettings 	assignmentTestSettings 			= null;
 	private MemberPersona 			creatorMemberPersona			= null;

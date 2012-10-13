@@ -1,5 +1,7 @@
 package com.ziksana.domain.course;
 
+import java.util.NoSuchElementException;
+
 
 /**
  * @author bhashasp
@@ -7,11 +9,11 @@ package com.ziksana.domain.course;
 public enum Rating {
 
 	// TODO: retrieve the ids from the static data service
-	NOT_HAPPY   (1, "Not Happy"),
-	NO_COMMENTS (2, "No Comments"),
-	AVERAGE     (3,"Average"),
-	HAPPY       (4, "Happy"),
-	EXCELLENT   (5, "Excellent");
+	STAR_1   	(1, "1 Star"),
+	STAR_2 		(2, "2 Star"),
+	STAR_3   	(3, "3 Star"),
+	STAR_4 		(4, "4 Star"),
+	STAR_5   	(5, "5 Star");
 
 	private final int 		id;
 	private final String 	name;
@@ -35,7 +37,7 @@ public enum Rating {
 				return t;
 			}
 		}
-		throw new IndexOutOfBoundsException("Rating ID [" + ID + "] not found");
+		throw new NoSuchElementException("Rating ID [" + ID + "] not found");
 	}
 
 	public String toString() {

@@ -1,25 +1,17 @@
 package com.ziksana.persistence.course;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
-import org.apache.ibatis.annotations.Update;
 
-import com.ziksana.domain.course.subscription.CourseActivity;
-
-public interface CourseActivityMapper {
-	/**
+public interface CourseActivityMapper {/*
+	*//**
 	 * This method corresponds to the database table sbncourseactivity
-	 */
+	 *//*
 	@Delete({ "delete from sbncourseactivity",
 			"where ID = #{ID,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer ID);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseactivity
-	 */
+	 *//*
 	@Insert({
 			"insert into sbncourseactivity (ID, ActivityDate, ",
 			"ActivityType, StartTime, ",
@@ -36,14 +28,14 @@ public interface CourseActivityMapper {
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "ID", before = true, resultType = Integer.class)
 	int insert(CourseActivity record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseactivity
-	 */
+	 *//*
 	int insertSelective(CourseActivity record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseactivity
-	 */
+	 *//*
 	@Select({
 			"select",
 			"ID, ActivityDate, ActivityType, StartTime, EndTime, ZeniSuggestedIndicator, ",
@@ -53,14 +45,14 @@ public interface CourseActivityMapper {
 	@ResultMap("ResultMapWithBLOBs")
 	CourseActivity selectByPrimaryKey(Integer ID);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseactivity
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(CourseActivity record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseactivity
-	 */
+	 *//*
 	@Update({
 			"update sbncourseactivity",
 			"set ActivityDate = #{activityDate,jdbcType=DATE},",
@@ -76,9 +68,9 @@ public interface CourseActivityMapper {
 			"where ID = #{ID,jdbcType=INTEGER}" })
 	int updateByPrimaryKeyWithBLOBs(CourseActivity record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table sbncourseactivity
-	 */
+	 *//*
 	@Update({
 			"update sbncourseactivity",
 			"set ActivityDate = #{activityDate,jdbcType=DATE},",
@@ -92,4 +84,4 @@ public interface CourseActivityMapper {
 			"SubscriptionCourseId = #{subscriptionCourseId,jdbcType=INTEGER}",
 			"where ID = #{ID,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(CourseActivity record);
-}
+*/}

@@ -8,97 +8,100 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.course.Course;
-import com.ziksana.domain.member.MemberRole;
+import com.ziksana.domain.course.CourseAdditionalProperty;
+import com.ziksana.exception.course.CourseException;
+import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CourseMapper;
-import com.ziksana.persistence.course.CoursePlaybookMapper;
-import com.ziksana.persistence.member.MemberMapper;
-import com.ziksana.persistence.member.MemberRoleMapper;
 import com.ziksana.service.course.CourseService;
 
 @Service
 public class CourseServiceImpl implements CourseService {
+	
 
 	@Autowired
 	public CourseMapper corCourseMapper;
-	@Autowired
-	public MemberRoleMapper memberRoleMapper;
-	@Autowired
-	public MemberMapper memberMapper;
-	@Autowired
-	public CoursePlaybookMapper corCoursePlaybookMapper;
-
+	
 	public void setCorCourseMapper(CourseMapper corCourseMapper) {
+
 		this.corCourseMapper = corCourseMapper;
 	}
 
-	public void setMemberRoleMapper(MemberRoleMapper memberRoleMapper) {
-		this.memberRoleMapper = memberRoleMapper;
-	}
-
-	public void setMemberMapper(MemberMapper memberMapper) {
-		this.memberMapper = memberMapper;
-	}
 	
 	@Override
 	public Course getBaseCourseDetails(Course course) {
 		Course courseDetails = null;
 
-		Integer courseId = null;
+		ZID courseId = null;
 
 		courseId = course.getCourseId();
 
-		courseDetails = corCourseMapper.selectByPrimaryKey(courseId);
+		courseDetails = corCourseMapper.getBaseCourseDetails(courseId);
 
 		return courseDetails;
 	}
 
 	@Override
-	public List<Course> getListOfCourses(MemberRole memberRole) {
-		List<Course> courseList = null;
-		
-		Integer memberRoleId = null;
+	public List<Course> getListOfCourses(ZID memberPersonaId) {
 
-		memberRoleId = memberRole.getMemberRoleId();
+		List<Course> courseList = null;
 
 		courseList = new ArrayList<Course>();
 
-		corCourseMapper.getListOfCourses(memberRoleId);
+		courseList = corCourseMapper.getListOfCourses(memberPersonaId);
 
 		return courseList;
 	}
 
 	@Override
-	public HashMap<String, List<String>> getCourseCatalog(Integer courseId) {
+	public HashMap<String, List<String>> getCourseComponents(ZID courseId) {
 		return null;
 	}
 
 	@Override
-	public Course updateCourse(Course course) {
+	public Course saveOrUpadteCourseComponents(Course course)
+			throws CourseException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public boolean removeCourse(Course course) {
-		return false;
-	}
 
 	@Override
-	public int saveOrUpdateCourse(Course course) {
-		return 0;
-	}
-
-	@Override
-	public int saveOrUpdateCourseComponents(Course course) {
-		return 0;
-	}
-
-	@Override
-	public Course modifyCourseProperties(Course course) {
+	public CourseAdditionalProperty saveAdditionalCourseProperty(
+			CourseAdditionalProperty courseAdditionalProperty)
+			throws CourseException {
+		// TODO Auto-generated method stub
 		return null;
-	}/*
+	}
 
 
+	@Override
+	public Course getCourseDetails(Course course) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+
+	@Override
+	public List<Course> fetchCourses(String programName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Course saveOrUpdateCourse(Course course) throws CourseException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void removeCourse(Course course) {
+		// TODO Auto-generated method stub
+		
+	}
+
+/*
 	@Transactional(propagation = Propagation.REQUIRED, rollbackForClassName = "corCourseMapper")
 	public int createCourse(Course course) {
 		System.out.println("Entering into createm method in service ");

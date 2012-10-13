@@ -83,12 +83,12 @@ public class LearningComponentDetails extends LearningComponent{
 	public LearningComponentContent getLearningComponentContent(int index) throws Exception{
 		
 		if(learningCompContentList==null){
-			throw new Exception("Learning Component Contents cannot set in the Learning Component ID ["+learningComponentId+"]");
+			throw new IllegalArgumentException("Learning Component Contents cannot set in the Learning Component ID ["+learningComponentId+"]");
 		}
 		try{
 			return learningCompContentList.get(index);
 		}catch(Exception e){
-			throw new Exception("Learning Component  Content at index ["+index+"] at not found");
+			throw new IllegalStateException("Learning Component  Content at index ["+index+"] at not found");
 		}
 	}
 	
@@ -114,7 +114,7 @@ public class LearningComponentDetails extends LearningComponent{
 			Integer learningComponentContentId) throws Exception{
 
 		if(learningCompContentList == null){
-			throw new Exception("LearningComponentContent not set in Learning Component ID ["+getLearningComponentId()+"]");
+			throw new IllegalStateException("LearningComponentContent not set in Learning Component ID ["+getLearningComponentId()+"]");
 		}
 		
 		for (LearningComponentContent learningComponentContent : learningCompContentList) {
@@ -140,7 +140,7 @@ public class LearningComponentDetails extends LearningComponent{
 	public void setLearningCompContentList(
 			List<LearningComponentContent> compContentList) throws Exception{
 		if(compContentList == null){
-			throw new Exception("Cannot set Learning Component Contents as a null in Learning Component ID ["+learningComponentId+"]");
+			throw new IllegalArgumentException("Cannot set Learning Component Contents as a null in Learning Component ID ["+learningComponentId+"]");
 		}
 
 		this.learningCompContentList = compContentList;

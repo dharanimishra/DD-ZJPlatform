@@ -3,19 +3,35 @@ package com.ziksana.domain.course;
 import java.util.Date;
 
 import com.ziksana.id.ZID;
+import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 
-public class LearningComponentType {
+/**
+ * @author bhashasp
+ */
+public class LearningComponentType extends AuditHistory{
 
-	public LearningComponentType(ComponentType componentType){
-		this.componentType = componentType;
-	}
 	
+	public LearningComponentType(String compTypeName,
+			String compTypeDescription, Boolean qualifierIndicator,
+			Boolean active) {
+		this.compTypeName = compTypeName;
+		this.compTypeDescription = compTypeDescription;
+		this.qualifierIndicator = qualifierIndicator;
+		this.active = active;
+	}
+
 	private ZID		 		learningCompTypeId;
 	private Date 			creationDate 		= null;
+	
+	@Deprecated
 	private ComponentType 	componentType 		= null;
+	
+	private String 			compTypeName		= null;
+	private String 			compTypeDescription = null;
+	private Boolean 		qualifierIndicator	= null;
 	private Boolean 		active		 		= null;
-	private MemberPersona 	creatingMember 		= null;
+	private MemberPersona 	creatorMemberPersona= null;
 
 	/**
 	 * @return the value of property CreationDate
@@ -77,18 +93,69 @@ public class LearningComponentType {
 	}
 
 	/**
-	 * @return the creatingMember
+	 * @return the compTypeName
 	 */
-	public MemberPersona getCreatingMember() {
-		return creatingMember;
+	public String getCompTypeName() {
+		return compTypeName;
 	}
 
 	/**
-	 * @param creatingMember the creatingMember to set
+	 * @param compTypeName the compTypeName to set
 	 */
-	public void setCreatingMember(MemberPersona creatingMember) {
-		this.creatingMember = creatingMember;
+	public void setCompTypeName(String compTypeName) {
+		this.compTypeName = compTypeName;
 	}
+
+	/**
+	 * @return the compTypeDescription
+	 */
+	public String getCompTypeDescription() {
+		return compTypeDescription;
+	}
+
+	/**
+	 * @param compTypeDescription the compTypeDescription to set
+	 */
+	public void setCompTypeDescription(String compTypeDescription) {
+		this.compTypeDescription = compTypeDescription;
+	}
+
+	/**
+	 * @return the creatorMemberPersona
+	 */
+	public MemberPersona getCreatorMemberPersona() {
+		return creatorMemberPersona;
+	}
+
+	/**
+	 * @param creatorMemberPersona the creatorMemberPersona to set
+	 */
+	public void setCreatorMemberPersona(MemberPersona creatorMemberPersona) {
+		this.creatorMemberPersona = creatorMemberPersona;
+	}
+
+	/**
+	 * @return the qualifierIndicator
+	 */
+	public Boolean getQualifierIndicator() {
+		return qualifierIndicator;
+	}
+
+	/**
+	 * @param qualifierIndicator the qualifierIndicator to set
+	 */
+	public void setQualifierIndicator(Boolean qualifierIndicator) {
+		this.qualifierIndicator = qualifierIndicator;
+	}
+
+	@Override
+	public String toString() {
+		return "LearningComponentType [compTypeName=" + compTypeName
+				+ ", compTypeDescription=" + compTypeDescription
+				+ ", qualifierIndicator=" + qualifierIndicator + ", active="
+				+ active + "]";
+	}
+
 
 
 }

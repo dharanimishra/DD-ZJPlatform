@@ -1,23 +1,17 @@
 package com.ziksana.persistence.assessment.member;
 
-import com.ziksana.domain.assessment.member.TestSubmission;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface TestSubmissionMapper {
-	/**
+public interface TestSubmissionMapper {/*
+	*//**
 	 * This method corresponds to the database table msmtestsubmission
-	 */
+	 *//*
 	@Delete({ "delete from msmtestsubmission",
 			"where TestSubmissionId = #{testSubmissionId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer testSubmissionId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmtestsubmission
-	 */
+	 *//*
 	@Insert({
 			"insert into msmtestsubmission (TestSubmissionId, SubmittedResponse, ",
 			"Duration, ZeniEvaluatedIndicator, ",
@@ -35,14 +29,14 @@ public interface TestSubmissionMapper {
 			"#{questionBankAnswerId,jdbcType=INTEGER}, #{memberRoleId,jdbcType=INTEGER})" })
 	int insert(TestSubmission record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmtestsubmission
-	 */
+	 *//*
 	int insertSelective(TestSubmission record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmtestsubmission
-	 */
+	 *//*
 	@Select({
 			"select",
 			"TestSubmissionId, SubmittedResponse, Duration, ZeniEvaluatedIndicator, ResponseTypeIndicator, ",
@@ -53,14 +47,14 @@ public interface TestSubmissionMapper {
 	@ResultMap("BaseResultMap")
 	TestSubmission selectByPrimaryKey(Integer testSubmissionId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmtestsubmission
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(TestSubmission record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmtestsubmission
-	 */
+	 *//*
 	@Update({ "update msmtestsubmission",
 			"set SubmittedResponse = #{submittedResponse,jdbcType=VARCHAR},",
 			"Duration = #{duration,jdbcType=INTEGER},",
@@ -77,4 +71,4 @@ public interface TestSubmissionMapper {
 			"MemberRoleId = #{memberRoleId,jdbcType=INTEGER}",
 			"where TestSubmissionId = #{testSubmissionId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(TestSubmission record);
-}
+*/}

@@ -192,12 +192,12 @@ public class LearningContent extends AuditHistory{
 			throws Exception {
 
 		if (learningContentPartsList == null) {
-			throw new Exception("learningContentParts is not set in the learning content ID ["+learningContentId+"]");
+			throw new IllegalArgumentException("learningContentParts is not set in the learning content ID ["+learningContentId+"]");
 		}
 		try {
 			return learningContentPartsList.get(index);
 		} catch (Exception e) {
-			throw new Exception("learning Content Parts at index [" + index
+			throw new NoSuchMethodException("learning Content Parts at index [" + index
 					+ "] at not found");
 		}
 	}
@@ -206,7 +206,7 @@ public class LearningContent extends AuditHistory{
 	public void setLearningContentParts(List<LearningContentParts> partsList) throws Exception{
 		
 		if(partsList == null){
-			throw new Exception("Cannot set learningContentParts as null in  learning content ID ["+learningContentId+"]");
+			throw new IllegalArgumentException("Cannot set learningContentParts as null in  learning content ID ["+learningContentId+"]");
 		}
 		
 		learningContentPartsList = partsList;

@@ -3,8 +3,10 @@ package com.ziksana.domain.assessment;
 public enum VisualType {
 
 	// TODO: retrieve the ids from the static data service
-	VISUAL_TYPE1		(1, "Visual Type1"),
-	VISUAL_TYPE2		(2, "Visual Type2");
+	VIDEO				(1, "Video"),
+	ANNOTATED_VIDEO		(2, "Annotated Video"),
+	PICTURE				(3, "Picture"),
+	ANNOTATED_PICTURE	(4, "Annotated Picture");
 		
 
 	private final int id;
@@ -24,14 +26,14 @@ public enum VisualType {
 		return name;
 	}
 
-	public static VisualType getVisualType(int ID){
+	public static VisualType getVisualType(int ID) throws NoSuchMethodException{
 		for (VisualType visualType : VisualType.values()) {
 			if (visualType.getID() == ID) {
 				return visualType;
 			}
 		}
 
-		throw new IndexOutOfBoundsException("VisualType ID [" + ID + "] not found");
+		throw new NoSuchMethodException("VisualType ID [" + ID + "] not found");
 	}
 
 	public String toString() {

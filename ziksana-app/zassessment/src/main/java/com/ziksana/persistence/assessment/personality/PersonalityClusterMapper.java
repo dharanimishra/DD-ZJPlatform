@@ -1,24 +1,18 @@
 package com.ziksana.persistence.assessment.personality;
 
-import com.ziksana.domain.assessment.personality.PersonalityCluster;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface PersonalityClusterMapper {
+public interface PersonalityClusterMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcluster
-	 */
+	 *//*
 	@Delete({ "delete from pstcluster",
 			"where ClusterId = #{clusterId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer clusterId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcluster
-	 */
+	 *//*
 	@Insert({
 			"insert into pstcluster (ClusterId, Version, ",
 			"Active, CategoryId, ",
@@ -28,14 +22,14 @@ public interface PersonalityClusterMapper {
 			"#{testQuestionId,jdbcType=INTEGER}, #{questionBankAnswerId,jdbcType=INTEGER})" })
 	int insert(PersonalityCluster record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcluster
-	 */
+	 *//*
 	int insertSelective(PersonalityCluster record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcluster
-	 */
+	 *//*
 	@Select({
 			"select",
 			"ClusterId, Version, Active, CategoryId, TestQuestionId, QuestionBankAnswerId",
@@ -44,14 +38,14 @@ public interface PersonalityClusterMapper {
 	@ResultMap("BaseResultMap")
 	PersonalityCluster selectByPrimaryKey(Integer clusterId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcluster
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(PersonalityCluster record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcluster
-	 */
+	 *//*
 	@Update({ "update pstcluster",
 			"set Version = #{version,jdbcType=INTEGER},",
 			"Active = #{active,jdbcType=BIT},",
@@ -60,4 +54,4 @@ public interface PersonalityClusterMapper {
 			"QuestionBankAnswerId = #{questionBankAnswerId,jdbcType=INTEGER}",
 			"where ClusterId = #{clusterId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(PersonalityCluster record);
-}
+*/}

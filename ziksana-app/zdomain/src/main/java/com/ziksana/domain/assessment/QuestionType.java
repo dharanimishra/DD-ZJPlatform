@@ -1,20 +1,20 @@
 package com.ziksana.domain.assessment;
 
+import java.util.NoSuchElementException;
+
 public enum QuestionType {
 
 	// TODO: retrieve the ids from the static data service
-	TRUE_OR_FALSE					(1, "True or False"),
-	MULTICHOICE_SINGLE_ANSWER		(2, "Multi Choice Single Answer"),
-	MULTICHOICE_MULTIPLE_ANSWER		(3, "Multi Choice Multi Answer"),
-	ORDERING_CHOICE					(4, "Ordering Choices"),
-	MATCH_THE_FOLLOWING				(5, "Match the Following"),
-	FILL_BLANKS						(6, "Fill in the blanks"),
-	JUMBLED_SEQUENCE				(7, "Jumbled sequence"),
-	DESCRIPTIVE						(8, "Descriptive"),
-	IMAGE_HOTSPOT					(9, "Image Hotspot"),
-	VIDEO_HOTSPOT					(10, "Video Hotspot"),
-	MATHEMATICAL					(11, "Mathematical Questions"),
-	FRAME_THE_QUESTION				(12, "Frame the Question");
+	OBJECTIVE_SINGLE		(1, "Objective type - Single"),
+	OBJECTIVE_MULTIPLE		(2, "Objective type - Multiple"),
+	FILL_BLANKS				(3, "Fill in the blanks"),
+	MATCH_ITEMS_SINGLE		(4, "Match items - Single"),
+	MATCH_ITEMS_MULTIPLE	(5, "Match items - Multiple"),
+	NAME_THE_ITEMS			(6, "Name the Items"),
+	VISUAL					(7, "Visual"),
+	AUDIO					(8, "Audio"),
+	WHAT_IS					(9, "What is"),
+	ESSAY					(10, "Essay type");
 	
 
 	private final int id;
@@ -41,7 +41,7 @@ public enum QuestionType {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("QuestionType ID [" + ID + "] not found");
+		throw new NoSuchElementException("QuestionType ID [" + ID + "] not found");
 	}
 
 	public String toString() {

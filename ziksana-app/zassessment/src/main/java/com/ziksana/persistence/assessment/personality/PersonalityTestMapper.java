@@ -1,24 +1,18 @@
 package com.ziksana.persistence.assessment.personality;
 
-import com.ziksana.domain.assessment.personality.PersonalityTest;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface PersonalityTestMapper {
+public interface PersonalityTestMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttest
-	 */
+	 *//*
 	@Delete({ "delete from psttest",
 			"where TestId = #{testId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer testId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttest
-	 */
+	 *//*
 	@Insert({
 			"insert into psttest (TestId, Name, ",
 			"Description, Geography, ",
@@ -28,28 +22,28 @@ public interface PersonalityTestMapper {
 			"#{version,jdbcType=VARCHAR}, #{active,jdbcType=BIT}, #{modelId,jdbcType=INTEGER})" })
 	int insert(PersonalityTest record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttest
-	 */
+	 *//*
 	int insertSelective(PersonalityTest record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttest
-	 */
+	 *//*
 	@Select({ "select",
 			"TestId, Name, Description, Geography, Version, Active, ModelId",
 			"from psttest", "where TestId = #{testId,jdbcType=INTEGER}" })
 	@ResultMap("BaseResultMap")
 	PersonalityTest selectByPrimaryKey(Integer testId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttest
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(PersonalityTest record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttest
-	 */
+	 *//*
 	@Update({ "update psttest", "set Name = #{name,jdbcType=VARCHAR},",
 			"Description = #{description,jdbcType=VARCHAR},",
 			"Geography = #{geography,jdbcType=INTEGER},",
@@ -58,4 +52,4 @@ public interface PersonalityTestMapper {
 			"ModelId = #{modelId,jdbcType=INTEGER}",
 			"where TestId = #{testId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(PersonalityTest record);
-}
+*/}

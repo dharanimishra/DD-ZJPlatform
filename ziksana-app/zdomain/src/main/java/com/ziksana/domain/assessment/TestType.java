@@ -4,7 +4,6 @@ package com.ziksana.domain.assessment;
 public enum TestType {
 
 	// TODO: retrieve the ids from the static data service
-	SELF_TYPE			(1, "Self Test"),
 	PRACTICE_TEST		(2, "Practice Test"), 
 	PREPARATORY_TEST	(3, "Preparatory Test"), 
 	PEER_VALUED			(4, "Peer Valued Test"),
@@ -30,14 +29,14 @@ public enum TestType {
 		return name;
 	}
 
-	public static TestType getTestType(int ID)  {
+	public static TestType getTestType(int ID) throws NoSuchMethodException  {
 		for (TestType testType : TestType.values()) {
 			if (testType.getID() == ID) {
 				return testType;
 			}
 		}
 
-		throw new IndexOutOfBoundsException("TestType ID [" + ID + "] not found");
+		throw new NoSuchMethodException("TestType ID [" + ID + "] not found");
 	}
 
 	public String toString() {

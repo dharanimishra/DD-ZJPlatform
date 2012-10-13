@@ -19,7 +19,7 @@ public class LearningComponentContentDetails extends LearningComponentContent{
 		super( learningComponent, baseLearningContent);
 		}
 
-	private List<LearningComponentContentEnrichment> 	enrichmentList						= null;
+	private List<ContentEnrichment> 	enrichmentList						= null;
 	//private List<LearningComponentContentBookmark> 		bookmarkList						= null;
 	//private List<LearningContentReviewProgress> 		learningContentReviewProgressList	= null;
 	//private List<LearningComponentContentEmbed>		learningCompContentEmbedList		= null;
@@ -41,7 +41,7 @@ public class LearningComponentContentDetails extends LearningComponentContent{
 	 */
 	public void addLearningContent(LearningContent learningContent) throws Exception{
 		if(learningContent == null){
-			throw new Exception("Cannot set Learning Content as null in Component Content");
+			throw new IllegalArgumentException("Cannot set Learning Content as null in Component Content");
 		}
 		this.learningContent = learningContent;
 	}
@@ -49,24 +49,21 @@ public class LearningComponentContentDetails extends LearningComponentContent{
 	/**
 	 * @return the enrichmentList
 	 */
-	public List<LearningComponentContentEnrichment> getEnrichmentList() {
+	public List<ContentEnrichment> getEnrichmentList() {
 		return enrichmentList;
 	}
 
 	/**
 	 * @param enrhmichmentList the enrichmentList to set
 	 */
-	public void setEnrichments(List<LearningComponentContentEnrichment> enrichist)  throws Exception{
+	public void setEnrichments(List<ContentEnrichment> enrichist)  throws Exception{
 		
 		if(enrichist == null){
-			throw new Exception("Cannot set enrichments as null in Component Content ID");
+			throw new IllegalArgumentException("Cannot set enrichments as null in Component Content ID");
 		}
 		
 		this.enrichmentList = enrichist;
 		
-		for (LearningComponentContentEnrichment learningComponentContentEnrichment : enrichist) {
-			learningComponentContentEnrichment.setLearningComponentContent(this);
-		}
 	}
 
 	
@@ -74,13 +71,12 @@ public class LearningComponentContentDetails extends LearningComponentContent{
 	/**add enrichment to list 
 	 * @param enrichment
 	 */
-	public void addEnrichment(LearningComponentContentEnrichment enrichment){
+	public void addEnrichment(ContentEnrichment enrichment){
 		
 		if(enrichmentList == null){
-			enrichmentList = new ArrayList<LearningComponentContentEnrichment>();
+			enrichmentList = new ArrayList<ContentEnrichment>();
 		}
 		
-		enrichment.setLearningComponentContent(this);
 		enrichmentList.add(enrichment);
 	}
 	/**

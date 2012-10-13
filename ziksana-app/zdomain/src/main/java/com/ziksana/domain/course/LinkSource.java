@@ -1,11 +1,15 @@
 package com.ziksana.domain.course;
 
+import java.util.NoSuchElementException;
+
 
 public enum LinkSource {
 
 	//TODO: retrieve the ids from the static data service
-	LINK_SOURCE1(1, "Link Source1"),
-	LINK_SOURCE2(2, "Link Source2");
+	ZIKSANA_INTERNAL	(1, "Ziksana Internal"),
+	UNIVERSITY_INTERNAL	(2, "University Internal"),
+	PRIVATE				(3, "Private"),
+	PUBLIC				(4, "Public");
 
 	private final int id;
 	private final String name;
@@ -30,7 +34,7 @@ public enum LinkSource {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("LinkSource ID [" + ID + "] not found");
+		throw new NoSuchElementException("LinkSource ID [" + ID + "] not found");
 	}
 
 	public String toString() {

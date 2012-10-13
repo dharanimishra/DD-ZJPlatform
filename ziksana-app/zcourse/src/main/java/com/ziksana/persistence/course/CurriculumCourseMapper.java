@@ -1,25 +1,18 @@
 package com.ziksana.persistence.course;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-import com.ziksana.domain.course.CurriculumCourse;
+public interface CurriculumCourseMapper {/*
 
-public interface CurriculumCourseMapper {
-
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcourse
-	 */
+	 *//*
 	@Delete({ "delete from corcurriculumcourse",
 			"where curriculumCourseId = #{curriculumCourseId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer curriculumCourseId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcourse
-	 */
+	 *//*
 	@Insert({
 			"insert into corcurriculumcourse (curriculumCourseId, CreationDate, ",
 			"Active, CurriculumUseType, ",
@@ -49,14 +42,14 @@ public interface CurriculumCourseMapper {
 			"#{courseId,jdbcType=INTEGER})" })
 	int insert(CurriculumCourse record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcourse
-	 */
+	 *//*
 	int insertSelective(CurriculumCourse record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcourse
-	 */
+	 *//*
 	@Select({
 			"select",
 			"curriculumCourseId, CreationDate, Active, CurriculumUseType, CurriculumCourseIdentifier, CourseVersionUsed, ",
@@ -69,14 +62,14 @@ public interface CurriculumCourseMapper {
 	@ResultMap("BaseResultMap")
 	CurriculumCourse selectByPrimaryKey(Integer curriculumCourseId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcourse
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(CurriculumCourse record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcourse
-	 */
+	 *//*
 	@Update({
 			"update corcurriculumcourse",
 			"set CreationDate = #{creationDate,jdbcType=TIMESTAMP},",
@@ -105,4 +98,4 @@ public interface CurriculumCourseMapper {
 			"CourseId = #{courseId,jdbcType=INTEGER}",
 			"where curriculumCourseId = #{curriculumCourseId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(CurriculumCourse record);
-}
+*/}

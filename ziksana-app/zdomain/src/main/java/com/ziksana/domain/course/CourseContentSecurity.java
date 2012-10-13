@@ -7,24 +7,26 @@ import com.ziksana.domain.common.AuditHistory;
 
 public class CourseContentSecurity extends AuditHistory{
 	
-	public CourseContentSecurity(String institutionLogoPath,
+	public CourseContentSecurity(String logoPath,
 			String watermarkPath, Boolean flotingIndicator,
 			Boolean signatureIndicator) {
 		super();
-		this.institutionLogoPath = institutionLogoPath;
+		this.setLogoPath(logoPath);
 		this.watermarkPath = watermarkPath;
 		this.flotingIndicator = flotingIndicator;
 		this.signatureIndicator = signatureIndicator;
 	}
 
 	
-	private ZID 	contentSecurityId;
+	private ZID 		contentSecurityId;
 	private Date 		creationDate			= null;
-	private String 		institutionLogoPath 	= null;
+	private String 		logoPath 				= null;
 	private String 		watermarkPath 			= null;
 	private Boolean 	flotingIndicator 		= null;
 	private Boolean 	signatureIndicator 		= null;
-	//private Institution institution				= null;
+	
+	private Institution institution				= null;
+	private Course		course					= null;
 	
 	/**
 	 * @return the contentSecurityId
@@ -38,6 +40,12 @@ public class CourseContentSecurity extends AuditHistory{
 	public void setContentSecurityId(ZID contentSecurityId) {
 		this.contentSecurityId = contentSecurityId;
 	}
+	public String getLogoPath() {
+		return logoPath;
+	}
+	public void setLogoPath(String logoPath) {
+		this.logoPath = logoPath;
+	}
 	/**
 	 * @return the creationDate
 	 */
@@ -49,18 +57,6 @@ public class CourseContentSecurity extends AuditHistory{
 	 */
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
-	}
-	/**
-	 * @return the institutionLogoPath
-	 */
-	public String getInstitutionLogoPath() {
-		return institutionLogoPath;
-	}
-	/**
-	 * @param institutionLogoPath the institutionLogoPath to set
-	 */
-	public void setInstitutionLogoPath(String institutionLogoPath) {
-		this.institutionLogoPath = institutionLogoPath;
 	}
 	/**
 	 * @return the watermarkPath
@@ -99,10 +95,22 @@ public class CourseContentSecurity extends AuditHistory{
 		this.signatureIndicator = signatureIndicator;
 	}
 
+	public Institution getInstitution() {
+		return institution;
+	}
+	public void setInstitution(Institution institution) {
+		this.institution = institution;
+	}
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 	@Override
 	public String toString() {
-		return "CourseContentSecurity [institutionLogoPath="
-				+ institutionLogoPath + ", watermarkPath=" + watermarkPath
+		return "CourseContentSecurity [logoPath="
+				+ logoPath + ", watermarkPath=" + watermarkPath
 				+ ", flotingIndicator=" + flotingIndicator
 				+ ", signatureIndicator=" + signatureIndicator + "]";
 	}

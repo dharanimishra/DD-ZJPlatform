@@ -14,11 +14,11 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	public LearningComponentContent(CourseStatus courseStatus,
-			ContentType contentType, LearningComponent learningComponent,
+			ComponentContentType contentType, LearningComponent learningComponent,
 			LearningComponentContent synchronizeWithVideo,
 			LearningContent baseLearningContent) {
 		this.courseStatus = courseStatus;
-		this.contentType = contentType;
+		this.compContentType = contentType;
 		this.learningComponent = learningComponent;
 		this.synchronizeWithVideo = synchronizeWithVideo;
 		this.baseLearningContent = baseLearningContent;
@@ -27,7 +27,7 @@ public class LearningComponentContent extends AuditHistory{
 	private ZID		 						learningComponentContentId;
 	private Date 							creationDate 						= null;
 	private CourseStatus 					courseStatus 						= null;
-	private ContentType 					contentType 						= null;
+	private ComponentContentType 			compContentType 					= null;
 	private String 							contentDescription 					= null;
 	private Boolean 						active 								= null;
 	private Integer 						contentVersionUsed 					= null;
@@ -142,17 +142,17 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * @return the contentType
+	 * @return the compContentType
 	 */
-	public ContentType getContentType() {
-		return contentType;
+	public ComponentContentType getCompContentType() {
+		return compContentType;
 	}
 
 	/**
-	 * @param contentType the contentType to set
+	 * @param compContentType the compContentType to set
 	 */
-	public void setContentType(ContentType contentType) {
-		this.contentType = contentType;
+	public void setCompContentType(ComponentContentType compContentType) {
+		this.compContentType = compContentType;
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class LearningComponentContent extends AuditHistory{
 	@Override
 	public String toString() {
 		return "LearningComponentContent [courseStatus=" + courseStatus
-				+ ", contentType=" + contentType + ", learningComponent="
+				+ ", learningComponent="
 				+ learningComponent + ", baseLearningContent="
 				+ baseLearningContent + "]";
 	}

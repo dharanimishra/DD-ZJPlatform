@@ -1,23 +1,17 @@
 package com.ziksana.persistence.assessment.member;
 
-import com.ziksana.domain.assessment.member.CourseAssignment;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface CourseAssignmentMapper {
-	/**
+public interface CourseAssignmentMapper {/*
+	*//**
 	 * This method corresponds to the database table msmcourseassignment
-	 */
+	 *//*
 	@Delete({ "delete from msmcourseassignment",
 			"where CourseAssignmentId = #{courseAssignmentId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer courseAssignmentId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmcourseassignment
-	 */
+	 *//*
 	@Insert({
 			"insert into msmcourseassignment (CourseAssignmentId, AssignmentName, ",
 			"StartDate, EndDate, ",
@@ -31,14 +25,14 @@ public interface CourseAssignmentMapper {
 			"#{learningComponentId,jdbcType=INTEGER})" })
 	int insert(CourseAssignment record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmcourseassignment
-	 */
+	 *//*
 	int insertSelective(CourseAssignment record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmcourseassignment
-	 */
+	 *//*
 	@Select({
 			"select",
 			"CourseAssignmentId, AssignmentName, StartDate, EndDate, Duration, Effort, Active, ",
@@ -48,14 +42,14 @@ public interface CourseAssignmentMapper {
 	@ResultMap("BaseResultMap")
 	CourseAssignment selectByPrimaryKey(Integer courseAssignmentId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmcourseassignment
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(CourseAssignment record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table msmcourseassignment
-	 */
+	 *//*
 	@Update({ "update msmcourseassignment",
 			"set AssignmentName = #{assignmentName,jdbcType=VARCHAR},",
 			"StartDate = #{startDate,jdbcType=TIMESTAMP},",
@@ -68,4 +62,4 @@ public interface CourseAssignmentMapper {
 			"LearningComponentId = #{learningComponentId,jdbcType=INTEGER}",
 			"where CourseAssignmentId = #{courseAssignmentId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(CourseAssignment record);
-}
+*/}

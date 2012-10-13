@@ -1,5 +1,7 @@
 package com.ziksana.domain.assessment;
 
+import java.util.NoSuchElementException;
+
 public enum PenaltyFactor {
 
 	// TODO: retrieve the ids from the static data service
@@ -31,7 +33,7 @@ public enum PenaltyFactor {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("PenaltyFactor ID [" + ID + "] not found");
+		throw new NoSuchElementException("PenaltyFactor ID [" + ID + "] not found");
 	}
 
 	public String toString() {

@@ -1,25 +1,17 @@
 package com.ziksana.persistence.course;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
-import org.apache.ibatis.annotations.Update;
 
-import com.ziksana.domain.course.CurriculumCourseCalendar;
-
-public interface CurriculumCourseCalendarMapper {
-	/**
+public interface CurriculumCourseCalendarMapper {/*
+	*//**
 	 * This method corresponds to the database table corcurriculumcoursecalendar
-	 */
+	 *//*
 	@Delete({ "delete from corcurriculumcoursecalendar",
 			"where currCourseCalendarId = #{currCourseCalendarId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer currCourseCalendarId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcoursecalendar
-	 */
+	 *//*
 	@Insert({
 			"insert into corcurriculumcoursecalendar (currCourseCalendarId, CreationDate, ",
 			"StartDate, EndDate, StartTime, ",
@@ -36,14 +28,14 @@ public interface CurriculumCourseCalendarMapper {
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "currCourseCalendarId", before = true, resultType = Integer.class)
 	int insert(CurriculumCourseCalendar record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcoursecalendar
-	 */
+	 *//*
 	int insertSelective(CurriculumCourseCalendar record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcoursecalendar
-	 */
+	 *//*
 	@Select({
 			"select",
 			"currCourseCalendarId, CreationDate, StartDate, EndDate, StartTime, EndTime, Duration, ZeniSuggestedIndicator, ",
@@ -53,14 +45,14 @@ public interface CurriculumCourseCalendarMapper {
 	@ResultMap("BaseResultMap")
 	CurriculumCourseCalendar selectByPrimaryKey(Integer currCourseCalendarId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcoursecalendar
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(CurriculumCourseCalendar record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table corcurriculumcoursecalendar
-	 */
+	 *//*
 	@Update({
 			"update corcurriculumcoursecalendar",
 			"set CreationDate = #{creationDate,jdbcType=TIMESTAMP},",
@@ -77,4 +69,4 @@ public interface CurriculumCourseCalendarMapper {
 			"CurriculumDeliveryId = #{curriculumDeliveryId,jdbcType=INTEGER}",
 			"where currCourseCalendarId = #{currCourseCalendarId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(CurriculumCourseCalendar record);
-}
+*/}

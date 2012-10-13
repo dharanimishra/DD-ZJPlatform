@@ -1,14 +1,14 @@
 package com.ziksana.domain.course;
 
+import java.util.NoSuchElementException;
+
 
 public enum ContentType {
 
 	// TODO: retrieve the ids from the static data service
 	VIDEO      (1, "Video"),
 	AUDIO      (2, "Audio"),
-	DOCUMENT   (3, "Document"),
-	MULTIMEDIA (4, "Multimedia"),
-	THESIS     (5, "Thesis");
+	TEXTUAL   (3, "Textual");
 	
 
 	private final int id;
@@ -35,7 +35,7 @@ public enum ContentType {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("Content Type ID [" + ID + "] not found");
+		throw new NoSuchElementException("Content Type ID [" + ID + "] not found");
 	}
 
 	public String toString() {

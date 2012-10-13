@@ -1,172 +1,106 @@
 package com.ziksana.domain.utilz;
 
-import java.io.Serializable;
 import java.util.Date;
+import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.ZID;
 
-public class SubjectClassification implements Serializable{
+/**
+ * @author bhashasp
+ */
+public class SubjectClassification extends AuditHistory{
 
-	/**
-	 */
-	private static final long serialVersionUID = -6355785379087574399L;
-	/**
-	 * This field corresponds to the database column utlsubjectclassification.SubjClassificationId
-	 */
-	private Integer subjClassificationId;
-	/**
-	 * This field corresponds to the database column
-	 * utlsubjectclassification.CreationDate
-	 */
-	private Date creationDate;
+	public SubjectClassification(String subject, String area, String topic,
+			Boolean active) {
+		this.subject = subject;
+		this.area = area;
+		this.topic = topic;
+		this.active = active;
+	}
 
+	private ZID 		subjClassificationId;
+	private Date 		creationDate		= null;
+	private String 		subject				= null;
+	private String 		area				= null;
+	private String 		topic				= null;
+	private Boolean 	active				= null;
+	
 	/**
-	 * This field corresponds to the database column
-	 * utlsubjectclassification.subjectCategory
+	 * @return the subjClassificationId
 	 */
-	private String subjectCategory;
-
-	/**
-	 * This field corresponds to the database column
-	 * utlsubjectclassification.SubjectArea
-	 */
-	private Integer subjectArea;
-	/**
-	 * This field corresponds to the database column
-	 * utlsubjectclassification.SubjectTopic
-	 */
-	private Integer subjectTopic;
-	/**
-	 * This field corresponds to the database column utlsubjectclassification.Subject
-	 */
-	private Integer subject;
-	/**
-	 * This field corresponds to the database column utlsubjectclassification.Active
-	 */
-	private Boolean active;
-
-	/**
-	 * This method returns the value of the database column utlsubjectclassification.SubjClassificationId
-	 * @return the value of utlsubjectclassification.SubjClassificationId
-	 */
-	public Integer getSubjClassificationId() {
+	public ZID getSubjClassificationId() {
 		return subjClassificationId;
 	}
-
 	/**
-	 * This method sets the value of the database column utlsubjectclassification.SubjClassificationId
-	 * @param SubjClassificationId
-	 *            the value for utlsubjectclassification.SubjClassificationId
+	 * @param subjClassificationId the subjClassificationId to set
 	 */
-	public void setSubjClassificationId(Integer subjClassificationId) {
+	public void setSubjClassificationId(ZID subjClassificationId) {
 		this.subjClassificationId = subjClassificationId;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * utlsubjectclassification.CreationDate
-	 * @return the value of utlsubjectclassification.CreationDate
+	 * @return the creationDate
 	 */
 	public Date getCreationDate() {
 		return creationDate;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * utlsubjectclassification.CreationDate
-	 * @param creationDate
-	 *            the value for utlsubjectclassification.CreationDate
+	 * @param creationDate the creationDate to set
 	 */
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * utlsubjectclassification.SubjectArea
-	 * @return the value of utlsubjectclassification.SubjectArea
+	 * @return the subject
 	 */
-	public Integer getSubjectArea() {
-		return subjectArea;
-	}
-
-	/**
-	 * This method sets the value of the database column
-	 * utlsubjectclassification.SubjectArea
-	 * @param subjectArea
-	 *            the value for utlsubjectclassification.SubjectArea
-	 */
-	public void setSubjectArea(Integer subjectArea) {
-		this.subjectArea = subjectArea;
-	}
-
-	/**
-	 * This method returns the value of the database column
-	 * utlsubjectclassification.SubjectTopic
-	 * @return the value of utlsubjectclassification.SubjectTopic
-	 */
-	public Integer getSubjectTopic() {
-		return subjectTopic;
-	}
-
-	/**
-	 * This method sets the value of the database column
-	 * utlsubjectclassification.SubjectTopic
-	 * @param subjectTopic
-	 *            the value for utlsubjectclassification.SubjectTopic
-	 */
-	public void setSubjectTopic(Integer subjectTopic) {
-		this.subjectTopic = subjectTopic;
-	}
-
-	/**
-	 * This method returns the value of the database column
-	 * utlsubjectclassification.Subject
-	 * @return the value of utlsubjectclassification.Subject
-	 */
-	public Integer getSubject() {
+	public String getSubject() {
 		return subject;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * utlsubjectclassification.Subject
-	 * @param subject
-	 *            the value for utlsubjectclassification.Subject
+	 * @param subject the subject to set
 	 */
-	public void setSubject(Integer subject) {
+	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-
 	/**
-	 * This method returns the value of the database column
-	 * utlsubjectclassification.Active
-	 * @return the value of utlsubjectclassification.Active
+	 * @return the area
+	 */
+	public String getArea() {
+		return area;
+	}
+	/**
+	 * @param area the area to set
+	 */
+	public void setArea(String area) {
+		this.area = area;
+	}
+	/**
+	 * @return the topic
+	 */
+	public String getTopic() {
+		return topic;
+	}
+	/**
+	 * @param topic the topic to set
+	 */
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+	/**
+	 * @return the active
 	 */
 	public Boolean getActive() {
 		return active;
 	}
-
 	/**
-	 * This method sets the value of the database column
-	 * utlsubjectclassification.Active
-	 * @param active
-	 *            the value for utlsubjectclassification.Active
+	 * @param active the active to set
 	 */
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
-	/**
-	 * @return the subjectCategory
-	 */
-	public String getSubjectCategory() {
-		return subjectCategory;
+	@Override
+	public String toString() {
+		return "SubjectClassification [subject=" + subject + ", area=" + area
+				+ ", topic=" + topic + ", active=" + active + "]";
 	}
-
-	/**
-	 * @param subjectCategory
-	 *            the subjectCategory to set
-	 */
-	public void setSubjectCategory(String subjectCategory) {
-		this.subjectCategory = subjectCategory;
-	}
+	
 }

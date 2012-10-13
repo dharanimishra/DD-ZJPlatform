@@ -23,13 +23,11 @@ public class CourseDetails extends Course {
 	// TODO: below associations/compositions will uncomment later.
 	//private CoursePlaybook 							coursePlaybook 						= null;
 	//private List<LearningElementWall> 				learningElementWalls 				= null;
-	//private List<CourseTagcloud> 					courseTagClouds 					= null;
 	//private List<CurriculumCourseCalendar> 			currCourseCalendarEntries 			= null;
 	//private CurriculumCourse 						curriculumCourse 					= null;
 	//private List<LearningContentReviewProgress> 	learningContentReviewProgressList 	= null;
 	//private List<AssignmentTest> 					assignmentTests 					= null;
 	//private List<Announcement> 						announcements 						= null;
-	// private CourseContentSecurity 				courseContentSecurity 				= null;
 	// private CourseLearningPlanner 				courseLearningPlanner 				= null;
 	// private List<Engagement> 					engagements 						= null;
 
@@ -75,7 +73,7 @@ public class CourseDetails extends Course {
 
 		try {
 			if (learningComponents == null) {
-				throw new Exception("Cannot set to Null");
+				throw new IllegalArgumentException("Cannot set to Null");
 			}
 			
 			// Adding a Learning component as a child to another
@@ -127,7 +125,7 @@ public class CourseDetails extends Course {
 			}
 
 		} catch (Exception e) {
-			throw new Exception("Error adding a chlild to learning component ID [ "+parentLearningCompIndex+" ]");
+			throw new IllegalStateException("Error adding a chlild to learning component ID [ "+parentLearningCompIndex+" ]");
 		}
 
 	}
@@ -139,7 +137,7 @@ public class CourseDetails extends Course {
 			throws Exception {
 
 		if (learningComponents == null) {
-			throw new Exception(
+			throw new IllegalStateException(
 					"LearningComponents not set in Course ID [" + getCourseId()
 							+ "]");
 		}
@@ -160,12 +158,12 @@ public class CourseDetails extends Course {
 			throws Exception {
 
 		if (learningComponents == null) {
-			throw new Exception("LearningComponent is set as a null");
+			throw new IllegalArgumentException("LearningComponent is set as a null");
 		}
 		try {
 			return learningComponents.get(index);
 		} catch (Exception e) {
-			throw new Exception("Learning Component at index [" + index
+			throw new IllegalStateException("Learning Component at index [" + index
 					+ "] at not found");
 		}
 	}
@@ -194,7 +192,7 @@ public class CourseDetails extends Course {
 			throws Exception {
 
 		if (learningComponents == null) {
-			throw new Exception(
+			throw new IllegalArgumentException(
 					"Cannot set LearningComponents, Course is null");
 		}
 		this.learningComponents = learningComponents;
@@ -262,6 +260,22 @@ public class CourseDetails extends Course {
 			List<CourseAdditionalProperty> courseAdditionalPropertyList) {
 		this.courseAdditionalPropertyList = courseAdditionalPropertyList;
 	}
+	
+	/**
+	 * @return the learningComponentContent
+	 */
+	public LearningComponentContent getLearningComponentContent() {
+		return learningComponentContent;
+	}
+
+	/**
+	 * @param learningComponentContent
+	 *            the learningComponentContent to set
+	 */
+	public void setLearningComponentContent(
+			LearningComponentContent learningComponentContent) {
+		this.learningComponentContent = learningComponentContent;
+	}
 /*
 	*//**
 	 * @return the currCourseCalendarEntries
@@ -311,21 +325,6 @@ public class CourseDetails extends Course {
 	}
 
 	*//**
-	 * @return the courseTagClouds
-	 *//*
-	public List<CourseTagcloud> getCourseTagClouds() {
-		return courseTagClouds;
-	}
-
-	*//**
-	 * @param courseTagClouds
-	 *            the courseTagClouds to set
-	 *//*
-	public void setCourseTagClouds(List<CourseTagcloud> courseTagClouds) {
-		this.courseTagClouds = courseTagClouds;
-	}
-
-	*//**
 	 * @return the learningElementWalls
 	 *//*
 	public List<LearningElementWall> getLearningElementWalls() {
@@ -356,20 +355,5 @@ public class CourseDetails extends Course {
 		this.assignmentTests = assignmentTests;
 	}
 */
-	/**
-	 * @return the learningComponentContent
-	 */
-	public LearningComponentContent getLearningComponentContent() {
-		return learningComponentContent;
-	}
-
-	/**
-	 * @param learningComponentContent
-	 *            the learningComponentContent to set
-	 */
-	public void setLearningComponentContent(
-			LearningComponentContent learningComponentContent) {
-		this.learningComponentContent = learningComponentContent;
-	}
 
 }

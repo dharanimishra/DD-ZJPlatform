@@ -3,10 +3,10 @@ package com.ziksana.domain.assessment;
 public enum TestModel {
 
 	// TODO: retrieve the ids from the static data service
-	STANDARD			(1, "Standard"),
-	COMPETENCY_BASED	(2, "Competency based"), 
-	PROFICIENCY_BASED	(3, "Proficiency based"), 
-	ADAPTIVE			(4, "Adaptive");
+	STANDARD		(1, "Standard"),
+	COMPETENCY		(2, "Competency based"), 
+	PROFICIENCY		(3, "Proficiency based"), 
+	ADAPTIVE		(4, "Adaptive");
 	
 
 	private final int id;
@@ -26,14 +26,14 @@ public enum TestModel {
 		return name;
 	}
 
-	public static TestModel getTestModel(int ID)  {
+	public static TestModel getTestModel(int ID) throws NoSuchMethodException  {
 		for (TestModel testModel : TestModel.values()) {
 			if (testModel.getID() == ID) {
 				return testModel;
 			}
 		}
 
-		throw new IndexOutOfBoundsException("TestModel ID [" + ID + "] not found");
+		throw new NoSuchMethodException("TestModel ID [" + ID + "] not found");
 	}
 
 	public String toString() {

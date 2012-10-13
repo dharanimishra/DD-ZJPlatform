@@ -7,20 +7,23 @@ import com.ziksana.id.ZID;
 
 public class AssignmentTestSettings extends AuditHistory{
 	
-	public AssignmentTestSettings(Boolean active, Integer property,
-			String propertyValueType, Integer propertyValue) {
+
+	public AssignmentTestSettings(Boolean active, SettingsProperty property,
+			SettingsPropertyValueType propertyValueType, String propertyValue) {
+		super();
 		this.active = active;
 		this.property = property;
 		this.propertyValueType = propertyValueType;
 		this.propertyValue = propertyValue;
 	}
+	
 
-	private ZID 		testSettingsId;
-	private Date 		creationDate 		= null;
-	private Boolean 	active 				= null;
-	private Integer 	property 			= null;
-	private String 		propertyValueType 	= null;
-	private Integer 	propertyValue 		= null;
+	private ZID 						testSettingsId;
+	private Date 						creationDate 		= null;
+	private Boolean 					active 				= null;
+	private SettingsProperty 			property 			= null;
+	private SettingsPropertyValueType 	propertyValueType 	= null;
+	private String 						propertyValue 		= null;
 	
 	
 	/**
@@ -59,48 +62,41 @@ public class AssignmentTestSettings extends AuditHistory{
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-	/**
-	 * @return the property
-	 */
-	public Integer getProperty() {
+	public SettingsProperty getProperty() {
 		return property;
 	}
-	/**
-	 * @param property the property to set
-	 */
-	public void setProperty(Integer property) {
+	public void setProperty(SettingsProperty property) {
 		this.property = property;
 	}
 	/**
 	 * @return the propertyValueType
 	 */
-	public String getPropertyValueType() {
+	public SettingsPropertyValueType getPropertyValueType() {
 		return propertyValueType;
 	}
 	/**
 	 * @param propertyValueType the propertyValueType to set
 	 */
-	public void setPropertyValueType(String propertyValueType) {
+	public void setPropertyValueType(SettingsPropertyValueType propertyValueType) {
 		this.propertyValueType = propertyValueType;
 	}
 	/**
 	 * @return the propertyValue
 	 */
-	public Integer getPropertyValue() {
+	public String getPropertyValue() {
 		return propertyValue;
 	}
 	/**
 	 * @param propertyValue the propertyValue to set
 	 */
-	public void setPropertyValue(Integer propertyValue) {
+	public void setPropertyValue(String propertyValue) {
 		this.propertyValue = propertyValue;
 	}
 
 	@Override
 	public String toString() {
-		return "AssignmentTestSettings [active=" + active + ", property="
-				+ property + ", propertyValueType=" + propertyValueType
-				+ ", propertyValue=" + propertyValue + "]";
+		return "AssignmentTestSettings [active=" + active + ", propertyValue="
+				+ propertyValue + "]";
 	}
 
 }

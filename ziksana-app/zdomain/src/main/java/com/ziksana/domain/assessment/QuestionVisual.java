@@ -11,7 +11,7 @@ public class QuestionVisual extends AuditHistory{
 
 	
 	public QuestionVisual(VisualType visualType, String visualPath,
-			Integer visualSource, QuestionBank questionBank) {
+			VisualSource visualSource, QuestionBank questionBank) {
 		super();
 		this.visualType = visualType;
 		this.visualPath = visualPath;
@@ -24,7 +24,7 @@ public class QuestionVisual extends AuditHistory{
 	private VisualType 		visualType 			= null;
 	private String 			visualPath 			= null;
 	private Boolean 		internalIndicator 	= null;
-	private Integer 		visualSource 		= null;
+	private VisualSource 	visualSource 		= null;
 	private QuestionBank 	questionBank 		= null;
 	
 	
@@ -89,18 +89,6 @@ public class QuestionVisual extends AuditHistory{
 		this.internalIndicator = internalIndicator;
 	}
 	/**
-	 * @return the visualSource
-	 */
-	public Integer getVisualSource() {
-		return visualSource;
-	}
-	/**
-	 * @param visualSource the visualSource to set
-	 */
-	public void setVisualSource(Integer visualSource) {
-		this.visualSource = visualSource;
-	}
-	/**
 	 * @return the questionBank
 	 */
 	public QuestionBank getQuestionBank() {
@@ -113,6 +101,18 @@ public class QuestionVisual extends AuditHistory{
 		this.questionBank = questionBank;
 	}
 
+	/**
+	 * @return the visualSource
+	 */
+	public VisualSource getVisualSource() {
+		return visualSource;
+	}
+	/**
+	 * @param visualSource the visualSource to set
+	 */
+	public void setVisualSource(VisualSource visualSource) {
+		this.visualSource = visualSource;
+	}
 	@Override
 	public String toString() {
 		return "QuestionVisual [active=" + active + ", visualType="

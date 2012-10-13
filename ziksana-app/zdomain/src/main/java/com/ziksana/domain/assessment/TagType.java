@@ -24,14 +24,14 @@ public enum TagType {
 		return name;
 	}
 
-	public static TagType getTagType(int ID){
+	public static TagType getTagType(int ID) throws NoSuchMethodException{
 		for (TagType tagType : TagType.values()) {
 			if (tagType.getID() == ID) {
 				return tagType;
 			}
 		}
 
-		throw new IndexOutOfBoundsException("TagType ID [" + ID + "] not found");
+		throw new NoSuchMethodException("TagType ID [" + ID + "] not found");
 	}
 
 	public String toString() {

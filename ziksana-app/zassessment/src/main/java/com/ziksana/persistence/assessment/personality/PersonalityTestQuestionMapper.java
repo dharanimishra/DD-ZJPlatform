@@ -1,24 +1,18 @@
 package com.ziksana.persistence.assessment.personality;
 
-import com.ziksana.domain.assessment.personality.PersonalityTestQuestion;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface PersonalityTestQuestionMapper {
+public interface PersonalityTestQuestionMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttestquestion
-	 */
+	 *//*
 	@Delete({ "delete from psttestquestion",
 			"where TestQuestionId = #{testQuestionId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer testQuestionId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttestquestion
-	 */
+	 *//*
 	@Insert({
 			"insert into psttestquestion (TestQuestionId, Sequence, ",
 			"VersionUsed, Active, ",
@@ -28,14 +22,14 @@ public interface PersonalityTestQuestionMapper {
 			"#{testId,jdbcType=INTEGER}, #{questionBankId,jdbcType=INTEGER})" })
 	int insert(PersonalityTestQuestion record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttestquestion
-	 */
+	 *//*
 	int insertSelective(PersonalityTestQuestion record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttestquestion
-	 */
+	 *//*
 	@Select({
 			"select",
 			"TestQuestionId, Sequence, VersionUsed, Active, TestId, QuestionBankId",
@@ -44,14 +38,14 @@ public interface PersonalityTestQuestionMapper {
 	@ResultMap("BaseResultMap")
 	PersonalityTestQuestion selectByPrimaryKey(Integer testQuestionId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttestquestion
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(PersonalityTestQuestion record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table psttestquestion
-	 */
+	 *//*
 	@Update({ "update psttestquestion",
 			"set Sequence = #{sequence,jdbcType=INTEGER},",
 			"VersionUsed = #{versionUsed,jdbcType=INTEGER},",
@@ -60,4 +54,4 @@ public interface PersonalityTestQuestionMapper {
 			"QuestionBankId = #{questionBankId,jdbcType=INTEGER}",
 			"where TestQuestionId = #{testQuestionId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(PersonalityTestQuestion record);
-}
+*/}

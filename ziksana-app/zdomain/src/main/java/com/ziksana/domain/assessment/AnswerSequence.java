@@ -1,5 +1,7 @@
 package com.ziksana.domain.assessment;
 
+import java.util.NoSuchElementException;
+
 
 /**
  * @author bhashasp
@@ -35,7 +37,7 @@ public enum AnswerSequence {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("AnswerSequence ID [" + ID + "] not found");
+		throw new NoSuchElementException("AnswerSequence ID [" + ID + "] not found");
 	}
 
 	public String toString() {

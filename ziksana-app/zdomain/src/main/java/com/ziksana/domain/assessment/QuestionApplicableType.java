@@ -1,10 +1,15 @@
 package com.ziksana.domain.assessment;
 
+import java.util.NoSuchElementException;
+
 public enum QuestionApplicableType {
 
 	// TODO: retrieve the ids from the static data service
-	Type1		(1, "Type 1"),
-	Type2		(2, "Type 2");
+	BEGINNER		(1, "Beginner"),
+	INTERMEDIATE	(2, "Intermediate"),
+	ADVANCED		(3, "Advanced"),
+	EXPERT			(4, "Expert"),
+	RESEARCH		(5, "Research"),;
 
 	
 	private final int id;
@@ -31,7 +36,7 @@ public enum QuestionApplicableType {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("QuestionApplicableType ID [" + ID + "] not found");
+		throw new NoSuchElementException("QuestionApplicableType ID [" + ID + "] not found");
 	}
 
 	public String toString() {

@@ -1,24 +1,18 @@
 package com.ziksana.persistence.assessment.personality;
 
-import com.ziksana.domain.assessment.personality.PersonalityMemberPersonalityTest;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface PersonalityMemberPersonalityTestMapper {
+public interface PersonalityMemberPersonalityTestMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmemberpersonalitytest
-	 */
+	 *//*
 	@Delete({ "delete from pstmemberpersonalitytest",
 			"where MemberPersonalityTestId = #{memberPersonalityTestId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer memberPersonalityTestId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmemberpersonalitytest
-	 */
+	 *//*
 	@Insert({
 			"insert into pstmemberpersonalitytest (MemberPersonalityTestId, CreationDate, ",
 			"DateTestStarted, DateTestEnded, ",
@@ -32,14 +26,14 @@ public interface PersonalityMemberPersonalityTestMapper {
 			"#{memberRoleId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER})" })
 	int insert(PersonalityMemberPersonalityTest record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmemberpersonalitytest
-	 */
+	 *//*
 	int insertSelective(PersonalityMemberPersonalityTest record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmemberpersonalitytest
-	 */
+	 *//*
 	@Select({
 			"select",
 			"MemberPersonalityTestId, CreationDate, DateTestStarted, DateTestEnded, CompletedIndicator, ",
@@ -50,14 +44,14 @@ public interface PersonalityMemberPersonalityTestMapper {
 	PersonalityMemberPersonalityTest selectByPrimaryKey(
 			Integer memberPersonalityTestId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmemberpersonalitytest
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(PersonalityMemberPersonalityTest record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstmemberpersonalitytest
-	 */
+	 *//*
 	@Update({ "update pstmemberpersonalitytest",
 			"set CreationDate = #{creationDate,jdbcType=TIMESTAMP},",
 			"DateTestStarted = #{dateTestStarted,jdbcType=TIMESTAMP},",
@@ -70,4 +64,4 @@ public interface PersonalityMemberPersonalityTestMapper {
 			"MemberId = #{memberId,jdbcType=INTEGER}",
 			"where MemberPersonalityTestId = #{memberPersonalityTestId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(PersonalityMemberPersonalityTest record);
-}
+*/}

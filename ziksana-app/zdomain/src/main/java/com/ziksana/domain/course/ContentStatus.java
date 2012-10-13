@@ -1,11 +1,17 @@
 package com.ziksana.domain.course;
 
+import java.util.NoSuchElementException;
+
 
 public enum ContentStatus {
 
 	// TODO: retrieve the ids from the static data service
-	ARCHIVED (1, "Archived"),
-	OTHER    (2, "Other");
+	DRAFT           (1, "Under Construction"),
+	REVIEW          (2, "Under Review"),
+	ACTIVE         	(3, "Active"),
+	RELEASE        	(4,"Ready for release"),
+	HOLD      		(5, "Hold"),
+	ARCHIVED       	(6, "Archived");
 	
 
 	private final int id;
@@ -32,7 +38,7 @@ public enum ContentStatus {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("Content Status ID [" + ID + "] not found");
+		throw new NoSuchElementException("Content Status ID [" + ID + "] not found");
 	}
 
 	public String toString() {

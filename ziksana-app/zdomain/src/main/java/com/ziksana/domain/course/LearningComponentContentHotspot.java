@@ -14,7 +14,7 @@ public class LearningComponentContentHotspot extends AuditHistory{
 		this.hotspotDescription = hotspotDescription;
 		this.memberPersona = memberPersona;
 	}
-	private ZID	 					componentContentTagHotspotId;
+	private ZID	 						componentContentTagHotspotId;
 	private Date 						creationDate 				= null;
 	private String 						coordinates 				= null;
 	private String 						hotspotName 				= null;

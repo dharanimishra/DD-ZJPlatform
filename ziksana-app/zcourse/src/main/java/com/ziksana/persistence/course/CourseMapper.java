@@ -9,92 +9,86 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.Course;
+import com.ziksana.id.ZID;
 
 public interface CourseMapper {
 
 	/**
-	 * This method corresponds to the database table corcourse
+	 * Updates the Course's delete indicator to perform soft delete.
+	 * @param CourseId
+	 * @return
 	 */
-	@Delete({ "delete from corcourse",
-			"where CourseId = #{CourseId,jdbcType=INTEGER}" })
-	int deleteByPrimaryKey(Integer CourseId);
+	@Delete({ "update from corcourse set isdelete=#{isDelete,jdbcType=BIT}",
+			"where courseid = #{CourseId,jdbcType=INTEGER}" })
+	int delete(ZID CourseId);
 
 	/**
-	 * This method corresponds to the database table corcourse
-	 */
-	int insertSelective(Course record);
-
-	/**
-	 * This method corresponds to the database table corcourse
+	 * Retrieves the base course information by Member's (MemberPersona).
+	 * @param courseId
+	 * @return
 	 */
 	@Select({
 			"select",
-			"CourseId, Name, CourseIdentifier, Description, ValidFrom, ValidTo, CourseStatus, Rating, ",
-			"ContentSecurityNeededIndicator, CourseWeightage, TotalCredits, ExtraCreditsIndicator, ",
-			"ExtraCredits, AdditionalPropertyIndicator, CourseDuration, ",
-			"ThumbnailPicturePath, TemplateIndicator, Version, MemberRoleId, SubjClassificationId ",
-			" from corcourse", "where CourseId = #{courseId,jdbcType=INTEGER}" })
-	@ResultMap("BaseResultMap")
-	Course selectByPrimaryKey(Integer CourseId);
+			"courseid, name, courseidentifier, description, coursestatus ",
+			" from corcourse where courseid = #{courseId,jdbcType=INTEGER}" })
+	@ResultMap("BaseCourseMap")
+	Course getBaseCourseDetails(ZID courseId);
 
 	/**
-	 * This method corresponds to the database table corcourse
+	 * Retrieves the list of base courses information
+	 * @param memberPersonaId
+	 * @return
 	 */
-	int updateByPrimaryKeySelective(Course record);
-
 	@Select({
 			"select",
-			"courseid, name, courseidentifier, description, ValidFrom, ValidTo, coursestatus, rating, ",
-			"contentsecurityneededindicator, courseweightage, totalcredits, extracreditsindicator, ",
-			"extracredits, additionalpropertyindicator, courseduration, ",
-			"thumbnailpicturepath, templateindicator, version, memberroleid, ",
-			"subjclassificationid ",
-			"from corcourse where memberroleid = #{memberRoleId,jdbcType=INTEGER}" })
-	@ResultMap("BaseResultMap")
-	List<Course> getListOfCourses(Integer memberRoleId);
+			"courseid, name, courseidentifier, description, coursestatus",
+			"from corcourse where memberpersonaid = #{memberPersonaId,jdbcType=INTEGER}" })
+	@ResultMap("BaseCourseMap")
+	List<Course> getListOfCourses(ZID memberPersonaId);
 
-	Course getCourseCatalog(Integer courseId);
 
 	/**
 	 * This method will modifies the course information to database table
 	 * corcourse
+	 * @param course
+	 * @return
 	 */
 	@Update({
 			"update corcourse",
-			"set Name = #{name,jdbcType=VARCHAR},",
-			"CourseIdentifier = #{courseIdentifier,jdbcType=VARCHAR},",
-			"Description = #{description,jdbcType=VARCHAR},",
-			"ValidFrom = #{ValidFrom,jdbcType=DATE},",
-			"ValidTo = #{ValidTo,jdbcType=DATE},",
-			"CourseStatus = #{courseStatus,jdbcType=INTEGER},",
-			"Rating = #{rating,jdbcType=INTEGER},",
-			"ContentSecurityNeededIndicator = #{contentSecurityNeededIndicator,jdbcType=BIT},",
-			"CourseWeightage = #{courseWeightage,jdbcType=INTEGER},",
-			"TotalCredits = #{totalCredits,jdbcType=VARCHAR},",
-			"ExtraCreditsIndicator = #{extraCreditsIndicator,jdbcType=BIT},",
-			"ExtraCredits = #{extraCredits,jdbcType=VARCHAR},",
-			"AdditionalPropertyIndicator = #{additionalPropertyIndicator,jdbcType=BIT},",
-			"CourseDuration=#{courseDuration,jdbcType=INTEGER},",
-			"ThumbnailPicturePath=#{thumbnailPicturePath,jdbcType=VARCHAR},",
-			"TemplateIndicator=#{templateIndicator,jdbcType=TINYINT},",
-			"Version = #{version,jdbcType=INTEGER},",
-			"MemberRoleId={memberRoleId,jdbcType=INTEGER},",
-			"SubjClassificationId = #{subjClassificationId,jdbcType=INTEGER} ",
-			"where CourseId = #{courseId,jdbcType=INTEGER}" })
-	Course updateCourse(Course course);
+			"set name = #{name,jdbcType=VARCHAR},",
+			"courseidentifier = #{courseIdentifier,jdbcType=VARCHAR},",
+			"description = #{description,jdbcType=VARCHAR},",
+			"validfrom = #{ValidFrom,jdbcType=DATE},",
+			"validto = #{ValidTo,jdbcType=DATE},",
+			"coursestatus = #{courseStatus,jdbcType=INTEGER},",
+			"rating = #{rating,jdbcType=INTEGER},",
+			"contentsecurityneededindicator = #{contentSecurityNeededIndicator,jdbcType=BIT},",
+			"courseweightage = #{courseWeightage,jdbcType=INTEGER},",
+			"totalcredits = #{totalCredits,jdbcType=VARCHAR},",
+			"extracreditsindicator = #{extraCreditsIndicator,jdbcType=BIT},",
+			"extracredits = #{extraCredits,jdbcType=VARCHAR},",
+			"additionalpropertyindicator = #{additionalPropertyIndicator,jdbcType=BIT},",
+			"courseduration=#{courseDuration,jdbcType=INTEGER},",
+			"thumbnailpicturepath=#{thumbnailPicturePath,jdbcType=VARCHAR},",
+			"templateindicator=#{templateIndicator,jdbcType=TINYINT},",
+			"version = #{version,jdbcType=INTEGER},",
+			"memberroleid={memberRoleId,jdbcType=INTEGER},",
+			"subjclassificationid = #{subjClassificationId,jdbcType=INTEGER} ",
+			"where courseid = #{courseId,jdbcType=INTEGER}" })
+	Course updateCourse(ZID courseId);
 
 	
 	/**
-	 * This method saves the course information to corcourse table
+	 * This method saves the Course information to corcourse table
 	 */
 	@Insert({
-			"insert into corcourse ( Name, ",
-			"CourseIdentifier, Description, ",
-			"ValidFrom, ValidTo, CourseStatus, ",
-			"Rating, ContentSecurityNeededIndicator, ",
-			"CourseWeightage, TotalCredits, ",
-			"ExtraCreditsIndicator, ExtraCredits, ",
-			"AdditionalPropertyIndicator, CourseDuration,ThumbnailPicturePath, TemplateIndicator, Version, MemberRoleId,SubjClassificationId)",
+			"insert into corcourse ( name, ",
+			"courseidentifier, description, ",
+			"validfrom, validto, coursestatus, ",
+			"rating, contentsecurityneededindicator, ",
+			"courseweightage, totalcredits, ",
+			"extracreditsindicator, extracredits, ",
+			"additionalpropertyindicator, courseduration,thumbnailpicturepath, templateindicator, version, memberroleid,subjclassificationid)",
 			"values (#{name,jdbcType=VARCHAR}, ",
 			"#{courseIdentifier,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, ",
 			"#{ValidFrom,jdbcType=DATE}, #{ValidTo,jdbcType=DATE}, #{courseStatus,jdbcType=INTEGER}, ",
@@ -116,20 +110,4 @@ public interface CourseMapper {
 	@ResultMap("CourseTreeMap")
 	Course getCourseComponents(Course course);
 	
-	
-	/**
-	 * This method will retrieves the list of courses by Member's(memberroleid).
-	 * @param course
-	 * @return
-	 */
-	@Select({
-		"select",
-		"courseid, name, courseidentifier, description, validfrom, validto, coursestatus, rating, ",
-		"contentsecurityneededindicator, courseweightage, totalcredits, extracreditsindicator, ",
-		"extracredits, additionalpropertyindicator, courseduration, ",
-		"thumbnailpicturepath, templateindicator, version, memberroleid, subjclassificationid ",
-		" from corcourse where memberroleid = #{memberRoleId,jdbcType=INTEGER}" })
-	@ResultMap("BaseResultMap")
-	Course getCoursesByMemberRole(Integer memberRoleId);
-
 }

@@ -22,6 +22,7 @@ public class TestPackage extends AuditHistory{
 	private String 				status 				= null;
 	private Date 				creationDate 		= null;
 	private String 				packageName 		= null;
+	private PackageUsageType	packageUsageType	= null;
 	private ProficiencyLevel 	proficiencyLevel 	= null;
 	private String 				competencyLevel 	= null;
 
@@ -72,6 +73,18 @@ public class TestPackage extends AuditHistory{
 	 */
 	public void setPackageName(String packageName) {
 		this.packageName = packageName;
+	}
+	/**
+	 * @return the packageUsageType
+	 */
+	public PackageUsageType getPackageUsageType() {
+		return packageUsageType;
+	}
+	/**
+	 * @param packageUsageType the packageUsageType to set
+	 */
+	public void setPackageUsageType(PackageUsageType packageUsageType) {
+		this.packageUsageType = packageUsageType;
 	}
 	/**
 	 * @return the proficiencyLevel

@@ -1,12 +1,13 @@
 package com.ziksana.domain.course;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utilz.SubjectClassification;
+import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -18,7 +19,7 @@ public class Course extends AuditHistory{
 	}
 	
 	public Course(String name, String description, CourseStatus courseStatus,
-			Integer courseDuration,	MemberPersona accountableMember) {
+			Duration courseDuration,	MemberPersona accountableMember) {
 		this.name = name;
 		this.description = description;
 		this.courseStatus = courseStatus;
@@ -26,13 +27,9 @@ public class Course extends AuditHistory{
 		this.accountableMember = accountableMember;
 	}
 
-	public Course(ZID courseId) {
-		this.courseId = courseId;
-		setCourseStatus(CourseStatus.ADMINISTER_EVAL);
-	}
 
 	public Course(String name, String description, CourseStatus courseStatus,
-			Integer courseDuration,
+			Duration courseDuration,
 			MemberPersona accountableMember, List<LearningComponent> learningComponentList) {
 		this.name = name;
 		this.description = description;
@@ -42,53 +39,91 @@ public class Course extends AuditHistory{
 		this.getCourseDetails().learningComponents =learningComponentList;
 	}
 
-	private ZID courseId;
+	private ZID 					courseId;
 	/**
 	 * Maximum Length:45
 	 */
-	private String 					name 			= null;
+	private String 					name 					= null;
 	/**
 	 * Maximum Length:240
 	 */
-	private String 					description 	= null;
+	private String 					description 			= null;
 	/**
 	 * Course Start Date is for when Course is associate to curriculumm
 	 */
-	private Date 					validFromDate 	= null;
+	private Date 					validFromDate 			= null;
 	/**
 	 * Course End Date is for When Course is associate to curriculumm
 	 */
-	private Date 					validToDate 	= null;
-	private CourseStatus 			courseStatus 	= null;
-	private Rating 					rating 			= null;
-	/**
-	 * Maximum Length:1
-	 */
-	private Boolean 				securityIndicator = null;
-	//private CourseContentSecurity	courseContSecurity = null;
+	private Date 					validToDate 			= null;
+	private CourseStatus 			courseStatus 			= null;
+	private Rating 					rating 					= null;
+	private Boolean 				securityIndicator 		= null;
+	private CourseContentSecurity	courseContSecurity 		= null;
 	/**
 	 * Maximum Length:5
 	 */
-	private String 					courseCredits 	= null;
+	private String 					courseCredits 			= null;
 	/**
 	 *  Maximum Length:5
 	 */
-	private String 					extraCredits	= null;
-	private Boolean 	additionalInfoIndicator 	= null;
+	private String 					extraCredits			= null;
+	private Boolean 				additionalInfoIndicator	= null;
 	/**
 	 * Maximum Length:72
 	 */
 	private String 					thumbnailPicturePath 	= null;
-	private Integer 				courseDuration			= null;
+	private Duration 				courseDuration			= null;
 	private SubjectClassification 	subjClassification	 	= null;
 	private MemberPersona 			accountableMember 		= null;
 	private CourseDetails 			courseDetails 			= null;
 	private Integer					courseProgress			= null;
+	private List<CourseTagcloud> 	courseTagClouds			= null;
 	/**
 	 * Maximum Length:240
 	 */
-	private String 			VersionRemarks 	= null;
-	private Integer 		version 		= null;
+	private String 					versionRemarks 	= null;
+	private Integer 				version 		= null;
+
+	/**
+	 * @param index
+	 * @return
+	 */
+	public CourseTagcloud getCourseTagcloud(int index){
+		
+		if(courseTagClouds == null){
+			throw new IllegalArgumentException("Course Tag cloud cannot set to null");
+		}
+		
+		try{
+			return courseTagClouds.get(index);
+		}catch(Exception e){
+			throw new IllegalStateException("Course Tag cloud at index ["+index+"]  not found");
+		}
+	}
+	
+	/**
+	 * @param tagCloud
+	 */
+	public void addCourseTagcloud(CourseTagcloud tagCloud){
+		
+		if(courseTagClouds == null){
+			courseTagClouds = new ArrayList<CourseTagcloud>();
+		}
+		
+		tagCloud.setCourse(this);
+		
+		courseTagClouds.add(tagCloud);
+
+	}
+
+	/**
+	 * @param courseTagClouds the courseTagClouds to set
+	 */
+	public void setCourseTagClouds(List<CourseTagcloud> courseTagClouds) {
+		this.courseTagClouds = courseTagClouds;
+	}
+
 
 	/**
 	 * @return the value of attribute Name
@@ -114,7 +149,7 @@ public class Course extends AuditHistory{
 	 */
 	public void setName(String name) throws Exception {
 		if (name == null) {
-			throw new Exception("Null name passed");
+			throw new IllegalArgumentException("Null name passed");
 		}
 			this.name = name;
 	}
@@ -237,11 +272,14 @@ public class Course extends AuditHistory{
 		this.additionalInfoIndicator = additionalInfoIndicator;
 	}
 
-	public Integer getCourseDuration() {
+	public Duration getCourseDuration() {
 		return courseDuration;
 	}
 
-	public void setCourseDuration(Integer courseDuration) {
+	public void setCourseDuration(Duration courseDuration) {
+		if(courseDuration == null){
+			throw new IllegalArgumentException("Duration is cannot set to null");
+		}
 		this.courseDuration = courseDuration;
 	}
 
@@ -296,6 +334,14 @@ public class Course extends AuditHistory{
 		this.securityIndicator = securityIndicator;
 	}
 
+	public CourseContentSecurity getCourseContSecurity() {
+		return courseContSecurity;
+	}
+
+	public void setCourseContSecurity(CourseContentSecurity courseContSecurity) {
+		this.courseContSecurity = courseContSecurity;
+	}
+
 	/**
 	 * @return the courseCredits
 	 */
@@ -342,14 +388,14 @@ public class Course extends AuditHistory{
 	 * @return the versionRemarks
 	 */
 	public String getVersionRemarks() {
-		return VersionRemarks;
+		return versionRemarks;
 	}
 
 	/**
 	 * @param versionRemarks the versionRemarks to set
 	 */
 	public void setVersionRemarks(String versionRemarks) {
-		VersionRemarks = versionRemarks;
+		this.versionRemarks = versionRemarks;
 	}
 
 	public String toString() {

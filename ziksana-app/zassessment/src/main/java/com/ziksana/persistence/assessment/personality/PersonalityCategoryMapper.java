@@ -1,24 +1,18 @@
 package com.ziksana.persistence.assessment.personality;
 
-import com.ziksana.domain.assessment.personality.PersonalityCategory;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface PersonalityCategoryMapper {
+public interface PersonalityCategoryMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcategory
-	 */
+	 *//*
 	@Delete({ "delete from pstcategory",
 			"where CategoryId = #{categoryId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer categoryId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcategory
-	 */
+	 *//*
 	@Insert({
 			"insert into pstcategory (CategoryId, Name, ",
 			"Version, Active, Description)",
@@ -26,28 +20,28 @@ public interface PersonalityCategoryMapper {
 			"#{version,jdbcType=INTEGER}, #{active,jdbcType=BIT}, #{description,jdbcType=LONGVARCHAR})" })
 	int insert(PersonalityCategory record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcategory
-	 */
+	 *//*
 	int insertSelective(PersonalityCategory record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcategory
-	 */
+	 *//*
 	@Select({ "select", "CategoryId, Name, Version, Active, Description",
 			"from pstcategory",
 			"where CategoryId = #{categoryId,jdbcType=INTEGER}" })
 	@ResultMap("ResultMapWithBLOBs")
 	PersonalityCategory selectByPrimaryKey(Integer categoryId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcategory
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(PersonalityCategory record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcategory
-	 */
+	 *//*
 	@Update({ "update pstcategory", "set Name = #{name,jdbcType=VARCHAR},",
 			"Version = #{version,jdbcType=INTEGER},",
 			"Active = #{active,jdbcType=BIT},",
@@ -55,12 +49,12 @@ public interface PersonalityCategoryMapper {
 			"where CategoryId = #{categoryId,jdbcType=INTEGER}" })
 	int updateByPrimaryKeyWithBLOBs(PersonalityCategory record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table pstcategory
-	 */
+	 *//*
 	@Update({ "update pstcategory", "set Name = #{name,jdbcType=VARCHAR},",
 			"Version = #{version,jdbcType=INTEGER},",
 			"Active = #{active,jdbcType=BIT}",
 			"where CategoryId = #{categoryId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(PersonalityCategory record);
-}
+*/}

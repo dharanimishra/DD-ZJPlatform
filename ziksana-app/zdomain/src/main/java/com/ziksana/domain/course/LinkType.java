@@ -1,11 +1,17 @@
 package com.ziksana.domain.course;
 
+import java.util.NoSuchElementException;
+
 
 public enum LinkType {
 
 	//TODO: retrieve the ids from the static data service
-	EXTERNAL_URI(1, "External URI"),
-	INTERNAL_URI(2, "Internal URI");
+	REFERENCE			(1, "Reference"),
+	ADDITIONAL_INFO		(2, "Additional information"),
+	VARIATION_INFO		(3, "Variation information"),
+	LOCALIZATION_INFO	(4, "Localization information"),
+	EXAMPLE_INFO		(5, "External URI"),
+	TEST_INFO			(6, "Test information");
 
 	private final int id;
 	private final String name;
@@ -30,7 +36,7 @@ public enum LinkType {
 			}
 		}
 
-		throw new IndexOutOfBoundsException("LinkType ID [" + ID + "] not found");
+		throw new NoSuchElementException("LinkType ID [" + ID + "] not found");
 	}
 
 	public String toString() {
