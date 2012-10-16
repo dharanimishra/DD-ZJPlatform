@@ -33,7 +33,10 @@ public class MockSubjectClassificationServiceImpl implements SubjectClassificati
 	static Map<String,List> subjectMap = new HashMap<String,List>();
 	static Map<String,List> topicMap = new HashMap<String,List>();
 	
-	
+	/**
+	 * While object is being created instantiates all the required values
+	 * 
+	 */
 	public MockSubjectClassificationServiceImpl() {
 
 		
@@ -102,6 +105,10 @@ public class MockSubjectClassificationServiceImpl implements SubjectClassificati
 		
 	}
 
+	/**
+	 * This method will return only the list of Areas
+	 * 
+	 */
 	@Override
 	public List<String> getAreaList()
 			throws SubjectClassificationException {
@@ -110,6 +117,10 @@ public class MockSubjectClassificationServiceImpl implements SubjectClassificati
 		return sClassification.getAreaList();
 	}
 	
+	/**
+	 * This method will return only the list of Subjects
+	 * 
+	 */
 	@Override
 	public List<String> getSubjectList()
 			throws SubjectClassificationException {
@@ -125,6 +136,10 @@ public class MockSubjectClassificationServiceImpl implements SubjectClassificati
 		return sClassification.getSubjectList();
 	}
 
+	/**
+	 * This method will return only the list of Topics
+	 * 
+	 */
 	@Override
 	public List<String> getTopicList()
 			throws SubjectClassificationException {
@@ -142,6 +157,10 @@ public class MockSubjectClassificationServiceImpl implements SubjectClassificati
 		
 	}
 
+	/**
+	 * This method will return the list of Subjects based on the Area selected 
+	 * 
+	 */
 	@Override
 	public SubjectClassification getSubjectList(
 			SubjectClassification subjectClassification)
@@ -152,6 +171,10 @@ public class MockSubjectClassificationServiceImpl implements SubjectClassificati
 		return sClassification;
 	}
 
+	/**
+	 * This method will return the list of Topics based on the Area and Subject selected 
+	 * 
+	 */
 	@Override
 	public SubjectClassification getTopicList(
 			SubjectClassification subjectClassification)

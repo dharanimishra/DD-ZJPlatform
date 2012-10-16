@@ -28,7 +28,7 @@ public class SubjectClassification extends AuditHistory{
 	private String 		subject				= null;
 	private String 		topic				= null;
 	private Boolean 	active				= null;
-
+	
 	private List<String> areaList			= null;
 	private List<String> subjectList		= null;
 	private List<String> topicList			= null;
