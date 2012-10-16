@@ -1,6 +1,8 @@
 package com.ziksana.domain.utilz;
 
 import java.util.Date;
+import java.util.List;
+
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.id.ZID;
 
@@ -17,13 +19,40 @@ public class SubjectClassification extends AuditHistory{
 		this.active = active;
 	}
 
+	public SubjectClassification() {
+	}
+
 	private ZID 		subjClassificationId;
 	private Date 		creationDate		= null;
-	private String 		subject				= null;
 	private String 		area				= null;
+	private String 		subject				= null;
 	private String 		topic				= null;
 	private Boolean 	active				= null;
+
+	private List<String> areaList			= null;
+	private List<String> subjectList		= null;
+	private List<String> topicList			= null;
+
 	
+	public List<String> getAreaList() {
+		return areaList;
+	}
+	public void setAreaList(List<String> areaList) {
+		this.areaList = areaList;
+	}
+	public List<String> getSubjectList() {
+		return subjectList;
+	}
+	public void setSubjectList(List<String> subjectList) {
+		this.subjectList = subjectList;
+	}
+	public List<String> getTopicList() {
+		return topicList;
+	}
+	public void setTopicList(List<String> topicList) {
+		this.topicList = topicList;
+	}
+
 	/**
 	 * @return the subjClassificationId
 	 */
