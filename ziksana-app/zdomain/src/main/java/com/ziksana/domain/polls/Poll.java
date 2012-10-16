@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
-import com.ziksana.common.exception.PollException;
 import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.domain.member.MemberPersona;
 
@@ -71,11 +70,10 @@ public class Poll implements Comparable<Poll> {
 	}
 
 	public void setPollDates(Date pollStartDate, Date pollEndDate, 
-			                 Date pollDisplayEndDate) 
-	throws PollException {
+			                 Date pollDisplayEndDate) {
 		if (pollStartDate == null || pollEndDate == null || 
 				pollDisplayEndDate == null) {
-			throw new PollException("setPollDates() : Null date passed");
+			throw new IllegalArgumentException("setPollDates() : Null date passed");
 		}
 
 		if (pollStartDate.before(pollEndDate)  && 
@@ -84,7 +82,7 @@ public class Poll implements Comparable<Poll> {
 			this.pollEndDate    = pollEndDate;
 			this.pollDisplayEndDate = pollDisplayEndDate;
 		} else {
-			throw new PollException("Poll Start & End Dates, not in proper sequence.");
+			throw new IllegalArgumentException("Poll Start & End Dates, not in proper sequence.");
 		}
 	}
 
@@ -120,17 +118,13 @@ public class Poll implements Comparable<Poll> {
 		this.targetedMemberRoleType = targetedMemberRoleType;
 	}
 	
-	public PollQuestion getQuestion(int index) 
-	throws PollException {
+	public PollQuestion getQuestion(int index) {
+		
 		if (pollQuestions == null) {
-			throw new PollException("Poll Questions not set in the Poll ID [" + ID + "]");
+			throw new IllegalStateException("Poll Questions not set in the Poll ID [" + ID + "]");
 		}
 		
-		try {
-			return pollQuestions.get(index);	
-		} catch (Exception exp) {
-			throw new PollException("Poll Question at index [" + index + "] not found", exp);
-		}
+		return pollQuestions.get(index);	
 	}
 	
 	public List<PollQuestion> getAllQuestions() {
@@ -146,10 +140,9 @@ public class Poll implements Comparable<Poll> {
 		pollQuestions.add(question);
 	}
 	
-	public void setQuestions(List<PollQuestion> list) 
-	throws PollException {
+	public void setQuestions(List<PollQuestion> list) {
 		if (list == null) {
-			throw new PollException("Cannot set PollQuestions as null in Poll ID [" + ID + "]");
+			throw new IllegalArgumentException("Cannot set PollQuestions as null in Poll ID [" + ID + "]");
 		}
 		
 		pollQuestions = list;

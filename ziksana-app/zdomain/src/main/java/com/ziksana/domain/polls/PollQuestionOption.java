@@ -1,14 +1,13 @@
 package com.ziksana.domain.polls;
 
-// import com.ziksana.util.image.ImageContainer;
-import com.ziksana.common.exception.PollException;
+
 
 public class PollQuestionOption {
 
 	private Integer index        = -1;     // Index within the list of options
 	private String  optionText   = null;
 	private boolean optionSet    = false;  // captures the user's response
-	private Integer optionTotal  = -1;      // captures the totals / result
+	private Integer optionTotal  = -1;     // captures the totals / result
 	
 	public PollQuestionOption() {
 	
@@ -27,10 +26,9 @@ public class PollQuestionOption {
 		optionText = text;
 	}
 
-	public int getIndex() 
-	throws PollException {
+	public int getIndex() {
 		if (index < 0) {
-			throw new PollException("Index not set.");
+			throw new IllegalStateException("Index not set.");
 		}
 		
 		return index;
@@ -64,10 +62,9 @@ public class PollQuestionOption {
 		optionSet = false;
 	}
 	
-	public Integer getOptionTotal() 
-	throws PollException {
+	public Integer getOptionTotal() {
 		if (optionTotal < 0) {
-			throw new PollException("Option Total are set.");
+			throw new IllegalStateException("Option Total is not set.");
 		}
 		
 		return optionTotal;

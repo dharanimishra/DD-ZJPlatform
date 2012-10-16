@@ -1,6 +1,7 @@
 package com.ziksana.domain.polls;
 
-import com.ziksana.common.exception.PollException;
+
+
 
 /**
  * 
@@ -37,18 +38,18 @@ public class PollResultNQuestion {
 	}
 
 	public void setPollResult(PollQuestionResult pollResult) 
-	throws PollException {
+	 {
 		if (this.question != null) {
-			throw new PollException("Cannot set PollResult as PollQuestion already set.");
+			throw new IllegalStateException("Cannot set PollResult as PollQuestion already set.");
 		}
 		
 		this.result = pollResult;
 	}
 	
 	public void setPollQuestion(PollQuestion pollQuestion) 
-	throws PollException {
+	{
 		if (this.result != null) {
-			throw new PollException("Cannot set PollQuestion as PollResult already set.");
+			throw new IllegalStateException("Cannot set PollQuestion as PollResult already set.");
 		}
 		
 		this.question = pollQuestion;

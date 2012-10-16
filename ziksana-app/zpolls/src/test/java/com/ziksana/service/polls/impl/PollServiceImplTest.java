@@ -85,7 +85,7 @@ public class PollServiceImplTest {
 		PollQuestion pollQuestion = new PollQuestion();
 		pollQuestion.setID(Integer.valueOf(2));
 		PollQuestionResult pollResult =  pollService.getPollResult(memberPersona, pollQuestion);
-		Assert.isTrue(pollResult.getAnswer1Count() == 5);
+		Assert.isTrue(pollResult.getOptionCount(0) == 5);
 		
 	}
 	

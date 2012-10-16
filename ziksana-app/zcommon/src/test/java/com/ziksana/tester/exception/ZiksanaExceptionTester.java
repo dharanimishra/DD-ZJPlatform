@@ -9,7 +9,7 @@ public class ZiksanaExceptionTester {
 	 */
 	public static void main(String[] args) {
 		
-		ZiksanaException exp1 = new ZiksanaException("test.inner", new InvalidArgumentException("Wrong arguments."));
+		ZiksanaException exp1 = new ZiksanaException("test.inner", new IllegalArgumentException("Wrong arguments."));
 		
 		ZiksanaException exp2 = new ZiksanaException("test.outer", exp1);
 		
