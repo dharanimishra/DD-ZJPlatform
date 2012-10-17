@@ -37,9 +37,8 @@ public interface SubjectClassificationService {
 	/**
 	 * Retrieve the whole list (Area - Subject - Topic).
 	 * 
-	 * @param area
-	 * @return
+	 * @return SubjectClassification
 	 * @throws SubjectClassificationException
 	 */
-	public List<SubjectClassification> getSubjectClassification() throws SubjectClassificationException;
+	public SubjectClassification getSubjectClassification() throws SubjectClassificationException;
 }
