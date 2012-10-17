@@ -1,4 +1,4 @@
-package com.ziksana.domain.utilz;
+package com.ziksana.domain.utils;
 
 import java.util.Date;
 

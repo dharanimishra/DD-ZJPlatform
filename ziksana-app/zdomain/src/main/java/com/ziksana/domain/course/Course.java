@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
-import com.ziksana.domain.utilz.SubjectClassification;
+import com.ziksana.domain.utils.SubjectClassification;
 import com.ziksana.id.ZID;
 
 /**

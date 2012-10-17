@@ -1,15 +1,14 @@
-package com.ziksana.domain.utilz;
+package com.ziksana.domain.utils;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.Iterator;
 
 import com.ziksana.domain.common.AuditHistory;
-import com.ziksana.domain.common.Topic;
+
 
 /**
  * @author bhashasp
@@ -77,11 +76,33 @@ public class SubjectClassification extends AuditHistory {
 		return;
 	}
 	
+	private List<String> getList(Set<String> strSet) {
+		if (strSet == null) {
+			return null;
+		}
+		
+		List<String> list = new ArrayList<String>();
+		Iterator<String> it = strSet.iterator();
+		while (it.hasNext()) {
+			list.add(it.next());
+		}
+		
+		return list;
+	}
+	
+	public List<String> getAreaList() {
+		return getList(getAreaSet());
+	}
+	
 	public Set<String> getAreaSet() {
 		if (classification == null) {
 			return null;
 		}
 		return classification.keySet();
+	}
+	
+	public List<String> getSubjectList(String area) {
+		return getList(getSubjectSet(area));
 	}
 	
 	public Set<String> getSubjectSet(String area) {
@@ -100,7 +121,6 @@ public class SubjectClassification extends AuditHistory {
 
 	@Override
 	public String toString() {
-		return "SubjectClassification [subject=" + subject + ", area=" + area
-				+ ", topic=" + topic + ", active=" + active + "]";
+		return "SubjectClassification All Areas [" + getAreaSet().toString() + "]";
 	}
 }

@@ -2,7 +2,8 @@ package com.ziksana.service.subjectclassification;
 
 import java.util.List;
 
-import com.ziksana.domain.utilz.SubjectClassification;
+import com.ziksana.domain.utils.SubjectClassification;
+import com.ziksana.domain.utils.Topic;
 import com.ziksana.exception.subjectclassification.SubjectClassificationException;
 
 public interface SubjectClassificationService {
@@ -32,7 +33,7 @@ public interface SubjectClassificationService {
 	 * @return
 	 * @throws SubjectClassificationException
 	 */
-	public List<String> getTopicList(String area, String subject) throws SubjectClassificationException;
+	public List<Topic> getTopicList(String area, String subject) throws SubjectClassificationException;
 
 	/**
 	 * Retrieve the whole list (Area - Subject - Topic).

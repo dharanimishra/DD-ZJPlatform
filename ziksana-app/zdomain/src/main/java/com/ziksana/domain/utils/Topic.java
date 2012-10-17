@@ -1,4 +1,4 @@
-package com.ziksana.domain.common;
+package com.ziksana.domain.utils;
 
 import com.ziksana.id.ZID;
 

@@ -5,7 +5,7 @@ import java.util.Date;
 import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
-import com.ziksana.domain.utilz.SubjectClassification;
+import com.ziksana.domain.utils.SubjectClassification;
 
 /**
  * @author bhashasp
