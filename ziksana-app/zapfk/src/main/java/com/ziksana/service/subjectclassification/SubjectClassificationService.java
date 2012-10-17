@@ -23,7 +23,7 @@ public interface SubjectClassificationService {
 	 * @return
 	 * @throws SubjectClassificationException
 	 */
-	public List<String> getSubjectList() throws SubjectClassificationException;
+	public List<String> getSubjectList(String area) throws SubjectClassificationException;
 	
 	/**
 	 * Retrieve list of Topics.
@@ -32,25 +32,14 @@ public interface SubjectClassificationService {
 	 * @return
 	 * @throws SubjectClassificationException
 	 */
-	public List<String> getTopicList() throws SubjectClassificationException;
+	public List<String> getTopicList(String area, String subject) throws SubjectClassificationException;
 
 	/**
-	 * Retrieve list of Subjects based on area.
+	 * Retrieve the whole list (Area - Subject - Topic).
 	 * 
 	 * @param area
 	 * @return
 	 * @throws SubjectClassificationException
 	 */
-	public SubjectClassification getSubjectList(SubjectClassification subjectClassification) throws SubjectClassificationException;
-
-
-	/**
-	 * Retrieve list of Topics based on area and subject.
-	 * 
-	 * @param area subject
-	 * @return
-	 * @throws SubjectClassificationException
-	 */
-	public SubjectClassification getTopicList(SubjectClassification subjectClassification) throws SubjectClassificationException;
-
+	public List<SubjectClassification> getSubjectClassification() throws SubjectClassificationException;
 }
