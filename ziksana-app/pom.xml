@@ -19,7 +19,8 @@
 		<module>zsample</module>
 		<module>zassessment</module>
     <module>zapfk</module>
-  </modules>
+    <module>zalert</module>
+	</modules>
 
 	<properties>
 		<java.version>1.6</java.version>
