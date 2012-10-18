@@ -5,7 +5,11 @@ package com.ziksana.service.alert.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.ziksana.domain.alerts.Alert;
+import com.ziksana.persistence.alert.AlertMapper;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.alert.AlertsService;
 
 /**
@@ -13,6 +17,10 @@ import com.ziksana.service.alert.AlertsService;
  *
  */
 public class AlertServiceImpl implements AlertsService {
+	
+	
+	@Autowired
+	public AlertMapper alertMapper;
 
 	/* (non-Javadoc)
 	 * @see com.ziksana.service.alert.AlertsService#getAlertList()
@@ -20,7 +28,8 @@ public class AlertServiceImpl implements AlertsService {
 	@Override
 	public List<Alert> getAlertList() {
 		// TODO Auto-generated method stub
-		return null;
+		int notificationType = 1000;
+		return alertMapper.getAlerts(Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID()), Integer.valueOf(notificationType));
 	}
 
 	/* (non-Javadoc)
