@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.ziksana.domain.assessment.AssignmentTest;
 
 
 
@@ -10,7 +11,14 @@ import java.util.List;
  * 
  * @author bhashasp
  */
-public class CourseDetails extends Course {
+public class CourseDetails{
+
+	@Override
+	public String toString() {
+		return "CourseDetails [learningComponents=" + learningComponents 
+				+ "<br>, learningContent=" + learningContent
+				+ ", assignmentTestList=" + assignmentTestList + "]";
+	}
 
 	private List<CourseAdditionalProperty> 			courseAdditionalPropertyList 		= null;
 	List<LearningComponent> 						learningComponents 					= null;
@@ -19,18 +27,53 @@ public class CourseDetails extends Course {
 	private LearningComponentContent 				learningComponentContent 			= null;
 	private LearningComponentNest 					learningComponentNest 				= null;
 	private LearningContent 						learningContent 					= null;
-
+	private List<AssignmentTest> 					assignmentTestList					= null;
 	// TODO: below associations/compositions will uncomment later.
-	//private CoursePlaybook 							coursePlaybook 						= null;
-	//private List<LearningElementWall> 				learningElementWalls 				= null;
-	//private List<CurriculumCourseCalendar> 			currCourseCalendarEntries 			= null;
+	//private List<LearningElementWall> 			learningElementWalls 				= null;
+	//private List<CurriculumCourseCalendar> 		currCourseCalendarEntries 			= null;
 	//private CurriculumCourse 						curriculumCourse 					= null;
 	//private List<LearningContentReviewProgress> 	learningContentReviewProgressList 	= null;
-	//private List<AssignmentTest> 					assignmentTests 					= null;
-	//private List<Announcement> 						announcements 						= null;
-	// private CourseLearningPlanner 				courseLearningPlanner 				= null;
+	//private List<Announcement> 					announcements 						= null;
 	// private List<Engagement> 					engagements 						= null;
 
+	
+	/**
+	 * @param index
+	 * @return
+	 */
+	public AssignmentTest getAssignmentTest(int index){
+		if(assignmentTestList == null){
+			throw new IllegalArgumentException("AssignmentTest cannot set to null");
+		}
+		
+		try{
+			return assignmentTestList.get(index);
+		}catch(Exception e){
+			throw new IllegalStateException("AssignmentTest at index ["+index+"]  not found");
+		}
+	}
+	
+	/**
+	 * @param playbook
+	 */
+	public void addAssignmentTest(AssignmentTest test){
+		if(assignmentTestList == null){
+			assignmentTestList = new ArrayList<AssignmentTest>();
+		}
+		test.setLearningComponent(learningComponent);
+		
+		assignmentTestList.add(test);
+	}
+
+	
+	/**
+	 * @param list
+	 */
+	public void setAssignmentTestList(List<AssignmentTest> list) {
+		this.assignmentTestList = list;
+	}
+
+	
 	/**
 	 * Add LearningComponent to a course tree.
 	 * @param learningComponent
@@ -138,8 +181,7 @@ public class CourseDetails extends Course {
 
 		if (learningComponents == null) {
 			throw new IllegalStateException(
-					"LearningComponents not set in Course ID [" + getCourseId()
-							+ "]");
+					"LearningComponents not set in Course ");
 		}
 
 		for (LearningComponent learningComponent : learningComponents) {
@@ -276,84 +318,6 @@ public class CourseDetails extends Course {
 			LearningComponentContent learningComponentContent) {
 		this.learningComponentContent = learningComponentContent;
 	}
-/*
-	*//**
-	 * @return the currCourseCalendarEntries
-	 *//*
-	public List<CurriculumCourseCalendar> getCurrCourseCalendarEntries() {
-		return currCourseCalendarEntries;
-	}
-
-	*//**
-	 * @param currCourseCalendarEntries
-	 *            the currCourseCalendarEntries to set
-	 *//*
-	public void setCurrCourseCalendarEntries(
-			List<CurriculumCourseCalendar> currCourseCalendarEntries) {
-		this.currCourseCalendarEntries = currCourseCalendarEntries;
-	}
-
-	*//**
-	 * @return the learningContentReviewProgressList
-	 *//*
-	public List<LearningContentReviewProgress> getLearningContentReviewProgressList() {
-		return learningContentReviewProgressList;
-	}
-
-	*//**
-	 * @param learningContentReviewProgressList
-	 *            the learningContentReviewProgressList to set
-	 *//*
-	public void setLearningContentReviewProgressList(
-			List<LearningContentReviewProgress> learningContentReviewProgressList) {
-		this.learningContentReviewProgressList = learningContentReviewProgressList;
-	}
-
-	*//**
-	 * @return the announcements
-	 *//*
-	public List<Announcement> getAnnouncements() {
-		return announcements;
-	}
-
-	*//**
-	 * @param announcements
-	 *            the announcements to set
-	 *//*
-	public void setAnnouncements(List<Announcement> announcements) {
-		this.announcements = announcements;
-	}
-
-	*//**
-	 * @return the learningElementWalls
-	 *//*
-	public List<LearningElementWall> getLearningElementWalls() {
-		return learningElementWalls;
-	}
-
-	*//**
-	 * @param learningElementWalls
-	 *            the learningElementWalls to set
-	 *//*
-	public void setLearningElementWalls(
-			List<LearningElementWall> learningElementWalls) {
-		this.learningElementWalls = learningElementWalls;
-	}
-
-	*//**
-	 * @return the assignmentTests
-	 *//*
-	public List<AssignmentTest> getAssignmentTests() {
-		return assignmentTests;
-	}
-
-	*//**
-	 * @param assignmentTests
-	 *            the assignmentTests to set
-	 *//*
-	public void setAssignmentTests(List<AssignmentTest> assignmentTests) {
-		this.assignmentTests = assignmentTests;
-	}
-*/
-
+	
+	
 }

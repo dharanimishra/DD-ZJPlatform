@@ -17,6 +17,9 @@ public class Choice implements Comparable<Choice> {
 		this.text = text;
 		this.imageUrl = imageUrl;
 	}
+	
+	
+	
 
 	/**
 	 * @return the index

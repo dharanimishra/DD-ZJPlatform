@@ -12,10 +12,11 @@ public class NextBestQuestion extends AuditHistory {
 	}
 
 	
-	private ZID 		nextBestQuestionId;
-	private TestModel 	testModel 	= null;
-	private Boolean 	active 		= null;
-	
+	private ZID 			nextBestQuestionId;
+	private TestModel 		testModel 					= null;
+	private Boolean 		active 						= null;
+	private QuestionBank	sourceQuestion				= null;
+	private QuestionBank	nextQuestion				= null;
 	
 	public ZID getNextBestQuestionId() {
 		return nextBestQuestionId;
@@ -36,6 +37,30 @@ public class NextBestQuestion extends AuditHistory {
 		this.active = active;
 	}
 	
+	/**
+	 * @return the sourceQuestion
+	 */
+	public QuestionBank getSourceQuestion() {
+		return sourceQuestion;
+	}
+	/**
+	 * @param sourceQuestion the sourceQuestion to set
+	 */
+	public void setSourceQuestion(QuestionBank sourceQuestion) {
+		this.sourceQuestion = sourceQuestion;
+	}
+	/**
+	 * @return the nextQuestion
+	 */
+	public QuestionBank getNextQuestion() {
+		return nextQuestion;
+	}
+	/**
+	 * @param nextQuestion the nextQuestion to set
+	 */
+	public void setNextQuestion(QuestionBank nextQuestion) {
+		this.nextQuestion = nextQuestion;
+	}
 	@Override
 	public String toString() {
 		return "NextBestQuestion [testModel=" + testModel + ", active="

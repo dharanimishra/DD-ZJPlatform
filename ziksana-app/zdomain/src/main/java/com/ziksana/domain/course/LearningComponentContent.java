@@ -6,6 +6,10 @@ import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
 public class LearningComponentContent extends AuditHistory{
+	
+	public LearningComponentContent(){
+		
+	}
 
 	public LearningComponentContent(LearningComponent learningComponent,
 			LearningContent baseLearningContent) {
@@ -203,9 +207,10 @@ public class LearningComponentContent extends AuditHistory{
 	@Override
 	public String toString() {
 		return "LearningComponentContent [courseStatus=" + courseStatus
-				+ ", learningComponent="
-				+ learningComponent + ", baseLearningContent="
-				+ baseLearningContent + "]";
+				+ ", contentDescription=" + contentDescription
+				+ ", baseLearningContent=" + baseLearningContent
+				+ ", learningComponentContentDetails="
+				+ learningComponentContentDetails + "]";
 	}
 
 }

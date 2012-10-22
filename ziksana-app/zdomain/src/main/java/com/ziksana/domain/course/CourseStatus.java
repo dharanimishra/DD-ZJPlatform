@@ -12,10 +12,10 @@ import java.util.NoSuchElementException;
 public enum CourseStatus {
 
 	// TODO: retrieve the ids from the static data service
-	DRAFT           (1, "Under Construction"),
+	UNDER_CONSTRUCT (1, "Under Construction"),
 	REVIEW          (2, "Under Review"),
-	ACTIVE         	(3, "Active"),
-	RELEASE        	(4,"Ready for release"),
+	RELEASE        	(3, "Ready for release"),
+	ACTIVE         	(4, "Active"),
 	HOLD      		(5, "Hold"),
 	ARCHIVED       	(6, "Archived");
 	

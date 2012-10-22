@@ -5,10 +5,10 @@ import java.util.NoSuchElementException;
 public enum ComponentContentType {
 
 	// TODO: retrieve the ids from the static data service
-	PREVIEW_CONTENT      	(1, "Video"),
-	PROMOTIONAL_CONTENT     (2, "Audio"),
-	PRACTICE_CONTENT   		(3, "Textual"),
-	COURSE_CONTENT			(4, "Textual");
+	PREVIEW_CONTENT      	(1, "Preview Content"),
+	PROMOTIONAL_CONTENT     (2, "Promotional Content"),
+	PRACTICE_CONTENT   		(3, "Practice Content"),
+	COURSE_CONTENT			(4, "Course Content");
 	
 
 	private final int id;

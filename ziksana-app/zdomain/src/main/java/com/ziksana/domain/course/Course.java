@@ -15,7 +15,7 @@ import com.ziksana.id.ZID;
 public class Course extends AuditHistory{
 
 	public Course() {
-		setCourseStatus(CourseStatus.DRAFT);
+		setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 	}
 	
 	public Course(String name, String description, CourseStatus courseStatus,
@@ -78,12 +78,47 @@ public class Course extends AuditHistory{
 	private MemberPersona 			accountableMember 		= null;
 	private CourseDetails 			courseDetails 			= null;
 	private Integer					courseProgress			= null;
-	private List<CourseTagcloud> 	courseTagClouds			= null;
 	/**
 	 * Maximum Length:240
 	 */
-	private String 					versionRemarks 	= null;
-	private Integer 				version 		= null;
+	private String 					versionRemarks 			= null;
+	private Integer 				version 				= null;
+
+	private List<CourseTagcloud> 			courseTagClouds				= null;
+	private List<CoursePlaybook> 			coursePlaybookList			= null;
+	private List<CourseLearningPlanner> 	courseLearningPlannerList 	= null;
+	
+	/**
+	 * @param index
+	 * @return
+	 */
+	public CoursePlaybook getCoursePlaybook(int index){
+		if(coursePlaybookList == null){
+			throw new IllegalArgumentException("CoursePlaybook cannot set to null");
+		}
+		
+		try{
+			return coursePlaybookList.get(index);
+		}catch(Exception e){
+			throw new IllegalStateException("CoursePlaybook at index ["+index+"]  not found");
+		}
+	}
+	/**
+	 * @param playbook
+	 */
+	public void addCoursePlaybook(CoursePlaybook playbook){
+		if(coursePlaybookList == null){
+			coursePlaybookList = new ArrayList<CoursePlaybook>();
+		}
+		playbook.setCourse(this);
+		coursePlaybookList.add(playbook);
+	}
+	/**
+	 * @param list
+	 */
+	public void setCoursePlaybookList(List<CoursePlaybook> list) {
+		this.coursePlaybookList = list;
+	}
 
 	/**
 	 * @param index
@@ -124,6 +159,38 @@ public class Course extends AuditHistory{
 		this.courseTagClouds = courseTagClouds;
 	}
 
+	/**
+	 * @param courseTagClouds the courseTagClouds to set
+	 */
+	public List<CourseTagcloud> getCourseTagClouds() {
+		return courseTagClouds;
+	}
+	
+	public void addCourseLearningPlanner(CourseLearningPlanner coursePlanner){
+		
+		if(courseLearningPlannerList==null){
+			courseLearningPlannerList = new ArrayList<CourseLearningPlanner>();
+		}
+		
+		courseLearningPlannerList.add(coursePlanner);
+	}
+
+	/**
+	 * @return the courseLearningPlannerList
+	 */
+	public List<CourseLearningPlanner> getCourseLearningPlannerList() {
+		
+		return courseLearningPlannerList;
+	}
+
+	/**
+	 * @param courseLearningPlannerList the courseLearningPlannerList to set
+	 */
+	public void setCourseLearningPlannerList(
+			List<CourseLearningPlanner> courseLearningPlannerList) {
+		
+		this.courseLearningPlannerList = courseLearningPlannerList;
+	}
 
 	/**
 	 * @return the value of attribute Name
@@ -131,20 +198,9 @@ public class Course extends AuditHistory{
 	public String getName() {
 		return name;
 	}
-/*	*//**
-	 *//*
-	public String getCourseIdentifier() {
-		return courseIdentifier;
-	}
-	*//**
-	 *//*
-	public void setCourseIdentifier(String courseIdentifier) {
-		this.courseIdentifier = courseIdentifier == null ? null
-				: courseIdentifier.trim();
-	}
-*/	/**
+	/**
 	 * @param name
- * @throws Exception 
+	 * @throws Exception 
 	 * @throws NullPointerException
 	 */
 	public void setName(String name) throws Exception {

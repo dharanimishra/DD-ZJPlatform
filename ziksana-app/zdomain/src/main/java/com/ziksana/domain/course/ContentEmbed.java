@@ -15,13 +15,13 @@ public class ContentEmbed extends AuditHistory {
 	
 	public ContentEmbed(Timestamp startTime, Timestamp endTime,
 			EmbeddedContentType contentType, String embeddedContentPath,
-			String embeddedContent, ApplyEmbed applyEmbed) {
+			String embeddedContent, Embed embed) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.contentType = contentType;
 		this.embeddedContentPath = embeddedContentPath;
 		this.embeddedContent = embeddedContent;
-		this.applyEmbed = applyEmbed;
+		this.embed = embed;
 	}
 
 	private ZID 					contentEmbedId;
@@ -31,7 +31,7 @@ public class ContentEmbed extends AuditHistory {
 	private String 					embeddedContentPath 	= null;
 	private String 					embeddedContent 		= null;
 	private Boolean 				active 					= null;
-	private ApplyEmbed				applyEmbed 				= null;
+	private Embed				embed 				= null;
 	/**
 	 * @return the contentEmbedId
 	 */
@@ -119,14 +119,14 @@ public class ContentEmbed extends AuditHistory {
 	/**
 	 * @return the applyEmbed
 	 */
-	public ApplyEmbed getApplyEmbed() {
-		return applyEmbed;
+	public Embed getApplyEmbed() {
+		return embed;
 	}
 	/**
-	 * @param applyEmbed the applyEmbed to set
+	 * @param embed the applyEmbed to set
 	 */
-	public void setApplyEmbed(ApplyEmbed applyEmbed) {
-		this.applyEmbed = applyEmbed;
+	public void setApplyEmbed(Embed embed) {
+		this.embed = embed;
 	}
 	
 	@Override

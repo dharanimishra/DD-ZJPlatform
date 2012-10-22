@@ -29,7 +29,7 @@ public class ContentEnrichment extends AuditHistory {
 	private LinkSource 					linkSource 					= null;
 	private Boolean 					zeniSuggestedIndicator 		= null;
 	private Boolean 					active 						= null;
-	private ApplyEnrichment 			applyEnrichment 			= null;
+	private Enrichment 			enrichment 			= null;
 
 	/**
 	 * @return the enrichmentId
@@ -214,15 +214,15 @@ public class ContentEnrichment extends AuditHistory {
 	/**
 	 * @return the applyEnrichment
 	 */
-	public ApplyEnrichment getApplyEnrichment() {
-		return applyEnrichment;
+	public Enrichment getApplyEnrichment() {
+		return enrichment;
 	}
 
 	/**
-	 * @param applyEnrichment the applyEnrichment to set
+	 * @param enrichment the applyEnrichment to set
 	 */
-	public void setApplyEnrichment(ApplyEnrichment applyEnrichment) {
-		this.applyEnrichment = applyEnrichment;
+	public void setApplyEnrichment(Enrichment enrichment) {
+		this.enrichment = enrichment;
 	}
 
 

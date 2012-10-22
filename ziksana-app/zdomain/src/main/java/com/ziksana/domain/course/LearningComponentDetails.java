@@ -3,28 +3,43 @@ package com.ziksana.domain.course;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ziksana.domain.assessment.AssignmentTest;
+
 /**
  * This object contains more information about Course
  * @author bhashasp
  */
-public class LearningComponentDetails extends LearningComponent{
+public class LearningComponentDetails{
 
+
+	@Override
+	public String toString() {
+		return "LearningComponentDetails [learningCompContentList="
+				+ learningCompContentList + ", learningComponentNest="
+				+ learningComponentNest + ", assignmentTest="
+				+ assignmentTest + "]";
+	}
 
 	public LearningComponentDetails(LearningComponentType learningComponentType) {
-		super(learningComponentType);
+	}
+
+	public LearningComponentDetails() {
+		// TODO Auto-generated constructor stub
 	}
 
 	private List<LearningComponentContent> 		learningCompContentList				= null;
 	private LearningComponentNest 				learningComponentNest 				= null;
 	
 	private CourseLearningComponent 			courseLearningComponent				= null;
+	private AssignmentTest		 				assignmentTest						= null;
+	
 	//private List<CoursePlaybookView> 			coursePlaybookViewList				= null;
 	//private List<LearningElementWall> 			learningElementWallList				= null;
 	//private SubscriptionCourseItemCalendar  	subscnCourseItemCalendar			= null; 
 /*	private CoursePlaybookView					coursePlaybookView					= null;
 	private List<LearningElementWall> 			learningElementWalls				= null;
 	private List<LearningContentReviewProgress> learningContentReviewProgressList	= null;
-	private List<AssignmentTest> 				assignmentTests						= null;
+	
 	//private List<TestPackage> 				testPackageList						= null;
 	private List<LearningComponentTagcloud> 	learningComponentTagcloudList		= null;
 */
@@ -67,12 +82,12 @@ public class LearningComponentDetails extends LearningComponent{
 	 *            the courseLearningComponent to set
 	 */
 	public void addCourseLearningComponent(
-			CourseLearningComponent courseLearningComponent) {
+			CourseLearningComponent courseLComponent) {
 		if(courseLearningComponent == null){
-			courseLearningComponent = new CourseLearningComponent();
+			courseLearningComponent = new CourseLearningComponent(courseLComponent.getUsageStartDate(),courseLComponent.getUsageEndDate(),courseLComponent.getDuration());
 		}
 		
-		this.courseLearningComponent = courseLearningComponent;
+		this.courseLearningComponent = courseLComponent;
 	}
 
 
@@ -83,7 +98,7 @@ public class LearningComponentDetails extends LearningComponent{
 	public LearningComponentContent getLearningComponentContent(int index) throws Exception{
 		
 		if(learningCompContentList==null){
-			throw new IllegalArgumentException("Learning Component Contents cannot set in the Learning Component ID ["+learningComponentId+"]");
+			throw new IllegalArgumentException("Learning Component Contents cannot set in the Learning Component");
 		}
 		try{
 			return learningCompContentList.get(index);
@@ -102,7 +117,6 @@ public class LearningComponentDetails extends LearningComponent{
 		if(learningCompContentList == null){
 			learningCompContentList = new ArrayList<LearningComponentContent>();
 		}
-			learningComponentContent.setLearningComponent(this);
 			
 			learningCompContentList.add(learningComponentContent);
 	}
@@ -114,7 +128,7 @@ public class LearningComponentDetails extends LearningComponent{
 			Integer learningComponentContentId) throws Exception{
 
 		if(learningCompContentList == null){
-			throw new IllegalStateException("LearningComponentContent not set in Learning Component ID ["+getLearningComponentId()+"]");
+			throw new IllegalStateException("LearningComponentContent not set in Learning Component");
 		}
 		
 		for (LearningComponentContent learningComponentContent : learningCompContentList) {
@@ -140,14 +154,11 @@ public class LearningComponentDetails extends LearningComponent{
 	public void setLearningCompContentList(
 			List<LearningComponentContent> compContentList) throws Exception{
 		if(compContentList == null){
-			throw new IllegalArgumentException("Cannot set Learning Component Contents as a null in Learning Component ID ["+learningComponentId+"]");
+			throw new IllegalArgumentException("Cannot set Learning Component Contents as a null in Learning Component");
 		}
 
 		this.learningCompContentList = compContentList;
 		
-		for (LearningComponentContent learningComponentContent : compContentList) {
-			learningComponentContent.setLearningComponent(this);
-		}
 	}
 
 /*	*//**
@@ -281,6 +292,20 @@ public class LearningComponentDetails extends LearningComponent{
 	public void setCourseLearningComponent(
 			CourseLearningComponent courseLearningComponent) {
 		this.courseLearningComponent = courseLearningComponent;
+	}
+
+	/**
+	 * @return the assignmentTest
+	 */
+	public AssignmentTest getAssignmentTest() {
+		return assignmentTest;
+	}
+
+	/**
+	 * @param assignmentTest the assignmentTest to set
+	 */
+	public void setAssignmentTest(AssignmentTest assignmentTest) {
+		this.assignmentTest = assignmentTest;
 	}
 
 }

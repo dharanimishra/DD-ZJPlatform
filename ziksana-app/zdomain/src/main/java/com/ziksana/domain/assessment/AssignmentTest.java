@@ -11,6 +11,10 @@ import com.ziksana.id.ZID;
 public class AssignmentTest extends AuditHistory{
 
 
+	public AssignmentTest(){
+		
+	}
+	
 	public AssignmentTest(String name, TestType testType,
 			String assignmentContent, DifficultyLevel dificultyLevel,
 			String instruction, Integer totalPoints, Status status) {
@@ -37,9 +41,13 @@ public class AssignmentTest extends AuditHistory{
 	private Boolean 				proctoredIndicator 				= null;
 	private Integer 				answerWithinTime 				= null;
 	private Status 					status 							= null;
+	private AssignmentContentType	assignmentContentType			= null;
 	private LearningComponent 		learningComponent 				= null;
 	private AssignmentTestSettings 	assignmentTestSettings 			= null;
 	private MemberPersona 			creatorMemberPersona			= null;
+	private AssignmentTest			test							= null; 
+	private AssignmentTestRubric	testRubric						= null;
+	
 	
 	
 	/**
@@ -189,6 +197,20 @@ public class AssignmentTest extends AuditHistory{
 		this.status = status;
 	}
 	/**
+	 * @return the assignmentContentType
+	 */
+	public AssignmentContentType getAssignmentContentType() {
+		return assignmentContentType;
+	}
+
+	/**
+	 * @param assignmentContentType the assignmentContentType to set
+	 */
+	public void setAssignmentContentType(AssignmentContentType assignmentContentType) {
+		this.assignmentContentType = assignmentContentType;
+	}
+
+	/**
 	 * @return the learningComponent
 	 */
 	public LearningComponent getLearningComponent() {
@@ -249,12 +271,51 @@ public class AssignmentTest extends AuditHistory{
 		this.assignmentTestSettings = assignmentTestSettings;
 	}
 
+	/**
+	 * @return the test
+	 */
+	public AssignmentTest getTest() {
+		return test;
+	}
+
+	/**
+	 * @param test the test to set
+	 */
+	public void setTest(AssignmentTest test) {
+		this.test = test;
+	}
+
+	/**
+	 * @return the testRubric
+	 */
+	public AssignmentTestRubric getTestRubric() {
+		return testRubric;
+	}
+
+	/**
+	 * @param testRubric the testRubric to set
+	 */
+	public void setTestRubric(AssignmentTestRubric testRubric) {
+		this.testRubric = testRubric;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "AssignmentTest [name=" + name + ", testType=" + testType
 				+ ", assignmentContent=" + assignmentContent
 				+ ", dificultyLevel=" + dificultyLevel + ", instruction="
-				+ instruction + ", status=" + status + "]";
+				+ instruction + ", multipleAttemptsAllowedIndicator="
+				+ multipleAttemptsAllowedIndicator
+				+ ", openforPeerEvaluationIndicator="
+				+ openforPeerEvaluationIndicator + ", asynchronousIndicator="
+				+ asynchronousIndicator + ", totalPoints=" + totalPoints
+				+ ", proctoredIndicator=" + proctoredIndicator
+				+ ", answerWithinTime=" + answerWithinTime + ", status="
+				+ status + ", assignmentContentType=" + assignmentContentType
+				+ ", test=" + test + "]";
 	}
 
 }

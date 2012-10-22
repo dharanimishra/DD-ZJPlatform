@@ -10,14 +10,17 @@ import java.util.List;
 /**
  * @author bhashasp
  */
-public class LearningComponentContentDetails extends LearningComponentContent{
+public class LearningComponentContentDetails{
 
 	
 	public LearningComponentContentDetails(
 			LearningComponent learningComponent,
 			LearningContent baseLearningContent) {
-		super( learningComponent, baseLearningContent);
-		}
+			}
+
+	public LearningComponentContentDetails() {
+		// TODO Auto-generated constructor stub
+	}
 
 	private List<ContentEnrichment> 	enrichmentList						= null;
 	//private List<LearningComponentContentBookmark> 		bookmarkList						= null;
@@ -155,4 +158,11 @@ public class LearningComponentContentDetails extends LearningComponentContent{
 		this.subscriberNotesList = subscriberNotesList;
 	}
 */
+	@Override
+	public String toString() {
+		return "LearningComponentContentDetails [learningContent="
+				+ learningContent + "]";
+	}
+
+
 }

@@ -13,16 +13,17 @@ import com.ziksana.id.ZID;
  */
 public class CoursePlaybook extends AuditHistory {
 	
-	public CoursePlaybook(CourseStatus courseStatus, PlaybookType playbookType) {
-		this.courseStatus = courseStatus;
+	public CoursePlaybook(CoursePlaybookStatus coursePBStatus, PlaybookType playbookType) {
+		this.coursePBStatus = coursePBStatus;
 		this.playbookType = playbookType;
 	}
 
-	private ZID coursePlaybookId;
-	private Date fromDate  	= null;
-	private Date toDate		= null;
-	private CourseStatus courseStatus = null;
-	private PlaybookType	playbookType = null;
+	private ZID 					coursePlaybookId;
+	private Date 					fromDate  		= null;
+	private Date 					toDate			= null;
+	private CoursePlaybookStatus 	coursePBStatus 	= null;
+	private PlaybookType			playbookType 	= null;
+	private Course					course			= null;
 	
 	
 	/**
@@ -64,14 +65,14 @@ public class CoursePlaybook extends AuditHistory {
 	/**
 	 * @return the courseStatus
 	 */
-	public CourseStatus getCourseStatus() {
-		return courseStatus;
+	public CoursePlaybookStatus getCoursePBStatus() {
+		return coursePBStatus;
 	}
 	/**
 	 * @param courseStatus the courseStatus to set
 	 */
-	public void setCourseStatus(CourseStatus courseStatus) {
-		this.courseStatus = courseStatus;
+	public void setCoursePBStatus(CoursePlaybookStatus coursePBStatus) {
+		this.coursePBStatus = coursePBStatus;
 	}
 	/**
 	 * @return the playbookType
@@ -86,9 +87,21 @@ public class CoursePlaybook extends AuditHistory {
 		this.playbookType = playbookType;
 	}
 
+	/**
+	 * @return the course
+	 */
+	public Course getCourse() {
+		return course;
+	}
+	/**
+	 * @param course the course to set
+	 */
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 	@Override
 	public String toString() {
-		return "CoursePlaybook [courseStatus=" + courseStatus
+		return "CoursePlaybook [coursePBStatus=" + coursePBStatus
 				+ ", playbookType=" + playbookType + "]";
 	}
 

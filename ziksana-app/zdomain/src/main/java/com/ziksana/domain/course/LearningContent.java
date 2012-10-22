@@ -304,7 +304,13 @@ public class LearningContent extends AuditHistory{
 
 	@Override
 	public String toString() {
-		return "LearningContent [contentType=" + contentType
-				+ ", contentFormat=" + contentFormat + "]";
+		return "LearningContent [activeFlag=" + activeFlag + ", contentPath=" + contentPath
+				+ ", contentFormat=" + contentFormat + ", status=" + status
+				+ ", contentName=" + contentName + ", contentDescription="
+				+ contentDescription + ", thumbnailPicturePath="
+				+ thumbnailPicturePath + ", subjClassification="
+				+ subjClassification + ", learningContentPartsList="
+				+ learningContentPartsList + ", baseComponentContent="
+				+ baseComponentContent + "]";
 	}
 }

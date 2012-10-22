@@ -98,8 +98,7 @@ public class LearningComponentNest extends AuditHistory{
 	@Override
 	public String toString() {
 		return "LearningComponentNest [nestLevel=" + nestLevel
-				+ ", learningComponentParent=" + learningComponentParent
-				+ ", learningComponentNest=" + learningComponentNest + "]";
+				+ ", learningComponentParent=" + learningComponentParent+ "]";
 	}
 
 }

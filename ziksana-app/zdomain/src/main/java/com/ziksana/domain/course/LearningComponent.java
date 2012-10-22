@@ -1,7 +1,6 @@
 package com.ziksana.domain.course;
 
 import java.util.Date;
-
 import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
@@ -11,6 +10,7 @@ import com.ziksana.domain.utils.SubjectClassification;
  * @author bhashasp
  */
 public class LearningComponent extends AuditHistory {
+
 
 	public LearningComponent(Date validFrom, Date validTo,
 			CourseStatus courseStatus,
@@ -23,7 +23,7 @@ public class LearningComponent extends AuditHistory {
 		this.authoredMember = authoredMember;
 	}
 
-	public LearningComponent(Integer learningObjectDuration,
+	public LearningComponent(Duration learningObjectDuration,
 			LearningComponentType learningComponentType, Course course,
 			MemberPersona authoredMember) {
 		this.learningObjectDuration = learningObjectDuration;
@@ -53,7 +53,7 @@ public class LearningComponent extends AuditHistory {
 	 * Maximum Length:72
 	 */
 	private String 			thumbnailPicturePath 	= null;
-	private Integer 		learningObjectDuration 	= null;
+	private Duration 		learningObjectDuration 	= null;
 	private Integer 		version 				= null;
 
 	/**
@@ -196,14 +196,14 @@ public class LearningComponent extends AuditHistory {
 	/**
 	 * @return the learningObjectDuration
 	 */
-	public Integer getLearningObjectDuration() {
+	public Duration getLearningObjectDuration() {
 		return learningObjectDuration;
 	}
 
 	/**
 	 * @param learningObjectDuration the learningObjectDuration to set
 	 */
-	public void setLearningObjectDuration(Integer learningObjectDuration) {
+	public void setLearningObjectDuration(Duration learningObjectDuration) {
 		this.learningObjectDuration = learningObjectDuration;
 	}
 
@@ -291,12 +291,18 @@ public class LearningComponent extends AuditHistory {
 			LearningComponentDetails learningComponentDetails) {
 		this.learningComponentDetails = learningComponentDetails;
 	}
-
-		@Override
+	
+	@Override
 	public String toString() {
-		return "LearningComponent [validFrom=" + validFrom + ", validTo="
-				+ validTo + ", courseStatus=" + courseStatus
-				+ ", learningObjIndictor=" + learningObjIndictor
-				+ ", learningComponentType=" + learningComponentType + "]";
+		return "LearningComponent [name=" + name + ", description="
+				+ description + ", validFrom=" + validFrom + ", validTo="
+				+ validTo + ", courseStatus=" + courseStatus + ", weightage="
+				+ weightage + ", learningObjIndictor=" + learningObjIndictor
+				+ ", thumbnailPicturePath=" + thumbnailPicturePath
+				+ ", learningObjectDuration=" + learningObjectDuration
+				+ ", learningComponentDetails=" + learningComponentDetails
+				+ "]";
 	}
+
+
 }

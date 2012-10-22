@@ -10,8 +10,8 @@ public enum ProgramNameType {
 	
 	LEARNING_PROGRAM	(1, "Learning Program"),  
 	COURSE 				(2, "Course"),
-	LEARNIN_OBJECT		(3, "Learning Object"),
-	LEARNIN_CONTENT		(3, "Learning Content"); 
+	LEARNING_OBJECT		(3, "Learning Object"),
+	LEARNING_CONTENT	(4, "Learning Content"); 
 	  
 	
 	private final int id;

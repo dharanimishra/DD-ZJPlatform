@@ -16,6 +16,7 @@ public class Question {
 	private String videoUrl;
 	private Set<Choice> choices;
 
+	
 	public static class Builder {
 
 		// required parameters

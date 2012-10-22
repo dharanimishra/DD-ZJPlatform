@@ -30,7 +30,7 @@ public class QuestionBankAnswer extends AuditHistory {
 	private AnswerSequence 		answerSequence			= null;
 	private String 				answerReflectionComment	= null;
 	private Integer 			answerKeywordWeight		= null;
-	private Status	status					= null;
+	private Status				status					= null;
 	private QuestionBank 		questionBank			= null;
 	private QuestionBankAnswer 	matchingQtnBankAnswer	= null;
 	private VisualSpot 			visualSpotLabel			= null;

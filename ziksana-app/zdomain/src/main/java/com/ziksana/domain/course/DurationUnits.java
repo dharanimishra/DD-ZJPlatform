@@ -8,9 +8,9 @@ import java.util.NoSuchElementException;
 public enum DurationUnits {
 
 	// TODO: retrieve the ids from the static data service
-	DAYS           (1, "Days"),
-	WEEKS          (2, "Weeks"),
-	MONTHS         (3, "Months");
+	DAY           (1, "Days"),
+	WEEK          (2, "Weeks"),
+	MONTH         (3, "Months");
 	
 	private final int id;
 	private final String name;

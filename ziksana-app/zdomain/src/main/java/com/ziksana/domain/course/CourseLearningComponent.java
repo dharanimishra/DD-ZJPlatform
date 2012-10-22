@@ -7,6 +7,13 @@ import com.ziksana.domain.common.AuditHistory;
 
 public class CourseLearningComponent extends AuditHistory{
 	
+	public CourseLearningComponent(Date usageStartDate, Date usageEndDate,
+			Duration duration) {
+		this.usageStartDate = usageStartDate;
+		this.usageEndDate = usageEndDate;
+		this.duration = duration;
+	}
+
 	private ZID		 				courseLearningComponentId;
 	private Date 					creationDate 						= null;
 	private Date					usageStartDate						= null;
@@ -16,11 +23,13 @@ public class CourseLearningComponent extends AuditHistory{
 	private Integer 				weightage 							= null;
 	private String 					totalCredits 						= null;
 	private String 					extraCredits 						= null;
-	private Integer 				duration 							= null;
+	private Duration 				duration 							= null;
 	private Boolean 				learningComponentOveriddenIndicator = null;
 	private Course 					course 								= null;
 	private LearningComponent 		learningComponent 					= null;
 	private LearningComponentType 	learningComponentType 				= null;
+	private CourseLearningPlanner	courseLearningPlanner				= null;	
+	private CurriculumCourseCalendar currCourseCalendar					= null;
 	
 
 	/**
@@ -162,7 +171,7 @@ public class CourseLearningComponent extends AuditHistory{
 	/**
 	 * @return the value of property duration
 	 */
-	public Integer getDuration() {
+	public Duration getDuration() {
 		return duration;
 	}
 
@@ -170,7 +179,7 @@ public class CourseLearningComponent extends AuditHistory{
 	 * @param duration
 	 *            the value for property duration
 	 */
-	public void setDuration(Integer duration) {
+	public void setDuration(Duration duration) {
 		this.duration = duration;
 	}
 
@@ -230,6 +239,45 @@ public class CourseLearningComponent extends AuditHistory{
 	 */
 	public void setLearningComponentType(LearningComponentType learningComponentType) {
 		this.learningComponentType = learningComponentType;
+	}
+
+	/**
+	 * @return the courseLearningPlanner
+	 */
+	public CourseLearningPlanner getCourseLearningPlanner() {
+		return courseLearningPlanner;
+	}
+
+	/**
+	 * @param courseLearningPlanner the courseLearningPlanner to set
+	 */
+	public void setCourseLearningPlanner(CourseLearningPlanner courseLearningPlanner) {
+		this.courseLearningPlanner = courseLearningPlanner;
+	}
+
+	/**
+	 * @return the currCourseCalendar
+	 */
+	public CurriculumCourseCalendar getCurrCourseCalendar() {
+		return currCourseCalendar;
+	}
+
+	/**
+	 * @param currCourseCalendar the currCourseCalendar to set
+	 */
+	public void setCurrCourseCalendar(CurriculumCourseCalendar currCourseCalendar) {
+		this.currCourseCalendar = currCourseCalendar;
+	}
+
+	@Override
+	public String toString() {
+		return "CourseLearningComponent [creationDate=" + creationDate
+				+ ", usageStartDate=" + usageStartDate + ", usageEndDate="
+				+ usageEndDate + ", learningComponentVersionUsed="
+				+ learningComponentVersionUsed + ", active=" + active
+				+ ", weightage=" + weightage + ", totalCredits=" + totalCredits
+				+ ", extraCredits=" + extraCredits + ", duration=" + duration
+				+ "]";
 	}
 
 }

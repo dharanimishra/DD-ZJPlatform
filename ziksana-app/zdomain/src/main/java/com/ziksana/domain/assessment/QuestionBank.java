@@ -41,7 +41,12 @@ public class QuestionBank extends AuditHistory{
 	private QuestionApplicableType 	questionApplicableType			= null;
 	private SubjectClassification 	subjClassification				= null;
 	private Member 					owningMember					= null;
-
+	private TestQuestion      		question						= null;
+	private QuestionBankAnswer		qtnBankAnswer					= null;
+	private QuestionTagcloud		qtnTagCloud						= null;
+	private QuestionVisual			qtnVisual						= null;
+	private NextBestQuestion		nextBestQtn						= null;		
+	
 	
 	/**
 	 * @return the questionBankId
@@ -225,6 +230,68 @@ public class QuestionBank extends AuditHistory{
 		this.multipleAnswerIndicator = multipleAnswerIndicator;
 	}
 
+	/**
+	 * @return the question
+	 */
+	public TestQuestion getQuestion() {
+		return question;
+	}
+	/**
+	 * @param question the question to set
+	 */
+	public void setQuestion(TestQuestion question) {
+		this.question = question;
+	}
+	/**
+	 * @return the qtnBankAnswer
+	 */
+	public QuestionBankAnswer getQtnBankAnswer() {
+		return qtnBankAnswer;
+	}
+
+	/**
+	 * @param qtnBankAnswer the qtnBankAnswer to set
+	 */
+	public void setQtnBankAnswer(QuestionBankAnswer qtnBankAnswer) {
+		this.qtnBankAnswer = qtnBankAnswer;
+	}
+
+	/**
+	 * @return the qtnTagCloud
+	 */
+	public QuestionTagcloud getQtnTagCloud() {
+		return qtnTagCloud;
+	}
+	/**
+	 * @param qtnTagCloud the qtnTagCloud to set
+	 */
+	public void setQtnTagCloud(QuestionTagcloud qtnTagCloud) {
+		this.qtnTagCloud = qtnTagCloud;
+	}
+	/**
+	 * @return the qtnVisual
+	 */
+	public QuestionVisual getQtnVisual() {
+		return qtnVisual;
+	}
+	/**
+	 * @param qtnVisual the qtnVisual to set
+	 */
+	public void setQtnVisual(QuestionVisual qtnVisual) {
+		this.qtnVisual = qtnVisual;
+	}
+	/**
+	 * @return the nextBestQtn
+	 */
+	public NextBestQuestion getNextBestQtn() {
+		return nextBestQtn;
+	}
+	/**
+	 * @param nextBestQtn the nextBestQtn to set
+	 */
+	public void setNextBestQtn(NextBestQuestion nextBestQtn) {
+		this.nextBestQtn = nextBestQtn;
+	}
 	@Override
 	public String toString() {
 		return "QuestionBank [difficultyLevel=" + difficultyLevel

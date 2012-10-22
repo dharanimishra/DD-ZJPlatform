@@ -12,6 +12,10 @@ import com.ziksana.domain.member.MemberPersona;
 public class LearningComponentType extends AuditHistory{
 
 	
+	public LearningComponentType(){
+		
+	}
+	
 	public LearningComponentType(String compTypeName,
 			String compTypeDescription, Boolean qualifierIndicator,
 			Boolean active) {
