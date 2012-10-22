@@ -34,7 +34,8 @@ public interface LearningContentMapper {
 			"#{rightsOwningMemberRoleId,jdbcType=INTEGER}, #{authoringMemberRoleId,jdbcType=INTEGER}, ",
 			"#{subjClassificationId,jdbcType=INTEGER}, #{linkedLearningContentId,jdbcType=INTEGER}  )" })
 	@SelectKey(statement = "select last_insert_id()", keyProperty = "learningContentId", before = true, resultType = Integer.class)
-	int insert(LearningContent record);
+	@ResultMap("BaseResultMap")
+	LearningContent save(LearningContent record);
 
 	/**
 	 * This method corresponds to the database table corlearningcontent

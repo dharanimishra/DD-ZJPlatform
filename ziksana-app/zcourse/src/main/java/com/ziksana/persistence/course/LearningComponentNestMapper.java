@@ -28,7 +28,7 @@ public interface LearningComponentNestMapper {
 			"#{nestLevel,jdbcType=INTEGER}, #{parentLearningComponentId,jdbcType=INTEGER}, ",
 			"#{nestLearningComponentId,jdbcType=INTEGER})" })
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "componentNestId", before = true, resultType = Integer.class)
-	int insert(LearningComponentNest record);
+	void save(LearningComponentNest record);
 
 	/**
 	 * This method corresponds to the database table corlearningcomponentnest

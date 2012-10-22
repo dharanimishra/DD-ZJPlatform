@@ -56,48 +56,51 @@ public interface CourseMapper {
 	@Update({
 			"update corcourse",
 			"set name = #{name,jdbcType=VARCHAR},",
-			"courseidentifier = #{courseIdentifier,jdbcType=VARCHAR},",
 			"description = #{description,jdbcType=VARCHAR},",
-			"validfrom = #{ValidFrom,jdbcType=DATE},",
-			"validto = #{ValidTo,jdbcType=DATE},",
 			"coursestatus = #{courseStatus,jdbcType=INTEGER},",
-			"rating = #{rating,jdbcType=INTEGER},",
-			"contentsecurityneededindicator = #{contentSecurityNeededIndicator,jdbcType=BIT},",
-			"courseweightage = #{courseWeightage,jdbcType=INTEGER},",
+			"contentsecurityneededindicator = #{securityIndicator,jdbcType=BIT},",
 			"totalcredits = #{totalCredits,jdbcType=VARCHAR},",
-			"extracreditsindicator = #{extraCreditsIndicator,jdbcType=BIT},",
 			"extracredits = #{extraCredits,jdbcType=VARCHAR},",
-			"additionalpropertyindicator = #{additionalPropertyIndicator,jdbcType=BIT},",
+			"additionalpropertyindicator = #{additionalInfoIndicator,jdbcType=BIT},",
 			"courseduration=#{courseDuration,jdbcType=INTEGER},",
 			"thumbnailpicturepath=#{thumbnailPicturePath,jdbcType=VARCHAR},",
-			"templateindicator=#{templateIndicator,jdbcType=TINYINT},",
 			"version = #{version,jdbcType=INTEGER},",
-			"memberroleid={memberRoleId,jdbcType=INTEGER},",
 			"subjclassificationid = #{subjClassificationId,jdbcType=INTEGER} ",
 			"where courseid = #{courseId,jdbcType=INTEGER}" })
-	Course updateCourse(ZID courseId);
+	@ResultMap("BaseResultMap")
+	Course updateCourse(Course course);
 
+	/**
+	 * This method will modifies the indicators and assoication fields of course
+	 * @param course
+	 * @return
+	 */
+	@Update({
+			"update corcourse",
+			"set contentsecurityneededindicator = #{securityIndicator,jdbcType=BIT},",
+			"additionalpropertyindicator = #{additionalInfoIndicator,jdbcType=BIT},",
+			"where courseid = #{courseId,jdbcType=INTEGER}" })
+	Course updateCourseInfo(Course course);
 	
 	/**
 	 * This method saves the Course information to corcourse table
 	 */
 	@Insert({
 			"insert into corcourse ( name, ",
-			"courseidentifier, description, ",
-			"validfrom, validto, coursestatus, ",
-			"rating, contentsecurityneededindicator, ",
-			"courseweightage, totalcredits, ",
-			"extracreditsindicator, extracredits, ",
-			"additionalpropertyindicator, courseduration,thumbnailpicturepath, templateindicator, version, memberroleid,subjclassificationid)",
+			"description, coursestatus, ",
+			"contentsecurityneededindicator, ",
+			"totalcredits, extracredits, ",
+			"additionalpropertyindicator, courseduration,thumbnailpicturepath, version, versionremarks, memberroleid, subjclassificationid)",
 			"values (#{name,jdbcType=VARCHAR}, ",
-			"#{courseIdentifier,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, ",
-			"#{ValidFrom,jdbcType=DATE}, #{ValidTo,jdbcType=DATE}, #{courseStatus,jdbcType=INTEGER}, ",
-			"#{rating,jdbcType=INTEGER}, #{contentSecurityNeededIndicator,jdbcType=BIT}, ",
-			"#{courseWeightage,jdbcType=INTEGER}, #{totalCredits,jdbcType=VARCHAR}, ",
-			"#{extraCreditsIndicator,jdbcType=BIT}, #{extraCredits,jdbcType=VARCHAR}, ",
-			"#{additionalPropertyIndicator,jdbcType=BIT}, #{courseDuration,jdbcType=INTEGER},#{thumbnailPicturePath,jdbcType=VARCHAR}, ",
-			"#{templateIndicator,jdbcType=TINYINT},  #{version,jdbcType=INTEGER}, #{memberRoleId,jdbcType=INTEGER},",
-			"#{SubjClassificationId,jdbcType=INTEGER})" })
+			"#{description,jdbcType=VARCHAR}, ",
+			"#{courseStatus,jdbcType=INTEGER}, ",
+			"#{securityIndicator,jdbcType=BIT}, ",
+			"#{totalCredits,jdbcType=VARCHAR}, ",
+			"#{extraCredits,jdbcType=VARCHAR}, ",
+			"#{additionalInfoIndicator,jdbcType=BIT}, #{courseDuration,jdbcType=INTEGER},#{thumbnailPicturePath,jdbcType=VARCHAR}, ",
+			"#{version,jdbcType=INTEGER}, #{versionRemarks,jdbcType=VARCHAR}, #{memberRoleId,jdbcType=INTEGER},",
+			"#{subjClassificationId,jdbcType=INTEGER})" })
+	@ResultMap("BaseResultMap")
 	Course saveCourse(Course course);
 
 

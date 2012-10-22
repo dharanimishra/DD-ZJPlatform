@@ -24,7 +24,8 @@ public interface LearningContentPartsMapper {
 			"partpath, partsequence, learningcontentid)",
 			"values (#{contentPartsId,jdbcType=INTEGER}, #{creationDate,jdbcType=TIMESTAMP}, ",
 			"#{partPath,jdbcType=VARCHAR}, #{learningContentId,jdbcType=INTEGER})" })
-	int insert(LearningContentParts record);
+	@ResultMap("BaseResultMap")
+	LearningContentParts save(LearningContentParts record);
 
 	/**
 	 * . This method corresponds to the database table corlearningcontentparts
