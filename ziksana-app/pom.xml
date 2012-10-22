@@ -20,6 +20,7 @@
 		<module>zassessment</module>
     <module>zapfk</module>
     <module>zalert</module>
+    <module>zblogs</module>
 	</modules>
 
 	<properties>
