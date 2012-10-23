@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/resources"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/TodoService/mybatis-3.1.1.jar"/>
+	<classpathentry kind="lib" path="src/main/java/commons-dbcp.jar"/>
+	<classpathentry kind="lib" path="src/main/java/commons-pool-1.4.jar"/>
+	<classpathentry kind="lib" path="src/main/java/mybatis-3.1.1.jar"/>
+	<classpathentry kind="lib" path="src/main/java/mybatis-ehcache-1.0.0.jar"/>
+	<classpathentry kind="lib" path="src/main/java/mybatis-spring-1.0.0-RC3.jar"/>
+	<classpathentry kind="lib" path="src/main/java/mysql-connector-java-5.1.12-bin.jar"/>
+	<classpathentry kind="lib" path="src/main/java/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="src/main/java/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="src/main/java/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="src/main/java/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="src" path="/mvc-ajax"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mybatis"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-aop-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-aop-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-aop-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-aspects-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-aspects-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-aspects-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-beans-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-beans-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-beans-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-context-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-context-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-context-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-context-support-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-context-support-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-context-support-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-core-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-core-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-core-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-expression-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-expression-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-expression-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-instrument-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-instrument-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-instrument-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-instrument-tomcat-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-instrument-tomcat-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-instrument-tomcat-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-jdbc-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-jdbc-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-jdbc-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-jms-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-jms-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-jms-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-orm-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-orm-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-orm-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-oxm-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-oxm-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-oxm-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-struts-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-struts-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-struts-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-test-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-test-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-test-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-tx-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-tx-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-tx-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-web-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-web-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-web-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-webmvc-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-webmvc-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-webmvc-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-webmvc-portlet-3.2.0.M2.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-webmvc-portlet-3.2.0.M2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Springlib/spring-3.2.0.M2/libs/spring-webmvc-portlet-3.2.0.M2-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
