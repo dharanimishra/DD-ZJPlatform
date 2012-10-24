@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ziksana.domain.alerts.Alert;
 import com.ziksana.domain.myblogs.BlogPost;
 import com.ziksana.domain.myblogs.Comment;
+import com.ziksana.domain.myblogs.Tag;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
@@ -67,10 +68,14 @@ public class BlogServiceImplTest {
         BlogPost blogPost = (BlogPost)blogs.iterator().next();
         
         List<Comment> comments = blogPost.getComments();
+        List<Tag> tags = blogPost.getTags();
+        
         
         Assert.assertTrue(comments.size() == 2);
         Assert.assertFalse(blogs.isEmpty());
 		Assert.assertTrue(blogs.size() == 2);
+		Assert.assertTrue(tags.size() == 1);
+		
 	}
 
 }
