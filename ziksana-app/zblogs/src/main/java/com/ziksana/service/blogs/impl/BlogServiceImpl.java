@@ -5,6 +5,7 @@ package com.ziksana.service.blogs.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,10 @@ public class BlogServiceImpl implements BlogService {
 		// TODO Auto-generated method stub
 		
 		Integer postingMemberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-		return blogMapper.getBlogs(postingMemberRoleId);
+		int offset = 0;
+		int limit = 3;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return blogMapper.getBlogs(postingMemberRoleId, rowBounds);
 	}
 	
 	
