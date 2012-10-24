@@ -40,12 +40,13 @@ public class BlogPost implements Comparable<BlogPost> {
 	
 
 	public BlogPost(Integer blogPostId, String title, String content,
-			MemberPersona postingMember, Date createDate, Integer viewCount) {
+			Integer postingMember, Date createDate, Integer viewCount) {
 		super();
 		this.blogPostId = new IntegerZID(blogPostId);
 		this.title = title;
 		this.content = content;
-		this.postingMember = postingMember;
+		this.postingMember = new MemberPersona();
+		this.postingMember.setMemberRoleId(postingMember);
 		this.createDate = createDate;
 		this.viewCount = viewCount;
 	}
