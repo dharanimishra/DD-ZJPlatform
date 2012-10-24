@@ -13,6 +13,12 @@
         <artifactId>zdomain</artifactId>
         <version>0.0.1-SNAPSHOT</version>
      </dependency>
+     
+     <dependency>
+        <groupId>com.ziksana</groupId>
+        <artifactId>zsecurity</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+     </dependency>
   
   </dependencies>
   
