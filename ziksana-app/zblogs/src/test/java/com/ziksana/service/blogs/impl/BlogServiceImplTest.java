@@ -19,6 +19,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ziksana.domain.alerts.Alert;
 import com.ziksana.domain.myblogs.BlogPost;
 import com.ziksana.domain.myblogs.Comment;
+import com.ziksana.id.StringZID;
+import com.ziksana.id.ZID;
+import com.ziksana.security.util.SecurityToken;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.blogs.BlogService;
 
 
@@ -49,7 +53,16 @@ public class BlogServiceImplTest {
 
 	@Test
 	public void testGetBlogs() {
-        List<BlogPost> blogs = blogService.getBlogs();
+        
+		ZID memberId = new StringZID("1000");
+		ZID memberPersonaId = new StringZID("100");
+		
+		
+		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+		ThreadLocalUtil.setToken(token);
+			
+		
+		List<BlogPost> blogs = blogService.getBlogs();
 		
         BlogPost blogPost = (BlogPost)blogs.iterator().next();
         
