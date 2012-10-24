@@ -21,12 +21,14 @@ public class Tag {
 	
 
 	public Tag(Integer blogTagId, String name, Integer type,
-			MemberPersona creatingMemberRoleId, Date createDate) {
+			Integer creatingMemberRoleId, Date createDate) {
 		super();
 		this.blogTagId = new IntegerZID(blogTagId);
 		this.name = name;
 		this.type = type;
-		this.creatingMemberRoleId = creatingMemberRoleId;
+		this.creatingMemberRoleId = new MemberPersona();
+		this.creatingMemberRoleId.setMemberRoleId(creatingMemberRoleId);
+		
 		this.createDate = createDate;
 	}
 
