@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ziksana.domain.alerts.Alert;
 import com.ziksana.domain.myblogs.BlogPost;
+import com.ziksana.domain.myblogs.Comment;
 import com.ziksana.service.blogs.BlogService;
 
 
@@ -49,7 +50,13 @@ public class BlogServiceImplTest {
 	@Test
 	public void testGetBlogs() {
         List<BlogPost> blogs = blogService.getBlogs();
-		Assert.assertFalse(blogs.isEmpty());
+		
+        BlogPost blogPost = (BlogPost)blogs.iterator().next();
+        
+        List<Comment> comments = blogPost.getComments();
+        
+        Assert.assertTrue(comments.size() == 2);
+        Assert.assertFalse(blogs.isEmpty());
 		Assert.assertTrue(blogs.size() == 2);
 	}
 

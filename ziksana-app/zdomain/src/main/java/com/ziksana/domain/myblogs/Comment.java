@@ -19,11 +19,13 @@ public class Comment {
 
 	
 	public Comment(Integer commentId, String comment,
-			MemberPersona commentingMemberRoleId, Date createDate) {
+			Integer commentingMemberRoleId, Date createDate) {
 		
 		this.commentId = new IntegerZID(commentId);
 		this.comment = comment;
-		this.commentingMemberRoleId = commentingMemberRoleId;
+		this.commentingMemberRoleId = new MemberPersona();
+		this.commentingMemberRoleId.setMemberRoleId(commentingMemberRoleId);
+		
 		this.createDate = createDate;
 	}
 	

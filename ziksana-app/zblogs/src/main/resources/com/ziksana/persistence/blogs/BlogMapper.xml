@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ziksana.persistence.blogs.BlogMapper" >
-      
-      
-      <select id="getBlogs" resultMap="blogResultMap" parameterType="int">
-            select * from memmemberblogpost 
-            where
-            postingMemberRoleId= #{postingMemberRoleId}
-      </select>
-       
-      <resultMap id="blogResultMap" type="com.ziksana.domain.myblogs.BlogPost">
-        <constructor>
-            <idArg column="blogPostId" javaType="Integer"/>
-            <idArg column="title" javaType="String"/>
-            <idArg column="content" javaType="String"/>
-            <idArg column="postingMemberRoleId" javaType="Integer"/>
-            <idArg column="createDate" javaType="java.util.Date"/>
-            <idArg column="viewCount" javaType="Integer"/>
-         </constructor>
-      
-          
-      </resultMap> 
-       
-       
+<mapper namespace="com.ziksana.persistence.blogs.BlogMapper">
+
+
+	<select id="getBlogs" resultMap="blogResultMap" parameterType="int">
+		select
+		p.*,c.blogCommentId,c.blogPostId,c.commentingmemberRoleId,c.`comment`,c.createDate as commentingDate
+		from
+		memmemberblogpost p
+		left outer join memmemberblogcomments c on p.blogPostId=c.blogPostId
+		where p.postingMemberRoleId= #{postingMemberRoleId}
+
+
+	</select>
+
+	<resultMap id="blogResultMap" type="com.ziksana.domain.myblogs.BlogPost">
+		<constructor>
+			<idArg column="blogPostId" javaType="Integer" />
+			<idArg column="title" javaType="String" />
+			<idArg column="content" javaType="String" />
+			<idArg column="postingMemberRoleId" javaType="Integer" />
+			<idArg column="createDate" javaType="java.util.Date" />
+			<idArg column="viewCount" javaType="Integer" />
+		</constructor>
+        
+         <collection property="comments" ofType="com.ziksana.domain.myblogs.Comment">
+              <constructor>
+                 <idArg column="blogCommentId" javaType="Integer" />
+                 <idArg column="comment" javaType="String" />
+                 <idArg column="commentingmemberRoleId" javaType="Integer" />
+                 <idArg column="commentingDate" javaType="java.util.Date" />
+              </constructor>
+         </collection> 
+
+	</resultMap>
+
+
 
 </mapper>
