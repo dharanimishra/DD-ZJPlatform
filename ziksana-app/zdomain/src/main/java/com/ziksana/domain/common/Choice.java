@@ -10,17 +10,21 @@ public class Choice implements Comparable<Choice> {
 	private String text;
 	private String imageUrl;
 
+
+
+
+
 	/**
 	 * @param index
 	 * @param text
 	 * @param imageUrl
 	 */
-	public Choice(Integer id, int index, String text, String imageUrl) {
+	public Choice(Integer id, int index, String text) {
 		super();
 		this.id = new IntegerZID(id);
 		this.index = index;
 		this.text = text;
-		this.imageUrl = imageUrl;
+		
 	}
 	
 	
@@ -42,6 +46,12 @@ public class Choice implements Comparable<Choice> {
 
 	
 
+	/**
+	 * @param imageUrl the imageUrl to set
+	 */
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 
 	/**
