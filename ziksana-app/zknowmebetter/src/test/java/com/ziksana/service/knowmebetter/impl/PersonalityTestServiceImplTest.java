@@ -19,9 +19,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 import com.ziksana.domain.common.Question;
-import com.ziksana.domain.myblogs.BlogPost;
-import com.ziksana.domain.myblogs.Comment;
-import com.ziksana.domain.myblogs.Tag;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
