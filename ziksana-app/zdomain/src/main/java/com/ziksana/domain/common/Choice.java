@@ -6,7 +6,7 @@ import com.ziksana.id.ZID;
 public class Choice implements Comparable<Choice> {
 
 	private ZID id;
-	private int index;
+	private Integer index;
 	private String text;
 	private String imageUrl;
 
@@ -19,7 +19,7 @@ public class Choice implements Comparable<Choice> {
 	 * @param text
 	 * @param imageUrl
 	 */
-	public Choice(Integer id, int index, String text) {
+	public Choice(Integer id, Integer index, String text) {
 		super();
 		this.id = new IntegerZID(id);
 		this.index = index;
@@ -33,7 +33,7 @@ public class Choice implements Comparable<Choice> {
 	/**
 	 * @return the index
 	 */
-	public int getIndex() {
+	public Integer getIndex() {
 		return index;
 	}
 

@@ -20,7 +20,7 @@ public class PersonalityTestServiceImpl implements PersonalityTestService {
 	public List<Question> getUnansweredQuestions() {
 		// TODO Auto-generated method stub
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-		return personalityTestMapper.getUnansweredQUestions(memberRoleId);
+		return personalityTestMapper.getUnansweredQuestions(memberRoleId);
 		
 	}
 

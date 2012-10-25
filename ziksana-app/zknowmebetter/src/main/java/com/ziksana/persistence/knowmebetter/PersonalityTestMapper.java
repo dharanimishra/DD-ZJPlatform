@@ -6,6 +6,6 @@ import com.ziksana.domain.common.Question;
 
 public interface PersonalityTestMapper {
 	
-	public List<Question> getUnansweredQUestions(Integer memberRoleId);
+	public List<Question> getUnansweredQuestions(Integer memberRoleId);
 
 }

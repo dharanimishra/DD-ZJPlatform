@@ -6,7 +6,7 @@
 	<select id="getUnansweredQuestions" resultMap="questionResultMap"
 		parameterType="int">
 
-		select q.*, qb.QuestionContent,qba.`Answer Content`,  qba.`Answer Sequence`,mpt.MemberRoleId
+		select q.*, qba.QuestionBankAnswerId, qb.QuestionContent,qba.`Answer Content`,  qba.`Answer Sequence`,mpt.MemberRoleId
 		from
 		psttestquestion q
 		JOIN asmquestionbank qb ON q.QuestionBankId=q.QuestionBankId
