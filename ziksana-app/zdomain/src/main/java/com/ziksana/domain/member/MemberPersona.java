@@ -28,6 +28,12 @@ public class MemberPersona {
 	private Member         member;
 
 	
+	
+	
+	public MemberPersona() {
+		super();
+	}
+
 	public MemberPersona(MemberRoleType role) {
 		this.roleType = role;
 	}
