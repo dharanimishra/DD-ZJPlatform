@@ -8,13 +8,13 @@ import com.ziksana.domain.course.CourseAdditionalProperty;
 import com.ziksana.domain.course.LearningProgram;
 import com.ziksana.domain.member.Member;
 import com.ziksana.exception.course.CourseException;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 public interface CourseService {
 
 	/**
 	 * Save or Updates the course related information.
-	 * 
 	 * @param course
 	 * @return
 	 * @throws CourseException
@@ -23,7 +23,6 @@ public interface CourseService {
 
 	/**
 	 * Save  or Updates the course and its childs(learning component/component content) 
-	 * 
 	 * @param course
 	 * @return
 	 * @throws CourseException
@@ -33,23 +32,22 @@ public interface CourseService {
 
 	/**
 	 * Save course additional property  
-	 * 
 	 * @param courseAdditionalProperty
 	 * @return
 	 * @throws CourseException
 	 */
-	public CourseAdditionalProperty saveAdditionalCourseProperty(CourseAdditionalProperty courseAdditionalProperty)
+	public void saveAdditionalCourseProperty(CourseAdditionalProperty courseAdditionalProperty)
 			throws CourseException;
 	
 	/**Retrieve the base course information.
 	 * @return
 	 */
-	public Course getBaseCourseDetails(Course course);
+	public Course getBaseCourseDetails(IntegerZID courseId) throws CourseException;
 	
 	/**Retrieve the full course information.
 	 * @return
 	 */
-	public Course getCourseDetails(Course course);
+	public Course getCourseDetails(Course course) throws CourseException;
 
 
 	/**
@@ -57,7 +55,8 @@ public interface CourseService {
 	 * @param member
 	 * @return
 	 */
-	public List<Course> getListOfCourses(ZID memberPersonaId);
+	public List<Course> getListOfCourses(ZID memberPersonaId) throws CourseException;
+	
 	
 	/**
 	 * Retrieves the course and course components(modules,chapters, topics,...) 
@@ -71,15 +70,16 @@ public interface CourseService {
 	 * @param course
 	 * @return
 	 */
-	public void removeCourse(Course course);
+	public void removeCourse(Course course) throws CourseException;
+	
 	
 	/**
 	 * Retrieve list of courses according to the program
 	 * @param programName
 	 * @return
-	 */
+	 *//*
 	public List<Course> getListOfCourses();
-	
+*/	
 	/**
 	 * Gets the list of LearningPrograms which are associated to Curriculum.
 	 * @param member

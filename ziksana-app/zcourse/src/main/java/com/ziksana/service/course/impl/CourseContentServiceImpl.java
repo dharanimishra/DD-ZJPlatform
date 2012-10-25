@@ -34,6 +34,8 @@ public class CourseContentServiceImpl implements CourseContentService {
 	public LearningContentPartsMapper contentPartsMapper;
 	
 	
+	@Transactional
+	@Override
 	public void saveOrUpdateContent(Course course,
 			ContentType contentType, LearningComponentContent compContent)
 			throws CourseException {

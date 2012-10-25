@@ -13,33 +13,38 @@ import com.ziksana.id.ZID;
 public class Enrichment extends AuditHistory {
 
 
-	private ZID 					applyEnrichId;
+	private ZID 					enrichId;
 	private Boolean 				active 					= null;
-	private Visibility 		visibility 				= null;
+	private Visibility 				visibility 				= null;
 	private Integer 				overrideAt 				= null;
+	
+	private ContentEnrichment		contentEnrich			= null;
 	private Course 					course 					= null;
 	private LearningContent 		learningContent 		= null;
 	private LearningComponent		learningComponent 		= null;
 	//private CurriculumCourse 		curriculumCourse 		= null;
 	private MemberPersona  			creatorMemberPersona 	= null;
 	
+	/**
+	 * @return the enrichId
+	 */
+	public ZID getEnrichId() {
+		return enrichId;
+	}
+
+
+	/**
+	 * @param enrichId the enrichId to set
+	 */
+	public void setEnrichId(ZID enrichId) {
+		this.enrichId = enrichId;
+	}
+
+
 	public Enrichment() {
 		visibility = Visibility.ALL;
 	}
 
-	
-	/**
-	 * @return the applyEnrichId
-	 */
-	public ZID getApplyEnrichId() {
-		return applyEnrichId;
-	}
-	/**
-	 * @param applyEnrichId the applyEnrichId to set
-	 */
-	public void setApplyEnrichId(ZID applyEnrichId) {
-		this.applyEnrichId = applyEnrichId;
-	}
 	/**
 	 * @return the active
 	 */
@@ -76,6 +81,22 @@ public class Enrichment extends AuditHistory {
 	public void setOverrideAt(Integer overrideAt) {
 		this.overrideAt = overrideAt;
 	}
+	/**
+	 * @return the contentEnrich
+	 */
+	public ContentEnrichment getContentEnrich() {
+		return contentEnrich;
+	}
+
+
+	/**
+	 * @param contentEnrich the contentEnrich to set
+	 */
+	public void setContentEnrich(ContentEnrichment contentEnrich) {
+		this.contentEnrich = contentEnrich;
+	}
+
+
 	/**
 	 * @return the course
 	 */

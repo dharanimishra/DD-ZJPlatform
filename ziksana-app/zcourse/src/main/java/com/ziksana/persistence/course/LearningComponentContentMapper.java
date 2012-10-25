@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.LearningComponentContent;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 public interface LearningComponentContentMapper {
 	/**
@@ -81,5 +83,12 @@ public interface LearningComponentContentMapper {
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "learningComponentContentId", before = true, resultType = Integer.class)
 	@ResultMap("BaseResultMap")
 	LearningComponentContent saveLearningComponentContent(LearningComponentContent learningComponentContent);
+	
+
+	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType.INTEGER}"})
+	Integer getCompContentByLComponentId(ZID learningComponentId);
+
+	@Select({"select learningcontentid from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType.INTEGER}"})
+	Integer getContentByLComponentId(IntegerZID lCompId);
 
 }

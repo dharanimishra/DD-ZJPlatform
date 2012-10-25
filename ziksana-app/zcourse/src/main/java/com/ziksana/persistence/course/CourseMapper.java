@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.CourseAdditionalProperty;
 import com.ziksana.id.ZID;
 
 public interface CourseMapper {
@@ -20,7 +21,7 @@ public interface CourseMapper {
 	 */
 	@Delete({ "update from corcourse set isdelete=#{isDelete,jdbcType=BIT}",
 			"where courseid = #{CourseId,jdbcType=INTEGER}" })
-	int delete(ZID CourseId);
+	void delete(ZID CourseId);
 
 	/**
 	 * Retrieves the base course information by Member's (MemberPersona).
@@ -112,5 +113,10 @@ public interface CourseMapper {
 	 */
 	@ResultMap("CourseTreeMap")
 	Course getCourseComponents(Course course);
+
+	@Insert({"insert into corcourseadditionalproperty (creationdate, usagetype, name, datatype, value, active, courseid, memberroleid ) ",
+		"values (#{creationDate , jdbcType.TIMESTAMP}, #{propertyUsageType , jdbcType.INTEGER}, #{ propertyName, jdbcType.VARCHAR}, #{propertyDataType , jdbcType.INTEGER}, #{propertyValue , jdbcType.VARCHAR}, ",
+		" #{sequence , jdbcType.INTEGER}, #{active , jdbcType.BIT}, #{ courseId, jdbcType.INTEGER}, #{memberRoleId , jdbcType.INTEGER}, ) "})
+	void saveAddnlInfo(CourseAdditionalProperty courseAdditionalProperty);
 	
 }

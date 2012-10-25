@@ -15,17 +15,22 @@ import com.ziksana.domain.course.CourseContentSecurity;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.CourseTagcloud;
+import com.ziksana.domain.course.Enrichment;
 import com.ziksana.domain.course.LearningComponent;
+import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningComponentDetails;
 import com.ziksana.domain.course.LearningComponentNest;
 import com.ziksana.domain.course.LearningProgram;
 import com.ziksana.domain.member.Member;
 import com.ziksana.exception.course.CourseException;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CourseContentSecurityMapper;
 import com.ziksana.persistence.course.CourseLearningComponentMapper;
 import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.persistence.course.CourseTagcloudMapper;
+import com.ziksana.persistence.course.EnrichmentMapper;
+import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.persistence.course.LearningComponentNestMapper;
 import com.ziksana.service.course.CourseService;
@@ -36,17 +41,21 @@ public class CourseServiceImpl implements CourseService {
 	private static Logger logger = Logger.getLogger(CourseServiceImpl.class);
 	
 	@Autowired
-	public CourseMapper courseMapper;
+	public CourseMapper 					courseMapper;
 	@Autowired
-	public CourseTagcloudMapper tagCloudMapper;
+	public CourseTagcloudMapper 			tagCloudMapper;
 	@Autowired
-	public CourseContentSecurityMapper contSecurityMapper;
+	public CourseContentSecurityMapper 		contSecurityMapper;
 	@Autowired
-	public LearningComponentMapper learningComponentMapper;
+	public LearningComponentMapper 			learningComponentMapper;
 	@Autowired
-	public LearningComponentNestMapper componentNestMapper;
+	public LearningComponentNestMapper 		componentNestMapper;
 	@Autowired
-	public CourseLearningComponentMapper courseLComponentMapper;
+	public CourseLearningComponentMapper 	courseLComponentMapper;
+	@Autowired
+	public LearningComponentContentMapper 	learningComponentContentMapper;
+	@Autowired
+	public EnrichmentMapper						enrichMapper;
 	
 	@Transactional
 	@Override
@@ -136,6 +145,7 @@ public class CourseServiceImpl implements CourseService {
 		return savedCourse;
 	}
 
+	@Transactional
 	@Override
 	public Course saveOrUpadteCourseComponents(Course course) throws CourseException
 	{
@@ -246,28 +256,76 @@ public class CourseServiceImpl implements CourseService {
 
 	
 	@Override
-	public Course getBaseCourseDetails(Course course) {
-		Course courseDetails = null;
+	public Course getBaseCourseDetails(IntegerZID courseId) throws CourseException {
+		
+		Course course = null;
+	
+		if(courseId == null){
+			throw new CourseException("Course Id cannot be null");
+		}
+		
+		logger.debug("Before retrieving the base course details ");
+		course = courseMapper.getBaseCourseDetails(courseId);
+		
+		if(course!=null){
+			
+			logger.debug("Got the course details : "+course.toString());
+		}
 
-		ZID courseId = null;
-
-		courseId = course.getCourseId();
-
-		courseDetails = courseMapper.getBaseCourseDetails(courseId);
-
-		return courseDetails;
+		return course;
 	}
 
+	
 	@Override
 	public List<Course> getListOfCourses(ZID memberPersonaId) {
 
-		List<Course> courseList = null;
-
-		courseList = new ArrayList<Course>();
-
+		List<Course> 				courseList 					= null;
+		List<Course> 				newCourseList 				= null;
+		CourseLearningComponent 	courseLearningComponent 	= null;
+		ZID 						lCompId 					= null;
+		Integer 					componentContentId 			= null;
+		Integer 					learningContentId 			= null;
+		Integer 					enrichId 					= null;
+		courseList 		= new		ArrayList<Course>();
+		newCourseList 	= new 		ArrayList<Course>();
+		
 		courseList = courseMapper.getListOfCourses(memberPersonaId);
+		
+		int courseProgress = 0;
+		for (Course course : courseList) {
+			
+			courseLearningComponent =courseLComponentMapper.getComponentByCourse(course.getCourseId());
+			
+			if(courseLearningComponent.getLearningComponent().getLearningComponentId()!=null){
+				
+				courseProgress = courseProgress +15;
+				
+				lCompId = courseLearningComponent.getLearningComponent().getLearningComponentId();
+				
+				componentContentId = learningComponentContentMapper.getCompContentByLComponentId((IntegerZID)lCompId);
+				
+				learningContentId = learningComponentContentMapper.getContentByLComponentId((IntegerZID)lCompId);
+				
+				if(componentContentId != null){
+					courseProgress = courseProgress +15;
+					
+					enrichId = enrichMapper.getEnrichByContentIdOrComponentId((IntegerZID)lCompId, learningContentId);
+					
+					if(enrichId!=null){
+						courseProgress = courseProgress +15;
+						//assignmenttest
+						//planner progress
+						//playbook progress
+						//socialize
+					}
+				}
+				
+			}
+			course.setCourseProgress(courseProgress);
+			newCourseList.add(course);
+		}
 
-		return courseList;
+		return newCourseList;
 	}
 
 	@Override
@@ -275,186 +333,34 @@ public class CourseServiceImpl implements CourseService {
 		return null;
 	}
 
+	@Transactional
 	@Override
-	public CourseAdditionalProperty saveAdditionalCourseProperty(
+	public void saveAdditionalCourseProperty(
 			CourseAdditionalProperty courseAdditionalProperty)
 			throws CourseException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if(courseAdditionalProperty == null){
+			throw new CourseException("Course Additional Property cannot be null");
+		}
+		
+		logger.debug("Before saving the Course Additional Information ... ");
+		courseMapper.saveAddnlInfo(courseAdditionalProperty);
+		
 	}
 
 	@Override
 	public Course getCourseDetails(Course course) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void removeCourse(Course course) {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public List<Course> getListOfCourses() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
 	public List<LearningProgram> getLearningPrograms(Member member)
 			throws CourseException {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-	/*
-	 * @Transactional(propagation = Propagation.REQUIRED, rollbackForClassName =
-	 * "courseMapper") public int createCourse(Course course) {
-	 * System.out.println("Entering into createm method in service "); int
-	 * status = 0; CoursePlaybook playbook = new CoursePlaybook();
-	 * 
-	 * System.out.println("got the mapper : " + courseMapper);
-	 * 
-	 * status = courseMapper.insert(course);
-	 * 
-	 * if (status > 0) {
-	 * System.out.println("********inserted Course record status : " + status);
-	 * }
-	 * 
-	 * playbook.setCourseId(course.getCourseId());
-	 * 
-	 * int playbookStatus = createPlaybook(playbook);
-	 * 
-	 * System.out.println("********inserted Course record status : " +
-	 * playbookStatus);
-	 * 
-	 * return status; }
-	 * 
-	 * public int createPlaybook(CoursePlaybook playbook) {
-	 * 
-	 * int status = 0;
-	 * 
-	 * status = corCoursePlaybookMapper.insert(playbook);
-	 * 
-	 * if (status > 0) {
-	 * System.out.println("********inserted Playbookrecord status : " + status);
-	 * }
-	 * 
-	 * return status; }
-	 * 
-	 * @SuppressWarnings("unused") private int saveMembeRole(MemberRole
-	 * memberRole) { int status = 0; memberRole = new MemberRole();
-	 * memberRole.setMemberId(10000); memberRole.setActive(true);
-	 * memberRole.setRoleType(3576);
-	 * 
-	 * // Member memberRecord = memberMapper.selectByPrimaryKey(memberId);
-	 * 
-	 * status = memberRoleMapper.insert(memberRole);
-	 * 
-	 * return status; }
-	 * 
-	 * @SuppressWarnings("unused") private int saveMember(Member member) { //
-	 * Member member = null; // courseDTO = constructCourseDTO(courseDTO);
-	 * 
-	 * //Member member = null; Integer memberRoleId = null; //List<MemberRole>
-	 * membeRoleList = null; List<Member> membeList = null; //membeRoleList =
-	 * new ArrayList<MemberRole>(); membeList = new ArrayList<Member>();
-	 * courseDTO = constructCourseDTO(courseDTO);
-	 * 
-	 * //member = new Member();
-	 * 
-	 * membeList = memberMapper.getMemberDetails();
-	 * 
-	 * 
-	 * //membeRoleList = member.getMemberRoles();
-	 * 
-	 * if(membeList.size()>0){ for (Member membr : membeList) { memberRoleId =
-	 * membr.getMemberRoleId(); } courseDTO.setMemberRoleId(memberRoleId);
-	 * System.out.println("member role id from the db ::"+memberRoleId); }
-	 * 
-	 * 
-	 * // status = saveMember(member);
-	 * 
-	 * int status = 0; int memStatus = 0; MemberRole memberRole = null;
-	 * 
-	 * member = new Member(); member.setMemberId(200);
-	 * member.setFirstName("Hen"); member.setLastName("Perry");
-	 * member.setActive(true); member.setMemberType(650); member.setGender(750);
-	 * member.setRelationshipStatus(677);
-	 * 
-	 * // status = saveMembeRole(memberRole);
-	 * 
-	 * System.out.println("MemberRole record insert status :: " + status);
-	 * 
-	 * memStatus = memberMapper.insert(member);
-	 * 
-	 * System.out.println("Member record insert status :: " + memStatus);
-	 * 
-	 * return status;
-	 * 
-	 * }
-	 * 
-	 * 
-	 * private CourseDTO constructCourseDTO(CourseDTO courseDTO) { courseDTO =
-	 * new CourseDTO(); courseDTO.setDescription("Course Descriptio220");
-	 * courseDTO.setCourseIdentifier("CD0220");
-	 * courseDTO.setName("Course Name220"); courseDTO.setMemberRoleId(10000);
-	 * 
-	 * return courseDTO; }
-	 * 
-	 * 
-	 * public HashMap<String, List<String>> getCourseCatalog(Integer courseId) {
-	 * Course corCourse = null; CoursePlaybook playbook = null; HashMap<String,
-	 * List<String>> catalogMap = null; CourseCatalog catalog = new
-	 * CourseCatalog(); // List<CorCourseComponentContent>
-	 * pbComponentContentList = null; catalogMap = new HashMap<String,
-	 * List<String>>();
-	 * 
-	 * corCourse = courseMapper.getCourseCatalog(courseId);
-	 * 
-	 * catalog.setCourse(corCourse.getCourseIdentifier() + " - " +
-	 * corCourse.getName()); catalog.setStartDate(corCourse.getValidFrom());
-	 * catalog.setEndDate(corCourse.getValidTo());
-	 * 
-	 * // playbook = corCourse.getCorCoursePlaybook();
-	 * 
-	 * List<LearningComponent> courseComponentList = null;
-	 * 
-	 * // courseComponentList = corCourse.getCourseComponents();
-	 * 
-	 * // List<CorCourseComponent> pbComponentsList = //
-	 * playbook.getCorCourseComponents();
-	 * 
-	 * for (LearningComponent courseComponent : courseComponentList) {
-	 * catalog.setCatalogItemId(courseComponent .getLearningComponentTypeId());
-	 * 
-	 * // pbComponentContentList = new //
-	 * ArrayList<CorCourseComponentContent>();
-	 * 
-	 * 
-	 * pbComponentContentList = corPlaybookComponent.getComponentContentList();
-	 * 
-	 * for (CorCourseComponentContent corPBComponentContent :
-	 * pbComponentContentList) {
-	 * if(corPlaybookComponent.getCourseComponentTypeId ().equals("2868")){
-	 * catalog.setModule(corPBComponentContent.getContentDescription()); }else
-	 * if(corPlaybookComponent.getCourseComponentTypeId().equals("2866" )){
-	 * catalog.setChapter(corPBComponentContent.getContentDescription ());
-	 * }else{
-	 * 
-	 * // //catalog.setTopicsList(topicsList)(corPBComponentContent.
-	 * getContentDescription()); }
-	 * 
-	 * }
-	 * 
-	 * }
-	 * 
-	 * return catalogMap; }
-	 * 
-	 * 
-	 * public int saveOrUpdateCourse(Course course) { return 0; }
-	 * 
-	 * public int saveOrUpdateCourseComponents(Course course) { return 0; }
-	 */
 }

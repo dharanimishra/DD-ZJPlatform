@@ -3,6 +3,7 @@ package com.ziksana.persistence.course;
 import org.apache.ibatis.annotations.Insert;
 
 import com.ziksana.domain.course.CourseLearningComponent;
+import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -21,6 +22,8 @@ public interface CourseLearningComponentMapper {
 	"#{extracredits,jdbcType=INTEGER}, #{duration,jdbcType=INTEGER},#{learningcomponentoveriddenindicator,jdbcType=BIT}, ",
 	"#{durationunit,jdbcType=INTEGER}, #{courseid,jdbcType=INTEGER}, #{learningcomponentid,jdbcType=INTEGER}, #{learningcomponentTtypeid,jdbcType=INTEGER}, "})
 	void save(CourseLearningComponent courseLComponent);
+
+	CourseLearningComponent getComponentByCourse(ZID courseId);
 
 	
 }

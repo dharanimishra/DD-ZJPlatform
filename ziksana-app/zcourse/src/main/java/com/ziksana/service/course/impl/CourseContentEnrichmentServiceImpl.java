@@ -1,33 +1,385 @@
 package com.ziksana.service.course.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.ziksana.domain.course.ContentEnrichment;
+import com.ziksana.domain.course.Enrichment;
+import com.ziksana.domain.course.EnrichmentType;
+import com.ziksana.domain.course.LearningComponentContent;
+import com.ziksana.domain.course.LearningComponentContentHotspot;
+import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.LearningContentTagcloud;
+import com.ziksana.domain.course.LinkType;
+import com.ziksana.domain.course.ReferenceSearchCriteria;
+import com.ziksana.exception.course.CourseException;
+import com.ziksana.id.ZID;
+import com.ziksana.persistence.course.ContentEnrichmentMapper;
+import com.ziksana.persistence.course.EnrichmentMapper;
+import com.ziksana.persistence.course.LearningComponentContentHotspotMapper;
+import com.ziksana.persistence.course.LearningContentTagcloudMapper;
 import com.ziksana.service.course.CourseContentEnrichmentService;
 
 public class CourseContentEnrichmentServiceImpl implements
-		CourseContentEnrichmentService {/*
+		CourseContentEnrichmentService {
+
+	private static Logger logger = Logger
+			.getLogger(CourseContentEnrichmentServiceImpl.class);
+
+	@Autowired
+	public EnrichmentMapper 						enrichMapper;
+	@Autowired
+	public ContentEnrichmentMapper 					contentEnrichmentMapper;
+	@Autowired
+	public LearningComponentContentHotspotMapper 	hotspotMapper;
+	@Autowired
+	public LearningContentTagcloudMapper 			contentTagcloudMapper;
+
+	
+	@Transactional
+	@Override
+	public void saveOrUpdateEnrichContent(Enrichment enrich)
+			throws CourseException {
+
+	}
+
+	@Transactional
+	@Override
+	public void saveReference(Enrichment enrichment) throws CourseException {
+
+		saveReferenceOrTopicOrNotes(enrichment);
+	}
+
+	@Transactional
+	@Override
+	public void deleteReference(Enrichment enrichment) throws CourseException {
+		deleteReferenceOrTopicOrNotes(enrichment);
+	}
+
+	@Transactional
+	@Override
+	public void saveNotes(Enrichment enrichment) throws CourseException {
+		saveReferenceOrTopicOrNotes(enrichment);
+	}
+
+	@Transactional
+	@Override
+	public void deleteNotes(Enrichment enrichment) throws CourseException {
+
+		deleteReferenceOrTopicOrNotes(enrichment);
+
+	}
+
+	@Transactional
+	@Override
+	public void updateNotes(Enrichment enrichment) throws CourseException {
+
+		updateReferenceOrTopicOrNotes(enrichment);
+
+	}
+
+	@Transactional
+	@Override
+	public void saveTOC(Enrichment enrichment) throws CourseException {
+
+		saveReferenceOrTopicOrNotes(enrichment);
+
+	}
+
+	@Transactional
+	@Override
+	public void deleteTOC(Enrichment enrichment) throws CourseException {
+
+		deleteReferenceOrTopicOrNotes(enrichment);
+
+	}
+
+	@Transactional
+	@Override
+	public void updateTOC(Enrichment enrichment) throws CourseException {
+
+		updateReferenceOrTopicOrNotes(enrichment);
+
+	}
+
+	/**
+	 * Saves Enrichment Reference/TOC(Topic)/Notes
+	 * @param enrichment
+	 * @throws CourseException
+	 */
+	private void saveReferenceOrTopicOrNotes(Enrichment enrichment)
+			throws CourseException {
+		Enrichment 				savedEnrichment 	= null;
+		ContentEnrichment 		contentEnrichment 	= null;
+
+		if (enrichment == null) {
+			throw new CourseException("Enrichment cannot be null");
+		}
+
+		if (enrichment.getLearningContent() == null) {
+			throw new CourseException(
+					"Learning Content cannot be null for Enrichment");
+		}
+
+		logger.debug("Before Saving the Enrichment ....");
+		savedEnrichment = enrichMapper.saveReference(enrichment);
+
+		if (savedEnrichment != null) {
+
+			contentEnrichment = enrichment.getContentEnrich();
+
+			contentEnrichment.setApplyEnrichment(enrichment);
+
+			logger.debug("Before Saving the Enrichment Content ....:"
+					+ contentEnrichment.getLinkType());
+			contentEnrichmentMapper.saveRefenceContent(contentEnrichment);
+
+		}
+	}
+
+	/**
+	 * Deletes Enrichment delete indicator for Reference/TOC(Topic)/Notes
+	 * entries
+	 * @param enrichment
+	 * @throws CourseException
+	 */
+	private void deleteReferenceOrTopicOrNotes(Enrichment enrichment)
+			throws CourseException {
+
+		ContentEnrichment contentEnrichment = null;
+
+		if (enrichment == null) {
+			throw new CourseException("Enrichment cannot be null");
+		}
+
+		if (enrichment.getLearningContent() == null) {
+			throw new CourseException(
+					"Learning Content cannot be null for Enrichment");
+		}
+
+		contentEnrichment = enrichment.getContentEnrich();
+
+		if (contentEnrichment == null) {
+			throw new CourseException("Content enrichment cannot be null");
+		}
+
+		logger.debug("Before Deleting the Enrichment Content ....:"
+				+ contentEnrichment.getLinkType());
+		// update delete indicator status to remove the association with
+		// applyenrichment
+		contentEnrichmentMapper.delete(contentEnrichment);
+
+		logger.debug("Before Deleting the Enrichment ....");
+		// update delete indicator status to remove the association with content
+		enrichMapper.delete(enrichment);
+
+	}
+
+	/**
+	 * Updates Enrichment Reference/TOC(Topic)/Notes entries
+	 * @param enrichment
+	 * @throws CourseException
+	 */
+	private void updateReferenceOrTopicOrNotes(Enrichment enrichment)
+			throws CourseException {
+
+		ContentEnrichment contentEnrichment = null;
+
+		if (enrichment == null) {
+			throw new CourseException("Enrichment cannot be null");
+		}
+
+		if (enrichment.getLearningContent() == null) {
+			throw new CourseException(
+					"Learning Content cannot be null for Enrichment");
+		}
+
+		contentEnrichment = enrichment.getContentEnrich();
+
+		if (contentEnrichment == null) {
+			throw new CourseException("Content enrichment cannot be null");
+		}
+
+		// update delete indicator status to remove the association with
+		// applyenrichment
+		contentEnrichmentMapper.update(contentEnrichment);
+	}
 
 	@Override
-	public CourseEnrichmentContentDTO getCourseEnrichmentContentDetails() {
+	public Map<EnrichmentType, List<ContentEnrichment>> getAllEnrichmentContents(
+			ZID memberPersonaId) throws CourseException {
 
+		Map<EnrichmentType, List<ContentEnrichment>> 	enrichmentMap 			= null;
+		List<Enrichment> 								enrichList 				= null;
+		List<ContentEnrichment> 						refContentEnrichList 	= null;
+		List<ContentEnrichment> 						topicContentEnrichList 	= null;
+		List<ContentEnrichment> 						notesContentEnrichList 	= null;
+		List<ContentEnrichment> 						contentEnrichList 		= null;
+		ZID 											enrichId 				= null;
 		
-		return null;
+		enrichList 					= new ArrayList<Enrichment>();
+		enrichmentMap 				= new HashMap<EnrichmentType, List<ContentEnrichment>>();
+		refContentEnrichList 		= new ArrayList<ContentEnrichment>();
+		topicContentEnrichList 		= new ArrayList<ContentEnrichment>();
+		notesContentEnrichList 		= new ArrayList<ContentEnrichment>();
+		
+		if (memberPersonaId == null) {
+			throw new CourseException("Member cannot be null");
+		}
+
+		enrichList = enrichMapper.getAllEnrichments(memberPersonaId);
+		
+		if(enrichList!=null && enrichList.size()>0){
+
+			for (Enrichment enrichment : enrichList) {
+
+				enrichId = enrichment.getEnrichId();
+
+				contentEnrichList = contentEnrichmentMapper
+						.getAllContentEnrichments(enrichId);
+				
+				for (ContentEnrichment contentEnrichment : contentEnrichList) {
+					
+					if(contentEnrichment.getLinkType().equals(LinkType.TOC)){
+						
+						topicContentEnrichList.add(contentEnrichment);
+						
+					}else if(contentEnrichment.getLinkType().equals(LinkType.REFERENCE)){
+						
+						refContentEnrichList.add(contentEnrichment);
+		
+					}else if(contentEnrichment.getLinkType().equals(LinkType.ADDITIONAL_INFO)){
+						
+						notesContentEnrichList.add(contentEnrichment);
+						
+					}
+				}
+				enrichmentMap.put(EnrichmentType.TOPIC, topicContentEnrichList);
+				enrichmentMap.put(EnrichmentType.REFERENCE, refContentEnrichList);
+				enrichmentMap.put(EnrichmentType.NOTES, notesContentEnrichList);
+			}
+			
+		}
+
+		return enrichmentMap;
+	}
+	
+	@Override
+	public List<LearningComponentContentHotspot> getCompContentHotspotList(LearningComponentContent compContent)throws CourseException {
+		
+		List<LearningComponentContentHotspot> hotspotList = null;
+		
+		if(compContent.getLearningComponentContentId()==null){
+			throw new CourseException("Learning Component Content ID cannot be null");
+		}
+		
+		hotspotList = new ArrayList<LearningComponentContentHotspot>();
+		
+		hotspotList = hotspotMapper.getHotspotList(compContent.getLearningComponentContentId());
+		
+		return hotspotList;
+		
 	}
 
 	@Override
-	public List<CourseEnrichmentContentDTO> getListOfCourseEnrichmentContents() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<LearningContent> searchReferences(ReferenceSearchCriteria searchCriteria)
+			throws CourseException {
+
+		List<LearningContentTagcloud> tagcloudList = null;
+		LearningContent	learningContent = null;
+		List<LearningContent> learningContentList = null;
+		
+		if(searchCriteria == null){
+			throw new CourseException("ReferenceSearchCriteria cannot be null");
+		}
+		tagcloudList = new ArrayList<LearningContentTagcloud>();
+		learningContentList = new ArrayList<LearningContent>();
+		learningContent = new LearningContent();
+		
+		tagcloudList =  contentTagcloudMapper.searchReferenceMaterial(searchCriteria);
+		
+		if(tagcloudList!= null && tagcloudList.size()>0){
+			
+			for (LearningContentTagcloud learningContentTagcloud : tagcloudList) {
+				
+				learningContent = learningContentTagcloud.getLearningContent();
+				
+				if(learningContent!=null){
+					learningContentList.add(learningContent);
+				}
+			}
+			
+		}
+		
+		return learningContentList;
+	}
+
+	@Transactional
+	@Override
+	public void saveHotspot(LearningComponentContentHotspot hotspot) throws CourseException {
+
+		LearningComponentContent compContent =  null;
+		
+		if(hotspot == null){
+			throw new CourseException("LearningComponentContentHotspot cannot be  null");
+		}
+		
+		compContent = hotspot.getLearningComponentContent();
+		
+		if(compContent.getLearningComponentContentId()!=null){
+			
+			logger.debug("Before Saving LearningComponentContentHotspot .. ");
+			hotspotMapper.save(hotspot);
+			
+		}
 	}
 
 	@Override
-	public CourseEnrichmentContentDTO addCourseEnrichmentContent() {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteHotspot(LearningComponentContentHotspot hotspot) throws CourseException {
+		LearningComponentContent compContent =  null;
+		
+		if(hotspot == null){
+			throw new CourseException("LearningComponentContentHotspot cannot be  null");
+		}
+		
+		compContent = hotspot.getLearningComponentContent();
+		
+		if(compContent.getLearningComponentContentId()!=null){
+			
+			logger.debug("Before Saving LearningComponentContentHotspot .. ");
+			
+			ZID hotspotId = hotspot.getComponentContentTagHotspotId();
+			hotspotMapper.delete(hotspotId);
+			
+		}
+
 	}
 
 	@Override
-	public CourseEnrichmentContentDTO removeCourseEnrichmentContent() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateHotspot(LearningComponentContentHotspot hotspot) throws CourseException {
+		
+		LearningComponentContent compContent =  null;
+		
+		if(hotspot == null){
+			throw new CourseException("LearningComponentContentHotspot cannot be  null");
+		}
+		
+		compContent = hotspot.getLearningComponentContent();
+		
+		if(compContent.getLearningComponentContentId()!=null){
+			
+			logger.debug("Before Saving LearningComponentContentHotspot .. ");
+			
+			hotspotMapper.update(hotspot);
+			
+		}
+
 	}
 
-*/}
+}

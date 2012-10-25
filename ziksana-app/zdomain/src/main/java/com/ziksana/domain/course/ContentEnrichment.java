@@ -7,6 +7,20 @@ import com.ziksana.id.ZID;
 
 public class ContentEnrichment extends AuditHistory {
 
+	/**
+	 * @return the contentEnrichmentId
+	 */
+	public ZID getContentEnrichmentId() {
+		return contentEnrichmentId;
+	}
+
+	/**
+	 * @param contentEnrichmentId the contentEnrichmentId to set
+	 */
+	public void setContentEnrichmentId(ZID contentEnrichmentId) {
+		this.contentEnrichmentId = contentEnrichmentId;
+	}
+
 	public ContentEnrichment(LinkType linkType,
 			String linkElement, String linkItemAuthor, LinkSource linkSource,
 			Boolean active) {
@@ -17,7 +31,7 @@ public class ContentEnrichment extends AuditHistory {
 		this.active = active;
 	}
 
-	private ZID 						enrichmentId;
+	private ZID 						contentEnrichmentId;
 	private Timestamp 					startTime 					= null;
 	private Timestamp					endTime 					= null;
 	private LinkType 					linkType 					= null;
@@ -29,24 +43,9 @@ public class ContentEnrichment extends AuditHistory {
 	private LinkSource 					linkSource 					= null;
 	private Boolean 					zeniSuggestedIndicator 		= null;
 	private Boolean 					active 						= null;
-	private Enrichment 			enrichment 			= null;
+	private Enrichment 					enrichment 					= null;
 
-	/**
-	 * @return the enrichmentId
-	 */
-	public ZID getEnrichmentId() {
-		return enrichmentId;
-	}
-
-	/**
-	 * @param enrichmentId
-	 *            the enrichmentId to set
-	 */
-	public void setEnrichmentId(ZID enrichmentId) {
-		this.enrichmentId = enrichmentId;
-	}
-
-	/**
+		/**
 	 * @return the startTime
 	 */
 	public Timestamp getStartTime() {
