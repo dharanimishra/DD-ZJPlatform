@@ -74,8 +74,8 @@ public class AlertServiceImplTest {
 	@Test
 	public void testGetAlertList() {
 		
-		ZID memberId = new StringZID("100");
-		ZID memberPersonaId = new StringZID("102");
+		ZID memberId = new StringZID("1000");
+		ZID memberPersonaId = new StringZID("100");
 		
 		
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
@@ -83,7 +83,7 @@ public class AlertServiceImplTest {
 		List<Alert> alerts = alertService.getAlertList();
 		
 		Assert.assertFalse(alerts.isEmpty());
-		Assert.assertTrue(alerts.size() == 2);
+		Assert.assertTrue(alerts.size() == 1);
 		
 		
 	}

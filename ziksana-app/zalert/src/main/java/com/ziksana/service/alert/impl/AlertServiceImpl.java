@@ -28,8 +28,8 @@ public class AlertServiceImpl implements AlertsService {
 	@Override
 	public List<Alert> getAlertList() {
 		// TODO Auto-generated method stub
-		int notificationType = 1000;
-		return alertMapper.getAlerts( Integer.valueOf(notificationType), Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID()));
+		
+		return alertMapper.getAlerts( Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID()));
 	}
 
 	/* (non-Javadoc)
