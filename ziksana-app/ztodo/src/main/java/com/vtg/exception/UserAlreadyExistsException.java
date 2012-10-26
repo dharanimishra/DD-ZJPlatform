@@ -14,12 +14,12 @@ public class UserAlreadyExistsException extends Exception {
 
 	private static final long serialVersionUID = 4301449299714922447L;
 
-	private static final Logger logger = Logger
+	private static final Logger LOGGER = Logger
 			.getLogger(UserAlreadyExistsException.class);
 
 	public UserAlreadyExistsException(String message) {
 		super(message);
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ "Method :UserAlreadyExistsException(String message):"
 				+ message);
 	}

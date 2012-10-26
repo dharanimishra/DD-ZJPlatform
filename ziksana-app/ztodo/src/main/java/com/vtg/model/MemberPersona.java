@@ -214,7 +214,7 @@ public class MemberPersona implements Serializable {
 	}
 
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		final StringBuilder sb = new StringBuilder();
 		sb.append("Id = ").append(id).append(" - ");
 		sb.append("memberType = ").append(memberType).append(" - ");
 		sb.append("relationshipStatus = ").append(relationshipStatus)
@@ -226,7 +226,7 @@ public class MemberPersona implements Serializable {
 	}
 
 	public boolean equals(Object obj) {
-		MemberPersona member = (MemberPersona) obj;
+		final MemberPersona member = (MemberPersona) obj;
 		if (this.id != member.getId()) {
 			return false;
 		}

@@ -26,8 +26,8 @@ public class MyBatisConnectionFactory {
 
 	static {
 		try {
-			String resource = "SqlMapConfig.xml";
-			Reader reader = Resources.getResourceAsReader(resource);
+			final String resource = "SqlMapConfig.xml";
+			final Reader reader = Resources.getResourceAsReader(resource);
 			if (sqlSessionFactory == null) {
 				sqlSessionFactory = new SqlSessionFactoryBuilder()
 						.build(reader);

@@ -17,7 +17,7 @@ public class Category implements Serializable {
 	public Category() {
 	}
 
-	public Category(int categoryId, String categoryName) {
+	public Category(final int categoryId, final String categoryName) {
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 
@@ -27,7 +27,7 @@ public class Category implements Serializable {
 		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(final int categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -35,19 +35,19 @@ public class Category implements Serializable {
 		return categoryName;
 	}
 
-	public void setCategoryName(String categoryName) {
+	public void setCategoryName(final String categoryName) {
 		this.categoryName = categoryName;
 	}
 
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		final StringBuilder sb = new StringBuilder();
 		sb.append("categoryId = ").append(categoryId).append(" - ");
 		sb.append("categoryName = ").append(categoryName).append(" - ");
 		return sb.toString();
 	}
 
-	public boolean equals(Object obj) {
-		Category category = (Category) obj;
+	public boolean equals(final Object obj) {
+		final Category category = (Category) obj;
 		if (this.categoryId != category.categoryId) {
 			return false;
 		}

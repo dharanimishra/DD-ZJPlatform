@@ -9,12 +9,11 @@ public class ExampleServiceTests extends TestCase {
 
 	private ExampleService service = new ExampleService();
 
-	private static final Logger logger = Logger
+	private static final Logger LOGGER = Logger
 			.getLogger(ExampleServiceTests.class);
 
 	public void testReadOnce() throws Exception {
-		logger.debug("Hello world! service.getMessage()");
-		System.out.println("Hello world! service.getMessage()");
+		LOGGER.debug("Hello world! service.getMessage()");
 		assertEquals("Hello world!", service.getMessage());
 	}
 

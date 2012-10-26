@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExampleService implements Service {
 
-	private static final Logger logger = Logger.getLogger(ExampleService.class);
+	private static final Logger LOGGER = Logger.getLogger(ExampleService.class);
 
 	public String getMessage() {
-		logger.debug("Hello Services logger");
+		LOGGER.debug("Hello Services logger");
 		return "Hello world!";
 	}
 }

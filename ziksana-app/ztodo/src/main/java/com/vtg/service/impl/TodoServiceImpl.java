@@ -23,7 +23,7 @@ public class TodoServiceImpl implements TodoService {
 	@Autowired
 	TodoDaoImpl todoDaoImpl;
 
-	private static final Logger logger = LoggerFactory
+	private static final Logger LOGGER = LoggerFactory
 			.getLogger(TodoServiceImpl.class);
 
 	/*
@@ -31,14 +31,14 @@ public class TodoServiceImpl implements TodoService {
 	 * 
 	 * @see com.vtg.service.TodoService#findTodo(java.lang.String)
 	 */
-	public Todo findTodo(String todoId) {
-		logger.info("Class :" + getClass()
+	public Todo findTodo(final String todoId) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :findTodo(String todoId)");
-		Todo todo = todoDaoImpl.findTodo(todoId);
-		logger.info("Class :"
+		final Todo todo = todoDaoImpl.findTodo(todoId);
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Method : findTodo(String todoId) :todoDaoImpl.findTodo(todoId):");
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :findTodo(String todoId)");
 		return todo;
 	}
@@ -49,23 +49,23 @@ public class TodoServiceImpl implements TodoService {
 	 * @see com.vtg.service.TodoService#createTodo(java.lang.String,
 	 * com.vtg.model.Todo)
 	 */
-	public void createTodo(String todoListId, Todo todo) {
-		logger.info("Class :"
+	public void createTodo(final String todoListId, final Todo todo) {
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method : createTodo(String todoListId, Todo todo)");
 		try {
 			// todo.setTodoListId(todoListId);
 			todoDaoImpl.createTodo(todo);
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : createTodo(String todoListId, Todo todo) :todoDaoImpl.createTodo(todo):");
 		} catch (Exception e) {
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : createTodo(String todoListId, Todo todo) :todoDaoImpl.createTodo(todo):Exception :"
 					+ e);
 		}
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :createTodo(String todoListId, Todo todo)");
 	}
 
@@ -74,21 +74,21 @@ public class TodoServiceImpl implements TodoService {
 	 * 
 	 * @see com.vtg.service.TodoService#updateTodo(com.vtg.model.Todo)
 	 */
-	public void updateTodo(Todo todo) {
-		logger.info("Class :" + getClass()
+	public void updateTodo(final Todo todo) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method : updateTodo(Todo todo)");
 		try {
 			todoDaoImpl.updateTodo(todo);
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : updateTodo(Todo todo) :todoDaoImpl.updateTodo(todo):");
 		} catch (Exception e) {
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : updateTodo(Todo todo) :todoDaoImpl.updateTodo(todo):Exception :"
 					+ e);
 		}
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :updateTodo(Todo todo)");
 	}
 
@@ -97,22 +97,22 @@ public class TodoServiceImpl implements TodoService {
 	 * 
 	 * @see com.vtg.service.TodoService#deleteTodo(java.lang.String)
 	 */
-	public void deleteTodo(String todoId) {
-		logger.info("Class :" + getClass()
+	public void deleteTodo(final String todoId) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method : deleteTodo(String todoId)");
 		try {
 			todoDaoImpl.deleteTodo(todoId);
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : deleteTodo(String todoId) :todoDaoImpl.deleteTodo(todoId):todoId"
 					+ todoId);
 		} catch (Exception e) {
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : deleteTodo(String todoId) :todoDaoImpl.updateTodo(todo):todoId:"
 					+ todoId + "Exception :" + e);
 		}
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :deleteTodo(String todoId)");
 	}
 
@@ -122,22 +122,22 @@ public class TodoServiceImpl implements TodoService {
 	 * @see com.vtg.service.TodoService#completeTodo(java.lang.String)
 	 */
 	public Todo completeTodo(String todoId) {
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method : completeTodo(String todoId)");
 		Todo todo = null;
 		try {
 			todo = todoDaoImpl.findTodo(todoId);
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : completeTodo(String todoId) :todoDaoImpl.findTodo(todoId):todoId"
 					+ todoId);
 		} catch (Exception e) {
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : completeTodo(String todoId) :todoDaoImpl.findTodo(todoId):todoId:"
 					+ todoId + "Exception :" + e);
 		}
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :deleteTodo(String todoId)");
 		return todo;
 	}

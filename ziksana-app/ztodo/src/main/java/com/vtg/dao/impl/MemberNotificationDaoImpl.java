@@ -21,7 +21,7 @@ public class MemberNotificationDaoImpl implements MemberNotificationDao {
 	@Autowired
 	private MemberNotificationMapper memberNotificationMapper;
 
-	private static final Logger logger = Logger
+	private static final Logger LOGGER = Logger
 			.getLogger(MemberNotificationDaoImpl.class);
 
 	public void setMemberNotificationMapper(
@@ -35,12 +35,12 @@ public class MemberNotificationDaoImpl implements MemberNotificationDao {
 	 * @see com.vtg.dao.MemberNotificationDao#selectAll()
 	 */
 	public Collection<MemberNotification> selectAll() {
-		logger.info("Class :" + getClass() + " : Entering Method :selectAll()");
-		Collection<MemberNotification> list = memberNotificationMapper
+		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
+		final Collection<MemberNotification> list = memberNotificationMapper
 				.selectAll();
-		logger.debug("Class :" + getClass()
+		LOGGER.debug("Class :" + getClass()
 				+ " : Method :selectAll():list.isEmpty()" + list.isEmpty());
-		logger.info("Class :" + getClass() + " : Leaving Method :selectAll()");
+		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
 		return list;
 
 	}
@@ -50,13 +50,13 @@ public class MemberNotificationDaoImpl implements MemberNotificationDao {
 	 * 
 	 * @see com.vtg.dao.MemberNotificationDao#selectById(int)
 	 */
-	public MemberNotification selectById(long id) {
-		logger.info("Class :" + getClass()
+	public MemberNotification selectById(final long id) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :selectById(int id)");
 		MemberNotification list = memberNotificationMapper.selectById(id);
-		logger.debug("Class :" + getClass()
+		LOGGER.debug("Class :" + getClass()
 				+ ": Method :selectById(int id):list.getId()" + list.getId());
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :selectById(int id)");
 		return list;
 
@@ -67,17 +67,18 @@ public class MemberNotificationDaoImpl implements MemberNotificationDao {
 	 * 
 	 * @see com.vtg.dao.MemberNotificationDao#selectByNotificationType(int)
 	 */
-	public MemberNotification selectByNotificationType(int notificationType) {
-		logger.info("Class :"
+	public MemberNotification selectByNotificationType(
+			final int notificationType) {
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method :selectByNotificationType(int notificationType)");
 		MemberNotification list = memberNotificationMapper
 				.selectByNotificationType(notificationType);
-		logger.debug("Class :"
+		LOGGER.debug("Class :"
 				+ getClass()
 				+ ": Method :selectByNotificationType(int notificationType):list.getId()"
 				+ list.getId());
-		logger.info("Class :"
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method : selectByNotificationType(int notificationType)");
 		return list;
@@ -91,22 +92,22 @@ public class MemberNotificationDaoImpl implements MemberNotificationDao {
 	 * com.vtg.dao.MemberNotificationDao#update(com.vtg.model.MemberNotification
 	 * )
 	 */
-	public void update(MemberNotification memberNotification) {
-		logger.info("Class :"
+	public void update(final MemberNotification memberNotification) {
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method :update(MemberNotification memberNotification)");
 		try {
 			memberNotificationMapper.update(memberNotification);
-			logger.debug("Class :"
+			LOGGER.debug("Class :"
 					+ getClass()
 					+ " : Method :update(MemberNotification memberNotification): Update Successfully");
 		} catch (Exception e) {
-			logger.error("Class :"
+			LOGGER.error("Class :"
 					+ getClass()
 					+ " : Method :update(MemberNotification memberNotification): Update UnSuccessfully: Exception :"
 					+ e);
 		}
-		logger.info("Class :"
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method :update(MemberNotification memberNotification)");
 
@@ -117,21 +118,21 @@ public class MemberNotificationDaoImpl implements MemberNotificationDao {
 	 * 
 	 * @see com.vtg.dao.MemberNotificationDao#delete(int)
 	 */
-	public void delete(int memberNotificationId) {
-		logger.info("Class :" + getClass()
+	public void delete(final int memberNotificationId) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :delete(int memberNotificationId)");
 		try {
 			memberNotificationMapper.delete(memberNotificationId);
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method :delete(int memberNotificationId): delete Successfully : memberNotificationId :"
 					+ memberNotificationId);
 		} catch (Exception e) {
-			logger.info("Class :MemberRoleDaoImpl : Method :delete(int memberNotificationId): delete UnSuccessfully : memberNotificationId :"
+			LOGGER.info("Class :MemberRoleDaoImpl : Method :delete(int memberNotificationId): delete UnSuccessfully : memberNotificationId :"
 					+ memberNotificationId + " Exception :" + e.getMessage());
 			e.printStackTrace();
 		}
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :delete(int memberNotificationId)");
 
 	}
@@ -143,23 +144,23 @@ public class MemberNotificationDaoImpl implements MemberNotificationDao {
 	 * com.vtg.dao.MemberNotificationDao#insert(com.vtg.model.MemberNotification
 	 * )
 	 */
-	public void insert(MemberNotification memberNotification) {
-		logger.info("Class :"
+	public void insert(MemberNotification memNotification) {
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method :insert(MemberNotification memberNotification)");
 		try {
-			memberNotificationMapper.insert(memberNotification);
-			logger.info("Class :"
+			memberNotificationMapper.insert(memNotification);
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method :insert(MemberNotification memberNotification): Added Successfully : MemberNotification :"
-					+ memberNotification.getId());
+					+ memNotification.getId());
 		} catch (Exception e) {
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ ": Method :insert(MemberNotification MemberNotification): Added UnSuccessfully :Exception : "
 					+ e);
 		}
-		logger.info("Class :"
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method :insert(MemberNotification memberNotification)");
 

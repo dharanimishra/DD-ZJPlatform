@@ -20,12 +20,12 @@ public class MemberRoleDaoImpl implements MemberRoleDao {
 	@Autowired
 	MemberRoleMapper memberRoleMapper;
 
-	private static final Logger logger = Logger
+	private static final Logger LOGGER = Logger
 			.getLogger(MemberRoleDaoImpl.class);
 
 	public void setMemberRoleMapper(MemberRoleMapper memberRoleMapper) {
 		this.memberRoleMapper = memberRoleMapper;
-		logger.info("Class :MemberRoleDaoImpl : Method :setMemberRoleMapper(MemberRoleMapper memberRoleMapper)");
+		LOGGER.info("Class :MemberRoleDaoImpl : Method :setMemberRoleMapper(MemberRoleMapper memberRoleMapper)");
 	}
 
 	/*
@@ -34,11 +34,11 @@ public class MemberRoleDaoImpl implements MemberRoleDao {
 	 * @see com.vtg.dao.MemberRoleDao#selectAll()
 	 */
 	public Collection<MemberRole> selectAll() {
-		logger.info("Class :" + getClass() + " : Entering Method :selectAll()");
-		Collection<MemberRole> list = memberRoleMapper.selectAll();
-		logger.debug("Class :" + getClass()
+		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
+		final Collection<MemberRole> list = memberRoleMapper.selectAll();
+		LOGGER.debug("Class :" + getClass()
 				+ " : Method :selectAll():list.isEmpty()" + list.isEmpty());
-		logger.info("Class :" + getClass() + " : Leaving Method :selectAll()");
+		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
 		return list;
 
 	}
@@ -48,14 +48,14 @@ public class MemberRoleDaoImpl implements MemberRoleDao {
 	 * 
 	 * @see com.vtg.dao.MemberRoleDao#selectById(int)
 	 */
-	public MemberRole selectById(int id) {
-		logger.info("Class :" + getClass()
+	public MemberRole selectById(final int id) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :selectById(int id)");
-		MemberRole list = memberRoleMapper.selectById(id);
-		logger.debug("Class :" + getClass()
+		final MemberRole list = memberRoleMapper.selectById(id);
+		LOGGER.debug("Class :" + getClass()
 				+ ": Method :selectById(int id):list.getRoleType()"
 				+ list.getRoleType());
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :selectById(int id)");
 		return list;
 
@@ -66,21 +66,21 @@ public class MemberRoleDaoImpl implements MemberRoleDao {
 	 * 
 	 * @see com.vtg.dao.MemberRoleDao#update(com.vtg.model.MemberRole)
 	 */
-	public void update(MemberRole memberrole) {
-		logger.info("Class :" + getClass()
+	public void update(final MemberRole memberrole) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :update(MemberRole memberrole)");
 		try {
 			memberRoleMapper.update(memberrole);
-			logger.debug("Class :"
+			LOGGER.debug("Class :"
 					+ getClass()
 					+ " : Method :update(MemberRole memberrole): Update Successfully");
 		} catch (Exception e) {
-			logger.error("Class :"
+			LOGGER.error("Class :"
 					+ getClass()
 					+ " : Method :update(MemberRole memberrole): Update UnSuccessfully: Exception :"
 					+ e);
 		}
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :update(MemberRole memberrole)");
 
 	}
@@ -90,19 +90,19 @@ public class MemberRoleDaoImpl implements MemberRoleDao {
 	 * 
 	 * @see com.vtg.dao.MemberRoleDao#delete(int)
 	 */
-	public void delete(int id) {
-		logger.info("Class :" + getClass()
+	public void delete(final int id) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :delete(int id)");
 		try {
 			memberRoleMapper.delete(id);
-			logger.info("Class :" + getClass()
+			LOGGER.info("Class :" + getClass()
 					+ " : Method :delete(int id): delete Successfully : Id :"
 					+ id);
 		} catch (Exception e) {
-			logger.info("Class :MemberRoleDaoImpl : Method :delete(int id): delete UnSuccessfully : Id :"
+			LOGGER.info("Class :MemberRoleDaoImpl : Method :delete(int id): delete UnSuccessfully : Id :"
 					+ id);
 		}
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :delete(int id)");
 	}
 
@@ -111,22 +111,22 @@ public class MemberRoleDaoImpl implements MemberRoleDao {
 	 * 
 	 * @see com.vtg.dao.MemberRoleDao#insert(com.vtg.model.MemberRole)
 	 */
-	public void insert(MemberRole memberrole) {
-		logger.info("Class :" + getClass()
+	public void insert(final MemberRole memberrole) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :insert(MemberRole memberrole)");
 		try {
 			memberRoleMapper.insert(memberrole);
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method :insert(MemberRole memberrole): Added Successfully : memberrole :"
 					+ memberrole.getRoleType());
 		} catch (Exception e) {
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ ": Method :insert(MemberRole memberrole): Added UnSuccessfully :Exception : "
 					+ e);
 		}
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :insert(MemberRole memberrole)");
 
 	}

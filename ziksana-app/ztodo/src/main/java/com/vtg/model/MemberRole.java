@@ -52,7 +52,7 @@ public class MemberRole implements Serializable {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(final int id) {
 		this.id = id;
 	}
 
@@ -105,7 +105,7 @@ public class MemberRole implements Serializable {
 	}
 
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		final StringBuilder sb = new StringBuilder();
 		sb.append("Id = ").append(id).append(" - ");
 		sb.append("roleType = ").append(roleType).append(" - ");
 		sb.append("roleStartDate = ").append(roleStartDate).append(" - ");
@@ -119,7 +119,7 @@ public class MemberRole implements Serializable {
 	}
 
 	public boolean equals(Object obj) {
-		MemberRole memberrole = (MemberRole) obj;
+		final MemberRole memberrole = (MemberRole) obj;
 		if (this.id != memberrole.getId()) {
 			return false;
 		}

@@ -45,7 +45,7 @@ public class TodoList implements Serializable {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(final String id) {
 		this.id = id;
 	}
 
@@ -66,7 +66,7 @@ public class TodoList implements Serializable {
 	}
 
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		final StringBuilder sb = new StringBuilder();
 		sb.append("id = ").append(id).append(" - ");
 		sb.append("name = ").append(name).append(" - ");
 		sb.append("lastUpdate = ").append(lastUpdate).append(" - ");
@@ -74,7 +74,7 @@ public class TodoList implements Serializable {
 	}
 
 	public boolean equals(Object obj) {
-		TodoList todolist = (TodoList) obj;
+		final TodoList todolist = (TodoList) obj;
 		if (this.id != todolist.getId()) {
 			return false;
 		}

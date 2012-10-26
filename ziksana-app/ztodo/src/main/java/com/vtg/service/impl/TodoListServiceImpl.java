@@ -33,7 +33,7 @@ public class TodoListServiceImpl implements TodoListService {
 	@Autowired
 	CategoryDaoImpl categoryDaoImpl;
 
-	private static final Logger logger = LoggerFactory
+	private static final Logger LOGGER = LoggerFactory
 			.getLogger(TodoListServiceImpl.class);
 
 	/*
@@ -42,13 +42,13 @@ public class TodoListServiceImpl implements TodoListService {
 	 * @see com.vtg.service.TodoListService#getTodoList(com.vtg.model.Member)
 	 */
 	public Collection<TodoList> getTodoList() {
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :getTodoList()");
-		Collection<TodoList> list = todoListDaoImpl.selectAll();
-		logger.info("Class :" + getClass()
+		final Collection<TodoList> list = todoListDaoImpl.selectAll();
+		LOGGER.info("Class :" + getClass()
 				+ " : Method : getTodoList() :todoListDaoImpl.selectAll():"
 				+ list.isEmpty());
-		logger.info("Class :" + getClass() + " : Leaving Method :getTodoList()");
+		LOGGER.info("Class :" + getClass() + " : Leaving Method :getTodoList()");
 		return list;
 	}
 
@@ -57,15 +57,15 @@ public class TodoListServiceImpl implements TodoListService {
 	 * 
 	 * @see com.vtg.service.TodoListService#getTodoList(com.vtg.model.Member)
 	 */
-	public Collection<TodoList> getTodoList(MemberPersona member) {
-		logger.info("Class :" + getClass()
+	public Collection<TodoList> getTodoList(final MemberPersona member) {
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :getTodoList(MemberPersona member)");
 		Collection<TodoList> list = todoListDaoImpl.selectAll();
-		logger.info("Class :"
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Method : getTodoList(MemberPersona member) :todoListDaoImpl.selectAll():"
 				+ list.isEmpty());
-		logger.info("Class :" + getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method : getTodoList(MemberPersona member)");
 		return list;
 	}
@@ -76,21 +76,21 @@ public class TodoListServiceImpl implements TodoListService {
 	 * @see com.vtg.service.TodoListService#createTodoItem(com.vtg.model.Member,
 	 * com.vtg.model.Todo)
 	 */
-	public void createTodoItem(MemberPersona member, Todo todo) {
-		logger.info("Class :"
+	public void createTodoItem(final MemberPersona member, final Todo todo) {
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method : createTodoItem(MemberPersona member, Todo todo)");
 		try {
 			todoDaoImpl.createTodo(todo);
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : createTodoItem(MemberPersona member, Todo todo) :todoDaoImpl.createTodo(todo);");
 		} catch (Exception e) {
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : createTodoItem(MemberPersona member, Todo todo) :todoDaoImpl.createTodo(todo);:");
 		}
-		logger.info("Class :"
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method : createTodoItem(MemberPersona member, Todo todo)");
 	}
@@ -101,21 +101,21 @@ public class TodoListServiceImpl implements TodoListService {
 	 * @see com.vtg.service.TodoListService#editTodoItem(com.vtg.model.Member,
 	 * com.vtg.model.Todo)
 	 */
-	public void editTodoItem(MemberPersona member, Todo todo) {
-		logger.info("Class :"
+	public void editTodoItem(final MemberPersona member, final Todo todo) {
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method : editTodoItem(MemberPersona member, Todo todo)");
 		try {
 			todoDaoImpl.updateTodo(todo);
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : editTodoItem(MemberPersona member, Todo todo) :todoDaoImpl.updateTodo(todo):");
 		} catch (Exception e) {
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : editTodoItem(MemberPersona member, Todo todo) :todoDaoImpl.updateTodo(todo):");
 		}
-		logger.info("Class :"
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method : editTodoItem(MemberPersona member, Todo todo)");
 	}
@@ -126,21 +126,22 @@ public class TodoListServiceImpl implements TodoListService {
 	 * @see com.vtg.service.TodoListService#createCategory(com.vtg.model.Member,
 	 * com.vtg.model.Category)
 	 */
-	public void createCategory(MemberPersona member, Category category) {
-		logger.info("Class :"
+	public void createCategory(final MemberPersona member,
+			final Category category) {
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method : createCategory(MemberPersona member, Category category)");
 		try {
 			categoryDaoImpl.insert(category);
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : createCategory(MemberPersona member, Category category) :categoryDaoImpl.insert(category):");
 		} catch (Exception e) {
-			logger.info("Class :"
+			LOGGER.info("Class :"
 					+ getClass()
 					+ " : Method : createCategory(MemberPersona member, Category category) :categoryDaoImpl.insert(category):");
 		}
-		logger.info("Class :"
+		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method : createCategory(MemberPersona member, Category category)");
 	}

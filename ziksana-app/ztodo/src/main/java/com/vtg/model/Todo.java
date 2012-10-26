@@ -62,7 +62,7 @@ public class Todo implements Serializable {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(final String id) {
 		this.id = id;
 	}
 
@@ -107,7 +107,7 @@ public class Todo implements Serializable {
 	}
 
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
+		final StringBuilder sb = new StringBuilder();
 		sb.append("id = ").append(id).append(" - ");
 		sb.append("creationDate = ").append(creationDate).append(" - ");
 
@@ -115,7 +115,7 @@ public class Todo implements Serializable {
 	}
 
 	public boolean equals(Object obj) {
-		Todo todo = (Todo) obj;
+		final Todo todo = (Todo) obj;
 		if (this.id != todo.getId()) {
 			return false;
 		}
