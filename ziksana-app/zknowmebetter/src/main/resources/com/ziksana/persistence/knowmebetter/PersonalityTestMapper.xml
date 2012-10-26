@@ -6,30 +6,36 @@
 	<select id="getUnansweredQuestions" resultMap="questionResultMap"
 		parameterType="int">
 
-		select q.*, qba.QuestionBankAnswerId, qb.QuestionContent,qba.`Answer Content`,  qba.`Answer Sequence`,mpt.MemberRoleId
+		select q.*, qba.QuestionBankAnswerId,
+		qb.QuestionContent,qba.`Answer Content`, qba.`Answer
+		Sequence`,mpt.MemberRoleId
 		from
 		psttestquestion q
-		JOIN asmquestionbank qb ON q.QuestionBankId=q.QuestionBankId
-		JOIN asmquestionbankanswer qba ON qb.QuestionBankId=qba.QuestionBankId
-		LEFT JOIN pstmemberpersonalityresponse r ON
+		JOIN asmquestionbank qb
+		ON q.QuestionBankId=q.QuestionBankId
+		JOIN asmquestionbankanswer qba ON
+		qb.QuestionBankId=qba.QuestionBankId
+		LEFT JOIN
+		pstmemberpersonalityresponse r ON
 		q.TestQuestionId=r.TestQuestionId
 		LEFT JOIN pstmemberpersonalitytest mpt ON
 		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId
-		where r.TestQuestionId is null and ( mpt.MemberRoleId is null or
+		where
+		r.TestQuestionId is null and ( mpt.MemberRoleId is null or
 		mpt.MemberRoleId!=#{memberRoleId})
 
 	</select>
 
 	<resultMap id="questionResultMap" type="com.ziksana.domain.common.Question">
-		
+
 		<constructor>
-			
-			
+
+
 			<idArg column="TestQuestionId" javaType="Integer" />
 			<idArg column="QuestionContent" javaType="String" />
-		
-		
-		
+
+
+
 		</constructor>
 
 		<collection property="choices" ofType="com.ziksana.domain.common.Choice">
@@ -40,9 +46,25 @@
 			</constructor>
 		</collection>
 
-		
+
 
 	</resultMap>
+
+	<insert id="saveAnswer" parameterType="map" useGeneratedKeys="true"
+		keyProperty="MemPersonalityRespId">
+
+		insert into pstmemberpersonalityresponse(
+		MemberAnswer,ResponseDate,TestQuestionId,QuestionBankAnswerId,MemberPersonalityTestId)
+		values(
+		#{answer.text},now(),#{question.id.storageID},#{answer.id.storageID},
+		#{answer.memPstTestId} )
+
+		<selectKey keyProperty="MemPersonalityRespId" resultType="int"
+			order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+
+	</insert>
 
 
 

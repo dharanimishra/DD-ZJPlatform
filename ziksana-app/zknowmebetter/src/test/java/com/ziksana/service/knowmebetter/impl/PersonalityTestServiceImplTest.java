@@ -18,6 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
+import com.ziksana.domain.common.Choice;
 import com.ziksana.domain.common.Question;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
@@ -67,9 +68,16 @@ public class PersonalityTestServiceImplTest {
 		
 	}
 
-	@Ignore
+	@Test
 	public void testSaveAnswer() {
-		fail("Not yet implemented");
+		
+		List<Question> questions = personalityTestService.getUnansweredQuestions();
+		
+		Question question = questions.get(0);
+	    Choice userChoice = (Choice) question.getChoices().iterator().next(); 
+		userChoice.setMemPstTestId(Integer.valueOf(1));
+		personalityTestService.saveAnswer(question, userChoice);		
+		
 	}
 
 	@Ignore

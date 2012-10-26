@@ -26,7 +26,7 @@ public class PersonalityTestServiceImpl implements PersonalityTestService {
 
 	@Override
 	public void saveAnswer(Question question, Choice userChoice) {
-		// TODO Auto-generated method stub
+		personalityTestMapper.saveAnswer(question, userChoice);
 
 	}
 

@@ -9,22 +9,37 @@ public class Choice implements Comparable<Choice> {
 	private Integer index;
 	private String text;
 	private String imageUrl;
+	private Integer memPstTestId;
 
-
-
-
+	
 
 	/**
 	 * @param index
 	 * @param text
-	 * @param imageUrl
+	 * 
 	 */
 	public Choice(Integer id, Integer index, String text) {
 		super();
 		this.id = new IntegerZID(id);
 		this.index = index;
 		this.text = text;
-		
+
+	}
+	
+	
+	/**
+	 * @return the memPstTestId
+	 */
+	public Integer getMemPstTestId() {
+		return memPstTestId;
+	}
+
+	/**
+	 * @param memPstTestId
+	 *            the memPstTestId to set
+	 */
+	public void setMemPstTestId(Integer memPstTestId) {
+		this.memPstTestId = memPstTestId;
 	}
 	
 	
@@ -44,15 +59,13 @@ public class Choice implements Comparable<Choice> {
 		return text;
 	}
 
-	
-
 	/**
-	 * @param imageUrl the imageUrl to set
+	 * @param imageUrl
+	 *            the imageUrl to set
 	 */
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-
 
 	/**
 	 * @return the imageUrl
@@ -67,10 +80,9 @@ public class Choice implements Comparable<Choice> {
 		return Integer.valueOf(index).compareTo(Integer.valueOf(o.index));
 	}
 
-
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -81,10 +93,9 @@ public class Choice implements Comparable<Choice> {
 		return result;
 	}
 
-
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -103,12 +114,5 @@ public class Choice implements Comparable<Choice> {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
 
-	
 }
