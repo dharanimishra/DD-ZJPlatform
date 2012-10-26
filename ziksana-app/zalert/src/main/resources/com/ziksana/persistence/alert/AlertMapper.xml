@@ -23,7 +23,7 @@
 		<result property="description" column="NotificationContent"/>
 		<result property="creationDate" column="CreationDate"/>
 		<result property="category" column="Category"/>
-	
+	    <result property="priority" column="Priority"/>
 
 	</resultMap>
 
