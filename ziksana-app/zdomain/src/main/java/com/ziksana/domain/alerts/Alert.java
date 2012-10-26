@@ -7,6 +7,8 @@ import java.util.Date;
 
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 /**
  * @author prabu
@@ -14,10 +16,12 @@ import com.ziksana.domain.polls.PollQuestion;
  */
 public class Alert implements Comparable<Alert> {
 
-	private Integer ID;
+	private ZID id;
 	private String description;
 	private Date creationDate;
+	private Date actiovationDate;
 	private Integer status;
+	private String category;
 	private MemberPersona creatingMember;
 	private MemberPersona forMember;
 	private Date completeBy;
@@ -26,8 +30,14 @@ public class Alert implements Comparable<Alert> {
 	
 	
 	
-	public Integer getID() {
-		return ID;
+	
+	
+	
+	
+	
+	
+	public ZID getId() {
+		return id;
 	}
 
 
@@ -39,8 +49,8 @@ public class Alert implements Comparable<Alert> {
 
 
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setId(Integer id) {
+		this.id = new IntegerZID(id);
 	}
 
 
@@ -239,6 +249,58 @@ public class Alert implements Comparable<Alert> {
 		// TODO Auto-generated method stub
 		return this.completeBy.compareTo(o.completeBy);
 		
+	}
+
+
+
+
+
+
+
+
+
+
+	public Date getActiovationDate() {
+		return actiovationDate;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setActiovationDate(Date actiovationDate) {
+		this.actiovationDate = actiovationDate;
+	}
+
+
+
+
+
+
+
+
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 	

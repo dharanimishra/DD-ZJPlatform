@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.alert.AlertMapper">
+
+
+	<select id="getAlerts" resultMap="alertResultMap" parameterType="int">
+
+		select
+		*
+		from
+		memmembernotification n
+		join utllookup l ON n.NotificationType=l.LookupId
+		join utllookupvalue v ON l.LookupId=v.LookupId
+		where l.CategoryName='memmembernotification' and v.LookupValue='Alert' and
+		n.ForMemberRoleId=#{userMemberRoleId}
+
+
+	</select>
+
+	<resultMap id="alertResultMap" type="com.ziksana.domain.alerts.Alert">
+		
+		<result property="id" column="MemberNotificationId"/>
+		<result property="description" column="NotificationContent"/>
+		<result property="creationDate" column="CreationDate"/>
+		<result property="category" column="Category"/>
+	
+
+	</resultMap>
+
+
+
+</mapper>
