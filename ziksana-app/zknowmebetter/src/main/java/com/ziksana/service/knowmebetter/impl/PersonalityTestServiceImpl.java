@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.common.Choice;
 import com.ziksana.domain.common.Question;
+import com.ziksana.domain.common.QuestionResponse;
 import com.ziksana.persistence.knowmebetter.PersonalityTestMapper;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.knowmebetter.PersonalityTestService;
@@ -31,9 +32,11 @@ public class PersonalityTestServiceImpl implements PersonalityTestService {
 	}
 
 	@Override
-	public Map<Question, Choice> answeredQuestions() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<QuestionResponse> answeredQuestions() {
+		
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
+		return personalityTestMapper.answeredQuestions(memberRoleId);
+		
 	}
 
 }

@@ -17,9 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
 import com.ziksana.domain.common.Choice;
 import com.ziksana.domain.common.Question;
+import com.ziksana.domain.common.QuestionResponse;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
@@ -31,8 +31,8 @@ import com.ziksana.service.knowmebetter.PersonalityTestService;
 public class PersonalityTestServiceImplTest {
 
 	@Autowired
-    private PersonalityTestService personalityTestService;
-	
+	private PersonalityTestService personalityTestService;
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -43,6 +43,12 @@ public class PersonalityTestServiceImplTest {
 
 	@Before
 	public void setUp() throws Exception {
+		ZID memberId = new StringZID("1000");
+		ZID memberPersonaId = new StringZID("100");
+
+		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+		ThreadLocalUtil.setToken(token);
+
 	}
 
 	@After
@@ -53,36 +59,42 @@ public class PersonalityTestServiceImplTest {
 	public void testGetUnansweredQuestions() {
 		ZID memberId = new StringZID("1000");
 		ZID memberPersonaId = new StringZID("100");
-		
-		
+
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
 		ThreadLocalUtil.setToken(token);
-			
-		
-		List<Question> questions = personalityTestService.getUnansweredQuestions();
-		
-               
-        Assert.assertTrue(questions.size() == 1);
-        
-		
-		
+
+		List<Question> questions = personalityTestService
+				.getUnansweredQuestions();
+
+		Assert.assertTrue(questions.size() == 1);
+
 	}
 
 	@Test
 	public void testSaveAnswer() {
-		
-		List<Question> questions = personalityTestService.getUnansweredQuestions();
-		
+
+		List<Question> questions = personalityTestService
+				.getUnansweredQuestions();
+
 		Question question = questions.get(0);
-	    Choice userChoice = (Choice) question.getChoices().iterator().next(); 
+		Choice userChoice = (Choice) question.getChoices().iterator().next();
 		userChoice.setMemPstTestId(Integer.valueOf(1));
-		personalityTestService.saveAnswer(question, userChoice);		
-		
+		personalityTestService.saveAnswer(question, userChoice);
+
 	}
 
-	@Ignore
+	@Test
 	public void testAnsweredQuestions() {
-		fail("Not yet implemented");
+
+		List<QuestionResponse> questionResponses = personalityTestService
+				.answeredQuestions();
+
+		QuestionResponse questionResponse = questionResponses.get(0);
+
+		Assert.assertTrue(questionResponse.getQuestion().getText()
+				.equals("do you like video courses"));
+		Assert.assertTrue(questionResponse.getChoice().getText().equals("No"));
+
 	}
 
 }
