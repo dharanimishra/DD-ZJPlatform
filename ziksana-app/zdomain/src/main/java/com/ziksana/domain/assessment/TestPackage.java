@@ -3,6 +3,8 @@ package com.ziksana.domain.assessment;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.id.ZID;
 
 /**
@@ -25,7 +27,10 @@ public class TestPackage extends AuditHistory{
 	private PackageUsageType	packageUsageType	= null;
 	private ProficiencyLevel 	proficiencyLevel 	= null;
 	private String 				competencyLevel 	= null;
-
+	private Course				course				= null;
+	private LearningComponent	learningComponent	= null;
+	private PackageTest			packageTest			= null;
+	
 	/**
 	 * @return the testPackageId
 	 */
@@ -111,6 +116,42 @@ public class TestPackage extends AuditHistory{
 		this.competencyLevel = competencyLevel;
 	}
 	
+	/**
+	 * @return the course
+	 */
+	public Course getCourse() {
+		return course;
+	}
+	/**
+	 * @param course the course to set
+	 */
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	/**
+	 * @return the learningComponent
+	 */
+	public LearningComponent getLearningComponent() {
+		return learningComponent;
+	}
+	/**
+	 * @param learningComponent the learningComponent to set
+	 */
+	public void setLearningComponent(LearningComponent learningComponent) {
+		this.learningComponent = learningComponent;
+	}
+	/**
+	 * @return the packageTest
+	 */
+	public PackageTest getPackageTest() {
+		return packageTest;
+	}
+	/**
+	 * @param packageTest the packageTest to set
+	 */
+	public void setPackageTest(PackageTest packageTest) {
+		this.packageTest = packageTest;
+	}
 	@Override
 	public String toString() {
 		return "TestPackage [packageName=" + packageName

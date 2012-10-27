@@ -15,15 +15,12 @@ import com.ziksana.domain.course.CourseContentSecurity;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.CourseTagcloud;
-import com.ziksana.domain.course.Enrichment;
 import com.ziksana.domain.course.LearningComponent;
-import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningComponentDetails;
 import com.ziksana.domain.course.LearningComponentNest;
 import com.ziksana.domain.course.LearningProgram;
 import com.ziksana.domain.member.Member;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CourseContentSecurityMapper;
 import com.ziksana.persistence.course.CourseLearningComponentMapper;
@@ -55,38 +52,34 @@ public class CourseServiceImpl implements CourseService {
 	@Autowired
 	public LearningComponentContentMapper 	learningComponentContentMapper;
 	@Autowired
-	public EnrichmentMapper						enrichMapper;
-	
+	public EnrichmentMapper					enrichMapper;
+		
 	@Transactional
 	@Override
 	public Course saveOrUpdateCourse(Course course) throws CourseException {
 
 		Course 					savedCourse 	= null;
 		CourseContentSecurity 	contSecurity 	= null;
-		ZID 					courseId 		= null;
+		List<CourseTagcloud> 	tagcloudList 	= null;
+	
+		tagcloudList = new ArrayList<CourseTagcloud>();
 		savedCourse = new Course();
 
-		Course newCourse = new Course(course.getName(),
-				course.getDescription(), course.getCourseStatus(),
-				course.getCourseDuration(), course.getAccountableMember());
-
-		courseId = course.getCourseId();
-
-		List<CourseTagcloud> tagcloudList = null;
 		contSecurity = course.getCourseContSecurity();
 
-		if (courseId != null) {
-			logger.debug("Course Id : "+courseId);
+		if (course.getCourseId() != null && course!=null) {
 			// Update Operation
-			tagcloudList = new ArrayList<CourseTagcloud>();
+			
+			logger.debug("Course Id : "+course.getCourseId());
+			
+			tagcloudList = course.getCourseTagClouds();
 			
 			logger.debug("Before updating the Course ....");
-			savedCourse = courseMapper.updateCourse(course);
+			courseMapper.updateCourse(course);
 			
 			if(tagcloudList!=null && tagcloudList.size()>0){
 				
 				logger.debug("Course Tagcloud list size  : "+tagcloudList.size());
-				tagcloudList = tagCloudMapper.getCourseTagClouds(savedCourse.getCourseId()); 
 				
 				for (CourseTagcloud courseTagcloud : tagcloudList) {
 					
@@ -111,8 +104,12 @@ public class CourseServiceImpl implements CourseService {
 
 		} else {
 			// Insert/Save Operation
+			if(course == null){
+				throw new CourseException("Course cannot be null");
+			}
+			
 			logger.debug("Before saving the Course ....");
-			savedCourse = courseMapper.saveCourse(newCourse);
+			savedCourse = courseMapper.saveCourse(course);
 
 			tagcloudList = course.getCourseTagClouds();
 
@@ -123,8 +120,9 @@ public class CourseServiceImpl implements CourseService {
 
 					courseTagcloud.setCourse(savedCourse);
 
-					courseTagcloud.setCreatingMember(newCourse
+					courseTagcloud.setCreatingMember(course
 							.getAccountableMember());
+
 					logger.debug("Before Saving the Course Content Security ....");
 					tagCloudMapper.save(courseTagcloud);
 				}
@@ -256,7 +254,7 @@ public class CourseServiceImpl implements CourseService {
 
 	
 	@Override
-	public Course getBaseCourseDetails(IntegerZID courseId) throws CourseException {
+	public Course getBaseCourseDetails(Integer courseId) throws CourseException {
 		
 		Course course = null;
 	
@@ -265,6 +263,7 @@ public class CourseServiceImpl implements CourseService {
 		}
 		
 		logger.debug("Before retrieving the base course details ");
+		
 		course = courseMapper.getBaseCourseDetails(courseId);
 		
 		if(course!=null){
@@ -277,7 +276,7 @@ public class CourseServiceImpl implements CourseService {
 
 	
 	@Override
-	public List<Course> getListOfCourses(ZID memberPersonaId) {
+	public List<Course> getListOfCourses(Integer memberPersonaId) {
 
 		List<Course> 				courseList 					= null;
 		List<Course> 				newCourseList 				= null;
@@ -286,43 +285,54 @@ public class CourseServiceImpl implements CourseService {
 		Integer 					componentContentId 			= null;
 		Integer 					learningContentId 			= null;
 		Integer 					enrichId 					= null;
+		int 						courseProgress 				= 0;
+		Integer 					assignmentId	 			= null;
+		
 		courseList 		= new		ArrayList<Course>();
 		newCourseList 	= new 		ArrayList<Course>();
 		
 		courseList = courseMapper.getListOfCourses(memberPersonaId);
 		
-		int courseProgress = 0;
-		for (Course course : courseList) {
+		if(courseList!=null && courseList.size()>0){
 			
-			courseLearningComponent =courseLComponentMapper.getComponentByCourse(course.getCourseId());
-			
-			if(courseLearningComponent.getLearningComponent().getLearningComponentId()!=null){
+			logger.debug("Course components size : "+courseList.size());
+		
+			for (Course course : courseList) {
 				
-				courseProgress = courseProgress +15;
+				courseLearningComponent =courseLComponentMapper.getComponentByCourse(new Integer(course.getCourseId().getStorageID()));
 				
-				lCompId = courseLearningComponent.getLearningComponent().getLearningComponentId();
-				
-				componentContentId = learningComponentContentMapper.getCompContentByLComponentId((IntegerZID)lCompId);
-				
-				learningContentId = learningComponentContentMapper.getContentByLComponentId((IntegerZID)lCompId);
-				
-				if(componentContentId != null){
+				if(courseLearningComponent.getLearningComponent().getLearningComponentId()!=null){
+					
 					courseProgress = courseProgress +15;
 					
-					enrichId = enrichMapper.getEnrichByContentIdOrComponentId((IntegerZID)lCompId, learningContentId);
+					lCompId = courseLearningComponent.getLearningComponent().getLearningComponentId();
 					
-					if(enrichId!=null){
+					componentContentId = learningComponentContentMapper.getCompContentByLComponentId(new Integer(lCompId.getStorageID()));
+					
+					learningContentId = learningComponentContentMapper.getContentByLComponentId(new Integer(lCompId.getStorageID()));
+					
+					if(componentContentId != null){
 						courseProgress = courseProgress +15;
-						//assignmenttest
-						//planner progress
-						//playbook progress
-						//socialize
+						
+						enrichId = enrichMapper.getEnrichByContentIdOrComponentId(new Integer(lCompId.getStorageID()), learningContentId);
+						
+						if(enrichId!=null){
+	
+							courseProgress = courseProgress +15;
+							assignmentId = courseMapper.checkAssignment(new Integer(lCompId.getStorageID()));
+							if(assignmentId !=null){
+								courseProgress = courseProgress +15;
+							}
+							//TODO: planner progress
+							//TODO: playbook progress
+							//TODO: socialize
+						}
 					}
 				}
+				course.setCourseProgress(courseProgress);
 				
+				newCourseList.add(course);
 			}
-			course.setCourseProgress(courseProgress);
-			newCourseList.add(course);
 		}
 
 		return newCourseList;
@@ -349,8 +359,16 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Course getCourseDetails(Course course) {
-		return null;
+	public Course getCourseDetails(Integer courseId) throws CourseException {
+		
+		Course course = null;
+		if(courseId == null){
+			throw new CourseException("Course Id cannot be null");
+		}
+		
+		course = courseMapper.getBaseCourseDetails(courseId);
+		
+		return course;
 	}
 
 	@Override

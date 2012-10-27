@@ -14,10 +14,10 @@ import com.ziksana.id.ZID;
 public class AssignmentTestRubric extends AuditHistory {
 
 	public AssignmentTestRubric(Integer cellValue, Boolean active,
-			AssignmentTest assignmentTest, Rubric rubric) {
+			Test test, Rubric rubric) {
 		this.cellValue = cellValue;
 		this.active = active;
-		this.assignmentTest = assignmentTest;
+		this.test = test;
 		this.rubric = rubric;
 	}
 	
@@ -26,7 +26,7 @@ public class AssignmentTestRubric extends AuditHistory {
 	private Integer 		cellValue 			= null;
 	private Boolean 		active	 			= null;
 	
-	private AssignmentTest 	assignmentTest 		= null;
+	private Test 			test 				= null;
 	private Rubric 			rubric 				= null;
 	private RubricMatrix 	rubricMatrix 		= null;
 	
@@ -81,14 +81,14 @@ public class AssignmentTestRubric extends AuditHistory {
 	/**
 	 * @return the assignmentTest
 	 */
-	public AssignmentTest getAssignmentTest() {
-		return assignmentTest;
+	public Test getTest() {
+		return test;
 	}
 	/**
-	 * @param assignmentTest the assignmentTest to set
+	 * @param assignment the assignmentTest to set
 	 */
-	public void setAssignmentTest(AssignmentTest assignmentTest) {
-		this.assignmentTest = assignmentTest;
+	public void setTest(Test test) {
+		this.test = test;
 	}
 	/**
 	 * @return the rubric
@@ -119,7 +119,7 @@ public class AssignmentTestRubric extends AuditHistory {
 	public String toString() {
 		return "AssignmentTestRubric [creationDate=" + creationDate
 				+ ", cellValue=" + cellValue + ", active=" + active
-				+ ", assignmentTest=" + assignmentTest + ", rubric=" + rubric
+				+ ", Test=" + test + ", rubric=" + rubric
 				+ ", rubricMatrix=" + rubricMatrix + "]";
 	}
 	

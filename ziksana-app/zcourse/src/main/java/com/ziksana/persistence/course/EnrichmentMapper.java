@@ -3,15 +3,17 @@ package com.ziksana.persistence.course;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.ziksana.domain.course.ContentEnrichment;
 import com.ziksana.domain.course.Enrichment;
-import com.ziksana.id.IntegerZID;
-import com.ziksana.id.ZID;
 
 /**
+ * This holds the operations for Enrichment and ContentEnrichment.
  * @author bhashasp
  */
 public interface EnrichmentMapper {
@@ -20,36 +22,128 @@ public interface EnrichmentMapper {
 	 * This method saves the Course information to corcourse table
 	 */
 	@Insert({
-			"insert into corApplyEnrichment ( creationdate, active, visibility, overrideat, learningcontentid, learningcomponentid, ",
-			"courseid, curriculumcourseid, creatormemberroleid) ",
-			"values (#{creationdate,jdbcType=TIMESTAMP}, ",
+			"insert into corapplyenrichment ( creationdate, active, visibility, overrideat, learningcontentid, learningcomponentid, ",
+			"courseid, creatormemberroleid) ",
+			"values (sysdate(), ",
 			"#{active,jdbcType=BIT}, ",
 			"#{visibility,jdbcType=INTEGER}, ",
-			"#{overrideat,jdbcType=INTEGER}, ",
-			"#{learningcontentid,jdbcType=INTEGER}, ",
-			"#{learningcomponentid,jdbcType=INTEGER}, ",
-			"#{courseid,jdbcType=BIT}, #{curriculumcourseid,jdbcType=INTEGER},#{memberroleid,jdbcType=VARCHAR})" })
-	@ResultMap("BaseResultMap")
+			"#{overrideAt,jdbcType=INTEGER}, ",
+			"#{learningContent.learningContentId,jdbcType=INTEGER}, ",
+			"#{learningcomponent.learningComponentId,jdbcType=INTEGER}, ",
+			"#{course.courseId,jdbcType=BIT}, #{creatorMemberPersona.memberRoleId,jdbcType=VARCHAR})" })
+	@Results(value={
+			@Result(property="enrichentId", column="enrichentid"),
+			@Result(property="active", column="active"),
+			@Result(property="visibility", column="visibility"),
+			@Result(property="overrideAt", column="overrideat"),
+			@Result(property="creatorMemberPersona.memberroleId", column="creatormemberroleid"),
+			@Result(property="course.courseId", column="courseid"),
+	})
 	Enrichment saveReference(Enrichment enrich);
-	
-	
+
 	/**
 	 * updates delete indicator to remove the association with content
+	 * 
 	 * @param enrichment
 	 */
-	@Update({"update corApplyEnrichment set deleteIndicator = #{deleteIndictor,jdbcType=BIT} where enrichmentid = #{enrichId,jdbcType=INTEGER}"})
+	@Update({ "update corApplyEnrichment set isDelete = #{isDelete,jdbcType=BIT} where enrichmentid = #{enrichId,jdbcType=INTEGER}" })
 	void delete(Enrichment enrichment);
 
-	@Select({"select * from corApplyEnrichment where creatormemberroleid = #{memberPersonaId,jdbcType=INTEGER}"})
-	List<Enrichment> getAllEnrichments(ZID memberPersonaId);
+	
+	/**
+	 * Retrieves the enrichment and its contenterichments
+	 * @param memberRoleId
+	 * @return
+	 */
+	@Select({ "select enrichentid, active, visibility, overrideat, creatormemberroleid, courseid from ",
+		"corapplyenrichment where creatormemberroleid = #{memberRoleId,jdbcType=INTEGER}" })
+	@Results(value={
+			@Result(property="enrichentId", column="enrichentid"),
+			@Result(property="active", column="active"),
+			@Result(property="visibility", column="visibility"),
+			@Result(property="overrideAt", column="overrideat"),
+			@Result(property="creatorMemberPersona.memberRoleId", column="creatormemberroleid"),
+			@Result(property="course.courseId", column="courseid"),
+			@Result(property="contentEnrich", column="enrichentId", javaType=ContentEnrichment.class,one=@One(select="getContentEnrichment"))
+	})
+	List<Enrichment> getAllEnrichments(Integer memberRoleId);
+	
 
+	@Select({
+		" select contentenrichmentid, starttime, endtime, linktype, linkelement, internalindicator,linkdescription, ",
+		" linkitemauthor, linkitemcost, linksource, active, deleteindicator, enrichmentid from corcontentenrichment ",
+		" where enrichmentid = #{enrichmentId,jdbcType.INTEGER}" })
+	@Results(value={
+			@Result(property="contentEnrichmentId", column="contentenrichmentid"),
+			@Result(property="startTime", column="starttime"),
+			@Result(property="endTime", column="endtime"),
+			@Result(property="linkType", column="linktype"),
+			@Result(property="linkElement", column="linkelement"),
+			@Result(property="lnternalIndicator", column="internalindicator"),
+			@Result(property="linkDescription", column="linkdescription"),
+			@Result(property="linkItemAuthor", column="linkitemauthor"),
+			@Result(property="linkItemCost", column="linkitemcost"),
+			@Result(property="linkSource", column="linksource"),
+			@Result(property="active", column="active"),
+			@Result(property="enrichment.enrichmentId", column="enrichmentid")
+		})
+	ContentEnrichment getContentEnrichment(Integer enrichmentId);
 
-
-	@Select({"select enrichmentId from corApplyEnrichment where learningcomponentid = #{learningcomponentid,jdbcType=INTEGER} ",
-				" or learningContentId = #{learningContentId,jdbcType=INTEGER}"})
-	Integer getEnrichByContentIdOrComponentId(IntegerZID lCompId,
+	
+	@Select({
+			"select enrichmentid from corapplyenrichment where learningcomponentid = #{learningcomponentid,jdbctype=INTEGER} ",
+			" or learningcontentid = #{learningContentId,jdbcType=INTEGER}" })
+	@Results(value={
+			@Result(property="enrichentId", column="enrichentid"),
+	})
+	Integer getEnrichByContentIdOrComponentId(Integer lCompId,
 			Integer learningContentId);
 
+	
+	@Insert({
+			"insert into corcontentenrichment (starttime, endtime, linktype, linkelement, internalindicator,linkdescription, ",
+			"linkitemauthor, linkitemcost, linksource, active, isdelete, enrichmentid ) values (#{startTime,jdbcType.TIMESTAMP},",
+			"#{endTime,jdbcType.TIMESTAMP},  #{linkType,jdbcType.INTEGER}, #{linkElement,jdbcType.VARCHAR}, #{linkItemCost,jdbcType.INTEGER}, #{linkSource,jdbcType.INTEGER},",
+			" #{active,jdbcType.BIT}, #{isDelete,jdbcType.BOOLEAN}, #{enrichment.enrichmentId,jdbcType.INTEGER})" })
+	void saveRefenceContent(ContentEnrichment contentEnrichment);
 
+	
+	/**
+	 * Removes the association of contentenrichment with content.
+	 * 
+	 * @param contentEnrichment
+	 */
+	@Update({
+			"update corcontentenrichment set  isDelete = #{isDelete,jdbctype=BOOLEAN} where ",
+			" contentenrichmentid = #{contentEnrichmentId,jdbcType=INTEGER}" })
+	void delete(ContentEnrichment contentEnrichment);
 
+	
+	@Update({ "update corContentEnrichment set starttime =#{startTime,jdbcType.TIMESTAMP},",
+			"endtime = #{endTime,jdbcType.TIMESTAMP},  linktype = #{linkType,jdbcType.INTEGER}, linkelement=#{linkElement,jdbcType.VARCHAR},",
+			" linkitemcost = #{linkItemCost,jdbcType.INTEGER}, linksouce = #{linkSource,jdbcType.INTEGER},",
+			" active = #{active,jdbcType.BIT} where contentenrichmentid = #{contentEnrichmentId,jdbcType.INTEGER}" })
+	void update(ContentEnrichment contentEnrichment);
+
+	
+	/*@Select({
+			" select contentenrichmentid, starttime, endtime, linktype, linkelement, internalindicator, linkdescription, ",
+			" linkitemauthor, linkitemcost, linksource, active, enrichmentid from corcontentenrichment ",
+			" where enrichmentid = #{enrichId,jdbcType.INTEGER}" })
+	@Results(value={
+			@Result(property="contentEnrichmentId", column="contentenrichmentid"),
+			@Result(property="startTime", column="starttime"),
+			@Result(property="endTime", column="endtime"),
+			@Result(property="linkType", column="linktype"),
+			@Result(property="linkElement", column="linkelement"),
+			@Result(property="lnternalIndicator", column="internalindicator"),
+			@Result(property="linkDescription", column="linkdescription"),
+			@Result(property="linkItemAuthor", column="linkitemauthor"),
+			@Result(property="linkItemCost", column="linkitemcost"),
+			@Result(property="linkSource", column="linksource"),
+			@Result(property="active", column="active"),
+			@Result(property="enrichment.enrichmentId", column="enrichmentid")
+		})
+	//List<ContentEnrichment> getAllContentEnrichments(Integer enrichId);
+*/
 }

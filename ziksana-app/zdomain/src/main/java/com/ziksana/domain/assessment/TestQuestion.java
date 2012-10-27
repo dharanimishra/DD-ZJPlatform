@@ -15,16 +15,16 @@ public class TestQuestion extends AuditHistory{
 	}
 	
 	public TestQuestion(Integer pointsIfCorrect, Integer extraCreditPoints,
-			Boolean penaltyIfIncorrectIndicator, PenaltyFactor penaltyFactor,
+			Boolean isPenaltyIfIncorrect, Integer penaltyMarks,
 			Integer answerWithinTime, String questionContentMarkup,
-			AssignmentTest assignmentTest, QuestionBank questionBank) {
+			 QuestionBank questionBank) {
 		this.pointsIfCorrect = pointsIfCorrect;
 		this.extraCreditPoints = extraCreditPoints;
-		this.penaltyIfIncorrectIndicator = penaltyIfIncorrectIndicator;
-		this.penaltyFactor = penaltyFactor;
+		this.isPenaltyIfIncorrect = isPenaltyIfIncorrect;
+		this.setPenaltyMarks(penaltyMarks);
 		this.answerWithinTime = answerWithinTime;
 		this.questionContentMarkup = questionContentMarkup;
-		this.assignmentTest = assignmentTest;
+		//this.assignment = assignment;
 		this.questionBank = questionBank;
 	}
 	
@@ -33,15 +33,17 @@ public class TestQuestion extends AuditHistory{
 	private Date 			creationDate 				= null;
 	private Boolean 		active						= null;
 	private Integer 		pointsIfCorrect				= null;
+	private Integer			marks						= null;
 	private Integer 		extraCreditPoints			= null;
-	private Boolean 		penaltyIfIncorrectIndicator	= null;
-	private PenaltyFactor	penaltyFactor				= null;
-	private Integer 		answerWithinTime			= null;
+	private Boolean 		isPenaltyIfIncorrect		= null;
+	private Integer 		penaltyMarks				= null;//percentage ranging from 0 to 500
+	private Integer 		answerWithinTime			= null;//time
 	private String 			questionContentMarkup		= null;
-	private Boolean 		videoAnswerAllowedIndicator	= null;
-	private Boolean 		audioAnwerAllowedIndicator	= null;
-	private AssignmentTest 	assignmentTest				= null;
+	private Boolean 		isVideoAnswerAllowed		= null;
+	private Boolean 		isAudioAnwerAllowed			= null;
+	private Test 			test						= null;
 	private QuestionBank 	questionBank				= null;
+	
 	/**
 	 * @return the testQuestionId
 	 */
@@ -91,6 +93,20 @@ public class TestQuestion extends AuditHistory{
 		this.pointsIfCorrect = pointsIfCorrect;
 	}
 	/**
+	 * @return the marks
+	 */
+	public Integer getMarks() {
+		return marks;
+	}
+
+	/**
+	 * @param marks the marks to set
+	 */
+	public void setMarks(Integer marks) {
+		this.marks = marks;
+	}
+
+	/**
 	 * @return the extraCreditPoints
 	 */
 	public Integer getExtraCreditPoints() {
@@ -103,29 +119,19 @@ public class TestQuestion extends AuditHistory{
 		this.extraCreditPoints = extraCreditPoints;
 	}
 	/**
-	 * @return the penaltyIfIncorrectIndicator
+	 * @return the penaltyMarks
 	 */
-	public Boolean getPenaltyIfIncorrectIndicator() {
-		return penaltyIfIncorrectIndicator;
+	public Integer getPenaltyMarks() {
+		return penaltyMarks;
 	}
+
 	/**
-	 * @param penaltyIfIncorrectIndicator the penaltyIfIncorrectIndicator to set
+	 * @param penaltyMarks the penaltyMarks to set
 	 */
-	public void setPenaltyIfIncorrectIndicator(Boolean penaltyIfIncorrectIndicator) {
-		this.penaltyIfIncorrectIndicator = penaltyIfIncorrectIndicator;
+	public void setPenaltyMarks(Integer penaltyMarks) {
+		this.penaltyMarks = penaltyMarks;
 	}
-	/**
-	 * @return the penaltyFactor
-	 */
-	public PenaltyFactor getPenaltyFactor() {
-		return penaltyFactor;
-	}
-	/**
-	 * @param penaltyFactor the penaltyFactor to set
-	 */
-	public void setPenaltyFactor(PenaltyFactor penaltyFactor) {
-		this.penaltyFactor = penaltyFactor;
-	}
+
 	/**
 	 * @return the answerWithinTime
 	 */
@@ -150,43 +156,47 @@ public class TestQuestion extends AuditHistory{
 	public void setQuestionContentMarkup(String questionContentMarkup) {
 		this.questionContentMarkup = questionContentMarkup;
 	}
-	/**
-	 * @return the videoAnswerAllowedIndicator
+		/**
+	 * @return the isVideoAnswerAllowed
 	 */
-	public Boolean getVideoAnswerAllowedIndicator() {
-		return videoAnswerAllowedIndicator;
+	public Boolean getIsVideoAnswerAllowed() {
+		return isVideoAnswerAllowed;
 	}
+
 	/**
-	 * @param videoAnswerAllowedIndicator the videoAnswerAllowedIndicator to set
+	 * @param isVideoAnswerAllowed the isVideoAnswerAllowed to set
 	 */
-	public void setVideoAnswerAllowedIndicator(Boolean videoAnswerAllowedIndicator) {
-		this.videoAnswerAllowedIndicator = videoAnswerAllowedIndicator;
+	public void setIsVideoAnswerAllowed(Boolean isVideoAnswerAllowed) {
+		this.isVideoAnswerAllowed = isVideoAnswerAllowed;
 	}
-	/**
-	 * @return the audioAnwerAllowedIndicator
+
+		/**
+	 * @return the isAudioAnwerAllowed
 	 */
-	public Boolean getAudioAnwerAllowedIndicator() {
-		return audioAnwerAllowedIndicator;
+	public Boolean getIsAudioAnwerAllowed() {
+		return isAudioAnwerAllowed;
 	}
+
 	/**
-	 * @param audioAnwerAllowedIndicator the audioAnwerAllowedIndicator to set
+	 * @param isAudioAnwerAllowed the isAudioAnwerAllowed to set
 	 */
-	public void setAudioAnwerAllowedIndicator(Boolean audioAnwerAllowedIndicator) {
-		this.audioAnwerAllowedIndicator = audioAnwerAllowedIndicator;
+	public void setIsAudioAnwerAllowed(Boolean isAudioAnwerAllowed) {
+		this.isAudioAnwerAllowed = isAudioAnwerAllowed;
 	}
-	/**
+
+/*		*//**
 	 * @return the assignmentTest
-	 */
-	public AssignmentTest getAssignmentTest() {
-		return assignmentTest;
+	 *//*
+	public Assignment getAssignment() {
+		return assignment;
 	}
-	/**
-	 * @param assignmentTest the assignmentTest to set
-	 */
-	public void setAssignmentTest(AssignmentTest assignmentTest) {
-		this.assignmentTest = assignmentTest;
+	*//**
+	 * @param assignment the assignmentTest to set
+	 *//*
+	public void setAssignment(Assignment assignment) {
+		this.assignment = assignment;
 	}
-	/**
+*/	/**
 	 * @return the questionBank
 	 */
 	public QuestionBank getQuestionBank() {
@@ -203,10 +213,38 @@ public class TestQuestion extends AuditHistory{
 	public String toString() {
 		return "TestQuestion [pointsIfCorrect=" + pointsIfCorrect
 				+ ", extraCreditPoints=" + extraCreditPoints
-				+ ", penaltyIfIncorrectIndicator="
-				+ penaltyIfIncorrectIndicator + ", penaltyFactor="
-				+ penaltyFactor + ", answerWithinTime=" + answerWithinTime
+				+ ", isPenaltyIfIncorrect="
+				+ isPenaltyIfIncorrect + ", penaltyMarks="
+				+ penaltyMarks + ", answerWithinTime=" + answerWithinTime
 				+ ", questionContentMarkup=" + questionContentMarkup + "]";
+	}
+
+	/**
+	 * @return the isPenaltyIfIncorrect
+	 */
+	public Boolean getIsPenaltyIfIncorrect() {
+		return isPenaltyIfIncorrect;
+	}
+
+	/**
+	 * @param isPenaltyIfIncorrect the isPenaltyIfIncorrect to set
+	 */
+	public void setIsPenaltyIfIncorrect(Boolean isPenaltyIfIncorrect) {
+		this.isPenaltyIfIncorrect = isPenaltyIfIncorrect;
+	}
+
+	/**
+	 * @return the test
+	 */
+	public Test getTest() {
+		return test;
+	}
+
+	/**
+	 * @param test the test to set
+	 */
+	public void setTest(Test test) {
+		this.test = test;
 	}
 	
 }

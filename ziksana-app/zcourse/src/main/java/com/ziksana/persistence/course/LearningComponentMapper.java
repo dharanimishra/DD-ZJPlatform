@@ -1,76 +1,36 @@
 package com.ziksana.persistence.course;
 
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.SelectKey;
-import org.apache.ibatis.annotations.Update;
-
 import com.ziksana.domain.course.LearningComponent;
 
 public interface LearningComponentMapper {
 	/**
-	 * . This method corresponds to the database table corlearningcomponent
+	 * This method saves the Learning component
 	 */
-	@Delete({ "delete from corlearningcomponent",
-			"where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}" })
-	int deleteByPrimaryKey(Integer learningComponentId);
-
-
-	/**
-	 * . This method corresponds to the database table corlearningcomponent
-	 */
-	int insertSelective(LearningComponent record);
-
-	/**
-	 * . This method corresponds to the database table corlearningcomponent
-	 */
-	@Select({
-			"select",
-			"learningcomponentid, validfrom, validto, coursestatus, weightage, totalcredits, extracreditsindicator, ",
-			"extracredits, courseid, memberroleid, learningcomponenttypeid, subjclassificationid from corlearningcomponent",
-			"where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}" })
-	@ResultMap("BaseResultMap")
-	LearningComponent selectByPrimaryKey(Integer learningComponentId);
-
-	/**
-	 * . This method corresponds to the database table corlearningcomponent
-	 */
-	int updateByPrimaryKeySelective(LearningComponent record);
-
-	/**
-	 * . This method corresponds to the database table corlearningcomponent
-	 */
-	@Update({ "update corlearningcomponent",
-			"set validfrom = #{validFrom,jdbcType=DATE},",
-			"validto = #{validTo,jdbcType=DATE},",
-			"coursestatus = #{courseStatus,jdbcType=INTEGER},",
-			"weightage = #{weightage,jdbcType=INTEGER},",
-			"totalcredits = #{totalCredits,jdbcType=VARCHAR},",
-			"extracreditsindicator = #{extraCreditsIndicator,jdbcType=BIT},",
-			"extracredits = #{extraCredits,jdbcType=VARCHAR},",
-			"courseid = #{courseId,jdbcType=INTEGER},",
-			"memberroleid = #{memberRoleId,jdbcType=INTEGER},",
-			"learningcomponenttypeid = #{learningComponentTypeId,jdbcType=INTEGER}, ",
-			"subjclassificationid = #{subjClassificationId,jdbcType=INTEGER} ",
-			"where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}" })
-	int updateByPrimaryKey(LearningComponent record);
-	
-	/**
-	 * . This method saves the component to the database.
-	 */ 
 	@Insert({
-			"insert into corlearningcomponent (learningcomponentid, validfrom, ",
-			"validto, coursestatus, weightage, totalcredits, ",
-			"extracreditsindicator, extracredits, courseid, memberroleid, learningcomponenttypeid, subjclassificationid)",
-			"values (#{learningComponentId,jdbcType=INTEGER}, #{validFrom,jdbcType=DATE}, ",
-			"#{validTo,jdbcType=DATE}, #{courseStatus,jdbcType=INTEGER}, ",
+			"insert into corlearningcomponent (validfrom, ",
+			"validto, name, description, coursestatus, weightage, totalcredits, ",
+			"extracreditsindicator, extracredits, prescribedlcduration, prescribedlcdurationunit, learningobjectindicator, memberroleid, learningcomponenttypeid, subjclassificationid)",
+			"values (#{validFrom,jdbcType=DATE}, ",
+			"#{validTo,jdbcType=DATE}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{prescribedLCDuration,jdbcType=INTEGER}, ",
 			"#{weightage,jdbcType=INTEGER}, #{totalCredits,jdbcType=VARCHAR}, ",
-			"#{extraCreditsIndicator,jdbcType=BIT}, #{extraCredits,jdbcType=VARCHAR}, #{courseId,jdbcType=INTEGER}, ",
-			"#{memberRoleId,jdbcType=INTEGER}, #{learningComponentTypeId,jdbcType=INTEGER}, #{subjClassificationId,jdbcType=INTEGER} )" })
-	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "learningComponentId", before = true, resultType = Integer.class)
-	@ResultMap("BaseResultMap")
-	LearningComponent saveLearningComponent(LearningComponent record);
+			"#{extraCreditsIndicator,jdbcType=BIT}, #{extraCredits,jdbcType=VARCHAR}, #{extraCredits,jdbcType=VARCHAR}, #{prescribedlcduration,jdbcType=INTEGER},",
+			"#{prescribedlcdurationunit,jdbcType=INTEGER}, #{learningobjectindicator,jdbcType=INTEGER}, #{authoredMember.memberRoleId,jdbcType=INTEGER}, #{learningComponentType.learningComponentTypeId,jdbcType=INTEGER}, #{subjClassification.subjClassificationId,jdbcType=INTEGER} )" })
+	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "learningcomponentid", before = true, resultType = Integer.class)
+	@Results(value = {
+			@Result(property = "learningcomponentid", column = "learningcomponentid"),
+			@Result(property = "authoredMember.memberRoleId", column = "memberroleid"),
+			@Result(property = "name", column = "name"),
+			@Result(property = "description", column = "description"),
+			@Result(property = "courseStatus", column = "coursestatus"),
+			@Result(property = "learningComponentType.learningComponentTypeId", column = "learningcomponenttypeid"),
+			@Result(property = "duration.duration", column = "prescribedlcduration"),
+			@Result(property = "duration.durationUnits", column = "prescribedlcdurationunit"),
+			@Result(property = "isLearningObject", column = "learningobjectindicator")
+	})
+	LearningComponent saveLearningComponent(LearningComponent component);
 
 }

@@ -209,4 +209,18 @@
     </set>
     where AssignmentTestId = #{assignmentTestId,jdbcType=INTEGER}
   </update>
+  
+  
+  <resultMap id="TestQuestionsMap" type="com.ziksana.domain.assessment.TestQuestion">
+		<id column="CourseId" property="courseid" jdbcType="INTEGER" />
+		<result column="Name" property="name" jdbcType="VARCHAR" />
+		<result column="CourseIdentifier" property="courseIdentifier"
+			jdbcType="VARCHAR" />
+				<association property="questionBank"
+					column="questionbankid" javaType="com.ziksana.domain.assessment.QuestionBank"
+					select="learningContentMap">
+				</association>
+	</resultMap>
+  
+  
 </mapper>

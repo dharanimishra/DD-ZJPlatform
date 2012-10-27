@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.Course;
@@ -19,7 +22,7 @@ public interface CourseMapper {
 	 * @param CourseId
 	 * @return
 	 */
-	@Delete({ "update from corcourse set isdelete=#{isDelete,jdbcType=BIT}",
+	@Delete({ "update from corcourse set isdelete=#{isDelete,jdbcType=BOOLEAN}",
 			"where courseid = #{CourseId,jdbcType=INTEGER}" })
 	void delete(ZID CourseId);
 
@@ -29,11 +32,16 @@ public interface CourseMapper {
 	 * @return
 	 */
 	@Select({
-			"select",
-			"courseid, name, courseidentifier, description, coursestatus ",
+			"select courseid, name, description, coursestatus ",
 			" from corcourse where courseid = #{courseId,jdbcType=INTEGER}" })
-	@ResultMap("BaseCourseMap")
-	Course getBaseCourseDetails(ZID courseId);
+	@Results(value={
+			@Result(property="courseId", column="courseid"),
+			@Result(property="name", column="name"),
+			@Result(property="description", column="description"),
+			@Result(property="coursestatus", column="coursestatus"),
+			@Result(property="accountableMember.memberroleid", column="memberroleid")
+	})
+	Course getBaseCourseDetails(Integer courseId);
 
 	/**
 	 * Retrieves the list of base courses information
@@ -42,10 +50,18 @@ public interface CourseMapper {
 	 */
 	@Select({
 			"select",
-			"courseid, name, courseidentifier, description, coursestatus",
+			"courseid, name, description, coursestatus",
 			"from corcourse where memberpersonaid = #{memberPersonaId,jdbcType=INTEGER}" })
-	@ResultMap("BaseCourseMap")
-	List<Course> getListOfCourses(ZID memberPersonaId);
+	@Results(value={
+			@Result(property="courseId", column="courseid"),
+			@Result(property="accountableMember.memberRoleId", column="memberroleid"),
+			@Result(property="name", column="name"),
+			@Result(property="description", column="description"),
+			@Result(property="courseStatus", column="coursestatus"),
+			@Result(property="contentSecurityNeededIndicator", column="securityindicator"),
+			@Result(property="duration.courseDuration", column="courseduration")
+	})
+	List<Course> getListOfCourses(Integer memberPersonaId);
 
 
 	/**
@@ -59,16 +75,24 @@ public interface CourseMapper {
 			"set name = #{name,jdbcType=VARCHAR},",
 			"description = #{description,jdbcType=VARCHAR},",
 			"coursestatus = #{courseStatus,jdbcType=INTEGER},",
-			"contentsecurityneededindicator = #{securityIndicator,jdbcType=BIT},",
+			"contentsecurityneededindicator = #{securityIndicator,jdbcType=BOOLEAN},",
 			"totalcredits = #{totalCredits,jdbcType=VARCHAR},",
 			"extracredits = #{extraCredits,jdbcType=VARCHAR},",
-			"additionalpropertyindicator = #{additionalInfoIndicator,jdbcType=BIT},",
+			"additionalpropertyindicator = #{additionalInfoIndicator,jdbcType=BOOLEAN},",
 			"courseduration=#{courseDuration,jdbcType=INTEGER},",
 			"thumbnailpicturepath=#{thumbnailPicturePath,jdbcType=VARCHAR},",
 			"version = #{version,jdbcType=INTEGER},",
-			"subjclassificationid = #{subjClassificationId,jdbcType=INTEGER} ",
+			"subjclassificationid = #{subjClassification.subjClassificationId,jdbcType=INTEGER} ",
 			"where courseid = #{courseId,jdbcType=INTEGER}" })
-	@ResultMap("BaseResultMap")
+	@Results(value={
+			@Result(property="courseId", column="courseid"),
+			@Result(property="accountableMember.memberRoleId", column="memberroleid"),
+			@Result(property="name", column="name"),
+			@Result(property="description", column="description"),
+			@Result(property="courseStatus", column="coursestatus"),
+			@Result(property="contentSecurityNeededIndicator", column="securityindicator"),
+			@Result(property="duration.courseDuration", column="courseduration")
+	})
 	Course updateCourse(Course course);
 
 	/**
@@ -78,9 +102,18 @@ public interface CourseMapper {
 	 */
 	@Update({
 			"update corcourse",
-			"set contentsecurityneededindicator = #{securityIndicator,jdbcType=BIT},",
-			"additionalpropertyindicator = #{additionalInfoIndicator,jdbcType=BIT},",
+			"set contentsecurityneededindicator = #{securityIndicator,jdbcType=BOOLEAN},",
+			"additionalpropertyindicator = #{additionalInfoIndicator,jdbcType=BOOLEAN},",
 			"where courseid = #{courseId,jdbcType=INTEGER}" })
+	@Results(value={
+			@Result(property="courseId", column="courseid"),
+			@Result(property="accountableMember.memberRoleId", column="memberroleid"),
+			@Result(property="name", column="name"),
+			@Result(property="description", column="description"),
+			@Result(property="courseStatus", column="coursestatus"),
+			@Result(property="contentSecurityNeededIndicator", column="securityindicator"),
+			@Result(property="duration.courseDuration", column="courseduration")
+	})
 	Course updateCourseInfo(Course course);
 	
 	/**
@@ -95,13 +128,22 @@ public interface CourseMapper {
 			"values (#{name,jdbcType=VARCHAR}, ",
 			"#{description,jdbcType=VARCHAR}, ",
 			"#{courseStatus,jdbcType=INTEGER}, ",
-			"#{securityIndicator,jdbcType=BIT}, ",
+			"#{securityIndicator,jdbcType=BOOLEAN}, ",
 			"#{totalCredits,jdbcType=VARCHAR}, ",
 			"#{extraCredits,jdbcType=VARCHAR}, ",
-			"#{additionalInfoIndicator,jdbcType=BIT}, #{courseDuration,jdbcType=INTEGER},#{thumbnailPicturePath,jdbcType=VARCHAR}, ",
-			"#{version,jdbcType=INTEGER}, #{versionRemarks,jdbcType=VARCHAR}, #{memberRoleId,jdbcType=INTEGER},",
-			"#{subjClassificationId,jdbcType=INTEGER})" })
-	@ResultMap("BaseResultMap")
+			"#{additionalInfoIndicator,jdbcType=BOOLEAN}, #{courseDuration,jdbcType=INTEGER},#{thumbnailPicturePath,jdbcType=VARCHAR}, ",
+			"#{version,jdbcType=INTEGER}, #{versionRemarks,jdbcType=VARCHAR}, #{accountableMember.memberRoleId,jdbcType=INTEGER},",
+			"#{subjClassification.subjClassificationId,jdbcType=INTEGER})" })
+	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseid", before = true, resultType = Integer.class)
+	@Results(value={
+			@Result(property="courseId", column="courseid"),
+			@Result(property="accountableMember.memberRoleId", column="memberroleid"),
+			@Result(property="name", column="name"),
+			@Result(property="description", column="description"),
+			@Result(property="courseStatus", column="coursestatus"),
+			@Result(property="contentSecurityNeededIndicator", column="securityindicator"),
+			@Result(property="duration.courseDuration", column="courseduration")
+	})
 	Course saveCourse(Course course);
 
 
@@ -114,9 +156,23 @@ public interface CourseMapper {
 	@ResultMap("CourseTreeMap")
 	Course getCourseComponents(Course course);
 
+
 	@Insert({"insert into corcourseadditionalproperty (creationdate, usagetype, name, datatype, value, active, courseid, memberroleid ) ",
 		"values (#{creationDate , jdbcType.TIMESTAMP}, #{propertyUsageType , jdbcType.INTEGER}, #{ propertyName, jdbcType.VARCHAR}, #{propertyDataType , jdbcType.INTEGER}, #{propertyValue , jdbcType.VARCHAR}, ",
-		" #{sequence , jdbcType.INTEGER}, #{active , jdbcType.BIT}, #{ courseId, jdbcType.INTEGER}, #{memberRoleId , jdbcType.INTEGER}, ) "})
+		" #{sequence , jdbcType.INTEGER}, #{active , jdbcType.BOOLEAN}, #{ courseId, jdbcType.INTEGER}, #{creatorMemberPersona.memberRoleId , jdbcType.INTEGER}, ) "})
+	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseaddnlpropertyid", before = true, resultType = Integer.class)
 	void saveAddnlInfo(CourseAdditionalProperty courseAdditionalProperty);
+	
+	
+	/**
+	 * Checks whetehr assignment is created at course creation.
+	 * @param learningComponentId
+	 * @return
+	 */
+	@Select({"select assignmentid from asmassignment where leraningcomponentid = #{learningComponentId, jdbcType=INTEGER}"})
+	@Results(value={
+			@Result(property="assignmentId", column="assignmentid")
+	})
+	Integer checkAssignment(Integer learningComponentId);
 	
 }

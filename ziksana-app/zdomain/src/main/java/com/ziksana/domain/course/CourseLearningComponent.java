@@ -24,7 +24,7 @@ public class CourseLearningComponent extends AuditHistory{
 	private String 					totalCredits 						= null;
 	private String 					extraCredits 						= null;
 	private Duration 				duration 							= null;
-	private Boolean 				learningComponentOveriddenIndicator = null;
+	private Boolean 				isLearningComponentOveridden		= null;
 	private Course 					course 								= null;
 	private LearningComponent 		learningComponent 					= null;
 	private LearningComponentType 	learningComponentType 				= null;
@@ -184,22 +184,6 @@ public class CourseLearningComponent extends AuditHistory{
 	}
 
 	/**
-	 * @return the value of property LearningComponentOveriddenIndicator
-	 */
-	public Boolean getLearningComponentOveriddenIndicator() {
-		return learningComponentOveriddenIndicator;
-	}
-
-	/**
-	 * @param learningComponentOveriddenIndicator
-	 *            the value for property LearningComponentOveriddenIndicator
-	 */
-	public void setLearningComponentOveriddenIndicator(
-			Boolean learningComponentOveriddenIndicator) {
-		this.learningComponentOveriddenIndicator = learningComponentOveriddenIndicator;
-	}
-
-	/**
 	 * @return the course
 	 */
 	public Course getCourse() {
@@ -269,6 +253,21 @@ public class CourseLearningComponent extends AuditHistory{
 		this.currCourseCalendar = currCourseCalendar;
 	}
 
+	/**
+	 * @return the isLearningComponentOveridden
+	 */
+	public Boolean getIsLearningComponentOveridden() {
+		return isLearningComponentOveridden;
+	}
+
+	/**
+	 * @param isLearningComponentOveridden the isLearningComponentOveridden to set
+	 */
+	public void setIsLearningComponentOveridden(
+			Boolean isLearningComponentOveridden) {
+		this.isLearningComponentOveridden = isLearningComponentOveridden;
+	}
+
 	@Override
 	public String toString() {
 		return "CourseLearningComponent [creationDate=" + creationDate
@@ -279,5 +278,6 @@ public class CourseLearningComponent extends AuditHistory{
 				+ ", extraCredits=" + extraCredits + ", duration=" + duration
 				+ "]";
 	}
+
 
 }

@@ -14,13 +14,13 @@ public class QuestionBank extends AuditHistory{
 
 	public QuestionBank(Boolean active, DifficultyLevel difficultyLevel,
 			ProficiencyLevel proficiencyLevel, QuestionType questionType,
-			String questionText, String instruction,
+			String name, String instruction,
 			QuestionApplicableType questionApplicableType, Member owningMember) {
 		this.active = active;
 		this.difficultyLevel = difficultyLevel;
 		this.proficiencyLevel = proficiencyLevel;
 		this.questionType = questionType;
-		this.questionText = questionText;
+		this.name = name;
 		this.instruction = instruction;
 		this.questionApplicableType = questionApplicableType;
 		this.owningMember = owningMember;
@@ -32,7 +32,7 @@ public class QuestionBank extends AuditHistory{
 	private DifficultyLevel 		difficultyLevel					= null;
 	private ProficiencyLevel 		proficiencyLevel				= null;
 	private QuestionType 			questionType					= null;
-	private String 					questionText					= null;
+	private String 					name							= null;//question content
 	private String 					additionalInfoPath				= null;
 	private String 					instruction						= null;
 	private Boolean 				multipleAnswerIndicator			= null;
@@ -41,12 +41,12 @@ public class QuestionBank extends AuditHistory{
 	private QuestionApplicableType 	questionApplicableType			= null;
 	private SubjectClassification 	subjClassification				= null;
 	private Member 					owningMember					= null;
-	private TestQuestion      		question						= null;
+	/*private TestQuestion      		question						= null;
 	private QuestionBankAnswer		qtnBankAnswer					= null;
 	private QuestionTagcloud		qtnTagCloud						= null;
 	private QuestionVisual			qtnVisual						= null;
 	private NextBestQuestion		nextBestQtn						= null;		
-	
+	*/
 	
 	/**
 	 * @return the questionBankId
@@ -123,14 +123,14 @@ public class QuestionBank extends AuditHistory{
 	/**
 	 * @return the questionText
 	 */
-	public String getQuestionText() {
-		return questionText;
+	public String getName() {
+		return name;
 	}
 	/**
 	 * @param questionText the questionText to set
 	 */
-	public void setQuestionText(String questionText) {
-		this.questionText = questionText;
+	public void setName(String name) {
+		this.name = name;
 	}
 	/**
 	 * @return the additionalInfoPath
@@ -232,71 +232,71 @@ public class QuestionBank extends AuditHistory{
 
 	/**
 	 * @return the question
-	 */
+	 *//*
 	public TestQuestion getQuestion() {
 		return question;
 	}
-	/**
+	*//**
 	 * @param question the question to set
-	 */
+	 *//*
 	public void setQuestion(TestQuestion question) {
 		this.question = question;
 	}
-	/**
+	*//**
 	 * @return the qtnBankAnswer
-	 */
+	 *//*
 	public QuestionBankAnswer getQtnBankAnswer() {
 		return qtnBankAnswer;
 	}
 
-	/**
+	*//**
 	 * @param qtnBankAnswer the qtnBankAnswer to set
-	 */
+	 *//*
 	public void setQtnBankAnswer(QuestionBankAnswer qtnBankAnswer) {
 		this.qtnBankAnswer = qtnBankAnswer;
 	}
 
-	/**
+	*//**
 	 * @return the qtnTagCloud
-	 */
+	 *//*
 	public QuestionTagcloud getQtnTagCloud() {
 		return qtnTagCloud;
 	}
-	/**
+	*//**
 	 * @param qtnTagCloud the qtnTagCloud to set
-	 */
+	 *//*
 	public void setQtnTagCloud(QuestionTagcloud qtnTagCloud) {
 		this.qtnTagCloud = qtnTagCloud;
 	}
-	/**
+	*//**
 	 * @return the qtnVisual
-	 */
+	 *//*
 	public QuestionVisual getQtnVisual() {
 		return qtnVisual;
 	}
-	/**
+	*//**
 	 * @param qtnVisual the qtnVisual to set
-	 */
+	 *//*
 	public void setQtnVisual(QuestionVisual qtnVisual) {
 		this.qtnVisual = qtnVisual;
 	}
-	/**
+	*//**
 	 * @return the nextBestQtn
-	 */
+	 *//*
 	public NextBestQuestion getNextBestQtn() {
 		return nextBestQtn;
 	}
-	/**
+	*//**
 	 * @param nextBestQtn the nextBestQtn to set
-	 */
+	 *//*
 	public void setNextBestQtn(NextBestQuestion nextBestQtn) {
 		this.nextBestQtn = nextBestQtn;
 	}
-	@Override
+*/	@Override
 	public String toString() {
 		return "QuestionBank [difficultyLevel=" + difficultyLevel
 				+ ", proficiencyLevel=" + proficiencyLevel + ", questionType="
-				+ questionType + ", questionText=" + questionText
+				+ questionType + ", Name=" + name
 				+ ", instruction=" + instruction + ", status=" + status
 				+ ", questionApplicableType=" + questionApplicableType + "]";
 	}

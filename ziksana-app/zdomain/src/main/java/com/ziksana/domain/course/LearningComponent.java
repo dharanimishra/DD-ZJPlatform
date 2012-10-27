@@ -23,10 +23,10 @@ public class LearningComponent extends AuditHistory {
 		this.authoredMember = authoredMember;
 	}
 
-	public LearningComponent(Duration learningObjectDuration,
+	public LearningComponent(Duration prescribedLCDuration,
 			LearningComponentType learningComponentType, Course course,
 			MemberPersona authoredMember) {
-		this.learningObjectDuration = learningObjectDuration;
+		this.prescribedLCDuration = prescribedLCDuration;
 		this.learningComponentType = learningComponentType;
 			this.authoredMember = authoredMember;
 	}
@@ -53,7 +53,7 @@ public class LearningComponent extends AuditHistory {
 	 * Maximum Length:72
 	 */
 	private String 			thumbnailPicturePath 	= null;
-	private Duration 		learningObjectDuration 	= null;
+	private Duration 		prescribedLCDuration 	= null;
 	private Integer 		version 				= null;
 
 	/**
@@ -192,21 +192,6 @@ public class LearningComponent extends AuditHistory {
 	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
 	}
-
-	/**
-	 * @return the learningObjectDuration
-	 */
-	public Duration getLearningObjectDuration() {
-		return learningObjectDuration;
-	}
-
-	/**
-	 * @param learningObjectDuration the learningObjectDuration to set
-	 */
-	public void setLearningObjectDuration(Duration learningObjectDuration) {
-		this.learningObjectDuration = learningObjectDuration;
-	}
-
 	/**
 	 * @return the version
 	 */
@@ -299,9 +284,23 @@ public class LearningComponent extends AuditHistory {
 				+ validTo + ", courseStatus=" + courseStatus + ", weightage="
 				+ weightage + ", learningObjIndictor=" + learningObjIndictor
 				+ ", thumbnailPicturePath=" + thumbnailPicturePath
-				+ ", learningObjectDuration=" + learningObjectDuration
+				+ ", prescribedLCDuration=" + prescribedLCDuration
 				+ ", learningComponentDetails=" + learningComponentDetails
 				+ "]";
+	}
+
+	/**
+	 * @return the prescribedLCDuration
+	 */
+	public Duration getPrescribedLCDuration() {
+		return prescribedLCDuration;
+	}
+
+	/**
+	 * @param prescribedLCDuration the prescribedLCDuration to set
+	 */
+	public void setPrescribedLCDuration(Duration prescribedLCDuration) {
+		this.prescribedLCDuration = prescribedLCDuration;
 	}
 
 

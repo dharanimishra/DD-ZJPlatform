@@ -3,7 +3,7 @@ package com.ziksana.domain.course;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ziksana.domain.assessment.AssignmentTest;
+import com.ziksana.domain.assessment.Assignment;
 
 /**
  * This object contains more information about Course
@@ -17,7 +17,7 @@ public class LearningComponentDetails{
 		return "LearningComponentDetails [learningCompContentList="
 				+ learningCompContentList + ", learningComponentNest="
 				+ learningComponentNest + ", assignmentTest="
-				+ assignmentTest + "]";
+				+ assignment + "]";
 	}
 
 	public LearningComponentDetails(LearningComponentType learningComponentType) {
@@ -31,7 +31,7 @@ public class LearningComponentDetails{
 	private LearningComponentNest 				learningComponentNest 				= null;
 	
 	private CourseLearningComponent 			courseLearningComponent				= null;
-	private AssignmentTest		 				assignmentTest						= null;
+	private Assignment		 				assignment						= null;
 	
 	//private List<CoursePlaybookView> 			coursePlaybookViewList				= null;
 	//private List<LearningElementWall> 			learningElementWallList				= null;
@@ -297,15 +297,15 @@ public class LearningComponentDetails{
 	/**
 	 * @return the assignmentTest
 	 */
-	public AssignmentTest getAssignmentTest() {
-		return assignmentTest;
+	public Assignment getAssignmentTest() {
+		return assignment;
 	}
 
 	/**
-	 * @param assignmentTest the assignmentTest to set
+	 * @param assignment the assignmentTest to set
 	 */
-	public void setAssignmentTest(AssignmentTest assignmentTest) {
-		this.assignmentTest = assignmentTest;
+	public void setAssignmentTest(Assignment assignment) {
+		this.assignment = assignment;
 	}
 
 }

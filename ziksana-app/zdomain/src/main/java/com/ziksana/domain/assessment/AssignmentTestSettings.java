@@ -24,6 +24,7 @@ public class AssignmentTestSettings extends AuditHistory{
 	private SettingsProperty 			property 			= null;
 	private SettingsPropertyValueType 	propertyValueType 	= null;
 	private String 						propertyValue 		= null;
+	private Test						test				= null;
 	
 	
 	/**
@@ -93,6 +94,18 @@ public class AssignmentTestSettings extends AuditHistory{
 		this.propertyValue = propertyValue;
 	}
 
+	/**
+	 * @return the test
+	 */
+	public Test getTest() {
+		return test;
+	}
+	/**
+	 * @param test the test to set
+	 */
+	public void setTest(Test test) {
+		this.test = test;
+	}
 	@Override
 	public String toString() {
 		return "AssignmentTestSettings [active=" + active + ", propertyValue="

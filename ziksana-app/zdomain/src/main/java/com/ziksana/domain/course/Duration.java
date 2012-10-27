@@ -5,25 +5,25 @@ package com.ziksana.domain.course;
  */
 public class Duration {
 	
-	public Duration(Integer courseDuration, DurationUnits durationUnits) {
-		this.courseDuration = courseDuration;
+	public Duration(Integer duration, DurationUnits durationUnits) {
+		this.duration = duration;
 		this.durationUnits = durationUnits;
 	}
 	
-	private Integer 		courseDuration 	= null;
+	private Integer 		duration 	= null;
 	private DurationUnits 	durationUnits 	= null;
 	
 	/**
 	 * @return the courseDuration
 	 */
-	public Integer getCourseDuration() {
-		return courseDuration;
+	public Integer getDuration() {
+		return duration;
 	}
 	/**
 	 * @param courseDuration the courseDuration to set
 	 */
-	public void setCourseDuration(Integer courseDuration) {
-		this.courseDuration = courseDuration;
+	public void setDuration(Integer duration) {
+		this.duration = duration;
 	}
 	/**
 	 * @return the durationUnits

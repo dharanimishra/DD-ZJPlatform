@@ -2,7 +2,7 @@ package com.ziksana.domain.course;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.ziksana.domain.assessment.AssignmentTest;
+import com.ziksana.domain.assessment.Assignment;
 
 
 
@@ -27,7 +27,7 @@ public class CourseDetails{
 	private LearningComponentContent 				learningComponentContent 			= null;
 	private LearningComponentNest 					learningComponentNest 				= null;
 	private LearningContent 						learningContent 					= null;
-	private List<AssignmentTest> 					assignmentTestList					= null;
+	private List<Assignment> 					assignmentTestList					= null;
 	// TODO: below associations/compositions will uncomment later.
 	//private List<LearningElementWall> 			learningElementWalls 				= null;
 	//private List<CurriculumCourseCalendar> 		currCourseCalendarEntries 			= null;
@@ -41,7 +41,7 @@ public class CourseDetails{
 	 * @param index
 	 * @return
 	 */
-	public AssignmentTest getAssignmentTest(int index){
+	public Assignment getAssignmentTest(int index){
 		if(assignmentTestList == null){
 			throw new IllegalArgumentException("AssignmentTest cannot set to null");
 		}
@@ -56,9 +56,9 @@ public class CourseDetails{
 	/**
 	 * @param playbook
 	 */
-	public void addAssignmentTest(AssignmentTest test){
+	public void addAssignmentTest(Assignment test){
 		if(assignmentTestList == null){
-			assignmentTestList = new ArrayList<AssignmentTest>();
+			assignmentTestList = new ArrayList<Assignment>();
 		}
 		test.setLearningComponent(learningComponent);
 		
@@ -69,7 +69,7 @@ public class CourseDetails{
 	/**
 	 * @param list
 	 */
-	public void setAssignmentTestList(List<AssignmentTest> list) {
+	public void setAssignmentTestList(List<Assignment> list) {
 		this.assignmentTestList = list;
 	}
 

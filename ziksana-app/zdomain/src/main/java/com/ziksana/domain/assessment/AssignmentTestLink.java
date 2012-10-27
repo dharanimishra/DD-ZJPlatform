@@ -19,8 +19,8 @@ public class AssignmentTestLink extends AuditHistory {
 	private ZID 			testLinkId;
 	private LinkReason 		linkReason 			= null;
 	private String 			description 		= null;
-	private AssignmentTest 	sourceAssignmentTest = null;
-	private AssignmentTest 	linkedAssignmentTest = null;
+	private Assignment 	sourceAssignmentTest = null;
+	private Assignment 	linkedAssignmentTest = null;
 	
 	
 	/**
@@ -62,25 +62,25 @@ public class AssignmentTestLink extends AuditHistory {
 	/**
 	 * @return the sourceAssignmentTest
 	 */
-	public AssignmentTest getSourceAssignmentTest() {
+	public Assignment getSourceAssignmentTest() {
 		return sourceAssignmentTest;
 	}
 	/**
 	 * @param sourceAssignmentTest the sourceAssignmentTest to set
 	 */
-	public void setSourceAssignmentTest(AssignmentTest sourceAssignmentTest) {
+	public void setSourceAssignmentTest(Assignment sourceAssignmentTest) {
 		this.sourceAssignmentTest = sourceAssignmentTest;
 	}
 	/**
 	 * @return the linkedAssignmentTest
 	 */
-	public AssignmentTest getLinkedAssignmentTest() {
+	public Assignment getLinkedAssignmentTest() {
 		return linkedAssignmentTest;
 	}
 	/**
 	 * @param linkedAssignmentTest the linkedAssignmentTest to set
 	 */
-	public void setLinkedAssignmentTest(AssignmentTest linkedAssignmentTest) {
+	public void setLinkedAssignmentTest(Assignment linkedAssignmentTest) {
 		this.linkedAssignmentTest = linkedAssignmentTest;
 	}
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.ziksana.domain.assessment.TestPackage;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utils.SubjectClassification;
@@ -87,6 +88,7 @@ public class Course extends AuditHistory{
 	private List<CourseTagcloud> 			courseTagClouds				= null;
 	private List<CoursePlaybook> 			coursePlaybookList			= null;
 	private List<CourseLearningPlanner> 	courseLearningPlannerList 	= null;
+	private TestPackage						testPackage					= null;
 	
 	/**
 	 * @param index
@@ -452,6 +454,20 @@ public class Course extends AuditHistory{
 	 */
 	public void setVersionRemarks(String versionRemarks) {
 		this.versionRemarks = versionRemarks;
+	}
+
+	/**
+	 * @return the testPackage
+	 */
+	public TestPackage getTestPackage() {
+		return testPackage;
+	}
+
+	/**
+	 * @param testPackage the testPackage to set
+	 */
+	public void setTestPackage(TestPackage testPackage) {
+		this.testPackage = testPackage;
 	}
 
 	public String toString() {

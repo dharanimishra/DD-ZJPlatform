@@ -8,7 +8,6 @@ import com.ziksana.domain.course.CourseAdditionalProperty;
 import com.ziksana.domain.course.LearningProgram;
 import com.ziksana.domain.member.Member;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 public interface CourseService {
@@ -42,12 +41,12 @@ public interface CourseService {
 	/**Retrieve the base course information.
 	 * @return
 	 */
-	public Course getBaseCourseDetails(IntegerZID courseId) throws CourseException;
+	public Course getBaseCourseDetails(Integer courseId) throws CourseException;
 	
 	/**Retrieve the full course information.
 	 * @return
 	 */
-	public Course getCourseDetails(Course course) throws CourseException;
+	public Course getCourseDetails(Integer courseId) throws CourseException;
 
 
 	/**
@@ -55,7 +54,7 @@ public interface CourseService {
 	 * @param member
 	 * @return
 	 */
-	public List<Course> getListOfCourses(ZID memberPersonaId) throws CourseException;
+	public List<Course> getListOfCourses(Integer memberPersonaId) throws CourseException;
 	
 	
 	/**

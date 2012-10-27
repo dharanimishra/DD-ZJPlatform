@@ -20,7 +20,6 @@ import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.ReferenceSearchCriteria;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
-import com.ziksana.persistence.course.ContentEnrichmentMapper;
 import com.ziksana.persistence.course.EnrichmentMapper;
 import com.ziksana.persistence.course.LearningComponentContentHotspotMapper;
 import com.ziksana.persistence.course.LearningContentTagcloudMapper;
@@ -34,8 +33,6 @@ public class CourseContentEnrichmentServiceImpl implements
 
 	@Autowired
 	public EnrichmentMapper 						enrichMapper;
-	@Autowired
-	public ContentEnrichmentMapper 					contentEnrichmentMapper;
 	@Autowired
 	public LearningComponentContentHotspotMapper 	hotspotMapper;
 	@Autowired
@@ -138,7 +135,7 @@ public class CourseContentEnrichmentServiceImpl implements
 
 			logger.debug("Before Saving the Enrichment Content ....:"
 					+ contentEnrichment.getLinkType());
-			contentEnrichmentMapper.saveRefenceContent(contentEnrichment);
+			enrichMapper.saveRefenceContent(contentEnrichment);
 
 		}
 	}
@@ -173,7 +170,7 @@ public class CourseContentEnrichmentServiceImpl implements
 				+ contentEnrichment.getLinkType());
 		// update delete indicator status to remove the association with
 		// applyenrichment
-		contentEnrichmentMapper.delete(contentEnrichment);
+		enrichMapper.delete(contentEnrichment);
 
 		logger.debug("Before Deleting the Enrichment ....");
 		// update delete indicator status to remove the association with content
@@ -208,7 +205,7 @@ public class CourseContentEnrichmentServiceImpl implements
 
 		// update delete indicator status to remove the association with
 		// applyenrichment
-		contentEnrichmentMapper.update(contentEnrichment);
+		enrichMapper.update(contentEnrichment);
 	}
 
 	@Override
@@ -220,9 +217,7 @@ public class CourseContentEnrichmentServiceImpl implements
 		List<ContentEnrichment> 						refContentEnrichList 	= null;
 		List<ContentEnrichment> 						topicContentEnrichList 	= null;
 		List<ContentEnrichment> 						notesContentEnrichList 	= null;
-		List<ContentEnrichment> 						contentEnrichList 		= null;
-		ZID 											enrichId 				= null;
-		
+		ContentEnrichment 								contentEnrichment 		= null;				
 		enrichList 					= new ArrayList<Enrichment>();
 		enrichmentMap 				= new HashMap<EnrichmentType, List<ContentEnrichment>>();
 		refContentEnrichList 		= new ArrayList<ContentEnrichment>();
@@ -233,37 +228,32 @@ public class CourseContentEnrichmentServiceImpl implements
 			throw new CourseException("Member cannot be null");
 		}
 
-		enrichList = enrichMapper.getAllEnrichments(memberPersonaId);
+		enrichList = enrichMapper.getAllEnrichments(new Integer(memberPersonaId.getStorageID()));
 		
 		if(enrichList!=null && enrichList.size()>0){
 
 			for (Enrichment enrichment : enrichList) {
 
-				enrichId = enrichment.getEnrichId();
+				contentEnrichment = enrichment.getContentEnrich();
 
-				contentEnrichList = contentEnrichmentMapper
-						.getAllContentEnrichments(enrichId);
-				
-				for (ContentEnrichment contentEnrichment : contentEnrichList) {
-					
-					if(contentEnrichment.getLinkType().equals(LinkType.TOC)){
+				if(contentEnrichment.getLinkType().equals(LinkType.TOC)){
 						
-						topicContentEnrichList.add(contentEnrichment);
+					topicContentEnrichList.add(contentEnrichment);
 						
-					}else if(contentEnrichment.getLinkType().equals(LinkType.REFERENCE)){
+				}else if(contentEnrichment.getLinkType().equals(LinkType.REFERENCE)){
 						
-						refContentEnrichList.add(contentEnrichment);
+					refContentEnrichList.add(contentEnrichment);
 		
-					}else if(contentEnrichment.getLinkType().equals(LinkType.ADDITIONAL_INFO)){
+				}else if(contentEnrichment.getLinkType().equals(LinkType.ADDITIONAL_INFO)){
 						
-						notesContentEnrichList.add(contentEnrichment);
+					notesContentEnrichList.add(contentEnrichment);
 						
-					}
 				}
-				enrichmentMap.put(EnrichmentType.TOPIC, topicContentEnrichList);
-				enrichmentMap.put(EnrichmentType.REFERENCE, refContentEnrichList);
-				enrichmentMap.put(EnrichmentType.NOTES, notesContentEnrichList);
 			}
+
+			enrichmentMap.put(EnrichmentType.TOPIC, topicContentEnrichList);
+			enrichmentMap.put(EnrichmentType.REFERENCE, refContentEnrichList);
+			enrichmentMap.put(EnrichmentType.NOTES, notesContentEnrichList);
 			
 		}
 
