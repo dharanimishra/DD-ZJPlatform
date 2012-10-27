@@ -57,7 +57,7 @@ public class AlertServiceImpl implements AlertsService {
 	 */
 	@Override
 	public void editAlertItem(Alert AlertItem) {
-		// TODO Auto-generated method stub
+		alertMapper.updateAlert(AlertItem);
 
 	}
 
@@ -69,9 +69,8 @@ public class AlertServiceImpl implements AlertsService {
 	 * , java.lang.Integer)
 	 */
 	@Override
-	public void deleteAlertItem(Integer memberId, Integer alertId) {
-		// TODO Auto-generated method stub
-
+	public void deleteAlertItem(Integer alertId) {
+		alertMapper.deleteAlert(alertId);
 	}
 
 }

@@ -12,5 +12,7 @@ public interface AlertMapper {
 	
 	List<Alert> getAlerts(Integer userMemberRoleId);
 	void createAlert(Alert alert);
+	void updateAlert(Alert alert);
+	void deleteAlert(Integer memberNotificationId);
 
 }

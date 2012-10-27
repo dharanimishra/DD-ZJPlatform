@@ -20,7 +20,7 @@ public interface AlertsService {
 	
 	public void editAlertItem( Alert AlertItem);
 	
-	public void deleteAlertItem(Integer memberId,Integer alertId);
+	public void deleteAlertItem(Integer alertId);
 	
 
 }

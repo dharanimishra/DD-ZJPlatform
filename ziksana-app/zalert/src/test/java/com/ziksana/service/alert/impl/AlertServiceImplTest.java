@@ -81,13 +81,7 @@ public class AlertServiceImplTest {
 	@Test
 	public void testGetAlertList() {
 
-		ZID memberId = new StringZID("1000");
-		ZID memberPersonaId = new StringZID("100");
-
-		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
 		List<Alert> alerts = alertService.getAlertList();
-
 		Assert.assertFalse(alerts.isEmpty());
 		Assert.assertTrue(alerts.size() == 1);
 
@@ -100,19 +94,19 @@ public class AlertServiceImplTest {
 	 */
 	@Test
 	public void testCreateAlertItem() {
-		
+
 		Alert alert = new Alert();
 		alert.setCategory("Assignment");
 		alert.setActivationDate(new Date());
 		MemberPersona creatingMember = new MemberPersona();
-		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil.getToken()
-				.getMemberPersonaId().getStorageID()));
+		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+				.getToken().getMemberPersonaId().getStorageID()));
 		alert.setCreatingMember(creatingMember);
 		alert.setForMember(creatingMember);
 		alert.setDescription(" new video coming up for the course");
 		alert.setPriority(Integer.valueOf(1000));
 		alertService.createAlertItem(alert);
-		
+
 	}
 
 	/**
@@ -122,7 +116,14 @@ public class AlertServiceImplTest {
 	 */
 	@Test
 	public void testEditAlertItem() {
-		fail("Not yet implemented");
+		Alert alert = new Alert();
+		alert.setId(2);
+		alert.setCategory("Course");
+		alert.setDescription(" New online course coming up for the organic chemistry");
+		alert.setPriority(Integer.valueOf(1001));
+		alertService.editAlertItem(alert);
+		
+		
 	}
 
 	/**
@@ -132,7 +133,8 @@ public class AlertServiceImplTest {
 	 */
 	@Test
 	public void testDeleteAlertItem() {
-		fail("Not yet implemented");
+		
+		alertService.deleteAlertItem(Integer.valueOf(3));
 	}
 
 }
