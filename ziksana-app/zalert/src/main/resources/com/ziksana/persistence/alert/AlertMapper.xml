@@ -9,31 +9,56 @@
 		*
 		from
 		memmembernotification n
-		join utllookup l ON n.NotificationType=l.LookupId
-		join utllookupvalue v ON l.LookupId=v.LookupId
-		where l.CategoryName='memmembernotification' and v.LookupValue='Alert' and
+		join utllookup l ON
+		n.NotificationType=l.LookupId
+		join utllookupvalue v ON
+		l.LookupId=v.LookupId
+		where l.CategoryName='memmembernotification' and
+		v.LookupValue='Alert' and
 		n.ForMemberRoleId=#{userMemberRoleId}
 
 
 	</select>
 
 	<resultMap id="alertResultMap" type="com.ziksana.domain.alerts.Alert">
-		
-		<result property="id" column="MemberNotificationId"/>
-		<result property="description" column="NotificationContent"/>
-		<result property="creationDate" column="CreationDate"/>
-		<result property="category" column="Category"/>
-	    <result property="priority" column="Priority"/>
+
+		<result property="id" column="MemberNotificationId" />
+		<result property="description" column="NotificationContent" />
+		<result property="creationDate" column="CreationDate" />
+		<result property="category" column="Category" />
+		<result property="priority" column="Priority" />
 
 	</resultMap>
-	
-	
-	<insert id="createAlert"  parameterType="com.ziksana.domain.alerts.Alert" useGeneratedKeys="true"  keyProperty="MemberNotificationId">
-	     
-	     insert into memmembernotification(Category,ActivationDate,CreationDate,NotificationType,NotificationContent,Priority,ForMemberRoleId,CreatingMemberRoleId) 
-	     values(#{category}, #{activationDate}, #{creationDate}, 1000, #{description}, #{priority}, #{forMember.memberRoleId}, #{creatingMember.memberRoleId} )     
-	
+
+
+	<insert id="createAlert" parameterType="com.ziksana.domain.alerts.Alert"
+		useGeneratedKeys="true" keyProperty="MemberNotificationId">
+
+		insert into
+		memmembernotification(Category,ActivationDate,CreationDate,NotificationType,NotificationContent,Priority,ForMemberRoleId,CreatingMemberRoleId)
+		values(#{category}, #{activationDate}, #{creationDate}, 1000,
+		#{description}, #{priority}, #{forMember.memberRoleId},
+		#{creatingMember.memberRoleId} )
+
 	</insert>
+
+
+	<update id="updateAlert" parameterType="com.ziksana.domain.alerts.Alert">
+		update
+		memmembernotification set
+		category = #{category},
+		NotificationContent=#{description},
+		Priority = #{priority}
+		where
+		MemberNotificationId = #{id.storageID}
+	</update>
+
+	<delete id="deleteAlert" parameterType="int">
+		delete from memmembernotification where MemberNotificationId = #{memberNotificationId}
+	</delete>
+
+
+
 
 
 
