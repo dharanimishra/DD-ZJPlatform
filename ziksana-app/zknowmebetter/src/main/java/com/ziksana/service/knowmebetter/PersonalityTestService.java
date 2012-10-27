@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.ziksana.domain.common.Choice;
 import com.ziksana.domain.common.Question;
+import com.ziksana.domain.common.QuestionResponse;
 
 /**
  * @author prabu
@@ -19,7 +20,7 @@ public interface PersonalityTestService {
 	
 	public void saveAnswer(Question question,Choice userChoice);
 
-	public Map<Question,Choice> answeredQuestions();
+	public List<QuestionResponse> answeredQuestions();
 	
 	
 

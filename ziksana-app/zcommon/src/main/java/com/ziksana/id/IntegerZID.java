@@ -1,6 +1,8 @@
 package com.ziksana.id;
 
-public class IntegerZID implements ZID {
+import java.io.Serializable;
+
+public class IntegerZID implements ZID,Serializable {
 
 	// int is preferred over Integer as we don't want this to be
 	// a mutable reference type.

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.knowmebetter.PersonalityTestMapper">
+
+
+	<select id="getUnansweredQuestions" resultMap="questionResultMap"
+		parameterType="int">
+
+		select q.*, qba.QuestionBankAnswerId,
+		qb.QuestionContent,qba.`Answer Content`, qba.`Answer
+		Sequence`,mpt.MemberRoleId
+		from
+		psttestquestion q
+		JOIN asmquestionbank qb
+		ON q.QuestionBankId=q.QuestionBankId
+		JOIN asmquestionbankanswer qba ON
+		qb.QuestionBankId=qba.QuestionBankId
+		LEFT JOIN
+		pstmemberpersonalityresponse r ON
+		q.TestQuestionId=r.TestQuestionId
+		LEFT JOIN pstmemberpersonalitytest mpt ON
+		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId
+		where
+		r.TestQuestionId is null and ( mpt.MemberRoleId is null or
+		mpt.MemberRoleId!=#{memberRoleId})
+
+	</select>
+
+	<resultMap id="questionResultMap" type="com.ziksana.domain.common.Question">
+
+		<constructor>
+
+
+			<idArg column="TestQuestionId" javaType="Integer" />
+			<idArg column="QuestionContent" javaType="String" />
+
+
+
+		</constructor>
+
+		<collection property="choices" ofType="com.ziksana.domain.common.Choice">
+			<constructor>
+				<idArg column="QuestionBankAnswerId" javaType="Integer" />
+				<idArg column="Answer Sequence" javaType="Integer" />
+				<idArg column="Answer Content" javaType="String" />
+			</constructor>
+		</collection>
+
+
+
+	</resultMap>
+
+	<insert id="saveAnswer" parameterType="map" useGeneratedKeys="true"
+		keyProperty="MemPersonalityRespId">
+
+		insert into pstmemberpersonalityresponse(
+		MemberAnswer,ResponseDate,TestQuestionId,QuestionBankAnswerId,MemberPersonalityTestId)
+		values(
+		#{answer.text},now(),#{question.id.storageID},#{answer.id.storageID},
+		#{answer.memPstTestId} )
+
+		<selectKey keyProperty="MemPersonalityRespId" resultType="int"
+			order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+
+	</insert>
+
+
+	<select id="answeredQuestions" resultMap="questionResMap"
+		parameterType="int">
+		
+		select distinct  q.*, 
+		qb.QuestionContent, qba.QuestionBankAnswerId, qba.`Answer Content`, qba.`Answer Sequence`,mpt.MemberRoleId,
+		r.MemberAnswer
+		from
+		psttestquestion q
+		JOIN asmquestionbank qb
+		ON q.QuestionBankId=q.QuestionBankId
+		JOIN asmquestionbankanswer qba ON
+		qb.QuestionBankId=qba.QuestionBankId
+		JOIN
+		pstmemberpersonalityresponse r ON
+		q.TestQuestionId=r.TestQuestionId and
+		qba.QuestionBankAnswerId=r.QuestionBankAnswerId 
+		JOIN pstmemberpersonalitytest mpt ON
+		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId
+		where
+		mpt.MemberRoleId=#{memberRoleId}
+
+	</select>
+
+
+	<resultMap id="questionResMap" type="com.ziksana.domain.common.QuestionResponse">
+
+		<association property="question" javaType="com.ziksana.domain.common.Question"
+			resultMap="questionResult" />
+		<association property="choice" javaType="com.ziksana.domain.common.Choice"
+			resultMap="choiceResult" />
+
+
+
+
+	</resultMap>
+
+	<resultMap id="questionResult" type="com.ziksana.domain.common.Question">
+
+		<constructor>
+			<idArg column="TestQuestionId" javaType="Integer" />
+			<idArg column="QuestionContent" javaType="String" />
+		</constructor>
+
+
+	</resultMap>
+
+
+	<resultMap id="choiceResult" type="com.ziksana.domain.common.Choice">
+
+		<constructor>
+			<idArg column="QuestionBankAnswerId" javaType="Integer" />
+			<idArg column="Answer Sequence" javaType="Integer" />
+			<idArg column="Answer Content" javaType="String" />
+		</constructor>
+
+
+	</resultMap>
+
+
+
+
+
+</mapper>

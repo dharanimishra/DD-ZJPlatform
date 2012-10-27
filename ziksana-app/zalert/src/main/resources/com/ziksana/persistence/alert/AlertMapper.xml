@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.alert.AlertMapper">
+
+
+	<select id="getAlerts" resultMap="alertResultMap" parameterType="int">
+
+		select
+		*
+		from
+		memmembernotification n
+		join utllookup l ON n.NotificationType=l.LookupId
+		join utllookupvalue v ON l.LookupId=v.LookupId
+		where l.CategoryName='memmembernotification' and v.LookupValue='Alert' and
+		n.ForMemberRoleId=#{userMemberRoleId}
+
+
+	</select>
+
+	<resultMap id="alertResultMap" type="com.ziksana.domain.alerts.Alert">
+		
+		<result property="id" column="MemberNotificationId"/>
+		<result property="description" column="NotificationContent"/>
+		<result property="creationDate" column="CreationDate"/>
+		<result property="category" column="Category"/>
+	    <result property="priority" column="Priority"/>
+
+	</resultMap>
+	
+	
+	<insert id="createAlert"  parameterType="com.ziksana.domain.alerts.Alert" useGeneratedKeys="true"  keyProperty="MemberNotificationId">
+	     
+	     insert into memmembernotification(Category,ActivationDate,CreationDate,NotificationType,NotificationContent,Priority,ForMemberRoleId,CreatingMemberRoleId) 
+	     values(#{category}, #{activationDate}, #{creationDate}, 1000, #{description}, #{priority}, #{forMember.memberRoleId}, #{creatingMember.memberRoleId} )     
+	
+	</insert>
+
+
+
+</mapper>
