@@ -93,12 +93,21 @@ public interface CourseContentEnrichmentService {
 	public Map<EnrichmentType, List<ContentEnrichment>> getAllEnrichmentContents(ZID memberPersonaId) throws CourseException;
 	
 	/**
-	 * Searches the Reference Material based on the provided search criteria.
+	 * Basic Searches the Reference Material based on the provided search criteria.
 	 * @param enrich
 	 * @return
 	 * @throws CourseException
 	 */
-	public List<LearningContent> searchReferences(ReferenceSearchCriteria searchCriteria) throws CourseException;
+	public List<LearningContent> basicSearchReferences(ReferenceSearchCriteria searchCriteria) throws CourseException;
+	
+	/**
+	 * Advance Searches the Reference Material based on the provided search criteria.
+	 * @param enrich
+	 * @return
+	 * @throws CourseException
+	 */
+	public List<LearningContent> advanceSearchReferences(ReferenceSearchCriteria searchCriteria) throws CourseException;
+
 	
 	
 	/**

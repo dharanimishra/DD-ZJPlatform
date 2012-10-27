@@ -1,13 +1,11 @@
 package com.ziksana.service.course.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.LearningComponent;
@@ -19,7 +17,6 @@ import com.ziksana.domain.course.LearningContentParts;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningContentMapper;
-import com.ziksana.persistence.course.LearningContentPartsMapper;
 import com.ziksana.service.course.CourseContentService;
 
 public class CourseContentServiceImpl implements CourseContentService {
@@ -30,34 +27,25 @@ public class CourseContentServiceImpl implements CourseContentService {
 	public LearningComponentContentMapper compContentMapper;
 	@Autowired
 	public LearningContentMapper contentMapper;
-	@Autowired
-	public LearningContentPartsMapper contentPartsMapper;
 	
 	
 	@Transactional
 	@Override
-	public void saveOrUpdateContent(Course course,
-			ContentType contentType, LearningComponentContent compContent)
-			throws CourseException {
+	public void saveOrUpdateContent(Course course) throws CourseException {
 		
 		CourseDetails 					courseDetails	 				= null;
 		List<LearningComponent> 		learningComponentList	 		= null;
 		LearningComponentDetails 		lCompDetails 					= null;
 		List<LearningComponentContent> 	learningCompContentList 		= null;
 		LearningComponentContentDetails contentDetails 					= null; 
-
-		
-		List<LearningComponent> 		savedLearningComponentList	 	= new ArrayList<LearningComponent>();
 		LearningComponentContent 		savedlearningComponentContent 	= null;
-		//LearningContentParts 			savedLearningContentParts 		= null; 
 		LearningContent 				savedLearningContent 			= null;
-		//List<LearningContentParts> 		savedContentParts 				= new ArrayList<LearningContentParts>();
-		//List<LearningComponentContent> 	savedLearningCompContentList 	=  new ArrayList<LearningComponentContent>();
-		//LearningComponent				savedLearningComponent 			= null;
-		CourseDetails 					savedCourseDetails				= new CourseDetails();
-		Course 							savedCourse 					= new Course();
-		//LearningComponentDetails 		savedLCDetails					= new LearningComponentDetails();
 		List<LearningContentParts> 		contentParts 					= null;
+		
+		if(course == null){
+			throw new CourseException("Course cannot be null");
+		}
+		
 		courseDetails = course.getCourseDetails();
 		
 		if(courseDetails == null){
@@ -66,12 +54,14 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 		learningComponentList = courseDetails.getLearningComponents();
 			
-		if(learningComponentList!=null && learningComponentList.size()>0){
+		if(learningComponentList.size()==0 || learningComponentList == null){
+			throw new CourseException("Learning Components are not added to list ");
+		}
 			
 			logger.debug("Learning Components list size ::"+learningComponentList.size());
 				
 			for (LearningComponent learningComponent : learningComponentList) {
-				//savedLearningComponent = new LearningComponent();
+
 				lCompDetails = learningComponent.getLearningComponentDetails();
 					
 				if(lCompDetails==null){
@@ -91,10 +81,16 @@ public class CourseContentServiceImpl implements CourseContentService {
 					logger.debug("After saving the LearningComponentContent ...: "+savedlearningComponentContent.toString());
 					
 					contentDetails = learningComponentContent.getLearrningComponentContentDetails();
+					
+					if(contentDetails == null){
+						throw new CourseException("LearningContentDetails cannot be null");
+					}
 							
 					LearningContent learningContent = contentDetails.getLearningContent();
 							
-					if(learningContent!=null){
+					if(learningContent == null){
+						throw new CourseException("Learning Content cannot be null");
+					}
 								
 						learningContent.setBaseComponentContent(savedlearningComponentContent);
 								
@@ -110,40 +106,12 @@ public class CourseContentServiceImpl implements CourseContentService {
 										
 								learningContentParts.setLearningContent(savedLearningContent);
 										
-								contentPartsMapper.save(learningContentParts);
+								contentMapper.save(learningContentParts);
 										
-								//savedContentParts.add(savedLearningContentParts);
 							}
 						}
-	/*					try {
-								//savedLearningContent.setLearningContentParts(savedContentParts);
-						} catch (Exception e) {
-						}
-	*/							
-					}
-					//savedlearningComponentContent.setBaseLearningContent(savedLearningContent);
-					//savedLearningCompContentList.add(savedlearningComponentContent);
 				}
-/*				try {
-					//savedLCDetails.setLearningCompContentList(savedLearningCompContentList);
-				} catch (Exception e) {
-					throw new CourseException("Error saving");
-				}
-					
-				//savedLearningComponent.setLearningComponentDetails(savedLCDetails);
-*/			}
-				
-			//savedLearningComponentList.add(savedLearningComponent);
 		}
-		
-		try {
-			savedCourseDetails.setLearningComponents(savedLearningComponentList);
-			savedCourse.setCourseDetails(savedCourseDetails);
-			
-		} catch (Exception e) {
-			//error log
-		}
-		
 	}
 
 	@Override
@@ -206,7 +174,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 				
 				logger.debug("Before saving the LearningContentParts ");
 				
-				contentPartsMapper.save(learningContentParts);
+				contentMapper.save(learningContentParts);
 			}
 		}
 	}			

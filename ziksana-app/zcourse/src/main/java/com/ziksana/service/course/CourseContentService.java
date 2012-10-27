@@ -1,7 +1,7 @@
 package com.ziksana.service.course;
 
 import java.util.List;
-import com.ziksana.domain.course.ContentType;
+
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.exception.course.CourseException;
@@ -15,9 +15,7 @@ public interface CourseContentService {
 	 * @param compContent
 	 * @throws CourseException
 	 */
-	public void saveOrUpdateContent(Course course,
-			ContentType contentType, LearningComponentContent compContent)
-			throws CourseException;
+	public void saveOrUpdateContent(Course course)	throws CourseException;
 	
 	/**
 	 * Retrieves the LearningComponentContent details

@@ -2,7 +2,6 @@ package com.ziksana.persistence.course;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
@@ -13,18 +12,8 @@ import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseAdditionalProperty;
-import com.ziksana.id.ZID;
 
 public interface CourseMapper {
-
-	/**
-	 * Updates the Course's delete indicator to perform soft delete.
-	 * @param CourseId
-	 * @return
-	 */
-	@Delete({ "update from corcourse set isdelete=#{isDelete,jdbcType=BOOLEAN}",
-			"where courseid = #{CourseId,jdbcType=INTEGER}" })
-	void delete(ZID CourseId);
 
 	/**
 	 * Retrieves the base course information by Member's (MemberPersona).
@@ -158,8 +147,10 @@ public interface CourseMapper {
 
 
 	@Insert({"insert into corcourseadditionalproperty (creationdate, usagetype, name, datatype, value, active, courseid, memberroleid ) ",
-		"values (#{creationDate , jdbcType.TIMESTAMP}, #{propertyUsageType , jdbcType.INTEGER}, #{ propertyName, jdbcType.VARCHAR}, #{propertyDataType , jdbcType.INTEGER}, #{propertyValue , jdbcType.VARCHAR}, ",
-		" #{sequence , jdbcType.INTEGER}, #{active , jdbcType.BOOLEAN}, #{ courseId, jdbcType.INTEGER}, #{creatorMemberPersona.memberRoleId , jdbcType.INTEGER}, ) "})
+		"values (sysdate(), jdbcType.TIMESTAMP}, #{propertyUsageType, jdbcType.INTEGER}, #{propertyName, jdbcType.VARCHAR},",
+		" #{propertyDataType, jdbcType.INTEGER}, #{propertyValue, jdbcType.VARCHAR}, ",
+		" #{sequence , jdbcType.INTEGER}, #{active, jdbcType.BOOLEAN}, #{course.courseId, jdbcType.INTEGER},",
+		" #{creatorMemberPersona.memberRoleId, jdbcType.INTEGER}  ) "})
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseaddnlpropertyid", before = true, resultType = Integer.class)
 	void saveAddnlInfo(CourseAdditionalProperty courseAdditionalProperty);
 	

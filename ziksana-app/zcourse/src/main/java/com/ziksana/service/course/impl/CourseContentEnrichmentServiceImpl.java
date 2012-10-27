@@ -15,7 +15,6 @@ import com.ziksana.domain.course.EnrichmentType;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningComponentContentHotspot;
 import com.ziksana.domain.course.LearningContent;
-import com.ziksana.domain.course.LearningContentTagcloud;
 import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.ReferenceSearchCriteria;
 import com.ziksana.exception.course.CourseException;
@@ -278,36 +277,35 @@ public class CourseContentEnrichmentServiceImpl implements
 	}
 
 	@Override
-	public List<LearningContent> searchReferences(ReferenceSearchCriteria searchCriteria)
-			throws CourseException {
-
-		List<LearningContentTagcloud> tagcloudList = null;
-		LearningContent	learningContent = null;
-		List<LearningContent> learningContentList = null;
+	public List<LearningContent> basicSearchReferences(ReferenceSearchCriteria searchCriteria) throws CourseException {
 		
+		List<LearningContent> contents  = null;
+
 		if(searchCriteria == null){
 			throw new CourseException("ReferenceSearchCriteria cannot be null");
 		}
-		tagcloudList = new ArrayList<LearningContentTagcloud>();
-		learningContentList = new ArrayList<LearningContent>();
-		learningContent = new LearningContent();
 		
-		tagcloudList =  contentTagcloudMapper.searchReferenceMaterial(searchCriteria);
+		contents  = enrichMapper.basicSearchReferenceMaterial(searchCriteria);
 		
-		if(tagcloudList!= null && tagcloudList.size()>0){
-			
-			for (LearningContentTagcloud learningContentTagcloud : tagcloudList) {
-				
-				learningContent = learningContentTagcloud.getLearningContent();
-				
-				if(learningContent!=null){
-					learningContentList.add(learningContent);
-				}
-			}
-			
+		logger.debug("Enrichments(Reference)  list size : "+contents.size());
+		
+		return contents;
+	}
+
+	@Override
+	public List<LearningContent> advanceSearchReferences(ReferenceSearchCriteria searchCriteria) throws CourseException {
+		
+		List<LearningContent> contents  = null;
+
+		if(searchCriteria == null){
+			throw new CourseException("ReferenceSearchCriteria cannot be null");
 		}
 		
-		return learningContentList;
+		contents  = enrichMapper.advanceSearchReferenceMaterial(searchCriteria);
+		
+		logger.debug("Enrichments(Reference)  list size : "+contents.size());
+		
+		return contents;
 	}
 
 	@Transactional
@@ -344,7 +342,8 @@ public class CourseContentEnrichmentServiceImpl implements
 			
 			logger.debug("Before Saving LearningComponentContentHotspot .. ");
 			
-			ZID hotspotId = hotspot.getComponentContentTagHotspotId();
+			Integer hotspotId = new Integer(hotspot.getComponentContentHotspotId().getStorageID());
+			
 			hotspotMapper.delete(hotspotId);
 			
 		}

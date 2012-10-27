@@ -11,6 +11,15 @@ import com.ziksana.domain.utils.Topic;
  */
 public class ReferenceSearchCriteria {
 	
+	
+	/**
+	 * advanced Search criteria
+	 * @param name
+	 * @param indicatorType
+	 * @param contentType
+	 * @param topic
+	 * @param tags
+	 */
 	public ReferenceSearchCriteria(String name,
 			ContentIndicatorType indicatorType, ContentType contentType,
 			Topic topic, String tags) {
@@ -19,12 +28,21 @@ public class ReferenceSearchCriteria {
 		this.contentType = contentType;
 		this.topic = topic;
 		this.tags = tags;
+		this.setLinkType(LinkType.REFERENCE);
 	}
 	
+	
+	/**
+	 * Basic Search criteria
+	 * @param name
+	 * @param indicatorType
+	 */
 	public ReferenceSearchCriteria(String name,
 			ContentIndicatorType indicatorType) {
 		this.name = name;
 		this.indicatorType = indicatorType;
+		this.setLinkType(LinkType.REFERENCE);
+		
 	}
 	
 	
@@ -33,6 +51,7 @@ public class ReferenceSearchCriteria {
 	private ContentType				contentType		= null;
 	private Topic					topic			= null;
 	private String					tags			= null;
+	private LinkType				linkType		= null;	
 	
 	
 	/**
@@ -94,6 +113,20 @@ public class ReferenceSearchCriteria {
 	 */
 	public void setTags(String tags) {
 		this.tags = tags;
+	}
+
+	/**
+	 * @return the linkType
+	 */
+	public LinkType getLinkType() {
+		return linkType;
+	}
+
+	/**
+	 * @param linkType the linkType to set
+	 */
+	public void setLinkType(LinkType linkType) {
+		this.linkType = linkType;
 	}
 	
 	

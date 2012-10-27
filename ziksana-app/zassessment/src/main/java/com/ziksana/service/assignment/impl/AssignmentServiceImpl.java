@@ -2,11 +2,9 @@ package com.ziksana.service.assignment.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.ziksana.domain.assessment.Assignment;
 import com.ziksana.domain.assessment.AssignmentTestRubric;
 import com.ziksana.domain.assessment.AssignmentTestSettings;
