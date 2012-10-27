@@ -24,7 +24,7 @@ public class MemberPersona {
 	private Date           roleStartDate = null;
 	private Boolean        active;
 	private Boolean        doNotMarketIndicator;
-	private Integer        thumbnailPicturePath;
+	private String        thumbnailPicturePath;
 	private Member         member;
 
 	
@@ -86,11 +86,11 @@ public class MemberPersona {
 		this.member = member;
 	}
 
-	public Integer getThumbnailPicturePath() {
+	public String getThumbnailPicturePath() {
 		return thumbnailPicturePath;
 	}
 
-	public void setThumbnailPicturePath(Integer thumbnailPicturePath) {
+	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
 	}
 	  
