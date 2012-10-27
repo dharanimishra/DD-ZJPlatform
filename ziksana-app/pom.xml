@@ -18,11 +18,12 @@
 		<module>zpolls</module>
 		<module>zsample</module>
 		<module>zassessment</module>
-    <module>zapfk</module>
-    <module>zalert</module>
-    <module>zblogs</module>
-    <module>zknowmebetter</module>
-    <module>zmycontacts</module>
+	    <module>zapfk</module>
+	    <module>zalert</module>
+	    <module>zblogs</module>
+	    <module>zknowmebetter</module>
+	    <module>zmycontacts</module>
+	    <module>zprogram</module>
 	</modules>
 
 	<properties>
