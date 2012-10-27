@@ -107,7 +107,6 @@ public interface CourseContentEnrichmentService {
 	 * @throws CourseException
 	 */
 	public List<LearningContent> advanceSearchReferences(ReferenceSearchCriteria searchCriteria) throws CourseException;
-
 	
 	
 	/**

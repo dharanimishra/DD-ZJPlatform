@@ -1,14 +1,12 @@
 package com.ziksana.persistence.course;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-
 import com.ziksana.domain.course.ContentEnrichment;
 import com.ziksana.domain.course.Enrichment;
 import com.ziksana.domain.course.LearningContent;
@@ -89,13 +87,23 @@ public interface EnrichmentMapper {
 			@Result(property = "enrichment.enrichmentId", column = "enrichmentid") })
 	ContentEnrichment getContentEnrichment(Integer enrichmentId);
 
+	/**
+	 * Retrieves the enrchimentid by providing the componentid
+	 * @param lCompId
+	 * @param learningContentId
+	 * @return
+	 */
 	@Select({
 			"select enrichmentid from corapplyenrichment where learningcomponentid = #{learningcomponentid,jdbctype=INTEGER} ",
 			" or learningcontentid = #{learningContentId,jdbcType=INTEGER}" })
-	@Results(value = { @Result(property = "enrichentId", column = "enrichentid"), })
+	@Results(value = { @Result(property = "enrichentId", column = "enrichentid") })
 	Integer getEnrichByContentIdOrComponentId(Integer lCompId,
 			Integer learningContentId);
 
+	/**
+	 * Saves thee refence content.
+	 * @param contentEnrichment
+	 */
 	@Insert({
 			"insert into corcontentenrichment (starttime, endtime, linktype, linkelement, internalindicator,linkdescription, ",
 			"linkitemauthor, linkitemcost, linksource, active, isdelete, enrichmentid ) values (#{startTime,jdbcType.TIMESTAMP},",
@@ -105,14 +113,16 @@ public interface EnrichmentMapper {
 
 	/**
 	 * Removes the association of contentenrichment with content.
-	 * 
-	 * @param contentEnrichment
 	 */
 	@Update({
 			"update corcontentenrichment set  isDelete = #{isDelete,jdbctype=BOOLEAN} where ",
 			" contentenrichmentid = #{contentEnrichmentId,jdbcType=INTEGER}" })
 	void delete(ContentEnrichment contentEnrichment);
 
+	/**
+	 * Modifies the content enrichment
+	 * @param contentEnrichment
+	 */
 	@Update({
 			"update corContentEnrichment set starttime =#{startTime,jdbcType.TIMESTAMP},",
 			"endtime = #{endTime,jdbcType.TIMESTAMP},  linktype = #{linkType,jdbcType.INTEGER}, linkelement=#{linkElement,jdbcType.VARCHAR},",
@@ -122,6 +132,11 @@ public interface EnrichmentMapper {
 
 	
 	
+	/**
+	 * Searches the provide advanced search criteria
+	 * @param searchCriteria
+	 * @return
+	 */
 	@Select({
 			"select learningcontenid, contenttype, contentname, contentdescription,authoringmemberroleid, rightsowningmemberroleid ",
 			" from corlearningcontent where contentname like where linktype = #{linkType,jdbcType=INTEGER} and  contentname like  % #{tags,jdbcType.VARCHAR} %  ",
@@ -137,6 +152,11 @@ public interface EnrichmentMapper {
 	List<LearningContent> advanceSearchReferenceMaterial(
 			ReferenceSearchCriteria searchCriteria);
 
+	/**
+	 * Searches the provide basic search criteria 
+	 * @param searchCriteria
+	 * @return
+	 */
 	@Select({
 			"select learningcontenid, contenttype, contentname, contentdescription,authoringmemberroleid, rightsowningmemberroleid ",
 			" from corlearningcontent where linktype = #{linkType,jdbcType=INTEGER} and contentname like  % #{name,jdbcType.VARCHAR} % " })

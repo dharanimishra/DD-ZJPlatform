@@ -57,6 +57,10 @@ public interface LearningComponentContentHotspotMapper {
 	void delete(Integer hotspotId);
 	
 
+	/**
+	 * Modifies Hotspot information
+	 * @param hotspot
+	 */
 	@Update({"update corlearningcomponentcontenthotspot set coordeinates= #{coordeinates,jdbcType.VARCHAR}, name = #{name,jdbcType.VARCHAR}, ",
 		" description = #{description,jdbcType.VARCHAR}  where componentcontenthotspotid = #{componentContentHotspotId,jdbcType=INTEGER}"})
 	void update(LearningComponentContentHotspot hotspot);

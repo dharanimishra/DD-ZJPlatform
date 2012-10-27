@@ -207,6 +207,7 @@ public class CourseContentEnrichmentServiceImpl implements
 		enrichMapper.update(contentEnrichment);
 	}
 
+	@Transactional
 	@Override
 	public Map<EnrichmentType, List<ContentEnrichment>> getAllEnrichmentContents(
 			ZID memberPersonaId) throws CourseException {
@@ -292,6 +293,7 @@ public class CourseContentEnrichmentServiceImpl implements
 		return contents;
 	}
 
+	
 	@Override
 	public List<LearningContent> advanceSearchReferences(ReferenceSearchCriteria searchCriteria) throws CourseException {
 		
