@@ -14,35 +14,46 @@ import com.ziksana.service.alert.AlertsService;
 
 /**
  * @author prabu
- *
+ * 
  */
 public class AlertServiceImpl implements AlertsService {
-	
-	
+
 	@Autowired
 	public AlertMapper alertMapper;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ziksana.service.alert.AlertsService#getAlertList()
 	 */
 	@Override
 	public List<Alert> getAlertList() {
 		// TODO Auto-generated method stub
-		
-		return alertMapper.getAlerts( Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID()));
+
+		return alertMapper.getAlerts(Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID()));
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ziksana.service.alert.AlertsService#createAlertItem(com.ziksana.domain.alerts.Alert)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ziksana.service.alert.AlertsService#createAlertItem(com.ziksana.domain
+	 * .alerts.Alert)
 	 */
 	@Override
 	public void createAlertItem(Alert AlertItem) {
-		// TODO Auto-generated method stub
+
+		alertMapper.createAlert(AlertItem);
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ziksana.service.alert.AlertsService#editAlertItem(com.ziksana.domain.alerts.Alert)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ziksana.service.alert.AlertsService#editAlertItem(com.ziksana.domain
+	 * .alerts.Alert)
 	 */
 	@Override
 	public void editAlertItem(Alert AlertItem) {
@@ -50,8 +61,12 @@ public class AlertServiceImpl implements AlertsService {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ziksana.service.alert.AlertsService#deleteAlertItem(java.lang.Integer, java.lang.Integer)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ziksana.service.alert.AlertsService#deleteAlertItem(java.lang.Integer
+	 * , java.lang.Integer)
 	 */
 	@Override
 	public void deleteAlertItem(Integer memberId, Integer alertId) {

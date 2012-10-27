@@ -26,6 +26,14 @@
 	    <result property="priority" column="Priority"/>
 
 	</resultMap>
+	
+	
+	<insert id="createAlert"  parameterType="com.ziksana.domain.alerts.Alert" useGeneratedKeys="true"  keyProperty="MemberNotificationId">
+	     
+	     insert into memmembernotification(Category,ActivationDate,CreationDate,NotificationType,NotificationContent,Priority,ForMemberRoleId,CreatingMemberRoleId) 
+	     values(#{category}, #{activationDate}, #{creationDate}, 1000, #{description}, #{priority}, #{forMember.memberRoleId}, #{creatingMember.memberRoleId} )     
+	
+	</insert>
 
 
 

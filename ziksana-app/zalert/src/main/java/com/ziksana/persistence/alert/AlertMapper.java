@@ -11,5 +11,6 @@ public interface AlertMapper {
 
 	
 	List<Alert> getAlerts(Integer userMemberRoleId);
+	void createAlert(Alert alert);
 
 }

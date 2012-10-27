@@ -6,7 +6,6 @@ package com.ziksana.domain.alerts;
 import java.util.Date;
 
 import com.ziksana.domain.member.MemberPersona;
-import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
@@ -19,7 +18,7 @@ public class Alert implements Comparable<Alert> {
 	private ZID id;
 	private String description;
 	private Date creationDate;
-	private Date actiovationDate;
+	private Date activationDate;
 	private Integer status;
 	private String category;
 	private MemberPersona creatingMember;
@@ -260,8 +259,8 @@ public class Alert implements Comparable<Alert> {
 
 
 
-	public Date getActiovationDate() {
-		return actiovationDate;
+	public Date getActivationDate() {
+		return activationDate;
 	}
 
 
@@ -273,8 +272,8 @@ public class Alert implements Comparable<Alert> {
 
 
 
-	public void setActiovationDate(Date actiovationDate) {
-		this.actiovationDate = actiovationDate;
+	public void setActivationDate(Date activationDate) {
+		this.activationDate = activationDate;
 	}
 
 
