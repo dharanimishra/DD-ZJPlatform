@@ -21,7 +21,6 @@ import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.EnrichmentMapper;
 import com.ziksana.persistence.course.LearningComponentContentHotspotMapper;
-import com.ziksana.persistence.course.LearningContentTagcloudMapper;
 import com.ziksana.service.course.CourseContentEnrichmentService;
 
 public class CourseContentEnrichmentServiceImpl implements
@@ -34,9 +33,7 @@ public class CourseContentEnrichmentServiceImpl implements
 	public EnrichmentMapper 						enrichMapper;
 	@Autowired
 	public LearningComponentContentHotspotMapper 	hotspotMapper;
-	@Autowired
-	public LearningContentTagcloudMapper 			contentTagcloudMapper;
-
+	
 	
 	@Transactional
 	@Override
