@@ -140,9 +140,6 @@ public class LearningContentReviewProgress extends AuditHistory {
 	public void setLearningComponent(LearningComponent learningComponent) {
 		this.learningComponent = learningComponent;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "LearningContentReviewProgress [startDate=" + startDate

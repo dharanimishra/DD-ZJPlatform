@@ -24,8 +24,9 @@ public class CoursePlaybookView extends AuditHistory {
 	}
 
 
-	private ZID 						coursePlaybookViewId; 
-	  private String 					name 					= null; 
+	  private ZID 						coursePlaybookViewId; 
+	  private String 					name 					= null;
+	  private String					description				= null;
 	  private PlaybookDeliveryType 		deliveryType 			= null; 
 	  private String 					layoutMarkupPath 		= null; 
 	  private String 					contentMarkupPath  		= null;
@@ -163,6 +164,18 @@ public class CoursePlaybookView extends AuditHistory {
 				+ ", contentMarkupPath=" + contentMarkupPath
 				+ ", coursePlaybookStatus=" + coursePlaybookStatus
 				+ ", brochureContentPath=" + brochureContentPath + "]";
+	}
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

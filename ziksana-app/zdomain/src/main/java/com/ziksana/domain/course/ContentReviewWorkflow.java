@@ -16,10 +16,10 @@ public class ContentReviewWorkflow extends AuditHistory {
 	}
 
 	private ZID 							contentReviewWorkflowId;
-	private WorkflowType 					workflowType 		= null;
-	private Timestamp 						completeBy 			= null;
-	private String 							notes				= null;
-	private LearningContentReviewProgress 	reviewProgress 		= null;
+	private WorkflowType 					workflowType 			= null;
+	private Timestamp 						completeBy 				= null;
+	private String 							notes					= null;
+	private LearningContentReviewProgress 	reviewProgress 			= null;
 	
 	/**
 	 * @return the contentReviewWorkflowId

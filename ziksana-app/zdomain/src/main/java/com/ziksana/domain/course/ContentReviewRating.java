@@ -5,6 +5,7 @@ import com.ziksana.domain.course.Rating;
 import com.ziksana.id.ZID;
 
 /**
+ * Domain holds the review rating
  * @author bhashasp
  */
 public class ContentReviewRating extends AuditHistory {

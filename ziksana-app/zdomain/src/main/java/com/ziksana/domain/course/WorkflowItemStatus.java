@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ziksana.domain.course;
 
 import java.util.NoSuchElementException;
@@ -36,9 +33,9 @@ public enum WorkflowItemStatus {
 	}
 
 	public static WorkflowItemStatus getWorkflowItemStatus(int ID) {
-		for (WorkflowItemStatus status : WorkflowItemStatus.values()) {
-			if (status.getID() == ID) {
-				return status;
+		for (WorkflowItemStatus wfStatus : WorkflowItemStatus.values()) {
+			if (wfStatus.getID() == ID) {
+				return wfStatus;
 			}
 		}
 

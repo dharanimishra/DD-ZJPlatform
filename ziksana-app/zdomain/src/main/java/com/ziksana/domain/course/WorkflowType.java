@@ -32,9 +32,9 @@ public enum WorkflowType {
 	}
 
 	public static WorkflowType getWorkflowType(int ID) {
-		for (WorkflowType workflowType : WorkflowType.values()) {
-			if (workflowType.getID() == ID) {
-				return workflowType;
+		for (WorkflowType wfType : WorkflowType.values()) {
+			if (wfType.getID() == ID) {
+				return wfType;
 			}
 		}
 

@@ -8,10 +8,10 @@ import java.util.NoSuchElementException;
 public enum Criticality {
 
 	// TODO: retrieve the ids from the static data service
-	LOW      		(1, "Low"),
-	MEDIUM      	(2, "Medium"),
-	HIGH   			(3, "High"),
-	FLAME 			(4, "Flame");
+	LOW      		(1, "Low Criticality"),
+	MEDIUM      	(2, "Medium Criticality"),
+	HIGH   			(3, "High Criticality"),
+	FLAME 			(4, "Flame Criticality");
 
 	private final int id;
 	
@@ -33,11 +33,10 @@ public enum Criticality {
 	public static Criticality getCriticality(int ID) {
 		for (Criticality criticality : Criticality.values()) {
 			if (criticality.getID() == ID) {
-				return criticality;
-			}
+				return criticality;			}
 		}
 
-		throw new NoSuchElementException("Criticality ID [" + ID + "] not found");
+		throw new NoSuchElementException("Criticality Id [" + ID + "] not found");
 	}
 
 	public String toString() {

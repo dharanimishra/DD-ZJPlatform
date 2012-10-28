@@ -21,12 +21,12 @@ public class WorkflowParticipantComment extends AuditHistory {
 	}
 	
 	private ZID 				participantCommentId;
-	private String 				comment 		= null;
-	private Date 				createDate 		= null;
-	private Criticality 		criticality 	= null;
-	private String 				remarks 		= null;
-	private WorkflowItemStatus 	status 			= null;
-	private WorkflowParticipant participant 	= null;
+	private String 				comment 			= null;
+	private Date 				createDate 			= null;
+	private Criticality 		criticality 		= null;
+	private String 				remarks 			= null;
+	private WorkflowItemStatus 	status 				= null;
+	private WorkflowParticipant participant 		= null;
 	
 	/**
 	 * @return the participantCommentId
@@ -112,9 +112,7 @@ public class WorkflowParticipantComment extends AuditHistory {
 	public void setParticipant(WorkflowParticipant participant) {
 		this.participant = participant;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
 	@Override
 	public String toString() {
 		return "WorkflowParticipantComment [comment=" + comment

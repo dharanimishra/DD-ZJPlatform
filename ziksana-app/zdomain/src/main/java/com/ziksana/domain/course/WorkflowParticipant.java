@@ -141,9 +141,7 @@ public class WorkflowParticipant extends AuditHistory {
 	public void setContentReviewRating(ContentReviewRating contentReviewRating) {
 		this.contentReviewRating = contentReviewRating;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
 	@Override
 	public String toString() {
 		return "WorkflowParticipant [communicatedDate=" + communicatedDate
