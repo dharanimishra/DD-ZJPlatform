@@ -21,9 +21,19 @@
 
 		<result property="memberRoleId" column="RelatingMemberRoleId" />
 		<result property="thumbnailPicturePath" column="ThumbnailPicturePath" />
-		<result property="creationDate" column="MemberId" />
-		<result property="category" column="Category" />
-		<result property="priority" column="Priority" />
+		
+		
+		<association property="member" javaType="com.ziksana.domain.member.Member">
+		   <result property="memberId" column="MemberId" />
+		   <result property="firstName" column="FirstName" />
+		   <result property="lastName" column="LastName" />
+		   <result property="middleName" column="MiddleName" />
+		   <result property="picturePath" column="PicturePath"/>
+		   
+		</association>
+		
+		
+		
 
 	</resultMap>
 
