@@ -5,18 +5,16 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 
-import java.util.List;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vtg.dao.TodoListDao;
-import com.vtg.dao.impl.TodoListDaoImpl;
-import com.vtg.model.TodoList;
+import com.ziksana.domain.todos.TodoList;
+import com.ziksana.service.todo.TodoListService;
 
 /**
  * Test Case
@@ -28,30 +26,32 @@ import com.vtg.model.TodoList;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TodoListTestCase {
 
-	private static TodoListDao todoListDAO;
+	@Autowired
+	TodoListService todoListService;
 
 	@BeforeClass
 	public static void runBeforeClass() {
-		todoListDAO = new TodoListDaoImpl();
+
 	}
 
 	@AfterClass
 	public static void runAfterClass() {
-		todoListDAO = null;
+
 	}
 
 	/**
 	 * Test method for
-	 * {@link com.vtg.dao.TodoListDao#insert(com.vtg.model.TodoList)}.
+	 * {@link com.vtg.dao.TodoListDao#insert(com.ziksana.domain.todos.TodoList)}
+	 * .
 	 */
 	@Test
 	public void testInsert() {
 
 		TodoList actual = new TodoList();
-		todoListDAO.insert(actual);
+		todoListService.createTodoList(actual);
 
 		assertEquals(1, actual.getId());
-		TodoList expected = todoListDAO.getTodoList("1");
+		TodoList expected = todoListService.getTodoList(1);
 		assertEquals(actual, expected);
 		assertNotSame(actual, expected);
 
@@ -62,9 +62,9 @@ public class TodoListTestCase {
 	 */
 	@Test
 	public void testSelectAll() {
-		List<TodoList> list = (List<TodoList>) todoListDAO.selectAll();
-		assertNotNull(list);
-		assertEquals(1, 1);
+		// List<TodoList> list = (List<TodoList>) todoListDAO.selectAll();
+		// assertNotNull(list);
+		// assertEquals(1, 1);
 	}
 
 	/**
@@ -73,7 +73,8 @@ public class TodoListTestCase {
 	@Test
 	public void testSelectById() {
 		TodoList actual = new TodoList();
-		TodoList expected = todoListDAO.getTodoList(actual.getId());
+		TodoList expected = todoListService.getTodoList(Integer.parseInt(actual
+				.getId()));
 
 		assertNotNull(expected);
 		assertEquals(actual, expected);
@@ -82,7 +83,8 @@ public class TodoListTestCase {
 
 	/**
 	 * Test method for
-	 * {@link com.vtg.dao.TodoListDao#update(com.vtg.model.TodoList)}.
+	 * {@link com.vtg.dao.TodoListDao#update(com.ziksana.domain.todos.TodoList)}
+	 * .
 	 * 
 	 * @throws Exception
 	 */
@@ -91,10 +93,11 @@ public class TodoListTestCase {
 
 		TodoList actual = new TodoList();
 
-		TodoList expected = todoListDAO.getTodoList("1");
+		TodoList expected = todoListService.getTodoList(1);
 		expected.setName("Todo List");
-		todoListDAO.editTodoList(expected);
-		expected = todoListDAO.getTodoList(actual.getId());
+		todoListService.updateTodoList(expected);
+		expected = todoListService
+				.getTodoList(Integer.parseInt(actual.getId()));
 
 		assertNotNull(expected);
 		assertEquals(actual, expected);
@@ -109,8 +112,8 @@ public class TodoListTestCase {
 	@Test
 	public void testDelete() throws Exception {
 
-		todoListDAO.deleteTodoList("1");
-		TodoList expected = todoListDAO.getTodoList("1");
+		todoListService.deleteTodoList(1);
+		TodoList expected = todoListService.getTodoList(1);
 		assertNull(expected);
 	}
 

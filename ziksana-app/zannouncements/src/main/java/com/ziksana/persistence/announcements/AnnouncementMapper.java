@@ -1,8 +1,7 @@
 /**
  * 
  */
-package com.ziksana.service.announcements;
-
+package com.ziksana.persistence.announcements;
 
 import com.ziksana.model.Announcement;
 
@@ -10,7 +9,7 @@ import com.ziksana.model.Announcement;
  * @author
  * 
  */
-public interface AnnouncementService {
+public interface AnnouncementMapper {
 
 	public Announcement getAnnouncement(int id);
 

@@ -1,22 +1,26 @@
 package com.vtg.membernotification.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertNull;
+import java.util.Date;
 
-import java.util.Collection;
+import junit.framework.Assert;
 
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vtg.dao.MemberNotificationDao;
-import com.vtg.dao.impl.MemberNotificationDaoImpl;
-import com.vtg.model.MemberNotification;
+import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.domain.todos.MemberNotification;
+import com.ziksana.id.StringZID;
+import com.ziksana.id.ZID;
+import com.ziksana.security.util.SecurityToken;
+import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.service.todo.MemberNotificationService;
 
 /**
  * Test Case
@@ -28,90 +32,120 @@ import com.vtg.model.MemberNotification;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class MemberNotificationTestCase {
 
-	private static MemberNotificationDao memberNotificationDAO;
+	@Autowired
+	MemberNotificationService memberNotificationService;
 
 	@BeforeClass
 	public static void runBeforeClass() {
-		memberNotificationDAO = new MemberNotificationDaoImpl();
+
 	}
 
 	@AfterClass
 	public static void runAfterClass() {
-		memberNotificationDAO = null;
+
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+		ZID memberId = new StringZID("1");
+		ZID memberPersonaId = new StringZID("1");
+		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+		ThreadLocalUtil.setToken(token);
+
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+		ThreadLocalUtil.unset();
 	}
 
 	/**
 	 * Test method for
-	 * {@link com.vtg.dao.CategoryDao#insert(com.vtg.model.Category)}.
+	 * {@link com.ziksana.service.alert.impl.AlertServiceImpl#getAlertList()}.
 	 */
 	@Test
-	public void testInsert() {
+	public void testGetAlertList() {
 
-		MemberNotification actual = new MemberNotification();
-		memberNotificationDAO.insert(actual);
+		MemberNotification members = memberNotificationService
+				.getMemberNotification(7);
 
-		assertEquals(1, actual.getId());
-		MemberNotification expected = memberNotificationDAO.selectById(actual.getId());
-		assertEquals(actual, expected);
-		assertNotSame(actual, expected);
+		System.out.println(members.getCategory());
+		System.out.println(members.getDescription());
 
-	}
+		Assert.assertNotNull(members);
+		Assert.assertNull(members);
 
-	/**
-	 * Test method for {@link com.vtg.dao.CategoryDao#selectAll()}.
-	 */
-	@Test
-	public void testSelectAll() {
-		Collection<MemberNotification> list = memberNotificationDAO.selectAll();
-		assertNotNull(list);
-		assertEquals(1, 1);
-	}
-
-	/**
-	 * Test method for {@link com.vtg.dao.CategoryDao#selectById(int)}.
-	 */
-	@Test
-	public void testSelectById() {
-		MemberNotification actual = new MemberNotification();
-		MemberNotification expected = memberNotificationDAO.selectById(actual.getId());
-
-		assertNotNull(expected);
-		assertEquals(actual, expected);
-		assertNotSame(actual, expected);
 	}
 
 	/**
 	 * Test method for
-	 * {@link com.vtg.dao.CategoryDao#update(com.vtg.model.Category)}.
-	 * 
-	 * @throws Exception
+	 * {@link com.ziksana.service.alert.impl.AlertServiceImpl#createAlertItem(com.ziksana.domain.alerts.Alert)}
+	 * .
 	 */
 	@Test
-	public void testUpdate() throws Exception {
+	public void testCreateAlertItem() {
 
-		MemberNotification actual = new MemberNotification();
+		MemberNotification member = new MemberNotification();
+		member.setCategory("Assignment");
+		member.setActivationDate(new Date());
+		MemberPersona creatingMember = new MemberPersona();
+		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+				.getToken().getMemberPersonaId().getStorageID()));
 
-		MemberNotification expected = memberNotificationDAO.selectById(actual.getId());
-		expected.setNotificationContent("Notification Content");
-		memberNotificationDAO.update(expected);
-		expected = memberNotificationDAO.selectById(actual.getId());
+		// creatingMember.setMemberRoleId(1);
+		// member.setCreatingMember(creatingMember);
+		// member.setForMember(creatingMember);
+		member.setDescription(" new video coming up for the course");
+		member.setPriority(Integer.valueOf(1000));
+		memberNotificationService.createMemberNotification(member);
 
-		assertNotNull(expected);
-		assertEquals(actual, expected);
-		assertNotSame(actual, expected);
 	}
 
 	/**
-	 * Test method for {@link com.vtg.dao.CategoryDao#delete(int)}.
-	 * 
-	 * @throws Exception
+	 * Test method for
+	 * {@link com.ziksana.service.alert.impl.AlertServiceImpl#editAlertItem(com.ziksana.domain.alerts.Alert)}
+	 * .
 	 */
 	@Test
-	public void testDelete() throws Exception {
+	public void testEditAlertItem() {
+		MemberNotification member = new MemberNotification();
+		member.setId(2);
+		member.setCategory("Course");
+		member.setDescription(" New online course coming up for the organic chemistry");
+		member.setPriority(Integer.valueOf(1001));
+		memberNotificationService.updateMemberNotification(member);
 
-		memberNotificationDAO.delete(1);
-		MemberNotification expected = memberNotificationDAO.selectById(1);
-		assertNull(expected);
+	}
+
+	/**
+	 * Test method for
+	 * {@link com.ziksana.service.alert.impl.AlertServiceImpl#deleteAlertItem(java.lang.Integer, java.lang.Integer)}
+	 * .
+	 */
+	@Test
+	public void testDeleteAlertItem() {
+
+		memberNotificationService.deleteMemberNotification(Integer.valueOf(1));
 	}
 
 }

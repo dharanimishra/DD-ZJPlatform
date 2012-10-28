@@ -23,16 +23,20 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="announcementMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.ziksana.mapper.AnnouncementMapper" />
+
+	<bean id="recommendationMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.ziksana.mapper.RecommendationMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	<bean id="announcementDaoImpl" class="com.ziksana.dao.impl.AnnouncementDaoImpl">
-		<property name="announcementMapper" ref="announcementMapper" />
+
+	<bean id="recommendationsDaoImpl"
+		class="com.ziksana.dao.recommendations.impl.RecommendationsDaoImpl">
+		<property name="recommendationMapper" ref="recommendationMapper" />
 	</bean>
 
-	<bean id="announcementService" class="com.ziksana.service.announcements.impl.AnnouncementServiceImpl">
-		<property name="announcementDaoImpl" ref="announcementDaoImpl" />
+	<bean id="recommendationsService"
+		class="com.ziksana.service.recommendations.impl.RecommendationsServiceImpl">
+		<property name="recommendationsDaoImpl" ref="recommendationsDaoImpl" />
 	</bean>
 </beans>
 

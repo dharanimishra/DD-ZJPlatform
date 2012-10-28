@@ -5,18 +5,18 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 
-import java.util.List;
+import java.util.Date;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vtg.dao.MemberRoleDao;
-import com.vtg.dao.impl.MemberRoleDaoImpl;
-import com.vtg.model.MemberRole;
+import com.ziksana.domain.todos.MemberRole;
+import com.ziksana.service.todo.MemberRoleService;
 
 /**
  * Test Case
@@ -28,52 +28,57 @@ import com.vtg.model.MemberRole;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class MemberRoleTestCase {
 
-	private static MemberRoleDao memberRoleDAO;
+	@Autowired
+	MemberRoleService memberRoleService;
 
 	@BeforeClass
 	public static void runBeforeClass() {
-		memberRoleDAO = new MemberRoleDaoImpl();
+
 	}
 
 	@AfterClass
 	public static void runAfterClass() {
-		memberRoleDAO = null;
+
 	}
 
 	/**
 	 * Test method for
-	 * {@link com.vtg.dao.CategoryDao#insert(com.vtg.model.Category)}.
+	 * {@link com.vtg.dao.CategoryMapper#insert(com.vtg.model.CategoryMapper)}.
 	 */
 	@Test
 	public void testInsert() {
 
-		MemberRole actual = new MemberRole();
-		memberRoleDAO.insert(actual);
+		MemberRole actual = new MemberRole(1, 1, new Date(), new Date(), 1, 1,
+				"thumbnailPicturePath");
+		memberRoleService.createMemberRole(actual);
 
 		assertEquals(1, actual.getId());
-		MemberRole expected = memberRoleDAO.selectById(actual.getId());
+		MemberRole expected = memberRoleService.getMemberRole(actual.getId());
 		assertEquals(actual, expected);
 		assertNotSame(actual, expected);
 
 	}
 
 	/**
-	 * Test method for {@link com.vtg.dao.CategoryDao#selectAll()}.
+	 * Test method for {@link com.vtg.dao.CategoryMapper#selectAll()}.
 	 */
 	@Test
 	public void testSelectAll() {
-		List<MemberRole> list = (List<MemberRole>) memberRoleDAO.selectAll();
-		assertNotNull(list);
-		assertEquals(1, 1);
+		// List<MemberRoleMapper> list = (List<MemberRoleMapper>) memberRoleDAO
+		// .selectAll();
+		// assertNotNull(list);
+		// assertEquals(1, 1);
 	}
 
 	/**
-	 * Test method for {@link com.vtg.dao.CategoryDao#selectById(int)}.
+	 * Test method for {@link com.vtg.dao.CategoryMapper#selectById(int)}.
 	 */
 	@Test
 	public void testSelectById() {
-		MemberRole actual = new MemberRole();
-		MemberRole expected = memberRoleDAO.selectById(actual.getId());
+		MemberRole actual = new MemberRole(1, 1, new Date(), new Date(), 1, 1,
+				"thumbnailPicturePath");
+		actual.setId(1);
+		MemberRole expected = memberRoleService.getMemberRole(actual.getId());
 
 		assertNotNull(expected);
 		assertEquals(actual, expected);
@@ -82,19 +87,20 @@ public class MemberRoleTestCase {
 
 	/**
 	 * Test method for
-	 * {@link com.vtg.dao.CategoryDao#update(com.vtg.model.Category)}.
+	 * {@link com.vtg.dao.CategoryMapper#update(com.vtg.model.CategoryMapper)}.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
 	public void testUpdate() throws Exception {
 
-		MemberRole actual = new MemberRole();
+		MemberRole actual = new MemberRole(1, 1, new Date(), new Date(), 1, 1,
+				"thumbnailPicturePath");
 
-		MemberRole expected = memberRoleDAO.selectById(actual.getId());
+		MemberRole expected = memberRoleService.getMemberRole(actual.getId());
 		expected.setActive(1);
-		memberRoleDAO.update(expected);
-		expected = memberRoleDAO.selectById(actual.getId());
+		memberRoleService.updateMemberRole(expected);
+		expected = memberRoleService.getMemberRole(actual.getId());
 
 		assertNotNull(expected);
 		assertEquals(actual, expected);
@@ -102,15 +108,15 @@ public class MemberRoleTestCase {
 	}
 
 	/**
-	 * Test method for {@link com.vtg.dao.CategoryDao#delete(int)}.
+	 * Test method for {@link com.vtg.dao.CategoryMapper#delete(int)}.
 	 * 
 	 * @throws Exception
 	 */
 	@Test
 	public void testDelete() throws Exception {
 
-		memberRoleDAO.delete(1);
-		MemberRole expected = memberRoleDAO.selectById(1);
+		memberRoleService.deleteMemberRole(1);
+		MemberRole expected = memberRoleService.getMemberRole(1);
 		assertNull(expected);
 	}
 
