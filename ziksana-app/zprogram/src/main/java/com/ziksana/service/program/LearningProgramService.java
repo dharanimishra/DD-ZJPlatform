@@ -1,10 +1,10 @@
-package com.ziksana.service.course;
+package com.ziksana.service.program;
 
 import java.util.List;
 
 import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.domain.member.Member;
-import com.ziksana.exception.course.CourseException;
+import com.ziksana.exception.program.ProgramsException;
 
 
 public interface LearningProgramService {
@@ -15,7 +15,7 @@ public interface LearningProgramService {
 	 * @return
 	 * @throws CourseException
 	 */
-	public List<LearningProgram> getLearningPrograms(Member member) throws CourseException;
+	public List<LearningProgram> getLearningPrograms(Member member) throws ProgramsException;
 
 	
 }
