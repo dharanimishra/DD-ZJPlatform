@@ -16,8 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ziksana.dao.recommendations.RecommendationsDao;
-import com.ziksana.dao.recommendations.impl.RecommendationsDaoImpl;
 import com.ziksana.domain.recommendations.Recommendation;
 import com.ziksana.service.recommendations.RecommendationsService;
 

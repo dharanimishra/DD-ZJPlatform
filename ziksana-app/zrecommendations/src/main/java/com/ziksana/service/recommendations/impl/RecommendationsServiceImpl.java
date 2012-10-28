@@ -3,7 +3,6 @@ package com.ziksana.service.recommendations.impl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ziksana.dao.recommendations.impl.RecommendationsDaoImpl;
 import com.ziksana.domain.recommendations.Recommendation;
 import com.ziksana.persistence.recommendations.RecommendationMapper;
 import com.ziksana.service.recommendations.RecommendationsService;
@@ -15,7 +14,7 @@ import com.ziksana.service.recommendations.RecommendationsService;
 public class RecommendationsServiceImpl implements RecommendationsService {
 
 	private static final Logger LOGGER = Logger
-			.getLogger(RecommendationsDaoImpl.class);
+			.getLogger(RecommendationsServiceImpl.class);
 
 	@Autowired
 	private RecommendationMapper recommendationMapper;
