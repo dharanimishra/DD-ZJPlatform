@@ -1,4 +1,4 @@
-package com.ziksana.domain.course;
+package com.ziksana.domain.institution;
 
 import java.util.NoSuchElementException;
 

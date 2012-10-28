@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseAdditionalProperty;
-import com.ziksana.domain.course.LearningProgram;
-import com.ziksana.domain.member.Member;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 
@@ -72,20 +70,6 @@ public interface CourseService {
 	public void removeCourse(Course course) throws CourseException;
 	
 	
-	/**
-	 * Retrieve list of courses according to the program
-	 * @param programName
-	 * @return
-	 *//*
-	public List<Course> getListOfCourses();
-*/	
-	/**
-	 * Gets the list of LearningPrograms which are associated to Curriculum.
-	 * @param member
-	 * @return
-	 * @throws CourseException
-	 */
-	public List<LearningProgram> getLearningPrograms(Member member) throws CourseException;
 
 }
 

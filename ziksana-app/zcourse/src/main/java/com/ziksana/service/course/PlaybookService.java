@@ -7,7 +7,7 @@ import com.ziksana.domain.course.CoursePlaybook;
 import com.ziksana.domain.course.CoursePlaybookView;
 import com.ziksana.domain.course.PlaybookComponent;
 import com.ziksana.domain.course.PlaybookType;
-import com.ziksana.domain.course.ProgramCurriculumPlaybook;
+import com.ziksana.domain.institution.ProgramCurriculumPlaybook;
 import com.ziksana.domain.member.Member;
 import com.ziksana.exception.course.CourseException;
 

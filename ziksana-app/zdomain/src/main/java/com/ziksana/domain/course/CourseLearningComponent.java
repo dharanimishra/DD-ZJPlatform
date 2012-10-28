@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.institution.CurriculumCourseCalendar;
 
 public class CourseLearningComponent extends AuditHistory{
 	

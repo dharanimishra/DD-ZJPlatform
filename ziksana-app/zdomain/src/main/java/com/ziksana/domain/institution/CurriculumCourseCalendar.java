@@ -1,13 +1,16 @@
 /**
  * 
  */
-package com.ziksana.domain.course;
+package com.ziksana.domain.institution;
 
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.CourseLearningComponent;
+import com.ziksana.domain.course.Duration;
 import com.ziksana.id.ZID;
 
 /**

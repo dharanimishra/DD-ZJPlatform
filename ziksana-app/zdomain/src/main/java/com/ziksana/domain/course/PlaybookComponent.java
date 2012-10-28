@@ -5,6 +5,8 @@ package com.ziksana.domain.course;
 
 import java.util.List;
 
+import com.ziksana.domain.institution.ProgramCurriculumPlaybook;
+
 /**
  * @author bhashasp 
  */

@@ -1,11 +1,13 @@
 /**
  * 
  */
-package com.ziksana.domain.course;
+package com.ziksana.domain.institution;
 
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.course.PlaybookDeliveryType;
+import com.ziksana.domain.course.PlaybookStatus;
 import com.ziksana.id.ZID;
 
 /**

@@ -1,18 +1,21 @@
 package com.ziksana.service.course;
 
+import java.util.List;
 
-public interface LearningProgramService {/*
+import com.ziksana.domain.institution.LearningProgram;
+import com.ziksana.domain.member.Member;
+import com.ziksana.exception.course.CourseException;
+
+
+public interface LearningProgramService {
 	
-	public AcademicProgram getAcademicProgramDetails();
+	/**
+	 * Gets the list of LearningPrograms which are associated to Curriculum.
+	 * @param member
+	 * @return
+	 * @throws CourseException
+	 */
+	public List<LearningProgram> getLearningPrograms(Member member) throws CourseException;
 
-	public List<AcademicProgram> getListOfAcademicPrograms();
 	
-	public AcademicProgramDTO addAcademicProgram();
-
-	public AcademicProgramDTO updateAcademicProgram();
-
-
-	public AcademicProgramDTO removeAcademicProgram();
-
-
-*/}
+}

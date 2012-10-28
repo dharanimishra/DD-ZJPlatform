@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ziksana.domain.course;
+package com.ziksana.domain.institution;
 
 /**
  * @author bhashasp

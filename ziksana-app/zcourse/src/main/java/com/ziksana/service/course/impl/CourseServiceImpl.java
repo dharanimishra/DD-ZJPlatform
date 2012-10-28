@@ -18,8 +18,6 @@ import com.ziksana.domain.course.CourseTagcloud;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentDetails;
 import com.ziksana.domain.course.LearningComponentNest;
-import com.ziksana.domain.course.LearningProgram;
-import com.ziksana.domain.member.Member;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CourseContentSecurityMapper;
@@ -376,9 +374,4 @@ public class CourseServiceImpl implements CourseService {
 
 	}
 
-	@Override
-	public List<LearningProgram> getLearningPrograms(Member member)
-			throws CourseException {
-		return null;
-	}
 }
