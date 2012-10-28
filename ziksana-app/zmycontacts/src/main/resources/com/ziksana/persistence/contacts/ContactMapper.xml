@@ -9,33 +9,46 @@
 		select *
 		from
 		memmemberrelationship mrel
-		Join memmemberrole mr on mrel.RelatingMemberRoleId=mr.MemberRoleId
-		join memmember m on m.MemberId=mr.MemberId
+		Join memmemberrole
+		mr on mrel.RelatingMemberRoleId=mr.MemberRoleId
+		join memmember m on
+		m.MemberId=mr.MemberId
 		where
 		mrel.SourceMemberRoleId=#{memberRoleId}
 
 
 	</select>
 
+	<select id="getContacts" resultMap="contactResultMap"
+		parameterType="map">
+
+		select *
+		from
+		memmemberrelationship mrel
+		Join memmemberrole mr on mrel.RelatingMemberRoleId=mr.MemberRoleId
+		join memmember m on m.MemberId=mr.MemberId
+		where
+		mrel.SourceMemberRoleId=#{memberRoleId} and mrel.RelationshioType=#{relationshipType}
+
+	</select>
 	<resultMap id="contactResultMap" type="com.ziksana.domain.member.MemberPersona">
 
 		<result property="memberRoleId" column="RelatingMemberRoleId" />
 		<result property="thumbnailPicturePath" column="ThumbnailPicturePath" />
-		
-		
+
+
 		<association property="member" javaType="com.ziksana.domain.member.Member">
-		   <result property="memberId" column="MemberId" />
-		   <result property="firstName" column="FirstName" />
-		   <result property="lastName" column="LastName" />
-		   <result property="middleName" column="MiddleName" />
-		   <result property="picturePath" column="PicturePath"/>
-		   
+			<result property="memberId" column="MemberId" />
+			<result property="firstName" column="FirstName" />
+			<result property="lastName" column="LastName" />
+			<result property="middleName" column="MiddleName" />
+			<result property="picturePath" column="PicturePath" />
+
 		</association>
-		
-		
-		
+
 
 	</resultMap>
+
 
 
 

@@ -25,9 +25,26 @@ public class ContactServiceImpl implements ContactService {
 	
 	
 	@Override
-	public List<MemberPersona> getContacts(RelationshipType relationshipType) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MemberPersona> getContactsByCircle(RelationshipType relationshipType) {
+		
+		
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		
+		if (relationshipType.equals(RelationshipType.CIRCLEFIRST))
+		{
+			return contactMapper.getContacts(memberRoleId, Integer.valueOf(1000));			
+		}
+		else if(relationshipType.equals( RelationshipType.CIRCLESECOND))
+		{
+			return contactMapper.getContacts(memberRoleId, Integer.valueOf(1001));
+		}
+		else
+		{
+			return contactMapper.getContacts(memberRoleId, Integer.valueOf(1002));
+		}
+		
+		
 	}
 
 }

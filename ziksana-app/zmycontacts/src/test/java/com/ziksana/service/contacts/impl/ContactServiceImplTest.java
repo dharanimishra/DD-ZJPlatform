@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ziksana.domain.contacts.RelationshipType;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
@@ -54,16 +55,26 @@ public class ContactServiceImplTest {
 
 	@Test
 	public void testGetAllContacts() {
-           List<MemberPersona>  memberPersonas = contactService.getAllContacts();
-           Assert.assertTrue(memberPersonas.size() == 3);
-           
-           
-           
+		List<MemberPersona> memberPersonas = contactService.getAllContacts();
+		Assert.assertTrue(memberPersonas.size() == 3);
+
 	}
 
 	@Test
-	public void testGetContacts() {
-		fail("Not yet implemented");
+	public void testGetContactsByCircle() {
+		List<MemberPersona> memberPersonas = contactService
+				.getContactsByCircle(RelationshipType.CIRCLEFIRST);
+		
+		Assert.assertTrue(memberPersonas.size()==1);
+		
+		memberPersonas = contactService.getContactsByCircle(RelationshipType.CIRCLESECOND );
+		Assert.assertTrue(memberPersonas.size()==1);
+		
+		memberPersonas = contactService.getContactsByCircle(RelationshipType.CIRCLEOTHERS);
+		Assert.assertTrue(memberPersonas.size()==1);
+		
+		
+
 	}
 
 }

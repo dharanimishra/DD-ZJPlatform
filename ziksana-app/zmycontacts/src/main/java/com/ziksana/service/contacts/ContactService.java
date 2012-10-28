@@ -9,7 +9,7 @@ public interface ContactService {
 	
 	public List<MemberPersona> getAllContacts();
 	
-	public List<MemberPersona> getContacts(RelationshipType relationshipType);
+	public List<MemberPersona> getContactsByCircle(RelationshipType relationshipType);
 	
 	
 }
