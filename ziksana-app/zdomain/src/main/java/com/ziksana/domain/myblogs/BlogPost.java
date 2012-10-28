@@ -6,11 +6,6 @@ package com.ziksana.domain.myblogs;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
-import com.ziksana.domain.common.Choice;
-import com.ziksana.domain.common.Question;
-import com.ziksana.domain.common.Question.Builder;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
