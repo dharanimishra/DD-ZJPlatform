@@ -8,8 +8,8 @@ public class LearnerOnline implements Comparable<LearnerOnline>{
 
 	
 	private MemberPersona memberPersona;
-	private String program;
-	private String course;
+	private String learningProgram;
+	private String courseName;
 	private String mood;
 	
 	
@@ -19,8 +19,8 @@ public class LearnerOnline implements Comparable<LearnerOnline>{
 			String mood) {
 		super();
 		this.memberPersona = memberPersona;
-		this.program = program;
-		this.course = course;
+		this.learningProgram = program;
+		this.courseName = course;
 		this.mood = mood;
 	}
 	
@@ -71,7 +71,7 @@ public class LearnerOnline implements Comparable<LearnerOnline>{
 	 * @return the program
 	 */
 	public String getProgram() {
-		return program;
+		return learningProgram;
 	}
 
 
@@ -96,7 +96,7 @@ public class LearnerOnline implements Comparable<LearnerOnline>{
 	 * @return the course
 	 */
 	public String getCourse() {
-		return course;
+		return courseName;
 	}
 
 
