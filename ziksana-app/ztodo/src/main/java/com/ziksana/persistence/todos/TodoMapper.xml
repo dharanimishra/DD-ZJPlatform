@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.todos.TodoMapper">
+
+	<select id="findTodo" resultMap="todoResultMap" parameterType="int">
+		SELECT * FROM memMemberToDo WHERE ID = #{id}
+	</select>
+
+	<resultMap id="todoResultMap" type="com.ziksana.domain.todos.Todo">
+		<result property="id" column="ID" />
+		<result property="category" column="category" />
+		<result property="description" column="description" />
+		<result property="complete" column="complete" />
+		<result property="memberRoleId" column="memberRoleId" />
+		<result property="creationDate" column="creationDate" />
+	</resultMap>
+
+
+	<insert id="createTodo" parameterType="com.ziksana.domain.todos.Todo"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+		memMemberToDo(ID,category,description,complete,memberRoleId,createDate)
+		VALUES
+		(#{id},#{category},#{description},#{complete},#{memberRoleId},#{creationDate})
+	</insert>
+
+
+	<update id="updateTodo" parameterType="com.ziksana.domain.todos.Todo">
+		UPDATE memMemberToDo SET
+		creationDate= #{creationDate},category=category#{category} WHERE id =
+		#{id}
+	</update>
+
+	<delete id="deleteTodo" parameterType="String">
+		DELETE FROM memMemberToDo
+		WHERE ID = #{id}
+	</delete>
+</mapper>

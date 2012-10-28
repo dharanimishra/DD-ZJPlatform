@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.todos.MemberRoleMapper">
+
+	<select id="getMemberRole" resultMap="memberRoleResultMap"
+		parameterType="int">
+		SELECT * FROM MEMMEMBERROLE WHERE ID = #{id}
+	</select>
+
+	<resultMap id="memberRoleResultMap" type="com.ziksana.domain.todos.MemberRole">
+		<result property="id" column="ID" />
+		<result property="roleType" column="RoleType" />
+		<result property="roleStartDate" column="RoleStartDate" />
+		<result property="roleEndDate" column="RoleEndDate" />
+		<result property="active" column="Active" />
+		<result property="doNotMarketIndicator" column="DoNotMarketIndicator" />
+		<result property="thumbnailPicturePath" column="ThumbnailPicturePath" />
+	</resultMap>
+
+
+	<insert id="createMemberRole" parameterType="com.ziksana.domain.todos.MemberRole"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO MEMMEMBERROLE
+		(ID,RoleType,RoleStartDate,RoleEndDate,Active,DoNotMarketIndicator,ThumbnailPicturePath)
+		VALUES (#{id},#{roleType}, #{roleStartDate}, #{roleEndDate},
+		#{active},
+		#{doNotMarketIndicator}, #{thumbnailPicturePath})
+	</insert>
+
+
+	<update id="updateMemberRole" parameterType="com.ziksana.domain.todos.MemberRole">
+		UPDATE MEMMEMBERROLE
+		SET RoleType= #{roleType},RoleStartDate= #{roleStartDate},RoleEnd
+		Date= #{roleEndDate},Active= #{active},DoNotMarketIndicator=
+		#{doNotMarketIndicator},ThumbnailPicturePath=
+		#{thumbnailPicturePath}
+		WHERE ID = #{id}";
+	</update>
+
+	<delete id="deleteMemberRole" parameterType="int">
+		DELETE FROM
+		MEMMEMBERROLE ID = #{id}
+	</delete>
+</mapper>

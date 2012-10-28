@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.todos.MemberNotificationMapper">
+
+	<select id="geMemberNotification" resultMap="memberNotificationResultMap" parameterType="int">
+
+		select
+		*
+		from
+		memmembernotification n
+		join utllookup l ON
+		n.NotificationType=l.LookupId
+		join utllookupvalue v ON
+		l.LookupId=v.LookupId
+		where l.CategoryName='memmembernotification' and
+		v.LookupValue='Alert' and
+		n.ForMemberRoleId=#{userMemberRoleId}
+
+
+	</select>
+
+	<resultMap id="memberNotificationResultMap" type="com.ziksana.domain.todos.MemberNotification">
+
+		<result property="id" column="MemberNotificationId" />
+		<result property="description" column="NotificationContent" />
+		<result property="creationDate" column="CreationDate" />
+		<result property="category" column="Category" />
+		<result property="priority" column="Priority" />
+
+	</resultMap>
+
+
+	<insert id="createMemberNotification" parameterType="com.ziksana.domain.todos.MemberNotification"
+		useGeneratedKeys="true" keyProperty="MemberNotificationId">
+
+		insert into
+		memmembernotification(Category,ActivationDate,CreationDate,NotificationType,NotificationContent,Priority,ForMemberRoleId,CreatingMemberRoleId)
+		values(#{category}, #{activationDate}, #{creationDate}, 1000,
+		#{description}, #{priority}, #{forMember.memberRoleId},
+		#{creatingMember.memberRoleId} )
+
+	</insert>
+
+
+	<update id="updateMemberNotification" parameterType="com.ziksana.domain.todos.MemberNotification">
+		update
+		memmembernotification set
+		category = #{category},
+		NotificationContent=#{description},
+		Priority = #{priority}
+		where
+		MemberNotificationId = #{id.storageID}
+	</update>
+
+	<delete id="deleteMemberNotification" parameterType="int">
+		delete from memmembernotification where MemberNotificationId = #{memberNotificationId}
+	</delete>
+</mapper>
