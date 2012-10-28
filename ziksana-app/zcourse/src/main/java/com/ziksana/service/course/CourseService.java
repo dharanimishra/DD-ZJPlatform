@@ -39,12 +39,12 @@ public interface CourseService {
 	/**Retrieve the base course information.
 	 * @return
 	 */
-	public Course getBaseCourseDetails(Integer courseId) throws CourseException;
+	public Course getBaseCourseDetails(ZID courseId) throws CourseException;
 	
 	/**Retrieve the full course information.
 	 * @return
 	 */
-	public Course getCourseDetails(Integer courseId) throws CourseException;
+	public Course getCourseDetails(ZID courseId) throws CourseException;
 
 
 	/**
@@ -52,7 +52,7 @@ public interface CourseService {
 	 * @param member
 	 * @return
 	 */
-	public List<Course> getListOfCourses(Integer memberPersonaId) throws CourseException;
+	public List<Course> getListOfCourses(ZID memberPersonaId) throws CourseException;
 	
 	
 	/**

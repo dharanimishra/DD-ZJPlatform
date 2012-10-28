@@ -65,7 +65,7 @@ public class CourseServiceImpl implements CourseService {
 
 		contSecurity = course.getCourseContSecurity();
 
-		if (course.getCourseId() != null && course!=null) {
+		if (course.getCourseId() != null) {
 			// Update Operation
 			
 			logger.debug("Course Id : "+course.getCourseId());
@@ -102,9 +102,6 @@ public class CourseServiceImpl implements CourseService {
 
 		} else {
 			// Insert/Save Operation
-			if(course == null){
-				throw new CourseException("Course cannot be null");
-			}
 			
 			logger.debug("Before saving the Course ....");
 			savedCourse = courseMapper.saveCourse(course);
@@ -252,7 +249,7 @@ public class CourseServiceImpl implements CourseService {
 
 	
 	@Override
-	public Course getBaseCourseDetails(Integer courseId) throws CourseException {
+	public Course getBaseCourseDetails(ZID courseId) throws CourseException {
 		
 		Course course = null;
 	
@@ -262,7 +259,7 @@ public class CourseServiceImpl implements CourseService {
 		
 		logger.debug("Before retrieving the base course details ");
 		
-		course = courseMapper.getBaseCourseDetails(courseId);
+		course = courseMapper.getBaseCourseDetails(new Integer(courseId.getStorageID()));
 		
 		if(course!=null){
 			
@@ -274,7 +271,7 @@ public class CourseServiceImpl implements CourseService {
 
 	
 	@Override
-	public List<Course> getListOfCourses(Integer memberPersonaId) {
+	public List<Course> getListOfCourses(ZID memberPersonaId) {
 
 		List<Course> 				courseList 					= null;
 		List<Course> 				newCourseList 				= null;
@@ -289,7 +286,7 @@ public class CourseServiceImpl implements CourseService {
 		courseList 		= new		ArrayList<Course>();
 		newCourseList 	= new 		ArrayList<Course>();
 		
-		courseList = courseMapper.getListOfCourses(memberPersonaId);
+		courseList = courseMapper.getListOfCourses(new Integer(memberPersonaId.getStorageID()));
 		
 		if(courseList!=null && courseList.size()>0){
 			
@@ -357,14 +354,14 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Course getCourseDetails(Integer courseId) throws CourseException {
+	public Course getCourseDetails(ZID courseId) throws CourseException {
 		
 		Course course = null;
 		if(courseId == null){
 			throw new CourseException("Course Id cannot be null");
 		}
 		
-		course = courseMapper.getBaseCourseDetails(courseId);
+		course = courseMapper.getBaseCourseDetails(new Integer(courseId.getStorageID()));
 		
 		return course;
 	}
