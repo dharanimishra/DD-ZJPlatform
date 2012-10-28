@@ -8,7 +8,7 @@
 
   <context id="MySqlTables" targetRuntime="MyBatis3">
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://localhost:3306/todoservice"
+        connectionURL="jdbc:mysql://localhost:3306/announcement"
         userId="root"
         password="root">
     </jdbcConnection>

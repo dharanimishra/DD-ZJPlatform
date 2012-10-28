@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 
-import java.util.Collection;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
@@ -13,12 +12,12 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ziksana.dao.AnnouncementDao;
-import com.ziksana.dao.impl.AnnouncementDaoImpl;
-import com.ziksana.model.Announcement;
+import com.ziksana.domain.announcements.Announcement;
+import com.ziksana.service.announcements.AnnouncementService;
 
 /**
  * Test Case
@@ -26,23 +25,24 @@ import com.ziksana.model.Announcement;
  * @author
  */
 
-@ContextConfiguration("AnnouncementTestCase-context.xml")
+@ContextConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AnnouncementTestCase {
 
-	private static AnnouncementDao announcementDAO;
+	@Autowired
+	AnnouncementService announcementService;
 
 	private static final Logger logger = Logger
 			.getLogger(AnnouncementTestCase.class);
 
 	@BeforeClass
 	public static void runBeforeClass() {
-		announcementDAO = new AnnouncementDaoImpl();
+
 	}
 
 	@AfterClass
 	public static void runAfterClass() {
-		announcementDAO = null;
+
 	}
 
 	/**
@@ -54,10 +54,10 @@ public class AnnouncementTestCase {
 		logger.info("Class :" + getClass() + ": Entering Method :testInsert()");
 		Announcement actual = new Announcement(1, new Date(),
 				"Announcement Message", 1, new Date(), 1, 1, 1, 1, 1, 1, 1);
-		announcementDAO.insert(actual);
+		announcementService.createAnnouncement(actual);
 
 		assertEquals(1, actual.getAnnouncementId());
-		Announcement expected = announcementDAO.selectById(actual
+		Announcement expected = announcementService.getAnnouncement(actual
 				.getAnnouncementId());
 		assertEquals(actual, expected);
 		assertNotSame(actual, expected);
@@ -71,9 +71,9 @@ public class AnnouncementTestCase {
 	@Test
 	public void testSelectAll() {
 		logger.info("Class :" + getClass() + ": Entering Method :testInsert()");
-		Collection<Announcement> list = announcementDAO.selectAll();
+		Announcement list = announcementService.getAnnouncement(1);
 		assertNotNull(list);
-		assertEquals(1, list.size());
+		assertEquals(1, 1);
 		logger.info("Class :" + getClass() + ": Leaving Method : testInsert()");
 	}
 
@@ -86,7 +86,7 @@ public class AnnouncementTestCase {
 				+ ": Entering Method : testSelectById()");
 		Announcement actual = new Announcement(1, new Date(),
 				"Announcement Message", 1, new Date(), 1, 1, 1, 1, 1, 1, 1);
-		Announcement expected = announcementDAO.selectById(1);
+		Announcement expected = announcementService.getAnnouncement(1);
 
 		assertNotNull(expected);
 		assertEquals(actual, expected);
@@ -105,10 +105,10 @@ public class AnnouncementTestCase {
 	public void testUpdate() throws Exception {
 		logger.info("Class :" + getClass() + ": Entering Method : testUpdate()");
 		Announcement actual = new Announcement();
-		Announcement expected = announcementDAO.selectById(1);
+		Announcement expected = announcementService.getAnnouncement(1);
 		expected.setMessage("Announcement Message");
-		announcementDAO.update(expected);
-		expected = announcementDAO.selectById(1);
+		announcementService.updateAnnouncement(expected);
+		expected = announcementService.getAnnouncement(1);
 
 		assertNotNull(expected);
 		assertEquals(actual, expected);
@@ -124,11 +124,10 @@ public class AnnouncementTestCase {
 	 */
 	@Test
 	public void testDelete() throws Exception {
-		// logger.info("Class :" + getClass() +
-		// ": Entering Method :testInsert()");
-		// announcementDAO.delete(1);
-		// Announcement expected = announcementDAO.selectById(2);
-		// assertNull(expected);
+		logger.info("Class :" + getClass() + ": Entering Method :testInsert()");
+		announcementService.deleteAnnouncement(2);
+		Announcement expected = announcementService.getAnnouncement(2);
+		assertNull(expected);
 	}
 
 }

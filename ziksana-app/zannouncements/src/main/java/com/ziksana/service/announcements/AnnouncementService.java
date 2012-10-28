@@ -4,7 +4,7 @@
 package com.ziksana.service.announcements;
 
 
-import com.ziksana.model.Announcement;
+import com.ziksana.domain.announcements.Announcement;
 
 /**
  * @author

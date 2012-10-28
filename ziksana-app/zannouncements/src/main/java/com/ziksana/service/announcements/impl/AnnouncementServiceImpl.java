@@ -6,7 +6,7 @@ package com.ziksana.service.announcements.impl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ziksana.model.Announcement;
+import com.ziksana.domain.announcements.Announcement;
 import com.ziksana.persistence.announcements.AnnouncementMapper;
 import com.ziksana.service.announcements.AnnouncementService;
 

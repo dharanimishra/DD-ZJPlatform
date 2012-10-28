@@ -2,7 +2,7 @@ Table Name
 
 
 CREATE TABLE `corannouncement` (
-`AnouncementId` INT(11) NOT NULL,
+`AnnouncementId` INT(11) NOT NULL,
 `AnnouncementDate` DATETIME NULL DEFAULT NULL,
 `Message` VARCHAR(2400) NULL DEFAULT NULL,
 `MessageVisibility` INT(11) NULL DEFAULT NULL,

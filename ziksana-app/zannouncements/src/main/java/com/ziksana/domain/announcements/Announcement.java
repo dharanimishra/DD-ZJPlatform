@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ziksana.model;
+package com.ziksana.domain.announcements;
 
 import java.util.Date;
 
