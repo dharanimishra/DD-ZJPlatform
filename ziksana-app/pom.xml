@@ -24,6 +24,7 @@
 	    <module>zknowmebetter</module>
 	    <module>zmycontacts</module>
 	    <module>zprogram</module>
+	    <module>zclass</module>
 	</modules>
 
 	<properties>
