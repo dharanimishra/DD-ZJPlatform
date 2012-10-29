@@ -82,13 +82,13 @@ public interface AssignmentTestMapper {
 	@Results(value={
 			@Result(property="testQuestionId", column="testquestionid"),
 			@Result(property="questionBankId", column="questionbankid"),
-			@Result(property="questionBank", column="questionbankid", javaType=QuestionBank.class,one=@One(select="selectQuestionBank"))
+			@Result(property="questionBank", column="testQuestionId", javaType=QuestionBank.class,one=@One(select="selectQuestionBank"))
 	})
 	List<TestQuestion> getTestQuestions(@Param("testId") Integer testId);
 	
 	
 	@Select({"select questionbankid, questioncontent as name, questiontype, instruction, memberid  from  asmquestionbank  where ",
-			"questionbankid = #{questionBankId,jdbcType=INTEGER}"})
+			"testQuestionId = #{testQuestionId,jdbcType=INTEGER}"})
 	@Results(value = {
 			@Result(property="questionBankId", column="questionbankid"),
 			@Result(property="instruction", column="instruction"),
@@ -96,7 +96,7 @@ public interface AssignmentTestMapper {
 			@Result(property="questionType", column="questiontype"),
 			@Result(property="name", column="questioncontent"),
 	})
-	QuestionBank selectQuestionBank(Integer questionbankid);
+	QuestionBank selectQuestionBank(Integer testQuestionId);
 
 	/**
 	 * Updates the testquestion's delete indicator to make a soft delete.
