@@ -6,19 +6,14 @@ import java.util.NoSuchElementException;
 public enum ContentFormat {
 
 	// TODO: retrieve the ids from the static data service
-	MSWORD97    	(1, "MSWORD97"),
-	MSWORD2010  	(2, "MSWORD2010"),
-	MSPPT2003   	(3, "MSPPT2003"),
-	MSPPT2007   	(4, "MSPPT2007"),
-	MSPPT2010   	(5, "MSPPT2010"),
-	MP4H264MP3  	(6, "MP4H264MP3"),
-	JPG         	(7, "JPG"),
-	PNG         	(8, "PNG"),
-	PDF				(9,"PDF"),
-	ROYALTY			(10,"Royalty"),
-	ROYALTY_FREE	(11,"Royalty free"),
-	EXCEL			(12,"Spread sheet");
-	
+	PPT    			(1, "Powerpoint"),
+	WORD  			(2, "MS Word"),
+	SPREADSHEET   	(3, "Excel Spreadsheet"),
+	JPG         	(4, "JPG"),
+	PNG         	(5, "PNG"),
+	PDF				(6,"PDF"),
+	ROYALTY			(7,"Royalty"),
+	ROYALTY_FREE	(8,"Royalty free");
 
 	private final int id;
 	

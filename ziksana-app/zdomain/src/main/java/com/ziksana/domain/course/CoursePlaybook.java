@@ -13,9 +13,16 @@ import com.ziksana.id.ZID;
  */
 public class CoursePlaybook extends AuditHistory {
 	
+	
+	//Default playbook
+	public CoursePlaybook(){
+		this.playbookType = PlaybookType.PREVIEW;
+	}
+	
+	//when create a new playbook
 	public CoursePlaybook(CoursePlaybookStatus coursePBStatus, PlaybookType playbookType) {
 		this.coursePBStatus = coursePBStatus;
-		this.playbookType = playbookType;
+		this.playbookType = PlaybookType.REGULAR;
 	}
 
 	private ZID 					coursePlaybookId;
