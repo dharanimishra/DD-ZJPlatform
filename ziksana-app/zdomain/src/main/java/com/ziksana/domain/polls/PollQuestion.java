@@ -143,7 +143,7 @@ public class PollQuestion implements Comparable<PollQuestion> {
 			
 			PollQuestion question = (PollQuestion) obj;
 			if (getPoll().equals(question.getPoll()) && 
-			    getID() == question.getID()) {
+			    getID().intValue() == question.getID().intValue() ) {
 				return true;
 			}
 			

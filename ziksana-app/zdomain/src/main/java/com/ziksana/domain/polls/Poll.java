@@ -162,7 +162,7 @@ public class Poll implements Comparable<Poll> {
 		if (obj.getClass() != this.getClass())  { return false; }
 		
 		Poll poll = (Poll) obj;
-		if (getID() == poll.getID()) {
+		if (getID().intValue() == poll.getID().intValue() ) {
 			return true;
 		}
 		
