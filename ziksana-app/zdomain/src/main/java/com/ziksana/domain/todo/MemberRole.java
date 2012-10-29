@@ -3,6 +3,12 @@ package com.ziksana.domain.todo;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * MemberRole POJO
+ * 
+ * @author ratneshkumar
+ */
+
 public class MemberRole implements Serializable {
 
 	private static final long serialVersionUID = 6328214692876418878L;

@@ -7,8 +7,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author
+ * TodoList POJO
  * 
+ * @author ratneshkumar
  */
 public class TodoList implements Serializable {
 
