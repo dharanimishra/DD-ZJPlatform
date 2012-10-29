@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ziksana.domain.classtalk.LearnerOnline;
+import com.ziksana.domain.contacts.RelationshipType;
 import com.ziksana.domain.course.Course;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.StringZID;
@@ -24,17 +25,13 @@ import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.classtalk.ClassTalkService;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class ClassTalkServiceImplTest {
-    
-	
+
 	@Autowired
 	private ClassTalkService classTalkService;
 
-	
-	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -59,16 +56,22 @@ public class ClassTalkServiceImplTest {
 
 	@Test
 	public void testGetAllOnlineLearners() {
-		Course course = new Course("testcourse","testdesc",null,null,null);
+		Course course = new Course("testcourse", "testdesc", null, null, null);
 		course.setCourseId(new IntegerZID(1));
-		List<LearnerOnline> learners = classTalkService.getAllOnlineLearners(course);
+		List<LearnerOnline> learners = classTalkService
+				.getAllOnlineLearners(course);
 		Assert.assertTrue(learners.size() == 1);
-		
+
 	}
 
 	@Test
 	public void testGetOnlineLearnersByCircle() {
-		fail("Not yet implemented");
+		Course course = new Course("testcourse", "testdesc", null, null, null);
+		course.setCourseId(new IntegerZID(1));
+		List<LearnerOnline> learners = classTalkService
+				.getOnlineLearnersByCircle(course, RelationshipType.CIRCLEFIRST);
+		Assert.assertTrue(learners.size() == 1);
+
 	}
 
 }

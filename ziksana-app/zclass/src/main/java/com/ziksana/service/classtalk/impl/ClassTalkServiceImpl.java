@@ -31,8 +31,27 @@ public class ClassTalkServiceImpl implements ClassTalkService {
 	@Override
 	public List<LearnerOnline> getOnlineLearnersByCircle(Course course,
 			RelationshipType relationshipType) {
-		// TODO Auto-generated method stub
-		return null;
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		
+		
+		if (relationshipType.equals(RelationshipType.CIRCLEFIRST))
+		{
+			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId().getStorageID()), memberRoleId, Integer.valueOf(1000));			
+		}
+		else if(relationshipType.equals( RelationshipType.CIRCLESECOND))
+		{
+			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId().getStorageID()), memberRoleId, Integer.valueOf(1001)); 	
+		}
+		else
+		{
+			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId().getStorageID()), memberRoleId, Integer.valueOf(1002));
+		}
+		
+		
+		
+		
+		
 	}
 
 }
