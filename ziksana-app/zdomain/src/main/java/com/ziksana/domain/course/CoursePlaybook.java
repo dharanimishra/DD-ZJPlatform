@@ -1,10 +1,6 @@
-/**
- * 
- */
 package com.ziksana.domain.course;
 
 import java.util.Date;
-
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.id.ZID;
 
@@ -31,7 +27,7 @@ public class CoursePlaybook extends AuditHistory {
 	private CoursePlaybookStatus 	coursePBStatus 	= null;
 	private PlaybookType			playbookType 	= null;
 	private Course					course			= null;
-	
+	private CoursePlaybookView		playbookView	= null;
 	
 	/**
 	 * @return the coursePlaybookId
@@ -106,6 +102,20 @@ public class CoursePlaybook extends AuditHistory {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+	/**
+	 * @return the playbookView
+	 */
+	public CoursePlaybookView getPlaybookView() {
+		return playbookView;
+	}
+
+	/**
+	 * @param playbookView the playbookView to set
+	 */
+	public void setPlaybookView(CoursePlaybookView playbookView) {
+		this.playbookView = playbookView;
+	}
+
 	@Override
 	public String toString() {
 		return "CoursePlaybook [coursePBStatus=" + coursePBStatus

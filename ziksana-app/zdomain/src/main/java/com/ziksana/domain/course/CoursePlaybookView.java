@@ -17,10 +17,10 @@ public class CoursePlaybookView extends AuditHistory {
 			String brochureContentPath) {
 		this.name = name;
 		this.deliveryType = deliveryType;
-		this.layoutMarkupPath = layoutMarkupPath;
-		this.contentMarkupPath = contentMarkupPath;
+		this.layoutPath = layoutMarkupPath;
+		this.contentPath = contentMarkupPath;
 		this.coursePlaybookStatus = coursePlaybookStatus;
-		this.brochureContentPath = brochureContentPath;
+		this.brochurePath = brochureContentPath;
 	}
 
 
@@ -28,10 +28,10 @@ public class CoursePlaybookView extends AuditHistory {
 	  private String 					name 					= null;
 	  private String					description				= null;
 	  private PlaybookDeliveryType 		deliveryType 			= null; 
-	  private String 					layoutMarkupPath 		= null; 
-	  private String 					contentMarkupPath  		= null;
+	  private String 					layoutPath 				= null; 
+	  private String 					contentPath  			= null;
 	  private CoursePlaybookStatus 		coursePlaybookStatus 	= null; 
-	  private String 					brochureContentPath 	= null; 
+	  private String 					brochurePath 			= null; 
 	  private RecipientStudentModel 	recStudentModel 		= null;
 	  private CoursePlaybook 			coursePlaybook 			= null; 
 	  private LearningComponent 		learningComponent 		= null;
@@ -76,25 +76,25 @@ public class CoursePlaybookView extends AuditHistory {
 	 * @return the layoutMarkupPath
 	 */
 	public String getLayoutMarkupPath() {
-		return layoutMarkupPath;
+		return layoutPath;
 	}
 	/**
 	 * @param layoutMarkupPath the layoutMarkupPath to set
 	 */
 	public void setLayoutMarkupPath(String layoutMarkupPath) {
-		this.layoutMarkupPath = layoutMarkupPath;
+		this.layoutPath = layoutMarkupPath;
 	}
 	/**
 	 * @return the contentMarkupPath
 	 */
 	public String getContentMarkupPath() {
-		return contentMarkupPath;
+		return contentPath;
 	}
 	/**
 	 * @param contentMarkupPath the contentMarkupPath to set
 	 */
 	public void setContentMarkupPath(String contentMarkupPath) {
-		this.contentMarkupPath = contentMarkupPath;
+		this.contentPath = contentMarkupPath;
 	}
 	/**
 	 * @return the coursePlaybookStatus
@@ -112,13 +112,13 @@ public class CoursePlaybookView extends AuditHistory {
 	 * @return the brochureContentPath
 	 */
 	public String getBrochureContentPath() {
-		return brochureContentPath;
+		return brochurePath;
 	}
 	/**
 	 * @param brochureContentPath the brochureContentPath to set
 	 */
 	public void setBrochureContentPath(String brochureContentPath) {
-		this.brochureContentPath = brochureContentPath;
+		this.brochurePath = brochureContentPath;
 	}
 	/**
 	 * @return the recStudentModel
@@ -160,10 +160,10 @@ public class CoursePlaybookView extends AuditHistory {
 
 	public String toString() {
 		return "CoursePlaybookView [name=" + name + ", deliveryType="
-				+ deliveryType + ", layoutMarkupPath=" + layoutMarkupPath
-				+ ", contentMarkupPath=" + contentMarkupPath
+				+ deliveryType + ", layoutMarkupPath=" + layoutPath
+				+ ", contentMarkupPath=" + contentPath
 				+ ", coursePlaybookStatus=" + coursePlaybookStatus
-				+ ", brochureContentPath=" + brochureContentPath + "]";
+				+ ", brochureContentPath=" + brochurePath + "]";
 	}
 	/**
 	 * @return the description

@@ -28,7 +28,7 @@ public class ProgramCurriculumPlaybook extends AuditHistory {
 		this.brochureContentPath = brochureContentPath;
 	}
 
-	private ZID 					progCurriculumPlaybookId; 
+	  private ZID 					progCurriculumPlaybookId; 
 	  private Date 					brochureDate 		= null; 
 	  private Boolean 				active 				= null;  
 	  private PlaybookDeliveryType 	deliveryType 		= null; 

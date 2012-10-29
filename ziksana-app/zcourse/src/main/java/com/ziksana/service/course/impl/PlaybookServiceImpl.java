@@ -1,78 +1,162 @@
 package com.ziksana.service.course.impl;
 
+import java.util.List;
 import java.util.Map;
-import com.ziksana.domain.course.Course;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.ziksana.domain.course.CoursePlaybook;
 import com.ziksana.domain.course.CoursePlaybookView;
 import com.ziksana.domain.course.PlaybookComponent;
 import com.ziksana.domain.course.PlaybookType;
-import com.ziksana.domain.institution.ProgramCurriculumPlaybook;
-import com.ziksana.domain.member.Member;
 import com.ziksana.exception.course.CourseException;
+import com.ziksana.id.ZID;
+import com.ziksana.persistence.course.CoursePlaybookMapper;
 import com.ziksana.service.course.PlaybookService;
 
+/**
+ * @author bhashasp
+ */
 public class PlaybookServiceImpl implements PlaybookService {
+	
+	private static Logger logger = Logger.getLogger(PlaybookServiceImpl.class);
+	
+	@Autowired
+	public CoursePlaybookMapper coursePlaybookMapper;
 
 	@Override
-	public CoursePlaybook getDefaultCoursePlaybook(Member member)
+	public CoursePlaybook getCoursePlaybook(CoursePlaybook playbook)
 			throws CourseException {
-		 
-		return null;
-	}
-
-	@Override
-	public ProgramCurriculumPlaybook getDefaultLearningLProgramPlaybook(
-			Member member) throws CourseException {
-		 
-		return null;
-	}
-
-	@Override
-	public Map<PlaybookType, PlaybookComponent> getPlaybookList(Member member)
-			throws CourseException {
-		 
-		return null;
-	}
-
-	@Override
-	public CoursePlaybook createNewPlaybook(Member member, Course course,
-			CoursePlaybook coursePB, CoursePlaybookView coursePBView)
-			throws CourseException {
-		 
-		return null;
-	}
-
-	@Override
-	public void updateCoursePlaybook(CoursePlaybook coursePB,
-			CoursePlaybookView coursePBView) throws CourseException {
-		 
+		Boolean 				isDelete 		= false;
+		CoursePlaybook 			coursePB 		= null;
 		
+		if(playbook.getCoursePlaybookId() == null){
+			throw new CourseException("Course Playbook ID cannot be null");
+		}
+		
+		coursePB = coursePlaybookMapper.getDefaulPlaybookDetails(isDelete, new Integer(playbook.getCoursePlaybookId().getDisplayID()));
+		
+		if(coursePB != null){
+			logger.debug(" Course Playbook details : "+coursePB.toString());
+			return coursePB;
+		}
+		 
+		return null;
 	}
 
 	@Override
-	public void deleteCoursePlaybook(CoursePlaybook coursePB)
+	public Map<PlaybookType, PlaybookComponent> getPlaybookList(ZID courseId)
 			throws CourseException {
 		 
-		
+		return null;
 	}
+	
+
+	@Override
+	public List<CoursePlaybook> getCoursePlaybookList(ZID courseId) throws CourseException {
+		Boolean isDelete = false;
+		List<CoursePlaybook> playbookList = null;
+		 
+		if(courseId == null){
+			throw new CourseException("Course ID cannot be null");
+		}
+		
+		playbookList = coursePlaybookMapper.getCoursePlaybookList(isDelete, new Integer(courseId.getStorageID()));
+		
+		logger.debug("CoursePlaybook list size : "+playbookList.size());
+		 
+		return playbookList;
+	}
+
 
 	@Override
 	public void previewPlaybook(CoursePlaybook coursePB) throws CourseException {
-		 
 		
-	}
-
-	@Override
-	public CoursePlaybook getPlaybook(CoursePlaybook coursePB)
-			throws CourseException {
-		 
-		return null;
 	}
 
 	@Override
 	public void generatePlaybook(CoursePlaybook coursePB)
 			throws CourseException {
-		 
+	}
+
+	@Override
+	public void createNewCoursePlaybook(CoursePlaybook coursePlaybook,
+			CoursePlaybookView coursePBView) throws CourseException {
+
+		CoursePlaybook 			coursePB 		= null;
+		CoursePlaybookView 		playbookView 	= null;
+		
+		if(coursePlaybook.getCourse() == null){
+			throw new CourseException("Course ID cannot be null");
+		}
+		
+		if(coursePlaybook.getPlaybookType() == PlaybookType.REGULAR){
+			
+			logger.debug("Before saving the course playbook");
+			coursePB = coursePlaybookMapper.saveDefaultPlaybook(coursePlaybook);
+			
+			playbookView = coursePlaybook.getPlaybookView();
+			
+			playbookView.setCoursePlaybook(coursePB);
+			
+			logger.debug("Before saving the course playbook view");
+			coursePlaybookMapper.savePlaybookView(playbookView);
+			
+		}
+		
+	}
+
+	@Transactional
+	@Override
+	public void updateCoursePlaybook(CoursePlaybook coursePB)
+			throws CourseException {
+		
+		if(coursePB.getCoursePlaybookId() == null){
+			throw new CourseException("Course Playbook ID cannot be null");
+		}
+		
+		coursePlaybookMapper.updateCoursePlaybook(coursePB.getPlaybookView());
+		
+	}
+
+	@Transactional
+	@Override
+	public void deleteCoursePlaybook(ZID coursePBId) throws CourseException {
+		Boolean isDelete = true;
+		if(coursePBId == null){
+			throw new CourseException("Course Playbook ID cannot be null");
+		}
+		
+		coursePlaybookMapper.deleteCoursePlaybook(isDelete, new Integer(coursePBId.getStorageID()));
+		
+	}
+
+	@Transactional
+	@Override
+	public void createDefaultPlaybook(CoursePlaybook coursePlaybook) throws CourseException {
+		
+		CoursePlaybook 			coursePB 		= null;
+		CoursePlaybookView 		playbookView 	= null;
+		
+		if(coursePlaybook.getCourse() == null){
+			throw new CourseException("Course ID cannot be null");
+		}
+		
+		if(coursePlaybook.getPlaybookType() == PlaybookType.PREVIEW){
+			
+			logger.debug("Before saving the course playbook");
+			coursePB = coursePlaybookMapper.saveDefaultPlaybook(coursePlaybook);
+			
+			playbookView = coursePlaybook.getPlaybookView();
+			
+			playbookView.setCoursePlaybook(coursePB);
+			
+			logger.debug("Before saving the course playbook view");
+			coursePlaybookMapper.savePlaybookView(playbookView);
+			
+		}
 		
 	}
 	
