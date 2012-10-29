@@ -15,33 +15,6 @@ public class LearnerOnline implements Comparable<LearnerOnline>{
 	
 
 
-	LearnerOnline(MemberPersona memberPersona, String program, String course,
-			String mood) {
-		super();
-		this.memberPersona = memberPersona;
-		this.learningProgram = program;
-		this.courseName = course;
-		this.mood = mood;
-	}
-	
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	/**
 	 * @return the memberPersona
 	 */
@@ -67,10 +40,81 @@ public class LearnerOnline implements Comparable<LearnerOnline>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
-	 * @return the program
+	 * @param memberPersona the memberPersona to set
 	 */
-	public String getProgram() {
+	public void setMemberPersona(MemberPersona memberPersona) {
+		this.memberPersona = memberPersona;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * @return the learningProgram
+	 */
+	public String getLearningProgram() {
 		return learningProgram;
 	}
 
@@ -92,12 +136,154 @@ public class LearnerOnline implements Comparable<LearnerOnline>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
-	 * @return the course
+	 * @param learningProgram the learningProgram to set
 	 */
-	public String getCourse() {
+	public void setLearningProgram(String learningProgram) {
+		this.learningProgram = learningProgram;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * @return the courseName
+	 */
+	public String getCourseName() {
 		return courseName;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * @param courseName the courseName to set
+	 */
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,6 +309,77 @@ public class LearnerOnline implements Comparable<LearnerOnline>{
 	public String getMood() {
 		return mood;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * @param mood the mood to set
+	 */
+	public void setMood(String mood) {
+		this.mood = mood;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

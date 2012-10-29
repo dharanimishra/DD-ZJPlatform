@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ziksana.persistence.contacts.ContactMapper">
+<mapper namespace="com.ziksana.persistence.classtalk.ClassTalkMapper">
 
 
 	<select id="getAllOnlineLearners" resultMap="learnerResultMap"
@@ -40,6 +40,9 @@
 	<resultMap id="learnerResultMap" type="com.ziksana.domain.classtalk.LearnerOnline">
              <result property="mood" column="MemberMoodMessage" />
              <result property="courseName" column="Name" />
+             <result property="learningProgram" column="ProgramName" />
+             
+             
 
 
 		<association property="memberPersona"
