@@ -11,23 +11,23 @@ public class Category implements Serializable {
 
 	private static final long serialVersionUID = -5437165889448504534L;
 
-	private int categoryId;
+	private Integer categoryId;
 	private String categoryName;
 
 	public Category() {
 	}
 
-	public Category(final int categoryId, final String categoryName) {
+	public Category(final Integer categoryId, final String categoryName) {
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 
 	}
 
-	public int getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(final int categoryId) {
+	public void setCategoryId(final Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -39,32 +39,59 @@ public class Category implements Serializable {
 		this.categoryName = categoryName;
 	}
 
+	/**
+	 * 
+	 */
+	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("categoryId = ").append(categoryId).append(" - ");
-		sb.append("categoryName = ").append(categoryName).append(" - ");
-		return sb.toString();
+		// TODO Auto-generated method stub
+		return String.format("Todo item is %s and the category is %s",
+				categoryId, categoryName);
 	}
 
-	public boolean equals(final Object obj) {
-		final Category category = (Category) obj;
-		if (this.categoryId != category.categoryId) {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((categoryId == null) ? 0 : categoryId.hashCode());
+		result = prime * result
+				+ ((categoryName == null) ? 0 : categoryName.hashCode());
+
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		if (!this.categoryName.equals(category.getCategoryName())) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
+		Category other = (Category) obj;
+		if (categoryId == null) {
+			if (other.categoryId != null)
+				return false;
+		} else if (!categoryId.equals(other.categoryId))
+			return false;
+		if (categoryName == null) {
+			if (other.categoryName != null)
+				return false;
+		} else if (!categoryName.equals(other.categoryName))
+			return false;
+
 		return true;
 	}
 
-	public int hashCode() {
-
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (categoryId ^ (categoryId >>> 32));
-		result = prime * result
-				+ ((categoryName == null) ? 0 : categoryName.hashCode());
-		return result;
-
-	}
 }

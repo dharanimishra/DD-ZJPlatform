@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Category POJO
  * 
- * @author
+ * @author ratneshkumar
  */
 public class Category implements Serializable {
 

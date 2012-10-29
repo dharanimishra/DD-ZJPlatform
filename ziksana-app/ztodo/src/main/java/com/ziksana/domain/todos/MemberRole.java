@@ -118,30 +118,31 @@ public class MemberRole implements Serializable {
 		return sb.toString();
 	}
 
-//	public boolean equals(Object obj) {
-//		final MemberRole memberrole = (MemberRole) obj;
-//		if (this.id != memberrole.getId()) {
-//			return false;
-//		}
-//		if (this.roleType != memberrole.getRoleType()) {
-//			return false;
-//		}
-//		if (this.active != memberrole.getActive()) {
-//			return false;
-//		}
-//		if (!this.thumbnailPicturePath.equals(memberrole
-//				.getThumbnailPicturePath())) {
-//			return false;
-//		}
-//		return true;
-//	}
-//
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + (int) (id ^ (id >>> 32));
-//		result = prime * result + (int) (roleType ^ (roleType >>> 32));
-//		return result;
-//	}
+	public boolean equals(Object obj) {
+		final MemberRole memberrole = (MemberRole) obj;
+		if (this.id != memberrole.getId()) {
+			return false;
+		}
+		if (this.roleType != memberrole.getRoleType()) {
+			return false;
+		}
+		if (this.active != memberrole.getActive()) {
+			return false;
+		}
+		if (!this.thumbnailPicturePath.equals(memberrole
+				.getThumbnailPicturePath())) {
+			return false;
+		}
+		return true;
+	}
+
+	public int hashCode() {
+		final int prime = 31;
+
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (roleType ^ (roleType >>> 32));
+		return result;
+	}
 
 }

@@ -6,7 +6,7 @@ package com.ziksana.domain.todo;
 import java.util.Date;
 
 /**
- * @author
+ * @author ratneshkumar
  * 
  */
 public class MemberNotification {
