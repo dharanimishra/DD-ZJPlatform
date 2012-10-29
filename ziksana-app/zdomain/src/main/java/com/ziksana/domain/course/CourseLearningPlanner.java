@@ -20,8 +20,8 @@ public class CourseLearningPlanner extends AuditHistory {
 	private Date 					startDate 				= null;
 	private Date 					endDate 				= null;
 	private Duration 				duration 				= null;
-	private CourseLearningComponent courseLearningComponent = null;
-	private Course 					course 					= null;
+//	private CourseLearningComponent courseLearningComponent = null;
+//	private Course 					course 					= null;
 	private CourseLearningPlanner 	courseComponentCalendar = null;
 	
 	/**
@@ -72,32 +72,32 @@ public class CourseLearningPlanner extends AuditHistory {
 	public void setDuration(Duration duration) {
 		this.duration = duration;
 	}
-	/**
+/*	*//**
 	 * @return the courseLearningComponent
-	 */
+	 *//*
 	public CourseLearningComponent getCourseLearningComponent() {
 		return courseLearningComponent;
 	}
-	/**
+	*//**
 	 * @param courseLearningComponent the courseLearningComponent to set
-	 */
+	 *//*
 	public void setCourseLearningComponent(
 			CourseLearningComponent courseLearningComponent) {
 		this.courseLearningComponent = courseLearningComponent;
 	}
-	/**
+	*//**
 	 * @return the course
-	 */
+	 *//*
 	public Course getCourse() {
 		return course;
 	}
-	/**
+	*//**
 	 * @param course the course to set
-	 */
+	 *//*
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-	/**
+*/	/**
 	 * @return the courseComponentCalendar
 	 */
 	public CourseLearningPlanner getCourseComponentCalendar() {
