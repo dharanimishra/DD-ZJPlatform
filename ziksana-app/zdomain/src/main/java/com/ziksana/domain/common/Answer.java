@@ -12,6 +12,7 @@ import java.io.Serializable;
 public class Answer implements Serializable {
 
 
+    private static final long serialVersionUID = 1902353241839580008L;
     private final Question question;
 	private final Integer answerId;
 	
