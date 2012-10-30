@@ -8,9 +8,10 @@ package com.ziksana.domain.common;
  *
  */
 public class Answer {
-	
-	private Question question;
-	private Integer answerId;
+
+
+    private final Question question;
+	private final Integer answerId;
 	
 	
 	
@@ -19,9 +20,21 @@ public class Answer {
 		this.question = question;
 		this.answerId = answerId;
 	}
-	
-				
-	
-	
+
+
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public Integer getAnswerId() {
+        return answerId;
+    }
+
+
+
+
+
+
 
 }
