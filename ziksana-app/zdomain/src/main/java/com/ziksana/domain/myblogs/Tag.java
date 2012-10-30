@@ -1,22 +1,23 @@
 package com.ziksana.domain.myblogs;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
-public class Tag {
+public class Tag  implements Serializable {
 	
-	private ZID blogTagId;
+	private final ZID blogTagId;
 	
-	private String name;
+	private final String name;
 	
-	private Integer type;
+	private final Integer type;
 	
-	private MemberPersona creatingMemberRoleId;
+	private final MemberPersona creatingMemberRoleId;
 		
-	private Date createDate;
+	private final Date createDate;
 	
 	
 

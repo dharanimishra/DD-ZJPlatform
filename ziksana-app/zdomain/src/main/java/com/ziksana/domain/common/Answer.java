@@ -3,11 +3,13 @@
  */
 package com.ziksana.domain.common;
 
+import java.io.Serializable;
+
 /**
  * @author prabu
  *
  */
-public class Answer {
+public class Answer implements Serializable {
 
 
     private final Question question;

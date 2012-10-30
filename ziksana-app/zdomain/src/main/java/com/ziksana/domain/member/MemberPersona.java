@@ -5,8 +5,7 @@ package com.ziksana.domain.member;
 
 import java.util.Date;
 
-import com.ziksana.domain.member.Member;
-import com.ziksana.domain.member.MemberRole;
+
 
 /**
  * @author prabu

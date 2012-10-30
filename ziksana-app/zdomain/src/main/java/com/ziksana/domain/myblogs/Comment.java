@@ -9,20 +9,20 @@ import com.ziksana.id.ZID;
 public class Comment {
 	
 	
-	private ZID commentId;
+	private final ZID commentId;
 	
-	private String comment;
+	private final String commentText;
 	
-	private MemberPersona commentingMemberRoleId;
+	private final MemberPersona commentingMemberRoleId;
 	
-	private Date createDate;
+	private final Date createDate;
 
 	
 	public Comment(Integer commentId, String comment,
 			Integer commentingMemberRoleId, Date createDate) {
 		
 		this.commentId = new IntegerZID(commentId);
-		this.comment = comment;
+		this.commentText = comment;
 		this.commentingMemberRoleId = new MemberPersona();
 		this.commentingMemberRoleId.setMemberRoleId(commentingMemberRoleId);
 		
@@ -43,8 +43,8 @@ public class Comment {
 
 
 
-	public String getComment() {
-		return comment;
+	public String getCommentText() {
+		return commentText;
 	}
 
 
