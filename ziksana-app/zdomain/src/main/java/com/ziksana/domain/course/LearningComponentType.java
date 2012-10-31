@@ -17,11 +17,11 @@ public class LearningComponentType extends AuditHistory{
 	}
 	
 	public LearningComponentType(String compTypeName,
-			String compTypeDescription, Boolean qualifierIndicator,
+			String compTypeDescription, Boolean isDefineQualifier,
 			Boolean active) {
 		this.compTypeName = compTypeName;
 		this.compTypeDescription = compTypeDescription;
-		this.qualifierIndicator = qualifierIndicator;
+		this.isDefineQualifier = isDefineQualifier;
 		this.active = active;
 	}
 
@@ -33,9 +33,10 @@ public class LearningComponentType extends AuditHistory{
 	
 	private String 			compTypeName		= null;
 	private String 			compTypeDescription = null;
-	private Boolean 		qualifierIndicator	= null;
+	private Boolean 		isDefineQualifier	= null;
 	private Boolean 		active		 		= null;
 	private MemberPersona 	creatorMemberPersona= null;
+	private String			definedBy			= null;
 
 	/**
 	 * @return the value of property CreationDate
@@ -142,21 +143,35 @@ public class LearningComponentType extends AuditHistory{
 	 * @return the qualifierIndicator
 	 */
 	public Boolean getQualifierIndicator() {
-		return qualifierIndicator;
+		return isDefineQualifier;
 	}
 
 	/**
 	 * @param qualifierIndicator the qualifierIndicator to set
 	 */
 	public void setQualifierIndicator(Boolean qualifierIndicator) {
-		this.qualifierIndicator = qualifierIndicator;
+		this.isDefineQualifier = qualifierIndicator;
+	}
+
+	/**
+	 * @return the definedBy
+	 */
+	public String getDefinedBy() {
+		return definedBy;
+	}
+
+	/**
+	 * @param definedBy the definedBy to set
+	 */
+	public void setDefinedBy(String definedBy) {
+		this.definedBy = definedBy;
 	}
 
 	@Override
 	public String toString() {
 		return "LearningComponentType [compTypeName=" + compTypeName
 				+ ", compTypeDescription=" + compTypeDescription
-				+ ", qualifierIndicator=" + qualifierIndicator + ", active="
+				+ ", qualifierIndicator=" + isDefineQualifier + ", active="
 				+ active + "]";
 	}
 

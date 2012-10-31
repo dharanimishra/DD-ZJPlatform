@@ -19,7 +19,7 @@ public class LearningComponentContentDetails{
 			}
 
 	public LearningComponentContentDetails() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	private List<ContentEnrichment> 	enrichmentList						= null;

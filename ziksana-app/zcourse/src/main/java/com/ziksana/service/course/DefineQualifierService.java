@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentType;
-import com.ziksana.domain.member.Member;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 
@@ -16,21 +16,21 @@ public interface DefineQualifierService {
 	 * @return
 	 * @throws CourseException
 	 */
-	public List<LearningComponentType> getDefinedQualifiers(Member member) throws CourseException;
+	public List<LearningComponentType> getDefinedQualifiersList(MemberPersona memberRole) throws CourseException;
 	
 	/**
 	 * Delete the Institution/User defined Qualifiers.
 	 * @param learningComponent
 	 * @throws CourseException
 	 */
-	public void deleteQualifier(ZID learningComponentTypeId) throws CourseException;
+	public void deleteQualifier(Integer memberRoleId, ZID learningComponentTypeId) throws CourseException;
 	
 	/**
 	 * Modify User defined Qualifiers only.
 	 * @param learningComponent
 	 * @throws CourseException
 	 */
-	public void updateQualifier(ZID learningComponentTypeId, LearningComponent learningComponent) throws CourseException;
+	public void updateQualifier(LearningComponentType learningComponentType) throws CourseException;
 	
 	/**
 	 * Search the Define Qualifiers based on the search criteria(All/Used Defined/Institution Defined)
@@ -46,5 +46,14 @@ public interface DefineQualifierService {
 	 * @throws CourseException
 	 */
 	public void associateNewQualifier(LearningComponent learningComponent) throws CourseException;
-	
+
+	/**
+	 * Retrieve the defined Qualifier.
+	 * @param memberRoleId
+	 * @param learningComponentTypeId
+	 * @return
+	 * @throws CourseException
+	 */
+	public LearningComponentType getQualifier(Integer memberRoleId, ZID learningComponentTypeId) throws CourseException;
+
 }
