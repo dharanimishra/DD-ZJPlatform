@@ -2,8 +2,6 @@ package com.ziksana.domain.recommendations;
 
 import java.util.Date;
 
-import com.ziksana.domain.member.MemberPersona;
-
 public class Recommendation {
 
 	private Integer ID;
