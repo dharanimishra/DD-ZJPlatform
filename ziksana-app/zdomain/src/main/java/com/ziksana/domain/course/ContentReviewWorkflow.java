@@ -1,6 +1,7 @@
 package com.ziksana.domain.course;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.id.ZID;
@@ -20,6 +21,7 @@ public class ContentReviewWorkflow extends AuditHistory {
 	private Timestamp 						completeBy 				= null;
 	private String 							notes					= null;
 	private LearningContentReviewProgress 	reviewProgress 			= null;
+	private List<WorkflowParticipant>		reviewerList			= null;
 	
 	/**
 	 * @return the contentReviewWorkflowId
@@ -82,6 +84,18 @@ public class ContentReviewWorkflow extends AuditHistory {
 		this.reviewProgress = reviewProgress;
 	}
 	
+	/**
+	 * @return the reviewerList
+	 */
+	public List<WorkflowParticipant> getReviewerList() {
+		return reviewerList;
+	}
+	/**
+	 * @param reviewerList the reviewerList to set
+	 */
+	public void setReviewerList(List<WorkflowParticipant> reviewerList) {
+		this.reviewerList = reviewerList;
+	}
 	@Override
 	public String toString() {
 		return "ContentReviewWorkflow [workflowType=" + workflowType

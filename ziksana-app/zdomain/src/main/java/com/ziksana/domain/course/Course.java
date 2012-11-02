@@ -89,7 +89,7 @@ public class Course extends AuditHistory{
 	private List<CoursePlaybook> 			coursePlaybookList			= null;
 	private List<CourseLearningPlanner> 	courseLearningPlannerList 	= null;
 	private TestPackage						testPackage					= null;
-	
+
 	/**
 	 * @param index
 	 * @return
@@ -469,6 +469,7 @@ public class Course extends AuditHistory{
 	public void setTestPackage(TestPackage testPackage) {
 		this.testPackage = testPackage;
 	}
+
 
 	public String toString() {
 		return "Course [name=" + name + ", courseStatus=" + courseStatus

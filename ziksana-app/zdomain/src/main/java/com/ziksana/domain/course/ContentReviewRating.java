@@ -17,8 +17,8 @@ public class ContentReviewRating extends AuditHistory {
 	private ZID 							reviewRatingId;
 	private Integer 						questionRating 					= null;
 	private Rating 							reviewerRating 					= null;
-	private LearningContentReviewProgress 	learningContentReviewProgress 	= null;
-	private WorkflowParticipant 			participant 					= null;
+	private LearningContentReviewProgress 	courseReviewProgress 			= null;
+	private WorkflowParticipant 			workflowParticipant 			= null;
 	/**
 	 * @return the reviewRatingId
 	 */
@@ -55,32 +55,31 @@ public class ContentReviewRating extends AuditHistory {
 	public void setReviewerRating(Rating reviewerRating) {
 		this.reviewerRating = reviewerRating;
 	}
-	/**
-	 * @return the learningContentReviewProgress
-	 */
-	public LearningContentReviewProgress getLearningContentReviewProgress() {
-		return learningContentReviewProgress;
-	}
-	/**
-	 * @param learningContentReviewProgress the learningContentReviewProgress to set
-	 */
-	public void setLearningContentReviewProgress(
-			LearningContentReviewProgress learningContentReviewProgress) {
-		this.learningContentReviewProgress = learningContentReviewProgress;
-	}
-	/**
-	 * @return the participant
-	 */
-	public WorkflowParticipant getParticipant() {
-		return participant;
-	}
-	/**
-	 * @param participant the participant to set
-	 */
-	public void setParticipant(WorkflowParticipant participant) {
-		this.participant = participant;
-	}
 
+	/**
+	 * @return the courseReviewProgress
+	 */
+	public LearningContentReviewProgress getCourseReviewProgress() {
+		return courseReviewProgress;
+	}
+	/**
+	 * @param courseReviewProgress the courseReviewProgress to set
+	 */
+	public void setCourseReviewProgress(LearningContentReviewProgress courseReviewProgress) {
+		this.courseReviewProgress = courseReviewProgress;
+	}
+	/**
+	 * @return the workflowParticipant
+	 */
+	public WorkflowParticipant getWorkflowParticipant() {
+		return workflowParticipant;
+	}
+	/**
+	 * @param workflowParticipant the workflowParticipant to set
+	 */
+	public void setWorkflowParticipant(WorkflowParticipant workflowParticipant) {
+		this.workflowParticipant = workflowParticipant;
+	}
 	@Override
 	public String toString() {
 		return "ContentReviewRating [questionRating=" + questionRating

@@ -11,6 +11,10 @@ import com.ziksana.id.ZID;
  */
 public class WorkflowParticipant extends AuditHistory {
 	
+	public WorkflowParticipant(){
+		this.participantType=ParticipantType.PEER_REVIEWER;
+	}
+	
 	public WorkflowParticipant(Date communicatedDate, Date startDate,
 			Date endDate, ParticipantType participantType,
 			ContentReviewWorkflow courseWorkflow,
@@ -29,7 +33,7 @@ public class WorkflowParticipant extends AuditHistory {
 	private Date 						endDate					= null;
 	private ParticipantType 			participantType 		= null;
 	private ContentReviewWorkflow 		courseWorkflow 			= null;
-	private MemberPersona				memberPersona 			= null;
+	private MemberPersona				participateMemberRole   = null;
 	private WorkflowParticipantComment 	participantComment 		= null;
 	private ContentReviewRating			contentReviewRating 	= null;
 	
@@ -106,16 +110,16 @@ public class WorkflowParticipant extends AuditHistory {
 		this.courseWorkflow = courseWorkflow;
 	}
 	/**
-	 * @return the memberPersona
+	 * @return the participateMemberRole
 	 */
-	public MemberPersona getMemberPersona() {
-		return memberPersona;
+	public MemberPersona getParticipateMemberRole() {
+		return participateMemberRole;
 	}
 	/**
-	 * @param memberPersona the memberPersona to set
+	 * @param participateMemberRole the participateMemberRole to set
 	 */
-	public void setMemberPersona(MemberPersona memberPersona) {
-		this.memberPersona = memberPersona;
+	public void setParticipateMemberRole(MemberPersona participateMemberRole) {
+		this.participateMemberRole = participateMemberRole;
 	}
 	/**
 	 * @return the participantComment
