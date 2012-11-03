@@ -1,5 +1,7 @@
 package com.ziksana.domain.course;
 
+import com.ziksana.domain.contacts.RelationshipType;
+
 /**
  * @author bhashasp
  */
@@ -14,7 +16,7 @@ public class SearchReviewerCriteria {
 	 * @param deptName
 	 */
 	public SearchReviewerCriteria(String firstName, String lastName,
-			Integer circle, String deptName) {
+			RelationshipType circle, String deptName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.circle = circle;
@@ -29,11 +31,11 @@ public class SearchReviewerCriteria {
 		this.name = name;
 	}
 	
-	private String 		name 		= null;
-	private String 		firstName 	= null;
-	private String 		lastName 	= null;
-	private Integer 	circle 		= null;
-	private String 		deptName 	= null;
+	private String 				name 		= null;
+	private String 				firstName 	= null;
+	private String 				lastName 	= null;
+	private RelationshipType 	circle 		= null;
+	private String 				deptName 	= null;
 	
 	/**
 	 * @return the name
@@ -74,13 +76,13 @@ public class SearchReviewerCriteria {
 	/**
 	 * @return the circle
 	 */
-	public Integer getCircle() {
+	public RelationshipType getCircle() {
 		return circle;
 	}
 	/**
 	 * @param circle the circle to set
 	 */
-	public void setCircle(Integer circle) {
+	public void setCircle(RelationshipType circle) {
 		this.circle = circle;
 	}
 	/**

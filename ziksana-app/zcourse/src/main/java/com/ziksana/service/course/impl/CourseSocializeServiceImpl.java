@@ -1,9 +1,12 @@
 package com.ziksana.service.course.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.ziksana.domain.contacts.RelationshipType;
 import com.ziksana.domain.course.ContentReviewWorkflow;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
@@ -13,8 +16,10 @@ import com.ziksana.domain.course.WorkflowItemStatus;
 import com.ziksana.domain.course.WorkflowParticipant;
 import com.ziksana.domain.course.WorkflowParticipantComment;
 import com.ziksana.domain.member.Member;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
+import com.ziksana.persistence.contacts.ContactMapper;
 import com.ziksana.persistence.course.SocializeMapper;
 import com.ziksana.service.course.CourseSocializeService;
 
@@ -27,6 +32,8 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 	
 	@Autowired
 	public SocializeMapper socializeMapper;
+	@Autowired
+	public ContactMapper 	contactMapper;
 	
 	@Transactional
 	@Override
@@ -67,12 +74,16 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 	public List<Member> searchReviewers(SearchReviewerCriteria searchCriteria)
 			throws CourseException {
 	
-		List<Member> memberList = null;
+		List<Member> 			memberList 			= null;
+		MemberPersona  			memberRole 			= null;
+		RelationshipType 		circle 				=  null;
+		Integer 				relationshipId 		= null;
 		
 		if(searchCriteria == null){
-			throw new CourseException("Search Criteri cannot be null");
+			throw new CourseException("Seaatrch Criteri cannot be null");
 		}
 		
+		//Basic search
 		if(searchCriteria.getName()!=null){
 			
 			memberList = socializeMapper.basicReviewersSearch(searchCriteria.getName());
@@ -80,11 +91,49 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 			return memberList;
 		}
 		
+		//Advance Search Criteria {firstName, lastName, Circle}
+		//TODO: Department filter is waiting for confirmation about relation with Member
 		memberList = socializeMapper.advanceReviewersSearch(searchCriteria);
 		
+		memberList = new ArrayList<Member>();
+		
+		for (Member member : memberList) {
+			memberRole = member.getMemberPersona();
+			
+			circle = searchCriteria.getCircle();
+			
+			if(circle!=null){
+				
+				relationshipId = getCircleId(circle);
+				
+				memberRole =  socializeMapper.getMemberRoleByCircle(memberRole.getMemberRoleId(), relationshipId);
+				
+				member.setMemberPersona(memberRole);
+			}
+			
+			memberList.add(member);
+		}
+			
 		return memberList;
 	}
 
+	
+	private Integer getCircleId(RelationshipType relationshipType){
+		
+		if (relationshipType.equals(RelationshipType.CIRCLEFIRST))
+		{
+			return Integer.valueOf(1000);			
+		}
+		else if(relationshipType.equals( RelationshipType.CIRCLESECOND))
+		{
+			return Integer.valueOf(1001);
+		}
+		else
+		{
+			return Integer.valueOf(1002);
+		}
+
+	}
 
 	@Transactional
 	@Override
