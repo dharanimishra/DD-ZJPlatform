@@ -15,11 +15,7 @@
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.ziksana</groupId>
-			<artifactId>zconfig</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>com.ziksana</groupId>
 			<artifactId>zdomain</artifactId>
@@ -30,18 +26,20 @@
 			<artifactId>zpolls</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>com.ziksana</groupId>
-			<artifactId>zpolls</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>import</scope>
-		</dependency>
+		
 		<dependency>
 			<groupId>com.ziksana</groupId>
 			<artifactId>zsample</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zalert</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
 
 		<!-- Apache Tiles -->
 		<dependency>

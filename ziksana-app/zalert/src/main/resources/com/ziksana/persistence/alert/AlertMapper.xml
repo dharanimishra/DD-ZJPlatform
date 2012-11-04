@@ -8,10 +8,10 @@
 		select
 		*
 		from
-		memmembernotification n
-		join utllookup l ON
+		ziksanaold.memmembernotification n
+		join ziksanaold.utllookup l ON
 		n.NotificationType=l.LookupId
-		join utllookupvalue v ON
+		join ziksanaold.utllookupvalue v ON
 		l.LookupId=v.LookupId
 		where l.CategoryName='memmembernotification' and
 		v.LookupValue='Alert' and

@@ -47,4 +47,6 @@
 	</bean>
 	
 	
+	<import resource="jdbc-context.xml"/>
+	
 </beans>

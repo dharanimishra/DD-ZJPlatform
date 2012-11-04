@@ -91,7 +91,8 @@ $(document).ready(function() {
 						output+="<span class='Zalart zicons ls-no f-l a1'></span>&nbsp;";
 						//output+="<font class='_hText'>" + alertitem.subject + "</font>";
 						
-						output+="<font class='_sText'>" + $(this).find("description").text() + "</font>";
+						//output+="<font class='_sText'>" + $(this).find("description").text() + "</font>";
+						output+= $(this).find("description").text(); 
 						output+="<span class='alert zclose  zicons ls-no f-r'></span>";
 						//output+="<input type='hidden' id='alertItemId' value='" + alertitem.id + "' />";
 						output+="</div>";						

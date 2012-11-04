@@ -6,6 +6,7 @@ package com.ziksana.service.alert.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.alerts.Alert;
 import com.ziksana.persistence.alert.AlertMapper;
@@ -16,6 +17,7 @@ import com.ziksana.service.alert.AlertsService;
  * @author prabu
  * 
  */
+@Service
 public class AlertServiceImpl implements AlertsService {
 
 	@Autowired
