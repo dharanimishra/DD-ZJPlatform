@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+    xmlns:jwplayer="http://developer.longtailvideo.com/trac/" 
+    xmlns:media="http://search.yahoo.com/mrss/"> 
+  <channel> 
+    <title>Playlist with Thumbnails</title> 
+    <item> 
+      <title>Glass Heart</title> 
+      <media:content url="http://localhost:8080/CDK/videos/9.flv" /> 
+      <media:thumbnail url="images/thumb/Video-1.jpg" />
+      <jwplayer:playlist.image>images/thumb/Video-1.jpg</jwplayer:playlist.image> 
+    </item> 
+    <item> 
+      <title>Animation DNA</title> 
+      <media:content url="http://localhost:8080/CDK/videos/video1.mp4" /> 
+      <media:thumbnail url="images/thumb/Video-2.jpg" />
+      <jwplayer:playlist.image>images/thumb/Video-2.jpg</jwplayer:playlist.image> 
+    </item> 
+    <item> 
+      <title>Human Ear</title> 
+      <media:content url="http://localhost:8080/CDK/videos/toystory3.flv" /> 
+      <media:thumbnail url="images/thumb/Video-3.jpg" /> 
+      <jwplayer:playlist.image>images/thumb/Video-3.jpg</jwplayer:playlist.image> 
+    </item> 
+     <item> 
+      <title>Human Brain</title> 
+      <media:content url="http://localhost:8080/CDK/videos/9-vp6.flv" /> 
+      <media:thumbnail url="images/thumb/Video-4.jpg" /> 
+      <jwplayer:playlist.image>images/thumb/Video-4.jpg</jwplayer:playlist.image> 
+    </item> 
+     <item> 
+      <title>Skeletal System</title> 
+      <media:content url="http://localhost:8080/CDK/videos/9-vp6.flv" /> 
+      <media:thumbnail url="images/thumb/Video-5.jpg" /> 
+      <jwplayer:playlist.image>images/thumb/Video-5.jpg</jwplayer:playlist.image> 
+    </item> 
+  </channel> 
+</rss>

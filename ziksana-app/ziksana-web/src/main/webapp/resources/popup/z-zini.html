@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="images/ziksana-icon.png" rel="shortcut icon"/>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/type-setting.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/effects.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/basic-styles.css"/>
+<link rel="stylesheet" href="../development-bundle/themes/base/jquery.ui.all.css">
+<link rel="stylesheet" type="text/css" href="../css/cupertino/jquery-ui-1.8.20.custom.css">
+<script src="../development-bundle/jquery-1.7.2.js"></script>
+<script src="../development-bundle/ui/jquery.ui.core.js"></script>
+<script src="../development-bundle/ui/jquery.ui.widget.js"></script>
+<script src="../development-bundle/ui/jquery.ui.tabs.js"></script>
+<script src="../development-bundle/ui/jquery.ui.progressbar.js"></script>
+<script src="../development-bundle/ui/jquery.ui.button.js"></script>
+<!--topup-->
+
+<!--cluetip-->
+<script src="../development-bundle/clue-tip/lib/jquery.hoverIntent.js"></script>
+<script src="../development-bundle/clue-tip/lib/jquery.bgiframe.min.js"></script>
+<script src="../development-bundle/clue-tip/jquery.cluetip.js"></script>
+<script src="../development-bundle/clue-tip/demo/demo2.js"></script>
+<link rel="stylesheet" href="../development-bundle/clue-tip/jquery.cluetip.css" type="text/css" />
+<script>
+	$(function() {
+
+		$( "button").button();
+		$("button.clock").button({icons: { secondary: "ui-icon-clock"}})
+		$( "button, input:submit" , ".action-row").button();
+		$( "button:first" , ".course-button-bar").button({icons: { secondary: "ui-icon-pencil"}} 
+		).next().button({icons: { secondary: "ui-icon-wrench"}} 
+		).next().button({icons: { secondary: "ui-icon-signal-diag"}});
+		$( "#radio-1, #radio-2, #radio-3, #format" ).buttonset();
+		
+	});
+	
+
+	
+	
+	//*
+
+//done-buttons
+$(function() {
+		$( "#calc" ).click(function() {
+			
+				$("#z-ques").fadeOut(  );
+					$("#z-ans").fadeIn( "3000" );
+							return false;
+
+		});
+		
+	});
+
+	
+	</script>
+<link rel="stylesheet" href="../development-bundle/clue-tip/jquery.cluetip.css" type="text/css" />
+<style>
+body {
+	background:#fff;
+}
+input, select, textarea {
+	color:#555;
+	font-weight:normal!important;
+	padding:10px;
+	font-size:1.2em!important;
+	font-family:Arial, Helvetica, sans-serif!important;
+	width:80%;
+}
+#z-ans {
+	display:none;
+}
+</style>
+</head>
+
+<body>
+<div style="height:510px; overflow:hidden;">
+<table style="width:760px; height:520px;">
+  <tr>
+    <td  style="vertical-align:top; width:120px; padding:33px;" ><p><img src="images/zini.png" width="172" height="76" alt="Guru"></p>
+      <p class="Slogen-one" style="font-size:1.8em;">Zeni-Shorthand!</p>
+      <p style="font-size:1.1em" class="dot-bottom"><br>
+        Some copy about zini shorthand</p>
+      <br>
+      <p class="Slogen-one" style="font-size:1.8em;">Zeni-Mashup!</p>
+      <p style="font-size:1.1em" class="dot-bottom"><br>
+        Some copy about zini mashup</p>
+      <br>
+      <p class="Slogen-one" style="font-size:1.8em;">Zeni-Auto Pilot!</p>
+      <p style="font-size:1.1em" class="dot-bottom"><br>
+        Some copy about zini evaluations</p>
+      <br>
+      <p class="Slogen-one" style="font-size:1.8em;">Zeni-Doctor!</p>
+      <p style="font-size:1.1em" class="dot-bottom"><br>
+        Some copy about zini diagnosis</p></td>
+    <td  style="vertical-align:top; width:400px; padding:30px;"><h2 class="bld c369 Slogen-one" style="font-size:2em;">Welcome  Chris!</h2>
+      <br>
+      <form >
+        <div class="clr txt-12" style="margin-bottom:15px;">Reasons what zini is awesome !Aliquam adipiscing interdum tortor, nec interdum magna gravida quis. Nam   condimentum diam eu turpis pharetra dapibus porta tellus gravida. Cras   lacinia hendrerit viverra.</div>
+        <div  id="z-ans" class="clr txt-12" style="margin-bottom:15px;"><br>
+          
+          <div class="clr" style="margin-bottom:12px; font-size:24px;">zini suggests you spend:</div>
+          <br>
+          <table class="alt-table" width="100%">
+            <colgroup span="2" title="title" />
+            
+            <thead>
+              <tr>
+                <th scope="col"> #</th>
+                <th scope="col">Action</th>
+                <th scope="col" style="width:75px;">Effort</th>
+                <th scope="col" style="width:75px;">Why?</th>
+              </tr>
+            </thead>
+          <tbody>
+              <tr>
+                <td>3</td>
+                <td class="txt-9"><a href="#">Complete Test-12345 Nano-tech</a></td>
+                <td>5 minutes</td>
+                <td>Past due by - 2 weeks</td>
+              </tr>
+      
+          
+              <tr>
+                <td>1</td>
+                <td class="txt-9"><a href="#">Complete Test-12345 Nano-tech</a></td>
+                <td>15 minutes</td>
+                <td>Due today</td>
+              </tr>
+              <tr>
+                <td><span class="txt-9">2</span></td>
+                <td class="txt-9"><a href="#">View Lecture AA4656 Metrology by Dr. Meyer</a></td>
+                <td>9 minutes</td>
+                <td>To maintain avergae grade of A</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <br>
+          <button id="recalc" class="clock"> Recalculate </button>
+        </div>
+        <div id="z-ques">
+          <div class="clr Slogen-one" style="margin-bottom:15px; font-size:24px;">How long do you intend to be here?</div>
+          <input type="text" style="width:150px;" title="Lets say in minutes...">
+          <button class="clock" id="calc">Find my best use of time</button>
+        </div>
+      </form>
+      </td>
+  </tr>
+</table>
+<SCRIPT>
+$('input[type="text"], textarea').each(function(){
+
+	this.value = $(this).attr('title');
+	$(this).addClass('text-label');
+
+	$(this).focus(function(){
+		if(this.value == $(this).attr('title')) {
+			this.value = '';
+			$(this).removeClass('text-label');
+		}
+	});
+
+	$(this).blur(function(){
+		if(this.value == '') {
+			this.value = $(this).attr('title');
+			$(this).addClass('text-label');
+		}
+	});
+});
+
+</SCRIPT>
+</div>
+</body>
+</html>

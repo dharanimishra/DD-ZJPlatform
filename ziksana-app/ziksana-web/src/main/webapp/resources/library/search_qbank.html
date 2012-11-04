@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>Title</title>
+	<!--Body Style sheet-->
+    <link rel="stylesheet" href="../js/upload/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
+	<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	<link href="../css/type-setting.css" rel="stylesheet" type="text/css">
+	<link href="../css/effects.css" rel="stylesheet" type="text/css">
+	<link href="../css/nav.css" rel="stylesheet" type="text/css">
+    
+	
+    
+    <!---upload Style sheet-->
+    <link rel="stylesheet" href="../css/upload/bootstrap.min.css">
+<link rel="stylesheet" href="css/upload/style.css">
+<link rel="stylesheet" href="css/upload/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="css/upload/jquery.fileupload-ui.css">
+	<!--End Body Style sheet-->
+<script src="../development-bundle/jquery-1.7.2.js"></script>
+<script language="javascript" type="text/javascript">
+  $(document).ready(function () {
+            $('.highlights, textarea, select').addClass("setIdle");
+            $('.highlights, textarea, select').focus(function () {
+                $(this).removeClass("setIdle").addClass("setFocus");
+            });
+
+            $('.highlights, textarea, select').blur(function () {
+                $(this).removeClass("setFocus").addClass("setIdle");
+            });
+
+            //Applying MSIE Check
+            if ($.browser.msie) {
+                $("select").bind("focusin", function () {
+                    $(this).addClass("setFocus");
+                });
+
+                $("select").bind("focusout", function () {
+                    $(this).removeClass("setFocus");
+                });
+            }
+
+        });
+</script>  
+
+
+<script type="text/javascript" src="../js/outerpages/jquery.js"></script>
+<script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="../js/ckeditor/adapters/jquery.js"></script>
+<script type="text/javascript" src="../js/outerpages/question.js"></script>
+
+<script type="text/javascript" src="../js/upload/plupload.js"></script>
+<script type="text/javascript" src="../js/upload/plupload.gears.js"></script>
+<script type="text/javascript" src="../js/upload/plupload.browserplus.js"></script>
+<script type="text/javascript" src="../js/upload/plupload.html4.js"></script>
+<script type="text/javascript" src="../js/upload/plupload.html5.js"></script>
+<script type="text/javascript" src="../js/upload/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+
+<script type="text/javascript">
+
+</script>
+
+   
+  </head>
+<body>
+<div id="wrapper"style="width:600px;  >
+	
+    <div class="col-1000 for-rounded-box all-box-shadow bckground-wihte">
+
+   <select id="people" name="people" tabindex="1" class='highlights'  > 
+            <option value="People" selected="selected">
+            People
+            </option>
+            <option value="sundip" >
+            sundip
+            </option>
+            <option value="kay" >
+            kay
+            </option>
+            </select>
+            <input id="search" name="search" type="text" value="Search.." class='highlights' style="margin-top: -1px;" onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" />
+            
+            <span id="error_search" style="background-color: #CCF; color: red; width: 100px;">*Required</span>
+             <input type="button" id="btn_top_search" name="btn_top_search" value="Search" style="margin-top: -6px;"/>
+            <input type="button" id="btn_advance" name="btn_advance" value="Advanced"  style="margin-top: -6px;"/>
+		
+        <br/>
+        <div id="advance_search_form" >
+        	 <input id="q_name" name="q_name" type="text" value="Specify question name" class='highlights' maxlength="100" onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+             <span id="error_search2" style="background-color: #CCF; color: red; width: 100px;">*Required</span>
+             <br/><br/>
+             <select id="byarea" name="byarea" style="width:250px" class="ui-state-default ui-combobox-input ui-autocomplete-input ui-widget ui-widget-content ui-corner-left"> 
+              <option value="Filter by area" selected="selected">
+            Filter by area
+            </option>
+            <option value="IT">
+            IT
+            </option>
+            <option value="Electric" >
+            Electric
+            </option>
+            <option value="Web" >
+            Web
+            </option>
+            </select>
+            &nbsp;
+             <select id="bysubject" name="bysubject"> 
+              <option value="Filter by subject" selected="selected">
+            Filter by subject
+            </option>
+            <option value="IT">
+            IT
+            </option>
+            <option value="Electric" >
+            Electric
+            </option>
+            <option value="Web" >
+            Web
+            </option>
+            </select>
+             &nbsp;
+             <select id="bytopic" name="bytopic"> 
+              <option value="Filter by topic" selected="selected">
+            Filter by topic
+            </option>
+            <option value="IT">
+            IT
+            </option>
+            <option value="Electric" >
+            Electric
+            </option>
+            <option value="Web" >
+            Web
+            </option>
+            </select>
+            <br/><br/>
+             <input id="q_tags" name="q_tags" type="text" value="Search by tags" maxlength="100" class='highlights' onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+              <span id="error_search3" style="background-color: #CCF; color: red; width: 100px;">*Required</span>
+             <br/><br/>
+             <input type="button" id="btn_exit" name="btn_exit" value="Exit"/>&nbsp;
+             <input type="button" id="btn_search" name="btn_search" value="Search"/>
+             </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel='stylesheet' type='text/css' href='../css/socialize/socialize.css' />
+<title>Socialize</title>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js'></script>
+<script type='text/javascript' src="../js/socialize/jquery_socialize.js"></script>
+ 
+    <script type="text/javascript">
+		$(document).ready(function() {
+			
+			$("#content1").change( function () { 
+			var c = this.checked ? '#F8F8F8' : '#e7e6e6';
+			   $('#li-1').css('background-color',c);
+			  				
+    });
+			
+			
+			$("#content2").change( function () { 
+			var c = this.checked ? '#F8F8F8' : '#e7e6e6';
+			   $('#li-2').css('background-color',c);
+				
+    });
+	
+	
+			$("#content3").change( function () { 
+			var c = this.checked ? '#F8F8F8' : '#e7e6e6';
+			   $('#li-3').css('background-color',c);
+				
+    });
+	
+		
+	$(".contact-pic a#r1").hover( function () {
+		$(".contact-pic a#r1").css("background-image", "url(../images/socialize/circle2.png)");
+		$(".contact-pic a#r1").css("height", "120%");
+		$(".contact-pic a#r1").css("width", "120%");
+		$(".contact-pic a#r1").css("margin-left", "-8px");
+		$(".contact-pic a#r1").css("margin-top", "-8px");
+		$(".contact-pic a#r1").fadeIn("slow");
+		},
+		function () {
+          $(".contact-pic a#r1").css("background-image", "url(../images/socialize/circle.png)");
+		  $(".contact-pic a#r1").css("height", "100%");
+		$(".contact-pic a#r1").css("width", "100%");
+		$(".contact-pic a#r1").css("margin-left", "0px");
+		$(".contact-pic a#r1").css("margin-top", "0px");
+		$(".contact-pic a#r1").fadeIn("slow");
+         });
+
+	$(".contact-pic a#r2").hover( function () {
+		$(".contact-pic a#r2").css("background-image", "url(../images/socialize/circle2.png)");
+		$(".contact-pic a#r2").css("height", "120%");
+		$(".contact-pic a#r2").css("width", "120%");
+		$(".contact-pic a#r2").css("margin-left", "-8px");
+		$(".contact-pic a#r2").css("margin-top", "-8px");
+		$(".contact-pic a#r2").fadeIn("slow");
+		},
+		function () {
+          $(".contact-pic a#r2").css("background-image", "url(../images/socialize/circle.png)");
+		  $(".contact-pic a#r2").css("height", "100%");
+		$(".contact-pic a#r2").css("width", "100%");
+		$(".contact-pic a#r2").css("margin-left", "0px");
+		$(".contact-pic a#r2").css("margin-top", "0px");
+		$(".contact-pic a#r2").fadeIn("slow");
+         });
+		 
+		 $(".contact-pic a#r3").hover( function () {
+		$(".contact-pic a#r3").css("background-image", "url(../images/socialize/circle2.png)");
+		$(".contact-pic a#r3").css("height", "120%");
+		$(".contact-pic a#r3").css("width", "120%");
+		$(".contact-pic a#r3").css("margin-left", "-8px");
+		$(".contact-pic a#r3").css("margin-top", "-8px");
+		$(".contact-pic a#r3").fadeIn("slow");
+		},
+		function () {
+          $(".contact-pic a#r3").css("background-image", "url(../images/socialize/circle.png)");
+		  $(".contact-pic a#r3").css("height", "100%");
+		$(".contact-pic a#r3").css("width", "100%");
+		$(".contact-pic a#r3").css("margin-left", "0px");
+		$(".contact-pic a#r3").css("margin-top", "0px");
+		$(".contact-pic a#r3").fadeIn("slow");
+         });
+		 
+		 
+
+
+});
+	</script>
+</head>
+
+<body>
+<div class="socialcontainer">
+<div class="leftSocialize">
+tree
+</div>
+
+
+<div class="rightsocialize">
+
+
+<div class="socialuppertabs">
+<ul>
+<li id="li-1"><input id="content1" name="content1" type="checkbox" value="Content1">Content1</input></li>
+<li id="li-2"><input id="content2" name="content2" type="checkbox" value="Content2">Content2</input></li>
+<li id="li-3"><input id="content3" name="content3" type="checkbox" value="Content3" >Content3</input></li>
+</ul>
+</div>
+<div class="search">
+	<input type="text" value="" placeholder="Search.." />
+    <input type="button" value="Search"/>
+</div>
+<br/>
+<b>Review Panel</b>
+<hr/>
+<div class="socmaintabs">
+<ul>
+<li><a href="#"> Reviewers </a> </li>
+<li><a href="#"> Completed </a> </li>
+<li><a href="#"> in progess </a> </li>
+<li><a href="#"> Declined </a> </li>
+</ul>
+</div>
+
+
+
+<div id="form1">
+<ul>
+  <ul class="contact-list">
+      <li class="member">
+        <div class="grey-out">
+          <div class="white-in contact-pic" style="background:url(../images/socialize/circle.png);"><a id="r1" href="#"></a></div>
+        </div>
+      </li>
+      <li class="member">
+        <div class="grey-out ">
+          <div class="white-in contact-pic" style="background:url(../images/socialize/circle.png);"><a id="r2" href="#"></a></div>
+        </div>
+      </li>
+      <li class="member">
+        <div class="grey-out ">
+          <div class="white-in contact-pic" style="background:url(../images/socialize/circle.png);"><a id="r3" href="#"></a></div>
+        </div>
+      </li>
+      </ul>
+</ul>
+</div>
+
+<div id="Soc_left">
+<input name="input" type="text" placeholder="Completed by" />
+<br />
+<select name="rate" style="width:145px; margin-left:2px;">
+  <option value="selected">Rate</option>
+  <option>Yes </option>
+  <option> No </option>
+</select>
+
+</div>
+<div id="soc_right">
+
+<textarea name="Reviewersnote" cols="33" rows="5" placeholder="Note to the Reviewers"></textarea>
+<br />
+<input name="Return" type="button" value="Return" />
+<input name="Return" type="button" value="Save" />
+</div>
+<div class="socbuttons">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
