@@ -13,6 +13,11 @@
 	
 	<mvc:annotation-driven />
 	
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	
+	
 	<!-- tiles setup for full page views --> 
 	<bean id="tilesConfigurer"	class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions">
@@ -40,5 +45,6 @@
 		<property name="prefix" value="/WEB-INF/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
 	
 </beans>

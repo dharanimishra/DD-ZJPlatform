@@ -7,7 +7,7 @@
 <html>
 <head>
 <title><tiles:getAsString name="title" /></title>
-<script type="text/javascript" src="/static/js/ziks.js"></script>
+<script type="text/javascript" src="/resources/js/ziks.js"></script>
 </head>
 <body>
 
