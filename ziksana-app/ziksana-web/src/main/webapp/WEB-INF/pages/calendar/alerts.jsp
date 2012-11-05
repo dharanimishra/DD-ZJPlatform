@@ -7,7 +7,7 @@
 <alerts>
 	<c:forEach var="alert" items="${alerts}">
 		<alertitem  memberId="${memberId}">
-				
+				<id>${alert.id.displayID}</id>
 				<description>${alert.description}</description>
 			</alertitem>
 	</c:forEach>

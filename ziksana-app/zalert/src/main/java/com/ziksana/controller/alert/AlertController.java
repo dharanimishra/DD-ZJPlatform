@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
@@ -35,24 +34,23 @@ public class AlertController {
 	ModelAndView showMyAlerts(@PathVariable String memberId) {
 		logger.info("Entering showMyAlerts(): " + memberId);
 		ModelAndView mv = new ModelAndView("calendar/alerts");
-		// MemberPersona memberPersona =
-		// memberService.getMemberPersona(Integer.valueOf(memberId));
-		// mv.addObject("alerts", alertsService.getAlertList(memberPersona));
-
 		ZID member = new StringZID("1000");
 		ZID memberPersonaId = new StringZID("100");
 
 		SecurityToken token = new SecurityToken(member, memberPersonaId, null);
 		ThreadLocalUtil.setToken(token);
 
-		mv.addObject("alerts", alertsService.getAlertList());
+		mv.addObject("alerts", this.alertsService.getAlertList());
+		logger.info("Number of alerts is  " + this.alertsService.getAlertList().size());
 		logger.info("Exiting showMyAlerts(): " + memberId);
-		// logger.info(" Number of alerts "+alertsService.getAlertList(memberPersona).size());
 		return mv;
 	}
 
 	/**
-	 * Delete a alert item based on alert item id
+	 * 
+	 * @param memberId
+	 * @param alertItemId
+	 * @return
 	 */
 	@RequestMapping(value = "/deletealert/{memberId}/{alertItemId}", method = RequestMethod.DELETE)
 	public @ResponseBody
@@ -61,6 +59,11 @@ public class AlertController {
 		logger.info("Entering deleteAlertItem(): " + memberId + " "
 				+ alertItemId);
 		ModelAndView mv = new ModelAndView();
+		
+		//Calling service to delete alert 
+		logger.info(" ALERT ITEM ID IS "+alertItemId);
+		this.alertsService.deleteAlertItem(Integer.valueOf(alertItemId));
+		
 		logger.info("Exiting deleteAlertItem(): " + memberId + " "
 				+ alertItemId);
 		return mv;
