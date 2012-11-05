@@ -19,6 +19,7 @@ import com.ziksana.service.blogs.BlogService;
  *
  */
 
+@Service
 public class BlogServiceImpl implements BlogService {
 
 	
