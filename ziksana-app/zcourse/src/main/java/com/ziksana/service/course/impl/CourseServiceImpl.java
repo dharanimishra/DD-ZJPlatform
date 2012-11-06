@@ -18,6 +18,7 @@ import com.ziksana.domain.course.CourseTagcloud;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentDetails;
 import com.ziksana.domain.course.LearningComponentNest;
+import com.ziksana.domain.course.LearningObjectDeleteType;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CourseContentSecurityMapper;
@@ -369,6 +370,65 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public void removeCourse(Course course) {
 
+	}
+
+	@Override
+	public List<LearningComponent> getLearningObjects(Integer memberRoleId)
+			throws CourseException {
+		List<LearningComponent> learningObjectList 	= null;
+		Boolean 				isLearningObject 	= true;
+		
+		if(memberRoleId == null){
+			throw new CourseException("Member Role ID cannot be null ");
+		}
+		
+		logger.debug("Member role ID : "+memberRoleId);
+
+		learningObjectList = learningComponentMapper.getLearningObjects(isLearningObject, memberRoleId);
+		
+		return learningObjectList;
+	}
+
+	@Override
+	public LearningComponent getLearningObject(ZID learningComponentId)
+			throws CourseException {
+		
+		LearningComponent 	learningObject 		= null;
+		Boolean 			isLearningObject 	= true;
+		if(learningComponentId == null){
+			throw new CourseException("learningComponent ID cannot be null ");
+		}
+		
+		learningObject = learningComponentMapper.getLearningObjectById(isLearningObject, new Integer(learningComponentId.getStorageID()));
+		
+		return learningObject;
+	}
+
+	@Transactional
+	@Override
+	public void deleteLearningObject(ZID learningComponentId,
+			LearningObjectDeleteType deleteType) throws CourseException {
+		
+		Boolean 			isDelete 	= true;
+		List<Integer> learningComponentContentIdList = null;
+		if(LearningObjectDeleteType.LEARNINGOBJECT.equals(new Integer(1))){
+			
+			learningComponentMapper.delete(isDelete, new Integer(learningComponentId.getStorageID()));
+			
+		}else if(LearningObjectDeleteType.LEARNINGOBJECT_AND_CONTENTS.equals(new Integer(2))){
+			isDelete = false;
+			
+			learningComponentContentIdList = learningComponentContentMapper.getLearningComponentContentByComponentId(new Integer(learningComponentId.getStorageID()),isDelete );
+			
+			for (Integer learningComponentContentId : learningComponentContentIdList) {
+				
+				learningComponentContentMapper.delete(learningComponentContentId,isDelete);
+				
+			}
+			
+			learningComponentMapper.delete(isDelete, new Integer(learningComponentId.getStorageID()));
+			
+		}
 	}
 
 }

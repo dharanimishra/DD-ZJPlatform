@@ -6,7 +6,6 @@ package com.ziksana.service.program;
 import java.util.Map;
 
 import com.ziksana.domain.institution.ProgramNameType;
-import com.ziksana.domain.member.Member;
 import com.ziksana.exception.program.ProgramsException;
 
 /**
@@ -20,6 +19,6 @@ public interface MyProgramsService {
 	 * @return
 	 * @throws ProgramsException
 	 */
-	public Map<ProgramNameType,Integer> getMyPrograms(Member member) throws ProgramsException;
+	public Map<ProgramNameType,Integer> getMyPrograms(Integer memberRoleId) throws ProgramsException;
 
 }

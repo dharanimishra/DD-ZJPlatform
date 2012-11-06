@@ -4,8 +4,14 @@ import java.util.List;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningComponentContent;
+import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.LearningContentDeleteType;
 import com.ziksana.exception.course.CourseException;
+import com.ziksana.id.ZID;
 
+/**
+ * @author bhashasp
+ */
 public interface CourseContentService {
 
 	/**
@@ -43,5 +49,15 @@ public interface CourseContentService {
 	 */
 	public void enhaceContent(LearningComponentContent compContent)
 			throws CourseException;
+	
+	/**
+	 * Retrieve the list content based on MemberRoleId
+	 * @param memberRoleId
+	 * @return
+	 * @throws CourseException
+	 */
+	public List<LearningContent> getLearningContent(Integer memberRoleId) throws CourseException;
 
+	
+	public void deleteContent(LearningContentDeleteType deleteType, ZID learningContentId) throws CourseException;
 }

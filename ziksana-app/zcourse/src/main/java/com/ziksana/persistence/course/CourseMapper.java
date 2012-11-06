@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseAdditionalProperty;
+import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentType;
 
 public interface CourseMapper {
@@ -210,5 +211,9 @@ public interface CourseMapper {
 	})
 	LearningComponentType getQualifier(Boolean isDelete, Integer memberRoleId,
 			Integer integer);
+
+	
+	List<LearningComponent> getLearningObjects(Boolean isLearningObject,
+			Integer memberRoleId);
 
 }

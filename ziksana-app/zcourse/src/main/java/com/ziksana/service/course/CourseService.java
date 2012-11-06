@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseAdditionalProperty;
+import com.ziksana.domain.course.LearningComponent;
+import com.ziksana.domain.course.LearningObjectDeleteType;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 
@@ -69,7 +71,27 @@ public interface CourseService {
 	 */
 	public void removeCourse(Course course) throws CourseException;
 	
+
+	/**
+	 * @param memberRoleId
+	 * @return
+	 * @throws CourseException
+	 */
+	public List<LearningComponent> getLearningObjects(Integer memberRoleId) throws CourseException;
 	
+	/**
+	 * @param learningComponentId
+	 * @return
+	 * @throws CourseException
+	 */
+	public LearningComponent getLearningObject(ZID learningComponentId) throws CourseException;
+	
+	/**
+	 * @param learningComponentId
+	 * @param deleteType
+	 * @throws CourseException
+	 */
+	public void deleteLearningObject(ZID learningComponentId, LearningObjectDeleteType deleteType) throws CourseException;
 
 }
 

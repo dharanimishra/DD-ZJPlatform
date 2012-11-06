@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ziksana.domain.course;
 
 /**
@@ -8,9 +5,8 @@ package com.ziksana.domain.course;
  */
 public enum LearningObjectDeleteType {
 	
-	LEARNNGOBJECT					(1, "Learning Object Only"),  
-	LEARNNGOBJECT_CONTENTS 			(2, "Learning Object Contents only"),
-	LEARNNGOBJECT_AND_CONTENTS		(3, "Learning Object and its Contents");
+	LEARNINGOBJECT					(1, "Learning Object Only"),  
+	LEARNINGOBJECT_AND_CONTENTS		(2, "Learning Object and its Contents");
 	  
 	
 	private final int id;

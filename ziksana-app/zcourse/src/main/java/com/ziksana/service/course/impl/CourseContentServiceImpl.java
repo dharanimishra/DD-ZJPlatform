@@ -13,8 +13,10 @@ import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningComponentContentDetails;
 import com.ziksana.domain.course.LearningComponentDetails;
 import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.LearningContentDeleteType;
 import com.ziksana.domain.course.LearningContentParts;
 import com.ziksana.exception.course.CourseException;
+import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningContentMapper;
 import com.ziksana.service.course.CourseContentService;
@@ -177,6 +179,49 @@ public class CourseContentServiceImpl implements CourseContentService {
 				contentMapper.save(learningContentParts);
 			}
 		}
+	}
+
+	@Override
+	public List<LearningContent> getLearningContent(Integer memberRoleId)
+			throws CourseException {
+		
+		List<LearningContent> contentList = null;
+		
+		if(memberRoleId == null){
+			throw new CourseException("Member Role ID cannot be null ");
+		}
+		
+		logger.debug("Member role ID : "+memberRoleId);
+
+		contentList = contentMapper.getListOfContentsByMemberRoleId(memberRoleId);
+		
+		return contentList;
+	}
+
+	@Transactional
+	@Override
+	public void deleteContent(LearningContentDeleteType deleteType,
+			ZID learningContentId) throws CourseException {
+		
+		Boolean 			isDelete 				= true;
+		List<Integer>       learningContentIdList  	= null;
+		
+		if(LearningContentDeleteType.LEARNINGCONTENT.equals(new Integer(1))){
+			
+			contentMapper.deleteContent(isDelete, new Integer(learningContentId.getStorageID()));
+			
+		}else if(LearningContentDeleteType.LEARNINGCONTENT_PARTS.equals(new Integer(2))){
+			
+			learningContentIdList = contentMapper.getLearningContetPartsByContentId(new Integer(learningContentId.getStorageID()));
+			
+			for (Integer learningContentPartsId : learningContentIdList) {
+				
+				contentMapper.deleteContentParts(isDelete,learningContentPartsId);
+				
+			}
+			contentMapper.deleteContent(isDelete, new Integer(learningContentId.getStorageID()));
+		}
+		
 	}			
 	
 }
