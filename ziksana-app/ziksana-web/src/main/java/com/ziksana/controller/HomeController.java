@@ -72,19 +72,14 @@ public class HomeController {
 	
 	@RequestMapping(value="/blog/list")
 	public ModelAndView getBlogList() {
+		
 		System.out.println("HomeController::getBlogList()...");
 		
-		ZID member = new StringZID("1000");
-		ZID memberPersonaId = new StringZID("100");
-
-		SecurityToken token = new SecurityToken(member, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
 		
 		
 		ModelAndView mview = new ModelAndView("blog/bloglist");
 		
-		List<Blog> blogList = sampleService.getBlogList();
-		
+				
 		
 		mview.addObject("blogList", blogService.getBlogs());
 		return mview;

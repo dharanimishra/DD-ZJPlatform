@@ -53,7 +53,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		try {
 			if (contextSource != null) {
 				System.out.println(" The context source is not null");
-				ctx = contextSource.getContext("uid=prabu,ou=users,ou=system", pwd);
+				ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system", pwd);
 			}
 			// ctx = contextSource.getContext(userid, password);
 			return true;
