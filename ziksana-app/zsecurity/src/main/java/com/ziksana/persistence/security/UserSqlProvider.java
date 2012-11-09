@@ -12,12 +12,12 @@ public class UserSqlProvider {
 	
 	public String getUserSql() {
 		BEGIN();
-		SELECT("*");
+		SELECT("distinct memmember.*");
 		FROM("memmember");
 		FROM("memmemberrole");
 		FROM("secmembercredential");
-		WHERE("memmember.ID=secmembercredential.MemberId");
-		WHERE("memmember.ID=memmemberrole.memberId");
+		WHERE("memmember.MemberId=secmembercredential.MemberId");
+		WHERE("memmember.MemberId=memmemberrole.memberId");
 		WHERE("secmembercredential.UserName=#{userName}");
 		return SQL();
 	}

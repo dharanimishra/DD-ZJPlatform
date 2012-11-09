@@ -8,6 +8,10 @@ public class Member implements Serializable {
 	 */
 	private static final long serialVersionUID = 2142198565471578852L;
 
+	
+    private MemberPersona memberPersona          = null;
+	
+	
 	/**
 	 * This field corresponds to the database column memmember.ID
 	 */
@@ -398,5 +402,10 @@ public class Member implements Serializable {
 	public void setPicturePath(String picturePath) {
 		this.picturePath = picturePath == null ? null : picturePath.trim();
 	}
+	
+	public MemberPersona getMemberPersona() {
+		return memberPersona;
+	}
+
 
 }
