@@ -107,6 +107,7 @@ public class LoginController {
             
 			// redirect to the login page with error message
 			System.out.println(" User is not authenticated");
+			request.setAttribute("loginResult", "true");
 			ModelAndView mvLogin = new ModelAndView("login");
 			ThreadLocalUtil.unset();
 			return mvLogin;
