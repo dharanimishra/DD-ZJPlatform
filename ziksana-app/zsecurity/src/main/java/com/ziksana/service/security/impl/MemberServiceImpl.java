@@ -4,6 +4,7 @@
 package com.ziksana.service.security.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.member.Member;
 import com.ziksana.persistence.security.UserMapper;
@@ -13,6 +14,7 @@ import com.ziksana.service.security.MemberService;
  * @author prabu
  *
  */
+@Service
 public class MemberServiceImpl implements MemberService {
 
 	/* (non-Javadoc)
@@ -26,7 +28,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member getMemberByUser(String userName) {
 		// TODO Auto-generated method stub
-		return userMapper.getMemberByUser(Integer.valueOf(userName));
+		return userMapper.getMemberByUser(userName);
 	}
 
 }

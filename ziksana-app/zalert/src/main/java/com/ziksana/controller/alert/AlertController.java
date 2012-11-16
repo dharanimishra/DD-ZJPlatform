@@ -34,12 +34,8 @@ public class AlertController {
 	ModelAndView showMyAlerts(@PathVariable String memberId) {
 		logger.info("Entering showMyAlerts(): " + memberId);
 		ModelAndView mv = new ModelAndView("calendar/alerts");
-		ZID member = new StringZID("1000");
-		ZID memberPersonaId = new StringZID("100");
-
-		SecurityToken token = new SecurityToken(member, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
-
+		
+		
 		mv.addObject("alerts", this.alertsService.getAlertList());
 		logger.info("Number of alerts is  " + this.alertsService.getAlertList().size());
 		logger.info("Exiting showMyAlerts(): " + memberId);

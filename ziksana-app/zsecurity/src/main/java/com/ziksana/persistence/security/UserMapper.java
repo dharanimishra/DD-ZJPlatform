@@ -18,6 +18,6 @@ public interface UserMapper {
 	
 	
 	@SelectProvider(type = UserSqlProvider.class, method = "getUserSql")
-    public Member getMemberByUser(@Param("userName") Integer userId);
+    public Member getMemberByUser(@Param("userName") String userId);
 
 }
