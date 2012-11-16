@@ -29,5 +29,20 @@
 			<type>jar</type>
 			<scope>import</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zmycontacts</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zassessment</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zinstitution</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

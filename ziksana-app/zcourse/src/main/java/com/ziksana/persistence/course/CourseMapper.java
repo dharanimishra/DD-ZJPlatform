@@ -3,6 +3,7 @@ package com.ziksana.persistence.course;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
@@ -14,6 +15,7 @@ import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseAdditionalProperty;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentType;
+import com.ziksana.domain.institution.CurriculumCourse;
 
 public interface CourseMapper {
 
@@ -39,7 +41,7 @@ public interface CourseMapper {
 	 * @param memberPersonaId
 	 * @return
 	 */
-	@Select({ "select", "courseid, name, description, coursestatus",
+	@Select({ "select courseid, name, description, coursestatus, securityindicator, courseduration",
 			"from corcourse where memberpersonaid = #{memberPersonaId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "courseId", column = "courseid"),
@@ -215,5 +217,41 @@ public interface CourseMapper {
 	
 	List<LearningComponent> getLearningObjects(Boolean isLearningObject,
 			Integer memberRoleId);
+
+	@Update({
+		"update corcourse",
+		"set coursestatus = #{courseStatus,jdbcType=INTEGER},",
+		"where courseid = #{courseId,jdbcType=INTEGER}" })
+	void saveReviewCourse(Course course);
+
+	
+	@Select({"select * from corcurriculumcourse where memberroleid = #{memberRoleId,jdbcType=INTEGER}"})
+	@Results(value = { 
+			@Result(property = "curriculumCourseId", column = "curriculumcourseid"),
+			@Result(property = "courseId", column = "courseid"),
+			@Result(property = "courseUseType", column = "courseusetype"),
+			@Result(property = "courseversion", column = "courseversion"),
+			@Result(property = "gradetype", column = "gradetype"),
+			@Result(property = "validfrom", column = "validfrom"),
+			@Result(property = "valido", column = "validto"),
+			@Result(property = "duration", column = "duration"),
+			@Result(property = "durationunit", column = "durationunit"),
+			@Result(property="course", column="courseid", javaType=Course.class,one=@One(select="getBaseCourseDetails"))
+	})
+	List<CurriculumCourse> getCurriculumCoursesByMember(Integer memberRoleId);
+
+
+	@Select({"select * from corcourse where memberroleid = #{memberRoleId,jdbcType=INTEGER}"})
+	@Results(value = { 
+			@Result(property = "courseId", column = "courseid"),
+			@Result(property = "courseUseType", column = "courseusetype"),
+			@Result(property = "courseversion", column = "courseversion"),
+			@Result(property = "gradetype", column = "gradetype"),
+			@Result(property = "validfrom", column = "validfrom"),
+			@Result(property = "valido", column = "validto"),
+			@Result(property = "duration", column = "duration"),
+			@Result(property = "durationunit", column = "durationunit"),
+	})
+	List<Course> getPublishedCourses(Integer memberRoleId);
 
 }

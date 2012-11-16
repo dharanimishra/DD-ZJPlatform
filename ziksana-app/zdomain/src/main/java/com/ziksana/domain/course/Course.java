@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.ziksana.domain.assessment.TestPackage;
+import com.ziksana.domain.assessment.engagement.Engagement;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utils.SubjectClassification;
@@ -89,7 +90,7 @@ public class Course extends AuditHistory{
 	private List<CoursePlaybook> 			coursePlaybookList			= null;
 	private List<CourseLearningPlanner> 	courseLearningPlannerList 	= null;
 	private TestPackage						testPackage					= null;
-
+	private List<Engagement> 				engagementList				= null;
 	/**
 	 * @param index
 	 * @return
@@ -474,6 +475,20 @@ public class Course extends AuditHistory{
 	public String toString() {
 		return "Course [name=" + name + ", courseStatus=" + courseStatus
 				+ ", courseDuration=" + courseDuration + "]";
+	}
+
+	/**
+	 * @return the engagementList
+	 */
+	public List<Engagement> getEngagementList() {
+		return engagementList;
+	}
+
+	/**
+	 * @param engagementList the engagementList to set
+	 */
+	public void setEngagementList(List<Engagement> engagementList) {
+		this.engagementList = engagementList;
 	}
 
 

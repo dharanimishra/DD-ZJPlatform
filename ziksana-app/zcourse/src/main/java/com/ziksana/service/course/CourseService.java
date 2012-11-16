@@ -2,6 +2,7 @@ package com.ziksana.service.course;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseAdditionalProperty;
@@ -92,6 +93,13 @@ public interface CourseService {
 	 * @throws CourseException
 	 */
 	public void deleteLearningObject(ZID learningComponentId, LearningObjectDeleteType deleteType) throws CourseException;
+	
+	/**
+	 * @param memberRoleId
+	 * @return
+	 * @throws CourseException
+	 */
+	public Map<Object, Object> getCourseComponentsToPublish(Integer memberRoleId) throws CourseException;
 
 }
 

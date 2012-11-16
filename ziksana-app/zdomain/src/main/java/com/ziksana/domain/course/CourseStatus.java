@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ziksana.domain.course;
 
 import java.util.NoSuchElementException;

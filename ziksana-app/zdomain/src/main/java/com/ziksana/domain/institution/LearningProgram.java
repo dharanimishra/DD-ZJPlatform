@@ -3,6 +3,7 @@ package com.ziksana.domain.institution;
 import java.util.Date;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.course.CertificateType;
+import com.ziksana.domain.course.Duration;
 import com.ziksana.domain.course.Institution;
 import com.ziksana.domain.course.Rating;
 import com.ziksana.id.ZID;
@@ -15,7 +16,7 @@ public class LearningProgram extends AuditHistory{
 	
 	public LearningProgram(String name, Rating programRating,
 			ProgramType programType, CertificateType certificateType,
-			Integer programDuration) {
+			Duration programDuration) {
 		this.name = name;
 		this.programRating = programRating;
 		this.programType = programType;
@@ -33,7 +34,7 @@ public class LearningProgram extends AuditHistory{
 	private Boolean 			ziksanaIndicator 	= null;
 	private String 				programIdentifier 	= null;
 	private CertificateType 	certificateType 	= null;
-	private Integer 			programDuration 	= null;
+	private Duration 			programDuration 	= null;
 	private Institution 		institution 		= null;
 	private Integer 			version 			= null;
 	
@@ -160,13 +161,13 @@ public class LearningProgram extends AuditHistory{
 	/**
 	 * @return the programDuration
 	 */
-	public Integer getProgramDuration() {
+	public Duration getProgramDuration() {
 		return programDuration;
 	}
 	/**
 	 * @param programDuration the programDuration to set
 	 */
-	public void setProgramDuration(Integer programDuration) {
+	public void setProgramDuration(Duration programDuration) {
 		this.programDuration = programDuration;
 	}
 	/**

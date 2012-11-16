@@ -34,7 +34,7 @@ public class CourseDetails{
 	//private CurriculumCourse 						curriculumCourse 					= null;
 	//private List<LearningContentReviewProgress> 	learningContentReviewProgressList 	= null;
 	//private List<Announcement> 					announcements 						= null;
-	// private List<Engagement> 					engagements 						= null;
+	
 
 	
 	/**

@@ -8,7 +8,7 @@ public enum GradeType {
 	PERCENTAGE      	(1, "Perncentage"),
 	PERCENTILE      	(2, "Percentile"),
 	RELATIVE_POSITION   (3, "Relative Position"),
-	GPA 				(4,"GPA"),
+	GPA 				(4, "GPA"),
 	A_PLUS				(5,"A +");
 	
 

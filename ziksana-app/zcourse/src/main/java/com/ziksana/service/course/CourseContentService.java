@@ -59,5 +59,10 @@ public interface CourseContentService {
 	public List<LearningContent> getLearningContent(Integer memberRoleId) throws CourseException;
 
 	
+	/**
+	 * @param deleteType
+	 * @param learningContentId
+	 * @throws CourseException
+	 */
 	public void deleteContent(LearningContentDeleteType deleteType, ZID learningContentId) throws CourseException;
 }

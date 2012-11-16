@@ -3,6 +3,7 @@ package com.ziksana.service.course.impl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -429,6 +430,22 @@ public class CourseServiceImpl implements CourseService {
 			learningComponentMapper.delete(isDelete, new Integer(learningComponentId.getStorageID()));
 			
 		}
+	}
+
+	@Override
+	public Map<Object, Object> getCourseComponentsToPublish(
+			Integer memberRoleId) throws CourseException {
+		
+		
+	/*	 Map componentsMap = null;
+		 
+		 componentsMap = new HashMap();
+		 
+		List<LearningComponent> learningObjectList =  getLearningObjects(memberRoleId);
+		
+		componentsMap.put(CourseComponentType.LEARNING_OBJECT, learningObjectList);
+*/		
+		return null;
 	}
 
 }
