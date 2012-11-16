@@ -2,9 +2,11 @@ package com.ziksana.service.assignment.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.ziksana.domain.assessment.Assignment;
 import com.ziksana.domain.assessment.AssignmentTestRubric;
 import com.ziksana.domain.assessment.AssignmentTestSettings;
@@ -13,10 +15,18 @@ import com.ziksana.domain.assessment.Rubric;
 import com.ziksana.domain.assessment.RubricMatrix;
 import com.ziksana.domain.assessment.Test;
 import com.ziksana.domain.assessment.TestQuestion;
+import com.ziksana.domain.assessment.member.StudentTest;
+import com.ziksana.domain.assessment.member.TestGrade;
+import com.ziksana.domain.assessment.member.TestSubmission;
+import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.LearningComponent;
+import com.ziksana.domain.member.Member;
+import com.ziksana.domain.member.StudentInfo;
 import com.ziksana.exception.assignment.AssignmentException;
 import com.ziksana.id.ZID;
 import com.ziksana.persistence.assessment.AssignmentTestMapper;
+import com.ziksana.persistence.course.CourseLearningComponentMapper;
+import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.service.assignment.AssignmentService;
 
 /**
@@ -28,8 +38,13 @@ public class AssignmentServiceImpl implements AssignmentService {
 	
 	@Autowired
 	public AssignmentTestMapper assignmentTestMapper;
-	
+	@Autowired
+	public LearningComponentMapper componentMapper;	
+	@Autowired
+	public CourseLearningComponentMapper courseComponentMapper;
 
+		
+	
 	@Transactional
 	@Override
 	public void saveAssignment(LearningComponent component,
@@ -332,6 +347,111 @@ public class AssignmentServiceImpl implements AssignmentService {
 		logger.debug("Test ["+test.getName()+"]  Questions list size : "+questionList.size());
 		
 		return questionList;
+	}
+
+	@Transactional
+	@Override
+	public List<Test> getAssignmentTest(Integer courseId)
+			throws AssignmentException {
+		
+		List<Test> 						testList 			= null;
+		List<Test> 						updatedTestList 	= null;
+		List<Assignment> 				assignmentList 		= null;
+		List<CourseLearningComponent> 	courseComponentList = null;
+		LearningComponent 				learrningComponent 	= null;
+		Integer 						componentId			= null;
+		
+		if(courseId==null){
+			throw new AssignmentException("CourseID  cannot be null for Test");
+		}
+		
+		testList = new ArrayList<Test>();
+		updatedTestList = new ArrayList<Test>();
+		courseComponentList = courseComponentMapper.getComponentByCourse(courseId);
+		
+		for (CourseLearningComponent courseLearningComponent : courseComponentList) {
+			
+			learrningComponent = courseLearningComponent.getLearningComponent();
+			
+			if(learrningComponent.getLearningComponentId()!=null){
+				
+				componentId =  new Integer(learrningComponent.getLearningComponentId().getStorageID());
+				
+				assignmentList = assignmentTestMapper.getAssignmentByComponentId(componentId);
+				
+				if(assignmentList!=null){
+					
+					for (Assignment assignment : assignmentList) {
+						
+						testList = assignmentTestMapper.getTestsByAssignmentId(new Integer(assignment.getAssignmentId().getStorageID()));
+						
+						if(testList!=null){
+							
+							for (Test test : testList) {
+								updatedTestList.add(test);
+							}
+							
+						}
+					} 
+				}
+			}
+			
+		}
+		return updatedTestList;
+	}
+
+	@Transactional
+	@Override
+	public List<StudentInfo> getStudentsByAssignmentId(Integer testId)
+			throws AssignmentException {
+		
+		List<StudentInfo> studentList = null;
+		StudentInfo studentInfo = null;
+		
+		if(testId == null){
+			throw new AssignmentException("Test ID  cannot be null");
+		}
+		
+		studentList = new ArrayList<StudentInfo>();
+		
+		StudentTest studentTest = assignmentTestMapper.getStudentsInfoByTestId(testId);
+		
+		Integer studentTestId = new Integer(studentTest.getTestId().getStorageID());
+		
+		List<TestGrade> testGradeList =  assignmentTestMapper.getStudentTestInfoByStudentTestId(studentTestId);
+		
+		for (TestGrade testGrade : testGradeList) {
+			
+			studentInfo = new StudentInfo();
+	
+			Member member = testGrade.getEvaluatingMemberRole().getMember();
+			
+			studentInfo.setGrade(testGrade.getGrade());
+			studentInfo.setName(member.getFirstName()+" "+member.getLastName());
+			
+			TestSubmission testSubmission  = assignmentTestMapper.getTestSubmissionByMemberRoleId(testGrade.getEvaluatingMemberRole().getMemberRoleId());
+	
+			studentInfo.setTestSubmissionDate(testSubmission.getSubmittedDate());
+			
+			studentList.add(studentInfo);
+		}
+		
+		return studentList;
+	}
+
+	@Override
+	public TestSubmission getTestSubmissionInfo(Integer memberRoleId)
+			throws AssignmentException {
+		
+		TestSubmission testSubmission  = null;
+				
+		if(memberRoleId == null){
+			throw new AssignmentException("MemberRole ID  cannot be null");
+		}
+		
+		testSubmission = assignmentTestMapper.getTestSubmissionByMemberRoleId(memberRoleId);
+		
+		return testSubmission;
 	}
 
 

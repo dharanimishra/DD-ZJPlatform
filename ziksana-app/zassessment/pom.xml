@@ -17,5 +17,10 @@
   		<version>0.0.1-SNAPSHOT</version>
   		<scope>import</scope>
   	</dependency>
+  	<dependency>
+  		<groupId>com.ziksana</groupId>
+  		<artifactId>zcourse</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>

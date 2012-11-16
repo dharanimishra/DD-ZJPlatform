@@ -36,7 +36,7 @@ public class Test extends AuditHistory {
 	private AssignmentTestSettings 	assignmentTestSettings 			= null;
 	private AssignmentTestRubric	testRubric						= null;
 	private List<TestQuestion>      testQuestionList				= null;
-	private Assignment				Assignment						= null;
+	private Assignment				assignment						= null;
 	
 	/**
 	 * @return the testId
@@ -260,13 +260,13 @@ public class Test extends AuditHistory {
 	 * @return the assignment
 	 */
 	public Assignment getAssignment() {
-		return Assignment;
+		return assignment;
 	}
 	/**
 	 * @param assignment the assignment to set
 	 */
 	public void setAssignment(Assignment assignment) {
-		Assignment = assignment;
+		this.assignment = assignment;
 	}
 	@Override
 	public String toString() {

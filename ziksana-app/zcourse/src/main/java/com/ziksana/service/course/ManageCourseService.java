@@ -3,6 +3,7 @@ package com.ziksana.service.course;
 import java.util.List;
 
 import com.ziksana.domain.assessment.engagement.Engagement;
+import com.ziksana.domain.assessment.member.TestSubmission;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.subscription.MemberSubscriptionProgram;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
@@ -11,6 +12,7 @@ import com.ziksana.domain.member.GroupMember;
 import com.ziksana.domain.member.GroupMemberActivity;
 import com.ziksana.domain.member.GroupMemberConversation;
 import com.ziksana.domain.member.GroupMessage;
+import com.ziksana.domain.member.StudentInfo;
 import com.ziksana.exception.course.CourseException;
 
 /**
@@ -92,7 +94,7 @@ public interface ManageCourseService {
 	public List<GroupMemberConversation> getStudentInteraction(Integer memberRoleId) throws CourseException;
 	
 	
-	/**{Cancel Interaction action}
+	/**{Cancel Interaction action}<br>
 	 * Removes the association GroupMember from GroupMemberConversation(Interaction)
 	 * @param conversationId
 	 * @throws CourseException
@@ -157,5 +159,20 @@ public interface ManageCourseService {
 	 * @throws CourseException
 	 */
 	public void sendMessageToGroup(GroupMessage groupMessage) throws CourseException;
+	
+	/**
+	 * @param memberRoleId
+	 * @return
+	 * @throws CourseException
+	 */
+	public StudentInfo getStudentPerformance(Integer memberRoleId) throws CourseException;
 
+	/**
+	 * @param testSubmission
+	 * @throws CourseException
+	 */
+	public void sendFeedbackToStudent(TestSubmission testSubmission) throws CourseException;
+	
+	
+	
 }

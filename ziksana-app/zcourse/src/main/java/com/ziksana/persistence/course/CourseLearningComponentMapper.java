@@ -1,5 +1,7 @@
 package com.ziksana.persistence.course;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -26,7 +28,7 @@ public interface CourseLearningComponentMapper {
 	void save(CourseLearningComponent courseLComponent);
 
 	@Select({
-			"select courseLearningComponentId, duration, durationunit, courseid, learningcomponentid, learningcomponentTypeid ",
+			"select courselearningcomponentid, duration, durationunit, courseid, learningcomponentid, learningcomponenttypeid ",
 			" from corcourselearningcomponent where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "courseLearningComponentId", column = "courselearningcomponentid"),
@@ -35,6 +37,6 @@ public interface CourseLearningComponentMapper {
 			@Result(property = "course.courseId", column = "courseid"),
 			@Result(property = "learningComponent.learningComponentId", column = "learningcomponentid"),
 			@Result(property = "learningcomponentType.learningcomponentTypeId", column = "learningcomponentTypeId") })
-	CourseLearningComponent getComponentByCourse(Integer courseId);
+	List<CourseLearningComponent> getComponentByCourse(Integer courseId);
 
 }

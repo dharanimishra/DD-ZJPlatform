@@ -82,4 +82,11 @@ public interface LearningComponentMapper {
 	@Update({" update corlearningcomponent set isdelete = #{isdelete, jdbcType=BOOLEAN} where learningcomponentid =  #{learningComponentId,jdbcType=INTEGER}"})
 	void delete(Boolean isDelete, Integer learningComponentId);
 
+	
+	List<LearningComponent> getComponentsByCourseId(Integer courseId);
+
+	
+	@Select({"select * from corlearningcomponent where "})
+	LearningComponent getComponentsByCourseComponentId(Integer integer);
+
 }

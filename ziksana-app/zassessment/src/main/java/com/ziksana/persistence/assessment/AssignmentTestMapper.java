@@ -16,6 +16,9 @@ import com.ziksana.domain.assessment.AssignmentTestSettings;
 import com.ziksana.domain.assessment.QuestionBank;
 import com.ziksana.domain.assessment.Test;
 import com.ziksana.domain.assessment.TestQuestion;
+import com.ziksana.domain.assessment.member.StudentTest;
+import com.ziksana.domain.assessment.member.TestGrade;
+import com.ziksana.domain.assessment.member.TestSubmission;
 import com.ziksana.service.assignment.impl.QuestionSearchCriteria;
 
 public interface AssignmentTestMapper {
@@ -24,9 +27,10 @@ public interface AssignmentTestMapper {
 	 * @param assignment
 	 */
 	@Insert({
-			"insert into asmassignmenttest (active, name, assignmentcontent, status, learningcomponentid, memberroleid)",
+			"insert into asmassignmenttest (active, name, assignmentcontent, status, learningcomponentid, memberroleid, isdelete)",
 			"values (#{active,jdbcType=BOOLEAN}, #{name,jdbcType=VARCHAR}, #{assignmentContent,jdbcType=VARCHAR},",
-			" #{status,jdbcType=INTEGER}, #{learningComponent.learningComponentId,jdbcType=INTEGER}, #{creatorMemberPersona.memberRoleId,jdbcType=INTEGER})" })
+			" #{status,jdbcType=INTEGER}, #{learningComponent.learningComponentId,jdbcType=INTEGER}," +
+			" #{creatorMemberPersona.memberRoleId,jdbcType=INTEGER}, 'false')" })
 	void saveAssignment(Assignment assignment);
 
 	/**Saves the Test for Assignment.
@@ -36,7 +40,7 @@ public interface AssignmentTestMapper {
 			"insert into asmtest (active, name, testtype, testcontent, dificultylevel, ",
 			"instruction, zenicreatedindicator, learnercreatedindicator, multipleattemptsallowedindicator, ",
 			"openforpeerevaluationindicator, asynchronousindicator, proctoringneededindicator, ",
-			"status, assignmentid)",
+			"status, assignmentid, isdelete)",
 			"values (#{active,jdbcType=BOOLEAN}, ",
 			"#{name,jdbcType=VARCHAR}, #{testType,jdbcType=INTEGER}, ",
 			"#{testContent,jdbcType=VARCHAR}, #{dificultyLevel,jdbcType=INTEGER}, ",
@@ -44,7 +48,7 @@ public interface AssignmentTestMapper {
 			"#{isLearner,jdbcType=BOOLEAN}, #{isMultipleAttemptsAllowed,jdbcType=BOOLEAN}, ",
 			"#{isOpenforPeerEvaluation,jdbcType=BOOLEAN}, #{isAsynchronous,jdbcType=BOOLEAN}, ",
 			"#{isProctoringNeeded,jdbcType=BOOLEAN}, ",
-			"#{status,jdbcType=INTEGER}, #{assignmentId,jdbcType=INTEGER}" })
+			"#{status,jdbcType=INTEGER}, #{assignmentId,jdbcType=INTEGER}, 'false' " })
 	@Results(value={
 			@Result(property="testId", column="testid"),
 			@Result(property="name", column="name"),
@@ -71,14 +75,14 @@ public interface AssignmentTestMapper {
 	void saveTestRubric(AssignmentTestRubric testRubric);
 
 	
-	@Select({"select testid from asmtest where name = #{name,jdbcType=VARCHAR}"})
+	@Select({"select testid from asmtest where name = #{name,jdbcType=VARCHAR} and isdelete = 'false' "})
 	@Results(value={
 			@Result(property="testId", column="testid"),
 	})
 	Integer isTestExists(String name);
 
 	
-	@Select({"select testquestionid, questionbankid from  asmtestquestion where testid = #{testId,jdbcType=INTEGER}"})
+	@Select({"select testquestionid, questionbankid from  asmtestquestion where testid = #{testId,jdbcType=INTEGER} and isdelete = 'false' "})
 	@Results(value={
 			@Result(property="testQuestionId", column="testquestionid"),
 			@Result(property="questionBankId", column="questionbankid"),
@@ -133,7 +137,7 @@ public interface AssignmentTestMapper {
 	 * @param searchCriteria
 	 * @return
 	 */
-	@Select({"selecgt name, questionbankid,memberid, questiontype from asmquestionbank where name like #{name,jdbcType=VARCHAR} "})
+	@Select({"selecgt name, questionbankid, memberid, questiontype from asmquestionbank where name like #{name,jdbcType=VARCHAR} "})
 	@Results(value = {
 			@Result(property="questionBankId", column="questionbankid"),
 			@Result(property="owningMember.memberId", column="memberid"),
@@ -143,6 +147,9 @@ public interface AssignmentTestMapper {
 	List<QuestionBank> searchQuestions(QuestionSearchCriteria searchCriteria);
 	
 	
+	/**
+	 * @param testQuestion
+	 */
 	@Insert({"insert into asmtestquestion (creationdate,active,testid,questionbankid) ",
 		" values (sysdate(), #{active, jdbcType=BOOLEAN}, #{testId, jdbcType=INTEGER}, #{questionBankId, jdbcType=INTEGER})"})
 	void saveTestQuestion(TestQuestion testQuestion);
@@ -162,6 +169,9 @@ public interface AssignmentTestMapper {
 	TestQuestion getTestQuestion(Integer testQuestionId);
 	
 
+	/**
+	 * @param qtnBank
+	 */
 	@Update({"update asmquestionbank set difficultylevel=#{difficultyLevel , jdbcType=INTEGER}, profficiencylevel=#{proficiencyLeveel, jdbcType=INTEGER}, ",
 		"questiontype=#{questionType, jdbcType=INTEGER}, ",
 		"questioncontent=#{name, jdbcType=VARCHAR}, instruction=#{instruction, jdbcType=VARCHAR},",
@@ -171,11 +181,18 @@ public interface AssignmentTestMapper {
 	void updateQuestionBank(QuestionBank qtnBank);
 	
 
+	/**
+	 * @param testQuestion
+	 */
 	@Update({"update asmtestquestion set marks=#{marks, jdbcType=INTEGER}, answerwithintime=#{answerWithInTime,jdbcType=INTEGER },",
 		" panaltyfactor=#{penaltyMarks,jdbcType=INTEGER}  where testquestionid=#{testQuestionId, jdbcType=INTEGER}"})
 	void updateTestQuestion(TestQuestion testQuestion);
 	
 	
+	/**
+	 * @param assignmentId
+	 * @return
+	 */
 	@Select({"select name, assignmentcontent, status, learningcomponentid, memberroleid from  asmassignment where assignmentid = #{assignmentId,jdbcType=INTEGER}"})
 	@Results(value={
 			@Result(property="name", column="name"),
@@ -187,10 +204,17 @@ public interface AssignmentTestMapper {
 	Assignment getAssignmentDetails(Integer assignmentId);
 	
 	
+	/**
+	 * @param testId
+	 * @param isDelete
+	 */
 	@Update({"update asmtest set isdelete = #{isDelete, jdbcType=BOOLEAN} where testid = #{testId, jdbcType=INTEGER}"})
 	void deleteTest(Integer testId, Boolean isDelete);
 
 	
+	/**
+	 * @param test
+	 */
 	@Update({"update asmtest set active = #{active,jdbcType=BOOLEAN},",
 			"name = #{name,jdbcType=VARCHAR},",
 			"AssignmentContent = #{assignmentContent,jdbcType=VARCHAR},",
@@ -199,4 +223,57 @@ public interface AssignmentTestMapper {
 			"MemberRoleId = #{creatorMemberPersona.memberRoleId,jdbcType=INTEGER} ",
 			" where testid = #{testId, jdbcType=INTEGER}"})
 	void updateTest(Test test);
+
+	
+	@Select({"select assignmentid, name, assignmentcontent, status, learningcomponentid, memberroleid from  asmassignment " +
+			" where assignmentid = #{assignmentId,jdbcType=INTEGER} and isdelete='false' "})
+	@Results(value={
+			@Result(property="assignmentId", column="assignmentid"),
+			@Result(property="name", column="name"),
+			@Result(property="assignmentContent", column="assignmentContent"),
+			@Result(property="status", column="status")
+	})
+	List<Assignment> getAssignmentByComponentId(Integer componentId);
+
+	
+	@Select({"select testid, name, testtype, testcontent, assignmentid from asmtest where assignmentid = #{assignmentId,jdbcType=VARCHAR} and isdelete = 'false' "})
+	@Results(value={
+			@Result(property="testId", column="testid"),
+			@Result(property="name", column="name"),
+			@Result(property="testType", column="testtype"),
+			@Result(property="testContent", column="testcontent"),
+			@Result(property="assignment.assignmentId", column="assignmentid")
+	})
+	List<Test> getTestsByAssignmentId(Integer assignmentId);
+
+	
+	@Select({"select assignmenttestid, totalduration,courseassignmentid, testid from msmassignmenttest where testid = #{testId,jdbcType=VARCHAR} and isdelete = 'false' "})
+	@Results(value={
+			@Result(property="assignmentTestId", column="assignmenttestid"),
+			@Result(property="totalDuration", column="totalduration"),
+			@Result(property="subscribedCourseAssignment.courseAssignmentId", column="courseassignmentid"),
+			@Result(property="test.testId", column="testid"),
+			@Result(property="subscribedCourseAssignment.assignmentId", column="assignmentid")
+	})
+	StudentTest getStudentsInfoByTestId(Integer testId);
+
+	
+	@Select({"select testgradeid,grade, assignmenttestid, memberroleid from msmassignmenttestgrade where studentTestId = #{studentTestId, jdbcType=INTEGER}"})
+	@Results(value={
+			@Result(property="testGradeId", column="testgradeid"),
+			@Result(property="grade", column="grade"),
+			@Result(property="studentTest.studentTestId", column="assignmenttestid"),
+			@Result(property="evaluatingMemberRole.memberRoleId", column="memberroleid")
+	})
+	List<TestGrade> getStudentTestInfoByStudentTestId(Integer studentTestId);
+
+	@Select({"select testsubmissionid, submitteddate, memberroleid from msmtestsubmission where memberroleid = #{memberRoleId, jdbcType=INTEGER}"})
+	@Results(value={
+			@Result(property="testsubmissionid", column="testsubmissionid"),
+			@Result(property="submitteddate", column="submitteddate")
+	})
+	TestSubmission getTestSubmissionByMemberRoleId(Integer memberRoleId);
+	
+	
+	
 }

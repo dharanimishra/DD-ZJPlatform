@@ -6,7 +6,10 @@ import com.ziksana.domain.assessment.Assignment;
 import com.ziksana.domain.assessment.QuestionBank;
 import com.ziksana.domain.assessment.Test;
 import com.ziksana.domain.assessment.TestQuestion;
+import com.ziksana.domain.assessment.member.TestSubmission;
 import com.ziksana.domain.course.LearningComponent;
+import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.domain.member.StudentInfo;
 import com.ziksana.exception.assignment.AssignmentException;
 import com.ziksana.service.assignment.impl.QuestionSearchCriteria;
 
@@ -121,7 +124,30 @@ public interface AssignmentService {
 	 * @return
 	 * @throws AssignmentException
 	 */
-	List<QuestionBank> basicSearch(QuestionSearchCriteria searchCriteria)
+	public List<QuestionBank> basicSearch(QuestionSearchCriteria searchCriteria)
 			throws AssignmentException;
+	
+	/**
+	 * @param courseId
+	 * @return
+	 * @throws AssignmentException
+	 */
+	public List<Test> getAssignmentTest(Integer courseId) throws AssignmentException;
+	
+	
+	/**
+	 * @param testId
+	 * @return
+	 * @throws AssignmentException
+	 */
+	public List<StudentInfo> getStudentsByAssignmentId(Integer testId) throws AssignmentException;
+	
+	/**
+	 * @param memberRoleId
+	 * @return
+	 * @throws AssignmentException
+	 */
+	public TestSubmission getTestSubmissionInfo(Integer memberRoleId) throws AssignmentException;
 
+	
 }

@@ -14,6 +14,7 @@ import com.ziksana.domain.member.GroupContext;
 import com.ziksana.domain.member.GroupMember;
 import com.ziksana.domain.member.GroupMemberActivity;
 import com.ziksana.domain.member.GroupMemberConversation;
+import com.ziksana.domain.member.GroupMessage;
 import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberPersona;
 
@@ -160,10 +161,18 @@ public interface GroupMapper {
 			+ " #{groupContext.contextId,jdbcType=INTEGER} ) " })
 	void saveGrroup(Group group);
 
+	
+	/**
+	 * @param groupId
+	 */
 	@Update({ "update from clngroup set isdelete='true'  where groupid = #{groupId, jdbcType=INTEGER} " })
 	void deleteGroup(Integer groupId);
 
 	 
+	/**
+	 * @param groupMemberId
+	 * @return
+	 */
 	@Select({"select * from clngroupmemberactivity where groupmemberid = #{groupMemberId, jdbcType=INTEGER}"})
 	@Results(value = {
 			@Result(property = "groupmemberactivityId", column = "groupmemberactivityid"),
@@ -173,6 +182,10 @@ public interface GroupMapper {
 	List<GroupMemberActivity> getGroupActivities(Integer groupMemberId);
 	
 
+	/**
+	 * @param memberRoleId
+	 * @return
+	 */
 	@Select({"select * from memmemberrole where memberroleid = #{memberRoleId, jdbcType=INTEGER}"})
 	@Results(value = {
 			@Result(property = "memberRoleId", column = "memberroleid"),
@@ -181,6 +194,10 @@ public interface GroupMapper {
 	MemberPersona getMemberRoleById(Integer memberRoleId);
 	
 	
+	/**
+	 * @param memberId
+	 * @return
+	 */
 	@Select({"select * from memmember where memberid = #{memberId, jdbcType=INTEGER}"})
 	@Results(value = {
 			@Result(property = "memberId", column = "memberid"),
@@ -188,6 +205,16 @@ public interface GroupMapper {
 			@Result(property = "lastname", column = "lastname"),
 			})
 	Member getMemberById(Integer memberId);
+	
+
+	/**
+	 * @param groupMessage
+	 */
+	@Insert({"insert into clngroupwall (creationdate, message, isvotingallowed, messagevisibility, messagetype)" +
+			" values (sysdate(), #{message,jdbcType=VARCHAR}, #{isVotingAllowed,jdbcType=BOOLEAN}," +
+			" #{messageVisibility,jdbcType=INTEGER}, #{messageType,jdbcType=INTEGER}, " +
+			"#{group.groupId,jdbcType=INTEGER}, #{postingGroupMember.groupMemberId,jdbcType=INTEGER})"})
+	void sendMessageToGroup(GroupMessage groupMessage);
 	
 
 }

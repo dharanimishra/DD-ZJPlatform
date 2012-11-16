@@ -2,13 +2,12 @@ package com.ziksana.service.course.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.ziksana.domain.assessment.engagement.Engagement;
 import com.ziksana.domain.assessment.engagement.EngagementCriteria;
+import com.ziksana.domain.assessment.member.TestSubmission;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.subscription.MemberSubscriptionProgram;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
@@ -20,6 +19,7 @@ import com.ziksana.domain.member.GroupMember;
 import com.ziksana.domain.member.GroupMemberActivity;
 import com.ziksana.domain.member.GroupMemberConversation;
 import com.ziksana.domain.member.GroupMessage;
+import com.ziksana.domain.member.StudentInfo;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.persistence.assessment.engagement.EngagementMapper;
@@ -393,6 +393,34 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 	@Override
 	public void sendMessageToGroup(GroupMessage groupMessage)
 			throws CourseException {
+		
+		Group group = null;
+		
+		if(groupMessage == null){
+			throw new CourseException("GroupMessage cannot be null for Sending a message to Group");
+		}
+		
+		group = groupMessage.getGroup();
+		
+		if(group == null){
+			throw new CourseException("Group  cannot be null");
+		}
+		
+		groupsMapper.sendMessageToGroup(groupMessage);
+		
+	}
+
+	@Override
+	public StudentInfo getStudentPerformance(Integer memberRoleId)
+			throws CourseException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void sendFeedbackToStudent(TestSubmission testSubmission)
+			throws CourseException {
+		// TODO Auto-generated method stub
 		
 	}
 
