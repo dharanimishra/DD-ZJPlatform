@@ -1,4 +1,4 @@
-package com.spring.controllers;
+package com.ziksana.controller;
 
 import java.util.Date;
 import java.util.List;
@@ -21,7 +21,7 @@ import com.ziksana.service.polls.PollService;
 
 
 @Controller
-@RequestMapping(value = "/*")
+@RequestMapping(value = "/secure")
 public class PollController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PollController.class);

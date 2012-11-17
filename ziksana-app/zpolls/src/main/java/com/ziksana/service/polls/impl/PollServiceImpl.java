@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ziksana.exception.polls.PollException;
 import com.ziksana.domain.member.Member;
@@ -32,6 +33,7 @@ import com.ziksana.service.polls.PollService;
  * 
  */
 
+@Service
 public class PollServiceImpl implements PollService {
 
 	private static Logger logger = Logger.getLogger(PollServiceImpl.class);
