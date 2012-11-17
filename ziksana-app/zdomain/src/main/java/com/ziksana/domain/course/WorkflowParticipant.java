@@ -1,6 +1,7 @@
 package com.ziksana.domain.course;
 
 import java.util.Date;
+import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
@@ -35,7 +36,7 @@ public class WorkflowParticipant extends AuditHistory {
 	private ContentReviewWorkflow 		courseWorkflow 			= null;
 	private MemberPersona				participateMemberRole   = null;
 	private WorkflowParticipantComment 	participantComment 		= null;
-	private ContentReviewRating			contentReviewRating 	= null;
+	private List<ContentReviewRating>	authorReviewRatingList 	= null;
 	
 	/**
 	 * @return the participantId
@@ -133,19 +134,6 @@ public class WorkflowParticipant extends AuditHistory {
 	public void setParticipantComment(WorkflowParticipantComment participantComment) {
 		this.participantComment = participantComment;
 	}
-	/**
-	 * @return the contentReviewRating
-	 */
-	public ContentReviewRating getContentReviewRating() {
-		return contentReviewRating;
-	}
-	/**
-	 * @param contentReviewRating the contentReviewRating to set
-	 */
-	public void setContentReviewRating(ContentReviewRating contentReviewRating) {
-		this.contentReviewRating = contentReviewRating;
-	}
-
 	@Override
 	public String toString() {
 		return "WorkflowParticipant [communicatedDate=" + communicatedDate
@@ -153,6 +141,20 @@ public class WorkflowParticipant extends AuditHistory {
 				+ ", participantType=" + participantType + ", courseWorkflow="
 				+ courseWorkflow + ", participantComment=" + participantComment
 				+ "]";
+	}
+
+	/**
+	 * @return the authorReviewRatingList
+	 */
+	public List<ContentReviewRating> getAuthorReviewRatingList() {
+		return authorReviewRatingList;
+	}
+
+	/**
+	 * @param authorReviewRatingList the authorReviewRatingList to set
+	 */
+	public void setAuthorReviewRatingList(List<ContentReviewRating> authorReviewRatingList) {
+		this.authorReviewRatingList = authorReviewRatingList;
 	}
 	
 }

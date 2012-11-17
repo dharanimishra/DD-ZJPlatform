@@ -19,6 +19,8 @@ public class ContentReviewRating extends AuditHistory {
 	private Rating 							reviewerRating 					= null;
 	private LearningContentReviewProgress 	courseReviewProgress 			= null;
 	private WorkflowParticipant 			workflowParticipant 			= null;
+	private Integer							averageAuthorRating				= null;
+	private Integer							averageContentRating			= null;
 	/**
 	 * @return the reviewRatingId
 	 */
@@ -84,6 +86,30 @@ public class ContentReviewRating extends AuditHistory {
 	public String toString() {
 		return "ContentReviewRating [questionRating=" + questionRating
 				+ ", reviewerRating=" + reviewerRating + "]";
+	}
+	/**
+	 * @return the averageAuthorRating
+	 */
+	public Integer getAverageAuthorRating() {
+		return averageAuthorRating;
+	}
+	/**
+	 * @param averageAuthorRating the averageAuthorRating to set
+	 */
+	public void setAverageAuthorRating(Integer averageAuthorRating) {
+		this.averageAuthorRating = averageAuthorRating;
+	}
+	/**
+	 * @return the averageContentRating
+	 */
+	public Integer getAverageContentRating() {
+		return averageContentRating;
+	}
+	/**
+	 * @param averageContentRating the averageContentRating to set
+	 */
+	public void setAverageContentRating(Integer averageContentRating) {
+		this.averageContentRating = averageContentRating;
 	}
 	
 
