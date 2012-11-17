@@ -52,7 +52,7 @@ public class PollSqlProvider {
 	
 	public String getPollResultSql() {
 		BEGIN();
-		SELECT("utlzpollquestionresponse.*");
+		SELECT("DISTINCT utlzpollquestionresponse.*");
 		FROM("utlzpollquestionresponse");
 		FROM("utlzpolltracker");
 		WHERE("utlzpollquestionresponse.pollQuestionId=utlzpolltracker.pollQuestionId");

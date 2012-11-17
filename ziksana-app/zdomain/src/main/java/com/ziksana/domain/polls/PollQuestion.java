@@ -124,8 +124,9 @@ public class PollQuestion implements Comparable<PollQuestion> {
 	    	setTotalRespondents(total);
 	    }
 	    
-	    public void setTotalRespondents(Long total) {
-	    	totalRespondents = total;
+	    public void setTotalRespondents(long total) {
+	    	System.out.println(" Entering into question settotal");
+	    	totalRespondents = Long.valueOf(total);
 	    }
 	    
 	    public Long getTotalRespondents() {

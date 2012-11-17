@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +24,11 @@ import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollQuestionResult;
 import com.ziksana.domain.polls.PollResultNQuestion;
+import com.ziksana.id.StringZID;
+import com.ziksana.id.ZID;
 import com.ziksana.persistence.polls.PollQuestionMapper;
+import com.ziksana.security.util.SecurityToken;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.polls.PollService;
 
 /**
@@ -38,13 +44,33 @@ public class PollServiceImplTest {
 	
 	
 	
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+		ZID memberId = new StringZID("1000");
+		ZID memberPersonaId = new StringZID("100");
+
+		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+		ThreadLocalUtil.setToken(token);
+
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+		ThreadLocalUtil.unset();
+	}
+	
 	
     @Test
 	public void testGetPollQuestionsAndResults() {
 		String questionText = "who wins the t20 world cup?";
-		MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
-		memberPersona.setMemberRoleId(Integer.valueOf(102));
-		List<PollResultNQuestion> pollQuestionNResults = pollService.getPollQuestionsAndResults(memberPersona);
+		
+		List<PollResultNQuestion> pollQuestionNResults = pollService.getPollQuestionsAndResults();
 		
 		
 		for (PollResultNQuestion pollQuestionNResult: pollQuestionNResults)
@@ -55,18 +81,18 @@ public class PollServiceImplTest {
 		}
 		
 		
-		Assert.isTrue(pollQuestionNResults.size() == 3);
+		Assert.isTrue(pollQuestionNResults.size() == 1);
 		
 		
 	}
 	
 	
-    @Ignore @Test
+    @Test
 	public void testPollResponse() {
 		MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
 		memberPersona.setMemberRoleId(Integer.valueOf(100));
 		PollQuestion pollQuestion = new PollQuestion();
-		pollQuestion.setID(Integer.valueOf(2));
+		pollQuestion.setID(Integer.valueOf(5));
 		List<Integer> answers = new ArrayList();
 		answers.add(Integer.valueOf(1));
 		PollQuestionResponse pollResponse = new PollQuestionResponse();
@@ -81,11 +107,11 @@ public class PollServiceImplTest {
     @Test
 	public void testGetPollResult() {
 		MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
-		memberPersona.setMemberRoleId(Integer.valueOf(102));
+		memberPersona.setMemberRoleId(Integer.valueOf(100));
 		PollQuestion pollQuestion = new PollQuestion();
-		pollQuestion.setID(Integer.valueOf(2));
+		pollQuestion.setID(Integer.valueOf(5));
 		PollQuestionResult pollResult =  pollService.getPollResult(memberPersona, pollQuestion);
-		Assert.isTrue(pollResult.getOptionCount(0) == 5);
+		Assert.isTrue(pollResult.getOptionCount(0) == 6);
 		
 	}
 	

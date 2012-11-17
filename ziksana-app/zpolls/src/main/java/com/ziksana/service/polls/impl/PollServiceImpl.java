@@ -24,6 +24,7 @@ import com.ziksana.persistence.polls.PollMapper;
 import com.ziksana.persistence.polls.PollQuestionEntity;
 import com.ziksana.persistence.polls.PollQuestionMapper;
 import com.ziksana.persistence.polls.PollQuestionResponseMapper;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.polls.PollService;
 
 /**
@@ -41,12 +42,11 @@ public class PollServiceImpl implements PollService {
 	public PollQuestionResponseMapper pollQuestionResponseMapper;
 
 	@Override
-	public List<PollResultNQuestion> getPollQuestionsAndResults(
-			MemberPersona memberPersona) {
+	public List<PollResultNQuestion> getPollQuestionsAndResults() {
 
-		Validate.notNull(memberPersona, "MemberPersona cannot be null.");
 		List<PollQuestionResult> pollResults = pollQuestionMapper
-				.getPollResults(memberPersona.getMemberRoleId());
+				.getPollResults(Integer.valueOf(ThreadLocalUtil.getToken()
+						.getMemberPersonaId().getStorageID()));
 
 		List<PollResultNQuestion> pollQuestionsNResults = new ArrayList<PollResultNQuestion>();
 
@@ -59,7 +59,8 @@ public class PollServiceImpl implements PollService {
 		}
 
 		List<PollQuestionEntity> pollQuestions = pollQuestionMapper
-				.getPollQuestions(memberPersona.getMemberRoleId());
+				.getPollQuestions(Integer.valueOf(ThreadLocalUtil.getToken()
+						.getMemberPersonaId().getStorageID()));
 
 		for (PollQuestionEntity pollQuestionEntity : pollQuestions) {
 			PollResultNQuestion pollQuestionResult = new PollResultNQuestion();

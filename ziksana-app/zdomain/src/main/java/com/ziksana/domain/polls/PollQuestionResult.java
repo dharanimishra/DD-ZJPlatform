@@ -61,4 +61,16 @@ public class PollQuestionResult {
     	isValid();
         return question.getTotalRespondents();
     }
+    
+    
+    public void setTotalRespondents(Integer totalRespondents) {
+    	System.out.println(" Total respondents "+totalRespondents);
+    	long temp = Long.parseLong(Integer.toString(totalRespondents.intValue()));
+    	System.out.println(" TEMP value is "+temp);
+    	if (question != null)
+    	question.setTotalRespondents(totalRespondents.longValue());
+    }
+    
+    
+    
 }
