@@ -1,7 +1,7 @@
 package com.ziksana.domain.course;
 
 import java.util.Date;
-import com.ziksana.id.ZID;
+
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utils.SubjectClassification;
@@ -38,7 +38,7 @@ public class LearningComponent extends AuditHistory {
 		this.learningComponentType = learningComponentType;
 	}
 
-	protected ZID	 		learningComponentId;
+	protected Integer	 		learningComponentId;
 	private String 			name					= null;
 	/**
 	 * Maximum Length:240
@@ -48,13 +48,16 @@ public class LearningComponent extends AuditHistory {
 	private Date 			validTo 				= null;
 	private CourseStatus 	courseStatus 			= null;
 	private Integer 		weightage 				= null;
-	private Integer 		learningObjIndictor 	= null;
-	/**
+	private Integer 		learningObjIndicator 	= null;
+	/**						
 	 * Maximum Length:72
 	 */
 	private String 			thumbnailPicturePath 	= null;
 	private Duration 		prescribedLCDuration 	= null;
 	private Integer 		version 				= null;
+	private Integer			totalCredits			= null;
+	private Integer			extraCredits			= null;
+	private Integer			extraCreditsIndicator   = null;
 
 	/**
 	 * Maximum Length:240
@@ -65,21 +68,6 @@ public class LearningComponent extends AuditHistory {
 	private SubjectClassification 	subjClassification 		= null;
 
 	private LearningComponentDetails learningComponentDetails = null;
-
-	
-		/**
-	 * @return the learningComponentId
-	 */
-	public ZID	 getLearningComponentId() {
-		return learningComponentId;
-	}
-
-	/**
-	 * @param learningComponentId the learningComponentId to set
-	 */
-	public void setLearningComponentId(ZID learningComponentId) {
-		this.learningComponentId = learningComponentId;
-	}
 
 	/**
 	 * @return the name
@@ -168,15 +156,15 @@ public class LearningComponent extends AuditHistory {
 	/**
 	 * @return the learningObjIndictor
 	 */
-	public Integer getLearningObjIndictor() {
-		return learningObjIndictor;
+	public Integer getLearningObjIndicator() {
+		return learningObjIndicator;
 	}
 
 	/**
 	 * @param learningObjIndictor the learningObjIndictor to set
 	 */
-	public void setLearningObjIndictor(Integer learningObjIndictor) {
-		this.learningObjIndictor = learningObjIndictor;
+	public void setLearningObjIndicator(Integer learningObjIndicator) {
+		this.learningObjIndicator = learningObjIndicator;
 	}
 
 	/**
@@ -282,7 +270,7 @@ public class LearningComponent extends AuditHistory {
 		return "LearningComponent [name=" + name + ", description="
 				+ description + ", validFrom=" + validFrom + ", validTo="
 				+ validTo + ", courseStatus=" + courseStatus + ", weightage="
-				+ weightage + ", learningObjIndictor=" + learningObjIndictor
+				+ weightage + ", learningObjIndictor=" + learningObjIndicator
 				+ ", thumbnailPicturePath=" + thumbnailPicturePath
 				+ ", prescribedLCDuration=" + prescribedLCDuration
 				+ ", learningComponentDetails=" + learningComponentDetails
@@ -301,6 +289,62 @@ public class LearningComponent extends AuditHistory {
 	 */
 	public void setPrescribedLCDuration(Duration prescribedLCDuration) {
 		this.prescribedLCDuration = prescribedLCDuration;
+	}
+
+	/**
+	 * @return the totalCredits
+	 */
+	public Integer getTotalCredits() {
+		return totalCredits;
+	}
+
+	/**
+	 * @param totalCredits the totalCredits to set
+	 */
+	public void setTotalCredits(Integer totalCredits) {
+		this.totalCredits = totalCredits;
+	}
+
+	/**
+	 * @return the extraCreditsIndicator
+	 */
+	public Integer getExtraCreditsIndicator() {
+		return extraCreditsIndicator;
+	}
+
+	/**
+	 * @param extraCreditsIndicator the extraCreditsIndicator to set
+	 */
+	public void setExtraCreditsIndicator(Integer extraCreditsIndicator) {
+		this.extraCreditsIndicator = extraCreditsIndicator;
+	}
+
+	/**
+	 * @return the extraCredits
+	 */
+	public Integer getExtraCredits() {
+		return extraCredits;
+	}
+
+	/**
+	 * @param extraCredits the extraCredits to set
+	 */
+	public void setExtraCredits(Integer extraCredits) {
+		this.extraCredits = extraCredits;
+	}
+
+	/**
+	 * @return the learningComponentId
+	 */
+	public Integer getLearningComponentId() {
+		return learningComponentId;
+	}
+
+	/**
+	 * @param learningComponentId the learningComponentId to set
+	 */
+	public void setLearningComponentId(Integer learningComponentId) {
+		this.learningComponentId = learningComponentId;
 	}
 
 

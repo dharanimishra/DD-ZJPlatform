@@ -21,24 +21,27 @@ public interface LearningComponentMapper {
 	@Insert({
 			"insert into corlearningcomponent (validfrom, ",
 			"validto, name, description, coursestatus, weightage, totalcredits, ",
-			"extracreditsindicator, extracredits, prescribedlcduration, prescribedlcdurationunit, learningobjectindicator, memberroleid, learningcomponenttypeid, subjclassificationid)",
+			"extracreditsindicator, extracredits, prescribedlcduration, prescribedlcdurationunit, learningobjectindicator, memberroleid, " +
+			"learningcomponenttypeid)",
 			"values (#{validFrom,jdbcType=DATE}, ",
-			"#{validTo,jdbcType=DATE}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{prescribedLCDuration,jdbcType=INTEGER}, ",
+			"#{validTo,jdbcType=DATE}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},1, ",
 			"#{weightage,jdbcType=INTEGER}, #{totalCredits,jdbcType=VARCHAR}, ",
-			"#{extraCreditsIndicator,jdbcType=BIT}, #{extraCredits,jdbcType=VARCHAR}, #{extraCredits,jdbcType=VARCHAR}, #{prescribedlcduration,jdbcType=INTEGER},",
-			"#{prescribedlcdurationunit,jdbcType=INTEGER}, #{learningobjectindicator,jdbcType=INTEGER}, #{authoredMember.memberRoleId,jdbcType=INTEGER}, #{learningComponentType.learningComponentTypeId,jdbcType=INTEGER}, #{subjClassification.subjClassificationId,jdbcType=INTEGER} )" })
+			"#{extraCreditsIndicator,jdbcType=BIT}, #{extraCredits,jdbcType=VARCHAR},  #{prescribedLCDuration.duration,jdbcType=INTEGER},",
+			"#{prescribedLCDuration.durationUnits,jdbcType=INTEGER}, #{learningObjIndicator,jdbcType=INTEGER}, " +
+			"#{authoredMember.memberRoleId,jdbcType=INTEGER}, #{learningComponentType.learningComponentTypeId,jdbcType=INTEGER}," +
+			"  )" })
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "learningcomponentid", before = true, resultType = Integer.class)
-	@Results(value = {
+/*	@Results(value = {
 			@Result(property = "learningComponentId", column = "learningcomponentid"),
 			@Result(property = "authoredMember.memberRoleId", column = "memberroleid"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description"),
 			@Result(property = "courseStatus", column = "coursestatus"),
 			@Result(property = "learningComponentType.learningComponentTypeId", column = "learningcomponenttypeid"),
-			@Result(property = "duration.duration", column = "prescribedlcduration"),
-			@Result(property = "duration.durationUnits", column = "prescribedlcdurationunit"),
+			@Result(property = "prescribedLCDuration.duration", column = "prescribedlcduration"),
+			@Result(property = "prescribedLCDuration.durationUnits", column = "prescribedlcdurationunit"),
 			@Result(property = "isLearningObject", column = "learningobjectindicator") })
-	LearningComponent saveLearningComponent(LearningComponent component);
+*/	int saveLearningComponent(LearningComponent component);
 
 	/**
 	 * @param memberRoleId

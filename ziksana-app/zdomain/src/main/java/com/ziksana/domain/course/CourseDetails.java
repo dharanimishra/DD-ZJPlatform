@@ -137,7 +137,7 @@ public class CourseDetails{
 
 				// learning component as a child
 				learningComponentNest
-						.setLearningComponentNest(childLearningComponent);
+						.setNestLearningComponent(childLearningComponent);
 
 				childLearningComponent.getLearningComponentDetails()
 						.addLearningComponentNest(learningComponentNest);

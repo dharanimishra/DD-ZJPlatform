@@ -17,7 +17,7 @@ import com.ziksana.id.ZID;
 public class Course extends AuditHistory{
 
 	public Course() {
-		setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
+		//setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 	}
 	
 	public Course(String name, String description, CourseStatus courseStatus,
@@ -473,7 +473,7 @@ public class Course extends AuditHistory{
 
 
 	public String toString() {
-		return "Course [name=" + name + ", courseStatus=" + courseStatus
+		return "Course [courseId = "+courseId+" , name=" + name + ", courseStatus=" + courseStatus
 				+ ", courseDuration=" + courseDuration + "]";
 	}
 

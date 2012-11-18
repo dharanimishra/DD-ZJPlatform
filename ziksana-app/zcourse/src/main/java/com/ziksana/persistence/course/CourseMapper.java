@@ -112,27 +112,18 @@ public interface CourseMapper {
 			"insert into corcourse ( name, ",
 			"description, coursestatus, ",
 			"contentsecurityneededindicator, ",
-			"totalcredits, extracredits, ",
+			"extracredits, ",
 			"additionalpropertyindicator, courseduration,thumbnailpicturepath, version, versionremarks, memberroleid, subjclassificationid)",
 			"values (#{name,jdbcType=VARCHAR}, ",
 			"#{description,jdbcType=VARCHAR}, ",
-			"#{courseStatus,jdbcType=INTEGER}, ",
+			" 1, ",
 			"#{securityIndicator,jdbcType=BOOLEAN}, ",
-			"#{totalCredits,jdbcType=VARCHAR}, ",
 			"#{extraCredits,jdbcType=VARCHAR}, ",
-			"#{additionalInfoIndicator,jdbcType=BOOLEAN}, #{courseDuration,jdbcType=INTEGER},#{thumbnailPicturePath,jdbcType=VARCHAR}, ",
+			"#{additionalInfoIndicator,jdbcType=BOOLEAN}, #{courseDuration.duration,jdbcType=INTEGER},#{thumbnailPicturePath,jdbcType=VARCHAR}, ",
 			"#{version,jdbcType=INTEGER}, #{versionRemarks,jdbcType=VARCHAR}, #{accountableMember.memberRoleId,jdbcType=INTEGER},",
 			"#{subjClassification.subjClassificationId,jdbcType=INTEGER})" })
-	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseid", before = true, resultType = Integer.class)
-	@Results(value = {
-			@Result(property = "courseId", column = "courseid"),
-			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
-			@Result(property = "name", column = "name"),
-			@Result(property = "description", column = "description"),
-			@Result(property = "courseStatus", column = "coursestatus"),
-			@Result(property = "contentSecurityNeededIndicator", column = "securityindicator"),
-			@Result(property = "duration.courseDuration", column = "courseduration") })
-	Course saveCourse(Course course);
+	@SelectKey(keyProperty = "courseid", before = true, resultType = int.class, statement = { "select last_insert_id as courseid" })
+	int saveCourse(Course course);
 
 	/**
 	 * This method will retrieves the course learning components and its

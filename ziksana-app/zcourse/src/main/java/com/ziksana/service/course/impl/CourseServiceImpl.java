@@ -79,7 +79,7 @@ public class CourseServiceImpl implements CourseService {
 
 		if (course.getCourseId() != null) {
 			// Update Operation
-			
+			System.out.println("Course Id : "+course.getCourseId());
 			logger.debug("Course Id : "+course.getCourseId());
 			
 			tagcloudList = course.getCourseTagClouds();
@@ -114,10 +114,10 @@ public class CourseServiceImpl implements CourseService {
 
 		} else {
 			// Insert/Save Operation
-			
 			logger.debug("Before saving the Course ....");
-			savedCourse = courseMapper.saveCourse(course);
-
+			Integer courseId = courseMapper.saveCourse(course);
+			logger.debug("After saving the Course ....: "+courseId);
+			
 			tagcloudList = course.getCourseTagClouds();
 
 			if (tagcloudList != null && tagcloudList.size() > 0) {
@@ -185,14 +185,14 @@ public class CourseServiceImpl implements CourseService {
 			// Insert/Save Operation
 			savedCourse = new Course();
 
-			logger.debug("Before Saving the Course ....");
-			savedCourse = courseMapper.saveCourse(newCourse);
-
+			logger.debug("11Before Saving the Course ....");
+			int savedCourseId = courseMapper.saveCourse(newCourse);
+			logger.debug("22After Saving the Course ....: "+savedCourseId);
 			tagcloudList = course.getCourseTagClouds();
 
 			if (tagcloudList != null && tagcloudList.size() > 0) {
 
-				logger.debug("Course Tagcloud list size  : "+tagcloudList.size());
+				logger.debug("33Course Tagcloud list size  : "+tagcloudList.size());
 				for (CourseTagcloud courseTagcloud : tagcloudList) {
 
 					courseTagcloud.setCourse(savedCourse);
@@ -200,14 +200,14 @@ public class CourseServiceImpl implements CourseService {
 					courseTagcloud.setCreatingMember(course
 							.getAccountableMember());
 					
-					logger.debug("Before Saving the Course Tagcloud ....");
+					logger.debug("44Before Saving the Course Tagcloud ....");
 					tagCloudMapper.save(courseTagcloud);
 				}
 			}
 			contSecurity = course.getCourseContSecurity();
 
 			if (contSecurity != null) {
-				logger.debug("Before Saving the Course Content Security....");
+				logger.debug("55Before Saving the Course Content Security....");
 				contSecurityMapper.save(contSecurity);
 			}
 			
@@ -221,12 +221,15 @@ public class CourseServiceImpl implements CourseService {
 				
 			if(learningComponentList!=null && learningComponentList.size()>0){
 
-				logger.debug("LearningComponent list size  : "+learningComponentList.size());
+				logger.debug("66LearningComponent list size  : "+learningComponentList.size());
 
 				for (LearningComponent learningComponent : learningComponentList) {
 						
-						logger.debug("Before Saving the Learning Component ....");
-						savedComponent = learningComponentMapper.saveLearningComponent(learningComponent);
+						logger.debug("77Before Saving the Learning Component ....");
+						//savedComponent = learningComponentMapper.saveLearningComponent(learningComponent);
+						logger.debug("component type : "+learningComponent.getLearningComponentType().toString());
+						int result = learningComponentMapper.saveLearningComponent(learningComponent);
+						logger.debug("771111After Saving the CourseLearningComponent ....: "+result);
 						
 						compDetails =  learningComponent.getLearningComponentDetails();
 						
@@ -234,24 +237,28 @@ public class CourseServiceImpl implements CourseService {
 							throw new CourseException("Learning Component Details cannot be null");
 						}
 						courseLComponent = compDetails.getCourseLearningComponent();
+						
+						if(courseLComponent!=null){
+							courseLComponent.setCourse(savedCourse);
 							
-						courseLComponent.setCourse(savedCourse);
-							
-						courseLComponent.setLearningComponent(savedComponent);
-							
-						logger.debug("Before Saving the CourseLearningComponent ....");
-						courseLComponentMapper.save(courseLComponent);
+							courseLComponent.setLearningComponent(savedComponent);
+								
+							logger.debug("88Before Saving the CourseLearningComponent ....");
+							courseLComponentMapper.save(courseLComponent);
+						}
 							
 						compNest = compDetails.getLearningComponentNest();
 							
-						logger.debug("Before Saving the LearningComponentNest ....");
+						logger.debug("99Before Saving the LearningComponentNest ....");
+
 						componentNestMapper.save(compNest);
+						logger.debug("99After Saving the LearningComponentNest ....");
 					}
 				}
 			
 			
 			if(savedCourse.getCourseId()!=null){
-				savedCourse = courseMapper.updateCourseInfo(savedCourse);
+				//savedCourse = courseMapper.updateCourseInfo(savedCourse);
 			}
 		}
  
@@ -287,7 +294,7 @@ public class CourseServiceImpl implements CourseService {
 
 		List<Course> 				courseList 					= null;
 		List<Course> 				newCourseList 				= null;
-		ZID 						lCompId 					= null;
+		Integer 						lCompId 					= null;
 		Integer 					componentContentId 			= null;
 		Integer 					learningContentId 			= null;
 		Integer 					enrichId 					= null;
@@ -339,22 +346,22 @@ public class CourseServiceImpl implements CourseService {
 
 						lCompId = component.getLearningComponentId();
 						
-						componentContentId = learningComponentContentMapper.getCompContentByLComponentId(new Integer(lCompId.getStorageID()));
+						componentContentId = learningComponentContentMapper.getCompContentByLComponentId(lCompId);
 						
 						if(componentContentId != null){
 							
 							isContentExists = true;
 							
-							learningContentId = learningComponentContentMapper.getContentByLComponentId(new Integer(lCompId.getStorageID()));
+							learningContentId = learningComponentContentMapper.getContentByLComponentId(lCompId);
 							
 							if(learningContentId!=null){
 								
-								enrichId = enrichMapper.getEnrichByContentIdOrComponentId(new Integer(lCompId.getStorageID()), learningContentId);
+								enrichId = enrichMapper.getEnrichByContentIdOrComponentId(lCompId, learningContentId);
 								
 								if(enrichId!=null){
 									
 									isEnriched = true;
-									assignmentId = courseMapper.checkAssignment(new Integer(lCompId.getStorageID()));
+									assignmentId = courseMapper.checkAssignment(lCompId);
 									
 									if(assignmentId!=null){
 										isAssignmentExist = true;

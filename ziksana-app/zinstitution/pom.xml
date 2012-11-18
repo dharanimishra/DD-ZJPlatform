@@ -6,7 +6,6 @@
     <artifactId>ziksana-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.ziksana</groupId>
   <artifactId>zinstitution</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>zinstitution</name>
@@ -15,12 +14,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
     <dependency>
     	<groupId>com.ziksana</groupId>
     	<artifactId>zdomain</artifactId>
@@ -31,5 +24,11 @@
     	<artifactId>zcourse</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
+    <dependency>
+    	<groupId>com.ziksana</groupId>
+    	<artifactId>zconfig</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
+  <groupId>com.ziksana</groupId>
 </project>

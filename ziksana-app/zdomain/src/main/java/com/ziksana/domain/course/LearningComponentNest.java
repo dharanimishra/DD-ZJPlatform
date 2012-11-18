@@ -2,7 +2,6 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
 public class LearningComponentNest extends AuditHistory{
@@ -10,30 +9,16 @@ public class LearningComponentNest extends AuditHistory{
 	public LearningComponentNest(LearningComponent learningComponentParent,
 			LearningComponent learningComponentNest) {
 		this.learningComponentParent = learningComponentParent;
-		this.learningComponentNest = learningComponentNest;
+		this.nestLearningComponent = learningComponentNest;
 	}
 
-	private ZID		 			componentNestId;
+	private Integer		 		componentNestId;
 	private Date 				creationDate 			= null;
 	private Integer 			nestLevel 				= null;
 	private LearningComponent 	learningComponentParent	= null;
-	private LearningComponent 	learningComponentNest 	= null;
+	private LearningComponent 	nestLearningComponent 	= null;
 
-	/**
-	 * @return the value of property componentNestId
-	 */
-	public ZID getComponentNestId() {
-		return componentNestId;
-	}
-
-	/**
-	 * @param componentNestId
-	 *            the value for property componentNestId
-	 */
-	public void setComponentNestId(ZID componentNestId) {
-		this.componentNestId = componentNestId;
-	}
-
+	
 	/**
 	 * @return the value of property CreationDate
 	 */
@@ -78,20 +63,6 @@ public class LearningComponentNest extends AuditHistory{
 		this.learningComponentParent = learningComponentParent;
 	}
 
-	/**
-	 * @return the learningComponentNest
-	 */
-	public LearningComponent getLearningComponentNest() {
-		return learningComponentNest;
-	}
-
-	/**
-	 * @param learningComponentNest the learningComponentNest to set
-	 */
-	public void setLearningComponentNest(LearningComponent learningComponentNest) {
-		this.learningComponentNest = learningComponentNest;
-	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -99,6 +70,34 @@ public class LearningComponentNest extends AuditHistory{
 	public String toString() {
 		return "LearningComponentNest [nestLevel=" + nestLevel
 				+ ", learningComponentParent=" + learningComponentParent+ "]";
+	}
+
+	/**
+	 * @return the nestLearningComponent
+	 */
+	public LearningComponent getNestLearningComponent() {
+		return nestLearningComponent;
+	}
+
+	/**
+	 * @param nestLearningComponent the nestLearningComponent to set
+	 */
+	public void setNestLearningComponent(LearningComponent nestLearningComponent) {
+		this.nestLearningComponent = nestLearningComponent;
+	}
+
+	/**
+	 * @return the componentNestId
+	 */
+	public Integer getComponentNestId() {
+		return componentNestId;
+	}
+
+	/**
+	 * @param componentNestId the componentNestId to set
+	 */
+	public void setComponentNestId(Integer componentNestId) {
+		this.componentNestId = componentNestId;
 	}
 
 }

@@ -2,7 +2,6 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 
@@ -25,7 +24,7 @@ public class LearningComponentType extends AuditHistory{
 		this.active = active;
 	}
 
-	private ZID		 		learningCompTypeId;
+	private Integer		 		learningComponentTypeId;
 	private Date 			creationDate 		= null;
 	
 	@Deprecated
@@ -68,20 +67,6 @@ public class LearningComponentType extends AuditHistory{
 		this.active = active;
 	}
 
-	/**
-	 * @return the learningCompTypeId
-	 */
-	public ZID getLearningCompTypeId() {
-		return learningCompTypeId;
-	}
-
-	/**
-	 * @param learningCompTypeId
-	 *            the learningCompTypeId to set
-	 */
-	public void setLearningCompTypeId(ZID learningCompTypeId) {
-		this.learningCompTypeId = learningCompTypeId;
-	}
 
 	/**
 	 * @return the componentTypeName
@@ -169,10 +154,24 @@ public class LearningComponentType extends AuditHistory{
 
 	@Override
 	public String toString() {
-		return "LearningComponentType [compTypeName=" + compTypeName
+		return "LearningComponentType [comptypeid="+learningComponentTypeId+", compTypeName=" + compTypeName
 				+ ", compTypeDescription=" + compTypeDescription
 				+ ", qualifierIndicator=" + isDefineQualifier + ", active="
 				+ active + "]";
+	}
+
+	/**
+	 * @return the learningComponentTypeId
+	 */
+	public Integer getLearningComponentTypeId() {
+		return learningComponentTypeId;
+	}
+
+	/**
+	 * @param learningComponentTypeId the learningComponentTypeId to set
+	 */
+	public void setLearningComponentTypeId(Integer learningComponentTypeId) {
+		this.learningComponentTypeId = learningComponentTypeId;
 	}
 
 

@@ -19,7 +19,7 @@ import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
-import com.ziksana.persistence.contacts.ContactMapper;
+//import com.ziksana.persistence.contacts.ContactMapper;
 import com.ziksana.persistence.course.SocializeMapper;
 import com.ziksana.service.course.CourseSocializeService;
 
@@ -32,9 +32,9 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 	
 	@Autowired
 	public SocializeMapper socializeMapper;
-	@Autowired
+/*	@Autowired
 	public ContactMapper 	contactMapper;
-	
+*/	
 	@Transactional
 	@Override
 	public void saveCourseComponetsForReview(List<LearningContentReviewProgress> reviewComponentsList)
@@ -108,7 +108,7 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 				
 				memberRole =  socializeMapper.getMemberRoleByCircle(memberRole.getMemberRoleId(), relationshipId);
 				
-				member.setMemberPersona(memberRole);
+				memberRole.setMember(member);
 			}
 			
 			memberList.add(member);

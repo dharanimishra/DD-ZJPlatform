@@ -14,8 +14,8 @@ public interface LearningComponentNestMapper {
 			"nestlevel, parentlearningcomponentid, ",
 			"nestlearningcomponentid)",
 			"values (sysdate(), ",
-			"#{nestLevel,jdbcType=INTEGER}, #{parentLearningComponentId,jdbcType=INTEGER}, ",
-			"#{nestLearningComponentId,jdbcType=INTEGER})" })
+			"#{nestLevel,jdbcType=INTEGER}, #{learningComponentParent.learningComponentId,jdbcType=INTEGER}, ",
+			"#{nestLearningComponent.learningComponentId,jdbcType=INTEGER})" })
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "componentnestid", before = true, resultType = Integer.class)
 	void save(LearningComponentNest record);
 

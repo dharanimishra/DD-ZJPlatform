@@ -375,7 +375,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 			
 			if(learrningComponent.getLearningComponentId()!=null){
 				
-				componentId =  new Integer(learrningComponent.getLearningComponentId().getStorageID());
+				componentId =  new Integer(learrningComponent.getLearningComponentId());
 				
 				assignmentList = assignmentTestMapper.getAssignmentByComponentId(componentId);
 				
