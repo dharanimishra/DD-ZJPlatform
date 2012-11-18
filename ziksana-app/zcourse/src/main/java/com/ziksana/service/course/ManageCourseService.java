@@ -3,16 +3,16 @@ package com.ziksana.service.course;
 import java.util.List;
 
 import com.ziksana.domain.assessment.engagement.Engagement;
+import com.ziksana.domain.assessment.member.StudentInfo;
 import com.ziksana.domain.assessment.member.TestSubmission;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.subscription.MemberSubscriptionProgram;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
-import com.ziksana.domain.member.Group;
-import com.ziksana.domain.member.GroupMember;
-import com.ziksana.domain.member.GroupMemberActivity;
-import com.ziksana.domain.member.GroupMemberConversation;
-import com.ziksana.domain.member.GroupMessage;
-import com.ziksana.domain.member.StudentInfo;
+import com.ziksana.domain.member.collaboration.Group;
+import com.ziksana.domain.member.collaboration.GroupMember;
+import com.ziksana.domain.member.collaboration.GroupMemberActivity;
+import com.ziksana.domain.member.collaboration.GroupMemberConversation;
+import com.ziksana.domain.member.collaboration.GroupMessage;
 import com.ziksana.exception.course.CourseException;
 
 /**
@@ -165,7 +165,7 @@ public interface ManageCourseService {
 	 * @return
 	 * @throws CourseException
 	 */
-	public StudentInfo getStudentPerformance(Integer memberRoleId) throws CourseException;
+	public StudentInfo getStudentAssignmentPerformance(Integer memberRoleId) throws CourseException;
 
 	/**
 	 * @param testSubmission

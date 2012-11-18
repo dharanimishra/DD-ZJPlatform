@@ -1,4 +1,4 @@
-package com.ziksana.domain.member;
+package com.ziksana.domain.member.collaboration;
 
 import java.sql.Timestamp;
 import java.util.Date;

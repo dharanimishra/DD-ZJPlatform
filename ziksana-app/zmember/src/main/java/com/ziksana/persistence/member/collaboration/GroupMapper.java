@@ -9,14 +9,14 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.ziksana.domain.member.Group;
-import com.ziksana.domain.member.GroupContext;
-import com.ziksana.domain.member.GroupMember;
-import com.ziksana.domain.member.GroupMemberActivity;
-import com.ziksana.domain.member.GroupMemberConversation;
-import com.ziksana.domain.member.GroupMessage;
 import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.domain.member.collaboration.Group;
+import com.ziksana.domain.member.collaboration.GroupContext;
+import com.ziksana.domain.member.collaboration.GroupMember;
+import com.ziksana.domain.member.collaboration.GroupMemberActivity;
+import com.ziksana.domain.member.collaboration.GroupMemberConversation;
+import com.ziksana.domain.member.collaboration.GroupMessage;
 
 /**
  * @author bhashasp

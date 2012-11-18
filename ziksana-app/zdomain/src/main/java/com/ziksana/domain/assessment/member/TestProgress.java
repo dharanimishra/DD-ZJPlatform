@@ -1,6 +1,8 @@
 package com.ziksana.domain.assessment.member;
 
-import java.util.Date;
+
+
+import java.sql.Timestamp;
 
 import com.ziksana.id.ZID;
 
@@ -9,11 +11,11 @@ import com.ziksana.id.ZID;
  */
 public class TestProgress {
 
-	private ZID 		testProgressId;
-	private Integer 	progress 	= null;
-	private Date 		startDate 	= null;
-	private Date 		endDate 	= null;
-	private StudentTest test		= null;
+	private ZID 				testProgressId;
+	private Integer 			progress 	= null;
+	private Timestamp 			startTime 	= null;
+	private Timestamp 			endTime 	= null;
+	private StudentTest 		test		= null;
 	
 	/**
 	 * @return the testProgressId
@@ -39,31 +41,7 @@ public class TestProgress {
 	public void setProgress(Integer progress) {
 		this.progress = progress;
 	}
-	/**
-	 * @return the startDate
-	 */
-	public Date getStartDate() {
-		return startDate;
-	}
-	/**
-	 * @param startDate the startDate to set
-	 */
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-	/**
-	 * @return the endDate
-	 */
-	public Date getEndDate() {
-		return endDate;
-	}
-	/**
-	 * @param endDate the endDate to set
-	 */
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-	/**
+		/**
 	 * @return the test
 	 */
 	public StudentTest getTest() {
@@ -74,6 +52,30 @@ public class TestProgress {
 	 */
 	public void setTest(StudentTest test) {
 		this.test = test;
+	}
+	/**
+	 * @return the startTime
+	 */
+	public Timestamp getStartTime() {
+		return startTime;
+	}
+	/**
+	 * @param startTime the startTime to set
+	 */
+	public void setStartTime(Timestamp startTime) {
+		this.startTime = startTime;
+	}
+	/**
+	 * @return the endTime
+	 */
+	public Timestamp getEndTime() {
+		return endTime;
+	}
+	/**
+	 * @param endTime the endTime to set
+	 */
+	public void setEndTime(Timestamp endTime) {
+		this.endTime = endTime;
 	}
 
 	

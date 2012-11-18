@@ -7,21 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import com.ziksana.domain.assessment.engagement.Engagement;
 import com.ziksana.domain.assessment.engagement.EngagementCriteria;
+import com.ziksana.domain.assessment.member.StudentInfo;
+import com.ziksana.domain.assessment.member.StudentTest;
+import com.ziksana.domain.assessment.member.TestProgress;
 import com.ziksana.domain.assessment.member.TestSubmission;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.subscription.MemberSubscriptionProgram;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.domain.institution.CurriculumCourse;
 import com.ziksana.domain.institution.LearningProgram;
-import com.ziksana.domain.member.Group;
-import com.ziksana.domain.member.GroupContext;
-import com.ziksana.domain.member.GroupMember;
-import com.ziksana.domain.member.GroupMemberActivity;
-import com.ziksana.domain.member.GroupMemberConversation;
-import com.ziksana.domain.member.GroupMessage;
-import com.ziksana.domain.member.StudentInfo;
+import com.ziksana.domain.member.collaboration.Group;
+import com.ziksana.domain.member.collaboration.GroupContext;
+import com.ziksana.domain.member.collaboration.GroupMember;
+import com.ziksana.domain.member.collaboration.GroupMemberActivity;
+import com.ziksana.domain.member.collaboration.GroupMemberConversation;
+import com.ziksana.domain.member.collaboration.GroupMessage;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.IntegerZID;
+import com.ziksana.persistence.assessment.AssignmentTestMapper;
 import com.ziksana.persistence.assessment.engagement.EngagementMapper;
 import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.persistence.course.subscription.SubscriptionCourseMapper;
@@ -45,7 +48,9 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 	@Autowired
 	public ProgramsMapper				programsMapper;
 	@Autowired
-	public GroupMapper groupsMapper;
+	public GroupMapper 					groupsMapper;
+	@Autowired
+	public AssignmentTestMapper			assignmentTestMapper;
 	
 	
 	@Override
@@ -411,16 +416,43 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 	}
 
 	@Override
-	public StudentInfo getStudentPerformance(Integer memberRoleId)
+	public StudentInfo getStudentAssignmentPerformance(Integer memberRoleId)
 			throws CourseException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		StudentInfo 	studentInfo 	= null;
+		TestSubmission 	testSubmission 	= null;
+		
+		if(memberRoleId == null){
+			throw new CourseException("Student/Learner's MemberRole ID cannot be null");
+		}
+		studentInfo = new StudentInfo();
+		testSubmission = assignmentTestMapper.getStudentAssignmentPerformance(memberRoleId);
+		
+		studentInfo.setTimeSpentOnTest(testSubmission.getDuration());
+		studentInfo.setNumberOfAttemps(1);
+		
+		StudentTest test = testSubmission.getTest();
+		 
+		TestProgress testProgress =  assignmentTestMapper.getStudentTestProgress(new Integer(test.getTestId().getStorageID()));
+		
+		studentInfo.setProgress(testProgress.getProgress());
+		
+		studentInfo.setTimeSpentOnTest(11);
+		
+		
+		return studentInfo;
 	}
 
 	@Override
 	public void sendFeedbackToStudent(TestSubmission testSubmission)
 			throws CourseException {
-		// TODO Auto-generated method stub
+		
+		if(testSubmission.getSubmissionId() == null){
+			throw new CourseException("TestSubmission ID cannot be null");
+		}
+		
+		assignmentTestMapper.saveStudentFeedback(testSubmission);
+		
 		
 	}
 

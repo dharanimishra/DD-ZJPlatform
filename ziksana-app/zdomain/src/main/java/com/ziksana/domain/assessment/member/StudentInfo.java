@@ -1,4 +1,4 @@
-package com.ziksana.domain.member;
+package com.ziksana.domain.assessment.member;
 
 import java.util.Date;
 
@@ -14,6 +14,7 @@ public class StudentInfo {
 	private Integer 	numberOfAttemps 	= null;
 	private Integer 	timeSpentOnCourse 	= null;
 	private Integer 	groupParticipation 	= null;
+	private Integer		progress			= null;
 	
 	/**
 	 * @return the name
@@ -98,6 +99,18 @@ public class StudentInfo {
 	 */
 	public void setTimeSpentOnCourse(Integer timeSpentOnCourse) {
 		this.timeSpentOnCourse = timeSpentOnCourse;
+	}
+	/**
+	 * @return the progress
+	 */
+	public Integer getProgress() {
+		return progress;
+	}
+	/**
+	 * @param progress the progress to set
+	 */
+	public void setProgress(Integer progress) {
+		this.progress = progress;
 	}
 	
 	

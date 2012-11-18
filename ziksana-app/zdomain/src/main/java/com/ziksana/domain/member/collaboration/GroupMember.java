@@ -1,5 +1,6 @@
-package com.ziksana.domain.member;
+package com.ziksana.domain.member.collaboration;
 
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.ZID;
 
 /**

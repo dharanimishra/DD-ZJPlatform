@@ -42,6 +42,7 @@ public class TestSubmission {
 	private QuestionBankAnswer 		answer 					= null;
 	private MemberPersona			evaluatingMemberRole 	= null;
 	
+	
 	/**
 	 * @return the submissionId
 	 */
