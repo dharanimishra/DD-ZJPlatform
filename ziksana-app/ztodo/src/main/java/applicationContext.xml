@@ -14,22 +14,10 @@
 		<property name="basename" value="/WEB-INF/messages" />
 		<property name="cacheSeconds" value="3000" />
 	</bean>
-
-	<bean id="categoryService" class="com.ziksana.service.todo.impl.CategoryServiceImpl">
-	</bean>
-
-	<bean id="memberNotificationService"
-		class="com.ziksana.service.todo.impl.MemberNotificationServiceImpl">
-	</bean>
-
-	<bean id="memberRoleService" class="com.ziksana.service.todo.impl.MemberRoleServiceImpl">
-	</bean>
-
+	
 	<bean id="todoService" class="com.ziksana.service.todo.impl.TodoServiceImpl">
 	</bean>
 
-	<bean id="todoListService" class="com.ziksana.service.todo.impl.TodoListServiceImpl">
-	</bean>
 	<!-- Scans the classpath of this application for @Components to deploy as 
 		beans -->
 	<context:component-scan base-package="com.ziksana.service.todo" />
@@ -47,6 +35,5 @@
 	</bean>
 
 	<import resource="jdbc-context.xml" />
-
 
 </beans>

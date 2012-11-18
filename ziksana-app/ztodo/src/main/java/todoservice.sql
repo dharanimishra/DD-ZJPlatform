@@ -1,3 +1,5 @@
+ and
+		n.ForMemberRoleId=#{userMemberRoleId}
 
 CREATE TABLE `memmember` (                              
 `ID` int(11) NOT NULL,                                

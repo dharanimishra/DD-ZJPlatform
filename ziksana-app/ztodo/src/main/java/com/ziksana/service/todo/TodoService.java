@@ -3,7 +3,7 @@
  */
 package com.ziksana.service.todo;
 
-import com.ziksana.domain.todos.Todo;
+import com.ziksana.domain.todo.Todo;
 
 /**
  * @author
@@ -13,7 +13,7 @@ public interface TodoService {
 
 	Todo findTodo(int todoId);
 
-	void createTodo(String toListId, Todo todo);
+	void createTodo(Todo todo);
 
 	void updateTodo(Todo todo);
 

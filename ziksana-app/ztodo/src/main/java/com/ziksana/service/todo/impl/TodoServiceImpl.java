@@ -3,12 +3,11 @@
  */
 package com.ziksana.service.todo.impl;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ziksana.domain.todos.Todo;
+import com.ziksana.domain.todo.Todo;
 import com.ziksana.persistence.todos.TodoMapper;
 import com.ziksana.service.todo.TodoService;
 
@@ -27,117 +26,116 @@ public class TodoServiceImpl implements TodoService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.vtg.service.TodoService#findTodo(java.lang.String)
+	 * @see com.ziksana.service.todo.TodoService#findTodo(int)
 	 */
-	public Todo findTodo(final int todoId) {
+	@Override
+	public Todo findTodo(int todoId) {
 		LOGGER.info("Class :" + getClass()
-				+ " : Entering Method :findTodo(String todoId)");
-		final Todo todo = todoMapper.findTodo(todoId);
-		LOGGER.info("Class :"
+				+ " : Entering Method :findTodo(int id)");
+		LOGGER.debug("Class :"
 				+ getClass()
-				+ " : Method : findTodo(String todoId) :todoDaoImpl.findTodo(todoId):");
+				+ " : Method :findTodo(int id) :memberNotificationDaoImpl.findTodo(id):"
+				+ todoMapper.getTodo(todoId).getId());
 		LOGGER.info("Class :" + getClass()
-				+ " : Leaving Method :findTodo(String todoId)");
-		return todo;
+				+ " : Leaving Method :selectById(int id)");
+		return todoMapper.getTodo(todoId);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.vtg.service.TodoService#createTodo(java.lang.String,
-	 * com.vtg.model.Todo)
+	 * @see com.ziksana.service.todo.TodoService#createTodo(java.lang.String,
+	 * com.ziksana.domain.todo.Todo)
 	 */
-	public void createTodo(final String todoListId, final Todo todo) {
-		LOGGER.info("Class :"
-				+ getClass()
-				+ " : Entering Method : createTodo(String todoListId, Todo todo)");
+	@Override
+	public void createTodo(Todo todo) {
+		LOGGER.info("Class :" + getClass()
+				+ " : Entering Method :createTodo(Todo todo)");
 		try {
-			// todo.setTodoListId(todoListId);
 			todoMapper.createTodo(todo);
-			LOGGER.info("Class :"
+			LOGGER.debug("Class :"
 					+ getClass()
-					+ " : Method : createTodo(String todoListId, Todo todo) :todoDaoImpl.createTodo(todo):");
+					+ " : Method :createTodo(Todo todo) :memberNotificationDaoImpl.createTodo(todo);"
+					+ todo.getId());
 		} catch (Exception e) {
-			LOGGER.info("Class :"
+			LOGGER.debug("Class :"
 					+ getClass()
-					+ " : Method : createTodo(String todoListId, Todo todo) :todoDaoImpl.createTodo(todo):Exception :"
-					+ e);
+					+ " : Method :createTodo(Todo todo) :memberNotificationDaoImpl.createTodo(todo);"
+					+ todo.getId() + "Exception :" + e);
 		}
 		LOGGER.info("Class :" + getClass()
-				+ " : Leaving Method :createTodo(String todoListId, Todo todo)");
+				+ " : Leaving Method :createTodo(Todo todo)");
+
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.vtg.service.TodoService#updateTodo(com.vtg.model.Todo)
+	 * @see
+	 * com.ziksana.service.todo.TodoService#updateTodo(com.ziksana.domain.todo
+	 * .Todo)
 	 */
-	public void updateTodo(final Todo todo) {
+	@Override
+	public void updateTodo(Todo todo) {
 		LOGGER.info("Class :" + getClass()
-				+ " : Entering Method : updateTodo(Todo todo)");
+				+ " : Entering Method :updateTodo(Todo todo)");
 		try {
 			todoMapper.updateTodo(todo);
-			LOGGER.info("Class :"
+			LOGGER.debug("Class :"
 					+ getClass()
-					+ " : Method : updateTodo(Todo todo) :todoDaoImpl.updateTodo(todo):");
+					+ " : Method :updateTodo(Todo todo) :memberNotificationServiceImpl.updateTodo(Todo todo):");
 		} catch (Exception e) {
-			LOGGER.info("Class :"
+			LOGGER.debug("Class :"
 					+ getClass()
-					+ " : Method : updateTodo(Todo todo) :todoDaoImpl.updateTodo(todo):Exception :"
+					+ " : Method :updateTodo(Todo todo) :memberNotificationDaoImpl.updateTodo(Todo todo): Exception :"
 					+ e);
 		}
 		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :updateTodo(Todo todo)");
+
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.vtg.service.TodoService#deleteTodo(java.lang.String)
+	 * @see com.ziksana.service.todo.TodoService#deleteTodo(int)
 	 */
-	public void deleteTodo(final int todoId) {
+	@Override
+	public void deleteTodo(int todoId) {
 		LOGGER.info("Class :" + getClass()
-				+ " : Entering Method : deleteTodo(String todoId)");
+				+ " : Entering Method :deleteTodo(int todoId)");
 		try {
 			todoMapper.deleteTodo(todoId);
-			LOGGER.info("Class :"
+			LOGGER.debug("Class :"
 					+ getClass()
-					+ " : Method : deleteTodo(String todoId) :todoDaoImpl.deleteTodo(todoId):todoId"
+					+ " : Method :deleteTodo(int todoId) :memberNotificationDaoImpl.deleteTodo(todoId):"
 					+ todoId);
 		} catch (Exception e) {
-			LOGGER.info("Class :"
+			LOGGER.debug("Class :"
 					+ getClass()
-					+ " : Method : deleteTodo(String todoId) :todoDaoImpl.updateTodo(todo):todoId:"
-					+ todoId + "Exception :" + e);
+					+ " : Method :deleteTodo(int todoId) :memberNotificationDaoImpl.deleteTodo(todoId):"
+					+ todoId + " Exception :" + e);
 		}
 		LOGGER.info("Class :" + getClass()
-				+ " : Leaving Method :deleteTodo(String todoId)");
+				+ " : Leaving Method :deleteTodo(int todoId)");
+
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.vtg.service.TodoService#completeTodo(java.lang.String)
+	 * @see com.ziksana.service.todo.TodoService#completeTodo(int)
 	 */
+	@Override
 	public Todo completeTodo(int todoId) {
 		LOGGER.info("Class :" + getClass()
-				+ " : Entering Method : completeTodo(String todoId)");
-		Todo todo = null;
-		try {
-			todo = todoMapper.findTodo(todoId);
-			LOGGER.info("Class :"
-					+ getClass()
-					+ " : Method : completeTodo(String todoId) :todoDaoImpl.findTodo(todoId):todoId"
-					+ todoId);
-		} catch (Exception e) {
-			LOGGER.info("Class :"
-					+ getClass()
-					+ " : Method : completeTodo(String todoId) :todoDaoImpl.findTodo(todoId):todoId:"
-					+ todoId + "Exception :" + e);
-		}
+				+ " : Entering Method :completeTodo(int id)");
+		LOGGER.debug("Class :"
+				+ getClass()
+				+ " : Method :completeTodo(int id) :memberNotificationDaoImpl.completeTodo(id):"
+				+ todoMapper.getTodo(todoId).getId());
 		LOGGER.info("Class :" + getClass()
-				+ " : Leaving Method :deleteTodo(String todoId)");
-		return todo;
+				+ " : Leaving Method :completeTodo(int id)");
+		return todoMapper.getTodo(todoId);
 	}
-
 }

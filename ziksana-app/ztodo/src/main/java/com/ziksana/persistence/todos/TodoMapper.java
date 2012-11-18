@@ -3,7 +3,7 @@
  */
 package com.ziksana.persistence.todos;
 
-import com.ziksana.domain.todos.Todo;
+import com.ziksana.domain.todo.Todo;
 
 /**
  * @author
@@ -11,12 +11,14 @@ import com.ziksana.domain.todos.Todo;
  */
 public interface TodoMapper {
 
-	Todo findTodo(int todoId);
+	public Todo getTodo(long id);
 
-	void createTodo(Todo todo);
+	public Todo selectByNotificationType(int notificationType);
 
-	void updateTodo(Todo todo);
+	public void updateTodo(Todo todo);
 
-	void deleteTodo(int todoId);
+	public void deleteTodo(int todoId);
+
+	public void createTodo(Todo todo);
 
 }
