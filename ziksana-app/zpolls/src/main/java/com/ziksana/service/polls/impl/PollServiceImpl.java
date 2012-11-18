@@ -82,6 +82,7 @@ public class PollServiceImpl implements PollService {
 			pollQuestion.setOptions(options);
 
 			pollQuestionResult.setPollQuestion(pollQuestion);
+			//pollQuestionResult.setPollResult(null);		
 
 			pollQuestionsNResults.add(pollQuestionResult);
 

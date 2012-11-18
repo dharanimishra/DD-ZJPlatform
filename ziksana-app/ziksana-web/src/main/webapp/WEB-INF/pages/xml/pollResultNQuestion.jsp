@@ -58,43 +58,10 @@
 				</pollQuestion>
 				<pollResult>
 					<isNull>true</isNull>
-					<options>
-						<c:forEach var="option" items="${qr.pollQuestion.allOptions}">
-							<option index="${option.index}">${option.HTML}</option>
-						</c:forEach>
-					</options>
+					
 				</pollResult>				
 			</questionresultpair>
 		</c:if>
-		<c:if test="${qr.pollQuestion != null && qr.pollResult != null}">
-			<questionresultpair memberId="${memberId}">
-				<pollQuestion>
-					<id>${qr.pollResult.question.ID}</id>
-					<isNull>false</isNull>
-					<c:choose>
-						<c:when test="${qr.pollResult.question.active}">
-							<active>true</active>
-						</c:when>
-						<c:otherwise>
-							<active>false</active>
-						</c:otherwise>
-					</c:choose>
-					<questionText>${qr.pollResult.question.questionText}</questionText>
-					<options>
-						<c:forEach var="option" items="${qr.pollResult.question.allOptions}">
-							<option index="${option.index}">${option.HTML}</option>
-						</c:forEach>
-					</options>
-				</pollQuestion>
-				<pollResult>
-					<isNull>false</isNull>
-					<options>
-						<c:forEach var="option" items="${qr.pollResult.question.allOptions}">
-							<option index="${option.index}">${option.HTML}</option>
-						</c:forEach>
-					</options>
-				</pollResult>				
-			</questionresultpair>
-		</c:if>
+		
 	</c:forEach>
 </pollquestionresult>
