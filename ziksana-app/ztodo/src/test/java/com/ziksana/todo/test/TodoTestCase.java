@@ -1,4 +1,4 @@
-package com.vtg.membernotification.test;
+package com.ziksana.todo.test;
 
 import java.util.Date;
 
@@ -14,13 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ziksana.domain.member.MemberPersona;
-import com.ziksana.domain.todos.MemberNotification;
+import com.ziksana.domain.todo.MemberPersona;
+import com.ziksana.domain.todo.Todo;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
-import com.ziksana.service.todo.MemberNotificationService;
+import com.ziksana.service.todo.TodoService;
 
 /**
  * Test Case
@@ -30,10 +30,10 @@ import com.ziksana.service.todo.MemberNotificationService;
 
 @ContextConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-public class MemberNotificationTestCase {
+public class TodoTestCase {
 
 	@Autowired
-	MemberNotificationService memberNotificationService;
+	TodoService todoService;
 
 	@BeforeClass
 	public static void runBeforeClass() {
@@ -86,14 +86,7 @@ public class MemberNotificationTestCase {
 	@Test
 	public void testGetAlertList() {
 
-		MemberNotification members = memberNotificationService
-				.getMemberNotification(7);
-
-		System.out.println(members.getCategory());
-		System.out.println(members.getDescription());
-
-		Assert.assertNotNull(members);
-		Assert.assertNull(members);
+		Todo members = todoService.findTodo(1);
 
 	}
 
@@ -105,19 +98,20 @@ public class MemberNotificationTestCase {
 	@Test
 	public void testCreateAlertItem() {
 
-		MemberNotification member = new MemberNotification();
+		Todo member = new Todo();
 		member.setCategory("Assignment");
 		member.setActivationDate(new Date());
+		// member.setNotificationType(100);
 		MemberPersona creatingMember = new MemberPersona();
-		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
-				.getToken().getMemberPersonaId().getStorageID()));
+		// creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+		// .getToken().getMemberPersonaId().getStorageID()));
 
-		// creatingMember.setMemberRoleId(1);
 		// member.setCreatingMember(creatingMember);
 		// member.setForMember(creatingMember);
 		member.setDescription(" new video coming up for the course");
 		member.setPriority(Integer.valueOf(1000));
-		memberNotificationService.createMemberNotification(member);
+		Assert.assertNotNull(member);
+		todoService.createTodo(member);
 
 	}
 
@@ -128,12 +122,14 @@ public class MemberNotificationTestCase {
 	 */
 	@Test
 	public void testEditAlertItem() {
-		MemberNotification member = new MemberNotification();
+		Todo member = new Todo();
 		member.setId(2);
+		member.setActivationDate(new Date());
 		member.setCategory("Course");
-		member.setDescription(" New online course coming up for the organic chemistry");
+		member.setDescription("New online course coming up for the organic chemistry");
 		member.setPriority(Integer.valueOf(1001));
-		memberNotificationService.updateMemberNotification(member);
+		Assert.assertNotNull(member);
+		todoService.updateTodo(member);
 
 	}
 
@@ -145,7 +141,8 @@ public class MemberNotificationTestCase {
 	@Test
 	public void testDeleteAlertItem() {
 
-		memberNotificationService.deleteMemberNotification(Integer.valueOf(1));
+		//todoService.deleteTodo(Integer.valueOf(1));
+
 	}
 
 }
