@@ -77,6 +77,8 @@ public class PollServiceImpl implements PollService {
 			pollQuestion.setQuestionText(pollQuestionEntity.getQuestionText());
 			List<PollQuestionOption> options = new ArrayList<PollQuestionOption>();
 			addOptions(options, pollQuestionEntity);
+			System.out.println("THE TOTAL NUMBER OF OPTIONS "+options.size());
+			pollQuestion.setActive(true);
 			pollQuestion.setOptions(options);
 
 			pollQuestionResult.setPollQuestion(pollQuestion);
@@ -130,26 +132,29 @@ public class PollServiceImpl implements PollService {
 			PollQuestionEntity pollQuestionEntity) {
 		assert pollQuestionEntity != null;
 
-		if (pollQuestionEntity.getAnswer1() != null)
-			options.add(getOption(pollQuestionEntity.getAnswer1()));
+		if (pollQuestionEntity.getAnswer1() != null) {
+			options.add( getOption(0, pollQuestionEntity.getAnswer1()));
+			
+		}
 
 		if (pollQuestionEntity.getAnswer2() != null)
-			options.add(getOption(pollQuestionEntity.getAnswer2()));
+			options.add(getOption(1, pollQuestionEntity.getAnswer2()));
 
 		if (pollQuestionEntity.getAnswer3() != null)
-			options.add(getOption(pollQuestionEntity.getAnswer3()));
+			options.add( getOption(2, pollQuestionEntity.getAnswer3()));
 
 		if (pollQuestionEntity.getAnswer4() != null)
-			options.add(getOption(pollQuestionEntity.getAnswer4()));
+			options.add( getOption(3, pollQuestionEntity.getAnswer4()));
 
 		if (pollQuestionEntity.getAnswer5() != null)
-			options.add(getOption(pollQuestionEntity.getAnswer5()));
+			options.add( getOption(4, pollQuestionEntity.getAnswer5()));
 
 	}
 
-	private PollQuestionOption getOption(String text) {
+	private PollQuestionOption getOption(int index, String text) {
 		PollQuestionOption pollQuestionOption = new PollQuestionOption();
 		pollQuestionOption.setText(text);
+		pollQuestionOption.setIndex(index);
 		return pollQuestionOption;
 	}
 

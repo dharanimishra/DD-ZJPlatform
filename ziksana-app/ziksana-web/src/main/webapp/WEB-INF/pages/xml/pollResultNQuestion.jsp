@@ -30,7 +30,7 @@
 					<isNull>false</isNull>
 					<options>
 						<c:forEach var="option" items="${qr.pollResult.question.allOptions}">
-							<option index="${option.index}" optionTotal="${option.optionTotal}">${option.HTML}</option>
+							<option index="${option.index}">${option.HTML}</option>
 						</c:forEach>
 					</options>
 				</pollResult>				
@@ -60,7 +60,7 @@
 					<isNull>true</isNull>
 					<options>
 						<c:forEach var="option" items="${qr.pollQuestion.allOptions}">
-							<option index="${option.index}" optionTotal="${option.optionTotal}">${option.HTML}</option>
+							<option index="${option.index}">${option.HTML}</option>
 						</c:forEach>
 					</options>
 				</pollResult>				
@@ -90,7 +90,7 @@
 					<isNull>false</isNull>
 					<options>
 						<c:forEach var="option" items="${qr.pollResult.question.allOptions}">
-							<option index="${option.index}" optionTotal="${option.optionTotal}">${option.HTML}</option>
+							<option index="${option.index}">${option.HTML}</option>
 						</c:forEach>
 					</options>
 				</pollResult>				

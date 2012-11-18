@@ -45,7 +45,10 @@ public class PollQuestionResult {
     
     public Integer getOptionCount(int index) {
     	isValid();
-        return question.getOption(index).getOptionTotal();
+        
+    	//Need to revisit
+    	return null;
+    	//return question.getOption(index).getOptionTotal();
     }
 
     public void setOptionCount(int index, Integer count) {
@@ -53,7 +56,7 @@ public class PollQuestionResult {
         	throw new IllegalStateException("Question not set in the result");
         }
         
-        question.getOption(index).setOptionTotal(count);
+        //question.getOption(index).setOptionTotal(count);
         isValid();
     }
     

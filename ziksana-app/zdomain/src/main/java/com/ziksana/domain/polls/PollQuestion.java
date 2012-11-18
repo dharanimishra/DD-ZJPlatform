@@ -70,6 +70,7 @@ public class PollQuestion implements Comparable<PollQuestion> {
 	    }
 	    
 	    public List<PollQuestionOption> getAllOptions() {
+	    	System.out.println("THE TOTAL NUMBER OF OPTIONS IS "+options.size());
 	    	return options;
 	    }
 
@@ -115,7 +116,7 @@ public class PollQuestion implements Comparable<PollQuestion> {
 	    	long total = 0;
 	    	while (itr.hasNext()) {
 	    		try {
-	    			total += itr.next().getOptionTotal();
+	    			//total += itr.next().getOptionTotal();
 	    		} catch (Exception exp) {
 	    			// Ignore, as some options may not have any user response
 	    		}
