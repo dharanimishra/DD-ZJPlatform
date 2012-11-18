@@ -93,4 +93,16 @@ public interface CoursePlaybookMapper {
 		"recipientstudentmodel=#{recipientStudentModel,jdbcType=INTEGER} where courseplaybookviewid = #{coursePlaybookViewId, jdbcType=INTEGER}"})
 	void updateCoursePlaybook(CoursePlaybookView coursePBView);
 
+	
+	/**
+	 * Checks whether CoursePlaybook exists
+	 * @param courseId
+	 * @return
+	 */
+	@Select({"select courseplaybookid  from corcourseplaybook where courseid = #{courseId, jdbcType=INTEGER}" })
+	@Results(value = {
+		@Result(property = "courseplaybookid", column = "courseplaybookid")
+	})
+	Integer isPlaybookExists(Integer courseId);
+
 }

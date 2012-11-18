@@ -25,11 +25,14 @@ import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CourseContentSecurityMapper;
 import com.ziksana.persistence.course.CourseLearningComponentMapper;
 import com.ziksana.persistence.course.CourseMapper;
+import com.ziksana.persistence.course.CoursePlaybookMapper;
 import com.ziksana.persistence.course.CourseTagcloudMapper;
 import com.ziksana.persistence.course.EnrichmentMapper;
 import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.persistence.course.LearningComponentNestMapper;
+import com.ziksana.persistence.course.PlannerMapper;
+import com.ziksana.persistence.course.SocializeMapper;
 import com.ziksana.service.course.CourseService;
 
 @Service
@@ -53,7 +56,14 @@ public class CourseServiceImpl implements CourseService {
 	public LearningComponentContentMapper 	learningComponentContentMapper;
 	@Autowired
 	public EnrichmentMapper					enrichMapper;
-		
+	@Autowired
+	public PlannerMapper					plannerMapper;
+	@Autowired
+	public CoursePlaybookMapper				playbookMapper;
+	@Autowired
+	public SocializeMapper					socializeMapper;
+	
+	
 	@Transactional
 	@Override
 	public Course saveOrUpdateCourse(Course course) throws CourseException {
@@ -277,58 +287,122 @@ public class CourseServiceImpl implements CourseService {
 
 		List<Course> 				courseList 					= null;
 		List<Course> 				newCourseList 				= null;
-		CourseLearningComponent 	courseLearningComponent 	= null;
 		ZID 						lCompId 					= null;
 		Integer 					componentContentId 			= null;
 		Integer 					learningContentId 			= null;
 		Integer 					enrichId 					= null;
 		int 						courseProgress 				= 0;
 		Integer 					assignmentId	 			= null;
-		
+		List<CourseLearningComponent> couseCompList				= null;
+		Boolean 					isContentExists				= false;
+		Boolean 					isEnriched 					= false;
+		Boolean 					isAssignmentExist			= false;
+		Boolean 					isPlannerExists				= false;
+		Boolean 					isPlaybookExists			= false;
+		Boolean 					isSocialized				= false;
 		courseList 		= new		ArrayList<Course>();
 		newCourseList 	= new 		ArrayList<Course>();
+		Integer 					courseId 					= null;
+		Integer 					learningPlannerId 			= null;
+		Integer 					coursePlaybookId 			= null;
+		Integer 					memberRoleId				= null;
+		Integer 					reviewProgressId 			= null;
 		
-		courseList = courseMapper.getListOfCourses(new Integer(memberPersonaId.getStorageID()));
+		memberRoleId = new Integer(memberPersonaId.getStorageID());
+		
+		courseList = courseMapper.getListOfCourses(memberRoleId);
 		
 		if(courseList!=null && courseList.size()>0){
 			
 			logger.debug("Course components size : "+courseList.size());
+			
+			LearningComponent component = null;
 		
 			for (Course course : courseList) {
+	
+				courseId = new Integer(course.getCourseId().getStorageID());
+
+				couseCompList =courseLComponentMapper.getComponentByCourse(courseId);
 				
-				courseLearningComponent =courseLComponentMapper.getComponentByCourse(new Integer(course.getCourseId().getStorageID()));
-				
-				if(courseLearningComponent.getLearningComponent().getLearningComponentId()!=null){
-					
+				if(couseCompList!=null){
 					courseProgress = courseProgress +15;
 					
-					lCompId = courseLearningComponent.getLearningComponent().getLearningComponentId();
-					
-					componentContentId = learningComponentContentMapper.getCompContentByLComponentId(new Integer(lCompId.getStorageID()));
-					
-					learningContentId = learningComponentContentMapper.getContentByLComponentId(new Integer(lCompId.getStorageID()));
-					
-					if(componentContentId != null){
-						courseProgress = courseProgress +15;
+					for (CourseLearningComponent courseLearningComp : couseCompList) {
 						
-						enrichId = enrichMapper.getEnrichByContentIdOrComponentId(new Integer(lCompId.getStorageID()), learningContentId);
+						learningPlannerId = plannerMapper.isPlannerExists(null,new Integer(courseLearningComp.getCourseLearningComponentId().getStorageID()));
 						
-						if(enrichId!=null){
-	
-							courseProgress = courseProgress +15;
-							assignmentId = courseMapper.checkAssignment(new Integer(lCompId.getStorageID()));
-							if(assignmentId !=null){
-								courseProgress = courseProgress +15;
+						if(learningPlannerId!=null){
+							isPlannerExists = true;	
+						}
+						
+						component = courseLearningComp.getLearningComponent();
+
+						lCompId = component.getLearningComponentId();
+						
+						componentContentId = learningComponentContentMapper.getCompContentByLComponentId(new Integer(lCompId.getStorageID()));
+						
+						if(componentContentId != null){
+							
+							isContentExists = true;
+							
+							learningContentId = learningComponentContentMapper.getContentByLComponentId(new Integer(lCompId.getStorageID()));
+							
+							if(learningContentId!=null){
+								
+								enrichId = enrichMapper.getEnrichByContentIdOrComponentId(new Integer(lCompId.getStorageID()), learningContentId);
+								
+								if(enrichId!=null){
+									
+									isEnriched = true;
+									assignmentId = courseMapper.checkAssignment(new Integer(lCompId.getStorageID()));
+									
+									if(assignmentId!=null){
+										isAssignmentExist = true;
+									}
+								}
 							}
-							//TODO: planner progress
-							//TODO: playbook progress
-							//TODO: socialize
 						}
 					}
+						
+					learningPlannerId = plannerMapper.isPlannerExists(courseId,null);
+										if(learningPlannerId!=null){
+						isPlannerExists = true;	
+					}
+					
+					coursePlaybookId = playbookMapper.isPlaybookExists(courseId);
+										if(coursePlaybookId!=null){
+						isPlaybookExists = true;	
+					}
+										
+					reviewProgressId = socializeMapper.isSocializeExists(courseId,memberRoleId);
+					if(reviewProgressId!=null){
+						isSocialized = true;	
+					}
+					
+					if(isContentExists){
+						courseProgress = courseProgress +15;
+					}
+					if(isEnriched){
+						courseProgress = courseProgress +15;
+					}
+					if(isAssignmentExist){
+						courseProgress = courseProgress +15;
+					}
+					if(isPlannerExists){
+						courseProgress = courseProgress +15;
+					}
+					if(isPlaybookExists){
+						courseProgress = courseProgress +15;
+					}
+					if(isSocialized){
+						courseProgress = courseProgress +10;
+					}
 				}
+				
 				course.setCourseProgress(courseProgress);
 				
 				newCourseList.add(course);
+				
 			}
 		}
 

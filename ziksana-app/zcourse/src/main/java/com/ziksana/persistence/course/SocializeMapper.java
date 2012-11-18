@@ -167,7 +167,8 @@ public interface SocializeMapper {
 	/**
 	 * @param contentReviewWorkflow
 	 */
-	@Update({ "update corcontentreviewworkflow set completeby = #{completeBy,jdbcType=TIMESTAMP}, notes=#{notes, jdbcType=VARCHAR} where contentReviewWorkflowid = #{contentReviewWorkflowId, jdbcType=INTEGER} " })
+	@Update({ "update corcontentreviewworkflow set completeby = #{completeBy,jdbcType=TIMESTAMP}, " +
+			"notes=#{notes, jdbcType=VARCHAR} where contentReviewWorkflowid = #{contentReviewWorkflowId, jdbcType=INTEGER} " })
 	void saveContentReviewInfo(ContentReviewWorkflow contentReviewWorkflow);
 
 	
@@ -193,5 +194,10 @@ public interface SocializeMapper {
 			@Result(property = "roleType", column = "roletype"),
 			@Result(property = "thumnailPicturePath", column = "thumnailpicturepath") })
 	MemberPersona getMemberRoleByCircle(Integer memberRoleId, Integer relationshipId);
+
+
+	@Select({"select reviewprogressid from corlearningcontentreviewprogress where " +
+			" courseid = #{course.courseId,jdbcType=INTEGER} and memberroleid = #{authoringMemberRole.memberRoleId, jdbcType=INTEGER} "})
+	Integer isSocializeExists(Integer courseId, Integer memberRoleId);
 
 }
