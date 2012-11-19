@@ -8,8 +8,9 @@ public class LearningComponentNest extends AuditHistory{
 	
 	public LearningComponentNest(LearningComponent learningComponentParent,
 			LearningComponent learningComponentNest) {
-		this.learningComponentParent = learningComponentParent;
-		this.nestLearningComponent = learningComponentNest;
+		
+		setLearningComponentParent(learningComponentParent);
+		setNestLearningComponent(learningComponentNest);
 	}
 
 	private Integer		 		componentNestId;

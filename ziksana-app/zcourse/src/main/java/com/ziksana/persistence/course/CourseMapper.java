@@ -3,9 +3,9 @@ package com.ziksana.persistence.course;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
@@ -13,8 +13,13 @@ import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseAdditionalProperty;
+import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.LearningComponent;
+import com.ziksana.domain.course.LearningComponentContent;
+import com.ziksana.domain.course.LearningComponentNest;
 import com.ziksana.domain.course.LearningComponentType;
+import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.LearningContentParts;
 import com.ziksana.domain.institution.CurriculumCourse;
 
 public interface CourseMapper {
@@ -124,17 +129,6 @@ public interface CourseMapper {
 			"#{subjClassification.subjClassificationId,jdbcType=INTEGER})" })
 	@SelectKey(keyProperty = "courseid", before = true, resultType = int.class, statement = { "select last_insert_id as courseid" })
 	int saveCourse(Course course);
-
-	/**
-	 * This method will retrieves the course learning components and its
-	 * contents from the database.
-	 * 
-	 * @param course
-	 * @return
-	 */
-	@ResultMap("CourseTreeMap")
-	Course getCourseComponents(Course course);
-
 	
 	
 	@Insert({
@@ -146,8 +140,7 @@ public interface CourseMapper {
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseaddnlpropertyid", before = true, resultType = Integer.class)
 	void saveAddnlInfo(CourseAdditionalProperty courseAdditionalProperty);
 
-	
-	
+		
 	/**
 	 * Checks whetehr assignment is created at course creation.
 	 * 
@@ -244,5 +237,107 @@ public interface CourseMapper {
 			@Result(property = "durationunit", column = "durationunit"),
 	})
 	List<Course> getPublishedCourses(Integer memberRoleId);
+	
+	
+	
+	//Course Tree structure related methods STARTS
+	/**
+	 * This method will retrieves the course learning components and its
+	 * contents from the database.
+	 * @param course
+	 * @return
+	 */
+	@Select({"select courseid, name, description coursestatus, memberroleid from corcourse where courseid = #{courseId,jdbcType=INTEGER}"})
+	@Results(value = {
+			@Result(property = "courseId", column = "courseid"),
+			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
+			@Result(property = "name", column = "name"),
+			@Result(property = "description", column = "description"),
+			@Result(property = "courseStatus", column = "coursestatus"),
+			@Result(property = "courseDetails.courseLearningComponentsList", column="courseid", javaType=List.class,many=@Many(select="getLearningComponents"))
+			})
+	Course getCourseComponents(Course course);
+	
+	
+	@Select({
+		"select courselearningcomponentid, courseid, learningcomponentid, learningcomponenttypeid ",
+		" from corcourselearningcomponent where courseid = #{courseId,jdbcType=INTEGER}" })
+	@Results(value = {
+		@Result(property = "courseLearningComponentId", column = "courselearningcomponentid"),
+		@Result(property = "duration.durationUnit", column = "durationunit"),
+		@Result(property = "course.courseId", column = "courseid"),
+		@Result(property = "learningComponent.learningComponentId", column = "learningcomponentid"),
+		@Result(property = "learningcomponentType.learningcomponentTypeId", column = "learningcomponentTypeId"),
+		@Result(property = "learningComponentType", column="learningcomponentTypeId", javaType=LearningComponentType.class,one=@One(select="getLearningComponentType")),
+		@Result(property = "learningComponent", column="learningcomponentid", javaType=LearningComponent.class,one=@One(select="getLearningComponent"))
+	})
+	List<CourseLearningComponent> getLearningComponents(Integer courseId);
+	
+	
+	@Select({
+		"select learningcomponenttypeid from corlearningcomponenttype where learningcomponenttypeid = #{learningComponentTypeId,jdbcType=INTEGER}" })
+	@Results(value = {
+			@Result(property = "learningComponentTypeId", column = "learningcomponenttypeid")
+		})	
+	LearningComponentType getLearningComponentType(Integer learningComponentTypeId);
+		
+	
+	@Select({"select learningcomponentid, name, description, learningObjIndicator, learningcomponenttypeid, learningcomponentnestid " +
+			"from corlearningcomponent where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}"})
+	@Results(value = {
+			@Result(property = "learningcomponentid", column = "learningcomponentid"),
+			@Result(property = "name", column = "name"),
+			@Result(property = "description", column = "description"),
+			@Result(property = "learningObjIndicator", column = "learningobjindicator"),
+			@Result(property = "learningcomponentType.learningcomponentTypeId", column = "learningcomponentTypeId"),
+			@Result(property = "learningComponentType", column="learningcomponentTypeId", javaType=LearningComponentType.class,one=@One(select="getLearningComponentType")),
+			@Result(property = "learningcomponentnestid", column = "learningcomponentnestid"),
+			@Result(property = "learningComponentDetails.learningComponentNest", column="learningcomponentnestid", javaType=LearningComponentType.class,one=@One(select="getLearningComponentNest")),
+			@Result(property = "learningComponentDetails.learningCompContentList", column="learningcomponentid", javaType=List.class,many=@Many(select="getLearningComponentContents"))
+		})
+	LearningComponent getLearningComponent(Integer learningComponentId);
+	
+	
+	@Select({
+	"select learningcomponentnestid from corlearningcomponenttype where learningcomponentnestid = #{learningComponentNestId,jdbcType=INTEGER}" })
+		@Results(value = {
+				@Result(property = "learningComponentNestId", column = "learningcomponentnestid")
+		})	
+	LearningComponentNest getLearningComponentNest(Integer learningComponentNestId);
+	
+	
+	@Select({"select learningcomponentcontentid, contentdescription, learningcontentid from corlearningcomponentcontent where isdelete = false" +
+			" and learningcomponentid = #{learningComponentId,jdbcType.INTEGER}"})
+	@Results(value = {
+			@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
+			@Result(property = "contentdescription", column = "contentdescription"),
+			@Result(property = "baseLearningContent.learningContentId", column = "learningcontentid"),
+			@Result(property = "baseLearningContent", column="learningcontentid", javaType=LearningContent.class,one=@One(select="getLearningContent"))
+			})
+	List<LearningComponentContent> getLearningComponentContents(Integer learningComponentId);
+	
+
+	@Select({"select learningcontentid, contentpath, contentformat, contentname, contentdescription " +
+			"from corlearningcontent where learningcontentid = #{learningContentId,jdbcType=INTEGER}"})
+	@Results(value = {
+			@Result(property = "learningcontentid", column = "learningcontentid"),
+			@Result(property = "contentdescription", column = "contentdescription"),
+			@Result(property = "baseLearningContent.learningContentId", column = "learningcontentid"),
+			@Result(property = "learningContentPartsList", column="learningcontentid", javaType=List.class,many=@Many(select="getLearningContentParts"))
+			})
+	LearningContent getLearningContent(Integer learningContentId);
+	
+	
+	@Select({"select learningcontentpartsid, partpath, partsequence from corlearningcontentparts where learningcontentid = #{learningContentId,jdbcType=INTEGER}"})
+	@Results(value = {
+			@Result(property = "learningContentPartsId", column = "learningcontentpartsid"),
+			@Result(property = "partPath", column = "partpath"),
+			@Result(property = "partSequence", column = "partsequence"),
+		})
+	List<LearningContentParts> getLearningContentParts(Integer learningContentId);
+	
+	//Course Tree structure related methods ENDS
+	
+
 
 }
