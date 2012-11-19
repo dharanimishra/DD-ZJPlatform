@@ -1,5 +1,6 @@
 package com.ziksana.domain.course;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
@@ -10,15 +11,16 @@ import com.ziksana.id.ZID;
  */
 public class CourseLearningPlanner extends AuditHistory {
 	
-	public CourseLearningPlanner(Date startDate, Date endDate, Duration duration) {
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.duration = duration;
+	
+	public CourseLearningPlanner(){
+		
 	}
 	
 	private ZID  					coursePlannerId;
-	private Date 					startDate 				= null;
-	private Date 					endDate 				= null;
+	private Date 					startPeriod 			= null;
+	private Date 					endPeriod 				= null;
+	private Timestamp				startTime				= null;
+	private Timestamp				endTime					= null;
 	private Duration 				duration 				= null;
 	private CourseLearningComponent courseLearningComponent = null;
 	private Course 					course 					= null;
@@ -36,30 +38,7 @@ public class CourseLearningPlanner extends AuditHistory {
 	public void setCoursePlannerId(ZID coursePlannerId) {
 		this.coursePlannerId = coursePlannerId;
 	}
-	/**
-	 * @return the startDate
-	 */
-	public Date getStartDate() {
-		return startDate;
-	}
-	/**
-	 * @param startDate the startDate to set
-	 */
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-	/**
-	 * @return the endDate
-	 */
-	public Date getEndDate() {
-		return endDate;
-	}
-	/**
-	 * @param endDate the endDate to set
-	 */
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+
 	/**
 	 * @return the duration
 	 */
@@ -110,12 +89,6 @@ public class CourseLearningPlanner extends AuditHistory {
 			CourseLearningPlanner courseComponentCalendar) {
 		this.courseComponentCalendar = courseComponentCalendar;
 	}
-
-	@Override
-	public String toString() {
-		return "CourseLearningPlanner [startDate=" + startDate + ", endDate="
-				+ endDate + ", duration=" + duration + "]";
-	}
 	/**
 	 * @return the courseLearningComponent
 	 */
@@ -139,6 +112,54 @@ public class CourseLearningPlanner extends AuditHistory {
 	 */
 	public void setCourse(Course course) {
 		this.course = course;
+	}
+	/**
+	 * @return the startPeriod
+	 */
+	public Date getStartPeriod() {
+		return startPeriod;
+	}
+	/**
+	 * @param startPeriod the startPeriod to set
+	 */
+	public void setStartPeriod(Date startPeriod) {
+		this.startPeriod = startPeriod;
+	}
+	/**
+	 * @return the endPeriod
+	 */
+	public Date getEndPeriod() {
+		return endPeriod;
+	}
+	/**
+	 * @param endPeriod the endPeriod to set
+	 */
+	public void setEndPeriod(Date endPeriod) {
+		this.endPeriod = endPeriod;
+	}
+	/**
+	 * @return the startTime
+	 */
+	public Timestamp getStartTime() {
+		return startTime;
+	}
+	/**
+	 * @param startTime the startTime to set
+	 */
+	public void setStartTime(Timestamp startTime) {
+		this.startTime = startTime;
+	}
+	/**
+	 * @return the endTime
+	 */
+	public Timestamp getEndTime() {
+		return endTime;
+	}
+	/**
+	 * @param endTime the endTime to set
+	 */
+	public void setEndTime(Timestamp endTime) {
+		this.endTime = endTime;
 	}
 	
 }

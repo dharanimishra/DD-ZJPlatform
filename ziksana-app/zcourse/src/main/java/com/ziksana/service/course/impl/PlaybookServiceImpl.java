@@ -36,7 +36,7 @@ public class PlaybookServiceImpl implements PlaybookService {
 			throw new CourseException("Course Playbook ID cannot be null");
 		}
 		
-		coursePB = coursePlaybookMapper.getDefaulPlaybookDetails(isDelete, new Integer(playbook.getCoursePlaybookId().getDisplayID()));
+		coursePB = coursePlaybookMapper.getDefaulPlaybookDetails(isDelete, playbook.getCoursePlaybookId());
 		
 		if(coursePB != null){
 			logger.debug(" Course Playbook details : "+coursePB.toString());
@@ -85,7 +85,6 @@ public class PlaybookServiceImpl implements PlaybookService {
 	public void createNewCoursePlaybook(CoursePlaybook coursePlaybook,
 			CoursePlaybookView coursePBView) throws CourseException {
 
-		CoursePlaybook 			coursePB 		= null;
 		CoursePlaybookView 		playbookView 	= null;
 		
 		if(coursePlaybook.getCourse() == null){
@@ -95,13 +94,16 @@ public class PlaybookServiceImpl implements PlaybookService {
 		if(coursePlaybook.getPlaybookType() == PlaybookType.REGULAR){
 			
 			logger.debug("Before saving the course playbook");
-			coursePB = coursePlaybookMapper.saveDefaultPlaybook(coursePlaybook);
+			Integer coursePBId = coursePlaybookMapper.saveDefaultPlaybook(coursePlaybook);
 			
 			playbookView = coursePlaybook.getPlaybookView();
 			
-			playbookView.setCoursePlaybook(coursePB);
+			coursePlaybook.setCoursePlaybookId(coursePBId);
+			
+			playbookView.setCoursePlaybook(coursePlaybook);
 			
 			logger.debug("Before saving the course playbook view");
+			
 			coursePlaybookMapper.savePlaybookView(playbookView);
 			
 		}
@@ -137,7 +139,6 @@ public class PlaybookServiceImpl implements PlaybookService {
 	@Override
 	public void createDefaultPlaybook(CoursePlaybook coursePlaybook) throws CourseException {
 		
-		CoursePlaybook 			coursePB 		= null;
 		CoursePlaybookView 		playbookView 	= null;
 		
 		if(coursePlaybook.getCourse() == null){
@@ -146,16 +147,24 @@ public class PlaybookServiceImpl implements PlaybookService {
 		
 		if(coursePlaybook.getPlaybookType() == PlaybookType.PREVIEW){
 			
-			logger.debug("Before saving the course playbook");
-			coursePB = coursePlaybookMapper.saveDefaultPlaybook(coursePlaybook);
-			
 			playbookView = coursePlaybook.getPlaybookView();
 			
-			playbookView.setCoursePlaybook(coursePB);
+			playbookView.setCoursePlaybook(coursePlaybook);
 			
 			logger.debug("Before saving the course playbook view");
-			coursePlaybookMapper.savePlaybookView(playbookView);
 			
+			coursePlaybookMapper.savePlaybookView(playbookView);
+
+			
+			logger.debug("Before saving the course playbook");
+			
+			Integer coursePBId = coursePlaybookMapper.saveDefaultPlaybook(coursePlaybook);
+			
+			logger.debug("After saving the course playbook ::: "+coursePBId);
+			
+			coursePlaybook.setCoursePlaybookId(coursePBId);
+			
+				
 		}
 		
 	}

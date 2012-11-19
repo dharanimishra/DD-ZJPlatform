@@ -14,6 +14,10 @@ public class CourseLearningComponent extends AuditHistory{
 		this.usageEndDate = usageEndDate;
 		this.duration = duration;
 	}
+	
+	public CourseLearningComponent(){
+		
+	}
 
 	private ZID		 				courseLearningComponentId;
 	private Date 					creationDate 						= null;

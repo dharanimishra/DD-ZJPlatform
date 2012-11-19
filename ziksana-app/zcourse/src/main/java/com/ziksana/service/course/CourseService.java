@@ -55,7 +55,7 @@ public interface CourseService {
 	 * @param member
 	 * @return
 	 */
-	public List<Course> getListOfCourses(ZID memberPersonaId) throws CourseException;
+	public List<Course> getListOfCourses(Integer memberPersonaId) throws CourseException;
 	
 	
 	/**

@@ -9,7 +9,6 @@ import com.ziksana.domain.assessment.engagement.Engagement;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utils.SubjectClassification;
-import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -41,7 +40,7 @@ public class Course extends AuditHistory{
 		this.getCourseDetails().learningComponents =learningComponentList;
 	}
 
-	private ZID 					courseId;
+	private Integer 					courseId;
 	/**
 	 * Maximum Length:45
 	 */
@@ -80,6 +79,12 @@ public class Course extends AuditHistory{
 	private MemberPersona 			accountableMember 		= null;
 	private CourseDetails 			courseDetails 			= null;
 	private Integer					courseProgress			= null;
+	private Integer					status					= null;
+	private Integer 				duration 				= null;
+	private Integer					durationUnits 			= null;
+	
+	
+
 	/**
 	 * Maximum Length:240
 	 */
@@ -271,20 +276,20 @@ public class Course extends AuditHistory{
 	}
 	/**
 	 * @return the value of attribute courseId
-	 */
+	 *//*
 	public ZID getCourseId() {
 		return courseId;
 	}
 
-	/**
+	*//**
 	 * @param courseId
 	 *            the value for attribute courseId
-	 */
+	 *//*
 	public void setCourseId(ZID courseId) {
 		this.courseId = courseId;
 	}
 
-	/**
+*/	/**
 	 * @return the courseDetails
 	 */
 	public CourseDetails getCourseDetails() {
@@ -472,11 +477,6 @@ public class Course extends AuditHistory{
 	}
 
 
-	public String toString() {
-		return "Course [courseId = "+courseId+" , name=" + name + ", courseStatus=" + courseStatus
-				+ ", courseDuration=" + courseDuration + "]";
-	}
-
 	/**
 	 * @return the engagementList
 	 */
@@ -489,6 +489,83 @@ public class Course extends AuditHistory{
 	 */
 	public void setEngagementList(List<Engagement> engagementList) {
 		this.engagementList = engagementList;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public Integer getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	/**
+	 * @return the duration
+	 */
+	public Integer getDuration() {
+		return duration;
+	}
+
+	/**
+	 * @param duration the duration to set
+	 */
+	public void setDuration(Integer duration) {
+		this.duration = duration;
+	}
+
+	/**
+	 * @return the durationUnits
+	 */
+	public Integer getDurationUnits() {
+		return durationUnits;
+	}
+
+	/**
+	 * @param durationUnits the durationUnits to set
+	 */
+	public void setDurationUnits(Integer durationUnits) {
+		this.durationUnits = durationUnits;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Course [courseId=" + courseId + ", name=" + name
+				+ ", description=" + description + ", validFromDate="
+				+ validFromDate + ", validToDate=" + validToDate
+				+ ", courseStatus=" + courseStatus + ", rating=" + rating
+				+ ", securityIndicator=" + securityIndicator
+				+ ", courseContSecurity=" + courseContSecurity
+				+ ", courseCredits=" + courseCredits + ", extraCredits="
+				+ extraCredits + ", additionalInfoIndicator="
+				+ additionalInfoIndicator + ", thumbnailPicturePath="
+				+ thumbnailPicturePath + ", courseDuration=" + courseDuration
+				+ ", accountableMember=" + accountableMember
+				+ ", courseProgress=" + courseProgress + ", status=" + status
+				+ ", duration=" + duration + ", durationUnits=" + durationUnits
+				+ "]";
+	}
+
+	/**
+	 * @return the courseId
+	 */
+	public Integer getCourseId() {
+		return courseId;
+	}
+
+	/**
+	 * @param courseId the courseId to set
+	 */
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
 	}
 
 

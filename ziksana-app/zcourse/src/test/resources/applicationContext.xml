@@ -15,8 +15,11 @@
 		<property name="cacheSeconds" value="3000" />
 	</bean>
 	
-	<bean id="courseService" class="com.ziksana.service.course.impl.CourseServiceImpl">
-	</bean>
+	<bean id="courseService" class="com.ziksana.service.course.impl.CourseServiceImpl"/>
+		
+	<bean id="coursePlannerService" class="com.ziksana.service.course.impl.CoursePlannerServiceImpl"/>
+	
+	<bean id="playbookService" class="com.ziksana.service.course.impl.PlaybookServiceImpl"/>
 	
 	<!-- Scans the classpath of this application for @Components to deploy as beans -->
 	<context:component-scan base-package="com.ziksana.service.course" />

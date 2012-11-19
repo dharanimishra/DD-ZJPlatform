@@ -64,7 +64,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 			throw new CourseException(" Course ID cannot be null");
 		}
 		
-		courseId = new Integer(course.getCourseId().getStorageID());
+		courseId = course.getCourseId();
 		
 		engagementList = engagementMapper.getEngagementeRulesByCourseId(courseId);
 

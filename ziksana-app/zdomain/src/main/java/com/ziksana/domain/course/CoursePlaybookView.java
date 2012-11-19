@@ -23,16 +23,21 @@ public class CoursePlaybookView extends AuditHistory {
 		this.brochurePath = brochureContentPath;
 	}
 
-
+	  public CoursePlaybookView(){
+		  
+	  }
 	  private ZID 						coursePlaybookViewId; 
 	  private String 					name 					= null;
 	  private String					description				= null;
-	  private PlaybookDeliveryType 		deliveryType 			= null; 
+	  private PlaybookDeliveryType 		deliveryType 			= null;
+	  private Integer			 		deliveryTypeId 			= null;
 	  private String 					layoutPath 				= null; 
 	  private String 					contentPath  			= null;
-	  private CoursePlaybookStatus 		coursePlaybookStatus 	= null; 
+	  private CoursePlaybookStatus 		coursePlaybookStatus 	= null;
+	  private Integer 					coursePlaybookStatusId 	= null;
 	  private String 					brochurePath 			= null; 
 	  private RecipientStudentModel 	recStudentModel 		= null;
+	  private Integer 					recStudentModelId 		= null;
 	  private CoursePlaybook 			coursePlaybook 			= null; 
 	  private LearningComponent 		learningComponent 		= null;
 	  
@@ -176,6 +181,48 @@ public class CoursePlaybookView extends AuditHistory {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * @return the deliveryTypeId
+	 */
+	public Integer getDeliveryTypeId() {
+		return deliveryTypeId;
+	}
+
+	/**
+	 * @param deliveryTypeId the deliveryTypeId to set
+	 */
+	public void setDeliveryTypeId(Integer deliveryTypeId) {
+		this.deliveryTypeId = deliveryTypeId;
+	}
+
+	/**
+	 * @return the coursePlaybookStatusId
+	 */
+	public Integer getCoursePlaybookStatusId() {
+		return coursePlaybookStatusId;
+	}
+
+	/**
+	 * @param coursePlaybookStatusId the coursePlaybookStatusId to set
+	 */
+	public void setCoursePlaybookStatusId(Integer coursePlaybookStatusId) {
+		this.coursePlaybookStatusId = coursePlaybookStatusId;
+	}
+
+	/**
+	 * @return the recStudentModelId
+	 */
+	public Integer getRecStudentModelId() {
+		return recStudentModelId;
+	}
+
+	/**
+	 * @param recStudentModelId the recStudentModelId to set
+	 */
+	public void setRecStudentModelId(Integer recStudentModelId) {
+		this.recStudentModelId = recStudentModelId;
 	}
 
 }

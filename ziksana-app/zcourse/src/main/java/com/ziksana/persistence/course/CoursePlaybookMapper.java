@@ -15,32 +15,34 @@ import com.ziksana.domain.course.CoursePlaybookView;
 
 public interface CoursePlaybookMapper {
 
-	@Insert({ "insert into corcourseplaybook (fromDate, ",
-			"toDate, courseplaybookstatus, courseplaybooktype, courseid)",
+	@Insert({ "insert into corcourseplaybook (validfrom, ",
+			"validTo, courseplaybookstatus, courseplaybooktype, courseid)",
 			"values (#{fromDate,jdbcType=DATE}, ",
-			"#{toDate,jdbcType=DATE}, #{coursePBStatus,jdbcType=INTEGER},",
-			"#{playbookType,jdbcType=INTEGER}, #{course.courseId,jdbcType=INTEGER})" })
-	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "coursePlaybookId", before = true, resultType = Integer.class)
-	@Results(value = {
+			"#{toDate,jdbcType=DATE}, #{coursePBStatusId,jdbcType=INTEGER},",
+			"#{playbookTypeId,jdbcType=INTEGER}, #{course.courseId,jdbcType=INTEGER})" })
+	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseplaybookid", before = true, resultType = Integer.class)
+/*	@Results(value = {
 			@Result(property = "coursePlaybookId", column = "courseplaybookid"),
 			@Result(property = "fromDate", column = "validfrom"),
 			@Result(property = "toDate", column = "validTo"),
-			@Result(property = "coursePlaybookStatus", column = "courseplaybookStatus"),
-			@Result(property = "coursePlaybookType", column = "courseplaybooktype"),
+			@Result(property = "coursePBStatus.id", column = "courseplaybookstatus"),
+			@Result(property = "coursePlaybookType.id", column = "courseplaybooktype"),
 			@Result(property = "course.courseId", column = "courseId") })
-	CoursePlaybook saveDefaultPlaybook(CoursePlaybook coursePlaybook);
+*/	Integer saveDefaultPlaybook(CoursePlaybook coursePlaybook);
 
 	@Insert({
-			"insert into corcoursepplaybookview ",
-			"(creationdate, name, deliverytype, layoutPath, contentPath, playbookstatus, brochurePath, recipientstudentmodel, courseplaybookid) ",
-			"values (sysdate(), #{name,jdbcType=VARCHAR}, #{deliverypeTy,jdbcType=INTEGER}, #{layoutPath,jdbcType=VARCHAR}, ",
-			" #{contentPath,jdbcType=VARCHAR},#{playbookStatus,jdbcType=INTEGER},#{brochurePath,jdbcType=VARCHAR},#{recipientStudentModel,jdbcType=INTEGER},",
-			" #{coursePlaybook.coursePlaybookId,jdbcType=INTEGER},)" })
+			"insert into corcourseplaybookview ",
+			"(creationdate, playbookviewname, deliverytype, layoutmarkupPath, contentmarkupPath, " +
+			"courseplaybookstatus, brochurecontentPath, recipientstudentmodel, courseplaybookid) ",
+			"values (sysdate(), #{name,jdbcType=VARCHAR}, #{deliveryTypeId,jdbcType=INTEGER}, #{layoutPath,jdbcType=VARCHAR}, ",
+			" #{contentPath,jdbcType=VARCHAR},#{coursePlaybookStatusId,jdbcType=INTEGER},#{brochurePath,jdbcType=VARCHAR},#{recStudentModelId,jdbcType=INTEGER},",
+			" #{coursePlaybook.coursePlaybookId,jdbcType=INTEGER})" })
+	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseplaybookviewid", before = true, resultType = Integer.class)
 	void savePlaybookView(CoursePlaybookView playbookView);
 
 	@Select({
 			"select courseplaybookid, fromDate, toDate, courseplaybookstatus, courseplaybooktype, courseid ",
-			"   from corcourseplaybook where courseplaybookid = #{coursePlaybookId, jdbcType=INTEGER} and isDelete=#{isDelete,jdbcType=BOOLEAN}" })
+			"   from corcourseplaybook where courseplaybookid = #{coursePlaybookId, jdbcType=INTEGER} and isdelete=#{isDelete,jdbcType=BOOLEAN}" })
 	@Results(value = {
 			@Result(property = "courseplaybookid", column = "courseplaybookid"),
 			@Result(property = "fromDate", column = "fromdate"),

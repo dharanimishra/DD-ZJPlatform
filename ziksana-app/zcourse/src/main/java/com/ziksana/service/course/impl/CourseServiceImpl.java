@@ -163,7 +163,7 @@ public class CourseServiceImpl implements CourseService {
 		LearningComponent 			savedComponent 			= null;
 		List<LearningComponent> 	learningComponentList 	= null;
 		LearningComponentDetails 	compDetails 			= null;
-		ZID 						courseId 				= null;
+		Integer						courseId 				= null;
 		List<CourseTagcloud> 		tagcloudList 			= null;
 		CourseContentSecurity 		contSecurity 			= null;
 		LearningComponentNest 		compNest 				= null;
@@ -290,11 +290,37 @@ public class CourseServiceImpl implements CourseService {
 
 	
 	@Override
-	public List<Course> getListOfCourses(ZID memberPersonaId) {
+	public List<Course> getListOfCourses(Integer memberPersonaId) throws CourseException {
 
 		List<Course> 				courseList 					= null;
 		List<Course> 				newCourseList 				= null;
-		Integer 						lCompId 					= null;
+		courseList 		= new		ArrayList<Course>();
+		newCourseList 	= new 		ArrayList<Course>();
+		Integer 					memberRoleId				= null;
+		
+
+		if(memberPersonaId==null){
+			throw new CourseException(" MemberRoleID cannot be null");
+		}
+		
+		logger.debug("MemberRoleID : "+memberPersonaId);
+		
+		courseList = courseMapper.getListOfCourses(memberRoleId);
+		
+		//newCourseList = getCourseProgress(courseList, memberPersonaId);
+		
+		return courseList;
+	}
+
+	/**
+	 * construct the course progress based on the various steps(course component, content, enrich, assignment, planner, playbook and socialize)
+	 * @param courseList
+	 * @param memberRoleId
+	 * @return
+	 */
+	private List<Course> getCourseProgress(List<Course> courseList, Integer memberRoleId){
+		
+		List<Course> newCourseList = null;
 		Integer 					componentContentId 			= null;
 		Integer 					learningContentId 			= null;
 		Integer 					enrichId 					= null;
@@ -307,30 +333,26 @@ public class CourseServiceImpl implements CourseService {
 		Boolean 					isPlannerExists				= false;
 		Boolean 					isPlaybookExists			= false;
 		Boolean 					isSocialized				= false;
-		courseList 		= new		ArrayList<Course>();
-		newCourseList 	= new 		ArrayList<Course>();
+		Integer 						lCompId 					= null;
 		Integer 					courseId 					= null;
 		Integer 					learningPlannerId 			= null;
 		Integer 					coursePlaybookId 			= null;
-		Integer 					memberRoleId				= null;
 		Integer 					reviewProgressId 			= null;
-		
-		memberRoleId = new Integer(memberPersonaId.getStorageID());
-		
-		courseList = courseMapper.getListOfCourses(memberRoleId);
+		newCourseList 	= new 		ArrayList<Course>();
 		
 		if(courseList!=null && courseList.size()>0){
 			
-			logger.debug("Course components size : "+courseList.size());
-			
+			logger.debug("Courses  size : "+courseList.size());
+			logger.debug("Courses  size : "+courseList);
 			LearningComponent component = null;
 		
 			for (Course course : courseList) {
-	
-				courseId = new Integer(course.getCourseId().getStorageID());
+				logger.debug("Courses   : "+course.toString());
+				logger.debug("Courses   : "+course.getCourseId());
+				courseId = course.getCourseId();
 
 				couseCompList =courseLComponentMapper.getComponentByCourse(courseId);
-				
+				logger.debug("Course components size : "+couseCompList.size());
 				if(couseCompList!=null){
 					courseProgress = courseProgress +15;
 					
@@ -412,10 +434,10 @@ public class CourseServiceImpl implements CourseService {
 				
 			}
 		}
-
 		return newCourseList;
+		
 	}
-
+	
 	@Override
 	public HashMap<String, List<String>> getCourseComponents(ZID courseId) {
 		return null;

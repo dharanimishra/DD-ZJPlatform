@@ -3,8 +3,6 @@ package com.ziksana.service.course.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +23,6 @@ import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.IntegerZID;
-import com.ziksana.id.StringZID;
-import com.ziksana.id.ZID;
-import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
 
 /**
@@ -36,34 +30,12 @@ import com.ziksana.service.course.CourseService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
-public class CourseDefineTest {
+public class CourseDefineTest extends BaseTest{
 
 	@Autowired
 	public CourseService courseService;
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		System.out
-				.println("inside Setup ****************************************");
-		ZID memberId = new StringZID("1000");
-		ZID memberPersonaId = new StringZID("100");
-
-		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-		ThreadLocalUtil.unset();
-	}
-
 	
+	@Test
 	public void testCourseDefineSave() throws Exception {
 		System.out
 				.println("inside Test ****************************************");
@@ -204,7 +176,7 @@ public class CourseDefineTest {
 		List<LearningComponentContent> compContentList = new ArrayList<LearningComponentContent>();
 		Course course1 = new Course();
 
-		course1.setCourseId(new IntegerZID(100));
+		course1.setCourseId(100);
 		course1.setName("Mathematics for Information Technology");
 
 		// Module1 as a Learning component and child as a text content STARTS

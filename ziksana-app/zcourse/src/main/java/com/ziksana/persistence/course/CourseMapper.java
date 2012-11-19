@@ -46,16 +46,18 @@ public interface CourseMapper {
 	 * @param memberPersonaId
 	 * @return
 	 */
-	@Select({ "select courseid, name, description, coursestatus, securityindicator, courseduration",
-			"from corcourse where memberpersonaid = #{memberPersonaId,jdbcType=INTEGER}" })
+	@Select({ "select courseid, memberroleid, name, description, coursestatus, contentsecurityneededindicator, courseduration,",
+			"coursedurationunit from corcourse where memberroleid = 100 " })
 	@Results(value = {
 			@Result(property = "courseId", column = "courseid"),
 			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description"),
-			@Result(property = "courseStatus", column = "coursestatus"),
-			@Result(property = "contentSecurityNeededIndicator", column = "securityindicator"),
-			@Result(property = "duration.courseDuration", column = "courseduration") })
+			@Result(property = "status", column = "coursestatus"),
+			@Result(property = "securityIndicator", column = "contentsecurityneededindicator"),
+			@Result(property = "duration", column = "courseduration"),
+			@Result(property = "durationUnits", column = "coursedurationunit") 
+			})
 	List<Course> getListOfCourses(Integer memberPersonaId);
 
 	/**

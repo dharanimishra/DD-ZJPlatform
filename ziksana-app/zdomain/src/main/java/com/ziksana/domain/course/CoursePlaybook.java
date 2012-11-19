@@ -1,8 +1,8 @@
 package com.ziksana.domain.course;
 
 import java.util.Date;
+
 import com.ziksana.domain.common.AuditHistory;
-import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -21,26 +21,16 @@ public class CoursePlaybook extends AuditHistory {
 		this.playbookType = PlaybookType.REGULAR;
 	}
 
-	private ZID 					coursePlaybookId;
+	private Integer 				coursePlaybookId;
 	private Date 					fromDate  		= null;
 	private Date 					toDate			= null;
 	private CoursePlaybookStatus 	coursePBStatus 	= null;
+	private Integer				 	coursePBStatusId= null;
 	private PlaybookType			playbookType 	= null;
+	private Integer					playbookTypeId 	= null;
 	private Course					course			= null;
 	private CoursePlaybookView		playbookView	= null;
 	
-	/**
-	 * @return the coursePlaybookId
-	 */
-	public ZID getCoursePlaybookId() {
-		return coursePlaybookId;
-	}
-	/**
-	 * @param coursePlaybookId the coursePlaybookId to set
-	 */
-	public void setCoursePlaybookId(ZID coursePlaybookId) {
-		this.coursePlaybookId = coursePlaybookId;
-	}
 	/**
 	 * @return the fromDate
 	 */
@@ -120,6 +110,48 @@ public class CoursePlaybook extends AuditHistory {
 	public String toString() {
 		return "CoursePlaybook [coursePBStatus=" + coursePBStatus
 				+ ", playbookType=" + playbookType + "]";
+	}
+
+	/**
+	 * @return the coursePBStatusId
+	 */
+	public Integer getCoursePBStatusId() {
+		return coursePBStatusId;
+	}
+
+	/**
+	 * @param coursePBStatusId the coursePBStatusId to set
+	 */
+	public void setCoursePBStatusId(Integer coursePBStatusId) {
+		this.coursePBStatusId = coursePBStatusId;
+	}
+
+	/**
+	 * @return the playbookTypeId
+	 */
+	public Integer getPlaybookTypeId() {
+		return playbookTypeId;
+	}
+
+	/**
+	 * @param playbookTypeId the playbookTypeId to set
+	 */
+	public void setPlaybookTypeId(Integer playbookTypeId) {
+		this.playbookTypeId = playbookTypeId;
+	}
+
+	/**
+	 * @return the coursePlaybookId
+	 */
+	public Integer getCoursePlaybookId() {
+		return coursePlaybookId;
+	}
+
+	/**
+	 * @param coursePlaybookId the coursePlaybookId to set
+	 */
+	public void setCoursePlaybookId(Integer coursePlaybookId) {
+		this.coursePlaybookId = coursePlaybookId;
 	}
 
 }
