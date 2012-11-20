@@ -113,7 +113,7 @@ public class TodoTestCase {
 		Todo member = new Todo();
 		member.setCategory("Assignment");
 		member.setActivationDate(new Date());
-		member.setNotificationType(100);
+		member.setNotificationType(1);
 		member.setDescription("Todo Services testing");
 		MemberPersona creatingMember = new MemberPersona();
 		// creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
@@ -138,6 +138,7 @@ public class TodoTestCase {
 		member.setId(2);
 		member.setActivationDate(new Date());
 		member.setCategory("Course");
+		member.setNotificationType(1);
 		member.setDescription("New online course coming up for the organic chemistry");
 		member.setPriority(Integer.valueOf(1001));
 		Assert.assertNotNull(member);
