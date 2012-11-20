@@ -31,7 +31,7 @@ public class LearningComponentDetails{
 	private LearningComponentNest 				learningComponentNest 				= null;
 	
 	private CourseLearningComponent 			courseLearningComponent				= null;
-	private Assignment		 				assignment						= null;
+	private Assignment		 					assignment							= null;
 	
 	//private List<CoursePlaybookView> 			coursePlaybookViewList				= null;
 	//private List<LearningElementWall> 			learningElementWallList				= null;

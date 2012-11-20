@@ -2,11 +2,9 @@ package com.ziksana.persistence.course;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.LearningComponent;
@@ -14,34 +12,10 @@ import com.ziksana.domain.course.LearningComponent;
 public interface LearningComponentMapper {
 	/**
 	 * This method saves the Learning component
-	 * 
 	 * @param component
 	 * @return
 	 */
-	@Insert({
-			"insert into corlearningcomponent (validfrom, ",
-			"validto, name, description, coursestatus, weightage, totalcredits, ",
-			"extracreditsindicator, extracredits, prescribedlcduration, prescribedlcdurationunit, learningobjectindicator, memberroleid, " +
-			"learningcomponenttypeid)",
-			"values (#{validFrom,jdbcType=DATE}, ",
-			"#{validTo,jdbcType=DATE}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},1, ",
-			"#{weightage,jdbcType=INTEGER}, #{totalCredits,jdbcType=VARCHAR}, ",
-			"#{extraCreditsIndicator,jdbcType=BIT}, #{extraCredits,jdbcType=VARCHAR},  #{prescribedLCDuration.duration,jdbcType=INTEGER},",
-			"#{prescribedLCDuration.durationUnits,jdbcType=INTEGER}, #{learningObjIndicator,jdbcType=INTEGER}, " +
-			"#{authoredMember.memberRoleId,jdbcType=INTEGER}, #{learningComponentType.learningComponentTypeId,jdbcType=INTEGER}," +
-			"  )" })
-	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "learningcomponentid", before = true, resultType = Integer.class)
-/*	@Results(value = {
-			@Result(property = "learningComponentId", column = "learningcomponentid"),
-			@Result(property = "authoredMember.memberRoleId", column = "memberroleid"),
-			@Result(property = "name", column = "name"),
-			@Result(property = "description", column = "description"),
-			@Result(property = "courseStatus", column = "coursestatus"),
-			@Result(property = "learningComponentType.learningComponentTypeId", column = "learningcomponenttypeid"),
-			@Result(property = "prescribedLCDuration.duration", column = "prescribedlcduration"),
-			@Result(property = "prescribedLCDuration.durationUnits", column = "prescribedlcdurationunit"),
-			@Result(property = "isLearningObject", column = "learningobjectindicator") })
-*/	int saveLearningComponent(LearningComponent component);
+	int saveLearningComponent(LearningComponent component);
 
 	/**
 	 * @param memberRoleId

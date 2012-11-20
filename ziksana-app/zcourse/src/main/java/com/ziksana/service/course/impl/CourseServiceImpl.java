@@ -154,55 +154,14 @@ public class CourseServiceImpl implements CourseService {
 		LearningComponent 			savedComponent 			= null;
 		List<LearningComponent> 	learningComponentList 	= null;
 		LearningComponentDetails 	compDetails 			= null;
-		Integer						courseId 				= null;
-		List<CourseTagcloud> 		tagcloudList 			= null;
-		CourseContentSecurity 		contSecurity 			= null;
 		LearningComponentNest 		compNest 				= null;
 		CourseLearningComponent 	courseLComponent 		= null;
 		savedComponent 				= new LearningComponent();
 		
-		Course newCourse = new Course(course.getName(),
-				course.getDescription(), course.getCourseStatus(),
-				course.getCourseDuration(), course.getAccountableMember());
-		
-		courseId = course.getCourseId();
-
-		if (courseId != null) {
-			// Update Operation
-				logger.debug("Course Id : "+courseId);
-			courseMapper.saveCourse(course);
-
-		} else {
-			// Insert/Save Operation
-			savedCourse = new Course();
-
-			logger.debug("11Before Saving the Course ....");
-			int savedCourseId = courseMapper.saveCourse(newCourse);
-			logger.debug("22After Saving the Course ....: "+savedCourseId);
-			tagcloudList = course.getCourseTagClouds();
-
-			if (tagcloudList != null && tagcloudList.size() > 0) {
-
-				logger.debug("33Course Tagcloud list size  : "+tagcloudList.size());
-				for (CourseTagcloud courseTagcloud : tagcloudList) {
-
-					courseTagcloud.setCourse(savedCourse);
-
-					courseTagcloud.setCreatingMember(course
-							.getAccountableMember());
-					
-					logger.debug("44Before Saving the Course Tagcloud ....");
-					tagCloudMapper.save(courseTagcloud);
-				}
-			}
-			contSecurity = course.getCourseContSecurity();
-
-			if (contSecurity != null) {
-				logger.debug("55Before Saving the Course Content Security....");
-				contSecurityMapper.save(contSecurity);
-			}
+		//Save or Updates the course 
+		saveOrUpdateCourse(course);
 			
-			courseDetails = course.getCourseDetails();
+		courseDetails = course.getCourseDetails();
 			
 			if(courseDetails == null){
 				throw new CourseException("Course Details cannot be null");
@@ -212,48 +171,42 @@ public class CourseServiceImpl implements CourseService {
 				
 			if(learningComponentList!=null && learningComponentList.size()>0){
 
-				logger.debug("66LearningComponent list size  : "+learningComponentList.size());
+			logger.debug("LearningComponent list size  : "+learningComponentList.size());
 
-				for (LearningComponent learningComponent : learningComponentList) {
+			for (LearningComponent learningComponent : learningComponentList) {
 						
-						logger.debug("77Before Saving the Learning Component ....");
-						//savedComponent = learningComponentMapper.saveLearningComponent(learningComponent);
-						logger.debug("component type : "+learningComponent.getLearningComponentType().toString());
-						int result = learningComponentMapper.saveLearningComponent(learningComponent);
-						logger.debug("771111After Saving the CourseLearningComponent ....: "+result);
+					logger.debug("Before Saving the Learning Component ....");
+					learningComponentMapper.saveLearningComponent(learningComponent);
+					logger.debug("After Saving the CourseLearningComponent ID..: "+learningComponent.getLearningComponentId());
 						
-						compDetails =  learningComponent.getLearningComponentDetails();
+					compDetails =  learningComponent.getLearningComponentDetails();
 						
-						if(compDetails == null){
-							throw new CourseException("Learning Component Details cannot be null");
-						}
-						courseLComponent = compDetails.getCourseLearningComponent();
-						
-						if(courseLComponent!=null){
-							courseLComponent.setCourse(savedCourse);
-							
-							courseLComponent.setLearningComponent(savedComponent);
-								
-							logger.debug("88Before Saving the CourseLearningComponent ....");
-							courseLComponentMapper.save(courseLComponent);
-						}
-							
-						compNest = compDetails.getLearningComponentNest();
-							
-						logger.debug("99Before Saving the LearningComponentNest ....");
-
-						componentNestMapper.save(compNest);
-						logger.debug("99After Saving the LearningComponentNest ....");
+					if(compDetails == null){
+						throw new CourseException("Learning Component Details cannot be null");
 					}
+					courseLComponent = compDetails.getCourseLearningComponent();
+						
+					if(courseLComponent!=null){
+						courseLComponent.setCourse(course);
+							
+						courseLComponent.setLearningComponent(learningComponent);
+								
+						logger.debug("Before Saving the CourseLearningComponent ....");
+						courseLComponentMapper.save(courseLComponent);
+					}
+							
+					compNest = compDetails.getLearningComponentNest();
+					
+					compNest.setNestLearningComponent(learningComponent);
+							
+					logger.debug("Before Saving the LearningComponentNest ....");
+
+					componentNestMapper.save(compNest);
+					
+					logger.debug("After Saving the LearningComponentNest ....");
 				}
-			
-			
-			if(savedCourse.getCourseId()!=null){
-				//savedCourse = courseMapper.updateCourseInfo(savedCourse);
-			}
 		}
- 
-		return savedCourse;
+		return course;
 	
 	}
 
