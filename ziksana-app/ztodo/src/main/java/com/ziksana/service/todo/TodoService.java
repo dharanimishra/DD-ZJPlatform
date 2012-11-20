@@ -3,17 +3,21 @@
  */
 package com.ziksana.service.todo;
 
-import com.ziksana.domain.todos.Todo;
+import java.util.List;
+
+import com.ziksana.domain.todo.Todo;
 
 /**
- * @author
+ * @author Ratnesh Kumar
  * 
  */
 public interface TodoService {
 
+	List<Todo> getTodos(int memberRoleId);
+
 	Todo findTodo(int todoId);
 
-	void createTodo(String toListId, Todo todo);
+	void createTodo(Todo todo);
 
 	void updateTodo(Todo todo);
 

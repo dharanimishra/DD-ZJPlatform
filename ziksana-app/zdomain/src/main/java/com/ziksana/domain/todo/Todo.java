@@ -1,33 +1,38 @@
-/**
- * 
- */
 package com.ziksana.domain.todo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-
 /**
- * Todo POJO
- * 
  * @author ratneshkumar
+ * 
  */
-
-public class Todo implements Serializable {
-
-	private static final long serialVersionUID = -6468608803858408602L;
+public class Todo {
 
 	private int id;
 
+	private Date creationDate;
+
+	private int notificationType;
+
 	private String category;
+
+	private String notificationContent;
 
 	private String description;
 
-	private boolean complete;
+	private int priority;
 
-	private int memberRoleId;
+	private int status;
 
-	private Date creationDate;
+	private Date completeBy;
+
+	private int creatorType;
+
+	private Date activationDate;
+
+	private MemberPersona creatingMember;
+
+	private MemberPersona forMember;
 
 	/**
 	 * 
@@ -38,27 +43,38 @@ public class Todo implements Serializable {
 
 	/**
 	 * @param id
-	 * @param category
-	 * @param description
-	 * @param complete
-	 * @param memberRoleId
 	 * @param creationDate
+	 * @param notificationType
+	 * @param category
+	 * @param notificationContent
+	 * @param description
+	 * @param priority
+	 * @param status
+	 * @param completeBy
+	 * @param creatorType
+	 * @param activationDate
+	 * @param creatingMember
+	 * @param forMember
 	 */
-	public Todo(int id, String category, String description, boolean complete,
-			int memberRoleId, Date creationDate) {
+	public Todo(int id, Date creationDate, int notificationType,
+			String category, String notificationContent, String description,
+			int priority, int status, Date completeBy, int creatorType,
+			Date activationDate, MemberPersona creatingMember,
+			MemberPersona forMember) {
 		super();
 		this.id = id;
-		this.category = category;
-		this.description = description;
-		this.complete = complete;
-		this.memberRoleId = memberRoleId;
 		this.creationDate = creationDate;
-	}
-
-	public Todo(int id) {
-		super();
-		this.id = id;
-
+		this.notificationType = notificationType;
+		this.category = category;
+		this.notificationContent = notificationContent;
+		this.description = description;
+		this.priority = priority;
+		this.status = status;
+		this.completeBy = completeBy;
+		this.creatorType = creatorType;
+		this.activationDate = activationDate;
+		this.creatingMember = creatingMember;
+		this.forMember = forMember;
 	}
 
 	public int getId() {
@@ -69,12 +85,36 @@ public class Todo implements Serializable {
 		this.id = id;
 	}
 
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public int getNotificationType() {
+		return notificationType;
+	}
+
+	public void setNotificationType(int notificationType) {
+		this.notificationType = notificationType;
+	}
+
 	public String getCategory() {
 		return category;
 	}
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getNotificationContent() {
+		return notificationContent;
+	}
+
+	public void setNotificationContent(String notificationContent) {
+		this.notificationContent = notificationContent;
 	}
 
 	public String getDescription() {
@@ -85,54 +125,60 @@ public class Todo implements Serializable {
 		this.description = description;
 	}
 
-	public boolean isComplete() {
-		return complete;
+	public int getPriority() {
+		return priority;
 	}
 
-	public void setComplete(boolean complete) {
-		this.complete = complete;
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
-	public int getMemberRoleId() {
-		return memberRoleId;
+	public int getStatus() {
+		return status;
 	}
 
-	public void setMemberRoleId(int memberRoleId) {
-		this.memberRoleId = memberRoleId;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
+	public Date getCompleteBy() {
+		return completeBy;
 	}
 
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
+	public void setCompleteBy(Date completeBy) {
+		this.completeBy = completeBy;
 	}
 
-	public String toString() {
-		final StringBuilder sb = new StringBuilder();
-		sb.append("id = ").append(id).append(" - ");
-		sb.append("creationDate = ").append(creationDate).append(" - ");
-
-		return sb.toString();
+	public int getCreatorType() {
+		return creatorType;
 	}
 
-	public boolean equals(Object obj) {
-		final Todo todo = (Todo) obj;
-		if (this.id != todo.getId()) {
-			return false;
-		}
-		if (this.description != todo.getDescription()) {
-			return false;
-		}
-		return true;
+	public void setCreatorType(int creatorType) {
+		this.creatorType = creatorType;
 	}
 
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		return result;
-
+	public Date getActivationDate() {
+		return activationDate;
 	}
+
+	public void setActivationDate(Date activationDate) {
+		this.activationDate = activationDate;
+	}
+
+	public MemberPersona getCreatingMember() {
+		return creatingMember;
+	}
+
+	public void setCreatingMember(MemberPersona creatingMember) {
+		this.creatingMember = creatingMember;
+	}
+
+	public MemberPersona getForMember() {
+		return forMember;
+	}
+
+	public void setForMember(MemberPersona forMember) {
+		this.forMember = forMember;
+	}
+
 }

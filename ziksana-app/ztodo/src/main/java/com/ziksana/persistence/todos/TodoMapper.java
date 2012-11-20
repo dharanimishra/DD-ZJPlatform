@@ -3,20 +3,26 @@
  */
 package com.ziksana.persistence.todos;
 
-import com.ziksana.domain.todos.Todo;
+import java.util.List;
+
+import com.ziksana.domain.todo.Todo;
 
 /**
- * @author
+ * @author Ratnesh Kumar
  * 
  */
 public interface TodoMapper {
 
-	Todo findTodo(int todoId);
+	public List<Todo> getTodos(int memberRoleId);
 
-	void createTodo(Todo todo);
+	public Todo getTodo(int todoId);
 
-	void updateTodo(Todo todo);
+	public Todo selectByNotificationType(int notificationType);
 
-	void deleteTodo(int todoId);
+	public void updateTodo(Todo todo);
+
+	public void deleteTodo(int todoId);
+
+	public void createTodo(Todo todo);
 
 }
