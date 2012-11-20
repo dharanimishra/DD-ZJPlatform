@@ -149,14 +149,11 @@ public class CourseServiceImpl implements CourseService {
 			throw new CourseException("Course cannot be null");
 		}
 
-		Course 						savedCourse 			= null;
 		CourseDetails 				courseDetails 			= null;
-		LearningComponent 			savedComponent 			= null;
 		List<LearningComponent> 	learningComponentList 	= null;
 		LearningComponentDetails 	compDetails 			= null;
 		LearningComponentNest 		compNest 				= null;
 		CourseLearningComponent 	courseLComponent 		= null;
-		savedComponent 				= new LearningComponent();
 		
 		//Save or Updates the course 
 		saveOrUpdateCourse(course);

@@ -47,6 +47,7 @@ public class LearningComponent extends AuditHistory {
 	private Date 			validFrom 				= null;
 	private Date 			validTo 				= null;
 	private CourseStatus 	courseStatus 			= null;
+	private Integer	 		courseStatusId 			= null;
 	private Integer 		weightage 				= null;
 	private Integer 		learningObjIndicator 	= null;
 	/**						
@@ -136,6 +137,10 @@ public class LearningComponent extends AuditHistory {
 	 * @param courseStatus the courseStatus to set
 	 */
 	public void setCourseStatus(CourseStatus courseStatus) {
+		
+		if(courseStatusId!=null){
+			courseStatus = CourseStatus.getCourseStatus(courseStatusId);
+		}
 		this.courseStatus = courseStatus;
 	}
 
@@ -345,6 +350,20 @@ public class LearningComponent extends AuditHistory {
 	 */
 	public void setLearningComponentId(Integer learningComponentId) {
 		this.learningComponentId = learningComponentId;
+	}
+
+	/**
+	 * @return the courseStatusId
+	 */
+	public Integer getCourseStatusId() {
+		return courseStatusId;
+	}
+
+	/**
+	 * @param courseStatusId the courseStatusId to set
+	 */
+	public void setCourseStatusId(Integer courseStatusId) {
+		this.courseStatusId = courseStatusId;
 	}
 
 

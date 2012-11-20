@@ -16,15 +16,16 @@ public interface CourseLearningComponentMapper {
 
 	@Insert({
 			"insert into corcourselearningcomponent ( creationdate, usageStartDate, usageenddate, active, weightage, totalcredits, extracredits, duration, ",
-			"learningcomponentoveriddenindicator, durationunit, courseid, learningcomponentid, learningcomponenttypeid )",
+			"learningcomponentoveriddenindicator, durationunit, courseid, learningcomponentid, learningcomponenttypeid ) ",
 			"values (sysdate(), ",
 			"#{usageStartDate,jdbcType=TIMESTAMP}, ",
 			"#{usageEndDate,jdbcType=TIMESTAMP}, ",
 			"#{active,jdbcType=BIT}, ",
 			"#{weightage,jdbcType=INTEGER}, ",
 			"#{totalCredits,jdbcType=INTEGER}, ",
-			"#{extraCredits,jdbcType=INTEGER}, #{duration,jdbcType=INTEGER},#{isLearningComponentOveridden,jdbcType=BIT}, ",
-			"#{durationUnit,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{learningComponentId,jdbcType=INTEGER}, #{learningComponentTypeId,jdbcType=INTEGER}, " })
+			"#{extraCredits,jdbcType=INTEGER}, #{duration.duration,jdbcType=INTEGER},#{isLearningComponentOveridden,jdbcType=BIT}, ",
+			"#{duration.durationUnits,jdbcType=INTEGER}, #{course.courseId,jdbcType=INTEGER}, #{learningComponent.learningComponentId,jdbcType=INTEGER}," +
+			" #{learningComponentType.learningComponentTypeId,jdbcType=INTEGER} )" })
 	void save(CourseLearningComponent courseLComponent);
 
 	@Select({

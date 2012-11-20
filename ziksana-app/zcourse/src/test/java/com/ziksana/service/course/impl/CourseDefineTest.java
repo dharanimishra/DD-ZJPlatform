@@ -16,6 +16,7 @@ import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseContentSecurity;
 import com.ziksana.domain.course.CourseDetails;
+import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.domain.course.CourseTagcloud;
 import com.ziksana.domain.course.LearningComponent;
@@ -106,7 +107,7 @@ public class CourseDefineTest extends BaseTest{
 		
 		comp1.setName("Module1");
 		comp1.setLearningObjIndicator(0);
-
+		
 		LearningComponentNest compNest1 = new LearningComponentNest(null, comp1);
 		compNest1.setComponentNestId(11);
 
@@ -119,8 +120,15 @@ public class CourseDefineTest extends BaseTest{
 	
 		comp1.setLearningComponentType(compType1);
 
-		comp1.setLearningComponentDetails(compDetails1);
+		CourseLearningComponent corComp1 = new CourseLearningComponent();
+		corComp1.setLearningComponent(comp1);
+		corComp1.setLearningComponentType(compType1);
+		corComp1.setCourse(course1);
 
+		compDetails1.setCourseLearningComponent(corComp1);
+		
+		comp1.setLearningComponentDetails(compDetails1);
+		
 		compList.add(comp1);
 		// Module1 as a Learning component and child as a text content ENDS HERE
 
