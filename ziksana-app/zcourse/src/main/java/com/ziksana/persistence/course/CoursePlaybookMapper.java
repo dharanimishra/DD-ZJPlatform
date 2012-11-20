@@ -16,20 +16,7 @@ import com.ziksana.domain.course.CoursePlaybookView;
 
 public interface CoursePlaybookMapper {
 
-	@Insert({ "insert into corcourseplaybook (validfrom, ",
-			"validTo, courseplaybookstatus, courseplaybooktype, courseid)",
-			"values (#{fromDate,jdbcType=DATE}, ",
-			"#{toDate,jdbcType=DATE}, #{coursePBStatusId,jdbcType=INTEGER},",
-			"#{playbookTypeId,jdbcType=INTEGER}, #{course.courseId,jdbcType=INTEGER})" })
-	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseplaybookid", before = true, resultType = Integer.class)
-/*	@Results(value = {
-			@Result(property = "coursePlaybookId", column = "courseplaybookid"),
-			@Result(property = "fromDate", column = "validfrom"),
-			@Result(property = "toDate", column = "validTo"),
-			@Result(property = "coursePBStatus.id", column = "courseplaybookstatus"),
-			@Result(property = "coursePlaybookType.id", column = "courseplaybooktype"),
-			@Result(property = "course.courseId", column = "courseId") })
-*/	Integer saveDefaultPlaybook(CoursePlaybook coursePlaybook);
+	Integer saveDefaultPlaybook(CoursePlaybook coursePlaybook);
 
 	@Insert({
 			"insert into corcourseplaybookview ",

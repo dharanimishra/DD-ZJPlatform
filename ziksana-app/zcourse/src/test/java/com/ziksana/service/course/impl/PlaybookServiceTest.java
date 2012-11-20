@@ -113,7 +113,7 @@ public class PlaybookServiceTest extends BaseTest {
 		CoursePlaybookView 		playbookView 	= new CoursePlaybookView();
 		
 		Course course = new Course();
-		course.setCourseId(100);
+		course.setCourseId(102);
 		coursePB.setCourse(course);
 		
 		coursePB.setFromDate(new Date(System.currentTimeMillis()));
@@ -124,7 +124,7 @@ public class PlaybookServiceTest extends BaseTest {
 		coursePB.setPlaybookTypeId(PlaybookType.PREVIEW.getID());
 		
 		playbookView.setCoursePlaybook(coursePB);
-		playbookView.setName("Defualt Playbook for Course");
+		playbookView.setName("Maths IT");
 		playbookView.setLayoutMarkupPath("/layout/pbview/");
 		playbookView.setContentMarkupPath("/content/pbview/");
 		playbookView.setBrochureContentPath("/brochur/pbview");

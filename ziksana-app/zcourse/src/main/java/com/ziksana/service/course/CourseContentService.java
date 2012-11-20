@@ -21,7 +21,7 @@ public interface CourseContentService {
 	 * @param compContent
 	 * @throws CourseException
 	 */
-	public void saveOrUpdateContent(Course course)	throws CourseException;
+	public void saveOrUpdateContent(LearningComponentContent componentContent)	throws CourseException;
 	
 	/**
 	 * Retrieves the LearningComponentContent details

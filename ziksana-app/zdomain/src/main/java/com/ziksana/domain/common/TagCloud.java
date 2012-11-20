@@ -23,6 +23,7 @@ public class TagCloud extends AuditHistory{
 	private TagType 			tagType 				= null;
 	private Boolean 			zeniSuggestedIndicator 	= null;
 	private MemberPersona 		creatingMember 			= null;
+	private Integer				tagTypeId				= null;
 	
 	/**
 	 * @return the tagName
@@ -44,8 +45,13 @@ public class TagCloud extends AuditHistory{
 	}
 	/**
 	 * @param tagType the tagType to set
+	 * @throws NoSuchMethodException 
 	 */
-	public void setTagType(TagType tagType) {
+	public void setTagType(TagType tagType) throws NoSuchMethodException {
+		
+		if(tagTypeId!=null){
+			tagType = TagType.getTagType(tagTypeId);
+		}
 		this.tagType = tagType;
 	}
 	/**
@@ -77,5 +83,19 @@ public class TagCloud extends AuditHistory{
 	public String toString() {
 		return "TagCloud [tagName=" + tagName + ", tagType=" + tagType
 				+ ", zeniSuggestedIndicator=" + zeniSuggestedIndicator + "]";
+	}
+
+	/**
+	 * @return the tagTypeId
+	 */
+	public Integer getTagTypeId() {
+		return tagTypeId;
+	}
+
+	/**
+	 * @param tagTypeId the tagTypeId to set
+	 */
+	public void setTagTypeId(Integer tagTypeId) {
+		this.tagTypeId = tagTypeId;
 	}
 }

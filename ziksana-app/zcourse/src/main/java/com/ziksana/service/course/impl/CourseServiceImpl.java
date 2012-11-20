@@ -68,12 +68,10 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public Course saveOrUpdateCourse(Course course) throws CourseException {
 
-		Course 					savedCourse 	= null;
 		CourseContentSecurity 	contSecurity 	= null;
 		List<CourseTagcloud> 	tagcloudList 	= null;
 	
 		tagcloudList = new ArrayList<CourseTagcloud>();
-		savedCourse = new Course();
 
 		contSecurity = course.getCourseContSecurity();
 
@@ -96,36 +94,30 @@ public class CourseServiceImpl implements CourseService {
 					courseTagcloud.setCourse(course);
 					courseTagcloud.setCreatingMember(course
 							.getAccountableMember());
-					
 					logger.debug("Before updating the Course Tagcloud ....");
 					tagCloudMapper.update(courseTagcloud);
 				}
 			}
 				
-			contSecurity = course.getCourseContSecurity();
-			
 			if(contSecurity!=null){
 				logger.debug("Before updating the Course Content Security ....");
 				contSecurityMapper.update(contSecurity);
 			}
-			
-			logger.debug("Before updating the Course Indicators and associations ....");
-			savedCourse = courseMapper.updateCourseInfo(savedCourse);
-
 		} else {
+			Boolean isSecurity = false;
 			// Insert/Save Operation
 			logger.debug("Before saving the Course ....");
-			Integer courseId = courseMapper.saveCourse(course);
-			logger.debug("After saving the Course ....: "+courseId);
+			courseMapper.saveCourse(course);
+			logger.debug("After saving the Course ID....: "+course.getCourseId());
 			
 			tagcloudList = course.getCourseTagClouds();
 
 			if (tagcloudList != null && tagcloudList.size() > 0) {
 				
-				logger.debug("Course Tagcloud list size  : "+tagcloudList.size());
+				logger.debug("Cours	e Tagcloud list size  : "+tagcloudList.size());
 				for (CourseTagcloud courseTagcloud : tagcloudList) {
 
-					courseTagcloud.setCourse(savedCourse);
+					courseTagcloud.setCourse(course);
 
 					courseTagcloud.setCreatingMember(course
 							.getAccountableMember());
@@ -134,20 +126,19 @@ public class CourseServiceImpl implements CourseService {
 					tagCloudMapper.save(courseTagcloud);
 				}
 			}
-
-			if (contSecurity != null) {
-				contSecurityMapper.save(contSecurity);
+			isSecurity = course.getSecurityIndicator();
+			if(isSecurity){
+				if (contSecurity != null) {
+					contSecurity.setCourse(course);
+					contSecurityMapper.save(contSecurity);
+				}
 			}
 
-			if(savedCourse.getCourseId()!=null){
-				logger.debug("Before updating the Course Indicators and associations ....");
-				savedCourse = courseMapper.updateCourseInfo(savedCourse);
-			}
 		}
 
 		logger.debug("Saved Course :: "+course.toString());
 
-		return savedCourse;
+		return course;
 	}
 
 	@Transactional
@@ -293,9 +284,7 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> getListOfCourses(Integer memberPersonaId) throws CourseException {
 
 		List<Course> 				courseList 					= null;
-		List<Course> 				newCourseList 				= null;
 		courseList 		= new		ArrayList<Course>();
-		newCourseList 	= new 		ArrayList<Course>();
 		Integer 					memberRoleId				= null;
 		
 

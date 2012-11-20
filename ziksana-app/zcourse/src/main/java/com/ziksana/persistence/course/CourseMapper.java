@@ -115,7 +115,7 @@ public interface CourseMapper {
 	/**
 	 * This method saves the Course information to corcourse table
 	 */
-	@Insert({
+/*	@Insert({
 			"insert into corcourse ( name, ",
 			"description, coursestatus, ",
 			"contentsecurityneededindicator, ",
@@ -130,7 +130,7 @@ public interface CourseMapper {
 			"#{version,jdbcType=INTEGER}, #{versionRemarks,jdbcType=VARCHAR}, #{accountableMember.memberRoleId,jdbcType=INTEGER},",
 			"#{subjClassification.subjClassificationId,jdbcType=INTEGER})" })
 	@SelectKey(keyProperty = "courseid", before = true, resultType = int.class, statement = { "select last_insert_id as courseid" })
-	int saveCourse(Course course);
+*/	Integer saveCourse(Course course);
 	
 	
 	@Insert({

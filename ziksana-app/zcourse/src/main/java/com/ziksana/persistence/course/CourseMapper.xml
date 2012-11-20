@@ -1,45 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.course.CourseMapper">
-	<resultMap id="BaseResultMap" type="com.ziksana.domain.course.Course">
-		<id column="CourseId" property="courseId" jdbcType="INTEGER" />
-		<result column="Name" property="name" jdbcType="VARCHAR" />
-		<result column="CourseIdentifier" property="courseIdentifier"
-			jdbcType="VARCHAR" />
-		<result column="Description" property="description" jdbcType="VARCHAR" />
-		<result column="ValidFrom" property="ValidFrom" jdbcType="DATE" />
-		<result column="ValidTo" property="ValidTo" jdbcType="DATE" />
-		<result column="CourseStatus" property="courseStatus" jdbcType="INTEGER" />
-		<result column="Rating" property="rating" jdbcType="INTEGER" />
-		<result column="ContentSecurityNeededIndicator" property="contentSecurityNeededIndicator"
-			jdbcType="BIT" />
-		<result column="TotalCredits" property="totalCredits" jdbcType="VARCHAR" />
-		<result column="ExtraCreditsIndicator" property="extraCreditsIndicator"
-			jdbcType="BIT" />
-		<result column="ExtraCredits" property="extraCredits" jdbcType="VARCHAR" />
-		<result column="AdditionalPropertyIndicator" property="additionalPropertyIndicator"
-			jdbcType="BIT" />
-		<result column="CourseDuration" property="courseDuration"
-			jdbcType="INTEGER" />
-		<result column="ThumbnailPicturePath" property="thumbnailPicturePath"
-			jdbcType="VARCHAR" />
-		<result column="TemplateIndicator" property="templateIndicator"
-			jdbcType="TINYINT" />
-		<result column="Version" property="version" jdbcType="INTEGER" />
-		<result column="MemberRoleId" property="memberRoleId" jdbcType="INTEGER" />
-		<result column="SubjClassificationId" property="subjClassificationId"
-			jdbcType="INTEGER" />
-	</resultMap>
-	
-	<resultMap id="BaseCourseMap" type="com.ziksana.domain.course.Course">
-		<id column="CourseId" property="courseId" jdbcType="INTEGER" />
-		<result column="Name" property="name" jdbcType="VARCHAR" />
-		<result column="CourseIdentifier" property="courseIdentifier"
-			jdbcType="VARCHAR" />
-		<result column="Description" property="description" jdbcType="VARCHAR" />
-		<result column="CourseStatus" property="courseStatus" jdbcType="INTEGER" />
-	</resultMap>
-	
 	<sql id="Base_Column_List">
 		courseid, name, courseidentifier, description, validfrom,
 		validto, coursestatus, rating,
@@ -118,147 +79,31 @@
 		where courseid = #{courseId,jdbcType=INTEGER}
 	</update>
 
+	<insert id="saveCourse" parameterType="com.ziksana.domain.course.Course"
+		useGeneratedKeys="true" keyProperty="courseId" keyColumn="courseid">
+		insert into corcourse ( name,
+		description, coursestatus,
+		contentsecurityneededindicator,
+		extracredits,
+		additionalpropertyindicator, courseduration,thumbnailpicturepath, version, versionremarks,
+		memberroleid, subjclassificationid) 
+		values (#{name,jdbcType=VARCHAR},
+		#{description,jdbcType=VARCHAR},
+		#{courseStatusId,jdbcType=INTEGER},
+		#{securityIndicator,jdbcType=BOOLEAN},
+		#{extraCredits,jdbcType=VARCHAR},
+		#{additionalInfoIndicator,jdbcType=BOOLEAN},
+		#{courseDuration.duration,jdbcType=INTEGER},#{thumbnailPicturePath,jdbcType=VARCHAR},
+		#{version,jdbcType=INTEGER}, #{versionRemarks,jdbcType=VARCHAR},
+		#{accountableMember.memberRoleId,jdbcType=INTEGER},
+		#{subjClassification.subjClassificationId,jdbcType=INTEGER})
+		<selectKey keyProperty="courseId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
 
 
-	<resultMap id="CourseTreeMap" type="com.ziksana.domain.course.Course">
-		<id column="CourseId" property="courseid" jdbcType="INTEGER" />
-		<result column="Name" property="name" jdbcType="VARCHAR" />
-		<result column="CourseIdentifier" property="courseIdentifier"
-			jdbcType="VARCHAR" />
-		<result column="Description" property="description" jdbcType="VARCHAR" />
-		<result column="ValidFrom" property="ValidFrom" jdbcType="DATE" />
-		<result column="ValidTo" property="ValidTo" jdbcType="DATE" />
-		<result column="CourseStatus" property="courseStatus" jdbcType="INTEGER" />
-		<result column="Rating" property="rating" jdbcType="INTEGER" />
-		<result column="MemberRoleId" property="memberRoleId" jdbcType="INTEGER" />
-		<collection property="learningComponents" javaType="ArrayList"
-			column="courseid" ofType="com.ziksana.domain.course.LearningComponent"
-			resultMap="learningComponentMap">
-			<collection property="learningCompContentList" javaType="ArrayList"
-				column="leqarningcomponentid" ofType="com.ziksana.domain.course.LearningComponentContent"
-				resultMap="learningComponentContentMap">
-				<association property="learningComponents"
-					column="learningcomponentcontentid" javaType="com.ziksana.domain.course.LearningContent"
-					select="learningContentMap">
-					<collection property="learningContentParts" javaType="ArrayList"
-							column="learningcontentid" ofType="com.ziksana.domain.course.LearningContentParts"
-							resultMap="learningContentPartsMap">
-					</collection>
-				</association>
-			</collection>
-		</collection>
-	</resultMap>
 
-	<select id="learningComponentMap" parameterType="Integer"
-		resultType="com.ziksana.domain.course.LearningComponent">
-		select couseid, startdate, enddate, coursestatus, weightage,
-		totalcredits, extracreditsindicator, extracredits, courseid,
-		memberroleid, coursecomponenttypeid from corcoursecomponent
-		where courseid = #{courseid}
-	</select>
-
-	<select id="learningComponentContentMap" parameterType="Integer"
-		resultType="com.ziksana.domain.course.LearningComponentContent">
-		select learningcomponentid, creationdate, coursestatus, contenttype,
-		contentdescription, active,	contentversionused, coursecomponentid,
-		videosynchronizeid, contentid
-		from corlearningcomponentcontent
-		where learningcomponentid = #{learningComponentId}
-	</select>
-
-
-<!-- 	<resultMap id="courseCatalogMap" type="com.ziksana.domain.course.Course">
-		<id column="CourseId" property="CourseId" jdbcType="INTEGER" />
-		<result column="Name" property="name" jdbcType="VARCHAR" />
-		<result column="CourseIdentifier" property="courseIdentifier"
-			jdbcType="VARCHAR" />
-		<result column="Description" property="description" jdbcType="VARCHAR" />
-		<result column="ValidFrom" property="ValidFrom" jdbcType="DATE" />
-		<result column="ValidTo" property="ValidTo" jdbcType="DATE" />
-		<result column="CourseStatus" property="courseStatus" jdbcType="INTEGER" />
-		<result column="Rating" property="rating" jdbcType="INTEGER" />
-		<result column="MemberRoleId" property="memberRoleId" jdbcType="INTEGER" />
-		<association property="CoursePlaybook" column="ID"
-			javaType="com.ziksana.domain.course.CoursePlaybook" select="pbookMap">
-		</association>
-		<collection property="CourseComponents" javaType="ArrayList"
-			column="ID" ofType="com.ziksana.domain.course.CourseComponent"
-			resultMap="courseComponentMap">
-			<association property="corPlaybookComponetContents"
-				column="ID" javaType="com.ziksana.domain.course.CorPlaybookComponentContent"
-				select="courseComponentContentMap">
-			</association>
-		</collection>
-	</resultMap>
-
-	<resultMap type="com.ziksana.domain.course.CoursePlaybook"
-		id="pbookMap">
-		<id column="ID" property="ID" jdbcType="INTEGER" />
-		<result column="StartDate" property="startDate" jdbcType="DATE" />
-		<result column="EndDate" property="endDate" jdbcType="DATE" />
-		<result column="CourseStatus" property="courseStatus" jdbcType="INTEGER" />
-		<result column="CourseID" property="courseID" jdbcType="INTEGER" />
-	</resultMap>
-
-	<resultMap type="com.ziksana.domain.course.CourseComponent"
-		id="courseComponentMap">
-		<id column="ID" property="ID" jdbcType="INTEGER" />
-		<result column="StartDate" property="startDate" jdbcType="DATE" />
-		<result column="EndDate" property="endDate" jdbcType="DATE" />
-		<result column="CourseStatus" property="courseStatus" jdbcType="INTEGER" />
-		<result column="Weightage" property="weightage" jdbcType="INTEGER" />
-		<result column="TotalCredits" property="totalCredits" jdbcType="VARCHAR" />
-		<result column="ExtraCreditsIndicator" property="extraCreditsIndicator"
-			jdbcType="BIT" />
-		<result column="ExtraCredits" property="extraCredits" jdbcType="VARCHAR" />
-		<result column="CourseId" property="courseId" jdbcType="INTEGER" />
-		<result column="MemberRoleId" property="memberRoleId" jdbcType="INTEGER" />
-		<result column="CourseComponentTypeId" property="courseComponentTypeId"
-			jdbcType="INTEGER" />
-	</resultMap>
-
-
-	<resultMap type="com.ziksana.domain.course.CourseComponentContent"
-		id="courseComponentContentMap">
-		<id column="ID" property="ID" jdbcType="INTEGER" />
-		<result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" />
-		<result column="CourseStatus" property="courseStatus" jdbcType="INTEGER" />
-		<result column="ContentType" property="contentType" jdbcType="INTEGER" />
-		<result column="ContentDescription" property="contentDescription"
-			jdbcType="VARCHAR" />
-		<result column="Active" property="active" jdbcType="BIT" />
-		<result column="ContentVersionUsed" property="contentVersionUsed"
-			jdbcType="INTEGER" />
-		<result column="CourseComponentId" property="courseComponentId"
-			jdbcType="INTEGER" />
-		<result column="VideoSynchronizeID" property="videoSynchronizeID"
-			jdbcType="INTEGER" />
-		<result column="ContentID" property="contentID" jdbcType="INTEGER" />
-	</resultMap>
-
-	<select id="getCourseCatalog" resultMap="courseCatalogMap"
-		parameterType="int">
-		select CourseId, Name, CourseIdentifier, Description,
-		ValidFrom, ValidTo, CourseStatus, Rating,
-		ContentSecurityNeededIndicator,
-		CourseWeightage, TotalCredits,
-		ExtraCreditsIndicator, ExtraCredits,
-		AdditionalPropertyIndicator,
-		MemberRoleId, Version FROM CorCourse where
-		CourseId=#{courseId}
-	</select>
-
-	<select id="pbookMap" parameterType="int" resultType="com.ziksana.domain.course.CoursePlaybook"> 
-		SELECT ID, StartDate, EndDate, CoursePlaybookStatus, CoursePlaybookType, 
-		CourseID FROM CorCoursePlaybook WHERE CourseID = #{ID} </select>
-
-	 //Below is the one one query to retrieve the entire catalog 
-	 <select id="getCourseCatalog" 
-		resultMap="courseCatalogMap"> select * from ziksanadb.CorCourse cc, ziksanadb.CorCoursePlaybook 
-		pb, ziksanadb.CorPlaybookComponent pbc, ziksanadb.CorPlaybookComponentContent 
-		pbcc where pbcc.PlaybookComponentId=pbc.id and pbc.playbookid=pb.id and cc.id 
-		= pb.courseid </select>
-		
- -->
 
 </mapper>

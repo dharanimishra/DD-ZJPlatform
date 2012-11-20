@@ -190,23 +190,23 @@ public class PlaybookServiceImpl implements PlaybookService {
 		}
 		
 		if(coursePlaybook.getPlaybookType() == PlaybookType.PREVIEW){
-			
 			playbookView = coursePlaybook.getPlaybookView();
+			
+			logger.debug("Before saving the course playbook");
+			
+			coursePlaybookMapper.saveDefaultPlaybook(coursePlaybook);
+			
+			logger.debug("After saving the course playbook ::: "+coursePlaybook.getCoursePlaybookId());
+			
+			coursePlaybook.setCoursePlaybookId(coursePlaybook.getCoursePlaybookId());
 			
 			playbookView.setCoursePlaybook(coursePlaybook);
 			
 			logger.debug("Before saving the course playbook view");
 			
 			coursePlaybookMapper.savePlaybookView(playbookView);
+			
 
-			
-			logger.debug("Before saving the course playbook");
-			
-			Integer coursePBId = coursePlaybookMapper.saveDefaultPlaybook(coursePlaybook);
-			
-			logger.debug("After saving the course playbook ::: "+coursePBId);
-			
-			coursePlaybook.setCoursePlaybookId(coursePBId);
 		}
 	}
 	

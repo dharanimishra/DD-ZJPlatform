@@ -2,29 +2,20 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.course.CoursePlaybookMapper">
-	<!-- <resultMap id="BaseResultMap" type="com.ziksana.domain.course.CoursePlaybookView">
-		<id column="coursePlaybookViewId" property="coursePlaybookViewId"
-			jdbcType="INTEGER" />
-		<result column="PlaybookViewName" property="playbookViewName"
-			jdbcType="VARCHAR" />
-		<result column="DeliveryType" property="deliveryType" jdbcType="INTEGER" />
-		<result column="LayoutMarkupPath" property="layoutMarkupPath"
-			jdbcType="VARCHAR" />
-		<result column="ContentMarkupPath" property="contentMarkupPath"
-			jdbcType="VARCHAR" />
-		<result column="CreationDate" property="creationDate" jdbcType="DATE" />
-		<result column="CoursePlaybookStatus" property="coursePlaybookStatus"
-			jdbcType="INTEGER" />
-		<result column="BrochureContentPath" property="brochureContentPath"
-			jdbcType="VARCHAR" />
-		<result column="RecipientStudentModel" property="recipientStudentModel"
-			jdbcType="INTEGER" />
-		<result column="CoursePlaybookId" property="coursePlaybookId"
-			jdbcType="INTEGER" />
-		<result column="learningcomponentid" property="learningComponentId"
-			jdbcType="INTEGER" />
-	</resultMap>
- -->	<sql id="Base_Column_List">
+	<!-- <resultMap id="BaseResultMap" type="com.ziksana.domain.course.CoursePlaybookView"> 
+		<id column="coursePlaybookViewId" property="coursePlaybookViewId" jdbcType="INTEGER" 
+		/> <result column="PlaybookViewName" property="playbookViewName" jdbcType="VARCHAR" 
+		/> <result column="DeliveryType" property="deliveryType" jdbcType="INTEGER" 
+		/> <result column="LayoutMarkupPath" property="layoutMarkupPath" jdbcType="VARCHAR" 
+		/> <result column="ContentMarkupPath" property="contentMarkupPath" jdbcType="VARCHAR" 
+		/> <result column="CreationDate" property="creationDate" jdbcType="DATE" 
+		/> <result column="CoursePlaybookStatus" property="coursePlaybookStatus" 
+		jdbcType="INTEGER" /> <result column="BrochureContentPath" property="brochureContentPath" 
+		jdbcType="VARCHAR" /> <result column="RecipientStudentModel" property="recipientStudentModel" 
+		jdbcType="INTEGER" /> <result column="CoursePlaybookId" property="coursePlaybookId" 
+		jdbcType="INTEGER" /> <result column="learningcomponentid" property="learningComponentId" 
+		jdbcType="INTEGER" /> </resultMap> -->
+	<sql id="Base_Column_List">
 		courseplaybookviewid, playbookviewname, deliverytype,
 		layoutmarkuppath, contentmarkuppath,
 		creationdate,
@@ -69,4 +60,21 @@
 		</set>
 		where courseplaybookviewid = #{coursePlaybookViewId, jdbcType=INTEGER}
 	</update>
+
+	<insert id="saveDefaultPlaybook" parameterType="com.ziksana.domain.course.CoursePlaybook"
+		useGeneratedKeys="true" keyProperty="coursePlaybookId" keyColumn="courseplaybookid">
+		insert into corcourseplaybook (validfrom,validTo,
+		courseplaybookstatus, courseplaybooktype, courseid)
+		values
+		(#{fromDate,jdbcType=DATE},#{toDate,jdbcType=DATE},
+		#{coursePBStatusId,jdbcType=INTEGER},
+		#{playbookTypeId,jdbcType=INTEGER},
+		#{course.courseId,jdbcType=INTEGER})
+		<selectKey keyProperty="coursePlaybookId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+
 </mapper>

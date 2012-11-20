@@ -18,6 +18,11 @@ public class CourseContentSecurity extends AuditHistory{
 	}
 
 	
+	public CourseContentSecurity() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	private ZID 		contentSecurityId;
 	private Date 		creationDate			= null;
 	private String 		logoPath 				= null;

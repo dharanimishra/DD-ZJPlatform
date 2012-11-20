@@ -10,10 +10,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.course.ComponentContentType;
 import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.CourseContentSecurity;
 import com.ziksana.domain.course.CourseDetails;
+import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.domain.course.CourseTagcloud;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningComponentContentDetails;
@@ -36,7 +40,7 @@ public class CourseDefineTest extends BaseTest{
 	public CourseService courseService;
 	
 	@Test
-	public void testCourseDefineSave() throws Exception {
+	public void testSaveCourse() throws Exception {
 		System.out
 				.println("inside Test ****************************************");
 
@@ -71,14 +75,30 @@ public class CourseDefineTest extends BaseTest{
 	private Course buildCourseTreeData() throws Exception {
 
 		List<LearningComponent> compList = new ArrayList<LearningComponent>();
+		List<CourseTagcloud> 	tagcloudList 	= new ArrayList<CourseTagcloud>();
 		Course course1 = new Course();
 		MemberPersona authoredMember = new MemberPersona();
 		authoredMember.setMemberRoleId(100);
 		course1.setAccountableMember(authoredMember);
-		// course1.setCourseId(new IntegerZID(100));
-		course1.setName("ITechnology Basics");
-		// course1.setCourseStatus(new Integer(1)) ;
-
+		course1.setName("Trigonometric Maths");
+		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
+		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+		course1.setSecurityIndicator(true);
+		
+		CourseTagcloud tagcloud = new CourseTagcloud();
+		tagcloud.setCreatingMember(authoredMember);
+		tagcloud.setTagName("Trigonometry");
+		tagcloud.setTagType(TagType.TAG_TYPE1);
+		tagcloudList.add(tagcloud);
+		
+		course1.setCourseTagClouds(tagcloudList);
+		
+		CourseContentSecurity courseSecurity = new CourseContentSecurity();
+		courseSecurity.setFlotingIndicator(true);
+		courseSecurity.setLogoPath("/logopath");
+		
+		course1.setCourseContSecurity(courseSecurity);
+		
 		// Module1 as a Learning component and child as a text content STARTS
 		// HERE
 		LearningComponent comp1 = new LearningComponent();

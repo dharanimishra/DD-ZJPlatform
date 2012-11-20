@@ -58,6 +58,7 @@ public class Course extends AuditHistory{
 	 */
 	private Date 					validToDate 			= null;
 	private CourseStatus 			courseStatus 			= null;
+	private Integer		 			courseStatusId 			= null;
 	private Rating 					rating 					= null;
 	private Boolean 				securityIndicator 		= null;
 	private CourseContentSecurity	courseContSecurity 		= null;
@@ -367,6 +368,10 @@ public class Course extends AuditHistory{
 	 *            the courseStatus to set
 	 */
 	public void setCourseStatus(CourseStatus courseStatus) {
+		
+		if(courseStatusId!=null){
+			courseStatus = CourseStatus.getCourseStatus(courseStatusId);
+		}
 		this.courseStatus = courseStatus;
 	}
 
@@ -566,6 +571,20 @@ public class Course extends AuditHistory{
 	 */
 	public void setCourseId(Integer courseId) {
 		this.courseId = courseId;
+	}
+
+	/**
+	 * @return the courseStatusId
+	 */
+	public Integer getCourseStatusId() {
+		return courseStatusId;
+	}
+
+	/**
+	 * @param courseStatusId the courseStatusId to set
+	 */
+	public void setCourseStatusId(Integer courseStatusId) {
+		this.courseStatusId = courseStatusId;
 	}
 
 

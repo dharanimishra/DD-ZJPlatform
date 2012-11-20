@@ -20,10 +20,10 @@ public interface CourseTagcloudMapper {
 			"TagName, TagType, ",
 			"CourseId, ",
 			"MemberRoleId)",
-			"values (#{creationDate,jdbcType=TIMESTAMP}, ",
-			"#{tagName,jdbcType=VARCHAR}, #{tagType,jdbcType=INTEGER}, ",
-			"#{courseId,jdbcType=INTEGER}, ",
-			"#{memberRoleId,jdbcType=INTEGER})" })
+			"values (sysdate(), ",
+			"#{tagName,jdbcType=VARCHAR}, #{tagTypeId,jdbcType=INTEGER}, ",
+			"#{course.courseId,jdbcType=INTEGER}, ",
+			"#{creatingMember.memberRoleId,jdbcType=INTEGER})" })
 	void save(CourseTagcloud tagCloud);
 	
 	
