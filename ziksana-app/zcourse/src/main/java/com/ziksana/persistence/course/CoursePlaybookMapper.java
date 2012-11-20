@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -41,59 +42,60 @@ public interface CoursePlaybookMapper {
 	void savePlaybookView(CoursePlaybookView playbookView);
 
 	@Select({
-			"select courseplaybookid, fromDate, toDate, courseplaybookstatus, courseplaybooktype, courseid ",
+			"select courseplaybookid, validfrom, validto, courseplaybookstatus, courseplaybooktype, courseid ",
 			"   from corcourseplaybook where courseplaybookid = #{coursePlaybookId, jdbcType=INTEGER} and isdelete=#{isDelete,jdbcType=BOOLEAN}" })
 	@Results(value = {
-			@Result(property = "courseplaybookid", column = "courseplaybookid"),
-			@Result(property = "fromDate", column = "fromdate"),
-			@Result(property = "toDate", column = "todate"),
-			@Result(property = "courseplaybookstatus", column = "courseplaybookstatus"),
-			@Result(property = "courseplaybooktype", column = "courseplaybooktype"),
-			@Result(property = "course.courseid", column = "courseid"),
-			@Result(property = "playbookView", column = "courseplaybookId", javaType = CoursePlaybookView.class, one = @One(select = "getCoursePlaybookView")) })
-	CoursePlaybook getDefaulPlaybookDetails(Boolean isDelete, Integer coursePlaybookId);
+			@Result(property = "coursePlaybookId", column = "courseplaybookid"),
+			@Result(property = "fromDate", column = "validfrom"),
+			@Result(property = "toDate", column = "validto"),
+			@Result(property = "coursePBStatusId", column = "courseplaybookstatus"),
+			@Result(property = "playbookTypeId", column = "courseplaybooktype"),
+			@Result(property = "course.courseId", column = "courseid"),
+			@Result(property = "playbookView", column = "courseplaybookid", javaType = CoursePlaybookView.class, one = @One(select = "getCoursePlaybookView")) })
+	CoursePlaybook getDefaulPlaybookDetails(@Param("isDelete") Boolean isDelete, @Param("coursePlaybookId") Integer coursePlaybookId);
 	
 
 	@Select({
-			"select courseplaybookviewid, name, deliverytype, layoutPath, contentPath, playbookstatus, brochurePath, recipientstudentmodel, courseplaybookid ",
-			" from corcoursepplaybookview where courseplaybookid = #{coursePlaybookId,jdbcType=INTEGER}" })
+			"select courseplaybookviewid, playbookviewname, deliverytype, layoutmarkuppath, contentmarkuppath, " +
+			"courseplaybookstatus, brochurecontentpath, recipientstudentmodel, courseplaybookid ",
+			" from corcourseplaybookview where courseplaybookid = #{coursePlaybookId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "coursePlaybookViewId", column = "courseplaybookviewid"),
-			@Result(property = "name", column = "name"),
-			@Result(property = "deliveryType", column = "deliverytype"),
-			@Result(property = "layoutPath", column = "layoutpath"),
-			@Result(property = "contentPath", column = "contentpath"),
-			@Result(property = "playbookStatus", column = "playbookstatus"),
-			@Result(property = "brochurePath", column = "brochurepath"),
-			@Result(property = "recipientStudentModel", column = "recipientstudentmodel"),
-			@Result(property = "coursePlaybook.coursePlaybookId", column = "courseplaybookid"), })
+			@Result(property = "name", column = "playbookviewname"),
+			@Result(property = "deliveryTypeId", column = "deliverytype"),
+			@Result(property = "layoutPath", column = "layoutmarkupPath"),
+			@Result(property = "contentPath", column = "contentmarkuppath"),
+			@Result(property = "coursePlaybookStatusId", column = "courseplaybookstatus"),
+			@Result(property = "brochurePath", column = "brochurecontentpath"),
+			@Result(property = "recStudentModelId", column = "recipientstudentmodel"),
+			@Result(property = "coursePlaybook.coursePlaybookId", column = "courseplaybookid") })
 	CoursePlaybookView getCoursePlaybookView(Integer cooursePlaybookId);
 
 	
 	@Select({
-			"select courseplaybookid, fromdate, todate, courseplaybookstatus, courseplaybooktype, courseid ",
+			"select courseplaybookid, validfrom, validto, courseplaybookstatus, courseplaybooktype, courseid ",
 			"   from corcourseplaybook where courseid = #{courseId, jdbcType=INTEGER} and isdelete=#{isDelete,jdbcType=BOOLEAN}" })
 	@Results(value = {
-			@Result(property = "courseplaybookid", column = "courseplaybookid"),
-			@Result(property = "fromDate", column = "fromdate"),
-			@Result(property = "toDate", column = "toDate"),
-			@Result(property = "courseplaybookstatus", column = "courseplaybookstatus"),
-			@Result(property = "courseplaybooktype", column = "courseplaybooktype"),
-			@Result(property = "course.courseid", column = "courseid"),
-			@Result(property = "playbookView", column = "courseplaybookId", javaType = CoursePlaybookView.class, one = @One(select = "getCoursePlaybookView")) })
-	List<CoursePlaybook> getCoursePlaybookList(Boolean isDelete, Integer courseId);
+			@Result(property = "coursePlaybookId", column = "courseplaybookid"),
+			@Result(property = "fromDate", column = "validfrom"),
+			@Result(property = "toDate", column = "validto"),
+			@Result(property = "coursePBStatusId", column = "courseplaybookstatus"),
+			@Result(property = "playbookTypeId", column = "courseplaybooktype"),
+			@Result(property = "course.courseId", column = "courseid"),
+			@Result(property = "playbookView", column = "courseplaybookid", javaType = CoursePlaybookView.class, one = @One(select = "getCoursePlaybookView")) })
+	List<CoursePlaybook> getCoursePlaybookList(@Param("isDelete") Boolean isDelete, @Param("courseId") Integer courseId);
 	
 	
 	@Update({"update corcourseplaybook ",
-		"isDelete= #{isDelete,jdbcType=BOOLEAN} where courseplaybookid = #{coursePBId,jdbcType=INTEGER}"})
-	void deleteCoursePlaybook(Boolean isDelete, Integer coursePBId);
+		"set isdelete= #{isDelete,jdbcType=BOOLEAN} where courseplaybookid = #{coursePBId,jdbcType=INTEGER}"})
+	void deleteCoursePlaybook(@Param("isDelete") Boolean isDelete, @Param("coursePBId") Integer coursePBId);
 
 	
-	@Update({"update corcourseplaybookview set set name=#{name,jdbcType=VARCHAR}, deliverytype=#{deliveryType,jdbcType=INTEGER}, ",
-		" layoutpath=#{layoutPath,jdbcType=VARCHAR}, contentpath=#{contentPath,jdbcType=VARCHAR},",
-		" playbookstatus=#{playbookStatus,jdbcType=INTEGER}, brochurepath=#{brochurePath,jdbcType=VARCHAR}, ",
-		"recipientstudentmodel=#{recipientStudentModel,jdbcType=INTEGER} where courseplaybookviewid = #{coursePlaybookViewId, jdbcType=INTEGER}"})
-	void updateCoursePlaybook(CoursePlaybookView coursePBView);
+/*	@Update({"update corcourseplaybookview set playbookviewname=#{name,jdbcType=VARCHAR}, deliverytype=#{deliveryTypeId,jdbcType=INTEGER}, ",
+		" layoutmarkuppath=#{layoutPath,jdbcType=VARCHAR}, contentmarkuppath=#{contentPath,jdbcType=VARCHAR},",
+		" courseplaybookstatus=#{coursePlaybookStatusId,jdbcType=INTEGER}, brochurecontentpath=#{brochurePath,jdbcType=VARCHAR}, ",
+		"recipientstudentmodel=#{recStudentModelId,jdbcType=INTEGER} where courseplaybookviewid = #{coursePlaybookViewId, jdbcType=INTEGER}"})
+*/	void updateCoursePlaybook(CoursePlaybookView coursePBView);
 
 	
 	/**

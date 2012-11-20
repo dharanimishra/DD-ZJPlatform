@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.CoursePlaybookMapper">
+	<!-- <resultMap id="BaseResultMap" type="com.ziksana.domain.course.CoursePlaybookView">
+		<id column="coursePlaybookViewId" property="coursePlaybookViewId"
+			jdbcType="INTEGER" />
+		<result column="PlaybookViewName" property="playbookViewName"
+			jdbcType="VARCHAR" />
+		<result column="DeliveryType" property="deliveryType" jdbcType="INTEGER" />
+		<result column="LayoutMarkupPath" property="layoutMarkupPath"
+			jdbcType="VARCHAR" />
+		<result column="ContentMarkupPath" property="contentMarkupPath"
+			jdbcType="VARCHAR" />
+		<result column="CreationDate" property="creationDate" jdbcType="DATE" />
+		<result column="CoursePlaybookStatus" property="coursePlaybookStatus"
+			jdbcType="INTEGER" />
+		<result column="BrochureContentPath" property="brochureContentPath"
+			jdbcType="VARCHAR" />
+		<result column="RecipientStudentModel" property="recipientStudentModel"
+			jdbcType="INTEGER" />
+		<result column="CoursePlaybookId" property="coursePlaybookId"
+			jdbcType="INTEGER" />
+		<result column="learningcomponentid" property="learningComponentId"
+			jdbcType="INTEGER" />
+	</resultMap>
+ -->	<sql id="Base_Column_List">
+		courseplaybookviewid, playbookviewname, deliverytype,
+		layoutmarkuppath, contentmarkuppath,
+		creationdate,
+		courseplaybookstatus, brochurecontentpath, recipientstudentmodel,
+		courseplaybookid,
+		learningcomponentid
+	</sql>
+	<update id="updateCoursePlaybook" parameterType="com.ziksana.domain.course.CoursePlaybookView">
+		update corcourseplaybookview
+		<set>
+			<if test="name != null">
+				playbookviewname = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="deliveryTypeId != null">
+				deliverytype = #{deliveryTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="layoutPath != null">
+				layoutmarkuppath = #{layoutPath,jdbcType=VARCHAR},
+			</if>
+			<if test="contentPath != null">
+				contentmarkuppath = #{contentPath,jdbcType=VARCHAR},
+			</if>
+			<if test="coursePlaybookStatusId != null">
+				courseplaybookstatus =
+				#{coursePlaybookStatusId,jdbcType=INTEGER},
+			</if>
+			<if test="brochurePath != null">
+				brochurecontentpath = #{brochurePath,jdbcType=VARCHAR},
+			</if>
+			<if test="recStudentModelId != null">
+				recipientstudentmodel =
+				#{recStudentModelId,jdbcType=INTEGER},
+			</if>
+			<if test="coursePlaybook != null">
+				courseplaybookid =
+				#{coursePlaybook.coursePlaybookId,jdbcType=INTEGER},
+			</if>
+			<if test="learningComponent != null">
+				learningcomponentid =
+				#{learningComponent.learningComponentId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where courseplaybookviewid = #{coursePlaybookViewId, jdbcType=INTEGER}
+	</update>
+</mapper>

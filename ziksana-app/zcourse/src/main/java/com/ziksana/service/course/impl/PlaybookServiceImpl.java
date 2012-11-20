@@ -1,16 +1,17 @@
 package com.ziksana.service.course.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ziksana.domain.course.CoursePlaybook;
+import com.ziksana.domain.course.CoursePlaybookStatus;
 import com.ziksana.domain.course.CoursePlaybookView;
-import com.ziksana.domain.course.PlaybookComponent;
+import com.ziksana.domain.course.PlaybookDeliveryType;
 import com.ziksana.domain.course.PlaybookType;
+import com.ziksana.domain.course.RecipientStudentModel;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CoursePlaybookMapper;
@@ -27,19 +28,45 @@ public class PlaybookServiceImpl implements PlaybookService {
 	public CoursePlaybookMapper coursePlaybookMapper;
 
 	@Override
-	public CoursePlaybook getCoursePlaybook(CoursePlaybook playbook)
+	public CoursePlaybook getCoursePlaybook(Integer playbookId)
 			throws CourseException {
 		Boolean 				isDelete 		= false;
 		CoursePlaybook 			coursePB 		= null;
 		
-		if(playbook.getCoursePlaybookId() == null){
+		if(playbookId == null){
 			throw new CourseException("Course Playbook ID cannot be null");
 		}
 		
-		coursePB = coursePlaybookMapper.getDefaulPlaybookDetails(isDelete, playbook.getCoursePlaybookId());
+		logger.debug("Playbook Id : "+playbookId);
+		
+		coursePB = coursePlaybookMapper.getDefaulPlaybookDetails(isDelete, playbookId);
 		
 		if(coursePB != null){
+			
+			if(coursePB.getCoursePBStatusId()!=null){
+				coursePB.setCoursePBStatus(CoursePlaybookStatus.getCoursePlaybookStatus(coursePB.getCoursePBStatusId()));
+			}
+			
 			logger.debug(" Course Playbook details : "+coursePB.toString());
+			
+			if(coursePB.getPlaybookView()!=null){
+				
+				if(coursePB.getPlaybookView().getDeliveryTypeId()!=null){
+					coursePB.getPlaybookView().setDeliveryType(PlaybookDeliveryType.getPlaybookDeliveryType
+							(coursePB.getPlaybookView().getDeliveryTypeId()));
+				}
+				
+				if(coursePB.getPlaybookView().getCoursePlaybookStatusId()!=null){
+					coursePB.getPlaybookView().setCoursePlaybookStatus(CoursePlaybookStatus.getCoursePlaybookStatus
+							(coursePB.getPlaybookView().getCoursePlaybookStatusId()));
+				}
+				
+				if(coursePB.getPlaybookView().getRecStudentModelId()!=null){
+					coursePB.getPlaybookView().setRecStudentModel(RecipientStudentModel.getRecipientStudentModel
+							(coursePB.getPlaybookView().getRecStudentModelId()));
+				}
+			}
+			
 			return coursePB;
 		}
 		 
@@ -47,8 +74,23 @@ public class PlaybookServiceImpl implements PlaybookService {
 	}
 
 	@Override
-	public Map<PlaybookType, PlaybookComponent> getPlaybookList(ZID courseId)
+	public List<CoursePlaybook> getPlaybookList(Integer courseId)
 			throws CourseException {
+		
+		List<CoursePlaybook> playbookList = null;
+		
+		if(courseId == null){
+			throw new CourseException("Course ID cannot be null");
+		}
+		
+		Boolean isDelete = false;
+		
+		playbookList = coursePlaybookMapper.getCoursePlaybookList(isDelete, courseId);
+		
+		if(playbookList!=null){
+			logger.debug("Playbook list size :"+playbookList.size());
+			return playbookList;
+		}
 		 
 		return null;
 	}
@@ -126,10 +168,12 @@ public class PlaybookServiceImpl implements PlaybookService {
 	@Transactional
 	@Override
 	public void deleteCoursePlaybook(ZID coursePBId) throws CourseException {
+		
 		Boolean isDelete = true;
 		if(coursePBId == null){
 			throw new CourseException("Course Playbook ID cannot be null");
 		}
+		logger.debug("Playbook Id : "+new Integer(coursePBId.getStorageID()));
 		
 		coursePlaybookMapper.deleteCoursePlaybook(isDelete, new Integer(coursePBId.getStorageID()));
 		
@@ -163,11 +207,7 @@ public class PlaybookServiceImpl implements PlaybookService {
 			logger.debug("After saving the course playbook ::: "+coursePBId);
 			
 			coursePlaybook.setCoursePlaybookId(coursePBId);
-			
-				
 		}
-		
 	}
-	
 	
 }

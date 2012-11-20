@@ -65,6 +65,11 @@ public class CoursePlaybook extends AuditHistory {
 	 * @param courseStatus the courseStatus to set
 	 */
 	public void setCoursePBStatus(CoursePlaybookStatus coursePBStatus) {
+		
+		if(coursePBStatusId!=null){
+			coursePBStatus = CoursePlaybookStatus.getCoursePlaybookStatus(coursePBStatusId);	
+		}
+		
 		this.coursePBStatus = coursePBStatus;
 	}
 	/**
@@ -75,8 +80,14 @@ public class CoursePlaybook extends AuditHistory {
 	}
 	/**
 	 * @param playbookType the playbookType to set
+	 * @throws NoSuchMethodException 
 	 */
-	public void setPlaybookType(PlaybookType playbookType) {
+	public void setPlaybookType(PlaybookType playbookType) throws NoSuchMethodException {
+		
+		if(playbookTypeId!=null){
+			playbookType = PlaybookType.getPlaybookType(playbookTypeId);	
+		}
+		
 		this.playbookType = playbookType;
 	}
 
@@ -106,11 +117,6 @@ public class CoursePlaybook extends AuditHistory {
 		this.playbookView = playbookView;
 	}
 
-	@Override
-	public String toString() {
-		return "CoursePlaybook [coursePBStatus=" + coursePBStatus
-				+ ", playbookType=" + playbookType + "]";
-	}
 
 	/**
 	 * @return the coursePBStatusId
@@ -152,6 +158,19 @@ public class CoursePlaybook extends AuditHistory {
 	 */
 	public void setCoursePlaybookId(Integer coursePlaybookId) {
 		this.coursePlaybookId = coursePlaybookId;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "CoursePlaybook [coursePlaybookId=" + coursePlaybookId
+				+ ", fromDate=" + fromDate + ", toDate=" + toDate
+				+ ", coursePBStatus=" + coursePBStatus + ", coursePBStatusId="
+				+ coursePBStatusId + ", playbookType=" + playbookType
+				+ ", playbookTypeId=" + playbookTypeId + ", course=" + course
+				+ ", playbookView=" + playbookView + "]";
 	}
 
 }

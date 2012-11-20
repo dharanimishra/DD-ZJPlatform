@@ -24,7 +24,7 @@ public class ClassTalkServiceImpl implements ClassTalkService {
 	public List<LearnerOnline> getAllOnlineLearners(Course course) {
 		// TODO Auto-generated method stub
 		
-		return classTalkMapper.getAllOnlineLearners(Integer.valueOf(course.getCourseId().getStorageID()));
+		return classTalkMapper.getAllOnlineLearners(Integer.valueOf(course.getCourseId()));
 		
 	}
 
@@ -37,15 +37,15 @@ public class ClassTalkServiceImpl implements ClassTalkService {
 		
 		if (relationshipType.equals(RelationshipType.CIRCLEFIRST))
 		{
-			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId().getStorageID()), memberRoleId, Integer.valueOf(1000));			
+			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId()), memberRoleId, Integer.valueOf(1000));			
 		}
 		else if(relationshipType.equals( RelationshipType.CIRCLESECOND))
 		{
-			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId().getStorageID()), memberRoleId, Integer.valueOf(1001)); 	
+			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId()), memberRoleId, Integer.valueOf(1001)); 	
 		}
 		else
 		{
-			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId().getStorageID()), memberRoleId, Integer.valueOf(1002));
+			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId()), memberRoleId, Integer.valueOf(1002));
 		}
 		
 		

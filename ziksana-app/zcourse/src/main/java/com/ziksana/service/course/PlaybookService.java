@@ -1,12 +1,9 @@
 package com.ziksana.service.course;
 
 import java.util.List;
-import java.util.Map;
 
 import com.ziksana.domain.course.CoursePlaybook;
 import com.ziksana.domain.course.CoursePlaybookView;
-import com.ziksana.domain.course.PlaybookComponent;
-import com.ziksana.domain.course.PlaybookType;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 
@@ -19,11 +16,11 @@ public interface PlaybookService {
 	/**
 	 * Gets the Default Course Playbook for Member.
 	 * 
-	 * @param playbook
+	 * @param playbookId
 	 * @return
 	 * @throws CourseException
 	 */
-	public CoursePlaybook getCoursePlaybook(CoursePlaybook playbook)
+	public CoursePlaybook getCoursePlaybook(Integer playbookId)
 			throws CourseException;
 
 	/**
@@ -38,7 +35,7 @@ public interface PlaybookService {
 	 * @return
 	 * @throws CourseException
 	 */
-	public Map<PlaybookType, PlaybookComponent> getPlaybookList(ZID courseId)
+	public List<CoursePlaybook> getPlaybookList(Integer courseId)
 			throws CourseException;
 
 	/**

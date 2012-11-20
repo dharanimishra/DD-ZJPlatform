@@ -4,7 +4,6 @@
 package com.ziksana.domain.course;
 
 import com.ziksana.domain.common.AuditHistory;
-import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -26,7 +25,7 @@ public class CoursePlaybookView extends AuditHistory {
 	  public CoursePlaybookView(){
 		  
 	  }
-	  private ZID 						coursePlaybookViewId; 
+	  private Integer					coursePlaybookViewId; 
 	  private String 					name 					= null;
 	  private String					description				= null;
 	  private PlaybookDeliveryType 		deliveryType 			= null;
@@ -41,18 +40,6 @@ public class CoursePlaybookView extends AuditHistory {
 	  private CoursePlaybook 			coursePlaybook 			= null; 
 	  private LearningComponent 		learningComponent 		= null;
 	  
-	/**
-	 * @return the coursePlaybookViewId
-	 */
-	public ZID getCoursePlaybookViewId() {
-		return coursePlaybookViewId;
-	}
-	/**
-	 * @param coursePlaybookViewId the coursePlaybookViewId to set
-	 */
-	public void setCoursePlaybookViewId(ZID coursePlaybookViewId) {
-		this.coursePlaybookViewId = coursePlaybookViewId;
-	}
 	/**
 	 * @return the name
 	 */
@@ -75,6 +62,11 @@ public class CoursePlaybookView extends AuditHistory {
 	 * @param deliveryType the deliveryType to set
 	 */
 	public void setDeliveryType(PlaybookDeliveryType deliveryType) {
+		
+		if(deliveryTypeId!=null){
+			deliveryType = PlaybookDeliveryType.getPlaybookDeliveryType(deliveryTypeId);	
+		}
+		
 		this.deliveryType = deliveryType;
 	}
 	/**
@@ -111,6 +103,10 @@ public class CoursePlaybookView extends AuditHistory {
 	 * @param coursePlaybookStatus the coursePlaybookStatus to set
 	 */
 	public void setCoursePlaybookStatus(CoursePlaybookStatus coursePlaybookStatus) {
+		
+		if(coursePlaybookStatusId!=null){
+			coursePlaybookStatus = CoursePlaybookStatus.getCoursePlaybookStatus(coursePlaybookStatusId);
+		}
 		this.coursePlaybookStatus = coursePlaybookStatus;
 	}
 	/**
@@ -135,6 +131,11 @@ public class CoursePlaybookView extends AuditHistory {
 	 * @param recStudentModel the recStudentModel to set
 	 */
 	public void setRecStudentModel(RecipientStudentModel recStudentModel) {
+		
+		if(recStudentModelId!=null){
+			recStudentModel = RecipientStudentModel.getRecipientStudentModel(recStudentModelId);
+		}
+		
 		this.recStudentModel = recStudentModel;
 	}
 	/**
@@ -163,13 +164,6 @@ public class CoursePlaybookView extends AuditHistory {
 	} 
 	  
 
-	public String toString() {
-		return "CoursePlaybookView [name=" + name + ", deliveryType="
-				+ deliveryType + ", layoutMarkupPath=" + layoutPath
-				+ ", contentMarkupPath=" + contentPath
-				+ ", coursePlaybookStatus=" + coursePlaybookStatus
-				+ ", brochureContentPath=" + brochurePath + "]";
-	}
 	/**
 	 * @return the description
 	 */
@@ -223,6 +217,38 @@ public class CoursePlaybookView extends AuditHistory {
 	 */
 	public void setRecStudentModelId(Integer recStudentModelId) {
 		this.recStudentModelId = recStudentModelId;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "CoursePlaybookView [coursePlaybookViewId="
+				+ coursePlaybookViewId + ", name=" + name + ", description="
+				+ description + ", deliveryType=" + deliveryType
+				+ ", deliveryTypeId=" + deliveryTypeId + ", layoutPath="
+				+ layoutPath + ", contentPath=" + contentPath
+				+ ", coursePlaybookStatus=" + coursePlaybookStatus
+				+ ", coursePlaybookStatusId=" + coursePlaybookStatusId
+				+ ", brochurePath=" + brochurePath + ", recStudentModel="
+				+ recStudentModel + ", recStudentModelId=" + recStudentModelId
+				+ ", coursePlaybook=" + coursePlaybook + ", learningComponent="
+				+ learningComponent + "]";
+	}
+
+	/**
+	 * @return the coursePlaybookViewId
+	 */
+	public Integer getCoursePlaybookViewId() {
+		return coursePlaybookViewId;
+	}
+
+	/**
+	 * @param coursePlaybookViewId the coursePlaybookViewId to set
+	 */
+	public void setCoursePlaybookViewId(Integer coursePlaybookViewId) {
+		this.coursePlaybookViewId = coursePlaybookViewId;
 	}
 
 }

@@ -1,7 +1,5 @@
 package com.ziksana.service.classtalk.impl;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import org.junit.After;
@@ -18,7 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ziksana.domain.classtalk.LearnerOnline;
 import com.ziksana.domain.contacts.RelationshipType;
 import com.ziksana.domain.course.Course;
-import com.ziksana.id.IntegerZID;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
@@ -57,7 +54,7 @@ public class ClassTalkServiceImplTest {
 	@Test
 	public void testGetAllOnlineLearners() {
 		Course course = new Course("testcourse", "testdesc", null, null, null);
-		course.setCourseId(new IntegerZID(1));
+		course.setCourseId(1);
 		List<LearnerOnline> learners = classTalkService
 				.getAllOnlineLearners(course);
 		Assert.assertTrue(learners.size() == 1);
@@ -67,7 +64,7 @@ public class ClassTalkServiceImplTest {
 	@Test
 	public void testGetOnlineLearnersByCircle() {
 		Course course = new Course("testcourse", "testdesc", null, null, null);
-		course.setCourseId(new IntegerZID(1));
+		course.setCourseId(1);
 		List<LearnerOnline> learners = classTalkService
 				.getOnlineLearnersByCircle(course, RelationshipType.CIRCLEFIRST);
 		Assert.assertTrue(learners.size() == 1);

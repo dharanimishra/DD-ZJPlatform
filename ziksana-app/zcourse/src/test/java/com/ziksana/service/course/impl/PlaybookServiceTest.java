@@ -1,6 +1,7 @@
 package com.ziksana.service.course.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +15,9 @@ import com.ziksana.domain.course.CoursePlaybookStatus;
 import com.ziksana.domain.course.CoursePlaybookView;
 import com.ziksana.domain.course.PlaybookDeliveryType;
 import com.ziksana.domain.course.PlaybookType;
+import com.ziksana.exception.course.CourseException;
+import com.ziksana.id.StringZID;
+import com.ziksana.id.ZID;
 import com.ziksana.service.course.PlaybookService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,8 +36,75 @@ public class PlaybookServiceTest extends BaseTest {
 		
 		playbookService.createDefaultPlaybook(coursePlaybook);
 		
+	}
+
+	@Test
+	public void testGetPlaybook() throws CourseException{
 		
+		System.out.println("****INSIDE testGetPlaybook METHOD **********");
+		Integer coursePlaybookId = 13;
 		
+		CoursePlaybook coursePB = playbookService.getCoursePlaybook(coursePlaybookId);
+		
+		System.out.println("Course play book : "+coursePB.getCoursePlaybookId());
+		
+		System.out.println("Course play book : "+coursePB.toString());
+		
+	}
+	
+	@Test
+	public void testDeletePlaybook() throws CourseException{
+		
+		System.out.println("****INSIDE testDeletePlaybook METHOD **********");
+		
+		ZID playbookId = new StringZID("13");
+		
+		playbookService.deleteCoursePlaybook(playbookId);
+		
+	}
+	
+	@Test
+	public void testUpdatePlaybook() throws CourseException{
+		
+		System.out.println("****INSIDE testUpdatePlaybook METHOD **********");
+		
+		CoursePlaybook playbook = constructPlaybookForUpdate();
+		
+		playbookService.updateCoursePlaybook(playbook);
+	
+	}
+	
+	@Test
+	public void testGetPlaybookList() throws CourseException{
+		
+		System.out.println("****INSIDE testUpdatePlaybook METHOD **********");
+		
+		List<CoursePlaybook> playbookList = null;
+		Integer courseId = 100;
+		playbookList = playbookService.getPlaybookList(courseId);
+	
+		System.out.println("Playbook list size : "+playbookList.size());
+	}
+	
+	
+	
+	
+	private CoursePlaybook constructPlaybookForUpdate(){
+		CoursePlaybook playbook = null;
+		
+		playbook = new CoursePlaybook();
+		playbook.setCoursePlaybookId(13);
+		
+		CoursePlaybookView pbView = new CoursePlaybookView();
+		pbView.setCoursePlaybook(playbook);
+		
+		pbView.setCoursePlaybookViewId(3);
+		
+		pbView.setContentMarkupPath("/content/playbookview/");
+		pbView.setName("Mathathematics Playbook");
+				
+		playbook.setPlaybookView(pbView);
+		return playbook;
 	}
 	
 	private CoursePlaybook constructDefaultPlaybook(CoursePlaybook coursePB){
