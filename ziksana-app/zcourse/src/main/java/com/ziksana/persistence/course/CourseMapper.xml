@@ -24,7 +24,7 @@
 					courseStatus = #{courseStatusId,jdbcType=INTEGER},
 				</if>
 				<if test="contentSecurityNeededIndicator!=null">
-					 contentsecurityneededindicator = contentsecurityneededindicator = #{securityIndicator,jdbcType=BOOLEAN},
+					 contentsecurityneededindicator = #{securityIndicator,jdbcType=BOOLEAN},
 				</if>
 				<if test="extraCredits!=null">
 					extracredits = #{extraCredits,jdbcType=VARCHAR},

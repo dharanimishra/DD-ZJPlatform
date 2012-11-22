@@ -2,19 +2,6 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.course.CoursePlaybookMapper">
-	<!-- <resultMap id="BaseResultMap" type="com.ziksana.domain.course.CoursePlaybookView"> 
-		<id column="coursePlaybookViewId" property="coursePlaybookViewId" jdbcType="INTEGER" 
-		/> <result column="PlaybookViewName" property="playbookViewName" jdbcType="VARCHAR" 
-		/> <result column="DeliveryType" property="deliveryType" jdbcType="INTEGER" 
-		/> <result column="LayoutMarkupPath" property="layoutMarkupPath" jdbcType="VARCHAR" 
-		/> <result column="ContentMarkupPath" property="contentMarkupPath" jdbcType="VARCHAR" 
-		/> <result column="CreationDate" property="creationDate" jdbcType="DATE" 
-		/> <result column="CoursePlaybookStatus" property="coursePlaybookStatus" 
-		jdbcType="INTEGER" /> <result column="BrochureContentPath" property="brochureContentPath" 
-		jdbcType="VARCHAR" /> <result column="RecipientStudentModel" property="recipientStudentModel" 
-		jdbcType="INTEGER" /> <result column="CoursePlaybookId" property="coursePlaybookId" 
-		jdbcType="INTEGER" /> <result column="learningcomponentid" property="learningComponentId" 
-		jdbcType="INTEGER" /> </resultMap> -->
 	<sql id="Base_Column_List">
 		courseplaybookviewid, playbookviewname, deliverytype,
 		layoutmarkuppath, contentmarkuppath,
@@ -61,20 +48,115 @@
 		where courseplaybookviewid = #{coursePlaybookViewId, jdbcType=INTEGER}
 	</update>
 
+	<!-- <insert id="saveDefaultPlaybook" parameterType="com.ziksana.domain.course.CoursePlaybook" 
+		useGeneratedKeys="true" keyProperty="coursePlaybookId" keyColumn="courseplaybookid"> 
+		insert into corcourseplaybook (validfrom,validTo, courseplaybookstatus, courseplaybooktype, 
+		courseid) values (#{fromDate,jdbcType=DATE},#{toDate,jdbcType=DATE}, #{coursePBStatusId,jdbcType=INTEGER}, 
+		#{playbookTypeId,jdbcType=INTEGER}, #{course.courseId,jdbcType=INTEGER}) 
+		<selectKey keyProperty="coursePlaybookId" resultType="int" order="AFTER"> 
+		SELECT LAST_INSERT_ID(); </selectKey> </insert> -->
 	<insert id="saveDefaultPlaybook" parameterType="com.ziksana.domain.course.CoursePlaybook"
 		useGeneratedKeys="true" keyProperty="coursePlaybookId" keyColumn="courseplaybookid">
-		insert into corcourseplaybook (validfrom,validTo,
-		courseplaybookstatus, courseplaybooktype, courseid)
-		values
-		(#{fromDate,jdbcType=DATE},#{toDate,jdbcType=DATE},
-		#{coursePBStatusId,jdbcType=INTEGER},
-		#{playbookTypeId,jdbcType=INTEGER},
-		#{course.courseId,jdbcType=INTEGER})
+		insert into corcourseplaybook
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="validFrom != null">
+				validFrom,
+			</if>
+			<if test="validTo != null">
+				validTo,
+			</if>
+			<if test="coursePlaybookStatus != null">
+				CoursePlaybookStatus,
+			</if>
+			<if test="coursePlaybookType != null">
+				CoursePlaybookType,
+			</if>
+			<if test="courseId != null">
+				CourseId,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fromDate != null">
+				#{fromDate,jdbcType=DATE},
+			</if>
+			<if test="toDate != null">
+				#{toDate,jdbcType=DATE},
+			</if>
+			<if test="coursePBStatusId != null">
+				#{coursePBStatusId,jdbcType=INTEGER},
+			</if>
+			<if test="coursePlaybookType != null">
+				#{playbookTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="course != null">
+				#{course.courseId,jdbcType=INTEGER},
+			</if>
+		</trim>
 		<selectKey keyProperty="coursePlaybookId" resultType="int"
 			order="AFTER">
 			SELECT LAST_INSERT_ID();
 		</selectKey>
 	</insert>
 
+	<insert id="savePlaybookView" parameterType="com.ziksana.domain.course.CoursePlaybookView"
+		useGeneratedKeys="true" keyProperty="coursePlaybookViewId" keyColumn="courseplaybookviewid">
+		insert into corcourseplaybookview
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationdate != null">
+				creationdate,
+			</if>
+			<if test="playbookviewname != null">
+				playbookviewname,
+			</if>
+			<if test="deliverytype != null">
+				deliverytype,
+			</if>
+			<if test="layoutmarkupPath != null">
+				layoutmarkupPath,
+			</if>
+			<if test="contentmarkupPath != null">
+				contentmarkupPath,
+			</if>
+			<if test="courseplaybookstatus != null">
+				courseplaybookstatus,
+			</if>
+			<if test="brochurecontentPath != null">
+				brochurecontentPath,
+			</if>
+			<if test="recipientstudentmodel != null">
+				recipientstudentmodel,
+			</if>
+			<if test="courseplaybookid != null">
+				courseplaybookid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				sysdate()
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="deliveryTypeId != null">
+				#{deliveryTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="layoutPath != null">
+				#{layoutPath,jdbcType=VARCHAR},
+			</if>
+			<if test="contentPath != null">
+				#{contentPath,jdbcType=VARCHAR},
+			</if>
+			<if test="coursePlaybookStatusId != null">
+				#{coursePlaybookStatusId,jdbcType=INTEGER},
+			</if>
+			<if test="brochurePath != null">
+				#{brochurePath,jdbcType=VARCHAR},
+			</if>
+			<if test="recStudentModelId != null">
+				#{recStudentModelId, jdbcType=INTEGER},
+			</if>
+			<if test="coursePlaybook != null">
+				#{coursePlaybook.coursePlaybookId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
 
 </mapper>

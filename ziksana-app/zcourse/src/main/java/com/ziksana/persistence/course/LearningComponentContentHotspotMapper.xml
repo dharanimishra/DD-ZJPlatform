@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.LearningComponentContentHotspotMapper">
+	@Insert({"insert into corlearningcomponentcontenthotspot (createdate, coordinates, name, description, active, learningcomponentcontentid, memberroleid) ",
+		" values (sysdate(),  #{coordeinates,jdbcType.VARCHAR}, #{name,jdbcType.VARCHAR}, #{description,jdbcType.VARCHAR},",
+		" #{active,jdbcType.BIT},  #{learningcomponentcontentid,jdbcType.INTEGER}, #{memberroleid,jdbcType.INTEGER},)"})
+
+	<insert id="save" parameterType="com.ziksana.domain.course.LearningComponentContentHotspot"
+		useGeneratedKeys="true" keyProperty="componentContentHotspotId" keyColumn="componentContentHotspotId">
+		insert into corlearningcomponentcontenthotspot
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationdate !=null">
+				creationdate,
+			</if>
+			<if test="coordinates!=null">
+				coordinates,
+			</if>
+			<if test="name!=null">
+				name,
+			</if>
+			<if test="description!=null">
+				description,
+			</if>
+			<if test="active!=null">
+				active,
+			</if>
+			<if test="learningcomponentcontentid!=null">
+				learningcomponentcontentid,
+			</if>
+			<if test="memberroleid!=null">
+				memberroleid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="coordinates!=null">
+				 #{coordinates,jdbcType.VARCHAR},
+			</if>
+			<if test="name!=null">
+				#{name,jdbcType.VARCHAR},
+			</if>
+			<if test="description!=null">
+				#{description,jdbcType.VARCHAR},
+			</if>
+			<if test="active!=null">
+				#{active,jdbcType.BOOLEAN},
+			</if>
+			<if test="learningComponentContent!=null">
+				#{learningComponentContent.learningComponentContentid,jdbcType.INTEGER},
+			</if>
+			<if test="memberPersona!=null">
+				#{memberPersona.memberroleid,jdbcType.INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty=componentContentHotspotId resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+	<update id="update" parameterType="com.ziksana.domain.course.CourseContentSecurity">
+		update corlearningcomponentcontenthotspot
+		<set>
+		<if test="coordinates!=null">
+				 coordinates = #{coordinates,jdbcType.VARCHAR},
+			</if>
+			<if test="name!=null">
+				name = #{name,jdbcType.VARCHAR},
+			</if>
+			<if test="description!=null">
+				description = #{description,jdbcType.VARCHAR},
+			</if>
+		</set>
+	componentcontenthotspotid =
+	#{componentContentHotspotId,jdbcType=INTEGER}
+	</update>
+</mapper>

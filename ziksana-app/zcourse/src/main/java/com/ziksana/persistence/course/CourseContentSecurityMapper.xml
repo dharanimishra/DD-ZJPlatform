@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.CourseContentSecurityMapper">
+
+	<insert id="save" parameterType="com.ziksana.domain.course.CourseContentSecurity"
+		useGeneratedKeys="true" keyProperty="contentSecurityId" keyColumn="contentsecurityid">
+		insert into corcoursecontentsecurity
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationdate !=null">
+				creationdate,
+			</if>
+			<if test="watermarkcontentpath!=null">
+				watermarkcontentpath,
+			</if>
+			<if test="embeddedlogopath!=null">
+				embeddedlogopath,
+			</if>
+			<if test="floatingindicator!=null">
+				floatingindicator,
+			</if>
+			<if test="embedusercredentialindicator!=null">
+				embedusercredentialindicator,
+			</if>
+			<if test="additionalpropertyindicator!=null">
+				additionalpropertyindicator,
+			</if>
+			<if test="courseid!=null">
+				courseid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="watermarkPath!=null">
+				#{watermarkPath,jdbcType=VARCHAR},
+			</if>
+			<if test="logoPath!=null">
+				#{logoPath,jdbcType=VARCHAR},
+			</if>
+			<if test="flotingIndicator!=null">
+				#{flotingIndicator,jdbcType=BOOLEAN},
+			</if>
+			<if test="signatureIndicator!=null">
+				#{signatureIndicator,jdbcType=BOOLEAN},
+			</if>
+			<if test="course!=null">
+				#{course.courseId,jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty=contentSecurityId resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+	<update id="update" parameterType="com.ziksana.domain.course.CourseContentSecurity">
+		update corcoursecontentsecurity
+		<set>
+			<if test="watermarkPath!=null">
+				watermarkcontentpath=#{watermarkPath,jdbcType=VARCHAR},
+			</if>
+			<if test="logoPath!=null">
+				embeddedlogopath=#{logoPath,jdbcType=VARCHAR},
+			</if>
+			<if test="flotingIndicator!=null">
+				floatingindicator=#{flotingIndicator,jdbcType=BOOLEAN},
+			</if>
+			<if test="signatureIndicator!=null">
+				embedusercredentialindicator=#{signatureIndicator,jdbcType=BOOLEAN},
+			</if>
+		</set>
+		where courseid = #{course.courseId,jdbcType=INTEGER}
+	</update>
+</mapper>

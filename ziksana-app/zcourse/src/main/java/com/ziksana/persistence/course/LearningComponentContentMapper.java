@@ -13,10 +13,14 @@ public interface LearningComponentContentMapper {
 	/**
 	 * This method saves the learning component content
 	 */
-
 	Integer saveLearningComponentContent(LearningComponentContent learningComponentContent);
 	
 
+	/**
+	 * This method Updates the learning component content
+	 */
+	Integer updateLearningComponentContent(LearningComponentContent learningComponentContent);
+	
 
 	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType.INTEGER}"})
 	@Results(value = {

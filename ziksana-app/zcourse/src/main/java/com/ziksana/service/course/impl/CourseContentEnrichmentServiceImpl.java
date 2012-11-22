@@ -205,7 +205,7 @@ public class CourseContentEnrichmentServiceImpl implements
 
 		// update delete indicator status to remove the association with
 		// applyenrichment
-		enrichMapper.update(contentEnrichment);
+		enrichMapper.updateContentEnrichment(contentEnrichment);
 	}
 
 	@Transactional

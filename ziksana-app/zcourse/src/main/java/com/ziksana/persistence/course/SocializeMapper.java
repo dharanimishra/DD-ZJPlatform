@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.ContentReviewWorkflow;
@@ -27,17 +26,6 @@ public interface SocializeMapper {
 	/**
 	 * @param learningContentReviewProgress
 	 */
-	@Insert({
-			"insert into corlearningcontentreviewprogress (startdate, enddate, duration, durationunits, averagerating, ",
-			" degreeofcompletion, coursestatus, description, courseid, learningcomponentid, ",
-			" leraningcomponentcontentid, authoringmemberroleid) ",
-			" values (#{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{duration,jdbcType=INTEGER}, ",
-			" #{durationUnits,jdbcType=INTEGER},  #{averageRating,jdbcType=INTEGER}, #{degreeOfCompletion,jdbcType=INTEGER},",
-			" #{courseStatus,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{course.courseId,jdbcType=INTEGER},",
-			" #{learningComponent.learningComponentId,jdbcType=INTEGER}, ",
-			" #{learningComponentContent.learningComponentContentId,jdbcType=INTEGER},",
-			" #{authoringMemberRole.memberRoleId,jdbcType=INTEGER}) " })
-	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "reviewprogressid", before = true, resultType = Integer.class)
 	void saveComponentForReview(
 			LearningContentReviewProgress learningContentReviewProgress);
 

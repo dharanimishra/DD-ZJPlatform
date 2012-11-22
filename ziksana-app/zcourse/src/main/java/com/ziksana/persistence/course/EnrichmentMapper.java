@@ -30,7 +30,7 @@ public interface EnrichmentMapper {
 	 * 
 	 * @param enrichment
 	 */
-	@Update({ "update corApplyEnrichment set isDelete = #{isDelete,jdbcType=BIT} where enrichmentid = #{enrichId,jdbcType=INTEGER}" })
+	@Update({ "update corApplyEnrichment set isDelete = #{isDelete,jdbcType=BOOLEAN} where enrichmentid = #{enrichmentId,jdbcType=INTEGER}" })
 	void delete(Enrichment enrichment);
 
 	/**
@@ -43,13 +43,13 @@ public interface EnrichmentMapper {
 			"select enrichentid, active, visibility, overrideat, creatormemberroleid, courseid from ",
 			"corapplyenrichment where creatormemberroleid = #{memberRoleId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "enrichentId", column = "enrichentid"),
+			@Result(property = "enrichmentId", column = "enrichmentid"),
 			@Result(property = "active", column = "active"),
 			@Result(property = "visibility", column = "visibility"),
 			@Result(property = "overrideAt", column = "overrideat"),
 			@Result(property = "creatorMemberPersona.memberRoleId", column = "creatormemberroleid"),
 			@Result(property = "course.courseId", column = "courseid"),
-			@Result(property = "contentEnrich", column = "enrichentId", javaType = ContentEnrichment.class, one = @One(select = "getContentEnrichment")) })
+			@Result(property = "contentEnrich", column = "enrichmentId", javaType = ContentEnrichment.class, one = @One(select = "getContentEnrichment")) })
 	List<Enrichment> getAllEnrichments(Integer memberRoleId);
 
 	@Select({
@@ -102,12 +102,7 @@ public interface EnrichmentMapper {
 	 * Modifies the content enrichment
 	 * @param contentEnrichment
 	 */
-	@Update({
-			"update corContentEnrichment set starttime =#{startTime,jdbcType.TIMESTAMP},",
-			"endtime = #{endTime,jdbcType.TIMESTAMP},  linktype = #{linkType,jdbcType.INTEGER}, linkelement=#{linkElement,jdbcType.VARCHAR},",
-			" linkitemcost = #{linkItemCost,jdbcType.INTEGER}, linksouce = #{linkSource,jdbcType.INTEGER},",
-			" active = #{active,jdbcType.BIT} where contentenrichmentid = #{contentEnrichmentId,jdbcType.INTEGER}" })
-	void update(ContentEnrichment contentEnrichment);
+	void updateContentEnrichment(ContentEnrichment contentEnrichment);
 
 	
 	

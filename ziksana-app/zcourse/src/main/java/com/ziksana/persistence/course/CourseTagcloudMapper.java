@@ -2,11 +2,9 @@ package com.ziksana.persistence.course;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.CourseTagcloud;
 
@@ -15,18 +13,13 @@ public interface CourseTagcloudMapper {
 	/**
 	 * This saves the course tagcloud keys
 	 */
-	@Insert({
-			"insert into corcoursetagcloud (CreationDate, ",
-			"TagName, TagType, ",
-			"CourseId, ",
-			"MemberRoleId)",
-			"values (sysdate(), ",
-			"#{tagName,jdbcType=VARCHAR}, #{tagTypeId,jdbcType=INTEGER}, ",
-			"#{course.courseId,jdbcType=INTEGER}, ",
-			"#{creatingMember.memberRoleId,jdbcType=INTEGER})" })
 	void save(CourseTagcloud tagCloud);
 	
 	
+	/**
+	 * @param integer
+	 * @return
+	 */
 	@Select({"select coursetagcloudid,tagname, tagtype, courseId,memberroleId  from corcoursetagcloud where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value={
 			@Result(property="courseTagcloudId", column="coursetagcloudid"),
@@ -38,9 +31,9 @@ public interface CourseTagcloudMapper {
 	List<CourseTagcloud> getCourseTagClouds(Integer integer);
 
 	
-	@Update({"update corcoursetagcloud set tagname=#{tagName, jdbcType=VARCHAR}, tagtype=#{tagType, jdbcType=INTEGER} ",
-		" where coursetagid = #{courseTagCloudId,jdbcType.INTEGER}"
-	})
+	/**
+	 * @param courseTagcloud
+	 */
 	void update(CourseTagcloud courseTagcloud);
 
 }

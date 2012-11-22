@@ -1,8 +1,5 @@
 package com.ziksana.persistence.course;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Update;
-
 import com.ziksana.domain.course.CourseContentSecurity;
 
 /**
@@ -11,21 +8,14 @@ import com.ziksana.domain.course.CourseContentSecurity;
 public interface CourseContentSecurityMapper {
 	
 	/**
-	 * This waves the course tagcloud keys
+	 * This saves the course Security parameters
 	 */
-	@Insert({
-			"insert into corcoursecontentsecurity (creationdate, watermarkcontentpath, embeddedlogopath," +
-			" floatingindicator, embedusercredentialindicator,",
-			" courseid) ",
-			"values (sysdate(), ",
-			"#{watermarkPath,jdbcType=VARCHAR}, #{logoPath,jdbcType=VARCHAR}, ",
-			"#{flotingIndicator,jdbcType=BOOLEAN}, #{signatureIndicator,jdbcType=BOOLEAN}, ",
-			"#{course.courseId,jdbcType=INTEGER} )" })
 	void save(CourseContentSecurity contSecurity);
 
-	@Update({"update corcoursecontentsecurity set watermarkcontentpath=#{watermarkPath,jdbcType=VARCHAR}, embeddedlogopath=#{logoPath,jdbcType=VARCHAR}, ", 
-		"floatingindicator=#{flotingIndicator,jdbcType=BOOLEAN}, embedusercredentialindicator=#{signatureIndicator,jdbcType=BOOLEAN} " , 
-		"where courseid = #{course.courseId,jdbcType=INTEGER}"})
+	/**
+	 * Updates the course Security parameters
+	 * @param contSecurity
+	 */
 	void update(CourseContentSecurity contSecurity);
 
 
