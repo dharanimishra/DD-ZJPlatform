@@ -2,24 +2,24 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
 public class LearningContentParts extends AuditHistory{
 
-	private ZID		 	contentPartsId;
-	private Date 		creationDate 	= null;
+	private Integer		 	contentPartsId;
+	private Date 			creationDate 	= null;
 	/**
 	 * Maximum Length:45
 	 */
 	private String 			partPath 		= null;
 	private Integer 		partSequence 	= null;
 	private LearningContent learningContent = null;
+	private Boolean 		isDelete		= null;
 
 	/**
 	 * @return the value of property contentPartsId
 	 */
-	public ZID getContentPartsId() {
+	public Integer getContentPartsId() {
 		return contentPartsId;
 	}
 
@@ -27,7 +27,7 @@ public class LearningContentParts extends AuditHistory{
 	 * @param contentPartsId
 	 *            the value for property contentPartsId
 	 */
-	public void setContentPartsId(ZID contentPartsId) {
+	public void setContentPartsId(Integer contentPartsId) {
 		this.contentPartsId = contentPartsId;
 	}
 
@@ -96,6 +96,20 @@ public class LearningContentParts extends AuditHistory{
 		return "LearningContentParts [partPath=" + partPath + ", partSequence="
 				+ partSequence + ", learningContent=" + learningContent
 				+ "]";
+	}
+
+	/**
+	 * @return the isDelete
+	 */
+	public Boolean getIsDelete() {
+		return isDelete;
+	}
+
+	/**
+	 * @param isDelete the isDelete to set
+	 */
+	public void setIsDelete(Boolean isDelete) {
+		this.isDelete = isDelete;
 	}
 
 }

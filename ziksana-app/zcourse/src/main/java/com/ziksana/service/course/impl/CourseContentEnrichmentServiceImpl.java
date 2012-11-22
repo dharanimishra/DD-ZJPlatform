@@ -44,9 +44,9 @@ public class CourseContentEnrichmentServiceImpl implements
 
 	@Transactional
 	@Override
-	public void saveReference(Enrichment enrichment) throws CourseException {
+	public void saveReference(Enrichment enrichment, LinkType enrichLinkType) throws CourseException {
 
-		saveReferenceOrTopicOrNotes(enrichment);
+		saveReferenceOrTopicOrNotes(enrichment, LinkType.REFERENCE);
 	}
 
 	@Transactional
@@ -57,8 +57,8 @@ public class CourseContentEnrichmentServiceImpl implements
 
 	@Transactional
 	@Override
-	public void saveNotes(Enrichment enrichment) throws CourseException {
-		saveReferenceOrTopicOrNotes(enrichment);
+	public void saveNotes(Enrichment enrichment, LinkType enrichLinkType) throws CourseException {
+		saveReferenceOrTopicOrNotes(enrichment,LinkType.ADDITIONAL_INFO);
 	}
 
 	@Transactional
@@ -79,9 +79,9 @@ public class CourseContentEnrichmentServiceImpl implements
 
 	@Transactional
 	@Override
-	public void saveTOC(Enrichment enrichment) throws CourseException {
+	public void saveTOC(Enrichment enrichment, LinkType enrichLinkType) throws CourseException {
 
-		saveReferenceOrTopicOrNotes(enrichment);
+		saveReferenceOrTopicOrNotes(enrichment, LinkType.TOC);
 
 	}
 
@@ -106,9 +106,8 @@ public class CourseContentEnrichmentServiceImpl implements
 	 * @param enrichment
 	 * @throws CourseException
 	 */
-	private void saveReferenceOrTopicOrNotes(Enrichment enrichment)
+	private void saveReferenceOrTopicOrNotes(Enrichment enrichment, LinkType enrichLinkType)
 			throws CourseException {
-		Enrichment 				savedEnrichment 	= null;
 		ContentEnrichment 		contentEnrichment 	= null;
 
 		if (enrichment == null) {
@@ -119,18 +118,23 @@ public class CourseContentEnrichmentServiceImpl implements
 			throw new CourseException(
 					"Learning Content cannot be null for Enrichment");
 		}
-
+		
 		logger.debug("Before Saving the Enrichment ....");
-		savedEnrichment = enrichMapper.saveReference(enrichment);
+		enrichMapper.saveReference(enrichment);
+		logger.debug("After Saving the Enrichment .ID :"+enrichment.getEnrichmentId());
+		
+		if (enrichment.getEnrichmentId() != null) {
 
-		if (savedEnrichment != null) {
-
+			logger.debug("After Saving the Enrichment learncontentid  :"+enrichment.getLearningContent().getLearningContentId());
+			
 			contentEnrichment = enrichment.getContentEnrich();
 
 			contentEnrichment.setApplyEnrichment(enrichment);
+			
+			contentEnrichment.setLinkTypeId(enrichLinkType.getID());
 
 			logger.debug("Before Saving the Enrichment Content ....:"
-					+ contentEnrichment.getLinkType());
+					+ contentEnrichment.getLinkTypeId());
 			enrichMapper.saveRefenceContent(contentEnrichment);
 
 		}

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utils.SubjectClassification;
@@ -18,7 +17,7 @@ public class LearningContent extends AuditHistory{
 		this.contentType = contentType;
 	}
 
-	private ZID	 		learningContentId;
+	private Integer	 		learningContentId;
 	private Date 			creationDate 	= null;
 	private Boolean 		activeFlag 		= null;
 	private ContentType 	contentType 	= null;
@@ -27,7 +26,9 @@ public class LearningContent extends AuditHistory{
 	 */
 	private String 			contentPath 	= null;
 	private ContentFormat 	contentFormat 	= null;
+	private Integer 		contentFormatId	= null;
 	private ContentStatus 	status 			= null;
+	private Integer 		statusId 			= null;
 	private Integer 		version 		= null;
 	/**
 	 * Maximum Length:45
@@ -48,17 +49,19 @@ public class LearningContent extends AuditHistory{
 	private LearningContent 			linkedLearningContent 	= null;
 	private List<LearningContentParts> 	learningContentPartsList 	= null;
 	private LearningComponentContent 	baseComponentContent 	= null;
+	private Integer						contentTypeId			= null;
+	private Boolean 					isDelete				= null;					
 	/**
 	 * @return the value of learningContentId
 	 */
-	public ZID getLearningContentId() {
+	public Integer getLearningContentId() {
 		return learningContentId;
 	}
 	/**
 	 * @param learningContentId
 	 *            the value for learningContentId
 	 */
-	public void setLearningContentId(ZID learningContentId) {
+	public void setLearningContentId(Integer learningContentId) {
 		this.learningContentId = learningContentId;
 	}
 	/**
@@ -243,6 +246,9 @@ public class LearningContent extends AuditHistory{
 	 * @param contentType the contentType to set
 	 */
 	public void setContentType(ContentType contentType) {
+		if(contentTypeId!=null){
+			contentType = ContentType.getContentType(contentTypeId);
+		}
 		this.contentType = contentType;
 	}
 
@@ -312,5 +318,90 @@ public class LearningContent extends AuditHistory{
 				+ subjClassification + ", learningContentPartsList="
 				+ learningContentPartsList + ", baseComponentContent="
 				+ baseComponentContent + "]";
+	}
+
+	/**
+	 * @return the contentTypeId
+	 */
+	public Integer getContentTypeId() {
+		return contentTypeId;
+	}
+
+	/**
+	 * @param contentTypeId the contentTypeId to set
+	 */
+	public void setContentTypeId(Integer contentTypeId) {
+		this.contentTypeId = contentTypeId;
+	}
+
+	/**
+	 * @return the contentFormatId
+	 */
+	public Integer getContentFormatId() {
+		return contentFormatId;
+	}
+
+	/**
+	 * @param contentFormatId the contentFormatId to set
+	 */
+	public void setContentFormatId(Integer contentFormatId) {
+		this.contentFormatId = contentFormatId;
+	}
+
+	/**
+	 * @return the statusId
+	 */
+	public Integer getStatusId() {
+		return statusId;
+	}
+
+	/**
+	 * @param statusId the statusId to set
+	 */
+	public void setStatusId(Integer statusId) {
+		this.statusId = statusId;
+	}
+
+	/**
+	 * @return the contentFormat
+	 */
+	public ContentFormat getContentFormat() {
+		return contentFormat;
+	}
+
+	/**
+	 * @param contentFormat the contentFormat to set
+	 */
+	public void setContentFormat(ContentFormat contentFormat) {
+		this.contentFormat = contentFormat;
+	}
+
+	/**
+	 * @return the learningContentPartsList
+	 */
+	public List<LearningContentParts> getLearningContentPartsList() {
+		return learningContentPartsList;
+	}
+
+	/**
+	 * @param learningContentPartsList the learningContentPartsList to set
+	 */
+	public void setLearningContentPartsList(
+			List<LearningContentParts> learningContentPartsList) {
+		this.learningContentPartsList = learningContentPartsList;
+	}
+
+	/**
+	 * @return the isDelete
+	 */
+	public Boolean getIsDelete() {
+		return isDelete;
+	}
+
+	/**
+	 * @param isDelete the isDelete to set
+	 */
+	public void setIsDelete(Boolean isDelete) {
+		this.isDelete = isDelete;
 	}
 }

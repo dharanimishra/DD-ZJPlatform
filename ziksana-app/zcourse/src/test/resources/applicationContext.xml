@@ -16,14 +16,16 @@
 	</bean>
 	
 	<bean id="courseService" class="com.ziksana.service.course.impl.CourseServiceImpl"/>
-		
 	<bean id="coursePlannerService" class="com.ziksana.service.course.impl.CoursePlannerServiceImpl"/>
-	
 	<bean id="playbookService" class="com.ziksana.service.course.impl.PlaybookServiceImpl"/>
+	
+	<bean id="courseContentService" class="com.ziksana.service.course.impl.CourseContentServiceImpl">
+	</bean>
+	<bean id="enrichmentService" class="com.ziksana.service.course.impl.CourseContentEnrichmentServiceImpl"/>
 	
 	<!-- Scans the classpath of this application for @Components to deploy as beans -->
 	<context:component-scan base-package="com.ziksana.service.course" />
-	
+	<context:component-scan base-package="com.ziksana.persistence.course" />
 	
 	
 	<!-- Configures the @Controller programming model -->

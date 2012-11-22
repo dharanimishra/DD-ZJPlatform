@@ -1,12 +1,13 @@
 package com.ziksana.persistence.course;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Insert;
+
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+
 import com.ziksana.domain.course.ContentEnrichment;
 import com.ziksana.domain.course.Enrichment;
 import com.ziksana.domain.course.LearningContent;
@@ -22,24 +23,7 @@ public interface EnrichmentMapper {
 	/**
 	 * This method saves the Course information to corcourse table
 	 */
-	@Insert({
-			"insert into corapplyenrichment ( creationdate, active, visibility, overrideat, learningcontentid, learningcomponentid, ",
-			"courseid, creatormemberroleid) ",
-			"values (sysdate(), ",
-			"#{active,jdbcType=BIT}, ",
-			"#{visibility,jdbcType=INTEGER}, ",
-			"#{overrideAt,jdbcType=INTEGER}, ",
-			"#{learningContent.learningContentId,jdbcType=INTEGER}, ",
-			"#{learningcomponent.learningComponentId,jdbcType=INTEGER}, ",
-			"#{course.courseId,jdbcType=BIT}, #{creatorMemberPersona.memberRoleId,jdbcType=VARCHAR})" })
-	@Results(value = {
-			@Result(property = "enrichentId", column = "enrichentid"),
-			@Result(property = "active", column = "active"),
-			@Result(property = "visibility", column = "visibility"),
-			@Result(property = "overrideAt", column = "overrideat"),
-			@Result(property = "creatorMemberPersona.memberroleId", column = "creatormemberroleid"),
-			@Result(property = "course.courseId", column = "courseid"), })
-	Enrichment saveReference(Enrichment enrich);
+	Integer saveReference(Enrichment enrich);
 
 	/**
 	 * updates delete indicator to remove the association with content
@@ -104,12 +88,7 @@ public interface EnrichmentMapper {
 	 * Saves thee refence content.
 	 * @param contentEnrichment
 	 */
-	@Insert({
-			"insert into corcontentenrichment (starttime, endtime, linktype, linkelement, internalindicator,linkdescription, ",
-			"linkitemauthor, linkitemcost, linksource, active, isdelete, enrichmentid ) values (#{startTime,jdbcType.TIMESTAMP},",
-			"#{endTime,jdbcType.TIMESTAMP},  #{linkType,jdbcType.INTEGER}, #{linkElement,jdbcType.VARCHAR}, #{linkItemCost,jdbcType.INTEGER}, #{linkSource,jdbcType.INTEGER},",
-			" #{active,jdbcType.BIT}, #{isDelete,jdbcType.BOOLEAN}, #{enrichment.enrichmentId,jdbcType.INTEGER})" })
-	void saveRefenceContent(ContentEnrichment contentEnrichment);
+	Integer saveRefenceContent(ContentEnrichment contentEnrichment);
 
 	/**
 	 * Removes the association of contentenrichment with content.

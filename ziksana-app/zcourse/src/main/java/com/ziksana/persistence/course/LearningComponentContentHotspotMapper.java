@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.LearningComponentContentHotspot;
-import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -34,7 +33,7 @@ public interface LearningComponentContentHotspotMapper {
 			@Result(property="learningComponentContent.learningComponentContentId", column="learningcomponentcontentid"),
 			@Result(property="memberPersona.memberRoleId", column="memberroleid")
 	})
-	List<LearningComponentContentHotspot> getHotspotList(ZID learningComponentContentId);
+	List<LearningComponentContentHotspot> getHotspotList(Integer learningComponentContentId);
 	
 	
 	/**

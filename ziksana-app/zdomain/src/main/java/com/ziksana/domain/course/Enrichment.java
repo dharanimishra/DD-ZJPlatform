@@ -5,7 +5,6 @@ package com.ziksana.domain.course;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
-import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -13,9 +12,10 @@ import com.ziksana.id.ZID;
 public class Enrichment extends AuditHistory {
 
 
-	private ZID 					enrichId;
+	private Integer					enrichmentId;
 	private Boolean 				active 					= null;
 	private Visibility 				visibility 				= null;
+	private Integer 				visibilityId			= null;
 	private Integer 				overrideAt 				= null;
 	
 	private ContentEnrichment		contentEnrich			= null;
@@ -28,16 +28,16 @@ public class Enrichment extends AuditHistory {
 	/**
 	 * @return the enrichId
 	 */
-	public ZID getEnrichId() {
-		return enrichId;
+	public Integer getEnrichmentId() {
+		return enrichmentId;
 	}
 
 
 	/**
 	 * @param enrichId the enrichId to set
 	 */
-	public void setEnrichId(ZID enrichId) {
-		this.enrichId = enrichId;
+	public void setEnrichmentId(Integer enrichmentId) {
+		this.enrichmentId = enrichmentId;
 	}
 
 
@@ -67,8 +67,29 @@ public class Enrichment extends AuditHistory {
 	 * @param visibility the visibility to set
 	 */
 	public void setVisibility(Visibility visibility) {
+		
+		if(visibilityId!=null){
+			visibility = visibility.getEnrichVisibility(visibilityId);
+		}
+		
 		this.visibility = visibility;
 	}
+	/**
+	 * @return the visibilityId
+	 */
+	public Integer getVisibilityId() {
+		return visibilityId;
+	}
+
+
+	/**
+	 * @param visibilityId the visibilityId to set
+	 */
+	public void setVisibilityId(Integer visibilityId) {
+		this.visibilityId = visibilityId;
+	}
+
+
 	/**
 	 * @return the overrideAt
 	 */
@@ -146,10 +167,18 @@ public class Enrichment extends AuditHistory {
 		this.creatorMemberPersona = creatorMemberPersona;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "ApplyEnrichment [active=" + active + ", visibility="
-				+ visibility + ", overrideAt=" + overrideAt + "]";
+		return "Enrichment [enrichmentId=" + enrichmentId + ", active="
+				+ active + ", visibility=" + visibility + ", visibilityId="
+				+ visibilityId + ", overrideAt=" + overrideAt
+				+ ", contentEnrich=" + contentEnrich + ", course=" + course
+				+ ", learningContent=" + learningContent
+				+ ", learningComponent=" + learningComponent
+				+ ", creatorMemberPersona=" + creatorMemberPersona + "]";
 	}
 
 

@@ -27,7 +27,6 @@ import com.ziksana.domain.course.LearningComponentNest;
 import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
-import com.ziksana.id.IntegerZID;
 import com.ziksana.service.course.CourseService;
 
 /**
@@ -227,11 +226,11 @@ public class CourseDefineTest extends BaseTest{
 		compType1.setQualifierIndicator(false);
 
 		LearningComponentContent compContent1 = new LearningComponentContent();
-		compContent1.setLearningComponentContentId(new IntegerZID(111));
+		compContent1.setLearningComponentContentId(111);
 		compContent1.setCompContentType(ComponentContentType.COURSE_CONTENT);
 
 		LearningContent content1 = new LearningContent();
-		content1.setLearningContentId(new IntegerZID(1111));
+		content1.setLearningContentId(1111);
 		content1.setContentType(ContentType.TEXTUAL);
 		content1.setContentName("SampleTextFile");
 		content1.setContentPath("/filepath");
@@ -272,11 +271,11 @@ public class CourseDefineTest extends BaseTest{
 		comp2.setLearningObjIndicator(1);
 
 		LearningComponentContent compContent2 = new LearningComponentContent();
-		compContent2.setLearningComponentContentId(new IntegerZID(111));
+		compContent2.setLearningComponentContentId(111);
 		compContent2.setCompContentType(ComponentContentType.COURSE_CONTENT);
 
 		LearningContent content2 = new LearningContent();
-		content2.setLearningContentId(new IntegerZID(1111));
+		content2.setLearningContentId(1111);
 		content2.setContentType(ContentType.VIDEO);
 		content2.setContentName("VideoFileName");
 		content2.setContentPath("/filepath");

@@ -9,6 +9,7 @@ import com.ziksana.domain.course.EnrichmentType;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningComponentContentHotspot;
 import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.ReferenceSearchCriteria;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
@@ -31,7 +32,7 @@ public interface CourseContentEnrichmentService {
 	 * @param enrich
 	 * @throws CourseException
 	 */
-	public void saveReference(Enrichment enrich) throws CourseException;
+	public void saveReference(Enrichment enrich, LinkType enrichLinkType) throws CourseException;
 	
 	/**
 	 * Deletes the association of reference  to video content.
@@ -46,7 +47,7 @@ public interface CourseContentEnrichmentService {
 	 * @param enrich
 	 * @throws CourseException
 	 */
-	public void saveNotes(Enrichment enrich) throws CourseException;
+	public void saveNotes(Enrichment enrich, LinkType enrichLinkType) throws CourseException;
 	
 	/**
 	 * Deletes the Notes association to video content.
@@ -68,7 +69,7 @@ public interface CourseContentEnrichmentService {
 	 * @param enrich
 	 * @throws CourseException
 	 */
-	public void saveTOC(Enrichment enrich) throws CourseException;
+	public void saveTOC(Enrichment enrich, LinkType enrichLinkType) throws CourseException;
 	
 	/**
 	 * Removes the Topiic association to video content. 

@@ -31,19 +31,27 @@ public class ContentEnrichment extends AuditHistory {
 		this.active = active;
 	}
 
+	public ContentEnrichment() {
+		
+	}
+
 	private ZID 						contentEnrichmentId;
 	private Timestamp 					startTime 					= null;
 	private Timestamp					endTime 					= null;
 	private LinkType 					linkType 					= null;
+	private Integer 					linkTypeId 					= null;
 	private String 						linkElement 				= null;
 	private Boolean 					internalIndicator 			= null;
 	private String 						linkDescription 			= null;
 	private String 						linkItemAuthor 				= null;
 	private Integer 					linkItemCost 				= null;
 	private LinkSource 					linkSource 					= null;
+	private Integer 					linkSourceId 				= null;
 	private Boolean 					zeniSuggestedIndicator 		= null;
 	private Boolean 					active 						= null;
 	private Enrichment 					enrichment 					= null;
+	private Boolean						isDelete					= null;
+	
 
 		/**
 	 * @return the startTime
@@ -87,6 +95,10 @@ public class ContentEnrichment extends AuditHistory {
 	 *            the linkType to set
 	 */
 	public void setLinkType(LinkType linkType) {
+		
+		if(linkTypeId!=null){
+			linkType = LinkType.getLinkType(linkTypeId);
+		}
 		this.linkType = linkType;
 	}
 
@@ -222,6 +234,48 @@ public class ContentEnrichment extends AuditHistory {
 	 */
 	public void setApplyEnrichment(Enrichment enrichment) {
 		this.enrichment = enrichment;
+	}
+
+	/**
+	 * @return the linkTypeId
+	 */
+	public Integer getLinkTypeId() {
+		return linkTypeId;
+	}
+
+	/**
+	 * @param linkTypeId the linkTypeId to set
+	 */
+	public void setLinkTypeId(Integer linkTypeId) {
+		this.linkTypeId = linkTypeId;
+	}
+
+	/**
+	 * @return the linkSourceId
+	 */
+	public Integer getLinkSourceId() {
+		return linkSourceId;
+	}
+
+	/**
+	 * @param linkSourceId the linkSourceId to set
+	 */
+	public void setLinkSourceId(Integer linkSourceId) {
+		this.linkSourceId = linkSourceId;
+	}
+
+	/**
+	 * @return the isDelete
+	 */
+	public Boolean getIsDelete() {
+		return isDelete;
+	}
+
+	/**
+	 * @param isDelete the isDelete to set
+	 */
+	public void setIsDelete(Boolean isDelete) {
+		this.isDelete = isDelete;
 	}
 
 

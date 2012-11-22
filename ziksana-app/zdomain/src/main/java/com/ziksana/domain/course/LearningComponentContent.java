@@ -2,7 +2,6 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
 public class LearningComponentContent extends AuditHistory{
@@ -28,10 +27,12 @@ public class LearningComponentContent extends AuditHistory{
 		this.baseLearningContent = baseLearningContent;
 	}
 
-	private ZID		 						learningComponentContentId;
+	private Integer		 						learningComponentContentId;
 	private Date 							creationDate 						= null;
 	private CourseStatus 					courseStatus 						= null;
+	private Integer 						courseStatusId 						= null;
 	private ComponentContentType 			compContentType 					= null;
+	private Integer				 			compContentTypeId 					= null;
 	private String 							contentDescription 					= null;
 	private Boolean 						active 								= null;
 	private Integer 						contentVersionUsed 					= null;
@@ -43,7 +44,7 @@ public class LearningComponentContent extends AuditHistory{
 	/**
 	 * @return the value of property learningComponentContentId
 	 */
-	public ZID getLearningComponentContentId() {
+	public Integer getLearningComponentContentId() {
 		return learningComponentContentId;
 	}
 
@@ -51,7 +52,7 @@ public class LearningComponentContent extends AuditHistory{
 	 * @param learningComponentContentId
 	 *            the value for property learningComponentContentId
 	 */
-	public void setLearningComponentContentId(ZID learningComponentContentId) {
+	public void setLearningComponentContentId(Integer learningComponentContentId) {
 		this.learningComponentContentId = learningComponentContentId;
 	}
 
@@ -142,7 +143,26 @@ public class LearningComponentContent extends AuditHistory{
 	 * @param courseStatus the courseStatus to set
 	 */
 	public void setCourseStatus(CourseStatus courseStatus) {
+		
+		if(courseStatusId!=null){
+			courseStatus = CourseStatus.getCourseStatus(courseStatusId);
+		}
+		
 		this.courseStatus = courseStatus;
+	}
+
+	/**
+	 * @return the courseStatusId
+	 */
+	public Integer getCourseStatusId() {
+		return courseStatusId;
+	}
+
+	/**
+	 * @param courseStatusId the courseStatusId to set
+	 */
+	public void setCourseStatusId(Integer courseStatusId) {
+		this.courseStatusId = courseStatusId;
 	}
 
 	/**
@@ -156,7 +176,25 @@ public class LearningComponentContent extends AuditHistory{
 	 * @param compContentType the compContentType to set
 	 */
 	public void setCompContentType(ComponentContentType compContentType) {
+		
+		if(compContentTypeId!=null){
+			compContentType = ComponentContentType.getComponentContentType(compContentTypeId);
+		}
 		this.compContentType = compContentType;
+	}
+
+	/**
+	 * @return the compContentTypeId
+	 */
+	public Integer getCompContentTypeId() {
+		return compContentTypeId;
+	}
+
+	/**
+	 * @param compContentTypeId the compContentTypeId to set
+	 */
+	public void setCompContentTypeId(Integer compContentTypeId) {
+		this.compContentTypeId = compContentTypeId;
 	}
 
 	/**

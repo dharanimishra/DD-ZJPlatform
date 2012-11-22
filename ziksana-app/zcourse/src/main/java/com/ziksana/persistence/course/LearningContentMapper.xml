@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.LearningContentMapper">
+	<resultMap id="BaseResultMap" type="com.ziksana.domain.course.LearningContent">
+		<id column="learningContentId" property="learningContentId"
+			jdbcType="INTEGER" />
+		<!-- <result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" />
+		 --><!-- <result column="Active" property="active" jdbcType="BIT" />
+		 --><result column="ContentType" property="contentTypeId" jdbcType="INTEGER" />
+		<result column="ContentPath" property="contentPatId" jdbcType="VARCHAR" />
+		<result column="ContentFormat" property="contentFormat"
+			jdbcType="INTEGER" />
+		<!-- <result column="Status" property="statusId" jdbcType="INTEGER" />
+		 --><!-- <result column="Version" property="version" jdbcType="INTEGER" />
+		 --><!-- <result column="VersionRemarks" property="version" jdbcType="VARCHAR" />
+		 --><result column="ContentName" property="contentName" jdbcType="VARCHAR" />
+		<result column="ContentDescription" property="contentDescription"
+			jdbcType="VARCHAR" />
+		<result column="ThumbnailPicturePath" property="thumbnailPicturePath"
+			jdbcType="VARCHAR" />
+		<result column="RightsOwningMemberRoleId" property="rightsOwningMember.rightsOwningMemberRoleId"
+			jdbcType="INTEGER" />
+	<!-- 	<result column="AuthoringMemberRoleId" property="authoringMember.authoringMemberRoleId"
+			jdbcType="INTEGER" />
+	 -->	<result column="isdelete" property="isDelete" jdbcType="BIT" />
+<!-- 		<result column="linkedlearningcontentid" property="linkedLearningContent.learningContentId"
+			jdbcType="INTEGER" />
+ -->		<!-- <collection property="learningContentPartsList" javaType="ArrayList"
+			column="learningcontentid" ofType="com.ziksana.domain.course.LearningContentParts">
+			<id column="contentpartsid" property="contentPartsId" jdbcType="INTEGER" />
+			<result column="CreationDate" property="creationDate"
+				jdbcType="TIMESTAMP" />
+			<result column="PartPath" property="partPath" jdbcType="VARCHAR" />
+			<result column="isdelete" property="isDelete" jdbcType="BIT" />
+			<result column="PartSequence" property="partSequence"
+				jdbcType="VARCHAR" />
+			<result column="learningcontentid" property="learningContent.learningContentId"
+				jdbcType="VARCHAR" />
+		</collection> -->
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		learningContentId, creationdate,
+		active, contenttype,
+		contentpath, contentformat,
+		status, version, contentname,
+		contentdescription, thumbnailpicturepath, versionremarks,
+		rightsowningmemberroleid, authoringmemberroleid, subjclassificationid,
+		linkedlearningcontentid, isdelete
+	</sql>
+
+	<insert id="save" parameterType="com.ziksana.domain.course.LearningContent"
+		useGeneratedKeys="true" keyProperty="learningContentId" keyColumn="learningcontentid">
+		insert into corlearningcontent (creationdate,
+		active, contenttype,
+		contentpath, contentformat,
+		status, version, contentname,
+		contentdescription, thumbnailpicturepath,
+		rightsowningmemberroleid,
+		authoringmemberroleid )
+		values (sysdate(),
+		#{activeFlag,jdbcType=BOOLEAN},
+		#{contentTypeId,jdbcType=INTEGER},
+		#{contentPath,jdbcType=VARCHAR},
+		#{contentFormatId,jdbcType=INTEGER},
+		#{statusId,jdbcType=INTEGER},
+		#{version,jdbcType=INTEGER},
+		#{contentName,jdbcType=VARCHAR},
+		#{contentDescription,jdbcType=VARCHAR},
+		#{thumbnailPicturePath,jdbcType=VARCHAR},
+		#{rightsOwningMember.memberRoleId,jdbcType=INTEGER},
+		#{authoringMember.memberRoleId,jdbcType=INTEGER} )
+		<selectKey keyProperty="learningContentId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+<!-- 	<update id="updateContent" parameterType="com.ziksana.domain.course.LearningContent">
+		update
+		corlearningcontentparts set isdelete = #{isdelete, jdbcType=BOOLEAN}
+		where contentpartsid = #{contentPartsId,jdbcType=INTEGER}
+	</update>
+ --></mapper>

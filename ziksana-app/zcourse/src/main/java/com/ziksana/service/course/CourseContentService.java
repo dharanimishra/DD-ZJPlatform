@@ -7,7 +7,6 @@ import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentDeleteType;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -64,5 +63,5 @@ public interface CourseContentService {
 	 * @param learningContentId
 	 * @throws CourseException
 	 */
-	public void deleteContent(LearningContentDeleteType deleteType, ZID learningContentId) throws CourseException;
+	public void deleteContent(LearningContentDeleteType deleteType, Integer learningContentId) throws CourseException;
 }
