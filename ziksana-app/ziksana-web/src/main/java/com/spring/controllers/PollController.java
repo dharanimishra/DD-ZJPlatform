@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -58,6 +59,19 @@ public class PollController {
 		logger.info("Exiting showPolls(-----): " + memberId);
 		return modelView;
 	}
+	
+	
+	@RequestMapping(value = "/submitpoll/{memberId}", method = RequestMethod.POST)
+	public @ResponseBody void submitPoll(@PathVariable String memberId, @RequestParam String pollId, @RequestParam String optionIndex) {
+//	@RequestMapping(value = "/submitpoll/{memberId}/{pollId}/{optionIndex}", method = RequestMethod.POST)
+//	public @ResponseBody void submitPoll(@PathVariable String memberId, @PathVariable String pollId, @PathVariable String optionIndex) {	
+		logger.info("Entering submitPoll(): " + memberId + " pollId " + pollId + " optionIndex " + optionIndex);
+		
+		//pollService.pollResponse(memberPersona, pollResponse);
+		
+		logger.info("Exiting submitPoll(): " + memberId + " pollId " + pollId + " optionIndex " + optionIndex);
+	}
+	
 	
 	
 	

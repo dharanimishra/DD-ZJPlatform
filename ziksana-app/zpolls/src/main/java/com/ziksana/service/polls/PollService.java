@@ -27,7 +27,7 @@ public interface PollService {
 	public List<PollResultNQuestion> getPollQuestionsAndResults();
 	
 	
-	public void  pollResponse(MemberPersona memberPersona,PollQuestionResponse pollResponse);
+	public void  pollResponse(PollQuestionResponse pollResponse);
 	
 	public PollQuestionResult getPollResult(MemberPersona memberPersona, PollQuestion pollQuestion);
 	

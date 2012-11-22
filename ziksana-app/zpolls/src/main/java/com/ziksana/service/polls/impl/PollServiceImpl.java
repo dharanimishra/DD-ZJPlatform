@@ -99,12 +99,15 @@ public class PollServiceImpl implements PollService {
 	 * .member.Member, com.ziksana.domain.polls.PollResponse)
 	 */
 	@Override
-	public void pollResponse(MemberPersona memberPersona,
+	public void pollResponse(
 			PollQuestionResponse pollQuestionResponse) {
-		Validate.notNull(memberPersona, "MemberPersona cannot be null.");
+		
 		Validate.notNull(pollQuestionResponse, "PollQuestion cannot be null.");
+					
+		
 		pollQuestionResponseMapper.createPollTrackerEntry(pollQuestionResponse
-				.getPollQuestion().getID(), memberPersona.getMemberRoleId());
+				.getPollQuestion().getID(), Integer.valueOf(ThreadLocalUtil.getToken()
+						.getMemberPersonaId().getStorageID()));
 		pollQuestionResponseMapper.createPollResponse(pollQuestionResponse);
 
 	}

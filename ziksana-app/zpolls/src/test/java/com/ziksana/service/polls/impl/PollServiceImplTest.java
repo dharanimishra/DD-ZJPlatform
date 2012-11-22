@@ -89,8 +89,8 @@ public class PollServiceImplTest {
 	
     @Test
 	public void testPollResponse() {
-		MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
-		memberPersona.setMemberRoleId(Integer.valueOf(100));
+		//MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
+		//memberPersona.setMemberRoleId(Integer.valueOf(100));
 		PollQuestion pollQuestion = new PollQuestion();
 		pollQuestion.setID(Integer.valueOf(5));
 		List<Integer> answers = new ArrayList();
@@ -98,7 +98,7 @@ public class PollServiceImplTest {
 		PollQuestionResponse pollResponse = new PollQuestionResponse();
 		pollResponse.setPollQuestion(pollQuestion);
 		pollResponse.setAnswers(answers);
-		pollService.pollResponse(memberPersona, pollResponse);
+		pollService.pollResponse( pollResponse);
 		
 		
 	}
