@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentDeleteType;
@@ -31,51 +30,104 @@ public class CourseContentServiceImpl implements CourseContentService {
 	@Override
 	public void saveOrUpdateContent(LearningComponentContent learningComponentContent) throws CourseException {
 		
-		List<LearningContentParts> 		contentParts 					= null;
+		List<LearningContentParts> 		contentParts 		= null;
+		LearningContent 				learningContent 	= null;
 		
 		if(learningComponentContent == null){
 			throw new CourseException("LearningComponentContent cannot be null");
 		}
-						
-		if(learningComponentContent.getLearningComponent() == null){
-			throw new CourseException("Parent LearningComponent cannot be null");
-		}
-
-		LearningContent learningContent = learningComponentContent.getBaseLearningContent();
-							
+		
+		 learningContent = learningComponentContent.getBaseLearningContent();
+		
 		if(learningContent == null){
 			throw new CourseException("Learning Content cannot be null");
 		}
-								
-		logger.debug("Before saving the LearningContent ...");
-		contentMapper.saveContent(learningContent);
-		logger.debug("After saving the LearningContent ID...:"+learningContent.getLearningContentId());
+
+		 //UPDATE OPERATION
+		if(learningComponentContent.getLearningComponentContentId()!=null){
+			
+			logger.debug("Before UPDATING the LearningComponentContent ...");							
+			compContentMapper.updateLearningComponentContent(learningComponentContent);
+			logger.debug("After UPDATING the LearningComponentContent ...: "+learningComponentContent.toString());
+			
+			logger.debug("Before UPDATING the LearningContent ...");
+			contentMapper.updateContent(learningContent);
+			logger.debug("After UPDATING the LearningContent ID...:"+learningContent.getLearningContentId());
+			
+			contentParts =  learningContent.getAllLearningContentParts();
+			
+			//Save Or Updates the LearningContentParts
+			saveOrUpdateContentParts(learningContent, contentParts);			
+				
+		}else{
+			//SAVE OPERATION
+			logger.debug("Before saving the LearningContent ...");
+			contentMapper.saveContent(learningContent);
+			logger.debug("After saving the LearningContent ID...:"+learningContent.getLearningContentId());
+
+			learningComponentContent.setBaseLearningContent(learningContent);
+			
+			logger.debug("Before saving the LearningComponentContent ...");							
+			compContentMapper.saveLearningComponentContent(learningComponentContent);
+			logger.debug("After saving the LearningComponentContent ...: "+learningComponentContent.getLearningComponentContentId());
+			
+			contentParts =  learningContent.getAllLearningContentParts();
+			
+			//Save Or Updates the LearningContentParts
+			saveOrUpdateContentParts(learningContent, contentParts);
+		}
+					
+	}
+
+	
+	/**
+	 * Saves/Updates the LearningContentParts.
+	 * @param baseLearningContent
+	 * @param contentParts
+	 */
+	private void saveOrUpdateContentParts(LearningContent baseLearningContent, List<LearningContentParts> contentParts){
 		
-		contentParts =  learningContent.getAllLearningContentParts();
-								
-		if(contentParts!=null && contentParts.size()>0){
-									
+		if(contentParts!=null){
+			
 			logger.debug("Learning Content Parts list size ::"+contentParts.size());
 			
 			for (LearningContentParts learningContentParts : contentParts) {
 								
-					learningContentParts.setLearningContent(learningContent);
+					learningContentParts.setLearningContent(baseLearningContent);
 											
-					contentMapper.saveContentParts(learningContentParts);
+					if(learningContentParts.getLearningContent()!=null){
+						contentMapper.updateContentParts(learningContentParts);
+					}else{
+						contentMapper.saveContentParts(learningContentParts);	
+					}
 			}
 		}
-		
-		learningComponentContent.setBaseLearningContent(learningContent);
-		
-		logger.debug("Before saving the LearningComponentContent ...");							
-		compContentMapper.saveLearningComponentContent(learningComponentContent);
-		logger.debug("After saving the LearningComponentContent ...: "+learningComponentContent.getLearningComponentContentId());
-					
-	}
 
+	}
+	
+	
 	@Override
-	public LearningComponentContent getLearningComponentContent(Course course)
+	public LearningComponentContent getLearningComponentContent(Integer learningComponentId)
 			throws CourseException {
+		
+		LearningComponentContent lCompContent 	= null;
+		Boolean 				 isDelete 		= false;
+		
+		if(learningComponentId == null){
+			throw new CourseException("learningComponentContent ID cannot be null");
+		}
+		
+		lCompContent = compContentMapper.getLearningComponentContentDetails(learningComponentId, isDelete);
+		
+		 
+		if(lCompContent!=null){
+			
+			
+			logger.debug("LearningComponentContent details : "+lCompContent.toString());
+			
+			return lCompContent;
+			
+		}
 		return null;
 	}
 
@@ -109,27 +161,22 @@ public class CourseContentServiceImpl implements CourseContentService {
 		//associate parent content as a linked content
 		learningContent.setLinkedLearningContent(learningContent);
 		
-		logger.debug("Before saving the LearningContent ");
 		
-		contentMapper.saveContent(learningContent);
 		
-		logger.debug("After saving the LearningContent ID:"+learningContent.getLearningContentId());
+		if(learningContent.getLearningContentId()!=null){
+			logger.debug("Before saving the LearningContent ");
+			contentMapper.saveContent(learningContent);
+			logger.debug("After saving the LearningContent ID:"+learningContent.getLearningContentId());
+		}else{
+			logger.debug("Before UPDATING the LearningContent ");
+			contentMapper.updateContent(learningContent);
+		}
 		
 		contentPartsList = learningContent.getAllLearningContentParts();
+
+		//SAVE OR UPDATES THE LEARNING CONTENT PARTS
+		saveOrUpdateContentParts(learningContent, contentPartsList);
 				
-		if(contentPartsList!=null && contentPartsList.size()>0){
-			
-			logger.debug("Learning Content Parts list size : "+contentPartsList.size());
-					
-			for (LearningContentParts learningContentParts : contentPartsList) {
-				
-				logger.debug("Before saving the LearningContentParts ");
-				
-				learningContentParts.setLearningContent(learningContent);
-				
-				contentMapper.saveContentParts(learningContentParts);
-			}
-		}
 	}
 
 	@Override

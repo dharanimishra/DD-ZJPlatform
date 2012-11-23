@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -64,7 +65,7 @@ public interface CourseMapper {
 	 * @param course
 	 * @return
 	 */
-	Course updateCourse(Course course);
+	Integer updateCourse(Course course);
 
 
 	/**
@@ -102,7 +103,7 @@ public interface CourseMapper {
 			" #{sequence , jdbcType.INTEGER}, #{active, jdbcType.BOOLEAN}, #{course.courseId, jdbcType.INTEGER},",
 			" #{creatorMemberPersona.memberRoleId, jdbcType.INTEGER}  ) " })
 	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "courseaddnlpropertyid", before = true, resultType = Integer.class)
-	void saveAddnlInfo(CourseAdditionalProperty courseAdditionalProperty);
+	Integer saveAddnlInfo(CourseAdditionalProperty courseAdditionalProperty);
 
 	/**
 	 * Checks whetehr assignment is created at course creation.
@@ -125,8 +126,8 @@ public interface CourseMapper {
 			@Result(property = "learningcomponenttypeid", column = "learningcomponenttypeid"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description") })
-	List<LearningComponentType> getDefinieQualifiers(Integer memberRoleId,
-			Boolean isDefineQualifier);
+	List<LearningComponentType> getDefinieQualifiers(@Param("memberRoleId") Integer memberRoleId,
+			@Param("isDefineQualifier") Boolean isDefineQualifier);
 
 	/**
 	 * @param memberRoleId
@@ -144,7 +145,7 @@ public interface CourseMapper {
 	@Update({
 			"update corlearningcomponenttype set isdelete = #{isDelete, jdbcType=BOOLEAN} where ",
 			" memberroleid=#{memberRoleId, jdbcType=INTEGER}, learningcomponenttypeid=#{learningComponentTypeId, jdbcType=INTEGER}" })
-	void deleteQualifier(Boolean isDelete, Integer memberRoleId,
+	void deleteQualifier(@Param("isDelete") Boolean isDelete,@Param("memberRoleId") Integer memberRoleId,
 			Integer learningComponentTypeId);
 
 	/**
@@ -168,16 +169,16 @@ public interface CourseMapper {
 			@Result(property = "learningcomponenttypeid", column = "learningcomponenttypeid"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description") })
-	LearningComponentType getQualifier(Boolean isDelete, Integer memberRoleId,
-			Integer integer);
+	LearningComponentType getQualifier(@Param("isDelete") Boolean isDelete, @Param("memberRoleId") Integer memberRoleId,
+			@Param("isDefineQualifier") Integer isDefineQualifier);
 
 	/**
 	 * @param isLearningObject
 	 * @param memberRoleId
 	 * @return
 	 */
-	List<LearningComponent> getLearningObjects(Boolean isLearningObject,
-			Integer memberRoleId);
+	List<LearningComponent> getLearningObjects(@Param("isLearningObject") Boolean isLearningObject,
+			@Param("memberRoleId") Integer memberRoleId);
 
 	/**
 	 * @param course
@@ -236,7 +237,7 @@ public interface CourseMapper {
 			@Result(property = "description", column = "description"),
 			@Result(property = "courseStatus", column = "coursestatus"),
 			@Result(property = "courseDetails.courseLearningComponentsList", column = "courseid", javaType = List.class, many = @Many(select = "getLearningComponents")) })
-	Course getCourseComponents(Course course);
+	Course getCourseComponents(Integer courseId);
 
 	/**
 	 * @param courseId
@@ -328,7 +329,11 @@ public interface CourseMapper {
 			@Result(property = "partPath", column = "partpath"),
 			@Result(property = "partSequence", column = "partsequence"), })
 	List<LearningContentParts> getLearningContentParts(Integer learningContentId);
-
 	// Course Tree structure related methods ENDS
+
+	
+	@Update({"update corcourse set isdelete = #{isDelete, jdbcType=BOOLEAN} where courseid = #{courseId, jdbcType=INTEGER}"})
+	void deleteCourse(@Param("isDelete") Boolean isDelete, @Param("courseId") Integer courseId);
+
 
 }

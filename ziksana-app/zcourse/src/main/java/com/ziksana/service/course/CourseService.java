@@ -1,6 +1,5 @@
 package com.ziksana.service.course;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,8 +61,9 @@ public interface CourseService {
 	 * Retrieves the course and course components(modules,chapters, topics,...) 
 	 * @param member
 	 * @return
+	 * @throws CourseException 
 	 */
-	public HashMap<String,List<String>> getCourseComponents(ZID courseId);
+	public Course getCourseComponents(ZID courseId) throws CourseException;
 
 	/**
 	 * remove the course for member.

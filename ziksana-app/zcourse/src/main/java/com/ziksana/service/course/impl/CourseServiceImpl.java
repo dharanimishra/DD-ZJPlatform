@@ -1,7 +1,6 @@
 package com.ziksana.service.course.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -77,7 +76,6 @@ public class CourseServiceImpl implements CourseService {
 
 		if (course.getCourseId() != null) {
 			// Update Operation
-			System.out.println("Course Id : "+course.getCourseId());
 			logger.debug("Course Id : "+course.getCourseId());
 			
 			tagcloudList = course.getCourseTagClouds();
@@ -100,8 +98,12 @@ public class CourseServiceImpl implements CourseService {
 			}
 				
 			if(contSecurity!=null){
-				logger.debug("Before updating the Course Content Security ....");
-				contSecurityMapper.update(contSecurity);
+				contSecurity.setCourse(course);
+				if(contSecurity.getContentSecurityId()!=null){
+					logger.debug("Before updating the Course Content Security ....");
+					contSecurityMapper.update(contSecurity);
+				}
+				contSecurityMapper.save(contSecurity);
 			}
 		} else {
 			Boolean isSecurity = false;
@@ -127,9 +129,18 @@ public class CourseServiceImpl implements CourseService {
 				}
 			}
 			isSecurity = course.getSecurityIndicator();
+			
 			if(isSecurity){
-				if (contSecurity != null) {
+				if(contSecurity!=null){
+					
 					contSecurity.setCourse(course);
+					
+					if(contSecurity.getContentSecurityId()!=null){
+						logger.debug("Before updating the Course Content Security ....");
+						contSecurityMapper.update(contSecurity);
+					}
+					
+					logger.debug("Before Saving the Course Content Security ....");
 					contSecurityMapper.save(contSecurity);
 				}
 			}
@@ -145,64 +156,82 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public Course saveOrUpadteCourseComponents(Course course) throws CourseException
 	{
+		CourseDetails 					courseDetails 					= null;
+		List<CourseLearningComponent> 	courseLearningComponentList 	= null;
+		LearningComponentDetails 		compDetails 					= null;
+		LearningComponentNest 			compNest 						= null;
+		CourseLearningComponent 		courseLComponent 				= null;
+		LearningComponent				learningComp					= null;
+		
 		if(course == null) {
 			throw new CourseException("Course cannot be null");
 		}
 
-		CourseDetails 				courseDetails 			= null;
-		List<LearningComponent> 	learningComponentList 	= null;
-		LearningComponentDetails 	compDetails 			= null;
-		LearningComponentNest 		compNest 				= null;
-		CourseLearningComponent 	courseLComponent 		= null;
-		
-		//Save or Updates the course 
-		saveOrUpdateCourse(course);
-			
+/*		if(course!=null){
+			//Save or Updates the course 
+			saveOrUpdateCourse(course);
+		}
+*/			
 		courseDetails = course.getCourseDetails();
 			
 			if(courseDetails == null){
 				throw new CourseException("Course Details cannot be null");
 			}
-
-			learningComponentList = courseDetails.getLearningComponents();
+			
+			courseLearningComponentList = courseDetails.getCourseLearningComponentsList();
+			
+			for (CourseLearningComponent courseLearningComponent : courseLearningComponentList) {
 				
-			if(learningComponentList!=null && learningComponentList.size()>0){
+				learningComp = courseLearningComponent.getLearningComponent();
+				
+				if(learningComp == null){
+					throw new CourseException("Learning Component cannot be null");
+				}
+					
+				//UPDATE OPERATION
+				if(courseLearningComponent.getCourseLearningComponentId()!=null){
 
-			logger.debug("LearningComponent list size  : "+learningComponentList.size());
+					logger.debug("Before Updating the CourseLearningComponent ....");
+					courseLComponentMapper.updateCourseLearningComponent(courseLComponent);
 
-			for (LearningComponent learningComponent : learningComponentList) {
-						
+					logger.debug("Before Updating the Learning Component ....");
+					learningComponentMapper.updateLearningComponent(learningComp);
+					logger.debug("After Updating the CourseLearningComponent : ");
+
+				}else{
+					//SAVE OPERATION
 					logger.debug("Before Saving the Learning Component ....");
-					learningComponentMapper.saveLearningComponent(learningComponent);
-					logger.debug("After Saving the CourseLearningComponent ID..: "+learningComponent.getLearningComponentId());
-						
-					compDetails =  learningComponent.getLearningComponentDetails();
-						
+					learningComponentMapper.saveLearningComponent(learningComp);
+					logger.debug("After Saving the CourseLearningComponent ID..: "+learningComp.getLearningComponentId());
+
+					courseLearningComponent.setCourse(course);
+					
+					courseLearningComponent.setLearningComponent(learningComp);
+							
+					logger.debug("Before Saving the CourseLearningComponent ....");
+					courseLComponentMapper.saveCourseLearningComponent(courseLComponent);
+				
+					compDetails =  learningComp.getLearningComponentDetails();
+					
 					if(compDetails == null){
 						throw new CourseException("Learning Component Details cannot be null");
 					}
-					courseLComponent = compDetails.getCourseLearningComponent();
-						
-					if(courseLComponent!=null){
-						courseLComponent.setCourse(course);
-							
-						courseLComponent.setLearningComponent(learningComponent);
-								
-						logger.debug("Before Saving the CourseLearningComponent ....");
-						courseLComponentMapper.saveCourseLearningComponent(courseLComponent);
-					}
-							
+
 					compNest = compDetails.getLearningComponentNest();
 					
-					compNest.setNestLearningComponent(learningComponent);
-							
+					if(compNest==null){
+						throw new CourseException("LearningComponent Nest cannot be null");
+					}
+					
+					compNest.setNestLearningComponent(learningComp);
+					
 					logger.debug("Before Saving the LearningComponentNest ....");
 
 					componentNestMapper.saveComponentNest(compNest);
 					
 					logger.debug("After Saving the LearningComponentNest ....");
 				}
-		}
+			}
 		return course;
 	
 	}
@@ -378,8 +407,16 @@ public class CourseServiceImpl implements CourseService {
 	}
 	
 	@Override
-	public HashMap<String, List<String>> getCourseComponents(ZID courseId) {
-		return null;
+	public Course getCourseComponents(ZID courseId) throws CourseException {
+		
+		Course course = null;
+		if(courseId== null){
+			throw new CourseException("Course ID cannot be null");
+		}
+		
+		course = courseMapper.getCourseComponents(Integer.valueOf(courseId.getStorageID()));
+		
+		return course;
 	}
 
 	@Transactional
@@ -411,7 +448,14 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public void removeCourse(Course course) {
+	public void removeCourse(Course course) throws CourseException {
+		
+		Boolean isDelete = true;
+		if(course.getCourseId() == null){
+			throw new CourseException("Course Id cannot be null");
+		}
+		
+		courseMapper.deleteCourse(isDelete, course.getCourseId());
 
 	}
 

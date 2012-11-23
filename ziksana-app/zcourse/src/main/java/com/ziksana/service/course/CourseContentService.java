@@ -2,7 +2,6 @@ package com.ziksana.service.course;
 
 import java.util.List;
 
-import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentDeleteType;
@@ -24,11 +23,11 @@ public interface CourseContentService {
 	
 	/**
 	 * Retrieves the LearningComponentContent details
-	 * @param course
+	 * @param learningComponentId
 	 * @return
 	 * @throws CourseException
 	 */
-	public LearningComponentContent getLearningComponentContent(Course course) throws CourseException;
+	public LearningComponentContent getLearningComponentContent(Integer learningComponentId) throws CourseException;
 	
 	/**
 	 * Searches the component contents by search criteria.

@@ -19,13 +19,21 @@ public interface LearningContentMapper {
 	 */
 	Integer saveContent(LearningContent record);
 	
+	/**
+	 * Updates the Learning Content
+	 */
+	Integer updateContent(LearningContent record);
 	
 	/** 
 	 * Saves the learningcontentparts
 	 */
 	Integer saveContentParts(LearningContentParts contentParts);
 
-
+	/** 
+	 * Saves the learningcontentparts
+	 */
+	Integer updateContentParts(LearningContentParts contentParts);
+	
 	/**
 	 * @param memberRoleId
 	 * @return

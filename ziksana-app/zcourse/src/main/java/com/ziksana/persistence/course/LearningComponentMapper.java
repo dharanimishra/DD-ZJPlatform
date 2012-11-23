@@ -15,8 +15,14 @@ public interface LearningComponentMapper {
 	 * @param component
 	 * @return
 	 */
-	int saveLearningComponent(LearningComponent component);
-
+	Integer saveLearningComponent(LearningComponent component);
+	
+	/**
+	 * Updates the existing LearningComponent
+	 * @param component
+	 * @return
+	 */
+	Integer updateLearningComponent(LearningComponent component);
 	/**
 	 * @param memberRoleId
 	 * @return

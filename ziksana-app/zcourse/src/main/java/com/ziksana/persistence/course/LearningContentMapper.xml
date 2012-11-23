@@ -134,6 +134,36 @@
 		</selectKey>
 	</insert>
 
+	<update id="updateContent" parameterType="com.ziksana.domain.course.LearningContent">
+		update corlearningcontent
+		<set>
+			<if test="contentType !=null">
+				contentType = #{contentTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="contentPath !=null">
+				contentPath = #{contentPath,jdbcType=VARCHAR},
+			</if>
+			<if test="contentFormat !=null">
+				contentFormat = #{contentFormatId,jdbcType=INTEGER},
+			</if>
+			<if test="status !=null">
+				status = #{statusId,jdbcType=INTEGER},
+			</if>
+			<if test="contentName !=null">
+				contentName = #{contentName,jdbcType=VARCHAR},
+			</if>
+			<if test="contentDescription !=null">
+				contentDescription =
+				#{contentDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="thumbnailPicturePath !=null">
+				thumbnailPicturePath =
+				#{thumbnailPicturePath,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where learningcontentid = #{learningContentId, jdbcType=INTEGER}
+	</update>
+
 	<insert id="saveContentParts" parameterType="com.ziksana.domain.course.LearningContentParts"
 		useGeneratedKeys="true" keyProperty="contentPartsId" keyColumn="contentpartsid">
 		insert into corlearningcontentparts
@@ -169,6 +199,19 @@
 		</selectKey>
 	</insert>
 
+
+	<update id="updateContentParts" parameterType="com.ziksana.domain.course.LearningContentParts">
+		insert into corlearningcontentparts
+		<set>
+			<if test="partSequence !=null">
+				#{partSequence,jdbcType=INTEGER},
+			</if>
+			<if test="partPath !=null">
+				#{partPath,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where contentpartsid = #{contentPartsId,jdbcType=INTEGER}
+	</update>
 
 
 	<!-- <update id="updateContent" parameterType="com.ziksana.domain.course.LearningContent"> 

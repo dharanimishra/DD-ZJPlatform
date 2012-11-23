@@ -21,6 +21,7 @@ public class CourseDetails{
 	}
 
 	private List<CourseAdditionalProperty> 			courseAdditionalPropertyList 		= null;
+	@Deprecated
 	List<LearningComponent> 						learningComponents 					= null;
 	private List<CourseLearningComponent> 			courseLearningComponentsList 		= null;
 	private LearningComponent 						learningComponent 					= null;
@@ -269,6 +270,12 @@ public class CourseDetails{
 	 */
 	public void setCourseLearningComponentsList(
 			List<CourseLearningComponent> courseLearningComponentsList) {
+
+		if (courseLearningComponentsList == null) {
+			throw new IllegalArgumentException(
+					"Cannot set CourseLearningComponents");
+		}
+
 		this.courseLearningComponentsList = courseLearningComponentsList;
 	}
 

@@ -21,7 +21,7 @@
 					description = #{description,jdbcType=VARCHAR},
 				</if>
 				<if test="courseStatus!=null">
-					courseStatus = #{courseStatusId,jdbcType=INTEGER},
+					coursestatus = #{courseStatusId,jdbcType=INTEGER},
 				</if>
 				<if test="contentSecurityNeededIndicator!=null">
 					 contentsecurityneededindicator = #{securityIndicator,jdbcType=BOOLEAN},
@@ -44,10 +44,10 @@
 				<if test="versionRemarks!=null">
 					versionremarks =#{versionRemarks,jdbcType=VARCHAR},
 				</if>
-				<if test="accountableMember.memberRoleId!=null">
+				<if test="accountableMember !=null">
 					memberroleid = #{accountableMember.memberRoleId,jdbcType=INTEGER},
 				</if>
-				<if test="subjClassification.subjClassificationId!=null">
+				<if test="subjClassification !=null">
 					subjclassificationid = #{subjClassification.subjClassificationId,jdbcType=INTEGER},
 				</if>
 			</set>
