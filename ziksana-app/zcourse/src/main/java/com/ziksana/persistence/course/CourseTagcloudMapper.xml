@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.course.CourseTagcloudMapper">
-	"insert into corcoursetagcloud (creationdate, ",
-	"tagname, tagtype, ",
-	"courseid, ",
-	"memberroleid)",
-	"values (sysdate(), ",
-	"#{tagName,jdbcType=VARCHAR}, #{tagTypeId,jdbcType=INTEGER}, ",
-	"#{course.courseId,jdbcType=INTEGER}, ",
-	"#{creatingMember.memberRoleId,jdbcType=INTEGER})" })
 
 	<insert id="save" parameterType="com.ziksana.domain.course.CourseTagcloud"
 		useGeneratedKeys="true" keyProperty="courseTagCloudId" keyColumn="coursetagcloudid">

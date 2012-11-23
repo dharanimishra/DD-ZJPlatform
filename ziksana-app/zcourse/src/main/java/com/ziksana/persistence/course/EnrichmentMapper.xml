@@ -28,19 +28,19 @@
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			sysdate(),
 			<if test="active != null">
-				active=#{active,jdbcType=BOOLEAN},
+				#{active,jdbcType=BOOLEAN},
 			</if>
 			<if test="visibilityId != null">
-				visibility=#{visibilityId,jdbcType=INTEGER},
+				#{visibilityId,jdbcType=INTEGER},
 			</if>
 			<if test="overrideAt != null">
-				overrideat=#{overrideAt,jdbcType=INTEGER},
+				#{overrideAt,jdbcType=INTEGER},
 			</if>
-			<if test="learningContentId != null">
-				learningcontentid=#{learningContent.learningContentId,jdbcType=INTEGER},
+			<if test="learningContent != null">
+				#{learningContent.learningContentId,jdbcType=INTEGER},
 			</if>
-			<if test="creatorMemberPersona.memberRoleId != null">
-				creatormemberroleid=#{creatorMemberPersona.memberRoleId,jdbcType=INTEGER},
+			<if test="creatorMemberPersona != null">
+				#{creatorMemberPersona.memberRoleId,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="enrichmentId" resultType="int"
@@ -89,7 +89,6 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			#{enrichmentId,jdbcType=INTEGER},
 			<if test="startTime != null">
 				#{startTime,jdbcType=TIMESTAMP},
 			</if>

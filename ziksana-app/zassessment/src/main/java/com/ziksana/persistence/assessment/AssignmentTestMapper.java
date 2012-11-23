@@ -16,7 +16,6 @@ import com.ziksana.domain.assessment.AssignmentTestSettings;
 import com.ziksana.domain.assessment.QuestionBank;
 import com.ziksana.domain.assessment.Test;
 import com.ziksana.domain.assessment.TestQuestion;
-import com.ziksana.domain.assessment.member.StudentInfo;
 import com.ziksana.domain.assessment.member.StudentTest;
 import com.ziksana.domain.assessment.member.TestGrade;
 import com.ziksana.domain.assessment.member.TestProgress;

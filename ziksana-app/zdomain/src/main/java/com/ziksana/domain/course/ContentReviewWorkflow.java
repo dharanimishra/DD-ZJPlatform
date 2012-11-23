@@ -1,6 +1,7 @@
 package com.ziksana.domain.course;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
@@ -18,11 +19,12 @@ public class ContentReviewWorkflow extends AuditHistory {
 
 	private ZID 							contentReviewWorkflowId;
 	private WorkflowType 					workflowType 			= null;
+	private Integer		 					workflowTypeId 			= null;
 	private Timestamp 						completeBy 				= null;
 	private String 							notes					= null;
 	private LearningContentReviewProgress 	reviewProgress 			= null;
 	private List<WorkflowParticipant>		reviewerList			= null;
-	
+	private Date							createDate				= null;
 	/**
 	 * @return the contentReviewWorkflowId
 	 */
@@ -42,9 +44,25 @@ public class ContentReviewWorkflow extends AuditHistory {
 		return workflowType;
 	}
 	/**
+	 * @return the workflowTypeId
+	 */
+	public Integer getWorkflowTypeId() {
+		return workflowTypeId;
+	}
+	/**
+	 * @param workflowTypeId the workflowTypeId to set
+	 */
+	public void setWorkflowTypeId(Integer workflowTypeId) {
+		this.workflowTypeId = workflowTypeId;
+	}
+	/**
 	 * @param workflowType the workflowType to set
 	 */
 	public void setWorkflowType(WorkflowType workflowType) {
+		
+		if(workflowTypeId!=null){
+			workflowType = WorkflowType.getWorkflowType(workflowTypeId);
+		}
 		this.workflowType = workflowType;
 	}
 	/**
@@ -95,6 +113,18 @@ public class ContentReviewWorkflow extends AuditHistory {
 	 */
 	public void setReviewerList(List<WorkflowParticipant> reviewerList) {
 		this.reviewerList = reviewerList;
+	}
+	/**
+	 * @return the createDate
+	 */
+	public Date getCreateDate() {
+		return createDate;
+	}
+	/**
+	 * @param createDate the createDate to set
+	 */
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 	@Override
 	public String toString() {

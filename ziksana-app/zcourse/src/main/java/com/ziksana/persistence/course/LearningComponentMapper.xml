@@ -72,7 +72,7 @@
 		where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}
 	</update>
 
-	<insert id="saveLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent"
+<!-- 	<insert id="saveLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent"
 		useGeneratedKeys="true" keyProperty="learningComponentId" keyColumn="learningcomponentid">
 		insert into corlearningcomponent (validfrom,
 		validto, name, description, coursestatus, weightage, totalcredits,
@@ -96,4 +96,4 @@
 		</selectKey>
 	</insert>
 
-</mapper>
+ --></mapper>

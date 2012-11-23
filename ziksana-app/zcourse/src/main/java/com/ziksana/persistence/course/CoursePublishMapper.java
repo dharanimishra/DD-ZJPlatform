@@ -2,7 +2,6 @@ package com.ziksana.persistence.course;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
@@ -12,7 +11,6 @@ import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.ContentReviewRating;
 import com.ziksana.domain.course.ContentReviewWorkflow;
-import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningContentReviewProgress;
 import com.ziksana.domain.course.WorkflowParticipant;
 import com.ziksana.domain.course.WorkflowParticipantComment;
@@ -109,10 +107,10 @@ public interface CoursePublishMapper {
 	WorkflowParticipantComment getWorkflowParticipantComment(
 			Integer participantId);
 
-	/**
+/*	*//**
 	 * @param workflow
 	 * @return
-	 */
+	 *//*
 	@Insert({"insert into corcontentreviewworkflow" +
 			" (creationdate, workflowtype, completeby, notes, reviewprogressid) values " +
 			"(sysdate(), #{workflowType, jdbcType=INTEGER}, #{completeBy, jdbcType=DATE}, " +
@@ -123,13 +121,13 @@ public interface CoursePublishMapper {
 			@Result(property = "completeBy", column = "completeby"),
 			@Result(property = "notes", column = "notes"),
 		})
-	ContentReviewWorkflow saveContentReviewWorkflow(ContentReviewWorkflow workflow);
-	
+	ContentReviewWorkflow saveContentReviewWorkflow1(ContentReviewWorkflow workflow);
+*/	
 
-	/**
+/*	*//**
 	 * @param newParticipant
 	 * @return
-	 */
+	 *//*
 	@Insert({"insert into corworkflowparticipant " +
 			"(startdate, enddate, participanttype, contentreviewworkflowid, memberroleid) values " +
 			"( #{startDate, jdbcType=DATE}, #{endDate, jdbcType=DATE}, " +
@@ -143,14 +141,11 @@ public interface CoursePublishMapper {
 	WorkflowParticipant createWorkflowParticipant(
 			WorkflowParticipant newParticipant);
 
-	
+*/	
 	/**
 	 * @param comment
 	 */
-	@Insert({"insert into corworkflowparticipantcomment " +
-			" ( commentdate, comment, status, criticality )" +
-	"values (sysdate(), #{comment,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{criticality,jdbcType=INTEGER}, #{participant.participantId,jdbcType=INTEGER} )"})
-	void saveWorkflowComment(WorkflowParticipantComment comment);
+	Integer saveWorkflowComment(WorkflowParticipantComment comment);
 
 	
 	@Select({"select reviewratingid, reviewrating from corcontentreviewrating where reviewprogressid = #{reviewProgressId, jdbcType=INTEGER}"})

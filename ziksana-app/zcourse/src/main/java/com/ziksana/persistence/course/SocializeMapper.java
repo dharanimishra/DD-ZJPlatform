@@ -2,7 +2,6 @@ package com.ziksana.persistence.course;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -85,22 +84,16 @@ public interface SocializeMapper {
 	
 	/**
 	 * @param workflow
+	 * @return
 	 */
-	@Insert({
-			"insert into corcontentreviewworkflow (createdate, workflowtype, learningcontentreviewprogressid )",
-			"value (sysdate(), #{workflowType,jdbcType=INTEGER}, #{reviewProgress.reviewProgressId,jdbcType=INTEGER} ",
-			" )" })
-	void saveReviewWorkflow(ContentReviewWorkflow workflow);
+	Integer saveReviewWorkflow(ContentReviewWorkflow workflow);
 
 	
 	/**
 	 * @param participant
+	 * @return
 	 */
-	@Insert({
-			"insert into corworkflowparticipant (participanttye, memberroleid, contentreviewworkflowid, isdelete)",
-			" values(#{participatingtype,jdbcType=INTEGER}, #{participateMemberRole.memberRoleId,jdbcType=INTEGER},",
-			" #{courseWorkflow.contentReviewWorkflowId,jdbcType=INTEGER}, #{isDelete, jdbcType=BOOLEAN}  ) " })
-	void saveWorkflowParticipant(WorkflowParticipant participant);
+	Integer saveWorkflowParticipant(WorkflowParticipant participant);
 
 	
 	@Update({
@@ -155,16 +148,14 @@ public interface SocializeMapper {
 	/**
 	 * @param contentReviewWorkflow
 	 */
-	@Update({ "update corcontentreviewworkflow set completeby = #{completeBy,jdbcType=TIMESTAMP}, " +
-			"notes=#{notes, jdbcType=VARCHAR} where contentReviewWorkflowid = #{contentReviewWorkflowId, jdbcType=INTEGER} " })
-	void saveContentReviewInfo(ContentReviewWorkflow contentReviewWorkflow);
+	void updateContentReviewInfo(ContentReviewWorkflow contentReviewWorkflow);
 
 	
 	/**
 	 * @param course
 	 */
 	@Update({
-			"update course set coursestatus = #{coursestatus,jdbcType=INTEGER}, version = #{version,jdbcType=INTEGER}",
+			"update course set coursestatus = #{coursestatus,jdbcType=INTEGER} ",
 			" where courid = #{courseId, jdbcType=INTEGER}" })
 	void createCourse(Course course);
 

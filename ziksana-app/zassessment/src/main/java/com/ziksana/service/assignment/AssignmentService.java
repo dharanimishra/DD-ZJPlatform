@@ -9,7 +9,6 @@ import com.ziksana.domain.assessment.TestQuestion;
 import com.ziksana.domain.assessment.member.StudentInfo;
 import com.ziksana.domain.assessment.member.TestSubmission;
 import com.ziksana.domain.course.LearningComponent;
-import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.assignment.AssignmentException;
 import com.ziksana.service.assignment.impl.QuestionSearchCriteria;
 

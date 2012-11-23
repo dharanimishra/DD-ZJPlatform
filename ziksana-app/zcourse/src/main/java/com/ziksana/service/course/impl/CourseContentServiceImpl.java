@@ -48,7 +48,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 		}
 								
 		logger.debug("Before saving the LearningContent ...");
-		contentMapper.save(learningContent);
+		contentMapper.saveContent(learningContent);
 		logger.debug("After saving the LearningContent ID...:"+learningContent.getLearningContentId());
 		
 		contentParts =  learningContent.getAllLearningContentParts();
@@ -61,7 +61,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 								
 					learningContentParts.setLearningContent(learningContent);
 											
-					contentMapper.save(learningContentParts);
+					contentMapper.saveContentParts(learningContentParts);
 			}
 		}
 		
@@ -111,7 +111,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 		
 		logger.debug("Before saving the LearningContent ");
 		
-		contentMapper.save(learningContent);
+		contentMapper.saveContent(learningContent);
 		
 		logger.debug("After saving the LearningContent ID:"+learningContent.getLearningContentId());
 		
@@ -127,7 +127,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 				
 				learningContentParts.setLearningContent(learningContent);
 				
-				contentMapper.save(learningContentParts);
+				contentMapper.saveContentParts(learningContentParts);
 			}
 		}
 	}
@@ -164,7 +164,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 		
 		if(deleteType.getID() == 1){
 			
-			contentMapper.updateContent(isDelete, learningContentId);
+			contentMapper.deleteContent(isDelete, learningContentId);
 			
 		}else if(deleteType.getID() == 2){
 			
@@ -172,7 +172,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 			
 			for (Integer learningContentPartsId : learningContentIdList) {
 				
-				contentMapper.updateContentParts(isDelete,learningContentPartsId);
+				contentMapper.deleteContentParts(isDelete,learningContentPartsId);
 				
 			}
 			
@@ -182,10 +182,10 @@ public class CourseContentServiceImpl implements CourseContentService {
 			
 			for (Integer learningContentPartsId : learningContentIdList) {
 				
-				contentMapper.updateContentParts(isDelete,learningContentPartsId);
+				contentMapper.deleteContentParts(isDelete,learningContentPartsId);
 				
 			}
-			contentMapper.updateContent(isDelete, learningContentId);
+			contentMapper.deleteContent(isDelete, learningContentId);
 		}
 		
 	}			

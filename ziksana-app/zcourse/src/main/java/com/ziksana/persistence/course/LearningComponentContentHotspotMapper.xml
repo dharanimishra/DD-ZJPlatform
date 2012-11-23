@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.course.LearningComponentContentHotspotMapper">
-	@Insert({"insert into corlearningcomponentcontenthotspot (createdate, coordinates, name, description, active, learningcomponentcontentid, memberroleid) ",
-		" values (sysdate(),  #{coordeinates,jdbcType.VARCHAR}, #{name,jdbcType.VARCHAR}, #{description,jdbcType.VARCHAR},",
-		" #{active,jdbcType.BIT},  #{learningcomponentcontentid,jdbcType.INTEGER}, #{memberroleid,jdbcType.INTEGER},)"})
 
 	<insert id="save" parameterType="com.ziksana.domain.course.LearningComponentContentHotspot"
 		useGeneratedKeys="true" keyProperty="componentContentHotspotId" keyColumn="componentContentHotspotId">

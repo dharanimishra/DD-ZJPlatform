@@ -113,7 +113,7 @@
 		#{learningComponentContentId,jdbcType=INTEGER}
 	</update>
 
-	<insert id="saveLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent"
+<!-- 	<insert id="saveLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent"
 		useGeneratedKeys="true" keyProperty="learningComponentContentId"
 		keyColumn="learningcomponentcontentid">
 		insert into corlearningcomponentcontent (creationdate,
@@ -133,5 +133,5 @@
 		</selectKey>
 	</insert>
 
-
+ -->
 </mapper>

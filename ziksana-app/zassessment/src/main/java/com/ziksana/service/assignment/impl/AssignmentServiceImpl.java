@@ -367,7 +367,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 		
 		testList = new ArrayList<Test>();
 		updatedTestList = new ArrayList<Test>();
-		courseComponentList = courseComponentMapper.getComponentByCourse(courseId);
+		courseComponentList = courseComponentMapper.getCourseLearningComponentByCourse(courseId);
 		
 		for (CourseLearningComponent courseLearningComponent : courseComponentList) {
 			

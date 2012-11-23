@@ -219,7 +219,7 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 			
 			if(contentReviewWorkflow.getContentReviewWorkflowId()!=null){
 
-				socializeMapper.saveContentReviewInfo(contentReviewWorkflow);	
+				socializeMapper.updateContentReviewInfo(contentReviewWorkflow);	
 				
 			}
 		}

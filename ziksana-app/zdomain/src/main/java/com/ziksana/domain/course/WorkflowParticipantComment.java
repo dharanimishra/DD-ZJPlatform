@@ -24,8 +24,10 @@ public class WorkflowParticipantComment extends AuditHistory {
 	private String 				comment 			= null;
 	private Date 				createDate 			= null;
 	private Criticality 		criticality 		= null;
+	private Integer		 		criticalityId 		= null;
 	private String 				remarks 			= null;
 	private WorkflowItemStatus 	status 				= null;
+	private Integer			 	statusId			= null;
 	private WorkflowParticipant participant 		= null;
 	
 	/**
@@ -74,7 +76,22 @@ public class WorkflowParticipantComment extends AuditHistory {
 	 * @param criticality the criticality to set
 	 */
 	public void setCriticality(Criticality criticality) {
+		if(criticalityId!=null){
+			criticality = Criticality.getCriticality(criticalityId);
+		}
 		this.criticality = criticality;
+	}
+	/**
+	 * @return the criticalityId
+	 */
+	public Integer getCriticalityId() {
+		return criticalityId;
+	}
+	/**
+	 * @param criticalityId the criticalityId to set
+	 */
+	public void setCriticalityId(Integer criticalityId) {
+		this.criticalityId = criticalityId;
 	}
 	/**
 	 * @return the remarks
@@ -98,7 +115,22 @@ public class WorkflowParticipantComment extends AuditHistory {
 	 * @param status the status to set
 	 */
 	public void setStatus(WorkflowItemStatus status) {
+		if(statusId!=null){
+			status = WorkflowItemStatus.getWorkflowItemStatus(statusId);
+		}
 		this.status = status;
+	}
+	/**
+	 * @return the statusId
+	 */
+	public Integer getStatusId() {
+		return statusId;
+	}
+	/**
+	 * @param statusId the statusId to set
+	 */
+	public void setStatusId(Integer statusId) {
+		this.statusId = statusId;
 	}
 	/**
 	 * @return the participant

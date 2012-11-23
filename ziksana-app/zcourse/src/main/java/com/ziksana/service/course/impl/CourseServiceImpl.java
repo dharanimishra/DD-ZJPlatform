@@ -189,7 +189,7 @@ public class CourseServiceImpl implements CourseService {
 						courseLComponent.setLearningComponent(learningComponent);
 								
 						logger.debug("Before Saving the CourseLearningComponent ....");
-						courseLComponentMapper.save(courseLComponent);
+						courseLComponentMapper.saveCourseLearningComponent(courseLComponent);
 					}
 							
 					compNest = compDetails.getLearningComponentNest();
@@ -198,7 +198,7 @@ public class CourseServiceImpl implements CourseService {
 							
 					logger.debug("Before Saving the LearningComponentNest ....");
 
-					componentNestMapper.save(compNest);
+					componentNestMapper.saveComponentNest(compNest);
 					
 					logger.debug("After Saving the LearningComponentNest ....");
 				}
@@ -246,7 +246,7 @@ public class CourseServiceImpl implements CourseService {
 		
 		courseList = courseMapper.getListOfCourses(memberRoleId);
 		
-		//newCourseList = getCourseProgress(courseList, memberPersonaId);
+		courseList = getCourseProgress(courseList, memberPersonaId);
 		
 		return courseList;
 	}
@@ -290,7 +290,7 @@ public class CourseServiceImpl implements CourseService {
 				logger.debug("Courses   : "+course.getCourseId());
 				courseId = course.getCourseId();
 
-				couseCompList =courseLComponentMapper.getComponentByCourse(courseId);
+				couseCompList =courseLComponentMapper.getCourseLearningComponentByCourse(courseId);
 				logger.debug("Course components size : "+couseCompList.size());
 				if(couseCompList!=null){
 					courseProgress = courseProgress +15;

@@ -4,39 +4,33 @@
 	<resultMap id="BaseResultMap" type="com.ziksana.domain.course.LearningContent">
 		<id column="learningContentId" property="learningContentId"
 			jdbcType="INTEGER" />
-		<!-- <result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" />
-		 --><!-- <result column="Active" property="active" jdbcType="BIT" />
-		 --><result column="ContentType" property="contentTypeId" jdbcType="INTEGER" />
+		<!-- <result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" 
+			/> --><!-- <result column="Active" property="active" jdbcType="BIT" /> -->
+		<result column="ContentType" property="contentTypeId" jdbcType="INTEGER" />
 		<result column="ContentPath" property="contentPatId" jdbcType="VARCHAR" />
 		<result column="ContentFormat" property="contentFormat"
 			jdbcType="INTEGER" />
-		<!-- <result column="Status" property="statusId" jdbcType="INTEGER" />
-		 --><!-- <result column="Version" property="version" jdbcType="INTEGER" />
-		 --><!-- <result column="VersionRemarks" property="version" jdbcType="VARCHAR" />
-		 --><result column="ContentName" property="contentName" jdbcType="VARCHAR" />
+		<!-- <result column="Status" property="statusId" jdbcType="INTEGER" /> --><!-- <result column="Version" property="version" jdbcType="INTEGER" /> --><!-- <result column="VersionRemarks" property="version" jdbcType="VARCHAR" 
+			/> -->
+		<result column="ContentName" property="contentName" jdbcType="VARCHAR" />
 		<result column="ContentDescription" property="contentDescription"
 			jdbcType="VARCHAR" />
 		<result column="ThumbnailPicturePath" property="thumbnailPicturePath"
 			jdbcType="VARCHAR" />
 		<result column="RightsOwningMemberRoleId" property="rightsOwningMember.rightsOwningMemberRoleId"
 			jdbcType="INTEGER" />
-	<!-- 	<result column="AuthoringMemberRoleId" property="authoringMember.authoringMemberRoleId"
-			jdbcType="INTEGER" />
-	 -->	<result column="isdelete" property="isDelete" jdbcType="BIT" />
-<!-- 		<result column="linkedlearningcontentid" property="linkedLearningContent.learningContentId"
-			jdbcType="INTEGER" />
- -->		<!-- <collection property="learningContentPartsList" javaType="ArrayList"
-			column="learningcontentid" ofType="com.ziksana.domain.course.LearningContentParts">
-			<id column="contentpartsid" property="contentPartsId" jdbcType="INTEGER" />
-			<result column="CreationDate" property="creationDate"
-				jdbcType="TIMESTAMP" />
-			<result column="PartPath" property="partPath" jdbcType="VARCHAR" />
-			<result column="isdelete" property="isDelete" jdbcType="BIT" />
-			<result column="PartSequence" property="partSequence"
-				jdbcType="VARCHAR" />
-			<result column="learningcontentid" property="learningContent.learningContentId"
-				jdbcType="VARCHAR" />
-		</collection> -->
+		<!-- <result column="AuthoringMemberRoleId" property="authoringMember.authoringMemberRoleId" 
+			jdbcType="INTEGER" /> -->
+		<result column="isdelete" property="isDelete" jdbcType="BIT" />
+		<!-- <result column="linkedlearningcontentid" property="linkedLearningContent.learningContentId" 
+			jdbcType="INTEGER" /> -->		<!-- <collection property="learningContentPartsList" javaType="ArrayList" 
+			column="learningcontentid" ofType="com.ziksana.domain.course.LearningContentParts"> 
+			<id column="contentpartsid" property="contentPartsId" jdbcType="INTEGER" 
+			/> <result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" 
+			/> <result column="PartPath" property="partPath" jdbcType="VARCHAR" /> <result 
+			column="isdelete" property="isDelete" jdbcType="BIT" /> <result column="PartSequence" 
+			property="partSequence" jdbcType="VARCHAR" /> <result column="learningcontentid" 
+			property="learningContent.learningContentId" jdbcType="VARCHAR" /> </collection> -->
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -49,36 +43,135 @@
 		linkedlearningcontentid, isdelete
 	</sql>
 
-	<insert id="save" parameterType="com.ziksana.domain.course.LearningContent"
+	<!-- <insert id="save" parameterType="com.ziksana.domain.course.LearningContent" 
+		useGeneratedKeys="true" keyProperty="learningContentId" keyColumn="learningcontentid"> 
+		insert into corlearningcontent (creationdate, active, contenttype, contentpath, 
+		contentformat, status, version, contentname, contentdescription, thumbnailpicturepath, 
+		rightsowningmemberroleid, authoringmemberroleid ) values (sysdate(), #{activeFlag,jdbcType=BOOLEAN}, 
+		#{contentTypeId,jdbcType=INTEGER}, #{contentPath,jdbcType=VARCHAR}, #{contentFormatId,jdbcType=INTEGER}, 
+		#{statusId,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}, #{contentName,jdbcType=VARCHAR}, 
+		#{contentDescription,jdbcType=VARCHAR}, #{thumbnailPicturePath,jdbcType=VARCHAR}, 
+		#{rightsOwningMember.memberRoleId,jdbcType=INTEGER}, #{authoringMember.memberRoleId,jdbcType=INTEGER} 
+		) <selectKey keyProperty="learningContentId" resultType="int" order="AFTER"> 
+		SELECT LAST_INSERT_ID(); </selectKey> </insert> -->
+	<insert id="saveContent" parameterType="com.ziksana.domain.course.LearningContent"
 		useGeneratedKeys="true" keyProperty="learningContentId" keyColumn="learningcontentid">
-		insert into corlearningcontent (creationdate,
-		active, contenttype,
-		contentpath, contentformat,
-		status, version, contentname,
-		contentdescription, thumbnailpicturepath,
-		rightsowningmemberroleid,
-		authoringmemberroleid )
-		values (sysdate(),
-		#{activeFlag,jdbcType=BOOLEAN},
-		#{contentTypeId,jdbcType=INTEGER},
-		#{contentPath,jdbcType=VARCHAR},
-		#{contentFormatId,jdbcType=INTEGER},
-		#{statusId,jdbcType=INTEGER},
-		#{version,jdbcType=INTEGER},
-		#{contentName,jdbcType=VARCHAR},
-		#{contentDescription,jdbcType=VARCHAR},
-		#{thumbnailPicturePath,jdbcType=VARCHAR},
-		#{rightsOwningMember.memberRoleId,jdbcType=INTEGER},
-		#{authoringMember.memberRoleId,jdbcType=INTEGER} )
+		insert into corlearningcontent
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationdate !=null">
+				creationdate,
+			</if>
+			<if test="active !=null">
+				active,
+			</if>
+			<if test="contenttype !=null">
+				contenttype,
+			</if>
+			<if test="contentpath !=null">
+				contentpath,
+			</if>
+			<if test="contentformat !=null">
+				contentformat,
+			</if>
+			<if test="status !=null">
+				status,
+			</if>
+			<if test="version !=null">
+				version,
+			</if>
+			<if test="contentname !=null">
+				contentname,
+			</if>
+			<if test="thumbnailpicturepath!=null">
+				thumbnailpicturepath,
+			</if>
+			<if test="rightsowningmemberroleid !=null">
+				rightsowningmemberroleid,
+			</if>
+			<if test="authoringmemberroleid !=null">
+				authoringmemberroleid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="activeFlag !=null">
+				#{activeFlag,jdbcType=BOOLEAN},
+			</if>
+			<if test="contentType !=null">
+				#{contentTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="contentPath !=null">
+				#{contentPath,jdbcType=VARCHAR},
+			</if>
+			<if test="contentFormat !=null">
+				#{contentFormatId,jdbcType=INTEGER},
+			</if>
+			<if test="status !=null">
+				#{statusId,jdbcType=INTEGER},
+			</if>
+			<if test="version !=null">
+				#{version,jdbcType=INTEGER},
+			</if>
+			<if test="contentName !=null">
+				#{contentName,jdbcType=VARCHAR},
+			</if>
+			<if test="contentDescription !=null">
+				#{contentDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="thumbnailpicturepath!=null">
+				#{thumbnailPicturePath,jdbcType=VARCHAR},
+			</if>
+			<if test="rightsOwningMember !=null">
+				#{rightsOwningMember.memberRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="authoringMember !=null">
+				#{authoringMember.memberRoleId,jdbcType=INTEGER},
+			</if>
+		</trim>
 		<selectKey keyProperty="learningContentId" resultType="int"
 			order="AFTER">
 			SELECT LAST_INSERT_ID();
 		</selectKey>
 	</insert>
 
-<!-- 	<update id="updateContent" parameterType="com.ziksana.domain.course.LearningContent">
-		update
-		corlearningcontentparts set isdelete = #{isdelete, jdbcType=BOOLEAN}
-		where contentpartsid = #{contentPartsId,jdbcType=INTEGER}
-	</update>
- --></mapper>
+	<insert id="saveContentParts" parameterType="com.ziksana.domain.course.LearningContentParts"
+		useGeneratedKeys="true" keyProperty="contentPartsId" keyColumn="contentpartsid">
+		insert into corlearningcontentparts
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationdate !=null">
+				creationdate,
+			</if>
+			<if test="partpath !=null">
+				partpath,
+			</if>
+			<if test="partsequence !=null">
+				partsequence,
+			</if>
+			<if test="learningcontentid !=null">
+				learningcontentid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="activeFlag !=null">
+				#{partPath,jdbcType=VARCHAR},
+			</if>
+			<if test="partSequence !=null">
+				#{partSequence,jdbcType=INTEGER},
+			</if>
+			<if test="learningContent !=null">
+				#{learningContent.learningContentId,jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="contentPartsId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+
+
+	<!-- <update id="updateContent" parameterType="com.ziksana.domain.course.LearningContent"> 
+		update corlearningcontentparts set isdelete = #{isdelete, jdbcType=BOOLEAN} 
+		where contentpartsid = #{contentPartsId,jdbcType=INTEGER} </update> -->
+</mapper>

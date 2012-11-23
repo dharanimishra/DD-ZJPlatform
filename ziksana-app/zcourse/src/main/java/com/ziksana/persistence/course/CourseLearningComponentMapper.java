@@ -2,7 +2,6 @@ package com.ziksana.persistence.course;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -14,20 +13,24 @@ import com.ziksana.domain.course.CourseLearningComponent;
  */
 public interface CourseLearningComponentMapper {
 
-	@Insert({
-			"insert into corcourselearningcomponent ( creationdate, usageStartDate, usageenddate, active, weightage, totalcredits, extracredits, duration, ",
-			"learningcomponentoveriddenindicator, durationunit, courseid, learningcomponentid, learningcomponenttypeid ) ",
-			"values (sysdate(), ",
-			"#{usageStartDate,jdbcType=TIMESTAMP}, ",
-			"#{usageEndDate,jdbcType=TIMESTAMP}, ",
-			"#{active,jdbcType=BIT}, ",
-			"#{weightage,jdbcType=INTEGER}, ",
-			"#{totalCredits,jdbcType=INTEGER}, ",
-			"#{extraCredits,jdbcType=INTEGER}, #{duration.duration,jdbcType=INTEGER},#{isLearningComponentOveridden,jdbcType=BIT}, ",
-			"#{duration.durationUnits,jdbcType=INTEGER}, #{course.courseId,jdbcType=INTEGER}, #{learningComponent.learningComponentId,jdbcType=INTEGER}," +
-			" #{learningComponentType.learningComponentTypeId,jdbcType=INTEGER} )" })
-	void save(CourseLearningComponent courseLComponent);
+	/**
+	 * Saves the Course LearningComponent details
+	 * @param courseLComponent
+	 * @return
+	 */
+	Integer saveCourseLearningComponent(CourseLearningComponent courseLComponent);
+	
+	/**
+	 * Updates the Course LearningComponent details
+	 * @param courseLComponent
+	 * @return
+	 */
+	Integer updateCourseLearningComponent(CourseLearningComponent courseLComponent);
 
+	/**
+	 * @param courseId
+	 * @return
+	 */
 	@Select({
 			"select courselearningcomponentid, duration, durationunit, courseid, learningcomponentid, learningcomponenttypeid ",
 			" from corcourselearningcomponent where courseid = #{courseId,jdbcType=INTEGER}" })
@@ -38,6 +41,6 @@ public interface CourseLearningComponentMapper {
 			@Result(property = "course.courseId", column = "courseid"),
 			@Result(property = "learningComponent.learningComponentId", column = "learningcomponentid"),
 			@Result(property = "learningcomponentType.learningcomponentTypeId", column = "learningcomponentTypeId") })
-	List<CourseLearningComponent> getComponentByCourse(Integer courseId);
+	List<CourseLearningComponent> getCourseLearningComponentByCourse(Integer courseId);
 
 }

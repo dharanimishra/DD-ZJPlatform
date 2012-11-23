@@ -87,116 +87,112 @@
 	</insert>
 
 
-	<insert id="saveRefenceContent" parameterType="com.ziksana.domain.course.ContentEnrichment"
-		useGeneratedKeys="true" keyProperty="contentEnrichmentId" keyColumn="contentenrichmentid">
-		insert into corcontentenrichment
+	<insert id="saveReviewWorkflow" parameterType="com.ziksana.domain.course.ContentReviewWorkflow"
+		useGeneratedKeys="true" keyProperty="contentReviewWorkflowId"
+		keyColumn="reviewworkflowid">
+		insert into corcontentreviewworkflow
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="startTime != null">
-				StartTime,
+			<if test="createdate != null">
+				createdate,
 			</if>
-			<if test="endTime != null">
-				EndTime,
+			<if test="workflowtype != null">
+				workflowtype,
 			</if>
-			<if test="linkType != null">
-				LinkType,
+			<if test="completeby != null">
+				completeby,
 			</if>
-			<if test="linkElement != null">
-				LinkElement,
+			<if test="notes != null">
+				notes,
 			</if>
-			<if test="linkDescription != null">
-				LinkDescription,
-			</if>
-			<if test="linkItemAuthor != null">
-				LinkItemAuthor,
-			</if>
-			<if test="linkItemCost != null">
-				LinkItemCost,
-			</if>
-			<if test="linkSource != null">
-				LinkSource,
-			</if>
-			<if test="active != null">
-				Active,
-			</if>
-			<if test="isdelete != null">
-				isdelete,
-			</if>
-			<if test="enrichmentid != null">
-				enrichmentid,
+			<if test="learningcontentreviewprogressid != null">
+				learningcontentreviewprogressid,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			#{enrichmentId,jdbcType=INTEGER},
-			<if test="startTime != null">
-				#{startTime,jdbcType=TIMESTAMP},
+			sysdate(),
+			<if test="workflowType != null">
+				#{workflowTypeId,jdbcType=INTEGER},
 			</if>
-			<if test="endTime != null">
-				#{endTime,jdbcType=TIMESTAMP},
+			<if test="completeBy != null">
+				#{completeBy,jdbcType=DATE},
 			</if>
-			<if test="linkType != null">
-				#{linkTypeId,jdbcType=INTEGER},
+			<if test="notes != null">
+				#{notes,jdbcType=VARCHAR},
 			</if>
-			<if test="linkElement != null">
-				#{linkElement,jdbcType=VARCHAR},
-			</if>
-			<if test="linkDescription != null">
-				#{linkDescription,jdbcType=VARCHAR},
-			</if>
-			<if test="linkItemAuthor != null">
-				#{linkItemAuthor,jdbcType=VARCHAR},
-			</if>
-			<if test="linkItemCost != null">
-				#{linkItemCost,jdbcType=INTEGER},
-			</if>
-			<if test="linkSource != null">
-				#{linkSourceId,jdbcType=INTEGER},
-			</if>
-			<if test="active != null">
-				#{active,jdbcType=BIT},
-			</if>
-			<if test="isDelete != null">
-				#{isDelete,jdbcType=BIT},
-			</if>
-			<if test="enrichment.enrichmentId != null">
-				#{enrichment.enrichmentId,jdbcType=INTEGER},
+			<if test="reviewProgress != null">
+				#{reviewProgress.reviewProgressId,jdbcType=INTEGER},
 			</if>
 		</trim>
-		<selectKey keyProperty="contentEnrichmentId" resultType="int"
+		<selectKey keyProperty="contentReviewWorkflowId" resultType="int"
 			order="AFTER">
 			SELECT LAST_INSERT_ID();
 		</selectKey>
 	</insert>
 
-	<update id="updateContentEnrichment" parameterType="com.ziksana.domain.course.ContentEnrichment">
+	<update id="saveContentReviewInfo" parameterType="com.ziksana.domain.course.ContentReviewWorkflow">
 		update corContentEnrichment
 		<set>
-			<if test="startTime != null">
-				startTime = #{startTime,jdbcType=TIMESTAMP},
+			<if test="workflowType != null">
+				workflowType = #{workflowTypeId,jdbcType=INTEGER},
 			</if>
-			<if test="endTime != null">
-				endTime = #{endTime,jdbcType=TIMESTAMP},
+			<if test="completeBy != null">
+				completeBy = #{completeBy,jdbcType=DATE},
 			</if>
-			<if test="linkType != null">
-				linkTypeId = #{linkTypeId,jdbcType=INTEGER},
-			</if>
-			<if test="linkElement != null">
-				linkElement = #{linkElement,jdbcType=VARCHAR},
-			</if>
-			<if test="linkDescription != null">
-				linkDescription = #{linkDescription,jdbcType=VARCHAR},
-			</if>
-			<if test="linkItemAuthor != null">
-				linkItemAuthor = #{linkItemAuthor,jdbcType=VARCHAR},
-			</if>
-			<if test="linkItemCost != null">
-				linkItemCost = #{linkItemCost,jdbcType=INTEGER},
-			</if>
-			<if test="linkSource != null">
-				linkSourceId = #{linkSourceId,jdbcType=INTEGER},
+			<if test="notes != null">
+				notes= #{notes,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where contentenrichmentid = #{contentEnrichmentId,jdbcType.INTEGER}
+		where contentReviewWorkflowid = #{contentReviewWorkflowId, jdbcType=INTEGER}
 	</update>
+
+	<insert id="saveWorkflowParticipant" parameterType="com.ziksana.domain.course.WorkflowParticipant"
+		useGeneratedKeys="true" keyProperty="participantId" keyColumn="workflowparticipantid">
+		insert into corworkflowparticipant
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="participanttye != null">
+				participanttye,
+			</if>
+			<if test="memberroleid != null">
+				memberroleid,
+			</if>
+			<if test="contentreviewworkflowid != null">
+				contentreviewworkflowid,
+			</if>
+			<if test="startdate != null">
+				startdate,
+			</if>
+			<if test="enddate != null">
+				enddate,
+			</if>
+			<if test="isdelete != null">
+				isdelete,
+			</if>
+		</trim>
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			<if test="participanttye != null">
+				#{participantType,jdbcType=INTEGER},
+			</if>
+			<if test="participateMemberRole != null">
+				#{participateMemberRole.memberRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="courseWorkflow != null">
+				#{courseWorkflow.contentReviewWorkflowId,jdbcType=INTEGER},
+			</if>
+			<if test="startDate != null">
+				#{startDate, jdbcType=DATE},
+			</if>
+			<if test="endDate != null">
+				#{startDate, jdbcType=DATE},
+			</if>
+			<if test="isdelete != null">
+				#{isDelete, jdbcType=BOOLEAN},
+			</if>
+		</trim>
+		<selectKey keyProperty="participantId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
 
 
 	<!-- <insert id="saveReference" parameterType="com.ziksana.domain.course.Enrichment" 

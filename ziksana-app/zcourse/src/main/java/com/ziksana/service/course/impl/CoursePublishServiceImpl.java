@@ -23,6 +23,7 @@ import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.persistence.course.CoursePublishMapper;
 import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningComponentMapper;
+import com.ziksana.persistence.course.SocializeMapper;
 import com.ziksana.service.course.CoursePublishService;
 import com.ziksana.service.course.CourseSocializeService;
 
@@ -43,8 +44,10 @@ public class CoursePublishServiceImpl  implements CoursePublishService{
 	public LearningComponentContentMapper 	learningComponentContentMapper;
 	@Autowired
 	public CourseSocializeService			courseService;
-	
+	@Autowired
 	public CoursePublishMapper				publishMapper;
+	@Autowired
+	public SocializeMapper					socializeMapper;
 	
 
 	@Transactional
@@ -182,8 +185,6 @@ public class CoursePublishServiceImpl  implements CoursePublishService{
 	public void addContentReviewComment(MemberPersona memberRole, ContentReviewWorkflow workflow, WorkflowParticipantComment comment)
 			throws CourseException {
 		
-		ContentReviewWorkflow 	savedReviewWorkflow 	= null;
-		WorkflowParticipant 	savedParticipant 		= null;
 		
 		if(workflow.getReviewProgress() == null){
 			throw new CourseException("LearningContentReviewProgress Cannot be null");
@@ -193,20 +194,22 @@ public class CoursePublishServiceImpl  implements CoursePublishService{
 			throw new CourseException("Member Role ID cannot be null");
 		}
 
-		savedReviewWorkflow = publishMapper.saveContentReviewWorkflow(workflow);
+		logger.debug(" Member Role ID " + memberRole.getMemberRoleId());
 		
-		if(savedReviewWorkflow!=null){
+		socializeMapper.saveReviewWorkflow(workflow);
+		
+		if(workflow.getContentReviewWorkflowId()!=null){
 	
 			WorkflowParticipant newParticipant = new WorkflowParticipant();
 			newParticipant.setParticipateMemberRole(memberRole);
 			newParticipant.setParticipantType(ParticipantType.PEER_REVIEWER);
 			newParticipant.setCourseWorkflow(workflow);
 			 
-			savedParticipant = publishMapper.createWorkflowParticipant(newParticipant);
+			socializeMapper.saveWorkflowParticipant(newParticipant);
 			
-			if(savedParticipant!=null){
+			if(newParticipant.getParticipantId()!=null){
 				
-				comment.setParticipant(savedParticipant);
+				comment.setParticipant(newParticipant);
 				comment.setStatus(WorkflowItemStatus.OPEN_FOR_REVIEW);
 				
 				publishMapper.saveWorkflowComment(comment);

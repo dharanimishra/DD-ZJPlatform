@@ -2,13 +2,11 @@ package com.ziksana.persistence.course;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.LearningContent;
@@ -19,19 +17,13 @@ public interface LearningContentMapper {
 	/**
 	 * Saves the Learning Content
 	 */
-	Integer save(LearningContent record);
+	Integer saveContent(LearningContent record);
 	
 	
 	/** 
 	 * Saves the learningcontentparts
 	 */
-	@Insert({
-			"insert into corlearningcontentparts (creationdate, ",
-			"partpath, partsequence, learningcontentid)",
-			"values (sysdate(), ",
-			"#{partPath,jdbcType=VARCHAR}, #{learningContentId,jdbcType=INTEGER})" })
-	@SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "contentPartsId", before = true, resultType = Integer.class)
-	Integer save(LearningContentParts contentParts);
+	Integer saveContentParts(LearningContentParts contentParts);
 
 
 	/**
@@ -57,13 +49,13 @@ public interface LearningContentMapper {
 	
 
 	@Update({"update corlearningcontent set isdelete = #{isDelete, jdbcType=BOOLEAN} where learningcontentid =  #{learningContentId,jdbcType=INTEGER}"})
-	void updateContent(@Param("isDelete") Boolean isDelete, @Param("learningContentId") Integer learningContentId);
+	void deleteContent(@Param("isDelete") Boolean isDelete, @Param("learningContentId") Integer learningContentId);
 
 	@Select({"select contentpartsid from corlearningcontentparts where learningcontentid = #{learningContentId,jdbcType=INTEGER}"})
 	List<Integer> getLearningContetPartsByContentId(Integer learningContentId);
 
 	@Update({"update corlearningcontentparts set isdelete = #{isDelete, jdbcType=BOOLEAN} where contentpartsid = #{contentPartsId,jdbcType=INTEGER}"})
-	void updateContentParts(@Param("isDelete") Boolean isDelete, @Param("learningContentPartsId") Integer learningContentPartsId);
+	void deleteContentParts(@Param("isDelete") Boolean isDelete, @Param("learningContentPartsId") Integer learningContentPartsId);
 
 
 
