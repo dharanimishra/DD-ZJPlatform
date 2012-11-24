@@ -57,9 +57,12 @@ public class AuthenticationFilter implements Filter {
 
 			// Need to redirect to login page
 			System.out.println(" Entering session token null check if block");
+			System.out.println(" URL value is "+url);
 			if (!url.endsWith(LOGIN_URL)) {
 				System.out.println("going to login URL");
-				httpResponse.sendRedirect(LOGIN_URL);
+				System.out.println("httpRequest.getContextPath() "+httpRequest.getContextPath());
+				
+				 httpResponse.sendRedirect(httpRequest.getScheme() + "://" + httpRequest.getServerName() + ":" + httpRequest.getServerPort() + httpRequest.getContextPath()+ "/"+LOGIN_URL);
 				return;
 			}
 
