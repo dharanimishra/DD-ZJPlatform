@@ -21,9 +21,11 @@
 		<result column="QuestionBankId" jdbcType="INTEGER" property="questionBankId" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		TestQuestionId, CreationDate, Active, PointsIfCorrect, ExtraCreditPoints,
+		TestQuestionId, CreationDate, Active, PointsIfCorrect,
+		ExtraCreditPoints,
 		PenaltyIfIncorrectIndicator,
-		PenaltyFactor, AnswerWithinTime, QuestionContentMarkup, VideoAnswerAllowedIndicator,
+		PenaltyFactor,
+		AnswerWithinTime, QuestionContentMarkup, VideoAnswerAllowedIndicator,
 		AudioAnwerAllowedIndicator, AssignmentTestId, QuestionBankId
 	</sql>
 
@@ -153,4 +155,140 @@
 		</set>
 		where testquestionid = #{testQuestionId,jdbcType=INTEGER}
 	</update>
+
+	<insert id="saveQuestionBank" parameterType="com.ziksana.domain.assessment.QuestionBank"
+		useGeneratedKeys="true" keyProperty="questionBankId" keyColumn="questionbankid">
+		insert into asmquestionbank
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationdate != null">
+				creationdate,
+			</if>
+			<if test="active != null">
+				active,
+			</if>
+			<if test="difficultylevel != null">
+				difficultylevel,
+			</if>
+			<if test="proficiencylevel != null">
+				proficiencylevel,
+			</if>
+			<if test="questiontype != null">
+				questioncontent,
+			</if>
+			<if test="additionalinfopath != null">
+				additionalinfopath,
+			</if>
+			<if test="instruction != null">
+				instruction,
+			</if>
+			<if test="questionContentMarkup != null">
+				questioncontentmarkup,
+			</if>
+			<if test="multiplecorrectanswerindicator != null">
+				multiplecorrectanswerindicator,
+			</if>
+			<if test="groupworkindicator != null">
+				groupworkindicator,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="questionapplicabilitytype != null">
+				questionapplicabilitytype,
+			</if>
+			<if test="memberid != null">
+				memberid,
+			</if>
+			<if test="subjclassificationid != null">
+				subjclassificationid,
+			</if>
+		</trim>		"insert into asmquestionbank set  profficiencylevel=, ",
+			"questiontype=#{questionType, jdbcType=INTEGER}, ",
+			"questioncontent=#{name, jdbcType=VARCHAR}, instruction=,",
+			" ismulticorrectanswer=, additionalinfopath=#{additionalInfoPath, jdbcType=VARCHAR} ,",
+			"isgroupwork= , questionapplicabilitytype=#{questionApplicabilityType, jdbcType=INTEGER} ",
+			" where questionbankid=#{questionBankId, jdbcType=INTEGER}" })
+		
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="active != null">
+				#{active, jdbcType=BOOLEAN},
+			</if>
+			<if test="difficultyLevel != null">
+				#{difficultyLevelId , jdbcType=INTEGER},
+			</if>
+			<if test="proficiencylevel != null">
+				#{proficiencyLevelId, jdbcType=INTEGER},
+			</if>
+			<if test="questionText != null">
+				#{questionText, jdbcType=VARCHAR},
+			</if>
+			<if test="additionalInfoPath != null">
+				#{additionalinfopath, jdbcType=VARCHAR},
+			</if>
+			<if test="instruction != null">
+				#{instruction, jdbcType=VARCHAR},
+			</if>
+			<if test="questionContentMarkup != null">
+				#{questionContentMarkup,jdbcType=VARCHAR},
+			</if>
+			<if test="isMultiCorrectAnswer != null">
+				#{isMultiCorrectAnswer,jdbcType=BOOLEAN},
+			</if>
+			<if test="isGroupWork != null">
+				#{isGroupWork,jdbcType=BOOLEAN},
+			</if>
+			<if test="status != null">
+				#{statusId,jdbcType=BOOLEAN},
+			</if>
+			<if test="questionApplicabilityType != null">
+				#{questionApplicabilityTypeId, jdbcType=INTEGER},
+			</if>
+			<if test="owningMember != null">
+				#{owningMember.memberId, jdbcType=INTEGER},
+			</if>
+			<if test="subjClassification != null">
+				#{subjClassification.subjClassificationId, jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="questionBankId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+	<update id="updateQuestionBank" parameterType="com.ziksana.domain.assessment.QuestionBank">
+		update asmquestionbank
+		<set>
+			<if test="difficultyLevel != null">
+				difficultyLevel = #{difficultyLevelId , jdbcType=INTEGER},
+			</if>
+			<if test="proficiencyLevel != null">
+				proficiencyLevel = #{proficiencyLevelId, jdbcType=INTEGER},
+			</if>
+			<if test="questionText != null">
+				questionText = #{questionText, jdbcType=VARCHAR},
+			</if>
+			<if test="additionalInfoPath != null">
+				additionalInfoPath = #{additionalinfopath, jdbcType=VARCHAR},
+			</if>
+			<if test="instruction != null">
+				instruction = #{instruction, jdbcType=VARCHAR},
+			</if>
+			<if test="questionContentMarkup != null">
+				questionContentMarkup = #{questionContentMarkup,jdbcType=VARCHAR},
+			</if>
+			<if test="isMultiCorrectAnswer != null">
+				isMultiCorrectAnswer = #{isMultiCorrectAnswer,jdbcType=BOOLEAN},
+			</if>
+			<if test="isGroupWork != null">
+				isGroupWork = #{isGroupWork,jdbcType=BOOLEAN},
+			</if>
+			<if test="questionApplicabilityType != null">
+				questionApplicabilityType = #{questionApplicabilityTypeId, jdbcType=INTEGER},
+			</if>
+		</set>
+		where questionbankId = #{questionBankId, jdbcType="INTEGER"}
+	</update>
+
 </mapper>

@@ -14,13 +14,13 @@ public class QuestionBank extends AuditHistory{
 
 	public QuestionBank(Boolean active, DifficultyLevel difficultyLevel,
 			ProficiencyLevel proficiencyLevel, QuestionType questionType,
-			String name, String instruction,
+			String questionText, String instruction,
 			QuestionApplicableType questionApplicableType, Member owningMember) {
 		this.active = active;
 		this.difficultyLevel = difficultyLevel;
 		this.proficiencyLevel = proficiencyLevel;
 		this.questionType = questionType;
-		this.name = name;
+		this.questionText = questionText;
 		this.instruction = instruction;
 		this.questionApplicableType = questionApplicableType;
 		this.owningMember = owningMember;
@@ -30,15 +30,20 @@ public class QuestionBank extends AuditHistory{
 	private Date 					creationDate					= null;
 	private Boolean 				active							= null;
 	private DifficultyLevel 		difficultyLevel					= null;
+	private Integer			 		difficultyLevelId				= null;
 	private ProficiencyLevel 		proficiencyLevel				= null;
+	private Integer 				proficiencyLevelId				= null;
 	private QuestionType 			questionType					= null;
-	private String 					name							= null;//question content
+	private Integer		 			questionTypeId					= null;
+	private String 					questionText					= null;//question content
 	private String 					additionalInfoPath				= null;
 	private String 					instruction						= null;
 	private Boolean 				multipleAnswerIndicator			= null;
 	private Boolean 				groupWorkIndicator				= null;
 	private Status 					status							= null;
+	private Integer 				statusId						= null;
 	private QuestionApplicableType 	questionApplicableType			= null;
+	private Integer 				questionApplicableTypeId		= null;
 	private SubjectClassification 	subjClassification				= null;
 	private Member 					owningMember					= null;
 	/*private TestQuestion      		question						= null;
@@ -97,6 +102,18 @@ public class QuestionBank extends AuditHistory{
 		this.difficultyLevel = difficultyLevel;
 	}
 	/**
+	 * @return the difficultyLevelId
+	 */
+	public Integer getDifficultyLevelId() {
+		return difficultyLevelId;
+	}
+	/**
+	 * @param difficultyLevelId the difficultyLevelId to set
+	 */
+	public void setDifficultyLevelId(Integer difficultyLevelId) {
+		this.difficultyLevelId = difficultyLevelId;
+	}
+	/**
 	 * @return the proficiencyLevel
 	 */
 	public ProficiencyLevel getProficiencyLevel() {
@@ -107,6 +124,18 @@ public class QuestionBank extends AuditHistory{
 	 */
 	public void setProficiencyLevel(ProficiencyLevel proficiencyLevel) {
 		this.proficiencyLevel = proficiencyLevel;
+	}
+	/**
+	 * @return the proficiencyLevelId
+	 */
+	public Integer getProficiencyLevelId() {
+		return proficiencyLevelId;
+	}
+	/**
+	 * @param proficiencyLevelId the proficiencyLevelId to set
+	 */
+	public void setProficiencyLevelId(Integer proficiencyLevelId) {
+		this.proficiencyLevelId = proficiencyLevelId;
 	}
 	/**
 	 * @return the questionType
@@ -121,16 +150,28 @@ public class QuestionBank extends AuditHistory{
 		this.questionType = questionType;
 	}
 	/**
+	 * @return the questionTypeId
+	 */
+	public Integer getQuestionTypeId() {
+		return questionTypeId;
+	}
+	/**
+	 * @param questionTypeId the questionTypeId to set
+	 */
+	public void setQuestionTypeId(Integer questionTypeId) {
+		this.questionTypeId = questionTypeId;
+	}
+	/**
 	 * @return the questionText
 	 */
-	public String getName() {
-		return name;
+	public String getQuestionText() {
+		return questionText;
 	}
 	/**
 	 * @param questionText the questionText to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setQuestionText(String questionText) {
+		this.questionText = questionText;
 	}
 	/**
 	 * @return the additionalInfoPath
@@ -181,6 +222,18 @@ public class QuestionBank extends AuditHistory{
 		this.status = status;
 	}
 	/**
+	 * @return the statusId
+	 */
+	public Integer getStatusId() {
+		return statusId;
+	}
+	/**
+	 * @param statusId the statusId to set
+	 */
+	public void setStatusId(Integer statusId) {
+		this.statusId = statusId;
+	}
+	/**
 	 * @return the questionApplicableType
 	 */
 	public QuestionApplicableType getQuestionApplicableType() {
@@ -192,6 +245,18 @@ public class QuestionBank extends AuditHistory{
 	public void setQuestionApplicableType(
 			QuestionApplicableType questionApplicableType) {
 		this.questionApplicableType = questionApplicableType;
+	}
+	/**
+	 * @return the questionApplicableTypeId
+	 */
+	public Integer getQuestionApplicableTypeId() {
+		return questionApplicableTypeId;
+	}
+	/**
+	 * @param questionApplicableTypeId the questionApplicableTypeId to set
+	 */
+	public void setQuestionApplicableTypeId(Integer questionApplicableTypeId) {
+		this.questionApplicableTypeId = questionApplicableTypeId;
 	}
 	/**
 	 * @return the subjClassification
@@ -296,7 +361,7 @@ public class QuestionBank extends AuditHistory{
 	public String toString() {
 		return "QuestionBank [difficultyLevel=" + difficultyLevel
 				+ ", proficiencyLevel=" + proficiencyLevel + ", questionType="
-				+ questionType + ", Name=" + name
+				+ questionType + ", questionText=" + questionText
 				+ ", instruction=" + instruction + ", status=" + status
 				+ ", questionApplicableType=" + questionApplicableType + "]";
 	}

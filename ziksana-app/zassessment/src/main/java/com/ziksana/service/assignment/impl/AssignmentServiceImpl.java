@@ -49,25 +49,35 @@ public class AssignmentServiceImpl implements AssignmentService {
 	
 	@Transactional
 	@Override
-	public void saveAssignment(LearningComponent component,
+	public void saveOrUpdateAssignment(LearningComponent component,
 			Assignment assignment) throws AssignmentException {
 		logger.debug("Entering into saveAssignment method ... ");
 		
 		if(assignment == null){
 			throw new AssignmentException("Assignment cannot be null");
 		}
+		
+		if(component.getLearningComponentId()==null){
+			throw new AssignmentException("LearningComponent ID is null, Cannot create Assignment");
+		}
 
-		if(component!=null){
+		assignment.setLearningComponent(component);
 			
-			assignment.setLearningComponent(component);
+		if(assignment.getAssignmentId()!=null){
+			logger.debug("UPDATING the Assignment ... ");
+			assignmentTestMapper.updateAssignment(assignment);
+			
+		}else{
+			logger.debug("SAVING the Assignment ... ");
 			assignmentTestMapper.saveAssignment(assignment);
 			
 		}
+			
 	}
 
 	@Transactional
 	@Override
-	public void saveTest(Assignment assignment) throws AssignmentException {
+	public void saveOrUpdateTest(Assignment assignment) throws AssignmentException {
 		
 		List<Test>  			testList		= null;
 		AssignmentTestSettings 	testSettings 	= null;
@@ -77,39 +87,56 @@ public class AssignmentServiceImpl implements AssignmentService {
 		testList 				= new ArrayList<Test>();
 		Integer 				testId 			= null;
 				
-		if(assignment.getLearningComponent() == null){
-			throw new AssignmentException("LearningComponent cannot be null");
-		}
-		
 		if(assignment.getAssignmentId() == null){
-			throw new AssignmentException("Assignment cannot be null");
-		} 
+			throw new AssignmentException("Cannot create Test for Assignment, Assignment ID cannot be null ");
+		}
 		
 		testList = assignment.getTestList();
 		
 		for (Test test : testList) {
 			
 			test.setAssignment(assignment);
-			
-			
+
 			testId =  assignmentTestMapper.isTestExists(test.getName().trim());
 			
 			if(testId!=null){
 				throw new AssignmentException("Test with name:["+test.getName()+"]  already exists, Enter different Test Name");
 			}
+
+			if(test.getTestId()!=null){
+				//UPDATE OPERATION
+				logger.debug("UPDATING the Test ... ");
+				assignmentTestMapper.updateTest(test);
+				
+			}else{
+				logger.debug("SAVING the Test ... ");
+				//SAVE OPERATION
+				assignmentTestMapper.saveTest(test);
+			}
 			
-			assignmentTestMapper.saveTest(test);
+			logger.debug("Assignment : ["+assignment.getName()+"]  Test ID : "+test.getTestId());
 			
 			testSettings = test.getAssignmentTestSettings();
 			
 			if(testSettings!=null){
+
 				testSettings.setTest(test);
-				assignmentTestMapper.saveTestSettings(testSettings);
+
+				if(testSettings.getTestSettingsId()!=null){
+					
+					assignmentTestMapper.updateTestSettings(testSettings);
+					
+				}else{
+					
+					assignmentTestMapper.saveTestSettings(testSettings);
+					
+				}
 			}
 		
 			testRubric = test.getTestRubric();
 			
 			if(testRubric!=null){
+				
 				rubric = testRubric.getRubric();
 				rubricMatrix = testRubric.getRubricMatrix();
 				
@@ -117,7 +144,12 @@ public class AssignmentServiceImpl implements AssignmentService {
 				testRubric.setRubric(rubric);
 				testRubric.setRubricMatrix(rubricMatrix);
 				
-				assignmentTestMapper.saveTestRubric(testRubric);
+				if(testRubric.getAssignmentTestRubricId()!=null){
+					assignmentTestMapper.updateTestRubric(testRubric);	
+				}else{
+					assignmentTestMapper.saveTestRubric(testRubric);
+				}
+				
 			}
 		}
 	}
@@ -134,30 +166,14 @@ public class AssignmentServiceImpl implements AssignmentService {
 		
 		testQtn  = testQuestionMapper.getTestQuestion(testQuestionId);
 		
-		return testQtn;
-	}
-	
-
-	@Transactional
-	@Override
-	public void updateAssignmentQuestion(TestQuestion testQuestion) throws AssignmentException {
-		
-		QuestionBank qtnBank = null;
-		
-		if(testQuestion == null){
-			throw new AssignmentException("Test Question  cannot be null"); 
-		}
-	
-		qtnBank = testQuestion.getQuestionBank();
-		
-		if(qtnBank==null){
-			throw new AssignmentException("QuestionBank  cannot be null");
+		if(testQtn!=null){
+			logger.debug("Test Question : "+testQtn.toString());
+			return testQtn;
 		}
 		
-		testQuestionMapper.updateQuestionBank(qtnBank);
-		
-		testQuestionMapper.updateTestQuestion(testQuestion);
+		return null;
 	}
+	
 
 	@Transactional
 	@Override
@@ -233,72 +249,69 @@ public class AssignmentServiceImpl implements AssignmentService {
 
 	@Transactional
 	@Override
-	public void addAssignmentQuestionsToTest(Integer testId, Assignment assignment, List<QuestionBank> qtnBankList) throws AssignmentException {
+	public void addAssignmentQuestionsToTest(Test test, List<QuestionBank> qtnBankList) throws AssignmentException {
 		
-		List<Test> testList = new ArrayList<Test>();
-		TestQuestion testQuestion = null;
-
-		//Test need to be created to associate questions. 
-		if(testId== null){
-			throw new AssignmentException("Test cannot be null");
+		TestQuestion testQtn = null;
+		
+		if(test.getTestId()==null){
+			throw new AssignmentException("Test Question cannot be null to add to Test");
 		}
 		
-		if(qtnBankList == null || qtnBankList.size()==0){
-			throw new AssignmentException("TestQuestions List cannot be empty");
-		}
-	
-		testList = assignment.getTestList();
-		
-		for (Test test : testList) {
+		for (QuestionBank qtnBank : qtnBankList) {
 			
-			Integer newTestId = new Integer(test.getTestId().getStorageID());
+			testQtn = new TestQuestion();
+			testQtn.setTest(test);
+			testQtn.setQuestionBank(qtnBank);
 			
-			if(newTestId.equals(testId)){
-
-				for (QuestionBank qtnBank : qtnBankList){
-					
-					testQuestion = new TestQuestion();
-					testQuestion.setQuestionBank(qtnBank);
-					testQuestion.setTest(test);
-					
-					testQuestionMapper.saveTestQuestion(testQuestion);
-				}
-			}
-		}
+			testQuestionMapper.saveTestQuestion(testQtn);
+			
+		}			
+		
 	}
 
 	@Transactional
 	@Override
-	public void createNewQuestion(TestQuestion testQuestion) throws AssignmentException {
+	public void createOrUpdateNewQuestion(TestQuestion testQuestion) throws AssignmentException {
 		
 		QuestionBank qtnBank = null;
-		
-		if(testQuestion == null){
-			throw new AssignmentException("Test Question  cannot be null"); 
+
+		if(testQuestion== null){
+			throw new AssignmentException("Test cannot be null");
 		}
-	
+					
+		if(testQuestion.getTest()== null){
+			throw new AssignmentException("Test cannot be null");
+		}
+			
 		qtnBank = testQuestion.getQuestionBank();
 		
-		if(qtnBank==null){
-			throw new AssignmentException("QuestionBank  cannot be null");
+		if(qtnBank == null){
+			throw new AssignmentException("QuestionBank cannot be null to create a TestQuestion");
 		}
 		
-		testQuestionMapper.updateQuestionBank(qtnBank);
-		
-		testQuestionMapper.updateTestQuestion(testQuestion);
-	
-	}
-
-	@Override
-	public void updateTest(Test test) throws AssignmentException {
-		
-		if(test == null){
+		if(testQuestion.getTestQuestionId()!=null){
+			//UPDATE OPERATION.
+			testQuestionMapper.updateTestQuestion(testQuestion);
 			
-			throw new AssignmentException("Test cannot be null"); 
+			testQuestionMapper.updateQuestionBank(qtnBank);
+			
+		}else{
+			//SAVE OPERATION
+			if(qtnBank.getQuestionBankId()!=null){
+				
+				testQuestionMapper.updateQuestionBank(qtnBank);
+				
+			}else{
+				testQuestionMapper.saveQuestionBank(qtnBank);
+			
+				logger.debug("After saving the Question Bank , ID : "+qtnBank.getQuestionBankId());
+			}
+			
+			testQuestion.setQuestionBank(qtnBank);
+			
+			testQuestionMapper.saveTestQuestion(testQuestion);
+			
 		}
-		
-		assignmentTestMapper.updateTest(test);
-		
 	
 	}
 

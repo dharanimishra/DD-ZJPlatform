@@ -24,7 +24,7 @@ public interface AssignmentService {
 	 * @return
 	 * @throws AssignmentException
 	 */
-	public void saveAssignment(LearningComponent component,
+	public void saveOrUpdateAssignment(LearningComponent component,
 			Assignment assignment) throws AssignmentException;
 
 	/** 
@@ -33,7 +33,7 @@ public interface AssignmentService {
 	 * @param assignment
 	 * @return
 	 */
-	public void saveTest(Assignment assignment) throws AssignmentException;
+	public void saveOrUpdateTest(Assignment assignment) throws AssignmentException;
 
 	/**
 	 * Get the Test question from QuestionBank
@@ -43,13 +43,6 @@ public interface AssignmentService {
 	 */
 	public TestQuestion getAssignmentQuestion(Integer testQuestionId) throws AssignmentException;
 
-	/**
-	 * Updates the Test Question.
-	 * 
-	 * @param testQtn
-	 * @param assignment
-	 */
-	public void updateAssignmentQuestion(TestQuestion testQtn) throws AssignmentException;
 
 	/**
 	 * Soft delete the associated Test Question.
@@ -60,17 +53,18 @@ public interface AssignmentService {
 			Assignment assignment) throws AssignmentException;
 
 	/**
-	 * Advance Searches the Question from QuestionBank
+	 * Advance Searches the Question from QuestionBank 
 	 * @param questionBank
 	 * @return
 	 */
 	public List<QuestionBank> advanceSearch(QuestionSearchCriteria searchCriteria) throws AssignmentException;
 
 	/**
-	 * Adds the associated question to Test
-	 * @param qtnBankList
+	 * Adds the searched Questions from QuestionBank and adds to Test
+	 * @param testQuestion
+	 * @throws AssignmentException
 	 */
-	public void addAssignmentQuestionsToTest(Integer testId, Assignment assignment,List<QuestionBank> qtnBankList) throws AssignmentException ;
+	public void addAssignmentQuestionsToTest(Test test, List<QuestionBank> qtnBankList) throws AssignmentException ;
 
 	/**
 	 * Create new question 
@@ -78,14 +72,8 @@ public interface AssignmentService {
 	 * @param testQtn
 	 * @param assignment
 	 */
-	public void createNewQuestion(TestQuestion testQuestion) throws AssignmentException;
+	public void createOrUpdateNewQuestion(TestQuestion testQuestion) throws AssignmentException;
 
-	/**
-	 * Updates the AssignmentTest
-	 * 
-	 * @param assignment
-	 */
-	public void updateTest(Test test) throws AssignmentException;
 
 	/**
 	 * Soft deletes the assignmentTest

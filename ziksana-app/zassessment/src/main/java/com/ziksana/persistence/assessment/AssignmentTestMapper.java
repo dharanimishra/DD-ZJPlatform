@@ -48,11 +48,21 @@ public interface AssignmentTestMapper {
 	 * @param testSettings
 	 */
 	Integer saveTestSettings(AssignmentTestSettings testSettings);
+	
+	/**
+	 * @param testSettings
+	 */
+	Integer updateTestSettings(AssignmentTestSettings testSettings);
 
 	/**
 	 * @param testRubric
 	 */
 	Integer saveTestRubric(AssignmentTestRubric testRubric);
+
+	/**
+	 * @param testRubric
+	 */
+	Integer updateTestRubric(AssignmentTestRubric testRubric);
 
 	/**
 	 * @param name

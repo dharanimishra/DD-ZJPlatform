@@ -21,14 +21,14 @@ public class AssignmentTestRubric extends AuditHistory {
 		this.rubric = rubric;
 	}
 	
-	private ZID 			assignmentTestRubricId;
-	private Date 			creationDate 		= null;
-	private Integer 		cellValue 			= null;
-	private Boolean 		active	 			= null;
+	private ZID 					assignmentTestRubricId;
+	private Date 					creationDate 		= null;
+	private Integer 				cellValue 			= null;
+	private Boolean 				active	 			= null;
 	
-	private Test 			test 				= null;
-	private Rubric 			rubric 				= null;
-	private RubricMatrix 	rubricMatrix 		= null;
+	private Test 					test 				= null;
+	private Rubric 					rubric 				= null;
+	private RubricMatrix 			rubricMatrix 		= null;
 	
 	/**
 	 * @return the assignmentTestRubricId

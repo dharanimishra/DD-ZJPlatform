@@ -96,14 +96,12 @@ public interface TestQuestionMapper {
 	/**
 	 * @param qtnBank
 	 */
-	@Update({
-			"update asmquestionbank set difficultylevel=#{difficultyLevel , jdbcType=INTEGER}, profficiencylevel=#{proficiencyLeveel, jdbcType=INTEGER}, ",
-			"questiontype=#{questionType, jdbcType=INTEGER}, ",
-			"questioncontent=#{name, jdbcType=VARCHAR}, instruction=#{instruction, jdbcType=VARCHAR},",
-			" ismulticorrectanswer=#{isMultiCorrectAnswer,jdbcType=BOOLEAN}, additionalinfopath=#{additionalInfoPath, jdbcType=VARCHAR} ,",
-			"isgroupwork=#{isGroupWork,jdbcType=BOOLEAN} , questionapplicabilitytype=#{questionApplicabilityType, jdbcType=INTEGER} ",
-			" where questionbankid=#{questionBankId, jdbcType=INTEGER}" })
-	void updateQuestionBank(QuestionBank qtnBank);
+	Integer saveQuestionBank(QuestionBank qtnBank);
+
+	/**
+	 * @param qtnBank
+	 */
+	Integer updateQuestionBank(QuestionBank qtnBank);
 
 	/**
 	 * This performs the basic search
