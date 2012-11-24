@@ -25,6 +25,7 @@ import com.ziksana.domain.member.Member;
 import com.ziksana.exception.assignment.AssignmentException;
 import com.ziksana.id.ZID;
 import com.ziksana.persistence.assessment.AssignmentTestMapper;
+import com.ziksana.persistence.assessment.TestQuestionMapper;
 import com.ziksana.persistence.course.CourseLearningComponentMapper;
 import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.service.assignment.AssignmentService;
@@ -42,7 +43,8 @@ public class AssignmentServiceImpl implements AssignmentService {
 	public LearningComponentMapper componentMapper;	
 	@Autowired
 	public CourseLearningComponentMapper courseComponentMapper;
-
+	@Autowired
+	public TestQuestionMapper testQuestionMapper;
 		
 	
 	@Transactional
@@ -130,7 +132,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 			throw new AssignmentException("Test Question Id cannot be null");
 		}
 		
-		testQtn  = assignmentTestMapper.getTestQuestion(testQuestionId);
+		testQtn  = testQuestionMapper.getTestQuestion(testQuestionId);
 		
 		return testQtn;
 	}
@@ -152,9 +154,9 @@ public class AssignmentServiceImpl implements AssignmentService {
 			throw new AssignmentException("QuestionBank  cannot be null");
 		}
 		
-		assignmentTestMapper.updateQuestionBank(qtnBank);
+		testQuestionMapper.updateQuestionBank(qtnBank);
 		
-		assignmentTestMapper.updateTestQuestion(testQuestion);
+		testQuestionMapper.updateTestQuestion(testQuestion);
 	}
 
 	@Transactional
@@ -176,7 +178,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 		for (TestQuestion testQuestion : testQtnList) {
 			
 			logger.debug("Updating the Test Questions options .....");
-			assignmentTestMapper.updateTestQuestionOptions(testQuestion);
+			testQuestionMapper.updateTestQuestionOptions(testQuestion);
 			
 		}
 	
@@ -209,7 +211,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 			throw new AssignmentException("Search Criteria cannot be null question cannot be null");
 		}
 		
-		qtnBankList = assignmentTestMapper.searchQuestions(searchCriteria);
+		qtnBankList = testQuestionMapper.searchQuestions(searchCriteria);
 		
 		return qtnBankList;
 	}
@@ -224,7 +226,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 			throw new AssignmentException("Search Criteria cannot be null question cannot be null");
 		}
 		
-		qtnBankList = assignmentTestMapper.basicSearch(searchCriteria.getName());
+		qtnBankList = testQuestionMapper.basicSearch(searchCriteria.getName());
 		
 		return qtnBankList;
 	}
@@ -259,7 +261,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 					testQuestion.setQuestionBank(qtnBank);
 					testQuestion.setTest(test);
 					
-					assignmentTestMapper.saveTestQuestion(testQuestion);
+					testQuestionMapper.saveTestQuestion(testQuestion);
 				}
 			}
 		}
@@ -281,9 +283,9 @@ public class AssignmentServiceImpl implements AssignmentService {
 			throw new AssignmentException("QuestionBank  cannot be null");
 		}
 		
-		assignmentTestMapper.updateQuestionBank(qtnBank);
+		testQuestionMapper.updateQuestionBank(qtnBank);
 		
-		assignmentTestMapper.updateTestQuestion(testQuestion);
+		testQuestionMapper.updateTestQuestion(testQuestion);
 	
 	}
 
@@ -342,7 +344,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 		} 
 		
 		logger.debug("Getting the Test questions for the Test :["+test.getName()+"]");
-		questionList = assignmentTestMapper.getTestQuestions(testId);
+		questionList = testQuestionMapper.getTestQuestions(testId);
 		
 		logger.debug("Test ["+test.getName()+"]  Questions list size : "+questionList.size());
 		
