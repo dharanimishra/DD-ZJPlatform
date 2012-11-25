@@ -50,6 +50,9 @@ public class LoginController {
 		String userId = request.getParameter("username");
 		String password = request.getParameter("password");
 		
+		System.out.println(" Username is "+userId);
+		System.out.println(" password is  "+password);
+		
 		if (userId == null && password == null) {
 			
 			ModelAndView mv = new ModelAndView("login");
