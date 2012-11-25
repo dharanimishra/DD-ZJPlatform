@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.member.Member;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
+import com.ziksana.security.filters.AuthenticationFilter;
 import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.security.MemberService;
@@ -32,7 +33,7 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(LoginController.class);
 
-	static final String TOKEN_COOKIE_NAME = "SessionCookieToken";
+	
 
 	@Autowired
 	AuthenticationService authService;
@@ -87,7 +88,7 @@ public class LoginController {
 					null);
 
 			// Need to add the token to the session
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(true);
 			session.setAttribute("TOKEN", token);
 
 			// Need to create cookie
@@ -131,7 +132,7 @@ public class LoginController {
 	Cookie newSessionCookie(HttpServletRequest request, String userId)
 			throws ServletException {
 
-		Cookie cookie = new Cookie(TOKEN_COOKIE_NAME, userId);
+		Cookie cookie = new Cookie(AuthenticationFilter.COOKIE_NAME, userId);
 		cookie.setMaxAge(365 * 24 * 60 * 60);
 		cookie.setPath(request.getContextPath() + "/");
 		

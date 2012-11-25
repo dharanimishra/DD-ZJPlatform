@@ -25,7 +25,7 @@ import com.ziksana.security.util.ThreadLocalUtil;
  */
 public class AuthenticationFilter implements Filter {
 
-	private static final String TOKEN_COOKIE_NAME = "SessionCookieToken";
+	public static final String COOKIE_NAME = "SessionCookieToken";
 	private static final String LOGIN_URL = "login";
 
 	@Override
@@ -42,10 +42,16 @@ public class AuthenticationFilter implements Filter {
 
 		if (sessionToken != null) {
 			System.out.println("Session toke IS THERE");
-			HttpSession httpSession = httpRequest.getSession();
-			SecurityToken token = (SecurityToken) httpSession
-					.getAttribute("TOKEN");
-			ThreadLocalUtil.setToken(token);
+			HttpSession httpSession = httpRequest.getSession(false);
+
+			if (httpSession != null) {
+				SecurityToken token = (SecurityToken) httpSession
+						.getAttribute("TOKEN");
+
+				System.out.println(" THE TOKEN IS " + token);
+
+				ThreadLocalUtil.setToken(token);
+			}
 
 			// filterChain.doFilter(servletRequest, servletResponse);
 
@@ -57,12 +63,16 @@ public class AuthenticationFilter implements Filter {
 
 			// Need to redirect to login page
 			System.out.println(" Entering session token null check if block");
-			System.out.println(" URL value is "+url);
+			System.out.println(" URL value is " + url);
 			if (!url.endsWith(LOGIN_URL)) {
 				System.out.println("going to login URL");
-				System.out.println("httpRequest.getContextPath() "+httpRequest.getContextPath());
-				
-				 httpResponse.sendRedirect(httpRequest.getScheme() + "://" + httpRequest.getServerName() + ":" + httpRequest.getServerPort() + httpRequest.getContextPath()+ "/"+LOGIN_URL);
+				System.out.println("httpRequest.getContextPath() "
+						+ httpRequest.getContextPath());
+
+				httpResponse.sendRedirect(httpRequest.getScheme() + "://"
+						+ httpRequest.getServerName() + ":"
+						+ httpRequest.getServerPort()
+						+ httpRequest.getContextPath() + "/" + LOGIN_URL);
 				return;
 			}
 
@@ -104,23 +114,25 @@ public class AuthenticationFilter implements Filter {
 	 */
 	private String getSessionTokenCookie(HttpServletRequest httpRequest) {
 		Cookie[] cookies = httpRequest.getCookies();
-		
+
 		if (cookies == null) {
 			return null;
 		}
-		System.out.println(" number of cookies "+cookies.length);
+		System.out.println(" number of cookies " + cookies.length);
 		for (Cookie cookie : cookies) {
 			String path = cookie.getPath();
-            System.out.println("path is "+path); 
-            System.out.println("name of the cookie is  "+cookie.getName());
-            System.out.println("domain of the cookie is  "+cookie.getDomain());
-            System.out.println("value  of the cookie is  "+cookie.getValue());
-			
-				if (cookie.getName().equals(TOKEN_COOKIE_NAME)) {
-					System.out.println(" COOKIE IS THERE");
-					return cookie.getValue();
-				}
-			
+			System.out.println("path is " + path);
+			System.out.println("name of the cookie is  " + cookie.getName());
+			System.out
+					.println("domain of the cookie is  " + cookie.getDomain());
+			System.out.println("value  of the cookie is  " + cookie.getValue());
+
+			if (cookie.getName().equals(COOKIE_NAME)) {
+
+				System.out.println(" COOKIE IS THERE");
+				return cookie.getValue();
+
+			}
 
 		}
 		return null;
