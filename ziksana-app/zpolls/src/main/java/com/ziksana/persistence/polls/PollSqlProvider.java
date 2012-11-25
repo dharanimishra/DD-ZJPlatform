@@ -29,6 +29,7 @@ public class PollSqlProvider {
 		
 		for(Integer answerId: answers)
 		{
+		
 			String setString = "answer" + answerId.intValue() + "Count";
 			SET(setString + "=" + setString + "+1");
 		}

@@ -1,5 +1,6 @@
 package com.ziksana.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
+import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.service.polls.PollService;
 
 
@@ -69,7 +71,22 @@ public class PollController {
 //	public @ResponseBody void submitPoll(@PathVariable String memberId, @PathVariable String pollId, @PathVariable String optionIndex) {	
 		logger.info("Entering submitPoll(): " + memberId + " pollId " + pollId + " optionIndex " + optionIndex);
 		
-		//pollService.pollResponse(memberPersona, pollResponse);
+		PollQuestionResponse pollQuestionResponse = new PollQuestionResponse();
+		
+		PollQuestion pollQuestion = new PollQuestion();
+		pollQuestion.setID(Integer.valueOf(pollId));
+		
+		pollQuestionResponse.setPollQuestion(pollQuestion);
+		List<Integer> answers = new ArrayList<Integer>();
+		int option = Integer.valueOf(optionIndex);
+		option+=1;
+		answers.add(Integer.valueOf(option));
+		
+		pollQuestionResponse.setAnswers(answers);
+		
+		
+		
+		pollService.pollResponse(pollQuestionResponse);
 		
 		logger.info("Exiting submitPoll(): " + memberId + " pollId " + pollId + " optionIndex " + optionIndex);
 	}
