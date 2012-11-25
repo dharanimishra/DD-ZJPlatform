@@ -166,7 +166,7 @@ public interface PollQuestionMapper {
 	
 	@Select({
 		"select ",
-		"ID AS pollQuestionId,", 
+		"ID,", 
 		"QuestionType,",
 		"QuestionText,",
 		"Answer1,",

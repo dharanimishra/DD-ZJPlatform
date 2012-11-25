@@ -7,7 +7,7 @@ public class PollQuestionOption {
 	private Integer index        = -1;     // Index within the list of options
 	private String  optionText   = null;
 	private boolean optionSet    = false;  // captures the user's response
-	//private Integer optionTotal  = -1;     // captures the totals / result
+	private Integer optionTotal  = -1;     // captures the totals / result
 	
 	public PollQuestionOption() {
 	
@@ -62,11 +62,9 @@ public class PollQuestionOption {
 		optionSet = false;
 	}
 	
-	/*
+
 	public Integer getOptionTotal() {
-		if (optionTotal < 0) {
-			throw new IllegalStateException("Option Total is not set.");
-		}
+		
 		
 		return optionTotal;
 	}
@@ -74,7 +72,7 @@ public class PollQuestionOption {
 	public void setOptionTotal(Integer value) {
 		optionTotal = value;
 	}
-	*/
+	
 	public String toString() {
 		return "PollQuestionOption [" + getText() + "]";
 	}

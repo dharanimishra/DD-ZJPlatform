@@ -71,6 +71,9 @@ public class PollServiceImpl implements PollService {
 			// needs to happen here
 
 			PollQuestion pollQuestion = new PollQuestion();
+			System.out.println("QUESTION ID IS "
+					+ pollQuestionEntity.getID());
+						
 			pollQuestion.setID(pollQuestionEntity.getID());
 			System.out.println("QUESTION TEXT IS "
 					+ pollQuestionEntity.getQuestionText());

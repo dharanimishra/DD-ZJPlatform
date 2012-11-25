@@ -23,7 +23,7 @@ $(document).ready(function() {
 					$(data).find("questionresultpair").each(function(index){
 						 	var question = "<p class='titles-info font-Signika text-size-px18 light-gray'>" + $(this).find("pollQuestion").find("questionText").text() + "</p>";
 						 	var currentId = $(this).find("pollQuestion").find("id").text();
-						 	
+						 	alert('question id is '+currentId)
 							if ($(this).find("pollQuestion").find("active").text() == "true"){
 						 		output+="<div id='q" + index + "' style='width: 225px;' class='pollquestion'>";
 						 		output+=question;

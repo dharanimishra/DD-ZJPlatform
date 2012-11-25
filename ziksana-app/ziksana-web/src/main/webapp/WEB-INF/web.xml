@@ -5,7 +5,7 @@
 
 	<display-name>Ziksana Web Application</display-name>
 
-
+  
 
 
 	<filter>
@@ -16,7 +16,7 @@
 	<filter-mapping>
 		<filter-name>AuthenticationFilter</filter-name>
 		<servlet-name>ziks-servlet</servlet-name>
-		<!--   <url-pattern>/*</url-pattern>  -->
+		
 	</filter-mapping>
 
 

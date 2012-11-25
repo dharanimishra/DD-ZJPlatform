@@ -8,7 +8,7 @@ import com.ziksana.domain.member.MemberPersona;
 
 public class PollQuestion implements Comparable<PollQuestion> {
 
-	 private Integer                  ID               = null;
+	    private Integer                     ID               = null;
 	    private Poll                     parent           = null;
 	    private MemberPersona            creatorMember    = null;
 	    private Boolean                  active           = null;

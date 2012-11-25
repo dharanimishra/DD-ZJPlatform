@@ -21,7 +21,7 @@ if(request.getAttribute("loginResult") != null && ((String)request.getAttribute(
 <p><font color="#800000" size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Enter your name...:</font><input type="text" name="username" size="20"></p>
 <p><font color="#800000" size="5">
-Enter your password:</font><input type="text" name="password" size="20"></p>
+Enter your password:</font><input type="password" name="password" size="20"></p>
 <p><input type="submit" value="Submit" name="B1"></p>
 </form>
 </body>
