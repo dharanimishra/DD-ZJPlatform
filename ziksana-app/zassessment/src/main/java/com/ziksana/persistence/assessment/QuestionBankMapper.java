@@ -1,24 +1,18 @@
 package com.ziksana.persistence.assessment;
 
-import com.ziksana.domain.assessment.QuestionBank;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface QuestionBankMapper {
+public interface QuestionBankMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbank
-	 */
+	 *//*
 	@Delete({ "delete from asmquestionbank",
 			"where QuestionBankId = #{questionBankId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer questionBankId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbank
-	 */
+	 *//*
 	@Insert({
 			"insert into asmquestionbank (QuestionBankId, CreationDate, ",
 			"Active, DifficultyLevel, ",
@@ -38,14 +32,14 @@ public interface QuestionBankMapper {
 			"#{memberId,jdbcType=INTEGER})" })
 	int insert(QuestionBank record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbank
-	 */
+	 *//*
 	int insertSelective(QuestionBank record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbank
-	 */
+	 *//*
 	@Select({
 			"select",
 			"QuestionBankId, CreationDate, Active, DifficultyLevel, ProficiencyLevel, QuestionType, ",
@@ -56,14 +50,14 @@ public interface QuestionBankMapper {
 	@ResultMap("BaseResultMap")
 	QuestionBank selectByPrimaryKey(Integer questionBankId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbank
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(QuestionBank record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbank
-	 */
+	 *//*
 	@Update({
 			"update asmquestionbank",
 			"set CreationDate = #{creationDate,jdbcType=TIMESTAMP},",
@@ -82,4 +76,4 @@ public interface QuestionBankMapper {
 			"MemberId = #{memberId,jdbcType=INTEGER}",
 			"where QuestionBankId = #{questionBankId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(QuestionBank record);
-}
+*/}

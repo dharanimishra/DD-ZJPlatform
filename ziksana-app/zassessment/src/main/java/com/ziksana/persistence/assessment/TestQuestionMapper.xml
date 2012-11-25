@@ -202,13 +202,19 @@
 			<if test="subjclassificationid != null">
 				subjclassificationid,
 			</if>
-		</trim>		"insert into asmquestionbank set  profficiencylevel=, ",
-			"questiontype=#{questionType, jdbcType=INTEGER}, ",
-			"questioncontent=#{name, jdbcType=VARCHAR}, instruction=,",
-			" ismulticorrectanswer=, additionalinfopath=#{additionalInfoPath, jdbcType=VARCHAR} ,",
-			"isgroupwork= , questionapplicabilitytype=#{questionApplicabilityType, jdbcType=INTEGER} ",
-			" where questionbankid=#{questionBankId, jdbcType=INTEGER}" })
-		
+		</trim>
+		"insert into asmquestionbank set profficiencylevel=, ",
+		"questiontype=#{questionType, jdbcType=INTEGER}, ",
+		"questioncontent=#{name, jdbcType=VARCHAR}, instruction=,",
+		"
+		ismulticorrectanswer=, additionalinfopath=#{additionalInfoPath,
+		jdbcType=VARCHAR} ,",
+		"isgroupwork= ,
+		questionapplicabilitytype=#{questionApplicabilityType,
+		jdbcType=INTEGER} ",
+		" where questionbankid=#{questionBankId,
+		jdbcType=INTEGER}" })
+
 		<trim prefix=" values (" suffix=")" suffixOverrides=",">
 			sysdate(),
 			<if test="active != null">
@@ -248,7 +254,8 @@
 				#{owningMember.memberId, jdbcType=INTEGER},
 			</if>
 			<if test="subjClassification != null">
-				#{subjClassification.subjClassificationId, jdbcType=INTEGER},
+				#{subjClassification.subjClassificationId,
+				jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="questionBankId" resultType="int"
@@ -261,34 +268,287 @@
 		update asmquestionbank
 		<set>
 			<if test="difficultyLevel != null">
-				difficultyLevel = #{difficultyLevelId , jdbcType=INTEGER},
+				difficultyLevel = #{difficultyLevelId ,
+				jdbcType=INTEGER},
 			</if>
 			<if test="proficiencyLevel != null">
-				proficiencyLevel = #{proficiencyLevelId, jdbcType=INTEGER},
+				proficiencyLevel = #{proficiencyLevelId,
+				jdbcType=INTEGER},
 			</if>
 			<if test="questionText != null">
 				questionText = #{questionText, jdbcType=VARCHAR},
 			</if>
 			<if test="additionalInfoPath != null">
-				additionalInfoPath = #{additionalinfopath, jdbcType=VARCHAR},
+				additionalInfoPath = #{additionalinfopath,
+				jdbcType=VARCHAR},
 			</if>
 			<if test="instruction != null">
 				instruction = #{instruction, jdbcType=VARCHAR},
 			</if>
 			<if test="questionContentMarkup != null">
-				questionContentMarkup = #{questionContentMarkup,jdbcType=VARCHAR},
+				questionContentMarkup =
+				#{questionContentMarkup,jdbcType=VARCHAR},
 			</if>
 			<if test="isMultiCorrectAnswer != null">
-				isMultiCorrectAnswer = #{isMultiCorrectAnswer,jdbcType=BOOLEAN},
+				isMultiCorrectAnswer =
+				#{isMultiCorrectAnswer,jdbcType=BOOLEAN},
 			</if>
 			<if test="isGroupWork != null">
 				isGroupWork = #{isGroupWork,jdbcType=BOOLEAN},
 			</if>
 			<if test="questionApplicabilityType != null">
-				questionApplicabilityType = #{questionApplicabilityTypeId, jdbcType=INTEGER},
+				questionApplicabilityType =
+				#{questionApplicabilityTypeId, jdbcType=INTEGER},
 			</if>
 		</set>
 		where questionbankId = #{questionBankId, jdbcType="INTEGER"}
+	</update>
+
+	<select id="searchQuestions"
+		parameterMap="com.ziksana.service.assignment.impl.QuestionSearchCriteria"
+		resultMap="BaseResultMap">
+		<if test="name">
+		</if>
+	</select>
+
+	<insert id="saveQuestionBankAnswerInfo" parameterType="com.ziksana.domain.assessment.QuestionBankAnswer"
+		useGeneratedKeys="true" keyProperty="questionBankAnswerId" keyColumn="questionbankanswerid">
+		insert into asmquestionbankanswer
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationdate != null">
+				creationdate,
+			</if>
+			<if test="active != null">
+				active,
+			</if>
+			<if test="answercontent != null">
+				answercontent,
+			</if>
+			<if test="correctnessindicator != null">
+				correctnessindicator,
+			</if>
+			<if test="answersequence != null">
+				answersequence,
+			</if>
+			<if test="answerreflectioncomment != null">
+				answerreflectioncomment,
+			</if>
+			<if test="answerkeywordweight != null">
+				answerkeywordweight,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="questionbankid != null">
+				questionbankid,
+			</if>
+			<if test="matchingquestionbankanswerid != null">
+				matchingquestionbankanswerid,
+			</if>
+			<if test="visualspotid != null">
+				visualspotid,
+			</if>
+		</trim>
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="active != null">
+				#{active, jdbcType=BOOLEAN},
+			</if>
+			<if test="answerContent != null">
+				#{answerContent, jdbcType=VARCHAR},
+			</if>
+			<if test="correctIndicator != null">
+				#{correctIndicator, jdbcType=BOOLEAN},
+			</if>
+			<if test="answerSequence != null">
+				#{answerSequence, jdbcType=INTEGER},
+			</if>
+			<if test="answerReflectionComment != null">
+				#{answerReflectionComment, jdbcType=VARCHAR},
+			</if>
+			<if test="answerKeywordWeight != null">
+				#{answerKeywordWeight, jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{statusId, jdbcType=INTEGER},
+			</if>
+			<if test="questionBankId != null">
+				#{questionBankId, jdbcType=INTEGER},
+			</if>
+			<if test="matchingQtnBankAnswer != null">
+				#{matchingQtnBankAnswer.matchingQuestionBankAnswerId,
+				jdbcType=INTEGER},
+			</if>
+			<if test="visualSpotLabel != null">
+				#{visualSpotLabel.visualSpotId, jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="questionBankAnswerId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+
+	</insert>
+
+	<update id="updateQuestionBankAnswerInfo" parameterType="com.ziksana.domain.assessment.QuestionBankAnswer">
+		update asmquestionbankanswer
+		<set>
+			<if test="answerContent != null">
+				#{answerContent, jdbcType=VARCHAR},
+			</if>
+			<if test="correctIndicator != null">
+				#{correctIndicator, jdbcType=BOOLEAN},
+			</if>
+			<if test="answerSequence != null">
+				#{answerSequence, jdbcType=INTEGER},
+			</if>
+			<if test="answerReflectionComment != null">
+				#{answerReflectionComment, jdbcType=VARCHAR},
+			</if>
+			<if test="answerKeywordWeight != null">
+				#{answerKeywordWeight, jdbcType=INTEGER}
+			</if>
+		</set>
+		where questionbankanswerid = #{questionBankAnswerId, jdbcType=INTEGER}
+	</update>
+
+	<insert id="saveQuestionVisualInfo" parameterType="com.ziksana.domain.assessment.QuestionVisual"
+		useGeneratedKeys="true" keyProperty="questionVisualId" keyColumn="questionvisualid">
+		insert into asmquestionvisual
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationdate != null">
+				creationdate,
+			</if>
+			<if test="active != null">
+				active,
+			</if>
+			<if test="visualtype != null">
+				visualtype,
+			</if>
+			<if test="visualpath != null">
+				visualpath,
+			</if>
+			<if test="internalindicator != null">
+				internalindicator,
+			</if>
+			<if test="visualsource != null">
+				visualsource,
+			</if>
+			<if test="questionbankid != null">
+				questionbankid,
+			</if>
+		</trim>
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="active != null">
+				#{active, jdbcType=BOOLEAN},
+			</if>
+			<if test="visualType != null">
+				#{visualTypeId, jdbcType=INTEGER},
+			</if>
+			<if test="visualPath != null">
+				#{visualPath, jdbcType=VARCHAR},
+			</if>
+			<if test="internalIndicator != null">
+				#{internalIndicator, jdbcType=INTEGER},
+			</if>
+			<if test="visualSource != null">
+				#{visualSourceId, jdbcType=INTEGER},
+			</if>
+			<if test="questionBankId != null">
+				#{questionBank.questionBankId, jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="questionVisualId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+	<update id="updateQuestionVisualInfo" parameterType="com.ziksana.domain.assessment.QuestionVisual">
+		update asmquestionvisual
+		<set>
+			<if test="visualType != null">
+				visualType = #{visualTypeId, jdbcType=INTEGER},
+			</if>
+			<if test="visualPath != null">
+				visualPath = #{visualPath, jdbcType=VARCHAR},
+			</if>
+			<if test="internalIndicator != null">
+				internalIndicator = #{internalIndicator,
+				jdbcType=INTEGER},
+			</if>
+			<if test="visualSource != null">
+				visualSource = #{visualSourceId, jdbcType=INTEGER},
+			</if>
+		</set>
+		where questionvisualid = #{questionVisualId, jdbcType=INTEGER},
+	</update>
+	
+	<insert id="saveVisualSpot" parameterType="com.ziksana.domain.assessment.VisualSpot"
+		useGeneratedKeys="true" keyProperty="visualSpotId" keyColumn="visualspotid">
+		insert into asmquestionbankanswer
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationdate != null">
+				creationdate,
+			</if>
+			<if test="visualsize != null">
+				visualsize,
+			</if>
+			<if test="spotrelativecoordinate != null">
+				spotrelativecoordinate,
+			</if>
+			<if test="questionlabeltext != null">
+				questionlabeltext,
+			</if>
+			<if test="active != null">
+				active,
+			</if>
+			<if test="questionvisualid != null">
+				questionvisualid,
+			</if>
+		</trim>
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			sysdate(),		
+			<if test="size != null">
+				#{size, jdbcType=VARCHAR},
+			</if>
+			<if test="coordinates != null">
+				#{visualSize, jdbcType=VARCHAR},
+			</if>
+			<if test="questionLabelText != null">
+				#{questionLabelText, jdbcType=VARCHAR},
+			</if>
+			<if test="active != null">
+				#{active, jdbcType=BOOLEAN},
+			</if>
+			<if test="questionVisual != null">
+				#{questionVisual.questionVisualId, jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="visualSpotId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+	<update id="updateVisualSpot" parameterType="com.ziksana.domain.assessment.VisualSpot">
+		update asmvisualspot
+		<set>
+			<if test="size != null">
+				visualsize = #{size, jdbcType=VARCHAR},
+			</if>
+			<if test="coordinates != null">
+				spotrelativecoordinate = #{coordinates, jdbcType=VARCHAR},
+			</if>
+			<if test="questionLabelText != null">
+				questionlabeltext = #{questionLabelText, jdbcType=VARCHAR},
+			</if>
+			<if test="active != null">
+				active = #{active, jdbcType=BOOLEAN},
+			</if>
+		</set>
+		where visualspotid = #{visualSpotId, jdbcType=INTEGER}
 	</update>
 
 </mapper>

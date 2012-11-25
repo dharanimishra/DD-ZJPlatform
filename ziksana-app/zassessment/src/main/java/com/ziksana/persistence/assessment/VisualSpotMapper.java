@@ -7,18 +7,18 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-public interface VisualSpotMapper {
+public interface VisualSpotMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmvisualspot
-	 */
+	 *//*
 	@Delete({ "delete from asmvisualspot",
 			"where VisualSpotId = #{visualSpotId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer visualSpotId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmvisualspot
-	 */
+	 *//*
 	@Insert({
 			"insert into asmvisualspot (VisualSpotId, CreationDate, ",
 			"VisualSize, SpotRelativeCoordinate, ",
@@ -30,14 +30,14 @@ public interface VisualSpotMapper {
 			"#{questionVisualId,jdbcType=INTEGER})" })
 	int insert(VisualSpot record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmvisualspot
-	 */
+	 *//*
 	int insertSelective(VisualSpot record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmvisualspot
-	 */
+	 *//*
 	@Select({
 			"select",
 			"VisualSpotId, CreationDate, VisualSize, SpotRelativeCoordinate, QuestionLabelText, ",
@@ -46,14 +46,14 @@ public interface VisualSpotMapper {
 	@ResultMap("BaseResultMap")
 	VisualSpot selectByPrimaryKey(Integer visualSpotId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmvisualspot
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(VisualSpot record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmvisualspot
-	 */
+	 *//*
 	@Update({
 			"update asmvisualspot",
 			"set CreationDate = #{creationDate,jdbcType=TIMESTAMP},",
@@ -64,4 +64,4 @@ public interface VisualSpotMapper {
 			"QuestionVisualId = #{questionVisualId,jdbcType=INTEGER}",
 			"where VisualSpotId = #{visualSpotId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(VisualSpot record);
-}
+*/}

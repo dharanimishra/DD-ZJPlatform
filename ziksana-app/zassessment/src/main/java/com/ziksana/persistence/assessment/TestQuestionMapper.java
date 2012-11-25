@@ -12,7 +12,10 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.assessment.QuestionBank;
+import com.ziksana.domain.assessment.QuestionBankAnswer;
+import com.ziksana.domain.assessment.QuestionVisual;
 import com.ziksana.domain.assessment.TestQuestion;
+import com.ziksana.domain.assessment.VisualSpot;
 import com.ziksana.service.assignment.impl.QuestionSearchCriteria;
 public interface TestQuestionMapper {
 	
@@ -54,7 +57,7 @@ public interface TestQuestionMapper {
 	@Results(value = {
 			@Result(property = "testQuestionId", column = "testquestionid"),
 			@Result(property = "questionBankId", column = "questionbankid"),
-			@Result(property = "questionBank", column = "testQuestionId", javaType = QuestionBank.class, one = @One(select = "selectQuestionBank")) })
+			@Result(property = "questionBank", column = "testQuestionId", javaType = QuestionBank.class, one = @One(select = "getQuestionBank")) })
 	List<TestQuestion> getTestQuestions(@Param("testId") Integer testId);
 
 	/**
@@ -70,7 +73,7 @@ public interface TestQuestionMapper {
 			@Result(property = "owningMember.memberId", column = "memberid"),
 			@Result(property = "questionType", column = "questiontype"),
 			@Result(property = "name", column = "questioncontent") })
-	QuestionBank selectQuestionBank(Integer testQuestionId);
+	QuestionBank getQuestionBank(Integer testQuestionId);
 
 
 	@Update({
@@ -85,13 +88,13 @@ public interface TestQuestionMapper {
 	 * @param searchCriteria
 	 * @return
 	 */
-	@Select({ "selecgt name, questionbankid, memberid, questiontype from asmquestionbank where name like #{name,jdbcType=VARCHAR} " })
+	@Select({ "selecgt name, questionbankid, memberid, questiontype from asmquestionbank where name like #{name,jdbcType=VARCHAR} and questiontype in (qtnTypes)" })
 	@Results(value = {
 			@Result(property = "questionBankId", column = "questionbankid"),
 			@Result(property = "owningMember.memberId", column = "memberid"),
 			@Result(property = "questionType", column = "questiontype"),
 			@Result(property = "name", column = "questioncontent"), })
-	List<QuestionBank> searchQuestions(QuestionSearchCriteria searchCriteria);
+	List<QuestionBank> searchQuestions(@Param("searchCriteria") QuestionSearchCriteria searchCriteria, @Param("qtnTypes") StringBuffer qtnTypes);
 
 	/**
 	 * @param qtnBank
@@ -126,8 +129,53 @@ public interface TestQuestionMapper {
 	@Results(value = {
 			@Result(property = "testQuestionId", column = "testquestionid"),
 			@Result(property = "questionBankId", column = "questionbankid"),
-			@Result(property = "questionBank", column = "questionbankid", javaType = QuestionBank.class, one = @One(select = "selectQuestionBank")) })
+			@Result(property = "questionBank", column = "questionbankid", javaType = QuestionBank.class, one = @One(select = "getQuestionBank")) })
 	TestQuestion getTestQuestion(Integer testQuestionId);
+
+	
+	/**
+	 * Updates the Question's Answer related information.
+	 * @param qtnBankAnswer
+	 * @return
+	 */
+	Integer updateQuestionBankAnswerInfo(QuestionBankAnswer qtnBankAnswer);
+
+	
+	/**
+	 * Saves the Question's Answer related information.
+	 * @param qtnBankAnswer
+	 * @return
+	 */
+	Integer saveQuestionBankAnswerInfo(QuestionBankAnswer qtnBankAnswer);
+	
+
+	/**
+	 * Stores the visual information if QuestionType is Visual @ QuestionBank,
+	 * @param questionVisual
+	 * @return
+	 */
+	Integer savesQuestionVisualInfo(QuestionVisual questionVisual);
+
+	/**
+	 * Updates the visual information if QuestionType is Visual @ QuestionBank,
+	 * @param questionVisual
+	 * @return
+	 */
+	Integer updateQuestionVisualInfo(QuestionVisual questionVisual);
+
+	
+	/**
+	 * Updates the QuestionVisual's visualspot information .
+	 * @param visualSpot
+	 */
+	Integer updateVisualSpot(VisualSpot visualSpot);
+
+	
+	/**
+	 * Saves the QuestionVisual's visualspot information.
+	 * @param visualSpot
+	 */
+	Integer saveVisualSpot(VisualSpot visualSpot);
 
 
 }

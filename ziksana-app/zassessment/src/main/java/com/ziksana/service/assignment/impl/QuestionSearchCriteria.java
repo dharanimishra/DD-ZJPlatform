@@ -9,12 +9,12 @@ import com.ziksana.domain.assessment.QuestionType;
  */
 public class QuestionSearchCriteria {
 	
-	private String 				name 		= null;
-	private String 				area 		= null;
-	private String 				subject 	= null;
-	private String 				topic		= null;
-	private List<QuestionType> 	questions 	= null;
-	private String				tags		= null;
+	private String 				name 			= null;
+	private String 				area 			= null;
+	private String 				subject 		= null;
+	private String 				topic			= null;
+	private List<QuestionType> 	questionTypes 	= null;
+	private String				tags			= null;
 	
 	/**
 	 * @return the name
@@ -65,18 +65,6 @@ public class QuestionSearchCriteria {
 		this.topic = topic;
 	}
 	/**
-	 * @return the questions
-	 */
-	public List<QuestionType> getQuestions() {
-		return questions;
-	}
-	/**
-	 * @param questions the questions to set
-	 */
-	public void setQuestions(List<QuestionType> questions) {
-		this.questions = questions;
-	}
-	/**
 	 * @return the tags
 	 */
 	public String getTags() {
@@ -89,5 +77,29 @@ public class QuestionSearchCriteria {
 		this.tags = tags;
 	}					
 	
+	
+	public void basicSearch(){
+		if(name!=null){
+			setName(name);
+		}
+	}
 
+	public void advancedSearch(){
+		if(name!=null){
+			setName(name);
+		}
+		
+	}
+	/**
+	 * @return the questionTypes
+	 */
+	public List<QuestionType> getQuestionTypes() {
+		return questionTypes;
+	}
+	/**
+	 * @param questionTypes the questionTypes to set
+	 */
+	public void setQuestionTypes(List<QuestionType> questionTypes) {
+		this.questionTypes = questionTypes;
+	}
 }

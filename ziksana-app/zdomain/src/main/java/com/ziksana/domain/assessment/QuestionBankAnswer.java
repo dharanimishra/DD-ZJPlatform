@@ -12,14 +12,14 @@ public class QuestionBankAnswer extends AuditHistory {
 	
 	public QuestionBankAnswer(Boolean active, String answerContent,
 			Boolean correctIndicator, AnswerSequence answerSequence,
-			Status status, QuestionBank questionBank,
+			Status status, Integer questionBankId,
 			QuestionBankAnswer matchingQtnBankAnswer) {
 		this.active = active;
 		this.answerContent = answerContent;
 		this.correctIndicator = correctIndicator;
 		this.answerSequence = answerSequence;
 		this.status = status;
-		this.questionBank = questionBank;
+		this.questionBankId = questionBankId;
 		this.matchingQtnBankAnswer = matchingQtnBankAnswer;
 	}
 
@@ -31,7 +31,7 @@ public class QuestionBankAnswer extends AuditHistory {
 	private String 				answerReflectionComment	= null;
 	private Integer 			answerKeywordWeight		= null;
 	private Status				status					= null;
-	private QuestionBank 		questionBank			= null;
+	private Integer		 		questionBankId			= null;
 	private QuestionBankAnswer 	matchingQtnBankAnswer	= null;
 	private VisualSpot 			visualSpotLabel			= null;
 	private Boolean 			active					= null;
@@ -147,21 +147,21 @@ public class QuestionBankAnswer extends AuditHistory {
 	/**
 	 * @return the questionBank
 	 */
-	public QuestionBank getQuestionBank() {
-		return questionBank;
+	public Integer getQuestionBankId() {
+		return questionBankId;
 	}
 	/**
 	 * @param questionBank the questionBank to set
 	 */
-	public void setQuestionBank(QuestionBank questionBank) {
-		this.questionBank = questionBank;
+	public void setQuestionBankId(Integer questionBankId) {
+		this.questionBankId = questionBankId;
 	}
 	/**
 	 * @return the matchingQtnBankAnswer
 	 */
 	public QuestionBankAnswer getMatchingQtnBankAnswer() {
 		return matchingQtnBankAnswer;
-	}
+	} 
 	/**
 	 * @param matchingQtnBankAnswer the matchingQtnBankAnswer to set
 	 */
@@ -186,7 +186,7 @@ public class QuestionBankAnswer extends AuditHistory {
 		return "QuestionBankAnswer [answerContent=" + answerContent
 				+ ", correctIndicator=" + correctIndicator
 				+ ", answerSequence=" + answerSequence + ", status=" + status
-				+ ", questionBank=" + questionBank + "]";
+				+ ", questionBank=" + questionBankId + "]";
 	}
 
 }

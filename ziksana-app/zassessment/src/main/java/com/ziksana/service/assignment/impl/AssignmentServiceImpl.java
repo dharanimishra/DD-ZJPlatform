@@ -11,10 +11,14 @@ import com.ziksana.domain.assessment.Assignment;
 import com.ziksana.domain.assessment.AssignmentTestRubric;
 import com.ziksana.domain.assessment.AssignmentTestSettings;
 import com.ziksana.domain.assessment.QuestionBank;
+import com.ziksana.domain.assessment.QuestionBankAnswer;
+import com.ziksana.domain.assessment.QuestionType;
+import com.ziksana.domain.assessment.QuestionVisual;
 import com.ziksana.domain.assessment.Rubric;
 import com.ziksana.domain.assessment.RubricMatrix;
 import com.ziksana.domain.assessment.Test;
 import com.ziksana.domain.assessment.TestQuestion;
+import com.ziksana.domain.assessment.VisualSpot;
 import com.ziksana.domain.assessment.member.StudentInfo;
 import com.ziksana.domain.assessment.member.StudentTest;
 import com.ziksana.domain.assessment.member.TestGrade;
@@ -222,12 +226,26 @@ public class AssignmentServiceImpl implements AssignmentService {
 			throws AssignmentException {
 		
 		List<QuestionBank> qtnBankList = null;
-		
+		List<QuestionType> questionTypes = null;
 		if(searchCriteria == null){
 			throw new AssignmentException("Search Criteria cannot be null question cannot be null");
 		}
+
+		questionTypes = searchCriteria.getQuestionTypes();
 		
-		qtnBankList = testQuestionMapper.searchQuestions(searchCriteria);
+		StringBuffer qtnType = new StringBuffer();
+		int i = 0;
+		for (QuestionType questionType : questionTypes) {
+			
+			i = i+1;
+			if(i<=questionTypes.size()){
+				qtnType.append(questionType.getID()+",") ;	
+			}else{
+				qtnType.append(questionType.getID()) ;
+			}
+		}
+		
+		qtnBankList = testQuestionMapper.searchQuestions(searchCriteria,qtnType);
 		
 		return qtnBankList;
 	}
@@ -273,8 +291,11 @@ public class AssignmentServiceImpl implements AssignmentService {
 	@Override
 	public void createOrUpdateNewQuestion(TestQuestion testQuestion) throws AssignmentException {
 		
-		QuestionBank qtnBank = null;
-
+		QuestionBank 		qtnBank 		= null;
+		QuestionBankAnswer 	qtnBankAnswer 	= null;
+		QuestionVisual 		questionVisual 	= null;
+		List<VisualSpot> 	visualSpotList 	= null;
+		
 		if(testQuestion== null){
 			throw new AssignmentException("Test cannot be null");
 		}
@@ -282,21 +303,62 @@ public class AssignmentServiceImpl implements AssignmentService {
 		if(testQuestion.getTest()== null){
 			throw new AssignmentException("Test cannot be null");
 		}
+
 			
 		qtnBank = testQuestion.getQuestionBank();
-		
+
 		if(qtnBank == null){
 			throw new AssignmentException("QuestionBank cannot be null to create a TestQuestion");
 		}
 		
+		questionVisual = qtnBank.getQtnVisual();
+		
+		visualSpotList = questionVisual.getVisualSpotList();
+		
+
+		qtnBankAnswer = qtnBank.getQtnBankAnswer();
+		
+		 
 		if(testQuestion.getTestQuestionId()!=null){
 			//UPDATE OPERATION.
 			testQuestionMapper.updateTestQuestion(testQuestion);
 			
 			testQuestionMapper.updateQuestionBank(qtnBank);
 			
+/*			
+ * TODO: UNCOMMED WHEN QUESTIONVISUAL IS IN PLACE.
+			if(questionVisual.getQuestionVisualId()!=null){
+				
+				testQuestionMapper.updateQuestionVisualInfo(questionVisual);
+				
+				if(visualSpotList!=null){
+					for (VisualSpot visualSpot : visualSpotList) {
+						
+						if(visualSpot.getVisualSpotId()!=null){
+							testQuestionMapper.updateVisualSpot(visualSpot);
+						}else{
+							visualSpot.setQuestionVisual(questionVisual);
+							
+							testQuestionMapper.saveVisualSpot(visualSpot);
+						}
+						
+					}
+				}
+			}
+*/			
+			testQuestionMapper.updateQuestionBankAnswerInfo(qtnBankAnswer);
+			
 		}else{
 			//SAVE OPERATION
+			if(qtnBankAnswer.getQuestionBankAnswerId()!=null){
+				
+				testQuestionMapper.updateQuestionBankAnswerInfo(qtnBankAnswer);
+				
+			}else{
+				
+				testQuestionMapper.saveQuestionBankAnswerInfo(qtnBankAnswer);
+				
+			}
 			if(qtnBank.getQuestionBankId()!=null){
 				
 				testQuestionMapper.updateQuestionBank(qtnBank);

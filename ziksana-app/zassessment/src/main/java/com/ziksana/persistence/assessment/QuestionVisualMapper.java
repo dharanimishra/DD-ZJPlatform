@@ -1,24 +1,18 @@
 package com.ziksana.persistence.assessment;
 
-import com.ziksana.domain.assessment.QuestionVisual;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface QuestionVisualMapper {
+public interface QuestionVisualMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionvisual
-	 */
+	 *//*
 	@Delete({ "delete from asmquestionvisual",
 			"where QuestionVisualId = #{questionVisualId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer questionVisualId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionvisual
-	 */
+	 *//*
 	@Insert({
 			"insert into asmquestionvisual (QuestionVisualId, CreationDate, ",
 			"Active, VisualType, ",
@@ -30,14 +24,14 @@ public interface QuestionVisualMapper {
 			"#{visualSource,jdbcType=INTEGER}, #{questionBankId,jdbcType=INTEGER})" })
 	int insert(QuestionVisual record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionvisual
-	 */
+	 *//*
 	int insertSelective(QuestionVisual record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionvisual
-	 */
+	 *//*
 	@Select({
 			"select",
 			"QuestionVisualId, CreationDate, Active, VisualType, VisualPath, InternalIndicator, ",
@@ -46,14 +40,14 @@ public interface QuestionVisualMapper {
 	@ResultMap("BaseResultMap")
 	QuestionVisual selectByPrimaryKey(Integer questionVisualId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionvisual
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(QuestionVisual record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionvisual
-	 */
+	 *//*
 	@Update({ "update asmquestionvisual",
 			"set CreationDate = #{creationDate,jdbcType=TIMESTAMP},",
 			"Active = #{active,jdbcType=BIT},",
@@ -64,4 +58,4 @@ public interface QuestionVisualMapper {
 			"QuestionBankId = #{questionBankId,jdbcType=INTEGER}",
 			"where QuestionVisualId = #{questionVisualId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(QuestionVisual record);
-}
+*/}

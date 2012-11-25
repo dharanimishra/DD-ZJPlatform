@@ -20,7 +20,7 @@ public class VisualSpot extends AuditHistory{
 
 	private ZID 			visualSpotId;
 	private String 			size 				= null;
-	private String 			coordinates	= null;
+	private String 			coordinates			= null;
 	private String 			questionLabelText 	= null;
 	private Boolean 		active 				= null;
 	private QuestionVisual 	questionVisual 		= null;

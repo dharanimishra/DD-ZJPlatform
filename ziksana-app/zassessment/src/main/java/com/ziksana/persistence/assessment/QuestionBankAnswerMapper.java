@@ -1,24 +1,18 @@
 package com.ziksana.persistence.assessment;
 
-import com.ziksana.domain.assessment.QuestionBankAnswer;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-public interface QuestionBankAnswerMapper {
+public interface QuestionBankAnswerMapper {/*
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbankanswer
-	 */
+	 *//*
 	@Delete({ "delete from asmquestionbankanswer",
 			"where QuestionBankAnswerId = #{questionBankAnswerId,jdbcType=INTEGER}" })
 	int deleteByPrimaryKey(Integer questionBankAnswerId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbankanswer
-	 */
+	 *//*
 	@Insert({
 			"insert into asmquestionbankanswer (QuestionBankAnswerId, CreationDate, ",
 			"Active, AnswerContent, ",
@@ -34,14 +28,14 @@ public interface QuestionBankAnswerMapper {
 			"#{matchingQuestionBankAnswerId,jdbcType=INTEGER}, #{visualSpotId,jdbcType=INTEGER})" })
 	int insert(QuestionBankAnswer record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbankanswer
-	 */
+	 *//*
 	int insertSelective(QuestionBankAnswer record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbankanswer
-	 */
+	 *//*
 	@Select({
 			"select",
 			"QuestionBankAnswerId, CreationDate, Active, AnswerContent, CorrectnessIndicator, ",
@@ -52,14 +46,14 @@ public interface QuestionBankAnswerMapper {
 	@ResultMap("BaseResultMap")
 	QuestionBankAnswer selectByPrimaryKey(Integer questionBankAnswerId);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbankanswer
-	 */
+	 *//*
 	int updateByPrimaryKeySelective(QuestionBankAnswer record);
 
-	/**
+	*//**
 	 * This method corresponds to the database table asmquestionbankanswer
-	 */
+	 *//*
 	@Update({
 			"update asmquestionbankanswer",
 			"set CreationDate = #{creationDate,jdbcType=TIMESTAMP},",
@@ -75,4 +69,4 @@ public interface QuestionBankAnswerMapper {
 			"VisualSpotId = #{visualSpotId,jdbcType=INTEGER}",
 			"where QuestionBankAnswerId = #{questionBankAnswerId,jdbcType=INTEGER}" })
 	int updateByPrimaryKey(QuestionBankAnswer record);
-}
+*/}

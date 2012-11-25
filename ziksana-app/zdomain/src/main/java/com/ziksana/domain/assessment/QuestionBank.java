@@ -1,6 +1,7 @@
 package com.ziksana.domain.assessment;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.net.ssl.SSLEngineResult.Status;
 
@@ -46,10 +47,11 @@ public class QuestionBank extends AuditHistory{
 	private Integer 				questionApplicableTypeId		= null;
 	private SubjectClassification 	subjClassification				= null;
 	private Member 					owningMember					= null;
-	/*private TestQuestion      		question						= null;
-	private QuestionBankAnswer		qtnBankAnswer					= null;
-	private QuestionTagcloud		qtnTagCloud						= null;
+	private List<QuestionTagcloud>	qtnTagCloudList					= null;
 	private QuestionVisual			qtnVisual						= null;
+	private QuestionBankAnswer		qtnBankAnswer					= null;
+
+	/*private TestQuestion      	question						= null;
 	private NextBestQuestion		nextBestQtn						= null;		
 	*/
 	
@@ -283,6 +285,30 @@ public class QuestionBank extends AuditHistory{
 		this.owningMember = owningMember;
 	}
 	/**
+	 * @return the qtnTagCloudList
+	 */
+	public List<QuestionTagcloud> getQtnTagCloudList() {
+		return qtnTagCloudList;
+	}
+	/**
+	 * @param qtnTagCloudList the qtnTagCloudList to set
+	 */
+	public void setQtnTagCloudList(List<QuestionTagcloud> qtnTagCloudList) {
+		this.qtnTagCloudList = qtnTagCloudList;
+	}
+	/**
+	 * @return the qtnVisual
+	 */
+	public QuestionVisual getQtnVisual() {
+		return qtnVisual;
+	}
+	/**
+	 * @param qtnVisual the qtnVisual to set
+	 */
+	public void setQtnVisual(QuestionVisual qtnVisual) {
+		this.qtnVisual = qtnVisual;
+	}
+	/**
 	 * @return the multipleAnswerIndicator
 	 */
 	public Boolean getMultipleAnswerIndicator() {
@@ -295,6 +321,18 @@ public class QuestionBank extends AuditHistory{
 		this.multipleAnswerIndicator = multipleAnswerIndicator;
 	}
 
+	/**
+	 * @return the qtnBankAnswer
+	 */
+	public QuestionBankAnswer getQtnBankAnswer() {
+		return qtnBankAnswer;
+	}
+	/**
+	 * @param qtnBankAnswer the qtnBankAnswer to set
+	 */
+	public void setQtnBankAnswer(QuestionBankAnswer qtnBankAnswer) {
+		this.qtnBankAnswer = qtnBankAnswer;
+	}
 	/**
 	 * @return the question
 	 *//*

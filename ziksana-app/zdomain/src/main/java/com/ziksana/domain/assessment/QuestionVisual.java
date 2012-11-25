@@ -1,5 +1,7 @@
 package com.ziksana.domain.assessment;
 
+import java.util.List;
+
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.id.ZID;
 
@@ -19,13 +21,16 @@ public class QuestionVisual extends AuditHistory{
 		this.questionBank = questionBank;
 	}
 
-	private ZID		 		questionVisualId;
-	private Boolean 		active 				= null;
-	private VisualType 		visualType 			= null;
-	private String 			visualPath 			= null;
-	private Boolean 		internalIndicator 	= null;
-	private VisualSource 	visualSource 		= null;
-	private QuestionBank 	questionBank 		= null;
+	private ZID		 			questionVisualId;
+	private Boolean 			active 				= null;
+	private VisualType 			visualType 			= null;
+	private Integer	 			visualTypeId		= null;
+	private String 				visualPath 			= null;
+	private Boolean 			internalIndicator 	= null;
+	private VisualSource 		visualSource 		= null;
+	private Integer	 			visualSourceId 		= null;
+	private QuestionBank 		questionBank 		= null;
+	private List<VisualSpot>	visualSpotList		= null;
 	
 	
 	/**
@@ -118,6 +123,42 @@ public class QuestionVisual extends AuditHistory{
 		return "QuestionVisual [active=" + active + ", visualType="
 				+ visualType + ", visualPath=" + visualPath + ", visualSource="
 				+ visualSource + "]";
+	}
+	/**
+	 * @return the visualTypeId
+	 */
+	public Integer getVisualTypeId() {
+		return visualTypeId;
+	}
+	/**
+	 * @param visualTypeId the visualTypeId to set
+	 */
+	public void setVisualTypeId(Integer visualTypeId) {
+		this.visualTypeId = visualTypeId;
+	}
+	/**
+	 * @return the visualSourceId
+	 */
+	public Integer getVisualSourceId() {
+		return visualSourceId;
+	}
+	/**
+	 * @param visualSourceId the visualSourceId to set
+	 */
+	public void setVisualSourceId(Integer visualSourceId) {
+		this.visualSourceId = visualSourceId;
+	}
+	/**
+	 * @return the visualSpotList
+	 */
+	public List<VisualSpot> getVisualSpotList() {
+		return visualSpotList;
+	}
+	/**
+	 * @param visualSpotList the visualSpotList to set
+	 */
+	public void setVisualSpotList(List<VisualSpot> visualSpotList) {
+		this.visualSpotList = visualSpotList;
 	}
 
 }
