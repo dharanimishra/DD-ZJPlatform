@@ -1,6 +1,7 @@
 package com.ziksana.domain.assessment;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -38,8 +39,8 @@ public class RubricMatrix extends AuditHistory {
 	/**
 	 * @param rubricMatrixId the rubricMatrixId to set
 	 */
-	public void setRubricMatrixId(ZID rubricMatrixId) {
-		this.rubricMatrixId = rubricMatrixId;
+	public void setRubricMatrixId(Integer rubricMatrixId) {
+		this.rubricMatrixId = new IntegerZID(rubricMatrixId);
 	}
 	/**
 	 * @return the cellName

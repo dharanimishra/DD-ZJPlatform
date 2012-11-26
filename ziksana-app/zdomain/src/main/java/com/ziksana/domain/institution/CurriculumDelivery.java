@@ -4,7 +4,9 @@
 package com.ziksana.domain.institution;
 
 import java.util.Date;
+
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -39,8 +41,8 @@ public class CurriculumDelivery extends AuditHistory {
 	/**
 	 * @param curriculumDeliveryId the curriculumDeliveryId to set
 	 */
-	public void setCurriculumDeliveryId(ZID curriculumDeliveryId) {
-		this.curriculumDeliveryId = curriculumDeliveryId;
+	public void setCurriculumDeliveryId(Integer curriculumDeliveryId) {
+		this.curriculumDeliveryId = new IntegerZID(curriculumDeliveryId);
 	}
 	/**
 	 * @return the startDate

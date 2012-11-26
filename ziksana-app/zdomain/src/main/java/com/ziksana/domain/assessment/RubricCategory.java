@@ -1,6 +1,7 @@
 package com.ziksana.domain.assessment;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 public class RubricCategory extends AuditHistory {
@@ -26,8 +27,8 @@ public class RubricCategory extends AuditHistory {
 	/**
 	 * @param rubricCategoryId the rubricCategoryId to set
 	 */
-	public void setRubricCategoryId(ZID rubricCategoryId) {
-		this.rubricCategoryId = rubricCategoryId;
+	public void setRubricCategoryId(Integer rubricCategoryId) {
+		this.rubricCategoryId = new IntegerZID(rubricCategoryId);
 	}
 	/**
 	 * @return the name

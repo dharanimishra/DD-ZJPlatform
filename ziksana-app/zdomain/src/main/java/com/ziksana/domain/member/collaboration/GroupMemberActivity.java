@@ -2,6 +2,7 @@ package com.ziksana.domain.member.collaboration;
 
 import java.sql.Timestamp;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -24,8 +25,8 @@ public class GroupMemberActivity {
 	/**
 	 * @param activityId the activityId to set
 	 */
-	public void setActivityId(ZID activityId) {
-		this.activityId = activityId;
+	public void setActivityId(Integer activityId) {
+		this.activityId = new IntegerZID(activityId);
 	}
 	/**
 	 * @return the startTime

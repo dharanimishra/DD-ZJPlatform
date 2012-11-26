@@ -1,6 +1,7 @@
 package com.ziksana.domain.assessment;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 public class NextBestQuestion extends AuditHistory {
@@ -21,8 +22,8 @@ public class NextBestQuestion extends AuditHistory {
 	public ZID getNextBestQuestionId() {
 		return nextBestQuestionId;
 	}
-	public void setNextBestQuestionId(ZID nextBestQuestionId) {
-		this.nextBestQuestionId = nextBestQuestionId;
+	public void setNextBestQuestionId(Integer nextBestQuestionId) {
+		this.nextBestQuestionId = new IntegerZID(nextBestQuestionId);
 	}
 	public TestModel getTestModel() {
 		return testModel;

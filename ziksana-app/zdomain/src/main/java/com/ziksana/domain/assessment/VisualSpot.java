@@ -1,6 +1,7 @@
 package com.ziksana.domain.assessment;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -35,8 +36,8 @@ public class VisualSpot extends AuditHistory{
 	/**
 	 * @param visualSpotId the visualSpotId to set
 	 */
-	public void setVisualSpotId(ZID visualSpotId) {
-		this.visualSpotId = visualSpotId;
+	public void setVisualSpotId(Integer visualSpotId) {
+		this.visualSpotId = new IntegerZID(visualSpotId);
 	}
 	/**
 	 * @return the size

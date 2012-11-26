@@ -3,6 +3,7 @@ package com.ziksana.domain.assessment.member;
 import java.util.Date;
 
 import com.ziksana.domain.assessment.Test;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -32,8 +33,8 @@ public class StudentTest {
 	/**
 	 * @param testId the testId to set
 	 */
-	public void setTestId(ZID testId) {
-		this.testId = testId;
+	public void setTestId(Integer testId) {
+		this.testId = new IntegerZID(testId);
 	}
 	/**
 	 * @return the totalDuration

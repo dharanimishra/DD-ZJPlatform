@@ -4,6 +4,7 @@
 package com.ziksana.domain.assessment;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -32,8 +33,8 @@ public class AssignmentTestLink extends AuditHistory {
 	/**
 	 * @param testLinkId the testLinkId to set
 	 */
-	public void setTestLinkId(ZID testLinkId) {
-		this.testLinkId = testLinkId;
+	public void setTestLinkId(Integer testLinkId) {
+		this.testLinkId = new IntegerZID(testLinkId);
 	}
 	/**
 	 * @return the linkReason

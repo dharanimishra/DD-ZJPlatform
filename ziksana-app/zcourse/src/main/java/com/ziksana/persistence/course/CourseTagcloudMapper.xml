@@ -6,38 +6,36 @@
 		useGeneratedKeys="true" keyProperty="courseTagCloudId" keyColumn="coursetagcloudid">
 		insert into corcoursetagcloud
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate !=null">
-				creationdate,
-			</if>
-			<if test="tagname!=null">
+			creationdate,
+			<if test="tagName!=null">
 				tagname,
 			</if>
-			<if test="tagtype!=null">
+			<if test="tagType!=null">
 				tagtype,
 			</if>
-			<if test="courseid!=null">
+			<if test="course!=null">
 				courseid,
 			</if>
-			<if test="memberroleid!=null">
+			<if test="creatingMember !=null">
 				memberroleid,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			sysdate(),
-			<if test="tagname!=null">
+			<if test="tagName!=null">
 				#{tagName,jdbcType=VARCHAR},
 			</if>
-			<if test="tagType!=null">
+			<if test="tagType !=null">
 				#{tagTypeId,jdbcType=INTEGER},
 			</if>
-			<if test="course!=null">
+			<if test="course !=null">
 				#{course.courseId,jdbcType=INTEGER},
 			</if>
-			<if test="creatingMember!=null">
+			<if test="creatingMember !=null">
 				#{creatingMember.memberRoleId,jdbcType=INTEGER},
 			</if>
 		</trim>
-		<selectKey keyProperty=courseTagCloudId resultType="int"
+		<selectKey keyProperty="courseTagCloudId" resultType="int"
 			order="AFTER">
 			SELECT LAST_INSERT_ID();
 		</selectKey>
@@ -46,7 +44,7 @@
 	<update id="update" parameterType="com.ziksana.domain.course.CourseTagcloud">
 		update corcoursecontentsecurity
 		<set>
-			<if test="tagname!=null">
+			<if test="tagName!=null">
 				#{tagName,jdbcType=VARCHAR},
 			</if>
 			<if test="tagType!=null">

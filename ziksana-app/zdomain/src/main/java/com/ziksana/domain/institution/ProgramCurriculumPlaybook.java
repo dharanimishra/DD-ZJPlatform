@@ -8,6 +8,7 @@ import java.util.Date;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.course.PlaybookDeliveryType;
 import com.ziksana.domain.course.PlaybookStatus;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -49,8 +50,8 @@ public class ProgramCurriculumPlaybook extends AuditHistory {
 	/**
 	 * @param progCurriculumPlaybookId the progCurriculumPlaybookId to set
 	 */
-	public void setProgCurriculumPlaybookId(ZID progCurriculumPlaybookId) {
-		this.progCurriculumPlaybookId = progCurriculumPlaybookId;
+	public void setProgCurriculumPlaybookId(Integer progCurriculumPlaybookId) {
+		this.progCurriculumPlaybookId = new IntegerZID(progCurriculumPlaybookId);
 	}
 	/**
 	 * @return the brochureDate

@@ -1,7 +1,9 @@
 package com.ziksana.domain.assessment;
 
 import java.util.Date;
+
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -53,8 +55,8 @@ public class TestQuestion extends AuditHistory{
 	/**
 	 * @param testQuestionId the testQuestionId to set
 	 */
-	public void setTestQuestionId(ZID testQuestionId) {
-		this.testQuestionId = testQuestionId;
+	public void setTestQuestionId(Integer testQuestionId) {
+		this.testQuestionId = new IntegerZID(testQuestionId);
 	}
 	/**
 	 * @return the creationDate

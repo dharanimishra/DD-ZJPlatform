@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
  /**
@@ -43,8 +44,8 @@ public class LearningContentReviewProgress extends AuditHistory {
 	/**
 	 * @param reviewProgressId the reviewProgressId to set
 	 */
-	public void setReviewProgressId(ZID reviewProgressId) {
-		this.reviewProgressId = reviewProgressId;
+	public void setReviewProgressId(Integer reviewProgressId) {
+		this.reviewProgressId = new IntegerZID(reviewProgressId);
 	}
 	/**
 	 * @return the startDate

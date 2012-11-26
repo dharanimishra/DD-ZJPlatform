@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.contacts.RelationshipType;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -34,8 +35,8 @@ public class InstitutionStructure extends AuditHistory {
 	/**
 	 * @param structureId the structureId to set
 	 */
-	public void setStructureId(ZID structureId) {
-		this.structureId = structureId;
+	public void setStructureId(Integer structureId) {
+		this.structureId = new IntegerZID(structureId);
 	}
 	/**
 	 * @return the relationshipType

@@ -3,6 +3,8 @@ package com.ziksana.domain.course;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -21,7 +23,7 @@ public class CoursePlaybook extends AuditHistory {
 		this.playbookType = PlaybookType.REGULAR;
 	}
 
-	private Integer 				coursePlaybookId;
+	private ZID 				coursePlaybookId;
 	private Date 					fromDate  		= null;
 	private Date 					toDate			= null;
 	private CoursePlaybookStatus 	coursePBStatus 	= null;
@@ -149,7 +151,7 @@ public class CoursePlaybook extends AuditHistory {
 	/**
 	 * @return the coursePlaybookId
 	 */
-	public Integer getCoursePlaybookId() {
+	public ZID getCoursePlaybookId() {
 		return coursePlaybookId;
 	}
 
@@ -157,7 +159,7 @@ public class CoursePlaybook extends AuditHistory {
 	 * @param coursePlaybookId the coursePlaybookId to set
 	 */
 	public void setCoursePlaybookId(Integer coursePlaybookId) {
-		this.coursePlaybookId = coursePlaybookId;
+		this.coursePlaybookId = new IntegerZID(coursePlaybookId);
 	}
 
 	/* (non-Javadoc)

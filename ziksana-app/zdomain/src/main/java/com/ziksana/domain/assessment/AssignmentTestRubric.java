@@ -6,6 +6,7 @@ package com.ziksana.domain.assessment;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -39,8 +40,8 @@ public class AssignmentTestRubric extends AuditHistory {
 	/**
 	 * @param assignmentTestRubricId the assignmentTestRubricId to set
 	 */
-	public void setAssignmentTestRubricId(ZID assignmentTestRubricId) {
-		this.assignmentTestRubricId = assignmentTestRubricId;
+	public void setAssignmentTestRubricId(Integer assignmentTestRubricId) {
+		this.assignmentTestRubricId = new IntegerZID(assignmentTestRubricId);
 	}
 	/**
 	 * @return the creationDate

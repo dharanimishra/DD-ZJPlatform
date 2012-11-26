@@ -3,6 +3,7 @@ package com.ziksana.domain.assessment;
 import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -47,8 +48,8 @@ public class Test extends AuditHistory {
 	/**
 	 * @param testId the testId to set
 	 */
-	public void setTestId(ZID testId) {
-		this.testId = testId;
+	public void setTestId(Integer testId) {
+		this.testId = new IntegerZID(testId);
 	}
 	/**
 	 * @return the active

@@ -2,8 +2,10 @@ package com.ziksana.domain.assessment.member;
 
 import java.util.Date;
 import java.util.List;
+
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -30,8 +32,8 @@ public class CourseAssignment {
 	/**
 	 * @param courseAssignmentId the courseAssignmentId to set
 	 */
-	public void setCourseAssignmentId(ZID courseAssignmentId) {
-		this.courseAssignmentId = courseAssignmentId;
+	public void setCourseAssignmentId(Integer courseAssignmentId) {
+		this.courseAssignmentId = new IntegerZID(courseAssignmentId);
 	}
 	/**
 	 * @return the name

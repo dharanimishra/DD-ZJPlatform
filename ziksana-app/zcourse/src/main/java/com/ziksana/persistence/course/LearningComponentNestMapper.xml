@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ziksana.persistence.course.EnrichmentMapper">
+<mapper namespace="com.ziksana.persistence.course.LearningComponentNestMapper">
 
 	<insert id="saveComponentNest" parameterType="com.ziksana.domain.course.Enrichment"
 		useGeneratedKeys="true" keyProperty="componentNestId" keyColumn="componentnestid">

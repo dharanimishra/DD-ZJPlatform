@@ -2,9 +2,10 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.institution.CurriculumCourseCalendar;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 public class CourseLearningComponent extends AuditHistory{
 	
@@ -48,8 +49,8 @@ public class CourseLearningComponent extends AuditHistory{
 	 * @param courseLearningComponentId
 	 *            the value for property courseLearningComponentId
 	 */
-	public void setCourseLearningComponentId(ZID courseLearningComponentId) {
-		this.courseLearningComponentId = courseLearningComponentId;
+	public void setCourseLearningComponentId(Integer courseLearningComponentId) {
+		this.courseLearningComponentId = new IntegerZID(courseLearningComponentId);
 	}
 
 	/**

@@ -1,8 +1,10 @@
 package com.ziksana.domain.course.subscription;
 
 import java.util.Date;
+
 import com.ziksana.domain.assessment.Status;
 import com.ziksana.domain.course.LearningComponent;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -41,8 +43,8 @@ public class CourseItemProgress {
 	/**
 	 * @param courseItemProgressId the courseItemProgressId to set
 	 */
-	public void setCourseItemProgressId(ZID courseItemProgressId) {
-		this.courseItemProgressId = courseItemProgressId;
+	public void setCourseItemProgressId(Integer courseItemProgressId) {
+		this.courseItemProgressId = new IntegerZID(courseItemProgressId);
 	}
 	/**
 	 * @return the creationDate

@@ -4,6 +4,7 @@ package com.ziksana.domain.assessment.member;
 
 import java.sql.Timestamp;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -26,8 +27,8 @@ public class TestProgress {
 	/**
 	 * @param testProgressId the testProgressId to set
 	 */
-	public void setTestProgressId(ZID testProgressId) {
-		this.testProgressId = testProgressId;
+	public void setTestProgressId(Integer testProgressId) {
+		this.testProgressId = new IntegerZID(testProgressId);
 	}
 	/**
 	 * @return the progress

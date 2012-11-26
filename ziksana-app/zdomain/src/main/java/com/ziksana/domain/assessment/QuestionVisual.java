@@ -3,6 +3,7 @@ package com.ziksana.domain.assessment;
 import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 
@@ -42,8 +43,8 @@ public class QuestionVisual extends AuditHistory{
 	/**
 	 * @param questionVisualId the questionVisualId to set
 	 */
-	public void setQuestionVisualId(ZID questionVisualId) {
-		this.questionVisualId = questionVisualId;
+	public void setQuestionVisualId(Integer questionVisualId) {
+		this.questionVisualId = new IntegerZID(questionVisualId);
 	}
 	/**
 	 * @return the active

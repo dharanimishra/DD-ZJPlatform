@@ -4,6 +4,8 @@
 package com.ziksana.domain.course;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -25,7 +27,7 @@ public class CoursePlaybookView extends AuditHistory {
 	  public CoursePlaybookView(){
 		  
 	  }
-	  private Integer					coursePlaybookViewId; 
+	  private ZID						coursePlaybookViewId; 
 	  private String 					name 					= null;
 	  private String					description				= null;
 	  private PlaybookDeliveryType 		deliveryType 			= null;
@@ -240,7 +242,7 @@ public class CoursePlaybookView extends AuditHistory {
 	/**
 	 * @return the coursePlaybookViewId
 	 */
-	public Integer getCoursePlaybookViewId() {
+	public ZID getCoursePlaybookViewId() {
 		return coursePlaybookViewId;
 	}
 
@@ -248,7 +250,7 @@ public class CoursePlaybookView extends AuditHistory {
 	 * @param coursePlaybookViewId the coursePlaybookViewId to set
 	 */
 	public void setCoursePlaybookViewId(Integer coursePlaybookViewId) {
-		this.coursePlaybookViewId = coursePlaybookViewId;
+		this.coursePlaybookViewId = new IntegerZID(coursePlaybookViewId);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ziksana.domain.course.Rating;
 import com.ziksana.domain.institution.CurriculumCourse;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -33,8 +34,8 @@ public class SubscriptionCourse {
 	/**
 	 * @param subscriptionCourseId the subscriptionCourseId to set
 	 */
-	public void setSubscriptionCourseId(ZID subscriptionCourseId) {
-		this.subscriptionCourseId = subscriptionCourseId;
+	public void setSubscriptionCourseId(Integer subscriptionCourseId) {
+		this.subscriptionCourseId = new IntegerZID(subscriptionCourseId);
 	}
 	/**
 	 * @return the isPrimary

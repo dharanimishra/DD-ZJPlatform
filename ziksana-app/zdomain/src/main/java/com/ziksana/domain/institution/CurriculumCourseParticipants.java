@@ -3,6 +3,7 @@ package com.ziksana.domain.institution;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -33,8 +34,8 @@ public class CurriculumCourseParticipants extends AuditHistory{
 	/**
 	 * @param currCourseParticipantsId the currCourseParticipantsId to set
 	 */
-	public void setCurrCourseParticipantsId(ZID currCourseParticipantsId) {
-		this.currCourseParticipantsId = currCourseParticipantsId;
+	public void setCurrCourseParticipantsId(Integer currCourseParticipantsId) {
+		this.currCourseParticipantsId = new IntegerZID(currCourseParticipantsId);
 	}
 	/**
 	 * @return the participatingType

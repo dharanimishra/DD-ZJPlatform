@@ -5,6 +5,7 @@ import java.util.Date;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.institution.CurriculumCourse;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -28,8 +29,8 @@ public class GroupContext {
 	/**
 	 * @param contextId the contextId to set
 	 */
-	public void setContextId(ZID contextId) {
-		this.contextId = contextId;
+	public void setContextId(Integer contextId) {
+		this.contextId = new IntegerZID(contextId);
 	}
 	/**
 	 * @return the creationDate

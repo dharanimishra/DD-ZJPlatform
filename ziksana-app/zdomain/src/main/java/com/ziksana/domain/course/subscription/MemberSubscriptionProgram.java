@@ -8,6 +8,7 @@ import com.ziksana.domain.course.Rating;
 import com.ziksana.domain.institution.CurriculumDelivery;
 import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -40,8 +41,8 @@ public class MemberSubscriptionProgram {
 	/**
 	 * @param subscriptionProgramId the subscriptionProgramId to set
 	 */
-	public void setSubscriptionProgramId(ZID subscriptionProgramId) {
-		this.subscriptionProgramId = subscriptionProgramId;
+	public void setSubscriptionProgramId(Integer subscriptionProgramId) {
+		this.subscriptionProgramId = new IntegerZID(subscriptionProgramId);
 	}
 	/**
 	 * @return the creationDate

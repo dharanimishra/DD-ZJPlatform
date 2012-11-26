@@ -49,7 +49,7 @@
 				#{memberPersona.memberroleid,jdbcType.INTEGER},
 			</if>
 		</trim>
-		<selectKey keyProperty=componentContentHotspotId resultType="int"
+		<selectKey keyProperty="componentContentHotspotId" resultType="int"
 			order="AFTER">
 			SELECT LAST_INSERT_ID();
 		</selectKey>

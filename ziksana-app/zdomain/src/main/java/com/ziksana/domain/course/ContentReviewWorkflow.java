@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -34,8 +35,8 @@ public class ContentReviewWorkflow extends AuditHistory {
 	/**
 	 * @param contentReviewWorkflowId the contentReviewWorkflowId to set
 	 */
-	public void setContentReviewWorkflowId(ZID contentReviewWorkflowId) {
-		this.contentReviewWorkflowId = contentReviewWorkflowId;
+	public void setContentReviewWorkflowId(Integer contentReviewWorkflowId) {
+		this.contentReviewWorkflowId = new IntegerZID(contentReviewWorkflowId);
 	}
 	/**
 	 * @return the workflowType

@@ -1,11 +1,12 @@
 package com.ziksana.domain.institution;
 
 import java.util.Date;
+
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.course.CertificateType;
 import com.ziksana.domain.course.Duration;
-import com.ziksana.domain.course.Institution;
 import com.ziksana.domain.course.Rating;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -47,8 +48,8 @@ public class LearningProgram extends AuditHistory{
 	/**
 	 * @param learningProgramId the learningProgramId to set
 	 */
-	public void setLearningProgramId(ZID learningProgramId) {
-		this.learningProgramId = learningProgramId;
+	public void setLearningProgramId(Integer learningProgramId) {
+		this.learningProgramId = new IntegerZID(learningProgramId);
 	}
 	/**
 	 * @return the name

@@ -79,20 +79,28 @@ public class CourseDefineTest extends BaseTest{
 		Course course1 = new Course();
 		MemberPersona authoredMember = new MemberPersona();
 		authoredMember.setMemberRoleId(100);
+//		course1.setCourseId(150);
 		course1.setAccountableMember(authoredMember);
-		course1.setName("Trigonometric Maths");
+		course1.setName("DMS");
 		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
-		course1.setSecurityIndicator(true);
-		
+		course1.setDescription("Discrete Mathematics");
+/*		course1.setSecurityIndicator(true);
+		CourseContentSecurity courseSecurity = new CourseContentSecurity();
+		courseSecurity.setContentSecurityId(17);
+		courseSecurity.setFlotingIndicator(true);
+		courseSecurity.setLogoPath("/newlogopath/");
+		courseSecurity.setCourse(course1);
+		course1.setCourseContSecurity(courseSecurity);
+*/		
 		CourseTagcloud tagcloud = new CourseTagcloud();
 		tagcloud.setCreatingMember(authoredMember);
 		tagcloud.setTagName("Trigonometry");
 		tagcloud.setTagType(TagType.TAG_TYPE1);
 		tagcloudList.add(tagcloud);
-		
+		//tagcloud.setCourse(course1);
 		course1.setCourseTagClouds(tagcloudList);
-		
+		/*	
 		CourseContentSecurity courseSecurity = new CourseContentSecurity();
 		courseSecurity.setFlotingIndicator(true);
 		courseSecurity.setLogoPath("/logopath");
@@ -181,7 +189,7 @@ public class CourseDefineTest extends BaseTest{
 		courseDetails.setLearningComponents(compList);
 
 		course1.setCourseDetails(courseDetails);
-
+*/
 		System.out.println("Constructed Course  : " + course1);
 
 		return course1;

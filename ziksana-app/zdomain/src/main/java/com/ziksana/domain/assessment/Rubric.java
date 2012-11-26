@@ -2,6 +2,7 @@ package com.ziksana.domain.assessment;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -33,8 +34,8 @@ public class Rubric extends AuditHistory {
 	/**
 	 * @param rubricId the rubricId to set
 	 */
-	public void setRubricId(ZID rubricId) {
-		this.rubricId = rubricId;
+	public void setRubricId(Integer rubricId) {
+		this.rubricId = new IntegerZID(rubricId);
 	}
 
 	/**

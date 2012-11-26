@@ -5,6 +5,7 @@ import java.util.Date;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.institution.CurriculumCourse;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -37,8 +38,8 @@ public class Engagement {
 	/**
 	 * @param engagementId the engagementId to set
 	 */
-	public void setEngagementId(ZID engagementId) {
-		this.engagementId = engagementId;
+	public void setEngagementId(Integer engagementId) {
+		this.engagementId = new IntegerZID(engagementId);
 	}
 	/**
 	 * @return the createDate

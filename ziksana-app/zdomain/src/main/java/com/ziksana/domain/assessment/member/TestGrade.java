@@ -1,6 +1,7 @@
 package com.ziksana.domain.assessment.member;
 
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -29,8 +30,8 @@ public class TestGrade {
 	/**
 	 * @param testGradeId the testGradeId to set
 	 */
-	public void setTestGradeId(ZID testGradeId) {
-		this.testGradeId = testGradeId;
+	public void setTestGradeId(Integer testGradeId) {
+		this.testGradeId = new IntegerZID(testGradeId);
 	}
 	/**
 	 * @return the grade

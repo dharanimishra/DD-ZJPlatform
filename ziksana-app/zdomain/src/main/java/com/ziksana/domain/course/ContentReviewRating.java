@@ -1,7 +1,7 @@
 package com.ziksana.domain.course;
 
 import com.ziksana.domain.common.AuditHistory;
-import com.ziksana.domain.course.Rating;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -30,8 +30,8 @@ public class ContentReviewRating extends AuditHistory {
 	/**
 	 * @param reviewRatingId the reviewRatingId to set
 	 */
-	public void setReviewRatingId(ZID reviewRatingId) {
-		this.reviewRatingId = reviewRatingId;
+	public void setReviewRatingId(Integer reviewRatingId) {
+		this.reviewRatingId = new IntegerZID(reviewRatingId);
 	}
 	/**
 	 * @return the questionRating

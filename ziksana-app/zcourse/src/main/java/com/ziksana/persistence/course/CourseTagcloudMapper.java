@@ -32,6 +32,7 @@ public interface CourseTagcloudMapper {
 
 	
 	/**
+	 * This update / override the course tagcloud keys
 	 * @param courseTagcloud
 	 */
 	void update(CourseTagcloud courseTagcloud);

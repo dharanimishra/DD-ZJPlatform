@@ -2,8 +2,10 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.institution.Institution;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 public class CourseContentSecurity extends AuditHistory{
 	
@@ -42,8 +44,8 @@ public class CourseContentSecurity extends AuditHistory{
 	/**
 	 * @param contentSecurityId the contentSecurityId to set
 	 */
-	public void setContentSecurityId(ZID contentSecurityId) {
-		this.contentSecurityId = contentSecurityId;
+	public void setContentSecurityId(Integer contentSecurityId) {
+		this.contentSecurityId = new IntegerZID(contentSecurityId);
 	}
 	public String getLogoPath() {
 		return logoPath;

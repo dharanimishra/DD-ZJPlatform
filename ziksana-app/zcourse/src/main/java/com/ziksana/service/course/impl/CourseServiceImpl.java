@@ -92,8 +92,17 @@ public class CourseServiceImpl implements CourseService {
 					courseTagcloud.setCourse(course);
 					courseTagcloud.setCreatingMember(course
 							.getAccountableMember());
-					logger.debug("Before updating the Course Tagcloud ....");
-					tagCloudMapper.update(courseTagcloud);
+					if(courseTagcloud.getCourseTagCloudId()!=null){
+						
+						logger.debug("Before UPDATING the Course Tagcloud ....");
+						tagCloudMapper.update(courseTagcloud);
+						
+					}else{
+						
+						logger.debug("Before SAVING the Course Tagcloud ....");
+						tagCloudMapper.save(courseTagcloud);
+							
+					}
 				}
 			}
 				
@@ -102,8 +111,9 @@ public class CourseServiceImpl implements CourseService {
 				if(contSecurity.getContentSecurityId()!=null){
 					logger.debug("Before updating the Course Content Security ....");
 					contSecurityMapper.update(contSecurity);
+				}else{
+					contSecurityMapper.save(contSecurity);
 				}
-				contSecurityMapper.save(contSecurity);
 			}
 		} else {
 			Boolean isSecurity = false;
@@ -123,25 +133,39 @@ public class CourseServiceImpl implements CourseService {
 
 					courseTagcloud.setCreatingMember(course
 							.getAccountableMember());
+					
+					if(courseTagcloud.getCourseTagCloudId()!=null){
+					
+						logger.debug("Before UPDATING the Course Content Security ....");
+						tagCloudMapper.update(courseTagcloud);
+						
+					}else{
 
-					logger.debug("Before Saving the Course Content Security ....");
-					tagCloudMapper.save(courseTagcloud);
+						logger.debug("Before SAVING the Course Content Security ....");
+						tagCloudMapper.save(courseTagcloud);
+						
+					}
 				}
 			}
 			isSecurity = course.getSecurityIndicator();
 			
-			if(isSecurity){
+			if(isSecurity!=null){
+				logger.debug("Course Content Security Indicator ....: "+isSecurity);
 				if(contSecurity!=null){
-					
+					logger.debug("Course Content Security  ....: "+contSecurity.toString());
+					logger.debug("Course Content Security CourseID ....: "+course.getCourseId());
 					contSecurity.setCourse(course);
 					
 					if(contSecurity.getContentSecurityId()!=null){
+
 						logger.debug("Before updating the Course Content Security ....");
 						contSecurityMapper.update(contSecurity);
-					}
+
+					}else{
 					
-					logger.debug("Before Saving the Course Content Security ....");
-					contSecurityMapper.save(contSecurity);
+						logger.debug("Before Saving the Course Content Security ....");
+						contSecurityMapper.save(contSecurity);
+					}
 				}
 			}
 
@@ -317,7 +341,7 @@ public class CourseServiceImpl implements CourseService {
 			for (Course course : courseList) {
 				logger.debug("Courses   : "+course.toString());
 				logger.debug("Courses   : "+course.getCourseId());
-				courseId = course.getCourseId();
+				courseId = Integer.valueOf(course.getCourseId().getDisplayID());
 
 				couseCompList =courseLComponentMapper.getCourseLearningComponentByCourse(courseId);
 				logger.debug("Course components size : "+couseCompList.size());
@@ -334,7 +358,7 @@ public class CourseServiceImpl implements CourseService {
 						
 						component = courseLearningComp.getLearningComponent();
 
-						lCompId = component.getLearningComponentId();
+						lCompId = Integer.valueOf(component.getLearningComponentId().getStorageID());
 						
 						componentContentId = learningComponentContentMapper.getCompContentByLComponentId(lCompId);
 						
@@ -455,7 +479,7 @@ public class CourseServiceImpl implements CourseService {
 			throw new CourseException("Course Id cannot be null");
 		}
 		
-		courseMapper.deleteCourse(isDelete, course.getCourseId());
+		courseMapper.deleteCourse(isDelete, Integer.valueOf(course.getCourseId().getStorageID()));
 
 	}
 

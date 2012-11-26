@@ -41,19 +41,17 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 			throws CourseException {
 		
 		if(reviewComponentsList== null){
-			throw new CourseException("Review Components list cannot be null");
+			throw new CourseException("Review Components  cannot be null");
 		}
 		
-		if(reviewComponentsList.size()>0){
 
-			for (LearningContentReviewProgress learningContentReviewProgress : reviewComponentsList) {
-				
-				logger.debug("Saving the Course component for Review ... ");
-				
-				socializeMapper.saveComponentForReview(learningContentReviewProgress);
-				
-			}
+		logger.debug("Saving the Course component for Review ... ");
+		
+		for (LearningContentReviewProgress learningContentReviewProgress : reviewComponentsList) {
+			socializeMapper.saveComponentForReview(learningContentReviewProgress);
 		}
+		
+		
 	}
 
 	@Override
@@ -148,7 +146,7 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 	
 		workflow = review.getContentReviewWorkflow();
 		
-		workflow.setContentReviewWorkflowId(review.getReviewProgressId());
+		workflow.setContentReviewWorkflowId(Integer.valueOf(review.getReviewProgressId().getStorageID()));
 		
 		socializeMapper.saveReviewWorkflow(workflow);
 		
@@ -206,7 +204,7 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 
 	@Transactional
 	@Override
-	public void saveCourse(Course course, List<ContentReviewWorkflow> reviewContentList)
+	public void saveCourseReviewInfo(Course course, List<ContentReviewWorkflow> reviewContentList)
 			throws CourseException {
 		
 		if(reviewContentList == null){
@@ -215,11 +213,11 @@ public class CourseSocializeServiceImpl implements CourseSocializeService {
 		
 		for (ContentReviewWorkflow contentReviewWorkflow : reviewContentList) {
 			
-			logger.debug("Completeby :"+contentReviewWorkflow.getCompleteBy()+" :: Note :"+contentReviewWorkflow.getNotes());
+			logger.debug("ContentReviewWorkflow  :"+contentReviewWorkflow.toString());
 			
 			if(contentReviewWorkflow.getContentReviewWorkflowId()!=null){
 
-				socializeMapper.updateContentReviewInfo(contentReviewWorkflow);	
+				socializeMapper.updateContentReviewInfo(contentReviewWorkflow);					
 				
 			}
 		}

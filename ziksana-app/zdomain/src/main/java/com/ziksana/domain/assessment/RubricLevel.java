@@ -1,6 +1,7 @@
 package com.ziksana.domain.assessment;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -31,8 +32,8 @@ public class RubricLevel extends AuditHistory {
 	/**
 	 * @param rubricLevelId the rubricLevelId to set
 	 */
-	public void setRubricLevelId(ZID rubricLevelId) {
-		this.rubricLevelId = rubricLevelId;
+	public void setRubricLevelId(Integer rubricLevelId) {
+		this.rubricLevelId = new IntegerZID(rubricLevelId);
 	}
 	/**
 	 * @return the level

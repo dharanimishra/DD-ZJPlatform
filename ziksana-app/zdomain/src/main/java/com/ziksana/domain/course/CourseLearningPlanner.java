@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -35,8 +36,8 @@ public class CourseLearningPlanner extends AuditHistory {
 	/**
 	 * @param coursePlannerId the coursePlannerId to set
 	 */
-	public void setCoursePlannerId(ZID coursePlannerId) {
-		this.coursePlannerId = coursePlannerId;
+	public void setCoursePlannerId(Integer coursePlannerId) {
+		this.coursePlannerId = new IntegerZID(coursePlannerId);
 	}
 
 	/**

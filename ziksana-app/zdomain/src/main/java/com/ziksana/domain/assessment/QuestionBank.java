@@ -8,6 +8,7 @@ import javax.net.ssl.SSLEngineResult.Status;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.Member;
 import com.ziksana.domain.utils.SubjectClassification;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 public class QuestionBank extends AuditHistory{
@@ -64,8 +65,8 @@ public class QuestionBank extends AuditHistory{
 	/**
 	 * @param questionBankId the questionBankId to set
 	 */
-	public void setQuestionBankId(ZID questionBankId) {
-		this.questionBankId = questionBankId;
+	public void setQuestionBankId(Integer questionBankId) {
+		this.questionBankId = new IntegerZID(questionBankId);
 	}
 	/**
 	 * @return the creationDate

@@ -12,6 +12,7 @@ import com.ziksana.domain.course.Duration;
 import com.ziksana.domain.course.GradeType;
 import com.ziksana.domain.course.Rating;
 import com.ziksana.domain.course.Sync;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -72,8 +73,8 @@ public class CurriculumCourse extends AuditHistory {
 	/**
 	 * @param curriculumCourseId the curriculumCourseId to set
 	 */
-	public void setCurriculumCourseId(ZID curriculumCourseId) {
-		this.curriculumCourseId = curriculumCourseId;
+	public void setCurriculumCourseId(Integer curriculumCourseId) {
+		this.curriculumCourseId = new IntegerZID(curriculumCourseId);
 	}
 	/**
 	 * @return the active

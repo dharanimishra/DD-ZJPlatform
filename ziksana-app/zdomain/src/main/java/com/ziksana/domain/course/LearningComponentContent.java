@@ -3,6 +3,8 @@ package com.ziksana.domain.course;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 public class LearningComponentContent extends AuditHistory{
 	
@@ -27,7 +29,7 @@ public class LearningComponentContent extends AuditHistory{
 		this.baseLearningContent = baseLearningContent;
 	}
 
-	private Integer		 						learningComponentContentId;
+	private ZID		 						learningComponentContentId;
 	private Date 							creationDate 						= null;
 	private CourseStatus 					courseStatus 						= null;
 	private Integer 						courseStatusId 						= null;
@@ -44,7 +46,7 @@ public class LearningComponentContent extends AuditHistory{
 	/**
 	 * @return the value of property learningComponentContentId
 	 */
-	public Integer getLearningComponentContentId() {
+	public ZID getLearningComponentContentId() {
 		return learningComponentContentId;
 	}
 
@@ -53,7 +55,7 @@ public class LearningComponentContent extends AuditHistory{
 	 *            the value for property learningComponentContentId
 	 */
 	public void setLearningComponentContentId(Integer learningComponentContentId) {
-		this.learningComponentContentId = learningComponentContentId;
+		this.learningComponentContentId = new IntegerZID(learningComponentContentId);
 	}
 
 	/**

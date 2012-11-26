@@ -2,6 +2,7 @@ package com.ziksana.domain.course.subscription;
 
 import java.util.Date;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -24,8 +25,8 @@ public class ParticipationStatistics {
 	/**
 	 * @param statisticsId the statisticsId to set
 	 */
-	public void setStatisticsId(ZID statisticsId) {
-		this.statisticsId = statisticsId;
+	public void setStatisticsId(Integer statisticsId) {
+		this.statisticsId = new IntegerZID(statisticsId);
 	}
 	/**
 	 * @return the creationDate

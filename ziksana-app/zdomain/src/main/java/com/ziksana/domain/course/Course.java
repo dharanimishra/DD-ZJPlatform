@@ -9,6 +9,8 @@ import com.ziksana.domain.assessment.engagement.Engagement;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utils.SubjectClassification;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -40,7 +42,7 @@ public class Course extends AuditHistory{
 		this.getCourseDetails().learningComponents =learningComponentList;
 	}
 
-	private Integer 					courseId;
+	private ZID 					courseId;
 	/**
 	 * Maximum Length:45
 	 */
@@ -562,7 +564,7 @@ public class Course extends AuditHistory{
 	/**
 	 * @return the courseId
 	 */
-	public Integer getCourseId() {
+	public ZID getCourseId() {
 		return courseId;
 	}
 
@@ -570,7 +572,7 @@ public class Course extends AuditHistory{
 	 * @param courseId the courseId to set
 	 */
 	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+		this.courseId = new IntegerZID(courseId);
 	}
 
 	/**

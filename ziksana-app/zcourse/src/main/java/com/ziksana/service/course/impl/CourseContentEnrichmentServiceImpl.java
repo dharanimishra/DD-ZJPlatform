@@ -170,11 +170,11 @@ public class CourseContentEnrichmentServiceImpl implements
 				+ contentEnrichment.getLinkType());
 		// update delete indicator status to remove the association with
 		// applyenrichment
-		enrichMapper.delete(contentEnrichment);
+		enrichMapper.deleteContentEnrichment(contentEnrichment);
 
 		logger.debug("Before Deleting the Enrichment ....");
 		// update delete indicator status to remove the association with content
-		enrichMapper.delete(enrichment);
+		enrichMapper.deleteEnrichment(enrichment);
 
 	}
 
@@ -272,7 +272,7 @@ public class CourseContentEnrichmentServiceImpl implements
 		
 		hotspotList = new ArrayList<LearningComponentContentHotspot>();
 		
-		hotspotList = hotspotMapper.getHotspotList(compContent.getLearningComponentContentId());
+		hotspotList = hotspotMapper.getHotspotList(Integer.valueOf(compContent.getLearningComponentContentId().getStorageID()));
 		
 		return hotspotList;
 		

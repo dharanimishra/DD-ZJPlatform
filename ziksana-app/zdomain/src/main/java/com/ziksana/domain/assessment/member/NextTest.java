@@ -1,6 +1,7 @@
 package com.ziksana.domain.assessment.member;
 
 import com.ziksana.domain.assessment.Test;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -23,8 +24,8 @@ public class NextTest {
 	/**
 	 * @param nextTestId the nextTestId to set
 	 */
-	public void setNextTestId(ZID nextTestId) {
-		this.nextTestId = nextTestId;
+	public void setNextTestId(Integer nextTestId) {
+		this.nextTestId = new IntegerZID(nextTestId);
 	}
 	/**
 	 * @return the active

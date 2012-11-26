@@ -3,6 +3,7 @@ package com.ziksana.domain.member.collaboration;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -30,8 +31,8 @@ public class GroupMemberConversation {
 	/**
 	 * @param conversationId the conversationId to set
 	 */
-	public void setConversationId(ZID conversationId) {
-		this.conversationId = conversationId;
+	public void setConversationId(Integer conversationId) {
+		this.conversationId = new IntegerZID(conversationId);
 	}
 	/**
 	 * @return the creationDate

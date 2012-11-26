@@ -3,6 +3,7 @@ package com.ziksana.domain.assessment;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -25,8 +26,8 @@ public class PackageTest extends AuditHistory {
 	/**
 	 * @param packageTestId the packageTestId to set
 	 */
-	public void setPackageTestId(ZID packageTestId) {
-		this.packageTestId = packageTestId;
+	public void setPackageTestId(Integer packageTestId) {
+		this.packageTestId = new IntegerZID(packageTestId);
 	}
 	/**
 	 * @return the creationDate

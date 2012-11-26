@@ -1,5 +1,6 @@
 package com.ziksana.domain.assessment.member;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -31,8 +32,8 @@ public class TestSubmissionKeyword {
 	/**
 	 * @param submissionKeywordId the submissionKeywordId to set
 	 */
-	public void setSubmissionKeywordId(ZID submissionKeywordId) {
-		this.submissionKeywordId = submissionKeywordId;
+	public void setSubmissionKeywordId(Integer submissionKeywordId) {
+		this.submissionKeywordId = new IntegerZID(submissionKeywordId);
 	}
 	/**
 	 * @return the weightedKeyword

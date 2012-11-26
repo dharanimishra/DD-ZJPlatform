@@ -3,10 +3,12 @@ package com.ziksana.domain.course;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 public class LearningContentParts extends AuditHistory{
 
-	private Integer		 	contentPartsId;
+	private ZID		 	contentPartsId;
 	private Date 			creationDate 	= null;
 	/**
 	 * Maximum Length:45
@@ -19,7 +21,7 @@ public class LearningContentParts extends AuditHistory{
 	/**
 	 * @return the value of property contentPartsId
 	 */
-	public Integer getContentPartsId() {
+	public ZID getContentPartsId() {
 		return contentPartsId;
 	}
 
@@ -28,7 +30,7 @@ public class LearningContentParts extends AuditHistory{
 	 *            the value for property contentPartsId
 	 */
 	public void setContentPartsId(Integer contentPartsId) {
-		this.contentPartsId = contentPartsId;
+		this.contentPartsId = new IntegerZID(contentPartsId);
 	}
 
 	/**

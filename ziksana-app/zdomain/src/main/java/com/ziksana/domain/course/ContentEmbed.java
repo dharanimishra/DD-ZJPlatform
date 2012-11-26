@@ -6,6 +6,7 @@ package com.ziksana.domain.course;
 import java.sql.Timestamp;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -41,8 +42,8 @@ public class ContentEmbed extends AuditHistory {
 	/**
 	 * @param contentEmbedId the contentEmbedId to set
 	 */
-	public void setContentEmbedId(ZID contentEmbedId) {
-		this.contentEmbedId = contentEmbedId;
+	public void setContentEmbedId(Integer contentEmbedId) {
+		this.contentEmbedId = new IntegerZID(contentEmbedId);
 	}
 	/**
 	 * @return the startTime

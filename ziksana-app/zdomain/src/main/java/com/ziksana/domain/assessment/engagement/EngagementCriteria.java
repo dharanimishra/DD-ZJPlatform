@@ -2,6 +2,7 @@ package com.ziksana.domain.assessment.engagement;
 
 import java.util.Date;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 public class EngagementCriteria {
@@ -30,8 +31,8 @@ public class EngagementCriteria {
 	/**
 	 * @param engagementCriteriaId the engagementCriteriaId to set
 	 */
-	public void setEngagementCriteriaId(ZID engagementCriteriaId) {
-		this.engagementCriteriaId = engagementCriteriaId;
+	public void setEngagementCriteriaId(Integer engagementCriteriaId) {
+		this.engagementCriteriaId = new IntegerZID(engagementCriteriaId);
 	}
 	/**
 	 * @return the creationDate

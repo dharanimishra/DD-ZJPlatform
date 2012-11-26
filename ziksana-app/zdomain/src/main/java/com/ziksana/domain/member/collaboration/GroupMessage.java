@@ -2,6 +2,7 @@ package com.ziksana.domain.member.collaboration;
 
 import java.util.Date;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -27,8 +28,8 @@ public class GroupMessage {
 	/**
 	 * @param messageId the messageId to set
 	 */
-	public void setMessageId(ZID messageId) {
-		this.messageId = messageId;
+	public void setMessageId(Integer messageId) {
+		this.messageId = new IntegerZID(messageId);
 	}
 	/**
 	 * @return the creationDate

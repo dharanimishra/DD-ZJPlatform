@@ -5,6 +5,8 @@ package com.ziksana.domain.course;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -12,7 +14,7 @@ import com.ziksana.domain.member.MemberPersona;
 public class Enrichment extends AuditHistory {
 
 
-	private Integer					enrichmentId;
+	private ZID					enrichmentId;
 	private Boolean 				active 					= null;
 	private Visibility 				visibility 				= null;
 	private Integer 				visibilityId			= null;
@@ -28,7 +30,7 @@ public class Enrichment extends AuditHistory {
 	/**
 	 * @return the enrichId
 	 */
-	public Integer getEnrichmentId() {
+	public ZID getEnrichmentId() {
 		return enrichmentId;
 	}
 
@@ -37,7 +39,7 @@ public class Enrichment extends AuditHistory {
 	 * @param enrichId the enrichId to set
 	 */
 	public void setEnrichmentId(Integer enrichmentId) {
-		this.enrichmentId = enrichmentId;
+		this.enrichmentId = new IntegerZID(enrichmentId);
 	}
 
 

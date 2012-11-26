@@ -73,7 +73,7 @@
 		</selectKey>
 	</insert>
 
-	<update id=updateLearningComponentContent parameterType="com.ziksana.domain.course.LearningComponentContent">
+	<update id="updateLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent">
 		update CorCourseComopentContent
 		<set>
 			<if test="creationDate != null">

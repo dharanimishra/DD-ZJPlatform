@@ -11,6 +11,7 @@ import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.Duration;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -52,8 +53,8 @@ public class CurriculumCourseCalendar extends AuditHistory {
 	/**
 	 * @param curriculumCourseCalendarId the curriculumCourseCalendarId to set
 	 */
-	public void setCurriculumCourseCalendarId(ZID curriculumCourseCalendarId) {
-		this.curriculumCourseCalendarId = curriculumCourseCalendarId;
+	public void setCurriculumCourseCalendarId(Integer curriculumCourseCalendarId) {
+		this.curriculumCourseCalendarId = new IntegerZID(curriculumCourseCalendarId);
 	}
 	/**
 	 * @return the startDate

@@ -1,9 +1,11 @@
 package com.ziksana.domain.assessment;
 
 import java.util.List;
+
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /** 
@@ -40,8 +42,8 @@ public class Assignment extends AuditHistory{
 	/**
 	 * @param assignmentTestId the assignmentTestId to set
 	 */
-	public void setAssignmentTestId(ZID assignmentId) {
-		this.assignmentId = assignmentId;
+	public void setAssignmentTestId(Integer assignmentId) {
+		this.assignmentId = new IntegerZID(assignmentId);
 	}
 	/**
 	 * @return the active

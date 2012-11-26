@@ -3,6 +3,7 @@ package com.ziksana.domain.course;
 import java.sql.Timestamp;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 public class ContentEnrichment extends AuditHistory {
@@ -17,8 +18,8 @@ public class ContentEnrichment extends AuditHistory {
 	/**
 	 * @param contentEnrichmentId the contentEnrichmentId to set
 	 */
-	public void setContentEnrichmentId(ZID contentEnrichmentId) {
-		this.contentEnrichmentId = contentEnrichmentId;
+	public void setContentEnrichmentId(Integer contentEnrichmentId) {
+		this.contentEnrichmentId = new IntegerZID(contentEnrichmentId);
 	}
 
 	public ContentEnrichment(LinkType linkType,

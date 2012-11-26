@@ -1,6 +1,7 @@
 package com.ziksana.domain.assessment;
 
 import com.ziksana.domain.common.TagCloud;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -25,8 +26,8 @@ public class QuestionTagcloud extends TagCloud {
 	/**
 	 * @param tagId the tagId to set
 	 */
-	public void setTagId(ZID tagId) {
-		this.tagId = tagId;
+	public void setTagId(Integer tagId) {
+		this.tagId = new IntegerZID(tagId);
 	}
 	/**
 	 * @return the questionBank

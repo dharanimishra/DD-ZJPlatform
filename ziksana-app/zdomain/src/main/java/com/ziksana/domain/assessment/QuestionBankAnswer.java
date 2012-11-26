@@ -1,7 +1,9 @@
 package com.ziksana.domain.assessment;
 
 import java.util.Date;
+
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -45,8 +47,8 @@ public class QuestionBankAnswer extends AuditHistory {
 	/**
 	 * @param questionBankAnswerId the questionBankAnswerId to set
 	 */
-	public void setQuestionBankAnswerId(ZID questionBankAnswerId) {
-		this.questionBankAnswerId = questionBankAnswerId;
+	public void setQuestionBankAnswerId(Integer questionBankAnswerId) {
+		this.questionBankAnswerId = new IntegerZID(questionBankAnswerId);
 	}
 	/**
 	 * @return the creationDate

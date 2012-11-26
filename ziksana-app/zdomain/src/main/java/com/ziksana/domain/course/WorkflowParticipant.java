@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -47,8 +48,8 @@ public class WorkflowParticipant extends AuditHistory {
 	/**
 	 * @param participantId the participantId to set
 	 */
-	public void setParticipantId(ZID participantId) {
-		this.participantId = participantId;
+	public void setParticipantId(Integer participantId) {
+		this.participantId = new IntegerZID(participantId);
 	}
 	/**
 	 * @return the communicatedDate

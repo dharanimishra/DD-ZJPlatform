@@ -30,8 +30,8 @@ public interface EnrichmentMapper {
 	 * 
 	 * @param enrichment
 	 */
-	@Update({ "update corApplyEnrichment set isDelete = #{isDelete,jdbcType=BOOLEAN} where enrichmentid = #{enrichmentId,jdbcType=INTEGER}" })
-	void delete(Enrichment enrichment);
+	@Update({ "update corenrichment set isdelete = #{isDelete,jdbcType=BOOLEAN} where enrichmentid = #{enrichmentId,jdbcType=INTEGER}" })
+	void deleteEnrichment(Enrichment enrichment);
 
 	/**
 	 * Retrieves the enrichment and its contenterichments
@@ -41,7 +41,7 @@ public interface EnrichmentMapper {
 	 */
 	@Select({
 			"select enrichentid, active, visibility, overrideat, creatormemberroleid, courseid from ",
-			"corapplyenrichment where creatormemberroleid = #{memberRoleId,jdbcType=INTEGER}" })
+			"corenrichment where creatormemberroleid = #{memberRoleId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "enrichmentId", column = "enrichmentid"),
 			@Result(property = "active", column = "active"),
@@ -78,7 +78,7 @@ public interface EnrichmentMapper {
 	 * @return
 	 */
 	@Select({
-			"select enrichmentid from corapplyenrichment where learningcomponentid = #{learningcomponentid,jdbctype=INTEGER} ",
+			"select enrichmentid from corenrichment where learningcomponentid = #{learningcomponentid,jdbctype=INTEGER} ",
 			" or learningcontentid = #{learningContentId,jdbcType=INTEGER}" })
 	@Results(value = { @Result(property = "enrichentId", column = "enrichentid") })
 	Integer getEnrichByContentIdOrComponentId(Integer lCompId,
@@ -96,7 +96,7 @@ public interface EnrichmentMapper {
 	@Update({
 			"update corcontentenrichment set  isDelete = #{isDelete,jdbctype=BOOLEAN} where ",
 			" contentenrichmentid = #{contentEnrichmentId,jdbcType=INTEGER}" })
-	void delete(ContentEnrichment contentEnrichment);
+	void deleteContentEnrichment(ContentEnrichment contentEnrichment);
 
 	/**
 	 * Modifies the content enrichment

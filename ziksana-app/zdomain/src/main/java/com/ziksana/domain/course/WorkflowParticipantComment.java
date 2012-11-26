@@ -4,6 +4,7 @@ package com.ziksana.domain.course;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -39,8 +40,8 @@ public class WorkflowParticipantComment extends AuditHistory {
 	/**
 	 * @param participantCommentId the participantCommentId to set
 	 */
-	public void setParticipantCommentId(ZID participantCommentId) {
-		this.participantCommentId = participantCommentId;
+	public void setParticipantCommentId(Integer participantCommentId) {
+		this.participantCommentId = new IntegerZID(participantCommentId);
 	}
 	/**
 	 * @return the comment

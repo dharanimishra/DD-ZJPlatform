@@ -2,9 +2,10 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -42,8 +43,8 @@ public class CourseAdditionalProperty extends AuditHistory{
 	 * @param CourseAddnlPropertyId
 	 *            the value for corcourseadditionalproperty.CourseAddnlPropertyId
 	 */
-	public void setCourseAddnlPropertyId(ZID courseAddnlPropertyId) {
-		this.courseAddnlPropertyId = courseAddnlPropertyId;
+	public void setCourseAddnlPropertyId(Integer courseAddnlPropertyId) {
+		this.courseAddnlPropertyId = new IntegerZID(courseAddnlPropertyId);
 	}
 
 	/**

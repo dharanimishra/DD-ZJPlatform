@@ -68,7 +68,7 @@ public interface CourseSocializeService {
 	 * @param reviewContent
 	 * @throws CourseException
 	 */
-	public void saveCourse(Course course, List<ContentReviewWorkflow> reviewContent) throws CourseException;
+	public void saveCourseReviewInfo(Course course, List<ContentReviewWorkflow> reviewContent) throws CourseException;
 	
 	/**
 	 * Creates the course and updates the course status is Review

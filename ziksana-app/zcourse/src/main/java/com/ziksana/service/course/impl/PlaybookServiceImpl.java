@@ -198,7 +198,7 @@ public class PlaybookServiceImpl implements PlaybookService {
 			
 			logger.debug("After saving the course playbook ::: "+coursePlaybook.getCoursePlaybookId());
 			
-			coursePlaybook.setCoursePlaybookId(coursePlaybook.getCoursePlaybookId());
+			coursePlaybook.setCoursePlaybookId(Integer.valueOf(coursePlaybook.getCoursePlaybookId().getStorageID()));
 			
 			playbookView.setCoursePlaybook(coursePlaybook);
 			

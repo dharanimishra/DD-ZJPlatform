@@ -2,6 +2,7 @@ package com.ziksana.domain.course.subscription;
 
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentContent;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -35,8 +36,8 @@ public class SubscriberNotes {
 	/**
 	 * @param subscriberNoteId the subscriberNoteId to set
 	 */
-	public void setSubscriberNoteId(ZID subscriberNoteId) {
-		this.subscriberNoteId = subscriberNoteId;
+	public void setSubscriberNoteId(Integer subscriberNoteId) {
+		this.subscriberNoteId = new IntegerZID(subscriberNoteId);
 	}
 	/**
 	 * @return the notesType

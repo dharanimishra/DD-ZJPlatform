@@ -4,6 +4,8 @@ import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 /**
  * @author bhashasp
@@ -24,7 +26,7 @@ public class LearningComponentType extends AuditHistory{
 		this.active = active;
 	}
 
-	private Integer		 		learningComponentTypeId;
+	private ZID		 		learningComponentTypeId;
 	private Date 			creationDate 		= null;
 	
 	@Deprecated
@@ -163,7 +165,7 @@ public class LearningComponentType extends AuditHistory{
 	/**
 	 * @return the learningComponentTypeId
 	 */
-	public Integer getLearningComponentTypeId() {
+	public ZID getLearningComponentTypeId() {
 		return learningComponentTypeId;
 	}
 
@@ -171,7 +173,7 @@ public class LearningComponentType extends AuditHistory{
 	 * @param learningComponentTypeId the learningComponentTypeId to set
 	 */
 	public void setLearningComponentTypeId(Integer learningComponentTypeId) {
-		this.learningComponentTypeId = learningComponentTypeId;
+		this.learningComponentTypeId = new IntegerZID(learningComponentTypeId);
 	}
 
 

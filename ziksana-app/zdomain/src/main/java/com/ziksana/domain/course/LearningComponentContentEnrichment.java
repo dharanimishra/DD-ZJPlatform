@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 
@@ -42,8 +43,8 @@ public class LearningComponentContentEnrichment extends AuditHistory {
 	 * @param enrichmentId
 	 *            the enrichmentId to set
 	 */
-	public void setEnrichmentId(ZID enrichmentId) {
-		this.enrichmentId = enrichmentId;
+	public void setEnrichmentId(Integer enrichmentId) {
+		this.enrichmentId = new IntegerZID(enrichmentId);
 	}
 
 	/**

@@ -3,6 +3,7 @@ package com.ziksana.domain.assessment;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 public class AssignmentTestSettings extends AuditHistory{
@@ -36,8 +37,8 @@ public class AssignmentTestSettings extends AuditHistory{
 	/**
 	 * @param testSettingsId the testSettingsId to set
 	 */
-	public void setTestSettingsId(ZID testSettingsId) {
-		this.testSettingsId = testSettingsId;
+	public void setTestSettingsId(Integer testSettingsId) {
+		this.testSettingsId = new IntegerZID(testSettingsId);
 	}
 	/**
 	 * @return the creationDate

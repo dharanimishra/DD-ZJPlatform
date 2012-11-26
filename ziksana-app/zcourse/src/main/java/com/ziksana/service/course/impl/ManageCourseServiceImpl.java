@@ -64,7 +64,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 			throw new CourseException(" Course ID cannot be null");
 		}
 		
-		courseId = course.getCourseId();
+		courseId = Integer.valueOf(course.getCourseId().getStorageID());
 		
 		engagementList = engagementMapper.getEngagementeRulesByCourseId(courseId);
 
@@ -349,7 +349,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		contextId = groupsMapper.saveGroupContext(context);
 		
-		context.setContextId(new IntegerZID(contextId));
+		context.setContextId(contextId);
 		
 		group.setGroupContext(context);
 		

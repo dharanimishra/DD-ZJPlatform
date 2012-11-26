@@ -3,6 +3,7 @@ package com.ziksana.domain.course.subscription;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -31,8 +32,8 @@ public class CourseActivity {
 	/**
 	 * @param activityId the activityId to set
 	 */
-	public void setActivityId(ZID activityId) {
-		this.activityId = activityId;
+	public void setActivityId(Integer activityId) {
+		this.activityId = new IntegerZID(activityId);
 	}
 	/**
 	 * @return the activityDate

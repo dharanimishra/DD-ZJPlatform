@@ -4,6 +4,7 @@ import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.course.PropertyDataType;
 import com.ziksana.domain.course.PropertyUsageType;
 import com.ziksana.domain.course.Sequence;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -36,8 +37,8 @@ public class CurriculumCourseProperty extends AuditHistory {
 	/**
 	 * @param propertyId the propertyId to set
 	 */
-	public void setPropertyId(ZID propertyId) {
-		this.propertyId = propertyId;
+	public void setPropertyId(Integer propertyId) {
+		this.propertyId = new IntegerZID(propertyId);
 	}
 	/**
 	 * @return the name

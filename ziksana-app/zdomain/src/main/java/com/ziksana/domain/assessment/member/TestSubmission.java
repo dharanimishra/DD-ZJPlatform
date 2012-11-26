@@ -5,6 +5,7 @@ import java.util.Date;
 import com.ziksana.domain.assessment.QuestionBankAnswer;
 import com.ziksana.domain.assessment.TestQuestion;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -52,8 +53,8 @@ public class TestSubmission {
 	/**
 	 * @param submissionId the submissionId to set
 	 */
-	public void setSubmissionId(ZID submissionId) {
-		this.submissionId = submissionId;
+	public void setSubmissionId(Integer submissionId) {
+		this.submissionId = new IntegerZID(submissionId);
 	}
 	/**
 	 * @return the submittedResponse

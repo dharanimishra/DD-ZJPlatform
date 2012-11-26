@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -31,8 +32,8 @@ public class Embed extends AuditHistory{
 	/**
 	 * @param applyEmbedId the applyEmbedId to set
 	 */
-	public void setApplyEmbedId(ZID applyEmbedId) {
-		this.applyEmbedId = applyEmbedId;
+	public void setApplyEmbedId(Integer applyEmbedId) {
+		this.applyEmbedId = new IntegerZID(applyEmbedId);
 	}
 	/**
 	 * @return the active

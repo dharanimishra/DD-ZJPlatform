@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.common.TagCloud;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -24,8 +25,8 @@ public class LearningContentTagcloud extends TagCloud {
 	/**
 	 * @param contentTagCloudId the contentTagCloudId to set
 	 */
-	public void setContentTagCloudId(ZID contentTagCloudId) {
-		this.contentTagCloudId = contentTagCloudId;
+	public void setContentTagCloudId(Integer contentTagCloudId) {
+		this.contentTagCloudId = new IntegerZID(contentTagCloudId);
 	}
 	/**
 	 * @return the learningContent

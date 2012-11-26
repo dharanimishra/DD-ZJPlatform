@@ -5,6 +5,7 @@ import java.util.Date;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningComponent;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -40,8 +41,8 @@ public class TestPackage extends AuditHistory{
 	/**
 	 * @param testPackageId the testPackageId to set
 	 */
-	public void setTestPackageId(ZID testPackageId) {
-		this.testPackageId = testPackageId;
+	public void setTestPackageId(Integer testPackageId) {
+		this.testPackageId = new IntegerZID(testPackageId);
 	}
 	/**
 	 * @return the status

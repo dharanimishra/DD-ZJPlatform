@@ -1,6 +1,7 @@
 package com.ziksana.domain.member.collaboration;
 
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -26,8 +27,8 @@ public class GroupMember {
 	/**
 	 * @param groupMemberId the groupMemberId to set
 	 */
-	public void setGroupMemberId(ZID groupMemberId) {
-		this.groupMemberId = groupMemberId;
+	public void setGroupMemberId(Integer groupMemberId) {
+		this.groupMemberId = new IntegerZID(groupMemberId);
 	}
 	/**
 	 * @return the isLead

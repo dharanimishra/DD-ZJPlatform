@@ -7,6 +7,8 @@ import java.util.List;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.utils.SubjectClassification;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 public class LearningContent extends AuditHistory{
 
@@ -17,7 +19,7 @@ public class LearningContent extends AuditHistory{
 		this.contentType = contentType;
 	}
 
-	private Integer	 		learningContentId;
+	private ZID	 		learningContentId;
 	private Date 			creationDate 	= null;
 	private Boolean 		activeFlag 		= null;
 	private ContentType 	contentType 	= null;
@@ -54,7 +56,7 @@ public class LearningContent extends AuditHistory{
 	/**
 	 * @return the value of learningContentId
 	 */
-	public Integer getLearningContentId() {
+	public ZID getLearningContentId() {
 		return learningContentId;
 	}
 	/**
@@ -62,7 +64,7 @@ public class LearningContent extends AuditHistory{
 	 *            the value for learningContentId
 	 */
 	public void setLearningContentId(Integer learningContentId) {
-		this.learningContentId = learningContentId;
+		this.learningContentId = new IntegerZID(learningContentId);
 	}
 	/**
 	 * @return the value of CreationDate

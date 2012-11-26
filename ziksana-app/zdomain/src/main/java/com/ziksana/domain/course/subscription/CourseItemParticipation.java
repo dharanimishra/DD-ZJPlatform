@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import com.ziksana.domain.course.Duration;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -27,8 +28,8 @@ public class CourseItemParticipation {
 	/**
 	 * @param courseItemParticipationId the courseItemParticipationId to set
 	 */
-	public void setCourseItemParticipationId(ZID courseItemParticipationId) {
-		this.courseItemParticipationId = courseItemParticipationId;
+	public void setCourseItemParticipationId(Integer courseItemParticipationId) {
+		this.courseItemParticipationId = new IntegerZID(courseItemParticipationId);
 	}
 	/**
 	 * @return the usageDate

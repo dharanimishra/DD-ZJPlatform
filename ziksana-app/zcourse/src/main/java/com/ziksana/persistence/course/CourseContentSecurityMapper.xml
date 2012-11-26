@@ -6,47 +6,42 @@
 		useGeneratedKeys="true" keyProperty="contentSecurityId" keyColumn="contentsecurityid">
 		insert into corcoursecontentsecurity
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate !=null">
-				creationdate,
-			</if>
-			<if test="watermarkcontentpath!=null">
+			creationdate,
+			<if test="watermarkPath !=null">
 				watermarkcontentpath,
 			</if>
-			<if test="embeddedlogopath!=null">
+			<if test="logoPath !=null">
 				embeddedlogopath,
 			</if>
-			<if test="floatingindicator!=null">
+			<if test="flotingIndicator !=null">
 				floatingindicator,
 			</if>
-			<if test="embedusercredentialindicator!=null">
+			<if test="signatureIndicator !=null">
 				embedusercredentialindicator,
 			</if>
-			<if test="additionalpropertyindicator!=null">
-				additionalpropertyindicator,
-			</if>
-			<if test="courseid!=null">
+			<if test="course!=null">
 				courseid,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			sysdate(),
-			<if test="watermarkPath!=null">
+			<if test="watermarkPath !=null" >
 				#{watermarkPath,jdbcType=VARCHAR},
 			</if>
-			<if test="logoPath!=null">
+			<if test="logoPath !=null">
 				#{logoPath,jdbcType=VARCHAR},
 			</if>
-			<if test="flotingIndicator!=null">
+			<if test="flotingIndicator !=null">
 				#{flotingIndicator,jdbcType=BOOLEAN},
 			</if>
-			<if test="signatureIndicator!=null">
+			<if test="signatureIndicator !=null">
 				#{signatureIndicator,jdbcType=BOOLEAN},
 			</if>
-			<if test="course!=null">
+			<if test="course !=null">
 				#{course.courseId,jdbcType=INTEGER},
 			</if>
 		</trim>
-		<selectKey keyProperty=contentSecurityId resultType="int"
+		<selectKey keyProperty="contentSecurityId" resultType="int"
 			order="AFTER">
 			SELECT LAST_INSERT_ID();
 		</selectKey>
@@ -68,6 +63,6 @@
 				embedusercredentialindicator=#{signatureIndicator,jdbcType=BOOLEAN},
 			</if>
 		</set>
-		where courseid = #{course.courseId,jdbcType=INTEGER}
+		where contentsecurityid = #{contentSecurityId,jdbcType=INTEGER}
 	</update>
 </mapper>

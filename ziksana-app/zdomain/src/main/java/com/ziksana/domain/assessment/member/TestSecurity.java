@@ -1,5 +1,6 @@
 package com.ziksana.domain.assessment.member;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -33,8 +34,8 @@ public class TestSecurity {
 	/**
 	 * @param securityId the securityId to set
 	 */
-	public void setSecurityId(ZID securityId) {
-		this.securityId = securityId;
+	public void setSecurityId(Integer securityId) {
+		this.securityId = new IntegerZID(securityId);
 	}
 	/**
 	 * @return the securityType

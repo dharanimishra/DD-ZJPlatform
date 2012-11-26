@@ -2,6 +2,7 @@ package com.ziksana.domain.course.subscription;
 
 import java.util.Date;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -31,8 +32,8 @@ public class CourseGrade {
 	/**
 	 * @param courseGradeId the courseGradeId to set
 	 */
-	public void setCourseGradeId(ZID courseGradeId) {
-		this.courseGradeId = courseGradeId;
+	public void setCourseGradeId(Integer courseGradeId) {
+		this.courseGradeId = new IntegerZID(courseGradeId);
 	}
 	/**
 	 * @return the creationDate

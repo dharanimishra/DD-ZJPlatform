@@ -2,6 +2,7 @@ package com.ziksana.domain.member.collaboration;
 
 import java.util.List;
 
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /** 
@@ -27,8 +28,8 @@ public class Group {
 	/**
 	 * @param groupId the groupId to set
 	 */
-	public void setGroupId(ZID groupId) {
-		this.groupId = groupId;
+	public void setGroupId(Integer groupId) {
+		this.groupId = new IntegerZID(groupId);
 	}
 	/**
 	 * @return the totalParticipants

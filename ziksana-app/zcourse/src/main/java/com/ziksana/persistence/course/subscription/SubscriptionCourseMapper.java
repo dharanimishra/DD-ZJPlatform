@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
-import com.ziksana.domain.assessment.QuestionBank;
 import com.ziksana.domain.course.subscription.CourseItemProgress;
 import com.ziksana.domain.course.subscription.MemberSubscriptionProgram;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;

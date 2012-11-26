@@ -3,6 +3,7 @@ package com.ziksana.domain.course.subscription;
 import java.util.Date;
 
 import com.ziksana.domain.institution.CurriculumCourseProperty;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -26,8 +27,8 @@ public class CourseProperty {
 	/**
 	 * @param propertyId the propertyId to set
 	 */
-	public void setPropertyId(ZID propertyId) {
-		this.propertyId = propertyId;
+	public void setPropertyId(Integer propertyId) {
+		this.propertyId = new IntegerZID(propertyId);
 	}
 	/**
 	 * @return the creationDate

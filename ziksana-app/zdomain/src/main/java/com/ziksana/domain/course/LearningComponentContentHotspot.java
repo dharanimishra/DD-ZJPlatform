@@ -2,9 +2,10 @@ package com.ziksana.domain.course;
 
 import java.util.Date;
 
-import com.ziksana.id.ZID;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.IntegerZID;
+import com.ziksana.id.ZID;
 
 public class LearningComponentContentHotspot extends AuditHistory{
 
@@ -32,8 +33,8 @@ public class LearningComponentContentHotspot extends AuditHistory{
 	/**
 	 * @param componentContentTagHotspotId the componentContentTagHotspotId to set
 	 */
-	public void setComponentContentHotspotId(ZID componentContentHotspotId) {
-		this.componentContentHotspotId = componentContentHotspotId;
+	public void setComponentContentHotspotId(Integer componentContentHotspotId) {
+		this.componentContentHotspotId = new IntegerZID(componentContentHotspotId);
 	}
 	/**
 	 * @return the creationDate

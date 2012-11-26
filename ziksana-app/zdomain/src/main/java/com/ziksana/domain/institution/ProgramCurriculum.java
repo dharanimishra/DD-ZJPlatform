@@ -8,6 +8,7 @@ import java.util.Date;
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.course.Duration;
 import com.ziksana.domain.course.Rating;
+import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
@@ -46,8 +47,8 @@ public class ProgramCurriculum extends AuditHistory {
 	/**
 	 * @param programCurriculumId the programCurriculumId to set
 	 */
-	public void setProgramCurriculumId(ZID programCurriculumId) {
-		this.programCurriculumId = programCurriculumId;
+	public void setProgramCurriculumId(Integer programCurriculumId) {
+		this.programCurriculumId = new IntegerZID(programCurriculumId);
 	}
 	/**
 	 * @return the duration
