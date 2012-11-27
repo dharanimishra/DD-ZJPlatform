@@ -5,11 +5,9 @@
 	<insert id="saveWorkflowComment"
 		parameterType="com.ziksana.domain.course.WorkflowParticipantComment"
 		useGeneratedKeys="true" keyProperty="participantCommentId" keyColumn="participantcommentid">
-		insert into corenrichment
+		insert into corworkflowparticipantcomment
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="commentdate != null">
 				commentdate,
-			</if>
 			<if test="comment != null">
 				comment,
 			</if>
@@ -19,10 +17,7 @@
 			<if test="criticality != null">
 				criticality,
 			</if>
-			<if test="isdelete != null">
-				isdelete,
-			</if>
-			<if test="workflowparticipantid != null">
+			<if test="participant != null">
 				workflowparticipantid,
 			</if>
 		</trim>
@@ -37,11 +32,8 @@
 			<if test="criticality != null">
 				#{criticalityId,jdbcType=INTEGER},
 			</if>
-			<if test="isdelete != null">
-				#{isDelete,jdbcType=BOOLEAN},
-			</if>
 			<if test="participant != null">
-				#{participant.participantId,jdbcType=INTEGER},
+				#{participant.participantId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="participantCommentId" resultType="int"

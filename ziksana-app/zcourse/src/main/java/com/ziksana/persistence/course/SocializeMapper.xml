@@ -7,41 +7,41 @@
 		useGeneratedKeys="true" keyProperty="reviewProgressId" keyColumn="reviewprogressid">
 		insert into corenrichment
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="startdate != null">
+			<if test="startDate != null">
 				startdate,
 			</if>
-			<if test="enddate != null">
+			<if test="endDate != null">
 				enddate,
 			</if>
-			<if test="duration != null">
-				duration,
+			<if test="totalDuration != null">
+				totalduration,
 			</if>
-			<if test="durationunits != null">
-				durationunits,
+			<if test="totalDuration != null">
+				totaldurationunit,
 			</if>
-			<if test="averagerating != null">
+			<if test="averageRating != null">
 				averagerating,
 			</if>
-			<if test="degreeofcompletion != null">
+			<if test="degreeOfCompletion != null">
 				degreeofcompletion,
 			</if>
-			<if test="coursestatus != null">
+			<if test="courseStatus != null">
 				coursestatus,
 			</if>
 			<if test="description != null">
 				description,
 			</if>
-			<if test="courseid != null">
+			<if test="course != null">
 				courseid,
 			</if>
-			<if test="learningcomponentid != null">
+			<if test="learningComponent != null">
 				learningcomponentid,
 			</if>
-			<if test="leraningcomponentcontentid != null">
+			<if test="leraningComponentContent != null">
 				leraningcomponentcontentid,
 			</if>
-			<if test="authoringmemberroleid != null">
-				authoringmemberroleid,
+			<if test="authoringMemberRole != null">
+				memberroleid,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -49,32 +49,32 @@
 			<if test="endDate != null">
 				#{endDate,jdbcType=DATE},
 			</if>
-			<if test="duration != null">
-				#{duration.duration,jdbcType=INTEGER},
+			<if test="totalDuration != null">
+				#{totalDuration.duration,jdbcType=INTEGER},
 			</if>
-			<if test="duration != null">
-				#{duration.durationUnits,jdbcType=INTEGER},
+			<if test="totalDuration != null">
+				#{totalDuration.durationUnits,jdbcType=INTEGER},
 			</if>
-			<if test="averagerating != null">
-				#{averageRating,jdbcType=INTEGER},
+			<if test="averageRating != null">
+				#{averageRatingId,jdbcType=INTEGER},
 			</if>
 			<if test="degreeofcompletion != null">
 				#{degreeOfCompletion,jdbcType=INTEGER},
 			</if>
-			<if test="coursestatus != null">
-				#{courseStatus,jdbcType=INTEGER},
+			<if test="courseStatus != null">
+				#{courseStatusId,jdbcType=INTEGER},
 			</if>
 			<if test="description != null">
 				#{description,jdbcType=VARCHAR},
 			</if>
-			<if test="courseid != null">
-				#{course.courseId,jdbcType=INTEGER},
+			<if test="course != null">
+				#{course.courseId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="learningComponent != null">
-				#{learningComponent.learningComponentId,jdbcType=INTEGER},
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="learningComponentContent != null">
-				#{learningComponentContent.learningComponentContentId,jdbcType=INTEGER},
+				#{learningComponentContent.learningComponentContentId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="authoringMemberRole != null">
 				#{authoringMemberRole.memberRoleId,jdbcType=INTEGER},
@@ -92,19 +92,17 @@
 		keyColumn="reviewworkflowid">
 		insert into corcontentreviewworkflow
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="createdate != null">
 				createdate,
-			</if>
-			<if test="workflowtype != null">
+			<if test="workflowType != null">
 				workflowtype,
 			</if>
-			<if test="completeby != null">
+			<if test="completeBy != null">
 				completeby,
 			</if>
 			<if test="notes != null">
 				notes,
 			</if>
-			<if test="learningcontentreviewprogressid != null">
+			<if test="learningContentReviewProgress != null">
 				learningcontentreviewprogressid,
 			</if>
 		</trim>
@@ -120,7 +118,7 @@
 				#{notes,jdbcType=VARCHAR},
 			</if>
 			<if test="reviewProgress != null">
-				#{reviewProgress.reviewProgressId,jdbcType=INTEGER},
+				#{reviewProgress.reviewProgressId.storageID.,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="contentReviewWorkflowId" resultType="int"
@@ -130,7 +128,7 @@
 	</insert>
 
 	<update id="saveContentReviewInfo" parameterType="com.ziksana.domain.course.ContentReviewWorkflow">
-		update corContentEnrichment
+		update corcontentreviewworkflow
 		<set>
 			<if test="workflowType != null">
 				workflowType = #{workflowTypeId,jdbcType=INTEGER},
@@ -142,50 +140,48 @@
 				notes= #{notes,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where contentReviewWorkflowid = #{contentReviewWorkflowId, jdbcType=INTEGER}
+		where contentreviewworkflowid = #{contentReviewWorkflowId.storageID, jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveWorkflowParticipant" parameterType="com.ziksana.domain.course.WorkflowParticipant"
 		useGeneratedKeys="true" keyProperty="participantId" keyColumn="workflowparticipantid">
 		insert into corworkflowparticipant
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="participanttye != null">
-				participanttye,
+			<if test="communicatedDate !=null" >
+				communicateddate,
 			</if>
-			<if test="memberroleid != null">
+			<if test="participantType != null">
+				participanttype,
+			</if>
+			<if test="participateMemberRole != null">
 				memberroleid,
 			</if>
-			<if test="contentreviewworkflowid != null">
+			<if test="courseWorkflow != null">
 				contentreviewworkflowid,
 			</if>
-			<if test="startdate != null">
+			<if test="startDate != null">
 				startdate,
 			</if>
-			<if test="enddate != null">
+			<if test="endDate != null">
 				enddate,
-			</if>
-			<if test="isdelete != null">
-				isdelete,
 			</if>
 		</trim>
 		<trim prefix=" values (" suffix=")" suffixOverrides=",">
-			<if test="participanttye != null">
-				#{participantType,jdbcType=INTEGER},
+			sysdate(),
+			<if test="participantType != null">
+				#{participantTypeId,jdbcType=INTEGER},
 			</if>
 			<if test="participateMemberRole != null">
 				#{participateMemberRole.memberRoleId,jdbcType=INTEGER},
 			</if>
 			<if test="courseWorkflow != null">
-				#{courseWorkflow.contentReviewWorkflowId,jdbcType=INTEGER},
+				#{courseWorkflow.reviewWorkflowId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="startDate != null">
 				#{startDate, jdbcType=DATE},
 			</if>
 			<if test="endDate != null">
 				#{startDate, jdbcType=DATE},
-			</if>
-			<if test="isdelete != null">
-				#{isDelete, jdbcType=BOOLEAN},
 			</if>
 		</trim>
 		<selectKey keyProperty="participantId" resultType="int"

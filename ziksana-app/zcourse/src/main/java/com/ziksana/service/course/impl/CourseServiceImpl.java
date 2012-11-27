@@ -184,7 +184,6 @@ public class CourseServiceImpl implements CourseService {
 		List<CourseLearningComponent> 	courseLearningComponentList 	= null;
 		LearningComponentDetails 		compDetails 					= null;
 		LearningComponentNest 			compNest 						= null;
-		CourseLearningComponent 		courseLComponent 				= null;
 		LearningComponent				learningComp					= null;
 		
 		if(course == null) {
@@ -216,7 +215,7 @@ public class CourseServiceImpl implements CourseService {
 				if(courseLearningComponent.getCourseLearningComponentId()!=null){
 
 					logger.debug("Before Updating the CourseLearningComponent ....");
-					courseLComponentMapper.updateCourseLearningComponent(courseLComponent);
+					courseLComponentMapper.updateCourseLearningComponent(courseLearningComponent);
 
 					logger.debug("Before Updating the Learning Component ....");
 					learningComponentMapper.updateLearningComponent(learningComp);
@@ -226,14 +225,16 @@ public class CourseServiceImpl implements CourseService {
 					//SAVE OPERATION
 					logger.debug("Before Saving the Learning Component ....");
 					learningComponentMapper.saveLearningComponent(learningComp);
-					logger.debug("After Saving the CourseLearningComponent ID..: "+learningComp.getLearningComponentId());
+					logger.debug("After Saving the CourseLearningComponent ID..: "+learningComp.getLearningComponentId().getDisplayID());
 
+					logger.debug("After Saving the CourseLearningComponent Course ID..: "+course.getCourseId().getDisplayID());
+					
 					courseLearningComponent.setCourse(course);
 					
 					courseLearningComponent.setLearningComponent(learningComp);
 							
 					logger.debug("Before Saving the CourseLearningComponent ....");
-					courseLComponentMapper.saveCourseLearningComponent(courseLComponent);
+					courseLComponentMapper.saveCourseLearningComponent(courseLearningComponent);
 				
 					compDetails =  learningComp.getLearningComponentDetails();
 					

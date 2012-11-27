@@ -28,6 +28,7 @@ public class LearningContentReviewProgress extends AuditHistory {
 	private Integer 						degreeOfCompletion			= null;
 	private String 							description 				= null;
 	private Rating 							averageRating 				= null;
+	private Integer							averageRatingId				= null;
 	private Course							course						= null;
 	private LearningComponent				learningComponent 			= null;
 	private LearningComponentContent		learningComponentContent	= null;
@@ -118,6 +119,18 @@ public class LearningContentReviewProgress extends AuditHistory {
 	 */
 	public void setAverageRating(Rating averageRating) {
 		this.averageRating = averageRating;
+	}
+	/**
+	 * @return the averageRatingId
+	 */
+	public Integer getAverageRatingId() {
+		return averageRatingId;
+	}
+	/**
+	 * @param averageRatingId the averageRatingId to set
+	 */
+	public void setAverageRatingId(Integer averageRatingId) {
+		this.averageRatingId = averageRatingId;
 	}
 	/**
 	 * @return the course

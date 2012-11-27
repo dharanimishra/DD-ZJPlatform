@@ -38,7 +38,7 @@
 				#{signatureIndicator,jdbcType=BOOLEAN},
 			</if>
 			<if test="course !=null">
-				#{course.courseId,jdbcType=INTEGER},
+				#{course.courseId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="contentSecurityId" resultType="int"
@@ -63,6 +63,6 @@
 				embedusercredentialindicator=#{signatureIndicator,jdbcType=BOOLEAN},
 			</if>
 		</set>
-		where contentsecurityid = #{contentSecurityId,jdbcType=INTEGER}
+		where contentsecurityid = #{contentSecurityId.storageID,jdbcType=INTEGER}
 	</update>
 </mapper>

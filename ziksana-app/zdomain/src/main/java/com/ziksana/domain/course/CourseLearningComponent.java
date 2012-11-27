@@ -10,10 +10,10 @@ import com.ziksana.id.ZID;
 public class CourseLearningComponent extends AuditHistory{
 	
 	public CourseLearningComponent(Date usageStartDate, Date usageEndDate,
-			Duration duration) {
+			Duration courseLCDuration) {
 		this.usageStartDate = usageStartDate;
 		this.usageEndDate = usageEndDate;
-		this.duration = duration;
+		this.courseLCDuration = courseLCDuration;
 	}
 	
 	public CourseLearningComponent(){
@@ -29,7 +29,7 @@ public class CourseLearningComponent extends AuditHistory{
 	private Integer 				weightage 							= null;
 	private String 					totalCredits 						= null;
 	private String 					extraCredits 						= null;
-	private Duration 				duration 							= null;
+	private Duration 				courseLCDuration					= null;
 	private Boolean 				isLearningComponentOveridden		= null;
 	private Course 					course 								= null;
 	private LearningComponent 		learningComponent 					= null;
@@ -156,7 +156,7 @@ public class CourseLearningComponent extends AuditHistory{
 	 *            the value for property TotalCredits
 	 */
 	public void setTotalCredits(String totalCredits) {
-		this.totalCredits = totalCredits == null ? null : totalCredits.trim();
+		this.totalCredits = totalCredits;
 	}
 
 	/**
@@ -174,20 +174,6 @@ public class CourseLearningComponent extends AuditHistory{
 		this.extraCredits = extraCredits == null ? null : extraCredits.trim();
 	}
 
-	/**
-	 * @return the value of property duration
-	 */
-	public Duration getDuration() {
-		return duration;
-	}
-
-	/**
-	 * @param duration
-	 *            the value for property duration
-	 */
-	public void setDuration(Duration duration) {
-		this.duration = duration;
-	}
 
 	/**
 	 * @return the course
@@ -281,8 +267,22 @@ public class CourseLearningComponent extends AuditHistory{
 				+ usageEndDate + ", learningComponentVersionUsed="
 				+ learningComponentVersionUsed + ", active=" + active
 				+ ", weightage=" + weightage + ", totalCredits=" + totalCredits
-				+ ", extraCredits=" + extraCredits + ", duration=" + duration
+				+ ", extraCredits=" + extraCredits + ", duration=" + courseLCDuration
 				+ "]";
+	}
+
+	/**
+	 * @return the courseLCduration
+	 */
+	public Duration getCourseLCDuration() {
+		return courseLCDuration;
+	}
+
+	/**
+	 * @param courseLCduration the courseLCduration to set
+	 */
+	public void setCourseLCDuration(Duration courseLCDuration) {
+		this.courseLCDuration = courseLCDuration;
 	}
 
 

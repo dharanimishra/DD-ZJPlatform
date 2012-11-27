@@ -10,43 +10,41 @@
 	<insert id="saveLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent"
 		useGeneratedKeys="true" keyProperty="learningComponentContentId"
 		keyColumn="learningcomponentcontentid">
-		insert into CorCourseComopentContent
+		insert into corlearningcomponentcontent
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationDate != null">
-				CreationDate,
-			</if>
+			creationdate,
 			<if test="courseStatus != null">
-				CourseStatus,
+				coursestatus,
 			</if>
 			<if test="contentType != null">
-				ContentType,
+				contenttype,
 			</if>
 			<if test="contentDescription != null">
-				ContentDescription,
+				contentdescription,
 			</if>
 			<if test="active != null">
-				Active,
+				active,
 			</if>
 			<if test="contentVersionUsed != null">
-				ContentVersionUsed,
+				contentversionused,
 			</if>
-			<if test="learningComponentId != null">
-				LearningComponentId,
+			<if test="learningComponent != null">
+				learningcomponentid,
 			</if>
-			<if test="synchronizeWithVideoId != null">
-				SynchronizeWithVideoId,
+			<if test="synchronizeWithVideo != null">
+				synchronizewithvideoid,
 			</if>
-			<if test="learningContentId != null">
-				LearningContentId,
+			<if test="baseLearningContent != null">
+				learningcontentid,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			sysdate(),
 			<if test="courseStatus != null">
-				#{courseStatus,jdbcType=INTEGER},
+				#{courseStatusId,jdbcType=INTEGER},
 			</if>
 			<if test="contentType != null">
-				#{contentType,jdbcType=INTEGER},
+				#{contentTypeId,jdbcType=INTEGER},
 			</if>
 			<if test="contentDescription != null">
 				#{contentDescription,jdbcType=VARCHAR},
@@ -57,14 +55,14 @@
 			<if test="contentVersionUsed != null">
 				#{contentVersionUsed,jdbcType=INTEGER},
 			</if>
-			<if test="learningComponentId != null">
-				#{learningComponentId,jdbcType=INTEGER}
+			<if test="learningComponent != null">
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER}
 			</if>
-			<if test="synchronizeWithVideoId != null">
-				#{synchronizeWithVideoId,jdbcType=INTEGER}
+			<if test="synchronizeWithVideo != null">
+				#{synchronizeWithVideo.learningComponentContentId.storageID,jdbcType=INTEGER}
 			</if>
-			<if test="learningContentId != null">
-				#{learningContentId,jdbcType=INTEGER}
+			<if test="learningContent != null">
+				#{learningContent.learningContentId.storageID,jdbcType=INTEGER}
 			</if>
 		</trim>
 		<selectKey keyProperty="learningComponentContentId"
@@ -74,43 +72,40 @@
 	</insert>
 
 	<update id="updateLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent">
-		update CorCourseComopentContent
+		update corlearningcomponentcontent
 		<set>
-			<if test="creationDate != null">
-				CreationDate = #{creationDate,jdbcType=TIMESTAMP},
-			</if>
 			<if test="courseStatus != null">
-				CourseStatus = #{courseStatus,jdbcType=INTEGER},
+				coursestatus = #{courseStatusId,jdbcType=INTEGER},
 			</if>
 			<if test="contentType != null">
-				ContentType = #{contentType,jdbcType=INTEGER},
+				contenttype = #{contentTypeId,jdbcType=INTEGER},
 			</if>
 			<if test="contentDescription != null">
-				ContentDescription =
+				contentdescription =
 				#{contentDescription,jdbcType=VARCHAR},
 			</if>
 			<if test="active != null">
-				Active = #{active,jdbcType=BIT},
+				active = #{active,jdbcType=BOOLEAN},
 			</if>
 			<if test="contentVersionUsed != null">
-				ContentVersionUsed =
+				contentversionused =
 				#{contentVersionUsed,jdbcType=INTEGER},
 			</if>
-			<if test="learningComponentId != null">
-				LearningComponentId =
-				#{learningComponent.learningComponentId,jdbcType=INTEGER},
+			<if test="learningComponent != null">
+				learningcomponentid =
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
 			</if>
-			<if test="synchronizeWithVideoId != null">
-				SynchronizeWithVideoId =
-				#{synchronizeWithVideoId,jdbcType=INTEGER},
+			<if test="synchronizeWithVideo != null">
+				synchronizewithvideoid =
+				#{synchronizeWithVideo.learningComponentContentId.storageID,jdbcType=INTEGER},
 			</if>
-			<if test="learningContentId != null">
-				LearningContentId =
-				#{baseLearningContent.learningContentId,jdbcType=INTEGER},
+			<if test="learningContent != null">
+				learningcontentid =
+				#{baseLearningContent.learningContentId.storageID,jdbcType=INTEGER},
 			</if>
 		</set>
 		where learningComponentContentId =
-		#{learningComponentContentId,jdbcType=INTEGER}
+		#{learningComponentContentId.storageID,jdbcType=INTEGER}
 	</update>
 
 <!-- 	<insert id="saveLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent"

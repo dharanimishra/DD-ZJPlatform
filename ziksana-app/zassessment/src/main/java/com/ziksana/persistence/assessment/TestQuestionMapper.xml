@@ -33,40 +33,38 @@
 		useGeneratedKeys="true" keyProperty="testQuestionId" keyColumn="testquestionid">
 		insert into asmtestquestion
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate != null">
 				creationdate,
-			</if>
 			<if test="active != null">
 				active,
 			</if>
-			<if test="pointsifcorrect != null">
+			<if test="pointsIfCorrect != null">
 				pointsifcorrect,
 			</if>
-			<if test="extracreditpoints != null">
+			<if test="extraCreditPoints != null">
 				extracreditpoints,
 			</if>
-			<if test="penaltyifincorrectindicator != null">
+			<if test="isPenaltyIfIncorrect != null">
 				penaltyifincorrectindicator,
 			</if>
-			<if test="penaltyfactor != null">
+			<if test="penaltyMarks != null">
 				penaltyfactor,
 			</if>
-			<if test="answerwithintime != null">
+			<if test="answerWithinTime != null">
 				answerwithintime,
 			</if>
 			<if test="questionContentMarkup != null">
 				questioncontentmarkup,
 			</if>
-			<if test="videoanswerallowedindicator != null">
+			<if test="isVideoAnswerAllowed != null">
 				videoanswerallowedindicator,
 			</if>
-			<if test="audioanwerallowedindicator != null">
+			<if test="isAudioAnswerAllowed != null">
 				audioanwerallowedindicator,
 			</if>
-			<if test="testid != null">
+			<if test="test != null">
 				testid,
 			</if>
-			<if test="questionbankid != null">
+			<if test="questionBank != null">
 				questionbankid,
 			</if>
 		</trim>
@@ -100,10 +98,10 @@
 				#{isAudioAnwerAllowed,jdbcType=BIT},
 			</if>
 			<if test="test != null">
-				#{test.testId,jdbcType=INTEGER},
+				#{test.testId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="questionBank != null">
-				#{questionBank.questionBankId, jdbcType=INTEGER},
+				#{questionBank.questionBankId.storageID, jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="testQuestionId" resultType="int"
@@ -146,36 +144,34 @@
 				#{isAudioAnwerAllowed,jdbcType=BIT},
 			</if>
 			<if test="test != null">
-				testId = #{test.testId,jdbcType=INTEGER},
+				testId = #{test.testId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="questionBank != null">
-				questionBankId = #{questionBank.questionBankId,
+				questionBankId = #{questionBank.questionBankId.storageID,
 				jdbcType=INTEGER},
 			</if>
 		</set>
-		where testquestionid = #{testQuestionId,jdbcType=INTEGER}
+		where testquestionid = #{testQuestionId.storageID,jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveQuestionBank" parameterType="com.ziksana.domain.assessment.QuestionBank"
 		useGeneratedKeys="true" keyProperty="questionBankId" keyColumn="questionbankid">
 		insert into asmquestionbank
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate != null">
-				creationdate,
-			</if>
+			creationdate,
 			<if test="active != null">
 				active,
 			</if>
-			<if test="difficultylevel != null">
+			<if test="difficultyLevel != null">
 				difficultylevel,
 			</if>
-			<if test="proficiencylevel != null">
+			<if test="proficiencLevel != null">
 				proficiencylevel,
 			</if>
-			<if test="questiontype != null">
+			<if test="questionType != null">
 				questioncontent,
 			</if>
-			<if test="additionalinfopath != null">
+			<if test="additionalInfoPath != null">
 				additionalinfopath,
 			</if>
 			<if test="instruction != null">
@@ -184,37 +180,25 @@
 			<if test="questionContentMarkup != null">
 				questioncontentmarkup,
 			</if>
-			<if test="multiplecorrectanswerindicator != null">
+			<if test="isMultiCorrectAnswer != null">
 				multiplecorrectanswerindicator,
 			</if>
-			<if test="groupworkindicator != null">
+			<if test="isGroupWork != null">
 				groupworkindicator,
 			</if>
 			<if test="status != null">
 				status,
 			</if>
-			<if test="questionapplicabilitytype != null">
+			<if test="questionApplicabilityType != null">
 				questionapplicabilitytype,
 			</if>
-			<if test="memberid != null">
+			<if test="owningMember != null">
 				memberid,
 			</if>
-			<if test="subjclassificationid != null">
+			<if test="subjClassification != null">
 				subjclassificationid,
 			</if>
 		</trim>
-		"insert into asmquestionbank set profficiencylevel=, ",
-		"questiontype=#{questionType, jdbcType=INTEGER}, ",
-		"questioncontent=#{name, jdbcType=VARCHAR}, instruction=,",
-		"
-		ismulticorrectanswer=, additionalinfopath=#{additionalInfoPath,
-		jdbcType=VARCHAR} ,",
-		"isgroupwork= ,
-		questionapplicabilitytype=#{questionApplicabilityType,
-		jdbcType=INTEGER} ",
-		" where questionbankid=#{questionBankId,
-		jdbcType=INTEGER}" })
-
 		<trim prefix=" values (" suffix=")" suffixOverrides=",">
 			sysdate(),
 			<if test="active != null">
@@ -301,7 +285,7 @@
 				#{questionApplicabilityTypeId, jdbcType=INTEGER},
 			</if>
 		</set>
-		where questionbankId = #{questionBankId, jdbcType="INTEGER"}
+		where questionbankId = #{questionBankId.storageID, jdbcType="INTEGER"}
 	</update>
 
 	<select id="searchQuestions"
@@ -315,37 +299,35 @@
 		useGeneratedKeys="true" keyProperty="questionBankAnswerId" keyColumn="questionbankanswerid">
 		insert into asmquestionbankanswer
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate != null">
-				creationdate,
-			</if>
+			creationdate,
 			<if test="active != null">
 				active,
 			</if>
-			<if test="answercontent != null">
+			<if test="answerContent != null">
 				answercontent,
 			</if>
-			<if test="correctnessindicator != null">
+			<if test="correctIndicator != null">
 				correctnessindicator,
 			</if>
-			<if test="answersequence != null">
+			<if test="answerSequence != null">
 				answersequence,
 			</if>
-			<if test="answerreflectioncomment != null">
+			<if test="answerReflectionComment != null">
 				answerreflectioncomment,
 			</if>
-			<if test="answerkeywordweight != null">
+			<if test="answerKeywordWeight != null">
 				answerkeywordweight,
 			</if>
 			<if test="status != null">
 				status,
 			</if>
-			<if test="questionbankid != null">
+			<if test="questionBankId != null">
 				questionbankid,
 			</if>
-			<if test="matchingquestionbankanswerid != null">
+			<if test="matchingQtnBankAnswer != null">
 				matchingquestionbankanswerid,
 			</if>
-			<if test="visualspotid != null">
+			<if test="visualSpotLabel != null">
 				visualspotid,
 			</if>
 		</trim>
@@ -373,14 +355,14 @@
 				#{statusId, jdbcType=INTEGER},
 			</if>
 			<if test="questionBankId != null">
-				#{questionBankId, jdbcType=INTEGER},
+				#{questionBankId.storageID, jdbcType=INTEGER},
 			</if>
 			<if test="matchingQtnBankAnswer != null">
-				#{matchingQtnBankAnswer.matchingQuestionBankAnswerId,
+				#{matchingQtnBankAnswer.matchingQuestionBankAnswerId.storageID,
 				jdbcType=INTEGER},
 			</if>
 			<if test="visualSpotLabel != null">
-				#{visualSpotLabel.visualSpotId, jdbcType=INTEGER},
+				#{visualSpotLabel.visualSpotId.storageID, jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="questionBankAnswerId" resultType="int"
@@ -394,47 +376,45 @@
 		update asmquestionbankanswer
 		<set>
 			<if test="answerContent != null">
-				#{answerContent, jdbcType=VARCHAR},
+				answercontent = #{answerContent, jdbcType=VARCHAR},
 			</if>
 			<if test="correctIndicator != null">
-				#{correctIndicator, jdbcType=BOOLEAN},
+				correctnessindicator = #{correctIndicator, jdbcType=BOOLEAN},
 			</if>
 			<if test="answerSequence != null">
-				#{answerSequence, jdbcType=INTEGER},
+				answersequence = #{answerSequence, jdbcType=INTEGER},
 			</if>
 			<if test="answerReflectionComment != null">
-				#{answerReflectionComment, jdbcType=VARCHAR},
+				answerreflectioncomment = #{answerReflectionComment, jdbcType=VARCHAR},
 			</if>
 			<if test="answerKeywordWeight != null">
-				#{answerKeywordWeight, jdbcType=INTEGER}
+				answerkeywordweight =  #{answerKeywordWeight, jdbcType=INTEGER}
 			</if>
 		</set>
-		where questionbankanswerid = #{questionBankAnswerId, jdbcType=INTEGER}
+		where questionbankanswerid = #{questionBankAnswerId.storageID, jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveQuestionVisualInfo" parameterType="com.ziksana.domain.assessment.QuestionVisual"
 		useGeneratedKeys="true" keyProperty="questionVisualId" keyColumn="questionvisualid">
 		insert into asmquestionvisual
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate != null">
-				creationdate,
-			</if>
+			creationdate,
 			<if test="active != null">
 				active,
 			</if>
-			<if test="visualtype != null">
+			<if test="visualType != null">
 				visualtype,
 			</if>
-			<if test="visualpath != null">
+			<if test="visualPath != null">
 				visualpath,
 			</if>
-			<if test="internalindicator != null">
+			<if test="internalIndicator != null">
 				internalindicator,
 			</if>
-			<if test="visualsource != null">
+			<if test="visualSource != null">
 				visualsource,
 			</if>
-			<if test="questionbankid != null">
+			<if test="questionBank != null">
 				questionbankid,
 			</if>
 		</trim>
@@ -455,8 +435,8 @@
 			<if test="visualSource != null">
 				#{visualSourceId, jdbcType=INTEGER},
 			</if>
-			<if test="questionBankId != null">
-				#{questionBank.questionBankId, jdbcType=INTEGER},
+			<if test="questionBank != null">
+				#{questionBank.questionBankId.storageID, jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="questionVisualId" resultType="int"
@@ -469,42 +449,40 @@
 		update asmquestionvisual
 		<set>
 			<if test="visualType != null">
-				visualType = #{visualTypeId, jdbcType=INTEGER},
+				visualtype = #{visualTypeId, jdbcType=INTEGER},
 			</if>
 			<if test="visualPath != null">
-				visualPath = #{visualPath, jdbcType=VARCHAR},
+				visualpath = #{visualPath, jdbcType=VARCHAR},
 			</if>
 			<if test="internalIndicator != null">
-				internalIndicator = #{internalIndicator,
+				internalindicator = #{internalIndicator,
 				jdbcType=INTEGER},
 			</if>
 			<if test="visualSource != null">
-				visualSource = #{visualSourceId, jdbcType=INTEGER},
+				visualsource = #{visualSourceId, jdbcType=INTEGER},
 			</if>
 		</set>
-		where questionvisualid = #{questionVisualId, jdbcType=INTEGER},
+		where questionvisualid = #{questionVisualId.storageID, jdbcType=INTEGER},
 	</update>
 	
 	<insert id="saveVisualSpot" parameterType="com.ziksana.domain.assessment.VisualSpot"
 		useGeneratedKeys="true" keyProperty="visualSpotId" keyColumn="visualspotid">
 		insert into asmquestionbankanswer
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate != null">
-				creationdate,
-			</if>
-			<if test="visualsize != null">
+			creationdate,
+			<if test="size != null">
 				visualsize,
 			</if>
-			<if test="spotrelativecoordinate != null">
+			<if test="coordinates != null">
 				spotrelativecoordinate,
 			</if>
-			<if test="questionlabeltext != null">
+			<if test="questionLabelText != null">
 				questionlabeltext,
 			</if>
 			<if test="active != null">
 				active,
 			</if>
-			<if test="questionvisualid != null">
+			<if test="questionVisual != null">
 				questionvisualid,
 			</if>
 		</trim>
@@ -523,7 +501,7 @@
 				#{active, jdbcType=BOOLEAN},
 			</if>
 			<if test="questionVisual != null">
-				#{questionVisual.questionVisualId, jdbcType=INTEGER},
+				#{questionVisual.questionVisualId.storageID, jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="visualSpotId" resultType="int"
@@ -544,11 +522,8 @@
 			<if test="questionLabelText != null">
 				questionlabeltext = #{questionLabelText, jdbcType=VARCHAR},
 			</if>
-			<if test="active != null">
-				active = #{active, jdbcType=BOOLEAN},
-			</if>
 		</set>
-		where visualspotid = #{visualSpotId, jdbcType=INTEGER}
+		where visualspotid = #{visualSpotId.storageID, jdbcType=INTEGER}
 	</update>
 
 </mapper>

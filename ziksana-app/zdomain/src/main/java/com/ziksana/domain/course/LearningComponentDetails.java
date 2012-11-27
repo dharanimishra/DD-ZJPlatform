@@ -84,7 +84,7 @@ public class LearningComponentDetails{
 	public void addCourseLearningComponent(
 			CourseLearningComponent courseLComponent) {
 		if(courseLearningComponent == null){
-			courseLearningComponent = new CourseLearningComponent(courseLComponent.getUsageStartDate(),courseLComponent.getUsageEndDate(),courseLComponent.getDuration());
+			courseLearningComponent = new CourseLearningComponent(courseLComponent.getUsageStartDate(),courseLComponent.getUsageEndDate(),courseLComponent.getCourseLCDuration());
 		}
 		
 		this.courseLearningComponent = courseLComponent;

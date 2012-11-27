@@ -25,27 +25,27 @@
 			<if test="contentPath != null">
 				contentmarkuppath = #{contentPath,jdbcType=VARCHAR},
 			</if>
-			<if test="coursePlaybookStatusId != null">
+			<if test="coursePlaybookStatus != null">
 				courseplaybookstatus =
 				#{coursePlaybookStatusId,jdbcType=INTEGER},
 			</if>
 			<if test="brochurePath != null">
 				brochurecontentpath = #{brochurePath,jdbcType=VARCHAR},
 			</if>
-			<if test="recStudentModelId != null">
+			<if test="recStudentModel != null">
 				recipientstudentmodel =
 				#{recStudentModelId,jdbcType=INTEGER},
 			</if>
 			<if test="coursePlaybook != null">
 				courseplaybookid =
-				#{coursePlaybook.coursePlaybookId,jdbcType=INTEGER},
+				#{coursePlaybook.coursePlaybookId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="learningComponent != null">
 				learningcomponentid =
-				#{learningComponent.learningComponentId,jdbcType=INTEGER},
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
 			</if>
 		</set>
-		where courseplaybookviewid = #{coursePlaybookViewId, jdbcType=INTEGER}
+		where courseplaybookviewid = #{coursePlaybookViewId.storageID, jdbcType=INTEGER}
 	</update>
 
 	<!-- <insert id="saveDefaultPlaybook" parameterType="com.ziksana.domain.course.CoursePlaybook" 
@@ -60,19 +60,19 @@
 		insert into corcourseplaybook
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="validFrom != null">
-				validFrom,
+				validfrom,
 			</if>
 			<if test="validTo != null">
-				validTo,
+				validto,
 			</if>
-			<if test="coursePlaybookStatus != null">
-				CoursePlaybookStatus,
+			<if test="coursePBStatus != null">
+				courseplaybookstatus,
 			</if>
-			<if test="coursePlaybookType != null">
-				CoursePlaybookType,
+			<if test="playbookType != null">
+				courseplaybooktype,
 			</if>
-			<if test="courseId != null">
-				CourseId,
+			<if test="course != null">
+				courseid,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -82,14 +82,14 @@
 			<if test="toDate != null">
 				#{toDate,jdbcType=DATE},
 			</if>
-			<if test="coursePBStatusId != null">
+			<if test="coursePBStatus != null">
 				#{coursePBStatusId,jdbcType=INTEGER},
 			</if>
-			<if test="coursePlaybookType != null">
+			<if test="playbookType != null">
 				#{playbookTypeId,jdbcType=INTEGER},
 			</if>
 			<if test="course != null">
-				#{course.courseId,jdbcType=INTEGER},
+				#{course.courseId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="coursePlaybookId" resultType="int"
@@ -102,31 +102,29 @@
 		useGeneratedKeys="true" keyProperty="coursePlaybookViewId" keyColumn="courseplaybookviewid">
 		insert into corcourseplaybookview
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate != null">
-				creationdate,
-			</if>
-			<if test="playbookviewname != null">
+			creationdate,
+			<if test="name != null">
 				playbookviewname,
 			</if>
-			<if test="deliverytype != null">
+			<if test="deliveryType != null">
 				deliverytype,
 			</if>
-			<if test="layoutmarkupPath != null">
+			<if test="layoutPath != null">
 				layoutmarkupPath,
 			</if>
-			<if test="contentmarkupPath != null">
+			<if test="contentPath != null">
 				contentmarkupPath,
 			</if>
-			<if test="courseplaybookstatus != null">
+			<if test="coursePlaybookStatus != null">
 				courseplaybookstatus,
 			</if>
-			<if test="brochurecontentPath != null">
+			<if test="brochurePath != null">
 				brochurecontentPath,
 			</if>
-			<if test="recipientstudentmodel != null">
+			<if test="recStudentModel != null">
 				recipientstudentmodel,
 			</if>
-			<if test="courseplaybookid != null">
+			<if test="coursePlaybook != null">
 				courseplaybookid,
 			</if>
 		</trim>
@@ -150,11 +148,11 @@
 			<if test="brochurePath != null">
 				#{brochurePath,jdbcType=VARCHAR},
 			</if>
-			<if test="recStudentModelId != null">
+			<if test="recStudentModel != null">
 				#{recStudentModelId, jdbcType=INTEGER},
 			</if>
 			<if test="coursePlaybook != null">
-				#{coursePlaybook.coursePlaybookId,jdbcType=INTEGER},
+				#{coursePlaybook.coursePlaybookId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 	</insert>

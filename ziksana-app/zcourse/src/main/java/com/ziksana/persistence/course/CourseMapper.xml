@@ -39,7 +39,7 @@
 					thumbnailpicturepath = #{thumbnailPicturePath,jdbcType=VARCHAR},
 				</if>
 			</set>
-			where courseid = #{courseId,jdbcType=INTEGER}
+			where courseid = #{courseId.storageID,jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveCourse" parameterType="com.ziksana.domain.course.Course"

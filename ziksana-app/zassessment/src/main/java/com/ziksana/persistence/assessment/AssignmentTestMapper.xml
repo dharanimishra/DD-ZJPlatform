@@ -1,33 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ziksana.persistence.assessment.AssignmentTestMapper">
-	<sql id="Base_Column_List">
-		AssignmentTestId, Active, UsageStartDate, UsageEndDate,
-		Name, TestType,
-		AssignmentContent,
-		DificultyLevel, Instruction,
-		ZeniCreatedIndicator, LearnerCreatedIndicator,
-		MultipleAttemptsAllowedIndicator,
-		OpenforPeerEvaluationIndicator,
-		AsynchronousIndicator, ProctoringNeededIndicator,
-		AnswerWithinTime,
-		Status, LearningComponentId, MemberRoleId
-	</sql>
 
 	<update id="updateTestRubric" parameterType="com.ziksana.domain.assessment.AssignmentTestRubric">
 		update asmassignmenttestrubric
 		<set>
-			<if test="cellvalue != null">
+			<if test="cellValue != null">
 				#{cellValue,jdbcType=INTEGEER},
 			</if>
 			<if test="rubric != null">
-				#{rubric.rubricId,jdbcType=INTEGER},
+				#{rubric.rubricId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="rubricMatrix != null">
-				#{rubricMatrix.rubricMatrixId,jdbcType=INTEGER},
+				#{rubricMatrix.rubricMatrixId.storageID,jdbcType=INTEGER},
 			</if>
 		</set>
-		where assignmenttestrubricid = #{assignmentTestRubricId,
+		where assignmenttestrubricid = #{assignmentTestRubricId.storageID,
 		jdbcType=INTEGER}
 	</update>
 
@@ -36,41 +24,39 @@
 		keyColumn="assignmenttestrubricid">
 		insert into asmassignmenttestrubric
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate != null">
-				creationdate,
-			</if>
-			<if test="cellvalue != null">
+			creationdate,
+			<if test="cellValue != null">
 				cellvalue,
 			</if>
 			<if test="active != null">
 				active,
 			</if>
-			<if test="testid != null">
+			<if test="test != null">
 				testid,
 			</if>
-			<if test="rubricid != null">
+			<if test="rubric != null">
 				rubricid,
 			</if>
-			<if test="rubricmatrixid != null">
+			<if test="rubricMatrix != null">
 				rubricmatrixid,
 			</if>
 		</trim>
 		<trim prefix=" values (" suffix=")" suffixOverrides=",">
 			sysdate(),
-			<if test="cellvalue != null">
+			<if test="cellValue != null">
 				#{cellValue,jdbcType=INTEGER},
 			</if>
 			<if test="active != null">
 				#{active,jdbcType=BOOLEAN},
 			</if>
 			<if test="test != null">
-				#{test.testId,jdbcType=INTEGER},
+				#{test.testId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="rubric != null">
-				#{rubric.rubricId,jdbcType=INTEGER},
+				#{rubric.rubricId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="rubricMatrix != null">
-				#{rubricMatrix.rubricMatrixId,jdbcType=INTEGER},
+				#{rubricMatrix.rubricMatrixId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="assignmentTestRubricId" resultType="int"
@@ -94,7 +80,7 @@
 				propertyValue = #{propertyValue,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where assignmenttestsettingsid = #{testSettingsId, jdbcType=INTEGER}
+		where assignmenttestsettingsid = #{testSettingsId.storageID, jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveTestSettings"
@@ -102,22 +88,20 @@
 		useGeneratedKeys="true" keyProperty="testSettingsId" keyColumn="assignmenttestsettingsid">
 		insert into asmassignmenttestsettings
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate != null">
-				creationdate,
-			</if>
+			creationdate,
 			<if test="active != null">
 				active,
 			</if>
 			<if test="property != null">
 				property,
 			</if>
-			<if test="propertyvaluetype != null">
+			<if test="propertyValueType != null">
 				propertyvaluetype,
 			</if>
-			<if test="propertyvalue != null">
+			<if test="propertyValue != null">
 				propertyvalue,
 			</if>
-			<if test="testid != null">
+			<if test="test != null">
 				testid,
 			</if>
 		</trim>
@@ -136,7 +120,7 @@
 				#{propertyValue,jdbcType=VARCHAR},
 			</if>
 			<if test="test != null">
-				#{test.testId,jdbcType=INTEGER},
+				#{test.testId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="testSettingsId" resultType="int"
@@ -155,20 +139,17 @@
 			<if test="name != null">
 				Name,
 			</if>
-			<if test="assignmentcontent != null">
+			<if test="assignmentContent != null">
 				assignmentcontent,
 			</if>
 			<if test="status != null">
 				status,
 			</if>
-			<if test="learningcomponentid != null">
+			<if test="learningComponent != null">
 				learningcomponentid,
 			</if>
-			<if test="memberroleid != null">
+			<if test="creatorMemberPersona != null">
 				memberroleid,
-			</if>
-			<if test="isdelete != null">
-				isdelete,
 			</if>
 		</trim>
 		<trim prefix=" values (" suffix=")" suffixOverrides=",">
@@ -185,13 +166,10 @@
 				#{statusId,jdbcType=INTEGER},
 			</if>
 			<if test="learningComponent != null">
-				#{learningComponent.learningComponentId,jdbcType=INTEGER},
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="creatorMemberPersona != null">
-				#{creatorMemberPersona.memberRoleId,jdbcType=INTEGER},
-			</if>
-			<if test="isDelete != null">
-				#{isDelete,jdbcType=INTEGER},
+				#{creatorMemberPersona.memberRoleId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="assignmentId" resultType="int"
@@ -210,34 +188,34 @@
 			<if test="name != null">
 				name,
 			</if>
-			<if test="testtype != null">
+			<if test="testType != null">
 				testtype,
 			</if>
-			<if test="testcontent != null">
+			<if test="testContent != null">
 				testcontent,
 			</if>
-			<if test="dificultylevel != null">
+			<if test="dificultyLevel != null">
 				dificultylevel,
 			</if>
 			<if test="instruction != null">
 				instruction,
 			</if>
-			<if test="zenicreatedindicator != null">
+			<if test="isZeniCreated != null">
 				zenicreatedindicator,
 			</if>
-			<if test="learnercreatedindicator != null">
+			<if test="isLearnerCreated != null">
 				learnercreatedindicator,
 			</if>
-			<if test="multipleattemptsallowedindicator != null">
+			<if test="isMultipleAttemptsAllowed != null">
 				multipleattemptsallowedindicator,
 			</if>
-			<if test="openforpeerevaluationindicator != null">
+			<if test="isOpenforPeerEvaluation != null">
 				openforpeerevaluationindicator,
 			</if>
-			<if test="asynchronousindicator != null">
+			<if test="isAsynchronous != null">
 				asynchronousindicator,
 			</if>
-			<if test="proctoringneededindicator != null">
+			<if test="isProctoringNeeded != null">
 				proctoringneededindicator,
 			</if>
 			<if test="answerWithinTime != null">
@@ -246,16 +224,13 @@
 			<if test="status != null">
 				status,
 			</if>
-			<if test="assignmentid != null">
+			<if test="assignment != null">
 				assignmentid,
-			</if>
-			<if test="isdelete != null">
-				isdelete,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="active != null">
-				#{active,jdbcType=BIT},
+				#{active,jdbcType=BOOLEAN},
 			</if>
 			<if test="name != null">
 				#{name,jdbcType=VARCHAR},
@@ -273,31 +248,31 @@
 				#{instruction,jdbcType=VARCHAR},
 			</if>
 			<if test="isZeniCreated != null">
-				#{isZeniCreated,jdbcType=BIT},
+				#{isZeniCreated,jdbcType=BOOLEAN},
 			</if>
 			<if test="isLearnerCreated != null">
-				#{isLearnerCreated,jdbcType=BIT},
+				#{isLearnerCreated,jdbcType=BOOLEAN},
 			</if>
 			<if test="isMultipleAttemptsAllowed != null">
-				#{isMultipleAttemptsAllowed,jdbcType=BIT},
+				#{isMultipleAttemptsAllowed,jdbcType=BOOLEAN},
 			</if>
 			<if test="isOpenforPeerEvaluation != null">
-				#{isOpenforPeerEvaluation,jdbcType=BIT},
+				#{isOpenforPeerEvaluation,jdbcType=BOOLEAN},
 			</if>
 			<if test="isAsynchronous != null">
-				#{isAsynchronous,jdbcType=BIT},
+				#{isAsynchronous,jdbcType=BOOLEAN},
 			</if>
 			<if test="isProctoringNeeded != null">
-				#{isProctoringNeeded,jdbcType=BIT},
+				#{isProctoringNeeded,jdbcType=BOOLEAN},
+			</if>
+			<if test="answerWithinTime != null">
+				#{answerWithinTime,jdbcType=INTEGER},
 			</if>
 			<if test="status != null">
 				#{statusId,jdbcType=INTEGER},
 			</if>
-			<if test="assignmentId != null">
-				#{assignment.assignmentId,jdbcType=INTEGER},
-			</if>
-			<if test="isDelete != null">
-				#{isDelete,jdbcType=BOOLEAN},
+			<if test="assignment != null">
+				#{assignment.assignmentId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="testId" resultType="int" order="AFTER">
@@ -314,11 +289,8 @@
 			<if test="assignmentContent != null">
 				#{assignmentContent,jdbcType=VARCHAR},
 			</if>
-			<if test="isDelete != null">
-				#{isDelete,jdbcType=BOOLEAN},
-			</if>
 		</set>
-		where assignmentId = #{assignmentId,jdbcType=INTEGER}
+		where assignmentId = #{assignmentId.storageID,jdbcType=INTEGER}
 	</update>
 
 
@@ -356,11 +328,8 @@
 				proctoringneededindicator =
 				#{isProctoringNeeded,jdbcType=BOOLEAN},
 			</if>
-			<if test="isDelete != null">
-				isdelete = #{isDelete,jdbcType=BOOLEAN},
-			</if>
 		</set>
-		where testId = #{testId,jdbcType=INTEGER}
+		where testId = #{testId.storageID,jdbcType=INTEGER}
 	</update>
 
 

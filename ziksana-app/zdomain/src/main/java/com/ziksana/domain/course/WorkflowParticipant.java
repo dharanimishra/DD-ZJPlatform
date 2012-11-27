@@ -34,6 +34,7 @@ public class WorkflowParticipant extends AuditHistory {
 	private Date 						startDate				= null;
 	private Date 						endDate					= null;
 	private ParticipantType 			participantType 		= null;
+	private Integer			 			participantTypeId 		= null;
 	private ContentReviewWorkflow 		courseWorkflow 			= null;
 	private MemberPersona				participateMemberRole   = null;
 	private WorkflowParticipantComment 	participantComment 		= null;
@@ -156,6 +157,20 @@ public class WorkflowParticipant extends AuditHistory {
 	 */
 	public void setAuthorReviewRatingList(List<ContentReviewRating> authorReviewRatingList) {
 		this.authorReviewRatingList = authorReviewRatingList;
+	}
+
+	/**
+	 * @return the participantTypeId
+	 */
+	public Integer getParticipantTypeId() {
+		return participantTypeId;
+	}
+
+	/**
+	 * @param participantTypeId the participantTypeId to set
+	 */
+	public void setParticipantTypeId(Integer participantTypeId) {
+		this.participantTypeId = participantTypeId;
 	}
 	
 }

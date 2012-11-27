@@ -3,12 +3,10 @@
 <mapper namespace="com.ziksana.persistence.course.LearningComponentContentHotspotMapper">
 
 	<insert id="save" parameterType="com.ziksana.domain.course.LearningComponentContentHotspot"
-		useGeneratedKeys="true" keyProperty="componentContentHotspotId" keyColumn="componentContentHotspotId">
+		useGeneratedKeys="true" keyProperty="componentContentHotspotId" keyColumn="componentcontenthotspotid">
 		insert into corlearningcomponentcontenthotspot
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate !=null">
-				creationdate,
-			</if>
+			creationdate,
 			<if test="coordinates!=null">
 				coordinates,
 			</if>
@@ -21,10 +19,10 @@
 			<if test="active!=null">
 				active,
 			</if>
-			<if test="learningcomponentcontentid!=null">
+			<if test="learningComponentContent !=null">
 				learningcomponentcontentid,
 			</if>
-			<if test="memberroleid!=null">
+			<if test="memberPersona !=null">
 				memberroleid,
 			</if>
 		</trim>
@@ -43,10 +41,10 @@
 				#{active,jdbcType.BOOLEAN},
 			</if>
 			<if test="learningComponentContent!=null">
-				#{learningComponentContent.learningComponentContentid,jdbcType.INTEGER},
+				#{learningComponentContent.learningComponentContentId.storageID,jdbcType.INTEGER},
 			</if>
-			<if test="memberPersona!=null">
-				#{memberPersona.memberroleid,jdbcType.INTEGER},
+			<if test="memberPersona !=null">
+				#{memberPersona.memberRoleId,jdbcType.INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="componentContentHotspotId" resultType="int"
@@ -55,7 +53,7 @@
 		</selectKey>
 	</insert>
 
-	<update id="update" parameterType="com.ziksana.domain.course.CourseContentSecurity">
+	<update id="update" parameterType="com.ziksana.domain.course.LearningComponentContentHotspot">
 		update corlearningcomponentcontenthotspot
 		<set>
 		<if test="coordinates!=null">
@@ -69,6 +67,6 @@
 			</if>
 		</set>
 	componentcontenthotspotid =
-	#{componentContentHotspotId,jdbcType=INTEGER}
+	#{componentContentHotspotId.storageID,jdbcType=INTEGER}
 	</update>
 </mapper>

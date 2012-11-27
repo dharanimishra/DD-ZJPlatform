@@ -14,7 +14,6 @@ import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.course.ComponentContentType;
 import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.Course;
-import com.ziksana.domain.course.CourseContentSecurity;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.CourseStatus;
@@ -74,17 +73,17 @@ public class CourseDefineTest extends BaseTest{
 
 	private Course buildCourseTreeData() throws Exception {
 
-		List<LearningComponent> compList = new ArrayList<LearningComponent>();
+		List<CourseLearningComponent> compList = new ArrayList<CourseLearningComponent>();
 		List<CourseTagcloud> 	tagcloudList 	= new ArrayList<CourseTagcloud>();
 		Course course1 = new Course();
 		MemberPersona authoredMember = new MemberPersona();
 		authoredMember.setMemberRoleId(100);
-//		course1.setCourseId(150);
+		course1.setCourseId(150);
 		course1.setAccountableMember(authoredMember);
-		course1.setName("DMS");
+		//course1.setName("DMS 001");
 		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
-		course1.setDescription("Discrete Mathematics");
+		course1.setDescription("Discrete Mathematics3");
 /*		course1.setSecurityIndicator(true);
 		CourseContentSecurity courseSecurity = new CourseContentSecurity();
 		courseSecurity.setContentSecurityId(17);
@@ -93,13 +92,47 @@ public class CourseDefineTest extends BaseTest{
 		courseSecurity.setCourse(course1);
 		course1.setCourseContSecurity(courseSecurity);
 */		
-		CourseTagcloud tagcloud = new CourseTagcloud();
+/*		CourseTagcloud tagcloud = new CourseTagcloud();
 		tagcloud.setCreatingMember(authoredMember);
 		tagcloud.setTagName("Trigonometry");
 		tagcloud.setTagType(TagType.TAG_TYPE1);
 		tagcloudList.add(tagcloud);
 		//tagcloud.setCourse(course1);
 		course1.setCourseTagClouds(tagcloudList);
+*/		
+		LearningComponent comp1 = new LearningComponent();
+		comp1.setAuthoredMember(authoredMember);
+		
+		comp1.setName("Module1");
+		LearningComponentNest compNest1 = new LearningComponentNest(null, comp1);
+		compNest1.setNestLearningComponent(comp1);
+		//compNest1.setComponentNestId(11);
+		LearningComponentDetails compDetails1 = new LearningComponentDetails();
+		// comp1.getLearningComponentDetails();
+		compDetails1.setLearningComponentNest(compNest1);
+
+		LearningComponentType compType1 = new LearningComponentType();
+		compType1.setLearningComponentTypeId(1);
+	
+		comp1.setLearningComponentType(compType1);
+
+		CourseLearningComponent corComp1 = new CourseLearningComponent();
+		corComp1.setLearningComponent(comp1);
+		corComp1.setLearningComponentType(compType1);
+		corComp1.setCourse(course1);
+
+		compDetails1.setCourseLearningComponent(corComp1);
+		
+		comp1.setLearningComponentDetails(compDetails1);
+		
+		compList.add(corComp1);
+
+		CourseDetails courseDetails = new CourseDetails();
+
+		courseDetails.setCourseLearningComponentsList(compList);
+
+		course1.setCourseDetails(courseDetails);
+
 		/*	
 		CourseContentSecurity courseSecurity = new CourseContentSecurity();
 		courseSecurity.setFlotingIndicator(true);

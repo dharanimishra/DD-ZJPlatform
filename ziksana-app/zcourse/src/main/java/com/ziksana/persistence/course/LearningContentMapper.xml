@@ -58,19 +58,17 @@
 		useGeneratedKeys="true" keyProperty="learningContentId" keyColumn="learningcontentid">
 		insert into corlearningcontent
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate !=null">
-				creationdate,
-			</if>
+			creationdate,
 			<if test="active !=null">
 				active,
 			</if>
-			<if test="contenttype !=null">
+			<if test="contentType !=null">
 				contenttype,
 			</if>
-			<if test="contentpath !=null">
+			<if test="contentPath !=null">
 				contentpath,
 			</if>
-			<if test="contentformat !=null">
+			<if test="contentFormat !=null">
 				contentformat,
 			</if>
 			<if test="status !=null">
@@ -79,16 +77,16 @@
 			<if test="version !=null">
 				version,
 			</if>
-			<if test="contentname !=null">
+			<if test="contentName !=null">
 				contentname,
 			</if>
-			<if test="thumbnailpicturepath!=null">
+			<if test="thumbnailPicturePath !=null">
 				thumbnailpicturepath,
 			</if>
-			<if test="rightsowningmemberroleid !=null">
+			<if test="rightsOwningMember !=null">
 				rightsowningmemberroleid,
 			</if>
-			<if test="authoringmemberroleid !=null">
+			<if test="authoringMember !=null">
 				authoringmemberroleid,
 			</if>
 		</trim>
@@ -118,7 +116,7 @@
 			<if test="contentDescription !=null">
 				#{contentDescription,jdbcType=VARCHAR},
 			</if>
-			<if test="thumbnailpicturepath!=null">
+			<if test="thumbnailPicturePath !=null">
 				#{thumbnailPicturePath,jdbcType=VARCHAR},
 			</if>
 			<if test="rightsOwningMember !=null">
@@ -138,59 +136,60 @@
 		update corlearningcontent
 		<set>
 			<if test="contentType !=null">
-				contentType = #{contentTypeId,jdbcType=INTEGER},
+				contenttype = #{contentTypeId,jdbcType=INTEGER},
 			</if>
 			<if test="contentPath !=null">
-				contentPath = #{contentPath,jdbcType=VARCHAR},
+				contentpath = #{contentPath,jdbcType=VARCHAR},
 			</if>
 			<if test="contentFormat !=null">
-				contentFormat = #{contentFormatId,jdbcType=INTEGER},
+				contentformat = #{contentFormatId,jdbcType=INTEGER},
 			</if>
 			<if test="status !=null">
 				status = #{statusId,jdbcType=INTEGER},
 			</if>
 			<if test="contentName !=null">
-				contentName = #{contentName,jdbcType=VARCHAR},
+				contentname = #{contentName,jdbcType=VARCHAR},
 			</if>
 			<if test="contentDescription !=null">
-				contentDescription =
+				contentdescription =
 				#{contentDescription,jdbcType=VARCHAR},
 			</if>
 			<if test="thumbnailPicturePath !=null">
-				thumbnailPicturePath =
+				thumbnailpicturepath =
 				#{thumbnailPicturePath,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where learningcontentid = #{learningContentId, jdbcType=INTEGER}
+		where learningcontentid = #{learningContentId.storageID, jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveContentParts" parameterType="com.ziksana.domain.course.LearningContentParts"
 		useGeneratedKeys="true" keyProperty="contentPartsId" keyColumn="contentpartsid">
 		insert into corlearningcontentparts
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate !=null">
 				creationdate,
-			</if>
-			<if test="partpath !=null">
+			<if test="partPath !=null">
 				partpath,
 			</if>
-			<if test="partsequence !=null">
+			<if test="partSequence !=null">
 				partsequence,
 			</if>
-			<if test="learningcontentid !=null">
+			<if test="learningContent !=null">
 				learningcontentid,
 			</if>
-		</trim>
+		</trim>  
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			sysdate(),
-			<if test="activeFlag !=null">
+			<if test="partPath !=null">
 				#{partPath,jdbcType=VARCHAR},
 			</if>
 			<if test="partSequence !=null">
 				#{partSequence,jdbcType=INTEGER},
 			</if>
 			<if test="learningContent !=null">
-				#{learningContent.learningContentId,jdbcType=INTEGER},
+				#{learningContent.learningContentId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="courseLearningComponent !=null">
+				#{courseLearningComponent.courseLearningComponentId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="contentPartsId" resultType="int"
@@ -210,7 +209,7 @@
 				#{partPath,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where contentpartsid = #{contentPartsId,jdbcType=INTEGER}
+		where contentpartsid = #{contentPartsId.storageID,jdbcType=INTEGER}
 	</update>
 
 

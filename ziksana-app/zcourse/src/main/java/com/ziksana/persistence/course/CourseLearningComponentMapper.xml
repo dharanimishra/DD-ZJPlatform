@@ -7,19 +7,19 @@
 		keyColumn="courselearningcomponentid">
 		insert into corcourselearningcomponent
 		<trim suffixOverrides="," suffix=")" prefix="(">
-			<if test="creationdate != null"> creationdate, </if>
-			<if test="usageStartDate != null"> usageStartDate, </if>
-			<if test="usageenddate != null"> usageenddate, </if>
+			creationdate,
+			<if test="usageStartDate != null"> usagestartdate, </if>
+			<if test="usageEndDate != null"> usageenddate, </if>
 			<if test="active != null"> active, </if>
 			<if test="weightage != null"> weightage, </if>
-			<if test="totalcredits != null"> totalcredits, </if>
-			<if test="extracredits != null"> extracredits, </if>
-			<if test="duration != null"> duration, </if>
-			<if test="learningcomponentoveriddenindicator != null">learningcomponentoveriddenindicator</if>
-			<if test="durationunit != null"> durationunit, </if>
-			<if test="courseid != null"> courseid, </if>
-			<if test="learningcomponentid != null"> learningcomponentid, </if>
-			<if test="learningcomponenttypeid != null"> learningcomponenttypeid, </if>
+			<if test="totalCredits != null"> totalcredits, </if>
+			<if test="extraCredits != null"> extracredits, </if>
+			<if test="courseLCDuration != null"> duration, </if>
+			<if test="courseLCDuration != null"> durationunit, </if>
+			<if test="isLearningComponentOveridden != null">learningcomponentoveriddenindicator</if>
+			<if test="course != null"> courseid, </if>
+			<if test="learningComponent != null"> learningcomponentid, </if>
+			<if test="learningComponentType != null"> learningcomponenttypeid, </if>
 		</trim>
 		<trim suffixOverrides="," suffix=")" prefix="values (">
 			sysdate(),
@@ -29,15 +29,15 @@
 			<if test="weightage != null"> #{weightage,jdbcType=INTEGER}, </if>
 			<if test="totalCredits != null"> #{totalCredits,jdbcType=INTEGER}, </if>
 			<if test="extraCredits != null"> #{extraCredits,jdbcType=INTEGER}, </if>
-			<if test="duration != null"> #{duration.duration,jdbcType=INTEGER}, </if>
+			<if test="courseLCDuration != null"> #{courseLCDuration.duration,jdbcType=INTEGER}, </if>
+			<if test="courseLCDuration != null"> #{courseLCDuration.durationUnits,jdbcType=INTEGER}, </if>
 			<if test="isLearningComponentOveridden != null">#{isLearningComponentOveridden,jdbcType=BOOLEAN}</if>
-			<if test="duration!= null"> #{duration.durationUnits,jdbcType=INTEGER}, </if>
-			<if test="course != null"> #{course.courseId,jdbcType=INTEGER}, </if>
+			<if test="course != null"> #{course.courseId.storageID,jdbcType=INTEGER}, </if>
 			<if test="learningComponent != null">
-				#{learningComponent.learningComponentId,jdbcType=INTEGER},
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="learningComponentType != null">
-				#{learningComponentType.learningComponentTypeId,jdbcType=INTEGER},
+				#{learningComponentType.learningComponentTypeId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="courseLearningComponentId"
@@ -49,19 +49,32 @@
 	<update id="updateCourseLearningComponent" parameterType="com.ziksana.domain.course.CourseLearningComponent">
 		update corcourselearningcomponent
 		<set>
-			<if test="usageStartDate != null"> #{usageStartDate,jdbcType=TIMESTAMP}, </if>
-			<if test="usageEndDate != null"> #{usageEndDate,jdbcType=TIMESTAMP}, </if>
-			<if test="weightage != null"> #{weightage,jdbcType=INTEGER}, </if>
-			<if test="totalCredits != null"> #{totalCredits,jdbcType=INTEGER}, </if>
-			<if test="extraCredits != null"> #{extraCredits,jdbcType=INTEGER}, </if>
-			<if test="duration != null"> #{duration.duration,jdbcType=INTEGER}, </if>
-			<if test="duration!= null"> #{duration.durationUnits,jdbcType=INTEGER}, </if>
+			<if test="usageStartDate != null">
+				usagestartdate = #{usageStartDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usageEndDate != null">
+				usageenddate = #{usageEndDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="active != null"> active = #{active,jdbcType=BOOLEAN}, </if>
+			<if test="weightage != null"> weightage = #{weightage,jdbcType=INTEGER}, </if>
+			<if test="totalCredits != null"> totalcredits = #{totalCredits,jdbcType=INTEGER}, </if>
+			<if test="extraCredits != null"> extracredits = #{extraCredits,jdbcType=INTEGER}, </if>
+			<if test="courseLCDuration != null"> 
+				duration = #{courseLCDuration.duration,jdbcType=INTEGER},
+			</if>
+			<if test="courseLCDuration != null"> 
+				durationunit = #{courseLCDuration.durationUnits,jdbcType=INTEGER},
+			</if>
+			<if test="isLearningComponentOveridden != null">
+				learningcomponentoveriddenindicator =
+				#{isLearningComponentOveridden,jdbcType=BOOLEAN}
+			</if>
 			<if test="learningComponentType != null">
-				#{learningComponentType.learningComponentTypeId,jdbcType=INTEGER},
+				#{learningComponentType.learningComponentTypeId.storageID,jdbcType=INTEGER},
 			</if>
 		</set>
 		where courseLearningComponentId =
-		#{courseLearningComponentId,jdbcType=INTEGER}
+		#{courseLearningComponentId.storageID,jdbcType=INTEGER}
 	</update>
 
 </mapper>

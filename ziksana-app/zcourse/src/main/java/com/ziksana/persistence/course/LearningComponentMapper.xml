@@ -8,35 +8,42 @@
 	</sql>
 	<insert id="saveLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent"
 		useGeneratedKeys="true" keyProperty="learningComponentId" keyColumn="learningcomponentid">
-		insert into corlearningcomponent -
-		<trim suffixOverrides="," suffix=")" prefix="(">
-			<if test="validFrom != null"> validFrom, </if>
-			<if test="validTo != null"> validTo, </if>
-			<if test="courseStatus != null"> CourseStatus, </if>
-			<if test="weightage != null"> Weightage, </if>
-			<if test="totalCredits != null"> TotalCredits, </if>
-			<if test="extraCreditsIndicator != null"> ExtraCreditsIndicator, </if>
-			<if test="extraCredits != null"> ExtraCredits, </if>
-			<if test="learningObjectIndicator != null"> LearningObjectIndicator, </if>
-			<if test="thumbnailPicturePath != null"> ThumbnailPicturePath, </if>
-			<if test="MemberRoleId != null"> MemberRoleId, </if>
-			<if test="learningComponentTypeId != null"> learningComponentTypeId, </if>
-			<if test="subjClassificationId != null"> SubjClassificationId, </if>
+		insert into corlearningcomponent 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name != null"> name, </if>
+			<if test="description != null"> description, </if>
+			<if test="validFrom != null"> validfrom, </if>
+			<if test="validTo != null"> validto, </if>
+			<if test="courseStatus != null"> coursestatus, </if>
+			<if test="weightage != null"> weightage, </if>
+			<if test="totalCredits != null"> totalcredits, </if>
+			<if test="extraCreditsIndicator != null"> extracreditsindicator, </if>
+			<if test="extraCredits != null"> extracredits, </if>
+			<if test="learningObjIndicator != null"> learningobjectindicator, </if>
+			<if test="thumbnailPicturePath != null"> thumbnailpicturepath, </if>
+			<if test="prescribedDuration != null"> prescribedlcduration, </if>
+			<if test="prescribedDuration != null"> prescribedlcdurationunit, </if>
+			<if test="authoredMember != null"> memberroleid, </if>
+			<if test="learningComponentType != null"> learningcomponenttypeid, </if>
+			<if test="subjClassification != null"> subjclassificationid, </if>
 		</trim>
-		<trim suffixOverrides="," suffix=")" prefix="values (">
-			#{learningComponentId,jdbcType=INTEGER},
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			<if test="name != null"> #{name,jdbcType=VARCHAR}, </if>
+			<if test="description != null"> #{description,jdbcType=VARCHAR}, </if>
 			<if test="validFrom != null"> #{validFrom,jdbcType=DATE}, </if>
 			<if test="validTo != null"> #{validTo,jdbcType=DATE}, </if>
-			<if test="courseStatus != null"> #{courseStatus,jdbcType=INTEGER}, </if>
+			<if test="courseStatus != null"> #{courseStatusId,jdbcType=INTEGER}, </if>
 			<if test="weightage != null"> #{weightage,jdbcType=INTEGER}, </if>
 			<if test="totalCredits != null"> #{totalCredits,jdbcType=VARCHAR}, </if>
-			<if test="extraCreditsIndicator != null"> #{extraCreditsIndicator,jdbcType=BIT}, </if>
+			<if test="extraCreditsIndicator != null"> #{extraCreditsIndicator,jdbcType=BOOLEAN}, </if>
 			<if test="extraCredits != null"> #{extraCredits,jdbcType=VARCHAR}, </if>
-			<if test="learningObjectIndicator != null"> #{LearningObjectIndicator,,jdbcType=BIT}, </if>
-			<if test="thumbnailPicturePath != null"> #{ThumbnailPicturePath,,jdbcType=VARCHAR}, </if>
-			<if test="memberRoleId != null"> #{memberRoleId,jdbcType=INTEGER}, </if>
-			<if test="learningComponentTypeId != null"> #{learningComponentTypeId,jdbcType=INTEGER}, </if>
-			<if test="subjClassificationId != null"> #{SubjClassificationId,jdbcType=INTEGER}, </if>
+			<if test="learningObjIndicator != null"> #{learningObjIndicator,jdbcType=BOOLEAN}, </if>
+			<if test="thumbnailPicturePath != null"> #{thumbnailPicturePath,jdbcType=VARCHAR}, </if>
+			<if test="prescribedDuration != null"> #{prescribedLCDuration,jdbcType=INTEGER}, </if>
+			<if test="prescribedDuration != null"> #{prescribedLCDurationUnit,jdbcType=INTEGER}, </if>
+			<if test="authoredMember != null"> #{authoredMember.memberRoleId,jdbcType=INTEGER}, </if>
+			<if test="learningComponentType != null"> #{learningComponentType.learningComponentTypeId.storageID,jdbcType=INTEGER}, </if>
+			<if test="subjClassification != null"> #{subjClassification.subjClassificationId,jdbcType=INTEGER}, </if>
 		</trim>
 		<selectKey keyProperty="learningComponentId" resultType="int"
 			order="AFTER">
@@ -46,30 +53,30 @@
 	<update id="updateLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent">
 		update corlearningcomponent 
 		<set>
-			<if test="validFrom != null"> validFrom = #{validFrom,jdbcType=DATE}, </if>
-			<if test="validTo != null"> validTo = #{validTo,jdbcType=DATE}, </if>
-			<if test="courseStatus != null"> CourseStatus = #{courseStatus,jdbcType=INTEGER}, </if>
-			<if test="weightage != null"> Weightage = #{weightage,jdbcType=INTEGER}, </if>
-			<if test="totalCredits != null"> TotalCredits = #{totalCredits,jdbcType=VARCHAR}, </if>
-			<if test="extraCreditsIndicator != null"> ExtraCreditsIndicator =
-				#{extraCreditsIndicator,jdbcType=BIT},
+			<if test="validFrom != null"> validfrom = #{validFrom,jdbcType=DATE}, </if>
+			<if test="validTo != null"> validto = #{validTo,jdbcType=DATE}, </if>
+			<if test="courseStatus != null"> coursestatus = #{courseStatusId,jdbcType=INTEGER}, </if>
+			<if test="weightage != null"> weightage = #{weightage,jdbcType=INTEGER}, </if>
+			<if test="totalCredits != null"> totalcredits = #{totalCredits,jdbcType=VARCHAR}, </if>
+			<if test="extraCreditsIndicator != null"> extracreditsindicator =
+				#{extraCreditsIndicator,jdbcType=BOOLEAN},
 			</if>
-			<if test="extraCredits != null"> ExtraCredits = #{extraCredits,jdbcType=VARCHAR}, </if>
-			<if test="learningObjectIndicator != null"> learningObjectIndicator =
-				#{LearningObjectIndicator,,jdbcType=BIT},
+			<if test="extraCredits != null"> extracredits = #{extraCredits,jdbcType=VARCHAR}, </if>
+			<if test="learningObjIndicator != null"> learningObjectIndicator =
+				#{learningObjIndicator,jdbcType=BOOLEAN},
 			</if>
-			<if test="thumbnailPicturePath != null"> ThumbnailPicturePath =
+			<if test="thumbnailPicturePath != null"> thumbnailpicturepath =
 				#{thumbnailPicturePath,,jdbcType=VARCHAR},
 			</if>
-			<if test="memberRoleId != null"> MemberRoleId=#{authoredMember.memberRoleId,jdbcType=INTEGER}, </if>
-			<if test="learningComponentTypeId != null">
-				learningComponentTypeId=#{learningComponentType.learningComponentTypeId,jdbcType=INTEGER},
+			<if test="authoredMember != null"> memberroleid=#{authoredMember.memberRoleId,jdbcType=INTEGER}, </if>
+			<if test="learningComponentType != null">
+				learningComponentTypeId=#{learningComponentType.learningComponentTypeId.storageID,jdbcType=INTEGER},
 			</if>
-			<if test="subjClassificationId != null"> SubjClassificationId =
+			<if test="subjClassification != null"> subjclassificationid =
 				#{subjClassification.subjClassificationId,jdbcType=INTEGER},
 			</if>
 		</set>
-		where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}
+		where learningcomponentid = #{learningComponentId.storageID,jdbcType=INTEGER}
 	</update>
 
 <!-- 	<insert id="saveLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent"

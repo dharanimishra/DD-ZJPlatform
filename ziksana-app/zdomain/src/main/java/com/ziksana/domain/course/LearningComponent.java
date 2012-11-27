@@ -25,10 +25,10 @@ public class LearningComponent extends AuditHistory {
 		this.authoredMember = authoredMember;
 	}
 
-	public LearningComponent(Duration prescribedLCDuration,
+	public LearningComponent(Duration prescribedDuration,
 			LearningComponentType learningComponentType, Course course,
 			MemberPersona authoredMember) {
-		this.prescribedLCDuration = prescribedLCDuration;
+		this.prescribedDuration = prescribedDuration;
 		this.learningComponentType = learningComponentType;
 			this.authoredMember = authoredMember;
 	}
@@ -56,7 +56,7 @@ public class LearningComponent extends AuditHistory {
 	 * Maximum Length:72
 	 */
 	private String 			thumbnailPicturePath 	= null;
-	private Duration 		prescribedLCDuration 	= null;
+	private Duration 		prescribedDuration 	= null;
 	private Integer 		version 				= null;
 	private Integer			totalCredits			= null;
 	private Integer			extraCredits			= null;
@@ -279,7 +279,7 @@ public class LearningComponent extends AuditHistory {
 				+ validTo + ", courseStatus=" + courseStatus + ", weightage="
 				+ weightage + ", learningObjIndictor=" + learningObjIndicator
 				+ ", thumbnailPicturePath=" + thumbnailPicturePath
-				+ ", prescribedLCDuration=" + prescribedLCDuration
+				+ ", prescribedLCDuration=" + prescribedDuration
 				+ ", learningComponentDetails=" + learningComponentDetails
 				+ "]";
 	}
@@ -287,15 +287,15 @@ public class LearningComponent extends AuditHistory {
 	/**
 	 * @return the prescribedLCDuration
 	 */
-	public Duration getPrescribedLCDuration() {
-		return prescribedLCDuration;
+	public Duration getPrescribedDuration() {
+		return prescribedDuration;
 	}
 
 	/**
 	 * @param prescribedLCDuration the prescribedLCDuration to set
 	 */
-	public void setPrescribedLCDuration(Duration prescribedLCDuration) {
-		this.prescribedLCDuration = prescribedLCDuration;
+	public void setPrescribedDuration(Duration prescribedDuration) {
+		this.prescribedDuration = prescribedDuration;
 	}
 
 	/**

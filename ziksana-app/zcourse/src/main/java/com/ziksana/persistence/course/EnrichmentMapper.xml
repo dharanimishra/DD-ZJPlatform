@@ -6,22 +6,20 @@
 		useGeneratedKeys="true" keyProperty="enrichmentId" keyColumn="enrichmentid">
 		insert into corenrichment
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="creationdate != null">
-				creationdate,
-			</if>
+			creationdate,
 			<if test="active != null">
 				active,
 			</if>
 			<if test="visibility != null">
 				visibility,
 			</if>
-			<if test="overrideat != null">
+			<if test="overrideAt != null">
 				overrideat,
 			</if>
-			<if test="learningcontentid != null">
+			<if test="learningContent != null">
 				learningcontentid,
 			</if>
-			<if test="creatormemberroleid != null">
+			<if test="creatorMemberPersona != null">
 				creatormemberroleid,
 			</if>
 		</trim>
@@ -30,14 +28,14 @@
 			<if test="active != null">
 				#{active,jdbcType=BOOLEAN},
 			</if>
-			<if test="visibilityId != null">
+			<if test="visibility != null">
 				#{visibilityId,jdbcType=INTEGER},
 			</if>
 			<if test="overrideAt != null">
 				#{overrideAt,jdbcType=INTEGER},
 			</if>
 			<if test="learningContent != null">
-				#{learningContent.learningContentId,jdbcType=INTEGER},
+				#{learningContent.learningContentId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="creatorMemberPersona != null">
 				#{creatorMemberPersona.memberRoleId,jdbcType=INTEGER},
@@ -55,36 +53,33 @@
 		insert into corcontentenrichment
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="startTime != null">
-				StartTime,
+				starttime,
 			</if>
 			<if test="endTime != null">
-				EndTime,
+				endtime,
 			</if>
 			<if test="linkType != null">
-				LinkType,
+				linktype,
 			</if>
 			<if test="linkElement != null">
-				LinkElement,
+				linkelement,
 			</if>
 			<if test="linkDescription != null">
-				LinkDescription,
+				linkdescription,
 			</if>
 			<if test="linkItemAuthor != null">
-				LinkItemAuthor,
+				linkitemauthor,
 			</if>
 			<if test="linkItemCost != null">
-				LinkItemCost,
+				linkitemcost,
 			</if>
 			<if test="linkSource != null">
-				LinkSource,
+				linksourceid,
 			</if>
 			<if test="active != null">
 				Active,
 			</if>
-			<if test="isdelete != null">
-				isdelete,
-			</if>
-			<if test="enrichmentid != null">
+			<if test="enrichment != null">
 				enrichmentid,
 			</if>
 		</trim>
@@ -116,11 +111,8 @@
 			<if test="active != null">
 				#{active,jdbcType=BIT},
 			</if>
-			<if test="isDelete != null">
-				#{isDelete,jdbcType=BIT},
-			</if>
 			<if test="enrichment.enrichmentId != null">
-				#{enrichment.enrichmentId,jdbcType=INTEGER},
+				#{enrichment.enrichmentId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="contentEnrichmentId" resultType="int"
@@ -133,31 +125,31 @@
 		update corContentEnrichment
 		<set>
 			<if test="startTime != null">
-				startTime = #{startTime,jdbcType=TIMESTAMP},
+				starttime = #{startTime,jdbcType=TIMESTAMP},
 			</if>
 			<if test="endTime != null">
-				endTime = #{endTime,jdbcType=TIMESTAMP},
+				endtime = #{endTime,jdbcType=TIMESTAMP},
 			</if>
 			<if test="linkType != null">
-				linkTypeId = #{linkTypeId,jdbcType=INTEGER},
+				linktype = #{linkTypeId,jdbcType=INTEGER},
 			</if>
 			<if test="linkElement != null">
-				linkElement = #{linkElement,jdbcType=VARCHAR},
+				linkelement = #{linkElement,jdbcType=VARCHAR},
 			</if>
 			<if test="linkDescription != null">
-				linkDescription = #{linkDescription,jdbcType=VARCHAR},
+				linkdescription = #{linkDescription,jdbcType=VARCHAR},
 			</if>
 			<if test="linkItemAuthor != null">
-				linkItemAuthor = #{linkItemAuthor,jdbcType=VARCHAR},
+				linkitemauthor = #{linkItemAuthor,jdbcType=VARCHAR},
 			</if>
 			<if test="linkItemCost != null">
-				linkItemCost = #{linkItemCost,jdbcType=INTEGER},
+				linkitemcost = #{linkItemCost,jdbcType=INTEGER},
 			</if>
 			<if test="linkSource != null">
-				linkSourceId = #{linkSourceId,jdbcType=INTEGER},
+				linksource = #{linkSourceId,jdbcType=INTEGER},
 			</if>
 		</set>
-		where contentenrichmentid = #{contentEnrichmentId,jdbcType.INTEGER}
+		where contentenrichmentid = #{contentEnrichmentId.storageID,jdbcType.INTEGER}
 	</update>
 
 

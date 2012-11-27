@@ -6,22 +6,22 @@
 		useGeneratedKeys="true" keyProperty="learningPlannerId" keyColumn="learningplannerid">
 		insert into corcourselearningplanner
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="startperiod != null">
+			<if test="startPeriod != null">
 				startperiod,
 			</if>
-			<if test="endperiod != null">
+			<if test="endPeriod != null">
 				endperiod,
 			</if>
-			<if test="starttime != null">
+			<if test="startTime != null">
 				starttime,
 			</if>
-			<if test="endtime != null">
+			<if test="endTime != null">
 				endtime,
 			</if>
 			<if test="duration != null">
 				duration,
 			</if>
-			<if test="courseid != null">
+			<if test="course != null">
 				courseid,
 			</if>
 		</trim>
@@ -42,7 +42,7 @@
 				#{duration.duration, jdbcType=INTEGER},
 			</if>
 			<if test="course != null">
-				#{course.courseId, jdbcType=INTEGER},
+				#{course.courseId.storageID, jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="learningPlannerId" resultType="int"
@@ -72,7 +72,7 @@
 				#{duration.duration, jdbcType=INTEGER},
 			</if>
 		</set>
-		where learningplannerid = #{learningPlannerId,jdbcType.INTEGER}
+		where learningplannerid = #{learningPlannerId.storageID,jdbcType.INTEGER}
 	</update>
 
 
