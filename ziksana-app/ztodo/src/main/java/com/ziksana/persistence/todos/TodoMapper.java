@@ -13,7 +13,7 @@ import com.ziksana.domain.todo.Todo;
  */
 public interface TodoMapper {
 	
-	public List<Todo> getTodos(int memberRoleId);
+	public List<Todo> getTodos(Integer memberRoleId);
 
 	public Todo getTodo(int todoId);
 

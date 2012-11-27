@@ -13,9 +13,9 @@ import com.ziksana.domain.todo.Todo;
  */
 public interface TodoService {
 	
-	List<Todo> getTodos(int memberRoleId);
+	List<Todo> getTodos();
 
-	Todo findTodo(int todoId);
+	
 
 	void createTodo(Todo todo);
 

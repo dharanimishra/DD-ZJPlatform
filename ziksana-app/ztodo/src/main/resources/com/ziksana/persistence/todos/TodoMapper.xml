@@ -16,20 +16,7 @@
 		n.ForMemberRoleId=#{userMemberRoleId}
 	</select>
 
-	<select id="getTodo" resultMap="todoResultMap" parameterType="int">
-		select
-		*
-		from
-		memmembernotification n
-		join utllookup l ON
-		n.NotificationType=l.LookupId
-		join utllookupvalue v ON
-		l.LookupId=v.LookupId
-		where l.CategoryName='memmembernotification' and
-		v.LookupValue='Ztodo' and
-		n.MemberNotificationId=#{memberNotificationId}
-
-	</select>
+	
 
 
 	<insert id="createTodo" parameterType="com.ziksana.domain.todo.Todo"

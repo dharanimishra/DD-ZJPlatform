@@ -7,9 +7,9 @@
 <todolist>
 	<c:forEach var="todo" items="${todoItems}">
 		<todoitem memberId="${memberId}">
-				<id>${todo.ID}</id>
-				<categoryName>${todo.category.name}</categoryName>
-				<subject>${todo.todoText}</subject>
+				<id>${todo.id}</id>
+				 <categoryName>${todo.category}</categoryName>
+				<subject>${todo.description}</subject>
 			</todoitem>
 	</c:forEach>
 </todolist>

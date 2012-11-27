@@ -81,7 +81,7 @@ public class TodoServiceImplTest {
 	@Test
 	public void testGetTodos() {
 
-		List<Todo> members = todoService.getTodos(1);
+		List<Todo> members = todoService.getTodos();
 		assertNotNull(members);
 
 	}
