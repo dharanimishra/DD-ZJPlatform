@@ -14,6 +14,7 @@ import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.course.ComponentContentType;
 import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.CourseContentSecurity;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.CourseStatus;
@@ -33,18 +34,19 @@ import com.ziksana.service.course.CourseService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
-public class CourseDefineTest extends BaseTest{
+public class CourseDefineTest extends BaseTest {
 
 	@Autowired
 	public CourseService courseService;
-	
+
 	@Test
 	public void testSaveCourse() throws Exception {
 		System.out
 				.println("inside Test ****************************************");
 
 		Course newCourse = null;
-		Course course = buildCourseTreeData();
+		Course course = buildCourseForSave();
+		//Course course = buildCourseForUpdate();
 
 		newCourse = courseService.saveOrUpdateCourse(course);
 
@@ -61,7 +63,9 @@ public class CourseDefineTest extends BaseTest{
 
 		Course newCourse = null;
 
-		Course course = buildCourseTreeData();
+		//Course course = buildCourseWithComponentForSave();
+
+		Course course = buildCourseWithComponentForUpdate();
 		
 		newCourse = courseService.saveOrUpadteCourseComponents(course);
 
@@ -71,49 +75,97 @@ public class CourseDefineTest extends BaseTest{
 
 	}
 
-	private Course buildCourseTreeData() throws Exception {
-
+	private Course buildCourseForUpdate() throws Exception {
 		List<CourseLearningComponent> compList = new ArrayList<CourseLearningComponent>();
-		List<CourseTagcloud> 	tagcloudList 	= new ArrayList<CourseTagcloud>();
+		List<CourseTagcloud> tagcloudList = new ArrayList<CourseTagcloud>();
 		Course course1 = new Course();
 		MemberPersona authoredMember = new MemberPersona();
 		authoredMember.setMemberRoleId(100);
 		course1.setCourseId(150);
 		course1.setAccountableMember(authoredMember);
-		//course1.setName("DMS 001");
+		course1.setName("DMS 001");
 		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
 		course1.setDescription("Discrete Mathematics3");
-/*		course1.setSecurityIndicator(true);
+		course1.setSecurityIndicator(true);
 		CourseContentSecurity courseSecurity = new CourseContentSecurity();
 		courseSecurity.setContentSecurityId(17);
 		courseSecurity.setFlotingIndicator(true);
 		courseSecurity.setLogoPath("/newlogopath/");
 		courseSecurity.setCourse(course1);
 		course1.setCourseContSecurity(courseSecurity);
-*/		
-/*		CourseTagcloud tagcloud = new CourseTagcloud();
+
+		CourseTagcloud tagcloud = new CourseTagcloud();
 		tagcloud.setCreatingMember(authoredMember);
 		tagcloud.setTagName("Trigonometry");
 		tagcloud.setTagType(TagType.TAG_TYPE1);
 		tagcloudList.add(tagcloud);
-		//tagcloud.setCourse(course1);
+		// tagcloud.setCourse(course1);
 		course1.setCourseTagClouds(tagcloudList);
-*/		
+
+		System.out.println("Constructed Course  : " + course1);
+
+		return course1;
+
+	}
+
+	private Course buildCourseForSave() throws Exception {
+		Course course1 = new Course();
+		MemberPersona authoredMember = new MemberPersona();
+		authoredMember.setMemberRoleId(100);
+		
+		course1.setAccountableMember(authoredMember);
+		
+		course1.setName("DMS 001");
+		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
+		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+		//course1.setDescription("Discrete Mathematics3");
+		
+		/*course1.setSecurityIndicator(true);
+		
+		CourseContentSecurity courseSecurity = new CourseContentSecurity();
+		courseSecurity.setContentSecurityId(17);
+		courseSecurity.setFlotingIndicator(true);
+		courseSecurity.setLogoPath("/newlogopath/");
+		courseSecurity.setCourse(course1);
+		course1.setCourseContSecurity(courseSecurity);
+
+		CourseTagcloud tagcloud = new CourseTagcloud();
+		tagcloud.setCreatingMember(authoredMember);
+		tagcloud.setTagName("Trigonometry");
+		tagcloud.setTagType(TagType.TAG_TYPE1);
+		tagcloudList.add(tagcloud);
+		// tagcloud.setCourse(course1);
+		course1.setCourseTagClouds(tagcloudList);
+*/
+		System.out.println("Constructed Course  : " + course1);
+
+		return course1;
+
+	}
+
+
+	private Course buildCourseWithComponentForSave() throws Exception {
+		List<CourseLearningComponent> compList = new ArrayList<CourseLearningComponent>();
+		Course course1 = new Course();
+		MemberPersona authoredMember = new MemberPersona();
+		authoredMember.setMemberRoleId(100);
+		course1.setCourseId(150);
+		
 		LearningComponent comp1 = new LearningComponent();
 		comp1.setAuthoredMember(authoredMember);
-		
 		comp1.setName("Module1");
+		
 		LearningComponentNest compNest1 = new LearningComponentNest(null, comp1);
 		compNest1.setNestLearningComponent(comp1);
-		//compNest1.setComponentNestId(11);
+		// compNest1.setComponentNestId(11);
 		LearningComponentDetails compDetails1 = new LearningComponentDetails();
 		// comp1.getLearningComponentDetails();
 		compDetails1.setLearningComponentNest(compNest1);
 
 		LearningComponentType compType1 = new LearningComponentType();
 		compType1.setLearningComponentTypeId(1);
-	
+
 		comp1.setLearningComponentType(compType1);
 
 		CourseLearningComponent corComp1 = new CourseLearningComponent();
@@ -122,9 +174,120 @@ public class CourseDefineTest extends BaseTest{
 		corComp1.setCourse(course1);
 
 		compDetails1.setCourseLearningComponent(corComp1);
-		
+
 		comp1.setLearningComponentDetails(compDetails1);
-		
+
+		compList.add(corComp1);
+
+		CourseDetails courseDetails = new CourseDetails();
+
+		courseDetails.setCourseLearningComponentsList(compList);
+
+		System.out.println("Constructed Course  : " + course1);
+
+		return course1;
+
+	}
+
+	private Course buildCourseWithComponentForUpdate() throws Exception {
+		List<CourseLearningComponent> compList = new ArrayList<CourseLearningComponent>();
+		Course course1 = new Course();
+		MemberPersona authoredMember = new MemberPersona();
+		authoredMember.setMemberRoleId(100);
+		course1.setCourseId(150);
+
+		LearningComponent comp1 = new LearningComponent();
+		comp1.setAuthoredMember(authoredMember);
+
+		comp1.setName("Module1");
+		LearningComponentNest compNest1 = new LearningComponentNest(null, comp1);
+		compNest1.setNestLearningComponent(comp1);
+		// compNest1.setComponentNestId(11);
+		LearningComponentDetails compDetails1 = new LearningComponentDetails();
+		// comp1.getLearningComponentDetails();
+		compDetails1.setLearningComponentNest(compNest1);
+
+		LearningComponentType compType1 = new LearningComponentType();
+		compType1.setLearningComponentTypeId(1);
+
+		comp1.setLearningComponentType(compType1);
+
+		CourseLearningComponent corComp1 = new CourseLearningComponent();
+		corComp1.setLearningComponent(comp1);
+		corComp1.setLearningComponentType(compType1);
+		corComp1.setCourse(course1);
+
+		compDetails1.setCourseLearningComponent(corComp1);
+
+		comp1.setLearningComponentDetails(compDetails1);
+
+		compList.add(corComp1);
+
+		CourseDetails courseDetails = new CourseDetails();
+
+		courseDetails.setCourseLearningComponentsList(compList);
+
+		System.out.println("Constructed Course  : " + course1);
+
+		return course1;
+
+	}
+
+	private Course buildCourseTreeData() throws Exception {
+
+		List<CourseLearningComponent> compList = new ArrayList<CourseLearningComponent>();
+		List<CourseTagcloud> tagcloudList = new ArrayList<CourseTagcloud>();
+		Course course1 = new Course();
+		MemberPersona authoredMember = new MemberPersona();
+		authoredMember.setMemberRoleId(100);
+		course1.setCourseId(150);
+		course1.setAccountableMember(authoredMember);
+		// course1.setName("DMS 001");
+		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
+		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+		course1.setDescription("Discrete Mathematics3");
+		/*
+		 * course1.setSecurityIndicator(true); CourseContentSecurity
+		 * courseSecurity = new CourseContentSecurity();
+		 * courseSecurity.setContentSecurityId(17);
+		 * courseSecurity.setFlotingIndicator(true);
+		 * courseSecurity.setLogoPath("/newlogopath/");
+		 * courseSecurity.setCourse(course1);
+		 * course1.setCourseContSecurity(courseSecurity);
+		 */
+		/*
+		 * CourseTagcloud tagcloud = new CourseTagcloud();
+		 * tagcloud.setCreatingMember(authoredMember);
+		 * tagcloud.setTagName("Trigonometry");
+		 * tagcloud.setTagType(TagType.TAG_TYPE1); tagcloudList.add(tagcloud);
+		 * //tagcloud.setCourse(course1);
+		 * course1.setCourseTagClouds(tagcloudList);
+		 */
+		LearningComponent comp1 = new LearningComponent();
+		comp1.setAuthoredMember(authoredMember);
+
+		comp1.setName("Module1");
+		LearningComponentNest compNest1 = new LearningComponentNest(null, comp1);
+		compNest1.setNestLearningComponent(comp1);
+		// compNest1.setComponentNestId(11);
+		LearningComponentDetails compDetails1 = new LearningComponentDetails();
+		// comp1.getLearningComponentDetails();
+		compDetails1.setLearningComponentNest(compNest1);
+
+		LearningComponentType compType1 = new LearningComponentType();
+		compType1.setLearningComponentTypeId(1);
+
+		comp1.setLearningComponentType(compType1);
+
+		CourseLearningComponent corComp1 = new CourseLearningComponent();
+		corComp1.setLearningComponent(comp1);
+		corComp1.setLearningComponentType(compType1);
+		corComp1.setCourse(course1);
+
+		compDetails1.setCourseLearningComponent(corComp1);
+
+		comp1.setLearningComponentDetails(compDetails1);
+
 		compList.add(corComp1);
 
 		CourseDetails courseDetails = new CourseDetails();
@@ -133,101 +296,12 @@ public class CourseDefineTest extends BaseTest{
 
 		course1.setCourseDetails(courseDetails);
 
-		/*	
-		CourseContentSecurity courseSecurity = new CourseContentSecurity();
-		courseSecurity.setFlotingIndicator(true);
-		courseSecurity.setLogoPath("/logopath");
-		
-		course1.setCourseContSecurity(courseSecurity);
-		
-		// Module1 as a Learning component and child as a text content STARTS
-		// HERE
-		LearningComponent comp1 = new LearningComponent();
-		comp1.setAuthoredMember(authoredMember);
-		
-		comp1.setName("Module1");
-		comp1.setLearningObjIndicator(0);
-		
-		LearningComponentNest compNest1 = new LearningComponentNest(null, comp1);
-		compNest1.setComponentNestId(11);
-
-		LearningComponentDetails compDetails1 = new LearningComponentDetails();
-		// comp1.getLearningComponentDetails();
-		compDetails1.setLearningComponentNest(compNest1);
-
-		LearningComponentType compType1 = new LearningComponentType();
-		compType1.setLearningComponentTypeId(1);
-	
-		comp1.setLearningComponentType(compType1);
-
-		CourseLearningComponent corComp1 = new CourseLearningComponent();
-		corComp1.setLearningComponent(comp1);
-		corComp1.setLearningComponentType(compType1);
-		corComp1.setCourse(course1);
-
-		compDetails1.setCourseLearningComponent(corComp1);
-		
-		comp1.setLearningComponentDetails(compDetails1);
-		
-		compList.add(comp1);
-		// Module1 as a Learning component and child as a text content ENDS HERE
-
-		// LearningObject1 as LearningComponent and its child as a
-		// content(video) ---STARTS HERE
-		LearningComponent comp2 = new LearningComponent();
-		comp2.setName("LearningObject1");
-		comp2.setLearningObjIndicator(1);
-		comp2.setAuthoredMember(authoredMember);
-		
-		LearningComponentNest compNest2 = new LearningComponentNest(null, comp2);
-		compNest2.setComponentNestId(12);
-
-		LearningComponentDetails compDetails2 = new LearningComponentDetails();
-
-		compDetails2.setLearningComponentNest(compNest2);
-
-		LearningComponentType compType2 = new LearningComponentType();
-		compType2.setLearningComponentTypeId(2);
-	
-		comp2.setLearningComponentType(compType2);
-
-		comp2.setLearningComponentDetails(compDetails2);
-		compList.add(comp2);
-		// LearningObject1 as LearningComponent and its child as a
-		// content(video) ---ENDS HERE
-
-		// DefineQualifier1 as a Learning Component -- STARTS HERE
-		LearningComponent comp3 = new LearningComponent();
-		comp3.setName("DefineQualifier1");
-		comp3.setLearningObjIndicator(0);
-		comp3.setAuthoredMember(authoredMember);
-		
-		LearningComponentNest compNest3 = new LearningComponentNest(null, comp3);
-		compNest2.setComponentNestId(13);
-
-		LearningComponentDetails compDetails3 = new LearningComponentDetails();
-
-		compDetails3.setLearningComponentNest(compNest3);
-
-		LearningComponentType compType3 = new LearningComponentType();
-		compType3.setLearningComponentTypeId(3);
-	
-		comp3.setLearningComponentType(compType3);
-
-		comp3.setLearningComponentDetails(compDetails3);
-		compList.add(comp3);
-
-		CourseDetails courseDetails = new CourseDetails();
-
-		courseDetails.setLearningComponents(compList);
-
-		course1.setCourseDetails(courseDetails);
-*/
 		System.out.println("Constructed Course  : " + course1);
 
 		return course1;
 
 	}
+
 
 	/**
 	 * Below tree structure is the constructure below:

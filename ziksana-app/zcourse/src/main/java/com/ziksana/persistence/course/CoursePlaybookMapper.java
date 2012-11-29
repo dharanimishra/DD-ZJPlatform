@@ -104,10 +104,7 @@ public interface CoursePlaybookMapper {
 	 * @param courseId
 	 * @return
 	 */
-	@Select({"select courseplaybookid  from corcourseplaybook where courseid = #{courseId, jdbcType=INTEGER}" })
-	@Results(value = {
-		@Result(property = "courseplaybookid", column = "courseplaybookid")
-	})
-	Integer isPlaybookExists(Integer courseId);
+	@Select({"select count(*)  from corcourseplaybook where courseid = #{courseId, jdbcType=INTEGER}" })
+	int isPlaybookExists(Integer courseId);
 
 }

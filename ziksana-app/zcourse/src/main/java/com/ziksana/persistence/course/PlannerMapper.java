@@ -1,7 +1,5 @@
 package com.ziksana.persistence.course;
 
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import com.ziksana.domain.course.CourseLearningPlanner;
 
@@ -25,11 +23,8 @@ public interface PlannerMapper {
 	 * @param courseLearningCompoentId
 	 * @return
 	 */
-	@Select({"select learningplannerid from corcourselearrningplanner where " +
-			"courseid = #{courseId,jdbcType=INTEGER} or courselearningcompoentid = #{courseLearningCompoentId,jdbcType=INTEGER}"})
-	@Results(value = {
-			@Result(property = "learningPlannerId", column = "learningplannerid"),
-	})
-	Integer isPlannerExists(Integer courseId, Integer courseLearningCompoentId);
+	@Select({"select count(*) from corcourselearningplanner where " +
+			"courseid = #{courseId,jdbcType=INTEGER} or coursecomponentplannerid = #{courseLearningComponentId,jdbcType=INTEGER}"})
+	int isPlannerExists(Integer courseId, Integer courseLearningComponentId);
 
 }

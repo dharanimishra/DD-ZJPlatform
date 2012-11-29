@@ -110,9 +110,8 @@ public interface CourseMapper {
 	 * @param learningComponentId
 	 * @return
 	 */
-	@Select({ "select assignmentid from asmassignment where leraningcomponentid = #{learningComponentId, jdbcType=INTEGER}" })
-	@Results(value = { @Result(property = "assignmentId", column = "assignmentid") })
-	Integer checkAssignment(Integer learningComponentId);
+	@Select({ "select count(*) from asmassignment where leraningcomponentid = #{learningComponentId, jdbcType=INTEGER}" })
+	int checkAssignment(Integer learningComponentId);
 
 	/**
 	 * @param memberRoleId

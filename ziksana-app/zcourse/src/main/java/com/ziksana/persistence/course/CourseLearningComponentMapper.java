@@ -38,9 +38,22 @@ public interface CourseLearningComponentMapper {
 			@Result(property = "courseLearningComponentId", column = "courselearningcomponentid"),
 			@Result(property = "duration.duration", column = "duration"),
 			@Result(property = "duration.durationUnit", column = "durationunit"),
-			@Result(property = "course.courseId", column = "courseid"),
-			@Result(property = "learningComponent.learningComponentId", column = "learningcomponentid"),
-			@Result(property = "learningcomponentType.learningcomponentTypeId", column = "learningcomponentTypeId") })
+			@Result(property = "course.courseId.storageID", column = "courseid"),
+			@Result(property = "learningComponent.learningComponentId.storageID", column = "learningcomponentid"),
+			@Result(property = "learningComponentType.learningComponentTypeId.storageID", column = "learningcomponenttypeid") })
 	List<CourseLearningComponent> getCourseLearningComponentByCourse(Integer courseId);
+
+	/**
+	 * @param courseId
+	 * @return
+	 */
+	@Select({
+			"select courselearningcomponentid, duration, durationunit, courseid, learningcomponentid, learningcomponenttypeid ",
+			" from corcourselearningcomponent where courseid = #{courseId,jdbcType=INTEGER}" })
+	@Results(value = {
+			@Result(property = "courseLearningComponentId", column = "courselearningcomponentid"),
+			@Result(property = "learningComponent.learningComponentId", column = "learningcomponentid")
+			 })
+	List<CourseLearningComponent> getBaseCourseLearningComponentsByCourse(Integer courseId);
 
 }

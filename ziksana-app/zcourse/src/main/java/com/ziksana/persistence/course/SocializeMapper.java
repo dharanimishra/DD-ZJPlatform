@@ -175,8 +175,8 @@ public interface SocializeMapper {
 	MemberPersona getMemberRoleByCircle(Integer memberRoleId, Integer relationshipId);
 
 
-	@Select({"select reviewprogressid from corlearningcontentreviewprogress where " +
+	@Select({"select count(*) from corlearningcontentreviewprogress where " +
 			" courseid = #{course.courseId,jdbcType=INTEGER} and memberroleid = #{authoringMemberRole.memberRoleId, jdbcType=INTEGER} "})
-	Integer isSocializeExists(Integer courseId, Integer memberRoleId);
+	int isSocializeExists(Integer courseId, Integer memberRoleId);
 
 }

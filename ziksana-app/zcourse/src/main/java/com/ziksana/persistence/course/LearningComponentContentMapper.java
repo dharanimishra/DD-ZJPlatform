@@ -23,23 +23,17 @@ public interface LearningComponentContentMapper {
 	Integer updateLearningComponentContent(LearningComponentContent learningComponentContent);
 	
 
-	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType.INTEGER}"})
-	@Results(value = {
-			@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
-	})
-	Integer getCompContentByLComponentId(Integer learningComponentId);
+	@Select({"select count(*) from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}"})
+	int getCompContentByLComponentId(Integer learningComponentId);
 
 	
-	@Select({"select learningcontentid from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType.INTEGER}"})
-	@Results(value = {
-			@Result(property = "learningComponent.learningComponentId", column = "learningcomponentid")
-	})
-	Integer getContentByLComponentId(Integer learningComponentId);
+	@Select({"select count(*) from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}"})
+	int getContentByLComponentId(Integer learningComponentId);
 
 
 
 	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where isdelete = #{isdelete, jdbcType=BOOLEAN}" +
-			" and learningcomponentid = #{learningComponentId,jdbcType.INTEGER}"})
+			" and learningcomponentid = #{learningComponentId,jdbcType=INTEGER}"})
 	@Results(value = {
 			@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
 	})
@@ -47,7 +41,7 @@ public interface LearningComponentContentMapper {
 
 
 	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where isdelete = #{isdelete, jdbcType=BOOLEAN}" +
-	" and learningcomponentid = #{learningComponentId,jdbcType.INTEGER}"})
+	" and learningcomponentid = #{learningComponentId,jdbcType=INTEGER}"})
 		@Results(value = {
 				@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
 		})
