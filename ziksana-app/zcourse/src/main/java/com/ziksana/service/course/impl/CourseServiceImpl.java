@@ -332,7 +332,7 @@ public class CourseServiceImpl implements CourseService {
 			
 			logger.debug("Courses  size : "+courseList.size());
 			LearningComponent component = null;
-		int i=0;
+
 			for (Course course : courseList) {
 				courseProgress = 0;
 				int componentContentSize	= 0;
@@ -345,15 +345,20 @@ public class CourseServiceImpl implements CourseService {
 
 				courseId = Integer.valueOf(course.getCourseId().getDisplayID());
 
-				logger.debug("Courses   : "+courseId);
+				logger.debug("CoursesID   : "+courseId);
 				
 				couseCompList =courseLComponentMapper.getBaseCourseLearningComponentsByCourse(courseId);
 				
 				if(couseCompList!=null && couseCompList.size()>0){
-					
+
 					isComponentExists = true;
 					courseProgress = courseProgress +15;
-					
+
+					Boolean compCheck = false;
+					Boolean enrichCheck = false;
+					Boolean assignCheck = false;
+					Boolean plannerCheck = false;
+					Boolean playbookCheck = true;
 					for (CourseLearningComponent courseLearningComp : couseCompList) {
 									
 						component = courseLearningComp.getLearningComponent();
@@ -361,54 +366,74 @@ public class CourseServiceImpl implements CourseService {
 						lCompId = Integer.valueOf(component.getLearningComponentId().getStorageID());
 						
 						componentContentSize = learningComponentContentMapper.getCompContentByLComponentId(lCompId);
-						
+					
 						if(componentContentSize>0){
-							
-							logger.debug("componentContentSize : "+componentContentSize);
-							
-							isContentExists = true;
-							courseProgress = courseProgress +15;
+					
+							if(isContentExists.equals(false)){
+								
+								isContentExists = true;
+								courseProgress = courseProgress +15;
+							}else{
+								compCheck = true;
+							}
 							
 							learningContentSize = learningComponentContentMapper.getContentByLComponentId(lCompId);
 							
 							if(learningContentSize>0){
 								
-								logger.debug("learningContentSize : "+learningContentSize);
-								enrichSize = enrichMapper.getEnrichByContentIdOrComponentId(lCompId, learningContentId);
-								
+								enrichSize = enrichMapper.getEnrichByContentIdOrComponentId(lCompId, courseId);
+								logger.debug("lCompId : "+lCompId);
+								logger.debug("courseId : "+courseId);
+													
 								if(enrichSize>0){
-									
-									logger.debug("enrichSize : "+enrichSize);
-									isEnriched = true;
-									courseProgress = courseProgress +15;
+
+									if(isEnriched.equals(false) || compCheck.equals(true)){
+										
+										isEnriched = true;
+										courseProgress = courseProgress +15;
+										
+									}else{
+										enrichCheck = true;
+									}
 									assignmentSize = courseMapper.checkAssignment(lCompId);
 									
 									if(assignmentSize>0){
-										
-										logger.debug("assignmentSize : "+assignmentSize);
-										isAssignmentExist = true;
-										courseProgress = courseProgress +15;
+
+										if(isAssignmentExist.equals(false) || enrichCheck.equals(true)){
+											isAssignmentExist = true;
+											courseProgress = courseProgress +15;
+										}else{
+											assignCheck = true;
+										}
 										count = plannerMapper.isPlannerExists(courseId,new Integer(courseLearningComp.getCourseLearningComponentId().getStorageID()));
 										
 										if(count > 0){
 											
-											logger.debug("planner Size : "+count);
-											isPlannerExists = true;	
-											courseProgress = courseProgress +15;
+											if(isPlannerExists.equals(false) || assignCheck.equals(true)){
+												isPlannerExists = true;	
+												courseProgress = courseProgress +15;
+											}else{
+												plannerCheck = true;
+											}
+
 											coursePlaybookSize = playbookMapper.isPlaybookExists(courseId);
 											
 											if(coursePlaybookSize>0){
-												
-												logger.debug("coursePlaybookSize : "+coursePlaybookSize);
-												isPlaybookExists = true;	
-												courseProgress = courseProgress +15;
+
+												if(isPlaybookExists.equals(false)  || plannerCheck.equals(true)){
+													isPlaybookExists = true;	
+													courseProgress = courseProgress +15;
+												}else{
+													playbookCheck = true;
+												}
 												reviewProgressSize = socializeMapper.isSocializeExists(courseId,memberRoleId);
 											
 												if(reviewProgressSize>0){
 													
-													logger.debug("reviewProgressSize : "+reviewProgressSize);
-													isSocialized = true;	
-													courseProgress = courseProgress +15;
+													if(isSocialized.equals(false)  || playbookCheck.equals(true)){
+														isSocialized = true;	
+														courseProgress = courseProgress +15;
+													}
 												}
 											}
 										}
@@ -417,10 +442,9 @@ public class CourseServiceImpl implements CourseService {
 							}
 						
 						}
-						course.setCourseProgress(courseProgress);
 					}
-				}i=i+1;
-				logger.debug("No::::  ["+i+"]  Course ID :: ["+courseId+"]  Progress :["+courseProgress+"]");
+				}
+				logger.debug(" Course ID :: ["+courseId+"]  Progress :["+courseProgress+"]");
 				course.setCourseProgress(courseProgress);
 				
 				newCourseList.add(course);

@@ -110,7 +110,7 @@ public interface CourseMapper {
 	 * @param learningComponentId
 	 * @return
 	 */
-	@Select({ "select count(*) from asmassignment where leraningcomponentid = #{learningComponentId, jdbcType=INTEGER}" })
+	@Select({ "select count(*) from asmassignment where learningcomponentid = #{learningComponentId, jdbcType=INTEGER}" })
 	int checkAssignment(Integer learningComponentId);
 
 	/**
