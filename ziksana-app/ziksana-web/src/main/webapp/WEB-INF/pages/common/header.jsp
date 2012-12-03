@@ -25,7 +25,7 @@
                  <ul>
                    <li><a href="#">Preferences</a></li>
                    <li><a href="#">Privacy</a></li>
-                   <li><a href="#">Sign Out</a></li></ul>
+                   <li><a href="/ziksana-web/secure/logout">Sign Out</a></li></ul>
                 </fieldset>
               </div>
             </div>
