@@ -34,6 +34,8 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 
 		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
 		return recommendationMapper.getRecommendations(category);
+		
+		
 	}
 
 	/*
