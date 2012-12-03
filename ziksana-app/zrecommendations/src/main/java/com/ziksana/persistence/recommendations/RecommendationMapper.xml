@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.recommendations.RecommendationMapper">
+
+	<select id="getRecommendations" resultMap="recommendationResultMap"
+		parameterType="int">
+		SELECT * FROM memmemberziksanarecommendation WHERE
+		MemziksanaRecommendationId = #{ID}
+	</select>
+
+	<resultMap id="recommendationResultMap"
+		type="com.ziksana.domain.recommendations.Recommendation">
+		<result property="ID" column="MemziksanaRecommendationId" />
+		<result property="title" column="Title" />
+		<result property="description" column="Description" />
+		<result property="category" column="RecommendationCategory" />
+		<result property="currentState" column="CurrentState" />
+		<result property="targetState" column="TargetState" />
+		<result property="durationtoBump" column="DurationtoBump" />
+		<result property="active" column="Active" />
+		<result property="creationDate" column="CreationDate" />
+		<result property="memberRoleId" column="MemberRoleId" />
+	</resultMap>
+
+	<insert id="addToCalendar" parameterType="com.ziksana.domain.recommendations.Recommendation"
+		useGeneratedKeys="true" keyProperty="ID">
+		INSERT INTO
+		memmemberziksanarecommendation
+		(MemziksanaRecommendationId,Title,Description,RecommendationCategory,CurrentState,TargetState,DurationtoBump,Active,CreationDate,MemberRoleId)
+		VALUES
+		(#{ID},#{title},#{description},#{category},#{currentState},#{targetState},#{durationtoBump},#{active},#{creationDate},#{memberRoleId})
+
+	</insert>
+
+	<insert id="addToTodo" parameterType="com.ziksana.domain.recommendations.Recommendation"
+		useGeneratedKeys="true" keyProperty="ID">
+		INSERT INTO
+		memmemberziksanarecommendation
+		(MemziksanaRecommendationId,Title,Description,RecommendationCategory,CurrentState,TargetState,DurationtoBump,Active,CreationDate,MemberRoleId)
+		VALUES
+		(#{ID},#{title},#{description},#{category},#{currentState},#{targetState},#{durationtoBump},#{active},#{creationDate},#{memberRoleId})
+
+	</insert>
+	<insert id="addToIgnore" parameterType="com.ziksana.domain.recommendations.Recommendation"
+		useGeneratedKeys="true" keyProperty="announcementId">
+		INSERT INTO
+		memmemberziksanarecommendation
+		(MemziksanaRecommendationId,Title,Description,RecommendationCategory,CurrentState,TargetState,DurationtoBump,Active,CreationDate,MemberRoleId)
+		VALUES
+		(#{ID},#{title},#{description},#{category},#{currentState},#{targetState},#{durationtoBump},#{active},#{creationDate},#{memberRoleId})
+
+	</insert>
+
+</mapper>
