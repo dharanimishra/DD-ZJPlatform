@@ -26,6 +26,7 @@
 	    <module>zclass</module>
         <module>zcalendar</module>
         <module>ztodo</module>
+        <module>zrecommendations</module>
 	</modules>
 
 	<properties>
