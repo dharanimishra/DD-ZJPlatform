@@ -16,9 +16,9 @@ public interface AlertsService {
 	
 	public List<Alert>  getAlertList();
 	
-	public void createAlertItem( Alert AlertItem);
+	public void createAlertItem( Alert alertItem);
 	
-	public void editAlertItem( Alert AlertItem);
+	public void editAlertItem( Alert alertItem);
 	
 	public void deleteAlertItem(Integer alertId);
 	
