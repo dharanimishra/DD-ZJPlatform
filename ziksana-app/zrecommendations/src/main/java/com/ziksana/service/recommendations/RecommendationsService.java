@@ -1,10 +1,12 @@
 package com.ziksana.service.recommendations;
 
+import java.util.List;
+
 import com.ziksana.domain.recommendations.Recommendation;
 
 public interface RecommendationsService {
 
-	public Recommendation getRecommendations(Integer category);
+	public List<Recommendation> getRecommendations(Integer category);
 
 	public void addToCalendar(Recommendation recommendation);
 

@@ -1,7 +1,11 @@
 package com.ziksana.service.recommendations.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.recommendations.Recommendation;
 import com.ziksana.persistence.recommendations.RecommendationMapper;
@@ -11,6 +15,7 @@ import com.ziksana.service.recommendations.RecommendationsService;
  * @author
  * 
  */
+@Service
 public class RecommendationsServiceImpl implements RecommendationsService {
 
 	private static final Logger LOGGER = Logger
@@ -26,20 +31,20 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 	 * com.ziksana.service.recommendations.RecommendationsService#getRecommendations
 	 * (java.lang.Integer)
 	 */
-	public Recommendation getRecommendations(Integer category) {
+	public List<Recommendation> getRecommendations(Integer category) {
+		
+		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
 		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
-		LOGGER.info("Class :" + getClass()
-				+ " : Method :selectAll() :announcementDaoImpl.selectAll():"
-				+ recommendationMapper.getRecommendations(category));
-
+		
 		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
-		return recommendationMapper.getRecommendations(category);
+		recomendationList = recommendationMapper.getRecommendations(category);
+		LOGGER.info("Recommendation Size"+recomendationList.size());
+		return  recomendationList;
 		
 		
 	}
 
 	/*
-	 * (non-Javadoc)
 	 * 
 	 * @see
 	 * com.ziksana.service.recommendations.RecommendationsService#addToCalendar

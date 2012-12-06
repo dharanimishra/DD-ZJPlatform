@@ -5,7 +5,7 @@
 	<select id="getRecommendations" resultMap="recommendationResultMap"
 		parameterType="int">
 		SELECT * FROM memmemberziksanarecommendation WHERE
-		MemziksanaRecommendationId = #{ID}
+		RecommendationCategory = #{category}
 	</select>
 
 	<resultMap id="recommendationResultMap"

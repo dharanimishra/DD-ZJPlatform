@@ -3,6 +3,8 @@
  */
 package com.ziksana.persistence.recommendations;
 
+import java.util.List;
+
 import com.ziksana.domain.recommendations.Recommendation;
 
 /**
@@ -11,7 +13,7 @@ import com.ziksana.domain.recommendations.Recommendation;
  */
 public interface RecommendationMapper {
 
-	public Recommendation getRecommendations(Integer category);
+	public List<Recommendation> getRecommendations(Integer category);
 
 	public void addToCalendar(Recommendation recommendation);
 

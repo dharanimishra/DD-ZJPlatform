@@ -233,7 +233,7 @@
   
   <!-- recommendation zeni -->
   </div>
-  <c:url var="showRecomendUrl" value="/secure/showrecByCateg/111" />
+  <c:url var="showRecomendUrl" value="/secure/showrecByCateg/1" />
   <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({

@@ -7,10 +7,12 @@
 
 
 <recommendations>	
+	<c:forEach var="recomend" items="${recommendItem}">
 		<recommenditem recomendId="${category}">
-				 <title>${recommendItem.title}</title>
-				<description>${recommendItem.description}</description>
+				 <title>${recomend.title}</title>
+				<description>${recomend.description}</description>
 		</recommenditem>
+	</c:forEach>
 </recommendations>	
 
 	
