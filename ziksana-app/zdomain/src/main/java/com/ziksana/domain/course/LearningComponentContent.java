@@ -6,10 +6,10 @@ import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
-public class LearningComponentContent extends AuditHistory{
-	
-	public LearningComponentContent(){
-		
+public class LearningComponentContent extends AuditHistory {
+
+	public LearningComponentContent() {
+
 	}
 
 	public LearningComponentContent(LearningComponent learningComponent,
@@ -19,29 +19,30 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	public LearningComponentContent(CourseStatus courseStatus,
-			ComponentContentType contentType, LearningComponent learningComponent,
+			ComponentContentType compContentType,
+			LearningComponent learningComponent,
 			LearningComponentContent synchronizeWithVideo,
 			LearningContent baseLearningContent) {
 		this.courseStatus = courseStatus;
-		this.compContentType = contentType;
+		this.compContentType = compContentType;
 		this.learningComponent = learningComponent;
 		this.synchronizeWithVideo = synchronizeWithVideo;
 		this.baseLearningContent = baseLearningContent;
 	}
 
-	private ZID		 						learningComponentContentId;
-	private Date 							creationDate 						= null;
-	private CourseStatus 					courseStatus 						= null;
-	private Integer 						courseStatusId 						= null;
-	private ComponentContentType 			compContentType 					= null;
-	private Integer				 			compContentTypeId 					= null;
-	private String 							contentDescription 					= null;
-	private Boolean 						active 								= null;
-	private Integer 						contentVersionUsed 					= null;
-	private LearningComponent 				learningComponent 					= null;
-	private LearningComponentContent 		synchronizeWithVideo 				= null;
-	private LearningContent 				baseLearningContent 				= null;
-	private LearningComponentContentDetails learningComponentContentDetails 	= null;
+	private ZID learningComponentContentId;
+	private Date creationDate = null;
+	private CourseStatus courseStatus = null;
+	private Integer courseStatusId = null;
+	private ComponentContentType compContentType = null;
+	private Integer compContentTypeId = null;
+	private String contentDescription = null;
+	private Boolean active = null;
+	private Integer contentVersionUsed = null;
+	private LearningComponent learningComponent = null;
+	private LearningComponentContent synchronizeWithVideo = null;
+	private LearningContent baseLearningContent = null;
+	private LearningComponentContentDetails learningComponentContentDetails = null;
 
 	/**
 	 * @return the value of property learningComponentContentId
@@ -55,7 +56,8 @@ public class LearningComponentContent extends AuditHistory{
 	 *            the value for property learningComponentContentId
 	 */
 	public void setLearningComponentContentId(Integer learningComponentContentId) {
-		this.learningComponentContentId = new IntegerZID(learningComponentContentId);
+		this.learningComponentContentId = new IntegerZID(
+				learningComponentContentId);
 	}
 
 	/**
@@ -72,7 +74,7 @@ public class LearningComponentContent extends AuditHistory{
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
+
 	/**
 	 * @return the value of property ContentDescription
 	 */
@@ -118,6 +120,7 @@ public class LearningComponentContent extends AuditHistory{
 	public void setContentVersionUsed(Integer contentVersionUsed) {
 		this.contentVersionUsed = contentVersionUsed;
 	}
+
 	/**
 	 * @return the learrningComponentContentDetails
 	 */
@@ -142,14 +145,15 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * @param courseStatus the courseStatus to set
+	 * @param courseStatus
+	 *            the courseStatus to set
 	 */
 	public void setCourseStatus(CourseStatus courseStatus) {
-		
-		if(courseStatusId!=null){
+
+		if (courseStatusId != null) {
 			courseStatus = CourseStatus.getCourseStatus(courseStatusId);
 		}
-		
+
 		this.courseStatus = courseStatus;
 	}
 
@@ -161,7 +165,8 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * @param courseStatusId the courseStatusId to set
+	 * @param courseStatusId
+	 *            the courseStatusId to set
 	 */
 	public void setCourseStatusId(Integer courseStatusId) {
 		this.courseStatusId = courseStatusId;
@@ -175,12 +180,14 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * @param compContentType the compContentType to set
+	 * @param compContentType
+	 *            the compContentType to set
 	 */
 	public void setCompContentType(ComponentContentType compContentType) {
-		
-		if(compContentTypeId!=null){
-			compContentType = ComponentContentType.getComponentContentType(compContentTypeId);
+
+		if (compContentTypeId != null) {
+			compContentType = ComponentContentType
+					.getComponentContentType(compContentTypeId);
 		}
 		this.compContentType = compContentType;
 	}
@@ -193,7 +200,8 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * @param compContentTypeId the compContentTypeId to set
+	 * @param compContentTypeId
+	 *            the compContentTypeId to set
 	 */
 	public void setCompContentTypeId(Integer compContentTypeId) {
 		this.compContentTypeId = compContentTypeId;
@@ -207,7 +215,8 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * @param learningComponent the learningComponent to set
+	 * @param learningComponent
+	 *            the learningComponent to set
 	 */
 	public void setLearningComponent(LearningComponent learningComponent) {
 		this.learningComponent = learningComponent;
@@ -221,9 +230,11 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * @param synchronizeWithVideo the synchronizeWithVideo to set
+	 * @param synchronizeWithVideo
+	 *            the synchronizeWithVideo to set
 	 */
-	public void setSynchronizeWithVideo(LearningComponentContent synchronizeWithVideo) {
+	public void setSynchronizeWithVideo(
+			LearningComponentContent synchronizeWithVideo) {
 		this.synchronizeWithVideo = synchronizeWithVideo;
 	}
 
@@ -235,13 +246,16 @@ public class LearningComponentContent extends AuditHistory{
 	}
 
 	/**
-	 * @param baseLearningContent the baseLearningContent to set
+	 * @param baseLearningContent
+	 *            the baseLearningContent to set
 	 */
 	public void setBaseLearningContent(LearningContent baseLearningContent) {
 		this.baseLearningContent = baseLearningContent;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

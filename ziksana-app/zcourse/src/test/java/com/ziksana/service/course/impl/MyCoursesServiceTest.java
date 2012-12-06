@@ -14,28 +14,27 @@ import com.ziksana.service.course.CourseService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
-public class MyCoursesTest extends BaseTest{
-	
+public class MyCoursesServiceTest extends BaseTest {
+
 	@Autowired
 	public CourseService courseService;
-	
-	
+
 	@Test
-	public void testMyCourses() throws Exception{
-		System.out.println("***********Inside testMyCourses method ******************");
+	public void testMyCourses() throws Exception {
+		System.out
+				.println("***********Inside testMyCourses method ******************");
 		List<Course> coursesList = null;
-		
+
 		MemberPersona memberPersona = new MemberPersona(MemberRoleType.EDUCATOR);
 		memberPersona.setMemberRoleId(Integer.valueOf(100));
-		
-		coursesList = courseService.getListOfCourses(memberPersona.getMemberRoleId());
-		
-		System.out.println("Courses List in Test case : "+coursesList.size());
-		
-		Assert.isTrue(coursesList.size()>0);
-		
+
+		coursesList = courseService.getListOfCourses(memberPersona
+				.getMemberRoleId());
+
+		System.out.println("Courses List in Test case : " + coursesList.size());
+
+		Assert.isTrue(coursesList.size() > 0);
+
 	}
-	
-	
 
 }

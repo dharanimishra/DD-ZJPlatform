@@ -5,7 +5,8 @@
 		learningComponentContentId, creationdate,
 		coursestatus,
 		contenttype,contentdescription, active,
-		contentversionused, learningcomponentid, synchronizewithvideoid, learningcontentid
+		contentversionused,
+		learningcomponentid, synchronizewithvideoid, learningcontentid
 	</sql>
 	<insert id="saveLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent"
 		useGeneratedKeys="true" keyProperty="learningComponentContentId"
@@ -16,8 +17,8 @@
 			<if test="courseStatus != null">
 				coursestatus,
 			</if>
-			<if test="contentType != null">
-				contenttype,
+			<if test="compContentType != null">
+				compContentType,
 			</if>
 			<if test="contentDescription != null">
 				contentdescription,
@@ -43,8 +44,8 @@
 			<if test="courseStatus != null">
 				#{courseStatusId,jdbcType=INTEGER},
 			</if>
-			<if test="contentType != null">
-				#{contentTypeId,jdbcType=INTEGER},
+			<if test="compContentType != null">
+				#{compContentTypeId,jdbcType=INTEGER},
 			</if>
 			<if test="contentDescription != null">
 				#{contentDescription,jdbcType=VARCHAR},
@@ -56,13 +57,13 @@
 				#{contentVersionUsed,jdbcType=INTEGER},
 			</if>
 			<if test="learningComponent != null">
-				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER}
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="synchronizeWithVideo != null">
-				#{synchronizeWithVideo.learningComponentContentId.storageID,jdbcType=INTEGER}
+				#{synchronizeWithVideo.learningComponentContentId.storageID,jdbcType=INTEGER},
 			</if>
-			<if test="learningContent != null">
-				#{learningContent.learningContentId.storageID,jdbcType=INTEGER}
+			<if test="baseLearningContent != null">
+				#{baseLearningContent.learningContentId.storageID,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="learningComponentContentId"
@@ -77,8 +78,8 @@
 			<if test="courseStatus != null">
 				coursestatus = #{courseStatusId,jdbcType=INTEGER},
 			</if>
-			<if test="contentType != null">
-				contenttype = #{contentTypeId,jdbcType=INTEGER},
+			<if test="compContentType != null">
+				compContentType = #{contentTypeId,jdbcType=INTEGER},
 			</if>
 			<if test="contentDescription != null">
 				contentdescription =
@@ -99,7 +100,7 @@
 				synchronizewithvideoid =
 				#{synchronizeWithVideo.learningComponentContentId.storageID,jdbcType=INTEGER},
 			</if>
-			<if test="learningContent != null">
+			<if test="baseLearningContent != null">
 				learningcontentid =
 				#{baseLearningContent.learningContentId.storageID,jdbcType=INTEGER},
 			</if>
@@ -108,25 +109,13 @@
 		#{learningComponentContentId.storageID,jdbcType=INTEGER}
 	</update>
 
-<!-- 	<insert id="saveLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent"
-		useGeneratedKeys="true" keyProperty="learningComponentContentId"
-		keyColumn="learningcomponentcontentid">
-		insert into corlearningcomponentcontent (creationdate,
-		coursestatus,
-		contenttype,contentdescription, active,
-		contentversionused, learningcomponentid, learningcontentid )
-		values (sysdate(),
-		#{courseStatusId,jdbcType=INTEGER},
-		#{compContentTypeId,jdbcType=INTEGER},
-		#{contentDescription,jdbcType=VARCHAR}, #{active,jdbcType=BIT},
-		#{contentVersionUsed,jdbcType=INTEGER},
-		#{learningComponent.learningComponentId,jdbcType=INTEGER} ,
-		#{baseLearningContent.learningContentId,jdbcType=INTEGER} )
-		<selectKey keyProperty="learningComponentContentId"
-			resultType="int" order="AFTER">
-			SELECT LAST_INSERT_ID();
-		</selectKey>
-	</insert>
-
- -->
+	<!-- <insert id="saveLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent" 
+		useGeneratedKeys="true" keyProperty="learningComponentContentId" keyColumn="learningcomponentcontentid"> 
+		insert into corlearningcomponentcontent (creationdate, coursestatus, contenttype,contentdescription, 
+		active, contentversionused, learningcomponentid, learningcontentid ) values 
+		(sysdate(), #{courseStatusId,jdbcType=INTEGER}, #{compContentTypeId,jdbcType=INTEGER}, 
+		#{contentDescription,jdbcType=VARCHAR}, #{active,jdbcType=BIT}, #{contentVersionUsed,jdbcType=INTEGER}, 
+		#{learningComponent.learningComponentId,jdbcType=INTEGER} , #{baseLearningContent.learningContentId,jdbcType=INTEGER} 
+		) <selectKey keyProperty="learningComponentContentId" resultType="int" order="AFTER"> 
+		SELECT LAST_INSERT_ID(); </selectKey> </insert> -->
 </mapper>

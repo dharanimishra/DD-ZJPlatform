@@ -17,116 +17,126 @@ import com.ziksana.persistence.course.LearningContentMapper;
 import com.ziksana.service.course.CourseContentService;
 
 public class CourseContentServiceImpl implements CourseContentService {
-	
-	private static Logger logger = Logger.getLogger(CourseContentServiceImpl.class);
-	
+
+	private static Logger logger = Logger
+			.getLogger(CourseContentServiceImpl.class);
+
 	@Autowired
 	public LearningComponentContentMapper compContentMapper;
 	@Autowired
 	public LearningContentMapper contentMapper;
-	
-	
+
 	@Transactional
 	@Override
-	public void saveOrUpdateContent(LearningComponentContent learningComponentContent) throws CourseException {
-		
-		List<LearningContentParts> 		contentParts 		= null;
-		LearningContent 				learningContent 	= null;
-		
-		if(learningComponentContent == null){
+	public void saveOrUpdateContent(
+			LearningComponentContent learningComponentContent)
+			throws CourseException {
+
+		List<LearningContentParts> contentParts = null;
+		LearningContent learningContent = null;
+
+		if (learningComponentContent == null) {
 			throw new CourseException("LearningComponentContent cannot be null");
 		}
-		
-		 learningContent = learningComponentContent.getBaseLearningContent();
-		
-		if(learningContent == null){
+
+		learningContent = learningComponentContent.getBaseLearningContent();
+
+		if (learningContent == null) {
 			throw new CourseException("Learning Content cannot be null");
 		}
 
-		 //UPDATE OPERATION
-		if(learningComponentContent.getLearningComponentContentId()!=null){
-			
-			logger.debug("Before UPDATING the LearningComponentContent ...");							
-			compContentMapper.updateLearningComponentContent(learningComponentContent);
-			logger.debug("After UPDATING the LearningComponentContent ...: "+learningComponentContent.toString());
-			
+		// UPDATE OPERATION
+		if (learningComponentContent.getLearningComponentContentId() != null) {
+
+			logger.debug("Before UPDATING the LearningComponentContent ...");
+			compContentMapper
+					.updateLearningComponentContent(learningComponentContent);
+			logger.debug("After UPDATING the LearningComponentContent ...: "
+					+ learningComponentContent.toString());
+
 			logger.debug("Before UPDATING the LearningContent ...");
 			contentMapper.updateContent(learningContent);
-			logger.debug("After UPDATING the LearningContent ID...:"+learningContent.getLearningContentId());
-			
-			contentParts =  learningContent.getAllLearningContentParts();
-			
-			//Save Or Updates the LearningContentParts
-			saveOrUpdateContentParts(learningContent, contentParts);			
-				
-		}else{
-			//SAVE OPERATION
+			logger.debug("After UPDATING the LearningContent ID...:"
+					+ learningContent.getLearningContentId());
+
+			contentParts = learningContent.getAllLearningContentParts();
+
+			// Save Or Updates the LearningContentParts
+			saveOrUpdateContentParts(learningContent, contentParts);
+
+		} else {
+			// SAVE OPERATION
 			logger.debug("Before saving the LearningContent ...");
 			contentMapper.saveContent(learningContent);
-			logger.debug("After saving the LearningContent ID...:"+learningContent.getLearningContentId());
+			logger.debug("After saving the LearningContent ID...:"
+					+ learningContent.getLearningContentId());
 
 			learningComponentContent.setBaseLearningContent(learningContent);
-			
-			logger.debug("Before saving the LearningComponentContent ...");							
-			compContentMapper.saveLearningComponentContent(learningComponentContent);
-			logger.debug("After saving the LearningComponentContent ...: "+learningComponentContent.getLearningComponentContentId());
-			
-			contentParts =  learningContent.getAllLearningContentParts();
-			
-			//Save Or Updates the LearningContentParts
+
+			logger.debug("Before saving the LearningComponentContent ...");
+			compContentMapper
+					.saveLearningComponentContent(learningComponentContent);
+			logger.debug("After saving the LearningComponentContent ...: "
+					+ learningComponentContent.getLearningComponentContentId());
+
+			contentParts = learningContent.getAllLearningContentParts();
+
+			// Save Or Updates the LearningContentParts
 			saveOrUpdateContentParts(learningContent, contentParts);
 		}
-					
+
 	}
 
-	
 	/**
 	 * Saves/Updates the LearningContentParts.
+	 * 
 	 * @param baseLearningContent
 	 * @param contentParts
 	 */
-	private void saveOrUpdateContentParts(LearningContent baseLearningContent, List<LearningContentParts> contentParts){
-		
-		if(contentParts!=null){
-			
-			logger.debug("Learning Content Parts list size ::"+contentParts.size());
-			
+	private void saveOrUpdateContentParts(LearningContent baseLearningContent,
+			List<LearningContentParts> contentParts) {
+
+		if (contentParts != null) {
+
+			logger.debug("Learning Content Parts list size ::"
+					+ contentParts.size());
+
 			for (LearningContentParts learningContentParts : contentParts) {
-								
-					learningContentParts.setLearningContent(baseLearningContent);
-											
-					if(learningContentParts.getLearningContent()!=null){
-						contentMapper.updateContentParts(learningContentParts);
-					}else{
-						contentMapper.saveContentParts(learningContentParts);	
-					}
+
+				learningContentParts.setLearningContent(baseLearningContent);
+
+				if (learningContentParts.getLearningContent() != null) {
+					contentMapper.updateContentParts(learningContentParts);
+				} else {
+					contentMapper.saveContentParts(learningContentParts);
+				}
 			}
 		}
 
 	}
-	
-	
+
 	@Override
-	public LearningComponentContent getLearningComponentContent(Integer learningComponentId)
-			throws CourseException {
-		
-		LearningComponentContent lCompContent 	= null;
-		Boolean 				 isDelete 		= false;
-		
-		if(learningComponentId == null){
-			throw new CourseException("learningComponentContent ID cannot be null");
+	public LearningComponentContent getLearningComponentContent(
+			Integer learningComponentId) throws CourseException {
+
+		LearningComponentContent lCompContent = null;
+		Boolean isDelete = false;
+
+		if (learningComponentId == null) {
+			throw new CourseException(
+					"learningComponentContent ID cannot be null");
 		}
-		
-		lCompContent = compContentMapper.getLearningComponentContentDetails(learningComponentId, isDelete);
-		
-		 
-		if(lCompContent!=null){
-			
-			
-			logger.debug("LearningComponentContent details : "+lCompContent.toString());
-			
+
+		lCompContent = compContentMapper.getLearningComponentContentDetails(
+				learningComponentId, isDelete);
+
+		if (lCompContent != null) {
+
+			logger.debug("LearningComponentContent details : "
+					+ lCompContent.toString());
+
 			return lCompContent;
-			
+
 		}
 		return null;
 	}
@@ -140,62 +150,62 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 	@Transactional
 	@Override
-	public void enhaceContent(
-			LearningComponentContent compContent) throws CourseException {
-		
-		LearningContent					learningContent				= null;
-		List<LearningContentParts> 		contentPartsList 			= null;
-		
-		if(compContent == null){
-			throw new CourseException("Learning Component Content cannot be null");
+	public void enhaceContent(LearningComponentContent compContent)
+			throws CourseException {
+
+		LearningContent learningContent = null;
+		List<LearningContentParts> contentPartsList = null;
+
+		if (compContent == null) {
+			throw new CourseException(
+					"Learning Component Content cannot be null");
 		}
-		
-				
-		//Enhanced LearningContent
+
+		// Enhanced LearningContent
 		learningContent = compContent.getBaseLearningContent();
 
-		if(learningContent==null){
+		if (learningContent == null) {
 			throw new CourseException("Learning Content cannot be null");
 		}
-		
-		//associate parent content as a linked content
+
+		// associate parent content as a linked content
 		learningContent.setLinkedLearningContent(learningContent);
-		
-		
-		
-		if(learningContent.getLearningContentId()!=null){
+
+		if (learningContent.getLearningContentId() != null) {
 			logger.debug("Before saving the LearningContent ");
 			contentMapper.saveContent(learningContent);
-			logger.debug("After saving the LearningContent ID:"+learningContent.getLearningContentId());
-		}else{
+			logger.debug("After saving the LearningContent ID:"
+					+ learningContent.getLearningContentId());
+		} else {
 			logger.debug("Before UPDATING the LearningContent ");
 			contentMapper.updateContent(learningContent);
 		}
-		
+
 		contentPartsList = learningContent.getAllLearningContentParts();
 
-		//SAVE OR UPDATES THE LEARNING CONTENT PARTS
+		// SAVE OR UPDATES THE LEARNING CONTENT PARTS
 		saveOrUpdateContentParts(learningContent, contentPartsList);
-				
+
 	}
 
 	@Override
 	public List<LearningContent> getLearningContent(Integer memberRoleId)
 			throws CourseException {
-		
+
 		List<LearningContent> contentList = null;
-		
-		if(memberRoleId == null){
+
+		if (memberRoleId == null) {
 			throw new CourseException("Member Role ID cannot be null ");
 		}
 		contentList = new ArrayList<LearningContent>();
-		
-		logger.debug("Member role ID : "+memberRoleId);
 
-		contentList = contentMapper.getListOfContentsByMemberRoleId(memberRoleId);
-		
-		logger.debug("Learning Content List : "+contentList.size());
-		
+		logger.debug("Member role ID : " + memberRoleId);
+
+		contentList = contentMapper
+				.getListOfContentsByMemberRoleId(memberRoleId);
+
+		logger.debug("Learning Content List : " + contentList.size());
+
 		return contentList;
 	}
 
@@ -203,38 +213,43 @@ public class CourseContentServiceImpl implements CourseContentService {
 	@Override
 	public void deleteContent(LearningContentDeleteType deleteType,
 			Integer learningContentId) throws CourseException {
-		
-		Boolean 			isDelete 				= true;
-		List<Integer>       learningContentIdList  	= null;
-		
-		logger.debug("Learning Content Delete Params {:DeleteType :"+deleteType+" , LearningContent ID : "+learningContentId);
-		
-		if(deleteType.getID() == 1){
-			
+
+		Boolean isDelete = true;
+		List<Integer> learningContentIdList = null;
+
+		logger.debug("Learning Content Delete Params {:DeleteType :"
+				+ deleteType + " , LearningContent ID : " + learningContentId);
+
+		if (deleteType.getID() == 1) {
+
 			contentMapper.deleteContent(isDelete, learningContentId);
-			
-		}else if(deleteType.getID() == 2){
-			
-			learningContentIdList = contentMapper.getLearningContetPartsByContentId(learningContentId);
-			
+
+		} else if (deleteType.getID() == 2) {
+
+			learningContentIdList = contentMapper
+					.getLearningContetPartsByContentId(learningContentId);
+
 			for (Integer learningContentPartsId : learningContentIdList) {
-				
-				contentMapper.deleteContentParts(isDelete,learningContentPartsId);
-				
+
+				contentMapper.deleteContentParts(isDelete,
+						learningContentPartsId);
+
 			}
-			
-		}else if(deleteType.getID() == 3){
-			
-			learningContentIdList = contentMapper.getLearningContetPartsByContentId(learningContentId);
-			
+
+		} else if (deleteType.getID() == 3) {
+
+			learningContentIdList = contentMapper
+					.getLearningContetPartsByContentId(learningContentId);
+
 			for (Integer learningContentPartsId : learningContentIdList) {
-				
-				contentMapper.deleteContentParts(isDelete,learningContentPartsId);
-				
+
+				contentMapper.deleteContentParts(isDelete,
+						learningContentPartsId);
+
 			}
 			contentMapper.deleteContent(isDelete, learningContentId);
 		}
-		
-	}			
-	
+
+	}
+
 }

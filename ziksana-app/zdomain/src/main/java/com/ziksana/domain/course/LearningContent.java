@@ -22,6 +22,7 @@ public class LearningContent extends AuditHistory{
 	private ZID	 		learningContentId;
 	private Date 			creationDate 	= null;
 	private Boolean 		activeFlag 		= null;
+	private Boolean         active          = null;
 	private ContentType 	contentType 	= null;
 	/**
 	 * Maximum Length:45

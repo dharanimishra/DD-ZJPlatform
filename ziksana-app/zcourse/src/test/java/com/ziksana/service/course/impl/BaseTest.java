@@ -9,10 +9,10 @@ import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 
 /**
- * @author bhashasp
+ * @author ratneshkumar
  */
 public class BaseTest {
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -34,6 +34,5 @@ public class BaseTest {
 	public void tearDown() throws Exception {
 		ThreadLocalUtil.unset();
 	}
-
 
 }

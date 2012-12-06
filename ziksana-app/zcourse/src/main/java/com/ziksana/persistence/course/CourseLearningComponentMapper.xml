@@ -59,11 +59,12 @@
 			<if test="weightage != null"> weightage = #{weightage,jdbcType=INTEGER}, </if>
 			<if test="totalCredits != null"> totalcredits = #{totalCredits,jdbcType=INTEGER}, </if>
 			<if test="extraCredits != null"> extracredits = #{extraCredits,jdbcType=INTEGER}, </if>
-			<if test="courseLCDuration != null"> 
+			<if test="courseLCDuration != null">
 				duration = #{courseLCDuration.duration,jdbcType=INTEGER},
 			</if>
-			<if test="courseLCDuration != null"> 
-				durationunit = #{courseLCDuration.durationUnits,jdbcType=INTEGER},
+			<if test="courseLCDuration != null">
+				durationunit =
+				#{courseLCDuration.durationUnits,jdbcType=INTEGER},
 			</if>
 			<if test="isLearningComponentOveridden != null">
 				learningcomponentoveriddenindicator =

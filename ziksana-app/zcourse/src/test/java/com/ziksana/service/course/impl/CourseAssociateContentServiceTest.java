@@ -2,6 +2,7 @@ package com.ziksana.service.course.impl;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,108 +19,134 @@ import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentDeleteType;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.id.ZID;
 import com.ziksana.service.course.CourseContentService;
 
 /**
- * @author bhashasp
+ * @author ratneshkumar
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
-public class CourseContentServiceTest extends BaseTest {
+public class CourseAssociateContentServiceTest extends BaseTest {
 
 	@Autowired
 	public CourseContentService courseContentService;
-	
-	
+
 	@Test
-	public void testSaveOrUpdateAssociateContent() throws Exception{
-		
+	public void testSaveOrUpdateAssociateContent() throws Exception {
+
 		LearningComponentContent learningComponentContent = null;
-		
+
 		learningComponentContent = constructContent(learningComponentContent);
-		
+
+//		ZID LearningComponentContentId = learningComponentContent
+//				.getLearningComponentContentId();
+//		String id = LearningComponentContentId.getStorageID();
+
 		courseContentService.saveOrUpdateContent(learningComponentContent);
-		
-	}
-	
-	@Test
-	public void testEnhanceContent() throws Exception{
-		
+
+//		LearningComponentContent expected = courseContentService
+//				.getLearningComponentContent(Integer.valueOf(id));
+
+		//Assert.assertNotNull(learningComponentContent);
+
 	}
 
 	@Test
-	public void testlDeleteLearningContentOnly() throws Exception{
-		
-		System.out.println("********* Inside testlDeleteLearningContentOnly method ***********");
-		
-		Integer learningContentId = 6;
-		
-		courseContentService.deleteContent(LearningContentDeleteType.LEARNINGCONTENT, learningContentId);
-		
+	public void testEnhanceContent() throws Exception {
+
 	}
-	
+
 	@Test
-	public void testlDeleteContentPartsOnly() throws Exception{
-		
-		System.out.println("********* Inside testlDeleteContentPartsOnly method ***********");
+	public void testlDeleteLearningContentOnly() throws Exception {
+
+		System.out
+				.println("********* Inside testlDeleteLearningContentOnly method ***********");
+
 		Integer learningContentId = 6;
-		
-		courseContentService.deleteContent(LearningContentDeleteType.LEARNINGCONTENT_PARTS, learningContentId);
-		
+
+		courseContentService.deleteContent(
+				LearningContentDeleteType.LEARNINGCONTENT, learningContentId);
+
 	}
-	
+
 	@Test
-	public void testlDeleteContentAndParts() throws Exception{
-		
-		System.out.println("********* Inside testlDeleteContentAndParts method ***********");
+	public void testlDeleteContentPartsOnly() throws Exception {
+
+		System.out
+				.println("********* Inside testlDeleteContentPartsOnly method ***********");
 		Integer learningContentId = 6;
-		
-		courseContentService.deleteContent(LearningContentDeleteType.LEARNINGCONTENT_AND_PARTS, learningContentId);
-		
+
+		courseContentService.deleteContent(
+				LearningContentDeleteType.LEARNINGCONTENT_PARTS,
+				learningContentId);
+
 	}
-	
+
 	@Test
-	public void testGetLearningContent() throws Exception{
-		
+	public void testlDeleteContentAndParts() throws Exception {
+
+		System.out
+				.println("********* Inside testlDeleteContentAndParts method ***********");
+		Integer learningContentId = 6;
+
+		courseContentService.deleteContent(
+				LearningContentDeleteType.LEARNINGCONTENT_AND_PARTS,
+				learningContentId);
+
+		List<LearningContent> learningContent = courseContentService
+				.getLearningContent(learningContentId);
+		Assert.assertNull(learningContent);
+
+	}
+
+	@Test
+	public void testGetLearningContent() throws Exception {
+
 		MemberPersona rightsOwningMember = new MemberPersona();
 		rightsOwningMember.setMemberRoleId(100);
 
-		List<LearningContent> contentList = courseContentService.getLearningContent(rightsOwningMember.getMemberRoleId());
-		
-		System.out.println("list size : "+contentList.size());
-		
-	} 
+		List<LearningContent> contentList = courseContentService
+				.getLearningContent(rightsOwningMember.getMemberRoleId());
 
-	private LearningComponentContent constructContent(LearningComponentContent learningComponentContent) {
-		
+		System.out.println("list size : " + contentList.size());
+
+		Assert.assertTrue(contentList.size() > 0);
+
+	}
+
+	private LearningComponentContent constructContent(
+			LearningComponentContent learningComponentContent) {
+
 		MemberPersona authoredMember = new MemberPersona();
 		authoredMember.setMemberRoleId(100);
 
 		Course course = new Course();
 		course.setCourseId(100);
-		
+
 		LearningComponent component = new LearningComponent();
 		component.setLearningComponentId(3);
-		
+
 		LearningContent content = new LearningContent();
 		content.setContentName("Trignometry Intro");
-		//content.setAuthoringMember(authoredMember);
+		// content.setAuthoringMember(authoredMember);
 		content.setContentDescription("Trigonommetry Introduction");
 		content.setContentName("Trigonommetry_Intro");
 		content.setContentPath("/content/");
 		content.setContentTypeId(ContentType.TEXTUAL.getID());
 		content.setRightsOwningMember(authoredMember);
 		content.setContentFormatId(ContentFormat.WORD.getID());
-		
-		
+
 		LearningComponentContent compContent = new LearningComponentContent();
 		compContent.setLearningComponent(component);
-		compContent.setCompContentTypeId(ComponentContentType.COURSE_CONTENT.getID());
+		compContent.setCompContentTypeId(ComponentContentType.COURSE_CONTENT
+				.getID());
 		compContent.setContentDescription("Trigonommetry Introduction");
 		compContent.setBaseLearningContent(content);
 		compContent.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
-				
-		
+
+		Assert.assertNull(compContent);
+
 		return compContent;
 	}
 }

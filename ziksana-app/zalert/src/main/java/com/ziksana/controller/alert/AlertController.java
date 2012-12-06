@@ -20,7 +20,7 @@ import com.ziksana.service.alert.AlertsService;
 @RequestMapping("/secure")
 public class AlertController {
 
-	private static final Logger logger = LoggerFactory
+	private static final Logger LOGGER = LoggerFactory
 			.getLogger(AlertController.class);
 
 	@Autowired
@@ -32,13 +32,13 @@ public class AlertController {
 	@RequestMapping(value = "/showmyalert/{memberId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showMyAlerts(@PathVariable String memberId) {
-		logger.info("Entering showMyAlerts(): " + memberId);
+		LOGGER.info("Entering showMyAlerts(): " + memberId);
 		ModelAndView mv = new ModelAndView("calendar/alerts");
 		
 		
 		mv.addObject("alerts", this.alertsService.getAlertList());
-		logger.info("Number of alerts is  " + this.alertsService.getAlertList().size());
-		logger.info("Exiting showMyAlerts(): " + memberId);
+		LOGGER.info("Number of alerts is  " + this.alertsService.getAlertList().size());
+		LOGGER.info("Exiting showMyAlerts(): " + memberId);
 		return mv;
 	}
 
@@ -52,17 +52,17 @@ public class AlertController {
 	public @ResponseBody
 	ModelAndView deleteAlertItem(@PathVariable String memberId,
 			@PathVariable String alertItemId) {
-		logger.info("Entering deleteAlertItem(): " + memberId + " "
+		LOGGER.info("Entering deleteAlertItem(): " + memberId + " "
 				+ alertItemId);
-		ModelAndView mv = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView();
 		
 		//Calling service to delete alert 
-		logger.info(" ALERT ITEM ID IS "+alertItemId);
+		LOGGER.info(" ALERT ITEM ID IS "+alertItemId);
 		this.alertsService.deleteAlertItem(Integer.valueOf(alertItemId));
 		
-		logger.info("Exiting deleteAlertItem(): " + memberId + " "
+		LOGGER.info("Exiting deleteAlertItem(): " + memberId + " "
 				+ alertItemId);
-		return mv;
+		return modelAndView;
 	}
 
 }

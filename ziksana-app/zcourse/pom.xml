@@ -6,8 +6,6 @@
 		<artifactId>ziksana-app</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.ziksana</groupId>
-
 	<artifactId>zcourse</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>zcourse</name>
@@ -16,21 +14,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
-<!-- 		<dependency>
-			<groupId>com.ziksana</groupId>
-			<artifactId>zmycontacts</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
- -->		<dependency>
-			<groupId>com.ziksana</groupId>
-			<artifactId>zassessment</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.ziksana</groupId>
-			<artifactId>zinstitution</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		<!-- <dependency> <groupId>com.ziksana</groupId> <artifactId>zmycontacts</artifactId> 
+			<version>0.0.1-SNAPSHOT</version> </dependency> -->
+
+
 		<dependency>
 			<groupId>com.ziksana</groupId>
 			<artifactId>zdomain</artifactId>

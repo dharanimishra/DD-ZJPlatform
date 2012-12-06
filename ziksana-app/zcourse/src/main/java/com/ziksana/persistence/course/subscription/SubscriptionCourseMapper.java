@@ -18,52 +18,40 @@ import com.ziksana.domain.member.Member;
  */
 public interface SubscriptionCourseMapper {
 
-	
-	@Select({" select subscriptioncourseid from sbnsubscriptioncourse where curriculumcourseid = #{currCourseId,jdbcType=INTEGER}"})
-	@Results(value={
-			@Result(property="subscriptioncourseid", column="subscriptioncourseid"),
-			@Result(property="courseItemProgressList", column="subscriptioncourseid", javaType=List.class,many=@Many(select="getCourseItemsProgress"))
-	})
+	@Select({ " select subscriptioncourseid from sbnsubscriptioncourse where curriculumcourseid = #{currCourseId,jdbcType=INTEGER}" })
+	@Results(value = {
+			@Result(property = "subscriptioncourseid", column = "subscriptioncourseid"),
+			@Result(property = "courseItemProgressList", column = "subscriptioncourseid", javaType = List.class, many = @Many(select = "getCourseItemsProgress")) })
 	SubscriptionCourse getSubscribedStudentsInfo(Integer currCourseId);
-	
-	
-	@Select({"select * from corcourseitemprogress where subscriptioncourseid = #{subscriptionCourseId,jdbcType=INTEGER}"})
-	@Results(value={
-			@Result(property="courseitemprogressid", column="courseitemprogressid"),
-			@Result(property="duration", column="totaltimespent"),
-			@Result(property="progress", column="degreeofcompletion")
-	})
+
+	@Select({ "select * from corcourseitemprogress where subscriptioncourseid = #{subscriptionCourseId,jdbcType=INTEGER}" })
+	@Results(value = {
+			@Result(property = "courseitemprogressid", column = "courseitemprogressid"),
+			@Result(property = "duration", column = "totaltimespent"),
+			@Result(property = "progress", column = "degreeofcompletion") })
 	List<CourseItemProgress> getCourseItemsProgress(Integer subscriptionCourseId);
-	
-	
-	@Select({ " select subscriptionProgramId, memberroleid from sbnmembersubscriptionprogram  where "
-			+ " learningprogramid = #{learningProgramId, jdbcType=INTEGER}" })
-	@Results(value = {
-			@Result(property = "subscriptionProgramId", column = "subscriptionProgramId"),
-			@Result(property = "memberRoleId", column = "memberroleid"),
-			@Result(property = "Member", column = "memberroleid",javaType = Member.class, one = @One(select = "getMemberByRoleId")) })
-	List<MemberSubscriptionProgram> getMemberSubscriptionPrograms(Integer learningProgramId);
-	
-
-	
-	@Select({ " select m.* from memmemberrole mr, memmember m  where "
-			+ " m.memberid = mr.memberid and mr.memberroleid = #{memberRoleId, jdbcType=INTEGER}" })
-	@Results(value = {
-			@Result(property = "memberRoleId", column = "memberroleid")
-	})
-	Member getMemberByRoleId(Integer memberRoleId);
-
-
 
 	@Select({ " select subscriptionProgramId, memberroleid from sbnmembersubscriptionprogram  where "
 			+ " learningprogramid = #{learningProgramId, jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "subscriptionProgramId", column = "subscriptionProgramId"),
 			@Result(property = "memberRoleId", column = "memberroleid"),
-			@Result(property = "Member", column = "memberroleid",javaType = Member.class, one = @One(select = "getMemberByRoleId")) })
-	List<MemberSubscriptionProgram> getCoursePerformance(
+			@Result(property = "Member", column = "memberroleid", javaType = Member.class, one = @One(select = "getMemberByRoleId")) })
+	List<MemberSubscriptionProgram> getMemberSubscriptionPrograms(
 			Integer learningProgramId);
 
-	
+	@Select({ " select m.* from memmemberrole mr, memmember m  where "
+			+ " m.memberid = mr.memberid and mr.memberroleid = #{memberRoleId, jdbcType=INTEGER}" })
+	@Results(value = { @Result(property = "memberRoleId", column = "memberroleid") })
+	Member getMemberByRoleId(Integer memberRoleId);
+
+	@Select({ " select subscriptionProgramId, memberroleid from sbnmembersubscriptionprogram  where "
+			+ " learningprogramid = #{learningProgramId, jdbcType=INTEGER}" })
+	@Results(value = {
+			@Result(property = "subscriptionProgramId", column = "subscriptionProgramId"),
+			@Result(property = "memberRoleId", column = "memberroleid"),
+			@Result(property = "Member", column = "memberroleid", javaType = Member.class, one = @One(select = "getMemberByRoleId")) })
+	List<MemberSubscriptionProgram> getCoursePerformance(
+			Integer learningProgramId);
 
 }
