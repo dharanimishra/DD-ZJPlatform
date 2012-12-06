@@ -233,6 +233,42 @@
   
   <!-- recommendation zeni -->
   </div>
+  <c:url var="showRecomendUrl" value="/secure/showrecByCateg/111" />
+  <script type="text/javascript">
+$(document).ready(function() {
+	$.ajax({
+		  	type: 'GET',
+			url: '${showRecomendUrl}',
+			dataType: 'xml',
+			success: function( data ) {
+					if (console && console.log){
+								console.log( 'Recommend of data:', data);
+					}
+					var output="";
+					
+					
+					$(data).find("recommenditem").each(function(index){
+						
+						output+="<ol>";
+	                    output+="<li class='p-p _blogs bckground-blue-light'>";
+	                    output+="<b >"+ $(this).find("title").text()+"</b>";
+	                    output+="<br/>";
+	                    output+="<p  style='padding-left: 10px;'>"+ $(this).find("description").text()+"</p>";
+	                    output+="</li></ol><br/>";
+												
+					});
+
+					console.log("Recommendations: " + output);
+				
+					
+					$('#recomend').html(output);
+					
+			}
+	});
+	
+});
+</script>
+ 
 <div class="user-contacts all-box-shadow pad" >
            
            <div id="tabsbottom" style="background-color:#FFF; margin-bottom:15px;">
@@ -243,23 +279,7 @@
                 <a class="rec2">Grades</a>
 				<br/><br/>
                             
-            <div class="rec-0 ">
-            	
-             	<ol>
-                    <li class="p-p _blogs bckground-blue-light">
-                      <b>1. Ease of Use</b>
-                     <br/>
-                      <p style="padding-left: 10px;">As you are using Student Outcome …..</p>
-                     </li>
-                  </ol>
-                <br/>
-             	<ol>
-                    <li class="p-p _blogs bckground-blue-light">
-                      <b>2. Productivity</b>
-                     <br/>
-                      <p style="padding-left: 10px;">As your evaluation of descriptive …</p>
-                     </li>
-                  </ol>
+            <div id= "recomend" class="rec-0 ">
               
             </div>
             
