@@ -58,6 +58,9 @@ public class AuthenticationFilter implements Filter {
 			// return;
 
 		}
+		
+		
+		
 
 		else if (sessionToken == null) {
 
@@ -127,7 +130,7 @@ public class AuthenticationFilter implements Filter {
 					.println("domain of the cookie is  " + cookie.getDomain());
 			System.out.println("value  of the cookie is  " + cookie.getValue());
 
-			if (cookie.getName().equals(COOKIE_NAME)) {
+			if (cookie.getName().equals(COOKIE_NAME) ) {
 
 				System.out.println(" COOKIE IS THERE");
 				return cookie.getValue();

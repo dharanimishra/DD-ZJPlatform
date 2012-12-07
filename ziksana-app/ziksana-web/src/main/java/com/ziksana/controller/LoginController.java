@@ -135,9 +135,9 @@ public class LoginController {
 	Cookie newSessionCookie(HttpServletRequest request, String userId)
 			throws ServletException {
 
-		Cookie cookie = new Cookie(AuthenticationFilter.COOKIE_NAME, userId);
-		cookie.setMaxAge(365 * 24 * 60 * 60);
-		cookie.setPath(request.getContextPath() + "/");
+		Cookie cookie = new Cookie(AuthenticationFilter.COOKIE_NAME, "");
+		cookie.setMaxAge(-1);
+		cookie.setPath("/");
 		
 		try {
 			cookie.setDomain(new URL(request.getRequestURL().toString())
