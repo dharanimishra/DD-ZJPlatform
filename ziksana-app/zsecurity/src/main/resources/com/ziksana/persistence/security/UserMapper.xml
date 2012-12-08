@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.security.UserMapper">
+
+
+	<select id="getMemberByUser" resultMap="memberResultMap"
+		parameterType="java.lang.String">
+
+		select distinct memmember.*, memmemberrole.MemberRoleId
+		from memmember,
+		memmemberrole,
+		secmembercredential
+		WHERE
+		memmember.MemberId=secmembercredential.MemberId and
+		memmember.MemberId=memmemberrole.memberId and
+		secmembercredential.UserName=#{userName}
+
+
+	</select>
+
+	<resultMap id="memberResultMap" type="com.ziksana.domain.member.Member">
+
+		<result property="memberId" column="MemberId" />
+		<result property="firstName" column="FirstName" />
+		<result property="lastName" column="LastName" />
+		
+		<collection property="memberPersonas"  ofType="com.ziksana.domain.member.MemberPersona" >
+		         <result property="memberRoleId" column="MemberRoleId"/>
+		         <result property="roleType" column="RoleType"/>
+		</collection>
+
+	</resultMap>
+
+
+	
+
+
+
+
+</mapper>

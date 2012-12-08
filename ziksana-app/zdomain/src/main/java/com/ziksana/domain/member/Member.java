@@ -2,16 +2,15 @@ package com.ziksana.domain.member;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Member implements Serializable {
 	/**
 	 */
 	private static final long serialVersionUID = 2142198565471578852L;
 
-	
-    private MemberPersona memberPersona          = null;
-	
-	
+	private List<MemberPersona> memberPersonas;
+
 	/**
 	 * This field corresponds to the database column memmember.ID
 	 */
@@ -402,10 +401,13 @@ public class Member implements Serializable {
 	public void setPicturePath(String picturePath) {
 		this.picturePath = picturePath == null ? null : picturePath.trim();
 	}
-	
-	public MemberPersona getMemberPersona() {
-		return memberPersona;
+
+	public List<MemberPersona> getMemberPersonas() {
+		return memberPersonas;
 	}
 
+	public void setMemberPersonas(List<MemberPersona> memberPersonas) {
+		this.memberPersonas = memberPersonas;
+	}
 
 }

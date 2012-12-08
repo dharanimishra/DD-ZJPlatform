@@ -14,6 +14,14 @@
 			<artifactId>zdomain</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zconfig</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		
 	</dependencies>
 
 </project>
