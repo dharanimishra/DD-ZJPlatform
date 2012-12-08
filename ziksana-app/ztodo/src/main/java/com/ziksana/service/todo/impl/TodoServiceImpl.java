@@ -15,23 +15,22 @@ import com.ziksana.service.todo.TodoService;
 
 /**
  * @author prabu
- *
+ * 
  */
 @Service
 public class TodoServiceImpl implements TodoService {
-	
-	
-    @Autowired
-    TodoMapper todoMapper;
-	
+
+	@Autowired
+	TodoMapper todoMapper;
 
 	@Override
 	public List<Todo> getTodos() {
 		// TODO Auto-generated method stub
-		
-		System.out.println(" NUMBER OF TODOS "+todoMapper.getTodos(Integer.valueOf(ThreadLocalUtil.getToken()
-				.getMemberPersonaId().getStorageID())));
-		
+
+		System.out.println(" NUMBER OF TODOS "
+				+ todoMapper.getTodos(Integer.valueOf(ThreadLocalUtil
+						.getToken().getMemberPersonaId().getStorageID())));
+
 		return todoMapper.getTodos(Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID()));
 	}
@@ -39,19 +38,19 @@ public class TodoServiceImpl implements TodoService {
 	@Override
 	public void createTodo(Todo todo) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void updateTodo(Todo todo) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteTodo(int todoId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -59,7 +58,5 @@ public class TodoServiceImpl implements TodoService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
 }

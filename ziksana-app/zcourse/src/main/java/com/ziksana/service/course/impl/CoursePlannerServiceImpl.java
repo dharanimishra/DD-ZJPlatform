@@ -16,28 +16,29 @@ import com.ziksana.service.course.CoursePlannerService;
  */
 public class CoursePlannerServiceImpl implements CoursePlannerService {
 
-	private static Logger logger = Logger.getLogger(CoursePlannerServiceImpl.class);
-	
+	private final static Logger LOGGER = Logger
+			.getLogger(CoursePlannerServiceImpl.class);
+
 	@Autowired
 	public PlannerMapper plannerMapper;
-	
+
 	@Override
 	public void saveCoursePlanner(Course course) throws CourseException {
-		
+
 		List<CourseLearningPlanner> plannerList = null;
-		
+
 		plannerList = course.getCourseLearningPlannerList();
-		
-		if(plannerList!=null){
-			
+
+		if (plannerList != null) {
+
 			for (CourseLearningPlanner courseLearningPlanner : plannerList) {
-				
-				logger.debug("Before Course Learning Planner save ...");
+
+				LOGGER.debug("Before Course Learning Planner save ...");
 				plannerMapper.saveCourseLearningPlanner(courseLearningPlanner);
-				
+
 			}
 		}
-	
+
 	}
 
 }

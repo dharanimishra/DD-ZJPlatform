@@ -25,9 +25,12 @@ import com.ziksana.domain.member.collaboration.GroupMessage;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.IntegerZID;
 
+import com.ziksana.persistence.assessment.AssignmentTestMapper;
+import com.ziksana.persistence.assessment.engagement.EngagementMapper;
 import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.persistence.course.subscription.SubscriptionCourseMapper;
 import com.ziksana.persistence.member.collaboration.GroupMapper;
+import com.ziksana.persistence.program.ProgramsMapper;
 import com.ziksana.service.course.ManageCourseService;
 
 /**
@@ -35,16 +38,26 @@ import com.ziksana.service.course.ManageCourseService;
  */
 public class ManageCourseServiceImpl implements ManageCourseService {
 
-	private static Logger logger = Logger
+	private final static Logger LOGGER = Logger
 			.getLogger(ManageCourseServiceImpl.class);
 
 	@Autowired
 	public CourseMapper courseMapper;
+
 	@Autowired
 	public SubscriptionCourseMapper sbnCourseMapper;
 
 	@Autowired
 	public GroupMapper groupsMapper;
+
+	@Autowired
+	public EngagementMapper engagementMapper;
+
+	@Autowired
+	public ProgramsMapper programsMapper;
+
+	@Autowired
+	AssignmentTestMapper assignmentTestMapper;
 
 	@Override
 	public List<Engagement> getCourseEngagementRules(Course course)
@@ -59,10 +72,10 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		courseId = Integer.valueOf(course.getCourseId().getStorageID());
 
-		// engagementList = engagementMapper
-		// .getEngagementeRulesByCourseId(courseId);
+		engagementList = engagementMapper
+				.getEngagementeRulesByCourseId(courseId);
 
-		logger.debug("Engagement Rules size : " + engagementList.size());
+		LOGGER.debug("Engagement Rules size : " + engagementList.size());
 
 		return engagementList;
 	}
@@ -81,11 +94,11 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		// criteria = engagementMapper.saveCriteria(criteria);
 
-		logger.debug("Got the Criteria as a response : " + criteria);
+		LOGGER.debug("Got the Criteria as a response : " + criteria);
 
 		engagement.setEngagementCriteria(criteria);
 
-		// engagementMapper.saveEngagement(engagement);
+		engagementMapper.saveEngagement(engagement);
 
 	}
 
@@ -94,7 +107,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 	public void updateEngagementRule(Engagement engagement)
 			throws CourseException {
 
-		EngagementCriteria criteria = null;
+		EngagementCriteria criteria;
 
 		if (engagement == null) {
 			throw new CourseException("Engagement cannot be null");
@@ -102,9 +115,9 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		criteria = engagement.getEngagementCriteria();
 
-		// engagementMapper.updateCriteria(criteria);
+		engagementMapper.updateCriteria(criteria);
 
-		// engagementMapper.updateEngagement(engagement);
+		engagementMapper.updateEngagement(engagement);
 
 	}
 
@@ -122,11 +135,11 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		criteria = engagement.getEngagementCriteria();
 
-		// engagementMapper.deleteCriteria(isDelete, new Integer(criteria
-		// .getEngagementCriteriaId().getStorageID()));
-		//
-		// engagementMapper.deleteEngagement(isDelete, new Integer(engagement
-		// .getEngagementId().getStorageID()));
+		engagementMapper.deleteCriteria(isDelete, Integer.valueOf(criteria
+				.getEngagementCriteriaId().getStorageID()));
+
+		engagementMapper.deleteEngagement(isDelete,
+				Integer.valueOf(engagement.getEngagementId().getStorageID()));
 
 	}
 
@@ -144,17 +157,17 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 			throw new CourseException("CcurriculumCourse ID cannot be null");
 		}
 
-		// currCourse =
-		// programsMapper.getCurriculumCourseById(curriculumCourseId);
+		currCourse = programsMapper.getCurriculumCourseById(curriculumCourseId);
 
-		progCurriculumCourseId = new Integer(currCourse.getProgramCurriculum()
-				.getProgramCurriculumId().getStorageID());
+		progCurriculumCourseId = Integer
+				.valueOf(currCourse.getProgramCurriculum()
+						.getProgramCurriculumId().getStorageID());
 
-		// learningProgram = programsMapper
-		// .getLearningProgramByProgCurriculum(progCurriculumCourseId);
+		learningProgram = programsMapper
+				.getLearningProgramByProgCurriculum(progCurriculumCourseId);
 
 		memberProgList = sbnCourseMapper
-				.getMemberSubscriptionPrograms(new Integer(learningProgram
+				.getMemberSubscriptionPrograms(Integer.valueOf(learningProgram
 						.getLearningProgramId().getStorageID()));
 
 		return memberProgList;
@@ -170,11 +183,11 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 			throw new CourseException("Member Role cannot be null");
 		}
 
-		logger.debug("Member Role Id : " + memberRoleId);
+		LOGGER.debug("Member Role Id : " + memberRoleId);
 
 		publishedCourseList = courseMapper.getListOfCourses(memberRoleId);
 
-		logger.debug("Published Courses for Member : " + publishedCourseList);
+		LOGGER.debug("Published Courses for Member : " + publishedCourseList);
 
 		return publishedCourseList;
 	}
@@ -226,7 +239,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 					"Group ID cannot be null to Associate to Group");
 		}
 
-		logger.debug("Group ID : " + groupId);
+		LOGGER.debug("Group ID : " + groupId);
 
 		if (groupMember.getMemberRole() == null) {
 			throw new CourseException(
@@ -251,7 +264,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 					"Student/Learner's MemberRole ID cannot be null");
 		}
 
-		logger.debug("Member Role ID : " + memberRoleId);
+		LOGGER.debug("Member Role ID : " + memberRoleId);
 
 		groupMemberList = groupsMapper
 				.getGroupMemberByMemberRoleId(memberRoleId);
@@ -279,7 +292,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 					"Student/Learner's Interaction ID cannot be null");
 		}
 
-		logger.debug("Member Role ID : " + conversationId);
+		LOGGER.debug("Member Role ID : " + conversationId);
 
 		groupsMapper.delete(conversationId);
 
@@ -299,7 +312,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 					"Student/Learner's GroupMember ID cannot be null");
 		}
 
-		logger.debug("Group ID : [" + groupId + "]  , Group Member ID : ["
+		LOGGER.debug("Group ID : [" + groupId + "]  , Group Member ID : ["
 				+ groupMemberId + "]");
 
 		groupsMapper.deleteStudentGroupAssociation(groupId, groupMemberId);
@@ -357,7 +370,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 					"Course/CurriculumCourse cannot be null to create a new Group");
 		}
 
-		logger.debug("Group Context : " + context.toString());
+		LOGGER.debug("Group Context : " + context.toString());
 
 		contextId = groupsMapper.saveGroupContext(context);
 
@@ -379,7 +392,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		groupsMapper.deleteGroup(groupId);
 
-		// TODO: Send a Message Notification to Members with in then Group for
+		// Send a Message Notification to Members with in then Group for
 		// activities/submissions
 
 	}
@@ -400,8 +413,8 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		for (GroupMember groupMember : groupMembersList) {
 
-			groupActivitiesList = groupsMapper.getGroupActivities(new Integer(
-					groupMember.getGroupMemberId().getStorageID()));
+			groupActivitiesList = groupsMapper.getGroupActivities(Integer
+					.valueOf(groupMember.getGroupMemberId().getStorageID()));
 
 		}
 
@@ -433,27 +446,27 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 	public StudentInfo getStudentAssignmentPerformance(Integer memberRoleId)
 			throws CourseException {
 
-		StudentInfo studentInfo = null;
-		TestSubmission testSubmission = null;
+		StudentInfo studentInfo;
+		TestSubmission testSubmission;
 
 		if (memberRoleId == null) {
 			throw new CourseException(
 					"Student/Learner's MemberRole ID cannot be null");
 		}
 		studentInfo = new StudentInfo();
-		// testSubmission = assignmentTestMapper
-		// .getStudentAssignmentPerformance(memberRoleId);
+		testSubmission = assignmentTestMapper
+				.getStudentAssignmentPerformance(memberRoleId);
 
 		studentInfo.setTimeSpentOnTest(testSubmission.getDuration());
 		studentInfo.setNumberOfAttemps(1);
 
 		StudentTest test = testSubmission.getTest();
 
-		// TestProgress testProgress = assignmentTestMapper
-		// .getStudentTestProgress(new Integer(test.getTestId()
-		// .getStorageID()));
+		TestProgress testProgress = assignmentTestMapper
+				.getStudentTestProgress(Integer.valueOf(test.getTestId()
+						.getStorageID()));
 
-		// studentInfo.setProgress(testProgress.getProgress());
+		studentInfo.setProgress(testProgress.getProgress());
 
 		studentInfo.setTimeSpentOnTest(11);
 
@@ -468,7 +481,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 			throw new CourseException("TestSubmission ID cannot be null");
 		}
 
-		// assignmentTestMapper.saveStudentFeedback(testSubmission);
+		assignmentTestMapper.saveStudentFeedback(testSubmission);
 
 	}
 

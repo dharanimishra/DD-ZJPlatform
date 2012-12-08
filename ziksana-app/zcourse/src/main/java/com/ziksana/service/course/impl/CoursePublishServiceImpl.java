@@ -30,120 +30,128 @@ import com.ziksana.service.course.CourseSocializeService;
 /**
  * @author bhashasp
  */
-public class CoursePublishServiceImpl  implements CoursePublishService{
-	
-	private static Logger logger = Logger.getLogger(CoursePublishServiceImpl.class);
-	
+public class CoursePublishServiceImpl implements CoursePublishService {
+
+	private final static Logger LOGGER = Logger
+			.getLogger(CoursePublishServiceImpl.class);
+
 	@Autowired
-	public CourseMapper 					courseMapper;
+	public CourseMapper courseMapper;
 	@Autowired
-	public LearningComponentMapper 			learningComponentMapper;
+	public LearningComponentMapper learningComponentMapper;
 	@Autowired
-	public CourseLearningComponentMapper 	courseLComponentMapper;
+	public CourseLearningComponentMapper courseLComponentMapper;
 	@Autowired
-	public LearningComponentContentMapper 	learningComponentContentMapper;
+	public LearningComponentContentMapper learningComponentContentMapper;
 	@Autowired
-	public CourseSocializeService			courseService;
+	public CourseSocializeService courseService;
 	@Autowired
-	public CoursePublishMapper				publishMapper;
+	public CoursePublishMapper publishMapper;
 	@Autowired
-	public SocializeMapper					socializeMapper;
-	
+	public SocializeMapper socializeMapper;
 
 	@Transactional
 	@Override
-	public void reviewCourse(List<LearningContentReviewProgress> reviewComponentsList, Course course) throws CourseException {
-		
-		if(course == null){
-			throw new CourseException("Course/LearningObject/Content Cannot be null");
+	public void reviewCourse(
+			List<LearningContentReviewProgress> reviewComponentsList,
+			Course course) throws CourseException {
+
+		if (course == null) {
+			throw new CourseException(
+					"Course/LearningObject/Content Cannot be null");
 		}
 
 		courseService.saveCourseComponetsForReview(reviewComponentsList);
 
-		if(course != null){
-			
+		if (course != null) {
+
 			course.setCourseStatus(CourseStatus.REVIEW);
-			
+
 			courseMapper.saveReviewCourse(course);
-			
+
 		}
 	}
 
 	@Override
-	public List<LearningContentReviewProgress> getCourseComponentsToPublish(ZID memberRoleId)
-			throws CourseException {
-		
-		List<LearningContentReviewProgress> reviewList = null; 
-		
-		if(memberRoleId == null){
+	public List<LearningContentReviewProgress> getCourseComponentsToPublish(
+			ZID memberRoleId) throws CourseException {
+
+		List<LearningContentReviewProgress> reviewList = null;
+
+		if (memberRoleId == null) {
 			throw new CourseException("Member RoleID cannot be null");
 		}
-		
-		reviewList = publishMapper.getReviewComponentsByMemberRoleId(new Integer(memberRoleId.getStorageID()));
-		
+
+		reviewList = publishMapper
+				.getReviewComponentsByMemberRoleId(new Integer(memberRoleId
+						.getStorageID()));
+
 		return reviewList;
 	}
 
 	@Override
-	public void deleteCourseReviewComment(Integer  reviewCommentId) throws CourseException {
-		
+	public void deleteCourseReviewComment(Integer reviewCommentId)
+			throws CourseException {
+
 		Boolean isDelete = true;
-		if(reviewCommentId == null){
+		if (reviewCommentId == null) {
 			throw new CourseException("Review CommentID cannot be null");
 		}
-		
+
 		publishMapper.deleteReviewComment(isDelete, reviewCommentId);
-		
-		
+
 	}
 
 	@Override
 	public void reviewCourseContent(Course course) throws CourseException {
-		
-		if(course == null){
-			throw new CourseException("Course/LearningObject/Content Cannot be null");
+
+		if (course == null) {
+			throw new CourseException(
+					"Course/LearningObject/Content Cannot be null");
 		}
 
-		if(course != null){
-			
+		if (course != null) {
+
 			course.setCourseStatus(CourseStatus.REVIEW);
-			
+
 			courseMapper.saveReviewCourse(course);
-			
+
 		}
 
 	}
 
 	@Override
 	public void refineCourse(Course course) throws CourseException {
-		
-		if(course == null){
-			throw new CourseException("Course/LearningObject/Content Cannot be null");
+
+		if (course == null) {
+			throw new CourseException(
+					"Course/LearningObject/Content Cannot be null");
 		}
 
-		if(course != null){
-			
+		if (course != null) {
+
 			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-			
+
 			courseMapper.saveReviewCourse(course);
-			
+
 		}
 
 	}
 
 	@Override
 	public void releaseCourse(Course course) throws CourseException {
-		
-		if(course == null){
-			throw new CourseException("Course/LearningObject/Content Cannot be null");
+
+		if (course == null) {
+			throw new CourseException(
+					"Course/LearningObject/Content Cannot be null");
 		}
 
-		if(course != null){
-			
+		if (course != null) {
+
 			course.setCourseStatus(CourseStatus.RELEASE);
-			
+
 			courseMapper.saveReviewCourse(course);
-			
+
 		}
 
 	}
@@ -151,105 +159,111 @@ public class CoursePublishServiceImpl  implements CoursePublishService{
 	@Override
 	public LearningContentReviewProgress getReviewDetails(ZID reviewProgressId)
 			throws CourseException {
-		
+
 		LearningContentReviewProgress reviewItem = null;
-		
-		if(reviewProgressId == null){
-			throw new CourseException("LearningContentReviewProgressID Cannot be null");
+
+		if (reviewProgressId == null) {
+			throw new CourseException(
+					"LearningContentReviewProgressID Cannot be null");
 		}
-		
-		reviewItem = publishMapper.getReviewContentDetails(new Integer(reviewProgressId.getStorageID()));
-		
+
+		reviewItem = publishMapper.getReviewContentDetails(new Integer(
+				reviewProgressId.getStorageID()));
+
 		return reviewItem;
 	}
 
 	@Override
 	public ContentReviewWorkflow getWorkflowDetails(Integer reviewProgressId)
 			throws CourseException {
-		
+
 		ContentReviewWorkflow workflow = null;
-		
-		if(reviewProgressId == null){
-			throw new CourseException("LearningContentReviewProgressID Cannot be null");
+
+		if (reviewProgressId == null) {
+			throw new CourseException(
+					"LearningContentReviewProgressID Cannot be null");
 		}
 
 		workflow = publishMapper.getWorkflow(reviewProgressId);
-		
-		logger.debug("Workflow details : "+workflow.toString());
-		
+
+		LOGGER.debug("Workflow details : " + workflow.toString());
+
 		return workflow;
 	}
 
 	@Transactional
 	@Override
-	public void addContentReviewComment(MemberPersona memberRole, ContentReviewWorkflow workflow, WorkflowParticipantComment comment)
+	public void addContentReviewComment(MemberPersona memberRole,
+			ContentReviewWorkflow workflow, WorkflowParticipantComment comment)
 			throws CourseException {
-		
-		
-		if(workflow.getReviewProgress() == null){
-			throw new CourseException("LearningContentReviewProgress Cannot be null");
+
+		if (workflow.getReviewProgress() == null) {
+			throw new CourseException(
+					"LearningContentReviewProgress Cannot be null");
 		}
-	
-		if(memberRole.getMemberRoleId() == null){
+
+		if (memberRole.getMemberRoleId() == null) {
 			throw new CourseException("Member Role ID cannot be null");
 		}
 
-		logger.debug(" Member Role ID " + memberRole.getMemberRoleId());
-		
+		LOGGER.debug(" Member Role ID " + memberRole.getMemberRoleId());
+
 		socializeMapper.saveReviewWorkflow(workflow);
-		
-		if(workflow.getContentReviewWorkflowId()!=null){
-	
+
+		if (workflow.getContentReviewWorkflowId() != null) {
+
 			WorkflowParticipant newParticipant = new WorkflowParticipant();
 			newParticipant.setParticipateMemberRole(memberRole);
 			newParticipant.setParticipantType(ParticipantType.PEER_REVIEWER);
 			newParticipant.setCourseWorkflow(workflow);
-			 
+
 			socializeMapper.saveWorkflowParticipant(newParticipant);
-			
-			if(newParticipant.getParticipantId()!=null){
-				
+
+			if (newParticipant.getParticipantId() != null) {
+
 				comment.setParticipant(newParticipant);
 				comment.setStatus(WorkflowItemStatus.OPEN_FOR_REVIEW);
-				
+
 				publishMapper.saveWorkflowComment(comment);
-				
+
 			}
 
 		}
-		
+
 	}
 
 	@Override
 	public ContentReviewRating getReviewRating(Integer memberRoleId,
 			Integer reviewProgressId) throws CourseException {
-		
+
 		ContentReviewRating reviewRating = null;
-		List<ContentReviewRating>		contentReviewRatingList		= null;
-		List<ContentReviewRating>		authorReviewRatingList		= null;
-		
-		if(reviewProgressId == null){
-			throw new CourseException("LearningContentReviewProgress ID Cannot be null");
+		List<ContentReviewRating> contentReviewRatingList = null;
+		List<ContentReviewRating> authorReviewRatingList = null;
+
+		if (reviewProgressId == null) {
+			throw new CourseException(
+					"LearningContentReviewProgress ID Cannot be null");
 		}
-	
-		if(memberRoleId == null){
+
+		if (memberRoleId == null) {
 			throw new CourseException("Member Role ID cannot be null");
 		}
-		
-		contentReviewRatingList = publishMapper.getContentReviewRating(reviewProgressId);
-		
+
+		contentReviewRatingList = publishMapper
+				.getContentReviewRating(reviewProgressId);
+
 		for (ContentReviewRating contentReviewRating : contentReviewRatingList) {
-			//contentReviewRating.getReviewerRating().
+			// contentReviewRating.getReviewerRating().
 		}
-		
-		authorReviewRatingList = publishMapper.getAuthorReviewRating(memberRoleId);
-		
+
+		authorReviewRatingList = publishMapper
+				.getAuthorReviewRating(memberRoleId);
+
 		for (ContentReviewRating contentReviewRating : authorReviewRatingList) {
-			
+
 		}
-		
+
 		return reviewRating;
 	}
 
-	
 }

@@ -36,10 +36,14 @@ import com.ziksana.persistence.course.PlannerMapper;
 import com.ziksana.persistence.course.SocializeMapper;
 import com.ziksana.service.course.CourseService;
 
+/**
+ * @author ratneshkumar
+ */
 @Service
 public class CourseServiceImpl implements CourseService {
 
-	private static Logger logger = Logger.getLogger(CourseServiceImpl.class);
+	private final static Logger LOGGER = Logger
+			.getLogger(CourseServiceImpl.class);
 
 	@Autowired
 	public CourseMapper courseMapper;
@@ -77,16 +81,16 @@ public class CourseServiceImpl implements CourseService {
 
 		if (course.getCourseId() != null) {
 			// Update Operation
-			logger.debug("Course Id : " + course.getCourseId());
+			LOGGER.debug("Course Id : " + course.getCourseId());
 
 			tagcloudList = course.getCourseTagClouds();
 
-			logger.debug("Before updating the Course ....");
+			LOGGER.debug("Before updating the Course ....");
 			courseMapper.updateCourse(course);
 
 			if (tagcloudList != null && tagcloudList.size() > 0) {
 
-				logger.debug("Course Tagcloud list size  : "
+				LOGGER.debug("Course Tagcloud list size  : "
 						+ tagcloudList.size());
 
 				for (CourseTagcloud courseTagcloud : tagcloudList) {
@@ -96,12 +100,12 @@ public class CourseServiceImpl implements CourseService {
 							.getAccountableMember());
 					if (courseTagcloud.getCourseTagCloudId() != null) {
 
-						logger.debug("Before UPDATING the Course Tagcloud ....");
+						LOGGER.debug("Before UPDATING the Course Tagcloud ....");
 						tagCloudMapper.update(courseTagcloud);
 
 					} else {
 
-						logger.debug("Before SAVING the Course Tagcloud ....");
+						LOGGER.debug("Before SAVING the Course Tagcloud ....");
 						tagCloudMapper.save(courseTagcloud);
 
 					}
@@ -111,7 +115,7 @@ public class CourseServiceImpl implements CourseService {
 			if (contSecurity != null) {
 				contSecurity.setCourse(course);
 				if (contSecurity.getContentSecurityId() != null) {
-					logger.debug("Before updating the Course Content Security ....");
+					LOGGER.debug("Before updating the Course Content Security ....");
 					contSecurityMapper.update(contSecurity);
 				} else {
 					contSecurityMapper.save(contSecurity);
@@ -120,16 +124,16 @@ public class CourseServiceImpl implements CourseService {
 		} else {
 			Boolean isSecurity = false;
 			// Insert/Save Operation
-			logger.debug("Before saving the Course ....");
+			LOGGER.debug("Before saving the Course ....");
 			courseMapper.saveCourse(course);
-			logger.debug("After saving the Course ID....: "
+			LOGGER.debug("After saving the Course ID....: "
 					+ course.getCourseId());
 
 			tagcloudList = course.getCourseTagClouds();
 
 			if (tagcloudList != null && tagcloudList.size() > 0) {
 
-				logger.debug("Cours	e Tagcloud list size  : "
+				LOGGER.debug("Cours	e Tagcloud list size  : "
 						+ tagcloudList.size());
 				for (CourseTagcloud courseTagcloud : tagcloudList) {
 
@@ -140,12 +144,12 @@ public class CourseServiceImpl implements CourseService {
 
 					if (courseTagcloud.getCourseTagCloudId() != null) {
 
-						logger.debug("Before UPDATING the Course Content Security ....");
+						LOGGER.debug("Before UPDATING the Course Content Security ....");
 						tagCloudMapper.update(courseTagcloud);
 
 					} else {
 
-						logger.debug("Before SAVING the Course Content Security ....");
+						LOGGER.debug("Before SAVING the Course Content Security ....");
 						tagCloudMapper.save(courseTagcloud);
 
 					}
@@ -154,23 +158,23 @@ public class CourseServiceImpl implements CourseService {
 			isSecurity = course.getSecurityIndicator();
 
 			if (isSecurity != null) {
-				logger.debug("Course Content Security Indicator ....: "
+				LOGGER.debug("Course Content Security Indicator ....: "
 						+ isSecurity);
 				if (contSecurity != null) {
-					logger.debug("Course Content Security  ....: "
+					LOGGER.debug("Course Content Security  ....: "
 							+ contSecurity.toString());
-					logger.debug("Course Content Security CourseID ....: "
+					LOGGER.debug("Course Content Security CourseID ....: "
 							+ course.getCourseId());
 					contSecurity.setCourse(course);
 
 					if (contSecurity.getContentSecurityId() != null) {
 
-						logger.debug("Before updating the Course Content Security ....");
+						LOGGER.debug("Before updating the Course Content Security ....");
 						contSecurityMapper.update(contSecurity);
 
 					} else {
 
-						logger.debug("Before Saving the Course Content Security ....");
+						LOGGER.debug("Before Saving the Course Content Security ....");
 						contSecurityMapper.save(contSecurity);
 					}
 				}
@@ -178,7 +182,7 @@ public class CourseServiceImpl implements CourseService {
 
 		}
 
-		logger.debug("Saved Course :: " + course.toString());
+		LOGGER.debug("Saved Course :: " + course.toString());
 
 		return course;
 	}
@@ -221,29 +225,29 @@ public class CourseServiceImpl implements CourseService {
 			// UPDATE OPERATION
 			if (courseLearningComponent.getCourseLearningComponentId() != null) {
 
-				logger.debug("Before Updating the CourseLearningComponent ....");
+				LOGGER.debug("Before Updating the CourseLearningComponent ....");
 				courseLComponentMapper
 						.updateCourseLearningComponent(courseLearningComponent);
 
-				logger.debug("Before Updating the Learning Component ....");
+				LOGGER.debug("Before Updating the Learning Component ....");
 				learningComponentMapper.updateLearningComponent(learningComp);
-				logger.debug("After Updating the CourseLearningComponent : ");
+				LOGGER.debug("After Updating the CourseLearningComponent : ");
 
 			} else {
 				// SAVE OPERATION
-				logger.debug("Before Saving the Learning Component ....");
+				LOGGER.debug("Before Saving the Learning Component ....");
 				learningComponentMapper.saveLearningComponent(learningComp);
-				logger.debug("After Saving the CourseLearningComponent ID..: "
+				LOGGER.debug("After Saving the CourseLearningComponent ID..: "
 						+ learningComp.getLearningComponentId().getDisplayID());
 
-				logger.debug("After Saving the CourseLearningComponent Course ID..: "
+				LOGGER.debug("After Saving the CourseLearningComponent Course ID..: "
 						+ course.getCourseId().getDisplayID());
 
 				courseLearningComponent.setCourse(course);
 
 				courseLearningComponent.setLearningComponent(learningComp);
 
-				logger.debug("Before Saving the CourseLearningComponent ....");
+				LOGGER.debug("Before Saving the CourseLearningComponent ....");
 				courseLComponentMapper
 						.saveCourseLearningComponent(courseLearningComponent);
 
@@ -263,11 +267,11 @@ public class CourseServiceImpl implements CourseService {
 
 				compNest.setNestLearningComponent(learningComp);
 
-				logger.debug("Before Saving the LearningComponentNest ....");
+				LOGGER.debug("Before Saving the LearningComponentNest ....");
 
 				componentNestMapper.saveComponentNest(compNest);
 
-				logger.debug("After Saving the LearningComponentNest ....");
+				LOGGER.debug("After Saving the LearningComponentNest ....");
 			}
 		}
 		return course;
@@ -283,14 +287,14 @@ public class CourseServiceImpl implements CourseService {
 			throw new CourseException("Course Id cannot be null");
 		}
 
-		logger.debug("Before retrieving the base course details ");
+		LOGGER.debug("Before retrieving the base course details ");
 
 		course = courseMapper.getBaseCourseDetails(new Integer(courseId
 				.getStorageID()));
 
 		if (course != null) {
 
-			logger.debug("Got the course details : " + course.toString());
+			LOGGER.debug("Got the course details : " + course.toString());
 		}
 
 		return course;
@@ -308,7 +312,7 @@ public class CourseServiceImpl implements CourseService {
 			throw new CourseException(" MemberRoleID cannot be null");
 		}
 
-		logger.debug("MemberRoleID : " + memberPersonaId);
+		LOGGER.debug("MemberRoleID : " + memberPersonaId);
 
 		courseList = courseMapper.getListOfCourses(memberRoleId);
 
@@ -329,7 +333,6 @@ public class CourseServiceImpl implements CourseService {
 			Integer memberRoleId) {
 
 		List<Course> newCourseList = null;
-		Integer learningContentId = null;
 		int courseProgress = 0;
 		List<CourseLearningComponent> couseCompList = null;
 		Boolean isComponentExists = false;
@@ -345,7 +348,7 @@ public class CourseServiceImpl implements CourseService {
 
 		if (courseList != null && courseList.size() > 0) {
 
-			logger.debug("Courses  size : " + courseList.size());
+			LOGGER.debug("Courses  size : " + courseList.size());
 			LearningComponent component = null;
 
 			for (Course course : courseList) {
@@ -360,7 +363,7 @@ public class CourseServiceImpl implements CourseService {
 
 				courseId = Integer.valueOf(course.getCourseId().getDisplayID());
 
-				logger.debug("CoursesID   : " + courseId);
+				LOGGER.debug("CoursesID   : " + courseId);
 
 				couseCompList = courseLComponentMapper
 						.getBaseCourseLearningComponentsByCourse(courseId);
@@ -403,8 +406,8 @@ public class CourseServiceImpl implements CourseService {
 								enrichSize = enrichMapper
 										.getEnrichByContentIdOrComponentId(
 												lCompId, courseId);
-								logger.debug("lCompId : " + lCompId);
-								logger.debug("courseId : " + courseId);
+								LOGGER.debug("lCompId : " + lCompId);
+								LOGGER.debug("courseId : " + courseId);
 
 								if (enrichSize > 0) {
 
@@ -485,7 +488,7 @@ public class CourseServiceImpl implements CourseService {
 						}
 					}
 				}
-				logger.debug(" Course ID :: [" + courseId + "]  Progress :["
+				LOGGER.debug(" Course ID :: [" + courseId + "]  Progress :["
 						+ courseProgress + "]");
 				course.setCourseProgress(courseProgress);
 
@@ -522,7 +525,7 @@ public class CourseServiceImpl implements CourseService {
 					"Course Additional Property cannot be null");
 		}
 
-		logger.debug("Before saving the Course Additional Information ... ");
+		LOGGER.debug("Before saving the Course Additional Information ... ");
 		courseMapper.saveAddnlInfo(courseAdditionalProperty);
 
 	}
@@ -564,7 +567,7 @@ public class CourseServiceImpl implements CourseService {
 			throw new CourseException("Member Role ID cannot be null ");
 		}
 
-		logger.debug("Member role ID : " + memberRoleId);
+		LOGGER.debug("Member role ID : " + memberRoleId);
 
 		learningObjectList = learningComponentMapper.getLearningObjects(
 				isLearningObject, memberRoleId);

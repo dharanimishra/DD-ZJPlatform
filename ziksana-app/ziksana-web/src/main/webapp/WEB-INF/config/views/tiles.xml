@@ -30,6 +30,27 @@
 		<put-attribute name="body" value="/WEB-INF/pages/courses/createcourses.jsp" />
 		<put-attribute name="footer_static" value="/WEB-INF/pages/courses/create_static_footer.jsp" />
 	</definition>
+	
+	<definition name="createassignment" extends="baseDivLayout">
+		<put-attribute name="head_static" value="/WEB-INF/pages/courses/create_static_head.jsp" />
+		<put-attribute name="slogan" value="/WEB-INF/pages/courses/slogan.jsp" />
+		<put-attribute name="body" value="/WEB-INF/pages/courses/assignment.jsp" />
+		<put-attribute name="footer_static" value="/WEB-INF/pages/courses/create_static_footer.jsp" />
+	</definition>
+	
+	<definition name="associatecontent" extends="baseDivLayout">
+		<put-attribute name="head_static" value="/WEB-INF/pages/courses/create_static_head.jsp" />
+		<put-attribute name="slogan" value="/WEB-INF/pages/courses/slogan.jsp" />
+		<put-attribute name="body" value="/WEB-INF/pages/courses/associatecontent.jsp" />
+		<put-attribute name="footer_static" value="/WEB-INF/pages/courses/create_static_footer.jsp" />
+	</definition>
+	
+	<definition name="enrichcontent" extends="baseDivLayout">
+		<put-attribute name="head_static" value="/WEB-INF/pages/courses/create_static_head.jsp" />
+		<put-attribute name="slogan" value="/WEB-INF/pages/courses/slogan.jsp" />
+		<put-attribute name="body" value="/WEB-INF/pages/courses/enrichcontent.jsp" />
+		<put-attribute name="footer_static" value="/WEB-INF/pages/courses/create_static_footer.jsp" />
+	</definition>
 
 	<definition name="portallayout" extends="baseDivLayout">
 		<put-attribute name="title" value="Ziksana - Dashboard" />

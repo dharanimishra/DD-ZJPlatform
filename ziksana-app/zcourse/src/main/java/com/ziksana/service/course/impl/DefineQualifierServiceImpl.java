@@ -17,35 +17,39 @@ import com.ziksana.service.course.DefineQualifierService;
 
 public class DefineQualifierServiceImpl implements DefineQualifierService {
 
-	private static Logger logger = Logger.getLogger(DefineQualifierServiceImpl.class);
-	
-	private static String INSTITUTION = "Institution";
-	
-	private static String ME	= "Me";
-	
+	private final static Logger LOGGER = Logger
+			.getLogger(DefineQualifierServiceImpl.class);
+
+	private final static String INSTITUTION = "Institution";
+
+	private final static String ME = "Me";
+
 	@Autowired
 	public CourseMapper courseMapper;
-	
-	@Override
-	public void deleteQualifier(Integer memberRoleId, ZID learningComponentTypeId) throws  CourseException {
 
-		Boolean isDelete = true;
-		
-		if(learningComponentTypeId == null){
+	@Override
+	public void deleteQualifier(Integer memberRoleId,
+			final ZID learningComponentTypeId) throws CourseException {
+
+		final Boolean isDelete = true;
+
+		if (learningComponentTypeId == null) {
 			throw new CourseException("LearningComponentTypeId cannot be null");
 		}
-		
-		courseMapper.deleteQualifier(isDelete, memberRoleId, new Integer(learningComponentTypeId.getStorageID()));
-		
+
+		courseMapper.deleteQualifier(isDelete, memberRoleId,
+				Integer.valueOf(learningComponentTypeId.getStorageID()));
+
 	}
-	
-	@Override
-	public void updateQualifier(LearningComponentType learningComponentType) throws CourseException {
 
-		if(learningComponentType == null){
+	@Override
+	public void updateQualifier(LearningComponentType learningComponentType)
+			throws CourseException {
+
+		if (learningComponentType == null) {
 			throw new CourseException("LearningComponentTypeId cannot be null");
 		}
-		
+
 		courseMapper.updateQualifier(learningComponentType);
 
 	}
@@ -62,50 +66,55 @@ public class DefineQualifierServiceImpl implements DefineQualifierService {
 
 	@Transactional
 	@Override
-	public List<LearningComponentType> getDefinedQualifiersList(MemberPersona memberPersona)
-			throws CourseException {
-		
-		List<LearningComponentType> defineQualifierList 		= null;
-		Boolean 					isDefineQualifier 			= true;
-		List<LearningComponentType> updatedDefineQualifierList 	= null;
-		MemberPersona				memPersona					= null;
-		Integer memberRoleId = memberPersona.getMemberRoleId();	
-		
-		defineQualifierList = courseMapper.getDefinieQualifiers(memberRoleId, isDefineQualifier);
-		
+	public List<LearningComponentType> getDefinedQualifiersList(
+			final MemberPersona memberPersona) throws CourseException {
+
+		List<LearningComponentType> defineQualifierList = null;
+		Boolean isDefineQualifier = true;
+		List<LearningComponentType> updatedDefineQualifierList = null;
+		MemberPersona memPersona = null;
+		Integer memberRoleId = memberPersona.getMemberRoleId();
+
+		defineQualifierList = courseMapper.getDefinieQualifiers(memberRoleId,
+				isDefineQualifier);
+
 		updatedDefineQualifierList = new ArrayList<LearningComponentType>();
-		
+
 		for (LearningComponentType learningComponentType : defineQualifierList) {
-			
+
 			memPersona = learningComponentType.getCreatorMemberPersona();
-			
-			Integer institutionId = courseMapper.checkInstitution(memPersona.getMemberRoleId());
-			
-			if(institutionId!=null){
+
+			Integer institutionId = courseMapper.checkInstitution(memPersona
+					.getMemberRoleId());
+
+			if (institutionId != null) {
 				learningComponentType.setDefinedBy(INSTITUTION);
-			}else{
+			} else {
 				learningComponentType.setDefinedBy(ME);
 			}
-			
+
 			updatedDefineQualifierList.add(learningComponentType);
 		}
-		
-		logger.debug("Define Qualifiers list size : "+updatedDefineQualifierList.size());
-		
+
+		LOGGER.debug("Define Qualifiers list size : "
+				+ updatedDefineQualifierList.size());
+
 		return updatedDefineQualifierList;
 	}
 
 	@Override
-	public LearningComponentType getQualifier(Integer memberRoleId, ZID learningComponentTypeId)
-			throws CourseException {
+	public LearningComponentType getQualifier(Integer memberRoleId,
+			final ZID learningComponentTypeId) throws CourseException {
 		LearningComponentType learningComponentType = null;
 		Boolean isDelete = false;
-		
-		if(learningComponentTypeId == null){
+
+		if (learningComponentTypeId == null) {
 			throw new CourseException("LearningComponentTypeId cannot be null");
 		}
-		
-		learningComponentType = courseMapper.getQualifier(isDelete, memberRoleId, new Integer(learningComponentTypeId.getStorageID()));
+
+		learningComponentType = courseMapper.getQualifier(isDelete,
+				memberRoleId,
+				Integer.valueOf(learningComponentTypeId.getStorageID()));
 
 		return learningComponentType;
 	}
