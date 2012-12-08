@@ -24,7 +24,7 @@ import com.ziksana.security.filters.AuthenticationFilter;
 import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.security.MemberService;
-import com.ziksana.service.sample.SampleService;
+
 import com.ziksana.service.security.AuthenticationService;
 
 @Controller
