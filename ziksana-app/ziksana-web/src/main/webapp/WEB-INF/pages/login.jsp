@@ -6,26 +6,26 @@
 <title>Login</title>
 
 <!--Body Style sheet-->
-<link href="css/styles.css" rel="stylesheet" type="text/css">
-<link href="css/type-setting.css" rel="stylesheet" type="text/css">
-<link href="css/effects.css" rel="stylesheet" type="text/css">
-<link href="css/nav.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
 
 <!--End Body Style sheet-->
 
-<!--<link rel="stylesheet" type="text/css" href="css/easyslider/demo.css" />-->
-<link rel="stylesheet" type="text/css" href="css/easyslider/style2.css" />
+<!--<link rel="stylesheet" type="text/css" href="../resources/css/easyslider/demo.css" />-->
+<link rel="stylesheet" type="text/css" href="../resources/css/easyslider/style2.css" />
 <link
 	href='http://fonts.googleapis.com/css?family=Economica:700,400italic'
 	rel='stylesheet' type='text/css'>
 <noscript>
-	<link rel="stylesheet" type="text/css" href="css/easyslider/nojs.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/easyslider/nojs.css" />
 </noscript>
 <script type="text/javascript"
-	src="js/easyslider/modernizr.custom.28468.js"></script>
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="js/custom/login.js"></script>
-<script type="text/javascript" src="js/easyslider/jquery.cslider.js"></script>
+	src="../resources/js/easyslider/modernizr.custom.28468.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../resources/js/custom/login.js"></script>
+<script type="text/javascript" src="../resources/js/easyslider/jquery.cslider.js"></script>
 <script type="text/javascript">
 	$(function() {
 
@@ -271,7 +271,7 @@
 		<div class="loginhead">
 
 			<div class="zenimainlogo">
-				<!--<img src="images/Ziksana.jpg" alt="Ziksana" width="116" height="112" border="3" style="border:3px solid #F6902B; background-color:#FFFFFF; padding:10px; -moz-box-shadow: 1px 2px 5px #000000;
+				<!--<img src="../resources/images/Ziksana.jpg" alt="Ziksana" width="116" height="112" border="3" style="border:3px solid #F6902B; background-color:#FFFFFF; padding:10px; -moz-box-shadow: 1px 2px 5px #000000;
 -webkit-box-shadow: 1px 2px 5px #000000;
 box-shadow: 1px 2px 5px #000000;"/>-->
 
@@ -293,7 +293,7 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 							i want..</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="images/slider/2.png" alt="image01" />
+							<img src="../resources/images/slider/2.png" alt="image01" />
 						</div>
 					</div>
 					<div class="da-slide">
@@ -302,7 +302,7 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 							Anything is possible.</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="images/slider/3.png" alt="image01" />
+							<img src="../resources/images/slider/3.png" alt="image01" />
 						</div>
 					</div>
 					<div class="da-slide">
@@ -312,7 +312,7 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 							principles and you can make your dreams come true.</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="images/slider/4.png" alt="image01" />
+							<img src="../resources/images/slider/4.png" alt="image01" />
 						</div>
 					</div>
 					<div class="da-slide">
@@ -321,7 +321,7 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 							dream; not only plan, but also believe.</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="images/slider/1.png" alt="image01" />
+							<img src="../resources/images/slider/1.png" alt="image01" />
 						</div>
 					</div>
 					<nav class="da-arrows">
@@ -349,7 +349,7 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 			<div class="logindtls">
 
 				<div class="zenilogo">
-					<img src="images/Ziksana.jpg" alt="Ziksana" width="128"
+					<img src="../resources/images/Ziksana.jpg" alt="Ziksana" width="128"
 						height="128" />
 				</div>
 				<!--end of zenilogo-->

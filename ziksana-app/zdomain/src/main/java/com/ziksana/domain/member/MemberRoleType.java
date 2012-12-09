@@ -3,26 +3,30 @@ package com.ziksana.domain.member;
 public enum MemberRoleType {
 
 	// TODO: We may want to retrieve the ids from the static data service
-	LEARNER(1, "Learner"), EDUCATOR(2, "Educator"), TEACHING_ASSISTANT(3,
-			"Teaching Assistant"), PLATFORM_ADMIN(4, "Platform Admin"), UNIVERSITY_ADMIN(
-			5, "University Admin");
+	LEARNER(1), EDUCATOR(2), TEACHING_ASSISTANT(3), PLATFORM_ADMIN(4), UNIVERSITY_ADMIN(5);
 
-	private final int id;
-	private final String name;
+	private int id;
+	
 
-	private MemberRoleType(int id, String name) {
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
 		this.id = id;
-		this.name = name;
+	}
+
+	 MemberRoleType(int id) {
+		this.id = id;
+		
 	}
 
 	public int getID() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
+	
 	public static MemberRoleType getMemberRoleType(int ID) {
 		for (MemberRoleType t : MemberRoleType.values()) {
 			if (t.getID() == ID) {
@@ -36,6 +40,6 @@ public enum MemberRoleType {
 	}
 
 	public String toString() {
-		return "Member Role Type [" + getName() + "] ID [" + getID() + "]";
+		return "Member Role Type [" +  "] ID [" + getID() + "]";
 	}
 }
