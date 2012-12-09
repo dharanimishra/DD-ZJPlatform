@@ -5,6 +5,8 @@ package com.ziksana.service.security.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 
 
 import org.junit.After;
@@ -19,6 +21,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ziksana.domain.member.Member;
+import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.service.security.MemberService;
 
 /**
@@ -68,8 +72,25 @@ public class MemberServiceImplTest {
 	@Test
 	public void testGetMemberByUser() {
 		Member member = memberService.getMemberByUser("prabu");
-		assertTrue( member.getMemberPersonas().size() == 4);
 		
+		List<MemberPersona> memberPersonas = member.getMemberPersonas();
+		MemberRoleType role = null;
+		
+		//TODO
+		for (MemberPersona memberPersona: memberPersonas)
+		{
+			if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR)
+			{
+				role = memberPersona.getRoleType();
+			}
+			
+		}
+		
+		
+		//System.out.println(" Role type is "+member.)
+		assertTrue( member.getMemberPersonas().size() == 4);
+		assertTrue(role!=null);
+	
 		
 		
 		

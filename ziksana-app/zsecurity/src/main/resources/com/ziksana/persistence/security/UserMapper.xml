@@ -6,7 +6,9 @@
 	<select id="getMemberByUser" resultMap="memberResultMap"
 		parameterType="java.lang.String">
 
-		select distinct memmember.*, memmemberrole.MemberRoleId
+		select distinct memmember.*, 
+		memmemberrole.MemberRoleId,
+		IF(memmemberrole.RoleType=2,'EDUCATOR','LEARNER') AS RoleType
 		from memmember,
 		memmemberrole,
 		secmembercredential
@@ -26,7 +28,11 @@
 		
 		<collection property="memberPersonas"  ofType="com.ziksana.domain.member.MemberPersona" >
 		         <result property="memberRoleId" column="MemberRoleId"/>
-		         <result property="roleType" column="RoleType"/>
+		         <result property="roleType" column="RoleType"/>         
+		         
+		         
+		         
+		         
 		</collection>
 
 	</resultMap>

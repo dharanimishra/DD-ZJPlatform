@@ -3,6 +3,7 @@ package com.ziksana.controller;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.member.Member;
+import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.filters.AuthenticationFilter;
@@ -80,12 +83,21 @@ public class LoginController {
 
 			ZID memberPersonaId = new StringZID();
 			
-			/*
-			memberPersonaId.setStorageID(member.getMemberPersona()
-					.getMemberRoleId().toString());
-					*/
+			//Determining the educator memberpersona  of the user
+			List<MemberPersona> memberPersonas = member.getMemberPersonas();
 			
-			memberPersonaId.setStorageID("100");
+			for (MemberPersona memberPersona: memberPersonas)
+			{
+				if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR)
+				{
+					memberPersonaId.setStorageID(memberPersona.getMemberRoleId().toString());
+				}
+					
+				
+			}
+			
+			
+			
 
 			SecurityToken token = new SecurityToken(memberId, memberPersonaId,
 					null);
