@@ -200,11 +200,7 @@ public class CourseServiceImpl implements CourseService {
 		if (course == null) {
 			throw new CourseException("Course cannot be null");
 		}
-
-		/*
-		 * if(course!=null){ //Save or Updates the course
-		 * saveOrUpdateCourse(course); }
-		 */
+		
 		courseDetails = course.getCourseDetails();
 
 		if (courseDetails == null) {

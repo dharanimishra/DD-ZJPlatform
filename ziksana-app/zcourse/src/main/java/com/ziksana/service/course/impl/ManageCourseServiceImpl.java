@@ -23,18 +23,17 @@ import com.ziksana.domain.member.collaboration.GroupMemberActivity;
 import com.ziksana.domain.member.collaboration.GroupMemberConversation;
 import com.ziksana.domain.member.collaboration.GroupMessage;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.id.IntegerZID;
 
-import com.ziksana.persistence.assessment.AssignmentTestMapper;
-import com.ziksana.persistence.assessment.engagement.EngagementMapper;
 import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.persistence.course.subscription.SubscriptionCourseMapper;
 import com.ziksana.persistence.member.collaboration.GroupMapper;
 import com.ziksana.persistence.program.ProgramsMapper;
+import com.ziksana.service.assignment.engagement.impl.EngagementServiceImpl;
+import com.ziksana.service.assignment.impl.AssignmentTestServiceImpl;
 import com.ziksana.service.course.ManageCourseService;
 
 /**
- * @author bhashasp
+ * @author ratneshkumar
  */
 public class ManageCourseServiceImpl implements ManageCourseService {
 
@@ -51,13 +50,13 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 	public GroupMapper groupsMapper;
 
 	@Autowired
-	public EngagementMapper engagementMapper;
+	public EngagementServiceImpl engagementServiceImpl;
 
 	@Autowired
 	public ProgramsMapper programsMapper;
 
 	@Autowired
-	AssignmentTestMapper assignmentTestMapper;
+	AssignmentTestServiceImpl assignmentTestServiceImpl;
 
 	@Override
 	public List<Engagement> getCourseEngagementRules(Course course)
@@ -72,7 +71,8 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		courseId = Integer.valueOf(course.getCourseId().getStorageID());
 
-		engagementList = engagementMapper
+		// Get Engagement Service
+		engagementList = engagementServiceImpl
 				.getEngagementeRulesByCourseId(courseId);
 
 		LOGGER.debug("Engagement Rules size : " + engagementList.size());
@@ -98,7 +98,8 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		engagement.setEngagementCriteria(criteria);
 
-		engagementMapper.saveEngagement(engagement);
+		// Save Engagement Service
+		engagementServiceImpl.saveEngagement(engagement);
 
 	}
 
@@ -115,9 +116,9 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		criteria = engagement.getEngagementCriteria();
 
-		engagementMapper.updateCriteria(criteria);
+		engagementServiceImpl.updateCriteria(criteria);
 
-		engagementMapper.updateEngagement(engagement);
+		engagementServiceImpl.updateEngagement(engagement);
 
 	}
 
@@ -135,10 +136,10 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		criteria = engagement.getEngagementCriteria();
 
-		engagementMapper.deleteCriteria(isDelete, Integer.valueOf(criteria
+		engagementServiceImpl.deleteCriteria(isDelete, Integer.valueOf(criteria
 				.getEngagementCriteriaId().getStorageID()));
 
-		engagementMapper.deleteEngagement(isDelete,
+		engagementServiceImpl.deleteEngagement(isDelete,
 				Integer.valueOf(engagement.getEngagementId().getStorageID()));
 
 	}
@@ -454,7 +455,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 					"Student/Learner's MemberRole ID cannot be null");
 		}
 		studentInfo = new StudentInfo();
-		testSubmission = assignmentTestMapper
+		testSubmission = assignmentTestServiceImpl
 				.getStudentAssignmentPerformance(memberRoleId);
 
 		studentInfo.setTimeSpentOnTest(testSubmission.getDuration());
@@ -462,7 +463,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 
 		StudentTest test = testSubmission.getTest();
 
-		TestProgress testProgress = assignmentTestMapper
+		TestProgress testProgress = assignmentTestServiceImpl
 				.getStudentTestProgress(Integer.valueOf(test.getTestId()
 						.getStorageID()));
 
@@ -480,9 +481,7 @@ public class ManageCourseServiceImpl implements ManageCourseService {
 		if (testSubmission.getSubmissionId() == null) {
 			throw new CourseException("TestSubmission ID cannot be null");
 		}
-
-		assignmentTestMapper.saveStudentFeedback(testSubmission);
-
+		assignmentTestServiceImpl.saveStudentFeedback(testSubmission);
 	}
 
 }
