@@ -11,38 +11,48 @@
 <meta charset="utf-8">
 <title>Define Course tests</title>
 <!--Body Style sheet-->
-<link rel="stylesheet" type="text/css" href="../resources/css/dropdown.css" />
-<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/wizard/wizardstylesheet.css" rel="stylesheet"
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/dropdown.css" />
+<link href="../resources/css/styles.css" rel="stylesheet"
 	type="text/css">
+<link href="../resources/css/type-setting.css" rel="stylesheet"
+	type="text/css">
+<link href="../resources/css/effects.css" rel="stylesheet"
+	type="text/css">
+<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/wizard/wizardstylesheet.css"
+	rel="stylesheet" type="text/css">
 <link href="../resources/css/spinner/smartspinner.css" rel="stylesheet"
 	type="text/css">
-<link rel="stylesheet" href="../resources/css/chosen/superbly-tagfield.css" />
+<link rel="stylesheet"
+	href="../resources/css/chosen/superbly-tagfield.css" />
 <link rel='stylesheet' type='text/css' href="../resources/css/nav.css" />
-<link href="../resources/css/search.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/search.css" rel="stylesheet"
+	type="text/css">
 <!--End Body Style sheet-->
 
 <script type="text/javascript" src="../resources/js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="../resources/js/search.js"></script>
-<script type="text/javascript" src="../resources/js/ckeditor/adapters/jquery.js"></script>
-<script type="text/javascript" src="../resources/js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript"
+	src="../resources/js/ckeditor/adapters/jquery.js"></script>
+<script type="text/javascript"
+	src="../resources/js/ckeditor/ckeditor.js"></script>
 <script src="../resources/js/custom.js" type="text/javascript"></script>
 <script type='text/javascript'
 	src="../resources/js/autocomplete/jquery-ui-1.8.23.custom.min.js"></script>
-<script type="text/javascript" src="../resources/js/spinner/smartspinner.js"></script>
+<script type="text/javascript"
+	src="../resources/js/spinner/smartspinner.js"></script>
 
 <script type="text/javascript" src="../resources/js/tablerow.js"></script>
 <!-- css for tree -->
-<link rel="stylesheet" href="../../resources/js/tree/styles/styleTree.css"
-	type="text/css" />
+<link rel="stylesheet"
+	href="../../resources/js/tree/styles/styleTree.css" type="text/css" />
 <!-- for the layout of the tree -->
 
 <!-- scripts for tree -->
 <script type="text/javascript" src="../resources/js/tree/gettheme.js"></script>
-<script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
+<script type="text/javascript"
+	src="../resources/js/tree/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="../resources/js/tree/core.js"></script>
 <script type="text/javascript" src="../resources/js/tree/buttons.js"></script>
 <script type="text/javascript" src="../resources/js/tree/scrollbar.js"></script>
@@ -58,11 +68,14 @@
 	href="../resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
 <script type="text/javascript"
 	src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-<script type="text/javascript" src="../resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
-<script type='text/javascript' src="../resources/js/custom/libraryfunction.js"></script>
+<script type="text/javascript"
+	src="../resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
+<script type='text/javascript'
+	src="../resources/js/custom/libraryfunction.js"></script>
 <script type="text/javascript" src="../resources/js/custom/RTE.js"></script>
 <!-- scripts for number spinner -->
-<script type="text/javascript" src="../resources/js/chosen/superbly-tagfield.min.js"></script>
+<script type="text/javascript"
+	src="../resources/js/chosen/superbly-tagfield.min.js"></script>
 
 <script src="../resources/js/dropdown/hover-dropdown.min.js"></script>
 <script src="../resources/js/dropdown/tiwtter.js"></script>
@@ -119,7 +132,8 @@
 				<!--logo container-->
 				<div class="logo">
 					<p>
-						<a href="#"><img height="73" width="189" src="../resources/../resources/images/logo.jpg" /></a>
+						<a href="#"><img height="73" width="189"
+							src="../resources/../resources/images/logo.jpg" /></a>
 					</p>
 				</div>
 				<!--end logo container-->
@@ -206,9 +220,9 @@
 								class="srch-op-b"></span></a>
 							<ul class="dropdown-menu">
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zMessage.html">zAnnouncements</a></li>
+									href="../resources/zeni/zMessage.html">zAnnouncements</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zMeetings.html">zNews</a></li>
+									href="../resources/zeni/zMeetings.html">zNews</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
 									href="">zPoll</a></li>
 
@@ -222,9 +236,9 @@
 								class="srch-op-d"> </span></a>
 							<ul class="dropdown-menu">
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zMessage.html">zMessage</a></li>
+									href="../resources/zeni/zMessage.html">zMessage</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zMeetings.html">zMeetings</a></li>
+									href="../resources/zeni/zMeetings.html">zMeetings</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
 									href="">zAlerts</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
@@ -232,15 +246,15 @@
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
 									href="#linkurl">zSteps</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zGroups.html">zGroups</a></li>
+									href="../resources/zeni/zGroups.html">zGroups</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zCollege.html">zCollage</a></li>
+									href="../resources/zeni/zCollege.html">zCollage</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zDelegate.html">zDelegate</a></li>
+									href="../resources/zeni/zDelegate.html">zDelegate</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
 									href="#linkurl">zQuestion Bank</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zLibrary.html">zLibrary</a></li>
+									href="../resources/zeni/zLibrary.html">zLibrary</a></li>
 								<li style="float: left;"><a tabindex="-1" href="#linkurl">zHealthcheck</a></li>
 
 
@@ -251,19 +265,19 @@
 								class="srch-op-c"> </span></a>
 							<ul class="dropdown-menu">
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zRecommend.html">zRecommends</a></li>
+									href="../resources/zeni/zRecommend.html">zRecommends</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zReward.html">Rewardz</a></li>
+									href="../resources/zeni/zReward.html">Rewardz</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zStats.html">zStats</a></li>
+									href="../resources/zeni/zStats.html">zStats</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zAsk.html">Askz</a></li>
+									href="../resources/zeni/zAsk.html">Askz</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zCards.html">zcard</a></li>
+									href="../resources/zeni/zCards.html">zcard</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zStrate.html">Stratez</a></li>
+									href="../resources/zeni/zStrate.html">Stratez</a></li>
 								<li style="float: left;"><a tabindex="-1" class="lbx-zeni"
-									href="zeni/zClass.html">zClass</a></li>
+									href="../resources/zeni/zClass.html">zClass</a></li>
 							</ul></li>
 
 					</ul>
@@ -342,17 +356,18 @@
 								</div>
 
 								<!----------------- start of first container --------------->
+
 								<div class="_coursename">
 									<div class="control-group">
-
+										<div id="uerror"></div>
 										<label class="control-label labelclass " for="CourseName"
 											style="margin-top: -4px; font-weight: bold;">Course
 											Name :</label>
 										<div class="controls">
 											<input type="text" autofocus class="defaultvaluem treeRoot"
-												id="defaultvalue"
+												id="coursename"
 												style="width: 240px; margin-left: 10px; color: #666;"
-												tabindex="1" placeholder="Model Thinking" />
+												tabindex="1" placeholder="" />
 										</div>
 										<br /> <label for="coursedescription" class="labelclass"
 											style="font-weight: bold;"><b>Course Description
@@ -362,25 +377,62 @@
 											style="text-decoration: none;">Rich Text Editor</a>
 										<textarea cols="124" rows="8"
 											class="_plainTextShow defaultvaluem labelclass"
-											style="resize: none; color: #666;">We live in a complex world with diverse people, firms, and governments whose behaviors aggregate to produce novel, unexpected phenomena. We see political uprisings, market crashes, and a never ending array of social trends. How do we make sense of it?
-Models. Evidence shows that people who think with models consistently outperform those who don’t. And, moreover people who think with lots of models outperform people who use only one.
-Why do models make us better thinkers?
-Models help us to better organize information – to make sense of that fire hose or hairball of data (choose your metaphor) available on the Internet. Models improve our abilities to make accurate forecasts. They help us make better decisions and adopt more effective strategies. They even can improve our ability to design institutions and procedures. In this class, I present a starter kit of models: I start with models of tipping points. I move on to cover models explain the wisdom of crowds, models that show why some countries are rich and some are poor, and models that help unpack the strategic decisions of firm and politicians.
-</textarea>
+											style="resize: none; color: #666;"></textarea>
 										<br />
 										<div class="_richTextShow">
-											<textarea id="editor1pageload" name="editor1pageload"
+											<textarea id="coursedescription" name="editor1pageload"
 												class="defaultvalue _focus" tabindex="2">
 												<b>Describe the Course being created</b>
 											</textarea>
 										</div>
 										<script type="text/javascript">
 											CKEDITOR.replace('editor1pageload');
+											$('#coursename')
+													.focusout(
+															function() {
+																//put your code here
+																coursevalue = $(
+																		'coursename')
+																		.val();
+																alert(coursevalue);
+																$
+																		.post(
+																				'/ziksana-web/secure/addCourse',
+																				{
+																					'coursename' : coursevalue
+																				},
+																				function(
+																						data) {
+																					alert(data);
+																				});
+
+															});
+
+											$('#coursedescription')
+													.focusout(
+															function() {
+																//put your code here
+																coursedescriptionvalue = $(
+																		'coursedescription')
+																		.val();
+																alert(coursedescriptionvalue);
+																$
+																		.post(
+																				'/ziksana-web/secure/addCourse',
+																				{
+																					'coursedescription' : coursedescriptionvalue
+																				},
+																				function(
+																						data) {
+																					alert(data);
+																				});
+															});
 										</script>
 
 									</div>
 									<!-- end of coursename--->
 								</div>
+
 								<!-- end of control group--->
 
 								<!----------------- start of second container --------------->
@@ -550,7 +602,8 @@ Models help us to better organize information – to make sense of that fire hos
 								<div class="_thirdcontainer">
 									<div class="contentsecurity">
 
-										<img id="aSide" src="../../resources/images/tipsy-east.gif" align="left"
+										<img id="aSide" src="../../resources/images/tipsy-east.gif"
+											align="left"
 											style="height: 10px; width: 10px; margin-top: 5px; cursor: pointer;"
 											title="View Requirements" /> <img id="aDown"
 											src="../../resources/images/tipsy-south.gif" align="left"
@@ -671,7 +724,8 @@ Models help us to better organize information – to make sense of that fire hos
 															class="jqx-rc-all draggable jqx-tree-item jqx-item jqx-draggable"
 															id="jqx-draggable-1" unselectable="on">
 															<img style='float: left; margin-right: 5px;'
-																src='../resources/images/tree.png' id="imgRoot" />Model Thinking
+																src='../resources/images/tree.png' id="imgRoot" />Model
+															Thinking
 														</div>
 														<ul class="jqx-tree-dropdown"
 															style="overflow: hidden; display: block;">
@@ -685,8 +739,8 @@ Models help us to better organize information – to make sense of that fire hos
 																	class="jqxmenumodel jqx-rc-all draggable jqx-tree-item jqx-item jqx-draggable"
 																	id="jqx-draggable-2" unselectable="on">
 																	<img style='float: left; margin-right: 5px;'
-																		src='../resources/images/led/note.png' id="imgRoot" />Why Model
-																	Thinking
+																		src='../resources/images/led/note.png' id="imgRoot" />Why
+																	Model Thinking
 																</div></li>
 															<li item-expanded="true"
 																class="jqx-tree-item-li jqx-disableselect"
@@ -724,49 +778,56 @@ jqx-item jqx-draggable"
 
 										<div id='jqxMenu'>
 											<ul>
-												<li id="linkaddmodule"><img src="../resources/images/plus.png"
-													alt="Add" height="10" width="10"
-													style="margin-right: 5px; margin-left: -5px;" /> Add
-													Module</li>
-												<li id="linksearchmodule"><img src="../resources/images/find.png"
-													alt="Find" height="10" width="10"
-													style="margin-right: 5px; margin-left: -5px;" /> Search
-													and Add</li>
+												<li id="linkaddmodule"><img
+													src="../resources/images/plus.png" alt="Add" height="10"
+													width="10" style="margin-right: 5px; margin-left: -5px;" />
+													Add Module</li>
+												<li id="linksearchmodule"><img
+													src="../resources/images/find.png" alt="Find" height="10"
+													width="10" style="margin-right: 5px; margin-left: -5px;" />
+													Search and Add</li>
 												<li id="linkdefinequalifiers"><img
-													src="../resources/images/define.png" alt="Define" height="10" width="10"
+													src="../resources/images/define.png" alt="Define"
+													height="10" width="10"
 													style="margin-right: 5px; margin-left: -5px;" /> Define
 													Qualifiers</li>
-												<li id="linkedit"><img src="../resources/images/edit.png" alt="Edit"
-													height="10" width="10"
-													style="margin-right: 5px; margin-left: -5px;" /> Edit</li>
-												<li id="linkviewqualifiers"><img src="../resources/images/view.png"
-													alt="View" height="10" width="10"
-													style="margin-right: 5px; margin-left: -5px;" /> View</li>
+												<li id="linkedit"><img
+													src="../resources/images/edit.png" alt="Edit" height="10"
+													width="10" style="margin-right: 5px; margin-left: -5px;" />
+													Edit</li>
+												<li id="linkviewqualifiers"><img
+													src="../resources/images/view.png" alt="View" height="10"
+													width="10" style="margin-right: 5px; margin-left: -5px;" />
+													View</li>
 											</ul>
 										</div>
 
 										<div id='jqxMenu' class="jqxMenu2">
 											<ul>
-												<li id="linkaddmodule2"><img src="../resources/images/plus.png"
-													alt="Add" height="10" width="10"
-													style="margin-right: 5px; margin-left: -5px;" /> Add
-													Module</li>
-												<li id="linksearchmodule2"><img src="../resources/images/find.png"
-													alt="Find" height="10" width="10"
-													style="margin-right: 5px; margin-left: -5px;" /> Search
-													and Add</li>
+												<li id="linkaddmodule2"><img
+													src="../resources/images/plus.png" alt="Add" height="10"
+													width="10" style="margin-right: 5px; margin-left: -5px;" />
+													Add Module</li>
+												<li id="linksearchmodule2"><img
+													src="../resources/images/find.png" alt="Find" height="10"
+													width="10" style="margin-right: 5px; margin-left: -5px;" />
+													Search and Add</li>
 												<li id="linkdefinequalifiers2"><img
-													src="../resources/images/define.png" alt="Define" height="10" width="10"
+													src="../resources/images/define.png" alt="Define"
+													height="10" width="10"
 													style="margin-right: 5px; margin-left: -5px;" /> Define
 													Qualifiers</li>
-												<li id="linkedit2"><img src="../resources/images/edit.png"
-													alt="Edit" height="10" width="10"
-													style="margin-right: 5px; margin-left: -5px;" /> Edit</li>
-												<li id="linkviewqualifiers2"><img src="../resources/images/view.png"
-													alt="View" height="10" width="10"
-													style="margin-right: 5px; margin-left: -5px;" /> View</li>
-												<li id="deletesublink2"><img src="../resources/images/cross.png"
-													alt="Delete" height="10" width="10"
+												<li id="linkedit2"><img
+													src="../resources/images/edit.png" alt="Edit" height="10"
+													width="10" style="margin-right: 5px; margin-left: -5px;" />
+													Edit</li>
+												<li id="linkviewqualifiers2"><img
+													src="../resources/images/view.png" alt="View" height="10"
+													width="10" style="margin-right: 5px; margin-left: -5px;" />
+													View</li>
+												<li id="deletesublink2"><img
+													src="../resources/images/cross.png" alt="Delete"
+													height="10" width="10"
 													style="margin-right: 5px; margin-left: -5px;" /> Delete</li>
 											</ul>
 										</div>
@@ -779,8 +840,9 @@ jqx-item jqx-draggable"
 										<!-- Start of Default Instruction -->
 
 										<div id="instruction" style="padding: 10px;">
-											<img src="../resources/images/instruction.png" class="all-box-shadow"
-												alt="instructions" title="Key-Board instruction" width="720"
+											<img src="../resources/images/instruction.png"
+												class="all-box-shadow" alt="instructions"
+												title="Key-Board instruction" width="720"
 												style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;">
 										</div>
 
@@ -791,7 +853,8 @@ jqx-item jqx-draggable"
 												<br />
 												<div class="definehelp"
 													style="width: 680px; font-family: Helvetica; font-weight: bold; color: #125F92;">
-													<img src="../resources/images/icons/helpicon.png" align="left"
+													<img src="../resources/images/icons/helpicon.png"
+														align="left"
 														style="padding-left: 5px; margin-right: 4px; margin-top: -8px;" />Define
 													a New Course Module
 												</div>
@@ -930,12 +993,14 @@ jqx-item jqx-draggable"
 
 															<div class="associateimage" style="margin-top: 15px;">
 
-																<img src="../resources/images/icons/upload.png" align="left" />
+																<img src="../resources/images/icons/upload.png"
+																	align="left" />
 																<p class="labelclass">Associate an Image for your
 																	Course</p>
 																<input type="file" tabindex="14"
 																	style="margin-left: 20px;" /> <a href="#linkurl"
-																	id="cancellinkadd"><img src="../resources/images/delete.jpg" />Cancel</a>
+																	id="cancellinkadd"><img
+																	src="../resources/images/delete.jpg" />Cancel</a>
 
 															</div>
 															<!-- end of associateimage--->
@@ -978,7 +1043,8 @@ jqx-item jqx-draggable"
 												Search & Associate Modules</div>
 											<div class="definehelp"
 												style="width: 680px; font-family: Helvetica; font-weight: bold; color: #125F92;">
-												<img src="../resources/images/icons/helpicon.png" align="left"
+												<img src="../resources/images/icons/helpicon.png"
+													align="left"
 													style="padding-left: 5px; margin-right: 4px; margin-top: -4px;" />You
 												can Search the Courses Sections created by you for other
 												courses and also owned/shared learning objects.
@@ -1197,7 +1263,8 @@ jqx-item jqx-draggable"
 
 													<div class="definehelp"
 														style="width: 680px; font-family: Helvetica; font-weight: bold; color: #125F92; height: 20px;">
-														<img src="../resources/images/icons/helpicon.png" align="left"
+														<img src="../resources/images/icons/helpicon.png"
+															align="left"
 															style="padding-left: 5px; margin-right: 4px; margin-top: -4px;" />
 														Associated Qualifiers are Listed. You can choose to either
 														search for a Qualifier or define a new Qualifier.
@@ -1239,7 +1306,8 @@ jqx-item jqx-draggable"
 																			src="../resources/images/edit.png" /></a></td>
 																	<td><a class="deletedefqualifierrec1 lbx-70-50"
 																		title="Delete" href="#linkurl"><img
-																			src="../resources/images/delete.jpg" alt="Delete" title="Delete" /></a></td>
+																			src="../resources/images/delete.jpg" alt="Delete"
+																			title="Delete" /></a></td>
 
 
 																</tr>
@@ -1256,7 +1324,8 @@ jqx-item jqx-draggable"
 																			src="../resources/images/edit.png" /></a></td>
 																	<td><a class="deletedefqualifierrec2 lbx-70-50"
 																		title="Delete" href="#linkurl"><img
-																			src="../resources/images/delete.jpg" alt="Delete" title="Delete" /></a></td>
+																			src="../resources/images/delete.jpg" alt="Delete"
+																			title="Delete" /></a></td>
 																</tr>
 
 																<tr id="defrow3">
@@ -1270,7 +1339,8 @@ jqx-item jqx-draggable"
 																	<td></td>
 																	<td><a class="deletedefqualifierrec3 lbx-70-50"
 																		title="Delete" href="#linkurl"><img
-																			src="../resources/images/delete.jpg" alt="Delete" title="Delete" /></a></td>
+																			src="../resources/images/delete.jpg" alt="Delete"
+																			title="Delete" /></a></td>
 
 
 																</tr>
@@ -1286,7 +1356,8 @@ jqx-item jqx-draggable"
 																	<td></td>
 																	<td><a class="deletedefqualifierrec4 lbx-70-50"
 																		title="Delete" href="#linkurl"><img
-																			src="../resources/images/delete.jpg" alt="Delete" title="Delete" /></a></td>
+																			src="../resources/images/delete.jpg" alt="Delete"
+																			title="Delete" /></a></td>
 
 
 																</tr>
@@ -1330,7 +1401,8 @@ jqx-item jqx-draggable"
 													<br />
 													<div class="definehelp"
 														style="width: 680px; font-family: Helvetica; font-weight: bold; color: #125F92;">
-														<img src="../resources/images/icons/helpicon.png" align="left"
+														<img src="../resources/images/icons/helpicon.png"
+															align="left"
 															style="padding-left: 5px; margin-right: 4px; margin-top: -8px;" />Edit
 														Course Module
 													</div>
@@ -1457,12 +1529,14 @@ Models help us to better organize information – to make sense of that fire hos
 
 																<div class="associateimage" style="margin-top: 15px;">
 
-																	<img src="../resources/images/icons/upload.png" align="left" />
+																	<img src="../resources/images/icons/upload.png"
+																		align="left" />
 																	<p class="labelclass">Associate an Image for your
 																		Course</p>
 																	<input type="file" tabindex="14"
 																		style="margin-left: 20px;" /> <a href="#linkurl"
-																		id="cancellinkadd"><img src="../resources/images/delete.jpg" />Cancel</a>
+																		id="cancellinkadd"><img
+																		src="../resources/images/delete.jpg" />Cancel</a>
 
 																</div>
 																<!-- end of associateimage--->
@@ -1496,7 +1570,8 @@ Models help us to better organize information – to make sense of that fire hos
 													<br />
 													<div class="definehelp"
 														style="width: 680px; font-family: Helvetica; font-weight: bold; color: #125F92;">
-														<img src="../resources/images/icons/helpicon.png" align="left"
+														<img src="../resources/images/icons/helpicon.png"
+															align="left"
 															style="padding-left: 5px; margin-right: 4px; margin-top: -8px;" />View
 														Course Module
 													</div>
@@ -1622,11 +1697,12 @@ Models help us to better organize information – to make sense of that fire hos
 
 																<div class="associateimage" style="margin-top: 15px;">
 
-																	<img src="../resources/images/icons/upload.png" align="left" />
+																	<img src="../resources/images/icons/upload.png"
+																		align="left" />
 																	<p class="labelclass">Associate an Image for your
 																		Course</p>
-																	<img src="../resources/images/modelthinking.png" alt="Modelthinking"
-																		width="94" height="94" border="3"
+																	<img src="../resources/images/modelthinking.png"
+																		alt="Modelthinking" width="94" height="94" border="3"
 																		style="border: 2px solid #ccc;" />
 																</div>
 																<!-- end of associateimage--->

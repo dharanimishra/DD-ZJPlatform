@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ziksana.domain.course.ContentReviewRating;
@@ -30,6 +31,7 @@ import com.ziksana.service.course.CourseSocializeService;
 /**
  * @author bhashasp
  */
+
 public class CoursePublishServiceImpl implements CoursePublishService {
 
 	private final static Logger LOGGER = Logger
