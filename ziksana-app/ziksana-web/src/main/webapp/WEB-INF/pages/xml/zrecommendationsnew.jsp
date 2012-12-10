@@ -9,18 +9,18 @@
 
   <header>
   			
-			<controller>${recommendItem.getHeader().controllerName}</controller>
-			<token>${recommendItem.getHeader().token}</token> 
+			<controller>${recommendations.getHeader().controllerName}</controller>
+			<token>${recommendations.getHeader().token}</token> 
 			 
   </header>
 
 <body>
 	<recommendations>
-	 <c:forEach var="recomend"	items="${recommendItem.getContent()}">
-		<recommenditem recomendId="${category}">
-		<title>${recomend.title}</title>
-		<description>${recomend.description}</description> 
-		</recommenditem>
+	 <c:forEach var="recommend"	items="${recommendations.getContent()}">
+		<recommendation recomendId="${category}">
+		<title>${recommend.title}</title>
+		<description>${recommend.description}</description> 
+		</recommendation>
 	</c:forEach> 
 	</recommendations>
 </body>

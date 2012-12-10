@@ -27,6 +27,7 @@ import com.ziksana.service.recommendations.RecommendationsService;
 /**
  * @author vtg-p13
  * 
+ * @version $Revision: 1.0 $
  */
 @Controller
 @RequestMapping("/secure")
@@ -37,27 +38,43 @@ public class RecommendationsController {
 	@Autowired
 	RecommendationsService recomendationsService;
 
+	/**
+	 * 
+	 * @param category
+	 *            category of the recommendations(Possible values are )
+	 * @return
+	 */
 	@RequestMapping(value = "/showrecByCateg/{category}", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView showRecommendByCategory(@PathVariable Integer category) {
+	ModelAndView showRecommendationsByCategory(@PathVariable Integer category) {
 
 		logger.info("Category Id: " + category);
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendationsnew");
+
+		List<Recommendation> recommendations = recomendationsService
+				.getRecommendations(category);
+
+		
+
+		
+		// Creating ziksana message header
 		Header header = new Header();
 
 		String token = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID().toString();
+
 		logger.info("Current Token" + token);
 
+		// Setting the controller and token
 		header.setControllerName(getClass().getSimpleName().toUpperCase());
 		header.setToken(token);
-
-		List<Recommendation> recommendations = recomendationsService
-				.getRecommendations(category);
+        
+		// Creating ziksana message
 		ZiksanaMessage<Recommendation> message = new ZiksanaMessage<Recommendation>();
+
 		message.setContent(recommendations);
 		message.setHeader(header);
-		modelAndView.addObject("recommendItem", message);
+		modelAndView.addObject("recommendations", message);
 		logger.info("Exit Recommend By category");
 
 		return modelAndView;
