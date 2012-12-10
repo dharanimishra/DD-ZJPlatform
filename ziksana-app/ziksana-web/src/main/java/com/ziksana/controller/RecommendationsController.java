@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.common.Header;
 import com.ziksana.domain.common.ZiksanaMessage;
 import com.ziksana.domain.recommendations.Recommendation;
+import com.ziksana.security.util.SecurityToken;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.recommendations.RecommendationsService;
 
 /**
@@ -41,11 +43,20 @@ public class RecommendationsController {
 
 		logger.info("Category Id: " + category);
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendationsnew");
+		Header header = new Header();
+
+		String token = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID().toString();
+		logger.info("Current Token" + token);
+
+		header.setControllerName(getClass().getSimpleName().toUpperCase());
+		header.setToken(token);
+
 		List<Recommendation> recommendations = recomendationsService
 				.getRecommendations(category);
 		ZiksanaMessage<Recommendation> message = new ZiksanaMessage<Recommendation>();
 		message.setContent(recommendations);
-		
+		message.setHeader(header);
 		modelAndView.addObject("recommendItem", message);
 		logger.info("Exit Recommend By category");
 

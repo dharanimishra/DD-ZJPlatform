@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.CourseTreeNodeMapper">
+
+	<select id="getCourseComponents" resultMap="courseTreeNodeResultMap"
+		parameterType="java.lang.String">
+		select courseid, name, description coursestatus,
+		memberroleid from corcourse where courseid=#{courseid}
+
+	</select>
+
+	<!-- Very Complex Result Map -->
+	<resultMap id="courseTreeNodeResultMap" type="com.ziksana.domain.course.Course">
+		<result property="courseid" column="courseid" />
+		<result property="accountableMember.memberRoleId" column="memberroleid" />
+		<result property="name" column="name" />
+		<result property="description" column="description" />
+		<result property="courseStatus" column="coursestatus" />
+
+		<collection property="courseLearningComponent"
+			ofType="com.ziksana.domain.course.CourseLearningComponent">
+			<result property="courseLearningComponentId" ,
+				column="courselearningcomponentid" />
+			<result property="duration.durationUnit" , column="durationunit" />
+			<result property="course.courseId" , column="courseid" />
+			<result property="learningComponent.learningComponentId" ,
+				column="learningcomponentid" />
+			<association property="learningComponentType" column="learningcomponentTypeId"
+				javaType="com.ziksana.domain.course.LearningComponentType" />
+			<association property="learningComponent" column="learningcomponentid"
+				javaType="com.ziksana.domain.course.LearningComponent" />
+			<collection property="LearningComponentContent"
+				ofType="com.ziksana.domain.course.LearningComponentContent">
+				<result property="learningcomponentcontentid" column="learningComponentContentId" />
+				<result property="learningcomponentcontentid" ,
+					column="learningComponentContentId" />
+				<result property="contentdescription" , column="contentdescription" />
+				<result property="baseLearningContent.learningContentId" ,
+					column="learningcontentid" />
+				<result property="baseLearningContent" , column="learningcontentid" ,
+					javaType="com.ziksana.domain.course.LearningContent" />
+
+			</collection>
+		</collection>
+	</resultMap>
+</mapper>

@@ -6,7 +6,12 @@
 
 
 <ziksana-message>
- <header>
+
+  <header>
+  			
+			<controller>${recommendItem.getHeader().controllerName}</controller>
+			<token>${recommendItem.getHeader().token}</token> 
+			 
   </header>
 
 <body>
