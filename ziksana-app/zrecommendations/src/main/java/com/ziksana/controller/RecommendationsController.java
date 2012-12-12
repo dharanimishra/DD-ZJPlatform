@@ -3,9 +3,7 @@
  */
 package com.ziksana.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.common.Header;
 import com.ziksana.domain.common.ZiksanaMessage;
 import com.ziksana.domain.recommendations.Recommendation;
-import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.recommendations.RecommendationsService;
+import static com.ziksana.util.Util.*;
 
 /**
  * @author vtg-p13
@@ -54,30 +52,20 @@ public class RecommendationsController {
 		List<Recommendation> recommendations = recomendationsService
 				.getRecommendations(category);
 
-		
-
-		
-		// Creating ziksana message header
-		Header header = new Header();
-
-		String token = ThreadLocalUtil.getToken().getMemberPersonaId()
-				.getStorageID().toString();
-
-		logger.info("Current Token" + token);
-
-		// Setting the controller and token
-		header.setControllerName(getClass().getSimpleName().toUpperCase());
-		header.setToken(token);
+				
         
 		// Creating ziksana message
 		ZiksanaMessage<Recommendation> message = new ZiksanaMessage<Recommendation>();
 
 		message.setContent(recommendations);
-		message.setHeader(header);
+		message.setHeader(getHeader(getClass().getSimpleName().toUpperCase()));
+		
 		modelAndView.addObject("recommendations", message);
 		logger.info("Exit Recommend By category");
 
 		return modelAndView;
 	}
+
+	
 
 }

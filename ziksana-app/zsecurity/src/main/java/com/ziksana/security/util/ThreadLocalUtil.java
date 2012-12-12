@@ -2,19 +2,19 @@ package com.ziksana.security.util;
 
 public class ThreadLocalUtil {
 	
-private static final ThreadLocal<SecurityToken> threadLocal = new ThreadLocal<SecurityToken>();
+private static final ThreadLocal<SecurityToken> THREADLOCAL = new ThreadLocal<SecurityToken>();
 	
 	
 	public static void setToken(SecurityToken token) {
-		threadLocal.set(token);
+		THREADLOCAL.set(token);
 	}
 
 	public static void unset() {
-		threadLocal.remove();
+		THREADLOCAL.remove();
 	}
 
 	public static SecurityToken getToken() {
-		return threadLocal.get();
+		return THREADLOCAL.get();
 	}
 	
 
