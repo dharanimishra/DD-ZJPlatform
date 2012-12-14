@@ -3,7 +3,7 @@
  */
 package com.ziksana.service.todo.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
 import java.util.List;
@@ -15,14 +15,13 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
-
+import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.todo.Todo;
 import com.ziksana.id.StringZID;
@@ -30,8 +29,6 @@ import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.todo.TodoService;
-import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DatabaseSetup;
 /**
  * @author prabu
  * 
@@ -40,10 +37,9 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
-	DbUnitTestExecutionListener.class
-     })
+
 public class TodoServiceImplTest {
+	private static final Logger logger = LoggerFactory.getLogger(TodoServiceImplTest.class);
 
 	@Autowired
 	TodoService todoService;
@@ -68,8 +64,8 @@ public class TodoServiceImplTest {
 	@Before
 	public void setUp() throws Exception {
 
-		ZID memberId = new StringZID("1");
-		ZID memberPersonaId = new StringZID("1");
+		ZID memberId = new StringZID("1000");
+		ZID memberPersonaId = new StringZID("100");
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
 		ThreadLocalUtil.setToken(token);
 
@@ -89,12 +85,32 @@ public class TodoServiceImplTest {
 	 */
 	
 	@Test
-	@DatabaseSetup("SampleData.xml")
 	public void testGetTodos() {
 
 		List<Todo> todos = todoService.getTodos();
-		assertNotNull(todos);
+		//assertEquals(todos);
 
+	}
+	@Test
+	public void testMapperTodos(){
+		List<Todo> todoMapper = todoService.getMapperTodos();
+		logger.info("Mappper todos :"+todoMapper.size());
+	}
+	
+	@Test
+	public void testGetAllDataBaseDatas(){
+		
+		// Fetch database data after executing your code
+		
+     /*   IDataSet databaseDataSet = 
+        ITable actualTable = databaseDataSet.getTable("TABLE_NAME");
+
+        // Load expected data from an XML dataset
+        IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("expectedDataSet.xml"));
+        ITable expectedTable = expectedDataSet.getTable("TABLE_NAME");
+
+        // Assert actual database table match expected table
+        Assertion.assertEquals(expectedTable, actualTable);*/
 	}
 
 	
@@ -103,22 +119,23 @@ public class TodoServiceImplTest {
 	 * Test method for
 	 * {@link com.ziksana.service.todo.TodoServiceImpl#createTodo()} .
 	 */
-	@Ignore 
+	@Test
 	public void testCreateTodo() {
 
 		Todo member = new Todo();
 		member.setCategory("Assignment");
 		member.setActivationDate(new Date());
-		member.setNotificationType(1);
-		member.setDescription("Todo Services testing");
+		//member.setNotificationType(1);
+		member.setNotificationContent("Todo Services testing");
 		MemberPersona creatingMember = new MemberPersona();
-		// creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
-		// .getToken().getMemberPersonaId().getStorageID()));
-
-		// member.setCreatingMember(creatingMember);
-		// member.setForMember(creatingMember);
-		member.setDescription("new video coming up for the course");
-		member.setPriority(Integer.valueOf(1000));
+		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+		.getToken().getMemberPersonaId().getStorageID()));
+		logger.info("Member Role Id :"+creatingMember.getMemberRoleId());
+		member.setCreatingMember(creatingMember);
+		member.setForMember(creatingMember);
+		
+		//member.setDescription("new video coming up for the course");
+		//member.setPriority(Integer.valueOf(1000));
 		assertNotNull(member);
 		todoService.createTodo(member);
 
