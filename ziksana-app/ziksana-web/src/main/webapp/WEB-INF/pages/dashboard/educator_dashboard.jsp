@@ -1,5 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
+<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
+   	
+	 <script src="../resources/js/jquery-1.7.2.min.js"></script>
+	 <script src="../resources/js/ui/jquery.ui.core.js"></script>
+	 <script src="../resources/js/ui/jquery.ui.widget.js"></script>
+	 <script src="../resources/js/ui/jquery.ui.button.js"></script>
+	 <script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
+	 <script src="../resources/js/ui/jquery.ui.tabs.js"></script>
+     <script src="../resources/js/jquery.hovercard.js"></script>
+     <script src="../resources/js/todo.js" type="text/javascript"></script> 
+     <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
+
 
 <c:url var="showEventUrl" value="/secure/showmycalendar/111111" />
 <c:url var="eventImageUrl" value="/resources/images/front-bg.gif" />
@@ -87,7 +103,9 @@ $(document).ready(function() {
 					var output="";
 					
 					$(data).find("alertitem").each(function(index){
-						output+="<div class='alertitem'>";
+						
+						
+						/* output+="<div class='alertitem'>";
 						output+="<span class='Zalart zicons ls-no f-l a1'></span>&nbsp;";
 						//output+="<font class='_hText'>" + alertitem.subject + "</font>";
 						
@@ -95,22 +113,21 @@ $(document).ready(function() {
 						output+= $(this).find("description").text(); 
 						output+="<span class='alert zclose  zicons ls-no f-r'></span>";
 						output+="<input type='hidden' id='alertItemId' value='" +$(this).find("id").text()  + "' />";
-						output+="</div>";						
+						output+="</div>";	 */					
 					});
-					
-					/*
-					for (var i in data.alertItems)
-					{
-						var alertitem = data.alertItems[i];
-						output+="<div class='alertitem'>";
-						output+="<span class='Zalart zicons ls-no f-l a1'></span>&nbsp;";
-						output+="<font class='_hText'>" + alertitem.subject + "</font>";
-						output+="<font class='_sText'>" + alertitem.detail + "</font>";
-						output+="<span class='alert zclose  zicons ls-no f-r'></span>";
-						output+="<input type='hidden' id='alertItemId' value='" + alertitem.id + "' />";
-						output+="</div>";						
-					}
-					*/
+					output+="<div class='alerts' >";
+					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
+					output+="<div class='alertcontainer' style='border-bottom:1px solid #F5F5F5;' id='conalert1'>";
+					output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
+					output+="<div class='alertinfo-icon' style='float:left; margin-right:10px;'>";
+					output+="<a href='#linkurl' rel='tipsy' title='Urgent' style='cursor:default;'><img src='images/icons/urgent2.png' alt='Info' /> </a> ";
+					output+="</div>";
+					output+="<div class='alertinfo-category' >My Course </div>";
+					output+="<div class='alertinfo-decription' >";
+					output+="<div id='demo-basic' style='font-weight:lighter; cursor:pointer;'>Joe Miller for Aero Dynamics: Assn-1</div></div>                      ";
+					output+="<div class='alertinfo-button'>";
+					output+="<a href='#linkurl' id='btalert1' rel='tipsy' title='Close'> <img src='images/icons/close-icon.png' height='15' width='15'/> </a>                     ";
+					output+="</div> </div> </div>  </div>";
 					console.log("output string: " + output);
 					$('#alerts_placeholder').html( output);
 					
@@ -153,11 +170,12 @@ $(document).ready(function() {
 	
 });
 </script>
-
-<c:url var="showTodoUrl" value="/secure/showmytodo/111111" />
+<c:url var="todo" value="/resources/images/icons/todo.png" />
+<c:url var="showTodoUrl" value="/secure/showtodo/111111" />
 <c:url var="deleteTodoUrl" value="/secure/deletetodo/1111111" />
 <script type="text/javascript">
 $(document).ready(function() {
+	
 	$.ajax({
 		  	type: 'GET',
 			url: '${showTodoUrl}',
@@ -169,11 +187,26 @@ $(document).ready(function() {
 					var output="";
 					
 					$(data).find("todoitem").each(function(index){
-						output+="<div class='todoitem'>";
+						 output+="<div class='todoitem'>";
+						output+="<table class='todo' id='todotable' >";
+						output+="<tbody id='todobody' style='border-bottom:1px solid #F5F5F5;' >";
+						output+="<tr width='100%' class='todocontainer todoinfo' style='height:28px;padding:5px;border:1px solid green;' id='contodo1' >";
+						output+="<td width='20px' class='todoinfo-icon' style='padding-right:10px;'>";
+						output+="<img src='${todo}' alt='Info' /> </td>";
+						output+="<td width='' class='todoinfo-category' style='margin-top:7px; padding-right:10px;' >"+$(this).find("categoryName").text()+"</td>";
+						output+="<td class='todoinfo-decription' style='margin-top:7px;' >";
+						output+="<span width='200px' id='demo-basictodo1' style='font-weight:lighter; cursor:pointer;'>"+$(this).find("subject").text()+"</span></td>";
+						output+="<input type='hidden' id='todoItemId' value='" + $(this).find("id").text() + "' />";
+						output+="<span class='td zclose  zicons ls-no f-r'></span>";
+						output+="<td width='20px' class='todoinfo-button' style='padding-top:7px;' >";
+						output+="<a href='#linkurl' rel='tipsy' title='Complete'><input type='checkbox' id='cktodo1'> </a>";
+						output+="</td></tr></tbody></table>";
+						output+="</div>";
+						/* output+="<div class='todoitem'>";
 						output+=$(this).find("categoryName").text() + ": " + $(this).find("subject").text();
 						output+="<span class='td zclose  zicons ls-no f-r'></span>";
 						output+="<input type='hidden' id='todoItemId' value='" + $(this).find("id").text() + "' />";
-						output+="</div>";						
+						output+="</div>";	 */					
 					});
 
 					console.log("output string: " + output);
@@ -207,8 +240,10 @@ $(document).ready(function() {
 			}
 	});
 	
-});
+}, 100000);
 </script>
+
+
 
                 <div class="center for-rounded-box all-box-shadow">
                 
@@ -234,6 +269,9 @@ $(document).ready(function() {
                    
                     </div>
               <br/><br/>
+  <!-- Todo More -->
+ 
+  <!-- End -->
                     <div class="alert_todo" >
                     
                    		<div class="alerts" >
@@ -241,12 +279,15 @@ $(document).ready(function() {
                              <div id='alerts_placeholder'></div>
                         </div>
                         
-                        <div class="todo">
+                        <div  class="todo">
                         	 <span class="titles-info font-Signika text-size-px18 light-gray">To-dos</span>
                             
-                              	<div id="todos_placeholder"></div>
+                              	<div id="todos_placeholder">
+                              	
+                              	</div>
+                              	 <c:url var="htmlUrl_todo" value="secure/gettodopopupwindow" />
                                 
-                               <div class="_addTodo"> <a class="text-size-px11" href="#" >Add more</a></div>
+                               <div class="_addTodo"> <a class="lbx-70-50 text-size-px11 text-size-px11" href="${htmlUrl_todo}" >Add more</a></div>
                             
                         </div>
                         

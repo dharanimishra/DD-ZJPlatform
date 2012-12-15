@@ -9,7 +9,7 @@
 		<todoitem memberId="${memberId}">
 				<id>${todo.id}</id>
 				 <categoryName>${todo.category}</categoryName>
-				<subject>${todo.description}</subject>
+				<subject>${todo.notificationContent}</subject>
 			</todoitem>
 	</c:forEach>
 </todolist>

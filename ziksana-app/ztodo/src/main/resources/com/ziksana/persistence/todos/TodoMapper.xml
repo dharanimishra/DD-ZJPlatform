@@ -17,15 +17,30 @@
 	</select>
 
 	
+	<select id="getMapperTodos" resultMap="todoResultMap" parameterType="int">
+		select
+		*
+		from
+		memmembernotification n
+		join utllookup l ON
+		n.NotificationType=l.LookupId
+		join utllookupvalue v ON
+		l.LookupId=v.LookupId
+		where l.CategoryName='memmembernotification' and
+		v.LookupValue='Ztodo' and
+		n.ForMemberRoleId=#{userMemberRoleId} order by activationdate desc
+	</select>
+	
 
 
 	<insert id="createTodo" parameterType="com.ziksana.domain.todo.Todo"
 		useGeneratedKeys="true" keyProperty="MemberNotificationId">
 		insert into
-		memmembernotification(Category,ActivationDate,CreationDate,NotificationType,NotificationContent,Priority,ForMemberRoleId,CreatingMemberRoleId)
-		values(#{category}, #{activationDate}, #{creationDate},
-		#{notificationType},
-		#{description}, #{priority},
+		memmembernotification(Category,ActivationDate,CreationDate,NotificationType,NotificationContent,
+		Priority,ForMemberRoleId,CreatingMemberRoleId)
+		values(#{category}, #{activationDate}, #{creationDate},#{notificationType},
+		#{notificationContent},
+		#{priority},
 		#{forMember.memberRoleId},
 		#{creatingMember.memberRoleId} )
 	</insert>
@@ -56,7 +71,7 @@
 		<result property="activationDate" column="ActivationDate" />
 		<result property="creationDate" column="CreationDate" />
 		<result property="notificationType" column="NotificationType" />
-		<result property="description" column="NotificationContent" />
+		<result property="notificationContent" column="NotificationContent" />
 		<result property="priority" column="Priority" />
 	</resultMap>
 </mapper>

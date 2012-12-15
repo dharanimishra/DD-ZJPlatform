@@ -5,10 +5,14 @@ package com.ziksana.service.todo.impl;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.ibatis.session.RowBounds;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.todo.Todo;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.persistence.todos.TodoMapper;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.todo.TodoService;
@@ -20,12 +24,13 @@ import com.ziksana.service.todo.TodoService;
 @Service
 public class TodoServiceImpl implements TodoService {
 
+	private static final Logger logger = Logger
+			.getLogger(TodoServiceImpl.class);
 	@Autowired
 	TodoMapper todoMapper;
 
 	@Override
 	public List<Todo> getTodos() {
-		// TODO Auto-generated method stub
 
 		System.out.println(" NUMBER OF TODOS "
 				+ todoMapper.getTodos(Integer.valueOf(ThreadLocalUtil
@@ -37,7 +42,9 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public void createTodo(Todo todo) {
-		// TODO Auto-generated method stub
+		logger.info("TODO || Create");
+
+		todoMapper.createTodo(todo);
 
 	}
 
@@ -49,7 +56,13 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public void deleteTodo(int todoId) {
-		// TODO Auto-generated method stub
+		logger.info("TODO || Delete");
+		try {
+			todoMapper.deleteTodo(todoId);
+
+		} catch (Exception e) {
+
+		}
 
 	}
 
@@ -57,6 +70,18 @@ public class TodoServiceImpl implements TodoService {
 	public Todo completeTodo(int todoId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Todo> getMapperTodos() {
+		// TODO Auto-generated method stub
+
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		int offset = 0;
+		int limit = 3;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return todoMapper.getMapperTodos(memberRoleId, rowBounds);
 	}
 
 }
