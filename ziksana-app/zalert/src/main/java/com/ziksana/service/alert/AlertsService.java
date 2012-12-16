@@ -5,7 +5,6 @@ package com.ziksana.service.alert;
 
 import java.util.List;
 
-import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.alerts.Alert;
 
 /**
@@ -15,6 +14,8 @@ import com.ziksana.domain.alerts.Alert;
 public interface AlertsService {
 	
 	public List<Alert>  getAlertList();
+	
+	List<Alert> getMapperAlerts();
 	
 	public void createAlertItem( Alert alertItem);
 	

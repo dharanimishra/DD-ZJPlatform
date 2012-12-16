@@ -39,7 +39,6 @@ function home(){
         , function( data )
         {
         
-
         }
 		, 'json' );           
 	

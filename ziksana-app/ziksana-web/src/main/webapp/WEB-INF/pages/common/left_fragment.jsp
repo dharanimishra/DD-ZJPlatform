@@ -191,23 +191,25 @@
         </div>
         </div>
         
-        
-        
-         <div class="user-insight user-contacts all-box-shadow pad" >
+  <!-- Know me Better -->
+  
+ 
+  <div  class="user-insight user-contacts all-box-shadow pad" >
   <p class="titles-info font-Signika text-size-px18 light-gray">Know me better</p>
   <ul>
-    <li class=""><span class="p-p _blogs bckground-blue-light">You are usually the first to react to a sudden event.</span>
+    <li class="">
+    <span class="p-p _blogs bckground-blue-light">You are usually the first to react to a sudden event.</span>
       <div id="radio" class="btn-set" style="margin-top:3px; margin-bottom:5px;">
-        <input type="radio" id="radio1" name="radio" />
+         <input type="radio" id="radio1" name="radio" />
         <label for="radio1">Yes</label>
         <input type="radio" id="radio2" name="radio"  />
         <label for="radio2">Sometimes</label>
         <input type="radio" id="radio3" name="radio" />
-        <label for="radio3">Never</label>
+        <label for="radio3">Never</label> 
         <br>
     </div>
-    </li>
-    <!--<li class=""><span class="p-p _blogs bckground-blue-light">You are almost never late for your appointments.</span>
+    </li> 
+     <!-- <li class=""><span class="p-p _blogs bckground-blue-light">You are almost never late for your appointments.</span>
       <div  class="btn-set" style="margin-top:3px; margin-bottom:5px;">
         <input type="radio" id="radio4" name="trivia" />
         <label for="radio4">Yes</label>
@@ -224,15 +226,18 @@
         <label for="radio8">No</label>
         <br>
     </div>
-    </li>-->
-  </ul>
-  <div class="txt-r" ><a href="" class="Block"><span class="f-r text-pading-top text-pading-right"><span class="text-pading-right">Know me better</span></span> <strong class="zinfo2 zicons ls f-r"></strong></a>
+    </li>  -->
+   </ul> 
+   <c:url var="knowme" value="secure/getpopupwindow" />
+  <div class="txt-r" ><a class="lbx-70-50 text-size-px11" href="${knowme}" class="Block"><span class="f-r text-pading-top text-pading-right"><span class="text-pading-right">Know me better</span></span> <strong class="zinfo2 zicons ls f-r"></strong></a>
 
   </div>
   
+   
   
-  <!-- recommendation zeni -->
-  </div>
+  
+  </div> 
+  
   <c:url var="showRecomendUrl" value="/secure/showrecByCateg/1" />
   <script type="text/javascript">
 $(document).ready(function() {
