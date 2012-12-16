@@ -1,0 +1,95 @@
+﻿
+.news-wrapper
+{
+	
+	background-color:#FFF;
+	
+}
+.news-wrapper .news-contents-wrapper
+{
+	width: 234px;
+	margin: auto;
+	/*border-right: 1px solid #6a6a6a;
+	border-left: 1px solid #6a6a6a;*/
+	/*height: 400px;*/
+}
+.news-wrapper .news-contents
+{
+	overflow: hidden;
+	position: relative;
+	z-index: 998;
+	height: 208px;
+}
+.news-wrapper .news
+{
+	width: 100%;
+	height: 142px;
+	color: #6a6a6a;
+	position: absolute;
+	z-index: 999;
+    border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #ccc;
+	
+	
+}
+.news-wrapper .news-header, .news-footer
+{
+	color: White;
+	height: 20px;
+	font-weight: bold;
+	font-size: 14px;
+
+	
+}
+
+/*h1
+{
+	color: White;
+	font-size: 15px;
+}*/
+.clear
+{
+	clear: both;
+}
+
+.history
+{
+
+	float: left;
+	/*width: 26%;*/
+	/*padding-left: 32px;*/
+}
+.description
+{
+	float: left;
+	width: 93%;
+	padding: 4px 4px 0px 0px;;
+}
+.description .detail
+{
+	font-size: 12px;
+	overflow: hidden;
+	color:#B1B1B1;
+}
+.elipses, .day, .month
+{
+	display: block;
+	height: 10px;
+	font-size: 10px;
+}
+.day, .month
+{
+	padding-top: 6px;
+}
+h1 a, h1 a:active, h1 a:visited
+{
+	text-decoration: none;
+	color:#3C81CC;
+	font-size:12px;
+}
+h1 a:hover
+{
+	text-decoration: underline;
+	color:#0099FF;
+}

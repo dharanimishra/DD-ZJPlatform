@@ -80,7 +80,8 @@
 				propertyValue = #{propertyValue,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where assignmenttestsettingsid = #{testSettingsId.storageID, jdbcType=INTEGER}
+		where assignmenttestsettingsid = #{testSettingsId.storageID,
+		jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveTestSettings"
@@ -179,8 +180,8 @@
 	</insert>
 
 	<insert id="saveTest" parameterType="com.ziksana.domain.assessment.Test"
-		useGeneratedKeys="true" keyProperty="testId" keyCoslumn="testid">
-		insert into asmtest
+	useGeneratedKeys="true" keyProperty="testId" keyColumn="testId">
+	insert into asmtest
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="active != null">
 				active,
