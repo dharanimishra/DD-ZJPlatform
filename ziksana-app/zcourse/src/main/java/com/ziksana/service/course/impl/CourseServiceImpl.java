@@ -647,8 +647,8 @@ public class CourseServiceImpl implements CourseService {
 		String memberPersonaId = ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID();
 		
-		return courseMapper.getCourses(Integer.valueOf(status),Integer.valueOf(memberPersonaId));
-		
+		List<Course> courses =  courseMapper.getCourses(Integer.valueOf(status),Integer.valueOf(memberPersonaId));
+		return getCourseProgress(courses,Integer.valueOf(memberPersonaId));
 		
 	}
 
