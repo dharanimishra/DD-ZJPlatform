@@ -140,66 +140,44 @@ $(document).ready(function() {
 <c:url var="showCourseUrl" value="/secure/showmycourse/111111" />
 
 <script type="text/javascript">
+
 $(document).ready(function() {
 	$.ajax({
 		  	type: 'GET',
 			url: '${showCourseUrl}',
-			dataType: 'json',
+			dataType: 'xml',
 			success: function( data ) {
 					if (console && console.log){
-								console.log( 'Sample of data:', data);
+								console.log( 'course data:', data);
 					}
 					var draftcourse="";
 					var activecourse="";
 					var reviewcourse="";
 					
-					console.log( 'data.hasDraft:', data.hasDraft);
-					console.log( 'data.hasReview:', data.hasReview);
-					console.log( 'data.hasActive:', data.hasActive);
+					$(data).find("draftedcourses").find("course").each(function(index){
+						
+					    console.log("Yes I am in");  
+					    draftcourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
+					    console.log("it is written"); 
+					});
 					
-					//check if there is Draft cousee in the list
-					if(data.hasDraft == false)
-					{
-						draftcourse="<p class='blok-title-L'>No draft course available</p>";
-					}					
-					if(data.hasActive == false)
-					{
-						draftcourse="<p class='blok-title-L'>No active course available</p>";
-					}					
-					if(data.hasReview == false)
-					{
-						draftcourse="<p class='blok-title-L'>No review course available</p>";
-					}					
-					for (var i in data.courses)
-					{
-							var course = data.courses[i];
-							console.log("i is: " + course.type);
-							if (course.type == 'Draft'){
-								draftcourse+="<p class='blok-title-L'><a href='#'>" + course.code + ": " + course.name + "</a></p>";
-								if (course.percentage != null){
-									draftcourse+="<p></p>";
-									draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
-									draftcourse+="<div style='width: " + course.percentage + ";' class='ui-progressbar-value ui-widget-header ui-corner-left'></div>";
-									draftcourse+="</div><span class='light-blue'>&nbsp;&nbsp;" + course.percentage + " complete</span><p></p><p>&nbsp; </p>";
-								}
-							} else if(course.type == 'Active') {
-								activecourse+="<p class='blok-title-L'><a href='#'>" + course.code + ": " + course.name + "</a></p>";
-								if (course.percentage != null){
-									activecourse+="<p></p>";
-									activecourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
-									activecourse+="<div style='width: " + course.percentage + ";' class='ui-progressbar-value ui-widget-header ui-corner-left'></div>";
-									activecourse+="</div><span class='light-blue'>&nbsp;&nbsp;" + course.percentage + " complete</span><p></p><p>&nbsp; </p>";
-								}
-							} else if(course.type == 'Review') {
-								reviewcourse+="<p class='blok-title-L'><a href='#'>" + course.code + ": " + course.name + "</a></p>";
-								if (course.percentage != null){
-									reviewcourse+="<p></p>";
-									reviewcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
-									reviewcourse+="<div style='width: " + course.percentage + ";' class='ui-progressbar-value ui-widget-header ui-corner-left'></div>";
-									reviewcourse+="</div><span class='light-blue'>&nbsp;&nbsp;" + course.percentage + " complete</span><p></p><p>&nbsp; </p>";
-								}
-							};	
-					};
+                   $(data).find("reviewedcourses").find("course").each(function(index){
+						
+					    console.log("Yes I am in");  
+					    reviewcourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
+					    console.log("it is written"); 
+					});
+					
+                   
+                   $(data).find("activecourses").find("course").each(function(index){
+						
+					    console.log("Yes I am in");  
+					    activecourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
+					    console.log("it is written"); 
+					});
+					
+					
+					
 					
 					console.log("draftcourse is: " + draftcourse);
 					console.log("activecourse is: " + activecourse);
@@ -212,7 +190,6 @@ $(document).ready(function() {
 	});
 	
 });
-
 </script>
                <div class="col-right" >
                   <div class="col-right-container for-rounded-box all-box-shadow">

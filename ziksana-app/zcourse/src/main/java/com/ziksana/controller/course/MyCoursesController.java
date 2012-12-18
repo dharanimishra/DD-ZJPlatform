@@ -3,20 +3,20 @@
  */
 package com.ziksana.controller.course;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ziksana.domain.course.CourseAdditionalProperty;
+import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.service.course.CourseContentService;
 import com.ziksana.service.course.CourseService;
 
 /**
@@ -33,20 +33,27 @@ public class MyCoursesController {
 	@Autowired
 	CourseService courseService;
 
-	@RequestMapping(value = "/readMyCourses", method = RequestMethod.POST)
+	@RequestMapping(value = "/showmycourse/111111", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyCourses() throws CourseException {
 
 		LOGGER.info("Entering Class " + getClass() + " showCourse()");
 
-		courseService.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+		List<Course> draftedCourses = courseService
+				.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+		List<Course> reviewedCourses = courseService
+				.getCoursesByStatus(CourseStatus.REVIEW);
+		List<Course> activeCourses = courseService
+				.getCoursesByStatus(CourseStatus.ACTIVE);
 
-		ModelAndView mv = new ModelAndView("courses/mycourses");
+		ModelAndView mv = new ModelAndView("courses/course-list-new");
 
 		LOGGER.info("Exiting Class " + getClass() + " showCourse(): ");
 
-		//TODO  we need to add object		
-
+		// TODO we need to add object
+		mv.addObject("DRAFTED_COURSES", draftedCourses);
+		mv.addObject("REVIEWED_COURSES", reviewedCourses);
+		mv.addObject("ACTIVE_COURSES", activeCourses);
 		return mv;
 	}
 
