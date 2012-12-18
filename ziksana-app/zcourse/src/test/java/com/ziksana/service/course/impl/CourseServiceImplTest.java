@@ -3,20 +3,37 @@
  */
 package com.ziksana.service.course.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.service.course.CourseService;
 
 /**
  * @author prabu
  *
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("/applicationContext.xml")
 public class CourseServiceImplTest {
 
+	
+	@Autowired
+	public CourseService courseService;
+	
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -50,7 +67,12 @@ public class CourseServiceImplTest {
 	 */
 	@Test
 	public void testGetCoursesByStatus() {
-		fail("Not yet implemented");
+		
+		List<Course> courses = courseService.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+		assertTrue(courses.size() == 1);
+				
+		
+		
 	}
 
 }

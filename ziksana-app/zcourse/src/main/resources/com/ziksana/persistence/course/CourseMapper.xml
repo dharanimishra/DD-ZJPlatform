@@ -134,7 +134,7 @@
 		parameterType="int">
 
 		select
-		*
+		courseid,name,description
 		from
 		corcourse
 		where
