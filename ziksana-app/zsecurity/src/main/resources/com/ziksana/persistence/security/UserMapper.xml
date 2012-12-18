@@ -20,6 +20,23 @@
 
 	</select>
 
+	<select id="getMemberByMemberId" resultMap="memberResultMap"
+		parameterType="java.lang.String">
+
+		select distinct memmember.*, 
+		memmemberrole.MemberRoleId,
+		IF(memmemberrole.RoleType=2,'EDUCATOR','LEARNER') AS RoleType
+		from memmember,
+		memmemberrole,
+		secmembercredential
+		WHERE
+		memmember.MemberId=secmembercredential.MemberId and
+		memmember.MemberId=memmemberrole.memberId and
+		secmembercredential.MemberId=#{memberId}
+
+
+	</select>
+
 	<resultMap id="memberResultMap" type="com.ziksana.domain.member.Member">
 
 		<result property="memberId" column="MemberId" />

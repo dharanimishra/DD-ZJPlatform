@@ -14,6 +14,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,10 +91,29 @@ public class MemberServiceImplTest {
 		//System.out.println(" Role type is "+member.)
 		assertTrue( member.getMemberPersonas().size() == 4);
 		assertTrue(role!=null);
-	
-		
-		
-		
-	}
 
+	}
+	@Test
+	public void testGetMemberByMemberId() {
+		Member member = memberService.getMemberByMemberId(1000);
+		
+		List<MemberPersona> memberPersonas = member.getMemberPersonas();
+		MemberRoleType role = null;
+		
+		
+		for (MemberPersona memberPersona: memberPersonas)
+		{
+			if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR)
+			{
+				role = memberPersona.getRoleType();
+			}
+			
+		}
+		
+		
+		//System.out.println(" Role type is "+member.)
+		assertTrue( member.getMemberPersonas().size() == 4);
+		assertTrue(role!=null);
+
+	}
 }

@@ -19,5 +19,7 @@ public interface UserMapper {
 	
 	//@SelectProvider(type = UserSqlProvider.class, method = "getUserSql")
     public Member getMemberByUser(String userName);
+    
+    public Member getMemberByMemberId(int memberId);
 
 }

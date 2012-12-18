@@ -13,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.member.Member;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.blogs.BlogService;
+import com.ziksana.service.security.MemberService;
 import com.ziksana.util.Util;
 
 @Controller
@@ -25,7 +28,8 @@ public class HomeController {
 	@Autowired
 	BlogService blogService;
 	
-	
+	@Autowired
+	MemberService memberService;
 
 	@RequestMapping(value="/home")
 	public String home() {
@@ -34,17 +38,25 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/home2")
-	public ModelAndView home2(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView home2() {
 		System.out.println("Entering Home 2 Controller...");
 		ModelAndView mview = new ModelAndView("dashboard-div");
+		//get memberId
+		Integer memberId = 1000;
+		logger.info("memberId :"+memberId);
+		//get Member by memberId
+		Member member = memberService.getMemberByMemberId(memberId);
+		logger.info("Member ID IS :"+memberId);
+		mview.addObject("firstname", member.getFirstName());
+		mview.addObject("lastname", member.getLastName());
+		mview.addObject("membertype", member.getMemberType());
+		mview.addObject("memberid",member.getMemberId());
 		
-		String cookieVal = Util.getSessionTokenCookie(request);
-		logger.info("USER ID IS "+cookieVal);
 	
-		mview.addObject("firstname", "Chris");
+		/*mview.addObject("firstname", "Chris");
 		mview.addObject("lastname", "Anderson");
 		mview.addObject("title", "Associate Professor");
-		mview.addObject("memberId", "A1b2c3d4E5F6");
+		mview.addObject("memberId", "A1b2c3d4E5F6");*/
 		
 		Map<String, String> blogPost1 = new HashMap<String, String>();
 		blogPost1.put("subject", "The Innovative Educator");

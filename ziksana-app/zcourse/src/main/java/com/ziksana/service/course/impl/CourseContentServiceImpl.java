@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ziksana.domain.course.LearningComponentContent;
@@ -19,6 +20,7 @@ import com.ziksana.service.course.CourseContentService;
 /**
  * @author ratneshkumar
  */
+@Service
 public class CourseContentServiceImpl implements CourseContentService {
 
 	private final static Logger LOGGER = Logger

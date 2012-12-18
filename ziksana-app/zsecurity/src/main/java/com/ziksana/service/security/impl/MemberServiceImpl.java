@@ -31,4 +31,11 @@ public class MemberServiceImpl implements MemberService {
 		return userMapper.getMemberByUser(userName);
 	}
 
+
+	@Override
+	public Member getMemberByMemberId(int memberId) {
+		// TODO Auto-generated method stub
+		return userMapper.getMemberByMemberId(memberId);
+	}
+
 }
