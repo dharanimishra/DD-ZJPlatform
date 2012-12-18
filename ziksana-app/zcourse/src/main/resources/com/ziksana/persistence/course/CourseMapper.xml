@@ -131,14 +131,15 @@
 	</insert>
 
 	<select id="getCourses" resultMap="courseResultMap"
-		parameterType="int">
+		parameterType="map">
 
 		select
 		courseid,name,description
 		from
 		corcourse
 		where
-		CourseStatus=#{statusId}
+		CourseStatus=#{statusId} and 
+		MemberRoleId=#{memberPersonaId}
 
 
 	</select>

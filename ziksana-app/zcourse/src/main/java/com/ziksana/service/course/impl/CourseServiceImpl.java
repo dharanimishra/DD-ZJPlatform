@@ -35,6 +35,7 @@ import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.persistence.course.LearningComponentNestMapper;
 import com.ziksana.persistence.course.PlannerMapper;
 import com.ziksana.persistence.course.SocializeMapper;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
 
 /**
@@ -643,7 +644,10 @@ public class CourseServiceImpl implements CourseService {
 		// TODO Auto-generated method stub
 		int status = courseStatus.getID();
 		System.out.println(" COURSE STATUS IS "+status);
-		return courseMapper.getCourses(Integer.valueOf(status));
+		String memberPersonaId = ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID();
+		
+		return courseMapper.getCourses(Integer.valueOf(status),Integer.valueOf(memberPersonaId));
 		
 		
 	}

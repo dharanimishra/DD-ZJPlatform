@@ -19,6 +19,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.id.StringZID;
+import com.ziksana.id.ZID;
+import com.ziksana.security.util.SecurityToken;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
 
 /**
@@ -53,6 +57,12 @@ public class CourseServiceImplTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		ZID memberId = new StringZID("1000");
+		ZID memberPersonaId = new StringZID("100");
+		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+		ThreadLocalUtil.setToken(token);
+
+		
 	}
 
 	/**

@@ -335,7 +335,7 @@ public interface CourseMapper {
 	void deleteCourse(@Param("isDelete") Boolean isDelete, @Param("courseId") Integer courseId);
 	
 	
-	List<Course> getCourses(Integer statusId);
+	List<Course> getCourses(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId);
 
 
 }
