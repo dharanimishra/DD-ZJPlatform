@@ -46,8 +46,8 @@ public interface CourseMapper {
 	 * @return
 	 */
 	@Select({
-			"select courseid, memberroleid, name, description, coursestatus, contentsecurityneededindicator, courseduration,",
-			"coursedurationunit from corcourse where memberroleid = 100 " })
+			"select courseid, memberroleid, name, description, coursestatus, contentsecurityneededindicator, courseduration",
+			" from corcourse where memberroleid = 100 " })
 	@Results(value = {
 			@Result(property = "courseId", column = "courseid"),
 			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
@@ -55,8 +55,8 @@ public interface CourseMapper {
 			@Result(property = "description", column = "description"),
 			@Result(property = "status", column = "coursestatus"),
 			@Result(property = "securityIndicator", column = "contentsecurityneededindicator"),
-			@Result(property = "duration", column = "courseduration"),
-			@Result(property = "durationUnits", column = "coursedurationunit") })
+			@Result(property = "duration", column = "courseduration")
+			 })
 	List<Course> getListOfCourses(Integer memberPersonaId);
 
 	/**
@@ -333,6 +333,9 @@ public interface CourseMapper {
 	
 	@Update({"update corcourse set isdelete = #{isDelete, jdbcType=BOOLEAN} where courseid = #{courseId, jdbcType=INTEGER}"})
 	void deleteCourse(@Param("isDelete") Boolean isDelete, @Param("courseId") Integer courseId);
+	
+	
+	List<Course> getCourses(Integer statusId);
 
 
 }
