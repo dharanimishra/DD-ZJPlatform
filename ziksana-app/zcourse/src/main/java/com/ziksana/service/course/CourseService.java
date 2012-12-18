@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseAdditionalProperty;
+import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningObjectDeleteType;
 import com.ziksana.exception.course.CourseException;
@@ -28,6 +29,11 @@ public interface CourseService {
 	 */
 	public Course saveOrUpadteCourseComponents(Course course)
 			throws CourseException;
+	
+	
+	
+	
+	
 
 	/**
 	 * Save course additional property  
@@ -100,6 +106,16 @@ public interface CourseService {
 	 * @throws CourseException
 	 */
 	public Map<Object, Object> getCourseComponentsToPublish(Integer memberRoleId) throws CourseException;
+	
+	
+	/**
+	 * This method returns the list of courses by course status(Drafted,Reviewed, Published)
+	 * @param courseStatus 
+	 * @return List of courses
+	 */
+	public List<Course> getCoursesByStatus(CourseStatus courseStatus);
+	
+	
 
 }
 

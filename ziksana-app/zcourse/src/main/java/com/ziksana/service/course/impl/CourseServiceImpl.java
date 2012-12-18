@@ -16,6 +16,7 @@ import com.ziksana.domain.course.CourseComponentType;
 import com.ziksana.domain.course.CourseContentSecurity;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseLearningComponent;
+import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.domain.course.CourseTagcloud;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentDetails;
@@ -635,6 +636,12 @@ public class CourseServiceImpl implements CourseService {
 				learningObjectList);
 
 		return componentsMap;
+	}
+
+	@Override
+	public List<Course> getCoursesByStatus(CourseStatus courseStatus) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

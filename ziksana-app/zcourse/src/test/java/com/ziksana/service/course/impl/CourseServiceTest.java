@@ -3,6 +3,7 @@ package com.ziksana.service.course.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import com.ziksana.domain.course.LearningComponentNest;
 import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.exception.course.CourseException;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.impl.BaseTest;
 
@@ -40,7 +42,7 @@ public class CourseServiceTest extends BaseTest {
 	@Autowired
 	public CourseService courseService;
 
-	@Test
+	@Ignore @Test
 	public void testSaveCourse() throws Exception {
 		System.out
 				.println("inside Test ****************************************");
@@ -55,8 +57,26 @@ public class CourseServiceTest extends BaseTest {
 
 		Assert.isTrue(newCourse != null);
 	}
-
+	
+	
 	@Test
+	public void testgetListOfCourses() throws CourseException
+	{
+		
+		List<Course> courses = courseService.getListOfCourses(100);
+		System.out.println(" The number of courses are "+courses.size());
+		
+		Course course = courses.get(0);
+		System.out.println(" course status is "+course.getCourseProgress());
+		System.out.println(" course status is "+course.getCourseStatusId());
+		
+		
+	}
+	
+	
+	
+
+	@Ignore @Test
 	public void testSaveCourseComponents() throws Exception {
 
 		System.out
