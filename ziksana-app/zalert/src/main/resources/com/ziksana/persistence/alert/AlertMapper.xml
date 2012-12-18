@@ -6,18 +6,49 @@
 	<select id="getAlerts" resultMap="alertResultMap" parameterType="int">
 
 		select
-		*
-		from
-		memmembernotification n
-		join utllookup l ON
-		n.NotificationType=l.LookupId
-		join utllookupvalue v ON
-		l.LookupId=v.LookupId
-		where l.CategoryName='memmembernotification' and
-		v.LookupValue='Alert' and
-		n.ForMemberRoleId=#{userMemberRoleId}
+		  *,
+		 
+		  pv.LookupValue as lookupValue
+		  from
+		  memmembernotification n
+		  join utllookup l ON
+		  n.NotificationType=l.LookupId 
+		  join utllookupvalue v ON
+		  l.LookupId=v.LookupId 
+		  join utllookup p ON
+		  n.Priority = p.LookupId 
+		  join utllookupvalue pv ON
+		  p.LookupId=pv.LookupId
+		  
+		  where l.CategoryName='memmembernotification' and
+		  v.LookupValue='Alert' and
+		  
+		  n.ForMemberRoleId=#{userMemberRoleId}
 
 
+	</select>
+	
+	<select id="getMapperAlerts" resultMap="alertResultMap" parameterType="int">
+		select
+		  *,
+		 
+		  pv.LookupValue as lookupValue
+		  from
+		  memmembernotification n
+		  join utllookup l ON
+		  n.NotificationType=l.LookupId 
+		  join utllookupvalue v ON
+		  l.LookupId=v.LookupId 
+		  join utllookup p ON
+		  n.Priority = p.LookupId 
+		  join utllookupvalue pv ON
+		  p.LookupId=pv.LookupId
+		  
+		  where l.CategoryName='memmembernotification' and
+		  v.LookupValue='Alert' and
+		  
+		  n.ForMemberRoleId=#{userMemberRoleId} order by activationdate desc
+	
 	</select>
 
 	<resultMap id="alertResultMap" type="com.ziksana.domain.alerts.Alert">

@@ -1,10 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
+
 <link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
+	
+	<link rel="stylesheet" type="text/css" href="css/dropdown.css" />
+	
+	
+    <link rel="stylesheet" type="text/css" href="../resources/css/tag/tagit-simple-blue.css">
+    <link rel="stylesheet" href="../resources/css/tipsy.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/custom-theme/old-jquery-ui-1.8.21.custom.css">
+    <link rel="stylesheet" type="text/css" href="css/custom-theme/jquery-ui-1.8.21.custom.css">
+     <link href="css/news/newsticker.css" rel="stylesheet" type="text/css" />
+     
    	
 	 <script src="../resources/js/jquery-1.7.2.min.js"></script>
 	 <script src="../resources/js/ui/jquery.ui.core.js"></script>
@@ -15,7 +26,22 @@
      <script src="../resources/js/jquery.hovercard.js"></script>
      <script src="../resources/js/todo.js" type="text/javascript"></script> 
      <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
-
+	<script type="text/javascript" src="../resources/js/jquery-1.2.2.pack.js"></script>
+	<script type="text/javascript" src="../resources/js/ajax-tooltip.js"></script>	
+<c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
+<script type="text/javascript">
+function deleteFunction(val){
+	/* alert('${deleteAlertUrl}'+val); */
+	$.ajax({
+	  	type: 'DELETE',
+		url: '${deleteAlertUrl}'+val,
+		dataType: 'json',
+		success: function( data ) {
+			console.log('delete alert fired');
+		}
+	});
+}
+</script>
 
 <c:url var="showEventUrl" value="/secure/showmycalendar/111111" />
 <c:url var="eventImageUrl" value="/resources/images/front-bg.gif" />
@@ -86,10 +112,35 @@ $(document).ready(function() {
 });
 </script>
 
+ <script type="text/javascript">
+function changeImage(a){
+	
+	var images = new Array();
+	images[0] = "<c:url  value='/resources/images/icons/urgent.png' />";
+	images[1] = "<c:url  value='/resources/images/icons/warning.png' />";
+	images[2] = "<c:url  value='/resources/images/icons/info.png' />";
+	
+	 var comic = document.getElementById("exp").src;
+	 if(a==1000){
+		  $("#exp").attr('src', images[0]);
+	 }else if(a==1001){
+		 $("#exp").attr('src', images[1]);
+	 }else if(a==1002){
+		 $("#exp").attr('src', images[2]);
+	 }
+	 
+	  
+}
+</script>
+ 
+ 
+ 
+  <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
 
 <c:url var="todoImageUrl" value="/resources/images/background-pattern.jpg" />
-<c:url var="showAlertUrl" value="/secure/showmyalert/111111" />
-<c:url var="deleteAlertUrl" value="/secure/deletealert/111111" />
+<c:url var="showAlertUrl" value="/secure/showalert/111111" />
+<c:url var="info"  value='/resources/images/icons/info.png' />
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -101,9 +152,20 @@ $(document).ready(function() {
 								console.log( 'Sample of data:', data);
 					}
 					var output="";
-					
+					output+="<div  class='alerts'>";
+					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
 					$(data).find("alertitem").each(function(index){
 						
+						output+="<div id='demo' class='alertcontainer' style='border:1px solid #F5F5F5;' id='conalert3'>";
+						output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
+						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
+						 
+						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
+						output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
+						/* output+="<div class='alertinfo-decription' style='float:left; height:14px; font-family:verdana; font-size:11px; padding:4px;'>"; */
+						output+="<div id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+$(this).find("description").text()+"</div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						/* output+="<div class='alertinfo-button' style='display:inline;margin-left:10px;' >"; */
+						output+="</div></div>";
 						
 						/* output+="<div class='alertitem'>";
 						output+="<span class='Zalart zicons ls-no f-l a1'></span>&nbsp;";
@@ -115,19 +177,8 @@ $(document).ready(function() {
 						output+="<input type='hidden' id='alertItemId' value='" +$(this).find("id").text()  + "' />";
 						output+="</div>";	 */					
 					});
-					output+="<div class='alerts' >";
-					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
-					output+="<div class='alertcontainer' style='border-bottom:1px solid #F5F5F5;' id='conalert1'>";
-					output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
-					output+="<div class='alertinfo-icon' style='float:left; margin-right:10px;'>";
-					output+="<a href='#linkurl' rel='tipsy' title='Urgent' style='cursor:default;'><img src='images/icons/urgent2.png' alt='Info' /> </a> ";
-					output+="</div>";
-					output+="<div class='alertinfo-category' >My Course </div>";
-					output+="<div class='alertinfo-decription' >";
-					output+="<div id='demo-basic' style='font-weight:lighter; cursor:pointer;'>Joe Miller for Aero Dynamics: Assn-1</div></div>                      ";
-					output+="<div class='alertinfo-button'>";
-					output+="<a href='#linkurl' id='btalert1' rel='tipsy' title='Close'> <img src='images/icons/close-icon.png' height='15' width='15'/> </a>                     ";
-					output+="</div> </div> </div>  </div>";
+					
+					
 					console.log("output string: " + output);
 					$('#alerts_placeholder').html( output);
 					
@@ -173,6 +224,9 @@ $(document).ready(function() {
 <c:url var="todo" value="/resources/images/icons/todo.png" />
 <c:url var="showTodoUrl" value="/secure/showtodo/111111" />
 <c:url var="deleteTodoUrl" value="/secure/deletetodo/1111111" />
+
+
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -245,6 +299,7 @@ $(document).ready(function() {
 
 
 
+
                 <div class="center for-rounded-box all-box-shadow">
                 
                 	<div class="_cMain">
@@ -275,13 +330,16 @@ $(document).ready(function() {
                     <div class="alert_todo" >
                     
                    		<div class="alerts" >
-                        	 <span class="titles-info font-Signika text-size-px18 light-gray">Alerts</span>
+                        	 
                              <div id='alerts_placeholder'></div>
+                             	 <c:url var="htmlUrl_alert" value="secure/getalertpopupwindow" />
+                            
+                             <div  style="height:30px; float:right;"> <a class="text-size-px11  lbx-70-50" href="${htmlUrl_alert}" >More</a></div>
                         </div>
                         
                         <div  class="todo">
-                        	 <span class="titles-info font-Signika text-size-px18 light-gray">To-dos</span>
-                            
+                        	 <span class="titles-info font-Signika text-size-px18 light-gray">TODO's</span>
+                           
                               	<div id="todos_placeholder">
                               	
                               	</div>

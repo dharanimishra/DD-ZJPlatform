@@ -25,6 +25,7 @@ public class Alert implements Comparable<Alert> {
 	private MemberPersona forMember;
 	private Date completeBy;
 	private Integer priority;
+	private String alertValue;
 	
 	
 	
@@ -35,6 +36,32 @@ public class Alert implements Comparable<Alert> {
 	
 	
 	
+	public String getAlertValue() {
+		return alertValue;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setAlertValue(String alertValue) {
+		this.alertValue = alertValue;
+	}
+
+
+
+
+
+
+
+
+
+
 	public ZID getId() {
 		return id;
 	}

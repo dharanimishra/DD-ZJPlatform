@@ -3,8 +3,7 @@
 <c:url var="showPollUrl" value="/secure/showpoll/111111" />
 <c:url var="submitPollUrl" value="/secure/submitpoll" />
 
-<c:url var="jsJqueryFormUrl" value="/resources/js/jquery.form.js" />
-<script type="text/javascript" src="${jsJqueryFormUrl}"></script>
+<script src="ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {

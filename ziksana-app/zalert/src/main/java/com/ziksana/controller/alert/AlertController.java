@@ -10,10 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ziksana.id.StringZID;
-import com.ziksana.id.ZID;
-import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.alert.AlertsService;
 
 @Controller
@@ -34,7 +30,6 @@ public class AlertController {
 	ModelAndView showMyAlerts(@PathVariable String memberId) {
 		LOGGER.info("Entering showMyAlerts(): " + memberId);
 		ModelAndView mv = new ModelAndView("calendar/alerts");
-		
 		
 		mv.addObject("alerts", this.alertsService.getAlertList());
 		LOGGER.info("Number of alerts is  " + this.alertsService.getAlertList().size());
@@ -64,5 +59,32 @@ public class AlertController {
 				+ alertItemId);
 		return modelAndView;
 	}
+	
+	
+	/*Get popup Alert window
+	 * */	
+	@RequestMapping(value = "/getalertpopupwindow", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getPopupWindow() {
+	
+		ModelAndView modelAndView = new ModelAndView("common/alert");
+		
+		return modelAndView;
+		
+	}
 
+	
+	/**
+	 * Retrive Three Alert items to display on the dashboard
+	 */
+	@RequestMapping(value = "/showalert/{memberId}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView showThreeAlerts(@PathVariable String memberId) {
+		LOGGER.info("Entering showAlerts: " + memberId);
+		ModelAndView modelView = new ModelAndView("calendar/alerts");
+		
+		
+		modelView.addObject("alerts", alertsService.getMapperAlerts());
+		LOGGER.info("Exiting showMyAlerts(): " + memberId);
+		LOGGER.info("alerts Size is  " + alertsService.getMapperAlerts().size());
+		return modelView;
+	}
 }

@@ -5,6 +5,7 @@ package com.ziksana.service.alert.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,6 +74,18 @@ public class AlertServiceImpl implements AlertsService {
 	@Override
 	public void deleteAlertItem(Integer alertId) {
 		alertMapper.deleteAlert(alertId);
+	}
+
+	@Override
+	public List<Alert> getMapperAlerts() {
+		// TODO Auto-generated method stub
+
+				Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+						.getMemberPersonaId().getStorageID());
+				int offset = 0;
+				int limit = 3;
+				RowBounds rowBounds = new RowBounds(offset, limit);
+				return alertMapper.getMapperAlerts(memberRoleId, rowBounds);
 	}
 
 }

@@ -286,8 +286,8 @@ $(document).ready(function() {
           			          
       
           <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
-          <c:url var="htmlUrl_profile2" value="/resources/popup/z-zini.html" />
-            <span><a href="${htmlUrl_profile2}" class="" style="color: #27b;">More..</a></span>
+          <c:url var="htmlUrl_profile2" value="/secure/zrecommendpopup" />
+            <span><a class="text-size-px11  lbx-70-50" href="${htmlUrl_profile2}" class="" style="color: #27b;">More..</a></span>
           </p>
         </div>
         </div>

@@ -105,11 +105,11 @@ img {
 button,
 input,
 select,
-/*textarea {
+textarea {
   margin: 0;
   font-size: 100%;
   vertical-align: middle;
-}*/
+}
 button,
 input {
   *overflow: visible;
@@ -141,14 +141,14 @@ textarea {
   overflow: auto;
   vertical-align: top;
 }
-/*body {
+body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
-}*/
+}
 a {
   color: #0088cc;
   text-decoration: none;
@@ -479,9 +479,9 @@ a:hover {
 .container-fluid:after {
   clear: both;
 }
-/*p {
+p {
   margin: 0 0 10px;
-}*/
+}
 .lead {
   margin-bottom: 20px;
   font-size: 21px;
@@ -491,9 +491,9 @@ a:hover {
 small {
   font-size: 85%;
 }
-/*strong {
+strong {
   font-weight: bold;
-}*/
+}
 em {
   font-style: italic;
 }
@@ -580,7 +580,7 @@ h4 small {
   border-bottom: 1px solid #eeeeee;
 }
 ul,
-/*ol {
+ol {
   padding: 0;
   margin: 0 0 10px 25px;
 }
@@ -597,20 +597,20 @@ ul.unstyled,
 ol.unstyled {
   margin-left: 0;
   list-style: none;
-}*/
-/*dl {
+}
+dl {
   margin-bottom: 20px;
-}*/
+}
 dt,
-/*dd {
+dd {
   line-height: 20px;
-}*/
-/*dt {
+}
+dt {
   font-weight: bold;
-}*/
-/*dd {
+}
+dd {
   margin-left: 10px;
-}*/
+}
 .dl-horizontal {
   *zoom: 1;
 }
@@ -1114,21 +1114,21 @@ label,
 input,
 button,
 select,
-/*textarea {
+textarea {
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
-}*/
+}
 input,
 button,
 select,
-/*textarea {
+textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}*/
-/*label {
+}
+label {
   display: block;
   margin-bottom: 5px;
-}*/
+}
 select,
 textarea,
 input[type="text"],
@@ -1146,7 +1146,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  /*display: inline-block;
+  display: inline-block;
   height: 20px;
   padding: 4px 6px;
   margin-bottom: 9px;
@@ -1155,7 +1155,7 @@ input[type="color"],
   color: #555555;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
-  border-radius: 3px;*/
+  border-radius: 3px;
 }
 input,
 textarea,
@@ -3729,7 +3729,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .btn-navbar.active {
   background-color: #000000 \9;
 }
-/*.breadcrumb {
+.breadcrumb {
   padding: 8px 15px;
   margin: 0 0 20px;
   list-style: none;
@@ -3741,7 +3741,7 @@ input[type="submit"].btn.btn-mini {
 .breadcrumb li {
   display: inline-block;
   *display: inline;
-  /* IE7 inline-block hack */*/
+  /* IE7 inline-block hack */
 
   *zoom: 1;
   text-shadow: 0 1px 0 #ffffff;

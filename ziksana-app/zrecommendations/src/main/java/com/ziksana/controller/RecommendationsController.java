@@ -47,7 +47,7 @@ public class RecommendationsController {
 	ModelAndView showRecommendationsByCategory(@PathVariable Integer category) {
 
 		logger.info("Category Id: " + category);
-		ModelAndView modelAndView = new ModelAndView("xml/zrecommendationsnew");
+		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
 
 		List<Recommendation> recommendations = recomendationsService
 				.getRecommendations(category);
@@ -65,7 +65,17 @@ public class RecommendationsController {
 
 		return modelAndView;
 	}
-
 	
+	
+	/*Get popup Alert window
+	 * */	
+	@RequestMapping(value = "/zrecommendpopup", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getPopupWindow() {
+	
+		ModelAndView modelAndView = new ModelAndView("common/zrecommendation");
+		
+		return modelAndView;
+		
+	}
 
 }

@@ -4,6 +4,14 @@
 	
 /* for zGroup */
 /*main div*/
+	
+	body
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+		vertical-align: baseline;
+	}
 	#zGroup{
 		border: 1px solid #ccc;
 		width:580px;
@@ -47,9 +55,10 @@ font-size:12px;
 	
 	/*table of Groups div*/
 	#showGroup{
-		margin-top:5px;
+		
 		padding:5px;
-		background-color:#FFE;
+		margin-bottom:10px;
+		
 		
 		
 	}
@@ -381,7 +390,7 @@ margin-left:7px;
 	
 	.zannouncementwrapper
 	{
-		margin:50px;
+		
 		width:550px;
 	}
 	

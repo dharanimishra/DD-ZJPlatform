@@ -35,6 +35,8 @@ public class Todo {
 	private MemberPersona creatingMember;
 
 	private MemberPersona forMember;
+	
+	
 
 	/**
 	 * 
@@ -57,12 +59,14 @@ public class Todo {
 	 * @param activationDate
 	 * @param creatingMember
 	 * @param forMember
+	 * @param lookupId
+	 * @param lookupValue
 	 */
 	public Todo(int id, Date creationDate, int notificationType,
 			String category, String notificationContent, String description,
 			int priority, int status, Date completeBy, int creatorType,
 			Date activationDate, MemberPersona creatingMember,
-			MemberPersona forMember) {
+			MemberPersona forMember, int lookupId, String lookupValue) {
 		super();
 		this.id = id;
 		this.creationDate = creationDate;
@@ -77,8 +81,10 @@ public class Todo {
 		this.activationDate = activationDate;
 		this.creatingMember = creatingMember;
 		this.forMember = forMember;
+		
 	}
 
+	
 	public int getId() {
 		return id;
 	}
