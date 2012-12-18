@@ -41,7 +41,7 @@ public class MyCoursesController {
 
 		courseService.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
 
-		ModelAndView mv = new ModelAndView("courses/createcourses");
+		ModelAndView mv = new ModelAndView("courses/mycourses");
 
 		LOGGER.info("Exiting Class " + getClass() + " showCourse(): ");
 
