@@ -641,7 +641,9 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public List<Course> getCoursesByStatus(CourseStatus courseStatus) {
 		// TODO Auto-generated method stub
-		return null;
+		return courseMapper.getCourses(courseStatus.getID());
+		
+		
 	}
 
 }
