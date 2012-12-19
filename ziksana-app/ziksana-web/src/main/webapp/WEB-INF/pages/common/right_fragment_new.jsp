@@ -156,23 +156,42 @@ $(document).ready(function() {
 					
 					$(data).find("draftedcourses").find("course").each(function(index){
 						
+						var progress =  $(this).find("progress").text()+"%";
+						
 					    console.log("Yes I am in");  
 					    draftcourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
+					          
+							draftcourse+="<p></p>";
+							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
+							draftcourse+="<div style='width: " + progress + ";' class='ui-progressbar-value ui-widget-header ui-corner-left'></div>";
+							draftcourse+="</div><span class='light-blue'>&nbsp;&nbsp;" + progress + " complete</span><p></p><p>&nbsp; </p>";
+						
+					    
 					    console.log("it is written"); 
 					});
 					
                    $(data).find("reviewedcourses").find("course").each(function(index){
-						
+                	   var progress =  $(this).find("progress").text()+"%";
 					    console.log("Yes I am in");  
 					    reviewcourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
+					    reviewcourse+="<p></p>";
+					    reviewcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
+					    reviewcourse+="<div style='width: " + progress + ";' class='ui-progressbar-value ui-widget-header ui-corner-left'></div>";
+					    reviewcourse+="</div><span class='light-blue'>&nbsp;&nbsp;" + progress + " complete</span><p></p><p>&nbsp; </p>";
+					    
 					    console.log("it is written"); 
 					});
 					
                    
                    $(data).find("activecourses").find("course").each(function(index){
-						
+                	   var progress =  $(this).find("progress").text()+"%";
 					    console.log("Yes I am in");  
 					    activecourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
+					    
+					    activecourse+="<p></p>";
+					    activecourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
+					    activecourse+="<div style='width: " + progress + ";' class='ui-progressbar-value ui-widget-header ui-corner-left'></div>";
+					    activecourse+="</div><span class='light-blue'>&nbsp;&nbsp;" + progress + " complete</span><p></p><p>&nbsp; </p>";
 					    console.log("it is written"); 
 					});
 					

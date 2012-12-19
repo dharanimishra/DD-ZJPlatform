@@ -16,7 +16,7 @@
 	<c:forEach var="course" items="${DRAFTED_COURSES}">
 	<course id="${course.courseId.storageID}">
 		<title>${course.name}</title>
-		
+		<progress>${course.courseProgress}</progress>
 	</course>
 	</c:forEach>
 	</draftedcourses>
@@ -27,7 +27,7 @@
 	   <c:forEach var="course" items="${REVIEWED_COURSES}">
 	<course id="${course.courseId.storageID}">
 		<title>${course.name}</title>
-		
+		<progress>${course.courseProgress}</progress>
 	</course>
 	</c:forEach>
 	
@@ -37,7 +37,7 @@
 	    <c:forEach var="course" items="${ACTIVE_COURSES}">
 	    <course id="${course.courseId}">
 		<title>${course.name}</title>
-		
+		<progress>${course.courseProgress}</progress>
 	</course>
 	</c:forEach>
 	</activecourses>
