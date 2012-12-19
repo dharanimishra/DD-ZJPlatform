@@ -119,7 +119,7 @@ public class LoginController {
 			mvHome.addObject("firstname", member.getFirstName());
 			mvHome.addObject("lastname", member.getLastName());
 			mvHome.addObject("membertype", member.getMemberType());
-			mvHome.addObject("memberid",member.getMemberId());
+			mvHome.addObject("memberId",member.getMemberId());
 			
 			ThreadLocalUtil.unset();
 		     return mvHome;
