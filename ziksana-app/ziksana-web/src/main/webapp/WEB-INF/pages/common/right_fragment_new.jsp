@@ -208,6 +208,47 @@ $(document).ready(function() {
 	
 });
 </script>
+
+ <c:url var="showAnnouncementUrl" value="/secure/showannouncementbyid/100" />
+  <script type="text/javascript">
+$(document).ready(function() {
+	$.ajax({
+		  	type: 'GET',
+			url: '${showAnnouncementUrl}',
+			dataType: 'xml',
+			success: function( data ) {
+					if (console && console.log){
+								console.log( 'data:', data);
+					}
+					var output="";
+					
+					
+					$(data).find("announcements").each(function(index){
+						
+						output+="<ol>";
+	                    output+="<li class='p-p _blogs bckground-blue-light'>";
+	                    output+="<b>Valid Until  :"+ $(this).find("validUntil").text()+"</b>";
+	                    output+="<br/>";
+	                    output+="<p  style='padding-left: 10px;'>"+ $(this).find("message").text()+"</p>";
+	                    output+="</li></ol><br/>";
+	                   
+												
+					});
+
+					console.log("Announcements: " + output);
+				
+					
+					$('#announcement').html(output);
+				
+					
+					 
+					
+			}
+	});
+	
+});
+</script>
+ 
                <div class="col-right" >
                   <div class="col-right-container for-rounded-box all-box-shadow">
                   	<div class="Performance">   
@@ -241,11 +282,26 @@ $(document).ready(function() {
                    </div>
                   
                   <div class="col-right-container for-rounded-box all-box-shadow">
-                 
+    <div id="tabsbottom" style="background-color:#FFF; margin-bottom:15px;">
+           <span class="titles-info font-Signika text-size-px18 light-gray">Announcements</span>
+			           
+            	                           
+            <div id= "announcement" class="rec-0 ">
+              
+            </div>
+            
+          			          
+      
+          <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
+          <c:url var="htmlUrl_profile2" value="" />
+            <span><a class="text-size-px11  lbx-70-50" href="${htmlUrl_profile2}" class="" style="color: #27b;">More..</a></span>
+          </p>
+        </div>
+        </div>             
 
 <!-- Feedzilla Widget BEGIN -->
 
-<div class="feedzilla-news-widget feedzilla-6174072121341786" style="width:206px; padding: 0; text-align: center; font-size: 12px; border: 0;">
+<!-- <div class="feedzilla-news-widget feedzilla-6174072121341786" style="width:206px; padding: 0; text-align: center; font-size: 12px; border: 0;">
 <script type="text/javascript" src="http://widgets.feedzilla.com/news/iframe/js/widget.js"></script>
 <script type="text/javascript">
 new FEEDZILLA.Widget({
@@ -269,9 +325,9 @@ new FEEDZILLA.Widget({
 });
 </script>
 
-<!-- Feedzilla Widget END -->
+Feedzilla Widget END
                   
-                  <!--
+                  
                     <p class="titles-info">News<br></p>
                     <p class="p-p">ELearning Department - 'New tools added to Enrich Course Content.! - Striving towards excellence !
                      <br>02/25/2012 <br>
@@ -280,8 +336,8 @@ new FEEDZILLA.Widget({
                       
                       
                       
-                      </p>-->
+                      </p>
                     <div class="txt-r"><a href="#" class="text-size-px11">Read all</a></div>
                   </div>
-                </div>
+                </div> -->
               </div>
