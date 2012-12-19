@@ -1,0 +1,788 @@
+2012-10-17 02:23:20,572 [main] INFO  org.red5.server.Launcher - Red5 Server 1.0.0 RC3 $Rev: 4424 $ (http://code.google.com/p/red5/)
+2012-10-17 02:23:20,768 [main] INFO  o.s.c.s.FileSystemXmlApplicationContext - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3d3e58d4: startup date [Wed Oct 17 02:23:20 UTC 2012]; root of context hierarchy
+2012-10-17 02:23:20,865 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [red5.xml]
+2012-10-17 02:23:21,278 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [jee-container.xml]
+2012-10-17 02:23:21,439 [main] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer - Loading properties file from class path resource [red5.properties]
+2012-10-17 02:23:21,472 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7b41fab6: defining beans [placeholderConfig,red5.common,red5.core,context.loader,pluginLauncher,tomcat.server]; root of factory hierarchy
+2012-10-17 02:23:21,509 [main] INFO  o.s.c.s.FileSystemXmlApplicationContext - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@fc54796: startup date [Wed Oct 17 02:23:21 UTC 2012]; root of context hierarchy
+2012-10-17 02:23:21,511 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [red5-common.xml]
+2012-10-17 02:23:21,663 [main] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer - Loading properties file from class path resource [red5.properties]
+2012-10-17 02:23:21,672 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2ba99347: defining beans [placeholderConfig,red5.server,rmiRegistry,mbeanServer,org.springframework.jmx.support.ConnectorServerFactoryBean#0,mbeanExporter,serializer,deserializer,minaEncoder,minaDecoder,statusObjectService,rtmpCodecFactory,rtmptCodecFactory,remotingCodecFactory,streamableFileFactory,filePersistenceThread,sharedObjectService,streamService,providerService,consumerService,schedulingService,warDeployService,remotingClient,object.cache,keyframe.cache,flv.impl,flvreader.impl,mp4reader.impl,mp3reader.impl,org.springframework.beans.factory.config.MethodInvokingFactoryBean#0,org.springframework.beans.factory.config.MethodInvokingFactoryBean#1,streamExecutor,fileConsumer,playlistSubscriberStream,clientBroadcastStream]; root of factory hierarchy
+2012-10-17 02:23:21,722 [main] INFO  o.s.r.rmi.RmiRegistryFactoryBean - Creating new RMI registry
+2012-10-17 02:23:21,999 [main] INFO  o.s.j.s.ConnectorServerFactoryBean - JMX connector server started: javax.management.remote.rmi.RMIConnectorServer@6364cbde
+2012-10-17 02:23:22,054 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2012-10-17 02:23:22,057 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Bean with name 'org.springframework.jmx.support.ConnectorServerFactoryBean#0' has been autodetected for JMX exposure
+2012-10-17 02:23:22,216 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2012-10-17 02:23:22,226 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.1.8.5 created.
+2012-10-17 02:23:22,228 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+2012-10-17 02:23:22,229 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v1.8.5) 'Red5_Scheduler' with instanceId 'domU-12-31-39-14-0E-E01350440602164'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 4 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2012-10-17 02:23:22,229 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'Red5_Scheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2012-10-17 02:23:22,229 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 1.8.5
+2012-10-17 02:23:22,230 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler Red5_Scheduler_$_domU-12-31-39-14-0E-E01350440602164 started.
+2012-10-17 02:23:22,230 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Bean with name 'schedulingService' has been autodetected for JMX exposure
+2012-10-17 02:23:22,299 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Bean with name 'clientBroadcastStream' has been autodetected for JMX exposure
+2012-10-17 02:23:22,355 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Located MBean 'org.springframework.jmx.support.ConnectorServerFactoryBean#0': registering with JMX server as MBean [org.red5.server:name=org.springframework.jmx.support.ConnectorServerFactoryBean#0,type=RMIConnectorServer]
+2012-10-17 02:23:22,357 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Located MBean 'schedulingService': registering with JMX server as MBean [org.red5.server:name=schedulingService,type=QuartzSchedulingService]
+2012-10-17 02:23:23,459 [main] INFO  org.red5.server.service.WarDeployer - War deployer service created
+2012-10-17 02:23:23,678 [main] INFO  o.s.c.s.FileSystemXmlApplicationContext - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@464693f9: startup date [Wed Oct 17 02:23:23 UTC 2012]; parent: ApplicationContext 'red5.common'
+2012-10-17 02:23:23,680 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [red5-core.xml]
+2012-10-17 02:23:23,835 [main] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer - Loading properties file from class path resource [red5.properties]
+2012-10-17 02:23:23,863 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@75fc25e5: defining beans [customEditorConfigurer,placeholderConfig,rtmpMinaConnManager,rtmpHandler,rtmpMinaIoHandler,rtmpTransport,rtmpMinaConnection,rtmptConnManager,rtmptHandler,rtmptServlet,rtmptConnection]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@2ba99347
+2012-10-17 02:23:23,938 [main] INFO  o.r.s.net.rtmp.RTMPMinaTransport - RTMP Mina Transport bound to /0.0.0.0:1935
+2012-10-17 02:23:23,946 [main] INFO  o.r.s.net.rtmp.RTMPMinaTransport - RTMP Mina Transport Settings
+2012-10-17 02:23:23,946 [main] INFO  o.r.s.net.rtmp.RTMPMinaTransport - I/O Threads: 16
+2012-10-17 02:23:24,147 [main] INFO  o.r.s.net.rtmp.RTMPMinaTransport - TCP No Delay: true
+2012-10-17 02:23:24,150 [main] INFO  o.r.s.net.rtmp.RTMPMinaTransport - Settings - send buffer size: 65536 recv buffer size: 65536 so linger: -1 traffic class: 24
+2012-10-17 02:23:24,280 [main] INFO  org.red5.server.ContextLoader - ContextLoader init
+2012-10-17 02:23:24,287 [main] INFO  org.red5.server.ContextLoader - Loading: default.context = ${red5.root}/webapps/red5-default.xml => /usr/local/red5server/webapps/red5-default.xml
+2012-10-17 02:23:24,295 [main] INFO  o.s.c.s.FileSystemXmlApplicationContext - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@63956391: startup date [Wed Oct 17 02:23:24 UTC 2012]; parent: ApplicationContext 'red5.common'
+2012-10-17 02:23:24,298 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from URL [file:/usr/local/red5server/webapps/red5-default.xml]
+2012-10-17 02:23:24,413 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5675b3ee: defining beans [global.clientRegistry,global.serviceInvoker,global.mappingStrategy,global.context,global.handler,global.scope,red5.scopeResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@2ba99347
+2012-10-17 02:23:24,660 [main] INFO  org.red5.server.Context - Setting parent bean factory as core
+2012-10-17 02:23:25,227 [main] INFO  org.red5.server.tomcat.TomcatLoader - Setting connector: org.apache.catalina.connector.Connector
+2012-10-17 02:23:25,230 [main] INFO  org.red5.server.tomcat.TomcatLoader - Address to bind: /0.0.0.0:6789
+2012-10-17 02:23:25,231 [main] INFO  org.red5.server.tomcat.TomcatLoader - Loading tomcat context
+2012-10-17 02:23:25,234 [main] INFO  org.red5.server.tomcat.TomcatLoader - Server root: /usr/local/red5server
+2012-10-17 02:23:25,234 [main] INFO  org.red5.server.tomcat.TomcatLoader - Config root: /usr/local/red5server/conf
+2012-10-17 02:23:25,295 [main] INFO  org.red5.server.tomcat.TomcatLoader - Application root: /usr/local/red5server/webapps
+2012-10-17 02:23:25,465 [main] INFO  org.red5.server.tomcat.TomcatLoader - Starting Tomcat servlet engine
+2012-10-17 02:23:25,474 [main] INFO  o.apache.catalina.startup.Embedded - Starting tomcat server
+2012-10-17 02:23:25,689 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/6.0.35
+2012-10-17 02:23:26,073 [main] INFO  org.apache.catalina.realm.JAASRealm - Set JAAS app name red5Engine
+2012-10-17 02:23:27,199 [main] INFO  o.a.coyote.http11.Http11Protocol - Initializing Coyote HTTP/1.1 on http-0.0.0.0-6789
+2012-10-17 02:23:27,222 [main] INFO  o.a.coyote.http11.Http11Protocol - Starting Coyote HTTP/1.1 on http-0.0.0.0-6789
+2012-10-17 02:23:27,238 [main] INFO  org.red5.server.tomcat.TomcatLoader - Dedicated RTMPT server configuration was not specified
+2012-10-17 02:23:27,260 [Launcher:/vod] INFO  o.s.w.c.s.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Oct 17 02:23:27 UTC 2012]; parent: org.springframework.context.support.FileSystemXmlApplicationContext@63956391
+2012-10-17 02:23:27,260 [Launcher:/oflaDemo] INFO  o.s.w.c.s.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Oct 17 02:23:27 UTC 2012]; parent: org.springframework.context.support.FileSystemXmlApplicationContext@63956391
+2012-10-17 02:23:27,260 [Launcher:/installer] INFO  o.s.w.c.s.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Oct 17 02:23:27 UTC 2012]; parent: org.springframework.context.support.FileSystemXmlApplicationContext@63956391
+2012-10-17 02:23:27,260 [Launcher:/live] INFO  o.s.w.c.s.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Oct 17 02:23:27 UTC 2012]; parent: org.springframework.context.support.FileSystemXmlApplicationContext@63956391
+2012-10-17 02:23:27,268 [Launcher:/] INFO  o.s.w.c.s.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Wed Oct 17 02:23:27 UTC 2012]; parent: org.springframework.context.support.FileSystemXmlApplicationContext@63956391
+2012-10-17 02:23:27,272 [Launcher:/] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/red5-web.xml]
+2012-10-17 02:23:27,270 [Launcher:/installer] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/red5-web.xml]
+2012-10-17 02:23:27,274 [Launcher:/vod] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/red5-web.xml]
+2012-10-17 02:23:27,273 [Launcher:/oflaDemo] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/red5-web.xml]
+2012-10-17 02:23:27,274 [Launcher:/live] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/red5-web.xml]
+2012-10-17 02:23:27,432 [Launcher:/] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer - Loading properties file from ServletContext resource [/WEB-INF/red5-web.properties]
+2012-10-17 02:23:27,441 [Launcher:/] INFO  o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@15e8e5a7: defining beans [placeholderConfig,web.context,web.scope]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@5675b3ee
+2012-10-17 02:23:27,461 [Launcher:/installer] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer - Loading properties file from ServletContext resource [/WEB-INF/red5-web.properties]
+2012-10-17 02:23:27,477 [Launcher:/installer] INFO  o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4369a50b: defining beans [placeholderConfig,web.context,web.scope,web.handler,installer.service]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@5675b3ee
+2012-10-17 02:23:27,458 [Launcher:/oflaDemo] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer - Loading properties file from ServletContext resource [/WEB-INF/red5-web.properties]
+2012-10-17 02:23:27,452 [Launcher:/vod] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer - Loading properties file from ServletContext resource [/WEB-INF/red5-web.properties]
+2012-10-17 02:23:27,481 [Launcher:/vod] INFO  o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7b6bb7d9: defining beans [placeholderConfig,web.context,web.scope,web.handler]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@5675b3ee
+2012-10-17 02:23:27,449 [Launcher:/live] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer - Loading properties file from ServletContext resource [/WEB-INF/red5-web.properties]
+2012-10-17 02:23:27,483 [Launcher:/live] INFO  o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2735877f: defining beans [placeholderConfig,web.context,web.scope,web.handler]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@5675b3ee
+2012-10-17 02:23:27,485 [Launcher:/oflaDemo] INFO  o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@50c3d062: defining beans [placeholderConfig,web.context,web.scope,web.handler,demoService.service]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@5675b3ee
+2012-10-17 02:23:27,465 [Launcher:/] INFO  org.red5.server.Context - Setting parent bean factory as core
+2012-10-17 02:23:27,538 [Launcher:/vod] INFO  org.red5.server.Context - Setting parent bean factory as core
+2012-10-17 02:23:27,541 [Launcher:/live] INFO  org.red5.server.Context - Setting parent bean factory as core
+2012-10-17 02:23:27,541 [Launcher:/installer] INFO  org.red5.server.Context - Setting parent bean factory as core
+2012-10-17 02:23:27,542 [Launcher:/oflaDemo] INFO  org.red5.server.Context - Setting parent bean factory as core
+2012-10-17 02:23:27,646 [Launcher:/oflaDemo] INFO  org.red5.server.scope.WebScope - Set server [Server@252a78eemap[[empty]]]
+2012-10-17 02:23:27,650 [Launcher:/installer] INFO  org.red5.server.scope.WebScope - Set server [Server@252a78eemap[[empty]]]
+2012-10-17 02:23:27,646 [Launcher:/live] INFO  org.red5.server.scope.WebScope - Set server [Server@252a78eemap[[empty]]]
+2012-10-17 02:23:27,656 [Launcher:/] INFO  org.red5.server.scope.WebScope - Set server [Server@252a78eemap[[empty]]]
+2012-10-17 02:23:27,661 [Launcher:/vod] INFO  org.red5.server.scope.WebScope - Set server [Server@252a78eemap[[empty]]]
+2012-10-17 02:23:27,674 [Launcher:/installer] INFO  org.red5.server.Server - Add mapping global: default host: localhost context: installer
+2012-10-17 02:23:27,674 [Launcher:/installer] INFO  org.red5.server.Server - Add mapping global: default host: localhost:5080 context: installer
+2012-10-17 02:23:27,675 [Launcher:/] INFO  org.red5.server.Server - Add mapping global: default host:  context: 
+2012-10-17 02:23:27,675 [Launcher:/] WARN  org.red5.server.scope.Scope - Invalid scope was not added: [WebScope@14df33ae Depth = 1, Path = '/default', Name = '']
+2012-10-17 02:23:27,678 [Launcher:/live] INFO  org.red5.server.Server - Add mapping global: default host:  context: live
+2012-10-17 02:23:27,682 [Launcher:/vod] INFO  org.red5.server.Server - Add mapping global: default host:  context: vod
+2012-10-17 02:23:27,683 [Launcher:/oflaDemo] INFO  org.red5.server.Server - Add mapping global: default host:  context: oflaDemo
+2012-10-17 02:23:27,683 [Launcher:/oflaDemo] INFO  org.red5.server.Server - Add mapping global: default host: localhost context: oflaDemo
+2012-10-17 02:23:27,683 [Launcher:/oflaDemo] INFO  org.red5.server.Server - Add mapping global: default host: localhost:8088 context: oflaDemo
+2012-10-17 02:23:27,688 [Launcher:/oflaDemo] INFO  org.red5.server.Server - Add mapping global: default host: 127.0.0.1:8088 context: oflaDemo
+2012-10-17 02:23:27,699 [Launcher:/installer] INFO  org.red5.server.service.Installer - Installer service created
+2012-10-17 02:23:27,707 [Launcher:/oflaDemo] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appStart
+2012-10-17 02:23:46,086 [NioProcessor-2] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 02:23:46,089 [NioProcessor-2] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 02:23:46,091 [NioProcessor-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.87.54 c-client-id:0
+2012-10-17 02:23:46,092 [NioProcessor-2] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 02:23:46,892 [NioProcessor-2] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 02:23:46,893 [NioProcessor-2] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:23:47,645 [NioProcessor-2] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:23:58,263 [NioProcessor-2] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:23:58,673 [NioProcessor-2] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:23:58,674 [NioProcessor-2] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:23:58,675 [NioProcessor-2] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:23:58,677 [NioProcessor-2] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:23:58,913 [NioProcessor-2] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:23:58,913 [NioProcessor-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:126a5f13-29b2-4ac3-9037-df8fe10c25c8 x-file-name:streams/red5RecordDemo.flv
+2012-10-17 02:24:05,776 [NioProcessor-2] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:24:05,783 [NioProcessor-2] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:24:05,783 [NioProcessor-2] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:24:05,783 [NioProcessor-2] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:24:05,885 [NioProcessor-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:126a5f13-29b2-4ac3-9037-df8fe10c25c8 x-file-name:null
+2012-10-17 02:24:05,885 [NioProcessor-2] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:24:05,894 [NioProcessor-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:43788 sc-bytes:274325 x-sname:126a5f13-29b2-4ac3-9037-df8fe10c25c8 x-file-length:7 x-name:red5RecordDemo
+2012-10-17 02:24:08,420 [NioProcessor-2] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:24:08,810 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:566c1f67-06d8-49cc-aa9a-2cbe4862e3b5
+2012-10-17 02:24:09,728 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:566c1f67-06d8-49cc-aa9a-2cbe4862e3b5 x-name:red5RecordDemo
+2012-10-17 02:24:17,104 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:566c1f67-06d8-49cc-aa9a-2cbe4862e3b5 x-file-length:8 x-file-size:40553 x-name:red5RecordDemo
+2012-10-17 02:24:31,655 [NioProcessor-2] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:24:34,441 [NioProcessor-2] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:24:47,847 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:44332 sc-bytes:351893 x-sname:566c1f67-06d8-49cc-aa9a-2cbe4862e3b5
+2012-10-17 02:24:47,847 [NioProcessor-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.87.54 c-client-id:0
+2012-10-17 02:24:47,848 [NioProcessor-2] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 02:24:49,004 [NioProcessor-3] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 02:24:49,005 [NioProcessor-3] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 02:24:49,005 [NioProcessor-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.87.54 c-client-id:1
+2012-10-17 02:24:49,006 [NioProcessor-3] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 02:24:49,453 [NioProcessor-3] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 02:24:49,454 [NioProcessor-3] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:24:51,417 [NioProcessor-3] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:25:40,821 [NioProcessor-3] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:25:41,337 [NioProcessor-3] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:28:34,958 [NioProcessor-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.87.54 c-client-id:1
+2012-10-17 02:28:34,959 [NioProcessor-3] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 02:30:26,344 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 02:30:26,345 [NioProcessor-4] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 02:30:26,346 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.87.54 c-client-id:2
+2012-10-17 02:30:26,346 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 02:30:26,671 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 02:30:26,672 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:30:27,024 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:30:31,381 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:30:31,383 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:30:31,383 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:30:31,383 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:30:31,383 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:30:31,385 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:30:31,385 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:b5600c69-fe9b-4780-8958-263c03c90175 x-file-name:streams/red5RecordDemo.flv
+2012-10-17 02:30:37,348 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:30:37,781 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:30:39,794 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:30:39,795 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:30:39,795 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:30:39,795 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:30:39,795 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:30:39,796 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:b5600c69-fe9b-4780-8958-263c03c90175 x-file-name:null
+2012-10-17 02:30:39,797 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:30:39,797 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:264020 sc-bytes:310805 x-sname:b5600c69-fe9b-4780-8958-263c03c90175 x-file-length:8 x-name:red5RecordDemo
+2012-10-17 02:30:39,799 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:3e530004-2477-4d07-9a34-eb30895ad6f7
+2012-10-17 02:30:39,802 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:3e530004-2477-4d07-9a34-eb30895ad6f7 x-name:red5RecordDemo
+2012-10-17 02:30:39,805 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:3e530004-2477-4d07-9a34-eb30895ad6f7 x-file-length:0 x-file-size:258448 x-name:red5RecordDemo
+2012-10-17 02:30:54,759 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:30:54,760 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:264158 sc-bytes:311811 x-sname:3e530004-2477-4d07-9a34-eb30895ad6f7
+2012-10-17 02:30:54,761 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:30:54,762 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:30:54,763 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:30:54,763 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:30:54,763 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:30:54,765 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:30:54,765 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:f3f560eb-07b4-4294-a667-5c1f6aec2184 x-file-name:streams/red5RecordDemo.flv
+2012-10-17 02:31:01,380 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:31:01,380 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:31:01,381 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:31:01,381 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:31:01,383 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:31:01,384 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:f3f560eb-07b4-4294-a667-5c1f6aec2184 x-file-name:null
+2012-10-17 02:31:01,385 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:31:01,385 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:430481 sc-bytes:312296 x-sname:f3f560eb-07b4-4294-a667-5c1f6aec2184 x-file-length:6 x-name:red5RecordDemo
+2012-10-17 02:31:01,388 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:ef65deea-c329-44cd-93b0-f5921ff96ed9
+2012-10-17 02:31:01,392 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:ef65deea-c329-44cd-93b0-f5921ff96ed9 x-name:red5RecordDemo
+2012-10-17 02:31:01,396 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:ef65deea-c329-44cd-93b0-f5921ff96ed9 x-file-length:0 x-file-size:146346 x-name:red5RecordDemo
+2012-10-17 02:31:01,605 [NioProcessor-4] ERROR o.r.server.net.rtmp.BaseRTMPHandler - Exception
+java.lang.ClassCastException: org.red5.server.stream.PlaylistSubscriberStream cannot be cast to org.red5.server.api.event.IEventDispatcher
+	at org.red5.server.net.rtmp.BaseRTMPHandler.messageReceived(BaseRTMPHandler.java:170) ~[red5.jar:na]
+	at org.red5.server.net.rtmp.RTMPMinaIoHandler.messageReceived(RTMPMinaIoHandler.java:164) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:716) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:427) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:245) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.red5.server.net.rtmpe.RTMPEIoFilter.messageReceived(RTMPEIoFilter.java:124) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:119) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:426) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:697) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:651) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:640) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1111) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64) [mina-core-2.0.5.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110) [na:1.6.0_24]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603) [na:1.6.0_24]
+	at java.lang.Thread.run(Thread.java:679) [na:1.6.0_24]
+2012-10-17 02:31:09,605 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:31:09,606 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:31:09,606 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:444849 sc-bytes:313500 x-sname:ef65deea-c329-44cd-93b0-f5921ff96ed9
+2012-10-17 02:31:09,609 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:31:09,609 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:31:09,609 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:31:09,610 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:31:09,612 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:31:09,612 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:6554b745-9ac3-4563-819b-ca512e6fba29 x-file-name:streams/red5RecordDemo.flv
+2012-10-17 02:31:14,600 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:31:14,600 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:31:14,600 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:31:14,601 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:31:14,601 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:31:14,602 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:6554b745-9ac3-4563-819b-ca512e6fba29 x-file-name:null
+2012-10-17 02:31:14,602 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:31:14,602 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:626506 sc-bytes:313990 x-sname:6554b745-9ac3-4563-819b-ca512e6fba29 x-file-length:4 x-name:red5RecordDemo
+2012-10-17 02:31:14,614 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:bc079c18-5e75-4752-8794-e5a93e002ea0
+2012-10-17 02:31:14,616 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:bc079c18-5e75-4752-8794-e5a93e002ea0 x-name:red5RecordDemo
+2012-10-17 02:31:14,620 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:bc079c18-5e75-4752-8794-e5a93e002ea0 x-file-length:0 x-file-size:177218 x-name:red5RecordDemo
+2012-10-17 02:31:15,485 [NioProcessor-4] ERROR o.r.server.net.rtmp.BaseRTMPHandler - Exception
+java.lang.ClassCastException: org.red5.server.stream.PlaylistSubscriberStream cannot be cast to org.red5.server.api.event.IEventDispatcher
+	at org.red5.server.net.rtmp.BaseRTMPHandler.messageReceived(BaseRTMPHandler.java:170) ~[red5.jar:na]
+	at org.red5.server.net.rtmp.RTMPMinaIoHandler.messageReceived(RTMPMinaIoHandler.java:164) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:716) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:427) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:245) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.red5.server.net.rtmpe.RTMPEIoFilter.messageReceived(RTMPEIoFilter.java:124) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:119) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:426) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:697) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:651) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:640) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1111) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64) [mina-core-2.0.5.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110) [na:1.6.0_24]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603) [na:1.6.0_24]
+	at java.lang.Thread.run(Thread.java:679) [na:1.6.0_24]
+2012-10-17 02:31:42,948 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:31:42,949 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:654713 sc-bytes:315036 x-sname:bc079c18-5e75-4752-8794-e5a93e002ea0
+2012-10-17 02:31:42,949 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:31:42,951 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:31:42,951 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:31:42,952 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:31:42,952 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:31:42,954 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:31:42,954 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:fc19e779-f226-47be-a82b-a6bfbac0a593 x-file-name:streams/red5RecordDemo.flv
+2012-10-17 02:31:55,998 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:31:55,998 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:31:55,999 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:31:55,999 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:31:55,999 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:31:56,000 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:fc19e779-f226-47be-a82b-a6bfbac0a593 x-file-name:null
+2012-10-17 02:31:56,001 [NioProcessor-4] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:31:56,001 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:1059390 sc-bytes:315531 x-sname:fc19e779-f226-47be-a82b-a6bfbac0a593 x-file-length:13 x-name:red5RecordDemo
+2012-10-17 02:31:56,003 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:a96d10c4-f17d-4b2e-9f53-05c80e4fbe5e
+2012-10-17 02:31:56,006 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:a96d10c4-f17d-4b2e-9f53-05c80e4fbe5e x-name:red5RecordDemo
+2012-10-17 02:31:56,010 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:a96d10c4-f17d-4b2e-9f53-05c80e4fbe5e x-file-length:0 x-file-size:388248 x-name:red5RecordDemo
+2012-10-17 02:31:56,363 [NioProcessor-4] ERROR o.r.server.net.rtmp.BaseRTMPHandler - Exception
+java.lang.ClassCastException: org.red5.server.stream.PlaylistSubscriberStream cannot be cast to org.red5.server.api.event.IEventDispatcher
+	at org.red5.server.net.rtmp.BaseRTMPHandler.messageReceived(BaseRTMPHandler.java:170) ~[red5.jar:na]
+	at org.red5.server.net.rtmp.RTMPMinaIoHandler.messageReceived(RTMPMinaIoHandler.java:164) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:716) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:427) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:245) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.red5.server.net.rtmpe.RTMPEIoFilter.messageReceived(RTMPEIoFilter.java:124) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:119) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:426) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:697) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:651) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:640) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1111) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64) [mina-core-2.0.5.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110) [na:1.6.0_24]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603) [na:1.6.0_24]
+	at java.lang.Thread.run(Thread.java:679) [na:1.6.0_24]
+2012-10-17 02:32:36,674 [NioProcessor-4] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action deleteStream
+2012-10-17 02:32:36,675 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:1076432 sc-bytes:316626 x-sname:a96d10c4-f17d-4b2e-9f53-05c80e4fbe5e
+2012-10-17 02:32:36,693 [NioProcessor-4] WARN  o.r.s.net.rtmp.RTMPMinaIoHandler - Exception caught Connection reset by peer
+2012-10-17 02:32:36,693 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.87.54 c-client-id:2
+2012-10-17 02:32:36,694 [NioProcessor-4] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 02:33:38,023 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 02:33:38,023 [NioProcessor-5] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 02:33:38,024 [NioProcessor-5] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.87.54 c-client-id:3
+2012-10-17 02:33:38,024 [NioProcessor-5] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 02:33:38,324 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 02:33:38,324 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:33:38,639 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:33:42,950 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:33:43,245 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:33:44,792 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:33:44,794 [NioProcessor-5] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:33:44,794 [NioProcessor-5] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:33:44,794 [NioProcessor-5] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:33:44,795 [NioProcessor-5] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:33:44,796 [NioProcessor-5] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:33:44,796 [NioProcessor-5] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:c0bff6a8-4077-4fb7-8757-a5029ac42b2d x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 02:33:53,567 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:33:53,568 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:33:53,568 [NioProcessor-5] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:33:53,568 [NioProcessor-5] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:33:53,569 [NioProcessor-5] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:33:53,569 [NioProcessor-5] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:c0bff6a8-4077-4fb7-8757-a5029ac42b2d x-file-name:null
+2012-10-17 02:33:53,570 [NioProcessor-5] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:33:53,570 [NioProcessor-5] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:390374 sc-bytes:310798 x-sname:c0bff6a8-4077-4fb7-8757-a5029ac42b2d x-file-length:8 x-name:red5RecordDemo1
+2012-10-17 02:33:53,572 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:83e36d6e-5a0e-4a9d-af1e-09c7786e77f4
+2012-10-17 02:33:53,575 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:83e36d6e-5a0e-4a9d-af1e-09c7786e77f4 x-name:red5RecordDemo1
+2012-10-17 02:33:53,580 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:83e36d6e-5a0e-4a9d-af1e-09c7786e77f4 x-file-length:0 x-file-size:370278 x-name:red5RecordDemo1
+2012-10-17 02:33:54,037 [NioProcessor-5] ERROR o.r.server.net.rtmp.BaseRTMPHandler - Exception
+java.lang.ClassCastException: org.red5.server.stream.PlaylistSubscriberStream cannot be cast to org.red5.server.api.event.IEventDispatcher
+	at org.red5.server.net.rtmp.BaseRTMPHandler.messageReceived(BaseRTMPHandler.java:170) ~[red5.jar:na]
+	at org.red5.server.net.rtmp.RTMPMinaIoHandler.messageReceived(RTMPMinaIoHandler.java:164) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:716) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:427) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:245) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.red5.server.net.rtmpe.RTMPEIoFilter.messageReceived(RTMPEIoFilter.java:124) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:119) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:426) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:697) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:651) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:640) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1111) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64) [mina-core-2.0.5.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110) [na:1.6.0_24]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603) [na:1.6.0_24]
+	at java.lang.Thread.run(Thread.java:679) [na:1.6.0_24]
+2012-10-17 02:34:53,769 [NioProcessor-5] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action deleteStream
+2012-10-17 02:34:53,770 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:412360 sc-bytes:311966 x-sname:83e36d6e-5a0e-4a9d-af1e-09c7786e77f4
+2012-10-17 02:34:53,788 [NioProcessor-5] WARN  o.r.s.net.rtmp.RTMPMinaIoHandler - Exception caught Connection reset by peer
+2012-10-17 02:34:53,789 [NioProcessor-5] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.87.54 c-client-id:3
+2012-10-17 02:34:53,789 [NioProcessor-5] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 02:36:12,024 [NioProcessor-6] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 02:36:12,025 [NioProcessor-6] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 02:36:12,025 [NioProcessor-6] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.87.54 c-client-id:4
+2012-10-17 02:36:12,025 [NioProcessor-6] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 02:36:12,373 [NioProcessor-6] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 02:36:12,373 [NioProcessor-6] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:36:12,708 [NioProcessor-6] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:36:17,033 [NioProcessor-6] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:36:17,366 [NioProcessor-6] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:36:36,199 [NioProcessor-6] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:36:36,202 [NioProcessor-6] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:36:36,202 [NioProcessor-6] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:36:36,202 [NioProcessor-6] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:36:36,202 [NioProcessor-6] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:36:36,205 [NioProcessor-6] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:36:36,205 [NioProcessor-6] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:19e0ceda-2b26-47c8-8c36-c75cf4f1cf5d x-file-name:streams/red5RecordDemo.flv
+2012-10-17 02:36:43,535 [NioProcessor-6] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:36:43,536 [NioProcessor-6] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:36:43,536 [NioProcessor-6] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:36:43,536 [NioProcessor-6] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:36:43,537 [NioProcessor-6] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:19e0ceda-2b26-47c8-8c36-c75cf4f1cf5d x-file-name:null
+2012-10-17 02:36:43,537 [NioProcessor-6] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:36:43,537 [NioProcessor-6] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:40706 sc-bytes:310844 x-sname:19e0ceda-2b26-47c8-8c36-c75cf4f1cf5d x-file-length:7 x-name:red5RecordDemo
+2012-10-17 02:36:52,470 [NioProcessor-6] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:36:52,472 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:57da657b-8554-437a-9a5d-7be566fa1bc2
+2012-10-17 02:36:52,479 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:57da657b-8554-437a-9a5d-7be566fa1bc2 x-name:red5RecordDemo
+2012-10-17 02:36:59,692 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:57da657b-8554-437a-9a5d-7be566fa1bc2 x-file-length:7 x-file-size:37162 x-name:red5RecordDemo
+2012-10-17 02:37:12,931 [NioProcessor-6] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.87.54 c-client-id:4
+2012-10-17 02:37:12,932 [NioProcessor-6] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 02:37:12,933 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:40871 sc-bytes:346903 x-sname:57da657b-8554-437a-9a5d-7be566fa1bc2
+2012-10-17 02:37:19,460 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 02:37:19,460 [NioProcessor-7] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 02:37:19,461 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.87.54 c-client-id:5
+2012-10-17 02:37:19,461 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 02:37:19,761 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 02:37:19,761 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:37:20,153 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:37:23,503 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:37:23,800 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:37:24,489 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:37:24,492 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:37:24,492 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:37:24,492 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:37:24,492 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:37:24,501 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:37:24,502 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:2b939dbd-6c86-459b-9b50-f65d3800883b x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 02:37:31,537 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:37:31,538 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:37:31,539 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:37:31,539 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:37:31,540 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:37:31,541 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:2b939dbd-6c86-459b-9b50-f65d3800883b x-file-name:null
+2012-10-17 02:37:31,541 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:37:31,541 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:299534 sc-bytes:310786 x-sname:2b939dbd-6c86-459b-9b50-f65d3800883b x-file-length:7 x-name:red5RecordDemo1
+2012-10-17 02:37:31,547 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:8348e55e-7aa6-4e07-be92-6b084246c103
+2012-10-17 02:37:31,563 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:8348e55e-7aa6-4e07-be92-6b084246c103 x-name:red5RecordDemo1
+2012-10-17 02:37:31,902 [NioProcessor-7] ERROR o.r.server.net.rtmp.BaseRTMPHandler - Exception
+java.lang.ClassCastException: org.red5.server.stream.PlaylistSubscriberStream cannot be cast to org.red5.server.api.event.IEventDispatcher
+	at org.red5.server.net.rtmp.BaseRTMPHandler.messageReceived(BaseRTMPHandler.java:170) ~[red5.jar:na]
+	at org.red5.server.net.rtmp.RTMPMinaIoHandler.messageReceived(RTMPMinaIoHandler.java:164) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:716) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:427) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:245) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.red5.server.net.rtmpe.RTMPEIoFilter.messageReceived(RTMPEIoFilter.java:124) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:119) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:426) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:697) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:651) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:640) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1111) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64) [mina-core-2.0.5.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110) [na:1.6.0_24]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603) [na:1.6.0_24]
+	at java.lang.Thread.run(Thread.java:679) [na:1.6.0_24]
+2012-10-17 02:37:36,576 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:37:36,577 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:37:36,580 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:37:36,581 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:37:36,580 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:318731 sc-bytes:600071 x-sname:8348e55e-7aa6-4e07-be92-6b084246c103
+2012-10-17 02:37:36,581 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:37:36,582 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:37:36,584 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:37:36,585 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:2a612989-6e13-4e5c-b751-5ab62cbe6459 x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 02:37:44,519 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:37:44,520 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:37:44,521 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:37:44,521 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:37:44,521 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:37:44,522 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:2a612989-6e13-4e5c-b751-5ab62cbe6459 x-file-name:null
+2012-10-17 02:37:44,523 [NioProcessor-7] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:37:44,523 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:653012 sc-bytes:600568 x-sname:2a612989-6e13-4e5c-b751-5ab62cbe6459 x-file-length:7 x-name:red5RecordDemo1
+2012-10-17 02:37:44,527 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:9f6a5171-060b-423c-8842-cd81b7f94d2e
+2012-10-17 02:37:44,530 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:9f6a5171-060b-423c-8842-cd81b7f94d2e x-name:red5RecordDemo1
+2012-10-17 02:37:44,535 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:9f6a5171-060b-423c-8842-cd81b7f94d2e x-file-length:0 x-file-size:320998 x-name:red5RecordDemo1
+2012-10-17 02:37:44,725 [NioProcessor-7] ERROR o.r.server.net.rtmp.BaseRTMPHandler - Exception
+java.lang.ClassCastException: org.red5.server.stream.PlaylistSubscriberStream cannot be cast to org.red5.server.api.event.IEventDispatcher
+	at org.red5.server.net.rtmp.BaseRTMPHandler.messageReceived(BaseRTMPHandler.java:170) ~[red5.jar:na]
+	at org.red5.server.net.rtmp.RTMPMinaIoHandler.messageReceived(RTMPMinaIoHandler.java:164) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:716) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:427) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:245) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.red5.server.net.rtmpe.RTMPEIoFilter.messageReceived(RTMPEIoFilter.java:124) [red5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1200(DefaultIoFilterChain.java:46) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:796) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:119) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:434) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:426) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:697) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:651) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:640) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$600(AbstractPollingIoProcessor.java:67) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1111) [mina-core-2.0.5.jar:na]
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64) [mina-core-2.0.5.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110) [na:1.6.0_24]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603) [na:1.6.0_24]
+	at java.lang.Thread.run(Thread.java:679) [na:1.6.0_24]
+2012-10-17 02:37:52,906 [NioProcessor-7] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action deleteStream
+2012-10-17 02:37:52,908 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:665131 sc-bytes:601595 x-sname:9f6a5171-060b-423c-8842-cd81b7f94d2e
+2012-10-17 02:37:52,926 [NioProcessor-7] WARN  o.r.s.net.rtmp.RTMPMinaIoHandler - Exception caught Connection reset by peer
+2012-10-17 02:37:52,927 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.87.54 c-client-id:5
+2012-10-17 02:37:52,927 [NioProcessor-7] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 02:41:43,333 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 02:41:43,334 [NioProcessor-8] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 02:41:43,335 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.87.54 c-client-id:6
+2012-10-17 02:41:43,335 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 02:41:43,637 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 02:41:43,638 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:41:43,952 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:41:46,993 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:41:47,286 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 02:41:49,827 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:41:49,830 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:41:49,830 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:41:49,830 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:41:49,831 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:41:49,833 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:41:49,833 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:1d9627ad-eb96-4133-8ff9-d1167c5c3ae0 x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 02:41:56,504 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:41:56,505 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:41:56,505 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:41:56,505 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:41:56,506 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:1d9627ad-eb96-4133-8ff9-d1167c5c3ae0 x-file-name:null
+2012-10-17 02:41:56,506 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:41:56,506 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:286297 sc-bytes:310800 x-sname:1d9627ad-eb96-4133-8ff9-d1167c5c3ae0 x-file-length:6 x-name:red5RecordDemo1
+2012-10-17 02:42:00,703 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:42:00,709 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:c1d22290-913e-4d9a-8a44-cefbf0a1a46f
+2012-10-17 02:42:00,711 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:c1d22290-913e-4d9a-8a44-cefbf0a1a46f x-name:red5RecordDemo1
+2012-10-17 02:42:06,597 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:c1d22290-913e-4d9a-8a44-cefbf0a1a46f x-file-length:5 x-file-size:275141 x-name:red5RecordDemo1
+2012-10-17 02:42:18,159 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:42:18,162 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 02:42:18,164 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:308384 sc-bytes:587294 x-sname:c1d22290-913e-4d9a-8a44-cefbf0a1a46f
+2012-10-17 02:42:18,164 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:42:18,165 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 02:42:18,165 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:42:18,165 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 02:42:18,172 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 02:42:18,173 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.87.54 x-sname:5c9fc670-5351-4ccb-97bc-c876867e8c9f x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 02:42:29,901 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 02:42:29,902 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 02:42:29,902 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:42:29,902 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:42:29,903 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.87.54 x-sname:5c9fc670-5351-4ccb-97bc-c876867e8c9f x-file-name:null
+2012-10-17 02:42:29,904 [NioProcessor-8] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 02:42:29,904 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.87.54 cs-bytes:802062 sc-bytes:587789 x-sname:5c9fc670-5351-4ccb-97bc-c876867e8c9f x-file-length:11 x-name:red5RecordDemo1
+2012-10-17 02:42:33,712 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:42:33,724 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:e02c7a5d-b687-4149-bab6-fb3501555917
+2012-10-17 02:42:33,746 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:e02c7a5d-b687-4149-bab6-fb3501555917 x-name:red5RecordDemo1
+2012-10-17 02:42:44,555 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:e02c7a5d-b687-4149-bab6-fb3501555917 x-file-length:10 x-file-size:471228 x-name:red5RecordDemo1
+2012-10-17 02:43:12,130 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:43:12,368 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:e02c7a5d-b687-4149-bab6-fb3501555917 x-name:red5RecordDemo1
+2012-10-17 02:43:12,368 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 02:43:12,369 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:809077 sc-bytes:906265 x-sname:e02c7a5d-b687-4149-bab6-fb3501555917 x-file-length:38 x-file-size:471228 x-name:red5RecordDemo1
+2012-10-17 02:43:12,372 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.87.54 x-sname:e02c7a5d-b687-4149-bab6-fb3501555917 x-name:red5RecordDemo1
+2012-10-17 02:43:23,178 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:e02c7a5d-b687-4149-bab6-fb3501555917 x-file-length:49 x-file-size:471228 x-name:red5RecordDemo1
+2012-10-17 02:43:45,091 [NioProcessor-8] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action deleteStream
+2012-10-17 02:43:45,092 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.87.54 cs-bytes:809231 sc-bytes:1225125 x-sname:e02c7a5d-b687-4149-bab6-fb3501555917
+2012-10-17 02:43:45,110 [NioProcessor-8] WARN  o.r.s.net.rtmp.RTMPMinaIoHandler - Exception caught Connection reset by peer
+2012-10-17 02:43:45,111 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.87.54 c-client-id:6
+2012-10-17 02:43:45,111 [NioProcessor-8] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 12:07:55,186 [http-0.0.0.0-6789-1] ERROR o.a.c.connector.CoyoteAdapter - Invalid URI encoding; using HTTP default
+2012-10-17 12:08:56,348 [NioProcessor-9] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 12:08:56,349 [NioProcessor-9] INFO  o.r.server.net.rtmp.RTMPConnection - Setting object encoding to AMF3
+2012-10-17 12:08:56,349 [NioProcessor-9] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@5d4fa79d Depth = 1, Path = '/default', Name = 'installer']
+2012-10-17 12:08:56,350 [NioProcessor-9] INFO  o.r.s.adapter.ApplicationAdapter - W3C x-category:session x-event:connect c-ip:122.167.114.218 c-client-id:7
+2012-10-17 12:08:57,281 [NioProcessor-9] INFO  org.red5.server.service.Installer - JRE version detected: 1.6
+2012-10-17 12:10:08,173 [NioProcessor-9] INFO  o.r.s.adapter.ApplicationAdapter - W3C x-category:session x-event:disconnect c-ip:122.167.114.218 c-client-id:7
+2012-10-17 14:19:48,894 [NioProcessor-10] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 14:19:48,895 [NioProcessor-10] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 14:19:48,895 [NioProcessor-10] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.114.218 c-client-id:8
+2012-10-17 14:19:48,895 [NioProcessor-10] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 14:19:49,199 [NioProcessor-10] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 14:19:49,199 [NioProcessor-10] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:19:49,538 [NioProcessor-10] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:19:52,423 [NioProcessor-10] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:19:52,721 [NioProcessor-10] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:20:12,823 [NioProcessor-10] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 14:20:12,826 [NioProcessor-10] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:20:12,826 [NioProcessor-10] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 14:20:12,826 [NioProcessor-10] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:20:12,826 [NioProcessor-10] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:20:12,849 [NioProcessor-10] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 14:20:12,849 [NioProcessor-10] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.114.218 x-sname:cee76d4d-f36d-41b2-9a39-8d73a2c4b2ba x-file-name:streams/red5RecordDemo.flv
+2012-10-17 14:20:28,362 [NioProcessor-10] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 14:20:28,363 [NioProcessor-10] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 14:20:28,363 [NioProcessor-10] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:20:28,363 [NioProcessor-10] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:20:28,364 [NioProcessor-10] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.114.218 x-sname:cee76d4d-f36d-41b2-9a39-8d73a2c4b2ba x-file-name:null
+2012-10-17 14:20:28,364 [NioProcessor-10] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:20:28,365 [NioProcessor-10] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.114.218 cs-bytes:112412 sc-bytes:310844 x-sname:cee76d4d-f36d-41b2-9a39-8d73a2c4b2ba x-file-length:15 x-name:red5RecordDemo
+2012-10-17 14:20:31,148 [NioProcessor-10] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 14:20:31,150 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.114.218 x-sname:74031d4f-95fd-4f8f-a2f8-5cc3095f958c
+2012-10-17 14:20:31,182 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.114.218 x-sname:74031d4f-95fd-4f8f-a2f8-5cc3095f958c x-name:red5RecordDemo
+2012-10-17 14:20:46,484 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:74031d4f-95fd-4f8f-a2f8-5cc3095f958c x-file-length:15 x-file-size:110155 x-name:red5RecordDemo
+2012-10-17 14:21:10,041 [NioProcessor-10] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.114.218 c-client-id:8
+2012-10-17 14:21:10,042 [NioProcessor-10] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 14:21:10,042 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.114.218 cs-bytes:112626 sc-bytes:420973 x-sname:74031d4f-95fd-4f8f-a2f8-5cc3095f958c
+2012-10-17 14:25:13,503 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 14:25:13,503 [NioProcessor-11] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 14:25:13,504 [NioProcessor-11] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.114.218 c-client-id:9
+2012-10-17 14:25:13,504 [NioProcessor-11] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 14:25:13,802 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 14:25:13,803 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:25:14,116 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:25:16,446 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:25:16,745 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:25:19,998 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 14:25:20,000 [NioProcessor-11] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:25:20,000 [NioProcessor-11] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 14:25:20,000 [NioProcessor-11] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:25:20,000 [NioProcessor-11] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:25:20,002 [NioProcessor-11] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 14:25:20,002 [NioProcessor-11] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.114.218 x-sname:ff697e1a-30ac-4a09-9a28-80514009f38a x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 14:25:30,355 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 14:25:30,356 [NioProcessor-11] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 14:25:30,356 [NioProcessor-11] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:25:30,356 [NioProcessor-11] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:25:30,357 [NioProcessor-11] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.114.218 x-sname:ff697e1a-30ac-4a09-9a28-80514009f38a x-file-name:null
+2012-10-17 14:25:30,357 [NioProcessor-11] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:25:30,357 [NioProcessor-11] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.114.218 cs-bytes:242644 sc-bytes:310788 x-sname:ff697e1a-30ac-4a09-9a28-80514009f38a x-file-length:10 x-name:red5RecordDemo1
+2012-10-17 14:25:32,043 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 14:25:32,046 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.114.218 x-sname:ebcc5c93-95c6-4a0e-a38f-76688763dce8
+2012-10-17 14:25:32,053 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.114.218 x-sname:ebcc5c93-95c6-4a0e-a38f-76688763dce8 x-name:red5RecordDemo1
+2012-10-17 14:25:42,378 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:ebcc5c93-95c6-4a0e-a38f-76688763dce8 x-file-length:10 x-file-size:237884 x-name:red5RecordDemo1
+2012-10-17 14:25:44,356 [NioProcessor-11] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action deleteStream
+2012-10-17 14:25:44,357 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.114.218 cs-bytes:242796 sc-bytes:478702 x-sname:ebcc5c93-95c6-4a0e-a38f-76688763dce8
+2012-10-17 14:25:44,376 [NioProcessor-11] WARN  o.r.s.net.rtmp.RTMPMinaIoHandler - Exception caught Connection reset by peer
+2012-10-17 14:25:44,376 [NioProcessor-11] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.114.218 c-client-id:9
+2012-10-17 14:25:44,376 [NioProcessor-11] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 14:27:09,475 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 14:27:09,476 [NioProcessor-12] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 14:27:09,476 [NioProcessor-12] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.114.218 c-client-id:10
+2012-10-17 14:27:09,477 [NioProcessor-12] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 14:27:09,777 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 14:27:09,777 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:27:10,091 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:27:12,396 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:27:12,689 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:27:14,961 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 14:27:14,966 [NioProcessor-12] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:27:14,967 [NioProcessor-12] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 14:27:14,970 [NioProcessor-12] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:27:14,970 [NioProcessor-12] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:27:14,972 [NioProcessor-12] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 14:27:14,972 [NioProcessor-12] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.114.218 x-sname:8c682a03-b2c2-4518-a161-0e95553d530d x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 14:27:23,917 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 14:27:23,918 [NioProcessor-12] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 14:27:23,918 [NioProcessor-12] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:27:23,918 [NioProcessor-12] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:27:23,919 [NioProcessor-12] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.114.218 x-sname:8c682a03-b2c2-4518-a161-0e95553d530d x-file-name:null
+2012-10-17 14:27:23,919 [NioProcessor-12] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:27:23,920 [NioProcessor-12] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.114.218 cs-bytes:393373 sc-bytes:310798 x-sname:8c682a03-b2c2-4518-a161-0e95553d530d x-file-length:8 x-name:red5RecordDemo1
+2012-10-17 14:27:25,740 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 14:27:25,742 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.114.218 x-sname:29b484f8-5fe6-4592-922f-9c4c88e27c7b
+2012-10-17 14:27:25,747 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.114.218 x-sname:29b484f8-5fe6-4592-922f-9c4c88e27c7b x-name:red5RecordDemo1
+2012-10-17 14:27:33,913 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:29b484f8-5fe6-4592-922f-9c4c88e27c7b x-file-length:8 x-file-size:385914 x-name:red5RecordDemo1
+2012-10-17 14:27:37,858 [NioProcessor-12] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action deleteStream
+2012-10-17 14:27:37,860 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.114.218 cs-bytes:420938 sc-bytes:612118 x-sname:29b484f8-5fe6-4592-922f-9c4c88e27c7b
+2012-10-17 14:27:37,878 [NioProcessor-12] WARN  o.r.s.net.rtmp.RTMPMinaIoHandler - Exception caught Connection reset by peer
+2012-10-17 14:27:37,879 [NioProcessor-12] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.114.218 c-client-id:10
+2012-10-17 14:27:37,879 [NioProcessor-12] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 14:31:07,922 [NioProcessor-13] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 14:31:07,922 [NioProcessor-13] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 14:31:07,923 [NioProcessor-13] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.167.114.218 c-client-id:11
+2012-10-17 14:31:07,923 [NioProcessor-13] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 14:31:08,300 [NioProcessor-13] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 14:31:08,300 [NioProcessor-13] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:31:08,622 [NioProcessor-13] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:31:11,708 [NioProcessor-13] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:31:12,034 [NioProcessor-13] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:31:23,386 [NioProcessor-13] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 14:31:23,388 [NioProcessor-13] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:31:23,388 [NioProcessor-13] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 14:31:23,388 [NioProcessor-13] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:31:23,388 [NioProcessor-13] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:31:23,391 [NioProcessor-13] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 14:31:23,391 [NioProcessor-13] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.167.114.218 x-sname:78cfad08-b512-4407-b7ca-65af91789f1b x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 14:31:41,815 [NioProcessor-13] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 14:31:41,816 [NioProcessor-13] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 14:31:41,816 [NioProcessor-13] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:31:41,816 [NioProcessor-13] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:31:41,817 [NioProcessor-13] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.167.114.218 x-sname:78cfad08-b512-4407-b7ca-65af91789f1b x-file-name:null
+2012-10-17 14:31:41,817 [NioProcessor-13] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:31:41,817 [NioProcessor-13] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.167.114.218 cs-bytes:507652 sc-bytes:310838 x-sname:78cfad08-b512-4407-b7ca-65af91789f1b x-file-length:18 x-name:red5RecordDemo1
+2012-10-17 14:31:45,037 [NioProcessor-13] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 14:31:45,041 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.114.218 x-sname:41f81fe2-d1a6-4dcd-be46-27f038896bda
+2012-10-17 14:31:45,050 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.167.114.218 x-sname:41f81fe2-d1a6-4dcd-be46-27f038896bda x-name:red5RecordDemo1
+2012-10-17 14:32:03,406 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:41f81fe2-d1a6-4dcd-be46-27f038896bda x-file-length:18 x-file-size:501222 x-name:red5RecordDemo1
+2012-10-17 14:32:39,355 [NioProcessor-13] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.167.114.218 c-client-id:11
+2012-10-17 14:32:39,355 [NioProcessor-13] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 14:32:39,355 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.167.114.218 cs-bytes:507928 sc-bytes:795185 x-sname:41f81fe2-d1a6-4dcd-be46-27f038896bda
+2012-10-17 14:34:52,090 [NioProcessor-14] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 14:34:52,091 [NioProcessor-14] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 14:34:52,091 [NioProcessor-14] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.179.107.244 c-client-id:12
+2012-10-17 14:34:52,091 [NioProcessor-14] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 14:34:53,799 [NioProcessor-14] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 14:34:53,799 [NioProcessor-14] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:34:54,167 [NioProcessor-14] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:34:58,861 [NioProcessor-14] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:34:59,485 [NioProcessor-14] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:35:33,715 [NioProcessor-14] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action deleteStream
+2012-10-17 14:35:33,721 [NioProcessor-14] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.179.107.244 c-client-id:12
+2012-10-17 14:35:33,721 [NioProcessor-14] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-17 14:40:40,940 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-17 14:40:40,940 [NioProcessor-15] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-17 14:40:40,941 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:122.179.107.244 c-client-id:13
+2012-10-17 14:40:40,941 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-17 14:40:41,596 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-17 14:40:41,596 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:40:42,267 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:40:49,057 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:40:52,076 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-17 14:41:01,672 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 14:41:01,676 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:41:01,677 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 14:41:01,677 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:41:01,677 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:41:01,684 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 14:41:01,684 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.179.107.244 x-sname:e382c381-1755-49b6-98c6-3d948bcaa823 x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 14:41:35,437 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 14:41:35,438 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 14:41:35,439 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:41:35,439 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:41:35,439 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.179.107.244 x-sname:e382c381-1755-49b6-98c6-3d948bcaa823 x-file-name:null
+2012-10-17 14:41:35,440 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:41:35,440 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.179.107.244 cs-bytes:1205412 sc-bytes:310891 x-sname:e382c381-1755-49b6-98c6-3d948bcaa823 x-file-length:33 x-name:red5RecordDemo1
+2012-10-17 14:41:35,957 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 14:41:35,961 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.179.107.244 x-sname:d92fd838-a5ae-4815-8971-7eb35283f75d
+2012-10-17 14:41:36,002 [pool-5-thread-3] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.179.107.244 x-sname:d92fd838-a5ae-4815-8971-7eb35283f75d x-name:red5RecordDemo1
+2012-10-17 14:42:06,613 [pool-5-thread-4] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:d92fd838-a5ae-4815-8971-7eb35283f75d x-file-length:30 x-file-size:1203399 x-name:red5RecordDemo1
+2012-10-17 14:42:58,865 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 14:42:58,867 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.179.107.244 cs-bytes:1205906 sc-bytes:1513531 x-sname:d92fd838-a5ae-4815-8971-7eb35283f75d
+2012-10-17 14:43:04,454 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action publish
+2012-10-17 14:43:04,456 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:43:04,457 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Stream start
+2012-10-17 14:43:04,457 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:43:04,458 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider connect
+2012-10-17 14:43:04,460 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Consumer connect
+2012-10-17 14:43:04,460 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-start c-ip:122.179.107.244 x-sname:de4f3217-de57-4b2d-aa52-cc21c053eb2c x-file-name:streams/red5RecordDemo1.flv
+2012-10-17 14:43:43,166 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 14:43:43,168 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Stream close
+2012-10-17 14:43:43,168 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:43:43,168 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:43:43,169 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:record-stop c-ip:122.179.107.244 x-sname:de4f3217-de57-4b2d-aa52-cc21c053eb2c x-file-name:null
+2012-10-17 14:43:43,169 [NioProcessor-15] INFO  o.r.s.stream.ClientBroadcastStream - Provider disconnect
+2012-10-17 14:43:43,169 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:unpublish c-ip:122.179.107.244 cs-bytes:2729666 sc-bytes:1513909 x-sname:de4f3217-de57-4b2d-aa52-cc21c053eb2c x-file-length:38 x-name:red5RecordDemo1
+2012-10-17 14:43:45,745 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action play
+2012-10-17 14:43:45,754 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.179.107.244 x-sname:d6b88b26-bfa4-4e07-935d-ddd1340ece63
+2012-10-17 14:43:45,766 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:play c-ip:122.179.107.244 x-sname:d6b88b26-bfa4-4e07-935d-ddd1340ece63 x-name:red5RecordDemo1
+2012-10-17 14:44:24,283 [pool-5-thread-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip: cs-bytes:-1 sc-bytes:-1 x-sname:d6b88b26-bfa4-4e07-935d-ddd1340ece63 x-file-length:38 x-file-size:1525233 x-name:red5RecordDemo1
+2012-10-17 14:44:24,822 [NioProcessor-15] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action closeStream
+2012-10-17 14:44:24,824 [pool-5-thread-2] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:stream x-event:stop c-ip:122.179.107.244 cs-bytes:2729907 sc-bytes:1804925 x-sname:d6b88b26-bfa4-4e07-935d-ddd1340ece63
+2012-10-17 14:44:29,125 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:122.179.107.244 c-client-id:13
+2012-10-17 14:44:29,125 [NioProcessor-15] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect
+2012-10-19 10:18:16,088 [NioProcessor-16] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action connect
+2012-10-19 10:18:16,105 [NioProcessor-16] INFO  o.red5.server.net.rtmp.RTMPHandler - Connecting to: [WebScope@2d5e8aa5 Depth = 1, Path = '/default', Name = 'oflaDemo']
+2012-10-19 10:18:16,105 [NioProcessor-16] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:connect c-ip:115.249.242.49 c-client-id:14
+2012-10-19 10:18:16,106 [NioProcessor-16] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appConnect
+2012-10-19 10:18:17,395 [NioProcessor-16] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action createStream
+2012-10-19 10:18:17,395 [NioProcessor-16] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-19 10:18:23,865 [NioProcessor-16] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-19 10:18:47,615 [NioProcessor-16] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-19 10:18:48,716 [NioProcessor-16] INFO  o.r.s.n.r.codec.RTMPProtocolDecoder - Action _error
+2012-10-19 10:30:14,110 [Red5_Scheduler_Worker-1] WARN  o.r.server.net.rtmp.RTMPConnection - Closing RTMPMinaConnection from 115.249.242.49 : 59538 to 54.243.235.88 (in: 6195 out 313306 ), with id 15, due to too much inactivity (60751 ms), last ping sent 1000 ms ago
+2012-10-19 10:30:14,110 [Red5_Scheduler_Worker-1] WARN  o.r.server.net.rtmp.RTMPConnection - This often happens if YOUR Red5 application generated an exception on start-up. Check earlier in the log for that exception first!
+2012-10-19 10:30:14,110 [Red5_Scheduler_Worker-1] INFO  org.red5.demos.oflaDemo.Application - W3C x-category:session x-event:disconnect c-ip:115.249.242.49 c-client-id:14
+2012-10-19 10:30:14,110 [Red5_Scheduler_Worker-1] INFO  org.red5.demos.oflaDemo.Application - oflaDemo appDisconnect

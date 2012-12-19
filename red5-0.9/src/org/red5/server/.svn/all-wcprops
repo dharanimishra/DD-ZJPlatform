@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/4000/java/server/trunk/src/org/red5/server
+END
+Server.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/3935/java/server/trunk/src/org/red5/server/Server.java
+END
+WebScope.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3935/java/server/trunk/src/org/red5/server/WebScope.java
+END
+ClientRegistry.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3927/java/server/trunk/src/org/red5/server/ClientRegistry.java
+END
+LoaderMBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/LoaderMBean.java
+END
+Scope.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/3946/java/server/trunk/src/org/red5/server/Scope.java
+END
+ClientList.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/3687/java/server/trunk/src/org/red5/server/ClientList.java
+END
+ClientRegistryMBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/ClientRegistryMBean.java
+END
+Shutdown.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3932/java/server/trunk/src/org/red5/server/Shutdown.java
+END
+BasicScope.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/3946/java/server/trunk/src/org/red5/server/BasicScope.java
+END
+ContextLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/3935/java/server/trunk/src/org/red5/server/ContextLoader.java
+END
+ScopeMBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/ScopeMBean.java
+END
+Bootstrap.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/3933/java/server/trunk/src/org/red5/server/Bootstrap.java
+END
+Client.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/3941/java/server/trunk/src/org/red5/server/Client.java
+END
+ListMBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/ListMBean.java
+END
+ContextLoaderMBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/ContextLoaderMBean.java
+END
+MappingStrategy.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/MappingStrategy.java
+END
+PersistableAttributeStore.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/3946/java/server/trunk/src/org/red5/server/PersistableAttributeStore.java
+END
+AttributeStore.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3941/java/server/trunk/src/org/red5/server/AttributeStore.java
+END
+ClientMBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/ClientMBean.java
+END
+Context.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/3935/java/server/trunk/src/org/red5/server/Context.java
+END
+CoreHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3895/java/server/trunk/src/org/red5/server/CoreHandler.java
+END
+ContextMBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/3487/java/server/trunk/src/org/red5/server/ContextMBean.java
+END
+CoreHandlerMBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/CoreHandlerMBean.java
+END
+GlobalScope.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3935/java/server/trunk/src/org/red5/server/GlobalScope.java
+END
+BaseConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3725/java/server/trunk/src/org/red5/server/BaseConnection.java
+END
+ScopeResolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/3895/java/server/trunk/src/org/red5/server/ScopeResolver.java
+END
+Launcher.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3823/java/server/trunk/src/org/red5/server/Launcher.java
+END
+LoaderBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/3935/java/server/trunk/src/org/red5/server/LoaderBase.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/4435/doc/trunk/reference/styles
+END
+fopdf.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2901/doc/trunk/reference/styles/fopdf.xsl
+END
+html.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2901/doc/trunk/reference/styles/html.xsl
+END
+fopdf_javadoc.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/2905/doc/trunk/reference/styles/fopdf_javadoc.xsl
+END
+html.css
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/3741/doc/trunk/reference/styles/html.css
+END
+javadoc.css
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/4435/doc/trunk/reference/styles/javadoc.css
+END
+html_chunk.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2901/doc/trunk/reference/styles/html_chunk.xsl
+END

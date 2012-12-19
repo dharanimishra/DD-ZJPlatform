@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core
+END
+plugins.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/plugins.xml
+END
+scripting.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/scripting.xml
+END
+logging_setup.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/logging_setup.xml
+END
+tomcat_deployment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/tomcat_deployment.xml
+END
+security.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/security.xml
+END
+demo_applications.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/demo_applications.xml
+END
+stream_paths.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/stream_paths.xml
+END
+management.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/management.xml
+END
+testing.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/testing.xml
+END
+new_applications.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/new_applications.xml
+END
+clustering.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/clustering.xml
+END
+bean_definitions.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/bean_definitions.xml
+END
+bandwidth_limiting.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/4228/doc/trunk/reference/src/en-US/core/bandwidth_limiting.xml
+END

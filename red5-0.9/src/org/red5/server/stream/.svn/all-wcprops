@@ -1,0 +1,203 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/3992/java/server/trunk/src/org/red5/server/stream
+END
+ProviderService.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3697/java/server/trunk/src/org/red5/server/stream/ProviderService.java
+END
+StreamService.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/3738/java/server/trunk/src/org/red5/server/stream/StreamService.java
+END
+OutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/OutputStream.java
+END
+ConsumerService.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/ConsumerService.java
+END
+FileStreamSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3949/java/server/trunk/src/org/red5/server/stream/FileStreamSource.java
+END
+VideoFrameDropper.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/VideoFrameDropper.java
+END
+ClientBroadcastStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3988/java/server/trunk/src/org/red5/server/stream/ClientBroadcastStream.java
+END
+SimplePlaylistController.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/SimplePlaylistController.java
+END
+ClientBroadcastStreamMBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/ClientBroadcastStreamMBean.java
+END
+IProviderService.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3697/java/server/trunk/src/org/red5/server/stream/IProviderService.java
+END
+IConsumerService.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/IConsumerService.java
+END
+VideoCodecFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3707/java/server/trunk/src/org/red5/server/stream/VideoCodecFactory.java
+END
+PlayBuffer.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/3895/java/server/trunk/src/org/red5/server/stream/PlayBuffer.java
+END
+ISeekableProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/ISeekableProvider.java
+END
+IFrameDropper.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/IFrameDropper.java
+END
+IStreamTypeAwareProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/3485/java/server/trunk/src/org/red5/server/stream/IStreamTypeAwareProvider.java
+END
+IBroadcastScope.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/IBroadcastScope.java
+END
+IStreamControl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/IStreamControl.java
+END
+RtmpSampleAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3936/java/server/trunk/src/org/red5/server/stream/RtmpSampleAccess.java
+END
+ITokenBucketService.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/ITokenBucketService.java
+END
+DefaultStreamFilenameGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/DefaultStreamFilenameGenerator.java
+END
+AbstractClientStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/3895/java/server/trunk/src/org/red5/server/stream/AbstractClientStream.java
+END
+AbstractStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3678/java/server/trunk/src/org/red5/server/stream/AbstractStream.java
+END
+ISeekableStreamSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/ISeekableStreamSource.java
+END
+ServerStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3924/java/server/trunk/src/org/red5/server/stream/ServerStream.java
+END
+IStreamSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/IStreamSource.java
+END
+ITokenBucket.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/ITokenBucket.java
+END
+StreamNotFoundException.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/StreamNotFoundException.java
+END
+PlayEngine.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/3984/java/server/trunk/src/org/red5/server/stream/PlayEngine.java
+END
+StreamingProxy.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3992/java/server/trunk/src/org/red5/server/stream/StreamingProxy.java
+END
+BroadcastScope.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3460/java/server/trunk/src/org/red5/server/stream/BroadcastScope.java
+END
+IStreamData.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/3590/java/server/trunk/src/org/red5/server/stream/IStreamData.java
+END
+PlaylistSubscriberStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/3949/java/server/trunk/src/org/red5/server/stream/PlaylistSubscriberStream.java
+END

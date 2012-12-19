@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/988/doc/trunk/templates/myapp/WEB-INF
+END
+red5-web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/988/doc/trunk/templates/myapp/WEB-INF/red5-web.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/768/doc/trunk/templates/myapp/WEB-INF/log4j.properties
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/768/doc/trunk/templates/myapp/WEB-INF/web.xml
+END
+red5-web.properties
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/768/doc/trunk/templates/myapp/WEB-INF/red5-web.properties
+END
