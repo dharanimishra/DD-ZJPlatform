@@ -19,20 +19,13 @@
 							<active>false</active>
 						</c:otherwise>
 					</c:choose>
-					<questionText>${qr.pollResult.question.questionText}</questionText>
-					<options>
-						<c:forEach var="option" items="${qr.pollResult.question.allOptions}">
-							<option index="${option.index}">${option.HTML}</option>
-						</c:forEach>
-					</options>
+					
 				</pollQuestion>
 				<pollResult>
 					<isNull>false</isNull>
 					<options>
-						<c:forEach var="option" items="${qr.pollResult.question.allOptions}">
-							<option index="${option.index}" optionTotal="${option.optionTotal}">${option.HTML}</option>
-						</c:forEach>
 					</options>
+					 <answer1count>${qr.pollResult.answer1Count}</answer1count>
 				</pollResult>				
 			</questionresultpair>
 		</c:if>
@@ -59,9 +52,9 @@
 				<pollResult>
 					<isNull>true</isNull>
 					<options>
-						<c:forEach var="option" items="${qr.pollQuestion.allOptions}">
+						<!-- <c:forEach var="option" items="${qr.pollQuestion.allOptions}">
 							<option index="${option.index}" optionTotal="${option.optionTotal}">${option.HTML}</option>
-						</c:forEach>
+						</c:forEach> -->
 					</options>
 				</pollResult>				
 			</questionresultpair>
@@ -89,10 +82,11 @@
 				<pollResult>
 					<isNull>false</isNull>
 					<options>
-						<c:forEach var="option" items="${qr.pollResult.question.allOptions}">
+						<!-- <c:forEach var="option" items="${qr.pollResult.question.allOptions}">
 							<option index="${option.index}" optionTotal="${option.optionTotal}">${option.HTML}</option>
-						</c:forEach>
+						</c:forEach> -->
 					</options>
+					<answer1count>${qr.pollResult.answer1Count}</answer1count>
 				</pollResult>				
 			</questionresultpair>
 		</c:if>

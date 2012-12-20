@@ -29,7 +29,7 @@ public interface PollService {
 	
 	public void  pollResponse(PollQuestionResponse pollResponse);
 	
-	public PollQuestionResult getPollResult(MemberPersona memberPersona, PollQuestion pollQuestion);
+	public PollQuestionResult getPollResult( PollQuestion pollQuestion);
 	
     
 	

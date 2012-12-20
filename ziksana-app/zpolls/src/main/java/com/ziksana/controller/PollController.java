@@ -18,83 +18,94 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionResponse;
+import com.ziksana.domain.polls.PollQuestionResult;
+import com.ziksana.domain.polls.PollResultNQuestion;
 import com.ziksana.service.polls.PollService;
-
-
-
 
 @Controller
 @RequestMapping(value = "/secure")
 public class PollController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(PollController.class);
-	
-	
-	
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(PollController.class);
+
 	@Autowired
 	private PollService pollService;
-	
-	
-	
-	
+
 	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
 	public @ResponseBody
-	List<PollQuestion> getPollQuestions(Integer memberRoleId)
-	{
-		//TODO
+	List<PollQuestion> getPollQuestions(Integer memberRoleId) {
+		// TODO
 		return null;
-		
+
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/showpoll/{memberId}", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView showPolls(@PathVariable String memberId) {
+	public @ResponseBody
+	ModelAndView showPolls(@PathVariable String memberId) {
 		logger.info("Entering showPolls(-----): " + memberId);
 		ModelAndView modelView = new ModelAndView("xml/pollResultNQuestionNew");
-		MemberPersona memberPersona = new MemberPersona();
 		
-		modelView.addObject("questions", pollService.getPollQuestionsAndResults());
 
-//		modelView.addObject("questions", "My test question");
+		modelView.addObject("questions",
+				pollService.getPollQuestionsAndResults());
+
+		// modelView.addObject("questions", "My test question");
 
 		logger.info("Exiting showPolls(-----): " + memberId);
 		return modelView;
 	}
-	
-	
-	
-	
+
 	@RequestMapping(value = "/submitpoll/{memberId}", method = RequestMethod.POST)
-	public @ResponseBody void submitPoll(@PathVariable String memberId, @RequestParam String pollId, @RequestParam String optionIndex) {
-//	@RequestMapping(value = "/submitpoll/{memberId}/{pollId}/{optionIndex}", method = RequestMethod.POST)
-//	public @ResponseBody void submitPoll(@PathVariable String memberId, @PathVariable String pollId, @PathVariable String optionIndex) {	
-		logger.info("Entering submitPoll(): " + memberId + " pollId " + pollId + " optionIndex " + optionIndex);
+	public @ResponseBody
+	ModelAndView submitPoll(@PathVariable String memberId,
+			@RequestParam String pollId, @RequestParam String optionIndex) {
 		
+		logger.info("Entering submitPoll(): " + memberId + " pollId " + pollId
+				+ " optionIndex " + optionIndex);
+
 		PollQuestionResponse pollQuestionResponse = new PollQuestionResponse();
-		
+
 		PollQuestion pollQuestion = new PollQuestion();
 		pollQuestion.setID(Integer.valueOf(pollId));
-		
+
 		pollQuestionResponse.setPollQuestion(pollQuestion);
 		List<Integer> answers = new ArrayList<Integer>();
 		int option = Integer.valueOf(optionIndex);
-		option+=1;
+		option += 1;
 		answers.add(Integer.valueOf(option));
-		
+
 		pollQuestionResponse.setAnswers(answers);
-		
-		
-		
+
 		pollService.pollResponse(pollQuestionResponse);
+
+		ModelAndView modelView = new ModelAndView("xml/pollResultNQuestionNew");
 		
-		logger.info("Exiting submitPoll(): " + memberId + " pollId " + pollId + " optionIndex " + optionIndex);
+		PollResultNQuestion pollQuestionResult = new PollResultNQuestion();
+		
+		List<PollResultNQuestion> results = new ArrayList<PollResultNQuestion>();
+		PollQuestionResult pollQR =  pollService.getPollResult(pollQuestion);
+        
+		if (pollQR == null)
+		{
+			System.out.println(" POLLQR IS NULL");
+		}
+		
+		pollQuestionResult.setPollResult(pollQR);
+		results.add(pollQuestionResult);
+		
+		
+		
+		
+		modelView.addObject("questions",
+				results);
+		
+		
+		
+		logger.info("Exiting submitPoll(): " + memberId + " pollId " + pollId
+				+ " optionIndex " + optionIndex);
+		return modelView;
+
 	}
-	
-	
-	
-	
-	
-	
 
 }

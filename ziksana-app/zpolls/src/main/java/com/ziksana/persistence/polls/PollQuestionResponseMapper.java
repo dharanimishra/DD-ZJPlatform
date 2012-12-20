@@ -30,7 +30,7 @@ public interface PollQuestionResponseMapper {
       @InsertProvider(type = PollSqlProvider.class, method = "createPollTrackerSql")
       public void createPollTrackerEntry(@Param("pollQuestionId") Integer pollQuestionId, @Param("answeringMemberRoleId") Integer answeringMemberRoleId);
       
-      @SelectProvider(type = PollSqlProvider.class, method = "getPollResultSql")
+      //@SelectProvider(type = PollSqlProvider.class, method = "getPollResultSql")
       public PollQuestionResult getPollResultByQuestion(@Param("pollQuestionId") Integer pollQuestionId, @Param("answeringMemberRoleId") Integer answeringMemberRoleId);
       
       

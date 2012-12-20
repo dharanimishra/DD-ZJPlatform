@@ -14,7 +14,7 @@ $(document).ready(function() {
 			dataType: 'xml',
 			success: function( data ) {
 					if (console && console.log){
-						alert('writing to console')		
+						alert('writing to console');	
 						console.log( 'Poll sample of data:', $(data).text());
 								
 					}
@@ -22,7 +22,9 @@ $(document).ready(function() {
 					var firstpollid="";
 					var lastpollid="";
 					
-					$(data).find("questionresultpair").each(function(index){
+					$(data).find("questionresultpair").each(function(index)  
+							{
+						
 						    alert('poll results')
 						 	var question = "<p class='titles-info font-Signika text-size-px18 light-gray'>" + $(this).find("pollQuestion").find("questionText").text() + "</p>";
 						 	var currentId = $(this).find("pollQuestion").find("id").text();
@@ -54,9 +56,10 @@ $(document).ready(function() {
 							}
 							
 							var result="";
-							$(this).find("pollResult").find("option").each(function(){
-								result+="<p><b>" + $(this).text() + "</b> &nbsp; <div style='background-color: #09F; height: 20px; width: "+ $(this).attr("optionTotal") + "%;'></div>&nbsp;<b>"+ $(this).attr("optionTotal") + "% votes</b></p></br>";
-							});
+							
+							alert('voted');
+							alert($(this).find("pollQuestion").find("active").text());
+					        result+="<p><b></b> &nbsp; <div style='background-color: #09F; height: 20px; width: "+ $(this).find("pollResult").find("answer1count").text + "%;'></div>&nbsp;<b>"+ $(this).find("pollResult").find("answer1count").text;
 							
 							if (index == 0){
 								firstpollid = $(this).find("pollQuestion").find("id").text();
@@ -103,7 +106,7 @@ $(document).ready(function() {
 					//associate click event to all vote button
 					$("button.votebtn").click( function(event){
               			$(this).attr("disabled", "disabled");
-              			
+              			alert('voted boss')
               			$("div#result" + event.target.id).fadeIn("slow");
               		});
 					

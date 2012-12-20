@@ -50,11 +50,21 @@ public class PollServiceImpl implements PollService {
 				.getPollResults(Integer.valueOf(ThreadLocalUtil.getToken()
 						.getMemberPersonaId().getStorageID()));
 
+		System.out.println(" THE MEMBER PERSONA ID IN POLL IS "+Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID()));
+		
+		System.out.println(" THE POLL RESULTS SIZE IS "+pollResults.size());
+		
 		List<PollResultNQuestion> pollQuestionsNResults = new ArrayList<PollResultNQuestion>();
 
 		for (PollQuestionResult pollResult : pollResults) {
 			PollResultNQuestion pollQuestionResult = new PollResultNQuestion();
-
+            
+			if (pollResult == null )
+			{
+				System.out.println(" POLL RESULT IS NULL");
+			}
+			
 			pollQuestionResult.setPollResult(pollResult);
 
 			pollQuestionsNResults.add(pollQuestionResult);
@@ -123,14 +133,14 @@ public class PollServiceImpl implements PollService {
 	 * .member.Member, com.ziksana.domain.polls.PollQuestion)
 	 */
 	@Override
-	public PollQuestionResult getPollResult(MemberPersona memberPersona,
-			PollQuestion pollQuestion) {
+	public PollQuestionResult getPollResult(PollQuestion pollQuestion) {
 
-		Validate.notNull(memberPersona, "MemberPersona cannot be null.");
+		
 		Validate.notNull(pollQuestion, "PollQuestion cannot be null.");
 		PollQuestionResult pollResult = pollQuestionResponseMapper
 				.getPollResultByQuestion(pollQuestion.getID(),
-						memberPersona.getMemberRoleId());
+						Integer.valueOf(ThreadLocalUtil.getToken()
+								.getMemberPersonaId().getStorageID()));
 		return pollResult;
 
 	}

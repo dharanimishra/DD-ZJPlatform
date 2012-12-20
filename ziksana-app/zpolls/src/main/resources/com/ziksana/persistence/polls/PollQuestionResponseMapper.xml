@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.polls.PollQuestionResponseMapper">
+
+	<select id="getPollResultByQuestion" resultMap="pollResultMap"
+		parameterType="map">
+
+		select DISTINCT utlzpollquestionresponse.*
+		FROM utlzpollquestionresponse,
+		utlzpolltracker
+		WHERE
+		utlzpollquestionresponse.pollQuestionId=utlzpolltracker.pollQuestionId
+		and
+		utlzpolltracker.pollQuestionId=#{pollQuestionId} and
+		utlzpolltracker.answeringMemberRoleId=#{answeringMemberRoleId}
+
+
+
+
+	</select>
+
+
+
+
+
+
+	<resultMap id="pollResultMap" type="com.ziksana.domain.polls.PollQuestionResult">
+		
+		<result property="answer1Count" column="Answer1Count" />
+		<result property="answer2Count" column="Answer2Count" />
+		<result property="answer3Count" column="Answer3Count" />
+		<result property="answer4Count" column="Answer4Count" />
+		<result property="answer5Count" column="Answer5Count" />
+		
+		<association property="question" javaType="com.ziksana.domain.polls.PollQuestion">
+			
+			<result property="ID" column="pollQuestionId" />
+			
+		</association>
+		
+		
+		
+		
+	</resultMap>
+</mapper>
