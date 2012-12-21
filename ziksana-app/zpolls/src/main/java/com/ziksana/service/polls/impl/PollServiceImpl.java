@@ -141,6 +141,25 @@ public class PollServiceImpl implements PollService {
 				.getPollResultByQuestion(pollQuestion.getID(),
 						Integer.valueOf(ThreadLocalUtil.getToken()
 								.getMemberPersonaId().getStorageID()));
+		PollQuestionEntity pollQuestionEntity = pollQuestionResponseMapper.getPollQuestionById(pollQuestion.getID());
+		
+		PollQuestion question = new PollQuestion();
+		System.out.println("QUESTION ID IS "
+				+ pollQuestionEntity.getID());
+					
+		question.setID(pollQuestionEntity.getID());
+		System.out.println("QUESTION TEXT IS "
+				+ pollQuestionEntity.getQuestionText());
+		question.setQuestionText(pollQuestionEntity.getQuestionText());
+		List<PollQuestionOption> options = new ArrayList<PollQuestionOption>();
+		addOptions(options, pollQuestionEntity);
+		System.out.println("THE TOTAL NUMBER OF OPTIONS "+options.size());
+		question.setActive(true);
+		question.setOptions(options);
+		
+		
+		pollResult.setQuestion(question);
+		
 		return pollResult;
 
 	}

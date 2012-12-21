@@ -33,7 +33,7 @@ public interface PollQuestionResponseMapper {
       //@SelectProvider(type = PollSqlProvider.class, method = "getPollResultSql")
       public PollQuestionResult getPollResultByQuestion(@Param("pollQuestionId") Integer pollQuestionId, @Param("answeringMemberRoleId") Integer answeringMemberRoleId);
       
-      
+      public PollQuestionEntity getPollQuestionById(Integer pollQuestionId);
       
     
     }

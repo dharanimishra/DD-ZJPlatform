@@ -56,12 +56,11 @@ public class PollController {
 		return modelView;
 	}
 
-	@RequestMapping(value = "/submitpoll/{memberId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/submitpoll", method = RequestMethod.POST)
 	public @ResponseBody
-	ModelAndView submitPoll(@PathVariable String memberId,
-			@RequestParam String pollId, @RequestParam String optionIndex) {
+	ModelAndView submitPoll(@RequestParam String pollId, @RequestParam String optionIndex) {
 		
-		logger.info("Entering submitPoll(): " + memberId + " pollId " + pollId
+		logger.info("Entering submitPoll(): " +  " pollId " + pollId
 				+ " optionIndex " + optionIndex);
 
 		PollQuestionResponse pollQuestionResponse = new PollQuestionResponse();
@@ -79,7 +78,7 @@ public class PollController {
 
 		pollService.pollResponse(pollQuestionResponse);
 
-		ModelAndView modelView = new ModelAndView("xml/pollResultNQuestionNew");
+		ModelAndView modelView = new ModelAndView("xml/pollresult");
 		
 		PollResultNQuestion pollQuestionResult = new PollResultNQuestion();
 		
@@ -102,7 +101,7 @@ public class PollController {
 		
 		
 		
-		logger.info("Exiting submitPoll(): " + memberId + " pollId " + pollId
+		logger.info("Exiting submitPoll():  pollId " + pollId
 				+ " optionIndex " + optionIndex);
 		return modelView;
 

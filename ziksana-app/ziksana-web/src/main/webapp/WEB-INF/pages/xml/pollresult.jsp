@@ -24,11 +24,50 @@
 				<pollResult>
 					<isNull>false</isNull>
 					<options>
-					 <c:forEach var="option" items="${qr.pollQuestion.allOptions}">
-							<option index="${option.index}">${option.HTML}</option>
+					 <c:forEach var="option" items="${qr.pollResult.question.allOptions}">
+							<option index="${option.index}"> 
+							   <optiontext>
+							     ${option.HTML}
+							    </optiontext>
+							    <c:choose>
+						<c:when test="${option.index == 0}">
+							<count>
+							      ${qr.pollResult.answer1Count} 
+							    </count>  
+						</c:when>
+						<c:when test="${option.index == 1}">
+							<count>
+							      ${qr.pollResult.answer2Count} 
+						   </count>  
+						</c:when>
+						
+						<c:when test="${option.index == 2}">
+							<count>
+							      ${qr.pollResult.answer3Count} 
+							</count>  
+						</c:when>
+						<c:when test="${option.index == 3}">
+							<count>
+							      ${qr.pollResult.answer4Count} 
+						</count>  
+						</c:when>
+						<c:when test="${option.index == 4}">
+							<count>
+							      ${qr.pollResult.answer5Count} 
+						</count>  
+						</c:when>
+					</c:choose>
+							    
+							    
+							</option>
 						</c:forEach>
 					</options>
 					 <answer1count>${qr.pollResult.answer1Count}</answer1count>
+					 <answer2count>${qr.pollResult.answer2Count}</answer2count>
+					 <answer3count>${qr.pollResult.answer3Count}</answer3count>
+					 <answer4count>${qr.pollResult.answer4Count}</answer4count>
+					 <answer5count>${qr.pollResult.answer5Count}</answer5count>
+					 
 				</pollResult>				
 			</questionresultpair>
 		</c:if>

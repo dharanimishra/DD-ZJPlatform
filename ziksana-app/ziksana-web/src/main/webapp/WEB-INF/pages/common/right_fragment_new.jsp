@@ -7,6 +7,39 @@
 <script type="text/javascript" src="${jsJqueryFormUrl}"></script>
 
 <script type="text/javascript">
+ function submitPole(memberId)
+ {
+	 
+	 pollid = $('#pollId').val();	
+	 optionindex = $('#optionIndex').val();
+	  $.post( '<c:url value='/secure/submitpoll'/>'
+		 		 , {'pollId':pollid,'optionIndex':optionindex}
+		 		 , function( data )
+		  			{
+		 			console.log( 'Poll data from AJAX:', $(data).text());
+		 			
+		 			var output = "";
+                    
+		 			$(data).find("questionresultpair").each(function(index)  
+		 					{
+		 					 $(this).find("pollResult").find("option").each(function(index)
+		 							 {
+		 						     output+="<p  style='padding-left: 10px;'>"+ $(this).find("optiontext").text()+"</p>";  
+		 						    output+="<p  style='padding-left: 10px;'>"+ $(this).find("count").text()+"</p>";
+		 							 });
+		 					 
+		 				 	 //output+="<p  style='padding-left: 10px;'>"+ $(this).find("answer1count").text()+"</p>";
+		 				 	 alert(output);
+		 					});
+		 			$('div.pollresult').html(output);
+		 			$('div.pollresult').show();
+		 			 }
+					, 'xml' );     
+	   
+	
+ }
+ </script>
+<script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
 		  	type: 'GET',
@@ -25,14 +58,14 @@ $(document).ready(function() {
 					$(data).find("questionresultpair").each(function(index)  
 							{
 						
-						    alert('poll results')
+						    alert('poll results');
 						 	var question = "<p class='titles-info font-Signika text-size-px18 light-gray'>" + $(this).find("pollQuestion").find("questionText").text() + "</p>";
 						 	var currentId = $(this).find("pollQuestion").find("id").text();
 						 	alert('current id is '+currentId)
 							if ($(this).find("pollQuestion").find("active").text() == "true"){
 						 		output+="<div id='q" + index + "' style='width: 225px;' class='pollquestion'>";
 						 		output+=question;
-						 		output+="<form id='" + $(this).find("pollQuestion").find("id").text() + "' method='POST' action='${submitPollUrl}/" + $(this).attr("memberId") + "'>";
+						 		output+="<form id='" + $(this).find("pollQuestion").find("id").text() + "' action=''>";
 						 		output+="<input type='hidden' id='pollId' name='pollId' value='" + $(this).find("pollQuestion").find("id").text() + "'>";
 						 		
 						 		
@@ -47,7 +80,7 @@ $(document).ready(function() {
 						 		});
 						 		
 						 		output+=answers;
-						 		output+="<br/><button id='" + index + "' style=' float: left;' class='votebtn'>Vote</button></p><br/>";
+						 		output+="<br/><button id='" + index + "' onClick='submitPole(" + $(this).attr("memberId") + ")' style=' float: left;' class='votebtn'>Vote</button></p><br/>";
 						 		output+="</form><br/>";
 						 		output+="<br/>";
 							} else {

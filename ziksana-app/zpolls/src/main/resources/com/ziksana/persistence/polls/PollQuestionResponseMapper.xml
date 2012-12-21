@@ -18,6 +18,17 @@
 
 
 	</select>
+	
+	<select id="getPollQuestionById" resultMap="pollQuestionMap"
+		parameterType="int">
+
+		select * from utlzpollquestion where id=#{pollQuestionId}
+
+
+
+	</select>
+	
+	
 
 
 
@@ -42,4 +53,20 @@
 		
 		
 	</resultMap>
+	
+	
+	<resultMap id="pollQuestionMap" type="com.ziksana.persistence.polls.PollQuestionEntity">
+	    <result property="ID" column="ID" /> 
+	    <result property="questionText" column="questionText" /> 
+	    <result property="answer1" column="Answer1" />
+		<result property="answer2" column="Answer2" />
+		<result property="answer3" column="Answer3" />
+		<result property="answer4" column="Answer4" />
+		<result property="answer5" column="Answer5" />
+	       
+	</resultMap>
+	
+	
+	
+	
 </mapper>
