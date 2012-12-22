@@ -28,6 +28,7 @@
 		<module>zcalendar</module>
 		<module>ztodo</module>
 		<module>zrecommendations</module>
+		<module>zsubscription</module>
 	</modules>
 
 	<properties>
