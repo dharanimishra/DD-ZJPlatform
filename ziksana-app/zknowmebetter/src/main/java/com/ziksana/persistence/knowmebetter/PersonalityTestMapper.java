@@ -14,6 +14,8 @@ public interface PersonalityTestMapper {
 	
 	public void saveAnswer(@Param("question") Question question, @Param("answer") Choice userChoice);
 	
+	public void updateAnswer(@Param("question") Question question, @Param("answer") Choice userChoice);
+	
 	public List<QuestionResponse> answeredQuestions(Integer memberRoleId);
 
 }

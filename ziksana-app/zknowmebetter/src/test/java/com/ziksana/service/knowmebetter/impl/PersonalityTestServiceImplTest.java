@@ -55,7 +55,7 @@ public class PersonalityTestServiceImplTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
+	@Ignore
 	public void testGetUnansweredQuestions() {
 		ZID memberId = new StringZID("1000");
 		ZID memberPersonaId = new StringZID("100");
@@ -70,11 +70,10 @@ public class PersonalityTestServiceImplTest {
 
 	}
 
-	@Test
+	@Ignore
 	public void testSaveAnswer() {
 
-		List<Question> questions = personalityTestService
-				.getUnansweredQuestions();
+		List<Question> questions = personalityTestService.getUnansweredQuestions();
 
 		Question question = questions.get(0);
 		Choice userChoice = (Choice) question.getChoices().iterator().next();
@@ -82,8 +81,18 @@ public class PersonalityTestServiceImplTest {
 		personalityTestService.saveAnswer(question, userChoice);
 
 	}
-
+	
 	@Test
+	public void testUpateAnswer() {
+
+		
+		Question question = new Question(1,"do you like video courses");
+		Choice userChoice =new Choice(2, 2, "No", Integer.valueOf(1));
+		personalityTestService.updateAnswer(question, userChoice);
+
+	}
+
+	@Ignore
 	public void testAnsweredQuestions() {
 
 		List<QuestionResponse> questionResponses = personalityTestService

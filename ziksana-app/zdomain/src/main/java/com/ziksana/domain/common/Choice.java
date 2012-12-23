@@ -18,12 +18,12 @@ public class Choice implements Comparable<Choice> {
 	 * @param text
 	 * 
 	 */
-	public Choice(Integer id, Integer index, String text) {
+	public Choice(Integer id, Integer index, String text, Integer memPstTestId) {
 		super();
 		this.id = new IntegerZID(id);
 		this.index = index;
 		this.text = text;
-
+		this.memPstTestId = memPstTestId;
 	}
 	
 	

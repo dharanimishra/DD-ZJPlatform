@@ -72,6 +72,11 @@
 		<artifactId>zannouncements</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+		<groupId>com.ziksana</groupId>
+		<artifactId>zknowmebetter</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<!-- Apache Tiles -->
 		<dependency>

@@ -9,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.common.Choice;
+import com.ziksana.domain.common.Question;
 import com.ziksana.service.knowmebetter.PersonalityTestService;
 
 /**
@@ -36,9 +39,20 @@ public class KnowmeController {
 		logger.info("Exit Know me Better");
 		
 		return modelAndView;
+		 
+	}
+	@RequestMapping(value = "/getunansweredquestions", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getansweredQuestions() {
+		
+		logger.info("Know me Better || getunansweredQuestions()");
+		ModelAndView modelAndView = new ModelAndView("xml/unansweredquestions");
+		modelAndView.addObject("unansweredquesList", personalityService.getUnansweredQuestions());
+		logger.info("Exit Know me Better");
+		
+		return modelAndView;
 		
 	}
-	@RequestMapping(value = "/getpopupwindow", method = RequestMethod.GET)
+	@RequestMapping(value = "/getknowmepopupwindow", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView getPopupWindow() {
 		logger.info("Popup window");
 		ModelAndView modelAndView = new ModelAndView("xml/e-know-me");
@@ -46,6 +60,36 @@ public class KnowmeController {
 		
 		return modelAndView;
 		
+	}
+	
+	@RequestMapping(value = "/saveknowme", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView submitKnowme(
+			@RequestParam(value = "memberAnswer", required = true) String memberAnswer,
+			@RequestParam(value = "testQuestionValue", required = true) String testQuestionValue,
+			@RequestParam(value = "testQuestionId", required = true) Integer testQuestionId,
+			@RequestParam(value = "questionBankAnswerId", required = true) Integer questionBankAnswerId){
+		
+		Question question = new Question(testQuestionId,testQuestionValue);
+		Choice userChoice =new Choice(questionBankAnswerId, null, memberAnswer, Integer.valueOf(1));
+		
+		//userChoice.setMemPstTestId(Integer.valueOf(1));
+		personalityService.saveAnswer(question, userChoice);
+		return null;
+	}
+	
+	@RequestMapping(value = "/updateknowmebetter", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView updateKnowme(
+			@RequestParam(value = "editCheckedAnswer", required = true) String editCheckedAnswer,
+			@RequestParam(value = "editQuesval", required = true) String editQuesval,			
+			@RequestParam(value = "editQuesid", required = true) Integer editQuesid,			
+			@RequestParam(value = "editAnsId", required = true) Integer editAnsId){
+		
+		
+		Question question = new Question(editQuesid,editQuesval);
+		Choice userChoice =new Choice(editAnsId, editAnsId, editCheckedAnswer, Integer.valueOf(1));
+		
+		personalityService.updateAnswer(question, userChoice);
+		return null;
 	}
 	
 

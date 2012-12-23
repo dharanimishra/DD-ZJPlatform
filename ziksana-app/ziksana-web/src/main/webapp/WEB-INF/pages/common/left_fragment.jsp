@@ -225,8 +225,9 @@
         <br>
     </div>
     </li>-->
+     <c:url var="knowmwpopup" value="/secure/getknowmepopupwindow" />
   </ul>
-  <div class="txt-r" ><a href="" class="Block"><span class="f-r text-pading-top text-pading-right"><span class="text-pading-right">Know me better</span></span> <strong class="zinfo2 zicons ls f-r"></strong></a>
+  <div class="txt-r" ><a class="text-size-px11  lbx-70-50" href="${knowmwpopup}" class="Block"><span class="f-r text-pading-top text-pading-right"><span class="text-pading-right">Know me better</span></span> <strong class="zinfo2 zicons ls f-r"></strong></a>
 
   </div>
   

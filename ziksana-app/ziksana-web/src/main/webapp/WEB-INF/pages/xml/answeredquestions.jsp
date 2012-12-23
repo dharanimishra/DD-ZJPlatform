@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/xml" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<answeredquestions>
+	<c:forEach var="answered" items="${answeredquesList}">
+		<answered>
+				<questions>
+					<questiobankid>${answered.question.id.getDisplayID()}</questiobankid>
+					<question>${answered.question.text}</question>				
+					<answers>	
+						<answerid>${answered.choice.index}</answerid>					
+						<answer>${answered.choice.text}</answer>
+						
+					</answers>				
+				</questions>
+		</answered>
+	</c:forEach>
+</answeredquestions>

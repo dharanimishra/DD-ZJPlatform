@@ -18,17 +18,24 @@ public class Question {
 
 	private ZID id;
 	private String text;
+	
 	private String imageUrl;
 	private String videoUrl;
 	private Set<Choice> choices;
 	
 
-	Question(Integer id, String text) {
+	public Question(Integer id, String text) {
 
 		super();
 		this.id = new IntegerZID(id);
 		this.text = text;
 		this.choices = new HashSet<Choice>();
+	}
+	/**
+	 * @param text the text to set
+	 */
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	/**
