@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <div class="col-lft" >
               <div class="user-info all-box-shadow pad" >
@@ -50,36 +53,7 @@
             
             <div id="blogList"></div> <div id="blogListError"></div>
             
-           <!--    <div class="user-contacts all-box-shadow pad" >
-             <span class="titles-info font-Signika text-size-px18 light-gray">Recent Blog Posts</span>
-             	<div class="_blogMain">
-            	<div class="_blogs">
-                  <ol>
-                    <li class="p-p  bckground-blue-light">
-                      <p class="_postD text-size-px9">${blogPost1.get("date")}</p>
-                      <b><a href="">${blogPost1.get("subject")}</a></b> <br/>
-                      <p class="_postP">${blogPost1.get("detail")}</p>
-                      <p class="_postT">(Tags: <a href="" class="text-size-px11">Educational Technology</a>, <a href="" class="text-size-px11">Research</a>)</p>
-                    </li>
-                  </ol>
-                </div>
-                <div class="_blogs">
-                  <ol>
-                    <li class="p-p bckground-blue-light">
-                      <p class="_postD text-size-px9">${blogPost2.get("date")}</p>
-                      <b><a href="">${blogPost2.get("subject")}</a></b> <br/>
-                      <p class="_postP">${blogPost2.get("detail")}</p>
-                      <p class="_postT">( Tags: <a class="text-size-px11" href="#" >Game Design</a>, <a class="text-size-px11" href="#" >Research</a> ... )</p>
-                    </li>
-                  </ol>
-                </div>
-                </div>
-          <p class="txt-r" style="padding-right:10px; clear:both;">
-            <a href="">More..</a>
-          </p>
-        </div>
-        
-        -->
+           
             
           <div class="user-contacts all-box-shadow pad" >           
            <div id="tabs" class="_bgmain">
