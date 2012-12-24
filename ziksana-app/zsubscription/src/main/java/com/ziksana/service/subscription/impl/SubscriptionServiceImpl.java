@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.persistence.subscription.SubscriptionMapper;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.subscription.SubscriptionService;
 
 /**
@@ -23,8 +24,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	
 	@Override
 	public List<Note> getNotes(SubscriptionCourse course) {
-		// TODO Auto-generated method stub
-		return subscriptionMapper.getNotes(Integer.valueOf(course.getSubscriptionCourseId().getStorageID()));
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
+		
+		return subscriptionMapper.getNotes(Integer.valueOf(memberRoleId), Integer.valueOf(course.getSubscriptionCourseId().getStorageID()));
 	}
 
 	

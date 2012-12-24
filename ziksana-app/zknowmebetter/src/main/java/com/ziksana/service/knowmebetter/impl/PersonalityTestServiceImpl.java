@@ -18,6 +18,7 @@ import com.ziksana.service.knowmebetter.PersonalityTestService;
 public class PersonalityTestServiceImpl implements PersonalityTestService {
 
 	private static Logger logger = Logger.getLogger(PersonalityTestServiceImpl.class);
+	
 	@Autowired
 	PersonalityTestMapper personalityTestMapper;
 	

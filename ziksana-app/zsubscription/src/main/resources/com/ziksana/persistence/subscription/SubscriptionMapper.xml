@@ -2,17 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.subscription.SubscriptionMapper">
 
-	<select id="getNotes" resultMap="notesResultMap" parameterType="int">
-		select * from sbnsubscribernotes where subscriptioncourseid=#{subscrCourseId}
-				
+	<select id="getNotes" resultMap="notesResultMap" parameterType="map">
+
+
+		select *
+		from
+		sbnsubscribernotes notes join
+		sbnmembersubscriptionprogram program on
+		notes.MemSubscriptionProgId=program.MemSubscriptionProgId
+		where
+		notes.SubscriptionCourseId=#{subscrCourseId} and
+		program.MemberRoleId=#{memberRoleId}
+
+
 	</select>
-	
+
 
 	<resultMap id="notesResultMap" type="com.ziksana.domain.course.subscription.Note">
-		
+
 		<result property="id" column="SubcribeNotesId" />
 		<result property="content" column="NotesContent" />
-		
+
 	</resultMap>
-	
+
 </mapper>
