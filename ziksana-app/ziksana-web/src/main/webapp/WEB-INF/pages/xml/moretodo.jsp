@@ -50,7 +50,33 @@ function home(){
 	
  }
  </script>
- 
+ <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
+ <c:url var="deleteTodoUrl" value="/secure/deletetodo/1111111" />
+<script type="text/javascript">
+function deleteTodoFunction(val){
+	alert(val);
+	
+	 confirm_delete_alert = confirm('Are you sure you want to delete this item?');
+	if(confirm_delete_alert == true){
+		
+		
+	
+	$.ajax({
+	  	type: 'DELETE',
+		url: '${deleteTodoUrl}'+val,
+		dataType: 'json',
+		success: function( data ) {
+			console.log('delete alert fired');
+			//delete the alert div
+			
+			
+		}
+	});
+	$('#todoid'+val).remove();
+	
+	}
+}
+</script>
  <!-- TODO LIst -->
  <c:url var="showmoretodo" value="/secure/showmytodo/111111" />
  <c:url var="todo" value="../resources/images/icons/todo.png" />
@@ -75,9 +101,9 @@ $(document).ready(function() {
 							output+="<img src=${todo} alt='Info'  /> </td>";
 							output+="<td width='' class='todoinfo-category' style='margin-top:7px; padding-right:10px;' >"+$(this).find("categoryName").text()+"</td>";
 							output+="<td class='todoinfo-decription' style='margin-top:7px;' >";
-							output+="<span width='200px' id='demo-basictodo1' style='font-weight:lighter; cursor:pointer;'>"+$(this).find("subject").text()+"</span></td>";
+							//output+="<span width='200px' id='demo-basictodo1' style='font-weight:lighter; cursor:pointer;'>"+$(this).find("subject").text()+"</span></td>";
 							output+="<td width='20px' class='todoinfo-button' style='padding-top:7px;' >";
-							output+="<a href='#linkurl' rel='tipsy' title='Complete'><input type='checkbox' id='cktodo1'> </a>";
+							output+="<a href='#linkurl' rel='tipsy' title='Complete'><input type='checkbox' id='cktodo1'> </a></td><td><a href='#' onclick='deleteTodoFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></td>";
 							output+="</td></tr></tbody></table>";
 						
 												

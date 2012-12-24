@@ -62,6 +62,33 @@ function changeImage(a){
 	  
 }
 	</script>
+	<c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
+<script type="text/javascript">
+function deleteFunction(val){
+	/* alert('${deleteAlertUrl}'+val); */
+	
+	confirm_delete_alert = confirm('Are you sure you want to delete this item?');
+	if(confirm_delete_alert == true){
+		
+		
+	
+	$.ajax({
+	  	type: 'DELETE',
+		url: '${deleteAlertUrl}'+val,
+		dataType: 'json',
+		success: function( data ) {
+			console.log('delete alert fired');
+			//delete the alert div
+			
+			
+		}
+	});
+	$('#alert_'+val).remove();
+	
+	}
+}
+</script>
+	
 	
 	<c:url var="showAlertUrl" value="/secure/showmyalert/111111" />
 	 <c:url var="deleteAlertUrl" value="/secure/deletealert/" />
@@ -88,7 +115,7 @@ function changeImage(a){
 						output+="<span class='alert zclose  zicons ls-no f-r'></span>";
 						output+="<input type='hidden' id='alertItemId' value='" +$(this).find("id").text()  + "' />";
 						/* output+="<div class='alertinfo-decription' style='float:left; height:14px; font-family:verdana; font-size:11px; padding:4px;'>"; */
-						output+="<div id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+$(this).find("description").text()+"</div><a href='${deleteAlertUrl}"+$(this).find("id").text()+"' title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						output+="<div id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+$(this).find("description").text()+"</div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 						/* output+="<div class='alertinfo-button' style='display:inline;margin-left:10px;' >"; */
 						output+="</div></div>";
 						

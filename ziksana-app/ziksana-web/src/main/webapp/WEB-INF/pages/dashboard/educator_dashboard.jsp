@@ -1,50 +1,94 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="resources/js/tree/jquery-1.8.0.min.js"></script>
 
-<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
+<link href="resources/css/styles.css" rel="stylesheet" type="text/css">
+	<link href="resources/css/type-setting.css" rel="stylesheet" type="text/css">
+	<link href="resources/css/effects.css" rel="stylesheet" type="text/css">
+	<link href="resources/css/nav.css" rel="stylesheet" type="text/css">
 	
-	<link rel="stylesheet" type="text/css" href="css/dropdown.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/dropdown.css" />
+	<link rel="stylesheet" type="text/css" href="http://fancyapps.com/fancybox/source/jquery.fancybox.css?v=2.1.3"/>
 	
 	
-    <link rel="stylesheet" type="text/css" href="../resources/css/tag/tagit-simple-blue.css">
-    <link rel="stylesheet" href="../resources/css/tipsy.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="css/custom-theme/old-jquery-ui-1.8.21.custom.css">
-    <link rel="stylesheet" type="text/css" href="css/custom-theme/jquery-ui-1.8.21.custom.css">
-     <link href="css/news/newsticker.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/tag/tagit-simple-blue.css">
+    <link rel="stylesheet" href="resources/css/tipsy.css" type="text/css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/custom-theme/old-jquery-ui-1.8.21.custom.css"> -->
+    <link rel="stylesheet" type="text/css" href="resources/css/custom-theme/jquery-ui-1.8.21.custom.css">
+     <link href="resources/css/news/newsticker.css" rel="stylesheet" type="text/css" />
      
    	
-	 <script src="../resources/js/jquery-1.7.2.min.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.core.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.widget.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.button.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.tabs.js"></script>
-     <script src="../resources/js/jquery.hovercard.js"></script>
-     <script src="../resources/js/todo.js" type="text/javascript"></script> 
-     <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
-	<script type="text/javascript" src="../resources/js/jquery-1.2.2.pack.js"></script>
-	<script type="text/javascript" src="../resources/js/ajax-tooltip.js"></script>	
+	 <script src="resources/js/jquery-1.7.2.min.js"></script>
+	 <script src="resources/js/ui/jquery.ui.core.js"></script>
+	 <script src="resources/js/ui/jquery.ui.widget.js"></script>
+	 <script src="resources/js/ui/jquery.ui.button.js"></script>
+	 <script src="resources/js/ui/jquery.ui.progressbar.js"></script>
+	 <script src="resources/js/ui/jquery.ui.tabs.js"></script>
+     <script src="resources/js/jquery.hovercard.js"></script>
+     <script src="http://fancyapps.com/fancybox/source/jquery.fancybox.pack.js?v=2.1.3"></script>
+     <scrpit src="resources/js/jquery.collapse.js"></scrpit>
+     <script src="resources/js/todo.js" type="text/javascript"></script> 
+     <script language="javascript" type="text/javascript" src="resources/js/custom/Todoalertshovercard.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-1.2.2.pack.js"></script>
+	<script type="text/javascript" src="resources/js/ajax-tooltip.js"></script>	
+	<script type="text/javascript" src="resources/js/jquery.tipsy.js"></script>
+	
 <c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
 <script type="text/javascript">
 function deleteFunction(val){
 	/* alert('${deleteAlertUrl}'+val); */
+	
+	confirm_delete_alert = confirm('Are you sure you want to delete this item?');
+	if(confirm_delete_alert == true){
+		
+		
+	
 	$.ajax({
 	  	type: 'DELETE',
 		url: '${deleteAlertUrl}'+val,
 		dataType: 'json',
 		success: function( data ) {
 			console.log('delete alert fired');
+			//delete the alert div
+			
+			
 		}
 	});
+	$('#alert_'+val).remove();
+	
+	}
+}
+</script>
+
+<c:url var="deleteTodoUrl" value="/secure/deletetodo/1111111" />
+<script type="text/javascript">
+function deleteTodoFunction(val){
+	alert(val);
+	
+	 confirm_delete_alert = confirm('Are you sure you want to delete this item?');
+	if(confirm_delete_alert == true){
+		
+		
+	
+	$.ajax({
+	  	type: 'DELETE',
+		url: '${deleteTodoUrl}'+val,
+		dataType: 'json',
+		success: function( data ) {
+			console.log('delete alert fired');
+			//delete the alert div
+			
+			
+		}
+	});
+	$('#todoid'+val).remove();
+	
+	}
 }
 </script>
 
 <c:url var="showEventUrl" value="/secure/showmycalendar/111111" />
-<c:url var="eventImageUrl" value="/resources/images/front-bg.gif" />
+<c:url var="eventImageUrl" value="resources/images/front-bg.gif" />
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -116,9 +160,9 @@ $(document).ready(function() {
 function changeImage(a){
 	
 	var images = new Array();
-	images[0] = "<c:url  value='/resources/images/icons/urgent.png' />";
-	images[1] = "<c:url  value='/resources/images/icons/warning.png' />";
-	images[2] = "<c:url  value='/resources/images/icons/info.png' />";
+	images[0] = "<c:url  value='resources/images/icons/urgent.png' />";
+	images[1] = "<c:url  value='resources/images/icons/warning.png' />";
+	images[2] = "<c:url  value='resources/images/icons/info.png' />";
 	
 	 var comic = document.getElementById("exp").src;
 	 if(a==1000){
@@ -140,7 +184,7 @@ function changeImage(a){
 <c:url var="todoImageUrl" value="/resources/images/background-pattern.jpg" />
 <c:url var="showAlertUrl" value="/secure/showalert/111111" />
 <c:url var="info"  value='/resources/images/icons/info.png' />
-
+ <c:url var="htmlUrl_todo" value="secure/gettodopopupwindow" />
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -148,22 +192,20 @@ $(document).ready(function() {
 			url: '${showAlertUrl}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-								console.log( 'Sample of data:', data);
-					}
+					
 					var output="";
 					output+="<div  class='alerts'>";
 					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
 					$(data).find("alertitem").each(function(index){
 						
-						output+="<div id='demo' class='alertcontainer' style='border:1px solid #F5F5F5;' id='conalert3'>";
+						output+="<div id='alert_"+$(this).find("id").text()+"' class='alertcontainer' style='border:1px solid #F5F5F5;' id='conalert3'>";
 						output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
 						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
 						output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
 						/* output+="<div class='alertinfo-decription' style='float:left; height:14px; font-family:verdana; font-size:11px; padding:4px;'>"; */
-						output+="<div id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+$(this).find("description").text()+"</div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						output+="<div title='"+$(this).find("description").text()+"' id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+$(this).find("description").text()+"</div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 						/* output+="<div class='alertinfo-button' style='display:inline;margin-left:10px;' >"; */
 						output+="</div></div>";
 						
@@ -179,7 +221,7 @@ $(document).ready(function() {
 					});
 					
 					
-					console.log("output string: " + output);
+					//console.log("output string: " + output);
 					$('#alerts_placeholder').html( output);
 					
 					$('span.Zalart').hide();
@@ -202,7 +244,7 @@ $(document).ready(function() {
 								url: '${deleteAlertUrl}/' + $(this).parent().children('#alertItemId').attr('value'),
 								dataType: 'json',
 								success: function( data ) {
-									console.log('delete alert fired');
+									//console.log('delete alert fired');
 								}
 							});
 						});
@@ -223,7 +265,7 @@ $(document).ready(function() {
 </script>
 <c:url var="todo" value="/resources/images/icons/todo.png" />
 <c:url var="showTodoUrl" value="/secure/showtodo/111111" />
-<c:url var="deleteTodoUrl" value="/secure/deletetodo/1111111" />
+
 
 
 
@@ -241,7 +283,7 @@ $(document).ready(function() {
 					var output="";
 					
 					$(data).find("todoitem").each(function(index){
-						 output+="<div class='todoitem'>";
+						 output+="<div id='todoid"+$(this).find("id").text()+"' class='todoitem'>";
 						output+="<table class='todo' id='todotable' >";
 						output+="<tbody id='todobody' style='border-bottom:1px solid #F5F5F5;' >";
 						output+="<tr width='100%' class='todocontainer todoinfo' style='height:28px;padding:5px;border:1px solid green;' id='contodo1' >";
@@ -249,13 +291,15 @@ $(document).ready(function() {
 						output+="<img src='${todo}' alt='Info' /> </td>";
 						output+="<td width='' class='todoinfo-category' style='margin-top:7px; padding-right:10px;' >"+$(this).find("categoryName").text()+"</td>";
 						output+="<td class='todoinfo-decription' style='margin-top:7px;' >";
-						output+="<span width='200px' id='demo-basictodo1' style='font-weight:lighter; cursor:pointer;'>"+$(this).find("subject").text()+"</span></td>";
-						output+="<input type='hidden' id='todoItemId' value='" + $(this).find("id").text() + "' />";
-						output+="<span class='td zclose  zicons ls-no f-r'></span>";
+						output+="<span title='"+$(this).find("subject").text()+"' width='200px' id='demo-basictodo1' style='font-weight:lighter; cursor:pointer;'>"+$(this).find("subject").text()+"</span></td>";
+						
+						/* output+="<span class='td zclose  zicons ls-no f-r'></span>"; */
 						output+="<td width='20px' class='todoinfo-button' style='padding-top:7px;' >";
-						output+="<a href='#linkurl' rel='tipsy' title='Complete'><input type='checkbox' id='cktodo1'> </a>";
-						output+="</td></tr></tbody></table>";
+						output+="<a href='#linkurl' rel='tipsy' title='Complete'><input type='checkbox' id='cktodo1'> </a></td><td><a href='#' onclick='deleteTodoFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></td>";
+						output+="</tr></tbody></table>";
 						output+="</div>";
+						
+						//
 						/* output+="<div class='todoitem'>";
 						output+=$(this).find("categoryName").text() + ": " + $(this).find("subject").text();
 						output+="<span class='td zclose  zicons ls-no f-r'></span>";
@@ -263,13 +307,13 @@ $(document).ready(function() {
 						output+="</div>";	 */					
 					});
 
-					console.log("output string: " + output);
+					
 					$('#todos_placeholder').html( output);
 					
 					$('span.td').hide();
 					
 					$('div.todoitem').hover( function(){
-						console.log("this is: " + $(this).html());
+						//console.log("this is: " + $(this).html());
 						$(this).children('.td').show();
 						$(this).children('.td').click( function(){
 							$(this).parent().fadeOut('slow');
@@ -343,9 +387,9 @@ $(document).ready(function() {
                               	<div id="todos_placeholder">
                               	
                               	</div>
-                              	 <c:url var="htmlUrl_todo" value="secure/gettodopopupwindow" />
+                             <div class='_addTodo'> <a class='lbx-70-50 text-size-px11 text-size-px11' href="${htmlUrl_todo}" >Add more</a></div> 	
                                 
-                               <div class="_addTodo"> <a class="lbx-70-50 text-size-px11 text-size-px11" href="${htmlUrl_todo}" >Add more</a></div>
+                             
                             
                         </div>
                         

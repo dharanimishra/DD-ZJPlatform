@@ -3,7 +3,7 @@
 <c:url var="showPollUrl" value="/secure/showpoll/111111" />
 <c:url var="submitPollUrl" value="/secure/submitpoll" />
 
-<script src="ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!-- <script src="ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -12,9 +12,7 @@ $(document).ready(function() {
 			url: '${showPollUrl}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-								console.log( 'Poll sample of data:', $(data).text());
-					}
+
 					var output="";
 					var firstpollid="";
 					var lastpollid="";
@@ -59,7 +57,7 @@ $(document).ready(function() {
 								output+="<div id='result" + index + "' class='pollresult'>"+result+"<button id='" + index + "' style='margin-left:170px;' class='btnnext'>Next &rarr;</button></div></div>";
 					 		} else {
 					 			if (index == ($(data).find("questionresultpair").size()-1)){
-//									console.log("Entering last one questionresultpair");
+//									//console.log("Entering last one questionresultpair");
 									lastpollid = $(this).find("pollQuestion").find("id").text();
 									output+="<div id='result" + index + "' class='pollresult'>"+result+"<button class='btnprev' id='"+ index +"' >&larr; Prev</button></div></div>";
 								}
@@ -68,7 +66,7 @@ $(document).ready(function() {
 						 		};
 					 		}
 
-							console.log("poll output string" + output);
+							//console.log("poll output string" + output);
 					});
 					
 					$('#poll_placeholder').html(output);
@@ -76,7 +74,7 @@ $(document).ready(function() {
 					$(data).find("questionresultpair").each(function(index){
 						if ($(this).find("pollQuestion").find("active").text() == "true"){
 							$("form#" + $(this).find("pollQuestion").find("id").text()).ajaxForm();
-							console.log("ajaxForm set " + $(this).find("pollQuestion").find("id").text());
+							//console.log("ajaxForm set " + $(this).find("pollQuestion").find("id").text());
 						}
 					});
 					
@@ -89,9 +87,9 @@ $(document).ready(function() {
 			        $("div#q0").show();
 			        
 			        $('input[type=radio]').click( function(event){
-              			console.log("radio button clicked " + $(this).attr('name'));
+              			//console.log("radio button clicked " + $(this).attr('name'));
               			$(this).parent().children("input#optionIndex").attr("value", $(this).attr("value"));
-              			console.log("hidden input#optionIndex value " + $(this).parent().children("input#optionIndex").attr("value"));
+              			//console.log("hidden input#optionIndex value " + $(this).parent().children("input#optionIndex").attr("value"));
               		});
 					
 					//associate click event to all vote button
@@ -141,15 +139,15 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function( data ) {
 					if (console && console.log){
-								console.log( 'Sample of data:', data);
+								//console.log( 'Sample of data:', data);
 					}
 					var draftcourse="";
 					var activecourse="";
 					var reviewcourse="";
 					
-					console.log( 'data.hasDraft:', data.hasDraft);
-					console.log( 'data.hasReview:', data.hasReview);
-					console.log( 'data.hasActive:', data.hasActive);
+					//console.log( 'data.hasDraft:', data.hasDraft);
+					//console.log( 'data.hasReview:', data.hasReview);
+					//console.log( 'data.hasActive:', data.hasActive);
 					
 					//check if there is Draft cousee in the list
 					if(data.hasDraft == false)
@@ -167,7 +165,7 @@ $(document).ready(function() {
 					for (var i in data.courses)
 					{
 							var course = data.courses[i];
-							console.log("i is: " + course.type);
+							//console.log("i is: " + course.type);
 							if (course.type == 'Draft'){
 								draftcourse+="<p class='blok-title-L'><a href='#'>" + course.code + ": " + course.name + "</a></p>";
 								if (course.percentage != null){
@@ -195,9 +193,9 @@ $(document).ready(function() {
 							};	
 					};
 					
-					console.log("draftcourse is: " + draftcourse);
-					console.log("activecourse is: " + activecourse);
-					console.log("reviewcourse is: " + reviewcourse);
+					//console.log("draftcourse is: " + draftcourse);
+					//console.log("activecourse is: " + activecourse);
+					//console.log("reviewcourse is: " + reviewcourse);
 					
 					$('#draft_placeholder').html( draftcourse);
 					$('#active_placeholder').html( activecourse);

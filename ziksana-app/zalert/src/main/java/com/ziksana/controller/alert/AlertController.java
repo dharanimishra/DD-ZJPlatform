@@ -45,11 +45,11 @@ public class AlertController {
 	 */
 	@RequestMapping(value = "/deletealert/{memberId}/{alertItemId}", method = RequestMethod.DELETE)
 	public @ResponseBody
-	ModelAndView deleteAlertItem(@PathVariable String memberId,
+	String deleteAlertItem(@PathVariable String memberId,
 			@PathVariable String alertItemId) {
 		LOGGER.info("Entering deleteAlertItem(): " + memberId + " "
 				+ alertItemId);
-		ModelAndView modelAndView = new ModelAndView();
+		//ModelAndView modelAndView = new ModelAndView();
 		
 		//Calling service to delete alert 
 		LOGGER.info(" ALERT ITEM ID IS "+alertItemId);
@@ -57,7 +57,7 @@ public class AlertController {
 		
 		LOGGER.info("Exiting deleteAlertItem(): " + memberId + " "
 				+ alertItemId);
-		return modelAndView;
+		return "Deleted Successfully!";
 	}
 	
 	

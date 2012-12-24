@@ -91,7 +91,7 @@ function displayUnAnsweredPairs(current){
 	var optionsList = optionArray[current].split("/");
 	for(var i = 0 ; i < optionsList.length ; i++){
 		
-		outputResult+= "<tr><td ><input type='radio' id='checked-val' name='radiobtn' value='"+i+"' checked=''>" + "<label id='option-ans' for='option'>" + optionsList[i] + "</label></td></tr>";
+		outputResult+= "<tr><td ><input type='radio' id='checked-val' name='radiobtn' value='"+i+"'>" + "<label id='option-ans' for='option'>" + optionsList[i] + "</label></td></tr>";
 		
 	}
 	//alert(current+","+questionArray.length);
@@ -404,8 +404,8 @@ background-color: #DAE8F2;
 		
 		 <form >
                       <select onchange="change(this.value)">
-						  <option value="1" >Un-Answered Questions</option>
-						  <option value="2" >Previously Answered</option>						  
+						  <option value="1" >Show Me - New Questions</option>
+						  <option value="2" >Show Me - Previously Answered</option>						  
 					  </select>
 		</form>
                     </div>
@@ -457,16 +457,17 @@ function answeredQuestionDisplay(){
 	var outputResult="";
 	outputResult+="<table class='quest-table' border=1>";
 	outputResult+="<tr><th class='quest-table1' width='200px'>Questions</th>";
-	outputResult+="<th class='quest-table1' width='60px'>Answered</th>";
-	outputResult+="<th class='quest-table1' width='30px'>Edit</th></tr>";
+	outputResult+="<th class='quest-table1' width='60px'>Answered Date</th></tr>";
+	
 	outputResult+="<form action=''><tr>";
 	for(var i = 0; i<answeredQuestion.length;i++){
 		
-		outputResult+="<tr><td><label id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label> </td><td><label id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td><td><a class='f-rt' style='color:blue;' href='#' onClick='overAnswer("+i+")'>Edit</a></tr>";
+		outputResult+="<tr><td><a  style='text-decoration:none;' href='#' onClick='overAnswer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td><td></tr>";
 		}
 	
 	
 	outputResult+="<tr></table>";
+	outputResult+="<a class='f-rt' style='color:blue;' href='' onClick='$(\"#kmb_question_container\").show();'>Details</a>";
 	$('#answer-display').html(outputResult);
 }
 
@@ -476,23 +477,25 @@ function overAnswer(loop){
 	 editQuestion = $('#questionUpdate'+loop+'').text();
 	 editChoice = $('#questionAnswer'+loop+'').text();
 	
-	outputAns+="<br/><br/><br/><div><p>View or update the Answer:</p></br></br>";
-	outputAns+="</div>";
-	outputAns+="<form action=''>";
+	outputAns+="<div style='margin-top: 40px; display:none;' id='kmb_question_container'><p>View or update the Answer:</p></br></br>";
+
 	outputAns+="<table width='180px' height='50px' >";
-	outputAns+="<label id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
+	outputAns+="<tr><td><label id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label></td></tr>";
 	
 		if(editChoice == "Yes"){
 			outputAns+="<tr><td><input type='radio' name='q1' value='1' checked='checked' ><label id='cur-id'>Yes</label</td></tr>";
-			outputAns+="<tr><td><input type='radio' name='q1' value='2'  >No</td></tr><label id='cur-id'>No</label></table>";
+			outputAns+="<tr><td><input type='radio' name='q1' value='2'  ><label id='cur-id'>No</label></td></tr>";
 		} 
 		if(editChoice == "No"){
 			outputAns+="<tr><td><input type='radio' name='q1' value='1'  ><label id='cur-id'>Yes</label</td></tr>";
-			outputAns+="<tr><td><input type='radio' name='q1' value='2' checked='checked'><label id='cur-id'>No</label></td></tr></table>";
+			outputAns+="<tr><td><input type='radio' name='q1' value='2' checked='checked'><label id='cur-id'>No</label></td></tr>";
+			
 		}
+		outputAns+="</table>";
 	
 	outputAns+="<button onClick='closeit()' class='f-rt'>Return</button>"; 
 	outputAns+="<button  onClick='updateValues()'>Update</button>"; 
+	outputAns+="</div>";
 	$('#click-det').html(outputAns);
 	return false;
 }
@@ -526,14 +529,13 @@ function updateValues(){
 
 
 
- 					<div class="pre-que">
- 						<div id="answer-display">
- 						
- 						</div>
-							
-							   <div id="click-det">
-							 </div>
-							 </div>
+<div class="pre-que">
+	<div id="answer-display">
+	</div>
+	
+	<div id="click-det">
+	</div>
+</div>
 							
 							 
 							 <div id="newque" class="new-que">

@@ -106,15 +106,14 @@ public class TodoController {
 	/**
 	 * Delete a todo item based on todo item id
 	 */
-	@RequestMapping(value = "/deletetodo/{memberId}/{todoItemId}", method = RequestMethod.DELETE)
-	public @ResponseBody ModelAndView deleteTodoItem(@PathVariable String memberId, @PathVariable String todoItemId) {
-		logger.info("Entering deleteTodoItem(): " + memberId + " " + todoItemId);
-		ModelAndView modelView = new ModelAndView("jsonView");
-				
-		//todoService.deleteTodoItem(Integer.valueOf(memberId), Integer.valueOf(todoItemId));
+	@RequestMapping(value = "/deletetodo/{todoItemId}", method = RequestMethod.DELETE)
+	public @ResponseBody String deleteTodoItem(@PathVariable String todoItemId) {
+		logger.info("Entering deleteTodoItem(): " + todoItemId);
 		
-		logger.info("Exiting deleteTodoItem(): " + memberId + " " + todoItemId);
-		return modelView;
+		todoService.deleteTodo(Integer.valueOf(todoItemId));
+		
+		logger.info("Exiting deleteTodoItem(): " + todoItemId);
+		return "Successfully Deleted";
 	}
 
 }

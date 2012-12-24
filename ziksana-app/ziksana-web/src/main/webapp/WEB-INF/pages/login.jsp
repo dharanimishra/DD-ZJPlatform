@@ -1,4 +1,6 @@
 <!DOCTYPE HTML>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
 <meta charset="utf-8">
@@ -6,26 +8,26 @@
 <title>Login</title>
 
 <!--Body Style sheet-->
-<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
+<link href="resources/css/styles.css" rel="stylesheet" type="text/css">
+<link href="resources/css/type-setting.css" rel="stylesheet" type="text/css">
+<link href="resources/css/effects.css" rel="stylesheet" type="text/css">
+<link href="resources/css/nav.css" rel="stylesheet" type="text/css">
 
 <!--End Body Style sheet-->
 
-<!--<link rel="stylesheet" type="text/css" href="../resources/css/easyslider/demo.css" />-->
-<link rel="stylesheet" type="text/css" href="../resources/css/easyslider/style2.css" />
+<!--<link rel="stylesheet" type="text/css" href="resources/css/easyslider/demo.css" />-->
+<link rel="stylesheet" type="text/css" href="resources/css/easyslider/style2.css" />
 <link
 	href='http://fonts.googleapis.com/css?family=Economica:700,400italic'
 	rel='stylesheet' type='text/css'>
 <noscript>
-	<link rel="stylesheet" type="text/css" href="../resources/css/easyslider/nojs.css" />
+	<link rel="stylesheet" type="text/css" href="ziksana-web/resources/css/easyslider/nojs.css" />
 </noscript>
 <script type="text/javascript"
-	src="../resources/js/easyslider/modernizr.custom.28468.js"></script>
-<script type="text/javascript" src="../resources/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="../resources/js/custom/login.js"></script>
-<script type="text/javascript" src="../resources/js/easyslider/jquery.cslider.js"></script>
+	src="resources/js/easyslider/modernizr.custom.28468.js"></script>
+<script type="text/javascript" src="resources/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="resources/js/custom/login.js"></script>
+<script type="text/javascript" src="resources/js/easyslider/jquery.cslider.js"></script>
 <script type="text/javascript">
 	$(function() {
 
@@ -144,7 +146,7 @@
 .boxBody {
 	background: #fefefe;
 	/*border-top:1px solid #dde0e8;*/
-	border-bottom: 1px solid #dde0e8;
+	border:0;
 	padding: 10px 20px;
 }
 
@@ -263,19 +265,23 @@
 </style>
 
 </head>
-
+<c:url var="ziksanalogo" value="/resources/images/Ziksana.jpg" />
+<c:url var="onelogo" value="/resources/images/slider/1.png" />
+<c:url var="logotwo" value="/resources/images/slider/2.png" />
+<c:url var="threelogo" value="/resources/images/slider/3.png" />
+<c:url var="fourlogo" value="/resources/images/slider/4.png" />
 <body style="background-image: none;">
 
 	<div class="loginwrapper">
 
 		<div class="loginhead">
 
-			<div class="zenimainlogo">
-				<!--<img src="../resources/images/Ziksana.jpg" alt="Ziksana" width="116" height="112" border="3" style="border:3px solid #F6902B; background-color:#FFFFFF; padding:10px; -moz-box-shadow: 1px 2px 5px #000000;
+<!-- 			<div class="zenimainlogo">
+				<img src="resources/images/Ziksana.jpg" alt="Ziksana" width="116" height="112" border="3" style="border:3px solid #F6902B; background-color:#FFFFFF; padding:10px; -moz-box-shadow: 1px 2px 5px #000000;
 -webkit-box-shadow: 1px 2px 5px #000000;
-box-shadow: 1px 2px 5px #000000;"/>-->
+box-shadow: 1px 2px 5px #000000;"/>
 
-			</div>
+			</div> -->
 			<!--end of zenimain-->
 
 		</div>
@@ -293,7 +299,8 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 							i want..</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="../resources/images/slider/2.png" alt="image01" />
+						
+							<img src="${logotwo}" alt="image01" />
 						</div>
 					</div>
 					<div class="da-slide">
@@ -302,7 +309,7 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 							Anything is possible.</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="../resources/images/slider/3.png" alt="image01" />
+							<img src="${threelogo}" alt="image01" />
 						</div>
 					</div>
 					<div class="da-slide">
@@ -312,7 +319,7 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 							principles and you can make your dreams come true.</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="../resources/images/slider/4.png" alt="image01" />
+							<img src="${fourlogo}" alt="image01" />
 						</div>
 					</div>
 					<div class="da-slide">
@@ -321,7 +328,7 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 							dream; not only plan, but also believe.</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="../resources/images/slider/1.png" alt="image01" />
+							<img src="${onelogo}" alt="image01" />
 						</div>
 					</div>
 					<nav class="da-arrows">
@@ -349,13 +356,13 @@ box-shadow: 1px 2px 5px #000000;"/>-->
 			<div class="logindtls">
 
 				<div class="zenilogo">
-					<img src="../resources/images/Ziksana.jpg" alt="Ziksana" width="128"
-						height="128" />
+					<img src="${ziksanalogo}" alt="Ziksana" width="128"
+						height="128" style="float: right; margin:.5em; " />
 				</div>
 				<!--end of zenilogo-->
 
 
-				<div class="frmloginzeni">
+				<div class="frmloginzeni" style="clear:right;">
 					<div id="loginerror">
 						<%
 							if (request.getAttribute("loginResult") != null

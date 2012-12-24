@@ -43,4 +43,15 @@ public class AnnouncementsController {
 		logger.info("announcement ID: " + memberRoleId);
 		return mav;
 	}
+	/*Get popup Alert window
+	 * */	
+	@RequestMapping(value = "/showannouncementpopup", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getPopupWindow() {
+	
+		ModelAndView modelAndView = new ModelAndView("common/zannouncements");
+		
+		return modelAndView;
+		
+	}
+	
 }

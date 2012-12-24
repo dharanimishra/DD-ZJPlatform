@@ -329,8 +329,8 @@ $(document).ready(function() {
           			          
       
           <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
-          <c:url var="htmlUrl_profile2" value="" />
-            <span><a class="text-size-px11  lbx-70-50" href="${htmlUrl_profile2}" class="" style="color: #27b;">More..</a></span>
+          <c:url var="showannounpopup" value="/secure/showannouncementpopup" />
+            <span><a class="text-size-px11  lbx-70-50" href="${showannounpopup}" class="" style="color: #27b;">More..</a></span>
           </p>
         </div>
         </div>             
