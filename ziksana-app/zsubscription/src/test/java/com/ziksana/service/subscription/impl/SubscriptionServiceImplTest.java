@@ -1,5 +1,6 @@
 package com.ziksana.service.subscription.impl;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.util.List;
@@ -45,9 +46,10 @@ public class SubscriptionServiceImplTest {
 	public void testGetNotes() {
 		
 		SubscriptionCourse course = new SubscriptionCourse();
+		course.setSubscriptionCourseId(1000);
 		
 		List<Note> notes = subscriptionService.getNotes(course);
-		assertNull(notes);
+		assertNotNull(notes);
 
 	}
 
