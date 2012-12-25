@@ -25,9 +25,9 @@ public class DataServiceImpl implements DataService {
 	
 	
 	@Override
-	public Map<String, Integer> fetchData(String column) {
+	public Map<String, Integer> fetchData(String category) {
 		// TODO Auto-generated method stub
-		List<NameValue> list = staticDataMapper.fetchData(column);
+		List<NameValue> list = staticDataMapper.fetchData(category);
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		for (NameValue nameValue : list) 
 			map.put(nameValue.getName(),nameValue.getValue());

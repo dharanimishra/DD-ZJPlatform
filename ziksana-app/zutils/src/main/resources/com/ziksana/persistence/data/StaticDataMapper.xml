@@ -11,7 +11,7 @@
 		utllookupvalue v on
 		l.LookupId=v.LookupId
 		where
-		l.CategoryName=#{column}
+		l.CategoryName=#{category}
 
 	</select>
 

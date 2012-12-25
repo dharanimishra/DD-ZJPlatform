@@ -5,6 +5,8 @@ package com.ziksana.service.data.impl;
 
 
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.Map;
 
 import junit.framework.Assert;
@@ -61,6 +63,8 @@ public class DataServiceImplTest {
 	public void testFetchData() {
 		Map<String,Integer> map = dataService.fetchData("notificationtype");
 		Assert.assertNotNull(map);
+		
+		assertTrue(map.size()==3);
 	}
 
 }
