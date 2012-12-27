@@ -97,8 +97,6 @@ public interface MemberMapper {
 	 * @param memberRoleType
 	 * @return
 	 */
-	@Update({ "update memmember",
-		"set MemberType = #{memberType,jdbcType=INTEGER}",
-		"where memberid = #{memberId,jdbcType=INTEGER}" })
+	
 	int setMemberType(Member member);
 }
