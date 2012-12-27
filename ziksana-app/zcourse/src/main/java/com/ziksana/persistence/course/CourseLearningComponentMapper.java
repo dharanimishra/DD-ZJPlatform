@@ -32,12 +32,11 @@ public interface CourseLearningComponentMapper {
 	 * @return
 	 */
 	@Select({
-			"select courselearningcomponentid, duration, durationunit, courseid, learningcomponentid, learningcomponenttypeid ",
+			"select courselearningcomponentid, duration, courseid, learningcomponentid, learningcomponenttypeid ",
 			" from corcourselearningcomponent where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "courseLearningComponentId", column = "courselearningcomponentid"),
 			@Result(property = "duration.duration", column = "duration"),
-			@Result(property = "duration.durationUnit", column = "durationunit"),
 			@Result(property = "course.courseId.storageID", column = "courseid"),
 			@Result(property = "learningComponent.learningComponentId.storageID", column = "learningcomponentid"),
 			@Result(property = "learningComponentType.learningComponentTypeId.storageID", column = "learningcomponenttypeid") })
@@ -48,7 +47,7 @@ public interface CourseLearningComponentMapper {
 	 * @return
 	 */
 	@Select({
-			"select courselearningcomponentid, duration, durationunit, courseid, learningcomponentid, learningcomponenttypeid ",
+			"select courselearningcomponentid, duration,  courseid, learningcomponentid, learningcomponenttypeid ",
 			" from corcourselearningcomponent where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "courseLearningComponentId", column = "courselearningcomponentid"),

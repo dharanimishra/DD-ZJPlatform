@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ziksana.domain.course.LearningComponent;
@@ -15,6 +16,7 @@ import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.service.course.DefineQualifierService;
 
+@Service
 public class DefineQualifierServiceImpl implements DefineQualifierService {
 
 	private final static Logger LOGGER = Logger
