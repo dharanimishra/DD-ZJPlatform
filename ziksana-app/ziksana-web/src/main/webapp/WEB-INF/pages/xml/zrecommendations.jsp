@@ -7,7 +7,7 @@
 
 
 <recommendations>	
-	<c:forEach var="recomend" items="${recommendations.getContent()}">
+	<c:forEach var="recomend" items="${recommendations}">
 		<recommenditem recomendId="${category}">
 				 <title>${recomend.title}</title>
 				<description>${recomend.description}</description>

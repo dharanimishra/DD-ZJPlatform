@@ -17,20 +17,73 @@ import com.ziksana.id.ZID;
 public class Question {
 
 	private ZID id;
-	private String text;
+	private Integer questionId;
 	
+	private String text;
+	private String responseDate;
 	private String imageUrl;
 	private String videoUrl;
 	private Set<Choice> choices;
 	
+	
 
-	public Question(Integer id, String text) {
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(ZID id) {
+		this.id = id;
+	}
 
+
+
+	/**
+	 * @param choices the choices to set
+	 */
+	public void setChoices(Set<Choice> choices) {
+		this.choices = choices;
+	}
+
+
+	
+	
+	
+	
+
+
+	/**
+	 * @return the responseDate
+	 */
+	public String getResponseDate() {
+		return responseDate;
+	}
+
+
+
+	/**
+	 * @param responseDate the responseDate to set
+	 */
+	public void setResponseDate(String responseDate) {
+		this.responseDate = responseDate;
+	}
+
+	public Question(Integer questionId, String text){
 		super();
-		this.id = new IntegerZID(id);
+		this.questionId = questionId;
 		this.text = text;
 		this.choices = new HashSet<Choice>();
 	}
+
+	public Question(Integer questionId, String text, String responseDate) {
+
+		super();
+		this.questionId = questionId;
+		this.text = text;
+		this.responseDate = responseDate;
+		this.choices = new HashSet<Choice>();
+	}
+	
+
+
 	/**
 	 * @param text the text to set
 	 */
@@ -95,6 +148,24 @@ public class Question {
 	 */
 	public Set<Choice> getChoices() {
 		return choices;
+	}
+
+
+
+	/**
+	 * @return the questionId
+	 */
+	public Integer getQuestionId() {
+		return questionId;
+	}
+
+
+
+	/**
+	 * @param questionId the questionId to set
+	 */
+	public void setQuestionId(Integer questionId) {
+		this.questionId = questionId;
 	}
 
 }

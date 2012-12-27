@@ -21,7 +21,7 @@
 	href='http://fonts.googleapis.com/css?family=Economica:700,400italic'
 	rel='stylesheet' type='text/css'>
 <noscript>
-	<link rel="stylesheet" type="text/css" href="ziksana-web/resources/css/easyslider/nojs.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/easyslider/nojs.css" />
 </noscript>
 <script type="text/javascript"
 	src="resources/js/easyslider/modernizr.custom.28468.js"></script>

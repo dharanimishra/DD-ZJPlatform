@@ -60,7 +60,7 @@ public class RecommendationsController {
 		message.setContent(recommendations);
 		message.setHeader(getHeader(getClass().getSimpleName().toUpperCase()));
 		
-		modelAndView.addObject("recommendations", message);
+		modelAndView.addObject("recommendations", recommendations);
 		logger.info("Exit Recommend By category");
 
 		return modelAndView;

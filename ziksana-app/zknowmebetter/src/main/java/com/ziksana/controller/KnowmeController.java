@@ -63,7 +63,7 @@ public class KnowmeController {
 	}
 	
 	@RequestMapping(value = "/saveknowme", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView submitKnowme(
+	public @ResponseBody String submitKnowme(
 			@RequestParam(value = "memberAnswer", required = true) String memberAnswer,
 			@RequestParam(value = "testQuestionValue", required = true) String testQuestionValue,
 			@RequestParam(value = "testQuestionId", required = true) Integer testQuestionId,
@@ -74,11 +74,11 @@ public class KnowmeController {
 		
 		//userChoice.setMemPstTestId(Integer.valueOf(1));
 		personalityService.saveAnswer(question, userChoice);
-		return null;
+		return "Answer Submitted Successfully";
 	}
 	
 	@RequestMapping(value = "/updateknowmebetter", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView updateKnowme(
+	public @ResponseBody String updateKnowme(
 			@RequestParam(value = "editCheckedAnswer", required = true) String editCheckedAnswer,
 			@RequestParam(value = "editQuesval", required = true) String editQuesval,			
 			@RequestParam(value = "editQuesid", required = true) Integer editQuesid,			
@@ -89,7 +89,7 @@ public class KnowmeController {
 		Choice userChoice =new Choice(editAnsId, editAnsId, editCheckedAnswer, Integer.valueOf(1));
 		
 		personalityService.updateAnswer(question, userChoice);
-		return null;
+		return "Answer Updated Successfully";
 	}
 	
 

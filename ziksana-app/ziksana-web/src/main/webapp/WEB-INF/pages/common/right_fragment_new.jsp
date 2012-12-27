@@ -5,7 +5,17 @@
 
 <c:url var="jsJqueryFormUrl" value="/resources/js/jquery.form.js" />
 <script type="text/javascript" src="${jsJqueryFormUrl}"></script>
+<script type="text/javascript">
+function showMask(masks)
+{
 
+$('#'+masks).show();
+}
+function hideMask(maskh)
+{
+$('#'+maskh).hide();
+}
+</script>
 <script type="text/javascript">
  function submitPole(memberId)
  {
@@ -29,7 +39,7 @@
 		 							 });
 		 					 
 		 				 	 //output+="<p  style='padding-left: 10px;'>"+ $(this).find("answer1count").text()+"</p>";
-		 				 	 alert(output);
+		 				 	 //alert(output);
 		 					});
 		 			$('div.pollresult').html(output);
 		 			$('div.pollresult').show();
@@ -47,8 +57,8 @@ $(document).ready(function() {
 			dataType: 'xml',
 			success: function( data ) {
 					if (console && console.log){
-						alert('writing to console');	
-						console.log( 'Poll sample of data:', $(data).text());
+						//alert('writing to console');	
+						//console.log( 'Poll sample of data:', $(data).text());
 								
 					}
 					var output="";
@@ -58,10 +68,10 @@ $(document).ready(function() {
 					$(data).find("questionresultpair").each(function(index)  
 							{
 						
-						    alert('poll results');
+						   // alert('poll results');
 						 	var question = "<p class='titles-info font-Signika text-size-px18 light-gray'>" + $(this).find("pollQuestion").find("questionText").text() + "</p>";
 						 	var currentId = $(this).find("pollQuestion").find("id").text();
-						 	alert('current id is '+currentId)
+						 	//alert('current id is '+currentId)
 							if ($(this).find("pollQuestion").find("active").text() == "true"){
 						 		output+="<div id='q" + index + "' style='width: 225px;' class='pollquestion'>";
 						 		output+=question;
@@ -90,8 +100,8 @@ $(document).ready(function() {
 							
 							var result="";
 							
-							alert('voted');
-							alert($(this).find("pollQuestion").find("active").text());
+							//alert('voted');
+							//alert($(this).find("pollQuestion").find("active").text());
 					        result+="<p><b></b> &nbsp; <div style='background-color: #09F; height: 20px; width: "+ $(this).find("pollResult").find("answer1count").text + "%;'></div>&nbsp;<b>"+ $(this).find("pollResult").find("answer1count").text;
 							
 							if (index == 0){
@@ -129,8 +139,8 @@ $(document).ready(function() {
 			        $("div#q0").show();
 			        
 			        $('input[type=radio]').click( function(event){
-			        	alert('test alert')
-			        	console.log("radio button clicked " + $(this).attr('name'));
+			        	//alert('test alert')
+			        	//console.log("radio button clicked " + $(this).attr('name'));
               			
               			$(this).parent().children("input#optionIndex").attr("value", $(this).attr("value"));
               			console.log("hidden input#optionIndex value " + $(this).parent().children("input#optionIndex").attr("value"));
@@ -139,7 +149,7 @@ $(document).ready(function() {
 					//associate click event to all vote button
 					$("button.votebtn").click( function(event){
               			$(this).attr("disabled", "disabled");
-              			alert('voted boss')
+              			//alert('voted boss')
               			$("div#result" + event.target.id).fadeIn("slow");
               		});
 					
@@ -297,7 +307,15 @@ $(document).ready(function() {
                     </div>
                   </div>
                   
-                  <div class=" col-right-container for-rounded-box all-box-shadow">
+                  <div class=" col-right-container for-rounded-box all-box-shadow demo_message_container" >
+                   <div class="demo_message">
+					    <p>
+					            For Demonstration Only.<br /> Functionality to be available in subsequent Playpens
+					            
+					            </p>
+					
+					</div>
+                  
                   	<div class="Performance">
                       <p class="titles-info font-Signika text-size-px18 light-gray">My Students <br></p>
                      <c:url var="imageUrl_report1" value="/resources/images/e-dash-chart1.png" />

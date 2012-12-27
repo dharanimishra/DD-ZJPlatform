@@ -2521,3 +2521,133 @@ legend small {
 }*/
 
 /* browse button style*/
+.alertcontainer
+{
+border-bottom:1px solid #F5F5F5;
+}
+
+
+
+.alertinfo-decription
+{
+	float:left;
+	height:14px; 
+	font-family:verdana; 
+	font-size:11px; 
+	padding:4px;
+	color:#666;
+}
+
+.alertcontainer:hover
+{
+background-color:#F3F3F3;	
+
+}
+
+.alertinfo-category
+{
+float:left; height:14px; border:1px solid rgba(0, 68, 119, 0.28); 
+margin-right:4px; 
+padding:4px; 
+font-family:arial; 
+font-size:10px; 
+color:rgba(27, 110, 172, 0.94); width:65px; font-weight:bold;
+-webkit-border-radius: 3px;
+border-radius: 3px;	
+background-color:#F7F7F7;
+cursor: pointer;
+}
+
+.alertinfo
+{
+	height:28px;padding:5px;
+}
+
+.alertinfo-button
+{
+	float:left; 
+	height:14px; 
+	font-family:verdana; 
+	font-size:11px; 
+	padding:4px; 
+	margin-left:90px;
+}
+
+
+
+.todocontainer
+{
+border-bottom:1px solid #F5F5F5;
+}
+
+
+
+.todoinfo-decription
+{
+	float:left;
+	height:14px; 
+	font-family:verdana; 
+	font-size:11px; 
+	padding:4px;
+	color:#666;
+}
+
+.todocontainer:hover
+{
+background-color:#F3F3F3;	
+
+}
+
+.todoinfo-category {
+  background-color: #F7F7F7;
+  border: 1px solid rgba(0, 68, 119, 0.28);
+  border-radius: 3px 3px 3px 3px;
+  color: rgba(27, 110, 172, 0.94);
+  cursor: pointer;
+  float: left;
+  font-family: arial;
+  font-size: 10px;
+  font-weight: bold;
+  height: 14px;
+  margin-right: 4px;
+  padding: 4px;
+  text-align: center;
+  width: 115px;
+}
+
+.todoinfo
+{
+	height:28px;padding:5px;
+}
+
+
+
+.todoinfo-button
+{
+	float:left; 
+	height:14px; 
+	font-family:verdana; 
+	font-size:11px; 
+	padding:4px; 
+	margin-left:80px;
+}
+
+.demo_message_container{position: relative;}
+.demo_message_container:hover .demo_message {
+  display: block !important;
+  padding-top: 22% !important;
+}
+.demo_message {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+  bottom: 0;
+  color: white;
+  display: none;
+  font-size: 10px;
+  left: 0;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  top: 0;
+text-align: center;
+vertical-align:middle;
+}

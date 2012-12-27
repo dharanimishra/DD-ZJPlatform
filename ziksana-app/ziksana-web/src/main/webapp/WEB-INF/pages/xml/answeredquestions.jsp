@@ -8,8 +8,9 @@
 	<c:forEach var="answered" items="${answeredquesList}">
 		<answered>
 				<questions>
-					<questiobankid>${answered.question.id.getDisplayID()}</questiobankid>
-					<question>${answered.question.text}</question>				
+					<questiobankid>${answered.question.questionId}</questiobankid>
+					<question>${answered.question.text}</question>		
+					<responsedate>${answered.question.responseDate}</responsedate>		
 					<answers>	
 						<answerid>${answered.choice.index}</answerid>					
 						<answer>${answered.choice.text}</answer>

@@ -1,9 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<link rel="stylesheet" type="text/css" href="resources/css/masks.css" />
+
+
+
               <div class="col-lft" >
-              <div class="user-info all-box-shadow pad" >
+              
+              <div class="user-info all-box-shadow pad demo_message_container" style="" >
+              <div class="demo_message">
+    <p>
+            For Demonstration Only.<br /> Functionality to be available in subsequent Playpens
+            
+            </p>
+
+</div>
+              
               <div class="grey-out  f-l">
               
               <c:url var="imageUrl_profile1" value="/resources/images/user/pic-id-102.jpg" />
@@ -51,13 +64,21 @@
 			
 			
             
-            <div id="blogList"></div> <div id="blogListError"></div>
+            
             
            
             
-          <div class="user-contacts all-box-shadow pad" >           
-           <div id="tabs" class="_bgmain">
-           <span class="titles-info font-Signika text-size-px18 light-gray">Contacts</span>
+          <div class="user-contacts all-box-shadow pad " >     
+           <div id="blogList"></div> <div id="blogListError"></div>   
+           <div id="tabs" class="_bgmain demo_message_container">
+	        <div class="demo_message">
+   			 <p>
+            For Demonstration Only.<br /> Functionality to be available in subsequent Playpens
+            
+            </p>
+
+			</div>  
+           <span class="titles-info font-Signika text-size-px18 light-gray " >Contacts</span>
 			
            		<a class="tab0">All</a>
 				<a class="tab1">First</a>
@@ -165,49 +186,144 @@
         </div>
         </div>
         
-        
-        
-         <div class="user-insight user-contacts all-box-shadow pad" >
-  <p class="titles-info font-Signika text-size-px18 light-gray">Know me better</p>
-  <ul>
-    <li class=""><span class="p-p _blogs bckground-blue-light">You are usually the first to react to a sudden event.</span>
-      <div id="radio" class="btn-set" style="margin-top:3px; margin-bottom:5px;">
-        <input type="radio" id="radio1" name="radio" />
-        <label for="radio1">Yes</label>
-        <input type="radio" id="radio2" name="radio"  />
-        <label for="radio2">Sometimes</label>
-        <input type="radio" id="radio3" name="radio" />
-        <label for="radio3">Never</label>
-        <br>
-    </div>
-    </li>
-    <!--<li class=""><span class="p-p _blogs bckground-blue-light">You are almost never late for your appointments.</span>
-      <div  class="btn-set" style="margin-top:3px; margin-bottom:5px;">
-        <input type="radio" id="radio4" name="trivia" />
-        <label for="radio4">Yes</label>
-        <input type="radio" id="radio5" name="trivia"  />
-        <label for="radio5">No</label>
-        <br>
-    </div>
-    </li>
-    <li class=""><span class="p-p _blogs bckground-blue-light">You like to be engaged in an active and fast-paced job.</span>
-      <div  class="btn-set" style="margin-top:3px; margin-bottom:5px;">
-        <input type="radio" id="radio7" name="gtk-1" />
-        <label for="radio7">Yes</label>
-        <input type="radio" id="radio8" name="gtk-1"  />
-        <label for="radio8">No</label>
-        <br>
-    </div>
-    </li>-->
-     <c:url var="knowmwpopup" value="/secure/getknowmepopupwindow" />
-  </ul>
-  <div class="txt-r" ><a class="text-size-px11  lbx-70-50" href="${knowmwpopup}" class="Block"><span class="f-r text-pading-top text-pading-right"><span class="text-pading-right">Know me better</span></span> <strong class="zinfo2 zicons ls f-r"></strong></a>
+      <!-- unanswered script -->
+<c:url var="knowmwpopup" value="/secure/getknowmepopupwindow" />
+	   
+<c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
+  <script type="text/javascript">
+  currentQuestion = 0;
+$(document).ready(function() {
+	$.ajax({
+		  	type: 'GET',
+			url: '${showUnAnswered}',
+			dataType: 'xml',
+			success: function( data ) {
+					if (console && console.log){
+								console.log( 'unanswered data:', data);
+					}
+					var output="";
+					 questionArray= new Array();
+					 questionIdArray = new Array();
+					 optionArray = new Array();
+					 optionIndexArray = new Array();
+					 memberPersonalitytestId = 0;
+					$(data).find("Questions").each(function(index){
+						
+						//var pairIdQuestion = $(this).find("questiobankid").text()+"="+$(this).find("Question").text();
+						 questionArray.push($(this).find("Question").text()); 
+						
+						questionIdArray.push($(this).find("questiobankid").text());
+						
+						var options = "";
+				 		$(this).find("options").each(function(){
+				 			
+				 			$(this).find("option").each(function(){
+				 				
+				 				options +=  $(this).text()+"/";
+				 				
+				 			});
+				 			options = options.substring(0,options.length-1);
+				 			optionArray.push(options);
+				 				
+				 			
+				 		});
+				 		
+					
+					});
+					console.log("unAnswered Question Id ==>"+ questionIdArray);
+					console.log("unanswered array: ==> " + questionArray);
+					console.log("option array==>"+  optionArray);
+					console.log("memberPersonalitytestId==>"+memberPersonalitytestId);
+				
+					displayUnAnsweredPairs(current);		
+					
+			}
+	
+	});
+	
+});
 
+
+function displayUnAnsweredPairs(current){
+	var outputResult="";
+	outputResult+="<p class='titles-info font-Signika text-size-px18 light-gray'>Know me better</p>";
+	outputResult+="<div id='quest'>";
+	outputResult+="<label style='display:none;' id='cur-qus-id'>"+questionIdArray[current]+"</label><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
+	outputResult+="<table width='180px' height='30px' >";
+
+	var optionsList = optionArray[current].split("/");
+	outputResult+= "<tr><td ><input type='radio' checked='checked'  id='checked-val' name='radiobtn' value='0'>" + "<label id='option-ans' for='option'>" + optionsList[2] + "</label></td></tr>";
+	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='1'>" + "<label id='option-ans' for='option'>" + optionsList[1] + "</label></td></tr>";
+	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='1'>" + "<label id='option-ans' for='option'>" + optionsList[0] + "</label></td></tr>";
+	/* for(var i = 0 ; i < optionsList.length ; i++){
+		
+		
+		
+		outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='"+i+"'>" + "<label id='option-ans' for='option'>" + optionsList[i] + "</label></td></tr>";
+		}	 */
+	
+	outputResult+="</table>";
+	outputResult+="<br/>";
+	
+	
+
+	outputResult+="<button class='f-rt' id='btnnxt' onClick='submitValue()'>Submit</button>";
+	
+	  
+	   outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'><span class='text-pading-right'>More</span></span> <strong class='zinfo2 zicons ls f-r'></strong></a>";
+	
+		 
+	
+	
+	$('#knowme-ques').html(outputResult);
+}
+function nextquestion(){
+	//var cur=currentQuestion+1<questionArray.length-2?currentQuestion++:questionArray.lengt;
+	displayUnAnsweredPairs(++currentQuestion);
+}
+function prevquestion(){
+	//var cur=currentQuestion+1<questionArray.length-2?currentQuestion++:questionArray.lengt;
+	displayUnAnsweredPairs(--currentQuestion);
+}
+
+function submitValue(){
+	testQuestionId = $('#cur-qus-id').text();
+	 testQuestionValue = $('#cur-qus-value').text();
+	 memberAnswer = $('#option-ans').text();
+	 questionBankAnswerId = $('input[name=radiobtn]:checked').val();
+	
+	  $.post( '<c:url value='/secure/saveknowme'/>'
+		        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':testQuestionId,'questionBankAnswerId':questionBankAnswerId}
+		        , function( data )
+		        {
+		        
+
+		        }
+				, 'json' );  
+}
+</script>
+        
+         <div id="knowme-ques" class="user-insight user-contacts all-box-shadow pad" >
+			 
+			 <!--  <ul>
+			    <li class=""><span class="p-p _blogs bckground-blue-light">You are usually the first to react to a sudden event.</span>
+			      <div id="radio" class="btn-set" style="margin-top:3px; margin-bottom:5px;">
+			        <input type="radio" id="radio1" name="radio" />
+			        <label for="radio1">Yes</label>
+			        <input type="radio" id="radio2" name="radio"  />
+			        <label for="radio2">Sometimes</label>
+			        <input type="radio" id="radio3" name="radio" />
+			        <label for="radio3">Never</label>
+			        <br>
+			    </div>
+			    </li> -->
+    
+  
   </div>
   
   
   <!-- recommendation zeni -->
-  </div>
+ 
   <c:url var="showRecomendUrl" value="/secure/showrecByCateg/1" />
   <script type="text/javascript">
 $(document).ready(function() {
@@ -266,4 +382,4 @@ $(document).ready(function() {
           </p>
         </div>
         </div>
-                </div> 
+                </div>

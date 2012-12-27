@@ -65,7 +65,7 @@ function changeImage(a){
 	<c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
 <script type="text/javascript">
 function deleteFunction(val){
-	/* alert('${deleteAlertUrl}'+val); */
+	
 	
 	confirm_delete_alert = confirm('Are you sure you want to delete this item?');
 	if(confirm_delete_alert == true){
@@ -87,6 +87,11 @@ function deleteFunction(val){
 	
 	}
 }
+
+function closeit(){
+parent.jQuery.fancybox.close();
+
+}
 </script>
 	
 	
@@ -100,14 +105,14 @@ function deleteFunction(val){
 	 			dataType: 'xml',
  			success: function( data ) {
 	 					if (console && console.log){
-								console.log( 'Sample of data:', data);
+								//console.log( 'Sample of data:', data);
 				}
 				var output="";
 					output+="<div  class='alerts'>";
 					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
 					$(data).find("alertitem").each(function(index){
 						
-						output+="<div class='alertcontainer' style='border:1px solid #F5F5F5;' id='conalert3'>";
+						output+="<div id='alert_"+$(this).find("id").text()+"' class='alertcontainer'  id='conalert3'>";
 						output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						output+="<a href='#linkurl' rel='tipsy' title='Info' style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' /> </a></div>";
@@ -117,19 +122,11 @@ function deleteFunction(val){
 						/* output+="<div class='alertinfo-decription' style='float:left; height:14px; font-family:verdana; font-size:11px; padding:4px;'>"; */
 						output+="<div id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+$(this).find("description").text()+"</div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 						/* output+="<div class='alertinfo-button' style='display:inline;margin-left:10px;' >"; */
-						output+="</div></div>";
 						
-						/* output+="<div class='alertitem'>";
-						output+="<span class='Zalart zicons ls-no f-l a1'></span>&nbsp;";
-						//output+="<font class='_hText'>" + alertitem.subject + "</font>";
 						
-						//output+="<font class='_sText'>" + $(this).find("description").text() + "</font>";
-						output+= $(this).find("description").text(); 
-						output+="<span class='alert zclose  zicons ls-no f-r'></span>";
-						output+="<input type='hidden' id='alertItemId' value='" +$(this).find("id").text()  + "' />";
-						output+="</div>";	 */					
+									
 				});
-					
+					output+="</div><button style='float:right;' onClick='closeit()' class='f-rt'>Return</button></div>";
 					
 					console.log("output string: " + output);
 					$('#alertplaceholder').html( output);
@@ -173,7 +170,7 @@ function deleteFunction(val){
 		
 	});
 	</script>
-	<div style="border:2px solid #900; class="alert_todo" style="margin-left:70px;" >
+	<div  class="alert_todo" style="margin-left:70px;" >
 	 
 	                   		<div id= "alertplaceholder"  class="alerts" >
 	        				 <span class="titles-info font-Signika text-size-px18 light-gray">Alerts</span>

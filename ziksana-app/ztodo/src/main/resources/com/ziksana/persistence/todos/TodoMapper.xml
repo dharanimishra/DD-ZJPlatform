@@ -15,6 +15,8 @@
 		v.LookupValue='Ztodo' and
 		n.ForMemberRoleId=#{userMemberRoleId}
 	</select>
+	
+	
 
 	
 	<select id="getMapperTodos" resultMap="todoResultMap" parameterType="int">

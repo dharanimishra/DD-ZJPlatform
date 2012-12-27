@@ -27,15 +27,17 @@ function home(){
 </script>
 
 <script type="text/javascript">
- function createNewAnswer()
+ function addTodo()
  {
 	 
-	 todo_category = $('#Todocategory').val();
-	 todo_notificationContent = $('#tododescriptionvalue').val();
-	if(todo_notificationContent != null)
+	 todo_category = $('#todo_categories').val();
+	 todo_description = $('#todo_description').val();
+	 
+	 if(todo_category =='' || todo_description ==''){return false;}
+	if(todo_description != null)
 		
 		   $.post( '<c:url value='/secure/createtodo'/>'
-        , {'category':todo_category,'notificationContent':todo_notificationContent}
+        , {'category':todo_category,'notificationContent':todo_description}
         , function( data )
         {
         
@@ -54,7 +56,7 @@ function home(){
  <c:url var="deleteTodoUrl" value="/secure/deletetodo/1111111" />
 <script type="text/javascript">
 function deleteTodoFunction(val){
-	alert(val);
+	
 	
 	 confirm_delete_alert = confirm('Are you sure you want to delete this item?');
 	if(confirm_delete_alert == true){
@@ -66,7 +68,7 @@ function deleteTodoFunction(val){
 		url: '${deleteTodoUrl}'+val,
 		dataType: 'json',
 		success: function( data ) {
-			console.log('delete alert fired');
+			//console.log('delete alert fired');
 			//delete the alert div
 			
 			
@@ -76,12 +78,24 @@ function deleteTodoFunction(val){
 	
 	}
 }
+function closeit(){
+	parent.jQuery.fancybox.close();
+
+	}
 </script>
  <!-- TODO LIst -->
+  <c:url var="todocategory" value="/secure/gettodocategory/111111" />
  <c:url var="showmoretodo" value="/secure/showmytodo/111111" />
  <c:url var="todo" value="../resources/images/icons/todo.png" />
   <script type="text/javascript">
 $(document).ready(function() {
+	
+	$('#todo_category_name').focusout(function(){add_new_category_item();});
+	$('#todo_description').focusout(function(){addTodo();});
+	
+	
+	setTimeout('console.log("hello");', 300);
+	
 	$.ajax({
 		  	type: 'GET',
 			url: '${showmoretodo}',
@@ -90,62 +104,93 @@ $(document).ready(function() {
 					if (console && console.log){
 								console.log( 'todo of data:', data);
 					}
+					
 					var output="";
 					
-					
+					var indexValue = 0;
 					$(data).find("todoitem").each(function(index){
-						output+="<table class='todo' id='todotable' >";
-							output+="<tbody id='todobody' style='border-bottom:1px solid #F5F5F5;' >";
-							output+="<tr width='100%' class='todocontainer todoinfo' style='height:28px;padding:5px;border:1px solid green;' id='contodo1' >";
-							output+="<td width='20px' class='todoinfo-icon' style='padding-right:10px;'>";
-							output+="<img src=${todo} alt='Info'  /> </td>";
-							output+="<td width='' class='todoinfo-category' style='margin-top:7px; padding-right:10px;' >"+$(this).find("categoryName").text()+"</td>";
-							output+="<td class='todoinfo-decription' style='margin-top:7px;' >";
-							//output+="<span width='200px' id='demo-basictodo1' style='font-weight:lighter; cursor:pointer;'>"+$(this).find("subject").text()+"</span></td>";
-							output+="<td width='20px' class='todoinfo-button' style='padding-top:7px;' >";
-							output+="<a href='#linkurl' rel='tipsy' title='Complete'><input type='checkbox' id='cktodo1'> </a></td><td><a href='#' onclick='deleteTodoFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></td>";
-							output+="</td></tr></tbody></table>";
+					
+						indexValue = index;
+						
+						output+="<div id='todoid"+$(this).find("id").text()+"' class='todocontainer' style='border:1px solid #F5F5F5;' id='contodo1'>";
+						output+="<div class='todoinfo' style='height:28px;padding:5px;'>";
+						output+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
+						 
+						output+="<a href='#' rel='tipsy'  style='cursor:default;' ><img src='${todo}' alt='Info' /></div>";
+						output+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
+						
+						output+="<div title='"+$(this).find("subject").text()+"' id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'>"+$(this).find("subject").text()+"</div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+						
+						output+="</div></div>";
 						
 												
 					});
 					
+					
+					
 					output+="<form id='newForm' name='newForm' action='/secure/createtodo' onsubmit='return false;' method='post'>";
 					output+="<table><tbody>";
 					output+="<tr width='100%' class='todocontainer todoinfo' style='height:30px; padding:5px;' id='contodo4'>";
-					output+="<td width='20px' class='todoinfo-icon' style='float:left; margin-top:7px;'>";
-					output+="<img src='../images/icons/todo.png' alt='Info' /> </td>";
-					output+="<td width='60px' style='margin-top:7px; padding-right:60px; float:left;' >";
-					output+="<select name='Todocategory' id='Todocategory' class='defaultvalue labelclass'>";
-					output+="<option id='todo1'>Courses</option><option id='todo2'>Assignment</option><option id='todo3'>Grading</option> <option id='todo4'>Others</option></select></td>";
-					output+="<td class='todoinfo-decription' style='margin-top:7px;' >";
-					output+="<span width='200px' id='demo-basictodo3' style='font-weight:lighter; cursor:pointer;'>";
-					output+="<input type='text' autofocus class='defaultvalue treeRoot' id='tododescriptionvalue' placeholder='Enter the New To Do' style='width:280px; margin-left:10px; color:#666;' value=''>";
-					output+="</span></td></tr></tbody></table>";
-					output+="<div style='height:60px; margin-right:80px; margin-top:20px; clear:both;' >";
-					output+="<a class='btn btn-info f-r' href='JavaScript:window.close()'> Return </a>";
-					output+="<a class='btn btn-info f-r' onclick='createNewAnswer()'  href='' style='margin-right:10px;'> Add TODO </a> ";
-					output+="</div></form>";
-					$('#addtodo').html(output);
-
-					console.log("TODO: " + output);
-				
+					output+="<td width='20px' class='todoinfo-icon' style='float:left; margin-top:7px;'></td>";
 					
+					output+="</tr></tbody></table>";
+					
+					output+="</div></form>";
+					$('#todo_form_container').prepend(output);
+
+					
+					select_options = "";
+					$(data).find("todoitem").each(function(index){
+	
+
+						select_options+="<option value='"+$(this).find("categoryName").text()+"'>"+$(this).find("categoryName").text()+"</option>";
+
+						
+												
+					});
+					
+					select = select_options + '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="$(\'#add_new_category_form\').show(); $(\'select#todo_categories\').hide();">Add a New Category</option></optgroup>';
+					$('select#todo_categories').html(select);
+	
 					
 					
 			}
 	});
 	
 });
+
+function add_new_category_item(){
+	new_category_option = '<option value="'+$('#todo_category_name').val()+'">'+$('#todo_category_name').val()+'</option>';
+	$('select#todo_categories').prepend(new_category_option);
+	$('#add_new_category_form').hide();
+	$('select#todo_categories').show();
+	$('select#todo_categories').val($('#todo_category_name').val());
+}
+function checkonTodoItem(val){
+	$('#todoid'+val).remove();
+}
 </script>
  <!-- End -->
 <title>Todo List</title>
 <body  style="background-image:none;"">
 <div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div>
-<div id = "addtodo" class="addtodo" style="width:650px; background-color:#eeeeee;">
-
+<div id = "todo_form_container" class="addtodo" style="width:650px; background-color:#eeeeee;">
+	<strong>Add New ToDo</strong><hr/>Category: 
+	
+	<select id="todo_categories">
+		
+	</select>
+	<span id="add_new_category_form" style="display:none;">
+	<input id="todo_category_name" placeholder="Type New Category"/><button onclick="add_new_category_item();">Add</button>
+	</span>
+	Description: <input id="todo_description" style="width:350px">
+	
+	<hr/>
+	<a class='btn btn-info f-r' onclick='closeit()'> Return </a>
+	<a class='btn btn-info f-r' onclick='addTodo()'  href='' style='margin-right:10px;'> Add TODO </a>
 
 
 </div> <!--end of container -->  
- 
+
 </body>
 </html>

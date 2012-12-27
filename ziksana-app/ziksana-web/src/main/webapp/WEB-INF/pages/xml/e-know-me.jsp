@@ -85,7 +85,7 @@ function displayUnAnsweredPairs(current){
 	var outputResult="";
 	
 	outputResult+="<div id='quest'>";
-	outputResult+="<label id='cur-qus-id'>"+questionIdArray[current]+"</label><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
+	outputResult+="<label style='display:none;' id='cur-qus-id'>"+questionIdArray[current]+"</label><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
 	outputResult+="<table width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
@@ -97,10 +97,10 @@ function displayUnAnsweredPairs(current){
 	//alert(current+","+questionArray.length);
 	outputResult+="</table>";
 	outputResult+="<br/>";
-	outputResult+="<button class='f-rt' id='btnnxt' onClick='submitValue()'>Submit</button>";
+	
 	if(current!=questionArray.length-1)
 	outputResult+="<button class='f-rt' id='btnnxt' onClick='nextquestion()'>Next >></button>";
-	
+	outputResult+="<button class='f-rt' id='btnnxt' onClick='submitValue()'>Submit</button>";
 	if(current!=0)
 		outputResult+="<button class='f-rt' id='btnnxt' onClick='prevquestion()'><< Previous</button>";
 		
@@ -236,7 +236,7 @@ var bgco3 = $('#td3').css('backgroundColor');
 
 if((bgcol!= "rgb(218, 232, 242)")&&(bgco2!= "rgb(218, 232, 242)")&&(bgco3!= "rgb(218, 232, 242)"))
 		{
-		alert('Please Select a Question and Click on Details');
+		//alert('Please Select a Question and Click on Details');
 		}
 else if(bgcol== "rgb(218, 232, 242)")
 {
@@ -264,11 +264,11 @@ function submit1()
 	var y1=document.getElementById("red1").checked;
 	if ((y1 == true)||((x1 == true)))
 		{
-		alert('Answer submited');
+		//alert('Answer submited');
 		}
 		else
 		{
-		alert('Please select an answer and press submit button');
+		//alert('Please select an answer and press submit button');
 		}
 	}	
 
@@ -279,11 +279,11 @@ function submit3()
   
 	if ((y == true)||((x == true)))
 		{
-		alert('Answer submited');
+		//alert('Answer submited');
 		}
 		else
 		{
-		alert('Please select an answer and press submit button');
+		//alert('Please select an answer and press submit button');
 		}
 	}
 function submit2()
@@ -297,11 +297,11 @@ function submit2()
 	
 	if ((z == true)||(z1 == true)||(z2 == true)||(z3 == true)||(z4== true)||(z5 == true))
 		{
-		alert('Answer submited');
+		//alert('Answer submited');
 		}
 		else
 		{
-		alert('Please select an answer and press submit button');
+		//alert('Please select an answer and press submit button');
 		}
 	
 	
@@ -327,7 +327,7 @@ $('.pre-que').hide();
    } 
 function subans()
 {
-alert("Answer submitted successfully");
+//alert("Answer submitted successfully");
 }   
 </script>
 	
@@ -404,7 +404,7 @@ background-color: #DAE8F2;
 		
 		 <form >
                       <select onchange="change(this.value)">
-						  <option value="1" >Show Me - New Questions</option>
+						  <option value="1" >Show Me - Un-Answered Questions</option>
 						  <option value="2" >Show Me - Previously Answered</option>						  
 					  </select>
 		</form>
@@ -439,11 +439,12 @@ $(document).ready(function() {
 					answeredQuestion = new Array();
 					answeredQuestionId = new Array();
 					answeredAnsewer = new Array();
+					answerDate = new Array();
 					answerAnsIndex = new Array();
 						$(data).find("answered").each(function(index){
 							answeredQuestionId.push($(this).find("questiobankid").text());							
 							answeredQuestion.push($(this).find("question").text());
-							
+							answerDate.push($(this).find("responsedate").text());
 							answerAnsIndex.push($(this).find("answerid").text());
 							answeredAnsewer.push($(this).find("answer").text());
 						});
@@ -455,19 +456,19 @@ $(document).ready(function() {
 
 function answeredQuestionDisplay(){
 	var outputResult="";
-	outputResult+="<table class='quest-table' border=1>";
+	outputResult+="<table id='updateTable' value='hide' class='quest-table' border=1>";
 	outputResult+="<tr><th class='quest-table1' width='200px'>Questions</th>";
 	outputResult+="<th class='quest-table1' width='60px'>Answered Date</th></tr>";
 	
 	outputResult+="<form action=''><tr>";
 	for(var i = 0; i<answeredQuestion.length;i++){
 		
-		outputResult+="<tr><td><a  style='text-decoration:none;' href='#' onClick='overAnswer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td><td></tr>";
+		outputResult+="<tr><td><a  style='text-decoration:none;' href='#' onClick='overAnswer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td><td><label  id='questionAnswer"+i+"'>"+answerDate[i]+"</label></td><td></tr>";
 		}
 	
 	
 	outputResult+="<tr></table>";
-	outputResult+="<a class='f-rt' style='color:blue;' href='' onClick='$(\"#kmb_question_container\").show();'>Details</a>";
+	outputResult+="<a class='f-rt' style='color:blue;' href='#' onClick='$(\"#kmb_question_container\").show();'>Details</a>";
 	$('#answer-display').html(outputResult);
 }
 
@@ -478,24 +479,22 @@ function overAnswer(loop){
 	 editChoice = $('#questionAnswer'+loop+'').text();
 	
 	outputAns+="<div style='margin-top: 40px; display:none;' id='kmb_question_container'><p>View or update the Answer:</p></br></br>";
-
+	outputAns+="</div>";
+	outputAns+="<form action=''>";
 	outputAns+="<table width='180px' height='50px' >";
-	outputAns+="<tr><td><label id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label></td></tr>";
+	outputAns+="<label id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
 	
 		if(editChoice == "Yes"){
 			outputAns+="<tr><td><input type='radio' name='q1' value='1' checked='checked' ><label id='cur-id'>Yes</label</td></tr>";
-			outputAns+="<tr><td><input type='radio' name='q1' value='2'  ><label id='cur-id'>No</label></td></tr>";
+			outputAns+="<tr><td><input type='radio' name='q1' value='2'  >No</td></tr><label id='cur-id'>No</label></table>";
 		} 
 		if(editChoice == "No"){
 			outputAns+="<tr><td><input type='radio' name='q1' value='1'  ><label id='cur-id'>Yes</label</td></tr>";
-			outputAns+="<tr><td><input type='radio' name='q1' value='2' checked='checked'><label id='cur-id'>No</label></td></tr>";
-			
+			outputAns+="<tr><td><input type='radio' name='q1' value='2' checked='checked'><label id='cur-id'>No</label></td></tr></table>";
 		}
-		outputAns+="</table>";
 	
 	outputAns+="<button onClick='closeit()' class='f-rt'>Return</button>"; 
-	outputAns+="<button  onClick='updateValues()'>Update</button>"; 
-	outputAns+="</div>";
+	outputAns+="<button  onClick='updateValues()' class='f-rt'>Submit Revisions</button>"; 
 	$('#click-det').html(outputAns);
 	return false;
 }
@@ -505,6 +504,7 @@ function updateValues(){
 	 var editQuesval = $('#edit-qus-value').text();
 	 var editAnsId = $('input[name=q1]:radio:checked').val();
 	var editCheckedAnswer = "";
+	
 	if(editAnsId == 1){
 		editCheckedAnswer +="Yes";
 	} else if(editAnsId == 2){
@@ -522,20 +522,21 @@ function updateValues(){
 		        }
 				, 'json' ); 
 	   
-	  
+	   $('#answer-display').show;  
 }
 	</script>
 <!-- end -->
 
 
 
-<div class="pre-que">
-	<div id="answer-display">
-	</div>
-	
-	<div id="click-det">
-	</div>
-</div>
+ 					<div class="pre-que">
+ 						<div id="answer-display">
+ 						
+ 						</div>
+							
+							   <div id="click-det">
+							 </div>
+							 </div>
 							
 							 
 							 <div id="newque" class="new-que">

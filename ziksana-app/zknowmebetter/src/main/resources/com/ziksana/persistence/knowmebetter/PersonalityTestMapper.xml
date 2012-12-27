@@ -7,7 +7,7 @@
 		parameterType="int">
 
 
-	select distinct qb.questionbankid as TestQuestionId, qba.QuestionBankAnswerId,
+	select distinct qb.questionbankid as questionBankId, qba.QuestionBankAnswerId,
 		qb.QuestionContent,
 		qba.`Answer Content`,
 		qba.`Answer Sequence`,
@@ -37,10 +37,8 @@
 		<constructor>
 
 
-			<idArg column="TestQuestionId" javaType="Integer" />
+			<idArg column="questionbankid" javaType="Integer" />
 			<idArg column="QuestionContent" javaType="String" />
-
-
 
 		</constructor>
 
@@ -88,9 +86,9 @@
 	<select id="answeredQuestions" resultMap="questionResMap"
 		parameterType="int">
 		
-		select distinct  q.*, 
+		select distinct  q.*,
 		qb1.QuestionContent, qba.QuestionBankAnswerId, qba.`Answer Content`, qba.`Answer Sequence`,mpt.MemberRoleId,
-		r.MemberAnswer, mpt.MemberPersonalityTestId
+		r.MemberAnswer, mpt.MemberPersonalityTestId, r.responseDate
 		from
 		psttestquestion q
 		JOIN asmquestionbank qb
@@ -129,7 +127,9 @@
 
 		<constructor>
 			<idArg column="TestQuestionId" javaType="Integer" />
+			
 			<idArg column="QuestionContent" javaType="String" />
+			<idArg column="responseDate" javaType="String"/>
 		</constructor>
 
 

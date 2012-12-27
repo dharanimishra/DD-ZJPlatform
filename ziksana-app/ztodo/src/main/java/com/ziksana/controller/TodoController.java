@@ -1,6 +1,8 @@
 package com.ziksana.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,9 +37,12 @@ public class TodoController {
 	public @ResponseBody ModelAndView showMyTodos(@PathVariable String memberId) {
 		logger.info("Entering showMyTodos(): " + memberId);
 		ModelAndView modelView = new ModelAndView("xml/todolist");
-		//MemberPersona memberPersona = memberService.getMemberPersona(Integer.valueOf(memberId));
+		
 		
 		modelView.addObject("todoItems", todoService.getTodos());
+		
+		
+		
 		logger.info("Exiting showMyTodos(): " + memberId);
 		return modelView;
 	}
@@ -114,6 +119,22 @@ public class TodoController {
 		
 		logger.info("Exiting deleteTodoItem(): " + todoItemId);
 		return "Successfully Deleted";
+	}
+	
+	@RequestMapping(value = "/gettodocategory/{memberId}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getCategoryById(@PathVariable String memberId){
+		logger.info("Entering showMyTodos(): " + memberId);
+		ModelAndView modelView = new ModelAndView();
+		
+		List<Todo> todoList = new ArrayList<Todo>();
+		List<String> categoryList = new ArrayList<String>();
+		for(Todo todo :todoList){
+			String category = todo.getCategory();
+			categoryList.add(category);
+		}
+		modelView.addObject("categoryList");
+		
+		return modelView;
 	}
 
 }

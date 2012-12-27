@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/xml" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -11,10 +11,18 @@
 
 
 
- <div class="user-contacts all-box-shadow pad" >
+ <div class="user-contacts all-box-shadow pad"  >
  
-<span class="titles-info font-Signika text-size-px18 light-gray">Recent Blog Posts</span>
-  <div class="_blogMain">
+ 
+<span class="titles-info font-Signika text-size-px18 light-gray" >Recent Blog Posts</span>
+  <div class="_blogMain  demo_message_container">
+  <div class="demo_message">
+    <p>
+            For Demonstration Only.<br /> Functionality to be available in subsequent Playpens
+            
+            </p>
+
+</div>
    <div class="_blogs">
     <ol>
     <c:choose>

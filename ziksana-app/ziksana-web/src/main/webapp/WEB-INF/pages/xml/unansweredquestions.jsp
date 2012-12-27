@@ -9,7 +9,7 @@
 		<unanswered>	
 				<Questions>			
 				<Question>${unanswered.text}</Question>
-				<questiobankid>${unanswered.id.getDisplayID()}</questiobankid>		
+				<questiobankid>${unanswered.questionId}</questiobankid>		
 					<options>	
 								
 						<c:forEach var="choice" items="${unanswered.choices}">

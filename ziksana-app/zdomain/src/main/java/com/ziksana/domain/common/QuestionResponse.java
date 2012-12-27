@@ -6,9 +6,6 @@ public class QuestionResponse {
 	private Choice choice;
 	
 	
-	
-	
-
 
 	/**
 	 * @param question the question to set
