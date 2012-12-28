@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.subscription.SubscriptionMapper">
 
-	<select id="getNotes" resultMap="notesResultMap" parameterType="map">
+	<select id="getLearnerNotes" resultMap="notesResultMap"
+		parameterType="map">
 
 
 		select *
@@ -16,6 +17,35 @@
 
 
 	</select>
+
+
+	<select id="getEducatorNotes" resultMap="notesResultMap"
+		parameterType="map">
+
+
+		select
+		cntenr.ContentEnrichmentId as SubcribeNotesId,
+		cntenr.LinkDescription as NotesContent
+
+		from
+		corcontentenrichment cntenr JOIN
+		corenrichment enr ON
+		cntenr.enrichmentid= enr.enrichmentId
+		JOIN corcurriculumcourse cur ON
+		enr.CourseId=cur.CourseId
+		JOIN sbnsubscriptioncourse subcourse ON
+		cur.CurriculumCourseId=subcourse.CurriculumCourseId
+		JOIN sbnmembersubscriptionprogram program on
+		program.MemSubscriptionProgId=subcourse.MemSubscriptionProgId
+		where cntenr.LinkType = 1 and
+		subcourse.SubscriptionCourseId=#{subscrCourseId} and
+		program.MemberRoleId=#{memberRoleId}
+
+	</select>
+
+
+
+
 
 
 	<resultMap id="notesResultMap" type="com.ziksana.domain.course.subscription.Note">

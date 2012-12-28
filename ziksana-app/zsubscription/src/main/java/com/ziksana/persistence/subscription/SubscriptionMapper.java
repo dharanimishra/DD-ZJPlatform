@@ -15,8 +15,9 @@ import com.ziksana.domain.course.subscription.Note;
  */
 public interface SubscriptionMapper {
 	
-	public List<Note> getNotes(@Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId);
+	public List<Note> getLearnerNotes(@Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId);
 	
+	public List<Note> getEducatorNotes(@Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId);
 	
 
 }

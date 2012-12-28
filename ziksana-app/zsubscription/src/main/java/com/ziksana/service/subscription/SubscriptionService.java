@@ -14,7 +14,9 @@ import com.ziksana.domain.course.subscription.SubscriptionCourse;
  */
 public interface SubscriptionService {
 	
-	public List<Note>  getNotes(SubscriptionCourse course);
+	public List<Note>  getLearnerNotes(SubscriptionCourse course);
+	
+	public List<Note> getEducatorNotes(SubscriptionCourse course);
 	
 
 }

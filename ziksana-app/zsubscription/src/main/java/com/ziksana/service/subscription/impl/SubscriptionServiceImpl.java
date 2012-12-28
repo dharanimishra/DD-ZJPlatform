@@ -23,11 +23,20 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	SubscriptionMapper subscriptionMapper;
 	
 	@Override
-	public List<Note> getNotes(SubscriptionCourse course) {
+	public List<Note> getLearnerNotes(SubscriptionCourse course) {
 		
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
 		
-		return subscriptionMapper.getNotes(Integer.valueOf(memberRoleId), Integer.valueOf(course.getSubscriptionCourseId().getStorageID()));
+		return subscriptionMapper.getLearnerNotes(Integer.valueOf(memberRoleId), Integer.valueOf(course.getSubscriptionCourseId().getStorageID()));
+	}
+
+	@Override
+	public List<Note> getEducatorNotes(SubscriptionCourse course) {
+		// TODO Auto-generated method stub
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
+		
+		return subscriptionMapper.getEducatorNotes(Integer.valueOf(memberRoleId), Integer.valueOf(course.getSubscriptionCourseId().getStorageID()));
 	}
 
 	

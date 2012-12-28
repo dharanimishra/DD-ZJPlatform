@@ -54,14 +54,28 @@ public class SubscriptionServiceImplTest {
 	}
 
 	@Test
-	public void testGetNotes() {
+	public void testGetLearnerNotes() {
 		
 		SubscriptionCourse course = new SubscriptionCourse();
 		course.setSubscriptionCourseId(1000);
 		
-		List<Note> notes = subscriptionService.getNotes(course);
+		List<Note> notes = subscriptionService.getLearnerNotes(course);
 		assertNotNull(notes);
 
 	}
+	
+	@Test
+	public void testGetEducatorNotes() {
+		
+		SubscriptionCourse course = new SubscriptionCourse();
+		course.setSubscriptionCourseId(1000);
+		
+		List<Note> notes = subscriptionService.getEducatorNotes(course);
+		assertNotNull(notes);
+
+	}
+
+	
+	
 
 }
