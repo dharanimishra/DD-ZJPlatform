@@ -24,7 +24,7 @@
 		q.TestQuestionId=r.TestQuestionId
 		LEFT JOIN pstmemberpersonalitytest mpt ON
 		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId
-		where
+		where 
 		r.TestQuestionId = q.TestQuestionId and ( mpt.MemberRoleId is null or
 		mpt.MemberRoleId = #{memberRoleId})
 

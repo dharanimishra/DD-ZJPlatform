@@ -11,19 +11,21 @@
 
 
 
- <div class="user-contacts all-box-shadow pad"  >
+ <div class="user-contacts all-box-shadow pad demo_message"  >
  
- 
-<span class="titles-info font-Signika text-size-px18 light-gray" >Recent Blog Posts</span>
-  <div class="_blogMain  demo_message_container">
-  <div class="demo_message">
+ <div class="demo_message" class="_blogMain  demo_message_container">
+  
     <p>
             For Demonstration Only.<br /> Functionality to be available in subsequent Playpens
             
             </p>
 
 </div>
-   <div class="_blogs">
+
+  <div class="demo_message_container" >
+  <span class="titles-info font-Signika text-size-px18 light-gray" >Recent Blog Posts</span>
+  
+   <div class="_blogs" >
     <ol>
     <c:choose>
     <c:when test="${not empty blogList}">
@@ -51,11 +53,21 @@
 	 </c:choose>
 	 </ol>
      </div>
+     <p class="txt-r" style="padding-right:10px; clear:both;">
+            <a href="">More..</a>
+    </p>
+     <div class="demo_message" class="_blogMain  demo_message_container">
+  
+    <p>
+            For Demonstration Only.<br /> Functionality to be available in subsequent Playpens
+            
+            </p>
+
+	</div>
+    
     </div>
 
   
-   <p class="txt-r" style="padding-right:10px; clear:both;">
-            <a href="">More..</a>
-    </p>
+   
  </div>
      

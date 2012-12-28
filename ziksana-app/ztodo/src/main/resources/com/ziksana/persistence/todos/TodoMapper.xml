@@ -13,7 +13,7 @@
 		l.LookupId=v.LookupId
 		where l.CategoryName='memmembernotification' and
 		v.LookupValue='Ztodo' and
-		n.ForMemberRoleId=#{userMemberRoleId}
+		n.ForMemberRoleId=#{userMemberRoleId} order by n.ActivationDate DESC
 	</select>
 	
 	
@@ -30,7 +30,7 @@
 		l.LookupId=v.LookupId
 		where l.CategoryName='memmembernotification' and
 		v.LookupValue='Ztodo' and
-		n.ForMemberRoleId=#{userMemberRoleId} order by activationdate desc
+		n.ForMemberRoleId=#{userMemberRoleId} order by n.activationdate desc
 	</select>
 	
 

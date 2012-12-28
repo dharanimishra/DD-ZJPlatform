@@ -19,12 +19,7 @@
      <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
 <html>
 <head>
-<script type="text/javascript">
-function home(){
-	window.opener.close();
-	
-}
-</script>
+
 
 <script type="text/javascript">
  function addTodo()
@@ -34,49 +29,51 @@ function home(){
 	 todo_description = $('#todo_description').val();
 	 
 	 if(todo_category =='' || todo_description ==''){return false;}
-	if(todo_description != null)
+	
 		
-		   $.post( '<c:url value='/secure/createtodo'/>'
+		$.post( '<c:url value='/secure/createtodo'/>'
         , {'category':todo_category,'notificationContent':todo_description}
         , function( data )
         {
         
-
+        	//refresh the page
+        	window.location.href = window.location.href;
+ 
         }
-		, 'json' );           
+		, 'xml' );           
 	
-	else
-		
-		alert("Enter the Category Content value");
-		
 	
+	
+	$('.add_todo_button').removeAttr('disabled');
  }
  </script>
  <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
- <c:url var="deleteTodoUrl" value="/secure/deletetodo/1111111" />
+ <c:url var="deleteTodoUrl" value="/secure/deletetodo/" />
 <script type="text/javascript">
-function deleteTodoFunction(val){
+
+//function checkonTodoItem(val){ deleteTodoFunction(val);}
+
+function deleteTodoItem(val){
 	
 	
-	 confirm_delete_alert = confirm('Are you sure you want to delete this item?');
-	if(confirm_delete_alert == true){
+	// confirm_delete_alert = confirm('Are you sure you want to delete this item?');
+	//if(confirm_delete_alert == true){
 		
 		
 	
 	$.ajax({
 	  	type: 'DELETE',
 		url: '${deleteTodoUrl}'+val,
-		dataType: 'json',
+		//dataType: 'json',
 		success: function( data ) {
-			//console.log('delete alert fired');
-			//delete the alert div
 			
+			$('#todoid'+val).remove();
 			
 		}
 	});
-	$('#todoid'+val).remove();
 	
-	}
+	
+	//}
 }
 function closeit(){
 	parent.jQuery.fancybox.close();
@@ -116,10 +113,10 @@ $(document).ready(function() {
 						output+="<div class='todoinfo' style='height:28px;padding:5px;'>";
 						output+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
-						output+="<a href='#' rel='tipsy'  style='cursor:default;' ><img src='${todo}' alt='Info' /></div>";
+						output+="<img src='${todo}' alt='Info' /></div>";
 						output+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
 						
-						output+="<div title='"+$(this).find("subject").text()+"' id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'>"+$(this).find("subject").text()+"</div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'><a rel='tipsy'  style='cursor:default;' >"+($(this).find('subject').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("subject").text()+" </div></div><input type='checkbox' onChange='deleteTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
 						
 						output+="</div></div>";
 						
@@ -155,9 +152,15 @@ $(document).ready(function() {
 					
 					
 			}
-	});
+	});	
 	
 });
+
+
+function displayToolTip(val){
+	
+	$(this).find('div.tip').show();
+}
 
 function add_new_category_item(){
 	new_category_option = '<option value="'+$('#todo_category_name').val()+'">'+$('#todo_category_name').val()+'</option>';
@@ -166,16 +169,18 @@ function add_new_category_item(){
 	$('select#todo_categories').show();
 	$('select#todo_categories').val($('#todo_category_name').val());
 }
-function checkonTodoItem(val){
-	$('#todoid'+val).remove();
-}
+
 </script>
  <!-- End -->
 <title>Todo List</title>
 <body  style="background-image:none;"">
 <div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div>
-<div id = "todo_form_container" class="addtodo" style="width:650px; background-color:#eeeeee;">
-	<strong>Add New ToDo</strong><hr/>Category: 
+<hr/>
+<div id = "todo_form_container" class="addtodo" style=" width:650px; background-color:#eeeeee;">
+
+
+<div id="add_todo_fields_container" style="display:none;">
+	Category: 
 	
 	<select id="todo_categories">
 		
@@ -184,13 +189,14 @@ function checkonTodoItem(val){
 	<input id="todo_category_name" placeholder="Type New Category"/><button onclick="add_new_category_item();">Add</button>
 	</span>
 	Description: <input id="todo_description" style="width:350px">
+</div>
 	
-	<hr/>
-	<a class='btn btn-info f-r' onclick='closeit()'> Return </a>
-	<a class='btn btn-info f-r' onclick='addTodo()'  href='' style='margin-right:10px;'> Add TODO </a>
-
 
 </div> <!--end of container -->  
+	<hr/>
+<a class='btn btn-info f-r' onclick='closeit()'> Return </a> 
+<a class='btn btn-info f-r add_todo_button' onclick='$("#add_todo_fields_container").show(); $(this).attr("disabled",true);' style='margin-right:10px;'> Add TODO </a>
+
 
 </body>
 </html>

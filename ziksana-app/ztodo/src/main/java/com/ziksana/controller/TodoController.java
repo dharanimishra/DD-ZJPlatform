@@ -47,6 +47,18 @@ public class TodoController {
 		return modelView;
 	}
 	
+	@RequestMapping(value = "/getmytodosize/{memberId}", method = RequestMethod.GET)
+	public @ResponseBody int getTodoSize(@PathVariable String memberId) {
+		logger.info("Entering showMyTodos(): " + memberId);
+		int todoSize = 0;
+		List<Todo> todoList = new ArrayList<Todo>();
+		todoList = todoService.getTodos();
+		todoSize = todoList.size();
+		
+		return todoSize;
+	}
+	
+	
 
 	/**
 	 * Retrive Three todo items to display on the dashboard

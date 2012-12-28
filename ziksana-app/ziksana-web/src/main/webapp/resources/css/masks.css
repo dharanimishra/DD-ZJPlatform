@@ -1,0 +1,122 @@
+@charset "utf-8";
+/* CSS Document */
+
+.opaqueLayer
+            {
+                display:none;
+                position:absolute;
+                top:0px;
+                left:0px;
+				width:100%;
+				
+                opacity:0.8;
+                filter:alpha(opacity=80);
+                background-color: #000000;
+                z-Index:1000;
+            }
+            
+
+            #questionLayer
+            {
+                position:absolute;
+                top:150px;
+                left:180px;
+                width:220px;
+                height:160px;
+                display:none;
+                z-Index:1002;
+                border:2px solid black;
+                opacity:0.8;
+                filter:alpha(opacity=80);
+                background-color: #000000;
+                text-align:center;
+                vertical-align:middle;
+                padding:10px;
+            }
+        	#blogmask
+            {
+                position:absolute;
+                top:0px;
+                left:0px;
+                width:220px;
+                height:215px;
+                display:none;
+                z-Index:1002;
+                border:2px solid black;
+                opacity:0.8;
+                filter:alpha(opacity=80);
+                background-color: #000000;
+                text-align:center;
+                vertical-align:middle;
+                padding:10px;
+            }	
+			#calendermask
+            {
+                position:absolute;
+                top:150px;
+                left:440px;
+                width:435px;
+                height:210px;
+                display:none;
+                z-Index:1002;
+                border:2px solid black;
+                opacity:0.8;
+                filter:alpha(opacity=80);
+                background-color: #000000;
+                text-align:center;
+                vertical-align:middle;
+                padding:10px;
+            }	
+			#questionLayer12
+            {
+                position:absolute;
+                top:200px;
+                left:500px;
+                width:220px;
+                height:190px;
+                display:none;
+                z-Index:1001;
+                border:2px solid black;
+				 opacity:0.8;
+                filter:alpha(opacity=80);
+                background-color: #000000;
+                
+                text-align:center;
+                vertical-align:middle;
+                padding:10px;
+            }
+			#studentmask
+			{
+			position:absolute;
+                top:0px;
+                left:0px;
+                width:230px;
+                height:230px;
+                display:none;
+                z-Index:1001;
+                border:2px solid black;
+				 opacity:0.8;
+                filter:alpha(opacity=80);
+                background-color: #000000;
+                
+                text-align:center;
+                vertical-align:middle;
+                padding:10px;
+			}
+			#classmask
+			{
+                position:absolute;
+                top:800px;
+                left:430px;
+                width:460px;
+                height:210px;
+                display:none;
+                z-Index:1002;
+                border:2px solid black;
+                opacity:0.8;
+                filter:alpha(opacity=80);
+                background-color: #000000;
+                text-align:center;
+                vertical-align:middle;
+                padding:10px;
+            }

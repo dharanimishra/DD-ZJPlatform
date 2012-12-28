@@ -185,191 +185,205 @@ function changeImage(a){
  
   <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
  <c:url var="htmlUrl_alert" value="secure/getalertpopupwindow" />
-                            
+ <c:url var="deleteTodoUrl" value="/secure/deletetodo/" />                          
                           
 <c:url var="todoImageUrl" value="/resources/images/background-pattern.jpg" />
 <c:url var="showAlertUrl" value="/secure/showalert/111111" />
 <c:url var="info"  value='/resources/images/icons/info.png' />
  <c:url var="htmlUrl_todo" value="secure/gettodopopupwindow" />
+ <c:url var="todo" value="/resources/images/icons/todo.png" />
+<c:url var="showTodoUrl" value="/secure/showtodo/111111" />
+ 
 <script type="text/javascript">
 $(document).ready(function() {
+	setInterval(function() {
+		get_and_populate_todo();
+ 
+	}, 1*60*1000);	
+	
+	get_and_populate_todo();
+	get_and_populate_alerts();
+});
+
+function get_and_populate_alerts(){
+
 	$.ajax({
-		  	type: 'GET',
-			url: '${showAlertUrl}',
-			dataType: 'xml',
-			success: function( data ) {
+	  	type: 'GET',
+		url: '${showAlertUrl}',
+		dataType: 'xml',
+		success: function( data ) {
+			
+				var no_of_available_alerts;
 				
+				$.get('/ziksana-web/secure/getalertsize/111111', {}, function(size){
+////////////////////////////////////////				
+					no_of_available_alerts = size;
+				
+				
+				
+				
+				
+				var output="";
+				
+				console.log('No of avaliable alerts: '+no_of_available_alerts);
+				if(no_of_available_alerts == 0){$('#alerts_placeholder').html('No Alerts Found.');} else{
 					
-					var output="";
-					var indexValue=0;
+					
+				if(no_of_available_alerts > 3){
+					
+					//populate the three with more button.
+					
 					output+="<div  class='alerts'>";
 					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
+					
 					$(data).find("alertitem").each(function(index){
 						
-						indexValue = index;
+					
+						
 						output+="<div id='alert_"+$(this).find("id").text()+"' class='alertcontainer' style='border:1px solid #F5F5F5;' id='conalert3'>";
 						output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
 						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
 						output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
-						/* output+="<div class='alertinfo-decription' style='float:left; height:14px; font-family:verdana; font-size:11px; padding:4px;'>"; */
-						output+="<div  id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'><a id='tool' rel='"+$(this).find("description").text()+"'>"+$(this).find("description").text()+"</a></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
-						/* output+="<div class='alertinfo-button' style='display:inline;margin-left:10px;' >"; */
-						output+="</div></div>";
 						
+						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+($(this).find('description').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						
+						output+="</div>";						
 									
 					});
-					
-					
-					if(indexValue == 2)
-					{
+					output+="</div>";
 					output+="<div  style='height:30px; float:right;'> <a class='text-size-px11  lbx-70-50' href='${htmlUrl_alert}' >More</a></div>";
-					}
 					$('#alerts_placeholder').html( output);
+				} else {
+					//populate the three without more button
+					output+="<div  class='alerts'>";
+					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
+	
+					$(data).find("alertitem").each(function(index){
+					output+="<div id='alert_"+$(this).find("id").text()+"' class='alertcontainer' style='border:1px solid #F5F5F5;' id='conalert3'>";
+					output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
+					output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
+					 
+					output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
+					output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
 					
-					$('span.Zalart').hide();
-					$('span.alert').hide();
-					$('font._sText').hide();	
+					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+($(this).find('description').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 					
-					$('div.alertitem').hover( function(){
-						console.log("this is: " + $(this).html());
-						$(this).children('.alert').show();
-						$(this).children('.Zalart').show();
-						$(this).children('._sText').show();
-						$(this).children('._hText').hide();
-						$(this).css("background-image", "url(${todoImageUrl})");
-						$(this).children('.alert').click( function(){
-							$(this).parent().fadeOut('slow');
-							$(this).unbind();
-							console.log("alertItemId is: " + $(this).parent().children('#alertItemId').attr('value'));
-							$.ajax({
-							  	type: 'DELETE',
-								url: '${deleteAlertUrl}/' + $(this).parent().children('#alertItemId').attr('value'),
-								dataType: 'json',
-								success: function( data ) {
-									//console.log('delete alert fired');
-								}
-							});
+					output+="</div>";
+					
 						});
+					output+="</div>";
+					$('#alerts_placeholder').html( output);
+				}
+							
+
+				
+				}//end if not zero.
+			
+
+				
+				}
+
+/////////////
+				);
+				
+
+		}
+});
+	
+}
+
+function get_and_populate_todo(){
+/* Todo	 */
+$.ajax({
+  	type: 'GET',
+	url: '${showTodoUrl}',
+	dataType: 'xml',
+	success: function( data ) {
+			
+			var output_todo="";
+			
+			var indexValue = 0;
+			
+			//get All Todo size
+			var no_of_available_todo;
+			
+			$.get('/ziksana-web/secure/getmytodosize/111111', {}, function(size){ 
+				no_of_available_todo = size;
+			
+			
+			console.log('No of avaliable todos: '+no_of_available_todo);
+				if(no_of_available_todo == 0){$('#todos_placeholder').html('No Todos Found.');} else{
+					
+					  
+				  if(no_of_available_todo > 3){
+					  
+					
+					  
+							output_todo+="<div  class='Todo's'>";
+						output_todo+="<span class='titles-info font-Signika text-size-px18 light-gray'>Todos</span>";
 						
-					}, function(){
-						$(this).children('.alert').hide();
-						$(this).children('.Zalart').hide();
-						$(this).children('._sText').hide();
-						$(this).children('._hText').show();
-						$(this).children('.alert').unbind();
-						$(this).css("background-image", "");
-					});
+						
+					  $(data).find("todoitem").each(function(index){
+							output_todo+="<div id='todoid"+$(this).find("id").text()+"' class='todocontainer' style='border:1px solid #F5F5F5;' id='contodo1'>";
+							output_todo+="<div class='todoinfo' style='height:28px;padding:5px;'>";
+							output_todo+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
+							 
+							output_todo+="<img src='${todo}' alt='Info' /></div>";
+							output_todo+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
+							
+							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;'>"+($(this).find('subject').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+							
+							output_todo+="</div>";						
+											
+						});
+							output_todo+="</div>";						
+							
+							output_todo+="<div style='height:30px; float:right;'><a class='lbx-70-50 text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
+							$('#todos_placeholder').html(output_todo);
+				} else{
+					//without more button
+						output_todo+="<div  class='Todo's'>";
+						output_todo+="<span class='titles-info font-Signika text-size-px18 light-gray'>Todos</span>";
 					
-			}
-	});
-	
-});
-jQuery(function($) {
-	var timer;
-	function mouseoverActiontooltip(event)
-	{
-	$("body").append("<p id='tool'>"+ this.rel + "</p>");
-	$("#tooltip").css("left",(event.pageX + 20) + "px");
-	$("#tooltip").css("top",(event.pageY - 10) + "px");
-	}
-
-	function mouseoutActiontooltip(event)
-	{
-	$("#tooltip").remove();
-	}
-	function mousemoveActiontooltip(event)
-	{
-	$("#tooltip").css("left",(event.pageX + 20) + "px");
-	$("#tooltip").css("top",(event.pageY - 10) + "px");
-	}
-	$('.tooltip').bind('mouseover', mouseoverActiontooltip);
-
-	$('.tooltip').bind('mouseout', mouseoutActiontooltip);
-});
-</script>
-
-<c:url var="todo" value="/resources/images/icons/todo.png" />
-<c:url var="showTodoUrl" value="/secure/showtodo/111111" />
-
-
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-	
-
-		$('.todo_tooltip').mouseover(function(){
-			displayToolTip( $(this).find("a").text());
-		
-		});
-
-	
-	
-	$.ajax({
-		  	type: 'GET',
-			url: '${showTodoUrl}',
-			dataType: 'xml',
-			success: function( data ) {
-					
-					var output="";
-					
-					var indexValue = 0;
 					$(data).find("todoitem").each(function(index){
-						
-						indexValue = index;
-						output+="<div id='todoid"+$(this).find("id").text()+"' class='todocontainer' style='border:1px solid #F5F5F5;' id='contodo1'>";
-						output+="<div class='todoinfo' style='height:28px;padding:5px;'>";
-						output+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
+						output_todo+="<div id='todoid"+$(this).find("id").text()+"' class='todocontainer' style='border:1px solid #F5F5F5;' id='contodo1'>";
+						output_todo+="<div class='todoinfo' style='height:28px;padding:5px;'>";
+						output_todo+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
-						output+="<a href='#' rel='tipsy'  style='cursor:default;' ><img src='${todo}' alt='Info' /></div>";
-						output+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
-						//output+="<div></div>";
-						output+="<div class='todo_tooltip' id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'>"+$(this).find("subject").text()+"</div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
-						/* output+="<div class='alertinfo-button' style='display:inline;margin-left:10px;' >"; */
-						output+="</div></div>";
+						output_todo+="<img src='${todo}' alt='Info' /></div>";
+						output_todo+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
 						
+						output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;'>"+($(this).find('subject').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+						
+						output_todo+="</div>";
 						
 										
 					});
+							output_todo+="</div>";
+						 $('#todos_placeholder').html(output_todo);
 					
-					if(indexValue == 2)
-					{
-					output+="<div style='height:30px; float:right;'><a class='lbx-70-50 text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
-						}
-					$('#todos_placeholder').html( output);
-					
-					$('span.td').hide();
-					
-					/* $('div.todoitem').hover( function(){
-						//console.log("this is: " + $(this).html());
-						$(this).children('.td').show();
-						$(this).children('.td').click( function(){
-							$(this).parent().fadeOut('slow');
-							$(this).unbind();
-							console.log("todoItemId is: " + $(this).parent().children('#todoItemId').attr('value'));
-							$.ajax({
-							  	type: 'DELETE',
-								url: '${deleteTodoUrl}/' + $(this).parent().children('#todoItemId').attr('value'),
-								dataType: 'json',
-								success: function( data ) {
-									
-								}
-							});
-						});
-						$(this).css("background-image", "url(${todoImageUrl})");
-					}, function(){
-						$(this).children('.td').hide();
-						$(this).children('.td').unbind();
-						$(this).css("background-image", "");
-					}); */
-					
-			}
-	});
-	
+					}
+				 
+				}
+			
+			
+			
+			
+		});
+			
+			
+	}
 });
-<c:url var="deleteTodoUrl" value="/secure/deletetodo/1111111" />
+	
+}
+
+</script>
+
+
+<script type="text/javascript">
+
 function checkonTodoItem(val){
 	$.ajax({
 	  	type: 'DELETE',
@@ -386,9 +400,17 @@ function checkonTodoItem(val){
 	
 }
 
-function displayToolTip(value){
-	 var hoverHTMLDemoBasic = '' + value; 
+function displayToolTip(val){
 	
+	var i = $('#demo-basic'+val).html();
+	$('#demo-basic'+val).hovercard({
+        detailsHTML: i,
+        width: 300,
+        
+    });
+	
+	
+	 
 }
 </script>
 
@@ -438,7 +460,7 @@ function displayToolTip(value){
                         </div>
                         
                         <div  class="todo">
-                        	 <span class="titles-info font-Signika text-size-px18 light-gray">Todos</span>
+                        	
                            
                               	<div id="todos_placeholder">
                               	
@@ -461,18 +483,7 @@ function displayToolTip(value){
 					            </p>
 					
 					</div>
-                   <div  id="classmask">
-			            <br />
-			            <br />
-						<br />
-						<br />
-						<p style="font-size:18px;color:#ffffff">
-			            For Demonstration Only.<br /><br /> Functionality to be available in subsequent Playpens
-			            
-			            </p>
-			
-			            
-			        </div>
+                   
                       <p class="titles-info font-Signika text-size-px18 light-gray">Class Talk <!--<span class="rightof-title-info blue">Show only</span>--></p>
                       <c:url var="imageUrl_dashboard1" value="/resources/images/user/2my-photo.png" />
                       <img src="${imageUrl_dashboard1}" width="38" height="40" align="left" class="img">

@@ -112,6 +112,7 @@ parent.jQuery.fancybox.close();
 					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
 					$(data).find("alertitem").each(function(index){
 						
+						
 						output+="<div id='alert_"+$(this).find("id").text()+"' class='alertcontainer'  id='conalert3'>";
 						output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
@@ -120,7 +121,7 @@ parent.jQuery.fancybox.close();
 						output+="<span class='alert zclose  zicons ls-no f-r'></span>";
 						output+="<input type='hidden' id='alertItemId' value='" +$(this).find("id").text()  + "' />";
 						/* output+="<div class='alertinfo-decription' style='float:left; height:14px; font-family:verdana; font-size:11px; padding:4px;'>"; */
-						output+="<div id='demo-basic2'  style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+$(this).find("description").text()+"</div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+($(this).find('description').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 						/* output+="<div class='alertinfo-button' style='display:inline;margin-left:10px;' >"; */
 						
 						
@@ -169,6 +170,16 @@ parent.jQuery.fancybox.close();
 		});
 		
 	});
+	 
+	 function displayToolTip(val){
+			
+			var i = $('#demo-basic'+val).html();
+			$('#demo-basic'+val).hovercard({
+		        detailsHTML: i,
+		        width: 300,
+		        
+		    });
+	 }
 	</script>
 	<div  class="alert_todo" style="margin-left:70px;" >
 	 

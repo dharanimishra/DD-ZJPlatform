@@ -70,14 +70,8 @@
             
           <div class="user-contacts all-box-shadow pad " >     
            <div id="blogList"></div> <div id="blogListError"></div>   
-           <div id="tabs" class="_bgmain demo_message_container">
-	        <div class="demo_message">
-   			 <p>
-            For Demonstration Only.<br /> Functionality to be available in subsequent Playpens
-            
-            </p>
-
-			</div>  
+           <div id="tabs" class="demo_message_container">
+	        
            <span class="titles-info font-Signika text-size-px18 light-gray " >Contacts</span>
 			
            		<a class="tab0">All</a>
@@ -88,6 +82,15 @@
 			
             <div class="tabs-0">
             
+            <div class="demo_message" class="_blogMain  demo_message_container">
+  
+    <p>
+            For Demonstration Only.<br /> Functionality to be available in subsequent Playpens
+            
+            </p>
+
+	</div>
+			
                    <ul class="contact-list" >
                     <li class="member">
                     <!--  <div class="grey-out">
@@ -181,7 +184,7 @@
       
           <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
            
-           <a href="" class="Block"><span class="f-r text-pading-top">People Search</span> <strong class="in-search zicons ls f-r"></strong></a>
+          <!--  <a href="" class="Block"><span class="f-r text-pading-top">People Search</span> <strong class="in-search zicons ls f-r"></strong></a> -->
           </p>
         </div>
         </div>
@@ -235,7 +238,7 @@ $(document).ready(function() {
 					console.log("option array==>"+  optionArray);
 					console.log("memberPersonalitytestId==>"+memberPersonalitytestId);
 				
-					displayUnAnsweredPairs(current);		
+					displayUnAnsweredPairs(0);		
 					
 			}
 	
