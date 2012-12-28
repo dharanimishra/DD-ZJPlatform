@@ -29,6 +29,7 @@
 		<module>ztodo</module>
 		<module>zrecommendations</module>
 		<module>zsubscription</module>
+		<module>zannouncements</module>
 	</modules>
 
 	<properties>
