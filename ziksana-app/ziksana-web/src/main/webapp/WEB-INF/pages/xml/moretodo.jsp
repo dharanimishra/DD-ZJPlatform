@@ -25,10 +25,10 @@
  function addTodo()
  {
 	 
-	 todo_category = $('#todo_categories').val();
+	 todo_category = capitalize($('#todo_categories').val());
 	 todo_description = $('#todo_description').val();
 	 
-	 if(todo_category =='' || todo_description ==''){return false;}
+	 if(todo_description ==''){return false;}
 	
 		
 		$.post( '<c:url value='/secure/createtodo'/>'
@@ -91,16 +91,21 @@ $(document).ready(function() {
 	$('#todo_description').focusout(function(){addTodo();});
 	
 	
-	setTimeout('console.log("hello");', 300);
+	
+	$('select#todo_categories').change(function(){
+		
+		if($(this).val() == 'add_new_category'){ show_category_form(); }
+	});
+	
+	
+	//setTimeout('console.log("hello");', 300);
 	
 	$.ajax({
 		  	type: 'GET',
 			url: '${showmoretodo}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-								console.log( 'todo of data:', data);
-					}
+
 					
 					var output="";
 					
@@ -116,7 +121,7 @@ $(document).ready(function() {
 						output+="<img src='${todo}' alt='Info' /></div>";
 						output+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
 						
-						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'><a rel='tipsy'  style='cursor:default;' >"+($(this).find('subject').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("subject").text()+" </div></div><input type='checkbox' onChange='deleteTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'><a rel='tipsy'  style='cursor:default;' >"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+" </div></div><input type='checkbox' onChange='deleteTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
 						
 						output+="</div></div>";
 						
@@ -137,16 +142,38 @@ $(document).ready(function() {
 
 					
 					select_options = "";
+					
+					select_option_array = [];
+					unique_select_option_array = [];
+					
+					
 					$(data).find("todoitem").each(function(index){
-	
-
-						select_options+="<option value='"+$(this).find("categoryName").text()+"'>"+$(this).find("categoryName").text()+"</option>";
-
 						
-												
+						select_option_array.push(capitalize($(this).find("categoryName").text()));
+																		
 					});
 					
-					select = select_options + '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="$(\'#add_new_category_form\').show(); $(\'select#todo_categories\').hide();">Add a New Category</option></optgroup>';
+					$.each(select_option_array, function(i, el){
+						if(el !=''){
+					    	if($.inArray(el, unique_select_option_array) === -1) unique_select_option_array.push(el);
+						}
+					});
+					
+					
+					option_string ='';
+					function construct_options(element, index, array){
+						option_string+= '<option value="'+capitalize(element)+'">'+capitalize(element)+'</option>';
+					}
+					
+	//console.log(unique_select_option_array);
+					
+					unique_select_option_array.forEach(construct_options);
+					
+					
+
+					
+					
+					select = '<option value="">&nbsp;</option>'+option_string + '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add a New Category</option></optgroup>';
 					$('select#todo_categories').html(select);
 	
 					
@@ -157,23 +184,39 @@ $(document).ready(function() {
 });
 
 
+function show_category_form(){
+	$('#add_new_category_form').show(); $('select#todo_categories').hide();
+}
+
 function displayToolTip(val){
 	
 	$(this).find('div.tip').show();
 }
 
 function add_new_category_item(){
-	new_category_option = '<option value="'+$('#todo_category_name').val()+'">'+$('#todo_category_name').val()+'</option>';
+	new_category_option = '<option value="'+capitalize($('#todo_category_name').val())+'">'+capitalize($('#todo_category_name').val())+'</option>';
 	$('select#todo_categories').prepend(new_category_option);
 	$('#add_new_category_form').hide();
 	$('select#todo_categories').show();
-	$('select#todo_categories').val($('#todo_category_name').val());
+	$('select#todo_categories').val(capitalize($('#todo_category_name').val()));
 }
-
+/// TODO: move this function to a common js file later
+function short_string(string){
+	
+	if(string.length > 50){
+		return string.substring(0,50)+'...';
+	} else {
+		return string;
+	}	
+} 
+function capitalize(s){
+    return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
+};
+///
 </script>
  <!-- End -->
 <title>Todo List</title>
-<body  style="background-image:none;"">
+<body>
 <div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div>
 <hr/>
 <div id = "todo_form_container" class="addtodo" style=" width:650px; background-color:#eeeeee;">
@@ -186,7 +229,7 @@ function add_new_category_item(){
 		
 	</select>
 	<span id="add_new_category_form" style="display:none;">
-	<input id="todo_category_name" placeholder="Type New Category"/><button onclick="add_new_category_item();">Add</button>
+	 <input id="todo_category_name"/><!-- <button onclick="add_new_category_item();">Add</button> -->
 	</span>
 	Description: <input id="todo_description" style="width:350px">
 </div>

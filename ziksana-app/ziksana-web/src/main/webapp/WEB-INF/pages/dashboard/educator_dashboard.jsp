@@ -50,15 +50,16 @@ function deleteFunction(val){
 	$.ajax({
 	  	type: 'DELETE',
 		url: '${deleteAlertUrl}'+val,
-		dataType: 'json',
+		
 		success: function( data ) {
 			console.log('delete alert fired');
-			//delete the alert div
+			$('#alert_'+val).remove();
+			get_and_populate_alerts();
 			
 			
 		}
 	});
-	$('#alert_'+val).remove();
+	
 	
 	}
 }
@@ -199,7 +200,7 @@ $(document).ready(function() {
 	setInterval(function() {
 		get_and_populate_todo();
  
-	}, 1*60*1000);	
+	}, 30*1000);	
 	
 	get_and_populate_todo();
 	get_and_populate_alerts();
@@ -224,9 +225,13 @@ function get_and_populate_alerts(){
 				
 				
 				var output="";
+				var outputAlertEmpty="";
+				outputAlertEmpty+="<div  class='alerts'>";
+				outputAlertEmpty+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
+				outputAlertEmpty+="<b>No Alerts Found</b></div>";
 				
 				console.log('No of avaliable alerts: '+no_of_available_alerts);
-				if(no_of_available_alerts == 0){$('#alerts_placeholder').html('No Alerts Found.');} else{
+				if(no_of_available_alerts == 0){$('#alerts_placeholder').html(outputAlertEmpty);} else{
 					
 					
 				if(no_of_available_alerts > 3){
@@ -247,13 +252,13 @@ function get_and_populate_alerts(){
 						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
 						output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
 						
-						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+($(this).find('description').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 						
 						output+="</div>";						
 									
 					});
 					output+="</div>";
-					output+="<div  style='height:30px; float:right;'> <a class='text-size-px11  lbx-70-50' href='${htmlUrl_alert}' >More</a></div>";
+					output+="<div  style='height:30px; float:right;'> <a class='text-size-px11  alert_fancybox' href='${htmlUrl_alert}' >More</a></div>";
 					$('#alerts_placeholder').html( output);
 				} else {
 					//populate the three without more button
@@ -268,7 +273,7 @@ function get_and_populate_alerts(){
 					output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
 					output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
 					
-					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+($(this).find('description').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 					
 					output+="</div>";
 					
@@ -312,17 +317,19 @@ $.ajax({
 			$.get('/ziksana-web/secure/getmytodosize/111111', {}, function(size){ 
 				no_of_available_todo = size;
 			
-			
-			console.log('No of avaliable todos: '+no_of_available_todo);
-				if(no_of_available_todo == 0){$('#todos_placeholder').html('No Todos Found.');} else{
+				var ouputEmptyTodo="";
+				ouputEmptyTodo+="<div  class='Todo's'>";
+				ouputEmptyTodo+="<span class='titles-info font-Signika text-size-px18 light-gray'>To-Dos</span>";
+				ouputEmptyTodo+="<strong>No Todos Found</strong>";
+				ouputEmptyTodo+="<div style='height:30px; text-align: right;'><a class='todo_fancybox text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
+				ouputEmptyTodo+='</div>';
+				
+				if(no_of_available_todo == 0){$('#todos_placeholder').html(ouputEmptyTodo);} else{
 					
 					  
-				  if(no_of_available_todo > 3){
-					  
-					
-					  
+				  
 							output_todo+="<div  class='Todo's'>";
-						output_todo+="<span class='titles-info font-Signika text-size-px18 light-gray'>Todos</span>";
+						output_todo+="<span class='titles-info font-Signika text-size-px18 light-gray'>To-Dos</span>";
 						
 						
 					  $(data).find("todoitem").each(function(index){
@@ -333,39 +340,16 @@ $.ajax({
 							output_todo+="<img src='${todo}' alt='Info' /></div>";
 							output_todo+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
 							
-							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;'>"+($(this).find('subject').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
 							
 							output_todo+="</div>";						
 											
 						});
 							output_todo+="</div>";						
 							
-							output_todo+="<div style='height:30px; float:right;'><a class='lbx-70-50 text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
+							output_todo+="<div style='height:30px; text-align: right;'><a class='todo_fancybox text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
 							$('#todos_placeholder').html(output_todo);
-				} else{
-					//without more button
-						output_todo+="<div  class='Todo's'>";
-						output_todo+="<span class='titles-info font-Signika text-size-px18 light-gray'>Todos</span>";
-					
-					$(data).find("todoitem").each(function(index){
-						output_todo+="<div id='todoid"+$(this).find("id").text()+"' class='todocontainer' style='border:1px solid #F5F5F5;' id='contodo1'>";
-						output_todo+="<div class='todoinfo' style='height:28px;padding:5px;'>";
-						output_todo+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
-						 
-						output_todo+="<img src='${todo}' alt='Info' /></div>";
-						output_todo+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
-						
-						output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;'>"+($(this).find('subject').text()).substring(0,400)+"...</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
-						
-						output_todo+="</div>";
-						
-										
-					});
-							output_todo+="</div>";
-						 $('#todos_placeholder').html(output_todo);
-					
-					}
-				 
+				
 				}
 			
 			
@@ -391,27 +375,29 @@ function checkonTodoItem(val){
 		dataType: 'json',
 		success: function( data ) {
 			console.log('delete alert fired');
-			//delete the alert div
-			
+			$('#todoid'+val).remove();
+			get_and_populate_todo();
 			
 		}
 	});
-	$('#todoid'+val).remove();
+	
+	$('#todoid'+val).hide();
+	
 	
 }
 
-function displayToolTip(val){
+/// TODO: move this function to a common js file later
+function short_string(string){
 	
-	var i = $('#demo-basic'+val).html();
-	$('#demo-basic'+val).hovercard({
-        detailsHTML: i,
-        width: 300,
-        
-    });
-	
-	
-	 
-}
+	if(string.length > 50){
+		return string.substring(0,50)+'...';
+	} else {
+		return string;
+	}	
+} 
+///
+
+
 </script>
 
 
@@ -436,13 +422,69 @@ function displayToolTip(val){
  						</p></div>
                         <div style=" float:left; margin-left: 5px; margin-top:5px;"><a class="icon-cal text-size-px11 lbx-70-50" href="${htmlUrl_planner}">Calendar</a></div>
 
-                    	<div class="_cLeft all-box-shadow"  style=" clear:both; border:1px solid #CCC;">
-                        	<div id='event_left_placeholder'></div>
+                    	<div class="_cLeft all-box-shadow" style="">
+                        
+
+                            
+                            <div class="_upcoming _up1">
+                            	<div class="_cDate" style="color:orange;">
+                                	<b>Jan 7</b><br> <b>9.00 AM</b>
+                                </div>
+                                
+                                <div class="_uevent" style="">
+                                	Recap on Ziksana.
+                                </div>
+                            </div>
+                            
+                            <div class="_upcoming _up1">
+                            	<div class="_uDate">
+                                	<b>Jan 7</b><br> <b>12.00 PM</b> 
+                                </div>
+                                
+                                <div class="_uevent">
+                                	Lunch with Ziksana
+                                </div>
+                            </div>
+                            
+                            <div class="_upcoming _up2">
+                            	<div class="_uDate">
+                                	<b>Jan 7</b><br> <b>2.00 PM</b> 
+                                </div>
+                                
+                                <div class="_uevent">
+                                	Experiment with Playpen
+                                </div>
+                            </div>
+                            
+
+                            
+                        	
                         </div>
                         <div class="_cMiddle">                        
                         </div>
-                        <div class="_cRight all-box-shadow" style=" border:1px solid #CCC; width:190px;">
-                        	<div id='event_right_placeholder'></div> 
+                        <div class="_cRight all-box-shadow">
+                        	<div class="_e1">
+                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">Jan 7 - Recap on Ziksana Capability</span></div>
+
+								<div><i class=" bold">Place: </i>UTD Administrative Building
+								<i class=" bold"><br>Time: </i>9:00 am - 12:00 pm </div>
+                            </div>
+                            
+                            <div class="_e2" style="display: none;">
+                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 7 - Lunch with Ziksana</span></div>
+      <div><i class=" bold">Place: </i><br>
+<i class=" bold">Time: </i>12:00 pm - 1:30 pm<br>
+                            </div>
+                            </div>
+                            
+                            <div class="_e3" style="display: none;">
+                             <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 7 - Experiment with Playpen</span></div>
+                            	
+<div><i class=" bold">Place: </i><br>
+<i class=" bold">Time: </i> 2:00 pm</div>
+                            </div>
+                            
+
                         </div>
                         
                    

@@ -18,10 +18,23 @@
 	<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
 	<script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
 	<script src="../resources/js/ui/jquery.ui.button.js"></script>
-	<!--topup-->
+	
 	<!-- unanswered script -->
 <c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
+<c:url var="showAnswered" value="/secure/getansweredquestions" />
   <script type="text/javascript">
+  $(document).ready(function() {
+		setInterval(function() {
+			get_and_UnAnswered_questions();
+	 
+		}, 1*60*1000);	
+		
+		get_and_UnAnswered_questions();
+		
+	});
+  
+  
+function get_and_UnAnswered_questions(){  
   currentQuestion = 0;
 $(document).ready(function() {
 	$.ajax({
@@ -80,6 +93,8 @@ $(document).ready(function() {
 	
 });
 
+}
+
 
 function displayUnAnsweredPairs(current){
 	var outputResult="";
@@ -89,11 +104,14 @@ function displayUnAnsweredPairs(current){
 	outputResult+="<table width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
-	for(var i = 0 ; i < optionsList.length ; i++){
-		
+	outputResult+= "<tr><td ><input type='radio'  id='checked-val'  checked='checked' name='radiobtn' value='1'><label id='option-ans' for='option'>Yes</label></td></tr>";
+	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='2'><label id='option-ans' for='option'>No</label></td></tr>";
+	/* for(var i = 0 ; i < optionsList.length ; i++){
+		if(i=0)
+		var checkedValue = 'CHECKED';	
 		outputResult+= "<tr><td ><input type='radio' id='checked-val' name='radiobtn' value='"+i+"'>" + "<label id='option-ans' for='option'>" + optionsList[i] + "</label></td></tr>";
 		
-	}
+	} */
 	//alert(current+","+questionArray.length);
 	outputResult+="</table>";
 	outputResult+="<br/>";
@@ -109,6 +127,9 @@ function displayUnAnsweredPairs(current){
 	
 	$('#newque').html(outputResult);
 }
+
+
+
 function nextquestion(){
 	//var cur=currentQuestion+1<questionArray.length-2?currentQuestion++:questionArray.lengt;
 	displayUnAnsweredPairs(++currentQuestion);
@@ -120,215 +141,49 @@ function prevquestion(){
 
 function submitValue(){
 	testQuestionId = $('#cur-qus-id').text();
-	 testQuestionValue = $('#cur-qus-value').text();
-	 memberAnswer = $('#option-ans').text();
+	var testQuestionValue;
+	memberAnswer = '';
 	 questionBankAnswerId = $('input[name=radiobtn]:checked').val();
-	/*  alert("currenttQuestId"+testQuestionId);
-	 alert("currenttQuestValue"+testQuestionValue);
-	 alert("currentOPtionAnswer"+memberAnswer);
-	 alert("currentcheckedValue"+questionBankAnswerId); */
-	  $.post( '<c:url value='/secure/saveknowme'/>'
-		        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':testQuestionId,'questionBankAnswerId':questionBankAnswerId}
-		        , function( data )
-		        {
-		        
-
-		        }
-				, 'json' );  
-}
-</script>
- 
-	<!-- End -->
-
-
-
-<!--  -->
-<script>
-	$(function() {
-
-		$( "button").button();
-		$( "button, input:submit" , ".action-row").button();
-		$( "button:first" , ".course-button-bar").button({icons: { secondary: "ui-icon-pencil"}} 
-		).next().button({icons: { secondary: "ui-icon-wrench"}} 
-		).next().button({icons: { secondary: "ui-icon-signal-diag"}} 
-		);
-		$( "#radio-1, #radio-2, #radio-3, #format" ).buttonset();
-		
-	});
-
-function nextquest1()
-{
-$('#quest2').show();
-$('#btnpre').show();
-$('#quest1').hide();
-$('#quest3').hide();
-}
-function nextquest2()
-{
-$('#btnpre').show();
-$('#quest2').hide();
-$('#btnpre').show();
-$('#quest1').hide();
-$('#quest3').show();
-}
-
- 
-
-
-
-function prevquest1()
-{
-$('#btnpre').hide();
-		$('#quest2').hide();
-		$('#quest3').hide();
-		$('#quest1').show();
-}
-
-function prevquest2()
-    {
-        $('#btnpre').show();
-$('#quest1').hide();
-$('#quest3').hide();
-$('#quest2').show();
-$('#btnnxt').show();
-    }
-
-
-
-function disque2()
-{
-$('#td1').css("background-color"," #ffffff");
-$('#td2').css("background-color"," #DAE8F2");
-$('#td3').css("background-color"," #ffffff");
-
-}
-function disque3()
-{
-$('#td1').css("background-color"," #ffffff");
-$('#td2').css("background-color"," #ffffff");
-$('#td3').css("background-color"," #DAE8F2");
-
-}
-function disque1()
-{
-
-$('#td1').css("background-color"," #DAE8F2");
-$('#td2').css("background-color"," #ffffff");
-$('#td3').css("background-color"," #ffffff");
-
-
-}
-
-
-function closeit(){
-parent.jQuery.fancybox.close();
-
-}
-
-
-function answer()
-{
-var bgcol = $('#td1').css('backgroundColor'); 
-var bgco2 = $('#td2').css('backgroundColor'); 
-var bgco3 = $('#td3').css('backgroundColor'); 
-
-
-
-if((bgcol!= "rgb(218, 232, 242)")&&(bgco2!= "rgb(218, 232, 242)")&&(bgco3!= "rgb(218, 232, 242)"))
-		{
-		//alert('Please Select a Question and Click on Details');
-		}
-else if(bgcol== "rgb(218, 232, 242)")
-{
-$('#disque2').hide();
-$('#disque3').hide();
-$('#disque1').show();
-}
-else if(bgco2== "rgb(218, 232, 242)")
-{
-$('#disque1').hide();
-$('#disque3').hide();
-$('#disque2').show();
-}
-else if(bgco3== "rgb(218, 232, 242)")
-{
-$('#disque1').hide();
-$('#disque2').hide();
-$('#disque3').show();
-}
-}
-
-function submit1()
-	{
-	var x1=document.getElementById("red").checked;
-	var y1=document.getElementById("red1").checked;
-	if ((y1 == true)||((x1 == true)))
-		{
-		//alert('Answer submited');
-		}
-		else
-		{
-		//alert('Please select an answer and press submit button');
-		}
-	}	
-
-function submit3()
-	{
-	var x=document.getElementById("blue").checked;
-	var y=document.getElementById("blue1").checked
+	 
+	  $("input:checked").each(function(){ 
+		     testQuestionValue=$(this).val();
+		     
+		     if(testQuestionValue == 1){
+				  memberAnswer = 'Yes';
+			  }else{
+				  memberAnswer= 'No';
+			  } 
+		     
+		     $.post( '<c:url value='/secure/saveknowme'/>'
+				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':testQuestionId,'questionBankAnswerId':questionBankAnswerId}
+				        , function( data )
+				        {
+				        
+							alert("Answer Submitted Successfully");
+							$("input[type=submit]").attr("disabled", "disabled");
+				        }
+						, 'xml' );  
+		     
+		});
   
-	if ((y == true)||((x == true)))
-		{
-		//alert('Answer submited');
-		}
-		else
-		{
-		//alert('Please select an answer and press submit button');
-		}
-	}
-function submit2()
-	{
-	var z=document.getElementById("que").checked;
-	var z1=document.getElementById("que1").checked;
-	var z2=document.getElementById("que2").checked;
-	var z3=document.getElementById("que3").checked;
-	var z4=document.getElementById("que4").checked;
-	var z5=document.getElementById("que5").checked;
-	
-	if ((z == true)||(z1 == true)||(z2 == true)||(z3 == true)||(z4== true)||(z5 == true))
-		{
-		//alert('Answer submited');
-		}
-		else
-		{
-		//alert('Please select an answer and press submit button');
-		}
-	
-	
-	
-	}
-
-
+}
 </script>
 <script type="text/javascript">
    function change(value){
    var x=value;
    if (x==2)
 	{
+	   get_and_Answered_questions();
 	$('.new-que').hide();
 	$('.pre-que').show();
 	}
 	else
 	{
 	$('.new-que').show();
-$('.pre-que').hide();
+	$('.pre-que').hide();
 	}
      
    } 
-function subans()
-{
-//alert("Answer submitted successfully");
-}   
 </script>
 	
     <style>
@@ -402,30 +257,34 @@ background-color: #DAE8F2;
         
         <div id="select_que">
 		
-		 <form >
+		 			<form >
                       <select onchange="change(this.value)">
-						  <option value="1" >Show Me - Un-Answered Questions</option>
+						  <option value="1" >Show Me - New Questions</option>
 						  <option value="2" >Show Me - Previously Answered</option>						  
 					  </select>
-		</form>
-                    </div>
-                    
-                    
-                 
-       
-                    
- 
-                
-                    
-                    
-       
-                 </div>
-				 <br/>
-				
+					</form>
+       </div>
+
+		<div class="pre-que">
+ 			<div id="answer-display">
+ 						
+ 			</div>
+							
+			<div id="click-det">
+			</div>
+		</div>
+							
+							 
+		<div id="newque" class="new-que">
+							  
+		</div>
+			    
+			    
 				 
 <!-- Apply Answer value -->
-<c:url var="showAnswered" value="/secure/getansweredquestions" />
+
   <script type="text/javascript">
+  function get_and_Answered_questions(){
 $(document).ready(function() {
 	$.ajax({
 		  	type: 'GET',
@@ -454,11 +313,17 @@ $(document).ready(function() {
 	});
 });
 
+}
+
+
+
+
+
 function answeredQuestionDisplay(){
 	var outputResult="";
 	outputResult+="<table id='updateTable' value='hide' class='quest-table' border=1>";
-	outputResult+="<tr><th class='quest-table1' width='200px'>Questions</th>";
-	outputResult+="<th class='quest-table1' width='60px'>Answered Date</th></tr>";
+	outputResult+="<tr><th  width='200px'>Questions</th>";
+	outputResult+="<th  width='120px'>Answered Date</th></tr>";
 	
 	outputResult+="<form action=''><tr>";
 	for(var i = 0; i<answeredQuestion.length;i++){
@@ -526,50 +391,12 @@ function updateValues(){
 }
 	</script>
 <!-- end -->
-
-
-
- 					<div class="pre-que">
- 						<div id="answer-display">
- 						
- 						</div>
-							
-							   <div id="click-det">
-							 </div>
-							 </div>
-							
-							 
-							 <div id="newque" class="new-que">
-							  
-							 </div>
-			    
-			    
+	
 			    
 			    </td>
 			    
 			  </tr>
 			</table>
-<SCRIPT>
-$('input[type="text"], textarea').each(function(){
 
-	this.value = $(this).attr('title');
-	$(this).addClass('text-label');
-
-	$(this).focus(function(){
-		if(this.value == $(this).attr('title')) {
-			this.value = '';
-			$(this).removeClass('text-label');
-		}
-	});
-
-	$(this).blur(function(){
-		if(this.value == '') {
-			this.value = $(this).attr('title');
-			$(this).addClass('text-label');
-		}
-	});
-});
-
-</SCRIPT>
 </body>
 </html>

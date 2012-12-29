@@ -7,26 +7,26 @@
 		parameterType="int">
 
 
-	select distinct qb.questionbankid as questionBankId, qba.QuestionBankAnswerId,
+		select distinct qb.questionbankid as questionBankId, qba.QuestionBankAnswerId,
 		qb.QuestionContent,
 		qba.`Answer Content`,
-		qba.`Answer Sequence`,
-		mpt.MemberRoleId,
+		qba.`Answer Sequence`, mpt.MemberRoleId,
 		mpt.MemberPersonalityTestId
 		from
 		psttestquestion q
 		JOIN asmquestionbank qb
-		ON q.QuestionBankId=q.QuestionBankId
+		ON q.QuestionBankId=qb.QuestionBankId 
 		JOIN asmquestionbankanswer qba ON
 		qb.QuestionBankId=qba.QuestionBankId
-		LEFT JOIN
+		LEFT OUTER JOIN
 		pstmemberpersonalityresponse r ON
 		q.TestQuestionId=r.TestQuestionId
-		LEFT JOIN pstmemberpersonalitytest mpt ON
-		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId
+		LEFT OUTER JOIN  pstmemberpersonalitytest mpt ON
+		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId 
 		where 
-		r.TestQuestionId = q.TestQuestionId and ( mpt.MemberRoleId is null or
-		mpt.MemberRoleId = #{memberRoleId})
+		 r.TestQuestionId is null  and r.MemberPersonalityTestId is null and (mpt.MemberRoleId is null or 
+		 mpt.MemberRoleId!= #{memberRoleId})
+
 
 		
 
@@ -72,7 +72,7 @@
 		insert into pstmemberpersonalityresponse(
 		MemberAnswer,ResponseDate,TestQuestionId,QuestionBankAnswerId,MemberPersonalityTestId)
 		values(
-		#{answer.text},now(),#{question.id.storageID},#{answer.id.storageID},
+		#{answer.text},now(),#{question.questionId},#{answer.id.storageID},
 		#{answer.memPstTestId} )
 
 		<selectKey keyProperty="MemPersonalityRespId" resultType="int"

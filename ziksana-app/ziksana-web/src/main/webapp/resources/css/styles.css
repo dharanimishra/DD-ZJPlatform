@@ -2612,7 +2612,7 @@ background-color:#F3F3F3;
   margin-right: 4px;
   padding: 4px;
   text-align: center;
-  width: 75px;
+  width: 65px;
 }
 
 .todoinfo
@@ -2650,17 +2650,34 @@ background-color:#F3F3F3;
   top: 0;
 text-align: center;
 vertical-align:middle;
+z-index: 99;
 }
 .todotip_container {position: relative;}
 .todotip_container:hover .todotip{display: inline-block;}
 .todotip {
   background: none repeat scroll 0 0 white;
-  border-radius: 3px 3px 3px 3px;
+  border-radius: 2px 2px 2px 2px;
   box-shadow: 0 0 4px black;
   display: none;
+  left: 0;
   padding: 0.5em;
   position: absolute;
   top: 0;
-  width: 420px;
+  width: 290px;
   z-index: 99;
+}
+
+#todo_category_name{
+	text-transform: capitalize;
+}
+
+.fancybox-close {
+  background: url("../images/fancy_close.png") no-repeat scroll 0 0 transparent !important;
+  cursor: pointer;
+  height: 36px;
+  position: absolute;
+  right: -18px;
+  top: -18px;
+  width: 36px;
+  z-index: 8040;
 }

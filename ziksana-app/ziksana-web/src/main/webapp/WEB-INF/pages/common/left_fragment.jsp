@@ -131,7 +131,9 @@
                       <c:url var="imageUrl_profile11" value="/resources/images/user/1my-photo.png" />
                       <div class="white-in contact-pichome _bgmain" style="background:url(${imageUrl_profile11});"><a href="#" rel="tipsy" title="Rose (Mathematics)"></a></div>
                     </li>
-                  </ul>                  
+                  </ul>
+                  
+                          <a href="" class="Block"><span class="f-r text-pading-top">People Search</span> <strong class="in-search zicons ls f-r"></strong></a> 
             </div>
             <c:url var="imageUrl_profile12" value="/resources/images/background-pattern.jpg" />
             <div class="tabs-1" style="background-image:url(${imageUrl_profile12});">  
@@ -179,12 +181,13 @@
                       <c:url var="imageUrl_profile20" value="/resources/images/user/3my-photo.png" />
                        <div class="white-in contact-pichome _bgmain" style="background:url(${imageUrl_profile20});"><a href="#" rel="tipsy" title="Linda (Robotics)"></a></div>
                     </li>
-                  </ul>                  
+                  </ul>  
+                  <br/>
+                                  
             </div>
       
           <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
            
-          <!--  <a href="" class="Block"><span class="f-r text-pading-top">People Search</span> <strong class="in-search zicons ls f-r"></strong></a> -->
           </p>
         </div>
         </div>
@@ -194,8 +197,10 @@
 	   
 <c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
   <script type="text/javascript">
+  
   currentQuestion = 0;
 $(document).ready(function() {
+	
 	$.ajax({
 		  	type: 'GET',
 			url: '${showUnAnswered}',
@@ -255,9 +260,9 @@ function displayUnAnsweredPairs(current){
 	outputResult+="<table width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
-	outputResult+= "<tr><td ><input type='radio' checked='checked'  id='checked-val' name='radiobtn' value='0'>" + "<label id='option-ans' for='option'>" + optionsList[2] + "</label></td></tr>";
-	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='1'>" + "<label id='option-ans' for='option'>" + optionsList[1] + "</label></td></tr>";
-	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='1'>" + "<label id='option-ans' for='option'>" + optionsList[0] + "</label></td></tr>";
+	
+	outputResult+= "<tr><td ><input type='radio'  id='checked-val'  checked='checked' name='radiobtn' value='1'><label id='option-ans' for='option'>Yes</label></td></tr>";
+	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='2'><label id='option-ans' for='option'>No</label></td></tr>";
 	/* for(var i = 0 ; i < optionsList.length ; i++){
 		
 		
@@ -270,7 +275,7 @@ function displayUnAnsweredPairs(current){
 	
 	
 
-	outputResult+="<button class='f-rt' id='btnnxt' onClick='submitValue()'>Submit</button>";
+	outputResult+="<button class='f-rt' id='knowme-save' onClick='submitValue()'>Submit</button>";
 	
 	  
 	   outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'><span class='text-pading-right'>More</span></span> <strong class='zinfo2 zicons ls f-r'></strong></a>";
@@ -291,19 +296,31 @@ function prevquestion(){
 
 function submitValue(){
 	testQuestionId = $('#cur-qus-id').text();
-	 testQuestionValue = $('#cur-qus-value').text();
-	 memberAnswer = $('#option-ans').text();
+	var testQuestionValue;
+	memberAnswer = '';
 	 questionBankAnswerId = $('input[name=radiobtn]:checked').val();
-	
-	  $.post( '<c:url value='/secure/saveknowme'/>'
-		        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':testQuestionId,'questionBankAnswerId':questionBankAnswerId}
-		        , function( data )
-		        {
-		        
-
-		        }
-				, 'json' );  
-}
+	 
+	  $("input:checked").each(function(){ 
+		     testQuestionValue=$(this).val();
+		     
+		     if(testQuestionValue == 1){
+				  memberAnswer = 'Yes';
+			  }else{
+				  memberAnswer= 'No';
+			  } 
+		     
+		     $.post( '<c:url value='/secure/saveknowme'/>'
+				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':testQuestionId,'questionBankAnswerId':questionBankAnswerId}
+				        , function( data )
+				        {
+				        
+							alert("Answer Submitted Successfully");
+							$("#knowme-save").attr('disabled','true');
+				        }
+						, 'xml' );  
+		     
+		});
+  }
 </script>
         
          <div id="knowme-ques" class="user-insight user-contacts all-box-shadow pad" >

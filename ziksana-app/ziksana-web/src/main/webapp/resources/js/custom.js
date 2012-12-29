@@ -312,6 +312,31 @@ $('._e1').fadeIn("slow");
 				'transitionOut'		: 'elastic',
 				'type'				: 'iframe'
 			});	
+	
+//todo fancybox
+	$("a.todo_fancybox").fancybox({
+		'width'				: 700,
+		'height'			: 700,
+		'autoScale'			: false,
+		'transitionIn'		: 'elastic',
+		'transitionOut'		: 'elastic',
+		'type'				: 'iframe',
+		'afterClose': function(){get_and_populate_todo();}
+		
+	});		
+
+	//alert fancybox
+	$("a.alert_fancybox").fancybox({
+		'width'				: 700,
+		'height'			: 700,
+		'autoScale'			: false,
+		'transitionIn'		: 'elastic',
+		'transitionOut'		: 'elastic',
+		'type'				: 'iframe',
+		'afterClose': function(){get_and_populate_alerts();}
+		
+	});	
+	
 //status
 	$("a.lbx-80-50").fancybox({
 				'width'				: 450,
