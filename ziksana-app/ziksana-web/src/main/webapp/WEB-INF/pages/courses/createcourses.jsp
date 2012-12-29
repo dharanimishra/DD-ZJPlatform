@@ -1,5 +1,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <c:url var="createcourselink" value="/secure/createcourse" />
 <c:url var="associatecontentlink" value="/secure/associatecontent" />
 <c:url var="enrichcontentlink" value="/secure/enrichcontent" />
