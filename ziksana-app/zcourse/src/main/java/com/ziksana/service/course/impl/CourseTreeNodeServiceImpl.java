@@ -14,6 +14,7 @@ import com.ziksana.domain.course.LearningComponentNest;
 import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentParts;
+import com.ziksana.domain.course.TreeNode;
 import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.persistence.course.CourseTreeNodeMapper;
 import com.ziksana.service.course.CourseTreeNodeService;
@@ -29,7 +30,7 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 
 	@Autowired
 	public CourseMapper courseMapper;
-	
+
 	@Autowired
 	public CourseTreeNodeMapper courseTreeNodeMapper;
 
@@ -155,6 +156,17 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 				+ " Method Name :getLearningContentParts(Integer learningContentId)"
 				+ list.size());
 
+		return list;
+	}
+
+	@Override
+	public List<TreeNode> getTreeComponents(Integer courseId) {
+		LOGGER.debug("Entering Class :" + getClass()
+				+ " Method Name :getCourseComponents(Integer courseId)"
+				+ courseId);
+		List<TreeNode> list = courseTreeNodeMapper.getTreeComponents(courseId);
+		LOGGER.debug("Exiting Class :" + getClass()
+				+ " Method Name :getCourseComponents(Integer courseId)");
 		return list;
 	}
 

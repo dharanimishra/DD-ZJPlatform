@@ -10,6 +10,7 @@ import com.ziksana.domain.course.LearningComponentNest;
 import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentParts;
+import com.ziksana.domain.course.TreeNode;
 
 /**
  * @author ratneshkumar
@@ -34,5 +35,8 @@ public interface CourseTreeNodeService {
 	LearningContent getLearningContent(Integer learningContentId);
 
 	List<LearningContentParts> getLearningContentParts(Integer learningContentId);
+	
+
+	List<TreeNode> getTreeComponents(Integer courseId);
 
 }

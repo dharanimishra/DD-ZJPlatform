@@ -4,12 +4,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<course> <c:forEach var="course" items="${course}">
-	<id>${course.courseid}</id>
-		<name>${course.name}</name>
-	<name>7</name>
-</c:forEach> <nodes> <c:forEach var="treenode" items="${treeNodeList}">
-	<node> <id>${treenode.id}</id> <parentId>7</parentId> <title>Introduction
-	to Decision Making</title> <nodeType>chapter</nodeType> <icon>images/tree_icons/pdf.png</icon>
-	<expanded></expanded> </node>
-</c:forEach> </nodes></course>
+
+<course> <id>${courseId}</id> <name>${coursename}</name>
+<nodes>
+ <c:forEach var="treenode" items="${treeList}">
+	<node> 
+	<id>${treenode.id}</id> 
+	<parentId>${treenode.parentId}</parentId> 
+	<title>${treenode.title}</title> 
+	<nodeType>${treenode.contentname}</nodeType>
+	<contentId>${treenode.contentId}</contentId>
+	<contentType>${treenode.contentType}</contentType>
+	<icon>${treenode.icon}</icon>
+	<expanded>${treenode.expanded}</expanded> 
+	</node>
+</c:forEach> 
+</nodes> 
+</course>

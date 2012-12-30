@@ -2,15 +2,35 @@ package com.ziksana.domain.course;
 
 public class TreeNode {
 
-	public Integer id;
-	public Integer parentId;
-	public String title;
-	public String nodeType;
-	public String contentId;
-	public String contentType;
-	public String icon;
+	private Integer courseId;
+	private String coursename;
+	private Integer id;
+	private Integer parentId;
+	private String title;
+	private String nodeType;
+	private String contentTypeId;
+	private String contentId;
+	private String contentType;
+	private String contentname;
+	private String icon;
 
-	public boolean expanded;
+	private boolean expanded = true;
+
+	public Integer getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
+	}
+
+	public String getCoursename() {
+		return coursename;
+	}
+
+	public void setCoursename(String coursename) {
+		this.coursename = coursename;
+	}
 
 	public Integer getId() {
 		return id;
@@ -75,5 +95,20 @@ public class TreeNode {
 	public void setExpanded(boolean expanded) {
 		this.expanded = expanded;
 	}
-	
+
+	public String getContentTypeId() {
+		return contentTypeId;
+	}
+
+	public void setContentTypeId(String contentTypeId) {
+		this.contentTypeId = contentTypeId;
+	}
+
+	public String getContentname() {
+		return contentname;
+	}
+
+	public void setContentname(String contentname) {
+		this.contentname = contentname;
+	}
 }
