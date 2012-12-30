@@ -5,7 +5,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-<course> <id>${courseId}</id> <name>${coursename}</name>
+<course> 
+<id>${courseIds}</id> <name>${coursename}</name>
 <nodes>
  <c:forEach var="treenode" items="${treeList}">
 	<node> 
