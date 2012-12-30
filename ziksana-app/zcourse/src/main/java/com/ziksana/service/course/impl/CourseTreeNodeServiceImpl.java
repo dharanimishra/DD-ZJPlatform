@@ -15,6 +15,7 @@ import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentParts;
 import com.ziksana.domain.course.TreeNode;
+import com.ziksana.exception.course.CourseException;
 import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.persistence.course.CourseTreeNodeMapper;
 import com.ziksana.service.course.CourseTreeNodeService;
@@ -160,7 +161,7 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 	}
 
 	@Override
-	public List<TreeNode> getTreeComponents(Integer courseId) {
+	public List<TreeNode> getTreeComponents(Integer courseId) throws CourseException{
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getCourseComponents(Integer courseId)"
 				+ courseId);

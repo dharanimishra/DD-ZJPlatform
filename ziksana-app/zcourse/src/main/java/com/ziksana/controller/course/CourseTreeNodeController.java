@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.TreeNode;
+import com.ziksana.exception.course.CourseException;
 import com.ziksana.service.course.CourseTreeNodeService;
 
 /**
@@ -40,14 +41,32 @@ public class CourseTreeNodeController {
 
 	@RequestMapping(value = "/getcoursetree/{courseId}", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView showMyTreenode(@PathVariable String courseId) {
+	ModelAndView showMyTreenode(@PathVariable String courseId) throws CourseException {
 		LOGGER.info("Entering showMyTreenode(): " + courseId);
-		Integer courseIds = 100;
+		Integer courseIds = 0;
+		String courseIdValue="";
+		String coursename = "";
+		try {
+			courseIds = Integer.parseInt(courseId);
+			LOGGER.info("Exiting showMyTreenode():  courseIds :" + courseIds);
+
+		} catch (NumberFormatException nfe) {
+			courseIds = 100;
+			LOGGER.debug("Class :" + getClass()
+					+ "showMyTreenode(): NumberFormatException :"
+					+ nfe.getMessage());
+		}
 		List<TreeNode> treeNodeList = courseTreeNodeService
 				.getTreeComponents(courseIds);
+
+		for (TreeNode node : treeNodeList) {
+			courseIdValue =node.getCourseId().toString();
+			coursename = node.getCoursename();
+		}
 		ModelAndView modelView = new ModelAndView("xml/treenode");
 
-		modelView.addObject("treeList", treeNodeList);
+		modelView.addObject("courseIds",courseIdValue);
+		modelView.addObject("coursename", coursename);
 		modelView.addObject("treeList", treeNodeList);
 
 		LOGGER.info("Exiting showMyTreenode(): " + courseId);

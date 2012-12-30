@@ -11,6 +11,7 @@ import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentParts;
 import com.ziksana.domain.course.TreeNode;
+import com.ziksana.exception.course.CourseException;
 
 /**
  * @author ratneshkumar
@@ -37,6 +38,6 @@ public interface CourseTreeNodeService {
 	List<LearningContentParts> getLearningContentParts(Integer learningContentId);
 	
 
-	List<TreeNode> getTreeComponents(Integer courseId);
+	List<TreeNode> getTreeComponents(Integer courseId) throws CourseException;
 
 }
