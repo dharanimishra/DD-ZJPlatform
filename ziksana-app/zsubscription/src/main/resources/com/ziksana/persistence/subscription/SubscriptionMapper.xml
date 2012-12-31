@@ -42,9 +42,11 @@
 		sbnmembersubscriptionprogram program on
 		program.MemSubscriptionProgId=subcourse.MemSubscriptionProgId
 		where
-		cntenr.LinkType = 1 and
+		cntenr.LinkType = #{contentType} and
 		subcourse.SubscriptionCourseId=#{subscrCourseId} and
-		program.MemberRoleId=#{memberRoleId}
+		program.MemberRoleId=#{memberRoleId} and
+		enr.LearningComponentId=#{learnCompId} and 
+		enr.LearningContentId=#{learnCmpContId}
 
 	</select>
 
@@ -72,21 +74,21 @@
 
 		insert into
 		sbnsubscribernotes(CreationDate,NotesType,NotesContent,SubscriptionCourseId,LearningComponentId,LearningComponentContentId,MemSubscriptionProgId)
-		values(#{creationDate}, #{type},#{content}
-		select subscriptioncourseid
+		values(now(), #{type},#{content},
+		(select subscriptioncourseid
 		from
 		sbnsubscriptioncourse subcourse,corcurriculumcourse curcourse
 		where
 		subcourse.CurriculumCourseId=curcourse.CurriculumCourseId and
-		curcourse.CourseId=#{courseid},
+		curcourse.CourseId=#{courseId}),
 		#{learnCompId},
 		#{learnCmpContId},
-		select
+		(select
 		memsubscriptionprogid
 		from
 		sbnmembersubscriptionprogram
 		where
-		memberroleid=#{memberRoleId}
+		memberroleid=#{memberRoleId})
 		)
 
 

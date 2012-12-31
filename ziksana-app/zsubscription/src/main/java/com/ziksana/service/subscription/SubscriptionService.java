@@ -20,25 +20,46 @@ public interface SubscriptionService {
 	
 	
 	//Educator services 
-	public List<Note> getEducatorNotes(SubscriptionCourse course, Node node);
-	public List<Reference> getEducatorReferences(SubscriptionCourse course, Node node);
+	/**
+	 * 
+	 * @param course
+	 * @param node
+	 * @param contentType values are notes,educator suggested references or reference materials
+	 * @return
+	 */
+	public List<Note> getEducatorContent(SubscriptionCourse course, Node node, Integer contentType);
+	
+	
 	
 	//end 
+	
 	
 	
 	
 	//Learner services 
+	public List<Note> getLearnerContent(SubscriptionCourse course, Node node);
+	
 	public List<Note> getLearnerQuestions(Node node);
 	public List<Note>  getLearnerNotes(SubscriptionCourse course, Node node);
-	public void addLearnerQuestion(String questionText, Node node);
-	public void addLearnerNote(String note, Node node);
-	public List<Note> getTOC(Node node);
-	
-	//end 
 	
 	
 	
-	public List<LinkType> getContentByType(SubscriptionCourse course);
+	
+	/**
+	 * Based on the nodetype(learning component and content..) and content type(question,notes..etc).
+	 * it adds the content
+	 * @param content
+	 * @param node
+	 */
+	public void addLearnerContent(String content, Node node);
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

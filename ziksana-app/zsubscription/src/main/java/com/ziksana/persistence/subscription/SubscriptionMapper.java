@@ -17,9 +17,9 @@ public interface SubscriptionMapper {
 	
 	public List<Note> getLearnerNotes(@Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId, @Param("learnCompId") Integer learnCompId,  @Param("learnCmpContId") Integer learnCmpContId);
 	
-	public List<Note> getEducatorNotes(@Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId);
+	public List<Note> getEducatorNotes(@Param("contentType") Integer contentType, @Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId,  @Param("learnCompId") Integer learnCompId,  @Param("learnCmpContId") Integer learnCmpContId);
 	
-	public List<Note> getContentByType(@Param("subscrCourseId") Integer subscrCourseId, @Param("learnCompId") Integer learnCompId,  Integer learnCmpContId, 
+	public List<Note> getContentByType(@Param("subscrCourseId") Integer subscrCourseId, @Param("learnCompId") Integer learnCompId,  @Param("learnCmpContId") Integer learnCmpContId, 
 			@Param("memberRoleId") Integer memberRoleId, @Param("noteType") Integer noteType);
 	
 	public void addNote(Note note);

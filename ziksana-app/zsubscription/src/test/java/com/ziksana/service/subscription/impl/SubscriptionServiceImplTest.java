@@ -1,6 +1,7 @@
 package com.ziksana.service.subscription.impl;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -45,8 +46,7 @@ public class SubscriptionServiceImplTest {
 		ZID memberPersonaId = new StringZID("100");
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
 		ThreadLocalUtil.setToken(token);
-		
-		
+
 	}
 
 	@After
@@ -54,39 +54,47 @@ public class SubscriptionServiceImplTest {
 	}
 
 	@Test
-	public void testGetLearnerNotes() {
-		
+	public void testGetLearnerContent() {
+
 		SubscriptionCourse course = new SubscriptionCourse();
 		course.setSubscriptionCourseId(1000);
 		Node node = new Node();
-		List<Note> notes = subscriptionService.getLearnerNotes(course, node);
+		node.setId(1);
+		node.setType(1000);
+		List<Note> notes = subscriptionService.getLearnerContent(course, node);
 		assertNotNull(notes);
 
 	}
-	
+
 	@Test
-	public void testGetEducatorNotes() {
-		
+	public void testGetEducatorContent() {
+
 		SubscriptionCourse course = new SubscriptionCourse();
 		course.setSubscriptionCourseId(1000);
-		//TODO 
-		List<Note> notes = subscriptionService.getEducatorNotes(course, new Node());
+		Node node = new Node();
+		node.setId(1);
+		node.setType(1000);
+
+		// TODO
+		List<Note> notes = subscriptionService.getEducatorContent(course, node, 1);
 		assertNotNull(notes);
 
+		assertTrue(notes.size() == 0);
+
 	}
 
-	@Test 
-	public void testAddLearnerNote() {
+	@Test
+	public void testAddLearnerContent() {
 		String noteText = "test note";
-		Note note = new Note();
-		note.setContent(noteText);
+		//Note note = new Note();
+		//note.setContent(noteText);
+		
 		Node node = new Node();
+        node.setType(1000);
+        node.setId(1000);
 		
-		subscriptionService.addLearnerNote(noteText, node);
-		
+		subscriptionService.addLearnerContent(noteText, node);
+
 	}
-	
-	
-	
 
 }
