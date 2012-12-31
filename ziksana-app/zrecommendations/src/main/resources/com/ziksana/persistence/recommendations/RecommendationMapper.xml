@@ -22,6 +22,19 @@
 		<result property="memberRoleId" column="MemberRoleId" />
 	</resultMap>
 
+	<select id="getRecommendationsByCurrentState" resultMap="recommendationResultMap"
+		parameterType="String">
+		SELECT * FROM memmemberziksanarecommendation n WHERE
+		currentState = #{currentState} order by
+		creationDate desc
+	</select>
+
+	<select id="getAllRecommendationsList" resultMap="recommendationResultMap"
+		parameterType="int">
+		SELECT * FROM memmemberziksanarecommendation n order by
+		creationDate desc
+	</select>
+
 	<insert id="addToCalendar" parameterType="com.ziksana.domain.recommendations.Recommendation"
 		useGeneratedKeys="true" keyProperty="ID">
 		INSERT INTO
