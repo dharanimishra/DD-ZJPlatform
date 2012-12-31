@@ -1,7 +1,6 @@
 package com.ziksana.service.subscription.impl;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
@@ -15,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.id.StringZID;
@@ -58,8 +58,8 @@ public class SubscriptionServiceImplTest {
 		
 		SubscriptionCourse course = new SubscriptionCourse();
 		course.setSubscriptionCourseId(1000);
-		
-		List<Note> notes = subscriptionService.getLearnerNotes(course);
+		Node node = new Node();
+		List<Note> notes = subscriptionService.getLearnerNotes(course, node);
 		assertNotNull(notes);
 
 	}
@@ -69,12 +69,23 @@ public class SubscriptionServiceImplTest {
 		
 		SubscriptionCourse course = new SubscriptionCourse();
 		course.setSubscriptionCourseId(1000);
-		
-		List<Note> notes = subscriptionService.getEducatorNotes(course);
+		//TODO 
+		List<Note> notes = subscriptionService.getEducatorNotes(course, new Node());
 		assertNotNull(notes);
 
 	}
 
+	@Test 
+	public void testAddLearnerNote() {
+		String noteText = "test note";
+		Note note = new Note();
+		note.setContent(noteText);
+		Node node = new Node();
+		
+		subscriptionService.addLearnerNote(noteText, node);
+		
+	}
+	
 	
 	
 

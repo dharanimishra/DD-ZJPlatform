@@ -28,22 +28,70 @@
 		cntenr.LinkDescription as NotesContent
 
 		from
-		corcontentenrichment cntenr JOIN
+		corcontentenrichment cntenr
+		JOIN
 		corenrichment enr ON
 		cntenr.enrichmentid= enr.enrichmentId
-		JOIN corcurriculumcourse cur ON
+		JOIN
+		corcurriculumcourse cur ON
 		enr.CourseId=cur.CourseId
-		JOIN sbnsubscriptioncourse subcourse ON
+		JOIN
+		sbnsubscriptioncourse subcourse ON
 		cur.CurriculumCourseId=subcourse.CurriculumCourseId
-		JOIN sbnmembersubscriptionprogram program on
+		JOIN
+		sbnmembersubscriptionprogram program on
 		program.MemSubscriptionProgId=subcourse.MemSubscriptionProgId
-		where cntenr.LinkType = 1 and
+		where
+		cntenr.LinkType = 1 and
 		subcourse.SubscriptionCourseId=#{subscrCourseId} and
 		program.MemberRoleId=#{memberRoleId}
 
 	</select>
 
 
+	<select id="getContentByType" resultMap="notesResultMap" parameterType="map">
+
+		select *
+		from
+		sbnsubscribernotes notes join
+		sbnmembersubscriptionprogram program on
+		notes.MemSubscriptionProgId=program.MemSubscriptionProgId
+		where
+		notes.SubscriptionCourseId=#{subscrCourseId} and
+		notes.LearningComponentId=#{learnCompId} and 
+		notes.LearningComponentContentId=#{learnCmpContId} and 
+		program.MemberRoleId=#{memberRoleId} and 
+		notes.NotesType=#{noteType}
+		
+	</select>
+
+
+
+	<insert id="addNote" parameterType="com.ziksana.domain.course.subscription.Note"
+		useGeneratedKeys="true" keyProperty="SubcribeNotesId">
+
+		insert into
+		sbnsubscribernotes(CreationDate,NotesType,NotesContent,SubscriptionCourseId,LearningComponentId,LearningComponentContentId,MemSubscriptionProgId)
+		values(#{creationDate}, #{type},#{content}
+		select subscriptioncourseid
+		from
+		sbnsubscriptioncourse subcourse,corcurriculumcourse curcourse
+		where
+		subcourse.CurriculumCourseId=curcourse.CurriculumCourseId and
+		curcourse.CourseId=#{courseid},
+		#{learnCompId},
+		#{learnCmpContId},
+		select
+		memsubscriptionprogid
+		from
+		sbnmembersubscriptionprogram
+		where
+		memberroleid=#{memberRoleId}
+		)
+
+
+
+	</insert>
 
 
 
