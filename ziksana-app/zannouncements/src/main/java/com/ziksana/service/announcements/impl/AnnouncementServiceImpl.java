@@ -3,9 +3,12 @@
  */
 package com.ziksana.service.announcements.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,10 +40,16 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 				+ " : Entering Method :selectById(int announcementDaoImpl)");
 		
 		List<Announcement> announcement = new  ArrayList<Announcement>();
-		announcement = announcementMapper.getAnnouncement(memberRoleId);
-		LOGGER.info("Announcement Size :"+announcement.size());
+
 		
-		return announcementMapper.getAnnouncement(memberRoleId);
+		
+		int offset = 0;
+		int limit = 2;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return announcementMapper.getAnnouncement(memberRoleId, rowBounds);
+		
+		
+		
 	}
 
 	/*
@@ -118,4 +127,74 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 
 	}
 
+	
+	
+	@Override
+	public List<Announcement> getInstitutionAnnouncements(int memberRoleId, String startDate, String endDate) {
+		
+		List<Announcement> announcement = new  ArrayList<Announcement>();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		try{
+		Date formatStartDate = dateFormat.parse(startDate);
+		Date formatEndDate = dateFormat.parse(endDate);
+		System.out.println(" start date is "+formatStartDate);
+		announcement = announcementMapper.getInstitutionAnnouncements(memberRoleId, formatStartDate, formatEndDate);
+		LOGGER.info("Institution Announcement Size :"+announcement.size());
+		
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return announcement;
+	}
+
+	@Override
+	public List<Announcement> getInstitutionUnitAnnouncements(int memberRoleId, String startDate, String endDate) {
+		List<Announcement> announcement = new  ArrayList<Announcement>();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		try{
+		Date formatStartDate = (Date)dateFormat.parse(startDate);
+		Date formatEndDate = (Date)dateFormat.parse(endDate);
+
+		announcement = announcementMapper.getInstitutionAnnouncements(memberRoleId, formatStartDate, formatEndDate);
+		LOGGER.info("Institution Announcement Size :"+announcement.size());
+		
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return announcement;
+	}
+
+	@Override
+	public List<Announcement> getCourseAnnouncements(int memberRoleId, String startDate, String endDate) {
+		List<Announcement> announcement = new  ArrayList<Announcement>();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		try{
+		Date formatStartDate = (Date)dateFormat.parse(startDate);
+		Date formatEndDate = (Date)dateFormat.parse(endDate);
+        System.out.println(" start date is "+formatStartDate);
+		announcement = announcementMapper.getCourseAnnouncements(memberRoleId, formatStartDate, formatEndDate);
+				LOGGER.info("Institution Announcement Size :"+announcement.size());
+		
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return announcement;
+	}
+
+	@Override
+	public List<Announcement> getAllAnnouncement(int memberRoleId) {
+				return announcementMapper.getAllAnnouncements(memberRoleId);
+	}
+
+	@Override
+	public Announcement getAnnouncementById(int memberRoleId,
+			int anouncementId) {
+		
+		return announcementMapper.getAnnouncementById(memberRoleId, anouncementId);
+	}
+
 }
+

@@ -3,6 +3,7 @@ package com.ziksana.service.recommendations.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import com.ziksana.persistence.recommendations.RecommendationMapper;
 import com.ziksana.service.recommendations.RecommendationsService;
 
 /**
- * @author
+ * @author Ratnesh Kumar
  * 
  */
 @Service
@@ -32,16 +33,15 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 	 * (java.lang.Integer)
 	 */
 	public List<Recommendation> getRecommendations(Integer category) {
-		
+
 		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
 		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
-		
+
 		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
 		recomendationList = recommendationMapper.getRecommendations(category);
-		LOGGER.info("Recommendation Size"+recomendationList.size());
-		return  recomendationList;
-		
-		
+		LOGGER.info("Recommendation Size" + recomendationList.size());
+		return recomendationList;
+
 	}
 
 	/*
@@ -124,5 +124,63 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method :addToIgnore(Recommendation recommendation) ");
+	}
+
+	@Override
+	public List<Recommendation> getRecommendationsByCurrentState(
+			String currentState) {
+		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
+		LOGGER.info("Class :"
+				+ getClass()
+				+ " : Entering Method :getRecommendationsByCurrentState(String currentState)");
+
+		recomendationList = recommendationMapper
+				.getRecommendationsByCurrentState(currentState);
+		LOGGER.info("Recommendation Size" + recomendationList.size());
+
+		LOGGER.info("Class :"
+				+ getClass()
+				+ " : Leaving Method :getRecommendationsByCurrentState(String currentState)");
+		return recomendationList;
+	}
+
+	@Override
+	public List<Recommendation> getAllRecommendationsList() {
+		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
+		LOGGER.info("Class :"
+				+ getClass()
+				+ " : Entering Method :getAllRecommendationsList()");
+		recomendationList= recommendationMapper.getAllRecommendationsList();
+		LOGGER.info("Recommendation Size" + recomendationList.size());
+
+		LOGGER.info("Class :"
+				+ getClass()
+				+ " : Leaving Method :getAllRecommendationsList()");
+		return recomendationList;
+	}
+
+	@Override
+	public List<Recommendation> getAllRecommendations() {
+		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
+		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
+
+		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
+		recomendationList = recommendationMapper.getAllRecommendations();
+		LOGGER.info("Recommendation Size" + recomendationList.size());
+		return recomendationList;
+	}
+
+	@Override
+	public void updateRecommendationsCategoryById(Integer recommendationId, Integer category) {
+		recommendationMapper.updateRecommendationsCategoryById(recommendationId, category);
+		
+	}
+
+	@Override
+	public List<Recommendation> getMapperRecommendation() {
+		int offset = 0;
+		int limit = 3;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return recommendationMapper.getMapperRecommendation(rowBounds);
 	}
 }

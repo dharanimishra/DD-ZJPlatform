@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -66,6 +67,50 @@ public class RecommendationsController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value = "/getallrecomendations", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getRecommendationsAllRecommendations() {
+
+		logger.info("All recommem]ndations: ");
+		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
+
+		List<Recommendation> recommendations = recomendationsService.getAllRecommendations();
+
+			
+		modelAndView.addObject("recommendations", recommendations);
+		logger.info("Exit Recommend");
+
+		return modelAndView;
+	}
+	
+	
+	@RequestMapping(value = "/getmapperrecomendations", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getRecommendations() {
+
+		logger.info("All recommem]ndations: ");
+		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
+
+		List<Recommendation> recommendations = recomendationsService.getMapperRecommendation();
+
+			
+		modelAndView.addObject("recommendations", recommendations);
+		logger.info("Exit Recommend");
+
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/updaterecommendation", method = RequestMethod.POST)
+	public String updateRecommendationCategory(
+			@RequestParam(value = "recommendationId", required = true) Integer recommendationId,
+			@RequestParam(value = "category", required = true) Integer category){
+		
+		recomendationsService.updateRecommendationsCategoryById(recommendationId, category);
+		
+		return "Recommendation Updated Successfully";
+			
+}
+	
 	
 	/*Get popup Alert window
 	 * */	
@@ -77,5 +122,8 @@ public class RecommendationsController {
 		return modelAndView;
 		
 	}
+	
+	
+	 
 
 }

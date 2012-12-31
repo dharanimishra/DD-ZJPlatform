@@ -26,19 +26,13 @@
 <!--<script src="js/isotope/jquery-1.7.2.min.js"></script>-->
 <script type="text/javascript" src="../resources/js/jquery-1.8.0.min.js"></script>
 		<script type="text/javascript" src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-				// Datepicker
+<script type="text/javascript">
+	$(function(){
+				
 				$( ".datepicker" ).datepicker();			
 
 			});
-function details(asd)
-{
-
-var val= $('#'+asd).html();
-$("#linksMeeting").fadeIn();
-$("#linksdetails").html(val);
-}			
+	
 			
 function closeit()
 {
@@ -48,7 +42,231 @@ $.fancybox.close();
 		</script>
 
 <!-- Announcement  -->
+<c:url var="getInstitutionAnnouncementUrl" value='/secure/getinstitutionannouncements'/>
+<c:url var="getInstitutionunitAnnouncementUrl" value='/secure/getinstitutionunitannouncements'/>
+<c:url var="getCourseAnnouncementUrl" value='/secure/getcourseannouncements'/>
 
+<c:url var="showannouncements" value="/secure/showannouncements/100" />
+  <script type="text/javascript">
+$(document).ready(function() {
+	$(document).ready(function() {
+		setInterval(function() {
+			
+	 
+		}, 500);	
+		
+		
+	});
+	get_all_announcements();
+
+ function get_all_announcements(){
+	$.ajax({
+		  	type: 'GET',
+			url: '${showannouncements}',
+			dataType: 'xml',
+			success: function( data ) {
+					if (console && console.log){
+								console.log( 'data:', data);
+					}
+					var output_announcement="";
+					output_announcement+="<table class='table reviewtable'>";
+					output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
+					output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+					output_announcement+="</thead><tbody>";
+					$(data).find("announcements").each(function(index){
+						
+					
+						
+						
+						output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
+						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+						
+	                   	
+												
+					});
+					output_announcement+="</tbody></table>";
+					output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+					//console.log("Announcements: " + output_announcement);
+				
+					
+					$('#announcement_placeholder').html(output_announcement);
+				
+					
+					 
+					
+			}
+	});
+	
+}	
+	
+}); 
+ outputDetails_description = "";
+function getMessagedescription(indexValue){
+	
+	var message= $('#edit_message'+indexValue+'').text();
+	var description = $('#edit_description'+indexValue+'').text();
+	
+	outputDetails_description+="<div  style='display:none;' id='row_selection_form_container'>";
+	outputDetails_description+="<br/><b> Details of the select Row in the table should be displayed here</b>";
+	outputDetails_description+="<div>";
+	outputDetails_description+="<br/></br><label>"+message+"</label><label >"+description+"</label>";
+	outputDetails_description+="</div>";
+	
+	//$("#linksMeeting").fadeIn();
+	$("#linksdetails").html(outputDetails_description);
+	
+}
+
+function getCategoryByBetweenDates(){
+	var categoryName= $('#zCategory').val();
+	var startDate = $('#startDate').val();
+	var endDate = $('#endDate').val();
+	var memberRoleId = 100;
+	
+	if(categoryName == 'All'){
+		$.ajax({
+		  	type: 'GET',
+			url: '${showannouncements}',
+			dataType: 'xml',
+			success: function( data ) {
+					if (console && console.log){
+								console.log( 'data:', data);
+					}
+					var output_announcement="";
+					output_announcement+="<table class='table reviewtable'>";
+					output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
+					output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+					output_announcement+="</thead><tbody>";
+					$(data).find("announcements").each(function(index){
+						
+					
+						
+						
+						output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
+						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+						
+	                   	
+												
+					});
+					output_announcement+="</tbody></table>";
+					output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+					//console.log("Announcements: " + output_announcement);
+				
+					
+					$('#announcement_placeholder').html(output_announcement);
+				
+					
+					 
+					
+			}
+	});
+	
+	
+	} else if(categoryName == 'University'){
+		
+		 $.post( '${getInstitutionAnnouncementUrl}'
+			        , {'memberRoleId':memberRoleId,'startDate':startDate,'endDate':endDate,}
+			        , function( data )
+			        {
+			        
+			        	var output_announcement="";
+						output_announcement+="<table class='table reviewtable'>";
+						output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
+						output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+						output_announcement+="</thead><tbody>";
+						$(data).find("announcements").each(function(index){
+							
+						
+							
+							
+							output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
+							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+							
+		                   	
+													
+						});
+						output_announcement+="</tbody></table>";
+						output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+						//console.log("Announcements: " + output_announcement);
+					
+						
+						$('#announcement_placeholder').html(output_announcement);
+						
+
+			        }
+					 ); 
+	} else if(categoryName == 'Department'){
+		 $.post( '${getInstitutionunitAnnouncementUrl}'
+			        , {'memberRoleId':memberRoleId,'startDate':startDate,'endDate':endDate,}
+			        , function( data )
+			        {
+			        
+			        	var output_announcement="";
+						output_announcement+="<table class='table reviewtable'>";
+						output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
+						output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+						output_announcement+="</thead><tbody>";
+						$(data).find("announcements").each(function(index){
+							
+						
+							
+							
+							output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
+							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+							
+		                   	
+													
+						});
+						output_announcement+="</tbody></table>";
+						output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+						//console.log("Announcements: " + output_announcement);
+					
+						
+						$('#announcement_placeholder').html(output_announcement);
+						
+
+			        }
+				); 
+	} else if(categoryName == 'Course'){
+		 $.post( '${getCourseAnnouncementUrl}'
+			        , {'memberRoleId':memberRoleId,'startDate':startDate,'endDate':endDate,}
+			        , function( data )
+			        {
+			        
+			        	var output_announcement="";
+						output_announcement+="<table class='table reviewtable'>";
+						output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
+						output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+						output_announcement+="</thead><tbody>";
+						$(data).find("announcements").each(function(index){
+							
+						
+							
+							
+							output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
+							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+							
+		                   	
+													
+						});
+						output_announcement+="</tbody></table>";
+						output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+						//console.log("Announcements: " + output_announcement);
+					
+						
+						$('#announcement_placeholder').html(output_announcement);
+						
+
+			        }
+					 ); 
+	} else{
+		alert("Please select category");
+	}
+		
+	
+}
+</script>
+ 
 <body>
 
 <div class="zannouncementwrapper">
@@ -63,88 +281,45 @@ $.fancybox.close();
         </div>
         <div id="contentGroup">
         	<select name="zCategory"  id="zCategory">
-                    <option value="Category">Category</option> 
-                     <option value="Category">University</option> 
-                      <option value="Category">Department</option> 
-                       <option value="Category">Course</option>                
+                     <option selected="selected" value="All">All</option>
+                     <option value="University">University</option> 
+                      <option value="Department">Department</option> 
+                       <option value="Course">Course</option>                
               </select>
               
         	
                     <label value="Period" style="display:inline;">Start Period</label> 
              
-            <input type="text" id="vDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
+            <input type="text" id="startDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
             
-                    <label value="Period" style="display:inline;">End Period</label> 
+                    <label value="endDate" style="display:inline;">End Period</label> 
                                   
              
-			  <input type="text" id="EDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
-            <a id="_go" class="aClass">Go</a>
-        </div>
+			  <input type="text" id="endDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
+            <a id="_go" onCLick=getCategoryByBetweenDates() class="aClass">Go</a>
+        
+		</div>
         <!-- end contentGroup -->
-        <div id="showGroup" class="zAnn">
+        
+		
+		
+		<div id="showGroup" class="zAnn">
               
                 <div id="tblGroup">
-               <table class="table reviewtable">
-                        <thead style="font-size:12px; font-family:tahoma; font-style:normal; color:#666;">
-                    <tr>
-                    	<th>Announcement</th><th>Status</th>
-                    </tr>
-                    </thead>
-                     <tbody>
-                    <tr>
-                    	<td style=" width:350px;"><div id="data1" onclick="details('data1')">Assignment-1 is closing today</div></td>
-                        <td>aa</td>
-                        
-                    </tr>
-                     <tr>
-                    	<td><div id="data2" onclick="details('data2')">Chapter-1 is open for pre study</div></td>
-                        <td>bb</td>
-                        
-                    </tr>
-                    
-                      <tr>
-                    	<td style=" width:350px;"><div id="data3" onclick="details('data3')">Assignment-2 is closing today</div></td>
-                        <td>aa</td>
-                        
-                    </tr>
-                     <tr>
-                    	<td><div id="data4" onclick="details('data4')">Chapter-2 is open for pre study</div></td>
-                        <td>bb</td>
-                        
-                    </tr>
-                    
-                      <tr>
-                    	<td style=" width:350px;"><div id="data5" onclick="details('data5')">Assignment-3 is closing today</div></td>
-                        <td>aa</td>
-                        
-                    </tr>
-                     <tr>
-                    	<td><div id="data6" onclick="details('data6')">Chapter-3 is open for pre study</div></td>
-                        <td>bb</td>
-                        
-                    </tr>
-                    
-                      <tr>
-                    	<td style=" width:350px;"><div id="data7" onclick="details('data7')">Assignment-4 is closing today</div></td>
-                        <td>aa</td>
-                        
-                    </tr>
-                     <tr>
-                    	<td><div id="data8" onclick="details('data8')">Chapter-4 is open for pre study</div></td>
-                        <td>bb</td>
-                        
-                    </tr>
-                     </tbody>                             
-                </table>
+					<div id=announcement_placeholder>
+					</div>
+					
                 </div>
-				<div id="linksMeeting" style=" display:none; border-top:1px solid grey">
+		
+				<div id="linksMeeting" style="border-top:1px solid grey">
             	<br/>
-               <b> Details of the select Row in the table should be displayed here</b>
-           		<br/>
-				<br/>
-          <div id="linksdetails">
+               
+           		
+          
+		  
+		   <div id="linksdetails">
 		  </div>
-            
+             
             </div>
             <!-- linksMeeting -->
                 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -170,7 +345,8 @@ $.fancybox.close();
            
    
    <div id="zReturn" style="margin-top:5px; height:30px;">    		 
- <input type="button" class="btn btn-info" id="btn_return" onclick="closeit()" name="btn_return" value="Return"/>
+  <!-- <input type="button" class="btn btn-info" id="btn_return" onClick="" name="btn_return" value="Return"/> --> 
+
         	</div>
             <!-- end zReturn -->
              

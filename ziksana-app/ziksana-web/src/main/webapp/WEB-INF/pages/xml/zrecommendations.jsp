@@ -9,6 +9,8 @@
 <recommendations>	
 	<c:forEach var="recomend" items="${recommendations}">
 		<recommenditem recomendId="${category}">
+				 <recommendationId>${recomend.ID}</recommendationId>
+				 <category>${recomend.category}</category>
 				 <title>${recomend.title}</title>
 				<description>${recomend.description}</description>
 		</recommenditem>

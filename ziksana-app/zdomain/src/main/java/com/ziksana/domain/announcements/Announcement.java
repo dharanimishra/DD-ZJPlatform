@@ -15,6 +15,7 @@ public class Announcement {
 	private Date announcementDate;
 	private String message;
 	private int messageVisibility;
+	private String description;
 	private Date validUntil;
 	private int memberRoleId;
 	private int institutionId;
@@ -166,6 +167,18 @@ public class Announcement {
 	 */
 	public void setCourseLearningComponentId(int courseLearningComponentId) {
 		this.courseLearningComponentId = courseLearningComponentId;
+	}
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 

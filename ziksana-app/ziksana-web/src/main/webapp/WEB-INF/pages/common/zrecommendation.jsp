@@ -34,12 +34,19 @@
 <!----- end for tooltip script ----> 
 <script src="../resources/js/zRecommend.js"></script>
 
- <c:url var="showRecomendUrl" value="/secure/showrecByCateg/1" />
+ <c:url var="showRecomendByCateg" value="/secure/showrecByCateg/" />
+ <c:url var="getAllRecommendations" value="/secure/getallrecomendations" />
   <script type="text/javascript">
 $(document).ready(function() {
+	
+	populate_new_recommendations();
+	
+});
+	
+	function populate_new_recommendations(){
 	$.ajax({
 		  	type: 'GET',
-			url: '${showRecomendUrl}',
+			url: '${getAllRecommendations}',
 			dataType: 'xml',
 			success: function( data ) {
 					if (console && console.log){
@@ -50,35 +57,57 @@ $(document).ready(function() {
 					
 					$(data).find("recommenditem").each(function(index){
 						
-						output+="<form id='newForm' name='newForm' action='' onsubmit='return false;' method='post'>";
-						output+="<div class='zeniboxrewards All Active' id='rec1'>";
-						   
-						output+="<div  class='zenititle'><label id='recomendTitle'> "+ $(this).find("title").text()+"</label></div>";
+						extra_class = '';
+						if($(this).find("category").text() == '1000'){//All
+							//extra_class = 'new';
+							
+						}
+						if($(this).find("category").text() == '1001'){//New
+							extra_class = 'actioned';
+						}
+						if($(this).find("category").text() == '1002'){//Actioned
+							extra_class = 'ignored';
+						
+						}
+						if($(this).find("category").text()){//Ignored
+							//extra_class = 'all';
+							
+						}
+						
+						output+="<div class='zeniboxrewards "+extra_class+"' id='rec1'>";
+						output+="<div  class='zenititle'><label id='recomendId"+index+"'> "+ $(this).find("recommendationId").text()+"</label></div>";  
+						output+="<div  class='zenititle'><label id='categoryId"+index+"'> "+ $(this).find("category").text()+"</label></div>";
+						output+="<div  class='zenititle'><label id='recomendTitle"+index+"'> "+ $(this).find("title").text()+"</label></div>";
 						output+="<div class='zenisubtitle'>";
 						output+="<div class='zsublink1 zenileft'>Created by : <span class='zlinktext'>Ziksana </span></div>";
 						output+="<div class='zsublink2 zenileft'>Valid upto : <span class='zlinktext2'> 31/09/2012  </span></div><br/><br/></div>";
 						output+="<div class='zenirecommendcenter'>";
 						output+="<div class='zenirecommendborder zenileft'></div>";
 						output+="<div class='zenircommendcenterlink zenileft'>";
-						output+="<a class='myButtonLink' id='options' rel='tooltip' data-placement='bottom' href='#LinkURL'  title='Add to Calendar'></a>";
-						output+="<a class='myButtonLink2' id='options' rel='tooltip' data-placement='bottom' href='' onclick='createNewTodo()' title='Add To Do'></a>"; 
+						output+="<a class='myButtonLink' id='options' rel='tooltip' data-placement='bottom' href='#'   title='Add to Calendar'></a>";
+						output+="<a class='myButtonLink2' id='options' rel='tooltip' data-placement='bottom' href='' onclick='createNewTodo("+index+")' title='Add To Do'></a>"; 
 						
-						output+="<a class='myButtonLink3'  rel='tooltip' data-placement='bottom' href='#LinkURL' title='Ignore' id='_ignore4'></a></div><br /></div>";
+						output+="<a class='myButtonLink3'  rel='tooltip' data-placement='bottom' href='' onclick='moveIgnored("+index+")' title='Ignore' id='_ignore4'></a></div><br /></div>";
 						output+="<div class='zenilower'>   ";
 						output+="<div class='zeniiconimage zenileft'><img src='../resources/images/noimage.png' width='70' height='70'/></div>";
-						output+="<div class='zenicontent'><label id='recomendDescription'>"+ $(this).find("description").text()+"</label></div><br /></div></div>";
-						output+="</form>";
+						output+="<div class='zenicontent'><label id='recomendDescription"+index+"'>"+ $(this).find("description").text()+"</label></div><br /></div></div>";
+					
 						output+="</div>";
 												
 					});
 					
 				
-					$('#container4').html(output);
+					$('#recommendations_container').html(output);
+					show_only_new(); //show only new recommendations
+					
+					
 					
 			}
 	});
+	}
 	
-});
+
+	
 </script>
 
 
@@ -121,24 +150,52 @@ function showreview()
 $('#container4').isotope({ filter: '.All' });
 }
 
-function createNewTodo()
-{
+function createNewTodo(index){
+	//alert(index);
+	recommend_id = $('#recomendId'+index+'').html(); 
+	categoryId= $('#categoryId'+index+'').html();
+	
+	 recommend_title = $('#recomendTitle'+index+'').html();
+	 recommend_description = $('#recomendDescription'+index+'').html();
+	
 	 
-	 todo_title = $('#recomendTitle').html();
-	 todo_description = $('#recomendDescription').html();
-	 
-
-	   $.post( '<c:url value='/secure/createtodo'/>'
- 		 , {'category':todo_title,'notificationContent':todo_description}
+	    $.post( '<c:url value='/secure/createtodo'/>'
+ 		 , {'category':recommend_title,'notificationContent':recommend_description}
  		 , function( data )
   			{
   
+				
 
- 			 }
-			, 'json' );     	
+ 	 		});  
+	    
+	   
+	    
+	    $.post( '<c:url value='/secure/updaterecommendation'/>'
+	    		 , {'recommendationId':recommend_id,'category':1001}
+	    		 , function( data )
+	     			{
+	     
+	    			 populate_new_recommendations();
+
+	    			 });   
+	    
+	   
 	
 }
+function moveIgnored(index){
+	alert(index);
+	recommend_id = $('#recomendId'+index+'').html(); 
+	categoryId= $('#categoryId'+index+'').html();
+	
+	 $.post( '<c:url value='/secure/updaterecommendation'/>'
+    		 , {'recommendationId':recommend_id,'category':1002}
+    		 , function( data )
+     			{
+     
+    			 populate_new_recommendations();
 
+    			 });  
+}
 
 </script>
  
@@ -161,19 +218,29 @@ function createNewTodo()
    
     <div class="zeniisotope">
                     
-                    <li><a class="btn btn-info" href="#" onclick="showall()">All</a> </li>
-                    <li><a class="btn btn-info" href="#" onclick="showactive()">New</a></li>
-                    <li> <a class="btn btn-info" href="#" onclick="showreview()">Actioned</a></li>
-                    <li> <a class="btn btn-info ign" href="#">Ignored</a></li>
+                    <li><a class="btn btn-info" onclick="show_all();">All</a> </li>
+                    <li><a class="btn btn-info" onclick="show_only_new();">New</a></li>
+                    <li> <a class="btn btn-info" onclick="show_only_actioned();">Actioned</a></li>
+                    <li> <a class="btn btn-info ign" onclick="show_only_ignored();">Ignored</a></li>
                                       
                     
-                    </div> <!--end of zeni isotope--> 
+          </div> <!--end of zeni isotope--> 
   <div id="wrap">
-    <div id="container4" >
+    <div id="recommendations_container" >
    
+   <!-- <div id="rec1" class="zeniboxrewards actioned"><div class="zenititle"><label id="recomendTitle"> 1. actioned Ease of Use</label></div><div class="zenisubtitle"><div class="zsublink1 zenileft">Created by : <span class="zlinktext">Ziksana </span></div><div class="zsublink2 zenileft">Valid upto : <span class="zlinktext2"> 31/09/2012  </span></div><br><br></div><div class="zenirecommendcenter"><div class="zenirecommendborder zenileft"></div><div class="zenircommendcenterlink zenileft"><a title="Add to Calendar" href="#LinkURL" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink"></a><a title="Add To Do" onclick="createNewTodo()" href="" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink2"></a><a id="_ignore4" title="Ignore" href="#LinkURL" data-placement="bottom" rel="tooltip" class="myButtonLink3"></a></div><br></div><div class="zenilower">   <div class="zeniiconimage zenileft"><img width="70" height="70" src="../resources/images/noimage.png"></div><div class="zenicontent"><label id="recomendDescription">As you are using Student Outcome Recommendations?.</label></div><br></div></div>
+   <div id="rec1" class="zeniboxrewards "><div class="zenititle"><label id="recomendTitle"> 1. Ease of Use</label></div><div class="zenisubtitle"><div class="zsublink1 zenileft">Created by : <span class="zlinktext">Ziksana </span></div><div class="zsublink2 zenileft">Valid upto : <span class="zlinktext2"> 31/09/2012  </span></div><br><br></div><div class="zenirecommendcenter"><div class="zenirecommendborder zenileft"></div><div class="zenircommendcenterlink zenileft"><a title="Add to Calendar" href="#LinkURL" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink"></a><a title="Add To Do" onclick="createNewTodo()" href="" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink2"></a><a id="_ignore4" title="Ignore" href="#LinkURL" data-placement="bottom" rel="tooltip" class="myButtonLink3"></a></div><br></div><div class="zenilower">   <div class="zeniiconimage zenileft"><img width="70" height="70" src="../resources/images/noimage.png"></div><div class="zenicontent"><label id="recomendDescription">As you are using Student Outcome Recommendations?.</label></div><br></div></div>
+   <div id="rec1" class="zeniboxrewards ignored"><div class="zenititle"><label id="recomendTitle"> 1. Ignored Ease of Use</label></div><div class="zenisubtitle"><div class="zsublink1 zenileft">Created by : <span class="zlinktext">Ziksana </span></div><div class="zsublink2 zenileft">Valid upto : <span class="zlinktext2"> 31/09/2012  </span></div><br><br></div><div class="zenirecommendcenter"><div class="zenirecommendborder zenileft"></div><div class="zenircommendcenterlink zenileft"><a title="Add to Calendar" href="#LinkURL" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink"></a><a title="Add To Do" onclick="createNewTodo()" href="" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink2"></a><a id="_ignore4" title="Ignore" href="#LinkURL" data-placement="bottom" rel="tooltip" class="myButtonLink3"></a></div><br></div><div class="zenilower">   <div class="zeniiconimage zenileft"><img width="70" height="70" src="../resources/images/noimage.png"></div><div class="zenicontent"><label id="recomendDescription">As you are using Student Outcome Recommendations?.</label></div><br></div></div>
+   <div id="rec1" class="zeniboxrewards actioned"><div class="zenititle"><label id="recomendTitle"> 1. actioned Ease of Use</label></div><div class="zenisubtitle"><div class="zsublink1 zenileft">Created by : <span class="zlinktext">Ziksana </span></div><div class="zsublink2 zenileft">Valid upto : <span class="zlinktext2"> 31/09/2012  </span></div><br><br></div><div class="zenirecommendcenter"><div class="zenirecommendborder zenileft"></div><div class="zenircommendcenterlink zenileft"><a title="Add to Calendar" href="#LinkURL" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink"></a><a title="Add To Do" onclick="createNewTodo()" href="" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink2"></a><a id="_ignore4" title="Ignore" href="#LinkURL" data-placement="bottom" rel="tooltip" class="myButtonLink3"></a></div><br></div><div class="zenilower">   <div class="zeniiconimage zenileft"><img width="70" height="70" src="../resources/images/noimage.png"></div><div class="zenicontent"><label id="recomendDescription">As you are using Student Outcome Recommendations?.</label></div><br></div></div>
+   <div id="rec1" class="zeniboxrewards "><div class="zenititle"><label id="recomendTitle"> 1. Ease of Use</label></div><div class="zenisubtitle"><div class="zsublink1 zenileft">Created by : <span class="zlinktext">Ziksana </span></div><div class="zsublink2 zenileft">Valid upto : <span class="zlinktext2"> 31/09/2012  </span></div><br><br></div><div class="zenirecommendcenter"><div class="zenirecommendborder zenileft"></div><div class="zenircommendcenterlink zenileft"><a title="Add to Calendar" href="#LinkURL" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink"></a><a title="Add To Do" onclick="createNewTodo()" href="" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink2"></a><a id="_ignore4" title="Ignore" href="#LinkURL" data-placement="bottom" rel="tooltip" class="myButtonLink3"></a></div><br></div><div class="zenilower">   <div class="zeniiconimage zenileft"><img width="70" height="70" src="../resources/images/noimage.png"></div><div class="zenicontent"><label id="recomendDescription">As you are using Student Outcome Recommendations?.</label></div><br></div></div>
+   <div id="rec1" class="zeniboxrewards ignored"><div class="zenititle"><label id="recomendTitle"> 1. Ignored Ease of Use</label></div><div class="zenisubtitle"><div class="zsublink1 zenileft">Created by : <span class="zlinktext">Ziksana </span></div><div class="zsublink2 zenileft">Valid upto : <span class="zlinktext2"> 31/09/2012  </span></div><br><br></div><div class="zenirecommendcenter"><div class="zenirecommendborder zenileft"></div><div class="zenircommendcenterlink zenileft"><a title="Add to Calendar" href="#LinkURL" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink"></a><a title="Add To Do" onclick="createNewTodo()" href="" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink2"></a><a id="_ignore4" title="Ignore" href="#LinkURL" data-placement="bottom" rel="tooltip" class="myButtonLink3"></a></div><br></div><div class="zenilower">   <div class="zeniiconimage zenileft"><img width="70" height="70" src="../resources/images/noimage.png"></div><div class="zenicontent"><label id="recomendDescription">As you are using Student Outcome Recommendations?.</label></div><br></div></div>
+   <div id="rec1" class="zeniboxrewards actioned"><div class="zenititle"><label id="recomendTitle"> 1. actioned Ease of Use</label></div><div class="zenisubtitle"><div class="zsublink1 zenileft">Created by : <span class="zlinktext">Ziksana </span></div><div class="zsublink2 zenileft">Valid upto : <span class="zlinktext2"> 31/09/2012  </span></div><br><br></div><div class="zenirecommendcenter"><div class="zenirecommendborder zenileft"></div><div class="zenircommendcenterlink zenileft"><a title="Add to Calendar" href="#LinkURL" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink"></a><a title="Add To Do" onclick="createNewTodo()" href="" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink2"></a><a id="_ignore4" title="Ignore" href="#LinkURL" data-placement="bottom" rel="tooltip" class="myButtonLink3"></a></div><br></div><div class="zenilower">   <div class="zeniiconimage zenileft"><img width="70" height="70" src="../resources/images/noimage.png"></div><div class="zenicontent"><label id="recomendDescription">As you are using Student Outcome Recommendations?.</label></div><br></div></div>
+   <div id="rec1" class="zeniboxrewards "><div class="zenititle"><label id="recomendTitle"> 1. Ease of Use</label></div><div class="zenisubtitle"><div class="zsublink1 zenileft">Created by : <span class="zlinktext">Ziksana </span></div><div class="zsublink2 zenileft">Valid upto : <span class="zlinktext2"> 31/09/2012  </span></div><br><br></div><div class="zenirecommendcenter"><div class="zenirecommendborder zenileft"></div><div class="zenircommendcenterlink zenileft"><a title="Add to Calendar" href="#LinkURL" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink"></a><a title="Add To Do" onclick="createNewTodo()" href="" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink2"></a><a id="_ignore4" title="Ignore" href="#LinkURL" data-placement="bottom" rel="tooltip" class="myButtonLink3"></a></div><br></div><div class="zenilower">   <div class="zeniiconimage zenileft"><img width="70" height="70" src="../resources/images/noimage.png"></div><div class="zenicontent"><label id="recomendDescription">As you are using Student Outcome Recommendations?.</label></div><br></div></div>
+   <div id="rec1" class="zeniboxrewards "><div class="zenititle"><label id="recomendTitle"> 1. Ease of Use</label></div><div class="zenisubtitle"><div class="zsublink1 zenileft">Created by : <span class="zlinktext">Ziksana </span></div><div class="zsublink2 zenileft">Valid upto : <span class="zlinktext2"> 31/09/2012  </span></div><br><br></div><div class="zenirecommendcenter"><div class="zenirecommendborder zenileft"></div><div class="zenircommendcenterlink zenileft"><a title="Add to Calendar" href="#LinkURL" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink"></a><a title="Add To Do" onclick="createNewTodo()" href="" data-placement="bottom" rel="tooltip" id="options" class="myButtonLink2"></a><a id="_ignore4" title="Ignore" href="#LinkURL" data-placement="bottom" rel="tooltip" class="myButtonLink3"></a></div><br></div><div class="zenilower">   <div class="zeniiconimage zenileft"><img width="70" height="70" src="../resources/images/noimage.png"></div><div class="zenicontent"><label id="recomendDescription">As you are using Student Outcome Recommendations?.</label></div><br></div></div>
+    -->
    
   
-   </div> <!--------------end of wrap --->
+   </div> 
   
    </div> <!--------------end of container-4 --->
   
@@ -199,6 +266,28 @@ function createNewTodo()
 				});
 			});
 		})(jQuery);
+		
+		
+		function show_only_new(){
+			//hides all actioned and ignored recommendations.
+			$('#recommendations_container > div').show();
+			jQuery('#recommendations_container').find('div.actioned, div.ignored').hide();
+		}
+		
+		function show_only_actioned(){
+			$('#recommendations_container > div').hide();
+			jQuery('#recommendations_container').find('div.actioned').show();
+		}
+		
+		function show_only_ignored(){
+			$('#recommendations_container > div').hide();
+			jQuery('#recommendations_container').find('div.ignored').show();
+		}
+		
+		function show_all(){
+			//shows all recommendations.
+			jQuery('#recommendations_container > div').show();
+		}
 	</script> 
     
   

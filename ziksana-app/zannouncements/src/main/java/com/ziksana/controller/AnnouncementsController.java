@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,12 +31,40 @@ public class AnnouncementsController {
 	@Autowired
 	AnnouncementService announcementService;
 	
+	
+	/**
+	 * Retrive announcement to display 
+	 */
+	@RequestMapping(value = "/showannouncements/{memberRoleId}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getAnnouncement(@PathVariable Integer memberRoleId) {
+		
+		ModelAndView mav = new ModelAndView("xml/announcements");
+		
+		mav.addObject("announcements", announcementService.getAllAnnouncement(memberRoleId));
+		
+		logger.info("announcement ID: " + memberRoleId);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/showannouncementsinglepopup", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getAnnouncementByAnnouncementId(@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
+			@RequestParam(value = "anouncementId", required = true) int anouncementId) {
+		
+		ModelAndView mav = new ModelAndView("xml/announcement");
+		
+		mav.addObject("announcement", announcementService.getAnnouncementById(memberRoleId, anouncementId));
+		
+		logger.info("announcement ID: " + memberRoleId);
+		return mav;
+	}
+	
+	
 	/**
 	 * Retrive announcement to display 
 	 */
 	@RequestMapping(value = "/showannouncementbyid/{memberRoleId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView getAnnouncementById(@PathVariable Integer memberRoleId) {
-		logger.info("Entering showMyAlerts(): " + memberRoleId);
+		
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		
 		mav.addObject("announcements", announcementService.getAnnouncement(memberRoleId));
@@ -53,5 +82,48 @@ public class AnnouncementsController {
 		return modelAndView;
 		
 	}
+	
+	@RequestMapping(value = "/getinstitutionannouncements", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView getInstitutionAnnouncements(
+			@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
+			@RequestParam(value = "startDate", required = true) String startDate,
+			@RequestParam(value = "endDate", required = true) String endDate){
+		
+		ModelAndView mav = new ModelAndView("xml/announcements");
+		
+		mav.addObject("announcements", announcementService.getInstitutionAnnouncements(memberRoleId, startDate, endDate));
+		
+		logger.info("announcement ID: " + memberRoleId);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/getinstitutionunitannouncements", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView getInstitutionunitAnnouncements(
+			@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
+			@RequestParam(value = "startDate", required = true) String startDate,
+			@RequestParam(value = "endDate", required = true) String endDate) {
+		
+		ModelAndView mav = new ModelAndView("xml/announcements");
+		
+		mav.addObject("announcements", announcementService.getInstitutionUnitAnnouncements(memberRoleId, startDate, endDate));
+		
+		logger.info("announcement ID: " + memberRoleId);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/getcourseannouncements", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView getCourseAnnouncements(
+			@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
+			@RequestParam(value = "startDate", required = true) String startDate,
+			@RequestParam(value = "endDate", required = true) String endDate) {
+		
+		ModelAndView mav = new ModelAndView("xml/announcements");
+		
+		mav.addObject("announcements", announcementService.getCourseAnnouncements(memberRoleId, startDate, endDate));
+		
+		logger.info("announcement ID: " + memberRoleId);
+		return mav;
+	}
+	
 	
 }

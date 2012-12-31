@@ -25,9 +25,9 @@
   <script type="text/javascript">
   $(document).ready(function() {
 		setInterval(function() {
-			get_and_UnAnswered_questions();
+			
 	 
-		}, 1*60*1000);	
+		}, 500);	
 		
 		get_and_UnAnswered_questions();
 		
@@ -74,10 +74,10 @@ $(document).ready(function() {
 				 		
 					
 					});
-					console.log("unAnswered Question Id ==>"+ questionIdArray);
-					console.log("unanswered array: ==> " + questionArray);
-					console.log("option array==>"+  optionArray);
-					console.log("memberPersonalitytestId==>"+memberPersonalitytestId);
+					// console.log("unAnswered Question Id ==>"+ questionIdArray);
+					// console.log("unanswered array: ==> " + questionArray);
+					// console.log("option array==>"+  optionArray);
+					// console.log("memberPersonalitytestId==>"+memberPersonalitytestId);
 				
 					
 					
@@ -100,27 +100,37 @@ function displayUnAnsweredPairs(current){
 	var outputResult="";
 	
 	outputResult+="<div id='quest'>";
+	outputResult+="<div id='question_info_message'></div>";
 	outputResult+="<label style='display:none;' id='cur-qus-id'>"+questionIdArray[current]+"</label><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
 	outputResult+="<table width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
-	outputResult+= "<tr><td ><input type='radio'  id='checked-val'  checked='checked' name='radiobtn' value='1'><label id='option-ans' for='option'>Yes</label></td></tr>";
-	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='2'><label id='option-ans' for='option'>No</label></td></tr>";
-	/* for(var i = 0 ; i < optionsList.length ; i++){
-		if(i=0)
-		var checkedValue = 'CHECKED';	
-		outputResult+= "<tr><td ><input type='radio' id='checked-val' name='radiobtn' value='"+i+"'>" + "<label id='option-ans' for='option'>" + optionsList[i] + "</label></td></tr>";
+	/* outputResult+= "<tr><td ><input type='radio'  id='checked-val'  checked='checked' name='radiobtn' value='1'><label id='option-ans' for='option'>Yes</label></td></tr>";
+	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='2'><label id='option-ans' for='option'>No</label></td></tr>"; */
+	 for(var i = 0 ; i < optionsList.length ; i++){
+			
+		outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='"+i+"'>" + "<label id='option-ans' for='option'>" + optionsList[i] + "</label></td></tr>";
 		
-	} */
+	} 
 	//alert(current+","+questionArray.length);
 	outputResult+="</table>";
 	outputResult+="<br/>";
 	
-	if(current!=questionArray.length-1)
-	outputResult+="<button class='f-rt' id='btnnxt' onClick='nextquestion()'>Next >></button>";
-	outputResult+="<button class='f-rt' id='btnnxt' onClick='submitValue()'>Submit</button>";
-	if(current!=0)
-		outputResult+="<button class='f-rt' id='btnnxt' onClick='prevquestion()'><< Previous</button>";
+	
+	outputResult+="<div id='question_buttons_container'>";
+	if(current!=0){
+		outputResult+="<div><input type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
+	}else{
+		outputResult+="<div><input disabled='disabled' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
+	}
+	outputResult+="<div><input type='submit' id='submit_question_button' onClick='submitValue()' value='Submit'/></div>";
+	if(current!=questionArray.length-1){
+	outputResult+="<div><input  type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
+	} else {
+	outputResult+="<div><input disabled='disabled' type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
+	}
+	
+	outputResult+='</div>';	
 		
 		 
 	
@@ -128,11 +138,14 @@ function displayUnAnsweredPairs(current){
 	$('#newque').html(outputResult);
 }
 
-
+function checkBoxSelection(val){
+	alert(val);
+}
 
 function nextquestion(){
 	//var cur=currentQuestion+1<questionArray.length-2?currentQuestion++:questionArray.lengt;
 	displayUnAnsweredPairs(++currentQuestion);
+	
 }
 function prevquestion(){
 	//var cur=currentQuestion+1<questionArray.length-2?currentQuestion++:questionArray.lengt;
@@ -159,8 +172,10 @@ function submitValue(){
 				        , function( data )
 				        {
 				        
-							alert("Answer Submitted Successfully");
-							$("input[type=submit]").attr("disabled", "disabled");
+							$('#question_info_message').html("Answer Submitted Successfully");
+							// setTimeout('$("#question_info_message").hide();',4000);
+							$("input#submit_question_button").attr("disabled", "disabled");
+							
 				        }
 						, 'xml' );  
 		     
@@ -179,6 +194,7 @@ function submitValue(){
 	}
 	else
 	{
+		get_and_UnAnswered_questions();
 	$('.new-que').show();
 	$('.pre-que').hide();
 	}
@@ -230,6 +246,11 @@ display:none;
 padding: 10px;
 background-color: #DAE8F2;
 }
+#question_info_message_update{padding: .5em; color: green; font-family: arial, sans-serif;}
+#question_info_message {padding: .5em; color: green; font-family: arial, sans-serif;}
+#question_buttons_container{display:table; width: 100%;}   
+#question_buttons_container > div{display:table-cell;}   
+   
    </style>
 </head>
 
@@ -259,7 +280,7 @@ background-color: #DAE8F2;
 		
 		 			<form >
                       <select onchange="change(this.value)">
-						  <option value="1" >Show Me - New Questions</option>
+						  <option value="1" selected="selected" >Show Me - New Questions</option>
 						  <option value="2" >Show Me - Previously Answered</option>						  
 					  </select>
 					</form>
@@ -322,44 +343,47 @@ $(document).ready(function() {
 function answeredQuestionDisplay(){
 	var outputResult="";
 	outputResult+="<table id='updateTable' value='hide' class='quest-table' border=1>";
-	outputResult+="<tr><th  width='200px'>Questions</th>";
+	outputResult+="<tr><th  width='200px'>&nbsp;&nbsp;&nbsp;Questions</th>";
 	outputResult+="<th  width='120px'>Answered Date</th></tr>";
 	
 	outputResult+="<form action=''><tr>";
 	for(var i = 0; i<answeredQuestion.length;i++){
-		
-		outputResult+="<tr><td><a  style='text-decoration:none;' href='#' onClick='overAnswer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td><td><label  id='questionAnswer"+i+"'>"+answerDate[i]+"</label></td><td></tr>";
+		outputResult+="<tr><td width='200px'><a  style='text-decoration:none; margin-left:0px;' href='#' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label></td><td ><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td></tr>";
+		//outputResult+="<tr><td><a  style='text-decoration:none;' href='#' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td><td><label  id='questionAnswer"+i+"'>"+answerDate[i]+"</label></td><td></tr>";
 		}
 	
 	
 	outputResult+="<tr></table>";
-	outputResult+="<a class='f-rt' style='color:blue;' href='#' onClick='$(\"#kmb_question_container\").show();'>Details</a>";
+	outputResult+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#answered_question_form_container\").show();'>Details</a>";
 	$('#answer-display').html(outputResult);
 }
 
-function overAnswer(loop){
+function displayAnsweredQuestionContainer(loop){
 		
 	 var outputAns = "";
 	 editQuestion = $('#questionUpdate'+loop+'').text();
 	 editChoice = $('#questionAnswer'+loop+'').text();
+	 alert(editChoice);
 	
-	outputAns+="<div style='margin-top: 40px; display:none;' id='kmb_question_container'><p>View or update the Answer:</p></br></br>";
-	outputAns+="</div>";
-	outputAns+="<form action=''>";
-	outputAns+="<table width='180px' height='50px' >";
-	outputAns+="<label id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
+	outputAns+="<div style='display:none;' id='answered_question_form_container'>";
+	outputAns+="<br/></br><u><p>View or update the Answer:</p></u>";
+	outputAns+="<div>";
+	outputAns+="<div id='question_info_message_update'></div>";
+	outputAns+="<br/></br><label style='display:none;' id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
 	
 		if(editChoice == "Yes"){
-			outputAns+="<tr><td><input type='radio' name='q1' value='1' checked='checked' ><label id='cur-id'>Yes</label</td></tr>";
-			outputAns+="<tr><td><input type='radio' name='q1' value='2'  >No</td></tr><label id='cur-id'>No</label></table>";
+			outputAns+="</br><input type='radio' name='q1' value='1' checked='checked' /><label id='cur-id'>Yes</label>";
+			outputAns+="</br><input type='radio' name='q1' value='2'/><label id='cur-id'>No</label>";
 		} 
 		if(editChoice == "No"){
-			outputAns+="<tr><td><input type='radio' name='q1' value='1'  ><label id='cur-id'>Yes</label</td></tr>";
-			outputAns+="<tr><td><input type='radio' name='q1' value='2' checked='checked'><label id='cur-id'>No</label></td></tr></table>";
+			outputAns+="</br><input type='radio' name='q1' value='1'  /><label id='cur-id'>Yes</label>";
+			outputAns+="</br><input type='radio' name='q1' value='2' checked='checked'/><label id='cur-id'>No</label>";
 		}
 	
-	outputAns+="<button onClick='closeit()' class='f-rt'>Return</button>"; 
+	outputAns+="</div>"; 
+	outputAns+="<button onClick='$(\"#answered_question_form_container\").hide();' class='f-rt'>Return</button>"; 
 	outputAns+="<button  onClick='updateValues()' class='f-rt'>Submit Revisions</button>"; 
+	outputAns+="</div>"; 
 	$('#click-det').html(outputAns);
 	return false;
 }
@@ -383,11 +407,13 @@ function updateValues(){
 		        , function( data )
 		        {
 		        
+					change(2);
+		        	$('#question_info_message_update').html("Answer Updated Successfully");
+					
 
 		        }
-				, 'json' ); 
+				 ); 
 	   
-	   $('#answer-display').show;  
 }
 	</script>
 <!-- end -->

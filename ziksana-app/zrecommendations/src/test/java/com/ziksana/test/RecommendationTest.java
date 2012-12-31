@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -18,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 
 import com.ziksana.domain.recommendations.Recommendation;
 import com.ziksana.service.recommendations.RecommendationsService;
@@ -29,12 +29,12 @@ import com.ziksana.service.recommendations.RecommendationsService;
  * @author
  */
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class RecommendationTest {
 
-	private static final Logger logger = LoggerFactory.getLogger(RecommendationTest.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(RecommendationTest.class);
 	@Autowired
 	RecommendationsService recommendationService;
 
@@ -47,12 +47,12 @@ public class RecommendationTest {
 	public static void runAfterClass() {
 
 	}
-	
-	//check insert the Recommendations 
-	
-	//@Test
-	public void createRecommendations(){
-		
+
+	// check insert the Recommendations
+
+	@Ignore
+	public void createRecommendations() {
+
 		Recommendation recomend = new Recommendation();
 		recomend.setID(112);
 		recomend.setCategory(1);
@@ -64,9 +64,9 @@ public class RecommendationTest {
 		recomend.setMemberRoleId(100);
 		recomend.setTitle("2. Productivity");
 		recomend.setDescription("As your evaluation of descriptive..,");
-		
-		assertNotNull(recomend);	
-		
+
+		assertNotNull(recomend);
+
 		recommendationService.addToCalendar(recomend);
 		logger.info("Recommendations insert SUCCESSFUL");
 	}
@@ -75,19 +75,61 @@ public class RecommendationTest {
 	 * Test method for
 	 * {@link com.ziksana.dao.recommendations.RecommendationsDao#selectAll()}.
 	 */
-	@Test
+	@Ignore
 	public void testSelectAll() {
 		List<Recommendation> recommendationList = new ArrayList<Recommendation>();
-			
-		recommendationList=recommendationService.getRecommendations(1);
-		assertEquals(recommendationList.size(),2);
+
+		recommendationList = recommendationService.getRecommendations(1);
+		//assertEquals(recommendationList.size(), 2);
 		logger.info("Select All recommendation By Category");
-		for(Recommendation recomend : recommendationList){
-			
-			logger.info("recommendation Title  :"+recomend.getTitle()+"Description :"+recomend.getDescription());
-			
+		for (Recommendation recomend : recommendationList) {
+
+			logger.info("recommendation Title  :" + recomend.getTitle()
+					+ "Description :" + recomend.getDescription());
+
 		}
-		
+
+	}
+
+	/**
+	 * Test method for
+	 * {@link com.ziksana.dao.recommendations.RecommendationsDao#selectAll()}.
+	 */
+	@Ignore
+	public void testgetAllRecommendationsList() {
+		List<Recommendation> recommendationList = new ArrayList<Recommendation>();
+
+		recommendationList = recommendationService.getAllRecommendationsList();
+		assertEquals(recommendationList.size(), 4);
+		logger.info("Select All recommendation By Category");
+		for (Recommendation recomend : recommendationList) {
+			logger.info("recommendation Title  :" + recomend.getTitle()
+					+ "Description :" + recomend.getDescription());
+
+		}
+
+	}
+
+	/**
+	 * Test method for
+	 * {@link com.ziksana.dao.recommendations.RecommendationsDao#selectAll()}.
+	 */
+	@Ignore
+	public void testgetRecommendationsByCurrentState() {
+		List<Recommendation> recommendationList = new ArrayList<Recommendation>();
+
+		String currentStatus="NEW";
+		//String currentStatus="NEW";
+		//String currentStatus="NEW";
+		recommendationList = recommendationService.getRecommendationsByCurrentState(currentStatus);
+		//assertEquals(recommendationList.size(), 1);
+		logger.info("Select All recommendation By Category");
+		for (Recommendation recomend : recommendationList) {
+			logger.info("recommendation Title  :" + recomend.getTitle()
+					+ "Description :" + recomend.getDescription());
+
+		}
+
 	}
 
 	/**
@@ -95,17 +137,20 @@ public class RecommendationTest {
 	 * {@link com.ziksana.dao.recommendations.RecommendationsDao#selectById(int)}
 	 * .
 	 * */
-	
-	@Test
+
+	@Ignore
 	public void testSelectById() {
-		List<Recommendation> actual = recommendationService.getRecommendations(1);
+		List<Recommendation> actual = recommendationService
+				.getRecommendations(1);
 
-		List<Recommendation> expected= recommendationService.getRecommendations(1);
+		List<Recommendation> expected = recommendationService
+				.getRecommendations(1);
 
-		/*assertNotNull(expected);
-		assertEquals(actual, expected);
-		assertNotSame(actual, expected);*/
-	} 
+		/*
+		 * assertNotNull(expected); assertEquals(actual, expected);
+		 * assertNotSame(actual, expected);
+		 */
+	}
 
 	/**
 	 * Test method for
@@ -114,19 +159,10 @@ public class RecommendationTest {
 	 * 
 	 * @throws Exception
 	 */
-	//@Test
+	@Test
 	public void testUpdate() throws Exception {
-
-		Recommendation actual = new Recommendation(2, "Title", "Description",
-				1, "currentState", "currentState", new Date(), 1, 1, 1);
-		/*Recommendation expected = recommendationService.getRecommendations(1);
-		expected.setCreationDate(new Date());
-		recommendationService.addToTodo(expected);
-		expected = recommendationService.getRecommendations(1);
-
-		assertNotNull(expected);
-		assertEquals(actual, expected);
-		assertNotSame(actual, expected);*/
+		recommendationService.updateRecommendationsCategoryById(1, 1000);
+		
 	}
 
 	/**
@@ -135,14 +171,15 @@ public class RecommendationTest {
 	 * 
 	 * @throws Exception
 	 */
-	@Test
+	@Ignore
 	public void testDelete() throws Exception {
 
 		// recommendationService.delete(1);
 
-		//Recommendation expected = recommendationService.getRecommendations(1);
+		// Recommendation expected =
+		// recommendationService.getRecommendations(1);
 
-		//assertNull(expected);
+		// assertNull(expected);
 	}
 
 }

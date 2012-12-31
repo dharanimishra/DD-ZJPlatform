@@ -4,13 +4,41 @@
 
 	<select id="getAnnouncement" resultMap="announcementResultMap"
 		parameterType="int">
-		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId}
+		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} 
 	</select>
+	<select id="getAnnouncementById" resultMap="announcementResultMap"
+		parameterType="map">
+		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} 
+	</select>
+	<select id="getAllAnnouncements" resultMap="announcementResultMap"
+		parameterType="int">
+		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} 
+	</select>
+	
+			<select id="getInstitutionAnnouncements" resultMap="announcementResultMap"  parameterType="map">
+				SELECT * FROM corannouncement WHERE 
+				InstitutionId is not null and 
+				MemberRoleId = #{memberRoleId} AND 
+				AnnouncementDate between  #{startDate}  and  #{endDate}
+				
+			</select>
+		
+			<select id="getInstitutionUnitAnnouncements" resultMap="announcementResultMap"
+				parameterType="map">
+				SELECT * FROM corannouncement WHERE InstitutionUnitId is not null and MemberRoleId = #{memberRoleId} AND AnnouncementDate between #{startDate} AND #{endDate}
+			</select>
+				
+			<select id="getCourseAnnouncements" resultMap="announcementResultMap"
+				parameterType="map">
+				SELECT * FROM corannouncement WHERE courseid is not null and MemberRoleId = #{memberRoleId} AND AnnouncementDate between #{startDate} AND #{endDate}
+			</select>
+			
 
 	<resultMap id="announcementResultMap" type="com.ziksana.domain.announcements.Announcement">
 		<result property="announcementId" column="AnnouncementId" />
 		<result property="announcementDate" column="AnnouncementDate" />
 		<result property="message" column="Message" />
+		<result property="description" column="description"/>
 		<result property="messageVisibility" column="MessageVisibility" />
 		<result property="validUntil" column="ValidUntil" />
 		<result property="memberRoleId" column="MemberRoleId" />

@@ -3,7 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" type="text/css" href="resources/css/masks.css" />
-
+<style>
+#question_info_message {padding: .5em; color: green; font-family: arial, sans-serif;}
+#question_buttons_container{display:table; width: 100%;}   
+#question_buttons_container > div{display:table-cell;}  
+</style>
 
 
               <div class="col-lft" >
@@ -197,7 +201,13 @@
 	   
 <c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
   <script type="text/javascript">
+  setInterval(function() {
+		
+
+	}, 500);
+  get_and_UnAnswered_questions();
   
+  function get_and_UnAnswered_questions(){
   currentQuestion = 0;
 $(document).ready(function() {
 	
@@ -229,6 +239,7 @@ $(document).ready(function() {
 				 				
 				 				options +=  $(this).text()+"/";
 				 				
+				 				
 				 			});
 				 			options = options.substring(0,options.length-1);
 				 			optionArray.push(options);
@@ -251,40 +262,49 @@ $(document).ready(function() {
 	
 });
 
-
+  }
 function displayUnAnsweredPairs(current){
 	var outputResult="";
 	outputResult+="<p class='titles-info font-Signika text-size-px18 light-gray'>Know me better</p>";
+	outputResult+="<div id='question_info_message'></div>";
 	outputResult+="<div id='quest'>";
 	outputResult+="<label style='display:none;' id='cur-qus-id'>"+questionIdArray[current]+"</label><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
 	outputResult+="<table width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
-	
-	outputResult+= "<tr><td ><input type='radio'  id='checked-val'  checked='checked' name='radiobtn' value='1'><label id='option-ans' for='option'>Yes</label></td></tr>";
-	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='2'><label id='option-ans' for='option'>No</label></td></tr>";
-	/* for(var i = 0 ; i < optionsList.length ; i++){
+
+	/* outputResult+= "<tr><td ><input type='radio'  id='checked-val'  checked='checked' name='radiobtn' value='1'><label id='option-ans' for='option'>Yes</label></td></tr>";
+	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='2'><label id='option-ans' for='option'>No</label></td></tr>"; */
+	 for(var i = 0; i < optionsList.length ; i++){
 		
-		
-		
-		outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='"+i+"'>" + "<label id='option-ans' for='option'>" + optionsList[i] + "</label></td></tr>";
-		}	 */
+			if(i==0){
+			outputResult+= "<tr><td ><label><input type='radio' checked  id='checked-val" + i + "'  name='radiobtn' value='"+i+"'>" + optionsList[i] + "</label></td></tr>";
+			} else {
+				outputResult+= "<tr><td ><label><input type='radio'  id='checked-val" + i + "'  name='radiobtn' value='"+i+"'>" + optionsList[i] + "</label></td></tr>";	
+			}
+		}	 
 	
 	outputResult+="</table>";
 	outputResult+="<br/>";
 	
 	
 
-	outputResult+="<button class='f-rt' id='knowme-save' onClick='submitValue()'>Submit</button>";
+		outputResult+="<button class='f-rt' id='knowme-save' onClick='submitValue()'>Submit</button>";
 	
 	  
-	   outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'><span class='text-pading-right'>More</span></span> <strong class='zinfo2 zicons ls f-r'></strong></a>";
+	   outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'><span class='text-pading-right'>More</span></span></a>";
 	
 		 
 	
 	
 	$('#knowme-ques').html(outputResult);
 }
+
+function selectFirstValue(val){
+	//alert(val);
+	
+}
+
 function nextquestion(){
 	//var cur=currentQuestion+1<questionArray.length-2?currentQuestion++:questionArray.lengt;
 	displayUnAnsweredPairs(++currentQuestion);
@@ -302,19 +322,21 @@ function submitValue(){
 	 
 	  $("input:checked").each(function(){ 
 		     testQuestionValue=$(this).val();
+		     alert()
 		     
-		     if(testQuestionValue == 1){
+		    /*  if(testQuestionValue == 1){
 				  memberAnswer = 'Yes';
 			  }else{
 				  memberAnswer= 'No';
 			  } 
-		     
+		      */
 		     $.post( '<c:url value='/secure/saveknowme'/>'
 				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':testQuestionId,'questionBankAnswerId':questionBankAnswerId}
 				        , function( data )
 				        {
 				        
-							alert("Answer Submitted Successfully");
+							//alert("Answer Submitted Successfully");
+							$('#question_info_message').html("Answer Submitted Successfully");
 							$("#knowme-save").attr('disabled','true');
 				        }
 						, 'xml' );  
@@ -341,10 +363,10 @@ function submitValue(){
   
   </div>
   
-  
+  <label o></label>
   <!-- recommendation zeni -->
  
-  <c:url var="showRecomendUrl" value="/secure/showrecByCateg/1" />
+  <c:url var="showRecomendUrl" value="/secure/getmapperrecomendations" />
   <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -394,7 +416,7 @@ $(document).ready(function() {
               
             </div>
             
-          			          
+         			          
       
           <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
           <c:url var="htmlUrl_profile2" value="/secure/zrecommendpopup" />

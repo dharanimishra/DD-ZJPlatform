@@ -200,7 +200,7 @@ $(document).ready(function() {
 	setInterval(function() {
 		get_and_populate_todo();
  
-	}, 30*1000);	
+	}, 1*30*1000);	
 	
 	get_and_populate_todo();
 	get_and_populate_alerts();

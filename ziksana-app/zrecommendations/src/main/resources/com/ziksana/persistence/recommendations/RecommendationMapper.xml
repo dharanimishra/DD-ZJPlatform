@@ -7,6 +7,18 @@
 		SELECT * FROM memmemberziksanarecommendation WHERE
 		RecommendationCategory = #{category}
 	</select>
+	
+	
+	<select id="getAllRecommendations" resultMap="recommendationResultMap">
+		
+		SELECT * FROM memmemberziksanarecommendation 
+	</select>
+	
+	<select id="getMapperRecommendation" resultMap="recommendationResultMap">
+		
+		SELECT * FROM memmemberziksanarecommendation order by creationdate  desc 
+	</select>
+	
 
 	<resultMap id="recommendationResultMap"
 		type="com.ziksana.domain.recommendations.Recommendation">
@@ -24,14 +36,18 @@
 
 	<select id="getRecommendationsByCurrentState" resultMap="recommendationResultMap"
 		parameterType="String">
-		SELECT * FROM memmemberziksanarecommendation n WHERE
+		SELECT * FROM memmemberziksanarecommendation WHERE
 		currentState = #{currentState} order by
 		creationDate desc
 	</select>
+	
+	<update id="updateRecommendationsCategoryById" parameterType="map">
+		update memmemberziksanarecommendation set RecommendationCategory = #{category} where MemziksanaRecommendationId = #{recommendationId}
+	
+	</update> 
 
-	<select id="getAllRecommendationsList" resultMap="recommendationResultMap"
-		parameterType="int">
-		SELECT * FROM memmemberziksanarecommendation n order by
+	<select id="getAllRecommendationsList" resultMap="recommendationResultMap">
+		SELECT * FROM memmemberziksanarecommendation order by
 		creationDate desc
 	</select>
 

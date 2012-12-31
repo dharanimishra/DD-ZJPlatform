@@ -31,7 +31,7 @@ public class KnowmeController {
 	PersonalityTestService personalityService;
 	
 	@RequestMapping(value = "/getansweredquestions", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getUnansweredQuestions() {
+	public @ResponseBody ModelAndView getansweredQuestions() {
 		
 		logger.info("Know me Better || getansweredQuestions()");
 		ModelAndView modelAndView = new ModelAndView("xml/answeredquestions");
@@ -42,7 +42,7 @@ public class KnowmeController {
 		 
 	}
 	@RequestMapping(value = "/getunansweredquestions", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getansweredQuestions() {
+	public @ResponseBody ModelAndView getUnansweredQuestions() {
 		
 		logger.info("Know me Better || getunansweredQuestions()");
 		ModelAndView modelAndView = new ModelAndView("xml/unansweredquestions");
