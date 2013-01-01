@@ -10,7 +10,10 @@ package com.ziksana.domain.course;
 public class Node {
 	
 	private Integer id;
+	
 	private Integer type;
+	
+	private Node parent;
 	
 	
 	public Integer getId() {
@@ -24,6 +27,12 @@ public class Node {
 	}
 	public void setType(Integer type) {
 		this.type = type;
+	}
+	public Node getParent() {
+		return parent;
+	}
+	public void setParent(Node parent) {
+		this.parent = parent;
 	}
 	
 	

@@ -19,6 +19,7 @@ import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionOption;
 import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollQuestionResult;
+import com.ziksana.domain.polls.PollResult;
 import com.ziksana.domain.polls.PollResultNQuestion;
 
 import com.ziksana.persistence.polls.PollMapper;
@@ -193,5 +194,22 @@ public class PollServiceImpl implements PollService {
 		pollQuestionOption.setIndex(index);
 		return pollQuestionOption;
 	}
+
+	@Override
+	public List<PollQuestionEntity> getAllPollQuestions() {
+		// TODO Auto-generated method stub
+		return pollQuestionMapper.getPollQuestions(Integer.valueOf(ThreadLocalUtil.getToken()
+						.getMemberPersonaId().getStorageID()));
+	}
+
+	@Override
+	public PollResult getPollResultByQuestion(Integer questionId) {
+		// TODO Auto-generated method stub
+		 return pollQuestionMapper.getPollResultByQuestion(questionId);
+	}
+	
+	
+	
+	
 
 }

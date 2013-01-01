@@ -127,14 +127,16 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		Integer learnCompId = null;
 		Integer learnCmpCntId = null;
 
+		
+		//This logic needs to be revisited based on the sbnsubscribernotes
 		if (node.getType() == 1000) {
 			learnCompId = node.getId();
 		} else if (node.getType() == 1001) {
 			learnCmpCntId = node.getId();
 		}
 		
-		List<Note> notes = subscriptionMapper.getContentByType(Integer.valueOf(course.getSubscriptionCourseId().getStorageID()), learnCompId,
-				  learnCmpCntId, Integer.valueOf(memberRoleId), node.getType());
+		List<Note> notes = subscriptionMapper.getContentByType(Integer.valueOf(course.getSubscriptionCourseId().getStorageID()), node.getParent().getId(),
+				  node.getId(), Integer.valueOf(memberRoleId), node.getType());
 		
 		
 		return notes;

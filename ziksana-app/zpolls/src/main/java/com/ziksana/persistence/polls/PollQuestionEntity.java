@@ -3,6 +3,8 @@
  */
 package com.ziksana.persistence.polls;
 
+import java.util.Date;
+
 import com.ziksana.domain.polls.Poll;
 
 /**
@@ -46,6 +48,8 @@ public class PollQuestionEntity {
 
     
     private String answer5;
+    
+    private Date pollDate;
 
     
     public Integer getID() {
@@ -182,6 +186,16 @@ public class PollQuestionEntity {
 		return String.format("The question is %s, answer1 is %s, answer2 is %s, " +
 				"answer3 is %s, answer4 is %s, answer5 is %s", 
 				questionText,answer1,answer2,answer3,answer4,answer5);
+	}
+
+
+	public Date getPollDate() {
+		return pollDate;
+	}
+
+
+	public void setPollDate(Date pollDate) {
+		this.pollDate = pollDate;
 	}   
  
 	

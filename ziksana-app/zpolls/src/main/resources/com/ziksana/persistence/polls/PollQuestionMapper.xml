@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.polls.PollQuestionMapper">
+
+	<select id="getPollResultByQuestion" resultMap="pollResultMap"
+		parameterType="int">
+
+		select (answer1count/totalrespondents)*100 as answer1 ,(answer2count/totalrespondents)*100 as answer2, (answer3count/totalrespondents)*100 as answer3, (answer4count/totalrespondents)*100 as answer4 ,(answer5count/totalrespondents)*100  as answer5 
+		from utlzpollquestionresponse where pollquestionid=#{questionId}
+
+
+
+
+	</select>
+	
+	
+	
+
+
+
+
+
+
+	<resultMap id="pollResultMap" type="com.ziksana.domain.polls.PollResult">
+		
+		<result property="answer1" column="Answer1" />
+		<result property="answer2" column="Answer2" />
+		<result property="answer3" column="Answer3" />
+		<result property="answer4" column="Answer4" />
+		<result property="answer5" column="Answer5" />
+		
+		<association property="question" javaType="com.ziksana.domain.polls.PollQuestion">
+			
+			<result property="ID" column="pollQuestionId" />
+			
+		</association>
+		
+		
+		
+		
+	</resultMap>
+	
+	
+	
+	
+	
+	
+</mapper>

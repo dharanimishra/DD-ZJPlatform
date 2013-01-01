@@ -12,7 +12,9 @@ import com.ziksana.domain.polls.Poll;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollQuestionResult;
+import com.ziksana.domain.polls.PollResult;
 import com.ziksana.domain.polls.PollResultNQuestion;
+import com.ziksana.persistence.polls.PollQuestionEntity;
 
 
 /**
@@ -30,6 +32,11 @@ public interface PollService {
 	public void  pollResponse(PollQuestionResponse pollResponse);
 	
 	public PollQuestionResult getPollResult( PollQuestion pollQuestion);
+	
+	public List<PollQuestionEntity>  getAllPollQuestions();
+	
+	
+	public PollResult getPollResultByQuestion(Integer questionId);
 	
     
 	

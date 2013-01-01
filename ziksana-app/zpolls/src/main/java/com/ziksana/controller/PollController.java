@@ -31,7 +31,44 @@ public class PollController {
 
 	@Autowired
 	private PollService pollService;
+	
+	/*
+	 * get poll questions
+	*/
+		
+	@RequestMapping(value = "/getallpollquestions", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getPollQuestions() {
 
+
+		ModelAndView modelView = new ModelAndView("xml/pollQuestionsList");
+		
+
+		modelView.addObject("pollQuestionsList",pollService.getAllPollQuestions());
+
+		
+		return modelView;
+	}
+	
+/*
+ * Poll Questions And Answers
+*/
+
+	@RequestMapping(value = "/getallpollquestionsanswers/{questionId}", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getPollQuestionsAndAnswers(@PathVariable Integer questionId) {
+
+
+		ModelAndView modelView = new ModelAndView("xml/pollQuestionsAnswersList");
+		
+
+		modelView.addObject("pollQuestionsAnswersList",pollService.getPollResultByQuestion(questionId));
+
+		
+		return modelView;
+	}
+	
+	
 	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
 	public @ResponseBody
 	List<PollQuestion> getPollQuestions(Integer memberRoleId) {
@@ -105,6 +142,16 @@ public class PollController {
 				+ " optionIndex " + optionIndex);
 		return modelView;
 
+	}
+	
+	@RequestMapping(value = "/getpollpopupwindow", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getPopupWindow() {
+		
+		ModelAndView modelAndView = new ModelAndView("common/pollResults");
+		
+
+		return modelAndView;
+		
 	}
 
 }

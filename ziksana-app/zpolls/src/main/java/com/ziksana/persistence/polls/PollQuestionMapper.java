@@ -2,6 +2,7 @@ package com.ziksana.persistence.polls;
 
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionResult;
+import com.ziksana.domain.polls.PollResult;
 
 
 import java.util.List;
@@ -169,6 +170,7 @@ public interface PollQuestionMapper {
 		"ID,", 
 		"QuestionType,",
 		"QuestionText,",
+		"pollDate,",
 		"Answer1,",
 		"Answer2,",
 		"Answer3,",
@@ -183,6 +185,7 @@ public interface PollQuestionMapper {
 	List<PollQuestionEntity> getPollQuestions(Integer userMemberRoleId);
 	
 	
+	PollResult getPollResultByQuestion(Integer questionId);
 	
 	
 

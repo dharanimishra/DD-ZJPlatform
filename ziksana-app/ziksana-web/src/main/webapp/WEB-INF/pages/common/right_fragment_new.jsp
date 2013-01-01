@@ -117,6 +117,10 @@ $(document).ready(function() {
 						 			output+="<div id='result" + index + "' class='pollresult'>"+result+"<button  id='"+ index + "' style='float:right;' class='btnnext'>Next &rarr;</button><button  class='btnprev' id='"+ index + "' >&larr; Prev</button></div></div>";
 						 		};
 					 		}
+							
+							//finding the size ..based on showing the next button 
+							
+							
 
 							console.log("poll output string" + output);
 					});
@@ -332,7 +336,10 @@ $(document).ready(function() {
                   
                    <div class="col-right-container for-rounded-box all-box-shadow">
                   		<div id="poll_placeholder"></div>
-                  		
+                  		<p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
+          <c:url var="getpollpopup" value="/secure/getpollpopupwindow" />
+            <span><a class="text-size-px11  lbx-70-50" href="${getpollpopup}" class="" style="color: #27b;">More..</a></span>
+          </p>
                    </div>
                   
                   <div class="col-right-container for-rounded-box all-box-shadow">
@@ -344,12 +351,12 @@ $(document).ready(function() {
               
             </div>
             
-          			          
+          	 <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
+			          <c:url var="showannounpopup" value="/secure/showannouncementpopup" />
+			            <span><a class="text-size-px11  lbx-70-50" href="${showannounpopup}" class="" style="color: #27b;">More..</a></span>
+			          </p>		          
       
-          <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
-          <c:url var="showannounpopup" value="/secure/showannouncementpopup" />
-            <span><a class="text-size-px11  lbx-70-50" href="${showannounpopup}" class="" style="color: #27b;">More..</a></span>
-          </p>
+          
         </div>
         </div>             
 

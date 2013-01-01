@@ -61,6 +61,10 @@ public class SubscriptionServiceImplTest {
 		Node node = new Node();
 		node.setId(1);
 		node.setType(1000);
+		Node parent = new Node();
+		parent.setId(1001);
+		node.setParent(parent);
+
 		List<Note> notes = subscriptionService.getLearnerContent(course, node);
 		assertNotNull(notes);
 
@@ -76,7 +80,8 @@ public class SubscriptionServiceImplTest {
 		node.setType(1000);
 
 		// TODO
-		List<Note> notes = subscriptionService.getEducatorContent(course, node, 1);
+		List<Note> notes = subscriptionService.getEducatorContent(course, node,
+				1);
 		assertNotNull(notes);
 
 		assertTrue(notes.size() == 0);
@@ -86,13 +91,13 @@ public class SubscriptionServiceImplTest {
 	@Test
 	public void testAddLearnerContent() {
 		String noteText = "test note";
-		//Note note = new Note();
-		//note.setContent(noteText);
-		
+		// Note note = new Note();
+		// note.setContent(noteText);
+
 		Node node = new Node();
-        node.setType(1000);
-        node.setId(1000);
-		
+		node.setType(1000);
+		node.setId(1000);
+
 		subscriptionService.addLearnerContent(noteText, node);
 
 	}
