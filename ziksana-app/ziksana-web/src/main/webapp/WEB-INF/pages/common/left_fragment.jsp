@@ -233,17 +233,18 @@ $(document).ready(function() {
 						questionIdArray.push($(this).find("questiobankid").text());
 						
 						var options = "";
+						var optionIndex= "";
 				 		$(this).find("options").each(function(){
 				 			
 				 			$(this).find("option").each(function(){
 				 				
 				 				options +=  $(this).text()+"/";
-				 				
+				 				//optionIndex += $(this).find(index).val()+"/";
 				 				
 				 			});
 				 			options = options.substring(0,options.length-1);
 				 			optionArray.push(options);
-				 				
+				 			//optionIndexArray.push(optionIndex);	
 				 			
 				 		});
 				 		
@@ -253,6 +254,7 @@ $(document).ready(function() {
 					console.log("unanswered array: ==> " + questionArray);
 					console.log("option array==>"+  optionArray);
 					console.log("memberPersonalitytestId==>"+memberPersonalitytestId);
+					console.log("option array index"+optionIndexArray);
 				
 					displayUnAnsweredPairs(0);		
 					
@@ -280,7 +282,7 @@ function displayUnAnsweredPairs(current){
 			if(i==0){
 			outputResult+= "<tr><td ><label><input type='radio' checked  id='checked-val" + i + "'  name='radiobtn' value='"+i+"'>" + optionsList[i] + "</label></td></tr>";
 			} else {
-				outputResult+= "<tr><td ><label><input type='radio'  id='checked-val" + i + "'  name='radiobtn' value='"+i+"'>" + optionsList[i] + "</label></td></tr>";	
+			outputResult+= "<tr><td ><label><input type='radio'  id='checked-val" + i + "'  name='radiobtn' value='"+i+"'>" + optionsList[i] + "</label></td></tr>";	
 			}
 		}	 
 	
@@ -322,7 +324,7 @@ function submitValue(){
 	 
 	  $("input:checked").each(function(){ 
 		     testQuestionValue=$(this).val();
-		     alert()
+		     //alert()
 		     
 		    /*  if(testQuestionValue == 1){
 				  memberAnswer = 'Yes';

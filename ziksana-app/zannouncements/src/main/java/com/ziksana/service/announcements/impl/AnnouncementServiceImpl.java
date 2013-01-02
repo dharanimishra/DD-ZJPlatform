@@ -196,5 +196,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		return announcementMapper.getAnnouncementById(memberRoleId, anouncementId);
 	}
 
+	
+
 }
 

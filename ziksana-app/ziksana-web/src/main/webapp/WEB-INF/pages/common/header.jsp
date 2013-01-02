@@ -1,14 +1,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       <header class="bottom-box-shadow bckground-wihte">
+	  <p></P>
             	<div class="topheader"> 
           <!--logo container-->
-          <div class="logo">
-          	<c:url var="imageUrl_header1" value="/resources/images/logo.jpg" />
-            <p><a href="index.html"><img src="${imageUrl_header1}" width="189" height="73"></a></p>
+         
+          	<c:url var="imageUrl_header1" value="/resources/images/ziksana_button_logo.png" />
             
-          </div>
+            <p><a><img data-launcher src="${imageUrl_header1}" width=120px height=120px style="position: absolute;top:3px;  left:30px; margin-left:0px;  "/></a></p>
+        	<header class="bottom-box-shadow bckground-wihte">
+			
+         
           <!--end logo container-->
-          <div class="status-container">
+         
+        </div>
+            <nav>
+                <!--menu-->
+                    <div class="menu" >
+                      <ul>
+                        <li><a href="educatorHomepage.html" class="current">My Home</a><div class="nav-line"></div></li>
+                        <li><a href="myprograms.html">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
+                        <li><a href="#" style="margin-left:-10px;">My Locker</a></li>
+                      </ul>
+                    </div>
+                    <!--End menu-->
+       	   	  		 <div class="status-container">
             <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box">
               <ul>
                 <li><a href="#" class="email-icon" rel="tipsy" title="3 New emails"><span class="wite-title">3</span></a></li>
@@ -30,49 +46,6 @@
               </div>
             </div>
           </div>
-        </div>
-            <nav>
-                <!--menu-->
-                    <div class="menu">
-                      <ul>
-                        <li><a href="" class="current">My Home</a><div class="nav-line"></div></li>
-                        <li><a href="myprogram">My Programs</a><div class="nav-line"></div></li>
-                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
-                        <li><a href="#">My Locker</a></li>
-                      </ul>
-                    </div>
-                    <!--End menu-->
-       	   	  		<div class="searchpanel">
-       	   	  		 <div>
-                      <form id="ui_element" class="sb_wrapper">
-                       <span class="sb_down"></span>
-                   <input type="text" name="search" id="search" placeholder="Search..." title="Search..." autosave="unique" class="two-left-rounded-box two-right-rounded-box">
-   	   	  		        <input id="submit" type="submit" value="Submit">
-                         
-                     <ul class="sb_dropdown" style="display:none;">
-						<li class="sb_filter">Filter your search</li>
-						<li><input type="checkbox"/><label for="all"><strong>All Categories</strong></label></li>
-						<li><input type="checkbox"/><label for="Automotive">Students</label></li>
-						<li><input type="checkbox"/><label for="Baby">Locker</label></li>
-						<li><input type="checkbox"/><label for="Beauty">Program</label></li>
-                       <!-- <p>
-                        </p>
-                        <p>
-						<li><input type="checkbox"/><label for="all"><strong>All Categories</strong></label></li>
-						<li><input type="checkbox"/><label for="Automotive">Filter by Area</label></li>
-						<li><input type="checkbox"/><label for="Baby">Filter by Subject</label></li>
-						<li><input type="checkbox"/><label for="Beauty">Filter by Topic</label></li>
-                        </p> -->
-					</ul>
-       	   	  		  </form>
-              </div>
-       	   	  		</div>
-   	   	  	  		<div class="searchoptions">
-                   	  <ul>
-                   	    <li class="srch-op-a"><a href="#" rel="tipsy" title="Help"></a></li>
-                   	    <li class="srch-op-b"><a href="#" rel="tipsy" title="Information"></a></li>
-                    	<li class="srch-op-c"><a href="#" rel="tipsy" title="Zeni"></a></li>
-                  	  </ul>
-   	   	  	  		</div>
+   	   	  	  		
                     </nav>
      </header>

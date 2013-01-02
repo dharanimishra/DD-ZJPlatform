@@ -3,10 +3,10 @@
 <div class="slogen-container">
 	<span class="text-size-px20 gray-777 bold font-Signika">Welcome back ${firstname}.<br>
 	<c:url var="htmlUrl_header1" value="/resources/popup/z-zini.html" /> 
-	A few <span><a href="${htmlUrl_header1}"
+	<%-- A few <span><a href="${htmlUrl_header1}"
 			class=" text-size-px20 font-Signika">recommendations</a></span> for you to
 		save time and meet your goals today
-	</span>
+	</span> --%>
 	<c:url var="createlink" value="/secure/createcourse" />
 	<div class="f-r">
 		<strong class="text-size-px16 light-gray">

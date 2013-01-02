@@ -23,6 +23,7 @@
 <script type="text/javascript" src="../resources/js/jquery.js"></script>
 <script type="text/javascript" src="../resources/js/zGroup.js"></script>
 <script type="text/javascript" src="../resources/js/tablerow.js"></script>
+<script type="text/javascript" src="../resources/js/date.js"></script>
 <!--<script src="js/isotope/jquery-1.7.2.min.js"></script>-->
 <script type="text/javascript" src="../resources/js/jquery-1.8.0.min.js"></script>
 		<script type="text/javascript" src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -34,12 +35,26 @@
 			});
 	
 			
-function closeit()
-{
-$.fancybox.close();
-}	
+		function closeit()
+		{
+		$.fancybox.close();
+		}	
+		function showdate()
+		{
+		var today = Date.today().toString('dd/MM/yyyy');
+		
+		document.getElementById("endDate").value=today;
+		}
+		function showenddate()
+		{
+		var today = new Date();
+		var last_week = Date.prev().week().toString('dd/MM/yyyy');
+		var last_month = Date.prev().month();
+		
+		document.getElementById("startDate").value=last_week;
+		}	
 			
-		</script>
+</script>
 
 <!-- Announcement  -->
 <c:url var="getInstitutionAnnouncementUrl" value='/secure/getinstitutionannouncements'/>
@@ -267,7 +282,7 @@ function getCategoryByBetweenDates(){
 }
 </script>
  
-<body>
+<body onload="showdate(),showenddate()">
 
 <div class="zannouncementwrapper">
 	<!-- Main container -->
@@ -277,10 +292,10 @@ function getCategoryByBetweenDates(){
         	Help text describing the page
         </div>
         <div id="error">
-        	<span id="_required">Enter a date *</span>
+        	<!-- <span id="_required">Enter a date *</span> -->
         </div>
         <div id="contentGroup">
-        	<select name="zCategory"  id="zCategory">
+        	Category:<select name="zCategory"  id="zCategory" style="display:inline;width:100px;">
                      <option selected="selected" value="All">All</option>
                      <option value="University">University</option> 
                       <option value="Department">Department</option> 
@@ -290,12 +305,12 @@ function getCategoryByBetweenDates(){
         	
                     <label value="Period" style="display:inline;">Start Period</label> 
              
-            <input type="text" id="startDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
+            <input type="text" id="startDate" class="datepicker" style="display:inline;width:80px;" title="Date Required" value="Value (Date)"/> 
             
                     <label value="endDate" style="display:inline;">End Period</label> 
                                   
              
-			  <input type="text" id="endDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
+			  <input type="text" id="endDate" style="display:inline;width:80px;" class="datepicker" title="Date Required" value="Value (Date)"/> 
             <a id="_go" onCLick=getCategoryByBetweenDates() class="aClass">Go</a>
         
 		</div>
@@ -327,7 +342,7 @@ function getCategoryByBetweenDates(){
 	<!-- mousewheel plugin -->
 	<script src="../resources/js/scrollbar/jquery.mousewheel.min.js"></script>
 	<!-- custom scrollbars plugin -->
-	<script src="../resources/js/scrollbar/jquery.mCustomScrollbar.js"></script>
+	<!-- <script src="../resources/js/scrollbar/jquery.mCustomScrollbar.js"></script>
 	<script>
 		(function($){
 			$(window).load(function(){
@@ -338,7 +353,7 @@ function getCategoryByBetweenDates(){
 				});
 			});
 		})(jQuery);
-	</script> 
+	</script>  -->
                <!-- end tblGroup -->
             </div>
              <!-- end tblGroup -->

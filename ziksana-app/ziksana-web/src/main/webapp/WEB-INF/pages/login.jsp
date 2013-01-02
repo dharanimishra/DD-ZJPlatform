@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta>
+<meta http-equiv="Content-Type" content="text/html"/>
 <title>Login</title>
 
 <!--Body Style sheet-->
@@ -266,9 +266,9 @@
 
 </head>
 <c:url var="ziksanalogo" value="/resources/images/Ziksana.jpg" />
-<c:url var="onelogo" value="/resources/images/slider/1.png" />
-<c:url var="logotwo" value="/resources/images/slider/2.png" />
-<c:url var="threelogo" value="/resources/images/slider/3.png" />
+<c:url var="onelogo" value="/resources/images/slider/new1.png" />
+<c:url var="logotwo" value="/resources/images/slider/new2.png" />
+<c:url var="threelogo" value="/resources/images/slider/new3.png" />
 <c:url var="fourlogo" value="/resources/images/slider/4.png" />
 <body style="background-image: none;">
 
@@ -312,7 +312,7 @@ box-shadow: 1px 2px 5px #000000;"/>
 							<img src="${threelogo}" alt="image01" />
 						</div>
 					</div>
-					<div class="da-slide">
+					<!-- <div class="da-slide">
 						<h2>Your College. Your Future.</h2>
 						<p>High achievers spot rich opportunities swiftly, make big
 							decisions quickly and move into action immediately. Follow these
@@ -321,7 +321,7 @@ box-shadow: 1px 2px 5px #000000;"/>
 						<div class="da-img">
 							<img src="${fourlogo}" alt="image01" />
 						</div>
-					</div>
+					</div> -->
 					<div class="da-slide">
 						<h2>A foundation for life</h2>
 						<p>To accomplish great things, we must not only act, but also

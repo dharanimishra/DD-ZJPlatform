@@ -6,10 +6,12 @@
 		parameterType="int">
 		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} 
 	</select>
+		
 	<select id="getAnnouncementById" resultMap="announcementResultMap"
 		parameterType="map">
-		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} 
+		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} and #{announcementId}
 	</select>
+	
 	<select id="getAllAnnouncements" resultMap="announcementResultMap"
 		parameterType="int">
 		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} 
@@ -35,7 +37,7 @@
 			
 
 	<resultMap id="announcementResultMap" type="com.ziksana.domain.announcements.Announcement">
-		<result property="announcementId" column="AnnouncementId" />
+		<result property="announcementId" column="anouncementId" />
 		<result property="announcementDate" column="AnnouncementDate" />
 		<result property="message" column="Message" />
 		<result property="description" column="description"/>

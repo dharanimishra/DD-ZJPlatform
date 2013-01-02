@@ -7,6 +7,8 @@ pageEncoding="ISO-8859-1"%>
 <head>
 <title>Alerts</title>
 <!--Body Style sheet-->
+  <link rel="stylesheet" href="../resources/css/zCss.css" type="text/css"/>
+ <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" type="text/css"/>
  <link rel="stylesheet" type="text/css" href="../css/dropdown.css" />
 <link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
@@ -27,6 +29,7 @@ pageEncoding="ISO-8859-1"%>
 <script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
 <script src="../resources/js/ui/jquery.ui.tabs.js"></script>
  <script src="../resources/js/jquery.hovercard.js"></script>
+ 
  <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
   <!--fancybox-->
 <script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
@@ -109,7 +112,7 @@ parent.jQuery.fancybox.close();
 				}
 				var output="";
 					output+="<div class='alerts' style='width: 100%; height: 100%;'>";
-					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
+					output+="<div class='helptext'>Alerts</div>";
 					$(data).find("alertitem").each(function(index){
 						
 						
@@ -183,10 +186,10 @@ parent.jQuery.fancybox.close();
 	</script>
 	<div  class="alert_todo" style="margin-left:70px;" >
 	 
-	                   		<div id= "alertplaceholder"  class="alerts" >
-	        				 <span class="titles-info font-Signika text-size-px18 light-gray">Alerts</span>
+	                   		 <div id= "alertplaceholder" style="width:600px;" class="alerts" >
+	        				 
 	                  
-	                        </div> <!--end of alert-->
+	                        </div> 
 	                        
 	                        </div>
 	</body>

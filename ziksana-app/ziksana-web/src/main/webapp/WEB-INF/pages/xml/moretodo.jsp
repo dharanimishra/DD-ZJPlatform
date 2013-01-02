@@ -16,6 +16,8 @@
 	 <script src="../resources/js/ui/jquery.ui.tabs.js"></script>
      <script src="../resources/js/jquery.hovercard.js"></script>
      <script src="../resources/js/todo.js" type="text/javascript"></script> 
+      <link rel="stylesheet" href="../resources/css/zCss.css" type="text/css"/>
+	 <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" type="text/css"/>
      <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
 <html>
 <head>
@@ -216,10 +218,13 @@ function capitalize(s){
 </script>
  <!-- End -->
 <title>Todo List</title>
-<body>
-<div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div>
+<body bgcolor="#ffffff">
+<!-- <div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div> -->
+<div class="helptext">
+        	My To Do's
+        </div>
 <hr/>
-<div id = "todo_form_container" class="addtodo" style=" width:650px; background-color:#eeeeee;">
+<div id = "todo_form_container" class="addtodo" style=" width:650px; background-color:#ffffff;">
 
 
 <div id="add_todo_fields_container" style="display:none;">

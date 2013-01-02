@@ -14,6 +14,8 @@ import com.ziksana.domain.announcements.Announcement;
  */
 public interface AnnouncementService {
 	public List<Announcement> getAllAnnouncement(int memberRoleId);
+	
+	
 
 	public List<Announcement> getAnnouncement(int memberRoleId);
 

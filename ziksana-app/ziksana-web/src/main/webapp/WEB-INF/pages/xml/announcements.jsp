@@ -7,7 +7,7 @@
 <announcementsList>
 	<c:forEach var="announce" items="${announcements}"> 
 		<announcements memberRoleId="${memberRoleId}">
-			
+			<announcementid>${announce.announcementId}</announcementid>
 			<message>${announce.message}</message>
 			<validUntil>${announce.validUntil}</validUntil>
 		</announcements> 

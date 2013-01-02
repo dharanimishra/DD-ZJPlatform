@@ -121,13 +121,13 @@ function displayUnAnsweredPairs(current){
 	if(current!=0){
 		outputResult+="<div><input type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
 	}else{
-		outputResult+="<div><input disabled='disabled' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
+		outputResult+="<div><input  style='display: none;' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
 	}
 	outputResult+="<div><input type='submit' id='submit_question_button' onClick='submitValue()' value='Submit'/></div>";
 	if(current!=questionArray.length-1){
 	outputResult+="<div><input  type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
 	} else {
-	outputResult+="<div><input disabled='disabled' type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
+	outputResult+="<div><input style='display: none;' type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
 	}
 	
 	outputResult+='</div>';	
@@ -343,17 +343,17 @@ $(document).ready(function() {
 function answeredQuestionDisplay(){
 	var outputResult="";
 	outputResult+="<table id='updateTable' value='hide' class='quest-table' border=1>";
-	outputResult+="<tr><th  width='200px'>&nbsp;&nbsp;&nbsp;Questions</th>";
-	outputResult+="<th  width='120px'>Answered Date</th></tr>";
+	outputResult+="<tr style='background-color:grey;'><th width='200px' style='color:#fff;'>&nbsp;&nbsp;&nbsp;QUESTIONS</th>";
+	outputResult+="<th  width='200px' style='color:#fff;'>ANSWERED DATE</th></tr>";
 	
-	outputResult+="<form action=''><tr>";
+	
 	for(var i = 0; i<answeredQuestion.length;i++){
-		outputResult+="<tr><td width='200px'><a  style='text-decoration:none; margin-left:0px;' href='#' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label></td><td ><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td></tr>";
-		//outputResult+="<tr><td><a  style='text-decoration:none;' href='#' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td><td><label  id='questionAnswer"+i+"'>"+answerDate[i]+"</label></td><td></tr>";
+		outputResult+="<tr><td width='200px'><a  style='text-decoration:none; margin-left:0px;' href='#' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td></tr>";
+		//outputResult+="<tr><td><a  style='text-decoration:none;' href='#' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td><td><label  id='questionAnswer"+i+"'>"+answerDate[i]+"</label></td></tr>";
 		}
 	
 	
-	outputResult+="<tr></table>";
+	outputResult+="</table>";
 	outputResult+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#answered_question_form_container\").show();'>Details</a>";
 	$('#answer-display').html(outputResult);
 }
@@ -363,7 +363,7 @@ function displayAnsweredQuestionContainer(loop){
 	 var outputAns = "";
 	 editQuestion = $('#questionUpdate'+loop+'').text();
 	 editChoice = $('#questionAnswer'+loop+'').text();
-	 alert(editChoice);
+	 //alert(editChoice);
 	
 	outputAns+="<div style='display:none;' id='answered_question_form_container'>";
 	outputAns+="<br/></br><u><p>View or update the Answer:</p></u>";
@@ -422,6 +422,7 @@ function updateValues(){
 			    </td>
 			    
 			  </tr>
+			  
 			</table>
 
 </body>

@@ -50,7 +50,7 @@ public class AnnouncementsController {
 	public @ResponseBody ModelAndView getAnnouncementByAnnouncementId(@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
 			@RequestParam(value = "anouncementId", required = true) int anouncementId) {
 		
-		ModelAndView mav = new ModelAndView("xml/announcement");
+		ModelAndView mav = new ModelAndView("common/announcementsinglepage");
 		
 		mav.addObject("announcement", announcementService.getAnnouncementById(memberRoleId, anouncementId));
 		
@@ -62,7 +62,7 @@ public class AnnouncementsController {
 	/**
 	 * Retrive announcement to display 
 	 */
-	@RequestMapping(value = "/showannouncementbyid/{memberRoleId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getannouncement/{memberRoleId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView getAnnouncementById(@PathVariable Integer memberRoleId) {
 		
 		ModelAndView mav = new ModelAndView("xml/announcements");
@@ -72,6 +72,21 @@ public class AnnouncementsController {
 		logger.info("announcement ID: " + memberRoleId);
 		return mav;
 	}
+	
+	/**
+	 * Retrive announcement to display 
+	 */
+	@RequestMapping(value = "/showannouncementbyid/{memberRoleId}/{announcementId}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getAnnouncementByAnnouncementId(@PathVariable Integer memberRoleId, @PathVariable Integer announcementId) {
+		
+		ModelAndView mav = new ModelAndView("xml/announcement");
+		
+		mav.addObject("announcements", announcementService.getAnnouncementById(memberRoleId, announcementId));
+		
+		logger.info("announcement ID: " + memberRoleId);
+		return mav;
+	}
+	
 	/*Get popup Alert window
 	 * */	
 	@RequestMapping(value = "/showannouncementpopup", method = RequestMethod.GET)
