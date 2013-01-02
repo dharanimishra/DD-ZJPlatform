@@ -112,9 +112,7 @@ public class Note {
 	
 	
 	
-	
-	
-	
+		
 
 	
 	

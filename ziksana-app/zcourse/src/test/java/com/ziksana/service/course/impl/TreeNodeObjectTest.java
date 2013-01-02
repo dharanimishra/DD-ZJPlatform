@@ -27,7 +27,7 @@ public class TreeNodeObjectTest extends BaseTest {
 		Integer courseId = 100;
 
 		System.out.print(" list :");
-		List<TreeNode> list = courseTreeNodeService.getTreeComponents(courseId);
+		List<TreeNode> list = courseTreeNodeService.getParentTreeComponents(courseId);
 		System.out.print(" list :" + list.size());
 
 		for (TreeNode node : list) {

@@ -36,8 +36,9 @@ public interface CourseTreeNodeService {
 	LearningContent getLearningContent(Integer learningContentId);
 
 	List<LearningContentParts> getLearningContentParts(Integer learningContentId);
-	
 
-	List<TreeNode> getTreeComponents(Integer courseId) throws CourseException;
+	List<TreeNode> getParentTreeComponents(Integer courseId);
+
+	List<TreeNode> getTreeContentComponents(Integer courseId);
 
 }

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
@@ -80,7 +81,7 @@ public class SubscriptionServiceImplTest {
 		node.setType(1000);
 
 		// TODO
-		List<Note> notes = subscriptionService.getEducatorContent(course, node,
+		List<EducatorNote> notes = subscriptionService.getEducatorContent(course, node,
 				1);
 		assertNotNull(notes);
 

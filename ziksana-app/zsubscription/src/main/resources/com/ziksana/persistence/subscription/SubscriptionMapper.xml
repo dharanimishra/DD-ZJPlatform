@@ -23,8 +23,11 @@
 		parameterType="map">
 
 
+		
+		
+		
 		select
-		cntenr.ContentEnrichmentId as SubcribeNotesId,
+		cntenr.LinkElement,
 		cntenr.LinkDescription as NotesContent
 
 		from
@@ -32,21 +35,19 @@
 		JOIN
 		corenrichment enr ON
 		cntenr.enrichmentid= enr.enrichmentId
-		JOIN
-		corcurriculumcourse cur ON
-		enr.CourseId=cur.CourseId
-		JOIN
-		sbnsubscriptioncourse subcourse ON
-		cur.CurriculumCourseId=subcourse.CurriculumCourseId
-		JOIN
-		sbnmembersubscriptionprogram program on
-		program.MemSubscriptionProgId=subcourse.MemSubscriptionProgId
+		
 		where
-		cntenr.LinkType = #{contentType} and
-		subcourse.SubscriptionCourseId=#{subscrCourseId} and
-		program.MemberRoleId=#{memberRoleId} and
+		cntenr.LinkType = 8
+		<if test="subscrCourseId != null">
+		AND enr.CourseId=#{subscrCourseId} 
+		</if>
+		and 
 		enr.LearningComponentId=#{learnCompId} and 
 		enr.LearningContentId=#{learnCmpContId}
+		
+		
+		
+		
 
 	</select>
 
@@ -98,10 +99,10 @@
 
 
 
-	<resultMap id="notesResultMap" type="com.ziksana.domain.course.subscription.Note">
+	<resultMap id="notesResultMap" type="com.ziksana.domain.course.EducatorNote">
 
-		<result property="id" column="SubcribeNotesId" />
-		<result property="content" column="NotesContent" />
+		<result property="title" column="LinkElement" />
+		<result property="description" column="NotesContent" />
 
 	</resultMap>
 

@@ -1,6 +1,8 @@
 package com.ziksana.controller.course;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,11 +31,11 @@ public class CourseTreeNodeController {
 	@Autowired
 	CourseTreeNodeService courseTreeNodeService;
 
-	@RequestMapping(value = "/coursetreenode", method = RequestMethod.GET)
+	@RequestMapping(value = "/course", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showCourseTreeNode() {
 		LOGGER.info("Entering Class " + getClass() + " showCourseTreeNode()");
-		ModelAndView mv = new ModelAndView("courses/createcourses");
+		ModelAndView mv = new ModelAndView("courses/course");
 		LOGGER.info("Exiting Class " + getClass() + " showCourseTreeNode(): ");
 
 		return mv;
@@ -41,11 +43,16 @@ public class CourseTreeNodeController {
 
 	@RequestMapping(value = "/getcoursetree/{courseId}", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView showMyTreenode(@PathVariable String courseId) throws CourseException {
+	ModelAndView showMyTreenode(@PathVariable String courseId)
+			throws CourseException {
 		LOGGER.info("Entering showMyTreenode(): " + courseId);
 		Integer courseIds = 0;
-		String courseIdValue="";
+		String courseIdValue = "";
 		String coursename = "";
+		String parentIcon="../resources/images/tree_icons/chapter.png";
+		String docIcon="../resources/images/tree_icons/pdf.png";
+		String videoIcon="../resources/images/tree_icons/video.png";
+		String audioIcon="../resources/images/tree_icons/audio.png";
 		try {
 			courseIds = Integer.parseInt(courseId);
 			LOGGER.info("Exiting showMyTreenode():  courseIds :" + courseIds);
@@ -57,17 +64,26 @@ public class CourseTreeNodeController {
 					+ nfe.getMessage());
 		}
 		List<TreeNode> treeNodeList = courseTreeNodeService
-				.getTreeComponents(courseIds);
+				.getParentTreeComponents(courseIds);
+
+		List<TreeNode> childtreeNodeList = courseTreeNodeService
+				.getTreeContentComponents(courseIds);
 
 		for (TreeNode node : treeNodeList) {
-			courseIdValue =node.getCourseId().toString();
+			courseIdValue = node.getCourseId().toString();
 			coursename = node.getCoursename();
 		}
+	
 		ModelAndView modelView = new ModelAndView("xml/treenode");
 
-		modelView.addObject("courseIds",courseIdValue);
+		modelView.addObject("courseIds", courseIdValue);
 		modelView.addObject("coursename", coursename);
+		modelView.addObject("parentIcon", parentIcon);
+		modelView.addObject("docIcon", docIcon);
+		modelView.addObject("videoIcon", videoIcon);
+		modelView.addObject("audioIcon", audioIcon);
 		modelView.addObject("treeList", treeNodeList);
+		modelView.addObject("childtreeList", childtreeNodeList);
 
 		LOGGER.info("Exiting showMyTreenode(): " + courseId);
 		return modelView;

@@ -6,7 +6,9 @@ package com.ziksana.service.subscription.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
@@ -20,6 +22,7 @@ import com.ziksana.service.subscription.SubscriptionService;
  * @author prabu
  * 
  */
+@Service
 public class SubscriptionServiceImpl implements SubscriptionService {
 
 	@Autowired
@@ -41,7 +44,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	}
 
 	@Override
-	public List<Note> getEducatorContent(SubscriptionCourse course, Node node,
+	public List<EducatorNote> getEducatorContent(SubscriptionCourse course, Node node,
 			Integer contentType) {
 		// TODO Auto-generated method stub
 
@@ -56,11 +59,18 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		} else if (node.getType() == 1001) {
 			learnCompCntId = node.getId();
 		}
+		
+		Integer courseId = null;
+		
+		if (course != null)
+		{
+			 courseId = Integer.valueOf(course
+						.getSubscriptionCourseId().getStorageID());
+		}
 
 		// TODO
-		return subscriptionMapper.getEducatorNotes(1, Integer
-				.valueOf(memberRoleId), Integer.valueOf(course
-				.getSubscriptionCourseId().getStorageID()), learnCompId,
+		return subscriptionMapper.getEducatorNotes(contentType, Integer
+				.valueOf(memberRoleId), courseId, learnCompId,
 				learnCompCntId);
 	}
 
@@ -140,6 +150,29 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		
 		
 		return notes;
+	}
+
+	@Override
+	public List<EducatorNote> getEducatorNotes(Integer courseId, Node node) {
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+
+		
+		
+		// TODO
+		return subscriptionMapper.getEducatorNotes(8, Integer
+				.valueOf(memberRoleId), courseId, node.getParent().getId(),
+				node.getId());
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Reference> getEducatorSuggestedReferences(
+			SubscriptionCourse course, Node node) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
