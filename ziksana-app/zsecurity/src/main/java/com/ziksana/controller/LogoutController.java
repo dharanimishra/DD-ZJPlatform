@@ -49,7 +49,7 @@ public class LogoutController {
 			
 		}
 		
-		ModelAndView modelAndView = new ModelAndView("login");
+		ModelAndView modelAndView = new ModelAndView("redirect:/secure/home2");
 		
 		
 		return modelAndView;

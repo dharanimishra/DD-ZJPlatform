@@ -1,40 +1,48 @@
-<!DOCTYPE HTML>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
 <meta>
 <meta http-equiv="Content-Type" content="text/html"  />
-<title>Login</title>
+<title>Launcher</title>
 
-<!--Body Style sheet-->
+
 <link href="resources/css/styles.css" rel="stylesheet" type="text/css">
 <link href="resources/css/type-setting.css" rel="stylesheet" type="text/css">
 <link href="resources/css/effects.css" rel="stylesheet" type="text/css">
 <link href="resources/css/nav.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="resources/css/jquery.fancybox.2.1.3.css"/>
 
-<!--End Body Style sheet-->
-
-<!--<link rel="stylesheet" type="text/css" href="resources/css/easyslider/demo.css" />-->
 <link rel="stylesheet" type="text/css" href="resources/css/easyslider/style2.css" />
 <link
 	href='http://fonts.googleapis.com/css?family=Economica:700,400italic'
 	rel='stylesheet' type='text/css'>
-<noscript>
-	<link rel="stylesheet" type="text/css" href="resources/css/easyslider/nojs.css" />
-</noscript>
-<script type="text/javascript"
-	src="resources/js/easyslider/modernizr.custom.28468.js"></script>
+
+
 <script type="text/javascript" src="resources/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="resources/js/custom/login.js"></script>
-<script type="text/javascript" src="resources/js/easyslider/jquery.cslider.js"></script>
+<script src="resources/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="resources/js/custom/z_common.js"></script>
+
+
+<script src="resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+<c:url var="imageUrl_profile1" value="../resources/images/user/pic-id-102.jpg" />
 <script type="text/javascript">
 	$(function() {
 
-		$('#da-slider').cslider({
-			autoplay : true,
-			hover : stop,
-			bgincrement : 0
+		
+		$.fancybox({
+			'width': '85%',
+			'height': '85%',
+			'autoScale': true,
+			'transitionIn': 'fade',
+			'transitionOut': 'fade',
+			'type': 'iframe',
+			'href': '/ziksana-web/secure/launcher',
+			'showCloseButton': false,
+			'onComplete': add_ziklogo_and_close_button()
+			//'onClose': confirmFancyboxClose()
+			
+			
 		});
 
 	});
@@ -265,148 +273,10 @@
 </style>
 
 </head>
-<c:url var="ziksanalogo" value="/resources/images/Ziksana.jpg" />
-<c:url var="onelogo" value="/resources/images/slider/new1.png" />
-<c:url var="logotwo" value="/resources/images/slider/new2.png" />
-<c:url var="threelogo" value="/resources/images/slider/new3.png" />
-<c:url var="fourlogo" value="/resources/images/slider/4.png" />
+
 <body style="background-image: none;">
 
-	<div class="loginwrapper">
 
-		<div class="loginhead">
-
-<!-- 			<div class="zenimainlogo">
-				<img src="resources/images/Ziksana.jpg" alt="Ziksana" width="116" height="112" border="3" style="border:3px solid #F6902B; background-color:#FFFFFF; padding:10px; -moz-box-shadow: 1px 2px 5px #000000;
--webkit-box-shadow: 1px 2px 5px #000000;
-box-shadow: 1px 2px 5px #000000;"/>
-
-			</div> -->
-			<!--end of zenimain-->
-
-		</div>
-		<!--end of loginhead-->
-
-		<div class="loginmiddle">
-
-			<div class="slider">
-
-
-				<div id="da-slider" class="da-slider">
-					<div class="da-slide">
-						<h2>Ziks Power</h2>
-						<p>Ziksana has given me the Power to Leave at my Pace the way
-							i want..</p>
-						<a href="#" class="da-link">Read more</a>
-						<div class="da-img">
-						
-							<img src="${logotwo}" alt="image01" />
-						</div>
-					</div>
-					<div class="da-slide">
-						<h2>Revolution</h2>
-						<p>Dreams do come true if you keep believing in yourself.
-							Anything is possible.</p>
-						<a href="#" class="da-link">Read more</a>
-						<div class="da-img">
-							<img src="${threelogo}" alt="image01" />
-						</div>
-					</div>
-					<!-- <div class="da-slide">
-						<h2>Your College. Your Future.</h2>
-						<p>High achievers spot rich opportunities swiftly, make big
-							decisions quickly and move into action immediately. Follow these
-							principles and you can make your dreams come true.</p>
-						<a href="#" class="da-link">Read more</a>
-						<div class="da-img">
-							<img src="${fourlogo}" alt="image01" />
-						</div>
-					</div> -->
-					<div class="da-slide">
-						<h2>A foundation for life</h2>
-						<p>To accomplish great things, we must not only act, but also
-							dream; not only plan, but also believe.</p>
-						<a href="#" class="da-link">Read more</a>
-						<div class="da-img">
-							<img src="${onelogo}" alt="image01" />
-						</div>
-					</div>
-					<nav class="da-arrows">
-						<span class="da-arrows-prev"></span> <span class="da-arrows-next"></span>
-					</nav>
-				</div>
-
-
-			</div>
-			<!--end of slider-->
-
-
-			<div class="logindtls">
-
-				<div class="zenilogo">
-					<img src="${ziksanalogo}" alt="Ziksana" width="128"
-						height="128" style="float: right; margin:.5em; " />
-				</div>
-				<!--end of zenilogo-->
-
-
-				<div class="frmloginzeni" style="clear:right;">
-					<div id="loginerror">
-						<%
-							if (request.getAttribute("loginResult") != null
-									&& ((String) request.getAttribute("loginResult"))
-											.equals("true")) {
-						%>
-						<p>Login Failed. Please try again.</p>
-						<%
-							}
-						%>
-					</div>
-					<form name="loginfrm" class="box login" method="POST"
-						action="/ziksana-web/login">
-						<fieldset class="boxBody">
-							<label>Username</label> <input type="text" name="username"
-								tabindex="1" placeholder="Enter your Username">
-							<div id="uerror"></div>
-							<label><a href="#" class="rLink" tabindex="5">Forget
-									your password?</a>Password</label> <input type="password" name="password"
-								tabindex="2" placeholder="Enter your Password">
-							<div id="perror"></div>
-						</fieldset>
-						<!--	<footer>-->
-
-						<input type="submit" id="btnloginsecurity" class="btnLogin"
-							value="Login" tabindex="4"> <label><input
-							type="checkbox" tabindex="3"><span style="color: #27b;">Stay
-								Signed in </span></label>
-
-						<!-- <input type="submit" class="btnLogin" value="Register" tabindex="4">-->
-						<div class="clearfix"></div>
-						<a href="#" class="rLink" tabindex="5" style="margin-top: 10px;">Can't
-							Access your Account?</a>
-						<!-- </footer>-->
-					</form>
-
-				</div>
-				<!--end of frmloginzeni-->
-
-			</div>
-			<!--end of logindetails-->
-
-
-			<div class="clearfix"></div>
-
-
-		</div>
-		<!--end of loginmiddle-->
-
-
-
-		<div class="loginbottom"></div>
-		<!--end of loginbottom-->
-
-	</div>
-	<!--end of loginwrapper-->
 
 </body>
 </html>

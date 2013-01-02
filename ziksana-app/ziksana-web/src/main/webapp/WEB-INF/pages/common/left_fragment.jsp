@@ -233,18 +233,18 @@ $(document).ready(function() {
 						questionIdArray.push($(this).find("questiobankid").text());
 						
 						var options = "";
-						var optionIndex= "";
+						var option_index= "";
 				 		$(this).find("options").each(function(){
 				 			
 				 			$(this).find("option").each(function(){
 				 				
 				 				options +=  $(this).text()+"/";
-				 				//optionIndex += $(this).find(index).val()+"/";
+				 				option_index += $(this).attr('index')+"/";
 				 				
 				 			});
 				 			options = options.substring(0,options.length-1);
 				 			optionArray.push(options);
-				 			//optionIndexArray.push(optionIndex);	
+				 			optionIndexArray.push(option_index);	
 				 			
 				 		});
 				 		
@@ -274,15 +274,15 @@ function displayUnAnsweredPairs(current){
 	outputResult+="<table width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
-
+	var optionsIdList = optionIndexArray[current].split("/");
 	/* outputResult+= "<tr><td ><input type='radio'  id='checked-val'  checked='checked' name='radiobtn' value='1'><label id='option-ans' for='option'>Yes</label></td></tr>";
 	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='2'><label id='option-ans' for='option'>No</label></td></tr>"; */
 	 for(var i = 0; i < optionsList.length ; i++){
 		
 			if(i==0){
-			outputResult+= "<tr><td ><label><input type='radio' checked  id='checked-val" + i + "'  name='radiobtn' value='"+i+"'>" + optionsList[i] + "</label></td></tr>";
+			outputResult+= "<tr><td ><label><input type='radio' checked  id='checked-val" + i + "'  name='radiobtn' value='"+optionsIdList[i]+"'>" + optionsList[i] + "</label></td></tr>";
 			} else {
-			outputResult+= "<tr><td ><label><input type='radio'  id='checked-val" + i + "'  name='radiobtn' value='"+i+"'>" + optionsList[i] + "</label></td></tr>";	
+			outputResult+= "<tr><td ><label><input type='radio'  id='checked-val" + i + "'  name='radiobtn' value='"+optionsIdList[i]+"'>" + optionsList[i] + "</label></td></tr>";	
 			}
 		}	 
 	

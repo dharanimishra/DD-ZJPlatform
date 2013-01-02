@@ -13,7 +13,7 @@
 		$('.poll-container').fadeIn('fast');
 	});
 	
-	<!-- for alert sundip shah-->
+	//<!-- for alert sundip shah-->
 	$('.a1').hide();
 	$('.a2').hide();
 	$('.a3').hide();
@@ -71,7 +71,7 @@
 		$('.alert3').fadeOut('slow');
 	});
 	
-	<!-- For to-do Sundip Shah-->
+//<!-- For to-do Sundip Shah-->
 	$('.td1').hide();
 	$('.td2').hide();
 	$('.td3').hide();
@@ -112,7 +112,7 @@
 		$('.todo3').fadeOut('slow');
 	});
 	
-	<!-- contact and recomendation tabs to links Sundip Shah-->
+	//<!-- contact and recomendation tabs to links Sundip Shah-->
 	
 
 	$('.tab0').click( function(){
@@ -171,7 +171,7 @@
 		
 	});
 	
-	<!-- for calendar -->
+	//<!-- for calendar -->
 $('._e1').fadeIn("slow");
 	$('._current').click( function(){
 		$(this).css("background-image", " url(images/front-bg.gif)");
@@ -223,7 +223,7 @@ $('._e1').fadeIn("slow");
 	});
 	
 	/* for classbox */
-	<!-- added by sundip shah --> 
+	//<!-- added by sundip shah --> 
  
  $("#new_comment").hide();
  $("#btn_comment").click(function() {
@@ -273,14 +273,6 @@ $('._e1').fadeIn("slow");
 		$('#forgot_username_link').tipsy({gravity: 'w'});   
 		});
 
-	$(function() {
-		$( ".btn" ).button({
-		
-		});
-	});
-	$(function() {
-		$( ".btn-set" ).buttonset();
-	});
 
 //fancyboxes
 	$(function() {

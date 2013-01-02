@@ -65,32 +65,7 @@ function deleteFunction(val){
 }
 </script>
 
-<%-- <c:url var="deleteTodoUrl" value="/secure/deletetodo/1111111" />
-<script type="text/javascript">
-function deleteTodoFunction(val){
-	//alert(val);
-	
-	 confirm_delete_alert = confirm('Are you sure you want to delete this item?');
-	if(confirm_delete_alert == true){
-		
-		
-	
-	$.ajax({
-	  	type: 'DELETE',
-		url: '${deleteTodoUrl}'+val,
-		dataType: 'json',
-		success: function( data ) {
-			console.log('delete alert fired');
-			//delete the alert div
-			
-			
-		}
-	});
-	$('#todoid'+val).remove();
-	
-	}
-}
-</script> --%>
+
 
 <c:url var="showEventUrl" value="/secure/showmycalendar/111111" />
 <c:url var="eventImageUrl" value="resources/images/front-bg.gif" />
@@ -165,9 +140,9 @@ $(document).ready(function() {
 function changeImage(a){
 	
 	var images = new Array();
-	images[0] = "<c:url  value='resources/images/icons/urgent.png' />";
-	images[1] = "<c:url  value='resources/images/icons/warning.png' />";
-	images[2] = "<c:url  value='resources/images/icons/info.png' />";
+	images[0] = "<c:url  value='../resources/images/icons/urgent.png' />";
+	images[1] = "<c:url  value='../resources/images/icons/warning.png' />";
+	images[2] = "<c:url  value='../resources/images/icons/info.png' />";
 	
 	 var comic = document.getElementById("exp").src;
 	 if(a==1000){
@@ -395,7 +370,7 @@ function short_string(string){
 		return string;
 	}	
 } 
-///
+
 
 
 </script>
@@ -420,7 +395,7 @@ function short_string(string){
                     	<fmt:formatDate type="date" pattern="EEE, MMM d, ''yy" value="${now}"  />
                     	
  						</p></div>
-                        <div style=" float:left; margin-left: 5px; margin-top:5px;"><a class="icon-cal text-size-px11 lbx-70-50" href="${htmlUrl_planner}">Calendar</a></div>
+                  <div style=" float:left; margin-left: 5px; margin-top:5px;"><a class="icon-cal text-size-px11 lbx-70-50" href="${htmlUrl_planner}">Calendar</a></div>
 
                     	<div class="_cLeft all-box-shadow" style="">
                         

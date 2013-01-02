@@ -5,9 +5,9 @@
           <!--logo container-->
          
           	<c:url var="imageUrl_header1" value="/resources/images/ziksana_button_logo.png" />
-            
-            <p><a><img data-launcher src="${imageUrl_header1}" width=120px height=120px style="position: absolute;top:3px;  left:30px; margin-left:0px;  "/></a></p>
-        	<header class="bottom-box-shadow bckground-wihte">
+            <c:url var="launcherPage" value="/secure/launcher"/>
+            <p><a class="text-size-px11 lbx-70-50" href=${launcherPage}><img data-launcher src="${imageUrl_header1}" width=120px height=120px style="position: absolute;top:3px;  left:30px; margin-left:0px;  "/></a></p>
+        	<!-- <header class="bottom-box-shadow bckground-wihte"> -->
 			
          
           <!--end logo container-->

@@ -86,7 +86,7 @@ $(document).ready(function() {
 					var output_announcement="";
 					output_announcement+="<table class='table reviewtable'>";
 					output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-					output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+					output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
 					output_announcement+="</thead><tbody>";
 					$(data).find("announcements").each(function(index){
 						
@@ -94,7 +94,7 @@ $(document).ready(function() {
 						
 						
 						output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
 						
 	                   	
 												
@@ -150,7 +150,7 @@ function getCategoryByBetweenDates(){
 					var output_announcement="";
 					output_announcement+="<table class='table reviewtable'>";
 					output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-					output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+					output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
 					output_announcement+="</thead><tbody>";
 					$(data).find("announcements").each(function(index){
 						
@@ -158,7 +158,7 @@ function getCategoryByBetweenDates(){
 						
 						
 						output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
 						
 	                   	
 												
@@ -187,7 +187,7 @@ function getCategoryByBetweenDates(){
 			        	var output_announcement="";
 						output_announcement+="<table class='table reviewtable'>";
 						output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-						output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+						output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
 						output_announcement+="</thead><tbody>";
 						$(data).find("announcements").each(function(index){
 							
@@ -195,7 +195,7 @@ function getCategoryByBetweenDates(){
 							
 							
 							output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
 							
 		                   	
 													
@@ -219,7 +219,7 @@ function getCategoryByBetweenDates(){
 			        	var output_announcement="";
 						output_announcement+="<table class='table reviewtable'>";
 						output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-						output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+						output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
 						output_announcement+="</thead><tbody>";
 						$(data).find("announcements").each(function(index){
 							
@@ -227,7 +227,7 @@ function getCategoryByBetweenDates(){
 							
 							
 							output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
 							
 		                   	
 													
@@ -251,7 +251,7 @@ function getCategoryByBetweenDates(){
 			        	var output_announcement="";
 						output_announcement+="<table class='table reviewtable'>";
 						output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-						output_announcement+="<tr><th>Announcement</th><th>Status</th></tr>";
+						output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
 						output_announcement+="</thead><tbody>";
 						$(data).find("announcements").each(function(index){
 							
@@ -259,7 +259,7 @@ function getCategoryByBetweenDates(){
 							
 							
 							output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("description").text()+"</label></td></tr>";
+							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
 							
 		                   	
 													

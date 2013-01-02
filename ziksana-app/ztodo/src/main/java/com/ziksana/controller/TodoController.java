@@ -28,6 +28,7 @@ public class TodoController {
 	@Autowired
 	TodoService todoService;
 	
+	//educatorlouncher
 	
 	
 	/**
@@ -115,6 +116,29 @@ public class TodoController {
 	public @ResponseBody ModelAndView getPopupWindow() {
 		logger.info("Popup window");
 		ModelAndView modelAndView = new ModelAndView("xml/moretodo");
+		
+
+		return modelAndView;
+		
+	}
+	
+	
+	
+	@RequestMapping(value = "/launcher", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getEducatorLouncher() {
+		logger.info("Popup window");
+		ModelAndView modelAndView = new ModelAndView("common/educator_louncher");
+		
+
+		return modelAndView;
+		
+	}
+	
+	
+	@RequestMapping(value = "/educatordashboard", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView redirectEducatorLauncherPage() {
+		logger.info("Popup window");
+		ModelAndView modelAndView = new ModelAndView("dashboard-div");
 		
 
 		return modelAndView;

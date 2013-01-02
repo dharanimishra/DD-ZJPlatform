@@ -218,13 +218,13 @@ function capitalize(s){
 </script>
  <!-- End -->
 <title>Todo List</title>
-<body bgcolor="#ffffff">
+<body >
 <!-- <div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div> -->
 <div class="helptext">
         	My To Do's
         </div>
 <hr/>
-<div id = "todo_form_container" class="addtodo" style=" width:650px; background-color:#ffffff;">
+<div id = "todo_form_container" class="addtodo" style=" width:650px; background-color:#eeeeee;">
 
 
 <div id="add_todo_fields_container" style="display:none;">

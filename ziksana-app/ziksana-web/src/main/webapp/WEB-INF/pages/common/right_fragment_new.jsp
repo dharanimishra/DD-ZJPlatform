@@ -117,10 +117,6 @@ $(document).ready(function() {
 						 			output+="<div id='result" + index + "' class='pollresult'>"+result+"<button  id='"+ index + "' style='float:right;' class='btnnext'>Next &rarr;</button><button  class='btnprev' id='"+ index + "' >&larr; Prev</button></div></div>";
 						 		};
 					 		}
-							
-							//finding the size ..based on showing the next button 
-							
-							
 
 							console.log("poll output string" + output);
 					});
@@ -259,7 +255,8 @@ $(document).ready(function() {
 });
 </script>
 
- <c:url var="showAnnouncementUrl" value="/secure/showannouncementbyid/100" />
+ <c:url var="showAnnouncementUrl" value="/secure/getannouncement/100" />
+ <c:url var="getannouncementbyid" value="/secure/showannouncementbyid/100/" />
   <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -274,14 +271,21 @@ $(document).ready(function() {
 					
 					
 					$(data).find("announcements").each(function(index){
-						
+						/* 
 						output+="<ol>";
-	                    output+="<li class='p-p _blogs bckground-blue-light'>";
+	                    output+="<a><li class='p-p _blogs bckground-blue-light'>";
 	                    output+="<b>Valid Until  :"+ $(this).find("validUntil").text()+"</b>";
 	                    output+="<br/>";
-	                    output+="<p  style='padding-left: 10px;'>"+ $(this).find("message").text()+"</p>";
-	                    output+="</li></ol><br/>";
+	                    output+="<p style='padding-left: 10px;'>"+ $(this).find("message").text()+"</p>";
+	                    output+=" </a></li></ol><br/>"; */
 	                   
+	                    output+="<ol>";
+	                    output+="<li class='p-p _blogs bckground-blue-light'>";
+	                   
+	                    output+="<p  style='padding-left: 10px;'> <a href='#'>"+ $(this).find("message").text()+"</a></p>";
+						 output+="<b>"+ $(this).find("validUntil").text()+"</b>";
+	                    output+="<br/>";
+	                    output+="</li></ol><br/>";
 												
 					});
 
@@ -336,10 +340,10 @@ $(document).ready(function() {
                   
                    <div class="col-right-container for-rounded-box all-box-shadow">
                   		<div id="poll_placeholder"></div>
-                  		<p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
-          <c:url var="getpollpopup" value="/secure/getpollpopupwindow" />
-            <span><a class="text-size-px11  lbx-70-50" href="${getpollpopup}" class="" style="color: #27b;">More..</a></span>
-          </p>
+            <c:url var="showannounpopup" value="/secure/showannouncementpopup" />
+            <div>
+            <span><a class="text-size-px11  lbx-70-50" href="${showannounpopup}" class="" style="color: #27b;">More..</a></span>
+            </div>
                    </div>
                   
                   <div class="col-right-container for-rounded-box all-box-shadow">
@@ -351,12 +355,12 @@ $(document).ready(function() {
               
             </div>
             
-          	 <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
-			          <c:url var="showannounpopup" value="/secure/showannouncementpopup" />
-			            <span><a class="text-size-px11  lbx-70-50" href="${showannounpopup}" class="" style="color: #27b;">More..</a></span>
-			          </p>		          
+          			          
       
-          
+          <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
+          <c:url var="showannounpopup" value="/secure/showannouncementpopup" />
+            <span><a class="text-size-px11  lbx-70-50" href="${showannounpopup}" class="" style="color: #27b;">More..</a></span>
+          </p>
         </div>
         </div>             
 

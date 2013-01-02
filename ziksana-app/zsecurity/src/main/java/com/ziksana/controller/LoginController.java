@@ -1,6 +1,5 @@
 package com.ziksana.controller;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -26,9 +25,8 @@ import com.ziksana.id.ZID;
 import com.ziksana.security.filters.AuthenticationFilter;
 import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
-import com.ziksana.service.security.MemberService;
-
 import com.ziksana.service.security.AuthenticationService;
+import com.ziksana.service.security.MemberService;
 
 @Controller
 public class LoginController {
@@ -46,17 +44,20 @@ public class LoginController {
 	
 	
 
-	@RequestMapping(value="/login")
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	@RequestMapping(value = "/login")
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response)
+			 {
 
 		System.out.println(" Entering to LoginController.login");
-		String userId = request.getParameter("username");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		System.out.println(" Username is "+userId);
-		System.out.println(" password is  "+password);
+		System.out.println(" Username is "+username);
+		//System.out.println(" password is  "+username);
 		
-		if (userId == null && password == null) {
+		 
+		
+		if (username == null && password == null) {
 			
 			ModelAndView mv = new ModelAndView("login");
 			//mv.addObject("applicationTitle", applicationTitle);
@@ -67,7 +68,7 @@ public class LoginController {
 		
 		System.out.println(" going to auth service");
 		
-		boolean userAuthenticated = authService.authenticateUser(userId,
+		boolean userAuthenticated = authService.authenticateUser(username,
 				password);
 
 		if (userAuthenticated) {
@@ -76,7 +77,7 @@ public class LoginController {
 			// create cookie and send it to the client
 
 			// Constructing SecurityToken object
-			Member member = memberService.getMemberByUser(userId);
+			Member member = memberService.getMemberByUser(username);
 
 			ZID memberId = new StringZID();
 			memberId.setStorageID(member.getMemberId().toString());
@@ -108,18 +109,20 @@ public class LoginController {
 
 			// Need to create cookie
 			try {
-				response.addCookie(newSessionCookie(request, userId));
+				response.addCookie(newSessionCookie(request, username));
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
 				System.out.println(" THE EXCEPTION IS "+e.getMessage());
 				e.printStackTrace();
 			}
 			
-			ModelAndView mvHome = new ModelAndView("dashboard-div");
+			ModelAndView mvHome = new ModelAndView("common/pre_launch");
 			mvHome.addObject("firstname", member.getFirstName());
 			mvHome.addObject("lastname", member.getLastName());
 			mvHome.addObject("membertype", member.getMemberType());
 			mvHome.addObject("memberId",member.getMemberId());
+			
+			
 			
 			ThreadLocalUtil.unset();
 		     return mvHome;
@@ -144,9 +147,7 @@ public class LoginController {
 	}
 
 	
-	
-	
-	
+
 	
 	
 	Cookie newSessionCookie(HttpServletRequest request, String userId)
