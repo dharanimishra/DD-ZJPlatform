@@ -5,6 +5,7 @@ import com.ziksana.domain.polls.PollQuestionResult;
 import com.ziksana.domain.polls.PollResult;
 
 
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -186,6 +187,9 @@ public interface PollQuestionMapper {
 	
 	
 	PollResult getPollResultByQuestion(Integer questionId);
+	
+	List<PollQuestionEntity> getPollQuestionsByDate ( @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+	
 	
 	
 

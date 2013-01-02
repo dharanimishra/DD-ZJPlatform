@@ -207,6 +207,15 @@ public class PollServiceImpl implements PollService {
 		// TODO Auto-generated method stub
 		 return pollQuestionMapper.getPollResultByQuestion(questionId);
 	}
+
+	@Override
+	public List<PollQuestionEntity> getAllPollQuestionsByDate(Date startDate,
+			Date endDate) {
+		
+		return pollQuestionMapper.getPollQuestionsByDate(startDate, endDate);
+		
+		
+	}
 	
 	
 	

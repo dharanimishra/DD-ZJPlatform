@@ -38,7 +38,8 @@ public interface PollService {
 	
 	public PollResult getPollResultByQuestion(Integer questionId);
 	
-    
+	
+	public List<PollQuestionEntity>  getAllPollQuestionsByDate(Date startDate, Date endDate);
 	
 	
 }

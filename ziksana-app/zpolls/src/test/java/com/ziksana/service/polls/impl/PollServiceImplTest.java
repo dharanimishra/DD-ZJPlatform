@@ -6,6 +6,8 @@ package com.ziksana.service.polls.impl;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.After;
@@ -26,6 +28,7 @@ import com.ziksana.domain.polls.PollQuestionResult;
 import com.ziksana.domain.polls.PollResultNQuestion;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
+import com.ziksana.persistence.polls.PollQuestionEntity;
 import com.ziksana.persistence.polls.PollQuestionMapper;
 import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
@@ -33,17 +36,15 @@ import com.ziksana.service.polls.PollService;
 
 /**
  * @author prabu
- *
+ * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class PollServiceImplTest {
-        
+
 	@Autowired
-    private PollService pollService;
-	
-	
-	
+	private PollService pollService;
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -64,33 +65,31 @@ public class PollServiceImplTest {
 	public void tearDown() throws Exception {
 		ThreadLocalUtil.unset();
 	}
-	
-	
-	@Ignore @Test
+
+	@Ignore
+	@Test
 	public void testGetPollQuestionsAndResults() {
 		String questionText = "who wins the t20 world cup?";
-		
-		List<PollResultNQuestion> pollQuestionNResults = pollService.getPollQuestionsAndResults();
-		
-		
-		for (PollResultNQuestion pollQuestionNResult: pollQuestionNResults)
-		{
-			
-			System.out.println(" the obejct is "+pollQuestionNResult);
-			
+
+		List<PollResultNQuestion> pollQuestionNResults = pollService
+				.getPollQuestionsAndResults();
+
+		for (PollResultNQuestion pollQuestionNResult : pollQuestionNResults) {
+
+			System.out.println(" the obejct is " + pollQuestionNResult);
+
 		}
-		
-		
+
 		Assert.isTrue(pollQuestionNResults.size() == 1);
-		
-		
+
 	}
-	
-	
-    @Ignore @Test
+
+	@Ignore
+	@Test
 	public void testPollResponse() {
-		//MemberPersona memberPersona = new MemberPersona(MemberRoleType.LEARNER);
-		//memberPersona.setMemberRoleId(Integer.valueOf(100));
+		// MemberPersona memberPersona = new
+		// MemberPersona(MemberRoleType.LEARNER);
+		// memberPersona.setMemberRoleId(Integer.valueOf(100));
 		PollQuestion pollQuestion = new PollQuestion();
 		pollQuestion.setID(Integer.valueOf(5));
 		List<Integer> answers = new ArrayList();
@@ -98,28 +97,32 @@ public class PollServiceImplTest {
 		PollQuestionResponse pollResponse = new PollQuestionResponse();
 		pollResponse.setPollQuestion(pollQuestion);
 		pollResponse.setAnswers(answers);
-		pollService.pollResponse( pollResponse);
-		
-		
+		pollService.pollResponse(pollResponse);
+
 	}
-	
-	
-    @Test
+
+	@Ignore @Test
 	public void testGetPollResult() {
-		
+
 		PollQuestion pollQuestion = new PollQuestion();
 		pollQuestion.setID(Integer.valueOf(6));
-		PollQuestionResult pollResult =  pollService.getPollResult( pollQuestion);
+		PollQuestionResult pollResult = pollService.getPollResult(pollQuestion);
 		System.out.println(pollResult.getID());
 		System.out.println(pollResult.getQuestion().getID());
-		System.out.println("ANswer2 count is "+pollResult.getAnswer2Count());
-		//Assert.isTrue(pollResult.getOptionCount(0) == 6);
-		
+		System.out.println("ANswer2 count is " + pollResult.getAnswer2Count());
+		// Assert.isTrue(pollResult.getOptionCount(0) == 6);
+
 	}
-	
-	
-	
-	
-	
-	
+
+	@Test
+	public void testGetAllPollQuestionsByDate() {
+		Calendar startDate = new GregorianCalendar(2008, 01, 01);
+		Calendar endDate = Calendar.getInstance();
+		List<PollQuestionEntity> pollQuestions = pollService
+				.getAllPollQuestionsByDate(startDate.getTime(),
+						endDate.getTime());
+		assertTrue(pollQuestions.size() > 0);
+
+	}
+
 }
