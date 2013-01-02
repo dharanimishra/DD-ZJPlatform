@@ -3,6 +3,8 @@
  */
 package com.ziksana.controller;
 
+import static com.ziksana.util.Util.getHeader;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,12 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ziksana.domain.common.Header;
 import com.ziksana.domain.common.ZiksanaMessage;
 import com.ziksana.domain.recommendations.Recommendation;
-import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.recommendations.RecommendationsService;
-import static com.ziksana.util.Util.*;
 
 /**
  * @author vtg-p13
