@@ -140,7 +140,7 @@
 		where
 		CourseStatus=#{statusId} and 
 		MemberRoleId=#{memberPersonaId}
-
+        LIMIT 0, 3 
 
 	</select>
 
