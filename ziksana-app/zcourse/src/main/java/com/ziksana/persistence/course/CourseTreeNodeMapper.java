@@ -27,28 +27,35 @@ public interface CourseTreeNodeMapper {
 	 * @return
 	 */
 
-	@Select({ "select courseid,coursename,CourseLearningComponentId,learningcomponentid,title,contentid,contenttype,contentpath from  gettreenode where courseid=#{courseId,jdbcType=INTEGER}" })
+	// create view getparentnode as select cc.CourseId as courseid, cc.Name as
+	// coursename,cclc.CourseLearningComponentId as
+	// CourseLearningComponentId,clc.LearningComponentId as
+	// LearningComponentId,clc.Name as title from corcourse cc ,
+	// corcourselearningcomponent cclc , corlearningcomponent clc where
+	// cclc.LearningComponentId=clc.LearningComponentId
+	@Select({ "select courseid,coursename,CourseLearningComponentId,LearningComponentId,title from  getparentnode where courseid=#{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "courseId", column = "courseid"),
 			@Result(property = "coursename", column = "coursename"),
 			@Result(property = "parentId", column = "CourseLearningComponentId"),
 			@Result(property = "id", column = "CourseLearningComponentId"),
-			@Result(property = "title", column = "title"),
-			@Result(property = "contentId", column = "contentid"),
-			@Result(property = "contentType", column = "contenttype"),
-			@Result(property = "icon", column = "contentpath") })
+			@Result(property = "title", column = "title") })
 	List<TreeNode> getParentTreeComponents(Integer courseId);
 
-
-	@Select({ "select courseid,coursename,CourseLearningComponentId,contentid,contenttype,contentname,contentpath from  gettreenode where courseid=#{courseId,jdbcType=INTEGER}" })
+	// create view getchildnode as select distinct clcc.LearningComponentId as
+	// LearningComponentId ,clcon.LearningContentId as
+	// contentid,clcon.ContentType as contenttype,clcon.ContentName as
+	// contentname,clcon.ContentPath as contentpath from
+	// corlearningcomponentcontent clcc, corlearningcontent clcon where
+	// clcc.LearningComponentId=clcon.LinkedLearningContentId
+	@Select({ "select LearningComponentId,contentid,contenttype,contentname,contentpath from  getchildnode where LearningComponentId=#{learningComponentId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "courseId", column = "courseid"),
-			@Result(property = "coursename", column = "coursename"),
-			@Result(property = "parentId", column = "CourseLearningComponentId"),
+
+	@Result(property = "parentId", column = "LearningComponentId"),
 			@Result(property = "id", column = "contentid"),
 			@Result(property = "contentType", column = "contenttype"),
 			@Result(property = "contentname", column = "contentname"),
 			@Result(property = "icon", column = "contentpath") })
-	List<TreeNode> getTreeContentComponents(Integer courseId);
+	List<TreeNode> getTreeContentComponents(Integer learningComponentId);
 
 }

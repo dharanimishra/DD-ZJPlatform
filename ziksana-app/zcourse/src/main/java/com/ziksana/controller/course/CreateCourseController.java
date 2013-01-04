@@ -33,7 +33,7 @@ public class CreateCourseController {
 	public @ResponseBody
 	ModelAndView showCourse() {
 		LOGGER.info(" Entering Class " + getClass() + " showCourse()");
-		ModelAndView mv = new ModelAndView("courses/createcourses");
+		ModelAndView mv = new ModelAndView("courses/definecourse");
 		LOGGER.info("Class " + getClass() + "Exiting showCourse(): ");
 
 		return mv;
@@ -46,7 +46,7 @@ public class CreateCourseController {
 				+ " saveCourse(): coursename :" + course.getCourseId()
 				+ " coursedescription :" + course.getCourseDetails());
 		courseService.saveOrUpdateCourse(course);
-		ModelAndView mv = new ModelAndView("courses/createcourses");
+		ModelAndView mv = new ModelAndView("courses/createcourse");
 		LOGGER.info("Exiting Class " + getClass() + " saveCourse(): ");
 
 		return mv;
@@ -61,7 +61,7 @@ public class CreateCourseController {
 				+ course.getCourseId() + " coursedescription :"
 				+ course.getCourseDetails());
 		courseService.saveOrUpadteCourseComponents(course);
-		ModelAndView mv = new ModelAndView("courses/createcourses");
+		ModelAndView mv = new ModelAndView("courses/createcourse");
 		LOGGER.info("Exiting Class " + getClass() + " saveCourseComponents(): ");
 
 		return mv;
@@ -76,7 +76,7 @@ public class CreateCourseController {
 				+ course.getCourseId() + " coursedescription :"
 				+ course.getCourseDetails());
 		courseService.removeCourse(course);
-		ModelAndView mv = new ModelAndView("courses/createcourses");
+		ModelAndView mv = new ModelAndView("courses/createcourse");
 		LOGGER.info("Exiting Class " + getClass()
 				+ " removeCourseComponents(): ");
 
@@ -92,7 +92,7 @@ public class CreateCourseController {
 				+ "searchCourseComponents(): coursename :" + memberRoleId
 				+ " coursedescription :" + searchIndicator);
 
-		ModelAndView mv = new ModelAndView("courses/createcourses");
+		ModelAndView mv = new ModelAndView("courses/createcourse");
 		LOGGER.info("Exiting  Class " + getClass()
 				+ "searchCourseComponents(): ");
 

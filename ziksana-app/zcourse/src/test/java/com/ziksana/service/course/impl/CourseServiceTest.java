@@ -42,41 +42,36 @@ public class CourseServiceTest extends BaseTest {
 	@Autowired
 	public CourseService courseService;
 
-	@Ignore @Test
+	@Ignore
+	@Test
 	public void testSaveCourse() throws Exception {
 		System.out
 				.println("inside Test ****************************************");
 
 		Course newCourse = null;
-		Course course = buildCourseForSave();
-		// Course course = buildCourseForUpdate();
+		//Course course = buildCourseForSave();
+		 Course course = buildCourseForUpdate();
 
 		newCourse = courseService.saveOrUpdateCourse(course);
 
 		System.out.println("new saved course : " + course.toString());
 
-		Assert.isTrue(newCourse != null);
 	}
-	
-	
-	@Test
-	public void testgetListOfCourses() throws CourseException
-	{
-		
-		List<Course> courses = courseService.getListOfCourses(100);
-		System.out.println(" The number of courses are "+courses.size());
-		
-		Course course = courses.get(0);
-		System.out.println(" course status is "+course.getCourseProgress());
-		System.out.println(" course status is "+course.getCourseStatusId());
-		
-		
-	}
-	
-	
-	
 
-	@Ignore @Test
+
+	public void testgetListOfCourses() throws CourseException {
+
+		List<Course> courses = courseService.getListOfCourses(100);
+		System.out.println(" The number of courses are " + courses.size());
+
+		Course course = courses.get(0);
+		System.out.println(" course status is " + course.getCourseProgress());
+		System.out.println(" course status is " + course.getCourseStatusId());
+
+	}
+
+	@Ignore
+	@Test
 	public void testSaveCourseComponents() throws Exception {
 
 		System.out
@@ -84,15 +79,13 @@ public class CourseServiceTest extends BaseTest {
 
 		Course newCourse = null;
 
-		// Course course = buildCourseWithComponentForSave();
+		 //Course course = buildCourseWithComponentForSave();
 
 		Course course = buildCourseWithComponentForUpdate();
 
 		newCourse = courseService.saveOrUpadteCourseComponents(course);
 
 		System.out.println("new saved course : " + course.toString());
-
-		Assert.isTrue(newCourse != null);
 
 	}
 
@@ -104,7 +97,7 @@ public class CourseServiceTest extends BaseTest {
 		authoredMember.setMemberRoleId(100);
 		course1.setCourseId(150);
 		course1.setAccountableMember(authoredMember);
-		course1.setName("DMS 001");
+		course1.setName("Mathematics");
 		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
 		course1.setDescription("Discrete Mathematics3");

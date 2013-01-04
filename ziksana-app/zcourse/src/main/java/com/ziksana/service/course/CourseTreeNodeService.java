@@ -11,7 +11,6 @@ import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentParts;
 import com.ziksana.domain.course.TreeNode;
-import com.ziksana.exception.course.CourseException;
 
 /**
  * @author ratneshkumar

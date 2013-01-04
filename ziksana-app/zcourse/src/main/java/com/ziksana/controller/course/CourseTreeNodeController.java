@@ -1,5 +1,6 @@
 package com.ziksana.controller.course;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,10 +50,11 @@ public class CourseTreeNodeController {
 		Integer courseIds = 0;
 		String courseIdValue = "";
 		String coursename = "";
-		String parentIcon="../resources/images/tree_icons/chapter.png";
-		String docIcon="../resources/images/tree_icons/pdf.png";
-		String videoIcon="../resources/images/tree_icons/video.png";
-		String audioIcon="../resources/images/tree_icons/audio.png";
+		Integer learningComponentId = 0;
+		String parentIcon = "../resources/images/tree_icons/chapter.png";
+		String docIcon = "../resources/images/tree_icons/pdf.png";
+		String videoIcon = "../resources/images/tree_icons/video.png";
+		String audioIcon = "../resources/images/tree_icons/audio.png";
 		try {
 			courseIds = Integer.parseInt(courseId);
 			LOGGER.info("Exiting showMyTreenode():  courseIds :" + courseIds);
@@ -63,17 +65,25 @@ public class CourseTreeNodeController {
 					+ "showMyTreenode(): NumberFormatException :"
 					+ nfe.getMessage());
 		}
+
+		List<TreeNode> childList = new ArrayList<TreeNode>();
 		List<TreeNode> treeNodeList = courseTreeNodeService
 				.getParentTreeComponents(courseIds);
-
-		List<TreeNode> childtreeNodeList = courseTreeNodeService
-				.getTreeContentComponents(courseIds);
-
+		List<TreeNode> childtreeNodeList = null;
 		for (TreeNode node : treeNodeList) {
 			courseIdValue = node.getCourseId().toString();
 			coursename = node.getCoursename();
+
+			learningComponentId = node.getId();
+
+			childtreeNodeList = courseTreeNodeService
+					.getTreeContentComponents(learningComponentId);
+			
+			for (TreeNode childnode : childtreeNodeList) {
+			  childList.add(childnode);
+			}
 		}
-	
+
 		ModelAndView modelView = new ModelAndView("xml/treenode");
 
 		modelView.addObject("courseIds", courseIdValue);
@@ -83,7 +93,7 @@ public class CourseTreeNodeController {
 		modelView.addObject("videoIcon", videoIcon);
 		modelView.addObject("audioIcon", audioIcon);
 		modelView.addObject("treeList", treeNodeList);
-		modelView.addObject("childtreeList", childtreeNodeList);
+		modelView.addObject("childList", childList);
 
 		LOGGER.info("Exiting showMyTreenode(): " + courseId);
 		return modelView;
