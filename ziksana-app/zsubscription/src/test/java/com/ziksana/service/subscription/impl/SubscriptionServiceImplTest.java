@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class SubscriptionServiceImplTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
+	@Ignore @Test
 	public void testGetLearnerContent() {
 
 		SubscriptionCourse course = new SubscriptionCourse();
@@ -89,7 +90,7 @@ public class SubscriptionServiceImplTest {
 
 	}
 
-	@Test
+	@Ignore @Test
 	public void testAddLearnerContent() {
 		String noteText = "test note";
 		// Note note = new Note();

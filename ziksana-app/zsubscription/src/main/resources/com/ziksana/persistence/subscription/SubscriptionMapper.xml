@@ -35,7 +35,12 @@
 		JOIN
 		corenrichment enr ON
 		cntenr.enrichmentid= enr.enrichmentId
-		
+		JOIN
+		sbnsubscriptioncourse sbncourse ON
+		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
+		JOIN
+		sbnmembersubscriptionprogram subprgm ON
+		sbncourse.MemSubscriptionProgId=subprgm.MemSubscriptionProgId
 		where
 		cntenr.LinkType = 8
 		<if test="subscrCourseId != null">
@@ -43,7 +48,8 @@
 		</if>
 		and 
 		enr.LearningComponentId=#{learnCompId} and 
-		enr.LearningContentId=#{learnCmpContId}
+		enr.LearningContentId=#{learnCmpContId} and 
+		subprgm.MemberRoleId=#{memberRoleId}
 		
 		
 		
