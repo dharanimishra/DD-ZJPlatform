@@ -35,7 +35,7 @@ public class AnnouncementsController {
 	/**
 	 * Retrive announcement to display 
 	 */
-	@RequestMapping(value = "/showannouncements/{memberRoleId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/showannouncementsAll/{memberRoleId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView getAnnouncement(@PathVariable Integer memberRoleId) {
 		
 		ModelAndView mav = new ModelAndView("xml/announcements");

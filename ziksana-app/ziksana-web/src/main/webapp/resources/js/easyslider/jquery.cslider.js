@@ -100,15 +100,15 @@
 				
 				if( d === 'next' ) {
 				
-					classTo		= 'da-slide-toleft';
-					classFrom	= 'da-slide-fromright';
+					
+					classTo		= 'da-slide-toright';
+					classFrom	= 'da-slide-fromleft';
 					++this.bgpositer;
-				
 				}
 				else {
 				
-					classTo		= 'da-slide-toright';
-					classFrom	= 'da-slide-fromleft';
+					classTo		= 'da-slide-toleft';
+					classFrom	= 'da-slide-fromright';
 					--this.bgpositer;
 				
 				}
@@ -244,7 +244,7 @@
 					
 					this.$el.on( 'webkitAnimationEnd.cslider animationend.cslider OAnimationEnd.cslider', function( event ) {
 						
-						if( event.originalEvent.animationName === 'toRightAnim4' || event.originalEvent.animationName === 'toLeftAnim4' ) {
+						if( event.originalEvent.animationName === 'toLeftAnim4' || event.originalEvent.animationName === 'toRightAnim4' ) {
 							
 							_self.isAnimating	= false;
 						

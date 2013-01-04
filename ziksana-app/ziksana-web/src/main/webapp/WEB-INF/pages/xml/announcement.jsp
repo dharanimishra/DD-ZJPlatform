@@ -10,5 +10,9 @@
 			<message>${announcements.message}</message>
 			<description>${announcements.description}</description>
 			<validUntil>${announcements.validUntil}</validUntil>
+			<announcementDate>${announce.announcementDate}</announcementDate>
 		</announcements> 
+		
+		
+
 

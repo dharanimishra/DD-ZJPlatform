@@ -115,17 +115,17 @@ parent.jQuery.fancybox.close();
 					output+="<div class='helptext'>Alerts</div>";
 					$(data).find("alertitem").each(function(index){
 						
-						
-						output+="<div id='alert_"+$(this).find("id").text()+"' class='alertcontainer'  id='conalert3' style='background: #eee; border-top: 1px solid white;'>";
+						output+="<div id='alert_"+$(this).find("id").text()+"' class='alertcontainer' style='border:1px solid #F5F5F5;' id='conalert3'>";
 						output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
-						output+="<a href='#linkurl' rel='tipsy' title='Info' style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' /> </a></div>";
+						 
+						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
 						output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
-						output+="<span class='alert zclose  zicons ls-no f-r'></span>";
-						output+="<input type='hidden' id='alertItemId' value='" +$(this).find("id").text()  + "' />";
-						/* output+="<div class='alertinfo-decription' style='float:left; height:14px; font-family:verdana; font-size:11px; padding:4px;'>"; */
-						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
-						/* output+="<div class='alertinfo-button' style='display:inline;margin-left:10px;' >"; */
+						
+						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						
+						output+="</div>";	
+						
 						
 						
 									

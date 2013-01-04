@@ -51,6 +51,7 @@ $(document).ready(function() {
 					 optionArray = new Array();
 					 optionIndexArray = new Array();
 					 memberPersonalitytestId = 0;
+					 var option_index= "";
 					$(data).find("Questions").each(function(index){
 						
 						//var pairIdQuestion = $(this).find("questiobankid").text()+"="+$(this).find("Question").text();
@@ -64,11 +65,11 @@ $(document).ready(function() {
 				 			$(this).find("option").each(function(){
 				 				
 				 				options +=  $(this).text()+"/";
-				 				
+				 				option_index += $(this).attr('index')+"/";
 				 			});
 				 			options = options.substring(0,options.length-1);
 				 			optionArray.push(options);
-				 				
+				 			optionIndexArray.push(option_index);	
 				 			
 				 		});
 				 		
@@ -101,18 +102,22 @@ function displayUnAnsweredPairs(current){
 	
 	outputResult+="<div id='quest'>";
 	outputResult+="<div id='question_info_message'></div>";
-	outputResult+="<label style='display:none;' id='cur-qus-id'>"+questionIdArray[current]+"</label><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
+	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
 	outputResult+="<table width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
-	/* outputResult+= "<tr><td ><input type='radio'  id='checked-val'  checked='checked' name='radiobtn' value='1'><label id='option-ans' for='option'>Yes</label></td></tr>";
-	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='2'><label id='option-ans' for='option'>No</label></td></tr>"; */
+	var optionsIdList = optionIndexArray[current].split("/");
+	
 	 for(var i = 0 ; i < optionsList.length ; i++){
-			
-		outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='"+i+"'>" + "<label id='option-ans' for='option'>" + optionsList[i] + "</label></td></tr>";
+		 if(i==0){
+				outputResult+= "<tr><td ><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";
+				} else {
+				outputResult+= "<tr><td ><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";	
+				}
+		
 		
 	} 
-	//alert(current+","+questionArray.length);
+	
 	outputResult+="</table>";
 	outputResult+="<br/>";
 	
@@ -153,33 +158,32 @@ function prevquestion(){
 }
 
 function submitValue(){
-	testQuestionId = $('#cur-qus-id').text();
-	var testQuestionValue;
-	memberAnswer = '';
-	 questionBankAnswerId = $('input[name=radiobtn]:checked').val();
-	 
-	  $("input:checked").each(function(){ 
-		     testQuestionValue=$(this).val();
-		     
-		     if(testQuestionValue == 1){
-				  memberAnswer = 'Yes';
-			  }else{
-				  memberAnswer= 'No';
-			  } 
-		     
-		     $.post( '<c:url value='/secure/saveknowme'/>'
-				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':testQuestionId,'questionBankAnswerId':questionBankAnswerId}
+	question_id = $('#cur-qus-id').val();
+	var testQuestionValue = $('#cur-qus-value').text();
+	question_answer = $('input[name="question_'+question_id+'"]:checked').val();
+
+	
+	//console.log(question_answer);
+	
+	var answerid_answer_pair = new Array();
+	answerid_answer_pair = question_answer.split("--");
+	questionBankAnswerId = answerid_answer_pair[0];
+	memberAnswer = answerid_answer_pair[1];
+
+		   
+		       $.post( '<c:url value='/secure/saveknowme'/>'
+				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId}
 				        , function( data )
 				        {
 				        
+							//alert("Answer Submitted Successfully");
 							$('#question_info_message').html("Answer Submitted Successfully");
-							// setTimeout('$("#question_info_message").hide();',4000);
-							$("input#submit_question_button").attr("disabled", "disabled");
-							
+							$("#knowme-save").attr('disabled','true');
 				        }
-						, 'xml' );  
-		     
-		});
+						, 'xml' );   
+		  
+		    
+		
   
 }
 </script>
@@ -348,43 +352,56 @@ function answeredQuestionDisplay(){
 	
 	
 	for(var i = 0; i<answeredQuestion.length;i++){
-		outputResult+="<tr><td width='200px'><a  style='text-decoration:none; margin-left:0px;' href='#' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td></tr>";
-		//outputResult+="<tr><td><a  style='text-decoration:none;' href='#' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td><td><label  id='questionAnswer"+i+"'>"+answerDate[i]+"</label></td></tr>";
+		outputResult+="<tr><td width='200px'><a  style='text-decoration:none; margin-left:0px;' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswerId"+i+"'>"+answerAnsIndex[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td></tr>";
+		
 		}
 	
 	
 	outputResult+="</table>";
-	outputResult+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#answered_question_form_container\").show();'>Details</a>";
+	outputResult+="<a class='' style='color:blue;float:right;' onClick='$(\"#answered_question_form_container\").show();'>Details</a>";
 	$('#answer-display').html(outputResult);
 }
 
+
+<c:url var="showUnAnsweredbyId" value="/secure/getunansweredquestionsbyid/" />
 function displayAnsweredQuestionContainer(loop){
-		
-	 var outputAns = "";
+	var outputAns = "";
 	 editQuestion = $('#questionUpdate'+loop+'').text();
 	 editChoice = $('#questionAnswer'+loop+'').text();
 	 //alert(editChoice);
-	
-	outputAns+="<div style='display:none;' id='answered_question_form_container'>";
-	outputAns+="<br/></br><u><p>View or update the Answer:</p></u>";
-	outputAns+="<div>";
-	outputAns+="<div id='question_info_message_update'></div>";
-	outputAns+="<br/></br><label style='display:none;' id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
-	
-		if(editChoice == "Yes"){
-			outputAns+="</br><input type='radio' name='q1' value='1' checked='checked' /><label id='cur-id'>Yes</label>";
-			outputAns+="</br><input type='radio' name='q1' value='2'/><label id='cur-id'>No</label>";
-		} 
-		if(editChoice == "No"){
-			outputAns+="</br><input type='radio' name='q1' value='1'  /><label id='cur-id'>Yes</label>";
-			outputAns+="</br><input type='radio' name='q1' value='2' checked='checked'/><label id='cur-id'>No</label>";
+	var checkedvalex = answerAnsIndex[loop];
+
+	$.ajax({
+	  	type: 'GET',
+		url: '${showUnAnsweredbyId}'+answeredQuestionId[loop]+'',
+		dataType: 'xml',
+		success: function( data ) {
+			
+			outputAns+="<div style='display:none;' id='answered_question_form_container'>";
+			outputAns+="<br/></br><u><p>Hello, View or update the Answer:</p></u>";
+			outputAns+="<div>";
+			outputAns+="<div id='question_info_message_update'></div>";
+			outputAns+="<br/></br><label style='display:none;' id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
+					
+		 	///		
+			$(data).find("option").each(function(){
+					
+		 				if(checkedvalex == $(this).attr('index')){
+		 				outputAns+="<br/><input type='radio' name='optbtn' checked value='"+$(this).attr('index')+"'/><label id='cur-id'>"+$(this).text()+"</label>";
+		 				}else
+		 				outputAns+="<br/><input type='radio' name='optbtn' value='"+$(this).attr('index')+"'/><label id='cur-id'>"+$(this).text()+"</label>";
+		 				
+			});
+		 	///
+			outputAns+="<button onClick='$(\"#answered_question_form_container\").hide();' class='f-rt'>Return</button>"; 
+			outputAns+="<button  onClick='updateValues()' class='f-rt'>Submit Revisions</button>"; 
+			outputAns+="</div>"; 
+			$('#click-det').html(outputAns);		 	
+			
 		}
-	
-	outputAns+="</div>"; 
-	outputAns+="<button onClick='$(\"#answered_question_form_container\").hide();' class='f-rt'>Return</button>"; 
-	outputAns+="<button  onClick='updateValues()' class='f-rt'>Submit Revisions</button>"; 
-	outputAns+="</div>"; 
-	$('#click-det').html(outputAns);
+		
+	});
+				
 	return false;
 }
 

@@ -70,10 +70,16 @@
             
             
             
+           <div class="user-contacts all-box-shadow pad ">
+			
+            
+            <div id="blogList"></div> <div id="blogListError"></div>
            
+           
+           </div>  
             
           <div class="user-contacts all-box-shadow pad " >     
-           <div id="blogList"></div> <div id="blogListError"></div>   
+            
            <div id="tabs" class="demo_message_container">
 	        
            <span class="titles-info font-Signika text-size-px18 light-gray " >Contacts</span>
@@ -270,19 +276,19 @@ function displayUnAnsweredPairs(current){
 	outputResult+="<p class='titles-info font-Signika text-size-px18 light-gray'>Know me better</p>";
 	outputResult+="<div id='question_info_message'></div>";
 	outputResult+="<div id='quest'>";
-	outputResult+="<label style='display:none;' id='cur-qus-id'>"+questionIdArray[current]+"</label><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
+	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
 	outputResult+="<table width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
 	var optionsIdList = optionIndexArray[current].split("/");
-	/* outputResult+= "<tr><td ><input type='radio'  id='checked-val'  checked='checked' name='radiobtn' value='1'><label id='option-ans' for='option'>Yes</label></td></tr>";
-	outputResult+= "<tr><td ><input type='radio'  id='checked-val' name='radiobtn' value='2'><label id='option-ans' for='option'>No</label></td></tr>"; */
+	
+	
 	 for(var i = 0; i < optionsList.length ; i++){
 		
 			if(i==0){
-			outputResult+= "<tr><td ><label><input type='radio' checked  id='checked-val" + i + "'  name='radiobtn' value='"+optionsIdList[i]+"'>" + optionsList[i] + "</label></td></tr>";
+			outputResult+= "<tr><td ><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";
 			} else {
-			outputResult+= "<tr><td ><label><input type='radio'  id='checked-val" + i + "'  name='radiobtn' value='"+optionsIdList[i]+"'>" + optionsList[i] + "</label></td></tr>";	
+			outputResult+= "<tr><td ><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";	
 			}
 		}	 
 	
@@ -317,23 +323,21 @@ function prevquestion(){
 }
 
 function submitValue(){
-	testQuestionId = $('#cur-qus-id').text();
-	var testQuestionValue;
-	memberAnswer = '';
-	 questionBankAnswerId = $('input[name=radiobtn]:checked').val();
-	 
-	  $("input:checked").each(function(){ 
-		     testQuestionValue=$(this).val();
-		     //alert()
-		     
-		    /*  if(testQuestionValue == 1){
-				  memberAnswer = 'Yes';
-			  }else{
-				  memberAnswer= 'No';
-			  } 
-		      */
-		     $.post( '<c:url value='/secure/saveknowme'/>'
-				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':testQuestionId,'questionBankAnswerId':questionBankAnswerId}
+	question_id = $('#cur-qus-id').val();
+	var testQuestionValue = $('#cur-qus-value').text();
+	question_answer = $('input[name="question_'+question_id+'"]:checked').val();
+
+	
+	//console.log(question_answer);
+	
+	var answerid_answer_pair = new Array();
+	answerid_answer_pair = question_answer.split("--");
+	questionBankAnswerId = answerid_answer_pair[0];
+	memberAnswer = answerid_answer_pair[1];
+
+		   
+		       $.post( '<c:url value='/secure/saveknowme'/>'
+				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId}
 				        , function( data )
 				        {
 				        
@@ -341,9 +345,10 @@ function submitValue(){
 							$('#question_info_message').html("Answer Submitted Successfully");
 							$("#knowme-save").attr('disabled','true');
 				        }
-						, 'xml' );  
-		     
-		});
+						, 'xml' );   
+		  
+		    
+		
   }
 </script>
         
@@ -409,11 +414,11 @@ $(document).ready(function() {
            <div id="tabsbottom" style="background-color:#FFF; margin-bottom:15px;">
            <span class="titles-info font-Signika text-size-px18 light-gray">Zeni Recommendations</span>
 			           
-            	<a class="rec0">All</a>
+            	<!-- <a class="rec0">All</a>
 				<a class="rec1">Course</a>
                 <a class="rec2">Grades</a>
-				<br/><br/>
-                            
+				<br/><br/> -->
+                           
             <div id= "recomend" class="rec-0 ">
               
             </div>

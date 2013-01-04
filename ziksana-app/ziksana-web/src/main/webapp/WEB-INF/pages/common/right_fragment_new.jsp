@@ -2,7 +2,7 @@
 
 <c:url var="showPollUrl" value="/secure/showpoll/111111" />
 <c:url var="submitPollUrl" value="/secure/submitpoll" />
-
+<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
 <c:url var="jsJqueryFormUrl" value="/resources/js/jquery.form.js" />
 <script type="text/javascript" src="${jsJqueryFormUrl}"></script>
 <script type="text/javascript">
@@ -271,21 +271,16 @@ $(document).ready(function() {
 					
 					
 					$(data).find("announcements").each(function(index){
-						/* 
-						output+="<ol>";
-	                    output+="<a><li class='p-p _blogs bckground-blue-light'>";
-	                    output+="<b>Valid Until  :"+ $(this).find("validUntil").text()+"</b>";
-	                    output+="<br/>";
-	                    output+="<p style='padding-left: 10px;'>"+ $(this).find("message").text()+"</p>";
-	                    output+=" </a></li></ol><br/>"; */
-	                   
+						
 	                    output+="<ol>";
 	                    output+="<li class='p-p _blogs bckground-blue-light'>";
-	                   
-	                    output+="<p  style='padding-left: 10px;'> <a href='#'>"+ $(this).find("message").text()+"</a></p>";
-						 output+="<b>"+ $(this).find("validUntil").text()+"</b>";
+	                    output+="<input type='hidden' name='announcementId' value='"+$(this).find("announcementid").text()+"'/>";
+	                    output+="<div style='padding-left: 5px; '> <a class='text-size-px13  lbx-70-50' href='${getannouncementbyid}"+$(this).find("announcementid").text()+"'>"+short_string( $(this).find("message").text())+"</a><div class='todotip'>"+$(this).find("message").text()+" </div></div>";
+						 output+="<div style='font-weight:bold'>"+ $(this).find("announcementDate").text()+"</div>";
 	                    output+="<br/>";
 	                    output+="</li></ol><br/>";
+	                    
+	                 
 												
 					});
 
@@ -301,6 +296,16 @@ $(document).ready(function() {
 	});
 	
 });
+
+/// TODO: move this function to a common js file later
+function short_string(string){
+	
+	if(string.length > 50){
+		return string.substring(0,50)+'...';
+	} else {
+		return string;
+	}	
+} 
 </script>
  
                <div class="col-right" >

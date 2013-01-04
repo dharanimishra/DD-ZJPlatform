@@ -37,6 +37,9 @@
  <c:url var="showRecomendByCateg" value="/secure/showrecByCateg/" />
  <c:url var="getAllRecommendations" value="/secure/getallrecomendations" />
   <script type="text/javascript">
+  function closeIt(){
+	  $.fancybox.close();
+  }
 $(document).ready(function() {
 	
 	populate_new_recommendations();
@@ -86,7 +89,7 @@ $(document).ready(function() {
 						output+="<div class='zenircommendcenterlink zenileft'>";
 						
 						output+="<a class='myButtonLink' id='options' rel='tooltip' data-placement='bottom' href='#'   title='Add to Calendar'></a>";
-						output+="<a class='myButtonLink2' id='options' rel='tooltip' data-placement='bottom' href='' onclick='createNewTodo("+index+")' title='Add To Do'></a>";  																																								
+						output+="<a class='myButtonLink2 add_to_todo' id='options' rel='tooltip' data-placement='bottom' href='' onclick='createNewTodo("+index+")' title='Add To Do'></a>";  																																								
 						output+="<a class='myButtonLink3'  rel='tooltip' data-placement='bottom' href='' onclick='moveIgnored("+index+")' title='Ignore' id='_ignore4'></a></div><br /></div>";
 						
 						output+="<div class='zenilower'>   ";
@@ -237,7 +240,7 @@ function moveIgnored(index){
    </div> <!--------------end of container-4 --->
   
   <div class="zenibuttons" style="height:50px;">
-              <a class="btn btn-info" href="#" style="float:right;">Return</a>
+              <a class="btn btn-info" onclick="closeIt()" style="float:right;">Return</a>
                  </div> <!--end of zenibuttons -->  
   
   
@@ -286,6 +289,11 @@ function moveIgnored(index){
  
    
 </div><!-----------end of zeniwrapper ---->
+<style>
+.actioned .add_to_todo {
+  display: none;
+}
+</style>
 </body>
 </html>
 

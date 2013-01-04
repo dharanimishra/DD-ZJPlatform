@@ -60,8 +60,8 @@
 <c:url var="getInstitutionAnnouncementUrl" value='/secure/getinstitutionannouncements'/>
 <c:url var="getInstitutionunitAnnouncementUrl" value='/secure/getinstitutionunitannouncements'/>
 <c:url var="getCourseAnnouncementUrl" value='/secure/getcourseannouncements'/>
-
 <c:url var="showannouncements" value="/secure/showannouncements/100" />
+<c:url var="showannouncementsall" value="/secure/showannouncementsAll/100" />
   <script type="text/javascript">
 $(document).ready(function() {
 	$(document).ready(function() {
@@ -77,7 +77,7 @@ $(document).ready(function() {
  function get_all_announcements(){
 	$.ajax({
 		  	type: 'GET',
-			url: '${showannouncements}',
+			url: '${showannouncementsall}',
 			dataType: 'xml',
 			success: function( data ) {
 					if (console && console.log){
@@ -94,7 +94,7 @@ $(document).ready(function() {
 						
 						
 						output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
+						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 						
 	                   	
 												
@@ -360,7 +360,7 @@ function getCategoryByBetweenDates(){
            
    
    <div id="zReturn" style="margin-top:5px; height:30px;">    		 
-  <!-- <input type="button" class="btn btn-info" id="btn_return" onClick="" name="btn_return" value="Return"/> --> 
+   <button style="float:right;" class="btn btn-info" onClick="$('#row_selection_form_container').hide();" name="btn_return" >Return</button>
 
         	</div>
             <!-- end zReturn -->

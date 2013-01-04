@@ -17,6 +17,7 @@
 
 <script type="text/javascript" src="../resources/js/custom/launcher.js"></script>
 <script type="text/javascript"  src="../resources/js/jquery.hovercard.js"></script>
+<script type="text/javascript"  src="../resources/js/date.js"></script>
 
 <!--<script type="text/javascript" src="../resources/js/custom.js"></script>-->
  <!--fancybox-->
@@ -348,6 +349,7 @@ $(document).ready(function() {
 
 function get_and_populate_alerts(){
 
+
 	$.ajax({
 	  	type: 'GET',
 		url: '${showAlertUrl}',
@@ -461,7 +463,7 @@ $.ajax({
 				ouputEmptyTodo+="<div  class='Todo's'>";
 				ouputEmptyTodo+="<span class='titles-info font-Signika text-size-px18 light-gray'>To-Dos</span>";
 				ouputEmptyTodo+="<strong>No Todos Found</strong>";
-				ouputEmptyTodo+="<div style='height:30px; text-align: right;'><a class='todo_fancybox text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
+				ouputEmptyTodo+="<div style='height:30px;margin-right:50px; float: right;'><a class='todo_fancybox text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
 				ouputEmptyTodo+='</div>';
 				
 				if(no_of_available_todo == 0){$('#todos_placeholder').html(ouputEmptyTodo);} else{
@@ -485,11 +487,11 @@ $.ajax({
 							output_todo+="</div>";						
 											
 						});
-							output_todo+="</div>";						
+												
 							
-							output_todo+="<div style='height:30px; text-align: right;'><a class='todo_fancybox text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
+							output_todo+="<div  style='height:30px;margin-right:50px; float:right;'><a class='todo_fancybox text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
 							$('#todos_placeholder').html(output_todo);
-				
+						output_todo+="</div>";	
 				}
 			
 			
@@ -556,8 +558,19 @@ function changeImage(a){
 	 
 	  
 }
+function hidecalender()
+{
+$("#calenderdiv").hide();
+$("#datepara").hide();
+}
+function showcalender()
+{
+$("#calenderdiv").show();
+$("#datepara").show();
+}
+
 </script>
-<body style="background-image:none;">
+<body style="background-image:none;" >
 
 		<div class="lnchwrapper">
 
@@ -639,9 +652,7 @@ function changeImage(a){
                            
                     <div class="_cMain">
                     
-                    	<div style=" float:left;"><p> August 20 </p></div>
-                        <div style=" float:left; margin-left: 5px; margin-top:5px;"><a class="icon-cal text-size-px11 lbx-calendar" data-tab="calendar">Calendar</a></div>
-                       
+                    	
                        <div data-tabpane_contianer>
                         <!-- Start of Alerts -->
              		          <div class="alert_todo" style="display:none;" data-tabpane="alerts">
@@ -665,10 +676,16 @@ function changeImage(a){
                        
                    
 				<div class="calendar">
-                    	<div class="_cLeft all-box-shadow" style="">
-                        
+               <c:url var="htmlUrl_planner" value="/calendar" />     	
+                       
+<div id= datepara style=" float:left;"><p> 
+<c:set var="now" value="<%=new java.util.Date()%>" />
 
-                            
+                    	<fmt:formatDate type="date" pattern="EEE, MMM d, ''yy" value="${now}"  /> 
+						</p></div>
+                        <div id= calenderdiv style=" float:left; margin-left: 5px; margin-top:5px;"><a class="icon-cal text-size-px11 lbx-calendar" data-tab="calendar">Calendar</a></div>
+                       
+                        <div class="_cLeft all-box-shadow" style="">    
                             <div class="_upcoming _up1">
                             	<div class="_cDate" style="color:orange;">
                                 	<b>Jan 7</b><br> <b>9.00 AM</b>
@@ -739,6 +756,7 @@ function changeImage(a){
                         </div>
                     
 						</div>
+						
 						</div>
 					</div>
 <div class="clearfix"> </div>
@@ -748,9 +766,9 @@ function changeImage(a){
                          
                        <div class="elementlinks" style="margin:20px;">
  						<ul>
-                        <li><a id="alertlink" data-tab="alerts">Alerts</a></li>
-                        <li><a id="todolink" data-tab="todos">To Dos</a></li>
-                        <li><a id="calendarlink" data-tab="calendar">Calendar</a></li>
+                        <li><a id="alertlink" onclick="hidecalender()" data-tab="alerts">Alerts</a></li>
+                        <li><a id="todolink" onclick="hidecalender()" data-tab="todos">To Dos</a></li>
+                        <li><a id="calendarlink"onclick="showcalender()" data-tab="calendar">Calendar</a></li>
                         </ul>
   			       </div> 
                           

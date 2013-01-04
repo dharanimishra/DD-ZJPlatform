@@ -23,6 +23,7 @@ public interface PersonalityTestService {
 	
 	public List<QuestionResponse> answeredQuestions();
 	
+	public List<Question> getUnansweredQuestionsbyId(Integer questionBankId);
 	
 
 }

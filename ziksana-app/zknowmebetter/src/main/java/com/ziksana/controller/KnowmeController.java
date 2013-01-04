@@ -41,6 +41,18 @@ public class KnowmeController {
 		return modelAndView;
 		 
 	}
+	
+	@RequestMapping(value = "/getunansweredquestionsbyid/{questionBankId}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getUnansweredQuestionsByQuestionId(@PathVariable Integer questionBankId) {
+		
+		logger.info("Know me Better || getunansweredQuestions()");
+		ModelAndView modelAndView = new ModelAndView("xml/singleunansweredquestions");
+		modelAndView.addObject("unansweredquesList", personalityService.getUnansweredQuestionsbyId(questionBankId));
+		logger.info("Exit Know me Better");
+		
+		return modelAndView;
+		
+	}
 	@RequestMapping(value = "/getunansweredquestions", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView getUnansweredQuestions() {
 		

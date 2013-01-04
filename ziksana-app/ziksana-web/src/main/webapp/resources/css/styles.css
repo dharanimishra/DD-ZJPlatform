@@ -230,6 +230,8 @@ section {
 	background-color:#FFF; 
 	margin-bottom:10px; 
 	width:235px;
+	border:1px solid #cccccc;
+	border-radius:4px 4px 4px 4px;
 }
 
 .user-info2 {
@@ -260,6 +262,8 @@ section {
 	width: 235px;
 	background-color:#FFF; 
 	margin-bottom:10px;
+	border:1px solid #cccccc;
+	border-radius:4px 4px 4px 4px;
 }
 .user-contacts img {
 	margin-top: 5px;
@@ -374,6 +378,8 @@ section {
 	padding: 5px;
 	background-color: #FFF;
 	margin-bottom: 10px;
+	border:1px solid #cccccc;
+	border-radius:4px 4px 4px 4px;
 }
 .Performance {
 }

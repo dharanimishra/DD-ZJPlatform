@@ -9,12 +9,12 @@
 		
 	<select id="getAnnouncementById" resultMap="announcementResultMap"
 		parameterType="map">
-		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} and #{announcementId}
+		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} and anouncementId= #{announcementId}
 	</select>
 	
 	<select id="getAllAnnouncements" resultMap="announcementResultMap"
 		parameterType="int">
-		SELECT * FROM corannouncement WHERE MemberRoleId = #{memberRoleId} 
+		select * from corannouncement  where MemberRoleId = #{memberRoleId} and announcementdate  between SUBDATE(CURDATE(), 7) and CURDATE()  
 	</select>
 	
 			<select id="getInstitutionAnnouncements" resultMap="announcementResultMap"  parameterType="map">

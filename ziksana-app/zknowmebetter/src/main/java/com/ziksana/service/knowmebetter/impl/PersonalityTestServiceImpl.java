@@ -57,6 +57,18 @@ public class PersonalityTestServiceImpl implements PersonalityTestService {
 		personalityTestMapper.updateAnswer(question, userChoice);
 		
 	}
+
+
+
+	@Override
+	public List<Question> getUnansweredQuestionsbyId(Integer questionBankId) {
+		 List<Question> questionList = new ArrayList<Question>();
+			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
+			questionList =personalityTestMapper.getUnansweredQuestionsbyId(memberRoleId, questionBankId);
+			
+			
+			return questionList;
+	}
 	
 	
 }

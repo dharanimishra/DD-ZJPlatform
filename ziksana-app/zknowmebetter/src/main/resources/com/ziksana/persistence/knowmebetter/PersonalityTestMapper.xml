@@ -27,10 +27,32 @@
 		 r.TestQuestionId is null  and r.MemberPersonalityTestId is null and (mpt.MemberRoleId is null or 
 		 mpt.MemberRoleId!= #{memberRoleId})
 
+	</select>
+	
+	<select id="getUnansweredQuestionsbyId" resultMap="questionResultMap"
+		parameterType="map">
 
+
+		select distinct qb.questionbankid as questionBankId, qba.QuestionBankAnswerId,
+		qb.QuestionContent,
+		qba.`Answer Content`,
+		qba.`Answer Sequence` ,mpt.MemberRoleId,
+		mpt.MemberPersonalityTestId
 		
+		from
+		psttestquestion q
+		JOIN asmquestionbank qb
+		ON q.QuestionBankId=qb.QuestionBankId 
+		 JOIN asmquestionbankanswer qba ON
+		qb.QuestionBankId=qba.QuestionBankId
+		JOIN  pstmemberpersonalitytest mpt ON
+		mpt.MemberPersonalityTestId=mpt.MemberPersonalityTestId  
+		where mpt.MemberRoleId= #{memberRoleId} and qb.QuestionBankId=#{questionBankId}
 
 	</select>
+	
+	
+	
 
 	<resultMap id="questionResultMap" type="com.ziksana.domain.common.Question">
 

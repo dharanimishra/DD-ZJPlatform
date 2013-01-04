@@ -368,8 +368,8 @@ box-shadow: 1px 2px 5px #000000;"/>
 							<label>Username</label> <input type="text" name="username"
 								tabindex="1" placeholder="Enter your Username">
 							<div id="uerror"></div>
-							<label><a href="#" class="rLink" tabindex="5">Forget
-									your password?</a>Password</label> <input type="password" name="password"
+							<label><a href="#" class="rLink" tabindex="5">Forgot your password?
+									</a>Password</label> <input type="password" name="password"
 								tabindex="2" placeholder="Enter your Password">
 							<div id="perror"></div>
 						</fieldset>
@@ -377,13 +377,11 @@ box-shadow: 1px 2px 5px #000000;"/>
 
 						<input type="submit" id="btnloginsecurity" class="btnLogin"
 							value="Login" tabindex="4"> <label><input
-							type="checkbox" tabindex="3"><span style="color: #27b;">Stay
-								Signed in </span></label>
+							type="checkbox" tabindex="3"><span style="color: #27b;">Stay signed in </span></label>
 
 						<!-- <input type="submit" class="btnLogin" value="Register" tabindex="4">-->
 						<div class="clearfix"></div>
-						<a href="#" class="rLink" tabindex="5" style="margin-top: 10px;">Can't
-							Access your Account?</a>
+						<a href="#" class="rLink" tabindex="5" style="margin-top: 10px;">Can't access your account?</a>
 						<!-- </footer>-->
 					</form>
 

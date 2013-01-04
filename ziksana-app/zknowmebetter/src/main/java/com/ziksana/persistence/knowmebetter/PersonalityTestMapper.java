@@ -18,4 +18,5 @@ public interface PersonalityTestMapper {
 	
 	public List<QuestionResponse> answeredQuestions(Integer memberRoleId);
 
+	public List<Question> getUnansweredQuestionsbyId(@Param("memberRoleId") Integer memberRoleId, @Param("questionBankId") Integer questionBankId);
 }

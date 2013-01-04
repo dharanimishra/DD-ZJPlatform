@@ -140,9 +140,9 @@ $(document).ready(function() {
 function changeImage(a){
 	
 	var images = new Array();
-	images[0] = "<c:url  value='../resources/images/icons/urgent.png' />";
-	images[1] = "<c:url  value='../resources/images/icons/warning.png' />";
-	images[2] = "<c:url  value='../resources/images/icons/info.png' />";
+	images[0] = "<c:url  value='/resources/images/icons/urgent.png' />";
+	images[1] = "<c:url  value='/resources/images/icons/warning.png' />";
+	images[2] = "<c:url  value='/resources/images/icons/info.png' />";
 	
 	 var comic = document.getElementById("exp").src;
 	 if(a==1000){
@@ -173,7 +173,7 @@ function changeImage(a){
 <script type="text/javascript">
 $(document).ready(function() {
 	setInterval(function() {
-		get_and_populate_todo();
+		//get_and_populate_todo();
  
 	}, 1*30*1000);	
 	
@@ -227,7 +227,7 @@ function get_and_populate_alerts(){
 						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
 						output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
 						
-						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 						
 						output+="</div>";						
 									
@@ -248,7 +248,7 @@ function get_and_populate_alerts(){
 					output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
 					output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
 					
-					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 					
 					output+="</div>";
 					
@@ -315,7 +315,7 @@ $.ajax({
 							output_todo+="<img src='${todo}' alt='Info' /></div>";
 							output_todo+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
 							
-							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
 							
 							output_todo+="</div>";						
 											
