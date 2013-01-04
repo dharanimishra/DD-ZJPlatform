@@ -33,7 +33,7 @@ public interface SubscriptionService {
 	
 	public List<EducatorNote> getEducatorNotes(Integer courseId, Node node);
 	
-	public List<Reference> getEducatorSuggestedReferences(SubscriptionCourse course, Node node);
+	public List<Reference> getEducatorSuggestedReferences(Integer courseId, Node node);
 	
 	
 	

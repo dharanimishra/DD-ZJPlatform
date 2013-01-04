@@ -170,9 +170,16 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	@Override
 	public List<Reference> getEducatorSuggestedReferences(
-			SubscriptionCourse course, Node node) {
-		// TODO Auto-generated method stub
-		return null;
+			Integer courseId, Node node) {
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		
+		return subscriptionMapper.getEducatorReferences(8, Integer
+				.valueOf(memberRoleId), courseId, node.getParent().getId(),
+				node.getId());
+		
+		
 	}
 
 }

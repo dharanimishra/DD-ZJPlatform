@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Node;
+import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.id.StringZID;
@@ -73,22 +74,52 @@ public class SubscriptionServiceImplTest {
 	}
 
 	@Test
-	public void testGetEducatorContent() {
+	public void testGetEducatorNotes() {
 
 		SubscriptionCourse course = new SubscriptionCourse();
 		course.setSubscriptionCourseId(1000);
 		Node node = new Node();
 		node.setId(1);
 		node.setType(1000);
+		Node parent = new Node();
+		parent.setId(100);
+		node.setParent(parent);
 
 		// TODO
-		List<EducatorNote> notes = subscriptionService.getEducatorContent(course, node,
-				1);
+		List<EducatorNote> notes = subscriptionService.getEducatorNotes(1000, node);
 		assertNotNull(notes);
 
 		assertTrue(notes.size() == 0);
 
 	}
+	
+	
+	@Test
+	public void testGetEducatorSuggestedReferences() {
+		
+		SubscriptionCourse course = new SubscriptionCourse();
+		course.setSubscriptionCourseId(1000);
+		Node node = new Node();
+		node.setId(1);
+		node.setType(1000);
+		Node parent = new Node();
+		parent.setId(100);
+		node.setParent(parent);
+
+		// TODO
+		List<Reference> references = subscriptionService.getEducatorSuggestedReferences(1000, node);
+				
+		assertNotNull(references);
+
+		assertTrue(references.size() == 0);
+
+		
+		
+	}
+	
+	
+	
+	
 
 	@Ignore @Test
 	public void testAddLearnerContent() {
