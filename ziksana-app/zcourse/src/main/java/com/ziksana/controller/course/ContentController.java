@@ -43,7 +43,7 @@ public class ContentController {
 		LOGGER.info("Entering Class " + getClass() + " getContent()");
 		//ModelAndView mv = new ModelAndView("courses/course");
 		LOGGER.info("Exiting Class " + getClass() + " getContent(): ");
-		String parsedContentId = contentId.split("_")[2];
+		String parsedContentId = contentId.split("_")[3];
 		
 
 		return contentService.getContent(Integer.valueOf(parsedContentId));

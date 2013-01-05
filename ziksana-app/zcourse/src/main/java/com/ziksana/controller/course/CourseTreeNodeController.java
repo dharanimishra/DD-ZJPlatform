@@ -70,16 +70,19 @@ public class CourseTreeNodeController {
 		List<TreeNode> treeNodeList = courseTreeNodeService
 				.getParentTreeComponents(courseIds);
 		List<TreeNode> childtreeNodeList = null;
+		
+	
+	LOGGER.info("PAENT NODE SIZE"+treeNodeList.size());
 		for (TreeNode node : treeNodeList) {
 			courseIdValue = node.getCourseId().toString();
 			coursename = node.getCoursename();
-
 			learningComponentId = node.getId();
 
 			childtreeNodeList = courseTreeNodeService
 					.getTreeContentComponents(learningComponentId);
-			
+			LOGGER.error("childtreeNodeList NODE SIZE : "+childtreeNodeList.size());
 			for (TreeNode childnode : childtreeNodeList) {
+				
 			  childList.add(childnode);
 			}
 		}

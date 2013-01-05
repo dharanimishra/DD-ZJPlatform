@@ -29,7 +29,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	SubscriptionMapper subscriptionMapper;
 
 	@Override
-	public List<Note> getLearnerNotes(SubscriptionCourse course, Node node) {
+	public List<Note> getLearnerNotes(Integer courseId, Integer componentId, Integer contentId, Integer type) {
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
@@ -38,14 +38,14 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		Integer learnCmpCntId = null;
 
 		return subscriptionMapper.getLearnerNotes(
-				Integer.valueOf(memberRoleId), Integer.valueOf(course
-						.getSubscriptionCourseId().getStorageID()), learnCmpId,
-				learnCmpCntId);
+				Integer.valueOf(memberRoleId), Integer.valueOf(courseId
+						), componentId,
+				contentId, type);
 	}
 
 	@Override
-	public List<EducatorNote> getEducatorContent(SubscriptionCourse course, Node node,
-			Integer contentType) {
+	public List<EducatorNote> getEducatorContent(SubscriptionCourse course,
+			Node node, Integer contentType) {
 		// TODO Auto-generated method stub
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
@@ -59,37 +59,21 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		} else if (node.getType() == 1001) {
 			learnCompCntId = node.getId();
 		}
-		
+
 		Integer courseId = null;
-		
-		if (course != null)
-		{
-			 courseId = Integer.valueOf(course
-						.getSubscriptionCourseId().getStorageID());
+
+		if (course != null) {
+			courseId = Integer.valueOf(course.getSubscriptionCourseId()
+					.getStorageID());
 		}
 
 		// TODO
-		return subscriptionMapper.getEducatorNotes(contentType, Integer
-				.valueOf(memberRoleId), courseId, learnCompId,
+		return subscriptionMapper.getEducatorNotes(contentType,
+				Integer.valueOf(memberRoleId), courseId, learnCompId,
 				learnCompCntId);
 	}
 
-	@Override
-	public List<Note> getLearnerQuestions(Node node) {
-		// TODO Auto-generated method stub
-
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
-				.getStorageID();
-		Integer subscrCourseId = null;
-		Integer learnCmpId = null;
-		Integer learnCmpCntId = null;
-
-		// TODO
-		return subscriptionMapper.getLearnerNotes(
-				Integer.valueOf(memberRoleId), subscrCourseId, learnCmpId,
-				learnCmpCntId);
-
-	}
+	
 
 	/*
 	 * @Override public List<Note> getTOC(Node node) {
@@ -105,7 +89,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	 */
 
 	@Override
-	public void addLearnerContent(String content, Node node) {
+	public int addLearnerContent(Integer courseId, Integer componentId, Integer contentId, String noteTitle, String noteDescription, Integer noteDuration, Integer type){
 		// TODO Auto-generated method stub
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
@@ -114,7 +98,84 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		Note note = new Note();
 
 		note.setMemberRoleId(Integer.valueOf(memberRoleId));
-		note.setContent(content);
+		note.setLearnCompId(componentId);
+		note.setLearnCmpContId(contentId);
+		note.setNoteTitle(noteTitle);
+		note.setNoteDescription(noteDescription);
+		note.setNoteDuration(noteDuration);
+		
+        note.setCourseId(courseId);
+		
+		note.setType(type);
+
+		
+
+		return subscriptionMapper.addNote(note);
+
+	}
+
+	@Override
+	public List<Note> getLearnerContent(SubscriptionCourse course, Node node) {
+
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+
+		Integer learnCompId = null;
+		Integer learnCmpCntId = null;
+
+		// This logic needs to be revisited based on the sbnsubscribernotes
+		if (node.getType() == 1000) {
+			learnCompId = node.getId();
+		} else if (node.getType() == 1001) {
+			learnCmpCntId = node.getId();
+		}
+
+		List<Note> notes = subscriptionMapper.getContentByType(Integer
+				.valueOf(course.getSubscriptionCourseId().getStorageID()), node
+				.getParent().getId(), node.getId(), Integer
+				.valueOf(memberRoleId), node.getType());
+
+		return notes;
+	}
+
+	@Override
+	public List<EducatorNote> getEducatorNotes(Integer courseId, Node node) {
+
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+
+		// TODO
+		return subscriptionMapper.getEducatorNotes(8, Integer
+				.valueOf(memberRoleId), courseId, node.getParent().getId(),
+				node.getId());
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Reference> getEducatorSuggestedReferences(Integer courseId,
+			Node node) {
+
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+
+		return subscriptionMapper.getEducatorReferences(8, Integer
+				.valueOf(memberRoleId), courseId, node.getParent().getId(),
+				node.getId());
+
+	}
+
+	@Override
+	public void addLearnerQuestion(Integer courseId, String question, Node node) {
+
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+
+		Note note = new Note();
+
+		note.setMemberRoleId(Integer.valueOf(memberRoleId));
+		note.setContent(question);
+	    note.setCourseId(courseId);
 
 		note.setType(Integer.valueOf(node.getType()));
 
@@ -129,57 +190,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	}
 
 	@Override
-	public List<Note> getLearnerContent(SubscriptionCourse course, Node node) {
-		
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
-				  .getStorageID();
-		
-		Integer learnCompId = null;
-		Integer learnCmpCntId = null;
-
-		
-		//This logic needs to be revisited based on the sbnsubscribernotes
-		if (node.getType() == 1000) {
-			learnCompId = node.getId();
-		} else if (node.getType() == 1001) {
-			learnCmpCntId = node.getId();
-		}
-		
-		List<Note> notes = subscriptionMapper.getContentByType(Integer.valueOf(course.getSubscriptionCourseId().getStorageID()), node.getParent().getId(),
-				  node.getId(), Integer.valueOf(memberRoleId), node.getType());
-		
-		
-		return notes;
-	}
-
-	@Override
-	public List<EducatorNote> getEducatorNotes(Integer courseId, Node node) {
-		
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
-				.getStorageID();
-
-		
-		
-		// TODO
-		return subscriptionMapper.getEducatorNotes(8, Integer
-				.valueOf(memberRoleId), courseId, node.getParent().getId(),
-				node.getId());
+	public List<Note> getLearnerQuestions(Integer courseId,
+			Integer componentId, Integer contentId) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Reference> getEducatorSuggestedReferences(
-			Integer courseId, Node node) {
-		
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
-				.getStorageID();
-		
-		return subscriptionMapper.getEducatorReferences(8, Integer
-				.valueOf(memberRoleId), courseId, node.getParent().getId(),
-				node.getId());
-		
-		
+		return null;
 	}
 
 }

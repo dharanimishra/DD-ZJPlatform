@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Node;
+import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.service.subscription.SubscriptionService;
@@ -35,33 +36,77 @@ public class SubscriptionController {
 	@Autowired
 	SubscriptionService subscriptionService;
 
-	@RequestMapping(value = "/showmynotes/{memberId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getLearnerNotes", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView showLearnerNotes(
+	List<Note> showLearnerNotes(
 			@RequestParam(value = "courseId", required = true) String courseId,
-			@RequestParam(value = "id", required = true) String id,
-			@RequestParam(value = "nodeType", required = true) String nodeType,
-			@RequestParam(value = "parentId", required = true) String parentId,
-			@RequestParam(value = "parentNodeType", required = true) String parentNodeType) {
-		logger.info("Entering showMyTodos(): ");
-		ModelAndView modelView = new ModelAndView("xml/notes");
-
+			@RequestParam(value = "nodeId", required = true) String nodeId
+			) {
+		
+		
+		String parsedContentId = null;
+		String parsedComponentId = null;
+		String parsedCourseId = courseId;
+		
 		Node node = new Node();
-
-		node.setId(Integer.valueOf(id));
-		node.setType(Integer.valueOf(nodeType));
-		Node parent = new Node();
-		parent.setId(Integer.valueOf(parentId));
-		parent.setType(Integer.valueOf(parentNodeType));
-		node.setParent(parent);
-
-		// TODO
-		modelView.addObject("notes",
-				subscriptionService.getLearnerContent(null, node));
-
-		logger.info("Exiting showMyTodos(): ");
-		return modelView;
+		String parsedNodeType = nodeId.split("_")[0];
+		
+		if(parsedNodeType.equals("LCONTENT")){
+			parsedContentId = nodeId.split("_")[3];
+			parsedComponentId = nodeId.split("_")[2];
+			
+			
+		} else if(parsedNodeType.equals("LCOMPONENT")){
+			parsedComponentId = nodeId.split("_")[1];
+			
+		} else if(parsedNodeType.equals("COURSE")){
+			
+			
+		}
+		
+		return subscriptionService.getLearnerNotes(Integer.valueOf(courseId), Integer.valueOf(parsedComponentId), Integer.valueOf(parsedContentId), 1000);
 	}
+	
+	
+	
+	@RequestMapping(value = "/getLearnerQuestions", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Note> showLearnerQuestions(
+			@RequestParam(value = "courseId", required = true) String courseId,
+			@RequestParam(value = "nodeId", required = true) String nodeId
+			) {
+		
+		
+		String parsedContentId = null;
+		String parsedComponentId = null;
+		String parsedCourseId = courseId;
+		
+		Node node = new Node();
+		String parsedNodeType = nodeId.split("_")[0];
+		
+		if(parsedNodeType.equals("LCONTENT")){
+			parsedContentId = nodeId.split("_")[3];
+			parsedComponentId = nodeId.split("_")[2];
+			
+			
+		} else if(parsedNodeType.equals("LCOMPONENT")){
+			parsedComponentId = nodeId.split("_")[1];
+			
+		} else if(parsedNodeType.equals("COURSE")){
+			
+			
+		}
+		
+		return subscriptionService.getLearnerNotes(Integer.valueOf(courseId), Integer.valueOf(parsedComponentId), Integer.valueOf(parsedContentId), 2000);
+	}
+	
+
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping(value = "/educatorNotes", method = RequestMethod.GET)
 	public @ResponseBody
@@ -75,7 +120,7 @@ public class SubscriptionController {
 		
 		
 		Node node = new Node();
-		String parsedNodeId = nodeId.split("_")[2];
+		String parsedNodeId = nodeId.split("_")[3];
 		String parsedParentNodeId = parentNodeId.split("_")[1];
 		node.setId(Integer.valueOf(parsedNodeId));
 		//node.setType(Integer.valueOf(nodeType));
@@ -87,17 +132,120 @@ public class SubscriptionController {
 		
 		return subscriptionService.getEducatorNotes(Integer.valueOf(courseId), node);
 	}
+	
+	
+	@RequestMapping(value = "/educatorReferences", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Reference> showEducatorReferences(
+			@RequestParam(value = "courseId", required = true) String courseId,
+			@RequestParam(value = "nodeId", required = true) String nodeId,
+			@RequestParam(value = "nodeType", required = false) String nodeType,
+			@RequestParam(value = "parentNodeId", required = true) String parentNodeId,
+			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
 
-	public void addLearnerQuestion(
-			@RequestParam(value = "questinText", required = true) String questinText
+		
+		
+		Node node = new Node();
+		String parsedNodeId = nodeId.split("_")[3];
+		String parsedParentNodeId = parentNodeId.split("_")[1];
+		node.setId(Integer.valueOf(parsedNodeId));
+		//node.setType(Integer.valueOf(nodeType));
+		Node parent = new Node();
+		parent.setId(Integer.valueOf(parsedParentNodeId));
+		//parent.setType(Integer.valueOf(parentNodeType));
+		node.setParent(parent);
+
+		
+		
+		return subscriptionService.getEducatorSuggestedReferences(Integer.valueOf(courseId), node);
+	}
+	
+
+	
+	
+	
+	
+
+	@RequestMapping(value = "/addLearnerQuestion", method = RequestMethod.POST)
+	public  @ResponseBody
+	       Integer addLearnerQuestion(
+			@RequestParam(value = "courseId", required = true) String courseId,
+			@RequestParam(value = "nodeId", required = true) String nodeId,
+			@RequestParam(value = "questionTitle", required = true) String questionTitle,
+			@RequestParam(value = "questionDuration", required = true) String questionDuration
 			) {
+		
+		
+		String parsedContentId = null;
+		String parsedComponentId = null;
+		String parsedCourseId = courseId;
+		
+		Node node = new Node();
+		String parsedNodeType = nodeId.split("_")[0];
+		
+		if(parsedNodeType.equals("LCONTENT")){
+			parsedContentId = nodeId.split("_")[3];
+			parsedComponentId = nodeId.split("_")[2];
+			
+			
+		} else if(parsedNodeType.equals("LCOMPONENT")){
+			parsedComponentId = nodeId.split("_")[1];
+			
+		} else if(parsedNodeType.equals("COURSE")){
+			
+			
+		}
+		
+	
+		
+		int key = subscriptionService.addLearnerContent(Integer.valueOf(courseId), Integer.valueOf(parsedComponentId),Integer.valueOf(parsedContentId), questionTitle,  null, Integer.valueOf(questionDuration), 2000);
+		return Integer.valueOf(key);
+		
 
 	}
 
-	public void addLearnerNote(
-			@RequestParam(value = "note", required = true) String note
+	@RequestMapping(value = "/addLearnerNote", method = RequestMethod.POST)
+	public  @ResponseBody
+	       Integer addLearnerNote(
+			@RequestParam(value = "courseId", required = true) String courseId,
+			@RequestParam(value = "nodeId", required = true) String nodeId,
+			@RequestParam(value = "noteTitle", required = true) String noteTitle,
+			@RequestParam(value = "noteDescription", required = false) String noteDescription,
+			@RequestParam(value = "noteDuration", required = true) String noteDuration
 			) {
+		
+		
+		String parsedContentId = null;
+		String parsedComponentId = null;
+		String parsedCourseId = courseId;
+		
+		Node node = new Node();
+		String parsedNodeType = nodeId.split("_")[0];
+		
+		if(parsedNodeType.equals("LCONTENT")){
+			parsedContentId = nodeId.split("_")[3];
+			parsedComponentId = nodeId.split("_")[2];
+			
+			
+		} else if(parsedNodeType.equals("LCOMPONENT")){
+			parsedComponentId = nodeId.split("_")[1];
+			
+		} else if(parsedNodeType.equals("COURSE")){
+			
+			
+		}
+		
+	
+		int key = subscriptionService.addLearnerContent(Integer.valueOf(courseId), Integer.valueOf(parsedComponentId),Integer.valueOf(parsedContentId), noteTitle, noteDescription, Integer.valueOf(noteDuration),1000 );
+		System.out.println(" THE ERROR ....KEY IS  "+key);
+		return Integer.valueOf(key);
+		
+		
+			
+		 
 
 	}
+	
 
+	
 }

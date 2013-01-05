@@ -130,8 +130,10 @@ public class SubscriptionServiceImplTest {
 		Node node = new Node();
 		node.setType(1000);
 		node.setId(1000);
+		
+		//TODO
 
-		subscriptionService.addLearnerContent(noteText, node);
+		//subscriptionService.addLearnerContent(noteText, node);
 
 	}
 
