@@ -20,16 +20,48 @@ pageEncoding="ISO-8859-1"%>
 <!--<script src="js/isotope/jquery-1.7.2.min.js"></script>-->
 <script type="text/javascript" src="../resources/js/jquery-1.8.0.min.js"></script>
 		<script type="text/javascript" src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
+		
+<c:url var="pollquestionsanswers" value="/secure/getallpollquestionsanswers/" />
 		<script type="text/javascript">
 			$(function(){
 				// Datepicker
 				$( ".datepicker" ).datepicker();			
 
 			});
+			
 function details(asd)
 {
+questionId = $('#edit_message'+asd+'').text();
+//alert(questionId);
 
-var val= $('#'+asd).html();
+	 $.ajax({
+		
+		  	type: 'GET',
+			url: '${pollquestionsanswers}'+questionId+'',
+			dataType: 'xml',
+			success: function( data ) {
+				$(data).find("QuestionsAnswersList").each(function(){
+				 var outputAnswers="";
+				outputAnswers+="Strongly agree <br/>";
+				outputAnswers+="<div style='width:"+$(this).find("answer1").text()+"%; height:20px; background-color:green;'></div>";
+				outputAnswers+=""+$(this).find("answer1").text()+"%vote<br/>";
+				outputAnswers+="Agree <br/>";
+				outputAnswers+="<div style='width:"+$(this).find("answer2").text()+"%; height:20px; background-color:red;'></div>";
+				outputAnswers+=""+$(this).find("answer2").text()+"%vote<br/>";
+				outputAnswers+="Disagree <br/>";
+				outputAnswers+="<div style='width:"+$(this).find("answer3").text()+"%; height:20px; background-color:blue;'></div>";
+				outputAnswers+=""+$(this).find("answer3").text()+"%vote";
+				 //alert(outputAnswers);
+				 $('#bars-answer').prepend(outputAnswers);
+				});
+			}
+	
+	});	
+	
+	
+
+var val= $('#row_selection_'+asd+'').html();
+
 $("#linksMeeting").fadeIn();
 $("#zReturn1").hide();
 
@@ -70,13 +102,13 @@ function showenddate()
 {
 var today = new Date();
 var last_week = Date.prev().week().toString('dd/MM/yyyy');
-var last_month = Date.prev().month();
+var last_month = Date.prev().month().toString('dd/MM/yyyy');
 
 document.getElementById("vDate").value=last_month;
 }				
 		</script>
 		
- <c:url var="getAllPollQues" value="/secure/getallpollquestions" />
+ <c:url var="getAllPollQues" value="/secure/getallpollquestion" />
   <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -93,11 +125,13 @@ $(document).ready(function() {
 					output_announcement+="<tr><th>Poll Date</th><th>Questions</th></tr>";
 					output_announcement+="</thead><tbody>";
 					
-					$(data).find("QuestionsList").each(function(index){
+					$(data).find("QuestionsList").each(function(){
+						$(data).find("Questions").each(function(index){
 						
-						output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("questionId").text()+"</label></a></td>";
-						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("questionName").text()+"</label></td></tr>";
+						output_announcement+="<tr id='row_selection_"+index+"'><td style=''><a href='#' onClick='details("+index+")'><label style='display:none' id='edit_message"+index+"'>"+ $(this).find("questionId").text()+"</label><label id='edit_messages"+index+"'>"+ $(this).find("questionDate").text()+"</label></a></td>";
+						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("questionName").text()+"</label></td></tr>"; 
 						
+						});
 												
 					});
 					output_announcement+="</tbody></table>";
@@ -110,6 +144,10 @@ $(document).ready(function() {
 	});
 	
 });
+function hideContents(){
+	$('#details-poll').hide();
+	$('#zReturn1').hide();
+}
 </script>
 </head>
 
@@ -153,16 +191,8 @@ $(document).ready(function() {
            		<br/>
           <div id="linksdetails">
 		  </div>
-            <div id="bars" width=600px;>
-			Strongly agree <br/>
-			<div style="width:300px; height:20px; background-color:green;"></div>
-			50%vote<br/>
-			Agree <br/>
-			<div style="width:150px; height:20px; background-color:red;"></div>
-			25%vote<br/>
-			Disagree <br/>
-			<div style="width:150px; height:20px; background-color:blue;"></div>
-			25%vote
+            <div id="bars-answer" width=600px;>
+			
 		  </div>
 		  </div>
             </div>
@@ -191,7 +221,7 @@ $(document).ready(function() {
    
    <div id="zReturn1" style="margin-top:5px; display:none;height:30px;"> 
 
- <input type="button" class="btn btn-info" id="btn_return" onclick="closeit()" name="btn_return" value="Return"/>
+ <input type="button" class="btn btn-info" id="btn_return" onclick="hideContents()" name="btn_return" value="Return"/>
         	</div>
             <!-- end zReturn -->
              

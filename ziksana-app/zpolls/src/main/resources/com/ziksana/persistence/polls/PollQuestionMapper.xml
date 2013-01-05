@@ -13,8 +13,24 @@
 		from utlzpollquestionresponse where pollquestionid=#{questionId}
 
 
-
-
+	</select>
+	
+	<select id="getPollQuestion" resultMap="pollQuestionMap"
+	parameterType="int">
+	
+	select 
+		ID, 
+		QuestionType,
+		QuestionText,
+		pollQuestionDate,
+		Answer1,
+		Answer2,
+		Answer3,
+		Answer4,
+		Answer5 
+		from 
+		utlzpollquestion where CreatorMemberRoleId =#{userMemberRoleId}
+	
 	</select>
 
 
@@ -41,7 +57,7 @@
 		<result property="answer3" column="Answer3" />
 		<result property="answer4" column="Answer4" />
 		<result property="answer5" column="Answer5" />
-
+		
 		<association property="question"
 			javaType="com.ziksana.domain.polls.PollQuestion">
 
@@ -62,7 +78,7 @@
 		<result property="answer3" column="Answer3" />
 		<result property="answer4" column="Answer4" />
 		<result property="answer5" column="Answer5" />
-	       
+	    <result property="pollDate" column="pollQuestionDate"/> 
 	</resultMap>
 
 

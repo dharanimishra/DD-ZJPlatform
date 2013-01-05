@@ -8,11 +8,11 @@
 <QuestionsList>
 
 		<c:forEach var="questions" items="${pollQuestionsList}">
-		
+			<Questions>
 			<questionId>${questions.ID}</questionId>
 			<questionDate>${questions.pollDate}</questionDate>
 			<questionName>${questions.questionText}</questionName>
-			
+			</Questions>
 		</c:forEach>
 
 </QuestionsList>

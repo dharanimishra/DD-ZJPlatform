@@ -1,5 +1,7 @@
 package com.ziksana.domain.polls;
 
+import java.util.Date;
+
 public class PollResult {
 	
 	private Integer questionId;
@@ -10,6 +12,7 @@ public class PollResult {
 	private Integer answer4;
 	private Integer answer5;
 	
+	private Date pollQuestionDate;
 	
 	
 	public Integer getQuestionId() {
@@ -53,6 +56,18 @@ public class PollResult {
 	}
 	public void setAnswer5(Integer answer5) {
 		this.answer5 = answer5;
+	}
+	/**
+	 * @return the pollQuestionDate
+	 */
+	public Date getPollQuestionDate() {
+		return pollQuestionDate;
+	}
+	/**
+	 * @param pollQuestionDate the pollQuestionDate to set
+	 */
+	public void setPollQuestionDate(Date pollQuestionDate) {
+		this.pollQuestionDate = pollQuestionDate;
 	}
 	
 	

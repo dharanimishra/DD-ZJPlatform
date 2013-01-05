@@ -402,8 +402,8 @@ function short_string(string){
 
                             
                             <div class="_upcoming _up1">
-                            	<div class="_cDate" style="color:orange;">
-                                	<b>Jan 7</b><br> <b>9.00 AM</b>
+                            	<div class="_cDate" style="color:#A80000;">
+                                	<b>Jan 7</b><br> <b>09.00 AM</b>
                                 </div>
                                 
                                 <div class="_uevent" style="">
@@ -423,11 +423,11 @@ function short_string(string){
                             
                             <div class="_upcoming _up2">
                             	<div class="_uDate">
-                                	<b>Jan 7</b><br> <b>2.00 PM</b> 
+                                	<b>Jan 7</b><br> <b>02.00 PM</b> 
                                 </div>
                                 
-                                <div class="_uevent">
-                                	Experiment with Playpen
+                                <div class="_uevent" style="padding-top:2px; text-align:middle;">
+                                	Experiment with<br/> Playpen
                                 </div>
                             </div>
                             

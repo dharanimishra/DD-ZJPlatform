@@ -82,7 +82,7 @@
 		
 		MemberAnswer= #{answer.text}, ResponseDate = now(), questionbankAnswerId=#{answer.id.storageID}
 		
- 		where TestQuestionId =#{question.id.storageID} and memberPersonalityTestId=#{answer.memPstTestId}
+ 		where TestQuestionId =#{question.questionId} and memberPersonalityTestId=#{answer.memPstTestId}
 		
 		
 	</update> 
@@ -128,7 +128,7 @@
 		JOIN pstmemberpersonalitytest mpt ON
 		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId
 		where
-		mpt.MemberRoleId=#{memberRoleId}
+		mpt.MemberRoleId=#{memberRoleId} order by r.ResponseDate desc
 
 	</select>
 

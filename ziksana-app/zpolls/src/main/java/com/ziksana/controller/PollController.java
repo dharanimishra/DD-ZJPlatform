@@ -50,6 +50,20 @@ public class PollController {
 		return modelView;
 	}
 	
+	@RequestMapping(value = "/getallpollquestion", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getPollQuestion() {
+
+
+		ModelAndView modelView = new ModelAndView("xml/pollQuestionsList");
+		
+
+		modelView.addObject("pollQuestionsList",pollService.getAllPollQuestion());
+
+		
+		return modelView;
+	}
+	
 /*
  * Poll Questions And Answers
 */

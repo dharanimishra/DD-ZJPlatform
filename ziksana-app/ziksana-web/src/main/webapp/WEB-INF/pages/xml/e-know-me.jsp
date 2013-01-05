@@ -358,7 +358,7 @@ function answeredQuestionDisplay(){
 	
 	
 	outputResult+="</table>";
-	outputResult+="<a class='' style='color:blue;float:right;' onClick='$(\"#answered_question_form_container\").show();'>Details</a>";
+	outputResult+="<a  class='' style='cursor:pointer;color:blue;float:right;' onClick='$(\"#answered_question_form_container\").show();'>Details</a>";
 	$('#answer-display').html(outputResult);
 }
 
@@ -387,9 +387,9 @@ function displayAnsweredQuestionContainer(loop){
 			$(data).find("option").each(function(){
 					
 		 				if(checkedvalex == $(this).attr('index')){
-		 				outputAns+="<br/><input type='radio' name='optbtn' checked value='"+$(this).attr('index')+"'/><label id='cur-id'>"+$(this).text()+"</label>";
+		 				outputAns+="<br/><input type='radio' name='optbtn' checked value='"+$(this).attr('index')+"/"+$(this).text()+"'/><label id='cur-id'>"+$(this).text()+"</label>";
 		 				}else
-		 				outputAns+="<br/><input type='radio' name='optbtn' value='"+$(this).attr('index')+"'/><label id='cur-id'>"+$(this).text()+"</label>";
+		 				outputAns+="<br/><input type='radio' name='optbtn' value='"+$(this).attr('index')+"/"+$(this).text()+"'/><label id='cur-id'>"+$(this).text()+"</label>";
 		 				
 			});
 		 	///
@@ -408,19 +408,20 @@ function displayAnsweredQuestionContainer(loop){
 function updateValues(){
 	 var editQuesid = $('#edit-qus-id').text();
 	 var editQuesval = $('#edit-qus-value').text();
-	 var editAnsId = $('input[name=q1]:radio:checked').val();
+	 var editAnsId = $('input[name=optbtn]:radio:checked').val();
 	var editCheckedAnswer = "";
-	
-	if(editAnsId == 1){
-		editCheckedAnswer +="Yes";
-	} else if(editAnsId == 2){
-		editCheckedAnswer +="No";
-	}
+	var split_ansid_ans = new Array();
+	split_ansid_ans = editAnsId.split("/");
+	/* alert(editQuesid);
+	alert(editQuesval);
+	alert(editAnsId);
+	alert("Id"+split_ansid_ans[0]);
+	alert("value"+split_ansid_ans[1]); */
 
 	
 	   
-	   $.post( '<c:url value='/secure/updateknowmebetter'/>'
-		        , {'editCheckedAnswer':editCheckedAnswer,'editQuesval':editQuesval,'editQuesid':editQuesid,'editAnsId':editAnsId}
+	    $.post( '<c:url value='/secure/updateknowmebetter'/>'
+		        , {'editCheckedAnswer':split_ansid_ans[1],'editQuesval':editQuesval,'editQuesid':editQuesid,'editAnsId':split_ansid_ans[0]}
 		        , function( data )
 		        {
 		        
@@ -429,7 +430,7 @@ function updateValues(){
 					
 
 		        }
-				 ); 
+				 );  
 	   
 }
 	</script>

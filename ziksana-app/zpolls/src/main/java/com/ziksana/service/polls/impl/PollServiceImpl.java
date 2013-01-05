@@ -216,6 +216,13 @@ public class PollServiceImpl implements PollService {
 		
 		
 	}
+
+	@Override
+	public List<PollQuestionEntity> getAllPollQuestion() {
+		// TODO Auto-generated method stub
+		return pollQuestionMapper.getPollQuestion(Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID()));
+	}
 	
 	
 	

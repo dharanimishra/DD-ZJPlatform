@@ -35,6 +35,8 @@ public interface PollService {
 	
 	public List<PollQuestionEntity>  getAllPollQuestions();
 	
+	public List<PollQuestionEntity>  getAllPollQuestion();
+	
 	
 	public PollResult getPollResultByQuestion(Integer questionId);
 	

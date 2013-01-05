@@ -208,7 +208,7 @@ $(document).ready(function() {
 					    draftcourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
 					          
 							draftcourse+="<p></p>";
-							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
+							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
 							draftcourse+="<div style='width: " + progress + ";' class='ui-progressbar-value ui-widget-header ui-corner-left'></div>";
 							draftcourse+="</div><span class='light-blue'>&nbsp;&nbsp;" + progress + " complete</span><p></p><p>&nbsp; </p>";
 						
@@ -221,7 +221,7 @@ $(document).ready(function() {
 					    console.log("Yes I am in");  
 					    reviewcourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
 					    reviewcourse+="<p></p>";
-					    reviewcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
+					    reviewcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
 					    
 					    
 					    console.log("it is written"); 
@@ -234,7 +234,7 @@ $(document).ready(function() {
 					    activecourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
 					    
 					    activecourse+="<p></p>";
-					    activecourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
+					    activecourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
 					    
 					    console.log("it is written"); 
 					});
@@ -275,7 +275,7 @@ $(document).ready(function() {
 	                    output+="<ol>";
 	                    output+="<li class='p-p _blogs bckground-blue-light'>";
 	                    output+="<input type='hidden' name='announcementId' value='"+$(this).find("announcementid").text()+"'/>";
-	                    output+="<div style='padding-left: 5px; '> <a class='text-size-px13  lbx-70-50' href='${getannouncementbyid}"+$(this).find("announcementid").text()+"'>"+short_string( $(this).find("message").text())+"</a><div class='todotip'>"+$(this).find("message").text()+" </div></div>";
+	                    output+="<div class='todotip_container' style='padding-left: 5px; '> <a class='text-size-px13  lbx-70-50' href='${getannouncementbyid}"+$(this).find("announcementid").text()+"'>"+short_string( $(this).find("message").text())+"</a><div class='todotip'>"+$(this).find("message").text()+" </div></div>";
 						 output+="<div style='font-weight:bold'>"+ $(this).find("announcementDate").text()+"</div>";
 	                    output+="<br/>";
 	                    output+="</li></ol><br/>";
@@ -345,10 +345,10 @@ function short_string(string){
                   
                    <div class="col-right-container for-rounded-box all-box-shadow">
                   		<div id="poll_placeholder"></div>
-            <c:url var="showannounpopup" value="/secure/showannouncementpopup" />
-            <div>
-            <span><a class="text-size-px11  lbx-70-50" href="${showannounpopup}" class="" style="color: #27b;">More..</a></span>
-            </div>
+            <c:url var="showpoll" value="/secure/getpollpopupwindow" />
+           <div>
+            <span><a class="text-size-px11  lbx-70-50" href="${showpoll}" class="" style="color: #27b;margin-left:200px;">More..</a></span>
+            </div> 
                    </div>
                   
                   <div class="col-right-container for-rounded-box all-box-shadow">

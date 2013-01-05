@@ -15,7 +15,7 @@
 <title>Zrecommend</title>
 <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" />
 <link rel="stylesheet" href="../resources/css/bootstrap.css" />
- <link href="../resources/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+ <link href="../resources/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" /> 
 
 <!--[if gte IE 9]>
   <style type="text/css">
@@ -38,7 +38,10 @@
  <c:url var="getAllRecommendations" value="/secure/getallrecomendations" />
   <script type="text/javascript">
   function closeIt(){
-	  $.fancybox.close();
+	 
+		  parent.jQuery.fancybox.close();
+
+		  
   }
 $(document).ready(function() {
 	
@@ -61,21 +64,21 @@ $(document).ready(function() {
 					$(data).find("recommenditem").each(function(index){
 						
 						extra_class = '';
-						if($(this).find("category").text() == '1000'){//All
-							//extra_class = 'new';
+						if($(this).find("category").text() == '1000'){//New
+							extra_class = 'new';
 							
 						}
-						if($(this).find("category").text() == '1001'){//New
+						if($(this).find("category").text() == '1001'){//Actioned
 							extra_class = 'actioned';
 						}
-						if($(this).find("category").text() == '1002'){//Actioned
+						if($(this).find("category").text() == '1002'){//Ignored
 							extra_class = 'ignored';
 						
 						}
-						if($(this).find("category").text()){//Ignored
-							//extra_class = 'all';
+						 if($(this).find("category").text() == '1000' && '1001' && '1002'){//All
+							extra_class = 'all';
 							
-						}
+						}  
 						
 						output+="<div class='zeniboxrewards "+extra_class+"' id='rec1'>";
 						output+="<div  class='zenititle'><label id='recomendId"+index+"'> "+ $(this).find("recommendationId").text()+"</label></div>";  
@@ -90,7 +93,7 @@ $(document).ready(function() {
 						
 						output+="<a class='myButtonLink' id='options' rel='tooltip' data-placement='bottom' href='#'   title='Add to Calendar'></a>";
 						output+="<a class='myButtonLink2 add_to_todo' id='options' rel='tooltip' data-placement='bottom' href='' onclick='createNewTodo("+index+")' title='Add To Do'></a>";  																																								
-						output+="<a class='myButtonLink3'  rel='tooltip' data-placement='bottom' href='' onclick='moveIgnored("+index+")' title='Ignore' id='_ignore4'></a></div><br /></div>";
+						output+="<a class='myButtonLink3 ignore_hide'  rel='tooltip' data-placement='bottom' href='' onclick='moveIgnored("+index+")' title='Ignore' id='_ignore4'></a></div><br /></div>";
 						
 						output+="<div class='zenilower'>   ";
 						output+="<div class='zeniiconimage zenileft'><img src='../resources/images/noimage.png' width='70' height='70'/></div>";
@@ -222,14 +225,14 @@ function moveIgnored(index){
    
     <div class="zeniisotope">
                     
-                    <li><a class="btn btn-info" onclick="show_all();">All</a> </li>
-                    <li><a class="btn btn-info" onclick="show_only_new();">New</a></li>
-                    <li> <a class="btn btn-info" onclick="show_only_actioned();">Actioned</a></li>
-                    <li> <a class="btn btn-info ign" onclick="show_only_ignored();">Ignored</a></li>
+                    <li><a  id="all_recommend" class="btn btn-info" onclick="show_all();">All</a> </li>
+                    <li><a  id="shownew_recommend" class="btn btn-info" onclick="show_only_new();">New</a></li>
+                    <li> <a id="Actioned_recommend" class="btn btn-info" onclick="show_only_actioned();">Actioned</a></li>
+                    <li> <a  id="Ignored_recommend" class="btn btn-info ign" onclick="show_only_ignored();">Ignored</a></li>
                                       
                     
           </div> <!--end of zeni isotope--> 
-  <div id="wrap">
+  <div id="wrap" style="height:500px; overflow:auto;">
     <div id="recommendations_container" >
    
   
@@ -250,36 +253,48 @@ function moveIgnored(index){
 	<!-- mousewheel plugin -->
 	<script src="../resources/js/scrollbar/jquery.mousewheel.min.js"></script>
 	<!-- custom scrollbars plugin -->
-	<script src="../resources/js/scrollbar/jquery.mCustomScrollbar.js"></script>
+	<!--  
+	<script src="../resources/js/scrollbar/jquery.mCustomScrollbar.js"></script>-->
 	<script>
-		(function($){
-			$(window).load(function(){
-				$("#wrap").mCustomScrollbar({
-					scrollButtons:{
-						enable:true
-					}
-				});
-			});
-		})(jQuery);
+	
+		
 		
 		
 		function show_only_new(){
+			  $('#shownew_recommend').addClass('btn-info-hover');
+			  $('#all_recommend').removeClass('btn-info-hover');
+			  $('#Actioned_recommend').removeClass('btn-info-hover');
+			  $('#Ignored_recommend').removeClass('btn-info-hover');
 			//hides all actioned and ignored recommendations.
 			$('#recommendations_container > div').show();
 			jQuery('#recommendations_container').find('div.actioned, div.ignored').hide();
 		}
 		
 		function show_only_actioned(){
+			  $('#shownew_recommend').removeClass('btn-info-hover');
+			  $('#all_recommend').removeClass('btn-info-hover');
+			  $('#Actioned_recommend').addClass('btn-info-hover');
+			  $('#Ignored_recommend').removeClass('btn-info-hover');
+			
 			$('#recommendations_container > div').hide();
 			jQuery('#recommendations_container').find('div.actioned').show();
 		}
 		
 		function show_only_ignored(){
+			  $('#shownew_recommend').removeClass('btn-info-hover');
+			  $('#all_recommend').removeClass('btn-info-hover');
+			  $('#Actioned_recommend').removeClass('btn-info-hover');
+			  $('#Ignored_recommend').addClass('btn-info-hover');
+			
 			$('#recommendations_container > div').hide();
 			jQuery('#recommendations_container').find('div.ignored').show();
 		}
 		
 		function show_all(){
+			   $('#shownew_recommend').removeClass('btn-info-hover');
+			   $('#all_recommend').addClass('btn-info-hover');
+			   $('#Actioned_recommend').removeClass('btn-info-hover');
+			   $('#Ignored_recommend').removeClass('btn-info-hover');
 			//shows all recommendations.
 			jQuery('#recommendations_container > div').show();
 		}
@@ -293,6 +308,19 @@ function moveIgnored(index){
 .actioned .add_to_todo {
   display: none;
 }
+.ignored .ignore_hide{
+  display:none;
+}
+
+.btn-info-hover {
+    background-color: #B80000;
+    background-image: linear-gradient(to bottom, #D80000, #FF0000);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
 </style>
 </body>
 </html>
