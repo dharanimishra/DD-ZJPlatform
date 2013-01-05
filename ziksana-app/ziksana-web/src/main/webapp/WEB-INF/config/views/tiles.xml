@@ -25,9 +25,9 @@
 	</definition>
 
 	<definition name="createcourse" extends="baseDivLayout">
-		<put-attribute name="head_static" value="/WEB-INF/pages/courses/create_static_head.jsp" />
+		<put-attribute name="head_static" value="/WEB-INF/pages/courses/create_static_head1.jsp" />
 		<put-attribute name="slogan" value="/WEB-INF/pages/courses/slogan.jsp" />
-		<put-attribute name="body" value="/WEB-INF/pages/courses/createcourses.jsp" />
+		<put-attribute name="body" value="/WEB-INF/pages/courses/definecourse.jsp" />
 		<put-attribute name="footer_static" value="/WEB-INF/pages/courses/create_static_footer.jsp" />
 	</definition>
 	
