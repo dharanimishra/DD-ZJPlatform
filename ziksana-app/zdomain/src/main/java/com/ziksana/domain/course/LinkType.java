@@ -12,7 +12,8 @@ public enum LinkType {
 	LOCALIZATION_INFO	(4, "Localization information"),
 	EXAMPLE_INFO		(5, "External URI"),
 	TEST_INFO			(6, "Test information"),
-	TOC					(7, "Table of Contents / Topic");
+	TOC					(7, "Table of Contents / Topic"),
+	NOTE				(8, "Note");
 
 	private final int id;
 	private final String name;

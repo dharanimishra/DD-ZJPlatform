@@ -9,6 +9,7 @@ import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
+import com.ziksana.domain.course.subscription.ContentReference;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 
@@ -35,6 +36,12 @@ public interface SubscriptionService {
 
 	public List<Reference> getEducatorSuggestedReferences(Integer courseId,
 			Node node);
+	
+	public List<ContentReference> getContentTOC(Integer courseId,
+			Node node);
+	
+	
+	
 
 	// end
 

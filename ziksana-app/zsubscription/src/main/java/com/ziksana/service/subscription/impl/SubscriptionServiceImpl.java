@@ -12,6 +12,7 @@ import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
+import com.ziksana.domain.course.subscription.ContentReference;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.persistence.subscription.SubscriptionMapper;
@@ -159,7 +160,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
-		return subscriptionMapper.getEducatorReferences(8, Integer
+		return subscriptionMapper.getEducatorReferences(1, Integer
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());
 
@@ -194,6 +195,18 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 			Integer componentId, Integer contentId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<ContentReference> getContentTOC(Integer courseId, Node node) {
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		
+		
+		return subscriptionMapper.getContentTOC(7, Integer
+				.valueOf(memberRoleId), courseId, node.getParent().getId(),
+				node.getId());
 	}
 
 }

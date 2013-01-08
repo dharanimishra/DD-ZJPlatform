@@ -51,7 +51,7 @@
 		sbnmembersubscriptionprogram subprgm ON
 		sbncourse.MemSubscriptionProgId=subprgm.MemSubscriptionProgId
 		where
-		cntenr.LinkType = 8
+		cntenr.LinkType=#{contentType}
 		<if test="subscrCourseId != null">
 		AND enr.CourseId=#{subscrCourseId} 
 		</if>
@@ -91,7 +91,7 @@
 		sbnmembersubscriptionprogram subprgm ON
 		sbncourse.MemSubscriptionProgId=subprgm.MemSubscriptionProgId
 		where
-		cntenr.LinkType = 1
+		cntenr.LinkType = #{contentType}
 		<if test="subscrCourseId != null">
 		AND enr.CourseId=#{subscrCourseId} 
 		</if>
@@ -105,6 +105,48 @@
 		
 
 	</select>
+	
+	
+	<select id="getContentTOC" resultMap="contentResultMap"
+		parameterType="map">
+
+		
+		select
+		cntenr.LinkElement,
+		cntenr.duration 
+
+		from
+		corcontentenrichment cntenr
+		JOIN
+		corenrichment enr ON
+		cntenr.enrichmentid= enr.enrichmentId
+		JOIN
+		sbnsubscriptioncourse sbncourse ON
+		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
+		JOIN
+		sbnmembersubscriptionprogram subprgm ON
+		sbncourse.MemSubscriptionProgId=subprgm.MemSubscriptionProgId
+		where
+		cntenr.LinkType = 7
+		<if test="subscrCourseId != null">
+		AND enr.CourseId=#{subscrCourseId} 
+		</if>
+		and 
+		enr.LearningComponentId=#{learnCompId} and 
+		enr.LearningContentId=#{learnCmpContId} and 
+		subprgm.MemberRoleId=#{memberRoleId}
+		
+		
+		
+		
+
+	</select>
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -184,6 +226,14 @@
 		<result property="noteTitle" column="NoteTitle" />
 		<result property="noteDescription" column="NoteDescription" />
 		<result property="noteDuration" column="NoteDuration" />
+
+	</resultMap>
+	
+	
+	<resultMap id="contentResultMap" type="com.ziksana.domain.course.subscription.ContentReference">
+
+		<result property="title" column="LinkElement" />
+		<result property="duration" column="duration" />
 
 	</resultMap>
 	

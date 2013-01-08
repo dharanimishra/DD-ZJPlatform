@@ -18,6 +18,7 @@
 
 		<result property="contentType" column="ContentType" />
 		<result property="contentUrl" column="ContentPath" />
+		<result property="numberOfThumbnails" column="NumberOfThumbnails" />
 
 
 	</resultMap>

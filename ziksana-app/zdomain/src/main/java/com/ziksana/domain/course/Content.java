@@ -11,6 +11,17 @@ public class Content {
 	Integer contentId;
 	Integer contentType;
 	String  contentUrl;
+	Integer numberOfThumbnails;
+	
+	
+
+	public Integer getNumberOfThumbnails() {
+		return numberOfThumbnails;
+	}
+
+	public void setNumberOfThumbnails(Integer numberOfThumbnails) {
+		this.numberOfThumbnails = numberOfThumbnails;
+	}
 	String contentTypeString;
 	
 	
