@@ -4,7 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html >
 <head>
-
+	 <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" />
+<!--	<link rel="stylesheet" href="../resources/css/bootstrap.css" /> -->
 	<link href="../resources/images/ziksana-icon.png" rel="shortcut icon"/>
 	<link rel="stylesheet" type="text/css" media="screen" href="../resources/css/basic-styles.css"/>
 		<link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/old-jquery-ui-1.8.21.custom.css">
@@ -12,13 +13,43 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../resources/css/type-setting.css"/>
   
 	<script src="../resources/js/jquery-1.7.2.min.js"></script>
-	
+	<script type="text/javascript" src="../resources/js/sortable.js"></script>
 	<script src="../resources/js/ui/jquery.ui.core.js"></script>
 	<script src="../resources/js/ui/jquery.ui.widget.js"></script>
 	<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
 	<script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
 	<script src="../resources/js/ui/jquery.ui.button.js"></script>
 	
+<style>
+.row-hover {
+
+ border:2px solid #27b ! important;
+ background-color:#66CCFF;
+ color: blue;
+ }
+.btn {
+  border-color: #c5c5c5;
+  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+} 
+.btn-info-knowme {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #49afcd;
+  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+  /*background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);*/
+  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+  border-color: #2f96b4 #2f96b4 #1f6377;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #2f96b4;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+</style>
 	<!-- unanswered script -->
 <c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
 <c:url var="showAnswered" value="/secure/getansweredquestions" />
@@ -51,7 +82,7 @@ $(document).ready(function() {
 					 optionArray = new Array();
 					 optionIndexArray = new Array();
 					 memberPersonalitytestId = 0;
-					 var option_index= "";
+					 
 					$(data).find("Questions").each(function(index){
 						
 						//var pairIdQuestion = $(this).find("questiobankid").text()+"="+$(this).find("Question").text();
@@ -60,19 +91,25 @@ $(document).ready(function() {
 						questionIdArray.push($(this).find("questiobankid").text());
 						
 						var options = "";
+						var option_index= "";
 				 		$(this).find("options").each(function(){
 				 			
 				 			$(this).find("option").each(function(){
 				 				
 				 				options +=  $(this).text()+"/";
 				 				option_index += $(this).attr('index')+"/";
+				 				
 				 			});
 				 			options = options.substring(0,options.length-1);
+				 			option_index = option_index.substring(0,option_index.length-1);
+				 			
 				 			optionArray.push(options);
 				 			optionIndexArray.push(option_index);	
-				 			
+				 			console.log(options);
+					 		console.log(optionIndexArray);
 				 		});
 				 		
+			 			
 					
 					});
 					// console.log("unAnswered Question Id ==>"+ questionIdArray);
@@ -103,36 +140,38 @@ function displayUnAnsweredPairs(current){
 	outputResult+="<div id='quest'>";
 	outputResult+="<div id='question_info_message'></div>";
 	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
-	outputResult+="<table width='180px' height='30px' >";
+	outputResult+="<table  width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
 	var optionsIdList = optionIndexArray[current].split("/");
-	
+	console.log(optionsIdList);
 	 for(var i = 0 ; i < optionsList.length ; i++){
+		 
 		 if(i==0){
-				outputResult+= "<tr><td ><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";
+			 
+				outputResult+= "<tr ><td>&nbsp;&nbsp;<input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";
 				} else {
-				outputResult+= "<tr><td ><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";	
+				outputResult+= "<tr><td >&nbsp;&nbsp;<input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";	
 				}
 		
-		
+		 
 	} 
 	
 	outputResult+="</table>";
 	outputResult+="<br/>";
 	
 	
-	outputResult+="<div id='question_buttons_container'>";
+	outputResult+="<div style='width:200px;margin-left:150px;'  id='question_buttons_container'>";
 	if(current!=0){
-		outputResult+="<div><input type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
+		outputResult+="<div width='50px'><input class='btn btn-info-knowme' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
 	}else{
-		outputResult+="<div><input  style='display: none;' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
+		outputResult+="<div width='50px'><input class='btn btn-info-knowme'  style='display: none;' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
 	}
-	outputResult+="<div><input type='submit' id='submit_question_button' onClick='submitValue()' value='Submit'/></div>";
+	outputResult+="<div width='50px'><input class='btn btn-info-knowme' type='submit' id='submit_question_button' onClick='submitValue()' value='Submit'/></div>";
 	if(current!=questionArray.length-1){
-	outputResult+="<div><input  type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
+	outputResult+="<div width='50px'><input class='btn btn-info-knowme'  type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
 	} else {
-	outputResult+="<div><input style='display: none;' type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
+	outputResult+="<div width='50px'><input class='btn btn-info-knowme' style='display: none;' type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
 	}
 	
 	outputResult+='</div>';	
@@ -264,8 +303,8 @@ background-color: #DAE8F2;
 <table style="width:600px;">
   <tr>
   <td colspan=2>
-<img align="left" style="margin-right:10px; margin-top: 6px; margin-right:5px; height:20px; width:20px; padding-left:5px;" src="../resources/images/icons/helpicon.png">
-<div class="knowmetop">You can answer a few personality questions to help us undersatnd you better..</div>
+<!-- <img align="left" style="margin-right:10px; margin-top: 6px; margin-right:5px; height:20px; width:20px; padding-left:5px;" src="../resources/images/icons/helpicon.png"> -->
+<div class="helptext">You can answer a few personality questions to help us undersatnd you better..</div>
   <!--
     <img class="knowme" src="../images/icons/zicons2.png" width="1" height="1" /><h2 class="bld c369 Slogen-one" style="font-size:1em;">You can answer a few personality questions to help us undersatnd you better..</h2><br>
 -->
@@ -346,25 +385,29 @@ $(document).ready(function() {
 
 function answeredQuestionDisplay(){
 	var outputResult="";
-	outputResult+="<table id='updateTable' value='hide' class='quest-table' border=1>";
-	outputResult+="<tr style='background-color:grey;'><th width='200px' style='color:#fff;'>&nbsp;&nbsp;&nbsp;QUESTIONS</th>";
+	outputResult+="<br/>";
+	outputResult+="<table id='updateTable' value='hide' class='table tab1' style='border:1px solid gray;'>";
+	outputResult+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>&nbsp;&nbsp;&nbsp;QUESTIONS</th>";
 	outputResult+="<th  width='200px' style='color:#fff;'>ANSWERED DATE</th></tr>";
 	
 	
 	for(var i = 0; i<answeredQuestion.length;i++){
-		outputResult+="<tr><td width='200px'><a  style='text-decoration:none; margin-left:0px;' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswerId"+i+"'>"+answerAnsIndex[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td></tr>";
+		outputResult+="<tr id='knowmew_row_"+i+"' ><td  width='200px'><a  style='text-decoration:none; margin-left:0px;' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswerId"+i+"'>"+answerAnsIndex[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td></tr>";
 		
 		}
 	
 	
 	outputResult+="</table>";
-	outputResult+="<a  class='' style='cursor:pointer;color:blue;float:right;' onClick='$(\"#answered_question_form_container\").show();'>Details</a>";
+	outputResult+="<a  class='' style='cursor:pointer;color:blue;float:right;margin-top:30px;' onClick='$(\"#answered_question_form_container\").show();'>Details</a>";
 	$('#answer-display').html(outputResult);
 }
 
 
 <c:url var="showUnAnsweredbyId" value="/secure/getunansweredquestionsbyid/" />
 function displayAnsweredQuestionContainer(loop){
+	
+	 $('#updateTable tr').removeClass('row-hover');
+		$('#knowmew_row_'+loop+'').addClass('row-hover'); 
 	var outputAns = "";
 	 editQuestion = $('#questionUpdate'+loop+'').text();
 	 editChoice = $('#questionAnswer'+loop+'').text();
@@ -378,12 +421,12 @@ function displayAnsweredQuestionContainer(loop){
 		success: function( data ) {
 			
 			outputAns+="<div style='display:none;' id='answered_question_form_container'>";
-			outputAns+="<br/></br><u><p>Hello, View or update the Answer:</p></u>";
+			outputAns+="<br/></br><u><p>View or update the Answer:</p></u>";
 			outputAns+="<div>";
 			outputAns+="<div id='question_info_message_update'></div>";
 			outputAns+="<br/></br><label style='display:none;' id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
 					
-		 	///		
+		 		
 			$(data).find("option").each(function(){
 					
 		 				if(checkedvalex == $(this).attr('index')){
@@ -393,8 +436,11 @@ function displayAnsweredQuestionContainer(loop){
 		 				
 			});
 		 	///
-			outputAns+="<button onClick='$(\"#answered_question_form_container\").hide();' class='f-rt'>Return</button>"; 
-			outputAns+="<button  onClick='updateValues()' class='f-rt'>Submit Revisions</button>"; 
+		 	outputAns+="</div>"; 
+		 	outputAns+="<div>"; 
+		 	outputAns+="<button class='btn btn-info-knowme' style='margin-left:50px;margin-top:30px;height:30px;' onClick='updateValues()' class='f-rt'>Submit Revisions</button>";
+			outputAns+="<button class='btn btn-info-knowme'style='margin-left:50px;margin-top:30px;height:30px;' onClick='$(\"#answered_question_form_container\").hide();' class='f-rt'>Return</button>"; 
+			 
 			outputAns+="</div>"; 
 			$('#click-det').html(outputAns);		 	
 			

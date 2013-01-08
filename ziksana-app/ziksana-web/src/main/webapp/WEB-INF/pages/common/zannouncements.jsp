@@ -27,6 +27,13 @@
 <!--<script src="js/isotope/jquery-1.7.2.min.js"></script>-->
 <script type="text/javascript" src="../resources/js/jquery-1.8.0.min.js"></script>
 		<script type="text/javascript" src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
+<style>
+.row-hover {
+ background-color:#66CCFF ! important;
+
+ color: blue;
+}
+</style>
 <script type="text/javascript">
 	$(function(){
 				
@@ -41,22 +48,25 @@
 		}	
 		function showdate()
 		{
-		var today = Date.today().toString('dd/MM/yyyy');
+		var today = Date.today().toString('MM/dd/yyyy');
 		
 		document.getElementById("endDate").value=today;
 		}
 		function showenddate()
 		{
 		var today = new Date();
-		var last_week = Date.prev().week().toString('dd/MM/yyyy');
+		var last_week = Date.prev().week().toString('MM/dd/yyyy');
 		var last_month = Date.prev().month();
 		
 		document.getElementById("startDate").value=last_week;
 		}	
 			
+
 </script>
 
 <!-- Announcement  -->
+
+<c:url var="getAnnouncementAllDateUrl" value='/secure/getannouncementsallbydate'/>
 <c:url var="getInstitutionAnnouncementUrl" value='/secure/getinstitutionannouncements'/>
 <c:url var="getInstitutionunitAnnouncementUrl" value='/secure/getinstitutionunitannouncements'/>
 <c:url var="getCourseAnnouncementUrl" value='/secure/getcourseannouncements'/>
@@ -80,27 +90,30 @@ $(document).ready(function() {
 			url: '${showannouncementsall}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-								console.log( 'data:', data);
-					}
+					
 					var output_announcement="";
-					output_announcement+="<table class='table reviewtable'>";
-					output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-					output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
-					output_announcement+="</thead><tbody>";
+					output_announcement+="<table class='table tb1'>";
+					output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
+					output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
+					output_announcement+="<tbody>";
+					$(data).find("announcementsList").each(function(){
+						if($(this).find("announcementSize").text()==0){
+							output_announcement+="<tr><td>No New Announcements</td></tr>";
+						}
 					$(data).find("announcements").each(function(index){
 						
 					
 						
 						
-						output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
+						output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+						output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 						
 	                   	
 												
 					});
+					});
 					output_announcement+="</tbody></table>";
-					output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+					//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container1\").show();'>Details</a>";
 					//console.log("Announcements: " + output_announcement);
 				
 					
@@ -115,16 +128,20 @@ $(document).ready(function() {
 }	
 	
 }); 
- outputDetails_description = "";
+ 
 function getMessagedescription(indexValue){
 	
-	var message= $('#edit_message'+indexValue+'').text();
-	var description = $('#edit_description'+indexValue+'').text();
-	
-	outputDetails_description+="<div  style='display:none;' id='row_selection_form_container'>";
+ $('.tb1 tr').removeClass('row-hover');
+	$('#announcement_row_'+indexValue+'').addClass('row-hover'); 
+	outputDetails_description = "";
+	var announcement_message= $('#announcement_row_'+indexValue+' .edit_message').text();
+	var announcement_date = $('#announcement_row_'+indexValue+' .edit_description').text();
+	var announcement_dec = $('#announcement_row_'+indexValue+' .edit_desc').text();
+
+	outputDetails_description+="<div  style='display:none;' id='row_selection_form_container1'>";
 	outputDetails_description+="<br/><b> Details of the select Row in the table should be displayed here</b>";
 	outputDetails_description+="<div>";
-	outputDetails_description+="<br/></br><label>"+message+"</label><label >"+description+"</label>";
+	outputDetails_description+="<br/></br><label>"+announcement_message+"</label><label >"+announcement_date+"</label><label style='color:blue; font-weight:bold;' >"+announcement_dec+"</label>";
 	outputDetails_description+="</div>";
 	
 	//$("#linksMeeting").fadeIn();
@@ -137,71 +154,78 @@ function getCategoryByBetweenDates(){
 	var startDate = $('#startDate').val();
 	var endDate = $('#endDate').val();
 	var memberRoleId = 100;
+	var startDate1 = startDate.toString('dd/MM/yyyy');
+	var endDate1 = endDate.toString('dd/MM/yyyy');
 	
 	if(categoryName == 'All'){
-		$.ajax({
-		  	type: 'GET',
-			url: '${showannouncements}',
-			dataType: 'xml',
-			success: function( data ) {
-					if (console && console.log){
-								console.log( 'data:', data);
-					}
-					var output_announcement="";
-					output_announcement+="<table class='table reviewtable'>";
-					output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-					output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
-					output_announcement+="</thead><tbody>";
-					$(data).find("announcements").each(function(index){
-						
-					
-						
-						
-						output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
-						
-	                   	
-												
-					});
-					output_announcement+="</tbody></table>";
-					output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
-					//console.log("Announcements: " + output_announcement);
-				
-					
-					$('#announcement_placeholder').html(output_announcement);
-				
-					
-					 
-					
-			}
-	});
-	
-	
-	} else if(categoryName == 'University'){
-		
-		 $.post( '${getInstitutionAnnouncementUrl}'
-			        , {'memberRoleId':memberRoleId,'startDate':startDate,'endDate':endDate,}
+		 $.post( '${getAnnouncementAllDateUrl}'
+			        , {'memberRoleId':memberRoleId,'startDate':startDate1,'endDate':endDate1,}
 			        , function( data )
 			        {
 			        
 			        	var output_announcement="";
-						output_announcement+="<table class='table reviewtable'>";
-						output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-						output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
-						output_announcement+="</thead><tbody>";
+			        	output_announcement+="<table class='table tb1'>";
+						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
+						output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
+						output_announcement+="<tbody>";
+						$(data).find("announcementsList").each(function(){
+							if($(this).find("announcementSize").text()==0){
+								output_announcement+="<tr><td>No New Announcements</td></tr>";
+							}
 						$(data).find("announcements").each(function(index){
 							
 						
 							
 							
-							output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
+							output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+							output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 							
 		                   	
 													
 						});
+						});
 						output_announcement+="</tbody></table>";
-						output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+						//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+						//console.log("Announcements: " + output_announcement);
+					
+						
+						$('#announcement_placeholder').html(output_announcement);
+						
+
+			        }
+					 ); 
+
+	
+	} else if(categoryName == 'University'){
+		
+		 $.post( '${getInstitutionAnnouncementUrl}'
+			        , {'memberRoleId':memberRoleId,'startDate':startDate1,'endDate':endDate1,}
+			        , function( data )
+			        {
+			        
+			        	var output_announcement="";
+			        	output_announcement+="<table class='table tb1'>";
+						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
+						output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
+						output_announcement+="<tbody>";
+						$(data).find("announcementsList").each(function(){
+							if($(this).find("announcementSize").text()==0){
+								output_announcement+="<tr><td>No New Announcements</td></tr>";
+							}
+						$(data).find("announcements").each(function(index){
+							
+						
+							
+							
+							output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+							output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
+							
+		                   	
+													
+						});
+						});
+						output_announcement+="</tbody></table>";
+						//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
 						//console.log("Announcements: " + output_announcement);
 					
 						
@@ -212,28 +236,33 @@ function getCategoryByBetweenDates(){
 					 ); 
 	} else if(categoryName == 'Department'){
 		 $.post( '${getInstitutionunitAnnouncementUrl}'
-			        , {'memberRoleId':memberRoleId,'startDate':startDate,'endDate':endDate,}
+			        , {'memberRoleId':memberRoleId,'startDate':startDate1,'endDate':endDate1,}
 			        , function( data )
 			        {
 			        
 			        	var output_announcement="";
-						output_announcement+="<table class='table reviewtable'>";
-						output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-						output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
-						output_announcement+="</thead><tbody>";
+			        	output_announcement+="<table class='table tb1'>";
+						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
+						output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
+						output_announcement+="<tbody>";
+						$(data).find("announcementsList").each(function(){
+							if($(this).find("announcementSize").text()==0){
+								output_announcement+="<tr><td>No New Announcements</td></tr>";
+							}
 						$(data).find("announcements").each(function(index){
 							
 						
 							
 							
-							output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
+							output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+							output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 							
 		                   	
 													
 						});
+						});
 						output_announcement+="</tbody></table>";
-						output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+						//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
 						//console.log("Announcements: " + output_announcement);
 					
 						
@@ -244,28 +273,33 @@ function getCategoryByBetweenDates(){
 				); 
 	} else if(categoryName == 'Course'){
 		 $.post( '${getCourseAnnouncementUrl}'
-			        , {'memberRoleId':memberRoleId,'startDate':startDate,'endDate':endDate,}
+			        , {'memberRoleId':memberRoleId,'startDate':startDate1,'endDate':endDate1,}
 			        , function( data )
 			        {
 			        
 			        	var output_announcement="";
-						output_announcement+="<table class='table reviewtable'>";
-						output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-						output_announcement+="<tr><th>Announcement</th><th>Date of Announcement</th></tr>";
-						output_announcement+="</thead><tbody>";
+			        	output_announcement+="<table class='table tb1'>";
+						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
+						output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
+						output_announcement+="<tbody>";
+						$(data).find("announcementsList").each(function(){
+							if($(this).find("announcementSize").text()==0){
+								output_announcement+="<tr><td>No New Announcements</td></tr>";
+							}
 						$(data).find("announcements").each(function(index){
 							
 						
 							
 							
-							output_announcement+="<tr><td style=' width:350px;'><a href='#' onClick='getMessagedescription("+index+")'><label id='edit_message"+index+"'>"+ $(this).find("message").text()+"</label></a></td>";
-							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("validUntil").text()+"</label></td></tr>";
+							output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+							output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 							
 		                   	
 													
 						});
+						});
 						output_announcement+="</tbody></table>";
-						output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
+						//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
 						//console.log("Announcements: " + output_announcement);
 					
 						
@@ -311,25 +345,35 @@ function getCategoryByBetweenDates(){
                                   
              
 			  <input type="text" id="endDate" style="display:inline;width:80px;" class="datepicker" title="Date Required" value="Value (Date)"/> 
-            <a id="_go" onCLick=getCategoryByBetweenDates() class="aClass">Go</a>
+            <a id="_go" onCLick="getCategoryByBetweenDates()" class="aClass">Go</a>
         
 		</div>
-        <!-- end contentGroup -->
-        
+        <!-- end contentGroup getCategoryByBetweenDates-->
+      
 		
 		
 		<div id="showGroup" class="zAnn">
               
-                <div id="tblGroup">
+                <div id="tblGroup" style="height:400px; overflow: auto;">
 					<div id=announcement_placeholder>
 					</div>
 					
                 </div>
+				<a href="#"  style="float:right;margin-top:10px;"  onClick="show_Announcement_Sigle_row_values()" >Details</a>  
 		
 				<div id="linksMeeting" style="border-top:1px solid grey">
             	<br/>
                
-           		
+  <script type="text/javascript">
+  function show_Announcement_Sigle_row_values(){
+	  $('#row_selection_form_container1').show();
+	  $('#return_announcements').show();
+  }
+  function hide_Announcement_Sigle_row_values(){
+	  $('#row_selection_form_container1').hide();
+	  $('#return_announcements').hide();
+  }
+  </script>         		
           
 		  
 		   <div id="linksdetails">
@@ -360,7 +404,9 @@ function getCategoryByBetweenDates(){
            
    
    <div id="zReturn" style="margin-top:5px; height:30px;">    		 
-   <button style="float:right;" class="btn btn-info" onClick="$('#row_selection_form_container').hide();" name="btn_return" >Return</button>
+   <button id="return_announcements" style="float:right;display:none;" class="btn btn-info" onClick="hide_Announcement_Sigle_row_values()" name="btn_return" >Return</button>
+   
+   
 
         	</div>
             <!-- end zReturn -->
@@ -369,5 +415,7 @@ function getCategoryByBetweenDates(){
     <!-- end zAnnouncement -->
 
 </div>
+
 </body>
+
 </html>

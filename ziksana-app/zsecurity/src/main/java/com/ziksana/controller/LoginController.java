@@ -118,6 +118,7 @@ public class LoginController {
 			
 			ModelAndView mvHome = new ModelAndView("common/pre_launch");
 			//ModelAndView mvHome = new ModelAndView("dashboard-div");
+			logger.info("firstName"+member.getFirstName());
 			mvHome.addObject("firstname", member.getFirstName());
 			mvHome.addObject("lastname", member.getLastName());
 			mvHome.addObject("membertype", member.getMemberType());

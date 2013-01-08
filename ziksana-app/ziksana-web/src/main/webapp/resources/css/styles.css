@@ -2673,6 +2673,20 @@ z-index: 99;
   z-index: 99;
 }
 
+.todotip_container:hover .announcementtip{display: inline-block;}
+.announcementtip {
+  background: none repeat scroll 0 0 white;
+  border-radius: 2px 2px 2px 2px;
+  box-shadow: 0 0 4px black;
+  display: none;
+  left: 10;
+  padding: 0.5em;
+  position: relative;
+  top: 50;
+  width: 190px;
+  z-index: 99;
+}
+
 #todo_category_name{
 	text-transform: capitalize;
 }

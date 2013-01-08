@@ -5,13 +5,13 @@
 	<select id="getRecommendations" resultMap="recommendationResultMap"
 		parameterType="int">
 		SELECT * FROM memmemberziksanarecommendation WHERE
-		RecommendationCategory = #{category}
+		RecommendationCategory = #{category} order by creationdate  desc
 	</select>
 	
 	
 	<select id="getAllRecommendations" resultMap="recommendationResultMap">
 		
-		SELECT * FROM memmemberziksanarecommendation 
+		SELECT * FROM memmemberziksanarecommendation order by creationdate  desc
 	</select>
 	
 	<select id="getMapperRecommendation" resultMap="recommendationResultMap">

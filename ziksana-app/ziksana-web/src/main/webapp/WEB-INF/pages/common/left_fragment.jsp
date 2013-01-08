@@ -3,10 +3,37 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" type="text/css" href="resources/css/masks.css" />
+<script type="text/javascript" src="resources/js/sortable.js"></script>
+<!--
+
+-->
+
 <style>
 #question_info_message {padding: .5em; color: green; font-family: arial, sans-serif;}
 #question_buttons_container{display:table; width: 100%;}   
-#question_buttons_container > div{display:table-cell;}  
+#question_buttons_container > div{display:table-cell;} 
+.btn {
+  border-color: #c5c5c5;
+  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+} 
+.btn-info-knowme {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #49afcd;
+  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+  /*background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);*/
+  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+  border-color: #2f96b4 #2f96b4 #1f6377;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #2f96b4;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
 </style>
 
 
@@ -277,7 +304,7 @@ function displayUnAnsweredPairs(current){
 	outputResult+="<div id='question_info_message'></div>";
 	outputResult+="<div id='quest'>";
 	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
-	outputResult+="<table width='180px' height='30px' >";
+	outputResult+="<table class='sortable' width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
 	var optionsIdList = optionIndexArray[current].split("/");
@@ -286,9 +313,9 @@ function displayUnAnsweredPairs(current){
 	 for(var i = 0; i < optionsList.length ; i++){
 		
 			if(i==0){
-			outputResult+= "<tr><td ><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";
+			outputResult+= "<tr id='"+i+"'><td ><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";
 			} else {
-			outputResult+= "<tr><td ><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";	
+			outputResult+= "<tr id='"+i+"'><td ><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";	
 			}
 		}	 
 	
@@ -297,10 +324,11 @@ function displayUnAnsweredPairs(current){
 	
 	
 
-		outputResult+="<button class='f-rt' id='knowme-save' onClick='submitValue()'>Submit</button>";
+		outputResult+="<button class='f-rt btn btn-info-knowme' id='knowme-save' onClick='submitValue()'>Submit</button>";
 	
 	  
-	   outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'><span class='text-pading-right'>More</span></span></a>";
+	   outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'>More</span></a></div>";
+	  // outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block' style='color: #27b;'>More..</a></div>";
 	
 		 
 	
@@ -344,6 +372,8 @@ function submitValue(){
 							//alert("Answer Submitted Successfully");
 							$('#question_info_message').html("Answer Submitted Successfully");
 							$("#knowme-save").attr('disabled','true');
+							setTimeout('get_and_UnAnswered_questions()',2000);
+							
 				        }
 						, 'xml' );   
 		  

@@ -32,6 +32,8 @@ public interface AnnouncementMapper {
 	public Announcement getAnnouncementById(@Param("memberRoleId") Integer memberRoleId,@Param("announcementId") Integer announcementId);
 	
 	//get Announcements BY Category
+	public List<Announcement> getAllAnnouncementsByDate(@Param("memberRoleId") Integer memberRoleId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+	
 	public List<Announcement> getInstitutionAnnouncements(@Param("memberRoleId") Integer memberRoleId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
 	
 	public List<Announcement> getInstitutionUnitAnnouncements(@Param("memberRoleId") Integer memberRoleId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);

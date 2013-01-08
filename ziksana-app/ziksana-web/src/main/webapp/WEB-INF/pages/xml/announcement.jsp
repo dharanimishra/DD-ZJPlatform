@@ -11,6 +11,7 @@
 			<description>${announcements.description}</description>
 			<validUntil>${announcements.validUntil}</validUntil>
 			<announcementDate>${announce.announcementDate}</announcementDate>
+			<description>${announce.description}</description>
 		</announcements> 
 		
 		

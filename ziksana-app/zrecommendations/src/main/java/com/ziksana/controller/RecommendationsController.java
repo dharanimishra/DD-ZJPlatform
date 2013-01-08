@@ -100,13 +100,13 @@ public class RecommendationsController {
 	}
 	
 	@RequestMapping(value = "/updaterecommendation", method = RequestMethod.POST)
-	public String updateRecommendationCategory(
+	public void updateRecommendationCategory(
 			@RequestParam(value = "recommendationId", required = true) Integer recommendationId,
 			@RequestParam(value = "category", required = true) Integer category){
 		
 		recomendationsService.updateRecommendationsCategoryById(recommendationId, category);
 		
-		return "Recommendation Updated Successfully";
+	
 			
 }
 	

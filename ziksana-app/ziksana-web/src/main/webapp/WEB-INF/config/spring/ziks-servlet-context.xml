@@ -33,6 +33,9 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="json-View"
+          class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>   
 
 	<bean id="tilesViewResolver"	class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="order" value="1"/>

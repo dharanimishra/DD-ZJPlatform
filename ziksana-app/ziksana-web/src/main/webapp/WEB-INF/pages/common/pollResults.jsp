@@ -20,6 +20,12 @@ pageEncoding="ISO-8859-1"%>
 <!--<script src="js/isotope/jquery-1.7.2.min.js"></script>-->
 <script type="text/javascript" src="../resources/js/jquery-1.8.0.min.js"></script>
 		<script type="text/javascript" src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
+<style type="text/css">
+.row-hover {
+  background-color:#66CCFF ! important;
+ color: blue;
+}
+</style>
 		
 <c:url var="pollquestionsanswers" value="/secure/getallpollquestionsanswers/" />
 		<script type="text/javascript">
@@ -31,6 +37,8 @@ pageEncoding="ISO-8859-1"%>
 			
 function details(asd)
 {
+	$('.tb1 tr').removeClass('row-hover');
+	$('#edit_message'+asd+'').addClass('row-hover');
 questionId = $('#edit_message'+asd+'').text();
 //alert(questionId);
 
@@ -108,7 +116,7 @@ document.getElementById("vDate").value=last_month;
 }				
 		</script>
 		
- <c:url var="getAllPollQues" value="/secure/getallpollquestion" />
+ <c:url var="getAllPollQues" value="/secure/getallpollquestions" />
   <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -120,10 +128,10 @@ $(document).ready(function() {
 								console.log( 'Recommend of data:', data);
 					}
 					var output_announcement="";
-					output_announcement+="<table class='table reviewtable'>";
-					output_announcement+="<thead style='font-size:12px; font-family:tahoma; font-style:normal; color:#666;'>";
-					output_announcement+="<tr><th>Poll Date</th><th>Questions</th></tr>";
-					output_announcement+="</thead><tbody>";
+					output_announcement+="<table class='table tb1'>";
+					output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Poll Date</th>";
+					output_announcement+="<th  width='200px' style='color:#fff;'>Questions</th></tr>";
+					output_announcement+="<tbody>";
 					
 					$(data).find("QuestionsList").each(function(){
 						$(data).find("Questions").each(function(index){

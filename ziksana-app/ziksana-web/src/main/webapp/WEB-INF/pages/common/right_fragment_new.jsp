@@ -269,21 +269,25 @@ $(document).ready(function() {
 					}
 					var output="";
 					
-					
+					$(data).find("announcementsList").each(function(){
+						if($(this).find("announcementSize").text()==0){
+							output+="No Announcement Display";
+						}
+						
 					$(data).find("announcements").each(function(index){
 						
 	                    output+="<ol>";
 	                    output+="<li class='p-p _blogs bckground-blue-light'>";
 	                    output+="<input type='hidden' name='announcementId' value='"+$(this).find("announcementid").text()+"'/>";
-	                    output+="<div class='todotip_container' style='padding-left: 5px; '> <a class='text-size-px13  lbx-70-50' href='${getannouncementbyid}"+$(this).find("announcementid").text()+"'>"+short_string( $(this).find("message").text())+"</a><div class='todotip'>"+$(this).find("message").text()+" </div></div>";
+	                    output+="<div class='todotip_container' style='padding-left: 5px; '> <a class='text-size-px13  lbx-70-50' href='${getannouncementbyid}"+$(this).find("announcementid").text()+"'>"+short_string( $(this).find("message").text())+"</a><div class='announcementtip'>"+$(this).find("message").text()+" </div></div>";
 						 output+="<div style='font-weight:bold'>"+ $(this).find("announcementDate").text()+"</div>";
 	                    output+="<br/>";
 	                    output+="</li></ol><br/>";
-	                    
+						
 	                 
 												
 					});
-
+					});
 					console.log("Announcements: " + output);
 				
 					

@@ -130,7 +130,7 @@ parent.jQuery.fancybox.close();
 						
 									
 				});
-					output+="<hr/></div><a class='btn btn-info f-r' onclick='closeit()'> Return </a></div>";
+					output+="<hr/><a class='btn btn-info f-r' onclick='closeit()'> Return </a></div></div>";
 					
 					//console.log("output string: " + output);
 					$('#alertplaceholder').html( output);
@@ -186,7 +186,7 @@ parent.jQuery.fancybox.close();
 	</script>
 	<div  class="alert_todo" style="margin-left:70px;" >
 	 
-	                   		 <div id= "alertplaceholder" style="width:600px;" class="alerts" >
+	                   		 <div id= "alertplaceholder" style="width:600px;height:500px;" class="alerts" >
 	        				 
 	                  
 	                        </div> 

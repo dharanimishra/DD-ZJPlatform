@@ -17,6 +17,14 @@
 		select * from corannouncement  where MemberRoleId = #{memberRoleId} and announcementdate  between SUBDATE(CURDATE(), 7) and CURDATE()  
 	</select>
 	
+			<select id="getAllAnnouncementsByDate" resultMap="announcementResultMap"  parameterType="map">
+				SELECT * FROM corannouncement WHERE 
+				 
+				MemberRoleId = #{memberRoleId} AND 
+				AnnouncementDate between  #{startDate}  and  #{endDate}
+				
+			</select>
+	
 			<select id="getInstitutionAnnouncements" resultMap="announcementResultMap"  parameterType="map">
 				SELECT * FROM corannouncement WHERE 
 				InstitutionId is not null and 

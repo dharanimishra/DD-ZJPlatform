@@ -47,16 +47,21 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public List<PollResultNQuestion> getPollQuestionsAndResults() {
 
+		
+		List<PollResultNQuestion> pollQuestionsNResults = new ArrayList<PollResultNQuestion>();
+		
+		/*
 		List<PollQuestionResult> pollResults = pollQuestionMapper
 				.getPollResults(Integer.valueOf(ThreadLocalUtil.getToken()
 						.getMemberPersonaId().getStorageID()));
+		
 
 		System.out.println(" THE MEMBER PERSONA ID IN POLL IS "+Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID()));
 		
 		System.out.println(" THE POLL RESULTS SIZE IS "+pollResults.size());
 		
-		List<PollResultNQuestion> pollQuestionsNResults = new ArrayList<PollResultNQuestion>();
+		
 
 		for (PollQuestionResult pollResult : pollResults) {
 			PollResultNQuestion pollQuestionResult = new PollResultNQuestion();
@@ -70,6 +75,7 @@ public class PollServiceImpl implements PollService {
 
 			pollQuestionsNResults.add(pollQuestionResult);
 		}
+		*/
 
 		List<PollQuestionEntity> pollQuestions = pollQuestionMapper
 				.getPollQuestions(Integer.valueOf(ThreadLocalUtil.getToken()

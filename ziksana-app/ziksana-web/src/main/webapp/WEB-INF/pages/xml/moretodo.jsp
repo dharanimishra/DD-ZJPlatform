@@ -218,7 +218,7 @@ function capitalize(s){
 </script>
  <!-- End -->
 <title>Todo List</title>
-<body >
+<body bgcolor="#ffffff" >
 <!-- <div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div> -->
 <div class="helptext">
         	My To Do's

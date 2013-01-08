@@ -28,6 +28,8 @@ public interface AnnouncementService {
 	public Announcement getAnnouncementById(int memberRoleId,int anouncementId);
 	
 	//get Announcements BY Category
+	public List<Announcement> getAllAnnouncementsByDate(int memberRoleId,String startDate, String endDate);
+	
 	public List<Announcement> getInstitutionAnnouncements(int memberRoleId,String startDate, String endDate);
 		
 	public List<Announcement> getInstitutionUnitAnnouncements(int memberRoleId,String startDate, String endDate);

@@ -3,6 +3,9 @@
  */
 package com.ziksana.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.announcements.Announcement;
 import com.ziksana.service.announcements.AnnouncementService;
 
 
@@ -39,7 +43,10 @@ public class AnnouncementsController {
 	public @ResponseBody ModelAndView getAnnouncement(@PathVariable Integer memberRoleId) {
 		
 		ModelAndView mav = new ModelAndView("xml/announcements");
-		
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		announcementList= announcementService.getAllAnnouncement(memberRoleId);
+		int announcementSize = announcementList.size();
+		mav.addObject("announcementSize", announcementSize);
 		mav.addObject("announcements", announcementService.getAllAnnouncement(memberRoleId));
 		
 		logger.info("announcement ID: " + memberRoleId);
@@ -66,9 +73,12 @@ public class AnnouncementsController {
 	public @ResponseBody ModelAndView getAnnouncementById(@PathVariable Integer memberRoleId) {
 		
 		ModelAndView mav = new ModelAndView("xml/announcements");
-		
+
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		announcementList = announcementService.getAnnouncement(memberRoleId);
+		int announcementSize = announcementList.size();
 		mav.addObject("announcements", announcementService.getAnnouncement(memberRoleId));
-		
+		mav.addObject("announcementSize", announcementSize);
 		logger.info("announcement ID: " + memberRoleId);
 		return mav;
 	}
@@ -98,6 +108,25 @@ public class AnnouncementsController {
 		
 	}
 	
+	@RequestMapping(value = "/getannouncementsallbydate", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView getAnnouncementsAllByDate(
+			@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
+			@RequestParam(value = "startDate", required = true) String startDate,
+			@RequestParam(value = "endDate", required = true) String endDate){
+		
+		
+		ModelAndView mav = new ModelAndView("xml/announcements");
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		announcementList= announcementService.getAllAnnouncementsByDate(memberRoleId, startDate, endDate);
+		int announcementSize = announcementList.size();
+		mav.addObject("announcementSize", announcementSize);
+		mav.addObject("announcements", announcementService.getAllAnnouncementsByDate(memberRoleId, startDate, endDate));
+		
+		logger.info("announcement ID: " + memberRoleId);
+		return mav;
+	}
+	
+	
 	@RequestMapping(value = "/getinstitutionannouncements", method = RequestMethod.POST)
 	public @ResponseBody ModelAndView getInstitutionAnnouncements(
 			@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
@@ -105,7 +134,10 @@ public class AnnouncementsController {
 			@RequestParam(value = "endDate", required = true) String endDate){
 		
 		ModelAndView mav = new ModelAndView("xml/announcements");
-		
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		announcementList= announcementService.getInstitutionAnnouncements(memberRoleId, startDate, endDate);
+		int announcementSize = announcementList.size();
+		mav.addObject("announcementSize", announcementSize);
 		mav.addObject("announcements", announcementService.getInstitutionAnnouncements(memberRoleId, startDate, endDate));
 		
 		logger.info("announcement ID: " + memberRoleId);
@@ -119,7 +151,10 @@ public class AnnouncementsController {
 			@RequestParam(value = "endDate", required = true) String endDate) {
 		
 		ModelAndView mav = new ModelAndView("xml/announcements");
-		
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		announcementList= announcementService.getInstitutionUnitAnnouncements(memberRoleId, startDate, endDate);
+		int announcementSize = announcementList.size();
+		mav.addObject("announcementSize", announcementSize);
 		mav.addObject("announcements", announcementService.getInstitutionUnitAnnouncements(memberRoleId, startDate, endDate));
 		
 		logger.info("announcement ID: " + memberRoleId);
@@ -133,7 +168,10 @@ public class AnnouncementsController {
 			@RequestParam(value = "endDate", required = true) String endDate) {
 		
 		ModelAndView mav = new ModelAndView("xml/announcements");
-		
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		announcementList= announcementService.getCourseAnnouncements(memberRoleId, startDate, endDate);
+		int announcementSize = announcementList.size();
+		mav.addObject("announcementSize", announcementSize);
 		mav.addObject("announcements", announcementService.getCourseAnnouncements(memberRoleId, startDate, endDate));
 		
 		logger.info("announcement ID: " + memberRoleId);

@@ -24,7 +24,9 @@
     }
   </style>
 <![endif]-->
-
+<style type="text/css">
+	.hideTodo .add_to_todo {display:none; visibility:hidden;}
+</style>
 
 <script src="../resources/js/isotope/jquery-1.7.2.min.js"></script>
 <script src="../resources/js/isotope/jquery.isotope.min.js"></script>
@@ -73,12 +75,15 @@ $(document).ready(function() {
 						}
 						if($(this).find("category").text() == '1002'){//Ignored
 							extra_class = 'ignored';
+							/* if($(this).find("ignoreCount").text() > 1){
+								extra_class += 'hideTodo';
+							} */
 						
 						}
-						 if($(this).find("category").text() == '1000' && '1001' && '1002'){//All
+						 /* if($(this).find("category").text() == '1000' && '1001' && '1002'){//All
 							extra_class = 'all';
 							
-						}  
+						}  */ 
 						
 						output+="<div class='zeniboxrewards "+extra_class+"' id='rec1'>";
 						output+="<div  class='zenititle'><label id='recomendId"+index+"'> "+ $(this).find("recommendationId").text()+"</label></div>";  
@@ -91,7 +96,7 @@ $(document).ready(function() {
 						output+="<div class='zenirecommendborder zenileft'></div>";
 						output+="<div class='zenircommendcenterlink zenileft'>";
 						
-						output+="<a class='myButtonLink' id='options' rel='tooltip' data-placement='bottom' href='#'   title='Add to Calendar'></a>";
+						output+="<a class='myButtonLink' id='options' rel='tooltip' data-placement='bottom'   title='Add to Calendar'></a>";
 						output+="<a class='myButtonLink2 add_to_todo' id='options' rel='tooltip' data-placement='bottom' href='' onclick='createNewTodo("+index+")' title='Add To Do'></a>";  																																								
 						output+="<a class='myButtonLink3 ignore_hide'  rel='tooltip' data-placement='bottom' href='' onclick='moveIgnored("+index+")' title='Ignore' id='_ignore4'></a></div><br /></div>";
 						
@@ -182,7 +187,7 @@ function createNewTodo(index){
 	    		 , function( data )
 	     			{
 	     
-	    			 populate_new_recommendations();
+	    			 //populate_new_recommendations();
 
 	    			 });   
 	    
@@ -199,7 +204,7 @@ function moveIgnored(index){
     		 , function( data )
      			{
      
-    			 populate_new_recommendations();
+    			 //populate_new_recommendations();
 
     			 });  
 }
@@ -313,8 +318,8 @@ function moveIgnored(index){
 }
 
 .btn-info-hover {
-    background-color: #B80000;
-    background-image: linear-gradient(to bottom, #D80000, #FF0000);
+    background-color: #0000FF;
+    background-image: linear-gradient(to bottom, #0000FF, #0066FF);
     background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
