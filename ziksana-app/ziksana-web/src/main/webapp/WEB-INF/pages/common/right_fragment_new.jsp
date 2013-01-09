@@ -317,6 +317,7 @@ function short_string(string){
                   	<div class="Performance">   
                         <p class="titles-info font-Signika text-size-px18 light-gray">My Courses (Draft)<br></p>
        						<div id="draft_placeholder"></div>
+       						<span> <a style="color:#27b;margin-left:180px;" href="/ziksana-web/secure/showMyPrograms">More..</a></span>
 				        <p class="titles-info font-Signika text-size-px18 light-gray">My Courses (Review)<br></p>
                             <div id="active_placeholder"></div>
                         <p class="titles-info font-Signika text-size-px18 light-gray">My Courses (Active)<br></p>

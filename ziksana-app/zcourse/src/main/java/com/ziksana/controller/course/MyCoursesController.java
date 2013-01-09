@@ -56,5 +56,22 @@ public class MyCoursesController {
 		mv.addObject("ACTIVE_COURSES", activeCourses);
 		return mv;
 	}
+	
+	
+	@RequestMapping(value = "/showMyPrograms", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView readMyPrograms() throws CourseException {
+		
+		LOGGER.info("Entering Class " + getClass() + " readMyPrograms()");
+		
+		List<Course> courses = courseService.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+		Integer courseCount = courseService.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+		ModelAndView mv = new ModelAndView("courses/myprograms");
+		mv.addObject("courses", courses);
+		mv.addObject("courseCount", courseCount);
+		return mv;
+		
+	}
+	
 
 }
