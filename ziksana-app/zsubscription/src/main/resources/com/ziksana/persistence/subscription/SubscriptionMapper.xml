@@ -77,8 +77,8 @@
 		
 		select
 		cntenr.LinkElement,
-		cntenr.uri 
-
+		cntenr.uri, 
+        cntenr.duration  
 		from
 		corcontentenrichment cntenr
 		JOIN
@@ -216,7 +216,7 @@
 
 		<result property="title" column="LinkElement" />
 		<result property="uri" column="uri" />
-		<!-- URI needs to be added here  -->
+		<result property="duration" column="duration" />
 
 	</resultMap>
 	
