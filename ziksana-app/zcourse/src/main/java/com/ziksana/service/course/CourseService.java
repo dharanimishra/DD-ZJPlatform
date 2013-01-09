@@ -109,12 +109,26 @@ public interface CourseService {
 	
 	
 	/**
-	 * This method returns the list of courses by course status(Drafted,Reviewed, Published)
+	 * This method returns the list of 3 courses by course status(Drafted,Reviewed, Published)
 	 * @param courseStatus 
 	 * @return List of courses
 	 */
 	public List<Course> getCoursesByStatus(CourseStatus courseStatus);
 	
+	/**
+	 * This method returns list of all courses by course status(Drafted,Reviewed, Published)
+	 * @param courseStatus
+	 * @return
+	 */
+	public List<Course> getAllCoursesByStatus(CourseStatus courseStatus);
+	
+	
+	/**
+	 * This method returns the total number of courses by course status()
+	 * @param courseStatus
+	 * @return
+	 */
+	public Integer totalNumberOfCoursesByStatus(CourseStatus courseStatus);
 	
 
 }

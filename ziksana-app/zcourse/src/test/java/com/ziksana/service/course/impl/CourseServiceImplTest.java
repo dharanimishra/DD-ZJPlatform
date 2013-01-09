@@ -84,5 +84,22 @@ public class CourseServiceImplTest {
 		
 		
 	}
+	
+	@Test 
+	public void testGetAllCoursesByStatus() {
+		List<Course> courses = courseService.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+		assertTrue(courses.size() == 1);
+		
+		
+	}
+	
+	@Test
+	public void testTotalNumberOfCourses() {
+		Integer total = courseService.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+		assertTrue(total > 0);
+		
+	}
+	
+	
 
 }

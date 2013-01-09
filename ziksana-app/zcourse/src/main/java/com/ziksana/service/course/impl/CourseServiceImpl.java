@@ -652,4 +652,24 @@ public class CourseServiceImpl implements CourseService {
 		
 	}
 
+	@Override
+	public List<Course> getAllCoursesByStatus(CourseStatus courseStatus) {
+		
+		int status = courseStatus.getID();
+		String memberPersonaId = ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID();
+		
+		return courseMapper.getAllCourses(Integer.valueOf(status),Integer.valueOf(memberPersonaId));
+	}
+
+	@Override
+	public Integer totalNumberOfCoursesByStatus(CourseStatus courseStatus) {
+		
+		int status = courseStatus.getID();
+		String memberPersonaId = ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID();
+		
+		return courseMapper.totalNumberOfCourses(Integer.valueOf(status),Integer.valueOf(memberPersonaId));
+	}
+
 }

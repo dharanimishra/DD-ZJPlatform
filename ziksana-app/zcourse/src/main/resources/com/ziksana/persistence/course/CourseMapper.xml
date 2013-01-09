@@ -143,6 +143,38 @@
         LIMIT 0, 3 
 
 	</select>
+	
+	<select id="getAllCourses" resultMap="courseResultMap"
+		parameterType="map">
+
+		select
+		courseid,name,description
+		from
+		corcourse
+		where
+		CourseStatus=#{statusId} and 
+		MemberRoleId=#{memberPersonaId}
+        
+
+	</select>
+	
+	
+	
+	<select id="totalNumberOfCourses" resultType="java.lang.Integer"
+		parameterType="map">
+
+		select
+		count(*)
+		from
+		corcourse
+		where
+		CourseStatus=#{statusId} and 
+		MemberRoleId=#{memberPersonaId}
+        
+
+	</select>
+	
+	
 
 	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
 

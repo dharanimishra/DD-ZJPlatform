@@ -336,6 +336,12 @@ public interface CourseMapper {
 	
 	
 	List<Course> getCourses(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId);
+	
+	
+	List<Course> getAllCourses(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId);
+	
+	Integer totalNumberOfCourses(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId);
+	
 
 
 }
