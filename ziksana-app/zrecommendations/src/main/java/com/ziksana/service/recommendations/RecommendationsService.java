@@ -7,11 +7,15 @@ import com.ziksana.domain.recommendations.Recommendation;
 public interface RecommendationsService {
 
 	public List<Recommendation> getRecommendations(Integer category);
-	
+
 	public List<Recommendation> getMapperRecommendation();
-	
-	public void updateRecommendationsCategoryById(Integer recommendationId, Integer category);
-	
+
+	public Recommendation getRecommendationByRecommendationId(
+			Integer recommendationId);
+
+	public Integer updateRecommendationsCategoryById(Integer recommendationId,
+			Integer category, Integer ignoreCount);
+
 	public List<Recommendation> getAllRecommendations();
 
 	public List<Recommendation> getRecommendationsByCurrentState(

@@ -43,7 +43,7 @@
 		<result property="memberId" column="MemberId" />
 		<result property="firstName" column="FirstName" />
 		<result property="lastName" column="LastName" />
-		
+		<result property="designation" column="Designation"/>
 		<collection property="memberPersonas"  ofType="com.ziksana.domain.member.MemberPersona" >
 		         <result property="memberRoleId" column="MemberRoleId"/>
 		         <result property="roleType" column="RoleType"/>         

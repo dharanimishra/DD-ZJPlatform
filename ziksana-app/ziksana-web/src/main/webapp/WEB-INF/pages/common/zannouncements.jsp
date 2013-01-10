@@ -1,37 +1,40 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE HTML>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+	pageEncoding="ISO-8859-1"%>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE HTML>
+<html>
 <head>
 <title>zAnnouncements</title>
 
-<link rel="stylesheet" href="../resources/css/zCss.css" type="text/css"/>
-<link type="text/css" href="../resources/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+<link rel="stylesheet" href="../resources/css/zCss.css" type="text/css" />
+<link type="text/css"
+	href="../resources/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 <link rel="stylesheet" href="../resources/css/bootstrap.css" />
-<link href="../resources/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<link href="../resources/css/jquery.mCustomScrollbar.css"
+	rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" />
 </head>
-<script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
+<script type="text/javascript"
+	src="../resources/js/tree/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="../resources/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="../resources/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript"
+	src="../resources/js/jquery-ui-1.8.21.custom.min.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
-   <script src="../resources/js/bootstrap.js"></script>
+<script src="../resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="../resources/js/jquery.js"></script>
 <script type="text/javascript" src="../resources/js/zGroup.js"></script>
 <script type="text/javascript" src="../resources/js/tablerow.js"></script>
 <script type="text/javascript" src="../resources/js/date.js"></script>
 <!--<script src="js/isotope/jquery-1.7.2.min.js"></script>-->
 <script type="text/javascript" src="../resources/js/jquery-1.8.0.min.js"></script>
-		<script type="text/javascript" src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript"
+	src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
 <style>
 .row-hover {
- background-color:#66CCFF ! important;
-
- color: blue;
+	background-color: #66CCFF ! important;
+	color: blue;
 }
 </style>
 <script type="text/javascript">
@@ -66,13 +69,17 @@
 
 <!-- Announcement  -->
 
-<c:url var="getAnnouncementAllDateUrl" value='/secure/getannouncementsallbydate'/>
-<c:url var="getInstitutionAnnouncementUrl" value='/secure/getinstitutionannouncements'/>
-<c:url var="getInstitutionunitAnnouncementUrl" value='/secure/getinstitutionunitannouncements'/>
-<c:url var="getCourseAnnouncementUrl" value='/secure/getcourseannouncements'/>
-<c:url var="showannouncements" value="/secure/showannouncements/100" />
-<c:url var="showannouncementsall" value="/secure/showannouncementsAll/100" />
-  <script type="text/javascript">
+<c:url var="getAnnouncementAllDateUrl"
+	value='/secure/getannouncementsallbydate' />
+<c:url var="getInstitutionAnnouncementUrl"
+	value='/secure/getinstitutionannouncements' />
+<c:url var="getInstitutionunitAnnouncementUrl"
+	value='/secure/getinstitutionunitannouncements' />
+<c:url var="getCourseAnnouncementUrl"
+	value='/secure/getcourseannouncements' />
+<c:url var="showannouncements" value="/secure/showannouncements" />
+<c:url var="showannouncementsall" value="/secure/showannouncementsAll" />
+<script type="text/javascript">
 $(document).ready(function() {
 	$(document).ready(function() {
 		setInterval(function() {
@@ -80,9 +87,9 @@ $(document).ready(function() {
 	 
 		}, 500);	
 		
-		
+		get_all_announcements();
 	});
-	get_all_announcements();
+	
 
  function get_all_announcements(){
 	$.ajax({
@@ -141,7 +148,7 @@ function getMessagedescription(indexValue){
 	outputDetails_description+="<div  style='display:none;' id='row_selection_form_container1'>";
 	outputDetails_description+="<br/><b> Details of the select Row in the table should be displayed here</b>";
 	outputDetails_description+="<div>";
-	outputDetails_description+="<br/></br><label>"+announcement_message+"</label><label >"+announcement_date+"</label><label style='color:blue; font-weight:bold;' >"+announcement_dec+"</label>";
+	outputDetails_description+="<br/></br><u><label style='font-weight:bold;'>"+announcement_message+"</label></u><label >"+announcement_date+"</label><label  >"+announcement_dec+"</label>";
 	outputDetails_description+="</div>";
 	
 	//$("#linksMeeting").fadeIn();
@@ -153,13 +160,13 @@ function getCategoryByBetweenDates(){
 	var categoryName= $('#zCategory').val();
 	var startDate = $('#startDate').val();
 	var endDate = $('#endDate').val();
-	var memberRoleId = 100;
+	
 	var startDate1 = startDate.toString('dd/MM/yyyy');
 	var endDate1 = endDate.toString('dd/MM/yyyy');
 	
 	if(categoryName == 'All'){
 		 $.post( '${getAnnouncementAllDateUrl}'
-			        , {'memberRoleId':memberRoleId,'startDate':startDate1,'endDate':endDate1,}
+			        , {'startDate':startDate1,'endDate':endDate1}
 			        , function( data )
 			        {
 			        
@@ -199,7 +206,7 @@ function getCategoryByBetweenDates(){
 	} else if(categoryName == 'University'){
 		
 		 $.post( '${getInstitutionAnnouncementUrl}'
-			        , {'memberRoleId':memberRoleId,'startDate':startDate1,'endDate':endDate1,}
+			        , {'startDate':startDate1,'endDate':endDate1,}
 			        , function( data )
 			        {
 			        
@@ -236,7 +243,7 @@ function getCategoryByBetweenDates(){
 					 ); 
 	} else if(categoryName == 'Department'){
 		 $.post( '${getInstitutionunitAnnouncementUrl}'
-			        , {'memberRoleId':memberRoleId,'startDate':startDate1,'endDate':endDate1,}
+			        , {'startDate':startDate1,'endDate':endDate1,}
 			        , function( data )
 			        {
 			        
@@ -273,7 +280,7 @@ function getCategoryByBetweenDates(){
 				); 
 	} else if(categoryName == 'Course'){
 		 $.post( '${getCourseAnnouncementUrl}'
-			        , {'memberRoleId':memberRoleId,'startDate':startDate1,'endDate':endDate1,}
+			        , {'startDate':startDate1,'endDate':endDate1,}
 			        , function( data )
 			        {
 			        
@@ -315,56 +322,52 @@ function getCategoryByBetweenDates(){
 	
 }
 </script>
- 
+
 <body onload="showdate(),showenddate()">
 
-<div class="zannouncementwrapper">
-	<!-- Main container -->
-	<div id="zAnnouncement">
-    	
-        <div class="helptext">
-        	Help text describing the page
-        </div>
-        <div id="error">
-        	<!-- <span id="_required">Enter a date *</span> -->
-        </div>
-        <div id="contentGroup">
-        	Category:<select name="zCategory"  id="zCategory" style="display:inline;width:100px;">
-                     <option selected="selected" value="All">All</option>
-                     <option value="University">University</option> 
-                      <option value="Department">Department</option> 
-                       <option value="Course">Course</option>                
-              </select>
-              
-        	
-                    <label value="Period" style="display:inline;">Start Period</label> 
-             
-            <input type="text" id="startDate" class="datepicker" style="display:inline;width:80px;" title="Date Required" value="Value (Date)"/> 
-            
-                    <label value="endDate" style="display:inline;">End Period</label> 
-                                  
-             
-			  <input type="text" id="endDate" style="display:inline;width:80px;" class="datepicker" title="Date Required" value="Value (Date)"/> 
-            <a id="_go" onCLick="getCategoryByBetweenDates()" class="aClass">Go</a>
-        
-		</div>
-        <!-- end contentGroup getCategoryByBetweenDates-->
-      
-		
-		
-		<div id="showGroup" class="zAnn">
-              
-                <div id="tblGroup" style="height:400px; overflow: auto;">
-					<div id=announcement_placeholder>
-					</div>
-					
-                </div>
-				<a href="#"  style="float:right;margin-top:10px;"  onClick="show_Announcement_Sigle_row_values()" >Details</a>  
-		
-				<div id="linksMeeting" style="border-top:1px solid grey">
-            	<br/>
-               
-  <script type="text/javascript">
+	<div class="zannouncementwrapper">
+		<!-- Main container -->
+		<div id="zAnnouncement">
+
+			<div class="helptext">Help text describing the page</div>
+			<div id="error">
+				<!-- <span id="_required">Enter a date *</span> -->
+			</div>
+			<div id="contentGroup">
+				Category:<select name="zCategory" id="zCategory"
+					style="display: inline; width: 100px;">
+					<option selected="selected" value="All">All</option>
+					<option value="University">University</option>
+					<option value="Department">Department</option>
+					<option value="Course">Course</option>
+				</select> <label value="Period" style="display: inline;">Start Period</label>
+
+				<input type="text" id="startDate" class="datepicker"
+					style="display: inline; width: 80px;" title="Date Required"
+					value="Value (Date)" /> <label value="endDate"
+					style="display: inline;">End Period</label> <input type="text"
+					id="endDate" style="display: inline; width: 80px;"
+					class="datepicker" title="Date Required" value="Value (Date)" /> <a
+					id="_go" onCLick="getCategoryByBetweenDates()" class="aClass">Go</a>
+
+			</div>
+			<!-- end contentGroup getCategoryByBetweenDates-->
+
+
+
+			<div id="showGroup" class="zAnn">
+
+				<div id="tblGroup" style="height: 400px; overflow: auto;">
+					<div id=announcement_placeholder></div>
+
+				</div>
+				<a href="#" style="float: right; margin-top: 10px;"
+					onClick="show_Announcement_Sigle_row_values()">Details</a>
+
+				<div id="linksMeeting" style="border-top: 1px solid grey">
+					<br />
+
+					<script type="text/javascript">
   function show_Announcement_Sigle_row_values(){
 	  $('#row_selection_form_container1').show();
 	  $('#return_announcements').show();
@@ -373,20 +376,19 @@ function getCategoryByBetweenDates(){
 	  $('#row_selection_form_container1').hide();
 	  $('#return_announcements').hide();
   }
-  </script>         		
-          
-		  
-		   <div id="linksdetails">
-		  </div>
-             
-            </div>
-            <!-- linksMeeting -->
+  </script>
+
+
+					<div id="linksdetails"></div>
+
+				</div>
+				 <!-- linksMeeting -->
                 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 	<script>!window.jQuery.ui && document.write(unescape('%3Cscript src="../resources/jquery/jquery-ui-1.8.21.custom.min.js"%3E%3C/script%3E'))</script>
 	<!-- mousewheel plugin -->
-	<script src="../resources/js/scrollbar/jquery.mousewheel.min.js"></script>
-	<!-- custom scrollbars plugin -->
-	<!-- <script src="../resources/js/scrollbar/jquery.mCustomScrollbar.js"></script>
+				<script src="../resources/js/scrollbar/jquery.mousewheel.min.js"></script>
+				<!-- custom scrollbars plugin -->
+				<!-- <script src="../resources/js/scrollbar/jquery.mCustomScrollbar.js"></script>
 	<script>
 		(function($){
 			$(window).load(function(){
@@ -398,23 +400,25 @@ function getCategoryByBetweenDates(){
 			});
 		})(jQuery);
 	</script>  -->
-               <!-- end tblGroup -->
-            </div>
-             <!-- end tblGroup -->
-           
-   
-   <div id="zReturn" style="margin-top:5px; height:30px;">    		 
-   <button id="return_announcements" style="float:right;display:none;" class="btn btn-info" onClick="hide_Announcement_Sigle_row_values()" name="btn_return" >Return</button>
-   
-   
+				<!-- end tblGroup -->
+			</div>
+			<!-- end tblGroup -->
 
-        	</div>
-            <!-- end zReturn -->
-             
-    </div>
-    <!-- end zAnnouncement -->
 
-</div>
+			<div id="zReturn" style="margin-top: 5px; height: 30px;">
+				<button id="return_announcements"
+					style="float: right; display: none;" class="btn btn-info"
+					onClick="hide_Announcement_Sigle_row_values()" name="btn_return">Return</button>
+
+
+
+			</div>
+			<!-- end zReturn -->
+
+		</div>
+		<!-- end zAnnouncement -->
+
+	</div>
 
 </body>
 

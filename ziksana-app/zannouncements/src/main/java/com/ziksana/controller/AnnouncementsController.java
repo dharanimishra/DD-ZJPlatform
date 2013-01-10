@@ -20,163 +20,170 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.announcements.Announcement;
 import com.ziksana.service.announcements.AnnouncementService;
 
-
-
 /**
  * @author vtg-p13
- *
+ * 
  */
 @Controller
 @RequestMapping("/secure")
 public class AnnouncementsController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(AnnouncementsController.class);
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(AnnouncementsController.class);
 
 	@Autowired
 	AnnouncementService announcementService;
-	
-	
+
 	/**
-	 * Retrive announcement to display 
+	 * Retrive announcement to display
 	 */
-	@RequestMapping(value = "/showannouncementsAll/{memberRoleId}", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getAnnouncement(@PathVariable Integer memberRoleId) {
-		
+	@RequestMapping(value = "/showannouncementsAll", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getAnnouncement() {
+
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList= announcementService.getAllAnnouncement(memberRoleId);
+		announcementList = announcementService.getAllAnnouncement();
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementService.getAllAnnouncement(memberRoleId));
-		
-		logger.info("announcement ID: " + memberRoleId);
+		mav.addObject("announcements", announcementService.getAllAnnouncement());
+
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/showannouncementsinglepopup", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getAnnouncementByAnnouncementId(@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
+	public @ResponseBody
+	ModelAndView getAnnouncementByAnnouncementId(
 			@RequestParam(value = "anouncementId", required = true) int anouncementId) {
-		
+
 		ModelAndView mav = new ModelAndView("common/announcementsinglepage");
-		
-		mav.addObject("announcement", announcementService.getAnnouncementById(memberRoleId, anouncementId));
-		
-		logger.info("announcement ID: " + memberRoleId);
+
+		mav.addObject("announcement",
+				announcementService.getAnnouncementById(anouncementId));
+
+		logger.info("announcement ID: " + anouncementId);
 		return mav;
 	}
-	
-	
+
 	/**
-	 * Retrive announcement to display 
+	 * Retrive announcement to display
 	 */
-	@RequestMapping(value = "/getannouncement/{memberRoleId}", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getAnnouncementById(@PathVariable Integer memberRoleId) {
-		
+	@RequestMapping(value = "/getannouncement", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getAnnouncementById() {
+
 		ModelAndView mav = new ModelAndView("xml/announcements");
 
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList = announcementService.getAnnouncement(memberRoleId);
+		announcementList = announcementService.getAnnouncement();
 		int announcementSize = announcementList.size();
-		mav.addObject("announcements", announcementService.getAnnouncement(memberRoleId));
+		mav.addObject("announcements", announcementService.getAnnouncement());
 		mav.addObject("announcementSize", announcementSize);
-		logger.info("announcement ID: " + memberRoleId);
+
 		return mav;
 	}
-	
+
 	/**
-	 * Retrive announcement to display 
+	 * Retrive announcement to display
 	 */
-	@RequestMapping(value = "/showannouncementbyid/{memberRoleId}/{announcementId}", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getAnnouncementByAnnouncementId(@PathVariable Integer memberRoleId, @PathVariable Integer announcementId) {
-		
+	@RequestMapping(value = "/showannouncementbyid//{announcementId}", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getAnnouncementByAnnouncementId(
+			@PathVariable Integer announcementId) {
+
 		ModelAndView mav = new ModelAndView("xml/announcement");
-		
-		mav.addObject("announcements", announcementService.getAnnouncementById(memberRoleId, announcementId));
-		
-		logger.info("announcement ID: " + memberRoleId);
+
+		mav.addObject("announcements",
+				announcementService.getAnnouncementById(announcementId));
+
 		return mav;
 	}
-	
-	/*Get popup Alert window
-	 * */	
+
+	/*
+	 * Get popup Alert window
+	 */
 	@RequestMapping(value = "/showannouncementpopup", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getPopupWindow() {
-	
+	public @ResponseBody
+	ModelAndView getPopupWindow() {
+
 		ModelAndView modelAndView = new ModelAndView("common/zannouncements");
-		
+
 		return modelAndView;
-		
+
 	}
-	
+
 	@RequestMapping(value = "/getannouncementsallbydate", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView getAnnouncementsAllByDate(
-			@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
+	public @ResponseBody
+	ModelAndView getAnnouncementsAllByDate(
 			@RequestParam(value = "startDate", required = true) String startDate,
-			@RequestParam(value = "endDate", required = true) String endDate){
-		
-		
+			@RequestParam(value = "endDate", required = true) String endDate) {
+
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList= announcementService.getAllAnnouncementsByDate(memberRoleId, startDate, endDate);
+		announcementList = announcementService.getAllAnnouncementsByDate(
+				startDate, endDate);
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementService.getAllAnnouncementsByDate(memberRoleId, startDate, endDate));
-		
-		logger.info("announcement ID: " + memberRoleId);
+		mav.addObject("announcements", announcementService
+				.getAllAnnouncementsByDate(startDate, endDate));
+
 		return mav;
 	}
-	
-	
+
 	@RequestMapping(value = "/getinstitutionannouncements", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView getInstitutionAnnouncements(
-			@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
+	public @ResponseBody
+	ModelAndView getInstitutionAnnouncements(
 			@RequestParam(value = "startDate", required = true) String startDate,
-			@RequestParam(value = "endDate", required = true) String endDate){
-		
+			@RequestParam(value = "endDate", required = true) String endDate) {
+
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList= announcementService.getInstitutionAnnouncements(memberRoleId, startDate, endDate);
+		announcementList = announcementService.getInstitutionAnnouncements(
+				startDate, endDate);
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementService.getInstitutionAnnouncements(memberRoleId, startDate, endDate));
-		
-		logger.info("announcement ID: " + memberRoleId);
+		mav.addObject("announcements", announcementService
+				.getInstitutionAnnouncements(startDate, endDate));
+
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/getinstitutionunitannouncements", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView getInstitutionunitAnnouncements(
-			@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
-			@RequestParam(value = "startDate", required = true) String startDate,
+	public @ResponseBody
+	ModelAndView getInstitutionunitAnnouncements(
+
+	@RequestParam(value = "startDate", required = true) String startDate,
 			@RequestParam(value = "endDate", required = true) String endDate) {
-		
+
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList= announcementService.getInstitutionUnitAnnouncements(memberRoleId, startDate, endDate);
+		announcementList = announcementService.getInstitutionUnitAnnouncements(
+				startDate, endDate);
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementService.getInstitutionUnitAnnouncements(memberRoleId, startDate, endDate));
-		
-		logger.info("announcement ID: " + memberRoleId);
+		mav.addObject("announcements", announcementService
+				.getInstitutionUnitAnnouncements(startDate, endDate));
+
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/getcourseannouncements", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView getCourseAnnouncements(
-			@RequestParam(value = "memberRoleId", required = true) int memberRoleId,
-			@RequestParam(value = "startDate", required = true) String startDate,
+	public @ResponseBody
+	ModelAndView getCourseAnnouncements(
+
+	@RequestParam(value = "startDate", required = true) String startDate,
 			@RequestParam(value = "endDate", required = true) String endDate) {
-		
+
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList= announcementService.getCourseAnnouncements(memberRoleId, startDate, endDate);
+		announcementList = announcementService.getCourseAnnouncements(
+				startDate, endDate);
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementService.getCourseAnnouncements(memberRoleId, startDate, endDate));
-		
-		logger.info("announcement ID: " + memberRoleId);
+		mav.addObject("announcements",
+				announcementService.getCourseAnnouncements(startDate, endDate));
+
 		return mav;
 	}
-	
-	
+
 }

@@ -5,6 +5,7 @@ package com.ziksana.controller;
 
 import static com.ziksana.util.Util.getHeader;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -19,8 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.ZiksanaMessage;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.recommendations.Recommendation;
+import com.ziksana.domain.todo.Todo;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.recommendations.RecommendationsService;
+import com.ziksana.service.todo.TodoService;
 
 /**
  * @author vtg-p13
@@ -35,6 +40,9 @@ public class RecommendationsController {
 
 	@Autowired
 	RecommendationsService recomendationsService;
+
+	@Autowired
+	private TodoService todoService;
 
 	/**
 	 * 
@@ -52,77 +60,140 @@ public class RecommendationsController {
 		List<Recommendation> recommendations = recomendationsService
 				.getRecommendations(category);
 
-				
-        
 		// Creating ziksana message
 		ZiksanaMessage<Recommendation> message = new ZiksanaMessage<Recommendation>();
 
 		message.setContent(recommendations);
 		message.setHeader(getHeader(getClass().getSimpleName().toUpperCase()));
-		
+
 		modelAndView.addObject("recommendations", recommendations);
 		logger.info("Exit Recommend By category");
 
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/getallrecomendations", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getRecommendationsAllRecommendations() {
 
-		logger.info("All recommem]ndations: ");
+		logger.info("All recommendations: ");
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
 
-		List<Recommendation> recommendations = recomendationsService.getAllRecommendations();
+		List<Recommendation> recommendations = recomendationsService
+				.getAllRecommendations();
 
-			
 		modelAndView.addObject("recommendations", recommendations);
+		String showTab = "new";
+
 		logger.info("Exit Recommend");
 
 		return modelAndView;
 	}
-	
-	
+
 	@RequestMapping(value = "/getmapperrecomendations", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getRecommendations() {
 
-		logger.info("All recommem]ndations: ");
+		logger.info("All recommemendations: ");
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
 
-		List<Recommendation> recommendations = recomendationsService.getMapperRecommendation();
+		List<Recommendation> recommendations = recomendationsService
+				.getMapperRecommendation();
 
-			
 		modelAndView.addObject("recommendations", recommendations);
 		logger.info("Exit Recommend");
 
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/updaterecommendation", method = RequestMethod.POST)
-	public void updateRecommendationCategory(
+	public @ResponseBody
+	Integer updateRecommendationCategory(
 			@RequestParam(value = "recommendationId", required = true) Integer recommendationId,
-			@RequestParam(value = "category", required = true) Integer category){
-		
-		recomendationsService.updateRecommendationsCategoryById(recommendationId, category);
-		
-	
-			
-}
-	
-	
-	/*Get popup Alert window
-	 * */	
-	@RequestMapping(value = "/zrecommendpopup", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getPopupWindow() {
-	
-		ModelAndView modelAndView = new ModelAndView("common/zrecommendation");
-		
-		return modelAndView;
-		
+			@RequestParam(value = "category", required = true) Integer category) {
+
+		Recommendation recommend = new Recommendation();
+		recommend = recomendationsService
+				.getRecommendationByRecommendationId(recommendationId);
+
+		// get ignorecount and increment by one
+		int ignoreCount = recommend.getIgnoreCount();
+		logger.info("ignoreCount==>" + ignoreCount);
+		ignoreCount = ignoreCount + 1;
+		logger.info("ignoreCount incremented==>" + ignoreCount);
+
+		int updatedRow;
+
+		updatedRow = recomendationsService.updateRecommendationsCategoryById(
+				recommendationId, category, ignoreCount);
+
+		logger.info("updated row==>" + updatedRow);
+		return updatedRow;
+
 	}
-	
-	
-	 
+
+	@RequestMapping(value = "/createtodoandrecomendationupdation", method = RequestMethod.POST)
+	public @ResponseBody
+	Integer createTodoAndUpdateRecommendation(
+			@RequestParam(value = "categoryName", required = true) String categoryName,
+			@RequestParam(value = "notificationContent", required = true) String notificationContent,
+
+			@RequestParam(value = "recommendationId", required = true) Integer recommendationId,
+			@RequestParam(value = "category", required = true) Integer category) {
+
+		// creating a todo
+		Todo todo = new Todo();
+		todo.setCategory(categoryName);
+		todo.setNotificationContent(notificationContent.toString());
+		todo.setActivationDate(new Date());
+		todo.setNotificationType(2);
+		MemberPersona creatingMember = new MemberPersona();
+		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+				.getToken().getMemberPersonaId().getStorageID()));
+		logger.info("Member Role Id :" + creatingMember.getMemberRoleId());
+		todo.setCreatingMember(creatingMember);
+		todo.setForMember(creatingMember);
+		try {
+			todoService.createTodo(todo);
+
+		} catch (Exception exception) {
+			logger.error("Caught Exception. class ="
+					+ exception.getClass().getName() + ",message ="
+					+ exception.getMessage());
+		}
+
+		// update the recommendation status
+		// get recommendation by recommendationId
+		Recommendation recommend = new Recommendation();
+		recommend = recomendationsService
+				.getRecommendationByRecommendationId(recommendationId);
+
+		// get ignorecount and increment by one
+		int ignoreCount = recommend.getIgnoreCount();
+		logger.info("ignoreCount==>" + ignoreCount);
+		ignoreCount = ignoreCount + 1;
+		logger.info("ignoreCount incremented==>" + ignoreCount);
+
+		int updatedRow;
+
+		updatedRow = recomendationsService.updateRecommendationsCategoryById(
+				recommendationId, category, ignoreCount);
+		logger.info("updated row==>" + updatedRow);
+		return updatedRow;
+
+	}
+
+	/*
+	 * Get popup Alert window
+	 */
+	@RequestMapping(value = "/zrecommendpopup", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getPopupWindow() {
+
+		ModelAndView modelAndView = new ModelAndView("common/zrecommendation");
+
+		return modelAndView;
+
+	}
 
 }

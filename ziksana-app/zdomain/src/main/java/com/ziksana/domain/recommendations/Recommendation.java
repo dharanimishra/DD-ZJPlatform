@@ -27,6 +27,8 @@ public class Recommendation {
 	private int active;
 
 	private int memberRoleId;
+	
+	private int ignoreCount;
 
 	/**
 	 * 
@@ -150,6 +152,20 @@ public class Recommendation {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * @return the ignoreCount
+	 */
+	public int getIgnoreCount() {
+		return ignoreCount;
+	}
+
+	/**
+	 * @param ignoreCount the ignoreCount to set
+	 */
+	public void setIgnoreCount(int ignoreCount) {
+		this.ignoreCount = ignoreCount;
 	}
 
 }

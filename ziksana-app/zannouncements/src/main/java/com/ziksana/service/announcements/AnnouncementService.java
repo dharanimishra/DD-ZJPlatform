@@ -3,7 +3,6 @@
  */
 package com.ziksana.service.announcements;
 
-
 import java.util.List;
 
 import com.ziksana.domain.announcements.Announcement;
@@ -13,26 +12,28 @@ import com.ziksana.domain.announcements.Announcement;
  * 
  */
 public interface AnnouncementService {
-	public List<Announcement> getAllAnnouncement(int memberRoleId);
-	
-	
+	public List<Announcement> getAllAnnouncement();
 
-	public List<Announcement> getAnnouncement(int memberRoleId);
+	public List<Announcement> getAnnouncement();
 
 	public void updateAnnouncement(Announcement announcement);
 
 	public void deleteAnnouncement(int announcementId);
 
 	public void createAnnouncement(Announcement announcement);
-	
-	public Announcement getAnnouncementById(int memberRoleId,int anouncementId);
-	
-	//get Announcements BY Category
-	public List<Announcement> getAllAnnouncementsByDate(int memberRoleId,String startDate, String endDate);
-	
-	public List<Announcement> getInstitutionAnnouncements(int memberRoleId,String startDate, String endDate);
-		
-	public List<Announcement> getInstitutionUnitAnnouncements(int memberRoleId,String startDate, String endDate);
-		
-	public List<Announcement> getCourseAnnouncements(int memberRoleId,String startDate, String endDate);
+
+	public Announcement getAnnouncementById(int anouncementId);
+
+	// get Announcements BY Category
+	public List<Announcement> getAllAnnouncementsByDate(String startDate,
+			String endDate);
+
+	public List<Announcement> getInstitutionAnnouncements(String startDate,
+			String endDate);
+
+	public List<Announcement> getInstitutionUnitAnnouncements(String startDate,
+			String endDate);
+
+	public List<Announcement> getCourseAnnouncements(String startDate,
+			String endDate);
 }

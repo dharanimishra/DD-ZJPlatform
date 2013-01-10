@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.recommendations.Recommendation;
 import com.ziksana.persistence.recommendations.RecommendationMapper;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.recommendations.RecommendationsService;
 
 /**
- * @author Ratnesh Kumar
+ * 
  * 
  */
 @Service
@@ -38,7 +39,10 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
 
 		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
-		recomendationList = recommendationMapper.getRecommendations(category);
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		recomendationList = recommendationMapper.getRecommendations(category,
+				memberRoleId);
 		LOGGER.info("Recommendation Size" + recomendationList.size());
 		return recomendationList;
 
@@ -147,14 +151,15 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 	@Override
 	public List<Recommendation> getAllRecommendationsList() {
 		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
-		LOGGER.info("Class :"
-				+ getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :getAllRecommendationsList()");
-		recomendationList= recommendationMapper.getAllRecommendationsList();
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		recomendationList = recommendationMapper
+				.getAllRecommendationsList(memberRoleId);
 		LOGGER.info("Recommendation Size" + recomendationList.size());
 
-		LOGGER.info("Class :"
-				+ getClass()
+		LOGGER.info("Class :" + getClass()
 				+ " : Leaving Method :getAllRecommendationsList()");
 		return recomendationList;
 	}
@@ -165,15 +170,20 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
 
 		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
-		recomendationList = recommendationMapper.getAllRecommendations();
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		recomendationList = recommendationMapper
+				.getAllRecommendations(memberRoleId);
 		LOGGER.info("Recommendation Size" + recomendationList.size());
 		return recomendationList;
 	}
 
 	@Override
-	public void updateRecommendationsCategoryById(Integer recommendationId, Integer category) {
-		recommendationMapper.updateRecommendationsCategoryById(recommendationId, category);
-		
+	public Integer updateRecommendationsCategoryById(Integer recommendationId,
+			Integer category, Integer ignoreCount) {
+		return recommendationMapper.updateRecommendationsCategoryById(
+				recommendationId, category, ignoreCount);
+
 	}
 
 	@Override
@@ -181,6 +191,18 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		int offset = 0;
 		int limit = 3;
 		RowBounds rowBounds = new RowBounds(offset, limit);
-		return recommendationMapper.getMapperRecommendation(rowBounds);
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		return recommendationMapper.getMapperRecommendation(memberRoleId,
+				rowBounds);
+	}
+
+	@Override
+	public Recommendation getRecommendationByRecommendationId(
+			Integer recommendationId) {
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		return recommendationMapper.getRecommendationByRecommendationId(
+				recommendationId, memberRoleId);
 	}
 }

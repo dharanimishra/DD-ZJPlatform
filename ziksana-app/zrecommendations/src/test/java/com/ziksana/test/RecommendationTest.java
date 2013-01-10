@@ -161,7 +161,7 @@ public class RecommendationTest {
 	 */
 	@Test
 	public void testUpdate() throws Exception {
-		recommendationService.updateRecommendationsCategoryById(1, 1000);
+		recommendationService.updateRecommendationsCategoryById(1, 1000,1);
 		
 	}
 

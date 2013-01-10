@@ -13,6 +13,7 @@
 				 <category>${recomend.category}</category>
 				 <title>${recomend.title}</title>
 				<description>${recomend.description}</description>
+				<ignorecount>${recomend.ignoreCount}</ignorecount>
 		</recommenditem>
 	</c:forEach>
 </recommendations>	

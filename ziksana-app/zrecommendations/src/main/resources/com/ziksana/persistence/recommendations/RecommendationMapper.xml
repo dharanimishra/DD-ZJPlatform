@@ -3,22 +3,35 @@
 <mapper namespace="com.ziksana.persistence.recommendations.RecommendationMapper">
 
 	<select id="getRecommendations" resultMap="recommendationResultMap"
-		parameterType="int">
+		parameterType="map">
 		SELECT * FROM memmemberziksanarecommendation WHERE
-		RecommendationCategory = #{category} order by creationdate  desc
+		RecommendationCategory = #{category} and memberRoleId =
+		#{memberRoleId} order by creationdate desc
 	</select>
-	
-	
-	<select id="getAllRecommendations" resultMap="recommendationResultMap">
-		
-		SELECT * FROM memmemberziksanarecommendation order by creationdate  desc
+
+
+	<select id="getAllRecommendations" resultMap="recommendationResultMap"
+		parameterType="int">
+
+		SELECT * FROM memmemberziksanarecommendation where memberRoleId =
+		#{memberRoleId} order by creationdate desc
 	</select>
-	
-	<select id="getMapperRecommendation" resultMap="recommendationResultMap">
-		
-		SELECT * FROM memmemberziksanarecommendation order by creationdate  desc 
+
+	<select id="getMapperRecommendation" resultMap="recommendationResultMap"
+		parameterType="int">
+
+		SELECT * FROM memmemberziksanarecommendation where memberRoleId =
+		#{memberRoleId} order by creationdate desc
 	</select>
-	
+
+	<select id="getRecommendationByRecommendationId" resultMap="recommendationResultMap"
+		parameterType="map">
+
+		SELECT * FROM memmemberziksanarecommendation where
+		MemziksanaRecommendationId = #{recommendationId} and memberRoleId =
+		#{memberRoleId}
+	</select>
+
 
 	<resultMap id="recommendationResultMap"
 		type="com.ziksana.domain.recommendations.Recommendation">
@@ -32,6 +45,7 @@
 		<result property="active" column="Active" />
 		<result property="creationDate" column="CreationDate" />
 		<result property="memberRoleId" column="MemberRoleId" />
+		<result property="ignoreCount" column="IgnoreCount" />
 	</resultMap>
 
 	<select id="getRecommendationsByCurrentState" resultMap="recommendationResultMap"
@@ -40,16 +54,24 @@
 		currentState = #{currentState} order by
 		creationDate desc
 	</select>
-	
-	<update id="updateRecommendationsCategoryById" parameterType="map">
-		update memmemberziksanarecommendation set RecommendationCategory = #{category} where MemziksanaRecommendationId = #{recommendationId}
-	
-	</update> 
 
-	<select id="getAllRecommendationsList" resultMap="recommendationResultMap">
-		SELECT * FROM memmemberziksanarecommendation order by
+	<update id="updateRecommendationsCategoryById" parameterType="map">
+		update memmemberziksanarecommendation set RecommendationCategory =
+		#{category}, IgnoreCount = #{ignoreCount} where
+		MemziksanaRecommendationId = #{recommendationId}
+
+	</update>
+
+	<select id="getAllRecommendationsList" resultMap="recommendationResultMap"
+		parameterType="int">
+		SELECT * FROM memmemberziksanarecommendation where
+		memberRoleId = #{memberRoleId} order by
 		creationDate desc
 	</select>
+
+
+
+
 
 	<insert id="addToCalendar" parameterType="com.ziksana.domain.recommendations.Recommendation"
 		useGeneratedKeys="true" keyProperty="ID">

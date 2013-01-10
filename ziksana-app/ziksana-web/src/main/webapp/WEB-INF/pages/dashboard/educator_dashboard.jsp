@@ -14,7 +14,7 @@
 	
     <link rel="stylesheet" type="text/css" href="../resources/css/tag/tagit-simple-blue.css">
     <link rel="stylesheet" href="../resources/css/tipsy.css" type="text/css" />
-    <!-- <link rel="stylesheet" type="text/css" href="css/custom-theme/old-jquery-ui-1.8.21.custom.css"> -->
+    
     <link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/jquery-ui-1.8.21.custom.css">
      <link href="../resources/css/news/newsticker.css" rel="stylesheet" type="text/css" />
      

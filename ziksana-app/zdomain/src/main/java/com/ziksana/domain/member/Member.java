@@ -92,6 +92,8 @@ public class Member implements Serializable {
 	 * This field corresponds to the database column memmember.Picture
 	 */
 	private String picturePath;
+	
+	private String designation;
 
 	/**
 	 * This method returns the value of the database column memmember.ID
@@ -408,6 +410,20 @@ public class Member implements Serializable {
 
 	public void setMemberPersonas(List<MemberPersona> memberPersonas) {
 		this.memberPersonas = memberPersonas;
+	}
+
+	/**
+	 * @return the designation
+	 */
+	public String getDesignation() {
+		return designation;
+	}
+
+	/**
+	 * @param designation the designation to set
+	 */
+	public void setDesignation(String designation) {
+		this.designation = designation;
 	}
 
 }

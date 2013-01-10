@@ -17,25 +17,33 @@ import com.ziksana.domain.todo.Todo;
  */
 public interface RecommendationMapper {
 
-	public List<Recommendation> getRecommendations(Integer category);
-	
-	
-	public List<Recommendation> getMapperRecommendation(RowBounds rowBounds);
-	
-	public List<Recommendation> getAllRecommendations();
-	
-	public List<Recommendation> getRecommendationsByCurrentState(String currentState);
-	
-	public List<Recommendation> getAllRecommendationsList();
+	public List<Recommendation> getRecommendations(
+			@Param("category") Integer category,
+			@Param("memberRoleId") Integer memberRoleId);
+
+	public Recommendation getRecommendationByRecommendationId(
+			@Param("recommendationId") Integer recommendationId,
+			@Param("memberRoleId") Integer memberRoleId);
+
+	public List<Recommendation> getMapperRecommendation(Integer memberRoleId,
+			RowBounds rowBounds);
+
+	public List<Recommendation> getAllRecommendations(Integer memberRoleId);
+
+	public List<Recommendation> getRecommendationsByCurrentState(
+			String currentState);
+
+	public List<Recommendation> getAllRecommendationsList(Integer memberRoleId);
 
 	public void addToCalendar(Recommendation recommendation);
 
 	public void addToTodo(Recommendation recommendation);
 
 	public void addToIgnore(Recommendation recommendation);
-	
-	public void updateRecommendationsCategoryById(@Param("recommendationId")Integer recommendationId , @Param("category")Integer category);
-	
 
+	public int updateRecommendationsCategoryById(
+			@Param("recommendationId") Integer recommendationId,
+			@Param("category") Integer category,
+			@Param("ignoreCount") Integer ignoreCount);
 
 }

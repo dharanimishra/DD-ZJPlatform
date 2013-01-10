@@ -7,7 +7,8 @@
 		parameterType="int">
 
 
-		select distinct qb.questionbankid as questionBankId, qba.QuestionBankAnswerId,
+		select distinct qb.questionbankid as questionBankId,
+		qba.QuestionBankAnswerId,
 		qb.QuestionContent,
 		qba.`Answer Content`,
 		qba.`Answer Sequence`, mpt.MemberRoleId,
@@ -15,44 +16,56 @@
 		from
 		psttestquestion q
 		JOIN asmquestionbank qb
-		ON q.QuestionBankId=qb.QuestionBankId 
+		ON
+		q.QuestionBankId=qb.QuestionBankId
 		JOIN asmquestionbankanswer qba ON
 		qb.QuestionBankId=qba.QuestionBankId
-		LEFT OUTER JOIN
+		LEFT
+		OUTER JOIN
 		pstmemberpersonalityresponse r ON
 		q.TestQuestionId=r.TestQuestionId
-		LEFT OUTER JOIN  pstmemberpersonalitytest mpt ON
-		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId 
-		where 
-		 r.TestQuestionId is null  and r.MemberPersonalityTestId is null and (mpt.MemberRoleId is null or 
-		 mpt.MemberRoleId!= #{memberRoleId})
+		LEFT OUTER JOIN
+		pstmemberpersonalitytest mpt ON
+		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId
+		where
+		r.TestQuestionId is null and r.MemberPersonalityTestId is null and
+		(mpt.MemberRoleId
+		is null or
+		mpt.MemberRoleId!= #{memberRoleId}) order
+		by qba.QuestionBankAnswerId asc
 
 	</select>
-	
+
 	<select id="getUnansweredQuestionsbyId" resultMap="questionResultMap"
 		parameterType="map">
 
 
-		select distinct qb.questionbankid as questionBankId, qba.QuestionBankAnswerId,
+		select distinct qb.questionbankid as questionBankId,
+		qba.QuestionBankAnswerId,
 		qb.QuestionContent,
 		qba.`Answer Content`,
 		qba.`Answer Sequence` ,mpt.MemberRoleId,
 		mpt.MemberPersonalityTestId
-		
+
 		from
 		psttestquestion q
 		JOIN asmquestionbank qb
-		ON q.QuestionBankId=qb.QuestionBankId 
-		 JOIN asmquestionbankanswer qba ON
+		ON
+		q.QuestionBankId=qb.QuestionBankId
+		JOIN asmquestionbankanswer qba ON
 		qb.QuestionBankId=qba.QuestionBankId
-		JOIN  pstmemberpersonalitytest mpt ON
-		mpt.MemberPersonalityTestId=mpt.MemberPersonalityTestId  
-		where mpt.MemberRoleId= #{memberRoleId} and qb.QuestionBankId=#{questionBankId}
+		JOIN
+		pstmemberpersonalitytest mpt
+		ON
+		mpt.MemberPersonalityTestId=mpt.MemberPersonalityTestId
+		where
+		mpt.MemberRoleId= #{memberRoleId} and
+		qb.QuestionBankId=#{questionBankId}
 
 	</select>
-	
-	
-	
+
+
+
 
 	<resultMap id="questionResultMap" type="com.ziksana.domain.common.Question">
 
@@ -69,25 +82,30 @@
 				<idArg column="QuestionBankAnswerId" javaType="Integer" />
 				<idArg column="Answer Sequence" javaType="Integer" />
 				<idArg column="Answer Content" javaType="String" />
-				<idArg column="MemberPersonalityTestId" javaType="Integer"/>
+				<idArg column="MemberPersonalityTestId" javaType="Integer" />
 			</constructor>
 		</collection>
 
 
 
 	</resultMap>
-	
+
 	<update id="updateAnswer" parameterType="map">
-		update  pstmemberpersonalityresponse set
-		
-		MemberAnswer= #{answer.text}, ResponseDate = now(), questionbankAnswerId=#{answer.id.storageID}
-		
- 		where TestQuestionId =#{question.questionId} and memberPersonalityTestId=#{answer.memPstTestId}
-		
-		
-	</update> 
-	
-	
+		update
+		pstmemberpersonalityresponse set
+
+		MemberAnswer= #{answer.text},
+		ResponseDate = now(),
+		questionbankAnswerId=#{answer.id.storageID}
+
+		where
+		TestQuestionId =#{question.questionId} and
+		memberPersonalityTestId=#{answer.memPstTestId}
+
+
+	</update>
+
+
 	<insert id="saveAnswer" parameterType="map" useGeneratedKeys="true"
 		keyProperty="MemPersonalityRespId">
 
@@ -107,25 +125,33 @@
 
 	<select id="answeredQuestions" resultMap="questionResMap"
 		parameterType="int">
-		
-		select distinct  q.*,
-		qb1.QuestionContent, qba.QuestionBankAnswerId, qba.`Answer Content`, qba.`Answer Sequence`,mpt.MemberRoleId,
-		r.MemberAnswer, mpt.MemberPersonalityTestId, r.responseDate
+
+		select distinct q.*,
+		qb1.QuestionContent,
+		qba.QuestionBankAnswerId,
+		qba.`Answer Content`, qba.`Answer Sequence`,mpt.MemberRoleId,
+		r.MemberAnswer,
+		mpt.MemberPersonalityTestId, r.responseDate
 		from
 		psttestquestion q
-		JOIN asmquestionbank qb
-		ON q.QuestionBankId=q.QuestionBankId
-		
-		JOIN asmquestionbank qb1
+		JOIN
+		asmquestionbank qb
+		ON
+		q.QuestionBankId=q.QuestionBankId
+
+		JOIN
+		asmquestionbank qb1
 		ON q.QuestionBankId=qb1.QuestionBankId
-		
-		JOIN asmquestionbankanswer qba ON
+
+		JOIN
+		asmquestionbankanswer qba ON
 		qb.QuestionBankId=qba.QuestionBankId
 		JOIN
 		pstmemberpersonalityresponse r ON
 		q.TestQuestionId=r.TestQuestionId and
-		qba.QuestionBankAnswerId=r.QuestionBankAnswerId 
-		JOIN pstmemberpersonalitytest mpt ON
+		qba.QuestionBankAnswerId=r.QuestionBankAnswerId
+		JOIN
+		pstmemberpersonalitytest mpt ON
 		mpt.MemberPersonalityTestId=r.MemberPersonalityTestId
 		where
 		mpt.MemberRoleId=#{memberRoleId} order by r.ResponseDate desc
@@ -149,9 +175,9 @@
 
 		<constructor>
 			<idArg column="TestQuestionId" javaType="Integer" />
-			
+
 			<idArg column="QuestionContent" javaType="String" />
-			<idArg column="responseDate" javaType="String"/>
+			<idArg column="responseDate" javaType="String" />
 		</constructor>
 
 
@@ -161,10 +187,10 @@
 	<resultMap id="choiceResult" type="com.ziksana.domain.common.Choice">
 
 		<constructor>
-			<idArg column="QuestionBankAnswerId" javaType="Integer" />
 			<idArg column="Answer Sequence" javaType="Integer" />
-			<idArg column="Answer Content" javaType="String" />
-			<idArg column="MemberPersonalityTestId" javaType="Integer"/>
+			<idArg column="QuestionBankAnswerId" javaType="Integer" />
+			<idArg column="MemberAnswer" javaType="String" />
+			<idArg column="MemberPersonalityTestId" javaType="Integer" />
 		</constructor>
 
 

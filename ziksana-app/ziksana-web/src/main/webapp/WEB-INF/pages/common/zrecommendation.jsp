@@ -49,7 +49,20 @@ $(document).ready(function() {
 	
 	populate_new_recommendations();
 	
+	
+	
+	
 });
+
+function show_recommendation_tab(tab){
+	
+	if(tab == 'all'){ $('#all_recommend').click();  }
+	if(tab == 'new'){ $('#shownew_recommend').click();  }
+	if(tab == 'actioned'){ $('#Actioned_recommend').click();  }
+	if(tab == 'ignored'){ $('#Ignored_recommend').click();  }
+	
+}
+
 	
 	function populate_new_recommendations(){
 	$.ajax({
@@ -75,20 +88,21 @@ $(document).ready(function() {
 						}
 						if($(this).find("category").text() == '1002'){//Ignored
 							extra_class = 'ignored';
-							/* if($(this).find("ignoreCount").text() > 1){
+							 if($(this).find("ignorecount").text() > 1){
+								 extra_class +=' ';
 								extra_class += 'hideTodo';
-							} */
+							} 
 						
 						}
 						 /* if($(this).find("category").text() == '1000' && '1001' && '1002'){//All
 							extra_class = 'all';
 							
-						}  */ 
+						}  */  
 						
 						output+="<div class='zeniboxrewards "+extra_class+"' id='rec1'>";
 						output+="<div  class='zenititle'><label id='recomendId"+index+"'> "+ $(this).find("recommendationId").text()+"</label></div>";  
 						output+="<div  class='zenititle'><label id='categoryId"+index+"'> "+ $(this).find("category").text()+"</label></div>";
-						output+="<div  class='zenititle'><label id='recomendTitle"+index+"'> "+ $(this).find("title").text()+"</label></div>";
+						output+="<div  class='zenititle'><label id='recomendTitle"+index+"'> "+ $(this).find("title").text()+"</label><label> "+ $(this).find("ignorecount").text()+"</label></div>";
 						output+="<div class='zenisubtitle'>";
 						output+="<div class='zsublink1 zenileft'>Created by : <span class='zlinktext'>Ziksana </span></div>";
 						output+="<div class='zsublink2 zenileft'>Valid upto : <span class='zlinktext2'> 31/09/2012  </span></div><br/><br/></div>";
@@ -97,8 +111,8 @@ $(document).ready(function() {
 						output+="<div class='zenircommendcenterlink zenileft'>";
 						
 						output+="<a class='myButtonLink' id='options' rel='tooltip' data-placement='bottom'   title='Add to Calendar'></a>";
-						output+="<a class='myButtonLink2 add_to_todo' id='options' rel='tooltip' data-placement='bottom' href='' onclick='createNewTodo("+index+")' title='Add To Do'></a>";  																																								
-						output+="<a class='myButtonLink3 ignore_hide'  rel='tooltip' data-placement='bottom' href='' onclick='moveIgnored("+index+")' title='Ignore' id='_ignore4'></a></div><br /></div>";
+						output+="<a class='myButtonLink2 add_to_todo' id='options' rel='tooltip' data-placement='bottom' href='#' onclick='createNewTodo("+index+")' title='Add To Do'></a>";  																																								
+						output+="<a class='myButtonLink3 ignore_hide'  rel='tooltip' data-placement='bottom' href='#' onclick='moveIgnored("+index+")' title='Ignore' id='_ignore4'></a></div><br /></div>";
 						
 						output+="<div class='zenilower'>   ";
 						output+="<div class='zeniiconimage zenileft'><img src='../resources/images/noimage.png' width='70' height='70'/></div>";
@@ -110,7 +124,8 @@ $(document).ready(function() {
 					
 				
 					$('#recommendations_container').html(output);
-					show_only_new(); //show only new recommendations
+					//show_recommendation_tab($('#show_tab').val());
+					$('.zeniisotope a.btn-info-hover').click();
 					
 					
 					
@@ -163,39 +178,39 @@ $('#container4').isotope({ filter: '.All' });
 }
 
 function createNewTodo(index){
-	//alert(index);
+	
+	
+	addTodo_and_update_recommendation(index);
+	 
+
+}
+
+//update and addtodo operation
+function addTodo_and_update_recommendation(index){
+	recommend_title = $('#recomendTitle'+index+'').html();
+	recommend_description = $('#recomendDescription'+index+'').html();
+	
 	recommend_id = $('#recomendId'+index+'').html(); 
 	categoryId= $('#categoryId'+index+'').html();
 	
-	 recommend_title = $('#recomendTitle'+index+'').html();
-	 recommend_description = $('#recomendDescription'+index+'').html();
-	
-	 
-	    $.post( '<c:url value='/secure/createtodo'/>'
- 		 , {'category':recommend_title,'notificationContent':recommend_description}
- 		 , function( data )
-  			{
-  
-				
+	$.post( '<c:url value='/secure/createtodoandrecomendationupdation'/>'
+	 		 , {'categoryName':recommend_title,'notificationContent':recommend_description,'recommendationId':recommend_id,'category':1001}
+	 		 , function( data )
+	  			{
+	  				if(data=='1'){
+	  					console.log('Updated Successfully');
+						populate_new_recommendations();
+	  					
+	  				}
+					
 
- 	 		});  
-	    
-	   
-	    
-	    $.post( '<c:url value='/secure/updaterecommendation'/>'
-	    		 , {'recommendationId':recommend_id,'category':1001}
-	    		 , function( data )
-	     			{
-	     
-	    			 //populate_new_recommendations();
-
-	    			 });   
-	    
-	   
+	 	 		});  
 	
 }
+
+
 function moveIgnored(index){
-	//alert(index);
+	
 	recommend_id = $('#recomendId'+index+'').html(); 
 	categoryId= $('#categoryId'+index+'').html();
 	
@@ -203,8 +218,13 @@ function moveIgnored(index){
     		 , {'recommendationId':recommend_id,'category':1002}
     		 , function( data )
      			{
-     
-    			 //populate_new_recommendations();
+
+    			 console.log(data);
+					if(data == 1){
+						populate_new_recommendations();
+						console.log('recommendation move to Ignored updated suucessfully');
+						
+					}
 
     			 });  
 }
@@ -227,11 +247,12 @@ function moveIgnored(index){
     Recommendations Page
     </div> <!-- end of help text -->
 
+   <input id='show_tab' type="hidden" value="new"/>
    
     <div class="zeniisotope">
                     
                     <li><a  id="all_recommend" class="btn btn-info" onclick="show_all();">All</a> </li>
-                    <li><a  id="shownew_recommend" class="btn btn-info" onclick="show_only_new();">New</a></li>
+                    <li><a  id="shownew_recommend" class="btn btn-info btn-info-hover" onclick="show_only_new();">New</a></li>
                     <li> <a id="Actioned_recommend" class="btn btn-info" onclick="show_only_actioned();">Actioned</a></li>
                     <li> <a  id="Ignored_recommend" class="btn btn-info ign" onclick="show_only_ignored();">Ignored</a></li>
                                       
@@ -255,12 +276,8 @@ function moveIgnored(index){
   
    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 	<script>!window.jQuery.ui && document.write(unescape('%3Cscript src="jquery/jquery-ui-1.8.21.custom.min.js"%3E%3C/script%3E'))</script>
-	<!-- mousewheel plugin -->
-	<script src="../resources/js/scrollbar/jquery.mousewheel.min.js"></script>
-	<!-- custom scrollbars plugin -->
-	<!--  
-	<script src="../resources/js/scrollbar/jquery.mCustomScrollbar.js"></script>-->
-	<script>
+	
+	<script type="text/javascript">
 	
 		
 		

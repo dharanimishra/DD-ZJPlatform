@@ -144,7 +144,23 @@ function displayUnAnsweredPairs(current){
 
 	var optionsList = optionArray[current].split("/");
 	var optionsIdList = optionIndexArray[current].split("/");
-	console.log(optionsIdList);
+	var optionsList1=[];
+	var optionsIdList1=[];
+	for(var i = 0; i < optionsIdList.length ; i++){
+		
+		optionsList1[optionsIdList[i]-1]=optionsList[i];
+		optionsIdList1[optionsIdList[i]-1]=optionsIdList[i];
+	}
+	
+	 for(var i = 0; i < optionsIdList.length ; i++){
+		
+			if(i==0){
+			outputResult+= "<tr><td ><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";
+			} else {
+			outputResult+= "<tr><td ><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";	
+			}
+		}
+	/* console.log(optionsIdList);
 	 for(var i = 0 ; i < optionsList.length ; i++){
 		 
 		 if(i==0){
@@ -155,7 +171,7 @@ function displayUnAnsweredPairs(current){
 				}
 		
 		 
-	} 
+	}  */
 	
 	outputResult+="</table>";
 	outputResult+="<br/>";
@@ -421,20 +437,29 @@ function displayAnsweredQuestionContainer(loop){
 		success: function( data ) {
 			
 			outputAns+="<div style='display:none;' id='answered_question_form_container'>";
-			outputAns+="<br/></br><u><p>View or update the Answer:</p></u>";
+			outputAns+="<br/></br><b><u><p>View or update the Answer:</p></b></u>";
 			outputAns+="<div>";
 			outputAns+="<div id='question_info_message_update'></div>";
-			outputAns+="<br/></br><label style='display:none;' id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
+			outputAns+="<br/><label style='display:none;' id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
 					
-		 		
+			var ansArrayindex=[];
+			var answerArray=[];
 			$(data).find("option").each(function(){
-					
-		 				if(checkedvalex == $(this).attr('index')){
-		 				outputAns+="<br/><input type='radio' name='optbtn' checked value='"+$(this).attr('index')+"/"+$(this).text()+"'/><label id='cur-id'>"+$(this).text()+"</label>";
-		 				}else
-		 				outputAns+="<br/><input type='radio' name='optbtn' value='"+$(this).attr('index')+"/"+$(this).text()+"'/><label id='cur-id'>"+$(this).text()+"</label>";
-		 				
-			});
+				answerArray[$(this).attr('index')-1]=$(this).text();
+				ansArrayindex[$(this).attr('index')-1]=$(this).attr('index');
+				
+		 				//if(checkedvalex == $(this).attr('index')){
+		 				//outputAns+="<br/><input type='radio' name='optbtn' checked value='"+$(this).attr('index')+"/"+$(this).text()+"'/><label id='cur-id'>"+$(this).text()+"</label>";
+		 				//}else
+		 				//outputAns+="<br/><input type='radio' name='optbtn' value='"+$(this).attr('index')+"/"+$(this).text()+"'/><label id='cur-id'>"+$(this).text()+"</label>";
+		 	});
+			//alert(answerArray);
+			for(var i=0;i<ansArrayindex.length;i++){
+				if(checkedvalex == ansArrayindex[i]){
+	 				outputAns+="<br/><input type='radio' name='optbtn' checked value='"+ansArrayindex[i]+"/"+answerArray[i]+"'/><label id='cur-id'>"+answerArray[i]+"</label>";
+	 				}else
+	 				outputAns+="<br/><input type='radio' name='optbtn' value='"+ansArrayindex[i]+"/"+answerArray[i]+"'/><label id='cur-id'>"+answerArray[i]+"</label>";
+			}
 		 	///
 		 	outputAns+="</div>"; 
 		 	outputAns+="<div>"; 
