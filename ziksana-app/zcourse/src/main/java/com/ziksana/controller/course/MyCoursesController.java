@@ -16,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.exception.course.CourseException;
+import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
 
 /**
@@ -32,6 +34,10 @@ public class MyCoursesController {
 
 	@Autowired
 	CourseService courseService;
+	
+	
+	
+	
 
 	@RequestMapping(value = "/showmycourse/111111", method = RequestMethod.GET)
 	public @ResponseBody
@@ -56,22 +62,31 @@ public class MyCoursesController {
 		mv.addObject("ACTIVE_COURSES", activeCourses);
 		return mv;
 	}
-	
-	
+
 	@RequestMapping(value = "/showMyPrograms", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyPrograms() throws CourseException {
-		
+
 		LOGGER.info("Entering Class " + getClass() + " readMyPrograms()");
-		
-		List<Course> courses = courseService.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-		Integer courseCount = courseService.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-		ModelAndView mv = new ModelAndView("courses/myprograms");
-		mv.addObject("courses", courses);
-		mv.addObject("courseCount", courseCount);
-		return mv;
-		
+
+		MemberRoleType roleType = ThreadLocalUtil.getToken().getRole();
+
+		if (roleType == MemberRoleType.EDUCATOR) {
+			List<Course> courses = courseService
+					.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+			Integer courseCount = courseService
+					.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+			ModelAndView mv = new ModelAndView("courses/myprograms");
+			mv.addObject("courses", courses);
+			mv.addObject("courseCount", courseCount);
+			return mv;
+		} else {
+
+			// TODO need to implement learner my programs...
+			return null;
+
+		}
+
 	}
-	
 
 }

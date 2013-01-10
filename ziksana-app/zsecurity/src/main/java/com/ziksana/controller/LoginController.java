@@ -86,12 +86,15 @@ public class LoginController {
 			
 			//Determining the educator memberpersona  of the user
 			List<MemberPersona> memberPersonas = member.getMemberPersonas();
+			MemberRoleType roleType = null;
 			
 			for (MemberPersona memberPersona: memberPersonas)
 			{
 				if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR)
 				{
 					memberPersonaId.setStorageID(memberPersona.getMemberRoleId().toString());
+					roleType = MemberRoleType.EDUCATOR;
+					
 				}
 					
 				
@@ -101,7 +104,7 @@ public class LoginController {
 			
 
 			SecurityToken token = new SecurityToken(memberId, memberPersonaId,
-					null);
+					roleType);
 
 			// Need to add the token to the session
 			HttpSession session = request.getSession(true);
@@ -117,10 +120,8 @@ public class LoginController {
 			}
 			
 			ModelAndView mvHome = new ModelAndView("common/pre_launch");
-			//ModelAndView mvHome = new ModelAndView("dashboard-div");
-			logger.info("firstName"+member.getFirstName());
-			
 			session.setAttribute("member", member);
+			
 			
 			
 			ThreadLocalUtil.unset();
