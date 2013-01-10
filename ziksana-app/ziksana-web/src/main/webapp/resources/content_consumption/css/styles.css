@@ -351,6 +351,8 @@ section {
 .add_note_description { padding: 2.5px;}
 #video_container {
 	height:445px;
+	width: 640px;
+	
 }
 #lect-img {
 	display: none;
@@ -1187,7 +1189,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa84c', end
   cursor: pointer;
 }
 #questions_container div span:hover {background: black; }
-#questions_container a {color: white; word-wrap: break-word; }
+#questions_container a {color: white; word-wrap: break-word; display: block;}
 #ItemDetails a {word-break: break-word;}
 #notesList {color: white;}
 #mainBar img {padding: .25em;}
@@ -1217,3 +1219,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa84c', end
 #ChatBox .chatbox_title, #ChatBox .chatbox_options {width: 375px;}
 #ChatBox input[type="text"] {width: 330px !important; margin-left: 0 !important;}
 #videoSection_jwplayer_dock center {text-align: left;}
+
+#learner_notes, #learner_questions, #content_toc_container, .educator_notes, .educator_references {
+  max-height: 360px;
+  overflow-y: auto;
+}

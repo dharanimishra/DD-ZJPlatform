@@ -39,8 +39,8 @@
 			'type': 'iframe',
 			'href': '/ziksana-web/secure/launcher',
 			'showCloseButton': false,
-			'onComplete': add_ziklogo_and_close_button()
-			//'onClose': confirmFancyboxClose()
+			'onComplete': setTimeout("add_ziklogo_and_close_button();", 900),
+			'onClose': function(){window.location.href=window.location.href; }
 			
 			
 		});

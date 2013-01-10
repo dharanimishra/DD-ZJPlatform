@@ -85,7 +85,21 @@
            			});
 	          
            		}
-
+           		
+           		//initiate jwplayer ontime
+           		jwplayer('player').onTime(function(player_event){
+           			position = Math.floor(player_event.position);
+           			//if(position%5==0){
+	           			show_by_position(position);
+           			//}
+           		});
+           		
+           		jwplayer('player').onSeek(function(player_event){
+           			position = Math.floor(player_event.offset);
+           			console.log(position);
+           			looped_show_by_position(position);
+           		});
+  
   });//end of doc ready
   
   
@@ -93,32 +107,42 @@
 		//console.log('inside play video');
 		//TopUp.close();
 		//$.fancybox().close();
+		$('#notes_and_bookmarks_container, #table_of_contents_container, #questions_container').css('visibility','visible');
+		$('#videoSection').css('visibility','visible');
+		$('.add_note_trigger, .add_question_trigger').css('visibility','visible');
 		$('#play-vedio, #video_actions').css('visibility','visible');
-		jwplayer().load(
+		jwplayer('player').load(
 				{
 					file : path
 				});
-		jwplayer().play(true);
+		jwplayer('player').play(true);
 	}
 	
 	function playAudio(path){
-		
+		$('#notes_and_bookmarks_container, #table_of_contents_container, #questions_container').css('visibility','hidden');
+		$('#videoSection').css('visibility','visible');
+		$('.add_note_trigger, .add_question_trigger').css('visibility','hidden');
+
 		//TopUp.close();
 		//$.fancybox().close();
 		$('#video_actions').css('visibility','hidden');
 		$('#play-vedio').css('visibility','visible');
 
-		jwplayer().load(
+		jwplayer('player').load(
 				{
 					file : path
 					
 					
 				});
-		jwplayer().play(true);
+		jwplayer('player').play(true);
 	}
 	
 	function displayImageSet(path){
-		jwplayer().stop();
+		$('#notes_and_bookmarks_container, #table_of_contents_container, #questions_container').css('visibility','hidden');
+		$('#videoSection').css('visibility','hidden');
+		$('.add_note_trigger, .add_question_trigger').css('visibility','hidden');
+
+		jwplayer('player').stop();
 		$('#video_actions').css('visibility','hidden');
 		$('#play-vedio').css('visibility','hidden');
 		
@@ -145,18 +169,20 @@
 
        links = '';
 
-       
+       ff_edu_references="";
        for (i in references)
        {
            title = references[i].title;
            uri = references[i].uri;
+           duration = references[i].duration;
 
-           link = '<a data-iconprefix="link" target="_blank" href="'+uri+'" >'+title+'</a>'
-
+           link = '<a style="display:none;" data-iconprefix="link" class="position" data-position="'+duration+'" target="_blank" href="'+uri+'" >'+title+'</a>'
+           ff_edu_references= ff_edu_references+title+"||"+uri+"|||";
            links += link;
        }
 
        $('[data-tabpane="educator"]').find('.educator_references').html(links);
+       sort_by_position('descending'); //sorts by descending order
 
      });
 
@@ -174,20 +200,21 @@
       notes = data;
 
       var links = '';
-
+      ff_edu_notes ="";
     for (i in notes)
     {
         title = notes[i].title;
         description = notes[i].description;
         duration = notes[i].duration;
 
-        link = '<a data-iconprefix="note" href="#" title="'+description+'">'+title+'</a>';
-
+        link = '<a style="display:none;" class="position" data-position="'+duration+'" data-iconprefix="note" href="#" title="'+description+'">'+title+'</a>';
+        ff_edu_notes=ff_edu_notes+title+"||note:"+duration+":"+description+"|||";
         links += link;
     }
 
 
      $('[data-tabpane="educator"]').find('.educator_notes').html(links);
+     sort_by_position('descending'); //sorts by descending order
 
 
 
@@ -211,7 +238,7 @@
 			  	
 				//if the note is successfully added
 				$('#add_note_container').hide(); 
-				jwplayer().play(true); //resume play
+				jwplayer('player').play(true); //resume play
 				$('.add_note_title, .add_note_description').val(''); //clear the value
 		  }
 		  
@@ -233,19 +260,24 @@
 		  notes = data;
 
 		  var links = '';
-
+		  ff_note_data ="";
 			for (i in notes)
 			{
 			    title = notes[i].noteTitle;
 			    description = notes[i].noteDescription;
 			    duration = notes[i].noteDuration;
 			
-			    link = '<a data-iconprefix="note" title="'+description+'" onclick="jwplayer().seek('+duration+').play(true);">'+title+'</a>';
+			    link = '<a style="display:none;" data-iconprefix="note" class="position" data-position="'+duration+'" title="'+description+'" onclick="jwplayer(\'player\').seek('+duration+').play(true);">'+title+'</a>';
 			
 			    links += link;
+			    if(description=="") ff_note_data=ff_note_data+title+"||"+".."+"||"+duration+"|||";
+			    else
+			    ff_note_data=ff_note_data+title+"||"+description+"||"+duration+"|||";
+			    //console.log("ff_note_data:"+ff_note_data);
 			}
 			
 			$('#learner_notes').html(links);
+			sort_by_position('descending'); //sorts by descending order
 		
 	  });
   }
@@ -266,7 +298,7 @@
 			  	
 				//if the question is successfully added
 				$('#add_question_container').hide(); 
-				jwplayer().play(true); //resume play
+				jwplayer('player').play(true); //resume play
 				$('.add_question_title').val(''); //clear the value
 		  }
 		  
@@ -288,18 +320,20 @@
 		  questions = data;
 
 		  var links = '';
-
+		  ff_question_data ="";
 			for (i in questions)
 			{
 			    title = questions[i].noteTitle;
 			    duration = questions[i].noteDuration;
 			
-			    link = '<a style="display:block; margin: .5em 0;" data-iconprefix="question"  onclick="jwplayer().seek('+duration+').play(true);">'+title+'</a>';
+			    link = '<a style="display:none; margin: .5em 0;" data-iconprefix="question" class="position" data-position="'+duration+'" onclick="jwplayer(\'player\').seek('+duration+').play(true);">'+title+'</a>';
 			
 			    links += link;
+			    ff_question_data=ff_question_data+title+"||"+duration+"|||";
 			}
 			
 			$('#learner_questions').html(links);
+			sort_by_position('descending'); //sorts by descending order
 		
 	  });
   }
@@ -317,14 +351,14 @@
 		  toc_elements = data;
 
 		  var links = '';
-
+		  ff_toc_data ="";
 			for (i in toc_elements)
 			{
 			    title = toc_elements[i].title;
 			    duration = toc_elements[i].duration;
 			
-			    link = '<a style="display:block; margin: .5em 0;" data-iconprefix=""  onclick="jwplayer().seek('+duration+').play(true);">'+title+'</a>';
-			
+			    link = '<a style="display:block; margin: .5em 0;" data-iconprefix="" class="" data-position="'+duration+'" onclick="jwplayer(\'player\').seek('+duration+').play(true);">'+title+'</a>';
+			    ff_toc_data= ff_toc_data+title+"||"+duration+"|||";
 			    links += link;
 			}
 			
@@ -332,3 +366,66 @@
 		
 	  });
   }
+  
+  
+  
+  ////Reorder/Sort Functions
+  function reorder_by_position(position){
+
+		$('.position_sortable').each(function(){
+		    var $this = $(this);
+		    
+		   current_position_element = $this.find('[data-position="'+position+'"]');
+		   last_element_in_collection = current_position_element.siblings(":last");
+
+
+			if(current_position_element.nextAll().length >= 1){
+		   		current_position_element.prevAll().slideUp().insertAfter(last_element_in_collection).slideDown();  
+			} else {
+		   		current_position_element.prevAll().slideUp().insertAfter(current_position_element).slideDown();  
+			}
+		                                        
+		});
+	}
+  
+  function show_by_position(position){
+
+		$('.position_sortable').each(function(){
+		    var $this = $(this);
+		   
+		    
+		   current_position_element = $this.find('[data-position="'+position+'"]');
+		   
+		   current_position_element.fadeIn();
+		   current_position_element.nextAll().show();
+		   
+		   		                                        
+		});
+	}
+
+  function sort_by_position(order){
+	  	//order = 'descending';
+		$('.position_sortable').each(function(){
+		    var $this = $(this);
+		    $this.append($this.find('.position').get().sort(function(a, b) {
+		    	if(order == 'ascending'){
+		    		return $(a).data('position') - $(b).data('position'); //ascending order
+		    	} else {
+		    		 return $(b).data('position') - $(a).data('position'); //descending order
+		    	}
+		    	
+		    }));
+		});
+	}
+  
+  //looped show by position (process intensive)
+  function looped_show_by_position(order){
+	  	//order = 'descending';
+	  
+	  duration = Math.floor(jwplayer('player').getDuration());
+	  for(var i=duration; i>=0; i--){
+		  show_by_position(i);
+		  
+	  }
+
+	}	

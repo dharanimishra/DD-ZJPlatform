@@ -558,8 +558,6 @@ ul.contact-list{ clear:both; float:left;}
 
 #edu-star img{ width:16px; height:16px;}
 
-/*customize jquery ui*/
-.ui-progressbar .ui-widget-header { background:#D7EBF9;}
 
 
 /*;;;;;;;;;;Login;;;;;;*/
@@ -2856,4 +2854,13 @@ border:1px solid rgba(70, 136, 71, 0.56);
 -moz-box-shadow: 0px 0px 4px rgba(70, 136, 71, 0.56);
 -webkit-box-shadow: 0px 0px 4px rgba(70, 136, 71, 0.56);
 box-shadow: 0px 0px 4px rgba(70, 136, 71, 0.56);
+}
+
+
+.fancybox-overlay {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8) !important;
+}
+.fancybox-skin {
+  background: #fff !important;
+
 }

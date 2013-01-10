@@ -2,23 +2,24 @@
 var URLPATH = '/resources/'; //Change it according to where you host the file
 //var URLPATH = 'http://localhost:8080/Generic/'; //Change it according to where you host the file - Rajan Localhost Tomcat
 //var URLPATH = 'http://localhost:8888/ZDemo/Generic/'; //Change it according to where you host the file - Arun Localhost Wamp
+var launcher_fancybox;
 $(function(){
 
 	$('[data-launcher]').click(function(){
-		launchpage = getCookie("launchpage"); //get launch page location from the cookie
+		launchpage = $(this).attr('data-launchpage') //get launch page location from the cookie
 		//alert(launchpage);
 		
 		//initiate a fancybox with the url of the launchpage.
-		$.fancybox({
+			launcher_fancybox = $.fancybox({
 			'width': '85%',
 			'height': '85%',
 			'autoScale': true,
 			'transitionIn': 'fade',
 			'transitionOut': 'fade',
 			'type': 'iframe',
-			'href': '/secure/launcher',
+			'href': launchpage,
 			'showCloseButton': false,
-			//'onComplete': add_ziklogo_and_close_button()
+			'onComplete': setTimeout("add_ziklogo_and_close_button();", 900)
 			
 		});
 		
@@ -47,13 +48,17 @@ for (i=0;i<ARRcookies.length;i++)
 
 
 function add_ziklogo_and_close_button(){
-	logo_html = '<img id="zik_fancy_logo" width="120" height="120" style="cursor: pointer; left: -36px; margin: 0 auto; position: absolute; top: -36px; z-index: 10000;" alt="" src="/resources/images/ziksana_button_logo.png">';
-	//$('#zik_fnacy_logo, #custom_fancybox_close').remove(); //initially remove the logo if exists.
-	$('#fancybox-wrap').prepend(logo_html);
+
+	logo_html = '<img id="zik_fancy_logo" width="120" height="120" style="cursor: pointer; left: -36px; margin: 0 auto; position: absolute; top: -36px; z-index: 10000;" alt="" src="/ziksana-web/resources/images/ziksana_button_logo.png">';
+	//$(fancy_iframe).parent().find('#zik_fnacy_logo, #custom_fancybox_close').remove(); //initially remove the logo if exists.
+
+	fancybox_wrapper = $.fancybox.wrap;
+	if(fancybox_wrapper != null){
+	fancybox_wrapper.prepend(logo_html);
+	fancybox_wrapper.find(".fancybox-close").attr('onclick','confirmFancyboxClose(); return false;').removeAttr('href');
 	
-	//also add custom fancybox close button
-	fancybox_close_btn_html = '<a onclick="confirmFancyboxClose();" id="custom_fancybox_close" style="display: inline;"></a>';
-	$('#fancybox-outer').append(fancybox_close_btn_html);
+
+	} 
 	
 }
 

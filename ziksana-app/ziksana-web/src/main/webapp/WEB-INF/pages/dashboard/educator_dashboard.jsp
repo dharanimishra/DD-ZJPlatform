@@ -33,6 +33,7 @@
 	<script type="text/javascript" src="../resources/js/jquery-1.2.2.pack.js"></script>
 	<script type="text/javascript" src="../resources/js/ajax-tooltip.js"></script>	
 	<script type="text/javascript" src="../resources/js/jquery.tipsy.js"></script>
+	<script type="text/javascript" src="../resources/js/custom/z_common.js"></script>
 	
 
 <c:url var="deleteAlertUrl" value="../secure/deletealert/111111/" />
