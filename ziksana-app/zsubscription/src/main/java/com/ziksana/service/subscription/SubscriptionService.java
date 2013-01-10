@@ -5,6 +5,7 @@ package com.ziksana.service.subscription;
 
 import java.util.List;
 
+import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.Node;
@@ -12,6 +13,7 @@ import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
+import com.ziksana.domain.institution.LearningProgram;
 
 /**
  * @author prabu
@@ -72,6 +74,22 @@ public interface SubscriptionService {
 	 * @param node
 	 */
 	public void addLearnerQuestion(Integer courseId,String question, Node node);
+	
+	
+	/**
+	 * It returns the user subscribed learning programs. 
+	 * @param memberRoleId
+	 * @return
+	 */
+	public List<LearningProgram>  getLearningPrograms();
+	
+	
+	/**
+	 * It returns the list of courses by learningProgramId
+	 * @param learningProgramId
+	 * @return
+	 */
+	public List<Course> getCoursesByLearningProgram(Integer learningProgramId);
 	
 
 }

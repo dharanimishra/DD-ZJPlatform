@@ -8,12 +8,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
+import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.persistence.subscription.SubscriptionMapper;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.subscription.SubscriptionService;
@@ -31,8 +33,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	@Override
 	public List<Note> getLearnerNotes(Integer courseId, Integer componentId, Integer contentId, Integer type) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
-				.getStorageID();
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
 		// TODO
 		Integer learnCmpId = null;
 		Integer learnCmpCntId = null;
@@ -206,6 +207,24 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		return subscriptionMapper.getContentTOC(7, Integer
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());
+	}
+
+	@Override
+	public List<LearningProgram> getLearningPrograms() {
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		
+		return subscriptionMapper.getLearningPrograms(Integer
+				.valueOf(memberRoleId)); 
+	}
+
+	@Override
+	public List<Course> getCoursesByLearningProgram(Integer learningProgramId) {
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		
+		return subscriptionMapper.getCoursesByLearningProgram(Integer.valueOf(memberRoleId), learningProgramId);
 	}
 
 }

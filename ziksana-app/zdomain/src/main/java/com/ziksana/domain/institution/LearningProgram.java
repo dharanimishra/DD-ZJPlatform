@@ -15,15 +15,7 @@ import com.ziksana.id.ZID;
 public class LearningProgram extends AuditHistory{
 	
 	
-	public LearningProgram(String name, Rating programRating,
-			ProgramType programType, CertificateType certificateType,
-			Duration programDuration) {
-		this.name = name;
-		this.programRating = programRating;
-		this.programType = programType;
-		this.certificateType = certificateType;
-		this.programDuration = programDuration;
-	}
+	
 
 	private ZID 				learningProgramId;
 	private String 				name 				= null;

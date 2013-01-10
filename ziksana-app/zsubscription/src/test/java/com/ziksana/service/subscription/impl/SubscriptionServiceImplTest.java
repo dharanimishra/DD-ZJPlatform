@@ -16,11 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
+import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
@@ -136,5 +138,25 @@ public class SubscriptionServiceImplTest {
 		//subscriptionService.addLearnerContent(noteText, node);
 
 	}
+	
+	
+	@Test
+	public void testGetLearningPrograms() {
+		
+		List<LearningProgram> programs = subscriptionService.getLearningPrograms();
+		assertTrue(programs.size() == 1);
+		
+	}
+	
+	@Test
+	public void testGetCoursesByLearningProgram() {
+		List<Course> courses = subscriptionService.getCoursesByLearningProgram(1);
+		assertTrue(courses.size() == 1);
+		
+	}
+	
+	
+	
+	
 
 }

@@ -2,6 +2,57 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.subscription.SubscriptionMapper">
 
+
+
+	<select id="getLearningPrograms" resultMap="programResultMap"
+		parameterType="java.lang.Integer">
+
+
+		select
+		program.*
+		from
+		sbnmembersubscriptionprogram subpgm
+		join corlearningprogram program ON
+		subpgm.LearningProgramId=program.LearningProgramId
+		where
+		subpgm.MemberRoleId=#{memberRoleId}
+
+
+
+
+
+	</select>
+
+	<select id="getCoursesByLearningProgram" resultMap="courseResultMap"
+		parameterType="map">
+
+
+		select
+		course.CourseId,
+		course.Name,
+		course.Description
+		from
+		sbnmembersubscriptionprogram sbnpgm
+		JOIN sbnsubscriptioncourse subcourse ON
+		sbnpgm.MemSubscriptionProgId=subcourse.MemSubscriptionProgId
+		JOIN corcurriculumcourse curcourse ON
+		subcourse.CurriculumCourseId=curcourse.CurriculumCourseId
+		JOIN corcourse course ON
+		curcourse.CourseId=course.CourseId
+		where
+		sbnpgm.MemberRoleId=#{memberRoleId} and
+		sbnpgm.LearningProgramId=#{learningProgramId}
+
+
+
+	</select>
+
+
+
+
+
+
+
 	<select id="getLearnerNotes" resultMap="learnerNotesResultMap"
 		parameterType="map">
 
@@ -11,18 +62,21 @@
 		sbnsubscribernotes notes join
 		sbnmembersubscriptionprogram program on
 		notes.MemSubscriptionProgId=program.MemSubscriptionProgId
-		join sbnsubscriptioncourse sbn on
-		sbn.SubscriptionCourseId=notes.SubscriptionCourseId 
-		join corcurriculumcourse cor on
-		cor.CurriculumCourseId = sbn.CurriculumCourseId
+		join
+		sbnsubscriptioncourse sbn on
+		sbn.SubscriptionCourseId=notes.SubscriptionCourseId
+		join
+		corcurriculumcourse cor on
+		cor.CurriculumCourseId =
+		sbn.CurriculumCourseId
 		join corlearningcomponentcontent corlc on
-		notes.LearningComponentContentId=corlc.LearningComponentContentId 
+		notes.LearningComponentContentId=corlc.LearningComponentContentId
 		where
 		notes.LearningComponentId=#{learnCompId} and
-		corlc.LearningComponentId=#{learnCompId} and 
+		corlc.LearningComponentId=#{learnCompId} and
 		corlc.LearningContentId=#{learnCmpContId} and
 		cor.CourseId=#{subscrCourseId} and
-		program.MemberRoleId=#{memberRoleId} and 
+		program.MemberRoleId=#{memberRoleId} and
 		notes.NotesType=#{type}
 
 	</select>
@@ -32,9 +86,9 @@
 		parameterType="map">
 
 
-		
-		
-		
+
+
+
 		select
 		cntenr.LinkElement,
 		cntenr.LinkDescription as NotesContent
@@ -45,7 +99,8 @@
 		corenrichment enr ON
 		cntenr.enrichmentid= enr.enrichmentId
 		JOIN
-		sbnsubscriptioncourse sbncourse ON
+		sbnsubscriptioncourse
+		sbncourse ON
 		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
 		JOIN
 		sbnmembersubscriptionprogram subprgm ON
@@ -53,39 +108,40 @@
 		where
 		cntenr.LinkType=#{contentType}
 		<if test="subscrCourseId != null">
-		AND enr.CourseId=#{subscrCourseId} 
+			AND enr.CourseId=#{subscrCourseId}
 		</if>
-		and 
-		enr.LearningComponentId=#{learnCompId} and 
-		enr.LearningContentId=#{learnCmpContId} and 
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
 		subprgm.MemberRoleId=#{memberRoleId}
-		
-		
-		
-		
+
+
+
+
 
 	</select>
-	
-	
-	
+
+
+
 	<select id="getEducatorReferences" resultMap="refResultMap"
 		parameterType="map">
 
 
-		
-		
-		
+
+
+
 		select
 		cntenr.LinkElement,
-		cntenr.uri, 
-        cntenr.duration  
+		cntenr.uri,
+		cntenr.duration
 		from
 		corcontentenrichment cntenr
 		JOIN
 		corenrichment enr ON
 		cntenr.enrichmentid= enr.enrichmentId
 		JOIN
-		sbnsubscriptioncourse sbncourse ON
+		sbnsubscriptioncourse
+		sbncourse ON
 		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
 		JOIN
 		sbnmembersubscriptionprogram subprgm ON
@@ -93,35 +149,37 @@
 		where
 		cntenr.LinkType = #{contentType}
 		<if test="subscrCourseId != null">
-		AND enr.CourseId=#{subscrCourseId} 
+			AND enr.CourseId=#{subscrCourseId}
 		</if>
-		and 
-		enr.LearningComponentId=#{learnCompId} and 
-		enr.LearningContentId=#{learnCmpContId} and 
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
 		subprgm.MemberRoleId=#{memberRoleId}
-		
-		
-		
-		
+
+
+
+
 
 	</select>
-	
-	
+
+
 	<select id="getContentTOC" resultMap="contentResultMap"
 		parameterType="map">
 
-		
+
 		select
 		cntenr.LinkElement,
-		cntenr.duration 
+		cntenr.duration
 
 		from
-		corcontentenrichment cntenr
+		corcontentenrichment
+		cntenr
 		JOIN
 		corenrichment enr ON
 		cntenr.enrichmentid= enr.enrichmentId
 		JOIN
-		sbnsubscriptioncourse sbncourse ON
+		sbnsubscriptioncourse
+		sbncourse ON
 		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
 		JOIN
 		sbnmembersubscriptionprogram subprgm ON
@@ -129,34 +187,35 @@
 		where
 		cntenr.LinkType = 7
 		<if test="subscrCourseId != null">
-		AND enr.CourseId=#{subscrCourseId} 
+			AND enr.CourseId=#{subscrCourseId}
 		</if>
-		and 
-		enr.LearningComponentId=#{learnCompId} and 
-		enr.LearningContentId=#{learnCmpContId} and 
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
 		subprgm.MemberRoleId=#{memberRoleId}
-		
-		
-		
-		
+
+
+
+
 
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 
-	<select id="getContentByType" resultMap="notesResultMap" parameterType="map">
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<select id="getContentByType" resultMap="notesResultMap"
+		parameterType="map">
 
 		select *
 		from
@@ -165,11 +224,11 @@
 		notes.MemSubscriptionProgId=program.MemSubscriptionProgId
 		where
 		notes.SubscriptionCourseId=#{subscrCourseId} and
-		notes.LearningComponentId=#{learnCompId} and 
-		notes.LearningComponentContentId=#{learnCmpContId} and 
-		program.MemberRoleId=#{memberRoleId} and 
+		notes.LearningComponentId=#{learnCompId} and
+		notes.LearningComponentContentId=#{learnCmpContId} and
+		program.MemberRoleId=#{memberRoleId} and
 		notes.NotesType=#{noteType}
-		
+
 	</select>
 
 
@@ -178,8 +237,11 @@
 		useGeneratedKeys="true" keyProperty="SubcribeNotesId">
 
 		insert into
-		sbnsubscribernotes(CreationDate, NoteTitle, NoteDescription, NoteDuration, NotesType,NotesContent,SubscriptionCourseId,LearningComponentId,LearningComponentContentId,MemSubscriptionProgId)
-		values(now(), #{noteTitle}, #{noteDescription}, #{noteDuration}, #{type},#{content},
+		sbnsubscribernotes(CreationDate, NoteTitle, NoteDescription,
+		NoteDuration,
+		NotesType,NotesContent,SubscriptionCourseId,LearningComponentId,LearningComponentContentId,MemSubscriptionProgId)
+		values(now(), #{noteTitle}, #{noteDescription}, #{noteDuration},
+		#{type},#{content},
 		(select subscriptioncourseid
 		from
 		sbnsubscriptioncourse subcourse,corcurriculumcourse curcourse
@@ -187,8 +249,10 @@
 		subcourse.CurriculumCourseId=curcourse.CurriculumCourseId and
 		curcourse.CourseId=#{courseId}),
 		#{learnCompId},
-		(select LearningComponentContentId from corlearningcomponentcontent where 
-		LearningComponentId=#{learnCompId} and  LearningContentId=#{learnCmpContId}
+		(select
+		LearningComponentContentId from corlearningcomponentcontent where
+		LearningComponentId=#{learnCompId} and
+		LearningContentId=#{learnCmpContId}
 		),
 		(select
 		memsubscriptionprogid
@@ -211,7 +275,7 @@
 		<result property="description" column="NotesContent" />
 
 	</resultMap>
-	
+
 	<resultMap id="refResultMap" type="com.ziksana.domain.course.Reference">
 
 		<result property="title" column="LinkElement" />
@@ -219,8 +283,8 @@
 		<result property="duration" column="duration" />
 
 	</resultMap>
-	
-	
+
+
 	<resultMap id="learnerNotesResultMap" type="com.ziksana.domain.course.subscription.Note">
 
 		<result property="noteTitle" column="NoteTitle" />
@@ -228,16 +292,40 @@
 		<result property="noteDuration" column="NoteDuration" />
 
 	</resultMap>
-	
-	
-	<resultMap id="contentResultMap" type="com.ziksana.domain.course.subscription.ContentReference">
+
+
+	<resultMap id="contentResultMap"
+		type="com.ziksana.domain.course.subscription.ContentReference">
 
 		<result property="title" column="LinkElement" />
 		<result property="duration" column="duration" />
 
 	</resultMap>
+
+
+	<resultMap id="programResultMap"
+		type="com.ziksana.domain.institution.LearningProgram">
+
+
+		<result property="name" column="ProgramName" />
+
+	</resultMap>
 	
 	
+	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
+
+		<result property="courseId" column="courseid" />
+		<result property="name" column="name" />
+		<result property="description" column="description" />
+
+
+	</resultMap>
 	
+
+
+
+
+
+
 
 </mapper>
