@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 
 public enum LinkType {
 
+	
+	
 	//TODO: retrieve the ids from the static data service
 	REFERENCE			(1, "Reference"),
 	ADDITIONAL_INFO		(2, "Additional information"),

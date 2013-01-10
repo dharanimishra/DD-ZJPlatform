@@ -52,9 +52,14 @@ public class CourseTreeNodeController {
 		String coursename = "";
 		Integer learningComponentId = 0;
 		String parentIcon = "../resources/images/tree_icons/chapter.png";
-		String docIcon = "../resources/images/tree_icons/pdf.png";
 		String videoIcon = "../resources/images/tree_icons/video.png";
 		String audioIcon = "../resources/images/tree_icons/audio.png";
+		String imageIcon = "../resources/images/tree_icons/image.png";
+		String pdfIcon = "../resources/images/tree_icons/pdf.png";
+		String linkIcon = "../resources/images/tree_icons/link.png";
+		String wordIcon = "../resources/images/tree_icons/word.png";
+		String pptIcon = "../resources/images/tree_icons/powerpoint.png";
+		
 		try {
 			courseIds = Integer.parseInt(courseId);
 			LOGGER.info("Exiting showMyTreenode():  courseIds :" + courseIds);
@@ -92,7 +97,11 @@ public class CourseTreeNodeController {
 		modelView.addObject("courseIds", courseIdValue);
 		modelView.addObject("coursename", coursename);
 		modelView.addObject("parentIcon", parentIcon);
-		modelView.addObject("docIcon", docIcon);
+		modelView.addObject("imageIcon", imageIcon);
+		modelView.addObject("pdfIcon", pdfIcon);
+		modelView.addObject("linkIcon", linkIcon);
+		modelView.addObject("wordIcon", wordIcon);
+		modelView.addObject("pptIcon", pptIcon);
 		modelView.addObject("videoIcon", videoIcon);
 		modelView.addObject("audioIcon", audioIcon);
 		modelView.addObject("treeList", treeNodeList);

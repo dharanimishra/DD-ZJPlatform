@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zCollege</title>
+<link rel="stylesheet" href="css/zCss.css" type="text/css"/>
+<link type="text/css" href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/zeni/zeni2.css" />
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/zStrate.js"></script>
+      
+</head>
+
+<body>
+
+<div class="zannouncementwrapper">
+
+	<!-- Main container -->
+	<div id="zMessage"  style="width:720px;">
+    	
+       <div class="helptext">
+        	Help text describing the page
+        </div>
+        <!-- end zMessage -->
+        <br />
+        <div id="contentMessage">
+        
+        				 <input id="mySub" type="radio" value="mySub" style="margin-top: -3px; margin-left:2px;" checked="checked"></input>My subscriptions
+        				 <select id="myProgram" name="myProgram" style="width:150px; margin-left:10px;" > 
+                              <option value="My programs" selected="selected">
+                            	My programs
+                           	  </option>                        
+                        </select>
+                         <select id="myCourses" name="myCourses" style="width:150px;" > 
+                              <option value="My courses" >
+                            	My courses
+                           	  </option> 
+                              <option value="Web development" selected="selected">
+                            	Web development
+                           	  </option>                         
+                        </select>
+                                         
+                   <br/>
+        	       <div class="zenisearch zenileft" style="margin-top:2px; margin-left:2px;">
+                   
+                   		<input id="mySearch" type="radio" value="mySearch" style="margin-top: -3px; padding-right:5px;"></input>Search programs
+                        <input id="search" name="search" type="text" value="Search.." class='highlights' style="margin-top: 1px; margin-left:4px;" onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" />
+                        </div>
+                        <div class="zenisearchbutton zenileft" style="margin-top:10px; margin-left:2px;">
+                        <input type="button" class="btn" id="btn_top_search" name="btn_top_search" value="Search" style="margin-top: -6px;"/>
+                        <input type="button" class="btn" id="btn_advance" name="btn_advance" value="Advanced"  style="margin-top: -6px;"/>
+                    	</div> 
+                                                               
+                    <br/><br/><br />
+                    <div id="advance_search_form" >
+                         <input id="q_name" name="q_name" type="text" value="Specify question name" class='highlights' maxlength="100" onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+                         <br/><br/>
+                         <select id="byarea" name="byarea" style="width:150px;" > 
+                              <option value="Filter by area" selected="selected">
+                            	Filter by area
+                           	  </option>                        
+                        </select>
+                       
+                         <select id="bysubject" name="bysubject" style="width:150px;" > 
+                              <option value="Filter by subject" selected="selected">
+                            	Filter by subject
+                              </option>                        
+                        </select>
+                      
+                         <select id="bytopic" name="bytopic"> 
+                              <option value="Filter by topic" selected="selected" style="width:150px;" >
+                            	Filter by topic
+                            	</option>                       
+                        </select>
+                        <br/><br/>
+                         <input id="q_tags" name="q_tags" type="text" value="Search by tags" maxlength="100" class='highlights' onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+                         <br/><br/>
+                          <input type="button" class="btn" id="btn_exit" name="btn_exit" value="Exit"/>
+                         <input type="button" class="btn" id="btn_search" name="btn_search" value="Search"/>
+                         </div>
+                         
+        	<div id="showMessage" style=" width:700px; height:400px;clear:both;">
+              <input id="selectedCourse" name="selectedCourse" type="text" placeholder="Selected program/course" class='highlights' style="" onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" />  
+              <br/>
+              <div id="collegeLeft" style=" float:left; height:350px; width:200px; border: 1px solid #CCC; clear:both; padding:5px;">
+              	Select node from the tree below and click on arrow to view details of that perticular node<br/>
+                <a class="aClass" id="nodeId">Node - 1</a>
+              </div>
+              <div id="middleDetails" title="View Details" style="float:left; cursor:pointer; margin-left:5px; width: 40; height: 20; border-top: 40px solid transparent;	border-bottom: 40px solid transparent;	border-left: 40px solid rgb(60, 163, 193);">
+              </div>
+              <div id="collegeRight" style=" float:left;  width:auto; margin-left:10px; ">
+              	<div id="tabsRight">
+                	 <input type="button" class="btn btn-info" id="btn_all" name="btn_all" value="All"/>
+                     <input type="button" class="btn btn-info" id="btn_educator" name="btn_educator" value="Educator"/>
+                     <input type="button" class="btn btn-info" id="btn_mine" name="btn_mine" value="Mine"/>
+                     <input type="button" class="btn btn-info" id="btn_others" name="btn_others" value="Others"/>
+                </div>
+                <div id="tblMessage" style=" width:auto; margin-bottom:10px; ">
+                 <table class="table table-striped">
+                        <thead style="font-size:12px; font-family:tahoma; font-style:normal; color:#666;">
+                	<tr class="_bg">
+                    	<th>Component</th><th>Guidance</th><th>Typical</th><th>Average</th>
+                    </thead>
+                    <tbody>
+                    <tr id="tr1">
+                    	<td>Chapter 1</td>
+                        <td>Spend sufficient prop</td>
+                        <td>2 hours</td>
+                        <td>2.4 hours</td>
+                      </tr>
+                     <tr id="tr2">
+                    	<td>Assignment 1</td>
+                        <td>Take practice test</td>
+                        <td>3 hours</td>
+                        <td>2.75 hours</td>
+                      
+                    </tr>
+                     <tr id="tr3">
+                    	<td>Chapter 2</td>
+                        <td>Study all embedded content</td>
+                        <td>4 hours</td>
+                        <td>5.6 hours</td>
+                    
+                    </tr>  
+                           </tbody>                                
+                </table>
+                </div>
+                 
+                	<div id="linkMessage" style="width:180px; margin-left:-10px;">                
+                         <textarea id="clickedMessage" placeholder="Additional description of selected item/node" style=" width:410px;"></textarea>                	
+                   </div>
+                </div>
+               <!-- end tblMessage -->
+            </div>
+            <!-- end showMessage -->
+           
+            <!-- end sendMeeting -->
+            <!-- end sendMessage -->
+            
+            </div>
+            <!-- linksMessage -->
+            
+        </div>
+        <!-- end contentMessage -->
+          <div id="zReturn" style=" margin-right:-190px;">    		 
+ <input type="button" class="btn btn-info" id="btn_return" name="btn_return" value="Return"/>
+        	</div>
+            <!-- end zReturn -->
+       
+    </div>
+    <!-- end zMessage -->
+    </div>
+  
+</body>
+</html>

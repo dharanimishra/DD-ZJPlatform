@@ -14,6 +14,7 @@
 <link href="../resources/content_consumption/css/nav.css" rel="stylesheet" type="text/css" />
 <link type="text/css" rel="stylesheet" href="../resources/content_consumption/css/tipsy.css" />
 	<link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
+	
 	 <script src="../resources/js/jquery.fancybox.pack.2.1.3.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="../resources/content_consumption/css/custom-theme/jquery-ui-1.8.21.custom.css">
@@ -154,6 +155,10 @@
 	border-radius: 0 3px 3px 3px;
 }
 
+#playerID{
+margin-left:-130px;
+}
+
 #tabs-contents div.content {
 	min-width: 200px;
 	padding: .5em;
@@ -264,12 +269,13 @@ a[data-iconprefix="powerpoint"] {
 
 		hotspotDuration[4]=3;
 		var hotspotText=[];
-		hotspotText[0]='This is <a class="vplayer" onclick="if(isPlayerPlaying) jwplayer().pause();" style="margin-left:5px; font-size: 15px;" target="_blank" href="http://en.wikipedia.org/wiki/Banana">Banana</a>';;
-		hotspotText[1]='This is <a class="vplayer" onclick="if(isPlayerPlaying) jwplayer().pause();" style="margin-left:5px; font-size: 15px;" target="_blank" href="http://en.wikipedia.org/wiki/Coconut">Coconut</a>';
-		hotspotText[2]='This is <a class="vplayer" onclick="if(isPlayerPlaying) jwplayer().pause();" style="margin-left:5px; font-size: 15px;" target="_blank" href="http://en.wikipedia.org/wiki/Apple">Apple</a>';;
+		hotspotText[0]='This is <a class="vplayer" onclick="if(isPlayerPlaying) jwplayer(reftoplayer).pause();" style="margin-left:5px; font-size: 15px;" target="_blank" href="http://en.wikipedia.org/wiki/Banana">Banana</a>';;
+		hotspotText[1]='This is <a class="vplayer" onclick="if(isPlayerPlaying) jwplayer(reftoplayer).pause();" style="margin-left:5px; font-size: 15px;" target="_blank" href="http://en.wikipedia.org/wiki/Coconut">Coconut</a>';
+		hotspotText[2]='This is <a class="vplayer" onclick="if(isPlayerPlaying) jwplayer(reftoplayer).pause();" style="margin-left:5px; font-size: 15px;" target="_blank" href="http://en.wikipedia.org/wiki/Apple">Apple</a>';;
 	
 		
-		var isPlayerPlaying = false;
+		var isPlayerPlaying = false; 	
+		
 		var hotspotImplrunning = false;
 		
 	
@@ -436,7 +442,7 @@ a[data-iconprefix="powerpoint"] {
 
 		var showHotspotBox = function(i)
 		{
-		//if(isPlayerPlaying) jwplayer().pause();
+		//if(isPlayerPlaying) jwplayer(reftoplayer).pause();
 		docele = document.getElementById("hotspotBox");
 		if(docele)docele.parentNode.removeChild(docele);
 		docele = document.getElementById("imgclose");
@@ -525,12 +531,12 @@ a[data-iconprefix="powerpoint"] {
 			docele = document.getElementById("ItemDetails");
 			docele.innerHTML=' \
 			<b style="color:white; font-weight:bolder;"><center>Table of Contents<img src="../resources/content_consumption/icons/close.png" onmouseover="this.src=\'icons/close_hover.png\'" onmouseout="this.src=\'icons/close.png\'" width="15px" height="15px" onclick=emptyContent("ItemDetails"); style="float:right; margin-right:20px"/></center></b>\
-			<div class="chatbox_user_video" style="margin-top:20px;"  onclick=jwplayer().seek(75).play(true);> \
+			<div class="chatbox_user_video" style="margin-top:20px;"  onclick=jwplayer(reftoplayer).seek(75).play(true);> \
 			Preference Reordering \
 			</div>	\
-			<div class="chatbox_user_video" onclick=jwplayer().seek(248).play(true);>Transitive Preferences \
+			<div class="chatbox_user_video" onclick=jwplayer(reftoplayer).seek(248).play(true);>Transitive Preferences \
 			</div> \
-			<div class="chatbox_user_video" onclick=jwplayer().seek(310).play(true);>Collective Preferences \
+			<div class="chatbox_user_video" onclick=jwplayer(reftoplayer).seek(310).play(true);>Collective Preferences \
 			</div> \
 			</div><br><hr>';
 		}
@@ -543,7 +549,7 @@ a[data-iconprefix="powerpoint"] {
 			docele.innerHTML=' \
 			<b style="color:white;font-weight:bolder;"><center>Notes<img src="../resources/content_consumption/icons/close.png" onmouseover="this.src=\'icons/close_hover.png\'" onmouseout="this.src=\'icons/close.png\'" width="15px" height="15px" onclick=emptyContent("ItemDetails"); style="float:right; margin-right:20px"/></center></b>\
 			<br>\
-			<div id="note1FS" class="chatbox_user_video" style="margin-left:10px;" onclick="jwplayer().seek(75).play(true);" Title="Must read before exam - Preference Ordering" > \
+			<div id="note1FS" class="chatbox_user_video" style="margin-left:10px;" onclick="jwplayer(reftoplayer).seek(75).play(true);" Title="Must read before exam - Preference Ordering" > \
 			<img src="../resources/content_consumption/icons/note_16.png"  width="10px" height="10px" /> \
 			Important\
 			</div>\
@@ -565,7 +571,7 @@ a[data-iconprefix="powerpoint"] {
 		
 		var AddNote = function()
 		{
-			if(isPlayerPlaying) jwplayer().pause();
+			if(isPlayerPlaying) jwplayer(reftoplayer).pause();
 			docele = document.getElementById("AddNoteBox");
 			if(docele) docele.parentNode.removeChild(docele);
 			docele = document.getElementById("AddBookmarkBox");
@@ -592,10 +598,10 @@ a[data-iconprefix="powerpoint"] {
 		{
 			note_title = document.getElementById('noteTitle').value;
 			note_description = document.getElementById('noteDesc').value;
-			note_position = Math.floor(jwplayer().getPosition());
+			note_position = Math.floor(jwplayer(reftoplayer).getPosition());
 			
-			note_anchor_string = '<a title="'+note_description+'" onclick="jwplayer().seek('+note_position+').play(true);" data-iconprefix="note">'+note_title+'</a>';
-			note_anchor_string2='<div class="chatbox_user_video" style="margin-left:10px;" onclick="jwplayer().seek('+note_position+').play(true);" Title="'+note_description+'" > \
+			note_anchor_string = '<a title="'+note_description+'" onclick="jwplayer(reftoplayer).seek('+note_position+').play(true);" data-iconprefix="note">'+note_title+'</a>';
+			note_anchor_string2='<div class="chatbox_user_video" style="margin-left:10px;" onclick="jwplayer(reftoplayer).seek('+note_position+').play(true);" Title="'+note_description+'" > \
 			<img src="../resources/content_consumption/icons/note_16.png"  width="10px" height="10px" /> \
 			'+note_title+'\
 			</div>';
@@ -614,7 +620,7 @@ a[data-iconprefix="powerpoint"] {
 			if(docele) docele.parentNode.removeChild(docele);
 			docele = document.getElementById("imgclose2");
 			if(docele) docele.parentNode.removeChild(docele);
-			jwplayer().play();
+			jwplayer(reftoplayer).play();
 			
 			
 		}
@@ -624,7 +630,7 @@ a[data-iconprefix="powerpoint"] {
 			if(docele) docele.parentNode.removeChild(docele);
 			docele = document.getElementById("AddBookmarkBox");
 			if(docele) docele.parentNode.removeChild(docele);
-			if(isPlayerPlaying) jwplayer().pause();
+			if(isPlayerPlaying) jwplayer(reftoplayer).pause();
 		/*	docele = document.getElementById("UserInput");
 		//docele.onclick = function() { return false;};
 		
@@ -678,11 +684,11 @@ a[data-iconprefix="powerpoint"] {
 		var AddBookmarkToDataBase= function()
 		{
 			/*bookmark_title =document.getElementById('bookmarkTitle').value;
-			bookmark_position = Math.floor(jwplayer().getPosition());
+			bookmark_position = Math.floor(jwplayer(reftoplayer).getPosition());
 
 			
-			bookmark_anchor_string = '<a onclick="jwplayer().seek('+bookmark_position+').play(true);" data-iconprefix="star">'+bookmark_title+'</a>';
-			bookmark_anchor_string2 = '<div class="chatbox_user_video" style="margin-left:10px;" onclick=jwplayer().seek('+bookmark_position+').play(true);> \
+			bookmark_anchor_string = '<a onclick="jwplayer(reftoplayer).seek('+bookmark_position+').play(true);" data-iconprefix="star">'+bookmark_title+'</a>';
+			bookmark_anchor_string2 = '<div class="chatbox_user_video" style="margin-left:10px;" onclick=jwplayer(reftoplayer).seek('+bookmark_position+').play(true);> \
 			<img src="../resources/content_consumption/icons/starbook.png" width="10px" height="10px" /> \
 			 '+bookmark_title+'\
 			</div>';
@@ -698,18 +704,18 @@ a[data-iconprefix="powerpoint"] {
 			}*/
 			
 					question_title = document.getElementById('bookmarkTitle').value;
-		question_position =Math.floor(jwplayer().getPosition());
+		question_position =Math.floor(jwplayer(reftoplayer).getPosition());
 		//question_timestamp = Date.parse('now').toString('ddd, MMM dd, yyyy h:mm tt');
 		// question_timestamp = Date.today().add(question_position).seconds().toString('mm:ss'); //get minutes from sec using datejs
 		question_timestamp = (new Date).clearTime().addSeconds(question_position).toString('H:mm:ss');
 		
 		question_anchor_string ='<div style="width:100%;  border-bottom: 1px solid #333; padding-bottom: .25em;">'; 
-		question_anchor_string += '<a onclick="jwplayer().seek('+question_position+').play(true);" style="color:white;" data-iconprefix="question">'+question_title+'</a><br/><span class="qtstamp">'+question_timestamp+'</span>';
+		question_anchor_string += '<a onclick="jwplayer(reftoplayer).seek('+question_position+').play(true);" style="color:white;" data-iconprefix="question">'+question_title+'</a><br/><span class="qtstamp">'+question_timestamp+'</span>';
 		question_anchor_string += ' <span onclick="sendQuestionFS(); $(\'.question_to_be_sent\').html($(this).siblings(\'a\').text()+\'<hr/>\');"  style="cursor: pointer; color: #222; background: gray; border-radius: 20px; padding: 0 .5em;  margin-right:15px; " >send</span></div>';
 		
 		//save bookmark temporarily
 		question_anchor_string2 ='<div style="width:100%;  border-bottom: 1px solid #333;">'; 
-		question_anchor_string2 += '<a onclick="jwplayer().seek('+question_position+').play(true);" data-iconprefix="question">'+question_title+'</a><br/><span class="qtstamp">'+question_timestamp+'</span>';
+		question_anchor_string2 += '<a onclick="jwplayer(reftoplayer).seek('+question_position+').play(true);" data-iconprefix="question">'+question_title+'</a><br/><span class="qtstamp">'+question_timestamp+'</span>';
 		question_anchor_string2 += ' <span style="margin-right:15px;" class="send_question_trigger">send</span></div>';
 		
 		$('#questions_container').append(question_anchor_string2);
@@ -723,12 +729,12 @@ a[data-iconprefix="powerpoint"] {
 			if(docele) docele.parentNode.removeChild(docele);
 			docele = document.getElementById("imgclose2");
 			if(docele) docele.parentNode.removeChild(docele);
-			jwplayer().play();
+			jwplayer(reftoplayer).play();
 			
 		}
 		var closeBox = function(obj)
 		{
-					if(!isPlayerPlaying) jwplayer().play();
+					if(!isPlayerPlaying) jwplayer(reftoplayer).play();
 
 							var control = document.getElementById("ThumbnailBox");
 	                if(control) control.parentNode.removeChild(control);
@@ -753,7 +759,7 @@ a[data-iconprefix="powerpoint"] {
 				if(docele && event.offsetX>=docele.offsetLeft && event.offsetX<=docele.offsetLeft+9)
 					{
 						
-						//if(isPlayerPlaying) jwplayer().pause();
+						//if(isPlayerPlaying) jwplayer(reftoplayer).pause();
 						console.log("CALLED" + pos_x +"POSITION"+ pos_y+ "POSITION OF CLICK"+event.pageX);
 						var element=document.getElementById("ThumbnailBox");
 						if (element) element.parentNode.removeChild(element);
@@ -800,9 +806,9 @@ a[data-iconprefix="powerpoint"] {
 						<div class="content" style="color:gray; margin-left:15px; margin-top:10px; margin-right:15px;"> \
 							<b  style="color:white;"><center>Educator Suggestions</center></b> \
 							<hr/> \
-							<a class="vplayer" data-iconprefix="link" onclick="if(isPlayerPlaying) jwplayer().pause();" target="_blank" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.151.9419">Aggregating Preferences in Multi-Issue Domains</a><br> \
-							<a class="vplayer" data-iconprefix="link" onclick="if(isPlayerPlaying) jwplayer().pause();" target="_blank" href="http://faculty.arts.ubc.ca/pbartha/p321f01/p321ovh2.pdf">Preference Ordering</a> <br> \
-							<a class="vplayer note" onclick="if(isPlayerPlaying) jwplayer().pause(); return false;"  href="" title="Make sure you understand this concept before proceeding. Please make use of the references provided or contact me to seek any clarifications.">Critical Concept</a>            \
+							<a class="vplayer" data-iconprefix="link" onclick="if(isPlayerPlaying) jwplayer(reftoplayer).pause();" target="_blank" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.151.9419">Aggregating Preferences in Multi-Issue Domains</a><br> \
+							<a class="vplayer" data-iconprefix="link" onclick="if(isPlayerPlaying) jwplayer(reftoplayer).pause();" target="_blank" href="http://faculty.arts.ubc.ca/pbartha/p321f01/p321ovh2.pdf">Preference Ordering</a> <br> \
+							<a class="vplayer note" onclick="if(isPlayerPlaying) jwplayer(reftoplayer).pause(); return false;"  href="" title="Make sure you understand this concept before proceeding. Please make use of the references provided or contact me to seek any clarifications.">Critical Concept</a>            \
 						</div> \
 					</li> \
 					\
@@ -831,7 +837,7 @@ a[data-iconprefix="powerpoint"] {
 						<div class="content" style="color:gray; margin-left:15px; margin-top:10px; margin-right:15px;"> \
 							<b style="color:white;"><center>Other References</center></b> \
 							<hr/> \
-							<a class="vplayer" data-iconprefix="link" onclick="if(isPlayerPlaying) jwplayer().pause();" target="_blank" href="http://en.wikipedia.org/wiki/Order_of_preference">Order of Preferences</a>\
+							<a class="vplayer" data-iconprefix="link" onclick="if(isPlayerPlaying) jwplayer(reftoplayer).pause();" target="_blank" href="http://en.wikipedia.org/wiki/Order_of_preference">Order of Preferences</a>\
 						</div> \
 					</li> \
 					\
@@ -890,7 +896,7 @@ a[data-iconprefix="powerpoint"] {
 						<div class="content" style="color:gray; margin-left:15px; margin-top:10px; margin-right:15px;"> \
 							<b style="color:white;"><center>Class Notes</center></b> \
 							<hr/> \
-							<div style="color: white;" title="The Productive Thinking Model (sometimes known as ThinkX) was developed by Tim Hurson, a Canadian author, speaker, and creativity theorist." class="note" onclick="jwplayer().seek(75).play(true);"><img width="22px" height="22px" src="../resources/content_consumption/icons/Aron.png"> <span>Aaron</span><br> The Productive Thinking Model ...</div> \
+							<div style="color: white;" title="The Productive Thinking Model (sometimes known as ThinkX) was developed by Tim Hurson, a Canadian author, speaker, and creativity theorist." class="note" onclick="jwplayer(reftoplayer).seek(75).play(true);"><img width="22px" height="22px" src="../resources/content_consumption/icons/Aron.png"> <span>Aaron</span><br> The Productive Thinking Model ...</div> \
 							</li> \
 					\
 				</div>';
@@ -1030,6 +1036,8 @@ a[data-iconprefix="powerpoint"] {
 			src="../resources/content_consumption/js/jquery/fxc-clip.uic-resizable.js"></script>
 
 		<script type="text/javascript">
+		
+		
 TopUp.addPresets({
     'a[data-filetype="audio"]': {
       shaded: 1, effect: "fade", overlayClose: 1, width: 495, height: 285
@@ -1174,7 +1182,7 @@ TopUp.addPresets({
 			}
 			function enableEditButton() {
 				/*$("#listen").click(function() {
-					jwplayer().play();
+					jwplayer(reftoplayer).play();
 					$("#listen-text").toggle();
 				});*/
 			}
@@ -1182,7 +1190,7 @@ TopUp.addPresets({
 			function displayBookMarkSection() {
 				$("#listen-text-bookmark").toggle();
 				$('#bookmarklabel').val('');
-				jwplayer().play();
+				jwplayer(reftoplayer).play();
 			}
 			function disableEditButton() {
 				//$("#listen").click();
@@ -1199,7 +1207,7 @@ TopUp.addPresets({
 			}*/
 			
 			function showVideoNoteForm(){
-				jwplayer().pause();
+				jwplayer(reftoplayer).pause();
 				$('#listen-text').fadeIn(); //show the form
 				$('#listen-text').find('textarea, input[type="text"]').val('').removeAttr('readonly');
 				$('#videoIdHid, #timeHid').val('');
@@ -1209,7 +1217,7 @@ TopUp.addPresets({
 
 			  function showEnrichmentNoteForm(){
 				 // alert("showEnrichmentNoteForm");
-					jwplayer().pause();
+					jwplayer(reftoplayer).pause();
 					$('#enrich_note').fadeIn(); //show the form
 					$('#enrich_note').find('input[type="text"]').val('').removeAttr('readonly');
 					$('#videoIdHid, #timeHid').val('');
@@ -1217,7 +1225,7 @@ TopUp.addPresets({
 
 			  
 			function onDeleteNotes(videoId,time,videoName) {
-				jwplayer().pause();
+				jwplayer(reftoplayer).pause();
 				//alert("inside deleteNotesmethod");
 				//alert("video length2 : " + videoId.trim().length);
 				//alert( "videoId=" + videoId + " &time=" + time+" &videoName=" + videoName);
@@ -1243,11 +1251,11 @@ TopUp.addPresets({
 					}
 				});
 				*/
-				jwplayer().play();
+				jwplayer(reftoplayer).play();
 			}
 			
 			function onDeleteBookmark(videoId,time,videoName) {
-				jwplayer().pause();
+				jwplayer(reftoplayer).pause();
 				//alert("inside onDeleteBookmark");
 				//alert("video length2 : " + videoId.trim().length);
 				//alert( "videoId=" + videoId + " &time=" + time+" &videoName=" + videoName);
@@ -1263,17 +1271,17 @@ TopUp.addPresets({
 						//alert("Error on delete Notes");
 					}
 				});*/
-				jwplayer().play();
+				jwplayer(reftoplayer).play();
 			}
 			
 			function doAjaxPost() {
 				//alert("inside ajax post");
 				// get the form values
-				var name = (jwplayer().getPlaylistItem()["file"])
+				var name = (jwplayer(reftoplayer).getPlaylistItem()["file"])
 						.split("/Generic/uploads/")[1];
 				var description = String($('#textArea').val());
 				var videoId = String($('#videoIdHid').val());
-				var time = jwplayer().getPosition();
+				var time = jwplayer(reftoplayer).getPosition();
 
 				var bookmarkTitle = String($("input#bookmarkTitle").val());
 				
@@ -1312,7 +1320,7 @@ TopUp.addPresets({
 				*/
 				$('#videoId').val('');
 				document.getElementById("videoIdHid").value = "";
-				jwplayer().play();
+				jwplayer(reftoplayer).play();
 				document.getElementById("videoIdHid").value = "";
 
 				
@@ -1321,9 +1329,9 @@ TopUp.addPresets({
 			
 			function doBookMarkPost() {
 				// get the form values
-				var videoName = (jwplayer().getPlaylistItem()["file"])
+				var videoName = (jwplayer(reftoplayer).getPlaylistItem()["file"])
 						.split("/Generic/uploads/")[1];
-				var time = jwplayer().getPosition();
+				var time = jwplayer(reftoplayer).getPosition();
 				var title = String($("input#bookmarklabel").val());
 				/*
 				$.ajax({
@@ -1336,13 +1344,13 @@ TopUp.addPresets({
 					}
 				});
 				*/
-				jwplayer().play();
+				jwplayer(reftoplayer).play();
 			}
 
 			function displayBookMarkNotes(time) {
 				if (time != null) {
-					jwplayer().seek(time);
-					jwplayer().pause(true);
+					jwplayer(reftoplayer).seek(time);
+					jwplayer(reftoplayer).pause(true);
 				}
 			};
 
@@ -1501,7 +1509,7 @@ TopUp.addPresets({
 			/*
 				function doPlayListPost() {
 				// get the form values
-				var name = (jwplayer().getPlaylistItem()["file"])
+				var name = (jwplayer(reftoplayer).getPlaylistItem()["file"])
 						.split("videos/")[1];
 				var path = "videos/";
 				$.ajax({
@@ -1520,7 +1528,7 @@ TopUp.addPresets({
 			/*
 			function doUpdatePost(videoId, description, bookmarkTitle) {
 				alert(":::videoId "+videoId+": description "+description+" : bookmarkTitle "+bookmarkTitle);
-				var name = (jwplayer().getPlaylistItem()["file"])
+				var name = (jwplayer(reftoplayer).getPlaylistItem()["file"])
 						.split("videos/")[1];
 				var description = String($('#textArea').val());
 				var bookmarkTitle = String($("input#bookmarkTitle").val());
@@ -1536,7 +1544,7 @@ TopUp.addPresets({
 						$("input#bookmarkTitle").val('');
 					}
 				});
-				jwplayer().play();
+				jwplayer(reftoplayer).play();
 			}
 			*/
 		</script>
@@ -1579,7 +1587,7 @@ $(document).ready(function(){
 			href="../resources/content_consumption/css/custom-theme/old-jquery-ui-1.8.21.custom.css">
 			<link rel="stylesheet" type="text/css"
 				href="../resources/content_consumption/css/custom-theme/jquery-ui-1.8.21.custom.css">
-				<script src="../resources/content_consumption/js/jquery-1.7.2.min.js"></script>
+				
 				<script src="../resources/content_consumption/js/jquery-ui-1.8.21.custom.min.js"></script>
 				<!--end jquery UI-->
 				
@@ -1652,7 +1660,7 @@ $(document).ready(function(){
 			<!--logo container-->
 
 			<div class="logo">
-				<a href="/Generic/"><img src="../resources/content_consumption/images/logo.jpg" width="189" height="73"></a>
+				<a href="/Generic/"><img src="../resources/images/ziksana_button_logo.png" ></a>
 			</div>
 
 			<!--end logo container-->
@@ -1716,48 +1724,7 @@ $(document).ready(function(){
 
 
 		<!--End menu-->
-		<div class="searchpanel">
-			<div>
-				<form id="ui_element" class="sb_wrapper">
-					<input type="text" name="search" id="search"
-						placeholder="Search..." title="Search..." autosave="unique"
-						class="two-left-rounded-box two-right-rounded-box"> <input
-						id="submit" type="submit" value="Submit">
 
-							<ul class="sb_dropdown" style="display: none;">
-								<li class="sb_filter">Filter your search</li>
-								<li><input type="checkbox" /><label for="all"><strong>All
-											Categories</strong></label></li>
-								<li><input type="checkbox" /><label for="Automotive">Filter
-										by Area</label></li>
-								<li><input type="checkbox" /><label for="Baby">Filter
-										by Subject</label></li>
-								<li><input type="checkbox" /><label for="Beauty">Filter
-										by Topic</label></li>
-								<p></p>
-								<p>
-									<li><input type="checkbox" /><label for="all"><strong>All
-												Categories</strong></label></li>
-									<li><input type="checkbox" /><label for="Automotive">Filter
-											by Area</label></li>
-									<li><input type="checkbox" /><label for="Baby">Filter
-											by Subject</label></li>
-									<li><input type="checkbox" /><label for="Beauty">Filter
-											by Topic</label></li>
-								</p>
-
-							</ul>
-				</form>
-
-			</div>
-		</div>
-		<div class="searchoptions">
-			<ul>
-				<li class="srch-op-a"><a href="#"></a></li>
-				<li class="srch-op-b"><a href="#"></a></li>
-				<li class="srch-op-c"><a href="#"></a></li>
-			</ul>
-		</div>
 		</nav> </header>
 	</div> <!--to be included	-->		
 		<!--End Header Container-->
@@ -1806,11 +1773,11 @@ $(document).ready(function(){
 				        <div data-tabpane="class" style="display:none;">
 				        	<img onclick="$(this).parent().hide(); unhighlight_tab('class');" src="../resources/content_consumption/icons/cross.png" class="hide_parent">
 				        	<span class="column_title">Class Notes</span>
-								<div class="note" title="The Productive Thinking Model (sometimes known as ThinkX) was developed by Tim Hurson, a Canadian author, speaker, and creativity theorist." onclick="jwplayer().seek(25).play(true);">
+								<div class="note" title="The Productive Thinking Model (sometimes known as ThinkX) was developed by Tim Hurson, a Canadian author, speaker, and creativity theorist." onclick="jwplayer(reftoplayer).seek(25).play(true);">
 									<img width="40px" height="40px" src="../resources/content_consumption/icons/Aron.png"> <span>Aaron</span><br/> The Productive Thinking Model ...
 
 								</div>
-								<div class="note" title="Look at Wikipedia article on Model Thinking" onclick="jwplayer().seek(75).play(true);" >
+								<div class="note" title="Look at Wikipedia article on Model Thinking" onclick="jwplayer(reftoplayer).seek(75).play(true);" >
 									<img width="40px" height="40px" src="../resources/content_consumption/icons/Stella.png"> <span>Stella</span><br/>
 									Wikipedia article on Model Thinking.
 								</div>
@@ -1821,90 +1788,24 @@ $(document).ready(function(){
 				<div id="tree_container">
 					<span class="column_title">Chapters</span>
 					
-					<p class="user-name-w1">1. MODEL THINKING</p>
 
 					<div id="jqx_tree_container">
-        <script type="text/javascript">
-          
-        </script>
-        <div id='jqx_course_tree'>
-        </div>
+
+			        <div id='jqx_course_tree'></div>
 					
 					</div>
-				<input type="hidden" value="100" id="courseId"/>
+					<input type="hidden" value="100" id="courseId"/>
+					<input type="hidden" value="" id="selected_node_id">
 
-					<ul id="nav">
 
-						<li class="user-name-w2" id="chapter">1.1 Why Model Thinking
-							<ul class="user-name-w2">
-								<li><a href="/ContentConsumption/images/output0.jpeg"
-									data-filetype="imageset" class="tu"
-									toptions="group= imageset-1"
-									onclick="displayImageSet($(this));">1.1.1 Why Model</a> <span
-									class="hidden"> <a
-										href="/ContentConsumption/images/output1.jpeg"
-										data-filetype="imageset" class="tu"
-										toptions="group= imageset-1"></a> <a
-										href="/ContentConsumption/images/output2.jpeg"
-										data-filetype="imageset" class="tu"
-										toptions="group= imageset-1"></a>
-								</span></li>
-								<li><a href="/ContentConsumption/images/output0.jpeg"
-									data-filetype="imageset" class="tu"
-									toptions="group= imageset-2"
-									onclick="displayImageSet($(this));">1.1.2 Intelligent
-										Citizens of the World</a> <span class="hidden"> <a
-										href="/ContentConsumption/images/output1.jpeg"
-										data-filetype="imageset" class="tu"
-										toptions="group= imageset-2"></a> <a
-										href="/ContentConsumption/images/output2.jpeg"
-										data-filetype="imageset" class="tu"
-										toptions="group= imageset-2"></a>
-								</span></li>
-							</ul>
-						</li>
-						<li class="user-name-w2" id="chapter">1.2 Aggregation
-							<ul class="user-name-w2">
-								<li><a href="/ContentConsumption/images/output0.jpeg"
-									data-filetype="imageset" class="tu"
-									toptions="group= imageset-3"
-									onclick="displayImageSet($(this));">1.2.1 Aggregation</a></li>
-								<span class="hidden"> <a
-									href="/ContentConsumption/images/output1.jpeg"
-									data-filetype="imageset" class="tu"
-									toptions="group= imageset-3"></a> <a
-									href="/ContentConsumption/images/output2.jpeg"
-									data-filetype="imageset" class="tu"
-									toptions="group= imageset-3"></a>
-								</span>
-						</li>
-						<li><a href="#"
-							onclick="displayVideo('sixsigma.mp4','/Generic/uploads/');">1.2.2 Six
-								Sigma</a></li>
-						<li><a href="#"
-							onclick="displayVideo('test.webm','/Generic/uploads/'); $('.preference_aggregation_temp').show();">1.2.3
-								Preference Aggregation</a></li>
-					</ul>
-					</li>
-					<li class="user-name-w2" id="chapter">1.3 Decision Models
-						<ul class="user-name-w2">
-							<li><a href="http://en.wikipedia.org/wiki/Decision_making"
-								target="_blank">1.3.1 Introduction to Decision Making</a></li>
-							<li><a href="#" data-filetype="video"
-								onclick="displayVideo('BasicProbability.mp4','/Generic/uploads/');">1.3.2
-									Probability: The Basics</a></li>
-						</ul>
-					</li>
-
-					</ul>
 				</div>
 
 				<div id="content_tab_icon_container">
 					<span class="column_title">References</span>
 					<img data-tab="educator" src="../resources/content_consumption/icons/Google.png" title="Educator Suggested References"><br/><br/><br/>
-					<img data-tab="reference_materials" src="../resources/content_consumption/images/logos/_reference_material.png" title="Reference Materials"><br /><br/><br/>
+					<!-- <img data-tab="reference_materials" src="../resources/content_consumption/images/logos/_reference_material.png" title="Reference Materials"><br /><br/><br/>
 					<img data-tab="class" src="../resources/content_consumption/images/logos/_class.png" title="Class Notes"><br /><br/><br/>
-					<img data-tab="books" src="../resources/content_consumption/images/logos/_books.png" title="Books"><br/><br/><br/>
+					<img data-tab="books" src="../resources/content_consumption/images/logos/_books.png" title="Books"><br/><br/><br/> -->
 				</div>
 
 				<!-- Start Video Container -->
@@ -1912,19 +1813,19 @@ $(document).ready(function(){
 
 						<div style="position: absolute; z-index: 2; text-align: left; background: #444; width: 640px; ">
 							<div id="add_bookmark_container" style="display:none;">
-								<img class="hide_parent" src="../resources/content_consumption/icons/cross.png" onclick="$(this).parent().fadeOut('fast'); jwplayer().play(true);">
+								<img class="hide_parent" src="../resources/content_consumption/icons/cross.png" onclick="$(this).parent().fadeOut('fast'); jwplayer(reftoplayer).play(true);">
 								<span class="column_title">Add a Bookmark</span>
 								Title: <input class="add_bookmark_title" type="text" placeholder="Bookmark Title"/>
 								<input class="add_bookmark_submit_button" type="button" value="Add Bookmark"/>
 							</div>
 							<div id="add_question_container" style="display:none;">
-								<img class="hide_parent" src="../resources/content_consumption/icons/cross.png" onclick="$(this).parent().fadeOut('fast'); jwplayer().play(true);">
+								<img class="hide_parent" src="../resources/content_consumption/icons/cross.png" onclick="$(this).parent().fadeOut('fast'); jwplayer(reftoplayer).play(true);">
 								<span class="column_title">Add a Question</span>
 								Question: <input class="add_question_title" type="text" placeholder="Type your Question"/>
 								<input class="add_question_submit_button" type="button" value="Add Question"/>
 							</div>
 							<div id="add_note_container" style="display:none;">
-								<img class="hide_parent" src="../resources/content_consumption/icons/cross.png" onclick="$(this).parent().fadeOut('fast'); jwplayer().play(true);">
+								<img class="hide_parent" src="../resources/content_consumption/icons/cross.png" onclick="$(this).parent().fadeOut('fast'); jwplayer(reftoplayer).play(true);">
 								<span class="column_title">Add a Note</span>
 								Title: <br/><input class="add_note_title" type="text" placeholder="Note Title"/><br/><br/>
 								Description: <br/><textarea class="add_note_description" placeholder="Note description" value="">
@@ -1992,8 +1893,8 @@ $(document).ready(function(){
 											
 									$('.iconMain').html(imageHtml);
 									
-									jwplayer().seek(time);
-									jwplayer().pause(true);
+									jwplayer(reftoplayer).seek(time);
+									jwplayer(reftoplayer).pause(true);
 								}
 							};
 						</script>
@@ -2007,39 +1908,48 @@ $(document).ready(function(){
 							var counter = 0;
 							var oldTime = 0;
 							var playListItemCounter = 0;
-							jwplayer("videoSection").setup({
-								flashplayer : "../resources/jwplayer/player.swf",
-								playlist : [ {
-									"file" : '../resources/jwplayer/video.mp4',
-									"provider" : "http"
-								} ],
-								// Nov 7
-								modes: [ { type: "html5" }, {type: 'flash', src: '../resources/jwplayer/player.swf'}, { type: "download" } ] , 
-								 events: {
-									 //onPlay: function(event) { togglePlay(event, true)	 },
-									 onPause: function(event) { togglePlay(event, false) },
-									 onFullscreen: function(event) {
-									 ToggleFullscreen(event.fullscreen);
-									 }
-									},
-									
-								// Nov 7									
-								image : 'thumbs/Video-1.jpg',
-								repeat : "list",
-								'stretching' : 'fill',
-								'controlbar' : 'bottom',
-								'width' : '640',//'550',
-								'height' : '385',//'335',
-/* 								'plugins' : {
-									"captions-2" : {
-										file : "videos/captions.srt",
-										back : true
-									}
-								}, */ //Nov 7
-								'provider' : 'http',
-								'http.startparam' : 'starttime'
-							});
-							var checkStatus = "true";
+							
+							
+							var ff_navigate_to_url = function(urlvalue) {
+							console.log(jwplayer(reftoplayer).getState() );
+								if(jwplayer(reftoplayer).getState() == "PLAYING") jwplayer(reftoplayer).pause();
+								window.open(urlvalue);
+							}
+
+							var ff_pause_player = function() {
+								if(jwplayer(reftoplayer).getState() == "PLAYING") jwplayer(reftoplayer).pause();
+							}
+
+							var ff_get_position = function() {
+								var position = jwplayer(reftoplayer).getPosition();
+								console.log(position);
+								return position+"";
+							}
+
+			
+							   var flashvars = {
+								  'file':   '../resources/jwplayer/video.mp4',
+								  'provider':  'http',
+								  'http.startparam' : 'starttime'
+							   };
+								
+							   var params = {
+								  'allowfullscreeninteractive':        'true',
+								  'allowscriptaccess':      'always'
+							   };
+							 
+							   var attributes = {
+								  'id':                     'playerID',
+								  'name':                   'playerID'
+							   };
+
+							   swfobject.embedSWF('../resources/jwplayer/consume-player.swf', 'videoSection', '640', '385', '9', 'false', 
+								   flashvars, params, attributes, flashloaded);
+					var reftoplayer ;			
+					function flashloaded(e) {
+					reftoplayer = e.ref;
+					}
+												var checkStatus = "true";
 							var refStatus  = "yes";
 							
 							function displayAudio(anchor){
@@ -2048,18 +1958,18 @@ $(document).ready(function(){
 								$('#play-vedio').css('visibility','visible');
 								filepath = anchor.attr('data-filepath');
 								filepath = 'ContentConsumption/audio/'+ filepath;
-								jwplayer().load(
+								jwplayer(reftoplayer).load(
 										{
 											file : filepath
 											
 											
 										});
-								jwplayer().play(true);
+								jwplayer(reftoplayer).play(true);
 								
 							}
 							
 							function displayImage(anchor){
-								jwplayer().stop();
+								jwplayer(reftoplayer).stop();
 								$('#video_actions').css('visibility','hidden');
 								$('#play-vedio').css('visibility','hidden');
 								filepath = anchor.attr('data-filepath');
@@ -2074,13 +1984,13 @@ $(document).ready(function(){
 								$('#play-vedio, #video_actions').css('visibility','visible');
 								checkStatus = "true";
 								document.getElementById("videoNameHid").value=videoName;				
-								jwplayer().load(
+								jwplayer(reftoplayer).load(
 										{
 											file : "" + videoPath
 													+ videoName,
 											image : 'thumbs/Video-1.jpg'
 										});
-								jwplayer().play(true);
+								jwplayer(reftoplayer).play(true);
 							}
 
 							/*
@@ -2138,13 +2048,13 @@ $(document).ready(function(){
 												checkStatus = "false";
 										}
 									);
-									jwplayer().seek(time);
-									jwplayer().pause(true);
+									jwplayer(reftoplayer).seek(time);
+									jwplayer(reftoplayer).pause(true);
 								}
 							} */
 							
-							function pausejwplayer(){jwplayer().pause();}
-							function resumejwplayer(){jwplayer().play();}
+							function pausejwplayer(){jwplayer(reftoplayer).pause();}
+							function resumejwplayer(){jwplayer(reftoplayer).play();}
 							
 							/*function displayEnrichAll(){
 								$('input[name="enrich-set"][value="refmaterial"]').attr('checked',true);
@@ -2176,7 +2086,7 @@ $(document).ready(function(){
 												if (element) {}
 												else 
 												{
-													setTimeout(setBubbles, 500);
+													//setTimeout(setBubbles, 500);
 											
 												}
 												togglePlay(event, true);
@@ -2184,7 +2094,7 @@ $(document).ready(function(){
 												//getPlayList();
 												enableEditButton();
 												
-												name = (jwplayer()
+												name = (jwplayer(reftoplayer)
 														.getPlaylistItem()["file"])
 														.split("/Generic/uploads/")[1];
 
@@ -2206,7 +2116,7 @@ $(document).ready(function(){
 							jwplayer("videoSection")
 									.onReady(
 											function() {
-												name = (jwplayer()
+												name = (jwplayer(reftoplayer)
 														.getPlaylistItem()["file"]).split("videos/")[1];
 												addVideo();
 										
@@ -2246,9 +2156,9 @@ $(document).ready(function(){
 								// get the form values
 								var videoName = $("#vidNameHid").val();
 								
-								var starttime = jwplayer().getPosition();
+								var starttime = jwplayer(reftoplayer).getPosition();
 								//alert("starttime : "+starttime);
-								var endtime  =  jwplayer().getPosition()+30;
+								var endtime  =  jwplayer(reftoplayer).getPosition()+30;
 								//alert("end time : "+endtime);
 								var title = String($("input#title").val());
 								var componetType = String($("input#componetType").val());				
@@ -2265,7 +2175,7 @@ $(document).ready(function(){
 										$("input#componetType").val('');
 									}
 								});
-								jwplayer().play();
+								jwplayer(reftoplayer).play();
 
 							  
 							*/
@@ -2291,22 +2201,22 @@ $(document).ready(function(){
 									<ul id="tabs-contents">
 										<li class="educator" style="display: none;">
 											<div class="content">
-												<a data-iconprefix="link" onclick="jwplayer().pause();"
+												<a data-iconprefix="link" onclick="jwplayer(reftoplayer).pause();"
 													target="_blank"
 													href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.151.9419">Aggregating
 													Preferences in Multi-Issue Domains</a> <a
-													data-iconprefix="link" onclick="jwplayer().pause();"
+													data-iconprefix="link" onclick="jwplayer(reftoplayer).pause();"
 													target="_blank"
 													href="http://faculty.arts.ubc.ca/pbartha/p321f01/p321ovh2.pdf">Preference
 													Ordering</a> <a data-iconprefix="note"
-													onclick="jwplayer().pause();" href="#"
+													onclick="jwplayer(reftoplayer).pause();" href="#"
 													title="Make sure you understand this concept before proceeding. Please make use of the references provided or contact me to seek any clarifications.">Critical
 													Concept</a>
 											</div>
 										</li>
 										<li class="reference_materials">
 											<div class="content">
-												<a data-iconprefix="link" onclick="jwplayer().pause();"
+												<a data-iconprefix="link" onclick="jwplayer(reftoplayer).pause();"
 													target="_blank"
 													href="http://en.wikipedia.org/wiki/Order_of_preference">Order
 													of Preferences</a>
@@ -2339,7 +2249,7 @@ $(document).ready(function(){
 							<img data-tab="table_of_contents" type="button" title="Video's Table of Contents" src="../resources/content_consumption/images/logos/TOC.png" onclick="" />
 							<img data-tab="notes_and_bookmarks" type="button" title="Notes" src="../resources/content_consumption/images/logos/bookmarklist.png" onclick="" id="bookmarkicon" />
 							<img data-tab="questions" type="button" title="Questions" src="../resources/content_consumption/icons/questions.png" onclick="" id="questionicon" />
-							<img data-tab="circles" type="button" title="Online Contacts " src="../resources/content_consumption/icons/contacts.png" onclick="" />
+							<!--<img data-tab="circles" type="button" title="Online Contacts " src="../resources/content_consumption/icons/contacts.png" onclick="" /> -->	
 						</div>
 
 
@@ -2401,24 +2311,18 @@ $(document).ready(function(){
 					<!-- Table of Contents -->
 					<div id="table_of_contents_container" data-tabpane="table_of_contents" style="display:none;">
 						<span class="column_title">Table of Contents</span>
-						<span class="preference_aggregation_temp" style="display:none;"><!-- Temporary -->
-						<span id="current_media_title">Preference Aggregation</span>
-						<a onclick="jwplayer().seek(75).play(true);">Preference Ordering</a>
-						<a onclick="jwplayer().seek(248).play(true);">Transitive Preferences</a>
-						<a onclick="jwplayer().seek(310).play(true);">Collective Preferences</a>
-						</span><!-- Temporary -->
+						<div id="content_toc_container"></div>
+
 					</div>
 					<!-- Notes & Bookmarks -->
 					<div id="notes_and_bookmarks_container" data-tabpane="notes_and_bookmarks" style="display:none;">
 						<span class="column_title">Notes</span>
-						<span class="preference_aggregation_temp" style="display:none;"><!-- Temporary -->
-						<a data-iconprefix="note" onclick="jwplayer().seek(75).play(true);" title="Must read before exam - Preference Ordering">Important</a>
-						<!-- <a data-iconprefix="star" onclick="jwplayer().seek(248).play(true);">Illustration of Transitivity concept</a> -->
-						</span><!-- Temporary -->
+						<div id="learner_notes"></div>
 					</div>
 					<!-- Questions -->
 					<div id="questions_container" data-tabpane="questions" style="display:none;">
 						<span class="column_title">Questions</span>
+						<div id="learner_questions"></div>
 						
 					</div>
 					<!-- Send Question -->
@@ -2456,7 +2360,7 @@ $(document).ready(function(){
 						
 					</div>
 					<!-- Circles -->
-					<div id="circles_container" data-tabpane="circles">
+					<div id="circles_container" data-tabpane="circles" style="display:none;">
 						<span class="column_title">Online Classmates</span>
 						<div class="chatbox_user">
 							<img src="../resources/content_consumption/icons/Aron.png" height="40px" width="40px"> <span>Aaron</span>
@@ -2568,7 +2472,7 @@ $(function(){
 	});
 	
 	/* -- DISPLAYING NOTES, BOOKMARKS & RESOURCE(Reference Materials) based on playback positions
-	jwplayer().onTime(
+	jwplayer(reftoplayer).onTime(
 			 function(event) {
 			 video_position = Math.floor(event.position); //in sec
 			 video_duration = Math.floor(event.duration); //in sec
@@ -2629,21 +2533,21 @@ $(function(){
 	
 	
 	//New Add Bookmarks & Notes
-	$('.add_bookmark_trigger').click(function(){$('#add_bookmark_container').slideDown('fast'); jwplayer().pause(true); });
-	$('.add_question_trigger').click(function(){$('#add_question_container').slideDown('fast'); jwplayer().pause(true); });
+	$('.add_bookmark_trigger').click(function(){$('#add_bookmark_container').slideDown('fast'); jwplayer(reftoplayer).pause(true); });
+	$('.add_question_trigger').click(function(){$('#add_question_container').slideDown('fast'); jwplayer(reftoplayer).pause(true); });
 	$('.add_note_trigger').click(function(){
 		$('.add_note_description').val('');
-		$('#add_note_container').slideDown('fast'); jwplayer().pause(true); });
+		$('#add_note_container').slideDown('fast'); jwplayer(reftoplayer).pause(true); });
 	
 	$('.add_bookmark_submit_button').click(function(){
 		bookmark_title = $(this).parent().find('.add_bookmark_title').val();
-		bookmark_position = Math.floor(jwplayer().getPosition());
+		bookmark_position = Math.floor(jwplayer(reftoplayer).getPosition());
 		
 		if(bookmark_title==''){alert('Please enter Bookmark Title!'); return false;}
 		
 		//save bookmark temporarily
-		bookmark_anchor_string = '<a onclick="jwplayer().seek('+bookmark_position+').play(true);" data-iconprefix="star">'+bookmark_title+'</a>';
-		bookmark_anchor_string2 = '<div class="chatbox_user_video" style="margin-left:10px;" onclick=jwplayer().seek('+bookmark_position+').play(true);> \
+		bookmark_anchor_string = '<a onclick="jwplayer(reftoplayer).seek('+bookmark_position+').play(true);" data-iconprefix="star">'+bookmark_title+'</a>';
+		bookmark_anchor_string2 = '<div class="chatbox_user_video" style="margin-left:10px;" onclick=jwplayer(reftoplayer).seek('+bookmark_position+').play(true);> \
 		<img src="../resources/content_consumption/icons/starbook.png" width="10px" height="10px" /> \
 		 '+bookmark_title+'\
 		</div>';
@@ -2651,7 +2555,7 @@ $(function(){
 		$('#notes_and_bookmarks_container').append(bookmark_anchor_string);
 		notesAndBookmarkData+=bookmark_anchor_string2;
 
-		$('#add_bookmark_container').hide(); jwplayer().play(true);
+		$('#add_bookmark_container').hide(); jwplayer(reftoplayer).play(true);
 		$(this).parent().find('.add_bookmark_title').val(''); //clear the value
 		
 		/**/
@@ -2666,28 +2570,12 @@ $(function(){
 	
 	$('.add_question_submit_button').click(function(){
 		question_title = $(this).parent().find('.add_question_title').val();
-		question_position = Math.floor(jwplayer().getPosition());
+		question_duration = Math.floor(jwplayer(reftoplayer).getPosition());
 		
 		if(question_title==''){alert('Please enter a Question!'); return false;}
 
-		question_timestamp = (new Date).clearTime().addSeconds(question_position).toString('H:mm:ss');
-
-		
-		//save bookmark temporarily
-		question_anchor_string ='<div  style="width:100%;">'; 
-		question_anchor_string += '<a onclick="jwplayer().seek('+question_position+').play(true);" data-iconprefix="question">'+question_title+'</a><br/><span class="qtstamp">'+question_timestamp+'</span>';
-		question_anchor_string += ' <span style=" margin-right:15px" class="send_question_trigger">send</span></div>';
-		
-		$('#questions_container').append(question_anchor_string);
-		
-		question_anchor_string2 ='<div style="width:100%;">'; 	
-		question_anchor_string2 += '<a onclick="jwplayer().seek('+question_position+').play(true);" style="color:white;" data-iconprefix="question">'+question_title+'</a><br/><span class="qtstamp">'+question_timestamp+'</span>';
-		question_anchor_string2 += ' <span onclick="sendQuestionFS(); $(\'.question_to_be_sent\').html($(this).siblings(\'a\').text()+\'<hr/>\');" style=" cursor: pointer;  color:#222; background:silver; border-radius: 15px; padding: 0 .5em; margin-right:15px;" >send</span></div>';
-				if(questionData == '<span style="margin-left:10px"> No Questions to be displayed </span>' )
-		questionData = '';
-		questionData+=question_anchor_string2;
-		$('#add_question_container').hide(); jwplayer().play(true);
-		$(this).parent().find('.add_question_title').val(''); //clear the value
+		//add note 
+		add_learner_question(question_title, question_duration);
 		
 		
 		
@@ -2696,21 +2584,16 @@ $(function(){
 	$('.add_note_submit_button').click(function(){
 		note_title = $(this).parent().find('.add_note_title').val();
 		note_description = $(this).parent().find('.add_note_description').val();
-		note_position = Math.floor(jwplayer().getPosition());
+		note_duration = Math.floor(jwplayer(reftoplayer).getPosition());
 		
 		if(note_title==''){alert('Please enter Note Title!'); return false;}
-		//save note temporarily
-		note_anchor_string = '<a title="'+note_description+'" onclick="jwplayer().seek('+note_position+').play(true);" data-iconprefix="note">'+note_title+'</a>';
-		note_anchor_string2='<div class="chatbox_user_video" style="margin-left:10px;" style="margin-top:20px;" onclick="jwplayer().seek('+note_position+').play(true);" Title="'+note_description+'" > \
-		<img src="../resources/content_consumption/icons/note_16.png"  width="10px" height="10px" /> \
-		'+note_title+'\
-		</div>';
-		notesAndBookmarkData+=note_anchor_string2;
-		$('#notes_and_bookmarks_container').append(note_anchor_string);
+
+		//add note 
+		add_learner_content_note(note_title, note_description, note_duration);
 		
+
 		
-		$('#add_note_container').hide(); jwplayer().play(true);
-		$(this).parent().find('.add_note_title, .add_note_description').val(''); //clear the value
+
 		
 		
 	});	
@@ -2754,5 +2637,20 @@ function  unhighlight_tab(tabname){
 }
 
 </script>
+
+<style>
+.fancybox-close {
+  background: url("/ziksana-web/resources/images/fancy_close.png") no-repeat scroll 0 0 transparent !important;
+  cursor: pointer;
+  height: 36px;
+  position: absolute;
+  right: -18px;
+  top: -18px;
+  width: 36px;
+  z-index: 8040;
+}
+</style>
+
+
 </body>
 </html>

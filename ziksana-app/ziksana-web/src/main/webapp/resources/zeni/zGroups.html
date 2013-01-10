@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zGroup</title>
+<link rel="stylesheet" href="css/zCss.css" type="text/css"/>
+<link type="text/css" href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/zeni/zeni2.css" />
+<script src="js/bootstrap.min.js"></script>
+   <script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/zGroup.js"></script>
+<!--<script src="js/isotope/jquery-1.7.2.min.js"></script>-->
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				// Datepicker
+				$( ".datepicker" ).datepicker();			
+
+			});
+		</script>
+</head>
+
+
+<body>
+<div class="zannouncementwrapper">
+	<!-- Main container -->
+	<div id="zGroup">
+    	
+        <div class="helptext">
+        	Help text describing the page
+        </div>
+        <!-- end zGroup -->
+        <br />
+        <div id="contentGroup">
+        	<div class="zCourse">
+        	<select style="margin-left:8px;">
+        		<option>Course</option>                
+        	</select>
+            </div>
+        	<div id="showGroup">
+              
+                <div id="tblGroup">
+                <table class="table table-striped">
+                        <thead style="font-size:12px; font-family:tahoma; font-style:normal; color:#666;">
+                	<tr class="_bg">
+                    	<th>Group</th><th>Status</th><th>My role</th><th>Members</th><th>Action</th>
+                        
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="tr1">
+                    	<td>Swat team</td>
+                        <td>aa</td>
+                        <td>Member</td>
+                        <td>(5) John, Steve, Lee..</td>
+                        <td><a id="msg1" class="aClass">Details</a></td>
+                    </tr>
+                     <tr id="tr2">
+                    	<td>Assignment-1</td>
+                        <td>bb</td>
+                        <td>Leader</td>
+                        <td>(4) Marc, Roger, Ken..</td>
+                        <td><a id="msg2" class="aClass">Details</a></td>
+                    </tr>
+                           </tbody>                      
+                </table>
+                </div>
+               <!-- end tblGroup -->
+            </div>
+            <!-- end showGroup -->
+            
+            <div id="linksGroup">
+            	 <select name="zPeriod"  id="zPeriod" tabindex="1" style="margin-left:8px;">
+                    <option value="Period">Period</option>                
+                </select>
+                <input type="text" id="vDate" class="datepicker" value="Value (Date)"/>
+                <div id="copyGroup">                
+                    <textarea id="clickedGroup" placeholder="List of activities"></textarea>                	
+            	</div>
+           		<!-- end copyGroup -->          
+            </div>
+            <!-- linksGroup -->
+            
+                    
+        </div>
+        <!-- end contentGroup -->
+         <div id="zReturn" style="margin-top:5px;">    		 
+ <input type="button" class="btn btn-info" id="btn_return" name="btn_return" value="Return"/>
+        	</div>
+            <!-- end zReturn -->
+    </div>
+    <!-- end zGroup -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,561 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.zenileft
+{
+float:left;	
+}
+
+.zeniright
+{
+float:right;	
+}
+
+#wrap
+{
+padding:10px;
+ height:600px; 
+ border:1px solid #033f51; 
+ 
+ -webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
+  box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75);	
+}
+.zeniwrapper
+{
+
+width:570px;
+height:700px;
+}
+.helptext
+{
+border:1px solid #ccc;	
+background-color:#3ca3c1;
+color:#fff; 
+font-family:arial;  
+font-size:14px;	
+padding:10px;
+}
+
+.zeniboxrewards
+{
+margin-top:5px;
+width:500px; 
+border:1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+padding:10px;
+background: rgb(249,252,247); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZmNmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNWY5ZjAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(249,252,247,1) 0%, rgba(245,249,240,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,252,247,1)), color-stop(100%,rgba(245,249,240,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9fcf7', endColorstr='#f5f9f0',GradientType=0 ); /* IE6-8 */
+}
+
+
+.zeniboxquestion
+{
+margin-top:5px;
+width:550px; 
+border:1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+padding:10px;
+background: rgb(249,252,247); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZmNmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNWY5ZjAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(249,252,247,1) 0%, rgba(245,249,240,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,252,247,1)), color-stop(100%,rgba(245,249,240,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9fcf7', endColorstr='#f5f9f0',GradientType=0 ); /* IE6-8 */
+}
+
+.zeniboxanswer
+{
+margin-top:5px;
+width:500px; 
+border:1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+padding:10px;
+background: rgb(249,252,247); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZmNmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNWY5ZjAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(249,252,247,1) 0%, rgba(245,249,240,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,252,247,1)), color-stop(100%,rgba(245,249,240,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9fcf7', endColorstr='#f5f9f0',GradientType=0 ); /* IE6-8 */
+}
+
+.zeniboxrespond
+{
+margin-top:5px;
+width:470px;
+margin-left:30px; 
+border:1px solid #ccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+padding:10px;
+background: rgb(249,252,247); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZmNmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNWY5ZjAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(249,252,247,1) 0%, rgba(245,249,240,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,252,247,1)), color-stop(100%,rgba(245,249,240,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9fcf7', endColorstr='#f5f9f0',GradientType=0 ); /* IE6-8 */
+}
+
+
+.zeniisotope
+
+{
+list-style:none;
+margin-top:20px;
+}
+
+.zeniisotope li
+{
+display:inline;
+}
+
+
+.programisotope
+{
+list-style:none;
+margin-right:10px;	
+}
+
+.programisotope li
+{
+display:inline;	
+}
+
+.zenibuttons
+{
+margin-top:4px;
+
+}
+
+
+
+
+.zenisubtitle
+{
+margin-top:8px;	
+}
+
+.zenititle
+{
+	font-family:Tahoma;
+font-size:16px;
+color:#2e82c5;
+}
+
+.zeniquestitle
+{
+	font-family:Tahoma;
+font-size:14px;
+color:#2e82c5;
+padding-bottom:10px;
+}
+
+
+.zsublink1
+{
+color:#999; 
+font-family:arial;  
+font-size:12px;	
+}
+
+.zsublink2
+{
+margin-left:10px;
+color:#999; 
+font-family:arial;  
+font-size:12px;		
+}
+
+.zlinktext
+{
+font-family:verdana;
+font-size:12px;
+color:#6498c1;		
+}
+
+.zlinkquestext
+{
+	color:#999; 
+font-family:arial;  
+font-size:12px;	
+}
+
+.zenircommendcenterlink
+{
+margin-top:-15px;	
+
+}
+
+.zenicardcenterlink
+{
+margin-top:-15px;	
+
+}
+
+zeniquescenterlink
+{
+	
+}
+.zlinktext2
+{
+	
+font-family:verdana;
+font-size:12px;
+color:#6498c1;		
+}
+
+.zenirecommendcenter
+{
+	 
+}
+.zenirewardborder
+{
+background-color:#ccc; 
+width:430px; 
+height:1px; 
+margin-top:5px;
+}
+
+.zenirecommendborder
+{
+background-color:#ccc; 
+width:370px; 
+height:1px; 
+
+margin-right:10px;
+}
+
+.zenicardborder
+{
+background-color:#ccc; 
+width:410px; 
+height:1px; 
+
+margin-right:10px;
+}
+
+.zeniquesborder
+{
+background-color:#ccc; 
+width:390px; 
+height:1px; 
+margin-right:10px;	
+}
+
+.zenirespondborder
+{
+background-color:#ccc; 
+width:360px; 
+height:1px; 
+margin-right:10px;		
+}
+.zeniaskmainborder
+{
+	background-color:#ccc; 
+width:470px; 
+height:1px; 
+
+margin-right:10px;
+}
+.zenicenterlink
+{
+margin-top:-5px;	
+}
+
+.zenirecommendcenterlink
+{
+margin-top:-10px;
+margin-bottom:10px;	
+}
+
+.zenirewards1
+{
+font-family:verdana;
+font-size:12px;
+color:#6498c1;	
+margin-left:13px;
+
+}
+
+.zenilower
+{
+min-height:70px;
+}
+
+.zeniicon
+{
+	
+}
+.zeniiconimage
+{
+margin-right:20px;
+}
+.zenicontent
+{
+font-family:verdana;
+font-size:12px;
+color:#666;	
+line-height:22px;
+text-align:justify;
+}
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+
+/* disable CSS transitions for containers with infinite scrolling*/
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+
+
+/**** Isotope styles ****/
+
+
+/*** for main home page Sundip Shah***/
+
+.alert1 , .alert2 , .alert3{
+	padding: 7px;
+
+}
+
+.todo1, .todo2, .todo3{
+	padding: 7px;
+	clear:both;
+}
+
+._addTodo{
+	padding: 7px;
+	float:right;
+}
+
+._blogMain{
+	margin-bottom: 5px;
+	
+}
+
+._blogs{
+	border-left-width: 4px;
+	border-left-style: solid;
+	border-left-color: #D3E3EF;
+	margin-bottom: 5px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #E1ECF4;
+	border-right-color: #E1ECF4;
+	border-bottom-color: #E1ECF4;
+	margin-right: 10px;
+}
+
+._blogs ol li b{
+	font-weight:bold;
+}
+
+._postP{
+	padding-top: 2px;
+}
+
+._postT{
+	padding-bottom: 5px;
+	padding-top: 2px;
+}
+
+._postD{
+	float:right;
+	display: block;	
+}
+
+._size{
+	width:10px; 
+	height: 10px;
+}
+
+/* for contact liinks/tabs Sundip Shah*/
+
+.tab0, .tab1, .tab2, .tab3{
+	color: #27B;
+	padding: 2px;
+	
+}
+
+.tab0, .tab1, .tab2, .tab3:hover{
+	color: #27B;
+	cursor:pointer;
+}
+
+/* for zeni recommendations liinks/tabs Sundip Shah*/
+
+
+.rec0, .rec1, .rec2, .rec3{
+	color: #27B;
+	padding: 2px;
+	
+}
+
+.rec0, .rec1, .rec2, .rec3:hover{
+	color: #27B;
+	cursor:pointer;
+}
+
+.rec-0 ol li b{
+	font-weight:bold;
+}
+
+.rec-1 ol li b{
+	font-weight:bold;
+}
+
+.rec-2 ol li b{
+	font-weight:bold;
+}
+
+
+.myButtonLink {
+	display:inline-block; 
+	width: 30px;
+	height: 30px;
+	background: url(../../images/icons/Calendar.png) bottom;
+	text-indent: -99999px;
+	margin-right:10px;
+	
+}
+.myButtonLink:hover {
+	background-position: 0 0;
+	margin-right:10px;
+}
+
+.myButtonLink2 {
+	display:inline-block; 
+	width: 30px;
+	height: 30px;
+	background: url(../../images/icons/todoss.png) bottom;
+	text-indent: -99999px;
+	margin-right:10px;
+	
+	
+	
+}
+.myButtonLink2:hover {
+	background-position: 0 0;
+	margin-right:10px;
+}
+
+.myButtonLink3 {
+	display:inline-block; 
+	width: 30px;
+	height: 30px;
+	background: url(../../images/icons/ignore.png) bottom;
+	text-indent: -99999px;
+	
+	
+}
+.myButtonLink3:hover {
+	background-position: 0 0;
+	
+}
+
+.reviewtable table, td{
+	font:11px verdana;
+}
+.reviewtable table{width:100%;border-collapse:collapse;margin:1em 0;}
+.reviewtable th, td{text-align:left;padding:.5em;}
+.reviewtable th{background:#328aa4 url(tr_back.gif) repeat-x;color:#fff;}
+.reviewtable td{background:#e5f1f4;}
+
+/* tablecloth styles */
+
+.reviewtable tr.even td{background:#FBFBFB;}
+.reviewtable tr.odd td{background:#fff;}
+
+
+
+.reviewtable td.over, tr.even td.over, tr.odd td.over{background:#CFDFEB; cursor:pointer;}
+.reviewtable td.down, tr.even td.down, tr.odd td.down{background:#CFDFEB}
+.reviewtable td.selected, tr.even td.selected, tr.odd td.selected{background:#6D9EC5;color:#fff;}
+
+/* use this if you want to apply different styleing to empty table cells*/
+.reviewtable td.empty, tr.odd td.empty, tr.even td.empty{background:#fff;}

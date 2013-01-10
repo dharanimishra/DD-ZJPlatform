@@ -43,7 +43,7 @@
                 $('#jqx_course_tree').bind('select', function (event) {
 	                var args = event.args;
 	                var item = $('#jqx_course_tree').jqxTree('getItem', args.element);
-	                var node_id = item.id;
+	                var node_id = item.id; $('#selected_node_id').val(node_id);
 	                var parent_node_id = item.parentId;
 	                var course_id = $('#courseId').val();
 	                display_content(node_id, parent_node_id, course_id);
@@ -52,6 +52,13 @@
                   get_educator_notes(node_id, parent_node_id, course_id);
                   //Get Educator Suggested References
                   get_educator_suggested_references(node_id, parent_node_id, course_id);
+                  //Get Learner Notes
+                  get_learner_content_notes(node_id, course_id );
+                  //Get Learner Questions
+                  get_learner_questions(node_id, course_id );
+                  //Get Content's TOC\
+                  get_content_toc(node_id, course_id);
+
 
            		});
 
@@ -62,29 +69,28 @@
 
            			//Step 1. Make a request to the server to fetch the content
            			$.get('/ziksana-web/secure/content/getContent', {'contentId':node_id, 'parentNodeId':parent_node_id, 'courseId':course_id}, function(data){
-           				console.log(data);
+           		
 
            				
            				content_type = (data.contentTypeString).toUpperCase();
-           				console.log(content_type);
            				content_path = data.contentUrl;
 
            				if(content_type == 'VIDEO'){ playVideo(content_path); }
            				if(content_type == 'AUDIO'){ playAudio(content_path); }
-           				if(content_type == 'IMAGE'){ displayImageSet(path); }
-           				if(content_type == 'IMAGESET'){ displayImageSet(path); }
+           				if(content_type == 'PDF' || content_type == 'WORD' || content_type == 'POWERPOINT' || content_type == 'IMAGE' || content_type == 'TEXTUAL'){ displayImageSet(content_path); }
+           			
 
 
 
            			});
-	                console.log(node_id);
+	          
            		}
 
   });//end of doc ready
   
   
 	function playVideo(path) {
-		console.log('inside play video');
+		//console.log('inside play video');
 		//TopUp.close();
 		//$.fancybox().close();
 		$('#play-vedio, #video_actions').css('visibility','visible');
@@ -104,7 +110,7 @@
 
 		jwplayer().load(
 				{
-					file : filepath
+					file : path
 					
 					
 				});
@@ -115,17 +121,15 @@
 		jwplayer().stop();
 		$('#video_actions').css('visibility','hidden');
 		$('#play-vedio').css('visibility','hidden');
-		filepath = anchor.attr('data-filepath');
+		
 		$.fancybox({
-			'width': '85%',
-			'height': '85%',
-			'autoScale': true,
+			'width': 700, 
+            'height': 800, 
+            'autoDimensions' : true, 
 			'transitionIn': 'fade',
 			'transitionOut': 'fade',
 			'type': 'iframe',
-			'href': path,
-			'showCloseButton': false,
-			'onComplete': add_ziklogo_and_close_button()
+			'href': path
 	
 		});
 		
@@ -134,33 +138,34 @@
   function get_educator_suggested_references(node_id, parent_node_id, course_id){
 
 
-    // $.get('/ziksana-web/secure/educatorNotes', {'nodeId':node_id, "parentNodeId":parent_node_id, "courseId":course_id}, function(data){
+     $.get('/ziksana-web/secure/educatorReferences', {'nodeId':node_id, "parentNodeId":parent_node_id, "courseId":course_id}, function(data){
 
-    //   console.log(data);
 
-    //   references = data;
+       references = data;
 
-    //   links = '';
+       links = '';
 
-    //   for(var i=0; i<=references.length; i++){
-    //     title = references[i].title;
-    //     uri = references[i].uri;
+       
+       for (i in references)
+       {
+           title = references[i].title;
+           uri = references[i].uri;
 
-    //     link = '<a data-iconprefix="link" href="'+uri+'" >'+title+'</a>'
+           link = '<a data-iconprefix="link" target="_blank" href="'+uri+'" >'+title+'</a>'
 
-    //     links += link;
+           links += link;
+       }
 
-    //   }
+       $('[data-tabpane="educator"]').find('.educator_references').html(links);
 
-    //   $('[data-tabpane="educator"]').find('.educator_references').html(links);
-
-    // });
+     });
 
 
   
   }
 
   function get_educator_notes(node_id, parent_node_id, course_id){
+	  
 
     $.get('/ziksana-web/secure/educatorNotes', {'nodeId':node_id, "parentNodeId":parent_node_id, "courseId":course_id}, function(data){
 
@@ -176,21 +181,11 @@
         description = notes[i].description;
         duration = notes[i].duration;
 
-        link = '<a data-iconprefix="note" href="#" title="'+description+'">'+title+'</a>'
+        link = '<a data-iconprefix="note" href="#" title="'+description+'">'+title+'</a>';
 
         links += link;
     }
 
-      // for(var i=0; i<=notes.length; i++){
-      //   title = notes[i].title;
-      //   description = notes[i].description;
-      //   duration = notes[i].duration;
-
-      //   link = '<a data-iconprefix="note" href="#" title="'+description+'">'+title+'</a>'
-
-      //   links += link;
-
-      // }
 
      $('[data-tabpane="educator"]').find('.educator_notes').html(links);
 
@@ -198,4 +193,142 @@
 
     });
 
+  }
+  
+  
+  //add learner note
+  function add_learner_content_note(note_title, note_description, note_duration){
+	  
+	  node_id = $('#selected_node_id').val();
+	  course_id = $('#courseId').val();
+	  
+	  $.post('/ziksana-web/secure/addLearnerNote', {"courseId":course_id, 'nodeId':node_id, "noteTitle":note_title, "noteDescription":note_description, "noteDuration":note_duration}, function(data){
+
+		  if(data == '1'){
+			  
+			  	get_learner_content_notes(node_id, course_id); //refresh learner notes
+			  	$('[data-tab="notes_and_bookmarks"]').click(); //show the learner notes pane
+			  	
+				//if the note is successfully added
+				$('#add_note_container').hide(); 
+				jwplayer().play(true); //resume play
+				$('.add_note_title, .add_note_description').val(''); //clear the value
+		  }
+		  
+	  });
+	  
+	  
+  }
+  
+  //get learner content note
+  function get_learner_content_notes(node_id, course_id ){
+	  
+	  //clear alerdy existing notes of previous node
+	  $('#learner_notes').html('');
+	  
+	  $.get('/ziksana-web/secure/getLearnerNotes', {"courseId":course_id, "nodeId":node_id}, function(data){
+		  
+  
+	  
+		  notes = data;
+
+		  var links = '';
+
+			for (i in notes)
+			{
+			    title = notes[i].noteTitle;
+			    description = notes[i].noteDescription;
+			    duration = notes[i].noteDuration;
+			
+			    link = '<a data-iconprefix="note" title="'+description+'" onclick="jwplayer().seek('+duration+').play(true);">'+title+'</a>';
+			
+			    links += link;
+			}
+			
+			$('#learner_notes').html(links);
+		
+	  });
+  }
+  
+  
+  //add learner note
+  function add_learner_question(question_title, question_duration){
+	  
+	  node_id = $('#selected_node_id').val();
+	  course_id = $('#courseId').val();
+	  
+	  $.post('/ziksana-web/secure/addLearnerQuestion', {"courseId":course_id, 'nodeId':node_id, "questionTitle":question_title,  "questionDuration":question_duration}, function(data){
+
+		  if(data == '1'){
+			  
+			  	get_learner_questions(node_id, course_id); //refresh learner notes
+			  	$('[data-tab="questions"]').click(); //show the learner notes pane
+			  	
+				//if the question is successfully added
+				$('#add_question_container').hide(); 
+				jwplayer().play(true); //resume play
+				$('.add_question_title').val(''); //clear the value
+		  }
+		  
+	  });
+	  
+	  
+  }
+  
+  //get learner questions
+  function get_learner_questions(node_id, course_id ){
+	  //return true;
+	  //clear already existing notes of previous node
+	  $('#learner_questions').html('');
+	  
+	  $.get('/ziksana-web/secure/getLearnerQuestions', {"courseId":course_id, "nodeId":node_id}, function(data){
+		  
+  
+	  
+		  questions = data;
+
+		  var links = '';
+
+			for (i in questions)
+			{
+			    title = questions[i].noteTitle;
+			    duration = questions[i].noteDuration;
+			
+			    link = '<a style="display:block; margin: .5em 0;" data-iconprefix="question"  onclick="jwplayer().seek('+duration+').play(true);">'+title+'</a>';
+			
+			    links += link;
+			}
+			
+			$('#learner_questions').html(links);
+		
+	  });
+  }
+  
+//get content toc
+  function get_content_toc(node_id, course_id){
+	  //return true;
+	  //clear already existing TOC of previous node
+	  $('#content_toc_container').html('');
+	  
+	  $.get('/ziksana-web/secure/getContentTOC', {"courseId":course_id, "nodeId":node_id}, function(data){
+		  
+  
+	  
+		  toc_elements = data;
+
+		  var links = '';
+
+			for (i in toc_elements)
+			{
+			    title = toc_elements[i].title;
+			    duration = toc_elements[i].duration;
+			
+			    link = '<a style="display:block; margin: .5em 0;" data-iconprefix=""  onclick="jwplayer().seek('+duration+').play(true);">'+title+'</a>';
+			
+			    links += link;
+			}
+			
+			$('#content_toc_container').html(links);
+		
+	  });
   }

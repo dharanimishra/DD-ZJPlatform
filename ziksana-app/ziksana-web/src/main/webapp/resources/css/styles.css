@@ -143,17 +143,24 @@ nav {
 	position: absolute;
 	top: 27px;
 	height: 33px;
-	left: -12px;
+	left: -12px;*/
+	
+	width: 570px;
+float: right;
+position: absolute;
+top: -43px;
+height: 33px;
+left: 150px;
 }
 .searchpanel {
 	width: 220px;
 	float: left;
-	margin-left: 625px;
+	margin-left: 525px;
 }
 .searchoptions {
 	float: right;
-	width: 145px;
-	margin-top: 17px;
+	width: 235px;
+	/*margin-top: 17px;*/
 	text-align:right;
 }
 
@@ -678,9 +685,23 @@ footer {
 .number-creat-box {
 	width: 65px;
 	background-color: #6d9ec5;
-	height: 65px;
-	margin: 5px;
+	height: 69px;
+	margin-left:5px;
+	margin-right:3px;
+	
 	font-size: 55px;
+	color: #4279A6;
+	text-align: center;
+}
+
+.number-creat-boxs {
+	width: 33px;
+	background-color: #6d9ec5;
+	height: 35px;
+	margin-left:5px;
+	margin-right:3px;
+	
+	font-size: 30px;
 	color: #4279A6;
 	text-align: center;
 }
@@ -1692,6 +1713,23 @@ width:895px;
    
 }
 
+.defaultvaluem
+{
+    background: #ffffff;
+    border: 1px solid #ddd;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    outline: none;
+    padding: 5px; 
+	color:#000;
+	line-height:20px;
+   
+}
+
+
+
+
 .defaultvalueActive 
 
 { color: #a1a1a1; font-style: italic; }
@@ -1806,6 +1844,12 @@ vertical-align:middle;
   padding-top: 10px;
   text-align: right;
 }
+
+.form-horizontal .control-labelchoice {
+  float: left;
+   
+}
+
 .form-horizontal .controls {
   *display: inline-block;
   *padding-left: 20px;
@@ -2700,4 +2744,116 @@ z-index: 99;
   top: -18px;
   width: 36px;
   z-index: 8040;
+}
+/*My Programs*/
+
+.buttonmyprg 
+{
+	width:200px;
+	text-align:center;
+	padding:2px;
+}
+
+.myprogramadmintable
+{
+font-family:verdana;
+color:#666666;	
+border:1px solid #ccc;
+margin-top:10px;
+height:170px;
+overflow:scroll;
+overflow-x: 
+}
+
+.myprogramright
+{
+
+	
+}
+
+.myprogramone
+{
+	
+}
+
+.myprogramonetop
+{
+height:40px; width:450px;
+padding:10px;
+}
+
+.myprogramonecenter
+{
+padding:14px;	
+padding-bottom:-14px;
+}
+
+.myprogramtwo
+{
+padding:14px;
+margin-top:-10px;	
+}
+
+#createnav
+{
+	float:right;
+}
+
+#createnav ul li 
+{
+	float:right;
+	padding-right:6px;
+padding-left:6px;
+border-right:2px solid #ccc;
+}
+
+.socializemaintable
+{
+ border:1px solid #ccc;
+padding:5px;
+ border:1px solid #ccc; 
+ -webkit-box-shadow: 1px 1px 2px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    1px 1px 2px rgba(50, 50, 50, 0.75);
+  box-shadow:         1px 1px 2px rgba(50, 50, 50, 0.75);
+	
+}
+
+
+.reviewtable table, td{
+	font:11px verdana;
+}
+.reviewtable table{width:100%;border-collapse:collapse;margin:1em 0;}
+.reviewtable th, td{text-align:left;padding:.5em;}
+.reviewtable th{background:#328aa4;color:#fff;}
+.reviewtable td{background:#e5f1f4;}
+
+/* tablecloth styles */
+
+.reviewtable tr.even td{background:#FBFBFB;}
+.reviewtable tr.odd td{background:#fff;}
+
+
+
+.reviewtable td.over, tr.even td.over, tr.odd td.over{background:#CFDFEB; cursor:pointer;}
+.reviewtable td.down, tr.even td.down, tr.odd td.down{background:#CFDFEB}
+.reviewtable td.selected, tr.even td.selected, tr.odd td.selected{background:#6D9EC5;color:#fff;}
+
+/* use this if you want to apply different styleing to empty table cells*/
+/*.reviewtable td.empty, tr.odd td.empty, tr.even td.empty{background:#fff;}*/
+
+/* errro validation classes */
+.errorform
+{
+border:1px solid rgba(185, 74, 72, 0.88);
+-moz-box-shadow: 0px 0px 4px rgba(176, 4, 4, 0.46);
+-webkit-box-shadow: 0px 0px 4px rgba(176, 4, 4, 0.46);
+box-shadow: 0px 0px 4px rgba(176, 4, 4, 0.46);
+}
+
+.validateff
+{
+border:1px solid rgba(70, 136, 71, 0.56);
+-moz-box-shadow: 0px 0px 4px rgba(70, 136, 71, 0.56);
+-webkit-box-shadow: 0px 0px 4px rgba(70, 136, 71, 0.56);
+box-shadow: 0px 0px 4px rgba(70, 136, 71, 0.56);
 }

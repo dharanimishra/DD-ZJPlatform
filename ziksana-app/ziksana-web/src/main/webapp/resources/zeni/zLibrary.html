@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zLibrary</title>
+<link rel="stylesheet" href="css/zCss.css" type="text/css"/>
+<!--<link type="text/css" href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />-->
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/zeni/zeni2.css" />
+<script src="js/bootstrap.min.js"></script>
+   <script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/zGroup.js"></script>
+<script src="js/isotope/jquery-1.7.2.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				// Datepicker
+				$( ".datepicker" ).datepicker();			
+
+			});
+		</script>-->
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/zLibrary.js"></script>
+
+		
+</head>
+
+<body>
+<div class="zannouncementwrapper">
+	<!-- Main container -->
+	<div id="zMessage">
+    	
+        <div class="helptext">
+        	Help text describing the page
+        </div>
+        <!-- end zMessage -->
+        <br />
+        <div id="contentMessage">               
+          <div id="sendMessage">
+                          <div class="btn-group zenileft">
+<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+People
+<span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+<li>kaivalya </li>
+<li> sundip </li>
+</ul>
+</div>
+&nbsp; &nbsp;
+<div class="zenisearch zenileft" style="margin-top:2px; margin-left:2px;">
+                        <input id="search" name="search" type="text" value="Search.." class='highlights' style="margin-top: -1px;" onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" />
+                        </div>
+                        <div class="zenisearchbutton zenileft" style="margin-top:7px; margin-left:2px;">
+                        <input type="button" class="btn" id="btn_top_search" name="btn_top_search" value="Search" style="margin-top: -6px;"/>
+                        <input type="button" class="btn" id="btn_advance" name="btn_advance" value="Advanced"  style="margin-top: -6px;"/>
+                    	</div> 
+                    <br/><br/><br />
+                    <div id="advance_search_form" >
+                         <input id="q_name" name="q_name" type="text" value="Specify question name" class='highlights' maxlength="100" onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+                         <br/><br/>
+                         <select id="byarea" name="byarea" style="" > 
+                              <option value="Filter by area" selected="selected">
+                            	Filter by area
+                           	  </option>                        
+                        </select>
+                       
+                         <select id="bysubject" name="bysubject"> 
+                              <option value="Filter by subject" selected="selected">
+                            	Filter by subject
+                              </option>                        
+                        </select>
+                      
+                         <select id="bytopic" name="bytopic"> 
+                              <option value="Filter by topic" selected="selected">
+                            	Filter by topic
+                            	</option>                       
+                        </select>
+                        <br/><br/>
+                         <input id="q_tags" name="q_tags" type="text" value="Search by tags" maxlength="100" class='highlights' onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+                         <br/><br/>
+                         <input type="button" class="btn" id="btn_exit" name="btn_exit" value="Exit"/>
+                         <input type="button" class="btn" id="btn_search" name="btn_search" value="Search"/>
+                         </div>
+            <!-- end sendMessage -->
+            
+            <div id="showMessage">                
+             <div id="tblMessage">
+                <table class="table table-striped">
+                        <thead style="font-size:12px; font-family:tahoma; font-style:normal; color:#666;">
+                	<tr class="_bg">
+                    	<th>Item</th><th>Status</th><th>Author</th><th>Type</th><th>Rating</th><th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="tr1">
+                    	<td>Nanotechnology</td>
+                        <td>aa</td>
+                        <td>John Smith</td>
+                        <td>EBook</td>
+                        <td>2.2</td>
+                        <td><a id="msg1" class="aClass">Details</a></td>
+                    </tr>
+                     <tr id="tr2">
+                    	<td>Virtual Reality</td>
+                        <td>bb</td>
+                        <td>Shaw ken</td>
+                        <td>Book</td>
+                        <td>3.5</td>
+                        <td><a id="msg2" class="aClass">Details</a></td>
+                    </tr>
+                     <tr id="tr3">
+                    	<td>Customer insights</td>
+                        <td>cc</td>
+                        <td>KP Sent</td>
+                        <td>Podcast</td>
+                        <td>4.8</td>
+                        <td><a id="msg3" class="aClass">Details</a></td>
+                    </tr>  
+                           </tbody>                                
+                </table>
+                </div>
+               <!-- end tblMessage -->
+            </div>
+            <!-- end showMessage -->
+            
+              <div id="linksMessage">
+                  <div id="copyMessage">
+                        
+                        <textarea id="clickedMessage" placeholder="Old Message here"></textarea>
+                        
+                    </div>
+                    <!-- end copyMessage -->
+            		
+                    <div id="_avail" style=" margin-top:5px; padding: 5px;">    
+                       <input type="text" placeholder="Availability"/>
+                       <div id="_borrow" style=" float:right;">
+                           <a class="aClass">Borrow</a>
+                           <a class="aClass">Place hold request</a>
+                       </div>
+                     </div>
+                   
+            </div>
+            <br />
+            <!-- linksMessage -->
+          
+            <!-- end zReturn -->
+        </div>
+        <!-- end contentMessage -->
+        <div id="zReturn" style="margin-top:5px;">    		 
+ <input type="button" class="btn btn-info" id="btn_return" name="btn_return" value="Return"/>
+        	</div>
+    </div>
+    <!-- end zMessage -->
+    </div>
+</body>
+</html>

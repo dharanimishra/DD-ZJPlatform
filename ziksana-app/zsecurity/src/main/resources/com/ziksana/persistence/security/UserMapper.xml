@@ -18,6 +18,7 @@
 		secmembercredential.UserName=#{userName}
 
 
+
 	</select>
 
 	<select id="getMemberByMemberId" resultMap="memberResultMap"

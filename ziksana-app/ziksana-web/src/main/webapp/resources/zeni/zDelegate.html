@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>zDelegate</title>
+<link rel="stylesheet" href="css/zCss.css" type="text/css"/>
+<link type="text/css" href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/zeni/zeni2.css" />
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/zDelegate.js"></script>
+</head>
+
+<body>
+<div id="delegateWrapper">
+	<div id="helpText" class="helptext">
+    	Help describing the page
+    </div>
+	<div id="delegateLeft">
+    	<!-- options to view persona -->
+    	<select id="myPersona" name="myPersona" style="width:190px;" > 
+                              <option value="My persona" selected="selected">
+                            	My persona
+                           	  </option>                        
+        </select>
+        <br/><br/>
+        <select name="menuItem" size="1" multiple="MULTIPLE" id="menuItem" style="width:190px; height: 250px;" > 
+                              <option value="menuItem1" selected="selected" id="menuItem1" >
+                            	menuItem 1
+                           	  </option>   
+                                <option value="menuItem2" id="menuItem2">
+                            	menuItem 2
+                           	  </option>   
+                                <option value="menuItem3" id="menuItem3">
+                            	menuItem 3
+                           	  </option>                       
+        </select>
+        <br/>
+        
+        <div id="links" >
+            <a href="#details" id="_details">Details</a>&nbsp;
+            <a href="#new" id="_new">New</a>
+        </div><!-- end links -->
+        <b>Usage History</b>
+        <div id="usageHistory">
+       
+        	<ol>
+            	<li>Date delegated <a href="#date" style="float:right;">Date</a></li>
+                <li>Date revoked <a href="#date" style="float:right;">Date</a></li>
+                <li># of times used <a href="#date" style="float:right;">25</a></li>
+                <li># of creates <a href="#date" style="float:right;">25</a></li>
+                <li># of times updated <a href="#date" style="float:right;">25</a></li>
+                <li># of times deleted <a href="#date" style="float:right;">25</a></li>
+                <li># affected learning components <a href="#date" style="float:right;">25</a></li>
+            </ol>
+        </div><!-- end usageHistory -->
+        
+    </div><!-- delegateLeft -->
+    <div id="delegateRight">
+    	<div id="searchLeft">
+        	<input type="text" placeholder="Role to delegate :" id="_delegate"/><br/>
+            
+          	 <input id="search" name="search" type="text" placeholder="Search.." class='highlights' style=" width:50px;" onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" />
+             <input type="button" class="btn btn-info" id="btn_top_search" name="btn_top_search" value="Search" style=" width:51px; margin-left:-7px;"/>
+             <input type="button" class="btn btn-info" id="btn_advance" name="btn_advance" value="Advanced"  style=" width:71px; margin-left:-7px; "/>
+             <br />
+                    <div id="advance_search_form" >
+                         <input id="q_name" name="q_name" type="text" placeholder="Specify question name" class='highlights' maxlength="100" onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+                         <br/>
+                         <select id="byarea" name="byarea" style="width:150px; margin:5px;" > 
+                              <option placeholder="Filter by area" selected="selected">
+                            	Filter by area
+                           	  </option>                        
+                        </select>
+                       
+                         <select id="bysubject" name="bysubject" style="width:150px; margin:5px;" > 
+                              <option placeholder="Filter by subject" selected="selected">
+                            	Filter by subject
+                              </option>                        
+                        </select>
+                      
+                         <select id="bytopic" name="bytopic" style="width:150px; margin:5px;"> 
+                              <option placeholder="Filter by topic" selected="selected"  >
+                            	Filter by topic
+                            	</option>                       
+                        </select>
+                        <br/>
+                         <input id="q_tags" name="q_tags" type="text" placeholder="Search by tags" maxlength="100" class='highlights' onfocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+                         <br/>
+                          <input type="button" class="btn btn-info" id="btn_exit" name="btn_exit" value="Exit" style=" width:55px; "/>
+                         <input type="button" class="btn btn-info" id="btn_search" name="btn_search" value="Search" style=" width:55px; margin-left:-5px;"/>
+                  </div>
+                <input type="text" placeholder="Selected user :"/><br/>
+              <input type="text" placeholder="Valid from :"/><br/>
+               <input type="text" placeholder="Valid to :"/>
+        </div><!-- end searchLeft -->
+        
+        <div id="listMiddle">
+        <select id="componentItem" name="componentItem" style="width:210px; height: 160px;" multiple="multiple" > 
+                              <option value="componentItem1" id="componentItem1" selected="selected">
+                            	componentItem 1
+                           	  </option>   
+                                <option value="componentItem2" id="componentItem2">
+                            	componentItem 2
+                           	  </option>   
+                                <option value="componentItem3" id="componentItem3">
+                            	componentItem 3
+                           	  </option>                       
+        </select>
+        </div><!-- end listMiddle -->
+        <div id="rightDesc">
+        	<textarea placeholder="Description.." cols="40" rows="5" style=" resize:none;" id="_desc"></textarea>
+             <input type="text" placeholder="Author :" style=" margin:5px 0px 5px 0px; width:200px;"/><br/>
+              <input type="text" placeholder="Status :" style="width: 130px;"/>
+               <input type="text" placeholder="Version :"  style="width: 130px;"/>
+        </div><!-- rightDesc -->
+        
+        <div id="bottomTable" >
+        	 <table id="delegateTable" cellspacing="0" class="table table-striped">
+                        <thead >
+                	<tr >
+                    	<th>Asset</th><th>Asset type</th><th>Create</th><th>Read</th><th>Update</th><th>Delete</th><th>Delegate</th>
+                    </thead>
+                    <tbody>
+                    <tr >
+                    	<td>Create course</td>
+                        <td>Service</td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                      </tr>
+                      <tr >
+                    	<td>Review course</td>
+                        <td>Service</td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                      </tr>
+                       <tr >
+                    	<td>Publish course</td>
+                        <td>Service</td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                        <td><input type="checkbox"/></td>
+                      </tr>
+                    </tbody>                                
+                </table>
+        </div><!-- end bottomTable -->
+       
+    </div><!-- delegateRight -->
+     <div id="bottomButtons">
+        	<input type="button" class="btn btn-info" id="btn_return" value="Return" style=" width:55px;  float:right;"/>
+            <input type="button" class="btn btn-info" id="btn_save"  value="Save" style=" width:55px; float:right; margin-right:2px;"/>
+        </div><!-- end bottomButtons -->
+</div><!-- delegateWrapper -->
+
+</body>
+</html>
