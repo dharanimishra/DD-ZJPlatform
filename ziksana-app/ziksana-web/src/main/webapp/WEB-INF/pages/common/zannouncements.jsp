@@ -329,7 +329,7 @@ function getCategoryByBetweenDates(){
 		<!-- Main container -->
 		<div id="zAnnouncement">
 
-			<div class="helptext">Help text describing the page</div>
+			<div class="helptext">Important Announcements</div>
 			<div id="error">
 				<!-- <span id="_required">Enter a date *</span> -->
 			</div>

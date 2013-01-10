@@ -166,7 +166,7 @@ function hideContents(){
 	<div id="zAnnouncement">
     	
         <div class="helptext">
-        Poll details describing page
+        Polls Results
         </div>
        
         <div id="contentGroup">

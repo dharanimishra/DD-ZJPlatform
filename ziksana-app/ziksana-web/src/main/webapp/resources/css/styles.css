@@ -138,19 +138,12 @@ nav {
 	
 }
 .menu {
-	width: 570px;
-	float: left;
-	position: absolute;
-	top: 27px;
-	height: 33px;
-	left: -12px;*/
-	
-	width: 570px;
-float: right;
-position: absolute;
-top: -43px;
-height: 33px;
-left: 150px;
+  float: right;
+  height: 33px;
+  left: 0;
+  position: absolute;
+  top: 27px;
+  width: 625px;
 }
 .searchpanel {
 	width: 220px;

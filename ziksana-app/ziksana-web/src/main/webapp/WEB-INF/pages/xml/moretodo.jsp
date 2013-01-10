@@ -20,8 +20,19 @@
 	 <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" type="text/css"/>
      <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
 <html>
-<head>
 
+<head>
+<style type="text/css">
+body{
+background-color:#ffffff;
+}
+.todoWrap
+{
+width:750px;
+
+background-color:#ffffff;
+}
+</style>
 
 <script type="text/javascript">
  function addTodo()
@@ -218,13 +229,14 @@ function capitalize(s){
 </script>
  <!-- End -->
 <title>Todo List</title>
-<body bgcolor="#ffffff" >
+<body>
+<div class="todoWrap">
 <!-- <div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div> -->
 <div class="helptext">
         	My To Do's
         </div>
 <hr/>
-<div id = "todo_form_container" class="addtodo" style=" width:650px; background-color:#eeeeee;">
+<div id = "todo_form_container" class="addtodo" style=" width:650px; background-color:#FFFFFF;">
 
 
 <div id="add_todo_fields_container" style="display:none;">
@@ -244,7 +256,7 @@ function capitalize(s){
 	<hr/>
 <a class='btn btn-info f-r' onclick='closeit()'> Return </a> 
 <a class='btn btn-info f-r add_todo_button' onclick='$("#add_todo_fields_container").show(); $(this).attr("disabled",true);' style='margin-right:10px;'> Add TODO </a>
-
+</div>
 
 </body>
 </html>

@@ -10,40 +10,43 @@
 		(answer3count/totalrespondents)*100 as answer3,
 		(answer4count/totalrespondents)*100 as answer4
 		,(answer5count/totalrespondents)*100 as answer5
-		from utlzpollquestionresponse where pollquestionid=#{questionId}
+		from
+		utlzpollquestionresponse where pollquestionid=#{questionId}
 
 
 	</select>
-	
+
 	<select id="getPollQuestion" resultMap="pollQuestionMap"
-	parameterType="int">
-	
-	select 
-		ID, 
-		QuestionType,
-		QuestionText,
-		pollQuestionDate,
-		Answer1,
-		Answer2,
-		Answer3,
-		Answer4,
-		Answer5 
-		from 
-		utlzpollquestion where CreatorMemberRoleId =#{userMemberRoleId}
-	
+		parameterType="int">
+
+		select
+		distinct question.*
+		from
+		utlzpollquestion question join
+		utlzpolltracker tracker ON question.ID=tracker.pollQuestionId
+		where
+		tracker.answeringMemberRoleId=#{userMemberRoleId}
+
 	</select>
 
 
 	<select id="getPollQuestionsByDate" resultMap="pollQuestionMap"
 		parameterType="map">
-
-
-		select *
+		
+		
+		select
+		distinct question.*
 		from
-		utlzpollquestion where  pollquestiondate between #{startDate} and #{endDate}
+		utlzpollquestion question join
+		utlzpolltracker tracker ON question.ID=tracker.pollQuestionId
+		where
+		between question.pollDate between #{startDate} and #{endDate}
 		
-		
-		</select>
+
+
+
+
+	</select>
 
 
 
@@ -57,7 +60,7 @@
 		<result property="answer3" column="Answer3" />
 		<result property="answer4" column="Answer4" />
 		<result property="answer5" column="Answer5" />
-		
+
 		<association property="question"
 			javaType="com.ziksana.domain.polls.PollQuestion">
 
@@ -70,15 +73,16 @@
 
 	</resultMap>
 
-<resultMap id="pollQuestionMap" type="com.ziksana.persistence.polls.PollQuestionEntity">
-	    <result property="ID" column="ID" /> 
-	    <result property="questionText" column="questionText" /> 
-	    <result property="answer1" column="Answer1" />
+	<resultMap id="pollQuestionMap"
+		type="com.ziksana.persistence.polls.PollQuestionEntity">
+		<result property="ID" column="ID" />
+		<result property="questionText" column="questionText" />
+		<result property="answer1" column="Answer1" />
 		<result property="answer2" column="Answer2" />
 		<result property="answer3" column="Answer3" />
 		<result property="answer4" column="Answer4" />
 		<result property="answer5" column="Answer5" />
-	    <result property="pollDate" column="pollQuestionDate"/> 
+		<result property="pollDate" column="pollDate" />
 	</resultMap>
 
 

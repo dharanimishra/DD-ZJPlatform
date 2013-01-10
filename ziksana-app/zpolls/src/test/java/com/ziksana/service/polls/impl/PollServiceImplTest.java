@@ -101,7 +101,8 @@ public class PollServiceImplTest {
 
 	}
 
-	@Ignore @Test
+	@Ignore
+	@Test
 	public void testGetPollResult() {
 
 		PollQuestion pollQuestion = new PollQuestion();
@@ -122,6 +123,18 @@ public class PollServiceImplTest {
 				.getAllPollQuestionsByDate(startDate.getTime(),
 						endDate.getTime());
 		assertTrue(pollQuestions.size() > 0);
+
+	}
+
+	@Test
+	public void testGetAllPollQuestion() {
+
+		List<PollQuestionEntity> pollQuestions = pollService
+				.getAllPollQuestion();
+
+		for (PollQuestionEntity question : pollQuestions) {
+			System.out.println(" POLL QUESTION DATE " + question.getPollDate());
+		}
 
 	}
 

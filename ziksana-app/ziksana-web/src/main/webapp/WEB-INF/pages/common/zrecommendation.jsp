@@ -244,7 +244,7 @@ function moveIgnored(index){
     <div class="zeniwrapper">
    
 	<div class="helptext">
-    Recommendations Page
+    Recommendations to improve your experience on the platform.
     </div> <!-- end of help text -->
 
    <input id='show_tab' type="hidden" value="new"/>

@@ -437,10 +437,10 @@ function displayAnsweredQuestionContainer(loop){
 		success: function( data ) {
 			
 			outputAns+="<div style='display:none;' id='answered_question_form_container'>";
-			outputAns+="<br/></br><b><u><p>View or update the Answer:</p></b></u>";
+			outputAns+="<br/></br><u><strong>View or update the Answer:</strong></u>";
 			outputAns+="<div>";
 			outputAns+="<div id='question_info_message_update'></div>";
-			outputAns+="<br/><label style='display:none;' id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label>";
+			outputAns+="<br/><label style='display:none;' id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label><br/>";
 					
 			var ansArrayindex=[];
 			var answerArray=[];

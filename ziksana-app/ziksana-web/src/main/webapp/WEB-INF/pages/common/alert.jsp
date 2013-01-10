@@ -40,6 +40,15 @@ pageEncoding="ISO-8859-1"%>
 </head>
  <style>
 	.ui-progressbar .ui-progressbar-value { background-image: url(images/pbar-ani.gif); }	
+	body{
+	background-color:#ffffff;
+	}
+	.todoWrap
+	{
+	width:750px;
+	
+	background-color:#ffffff;
+	}
   </style>
        
 </head>
@@ -184,6 +193,7 @@ parent.jQuery.fancybox.close();
 	 	}	
 	 } 
 	</script>
+	<div class="todoWrap">
 	<div  class="alert_todo" style="margin-left:70px;" >
 	 
 	                   		 <div id= "alertplaceholder" style="width:600px;height:500px;" class="alerts" >
@@ -191,6 +201,7 @@ parent.jQuery.fancybox.close();
 	                  
 	                        </div> 
 	                        
+	                        </div>
 	                        </div>
 	</body>
 	</html>

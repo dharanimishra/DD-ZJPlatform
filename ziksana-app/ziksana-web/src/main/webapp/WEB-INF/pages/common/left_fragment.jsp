@@ -445,7 +445,7 @@ function submitValue(){
 				        , function( data )
 				        {
 				        
-							//alert("Answer Submitted Successfully");
+							
 							$('#question_info_message').html("Answer Submitted Successfully");
 							$("#knowme-save").attr('disabled','true');
 							setTimeout('get_and_UnAnswered_questions()',2000);

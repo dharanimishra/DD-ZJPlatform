@@ -489,7 +489,7 @@ $.ajax({
 						});
 												
 							
-							output_todo+="<div  style='height:30px;margin-right:50px; float:right;'><a class='todo_fancybox text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
+							output_todo+="<div  style='height:30px;margin-right:0px; float:right;'><a class='todo_fancybox text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
 							$('#todos_placeholder').html(output_todo);
 						output_todo+="</div>";	
 				}

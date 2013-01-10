@@ -171,7 +171,7 @@ public interface PollQuestionMapper {
 		"ID,", 
 		"QuestionType,",
 		"QuestionText,",
-		"pollQuestionDate,",
+		"pollDate,",
 		"Answer1,",
 		"Answer2,",
 		"Answer3,",
