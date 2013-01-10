@@ -587,7 +587,8 @@ $('._cklo').show('');
                    <img src="../resources/images/cross.png" onclick="closeactive()"></a>
 				   </div>
                    </div>
-                  <div class="programisotope" style="height:40px;margin-right:800px;width:973px;">
+                   <div class="programisotope" style="height: 40px; margin-right: 800px; width: 208px;">
+                  
                     
                       <li> <a class="btn btn-info" href="#linkurl" id="reviewc" onClick="showreviewc()" style="float:right;">Review</a></li>
                     <li><a class="btn btn-info" href="#linkurl" id="draftc" onclick="showdraftc()" style="float:right;">Draft</a></li>
@@ -660,7 +661,7 @@ $('._cklo').show('');
               <div class="col-lft li-1 All Draft" id="courseModel" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
+                <p style="height:30px;"class="titles-info text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
@@ -673,8 +674,9 @@ $('._cklo').show('');
                 <a  onclick="coursedel('courseModel','Model Thinking')" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
                 </div>              
               </div>
+                </div>
              </c:forEach> 
-    </div>
+  
             
          <!--end of learning objects-->   
             
