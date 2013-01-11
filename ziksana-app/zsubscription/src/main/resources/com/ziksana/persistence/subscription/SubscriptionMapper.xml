@@ -306,8 +306,9 @@
 	<resultMap id="programResultMap"
 		type="com.ziksana.domain.institution.LearningProgram">
 
-
+        <result property="learningProgramId" column="LearningProgramId" />
 		<result property="name" column="ProgramName" />
+		
 
 	</resultMap>
 	

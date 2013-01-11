@@ -16,10 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
+import com.ziksana.service.subscription.SubscriptionService;
 
 /**
  * @author prabu
@@ -34,10 +36,9 @@ public class MyCoursesController {
 
 	@Autowired
 	CourseService courseService;
-	
-	
-	
-	
+
+	@Autowired
+	SubscriptionService subscriptionService;
 
 	@RequestMapping(value = "/showmycourse/111111", method = RequestMethod.GET)
 	public @ResponseBody
@@ -82,8 +83,19 @@ public class MyCoursesController {
 			return mv;
 		} else {
 
+			List<LearningProgram> programs = subscriptionService
+					.getLearningPrograms();
+			LearningProgram program = programs.get(0);
+			List<Course> courses = subscriptionService
+					.getCoursesByLearningProgram(Integer.valueOf(program
+							.getLearningProgramId().getStorageID()));
+
+			ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
+			mvLearner.addObject("program", program);
+			mvLearner.addObject("courses", courses);
+
 			// TODO need to implement learner my programs...
-			return null;
+			return mvLearner;
 
 		}
 

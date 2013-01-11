@@ -211,7 +211,8 @@ $('._cklo').show('');
 <div id="wrapper">
         <!--Header Container-->
         	<!--Header Container-->
-		<p><a><img data-launcher src="../resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
+        	 <c:url var="launcherPage" value="/secure/launcher"/>
+		<p><a><img data-launcher data-launchpage="${launcherPage}" src="../resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
         	<header class="bottom-box-shadow bckground-wihte">
 			<p>&nbsp;&nbsp;</p>
             	<div class="topheader"> 
@@ -219,7 +220,19 @@ $('._cklo').show('');
           
           <!--end logo container-->
 		    
-          <div class="status-container">
+ 
+        </div>
+            <nav>
+			<div class="menu" style=" margin-left:0px;">
+                      <ul>
+                        <li><a href="educatorHomepage.html" class="current">My Home</a><div class="nav-line"></div></li>
+                        <li><a href="myprograms.html">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
+                        <li><a href="#" style="margin-left:-10px;">My Locker</a></li>
+                      </ul>
+                    </div>
+					
+                       <div class="status-container">
 		
             <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box ">
 			
@@ -245,18 +258,6 @@ $('._cklo').show('');
               </div>
             </div>
           </div>
-        </div>
-            <nav>
-			<div class="menu" style=" margin-left:-170px;">
-                      <ul>
-                        <li><a href="educatorHomepage.html" class="current">My Home</a><div class="nav-line"></div></li>
-                        <li><a href="myprograms.html">My Programs</a><div class="nav-line"></div></li>
-                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
-                        <li><a href="#" style="margin-left:-10px;">My Locker</a></li>
-                      </ul>
-                    </div>
-					
-              
               </nav>
             </header>
         <!--End Header Container-->
@@ -587,7 +588,7 @@ $('._cklo').show('');
                    <img src="../resources/images/cross.png" onclick="closeactive()"></a>
 				   </div>
                    </div>
-                   <div class="programisotope" style="height: 40px; margin-right: 800px; width: 208px;">
+                   <div class="programisotope" style="height: 40px;margin-top: -30px; margin-right: 800px; width: 181px;">
                   
                     
                       <li> <a class="btn btn-info" href="#linkurl" id="reviewc" onClick="showreviewc()" style="float:right;">Review</a></li>
