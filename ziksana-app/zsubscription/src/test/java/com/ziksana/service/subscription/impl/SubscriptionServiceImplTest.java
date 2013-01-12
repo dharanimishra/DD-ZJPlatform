@@ -159,5 +159,22 @@ public class SubscriptionServiceImplTest {
 				.valueOf(2));
 		assertTrue(rowsAffected == 1);
 	}
+	
+	
+	@Test
+	public void testAddEducatorContent() {
+		Integer contentEnrichmentId = subscriptionService.addEducatorContent(100, 7, 10, 7, "coming from int test");
+		assertTrue(contentEnrichmentId>0);
+		
+		
+	}
+	
+	@Test
+	public void testUpdateLearnerContent() {
+		int rowsAffected = subscriptionService.updateLearnerContent(1, "test desc", 3);
+		assertTrue(rowsAffected==1);
+	}
+	
+	
 
 }

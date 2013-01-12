@@ -33,11 +33,14 @@
 		course.Description
 		from
 		sbnmembersubscriptionprogram sbnpgm
-		JOIN sbnsubscriptioncourse subcourse ON
+		JOIN sbnsubscriptioncourse
+		subcourse ON
 		sbnpgm.MemSubscriptionProgId=subcourse.MemSubscriptionProgId
-		JOIN corcurriculumcourse curcourse ON
+		JOIN
+		corcurriculumcourse curcourse ON
 		subcourse.CurriculumCourseId=curcourse.CurriculumCourseId
-		JOIN corcourse course ON
+		JOIN
+		corcourse course ON
 		curcourse.CourseId=course.CourseId
 		where
 		sbnpgm.MemberRoleId=#{memberRoleId} and
@@ -91,8 +94,8 @@
 
 		select
 		cntenr.LinkElement,
-		cntenr.LinkDescription as NotesContent
-
+		cntenr.LinkDescription as NotesContent,
+		cnterr.duration
 		from
 		corcontentenrichment cntenr
 		JOIN
@@ -265,10 +268,44 @@
 
 
 	</insert>
-	
+
+	<insert id="addEducatorContent" parameterType="map"
+		useGeneratedKeys="true" keyProperty="ContentEnrichmentId">
+
+		insert into corcontentenrichment(LinkType, LinkDescription,
+		enrichmentid)
+		values(#{type},#{note} , (select enrichmentid
+		from
+		corenrichment
+		where
+		LearningComponentId=#{learningCompId} and
+		learningcontentid=#{learningContId}
+		and courseid=#{courseId} and
+		CreatorMemberRoleId=#{memberRoleId}) )
+
+		<selectKey keyProperty="ContentEnrichmentId" resultType="java.lang.Integer"
+			order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+
+
+
+
+	</insert>
+
 	<delete id="deleteNote" parameterType="java.lang.Integer">
-	        delete from sbnsubscribernotes where SubcribeNotesId=#{noteId}
+		delete from
+		sbnsubscribernotes where SubcribeNotesId=#{noteId}
 	</delete>
+
+	<update id="updateNote" parameterType="map">
+
+		update sbnsubscribernotes
+		set NoteDescription=#{desc},NoteDuration=#{duration}
+		where
+		SubcribeNotesId=#{noteId}
+
+	</update>
 
 
 
@@ -290,7 +327,7 @@
 
 
 	<resultMap id="learnerNotesResultMap" type="com.ziksana.domain.course.subscription.Note">
-
+		<result property="id" column="SubcribeNotesId" />
 		<result property="noteTitle" column="NoteTitle" />
 		<result property="noteDescription" column="NoteDescription" />
 		<result property="noteDuration" column="NoteDuration" />
@@ -310,13 +347,13 @@
 	<resultMap id="programResultMap"
 		type="com.ziksana.domain.institution.LearningProgram">
 
-        <result property="learningProgramId" column="LearningProgramId" />
+		<result property="learningProgramId" column="LearningProgramId" />
 		<result property="name" column="ProgramName" />
-		
+
 
 	</resultMap>
-	
-	
+
+
 	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
 
 		<result property="courseId" column="courseid" />
@@ -325,9 +362,9 @@
 
 
 	</resultMap>
-	
-	
-	
+
+
+
 
 
 

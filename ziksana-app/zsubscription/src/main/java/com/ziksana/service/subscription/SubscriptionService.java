@@ -42,6 +42,9 @@ public interface SubscriptionService {
 	public List<ContentReference> getContentTOC(Integer courseId,
 			Node node);
 	
+	public Integer addEducatorContent(Integer courseId, Integer componentId,Integer contentId, Integer contentType, String contentDesc);
+	
+	
 	
 	
 
@@ -59,6 +62,10 @@ public interface SubscriptionService {
 	
 	
 	public int deleteLearnerContent(Integer learnerContentId);
+	
+	
+	public int updateLearnerContent(Integer learnerContentId, String description, int duration);
+	
 	
 
 	/**

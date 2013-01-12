@@ -233,4 +233,23 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		
 	}
 
+	@Override
+	public Integer addEducatorContent(Integer courseId, Integer componentId,
+			Integer contentId, Integer type, String note) {
+		// TODO Auto-generated method stub
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		
+		
+		return subscriptionMapper.addEducatorContent(Integer.valueOf(memberRoleId), type, note, componentId, contentId, courseId);
+	}
+
+	@Override
+	public int updateLearnerContent(Integer learnerContentId,
+			String description, int duration) {
+		// TODO Auto-generated method stub
+		return subscriptionMapper.updateNote(learnerContentId, description, duration);
+	}
+
 }

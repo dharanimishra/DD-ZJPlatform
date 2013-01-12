@@ -39,13 +39,11 @@ public interface SubscriptionMapper {
 	
 	public int deleteNote(Integer noteId);
 	
+	public int updateNote(@Param("noteId") Integer noteId,  @Param("desc") String desc, @Param("duration") int duration);
+	
 	public List<LearningProgram> getLearningPrograms(Integer memberRoleId);
 	
 	public List<Course> getCoursesByLearningProgram(@Param("memberRoleId") Integer memberRoleId, @Param("learningProgramId") Integer learningProgramId);
 	
-	
-	
-	
-	
-
+	public Integer addEducatorContent(@Param("memberRoleId") Integer memberRoleId, @Param("type") Integer type, @Param("note") String note, @Param("learningCompId") Integer learningCompId, @Param("learningContId") Integer learningContId, @Param("courseId") Integer courseId);
 }
