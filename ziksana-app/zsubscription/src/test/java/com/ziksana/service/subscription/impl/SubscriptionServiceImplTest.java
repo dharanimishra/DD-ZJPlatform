@@ -58,7 +58,8 @@ public class SubscriptionServiceImplTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Ignore @Test
+	@Ignore
+	@Test
 	public void testGetLearnerContent() {
 
 		SubscriptionCourse course = new SubscriptionCourse();
@@ -88,17 +89,17 @@ public class SubscriptionServiceImplTest {
 		node.setParent(parent);
 
 		// TODO
-		List<EducatorNote> notes = subscriptionService.getEducatorNotes(1000, node);
+		List<EducatorNote> notes = subscriptionService.getEducatorNotes(1000,
+				node);
 		assertNotNull(notes);
 
 		assertTrue(notes.size() == 0);
 
 	}
-	
-	
+
 	@Test
 	public void testGetEducatorSuggestedReferences() {
-		
+
 		SubscriptionCourse course = new SubscriptionCourse();
 		course.setSubscriptionCourseId(1000);
 		Node node = new Node();
@@ -109,21 +110,17 @@ public class SubscriptionServiceImplTest {
 		node.setParent(parent);
 
 		// TODO
-		List<Reference> references = subscriptionService.getEducatorSuggestedReferences(1000, node);
-				
+		List<Reference> references = subscriptionService
+				.getEducatorSuggestedReferences(1000, node);
+
 		assertNotNull(references);
 
 		assertTrue(references.size() == 0);
 
-		
-		
 	}
-	
-	
-	
-	
 
-	@Ignore @Test
+	@Ignore
+	@Test
 	public void testAddLearnerContent() {
 		String noteText = "test note";
 		// Note note = new Note();
@@ -132,30 +129,51 @@ public class SubscriptionServiceImplTest {
 		Node node = new Node();
 		node.setType(1000);
 		node.setId(1000);
-		
-		//TODO
 
-		//subscriptionService.addLearnerContent(noteText, node);
+		// TODO
+
+		// subscriptionService.addLearnerContent(noteText, node);
 
 	}
-	
-	
+
 	@Test
 	public void testGetLearningPrograms() {
-		
-		List<LearningProgram> programs = subscriptionService.getLearningPrograms();
+
+		List<LearningProgram> programs = subscriptionService
+				.getLearningPrograms();
 		assertTrue(programs.size() == 1);
+
+	}
+
+	@Test
+	public void testGetCoursesByLearningProgram() {
+		List<Course> courses = subscriptionService
+				.getCoursesByLearningProgram(1);
+		assertTrue(courses.size() == 1);
+
+	}
+
+	@Test
+	public void testDeleteNote() {
+		int rowsAffected = subscriptionService.deleteLearnerContent(Integer
+				.valueOf(2));
+		assertTrue(rowsAffected == 1);
+	}
+	
+	
+	@Test
+	public void testAddEducatorContent() {
+		Integer contentEnrichmentId = subscriptionService.addEducatorContent(100, 7, 10, 7, "coming from int test");
+		assertTrue(contentEnrichmentId>0);
+		
 		
 	}
 	
 	@Test
-	public void testGetCoursesByLearningProgram() {
-		List<Course> courses = subscriptionService.getCoursesByLearningProgram(1);
-		assertTrue(courses.size() == 1);
-		
+	public void testUpdateLearnerContent() {
+		int rowsAffected = subscriptionService.updateLearnerContent(1, "test desc", 3);
+		assertTrue(rowsAffected==1);
 	}
-	
-	
 	
 	
 
