@@ -37,9 +37,15 @@ public interface SubscriptionMapper {
 	
 	public int addNote(Note note);
 	
+	public int deleteNote(Integer noteId);
+	
 	public List<LearningProgram> getLearningPrograms(Integer memberRoleId);
 	
 	public List<Course> getCoursesByLearningProgram(@Param("memberRoleId") Integer memberRoleId, @Param("learningProgramId") Integer learningProgramId);
+	
+	
+	
+	
 	
 
 }

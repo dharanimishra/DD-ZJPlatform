@@ -57,6 +57,9 @@ public interface SubscriptionService {
 	
 	public List<Note> getLearnerQuestions(Integer courseId, Integer componentId, Integer contentId);
 	
+	
+	public int deleteLearnerContent(Integer learnerContentId);
+	
 
 	/**
 	 * Based on the nodetype(learning component and content..) and content

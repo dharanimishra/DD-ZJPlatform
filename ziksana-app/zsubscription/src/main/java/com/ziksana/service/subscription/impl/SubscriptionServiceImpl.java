@@ -227,4 +227,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		return subscriptionMapper.getCoursesByLearningProgram(Integer.valueOf(memberRoleId), learningProgramId);
 	}
 
+	@Override
+	public int deleteLearnerContent(Integer learnerContentId) {
+		 return subscriptionMapper.deleteNote(learnerContentId);
+		
+	}
+
 }

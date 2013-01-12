@@ -265,6 +265,10 @@
 
 
 	</insert>
+	
+	<delete id="deleteNote" parameterType="java.lang.Integer">
+	        delete from sbnsubscribernotes where SubcribeNotesId=#{noteId}
+	</delete>
 
 
 
@@ -321,6 +325,8 @@
 
 
 	</resultMap>
+	
+	
 	
 
 
