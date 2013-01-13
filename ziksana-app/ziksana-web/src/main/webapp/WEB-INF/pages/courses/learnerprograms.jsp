@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -18,46 +22,46 @@
 	<!-- end fix. IE 6-->
 	<title>My Courses</title>
 	<!--Body Style sheet-->
-	 <link rel="stylesheet" type="text/css" href="css/dropdown.css" />
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
-	<link href="css/type-setting.css" rel="stylesheet" type="text/css">
-	<link href="css/effects.css" rel="stylesheet" type="text/css">
-	<link href="css/nav.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/tag/tagit-simple-blue.css">
-    <link rel="stylesheet" href="css/tipsy.css" type="text/css" />
-    <link rel="stylesheet" href="zeni/css/zeni/zeni2.css" />
-    <link rel="stylesheet" type="text/css" href="jdashboard/jdashboard.css" />
+	 <link rel="stylesheet" type="text/css" href="../resources/css/dropdown.css" />
+    <link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/tag/tagit-simple-blue.css">
+    <link rel="stylesheet" href="../resources/css/tipsy.css" type="text/css" />
+    <link rel="stylesheet" href="../resources/zeni/css/zeni/zeni2.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/jdashboard/jdashboard.css" />
 	
-	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="../resources/js/jquery-1.7.2.min.js"></script>
 	
-	<script src="js/custom/z_plugins.js"></script>
-<script src="js/custom/z_common.js"></script>
-<script src="js/jquery_confirm/jquery.confirm.js"></script>
-<link rel="stylesheet" href="js/jquery_confirm/jquery.confirm.css"/>
+	<script src="../resources/js/custom/z_plugins.js"></script>
+<script src="../resources/js/custom/z_common.js"></script>
+<script src="../resources/js/jquery_confirm/jquery.confirm.js"></script>
+<link rel="stylesheet" href="../resources/js/jquery_confirm/jquery.confirm.css"/>
 
 
 
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/dropdown/hover-dropdown.min.js"></script>
-    <script src="js/dropdown/tiwtter.js"></script>
-    <script type='text/javascript' src="js/custom/mystudent.js"></script>
-    <script src="js/ui/jquery.ui.core.js"></script>
-	<script src="js/ui/jquery.ui.widget.js"></script>
-	<script src="js/ui/jquery.ui.button.js"></script>
-	<script src="js/ui/jquery.ui.progressbar.js"></script>
-	<script src="js/ui/jquery.ui.tabs.js"></script>
+    <script src="../resources/js/jquery.isotope.min.js"></script>
+    <script src="../resources/js/dropdown/hover-dropdown.min.js"></script>
+    <script src="../resources/js/dropdown/tiwtter.js"></script>
+    <script type='text/javascript' src="../resources/js/custom/mystudent.js"></script>
+    <script src="../resources/js/ui/jquery.ui.core.js"></script>
+	<script src="../resources/js/ui/jquery.ui.widget.js"></script>
+	<script src="../resources/js/ui/jquery.ui.button.js"></script>
+	<script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
+	<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
     <!--fancybox-->
-	<script type="text/javascript" src="js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-	<script type="text/javascript" src="js/ui/jquery.fancybox-1.3.4.pack.js"></script>
+	<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="../resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="js/ui/jquery.fancybox-1.3.4.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
 	<!--fancybox end-->
 	
-	<script type='text/javascript' src='js/jquery.tipsy.js'></script>
-	<script src="js/jquery.collapse.js"></script>
-	<script src="js/ui/jquery.raty.min.js"></script>    
-    <script src="js/custom.js" type="text/javascript"></script> 
-  	<script type="text/javascript" src="jdashboard/jdashboard.min.js"></script>
+	<script type='text/javascript' src='../resources/js/jquery.tipsy.js'></script>
+	<script src="../resources/js/jquery.collapse.js"></script>
+	<script src="../resources/js/ui/jquery.raty.min.js"></script>    
+    <script src="../resources/js/custom.js" type="text/javascript"></script> 
+  	<script type="text/javascript" src="../resources/jdashboard/jdashboard.min.js"></script>
 	<script type="text/javascript">
 			
 		$(function() {
@@ -105,18 +109,18 @@
    $('.js-activated').dropdownHover();
     });
   </script>   
-   <script type="text/javascript" language="javascript" src="js/easyslider/jquery.carouFredSel-6.1.0-packed.js"></script>
+   <script type="text/javascript" language="javascript" src="../resources/js/easyslider/jquery.carouFredSel-6.1.0-packed.js"></script>
 
 		<!-- optionally include helper plugins -->
-		<script type="text/javascript" language="javascript" src="js/easyslider/jquery.mousewheel.min.js"></script>
-		<script type="text/javascript" language="javascript" src="js/easyslider/jquery.touchSwipe.min.js"></script>
-		<script type="text/javascript" language="javascript" src="js/easyslider/jquery.ba-throttle-debounce.min.js"></script>          
+		<script type="text/javascript" language="javascript" src="../resources/js/easyslider/jquery.mousewheel.min.js"></script>
+		<script type="text/javascript" language="javascript" src="../resources/js/easyslider/jquery.touchSwipe.min.js"></script>
+		<script type="text/javascript" language="javascript" src="../resources/js/easyslider/jquery.ba-throttle-debounce.min.js"></script>          
    
 		
 		<style type="text/css">
 			
 			body {
-				background: #F9F9F9 url("images/grain-light.png");
+				background: #F9F9F9 url("/zisana-web/resources/images/grain-light.png");
 			}
 			
 			#jDash {
@@ -152,7 +156,7 @@
 	float: left;
 }
 a.prev, a.next {
-	background: url(images/miscellaneous_sprite.png) no-repeat transparent;
+	background: url(/zisana-web/resources/images/miscellaneous_sprite.png) no-repeat transparent;
 	width: 45px;
 	height: 50px;
 	display: block;
@@ -178,7 +182,7 @@ a.prev span, a.next span {
 	text-align: center;
 }
 .pagination a {
-	background: url(images/miscellaneous_sprite.png) 0 -300px no-repeat transparent;
+	background: url(/zisana-web/resources/images/miscellaneous_sprite.png) 0 -300px no-repeat transparent;
 	width: 15px;
 	height: 15px;
 	margin: 0 5px 0 0;
@@ -290,7 +294,7 @@ color:#666;
 <div id="wrapper">
        <!--Header Container-->
         	<!--Header Container-->
-		<p><a><img data-launcher src="images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
+		<p><a><img data-launcher src="/zisana-web/resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
         	<header class="bottom-box-shadow bckground-wihte">
 			<p>&nbsp;&nbsp;</p>
             	<div class="topheader"> 
@@ -483,10 +487,10 @@ color:#666;
 			</div>  
 	
 				 <div class="col-lft li-1 All" style="border:1px solid #ccc; width:205px;">
-              
+             <c:forEach var="course" items="${courses}">
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Model thinking</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:12px; margin-top:-4px;"> <img src="images/programs/Model Thinking.jpg" width="162" height="97"/>
+                <p class="titles-info text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
+                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:12px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="162" height="97"/>
 				</p>
 				<div class="course_progress_bar_container" ><a href="#" rel="tipsy"  title="80%">
 					<div class="course_progress_bar" style="width: 80%" > </div></a>
@@ -502,6 +506,8 @@ color:#666;
                
 				</div>              
               </div>
+              </c:forEach>
+              
 			</div>  
 	 <div class="col-lft li-1 All" style=" width:110px;">
               
@@ -509,24 +515,7 @@ color:#666;
 			</div>  
 			<div class="col-lft li-1 All" style="border:1px solid #ccc; width:205px;">
               
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Dynamics of Creativity</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:12px; margin-top:-4px;"> <img src="images/programs/Dynamics of Creativity.jpg" width="162" height="97"/>
-				</p>
-				<div class="course_progress_bar_container" ><a href="#" rel="tipsy"  title="5%">
-					<div class="course_progress_bar" style="width: 5%" > </div></a>
-				</div>
-                <div class="icons-list">
-				
-                <a href="#" rel="tipsy" title="Observe Course" class="Icon-course icons-right"></a>
-				    <a href="#" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
-				   <a href="#linkurl" rel="tipsy" title="View Assignments  " class="Icon-view icons-left" style="margin-right:-2px;"></a>
-                 <a href="#linkurl" rel="tipsy" title="List View Calendar" class="Icon-Calendar3 icons-right"></a>
-                
-                
-               
-				</div>               
-              </div>
+              
 			</div>  
 			<div class="col-lft li-1 All" style=" width:120px;">
               
@@ -534,24 +523,7 @@ color:#666;
 			</div>  
 	<div class="col-lft li-1 All" style="border:1px solid #ccc; width:205px;">
               
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Behavioural Models</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:12px; margin-top:-4px;"> <img src="images/programs/Behavioural Models.jpg" width="162" height="97"/>
-				</p>
-				<div class="course_progress_bar_container" ><a href="#" rel="tipsy"  title="5%">
-					<div class="course_progress_bar" style="width: 5%" > </div></a>
-				</div>
-                <div class="icons-list">
-				
-                <a href="#" rel="tipsy" title="Observe Course" class="Icon-course icons-right"></a>
-				    <a href="#" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
-				   <a href="#linkurl" rel="tipsy" title="View Assignments " class="Icon-view icons-left" style="margin-right:-2px;"></a>
-                 <a href="#linkurl" rel="tipsy" title="List View Calendar" class="Icon-Calendar3 icons-right"></a>
-                
-                
-               
-				</div>                
-              </div>
+              
     </div>  
 	 
 	 
@@ -645,7 +617,7 @@ $('#edu-star').raty({
 						$(this).fadeOut(function() { $(this).fadeIn(); });
 					},
 					targetKeep	: true,
-					path:'images/img/',
+					path:'../resources/images/img/',
 					score		: 4,
 					cancel: true
 				});
@@ -661,7 +633,7 @@ $('#edu-star').raty({
         <!--End Footer Container-->
 </div>
      
-   <script type="text/javascript" src="js/widget/jquery-ui-personalized-1.6rc2.min.js"></script>
+   <script type="text/javascript" src="../resources/js/widget/jquery-ui-personalized-1.6rc2.min.js"></script>
    
    <style type="text/css">
 	.course_progress_bar_container{background: #EE5023; clear: both;}
