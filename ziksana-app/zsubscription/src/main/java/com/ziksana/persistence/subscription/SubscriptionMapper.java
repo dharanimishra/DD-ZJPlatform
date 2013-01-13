@@ -39,7 +39,12 @@ public interface SubscriptionMapper {
 	
 	public int deleteNote(Integer noteId);
 	
-	public int updateNote(@Param("noteId") Integer noteId,  @Param("desc") String desc, @Param("duration") int duration);
+	
+	public int deleteEducatorContent(Integer contentId);
+	
+	
+	
+	public int updateNote(@Param("noteId") Integer noteId,  @Param("desc") String desc, @Param("duration") int duration,@Param("title") String title);
 	
 	public List<LearningProgram> getLearningPrograms(Integer memberRoleId);
 	

@@ -95,7 +95,7 @@
 		select
 		cntenr.LinkElement,
 		cntenr.LinkDescription as NotesContent,
-		cnterr.duration
+		cntenr.duration
 		from
 		corcontentenrichment cntenr
 		JOIN
@@ -172,7 +172,10 @@
 
 		select
 		cntenr.LinkElement,
-		cntenr.duration
+		cntenr.duration,
+		cntenr.ContentEnrichmentId,
+		cntenr.parentContent
+		
 
 		from
 		corcontentenrichment
@@ -297,11 +300,16 @@
 		delete from
 		sbnsubscribernotes where SubcribeNotesId=#{noteId}
 	</delete>
+	
+	<delete id="deleteEducatorContent" parameterType="java.lang.Integer">
+	          delete from corcontentenrichment where ContentEnrichmentId=#{contentId}
+	</delete>
+	
 
 	<update id="updateNote" parameterType="map">
 
 		update sbnsubscribernotes
-		set NoteDescription=#{desc},NoteDuration=#{duration}
+		set NoteDescription=#{desc},NoteDuration=#{duration},NoteTitle=#{title}
 		where
 		SubcribeNotesId=#{noteId}
 
@@ -340,6 +348,8 @@
 
 		<result property="title" column="LinkElement" />
 		<result property="duration" column="duration" />
+		<result property="" column="" />
+		<result property="" column="parentContent" />
 
 	</resultMap>
 

@@ -45,6 +45,12 @@ public interface SubscriptionService {
 	public Integer addEducatorContent(Integer courseId, Integer componentId,Integer contentId, Integer contentType, String contentDesc);
 	
 	
+	public int deleteEducatorContent(Integer contentId);
+	
+	
+	
+	
+	
 	
 	
 
@@ -64,7 +70,7 @@ public interface SubscriptionService {
 	public int deleteLearnerContent(Integer learnerContentId);
 	
 	
-	public int updateLearnerContent(Integer learnerContentId, String description, int duration);
+	public int editLearnerContent(Integer learnerContentId, String description, int duration, String title);
 	
 	
 

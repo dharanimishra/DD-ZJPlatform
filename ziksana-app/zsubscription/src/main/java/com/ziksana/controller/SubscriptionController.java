@@ -234,5 +234,42 @@ public class SubscriptionController {
 		return Integer.valueOf(key);
 
 	}
+	
+	
+	@RequestMapping(value = "/deleteLearnerContent", method = RequestMethod.POST)
+	public @ResponseBody
+	Integer deleteLearnerContent(
+			@RequestParam(value = "contentId", required = true) String noteId
+			) {
+		
+		
+		return Integer.valueOf(subscriptionService.deleteLearnerContent(Integer.valueOf(noteId)));
+		
+		
+	}
+	
+	
+	@RequestMapping(value = "/editLearnerContent", method = RequestMethod.POST)
+	public @ResponseBody
+	Integer editLearnerContent(
+			@RequestParam(value = "contentId", required = true) String noteId,
+			@RequestParam(value = "contentTitle", required = true) String title,
+			@RequestParam(value = "contentDuration", required = true) String duration,
+			@RequestParam(value = "contentDescription", required = false) String desc
+			) {
+		
+		
+		return Integer.valueOf(subscriptionService.editLearnerContent(Integer.valueOf(noteId), desc, Integer.parseInt(duration), title));
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+
+	
 
 }

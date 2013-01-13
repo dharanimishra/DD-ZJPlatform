@@ -246,10 +246,16 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	}
 
 	@Override
-	public int updateLearnerContent(Integer learnerContentId,
-			String description, int duration) {
+	public int editLearnerContent(Integer learnerContentId,
+			String description, int duration, String title) {
 		// TODO Auto-generated method stub
-		return subscriptionMapper.updateNote(learnerContentId, description, duration);
+		return subscriptionMapper.updateNote(learnerContentId, description, duration,title);
+	}
+
+	@Override
+	public int deleteEducatorContent(Integer contentId) {
+		// TODO Auto-generated method stub
+		return subscriptionMapper.deleteEducatorContent(contentId);
 	}
 
 }

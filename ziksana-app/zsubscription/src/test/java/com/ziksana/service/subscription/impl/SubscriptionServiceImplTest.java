@@ -170,11 +170,18 @@ public class SubscriptionServiceImplTest {
 	}
 	
 	@Test
-	public void testUpdateLearnerContent() {
-		int rowsAffected = subscriptionService.updateLearnerContent(1, "test desc", 3);
+	public void testEditLearnerContent() {
+		int rowsAffected = subscriptionService.editLearnerContent(1, "test desc", 3,"title");
 		assertTrue(rowsAffected==1);
 	}
 	
+	
+	@Test
+	public void testDeleteEducatorContent() {
+		int rowsAffected = subscriptionService.deleteEducatorContent(Integer.valueOf(1000));
+		assertTrue(rowsAffected==0);
+		
+	}
 	
 
 }
