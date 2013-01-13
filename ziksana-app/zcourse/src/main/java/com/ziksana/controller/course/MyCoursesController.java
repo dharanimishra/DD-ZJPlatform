@@ -90,6 +90,8 @@ public class MyCoursesController {
 					.getCoursesByLearningProgram(Integer.valueOf(program
 							.getLearningProgramId().getStorageID()));
 
+			System.out.println(" TOTAL NUMBER OF COURSES IS  "+courses.size());
+			System.out.println(" THE COURSE NAME IS   "+courses.get(0).getName() );
 			ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
 			mvLearner.addObject("program", program.getName());
 			mvLearner.addObject("courses", courses);

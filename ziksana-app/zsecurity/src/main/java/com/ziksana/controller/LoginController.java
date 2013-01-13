@@ -94,8 +94,19 @@ public class LoginController {
 				{
 					memberPersonaId.setStorageID(memberPersona.getMemberRoleId().toString());
 					roleType = MemberRoleType.EDUCATOR;
+					break;
 					
 				}
+				else
+				{
+					memberPersonaId.setStorageID(memberPersona.getMemberRoleId().toString());
+					roleType = MemberRoleType.LEARNER;
+					break;
+					
+				}
+				
+				
+				
 					
 				
 			}
