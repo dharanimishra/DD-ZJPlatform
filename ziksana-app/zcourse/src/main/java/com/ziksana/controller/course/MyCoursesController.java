@@ -91,7 +91,7 @@ public class MyCoursesController {
 							.getLearningProgramId().getStorageID()));
 
 			ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
-			mvLearner.addObject("program", program);
+			mvLearner.addObject("program", program.getName());
 			mvLearner.addObject("courses", courses);
 
 			// TODO need to implement learner my programs...

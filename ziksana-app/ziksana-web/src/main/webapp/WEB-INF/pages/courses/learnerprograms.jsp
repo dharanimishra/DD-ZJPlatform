@@ -365,7 +365,7 @@ color:#666;
 		<div class="col-stud" style="border:1px solid #ccc;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning Program 1</p>
+                <p class="titles-info text-size-px18 font-Signika blue uppercase">${program}</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;"> Learning Programs </span> Defines the Curriculum necessary to meet the Learning Objectives..</p>
                 <p class="number-creat-boxs f-r font-Signika bold for-rounded-box" style="margin-top:10px;">3</p>

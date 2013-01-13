@@ -211,6 +211,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	@Override
 	public List<LearningProgram> getLearningPrograms() {
+		
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 		
