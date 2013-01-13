@@ -40,4 +40,8 @@ public interface CourseTreeNodeService {
 
 	List<TreeNode> getTreeContentComponents(Integer courseId);
 
+	List<TreeNode> getModuleComponents(Integer courseId);
+
+	List<TreeNode> getModuleContents(Integer courseId);
+
 }

@@ -28,28 +28,54 @@ public class AddNewInfoController {
 	@Autowired
 	CourseService courseService;
 
-	@RequestMapping(value = "/saveAddnlInfo", method = RequestMethod.POST)
+	@RequestMapping(value = "/getAddnlInfo", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView getAddnlInfo() throws CourseException {
+		LOGGER.info("Entering Class " + getClass() + " getAddnlInfo()");
+		ModelAndView mv = new ModelAndView("courses/AddNewInformation");
+		LOGGER.info("Exiting Class " + getClass() + " getAddnlInfo(): ");
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/saveAddnlInfo", method = { RequestMethod.GET,
+			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView saveAddnlInfo(
-			@RequestParam CourseAdditionalProperty courseAdditionalProperty)
+			@RequestParam(value = "new_Info", required = true) String new_Info,
+			@RequestParam(value = "info_Description", required = false) String info_Description,
+			@RequestParam(value = "info_Descriptiondate", required = false) String info_Descriptiondate,
+			@RequestParam(value = "info_Descriptiontext", required = false) String info_Descriptiontext)
 			throws CourseException {
+
+		CourseAdditionalProperty courseAdditionalProperty = new CourseAdditionalProperty(
+				null, info_Description, null, info_Descriptiontext);
+
 		LOGGER.info("Entering Class " + getClass() + " showCourse()");
 		courseService.saveAdditionalCourseProperty(courseAdditionalProperty);
 
-		ModelAndView mv = new ModelAndView("courses/createcourses");
+		ModelAndView mv = new ModelAndView("courses/AddNewInformation");
 		LOGGER.info("Exiting Class " + getClass() + " showCourse(): ");
 
 		return mv;
 	}
 
-	@RequestMapping(value = "/updateAddnlInfo", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateAddnlInfo", method = { RequestMethod.GET,
+			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView updateAddnlInfo(
-			@RequestParam CourseAdditionalProperty courseAdditionalProperty)
+			@RequestParam(value = "new_Info", required = true) String new_Info,
+			@RequestParam(value = "info_Description", required = false) String info_Description,
+			@RequestParam(value = "info_Descriptiondate", required = false) String info_Descriptiondate,
+			@RequestParam(value = "info_Descriptiontext", required = false) String info_Descriptiontext)
 			throws CourseException {
+
+		CourseAdditionalProperty courseAdditionalProperty = new CourseAdditionalProperty(
+				null, info_Description, null, info_Descriptiontext);
 		LOGGER.info("Entering Class " + getClass() + " showCourse()");
 		courseService.saveAdditionalCourseProperty(courseAdditionalProperty);
-		ModelAndView mv = new ModelAndView("courses/createcourses");
+		ModelAndView mv = new ModelAndView("courses/AddNewInformation");
 		LOGGER.info("Exiting Class " + getClass() + " showCourse(): ");
 
 		return mv;
@@ -65,5 +91,4 @@ public class AddNewInfoController {
 
 		return mv;
 	}
-
 }

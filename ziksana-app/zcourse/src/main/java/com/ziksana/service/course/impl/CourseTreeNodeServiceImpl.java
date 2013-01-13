@@ -35,7 +35,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 	@Autowired
 	public CourseTreeNodeMapper courseTreeNodeMapper;
 
-	
 	@Override
 	public List<CourseLearningComponent> getLearningComponents(Integer courseId) {
 		LOGGER.debug("Entering Class :" + getClass()
@@ -153,7 +152,8 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getCourseComponents(Integer courseId)"
 				+ courseId);
-		List<TreeNode> list = courseTreeNodeMapper.getParentTreeComponents(courseId);
+		List<TreeNode> list = courseTreeNodeMapper
+				.getParentTreeComponents(courseId);
 		LOGGER.debug("Exiting Class :" + getClass()
 				+ " Method Name :getCourseComponents(Integer courseId)");
 		return list;
@@ -164,7 +164,8 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getTreeContentComponents(Integer courseId)"
 				+ courseId);
-		List<TreeNode> list = courseTreeNodeMapper.getTreeContentComponents(courseId);
+		List<TreeNode> list = courseTreeNodeMapper
+				.getTreeContentComponents(courseId);
 		LOGGER.debug("Exiting Class :" + getClass()
 				+ " Method Name :getTreeContentComponents(Integer courseId)");
 
@@ -175,5 +176,32 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 	public Course getCourseComponents(Integer courseId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<TreeNode> getModuleComponents(Integer courseId) {
+		LOGGER.debug("Entering Class :" + getClass()
+				+ " Method Name :getModuleComponents(Integer courseId)"
+				+ courseId);
+		List<TreeNode> list = courseTreeNodeMapper
+				.getModuleComponents(courseId);
+		LOGGER.debug("Exiting Class :" + getClass()
+				+ " Method Name :getModuleComponents(Integer courseId)");
+		return list;
+	}
+
+	@Override
+	public List<TreeNode> getModuleContents(Integer learningComponentId) {
+		LOGGER.debug("Entering Class :"
+				+ getClass()
+				+ " Method Name :getModuleContents(Integer learningComponentId)"
+				+ learningComponentId);
+		List<TreeNode> list = courseTreeNodeMapper
+				.getModuleContents(learningComponentId);
+
+		LOGGER.debug("Exiting Class :"
+				+ getClass()
+				+ " Method Name :getModuleContents(Integer learningComponentId)");
+		return list;
 	}
 }

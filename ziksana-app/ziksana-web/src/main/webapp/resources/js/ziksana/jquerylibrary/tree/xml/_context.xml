@@ -1,0 +1,12 @@
+<?xml version='1.0' ?>
+<menu id="1">
+		<item text="Add Module" img="plus.png"  id="Add_Module"></item>	
+		<item text="Search and Add Module" img="find.png"  id="Search_Add_Module"></item>	
+		<item text="Define Qualifiers" img="define.png"  id="Define_Qualifiers"></item>	
+		<item text="Edit" img="edit.png" id="Edit"></item>
+		<item text="View" img="view.png"  id="RootView"></item>
+		<item text="View" img="view.png"  id="View"></item>	
+		<item text="Delete" img="cross.png"  id="Delete"></item>	
+	
+</menu>
+

@@ -3,7 +3,9 @@
  */
 package com.ziksana.service.course;
 
-import java.util.Map;
+import java.util.List;
+
+import com.ziksana.domain.course.Option;
 
 /**
  * @author ratneshkumar Dec 15, 2012
@@ -12,10 +14,10 @@ import java.util.Map;
  */
 public interface CourseSubjectDetailService {
 
-	Map<String, String> getSubjectCategory();
+	List<Option> getSubjectCategory();
 
-	Map<String, String> getSubjectArea(String subjectArea);
+	List<Option> getSubjectArea(String subjectArea);
 
-	Map<String, String> getSubjectTopic(String subjectTopic);
+	List<Option> getSubjectTopic(String subjectTopic);
 
 }

@@ -3,6 +3,7 @@ package com.ziksana.controller.course;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,13 +19,13 @@ public class AssociateCourseController {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(AssociateCourseController.class);
 
-	@RequestMapping(value = "/associatecontent", method = RequestMethod.GET)
+	@RequestMapping(value = "/associatecontent/{courseId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView showAssociateCourse() {
+	ModelAndView showAssociateCourse(@PathVariable String courseId) {
 		LOGGER.info("Entering showAssociateCourse(): ");
 		ModelAndView mv = new ModelAndView("courses/associatecontent");
 
 		return mv;
 	}
-
 }

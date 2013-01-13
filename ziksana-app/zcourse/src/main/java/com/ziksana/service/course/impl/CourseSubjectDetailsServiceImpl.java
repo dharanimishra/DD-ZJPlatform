@@ -1,13 +1,12 @@
-/**
- * 
- */
+
 package com.ziksana.service.course.impl;
 
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ziksana.domain.course.Option;
 import com.ziksana.persistence.course.CourseSubjectDetailMapper;
 import com.ziksana.service.course.CourseSubjectDetailService;
 
@@ -31,12 +30,11 @@ public class CourseSubjectDetailsServiceImpl implements
 	 * ()
 	 */
 	@Override
-	public Map<String, String> getSubjectCategory() {
+	public List<Option> getSubjectCategory() {
 		// TODO Auto-generated method stub
 
-		Map<String, String> map = courseSubjectDetailMapper
-				.getSubjectCategory();
-		return map;
+		List<Option> list = courseSubjectDetailMapper.getSubjectCategory();
+		return list;
 	}
 
 	/*
@@ -47,10 +45,10 @@ public class CourseSubjectDetailsServiceImpl implements
 	 * java.lang.Integer)
 	 */
 	@Override
-	public Map<String, String> getSubjectArea(String subjectArea) {
-		Map<String, String> map = courseSubjectDetailMapper
+	public List<Option> getSubjectArea(String subjectArea) {
+		List<Option> list = courseSubjectDetailMapper
 				.getSubjectArea(subjectArea);
-		return map;
+		return list;
 	}
 
 	/*
@@ -61,10 +59,10 @@ public class CourseSubjectDetailsServiceImpl implements
 	 * (java.lang.Integer)
 	 */
 	@Override
-	public Map<String, String> getSubjectTopic(String subjectTopic) {
-		Map<String, String> map = courseSubjectDetailMapper
+	public List<Option> getSubjectTopic(String subjectTopic) {
+		List<Option> list = courseSubjectDetailMapper
 				.getSubjectTopic(subjectTopic);
-		return map;
+		return list;
 	}
 
 }
