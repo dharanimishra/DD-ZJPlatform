@@ -268,12 +268,12 @@ span.standartTreeRow:hover {
 						<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
-								<li><a href="/ziksana-web/secure/createcourse/"
+								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<li><a href="/ziksana-web/secure/associatecontent/123"
+								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
-								<li><a href="/ziksana-web/secure/enrichcontent"
+								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a href="#" style="width: 130px; text-align: center;">4.
 										Define Assignment</a></li>
@@ -302,7 +302,8 @@ span.standartTreeRow:hover {
 								style="margin-right: -257px; margin-bottom: 4px; clear: both;">Edit
 								Course Details </a>
 						</div>
-						<br> <br> <input type="hidden" id="courseid" value="" />
+						
+						<br> <br> <input type="hidden" id="courseid" value="${courseId}" />
 						<input type="hidden" id="courseLearningComponentId" value="" />
 						<style>
 #splitter {
@@ -1008,10 +1009,12 @@ var s = $('#Duration').spinit({ height: 20, width: 30, min: 0, initValue: 0, max
 													type="button" class="btn btn-info" value="Submit"
 													style="float: right; margin-right: 20px;" /> <br /> <br />
 											</form>
+											
 
 										</div>
 
 									</div>
+									<a href="/ziksana-web/secure/associatecontent/${courseId}" style="float: right; margin-bottom: 20px; margin-top: 20px;" class="btn btn-info">Save and Continue</a>
 									<!-- End of viewmodelthinking -->
 
 									<!-- start view modelthinking 2 -->

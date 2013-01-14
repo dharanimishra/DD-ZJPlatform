@@ -1,7 +1,3 @@
-<%@page contentType="text/html;charset=UTF-8"%>
-<%@page pageEncoding="UTF-8"%>
-<%@ page session="false"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -275,12 +271,12 @@ span.standartTreeRow:hover {
 						<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
-								<li><a href="/ziksana-web/secure/createcourse"
+								<li><a href="//ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<li><a href="/ziksana-web/secure/associatecontent"
+								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
-								<li><a href="/ziksana-web/secure/enrichcontent"
+								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a href="#" style="width: 130px; text-align: center;">4.
 										Define Assignment</a></li>
@@ -320,7 +316,7 @@ span.standartTreeRow:hover {
 								<!----------------- start of first container --------------->
 								<div class="_coursename">
 									<div class="control-group">
-										<input type="hidden" id="courseid" value="100" /> <label
+										<input type="hidden" id="courseid" value="" /> <label
 											class="control-label labelclass " for="CourseName"
 											style="margin-top: -4px; font-weight: bold;">Course
 											Name :</label>
@@ -1225,9 +1221,9 @@ $("#cancellink").click(function (event) {
 																Description :</label>
 															<textarea class="_plainTextShow labelclass defaultvalue"
 																cols="90" rows="13" style="resize: none;">We live in a complex world with diverse people, firms, and governments whose behaviors aggregate to produce novel, unexpected phenomena. We see political uprisings, market crashes, and a never ending array of social trends. How do we make sense of it?
-Models. Evidence shows that people who think with models consistently outperform those who donât. And, moreover people who think with lots of models outperform people who use only one.
+Models. Evidence shows that people who think with models consistently outperform those who don’t. And, moreover people who think with lots of models outperform people who use only one.
 Why do models make us better thinkers?
-Models help us to better organize information â to make sense of that fire hose or hairball of data (choose your metaphor) available on the Internet. Models improve our abilities to make accurate forecasts. They help us make better decisions and adopt more effective strategies. They even can improve our ability to design institutions and procedures. In this class, I present a starter kit of models: I start with models of tipping points. I move on to cover models explain the wisdom of crowds, models that show why some countries are rich and some are poor, and models that help unpack the strategic decisions of firm and politicians.</textarea>
+Models help us to better organize information – to make sense of that fire hose or hairball of data (choose your metaphor) available on the Internet. Models improve our abilities to make accurate forecasts. They help us make better decisions and adopt more effective strategies. They even can improve our ability to design institutions and procedures. In this class, I present a starter kit of models: I start with models of tipping points. I move on to cover models explain the wisdom of crowds, models that show why some countries are rich and some are poor, and models that help unpack the strategic decisions of firm and politicians.</textarea>
 
 														</div>
 														<!-- end of coursename--->
@@ -1397,9 +1393,9 @@ Models help us to better organize information â to make sense of that fire 
 																Description :</label>
 															<textarea class="_plainTextShow labelclass defaultvalue"
 																cols="90" rows="13" readonly style="resize: none;">We live in a complex world with diverse people, firms, and governments whose behaviors aggregate to produce novel, unexpected phenomena. We see political uprisings, market crashes, and a never ending array of social trends. How do we make sense of it?
-Models. Evidence shows that people who think with models consistently outperform those who donât. And, moreover people who think with lots of models outperform people who use only one.
+Models. Evidence shows that people who think with models consistently outperform those who don’t. And, moreover people who think with lots of models outperform people who use only one.
 Why do models make us better thinkers?
-Models help us to better organize information â to make sense of that fire hose or hairball of data (choose your metaphor) available on the Internet. Models improve our abilities to make accurate forecasts. They help us make better decisions and adopt more effective strategies. They even can improve our ability to design institutions and procedures. In this class, I present a starter kit of models: I start with models of tipping points. I move on to cover models explain the wisdom of crowds, models that show why some countries are rich and some are poor, and models that help unpack the strategic decisions of firm and politicians.</textarea>
+Models help us to better organize information – to make sense of that fire hose or hairball of data (choose your metaphor) available on the Internet. Models improve our abilities to make accurate forecasts. They help us make better decisions and adopt more effective strategies. They even can improve our ability to design institutions and procedures. In this class, I present a starter kit of models: I start with models of tipping points. I move on to cover models explain the wisdom of crowds, models that show why some countries are rich and some are poor, and models that help unpack the strategic decisions of firm and politicians.</textarea>
 
 														</div>
 														<!-- end of coursename--->

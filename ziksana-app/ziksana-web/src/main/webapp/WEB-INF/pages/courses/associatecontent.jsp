@@ -112,6 +112,12 @@
 		jQuery("#Associatequalifier").validationEngine();
 	});
 </script>
+<link rel="stylesheet" type="text/css"
+	href="/ziksana-web/resources/css/uploadify.css" />
+<script type="text/javascript" src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
+	<style type="text/css">
+		#message {padding: 1em 0; color: steelblue;}
+	</style>
 <style>
 .jqx-widget-content {
 	-moz-background-clip: padding;
@@ -272,12 +278,12 @@ span.standartTreeRow:hover {
 						<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
-								<li><a href="definecourse.html"
+								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<li><a href="associatecontent.html"
+								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
-								<li><a href="defineenrich.html"
+								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a href="defineassignment.html"
 									style="width: 130px; text-align: center;">4. Define
@@ -304,7 +310,7 @@ span.standartTreeRow:hover {
 
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 						</div>
-						<br> <br> <input type="hidden" id="courseid" value="COURSE_150" />
+						<br> <br> <input type="hidden" id="courseid" value="${courseId}" />
 						<input type="hidden" id="courseLearningComponentId" value="" /> <input
 							type="hidden" id="learningComponentId" value="" /> <input
 							type="hidden" id="learningContentId" value="" />
@@ -467,9 +473,45 @@ span.standartTreeRow:hover {
 														align="left" /><label
 														class="control-label labelclass validate[required]"
 														for="uploadimage" style="margin-top: -2px;">Upload
-														any Image for the Content : </label> <input type="file"
+														the Content (mp4/mp3/doc/docx/ppt/pptx/pdf): </label> 
+														
+														<div id="message"></div>
+														<div id="loaderText"></div>
+														<input type="file" name="file_upload" id="file_upload" />
+														<div id="status"></div>
+	<script type="text/javascript">
+	$(function() {
+		$('#file_upload').uploadify({
+			'swf'      : '/ziksana-web/resources/swf/uploadify.swf',
+			'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+			'onUploadSuccess' : function(file, data, response) {
+            		//alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+            		$('#message').html('The file ' + file.name + ' was uploaded. <br/>Upload Happened = ' + response + '<br/>Post Upload Processing Response from Server:' + data);
+					
+
+            			if(data != 'Invalid file type.' || data != 'SoapServer Error' ) {
+            			//var session_id = '<?php echo session_id(); ?>';
+            			// parseXML(data);
+            			//window.location.href = '/zikload-xml/display.php?'+data+'&session_id='+session_id;
+            			// window.location.href = '/zikload-xml/lbplayer.php?'+data+'&session_id='+session_id;
+            		
+            				$('#message').html('The file ' + file.name + ' was uploaded. <br/>Upload Happened = ' + response + '<br/>Post Upload Processing Response from Server:' + data);
+        					
+            				if(data == '1'){ //which means db row is successfully updated
+            					//submit the form.
+            					$('#btnsbtassoccontent').click();
+            				}
+            			}
+        	}
+			// Your options here
+		});
+	});
+	</script>
+														
+														
+														<!-- <input type="file"
 														class="labelclass" id="imgultype" tabindex="9"
-														onChange="fnCheckExt(this)" />
+														onChange="fnCheckExt(this)" /> -->
 													<script>
 														
 													</script>
@@ -752,9 +794,9 @@ span.standartTreeRow:hover {
 								</div>
 								<!-- Content Panel End -->
 
-								<a class="btn btn-info"
+								<a class="btn btn-info" href="/ziksana-web/secure/enrich/${courseId}"
 									style="float: right; margin-bottom: 20px; margin-top: 20px;"
-									id="saveBottom">Save and Continue</a>
+									id="">Save and Continue</a>
 
 
 
@@ -821,6 +863,8 @@ span.standartTreeRow:hover {
 		<!--End Footer Container-->
 	</div>
 
-
+<style rel="text/css">
+#SWFUpload_1 {left:0; cursor: pointer; top: 2px;}
+</style>
 </body>
 </html>

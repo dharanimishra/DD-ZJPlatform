@@ -111,11 +111,11 @@ function createtree(course_id) {
 		// tree._selected();
 
 		node_type = itemId.split('_')[0];
-		if(node_type = "COMPONENT"){
+		if (node_type = "COMPONENT") {
 			$('#courseLearningComponentId').val(itemId);
 		}
 		console.log(itemId);
-	
+
 		tree.selectItem(itemId, false);
 		var id = tree.getSelectedItemId();
 		// alert(id);
@@ -141,11 +141,8 @@ function createtree(course_id) {
 	tree.setImageArrays("minus", "minus_ar.png", "minus_ar.png",
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
 
-	
-	 courseId = course_id.split('_')[1];
-	 tree.loadXML("/ziksana-web/secure/getparenttree/"+courseId);
-
-	//tree.loadXML("/ziksana-web/secure/getparenttree/150");
+	courseId = course_id.split('_')[1];
+	tree.loadXML("/ziksana-web/secure/getparenttree/" + courseId);
 
 }
 

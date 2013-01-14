@@ -83,11 +83,11 @@ $(document).ready(
 			$('#type-3').hide();
 
 			$('#q_type').change(function() {
-				if ($('#q_type').val() == "Upload Content") {
+				if ($('#q_type').val() == "UploadContent") {
 					$('#type-1').fadeIn("slow");
 					$('#type-2').hide();
 					$('#type-3').hide();
-				} else if ($('#q_type').val() == "External WebPage") {
+				} else if ($('#q_type').val() == "ExternalWebPage") {
 
 					$('#type-2').fadeIn("slow");
 					$('#type-1').hide();
@@ -95,7 +95,7 @@ $(document).ready(
 
 				}
 
-				else if ($('#q_type').val() == "Create Content") {
+				else if ($('#q_type').val() == "CreateContent") {
 					$('#type-3').fadeIn("slow");
 					$('#type-1').hide();
 					$('#type-2').hide();

@@ -234,7 +234,7 @@ function createtree(course_id) {
 
 		// tree.selectItem(id,true);
 
-		if (node_type == "COMPONENT" || node_type == "CONTENT") {
+		if (node_type == "COMPONENT"){
 			// alert(tree.contextID);
 			menu.hideItem('Delete');
 			menu.hideItem('View');
@@ -243,7 +243,8 @@ function createtree(course_id) {
 			menu.showItem('Associate_Content');
 			menu.showItem('Search_Associate_Content');
 
-		} else {
+		}
+		else {
 			// alert(tree.contextID);
 			menu.hideItem('Associate_Content');
 			menu.hideItem('Search_Associate_Content');

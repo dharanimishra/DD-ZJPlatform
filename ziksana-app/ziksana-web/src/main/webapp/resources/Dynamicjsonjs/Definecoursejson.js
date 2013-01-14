@@ -276,7 +276,7 @@ function getdefinecoursesave() {
 	sendMessage(uri, token, parameters, request_type, successCallback,
 			errorCallback);
 
-	//alert("Course Request Sended..");
+	alert("Course Request Sended..");
 
 }
 
@@ -308,6 +308,8 @@ function noteSuccessCallback(data) {
 }
 
 function onSuccessfulCourseCreation(data) {
+	
 	course_id = data.id;
+	$('#courseid').val(course_id);
 	window.location.href = "/ziksana-web/secure/createmodule/" + course_id;
 }
