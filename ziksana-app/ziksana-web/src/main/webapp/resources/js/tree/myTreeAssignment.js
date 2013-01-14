@@ -29,13 +29,7 @@
 //				
 //            });
 				
-			$(".cancellinkdefineassignment").click(function(e) {
-                $("#vwassignment").hide();
-				$("#vwaddtest").hide();
-				$("#vwassociate").hide();
-                $("#vwdefine").hide();
-				$("#editassignment").hide();
-            });
+			
 			$(window).scrollTop(0,0);
 
 

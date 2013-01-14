@@ -276,14 +276,13 @@ function getdefinecoursesave() {
 	sendMessage(uri, token, parameters, request_type, successCallback,
 			errorCallback);
 
-	alert("Course Request Sended..");
+	//alert("Course Request Sended..");
 
 }
 
 function noteSuccessCallback(data) {
 
 	var msgbody = parseZiksanaMessage(data);
-
 	course_id = msgbody.id;
 	note_title = msgbody.title;
 	note_description = msgbody.description;

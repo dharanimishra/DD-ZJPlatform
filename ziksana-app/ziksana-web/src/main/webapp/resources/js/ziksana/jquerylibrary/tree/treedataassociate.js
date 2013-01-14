@@ -178,7 +178,11 @@ function fixImage(id) {
 	}
 }
 
-function createtree() {
+function createtree(course_id) {
+	
+	if (course_id == '' || course_id == null) {
+		return false;
+	}
 
 	menu = new dhtmlXMenuObject();
 	menu
@@ -256,7 +260,9 @@ function createtree() {
 	tree.setImageArrays("minus", "minus_ar.png", "minus_ar.png",
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
 	// tree.loadXML("/ziksana-web/resources/js/ziksana/jquerylibrary/tree/xml/treemodel.xml");
-	tree.loadXML("/ziksana-web/secure/getchildtree/150");
+	//tree.loadXML("/ziksana-web/secure/getchildtree/150");
+	 courseId = course_id.split('_')[1];
+	 tree.loadXML("/ziksana-web/secure/getchildtree/"+courseId);
 
 }
 
@@ -264,7 +270,7 @@ $(document).ready(
 		function(e) {
 			var id = null;
 			var extimg = null;
-			createtree();
+			createtree($('#courseid').val());
 			function createnode() {
 
 				var im0 = "tree.png"; // the icon for a leaf node

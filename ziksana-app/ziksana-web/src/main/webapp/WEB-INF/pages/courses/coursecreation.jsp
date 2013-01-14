@@ -302,7 +302,7 @@ span.standartTreeRow:hover {
 								style="margin-right: -257px; margin-bottom: 4px; clear: both;">Edit
 								Course Details </a>
 						</div>
-						<br> <br> <input type="hidden" id="courseid" value="COURSE_150" />
+						<br> <br> <input type="hidden" id="courseid" value="" />
 						<input type="hidden" id="courseLearningComponentId" value="" />
 						<style>
 #splitter {
