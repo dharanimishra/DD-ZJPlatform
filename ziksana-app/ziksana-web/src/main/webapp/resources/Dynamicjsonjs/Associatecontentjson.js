@@ -259,6 +259,14 @@ function getAssociateContentSave() {
 
 	var ContentDesc = $('#q_typecdesdcrte').val();
 
+	var ContentPath = $('#ContentPath').val();
+
+	var ThumbnailPicturePath = $('#ThumbnailPicturePath').val();
+
+	var NumberOfThumbnails = $('#NumberOfThumbnails').val();
+
+	var ContentType = $('#ContentType').val();
+
 	var parameters = {
 		"Course_id" : Course_id,
 		"LearningComponentId" : LearningComponentId,
@@ -273,7 +281,11 @@ function getAssociateContentSave() {
 		"LinkType" : LinkType,
 		"ContentUpload" : ContentUpload,
 		"ContentUrl" : ContentUrl,
-		"ContentDesc" : ContentDesc
+		"ContentDesc" : ContentDesc,
+		"ContentPath" : ContentPath,
+		"ThumbnailPicturePath" : ThumbnailPicturePath,
+		"NumberOfThumbnails" : NumberOfThumbnails,
+		"ContentType" : ContentType
 
 	};
 

@@ -78,8 +78,9 @@ function fixImage(id) {
 function createtree() {
 
 	menu = new dhtmlXMenuObject();
+	
 	menu
-			.setIconsPath("/ziksana-web/resources/js/ziksana/jquerylibrary/tree/treeimages/images/");
+			.setIconsPath("");
 	menu.renderAsContextMenu();
 	menu.attachEvent("onClick", onButtonClick);
 	menu

@@ -2,7 +2,7 @@ $(document).ready(
 
 		function() {
 
-
+			$('#videoSection, #video_actions').css('visibility', 'hidden');
 
 			// var theme = getTheme();
 
@@ -220,7 +220,8 @@ $(document).ready(
 
 				source : records,
 
-				width : '300px'
+				width : '320px',
+				
 
 			});
 

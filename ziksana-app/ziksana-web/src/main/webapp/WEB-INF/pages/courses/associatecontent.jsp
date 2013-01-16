@@ -311,11 +311,15 @@ span.standartTreeRow:hover {
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 						</div>
 						<br> <br> <input type="hidden" id="courseid" value="${courseId}" />
-						<input type="hidden" id="courseLearningComponentId" value="" /> <input
-							type="hidden" id="learningComponentId" value="" /> <input
-							type="hidden" id="learningContentId" value="" />
+						<input type="hidden" id="courseLearningComponentId" value="" /> 
+						<input type="hidden" id="learningComponentId" value="" /> 
+						<input type="hidden" id="learningContentId" value="" />	
+						<input type="text" id="ContentPath" name="ContentPath" value="" />					
+						<input type="text" id="ThumbnailPicturePath" name="ThumbnailPicturePath" value=""/>					
+						<input type="text" id="NumberOfThumbnails" name="NumberOfThumbnails" value=""/>					
+						<input type="text" id="ContentType" name="ContentType" value=""/>		
 
-						<style>
+						<style type="text/css">
 #splitter {
 	width: 975px;
 	height: auto;
@@ -484,37 +488,32 @@ span.standartTreeRow:hover {
 		$('#file_upload').uploadify({
 			'swf'      : '/ziksana-web/resources/swf/uploadify.swf',
 			'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+			'debug': true,
+			//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 			'onUploadSuccess' : function(file, data, response) {
-            		//alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
-            		$('#message').html('The file ' + file.name + ' was uploaded. <br/>Upload Happened = ' + response + '<br/>Post Upload Processing Response from Server:' + data);
+				json_string = data;
+				data_object = $.parseJSON(json_string);
+				console.log(data_object);
+				if(data_object.Uploaded == 'true'){
+					console.log('inside true');
+					//$('#message').html(data_object);
+					$('#ContentPath').val(data_object.ContentPath);
+					$('#ThumbnailPicturePath').val(data_object.ThumbnailPicturePath);
+					$('#NumberOfThumbnails').val(data_object.NumberOfThumbnails);
+					$('#ContentType').val(data_object.ContentType);
 					
+				} else { //there is an error in the upload process
+					
+					$('#message').html(data_object.message);
+				}
 
-            			if(data != 'Invalid file type.' || data != 'SoapServer Error' ) {
-            			//var session_id = '<?php echo session_id(); ?>';
-            			// parseXML(data);
-            			//window.location.href = '/zikload-xml/display.php?'+data+'&session_id='+session_id;
-            			// window.location.href = '/zikload-xml/lbplayer.php?'+data+'&session_id='+session_id;
-            		
-            				$('#message').html('The file ' + file.name + ' was uploaded. <br/>Upload Happened = ' + response + '<br/>Post Upload Processing Response from Server:' + data);
-        					
-            				if(data == '1'){ //which means db row is successfully updated
-            					//submit the form.
-            					$('#btnsbtassoccontent').click();
-            				}
-            			}
         	}
 			// Your options here
 		});
 	});
 	</script>
 														
-														
-														<!-- <input type="file"
-														class="labelclass" id="imgultype" tabindex="9"
-														onChange="fnCheckExt(this)" /> -->
-													<script>
-														
-													</script>
+			
 												</div>
 												<!----- end of type=1 --->
 

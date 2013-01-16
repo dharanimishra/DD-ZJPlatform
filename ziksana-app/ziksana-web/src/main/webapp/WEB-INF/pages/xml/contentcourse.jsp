@@ -4,4 +4,4 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-{"id":"150","title": "Save Course","description":"Saving the whole page"}
+{"id":"COURSE_${CourseId}","title": "Save Course","description":"Saving the whole page"}

@@ -10,7 +10,7 @@
 	<id>COURSE_${courseIds}</id>
 	<parentId>-1</parentId>
 	<title>${coursename}</title> 
-	<icon>../resources/images/tree_icons/course.png</icon> 
+	<icon>/ziksana-web/resources/images/tree_icons/course.png</icon> 
 	<expanded>true</expanded>
 </node>
 
