@@ -12,30 +12,47 @@
 
 	<select id="getAllRecommendations" resultMap="recommendationResultMap"
 		parameterType="int">
-
-		SELECT * FROM memmemberziksanarecommendation where memberRoleId =
-		#{memberRoleId} order by creationdate desc
+			SELECT * ,l.LookupValue as Recommendation
+ 		   FROM memmemberziksanarecommendation n
+ 
+			join utllookupvalue l ON
+		    n.RecommendationCategory=l.LookupValueId 
+		   join utllookup v ON
+		  l.LookupId=v.LookupId 
+			where memberRoleId =#{memberRoleId} order by n.CreationDate desc
 	</select>
 
 	<select id="getMapperRecommendation" resultMap="recommendationResultMap"
 		parameterType="int">
 
-		SELECT * FROM memmemberziksanarecommendation where memberRoleId =
-		#{memberRoleId} order by creationdate desc
+		SELECT * ,l.LookupValue as Recommendation
+ 		   FROM memmemberziksanarecommendation n
+ 
+			join utllookupvalue l ON
+		    n.RecommendationCategory=l.LookupValueId 
+		   join utllookup v ON
+		  l.LookupId=v.LookupId 
+			where memberRoleId =#{memberRoleId} order by n.CreationDate desc
 	</select>
 
 	<select id="getRecommendationByRecommendationId" resultMap="recommendationResultMap"
 		parameterType="map">
-
-		SELECT * FROM memmemberziksanarecommendation where
-		MemziksanaRecommendationId = #{recommendationId} and memberRoleId =
-		#{memberRoleId}
+			SELECT * ,l.LookupValue as Recommendation
+ 		   FROM memmemberziksanarecommendation n
+ 
+			join utllookupvalue l ON
+		    n.RecommendationCategory=l.LookupValueId 
+		   join utllookup v ON
+		  l.LookupId=v.LookupId 
+			where memberRoleId =#{memberRoleId} and ID = #{recommendationId}  order by n.CreationDate desc
+			
+		
 	</select>
 
 
 	<resultMap id="recommendationResultMap"
 		type="com.ziksana.domain.recommendations.Recommendation">
-		<result property="ID" column="MemziksanaRecommendationId" />
+		<result property="ID" column="ID" />
 		<result property="title" column="Title" />
 		<result property="description" column="Description" />
 		<result property="category" column="RecommendationCategory" />
@@ -58,15 +75,20 @@
 	<update id="updateRecommendationsCategoryById" parameterType="map">
 		update memmemberziksanarecommendation set RecommendationCategory =
 		#{category}, IgnoreCount = #{ignoreCount} where
-		MemziksanaRecommendationId = #{recommendationId}
+		ID = #{recommendationId}
 
 	</update>
 
 	<select id="getAllRecommendationsList" resultMap="recommendationResultMap"
 		parameterType="int">
-		SELECT * FROM memmemberziksanarecommendation where
-		memberRoleId = #{memberRoleId} order by
-		creationDate desc
+		SELECT * ,l.LookupValue as Recommendation
+ 		   FROM memmemberziksanarecommendation n
+ 
+			join utllookupvalue l ON
+		    n.RecommendationCategory=l.LookupValueId 
+		   join utllookup v ON
+		  l.LookupId=v.LookupId 
+			where memberRoleId =#{memberRoleId} order by n.CreationDate desc
 	</select>
 
 

@@ -27,6 +27,8 @@
  background-color:#66CCFF;
  color: blue;
  }
+ #updateTable tr:hover td {background: #CADFE2 !important;}
+
 .btn {
   border-color: #c5c5c5;
   border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
@@ -37,15 +39,14 @@
   background-color: #49afcd;
   background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
-  /*background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);*/
+ 
   background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
   background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
   border-color: #2f96b4 #2f96b4 #1f6377;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #2f96b4;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
@@ -53,6 +54,10 @@
 	<!-- unanswered script -->
 <c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
 <c:url var="showAnswered" value="/secure/getansweredquestions" />
+	<style>
+		.highlighted_row td {background: orange;}
+		.highlighted_row tr:hover td {background: orange !important;}
+	</style>
   <script type="text/javascript">
   $(document).ready(function() {
 		setInterval(function() {
@@ -62,10 +67,25 @@
 		
 		get_and_UnAnswered_questions();
 		
+
+	
+	$('table.highlight_rows td').live('click', function(){
+		td = $(this);
+		table = $(this).parents('table');
+		td.click(function(){
+			$(this).parents('table').find('tr').removeClass('highlighted_row');
+			
+			$(this).parent('tr').addClass('highlighted_row');
+			
+			
+		});
+		
 	});
+		
+	}); // end of doc ready
   
   
-function get_and_UnAnswered_questions(){  
+function get_and_UnAnswered_questions(){ 
   currentQuestion = 0;
 $(document).ready(function() {
 	$.ajax({
@@ -81,7 +101,7 @@ $(document).ready(function() {
 					 questionIdArray = new Array();
 					 optionArray = new Array();
 					 optionIndexArray = new Array();
-					 memberPersonalitytestId = 0;
+					 memberPersonalitytestId=0;
 					 
 					$(data).find("Questions").each(function(index){
 						
@@ -93,7 +113,7 @@ $(document).ready(function() {
 						var options = "";
 						var option_index= "";
 				 		$(this).find("options").each(function(){
-				 			
+				 			memberPersonalitytestId = $(this).find("memberpsttestid").text();
 				 			$(this).find("option").each(function(){
 				 				
 				 				options +=  $(this).text()+"/";
@@ -139,7 +159,7 @@ function displayUnAnsweredPairs(current){
 	
 	outputResult+="<div id='quest'>";
 	outputResult+="<div id='question_info_message'></div>";
-	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
+	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label><label style='display:none;' id='cur-user-member'>"+memberPersonalitytestId+"</label> ";
 	outputResult+="<table  width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
@@ -160,18 +180,6 @@ function displayUnAnsweredPairs(current){
 			outputResult+= "<tr><td ><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";	
 			}
 		}
-	/* console.log(optionsIdList);
-	 for(var i = 0 ; i < optionsList.length ; i++){
-		 
-		 if(i==0){
-			 
-				outputResult+= "<tr ><td>&nbsp;&nbsp;<input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";
-				} else {
-				outputResult+= "<tr><td >&nbsp;&nbsp;<input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList[i]+"--"+optionsList[i]+"'>" + optionsList[i] + "</td></tr>";	
-				}
-		
-		 
-	}  */
 	
 	outputResult+="</table>";
 	outputResult+="<br/>";
@@ -215,6 +223,7 @@ function prevquestion(){
 function submitValue(){
 	question_id = $('#cur-qus-id').val();
 	var testQuestionValue = $('#cur-qus-value').text();
+	memberPstTestQuestionId = $('#cur-user-member').text();
 	question_answer = $('input[name="question_'+question_id+'"]:checked').val();
 
 	
@@ -226,8 +235,8 @@ function submitValue(){
 	memberAnswer = answerid_answer_pair[1];
 
 		   
-		       $.post( '<c:url value='/secure/saveknowme'/>'
-				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId}
+		       $.post('<c:url value='/secure/saveknowme'/>'
+				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId, 'memPstTestId':memberPstTestQuestionId}
 				        , function( data )
 				        {
 				        
@@ -235,7 +244,7 @@ function submitValue(){
 							$('#question_info_message').html("Answer Submitted Successfully");
 							$("#knowme-save").attr('disabled','true');
 				        }
-						, 'xml' );   
+						);   
 		  
 		    
 		
@@ -269,6 +278,9 @@ input,  select, textarea{
 color:#555; font-weight:normal!important; padding:3px; font-size:1.2em!important; 
 font-family:Arial, Helvetica, sans-serif!important; }
 
+tr:hover{
+
+}
    .pre-que{
    width:400px;
   
@@ -309,7 +321,7 @@ background-color: #DAE8F2;
 #question_info_message {padding: .5em; color: green; font-family: arial, sans-serif;}
 #question_buttons_container{display:table; width: 100%;}   
 #question_buttons_container > div{display:table-cell;}   
-   
+ 
    </style>
 </head>
 
@@ -380,13 +392,16 @@ $(document).ready(function() {
 					answeredAnsewer = new Array();
 					answerDate = new Array();
 					answerAnsIndex = new Array();
+					memberpersonalityTestIdAnswered=0;
 						$(data).find("answered").each(function(index){
 							answeredQuestionId.push($(this).find("questiobankid").text());							
 							answeredQuestion.push($(this).find("question").text());
 							answerDate.push($(this).find("responsedate").text());
 							answerAnsIndex.push($(this).find("answerid").text());
 							answeredAnsewer.push($(this).find("answer").text());
+							memberpersonalityTestIdAnswered=$(this).find("memberpersonalitytestid").text();
 						});
+						
 				answeredQuestionDisplay();		
 			}
 			
@@ -402,13 +417,13 @@ $(document).ready(function() {
 function answeredQuestionDisplay(){
 	var outputResult="";
 	outputResult+="<br/>";
-	outputResult+="<table id='updateTable' value='hide' class='table tab1' style='border:1px solid gray;'>";
+	outputResult+="<table id='updateTable' value='hide' class=' table tab1' style='border:1px solid gray;'>";
 	outputResult+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>&nbsp;&nbsp;&nbsp;QUESTIONS</th>";
 	outputResult+="<th  width='200px' style='color:#fff;'>ANSWERED DATE</th></tr>";
 	
 	
 	for(var i = 0; i<answeredQuestion.length;i++){
-		outputResult+="<tr id='knowmew_row_"+i+"' ><td  width='200px'><a  style='text-decoration:none; margin-left:0px;' onClick='displayAnsweredQuestionContainer("+i+")'><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label></a> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswerId"+i+"'>"+answerAnsIndex[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></td></tr>";
+		outputResult+="<tr id='knowmew_row_"+i+"' onClick='displayAnsweredQuestionContainer("+i+")' ><td  width='200px'><a style='text-decoration:none; margin-left:0px;' ><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswerId"+i+"'>"+answerAnsIndex[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></a></td></tr>";
 		
 		}
 	
@@ -423,7 +438,7 @@ function answeredQuestionDisplay(){
 function displayAnsweredQuestionContainer(loop){
 	
 	 $('#updateTable tr').removeClass('row-hover');
-		$('#knowmew_row_'+loop+'').addClass('row-hover'); 
+		$('#knowmew_row_'+loop+'').addClass('row-hover');  
 	var outputAns = "";
 	 editQuestion = $('#questionUpdate'+loop+'').text();
 	 editChoice = $('#questionAnswer'+loop+'').text();
@@ -437,7 +452,7 @@ function displayAnsweredQuestionContainer(loop){
 		success: function( data ) {
 			
 			outputAns+="<div style='display:none;' id='answered_question_form_container'>";
-			outputAns+="<br/></br><u><strong>View or update the Answer:</strong></u>";
+			outputAns+="<br/></br><u><p style='font-weight:bold;'>View or update the Answer:</p></u>";
 			outputAns+="<div>";
 			outputAns+="<div id='question_info_message_update'></div>";
 			outputAns+="<br/><label style='display:none;' id='edit-qus-id'>"+answeredQuestionId[loop]+"</label><label id='edit-qus-value'>"+editQuestion+"</label><br/>";
@@ -481,6 +496,7 @@ function updateValues(){
 	 var editQuesval = $('#edit-qus-value').text();
 	 var editAnsId = $('input[name=optbtn]:radio:checked').val();
 	var editCheckedAnswer = "";
+
 	var split_ansid_ans = new Array();
 	split_ansid_ans = editAnsId.split("/");
 	/* alert(editQuesid);
@@ -492,7 +508,7 @@ function updateValues(){
 	
 	   
 	    $.post( '<c:url value='/secure/updateknowmebetter'/>'
-		        , {'editCheckedAnswer':split_ansid_ans[1],'editQuesval':editQuesval,'editQuesid':editQuesid,'editAnsId':split_ansid_ans[0]}
+		        , {'editCheckedAnswer':split_ansid_ans[1],'editQuesval':editQuesval,'editQuesid':editQuesid,'editAnsId':split_ansid_ans[0],'memberPersonalityTestId':memberpersonalityTestIdAnswered}
 		        , function( data )
 		        {
 		        

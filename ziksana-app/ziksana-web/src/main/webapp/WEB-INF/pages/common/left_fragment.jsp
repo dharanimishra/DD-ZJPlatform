@@ -6,11 +6,15 @@
 
 <link rel="stylesheet" type="text/css" href="../resources/css/masks.css" />
 <script type="text/javascript" src="../resources/js/sortable.js"></script>
-<!--
-
--->
 
 <style>
+
+.t_up:hover {
+  background: url("/ziksana-web/resources/images/downtoggle.png") no-repeat scroll right 10px rgba(218, 216, 216, 0.17) !important;
+}
+.t_down:hover {
+  background: url("/ziksana-web/resources/images/uptoggle.png") no-repeat scroll right 10px rgba(218, 216, 216, 0.17) !important;
+}
 #question_info_message {
 	padding: .5em;
 	color: green;
@@ -26,30 +30,28 @@
 	display: table-cell;
 }
 
-.btn {
-	border-color: #c5c5c5;
-	border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15)
-		rgba(0, 0, 0, 0.25);
-}
 
+
+.btn {
+  border-color: #c5c5c5;
+  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+} 
 .btn-info-knowme {
-	color: #ffffff;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #49afcd;
-	background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de),
-		to(#2f96b4) );
-	/*background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);*/
-	background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
-	background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de',
-		endColorstr='#ff2f96b4', GradientType=0 );
-	border-color: #2f96b4 #2f96b4 #1f6377;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	*background-color: #2f96b4;
-	/* Darken IE7 buttons by default so they stand out more given they won't have borders */
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled=  false );
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #49afcd;
+  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+ 
+  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+  border-color: #2f96b4 #2f96b4 #1f6377;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 </style>
 
@@ -70,7 +72,7 @@
 		<div class="grey-out  f-l">
 
 			<c:url var="imageUrl_profile1"
-				value="/resources/images/user/pic-id-102.jpg" />
+				value="${member.picturePath}" />
 
 			<!-- <a href="#" rel="tipsy" title="${firstname} ${lastname}"><div class="white-in main-pic"  style="background:url(${imageUrl_profile1});" > </div></a> -->
 			<a href="#" rel="tipsy"
@@ -118,11 +120,22 @@
         			url: '${blogListUrl}',
         			dataType: 'html',
         			success: function(  data ) {
-        				       console.log('blogList Return Value: ' + data);
+        				     
                     			document.getElementById("blogList").innerHTML=$(data).html();
                     			
         			}});
             }); 
+            
+            $('#edu-star').raty({
+				
+				click		: function(score, evt) {
+					$(this).fadeOut(function() { $(this).fadeIn(); });
+				},
+				targetKeep	: true,
+				path:'../resources/images/img/',
+				score		: '<c:out value="${member.rating}"/>',
+				cancel: true
+			});
 			</script>
 
 
@@ -312,14 +325,13 @@
   currentQuestion = 0;
 $(document).ready(function() {
 	
+	
 	$.ajax({
 		  	type: 'GET',
 			url: '${showUnAnswered}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-								console.log( 'unanswered data:', data);
-					}
+					
 					var output="";
 					 questionArray= new Array();
 					 questionIdArray = new Array();
@@ -328,19 +340,22 @@ $(document).ready(function() {
 					 memberPersonalitytestId = 0;
 					$(data).find("Questions").each(function(index){
 						
-						//var pairIdQuestion = $(this).find("questiobankid").text()+"="+$(this).find("Question").text();
+						
 						 questionArray.push($(this).find("Question").text()); 
 						
 						questionIdArray.push($(this).find("questiobankid").text());
 						
 						var options = "";
 						var option_index= "";
+						
 				 		$(this).find("options").each(function(){
 				 			
+				 			memberPersonalitytestId = $(this).find("memberpsttestid").text();
 				 			$(this).find("option").each(function(){
 				 				
 				 				options +=  $(this).text()+"/";
 				 				option_index += $(this).attr('index')+"/";
+				 				
 				 				
 				 			});
 				 			options = options.substring(0,options.length-1);
@@ -352,12 +367,8 @@ $(document).ready(function() {
 				 		
 					
 					});
-					console.log("unAnswered Question Id ==>"+ questionIdArray);
-					console.log("unanswered array: ==> " + questionArray);
-					console.log("option array==>"+  optionArray);
-					//console.log("memberPersonalitytestId==>"+memberPersonalitytestId);
-					console.log("option array index"+optionIndexArray);
-				
+					
+					
 					displayUnAnsweredPairs(0);		
 					
 			}
@@ -369,10 +380,11 @@ $(document).ready(function() {
   }
 function displayUnAnsweredPairs(current){
 	var outputResult="";
-	outputResult+="<p class='titles-info font-Signika text-size-px18 light-gray'>Know me better</p>";
+	outputResult+="<span class='jdash-head titles-info font-Signika text-size-px18 light-gray t_toggler t_up' >Know me better</span>";
+	outputResult+="<div class='t_content'>";
 	outputResult+="<div id='question_info_message'></div>";
 	outputResult+="<div id='quest'>";
-	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label> ";
+	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label><label style='display:none;' id='cur-user-member'>"+memberPersonalitytestId+"</label>";
 	outputResult+="<table class='sortable' width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
@@ -400,14 +412,14 @@ function displayUnAnsweredPairs(current){
 	
 	
 
-		outputResult+="<button class='f-rt btn btn-info-knowme' id='knowme-save' onClick='submitValue()'>Submit</button>";
+		outputResult+="<button class='f-rt btn-info-knowme' id='knowme-save' onClick='submitValue()'>Submit</button>";
 	
 	  
 	   outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'>More</span></a></div>";
 	  // outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block' style='color: #27b;'>More..</a></div>";
 	
 		 
-	
+	 outputResult+="</div>";
 	
 	$('#knowme-ques').html(outputResult);
 }
@@ -430,9 +442,9 @@ function submitValue(){
 	question_id = $('#cur-qus-id').val();
 	var testQuestionValue = $('#cur-qus-value').text();
 	question_answer = $('input[name="question_'+question_id+'"]:checked').val();
-
+	var memberPstTestQuestionId = $('#cur-user-member').text();
 	
-	//console.log(question_answer);
+	
 	
 	var answerid_answer_pair = new Array();
 	answerid_answer_pair = question_answer.split("--");
@@ -441,8 +453,8 @@ function submitValue(){
 
 		   
 		       $.post( '<c:url value='/secure/saveknowme'/>'
-				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId}
-				        , function( data )
+				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId,'memPstTestId':memberPstTestQuestionId}
+				        , function(data)
 				        {
 				        
 							
@@ -451,7 +463,7 @@ function submitValue(){
 							setTimeout('get_and_UnAnswered_questions()',2000);
 							
 				        }
-						, 'xml' );   
+						);   
 		  
 		    
 		
@@ -461,20 +473,7 @@ function submitValue(){
 	<div id="knowme-ques"
 		class="user-insight user-contacts all-box-shadow pad">
 
-		<!--  <ul>
-			    <li class=""><span class="p-p _blogs bckground-blue-light">You are usually the first to react to a sudden event.</span>
-			      <div id="radio" class="btn-set" style="margin-top:3px; margin-bottom:5px;">
-			        <input type="radio" id="radio1" name="radio" />
-			        <label for="radio1">Yes</label>
-			        <input type="radio" id="radio2" name="radio"  />
-			        <label for="radio2">Sometimes</label>
-			        <input type="radio" id="radio3" name="radio" />
-			        <label for="radio3">Never</label>
-			        <br>
-			    </div>
-			    </li> -->
-
-
+	
 	</div>
 
 	<label ></label>
@@ -488,24 +487,22 @@ $(document).ready(function() {
 			url: '${showRecomendUrl}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-								console.log( 'Recommend of data:', data);
-					}
+					
 					var output="";
 					
 					
 					$(data).find("recommenditem").each(function(index){
 						
 						output+="<ol>";
-	                    output+="<li class='p-p _blogs bckground-blue-light'>";
+	                    output+="<li class='p-p _blogs bckground-blue-light todotip_container'>";
 	                    output+="<b >"+ $(this).find("title").text()+"</b>";
 	                    output+="<br/>";
-	                    output+="<p  style='padding-left: 10px;'>"+ $(this).find("description").text()+"</p>";
-	                    output+="</li></ol><br/>";
+	                    output+="<div  style='display:inline;' style='padding-left: 10px;'>"+ $(this).find("description").text()+"</div><div class='recommendtip'>"+$(this).find("description").text()+" </div>";
+	                    output+="</li></ol>";
 												
 					});
 
-					console.log("Recommendations: " + output);
+					
 				
 					
 					$('#recomend').html(output);
@@ -521,13 +518,9 @@ $(document).ready(function() {
 
 		<div id="tabsbottom"
 			style="background-color: #FFF; margin-bottom: 15px;">
-			<span class="titles-info font-Signika text-size-px18 light-gray">Zeni
+			<span class="jdash-head titles-info font-Signika text-size-px18 light-gray t_toggler t_up" >Zeni
 				Recommendations</span>
-
-			<!-- <a class="rec0">All</a>
-				<a class="rec1">Course</a>
-                <a class="rec2">Grades</a>
-				<br/><br/> -->
+			<div class="t_content">
 
 			<div id="recomend" class="rec-0 "></div>
 
@@ -538,6 +531,7 @@ $(document).ready(function() {
 				<span><a class="text-size-px11  lbx-70-50"
 					href="${htmlUrl_profile2}" class="" style="color: #27b;">More..</a></span>
 			</p>
+			</div>
 		</div>
 	</div>
 </div>

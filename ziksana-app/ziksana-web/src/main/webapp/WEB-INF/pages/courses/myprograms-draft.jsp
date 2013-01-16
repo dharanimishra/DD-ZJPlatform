@@ -71,6 +71,18 @@
 			value: 65
 		});
 	});
+	function draftcall()
+	{
+	 
+		$('._course').slideDown('');
+		   $('#_isocourse').isotope({ filter: '.Draft' }); 
+		   $('#draftc').addClass('hover-btn'); 
+		   $('#draftc').removeClass('btn-info'); 
+		   $('#_lp').hide(''); 
+		   $('._lo').hide(''); 
+		   $('._lc').hide(''); 
+		   $('.arrowdown').show('');
+	  }
 	</script>
     <script type='text/javascript' src='../resources/js/jquery.tipsy.js'></script>
 	<script src="../resources/js/jquery.collapse.js"></script>
@@ -107,7 +119,7 @@
   padding-top: 22% !important;
 }
 .demo_message1 {
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
   bottom: 0;
   color: white;
   
@@ -207,17 +219,14 @@ $('._cklo').show('');
         
         
 </head>
-<body >
+<body onload="draftcall()">
 <div id="wrapper">
         <!--Header Container-->
         	<!--Header Container-->
         	 <c:url var="launcherPage" value="/secure/launcher"/>
-        	 <c:url var="educatorPage" value="/secure/educatordashboard"/>
-        	 <c:url var="myProgramsPage" value="/secure/showMyPrograms"/>
-        	 <c:url var="logoutPage" value="/secure/logout"/>
 		<p><a><img data-launcher data-launchpage="${launcherPage}" src="../resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
         	<header class="bottom-box-shadow bckground-wihte">
-			<p>&nbsp;&nbsp;</p>
+			
             	<div class="topheader"> 
           <!--logo container-->
           
@@ -228,10 +237,10 @@ $('._cklo').show('');
             <nav>
 			<div class="menu" style=" margin-left:0px;">
                       <ul>
-                        <li><a href="${educatorPage}" >My Home</a><div class="nav-line"></div></li>
-                        <li><a href="${myProgramsPage}" class="current">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/secure/educatordashboard" >My Home</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/secure/showMyPrograms" class="current">My Programs</a><div class="nav-line"></div></li>
                         <li><a href="#">My Students</a><div class="nav-line"></div></li>
-                        <li><a href="#" style="margin-left:-10px;">My Locker</a></li>
+                        <li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;My Locker</a></li>
                       </ul>
                     </div>
 					
@@ -256,7 +265,7 @@ $('._cklo').show('');
                  <ul>
                    <li><a href="#">Preferences</a></li>
                    <li><a href="#">Privacy</a></li>
-                   <li><a href="logoutPage">Sign Out</a></li></ul>
+                   <li><a href="#">Sign Out</a></li></ul>
                 </fieldset>
               </div>
             </div>
@@ -292,7 +301,7 @@ $('._cklo').show('');
 				
                 <div class="icons-list">
                   <a href="#linkurl" rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
-				  <img src="../resources/images/nav-arow.png" class="arrowdown"style="padding-top:35px; display:none;">	
+				  
                   
                 </div>              
               </div>
@@ -336,7 +345,7 @@ $('._cklo').show('');
 				
                 <div class="icons-list">
                    <a href="#linkurl" rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
-                  <img src="../resources/images/nav-arow.png" class="arrowdown"style="padding-top:35px; display:none;">	
+                 
                 </div>              
               </div>
     </div>   
@@ -360,7 +369,7 @@ $('._cklo').show('');
 				
                 <div class="icons-list">
                   <a href="#linkurl" rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
-				  <img src="../resources/images/nav-arow.png" class="arrowdown"style="padding-top:35px; display:none;">	
+				 
                   
                 </div>              
               </div>
@@ -584,7 +593,7 @@ $('._cklo').show('');
                
                 <div class="center for-rounded-box all-box-shadow _course" style="width:973px; padding-left:10px; padding-right:-10px;">
                 <div style="margin-left:850px;disply:table; top:-100">
-					 <div class="createnew" style="display:table-cell;font-size:11px;"><a href="modelthinking_create.html"><img src="../resources/images/plus.png" width=16px, height=16px> &nbsp;Create New</a></span> 
+					 <div class="createnew" style="display:table-cell;width:100px;"><a href="modelthinking_create.html"><img src="../resources/images/plus.png" width=16px, height=16px>Create New</a></span> 
 					</div>
 					<div style="display:table-cell; padding-left:20px;">
 					<a href="#">  

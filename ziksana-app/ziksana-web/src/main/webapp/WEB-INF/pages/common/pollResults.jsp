@@ -50,6 +50,7 @@ questionId = $('#edit_message'+asd+'').text();
 			success: function( data ) {
 				$(data).find("QuestionsAnswersList").each(function(){
 				 var outputAnswers="";
+				 outputAnswers+="<br/><b> Details of the select Row in the table should be displayed here</b><br/>";
 				outputAnswers+="Strongly agree <br/>";
 				outputAnswers+="<div style='width:"+$(this).find("answer1").text()+"%; height:20px; background-color:green;'></div>";
 				outputAnswers+=""+$(this).find("answer1").text()+"%vote<br/>";
@@ -60,7 +61,7 @@ questionId = $('#edit_message'+asd+'').text();
 				outputAnswers+="<div style='width:"+$(this).find("answer3").text()+"%; height:20px; background-color:blue;'></div>";
 				outputAnswers+=""+$(this).find("answer3").text()+"%vote";
 				 //alert(outputAnswers);
-				 $('#bars-answer').prepend(outputAnswers);
+				 $('#bars-answer').html(outputAnswers);
 				});
 			}
 	
@@ -128,6 +129,7 @@ $(document).ready(function() {
 								console.log( 'Recommend of data:', data);
 					}
 					var output_announcement="";
+					
 					output_announcement+="<table class='table tb1'>";
 					output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Poll Date</th>";
 					output_announcement+="<th  width='200px' style='color:#fff;'>Questions</th></tr>";
@@ -153,7 +155,9 @@ $(document).ready(function() {
 	
 });
 function hideContents(){
+	
 	$('#details-poll').hide();
+	$('bars-answer').hide();
 	$('#zReturn1').hide();
 }
 </script>
@@ -194,9 +198,7 @@ function hideContents(){
             	
 				
 				<div id ="details-poll">
-				<br/>
-               <b> Details of the select Row in the table should be displayed here</b>
-           		<br/>
+				
           <div id="linksdetails">
 		  </div>
             <div id="bars-answer" width=600px;>

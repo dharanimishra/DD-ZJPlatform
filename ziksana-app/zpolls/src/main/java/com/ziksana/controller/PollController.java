@@ -109,7 +109,8 @@ public class PollController {
 
 	@RequestMapping(value = "/submitpoll", method = RequestMethod.POST)
 	public @ResponseBody
-	ModelAndView submitPoll(@RequestParam String pollId, @RequestParam String optionIndex) {
+	ModelAndView submitPoll(@RequestParam(value = "pollId",required = true) String pollId, 
+			@RequestParam(value = "optionIndex", required = true) String optionIndex) {
 		
 		logger.info("Entering submitPoll(): " +  " pollId " + pollId
 				+ " optionIndex " + optionIndex);

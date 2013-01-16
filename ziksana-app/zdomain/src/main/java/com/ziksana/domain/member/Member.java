@@ -95,6 +95,10 @@ public class Member implements Serializable {
 	
 	private String designation;
 
+	private String roleType;
+	
+	private Integer rating;
+	
 	/**
 	 * This method returns the value of the database column memmember.ID
 	 * 
@@ -426,4 +430,38 @@ public class Member implements Serializable {
 		this.designation = designation;
 	}
 
+	/**
+	 * @return the roleType
+	 */
+	public String getRoleType() {
+		return roleType;
+	}
+
+	/**
+	 * @param roleType the roleType to set
+	 */
+	public void setRoleType(String roleType) {
+		this.roleType = roleType;
+	}
+
+	/**
+	 * @return the rating
+	 */
+	public Integer getRating() {
+		return rating;
+	}
+
+	/**
+	 * @param rating the rating to set
+	 */
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
+
+	/**
+	 * @return the rating
+	 */
+	
+	
+	
 }

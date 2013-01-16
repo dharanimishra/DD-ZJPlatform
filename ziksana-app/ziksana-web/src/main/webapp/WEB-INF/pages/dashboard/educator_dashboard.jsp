@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <script type="text/javascript" src="resources/js/tree/jquery-1.8.0.min.js"></script>
 
-<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
+<!-- <link href="../resources/css/styles.css" rel="stylesheet" type="text/css"> -->
 
 	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
@@ -53,7 +53,7 @@ function deleteFunction(val){
 		url: '${deleteAlertUrl}'+val,
 		
 		success: function( data ) {
-			console.log('delete alert fired');
+			
 			$('#alert_'+val).remove();
 			get_and_populate_alerts();
 			
@@ -146,11 +146,11 @@ function changeImage(a){
 	images[2] = "<c:url  value='/resources/images/icons/info.png' />";
 	
 	 var comic = document.getElementById("exp").src;
-	 if(a==1000){
+	 if(a==164){
 		  $("#exp").attr('src', images[0]);
-	 }else if(a==1001){
+	 }else if(a==165){
 		 $("#exp").attr('src', images[1]);
-	 }else if(a==1002){
+	 }else if(a==166){
 		 $("#exp").attr('src', images[2]);
 	 }
 	 
@@ -195,7 +195,7 @@ function get_and_populate_alerts(){
 				var no_of_available_alerts;
 				
 				$.get('/ziksana-web/secure/getalertsize/111111', {}, function(size){
-////////////////////////////////////////				
+			
 					no_of_available_alerts = size;
 				
 				
@@ -228,7 +228,7 @@ function get_and_populate_alerts(){
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
 						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
-						output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
+						output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 						
 						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 						
@@ -249,7 +249,7 @@ function get_and_populate_alerts(){
 					output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 					 
 					output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
-					output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
+					output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 					
 					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 					
@@ -257,7 +257,7 @@ function get_and_populate_alerts(){
 					
 						});
 					output+="</div>";
-					$('#alerts_placeholder').html( output);
+					$('#alerts_placeholder').html(output);
 				}
 							
 
@@ -268,7 +268,7 @@ function get_and_populate_alerts(){
 				
 				}
 
-/////////////
+
 				);
 				
 
@@ -316,7 +316,7 @@ $.ajax({
 							output_todo+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 							 
 							output_todo+="<img src='${todo}' alt='Info' /></div>";
-							output_todo+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
+							output_todo+="<div class='todoinfo-category todotip_container' style='display:inline;' >"+$(this).find("categoryName").text()+"<div class='categorytip'>"+$(this).find("categoryName").text()+" </div></div>";
 							
 							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onClick='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
 							
@@ -365,7 +365,7 @@ function checkonTodoItem(val){
 	
 }
 
-/// TODO: move this function to a common js file later
+
 function short_string(string){
 	
 	if(string.length > 50){
@@ -375,7 +375,13 @@ function short_string(string){
 	}	
 } 
 
-
+function short_string_category(value){
+	if(value.length > 9){
+		return value.substring(0,9)+'...';
+	} else {
+		return value;
+	}	
+}
 
 </script>
 
@@ -468,7 +474,7 @@ function short_string(string){
                         
                    
                     </div>
-              <br/><br/>
+            
   <!-- Todo More -->
  
   <!-- End -->
@@ -479,7 +485,7 @@ function short_string(string){
                              <div id='alerts_placeholder'></div>
                              	
                         </div>
-                        
+                        <br/>
                         <div  class="todo">
                         	
                            

@@ -79,10 +79,14 @@ public class KnowmeController {
 			@RequestParam(value = "memberAnswer", required = true) String memberAnswer,
 			@RequestParam(value = "testQuestionValue", required = true) String testQuestionValue,
 			@RequestParam(value = "testQuestionId", required = true) Integer testQuestionId,
-			@RequestParam(value = "questionBankAnswerId", required = true) Integer questionBankAnswerId){
+			@RequestParam(value = "questionBankAnswerId", required = true) Integer questionBankAnswerId,
+			@RequestParam(value = "memPstTestId", required = true) Integer memPstTestId){
+		
+		
+	    int firstDigit = Integer.parseInt(Integer.toString(memPstTestId).substring(0, 1));
 		
 		Question question = new Question(testQuestionId,testQuestionValue);
-		Choice userChoice =new Choice(questionBankAnswerId, null, memberAnswer, Integer.valueOf(1));
+		Choice userChoice =new Choice(questionBankAnswerId, null, memberAnswer, firstDigit);
 		
 		//userChoice.setMemPstTestId(Integer.valueOf(1));
 		personalityService.saveAnswer(question, userChoice);
@@ -94,11 +98,12 @@ public class KnowmeController {
 			@RequestParam(value = "editCheckedAnswer", required = true) String editCheckedAnswer,
 			@RequestParam(value = "editQuesval", required = true) String editQuesval,			
 			@RequestParam(value = "editQuesid", required = true) Integer editQuesid,			
-			@RequestParam(value = "editAnsId", required = true) Integer editAnsId){
+			@RequestParam(value = "editAnsId", required = true) Integer editAnsId,
+			@RequestParam(value = "memberPersonalityTestId", required = true) Integer memberPersonalityTestId){
 		
 		
 		Question question = new Question(editQuesid,editQuesval);
-		Choice userChoice =new Choice(editAnsId, editAnsId, editCheckedAnswer, Integer.valueOf(1));
+		Choice userChoice =new Choice(editAnsId, editAnsId, editCheckedAnswer, memberPersonalityTestId);
 		
 		personalityService.updateAnswer(question, userChoice);
 		return "Answer Updated Successfully";

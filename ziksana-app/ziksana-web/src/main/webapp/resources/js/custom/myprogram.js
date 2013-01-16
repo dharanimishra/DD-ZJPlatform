@@ -9,7 +9,7 @@ function activecall()
 			$('._lo').hide('');	
 			$('._lc').hide('');	
 			
-			$('._cklo').hide('');	
+			$('._cklo').hide('');
 			$('._cklp').hide('');	
 			$('._cklc').hide('');
 			$('.arrowdown').show('');
@@ -56,7 +56,7 @@ $(document).ready(function()
 		});
 		
 		$("._ckcourse").click( function(){
-	$('#course1').addClass('marginl');	
+	/*$('#course1').addClass('marginl');*/	
 			$('._course').slideDown('');
 			$('#_isocourse').isotope({ filter: '.Draft' });	
 			$('#draftc').addClass('hover-btn');	
@@ -64,11 +64,11 @@ $(document).ready(function()
 			$('#_lp').hide('');	
 			$('._lo').hide('');	
 			$('._lc').hide('');	
-			
-			$('._cklo').hide('');	
-			$('._cklp').hide('');	
-			$('._cklc').hide('');
 			$('.arrowdown').show('');
+			/*$('._cklo').hide('');	
+			$('._cklp').hide('');	
+			$('._cklc').hide('');*/
+			
 			
 			
 		});
@@ -178,7 +178,7 @@ $('#_isocourse').isotope({ filter: '.my-selector' }, function( $items ) {
 function showallc()
 {
 $('#_isocourse').isotope({ filter: '.All' });
-$('.createnew').hide();
+$('.createnew').css('visibility','hidden');
 $('#reviewc').removeClass('hover-btn');	
 $('#draftc').removeClass('hover-btn');	
 $('#reviewc').addClass('btn-info');	
@@ -190,13 +190,13 @@ $('#allc').removeClass('btn-info');
 function showactivec()
 {
 $('#_isocourse').isotope({ filter: '.Active' });
-$('.createnew').hide();
+$('.createnew').css('visibility','hidden');
 }
 
 function showdraftc()
 {
 $('#_isocourse').isotope({ filter: '.Draft' });
-$('.createnew').show();
+$('.createnew').css('visibility','visible');
 $('#draftc').addClass('hover-btn');	
 $('#reviewc').removeClass('hover-btn');	
 			$('#draftc').removeClass('btn-info');
@@ -207,7 +207,7 @@ $('#reviewc').removeClass('hover-btn');
 function showreviewc()
 {
 $('#_isocourse').isotope({ filter: '.Review' });
-$('.createnew').hide();
+$('.createnew').css('visibility','hidden');
 $('#draftc').addClass('btn-info');
 $('#reviewc').addClass('hover-btn');	
 $('#reviewc').removeClass('btn-info');

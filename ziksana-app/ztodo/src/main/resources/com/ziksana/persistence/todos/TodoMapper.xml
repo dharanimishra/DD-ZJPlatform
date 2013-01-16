@@ -4,16 +4,25 @@
 
 	<select id="getTodos" resultMap="todoResultMap" parameterType="int">
 		select
-		*
-		from
-		memmembernotification n
-		join utllookup l ON
-		n.NotificationType=l.LookupId
-		join utllookupvalue v ON
-		l.LookupId=v.LookupId
-		where l.CategoryName='memmembernotification' and
-		v.LookupValue='Ztodo' and
-		n.ForMemberRoleId=#{userMemberRoleId} order by n.ActivationDate ASC
+		  distinct n.*,
+		 
+		 l.LookupValue as lookupValue,
+		 p.LookupValue as priority
+		  from
+		  memmembernotification n
+		  join utllookupvalue l ON
+		  n.NotificationType=l.LookupValueId 
+		  join utllookup v ON
+		  l.LookupId=v.LookupId 
+		  join utllookupvalue p ON
+		  n.Priority=p.LookupValueId 
+		  join utllookup pl ON
+		  pl.LookupId=p.LookupId
+		  
+		  where v.CategoryName='Notification Type' and
+		  l.LookupValueId=491 and
+		 
+		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate ASC
 	</select>
 	
 	
@@ -21,16 +30,25 @@
 	
 	<select id="getMapperTodos" resultMap="todoResultMap" parameterType="int">
 		select
-		*
-		from
-		memmembernotification n
-		join utllookup l ON
-		n.NotificationType=l.LookupId
-		join utllookupvalue v ON
-		l.LookupId=v.LookupId
-		where l.CategoryName='memmembernotification' and
-		v.LookupValue='Ztodo' and
-		n.ForMemberRoleId=#{userMemberRoleId} order by n.activationdate ASC
+		  distinct n.*,
+		 
+		 l.LookupValue as lookupValue,
+		 p.LookupValue as priority
+		  from
+		  memmembernotification n
+		  join utllookupvalue l ON
+		  n.NotificationType=l.LookupValueId 
+		  join utllookup v ON
+		  l.LookupId=v.LookupId 
+		  join utllookupvalue p ON
+		  n.Priority=p.LookupValueId 
+		  join utllookup pl ON
+		  pl.LookupId=p.LookupId
+		  
+		  where v.CategoryName='Notification Type' and
+		  l.LookupValueId=491 and
+		 
+		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate ASC
 	</select>
 	
 
@@ -63,7 +81,7 @@
 
 	<delete id="deleteTodo" parameterType="int">
 		delete from
-		memmembernotification where MemberNotificationId =
+		memmembernotification where ID =
 		#{memberNotificationId}
 	</delete>
 

@@ -11,7 +11,7 @@
 	<select id="getAnnouncementById" resultMap="announcementResultMap"
 		parameterType="map">
 		SELECT * FROM corannouncement WHERE MemberRoleId =
-		#{memberRoleId} and anouncementId= #{announcementId}
+		#{memberRoleId} and ID= #{announcementId}
 	</select>
 
 	<select id="getAllAnnouncements" resultMap="announcementResultMap"
@@ -55,7 +55,7 @@
 
 
 	<resultMap id="announcementResultMap" type="com.ziksana.domain.announcements.Announcement">
-		<result property="announcementId" column="anouncementId" />
+		<result property="announcementId" column="ID" />
 		<result property="announcementDate" column="AnnouncementDate" />
 		<result property="message" column="Message" />
 		<result property="description" column="description" />

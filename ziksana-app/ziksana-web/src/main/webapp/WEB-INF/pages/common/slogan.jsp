@@ -10,7 +10,7 @@
 	</span> --%> <c:url var="createlink" value="/secure/createcourse" />
 		<div class="f-r">
 			<strong class="text-size-px16 light-gray"> <a
-				href="${createlink}" class="light-blue">Create </a><strong>|</strong>
+				href="#" class="light-blue">Create </a><strong>|</strong>
 				<a href="#">Publish</a> <strong>|</strong> <a href="#">Manage</a>
 			</strong>
 			<c:url var="imageUrl_header2" value="/resources/images/plus.png" />

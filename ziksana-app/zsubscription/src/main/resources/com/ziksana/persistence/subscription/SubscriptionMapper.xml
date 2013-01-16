@@ -13,7 +13,7 @@
 		from
 		sbnmembersubscriptionprogram subpgm
 		join corlearningprogram program ON
-		subpgm.LearningProgramId=program.LearningProgramId
+		subpgm.ID=program.ID
 		where
 		subpgm.MemberRoleId=#{memberRoleId}
 
@@ -28,7 +28,7 @@
 
 
 		select
-		course.CourseId,
+		course.ID,
 		course.Name,
 		course.Description
 		from
@@ -41,7 +41,7 @@
 		subcourse.CurriculumCourseId=curcourse.CurriculumCourseId
 		JOIN
 		corcourse course ON
-		curcourse.CourseId=course.CourseId
+		curcourse.CourseId=course.ID
 		where
 		sbnpgm.MemberRoleId=#{memberRoleId} and
 		sbnpgm.LearningProgramId=#{learningProgramId}
@@ -248,20 +248,20 @@
 		NotesType,NotesContent,SubscriptionCourseId,LearningComponentId,LearningComponentContentId,MemSubscriptionProgId)
 		values(now(), #{noteTitle}, #{noteDescription}, #{noteDuration},
 		#{type},#{content},
-		(select subscriptioncourseid
+		(select subcourse.ID
 		from
 		sbnsubscriptioncourse subcourse,corcurriculumcourse curcourse
 		where
-		subcourse.CurriculumCourseId=curcourse.CurriculumCourseId and
-		curcourse.CourseId=#{courseId}),
+		subcourse.ID=curcourse.ID and
+		curcourse.ID=#{courseId}),
 		#{learnCompId},
 		(select
-		LearningComponentContentId from corlearningcomponentcontent where
+		ID from corlearningcomponentcontent where
 		LearningComponentId=#{learnCompId} and
 		LearningContentId=#{learnCmpContId}
 		),
 		(select
-		memsubscriptionprogid
+	     ID
 		from
 		sbnmembersubscriptionprogram
 		where

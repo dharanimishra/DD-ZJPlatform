@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page session="true"%>
 <html>
 <head>
 <meta />
@@ -392,7 +393,7 @@ function get_and_populate_alerts(){
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
 						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
-						output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
+						output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 						
 						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 						
@@ -413,7 +414,7 @@ function get_and_populate_alerts(){
 					output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 					 
 					output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
-					output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
+					output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 					
 					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 					
@@ -480,7 +481,7 @@ $.ajax({
 							output_todo+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 							 
 							output_todo+="<img src='${todo}' alt='Info' /></div>";
-							output_todo+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
+							output_todo+="<div class='todoinfo-category todotip_container'style='display:inline;' >"+short_string_category($(this).find("categoryName").text())+"<div class='categorytip'>"+$(this).find("categoryName").text()+" </div></div>";
 							
 							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onChange='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
 							
@@ -537,6 +538,13 @@ function short_string(string){
 		return string;
 	}	
 } 
+function short_string_category(value){
+	if(value.length > 9){
+		return value.substring(0,9)+'...';
+	} else {
+		return value;
+	}	
+}
 
 </script>
 <script type="text/javascript">
@@ -588,14 +596,16 @@ $("#datepara").show();
                     
         			
                <div class="lnchaccountleft">
+               
               
-   			<c:url var="imageUrl_profile1" value="/resources/images/user/educator.png" />                        
+   			<c:url var="imageUrl_profile1" value="${member.picturePath}" />   
+   			                    
                   
                 <!--  <div class="lnchimage">-->
                    <a href="#linkurl"> <img src="${imageUrl_profile1}" width=40px height=40px alt="" align="left"/> 
                   <!--  </div> end of -->
                     
-                   <span style="line-height:35px; padding-left:10px; color:#fff; font-weight:bold;"> Scott E Page</span> </a>    
+                   <span style="line-height:35px; padding-left:10px; color:#fff; font-weight:bold;"> <c:out value="${member.firstName}"/> <c:out value="${member.lastName}"/> Page</span> </a>    
                      
           
           </div><!-- end of lnchaccountleft-->  
@@ -724,34 +734,24 @@ $("#datepara").show();
                         </div>
                         <div class="_cRight all-box-shadow">
                         	<div class="_e1">
-                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">Aug 20 - Meeting with Ziksana</span></div>
-<div >Preview and discuss current Ziksana Course Creation Model and related functionality</div>
-<div ><i class=" bold">Place: </i>UTD Administrative Building
-<i class=" bold"><br/>Time: </i>9:00 am - 11:00 am </div>
+                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">Jan 7 - Recap on Ziksana Capability</span></div>
+
+								<div><i class=" bold">Place: </i>UTD Administrative Building
+								<i class=" bold"><br>Time: </i>9:00 am - 12:00 pm </div>
                             </div>
                             
-                            <div class="_e2">
-                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Aug 20 - Seminar on Artificial intelligence</span></div>
-                            	
-<div >We welcome you to join us on our seminar on Artificial intelligence.</div>
-<div><i class=" bold">Place: </i> UTD<br/>
-<i class=" bold">Time: </i>1:00 pm - 2:00 pm<br/>
-<i class=" bold">Contact:</i> (690) 231-9666</div>
+                            <div class="_e2" style="display: none;">
+                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 7 - Lunch with Ziksana</span></div>
+						      <div><i class=" bold">Place: </i><br>
+						<i class=" bold">Time: </i>12:00 pm - 1:30 pm<br>
+                            </div>
                             </div>
                             
-                            <div class="_e3">
-                             <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Aug 20 - Teacher Student Meet</span></div>
+                            <div class="_e3" style="display: none;">
+                             <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 7 - Experiment with Playpen</span></div>
                             	
-<div >Meet & Greet Event </div>
-<div ><i class=" bold">Place: </i> UTD Cafeteria<br/>
-<i class=" bold">Time: </i> 2:00 pm - 4:00 pm</div>
-                            </div>
-                            
-                             <div class="_e4">
-                             <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Aug 20 - Lecture : Applied Physics - Chapter1</span></div>
-                            	
-<div ><i class=" bold">Place: </i>Online Class<br/>
-<i class=" bold">Time: </i>4:00 pm - 6:00 pm</div>
+							<div><i class=" bold">Place: </i><br>
+							<i class=" bold">Time: </i> 2:00 pm</div>
                             </div>
                         </div>
                     

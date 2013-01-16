@@ -34,40 +34,33 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(LoginController.class);
 
-	
-
 	@Autowired
 	AuthenticationService authService;
 
 	@Autowired
 	MemberService memberService;
-	
-	
 
 	@RequestMapping(value = "/login")
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response)
-			 {
+	public ModelAndView login(HttpServletRequest request,
+			HttpServletResponse response) {
 
 		System.out.println(" Entering to LoginController.login");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
-		System.out.println(" Username is "+username);
-		//System.out.println(" password is  "+username);
-		
-		 
-		
+
+		System.out.println(" Username is " + username);
+		// System.out.println(" password is  "+username);
+
 		if (username == null && password == null) {
-			
+
 			ModelAndView mv = new ModelAndView("login");
-			//mv.addObject("applicationTitle", applicationTitle);
+			// mv.addObject("applicationTitle", applicationTitle);
 			return mv;
-			
+
 		}
-		
-		
+
 		System.out.println(" going to auth service");
-		
+
 		boolean userAuthenticated = authService.authenticateUser(username,
 				password);
 
@@ -83,36 +76,27 @@ public class LoginController {
 			memberId.setStorageID(member.getMemberId().toString());
 
 			ZID memberPersonaId = new StringZID();
-			
-			//Determining the educator memberpersona  of the user
+
+			// Determining the educator memberpersona of the user
 			List<MemberPersona> memberPersonas = member.getMemberPersonas();
 			MemberRoleType roleType = null;
-			
-			for (MemberPersona memberPersona: memberPersonas)
-			{
-				if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR)
-				{
-					memberPersonaId.setStorageID(memberPersona.getMemberRoleId().toString());
+
+			for (MemberPersona memberPersona : memberPersonas) {
+				if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR) {
+					memberPersonaId.setStorageID(memberPersona
+							.getMemberRoleId().toString());
 					roleType = MemberRoleType.EDUCATOR;
 					break;
-					
-				}
-				else
-				{
-					memberPersonaId.setStorageID(memberPersona.getMemberRoleId().toString());
+
+				} else {
+					memberPersonaId.setStorageID(memberPersona
+							.getMemberRoleId().toString());
 					roleType = MemberRoleType.LEARNER;
 					break;
-					
+
 				}
-				
-				
-				
-					
-				
+
 			}
-			
-			
-			
 
 			SecurityToken token = new SecurityToken(memberId, memberPersonaId,
 					roleType);
@@ -126,48 +110,40 @@ public class LoginController {
 				response.addCookie(newSessionCookie(request, username));
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
-				System.out.println(" THE EXCEPTION IS "+e.getMessage());
+				System.out.println(" THE EXCEPTION IS " + e.getMessage());
 				e.printStackTrace();
 			}
-			
+
 			ModelAndView mvHome = new ModelAndView("common/pre_launch");
 			session.setAttribute("member", member);
-			
-			
-			
+
 			ThreadLocalUtil.unset();
-		     return mvHome;
+			return mvHome;
 
 		} else {
-            
+
 			// redirect to the login page with error message
 			System.out.println(" User is not authenticated");
 			request.setAttribute("loginResult", "true");
 			ModelAndView mvLogin = new ModelAndView("login");
 			ThreadLocalUtil.unset();
 			return mvLogin;
-			//response.sendRedirect("/login");
-			
+			// response.sendRedirect("/login");
 
 		}
-		
 
 		// If the user is authenticated, create a session and put the secure
 		// token there
 
 	}
 
-	
-
-	
-	
 	Cookie newSessionCookie(HttpServletRequest request, String userId)
 			throws ServletException {
 
 		Cookie cookie = new Cookie(AuthenticationFilter.COOKIE_NAME, "");
 		cookie.setMaxAge(-1);
 		cookie.setPath("/");
-		
+
 		try {
 			cookie.setDomain(new URL(request.getRequestURL().toString())
 					.getHost());
@@ -175,7 +151,6 @@ public class LoginController {
 			throw new ServletException(e);
 		}
 
-		
 		return cookie;
 
 	}

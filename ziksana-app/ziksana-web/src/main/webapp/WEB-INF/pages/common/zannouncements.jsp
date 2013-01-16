@@ -32,10 +32,14 @@
 <script type="text/javascript"
 	src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
 <style>
+
 .row-hover {
-	background-color: #66CCFF ! important;
-	color: blue;
-}
+
+ border:2px solid #27b ! important;
+ background-color:#66CCFF;
+ color: blue;
+ }
+ #updateTable tr:hover td {background: #CADFE2 !important;}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -99,7 +103,7 @@ $(document).ready(function() {
 			success: function( data ) {
 					
 					var output_announcement="";
-					output_announcement+="<table class='table tb1'>";
+					output_announcement+="<table id = 'updateTable' class='table tb1'>";
 					output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
 					output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
 					output_announcement+="<tbody>";
@@ -112,7 +116,7 @@ $(document).ready(function() {
 					
 						
 						
-						output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+						output_announcement+="<tr id='announcement_row_"+index+"' onClick='getMessagedescription("+index+")'><td style=' width:350px;'><label class='edit_message'>"+ $(this).find("message").text()+"</label><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
 						output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 						
 	                   	
@@ -150,7 +154,8 @@ function getMessagedescription(indexValue){
 	outputDetails_description+="<div>";
 	outputDetails_description+="<br/></br><u><label style='font-weight:bold;'>"+announcement_message+"</label></u><label >"+announcement_date+"</label><label  >"+announcement_dec+"</label>";
 	outputDetails_description+="</div>";
-	
+	outputDetails_description+="<button id='return_announcements' style='float: right; display: none;' class='btn btn-info' onClick='hide_Announcement_Sigle_row_values()' name='btn_return'>Return</button>";
+
 	//$("#linksMeeting").fadeIn();
 	$("#linksdetails").html(outputDetails_description);
 	
@@ -171,7 +176,7 @@ function getCategoryByBetweenDates(){
 			        {
 			        
 			        	var output_announcement="";
-			        	output_announcement+="<table class='table tb1'>";
+			        	output_announcement+="<table id = 'updateTable' class='table tb1'>";
 						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
 						output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
 						output_announcement+="<tbody>";
@@ -184,7 +189,7 @@ function getCategoryByBetweenDates(){
 						
 							
 							
-							output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+							output_announcement+="<tr id='announcement_row_"+index+"' onClick='getMessagedescription("+index+")'><td style=' width:350px;'><label class='edit_message'>"+ $(this).find("message").text()+"</label><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
 							output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 							
 		                   	
@@ -211,7 +216,7 @@ function getCategoryByBetweenDates(){
 			        {
 			        
 			        	var output_announcement="";
-			        	output_announcement+="<table class='table tb1'>";
+			        	output_announcement+="<table id = 'updateTable' class='table tb1'>";
 						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
 						output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
 						output_announcement+="<tbody>";
@@ -224,7 +229,7 @@ function getCategoryByBetweenDates(){
 						
 							
 							
-							output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+							output_announcement+="<tr id='announcement_row_"+index+"' onClick='getMessagedescription("+index+")'><td style=' width:350px;'><label class='edit_message'>"+ $(this).find("message").text()+"</label><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
 							output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 							
 		                   	
@@ -248,7 +253,7 @@ function getCategoryByBetweenDates(){
 			        {
 			        
 			        	var output_announcement="";
-			        	output_announcement+="<table class='table tb1'>";
+			        	output_announcement+="<table id = 'updateTable' class='table tb1'>";
 						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
 						output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
 						output_announcement+="<tbody>";
@@ -261,7 +266,7 @@ function getCategoryByBetweenDates(){
 						
 							
 							
-							output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+							output_announcement+="<tr id='announcement_row_"+index+"' onClick='getMessagedescription("+index+")'><td style=' width:350px;'><label class='edit_message'>"+ $(this).find("message").text()+"</label><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
 							output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 							
 		                   	
@@ -285,7 +290,7 @@ function getCategoryByBetweenDates(){
 			        {
 			        
 			        	var output_announcement="";
-			        	output_announcement+="<table class='table tb1'>";
+			        	output_announcement+="<table id = 'updateTable' class='table tb1'>";
 						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Announcement</th>";
 						output_announcement+="<th  width='200px' style='color:#fff;'>Date of Announcement</th></tr>";
 						output_announcement+="<tbody>";
@@ -298,7 +303,7 @@ function getCategoryByBetweenDates(){
 						
 							
 							
-							output_announcement+="<tr id='announcement_row_"+index+"'><td style=' width:350px;'><a  onClick='getMessagedescription("+index+")'><label class='edit_message'>"+ $(this).find("message").text()+"</label></a><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
+							output_announcement+="<tr id='announcement_row_"+index+"' onClick='getMessagedescription("+index+")'><td style=' width:350px;'><label class='edit_message'>"+ $(this).find("message").text()+"</label><label class='edit_desc' style='display:none;'>"+ $(this).find("description").text()+"</label></td>";
 							output_announcement+="<td><label class='edit_description'>"+ $(this).find("announcementDate").text()+"</label></td></tr>";
 							
 		                   	
@@ -406,10 +411,7 @@ function getCategoryByBetweenDates(){
 
 
 			<div id="zReturn" style="margin-top: 5px; height: 30px;">
-				<button id="return_announcements"
-					style="float: right; display: none;" class="btn btn-info"
-					onClick="hide_Announcement_Sigle_row_values()" name="btn_return">Return</button>
-
+				
 
 
 			</div>

@@ -17,10 +17,11 @@
                 <!--menu-->
                     <div class="menu" >
                       <ul>
-                        <li><a href="educatorHomepage.html" class="current">My Home</a><div class="nav-line"></div></li>
-                        <li><a href="myprograms.html">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/secure/educatordashboard" class="current">My Home</a><div class="nav-line"></div></li>
+						
+                        <li><a href="/ziksana-web/secure/showMyPrograms">My Programs</a><div class="nav-line"></div></li>
                         <li><a href="#">My Students</a><div class="nav-line"></div></li>
-                        <li><a href="#" style="margin-left:-10px;">My Locker</a></li>
+                        <li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;My Locker</a></li>
                       </ul>
                     </div>
                     <!--End menu-->

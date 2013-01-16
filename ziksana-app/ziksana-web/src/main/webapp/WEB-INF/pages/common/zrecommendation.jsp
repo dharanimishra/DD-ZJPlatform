@@ -26,6 +26,8 @@
 <![endif]-->
 <style type="text/css">
 	.hideTodo .add_to_todo {display:none; visibility:hidden;}
+	.hide_ignore_hide .ignore_hide {display:none; visibility:hidden;}
+	.zeniwrapper{margin:0 auto;}
 </style>
 
 <script src="../resources/js/isotope/jquery-1.7.2.min.js"></script>
@@ -79,14 +81,19 @@ function show_recommendation_tab(tab){
 					$(data).find("recommenditem").each(function(index){
 						
 						extra_class = '';
-						if($(this).find("category").text() == '1000'){//New
+						if($(this).find("category").text() == '944'){//New
 							extra_class = 'new';
 							
 						}
-						if($(this).find("category").text() == '1001'){//Actioned
+						if($(this).find("category").text() == '942'){//Actioned
 							extra_class = 'actioned';
+							if($(this).find("ignorecount").text() > 1){
+								 extra_class +=' ';
+								extra_class += 'hide_ignore_hide';
+							}
+							
 						}
-						if($(this).find("category").text() == '1002'){//Ignored
+						if($(this).find("category").text() == '943'){//Ignored
 							extra_class = 'ignored';
 							 if($(this).find("ignorecount").text() > 1){
 								 extra_class +=' ';
@@ -100,9 +107,9 @@ function show_recommendation_tab(tab){
 						}  */  
 						
 						output+="<div class='zeniboxrewards "+extra_class+"' id='rec1'>";
-						output+="<div  class='zenititle'><label id='recomendId"+index+"'> "+ $(this).find("recommendationId").text()+"</label></div>";  
-						output+="<div  class='zenititle'><label id='categoryId"+index+"'> "+ $(this).find("category").text()+"</label></div>";
-						output+="<div  class='zenititle'><label id='recomendTitle"+index+"'> "+ $(this).find("title").text()+"</label><label> "+ $(this).find("ignorecount").text()+"</label></div>";
+						output+="<div  class='zenititle'><label style='display:none;' id='recomendId"+index+"'> "+ $(this).find("recommendationId").text()+"</label></div>";  
+						output+="<div  class='zenititle'><label style='display:none;' id='categoryId"+index+"'> "+ $(this).find("category").text()+"</label></div>";
+						output+="<div  class='zenititle'><label id='recomendTitle"+index+"'> "+ $(this).find("title").text()+"</label><label style='display:none;'> "+ $(this).find("ignorecount").text()+"</label></div>";
 						output+="<div class='zenisubtitle'>";
 						output+="<div class='zsublink1 zenileft'>Created by : <span class='zlinktext'>Ziksana </span></div>";
 						output+="<div class='zsublink2 zenileft'>Valid upto : <span class='zlinktext2'> 31/09/2012  </span></div><br/><br/></div>";
@@ -194,7 +201,7 @@ function addTodo_and_update_recommendation(index){
 	categoryId= $('#categoryId'+index+'').html();
 	
 	$.post( '<c:url value='/secure/createtodoandrecomendationupdation'/>'
-	 		 , {'categoryName':recommend_title,'notificationContent':recommend_description,'recommendationId':recommend_id,'category':1001}
+	 		 , {'categoryName':recommend_title,'notificationContent':recommend_description,'recommendationId':recommend_id,'category':942}
 	 		 , function( data )
 	  			{
 	  				if(data=='1'){
@@ -215,7 +222,7 @@ function moveIgnored(index){
 	categoryId= $('#categoryId'+index+'').html();
 	
 	 $.post( '<c:url value='/secure/updaterecommendation'/>'
-    		 , {'recommendationId':recommend_id,'category':1002}
+    		 , {'recommendationId':recommend_id,'category':943}
     		 , function( data )
      			{
 
@@ -335,12 +342,18 @@ function moveIgnored(index){
 }
 
 .btn-info-hover {
-    background-color: #0000FF;
-    background-image: linear-gradient(to bottom, #0000FF, #0066FF);
+ background:#edeaea;
+    background-color: #edeaea;
+    background-image: linear-gradient(to top, #edeaea, #edeaea,#edeaea);
     background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    color: #FFFFFF;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    color: #000000;
+    
+}
+.btn-info-hover:hover
+{
+background:#edeaea;
+color: #000000;
 }
 
 </style>

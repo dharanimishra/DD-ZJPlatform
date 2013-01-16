@@ -12,6 +12,7 @@
 					<question>${answered.question.text}</question>		
 					<responsedate>${answered.question.responseDate}</responsedate>		
 					<answers>	
+						<memberpersonalitytestid>${answered.choice.memPstTestId}</memberpersonalitytestid>
 						<answerid>${answered.choice.index}</answerid>					
 						<answer>${answered.choice.text}</answer>
 						

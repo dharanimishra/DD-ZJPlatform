@@ -120,7 +120,7 @@ parent.jQuery.fancybox.close();
 								//console.log( 'Sample of data:', data);
 				}
 				var output="";
-					output+="<div class='alerts' style='width: 100%; height: 100%;'>";
+					output+="<div class='alerts' style='width: 100%; height: 100%;margin-left:40px;'>";
 					output+="<div class='helptext'>Alerts</div>";
 					$(data).find("alertitem").each(function(index){
 						
@@ -129,7 +129,7 @@ parent.jQuery.fancybox.close();
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
 						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
-						output+="<div class='alertinfo-category'style='display:inline;' >"+$(this).find("category").text()+"</div>";
+						output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 						
 						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
 						
@@ -192,9 +192,17 @@ parent.jQuery.fancybox.close();
 	 		return string;
 	 	}	
 	 } 
+	 function short_string_category(value){
+			if(value.length > 9){
+				return value.substring(0,9)+'...';
+			} else {
+				return value;
+			}	
+		}
+
 	</script>
 	<div class="todoWrap">
-	<div  class="alert_todo" style="margin-left:70px;" >
+	<div  class="alert_todo" style="margin-left:10px;" >
 	 
 	                   		 <div id= "alertplaceholder" style="width:600px;height:500px;" class="alerts" >
 	        				 

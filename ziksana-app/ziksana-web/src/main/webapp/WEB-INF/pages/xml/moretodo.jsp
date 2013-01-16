@@ -23,9 +23,9 @@
 
 <head>
 <style type="text/css">
-body{
-background-color:#ffffff;
-}
+body {
+    background: #FFFFFF url("images/grain-light.png");
+   }
 .todoWrap
 {
 width:750px;
@@ -132,9 +132,9 @@ $(document).ready(function() {
 						output+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
 						output+="<img src='${todo}' alt='Info' /></div>";
-						output+="<div class='todoinfo-category'style='display:inline;' >"+$(this).find("categoryName").text()+"</div>";
+						output+="<div class='todoinfo-category todotip_container'style='display:inline;' >"+short_string_category($(this).find("categoryName").text())+"<div class='categorytip'>"+$(this).find("categoryName").text()+" </div></div>";
 						
-						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'><a rel='tipsy'  style='cursor:default;' >"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+" </div></div><input type='checkbox' onChange='deleteTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+						output+="<div class='todotip_more_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'><a rel='tipsy'  style='cursor:default;' >"+short_string($(this).find('subject').text())+"</a><div class='todomoretip'>"+$(this).find("subject").text()+" </div></div><input type='checkbox' onChange='deleteTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
 						
 						output+="</div></div>";
 						
@@ -216,12 +216,19 @@ function add_new_category_item(){
 /// TODO: move this function to a common js file later
 function short_string(string){
 	
-	if(string.length > 50){
-		return string.substring(0,50)+'...';
+	if(string.length > 65){
+		return string.substring(0,65)+'...';
 	} else {
 		return string;
 	}	
 } 
+function short_string_category(value){
+	if(value.length > 9){
+		return value.substring(0,9)+'...';
+	} else {
+		return value;
+	}	
+}
 function capitalize(s){
     return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
 };
@@ -229,8 +236,8 @@ function capitalize(s){
 </script>
  <!-- End -->
 <title>Todo List</title>
-<body>
-<div class="todoWrap">
+<body style="background-color:#FFFFFF;">
+<div class="todoWrap" style="background-color:#FFFFFF;">
 <!-- <div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div> -->
 <div class="helptext">
         	My To Do's
@@ -254,7 +261,7 @@ function capitalize(s){
 
 </div> <!--end of container -->  
 	<hr/>
-<a class='btn btn-info f-r' onclick='closeit()'> Return </a> 
+<a class='btn btn-info f-r' style='margin-right:70px;' onclick='closeit()'> Return </a> 
 <a class='btn btn-info f-r add_todo_button' onclick='$("#add_todo_fields_container").show(); $(this).attr("disabled",true);' style='margin-right:10px;'> Add TODO </a>
 </div>
 

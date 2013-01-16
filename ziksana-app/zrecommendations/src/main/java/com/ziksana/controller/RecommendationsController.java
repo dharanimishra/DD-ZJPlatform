@@ -146,7 +146,9 @@ public class RecommendationsController {
 		todo.setCategory(categoryName);
 		todo.setNotificationContent(notificationContent.toString());
 		todo.setActivationDate(new Date());
-		todo.setNotificationType(2);
+		
+		todo.setNotificationType(491);
+		todo.setPriority(163);
 		MemberPersona creatingMember = new MemberPersona();
 		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
 				.getToken().getMemberPersonaId().getStorageID()));
