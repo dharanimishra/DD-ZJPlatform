@@ -5,6 +5,7 @@ package com.ziksana.service.subscription.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,17 +32,18 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	SubscriptionMapper subscriptionMapper;
 
 	@Override
-	public List<Note> getLearnerNotes(Integer courseId, Integer componentId, Integer contentId, Integer type) {
+	public List<Note> getLearnerNotes(Integer courseId, Integer componentId,
+			Integer contentId, Integer type) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
 		// TODO
 		Integer learnCmpId = null;
 		Integer learnCmpCntId = null;
 
 		return subscriptionMapper.getLearnerNotes(
-				Integer.valueOf(memberRoleId), Integer.valueOf(courseId
-						), componentId,
-				contentId, type);
+				Integer.valueOf(memberRoleId), Integer.valueOf(courseId),
+				componentId, contentId, type);
 	}
 
 	@Override
@@ -74,8 +76,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 				learnCompCntId);
 	}
 
-	
-
 	/*
 	 * @Override public List<Note> getTOC(Node node) {
 	 * 
@@ -90,7 +90,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	 */
 
 	@Override
-	public int addLearnerContent(Integer courseId, Integer componentId, Integer contentId, String noteTitle, String noteDescription, Integer noteDuration, Integer type){
+	public int addLearnerContent(Integer courseId, Integer componentId,
+			Integer contentId, String noteTitle, String noteDescription,
+			Integer noteDuration, Integer type) {
 		// TODO Auto-generated method stub
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
@@ -104,12 +106,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		note.setNoteTitle(noteTitle);
 		note.setNoteDescription(noteDescription);
 		note.setNoteDuration(noteDuration);
-		
-        note.setCourseId(courseId);
-		
-		note.setType(type);
 
-		
+		note.setCourseId(courseId);
+
+		note.setType(type);
 
 		return subscriptionMapper.addNote(note);
 
@@ -176,7 +176,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 		note.setMemberRoleId(Integer.valueOf(memberRoleId));
 		note.setContent(question);
-	    note.setCourseId(courseId);
+		note.setCourseId(courseId);
 
 		note.setType(Integer.valueOf(node.getType()));
 
@@ -199,11 +199,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	@Override
 	public List<ContentReference> getContentTOC(Integer courseId, Node node) {
-		
+
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
-		
-		
+
 		return subscriptionMapper.getContentTOC(7, Integer
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());
@@ -211,52 +210,67 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	@Override
 	public List<LearningProgram> getLearningPrograms() {
-		
+
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
-		
+
 		return subscriptionMapper.getLearningPrograms(Integer
-				.valueOf(memberRoleId)); 
+				.valueOf(memberRoleId));
 	}
 
 	@Override
 	public List<Course> getCoursesByLearningProgram(Integer learningProgramId) {
-		
+
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
-		
-		return subscriptionMapper.getCoursesByLearningProgram(Integer.valueOf(memberRoleId), learningProgramId);
+
+		return subscriptionMapper.getCoursesByLearningProgram(
+				Integer.valueOf(memberRoleId), learningProgramId);
 	}
 
 	@Override
 	public int deleteLearnerContent(Integer learnerContentId) {
-		 return subscriptionMapper.deleteNote(learnerContentId);
-		
+		return subscriptionMapper.deleteNote(learnerContentId);
+
 	}
 
 	@Override
 	public Integer addEducatorContent(Integer courseId, Integer componentId,
-			Integer contentId, Integer type, String note) {
+			Integer contentId, Integer type, String description, String url,
+			String coordinates, Integer duration) {
 		// TODO Auto-generated method stub
-		
+
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
+
+		return subscriptionMapper.addEducatorContent(
+				Integer.valueOf(memberRoleId), type, componentId,
+				contentId, courseId, description, url, coordinates, duration);
 		
 		
-		return subscriptionMapper.addEducatorContent(Integer.valueOf(memberRoleId), type, note, componentId, contentId, courseId);
+		
+		
+		
 	}
 
 	@Override
-	public int editLearnerContent(Integer learnerContentId,
-			String description, int duration, String title) {
+	public int editLearnerContent(Integer learnerContentId, String description,
+			int duration, String title) {
 		// TODO Auto-generated method stub
-		return subscriptionMapper.updateNote(learnerContentId, description, duration,title);
+		return subscriptionMapper.updateNote(learnerContentId, description,
+				duration, title);
 	}
 
 	@Override
 	public int deleteEducatorContent(Integer contentId) {
 		// TODO Auto-generated method stub
 		return subscriptionMapper.deleteEducatorContent(contentId);
+	}
+
+	@Override
+	public int editEducatorContent() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -38,41 +38,34 @@ public interface SubscriptionService {
 
 	public List<Reference> getEducatorSuggestedReferences(Integer courseId,
 			Node node);
+
+	public List<ContentReference> getContentTOC(Integer courseId, Node node);
+
+	public Integer addEducatorContent(Integer courseId, Integer componentId,
+			Integer contentId, Integer contentType, String contentDesc,
+			String url, String coordinates, Integer duration);
 	
-	public List<ContentReference> getContentTOC(Integer courseId,
-			Node node);
 	
-	public Integer addEducatorContent(Integer courseId, Integer componentId,Integer contentId, Integer contentType, String contentDesc);
+	public int editEducatorContent();
 	
-	
+
 	public int deleteEducatorContent(Integer contentId);
-	
-	
-	
-	
-	
-	
-	
 
 	// end
 
 	// Learner services
 	public List<Note> getLearnerContent(SubscriptionCourse course, Node node);
 
-	
+	public List<Note> getLearnerNotes(Integer courseId, Integer componentId,
+			Integer contentId, Integer type);
 
-	public List<Note> getLearnerNotes(Integer courseId, Integer componentId, Integer contentId, Integer type);
-	
-	
-	public List<Note> getLearnerQuestions(Integer courseId, Integer componentId, Integer contentId);
-	
-	
+	public List<Note> getLearnerQuestions(Integer courseId,
+			Integer componentId, Integer contentId);
+
 	public int deleteLearnerContent(Integer learnerContentId);
-	
-	
-	public int editLearnerContent(Integer learnerContentId, String description, int duration, String title);
-	
-	
+
+	public int editLearnerContent(Integer learnerContentId, String description,
+			int duration, String title);
 
 	/**
 	 * Based on the nodetype(learning component and content..) and content
@@ -81,31 +74,32 @@ public interface SubscriptionService {
 	 * @param content
 	 * @param node
 	 */
-	public int addLearnerContent(Integer courseId, Integer componentId, Integer contentId, String noteTitle, String noteDescription, Integer noteDuration, Integer type);
+	public int addLearnerContent(Integer courseId, Integer componentId,
+			Integer contentId, String noteTitle, String noteDescription,
+			Integer noteDuration, Integer type);
 
-	
 	/**
-	 * Adding learner question(s) 
+	 * Adding learner question(s)
+	 * 
 	 * @param question
 	 * @param node
 	 */
-	public void addLearnerQuestion(Integer courseId,String question, Node node);
-	
-	
+	public void addLearnerQuestion(Integer courseId, String question, Node node);
+
 	/**
-	 * It returns the user subscribed learning programs. 
+	 * It returns the user subscribed learning programs.
+	 * 
 	 * @param memberRoleId
 	 * @return
 	 */
-	public List<LearningProgram>  getLearningPrograms();
-	
-	
+	public List<LearningProgram> getLearningPrograms();
+
 	/**
 	 * It returns the list of courses by learningProgramId
+	 * 
 	 * @param learningProgramId
 	 * @return
 	 */
 	public List<Course> getCoursesByLearningProgram(Integer learningProgramId);
-	
 
 }

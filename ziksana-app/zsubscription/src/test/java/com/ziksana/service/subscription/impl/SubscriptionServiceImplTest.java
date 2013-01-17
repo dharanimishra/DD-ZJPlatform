@@ -163,7 +163,7 @@ public class SubscriptionServiceImplTest {
 	
 	@Test
 	public void testAddEducatorContent() {
-		Integer contentEnrichmentId = subscriptionService.addEducatorContent(100, 7, 10, 7, "coming from int test");
+		Integer contentEnrichmentId = subscriptionService.addEducatorContent(100, 7, 10, 7, "coming from int test", "http://google.com", "xy", 2);
 		assertTrue(contentEnrichmentId>0);
 		
 		
