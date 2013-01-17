@@ -24,7 +24,7 @@ a {
 }
 
 .menu ul li a.current {
-	background-image: url(/ziksana-web/resources/images/../images/nav-arow.png);
+	background-image: url(/ziksana-web/resources/images/nav-arow.png);
 	background-repeat: no-repeat;
 	background-position: center 43px;
 	color: #6D9EC5;
@@ -105,7 +105,7 @@ a {
 	padding-right: 23px;
 }
 .announcement-icon:hover  {
-	background-image: url(../images/icons/announcement.png);
+	background-image: url(/ziksana-web/resources/images//images/icons/announcement.png);
 	background-repeat: no-repeat;
 	background-position: right -28px;
 	background-color: #7eb9e5;
@@ -117,7 +117,7 @@ a {
 	float: left;
 	margin: 5px;
 	line-height: 25px;
-	background-image: url(../images/icons/amount.png);
+	background-image: url(/ziksana-web/resources/images/icons/amount.png);
 	background-repeat: no-repeat;
 	background-position: right -5px;
 	padding-left: 7px;
@@ -128,7 +128,7 @@ a {
 }
 
 .amount-icon:hover  {
-	background-image: url(../images/icons/amount.png);
+	background-image: url(/ziksana-web/resources/images/icons/amount.png);
 	background-repeat: no-repeat;
 	background-position: right -29px;
 	background-color: #FF6814;
@@ -139,7 +139,7 @@ a {
 	float: left;
 	margin: 5px;
 	line-height: 25px;
-	background-image: url(../images/icons/peoples.png);
+	background-image: url(/ziksana-web/resources/images/icons/peoples.png);
 	background-repeat: no-repeat;
 	background-position: right -4px;
 	padding-left: 7px;
@@ -148,7 +148,7 @@ a {
 	background-color: #FF6814;
 }
 .peoples-icon:hover  {
-	background-image: url(../images/icons/peoples.png);
+	background-image: url(/ziksana-web/resources/images/icons/peoples.png);
 	background-repeat: no-repeat;
 	background-position: right -28px;
 	background-color: #7eb9e5;
@@ -160,14 +160,14 @@ a {
 
 .my-account {
 	padding-right: 23px;
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: 84px -47px;
 }
 
 .my-account:hover {
 	padding-right: 23px;
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: 84px -67px;
 	text-decoration: none;
@@ -186,7 +186,7 @@ a {
 	left: 736px;
 	top: 33px;
 	z-index: 2;
-	background-image: url(../images/icons/search.png);
+	background-image: url(/ziksana-web/resources/images/icons/search.png);
 	background-repeat: no-repeat;
 	text-indent: -999999px;
 	height: 21px;
@@ -202,7 +202,7 @@ a {
 	background-color: #FFF;
 }
 #submit:hover {
-	background-image: url(../images/icons/search-hover.png);
+	background-image: url(/ziksana-web/resources/images/icons/search-hover.png);
 	background-repeat: no-repeat;
 	text-decoration: none;
 }
@@ -213,7 +213,7 @@ ul .srch-op-a {
 li a  .srch-op-a  {
 	height: 37px;
 	width: 37px;
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: -28px -49px;
 	display: block;
@@ -222,7 +222,7 @@ li a  .srch-op-a  {
 }
 
 li a:hover .srch-op-a  {
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: -28px -93px;
 
@@ -235,7 +235,7 @@ li .srch-op-b {
 li a .srch-op-b  {
 	height: 37px;
 	width: 37px;
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: -79px -49px;
 	display: block;
@@ -244,7 +244,7 @@ li a .srch-op-b  {
 	padding-right:3px;
 }
 li a:hover .srch-op-b  {
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: -79px -93px;
 
@@ -258,7 +258,7 @@ li  .srch-op-c {
 li a .srch-op-c  {
 	height: 37px;
 	width: 37px;
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: -132px -49px;
 	display: block;
@@ -267,7 +267,7 @@ li a .srch-op-c  {
 	padding-right:5px;
 }
 li a:hover .srch-op-c  {
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: -132px -93px;
 
@@ -281,7 +281,7 @@ li .srch-op-d {
 li a .srch-op-d  {
 	height: 39px;
 	width: 37px;
-	background-image: url(../images/icons/toolb.png);
+	background-image: url(/ziksana-web/resources/images/icons/toolb.png);
 	background-repeat: no-repeat;
  margin-top:3px;
 	display: block;
@@ -290,7 +290,7 @@ li a .srch-op-d  {
 	padding-right:3px;
 }
 li a:hover .srch-op-d  {
-	background-image: url(../images/icons/tool.png);
+	background-image: url(/ziksana-web/resources/images/icons/tool.png);
 	background-repeat: no-repeat;
 
 }
@@ -303,7 +303,7 @@ li .srch-op-e {
 li a .srch-op-e  {
 	height: 39px;
 	width: 37px;
-	background-image: url(../images/icons/zgoodb.png);
+	background-image: url(/ziksana-web/resources/images/icons/zgoodb.png);
 	background-repeat: no-repeat;
  margin-top:3px;
 	display: block;
@@ -312,7 +312,7 @@ li a .srch-op-e  {
 	padding-right:3px;
 }
 li a:hover .srch-op-e {
-	background-image: url(../images/icons/zgood.png);
+	background-image: url(/ziksana-web/resources/images/icons/zgood.png);
 	background-repeat: no-repeat;
 
 }
@@ -350,13 +350,13 @@ a img {
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	border-radius:4px;
-    *background:transparent url("../images/signin-nav-bg-ie.png") no-repeat 0 0;
+    *background:transparent url("/ziksana-web/resources/images/signin-nav-bg-ie.png") no-repeat 0 0;
     *padding:4px 12px 6px;
 	line-height: 24px;
 	text-align: center;
 }
 .topnav a.signin:hover {
-    *background:transparent url("../images/signin-nav-bg-hover-ie.png") no-repeat 0 0;
+    *background:transparent url("/ziksana-web/resources/images/signin-nav-bg-hover-ie.png") no-repeat 0 0;
     *padding:4px 12px 6px;
 }
 .topnav a.signin, .topnav a.signin:hover {
@@ -369,7 +369,7 @@ a.signin {
     margin-left:3px;
 }
 a.signin span {
-	background-image:url(../images/toggle_down_light.png);
+	background-image:url(/ziksana-web/resources/images/toggle_down_light.png);
 	background-repeat:no-repeat;
 	background-position:100% 50%;
 	padding:4px 20px 6px 10px;
@@ -386,7 +386,7 @@ a.signin span {
     width:170px;
 }
 a.signin.menu-open span {
-    background-image:url("../images/toggle_up_dark.png");
+    background-image:url("/ziksana-web/resources/images/toggle_up_dark.png");
     /*color:#4E6780;*/
 	color:#E0E0E0;
 }
@@ -500,7 +500,7 @@ h3 {
 	display: block;
 	height: 12px;
 	background-color: #FFF;
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: 191px -95px;
 	font-family: Helvetica, sans-serif;
@@ -526,7 +526,7 @@ h3 a {color: #000; text-decoration:none;}
 	bottom: 0px;
 	display: block;
 	height: 12px;
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: 191px -115px;
 	}
@@ -555,7 +555,7 @@ Percentage Nav Bar
 	float: left;
 	margin: 5px;
 	line-height: 25px;
-	background-image: url(../images/icons/amount.png);
+	background-image: url(/ziksana-web/resources/images/icons/amount.png);
 	background-repeat: no-repeat;
 	background-position: right -5px;
 	padding-left: 7px;
@@ -578,7 +578,7 @@ Percentage Nav Bar
 	padding-left: 7px;
 	display: block;
 	padding-right: 23px;
-	background-image: url(../images/prg.jpg);	
+	background-image: url(/ziksana-web/resources/images/prg.jpg);	
 }
 
 .amount-icon4 {
@@ -593,7 +593,7 @@ Percentage Nav Bar
 	padding-left: 7px;
 	display: block;
 	padding-right: 23px;
-	background-image: url(../images/prg.jpg);	
+	background-image: url(/ziksana-web/resources/images/prg.jpg);	
 }
 
 .amount-icon2  {
@@ -608,7 +608,7 @@ Percentage Nav Bar
 	padding-left: 7px;
 	display: block;
 	padding-right: 23px;
-	background-image: url(../images/prg.jpg);
+	background-image: url(/ziksana-web/resources/images/prg.jpg);
 }
 
 .amount-icon3  {
@@ -623,11 +623,11 @@ Percentage Nav Bar
 	padding-left: 7px;
 	display: block;
 	padding-right: 23px;
-	background-image: url(../images/prg.jpg);	
+	background-image: url(/ziksana-web/resources/images/prg.jpg);	
 }
 
 .amount-icon:hover  {
-	background-image: url(../images/icons/amount.png);
+	background-image: url(/ziksana-web/resources/images/icons/amount.png);
 	background-repeat: no-repeat;
 	background-position: right -29px;
 	background-color: #FF6814;
@@ -673,7 +673,7 @@ Percentage Nav Bar
 /*;;;;;;;media icons;;;;;*/
 
 .zicons{
-	background-image:url(../images/icons/zicons.png);
+	background-image:url(/ziksana-web/resources/images/icons/zicons.png);
 	background-repeat: no-repeat;
 	border:none;
 }
@@ -704,7 +704,7 @@ Percentage Nav Bar
 }
 
 .lar-patt{
-	background-image: url(../images/icons/zicons.png);
+	background-image: url(/ziksana-web/resources/images/icons/zicons.png);
 	background-repeat: repeat-x;
 	background-position: -18px -390px;
 	border: 1px solid #E4E4E4;
@@ -1154,51 +1154,51 @@ Percentage Nav Bar
 /*;;;;;;; end media icons;;;;;*/
 /*;;;;;;; page icons;;;;;*/
 .page-icons{
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 }
 
 .Icon-Calendar {
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: -180px -184px;
 }
 
 .Icon-Calendar3 {
-	background-image: url(../images/icons/calendar3.png);
+	background-image: url(/ziksana-web/resources/images/icons/calendar3.png);
 	background-repeat: no-repeat;
 	
 }
 
 
 .Icon-edit {
-	background-image: url(../images/editb.png);
+	background-image: url(/ziksana-web/resources/images/editb.png);
 	background-repeat: no-repeat;
 	
 }
 
 .Icon-view {
-	background-image:url(../images/viewb.png);
+	background-image:url(/ziksana-web/resources/images/viewb.png);
 	background-repeat: no-repeat;
 	
 }
 
 .Icon-delete {
-	background-image:url(../images/deleteb.png);
+	background-image:url(/ziksana-web/resources/images/deleteb.png);
 	background-repeat: no-repeat;
 	
 }
 
 
 .Icon-Strategy {
-	background-image: url(../images/icons/playbook.png);
+	background-image: url(/ziksana-web/resources/images/icons/playbook.png);
 	background-repeat: no-repeat;
 	height:25px;
 	width:25px;
 	
 }
 .Icon-List-w-Images {
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: -182px -213px;
 	margin-top: 8px;
@@ -1207,13 +1207,13 @@ Percentage Nav Bar
 	margin-left: 5px;
 }
 .Icon-exclamation {
-	background-image: url(../images/icons/icons.png);
+	background-image: url(/ziksana-web/resources/images/icons/icons.png);
 	background-repeat: no-repeat;
 	background-position: -180px -241px;
 }
 
 .Icon-listp {
-	background-image: url(../images/led/list.png);
+	background-image: url(/ziksana-web/resources/images/led/list.png);
 	background-repeat: no-repeat;
 	cursor:pointer;
 }
@@ -1223,7 +1223,7 @@ Percentage Nav Bar
 }
 
 .Icon-create {
-	background-image: url(../images/led/create.png);
+	background-image: url(/ziksana-web/resources/images/led/create.png);
 	background-repeat: no-repeat;
 	cursor:pointer;
 }
@@ -1276,7 +1276,7 @@ display:inline;
 	top: 7px;
 	right: 0px;
 	bottom: 0px;
-	background-image:url(../images/icons/zicons.png);
+	background-image:url(/ziksana-web/resources/images/icons/zicons.png);
 	background-repeat: no-repeat;
 	border:none;
 	background-position: -1459px -352px;
@@ -1290,7 +1290,7 @@ display:inline;
 	top: 7px;
 	right: -19px;
 	bottom: 0px;
-	background-image:url(../images/icons/zicons.png);
+	background-image:url(/ziksana-web/resources/images/icons/zicons.png);
 	background-repeat: no-repeat;
 	border:none;
 	background-position: -1486px -352px;

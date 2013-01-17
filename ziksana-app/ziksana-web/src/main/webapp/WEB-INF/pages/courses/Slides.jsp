@@ -77,9 +77,9 @@
             <div class="slides_container">
           
 			
-			<c:forEach var="i" begin="1" end="${content.numberOfThumbnails}" step="1" varStatus ="status">
+			<c:forEach var="i" begin="0" end="${content.numberOfThumbnails}" step="1" varStatus ="status">
 				<div>
-				<image src="/ziksana-web/resources/content/${content.contentId}/thumbnails/<c:out value="${i}" />.jpg" />
+				<image src="http://54.243.235.88/zikload-xml/uploads/${content.thumbnailPicturePath}img<c:out value="${i}" />.jpg" />
 				</div>
 			</c:forEach>
           

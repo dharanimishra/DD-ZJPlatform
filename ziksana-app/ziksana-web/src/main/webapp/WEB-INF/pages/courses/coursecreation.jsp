@@ -463,7 +463,7 @@ span.standartTreeRow:hover {
 																align="left" />
 															<p class="labelclass">Associate an Image for your
 																Course</p>
-															<input type="file" id="Cmoduleimgupl"
+															<input type="file" readonly="readonly" id="Cmoduleimgupl" 
 																placeholder="specify an image"
 																style="margin-left: 20px;" /> <a href="#linkurl"
 																id="cancellinkadd"><img

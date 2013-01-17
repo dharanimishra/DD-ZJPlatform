@@ -451,7 +451,7 @@ section {
 	margin-top: 5px;
 }
 #calendar  {
-	/*background-image: url(../images/clok.png);*/
+	/*background-image: url(/ziksana-web/resources/images/images/clok.png);*/
 	background-position: right top;
 	background-repeat: no-repeat;
 	float: left;
@@ -607,8 +607,8 @@ a.icon-contact:hover {
 .txt-r{ text-align:right;}
 .txt-l{ text-align:left;}
 
-.info{ padding-left:20px; line-height:20px; background:url(../images/icons/icons.png) -184px -444px no-repeat; color:#369;}
-.info:hover{ text-indent:20px; line-height:20px; background:url(../images/icons/icons.png) -184px -466px no-repeat;}
+.info{ padding-left:20px; line-height:20px; background:url(/ziksana-web/resources/images/icons/icons.png) -184px -444px no-repeat; color:#369;}
+.info:hover{ text-indent:20px; line-height:20px; background:url(/ziksana-web/resources/images/icons/icons.png) -184px -466px no-repeat;}
 .white-in {
     border: 1px solid #FDFDFD;
     border-radius: 2px;

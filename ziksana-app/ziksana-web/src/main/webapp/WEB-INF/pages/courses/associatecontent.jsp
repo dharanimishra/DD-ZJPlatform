@@ -50,6 +50,8 @@
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
 <script type='text/javascript'
 	src="/ziksana-web/resources/js/ziksana/coursecreation/associate.js"></script>
+	<script type='text/javascript'
+	src="/ziksana-web/resources/js/custom/course_associate.js"></script>
 <!-- scripts for tree -->
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/tree/gettheme.js"></script>
@@ -115,6 +117,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/ziksana-web/resources/css/uploadify.css" />
 <script type="text/javascript" src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
 	<style type="text/css">
 		#message {padding: 1em 0; color: steelblue;}
 	</style>
@@ -488,19 +491,20 @@ span.standartTreeRow:hover {
 		$('#file_upload').uploadify({
 			'swf'      : '/ziksana-web/resources/swf/uploadify.swf',
 			'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
-			'debug': true,
+			//'debug': true,
 			//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 			'onUploadSuccess' : function(file, data, response) {
 				json_string = data;
 				data_object = $.parseJSON(json_string);
 				console.log(data_object);
 				if(data_object.Uploaded == 'true'){
-					console.log('inside true');
+					//console.log('inside true');
 					//$('#message').html(data_object);
 					$('#ContentPath').val(data_object.ContentPath);
 					$('#ThumbnailPicturePath').val(data_object.ThumbnailPicturePath);
 					$('#NumberOfThumbnails').val(data_object.NumberOfThumbnails);
 					$('#ContentType').val(data_object.ContentType);
+					$('#message').html('Upload Successful! You may now click Submit Button to Associate the Content!');
 					
 				} else { //there is an error in the upload process
 					
@@ -854,6 +858,9 @@ span.standartTreeRow:hover {
 				cancel : true
 			});
 		</script>
+		
+
+		
 
 
 		<!--End Current Progress-->

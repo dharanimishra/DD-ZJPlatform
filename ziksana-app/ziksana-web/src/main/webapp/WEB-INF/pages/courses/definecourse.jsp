@@ -535,7 +535,7 @@ span.standartTreeRow:hover {
 										<br /> <img
 											src="/ziksana-web/resources/images/modelthinking.png"
 											alt="Modelthinking" width="94" height="94" border="3"
-											style="border: 2px solid #ccc;" /> <input type="file"
+											style="border: 2px solid #ccc;" /> <input readonly="readonly" type="file"
 											id="Cimageupl" style="margin-left: 20px;" /> <a
 											href="#linkurl" id="cancellink"><img
 											src="/ziksana-web/resources/images/delete.jpg" />Cancel</a>

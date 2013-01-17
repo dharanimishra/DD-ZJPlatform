@@ -10,7 +10,7 @@
     outline: none;
     
 	
-	background: url(/ziksana-web/resources/images/icons/up.jpg) no-repeat right;
+	background: url(../../../images/icons/up.jpg) no-repeat right;
 	
 	padding-left:8px;
 	/*vertical-align:middle;*/
@@ -35,13 +35,13 @@ font-size:12px;
 
 .smartspinner.up
 {
-	background:url(/ziksana-web/resources/images/icons/up.jpg) no-repeat right;
+	background:url(../../../images/icons/up.jpg) no-repeat right;
 	background-color:#f6f6f6;
 	cursor:pointer;
 }
 .smartspinner.down
 {
-	background: url(/ziksana-web/resources/images/icons/up.jpg) no-repeat right;
+	background: url(../../../images/icons/up.jpg) no-repeat right;
 	background-color:#f6f6f6;
 	cursor:pointer;
 }
