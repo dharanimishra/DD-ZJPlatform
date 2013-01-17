@@ -16,39 +16,70 @@ import com.ziksana.domain.institution.LearningProgram;
 
 /**
  * @author prabu
- *
+ * 
  */
 public interface SubscriptionMapper {
-	
-	public List<Note> getLearnerNotes(@Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId, @Param("learnCompId") Integer learnCompId,  @Param("learnCmpContId") Integer learnCmpContId, @Param("type") Integer type);
-	
-	public List<EducatorNote> getEducatorNotes(@Param("contentType") Integer contentType, @Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId,  @Param("learnCompId") Integer learnCompId,  @Param("learnCmpContId") Integer learnCmpContId);
-	
-	
-	public List<Reference> getEducatorReferences(@Param("contentType") Integer contentType, @Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId,  @Param("learnCompId") Integer learnCompId,  @Param("learnCmpContId") Integer learnCmpContId);
-	
-	
-	public List<ContentReference> getContentTOC(@Param("contentType") Integer contentType, @Param("memberRoleId") Integer memberRoleId,@Param("subscrCourseId") Integer subscrCourseId,  @Param("learnCompId") Integer learnCompId,  @Param("learnCmpContId") Integer learnCmpContId);
-	
-	
-	
-	public List<Note> getContentByType(@Param("subscrCourseId") Integer subscrCourseId, @Param("learnCompId") Integer learnCompId,  @Param("learnCmpContId") Integer learnCmpContId, 
-			@Param("memberRoleId") Integer memberRoleId, @Param("noteType") Integer noteType);
-	
+
+	public List<Note> getLearnerNotes(
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("subscrCourseId") Integer subscrCourseId,
+			@Param("learnCompId") Integer learnCompId,
+			@Param("learnCmpContId") Integer learnCmpContId,
+			@Param("type") Integer type);
+
+	public List<EducatorNote> getEducatorNotes(
+			@Param("contentType") Integer contentType,
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("subscrCourseId") Integer subscrCourseId,
+			@Param("learnCompId") Integer learnCompId,
+			@Param("learnCmpContId") Integer learnCmpContId);
+
+	public List<Reference> getEducatorReferences(
+			@Param("contentType") Integer contentType,
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("subscrCourseId") Integer subscrCourseId,
+			@Param("learnCompId") Integer learnCompId,
+			@Param("learnCmpContId") Integer learnCmpContId);
+
+	public List<ContentReference> getContentTOC(
+			@Param("contentType") Integer contentType,
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("subscrCourseId") Integer subscrCourseId,
+			@Param("learnCompId") Integer learnCompId,
+			@Param("learnCmpContId") Integer learnCmpContId);
+
+	public List<Note> getContentByType(
+			@Param("subscrCourseId") Integer subscrCourseId,
+			@Param("learnCompId") Integer learnCompId,
+			@Param("learnCmpContId") Integer learnCmpContId,
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("noteType") Integer noteType);
+
 	public int addNote(Note note);
-	
+
 	public int deleteNote(Integer noteId);
-	
-	
+
 	public int deleteEducatorContent(Integer contentId);
-	
-	
-	
-	public int updateNote(@Param("noteId") Integer noteId,  @Param("desc") String desc, @Param("duration") int duration,@Param("title") String title);
-	
+
+	public int updateNote(@Param("noteId") Integer noteId,
+			@Param("desc") String desc, @Param("duration") int duration,
+			@Param("title") String title);
+
 	public List<LearningProgram> getLearningPrograms(Integer memberRoleId);
-	
-	public List<Course> getCoursesByLearningProgram(@Param("memberRoleId") Integer memberRoleId, @Param("learningProgramId") Integer learningProgramId);
-	
-	public Integer addEducatorContent(@Param("memberRoleId") Integer memberRoleId, @Param("type") Integer type, @Param("note") String note, @Param("learningCompId") Integer learningCompId, @Param("learningContId") Integer learningContId, @Param("courseId") Integer courseId);
+
+	public List<Course> getCoursesByLearningProgram(
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("learningProgramId") Integer learningProgramId);
+
+	public Integer addEducatorContent(
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("type") Integer type, 
+			@Param("learningCompId") Integer learningCompId,
+			@Param("learningContId") Integer learningContId,
+			@Param("courseId") Integer courseId,
+			@Param("description") String description,
+			@Param("url") String url, 
+			@Param("coordinates") String coordinates,
+			@Param("duration") Integer duration
+			);
 }

@@ -275,9 +275,9 @@
 	<insert id="addEducatorContent" parameterType="map"
 		useGeneratedKeys="true" keyProperty="ContentEnrichmentId">
 
-		insert into corcontentenrichment(LinkType, LinkDescription,
+		insert into corcontentenrichment(LinkType, LinkDescription,uri,coordinates,duration,
 		enrichmentid)
-		values(#{type},#{note} , (select enrichmentid
+		values(#{type},#{description} ,#{url} , #{coordinates},#{duration}, (select enrichmentid
 		from
 		corenrichment
 		where
