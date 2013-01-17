@@ -300,4 +300,14 @@ public class SubscriptionController {
 
 	}
 
+	@RequestMapping(value = "/deleteEducatorContent", method = RequestMethod.POST)
+	public @ResponseBody
+	Integer deleteEducatoContent(
+			@RequestParam(value = "eduContentEnrichId", required = true) String eduContentEnrichId) {
+
+		return Integer.valueOf(subscriptionService
+				.deleteEducatorContent(Integer.valueOf(eduContentEnrichId)));
+
+	}
+
 }
