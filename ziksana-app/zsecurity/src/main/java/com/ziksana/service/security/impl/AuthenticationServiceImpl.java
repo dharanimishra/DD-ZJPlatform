@@ -5,13 +5,13 @@ package com.ziksana.service.security.impl;
 
 import javax.naming.directory.DirContext;
 
-import com.ziksana.service.security.AuthenticationService;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.ldap.support.LdapUtils;
 import org.springframework.stereotype.Service;
+
+import com.ziksana.service.security.AuthenticationService;
 
 /**
  * @author prabu

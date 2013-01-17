@@ -276,8 +276,6 @@ function getdefinecoursesave() {
 	sendMessage(uri, token, parameters, request_type, successCallback,
 			errorCallback);
 
-	alert("Course Request Sended..");
-
 }
 
 function noteSuccessCallback(data) {

@@ -233,11 +233,11 @@ function getAssociateContentSave() {
 
 	var CourseLearningComponentId = $('#courseLearningComponentId').val();
 
+	var LearningComponentId = $('#learningComponentId').val();
+
 	var LearningContentId = $('#learningContentId').val();
 
 	var Content_Name = $('#contentname').val();
-
-	var LearningComponentId = $('#learningComponentId').val();
 
 	var Content_Description = $('#Associatecdescrte').val();
 
@@ -296,8 +296,6 @@ function getAssociateContentSave() {
 	// Step 2: Send Message Using sendMessage(); function.
 	sendMessage(uri, token, parameters, request_type, successCallback,
 			errorCallback);
-
-	alert("Course Request Sended..");
 
 }
 

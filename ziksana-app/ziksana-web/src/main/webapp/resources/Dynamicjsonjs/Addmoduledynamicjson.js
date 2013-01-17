@@ -223,9 +223,6 @@ function getaddmodulesave() {
 	// Step 2: Send Message Using sendMessage(); function.
 	sendMessage(uri, token, parameters, request_type, successCallback,
 			errorCallback);
-
-	alert("Module Request Sended...");
-
 }
 
 function noteSuccessCallbackaddmodule(data) {
@@ -261,7 +258,5 @@ function onSuccessfulModuleCreation(data) {
 	if (course_id != '' & course_id != null) {
 		window.location.href = window.location.href;
 	}
-	// window.location.href="/ziksana-web/secure/createmodule/"+course_id;
-	// window.location.href="/ziksana-web/secure/createmodule/100";
 
 }

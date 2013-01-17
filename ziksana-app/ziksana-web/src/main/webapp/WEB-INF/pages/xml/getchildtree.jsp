@@ -13,8 +13,7 @@
 			
 					<c:if test="${contenttreenode.contentType eq  '1' }">
 						<item text="${contenttreenode.title}" im0="${videoIcon}" im1="${videoIcon}" im2="${videoIcon}" id="CONTENT_${contenttreenode.contentId}" nodeid="${contenttreenode.id}"></item>	
-					</c:if>
-									
+					</c:if>								
 					<c:if test="${contenttreenode.contentType eq  '2' }">
 						<item text="${contenttreenode.title}" im0="${audioIcon}" im1="${audioIcon}" im2="${audioIcon}" id="CONTENT_${contenttreenode.contentId}" nodeid="${contenttreenode.id}"></item>	
 					</c:if>
