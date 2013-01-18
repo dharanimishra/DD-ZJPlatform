@@ -244,6 +244,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
+		
+		System.out.println("member role id is "+memberRoleId);
 
 		return subscriptionMapper.addEducatorContent(
 				Integer.valueOf(memberRoleId), type, componentId,

@@ -1,5 +1,11 @@
+<input type="text" value="${courseId}" id="e_course_id"/>
+<input type="text" value="${contentId}" id="e_content_id"/>
+<input type="text" value="${componentId}" id="e_component_id"/>
+
 
 <!-- <script type="text/javascript" src="js/video_player.js"></script> -->
+<script type="text/javascript" src="/ziksana-web/resources/js/jquery-1.7.2.min.js"></script>
+
 <script type="text/javascript" src="/ziksana-web/resources/js/custom/course_enrichment.js"></script>
 <script type='text/javascript' src="/ziksana-web/resources/jwplayer/swfobject.js"></script>
 <script type="text/javascript" src="/ziksana-web/resources/jwplayer/jwplayer.js"></script>
@@ -9,15 +15,21 @@
 		<div id="mediaplayer"></div>
 
 		<script type="text/javascript">
+		
+		var MediaServerDomainUrl = 'http://54.243.235.88';
+		var MediaUploadDirectory = 'http://54.243.235.88/zikload-xml/uploads';
+		
 			var flashvars = {
-				'file' : '/ziksana-web/resources/videos/preference_aggregation.mp4',
+				'file' : 'http://54.243.235.88/zikload-xml/uploads${content.contentUrl}',
 				'provider' : 'http',
-				'http.startparam' : 'starttime'
+				'http.startparam' : 'starttime',
+				'autostart':'true'
 			};
 
 			var params = {
 				'allowfullscreeninteractive' : 'true',
 				'allowscriptaccess' : 'always'
+
 			};
 
 			var attributes = {
@@ -31,11 +43,54 @@
 			var reftoplayer;
 			function flashloaded(e) {
 				reftoplayer = e.ref;
+				
 			}
+			
+			var add_educator_content = function(content_type, course_id, node_id, duration, title, description, coordinates, url){
+				console.log('inside add educator content');
+				//TO BE IMPLEMENTED.
+				content_id = $('#e_content_id').val();
+				component_id = $('#e_component_id').val();
+				
+				node_id = 'LCONTENT_1_'+component_id+'_'+content_id;
+				
+				$.post('/ziksana-web/secure/addEducatorNote', {'contentType':content_type, 'courseId':course_id, 'nodeId':node_id, 'duration':duration, 'title':title, 'description':description, 'coordinates':coordinates, 'url':url}, function(data){
+					
+					if(data == '1'){ //add is successful
+						
+						get_all_educator_content(course_id, component_id, node_id);
+						
+					}
+					
+				});
+				
+			}
+			
+			var get_all_educator_content = function(course_id, component_id, node_id){
+				console.log('inside get_all_educator_content');
+				
+				$.post('/ziksana-web/secure/getAllEducatorContent', {'courseId':course_id, 'nodeId':node_id, 'componentId':component_id}, function(data){
+					
+					
+				});
+				
+			}
+
+			
+			var update_educator_content = function(content_id, content_type, duration, title, description, coordinates, url){
+
+			}
+			
+			var delete_educator_content = function(content_id){
+				
+			}
+						
+
+			
 
 			var ff_add_note = function(note) {
 				
-				console.log('inside ff_add_note');
+				console.log('inside ff_add_note s');
 				var delim1 = note.indexOf("||");
 				var note_title = note.substring(0, delim1);
 				note = note.substring(delim1 + 2);
@@ -51,8 +106,7 @@
 				var cell1 = row.insertCell(0);
 				cell1.innerHTML = "Notes";
 				var cell2 = row.insertCell(1);
-				cell2.innerHTML = "<b onclick='jwplayer(reftoplayer).seek("
-						+ note_time + ")'>" + note_title + "</b>";
+				cell2.innerHTML = "<b onclick='jwplayer(reftoplayer).seek("+ note_time + ")'>" + note_title + "</b>";
 
 				var cell3 = row.insertCell(2);
 				cell3.innerHTML = note_desc;
@@ -60,21 +114,28 @@
 				cell4.innerHTML = note_time;
 				var cell5 = row.insertCell(4);
 				cell5.innerHTML = "<img src='/ziksana-web/resources/images/delete.jpg'   onclick='del(this)'>";
-				jwplayer(reftoplayer).play();
+				//jwplayer(reftoplayer).play();
 
-				/*
-				note_anchor_string = '<a title="'+note_desc+'" onclick="jwplayer().seek('+note_time+').play(true);" data-iconprefix="note">'+note_title+'</a>';
-				$('#notes_and_bookmarks_container').append(note_anchor_string);*/
+
+				content_type = "8"; //8 for note
+				course_id = "100";
+				console.log('course_id is '+course_id);
+				node_id = $('#e_content_id').val();
+				console.log('nodese_id is '+node_id);
+				duration = "8";//Math.floor(note_time);
 				
-				content_type = 8; //8 for note
-				course_id = $('#courseid').val();
-				node_id = $('#selected_node_id').val();
-				duration = Math.floor(note_time);
 				title = note_title;
 				description = note_desc;
-				coordiantes = '';
-				url = '';
+				coordinates = 'none';
+				url = 'asd';
+				console.log("BFR VALL");
+				display_msg(content_type, course_id, node_id, duration, title, description, coordinates, url);
 				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url);
+				console.log("AFT CALL"); 	 
+			}
+			
+			var display_msg = function(content_type, course_id, node_id, duration, title, description, coordinates, url){
+				console.log("DISPLAYING FUNcTION");
 			}
 
 			var ff_add_reference = function(note) {
@@ -109,8 +170,8 @@
 				$('#notes_and_bookmarks_container').append(note_anchor_string);*/
 				
 				content_type = 1; //1 for reference
-				course_id = $('#courseid').val();
-				node_id = $('#selected_node_id').val();
+				course_id = $('#e_course_id').val();
+				node_id = $('#e_content_id').val();
 				duration = Math.floor(note_time);
 				title = note_title;
 				description = '';
@@ -152,8 +213,8 @@
 				$('#notes_and_bookmarks_container').append(note_anchor_string);*/
 
 				content_type = 9; //9 for hotspot
-				course_id = $('#courseid').val();
-				node_id = $('#selected_node_id').val();
+				course_id = $('#e_course_id').val();
+				node_id = $('#e_content_id').val();
 				duration = Math.floor(note_time);
 				title = note_title;
 				coordinates = note_desc;
@@ -175,14 +236,11 @@
 				window.alert("You have Added TOC ITEM: " + note_title
 						+ " under " + note_desc + " at time " + note_time);
 
-				/*
-				note_anchor_string = '<a title="'+note_desc+'" onclick="jwplayer().seek('+note_time+').play(true);" data-iconprefix="note">'+note_title+'</a>';
-				$('#notes_and_bookmarks_container').append(note_anchor_string);*/
-			
+
 
 				content_type = 7; //7 for toc
-				course_id = $('#courseid').val();
-				node_id = $('#selected_node_id').val();
+				course_id = $('#e_course_id').val();
+				node_id = $('#e_content_id').val();
 				duration = Math.floor(note_time);
 				title = note_title;
 				description = note_desc; // will carry parent node id
@@ -193,8 +251,9 @@
 			}
 
 			var ff_pause_player = function() {
-				if (jwplayer(reftoplayer).getState() == "PLAYING")
+				if (jwplayer(reftoplayer).getState() == "PLAYING"){
 					jwplayer(reftoplayer).pause();
+				}
 			}
 
 			var ff_get_position = function() {
@@ -203,41 +262,15 @@
 				return position + "";
 			}
 
-			var ff_add_note2 = function(note) {
 
-				var delim1 = note.indexOf("||");
-				var note_title = note.substring(0, delim1);
-				note = note.substring(delim1 + 2);
-				var delim2 = note.indexOf("||");
-				var note_desc = note.substring(0, delim2);
-				note = note.substring(delim2 + 2);
-				var note_time = note;
-				console.log("note_title " + note_title + "note_desc "
-						+ note_desc + "note_time " + note_time);
-				add_learner_content_note(note_title, note_desc, note_time);
-			}
 
-			var ff_add_question = function(question) {
 
-				var delim1 = question.indexOf("||");
-				var question_title = question.substring(0, delim1);
-				question = question.substring(delim1 + 2);
-				var question_position = question;
-				add_learner_question(question_title, question_position)
-			}
 
 			var ff_play_position = function(e) {
-				jwplayer(reftoplayer).seek(e).play(true)
+				jwplayer(reftoplayer).seek(e).play(true);
 			}
 			
-			function add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url){
-				
-				//TO BE IMPLEMENTED.
-				
-				//$.post('/ziksana-web/secure/');
-				
-			}
-
+			
 			
 			
 			

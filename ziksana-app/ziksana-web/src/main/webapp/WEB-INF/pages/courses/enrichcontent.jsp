@@ -11,59 +11,72 @@
 <meta charset="utf-8">
 <title>Enrich Content</title>
 <!--Body Style sheet-->
-<link rel="stylesheet" type="text/css" href="../resources/css/dropdown.css" />
-<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/wizard/wizardstylesheet.css" rel="stylesheet"
+<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/css/dropdown.css" />
+<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet" type="text/css">
+<link href="/ziksana-web/resources/css/type-setting.css" rel="stylesheet" type="text/css">
+<link href="/ziksana-web/resources/css/effects.css" rel="stylesheet" type="text/css">
+<link href="/ziksana-web/resources/css/nav.css" rel="stylesheet" type="text/css">
+<link href="/ziksana-web/resources/css/wizard/wizardstylesheet.css" rel="stylesheet"
 	type="text/css">
-<link href="../resources/css/spinner/smartspinner.css" rel="stylesheet"
+<link href="/ziksana-web/resources/css/spinner/smartspinner.css" rel="stylesheet"
 	type="text/css">
-<link rel="stylesheet" href="../resources/css/chosen/superbly-tagfield.css" />
-<link href="../resources/css/assignment.css" rel="stylesheet" type="text/css">
-<link rel='stylesheet' type='text/css' href="../resources/css/nav.css" />
+<link rel="stylesheet" href="/ziksana-web/resources/css/chosen/superbly-tagfield.css" />
+<link href="/ziksana-web/resources/css/assignment.css" rel="stylesheet" type="text/css">
+<link rel='stylesheet' type='text/css' href="/ziksana-web/resources/css/nav.css" />
 <!--End Body Style sheet-->
 
-<script type="text/javascript" src="../resources/js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="../resources/js/ckeditor/adapters/jquery.js"></script>
-<script type="text/javascript" src="../resources/js/ckeditor/ckeditor.js"></script>
-<script src="../resources/js/custom.js" type="text/javascript"></script>
-<script type="text/javascript" src="../resources/js/video_player.js"></script>
-<script type='text/javascript' src="jwplayer/swfobject.js"></script>
-<script type="text/javascript" src="jwplayer/jwplayer.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/jquery-1.7.1.min.js"></script>
+
+<!-- <script type="text/javascript" src="/ziksana-web/resources/js/ckeditor/ckeditor.js"></script> -->
+<script src="/ziksana-web/resources/js/custom.js" type="text/javascript"></script>
+<!-- <script type="text/javascript" src="/ziksana-web/resources/js/video_player.js"></script> -->
+<script type='text/javascript' src="/ziksana-web/resources/jwplayer/swfobject.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/jwplayer/jwplayer.js"></script>
 <!-- css for tree -->
-<link rel="stylesheet" href="../resources/js/tree/styles/styleTree.css"
+<link rel="stylesheet" href="/ziksana-web/resources/js/tree/styles/styleTree.css"
 	type="text/css" />
 <!-- for the layout of the tree -->
 
 <!-- scripts for tree -->
-<script type="text/javascript" src="../resources/js/tree/gettheme.js"></script>
-<script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="../resources/js/tree/core.js"></script>
-<script type="text/javascript" src="../resources/js/tree/buttons.js"></script>
-<script type="text/javascript" src="../resources/js/tree/scrollbar.js"></script>
-<script type="text/javascript" src="../resources/js/tree/panel.js"></script>
-<script type="text/javascript" src="../resources/js/tree/dragdrop.js"></script>
-<script type="text/javascript" src="../resources/js/tree/tree.js"></script>
-<script type="text/javascript" src="../resources/js/tree/menu.js"></script>
-<script type="text/javascript" src="../resources/js/tree/myTreeEnrich.js"></script>
-<script type="text/javascript" src="../resources/js/tree/splitter.js"></script>
-<script type="text/javascript" src="../resources/js/tree/jqxexpander.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/gettheme.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/core.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/buttons.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/scrollbar.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/panel.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/dragdrop.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/tree.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/menu.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/myTreeEnrich.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/splitter.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/tree/jqxexpander.js"></script>
+
+
+<link rel="stylesheet" href="http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/styles/jqx.base.css" type="text/css" />
+<script type="text/javascript" src="http://www.jqwidgets.com/jquery-widgets-demo/scripts/gettheme.js"></script>
+<!-- <script type="text/javascript" src="http://www.jqwidgets.com/jquery-widgets-demo/scripts/jquery-1.8.2.min.js"></script> -->
+<script type="text/javascript" src="http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxbuttons.js"></script>
+<script type="text/javascript" src="http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxpanel.js"></script>
+<script type="text/javascript" src="http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxtree.js"></script>
 
 <!-- End tree -->
 <link rel="stylesheet" type="text/css"
-	href="../resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
+	href="/ziksana-web/resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
 <script type="text/javascript"
-	src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-<script type="text/javascript" src="../resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
-<script type='text/javascript' src="../resources/js/custom/libraryfunction.js"></script>
+	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
+<script type='text/javascript' src="/ziksana-web/resources/js/custom/libraryfunction.js"></script>
 <!-- scripts for number spinner -->
-<script type="text/javascript" src="../resources/js/chosen/superbly-tagfield.min.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/chosen/superbly-tagfield.min.js"></script>
 
 <!-- end for number spinner -->
-<script src="../resources/js/dropdown/hover-dropdown.min.js"></script>
-<script src="../resources/js/dropdown/tiwtter.js"></script>
+<script src="/ziksana-web/resources/js/dropdown/hover-dropdown.min.js"></script>
+<script src="/ziksana-web/resources/js/dropdown/tiwtter.js"></script>
+,
+
 <script>
 	$(document).ready(function() {
 		$('.js-activated').dropdownHover();
@@ -109,7 +122,7 @@
 				<!--logo container-->
 				<div class="logo">
 					<p>
-						<a href="#"><img height="73" width="189" src="../resources/images/logo.jpg" /></a>
+						<a href="#"><img height="73" width="189" src="/ziksana-web/resources/images/logo.jpg" /></a>
 					</p>
 				</div>
 				<!--end logo container-->
@@ -271,7 +284,7 @@
 				<strong class="text-size-px14 light-gray"><a
 					href="publish.html">Publish</a> | <a href="defineengagement.html">Manage</a></strong><a
 					class="light-blue" href="#"><img width="12" height="12"
-					alt="add more" src="../resources/images/plus.png"> </a>
+					alt="add more" src="/ziksana-web/resources/images/plus.png"> </a>
 			</div>
 		</div>
 		<!--Main Content-->
@@ -318,7 +331,7 @@
 							<div class="definecontainer" style="float: left;">
 								<p class="definehelp all all-box-shadow"
 									style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92;">
-									<img src="../resources/images/icons/helpicon.png" align="left"
+									<img src="/ziksana-web/resources/images/icons/helpicon.png" align="left"
 										style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>You
 										can enrich your Video content by associating related
 										materials/notes at different points in the video timeline. <br>
@@ -331,187 +344,19 @@
 
 									<div id='jqxWidget'>
 										<div id='jqxExpander'>
-											<div
-												style="background-color: #FFFFFF; border: none; display: none;"></div>
-											<div id='jqxTree' style='float: left;'>
-												<ul class="jqx-tree-dropdown-root">
-													<li item-expanded="true" id="rootLi"
-														class="jqx-tree-item-li jqx-disableselect"
-														style="float: none;"><span
-														style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; margin-top: 3px;"
-														id="arrowrootLi" class="jqx-disableselect"></span>
-														<div
-															style="display: inline-block; -webkit-user-select: none; font-size: 11px; font-weight: bold;"
-															class="jqx-rc-all draggable jqx-tree-item jqx-item jqx-draggable"
-															id="jqx-draggable-1" unselectable="on">
-															<img style="float: left; margin-right: 5px;"
-																src="../resources/images/tree.png" id="imgRoot">Model Thinking
-														</div>
-														<ul class="jqx-tree-dropdown"
-															style="overflow: hidden; display: block;">
-															<li item-expanded="true"
-																class="jqx-tree-item-li jqx-disableselect"
-																style="float: none;"><span
-																style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; margin-top: 2px;"></span>
-																<div
-																	style="display: inline-block; -webkit-user-select: none; font-size: 11px; font-weight: bold;"
-																	class="jqx-rc-all draggable jqx-tree-item jqx-item jqx-draggable 
-                    jqx-tree-item-selected"
-																	id="jqx-draggable-3" unselectable="on">
-																	<img style='float: left; margin-right: 5px;'
-																		src='../resources/images/led/note.png' id="imgRoot" />Why Model
-																	Thinking
-																</div>
-																<ul class="jqx-tree-dropdown"
-																	style="overflow: hidden; display: none;">
-																	<li id="menu2" item-expanded="true"
-																		class="jqx-tree-item-li jqx-disableselect"
-																		style="float: none;"><span
-																		style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; visibility: hidden;"
-																		class="jqx-disableselect"></span>
-																		<div style="display: inline-block; font-size: 10px;"
-																			class="righturl jqx-rc-all draggable jqx-tree-item 
-       jqx-item jqx-draggable"
-																			id="jqx-draggable-8">
-																			<a href="treelinks/Why Model.pptx"
-																				style="font-size: 10px;"> <img
-																				style='float: left; margin-right: 5px;'
-																				src='../resources/images/icons/ppt-icon.png' id="imgRoot"
-																				height="24" width="24" /> Why Model
-																			</a>
-																		</div></li>
-																	<li id="menu2" item-expanded="true"
-																		class="jqx-tree-item-li jqx-disableselect"
-																		style="float: none;"><span
-																		style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; visibility: hidden;"
-																		class="jqx-disableselect"></span>
-																		<div style="display: inline-block; font-size: 10px;"
-																			class="righturl jqx-rc-all draggable jqx-tree-item jqx-item jqx-draggable"
-																			id="jqx-draggable-9">
-																			<a class="lbx-70-50"
-																				href="treelinks/intelligentcitizen.pdf"
-																				style="font-size: 10px;"> <img
-																				style='float: left; margin-right: 5px;'
-																				src='../resources/images/icons/pdf-icon.png' id="imgRoot"
-																				height="24" width="24" /> Intelligent Citizens of <br />the
-																				World
-																			</a>
-																		</div></li>
-																</ul></li>
-															<li item-expanded="true"
-																class="jqx-tree-item-li jqx-disableselect"
-																style="float: none;"><span
-																style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; margin-top: 2px;"></span>
-																<div
-																	style="display: inline-block; -webkit-user-select: text; font-size: 11px; font-weight: bold;"
-																	class="jqx-rc-all draggable jqx-tree-item jqx-item jqx-draggable"
-																	id="jqx-draggable-2" unselectable="off">
-																	<img style='float: left; margin-right: 5px;'
-																		src='../resources/images/led/note.png' id="imgRoot" /> Aggregation
-																</div>
-																<ul class="jqx-tree-dropdown"
-																	style="overflow: hidden; display: none;">
-																	<li id="menu2" item-expanded="true"
-																		class="jqx-tree-item-li jqx-disableselect"
-																		style="float: none;"><span
-																		style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; visibility: hidden;"
-																		class="jqx-disableselect"></span>
-																		<div style="display: inline-block; font-size: 10px;"
-																			class="jqx-rc-all draggable jqx-tree-item jqx-item 
-                  jqx-draggable"
-																			id="jqx-draggable-5">
-																			<a href="treelinks/Aggregation.docx"
-																				style="font-size: 10px;"> <img
-																				style='float: left; margin-right: 5px;'
-																				src='../resources/images/icons/docx-icon.png' id="imgRoot"
-																				height="24" width="24" /> Aggregation
-																			</a>
-																		</div></li>
-																	<li item-expanded="true"
-																		class="jqx-tree-item-li jqx-disableselect"
-																		style="float: none;"><span
-																		style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; visibility: hidden;"
-																		class="jqx-disableselect"></span>
-																		<div style="display: inline-block; font-size: 10px;"
-																			class="jqx-rc-all draggable jqx-tree-item 
-                     jqx-item jqx-draggable"
-																			id="jqx-draggable-6">
-																			<img style='float: left; margin-right: 5px;'
-																				src='../resources/images/icons/movies.png' id="imgRoot"
-																				height="24" width="24" />Six Sigma
-																		</div></li>
-																	<li item-expanded="true"
-																		class="jqx-tree-item-li jqx-disableselect"
-																		style="float: none;"><span
-																		style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; visibility: hidden;"
-																		class="jqx-disableselect"></span>
-																		<div style="display: inline-block; font-size: 10px;"
-																			class="jqx-rc-all draggable jqx-tree-item jqx-item 
-           jqx-draggable"
-																			id="jqx-draggable-7">
-																			<a href="treelinks/Preference Aggregation.pptx"
-																				style="font-size: 10px;"><img
-																				style='float: left; margin-right: 5px;'
-																				src='../resources/images/icons/enhance.png' id="imgRoot"
-																				height="24" width="24" /> Preference Aggregation</a>
-																		</div></li>
-																</ul></li>
-															<li id="menu2" item-expanded="true"
-																class="jqx-tree-item-li jqx-disableselect"
-																style="float: none;"><span
-																style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; margin-top: 2px;"></span>
-																<div
-																	style="display: inline-block; -webkit-user-select: none; font-size: 11px; font-weight: bold;"
-																	class="jqx-rc-all draggable jqx-tree-item jqx-item jqx-draggable"
-																	id="jqx-draggable-4" unselectable="on">
-																	<img style='float: left; margin-right: 5px;'
-																		src='../resources/images/led/note.png' id="imgRoot" />Decision
-																	models
-																</div>
-																<ul class="jqx-tree-dropdown"
-																	style="overflow: hidden; display: none;">
-																	<li id="menu2" item-expanded="true"
-																		class="jqx-tree-item-li jqx-disableselect"
-																		style="float: none;"><span
-																		style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; visibility: hidden;"
-																		class="jqx-disableselect"></span>
-																		<div style="display: inline-block; font-size: 10px;"
-																			class="jqx-rc-all draggable jqx-tree-item jqx-item 
-              jqx-draggable"
-																			id="jqx-draggable-10">
-																			<a
-																				href="http://en.wikipedia.org/wiki/Decision_making"
-																				style="font-size: 10px;"><img
-																				style='float: left; margin-right: 5px;'
-																				src='../resources/images/icons/weblink.png' id="imgRoot"
-																				height="24" width="24" /> Introduction to Decision
-																				Making</a>
-																		</div></li>
-																	<li item-expanded="true"
-																		class="jqx-tree-item-li jqx-disableselect"
-																		style="float: none;"><span
-																		style="height: 17px; border: none; background-color: transparent; float: left; width: 16px; visibility: hidden;"
-																		class="jqx-disableselect"></span>
-																		<div style="display: inline-block; font-size: 10px;"
-																			class="jqx-rc-all draggable jqx-tree-item jqx-item 
-              jqx-draggable"
-																			id="jqx-draggable-11">
-																			<img style='float: left; margin-right: 5px;'
-																				src='../resources/images/icons/movies.png' id="imgRoot"
-																				height="24" width="24" />Probability:The Basics
-																		</div></li>
-																</ul></li>
-														</ul></li>
-
-												</ul>
-											</div>
+											<div style="background-color: #FFFFFF; border: none; display: none;"></div>
+										<input type="hidden" id="courseId" value="COURSE_110"/>	
+										
+										<div id="jqx_course_tree"></div>
+										
+										
 										</div>
 
 
 
 										<div id='jqxMenu' class="jqxMenu3">
 											<ul>
-												<li id="videocontainer2"><img src="../resources/images/view.png"
+												<li id="videocontainer2"><img src="/ziksana-web/resources/images/view.png"
 													alt="View" height="10" width="10"
 													style="margin-right: 5px; margin-left: -5px;" /> Enrich
 													Content</li>
@@ -522,7 +367,14 @@
 									</div>
 
 									<div id="ContentPanel"
-										style="font-size: 11px; margin-left: 85px;"></div>
+										style="font-size: 11px; margin:1em;">
+										
+
+									<%-- <jsp:include page="enrich_player.jsp" /> --%>
+									
+										
+										
+									</div>
 									<!-- End of Content Panel -->
 
 								</div>
@@ -584,7 +436,7 @@
 					});
 				},
 				targetKeep : true,
-				path : '../resources/images/img/',
+				path : '/ziksana-web/resources/images/img/',
 				score : 4,
 				cancel : true
 			});
@@ -596,8 +448,297 @@
 		<footer> </footer>
 		<!--End Footer Container-->
 	</div>
+	
+<script type="text/javascript">
+function load_tree(){
+	
+	
+
+	// prepare the data
 
 
+
+	var source ={
+
+
+
+		datatype : "xml",
+
+
+
+		datafields : [
+
+
+
+		// { name: 'CompanyName', map: 'm\\:properties>d\\:CompanyName'
+
+		// },
+
+
+
+		{
+
+			name : 'id',
+
+			map : 'id'
+
+		},
+
+
+
+		{
+
+			name : 'parentId',
+
+			map : 'parentId'
+
+		},
+
+
+
+		{
+
+			name : 'title',
+
+			map : 'title'
+
+		},
+
+
+
+		{
+
+			name : 'nodeType',
+
+			map : 'nodeType'
+
+		},
+
+
+
+		{
+
+			name : 'contentId',
+
+			map : 'contentId'
+
+		},
+
+
+
+		{
+
+			name : 'contentType',
+
+			map : 'contentType'
+
+		},
+
+
+
+		{
+
+			name : 'icon',
+
+			map : 'icon'
+
+		},
+
+
+
+		{
+
+			name : 'expanded',
+
+			map : 'expanded'
+
+		}
+
+
+
+		],
+
+
+
+		root : "nodes",
+
+
+
+		record : "node",
+
+
+
+		id : 'id',
+
+
+
+		url : "/ziksana-web/secure/getcoursetree/"
+
+				+ $('#courseId').val(),
+
+
+
+		async : false
+
+
+
+	};
+
+
+
+	// create data adapter.
+
+
+
+	var dataAdapter = new $.jqx.dataAdapter(source);
+
+
+
+	// perform Data Binding.
+
+
+
+	dataAdapter.dataBind();
+
+
+
+	// get the tree items.
+
+
+
+	// The first parameter is the item's id. The second parameter is the
+
+	// parent item's id. The 'items' parameter represents the sub items
+
+	// collection name. Each jqxTree item has a 'label' property, but in
+
+	// the xml data, we have a 'text' field. The last parameter
+
+	// specifies the mapping between the 'text' and 'label' fields.
+
+
+
+	var records = dataAdapter.getRecordsHierarchy('id', 'parentId',
+
+			'items', [
+
+
+
+			{
+
+				name : 'title',
+
+				map : 'label'
+
+			},
+
+
+
+			{
+
+				name : 'icon',
+
+				map : 'icon'
+
+			},
+
+
+
+			{
+
+				name : 'expanded',
+
+				map : 'expanded'
+
+			}
+
+
+
+			]);
+
+
+
+	$('#jqx_course_tree').jqxTree({
+
+		source : records,
+
+		width : '320px',
+		
+
+	});
+
+
+
+	// Bind Select Events
+
+
+
+	$('#jqx_course_tree').bind(
+
+			'select',
+
+			function(event) {
+
+
+
+				var args = event.args;
+
+
+
+				var item = $('#jqx_course_tree').jqxTree('getItem',
+
+						args.element);
+
+
+
+				var node_id = item.id;
+				
+				node_type = node_id.split('_')[0];
+				
+				if(node_type == "LCONTENT"){
+					content_id = node_id.split('_')[3];
+					component_id = node_id.split('_')[2];
+					content_type_id = node_id.split('_')[1];
+					
+					if(content_type_id == 1){//video -- 1
+						
+						course_id = $('#courseId').val();
+						$('#ContentPanel').empty();
+						$('#ContentPanel').append(
+							'<iframe src="/ziksana-web/secure/enrichplayer/'
+									+ course_id
+									+ '/'
+									+ component_id
+									+ '/'
+									+ content_id
+									+ '" style="width:705px; height:600px;" scrolling="no"></iframe>');						
+
+						
+					} else {
+						$('#ContentPanel').empty();
+						
+					}
+					
+					
+				}
+
+				//selected_item = $('#jqxTree').jqxTree('selectedItem');
+
+
+
+
+
+			});
+
+
+}
+//$(function(){
+	load_tree();
+	//setTimeout('load_tree();',9000);
+	
+	
+//}); //End of doc ready
+</script>
 
 </body>
 </html>
