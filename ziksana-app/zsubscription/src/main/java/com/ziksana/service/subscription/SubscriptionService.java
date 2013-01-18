@@ -11,7 +11,7 @@ import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
-import com.ziksana.domain.course.subscription.Hotspot;
+import com.ziksana.domain.course.Hotspot;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.domain.institution.LearningProgram;

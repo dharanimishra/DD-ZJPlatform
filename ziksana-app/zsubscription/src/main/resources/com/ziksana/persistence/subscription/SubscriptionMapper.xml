@@ -123,6 +123,51 @@
 
 
 	</select>
+	
+	
+	<select id="getEducatorHotspots" resultMap="hotspotsResultMap"
+		parameterType="map">
+
+
+
+
+
+		select
+		cntenr.LinkElement,
+		cntenr.LinkDescription as NotesContent,
+		cntenr.duration
+		from
+		corcontentenrichment cntenr
+		JOIN
+		corenrichment enr ON
+		cntenr.enrichmentid= enr.enrichmentId
+		JOIN
+		sbnsubscriptioncourse
+		sbncourse ON
+		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
+		JOIN
+		sbnmembersubscriptionprogram subprgm ON
+		sbncourse.MemSubscriptionProgId=subprgm.MemSubscriptionProgId
+		where
+		cntenr.LinkType=#{contentType}
+		<if test="subscrCourseId != null">
+			AND enr.CourseId=#{subscrCourseId}
+		</if>
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
+		subprgm.MemberRoleId=#{memberRoleId}
+
+
+
+
+
+	</select>
+	
+	
+	
+	
+	
 
 
 
@@ -324,6 +369,17 @@
 		<result property="description" column="NotesContent" />
 
 	</resultMap>
+	
+	<resultMap id="hotspotsResultMap" type="com.ziksana.domain.course.subscription.Hotspot">
+
+		<result property="title" column="LinkElement" />
+		<result property="description" column="NotesContent" />
+
+	</resultMap>
+	
+	
+	
+	
 
 	<resultMap id="refResultMap" type="com.ziksana.domain.course.Reference">
 
