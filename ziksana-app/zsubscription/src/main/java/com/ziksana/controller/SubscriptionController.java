@@ -149,7 +149,7 @@ public class SubscriptionController {
 	}
 	
 	
-	@RequestMapping(value = "/educatorReferences", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllEducatorContent", method = RequestMethod.GET)
 	public @ResponseBody
 	List<EducatorContent> getAllEducatorContent(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -329,9 +329,9 @@ public class SubscriptionController {
 			@RequestParam(value = "courseId", required = true) String courseId,
 			@RequestParam(value = "contentType", required = true) String contentType,
 			@RequestParam(value = "nodeId", required = true) String nodeId,
-			@RequestParam(value = "noteTitle", required = true) String noteTitle,
-			@RequestParam(value = "noteDescription", required = false) String noteDescription,
-			@RequestParam(value = "noteDuration", required = true) String noteDuration,
+			@RequestParam(value = "title", required = true) String noteTitle,
+			@RequestParam(value = "description", required = false) String noteDescription,
+			@RequestParam(value = "duration", required = true) String noteDuration,
 			@RequestParam(value = "url", required = true) String url,
 			@RequestParam(value = "coordinates", required = true) String coordinates) {
 		// add_educator_content(content_type, course_id, node_id, duration,
@@ -362,6 +362,9 @@ public class SubscriptionController {
 				Integer.valueOf(noteDuration));
 
 		System.out.println(" THE ERROR ....KEY IS  " + key);
+		System.out.println(" content id is  " + parsedContentId);
+		System.out.println(" component id is  " + parsedComponentId);
+		
 		return Integer.valueOf(key);
 
 	}
