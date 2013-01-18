@@ -11,6 +11,7 @@ import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
+import com.ziksana.domain.course.subscription.Hotspot;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.domain.institution.LearningProgram;
@@ -40,6 +41,9 @@ public interface SubscriptionService {
 			Node node);
 
 	public List<ContentReference> getContentTOC(Integer courseId, Node node);
+	
+	public List<Hotspot> getEducatorHotspots(Integer courseId, Node node);
+	
 
 	public Integer addEducatorContent(Integer courseId, Integer componentId,
 			Integer contentId, Integer contentType, String contentDesc,

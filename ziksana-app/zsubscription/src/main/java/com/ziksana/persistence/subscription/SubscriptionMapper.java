@@ -11,6 +11,7 @@ import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
+import com.ziksana.domain.course.subscription.Hotspot;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.institution.LearningProgram;
 
@@ -47,6 +48,17 @@ public interface SubscriptionMapper {
 			@Param("subscrCourseId") Integer subscrCourseId,
 			@Param("learnCompId") Integer learnCompId,
 			@Param("learnCmpContId") Integer learnCmpContId);
+	
+	
+	public List<Hotspot> getHotspots(
+			@Param("contentType") Integer contentType,
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("subscrCourseId") Integer subscrCourseId,
+			@Param("learnCompId") Integer learnCompId,
+			@Param("learnCmpContId") Integer learnCmpContId);
+	
+	
+	
 
 	public List<Note> getContentByType(
 			@Param("subscrCourseId") Integer subscrCourseId,

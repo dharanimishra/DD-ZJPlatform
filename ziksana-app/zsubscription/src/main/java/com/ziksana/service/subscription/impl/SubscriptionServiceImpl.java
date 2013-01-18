@@ -14,6 +14,7 @@ import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
+import com.ziksana.domain.course.subscription.Hotspot;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.domain.institution.LearningProgram;
@@ -271,6 +272,19 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	public int editEducatorContent() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<Hotspot> getEducatorHotspots(Integer courseId, Node node) {
+		// TODO Auto-generated method stub
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+
+		return subscriptionMapper.getHotspots(7, Integer
+				.valueOf(memberRoleId), courseId, node.getParent().getId(),
+				node.getId());
+		
 	}
 
 }

@@ -18,6 +18,7 @@ import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
+import com.ziksana.domain.course.subscription.Hotspot;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.service.subscription.SubscriptionService;
 
@@ -138,6 +139,9 @@ public class SubscriptionController {
 		return subscriptionService.getEducatorSuggestedReferences(
 				Integer.valueOf(courseId), node);
 	}
+	
+	
+	
 
 	@RequestMapping(value = "/getContentTOC", method = RequestMethod.GET)
 	public @ResponseBody
@@ -162,6 +166,33 @@ public class SubscriptionController {
 				node);
 
 	}
+	
+	
+	@RequestMapping(value = "/educatorHotspots", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Hotspot> showEducatorHotspots(
+			@RequestParam(value = "courseId", required = true) String courseId,
+			@RequestParam(value = "nodeId", required = true) String nodeId,
+			@RequestParam(value = "nodeType", required = false) String nodeType,
+			@RequestParam(value = "parentNodeId", required = true) String parentNodeId,
+			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
+
+		Node node = new Node();
+		String parsedNodeId = nodeId.split("_")[3];
+		String parsedParentNodeId = parentNodeId.split("_")[1];
+		node.setId(Integer.valueOf(parsedNodeId));
+		// node.setType(Integer.valueOf(nodeType));
+		Node parent = new Node();
+		parent.setId(Integer.valueOf(parsedParentNodeId));
+		// parent.setType(Integer.valueOf(parentNodeType));
+		node.setParent(parent);
+
+		//this code should be modified to call getEducatorHotspots()
+		//TODO 
+		return subscriptionService.getEducatorHotspots(
+				Integer.valueOf(courseId), node);
+	}
+	
 
 	@RequestMapping(value = "/addLearnerQuestion", method = RequestMethod.POST)
 	public @ResponseBody
