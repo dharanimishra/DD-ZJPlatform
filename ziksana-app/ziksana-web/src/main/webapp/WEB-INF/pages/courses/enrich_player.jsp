@@ -69,7 +69,7 @@
 			var get_all_educator_content = function(course_id, component_id, node_id){
 				console.log('inside get_all_educator_content');
 				
-				$.post('/ziksana-web/secure/getAllEducatorContent', {'courseId':course_id, 'nodeId':node_id, 'componentId':component_id}, function(data){
+				$.get('/ziksana-web/secure/getAllEducatorContent', {'courseId':course_id, 'nodeId':node_id, 'componentId':component_id}, function(data){
 					
 					
 				});
@@ -170,7 +170,7 @@
 				$('#notes_and_bookmarks_container').append(note_anchor_string);*/
 				
 				content_type = 1; //1 for reference
-				course_id = $('#e_course_id').val();
+				course_id = '100';
 				node_id = $('#e_content_id').val();
 				duration = Math.floor(note_time);
 				title = note_title;
@@ -213,7 +213,7 @@
 				$('#notes_and_bookmarks_container').append(note_anchor_string);*/
 
 				content_type = 9; //9 for hotspot
-				course_id = $('#e_course_id').val();
+				course_id = '100';
 				node_id = $('#e_content_id').val();
 				duration = Math.floor(note_time);
 				title = note_title;
@@ -239,7 +239,7 @@
 
 
 				content_type = 7; //7 for toc
-				course_id = $('#e_course_id').val();
+				course_id = '100';
 				node_id = $('#e_content_id').val();
 				duration = Math.floor(note_time);
 				title = note_title;

@@ -160,11 +160,11 @@ public class SubscriptionController {
 
 		Node node = new Node();
 		String parsedNodeId = nodeId.split("_")[3];
-		String parsedParentNodeId = parentNodeId.split("_")[1];
+		//String parsedParentNodeId = parentNodeId.split("_")[1];
 		node.setId(Integer.valueOf(parsedNodeId));
 		// node.setType(Integer.valueOf(nodeType));
 		Node parent = new Node();
-		parent.setId(Integer.valueOf(parsedParentNodeId));
+		parent.setId(Integer.valueOf(parentNodeId));
 		// parent.setType(Integer.valueOf(parentNodeType));
 		node.setParent(parent);
 
@@ -359,7 +359,7 @@ public class SubscriptionController {
 				Integer.valueOf(courseId), Integer.valueOf(parsedComponentId),
 				Integer.valueOf(parsedContentId), Integer.valueOf(contentType),
 				noteDescription, url, coordinates,
-				Integer.valueOf(noteDuration));
+				Integer.valueOf(noteDuration),noteTitle );
 
 		System.out.println(" THE ERROR ....KEY IS  " + key);
 		System.out.println(" content id is  " + parsedContentId);

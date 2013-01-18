@@ -102,6 +102,7 @@ public interface SubscriptionMapper {
 			@Param("description") String description,
 			@Param("url") String url, 
 			@Param("coordinates") String coordinates,
-			@Param("duration") Integer duration
+			@Param("duration") Integer duration,
+			@Param("title") String title
 			);
 }

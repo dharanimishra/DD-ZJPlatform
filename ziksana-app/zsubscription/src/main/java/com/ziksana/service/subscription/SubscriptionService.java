@@ -55,7 +55,7 @@ public interface SubscriptionService {
 
 	public Integer addEducatorContent(Integer courseId, Integer componentId,
 			Integer contentId, Integer contentType, String contentDesc,
-			String url, String coordinates, Integer duration);
+			String url, String coordinates, Integer duration, String title);
 	
 	
 	public int editEducatorContent();

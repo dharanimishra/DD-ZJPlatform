@@ -139,13 +139,7 @@
 		JOIN
 		corenrichment enr ON
 		cntenr.enrichmentid= enr.enrichmentId
-		JOIN
-		sbnsubscriptioncourse
-		sbncourse ON
-		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
-		JOIN
-		sbnmembersubscriptionprogram subprgm ON
-		sbncourse.MemSubscriptionProgId=subprgm.id
+		
 		where
 		
 		<if test="subscrCourseId != null">
@@ -154,7 +148,7 @@
 		and
 		enr.LearningComponentId=#{learnCompId} and
 		enr.LearningContentId=#{learnCmpContId} and
-		subprgm.MemberRoleId=#{memberRoleId}
+		enr.CreatorMemberRoleId=#{memberRoleId}
 
 
 
@@ -363,9 +357,9 @@
 	<insert id="addEducatorContent" parameterType="map"
 		useGeneratedKeys="true" keyProperty="ContentEnrichmentId">
 
-		insert into corcontentenrichment(LinkType, LinkDescription,uri,coordinates,duration,
+		insert into corcontentenrichment(LinkType, LinkDescription,uri,coordinates,duration,LinkElement,
 		enrichmentid)
-		values(#{type},#{description} ,#{url} , #{coordinates},#{duration}, (select enrichmentid
+		values(#{type},#{description} ,#{url} , #{coordinates},#{duration},#{title}, (select enrichmentid
 		from
 		corenrichment
 		where

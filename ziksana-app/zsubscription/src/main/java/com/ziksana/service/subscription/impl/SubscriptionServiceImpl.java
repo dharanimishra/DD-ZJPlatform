@@ -239,7 +239,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	@Override
 	public Integer addEducatorContent(Integer courseId, Integer componentId,
 			Integer contentId, Integer type, String description, String url,
-			String coordinates, Integer duration) {
+			String coordinates, Integer duration, String title) {
 		// TODO Auto-generated method stub
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
@@ -249,7 +249,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 		return subscriptionMapper.addEducatorContent(
 				Integer.valueOf(memberRoleId), type, componentId,
-				contentId, courseId, description, url, coordinates, duration);
+				contentId, courseId, description, url, coordinates, duration, title);
 		
 		
 		
