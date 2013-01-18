@@ -47,7 +47,7 @@
 }
 
 .loginhead {
-	background-color: #00BCF2;
+	background-color: #6d9ec5;
 	height: 80px;
 	margin-right: auto;
 	margin-left: auto;
@@ -237,7 +237,7 @@
 }
 
 .btnLogin {
-	background: #00BCF2;
+	background: #6d9ec5;
 	border: 2px solid #ffffff !important;
 	cursor: pointer;
 	padding: 11px 16px;
@@ -294,22 +294,20 @@ box-shadow: 1px 2px 5px #000000;"/>
 
 				<div id="da-slider" class="da-slider">
 					<div class="da-slide">
-						<h2>Ziks Power</h2>
-						<p>Ziksana has given me the Power to Leave at my Pace the way
-							i want..</p>
+						<!--<h2>Ziks Power</h2>-->
+						<p>Ziksana helps me chase my curiosity. I can explore the depth and breadth of the subject to the extent I like..</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
 						
-							<img src="${logotwo}" alt="image01" />
+							<img src="${onelogo}" alt="image01" />
 						</div>
 					</div>
 					<div class="da-slide">
-						<h2>Revolution</h2>
-						<p>Dreams do come true if you keep believing in yourself.
-							Anything is possible.</p>
+						<!--<h2>Revolution</h2>-->
+						<p>Ziksana analytics provides me useful information on my performance and my position in the class at all times. This helps to keep me on my toes.</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="${threelogo}" alt="image01" />
+							<img src="${logotwo}" alt="image01" />
 						</div>
 					</div>
 					<!-- <div class="da-slide">
@@ -323,12 +321,11 @@ box-shadow: 1px 2px 5px #000000;"/>
 						</div>
 					</div> -->
 					<div class="da-slide">
-						<h2>A foundation for life</h2>
-						<p>To accomplish great things, we must not only act, but also
-							dream; not only plan, but also believe.</p>
+						<!--<h2>Your College. Your Future.</h2>-->
+						<p>I can connect with my peers and educator while I observe the course. This is a very powerful tool.</p>
 						<a href="#" class="da-link">Read more</a>
 						<div class="da-img">
-							<img src="${onelogo}" alt="image01" />
+							<img src="${threelogo}" alt="image01" />
 						</div>
 					</div>
 					<nav class="da-arrows">

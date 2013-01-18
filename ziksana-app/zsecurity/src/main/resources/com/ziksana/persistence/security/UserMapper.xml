@@ -6,19 +6,54 @@
 	<select id="getMemberByUser" resultMap="memberResultMap"
 		parameterType="java.lang.String">
 
-		select distinct memmember.*, 
-		memmemberrole.ID,
-		IF(memmemberrole.RoleType=2,'EDUCATOR','LEARNER') AS RoleType
-		from memmember,
+		select 
+ 		memmember.ID as MemberId,
+		memmemberrole.ID as MemberRoleId,
+		memmember.FirstName as FirstName,
+		memmember.LastName as LastName,
+		memmember.designation as Designation,
+
+		memmember.PicturePath as PicturePath,
+		Role.LookupValue as RoleType,
+		Rating.LookupValue as Rating
+		from 
+		memmember,
 		memmemberrole,
-		secmembercredential
+		secmembercredential,
+		
+		
+			(
+		select
+		v.LookupValueId,
+		v.LookupValue
+		from
+		utllookup l join
+		utllookupvalue v on
+		l.LookupId=v.LookupId
+		where
+		l.CategoryName='Role Type'
+
+		)Role,
+		(
+		select
+		v.LookupValueId,
+		v.LookupValue
+		from
+		utllookup l join
+		utllookupvalue v on
+		l.LookupId=v.LookupId
+		where
+		l.CategoryName='Rating'
+
+		)Rating
+		
 		WHERE
 		memmember.ID=secmembercredential.MemberId and
 		memmember.ID=memmemberrole.memberId and
+		memmemberrole.RoleType=Role.LookupValueId and
+		memmember.rating = Rating.LookupValueId and
 		secmembercredential.UserName=#{userName}
-
-
-
+		
 	</select>
 
 	<select id="getMemberByMemberId" resultMap="memberResultMap"
@@ -40,17 +75,18 @@
 
 	<resultMap id="memberResultMap" type="com.ziksana.domain.member.Member">
 
-		<result property="memberId" column="ID" />
+		<result property="memberId" column="MemberId" />
 		<result property="firstName" column="FirstName" />
 		<result property="lastName" column="LastName" />
+		<result property="roleType" column="RoleType"/>
 		<result property="designation" column="Designation"/>
+		<result property="picturePath" column="PicturePath"/>
+		<result property="rating" column="Rating"/>
 		<collection property="memberPersonas"  ofType="com.ziksana.domain.member.MemberPersona" >
 		         <result property="memberRoleId" column="MemberRoleId"/>
 		         <result property="roleType" column="RoleType"/>         
 		         
-		         
-		         
-		         
+        
 		</collection>
 
 	</resultMap>

@@ -57,7 +57,7 @@
 	var answer = confirm("Do you want to log off?");
 	if (answer){
 		
-		parent.window.location.href = "login.html";
+		parent.window.location.href = "login.jsp";
 	}
 	}
 	function calleducator()
@@ -73,7 +73,8 @@
 <style>
 .lnchwrapper
 {
-	
+height:490px;	
+
 }
 
 .maincontainer
@@ -318,9 +319,9 @@ list-style:none;
 			-moz-transform: rotate(0); 
 			-o-transform: rotate(0); 
 		}
-		.slide-up-boxes a:nth-child(2) div { background: #c73b1b url(images/icons/createcourse.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(2) div { background: #367db2 url(images/icons/createcourse.png) 5px 5px no-repeat; padding-left: 60px; }
 		.slide-up-boxes a:nth-child(3) div { background: #367db2 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(4) div { background: #c73b1b  url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(4) div { background: #367db2 url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 60px; }
 		.slide-up-boxes a:nth-child(5) div { background: #367db2 url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
 
 </style>
@@ -338,6 +339,30 @@ list-style:none;
  <c:url var="todo" value="/resources/images/icons/todo.png" />
 <c:url var="showTodoUrl" value="/secure/showtodo/111111" />
 <script type="text/javascript">
+function deleteFunction(val){
+	/* alert('${deleteAlertUrl}'+val); */
+	
+	confirm_delete_alert = confirm('Are you sure you want to delete this item?');
+	if(confirm_delete_alert == true){
+		
+		
+	
+	$.ajax({
+	  	type: 'DELETE',
+		url: '${deleteAlertUrl}'+val,
+		
+		success: function( data ) {
+			
+			$('#alert_'+val).remove();
+			get_and_populate_alerts();
+			
+			
+		}
+	});
+	
+	
+	}
+}
 $(document).ready(function() {
 	setInterval(function() {
 		get_and_populate_todo();
@@ -347,6 +372,34 @@ $(document).ready(function() {
 	get_and_populate_todo();
 	get_and_populate_alerts();
 });
+
+
+$(document).ready(function() {
+
+var m_names = new Array("JAN", "FEB", "MAR", 
+"APR", "MAY", "JUNE", "JUL", "AUG", "SEP", 
+"OCT", "NOV", "DEC");
+
+var d = new Date();
+var curr_date = d.getDate();
+var curr_month = d.getMonth();
+var curr_year = d.getFullYear();
+var mondate=curr_date + "- " + m_names[curr_month] 
++ "";
+$('.dmonth').html(mondate);
+
+});
+function fancyBoxCloseLogout(){
+	
+	
+			$.fancybox.close();
+			parent.window.location.href = "/ziksana-web/secure/logout";
+
+		 
+		//below code will be enabled once the conflict issues between pages/plugins are resolved.
+		
+		
+	}
 
 function get_and_populate_alerts(){
 
@@ -605,7 +658,7 @@ $("#datepara").show();
                    <a href="#linkurl"> <img src="${imageUrl_profile1}" width=40px height=40px alt="" align="left"/> 
                   <!--  </div> end of -->
                     
-                   <span style="line-height:35px; padding-left:10px; color:#fff; font-weight:bold;"> <c:out value="${member.firstName}"/> <c:out value="${member.lastName}"/> Page</span> </a>    
+                   <span style="line-height:35px; padding-left:10px; color:#fff; font-weight:bold;"> <c:out value="${member.firstName}"/> <c:out value="${member.lastName}"/> </span> </a>    
                      
           
           </div><!-- end of lnchaccountleft-->  
@@ -622,7 +675,7 @@ $("#datepara").show();
                  <ul>
                    <li><a href="#">Preferences</a></li>
                    <li><a href="#">Privacy</a></li>
-                   <li><a href="/ziksana-web/secure/logout" class="quitlink">Sign Out</a></li>
+                   <li><a onclick="fancyBoxCloseLogout()" >Sign Out</a></li>
                    </ul>
                 </fieldset>
               </div>
@@ -644,9 +697,9 @@ $("#datepara").show();
        <div class="navsublinks" style="margin-right:23px;padding-top:35px;">
 
  						<ul>
-                        <li><a href="${educatorPage}" target="_parent">Dashboard</a></li>
-                        <li><a onclick= "calleducator()">Analytics</a></li>
-                        <li><a href="#linkurl">Locker</a></li>
+                        <li><a href="${educatorPage}" target="_parent">My Home</a></li>
+                        <li><a href="#">Analytics</a></li>
+                        <li><a href="#">Locker</a></li>
 						</ul>
 
    				</div> <!--end of navsublinks-->
@@ -685,7 +738,15 @@ $("#datepara").show();
                        <!-- end of Todo -->
                        
                    
-				<div class="calendar">
+				<div class="calendar demo_message_container ">
+				<div class="">
+				                	 <div class="demo_message" style="font-size:18px;height:100px; width:430px;">
+					   
+					            For Demonstration Only. Functionality to be available in subsequent Playpens
+					            
+					            
+					
+					</div>
                <c:url var="htmlUrl_planner" value="/calendar" />     	
                        
 <div id= datepara style=" float:left;"><p> 
@@ -698,7 +759,7 @@ $("#datepara").show();
                         <div class="_cLeft all-box-shadow" style="">    
                             <div class="_upcoming _up1">
                             	<div class="_cDate" style="color:#A80000;">
-                                	<b>Jan 7</b><br> <b>09.00 AM</b>
+                                	<span class="dmonth"></span><br> <b>09.00 AM</b>
                                 </div>
                                 
                                 <div class="_uevent" style="">
@@ -708,7 +769,7 @@ $("#datepara").show();
                             
                             <div class="_upcoming _up1">
                             	<div class="_uDate">
-                                	<b>Jan 7</b><br> <b>12.00 PM</b> 
+                                	<b>26- JAN</b><br> <b>12.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent">
@@ -718,7 +779,7 @@ $("#datepara").show();
                             
                             <div class="_upcoming _up2">
                             	<div class="_uDate">
-                                	<b>Jan 7</b><br> <b>02.00 PM</b> 
+                                	<b>26- JAN</b><br> <b>02.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="padding-top:2px; text-align:middle;">
@@ -730,25 +791,24 @@ $("#datepara").show();
                             
                         	
                         </div>
-                        <div class="_cMiddle">                        
-                        </div>
+                        
                         <div class="_cRight all-box-shadow">
                         	<div class="_e1">
-                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">Jan 7 - Recap on Ziksana Capability</span></div>
+                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">26-JAN - Recap on Ziksana Capability</span></div>
 
 								<div><i class=" bold">Place: </i>UTD Administrative Building
 								<i class=" bold"><br>Time: </i>9:00 am - 12:00 pm </div>
                             </div>
                             
                             <div class="_e2" style="display: none;">
-                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 7 - Lunch with Ziksana</span></div>
+                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">26-JAN - Lunch with Ziksana</span></div>
 						      <div><i class=" bold">Place: </i><br>
 						<i class=" bold">Time: </i>12:00 pm - 1:30 pm<br>
                             </div>
                             </div>
                             
                             <div class="_e3" style="display: none;">
-                             <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 7 - Experiment with Playpen</span></div>
+                             <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead"><span class="dmonth"></span> - Experiment with Playpen</span></div>
                             	
 							<div><i class=" bold">Place: </i><br>
 							<i class=" bold">Time: </i> 2:00 pm</div>
@@ -756,7 +816,7 @@ $("#datepara").show();
                         </div>
                     
 						</div>
-						
+						</div>
 						</div>
 					</div>
 <div class="clearfix"> </div>
@@ -791,7 +851,7 @@ $("#datepara").show();
      <script language="javascript">
 
 	 </script>
-    
+    <c:if test="${member.roleType eq 'EDUCATOR'}">
 			<a class="fancyboxclose" href="mylearningprogram.html" target="_parent" >
 				<h5>Create Course</h5>
 				<div>Create your course with an easy 7 step process </div>				
@@ -799,20 +859,42 @@ $("#datepara").show();
 				
 			<a class="fancyboxclose" href="#linkurl">
 				<h5>Manage Course</h5>
-				<div>Mange Courses that have been published.</div>					
+				<div style="text-align:center;">To be released in next Playpen.</div>					
 			</a>
 			
 			<a class="fancyboxclose" href="#linkurl">
 				
                 <h5>Publish Course</h5>
-				<div>Publish / Release the course you created.</div>			
+				<div style="text-align:center;">To be released in next Playpen.</div>			
 			</a>
 
             <a class="fancyboxclose" href="#linkurl">
 				<h5>Grade Students</h5>
-				<div>Grade students enrolled to your course.</div>				
+				<div style="text-align:center;">To be released in next Playpen.</div>				
+			</a>
+	</c:if>
+	 <c:if test="${member.roleType eq 'LEARNER'}">
+	 <a class="fancyboxclose" href="mylearningprogram.html" target="_parent" >
+				<h5>Course</h5>
+				<div>Create your course with an easy 7 step process </div>				
+			</a>
+				
+			<a class="fancyboxclose" href="#linkurl">
+				<h5>Tutorial</h5>
+				<div style="text-align:center;">To be released in next Playpen.</div>					
+			</a>
+			
+			<a class="fancyboxclose" href="#linkurl">
+				
+                <h5>Assignments</h5>
+				<div style="text-align:center;">To be released in next Playpen.</div>					
 			</a>
 
+            <a class="fancyboxclose" href="#linkurl">
+				<h5>Performance</h5>
+				<div style="text-align:center;">To be released in next Playpen.</div>					
+			</a>
+	 </c:if>
 		</section>               
                     
 

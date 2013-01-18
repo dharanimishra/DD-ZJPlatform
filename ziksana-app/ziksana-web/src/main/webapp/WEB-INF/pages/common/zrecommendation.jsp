@@ -14,6 +14,25 @@
 
 <title>Zrecommend</title>
 <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" />
+<style type="text/css">
+.recommendation-info-category
+{
+	border: 1px solid rgba(0, 68, 119, 0.28);
+    border-radius: 3px 3px 3px 3px;
+    color: rgba(27, 110, 172, 0.94);
+    background:#edeaea;
+    cursor: pointer;
+    float: left;
+    font-family: arial;
+    font-size: 13px;
+    font-weight: bold;
+    height: 28px;
+    margin-right: 4px;
+    padding: 4px;
+    text-align: center;
+    width: 133px;
+}
+</style>
 <link rel="stylesheet" href="../resources/css/bootstrap.css" />
  <link href="../resources/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" /> 
 
@@ -87,7 +106,7 @@ function show_recommendation_tab(tab){
 						}
 						if($(this).find("category").text() == '942'){//Actioned
 							extra_class = 'actioned';
-							if($(this).find("ignorecount").text() > 1){
+							if($(this).find("ignorecount").text() >= 1){
 								 extra_class +=' ';
 								extra_class += 'hide_ignore_hide';
 							}
@@ -109,7 +128,7 @@ function show_recommendation_tab(tab){
 						output+="<div class='zeniboxrewards "+extra_class+"' id='rec1'>";
 						output+="<div  class='zenititle'><label style='display:none;' id='recomendId"+index+"'> "+ $(this).find("recommendationId").text()+"</label></div>";  
 						output+="<div  class='zenititle'><label style='display:none;' id='categoryId"+index+"'> "+ $(this).find("category").text()+"</label></div>";
-						output+="<div  class='zenititle'><label id='recomendTitle"+index+"'> "+ $(this).find("title").text()+"</label><label style='display:none;'> "+ $(this).find("ignorecount").text()+"</label></div>";
+						output+="<div  class='zenititle'><label style='display:none;' id='recomendTitle"+index+"'> "+ $(this).find("title").text()+"</label><label style='display:none;'> "+ $(this).find("ignorecount").text()+"</label></div>";
 						output+="<div class='zenisubtitle'>";
 						output+="<div class='zsublink1 zenileft'>Created by : <span class='zlinktext'>Ziksana </span></div>";
 						output+="<div class='zsublink2 zenileft'>Valid upto : <span class='zlinktext2'> 31/09/2012  </span></div><br/><br/></div>";
@@ -122,7 +141,7 @@ function show_recommendation_tab(tab){
 						output+="<a class='myButtonLink3 ignore_hide'  rel='tooltip' data-placement='bottom' href='#' onclick='moveIgnored("+index+")' title='Ignore' id='_ignore4'></a></div><br /></div>";
 						
 						output+="<div class='zenilower'>   ";
-						output+="<div class='zeniiconimage zenileft'><img src='../resources/images/noimage.png' width='70' height='70'/></div>";
+						output+="<div class='zeniiconimage zenileft'><div class='recommendation-info-category' style='padding-bottom:5px;display:inline;'><strong> "+ $(this).find("title").text()+"</strong></div></div>";
 						output+="<div class='zenicontent'><label id='recomendDescription"+index+"'>"+ $(this).find("description").text()+"</label></div><br /></div></div>";
 					
 						output+="</div>";

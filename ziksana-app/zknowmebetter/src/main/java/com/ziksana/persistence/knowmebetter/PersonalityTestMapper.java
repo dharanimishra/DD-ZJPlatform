@@ -12,7 +12,7 @@ public interface PersonalityTestMapper {
 	
 	public List<Question> getUnansweredQuestions(Integer memberRoleId);
 	
-	public void saveAnswer(@Param("question") Question question, @Param("answer") Choice userChoice);
+	public void saveAnswer(@Param("question") Question question, @Param("answer") Choice userChoice,@Param("memberRoleId") Integer memberRoleId);
 	
 	public void updateAnswer(@Param("question") Question question, @Param("answer") Choice userChoice);
 	

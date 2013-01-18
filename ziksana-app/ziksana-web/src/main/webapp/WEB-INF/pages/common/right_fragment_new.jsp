@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:url var="showPollUrl" value="/secure/showpoll/111111" />
-<c:url var="submitPollUrl" value="/secure/submitpoll" />
+
 <c:url var="jsJqueryFormUrl" value="../resources/js/jquery.form.js" /> 
 <script type="text/javascript" src="${jsJqueryFormUrl}"></script>
 <%@ page session="true"%>
@@ -55,40 +55,7 @@ $('.t_toggler').live('click',function(){
 	filter: progid:DXImageTransform.Microsoft.gradient(enabled=  false );
 }
 </style>
-<script type="text/javascript">
- function submitPole(memberId)
- {
-	 
-	 pollid = $('#pollId').val();	
-	 optionindex = $('#optionIndex').val();
-	  $.post( '<c:url value='/secure/submitpoll'/>'
-		 		 , {'pollId':pollid,'optionIndex':optionindex}
-		 		 , function( data )
-		  			{
-		 			console.log( 'Poll data from AJAX:', $(data).text());
-		 			
-		 			var output = "";
-                    
-		 			$(data).find("questionresultpair").each(function(index)  
-		 					{
-		 					 $(this).find("pollResult").find("option").each(function(index)
-		 							 {
-		 						     output+="<p  style='padding-left: 10px;'>"+ $(this).find("optiontext").text()+"</p>";  
-		 						   	 output+="<p  style='padding-left: 10px;'>"+ $(this).find("count").text()+"</p>";
-		 						  
-		 							 });
-		 					 
-		 				 	 //output+="<p  style='padding-left: 10px;'>"+ $(this).find("answer1count").text()+"</p>";
-		 				 	 //alert(output);
-		 					});
-		 			$('div.pollresult').html(output);
-		 			$('div.pollresult').show();
-		 			 }
-					 );     
-	   
-	
- }
- </script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -118,7 +85,7 @@ $(document).ready(function() {
 						 		output+="<div id='q" + index + "' style='width: 225px;' class='pollquestion'>";
 						 		
 						 		output+=question;
-						 		output+="<form id='" + $(this).find("pollQuestion").find("id").text() + "' action=''>";
+						 		//output+="<form id='" + $(this).find("pollQuestion").find("id").text() + "' action=''>";
 						 		output+="<input type='hidden' id='pollId' name='pollId' value='" + $(this).find("pollQuestion").find("id").text() + "'>";
 						 		
 						 		
@@ -133,8 +100,8 @@ $(document).ready(function() {
 						 		});
 						 		
 						 		output+=answers;
-						 		output+="<br/><button class='f-rt btn-info-poll' id='" + index + "' onClick='submitPole(" + $(this).attr("memberId") + ")' style=' float: left;' class='votebtn'>Vote</button></p><br/>";
-						 		output+="</form><br/>";
+						 		output+="<br/><button class='f-rt btn-info-poll' id='submit_poll' onClick='submitPoll(" + $(this).attr("memberId") + ")' style=' float: left;' class='votebtn'>Vote</button></p><br/>";
+						 		//output+="</form><br/>";
 						 		output+="<br/>";
 							} else {
 								output+="<div id='q" + index + "' style='width: 225px;' class='pollquestion' expired='true'>";
@@ -151,7 +118,7 @@ $(document).ready(function() {
 								firstpollid = $(this).find("pollQuestion").find("id").text();
 								output+="<div id='result" + index + "' class='pollresult'>"+result+"<button class='f-rt btn-info-poll' id='" + index + "' style='margin-left:170px;' class='btnnext'>Next &rarr;</button></div></div>";
 					 		} else {
-					 			if (index == ($(data).find("questionresultpair").size()-1)){
+					 			if (index == ($(data).find("questionresultpair").size())){
 //									console.log("Entering last one questionresultpair");
 									lastpollid = $(this).find("pollQuestion").find("id").text();
 									output+="<div id='result" + index + "' class='pollresult'>"+result+"<button class='btnprev 'f-rt  btn-info-poll' id='"+ index +"' >&larr; Prev</button></div></div>";
@@ -255,7 +222,7 @@ $(document).ready(function() {
 						var progress =  $(this).find("progress").text()+"%";
 						
 					    console.log("Yes I am in");  
-					    draftcourse+="<p class='blok-title-L'><a href='#'>" +  " " + $(this).find("title").text() + "</a></p>";
+					    draftcourse+="<p class='blok-title-L'><a href='/ziksana-web/secure/course'>" +  " " + $(this).find("title").text() + "</a></p>";
 					          
 							draftcourse+="";
 							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
@@ -265,7 +232,7 @@ $(document).ready(function() {
 					    
 					    console.log("it is written"); 
 					});
-						draftcourse+='<a style="float:right; margin: 1em;" href="/ziksana-web/secure/showMyProgramsDraft">More</a><div class="clear"></div>';
+						draftcourse+='<a style="float:right; margin: 1em;" href="/ziksana-web/secure/course">More</a><div class="clear"></div>';
 	                   }
 					
 					var reviewcourse='';
@@ -339,7 +306,7 @@ $(document).ready(function() {
 						var progress =  $(this).find("progress").text()+"%";
 						
 					    console.log("Yes I am in");  
-					    draftcourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
+					    draftcourse+="<p class='blok-title-L'><a href='/ziksana-web/secure/course'>" +  ": " + $(this).find("title").text() + "</a></p>";
 					          
 							draftcourse+="<p></p>";
 							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
@@ -437,8 +404,10 @@ function short_string(string){
                      </c:if>
                   <c:if test="${member.roleType eq 'LEARNER'}">
                    <div class="Performance">   
-                        <p class="titles-info font-Signika text-size-px18 light-gray">My Courses<br></p>
+                        <p class="titles-info font-Signika text-size-px18 light-gray t_toggler t_up">My Courses<br></p>
+                        <div class="t_content">
        						<div id="draft_placeholder"></div>
+       					</div>
        				</div>
        			
                  </c:if>
@@ -510,6 +479,48 @@ function short_string(string){
         </div>
         </div>             
 
+
+<script type="text/javascript">
+ function submitPoll(memberId)
+ {
+	 
+	 
+	 pollid = $('#pollId').val();	
+	 optionindex = $('#optionIndex').val();
+	  $.post( '<c:url value='/secure/submitpoll/'/>'
+		 		 , {'pollId':pollid,'optionIndex':optionindex}
+		 		 , function( data )
+		  			{
+		 			console.log( 'Poll data from AJAX:', $(data).text());
+		 			
+		 			var output_poll = "";
+                    
+		 			$(data).find("questionresultpair").each(function(index)  
+		 					{
+		 				output_poll+="<div style='width:100px;'";
+		 				var colorNames = new Array("green", "red", "blue", "yellow","pink");
+		 					 $(this).find("pollResult").find("option").each(function(index)
+		 							 {
+		 						output_poll+="<p  style='padding-left: 10px;'>"+ $(this).find("optiontext").text()+"</p>";  
+		 						output_poll+="<p  style='padding-left: 10px;'>"+ $(this).find("percentage").text()+"%</p>";
+		 						
+		 						output_poll+="<div style='width:"+ $(this).find("percentage").text()+ "px; height:25px; background-color:"+colorNames[index]+";'></div>";
+		 						//output_poll+=""+$(this).find("answer1").text()+"%vote<br/>";
+		 						  
+		 					});
+		 					output_poll+="</div>"; 
+		 				 	 //output+="<p  style='padding-left: 10px;'>"+ $(this).find("answer1count").text()+"</p>";
+		 				 	 //alert(output);
+		 					});
+		 			$('div.pollresult').html(output_poll);
+		 			$('div.pollresult').show();
+		 			 }
+					 );     
+	   
+	  
+	  document.getElementById("submit_poll").disabled=true;
+ }
+ </script>
 <!-- Feedzilla Widget BEGIN -->
 
 <!-- <div class="feedzilla-news-widget feedzilla-6174072121341786" style="width:206px; padding: 0; text-align: center; font-size: 12px; border: 0;">

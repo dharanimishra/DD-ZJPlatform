@@ -49,10 +49,12 @@
 			});
 	
 			
-		function closeit()
-		{
-		$.fancybox.close();
-		}	
+	function closeIt(){
+		 
+		  parent.jQuery.fancybox.close();
+
+		  
+}
 		function showdate()
 		{
 		var today = Date.today().toString('MM/dd/yyyy');
@@ -154,7 +156,7 @@ function getMessagedescription(indexValue){
 	outputDetails_description+="<div>";
 	outputDetails_description+="<br/></br><u><label style='font-weight:bold;'>"+announcement_message+"</label></u><label >"+announcement_date+"</label><label  >"+announcement_dec+"</label>";
 	outputDetails_description+="</div>";
-	outputDetails_description+="<button id='return_announcements' style='float: right; display: none;' class='btn btn-info' onClick='hide_Announcement_Sigle_row_values()' name='btn_return'>Return</button>";
+	
 
 	//$("#linksMeeting").fadeIn();
 	$("#linksdetails").html(outputDetails_description);
@@ -379,7 +381,7 @@ function getCategoryByBetweenDates(){
   }
   function hide_Announcement_Sigle_row_values(){
 	  $('#row_selection_form_container1').hide();
-	  $('#return_announcements').hide();
+	  $('#return_announcements').show();
   }
   </script>
 
@@ -412,7 +414,7 @@ function getCategoryByBetweenDates(){
 
 			<div id="zReturn" style="margin-top: 5px; height: 30px;">
 				
-
+"<button id="return_announcements" style="float: right;" class="btn btn-info" onClick="closeIt()" name="btn_return">Return</button>
 
 			</div>
 			<!-- end zReturn -->

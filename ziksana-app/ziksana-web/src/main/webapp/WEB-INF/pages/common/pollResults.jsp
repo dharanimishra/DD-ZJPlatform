@@ -22,9 +22,13 @@ pageEncoding="ISO-8859-1"%>
 		<script type="text/javascript" src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
 <style type="text/css">
 .row-hover {
-  background-color:#66CCFF ! important;
+
+ 
+ background-color:#66CCFF ! important;;
  color: blue;
-}
+ }
+ #updateTable tr:hover td {background: #CADFE2 !important;}
+
 </style>
 		
 <c:url var="pollquestionsanswers" value="/secure/getallpollquestionsanswers/" />
@@ -38,9 +42,11 @@ pageEncoding="ISO-8859-1"%>
 function details(asd)
 {
 	$('.tb1 tr').removeClass('row-hover');
-	$('#edit_message'+asd+'').addClass('row-hover');
+	$('#row_selection_'+asd+'').addClass('row-hover');
 questionId = $('#edit_message'+asd+'').text();
+questionName = $('#edit_description'+asd+'').text();
 //alert(questionId);
+ var outputAnswers="";
 
 	 $.ajax({
 		
@@ -48,9 +54,11 @@ questionId = $('#edit_message'+asd+'').text();
 			url: '${pollquestionsanswers}'+questionId+'',
 			dataType: 'xml',
 			success: function( data ) {
+				outputAnswers+="<strong>"+questionName+"</strong><br/><br/>";
+				
 				$(data).find("QuestionsAnswersList").each(function(){
-				 var outputAnswers="";
-				 outputAnswers+="<br/><b> Details of the select Row in the table should be displayed here</b><br/>";
+				
+				
 				outputAnswers+="Strongly agree <br/>";
 				outputAnswers+="<div style='width:"+$(this).find("answer1").text()+"%; height:20px; background-color:green;'></div>";
 				outputAnswers+=""+$(this).find("answer1").text()+"%vote<br/>";
@@ -69,13 +77,13 @@ questionId = $('#edit_message'+asd+'').text();
 	
 	
 
-var val= $('#row_selection_'+asd+'').html();
+//var val= $('#row_selection_'+asd+'').html();
 
-$("#linksMeeting").fadeIn();
+/* $("#linksMeeting").fadeIn();
 $("#zReturn1").hide();
 
-$("#linksdetails").html(val);
-$("#details-poll").hide();
+$("#linksdetails").html();
+$("#details-poll").hide(); */
 
 }			
 			
@@ -87,7 +95,7 @@ function selectrow()
 {
 $('#tr1').css("background-color", "#000000");
 }	
-function showdetails()
+/* function showdetails()
 {
 var test=$("#linksdetails").html();
 
@@ -100,7 +108,7 @@ $("#zReturn1").show();
 $("#details-poll").show();
 
 }
-}	
+}	 */
 function showdate()
 {
 var today = Date.today().toString('dd/MM/yyyy');
@@ -117,7 +125,7 @@ document.getElementById("vDate").value=last_month;
 }				
 		</script>
 		
- <c:url var="getAllPollQues" value="/secure/getallpollquestions" />
+ <c:url var="getAllPollQues" value="/secure/getallpollquestion" />
   <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -130,7 +138,7 @@ $(document).ready(function() {
 					}
 					var output_announcement="";
 					
-					output_announcement+="<table class='table tb1'>";
+					output_announcement+="<table id='updateTable' class='table tb1'>";
 					output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Poll Date</th>";
 					output_announcement+="<th  width='200px' style='color:#fff;'>Questions</th></tr>";
 					output_announcement+="<tbody>";
@@ -138,7 +146,7 @@ $(document).ready(function() {
 					$(data).find("QuestionsList").each(function(){
 						$(data).find("Questions").each(function(index){
 						
-						output_announcement+="<tr id='row_selection_"+index+"'><td style=''><a href='#' onClick='details("+index+")'><label style='display:none' id='edit_message"+index+"'>"+ $(this).find("questionId").text()+"</label><label id='edit_messages"+index+"'>"+ $(this).find("questionDate").text()+"</label></a></td>";
+						output_announcement+="<tr id='row_selection_"+index+"' onClick='details("+index+")' ><td style=''><label style='display:none' id='edit_message"+index+"'>"+ $(this).find("questionId").text()+"</label><label id='edit_messages"+index+"'>"+ $(this).find("questionDate").text()+"</label></td>";
 						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("questionName").text()+"</label></td></tr>"; 
 						
 						});
@@ -156,9 +164,9 @@ $(document).ready(function() {
 });
 function hideContents(){
 	
-	$('#details-poll').hide();
-	$('bars-answer').hide();
-	$('#zReturn1').hide();
+	
+	$('bars-answer').show();
+	$('#zReturn1').show();
 }
 </script>
 </head>
@@ -193,8 +201,8 @@ function hideContents(){
                 <div id="tblGroup">
                
                 </div>
-				<div style="float:right; padding-top:30px;"><a href="#" onclick="showdetails()">Details</a></div>
-				<div id="linksMeeting" style=" display:none; border-top:1px solid grey">
+				
+				<div id="linksMeeting" style="border-top:1px solid grey">
             	
 				
 				<div id ="details-poll">
@@ -229,9 +237,9 @@ function hideContents(){
              <!-- end tblGroup -->
            
    
-   <div id="zReturn1" style="margin-top:5px; display:none;height:30px;"> 
+   <div id="zReturn1" style="margin-top:5px;height:30px;float:right;"> 
 
- <input type="button" class="btn btn-info" id="btn_return" onclick="hideContents()" name="btn_return" value="Return"/>
+ <input type="button" class="btn btn-info"  onclick="parent.jQuery.fancybox.close()" name="btn_return" value="Return"/>
         	</div>
             <!-- end zReturn -->
              

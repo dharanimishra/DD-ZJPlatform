@@ -316,9 +316,9 @@
 	<c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
 	<script type="text/javascript">
   setInterval(function() {
-		
+	 
 
-	}, 500);
+	}, 2000);
   get_and_UnAnswered_questions();
   
   function get_and_UnAnswered_questions(){
@@ -337,7 +337,7 @@ $(document).ready(function() {
 					 questionIdArray = new Array();
 					 optionArray = new Array();
 					 optionIndexArray = new Array();
-					 memberPersonalitytestId = 0;
+					
 					$(data).find("Questions").each(function(index){
 						
 						
@@ -350,7 +350,7 @@ $(document).ready(function() {
 						
 				 		$(this).find("options").each(function(){
 				 			
-				 			memberPersonalitytestId = $(this).find("memberpsttestid").text();
+				 			
 				 			$(this).find("option").each(function(){
 				 				
 				 				options +=  $(this).text()+"/";
@@ -380,11 +380,15 @@ $(document).ready(function() {
   }
 function displayUnAnsweredPairs(current){
 	var outputResult="";
+	
 	outputResult+="<span class='jdash-head titles-info font-Signika text-size-px18 light-gray t_toggler t_up' >Know me better</span>";
+	if(questionIdArray[current] == null){
+		outputResult+="No New Questions";
+	}else{
 	outputResult+="<div class='t_content'>";
 	outputResult+="<div id='question_info_message'></div>";
 	outputResult+="<div id='quest'>";
-	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label><label style='display:none;' id='cur-user-member'>"+memberPersonalitytestId+"</label>";
+	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label>";
 	outputResult+="<table class='sortable' width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
@@ -415,12 +419,14 @@ function displayUnAnsweredPairs(current){
 		outputResult+="<button class='f-rt btn-info-knowme' id='knowme-save' onClick='submitValue()'>Submit</button>";
 	
 	  
-	   outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'>More</span></a></div>";
+	   
 	  // outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block' style='color: #27b;'>More..</a></div>";
 	
 		 
 	 outputResult+="</div>";
 	
+	}
+	 outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'>More</span></a></div>";
 	$('#knowme-ques').html(outputResult);
 }
 
@@ -442,7 +448,7 @@ function submitValue(){
 	question_id = $('#cur-qus-id').val();
 	var testQuestionValue = $('#cur-qus-value').text();
 	question_answer = $('input[name="question_'+question_id+'"]:checked').val();
-	var memberPstTestQuestionId = $('#cur-user-member').text();
+	
 	
 	
 	
@@ -453,7 +459,7 @@ function submitValue(){
 
 		   
 		       $.post( '<c:url value='/secure/saveknowme'/>'
-				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId,'memPstTestId':memberPstTestQuestionId}
+				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId}
 				        , function(data)
 				        {
 				        

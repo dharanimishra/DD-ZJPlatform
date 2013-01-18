@@ -8,6 +8,7 @@
 			class=" text-size-px20 font-Signika">recommendations</a></span> for you to
 		save time and meet your goals today
 	</span> --%> <c:url var="createlink" value="/secure/createcourse" />
+	<c:if test="${member.roleType eq 'EDUCATOR'}">
 		<div class="f-r">
 			<strong class="text-size-px16 light-gray"> <a
 				href="#" class="light-blue">Create </a><strong>|</strong>
@@ -17,5 +18,10 @@
 			<a href="#" class="light-blue"><img src="${imageUrl_header2}"
 				alt="add more" width="4" height="6" class="light-blue add-more"></img></a>
 		</div>
+		</c:if>
+		<c:if test="${member.roleType eq 'LEARNER'}">
+		<div class="f-r">
+		</div>
+		</c:if>
 </div>
 <!--End slogen-->

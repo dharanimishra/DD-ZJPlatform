@@ -107,7 +107,7 @@ $(document).ready(function() {
 	
 	$('select#todo_categories').change(function(){
 		
-		if($(this).val() == 'add_new_category'){ show_category_form(); }
+		if($(this).val() == 'Add_new_category'){ alert($(this).val()); show_category_form(); }
 	});
 	
 	
@@ -186,7 +186,7 @@ $(document).ready(function() {
 
 					
 					
-					select = '<option value="">&nbsp;</option>'+option_string + '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add a New Category</option></optgroup>';
+					select = '<option value="">&nbsp;</option>'+option_string + '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">ADD NEW CATEGORY</option></optgroup>';
 					$('select#todo_categories').html(select);
 	
 					
@@ -255,14 +255,14 @@ function capitalize(s){
 	<span id="add_new_category_form" style="display:none;">
 	 <input id="todo_category_name"/><!-- <button onclick="add_new_category_item();">Add</button> -->
 	</span>
-	Description: <input id="todo_description" style="width:350px">
+	Description: <input id="todo_description" style="width:330px">
 </div>
 	
 
 </div> <!--end of container -->  
 	<hr/>
 <a class='btn btn-info f-r' style='margin-right:70px;' onclick='closeit()'> Return </a> 
-<a class='btn btn-info f-r add_todo_button' onclick='$("#add_todo_fields_container").show(); $(this).attr("disabled",true);' style='margin-right:10px;'> Add TODO </a>
+<a class='btn btn-info f-r add_todo_button' onclick='$("#add_todo_fields_container").show(); $(this).attr("disabled",true);' style='margin-right:10px;'> Add To DO </a>
 </div>
 
 </body>

@@ -79,14 +79,13 @@ public class KnowmeController {
 			@RequestParam(value = "memberAnswer", required = true) String memberAnswer,
 			@RequestParam(value = "testQuestionValue", required = true) String testQuestionValue,
 			@RequestParam(value = "testQuestionId", required = true) Integer testQuestionId,
-			@RequestParam(value = "questionBankAnswerId", required = true) Integer questionBankAnswerId,
-			@RequestParam(value = "memPstTestId", required = true) Integer memPstTestId){
+			@RequestParam(value = "questionBankAnswerId", required = true) Integer questionBankAnswerId){
 		
 		
-	    int firstDigit = Integer.parseInt(Integer.toString(memPstTestId).substring(0, 1));
+	   
 		
 		Question question = new Question(testQuestionId,testQuestionValue);
-		Choice userChoice =new Choice(questionBankAnswerId, null, memberAnswer, firstDigit);
+		Choice userChoice =new Choice(questionBankAnswerId, null, memberAnswer);
 		
 		//userChoice.setMemPstTestId(Integer.valueOf(1));
 		personalityService.saveAnswer(question, userChoice);

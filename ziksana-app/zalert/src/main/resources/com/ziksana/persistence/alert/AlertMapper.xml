@@ -87,7 +87,7 @@
 	</update>
 
 	<delete id="deleteAlert" parameterType="int">
-		delete from memmembernotification where MemberNotificationId = #{memberNotificationId}
+		delete from memmembernotification where ID = #{memberNotificationId}
 	</delete>
 
 

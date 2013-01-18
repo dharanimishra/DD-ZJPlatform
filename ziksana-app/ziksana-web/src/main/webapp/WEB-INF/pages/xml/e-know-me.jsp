@@ -59,6 +59,13 @@
 		.highlighted_row tr:hover td {background: orange !important;}
 	</style>
   <script type="text/javascript">
+  function closeIt(){
+		 
+	  parent.jQuery.fancybox.close();
+	 
+	 
+	  
+}
   $(document).ready(function() {
 		setInterval(function() {
 			
@@ -156,7 +163,9 @@ $(document).ready(function() {
 
 function displayUnAnsweredPairs(current){
 	var outputResult="";
-	
+	if(questionIdArray[current] == null){
+		outputResult+="<br/><br/><div style='text-align=center'>No New Questions</div>";
+	}else{
 	outputResult+="<div id='quest'>";
 	outputResult+="<div id='question_info_message'></div>";
 	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label><label style='display:none;' id='cur-user-member'>"+memberPersonalitytestId+"</label> ";
@@ -201,7 +210,7 @@ function displayUnAnsweredPairs(current){
 	outputResult+='</div>';	
 		
 		 
-	
+	}
 	
 	$('#newque').html(outputResult);
 }
@@ -370,8 +379,9 @@ background-color: #DAE8F2;
 		<div id="newque" class="new-que">
 							  
 		</div>
-			    
-			    
+		<div style="">	    
+		<button class='btn btn-info-knowme'style='margin-left:300px;margin-top:30px;height:30px;' onClick=' parent.jQuery.fancybox.close();' class='f-rt'>Return</button>
+		</div>	    
 				 
 <!-- Apply Answer value -->
 
@@ -429,7 +439,7 @@ function answeredQuestionDisplay(){
 	
 	
 	outputResult+="</table>";
-	outputResult+="<a  class='' style='cursor:pointer;color:blue;float:right;margin-top:30px;' onClick='$(\"#answered_question_form_container\").show();'>Details</a>";
+	
 	$('#answer-display').html(outputResult);
 }
 
@@ -451,7 +461,7 @@ function displayAnsweredQuestionContainer(loop){
 		dataType: 'xml',
 		success: function( data ) {
 			
-			outputAns+="<div style='display:none;' id='answered_question_form_container'>";
+			outputAns+="<div style='' id='answered_question_form_container'>";
 			outputAns+="<br/></br><u><p style='font-weight:bold;'>View or update the Answer:</p></u>";
 			outputAns+="<div>";
 			outputAns+="<div id='question_info_message_update'></div>";
@@ -479,9 +489,10 @@ function displayAnsweredQuestionContainer(loop){
 		 	outputAns+="</div>"; 
 		 	outputAns+="<div>"; 
 		 	outputAns+="<button class='btn btn-info-knowme' style='margin-left:50px;margin-top:30px;height:30px;' onClick='updateValues()' class='f-rt'>Submit Revisions</button>";
-			outputAns+="<button class='btn btn-info-knowme'style='margin-left:50px;margin-top:30px;height:30px;' onClick='$(\"#answered_question_form_container\").hide();' class='f-rt'>Return</button>"; 
+			
 			 
 			outputAns+="</div>"; 
+			
 			$('#click-det').html(outputAns);		 	
 			
 		}

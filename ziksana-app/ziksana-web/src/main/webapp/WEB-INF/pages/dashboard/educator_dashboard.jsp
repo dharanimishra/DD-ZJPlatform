@@ -135,6 +135,20 @@ $(document).ready(function() {
 	});
 	
 });
+$(document).ready(function() {
+
+	var m_names = new Array("JAN", "FEB", "MAR", 
+	"APR", "MAY", "JUNE", "JUL", "AUG", "SEP", 
+	"OCT", "NOV", "DEC");
+
+	var d = new Date();
+	var curr_date = d.getDate();
+	var curr_month = d.getMonth();
+	var curr_year = d.getFullYear();
+	var mondate=curr_date + "- " + m_names[curr_month] + "";
+	$('.dmonth').html(mondate);
+
+	});
 </script>
 
  <script type="text/javascript">
@@ -316,7 +330,7 @@ $.ajax({
 							output_todo+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 							 
 							output_todo+="<img src='${todo}' alt='Info' /></div>";
-							output_todo+="<div class='todoinfo-category todotip_container' style='display:inline;' >"+$(this).find("categoryName").text()+"<div class='categorytip'>"+$(this).find("categoryName").text()+" </div></div>";
+							output_todo+="<div class='todoinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("categoryName").text())+"<div class='categorytip'>"+$(this).find("categoryName").text()+" </div></div>";
 							
 							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onClick='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
 							
@@ -413,7 +427,7 @@ function short_string_category(value){
                             
                             <div class="_upcoming _up1">
                             	<div class="_cDate" style="color:#A80000;">
-                                	<b>Jan 7</b><br> <b>09.00 AM</b>
+                                	<span class="dmonth"></span><br> <b>09.00 AM</b>
                                 </div>
                                 
                                 <div class="_uevent" style="">
@@ -423,7 +437,7 @@ function short_string_category(value){
                             
                             <div class="_upcoming _up1">
                             	<div class="_uDate">
-                                	<b>Jan 7</b><br> <b>12.00 PM</b> 
+                                	<b>26-JAN</b><br> <b>12.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent">
@@ -433,7 +447,7 @@ function short_string_category(value){
                             
                             <div class="_upcoming _up2">
                             	<div class="_uDate">
-                                	<b>Jan 7</b><br> <b>02.00 PM</b> 
+                                	<b>26-JAN</b><br> <b>02.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="padding-top:2px; text-align:middle;">
@@ -449,7 +463,7 @@ function short_string_category(value){
                         </div>
                         <div class="_cRight all-box-shadow">
                         	<div class="_e1">
-                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">Jan 7 - Recap on Ziksana Capability</span></div>
+                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">26-JAN - Recap on Ziksana Capability</span></div>
 
 								<div><i class=" bold">Place: </i>UTD Administrative Building
 								<i class=" bold"><br>Time: </i>9:00 am - 12:00 pm </div>
@@ -511,7 +525,7 @@ function short_string_category(value){
 					
 					</div>
                    
-                      <p class="titles-info font-Signika text-size-px18 light-gray">Class Talk <!--<span class="rightof-title-info blue">Show only</span>--></p>
+                      <p style="margin:-5px -1px 10px;" class="titles-info font-Signika text-size-px18 light-gray" >Class Talk <!--<span class="rightof-title-info blue">Show only</span>--></p>
                       <c:url var="imageUrl_dashboard1" value="/resources/images/user/2my-photo.png" />
                       <img src="${imageUrl_dashboard1}" width="38" height="40" align="left" class="img">
                       <p class="user-p li font-Arial"><span class="blok-title-L">Jason Dechamp</span>Check out the blog '<span class="blue">Innovative Educational Technology</span>', its gives good ideas for our projects.</p>

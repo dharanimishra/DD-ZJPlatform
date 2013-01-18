@@ -31,30 +31,25 @@
 							    </optiontext>
 							    <c:choose>
 						<c:when test="${option.index == 0}">
-							<count>
-							      ${qr.pollResult.answer1Count} 
-							    </count>  
+							<count>${qr.pollResult.answer1Count}</count>  
+							<percentage>${qr.pollResult.percentage1}</percentage>
 						</c:when>
 						<c:when test="${option.index == 1}">
-							<count>
-							      ${qr.pollResult.answer2Count} 
-						   </count>  
+							<count>${qr.pollResult.answer2Count}</count>  
+							 <percentage>${qr.pollResult.percentage2}</percentage>
 						</c:when>
 						
 						<c:when test="${option.index == 2}">
-							<count>
-							      ${qr.pollResult.answer3Count} 
-							</count>  
+							<count>${qr.pollResult.answer3Count}</count> 
+							<percentage>${qr.pollResult.percentage3}</percentage> 
 						</c:when>
 						<c:when test="${option.index == 3}">
-							<count>
-							      ${qr.pollResult.answer4Count} 
-						</count>  
+							<count>${qr.pollResult.answer4Count}</count>  
+							<percentage>${qr.pollResult.percentage4}</percentage>
 						</c:when>
 						<c:when test="${option.index == 4}">
-							<count>
-							      ${qr.pollResult.answer5Count} 
-						</count>  
+							<count>${qr.pollResult.answer5Count}</count>  
+						<percentage>${qr.pollQuestion.percentage5}</percentage>	
 						</c:when>
 					</c:choose>
 							    
@@ -67,6 +62,11 @@
 					 <answer3count>${qr.pollResult.answer3Count}</answer3count>
 					 <answer4count>${qr.pollResult.answer4Count}</answer4count>
 					 <answer5count>${qr.pollResult.answer5Count}</answer5count>
+					 <percentage1>${qr.pollQuestion.percentage1}</percentage1>
+					 <percentage2>${qr.pollResult.percentage2}</percentage2>
+					 <percentage3>${qr.pollResult.percentage3}</percentage3>
+					 <percentage4>${qr.pollResult.percentage4}</percentage4>
+					 <percentage5>${qr.pollResult.percentage5}</percentage5>
 					 
 				</pollResult>				
 			</questionresultpair>
@@ -94,9 +94,9 @@
 				<pollResult>
 					<isNull>true</isNull>
 					<options>
-						<!-- <c:forEach var="option" items="${qr.pollQuestion.allOptions}">
+						 <c:forEach var="option" items="${qr.pollQuestion.allOptions}">
 							<option index="${option.index}" optionTotal="${option.optionTotal}">${option.HTML}</option>
-						</c:forEach> -->
+						</c:forEach> 
 					</options>
 				</pollResult>				
 			</questionresultpair>

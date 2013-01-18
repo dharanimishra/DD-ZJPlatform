@@ -18,6 +18,13 @@ public class Choice implements Comparable<Choice> {
 	 * @param text
 	 * 
 	 */
+	public Choice(Integer id, Integer index, String text) {
+		super();
+		this.id = new IntegerZID(id);
+		this.index = index;
+		this.text = text;
+		
+	}
 	public Choice(Integer id, Integer index, String text, Integer memPstTestId) {
 		super();
 		this.id = new IntegerZID(id);

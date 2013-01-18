@@ -6,7 +6,7 @@
 		parameterType="map">
 		SELECT * FROM memmemberziksanarecommendation WHERE
 		RecommendationCategory = #{category} and memberRoleId =
-		#{memberRoleId} order by creationdate desc
+		#{memberRoleId} order by RecommendedDate ASC
 	</select>
 
 
@@ -19,7 +19,7 @@
 		    n.RecommendationCategory=l.LookupValueId 
 		   join utllookup v ON
 		  l.LookupId=v.LookupId 
-			where memberRoleId =#{memberRoleId} order by n.CreationDate desc
+			where memberRoleId =#{memberRoleId} order by n.RecommendedDate ASC
 	</select>
 
 	<select id="getMapperRecommendation" resultMap="recommendationResultMap"
@@ -32,7 +32,7 @@
 		    n.RecommendationCategory=l.LookupValueId 
 		   join utllookup v ON
 		  l.LookupId=v.LookupId 
-			where memberRoleId =#{memberRoleId} order by n.CreationDate desc
+			where memberRoleId =#{memberRoleId} order by n.RecommendedDate ASC
 	</select>
 
 	<select id="getRecommendationByRecommendationId" resultMap="recommendationResultMap"
@@ -44,7 +44,7 @@
 		    n.RecommendationCategory=l.LookupValueId 
 		   join utllookup v ON
 		  l.LookupId=v.LookupId 
-			where memberRoleId =#{memberRoleId} and ID = #{recommendationId}  order by n.CreationDate desc
+			where memberRoleId =#{memberRoleId} and ID = #{recommendationId}  order by n.RecommendedDate ASC
 			
 		
 	</select>
@@ -69,12 +69,12 @@
 		parameterType="String">
 		SELECT * FROM memmemberziksanarecommendation WHERE
 		currentState = #{currentState} order by
-		creationDate desc
+		RecommendedDate ASC
 	</select>
 
 	<update id="updateRecommendationsCategoryById" parameterType="map">
 		update memmemberziksanarecommendation set RecommendationCategory =
-		#{category}, IgnoreCount = #{ignoreCount} where
+		#{category}, IgnoreCount = #{ignoreCount}, RecommendedDate = now() where
 		ID = #{recommendationId}
 
 	</update>
@@ -88,7 +88,7 @@
 		    n.RecommendationCategory=l.LookupValueId 
 		   join utllookup v ON
 		  l.LookupId=v.LookupId 
-			where memberRoleId =#{memberRoleId} order by n.CreationDate desc
+			where memberRoleId =#{memberRoleId} order by n.RecommendedDate ASC
 	</select>
 
 

@@ -36,7 +36,8 @@ public class PersonalityTestServiceImpl implements PersonalityTestService {
 
 	@Override
 	public void saveAnswer(Question question, Choice userChoice) {
-		personalityTestMapper.saveAnswer(question, userChoice);
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
+		personalityTestMapper.saveAnswer(question, userChoice,memberRoleId);
 
 	}
 

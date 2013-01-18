@@ -32,14 +32,16 @@
 		
 		$.fancybox({
 			'width': '85%',
-			'height': '85%',
-			'autoScale': true,
+			'height': '500',
+			'autoScale': false,
 			'transitionIn': 'fade',
 			'transitionOut': 'fade',
+			//'autoScale': true,
+			//'autoDimensions': true,
 			'type': 'iframe',
 			'href': '/ziksana-web/secure/launcher',
 			'showCloseButton': false,
-			'onComplete': setTimeout("add_ziklogo_and_close_button();", 900),
+			'onComplete': setTimeout("add_ziklogo_and_close_button()", 2000),
 			'onClose': function(){window.location.href=window.location.href; }
 			
 			
@@ -47,7 +49,24 @@
 
 	});
 </script>
+<script type="text/javascript">
+function add_ziklogo_and_close_button(){
 
+	logo_html = '<img id="zik_fancy_logo" width="120" height="120" style="cursor: pointer; left: -36px; margin: 0 auto; position: absolute; top: -36px; z-index: 10000;" alt="" src="/ziksana-web/resources/images/ziksana_button_logo.png">';
+	//$(fancy_iframe).parent().find('#zik_fnacy_logo, #custom_fancybox_close').remove(); //initially remove the logo if exists.
+
+	fancybox_wrapper = $.fancybox.wrap;
+	if(fancybox_wrapper != null){
+	fancybox_wrapper.prepend(logo_html);
+	fancybox_wrapper.find(".fancybox-close").attr('onclick','confirmFancyboxClose(); return false;').removeAttr('href');
+	
+
+	} 
+	
+}
+
+
+</script>
 
 <style>
 .loginwrapper {

@@ -6,13 +6,12 @@
 	<select id="getUnansweredQuestions" resultMap="questionResultMap"
 		parameterType="int">
 
-
-		select distinct qb.ID as questionBankId,
+ 		select distinct qb.ID as questionBankId,
 		qba.ID as QuestionBankAnswerId,
 		qb.QuestionContent,
 		qba.`AnswerContent`,
-		qba.`AnswerSequence`, mpt.MemberRoleId,
-		mpt.ID as MemberPersonalityTestId
+		qba.`AnswerSequence`,
+		qb.MemberRoleId
 		from
 		psttestquestion q
 		JOIN asmquestionbank qb
@@ -20,20 +19,21 @@
 		q.QuestionBankId=qb.ID
 		JOIN asmquestionbankanswer qba ON
 		qb.ID=qba.QuestionBankId
+		
 		LEFT
 		OUTER JOIN
 		pstmemberpersonalityresponse r ON
 		q.ID=r.TestQuestionId
-		LEFT OUTER JOIN
+		JOIN
 		pstmemberpersonalitytest mpt ON
 		mpt.ID=mpt.ID
+		
 		where
-		r.TestQuestionId is null and r.MemberPersonalityTestId is null and
-		(mpt.MemberRoleId
-		is null or
-		mpt.MemberRoleId= #{memberRoleId}) order
+		r.TestQuestionId is null and
+		(qb.MemberRoleId = #{memberRoleId}) order
 		by qba.ID asc
-
+		
+		 
 	</select>
 
 	<select id="getUnansweredQuestionsbyId" resultMap="questionResultMap"
@@ -102,7 +102,7 @@
 				<idArg column="QuestionBankAnswerId" javaType="Integer" />
 				<idArg column="AnswerSequence" javaType="Integer" />
 				<idArg column="AnswerContent" javaType="String" />
-				<idArg column="MemberPersonalityTestId" javaType="Integer" />
+				
 			</constructor>
 		</collection>
 
@@ -133,7 +133,7 @@
 		MemberAnswer,ResponseDate,TestQuestionId,QuestionBankAnswerId,MemberPersonalityTestId)
 		values(
 		#{answer.text},now(),#{question.questionId},#{answer.id.storageID},
-		#{answer.memPstTestId} )
+		(select ID from pstmemberpersonalitytest where memberroleid= #{memberRoleId}) )
 
 		<selectKey keyProperty="MemPersonalityRespId" resultType="int"
 			order="AFTER">
