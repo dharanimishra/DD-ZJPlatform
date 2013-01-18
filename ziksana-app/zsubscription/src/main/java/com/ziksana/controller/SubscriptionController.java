@@ -9,17 +9,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.course.Content;
+import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
 import com.ziksana.domain.course.Hotspot;
 import com.ziksana.domain.course.subscription.Note;
+import com.ziksana.service.data.ContentService;
 import com.ziksana.service.subscription.SubscriptionService;
 
 /**
@@ -35,6 +40,9 @@ public class SubscriptionController {
 
 	@Autowired
 	SubscriptionService subscriptionService;
+	
+	@Autowired
+	ContentService contentService;
 
 	@RequestMapping(value = "/getLearnerNotes", method = RequestMethod.GET)
 	public @ResponseBody
@@ -138,6 +146,33 @@ public class SubscriptionController {
 
 		return subscriptionService.getEducatorSuggestedReferences(
 				Integer.valueOf(courseId), node);
+	}
+	
+	
+	@RequestMapping(value = "/educatorReferences", method = RequestMethod.GET)
+	public @ResponseBody
+	List<EducatorContent> getAllEducatorContent(
+			@RequestParam(value = "courseId", required = true) String courseId,
+			@RequestParam(value = "nodeId", required = true) String nodeId,
+			@RequestParam(value = "nodeType", required = false) String nodeType,
+			@RequestParam(value = "componentId", required = true) String parentNodeId,
+			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
+
+		Node node = new Node();
+		String parsedNodeId = nodeId.split("_")[3];
+		String parsedParentNodeId = parentNodeId.split("_")[1];
+		node.setId(Integer.valueOf(parsedNodeId));
+		// node.setType(Integer.valueOf(nodeType));
+		Node parent = new Node();
+		parent.setId(Integer.valueOf(parsedParentNodeId));
+		// parent.setType(Integer.valueOf(parentNodeType));
+		node.setParent(parent);
+
+		return subscriptionService.getAllEducatorContent(Integer.valueOf(courseId), node);
+		
+		
+		
+		
 	}
 	
 	
@@ -338,6 +373,29 @@ public class SubscriptionController {
 
 		return Integer.valueOf(subscriptionService
 				.deleteEducatorContent(Integer.valueOf(eduContentEnrichId)));
+
+	}
+	
+	
+	@RequestMapping(value = "/enrichplayer/{courseId}/{componentId}/{contentId}", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView  enrichPlayer(@PathVariable String courseId,
+			@PathVariable String componentId,
+			@PathVariable String contentId
+			) {
+
+		
+		ModelAndView mv = new ModelAndView("courses/enrich_player");
+		mv.addObject("courseId",   courseId);
+		mv.addObject("componentId", componentId);
+		mv.addObject("contentId", contentId);
+		
+		Content content = contentService.getContent(Integer.valueOf(contentId));
+		mv.addObject("content", content);
+				
+
+		return mv;
+		
 
 	}
 

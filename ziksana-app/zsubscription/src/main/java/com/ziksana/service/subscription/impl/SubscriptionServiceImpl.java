@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
@@ -282,6 +283,19 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 				.getStorageID();
 
 		return subscriptionMapper.getEducatorHotspots(7, Integer
+				.valueOf(memberRoleId), courseId, node.getParent().getId(),
+				node.getId());
+		
+	}
+
+	@Override
+	public List<EducatorContent> getAllEducatorContent(Integer courseId, Node node) {
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		
+		
+		return subscriptionMapper.getAllEducatorContent(Integer
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());
 		

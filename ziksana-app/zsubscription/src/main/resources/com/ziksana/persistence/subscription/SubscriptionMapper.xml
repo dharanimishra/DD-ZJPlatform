@@ -125,6 +125,49 @@
 	</select>
 	
 	
+	<select id="getAllEducatorContent" resultMap="educatorContentResultMap"
+		parameterType="map">
+
+
+
+
+
+		select
+		cntenr.*
+		from
+		corcontentenrichment cntenr
+		JOIN
+		corenrichment enr ON
+		cntenr.enrichmentid= enr.enrichmentId
+		JOIN
+		sbnsubscriptioncourse
+		sbncourse ON
+		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
+		JOIN
+		sbnmembersubscriptionprogram subprgm ON
+		sbncourse.MemSubscriptionProgId=subprgm.id
+		where
+		
+		<if test="subscrCourseId != null">
+			 enr.CourseId=#{subscrCourseId}
+		</if>
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
+		subprgm.MemberRoleId=#{memberRoleId}
+
+
+
+
+
+	</select>
+	
+	
+	
+	
+	
+	
+	
 	<select id="getEducatorHotspots" resultMap="hotspotsResultMap"
 		parameterType="map">
 
@@ -369,6 +412,20 @@
 		<result property="description" column="NotesContent" />
 
 	</resultMap>
+	
+	<resultMap id="educatorContentResultMap" type="com.ziksana.domain.course.EducatorContent">
+
+		<result property="contentType" column="LinkType" />
+		<result property="title" column="LinkElement" />
+		<result property="description" column="LinkDescription" />
+		<result property="url" column="uri" />
+		<result property="duration" column="duration" />
+		<result property="coordinates" column="coordinates" />
+		
+		
+
+	</resultMap>
+	
 	
 	<resultMap id="hotspotsResultMap" type="com.ziksana.domain.course.Hotspot">
 

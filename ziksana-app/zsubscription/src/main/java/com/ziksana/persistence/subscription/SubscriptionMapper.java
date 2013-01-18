@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
@@ -34,6 +35,15 @@ public interface SubscriptionMapper {
 			@Param("subscrCourseId") Integer subscrCourseId,
 			@Param("learnCompId") Integer learnCompId,
 			@Param("learnCmpContId") Integer learnCmpContId);
+	//getAllEducatorContent
+	
+	public List<EducatorContent> getAllEducatorContent(
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("subscrCourseId") Integer subscrCourseId,
+			@Param("learnCompId") Integer learnCompId,
+			@Param("learnCmpContId") Integer learnCmpContId);
+	
+	
 
 	public List<Reference> getEducatorReferences(
 			@Param("contentType") Integer contentType,

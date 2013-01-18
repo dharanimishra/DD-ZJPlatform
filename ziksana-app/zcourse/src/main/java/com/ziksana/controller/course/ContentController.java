@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.Content;
-import com.ziksana.service.course.ContentService;
+import com.ziksana.service.data.ContentService;
+
 
 /**
  * @author prabu

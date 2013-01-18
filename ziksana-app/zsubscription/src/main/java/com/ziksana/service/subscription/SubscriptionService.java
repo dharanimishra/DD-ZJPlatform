@@ -6,6 +6,7 @@ package com.ziksana.service.subscription;
 import java.util.List;
 
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.Node;
@@ -34,8 +35,15 @@ public interface SubscriptionService {
 	 */
 	public List<EducatorNote> getEducatorContent(SubscriptionCourse course,
 			Node node, Integer contentType);
+	
+	
+	
 
 	public List<EducatorNote> getEducatorNotes(Integer courseId, Node node);
+	
+	
+	
+	public List<EducatorContent> getAllEducatorContent(Integer courseId, Node node);
 
 	public List<Reference> getEducatorSuggestedReferences(Integer courseId,
 			Node node);
