@@ -281,7 +281,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
-		return subscriptionMapper.getHotspots(7, Integer
+		return subscriptionMapper.getEducatorHotspots(7, Integer
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());
 		

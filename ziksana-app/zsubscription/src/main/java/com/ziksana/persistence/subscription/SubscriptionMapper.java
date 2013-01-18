@@ -50,7 +50,7 @@ public interface SubscriptionMapper {
 			@Param("learnCmpContId") Integer learnCmpContId);
 	
 	
-	public List<Hotspot> getHotspots(
+	public List<Hotspot> getEducatorHotspots(
 			@Param("contentType") Integer contentType,
 			@Param("memberRoleId") Integer memberRoleId,
 			@Param("subscrCourseId") Integer subscrCourseId,

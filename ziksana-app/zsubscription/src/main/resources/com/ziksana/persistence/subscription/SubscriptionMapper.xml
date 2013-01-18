@@ -107,7 +107,7 @@
 		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
 		JOIN
 		sbnmembersubscriptionprogram subprgm ON
-		sbncourse.MemSubscriptionProgId=subprgm.MemSubscriptionProgId
+		sbncourse.MemSubscriptionProgId=subprgm.id
 		where
 		cntenr.LinkType=#{contentType}
 		<if test="subscrCourseId != null">
@@ -147,7 +147,7 @@
 		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
 		JOIN
 		sbnmembersubscriptionprogram subprgm ON
-		sbncourse.MemSubscriptionProgId=subprgm.MemSubscriptionProgId
+		sbncourse.MemSubscriptionProgId=subprgm.id
 		where
 		cntenr.LinkType=#{contentType}
 		<if test="subscrCourseId != null">
@@ -193,7 +193,7 @@
 		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
 		JOIN
 		sbnmembersubscriptionprogram subprgm ON
-		sbncourse.MemSubscriptionProgId=subprgm.MemSubscriptionProgId
+		sbncourse.MemSubscriptionProgId=subprgm.id
 		where
 		cntenr.LinkType = #{contentType}
 		<if test="subscrCourseId != null">
@@ -234,7 +234,7 @@
 		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
 		JOIN
 		sbnmembersubscriptionprogram subprgm ON
-		sbncourse.MemSubscriptionProgId=subprgm.MemSubscriptionProgId
+		sbncourse.MemSubscriptionProgId=subprgm.id
 		where
 		cntenr.LinkType = 7
 		<if test="subscrCourseId != null">
@@ -370,7 +370,7 @@
 
 	</resultMap>
 	
-	<resultMap id="hotspotsResultMap" type="com.ziksana.domain.course.subscription.Hotspot">
+	<resultMap id="hotspotsResultMap" type="com.ziksana.domain.course.Hotspot">
 
 		<result property="title" column="LinkElement" />
 		<result property="description" column="NotesContent" />

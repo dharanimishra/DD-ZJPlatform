@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorNote;
+import com.ziksana.domain.course.Hotspot;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.Note;
@@ -159,29 +160,48 @@ public class SubscriptionServiceImplTest {
 				.valueOf(2));
 		assertTrue(rowsAffected == 1);
 	}
-	
-	
+
 	@Test
 	public void testAddEducatorContent() {
-		Integer contentEnrichmentId = subscriptionService.addEducatorContent(100, 7, 10, 7, "coming from int test", "http://google.com", "xy", 2);
-		assertTrue(contentEnrichmentId>0);
-		
-		
+		Integer contentEnrichmentId = subscriptionService.addEducatorContent(
+				100, 7, 10, 7, "coming from int test", "http://google.com",
+				"xy", 2);
+		assertTrue(contentEnrichmentId > 0);
+
 	}
-	
+
 	@Test
 	public void testEditLearnerContent() {
-		int rowsAffected = subscriptionService.editLearnerContent(1, "test desc", 3,"title");
-		assertTrue(rowsAffected==1);
+		int rowsAffected = subscriptionService.editLearnerContent(1,
+				"test desc", 3, "title");
+		assertTrue(rowsAffected == 1);
 	}
-	
-	
+
 	@Test
 	public void testDeleteEducatorContent() {
-		int rowsAffected = subscriptionService.deleteEducatorContent(Integer.valueOf(1000));
-		assertTrue(rowsAffected==0);
-		
+		int rowsAffected = subscriptionService.deleteEducatorContent(Integer
+				.valueOf(1000));
+		assertTrue(rowsAffected == 0);
+
 	}
-	
+
+	@Test
+	public void testGetEducatorHotspots() {
+		
+		Node node = new Node();
+		node.setId(1);
+		node.setType(1000);
+		Node parent = new Node();
+		parent.setId(100);
+		node.setParent(parent);
+
+		List<Hotspot> hotspots = subscriptionService.getEducatorHotspots(1000,
+				node);
+
+		assertNotNull(hotspots);
+
+		assertTrue(hotspots.size() == 0);
+
+	}
 
 }
