@@ -54,6 +54,20 @@ $('.t_toggler').live('click',function(){
 	
 	filter: progid:DXImageTransform.Microsoft.gradient(enabled=  false );
 }
+	
+.jdash-head-title {
+	font-size:18px;
+	font-family:signika;  
+	cursor: move;
+	color: #666;
+}
+.jdash-head-title:hover { color: #ccc; }
+.jdash-head-title:hover span.sub-title { color: #666666; }
+
+	
+	
+	
+	
 </style>
 
 <script type="text/javascript">
@@ -71,14 +85,14 @@ $(document).ready(function() {
 					var output="";
 					var firstpollid="";
 					var lastpollid="";
-					output+="<span class='jdash-head titles-info font-Signika text-size-px18 light-gray t_toggler t_up' >Poll</span>";
+					output+="<span class='jdash-head-title  titles-info  t_toggler t_up' >Poll</span>";
 					 output+="<div class='t_content'>";
 					$(data).find("questionresultpair").each(function(index)  
 							{
 						
 						   // alert('poll results');
 						   
-						 	var question = "<p>"+ $(this).find("pollQuestion").find("questionText").text() + "</p>";
+						 	var question = "<p class='font-Signika text-size-px18 light-gray'>"+ $(this).find("pollQuestion").find("questionText").text() + "</p>";
 						 	var currentId = $(this).find("pollQuestion").find("id").text();
 						 	//alert('current id is '+currentId)
 							if ($(this).find("pollQuestion").find("active").text() == "true"){
@@ -385,14 +399,14 @@ function short_string(string){
 	}	
 } 
 </script>
- 
+<body> 
                <div class="col-right" >
                
 				
                   <div class="col-right-container for-rounded-box all-box-shadow">
                   <c:if test="${member.roleType eq 'EDUCATOR'}">
                   	<div class="Performance">   
-                        <span class="jdash-head titles-info font-Signika text-size-px18 light-gray t_toggler t_up" >My Courses (Draft)</span>
+                        <span class="jdash-head-title titles-info  t_toggler t_up" >My Courses (Draft)</span>
                        <div class="t_content"> 
        						<div id="draft_placeholder"></div>
 				        <p class="titles-info font-Signika text-size-px18 light-gray">My Courses (Review)<br></p>
@@ -404,7 +418,7 @@ function short_string(string){
                      </c:if>
                   <c:if test="${member.roleType eq 'LEARNER'}">
                    <div class="Performance">   
-                        <p class="titles-info font-Signika text-size-px18 light-gray t_toggler t_up">My Courses<br></p>
+                        <p class="jdash-head-title titles-info t_toggler t_up">My Courses<br></p>
                         <div class="t_content">
        						<div id="draft_placeholder"></div>
        					</div>
@@ -428,7 +442,7 @@ function short_string(string){
                   	<div class="Performance">
                   	
                
-                      <p class="titles-info font-Signika text-size-px18 light-gray">My Students <br></p>
+                      <p class="jdash-head-title  titles-info">My Students <br></p>
                      <c:url var="imageUrl_report1" value="/resources/images/e-dash-chart1.png" />
                         <img width="220" height="185" alt="Grade" src="${imageUrl_report1}">                 
 
@@ -439,7 +453,7 @@ function short_string(string){
                   	<div class="Performance">
                   	
                
-                      <p class="titles-info font-Signika text-size-px18 light-gray">My Performance<br></p>
+                      <p class="jdash-head-title  titles-info">My Performance<br></p>
                      <c:url var="imageUrl_report1" value="/resources/images/e-dash-chart1.png" />
                         <img width="220" height="185" alt="Grade" src="${imageUrl_report1}">                 
 
@@ -462,7 +476,7 @@ function short_string(string){
                   </div>
                   <div class="col-right-container for-rounded-box all-box-shadow">
     <div id="tabsbottom" style="background-color:#FFF; margin-bottom:15px;">
-           <span class="jdash-head titles-info font-Signika text-size-px18 light-gray t_toggler t_up" >Announcements</span>
+           <span class="jdash-head-title titles-info t_toggler t_up" >Announcements</span>
            <div class="t_content">	                           
 			           
             	                           
@@ -474,7 +488,7 @@ function short_string(string){
       
           <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
           <c:url var="showannounpopup" value="/secure/showannouncementpopup" />
-            <span><a class="text-size-px11  lbx-70-50" href="${showannounpopup}" class="" style="color: #27b;">More..</a></span>
+            <span><a class="text-size-px11  lbx-70-50" href="${showannounpopup}" class="" style="color: #27b;">More</a></span>
           </p>
         </div>
         </div>             
@@ -483,7 +497,6 @@ function short_string(string){
 <script type="text/javascript">
  function submitPoll(memberId)
  {
-	 
 	 
 	 pollid = $('#pollId').val();	
 	 optionindex = $('#optionIndex').val();
@@ -497,14 +510,15 @@ function short_string(string){
                     
 		 			$(data).find("questionresultpair").each(function(index)  
 		 					{
-		 				output_poll+="<div style='width:100px;'";
-		 				var colorNames = new Array("green", "red", "blue", "yellow","pink");
+		 				output_poll+="<div>";
+						output_poll+="<p class='font-Signika text-size-px18 light-gray'>Poll Result:</p>"
+		 				var colorNames = new Array("Turquoise", "SpringGreen", "Salmon", "RoyalBlue","Crimson");
 		 					 $(this).find("pollResult").find("option").each(function(index)
 		 							 {
 		 						output_poll+="<p  style='padding-left: 10px;'>"+ $(this).find("optiontext").text()+"</p>";  
 		 						output_poll+="<p  style='padding-left: 10px;'>"+ $(this).find("percentage").text()+"%</p>";
 		 						
-		 						output_poll+="<div style='width:"+ $(this).find("percentage").text()+ "px; height:25px; background-color:"+colorNames[index]+";'></div>";
+		 						output_poll+="<div style='width:"+ $(this).find("percentage").text()+ "%; height:20px; background-color:"+colorNames[index]+";'></div>";
 		 						//output_poll+=""+$(this).find("answer1").text()+"%vote<br/>";
 		 						  
 		 					});
@@ -567,3 +581,4 @@ Feedzilla Widget END
               
               
              
+</body>

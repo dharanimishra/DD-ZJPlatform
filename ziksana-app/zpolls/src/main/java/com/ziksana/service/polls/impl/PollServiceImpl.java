@@ -150,6 +150,7 @@ public class PollServiceImpl implements PollService {
 								.getMemberPersonaId().getStorageID()));
 		PollQuestionEntity pollQuestionEntity = pollQuestionResponseMapper.getPollQuestionById(pollQuestion.getID());
 		
+		
 		PollQuestion question = new PollQuestion();
 		System.out.println("QUESTION ID IS "
 				+ pollQuestionEntity.getID());
@@ -167,6 +168,13 @@ public class PollServiceImpl implements PollService {
 		
 		pollResult.setQuestion(question);
 		
+		PollResult pr = pollQuestionMapper.getPollResultByQuestion(pollQuestionEntity.getID());
+		pollResult.setPercentage1(pr.getAnswer1());
+		pollResult.setPercentage2(pr.getAnswer2());
+		pollResult.setPercentage3(pr.getAnswer3());
+		pollResult.setPercentage4(pr.getAnswer4());
+		pollResult.setPercentage5(pr.getAnswer5());
+		
 		return pollResult;
 
 	}
@@ -177,7 +185,7 @@ public class PollServiceImpl implements PollService {
 
 		if (pollQuestionEntity.getAnswer1() != null) {
 			options.add( getOption(0, pollQuestionEntity.getAnswer1()));
-			
+		
 		}
 
 		if (pollQuestionEntity.getAnswer2() != null)

@@ -399,7 +399,7 @@ function short_string_category(value){
 
 </script>
 
-
+<body>
 
 
                 <div class="center for-rounded-box all-box-shadow" >
@@ -546,3 +546,4 @@ function short_string_category(value){
                       </div>
                     </div>
                 </div>
+	</body>

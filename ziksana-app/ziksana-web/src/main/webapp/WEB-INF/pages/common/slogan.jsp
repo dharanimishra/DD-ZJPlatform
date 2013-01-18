@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true"%>
 <!--slogen-->
+<body>
 <div class="slogen-container">
 	<span class="text-size-px20 gray-777 bold font-Signika">Welcome
 		back <c:out value="${member.firstName}" />!<br> <c:url
@@ -24,4 +25,5 @@
 		</div>
 		</c:if>
 </div>
+</body>
 <!--End slogen-->

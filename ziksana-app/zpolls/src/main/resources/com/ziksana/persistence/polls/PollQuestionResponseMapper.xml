@@ -22,7 +22,8 @@
 	<select id="getPollQuestionById" resultMap="pollQuestionMap"
 		parameterType="int">
 
-		select * from utlzpollquestion where id=#{pollQuestionId}
+		
+		select * from utlzpollquestion where id=#{pollQuestionId} 
 
 
 
@@ -42,6 +43,7 @@
 		<result property="answer3Count" column="Answer3Count" />
 		<result property="answer4Count" column="Answer4Count" />
 		<result property="answer5Count" column="Answer5Count" />
+		
 		
 		<association property="question" javaType="com.ziksana.domain.polls.PollQuestion">
 			
@@ -63,6 +65,11 @@
 		<result property="answer3" column="Answer3" />
 		<result property="answer4" column="Answer4" />
 		<result property="answer5" column="Answer5" />
+		<result property="percentage1" column="percentage1" />
+		<result property="percentage2" column="percentage2" />
+		<result property="percentage3" column="percentage3" />
+		<result property="percentage4" column="percentage4" />
+		<result property="percentage5" column="percentage5" />
 	       
 	</resultMap>
 	

@@ -53,8 +53,16 @@
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
+.jdash-head-title {
+	font-size:18px;
+	font-family:signika;  
+	cursor: move;
+	color: #666;
+}
+.jdash-head-title:hover { color: #ccc; }
+.jdash-head-title:hover span.sub-title { color: #666666; }
 </style>
-
+<body>
 
 <div class="col-lft">
 
@@ -156,7 +164,7 @@
 
 		<div id="tabs" class="demo_message_container">
 
-			<span class="titles-info font-Signika text-size-px18 light-gray ">Contacts</span>
+			<span class="jdash-head-title titles-info ">Contacts</span>
 
 			<a class="tab0">All</a> <a class="tab1">First</a> <a class="tab2">Second</a>
 			<a class="tab3">Others</a> <br />
@@ -380,8 +388,7 @@ $(document).ready(function() {
   }
 function displayUnAnsweredPairs(current){
 	var outputResult="";
-	
-	outputResult+="<span class='jdash-head titles-info font-Signika text-size-px18 light-gray t_toggler t_up' >Know me better</span>";
+	outputResult+="<span class='jdash-head-title titles-info t_toggler t_up' >Know me better</span>";
 	if(questionIdArray[current] == null){
 		outputResult+="No New Questions";
 	}else{
@@ -419,14 +426,14 @@ function displayUnAnsweredPairs(current){
 		outputResult+="<button class='f-rt btn-info-knowme' id='knowme-save' onClick='submitValue()'>Submit</button>";
 	
 	  
-	   
+	  
 	  // outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block' style='color: #27b;'>More..</a></div>";
 	
 		 
 	 outputResult+="</div>";
 	
 	}
-	 outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'>More</span></a></div>";
+	  outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'>More</span></a></div>";
 	$('#knowme-ques').html(outputResult);
 }
 
@@ -524,7 +531,7 @@ $(document).ready(function() {
 
 		<div id="tabsbottom"
 			style="background-color: #FFF; margin-bottom: 15px;">
-			<span class="jdash-head titles-info font-Signika text-size-px18 light-gray t_toggler t_up" >Zeni
+			<span class="jdash-head-title titles-info t_toggler t_up" >Zeni
 				Recommendations</span>
 			<div class="t_content">
 
@@ -541,3 +548,4 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
+</body>

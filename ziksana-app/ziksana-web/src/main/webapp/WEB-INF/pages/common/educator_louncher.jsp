@@ -876,7 +876,7 @@ $("#datepara").show();
 	 <c:if test="${member.roleType eq 'LEARNER'}">
 	 <a class="fancyboxclose" href="mylearningprogram.html" target="_parent" >
 				<h5>Course</h5>
-				<div>Create your course with an easy 7 step process </div>				
+				<div>Study the courses that you have subcribed to </div>				
 			</a>
 				
 			<a class="fancyboxclose" href="#linkurl">

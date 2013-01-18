@@ -1,7 +1,6 @@
 package com.ziksana.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollQuestionResult;
@@ -23,7 +21,7 @@ import com.ziksana.domain.polls.PollResultNQuestion;
 import com.ziksana.service.polls.PollService;
 
 @Controller
-@RequestMapping(value = "/secure")
+@RequestMapping("/secure")
 public class PollController {
 
 	private static final Logger logger = LoggerFactory
