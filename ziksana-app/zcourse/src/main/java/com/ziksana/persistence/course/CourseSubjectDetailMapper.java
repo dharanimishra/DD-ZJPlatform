@@ -1,17 +1,15 @@
-/**
- * 
- */
 package com.ziksana.persistence.course;
 
-import java.util.Map;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
+import com.ziksana.domain.course.Option;
 
 /**
- * @author vtg-p6 Dec 15, 2012
+ * @author Ratnesh Kumar, Jan 01, 2013
  * 
  * 
  */
@@ -24,22 +22,19 @@ public interface CourseSubjectDetailMapper {
 	 * @return
 	 */
 
-	@Select({ "select SubjClassificationId, SubjectCategory from utlsubjectclassification " })
-	@Results(value = {
-			@Result(property = "subjectClassificationId", column = "courseid"),
-			@Result(property = "subjectCategory", column = "description") })
-	Map<String, String> getSubjectCategory();
+	@Select({ "select distinct SubjectArea,SubjectArea from utlsubjectclassification" })
+	@Results(value = { @Result(property = "value", column = "SubjectArea"),
+			@Result(property = "label", column = "SubjectArea") })
+	List<Option> getSubjectCategory();
 
-	@Select({ "select SubjClassificationId, SubjectArea from utlsubjectclassification  where SubjectCategory = #{courseId,jdbcType=VARCHAR}" })
-	@Results(value = {
-			@Result(property = "subjectClassificationId", column = "SubjectClassificationId"),
-			@Result(property = "subjectArea", column = "SubjectArea") })
-	Map<String, String> getSubjectArea(String subjectArea);
+	@Select({ "select  distinct SubjectCategory,SubjectCategory from utlsubjectclassification  where SubjectArea = #{subjectArea,jdbcType=VARCHAR}" })
+	@Results(value = { @Result(property = "value", column = "SubjectCategory"),
+			@Result(property = "label", column = "SubjectCategory") })
+	List<Option> getSubjectArea(String subjectArea);
 
-	@Select({ "select SubjClassificationId, SubjectTopic from utlsubjectclassification  where SubjectArea = #{subjectArea,jdbcType=VARCHAR}" })
-	@Results(value = {
-			@Result(property = "subjectClassificationId", column = "SubjectClassificationId"),
-			@Result(property = "subjectTopic", column = "SubjecTopic") })
-	Map<String, String> getSubjectTopic(String subjectArea);
+	@Select({ "select  distinct ID, SubjectTopic from utlsubjectclassification  where SubjectCategory = #{subjectCategory,jdbcType=VARCHAR}" })
+	@Results(value = { @Result(property = "value", column = "ID"),
+			@Result(property = "label", column = "SubjectTopic") })
+	List<Option> getSubjectTopic(String subjectArea);
 
 }

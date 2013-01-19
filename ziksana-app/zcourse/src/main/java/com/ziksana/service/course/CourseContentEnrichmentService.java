@@ -65,7 +65,7 @@ public interface CourseContentEnrichmentService {
 
 	/**
 	 * Saves the Topic for video content<br>
-	 * LinkType : TOC, Title: Topic Item, Details as “Dependeny:  Parent TOC Title”
+	 * LinkType : TOC, Title: Topic Item, Details as Dependeny:  Parent TOC Title
 	 * @param enrich
 	 * @throws CourseException
 	 */

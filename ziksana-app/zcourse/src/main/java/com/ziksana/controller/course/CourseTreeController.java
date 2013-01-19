@@ -30,12 +30,20 @@ public class CourseTreeController {
 	@Autowired
 	CourseTreeNodeService courseTreeNodeService;
 
-	private String parentIcon = "../resources/images/tree_icons/chapter.png";
-	private String docIcon = "../resources/images/tree_icons/pdf.png";
-	private String videoIcon = "../resources/images/tree_icons/video.png";
-	private String audioIcon = "../resources/images/tree_icons/audio.png";
-	private String folderClosed = "../resources/images/tree_icons/folderClosed.gif";
-	private String folderOpen = "../resources/images/tree_icons/folderOpen.gif";
+	private String courseIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/course.png";
+	private String chapterIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/chapter.png";
+	private String parentIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/chapter.png";
+	private String videoIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/video.png";
+	private String audioIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/audio.png";
+	private String folderClosed = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderClosed.gif";
+	private String folderOpen = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderOpen.gif";
+	private String pptIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/powerpoint.png";
+	private String docIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/word.png";
+	private String excelIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/excel.png";
+	private String pdfIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/pdf.png";
+	private String imageIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/image.png";
+	private String noteIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/note.png";
+	private String linkIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/link.png";
 
 	@RequestMapping(value = "/gettree", method = RequestMethod.GET)
 	public @ResponseBody
@@ -61,10 +69,16 @@ public class CourseTreeController {
 			courseIds = Integer.parseInt(courseId);
 			LOGGER.info("Exiting showTreenode():  courseIds :" + courseIds);
 		} catch (NumberFormatException nfe) {
-			courseIds = 100;
 			LOGGER.debug("Class :" + getClass()
 					+ "showTreenode(): NumberFormatException :"
 					+ nfe.getMessage());
+		}
+
+		List<TreeNode> NodeList = courseTreeNodeService
+				.getCourseComponent(courseIds);
+		for (TreeNode node : NodeList) {
+			courseIdValue = node.getCourseId().toString();
+			coursename = node.getCoursename();
 		}
 
 		List<TreeNode> treeNodeList = courseTreeNodeService
@@ -73,23 +87,26 @@ public class CourseTreeController {
 		LOGGER.debug("Class :" + getClass()
 				+ "showTreenode(): treeNodeList Size :" + treeNodeList.size());
 
-		for (TreeNode node : treeNodeList) {
-			courseIdValue = node.getCourseId().toString();
-			coursename = node.getCoursename();
-
-		}
 
 		ModelAndView modelView = new ModelAndView("xml/getparenttree");
 
 		modelView.addObject("courseIds", courseIdValue);
 		modelView.addObject("coursename", coursename);
 		modelView.addObject("parentIcon", parentIcon);
+		modelView.addObject("courseIcon", courseIcon);
+		modelView.addObject("chapterIcon", chapterIcon);	
 		modelView.addObject("docIcon", docIcon);
+		modelView.addObject("pdfIcon", pdfIcon);
+		modelView.addObject("pptIcon", pptIcon);
+		modelView.addObject("videoIcon", videoIcon);	
+		modelView.addObject("linkIcon", linkIcon);
+		modelView.addObject("noteIcon", noteIcon);
+		modelView.addObject("imageIcon", imageIcon);
+		modelView.addObject("audioIcon", audioIcon);	
+		modelView.addObject("excelIcon", excelIcon);
 		modelView.addObject("folderClosed", folderClosed);
 		modelView.addObject("folderOpen", folderOpen);
-		modelView.addObject("videoIcon", videoIcon);
-		modelView.addObject("audioIcon", audioIcon);
-		modelView.addObject("treeList", treeNodeList);
+		modelView.addObject("parentList", treeNodeList);
 
 		LOGGER.info("Exiting showMyTreenode(): " + courseId);
 		return modelView;
@@ -110,10 +127,16 @@ public class CourseTreeController {
 			LOGGER.info("Exiting showChildTreenode():  courseIds :" + courseIds);
 
 		} catch (NumberFormatException nfe) {
-			courseIds = 100;
 			LOGGER.debug("Class :" + getClass()
 					+ "showChildTreenode(): NumberFormatException :"
 					+ nfe.getMessage());
+		}
+
+		List<TreeNode> NodeList = courseTreeNodeService
+				.getCourseComponent(courseIds);
+		for (TreeNode node : NodeList) {
+			courseIdValue = node.getCourseId().toString();
+			coursename = node.getCoursename();
 		}
 
 		List<TreeNode> childList = new ArrayList<TreeNode>();
@@ -123,8 +146,6 @@ public class CourseTreeController {
 
 		try {
 			for (TreeNode node : treeNodeList) {
-				courseIdValue = node.getCourseId().toString();
-				coursename = node.getCoursename();
 				learningComponentId = node.getId();
 				childtreeNodeList = courseTreeNodeService
 						.getModuleContents(learningComponentId);
@@ -136,7 +157,10 @@ public class CourseTreeController {
 						+ learningComponentId);
 				try {
 					for (TreeNode childnode : childtreeNodeList) {
+						
 						childList.add(childnode);
+						LOGGER.info("Class :" + getClass()
+								+ "showChildTreenode(): childnode :"+childnode.getContentType());
 
 					}
 					LOGGER.info("Class :" + getClass()
@@ -159,9 +183,17 @@ public class CourseTreeController {
 		modelView.addObject("courseIds", courseIdValue);
 		modelView.addObject("coursename", coursename);
 		modelView.addObject("parentIcon", parentIcon);
+		modelView.addObject("courseIcon", courseIcon);
+		modelView.addObject("chapterIcon", chapterIcon);	
 		modelView.addObject("docIcon", docIcon);
-		modelView.addObject("videoIcon", videoIcon);
+		modelView.addObject("pdfIcon", pdfIcon);
+		modelView.addObject("pptIcon", pptIcon);
+		modelView.addObject("videoIcon", videoIcon);	
+		modelView.addObject("linkIcon", linkIcon);
+		modelView.addObject("noteIcon", noteIcon);
+		modelView.addObject("imageIcon", imageIcon);
 		modelView.addObject("audioIcon", audioIcon);
+		modelView.addObject("excelIcon", excelIcon);
 		modelView.addObject("folderClosed", folderClosed);
 		modelView.addObject("folderOpen", folderOpen);
 		modelView.addObject("parentList", treeNodeList);

@@ -50,7 +50,7 @@
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
 <script type='text/javascript'
 	src="/ziksana-web/resources/js/ziksana/coursecreation/associate.js"></script>
-	<script type='text/javascript'
+<script type='text/javascript'
 	src="/ziksana-web/resources/js/custom/course_associate.js"></script>
 <!-- scripts for tree -->
 <script type="text/javascript"
@@ -116,11 +116,16 @@
 </script>
 <link rel="stylesheet" type="text/css"
 	href="/ziksana-web/resources/css/uploadify.css" />
-<script type="text/javascript" src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
-<script type="text/javascript" src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
-	<style type="text/css">
-		#message {padding: 1em 0; color: steelblue;}
-	</style>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+<style type="text/css">
+#message {
+	padding: 1em 0;
+	color: steelblue;
+}
+</style>
 <style>
 .jqx-widget-content {
 	-moz-background-clip: padding;
@@ -177,9 +182,9 @@ span.standartTreeRow:hover {
 	padding: 3px;
 }
 
-.containerTableStyle {
-	overflow: scroll;
-	overflow-y: hidden;
+.containerTableStyle { /* overflow: scroll;
+	overflow-y: hidden; */
+	
 }
 </style>
 </head>
@@ -284,7 +289,8 @@ span.standartTreeRow:hover {
 								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
+								<li><a
+									href="/ziksana-web/secure/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
@@ -313,14 +319,16 @@ span.standartTreeRow:hover {
 
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 						</div>
-						<br> <br> <input type="hidden" id="courseid" value="${courseId}" />
-						<input type="hidden" id="courseLearningComponentId" value="" /> 
-						<input type="hidden" id="learningComponentId" value="" /> 
-						<input type="hidden" id="learningContentId" value="" />	
-						<input type="text" id="ContentPath" name="ContentPath" value="" />					
-						<input type="text" id="ThumbnailPicturePath" name="ThumbnailPicturePath" value=""/>					
-						<input type="text" id="NumberOfThumbnails" name="NumberOfThumbnails" value=""/>					
-						<input type="text" id="ContentType" name="ContentType" value=""/>		
+						<br> <br> <input type="hidden" id="courseid"
+							value="${courseId}" /> <input type="hidden"
+							id="courseLearningComponentId" value="" /> <input type="hidden"
+							id="learningComponentId" value="" /> <input type="hidden"
+							id="learningContentId" value="" /> <input type="hidden"
+							id="ContentPath" name="ContentPath" value="" /> <input
+							type="hidden" id="ThumbnailPicturePath"
+							name="ThumbnailPicturePath" value="" /> <input type="hidden"
+							id="NumberOfThumbnails" name="NumberOfThumbnails" value="" /> <input
+							type="hidden" id="ContentType" name="ContentType" value="" />
 
 						<style type="text/css">
 #splitter {
@@ -429,10 +437,12 @@ span.standartTreeRow:hover {
 															class="defaultvalue labelclass validate[required]"
 															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject Area</option>
+													
 														</select> <select name="Csubjectddl" id="Csubjectddl"
 															class="defaultvalue labelclass validate[required]"
 															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject</option>
+														
 														</select> <select name="Ctopicddl" id="Ctopicddl"
 															class="defaultvalue labelclass validate[required]"
 															style="width: 200px;">
@@ -449,8 +459,62 @@ span.standartTreeRow:hover {
 													<img src="/ziksana-web/resources/images/icons/upload.png"
 														align="left" /><label class="control-label labelclass"
 														for="uploadimage" style="margin-top: -2px;">Upload
-														any Image for the Content : </label> <input type="file"
-														id="Cimageupl" class="labelclass" tabindex="9" />
+														any Image for the Content : </label> <input type="hidden"
+														readonly="readonly" id="Cimageupl" class="labelclass"
+														tabindex="9" />
+													<div id="thubmnail_upload_message"></div>
+													<div id="loaderText"></div>
+													<input type="file" name="thumbnail_image_file_upload"
+														id="thumbnail_image_file_upload" />
+													<div id="status"></div>
+													<script type="text/javascript">
+														$(function() {
+															$(
+																	'#thumbnail_image_file_upload')
+																	.uploadify(
+																			{
+																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																				'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+																				'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+																				'fileSizeLimit' : '10024KB',
+																				//'debug': true,
+																				//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+																				'onUploadSuccess' : function(
+																						file,
+																						data,
+																						response) {
+																					json_string = data;
+																					data_object = $
+																							.parseJSON(json_string);
+																					console
+																							.log(data_object);
+																					if (data_object.Uploaded == 'true') {
+																						$(
+																								'#Cimageupl')
+																								.val(
+																										data_object.ContentPath);
+																						$(
+																								'#thubmnail_upload_message')
+																								.html(
+																										'Thumbnail Image Upload Successful! ');
+
+																					} else { //there is an error in the upload process
+
+																						$(
+																								'#message')
+																								.html(
+																										data_object.message);
+																					}
+
+																				}
+																			// Your options here
+																			});
+														});
+													</script>
+
+
+
+
 												</div>
 												<!-- end of secondcontainer--->
 											</div>
@@ -477,47 +541,71 @@ span.standartTreeRow:hover {
 												<br />
 												<div id="type-1">
 													<img src="/ziksana-web/resources/images/icons/upload.png"
-														align="left" /><label
-														class="control-label labelclass validate[required]"
+														align="left" /><label class="control-label labelclass"
 														for="uploadimage" style="margin-top: -2px;">Upload
-														the Content (mp4/mp3/doc/docx/ppt/pptx/pdf): </label> 
-														
-														<div id="message"></div>
-														<div id="loaderText"></div>
-														<input type="file" name="file_upload" id="file_upload" />
-														<div id="status"></div>
-	<script type="text/javascript">
-	$(function() {
-		$('#file_upload').uploadify({
-			'swf'      : '/ziksana-web/resources/swf/uploadify.swf',
-			'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
-			//'debug': true,
-			//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
-			'onUploadSuccess' : function(file, data, response) {
-				json_string = data;
-				data_object = $.parseJSON(json_string);
-				console.log(data_object);
-				if(data_object.Uploaded == 'true'){
-					//console.log('inside true');
-					//$('#message').html(data_object);
-					$('#ContentPath').val(data_object.ContentPath);
-					$('#ThumbnailPicturePath').val(data_object.ThumbnailPicturePath);
-					$('#NumberOfThumbnails').val(data_object.NumberOfThumbnails);
-					$('#ContentType').val(data_object.ContentType);
-					$('#message').html('Upload Successful! You may now click Submit Button to Associate the Content!');
-					
-				} else { //there is an error in the upload process
-					
-					$('#message').html(data_object.message);
-				}
+														the Content (mp4/mp3/doc/docx/ppt/pptx/pdf): </label>
 
-        	}
-			// Your options here
-		});
-	});
-	</script>
-														
-			
+													<div id="message"></div>
+													<div id="loaderText"></div>
+													<input type="file" name="file_upload" id="file_upload" />
+													<div id="status"></div>
+													<script type="text/javascript">
+														$(function() {
+															$('#file_upload')
+																	.uploadify(
+																			{
+																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																				'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+																				//'debug': true,
+																				//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+																				'onUploadSuccess' : function(
+																						file,
+																						data,
+																						response) {
+																					json_string = data;
+																					data_object = $
+																							.parseJSON(json_string);
+																					console
+																							.log(data_object);
+																					if (data_object.Uploaded == 'true') {
+																						//console.log('inside true');
+																						//$('#message').html(data_object);
+																						$(
+																								'#ContentPath')
+																								.val(
+																										data_object.ContentPath);
+																						$(
+																								'#ThumbnailPicturePath')
+																								.val(
+																										data_object.ThumbnailPicturePath);
+																						$(
+																								'#NumberOfThumbnails')
+																								.val(
+																										data_object.NumberOfThumbnails);
+																						$(
+																								'#ContentType')
+																								.val(
+																										data_object.ContentType);
+																						$(
+																								'#message')
+																								.html(
+																										'Upload Successful! You may now click Submit Button to Associate the Content!');
+
+																					} else { //there is an error in the upload process
+
+																						$(
+																								'#message')
+																								.html(
+																										data_object.message);
+																					}
+
+																				}
+																			// Your options here
+																			});
+														});
+													</script>
+
+
 												</div>
 												<!----- end of type=1 --->
 
@@ -549,7 +637,7 @@ span.standartTreeRow:hover {
 													style="float: right; margin-right: 20px; text-decoration: none;">
 													Cancel </a> <input type="submit" class="btn btn-info"
 													id="btnsbtassoccontent" value="Submit"
-													onClick="getAssociateContentSave()"
+													onClick="getAssociateContentSave(); return false;"
 													style="float: right; margin-right: 20px; text-decoration: none;" />
 
 											</div>
@@ -797,7 +885,8 @@ span.standartTreeRow:hover {
 								</div>
 								<!-- Content Panel End -->
 
-								<a class="btn btn-info" href="/ziksana-web/secure/enrich/${courseId}"
+								<a class="btn btn-info"
+									href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="float: right; margin-bottom: 20px; margin-top: 20px;"
 									id="">Save and Continue</a>
 
@@ -858,9 +947,9 @@ span.standartTreeRow:hover {
 				cancel : true
 			});
 		</script>
-		
 
-		
+
+
 
 
 		<!--End Current Progress-->
@@ -869,8 +958,12 @@ span.standartTreeRow:hover {
 		<!--End Footer Container-->
 	</div>
 
-<style rel="text/css">
-#SWFUpload_1 {left:0; cursor: pointer; top: 2px;}
+	<style rel="text/css">
+#SWFUpload_1 {
+	left: 0;
+	cursor: pointer;
+	top: 2px;
+}
 </style>
 </body>
 </html>

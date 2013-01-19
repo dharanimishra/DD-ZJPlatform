@@ -33,7 +33,8 @@ public class CourseSubjectDetailsServiceImpl implements
 	public List<Option> getSubjectCategory() {
 		// TODO Auto-generated method stub
 
-		return null;
+		List<Option> list = courseSubjectDetailMapper.getSubjectCategory();
+		return list;
 	}
 
 	/*
@@ -45,7 +46,9 @@ public class CourseSubjectDetailsServiceImpl implements
 	 */
 	@Override
 	public List<Option> getSubjectArea(String subjectArea) {
-		return null;
+		List<Option> list = courseSubjectDetailMapper
+				.getSubjectArea(subjectArea);
+		return list;
 	}
 
 	/*
@@ -57,7 +60,9 @@ public class CourseSubjectDetailsServiceImpl implements
 	 */
 	@Override
 	public List<Option> getSubjectTopic(String subjectTopic) {
-		return null;
+		List<Option> list = courseSubjectDetailMapper
+				.getSubjectTopic(subjectTopic);
+		return list;
 	}
 
 }

@@ -34,39 +34,35 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		learningContentId, creationdate,
+		ID, creationdate,
 		active, contenttype,
-		contentpath, contentformat,
+		contentpath,
+		contentformat,
 		status, version, contentname,
-		contentdescription, thumbnailpicturepath, versionremarks,
-		rightsowningmemberroleid, authoringmemberroleid, subjclassificationid,
-		linkedlearningcontentid, isdelete
+		contentdescription,
+		thumbnailpicturepath, versionremarks,
+		rightsowningmemberroleid,
+		authoringmemberroleid, subjclassificationid,
+		linkedlearningcontentid,
+		isdelete
 	</sql>
 
-	<!-- <insert id="save" parameterType="com.ziksana.domain.course.LearningContent" 
-		useGeneratedKeys="true" keyProperty="learningContentId" keyColumn="learningcontentid"> 
-		insert into corlearningcontent (creationdate, active, contenttype, contentpath, 
-		contentformat, status, version, contentname, contentdescription, thumbnailpicturepath, 
-		rightsowningmemberroleid, authoringmemberroleid ) values (sysdate(), #{activeFlag,jdbcType=BOOLEAN}, 
-		#{contentTypeId,jdbcType=INTEGER}, #{contentPath,jdbcType=VARCHAR}, #{contentFormatId,jdbcType=INTEGER}, 
-		#{statusId,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}, #{contentName,jdbcType=VARCHAR}, 
-		#{contentDescription,jdbcType=VARCHAR}, #{thumbnailPicturePath,jdbcType=VARCHAR}, 
-		#{rightsOwningMember.memberRoleId,jdbcType=INTEGER}, #{authoringMember.memberRoleId,jdbcType=INTEGER} 
-		) <selectKey keyProperty="learningContentId" resultType="int" order="AFTER"> 
-		SELECT LAST_INSERT_ID(); </selectKey> </insert> -->
 	<insert id="saveContent" parameterType="com.ziksana.domain.course.LearningContent"
-		useGeneratedKeys="true" keyProperty="learningContentId" keyColumn="learningcontentid">
+		useGeneratedKeys="true" keyProperty="learningContentId" keyColumn="ID">
 		insert into corlearningcontent
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,
 			<if test="active !=null">
 				active,
 			</if>
-			<if test="contentType !=null">
+			<if test="contentTypeId !=null">
 				contenttype,
 			</if>
 			<if test="contentPath !=null">
-				contentpath,
+				contentPath,
+			</if>
+			<if test="screenshotPath !=null">
+				ScreenshotPath,
 			</if>
 			<if test="contentFormat !=null">
 				contentformat,
@@ -80,7 +76,6 @@
 			<if test="contentName !=null">
 				contentname,
 			</if>
-
 			<if test="contentDescription !=null">
 				contentDescription,
 			</if>
@@ -93,17 +88,23 @@
 			<if test="authoringMember !=null">
 				authoringmemberroleid,
 			</if>
+			<if test="numberOfThumbnails !=null">
+				numberOfThumbnails,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			sysdate(),
 			<if test="active !=null">
-				#{activeFlag,jdbcType=BOOLEAN},
+				#{active,jdbcType=BOOLEAN},
 			</if>
-			<if test="contentType !=null">
+			<if test="contentTypeId !=null">
 				#{contentTypeId,jdbcType=INTEGER},
 			</if>
 			<if test="contentPath !=null">
 				#{contentPath,jdbcType=VARCHAR},
+			</if>
+			<if test="screenshotPath !=null">
+				#{screenshotPath,jdbcType=VARCHAR},
 			</if>
 			<if test="contentFormat !=null">
 				#{contentFormatId,jdbcType=INTEGER},
@@ -129,6 +130,10 @@
 			<if test="authoringMember !=null">
 				#{authoringMember.memberRoleId,jdbcType=INTEGER},
 			</if>
+			<if test="numberOfThumbnails !=null">
+				#{numberOfThumbnails,jdbcType=INTEGER},
+			</if>
+
 		</trim>
 		<selectKey keyProperty="learningContentId" resultType="int"
 			order="AFTER">

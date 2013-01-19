@@ -10,33 +10,56 @@ import com.ziksana.domain.utils.SubjectClassification;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
-public class LearningContent extends AuditHistory{
+public class LearningContent extends AuditHistory {
 
 	public LearningContent() {
 	}
-	
+
 	public LearningContent(ContentType contentType) {
 		this.contentType = contentType;
 	}
 
-	private ZID	 		learningContentId;
-	private Date 			creationDate 	= null;
-	private Boolean 		activeFlag 		= null;
-	private Boolean         active          = null;
-	private ContentType 	contentType 	= null;
+	public LearningContent(Integer contentTypeId) {
+		this.contentTypeId = contentTypeId;
+	}
+
+	private ZID learningContentId;
+	private Date creationDate = null;
+	private Boolean activeFlag = null;
+	private Boolean active = null;
+	private ContentType contentType = null;
 	/**
 	 * Maximum Length:45
 	 */
-	private String 			contentPath 	= null;
-	private ContentFormat 	contentFormat 	= null;
-	private Integer 		contentFormatId	= null;
-	private ContentStatus 	status 			= null;
-	private Integer 		statusId 			= null;
-	private Integer 		version 		= null;
+	private String contentPath = null;
+	private ContentFormat contentFormat = null;
+	private Integer contentFormatId = null;
+	private ContentStatus status = null;
+	private Integer statusId = null;
+	private Integer version = null;
+
+	private Integer numberOfThumbnails = null;
+
+	public Integer getNumberOfThumbnails() {
+		return numberOfThumbnails;
+	}
+
+	public void setNumberOfThumbnails(Integer numberOfThumbnails) {
+		this.numberOfThumbnails = numberOfThumbnails;
+	}
+
 	/**
 	 * Maximum Length:45
 	 */
 	private String contentName = null;
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActiveFlag(Boolean activeFlag) {
+		this.activeFlag = activeFlag;
+	}
+
 	/**
 	 * Maximum Length:4800
 	 */
@@ -45,21 +68,33 @@ public class LearningContent extends AuditHistory{
 	/**
 	 * Maximum Length:72
 	 */
-	private String 						thumbnailPicturePath 	= null;
-	private MemberPersona 				rightsOwningMember 		= null;
-	private MemberPersona 				authoringMember 		= null;
-	private SubjectClassification 		subjClassification 		= null;
-	private LearningContent 			linkedLearningContent 	= null;
-	private List<LearningContentParts> 	learningContentPartsList 	= null;
-	private LearningComponentContent 	baseComponentContent 	= null;
-	private Integer						contentTypeId			= null;
-	private Boolean 					isDelete				= null;					
+	private String thumbnailPicturePath = null;
+	private String screenshotPath = null;
+
+	public String getScreenshotPath() {
+		return screenshotPath;
+	}
+
+	public void setScreenshotPath(String screenshotPath) {
+		this.screenshotPath = screenshotPath;
+	}
+
+	private MemberPersona rightsOwningMember = null;
+	private MemberPersona authoringMember = null;
+	private SubjectClassification subjClassification = null;
+	private LearningContent linkedLearningContent = null;
+	private List<LearningContentParts> learningContentPartsList = null;
+	private LearningComponentContent baseComponentContent = null;
+	private Integer contentTypeId = null;
+	private Boolean isDelete = null;
+
 	/**
 	 * @return the value of learningContentId
 	 */
 	public ZID getLearningContentId() {
 		return learningContentId;
 	}
+
 	/**
 	 * @param learningContentId
 	 *            the value for learningContentId
@@ -67,12 +102,14 @@ public class LearningContent extends AuditHistory{
 	public void setLearningContentId(Integer learningContentId) {
 		this.learningContentId = new IntegerZID(learningContentId);
 	}
+
 	/**
 	 * @return the value of CreationDate
 	 */
 	public Date getCreationDate() {
 		return creationDate;
 	}
+
 	/**
 	 * @param creationDate
 	 *            the value for CreationDate
@@ -80,12 +117,14 @@ public class LearningContent extends AuditHistory{
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
+
 	/**
 	 * @return the value of Active
 	 */
 	public Boolean getActiveFlag() {
 		return activeFlag;
 	}
+
 	/**
 	 * @param active
 	 *            the value for Active
@@ -93,12 +132,14 @@ public class LearningContent extends AuditHistory{
 	public void setActive(Boolean activeFlag) {
 		this.activeFlag = activeFlag;
 	}
+
 	/**
 	 * @return the value of ContentPath
 	 */
 	public String getContentPath() {
 		return contentPath;
 	}
+
 	/**
 	 * @param contentPath
 	 *            the value for ContentPath
@@ -106,18 +147,22 @@ public class LearningContent extends AuditHistory{
 	public void setContentPath(String contentPath) {
 		this.contentPath = contentPath == null ? null : contentPath.trim();
 	}
+
 	/**
 	 * @return the status
 	 */
 	public ContentStatus getStatus() {
 		return status;
 	}
+
 	/**
-	 * @param status the status to set
+	 * @param status
+	 *            the status to set
 	 */
 	public void setStatus(ContentStatus status) {
 		this.status = status;
 	}
+
 	/**
 	 * @return the value of Version
 	 */
@@ -174,6 +219,7 @@ public class LearningContent extends AuditHistory{
 	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
 	}
+
 	/**
 	 * @return the learningContentParts
 	 */
@@ -181,16 +227,17 @@ public class LearningContent extends AuditHistory{
 		return learningContentPartsList;
 	}
 
-	public void addLearningContentParts(LearningContentParts parts){
-		
-		if(learningContentPartsList == null){
+	public void addLearningContentParts(LearningContentParts parts) {
+
+		if (learningContentPartsList == null) {
 			learningContentPartsList = new ArrayList<LearningContentParts>();
 		}
-		
+
 		parts.setLearningContent(this);
 		learningContentPartsList.add(parts);
-		
+
 	}
+
 	/**
 	 * @param learningComponent
 	 */
@@ -198,30 +245,35 @@ public class LearningContent extends AuditHistory{
 			throws Exception {
 
 		if (learningContentPartsList == null) {
-			throw new IllegalArgumentException("learningContentParts is not set in the learning content ID ["+learningContentId+"]");
+			throw new IllegalArgumentException(
+					"learningContentParts is not set in the learning content ID ["
+							+ learningContentId + "]");
 		}
 		try {
 			return learningContentPartsList.get(index);
 		} catch (Exception e) {
-			throw new NoSuchMethodException("learning Content Parts at index [" + index
-					+ "] at not found");
+			throw new NoSuchMethodException("learning Content Parts at index ["
+					+ index + "] at not found");
 		}
 	}
-	
-	
-	public void setLearningContentParts(List<LearningContentParts> partsList) throws Exception{
-		
-		if(partsList == null){
-			throw new IllegalArgumentException("Cannot set learningContentParts as null in  learning content ID ["+learningContentId+"]");
+
+	public void setLearningContentParts(List<LearningContentParts> partsList)
+			throws Exception {
+
+		if (partsList == null) {
+			throw new IllegalArgumentException(
+					"Cannot set learningContentParts as null in  learning content ID ["
+							+ learningContentId + "]");
 		}
-		
+
 		learningContentPartsList = partsList;
-		
+
 		for (LearningContentParts learningContentParts : partsList) {
 			learningContentParts.setLearningContent(this);
 		}
-		
+
 	}
+
 	/**
 	 * @return the baseComponentContent
 	 */
@@ -246,10 +298,11 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param contentType the contentType to set
+	 * @param contentType
+	 *            the contentType to set
 	 */
 	public void setContentType(ContentType contentType) {
-		if(contentTypeId!=null){
+		if (contentTypeId != null) {
 			contentType = ContentType.getContentType(contentTypeId);
 		}
 		this.contentType = contentType;
@@ -263,7 +316,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param rightsOwningMember the rightsOwningMember to set
+	 * @param rightsOwningMember
+	 *            the rightsOwningMember to set
 	 */
 	public void setRightsOwningMember(MemberPersona rightsOwningMember) {
 		this.rightsOwningMember = rightsOwningMember;
@@ -277,7 +331,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param authoringMember the authoringMember to set
+	 * @param authoringMember
+	 *            the authoringMember to set
 	 */
 	public void setAuthoringMember(MemberPersona authoringMember) {
 		this.authoringMember = authoringMember;
@@ -291,7 +346,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param subjClassification the subjClassification to set
+	 * @param subjClassification
+	 *            the subjClassification to set
 	 */
 	public void setSubjClassification(SubjectClassification subjClassification) {
 		this.subjClassification = subjClassification;
@@ -305,7 +361,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param linkedLearningContent the linkedLearningContent to set
+	 * @param linkedLearningContent
+	 *            the linkedLearningContent to set
 	 */
 	public void setLinkedLearningContent(LearningContent linkedLearningContent) {
 		this.linkedLearningContent = linkedLearningContent;
@@ -313,14 +370,14 @@ public class LearningContent extends AuditHistory{
 
 	@Override
 	public String toString() {
-		return "LearningContent [activeFlag=" + activeFlag + ", contentPath=" + contentPath
-				+ ", contentFormat=" + contentFormat + ", status=" + status
-				+ ", contentName=" + contentName + ", contentDescription="
-				+ contentDescription + ", thumbnailPicturePath="
-				+ thumbnailPicturePath + ", subjClassification="
-				+ subjClassification + ", learningContentPartsList="
-				+ learningContentPartsList + ", baseComponentContent="
-				+ baseComponentContent + "]";
+		return "LearningContent [activeFlag=" + activeFlag + ", contentPath="
+				+ contentPath + ", contentFormat=" + contentFormat
+				+ ", status=" + status + ", contentName=" + contentName
+				+ ", contentDescription=" + contentDescription
+				+ ", thumbnailPicturePath=" + thumbnailPicturePath
+				+ ", subjClassification=" + subjClassification
+				+ ", learningContentPartsList=" + learningContentPartsList
+				+ ", baseComponentContent=" + baseComponentContent + "]";
 	}
 
 	/**
@@ -331,7 +388,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param contentTypeId the contentTypeId to set
+	 * @param contentTypeId
+	 *            the contentTypeId to set
 	 */
 	public void setContentTypeId(Integer contentTypeId) {
 		this.contentTypeId = contentTypeId;
@@ -345,7 +403,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param contentFormatId the contentFormatId to set
+	 * @param contentFormatId
+	 *            the contentFormatId to set
 	 */
 	public void setContentFormatId(Integer contentFormatId) {
 		this.contentFormatId = contentFormatId;
@@ -359,7 +418,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param statusId the statusId to set
+	 * @param statusId
+	 *            the statusId to set
 	 */
 	public void setStatusId(Integer statusId) {
 		this.statusId = statusId;
@@ -373,7 +433,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param contentFormat the contentFormat to set
+	 * @param contentFormat
+	 *            the contentFormat to set
 	 */
 	public void setContentFormat(ContentFormat contentFormat) {
 		this.contentFormat = contentFormat;
@@ -387,7 +448,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param learningContentPartsList the learningContentPartsList to set
+	 * @param learningContentPartsList
+	 *            the learningContentPartsList to set
 	 */
 	public void setLearningContentPartsList(
 			List<LearningContentParts> learningContentPartsList) {
@@ -402,7 +464,8 @@ public class LearningContent extends AuditHistory{
 	}
 
 	/**
-	 * @param isDelete the isDelete to set
+	 * @param isDelete
+	 *            the isDelete to set
 	 */
 	public void setIsDelete(Boolean isDelete) {
 		this.isDelete = isDelete;

@@ -277,7 +277,7 @@
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="#">My Courses </a> > </strong><strong
+					href="#">My Courses </a> </strong><strong
 					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">
@@ -345,7 +345,7 @@
 									<div id='jqxWidget'>
 										<div id='jqxExpander'>
 											<div style="background-color: #FFFFFF; border: none; display: none;"></div>
-										<input type="hidden" id="courseId" value="COURSE_110"/>	
+										<input type="hidden" id="courseId" value="${courseid}"/>	
 										
 										<div id="jqx_course_tree"></div>
 										

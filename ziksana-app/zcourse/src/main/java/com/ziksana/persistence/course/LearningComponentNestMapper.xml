@@ -3,7 +3,7 @@
 <mapper namespace="com.ziksana.persistence.course.LearningComponentNestMapper">
 
 	<insert id="saveComponentNest" parameterType="com.ziksana.domain.course.LearningComponentNest"
-		useGeneratedKeys="true" keyProperty="componentNestId" keyColumn="componentnestid">
+		useGeneratedKeys="true" keyProperty="componentNestId" keyColumn="ID">
 		insert into corlearningcomponentnest
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,

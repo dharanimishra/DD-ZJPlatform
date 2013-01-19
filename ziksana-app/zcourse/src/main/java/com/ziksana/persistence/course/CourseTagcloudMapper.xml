@@ -3,7 +3,7 @@
 <mapper namespace="com.ziksana.persistence.course.CourseTagcloudMapper">
 
 	<insert id="save" parameterType="com.ziksana.domain.course.CourseTagcloud"
-		useGeneratedKeys="true" keyProperty="courseTagCloudId" keyColumn="coursetagcloudid">
+		useGeneratedKeys="true" keyProperty="courseTagCloudId">
 		insert into corcoursetagcloud
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,
@@ -15,9 +15,6 @@
 			</if>
 			<if test="course!=null">
 				courseid,
-			</if>
-			<if test="creatingMember !=null">
-				memberroleid,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -31,9 +28,7 @@
 			<if test="course !=null">
 				#{course.courseId.storageID,jdbcType=INTEGER},
 			</if>
-			<if test="creatingMember !=null">
-				#{creatingMember.memberRoleId,jdbcType=INTEGER},
-			</if>
+			
 		</trim>
 		<selectKey keyProperty="courseTagCloudId" resultType="int"
 			order="AFTER">
@@ -51,6 +46,6 @@
 				tagtype = #{tagTypeId,jdbcType=INTEGER},
 			</if>
 		</set>
-		where coursetagcloudid = #{courseTagCloudId.storageID,jdbcType.INTEGER}
+		where ID = #{courseTagCloudId.storageID,jdbcType.INTEGER}
 	</update>
 </mapper>

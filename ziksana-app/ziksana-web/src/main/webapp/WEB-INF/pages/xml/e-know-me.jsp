@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -194,17 +195,17 @@ function displayUnAnsweredPairs(current){
 	outputResult+="<br/>";
 	
 	
-	outputResult+="<div style='width:270px;margin-left:150px;'  id='question_buttons_container'>";
+	outputResult+="<div style='width:200px;margin-left:150px;'  id='question_buttons_container'>";
 	if(current!=0){
-		outputResult+="<div width='90px'><input class='btn btn-info-knowme' style='width:70px;' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
+		outputResult+="<div width='50px'><input class='btn btn-info-knowme' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
 	}else{
-		outputResult+="<div width='90px'><input class='btn btn-info-knowme'  style='display: none; width:70px;' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
+		outputResult+="<div width='50px'><input class='btn btn-info-knowme'  style='display: none;' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
 	}
-	outputResult+="<div width='90px'><input class='btn btn-info-knowme'style='width:70px;' type='submit' id='submit_question_button' onClick='submitValue()' value='Submit'/></div>";
+	outputResult+="<div width='50px'><input class='btn btn-info-knowme' type='submit' id='submit_question_button' onClick='submitValue()' value='Submit'/></div>";
 	if(current!=questionArray.length-1){
-	outputResult+="<div width='90px'><input class='btn btn-info-knowme' style='width:70px;'  type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
+	outputResult+="<div width='50px'><input class='btn btn-info-knowme'  type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
 	} else {
-	outputResult+="<div width='90px'><input class='btn btn-info-knowme' style='display: none; width:70px;' type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
+	outputResult+="<div width='50px'><input class='btn btn-info-knowme' style='display: none;' type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
 	}
 	
 	outputResult+='</div>';	
@@ -380,7 +381,7 @@ background-color: #DAE8F2;
 							  
 		</div>
 		<div style="">	    
-		<button class='btn btn-info-knowme'style='margin-left:345px;margin-top:30px;height:30px; width:70px;' onClick=' parent.jQuery.fancybox.close();' class='f-rt'>Return</button>
+		<button class='btn btn-info-knowme'style='margin-left:345px;margin-top:30px;height:30px;' onClick=' parent.jQuery.fancybox.close();' class='f-rt'>Return</button>
 		</div>	    
 				 
 <!-- Apply Answer value -->
@@ -488,7 +489,7 @@ function displayAnsweredQuestionContainer(loop){
 		 	///
 		 	outputAns+="</div>"; 
 		 	outputAns+="<div>"; 
-		 	outputAns+="<button class='btn btn-info-knowme' style='margin-left:0px;margin-top:30px;height:30px;' onClick='updateValues()' class='f-rt'>Submit Revisions</button>";
+		 	outputAns+="<button class='btn btn-info-knowme' style='margin-left:70px;margin-top:30px;height:30px;' onClick='updateValues()' class='f-rt'>Submit Revisions</button>";
 			
 			 
 			outputAns+="</div>"; 
@@ -543,3 +544,4 @@ function updateValues(){
 
 </body>
 </html>
+

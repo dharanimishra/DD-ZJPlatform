@@ -112,6 +112,14 @@
 <script
 	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
+	
+	<link rel="stylesheet" type="text/css"
+	href="/ziksana-web/resources/css/uploadify.css" />
+<script type="text/javascript" src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+	<style type="text/css">
+		#message {padding: 1em 0; color: steelblue;}
+	</style>
 <style>
 .jqx-widget-content {
 	-moz-background-clip: padding;
@@ -271,10 +279,12 @@ span.standartTreeRow:hover {
 						<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
-								<li><a href="//ziksana-web/secure/createcourse/${courseId}"
+
+								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
+								<li><a
+									href="/ziksana-web/secure/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
@@ -312,6 +322,7 @@ span.standartTreeRow:hover {
 										style="padding-left: 5px; margin-right: 4px; margin-top: -8px;" />Provide
 									Course Details
 								</div>
+								<div id="tempdiv"></div>
 
 								<!----------------- start of first container --------------->
 								<div class="_coursename">
@@ -335,14 +346,14 @@ span.standartTreeRow:hover {
 											class="f-r _richText" href="#linkurl"
 											style="text-decoration: none;">Rich Text Editor</a>
 										<textarea cols="124" rows="8" id="Cdescription"
-											class="_plainTextShow defaultvaluem labelclass validate[required]"
+											class="_plainTextShow defaultvaluem labelclass"
 											style="width: 880px; color: #666;"
 											placeholder="Describe the Course being created">
-</textarea>
+										</textarea>
 										<br />
 										<div class="_richTextShow">
 											<textarea id="Cdescriptionrte" name="editor1pageload"
-												class="defaultvalue _focus validate[required]">
+												class="defaultvalue _focus ">
 												<b>Describe the Course being created</b>
 											</textarea>
 										</div>
@@ -369,17 +380,18 @@ span.standartTreeRow:hover {
 
 										<div class="moduleselection">
 											<select name="Careaddl" id="Careaddl"
-												class="defaultvalue labelclass validate[required]"
+												class="defaultvalue labelclass"
 												style="margin-right: 15px; width: 200px;">
 												<option value="">Select Course Area</option>
+												<option value="ABC">ABC</option>
 											</select> <select name="Csubjectddl" id="Csubjectddl"
-												class="defaultvalue labelclass validate[required]"
 												style="margin-right: 15px; width: 200px;">
 												<option value="">Select Course Subject</option>
+													<option value="ABC">ABC</option>
 											</select> <select name="Ctopicddl" id="Ctopicddl"
-												class="defaultvalue labelclass validate[required]"
-												style="width: 200px;">
+												class="defaultvalue labelclass " style="width: 200px;">
 												<option value="">Select Course Topic</option>
+												 <option value="ABC">ABC</option>
 											</select>
 										</div>
 										<!-- end of moduleselection--->
@@ -469,7 +481,6 @@ span.standartTreeRow:hover {
 											</script>
 											<select name="SelectArea" id="Cdurationtype"
 												class="defaultvalue" style="margin-left: 20px;">
-												<option value="">Specify Units</option>
 												<option value="week">Weeks</option>
 												<option value="month">Months</option>
 												<option value="day">Days</option>
@@ -479,11 +490,11 @@ span.standartTreeRow:hover {
 										</div>
 										<!-- end of courseduration--->
 
-										<div class="addinformation">
+										<!--  <div class="addinformation">
 											<a class="lbx-addnew" id="_addNewInfo"
 												href="/ziksana-web/secure/getAddnlInfo">Add New
 												Information </a>
-										</div>
+										</div> -->
 									</div>
 									<!-- end of secondcontainer--->
 								</div>
@@ -492,7 +503,7 @@ span.standartTreeRow:hover {
 
 								<!----------------- start of third container --------------->
 								<div class="_thirdcontainer">
-									<div class="contentsecurity">
+									<!-- <div class="contentsecurity">
 
 										<img id="aSide"
 											src="/ziksana-web/resources/images/tipsy-east.gif"
@@ -525,7 +536,7 @@ span.standartTreeRow:hover {
 
 										</div>
 
-									</div>
+									</div> -->
 									<!-- end of contentsecurty--->
 
 									<div class="associateimage" style="margin-top: 30px;">
@@ -535,22 +546,61 @@ span.standartTreeRow:hover {
 										<br /> <img
 											src="/ziksana-web/resources/images/modelthinking.png"
 											alt="Modelthinking" width="94" height="94" border="3"
-											style="border: 2px solid #ccc;" /> <input readonly="readonly" type="file"
-											id="Cimageupl" style="margin-left: 20px;" /> <a
-											href="#linkurl" id="cancellink"><img
-											src="/ziksana-web/resources/images/delete.jpg" />Cancel</a>
+											style="border: 2px solid #ccc;" /> <input
+											readonly="readonly" type="hidden" id="Cimageupl"
+											style="margin-left: 20px;" /> <!--  <a href="#linkurl"
+											id="cancellink"> <img
+											src="/ziksana-web/resources/images/delete.jpg" />Cancel</a>-->
 
-										<!--<script language="javascript">
- $(document).ready(function() {
-$("#cancellink").click(function (event) {
-	window.location.href = "modelthinking.html";
-});
-	
-	 });
+										<div id="thubmnail_upload_message"></div>
+										<div id="loaderText"></div>
+										<input type="file" name="thumbnail_image_file_upload"
+											id="thumbnail_image_file_upload" />
+										<div id="status"></div>
+										<script type="text/javascript">
+											$(function() {
+												$(
+														'#thumbnail_image_file_upload')
+														.uploadify(
+																{
+																	'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																	'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+																	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+																	'fileSizeLimit' : '10024KB',
+																	//'debug': true,
+																	//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+																	'onUploadSuccess' : function(
+																			file,
+																			data,
+																			response) {
+																		json_string = data;
+																		data_object = $
+																				.parseJSON(json_string);
+																		console
+																				.log(data_object);
+																		if (data_object.Uploaded == 'true') {
+																			$(
+																					'#Cimageupl')
+																					.val(
+																							data_object.ContentPath);
+																			$(
+																					'#thubmnail_upload_message')
+																					.html(
+																							'Thumbnail Image Upload Successful! ');
 
-</script>-->
+																		} else { //there is an error in the upload process
 
-										<div id="tempdiv"></div>
+																			$(
+																					'#message')
+																					.html(
+																							data_object.message);
+																		}
+
+																	}
+																// Your options here
+																});
+											});
+										</script>
 
 
 									</div>
@@ -560,7 +610,7 @@ $("#cancellink").click(function (event) {
 								<!-- end of third container--->
 
 								<input type="submit" class="btn btn-info f-r" id="sbtvalidation"
-									value="Save and continue" onClick="getdefinecoursesave()"
+									value="Submit" onClick="createCourse(); return false;"
 									style="margin-right: -200px;">
 
 							</form>

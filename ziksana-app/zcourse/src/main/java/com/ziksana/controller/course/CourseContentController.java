@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.ComponentContentType;
+import com.ziksana.domain.course.ContentStatus;
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.CourseJsonResponse;
+import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.id.StringZID;
-import com.ziksana.id.ZID;
-import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseContentService;
 
@@ -32,15 +32,13 @@ public class CourseContentController {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(CourseContentController.class);
 
-	private static String CONTENT_PATH = "/content/";
-
 	@Autowired
 	public CourseContentService courseContentService;
 
 	@RequestMapping(value = "/saveOrUpdateContent", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView saveOrUpdateContent(
+	CourseJsonResponse saveOrUpdateContent(
 			@RequestParam(value = "Course_id", required = true) String CourseId,
 			@RequestParam(value = "LearningComponentId", required = true) String LearningComponentId,
 			@RequestParam(value = "Content_Name", required = true) String ContentName,
@@ -49,11 +47,15 @@ public class CourseContentController {
 			@RequestParam(value = "Subject", required = true) String Subject,
 			@RequestParam(value = "Topic", required = true) String Topic,
 			@RequestParam(value = "Contenttag_Field", required = false) String ContentTags,
-			@RequestParam(value = "AssocContent_Image", required = false) String ContentImage,
+			@RequestParam(value = "AssocContent_Image", required = false) String ScreenshotPath,
 			@RequestParam(value = "LinkType", required = false) String LinkType,
 			@RequestParam(value = "ContentUpload", required = false) String ContentUpload,
 			@RequestParam(value = "ContentUrl", required = false) String ContentUrl,
-			@RequestParam(value = "ContentDesc", required = false) String ContentDesc)
+			@RequestParam(value = "ContentDesc", required = false) String ContentDesc,
+			@RequestParam(value = "ContentPath", required = false) String ContentPath,
+			@RequestParam(value = "ThumbnailPicturePath", required = false) String ThumbnailPicturePath,
+			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
+			@RequestParam(value = "ContentType", required = false) Integer ContentType)
 			throws CourseException {
 
 		LOGGER.info("Entering Class " + getClass()
@@ -61,26 +63,36 @@ public class CourseContentController {
 				+ " Content_Name :" + ContentName + " ContentDescription:"
 				+ ContentDescription + " Subject_Area:" + SubjectArea
 				+ "Subject " + Subject + "Topic " + Topic + " ContentTags :"
-				+ ContentTags + " AssocContent_Image :" + ContentImage
+				+ ContentTags + " ScreenshotPath :" + ScreenshotPath
 				+ " LinkType :" + LinkType + "LinkType :" + LinkType
 				+ "ContentUpload :" + ContentUpload + "ContentUrl :"
-				+ ContentUrl + " ContentDesc :" + ContentDesc);
+				+ ContentUrl + " ContentDesc :" + ContentDesc
+				+ " ContentPath :" + ContentPath + "ThumbnailPicturePath : "
+				+ ThumbnailPicturePath + " numberOfThumbnails :"
+				+ numberOfThumbnails + " ContentType :" + ContentType);
 
-		MemberPersona authoredMember = new MemberPersona();
-		authoredMember.setMemberRoleId(100);
-		String course_id = CourseId.split("_")[1];
-		Integer courseid = 150;
+
+		MemberPersona accountableMember = new MemberPersona();
+		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+				.getToken().getMemberPersonaId().getStorageID()));
+
+		Integer courseid = 0, contentTypeId = 0;
 		try {
-			courseid = Integer.parseInt(course_id);
+			courseid = Integer.parseInt(CourseId.split("_")[1]);
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("NumberFormatException courseid:" + nfe);
 		}
 
-		String learningComponentId = LearningComponentId.split("_")[1];
-
-		Integer learnComponentId = 3;
 		try {
-			learnComponentId = Integer.parseInt(learningComponentId);
+			contentTypeId = ContentType;
+		} catch (NumberFormatException nfe) {
+			LOGGER.error("NumberFormatException courseid:" + nfe);
+		}
+
+		Integer learnComponentId = 0;
+		try {
+			learnComponentId = Integer
+					.parseInt(LearningComponentId.split("_")[1]);
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("NumberFormatException :learnComponentId" + nfe);
 		}
@@ -93,16 +105,18 @@ public class CourseContentController {
 			component.setLearningComponentId(learnComponentId);
 
 			LearningContent content = new LearningContent();
-			content.setAuthoringMember(authoredMember);
+			content.setAuthoringMember(accountableMember);
 			content.setContentName(ContentName);
 			content.setContentDescription(ContentDescription);
-			content.setContentPath(CONTENT_PATH);
+			content.setContentPath(ContentPath);
 			content.setStatusId(1);
-
-			// content.setContentTypeId(ContentType.TEXTUAL.getID());
-
-			content.setRightsOwningMember(authoredMember);
-			// content.setContentFormatId(ContentFormat.WORD.getID());
+			content.setActive(true);
+			content.setContentTypeId(ContentType);
+			content.setThumbnailPicturePath(ThumbnailPicturePath);
+			content.setScreenshotPath(ScreenshotPath);
+			content.setStatus(ContentStatus.ACTIVE);
+			content.setNumberOfThumbnails(numberOfThumbnails);
+			content.setRightsOwningMember(accountableMember);
 
 			LearningComponentContent compContent = new LearningComponentContent();
 			compContent.setContentDescription(ContentDescription);
@@ -111,7 +125,8 @@ public class CourseContentController {
 					.setCompContentTypeId(ComponentContentType.COURSE_CONTENT
 							.getID());
 			compContent.setBaseLearningContent(content);
-			// compContent.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+
+			compContent.setCourseStatusId(CourseStatus.ACTIVE.getID());
 
 			courseContentService.saveOrUpdateContent(compContent);
 
@@ -122,15 +137,34 @@ public class CourseContentController {
 					+ " ContentDescription:" + ContentDescription
 					+ " Subject_Area:" + SubjectArea + "Subject " + Subject
 					+ "Topic " + Topic + " ContentTags :" + ContentTags
-					+ " AssocContent_Image :" + ContentImage + " LinkType :"
+					+ " ScreenshotPath :" + ScreenshotPath + " LinkType :"
 					+ LinkType + "LinkType :" + LinkType + "ContentUpload :"
 					+ ContentUpload + "ContentUrl :" + ContentUrl
-					+ " ContentDesc :" + ContentDesc + ce);
+					+ " ContentDesc :" + ContentDesc + " ContentPath :"
+					+ ContentPath + "ThumbnailPicturePath : "
+					+ ThumbnailPicturePath + " NumberOfThumbnails :"
+					+ numberOfThumbnails + " ContentType :" + ContentType + ce);
 		}
-		ModelAndView modelView = new ModelAndView("xml/contentcourse");
-		modelView.addObject("CourseId", courseid);
 
-		return modelView;
+		CourseJsonResponse json = new CourseJsonResponse();
+
+		if (courseid == 0) {
+			json.setResponse("failed");
+			json.setMessage("Content Creation Failed!");
+			LOGGER.info("Class :" + getClass()
+					+ " Method saveCourse : After courseService: CourseId :"
+					+ CourseId);
+		} else {
+			json.setId("COURSE_" + courseid);
+			json.setResponse("success");
+			json.setMessage("Content Creation Success");
+
+			LOGGER.info("Class :" + getClass()
+					+ " Method saveCourse : After courseService: CourseId :"
+					+ CourseId);
+		}
+
+		return json;
 	}
 
 	@RequestMapping(value = "/getComponentContent", method = RequestMethod.POST)
@@ -143,15 +177,15 @@ public class CourseContentController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/deleteContent", method = RequestMethod.POST)
+	@RequestMapping(value = "/course/deleteNode", method = RequestMethod.POST)
 	public @ResponseBody
-	ModelAndView deleteContent(
-			@RequestParam LearningComponentContent learningComponentContent) {
+	String deleteContent(
+			@RequestParam String nodeId) {
 		LOGGER.info("Entering Class " + getClass() + " deleteContent()");
-		ModelAndView mv = new ModelAndView("courses/associatecontent");
+		
 		LOGGER.info("Exiting Class " + getClass() + " deleteContent(): ");
 
-		return mv;
+		return "1";
 	}
 
 }

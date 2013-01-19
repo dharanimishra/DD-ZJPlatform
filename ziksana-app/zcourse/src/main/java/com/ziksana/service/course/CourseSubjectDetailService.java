@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ziksana.service.course;
 
 import java.util.List;

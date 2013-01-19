@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <script type="text/javascript" src="resources/js/tree/jquery-1.8.0.min.js"></script>
@@ -552,4 +553,5 @@ function short_string_category(value){
                       </div>
                     </div>
                 </div>
+ 
 	</body>

@@ -44,7 +44,7 @@ public interface EnrichmentMapper {
 			"select enrichentid, active, visibility, overrideat, creatormemberroleid, courseid from ",
 			"corenrichment where creatormemberroleid = #{memberRoleId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "enrichmentId", column = "enrichmentid"),
+			@Result(property = "enrichmentId", column = "ID"),
 			@Result(property = "active", column = "active"),
 			@Result(property = "visibility", column = "visibility"),
 			@Result(property = "overrideAt", column = "overrideat"),
@@ -58,7 +58,7 @@ public interface EnrichmentMapper {
 			" linkitemauthor, linkitemcost, linksource, active, deleteindicator, enrichmentid from corcontentenrichment ",
 			" where enrichmentid = #{enrichmentId,jdbcType.INTEGER}" })
 	@Results(value = {
-			@Result(property = "contentEnrichmentId", column = "contentenrichmentid"),
+			@Result(property = "contentEnrichmentId", column = "ID"),
 			@Result(property = "startTime", column = "starttime"),
 			@Result(property = "endTime", column = "endtime"),
 			@Result(property = "linkType", column = "linktype"),
@@ -79,7 +79,7 @@ public interface EnrichmentMapper {
 	 * @return
 	 */
 	@Select({
-			"select count(*) from corenrichment where learningcomponentid = #{learningComponentId} ",
+			"select count(*) from corenrichment where ID = #{learningComponentId} ",
 			" or courseId = #{courseId}" })
 	int getEnrichByContentIdOrComponentId(@Param("learningComponentId") Integer learningComponentId,
 			@Param("courseId") Integer courseId);
@@ -95,7 +95,7 @@ public interface EnrichmentMapper {
 	 */
 	@Update({
 			"update corcontentenrichment set  isDelete = #{isDelete,jdbctype=BOOLEAN} where ",
-			" contentenrichmentid = #{contentEnrichmentId,jdbcType=INTEGER}" })
+			" ID = #{contentEnrichmentId,jdbcType=INTEGER}" })
 	void deleteContentEnrichment(ContentEnrichment contentEnrichment);
 
 	/**

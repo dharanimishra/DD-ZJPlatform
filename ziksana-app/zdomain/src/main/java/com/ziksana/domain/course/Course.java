@@ -39,7 +39,7 @@ public class Course extends AuditHistory{
 		this.courseStatus = courseStatus;
 		this.courseDuration = courseDuration;
 		this.accountableMember = accountableMember;
-		this.getCourseDetails().learningComponents =learningComponentList;
+		//this.getCourseDetails().learningComponents =learningComponentList;
 	}
 
 	private ZID 					courseId;

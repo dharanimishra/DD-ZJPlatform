@@ -1,9 +1,8 @@
 package com.ziksana.controller.course;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,11 +31,27 @@ public class CourseTreeNodeController {
 	@Autowired
 	CourseTreeNodeService courseTreeNodeService;
 
-	@RequestMapping(value = "/course", method = RequestMethod.GET)
+	private String courseIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/course.png";
+	private String chapterIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/chapter.png";
+	private String parentIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/chapter.png";
+	private String videoIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/video.png";
+	private String audioIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/audio.png";
+	private String folderClosed = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderClosed.gif";
+	private String folderOpen = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderOpen.gif";
+	private String pptIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/powerpoint.png";
+	private String docIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/word.png";
+	private String excelIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/excel.png";
+	private String pdfIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/pdf.png";
+	private String imageIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/image.png";
+	private String noteIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/note.png";
+	private String linkIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/link.png";
+
+	@RequestMapping(value = "/course/{courseId}", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView showCourseTreeNode() {
+	ModelAndView showCourseTreeNode(@PathVariable String courseId) {
 		LOGGER.info("Entering Class " + getClass() + " showCourseTreeNode()");
 		ModelAndView mv = new ModelAndView("courses/course");
+		mv.addObject("CourseId", courseId);
 		LOGGER.info("Exiting Class " + getClass() + " showCourseTreeNode(): ");
 
 		return mv;
@@ -51,15 +66,7 @@ public class CourseTreeNodeController {
 		String courseIdValue = "";
 		String coursename = "";
 		Integer learningComponentId = 0;
-		String parentIcon = "../resources/images/tree_icons/chapter.png";
-		String videoIcon = "../resources/images/tree_icons/video.png";
-		String audioIcon = "../resources/images/tree_icons/audio.png";
-		String imageIcon = "../resources/images/tree_icons/image.png";
-		String pdfIcon = "../resources/images/tree_icons/pdf.png";
-		String linkIcon = "../resources/images/tree_icons/link.png";
-		String wordIcon = "../resources/images/tree_icons/word.png";
-		String pptIcon = "../resources/images/tree_icons/powerpoint.png";
-		
+
 		try {
 			courseIds = Integer.parseInt(courseId);
 			LOGGER.info("Exiting showMyTreenode():  courseIds :" + courseIds);
@@ -71,24 +78,31 @@ public class CourseTreeNodeController {
 					+ nfe.getMessage());
 		}
 
+		List<TreeNode> NodeList = courseTreeNodeService
+				.getCourseComponent(courseIds);
+		for (TreeNode node : NodeList) {
+			courseIdValue = node.getCourseId().toString();
+			coursename = node.getCoursename();
+		}
+		
 		List<TreeNode> childList = new ArrayList<TreeNode>();
 		List<TreeNode> treeNodeList = courseTreeNodeService
 				.getParentTreeComponents(courseIds);
 		List<TreeNode> childtreeNodeList = null;
-		
-	
-	LOGGER.info("PAENT NODE SIZE"+treeNodeList.size());
+
+		LOGGER.info("PAENT NODE SIZE" + treeNodeList.size());
 		for (TreeNode node : treeNodeList) {
 			courseIdValue = node.getCourseId().toString();
-			coursename = node.getCoursename();
 			learningComponentId = node.getId();
-
+			LOGGER.error("childtreeNodeListlearningComponentId : "
+					+ learningComponentId);
 			childtreeNodeList = courseTreeNodeService
 					.getTreeContentComponents(learningComponentId);
-			LOGGER.error("childtreeNodeList NODE SIZE : "+childtreeNodeList.size());
+			LOGGER.error("childtreeNodeList NODE SIZE : "
+					+ childtreeNodeList.size());
 			for (TreeNode childnode : childtreeNodeList) {
-				
-			  childList.add(childnode);
+
+				childList.add(childnode);
 			}
 		}
 
@@ -100,7 +114,7 @@ public class CourseTreeNodeController {
 		modelView.addObject("imageIcon", imageIcon);
 		modelView.addObject("pdfIcon", pdfIcon);
 		modelView.addObject("linkIcon", linkIcon);
-		modelView.addObject("wordIcon", wordIcon);
+		modelView.addObject("docIcon", docIcon);
 		modelView.addObject("pptIcon", pptIcon);
 		modelView.addObject("videoIcon", videoIcon);
 		modelView.addObject("audioIcon", audioIcon);

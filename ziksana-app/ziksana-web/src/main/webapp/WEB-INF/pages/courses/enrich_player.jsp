@@ -1,6 +1,4 @@
-<input type="text" value="${courseId}" id="e_course_id"/>
-<input type="text" value="${contentId}" id="e_content_id"/>
-<input type="text" value="${componentId}" id="e_component_id"/>
+
 
 
 <!-- <script type="text/javascript" src="js/video_player.js"></script> -->

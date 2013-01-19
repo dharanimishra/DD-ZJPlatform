@@ -180,49 +180,71 @@ $(document)
 
 function getaddmodulesave() {
 
-	// Step 1: Assign Parameters required by the sendMessage function.
+	validation = jQuery("#AddModule").validationEngine('validate');
+	if (validation == true) {
+		// Step 1: Assign Parameters required by the sendMessage function.
 
-	uri = '/ziksana-web/secure/saveLearningComponent';
+		uri = '/ziksana-web/secure/saveLearningComponent';
 
-	token = ''; // dummy token for demo. you have to send real token.
+		token = ''; // dummy token for demo. you have to send real token.
 
-	request_type = 'GET'; // can be GET or POST. In this case, a GET request
+		request_type = 'POST'; // can be GET or POST. In this case, a GET
+		// request
 
-	var course_id = $('#courseid').val();
-	
-	var CourseLearningComponentId = $('#courseLearningComponentId').val();
-	
-	var Module_Name = $('#Cmoduletxtbox').val();
-	var Module_Description = $('#Cmoduledesc').val();
-	var Subject_Area = $('#Cmoduleareaddl').val();
-	var Subject = $('#Cmodulesubjectddl').val();
-	var Topic = $('#Cmoduletopicddl').val();
-	var Moduletag_Field = $('#Addmoduletag').val();
-	var Module_Weight = $('#Cmoduleweight').val();
-	var Module_Duration = $('#Cmoduleduration').val();
-	var ModuleDuration_Type = $('#Cmoduleunits').val();
-	var Assoc_Image = $('#Cmoduleimgupl').val();
+		var course_id = $('#courseid').val();
+		var CourseLearningComponentId = $('#courseLearningComponentId').val();
+		var Module_Name = $('#Cmoduletxtbox').val();
+		var Module_Description = $('#Cmoduledesc').val();
+		var Subject_Area = $('#Cmoduleareaddl').val();
+		var Subject = $('#Cmodulesubjectddl').val();
+		var Topic = $('#Cmoduletopicddl').val();
+		var Moduletag_Field = $('#Addmoduletag').val();
+		var Module_Weight = $('#Cmoduleweight').val();
+		var Module_Duration = $('#Cmoduleduration').val();
+		var ModuleDuration_Type = $('#Cmoduleunits').val();
+		var Assoc_Image = $('#Cmoduleimgupl').val();
 
-	var parameters = {
-		"Course_id" : course_id,
-		"CourseLearningComponentId" : CourseLearningComponentId,
-		"Course_Module" : Module_Name,
-		"Module_Description" : Module_Description,
-		"Subject_Area" : Subject_Area,
-		"Subject" : Subject,
-		"Topic" : Topic,
-		"Moduletag_Field" : Moduletag_Field,
-		"Module_Weight" : Module_Weight,
-		"Module_Duration" : Module_Duration,
-		"ModuleDuration_Type" : ModuleDuration_Type,
-		"Assoc_Image" : Assoc_Image
-	};
+		var parameters = {
+			"Course_id" : course_id,
+			"CourseLearningComponentId" : CourseLearningComponentId,
+			"Course_Module" : Module_Name,
+			"Module_Description" : Module_Description,
+			"Subject_Area" : Subject_Area,
+			"Subject" : Subject,
+			"Topic" : Topic,
+			"Moduletag_Field" : Moduletag_Field,
+			"Module_Weight" : Module_Weight,
+			"Module_Duration" : Module_Duration,
+			"ModuleDuration_Type" : ModuleDuration_Type,
+			"Assoc_Image" : Assoc_Image
+		};
 
-	successCallback = onSuccessfulModuleCreation;
-	errorCallback = commonErrorCallback;
-	// Step 2: Send Message Using sendMessage(); function.
-	sendMessage(uri, token, parameters, request_type, successCallback,
-			errorCallback);
+		// successCallback = onSuccessfulModuleCreation;
+		// errorCallback = commonErrorCallback;
+		// // Step 2: Send Message Using sendMessage(); function.
+		// sendMessage(uri, token, parameters, request_type, successCallback,
+		// errorCallback);
+		//
+		// alert("Module created..");
+
+		$.post(uri, parameters, function(data) {
+			console.log(data);
+			if (data.response == 'success') {
+				course_id = data.id;
+				$('#courseid').val(course_id);
+				if (course_id != '' & course_id != null) {
+					window.location.href = window.location.href;
+					$('#tempdiv').html(
+							'<span style="color:red;">' + data.message
+									+ '</span>');
+				} else {
+					$('#tempdiv').html(
+							'<span style="color:red;">' + data.message
+									+ '</span>');
+				}
+			}
+		});
+	}
 }
 
 function noteSuccessCallbackaddmodule(data) {
@@ -252,9 +274,7 @@ function noteSuccessCallbackaddmodule(data) {
 }
 
 function onSuccessfulModuleCreation(data) {
-
 	course_id = data.id;
-	// createtree(course_id);
 	if (course_id != '' & course_id != null) {
 		window.location.href = window.location.href;
 	}

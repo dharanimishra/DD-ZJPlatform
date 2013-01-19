@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.course.LearningComponentContentMapper">
 	<sql id="Base_Column_List">
-		learningComponentContentId, creationdate,
+		ID, creationdate,
 		coursestatus,
 		contenttype,contentdescription, active,
 		contentversionused,
@@ -10,7 +10,7 @@
 	</sql>
 	<insert id="saveLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent"
 		useGeneratedKeys="true" keyProperty="learningComponentContentId"
-		keyColumn="learningcomponentcontentid">
+		keyColumn="ID">
 		insert into corlearningcomponentcontent
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,
@@ -105,7 +105,7 @@
 				#{baseLearningContent.learningContentId.storageID,jdbcType=INTEGER},
 			</if>
 		</set>
-		where learningComponentContentId =
+		where ID =
 		#{learningComponentContentId.storageID,jdbcType=INTEGER}
 	</update>
 

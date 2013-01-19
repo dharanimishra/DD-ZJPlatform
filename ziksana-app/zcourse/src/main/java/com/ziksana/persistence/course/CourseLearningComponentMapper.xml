@@ -4,7 +4,7 @@
 
 	<insert id="saveCourseLearningComponent" parameterType="com.ziksana.domain.course.CourseLearningComponent"
 		useGeneratedKeys="true" keyProperty="courseLearningComponentId"
-		keyColumn="courselearningcomponentid">
+		keyColumn="ID">
 		insert into corcourselearningcomponent
 		<trim suffixOverrides="," suffix=")" prefix="(">
 			creationdate,
@@ -74,7 +74,7 @@
 				#{learningComponentType.learningComponentTypeId.storageID,jdbcType=INTEGER},
 			</if>
 		</set>
-		where courseLearningComponentId =
+		where ID =
 		#{courseLearningComponentId.storageID,jdbcType=INTEGER}
 	</update>
 

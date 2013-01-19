@@ -38,14 +38,14 @@ public interface LearningContentMapper {
 	 * @param memberRoleId
 	 * @return
 	 */
-	@Select({ "select learningcontentid, contentpath, contentformat, contenttype,"
+	@Select({ "select ID as learningcontentid, contentpath, contentformat, contenttype,"
 			+ "contentname, contentdescription, thumbnailpicturepath, "
 			+ "rightsowningmemberroleid from corlearningcontent where rightsowningmemberroleid = #{memberRoleId,jdbcType=INTEGER}" })
 	@ResultMap("BaseResultMap")
 	List<LearningContent> getListOfContentsByMemberRoleId(Integer memberRoleId);
 
-	@Select({ "select contentpartsid, partpath, partsequence, learningcontentid "
-			+ "from corlearningcontentparts where learningcontentid = #{learningContentId,jdbcType=INTEGER}" })
+	@Select({ "select ID as contentpartsid, partpath, partsequence, learningcontentid "
+			+ "from corlearningcontentparts where ID = #{learningContentId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "contentPartsId", column = "contentpartsid"),
 			@Result(property = "partPath", column = "partpath"),
@@ -53,11 +53,11 @@ public interface LearningContentMapper {
 			@Result(property = "learningContent.learningContentId", column = "learningcontentid") })
 	List<LearningContentParts> getContentPartsList(Integer learningContentId);
 
-	@Update({ "update corlearningcontent set isdelete = #{isDelete, jdbcType=BOOLEAN} where learningcontentid =  #{learningContentId,jdbcType=INTEGER}" })
+	@Update({ "update corlearningcontent set isdelete = #{isDelete, jdbcType=BOOLEAN} where ID =  #{learningContentId,jdbcType=INTEGER}" })
 	void deleteContent(@Param("isDelete") Boolean isDelete,
 			@Param("learningContentId") Integer learningContentId);
 
-	@Select({ "select contentpartsid from corlearningcontentparts where learningcontentid = #{learningContentId,jdbcType=INTEGER}" })
+	@Select({ "select ID as contentpartsid from corlearningcontentparts where ID = #{learningContentId,jdbcType=INTEGER}" })
 	List<Integer> getLearningContetPartsByContentId(Integer learningContentId);
 
 	@Update({ "update corlearningcontentparts set isdelete = #{isDelete, jdbcType=BOOLEAN} where contentpartsid = #{contentPartsId,jdbcType=INTEGER}" })

@@ -3,7 +3,7 @@
 <mapper namespace="com.ziksana.persistence.course.CourseContentSecurityMapper">
 
 	<insert id="save" parameterType="com.ziksana.domain.course.CourseContentSecurity"
-		useGeneratedKeys="true" keyProperty="contentSecurityId" keyColumn="contentsecurityid">
+		useGeneratedKeys="true" keyProperty="contentSecurityId" keyColumn="ID">
 		insert into corcoursecontentsecurity
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,
@@ -19,9 +19,7 @@
 			<if test="signatureIndicator !=null">
 				embedusercredentialindicator,
 			</if>
-			<if test="course!=null">
-				courseid,
-			</if>
+			
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			sysdate(),
@@ -37,9 +35,7 @@
 			<if test="signatureIndicator !=null">
 				#{signatureIndicator,jdbcType=BOOLEAN},
 			</if>
-			<if test="course !=null">
-				#{course.courseId.storageID,jdbcType=INTEGER},
-			</if>
+			
 		</trim>
 		<selectKey keyProperty="contentSecurityId" resultType="int"
 			order="AFTER">
@@ -63,6 +59,6 @@
 				embedusercredentialindicator=#{signatureIndicator,jdbcType=BOOLEAN},
 			</if>
 		</set>
-		where contentsecurityid = #{contentSecurityId.storageID,jdbcType=INTEGER}
+		where ID = #{contentSecurityId.storageID,jdbcType=INTEGER}
 	</update>
 </mapper>

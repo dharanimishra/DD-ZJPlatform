@@ -110,6 +110,19 @@
 <script
 	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="/ziksana-web/resources/css/uploadify.css" />
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+<style type="text/css">
+#message {
+	padding: 1em 0;
+	color: steelblue;
+}
+</style>
 <style>
 .jqx-widget-content {
 	-moz-background-clip: padding;
@@ -255,7 +268,8 @@ span.standartTreeRow:hover {
 				<strong class="text-size-px14 light-gray"><a
 					href="publish.html">Publish</a> | <a href="defineengagement.html">Manage</a></strong><a
 					class="light-blue" href="#"><img width="12" height="12"
-					alt="add more" src="/ziksana-web/resources/images/plus.png"> </a>
+					alt="add more" src="/ziksana-web/resources/images/plus.png">
+				</a>
 			</div>
 		</div>
 		<!--Main Content-->
@@ -271,7 +285,8 @@ span.standartTreeRow:hover {
 								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
+								<li><a
+									href="/ziksana-web/secure/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
@@ -302,9 +317,10 @@ span.standartTreeRow:hover {
 								style="margin-right: -257px; margin-bottom: 4px; clear: both;">Edit
 								Course Details </a>
 						</div>
-						
-						<br> <br> <input type="hidden" id="courseid" value="${courseId}" />
-						<input type="hidden" id="courseLearningComponentId" value="" />
+
+						<br> <br> <input type="hidden" id="courseid"
+							value="${courseId}" /> <input type="hidden"
+							id="courseLearningComponentId" value="" />
 						<style>
 #splitter {
 	width: 975px;
@@ -326,6 +342,7 @@ span.standartTreeRow:hover {
 									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>Right
 									Click over the Tree Node to further Define the Course. </b>
 							</p>
+							<div id="tempdiv"></div>
 
 
 							<div id="splitter" style='clear: both;'>
@@ -335,8 +352,6 @@ span.standartTreeRow:hover {
 									class="dhtmlxTree"
 									setImagePath="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
 								</div>
-
-
 								<!-- End of Tree -->
 
 
@@ -411,15 +426,19 @@ span.standartTreeRow:hover {
 														<select name="Cmoduleareaddl" id="Cmoduleareaddl"
 															class="defaultvalue labelclass validate[required]"
 															style="margin-right: 15px; width: 200px;">
+																<option value="">Select Subject Area</option>
+																<option value="ABC">ABC</option>
 														</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl"
 															class="defaultvalue labelclass validate[required]"
 															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Module Area</option>
+														    <option value="ABC">ABC</option>
 
 														</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"
 															class="defaultvalue labelclass validate[required]"
 															style="width: 200px;">
 															<option value="">Select Module Topic</option>
+														    <option value="ABC">ABC</option>
 														</select>
 													</div>
 													<!-- end of moduleselection--->
@@ -453,7 +472,7 @@ span.standartTreeRow:hover {
 															name="Cmoduleunits"
 															class="defaultvalue validate[required]" id="Cmoduleunits"
 															style="margin-left: 5px;">
-															<option value="">Specify Units</option>
+															<!--  <option value="">Specify Units</option> -->
 															<option value="week">Weeks</option>
 															<option value="month">Months</option>
 															<option value="day">Days</option>
@@ -463,13 +482,67 @@ span.standartTreeRow:hover {
 																align="left" />
 															<p class="labelclass">Associate an Image for your
 																Course</p>
-															<input type="file" readonly="readonly" id="Cmoduleimgupl" 
+															<input type="hidden" readonly="readonly" id="Cmoduleimgupl"
 																placeholder="specify an image"
-																style="margin-left: 20px;" /> <a href="#linkurl"
+																style="margin-left: 20px;" /> 
+																<!--  <a href="#linkurl"
 																id="cancellinkadd"><img
-																src="/ziksana-web/resources/images/delete.jpg" />Cancel</a>
+																src="/ziksana-web/resources/images/delete.jpg" />Cancel</a> -->
 
 														</div>
+
+
+														<div id="thubmnail_upload_message"></div>
+														<div id="loaderText"></div>
+														<input type="file" name="thumbnail_image_file_upload"
+															id="thumbnail_image_file_upload" />
+														<div id="status"></div>
+														<script type="text/javascript">
+															$(function() {
+																$(
+																		'#thumbnail_image_file_upload')
+																		.uploadify(
+																				{
+																					'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																					'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+																					'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+																					'fileSizeLimit' : '10024KB',
+																					//'debug': true,
+																					//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+																					'onUploadSuccess' : function(
+																							file,
+																							data,
+																							response) {
+																						json_string = data;
+																						data_object = $
+																								.parseJSON(json_string);
+																						console
+																								.log(data_object);
+																						if (data_object.Uploaded == 'true') {
+																							$(
+																									'#Cmoduleimgupl')
+																									.val(
+																											data_object.ContentPath);
+																							$(
+																									'#thubmnail_upload_message')
+																									.html(
+																											'Thumbnail Image Upload Successful! ');
+
+																						} else { //there is an error in the upload process
+
+																							$(
+																									'#message')
+																									.html(
+																											data_object.message);
+																						}
+
+																					}
+																				// Your options here
+																				});
+															});
+														</script>
+
+
 														<!-- end of associateimage--->
 
 													</div>
@@ -484,7 +557,7 @@ span.standartTreeRow:hover {
 												id="Btncmodulecncl" value="Cancel"
 												style="float: right; margin-right: 20px;" /> <input
 												type="submit" class="btn btn-info" id="Btnsbtcmodule"
-												value="Submit" onClick="getaddmodulesave()"
+												value="Submit" onClick="getaddmodulesave(); return false;"
 												style="float: right; margin-right: 20px;" /> <br /> <br />
 
 										</form>
@@ -760,8 +833,8 @@ span.standartTreeRow:hover {
 																		src="/ziksana-web/resources/images/edit.png" /></a></td>
 																<td><a class="deletedefqualifierrec1 lbx-70-50"
 																	id="tblqualifierdelete" title="Delete" href="#linkurl"><img
-																		src="/ziksana-web/resources/images/delete.jpg" alt="Delete"
-																		title="Delete" /></a></td>
+																		src="/ziksana-web/resources/images/delete.jpg"
+																		alt="Delete" title="Delete" /></a></td>
 
 
 															</tr>
@@ -778,8 +851,8 @@ span.standartTreeRow:hover {
 																		src="/ziksana-web/resources/images/edit.png" /></a></td>
 																<td><a class="deletedefqualifierrec2 lbx-70-50"
 																	title="Delete" href="#linkurl"><img
-																		src="/ziksana-web/resources/images/delete.jpg" alt="Delete"
-																		title="Delete" /></a></td>
+																		src="/ziksana-web/resources/images/delete.jpg"
+																		alt="Delete" title="Delete" /></a></td>
 															</tr>
 
 															<tr id="defrow3">
@@ -793,8 +866,8 @@ span.standartTreeRow:hover {
 																<td></td>
 																<td><a class="deletedefqualifierrec3 lbx-70-50"
 																	title="Delete" href="#linkurl"><img
-																		src="/ziksana-web/resources/images/delete.jpg" alt="Delete"
-																		title="Delete" /></a></td>
+																		src="/ziksana-web/resources/images/delete.jpg"
+																		alt="Delete" title="Delete" /></a></td>
 
 
 															</tr>
@@ -810,8 +883,8 @@ span.standartTreeRow:hover {
 																<td></td>
 																<td><a class="deletedefqualifierrec4 lbx-70-50"
 																	title="Delete" href="#linkurl"><img
-																		src="/ziksana-web/resources/images/delete.jpg" alt="Delete"
-																		title="Delete" /></a></td>
+																		src="/ziksana-web/resources/images/delete.jpg"
+																		alt="Delete" title="Delete" /></a></td>
 
 
 															</tr>
@@ -983,7 +1056,8 @@ var s = $('#Duration').spinit({ height: 20, width: 30, min: 0, initValue: 0, max
 
 															<div class="associateimage" style="margin-top: 15px;">
 
-																<img src="/ziksana-web/resources/images/icons/upload.png"
+																<img
+																	src="/ziksana-web/resources/images/icons/upload.png"
 																	align="left" />
 																<p class="labelclass">Associate an Image for your
 																	Course</p>
@@ -1009,12 +1083,14 @@ var s = $('#Duration').spinit({ height: 20, width: 30, min: 0, initValue: 0, max
 													type="button" class="btn btn-info" value="Submit"
 													style="float: right; margin-right: 20px;" /> <br /> <br />
 											</form>
-											
+
 
 										</div>
 
 									</div>
-									<a href="/ziksana-web/secure/associatecontent/${courseId}" style="float: right; margin-bottom: 20px; margin-top: 20px;" class="btn btn-info">Save and Continue</a>
+									<a href="/ziksana-web/secure/associatecontent/${courseId}"
+										style="float: right; margin-bottom: 20px; margin-top: 20px;"
+										class="btn btn-info">Save and Continue</a>
 									<!-- End of viewmodelthinking -->
 
 									<!-- start view modelthinking 2 -->
@@ -1152,11 +1228,13 @@ var s = $('#Duration').spinit({ height: 20, width: 30, min: 0, initValue: 15, ma
 
 															<div class="associateimage" style="margin-top: 15px;">
 
-																<img src="/ziksana-web/resources/images/icons/upload.png"
+																<img
+																	src="/ziksana-web/resources/images/icons/upload.png"
 																	align="left" />
 																<p class="labelclass">Associate an Image for your
 																	Course</p>
-																<img src="/ziksana-web/resources/images/modelthinking.png"
+																<img
+																	src="/ziksana-web/resources/images/modelthinking.png"
 																	alt="Modelthinking" width="94" height="94" border="3"
 																	style="border: 2px solid #ccc;" />
 															</div>

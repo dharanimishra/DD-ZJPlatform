@@ -20,7 +20,7 @@ public interface CourseTagcloudMapper {
 	 * @param integer
 	 * @return
 	 */
-	@Select({"select coursetagcloudid,tagname, tagtype, courseId,memberroleId  from corcoursetagcloud where courseid = #{courseId,jdbcType=INTEGER}" })
+	@Select({"select ID as coursetagcloudid,tagname, tagtype, courseId,memberroleId  from corcoursetagcloud where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value={
 			@Result(property="courseTagcloudId", column="coursetagcloudid"),
 			@Result(property="tagName", column="tagname"),
