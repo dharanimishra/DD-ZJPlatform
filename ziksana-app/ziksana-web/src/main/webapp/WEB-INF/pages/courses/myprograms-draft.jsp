@@ -599,7 +599,7 @@ $('._cklo').show('');
                
                 <div class="center for-rounded-box all-box-shadow _course" style="width:973px; padding-left:10px; padding-right:-10px;">
                 <div style="margin-left:850px;disply:table; top:-100">
-					 <div class="createnew" style="display:table-cell;width:100px;"><a href="modelthinking_create.html"><img src="../resources/images/plus.png" width=16px, height=16px>Create New</a></span> 
+					 <div class="createnew" style="display:table-cell;width:100px;"><a href="/ziksana-web/secure/createcourse"><img src="../resources/images/plus.png" width=16px, height=16px>Create New</a></span> 
 					</div>
 					<div style="display:table-cell; padding-left:20px;">
 					<a href="#">  
