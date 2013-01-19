@@ -756,7 +756,10 @@ $("#datepara").show();
 						</p></div>
                         <div id= calenderdiv style=" float:left; margin-left: 5px; margin-top:5px;"><a class="icon-cal text-size-px11 lbx-calendar" data-tab="calendar">Calendar</a></div>
                        
-                        <div class="_cLeft all-box-shadow" style="">    
+                        <div class="_cLeft all-box-shadow" style="">
+                        
+
+                            
                             <div class="_upcoming _up1">
                             	<div class="_cDate" style="color:#A80000;">
                                 	<span class="dmonth"></span><br> <b>09.00 AM</b>
@@ -769,7 +772,7 @@ $("#datepara").show();
                             
                             <div class="_upcoming _up1">
                             	<div class="_uDate">
-                                	<b>26- JAN</b><br> <b>12.00 PM</b> 
+                                	<b>26-JAN</b><br> <b>12.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent">
@@ -779,11 +782,11 @@ $("#datepara").show();
                             
                             <div class="_upcoming _up2">
                             	<div class="_uDate">
-                                	<b>26- JAN</b><br> <b>02.00 PM</b> 
+                                	<b>26-JAN</b><br> <b>02.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="padding-top:2px; text-align:middle;">
-                                	Experiment with <br/>Playpen
+                                	Experiment with<br/> Playpen
                                 </div>
                             </div>
                             

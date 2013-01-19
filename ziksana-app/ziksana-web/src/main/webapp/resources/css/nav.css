@@ -1174,12 +1174,12 @@ Percentage Nav Bar
 	
 }
 .Icon-course {
-	background-image: url(../images/viewcourse.gif);
+	background-image: url(../images/led/viewcourse.gif);
 	background-repeat: no-repeat;
 	
 }
 .Icon-view {
-	background-image:url(../images/viewb.png);
+	background-image:url(../images/led/viewb.png);
 	background-repeat: no-repeat;
 	
 }
@@ -1194,7 +1194,7 @@ Percentage Nav Bar
 .Icon-Strategy {
 	background-image: url(../images/icons/playbook.png);
 	background-repeat: no-repeat;
-	background-position: 1px 5px;
+		
 	height:25px;
 	width:25px;
 	

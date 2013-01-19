@@ -404,8 +404,8 @@ function short_string_category(value){
 
                 <div class="center for-rounded-box all-box-shadow" >
 		                
-                	<div class="_cMain  demo_message_container" style="display:table;" >
-                	 <div class="demo_message" style="font-size:18px;">
+                	<div class="_cMain demo_message_container" style="display:table;" >
+                	 <div class="demo_message " style="font-size:18px;">
 					   
 					            For Demonstration Only. Functionality to be available in subsequent Playpens
 					            
@@ -419,7 +419,7 @@ function short_string_category(value){
                     	<fmt:formatDate type="date" pattern="EEE, MMM d, ''yy" value="${now}"  />
                     	
  						</p></div>
-                  <div style=" float:left; margin-left: 5px; margin-top:5px;"><a class="icon-cal text-size-px11 lbx-70-50" href="${htmlUrl_planner}">Calendar</a></div>
+                  <div style=" float:left; margin-left: 3px; margin-top:5px;"><a>Calendar</a></div>
 
                     	<div class="_cLeft all-box-shadow" style="">
                         
@@ -440,8 +440,8 @@ function short_string_category(value){
                                 	<b>26-JAN</b><br> <b>12.00 PM</b> 
                                 </div>
                                 
-                                <div class="_uevent">
-                                	Lunch with Ziksana
+                                <div class="_uevent" style="">
+                                	<span style="font-size: 10.5px;">Lunch with Ziksana</span>
                                 </div>
                             </div>
                             
