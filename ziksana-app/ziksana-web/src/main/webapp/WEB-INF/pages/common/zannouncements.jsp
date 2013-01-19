@@ -144,14 +144,14 @@ $(document).ready(function() {
  
 function getMessagedescription(indexValue){
 	
- $('.tb1 tr').removeClass('row-hover');
+ 	$('.tb1 tr').removeClass('row-hover');
 	$('#announcement_row_'+indexValue+'').addClass('row-hover'); 
 	outputDetails_description = "";
 	var announcement_message= $('#announcement_row_'+indexValue+' .edit_message').text();
 	var announcement_date = $('#announcement_row_'+indexValue+' .edit_description').text();
 	var announcement_dec = $('#announcement_row_'+indexValue+' .edit_desc').text();
 
-	outputDetails_description+="<div  style='display:none;' id='row_selection_form_container1'>";
+	outputDetails_description+="<div  id='row_selection_form_container1'>";
 	outputDetails_description+="<br/><b> Details of the select Row in the table should be displayed here</b>";
 	outputDetails_description+="<div>";
 	outputDetails_description+="<br/></br><u><label style='font-weight:bold;'>"+announcement_message+"</label></u><label >"+announcement_date+"</label><label  >"+announcement_dec+"</label>";
@@ -213,7 +213,7 @@ function getCategoryByBetweenDates(){
 	} else if(categoryName == 'University'){
 		
 		 $.post( '${getInstitutionAnnouncementUrl}'
-			        , {'startDate':startDate1,'endDate':endDate1,}
+			        , {'startDate':startDate1,'endDate':endDate1}
 			        , function( data )
 			        {
 			        
@@ -250,7 +250,7 @@ function getCategoryByBetweenDates(){
 					 ); 
 	} else if(categoryName == 'Department'){
 		 $.post( '${getInstitutionunitAnnouncementUrl}'
-			        , {'startDate':startDate1,'endDate':endDate1,}
+			        , {'startDate':startDate1,'endDate':endDate1}
 			        , function( data )
 			        {
 			        
@@ -287,7 +287,7 @@ function getCategoryByBetweenDates(){
 				); 
 	} else if(categoryName == 'Course'){
 		 $.post( '${getCourseAnnouncementUrl}'
-			        , {'startDate':startDate1,'endDate':endDate1,}
+			        , {'startDate':startDate1,'endDate':endDate1}
 			        , function( data )
 			        {
 			        
@@ -368,8 +368,7 @@ function getCategoryByBetweenDates(){
 					<div id=announcement_placeholder></div>
 
 				</div>
-				<a href="#" style="float: right; margin-top: 10px;"
-					onClick="show_Announcement_Sigle_row_values()">Details</a>
+				
 
 				<div id="linksMeeting" style="border-top: 1px solid grey">
 					<br />
@@ -380,7 +379,7 @@ function getCategoryByBetweenDates(){
 	  $('#return_announcements').show();
   }
   function hide_Announcement_Sigle_row_values(){
-	  $('#row_selection_form_container1').hide();
+	  $('#row_selection_form_container1').show();
 	  $('#return_announcements').show();
   }
   </script>
@@ -414,7 +413,7 @@ function getCategoryByBetweenDates(){
 
 			<div id="zReturn" style="margin-top: 5px; height: 30px;">
 				
-"<button id="return_announcements" style="float: right;" class="btn btn-info" onClick="closeIt()" name="btn_return">Return</button>
+				<button id="return_announcements" style="float: right;" class="btn btn-info" onClick="closeIt()" name="btn_return">Return</button>
 
 			</div>
 			<!-- end zReturn -->

@@ -8,6 +8,7 @@ import com.ziksana.domain.course.CourseAdditionalProperty;
 import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningObjectDeleteType;
+import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 
@@ -130,6 +131,9 @@ public interface CourseService {
 	 */
 	public Integer totalNumberOfCoursesByStatus(CourseStatus courseStatus);
 	
+	public List<LearningProgram> getLearningPrograms();
+	
+	public List<Course> getCoursesByLearningProgram(Integer learningProgramId);
 
 }
 

@@ -10,10 +10,10 @@
 <style>
 
 .t_up:hover {
-  background: url("/ziksana-web/resources/images/downtoggle.png") no-repeat scroll right 10px rgba(218, 216, 216, 0.17) !important;
+  background: url("/ziksana-web/resources/images/downtoggle.png") no-repeat scroll right 15px rgba(218, 216, 216, 0.17) !important;
 }
 .t_down:hover {
-  background: url("/ziksana-web/resources/images/uptoggle.png") no-repeat scroll right 10px rgba(218, 216, 216, 0.17) !important;
+  background: url("/ziksana-web/resources/images/uptoggle.png") no-repeat scroll right 15px rgba(218, 216, 216, 0.17) !important;
 }
 #question_info_message {
 	padding: .5em;
@@ -393,8 +393,8 @@ function displayUnAnsweredPairs(current){
 		outputResult+="No New Questions";
 	}else{
 	outputResult+="<div class='t_content'>";
-	outputResult+="<div id='question_info_message'></div>";
-	outputResult+="<div id='quest'>";
+	outputResult+="<div id='question_info_message'style='font-family:verdana; '></div>";
+	outputResult+="<div id='quest'style='font-family:arial,sans-serif;color:gray;'>";
 	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label>";
 	outputResult+="<table class='sortable' width='180px' height='30px' >";
 
@@ -412,9 +412,9 @@ function displayUnAnsweredPairs(current){
 	 for(var i = 0; i < optionsIdList.length ; i++){
 		
 			if(i==0){
-			outputResult+= "<tr><td ><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";
+			outputResult+= "<tr><td style='font-family:arial,sans-serif;color:black;'><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";
 			} else {
-			outputResult+= "<tr><td ><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";	
+			outputResult+= "<tr><td style='font-family:arial,sans-serif;color:black;'><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";	
 			}
 		}	 
 	
@@ -535,14 +535,14 @@ $(document).ready(function() {
 				Recommendations</span>
 			<div class="t_content">
 
-			<div id="recomend" class="rec-0 "></div>
+			<div id="recomend" class="rec-0 " style='font-family:arial,sans-serif;color:gray;'> </div>
 
 
 
 			<p class="txt-r _bgmain" style="padding-right: 10px; clear: both;">
 				<c:url var="htmlUrl_profile2" value="/secure/zrecommendpopup" />
 				<span><a class="text-size-px11  lbx-70-50"
-					href="${htmlUrl_profile2}" class="" style="color: #27b;">More..</a></span>
+					href="${htmlUrl_profile2}" class="" style="color: #27b;">More</a></span>
 			</p>
 			</div>
 		</div>

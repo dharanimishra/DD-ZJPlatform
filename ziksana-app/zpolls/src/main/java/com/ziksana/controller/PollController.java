@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.announcements.Announcement;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollQuestionResult;
@@ -59,6 +60,23 @@ public class PollController {
 		modelView.addObject("pollQuestionsList",pollService.getAllPollQuestion());
 
 		
+		return modelView;
+	}
+	
+	
+	@RequestMapping(value = "/getpollsbetweendate", method = RequestMethod.POST)
+	public @ResponseBody
+	ModelAndView getAnnouncementsAllByDate(
+			@RequestParam(value = "startDate", required = true) String startDate,
+			@RequestParam(value = "endDate", required = true) String endDate) {
+
+		ModelAndView modelView = new ModelAndView("xml/pollQuestionsList");
+		
+		modelView.addObject("pollQuestionsList",pollService.getAllPollQuestionsByDate(startDate, endDate));
+		
+		
+		
+
 		return modelView;
 	}
 	

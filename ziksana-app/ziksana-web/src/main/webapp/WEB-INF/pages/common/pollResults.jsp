@@ -54,7 +54,7 @@ questionName = $('#edit_description'+asd+'').text();
 			url: '${pollquestionsanswers}'+questionId+'',
 			dataType: 'xml',
 			success: function( data ) {
-				outputAnswers+="<strong>"+questionName+"</strong><br/><br/>";
+				outputAnswers+="<br/><strong>"+questionName+"</strong><br/><br/>";
 				
 				$(data).find("QuestionsAnswersList").each(function(){
 				
@@ -124,7 +124,7 @@ var last_month = Date.prev().month().toString('dd/MM/yyyy');
 document.getElementById("vDate").value=last_month;
 }				
 		</script>
-		
+<c:url var="getpollbetweendate" value="/secure/getpollsbetweendate/"/>	
  <c:url var="getAllPollQues" value="/secure/getallpollquestion" />
   <script type="text/javascript">
 $(document).ready(function() {
@@ -187,13 +187,13 @@ function hideContents(){
         	
                     <label value="Period" style="display:inline;">Start Date</label> 
              
-            <input type="text" style="display:inline;width:80px;" id="vDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
+            <input type="text" style="display:inline;width:90px;" id="vDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
             
                     <label value="Period"  style="display:inline;">End Date</label> 
                                   
              
-			  <input type="text" style="display:inline;width:80px;" id="EDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
-            <a id="_go" class="aClass">Go</a>
+			  <input type="text" style="display:inline;width:90px;" id="EDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
+            <a id="_go" onCLick="getCategoryByBetweenDates1()" class="aClass">Go</a>
         </div>
         <!-- end contentGroup -->
         <div id="showGroup" class="zAnn">
@@ -231,6 +231,45 @@ function hideContents(){
 				});
 			});
 		})(jQuery);
+		
+		function getCategoryByBetweenDates1(){
+			var startDate = $('#vDate').val();
+			var endDate = $('#EDate').val();
+			
+			var startDate1 = startDate.toString('dd/MM/yyyy');
+			var endDate1 = endDate.toString('dd/MM/yyyy');
+			
+			 $.post( '${getpollbetweendate}'
+				        , {'startDate':startDate1,'endDate':endDate1}
+				        , function( data )
+				        {
+				        
+						
+						var output_announcement="";
+						
+						output_announcement+="<table id='updateTable' class='table tb1'>";
+						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Poll Date</th>";
+						output_announcement+="<th  width='200px' style='color:#fff;'>Questions</th></tr>";
+						output_announcement+="<tbody>";
+						
+						$(data).find("QuestionsList").each(function(){
+							$(data).find("Questions").each(function(index){
+							
+							output_announcement+="<tr id='row_selection_"+index+"' onClick='details("+index+")' ><td style=''><label style='display:none' id='edit_message"+index+"'>"+ $(this).find("questionId").text()+"</label><label id='edit_messages"+index+"'>"+ $(this).find("questionDate").text()+"</label></td>";
+							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("questionName").text()+"</label></td></tr>"; 
+							
+							});
+													
+						});
+						output_announcement+="</tbody></table>";
+						console.log("All Poll Questions: " + output_announcement);
+					
+						
+						$('#tblGroup').html(output_announcement);
+						
+				        });
+		
+		}
 	</script> 
                <!-- end tblGroup -->
             </div>

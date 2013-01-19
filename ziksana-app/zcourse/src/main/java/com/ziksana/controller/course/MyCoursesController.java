@@ -16,12 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
-import com.ziksana.service.subscription.SubscriptionService;
 
 /**
  * @author prabu
@@ -36,9 +36,9 @@ public class MyCoursesController {
 
 	@Autowired
 	CourseService courseService;
-
-	@Autowired
-	SubscriptionService subscriptionService;
+	
+	
+		
 
 	@RequestMapping(value = "/showmycourse/111111", method = RequestMethod.GET)
 	public @ResponseBody
@@ -64,6 +64,42 @@ public class MyCoursesController {
 		return mv;
 	}
 
+	@RequestMapping(value = "/showMyProgramsDraft", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView readMyProgramsDraft() throws CourseException {
+
+		LOGGER.info("Entering Class " + getClass() + " readMyPrograms()");
+
+		MemberRoleType roleType = ThreadLocalUtil.getToken().getRole();
+
+		if (roleType == MemberRoleType.EDUCATOR) {
+			List<Course> courses = courseService
+					.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+			Integer courseCount = courseService
+					.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+			ModelAndView mv = new ModelAndView("courses/myprograms-draft");
+			mv.addObject("courses", courses);
+			mv.addObject("courseCount", courseCount);
+			return mv;
+		} else {
+
+			List<LearningProgram> programs = courseService
+				     .getLearningPrograms();
+				   LearningProgram program = programs.get(0);
+				   List<Course> courses = courseService.getCoursesByLearningProgram(Integer.valueOf(program
+				       .getLearningProgramId().getStorageID()));
+
+				   System.out.println(" TOTAL NUMBER OF COURSES IS  "+courses.size());
+				   System.out.println(" THE COURSE NAME IS   "+courses.get(0).getName() );
+				   ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
+				   mvLearner.addObject("program", program.getName());
+				   mvLearner.addObject("courses", courses);
+
+				   // TODO need to implement learner my programs...
+				   return mvLearner;
+		}
+
+	}
 	@RequestMapping(value = "/showMyPrograms", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyPrograms() throws CourseException {
@@ -83,21 +119,21 @@ public class MyCoursesController {
 			return mv;
 		} else {
 
-			List<LearningProgram> programs = subscriptionService
-					.getLearningPrograms();
-			LearningProgram program = programs.get(0);
-			List<Course> courses = subscriptionService
-					.getCoursesByLearningProgram(Integer.valueOf(program
-							.getLearningProgramId().getStorageID()));
 
-			System.out.println(" TOTAL NUMBER OF COURSES IS  "+courses.size());
-			System.out.println(" THE COURSE NAME IS   "+courses.get(0).getName() );
-			ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
-			mvLearner.addObject("program", program.getName());
-			mvLearner.addObject("courses", courses);
+			List<LearningProgram> programs = courseService
+				     .getLearningPrograms();
+				   LearningProgram program = programs.get(0);
+				   List<Course> courses = courseService.getCoursesByLearningProgram(Integer.valueOf(program
+				       .getLearningProgramId().getStorageID()));
 
-			// TODO need to implement learner my programs...
-			return mvLearner;
+				   System.out.println(" TOTAL NUMBER OF COURSES IS  "+courses.size());
+				   System.out.println(" THE COURSE NAME IS   "+courses.get(0).getName() );
+				   ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
+				   mvLearner.addObject("program", program.getName());
+				   mvLearner.addObject("courses", courses);
+
+				   // TODO need to implement learner my programs...
+				   return mvLearner;
 
 		}
 

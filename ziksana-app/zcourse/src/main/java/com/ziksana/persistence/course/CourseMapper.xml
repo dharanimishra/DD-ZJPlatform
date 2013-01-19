@@ -14,117 +14,180 @@
 	<update id="updateCourse" parameterType="com.ziksana.domain.course.Course">
 		update corcourse
 		<set>
-				<if test="name!=null">
-					name = #{name,jdbcType=VARCHAR},
-				</if>
-				<if test="description!=null">
-					description = #{description,jdbcType=VARCHAR},
-				</if>
-				<if test="courseStatus!=null">
-					coursestatus = #{courseStatusId,jdbcType=INTEGER},
-				</if>
-				<if test="securityIndicator !=null">
-					 contentsecurityneededindicator = #{securityIndicator,jdbcType=BOOLEAN},
-				</if>
-				<if test="extraCredits!=null">
-					extracredits = #{extraCredits,jdbcType=VARCHAR},
-				</if>
-				<if test="additionalInfoIndicator !=null">
-					additionalpropertyindicator = #{additionalInfoIndicator,jdbcType=BOOLEAN},
-				</if>
-				<if test="courseDuration!=null">
-					courseduration= #{courseDuration.duration,jdbcType=INTEGER},
-				</if>
-				<if test="thumbnailPicturePath!=null">
-					thumbnailpicturepath = #{thumbnailPicturePath,jdbcType=VARCHAR},
-				</if>
-			</set>
-			where courseid = #{courseId.storageID,jdbcType=INTEGER}
+			<if test="name!=null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="description!=null">
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="courseStatus!=null">
+				coursestatus = #{courseStatusId,jdbcType=INTEGER},
+			</if>
+			<if test="securityIndicator !=null">
+				contentsecurityneededindicator =
+				#{securityIndicator,jdbcType=BOOLEAN},
+			</if>
+			<if test="extraCredits!=null">
+				extracredits = #{extraCredits,jdbcType=VARCHAR},
+			</if>
+			<if test="additionalInfoIndicator !=null">
+				additionalpropertyindicator =
+				#{additionalInfoIndicator,jdbcType=BOOLEAN},
+			</if>
+			<if test="courseDuration!=null">
+				courseduration=
+				#{courseDuration.duration,jdbcType=INTEGER},
+			</if>
+			<if test="thumbnailPicturePath!=null">
+				thumbnailpicturepath =
+				#{thumbnailPicturePath,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where courseid = #{courseId.storageID,jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveCourse" parameterType="com.ziksana.domain.course.Course"
 		useGeneratedKeys="true" keyProperty="courseId" keyColumn="courseid">
-		insert into corcourse 
+		insert into corcourse
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-				<if test="name!=null">
-					name,
-				</if>
-				<if test="description!=null">
-					description,
-				</if>
-				<if test="courseStatus!=null">
-					coursestatus,
-				</if>
-				<if test="securityIndicator !=null">
-					contentsecurityneededindicator,
-				</if>
-				<if test="extraCredits!=null">
-					extracredits,
-				</if>
-				<if test="additionalInfoIndicator !=null">
-					additionalpropertyindicator,
-				</if>
-				<if test="courseDuration!=null">
-					courseduration,
-				</if>
-				<if test="thumbnailPicturePath!=null">
-					thumbnailpicturepath,
-				</if>
-				<if test="version!=null">
-					version,
-				</if>
-				<if test="versionRemarks!=null">
-					versionremarks,
-				</if>
-				<if test="accountableMember !=null">
-					memberroleid,
-				</if>
-				<if test="subjClassification!=null">
-					subjclassificationid,
-				</if>
-			</trim>
-			<trim prefix="values (" suffix=")" suffixOverrides=",">
-				<if test="name!=null">
-					#{name,jdbcType=VARCHAR},
-				</if>
-				<if test="description!=null">
-					#{description,jdbcType=VARCHAR},
-				</if>
-				<if test="courseStatus!=null">
-					#{courseStatusId,jdbcType=INTEGER},
-				</if>
-				<if test="securityIndicator !=null">
-					#{securityIndicator,jdbcType=BOOLEAN},
-				</if>
-				<if test="extraCredits!=null">
-					#{extraCredits,jdbcType=VARCHAR},
-				</if>
-				<if test="additionalInfoIndicator !=null">
-					#{additionalInfoIndicator,jdbcType=BOOLEAN},
-				</if>
-				<if test="courseDuration!=null">
-					#{courseDuration.duration,jdbcType=INTEGER},
-				</if>
-				<if test="thumbnailPicturePath!=null">
-					#{thumbnailPicturePath,jdbcType=VARCHAR},
-				</if>
-				<if test="version!=null">
-					#{version,jdbcType=INTEGER},
-				</if>
-				<if test="versionRemarks!=null">
-					#{versionRemarks,jdbcType=VARCHAR},
-				</if>
-				<if test="accountableMember !=null">
-					#{accountableMember.memberRoleId,jdbcType=INTEGER},
-				</if>
-				<if test="subjClassification !=null">
-					#{subjClassification.subjClassificationId,jdbcType=INTEGER},
-				</if>
-			</trim> 
-			<selectKey keyProperty="courseId" resultType="int"
-				order="AFTER">
-				SELECT LAST_INSERT_ID();
-			</selectKey>
+			<if test="name!=null">
+				name,
+			</if>
+			<if test="description!=null">
+				description,
+			</if>
+			<if test="courseStatus!=null">
+				coursestatus,
+			</if>
+			<if test="securityIndicator !=null">
+				contentsecurityneededindicator,
+			</if>
+			<if test="extraCredits!=null">
+				extracredits,
+			</if>
+			<if test="additionalInfoIndicator !=null">
+				additionalpropertyindicator,
+			</if>
+			<if test="courseDuration!=null">
+				courseduration,
+			</if>
+			<if test="thumbnailPicturePath!=null">
+				thumbnailpicturepath,
+			</if>
+			<if test="version!=null">
+				version,
+			</if>
+			<if test="versionRemarks!=null">
+				versionremarks,
+			</if>
+			<if test="accountableMember !=null">
+				memberroleid,
+			</if>
+			<if test="subjClassification!=null">
+				subjclassificationid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="name!=null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="description!=null">
+				#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="courseStatus!=null">
+				#{courseStatusId,jdbcType=INTEGER},
+			</if>
+			<if test="securityIndicator !=null">
+				#{securityIndicator,jdbcType=BOOLEAN},
+			</if>
+			<if test="extraCredits!=null">
+				#{extraCredits,jdbcType=VARCHAR},
+			</if>
+			<if test="additionalInfoIndicator !=null">
+				#{additionalInfoIndicator,jdbcType=BOOLEAN},
+			</if>
+			<if test="courseDuration!=null">
+				#{courseDuration.duration,jdbcType=INTEGER},
+			</if>
+			<if test="thumbnailPicturePath!=null">
+				#{thumbnailPicturePath,jdbcType=VARCHAR},
+			</if>
+			<if test="version!=null">
+				#{version,jdbcType=INTEGER},
+			</if>
+			<if test="versionRemarks!=null">
+				#{versionRemarks,jdbcType=VARCHAR},
+			</if>
+			<if test="accountableMember !=null">
+				#{accountableMember.memberRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="subjClassification !=null">
+				#{subjClassification.subjClassificationId,jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="courseId" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
 	</insert>
+
+	<select id="getCourses" resultMap="courseResultMap"
+		parameterType="map">
+
+		select
+		id,name,description,Rating
+		from
+		corcourse
+		where
+		CourseStatus=#{statusId} and 
+		MemberRoleId=#{memberPersonaId}
+        LIMIT 0, 3 
+
+	</select>
+	
+	<select id="getAllCourses" resultMap="courseResultMap"
+		parameterType="map">
+
+		select
+		id,name,description
+		from
+		corcourse
+		where
+		CourseStatus=#{statusId} and 
+		MemberRoleId=#{memberPersonaId}
+        
+
+	</select>
+	
+	
+	
+	<select id="totalNumberOfCourses" resultType="java.lang.Integer"
+		parameterType="map">
+
+		select
+		count(*)
+		from
+		corcourse
+		where
+		CourseStatus=#{statusId} and 
+		MemberRoleId=#{memberPersonaId}
+        
+
+	</select>
+	
+	
+
+	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
+
+		<result property="courseId" column="id" />
+
+		<result property="name" column="name" />
+		<result property="description" column="description" />
+		<result property="Rating" column="courseProgress"/>
+
+	</resultMap>
+
+
+
+
 
 </mapper>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+\<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -26,11 +26,11 @@
     font-family: arial;
     font-size: 13px;
     font-weight: bold;
-    height: 28px;
+    height: 25px;
     margin-right: 4px;
     padding: 4px;
     text-align: center;
-    width: 133px;
+    width: 100px;
 }
 </style>
 <link rel="stylesheet" href="../resources/css/bootstrap.css" />
@@ -271,9 +271,9 @@ function moveIgnored(index){
    
 	<div class="helptext">
     Recommendations to improve your experience on the platform.
-    </div> <!-- end of help text -->
+    </div> 
 
-   <input id='show_tab' type="hidden" value="new"/>
+   <input id='show_tab' type="hidden" value="new">
    
     <div class="zeniisotope">
                     

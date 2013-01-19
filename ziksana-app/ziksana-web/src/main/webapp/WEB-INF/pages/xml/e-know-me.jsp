@@ -380,7 +380,7 @@ background-color: #DAE8F2;
 							  
 		</div>
 		<div style="">	    
-		<button class='btn btn-info-knowme'style='margin-left:300px;margin-top:30px;height:30px;' onClick=' parent.jQuery.fancybox.close();' class='f-rt'>Return</button>
+		<button class='btn btn-info-knowme'style='margin-left:345px;margin-top:30px;height:30px;' onClick=' parent.jQuery.fancybox.close();' class='f-rt'>Return</button>
 		</div>	    
 				 
 <!-- Apply Answer value -->
@@ -427,13 +427,13 @@ $(document).ready(function() {
 function answeredQuestionDisplay(){
 	var outputResult="";
 	outputResult+="<br/>";
-	outputResult+="<table id='updateTable' value='hide' class=' table tab1' style='border:1px solid gray;'>";
+	outputResult+="<table id='updateTable'  value='hide' class=' table tab1' style='border:1px solid gray;'>";
 	outputResult+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>&nbsp;&nbsp;&nbsp;QUESTIONS</th>";
 	outputResult+="<th  width='200px' style='color:#fff;'>ANSWERED DATE</th></tr>";
 	
 	
 	for(var i = 0; i<answeredQuestion.length;i++){
-		outputResult+="<tr id='knowmew_row_"+i+"' onClick='displayAnsweredQuestionContainer("+i+")' ><td  width='200px'><a style='text-decoration:none; margin-left:0px;' ><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label> </td><td><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswerId"+i+"'>"+answerAnsIndex[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></a></td></tr>";
+		outputResult+="<tr  id='knowmew_row_"+i+"' onClick='displayAnsweredQuestionContainer("+i+")' ><td style='border-bottom:1px solid gray;' width='200px'><a style='text-decoration:none; margin-left:0px;' ><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label> </td><td style='border-bottom:1px solid gray;'><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswerId"+i+"'>"+answerAnsIndex[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></a></td></tr>";
 		
 		}
 	
@@ -488,7 +488,7 @@ function displayAnsweredQuestionContainer(loop){
 		 	///
 		 	outputAns+="</div>"; 
 		 	outputAns+="<div>"; 
-		 	outputAns+="<button class='btn btn-info-knowme' style='margin-left:50px;margin-top:30px;height:30px;' onClick='updateValues()' class='f-rt'>Submit Revisions</button>";
+		 	outputAns+="<button class='btn btn-info-knowme' style='margin-left:70px;margin-top:30px;height:30px;' onClick='updateValues()' class='f-rt'>Submit Revisions</button>";
 			
 			 
 			outputAns+="</div>"; 

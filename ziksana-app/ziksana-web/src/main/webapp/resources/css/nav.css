@@ -369,7 +369,7 @@ a.signin span {
 	background-image:url(../images/toggle_down_light.png);
 	background-repeat:no-repeat;
 	background-position:100% 50%;
-	padding:4px 20px 6px 10px;
+	padding:9px 16px 10px 5px;
 }
 .topnav a.menu-open {
 	color:#FFF!important;
@@ -402,7 +402,7 @@ a.signin.menu-open span {
 	z-index:99999;
 	text-align:left;
 	padding:12px;
-	top: 24.5px;
+	top: 34.5px;
 	right: -1px;
 	margin-top:5px;
 	margin-right: 0px;

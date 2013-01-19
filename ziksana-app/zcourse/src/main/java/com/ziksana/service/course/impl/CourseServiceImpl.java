@@ -22,6 +22,7 @@ import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentDetails;
 import com.ziksana.domain.course.LearningComponentNest;
 import com.ziksana.domain.course.LearningObjectDeleteType;
+import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CourseContentSecurityMapper;
@@ -35,6 +36,7 @@ import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.persistence.course.LearningComponentNestMapper;
 import com.ziksana.persistence.course.PlannerMapper;
 import com.ziksana.persistence.course.SocializeMapper;
+import com.ziksana.persistence.subscription.SubscriptionMapper;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
 
@@ -69,6 +71,8 @@ public class CourseServiceImpl implements CourseService {
 	public CoursePlaybookMapper playbookMapper;
 	@Autowired
 	public SocializeMapper socializeMapper;
+	@Autowired
+	public SubscriptionMapper subscriptionMapper;
 
 	@Transactional
 	@Override
@@ -671,5 +675,25 @@ public class CourseServiceImpl implements CourseService {
 		
 		return courseMapper.totalNumberOfCourses(Integer.valueOf(status),Integer.valueOf(memberPersonaId));
 	}
+
+	@Override
+	public List<LearningProgram> getLearningPrograms() {
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		
+		return subscriptionMapper.getLearningPrograms(Integer
+				.valueOf(memberRoleId)); 
+	}
+
+	@Override
+	public List<Course> getCoursesByLearningProgram(Integer learningProgramId) {
+		
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		
+		return subscriptionMapper.getCoursesByLearningProgram(Integer.valueOf(memberRoleId), learningProgramId);
+	}
+	
 
 }

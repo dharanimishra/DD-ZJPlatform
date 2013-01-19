@@ -65,7 +65,11 @@ $('.t_toggler').live('click',function(){
 .jdash-head-title:hover span.sub-title { color: #666666; }
 
 	
-	
+body
+{
+font-family:verdana;
+
+}	
 	
 	
 </style>
@@ -96,7 +100,7 @@ $(document).ready(function() {
 						 	var currentId = $(this).find("pollQuestion").find("id").text();
 						 	//alert('current id is '+currentId)
 							if ($(this).find("pollQuestion").find("active").text() == "true"){
-						 		output+="<div id='q" + index + "' style='width: 225px;' class='pollquestion'>";
+						 		output+="<div id='q" + index + "' style='width: 225px; font-family:arial,sans-serif;color:black;' class='pollquestion '>";
 						 		
 						 		output+=question;
 						 		//output+="<form id='" + $(this).find("pollQuestion").find("id").text() + "' action=''>";
@@ -246,7 +250,7 @@ $(document).ready(function() {
 					    
 					    console.log("it is written"); 
 					});
-						draftcourse+='<a style="float:right; margin: 1em;" href="/ziksana-web/secure/course">More</a><div class="clear"></div>';
+						draftcourse+='<a style="float:right; margin: 1em;" href="/ziksana-web/secure/showMyProgramsDraft">More</a><div class="clear"></div>';
 	                   }
 					
 					var reviewcourse='';
@@ -364,8 +368,8 @@ $(document).ready(function() {
 	                    output+="<ol>";
 	                    output+="<li class='p-p _blogs bckground-blue-light'>";
 	                    output+="<input type='hidden' name='announcementId' value='"+$(this).find("announcementid").text()+"'/>";
-	                    output+="<div class='todotip_container' style='padding-left: 5px; '> <a class='text-size-px13  lbx-70-50' href='${getannouncementbyid}"+$(this).find("announcementid").text()+"'>"+short_string( $(this).find("message").text())+"</a><div class='announcementtip'>"+$(this).find("message").text()+" </div></div>";
-						 output+="<div>"+ $(this).find("announcementDate").text()+"</div>";
+	                    output+="<div class='todotip_container' > <a class='text-size-px13  lbx-70-50' href='${getannouncementbyid}"+$(this).find("announcementid").text()+"'>"+short_string( $(this).find("message").text())+"</a><div class='announcementtip'style='font-family:verdana;'>"+$(this).find("message").text()+" </div></div>";
+						 output+="<div style='font-family:arial,sans-serif;color:gray;padding-left: 5px;'>"+ $(this).find("announcementDate").text()+"</div>";
 	                    output+="<br/>";
 	                    output+="</li></ol>";
 						
@@ -515,8 +519,8 @@ function short_string(string){
 		 				var colorNames = new Array("Turquoise", "SpringGreen", "Salmon", "RoyalBlue","Crimson");
 		 					 $(this).find("pollResult").find("option").each(function(index)
 		 							 {
-		 						output_poll+="<p  style='padding-left: 10px;'>"+ $(this).find("optiontext").text()+"</p>";  
-		 						output_poll+="<p  style='padding-left: 10px;'>"+ $(this).find("percentage").text()+"%</p>";
+		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("optiontext").text()+"</p>";  
+		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("percentage").text()+"%</p>";
 		 						
 		 						output_poll+="<div style='width:"+ $(this).find("percentage").text()+ "%; height:20px; background-color:"+colorNames[index]+";'></div>";
 		 						//output_poll+=""+$(this).find("answer1").text()+"%vote<br/>";
@@ -533,6 +537,7 @@ function short_string(string){
 	   
 	  
 	  document.getElementById("submit_poll").disabled=true;
+	 $('#submit_poll').removeClass('btn-info-poll');
  }
  </script>
 <!-- Feedzilla Widget BEGIN -->

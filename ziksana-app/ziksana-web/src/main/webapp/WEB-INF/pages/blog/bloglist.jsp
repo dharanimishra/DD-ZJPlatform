@@ -25,7 +25,7 @@
 	</div>
 
 	<div class="demo_message_container">
-		<span class="titles-info font-Signika text-size-px18 light-gray">Recent
+		<span class="jdash-head-title titles-info ">Recent
 			Blog Posts</span>
 
 		<div>
@@ -35,16 +35,14 @@
 						<blogs>
 						
 						<c:forEach var="bloglist" items="${blogList}" varStatus="status">
-						<li class="_blogs">
+						<li class="_blogs" style='padding:0px 10px 0px 0px;'>
 						<blog id="${bloglist.blogPostId.displayID}">
-								<p class="_postD text-size-px9">
+								<span class="_postD text-size-px9">
 									<date>${bloglist.createDate}</date>
-								</p>
+								</span><br>
 								<b><a href=""><blogtitle>${bloglist.title}</blogtitle></a></b>
-								<br />
-								<p class="_postP">
-									<detail>${bloglist.content}</detail>
-								</p>
+								
+								
 								<p class="_postT">
 									(Tags:
 						
@@ -83,6 +81,15 @@
 
 	</div>
 
-
+<style>
+.jdash-head-title {
+	font-size:18px;
+	font-family:signika;  
+	cursor: move;
+	color: #666;
+}
+.jdash-head-title:hover { color: #ccc; }
+.jdash-head-title:hover span.sub-title { color: #666666; }
+</style>
 
 </div>

@@ -86,7 +86,7 @@ public class AnnouncementsController {
 	/**
 	 * Retrive announcement to display
 	 */
-	@RequestMapping(value = "/showannouncementbyid//{announcementId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/showannouncementbyid/{announcementId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getAnnouncementByAnnouncementId(
 			@PathVariable Integer announcementId) {

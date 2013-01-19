@@ -247,7 +247,7 @@ $('._cklo').show('');
                  <li><a href="#" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
                
               </ul>
-              <div > </div>
+              <div> </div>
             </div>
              <div class="account-container two-bottom-rounded-box">
               <div class="container">
@@ -256,7 +256,7 @@ $('._cklo').show('');
                  <ul>
                    <li><a href="#">Preferences</a></li>
                    <li><a href="#">Privacy</a></li>
-                   <li><a href="logoutPage">Sign Out</a></li></ul>
+                   <li><a href="${logoutPage}">Sign Out</a></li></ul>
                 </fieldset>
               </div>
             </div>

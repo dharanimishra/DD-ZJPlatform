@@ -188,7 +188,7 @@ public interface PollQuestionMapper {
 	
 	PollResult getPollResultByQuestion(Integer userMemberRoleId);
 	
-	List<PollQuestionEntity> getPollQuestionsByDate ( @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+	List<PollQuestionEntity> getPollQuestionsByDate ( @Param("startDate") Date formatStartDate, @Param("endDate") Date formatEndDate);
 
 	List<PollQuestionEntity> getPollQuestion(Integer userMemberRoleId);
 	

@@ -3,6 +3,7 @@
  */
 package com.ziksana.service.polls;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public interface PollService {
 	public PollResult getPollResultByQuestion(Integer questionId);
 	
 	
-	public List<PollQuestionEntity>  getAllPollQuestionsByDate(Date startDate, Date endDate);
+	public List<PollQuestionEntity>  getAllPollQuestionsByDate(String startDate, String endDate);
 	
 	
 }

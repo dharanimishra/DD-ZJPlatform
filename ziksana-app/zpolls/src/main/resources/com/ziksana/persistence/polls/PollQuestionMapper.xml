@@ -51,10 +51,11 @@
 		select
 		distinct question.*
 		from
-		utlzpollquestion question join
-		utlzpolltracker tracker ON question.ID=tracker.pollQuestionId
+		utlzpollquestion question LEFT OUTER join
+		utlzpollquestionresponse response 
+		ON question.ID!=response.pollQuestionId
 		where
-		between question.pollDate between #{startDate} and #{endDate}
+		 question.pollDate between #{startDate} and #{endDate}
 		
 
 
