@@ -8,12 +8,12 @@
 		parameterType="java.lang.Integer">
 
 
-		select
-		program.*
-		from
-		sbnmembersubscriptionprogram subpgm
-		join corlearningprogram program ON
-		subpgm.ID=program.ID
+		select 
+		program.* 
+		from 
+		sbnmembersubscriptionprogram subpgm join 
+		corlearningprogram program ON 
+		subpgm.LearningProgramId=program.ID
 		where
 		subpgm.MemberRoleId=#{memberRoleId}
 
@@ -27,18 +27,17 @@
 		parameterType="map">
 
 
-		select
+	select
 		course.ID,
 		course.Name,
 		course.Description
 		from
 		sbnmembersubscriptionprogram sbnpgm
-		JOIN sbnsubscriptioncourse
-		subcourse ON
-		sbnpgm.MemSubscriptionProgId=subcourse.MemSubscriptionProgId
+		JOIN sbnsubscriptioncourse subcourse ON
+		sbnpgm.ID=subcourse.MemSubscriptionProgId
 		JOIN
 		corcurriculumcourse curcourse ON
-		subcourse.CurriculumCourseId=curcourse.CurriculumCourseId
+		subcourse.CurriculumCourseId=curcourse.ID
 		JOIN
 		corcourse course ON
 		curcourse.CourseId=course.ID
@@ -464,7 +463,7 @@
 	<resultMap id="programResultMap"
 		type="com.ziksana.domain.institution.LearningProgram">
 
-		<result property="learningProgramId" column="LearningProgramId" />
+		<result property="learningProgramId" column="ID" />
 		<result property="name" column="ProgramName" />
 
 

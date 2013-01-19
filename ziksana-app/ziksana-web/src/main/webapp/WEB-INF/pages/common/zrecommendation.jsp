@@ -31,6 +31,7 @@
     padding: 4px;
     text-align: center;
     width: 100px;
+   
 }
 </style>
 <link rel="stylesheet" href="../resources/css/bootstrap.css" />

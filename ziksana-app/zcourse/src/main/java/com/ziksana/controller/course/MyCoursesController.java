@@ -85,7 +85,9 @@ public class MyCoursesController {
 
 			List<LearningProgram> programs = courseService
 				     .getLearningPrograms();
+				   LOGGER.info("Learner Program Size==>"+programs.size());
 				   LearningProgram program = programs.get(0);
+				   
 				   List<Course> courses = courseService.getCoursesByLearningProgram(Integer.valueOf(program
 				       .getLearningProgramId().getStorageID()));
 

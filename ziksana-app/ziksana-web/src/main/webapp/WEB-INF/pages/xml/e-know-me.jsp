@@ -488,7 +488,7 @@ function displayAnsweredQuestionContainer(loop){
 		 	///
 		 	outputAns+="</div>"; 
 		 	outputAns+="<div>"; 
-		 	outputAns+="<button class='btn btn-info-knowme' style='margin-left:70px;margin-top:30px;height:30px;' onClick='updateValues()' class='f-rt'>Submit Revisions</button>";
+		 	outputAns+="<button class='btn btn-info-knowme' style='margin-left:0px;margin-top:30px;height:30px;' onClick='updateValues()' class='f-rt'>Submit Revisions</button>";
 			
 			 
 			outputAns+="</div>"; 

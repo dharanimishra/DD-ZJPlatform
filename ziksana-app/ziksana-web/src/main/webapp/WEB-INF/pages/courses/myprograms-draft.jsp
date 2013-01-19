@@ -135,12 +135,18 @@ z-index: 99;
 }
 .hover-btn
 {
- 
-    
-   
-   
+
     color: #000000;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.titles-info1 {
+    background-color: rgba(218, 216, 216, 0.17);
+    border-bottom: 1px solid #CCCCCC;
+    border-radius: 3px 3px 0 0;
+    display: block;
+    margin: 1px 0 10px;
+    padding: 7.5px 10px;
+    position: relative;
 }		
 .marginl{
 margin-left:-80px;
@@ -265,7 +271,7 @@ $('._cklo').show('');
                  <ul>
                    <li><a href="#">Preferences</a></li>
                    <li><a href="#">Privacy</a></li>
-                   <li><a href="#">Sign Out</a></li></ul>
+                   <li><a href="/ziksana-web/secure/logout">Sign Out</a></li></ul>
                 </fieldset>
               </div>
             </div>
@@ -294,7 +300,7 @@ $('._cklo').show('');
 				For Demonstration Only. Functionality to be available in subsequent Playpens
 					</div>
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning Program</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Program</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;"> Learning Programs </span> Defines the Curriculum necessary to meet the Learning Objectives..</p>
                 <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">8</p>
@@ -314,7 +320,7 @@ $('._cklo').show('');
               <div id="course1" class="col-lft _ckcourse" style="border:1px solid #ccc;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Course</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Course</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Course </span> is a Learning Unit that Heps in Achieving the Learning Objects of the Learning Program..</p>
                 <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">${courseCount}</p>
@@ -338,7 +344,7 @@ $('._cklo').show('');
 				For Demonstration Only. Functionality to be available in subsequent Playpens
 					</div>
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning object</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning object</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Learning Object  </span> is an Learning Unit that can be used as a building block for creating a course..</p>
                 <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">4</p>
@@ -362,7 +368,7 @@ $('._cklo').show('');
 				For Demonstration Only. Functionality to be available in subsequent Playpens
 					</div>
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning Content</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Content</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Learning Contents </span> are  materials that can be associated to a course or a  to meet the Objectives..</p>
                 <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">3</p>
@@ -417,7 +423,7 @@ $('._cklo').show('');
                 <div class="col-lft li-1 All" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Science</p>
+                <p class="titles-info1 text-size-px14 font-Signika blue uppercase">Science</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/EscapeVelocity.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
@@ -436,7 +442,7 @@ $('._cklo').show('');
              <div class="col-lft li-1 All" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Geology</p>
+                <p class="titles-info1 text-size-px14 font-Signika blue uppercase">Geology</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/geology.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
@@ -454,7 +460,7 @@ $('._cklo').show('');
               <div class="col-lft li-1 All Active" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Chemistry</p>
+                <p class="titles-info1 text-size-px14 font-Signika blue uppercase">Chemistry</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/chemistry.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
@@ -478,7 +484,7 @@ $('._cklo').show('');
              <div class="col-lft li-1 All Draft" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Robotics</p>
+                <p class="titles-info1 text-size-px14 font-Signika blue uppercase">Robotics</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/robotics.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
@@ -500,7 +506,7 @@ $('._cklo').show('');
              <div class="col-lft li-1 All Review" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">earth Science</p>
+                <p class="titles-info1 text-size-px14 font-Signika blue uppercase">earth Science</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/earthscience.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
@@ -520,7 +526,7 @@ $('._cklo').show('');
              <div class="col-lft li-1 All Active" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">genetics</p>
+                <p class="titles-info1 text-size-px14 font-Signika blue uppercase">genetics</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/genetics.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
@@ -540,7 +546,7 @@ $('._cklo').show('');
              <div class="col-lft li-1 All Review" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">ocean</p>
+                <p class="titles-info1 text-size-px14 font-Signika blue uppercase">ocean</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/ocean.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
@@ -674,7 +680,7 @@ $('._cklo').show('');
               <div class="col-lft li-1 All Draft" id="courseModel" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p style="height:30px;"class="titles-info text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
+                <p style="height:30px;"class="titles-info1 text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">

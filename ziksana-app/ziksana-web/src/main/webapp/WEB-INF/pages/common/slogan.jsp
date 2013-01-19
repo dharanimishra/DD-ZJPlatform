@@ -17,7 +17,7 @@
 			</strong>
 			<c:url var="imageUrl_header2" value="/resources/images/plus.png" />
 			<a href="#" class="light-blue"><img src="${imageUrl_header2}"
-				alt="add more" width="4" height="6" class="light-blue add-more"></img></a>
+				alt="add more" width="10" height="10" class="light-blue add-more"></img></a>
 		</div>
 		</c:if>
 		<c:if test="${member.roleType eq 'LEARNER'}">
