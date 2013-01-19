@@ -855,7 +855,7 @@ $("#datepara").show();
 
 	 </script>
     <c:if test="${member.roleType eq 'EDUCATOR'}">
-			<a class="fancyboxclose" href="mylearningprogram.html" target="_parent" >
+			<a class="fancyboxclose" href="/ziksana-web/secure/createcourse" target="_parent" >
 				<h5>Create Course</h5>
 				<div>Create your course with an easy 7 step process </div>				
 			</a>
@@ -877,7 +877,7 @@ $("#datepara").show();
 			</a>
 	</c:if>
 	 <c:if test="${member.roleType eq 'LEARNER'}">
-	 <a class="fancyboxclose" href="mylearningprogram.html" target="_parent" >
+	 <a class="fancyboxclose" href="/ziksana-web/secure/showMyPrograms" target="_parent" >
 				<h5>Course</h5>
 				<div>Study the courses that you have subcribed to </div>				
 			</a>

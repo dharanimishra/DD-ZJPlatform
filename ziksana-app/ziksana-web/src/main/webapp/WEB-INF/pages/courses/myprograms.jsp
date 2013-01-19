@@ -679,7 +679,7 @@ $('._cklo').show('');
                 <div class="icons-list">
                   
                  
-                 <a href="modelthinking.html" rel="tipsy" title="Edit"class="Icon-edit icons-right" style="margin-right:-6px;"></a>
+                 <a href="/ziksana-web/secure/createcourse" rel="tipsy" title="Edit"class="Icon-edit icons-right" style="margin-right:-6px;"></a>
                      
                      
                      
