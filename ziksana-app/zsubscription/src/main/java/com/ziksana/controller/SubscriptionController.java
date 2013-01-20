@@ -380,6 +380,29 @@ public class SubscriptionController {
 	}
 	
 	
+	@RequestMapping(value = "/editEducatoContent", method = RequestMethod.POST)
+	public @ResponseBody
+	Integer editEducatoContent(
+			@RequestParam(value = "eduContentEnrichId", required = true) String eduContentEnrichId,
+			@RequestParam(value = "title", required = true) String noteTitle,
+			@RequestParam(value = "description", required = false) String noteDescription,
+			@RequestParam(value = "duration", required = true) String noteDuration,
+			@RequestParam(value = "url", required = true) String url,
+			@RequestParam(value = "coordinates", required = true) String coordinates
+			) {
+
+		return Integer.valueOf(subscriptionService
+				.editEducatorContent(Integer.valueOf(eduContentEnrichId), noteDescription, url, coordinates, Integer.valueOf(noteDuration), noteTitle));
+
+	}
+
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/enrichplayer/{courseId}/{componentId}/{contentId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView  enrichPlayer(@PathVariable String courseId,
