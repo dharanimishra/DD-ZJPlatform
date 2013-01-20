@@ -10,8 +10,6 @@
 // Unlike use of JAXB where the entire object is marshalled.
 --%>
 
-
-
 <div class="user-contacts all-box-shadow pad demo_message">
 
 	<div class="demo_message" class="_blogMain  demo_message_container">
@@ -41,7 +39,10 @@
 									<date>${bloglist.createDate}</date>
 								</span><br>
 								<b><a href=""><blogtitle>${bloglist.title}</blogtitle></a></b>
-								
+								<br />
+								<p class="_postP">
+									<detail>${bloglist.content}</detail>
+								</p>
 								
 								<p class="_postT">
 									(Tags:

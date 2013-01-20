@@ -61,6 +61,7 @@
 }
 .jdash-head-title:hover { color: #ccc; }
 .jdash-head-title:hover span.sub-title { color: #666666; }
+.moreclass {font-size:12px;color:#27B;}
 </style>
 <body>
 
@@ -433,7 +434,7 @@ function displayUnAnsweredPairs(current){
 	 outputResult+="</div>";
 	
 	}
-	  outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top text-pading-right'>More</span></a></div>";
+	  outputResult+="<div class='txt-r' ><a class='text-size-px11  lbx-70-50' href='${knowmwpopup}' class='Block'><span class='f-r text-pading-top moreclass text-pading-right'>More</span></a></div>";
 	$('#knowme-ques').html(outputResult);
 }
 
@@ -541,8 +542,7 @@ $(document).ready(function() {
 
 			<p class="txt-r _bgmain" style="padding-right: 10px; clear: both;">
 				<c:url var="htmlUrl_profile2" value="/secure/zrecommendpopup" />
-				<span><a class="text-size-px11  lbx-70-50"
-					href="${htmlUrl_profile2}" class="" style="color: #27b;">More</a></span>
+				<span><a class="text-size-px11  lbx-70-50 moreclass" href="${htmlUrl_profile2}" >More</a></span>
 			</p>
 			</div>
 		</div>

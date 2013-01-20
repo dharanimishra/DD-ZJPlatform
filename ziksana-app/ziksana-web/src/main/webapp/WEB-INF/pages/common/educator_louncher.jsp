@@ -5,7 +5,13 @@
 <head>
 <meta />
 <title>EducatorLauncher</title>
-
+<style type="text/css">
+ .moreclass
+ {
+ font-size:12px;
+ color:#27B;
+ }
+</style>
 
 <link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
@@ -320,9 +326,9 @@ list-style:none;
 			-o-transform: rotate(0); 
 		}
 		.slide-up-boxes a:nth-child(2) div { background: #367db2 url(images/icons/createcourse.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(3) div { background: #367db2 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(4) div { background: #367db2 url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(5) div { background: #367db2 url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(3) div { background: #000000 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(4) div { background: #000000 url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(5) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
 
 </style>
 
@@ -704,7 +710,7 @@ $("#datepara").show();
 
    				</div> <!--end of navsublinks-->
      
-     <div class="clearfix"> </div>
+    <div class="clearfix"> </div>
      
      </div> <!--end of navcontainer-->
 
@@ -772,7 +778,7 @@ $("#datepara").show();
                             
                             <div class="_upcoming _up1">
                             	<div class="_uDate">
-                                	<b>26-JAN</b><br> <b>12.00 PM</b> 
+                                	<b>23- JAN</b><br> <b>12.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent">
@@ -782,7 +788,7 @@ $("#datepara").show();
                             
                             <div class="_upcoming _up2">
                             	<div class="_uDate">
-                                	<b>26-JAN</b><br> <b>02.00 PM</b> 
+                                	<b>23- JAN</b><br> <b>02.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="padding-top:2px; text-align:middle;">
@@ -797,14 +803,14 @@ $("#datepara").show();
                         
                         <div class="_cRight all-box-shadow">
                         	<div class="_e1">
-                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">26-JAN - Recap on Ziksana Capability</span></div>
+                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead"><span class="dmonth"></span> - Recap on Ziksana Capability</span></div>
 
 								<div><i class=" bold">Place: </i>UTD Administrative Building
 								<i class=" bold"><br>Time: </i>9:00 am - 12:00 pm </div>
                             </div>
                             
                             <div class="_e2" style="display: none;">
-                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">26-JAN - Lunch with Ziksana</span></div>
+                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">23-JAN - Lunch with Ziksana</span></div>
 						      <div><i class=" bold">Place: </i><br>
 						<i class=" bold">Time: </i>12:00 pm - 1:30 pm<br>
                             </div>

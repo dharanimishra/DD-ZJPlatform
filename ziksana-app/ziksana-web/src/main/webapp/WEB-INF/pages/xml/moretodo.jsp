@@ -40,8 +40,10 @@ background-color:#ffffff;
 	 
 	 todo_category = capitalize($('#todo_categories').val());
 	 todo_description = $('#todo_description').val();
-	 
+	
 	 if(todo_description ==''){return false;}
+	 
+	 if(todo_category.toLowerCase() == 'add_new_category'){todo_category = '';}
 	
 		
 		$.post( '<c:url value='/secure/createtodo'/>'
@@ -107,7 +109,7 @@ $(document).ready(function() {
 	
 	$('select#todo_categories').change(function(){
 		
-		if($(this).val() == 'Add_new_category'){ alert($(this).val()); show_category_form(); }
+		if($(this).val().toLowerCase() == 'add_new_category'){}
 	});
 	
 	

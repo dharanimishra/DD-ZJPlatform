@@ -198,7 +198,7 @@ function hideContents(){
         <!-- end contentGroup -->
         <div id="showGroup" class="zAnn">
               
-                <div id="tblGroup">
+                <div id="tblGroup" style="overflow:auto;height:400px;">
                
                 </div>
 				

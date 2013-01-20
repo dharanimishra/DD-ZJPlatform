@@ -180,6 +180,7 @@ public interface PollQuestionMapper {
 		"from ",
 		"utlzpollquestion ",
 		"where ",
+		"CreatorMemberRoleId = #{userMemberRoleId} and",
 		"utlzpollquestion.ID  not in (select pollquestionid from utlzpolltracker where answeringmemberroleid=#{userMemberRoleId}) "
 		
 	})

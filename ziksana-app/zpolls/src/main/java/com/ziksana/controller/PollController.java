@@ -113,12 +113,14 @@ public class PollController {
 		logger.info("Entering showPolls(-----): " + memberId);
 		ModelAndView modelView = new ModelAndView("xml/pollResultNQuestionNew");
 		
-
+		List<PollResultNQuestion> pollQuestionList = pollService.getPollQuestionsAndResults();
+		int pollSize = pollQuestionList.size(); 
 		modelView.addObject("questions",
 				pollService.getPollQuestionsAndResults());
 
-		// modelView.addObject("questions", "My test question");
-
+		modelView.addObject("pollSize", pollSize);
+		
+		
 		logger.info("Exiting showPolls(-----): " + memberId);
 		return modelView;
 	}

@@ -17,20 +17,20 @@
 <style type="text/css">
 .recommendation-info-category
 {
-	border: 1px solid rgba(0, 68, 119, 0.28);
-    border-radius: 3px 3px 3px 3px;
-    color: rgba(27, 110, 172, 0.94);
-    background:#edeaea;
-    cursor: pointer;
-    float: left;
-    font-family: arial;
-    font-size: 13px;
-    font-weight: bold;
-    height: 25px;
-    margin-right: 4px;
-    padding: 4px;
-    text-align: center;
-    width: 100px;
+	background-color: #F7F7F7;
+  border: 1px solid rgba(0, 68, 119, 0.28);
+  border-radius: 3px 3px 3px 3px;
+  color: rgba(27, 110, 172, 0.94);
+  cursor: pointer;
+  float: left;
+  font-family: arial;
+  font-size: 10px;
+  font-weight: bold;
+  height: 14px;
+  margin-right: 4px;
+  padding: 5px;
+  text-align: center;
+  width: 65px;
    
 }
 </style>

@@ -35,7 +35,13 @@
 	<script type="text/javascript" src="../resources/js/jquery.tipsy.js"></script>
 	<script type="text/javascript" src="../resources/js/custom/z_common.js"></script>
 	
-
+<style>
+.moreclass
+ {
+ font-size:12px;
+ color:#27B;
+ }
+</style>
 <c:url var="deleteAlertUrl" value="../secure/deletealert/111111/" />
 <script type="text/javascript">
 
@@ -219,7 +225,7 @@ function get_and_populate_alerts(){
 				var output="";
 				var outputAlertEmpty="";
 				outputAlertEmpty+="<div  class='alerts'>";
-				outputAlertEmpty+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
+				outputAlertEmpty+="<span class='titles-info jdash-head-title''>Alerts</span>";
 				outputAlertEmpty+="<b>No Alerts Found</b></div>";
 				
 				console.log('No of avaliable alerts: '+no_of_available_alerts);
@@ -231,7 +237,7 @@ function get_and_populate_alerts(){
 					//populate the three with more button.
 					
 					output+="<div  class='alerts'>";
-					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
+					output+="<span class='titles-info jdash-head-title''>Alerts</span>";
 					
 					$(data).find("alertitem").each(function(index){
 						
@@ -250,12 +256,12 @@ function get_and_populate_alerts(){
 									
 					});
 					output+="</div>";
-					output+="<div  style='height:30px; float:right;'> <a class='text-size-px11  alert_fancybox' href='${htmlUrl_alert}' >More</a></div>";
+					output+="<div  style='height:30px; float:right;'> <a class='text-size-px11 moreclass alert_fancybox' href='${htmlUrl_alert}' >More</a></div>";
 					$('#alerts_placeholder').html( output);
 				} else {
 					//populate the three without more button
 					output+="<div  class='alerts'>";
-					output+="<span class='titles-info font-Signika text-size-px18 light-gray'>Alerts</span>";
+					output+="<span class='titles-info jdash-head-title'>Alerts</span>";
 	
 					$(data).find("alertitem").each(function(index){
 					output+="<div id='alert_"+$(this).find("id").text()+"' class='alertcontainer' style='border:1px solid #F5F5F5;' id='conalert3'>";
@@ -311,7 +317,7 @@ $.ajax({
 			
 				var ouputEmptyTodo="";
 				ouputEmptyTodo+="<div  class='Todo's'>";
-				ouputEmptyTodo+="<span class='titles-info font-Signika text-size-px18 light-gray'>To-Dos</span>";
+				ouputEmptyTodo+="<span class='titles-info jdash-head-title'>To-Dos</span>";
 				ouputEmptyTodo+="<strong>No Todos Found</strong>";
 				ouputEmptyTodo+="<div style='height:30px; text-align: right;'><a class='todo_fancybox text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
 				ouputEmptyTodo+='</div>';
@@ -321,7 +327,7 @@ $.ajax({
 					  
 				  
 							output_todo+="<div  class='Todo's'>";
-						output_todo+="<span class='titles-info font-Signika text-size-px18 light-gray'>To-Dos</span>";
+						output_todo+="<span class='titles-info jdash-head-title'>To-Dos</span>";
 						
 						
 					  $(data).find("todoitem").each(function(index){
@@ -339,7 +345,7 @@ $.ajax({
 						});
 							output_todo+="</div>";						
 							
-							output_todo+="<div style='height:30px; text-align: right;'><a class='todo_fancybox text-size-px11 text-size-px11' href='${htmlUrl_todo}' >More</a><div>";
+							output_todo+="<div style='height:30px; text-align: right;'><a class='todo_fancybox text-size-px11 text-size-px11 moreclass' href='${htmlUrl_todo}' >More</a><div>";
 							$('#todos_placeholder').html(output_todo);
 				
 				}
@@ -437,17 +443,17 @@ function short_string_category(value){
                             
                             <div class="_upcoming _up1">
                             	<div class="_uDate">
-                                	<b>26-JAN</b><br> <b>12.00 PM</b> 
+                                	<b>23-JAN</b><br> <b>12.00 PM</b> 
                                 </div>
                                 
-                                <div class="_uevent" style="">
-                                	<span style="font-size: 10.5px;">Lunch with Ziksana</span>
+                                <div class="_uevent" style="" >
+                                	Lunch with Ziksana. 
                                 </div>
                             </div>
                             
                             <div class="_upcoming _up2">
                             	<div class="_uDate">
-                                	<b>26-JAN</b><br> <b>02.00 PM</b> 
+                                	<b>23-JAN</b><br> <b>02.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="padding-top:2px; text-align:middle;">
@@ -463,21 +469,21 @@ function short_string_category(value){
                         </div>
                         <div class="_cRight all-box-shadow">
                         	<div class="_e1">
-                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">26-JAN - Recap on Ziksana Capability</span></div>
+                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead"><span class="dmonth"></span> - Recap on Ziksana Capability</span></div>
 
 								<div><i class=" bold">Place: </i>UTD Administrative Building
 								<i class=" bold"><br>Time: </i>9:00 am - 12:00 pm </div>
                             </div>
                             
                             <div class="_e2" style="display: none;">
-                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 7 - Lunch with Ziksana</span></div>
+                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 23 - Lunch with Ziksana</span></div>
       <div><i class=" bold">Place: </i><br>
 <i class=" bold">Time: </i>12:00 pm - 1:30 pm<br>
                             </div>
                             </div>
                             
                             <div class="_e3" style="display: none;">
-                             <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 7 - Experiment with Playpen</span></div>
+                             <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">Jan 23 - Experiment with Playpen</span></div>
                             	
 <div><i class=" bold">Place: </i><br>
 <i class=" bold">Time: </i> 2:00 pm</div>
@@ -525,7 +531,7 @@ function short_string_category(value){
 					
 					</div>
                    
-                      <p style="margin:-5px -1px 10px;" class="titles-info font-Signika text-size-px18 light-gray" >Class Talk <!--<span class="rightof-title-info blue">Show only</span>--></p>
+                      <p style="margin:-5px -1px 10px;" class="titles-info jdash-head-title" >Class Talk <!--<span class="rightof-title-info blue">Show only</span>--></p>
                       <c:url var="imageUrl_dashboard1" value="/resources/images/user/2my-photo.png" />
                       <img src="${imageUrl_dashboard1}" width="38" height="40" align="left" class="img">
                       <p class="user-p li font-Arial"><span class="blok-title-L">Jason Dechamp</span>Check out the blog '<span class="blue">Innovative Educational Technology</span>', its gives good ideas for our projects.</p>

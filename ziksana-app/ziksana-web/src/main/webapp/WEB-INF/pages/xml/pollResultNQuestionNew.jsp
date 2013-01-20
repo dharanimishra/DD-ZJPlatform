@@ -5,6 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <pollquestionresult>
+	<pollQuestionSize>${pollSize}</pollQuestionSize>
 	<c:forEach var="qr" items="${questions}">
 		<c:if test="${qr.pollQuestion == null}">
 			<questionresultpair memberId="${memberId}">
