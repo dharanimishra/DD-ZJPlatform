@@ -1,12 +1,8 @@
-/**
- * 
- */
+		
+
 package com.ziksana.service.polls.impl;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -50,9 +46,9 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public List<PollResultNQuestion> getPollQuestionsAndResults() {
 
-		
+
 		List<PollResultNQuestion> pollQuestionsNResults = new ArrayList<PollResultNQuestion>();
-		
+
 		/*
 		List<PollQuestionResult> pollResults = pollQuestionMapper
 				.getPollResults(Integer.valueOf(ThreadLocalUtil.getToken()
@@ -93,7 +89,7 @@ public class PollServiceImpl implements PollService {
 			PollQuestion pollQuestion = new PollQuestion();
 			System.out.println("QUESTION ID IS "
 					+ pollQuestionEntity.getID());
-						
+
 			pollQuestion.setID(pollQuestionEntity.getID());
 			System.out.println("QUESTION TEXT IS "
 					+ pollQuestionEntity.getQuestionText());
@@ -124,10 +120,10 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public void pollResponse(
 			PollQuestionResponse pollQuestionResponse) {
-		
+
 		Validate.notNull(pollQuestionResponse, "PollQuestion cannot be null.");
-					
-		
+
+
 		pollQuestionResponseMapper.createPollTrackerEntry(pollQuestionResponse
 				.getPollQuestion().getID(), Integer.valueOf(ThreadLocalUtil.getToken()
 						.getMemberPersonaId().getStorageID()));
@@ -145,19 +141,19 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public PollQuestionResult getPollResult(PollQuestion pollQuestion) {
 
-		
+
 		Validate.notNull(pollQuestion, "PollQuestion cannot be null.");
 		PollQuestionResult pollResult = pollQuestionResponseMapper
 				.getPollResultByQuestion(pollQuestion.getID(),
 						Integer.valueOf(ThreadLocalUtil.getToken()
 								.getMemberPersonaId().getStorageID()));
 		PollQuestionEntity pollQuestionEntity = pollQuestionResponseMapper.getPollQuestionById(pollQuestion.getID());
-		
-		
+
+
 		PollQuestion question = new PollQuestion();
 		System.out.println("QUESTION ID IS "
 				+ pollQuestionEntity.getID());
-					
+
 		question.setID(pollQuestionEntity.getID());
 		System.out.println("QUESTION TEXT IS "
 				+ pollQuestionEntity.getQuestionText());
@@ -167,17 +163,17 @@ public class PollServiceImpl implements PollService {
 		System.out.println("THE TOTAL NUMBER OF OPTIONS "+options.size());
 		question.setActive(true);
 		question.setOptions(options);
-		
-		
+
+
 		pollResult.setQuestion(question);
-		
+
 		PollResult pr = pollQuestionMapper.getPollResultByQuestion(pollQuestionEntity.getID());
 		pollResult.setPercentage1(pr.getAnswer1());
 		pollResult.setPercentage2(pr.getAnswer2());
 		pollResult.setPercentage3(pr.getAnswer3());
 		pollResult.setPercentage4(pr.getAnswer4());
 		pollResult.setPercentage5(pr.getAnswer5());
-		
+
 		return pollResult;
 
 	}
@@ -188,7 +184,7 @@ public class PollServiceImpl implements PollService {
 
 		if (pollQuestionEntity.getAnswer1() != null) {
 			options.add( getOption(0, pollQuestionEntity.getAnswer1()));
-		
+
 		}
 
 		if (pollQuestionEntity.getAnswer2() != null)
@@ -226,44 +222,12 @@ public class PollServiceImpl implements PollService {
 	}
 
 	@Override
-	public List<PollQuestionEntity> getAllPollQuestionsByDate(String startDate,
-				String endDate) {
-		
-		
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		
-		Date formatStartDate = null;
-		try {
-			formatStartDate = dateFormat.parse(startDate);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Date formatDate = null;
-		try {
-			formatDate = dateFormat.parse(endDate);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Date formatEndDate = combineDateTime(formatDate);
-		System.out.println(" start date is "+formatEndDate);
-		
-		//Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-		return pollQuestionMapper.getPollQuestionsByDate(formatStartDate, formatEndDate);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	public List<PollQuestionEntity> getAllPollQuestionsByDate(Date startDate,
+			Date endDate) {
+
+		return pollQuestionMapper.getPollQuestionsByDate(startDate, endDate);
+
+
 	}
 
 	@Override
@@ -272,24 +236,10 @@ public class PollServiceImpl implements PollService {
 		return pollQuestionMapper.getPollQuestion(Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID()));
 	}
-	
-	
-	private static Date combineDateTime(Date dateFormat){
-		Date time = new Date();
-		 time.setHours(23);
-		 time.setMinutes(59);
-		 time.setSeconds(59);
-		 Calendar calendar=Calendar.getInstance();
-        calendar.setTime(dateFormat);
-        Calendar calendar1=Calendar.getInstance();
-        calendar1.setTime(time);
-        calendar.set(Calendar.HOUR_OF_DAY, calendar1.get(Calendar.HOUR_OF_DAY));
-        calendar.set(Calendar.MINUTE, calendar1.get(Calendar.MINUTE));
-        calendar.set(Calendar.SECOND, calendar1.get(Calendar.SECOND));
-        
-        return calendar.getTime();
-	}
 
-	
+
+
+
 
 }
+

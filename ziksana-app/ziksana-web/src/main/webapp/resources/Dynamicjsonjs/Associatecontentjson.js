@@ -223,79 +223,108 @@ $(document)
 
 function getAssociateContentSave() {
 
-	// Step 1: Assign Parameters required by the sendMessage function.
-	uri = '/ziksana-web/secure/saveOrUpdateContent';
+	validation = jQuery("#Associatequalifier").validationEngine('validate');
+	if (validation == true) {
 
-	token = ''; // dummy token for demo. you have to send real token.
-	request_type = 'GET'; // can be GET or POST. In this case, a GET request
+		$('#btnsbtassoccontent').attr('disabled', 'disabled'); // disables the
+		// submit button
+		// to prevent
+		// re-submission
+		// of forms
 
-	var Course_id = $('#courseid').val();
+		// Step 1: Assign Parameters required by the sendMessage function.
+		uri = '/ziksana-web/secure/saveOrUpdateContent';
 
-	var CourseLearningComponentId = $('#courseLearningComponentId').val();
+		token = ''; // dummy token for demo. you have to send real token.
+		request_type = 'POST'; // can be GET or POST. In this case, a GET
+		// request
 
-	var LearningComponentId = $('#learningComponentId').val();
+		var Course_id = $('#courseid').val();
 
-	var LearningContentId = $('#learningContentId').val();
+		var CourseLearningComponentId = $('#courseLearningComponentId').val();
 
-	var Content_Name = $('#contentname').val();
+		var LearningComponentId = $('#learningComponentId').val();
 
-	var Content_Description = $('#Associatecdescrte').val();
+		var LearningContentId = $('#learningContentId').val();
 
-	var Subject_Area = $('#Careaddl').val();
+		var Content_Name = $('#contentname').val();
 
-	var Subject = $('#Csubjectddl').val();
+		var Content_Description = $('#Associatecdescrte').val();
 
-	var Topic = $('#Ctopicddl').val();
+		var Subject_Area = $('#Careaddl').val();
 
-	var Contenttag_Field = $('#Associatetag').val();
+		var Subject = $('#Csubjectddl').val();
 
-	var AssocContent_Image = $('#Cimageupl').val();
+		var Topic = $('#Ctopicddl').val();
 
-	var LinkType = $('#q_type').val();
+		var Contenttag_Field = $('#Associatetag').val();
 
-	var ContentUpload = $('#imgultype').val();
+		var AssocContent_Image = $('#Cimageupl').val();
 
-	var ContentUrl = $('#conturl').val();
+		var LinkType = $('#q_type').val();
 
-	var ContentDesc = $('#q_typecdesdcrte').val();
+		var ContentUpload = $('#imgultype').val();
 
-	var ContentPath = $('#ContentPath').val();
+		var ContentUrl = $('#conturl').val();
 
-	var ThumbnailPicturePath = $('#ThumbnailPicturePath').val();
+		var ContentDesc = $('#q_typecdesdcrte').val();
 
-	var NumberOfThumbnails = $('#NumberOfThumbnails').val();
+		var ContentPath = $('#ContentPath').val();
 
-	var ContentType = $('#ContentType').val();
+		var ThumbnailPicturePath = $('#ThumbnailPicturePath').val();
 
-	var parameters = {
-		"Course_id" : Course_id,
-		"LearningComponentId" : LearningComponentId,
-		"LearningContentId" : LearningContentId,
-		"Content_Name" : Content_Name,
-		"Content_Description" : Content_Description,
-		"Subject_Area" : Subject_Area,
-		"Subject" : Subject,
-		"Topic" : Topic,
-		"Contenttag_Field" : Contenttag_Field,
-		"AssocContent_Image" : AssocContent_Image,
-		"LinkType" : LinkType,
-		"ContentUpload" : ContentUpload,
-		"ContentUrl" : ContentUrl,
-		"ContentDesc" : ContentDesc,
-		"ContentPath" : ContentPath,
-		"ThumbnailPicturePath" : ThumbnailPicturePath,
-		"NumberOfThumbnails" : NumberOfThumbnails,
-		"ContentType" : ContentType
+		var NumberOfThumbnails = $('#NumberOfThumbnails').val();
 
-	};
+		var ContentType = $('#ContentType').val();
 
-	successCallback = onSuccessfulCourseCreation;
+		var parameters = {
+			"Course_id" : Course_id,
+			"LearningComponentId" : LearningComponentId,
+			"LearningContentId" : LearningContentId,
+			"Content_Name" : Content_Name,
+			"Content_Description" : Content_Description,
+			"Subject_Area" : Subject_Area,
+			"Subject" : Subject,
+			"Topic" : Topic,
+			"Contenttag_Field" : Contenttag_Field,
+			"AssocContent_Image" : AssocContent_Image,
+			"LinkType" : LinkType,
+			"ContentUpload" : ContentUpload,
+			"ContentUrl" : ContentUrl,
+			"ContentDesc" : ContentDesc,
+			"ContentPath" : ContentPath,
+			"ThumbnailPicturePath" : ThumbnailPicturePath,
+			"NumberOfThumbnails" : NumberOfThumbnails,
+			"ContentType" : ContentType
 
-	errorCallback = commonErrorCallback;
-
-	// Step 2: Send Message Using sendMessage(); function.
-	sendMessage(uri, token, parameters, request_type, successCallback,
-			errorCallback);
+		};
+		//
+		// successCallback = onSuccessfulCourseCreation;
+		//
+		// errorCallback = commonErrorCallback;
+		//
+		// // Step 2: Send Message Using sendMessage(); function.
+		// sendMessage(uri, token, parameters, request_type, successCallback,
+		// errorCallback);
+		//	
+		$.post(uri, parameters, function(data) {
+			console.log(data);
+			if (data.response == 'success') {
+				course_id = data.id;
+				$('#courseid').val(course_id);
+				if (course_id != '' & course_id != null) {
+					window.location.href = window.location.href;
+					$('#tempdiv').html(
+							'<span style="color:red;">' + data.message
+									+ '</span>');
+				} else {
+					$('#tempdiv').html(
+							'<span style="color:red;">' + data.message
+									+ '</span>');
+				}
+			}
+		});
+	}
 
 }
 
@@ -331,3 +360,4 @@ function onSuccessfulCourseCreation(data) {
 	course_id = data.id;
 	window.location.href = "/ziksana-web/secure/associatecontent/" + course_id;
 }
+

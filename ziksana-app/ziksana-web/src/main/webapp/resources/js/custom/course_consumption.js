@@ -3,6 +3,7 @@ $(document).ready(
 		function() {
 
 			$('#videoSection, #video_actions').css('visibility', 'hidden');
+			$('.add_note_trigger, .add_question_trigger').css('visibility', 'hidden');
 
 			// var theme = getTheme();
 
@@ -363,7 +364,7 @@ $(document).ready(
 
 					if (content_type == 'VIDEO') {
 
-						playVideo(content_path);
+						playVideo('http://54.243.235.88/zikload-xml/uploads/'+content_path);
 
 					}
 
@@ -371,15 +372,16 @@ $(document).ready(
 
 					if (content_type == 'AUDIO') {
 
-						playAudio(content_path);
+						playAudio('http://54.243.235.88/zikload-xml/uploads/'+content_path);
 
 					}
 
 
 
-					if (content_type == 'PDF' || content_type == 'WORD'
+					if (content_type == 'PDF' || content_type == 'DOC'
 
-							|| content_type == 'POWERPOINT'
+							|| content_type == 'PPT'
+							|| content_type == 'EXCEL'
 
 							|| content_type == 'IMAGE'
 

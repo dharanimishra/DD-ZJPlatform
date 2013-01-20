@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -117,7 +118,14 @@ public class PollServiceImplTest {
 
 	@Test
 	public void testGetAllPollQuestionsByDate() {
-		
+		/*
+		Calendar startDate = new GregorianCalendar(2008, 01, 01);
+		Calendar endDate = Calendar.getInstance();
+		List<PollQuestionEntity> pollQuestions = pollService
+				.getAllPollQuestionsByDate(startDate.getTime(),
+						endDate.getTime());
+		assertTrue(pollQuestions.size() > 0);
+		*/
 
 	}
 
@@ -134,3 +142,4 @@ public class PollServiceImplTest {
 	}
 
 }
+
