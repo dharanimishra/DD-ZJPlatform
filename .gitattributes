@@ -3,25 +3,25 @@
 # of their git settings and platform
 
 # Set default behavior to handle the files specified automatically.
-* text=auto
+#* text=auto
 
 # These files are stored in git with LF, on checkout they are converted 
 # to the OS's native line endings
-*.java   text
-*.xml    text
-*.jsp    text
-*.html   text
-*.js     text
-*.css    text
-*.txt    text
+#*.java   text
+#*.xml    text
+#*.jsp    text
+#*.html   text
+#*.js     text
+#*.css    text
+#*.txt    text
 
 # git does not try to change the binary files
-*.png    binary
-*.jpg    binary
-*.jpeg   binary
-*.gif    binary
+#*.png    binary
+#*.jpg    binary
+#*.jpeg   binary
+#*.gif    binary
 
-*.mp4    binary
+#*.mp4    binary
 
-*.swf    binary
-*.flv    binary
+#*.swf    binary
+#*.flv    binary
