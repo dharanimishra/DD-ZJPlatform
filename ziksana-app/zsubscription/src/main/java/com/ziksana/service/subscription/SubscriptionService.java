@@ -58,10 +58,11 @@ public interface SubscriptionService {
 			String url, String coordinates, Integer duration, String title);
 	
 	
-	public int editEducatorContent();
+	public int editEducatorContent(Integer contentEnrId, String contentDesc,
+			String url, String coordinates, Integer duration, String title);
 	
 
-	public int deleteEducatorContent(Integer contentId);
+	public int deleteEducatorContent(Integer contentEnrId);
 
 	// end
 

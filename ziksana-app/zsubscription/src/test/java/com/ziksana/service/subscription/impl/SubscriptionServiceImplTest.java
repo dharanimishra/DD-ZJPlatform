@@ -163,15 +163,13 @@ public class SubscriptionServiceImplTest {
 
 	@Test
 	public void testAddEducatorContent() {
-		
-		
-		//TODO rhis test case needs to be modified
+
+		// TODO rhis test case needs to be modified
 		/*
-		Integer contentEnrichmentId = subscriptionService.addEducatorContent(
-				100, 7, 10, 7, "coming from int test", "http://google.com",
-				"xy", 2);
-		assertTrue(contentEnrichmentId > 0);
-		*/
+		 * Integer contentEnrichmentId = subscriptionService.addEducatorContent(
+		 * 100, 7, 10, 7, "coming from int test", "http://google.com", "xy", 2);
+		 * assertTrue(contentEnrichmentId > 0);
+		 */
 
 	}
 
@@ -192,7 +190,7 @@ public class SubscriptionServiceImplTest {
 
 	@Test
 	public void testGetEducatorHotspots() {
-		
+
 		Node node = new Node();
 		node.setId(1);
 		node.setType(1000);
@@ -207,6 +205,16 @@ public class SubscriptionServiceImplTest {
 
 		assertTrue(hotspots.size() == 0);
 
+	}
+
+	@Test
+	public void testEditEducatorContent() {
+
+		int rows = subscriptionService.editEducatorContent(Integer.valueOf(23),
+				"modified desc", "modified url", "modified coord",
+				Integer.valueOf(45), "modified title");
+		
+		assertTrue(rows == 1);
 	}
 
 }

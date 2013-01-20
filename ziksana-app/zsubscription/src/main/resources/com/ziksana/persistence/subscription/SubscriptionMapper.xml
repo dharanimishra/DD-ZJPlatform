@@ -395,6 +395,23 @@
 		SubcribeNotesId=#{noteId}
 
 	</update>
+	
+	
+	<update id="editEducatorContent" parameterType="map">
+		
+		update corcontentenrichment
+		set uri=#{url},
+		duration=#{duration},
+		coordinates=#{coordinates},
+		LinkDescription=#{description},
+		LinkElement=#{title}
+		where
+		ID=#{contentEnrId}
+
+	</update>
+	
+	
+	
 
 
 

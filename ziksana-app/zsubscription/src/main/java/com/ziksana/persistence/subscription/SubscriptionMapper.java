@@ -105,4 +105,15 @@ public interface SubscriptionMapper {
 			@Param("duration") Integer duration,
 			@Param("title") String title
 			);
+	
+	public int editEducatorContent(
+			@Param("contentEnrId") Integer contentEnrId, 
+			@Param("description") String contentDesc,
+			@Param("url")  String url, 
+			@Param("coordinates") String coordinates, 
+			@Param("duration") Integer duration, 
+			@Param("title") String title);
+	
+	
+	
 }

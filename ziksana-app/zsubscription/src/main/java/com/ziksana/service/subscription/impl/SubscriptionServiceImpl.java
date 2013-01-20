@@ -271,11 +271,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		return subscriptionMapper.deleteEducatorContent(contentId);
 	}
 
-	@Override
-	public int editEducatorContent() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public List<Hotspot> getEducatorHotspots(Integer courseId, Node node) {
@@ -301,6 +297,13 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());
 		
+	}
+
+	@Override
+	public int editEducatorContent(Integer contentEnrId, String contentDesc,
+			String url, String coordinates, Integer duration, String title) {
+				
+		return subscriptionMapper.editEducatorContent(contentEnrId, contentDesc, url, coordinates, duration, title); 
 	}
 
 }
