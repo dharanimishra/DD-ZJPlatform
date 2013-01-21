@@ -20,6 +20,9 @@ import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.course.CourseException;
+import com.ziksana.id.StringZID;
+import com.ziksana.id.ZID;
+import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseContentService;
 
@@ -71,6 +74,17 @@ public class CourseContentController {
 				+ ThumbnailPicturePath + " numberOfThumbnails :"
 				+ numberOfThumbnails + " ContentType :" + ContentType);
 
+		ZID memberId = new StringZID("1001");
+		ZID memberPersonaId = new StringZID("201");
+
+		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+		ThreadLocalUtil.setToken(token);
+
+		LOGGER.debug(" Class :"
+				+ getClass()
+				+ " Method: saveCourse() : setMemberRoleId"
+				+ Integer.valueOf(ThreadLocalUtil.getToken()
+						.getMemberPersonaId().getStorageID()));
 
 		MemberPersona accountableMember = new MemberPersona();
 		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
@@ -179,10 +193,9 @@ public class CourseContentController {
 
 	@RequestMapping(value = "/course/deleteNode", method = RequestMethod.POST)
 	public @ResponseBody
-	String deleteContent(
-			@RequestParam String nodeId) {
+	String deleteContent(@RequestParam String nodeId) {
 		LOGGER.info("Entering Class " + getClass() + " deleteContent()");
-		
+
 		LOGGER.info("Exiting Class " + getClass() + " deleteContent(): ");
 
 		return "1";

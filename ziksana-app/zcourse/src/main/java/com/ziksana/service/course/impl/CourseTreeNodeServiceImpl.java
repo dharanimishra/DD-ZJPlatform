@@ -15,7 +15,6 @@ import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentParts;
 import com.ziksana.domain.course.TreeNode;
-import com.ziksana.exception.course.CourseException;
 import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.persistence.course.CourseTreeNodeMapper;
 import com.ziksana.service.course.CourseTreeNodeService;
@@ -202,6 +201,19 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		LOGGER.debug("Exiting Class :"
 				+ getClass()
 				+ " Method Name :getModuleContents(Integer learningComponentId)");
+		return list;
+	}
+
+	@Override
+	public List<TreeNode> getCourseComponent(Integer courseId) {
+		LOGGER.debug("Entering Class :" + getClass()
+				+ " Method Name :getCourseComponent(Integer courseId)"
+				+ courseId);
+		List<TreeNode> list = courseTreeNodeMapper.getCourseComponent(courseId);
+
+		LOGGER.debug("Exiting Class :"
+				+ getClass()
+				+ " Method Name :getCourseComponent(Integer learningComponentId)");
 		return list;
 	}
 }

@@ -6,10 +6,15 @@ import java.util.NoSuchElementException;
 public enum ContentType {
 
 	// TODO: retrieve the ids from the static data service
-	VIDEO      (1, "Video"),
-	AUDIO      (2, "Audio"),
-	TEXTUAL   (3, "Textual");
-	
+	VIDEO      (1, "VIDEO"),
+	AUDIO      (2, "AUDIO"),
+	TEXTUAL   (3, "TEXTUAL"),
+	PDF (4, "PDF"),
+	DOC (5, "DOC"),
+	PPT (6, "PPT"),
+	EXCEL (7, "EXCEL"),
+	IMAGE (8, "IMAGE"),
+	LINK (9, "LINK");
 
 	private final int id;
 	

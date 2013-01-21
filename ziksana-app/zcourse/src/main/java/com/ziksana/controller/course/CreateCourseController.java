@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,8 +50,6 @@ public class CreateCourseController {
 
 	@Autowired
 	CourseTreeNodeService courseTreeNodeService;
-
-	private static String LOGO_PATH = "/content/logo/";
 
 	@RequestMapping(value = "/createcourse", method = { RequestMethod.GET,
 			RequestMethod.POST })
@@ -129,28 +126,40 @@ public class CreateCourseController {
 				+ CourseExtraCredits + " Course_Duration :" + CourseDuration
 				+ " CourseDurationUnit :" + CourseDurationUnit);
 
-		Integer courseDuration = 0, courseId = 0, courseDurationUnit = 1;
+		Integer courseDuration = 0, courseId = 0, courseDurationUnit = 1, subjClassificationId = 0;
 
 		try {
 			courseId = Integer.parseInt(CourseId);
 		} catch (NumberFormatException nfe) {
-			LOGGER.debug(" Class :" + getClass()
-					+ " Method: saveCourse() : NumberFormatException" + nfe);
+			LOGGER.debug(" Class :"
+					+ getClass()
+					+ " Method: saveCourse() : NumberFormatException : courseId :"
+					+ nfe);
 		}
 		try {
 			courseDuration = Integer.parseInt(CourseDuration);
 			courseDurationUnit = Integer.parseInt(CourseDurationUnit);
 		} catch (NumberFormatException nf) {
-			LOGGER.debug(" Class :" + getClass()
-					+ " Method: saveCourse() : NumberFormatException" + nf);
+			LOGGER.debug(" Class :"
+					+ getClass()
+					+ " Method: saveCourse() : NumberFormatException : courseDurationUnit"
+					+ nf);
 		}
 
-//		ZID memberId = new StringZID("1001");
-//		ZID memberPersonaId = new StringZID("201");
-//
-//		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-//		ThreadLocalUtil.setToken(token);
-//
+		try {
+			subjClassificationId = Integer.parseInt(Topic);
+		} catch (NumberFormatException fe) {
+			LOGGER.debug(" Class :"
+					+ getClass()
+					+ " Method: saveCourse() : NumberFormatException : subjClassificationId"
+					+ fe);
+		}
+
+		ZID memberId = new StringZID("1001");
+		ZID memberPersonaId = new StringZID("201");
+		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+		ThreadLocalUtil.setToken(token);
+
 		LOGGER.debug(" Class :"
 				+ getClass()
 				+ " Method: saveCourse() : setMemberRoleId"
@@ -177,12 +186,13 @@ public class CreateCourseController {
 			course.setDescription(CourseDescription);
 			course.setCourseCredits(CourseCredits);
 			course.setExtraCredits(CourseExtraCredits);
-			course.setThumbnailPicturePath(LOGO_PATH + UploadImage);
+			course.setThumbnailPicturePath(UploadImage);
 
 			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 			course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
 			course.setAdditionalInfoIndicator(true);
 			course.setVersion(1);
+			course.setSubjClassificationId(subjClassificationId);
 
 			Duration duration = new Duration(courseDuration, courseDurationUnit);
 			course.setCourseDuration(duration);
@@ -190,13 +200,13 @@ public class CreateCourseController {
 
 			course.setSecurityIndicator(true);
 
-			// CourseTagcloud tagcloud = new CourseTagcloud();
-			// tagcloud.setCreatingMember(accountableMember);
-			// tagcloud.setTagName(CourseTags);
-			// tagcloud.setTagType(TagType.TAG_TYPE1);
-			// tagcloudList.add(tagcloud);
-			//
-			// tagcloud.setCourse(course);
+			CourseTagcloud tagcloud = new CourseTagcloud();
+			tagcloud.setCreatingMember(accountableMember);
+			tagcloud.setTagName(CourseTags);
+			tagcloud.setTagType(TagType.TAG_TYPE1);
+			tagcloudList.add(tagcloud);
+
+			tagcloud.setCourse(course);
 			// course.setCourseTagClouds(tagcloudList);
 			// // course.setValidFromDate(new Date());
 			// course.setValidToDate(new Date());
@@ -308,6 +318,11 @@ public class CreateCourseController {
 					+ " Method: saveCourse : NumberFormatException" + nfe);
 		}
 
+		ZID memberId = new StringZID("1001");
+		ZID memberPersonaId = new StringZID("201");
+
+		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+		ThreadLocalUtil.setToken(token);
 
 		MemberPersona accountableMember = new MemberPersona();
 		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
@@ -412,24 +427,19 @@ public class CreateCourseController {
 
 		if (courseIds == 0) {
 			json.setResponse("failed");
-			json.setMessage("Module Creation Failed!");
+			// json.setMessage("Module Creation Failed!");
 			LOGGER.info("Class :" + getClass()
 					+ " Method saveCourse : After courseService: CourseId :"
 					+ CourseId);
 		} else {
 			json.setId("COURSE_" + courseIds);
 			json.setResponse("success");
-			json.setMessage("Module Creation Success");
+			// json.setMessage("Module Creation Success");
 
 			LOGGER.info("Class :" + getClass()
 					+ " Method saveCourse : After courseService: CourseId :"
 					+ CourseId);
 		}
-
-		ModelAndView modelView = new ModelAndView("xml/definemodule");
-		modelView.addObject("CourseId", CourseId);
-		LOGGER.info("Exiting Class " + getClass()
-				+ " saveCourseComponents(): courseObj :" + courseObj);
 		return json;
 	}
 

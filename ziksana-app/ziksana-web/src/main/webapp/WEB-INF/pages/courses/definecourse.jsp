@@ -112,14 +112,19 @@
 <script
 	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
-	
-	<link rel="stylesheet" type="text/css"
+
+<link rel="stylesheet" type="text/css"
 	href="/ziksana-web/resources/css/uploadify.css" />
-<script type="text/javascript" src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
-<script type="text/javascript" src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
-	<style type="text/css">
-		#message {padding: 1em 0; color: steelblue;}
-	</style>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+<style type="text/css">
+#message {
+	padding: 1em 0;
+	color: steelblue;
+}
+</style>
 <style>
 .jqx-widget-content {
 	-moz-background-clip: padding;
@@ -280,9 +285,16 @@ span.standartTreeRow:hover {
 
 							<ul class="breadcrumb" style="padding: 1px;">
 
+								<%
+									String courseId = request.getParameter("courseId");
+																if(courseId != null || courseId.length() > 0 {)
+								%>
 								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
+								<%
+									}
+								%>
 								<li><a
 									href="/ziksana-web/secure/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
@@ -387,11 +399,11 @@ span.standartTreeRow:hover {
 											</select> <select name="Csubjectddl" id="Csubjectddl"
 												style="margin-right: 15px; width: 200px;">
 												<option value="">Select Course Subject</option>
-													<option value="ABC">ABC</option>
+												<option value="ABC">ABC</option>
 											</select> <select name="Ctopicddl" id="Ctopicddl"
 												class="defaultvalue labelclass " style="width: 200px;">
 												<option value="">Select Course Topic</option>
-												 <option value="ABC">ABC</option>
+												<option value="ABC">ABC</option>
 											</select>
 										</div>
 										<!-- end of moduleselection--->
@@ -548,7 +560,8 @@ span.standartTreeRow:hover {
 											alt="Modelthinking" width="94" height="94" border="3"
 											style="border: 2px solid #ccc;" /> <input
 											readonly="readonly" type="hidden" id="Cimageupl"
-											style="margin-left: 20px;" /> <!--  <a href="#linkurl"
+											style="margin-left: 20px;" />
+										<!--  <a href="#linkurl"
 											id="cancellink"> <img
 											src="/ziksana-web/resources/images/delete.jpg" />Cancel</a>-->
 

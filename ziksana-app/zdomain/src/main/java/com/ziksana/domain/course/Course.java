@@ -15,14 +15,14 @@ import com.ziksana.id.ZID;
 /**
  * @author bhashasp
  */
-public class Course extends AuditHistory{
+public class Course extends AuditHistory {
 
 	public Course() {
-		//setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
+		// setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 	}
-	
+
 	public Course(String name, String description, CourseStatus courseStatus,
-			Duration courseDuration,	MemberPersona accountableMember) {
+			Duration courseDuration, MemberPersona accountableMember) {
 		this.name = name;
 		this.description = description;
 		this.courseStatus = courseStatus;
@@ -30,100 +30,111 @@ public class Course extends AuditHistory{
 		this.accountableMember = accountableMember;
 	}
 
-
 	public Course(String name, String description, CourseStatus courseStatus,
-			Duration courseDuration,
-			MemberPersona accountableMember, List<LearningComponent> learningComponentList) {
+			Duration courseDuration, MemberPersona accountableMember,
+			List<LearningComponent> learningComponentList) {
 		this.name = name;
 		this.description = description;
 		this.courseStatus = courseStatus;
 		this.courseDuration = courseDuration;
 		this.accountableMember = accountableMember;
-		//this.getCourseDetails().learningComponents =learningComponentList;
+		// this.getCourseDetails().learningComponents =learningComponentList;
 	}
 
-	private ZID 					courseId;
+	private ZID courseId;
 	/**
 	 * Maximum Length:45
 	 */
-	private String 					name 					= null;
+	private String name = null;
 	/**
 	 * Maximum Length:240
 	 */
-	private String 					description 			= null;
+	private String description = null;
 	/**
 	 * Course Start Date is for when Course is associate to curriculumm
 	 */
-	private Date 					validFromDate 			= null;
+	private Date validFromDate = null;
 	/**
 	 * Course End Date is for When Course is associate to curriculumm
 	 */
-	private Date 					validToDate 			= null;
-	private CourseStatus 			courseStatus 			= null;
-	private Integer		 			courseStatusId 			= null;
-	private Rating 					rating 					= null;
-	private Boolean 				securityIndicator 		= null;
-	private CourseContentSecurity	courseContSecurity 		= null;
+	private Date validToDate = null;
+	private CourseStatus courseStatus = null;
+	private Integer courseStatusId = null;
+	private Rating rating = null;
+	private Boolean securityIndicator = null;
+	private CourseContentSecurity courseContSecurity = null;
 	/**
 	 * Maximum Length:5
 	 */
-	private String 					courseCredits 			= null;
+	private String courseCredits = null;
 	/**
-	 *  Maximum Length:5
+	 * Maximum Length:5
 	 */
-	private String 					extraCredits			= null;
-	private Boolean 				additionalInfoIndicator	= null;
+	private String extraCredits = null;
+	private Boolean additionalInfoIndicator = null;
 	/**
 	 * Maximum Length:72
 	 */
-	private String 					thumbnailPicturePath 	= null;
-	private Duration 				courseDuration			= null;
-	private SubjectClassification 	subjClassification	 	= null;
-	private MemberPersona 			accountableMember 		= null;
-	private CourseDetails 			courseDetails 			= null;
-	private Integer					courseProgress			= null;
-	private Integer					status					= null;
-	private Integer 				duration 				= null;
-	private Integer					durationUnits 			= null;
-	
-	
+	private String thumbnailPicturePath = null;
+	private Duration courseDuration = null;
+	private SubjectClassification subjClassification = null;
+	private MemberPersona accountableMember = null;
+	private CourseDetails courseDetails = null;
+	private Integer courseProgress = null;
+	private Integer status = null;
+	private Integer duration = null;
+	private Integer durationUnits = null;
+	private Integer subjClassificationId = null;
+
+	public Integer getSubjClassificationId() {
+		return subjClassificationId;
+	}
+
+	public void setSubjClassificationId(Integer subjClassificationId) {
+		this.subjClassificationId = subjClassificationId;
+	}
 
 	/**
 	 * Maximum Length:240
 	 */
-	private String 					versionRemarks 			= null;
-	private Integer 				version 				= null;
+	private String versionRemarks = null;
+	private Integer version = null;
 
-	private List<CourseTagcloud> 			courseTagClouds				= null;
-	private List<CoursePlaybook> 			coursePlaybookList			= null;
-	private List<CourseLearningPlanner> 	courseLearningPlannerList 	= null;
-	private TestPackage						testPackage					= null;
-	private List<Engagement> 				engagementList				= null;
+	private List<CourseTagcloud> courseTagClouds = null;
+	private List<CoursePlaybook> coursePlaybookList = null;
+	private List<CourseLearningPlanner> courseLearningPlannerList = null;
+	private TestPackage testPackage = null;
+	private List<Engagement> engagementList = null;
+
 	/**
 	 * @param index
 	 * @return
 	 */
-	public CoursePlaybook getCoursePlaybook(int index){
-		if(coursePlaybookList == null){
-			throw new IllegalArgumentException("CoursePlaybook cannot set to null");
+	public CoursePlaybook getCoursePlaybook(int index) {
+		if (coursePlaybookList == null) {
+			throw new IllegalArgumentException(
+					"CoursePlaybook cannot set to null");
 		}
-		
-		try{
+
+		try {
 			return coursePlaybookList.get(index);
-		}catch(Exception e){
-			throw new IllegalStateException("CoursePlaybook at index ["+index+"]  not found");
+		} catch (Exception e) {
+			throw new IllegalStateException("CoursePlaybook at index [" + index
+					+ "]  not found");
 		}
 	}
+
 	/**
 	 * @param playbook
 	 */
-	public void addCoursePlaybook(CoursePlaybook playbook){
-		if(coursePlaybookList == null){
+	public void addCoursePlaybook(CoursePlaybook playbook) {
+		if (coursePlaybookList == null) {
 			coursePlaybookList = new ArrayList<CoursePlaybook>();
 		}
 		playbook.setCourse(this);
 		coursePlaybookList.add(playbook);
 	}
+
 	/**
 	 * @param list
 	 */
@@ -135,54 +146,58 @@ public class Course extends AuditHistory{
 	 * @param index
 	 * @return
 	 */
-	public CourseTagcloud getCourseTagcloud(int index){
-		
-		if(courseTagClouds == null){
-			throw new IllegalArgumentException("Course Tag cloud cannot set to null");
+	public CourseTagcloud getCourseTagcloud(int index) {
+
+		if (courseTagClouds == null) {
+			throw new IllegalArgumentException(
+					"Course Tag cloud cannot set to null");
 		}
-		
-		try{
+
+		try {
 			return courseTagClouds.get(index);
-		}catch(Exception e){
-			throw new IllegalStateException("Course Tag cloud at index ["+index+"]  not found");
+		} catch (Exception e) {
+			throw new IllegalStateException("Course Tag cloud at index ["
+					+ index + "]  not found");
 		}
 	}
-	
+
 	/**
 	 * @param tagCloud
 	 */
-	public void addCourseTagcloud(CourseTagcloud tagCloud){
-		
-		if(courseTagClouds == null){
+	public void addCourseTagcloud(CourseTagcloud tagCloud) {
+
+		if (courseTagClouds == null) {
 			courseTagClouds = new ArrayList<CourseTagcloud>();
 		}
-		
+
 		tagCloud.setCourse(this);
-		
+
 		courseTagClouds.add(tagCloud);
 
 	}
 
 	/**
-	 * @param courseTagClouds the courseTagClouds to set
+	 * @param courseTagClouds
+	 *            the courseTagClouds to set
 	 */
 	public void setCourseTagClouds(List<CourseTagcloud> courseTagClouds) {
 		this.courseTagClouds = courseTagClouds;
 	}
 
 	/**
-	 * @param courseTagClouds the courseTagClouds to set
+	 * @param courseTagClouds
+	 *            the courseTagClouds to set
 	 */
 	public List<CourseTagcloud> getCourseTagClouds() {
 		return courseTagClouds;
 	}
-	
-	public void addCourseLearningPlanner(CourseLearningPlanner coursePlanner){
-		
-		if(courseLearningPlannerList==null){
+
+	public void addCourseLearningPlanner(CourseLearningPlanner coursePlanner) {
+
+		if (courseLearningPlannerList == null) {
 			courseLearningPlannerList = new ArrayList<CourseLearningPlanner>();
 		}
-		
+
 		courseLearningPlannerList.add(coursePlanner);
 	}
 
@@ -190,16 +205,17 @@ public class Course extends AuditHistory{
 	 * @return the courseLearningPlannerList
 	 */
 	public List<CourseLearningPlanner> getCourseLearningPlannerList() {
-		
+
 		return courseLearningPlannerList;
 	}
 
 	/**
-	 * @param courseLearningPlannerList the courseLearningPlannerList to set
+	 * @param courseLearningPlannerList
+	 *            the courseLearningPlannerList to set
 	 */
 	public void setCourseLearningPlannerList(
 			List<CourseLearningPlanner> courseLearningPlannerList) {
-		
+
 		this.courseLearningPlannerList = courseLearningPlannerList;
 	}
 
@@ -209,17 +225,19 @@ public class Course extends AuditHistory{
 	public String getName() {
 		return name;
 	}
+
 	/**
 	 * @param name
-	 * @throws Exception 
+	 * @throws Exception
 	 * @throws NullPointerException
 	 */
 	public void setName(String name) throws Exception {
 		if (name == null) {
 			throw new IllegalArgumentException("Null name passed");
 		}
-			this.name = name;
+		this.name = name;
 	}
+
 	/**
 	 * @return the value of attribute Description
 	 */
@@ -243,7 +261,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param validFromDate the validFromDate to set
+	 * @param validFromDate
+	 *            the validFromDate to set
 	 */
 	public void setValidFromDate(Date validFromDate) {
 		this.validFromDate = validFromDate;
@@ -257,7 +276,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param validToDate the validToDate to set
+	 * @param validToDate
+	 *            the validToDate to set
 	 */
 	public void setValidToDate(Date validToDate) {
 		this.validToDate = validToDate;
@@ -277,22 +297,19 @@ public class Course extends AuditHistory{
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
+
 	/**
 	 * @return the value of attribute courseId
-	 *//*
-	public ZID getCourseId() {
-		return courseId;
-	}
-
-	*//**
+	 */
+	/*
+	 * public ZID getCourseId() { return courseId; }
+	 *//**
 	 * @param courseId
 	 *            the value for attribute courseId
-	 *//*
-	public void setCourseId(ZID courseId) {
-		this.courseId = courseId;
-	}
-
-*/	/**
+	 */
+	/*
+	 * public void setCourseId(ZID courseId) { this.courseId = courseId; }
+	 *//**
 	 * @return the courseDetails
 	 */
 	public CourseDetails getCourseDetails() {
@@ -307,7 +324,6 @@ public class Course extends AuditHistory{
 		this.courseDetails = courseDetails;
 	}
 
-
 	/**
 	 * @return the courseProgress
 	 */
@@ -316,7 +332,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param courseProgress the courseProgress to set
+	 * @param courseProgress
+	 *            the courseProgress to set
 	 */
 	public void setCourseProgress(Integer courseProgress) {
 		this.courseProgress = courseProgress;
@@ -334,8 +351,7 @@ public class Course extends AuditHistory{
 		return additionalInfoIndicator;
 	}
 
-	public void setAdditionalInfoIndicator(
-			Boolean additionalInfoIndicator) {
+	public void setAdditionalInfoIndicator(Boolean additionalInfoIndicator) {
 		this.additionalInfoIndicator = additionalInfoIndicator;
 	}
 
@@ -344,7 +360,7 @@ public class Course extends AuditHistory{
 	}
 
 	public void setCourseDuration(Duration courseDuration) {
-		if(courseDuration == null){
+		if (courseDuration == null) {
 			throw new IllegalArgumentException("Duration is cannot set to null");
 		}
 		this.courseDuration = courseDuration;
@@ -370,8 +386,8 @@ public class Course extends AuditHistory{
 	 *            the courseStatus to set
 	 */
 	public void setCourseStatus(CourseStatus courseStatus) {
-		
-		if(courseStatusId!=null){
+
+		if (courseStatusId != null) {
 			courseStatus = CourseStatus.getCourseStatus(courseStatusId);
 		}
 		this.courseStatus = courseStatus;
@@ -391,6 +407,7 @@ public class Course extends AuditHistory{
 	public void setRating(Rating rating) {
 		this.rating = rating;
 	}
+
 	/**
 	 * @return the securityIndicator
 	 */
@@ -399,7 +416,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param securityIndicator the securityIndicator to set
+	 * @param securityIndicator
+	 *            the securityIndicator to set
 	 */
 	public void setSecurityIndicator(Boolean securityIndicator) {
 		this.securityIndicator = securityIndicator;
@@ -421,7 +439,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param courseCredits the courseCredits to set
+	 * @param courseCredits
+	 *            the courseCredits to set
 	 */
 	public void setCourseCredits(String courseCredits) {
 		this.courseCredits = courseCredits;
@@ -435,7 +454,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param accountableMember the accountableMember to set
+	 * @param accountableMember
+	 *            the accountableMember to set
 	 */
 	public void setAccountableMember(MemberPersona accountableMember) {
 		this.accountableMember = accountableMember;
@@ -449,7 +469,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param subjClassification the subjClassification to set
+	 * @param subjClassification
+	 *            the subjClassification to set
 	 */
 	public void setSubjClassification(SubjectClassification subjClassification) {
 		this.subjClassification = subjClassification;
@@ -463,7 +484,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param versionRemarks the versionRemarks to set
+	 * @param versionRemarks
+	 *            the versionRemarks to set
 	 */
 	public void setVersionRemarks(String versionRemarks) {
 		this.versionRemarks = versionRemarks;
@@ -477,12 +499,12 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param testPackage the testPackage to set
+	 * @param testPackage
+	 *            the testPackage to set
 	 */
 	public void setTestPackage(TestPackage testPackage) {
 		this.testPackage = testPackage;
 	}
-
 
 	/**
 	 * @return the engagementList
@@ -492,7 +514,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param engagementList the engagementList to set
+	 * @param engagementList
+	 *            the engagementList to set
 	 */
 	public void setEngagementList(List<Engagement> engagementList) {
 		this.engagementList = engagementList;
@@ -506,7 +529,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param status the status to set
+	 * @param status
+	 *            the status to set
 	 */
 	public void setStatus(Integer status) {
 		this.status = status;
@@ -520,7 +544,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param duration the duration to set
+	 * @param duration
+	 *            the duration to set
 	 */
 	public void setDuration(Integer duration) {
 		this.duration = duration;
@@ -534,13 +559,16 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param durationUnits the durationUnits to set
+	 * @param durationUnits
+	 *            the durationUnits to set
 	 */
 	public void setDurationUnits(Integer durationUnits) {
 		this.durationUnits = durationUnits;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -569,7 +597,8 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param courseId the courseId to set
+	 * @param courseId
+	 *            the courseId to set
 	 */
 	public void setCourseId(Integer courseId) {
 		this.courseId = new IntegerZID(courseId);
@@ -583,11 +612,11 @@ public class Course extends AuditHistory{
 	}
 
 	/**
-	 * @param courseStatusId the courseStatusId to set
+	 * @param courseStatusId
+	 *            the courseStatusId to set
 	 */
 	public void setCourseStatusId(Integer courseStatusId) {
 		this.courseStatusId = courseStatusId;
 	}
-
 
 }
