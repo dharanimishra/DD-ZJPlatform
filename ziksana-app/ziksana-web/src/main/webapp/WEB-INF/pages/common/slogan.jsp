@@ -13,7 +13,7 @@
 	<c:if test="${member.roleType eq 'EDUCATOR'}">
 		<div class="f-r">
 			<strong class="text-size-px16 light-gray"> <a
-				href="#" class="light-blue">Create </a><strong>|</strong>
+				href="/ziksana-web/secure/createcourse" class="light-blue">Create </a><strong>|</strong>
 				<a href="/ziksana-web/secure/createcourse">Publish</a> <strong>|</strong> <a href="#">Manage</a>
 			</strong>
 			<c:url var="imageUrl_header2" value="/resources/images/plus.png" />

@@ -284,17 +284,9 @@ span.standartTreeRow:hover {
 						<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
-
-								<%
-									String courseId = request.getParameter("courseId");
-																if(courseId != null || courseId.length() > 0 {)
-								%>
 								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<%
-									}
-								%>
 								<li><a
 									href="/ziksana-web/secure/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
