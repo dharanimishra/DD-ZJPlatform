@@ -360,4 +360,3 @@ function onSuccessfulCourseCreation(data) {
 	course_id = data.id;
 	window.location.href = "/ziksana-web/secure/associatecontent/" + course_id;
 }
-

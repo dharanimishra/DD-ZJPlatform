@@ -221,20 +221,27 @@ public class PollServiceImpl implements PollService {
 		 return pollQuestionMapper.getPollResultByQuestion(questionId);
 	}
 
-	@Override
-	public List<PollQuestionEntity> getAllPollQuestionsByDate(Date startDate,
-			Date endDate) {
-
-		return pollQuestionMapper.getPollQuestionsByDate(startDate, endDate);
-
-
-	}
+//	@Override
+//	public List<PollQuestionEntity> getAllPollQuestionsByDate(Date startDate,
+//			Date endDate) {
+//
+//		return pollQuestionMapper.getPollQuestionsByDate(startDate, endDate);
+//
+//
+//	}
 
 	@Override
 	public List<PollQuestionEntity> getAllPollQuestion() {
 		// TODO Auto-generated method stub
 		return pollQuestionMapper.getPollQuestion(Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID()));
+	}
+
+	@Override
+	public List<PollQuestionEntity> getAllPollQuestionsByDate(String startDate,
+			String endDate) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

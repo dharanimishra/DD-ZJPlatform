@@ -75,7 +75,7 @@
 
 	<resultMap id="memberResultMap" type="com.ziksana.domain.member.Member">
 
-		<result property="memberId" column="MemberId" />
+		<result property="memberId" column="ID" />
 		<result property="firstName" column="FirstName" />
 		<result property="lastName" column="LastName" />
 		<result property="roleType" column="RoleType"/>

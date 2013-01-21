@@ -221,8 +221,13 @@ $(document)
 
 				});
 
-function getdefinecoursesave() {
 
+
+
+function createCourse() {
+	
+    validation = jQuery("#DegineCourse").validationEngine('validate');
+    if(validation == true){
 	// Step 1: Assign Parameters required by the sendMessage function.
 	uri = '/ziksana-web/secure/saveCourse';
 
@@ -268,14 +273,23 @@ function getdefinecoursesave() {
 		"Assoc_Image" : Assoc_Image
 	};
 
-	successCallback = onSuccessfulCourseCreation;
-
-	errorCallback = commonErrorCallback;
-
-	// Step 2: Send Message Using sendMessage(); function.
-	sendMessage(uri, token, parameters, request_type, successCallback,
-			errorCallback);
-
+	
+	$.post(uri, parameters, function(data){
+		console.log(data);
+		if(data.response == 'success'){
+			course_id = data.id;
+			$('#courseid').val(course_id);
+			window.location.href = "/ziksana-web/secure/createmodule/" + course_id;
+			
+		} else {
+			$('#tempdiv').html('<span style="color:red;">'+data.message+'</span>');
+		}
+		
+	});
+	
+    }//end of validation if block
+	
+	
 }
 
 function noteSuccessCallback(data) {
@@ -293,21 +307,17 @@ function noteSuccessCallback(data) {
 	Course_Subject = msgbody.C_Subject;
 	Course_Topic = msgbody.C_Topic;
 
-	// Set course id to the hiddden field returned from the server
-	$('#tempdiv').append(
-			'Course_Id: <strong>' + course_id
-					+ '</strong><br>Course_Name: <strong>' + note_title
-					+ '</strong><br>Course_description: ' + note_description
-					+ '<br/><br/>Coursetag_Field: ' + Coursetag_Field
-					+ 'Course_Credits : ' + Course_Credits
-					+ ' Extra_Credits: <strong>' + Extra_Credits
-					+ '</strong><br>Course_Duration ' + Course_Duration
-					+ '<br/>Duration Type : ' + Duration_Type + '<br/>');
+
 }
 
-function onSuccessfulCourseCreation(data) {
+function onSuccessfulCourseCreation(data) {	
+	if(data.response == 'success'){
+		course_id = data.id;
+		$('#courseid').val(course_id);
+		window.location.href = "/ziksana-web/secure/createmodule/" + course_id;
+		
+	} else {
+		$('#tempdiv').html('<span style="color:red;">'+data.message+'</span>');
+	}
 	
-	course_id = data.id;
-	$('#courseid').val(course_id);
-	window.location.href = "/ziksana-web/secure/createmodule/" + course_id;
 }

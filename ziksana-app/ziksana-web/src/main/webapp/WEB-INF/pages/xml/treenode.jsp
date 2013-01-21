@@ -34,7 +34,6 @@
 		<c:when test="${childtreenode.contentType == 5}">
 			<icon>${pptIcon}</icon>
 		</c:when>
-
 		<c:otherwise>
 			<icon>${docIcon}</icon>
 		</c:otherwise>
