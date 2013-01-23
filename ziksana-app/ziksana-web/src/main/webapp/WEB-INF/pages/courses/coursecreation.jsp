@@ -6,6 +6,8 @@
 <!--Body Style sheet-->
 <link href="/ziksana-web/resources/css/main/styles.css" rel="stylesheet"
 	type="text/css" />
+	<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet"
+	type="text/css" />
 <link href="/ziksana-web/resources/css/main/type-setting.css"
 	rel="stylesheet" type="text/css" />
 <link href="/ziksana-web/resources/css/main/effects.css"
@@ -194,69 +196,57 @@ span.standartTreeRow:hover {
 
 	<div id="wrapper">
 		<!--Header Container-->
-		<header class="bottom-box-shadow bckground-wihte">
-			<div class="topheader">
-				<!--logo container-->
-				<div class="logo">
-					<p>
-						<a href="#"><img height="123" width="149"
-							src="/ziksana-web/resources/images/logo.jpg" /></a>
-					</p>
-				</div>
-				<!--end logo container-->
-				<div class="status-container">
-					<div id="status-icons"
-						class="bottom-box-shadow two-bottom-rounded-box">
-						<ul>
-							<li><a href="#" class="email-icon" rel="tipsy"
-								title="3 New Messages"><span class="wite-title">3</span></a></li>
-							<li><a href="#" class="peoples-icon orange-bc" rel="tipsy"
-								title="5 Contact requests"><span class="wite-title">5</span></a></li>
-							<li><a href="#" class="alart-icon orange-bc" rel="tipsy"
-								title="1 Connect Request"><span class="wite-title">1</span></a></li>
-							<li><a href="#" class="announcement-icon orange-bc"
-								rel="tipsy" title="3 New Announcement"><span
-									class="wite-title">3</span></a></li>
-							<li><a href="#" class=" amount-icon blue-bc" rel="tipsy"
-								title="Ziks available"><span class="wite-title">355500</span></a></li>
-
-						</ul>
-						<div></div>
-					</div>
-					<div class="account-container two-bottom-rounded-box">
-						<div class="container">
-							<div class="topnav">
-								<a href="#" class="signin wite bold"><span
-									class="text-size-px12 wite bold">My Account</span></a>
-							</div>
-							<fieldset id="signin_menu">
-								<ul>
-									<li><a href="#">Preferences</a></li>
-									<li><a href="#">Privacy</a></li>
-									<li><a href="#">Sign Out</a></li>
-								</ul>
-							</fieldset>
-						</div>
-					</div>
-				</div>
-			</div>
-			<nav>
-				<!--menu-->
-				<div class="menu">
-					<ul>
-						<li><a href="educatorHomepage.html" class="current">My
-								Home</a>
-							<div class="nav-line"></div></li>
-						<li><a href="myprograms.html">My Programs</a>
-							<div class="nav-line"></div></li>
-						<li><a href="#">My Students</a>
-							<div class="nav-line"></div></li>
-						<li><a href="#" style="margin-left: -10px;">My Locker</a></li>
-					</ul>
-				</div>
-
-			</nav>
-		</header>
+        	<!--Header Container-->
+ 
+		<p><a><img data-launcher data-launchpage="/ziksana-web/secure/launcher" src="/ziksana-web/resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
+        	<header class="bottom-box-shadow bckground-wihte">
+			<p>&nbsp;&nbsp;</p>
+            	<div class="topheader"> 
+          <!--logo container-->
+          
+       
+		    
+ 
+        </div>
+            <nav>
+			<div class="menu" style=" margin-left:0px;">
+                      <ul>
+                        <li><a href="/ziksana-web/secure/educatordashboard" >My Home</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/secure/showMyPrograms" class="current">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="">My Students</a><div class="nav-line"></div></li>
+                        <li><a href="" style="margin-left:-10px;">My Locker</a></li>
+                      </ul>
+                    </div>
+					
+                       <div class="status-container">
+		
+            <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box ">
+			
+              <ul>
+                <li><a href="" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
+                 <li><a href="" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
+                <li><a href="" class="alart-icon orange-bc" rel="tipsy" title="1 Connect Request"><span class="wite-title">1</span></a></li>
+                <li><a href="" class="announcement-icon orange-bc" rel="tipsy" title="3 New Announcement"><span class="wite-title">3</span></a></li>
+                 <li><a href="" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
+               
+              </ul>
+              <div> </div>
+            </div>
+             <div class="account-container two-bottom-rounded-box">
+              <div class="container">
+                <div class="topnav" ><a href="" class="signin wite bold"><span class="text-size-px12 wite bold">My Account</span></a> </div>
+                <fieldset id="signin_menu">
+                 <ul>
+                   <li><a href="">Preferences</a></li>
+                   <li><a href="">Privacy</a></li>
+                   <li><a href="/ziksana-web/secure/logout">Sign Out</a></li></ul>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+              </nav>
+            </header>
+       
 		<!--End Header Container-->
 		<div class="sub-nav">
 			<div class="f-l">
@@ -290,13 +280,13 @@ span.standartTreeRow:hover {
 									style="text-align: center;">2. Associate Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								<li><a href="#" style="width: 130px; text-align: center;">4.
+								<li><a href="" style="width: 130px; text-align: center;">4.
 										Define Assignment</a></li>
-								<li><a href="#" style="text-align: center;">5. Define
+								<li><a href="" style="text-align: center;">5. Define
 										Planner</a></li>
-								<li><a href="#" style="text-align: center;">6. Define
+								<li><a href="" style="text-align: center;">6. Define
 										Playbook</a></li>
-								<li><a href="#" style="width: 120px; text-align: center;">7.
+								<li><a href="" style="width: 120px; text-align: center;">7.
 										Socialize Course</a></li>
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
@@ -313,7 +303,7 @@ span.standartTreeRow:hover {
 
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 
-							<a href="definecourse.html" class="btn btn-info f-r"
+							<a href="/ziksana-web/secure/createcourse" class="btn btn-info f-r"
 								style="margin-right: -257px; margin-bottom: 4px; clear: both;">Edit
 								Course Details </a>
 						</div>
@@ -394,12 +384,12 @@ span.standartTreeRow:hover {
 
 													<br /> <label for="moduledescription" class="labelclass">Module
 														Description :</label> <a class="f-r _richText"
-														id="addmodulerichedit" href="#linkurl"
+														id="addmodulerichedit" href=""
 														style="text-decoration: none;">Rich Text Editor</a> <a
-														class="f-r _plainText" href="#linkurl"
+														class="f-r _plainText" href=""
 														style="text-decoration: none;">Plain Text Editor</a>
 													<textarea
-														class="_plainTextShow labelclass defaultvalue validate[required]"
+														class="_plainTextShow label" class="defaultvalue validate[required]"
 														id="Cmoduledesc" cols="90" rows="7" style="resize: none;"
 														placeholder="Describe the Course being created"></textarea>
 													<br />
@@ -447,7 +437,9 @@ span.standartTreeRow:hover {
 														<br /> <label class="control-label labelclass"
 															for="moduletags" style="margin-top: -2px;">Specify
 															any tags : </label> <input id="Addmoduletag" type="text"></input>
-														<br /> <label class="control-label labelclass"
+														<br />
+														
+														<!--   <label class="control-label labelclass"
 															for="CourseName" style="margin-top: -4px;">Enter
 															Weight :</label>
 														<div class="controls">
@@ -455,7 +447,7 @@ span.standartTreeRow:hover {
 																class="defaultvalue validate[required]"
 																placeholder="Enter the Weight for the Module"
 																style="width: 240px; margin-left: 35px;" />
-														</div>
+														</div> -->
 
 													</div>
 													<!-- end of coursetags--->

@@ -6,6 +6,8 @@
 <!--Body Style sheet-->
 <link href="/ziksana-web/resources/css/main/styles.css" rel="stylesheet"
 	type="text/css" />
+<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet"
+	type="text/css" />
 <link href="/ziksana-web/resources/css/main/type-setting.css"
 	rel="stylesheet" type="text/css" />
 <link href="/ziksana-web/resources/css/main/effects.css"
@@ -80,7 +82,6 @@
 	href="/ziksana-web/resources/css/common/tree/menu.css" />
 <link rel="stylesheet" type="text/css"
 	href="/ziksana-web/resources/css/common/tree/menu.css" />
-
 <script
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/common.js"></script>
 <script
@@ -112,7 +113,6 @@
 <script
 	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
-
 <link rel="stylesheet" type="text/css"
 	href="/ziksana-web/resources/css/uploadify.css" />
 <script type="text/javascript"
@@ -196,30 +196,52 @@ span.standartTreeRow:hover {
 
 	<div id="wrapper">
 		<!--Header Container-->
+		<!--Header Container-->
+		<p>
+			<a><img data-launcher data-launchpage="/ziksana-web/secure/launcher"
+				src="/ziksana-web/resources/images/ziksana_button_logo.png"
+				width=120px height=120px
+				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a>
+		</p>
 		<header class="bottom-box-shadow bckground-wihte">
+			<p>&nbsp;&nbsp;</p>
 			<div class="topheader">
 				<!--logo container-->
-				<div class="logo">
-					<p>
-						<a href="#"><img height="123" width="149"
-							src="/ziksana-web/resources/images/logo.jpg" /></a>
-					</p>
-				</div>
+
 				<!--end logo container-->
+
+
+			</div>
+			<nav>
+				<div class="menu" style="margin-left: 0px;">
+					<ul>
+						<li><a href="/ziksana-web//secure/educatordashboard">My Home</a>
+							<div class="nav-line"></div></li>
+						<li><a href="/ziksana-web//secure/showMyPrograms" class="current">My
+								Programs</a>
+							<div class="nav-line"></div></li>
+						<li><a href="">My Students</a>
+							<div class="nav-line"></div></li>
+						<li><a href="" style="margin-left: -10px;">My Locker</a></li>
+					</ul>
+				</div>
+
 				<div class="status-container">
+
 					<div id="status-icons"
-						class="bottom-box-shadow two-bottom-rounded-box">
+						class="bottom-box-shadow two-bottom-rounded-box ">
+
 						<ul>
-							<li><a href="#" class="email-icon" rel="tipsy"
+							<li><a href="" class="email-icon" rel="tipsy"
 								title="3 New Messages"><span class="wite-title">3</span></a></li>
-							<li><a href="#" class="peoples-icon orange-bc" rel="tipsy"
+							<li><a href="" class="peoples-icon orange-bc" rel="tipsy"
 								title="5 Contact requests"><span class="wite-title">5</span></a></li>
-							<li><a href="#" class="alart-icon orange-bc" rel="tipsy"
+							<li><a href="" class="alart-icon orange-bc" rel="tipsy"
 								title="1 Connect Request"><span class="wite-title">1</span></a></li>
-							<li><a href="#" class="announcement-icon orange-bc"
+							<li><a href="" class="announcement-icon orange-bc"
 								rel="tipsy" title="3 New Announcement"><span
 									class="wite-title">3</span></a></li>
-							<li><a href="#" class=" amount-icon blue-bc" rel="tipsy"
+							<li><a href="" class=" amount-icon blue-bc" rel="tipsy"
 								title="Ziks available"><span class="wite-title">355500</span></a></li>
 
 						</ul>
@@ -228,48 +250,33 @@ span.standartTreeRow:hover {
 					<div class="account-container two-bottom-rounded-box">
 						<div class="container">
 							<div class="topnav">
-								<a href="#" class="signin wite bold"><span
+								<a href="" class="signin wite bold"><span
 									class="text-size-px12 wite bold">My Account</span></a>
 							</div>
 							<fieldset id="signin_menu">
 								<ul>
-									<li><a href="#">Preferences</a></li>
-									<li><a href="#">Privacy</a></li>
-									<li><a href="#">Sign Out</a></li>
+									<li><a href="">Preferences</a></li>
+									<li><a href="">Privacy</a></li>
+									<li><a href="/ziksana-web/secure/logout">Sign Out</a></li>
 								</ul>
 							</fieldset>
 						</div>
 					</div>
 				</div>
-			</div>
-			<nav>
-				<!--menu-->
-				<div class="menu">
-					<ul>
-						<li><a href="educatorHomepage.html" class="current">My
-								Home</a>
-							<div class="nav-line"></div></li>
-						<li><a href="myprograms.html">My Programs</a>
-							<div class="nav-line"></div></li>
-						<li><a href="#">My Students</a>
-							<div class="nav-line"></div></li>
-						<li><a href="#" style="margin-left: -10px;">My Locker</a></li>
-					</ul>
-				</div>
-
 			</nav>
 		</header>
+		<!--End Header Container-->
 		<!--End Header Container-->
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="#">My Courses </a> | </strong><strong
+					href="">My Courses </a> | </strong><strong
 					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">
 				<strong class="text-size-px14 light-gray"><a
 					href="publish.html">Publish</a> | <a href="defineengagement.html">Manage</a></strong><a
-					class="light-blue" href="#"><img width="12" height="12"
+					class="light-blue" href=""><img width="12" height="12"
 					alt="add more" src="/ziksana-web/resources/images/plus.png">
 				</a>
 			</div>
@@ -284,6 +291,8 @@ span.standartTreeRow:hover {
 						<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
+
+
 								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
@@ -292,13 +301,13 @@ span.standartTreeRow:hover {
 									style="text-align: center;">2. Associate Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								<li><a href="#" style="width: 130px; text-align: center;">4.
+								<li><a href="" style="width: 130px; text-align: center;">4.
 										Define Assignment</a></li>
-								<li><a href="#" style="text-align: center;">5. Define
+								<li><a href="" style="text-align: center;">5. Define
 										Planner</a></li>
-								<li><a href="#" style="text-align: center;">6. Define
+								<li><a href="" style="text-align: center;">6. Define
 										Playbook</a></li>
-								<li><a href="#" style="width: 120px; text-align: center;">7.
+								<li><a href="" style="width: 120px; text-align: center;">7.
 										Socialize Course</a></li>
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
@@ -349,10 +358,10 @@ span.standartTreeRow:hover {
 											style="text-decoration: none;">Plain Text Editor</a> <a
 											class="f-r _richText" href="#linkurl"
 											style="text-decoration: none;">Rich Text Editor</a>
-										<textarea cols="124" rows="8" id="Cdescription"
+										<textarea cols="124" rows="8" id="Cdescription" tabindex="2"
 											class="_plainTextShow defaultvaluem labelclass"
 											style="width: 880px; color: #666;"
-											placeholder="Describe the Course being created">
+											placeholder="Describe the Course being created">Describe the Course being created
 										</textarea>
 										<br />
 										<div class="_richTextShow">
@@ -383,16 +392,20 @@ span.standartTreeRow:hover {
 										</div>
 
 										<div class="moduleselection">
-											<select name="Careaddl" id="Careaddl"
+											<select name="Careaddl" id="Careaddl" tabindex="3"
 												class="defaultvalue labelclass"
 												style="margin-right: 15px; width: 200px;">
-												<option value="">Select Course Area</option>											
-											</select> <select name="Csubjectddl" id="Csubjectddl"
+												<option value="">Select Course Area</option>
+											
+											</select> <select name="Csubjectddl" tabindex="4" id="Csubjectddl"
+												class="defaultvalue labelclass"
 												style="margin-right: 15px; width: 200px;">
-												<option value="">Select Course Subject</option>											
-											</select> <select name="Ctopicddl" id="Ctopicddl"
+												<option value="">Select Course Subject</option>
+												
+											</select> <select name="Ctopicddl" tabindex="5" id="Ctopicddl"
 												class="defaultvalue labelclass " style="width: 200px;">
 												<option value="">Select Course Topic</option>
+											
 											</select>
 										</div>
 										<!-- end of moduleselection--->
@@ -401,7 +414,7 @@ span.standartTreeRow:hover {
 											<br /> <label class="control-label labelclass"
 												for="coursetags"
 												style="margin-top: -2px; font-weight: bold;">Specify
-												any tags : </label> <input id="Ctagfield" type="text"
+												any tags : </label> <input id="Ctagfield" tabindex="6" type="text"
 												style="margin-left: 290px;"></input> <br /> <br />
 										</div>
 										<!-- end of coursetags--->
@@ -409,7 +422,7 @@ span.standartTreeRow:hover {
 										<div class="coursecredits">
 											<label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Credits :</label>
-											<input type="text" id="Credits"
+											<input type="text" tabindex="7" id="Credits"
 												class="smartspinner validate[required]"
 												style="margin-left: 18px;" />
 											<script type="text/javascript"
@@ -435,7 +448,7 @@ span.standartTreeRow:hover {
 											<label for="coursetags" class="labelclass"
 												style="margin-left: 20px; font-weight: bold;">Specify
 												Course Extra Credits :</label> <input type="text" id="ExtraCredits"
-												class="defaultvalue validate[required]"
+												tabindex="8" class="defaultvalue validate[required]"
 												style="width: 30px; margin-left: 10px;" />
 											<script type="text/javascript">
 												$(document)
@@ -460,7 +473,7 @@ span.standartTreeRow:hover {
 										<div class="courseduration">
 											<br /> <label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Duration :</label>
-											<input type="text" id="Duration"
+											<input type="text" id="Duration" tabindex="9"
 												style="width: 30px; margin-left: 9px;"
 												class="defaultvalue validate[required]" />
 											<script type="text/javascript">
@@ -480,7 +493,7 @@ span.standartTreeRow:hover {
 
 																});
 											</script>
-											<select name="SelectArea" id="Cdurationtype"
+											<select name="SelectArea" id="Cdurationtype" tabindex="10"
 												class="defaultvalue" style="margin-left: 20px;">
 												<option value="week">Weeks</option>
 												<option value="month">Months</option>
@@ -556,7 +569,8 @@ span.standartTreeRow:hover {
 
 										<div id="thubmnail_upload_message"></div>
 										<div id="loaderText"></div>
-										<input type="file" name="thumbnail_image_file_upload"
+										<input type="file" tabindex="11"
+											name="thumbnail_image_file_upload"
 											id="thumbnail_image_file_upload" />
 										<div id="status"></div>
 										<script type="text/javascript">
@@ -612,7 +626,8 @@ span.standartTreeRow:hover {
 								<!-- end of third container--->
 
 								<input type="submit" class="btn btn-info f-r" id="sbtvalidation"
-									value="Submit" onClick="createCourse(); return false;"
+									value="Submit" tabindex="12"
+									onClick="createCourse(); return false;"
 									style="margin-right: -200px;">
 
 							</form>
@@ -700,9 +715,9 @@ span.standartTreeRow:hover {
 
 														<br /> <label for="moduledescription" class="labelclass">Module
 															Description :</label> <a class="f-r _richText"
-															id="addmodulerichedit" href="#linkurl"
+															id="addmodulerichedit" href=""
 															style="text-decoration: none;">Rich Text Editor</a> <a
-															class="f-r _plainText" href="#linkurl"
+															class="f-r _plainText" href=""
 															style="text-decoration: none;">Plain Text Editor</a>
 														<textarea
 															class="_plainTextShow labelclass defaultvalue validate[required]"
@@ -841,7 +856,7 @@ span.standartTreeRow:hover {
 																	Course</p>
 																<input type="file" id="Cmoduleimgupl"
 																	placeholder="specify an image"
-																	style="margin-left: 20px;" /> <a href="#linkurl"
+																	style="margin-left: 20px;" /> <a href=""
 																	id="cancellinkadd"><img
 																	src="/ziksana-web/resources/images/delete.jpg" />Cancel</a>
 
@@ -1041,14 +1056,14 @@ span.standartTreeRow:hover {
 																		<td><input type="checkbox" /></td>
 																		<td>Author's Name</td>
 																		<td>learning Object</td>
-																		<td><a class="lbx-70-50" href="#linkurl">Trigonometry
+																		<td><a class="lbx-70-50" href="">Trigonometry
 																				101 </a></td>
 																		<td>------</td>
 																		<td>no Edit Permissions</td>
 																		<td>20</td>
 																		<td>All Concepts of Trigonometry</td>
 																		<td><a class="lbx-70-50" id="Btnsearchmoduleview"
-																			href="#linkurl" title="View"><img
+																			href="" title="View"><img
 																				src="/ziksana-web/resources/images/led/application_osx.png" /></a></td>
 
 
@@ -1057,13 +1072,13 @@ span.standartTreeRow:hover {
 																		<td><input type="checkbox" /></td>
 																		<td>Me</td>
 																		<td>Course section</td>
-																		<td><a class="lbx-70-50" href="#linkurl">Basics
+																		<td><a class="lbx-70-50" href="">Basics
 																				of Algebra </a></td>
 																		<td>Maths 101</td>
 																		<td>Owner</td>
 																		<td>--</td>
 																		<td>Basic concepts of Algebra..</td>
-																		<td><a class="lbx-70-50" href="#linkurl"
+																		<td><a class="lbx-70-50" href="s"
 																			title="View"><img
 																				src="/ziksana-web/resources/images/led/application_osx.png" /></a></td>
 																	</tr>
@@ -1073,7 +1088,7 @@ span.standartTreeRow:hover {
 
 
 															<a class="cancellinkdefinecourse btn btn-info"
-																id="Btnaddmodulecncl" href="#linkurl"
+																id="Btnaddmodulecncl" href=""
 																style="float: right; margin-right: 20px; text-decoration: none;">
 																Cancel </a> <a class="btn btn-info lbx-70-50"
 																id="Btnaddmodule" href="library/Add Module.html"
@@ -1153,7 +1168,7 @@ span.standartTreeRow:hover {
 																		title="Edit" href="library/editdummytable.html"><img
 																			src="/ziksana-web/resources/images/edit.png" /></a></td>
 																	<td><a class="deletedefqualifierrec1 lbx-70-50"
-																		id="tblqualifierdelete" title="Delete" href="#linkurl"><img
+																		id="tblqualifierdelete" title="Delete" href=""><img
 																			src="/ziksana-web/resources/images/delete.jpg"
 																			alt="Delete" title="Delete" /></a></td>
 
@@ -1186,7 +1201,7 @@ span.standartTreeRow:hover {
 																			src="/ziksana-web/resources/images/view.png" /></a></td>
 																	<td></td>
 																	<td><a class="deletedefqualifierrec3 lbx-70-50"
-																		title="Delete" href="#linkurl"><img
+																		title="Delete" href=""><img
 																			src="/ziksana-web/resources/images/delete.jpg"
 																			alt="Delete" title="Delete" /></a></td>
 
@@ -1203,7 +1218,7 @@ span.standartTreeRow:hover {
 																			src="/ziksana-web/resources/images/view.png" /></a></td>
 																	<td></td>
 																	<td><a class="deletedefqualifierrec4 lbx-70-50"
-																		title="Delete" href="#linkurl"><img
+																		title="Delete" href=""><img
 																			src="/ziksana-web/resources/images/delete.jpg"
 																			alt="Delete" title="Delete" /></a></td>
 
@@ -1385,7 +1400,7 @@ Models help us to better organize information – to make sense of that fire hos
 																	<p class="labelclass">Associate an Image for your
 																		Course</p>
 																	<input type="file" tabindex="14"
-																		style="margin-left: 20px;" /> <a href="#linkurl"
+																		style="margin-left: 20px;" /> <a href=""
 																		id="cancellinkadd"><img
 																		src="/ziksana-web/resources/images/delete.jpg" />Cancel</a>
 

@@ -6,6 +6,8 @@
 <!--Body Style sheet-->
 <link href="/ziksana-web/resources/css/main/styles.css" rel="stylesheet"
 	type="text/css" />
+<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet"
+	type="text/css" />
 <link href="/ziksana-web/resources/css/main/type-setting.css"
 	rel="stylesheet" type="text/css" />
 <link href="/ziksana-web/resources/css/main/effects.css"
@@ -193,19 +195,43 @@ span.standartTreeRow:hover {
 
 	<div id="wrapper">
 		<!--Header Container-->
+		<!--Header Container-->
+		<c:url var="launcherPage" value="/secure/launcher" />
+		<c:url var="educatorPage" value="/secure/educatordashboard" />
+		<c:url var="myProgramsPage" value="/secure/showMyPrograms" />
+		<c:url var="logoutPage" value="/secure/logout" />
+		<p>
+			<a><img data-launcher data-launchpage="${launcherPage}"
+				src="/ziksana-web/resources/images/ziksana_button_logo.png"
+				width=120px height=120px
+				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a>
+		</p>
 		<header class="bottom-box-shadow bckground-wihte">
+			<p>&nbsp;&nbsp;</p>
 			<div class="topheader">
 				<!--logo container-->
-				<div class="logo">
-					<p>
-						<a href="#"><img height="123" width="149"
-							src="images/logo.jpg" /></a>
-					</p>
+
+
+			</div>
+			<nav>
+				<div class="menu" style="margin-left: 0px;">
+					<ul>
+						<li><a href="/ziksana-web/secure/educatordashboard ">My Home</a>
+							<div class="nav-line"></div></li>
+						<li><a href="/ziksana-web/secure/showMyPrograms" class="current">My
+								Programs</a>
+							<div class="nav-line"></div></li>
+						<li><a href="">My Students</a>
+							<div class="nav-line"></div></li>
+						<li><a href="" style="margin-left: -10px;">My Locker</a></li>
+					</ul>
 				</div>
-				<!--end logo container-->
+
 				<div class="status-container">
+
 					<div id="status-icons"
-						class="bottom-box-shadow two-bottom-rounded-box">
+						class="bottom-box-shadow two-bottom-rounded-box ">
+
 						<ul>
 							<li><a href="#" class="email-icon" rel="tipsy"
 								title="3 New Messages"><span class="wite-title">3</span></a></li>
@@ -232,30 +258,15 @@ span.standartTreeRow:hover {
 								<ul>
 									<li><a href="#">Preferences</a></li>
 									<li><a href="#">Privacy</a></li>
-									<li><a href="#">Sign Out</a></li>
+									<li><a href="/ziksana-web/secure/logout">Sign Out</a></li>
 								</ul>
 							</fieldset>
 						</div>
 					</div>
 				</div>
-			</div>
-			<nav>
-				<!--menu-->
-				<div class="menu">
-					<ul>
-						<li><a href="educatorHomepage.html" class="current">My
-								Home</a>
-							<div class="nav-line"></div></li>
-						<li><a href="myprograms.html">My Programs</a>
-							<div class="nav-line"></div></li>
-						<li><a href="#">My Students</a>
-							<div class="nav-line"></div></li>
-						<li><a href="#" style="margin-left: -10px;">My Locker</a></li>
-					</ul>
-				</div>
-
 			</nav>
 		</header>
+
 		<!--End Header Container-->
 		<div class="sub-nav">
 			<div class="f-l">
@@ -294,16 +305,14 @@ span.standartTreeRow:hover {
 									style="text-align: center;">2. Associate Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								<li><a href="defineassignment.html"
-									style="width: 130px; text-align: center;">4. Define
-										Assignment</a></li>
-								<li><a href="defineplanner.html"
-									style="text-align: center;">5. Define Planner</a></li>
-								<li><a href="defineplaybook.html"
-									style="text-align: center;">6. Define Playbook</a></li>
-								<li><a href="definesocialize.html"
-									style="width: 120px; text-align: center;">7. Socialize
-										Course</a></li>
+								<li><a href="" style="width: 130px; text-align: center;">4.
+										Define Assignment</a></li>
+								<li><a href="" style="text-align: center;">5. Define
+										Planner</a></li>
+								<li><a href="" style="text-align: center;">6. Define
+										Playbook</a></li>
+								<li><a href="" style="width: 120px; text-align: center;">7.
+										Socialize Course</a></li>
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
 							</ul>
@@ -403,14 +412,14 @@ span.standartTreeRow:hover {
 													</div>
 
 													<br /> <label for="moduledescription" class="labelclass">Content
-														Description :</label> <a class="f-r _richText" href="#linkurl"
+														Description :</label> <a class="f-r _richText" href=""
 														style="text-decoration: none;">Rich Text Editor</a> <a
-														class="f-r _plainText" href="#linkurl"
+														class="f-r _plainText" href=""
 														style="text-decoration: none;">Plain Text Editor</a>
 													<textarea
 														class="_plainTextShow labelclass defaultvalue validate[required]"
-														cols="90" rows="7" style="resize: none;"
-														placeholder="Describe the Content being created"></textarea>
+														tabindex="2" cols="90" rows="7" style="resize: none;"
+														placeholder="Describe the Content being created">Describe the Content being created</textarea>
 													<br />
 													<div class="_richTextShow">
 														<textarea id="Associatecdescrte" name="Associatecdescrte"
@@ -435,25 +444,25 @@ span.standartTreeRow:hover {
 													<div class="moduleselection">
 														<select name="Careaddl" id="Careaddl"
 															class="defaultvalue labelclass validate[required]"
-															style="margin-right: 15px; width: 200px;">
+															tabindex="3" style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject Area</option>
-													
+
 														</select> <select name="Csubjectddl" id="Csubjectddl"
 															class="defaultvalue labelclass validate[required]"
-															style="margin-right: 15px; width: 200px;">
+															tabindex="4" style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject</option>
-														
+
 														</select> <select name="Ctopicddl" id="Ctopicddl"
 															class="defaultvalue labelclass validate[required]"
-															style="width: 200px;">
+															tabindex="5" style="width: 200px;">
 															<option value="">Select Topic</option>
 														</select>
 													</div>
 													<div class="coursetags">
 														<br /> <label class="control-label labelclass"
 															for="contenttags" style="margin-top: -2px;">Specify
-															any tags : </label> <input id="Associatetag" type="text"
-															tabindex="6" style="margin-left: 290px;"></input> <br />
+															any tags : </label> <input type="text" id="Associatetag"
+															 style="margin-left: 290px;" tabindex="6"></input> <br />
 													</div>
 													<!-- end of coursetags--->
 													<img src="/ziksana-web/resources/images/icons/upload.png"
@@ -461,7 +470,7 @@ span.standartTreeRow:hover {
 														for="uploadimage" style="margin-top: -2px;">Upload
 														any Image for the Content : </label> <input type="hidden"
 														readonly="readonly" id="Cimageupl" class="labelclass"
-														tabindex="9" />
+														tabindex="7" />
 													<div id="thubmnail_upload_message"></div>
 													<div id="loaderText"></div>
 													<input type="file" name="thumbnail_image_file_upload"
@@ -477,8 +486,6 @@ span.standartTreeRow:hover {
 																				'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 																				'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 																				'fileSizeLimit' : '10024KB',
-																				//'debug': true,
-																				//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 																				'onUploadSuccess' : function(
 																						file,
 																						data,
@@ -524,7 +531,7 @@ span.standartTreeRow:hover {
 												<!-- start of forth container--->
 
 												<div class="moduleselection">
-													<select name="q_type" tabindex="3"
+													<select name="q_type" tabindex="8"
 														class="defaultvalue labelclass validate[required]"
 														id="q_type" style="margin-right: 15px; width: 410px;">
 														<option value="">Select how would you like to add
@@ -547,7 +554,7 @@ span.standartTreeRow:hover {
 
 													<div id="message"></div>
 													<div id="loaderText"></div>
-													<input type="file" name="file_upload" id="file_upload" />
+													<input type="file" name="file_upload" id="file_upload" tabindex="9" />
 													<div id="status"></div>
 													<script type="text/javascript">
 														$(function() {
@@ -633,10 +640,10 @@ span.standartTreeRow:hover {
 
 											<div class="buttonassoc" style="height: 20px;">
 												<a class="cancellinkassociatecontent btn btn-info"
-													href="#linkurl"
+													href=""
 													style="float: right; margin-right: 20px; text-decoration: none;">
 													Cancel </a> <input type="submit" class="btn btn-info"
-													id="btnsbtassoccontent" value="Submit"
+													id="btnsbtassoccontent" value="Submit" tabindex="10"
 													onClick="getAssociateContentSave(); return false;"
 													style="float: right; margin-right: 20px; text-decoration: none;" />
 
