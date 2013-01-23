@@ -43,14 +43,14 @@
 							<count>${qr.pollResult.answer3Count}</count> 
 							<percentage>${qr.pollResult.percentage3}</percentage> 
 						</c:when>
-						<c:when test="${option.index == 3}">
+						<%-- <c:when test="${option.index == 3}">
 							<count>${qr.pollResult.answer4Count}</count>  
 							<percentage>${qr.pollResult.percentage4}</percentage>
 						</c:when>
 						<c:when test="${option.index == 4}">
 							<count>${qr.pollResult.answer5Count}</count>  
 						<percentage>${qr.pollQuestion.percentage5}</percentage>	
-						</c:when>
+						</c:when> --%>
 					</c:choose>
 							    
 							    
@@ -60,13 +60,13 @@
 					 <answer1count>${qr.pollResult.answer1Count}</answer1count>
 					 <answer2count>${qr.pollResult.answer2Count}</answer2count>
 					 <answer3count>${qr.pollResult.answer3Count}</answer3count>
-					 <answer4count>${qr.pollResult.answer4Count}</answer4count>
-					 <answer5count>${qr.pollResult.answer5Count}</answer5count>
+					<%--  <answer4count>${qr.pollResult.answer4Count}</answer4count>
+					 <answer5count>${qr.pollResult.answer5Count}</answer5count> --%>
 					 <percentage1>${qr.pollQuestion.percentage1}</percentage1>
 					 <percentage2>${qr.pollResult.percentage2}</percentage2>
 					 <percentage3>${qr.pollResult.percentage3}</percentage3>
-					 <percentage4>${qr.pollResult.percentage4}</percentage4>
-					 <percentage5>${qr.pollResult.percentage5}</percentage5>
+					 <%-- <percentage4>${qr.pollResult.percentage4}</percentage4>
+					 <percentage5>${qr.pollResult.percentage5}</percentage5> --%>
 					 
 				</pollResult>				
 			</questionresultpair>

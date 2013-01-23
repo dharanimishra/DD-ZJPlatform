@@ -14,11 +14,11 @@
 		<div class="f-r">
 			<strong class="text-size-px16 light-gray"> <a
 				href="/ziksana-web/secure/createcourse" class="light-blue">Create </a><strong>|</strong>
-				<a href="/ziksana-web/secure/createcourse">Publish</a> <strong>|</strong> <a href="#">Manage</a>
+				<a href="#">Publish</a> <strong>|</strong> <a href="#">Manage</a>
 			</strong>
 			<c:url var="imageUrl_header2" value="/resources/images/plus.png" />
 			<a href="#" class="light-blue"><img src="${imageUrl_header2}"
-				alt="add more" width="4" height="6" class="light-blue add-more"></img></a>
+				alt="add more" width="12" height="12" class="light-blue add-more"></img></a>
 		</div>
 		</c:if>
 		<c:if test="${member.roleType eq 'LEARNER'}">

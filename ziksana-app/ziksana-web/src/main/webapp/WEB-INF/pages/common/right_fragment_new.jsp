@@ -132,21 +132,21 @@ $(document).ready(function() {
 							
 							if (index == 0){
 								firstpollid = $(this).find("pollQuestion").find("id").text();
-								output+="<div id='result" + index + "' class='pollresult'>"+result+"<button id='" + index + "' onclick='buttonPrevious()' style='margin-left:170px;' class='btnnext btn'>Next &rarr;</button></div></div>";
+								output+="<div id='result" + index + "' class='pollresult'>"+result+"<button id='" + index + "' onclick='buttonPrevious()' style='margin-left:159px;width:78px;' class='btnnext btn'>Next &rarr;</button></div></div>";
 					 		} else {
 					 			if (index == ($(data).find("questionresultpair").size()-1)){
 //									console.log("Entering last one questionresultpair");
 									lastpollid = $(this).find("pollQuestion").find("id").text();
-									output+="<div id='result" + index + "' class='pollresult'>"+result+"<button onclick='buttonPrevious()' class='btnprev btn' id='"+ index +"' >&larr; Prev</button></div></div>";
+									output+="<div id='result" + index + "' class='pollresult'>"+result+"<button  style='float:left;width:78px;' onclick='buttonPrevious()' class='btnprev btn' id='"+ index +"' >&larr; Prev</button></div></div>";
 								}
 								else {
-						 			output+="<div id='result" + index + "' class='pollresult '>"+result+"<button onclick='buttonPrevious()' id='"+ index + "' style='float:right;' class='btnnext btn'>Next &rarr;</button><button  class='btnprev btn' id='"+ index + "' >&larr; Prev</button></div></div>";
+						 			output+="<div  style='margin-top:10px;' id='result" + index + "' class='pollresult '>"+result+"<button onclick='buttonPrevious()' id='"+ index + "' style='float:right;width:78px;' class='btnnext btn'>Next &rarr;</button><button  style='width:78px;margin-top:16px;margin-left:-59px;' class='btnprev btn' id='"+ index + "' >&larr; Prev</button></div></div>";
 						 		};
 					 		}
 
 							//console.log("poll output string" + output);
 					});
-					output+="<div><span><a class='text-size-px11  lbx-70-50 moreclass' href='${showpoll}' style='color: #27b;margin-left:200px;'>More</a></span></div>";
+					output+="<span><a class='text-size-px11  lbx-70-50 moreclass' href='${showpoll}' style='color: #27b;margin-left:200px;'>More</a></span>";
 					$('#poll_placeholder').html(output);
 					
 					$(data).find("questionresultpair").each(function(index){
@@ -491,7 +491,7 @@ function short_string(string){
 	 
 	 //alert(pollid);
 	 
-	  $('div.bar_results_value').remove();
+	 
 	 pollid = $('#pollId'+indexVal+'').val();	
 	 optionindex = $('#optionIndex').val();
 	  $.post( '<c:url value='/secure/submitpoll/'/>'
@@ -508,6 +508,7 @@ function short_string(string){
 						output_poll+="<p class='font-Signika text-size-px18 light-gray'>Poll Result:</p>";
 		 				var colorNames = new Array("Turquoise", "SpringGreen", "Salmon", "RoyalBlue","Crimson");
 		 					 $(this).find("pollResult").find("option").each(function(index)
+		 							
 		 							 {
 		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("optiontext").text()+"</p>";  
 		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("percentage").text()+"% Votes</p>";
@@ -521,8 +522,9 @@ function short_string(string){
 		 				 	 //alert(output);
 		 					});
 		 			$('div.pollresultbar').html(output_poll);
-		 			//$('div.pollresultbar').show();
+		 			$('div.pollresultbar').show();
 		 			$('div.pollresult').show();
+		 			
 		 			 }
 					 );     
 	   
@@ -534,7 +536,7 @@ function short_string(string){
  
  function buttonPrevious(){
 	 //alert("Hello");
-	 //$('div.pollresultbar').hide();
+	 $('div.pollresultbar').hide();
 	 
  }
  </script>
