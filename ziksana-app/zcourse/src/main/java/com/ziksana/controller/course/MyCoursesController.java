@@ -36,9 +36,6 @@ public class MyCoursesController {
 
 	@Autowired
 	CourseService courseService;
-	
-	
-		
 
 	@RequestMapping(value = "/showmycourse/111111", method = RequestMethod.GET)
 	public @ResponseBody
@@ -83,25 +80,38 @@ public class MyCoursesController {
 			return mv;
 		} else {
 
+			ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
+			
 			List<LearningProgram> programs = courseService
-				     .getLearningPrograms();
-				   LOGGER.info("Learner Program Size==>"+programs.size());
-				   LearningProgram program = programs.get(0);
-				   
-				   List<Course> courses = courseService.getCoursesByLearningProgram(Integer.valueOf(program
-				       .getLearningProgramId().getStorageID()));
+					.getLearningPrograms();
+			LOGGER.info("Learner Program Size==>" + programs.size());
+			LearningProgram program = null;
+			List<Course> courses = null;
 
-				   System.out.println(" TOTAL NUMBER OF COURSES IS  "+courses.size());
-				   System.out.println(" THE COURSE NAME IS   "+courses.get(0).getName() );
-				   ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
-				   mvLearner.addObject("program", program.getName());
-				   mvLearner.addObject("courses", courses);
+			if (programs.size() >= 1) {
+				
+				program = programs.get(0);
 
-				   // TODO need to implement learner my programs...
-				   return mvLearner;
+				courses = courseService
+						.getCoursesByLearningProgram(Integer.valueOf(program
+								.getLearningProgramId().getStorageID()));
+				System.out.println(" TOTAL NUMBER OF COURSES IS  "
+						+ courses.size());
+				System.out.println(" THE COURSE NAME IS   "
+						+ courses.get(0).getName());
+				mvLearner.addObject("program", program.getName());
+				
+				mvLearner.addObject("courses", courses);
+
+				
+			}
+
+			
+			return mvLearner;
 		}
 
 	}
+
 	@RequestMapping(value = "/showMyPrograms", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyPrograms() throws CourseException {
@@ -121,21 +131,23 @@ public class MyCoursesController {
 			return mv;
 		} else {
 
-
 			List<LearningProgram> programs = courseService
-				     .getLearningPrograms();
-				   LearningProgram program = programs.get(0);
-				   List<Course> courses = courseService.getCoursesByLearningProgram(Integer.valueOf(program
-				       .getLearningProgramId().getStorageID()));
+					.getLearningPrograms();
+			LearningProgram program = programs.get(0);
+			List<Course> courses = courseService
+					.getCoursesByLearningProgram(Integer.valueOf(program
+							.getLearningProgramId().getStorageID()));
 
-				   System.out.println(" TOTAL NUMBER OF COURSES IS  "+courses.size());
-				   System.out.println(" THE COURSE NAME IS   "+courses.get(0).getName() );
-				   ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
-				   mvLearner.addObject("program", program.getName());
-				   mvLearner.addObject("courses", courses);
+			System.out
+					.println(" TOTAL NUMBER OF COURSES IS  " + courses.size());
+			System.out.println(" THE COURSE NAME IS   "
+					+ courses.get(0).getName());
+			ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
+			mvLearner.addObject("program", program.getName());
+			mvLearner.addObject("courses", courses);
 
-				   // TODO need to implement learner my programs...
-				   return mvLearner;
+			// TODO need to implement learner my programs...
+			return mvLearner;
 
 		}
 
