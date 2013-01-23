@@ -1903,7 +1903,5 @@ $(function(){
  // END TABS
 }); //end of docready
 </script>
-					
-					
 </body>
 </html>
