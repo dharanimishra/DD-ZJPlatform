@@ -3,9 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>Enrich Content</title>
-
-
-
 <!--Body Style sheet-->
 <link href="/ziksana-web/resources/css/main/styles.css" rel="stylesheet" type="text/css" />
 <link href="/ziksana-web/resources/css/main/type-setting.css" rel="stylesheet" type="text/css" />

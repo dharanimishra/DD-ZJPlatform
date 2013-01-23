@@ -33,15 +33,21 @@ public class EnrichCourseController {
 	ModelAndView showEnrichMyCourse(@PathVariable String contentId) {
 		LOGGER.info("Entering showEnrichCourse(): ");
 
-		Integer courseid = 0, contentTypeId = 0;
+		Integer courseid = 0;
 		try {
 			courseid = Integer.parseInt(contentId.split("_")[1]);
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("NumberFormatException courseid:" + nfe);
 		}
-		ModelAndView mv = new ModelAndView("courses/enrichcontent");
-		mv.addObject("courseid", courseid);
+		ModelAndView modelView = null;
+		if (courseid > 0) {
+			modelView = new ModelAndView("courses/enrichcontent");
+			modelView.addObject("courseid", courseid);
+		} else {
+			modelView = new ModelAndView("courses/definecourse");
+			modelView.addObject("courseid", courseid);
+		}
 
-		return mv;
+		return modelView;
 	}
 }

@@ -21,8 +21,6 @@
 <!--End Body Style sheet-->
 
 <script type="text/javascript" src="/ziksana-web/resources/js/jquery-1.7.1.min.js"></script>
-
-<!-- <script type="text/javascript" src="/ziksana-web/resources/js/ckeditor/ckeditor.js"></script> -->
 <script src="/ziksana-web/resources/js/custom.js" type="text/javascript"></script>
 <!-- <script type="text/javascript" src="/ziksana-web/resources/js/video_player.js"></script> -->
 <script type='text/javascript' src="/ziksana-web/resources/jwplayer/swfobject.js"></script>
@@ -70,8 +68,6 @@
 <!-- end for number spinner -->
 <script src="/ziksana-web/resources/js/dropdown/hover-dropdown.min.js"></script>
 <script src="/ziksana-web/resources/js/dropdown/tiwtter.js"></script>
-,
-
 <script>
 	$(document).ready(function() {
 		$('.js-activated').dropdownHover();
@@ -202,26 +198,25 @@
 
 
 						<!--Wizard start-->
-						<div id="page-wrap">
+									<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
-								<li><a href="${createcourselink}"
+								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<li><a href="${associatecontentlink}"
+								<li><a
+									href="/ziksana-web/secure/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
-								<li><a href="${enrichcontentlink}"
+								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								<li><a href="${assignmentlink}"
-									style="width: 130px; text-align: center;">4. Define
-										Assignment</a></li>
-								<li><a href="modelthinkingdefineplanner.html"
-									style="text-align: center;">5. Define Planner</a></li>
-								<li><a href="modelthinkingdefineplaybook.html"
-									style="text-align: center;">6. Define Playbook</a></li>
-								<li><a href="modelthinkingdefinesocialize.html"
-									style="width: 120px; text-align: center;">7. Socialize
-										Course</a></li>
+								<li><a href="" style="width: 130px; text-align: center;">4.
+										Define Assignment</a></li>
+								<li><a href="" style="text-align: center;">5. Define
+										Planner</a></li>
+								<li><a href="" style="text-align: center;">6. Define
+										Playbook</a></li>
+								<li><a href="" style="width: 120px; text-align: center;">7.
+										Socialize Course</a></li>
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
 							</ul>

@@ -70,10 +70,10 @@ public class CreateCourseController {
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
 		ModelAndView modelView = null;
 		if (course_id > 0) {
-			modelView = new ModelAndView("courses/definecourse");
+			modelView = new ModelAndView("courses/coursecreation");
 			modelView.addObject("CourseId", course_id);
 		} else {
-			modelView = new ModelAndView("courses/createcourse");
+			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("CourseId", course_id);
 		}
 

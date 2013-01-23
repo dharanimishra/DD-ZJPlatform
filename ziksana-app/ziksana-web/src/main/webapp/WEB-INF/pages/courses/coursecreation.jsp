@@ -396,28 +396,28 @@ span.standartTreeRow:hover {
 											<div class="coursename">
 												<div class="control-group">
 													<label class="control-label labelclass" for="CourseName"
-														style="margin-top: -4px;">Course Module :</label>
+														style="margin-top: -4px;font-weight: bold;">Course Module :</label>
 													<div class="controls">
 														<input type="text" id="Cmoduletxtbox"
-															class="defaultvalue validate[required]" autofocus
+															class="defaultvalue validate[required]"  tabindex="1" autofocus
 															placeholder="Specify the name of the Course Module"
 															style="width: 240px; margin-left: 10px;" />
 													</div>
 
 
-													<br /> <label for="moduledescription" class="labelclass">Module
+													<br /> <label for="moduledescription" class="labelclass" style="font-weight: bold;">Module
 														Description :</label> <a class="f-r _richText"
-														id="addmodulerichedit" href=""
+														id="addmodulerichedit" href="#linkurl"
 														style="text-decoration: none;">Rich Text Editor</a> <a
-														class="f-r _plainText" href=""
+														class="f-r _plainText" href="#linkurl"
 														style="text-decoration: none;">Plain Text Editor</a>
-													<textarea class="_plainTextShow label"
+													<textarea class="_plainTextShow label" tabindex="2"
 														class="defaultvalue validate[required]" id="Cmoduledesc"
-														cols="90" rows="7" style="resize: none;"
+														cols="80" rows="7" style="resize: none;" 
 														placeholder="Describe the Course being created"></textarea>
 													<br />
 													<div class="_richTextShow">
-														<textarea id="Cmoduledescrte" name="editor2"
+														<textarea id="Cmoduledescrte" name="editor2" tabindex="2"
 															class="defaultvalue _focus validate[required]">Describe the Course being created</textarea>
 													</div>
 
@@ -430,25 +430,24 @@ span.standartTreeRow:hover {
 											<div class="secondcontainer">
 												<div class="control-group">
 													<div>
-														<label class="labelclass"> Subject Area : </label> <label
-															class="labelclass" style="margin-left: 120px;">
+														<label class="labelclass" style="font-weight: bold;"> Subject Area : </label> <label
+															class="labelclass" style="font-weight: bold;">
 															Subject: </label> <label class="labelclass"
-															style="margin-left: 155px;"> Topic: </label>
+															style="font-weight: bold;"> Topic: </label>
 													</div>
 													<div class="moduleselection">
-														<select name="Cmoduleareaddl" id="Cmoduleareaddl"
-															class="defaultvalue labelclass validate[required]"
+														<select name="Cmoduleareaddl" id="Cmoduleareaddl" tabindex="3"
+															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject Area</option>
 
-														</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl"
-															class="defaultvalue labelclass validate[required]"
+														</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl" tabindex="4"
+															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Module Area</option>
 
-
-														</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"
-															class="defaultvalue labelclass validate[required]"
+														</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl" tabindex="5"
+															class="defaultvalue labelclass"
 															style="width: 200px;">
 															<option value="">Select Module Topic</option>
 
@@ -458,8 +457,8 @@ span.standartTreeRow:hover {
 
 													<div class="coursetags">
 														<br /> <label class="control-label labelclass"
-															for="moduletags" style="margin-top: -2px;">Specify
-															any tags : </label> <input id="Addmoduletag" type="text"></input>
+															for="moduletags" style="margin-top: -2px;font-weight: bold;">Specify
+															any tags : </label> <input id="Addmoduletag"  tabindex="6" type="text" ></input>
 														<br />
 
 														<!--   <label class="control-label labelclass"
@@ -474,18 +473,18 @@ span.standartTreeRow:hover {
 
 													</div>
 													<!-- end of coursetags--->
-													<br /> <input type="checkbox" id="addmodulecheckbox"
+													<br /> <input type="checkbox" id="addmodulecheckbox" tabindex="7"
 														class="labelclass" value="Institution Logo" /> <span
-														class="labelclass" style="padding-left: 5px;">Save
+														class="labelclass" style="padding-left: 5px;font-weight: bold;">Save
 														as a Learning Object? </span>
 													<div class="courseduration" id="saveassociateobject">
 														<br /> <label for="Learning Duration" class="labelclass"
-															style="">Specify the Duration of the Learning
-															Object :</label> <input type="text" id="Cmoduleduration"
+															style="font-weight: bold;">Specify the Duration of the Learning
+															Object :</label> <input type="text" id="Cmoduleduration" tabindex="8"
 															style="width: 30px;"
 															class="defaultvalue validate[required]" /> <select
 															name="Cmoduleunits"
-															class="defaultvalue validate[required]" id="Cmoduleunits"
+															class="defaultvalue validate[required]" id="Cmoduleunits" tabindex="9"
 															style="margin-left: 5px;">
 															<!--  <option value="">Specify Units</option> -->
 															<option value="week">Weeks</option>
@@ -495,9 +494,9 @@ span.standartTreeRow:hover {
 														<div class="associateimage" style="margin-top: 15px;">
 															<img src="/ziksana-web/resources/images/icons/upload.png"
 																align="left" />
-															<p class="labelclass">Associate an Image for your
-																Learning Object</p>
-															<input type="hidden" readonly="readonly"
+															<p class="labelclass"><b>Associate an Image for your
+																Learning Object</b></p>
+															<input type="hidden" readonly="readonly" tabindex="10"
 																id="Cmoduleimgupl" placeholder="specify an image"
 																style="margin-left: 20px;" />
 															<!--  <a href=""
@@ -509,7 +508,7 @@ span.standartTreeRow:hover {
 
 														<div id="thubmnail_upload_message"></div>
 														<div id="loaderText"></div>
-														<input type="file" name="thumbnail_image_file_upload"
+														<input type="file" name="thumbnail_image_file_upload" tabindex="11"
 															id="thumbnail_image_file_upload" />
 														<div id="status"></div>
 														<script type="text/javascript">
@@ -569,9 +568,9 @@ span.standartTreeRow:hover {
 											<div id="tempdiv2"></div>
 											<input type="button"
 												class="cancellinkdefinecourse btn btn-info"
-												id="Btncmodulecncl" value="Cancel"
+												id="Btncmodulecncl" value="Cancel" tabindex="13"
 												style="float: right; margin-right: 20px;" /> <input
-												type="submit" class="btn btn-info" id="Btnsbtcmodule"
+												type="submit" class="btn btn-info" id="Btnsbtcmodule" tabindex="12"
 												value="Submit" onClick="getaddmodulesave(); return false;"
 												style="float: right; margin-right: 20px;" /> <br /> <br />
 

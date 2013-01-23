@@ -15,6 +15,7 @@ import com.ziksana.domain.course.ContentStatus;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.domain.course.Enrichment;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
@@ -25,6 +26,7 @@ import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseContentService;
+import com.ziksana.service.course.CourseEnrichmentService;
 
 /**
  * @author ratneshkumar
@@ -37,6 +39,8 @@ public class CourseContentController {
 
 	@Autowired
 	public CourseContentService courseContentService;
+
+	//CourseEnrichmentService enrichService;
 
 	@RequestMapping(value = "/saveOrUpdateContent", method = {
 			RequestMethod.GET, RequestMethod.POST })
@@ -143,6 +147,15 @@ public class CourseContentController {
 			compContent.setCourseStatusId(CourseStatus.ACTIVE.getID());
 
 			courseContentService.saveOrUpdateContent(compContent);
+
+			Enrichment enrichment = new Enrichment();
+			enrichment.setCourse(course);
+			enrichment.setLearningComponent(component);
+			enrichment.setCreatorMemberPersona(accountableMember);
+			enrichment.setLearningContent(content);
+			enrichment.setActive(true);
+
+			//enrichService.saveReference(enrichment);
 
 		} catch (CourseException ce) {
 			LOGGER.error("Class :" + getClass()

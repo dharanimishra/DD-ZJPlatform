@@ -195,7 +195,8 @@ span.standartTreeRow:hover {
 
 	<div id="wrapper">
 		<p>
-			<a><img data-launcher data-launchpage="/ziksana-web/secure/launcher"
+			<a><img data-launcher
+				data-launchpage="/ziksana-web/secure/launcher"
 				src="/ziksana-web/resources/images/ziksana_button_logo.png"
 				width=120px height=120px
 				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a>
@@ -210,10 +211,11 @@ span.standartTreeRow:hover {
 			<nav>
 				<div class="menu" style="margin-left: 0px;">
 					<ul>
-						<li><a href="/ziksana-web/secure/educatordashboard ">My Home</a>
+						<li><a href="/ziksana-web/secure/educatordashboard ">My
+								Home</a>
 							<div class="nav-line"></div></li>
-						<li><a href="/ziksana-web/secure/showMyPrograms" class="current">My
-								Programs</a>
+						<li><a href="/ziksana-web/secure/showMyPrograms"
+							class="current">My Programs</a>
 							<div class="nav-line"></div></li>
 						<li><a href="">My Students</a>
 							<div class="nav-line"></div></li>
@@ -397,18 +399,20 @@ span.standartTreeRow:hover {
 											<div class="coursename">
 												<div class="control-group">
 													<label class="control-label labelclass" for="Content Name"
-														style="margin-top: -4px;">Content Name:</label>
+														style="margin-top: -4px; font-weight: bold;">Content
+														Name:</label>
 													<div class="controls">
-														<input type="text" id="contentname"
+														<input type="text" id="contentname" tabindex="1"
 															class="defaultvalue validate[required]" autofocus
 															placeholder="Specify the name of the Content"
 															tabindex="1" style="width: 240px; margin-left: 10px;" />
 													</div>
 
-													<br /> <label for="moduledescription" class="labelclass">Content
-														Description :</label> <a class="f-r _richText" href=""
+													<br /> <label for="moduledescription" class="labelclass"
+														style="font-weight: bold;">Content Description :</label> <a
+														class="f-r _richText" href="#linkurl"
 														style="text-decoration: none;">Rich Text Editor</a> <a
-														class="f-r _plainText" href=""
+														class="f-r _plainText" href="#linkurl"
 														style="text-decoration: none;">Plain Text Editor</a>
 													<textarea
 														class="_plainTextShow labelclass defaultvalue validate[required]"
@@ -430,38 +434,38 @@ span.standartTreeRow:hover {
 											<div class="secondcontainer">
 												<div class="control-group">
 													<div>
-														<label class="labelclass"> Subject Area : </label> <label
-															class="labelclass" style="margin-left: 120px;">
+														<label class="labelclass" style="font-weight: bold;"> Subject Area : </label> <label
+															class="labelclass" style="margin-left: 120px;font-weight: bold;">
 															Subject: </label> <label class="labelclass"
-															style="margin-left: 155px;"> Topic: </label>
+															style="margin-left: 155px;font-weight: bold;"> Topic: </label>
 													</div>
 													<div class="moduleselection">
 														<select name="Careaddl" id="Careaddl"
-															class="defaultvalue labelclass"
-															tabindex="3" style="margin-right: 15px; width: 200px;">
+															class="defaultvalue labelclass" tabindex="3"
+															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject Area</option>
 
 														</select> <select name="Csubjectddl" id="Csubjectddl"
-															class="defaultvalue labelclass"
-															tabindex="4" style="margin-right: 15px; width: 200px;">
+															class="defaultvalue labelclass" tabindex="4"
+															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject</option>
 
 														</select> <select name="Ctopicddl" id="Ctopicddl"
-															class="defaultvalue labelclass"
-															tabindex="5" style="width: 200px;">
+															class="defaultvalue labelclass" tabindex="5"
+															style="width: 200px;">
 															<option value="">Select Topic</option>
 														</select>
 													</div>
 													<div class="coursetags">
 														<br /> <label class="control-label labelclass"
-															for="contenttags" style="margin-top: -2px;">Specify
+															for="contenttags" style="margin-top: -2px;font-weight: bold;">Specify
 															any tags : </label> <input type="text" id="Associatetag"
-															 style="margin-left: 290px;" tabindex="6"></input> <br />
+															style="margin-left: 290px;" tabindex="6"></input> <br />
 													</div>
 													<!-- end of coursetags--->
 													<img src="/ziksana-web/resources/images/icons/upload.png"
 														align="left" /><label class="control-label labelclass"
-														for="uploadimage" style="margin-top: -2px;">Upload
+														for="uploadimage" style="margin-top: -2px;font-weight: bold;">Upload
 														any Image for the Content : </label> <input type="hidden"
 														readonly="readonly" id="Cimageupl" class="labelclass"
 														tabindex="7" />
@@ -543,12 +547,13 @@ span.standartTreeRow:hover {
 												<div id="type-1">
 													<img src="/ziksana-web/resources/images/icons/upload.png"
 														align="left" /><label class="control-label labelclass"
-														for="uploadimage" style="margin-top: -2px;">Upload
+														for="uploadimage" style="margin-top: -2px; font-weight: bold;">Upload
 														the Content (mp4/mp3/doc/docx/ppt/pptx/pdf): </label>
 
 													<div id="message"></div>
 													<div id="loaderText"></div>
-													<input type="file" name="file_upload" id="file_upload" tabindex="9" />
+													<input type="file" name="file_upload" id="file_upload"
+														tabindex="9" />
 													<div id="status"></div>
 													<script type="text/javascript">
 														$(function() {
@@ -633,8 +638,7 @@ span.standartTreeRow:hover {
 											<!-- end of forth container--->
 
 											<div class="buttonassoc" style="height: 20px;">
-												<a class="cancellinkassociatecontent btn btn-info"
-													href=""
+												<a class="cancellinkassociatecontent btn btn-info" href=""
 													style="float: right; margin-right: 20px; text-decoration: none;">
 													Cancel </a> <input type="submit" class="btn btn-info"
 													id="btnsbtassoccontent" value="Submit" tabindex="10"

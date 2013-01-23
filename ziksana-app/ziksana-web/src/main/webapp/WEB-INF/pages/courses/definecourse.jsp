@@ -365,7 +365,7 @@ span.standartTreeRow:hover {
 										</textarea>
 										<br />
 										<div class="_richTextShow">
-											<textarea id="Cdescriptionrte" name="editor1pageload"
+											<textarea id="Cdescriptionrte" name="editor1pageload" 
 												class="defaultvalue _focus ">
 												<b>Describe the Course being created</b>
 											</textarea>
@@ -562,14 +562,14 @@ span.standartTreeRow:hover {
 											alt="Modelthinking" width="94" height="94" border="3"
 											style="border: 2px solid #ccc;" /> <input
 											readonly="readonly" type="hidden" id="Cimageupl"
-											style="margin-left: 20px;" />
+											style="margin-left: 20px;" tabindex="11" />
 										<!--  <a href="#linkurl"
 											id="cancellink"> <img
 											src="/ziksana-web/resources/images/delete.jpg" />Cancel</a>-->
 
 										<div id="thubmnail_upload_message"></div>
 										<div id="loaderText"></div>
-										<input type="file" tabindex="11"
+										<input type="file" tabindex="12"
 											name="thumbnail_image_file_upload"
 											id="thumbnail_image_file_upload" />
 										<div id="status"></div>
@@ -626,7 +626,7 @@ span.standartTreeRow:hover {
 								<!-- end of third container--->
 
 								<input type="submit" class="btn btn-info f-r" id="sbtvalidation"
-									value="Submit" tabindex="12"
+									value="Submit" tabindex="13"
 									onClick="createCourse(); return false;"
 									style="margin-right: -200px;">
 

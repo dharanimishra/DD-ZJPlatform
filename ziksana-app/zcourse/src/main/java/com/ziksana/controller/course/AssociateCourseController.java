@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.course.Content;
 import com.ziksana.service.data.ContentService;
 
-
 /**
  * @author ratneshkumar
  */
@@ -28,14 +27,32 @@ public class AssociateCourseController {
 	@Autowired
 	ContentService contentService;
 
+	@RequestMapping(value = "/associatecontent", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView showAssociateContent() {
+		LOGGER.info("Entering showAssociateCourse(): ");
+		ModelAndView modelView = null;
+		modelView = new ModelAndView("courses/definecourse");
+		return modelView;
+	}
+
 	@RequestMapping(value = "/associatecontent/{courseId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView showAssociateCourse(@PathVariable String courseId) {
 		LOGGER.info("Entering showAssociateCourse(): ");
-		ModelAndView mv = new ModelAndView("courses/associatecontent");
-		mv.addObject("courseId", courseId);
-		return mv;
+		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
+		ModelAndView modelView = null;
+		if (course_id > 0) {
+			modelView = new ModelAndView("courses/associatecontent");
+			modelView.addObject("CourseId", course_id);
+		} else {
+			modelView = new ModelAndView("courses/definecourse");
+			modelView.addObject("CourseId", course_id);
+		}
+
+		return modelView;
 	}
 
 	@RequestMapping(value = "/modalplayer/{contentId}", method = {

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.course.CourseMapper">
 	<sql id="Base_Column_List">
-		courseid, name, courseidentifier, description, validfrom,
+		ID, name, courseidentifier, description, validfrom,
 		validto, coursestatus, rating,
 		contentsecurityneededindicator,
 		courseweightage, totalcredits, extracreditsindicator,
@@ -43,13 +43,14 @@
 				#{thumbnailPicturePath,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where courseid = #{courseId.storageID,jdbcType=INTEGER}
+		where ID = #{courseId.storageID,jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveCourse" parameterType="com.ziksana.domain.course.Course"
-		useGeneratedKeys="true" keyProperty="courseId" keyColumn="courseid">
+		useGeneratedKeys="true" keyProperty="courseId" keyColumn="ID">
 		insert into corcourse
 		<trim prefix="(" suffix=")" suffixOverrides=",">
+			creationdate,
 			<if test="name!=null">
 				name,
 			</if>
@@ -88,6 +89,7 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
 			<if test="name!=null">
 				#{name,jdbcType=VARCHAR},
 			</if>
@@ -138,12 +140,12 @@
 		from
 		corcourse
 		where
-		CourseStatus=#{statusId} and 
+		CourseStatus=#{statusId} and
 		MemberRoleId=#{memberPersonaId}
-        LIMIT 0, 3 
+		LIMIT 0, 3
 
 	</select>
-	
+
 	<select id="getAllCourses" resultMap="courseResultMap"
 		parameterType="map">
 
@@ -152,14 +154,14 @@
 		from
 		corcourse
 		where
-		CourseStatus=#{statusId} and 
+		CourseStatus=#{statusId} and
 		MemberRoleId=#{memberPersonaId}
-        
+
 
 	</select>
-	
-	
-	
+
+
+
 	<select id="totalNumberOfCourses" resultType="java.lang.Integer"
 		parameterType="map">
 
@@ -168,21 +170,20 @@
 		from
 		corcourse
 		where
-		CourseStatus=#{statusId} and 
+		CourseStatus=#{statusId} and
 		MemberRoleId=#{memberPersonaId}
-        
+
 
 	</select>
-	
-	
+
+
 
 	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
 
 		<result property="courseId" column="id" />
-
 		<result property="name" column="name" />
 		<result property="description" column="description" />
-		<result property="Rating" column="courseProgress"/>
+		<result property="Rating" column="courseProgress" />
 
 	</resultMap>
 
