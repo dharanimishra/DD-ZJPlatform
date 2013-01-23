@@ -155,10 +155,10 @@ public class CreateCourseController {
 					+ fe);
 		}
 
-		ZID memberId = new StringZID("1001");
-		ZID memberPersonaId = new StringZID("201");
-		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+//		ZID memberId = new StringZID("1001");
+//		ZID memberPersonaId = new StringZID("201");
+//		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+//		ThreadLocalUtil.setToken(token);
 
 		LOGGER.debug(" Class :"
 				+ getClass()
@@ -318,11 +318,11 @@ public class CreateCourseController {
 					+ " Method: saveCourse : NumberFormatException" + nfe);
 		}
 
-		ZID memberId = new StringZID("1001");
-		ZID memberPersonaId = new StringZID("201");
-
-		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+//		ZID memberId = new StringZID("1001");
+//		ZID memberPersonaId = new StringZID("201");
+//
+//		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+//		ThreadLocalUtil.setToken(token);
 
 		MemberPersona accountableMember = new MemberPersona();
 		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil

@@ -79,11 +79,11 @@ public class CourseContentController {
 				+ ThumbnailPicturePath + " numberOfThumbnails :"
 				+ numberOfThumbnails + " ContentType :" + ContentType);
 
-		ZID memberId = new StringZID("1001");
-		ZID memberPersonaId = new StringZID("201");
-
-		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+//		ZID memberId = new StringZID("1001");
+//		ZID memberPersonaId = new StringZID("201");
+//
+//		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+//		ThreadLocalUtil.setToken(token);
 
 		LOGGER.debug(" Class :"
 				+ getClass()
