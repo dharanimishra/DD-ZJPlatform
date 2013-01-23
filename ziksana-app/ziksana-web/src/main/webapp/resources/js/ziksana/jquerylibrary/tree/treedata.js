@@ -111,7 +111,7 @@ function createtree() {
 
 		node_type = itemId.split('_')[0];
 		if (node_type == "COURSE") {
-			menu.hideItem('Delete');
+			//menu.hideItem('Delete');
 			menu.hideItem('View');
 			menu.showItem('RootView');
 

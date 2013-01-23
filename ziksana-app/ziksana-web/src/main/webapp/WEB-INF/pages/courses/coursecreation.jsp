@@ -6,7 +6,7 @@
 <!--Body Style sheet-->
 <link href="/ziksana-web/resources/css/main/styles.css" rel="stylesheet"
 	type="text/css" />
-	<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet"
+<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet"
 	type="text/css" />
 <link href="/ziksana-web/resources/css/main/type-setting.css"
 	rel="stylesheet" type="text/css" />
@@ -196,57 +196,79 @@ span.standartTreeRow:hover {
 
 	<div id="wrapper">
 		<!--Header Container-->
-        	<!--Header Container-->
- 
-		<p><a><img data-launcher data-launchpage="/ziksana-web/secure/launcher" src="/ziksana-web/resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
-        	<header class="bottom-box-shadow bckground-wihte">
+		<!--Header Container-->
+
+		<p>
+			<a><img data-launcher
+				data-launchpage="/ziksana-web/secure/launcher"
+				src="/ziksana-web/resources/images/ziksana_button_logo.png"
+				width=120px height=120px
+				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a>
+		</p>
+		<header class="bottom-box-shadow bckground-wihte">
 			<p>&nbsp;&nbsp;</p>
-            	<div class="topheader"> 
-          <!--logo container-->
-          
-       
-		    
- 
-        </div>
-            <nav>
-			<div class="menu" style=" margin-left:0px;">
-                      <ul>
-                        <li><a href="/ziksana-web/secure/educatordashboard" >My Home</a><div class="nav-line"></div></li>
-                        <li><a href="/ziksana-web/secure/showMyPrograms" class="current">My Programs</a><div class="nav-line"></div></li>
-                        <li><a href="">My Students</a><div class="nav-line"></div></li>
-                        <li><a href="" style="margin-left:-10px;">My Locker</a></li>
-                      </ul>
-                    </div>
-					
-                       <div class="status-container">
-		
-            <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box ">
-			
-              <ul>
-                <li><a href="" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
-                 <li><a href="" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
-                <li><a href="" class="alart-icon orange-bc" rel="tipsy" title="1 Connect Request"><span class="wite-title">1</span></a></li>
-                <li><a href="" class="announcement-icon orange-bc" rel="tipsy" title="3 New Announcement"><span class="wite-title">3</span></a></li>
-                 <li><a href="" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
-               
-              </ul>
-              <div> </div>
-            </div>
-             <div class="account-container two-bottom-rounded-box">
-              <div class="container">
-                <div class="topnav" ><a href="" class="signin wite bold"><span class="text-size-px12 wite bold">My Account</span></a> </div>
-                <fieldset id="signin_menu">
-                 <ul>
-                   <li><a href="">Preferences</a></li>
-                   <li><a href="">Privacy</a></li>
-                   <li><a href="/ziksana-web/secure/logout">Sign Out</a></li></ul>
-                </fieldset>
-              </div>
-            </div>
-          </div>
-              </nav>
-            </header>
-       
+			<div class="topheader">
+				<!--logo container-->
+
+
+
+
+			</div>
+			<nav>
+				<div class="menu" style="margin-left: 0px;">
+					<ul>
+						<li><a href="/ziksana-web/secure/educatordashboard">My
+								Home</a>
+							<div class="nav-line"></div></li>
+						<li><a href="/ziksana-web/secure/showMyPrograms"
+							class="current">My Programs</a>
+							<div class="nav-line"></div></li>
+						<li><a href="">My Students</a>
+							<div class="nav-line"></div></li>
+						<li><a href="" style="margin-left: -10px;">My Locker</a></li>
+					</ul>
+				</div>
+
+				<div class="status-container">
+
+					<div id="status-icons"
+						class="bottom-box-shadow two-bottom-rounded-box ">
+
+						<ul>
+							<li><a href="" class="email-icon" rel="tipsy"
+								title="3 New Messages"><span class="wite-title">3</span></a></li>
+							<li><a href="" class="peoples-icon orange-bc" rel="tipsy"
+								title="5 Contact requests"><span class="wite-title">5</span></a></li>
+							<li><a href="" class="alart-icon orange-bc" rel="tipsy"
+								title="1 Connect Request"><span class="wite-title">1</span></a></li>
+							<li><a href="" class="announcement-icon orange-bc"
+								rel="tipsy" title="3 New Announcement"><span
+									class="wite-title">3</span></a></li>
+							<li><a href="" class=" amount-icon blue-bc" rel="tipsy"
+								title="Ziks available"><span class="wite-title">355500</span></a></li>
+
+						</ul>
+						<div></div>
+					</div>
+					<div class="account-container two-bottom-rounded-box">
+						<div class="container">
+							<div class="topnav">
+								<a href="" class="signin wite bold"><span
+									class="text-size-px12 wite bold">My Account</span></a>
+							</div>
+							<fieldset id="signin_menu">
+								<ul>
+									<li><a href="">Preferences</a></li>
+									<li><a href="">Privacy</a></li>
+									<li><a href="/ziksana-web/secure/logout">Sign Out</a></li>
+								</ul>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+
 		<!--End Header Container-->
 		<div class="sub-nav">
 			<div class="f-l">
@@ -303,7 +325,8 @@ span.standartTreeRow:hover {
 
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 
-							<a href="/ziksana-web/secure/createcourse" class="btn btn-info f-r"
+							<a href="/ziksana-web/secure/createcourse"
+								class="btn btn-info f-r"
 								style="margin-right: -257px; margin-bottom: 4px; clear: both;">Edit
 								Course Details </a>
 						</div>
@@ -388,9 +411,9 @@ span.standartTreeRow:hover {
 														style="text-decoration: none;">Rich Text Editor</a> <a
 														class="f-r _plainText" href=""
 														style="text-decoration: none;">Plain Text Editor</a>
-													<textarea
-														class="_plainTextShow label" class="defaultvalue validate[required]"
-														id="Cmoduledesc" cols="90" rows="7" style="resize: none;"
+													<textarea class="_plainTextShow label"
+														class="defaultvalue validate[required]" id="Cmoduledesc"
+														cols="90" rows="7" style="resize: none;"
 														placeholder="Describe the Course being created"></textarea>
 													<br />
 													<div class="_richTextShow">
@@ -416,19 +439,19 @@ span.standartTreeRow:hover {
 														<select name="Cmoduleareaddl" id="Cmoduleareaddl"
 															class="defaultvalue labelclass validate[required]"
 															style="margin-right: 15px; width: 200px;">
-																<option value="">Select Subject Area</option>
-																<option value="ABC">ABC</option>
+															<option value="">Select Subject Area</option>
+
 														</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl"
 															class="defaultvalue labelclass validate[required]"
 															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Module Area</option>
-														    <option value="ABC">ABC</option>
+
 
 														</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"
 															class="defaultvalue labelclass validate[required]"
 															style="width: 200px;">
 															<option value="">Select Module Topic</option>
-														    <option value="ABC">ABC</option>
+
 														</select>
 													</div>
 													<!-- end of moduleselection--->
@@ -438,7 +461,7 @@ span.standartTreeRow:hover {
 															for="moduletags" style="margin-top: -2px;">Specify
 															any tags : </label> <input id="Addmoduletag" type="text"></input>
 														<br />
-														
+
 														<!--   <label class="control-label labelclass"
 															for="CourseName" style="margin-top: -4px;">Enter
 															Weight :</label>
@@ -473,11 +496,11 @@ span.standartTreeRow:hover {
 															<img src="/ziksana-web/resources/images/icons/upload.png"
 																align="left" />
 															<p class="labelclass">Associate an Image for your
-																Course</p>
-															<input type="hidden" readonly="readonly" id="Cmoduleimgupl"
-																placeholder="specify an image"
-																style="margin-left: 20px;" /> 
-																<!--  <a href="#linkurl"
+																Learning Object</p>
+															<input type="hidden" readonly="readonly"
+																id="Cmoduleimgupl" placeholder="specify an image"
+																style="margin-left: 20px;" />
+															<!--  <a href=""
 																id="cancellinkadd"><img
 																src="/ziksana-web/resources/images/delete.jpg" />Cancel</a> -->
 

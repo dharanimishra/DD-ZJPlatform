@@ -194,14 +194,8 @@ span.standartTreeRow:hover {
 <body onLoad="self.scrollTo(0,0)">
 
 	<div id="wrapper">
-		<!--Header Container-->
-		<!--Header Container-->
-		<c:url var="launcherPage" value="/secure/launcher" />
-		<c:url var="educatorPage" value="/secure/educatordashboard" />
-		<c:url var="myProgramsPage" value="/secure/showMyPrograms" />
-		<c:url var="logoutPage" value="/secure/logout" />
 		<p>
-			<a><img data-launcher data-launchpage="${launcherPage}"
+			<a><img data-launcher data-launchpage="/ziksana-web/secure/launcher"
 				src="/ziksana-web/resources/images/ziksana_button_logo.png"
 				width=120px height=120px
 				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a>
@@ -443,17 +437,17 @@ span.standartTreeRow:hover {
 													</div>
 													<div class="moduleselection">
 														<select name="Careaddl" id="Careaddl"
-															class="defaultvalue labelclass validate[required]"
+															class="defaultvalue labelclass"
 															tabindex="3" style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject Area</option>
 
 														</select> <select name="Csubjectddl" id="Csubjectddl"
-															class="defaultvalue labelclass validate[required]"
+															class="defaultvalue labelclass"
 															tabindex="4" style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject</option>
 
 														</select> <select name="Ctopicddl" id="Ctopicddl"
-															class="defaultvalue labelclass validate[required]"
+															class="defaultvalue labelclass"
 															tabindex="5" style="width: 200px;">
 															<option value="">Select Topic</option>
 														</select>
