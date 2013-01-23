@@ -66,7 +66,7 @@ public class PollController {
 	
 	@RequestMapping(value = "/getpollsbetweendate", method = RequestMethod.POST)
 	public @ResponseBody
-	ModelAndView getAnnouncementsAllByDate(
+	ModelAndView getAllPollQuestionsByDate(
 			@RequestParam(value = "startDate", required = true) String startDate,
 			@RequestParam(value = "endDate", required = true) String endDate) {
 

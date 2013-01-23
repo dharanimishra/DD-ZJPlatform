@@ -3,13 +3,8 @@
  */
 package com.ziksana.service.polls;
 
-import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
-import com.ziksana.domain.member.Member;
-import com.ziksana.domain.member.MemberPersona;
-import com.ziksana.domain.polls.Poll;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollQuestionResult;

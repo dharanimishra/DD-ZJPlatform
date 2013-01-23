@@ -2,7 +2,10 @@
 
 package com.ziksana.service.polls.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -239,14 +242,50 @@ public class PollServiceImpl implements PollService {
 
 	@Override
 	public List<PollQuestionEntity> getAllPollQuestionsByDate(String startDate,
-			String endDate) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
+				String endDate) {
+		
+		
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		
+		Date formatStartDate = null;
+		try {
+			formatStartDate = dateFormat.parse(startDate);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Date formatDate = null;
+		try {
+			formatDate = dateFormat.parse(endDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Date formatEndDate = combineDateTime(formatDate);
+		System.out.println(" start date is "+formatEndDate);
+		
+		//Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
+		return pollQuestionMapper.getPollQuestionsByDate(formatStartDate, formatEndDate);
+		
+	
 }
 
+	
+	private static Date combineDateTime(Date dateFormat){
+		Date time = new Date();
+		 time.setHours(23);
+		 time.setMinutes(59);
+		 time.setSeconds(59);
+		 Calendar calendar=Calendar.getInstance();
+        calendar.setTime(dateFormat);
+        Calendar calendar1=Calendar.getInstance();
+        calendar1.setTime(time);
+        calendar.set(Calendar.HOUR_OF_DAY, calendar1.get(Calendar.HOUR_OF_DAY));
+        calendar.set(Calendar.MINUTE, calendar1.get(Calendar.MINUTE));
+        calendar.set(Calendar.SECOND, calendar1.get(Calendar.SECOND));
+        
+        return calendar.getTime();
+	}
+	
+}

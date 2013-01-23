@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta />
-<title>EducatorLauncher</title>
+<title>Louncher</title>
 
 
 <link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
+<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
+ <link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
 
 <script src="../resources/js/jquery-1.7.2.min.js"></script>
 <script src="../resources/js/jquery-ui-1.8.21.custom.min.js"></script>
@@ -320,9 +320,9 @@ list-style:none;
 			-o-transform: rotate(0); 
 		}
 		.slide-up-boxes a:nth-child(2) div { background: #367db2 url(images/icons/createcourse.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(3) div { background: #367db2 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(4) div { background: #367db2 url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(5) div { background: #367db2 url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(3) div { background: #000000 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(4) div { background: #000000 url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(5) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
 
 </style>
 
@@ -578,7 +578,7 @@ function checkonTodoItem(val){
 	});
 	
 	$('#todoid'+val).hide();
-	get_and_populate_todo();
+	
 	
 }
 
@@ -738,7 +738,7 @@ $("#datepara").show();
                        <!-- end of Todo -->
                        
                    
-				<div class="_cMain demo_message_container ">
+				<div class="calendar demo_message_container">
 				<div class="">
 				                	 <div class="demo_message" style="font-size:18px;height:100px; width:430px;">
 					   
@@ -769,7 +769,7 @@ $("#datepara").show();
                             
                             <div class="_upcoming _up1">
                             	<div class="_uDate">
-                                	<b>26- JAN</b><br> <b>12.00 PM</b> 
+                                	<b>23- JAN</b><br> <b>12.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent">
@@ -779,7 +779,7 @@ $("#datepara").show();
                             
                             <div class="_upcoming _up2">
                             	<div class="_uDate">
-                                	<b>26- JAN</b><br> <b>02.00 PM</b> 
+                                	<b>23- JAN</b><br> <b>02.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="padding-top:2px; text-align:middle;">
@@ -794,14 +794,14 @@ $("#datepara").show();
                         
                         <div class="_cRight all-box-shadow">
                         	<div class="_e1">
-                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead">26-JAN - Recap on Ziksana Capability</span></div>
+                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead"><span class="dmonth"></span> - Recap on Ziksana Capability</span></div>
 
 								<div><i class=" bold">Place: </i>UTD Administrative Building
 								<i class=" bold"><br>Time: </i>9:00 am - 12:00 pm </div>
                             </div>
                             
                             <div class="_e2" style="display: none;">
-                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">26-JAN - Lunch with Ziksana</span></div>
+                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">23-JAN - Lunch with Ziksana</span></div>
 						      <div><i class=" bold">Place: </i><br>
 						<i class=" bold">Time: </i>12:00 pm - 1:30 pm<br>
                             </div>
@@ -852,7 +852,7 @@ $("#datepara").show();
 
 	 </script>
     <c:if test="${member.roleType eq 'EDUCATOR'}">
-			<a class="fancyboxclose" href="mylearningprogram.html" target="_parent" >
+			<a class="fancyboxclose" href="/ziksana-web/secure/createcourse" target="_parent" >
 				<h5>Create Course</h5>
 				<div>Create your course with an easy 7 step process </div>				
 			</a>
@@ -874,9 +874,9 @@ $("#datepara").show();
 			</a>
 	</c:if>
 	 <c:if test="${member.roleType eq 'LEARNER'}">
-	 <a class="fancyboxclose" href="mylearningprogram.html" target="_parent" >
+	 <a class="fancyboxclose" href="/ziksana-web/secure/course" target="_parent" >
 				<h5>Course</h5>
-				<div>Create your course with an easy 7 step process </div>				
+				<div>Study the courses that you have subcribed to </div>				
 			</a>
 				
 			<a class="fancyboxclose" href="#linkurl">
