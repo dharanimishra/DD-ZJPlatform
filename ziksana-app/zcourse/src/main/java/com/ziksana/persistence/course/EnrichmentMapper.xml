@@ -19,6 +19,12 @@
 			<if test="learningContent != null">
 				learningcontentid,
 			</if>
+			<if test="learningComponent != null">
+				learningcomponentid,
+			</if>
+			<if test="course != null">
+				courseid,
+			</if>
 			<if test="creatorMemberPersona != null">
 				creatormemberroleid,
 			</if>
@@ -36,6 +42,12 @@
 			</if>
 			<if test="learningContent != null">
 				#{learningContent.learningContentId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="learningComponent != null">
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="course != null">
+				#{course.courseId.storageID,jdbcType=INTEGER},
 			</if>
 			<if test="creatorMemberPersona != null">
 				#{creatorMemberPersona.memberRoleId,jdbcType=INTEGER},

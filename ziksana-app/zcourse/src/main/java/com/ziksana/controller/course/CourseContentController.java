@@ -40,7 +40,8 @@ public class CourseContentController {
 	@Autowired
 	public CourseContentService courseContentService;
 
-	//CourseEnrichmentService enrichService;
+	@Autowired
+	CourseEnrichmentService enrichService;
 
 	@RequestMapping(value = "/saveOrUpdateContent", method = {
 			RequestMethod.GET, RequestMethod.POST })
@@ -150,12 +151,13 @@ public class CourseContentController {
 
 			Enrichment enrichment = new Enrichment();
 			enrichment.setCourse(course);
+			enrichment.setCourse(course);
 			enrichment.setLearningComponent(component);
 			enrichment.setCreatorMemberPersona(accountableMember);
 			enrichment.setLearningContent(content);
 			enrichment.setActive(true);
 
-			//enrichService.saveReference(enrichment);
+			enrichService.saveReference(enrichment);
 
 		} catch (CourseException ce) {
 			LOGGER.error("Class :" + getClass()

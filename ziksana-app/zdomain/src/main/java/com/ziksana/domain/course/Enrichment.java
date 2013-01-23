@@ -14,7 +14,7 @@ import com.ziksana.id.ZID;
 public class Enrichment extends AuditHistory {
 
 
-	private ZID					enrichmentId;
+	private ZID					    enrichmentId;
 	private Boolean 				active 					= null;
 	private Visibility 				visibility 				= null;
 	private Integer 				visibilityId			= null;
