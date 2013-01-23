@@ -324,12 +324,13 @@
 
 	<c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
 	<script type="text/javascript">
-  setInterval(function() {
-	 
 
-	}, 2000);
+  setInterval(function() {
+	  
+
+	}, 5000);
   get_and_UnAnswered_questions();
-  
+ 
   function get_and_UnAnswered_questions(){
   currentQuestion = 0;
 $(document).ready(function() {
@@ -395,7 +396,7 @@ function displayUnAnsweredPairs(current){
 	}else{
 	outputResult+="<div class='t_content'>";
 	outputResult+="<div id='question_info_message'style='font-family:verdana; '></div>";
-	outputResult+="<div id='quest'style='font-family:arial,sans-serif;color:gray;'>";
+	outputResult+="<div id='quest'style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'>";
 	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label>";
 	outputResult+="<table class='sortable' width='180px' height='30px' >";
 
@@ -413,9 +414,9 @@ function displayUnAnsweredPairs(current){
 	 for(var i = 0; i < optionsIdList.length ; i++){
 		
 			if(i==0){
-			outputResult+= "<tr><td style='font-family:arial,sans-serif;color:black;'><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";
+			outputResult+= "<tr><td style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";
 			} else {
-			outputResult+= "<tr><td style='font-family:arial,sans-serif;color:black;'><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";	
+			outputResult+= "<tr><td style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";	
 			}
 		}	 
 	
@@ -424,7 +425,7 @@ function displayUnAnsweredPairs(current){
 	
 	
 
-		outputResult+="<button class='f-rt btn-info-knowme' id='knowme-save' onClick='submitValue()'>Submit</button>";
+		outputResult+="<button class='btn' id='knowme-save' onClick='submitValue()'>Submit</button>";
 	
 	  
 	  

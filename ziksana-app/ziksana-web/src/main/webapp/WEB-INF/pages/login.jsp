@@ -362,7 +362,7 @@ box-shadow: 1px 2px 5px #000000;"/>
 					<form name="loginfrm" class="box login" method="POST"
 						action="/ziksana-web/login">
 						<fieldset class="boxBody">
-							<label>Username</label> <input type="text" name="username"
+							<label>Username</label> <input type="text" autofocus="autofocus" name="username"
 								tabindex="1" placeholder="Enter your Username">
 							<div id="uerror"></div>
 							<label><a href="#" class="rLink" tabindex="5">Forgot your password?

@@ -2738,7 +2738,7 @@ z-index: 99;
   z-index: 99;
 }
 .todotip_container {position: relative;}
-.`:hover .recommendtip{display: inline-block;}
+.todotip_container:hover .recommendtip{display: inline-block;}
 .recommendtip {
   background: none repeat scroll 0 0 white;
   border-radius: 2px 2px 2px 2px;
@@ -2900,4 +2900,9 @@ box-shadow: 0px 0px 4px rgba(70, 136, 71, 0.56);
 .fancybox-skin {
   background: #fff !important;
 
+}
+
+a {
+cursor: pointer;
+color: #2277BB;
 }

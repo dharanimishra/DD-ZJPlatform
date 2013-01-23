@@ -55,25 +55,7 @@ pageEncoding="ISO-8859-1"%>
 <body>
 <c:url var="info" value="/resources/images/icons/info.png" />
 <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
- <script type="text/javascript">
-function changeImage(a){
-
-	var images = new Array();
-	images[0] = "<c:url  value='/resources/images/icons/urgent.png' />";
-	images[1] = "<c:url  value='/resources/images/icons/warning.png' />";
-	images[2] = "<c:url  value='/resources/images/icons/info.png' />";
-	
-	 var comic = document.getElementById("exp").src;
-	 if(a==1000){
-		  $("#exp").attr('src', images[0]);
-	 }else if(a==1001){
-		 $("#exp").attr('src', images[1]);
-	 }else if(a==1002){
-		 $("#exp").attr('src', images[2]);
-	 }
-	  
-}
-	</script>
+ 
 	<c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
 <script type="text/javascript">
 function deleteFunction(val){
@@ -111,14 +93,20 @@ parent.jQuery.fancybox.close();
 	 <c:url var="deleteAlertUrl" value="/secure/deletealert/" />
 	 <script type="text/javascript">
 	 $(document).ready(function() {
+		 var images = new Array();
+			images[0] = "<c:url  value='../resources/images/icons/urgent.png' />";
+			images[1] = "<c:url  value='../resources/images/icons/warning.png' />";
+			images[2] = "<c:url  value='../resources/images/icons/info.png' />";
+			images[3] = "<c:url  value='../resources/images/icons/info.png' />";
+			images[4] = "<c:url  value='../resources/images/icons/info.png' />";
+			images[5] = "<c:url  value='../resources/images/icons/info.png' />";
+			images[6] = "<c:url  value='../resources/images/icons/info.png' />";
 	 	$.ajax({
 	 		  	type: 'GET',
 	 			url: '${showAlertUrl}',
 	 			dataType: 'xml',
  			success: function( data ) {
-	 					if (console && console.log){
-								//console.log( 'Sample of data:', data);
-				}
+	 					
 				var output="";
 					output+="<div class='alerts' style='width: 100%; height: 100%;margin-left:40px;'>";
 					output+="<div class='helptext'>Alerts</div>";
@@ -128,10 +116,10 @@ parent.jQuery.fancybox.close();
 						output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
-						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
+						output+="<a href='' rel='tipsy'  style='cursor:default;'  > <img title='' src='"+images[index]+"'  alt='INFO' /> </a></div>";
 						output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 						
-						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div></div>";
 						
 						output+="</div>";	
 						

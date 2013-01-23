@@ -1,11 +1,11 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<script type="text/javascript" src="resources/js/tree/jquery-1.8.0.min.js"></script>
+<!-- <script type="text/javascript" src="resources/js/tree/jquery-1.8.0.min.js"></script> -->
 
 <!-- <link href="../resources/css/styles.css" rel="stylesheet" type="text/css"> -->
 
-	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
+	<!-- <link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css"> -->
 	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
 	
@@ -18,6 +18,7 @@
     
     <link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/jquery-ui-1.8.21.custom.css">
      <link href="../resources/css/news/newsticker.css" rel="stylesheet" type="text/css" />
+     <link href="../resources/css/tipsy.css" rel="stylesheet" type="text/css" />
      
    	
 	 <script src="../resources/js/jquery-1.7.2.min.js"></script>
@@ -32,7 +33,7 @@
      <script src="../resources/js/todo.js" type="text/javascript"></script> 
      <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
 	<script type="text/javascript" src="../resources/js/jquery-1.2.2.pack.js"></script>
-	<script type="text/javascript" src="../resources/js/ajax-tooltip.js"></script>	
+	
 	<script type="text/javascript" src="../resources/js/jquery.tipsy.js"></script>
 	<script type="text/javascript" src="../resources/js/custom/z_common.js"></script>
 	
@@ -158,27 +159,6 @@ $(document).ready(function() {
 	});
 </script>
 
- <script type="text/javascript">
-function changeImage(a){
-	
-	var images = new Array();
-	images[0] = "<c:url  value='/resources/images/icons/urgent.png' />";
-	images[1] = "<c:url  value='/resources/images/icons/warning.png' />";
-	images[2] = "<c:url  value='/resources/images/icons/info.png' />";
-	
-	 var comic = document.getElementById("exp").src;
-	 if(a==164){
-		  $("#exp").attr('src', images[0]);
-	 }else if(a==165){
-		 $("#exp").attr('src', images[1]);
-	 }else if(a==166){
-		 $("#exp").attr('src', images[2]);
-	 }
-	 
-	  
-}
-</script>
- 
  
  
   <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
@@ -187,7 +167,7 @@ function changeImage(a){
                           
 <c:url var="todoImageUrl" value="/resources/images/background-pattern.jpg" />
 <c:url var="showAlertUrl" value="/secure/showalert/111111" />
-<c:url var="info"  value='/resources/images/icons/info.png' />
+
  <c:url var="htmlUrl_todo" value="/secure/gettodopopupwindow" />
  <c:url var="todo" value="/resources/images/icons/todo.png" />
 <c:url var="showTodoUrl" value="/secure/showtodo/111111" />
@@ -196,8 +176,8 @@ function changeImage(a){
 $(document).ready(function() {
 	setInterval(function() {
 		//get_and_populate_todo();
-		get_and_populate_todo();
-		get_and_populate_alerts();
+		//get_and_populate_todo();
+		//get_and_populate_alerts();
  
 	}, 1*30*1000);	
 	
@@ -206,6 +186,10 @@ $(document).ready(function() {
 });
 
 function get_and_populate_alerts(){
+	var images = new Array();
+	images[0] = "<c:url  value='../resources/images/icons/urgent.png' />";
+	images[1] = "<c:url  value='../resources/images/icons/warning.png' />";
+	images[2] = "<c:url  value='../resources/images/icons/info.png' />";
 
 	$.ajax({
 	  	type: 'GET',
@@ -248,10 +232,10 @@ function get_and_populate_alerts(){
 						output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
-						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
+						output+="<a href='#' class='' rel='tipsy'  style='cursor:default;'> <img src='"+images[index]+"'  alt='INFO' /> </a></div>";
 						output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 						
-						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a class='close-icon' rel='tipsy' title='Delete' href='#' onclick='deleteFunction("+$(this).find('id').text()+")' style='float:right;'  > <img src='${closeicon}' height='15' width='15' > </a></div>";
 						
 						output+="</div>";						
 									
@@ -269,10 +253,10 @@ function get_and_populate_alerts(){
 					output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 					output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 					 
-					output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
+					output+="<a href='' rel='tipsy'  style='cursor:default;'  > <img src='"+images[index]+"'  alt='INFO' /> </a></div>";
 					output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 					
-					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
+					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a class='' rel='tipsy' href='#' onclick='deleteFunction("+$(this).find('id').text()+")' style='float:right;'  title='Delete''> <img  src='${closeicon}' height='15' width='15'> </a></div>";
 					
 					output+="</div>";
 					
@@ -339,7 +323,7 @@ $.ajax({
 							output_todo+="<img src='${todo}' alt='Info' /></div>";
 							output_todo+="<div class='todoinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("categoryName").text())+"<div class='categorytip'>"+$(this).find("categoryName").text()+" </div></div>";
 							
-							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onClick='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+							output_todo+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'>"+short_string($(this).find('subject').text())+"</a><div class='todotip'>"+$(this).find("subject").text()+"</div></div><input type='checkbox' onClick='checkonTodoItem("+$(this).find("id").text()+")' id='cktodo1' title='' style='float:right;'></div>";
 							
 							output_todo+="</div>";						
 											

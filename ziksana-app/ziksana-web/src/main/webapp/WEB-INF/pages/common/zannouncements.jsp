@@ -35,7 +35,6 @@
 
 .row-hover {
 
- border:2px solid #27b ! important;
  background-color:#66CCFF;
  color: blue;
  }

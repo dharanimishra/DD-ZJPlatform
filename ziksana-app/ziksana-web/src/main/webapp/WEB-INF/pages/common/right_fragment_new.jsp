@@ -42,24 +42,7 @@ $('.t_toggler').live('click',function(){
 .t_down:hover {
   background: url("/ziksana-web/resources/images/uptoggle.png") no-repeat scroll right 10px rgba(218, 216, 216, 0.17) !important;
 }
-.btn-info-poll {
-	color: #ffffff;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #49afcd;
-	background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de),
-		to(#2f96b4) );
-	
-	background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
-	background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de',
-		endColorstr='#ff2f96b4', GradientType=0 );
-	border-color: #2f96b4 #2f96b4 #1f6377;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled=  false );
-}
+
 	
 .jdash-head-title {
 	font-size:18px;
@@ -91,11 +74,7 @@ $(document).ready(function() {
 			url: '${showPollUrl}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-						//alert('writing to console');	
-						//console.log( 'Poll sample of data:', $(data).text());
-								
-					}
+					
 					var output="";
 					var firstpollid="";
 					var lastpollid="";
@@ -108,34 +87,34 @@ $(document).ready(function() {
 					$(data).find("questionresultpair").each(function(index)  {
 						
 						   // alert('poll results');
-						 	var question = "<p>" + $(this).find("pollQuestion").find("questionText").text() + "</p>";
+						 	var question = "<p style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'>" + $(this).find("pollQuestion").find("questionText").text() + "</p><br/>";
 						 	var currentId = $(this).find("pollQuestion").find("id").text();
 						 	//alert('current id is '+currentId)
 							if ($(this).find("pollQuestion").find("active").text() == "true"){
 						 		output+="<div id='q" + index + "' style='width: 225px;' class='pollquestion'>";
 						 		output+=question;
 						 		//output+="<form id='" + $(this).find("pollQuestion").find("id").text() + "' action=''>";
-						 		output+="<input type='hidden' id='pollId' name='pollId' value='" + $(this).find("pollQuestion").find("id").text() + "'>";
+						 		output+="<input type='hidden' id='pollId"+index+"' name='pollId"+index+"' value='" + $(this).find("pollQuestion").find("id").text() + "'>";
 						 		
 						 		
 						 		var answers="";
 						 		$(this).find("pollQuestion").find("option").each(function(answerindex){
 						 			if (answerindex == 0){
-						 				answers+= "<input type='radio' name='radiobtn" + currentId + "' value='" + $(this).attr("index") + "' checked>" + "<label for='" + answerindex + "'>&nbsp;" + $(this).text() + "</label><br/>";
+						 				answers+= "<input type='radio' name='radiobtn" + currentId + "' value='" + $(this).attr("index") + "' checked>" + "<label style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;' for='" + answerindex + "'>&nbsp;" + $(this).text() + "</label><br/>";
 						 				output+="<input type='hidden' id='optionIndex' name='optionIndex' value='" + $(this).attr("index") + "'>";
 						 			}else{
-						 				answers+= "<input type='radio' name='radiobtn" + currentId + "' value='" + $(this).attr("index") + "'>" + "<label for='" + answerindex + "'>&nbsp;" + $(this).text() + "</label><br/>";
+						 				answers+= "<input type='radio' name='radiobtn" + currentId + "' value='" + $(this).attr("index") + "'>" + "<label style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;' for='" + answerindex + "'>&nbsp;" + $(this).text() + "</label><br/>";
 						 			}						 				
 						 		});
 						 		
 						 		output+=answers;
 						 		
-						 		output+="<br/><button id='submit_poll" + index + "' onClick='submitPole(" + index + ")' style=' float: left;' class='votebtn f-rt btn-info-poll'>Vote</button></p>";
+						 		output+="<br/><button id='submit_poll" + index + "' onClick='submitPole(" + index + ")' style=' float: left;' class='votebtn btn'>Vote</button></p>";
 						 		//output+="<div id='result" + index + "' class=' '><button  class='btnprev f-rt btn-info-poll' id='"+ index + "' >&larr; Prev</button></div>";
 						 		if (index != ($(data).find("questionresultpair").size()-1)){
-						 		output+="<div id='result" + index + "' class=' '><button  id='"+ index + "' style='float:right;' class='btnnext nextbutton_vote f-rt btn-info-poll'>Next &rarr;</button><br/></div>";
+						 		output+="<div id='result" + index + "' class=' '><button  id='"+ index + "' style='float:right;' class='btnnext nextbutton_vote btn'>Next &rarr;</button><br/></div>";
 						 		}else{
-						 		output+="<div id='result" + index + "' class=' '><button  class='btnprev f-rt btn-info-poll' id='"+ index + "' >&larr; Prev</button></div>";
+						 		//output+="<div id='result" + index + "' class=' '><button  class='btnprev f-rt btn-info-poll' id='"+ index + "' >&larr; Prev</button></div>";
 						 		}
 						 		//output+="</form><br/>";
 						 		output+="<br/>";
@@ -149,18 +128,19 @@ $(document).ready(function() {
 							//alert('voted');
 							//alert($(this).find("pollQuestion").find("active").text());
 					        //result+="<p><b></b> &nbsp; <div style='background-color: #09F; height: 20px; width: "+ $(this).find("pollResult").find("answer1count").text + "%;'></div>&nbsp;<b>"+ $(this).find("pollResult").find("answer1count").text;
+					        output+="<div id='result_bar' class='pollresultbar'> </div>";
 							
 							if (index == 0){
 								firstpollid = $(this).find("pollQuestion").find("id").text();
-								output+="<div id='result" + index + "' class='pollresult'>"+result+"<button id='" + index + "' onclick='buttonPrevious()' style='margin-left:170px;' class='btnnext f-rt btn-info-poll'>Next &rarr;</button></div></div>";
+								output+="<div id='result" + index + "' class='pollresult'>"+result+"<button id='" + index + "' onclick='buttonPrevious()' style='margin-left:170px;' class='btnnext btn'>Next &rarr;</button></div></div>";
 					 		} else {
 					 			if (index == ($(data).find("questionresultpair").size()-1)){
 //									console.log("Entering last one questionresultpair");
 									lastpollid = $(this).find("pollQuestion").find("id").text();
-									output+="<div id='result" + index + "' class='pollresult'>"+result+"<button onclick='buttonPrevious()' class='btnprev f-rt btn-info-poll' id='"+ index +"' >&larr; Prev</button></div></div>";
+									output+="<div id='result" + index + "' class='pollresult'>"+result+"<button onclick='buttonPrevious()' class='btnprev btn' id='"+ index +"' >&larr; Prev</button></div></div>";
 								}
 								else {
-						 			output+="<div id='result" + index + "' class='pollresult '>"+result+"<button onclick='buttonPrevious()' id='"+ index + "' style='float:right;' class='btnnext f-rt btn-info-poll'>Next &rarr;</button><button  class='btnprev f-rt btn-info-poll' id='"+ index + "' >&larr; Prev</button></div></div>";
+						 			output+="<div id='result" + index + "' class='pollresult '>"+result+"<button onclick='buttonPrevious()' id='"+ index + "' style='float:right;' class='btnnext btn'>Next &rarr;</button><button  class='btnprev btn' id='"+ index + "' >&larr; Prev</button></div></div>";
 						 		};
 					 		}
 
@@ -219,162 +199,12 @@ $(document).ready(function() {
               			}
               		});
 
-//					$("#btn_next5").click( function(){
-//			        	alert("This will take you to the first question, as this is the last question..");
-//			        	$("#q5").hide();
-//			        	$("#q1").fadeIn();
-//			        });
+
 					 });
 		}
 			
 	});	
-		
-		
-		
-		
-		
-//----------------------------------------
-	/* $.ajax({
-		  	type: 'GET',
-			url: '${showPollUrl}',
-			dataType: 'xml',
-			success: function( data ) {
-					if (console && console.log){
-						//alert('writing to console');	
-						//console.log( 'Poll sample of data:', $(data).text());
-								
-					}
-					var output="";
-					var firstpollid="";
-					var lastpollid="";
-					output+="<span class='jdash-head-title  titles-info  t_toggler t_up' >Poll</span>";
-					 output+="<div class='t_content'>";
-					 $(data).find("pollquestionresult").each(function(){
-							if($(this).find("pollQuestionSize").text()==0){
-								output+="No new Questions";
-							}
-					$(data).find("questionresultpair").each(function(index)  
-							{
-						
-						   // alert('poll results');
-						   
-						 	var question = "<p style='font-family:arial,sans-serif;color:gray;'>"+ $(this).find("pollQuestion").find("questionText").text() + "</p>";
-						 	var currentId = $(this).find("pollQuestion").find("id").text();
-						 	//alert('current id is '+currentId)
-							if ($(this).find("pollQuestion").find("active").text() == "true"){
-						 		output+="<div id='q" + index + "' style='width: 225px; font-family:arial,sans-serif;color:black;' class='pollquestion '>";
-						 		
-						 		output+=question;
-						 		//output+="<form id='" + $(this).find("pollQuestion").find("id").text() + "'>";
-						 		output+="<input type='hidden' id='pollId' name='pollId' value='" + $(this).find("pollQuestion").find("id").text() + "'>";
-						 		
-						 		
-						 		var answers="";
-						 		$(this).find("pollQuestion").find("option").each(function(answerindex){
-						 			if (answerindex == 0){
-						 				answers+= "<input type='radio' name='radiobtn" + currentId + "' value='" + $(this).attr("index") + "' checked>" + "<label for='" + answerindex + "'>&nbsp;" + $(this).text() + "</label><br/>";
-						 				output+="<input type='hidden' id='optionIndex' name='optionIndex' value='" + $(this).attr("index") + "'>";
-						 			}else{
-						 				answers+= "<input type='radio' name='radiobtn" + currentId + "' value='" + $(this).attr("index") + "'>" + "<label for='" + answerindex + "'>&nbsp;" + $(this).text() + "</label><br/>";
-						 			}						 				
-						 		});
-						 		
-						 		output+=answers;
-						 		output+="<br/><button class='f-rt btn-info-poll' id='submit_poll' onClick='submitPoll(" + $(this).attr("memberId") + ")' style=' float: left;' class='votebtn'>Vote</button></p><br/>";
-						 		
-						 	//	output+="</form><br/>";
-						 		output+="<br/>";
-							} else {
-								output+="<div id='q" + index + "' style='width: 225px;' class='pollquestion' expired='true'>";
-								output+=question;
-							}
-							
-							var result="";
-							
-							//alert('voted');
-							//alert($(this).find("pollQuestion").find("active").text());
-					        result+="<p><b></b> &nbsp; <div style='background-color: #09F; height: 20px; width: "+ $(this).find("pollResult").find("answer1count").text + "%;'></div>&nbsp;<b>"+ $(this).find("pollResult").find("answer1count").text;
-							
-							if (index == 0){
-								firstpollid = $(this).find("pollQuestion").find("id").text();
-								output+="<div id='result" + index + "' class='pollresult'>"+result+"<button class='f-rt btn-info-poll' id='" + index + "' style='margin-left:170px;' class='btnnext'>Next &rarr;</button></div></div>";
-					 		} else {
-					 			if (index == ($(data).find("questionresultpair").size())){
-//									console.log("Entering last one questionresultpair");
-									lastpollid = $(this).find("pollQuestion").find("id").text();
-									output+="<div id='result" + index + "' class='pollresult'>"+result+"<button class='btnprev 'f-rt  btn-info-poll' id='"+ index +"' >&larr; Prev</button></div></div>";
-								}
-								else {
-						 			output+="<div id='result" + index + "' class='pollresult'>"+result+"<button class='f-rt btn-info-poll' id='"+ index + "' style='float:right;' class='btnnext'>Next &rarr;</button><button  class='btnprev' id='"+ index + "' >&larr; Prev</button></div></div>";
-						 		};
-					 		}
 
-							//console.log("poll output string" + output);
-					});
-					});
-					output+="<div><span><a class='text-size-px11  lbx-70-50' href='${showpoll}' class='' style='color: #27b;margin-left:200px;'>More</a></span></div>";
-					
-					output+="</div>";
-					
-					$('#poll_placeholder').html(output);
-					
-					$(data).find("questionresultpair").each(function(index){
-						if ($(this).find("pollQuestion").find("active").text() == "true"){
-							$("form#" + $(this).find("pollQuestion").find("id").text()).ajaxForm();
-							console.log("ajaxForm set " + $(this).find("pollQuestion").find("id").text());
-						}
-					});
-					
-					//to view the very first poll when page loads
-			        //hide all result first
-			        $("div.pollresult").hide();
-			        $("div.pollquestion").hide();
-			        
-			        //show the first poll question
-			        $("div#q0").show();
-			        
-			        $('input[type=radio]').click( function(event){
-			        	//alert('test alert')
-			        	//console.log("radio button clicked " + $(this).attr('name'));
-              			
-              			$(this).parent().children("input#optionIndex").attr("value", $(this).attr("value"));
-              			console.log("hidden input#optionIndex value " + $(this).parent().children("input#optionIndex").attr("value"));
-              		});
-					
-					//associate click event to all vote button
-				 	$("button.votebtn").click( function(event){
-              			$(this).attr("disabled", "disabled");
-              			alert('voted boss');
-              			$("div#result" + event.target.id).fadeIn("slow");
-              		});
-					
-					//associate click event to all next buttons
-					$("button.btnnext").click( function(event){
-						$("div#q" + event.target.id).hide();
-              			$("div#q" + (parseInt(event.target.id)+1)).show();
-
-              			if($("div#q" + (parseInt(event.target.id)+1)).attr("expired")){
-              				$("div#result" + (parseInt(event.target.id)+1)).show();
-              			}
-              		});
-					
-					//associate click event to all previous buttons
-					$("button.btnprev").click( function(event){
-						$("div#q" + event.target.id).hide();
-						$("div#q" + (parseInt(event.target.id)-1)).show();
-
-						if($("div#q" + (parseInt(event.target.id)-1)).attr("expired")){
-              				$("div#result" + (parseInt(event.target.id)-1)).show();
-              			}
-              		});
- 
-				$("#btn_next5").click( function(){
-			        	alert("This will take you to the first question, as this is the last question..");
-			        	$("#q5").hide();
-			        	$("#q1").fadeIn();
-			        });
-		}
-	});	 */
 }
 
 </script>
@@ -393,9 +223,7 @@ $(document).ready(function() {
 			url: '${showCourseUrl}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-								console.log( 'course data:', data);
-					}
+					
 					//alert('entering');
 					var draftcourse="";
 					//alert('yes');
@@ -455,13 +283,7 @@ $(document).ready(function() {
                   
                    }
 					
-					
-					
-					
-					console.log("draftcourse is: " + draftcourse);
-					console.log("activecourse is: " + activecourse);
-					console.log("reviewcourse is: " + reviewcourse);
-					
+				
 					$('#draft_placeholder').html( draftcourse);
 					$('#active_placeholder').html( activecourse);
 					$('#review_placeholder').html( reviewcourse);
@@ -519,9 +341,7 @@ $(document).ready(function() {
 			url: '${showAnnouncementUrl}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-								console.log( 'data:', data);
-					}
+					
 					var output="";
 					
 					$(data).find("announcementsList").each(function(){
@@ -543,7 +363,7 @@ $(document).ready(function() {
 												
 					});
 					});
-					console.log("Announcements: " + output);
+					
 				
 					
 					$('#announcement').html(output);
@@ -641,7 +461,7 @@ function short_string(string){
                    <div class="col-right-container for-rounded-box all-box-shadow">
                    <div class='t_content'>
                   		<div id="poll_placeholder"></div>
-            
+            			
             
                    </div>
                   </div>
@@ -669,8 +489,10 @@ function short_string(string){
  function submitPole(indexVal)
  {
 	 
-	 $('div.bar_results_value').remove();
-	 pollid = $('#pollId').val();	
+	 //alert(pollid);
+	 
+	  $('div.bar_results_value').remove();
+	 pollid = $('#pollId'+indexVal+'').val();	
 	 optionindex = $('#optionIndex').val();
 	  $.post( '<c:url value='/secure/submitpoll/'/>'
 		 		 , {'pollId':pollid,'optionIndex':optionindex}
@@ -688,7 +510,7 @@ function short_string(string){
 		 					 $(this).find("pollResult").find("option").each(function(index)
 		 							 {
 		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("optiontext").text()+"</p>";  
-		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("percentage").text()+"%</p>";
+		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("percentage").text()+"% Votes</p>";
 		 						
 		 						output_poll+="<div style='width:"+ $(this).find("percentage").text()+ "%; height:20px; background-color:"+colorNames[index]+";'></div>"; 
 		 						
@@ -698,7 +520,8 @@ function short_string(string){
 		 				 	 //output+="<p  style='padding-left: 10px;'>"+ $(this).find("answer1count").text()+"</p>";
 		 				 	 //alert(output);
 		 					});
-		 			$('div.pollresult').prepend(output_poll);
+		 			$('div.pollresultbar').html(output_poll);
+		 			//$('div.pollresultbar').show();
 		 			$('div.pollresult').show();
 		 			 }
 					 );     
@@ -706,12 +529,12 @@ function short_string(string){
 	  
 	  document.getElementById("submit_poll"+indexVal).disabled=true;
 	  $('.nextbutton_vote').hide();
-	 $('#submit_poll'+indexVal+'').removeClass('btn-info-poll');
+	 $('#submit_poll'+indexVal+'').removeClass('btn-info-poll'); 
  }
  
  function buttonPrevious(){
 	 //alert("Hello");
-	 $('#bar_results_value').hide();
+	 //$('div.pollresultbar').hide();
 	 
  }
  </script>

@@ -114,15 +114,15 @@
 	}
 
 .demo_message_container1{position: relative;}
-.demo_message_container1:hover .demo_message {
+.demo_message_container1:hover .demo_message1 {
   display: block !important;
   padding-top: 22% !important;
 }
 .demo_message1 {
-  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
   bottom: 0;
   color: white;
-  
+  display:none;
   font-size: 10px;
   left: 0;
   padding: 1em;
@@ -302,7 +302,7 @@ $('._cklo').show('');
 					</div>
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
 
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning Program</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Program</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;"> Learning Programs </span> Defines the Curriculum necessary to meet the Learning Objectives..</p>
                 <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">8</p>
@@ -322,7 +322,7 @@ $('._cklo').show('');
               <div id="course1" class="col-lft _ckcourse" style="border:1px solid #ccc;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Course</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Course</p>
 
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Course </span> is a Learning Unit that Heps in Achieving the Learning Objects of the Learning Program..</p>
@@ -348,7 +348,7 @@ $('._cklo').show('');
 					</div>
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
 
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning object</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning object</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Learning Object  </span> is an Learning Unit that can be used as a building block for creating a course..</p>
                 <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">4</p>
@@ -373,7 +373,7 @@ $('._cklo').show('');
 					</div>
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
 
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning Content</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Content</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Learning Contents </span> are  materials that can be associated to a course or a  to meet the Objectives..</p>
                 <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">3</p>
@@ -420,185 +420,7 @@ $('._cklo').show('');
                     <br>
                     
                 
-                 <div id="_isolp">
-                
-              
-               <!-- for learning programs-->
-                
-                <div class="col-lft li-1 All" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Science</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/EscapeVelocity.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                  <a href="#linkurl" rel="tipsy" title="List View Calendar" class="Icon-Calendar3 icons-right">
-                  </a>
-                 <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
-                
-                
-                <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a></div>              
-              </div>
-    </div>
-           <!--end of learning programs -->
-            
-          <!--course-->
-          
-             <div class="col-lft li-1 All" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Geology</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/geology.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                <a href="#linkurl" rel="tipsy" title="List View Calendar" class="Icon-Calendar3 icons-right">
-                  </a>
-                 <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
-                </a><a href="#linkurl" rel="tipsy" title="View " class="Icon-view icons-left" style="margin-right:-6px;"></a></div>              
-              </div>
-    </div>
-                
-         <!-- end of course -->     
-                
-            <!--learning objects-->
-            
-              <div class="col-lft li-1 All Active" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Chemistry</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/chemistry.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                   <a href="#linkurl" rel="tipsy" title="List View Calendar" class="Icon-Calendar3 icons-right">
-                  </a>
-                 <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
-                
-                
-                <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a></div>              
-              </div>
-    </div>
-            
-         <!--end of learning objects-->   
-            
-                
-                
-                  <!--learning content-->
-            
-        
-            
-             <div class="col-lft li-1 All Draft" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Robotics</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/robotics.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                   <a href="#linkurl" rel="tipsy" title="View Calendar" class="Icon-Calendar3 icons-right">
-                  </a>
-                 <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
-                
-                
-                <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a></div>              
-              </div>
-             
-    </div>
-            
-         <!--end of learning content-->   
-         
-         
-          <!--learning content-->
-            
-             <div class="col-lft li-1 All Review" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">earth Science</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/earthscience.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                     <a href="#linkurl" rel="tipsy" title="View Calendar" class="Icon-Calendar3 icons-right">
-                  </a>
-                 <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
-                
-                <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-view icons-left" style="margin-right:-6px;"></a></div>              
-              </div>
-    </div>
-            
-         <!--end of learning content-->   
-         
-         
-         <!--learning content-->
-            
-             <div class="col-lft li-1 All Active" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">genetics</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/genetics.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-  <a href="#linkurl" rel="tipsy" title="View Calendar" class="Icon-Calendar3 icons-right">
-                  </a>
-                 <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
-                
-                <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-view icons-left" style="margin-right:-6px;"></a></div>              
-              </div>
-    </div>
-            
-         <!--end of learning content-->   
-         
-         
-         <!--learning content-->
-            
-             <div class="col-lft li-1 All Review" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">ocean</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/ocean.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                      <a href="#linkurl" rel="tipsy" title="View Calendar" class="Icon-Calendar3 icons-right">
-                  </a>
-                 <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
-                 
-                 
-                <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a></div>              
-              </div>
-    </div>
-            
-         <!--end of learning content-->   
-         
-         
-         <!--learning content-->
-              <!--
-             <div class="col-lft li-1 All" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">botany</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../images/programs/botany.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                      <a href="#linkurl" rel="tipsy" title="View Calendar" class="Icon-Calendar3 icons-right">
-                  </a>
-                <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a><a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a></div>              
-              </div>
-    </div>-->
-            
-         <!--end of learning content-->   
-         
-         
-         
-         
-         
-         
-         
-         
-                
-                  </div> <!--end of isotope-->
+                <!--end of isotope-->
                 
                 </div>  <!--end of for learning programs container-->
                 
@@ -638,55 +460,7 @@ $('._cklo').show('');
                  <div id="_isocourse">
                 
               
-               <!-- for learning programs-->
-                  <!--
-                <div class="col-lft li-1 All Active" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">hydrology</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/hydrology.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                  <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                 
-                </div>              
-              </div>-->
-    </div>
-           <!--end of learning programs -->
-            
-          <!--course-->
-            <!--
-             <div class="col-lft li-1 All Review" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">marine biology</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/marine.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>-->
-                
-         <!-- end of course -->     
+               
                 
             <!--learning objects-->
                  <c:forEach var="course" items="${courses}">
@@ -695,7 +469,7 @@ $('._cklo').show('');
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
 
-                <p style="height:30px;"class="titles-info text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
+                <p style="height:30px;"class="titles-info1 text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
@@ -712,354 +486,18 @@ $('._cklo').show('');
                 </div>
              </c:forEach> 
   
-            
-         <!--end of learning objects-->   
-            
-                
-                
-                  <!--learning content-->
-              <!--
-             <div class="col-lft li-1 All Active" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">marine geophysics</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/marinegeo.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                   <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>-->
     
-            
-         <!--end of learning content-->  
-         
-  
-    <!--learning content-->
-            <!--
-             <div class="col-lft li-1 All Review" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Ocean characteristics</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/oceanchar.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                    <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>-->
-            
-         <!--end of learning content-->   
-         
-         
-      <!--learning content-->
-         <!--  
-             <div class="col-lft li-1 All Draft" id="course3" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Dynamics of Creativity</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/Dynamics of Creativity.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                                
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-right" style="margin-right:-6px;"></a>
-                     
-                      
-                <a onclick="coursedel('course3','Dynamics of Creativity')" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>
-         -->      
-         <!--end of learning content-->   
-      
-      
-      <!--learning content-->
-          <!--  
-             <div class="col-lft li-1 All Draft" id = "course2" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Behavioural Models</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/Behavioural Models.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                   
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-right" style="margin-right:-6px;"></a>
-                     
-                     
-                <a onclick= "coursedel('course2','Behavioural Models')" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>
-         -->     
-         <!--end of learning content-->     
-         
-         
-  
-  
-  
-         
-         
-          
                 
                   </div> <!--end of isotope-->
                 
                 </div>  <!--end of Course container-->
-     
-     
-  
-  
-  
-   <!--learning object container-->
-               
-                <div class="center for-rounded-box all-box-shadow _lo" style="width:973px; padding-left:10px; padding-right:-10px;">
-                
-                  <div class="programisotope" style="height:40px;margin-right:800px;width:973px;">
-                    
-                      <li> <a class="btn btn-info" href="#linkurl" onClick="showreviewlo()" style="float:right;">Review</a></li>
-                    <li><a class="btn btn-info" href="#linkurl" onclick="showdraftlo()" style="float:right;">Draft</a></li>
-                   
-                   
-                    <li><a class="btn btn-info" href="#linkurl" onclick="showalllo()" style="float:right;">All</a> </li>           
-                    
-                    </div>  <!--end of zeni isotope--> 
-					<a href="#">  
-                   <img src="images/cross.png" onclick="closeactive()"  style="margin-left:900px; "></a>
-                    <br>
-                   
-                
-                 <div id="_isolo">
-                
-              
-               <!-- for learning programs-->
-            <!--       
-                <div class="col-lft li-1 All Review" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">hydrometerology</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/hydrometerology.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                 
-                </div>              
-              </div>-->
-    </div>
-           <!--end of learning programs -->
-            
-          <!--course-->
-          <!--  
-             <div class="col-lft li-1 All Draft" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">surface hydrology</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/surface.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                  <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>-->
-                
-         <!-- end of course -->     
-                
-            <!--learning objects-->
-                 <!--
-              <div class="col-lft li-1 All Active" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">drainage basin</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/drainage.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                  <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>
-       -->        
-         <!--end of learning objects-->   
-         
-         <!--learning content-->
-             <!--
-             <div class="col-lft li-1 All Review" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Water Qaulity</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/water.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                     <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>-->   
-             
-     <!--end of learning content-->   
-                
-                  </div> <!--end of isotope-->
-                
+                      
                 </div>  <!--learning object container-->
                 
-    
-    
-    
-    <!--learning content container-->
-               
-                <div class="center for-rounded-box all-box-shadow _lc" style="width:973px; padding-left:10px; padding-right:-10px;">
-                
-                  <div class="programisotope" style="height:40px;margin-right:800px;width:973px;">
-                    
-                      <li> <a class="btn btn-info" href="#linkurl" onClick="showreviewlc()" style="float:right;">Review</a></li>
-                    <li><a class="btn btn-info" href="#linkurl" onclick="showdraftlc()" style="float:right;">Draft</a></li>
-                   
-                   
-                    <li><a class="btn btn-info" href="#linkurl" onclick="showalllc()" style="float:right;">All</a> </li>           
-                    
-                    </div> 
-<a href="#">  
-                   <img src="../resources/images/cross.png" onclick="closeactive()"  style="margin-left:900px; "></a>					<!--end of zeni isotope--> 
-                    <br>
-                
-                 <div id="_isolc">
-                
-              
-               <!-- for learning programs-->
-                     <!--
-                <div class="col-lft li-1 All Draft" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Ocean Exploration </p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/oceanexplore.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                  <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                 
-                </div>              
-              </div>
-    </div>-->
-           <!--end of learning programs -->
-            
-          <!--course-->
-           <!--
-             <div class="col-lft li-1 All Review" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Mapping Watersheds </p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/mappingwater.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                  <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>
-         -->  
-         <!-- end of course -->     
-                
-            <!--learning objects-->
-                <!--
-              <div class="col-lft li-1 All Draft" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase">Undersea Geology</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/undersea.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                    <a href="#linkurl" rel="tipsy" title="View calendar" class="Icon-Calendar3 icons-right" style="margin-right:-6px;"></a>
-                  <a href="#linkurl" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right">
-                </a>
-                  
-                  
-                 <a href="#linkurl" rel="tipsy" title="Edit"class="Icon-edit icons-left" style="margin-right:-6px;"></a>
-                     
-                      <a href="#linkurl" rel="tipsy" title="View" class="Icon-view icons-left" style="margin-right:-6px;"></a>
-                     
-                <a href="#linkurl" rel="tipsy" title="Delete" class="Icon-delete icons-left" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-    </div>
-            -->
-         <!--end of learning objects-->   
-         
-        
-                
-                  </div> <!--end of isotope-->
-                
-                </div>  <!--learning content container-->            
-                
-                           
-          </div>      
+       
+          </div>   
+
+</div>		  
                   <!--End Center Container-->
            	  <!--Right column--></div>
                <!--End Right column-->

@@ -30,7 +30,7 @@ public interface CourseMapper {
 	 * @param courseId
 	 * @return
 	 */
-	@Select({ "select ID as courseid, name, description, coursestatus ",
+	@Select({ "select courseid, name, description, coursestatus ",
 			" from corcourse where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "courseId", column = "courseid"),
@@ -46,7 +46,7 @@ public interface CourseMapper {
 	 * @return
 	 */
 	@Select({
-			"select ID as courseid, memberroleid, name, description, coursestatus, contentsecurityneededindicator, courseduration",
+			"select courseid, memberroleid, name, description, coursestatus, contentsecurityneededindicator, courseduration",
 			" from corcourse where memberroleid = 100 " })
 	@Results(value = {
 			@Result(property = "courseId", column = "courseid"),
@@ -77,9 +77,9 @@ public interface CourseMapper {
 			"update corcourse",
 			"set contentsecurityneededindicator = #{securityIndicator,jdbcType=BOOLEAN},",
 			"additionalpropertyindicator = #{additionalInfoIndicator,jdbcType=BOOLEAN},",
-			"where ID = #{courseId,jdbcType=INTEGER}" })
+			"where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "courseId", column = "ID"),
+			@Result(property = "courseId", column = "courseid"),
 			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description"),
@@ -110,7 +110,7 @@ public interface CourseMapper {
 	 * @param learningComponentId
 	 * @return
 	 */
-	@Select({ "select count(*) from asmassignment where learningcomponentid = #{learningComponentId, jdbcType=INTEGER}" })
+	@Select({ "select count(*) from asmassignment where ID = #{learningComponentId, jdbcType=INTEGER}" })
 	int checkAssignment(Integer learningComponentId);
 
 	/**
@@ -211,7 +211,7 @@ public interface CourseMapper {
 	 * @return
 	 */
 	@Select({ "select * from corcourse where memberroleid = #{memberRoleId,jdbcType=INTEGER}" })
-	@Results(value = { @Result(property = "courseId", column = "ID"),
+	@Results(value = { @Result(property = "courseId", column = "courseid"),
 			@Result(property = "courseUseType", column = "courseusetype"),
 			@Result(property = "courseversion", column = "courseversion"),
 			@Result(property = "gradetype", column = "gradetype"),
@@ -230,7 +230,7 @@ public interface CourseMapper {
 	 */
 	@Select({ "select courseid, name, description coursestatus, memberroleid from corcourse where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "courseId", column = "ID"),
+			@Result(property = "courseId", column = "courseid"),
 			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description"),
@@ -243,12 +243,12 @@ public interface CourseMapper {
 	 * @return
 	 */
 	@Select({
-			"select ID as courselearningcomponentid, courseid, learningcomponentid, learningcomponenttypeid ",
+			"select courselearningcomponentid, courseid, learningcomponentid, learningcomponenttypeid ",
 			" from corcourselearningcomponent where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "courseLearningComponentId", column = "courselearningcomponentid"),
 			@Result(property = "duration.durationUnit", column = "durationunit"),
-			@Result(property = "course.courseId", column = "ID"),
+			@Result(property = "course.courseId", column = "courseid"),
 			@Result(property = "learningComponent.learningComponentId", column = "learningcomponentid"),
 			@Result(property = "learningcomponentType.learningcomponentTypeId", column = "learningcomponentTypeId"),
 			@Result(property = "learningComponentType", column = "learningcomponentTypeId", javaType = LearningComponentType.class, one = @One(select = "getLearningComponentType")),
@@ -268,7 +268,7 @@ public interface CourseMapper {
 	 * @param learningComponentId
 	 * @return
 	 */
-	@Select({ "select ID as learningcomponentid, name, description, learningObjIndicator, learningcomponenttypeid, learningcomponentnestid "
+	@Select({ "select learningcomponentid, name, description, learningObjIndicator, learningcomponenttypeid, learningcomponentnestid "
 			+ "from corlearningcomponent where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "learningcomponentid", column = "learningcomponentid"),
@@ -286,7 +286,7 @@ public interface CourseMapper {
 	 * @param learningComponentNestId
 	 * @return
 	 */
-	@Select({ "select ID as learningcomponentnestid from corlearningcomponenttype where learningcomponentnestid = #{learningComponentNestId,jdbcType=INTEGER}" })
+	@Select({ "select learningcomponentnestid from corlearningcomponenttype where learningcomponentnestid = #{learningComponentNestId,jdbcType=INTEGER}" })
 	@Results(value = { @Result(property = "learningComponentNestId", column = "learningcomponentnestid") })
 	LearningComponentNest getLearningComponentNest(
 			Integer learningComponentNestId);
@@ -295,7 +295,7 @@ public interface CourseMapper {
 	 * @param learningComponentId
 	 * @return
 	 */
-	@Select({ "select ID as learningcomponentcontentid, contentdescription, learningcontentid from corlearningcomponentcontent where isdelete = false"
+	@Select({ "select learningcomponentcontentid, contentdescription, learningcontentid from corlearningcomponentcontent where isdelete = false"
 			+ " and learningcomponentid = #{learningComponentId,jdbcType.INTEGER}" })
 	@Results(value = {
 			@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
@@ -309,7 +309,7 @@ public interface CourseMapper {
 	 * @param learningContentId
 	 * @return
 	 */
-	@Select({ "select ID as learningcontentid, contentpath, contentformat, contentname, contentdescription "
+	@Select({ "select learningcontentid, contentpath, contentformat, contentname, contentdescription "
 			+ "from corlearningcontent where learningcontentid = #{learningContentId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "learningcontentid", column = "learningcontentid"),
@@ -322,7 +322,7 @@ public interface CourseMapper {
 	 * @param learningContentId
 	 * @return
 	 */
-	@Select({ "select ID as learningcontentpartsid, partpath, partsequence from corlearningcontentparts where learningcontentid = #{learningContentId,jdbcType=INTEGER}" })
+	@Select({ "select learningcontentpartsid, partpath, partsequence from corlearningcontentparts where learningcontentid = #{learningContentId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "learningContentPartsId", column = "learningcontentpartsid"),
 			@Result(property = "partPath", column = "partpath"),
@@ -331,15 +331,17 @@ public interface CourseMapper {
 	// Course Tree structure related methods ENDS
 
 	
-	@Update({"update corcourse set isdelete = #{isDelete, jdbcType=BOOLEAN} where ID = #{courseId, jdbcType=INTEGER}"})
+	@Update({"update corcourse set isdelete = #{isDelete, jdbcType=BOOLEAN} where courseid = #{courseId, jdbcType=INTEGER}"})
 	void deleteCourse(@Param("isDelete") Boolean isDelete, @Param("courseId") Integer courseId);
 	
-		
+	
 	List<Course> getCourses(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId);
+	
 	
 	List<Course> getAllCourses(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId);
 	
 	Integer totalNumberOfCourses(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId);
+	
 
 
 }

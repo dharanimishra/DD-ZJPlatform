@@ -79,7 +79,7 @@ public interface EnrichmentMapper {
 	 * @return
 	 */
 	@Select({
-			"select count(*) from corenrichment where ID = #{learningComponentId} ",
+			"select count(*) from corenrichment where learningComponentId = #{learningComponentId} ",
 			" or courseId = #{courseId}" })
 	int getEnrichByContentIdOrComponentId(@Param("learningComponentId") Integer learningComponentId,
 			@Param("courseId") Integer courseId);
