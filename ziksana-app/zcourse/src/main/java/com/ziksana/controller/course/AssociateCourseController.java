@@ -73,6 +73,19 @@ public class AssociateCourseController {
 
 		return mv;
 	}
+	
+	@RequestMapping(value = "/ev_modalplayer/{contentId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView showevmodalplayer(@PathVariable String contentId) {
+		LOGGER.info("Entering showmodalplayer(): ");
+		ModelAndView mv = new ModelAndView("courses/ev_modalplayer");
+
+		Content content = contentService.getContent(Integer.valueOf(contentId));
+		mv.addObject("content", content);
+
+		return mv;
+	}
 
 	@RequestMapping(value = "/enhance", method = RequestMethod.GET)
 	public @ResponseBody

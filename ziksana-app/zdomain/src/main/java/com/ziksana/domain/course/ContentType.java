@@ -7,6 +7,7 @@ public enum ContentType {
 
 	// TODO: retrieve the ids from the static data service
 	VIDEO      (1, "VIDEO"),
+	ENHANCED_VIDEO (11, "ENHANCED_VIDEO"),
 	AUDIO      (2, "AUDIO"),
 	TEXTUAL   (3, "TEXTUAL"),
 	PDF (4, "PDF"),
@@ -15,6 +16,7 @@ public enum ContentType {
 	EXCEL (7, "EXCEL"),
 	IMAGE (8, "IMAGE"),
 	LINK (9, "LINK");
+	
 
 	private final int id;
 	

@@ -12,39 +12,37 @@
 
 
 	<div id="video">
-		<div id="mediaplayer"></div>
+<div id="flashContent"></div>
 
-		<script type="text/javascript">
+<script type="text/javascript">
+            // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
+            var swfVersionStr = "11.4.0";
+            // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
+            var xiSwfUrlStr = "playerProductInstall.swf";
+            var flashvars = {};
+            var params = {};
+            params.quality = "high";
+            params.bgcolor = "#ffffff";
+            params.allowscriptaccess = "always";
+            params.allowfullscreen = "true";
+            var attributes = {};
+            attributes.id = "EnhancePlayer";
+            attributes.name = "EnhancePlayer";
+            attributes.align = "middle";
+            swfobject.embedSWF(
+                "/ziksana-web/resources/jwplayer/EnhancePlayer.swf", "flashContent", 
+                "700px", "500px", 
+                swfVersionStr, xiSwfUrlStr, 
+                flashvars, params, attributes);
+            // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+            setTimeout('setUrl()', 4000);
 		
-		var MediaServerDomainUrl = 'http://54.243.235.88';
-		var MediaUploadDirectory = 'http://54.243.235.88/zikload-xml/uploads';
-		
-			var flashvars = {
-				'file' : 'http://54.243.235.88/zikload-xml/uploads${content.contentUrl}',
-				'provider' : 'http',
-				'http.startparam' : 'starttime',
-				'autostart':'true'
-			};
-
-			var params = {
-				'allowfullscreeninteractive' : 'true',
-				'allowscriptaccess' : 'always'
-
-			};
-
-			var attributes = {
-				'id' : 'playerID',
-				'name' : 'playerID'
-			};
-
-			swfobject.embedSWF('/ziksana-web/resources/jwplayer/enrich-player.swf', 'mediaplayer',
-					'550', '400', '9', 'false', flashvars, params, attributes,
-					flashloaded);
-			var reftoplayer;
-			function flashloaded(e) {
-				reftoplayer = e.ref;
 				
-			}
+			function ff_player_mode() { return "enrich"; }
+			//function ff_load_images() { return "http://54.243.235.88/zikload-xml/uploads"+"${content.thumbnailPicturePath}"+"|||"+"${content.numberOfThumbnails}"; }
+			function ff_get_recorded_file(){ return "http://54.243.235.88/${content.contentUrl}"; }
+
 			
 			var add_educator_content = function(content_type, course_id, node_id, duration, title, description, coordinates, url){
 				console.log('inside add educator content');

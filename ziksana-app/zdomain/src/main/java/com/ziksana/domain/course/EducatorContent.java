@@ -8,6 +8,8 @@ package com.ziksana.domain.course;
  *
  */
 public class EducatorContent {
+	 
+	 Integer id;
 	
 	Integer contentType;
 	 Integer duration;
@@ -53,7 +55,12 @@ public class EducatorContent {
 		this.url = url;
 	}
 	 
-	 
+	 public Integer getId() {
+			return id;
+		}
+		public void setId(Integer id) {
+			this.id = id;
+		}
 	 
 
 }

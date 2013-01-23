@@ -328,6 +328,102 @@ function getAssociateContentSave() {
 
 }
 
+
+function assoicateEnhancedVideo(course_id, component_id, parent_content_id, enhanced_video_path) {
+
+
+
+console.log('inside associateEnhancedVideo');
+
+		// Step 1: Assign Parameters required by the sendMessage function.
+		uri = '/ziksana-web/secure/saveOrUpdateContent';
+
+		token = ''; // dummy token for demo. you have to send real token.
+		request_type = 'POST'; // can be GET or POST. In this case, a GET
+		// request
+
+		var Course_id = 'COURSE_'+course_id;
+
+		var CourseLearningComponentId = 'COMPONENT_'+component_id;
+
+		var LearningComponentId = 'COMPONENT_'+component_id;
+
+		var LearningContentId = '';
+
+		var Content_Name = 'Enhanced Video - '+parent_content_id;
+
+		var Content_Description = $('#Associatecdescrte').val();
+
+		var Subject_Area = '';
+
+		var Subject = '';
+
+		var Topic = '';
+
+		var Contenttag_Field ='';
+
+		var AssocContent_Image = '';
+
+		var LinkType = 'UploadContent';
+
+		var ContentUpload = $('#imgultype').val();
+
+		var ContentUrl = $('#conturl').val();
+
+		var ContentDesc = "-";
+
+		var ContentPath = enhanced_video_path;
+
+		var ThumbnailPicturePath = '';
+
+		var NumberOfThumbnails = '';
+
+		var ContentType = 11; //11 refers to enhanced video
+
+		var parameters = {
+			"Course_id" : Course_id,
+			"LearningComponentId" : LearningComponentId,
+			"LearningContentId" : LearningContentId,
+			"Content_Name" : Content_Name,
+			"Content_Description" : Content_Description,
+			"Subject_Area" : Subject_Area,
+			"Subject" : Subject,
+			"Topic" : Topic,
+			"Contenttag_Field" : Contenttag_Field,
+			"AssocContent_Image" : AssocContent_Image,
+			"LinkType" : LinkType,
+			"ContentUpload" : ContentUpload,
+			"ContentUrl" : ContentUrl,
+			"ContentDesc" : ContentDesc,
+			"ContentPath" : ContentPath,
+			"ThumbnailPicturePath" : ThumbnailPicturePath,
+			"NumberOfThumbnails" : NumberOfThumbnails,
+			"ContentType" : ContentType
+
+		};
+
+		$.post(uri, parameters, function(data) {
+			console.log(data);
+			if (data.response == 'success') {
+				course_id = data.id;
+				$('#courseid').val(course_id);
+				if (course_id != '' & course_id != null) {
+					window.location.href = window.location.href;
+					$('#tempdiv').html(
+							'<span style="color:red;">' + data.message
+									+ '</span>');
+				} else {
+					$('#tempdiv').html(
+							'<span style="color:red;">' + data.message
+									+ '</span>');
+				}
+			}
+		});
+
+
+}
+
+
 function noteSuccessCallback(data) {
 
 	var msgbody = parseZiksanaMessage(data);

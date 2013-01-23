@@ -367,6 +367,12 @@ $(document).ready(
 						playVideo('http://54.243.235.88/zikload-xml/uploads/'+content_path);
 
 					}
+					
+					if (content_type == 'ENHANCED_VIDEO') {
+
+						playEnhancedVideo('http://54.243.235.88/'+content_path);
+
+					}
 
 
 
@@ -506,6 +512,71 @@ function playVideo(path) {
 
 
 }
+
+
+function playEnhancedVideo(path) {
+
+
+	$('#enhanced_video_player_container').show().css('visibility','visible');
+	
+	$('#notes_and_bookmarks_container, #table_of_contents_container, #questions_container').css('visibility', 'hidden');
+	
+	
+	$('#videoSection, #video_actions, .add_note_trigger, .add_question_trigger, #play-vedio').css('visibility', 'hidden');
+	
+	
+	
+	jwplayer('player').stop();
+	
+
+	//$('#notes_and_bookmarks_container, #table_of_contents_container, #questions_container').css('visibility', 'visible');
+
+
+
+	//$('#videoSection').css('visibility', 'visible');
+
+
+
+	//$('.add_note_trigger, .add_question_trigger').css('visibility', 'visible');
+
+
+
+	//$('#play-vedio, #video_actions').css('visibility', 'visible');
+	var swfVersionStr = "11.4.0";
+    // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
+    var xiSwfUrlStr = "playerProductInstall.swf";
+    var flashvars = {};
+    var params = {};
+    params.quality = "high";
+    params.bgcolor = "#ffffff";
+    params.allowscriptaccess = "always";
+    params.allowfullscreen = "true";
+    var attributes = {};
+    attributes.id = "EnhancePlayer";
+    attributes.name = "EnhancePlayer";
+    attributes.align = "middle";
+    swfobject.embedSWF(
+        "/ziksana-web/resources/jwplayer/EnhancePlayer.swf", "enhanced_video_player", 
+        "700px", "500px", 
+        swfVersionStr, xiSwfUrlStr, 
+        flashvars, params, attributes);
+    // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+    swfobject.createCSS("#enhanced_video_player", "display:block;text-align:left;");
+    setTimeout('setUrl()', 4000);
+
+		
+
+	
+	$('#enhanced_video_path').val(path);
+
+
+
+
+
+}//end of playEnhancedVideo
+
+function ff_player_mode() { return "playback"; }
+function ff_get_recorded_file(){ return $('#enhanced_video_path').val(); }
 
 
 

@@ -170,6 +170,12 @@ function onButtonClick(menuitemId, type) {
 				playVideo('/ziksana-web/secure/modalplayer/' + data.contentId);
 
 			}
+			
+			if (content_type == 'ENHANCED_VIDEO') {
+
+				playEnhancedVideo('/ziksana-web/secure/ev_modalplayer/' + data.contentId);
+
+			}
 
 			if (content_type == 'AUDIO') {
 
@@ -237,6 +243,11 @@ function onButtonClick(menuitemId, type) {
 	} else if (menuaction == "Enhance") {
 
 		content_id = tree.getSelectedItemId();
+		parsed_content_id = content_id.split('_')[1];
+		component_id = tree.getParentId(content_id);
+		parsed_component_id = component_id.split('_')[1];
+		console.log('Component Id is: '+ component_id);
+		parsed_course_id = $('#courseid').val().split('_')[1];
 
 		$.get('/ziksana-web/secure/content/getContentInfo', {
 			'courseId' : $('#courseId').val(),
@@ -256,7 +267,7 @@ function onButtonClick(menuitemId, type) {
 					|| content_type == 'EXCEL') {
 				// displayImageSet('/ziksana-web/secure/slides/'+data.contentId);
 				displayEnhanceModal("/ziksana-web/secure/enhancePlayer/"
-						+ content_id.substring(content_id.indexOf("_") + 1));
+						+ parsed_content_id +'/'+parsed_component_id+'/'+parsed_course_id);
 
 			}
 

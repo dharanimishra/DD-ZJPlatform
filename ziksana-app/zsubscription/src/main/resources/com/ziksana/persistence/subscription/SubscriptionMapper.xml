@@ -383,7 +383,7 @@
 	</delete>
 	
 	<delete id="deleteEducatorContent" parameterType="java.lang.Integer">
-	          delete from corcontentenrichment where ContentEnrichmentId=#{contentId}
+	          delete from corcontentenrichment where id=#{contentId}
 	</delete>
 	
 
@@ -424,7 +424,8 @@
 	</resultMap>
 	
 	<resultMap id="educatorContentResultMap" type="com.ziksana.domain.course.EducatorContent">
-
+        
+        <result property="id" column="id" />
 		<result property="contentType" column="LinkType" />
 		<result property="title" column="LinkElement" />
 		<result property="description" column="LinkDescription" />

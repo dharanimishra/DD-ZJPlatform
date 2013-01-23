@@ -17,25 +17,42 @@
 	<parentId>LCOMPONENT_${childtreenode.parentId}</parentId> <title>${childtreenode.contentname}</title>
 
 	<!--  we need to check the content type..and populate the icon based on the content type  -->
-
+	
 	<c:choose>
 		<c:when test="${childtreenode.contentType == 1}">
+			<icon>${videoIcon}</icon>
+		</c:when>
+		<c:when test="${childtreenode.contentType == 11}">
 			<icon>${videoIcon}</icon>
 		</c:when>
 		<c:when test="${childtreenode.contentType == 2}">
 			<icon>${audioIcon}</icon>
 		</c:when>
 		<c:when test="${childtreenode.contentType == 3}">
-			<icon>${pdfIcon}</icon>
+			<icon>${noteIcon}</icon>
 		</c:when>
 		<c:when test="${childtreenode.contentType == 4}">
-			<icon>${wordIcon}</icon>
+			<icon>${pdfIcon}</icon>
 		</c:when>
 		<c:when test="${childtreenode.contentType == 5}">
+			<icon>${wordIcon}</icon>
+		</c:when>
+		<c:when test="${childtreenode.contentType == 6}">
 			<icon>${pptIcon}</icon>
 		</c:when>
+		<c:when test="${childtreenode.contentType == 7}">
+			<icon>${excelIcon}</icon>
+		</c:when>
+		<c:when test="${childtreenode.contentType == 8}">
+			<icon>${imageIcon}</icon>
+		</c:when>
+		<c:when test="${childtreenode.contentType == 9}">
+			<icon>${linkIcon}</icon>
+		</c:when>
+
+			
 		<c:otherwise>
-			<icon>${docIcon}</icon>
+			<icon>${imageIcon}</icon>
 		</c:otherwise>
 	</c:choose> 
 	<!--   <icon>${docIcon}</icon> -->  

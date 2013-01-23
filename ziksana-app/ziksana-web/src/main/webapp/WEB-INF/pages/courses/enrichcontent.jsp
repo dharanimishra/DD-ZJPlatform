@@ -614,7 +614,20 @@ function load_tree(){
 									+ '" style="width:705px; height:600px;" scrolling="no"></iframe>');						
 
 						
-					} else {
+					} else if(content_type_id == 11){//Enhanced video -- 11
+						
+						course_id = $('#courseId').val();
+						$('#ContentPanel').empty();
+						$('#ContentPanel').append(
+							'<iframe src="/ziksana-web/secure/ev_enrichplayer/'
+									+ course_id
+									+ '/'
+									+ component_id
+									+ '/'
+									+ content_id
+									+ '" style="width:800px; height:700px;" scrolling="no"></iframe>');		
+						
+					}else {
 						$('#ContentPanel').empty();
 						
 					}

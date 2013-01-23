@@ -380,10 +380,10 @@ public class SubscriptionController {
 	}
 	
 	
-	@RequestMapping(value = "/editEducatoContent", method = RequestMethod.POST)
+	@RequestMapping(value = "/editEducatorContent", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer editEducatoContent(
-			@RequestParam(value = "eduContentEnrichId", required = true) String eduContentEnrichId,
+			@RequestParam(value = "id", required = true) String eduContentEnrichId,
 			@RequestParam(value = "title", required = true) String noteTitle,
 			@RequestParam(value = "description", required = false) String noteDescription,
 			@RequestParam(value = "duration", required = true) String noteDuration,
@@ -412,6 +412,29 @@ public class SubscriptionController {
 
 		
 		ModelAndView mv = new ModelAndView("courses/enrich_player");
+		mv.addObject("courseId",   courseId);
+		mv.addObject("componentId", componentId);
+		mv.addObject("contentId", contentId);
+		
+		Content content = contentService.getContent(Integer.valueOf(contentId));
+		mv.addObject("content", content);
+				
+
+		return mv;
+		
+
+	}
+	
+	
+	@RequestMapping(value = "/ev_enrichplayer/{courseId}/{componentId}/{contentId}", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView  ev_enrichPlayer(@PathVariable String courseId,
+			@PathVariable String componentId,
+			@PathVariable String contentId
+			) {
+
+		
+		ModelAndView mv = new ModelAndView("courses/ev_enrich_player");
 		mv.addObject("courseId",   courseId);
 		mv.addObject("componentId", componentId);
 		mv.addObject("contentId", contentId);

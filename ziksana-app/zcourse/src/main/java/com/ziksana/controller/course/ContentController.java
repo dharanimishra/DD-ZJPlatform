@@ -43,12 +43,18 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "/enhancePlayer/{contentId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/enhancePlayer/{contentId}/{componentId}/{courseId}", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView enhancePlayer(@PathVariable Integer contentId) {
+	ModelAndView enhancePlayer(
+			@PathVariable Integer contentId,
+			@PathVariable Integer componentId,
+			@PathVariable Integer courseId
+			) {
 		ModelAndView mav = new ModelAndView("courses/enhance_player");
 		Content content = contentService.getContent(contentId);
 		mav.addObject("content", content);
+		mav.addObject("contentId", contentId);
+		mav.addObject("componentId", componentId);
 
 		return mav;
 
@@ -69,7 +75,7 @@ public class ContentController {
 		Content content = contentService.getContent(Integer
 				.valueOf(parsedContentId));
 
-		if (content.getContentType() != 1 && content.getContentType() != 2) {
+		if (content.getContentType() != 1 && content.getContentType() != 11 && content.getContentType() != 2) {
 			content.setContentUrl("/ziksana-web/secure/slides/"
 					+ content.getContentId());
 		}

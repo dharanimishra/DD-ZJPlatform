@@ -19,6 +19,27 @@ function playVideo(path) {
 	});
 }
 
+function playEnhancedVideo(path) {
+
+	$.fancybox({
+
+		'width' : 750,
+
+		'height' : 700,
+
+		'autoDimensions' : true,
+
+		'transitionIn' : 'fade',
+
+		'transitionOut' : 'fade',
+
+		'type' : 'iframe',
+
+		'href' : path
+
+	});
+}
+
 function playAudio(path) {
 
 	$.fancybox({
@@ -44,9 +65,9 @@ function playAudio(path) {
 function displayEnhanceModal(path) {
 	$.fancybox({
 
-		'width' : 700,
+		'width' : 750,
 
-		'height' : 650,
+		'height' : 700,
 
 		'autoDimensions' : true,
 
