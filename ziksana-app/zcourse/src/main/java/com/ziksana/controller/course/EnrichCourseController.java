@@ -47,7 +47,7 @@ public class EnrichCourseController {
 			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("courseid", courseid);
 		}
-
+		modelView.addObject("courseId", contentId);
 		return modelView;
 	}
 }

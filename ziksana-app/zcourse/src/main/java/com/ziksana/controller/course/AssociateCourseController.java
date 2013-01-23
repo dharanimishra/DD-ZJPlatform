@@ -41,15 +41,21 @@ public class AssociateCourseController {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView showAssociateCourse(@PathVariable String courseId) {
+		Integer course_id = 0;
 		LOGGER.info("Entering showAssociateCourse(): ");
-		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
+		try {
+			course_id = Integer.parseInt(courseId.split("_")[1]);
+		} catch (NumberFormatException nfe) {
+			LOGGER.error("Entering showAssociateCourse(): NumberFormatException nfe: "
+					+ nfe);
+		}
 		ModelAndView modelView = null;
 		if (course_id > 0) {
 			modelView = new ModelAndView("courses/associatecontent");
-			modelView.addObject("CourseId", course_id);
+			modelView.addObject("CourseId", courseId);
 		} else {
 			modelView = new ModelAndView("courses/definecourse");
-			modelView.addObject("CourseId", course_id);
+			modelView.addObject("CourseId", courseId);
 		}
 
 		return modelView;
