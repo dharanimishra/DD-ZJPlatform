@@ -141,7 +141,7 @@
 		corcourse
 		where
 		CourseStatus=#{statusId} and
-		MemberRoleId=#{memberPersonaId}
+		MemberRoleId=#{memberPersonaId} order by creationdate desc
 		LIMIT 0, 3
 
 	</select>

@@ -42,6 +42,7 @@ public class BlogPost implements Comparable<BlogPost> {
 		this.content = content;
 		this.postingMember = new MemberPersona();
 		this.postingMember.setMemberRoleId(postingMember);
+		
 		this.createDate = createDate;
 		this.viewCount = viewCount;
 	}

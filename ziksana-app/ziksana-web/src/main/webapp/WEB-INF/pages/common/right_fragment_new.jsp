@@ -132,21 +132,23 @@ $(document).ready(function() {
 							
 							if (index == 0){
 								firstpollid = $(this).find("pollQuestion").find("id").text();
-								output+="<div id='result" + index + "' class='pollresult'>"+result+"<button id='" + index + "' onclick='buttonPrevious()' style='margin-left:159px;width:78px;' class='btnnext btn'>Next &rarr;</button></div></div>";
+								output+="<div  id='result" + index + "' class='pollresult'>"+result+"<button id='" + index + "' onclick='buttonPrevious()' style='margin-left:159px;width:78px;' class='btnnext btn'>Next &rarr;</button></div></div>";
 					 		} else {
 					 			if (index == ($(data).find("questionresultpair").size()-1)){
 //									console.log("Entering last one questionresultpair");
 									lastpollid = $(this).find("pollQuestion").find("id").text();
-									output+="<div id='result" + index + "' class='pollresult'>"+result+"<button  style='float:left;width:78px;' onclick='buttonPrevious()' class='btnprev btn' id='"+ index +"' >&larr; Prev</button></div></div>";
+									output+="<br/><div style='width:35px;' id='result" + index + "' class='pollresult'>"+result+"<button  style='float:left;width:78px;' onclick='buttonPrevious()' class='btnprev btn' id='"+ index +"' >&larr; Prev</button></div></div>";
 								}
 								else {
-						 			output+="<div  style='margin-top:10px;' id='result" + index + "' class='pollresult '>"+result+"<button onclick='buttonPrevious()' id='"+ index + "' style='float:right;width:78px;' class='btnnext btn'>Next &rarr;</button><button  style='width:78px;margin-top:16px;margin-left:-59px;' class='btnprev btn' id='"+ index + "' >&larr; Prev</button></div></div>";
+						 			output+="<div  style='margin-top:10px;' id='result" + index + "' class='pollresult '>"+result+"<button onclick='buttonPrevious()' id='"+ index + "' style='float:right;width:78px;' class='btnnext btn'>Next &rarr;</button><button  style='width:78px;margin-top:0px;' class='btnprev btn' id='"+ index + "' >&larr; Prev</button></div></div>";
 						 		};
 					 		}
 
 							//console.log("poll output string" + output);
 					});
-					output+="<span><a class='text-size-px11  lbx-70-50 moreclass' href='${showpoll}' style='color: #27b;margin-left:200px;'>More</a></span>";
+					
+					output+="<div><a class='text-size-px11  lbx-70-50 moreclass' href='${showpoll}' style='color: #27b;margin-left:200px;'>More</a></span></div></div>";
+					
 					$('#poll_placeholder').html(output);
 					
 					$(data).find("questionresultpair").each(function(index){
@@ -234,7 +236,7 @@ $(document).ready(function() {
 						var progress =  $(this).find("progress").text()+"%";
 						
 					    console.log("Yes I am in");  
-					    draftcourse+="<p class='blok-title-L'><a href='/ziksana-web/secure/course'>" +  " " + $(this).find("title").text() + "</a></p>";
+					    draftcourse+="<p class='blok-title-L'><a href='#'>" +  " " + $(this).find("title").text() + "</a></p>";
 					          
 							draftcourse+="";
 							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
