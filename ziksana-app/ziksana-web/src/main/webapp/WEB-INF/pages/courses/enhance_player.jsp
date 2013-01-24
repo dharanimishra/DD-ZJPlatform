@@ -42,7 +42,6 @@
 			function ff_load_images() { return "http://54.243.235.88/zikload-xml/uploads"+"${content.thumbnailPicturePath}"+"|||"+"${content.numberOfThumbnails}";}
 			function ff_recording_save_path(path) {
 				console.log(path);
-				alert(path);
 				enhanced_video_path = path;
 				window.parent.assoicateEnhancedVideo('${courseId}', '${componentId}', '${contentId}', enhanced_video_path);
 			}
