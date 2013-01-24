@@ -53,7 +53,7 @@
     <!--fancybox-->
 	<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
 	<script type="text/javascript" src="../resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
-
+ 
 	<link rel="stylesheet" type="text/css" href="../resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
 	<!--fancybox end-->
 	
@@ -79,7 +79,7 @@
 				
 		
 		
-			$('#foo2').carouFredSel({
+			$('#foo1s').carouFredSel({
 					width:910,
 					align:'left',
 					auto: false,
@@ -91,7 +91,7 @@
 						onMouse: true,
 						onTouch: true
 					}
-				});
+				}); 
 
 		
 		});
@@ -99,6 +99,7 @@
 		function showcourse()
 		{
 		$('.stdwrapper').css("visibility", "visible");
+		$('.arrowdown').show('');
 		}
 		
 			
@@ -144,11 +145,14 @@
 	/*slider */
 	
 	.image_carousel {
+	width:952px;
 	padding: 15px 0 15px 47px;
 	position: relative;
+	
+	display:table;
 }
 .image_carousel img {
-	border: 1px solid #ccc;
+	
 	background-color: white;
 	padding: 9px;
 	margin: 7px;
@@ -285,6 +289,15 @@ font-family:Verdana;
 color:#666;
 			
 }
+.titles-info1 {
+    background-color: rgba(218, 216, 216, 0.17);
+    border-bottom: 1px solid #CCCCCC;
+    border-radius: 3px 3px 0 0;
+    display: block;
+    margin: 1px 0 10px;
+    padding: 7.5px 10px;
+    position: relative;
+}
 		</style>
   
         
@@ -294,17 +307,32 @@ color:#666;
 <div id="wrapper">
        <!--Header Container-->
         	<!--Header Container-->
-		<p><a><img data-launcher src="/zisana-web/resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
+		 	 <c:url var="launcherPage" value="/secure/launcher"/>
+        	 <c:url var="educatorPage" value="/secure/educatordashboard"/>
+		<p><a><img data-launcher data-launchpage="${launcherPage}" src="../resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
         	<header class="bottom-box-shadow bckground-wihte">
-			<p>&nbsp;&nbsp;</p>
+			
             	<div class="topheader"> 
           <!--logo container-->
           
           <!--end logo container-->
 		    
-          <div class="status-container">
+ 
+        </div>
+            <nav>
+			<div class="menu" style=" margin-left:0px;">
+                      <ul>
+                        <li><a href="${educatorPage}" >My Home</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/secure/showMyPrograms"class="current">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="#">My Performance</a><div class="nav-line"></div></li>
+                        <li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;My Locker</a></li>
+                      </ul>
+                    </div>
+					
+                       <div class="status-container">
 		
-            <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box">
+            <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box ">
+			
               <ul>
                 <li><a href="#" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
                  <li><a href="#" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
@@ -322,23 +350,11 @@ color:#666;
                  <ul>
                    <li><a href="#">Preferences</a></li>
                    <li><a href="#">Privacy</a></li>
-                   <li><a href="#">Sign Out</a></li></ul>
+                   <li><a href="/ziksana-web/secure/logout">Sign Out</a></li></ul>
                 </fieldset>
               </div>
             </div>
           </div>
-        </div>
-            <nav>
-			<div class="menu" style=" margin-left:-170px;">
-                      <ul>
-                        <li><a href="educatorHomepage.html" class="current">My Home</a><div class="nav-line"></div></li>
-                        <li><a href="myprograms.html">My Programs</a><div class="nav-line"></div></li>
-                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
-                        <li><a href="#" style="margin-left:-10px;">My Locker</a></li>
-                      </ul>
-                    </div>
-					
-              
               </nav>
             </header>
         <!--End Header Container-->
@@ -362,34 +378,31 @@ color:#666;
 		
         
         
-        <div class="image_carousel" style="background-color:#FCF9F5; ">
-	<div id="foo2">
+        <div class="image_carousel" style="background-color:#ffffff; ">
+	
     
     
-		<div class="col-stud" style="border:1px solid #ccc;">
-              
+		<div class="col-stud" style="border:1px solid #ccc; width:210px; display:table-cell;">
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">${program}</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">${program}</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;"> Learning Programs </span> Defines the Curriculum necessary to meet the Learning Objectives..</p>
-                <p class="number-creat-boxs f-r font-Signika bold for-rounded-box" style="margin-top:10px;">3</p>
-				
-                <div class="icons-list" >
-                  
-                 
-				   <a onclick="showcourse()" rel="tipsy" title="List Courses" class="Icon-listp icons-left"> </a>
-				  
-                </div>              
+                <p class="number-creat-boxs f-r font-Signika bold for-rounded-box" style="margin-top:10px;">2</p>
+				<div class="icons-list" >
+                  <a onclick="showcourse()" rel="tipsy" title="List Courses" class="Icon-listp icons-left"> </a>
+				 	<img src="../resources/images/nav-arow.png" class="arrowdown" style="padding-top:0px; margin-top:36px; position:absolute; margin-left:73px; display:none;"> 
+				</div>
+			
               </div>
-    </div>
+			  
+     </div>
 	
-    <div class="col-stud" style="width:115px">
-	</div>
+    <br/>
     
-		<div class="col-stud" style="border:1px solid #ccc;">
+		<div class="col-stud" style="border:1px solid #ccc;width:210px;display:table-cell;" >
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning Program 2</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Program 2</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;"> Learning Programs </span> Defines the Curriculum necessary to meet the Learning Objectives..</p>
                 <p class="number-creat-boxs f-r font-Signika bold for-rounded-box" style="margin-top:10px;">8</p>
@@ -404,45 +417,29 @@ color:#666;
     </div>
 		
         
-      <div class="col-stud" style="width:120px">
-	</div>  
-        
-        <div class="col-stud" style="border:1px solid #ccc;">
+      <br>
+
+       
+    
+		<div class="col-stud" style="border:1px solid #ccc;width:210px;display:table-cell;" >
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning Programs 3</p>
+                <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Program 3</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;"> Learning Programs </span> Defines the Curriculum necessary to meet the Learning Objectives..</p>
                 <p class="number-creat-boxs f-r font-Signika bold for-rounded-box" style="margin-top:10px;">8</p>
 				
                 <div class="icons-list">
-                 
                   
+                 
 				   <a onclick="showcourse()" rel="tipsy" title="List Courses" class="Icon-listp icons-left"> </a>
 				  
-           </div>              
-        </div>
-   
-   </div>
+                </div>              
+              </div>
+    </div>
        
-     <!--  
-        <div class="col-stud" style="border:1px solid #ccc;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px18 font-Signika blue uppercase">Learning Program</p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
-				<span style="font-weight:bold;"> Learning Programs </span> Defines the Curriculum necessary to meet the Learning Objectives..</p>
-                <p class="number-creat-boxs f-r font-Signika bold for-rounded-box" style="margin-top:10px;">8</p>
-				
-                <div class="icons-list">
-                  <a href="#linkurl" rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
-                  <a href="learningprograms.html" rel="tipsy" title="Create New" class="Icon-create icons-right"> </a>
-           </div>              
-        </div>
    
-   </div>
-   
-  --> 
+
    
     
    
@@ -452,7 +449,10 @@ color:#666;
 	
     
     
-    </div>
+ 
+	
+	
+	
 	<div class="clearfix"></div>
 	<a class="prev" id="prev2" href="#"><span>prev</span></a>
 	<a class="next" id="next2" href="#"><span>next</span></a>
@@ -481,15 +481,15 @@ color:#666;
                    
                 </div> --> <!--end of programisotope--> 
 	
-	 <div class="col-lft li-1 All" style=" width:30px;">
+	 <div class="col-lft li-1 All" style=" width:60px;">
               
               
 			</div>  
-	
+				<c:forEach var="course" items="${courses}">
 				 <div class="col-lft li-1 All" style="border:1px solid #ccc; width:205px;">
-             <c:forEach var="course" items="${courses}">
+            
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-                <p class="titles-info text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
+                <p class="titles-info1 text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:12px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="162" height="97"/>
 				</p>
 				<div class="course_progress_bar_container" ><a href="#" rel="tipsy"  title="80%">
@@ -497,7 +497,7 @@ color:#666;
 				</div>
                 <div class="icons-list">
 				
-					<a href="ContentConsumption/index.html" rel="tipsy" title="Observe Course" class="Icon-course icons-right"></a>
+					<a href="/ziksana-web/secure/course" rel="tipsy" title="Observe Course" class="Icon-course icons-right"></a>
 				    <a href="#" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
 				   <a href="#linkurl" rel="tipsy" title="View Assignments  " class="Icon-view icons-left" style="margin-right:-2px;"></a>
                  <a href="#linkurl" rel="tipsy" title="List View Calendar" class="Icon-Calendar3 icons-right"></a>
@@ -506,22 +506,18 @@ color:#666;
                
 				</div>              
               </div>
-              </c:forEach>
-              
-			</div>  
-	 <div class="col-lft li-1 All" style=" width:110px;">
               
               
 			</div>  
-			<div class="col-lft li-1 All" style="border:1px solid #ccc; width:205px;">
+			
+			</c:forEach>
+	
+			
               
               
 			</div>  
-			<div class="col-lft li-1 All" style=" width:120px;">
-              
-              
-			</div>  
-	<div class="col-lft li-1 All" style="border:1px solid #ccc; width:205px;">
+		 
+	
               
               
     </div>  

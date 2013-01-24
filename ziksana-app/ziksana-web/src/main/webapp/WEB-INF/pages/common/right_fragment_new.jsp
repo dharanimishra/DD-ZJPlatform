@@ -47,7 +47,7 @@ $('.t_toggler').live('click',function(){
 .jdash-head-title {
 	font-size:18px;
 	font-family:signika;  
-	cursor: move;
+	cursor: auto;
 	color: #666;
 }
 .jdash-head-title:hover { color: #ccc; }
@@ -87,7 +87,7 @@ $(document).ready(function() {
 					$(data).find("questionresultpair").each(function(index)  {
 						
 						   // alert('poll results');
-						 	var question = "<p style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'>" + $(this).find("pollQuestion").find("questionText").text() + "</p><br/>";
+						 	var question = "<p style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:0px; cursor:pointer;color:grey;'>" + $(this).find("pollQuestion").find("questionText").text() + "</p><br/>";
 						 	var currentId = $(this).find("pollQuestion").find("id").text();
 						 	//alert('current id is '+currentId)
 							if ($(this).find("pollQuestion").find("active").text() == "true"){
@@ -137,7 +137,7 @@ $(document).ready(function() {
 					 			if (index == ($(data).find("questionresultpair").size()-1)){
 //									console.log("Entering last one questionresultpair");
 									lastpollid = $(this).find("pollQuestion").find("id").text();
-									output+="<br/><div style='width:35px;' id='result" + index + "' class='pollresult'>"+result+"<button  style='float:left;width:78px;' onclick='buttonPrevious()' class='btnprev btn' id='"+ index +"' >&larr; Prev</button></div></div>";
+									output+="<br/><div style='width:35px; margin-top:10px;' id='result" + index + "' class='pollresult'>"+result+"<button  style='float:left;width:78px;' onclick='buttonPrevious()' class='btnprev btn' id='"+ index +"' >&larr; Prev</button></div></div>";
 								}
 								else {
 						 			output+="<div  style='margin-top:10px;' id='result" + index + "' class='pollresult '>"+result+"<button onclick='buttonPrevious()' id='"+ index + "' style='float:right;width:78px;' class='btnnext btn'>Next &rarr;</button><button  style='width:78px;margin-top:0px;' class='btnprev btn' id='"+ index + "' >&larr; Prev</button></div></div>";

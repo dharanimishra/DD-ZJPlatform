@@ -27,9 +27,10 @@
   font-size: 10px;
   font-weight: bold;
   height: 14px;
-  margin-right: 4px;
-  padding: 5px;
+  
+  
   text-align: center;
+ 
   width: 65px;
    
 }

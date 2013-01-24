@@ -228,7 +228,7 @@ $('._cklo').show('');
         	 <c:url var="logoutPage" value="/secure/logout"/>
 		<p><a><img data-launcher data-launchpage="${launcherPage}" src="../resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
         	<header class="bottom-box-shadow bckground-wihte">
-			<p>&nbsp;&nbsp;</p>
+			
             	<div class="topheader"> 
           <!--logo container-->
           
@@ -609,7 +609,7 @@ $('._cklo').show('');
                 <div class="center for-rounded-box all-box-shadow _course" style="width:973px; padding-left:10px; padding-right:-10px;">
                 <div style="margin-left:850px;disply:table; top:-100">
 
-					 <div class="createnew" style="display:table-cell;font-size:11px;"><a href="modelthinking_create.html"><img src="../resources/images/plus.png" width=16px, height=16px> &nbsp;Create New</a></span> 
+					 <div class="createnew" style="display:table-cell;font-size:11px;"><a href="/ziksana-web/secure/createcourse"><img src="../resources/images/plus.png" width=16px, height=16px> &nbsp;Create New</a></span> 
 					</div>
 					<div style="display:table-cell; padding-left:20px;">
 					<a href="#">  
@@ -821,9 +821,8 @@ $('._cklo').show('');
                
                 
                  
-<a href="#">  
-                   <img src="../resources/images/cross.png" onclick="closeactive()"  style="margin-left:900px; "></a>					<!--end of zeni isotope--> 
-                    <br>
+				<!--end of zeni isotope--> 
+                    
                 
                  <div id="_isolc">
                 

@@ -72,14 +72,15 @@ div.jdash-head-title {
 	font-size:18px;
 	font-family:signika;  
 	padding: 3px;
-	cursor: move;
+	cursor: pointer;
 	color: #666;
 	padding:-9px;
+	
 }
 /* Item Title - While Hovering */
-div.jdash-head-title:hover { color: #ccc; }
+div.jdash-head-title:hover { color: #ccc;cursor: pointer; }
 /* Item Title - While Hovering - Sub Title */
-div.jdash-head-title:hover span.sub-title { color: #666666; }
+div.jdash-head-title:hover span.sub-title { color: #666666;cursor: pointer;  }
 
 /* Item Collapse - Expanded */
 div.jdash-head-collapse {

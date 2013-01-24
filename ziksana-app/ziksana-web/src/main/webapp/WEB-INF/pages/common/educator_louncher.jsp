@@ -578,7 +578,7 @@ function checkonTodoItem(val){
 	});
 	
 	$('#todoid'+val).hide();
-	
+	get_and_populate_todo();
 	
 }
 
@@ -791,7 +791,8 @@ $("#datepara").show();
                             
                         	
                         </div>
-                        
+                         <div class="_cMiddle">                        
+                        </div>
                         <div class="_cRight all-box-shadow">
                         	<div class="_e1">
                             	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead"><span class="dmonth"></span> - Recap on Ziksana Capability</span></div>
@@ -816,7 +817,8 @@ $("#datepara").show();
                         </div>
                     
 						</div>
-						</div>
+						</div> 
+						
 						</div>
 					</div>
 <div class="clearfix"> </div>

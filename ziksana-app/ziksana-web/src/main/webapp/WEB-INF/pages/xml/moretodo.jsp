@@ -83,7 +83,7 @@ function deleteTodoItem(val){
 		success: function( data ) {
 			
 			$('#todoid'+val).remove();
-			
+			window.location.href = window.location.href;
 		}
 	});
 	
@@ -109,7 +109,8 @@ $(document).ready(function() {
 	
 	$('select#todo_categories').change(function(){
 		
-		if($(this).val().toLowerCase() == 'add_new_category'){}
+		//if($(this).val().toLowerCase() == 'add_new_category'){}
+		if($(this).val() == 'add_new_category'){ show_category_form(); }
 	});
 	
 	

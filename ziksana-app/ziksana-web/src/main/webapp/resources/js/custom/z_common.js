@@ -6,7 +6,7 @@ var launcher_fancybox;
 $(function(){
 
 	$('[data-launcher]').click(function(){
-		launchpage = $(this).attr('data-launchpage') //get launch page location from the cookie
+		launchpage = $(this).attr('data-launchpage'); //get launch page location from the cookie
 		//alert(launchpage);
 		
 		//initiate a fancybox with the url of the launchpage.
@@ -19,7 +19,7 @@ $(function(){
 			'type': 'iframe',
 			'href': launchpage,
 			'showCloseButton': false,
-			'onComplete': setTimeout("add_ziklogo_and_close_button();", 900)
+			'onComplete': setTimeout("add_ziklogo_and_close_button();", 2000)
 			
 		});
 		

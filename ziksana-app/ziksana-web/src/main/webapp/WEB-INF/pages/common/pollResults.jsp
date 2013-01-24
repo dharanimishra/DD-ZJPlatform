@@ -187,12 +187,12 @@ function hideContents(){
         	
                     <label value="Period" style="display:inline;">Start Date</label> 
              
-            <input type="text" style="display:inline;width:90px;" id="vDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
+            <input type="text" style="display:inline;width:100px;" id="vDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
             
                     <label value="Period"  style="display:inline;">End Date</label> 
                                   
              
-			  <input type="text" style="display:inline;width:90px;" id="EDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
+			  <input type="text" style="display:inline;width:100px;" id="EDate" class="datepicker" title="Date Required" value="Value (Date)"/> 
             <a id="_go" onCLick="getCategoryByBetweenDates1()" class="aClass">Go</a>
         </div>
         <!-- end contentGroup -->

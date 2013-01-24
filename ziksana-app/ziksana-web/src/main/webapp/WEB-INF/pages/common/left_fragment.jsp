@@ -56,7 +56,7 @@
 .jdash-head-title {
 	font-size:18px;
 	font-family:signika;  
-	cursor: move;
+	cursor: auto;
 	color: #666;
 }
 .jdash-head-title:hover { color: #ccc; }
@@ -396,8 +396,8 @@ function displayUnAnsweredPairs(current){
 	}else{
 	outputResult+="<div class='t_content'>";
 	outputResult+="<div id='question_info_message'style='font-family:verdana; '></div>";
-	outputResult+="<div id='quest'style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;'>";
-	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label>";
+	outputResult+="<div id='quest'style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:0px; cursor:pointer;color:grey;'>";
+	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label style='margin-left:0px' id='cur-qus-value'>"+questionArray[current]+"</label>";
 	outputResult+="<table class='sortable' width='180px' height='30px' >";
 
 	var optionsList = optionArray[current].split("/");
