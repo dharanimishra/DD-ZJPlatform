@@ -68,6 +68,26 @@
 <!-- end for number spinner -->
 <script src="/ziksana-web/resources/js/dropdown/hover-dropdown.min.js"></script>
 <script src="/ziksana-web/resources/js/dropdown/tiwtter.js"></script>
+<script type="text/javascript"> 
+ $(document).ready(function() { 
+   $(".signin").click(function(e) {          
+   e.preventDefault();
+   $("fieldset#signin_menu").toggle();
+   $(".signin").toggleClass("menu-open");
+   });
+
+   $("fieldset#signin_menu").mouseup(function() {
+   return false
+   });
+   $(document).mouseup(function(e) {
+   if($(e.target).parent("a.signin").length==0) {
+   $(".signin").removeClass("menu-open");
+   $("fieldset#signin_menu").hide();
+   }
+   }); 
+ 
+}); 
+ </script>
 <script>
 	$(document).ready(function() {
 		$('.js-activated').dropdownHover();
@@ -113,7 +133,6 @@
 				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a>
 		</p>
 		<header class="bottom-box-shadow bckground-wihte">
-			<p>&nbsp;&nbsp;</p>
 			<div class="topheader">
 				<!--logo container-->
 

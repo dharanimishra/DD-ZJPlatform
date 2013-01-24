@@ -119,6 +119,26 @@
 	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+	<script type="text/javascript"> 
+ $(document).ready(function() { 
+   $(".signin").click(function(e) {          
+   e.preventDefault();
+   $("fieldset#signin_menu").toggle();
+   $(".signin").toggleClass("menu-open");
+   });
+
+   $("fieldset#signin_menu").mouseup(function() {
+   return false
+   });
+   $(document).mouseup(function(e) {
+   if($(e.target).parent("a.signin").length==0) {
+   $(".signin").removeClass("menu-open");
+   $("fieldset#signin_menu").hide();
+   }
+   }); 
+ 
+}); 
+ </script>
 <style type="text/css">
 #message {
 	padding: 1em 0;
@@ -206,7 +226,6 @@ span.standartTreeRow:hover {
 				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a>
 		</p>
 		<header class="bottom-box-shadow bckground-wihte">
-			<p>&nbsp;&nbsp;</p>
 			<div class="topheader">
 				<!--logo container-->
 

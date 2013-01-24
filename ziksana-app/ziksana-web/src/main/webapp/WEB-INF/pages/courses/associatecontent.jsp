@@ -111,6 +111,27 @@
 <script
 	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript"> 
+ $(document).ready(function() { 
+   $(".signin").click(function(e) {          
+   e.preventDefault();
+   $("fieldset#signin_menu").toggle();
+   $(".signin").toggleClass("menu-open");
+   });
+
+   $("fieldset#signin_menu").mouseup(function() {
+   return false
+   });
+   $(document).mouseup(function(e) {
+   if($(e.target).parent("a.signin").length==0) {
+   $(".signin").removeClass("menu-open");
+   $("fieldset#signin_menu").hide();
+   }
+   }); 
+ 
+}); 
+ </script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		jQuery("#Associatequalifier").validationEngine();
@@ -202,7 +223,6 @@ span.standartTreeRow:hover {
 				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a>
 		</p>
 		<header class="bottom-box-shadow bckground-wihte">
-			<p>&nbsp;&nbsp;</p>
 			<div class="topheader">
 				<!--logo container-->
 
@@ -536,10 +556,10 @@ span.standartTreeRow:hover {
 															Content</option>
 														<option value="UploadContent">Upload Content</option>
 
-														<option value="ExternalWebPage">Associate URL of
+													<!--  <option value="ExternalWebPage">Associate URL of
 															the Content</option>
 
-														<option value="CreateContent">Create Content</option>
+														<option value="CreateContent">Create Content</option> -->
 													</select>
 												</div>
 												<!-- end of moduleselection--->
