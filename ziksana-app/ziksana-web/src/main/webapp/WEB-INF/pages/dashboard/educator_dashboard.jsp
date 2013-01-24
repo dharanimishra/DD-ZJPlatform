@@ -176,8 +176,8 @@ $(document).ready(function() {
 $(document).ready(function() {
 	setInterval(function() {
 		//get_and_populate_todo();
-		//get_and_populate_todo();
-		//get_and_populate_alerts();
+		get_and_populate_todo();
+		get_and_populate_alerts();
  
 	}, 1*30*1000);	
 	

@@ -423,8 +423,8 @@ function answeredQuestionDisplay(){
 	var outputResult="";
 	outputResult+="<br/>";
 	outputResult+="<table id='updateTable'  value='hide' class=' table tab1' style='border:1px solid gray;'>";
-	outputResult+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>&nbsp;&nbsp;&nbsp;QUESTIONS</th>";
-	outputResult+="<th  width='200px' style='color:#fff;'>ANSWERED DATE</th></tr>";
+	outputResult+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff; font-weight:bold;'>&nbsp;&nbsp;&nbsp;QUESTIONS</th>";
+	outputResult+="<th  width='200px' style='color:#fff; font-weight:bold;'>ANSWERED DATE</th></tr>";
 	
 	
 	for(var i = 0; i<answeredQuestion.length;i++){
