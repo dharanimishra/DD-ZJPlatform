@@ -96,6 +96,8 @@
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/tree_ed.js"></script>
 <script
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
+<script src="/ziksana-web/resources/js/custom/z_plugins.js"></script>
+<script src="/ziksana-web/resources/js/custom/z_common.js"></script>
 <!-- End tree -->
 <script
 	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"

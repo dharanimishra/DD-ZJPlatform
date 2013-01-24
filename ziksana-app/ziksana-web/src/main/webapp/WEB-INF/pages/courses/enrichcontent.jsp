@@ -43,6 +43,8 @@
 <script type="text/javascript" src="/ziksana-web/resources/js/tree/myTreeEnrich.js"></script>
 <script type="text/javascript" src="/ziksana-web/resources/js/tree/splitter.js"></script>
 <script type="text/javascript" src="/ziksana-web/resources/js/tree/jqxexpander.js"></script>
+<script src="/ziksana-web/resources/js/custom/z_plugins.js"></script>
+<script src="/ziksana-web/resources/js/custom/z_common.js"></script>
 
 
 <link rel="stylesheet" href="http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/styles/jqx.base.css" type="text/css" />
