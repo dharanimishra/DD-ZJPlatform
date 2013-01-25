@@ -134,7 +134,7 @@ public class CourseContentController {
 			content.setThumbnailPicturePath(ThumbnailPicturePath);
 			content.setScreenshotPath(ScreenshotPath);
 			content.setStatus(ContentStatus.ACTIVE);
-			content.setNumberOfThumbnails(numberOfThumbnails);
+			content.setNumberOfThumbnails(numberOfThumbnails-1);
 			content.setRightsOwningMember(accountableMember);
 
 			LearningComponentContent compContent = new LearningComponentContent();
