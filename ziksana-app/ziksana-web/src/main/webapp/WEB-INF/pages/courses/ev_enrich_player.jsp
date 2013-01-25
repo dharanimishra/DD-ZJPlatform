@@ -91,7 +91,7 @@
 							data_table_tbody_html += '<tr><td>Reference</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+url+'</td><td>'+duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="reference" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 9){ //9 = Educator HotSpot
-							data_table_tbody_html += '<tr><td>Hotspot</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td></td><td>'+duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="hotspot" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Hotspot</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+coordinates+'</td><td>'+duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="hotspot" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 7){ //7 = TOC
 							data_table_tbody_html += '<tr><td>TOC Item</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>&nbsp</td><td>'+duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="toc" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
@@ -191,7 +191,7 @@
 
 			var ff_add_note = function(note) {
 				
-				//console.log('inside ff_add_note s');
+				console.log('inside ff_add_note s');
 				var delim1 = note.indexOf("||");
 				var note_title = note.substring(0, delim1);
 				note = note.substring(delim1 + 2);
@@ -201,6 +201,20 @@
 				var note_time = Math.floor(note);
 				//window.alert("You have Added Note ITEM: "+note_title+ " descibed as " +  note_desc+ " at time " + note_time);
 				
+				var table = document.getElementById("dataTable");
+				var rowCount = table.rows.length;
+				var row = table.insertRow(rowCount);
+				var cell1 = row.insertCell(0);
+				cell1.innerHTML = "Notes";
+				var cell2 = row.insertCell(1);
+				cell2.innerHTML = "<b onclick='jwplayer(reftoplayer).seek("+ note_time + ")'>" + note_title + "</b>";
+
+				var cell3 = row.insertCell(2);
+				cell3.innerHTML = note_desc;
+				var cell4 = row.insertCell(3);
+				cell4.innerHTML = note_time;
+				var cell5 = row.insertCell(4);
+				cell5.innerHTML = "<img src='/ziksana-web/resources/images/delete.jpg'   onclick='del(this)'>";
 				//jwplayer(reftoplayer).play();
 
 
@@ -234,8 +248,23 @@
 				var note_desc = note.substring(0, delim2);
 				note = note.substring(delim2 + 2);
 				var note_time = note;
-				
-				//jwplayer(reftoplayer).play();
+				//window.alert("You have Added Reference ITEM: "+note_title+ " linking " +  note_desc+ " at time " + note_time);
+				var table = document.getElementById("dataTable");
+				var rowCount = table.rows.length;
+				var row = table.insertRow(rowCount);
+				var cell1 = row.insertCell(0);
+				cell1.innerHTML = "Reference";
+				var cell2 = row.insertCell(1);
+				cell2.innerHTML = "<b onclick='jwplayer(reftoplayer).seek("
+						+ note_time + ")'>" + note_title + "</b>";
+
+				var cell3 = row.insertCell(2);
+				cell3.innerHTML = note_desc;
+				var cell4 = row.insertCell(3);
+				cell4.innerHTML = note_time;
+				var cell5 = row.insertCell(4);
+				cell5.innerHTML = "<img src='/ziksana-web/resources/images/delete.jpg'   onclick='del(this)'>";
+				jwplayer(reftoplayer).play();
 
 				/*
 				note_anchor_string = '<a title="'+note_desc+'" onclick="jwplayer().seek('+note_time+').play(true);" data-iconprefix="note">'+note_title+'</a>';
@@ -254,7 +283,7 @@
 			}
 
 			var ff_add_hs = function(note) {
-				//console.log('inside ff_add_hs');
+				console.log('inside ff_add_hs');
 				var delim1 = note.indexOf("||");
 				var note_title = note.substring(0, delim1);
 				note = note.substring(delim1 + 2);
@@ -263,8 +292,22 @@
 				note = note.substring(delim2 + 2);
 				var note_time = note;
 				//window.alert("You have Added Reference ITEM: "+note_title+ " linking " +  note_desc+ " at time " + note_time);
-				
-				//jwplayer(reftoplayer).play();
+				var table = document.getElementById("dataTable");
+				var rowCount = table.rows.length;
+				var row = table.insertRow(rowCount);
+				var cell1 = row.insertCell(0);
+				cell1.innerHTML = "Hotspot";
+				var cell2 = row.insertCell(1);
+				cell2.innerHTML = "<b onclick='jwplayer(reftoplayer).seek("
+						+ note_time + ")'>" + note_title + "</b>";
+
+				var cell3 = row.insertCell(2);
+				cell3.innerHTML = note_desc;
+				var cell4 = row.insertCell(3);
+				cell4.innerHTML = note_time;
+				var cell5 = row.insertCell(4);
+				cell5.innerHTML = "<img src='/ziksana-web/resources/images/delete.jpg'   onclick='del(this)'>";
+				jwplayer(reftoplayer).play();
 
 				/*
 				note_anchor_string = '<a title="'+note_desc+'" onclick="jwplayer().seek('+note_time+').play(true);" data-iconprefix="note">'+note_title+'</a>';
@@ -291,7 +334,8 @@
 				var note_desc = note.substring(0, delim2);
 				note = note.substring(delim2 + 2);
 				var note_time = note;
-				//window.alert("You have Added TOC ITEM: " + note_title + " under " + note_desc + " at time " + note_time);
+				window.alert("You have Added TOC ITEM: " + note_title
+						+ " under " + note_desc + " at time " + note_time);
 
 
 
@@ -387,36 +431,23 @@
 	
 	<style type="text/css">
 	
-table.enrich_table {
-  color: gray;
-  font-family: tahoma;
-  font-size: 8px;
-  border-collapse: collapse;
-  text-align: left;
-}
-table.enrich_table tr {border-top: 1px solid #eee;}
-table.enrich_table th {
-  padding: 1em;
-  font-size: 11px;
-  font-weight:normal;
-}
-table.enrich_table td {
-  font-size: 11px;
-  padding: 1em;
-}
-table.enrich_table td img {cursor:pointer; margin-right: .5em;}		
+		table.enrich_table {}
+		table.enrich_table th {padding: .5em;}
+		table.enrich_table td {padding: .5em;}
+		
 #edit_educator_content {
-  background: #444;
+  background: none repeat scroll 0 0 black;
+  border-radius: 3px 3px 3px 3px;
   box-shadow: 0 0 12px black;
   color: white;
   display: inline-block;
   font-family: verdana;
-  height: 201px;
-  left: 83px;
+  height: 280px;
+  left: 30%;
   padding: 0.5em;
   position: fixed;
-  top: 103px;
-  width: 393px;
+  top: 5%;
+  width: 500px;
 }
 		#edit_educator_content label {display: block; margin-bottom: .5em;}
 		#edit_educator_content input[type="text"]{width: 90%;}
