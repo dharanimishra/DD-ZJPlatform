@@ -289,7 +289,7 @@ span.standartTreeRow:hover {
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="#">My Courses </a> > </strong><strong
+					href="#">My Courses </a>  </strong><strong
 					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">
@@ -756,8 +756,7 @@ span.standartTreeRow:hover {
 		<footer> </footer>
 		<!--End Footer Container-->
 	</div>
-
-	<style rel="text/css">
+<style rel="text/css">
 #SWFUpload_1 {
 	left: 0;
 	cursor: pointer;
