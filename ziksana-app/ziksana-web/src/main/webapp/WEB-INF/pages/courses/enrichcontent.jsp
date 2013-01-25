@@ -199,7 +199,7 @@
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="#">My Courses </a>  </strong><strong
+					href="/ziksana-web/secure/showMyPrograms">My Courses </a>  </strong><strong
 					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">

@@ -293,7 +293,7 @@ span.standartTreeRow:hover {
 		<!--End Header Container-->
 		<div class="sub-nav">
 			<div class="f-l">
-				<strong class="text-size-px12 font-Signika blue"><a>My Courses </a> </strong><strong class="light-gray text-size-px12">Create
+				<strong class="text-size-px12 font-Signika blue"><a href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong><strong class="light-gray text-size-px12">Create
 					New Course </strong>
 			</div>
 			<div class="f-r">
