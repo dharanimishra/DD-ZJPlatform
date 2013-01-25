@@ -416,6 +416,8 @@ $(document).ready(
 
 
 				position = Math.floor(player_event.position);
+				
+				//console.log('position is: '+ position);
 
 
 
