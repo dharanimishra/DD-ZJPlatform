@@ -314,7 +314,7 @@ $(document).ready(function() {
 						var progress =  $(this).find("progress").text()+"%";
 						
 					    console.log("Yes I am in");  
-					    draftcourse+="<p class='blok-title-L'><a href='/ziksana-web/secure/course'>" +  ": " + $(this).find("title").text() + "</a></p>";
+					    draftcourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
 					          
 							draftcourse+="<p></p>";
 							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";

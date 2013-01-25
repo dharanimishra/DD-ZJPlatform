@@ -52,9 +52,8 @@
 	<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
     <!--fancybox-->
 	<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-	<script type="text/javascript" src="../resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
- 
-	<link rel="stylesheet" type="text/css" href="../resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
+     <script src="../resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+	 <link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
 	<!--fancybox end-->
 	
 	<script type='text/javascript' src='../resources/js/jquery.tipsy.js'></script>
@@ -497,7 +496,7 @@ color:#666;
 				</div>
                 <div class="icons-list">
 				
-					<a href="/ziksana-web/secure/course" rel="tipsy" title="Observe Course" class="Icon-course icons-right"></a>
+					<a href="#" rel="tipsy" title="Observe Course" class="Icon-course icons-right"></a>
 				    <a href="#" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
 				   <a href="#linkurl" rel="tipsy" title="View Assignments  " class="Icon-view icons-left" style="margin-right:-2px;"></a>
                  <a href="#linkurl" rel="tipsy" title="List View Calendar" class="Icon-Calendar3 icons-right"></a>

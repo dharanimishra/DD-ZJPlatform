@@ -876,7 +876,7 @@ $("#datepara").show();
 			</a>
 	</c:if>
 	 <c:if test="${member.roleType eq 'LEARNER'}">
-	 <a class="fancyboxclose" href="/ziksana-web/secure/course" target="_parent" >
+	 <a class="fancyboxclose" href="/ziksana-web/secure/showMyPrograms" target="_parent" >
 				<h5>Course</h5>
 				<div>Study the courses that you have subcribed to </div>				
 			</a>

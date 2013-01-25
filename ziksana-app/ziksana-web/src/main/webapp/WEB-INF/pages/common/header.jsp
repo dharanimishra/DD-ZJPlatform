@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true"%>
       <header class="bottom-box-shadow bckground-wihte">
+           
 	  <p></P>
             	<div class="topheader"> 
           <!--logo container-->
@@ -15,6 +17,7 @@
         </div>
             <nav>
                 <!--menu-->
+                <c:if test="${member.roleType eq 'EDUCATOR'}">
                     <div class="menu" >
                       <ul>
                         <li><a href="/ziksana-web/secure/educatordashboard" class="current">My Home</a><div class="nav-line"></div></li>
@@ -24,15 +27,30 @@
                         <li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;My Locker</a></li>
                       </ul>
                     </div>
+                    </c:if>
+                     <c:if test="${member.roleType eq 'LEARNER'}">
+                    <div class="menu" >
+                      <ul>
+                        <li><a href="/ziksana-web/secure/educatordashboard" class="current">My Home</a><div class="nav-line"></div></li>
+						
+                        <li><a href="/ziksana-web/secure/showMyPrograms">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="#">My Performance</a><div class="nav-line"></div></li>
+                        <li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;My Locker</a></li>
+                      </ul>
+                    </div>
+                    </c:if>
                     <!--End menu-->
        	   	  		 <div class="status-container">
             <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box">
               <ul>
-                <li><a href="#" class="email-icon" rel="tipsy" title="3 New emails"><span class="wite-title">3</span></a></li>
-                <li><a href="#" class="alart-icon orange-bc" rel="tipsy" title="1 Circle Invite"><span class="wite-title">1</span></a></li>
-                <li><a href="#" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
-                <li><a href="#" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
+                <li><a href="#" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
+                <li><a href="#" class="alart-icon orange-bc" rel="tipsy" title="1 Connect Request"><span class="wite-title">1</span></a></li>
+                <li><a href="#" class="announcement-icon orange-bc" rel="tipsy" title="3 New Announcement"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
+               
               </ul>
+
               <div > </div>
             </div>
             <div class="account-container two-bottom-rounded-box">

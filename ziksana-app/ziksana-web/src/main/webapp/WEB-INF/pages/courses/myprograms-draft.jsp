@@ -57,9 +57,8 @@
 	<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
     <!--fancybox-->
 	<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-	<script type="text/javascript" src="../resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
-
-	<link rel="stylesheet" type="text/css" href="../resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
+	     <script src="../resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+	 <link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
 	<!--fancybox end-->
 	   
    <style>

@@ -12,7 +12,7 @@ $(function(){
 		//initiate a fancybox with the url of the launchpage.
 			launcher_fancybox = $.fancybox({
 			'width': '85%',
-			'height': '85%',
+			'height': '500',
 			'autoScale': true,
 			'transitionIn': 'fade',
 			'transitionOut': 'fade',
