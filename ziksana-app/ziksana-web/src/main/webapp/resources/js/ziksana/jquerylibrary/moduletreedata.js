@@ -30,7 +30,7 @@ function onButtonClick(menuitemId, type) {
 		$('#DegineCourse2').hide();
 		$('#definequalifiercontainer').hide();
 		$('#Addmodulecontainer').hide();
-		$('#searchassociatecontainer').show();
+		$('#searchassociatecontainer').hide();
 	} else if (menuaction == "Define_Qualifiers") {
 		// alert("open the menu for Define_Qualifiers module.");
 		$('#Viewmodulecontainer').hide();
@@ -38,7 +38,7 @@ function onButtonClick(menuitemId, type) {
 		$('#searchassociatecontainer').hide();
 		$('#DegineCourse2').hide();
 		$('#Addmodulecontainer').hide();
-		$('#definequalifiercontainer').show();
+		$('#definequalifiercontainer').hide();
 	} else if (menuaction == "Edit") {
 		// alert("open the menu for Edit module.");
 		window.location.href = "editmodelthinking.html";

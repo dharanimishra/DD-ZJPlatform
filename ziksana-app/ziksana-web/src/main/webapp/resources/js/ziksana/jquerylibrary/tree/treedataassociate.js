@@ -361,7 +361,7 @@ function createtree(course_id) {
 			menu.hideItem('Edit');
 			menu.hideItem('Enhance');
 			menu.showItem('Associate_Content');
-			//menu.showItem('Search_Associate_Content');
+			menu.hideItem('Search_Associate_Content');
 
 		}
 
@@ -372,13 +372,13 @@ function createtree(course_id) {
 			menu.hideItem('Edit');
 			menu.hideItem('Enhance');
 			menu.showItem('Associate_Content');
-			//menu.showItem('Search_Associate_Content');
+			menu.hideItem('Search_Associate_Content');
 
 		}
 		if (node_type == "CONTENT") {
 			// alert(tree.contextID);
 			menu.hideItem('Associate_Content');
-			//menu.hideItem('Search_Associate_Content');
+			menu.hideItem('Search_Associate_Content');
 			menu.showItem('Delete');
 			menu.showItem('View');
 			menu.showItem('Edit');
