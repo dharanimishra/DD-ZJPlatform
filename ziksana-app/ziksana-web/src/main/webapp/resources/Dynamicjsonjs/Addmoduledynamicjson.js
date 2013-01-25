@@ -178,11 +178,12 @@ $(document)
 
 				});
 
-function getaddmodulesave() {
+	function getaddmodulesave() {
 
 	validation = jQuery("#AddModule").validationEngine('validate');
 	if (validation == true) {
 		// Step 1: Assign Parameters required by the sendMessage function.
+		$('#Btnsbtcmodule').attr('disabled', 'disabled'); // disables the
 
 		uri = '/ziksana-web/secure/saveLearningComponent';
 
