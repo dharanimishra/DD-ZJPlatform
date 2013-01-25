@@ -244,9 +244,9 @@ span.standartTreeRow:hover {
 						<li><a href="/ziksana-web//secure/showMyPrograms"
 							class="current">My Programs</a>
 							<div class="nav-line"></div></li>
-						<li><a href="">My Students</a>
+						<li><a>My Students</a>
 							<div class="nav-line"></div></li>
-						<li><a href="" style="margin-left: -10px;">My Locker</a></li>
+						<li><a style="margin-left: -10px;">My Locker</a></li>
 					</ul>
 				</div>
 
@@ -256,16 +256,16 @@ span.standartTreeRow:hover {
 						class="bottom-box-shadow two-bottom-rounded-box ">
 
 						<ul>
-							<li><a href="" class="email-icon" rel="tipsy"
+							<li><a  class="email-icon" rel="tipsy"
 								title="3 New Messages"><span class="wite-title">3</span></a></li>
-							<li><a href="" class="peoples-icon orange-bc" rel="tipsy"
+							<li><a  class="peoples-icon orange-bc" rel="tipsy"
 								title="5 Contact requests"><span class="wite-title">5</span></a></li>
-							<li><a href="" class="alart-icon orange-bc" rel="tipsy"
+							<li><a  class="alart-icon orange-bc" rel="tipsy"
 								title="1 Connect Request"><span class="wite-title">1</span></a></li>
-							<li><a href="" class="announcement-icon orange-bc"
+							<li><a  class="announcement-icon orange-bc"
 								rel="tipsy" title="3 New Announcement"><span
 									class="wite-title">3</span></a></li>
-							<li><a href="" class=" amount-icon blue-bc" rel="tipsy"
+							<li><a  class=" amount-icon blue-bc" rel="tipsy"
 								title="Ziks available"><span class="wite-title">355500</span></a></li>
 
 						</ul>
@@ -274,13 +274,13 @@ span.standartTreeRow:hover {
 					<div class="account-container two-bottom-rounded-box">
 						<div class="container">
 							<div class="topnav">
-								<a href="" class="signin wite bold"><span
+								<a class="signin wite bold"><span
 									class="text-size-px12 wite bold">My Account</span></a>
 							</div>
 							<fieldset id="signin_menu">
 								<ul>
-									<li><a href="">Preferences</a></li>
-									<li><a href="">Privacy</a></li>
+									<li><a>Preferences</a></li>
+									<li><a>Privacy</a></li>
 									<li><a href="/ziksana-web/secure/logout">Sign Out</a></li>
 								</ul>
 							</fieldset>
@@ -293,14 +293,13 @@ span.standartTreeRow:hover {
 		<!--End Header Container-->
 		<div class="sub-nav">
 			<div class="f-l">
-				<strong class="text-size-px12 font-Signika blue"><a href="">My
+				<strong class="text-size-px12 font-Signika blue"><a>My
 						Courses </a> | </strong><strong class="light-gray text-size-px12">Create
 					New Course </strong>
 			</div>
 			<div class="f-r">
-				<strong class="text-size-px14 light-gray"><a
-					href="publish.html">Publish</a> | <a href="defineengagement.html">Manage</a></strong><a
-					class="light-blue" href=""><img width="12" height="12"
+				<strong class="text-size-px14 light-gray"><a>Publish</a> | <a>Manage</a></strong><a
+					class="light-blue"><img width="12" height="12"
 					alt="add more" src="/ziksana-web/resources/images/plus.png">
 				</a>
 			</div>
@@ -325,13 +324,13 @@ span.standartTreeRow:hover {
 									style="text-align: center;">2. Associate Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								<li><a href="" style="width: 130px; text-align: center;">4.
+								<li><a style="width: 130px; text-align: center;">4.
 										Define Assignment</a></li>
-								<li><a href="" style="text-align: center;">5. Define
+								<li><a  style="text-align: center;">5. Define
 										Planner</a></li>
-								<li><a href="" style="text-align: center;">6. Define
+								<li><a  style="text-align: center;">6. Define
 										Playbook</a></li>
-								<li><a href="" style="width: 120px; text-align: center;">7.
+								<li><a  style="width: 120px; text-align: center;">7.
 										Socialize Course</a></li>
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
