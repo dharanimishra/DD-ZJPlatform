@@ -16,6 +16,14 @@
 
 		<script type="text/javascript">
 		
+		function secondsToHms(d) {
+			d = Number(d);
+			var h = Math.floor(d / 3600);
+			var m = Math.floor(d % 3600 / 60);
+			var s = Math.floor(d % 3600 % 60);
+			return ((h > 0 ? h + ":" : "") + (m > 0 ? (h > 0 && m < 10 ? "0" : "") + m + ":" : "0:") + (s < 10 ? "0" : "") + s); 
+			}
+		
 		var MediaServerDomainUrl = 'http://54.243.235.88';
 		var MediaUploadDirectory = 'http://54.243.235.88/zikload-xml/uploads';
 		
@@ -80,6 +88,7 @@
 						educatorContentType = data[i].contentType;
 						id = data[i].id;
 						duration = data[i].duration;
+						formated_duration = secondsToHms(duration);
 						title = data[i].title;
 						description = data[i].description;
 						coordinates = data[i].coordinates;
@@ -87,16 +96,16 @@
 						
 						
 						if(educatorContentType == 8){ //8 = Educator Note
-							data_table_tbody_html += '<tr><td>Note</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+description+'</td><td>'+duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="note" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Note</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+description+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="note" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 1){ //1 = Educator Reference
-							data_table_tbody_html += '<tr><td>Reference</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+url+'</td><td>'+duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="reference" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Reference</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+url+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="reference" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 9){ //9 = Educator HotSpot
-							data_table_tbody_html += '<tr><td>Hotspot</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td></td><td>'+duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="hotspot" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Hotspot</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td></td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="hotspot" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 7){ //7 = TOC
-							data_table_tbody_html += '<tr><td>TOC Item</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>&nbsp</td><td>'+duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="toc" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>TOC Item</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>&nbsp</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="toc" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 					
 					}
