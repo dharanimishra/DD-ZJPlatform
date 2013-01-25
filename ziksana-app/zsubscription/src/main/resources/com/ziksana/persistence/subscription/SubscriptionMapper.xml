@@ -63,16 +63,16 @@
 		from
 		sbnsubscribernotes notes join
 		sbnmembersubscriptionprogram program on
-		notes.MemSubscriptionProgId=program.MemSubscriptionProgId
+		notes.MemSubscriptionProgId=program.ID
 		join
 		sbnsubscriptioncourse sbn on
-		sbn.SubscriptionCourseId=notes.SubscriptionCourseId
+		sbn.ID=notes.SubscriptionCourseId
 		join
 		corcurriculumcourse cor on
-		cor.CurriculumCourseId =
+		cor.ID =
 		sbn.CurriculumCourseId
 		join corlearningcomponentcontent corlc on
-		notes.LearningComponentContentId=corlc.LearningComponentContentId
+		notes.LearningComponentContentId=corlc.ID
 		where
 		notes.LearningComponentId=#{learnCompId} and
 		corlc.LearningComponentId=#{learnCompId} and
@@ -254,7 +254,7 @@
 		select
 		cntenr.LinkElement,
 		cntenr.duration,
-		cntenr.ContentEnrichmentId,
+		cntenr.ID,
 		cntenr.parentContent
 		
 
@@ -333,8 +333,8 @@
 		from
 		sbnsubscriptioncourse subcourse,corcurriculumcourse curcourse
 		where
-		subcourse.ID=curcourse.ID and
-		curcourse.ID=#{courseId}),
+		subcourse.CurriculumCourseId=curcourse.ID and
+		curcourse.courseId=#{courseId}),
 		#{learnCompId},
 		(select
 		ID from corlearningcomponentcontent where
@@ -379,7 +379,7 @@
 
 	<delete id="deleteNote" parameterType="java.lang.Integer">
 		delete from
-		sbnsubscribernotes where SubcribeNotesId=#{noteId}
+		sbnsubscribernotes where ID=#{noteId}
 	</delete>
 	
 	<delete id="deleteEducatorContent" parameterType="java.lang.Integer">
@@ -392,7 +392,7 @@
 		update sbnsubscribernotes
 		set NoteDescription=#{desc},NoteDuration=#{duration},NoteTitle=#{title}
 		where
-		SubcribeNotesId=#{noteId}
+		ID=#{noteId}
 
 	</update>
 	
