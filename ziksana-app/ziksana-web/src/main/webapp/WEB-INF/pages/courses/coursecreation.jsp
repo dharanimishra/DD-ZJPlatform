@@ -96,7 +96,7 @@
 <script
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
 <script src="/ziksana-web/resources/js/custom/z_plugins.js"></script>
-<script src="/ziksana-web/resources/js/custom/z_common.js"></script>	
+<script src="/ziksana-web/resources/js/custom/z_common.js"></script>
 <!-- End tree -->
 <script
 	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
@@ -121,26 +121,26 @@
 	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
-	<script type="text/javascript"> 
- $(document).ready(function() { 
-   $(".signin").click(function(e) {          
-   e.preventDefault();
-   $("fieldset#signin_menu").toggle();
-   $(".signin").toggleClass("menu-open");
-   });
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".signin").click(function(e) {
+			e.preventDefault();
+			$("fieldset#signin_menu").toggle();
+			$(".signin").toggleClass("menu-open");
+		});
 
-   $("fieldset#signin_menu").mouseup(function() {
-   return false
-   });
-   $(document).mouseup(function(e) {
-   if($(e.target).parent("a.signin").length==0) {
-   $(".signin").removeClass("menu-open");
-   $("fieldset#signin_menu").hide();
-   }
-   }); 
- 
-}); 
- </script>
+		$("fieldset#signin_menu").mouseup(function() {
+			return false
+		});
+		$(document).mouseup(function(e) {
+			if ($(e.target).parent("a.signin").length == 0) {
+				$(".signin").removeClass("menu-open");
+				$("fieldset#signin_menu").hide();
+			}
+		});
+
+	});
+</script>
 <style type="text/css">
 #message {
 	padding: 1em 0;
@@ -256,15 +256,14 @@ span.standartTreeRow:hover {
 						class="bottom-box-shadow two-bottom-rounded-box ">
 
 						<ul>
-							<li><a class="email-icon" rel="tipsy"
-								title="3 New Messages"><span class="wite-title">3</span></a></li>
+							<li><a class="email-icon" rel="tipsy" title="3 New Messages"><span
+									class="wite-title">3</span></a></li>
 							<li><a class="peoples-icon orange-bc" rel="tipsy"
 								title="5 Contact requests"><span class="wite-title">5</span></a></li>
 							<li><a class="alart-icon orange-bc" rel="tipsy"
 								title="1 Connect Request"><span class="wite-title">1</span></a></li>
-							<li><a class="announcement-icon orange-bc"
-								rel="tipsy" title="3 New Announcement"><span
-									class="wite-title">3</span></a></li>
+							<li><a class="announcement-icon orange-bc" rel="tipsy"
+								title="3 New Announcement"><span class="wite-title">3</span></a></li>
 							<li><a class=" amount-icon blue-bc" rel="tipsy"
 								title="Ziks available"><span class="wite-title">355500</span></a></li>
 
@@ -293,12 +292,13 @@ span.standartTreeRow:hover {
 		<!--End Header Container-->
 		<div class="sub-nav">
 			<div class="f-l">
-				<strong class="text-size-px12 font-Signika blue"><a href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong><strong class="light-gray text-size-px12">Create
-					New Course </strong>
+				<strong class="text-size-px12 font-Signika blue"><a
+					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong><strong
+					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">
-				<strong class="text-size-px14 light-gray"><a>Publish</a> | <a>Manage</a></strong><a
-					class="light-blue"><img width="12" height="12"
+				<strong class="text-size-px14 light-gray"><a>Publish</a> |
+					<a>Manage</a></strong><a class="light-blue"><img width="12" height="12"
 					alt="add more" src="/ziksana-web/resources/images/plus.png">
 				</a>
 			</div>
@@ -323,10 +323,8 @@ span.standartTreeRow:hover {
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a style="width: 130px; text-align: center;">4.
 										Define Assignment</a></li>
-								<li><a style="text-align: center;">5. Define
-										Planner</a></li>
-								<li><a style="text-align: center;">6. Define
-										Playbook</a></li>
+								<li><a style="text-align: center;">5. Define Planner</a></li>
+								<li><a style="text-align: center;">6. Define Playbook</a></li>
 								<li><a style="width: 120px; text-align: center;">7.
 										Socialize Course</a></li>
 								<li></li>
@@ -344,7 +342,7 @@ span.standartTreeRow:hover {
 
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 
-							<a href="/ziksana-web/secure/createcourse"
+							<a href="/ziksana-web/secure/createcourse/${courseId}"
 								class="btn btn-info f-r"
 								style="margin-right: -257px; margin-bottom: 4px; clear: both;">Edit
 								Course Details </a>
@@ -415,28 +413,29 @@ span.standartTreeRow:hover {
 											<div class="coursename">
 												<div class="control-group">
 													<label class="control-label labelclass" for="CourseName"
-														style="margin-top: -4px;font-weight: bold;">Course Module :</label>
+														style="margin-top: -4px; font-weight: bold;">Course
+														Module :</label>
 													<div class="controls">
 														<input type="text" id="Cmoduletxtbox"
-															class="defaultvalue validate[required]"  autofocus
+															class="defaultvalue validate[required]" autofocus
 															placeholder="Specify the name of the Course Module"
 															style="width: 240px; margin-left: 10px;" />
 													</div>
 
 
-													<br /> <label for="moduledescription" class="labelclass" style="font-weight: bold;">Module
-														Description :</label> <a class="f-r _richText"
-														id="addmodulerichedit" href="#linkurl"
-														style="text-decoration: none;">Rich Text Editor</a> <a
-														class="f-r _plainText" href="#linkurl"
+													<br /> <label for="moduledescription" class="labelclass"
+														style="font-weight: bold;">Module Description :</label> <a
+														class="f-r _richText" id="addmodulerichedit"
+														href="#linkurl" style="text-decoration: none;">Rich
+														Text Editor</a> <a class="f-r _plainText" href="#linkurl"
 														style="text-decoration: none;">Plain Text Editor</a>
-													<textarea class="_plainTextShow label" 
+													<textarea class="_plainTextShow label"
 														class="defaultvalue validate[required]" id="Cmoduledesc"
-														cols="80" rows="7" style="resize: none;" 
+														cols="80" rows="7" style="resize: none;"
 														placeholder="Describe the Course being created"></textarea>
 													<br />
 													<div class="_richTextShow">
-														<textarea id="Cmoduledescrte" name="editor2" 
+														<textarea id="Cmoduledescrte" name="editor2"
 															class="defaultvalue _focus validate[required]">Describe the Course being created</textarea>
 													</div>
 
@@ -449,25 +448,26 @@ span.standartTreeRow:hover {
 											<div class="secondcontainer">
 												<div class="control-group">
 													<div>
-														<label class="labelclass" style="font-weight: bold;"> Subject Area : </label> <label
-															class="labelclass" style="font-weight: bold;">
-															Subject: </label> <label class="labelclass"
-															style="font-weight: bold;"> Topic: </label>
+														<label class="labelclass" style="font-weight: bold;">Subject
+															Area : </label> <label class="labelclass"
+															style="margin-left: 115px; font-weight: bold;">Subject:
+														</label> <label class="labelclass"
+															style="margin-left: 155px; font-weight: bold;">Topic:
+														</label>
 													</div>
 													<div class="moduleselection">
-														<select name="Cmoduleareaddl" id="Cmoduleareaddl" 
+														<select name="Cmoduleareaddl" id="Cmoduleareaddl"
 															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject Area</option>
 
-														</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl" 
+														</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl"
 															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Module Area</option>
 
-														</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl" 
-															class="defaultvalue labelclass"
-															style="width: 200px;">
+														</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"
+															class="defaultvalue labelclass" style="width: 200px;">
 															<option value="">Select Module Topic</option>
 
 														</select>
@@ -476,8 +476,9 @@ span.standartTreeRow:hover {
 
 													<div class="coursetags">
 														<br /> <label class="control-label labelclass"
-															for="moduletags" style="margin-top: -2px;font-weight: bold;">Specify
-															any tags : </label> <input id="Addmoduletag"   type="text" ></input>
+															for="moduletags"
+															style="margin-top: -2px; font-weight: bold;">Specify
+															any tags : </label> <input id="Addmoduletag" type="text"></input>
 														<br />
 
 														<!--   <label class="control-label labelclass"
@@ -492,18 +493,19 @@ span.standartTreeRow:hover {
 
 													</div>
 													<!-- end of coursetags--->
-													<br /> <input type="checkbox" id="addmodulecheckbox" 
+													<br /> <input type="checkbox" id="addmodulecheckbox"
 														class="labelclass" value="Institution Logo" /> <span
-														class="labelclass" style="padding-left: 5px;font-weight: bold;">Save
+														class="labelclass"
+														style="padding-left: 5px; font-weight: bold;">Save
 														as a Learning Object? </span>
 													<div class="courseduration" id="saveassociateobject">
 														<br /> <label for="Learning Duration" class="labelclass"
-															style="font-weight: bold;">Specify the Duration of the Learning
-															Object :</label> <input type="text" id="Cmoduleduration" 
-															style="width: 30px;"
+															style="font-weight: bold;">Specify the Duration
+															of the Learning Object :</label> <input type="text"
+															id="Cmoduleduration" style="width: 30px;"
 															class="defaultvalue validate[required]" /> <select
 															name="Cmoduleunits"
-															class="defaultvalue validate[required]" id="Cmoduleunits" 
+															class="defaultvalue validate[required]" id="Cmoduleunits"
 															style="margin-left: 5px;">
 															<!--  <option value="">Specify Units</option> -->
 															<option value="week">Weeks</option>
@@ -513,8 +515,9 @@ span.standartTreeRow:hover {
 														<div class="associateimage" style="margin-top: 15px;">
 															<img src="/ziksana-web/resources/images/icons/upload.png"
 																align="left" />
-															<p class="labelclass"><b>Associate an Image for your
-																Learning Object</b></p>
+															<p class="labelclass">
+																<b>Associate an Image for your Learning Object</b>
+															</p>
 															<input type="hidden" readonly="readonly"
 																id="Cmoduleimgupl" placeholder="specify an image"
 																style="margin-left: 20px;" />
@@ -527,7 +530,7 @@ span.standartTreeRow:hover {
 
 														<div id="thubmnail_upload_message"></div>
 														<div id="loaderText"></div>
-														<input type="file" name="thumbnail_image_file_upload" 
+														<input type="file" name="thumbnail_image_file_upload"
 															id="thumbnail_image_file_upload" />
 														<div id="status"></div>
 														<script type="text/javascript">
@@ -587,9 +590,9 @@ span.standartTreeRow:hover {
 											<div id="tempdiv2"></div>
 											<input type="button"
 												class="cancellinkdefinecourse btn btn-info"
-												id="Btncmodulecncl" value="Cancel" 
+												id="Btncmodulecncl" value="Cancel"
 												style="float: right; margin-right: 20px;" /> <input
-												type="submit" class="btn btn-info" id="Btnsbtcmodule" 
+												type="submit" class="btn btn-info" id="Btnsbtcmodule"
 												value="Submit" onClick="getaddmodulesave(); return false;"
 												style="float: right; margin-right: 20px;" /> <br /> <br />
 
@@ -609,8 +612,8 @@ span.standartTreeRow:hover {
 
 									<!-- Start of Viewmodelthinking -->
 
-					
-									<a href="/ziksana-web/secure/associatecontent/${courseId}" 
+
+									<a href="/ziksana-web/secure/associatecontent/${courseId}"
 										style="float: right; margin-bottom: 20px; margin-top: 20px;"
 										class="btn btn-info">Save and Continue</a>
 									<!-- End of viewmodelthinking -->

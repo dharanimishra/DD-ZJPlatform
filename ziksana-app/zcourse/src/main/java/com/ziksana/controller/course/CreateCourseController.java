@@ -16,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.CourseContentSecurity;
 import com.ziksana.domain.course.CourseDetails;
+import com.ziksana.domain.course.CourseEditResponse;
 import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.CourseStatus;
@@ -26,12 +28,12 @@ import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentDetails;
 import com.ziksana.domain.course.LearningComponentNest;
 import com.ziksana.domain.course.LearningComponentType;
+import com.ziksana.domain.course.ModuleEditResponse;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.id.StringZID;
-import com.ziksana.id.ZID;
-import com.ziksana.security.util.SecurityToken;
+
 import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.service.course.CourseEditService;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.CourseTreeNodeService;
 
@@ -47,6 +49,9 @@ public class CreateCourseController {
 
 	@Autowired
 	CourseService courseService;
+
+	@Autowired
+	CourseEditService courseEditService;
 
 	@Autowired
 	CourseTreeNodeService courseTreeNodeService;
@@ -70,7 +75,7 @@ public class CreateCourseController {
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
 		ModelAndView modelView = null;
 		if (course_id > 0) {
-			modelView = new ModelAndView("courses/coursecreation");
+			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("CourseId", course_id);
 		} else {
 			modelView = new ModelAndView("courses/definecourse");
@@ -96,6 +101,7 @@ public class CreateCourseController {
 			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("CourseId", course_id);
 		}
+
 		LOGGER.info("Class " + getClass() + "Exiting courseModule(): ");
 
 		return modelView;
@@ -155,11 +161,6 @@ public class CreateCourseController {
 					+ fe);
 		}
 
-//		ZID memberId = new StringZID("1001");
-//		ZID memberPersonaId = new StringZID("201");
-//		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-//		ThreadLocalUtil.setToken(token);
-
 		LOGGER.debug(" Class :"
 				+ getClass()
 				+ " Method: saveCourse() : setMemberRoleId"
@@ -179,43 +180,58 @@ public class CreateCourseController {
 			// Creating Course Object for adding parameters
 			Course course = new Course();
 
-			if (courseId > 0)
+			if (courseId > 0) {
 				course.setCourseId(courseId);
+				course.setAccountableMember(accountableMember);
+				course.setName(CourseName);
+				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
+				course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+				course.setDescription(CourseDescription);
+				course.setSecurityIndicator(true);
 
-			course.setName(CourseName);
-			course.setDescription(CourseDescription);
-			course.setCourseCredits(CourseCredits);
-			course.setExtraCredits(CourseExtraCredits);
-			course.setThumbnailPicturePath(UploadImage);
+				Duration duration = new Duration(courseDuration,
+						courseDurationUnit);
+				course.setCourseDuration(duration);
+				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 
-			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-			course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
-			course.setAdditionalInfoIndicator(true);
-			course.setVersion(1);
-			course.setSubjClassificationId(subjClassificationId);
+				CourseTagcloud tagcloud = new CourseTagcloud();
+				tagcloud.setCreatingMember(accountableMember);
+				tagcloud.setTagName(CourseTags);
+				tagcloud.setTagType(TagType.TAG_TYPE1);
+				tagcloudList.add(tagcloud);
+				tagcloud.setCourse(course);
+				course.setCourseTagClouds(tagcloudList);
 
-			Duration duration = new Duration(courseDuration, courseDurationUnit);
-			course.setCourseDuration(duration);
-			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
+			} else {
 
-			course.setSecurityIndicator(true);
+				course.setName(CourseName);
+				course.setDescription(CourseDescription);
+				course.setCourseCredits(CourseCredits);
+				course.setExtraCredits(CourseExtraCredits);
+				course.setThumbnailPicturePath(UploadImage);
 
-			CourseTagcloud tagcloud = new CourseTagcloud();
-			tagcloud.setCreatingMember(accountableMember);
-			tagcloud.setTagName(CourseTags);
-			tagcloud.setTagType(TagType.TAG_TYPE1);
-			tagcloudList.add(tagcloud);
+				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
+				course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+				course.setAdditionalInfoIndicator(true);
 
-			tagcloud.setCourse(course);
-			// course.setCourseTagClouds(tagcloudList);
-			// // course.setValidFromDate(new Date());
-			// course.setValidToDate(new Date());
+				course.setVersion(1);
+				course.setSubjClassificationId(subjClassificationId);
 
-			// Adding Member Role
-			course.setAccountableMember(accountableMember);
+				Duration duration = new Duration(courseDuration,
+						courseDurationUnit);
+				course.setCourseDuration(duration);
+				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 
-			// Subject Classification
-			// course.setSubjClassification(subjClassification);
+				course.setSecurityIndicator(true);
+
+				CourseTagcloud tagcloud = new CourseTagcloud();
+				tagcloud.setCreatingMember(accountableMember);
+				tagcloud.setTagName(CourseTags);
+				tagcloud.setTagType(TagType.TAG_TYPE1);
+				tagcloudList.add(tagcloud);
+				tagcloud.setCourse(course);
+				course.setAccountableMember(accountableMember);
+			}
 
 			LOGGER.info("Class :" + getClass()
 					+ " Method saveCourse :Before courseService:" + course);
@@ -318,12 +334,6 @@ public class CreateCourseController {
 					+ " Method: saveCourse : NumberFormatException" + nfe);
 		}
 
-//		ZID memberId = new StringZID("1001");
-//		ZID memberPersonaId = new StringZID("201");
-//
-//		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-//		ThreadLocalUtil.setToken(token);
-
 		MemberPersona accountableMember = new MemberPersona();
 		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
 				.getToken().getMemberPersonaId().getStorageID()));
@@ -339,23 +349,7 @@ public class CreateCourseController {
 			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 			course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
 			course.setDescription(CourseModuleDescription);
-			/*
-			 * course1.setSecurityIndicator(true); CourseContentSecurity
-			 * courseSecurity = new CourseContentSecurity();
-			 * courseSecurity.setContentSecurityId(17);
-			 * courseSecurity.setFlotingIndicator(true);
-			 * courseSecurity.setLogoPath("/newlogopath/");
-			 * courseSecurity.setCourse(course1);
-			 * course1.setCourseContSecurity(courseSecurity);
-			 */
-			/*
-			 * CourseTagcloud tagcloud = new CourseTagcloud();
-			 * tagcloud.setCreatingMember(authoredMember);
-			 * tagcloud.setTagName("Trigonometry");
-			 * tagcloud.setTagType(TagType.TAG_TYPE1);
-			 * tagcloudList.add(tagcloud); //tagcloud.setCourse(course1);
-			 * course1.setCourseTagClouds(tagcloudList);
-			 */
+		
 			LearningComponent comp1 = new LearningComponent();
 			comp1.setAuthoredMember(accountableMember);
 
@@ -427,15 +421,13 @@ public class CreateCourseController {
 
 		if (courseIds == 0) {
 			json.setResponse("failed");
-			// json.setMessage("Module Creation Failed!");
+
 			LOGGER.info("Class :" + getClass()
 					+ " Method saveCourse : After courseService: CourseId :"
 					+ CourseId);
 		} else {
 			json.setId("COURSE_" + courseIds);
 			json.setResponse("success");
-			// json.setMessage("Module Creation Success");
-
 			LOGGER.info("Class :" + getClass()
 					+ " Method saveCourse : After courseService: CourseId :"
 					+ CourseId);
@@ -458,6 +450,69 @@ public class CreateCourseController {
 				+ " removeCourseComponents(): ");
 
 		return mv;
+	}
+
+	@RequestMapping(value = "/getCourse", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	CourseEditResponse getCourse(
+			@RequestParam(value = "Course_id", required = true) String CourseId)
+			throws CourseException {
+		LOGGER.info("Entering Class " + getClass() + " getCourse(): CourseId :"
+				+ CourseId);
+
+		Integer courseid = 0;
+		try {
+			courseid = Integer.parseInt(CourseId.split("_")[1]);
+		} catch (NumberFormatException nfe) {
+			LOGGER.error("NumberFormatException :" + nfe);
+		}
+
+		CourseEditResponse json = null;
+
+		json = courseEditService.getCourseDetails(courseid);
+		json.setResponse("success");
+		json.setSubjectarea("Computer science, knowledge & systems");
+		json.setSubject("Bibliography");
+		json.setTopic("Bibliography");
+		json.setMessage("Course Edit Details");
+
+		LOGGER.info("Exiting Class " + getClass() + " getCourse(): CourseId :"
+				+ CourseId + " json :" + json);
+
+		return json;
+	}
+
+	@RequestMapping(value = "/getCourseModule", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	ModuleEditResponse getCourseModule(
+			@RequestParam(value = "Course_id", required = true) String CourseId,
+			@RequestParam(value = "Component_id", required = true) String ComponentId)
+			throws CourseException {
+		LOGGER.info("Entering Class " + getClass()
+				+ " getCourseModule(): CourseId :" + CourseId);
+
+		Integer courseid = 0, learningCompId = 0;
+		try {
+			courseid = Integer.parseInt(CourseId.split("_")[1]);
+			learningCompId = Integer.parseInt(ComponentId.split("_")[1]);
+		} catch (NumberFormatException nfe) {
+			LOGGER.error("NumberFormatException :" + nfe);
+		}
+
+		ModuleEditResponse json = null;
+		json = courseEditService.getModuleDetails(courseid, learningCompId);
+		json.setResponse("success");
+		json.setSubjectarea("Computer science, knowledge & systems");
+		json.setSubject("Bibliography");
+		json.setTopic("Bibliography");
+		json.setMessage("Course Edit Details");
+
+		LOGGER.info("Exiting Class " + getClass() + " getCourse(): CourseId :"
+				+ CourseId + " json :" + json);
+
+		return json;
 	}
 
 	@RequestMapping(value = "/searchCourseComponents", method = {

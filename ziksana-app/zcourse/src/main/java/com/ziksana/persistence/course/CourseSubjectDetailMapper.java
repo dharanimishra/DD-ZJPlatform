@@ -32,8 +32,8 @@ public interface CourseSubjectDetailMapper {
 			@Result(property = "label", column = "SubjectCategory") })
 	List<Option> getSubjectArea(String subjectArea);
 
-	@Select({ "select  distinct ID, SubjectTopic from utlsubjectclassification  where SubjectCategory = #{subjectCategory,jdbcType=VARCHAR}" })
-	@Results(value = { @Result(property = "value", column = "ID"),
+	@Select({ "select  distinct SubjectTopic, SubjectTopic from utlsubjectclassification  where SubjectCategory = #{subjectCategory,jdbcType=VARCHAR}" })
+	@Results(value = { @Result(property = "value", column = "SubjectTopic"),
 			@Result(property = "label", column = "SubjectTopic") })
 	List<Option> getSubjectTopic(String subjectArea);
 

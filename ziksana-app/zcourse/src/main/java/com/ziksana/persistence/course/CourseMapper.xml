@@ -21,29 +21,34 @@
 				description = #{description,jdbcType=VARCHAR},
 			</if>
 			<if test="courseStatus!=null">
-				coursestatus = #{courseStatusId,jdbcType=INTEGER},
+				#{courseStatusId,jdbcType=INTEGER},
 			</if>
 			<if test="securityIndicator !=null">
-				contentsecurityneededindicator =
 				#{securityIndicator,jdbcType=BOOLEAN},
 			</if>
 			<if test="extraCredits!=null">
-				extracredits = #{extraCredits,jdbcType=VARCHAR},
+				#{extraCredits,jdbcType=VARCHAR},
 			</if>
 			<if test="additionalInfoIndicator !=null">
-				additionalpropertyindicator =
 				#{additionalInfoIndicator,jdbcType=BOOLEAN},
 			</if>
 			<if test="courseDuration!=null">
-				courseduration=
 				#{courseDuration.duration,jdbcType=INTEGER},
 			</if>
 			<if test="thumbnailPicturePath!=null">
-				thumbnailpicturepath =
 				#{thumbnailPicturePath,jdbcType=VARCHAR},
 			</if>
+			<if test="version!=null">
+				#{version,jdbcType=INTEGER},
+			</if>
+			<if test="versionRemarks!=null">
+				#{versionRemarks,jdbcType=VARCHAR},
+			</if>
+			<if test="accountableMember !=null">
+				#{accountableMember.memberRoleId,jdbcType=INTEGER},
+			</if>
 		</set>
-		where ID = #{courseId.storageID,jdbcType=INTEGER}
+		where ID = #{course.courseId,jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveCourse" parameterType="com.ziksana.domain.course.Course"
@@ -124,7 +129,7 @@
 				#{accountableMember.memberRoleId,jdbcType=INTEGER},
 			</if>
 			<if test="subjClassification !=null">
-				#{subjClassificationId,jdbcType=INTEGER},
+				#{subjClassification.subjClassificationId,jdbcType=INTEGER},
 			</if>
 		</trim>
 		<selectKey keyProperty="courseId" resultType="int" order="AFTER">

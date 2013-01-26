@@ -256,16 +256,15 @@ span.standartTreeRow:hover {
 						class="bottom-box-shadow two-bottom-rounded-box ">
 
 						<ul>
-							<li><a  class="email-icon" rel="tipsy"
-								title="3 New Messages"><span class="wite-title">3</span></a></li>
-							<li><a  class="peoples-icon orange-bc" rel="tipsy"
-								title="5 Contact requests"><span class="wite-title">5</span></a></li>
-							<li><a  class="alart-icon orange-bc" rel="tipsy"
-								title="1 Connect Request"><span class="wite-title">1</span></a></li>
-							<li><a  class="announcement-icon orange-bc"
-								rel="tipsy" title="3 New Announcement"><span
+							<li><a class="email-icon" rel="tipsy" title="3 New Messages"><span
 									class="wite-title">3</span></a></li>
-							<li><a  class=" amount-icon blue-bc" rel="tipsy"
+							<li><a class="peoples-icon orange-bc" rel="tipsy"
+								title="5 Contact requests"><span class="wite-title">5</span></a></li>
+							<li><a class="alart-icon orange-bc" rel="tipsy"
+								title="1 Connect Request"><span class="wite-title">1</span></a></li>
+							<li><a class="announcement-icon orange-bc" rel="tipsy"
+								title="3 New Announcement"><span class="wite-title">3</span></a></li>
+							<li><a class=" amount-icon blue-bc" rel="tipsy"
 								title="Ziks available"><span class="wite-title">355500</span></a></li>
 
 						</ul>
@@ -293,13 +292,13 @@ span.standartTreeRow:hover {
 		<!--End Header Container-->
 		<div class="sub-nav">
 			<div class="f-l">
-				<strong class="text-size-px12 font-Signika blue"><a href="/ziksana-web//secure/showMyPrograms">My
-						Courses </a> | </strong><strong class="light-gray text-size-px12">Create
-					New Course </strong>
+				<strong class="text-size-px12 font-Signika blue"><a
+					href="/ziksana-web//secure/showMyPrograms">My Courses </a> | </strong><strong
+					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">
-				<strong class="text-size-px14 light-gray"><a>Publish</a> | <a>Manage</a></strong><a
-					class="light-blue"><img width="12" height="12"
+				<strong class="text-size-px14 light-gray"><a>Publish</a> |
+					<a>Manage</a></strong><a class="light-blue"><img width="12" height="12"
 					alt="add more" src="/ziksana-web/resources/images/plus.png">
 				</a>
 			</div>
@@ -326,11 +325,9 @@ span.standartTreeRow:hover {
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a style="width: 130px; text-align: center;">4.
 										Define Assignment</a></li>
-								<li><a  style="text-align: center;">5. Define
-										Planner</a></li>
-								<li><a  style="text-align: center;">6. Define
-										Playbook</a></li>
-								<li><a  style="width: 120px; text-align: center;">7.
+								<li><a style="text-align: center;">5. Define Planner</a></li>
+								<li><a style="text-align: center;">6. Define Playbook</a></li>
+								<li><a style="width: 120px; text-align: center;">7.
 										Socialize Course</a></li>
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
@@ -345,9 +342,16 @@ span.standartTreeRow:hover {
 
 						<div class="definecontainer" id="definetab">
 
+
 							<!--<a class="btn btn-info f-r saveTop"  id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 							<form id="DegineCourse" class="form-horizontal formular"
 								method="post">
+								<div id="EditCourseDetails" class="ecd" style="height: 15px;">
+									<input type="button" class="btn btn-info f-r"
+										id="Editcoursedtl1" value="Edit Course Details"
+										onClick="getCourse(); return false;"
+										style="margin-right: -257px; margin-bottom: 4px; clear: both; display: none;">
+								</div>
 
 								<br />
 
@@ -363,7 +367,7 @@ span.standartTreeRow:hover {
 								<!----------------- start of first container --------------->
 								<div class="_coursename">
 									<div class="control-group">
-										<input type="hidden" id="courseid" value="" /> <label
+										<input type="hidden" id="courseid" value="${courseId}" /> <label
 											class="control-label labelclass " for="CourseName"
 											style="margin-top: -4px; font-weight: bold;">Course
 											Name :</label>
@@ -381,17 +385,15 @@ span.standartTreeRow:hover {
 											style="text-decoration: none;">Plain Text Editor</a> <a
 											class="f-r _richText" href="#linkurl"
 											style="text-decoration: none;">Rich Text Editor</a>
-										<textarea cols="124" rows="8" id="Cdescription"
+										<textarea placeholder="Describe the Course being created"
+											cols="124" rows="8" id="Cdescription"
 											class="_plainTextShow defaultvaluem labelclass"
-											style="width: 880px; color: #666;"
-											placeholder="Describe the Course being created">Describe the Course being created
-										</textarea>
+											style="width: 880px; color: #666;"></textarea>
 										<br />
 										<div class="_richTextShow">
-											<textarea id="Cdescriptionrte" name="editor1pageload"
-												class="defaultvalue _focus ">
-												<b>Describe the Course being created</b>
-											</textarea>
+											<textarea placeholder="Describe the Course being created"
+												id="Cdescriptionrte" name="editor1pageload"
+												class="defaultvalue _focus"></textarea>
 										</div>
 										<script type="text/javascript">
 											CKEDITOR.replace('Cdescriptionrte');
@@ -518,9 +520,9 @@ span.standartTreeRow:hover {
 											</script>
 											<select name="SelectArea" id="Cdurationtype"
 												class="defaultvalue" style="margin-left: 20px;">
-												<option value="week">Weeks</option>
-												<option value="month">Months</option>
-												<option value="day">Days</option>
+												<option value="1">Weeks</option>
+												<option value="2">Months</option>
+												<option value="3">Days</option>
 
 											</select>
 
@@ -652,11 +654,7 @@ span.standartTreeRow:hover {
 									style="margin-right: -200px;">
 
 							</form>
-							<div class="ecd" style="height: 15px;">
-								<input type="button" class="btn btn-info f-r" id="Editcoursedtl"
-									value="Edit Course Details"
-									style="margin-right: -257px; margin-bottom: 4px; clear: both;">
-							</div>
+
 							<br> <br>
 
 

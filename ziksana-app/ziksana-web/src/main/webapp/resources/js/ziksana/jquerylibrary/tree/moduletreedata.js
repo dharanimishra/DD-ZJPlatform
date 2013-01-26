@@ -40,8 +40,181 @@ function onButtonClick(menuitemId, type) {
 		$('#Addmodulecontainer').hide();
 		$('#definequalifiercontainer').show();
 	} else if (menuaction == "Edit") {
-		// alert("open the menu for Edit module.");
-		window.location.href = "editmodelthinking.html";
+
+		nodeId = tree.getSelectedItemId();
+		nodeParentId = tree.getParentId(nodeId);
+
+		// use ajax to get the added value
+
+		uri = '/ziksana-web/secure/getCourse';
+
+		token = ''; // dummy token for demo. you have to send real token.
+		request_type = 'POST'; // can be GET or POST. In this case, a GET
+		// request
+
+		var Course_id = $('#courseid').val();
+
+		var parameters = {
+			"Course_id" : Course_id
+		};
+
+		$
+				.post(
+						uri,
+						parameters,
+						function(data) {
+							console.log(data);
+							if (data.response == 'success') {
+								course_id = data.id;
+								course_name = data.coursename;
+								course_desc = data.coursedesc;
+								subject_area = data.subjectarea;
+								subject = data.subject;
+								topic = data.topic;
+								tag_field = data.tagfield;
+								credits = data.credits;
+								extra_credits = data.extracredits;
+								duration = data.duration;
+								duration_type = data.durationtype;
+								image_upload = data.imageupload;
+
+								$('#courseid').val(course_id);
+
+								$('#defaultvalue').val(course_name);
+
+								$('#Cdescription').val(course_desc);
+
+								$('#Cdescriptionrte').val(course_desc);
+
+								$('#Ctagfield').val(tag_field);
+
+								$('#Credits').val(credits);
+
+								$('#ExtraCredits').val(extra_credits);
+
+								$('#Duration').val(duration);
+
+								$('#Cdurationtype').val(duration_type);
+
+								$('#Cimageupl').val(image_upload);
+
+								// // populate subject area
+
+								$
+										.get(
+												'/ziksana-web/secure/getSubjectArea',
+												{},
+												function(data) {
+													options = data;
+													var option_string = '';
+													option_string += '<option value="">Select Course Area</option>';
+
+													for (i in options) {
+														label = options[i].label;
+														value = options[i].value;
+
+														option = '<option value="'
+																+ value
+																+ '">'
+																+ label
+																+ '</option>';
+
+														option_string += option;
+													}
+													$('#Careaddl').html(
+															option_string);
+													// now select the value
+													// already
+													// selected by the
+													// user
+													$('#Careaddl').val(
+															subject_area);
+
+												});
+
+								// // end populating subject area
+								// // start populating subject
+								token = '';
+								request_type = 'GET';
+								uri = '/ziksana-web/secure/getSubject';
+
+								$
+										.get(
+												uri,
+												{
+													'Course_Area' : subject_area
+												},
+												function(data) {
+													options = data;
+													var option_string = '';
+													option_string += '<option value="">Select Course Subject</option>';
+													for (i in options) {
+														label = options[i].label;
+														value = options[i].value;
+
+														option = '<option value="'
+																+ value
+																+ '">'
+																+ label
+																+ '</option>';
+
+														option_string += option;
+													}
+
+													$('#Csubjectddl').html(
+															option_string);
+													$('#Csubjectddl').val(
+															subject);
+
+												});
+
+								// // end populating subject
+
+								// Start populating topic
+
+								uri = '/ziksana-web/secure/getTopic';
+								token = '';
+								request_type = 'GET';
+								$
+										.get(
+												uri,
+												{
+													'Course_Subject' : subject
+												},
+												function(data) {
+													options = data;
+													var option_string = '';
+													option_string += '<option value="">Select Course Topic</option>';
+													for (i in options) {
+														label = options[i].label;
+														value = options[i].value;
+
+														option = '<option value="'
+																+ value
+																+ '">'
+																+ label
+																+ '</option>';
+
+														option_string += option;
+													}
+
+													$('#Ctopicddl').html(
+															option_string);
+													$('#Ctopicddl').val(topic);
+
+												});
+								// end populating topic
+
+							} else {
+								$('#tempdiv').html(
+										'<span style="color:red;">'
+												+ data.message + '</span>');
+							}
+
+						});
+
+		// }//end of validation if block
+
 	} else if (menuaction == "RootView") {
 		// alert("open the menu for Edit module.");
 		window.location.href = "viewmodelthinking.html";

@@ -16,6 +16,9 @@
 	</bean>
 
 	<bean id="courseService" class="com.ziksana.service.course.impl.CourseServiceImpl" />
+
+	<bean id="courseEditService" class="com.ziksana.service.course.impl.CourseEditServiceImpl" />
+
 	<bean id="coursePlannerService"
 		class="com.ziksana.service.course.impl.CoursePlannerServiceImpl" />
 	<bean id="playbookService" class="com.ziksana.service.course.impl.PlaybookServiceImpl" />
