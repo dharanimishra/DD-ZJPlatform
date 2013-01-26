@@ -22,33 +22,9 @@
 			</if>
 			<if test="courseStatus!=null">
 				#{courseStatusId,jdbcType=INTEGER},
-			</if>
-			<if test="securityIndicator !=null">
-				#{securityIndicator,jdbcType=BOOLEAN},
-			</if>
-			<if test="extraCredits!=null">
-				#{extraCredits,jdbcType=VARCHAR},
-			</if>
-			<if test="additionalInfoIndicator !=null">
-				#{additionalInfoIndicator,jdbcType=BOOLEAN},
-			</if>
-			<if test="courseDuration!=null">
-				#{courseDuration.duration,jdbcType=INTEGER},
-			</if>
-			<if test="thumbnailPicturePath!=null">
-				#{thumbnailPicturePath,jdbcType=VARCHAR},
-			</if>
-			<if test="version!=null">
-				#{version,jdbcType=INTEGER},
-			</if>
-			<if test="versionRemarks!=null">
-				#{versionRemarks,jdbcType=VARCHAR},
-			</if>
-			<if test="accountableMember !=null">
-				#{accountableMember.memberRoleId,jdbcType=INTEGER},
-			</if>
+			</if>			
 		</set>
-		where ID = #{course.courseId,jdbcType=INTEGER}
+		where ID = #{courseId,jdbcType=INTEGER}
 	</update>
 
 	<insert id="saveCourse" parameterType="com.ziksana.domain.course.Course"

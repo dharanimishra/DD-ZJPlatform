@@ -79,12 +79,6 @@ public class CourseContentController {
 				+ ThumbnailPicturePath + " numberOfThumbnails :"
 				+ numberOfThumbnails + " ContentType :" + ContentType);
 
-//		ZID memberId = new StringZID("1001");
-//		ZID memberPersonaId = new StringZID("201");
-//
-//		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-//		ThreadLocalUtil.setToken(token);
-
 		LOGGER.debug(" Class :"
 				+ getClass()
 				+ " Method: saveCourse() : setMemberRoleId"
@@ -134,7 +128,7 @@ public class CourseContentController {
 			content.setThumbnailPicturePath(ThumbnailPicturePath);
 			content.setScreenshotPath(ScreenshotPath);
 			content.setStatus(ContentStatus.ACTIVE);
-			content.setNumberOfThumbnails(numberOfThumbnails-1);
+			content.setNumberOfThumbnails(numberOfThumbnails);
 			content.setRightsOwningMember(accountableMember);
 
 			LearningComponentContent compContent = new LearningComponentContent();

@@ -604,9 +604,12 @@ span.standartTreeRow:hover {
 														.uploadify(
 																{
 																	'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																	'queueSizeLimit' : 1,
+																	'successTimeout' : 350,
 																	'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 																	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 																	'fileSizeLimit' : '10024KB',
+																	'onUploadStart': function(file){ $('#sbtvalidation').attr('disabled','disabled'); },
 																	//'debug': true,
 																	//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 																	'onUploadSuccess' : function(
@@ -635,6 +638,7 @@ span.standartTreeRow:hover {
 																					.html(
 																							data_object.message);
 																		}
+																		$('#sbtvalidation').removeAttr('disabled'); //enable submit button
 
 																	}
 																// Your options here

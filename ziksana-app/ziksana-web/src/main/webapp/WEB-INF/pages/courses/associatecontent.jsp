@@ -113,27 +113,27 @@
 <script
 	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
-	
-	<script type="text/javascript"> 
- $(document).ready(function() { 
-   $(".signin").click(function(e) {          
-   e.preventDefault();
-   $("fieldset#signin_menu").toggle();
-   $(".signin").toggleClass("menu-open");
-   });
 
-   $("fieldset#signin_menu").mouseup(function() {
-   return false
-   });
-   $(document).mouseup(function(e) {
-   if($(e.target).parent("a.signin").length==0) {
-   $(".signin").removeClass("menu-open");
-   $("fieldset#signin_menu").hide();
-   }
-   }); 
- 
-}); 
- </script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".signin").click(function(e) {
+			e.preventDefault();
+			$("fieldset#signin_menu").toggle();
+			$(".signin").toggleClass("menu-open");
+		});
+
+		$("fieldset#signin_menu").mouseup(function() {
+			return false
+		});
+		$(document).mouseup(function(e) {
+			if ($(e.target).parent("a.signin").length == 0) {
+				$(".signin").removeClass("menu-open");
+				$("fieldset#signin_menu").hide();
+			}
+		});
+
+	});
+</script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		jQuery("#Associatequalifier").validationEngine();
@@ -251,15 +251,14 @@ span.standartTreeRow:hover {
 						class="bottom-box-shadow two-bottom-rounded-box ">
 
 						<ul>
-							<li><a class="email-icon" rel="tipsy"
-								title="3 New Messages"><span class="wite-title">3</span></a></li>
-							<li><a  class="peoples-icon orange-bc" rel="tipsy"
+							<li><a class="email-icon" rel="tipsy" title="3 New Messages"><span
+									class="wite-title">3</span></a></li>
+							<li><a class="peoples-icon orange-bc" rel="tipsy"
 								title="5 Contact requests"><span class="wite-title">5</span></a></li>
 							<li><a class="alart-icon orange-bc" rel="tipsy"
 								title="1 Connect Request"><span class="wite-title">1</span></a></li>
-							<li><a class="announcement-icon orange-bc"
-								rel="tipsy" title="3 New Announcement"><span
-									class="wite-title">3</span></a></li>
+							<li><a class="announcement-icon orange-bc" rel="tipsy"
+								title="3 New Announcement"><span class="wite-title">3</span></a></li>
 							<li><a class=" amount-icon blue-bc" rel="tipsy"
 								title="Ziks available"><span class="wite-title">355500</span></a></li>
 
@@ -289,12 +288,12 @@ span.standartTreeRow:hover {
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/secure/showMyPrograms">My Courses </a>  </strong><strong
+					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong><strong
 					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">
-				<strong class="text-size-px14 light-gray"><a>Publish</a> | <a>Manage</a></strong><a
-					class="light-blue"><img width="12" height="12"
+				<strong class="text-size-px14 light-gray"><a>Publish</a> |
+					<a>Manage</a></strong><a class="light-blue"><img width="12" height="12"
 					alt="add more" src="images/plus.png"> </a>
 			</div>
 		</div>
@@ -396,7 +395,7 @@ span.standartTreeRow:hover {
 									<!-- Start of Default Instruction -->
 
 									<div id="instruction" style="padding: 10px;">
-										<img src="/ziksana-web/resources/images/instruction.png"
+										<img src="/ziksana-web/resources/images/ContentContextualHelp.jpg"
 											alt="instructions" title="Key-Board instruction" width="660"
 											style="border: 1px solid #ccc; padding: 5px;">
 									</div>
@@ -423,10 +422,10 @@ span.standartTreeRow:hover {
 														style="margin-top: -4px; font-weight: bold;">Content
 														Name:</label>
 													<div class="controls">
-														<input type="text" id="contentname" 
+														<input type="text" id="contentname"
 															class="defaultvalue validate[required]" autofocus
 															placeholder="Specify the name of the Content"
-														 style="width: 240px; margin-left: 10px;" />
+															style="width: 240px; margin-left: 10px;" />
 													</div>
 
 													<br /> <label for="moduledescription" class="labelclass"
@@ -435,15 +434,14 @@ span.standartTreeRow:hover {
 														style="text-decoration: none;">Rich Text Editor</a> <a
 														class="f-r _plainText" href="#linkurl"
 														style="text-decoration: none;">Plain Text Editor</a>
-													<textarea
-														class="_plainTextShow labelclass defaultvalue"
-														 cols="90" rows="7" style="resize: none;"
-														placeholder="Describe the Content being created">Describe the Content being created</textarea>
+													<textarea placeholder="Describe the Content being created"
+														class="_plainTextShow labelclass defaultvalue" cols="90"
+														rows="7" style="resize: none;"> </textarea>
 													<br />
 													<div class="_richTextShow">
-														<textarea id="Associatecdescrte" name="Associatecdescrte"
-															class="defaultvalue _focus"
-															>Describe the Content being created</textarea>
+														<textarea placeholder="Describe the Content being created"
+															id="Associatecdescrte" name="Associatecdescrte"
+															class="defaultvalue _focus"></textarea>
 													</div>
 
 												</div>
@@ -455,10 +453,12 @@ span.standartTreeRow:hover {
 											<div class="secondcontainer">
 												<div class="control-group">
 													<div>
-														<label class="labelclass" style="font-weight: bold;"> Subject Area : </label> <label
-															class="labelclass" style="margin-left: 120px;font-weight: bold;">
+														<label class="labelclass" style="font-weight: bold;">
+															Subject Area : </label> <label class="labelclass"
+															style="margin-left: 120px; font-weight: bold;">
 															Subject: </label> <label class="labelclass"
-															style="margin-left: 155px;font-weight: bold;"> Topic: </label>
+															style="margin-left: 155px; font-weight: bold;">
+															Topic: </label>
 													</div>
 													<div class="moduleselection">
 														<select name="Careaddl" id="Careaddl"
@@ -467,29 +467,29 @@ span.standartTreeRow:hover {
 															<option value="">Select Subject Area</option>
 
 														</select> <select name="Csubjectddl" id="Csubjectddl"
-															class="defaultvalue labelclass" 
+															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
 															<option value="">Select Subject</option>
 
 														</select> <select name="Ctopicddl" id="Ctopicddl"
-															class="defaultvalue labelclass" 
-															style="width: 200px;">
+															class="defaultvalue labelclass" style="width: 200px;">
 															<option value="">Select Topic</option>
 														</select>
 													</div>
 													<div class="coursetags">
 														<br /> <label class="control-label labelclass"
-															for="contenttags" style="margin-top: -2px;font-weight: bold;">Specify
+															for="contenttags"
+															style="margin-top: -2px; font-weight: bold;">Specify
 															any tags : </label> <input type="text" id="Associatetag"
-															style="margin-left: 290px;" ></input> <br />
+															style="margin-left: 290px;"></input> <br />
 													</div>
 													<!-- end of coursetags--->
 													<img src="/ziksana-web/resources/images/icons/upload.png"
 														align="left" /><label class="control-label labelclass"
-														for="uploadimage" style="margin-top: -2px;font-weight: bold;">Upload
+														for="uploadimage"
+														style="margin-top: -2px; font-weight: bold;">Upload
 														any Image for the Content : </label> <input type="hidden"
-														readonly="readonly" id="Cimageupl" class="labelclass"
-														/>
+														readonly="readonly" id="Cimageupl" class="labelclass" />
 													<div id="thubmnail_upload_message"></div>
 													<div id="loaderText"></div>
 													<input type="file" name="thumbnail_image_file_upload"
@@ -502,9 +502,11 @@ span.standartTreeRow:hover {
 																	.uploadify(
 																			{
 																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																				'queueSizeLimit' : 1,
 																				'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 																				'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 																				'fileSizeLimit' : '10024KB',
+																				'onUploadStart': function(file){ $('#btnsbtassoccontent').attr('disabled','disabled'); },
 																				'onUploadSuccess' : function(
 																						file,
 																						data,
@@ -531,7 +533,7 @@ span.standartTreeRow:hover {
 																								.html(
 																										data_object.message);
 																					}
-
+																					$('#btnsbtassoccontent').removeAttr('disabled'); //enable submit button
 																				}
 																			// Your options here
 																			});
@@ -557,7 +559,7 @@ span.standartTreeRow:hover {
 															Content</option>
 														<option value="UploadContent">Upload Content</option>
 
-													<!--  <option value="ExternalWebPage">Associate URL of
+														<!--  <option value="ExternalWebPage">Associate URL of
 															the Content</option>
 
 														<option value="CreateContent">Create Content</option> -->
@@ -568,7 +570,8 @@ span.standartTreeRow:hover {
 												<div id="type-1">
 													<img src="/ziksana-web/resources/images/icons/upload.png"
 														align="left" /><label class="control-label labelclass"
-														for="uploadimage" style="margin-top: -2px; font-weight: bold;">Upload
+														for="uploadimage"
+														style="margin-top: -2px; font-weight: bold;">Upload
 														the Content (mp4/mp3/doc/docx/ppt/pptx/pdf): </label>
 
 													<div id="message"></div>
@@ -581,9 +584,12 @@ span.standartTreeRow:hover {
 																	.uploadify(
 																			{
 																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																				'queueSizeLimit' : 1,
+																				'successTimeout' : 350,
 																				'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 																				//'debug': true,
 																				//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+																				'onUploadStart': function(file){ $('#btnsbtassoccontent').attr('disabled','disabled'); },
 																				'onUploadSuccess' : function(
 																						file,
 																						data,
@@ -596,21 +602,10 @@ span.standartTreeRow:hover {
 																					if (data_object.Uploaded == 'true') {
 																						//console.log('inside true');
 																						//$('#message').html(data_object);
-																						$(
-																								'#ContentPath')
-																								.val(
-																										data_object.ContentPath);
-																						$(
-																								'#ThumbnailPicturePath')
-																								.val(
-																										data_object.ThumbnailPicturePath);
-																						$(
-																								'#NumberOfThumbnails')
-																								.val(
-																										data_object.NumberOfThumbnails);
-																						$(
-																								'#ContentType')
-																								.val(
+																						$('#ContentPath').val(data_object.ContentPath);
+																						$('#ThumbnailPicturePath').val(data_object.ThumbnailPicturePath);
+																						$('#NumberOfThumbnails').val(data_object.NumberOfThumbnails);
+																						$('#ContentType').val(
 																										data_object.ContentType);
 																						$(
 																								'#message')
@@ -624,6 +619,8 @@ span.standartTreeRow:hover {
 																								.html(
 																										data_object.message);
 																					}
+																					
+																					$('#btnsbtassoccontent').removeAttr('disabled'); //enable submit button
 
 																				}
 																			// Your options here
@@ -641,7 +638,7 @@ span.standartTreeRow:hover {
 														type="text" id="defaultvalue"
 														class="defaultvalue validate[required]"
 														placeholder="Provide the full URL/Web Address including HTTP://"
-														 style="width: 310px; margin-left: 10px;" />
+														style="width: 310px; margin-left: 10px;" />
 												</div>
 												<!----- end of type=2 --->
 
@@ -658,10 +655,10 @@ span.standartTreeRow:hover {
 											<!-- end of forth container--->
 
 											<div class="buttonassoc" style="height: 20px;">
-												<a class="cancellinkassociatecontent btn btn-info" href="" 
+												<a class="cancellinkassociatecontent btn btn-info" href=""
 													style="float: right; margin-right: 20px; text-decoration: none;">
 													Cancel </a> <input type="submit" class="btn btn-info"
-													id="btnsbtassoccontent" value="Submit" 
+													id="btnsbtassoccontent" value="Submit"
 													onClick="getAssociateContentSave(); return false;"
 													style="float: right; margin-right: 20px; text-decoration: none;" />
 
@@ -684,7 +681,7 @@ span.standartTreeRow:hover {
 								<!-- Content Panel End -->
 
 								<a class="btn btn-info"
-									href="/ziksana-web/secure/enrichcontent/${courseId}" 
+									href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="float: right; margin-bottom: 20px; margin-top: 20px;"
 									id="">Save and Continue</a>
 
@@ -755,7 +752,7 @@ span.standartTreeRow:hover {
 		<footer> </footer>
 		<!--End Footer Container-->
 	</div>
-<style rel="text/css">
+	<style rel="text/css">
 #SWFUpload_1 {
 	left: 0;
 	cursor: pointer;

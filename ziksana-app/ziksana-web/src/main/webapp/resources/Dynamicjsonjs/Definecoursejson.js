@@ -346,7 +346,7 @@ function getCourse() {
 
 							$('#Cdescriptionrte').val(course_desc);
 
-							$('#Ctagfield').val(tag_field);
+							$('#Ctagfield').val(course_desc);
 
 							$('#Credits').val(credits);
 

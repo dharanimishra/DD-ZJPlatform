@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.course.Course;
-import com.ziksana.domain.course.CourseContentSecurity;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseEditResponse;
 import com.ziksana.domain.course.CourseJsonResponse;
@@ -192,15 +191,6 @@ public class CreateCourseController {
 				Duration duration = new Duration(courseDuration,
 						courseDurationUnit);
 				course.setCourseDuration(duration);
-				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-
-				CourseTagcloud tagcloud = new CourseTagcloud();
-				tagcloud.setCreatingMember(accountableMember);
-				tagcloud.setTagName(CourseTags);
-				tagcloud.setTagType(TagType.TAG_TYPE1);
-				tagcloudList.add(tagcloud);
-				tagcloud.setCourse(course);
-				course.setCourseTagClouds(tagcloudList);
 
 			} else {
 
@@ -349,7 +339,7 @@ public class CreateCourseController {
 			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 			course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
 			course.setDescription(CourseModuleDescription);
-		
+
 			LearningComponent comp1 = new LearningComponent();
 			comp1.setAuthoredMember(accountableMember);
 
