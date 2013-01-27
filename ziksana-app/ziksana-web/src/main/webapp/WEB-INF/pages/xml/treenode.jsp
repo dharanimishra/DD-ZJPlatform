@@ -7,7 +7,7 @@
 
 <course> <id>${courseIds}</id> <name>${coursename}</name> <nodes>
 <node> <id>COURSE_${courseIds}</id> <parentId>-1</parentId> <title>${coursename}</title>
-<icon>../resources/images/tree_icons/course.png</icon> <expanded>true</expanded>
+<icon>/ziksana-web/resources/images/tree_icons/course.png</icon> <expanded>true</expanded>
 </node> <c:forEach var="treenode" items="${treeList}">
 	<node> <id>LCOMPONENT_${treenode.id}</id> <parentId>COURSE_${courseIds}</parentId>
 	<title>${treenode.title}</title> <icon>${parentIcon}</icon> <expanded>${treenode.expanded}</expanded>
@@ -35,7 +35,7 @@
 			<icon>${pdfIcon}</icon>
 		</c:when>
 		<c:when test="${childtreenode.contentType == 5}">
-			<icon>${wordIcon}</icon>
+			<icon>/ziksana-web/resources/images/tree_icons/word.png</icon>
 		</c:when>
 		<c:when test="${childtreenode.contentType == 6}">
 			<icon>${pptIcon}</icon>

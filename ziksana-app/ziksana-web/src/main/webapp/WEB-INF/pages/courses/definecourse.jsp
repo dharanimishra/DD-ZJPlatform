@@ -656,8 +656,12 @@ span.standartTreeRow:hover {
 								<input type="submit" class="btn btn-info f-r" id="sbtvalidation"
 									value="Submit" onClick="createCourse(); return false;"
 									style="margin-right: -200px;">
+								<a href="/ziksana-web/secure/createmodule/${courseId}"
+									style="float:right; margin-bottom: 20px; margin-top: 2px; display: inline-block;right: -118px;position: relative;"
+									class="btn btn-info">Save and Continue</a>
 
 							</form>
+							
 
 							<br> <br>
 
@@ -744,8 +748,7 @@ span.standartTreeRow:hover {
 
 									</div>
 									<!-- Content Panel End -->
-									<br /> <a class="btn btn-info f-r" id="saveBottom"
-										style="margin-right: -200px;">Save and Continue</a> <br /> <br />
+									
 
 								</div>
 								<!-- end of definecontainer--->

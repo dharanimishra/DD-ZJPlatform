@@ -418,13 +418,15 @@ table.enrich_table td {
   font-size: 11px;
   padding: 1em;
 }
+div.tableofcontent { width: 570px; max-height: 200px; overflow-y: auto;}
 table.enrich_table td img {cursor:pointer; margin-right: .5em;}		
 #edit_educator_content {
-  background: #444;
+  background: rgba(1, 1, 1, .8);
   box-shadow: 0 0 12px black;
   color: white;
   display: inline-block;
   font-family: verdana;
+  font-size: 12px;
   height: 201px;
   left: 83px;
   padding: 0.5em;
@@ -432,6 +434,7 @@ table.enrich_table td img {cursor:pointer; margin-right: .5em;}
   top: 103px;
   width: 393px;
 }
+		#edit_educator_content h2 {margin: 0; font-weight: normal; font-size: 18px; color: gray;}
 		#edit_educator_content label {display: block; margin-bottom: .5em;}
 		#edit_educator_content input[type="text"]{width: 90%;}
 	

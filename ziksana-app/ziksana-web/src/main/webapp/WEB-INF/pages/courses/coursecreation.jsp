@@ -395,6 +395,7 @@ span.standartTreeRow:hover {
 											title="Key-Board instruction" width="720"
 											style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;">
 									</div>
+								
 
 									<!-- End of Default Instruction -->
 									<!-- Add Module Container -->
@@ -445,7 +446,7 @@ span.standartTreeRow:hover {
 
 											</div>
 											<!-- end of coursename--->
-									</div>
+									
 									<!-- end of control group--->
 
 									<!----------------- start of second container --------------->
@@ -601,9 +602,10 @@ span.standartTreeRow:hover {
 										value="Submit" onClick="getaddmodulesave(); return false;"
 										style="float: right; margin-right: 20px;" /> <br /> <br />
 
-									</form>
+								</form>
 
 								</div>
+									
 								<!-- end of add module container -->
 								<!-- start of search and associate content -->
 
@@ -630,8 +632,6 @@ span.standartTreeRow:hover {
 
 							</div>
 							<!-- Content Panel End -->
-							<br /> <a class="btn btn-info f-r" id="saveBottom"
-								style="margin-right: -200px;">Save and Continue</a> <br /> <br />
 
 						</div>
 						<!-- end of definecontainer--->
@@ -646,8 +646,7 @@ span.standartTreeRow:hover {
 				</div>
 			</div>
 	</div>
-	</div>
-	</section>
+	
 	<!--End Main Content-->
 	<!--Current Progress-->
 	<div class="col border-top">

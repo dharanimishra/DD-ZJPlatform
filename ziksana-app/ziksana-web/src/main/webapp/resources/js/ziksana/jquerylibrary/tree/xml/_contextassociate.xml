@@ -7,8 +7,8 @@
 		
 		<!--Menu For the Second Child Elements -->
 		<item text="View Content" img="view.png"  id="View"></item>	
-		<item text="Edit content" img="edit.png" id="Edit"></item>
-		<item text="Delete content" img="cross.png"  id="Delete"></item>
+		<!--<item text="Edit content" img="edit.png" id="Edit"></item>
+		<item text="Delete content" img="cross.png"  id="Delete"></item>-->
 		<item text="Enhance content" img="enhance.png"  id="Enhance"></item>	
 	
 </menu>
