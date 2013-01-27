@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseEditResponse;
@@ -30,7 +29,9 @@ import com.ziksana.domain.course.LearningComponentType;
 import com.ziksana.domain.course.ModuleEditResponse;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.course.CourseException;
-
+import com.ziksana.id.StringZID;
+import com.ziksana.id.ZID;
+import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseEditService;
 import com.ziksana.service.course.CourseService;
@@ -160,6 +161,11 @@ public class CreateCourseController {
 					+ fe);
 		}
 
+		ZID memberId = new StringZID("1001");
+		ZID memberPersonaId = new StringZID("201");
+		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
+		ThreadLocalUtil.setToken(token);
+
 		LOGGER.debug(" Class :"
 				+ getClass()
 				+ " Method: saveCourse() : setMemberRoleId"
@@ -173,7 +179,7 @@ public class CreateCourseController {
 		// Service call for Course
 
 		Course courseObj = null;
-		List<CourseTagcloud> tagcloudList = new ArrayList<CourseTagcloud>();
+
 		try {
 
 			// Creating Course Object for adding parameters
@@ -181,16 +187,19 @@ public class CreateCourseController {
 
 			if (courseId > 0) {
 				course.setCourseId(courseId);
-				course.setAccountableMember(accountableMember);
 				course.setName(CourseName);
+				course.setDescription(CourseDescription);
 				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 				course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
-				course.setDescription(CourseDescription);
+				course.setAccountableMember(accountableMember);
 				course.setSecurityIndicator(true);
-
+				course.setCourseCredits(CourseCredits);
+				course.setAdditionalInfoIndicator(true);
 				Duration duration = new Duration(courseDuration,
 						courseDurationUnit);
 				course.setCourseDuration(duration);
+				course.setThumbnailPicturePath(UploadImage);
+				course.setVersion(1);
 
 			} else {
 
@@ -199,27 +208,15 @@ public class CreateCourseController {
 				course.setCourseCredits(CourseCredits);
 				course.setExtraCredits(CourseExtraCredits);
 				course.setThumbnailPicturePath(UploadImage);
-
 				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 				course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
 				course.setAdditionalInfoIndicator(true);
-
 				course.setVersion(1);
 				course.setSubjClassificationId(subjClassificationId);
-
 				Duration duration = new Duration(courseDuration,
 						courseDurationUnit);
 				course.setCourseDuration(duration);
-				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-
 				course.setSecurityIndicator(true);
-
-				CourseTagcloud tagcloud = new CourseTagcloud();
-				tagcloud.setCreatingMember(accountableMember);
-				tagcloud.setTagName(CourseTags);
-				tagcloud.setTagType(TagType.TAG_TYPE1);
-				tagcloudList.add(tagcloud);
-				tagcloud.setCourse(course);
 				course.setAccountableMember(accountableMember);
 			}
 
