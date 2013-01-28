@@ -19,6 +19,7 @@
                 width:696px;
                 height:487px;
                 display:block;
+                overflow: auto;
             }
 .pagination {
   margin: 0.25em 0;
@@ -76,7 +77,7 @@
     <body>
         <div id="slides">
             <div class="slides_container">	
-			<c:forEach var="i" begin="0" end="${content.numberOfThumbnails}" step="1" varStatus ="status">
+			<c:forEach var="i" begin="0" end="${content.numberOfThumbnails-1}" step="1" varStatus ="status">
 				<div>
 				<image src="http://54.243.235.88/zikload-xml/uploads/${content.thumbnailPicturePath}img<c:out value="${i}" />.jpg" />
 				</div>

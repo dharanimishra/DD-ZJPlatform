@@ -70,6 +70,8 @@ function secondsToHms(d) {
 					if(data == '1'){ //add is successful
 						
 						get_all_educator_content(course_id, component_id, node_id);
+						jwplayer(reftoplayer).seek(duration); //resume playback from the position stopped.
+
 						
 					}
 					
@@ -223,7 +225,7 @@ function secondsToHms(d) {
 				console.log('course_id is '+course_id);
 				node_id = $('#e_content_id').val();
 				console.log('nodese_id is '+node_id);
-				duration = "8";//Math.floor(note_time);
+				duration = Math.floor(note_time);
 				
 				title = note_title;
 				description = note_desc;

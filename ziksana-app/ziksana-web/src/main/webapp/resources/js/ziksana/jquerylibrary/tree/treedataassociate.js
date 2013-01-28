@@ -186,7 +186,6 @@ function onButtonClick(menuitemId, type) {
 			if (content_type == 'PDF' || content_type == 'DOC'
 
 			|| content_type == 'PPT' || content_type == 'IMAGESET'
-					|| content_type == 'IMAGE'
 
 					|| content_type == 'EXCEL') {
 
@@ -194,6 +193,12 @@ function onButtonClick(menuitemId, type) {
 				displayImageSet(content_path);
 
 			}
+
+			if(content_type == 'IMAGE'){
+
+				displayImage(content_url);
+			}
+
 
 		});
 

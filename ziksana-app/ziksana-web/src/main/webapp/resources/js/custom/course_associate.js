@@ -104,3 +104,24 @@ function displayImageSet(path) {
 	});
 
 }
+
+
+function displayImage(path) {
+
+
+	$.fancybox({
+
+
+		'autoSize' : true,
+
+		'transitionIn' : 'fade',
+
+		'transitionOut' : 'fade',
+
+		'type' : 'image',
+
+		'href' : path
+
+	});
+
+}
