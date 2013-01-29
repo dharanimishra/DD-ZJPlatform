@@ -425,13 +425,23 @@ public class CreateCourseController {
 	@RequestMapping(value = "/removeCourseComponents", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView removeCourseComponents(@RequestParam Course course)
+	ModelAndView removeCourseComponents(
+			@RequestParam(value = "Course_id", required = true) String CourseId,
+			@RequestParam(value = "Component_id", required = true) String learningComponentId)
 			throws CourseException {
 		LOGGER.info("Entering Class " + getClass()
-				+ " removeCourseComponents(): coursename :"
-				+ course.getCourseId() + " coursedescription :"
-				+ course.getCourseDetails());
-		courseService.removeCourse(course);
+				+ " removeCourseComponents(): CourseId :" + CourseId
+				+ " ComponentId :" + learningComponentId);
+
+		Integer learningCompId = 0;
+		try {
+			learningCompId = Integer.parseInt(learningComponentId);
+		} catch (NumberFormatException nfe) {
+			LOGGER.debug(" Class :" + getClass()
+					+ " Method: removeCourseComponents : NumberFormatException"
+					+ nfe);
+		}
+		courseService.removeCourseComponents(learningCompId);
 		ModelAndView mv = new ModelAndView("courses/createcourses");
 		LOGGER.info("Exiting Class " + getClass()
 				+ " removeCourseComponents(): ");

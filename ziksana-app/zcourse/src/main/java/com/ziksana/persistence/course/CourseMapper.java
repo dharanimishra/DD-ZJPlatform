@@ -56,7 +56,7 @@ public interface CourseMapper {
 			@Result(property = "durationtype", column = "CourseDurationUnit"),
 			@Result(property = "subjClassificationId", column = "SubjClassificationId") })
 	CourseEditResponse getCourseDetails(Integer courseId);
-	
+
 	@Select({
 			"select id, name, description, TotalCredits,ExtraCredits,CourseDuration,CourseDurationUnit,SubjClassificationId ",
 			" from corcourse where id = #{courseId,jdbcType=INTEGER}" })
@@ -372,6 +372,10 @@ public interface CourseMapper {
 	@Update({ "update corcourse set isdelete = #{isDelete, jdbcType=BOOLEAN} where courseid = #{courseId, jdbcType=INTEGER}" })
 	void deleteCourse(@Param("isDelete") Boolean isDelete,
 			@Param("courseId") Integer courseId);
+
+	@Update({ "update corlearningcomponent set isdelete = #{isdelete, jdbcType=BOOLEAN} where ID =  #{learningComponentId,jdbcType=INTEGER}" })
+	void removeCourseComponents(@Param("isDelete") Boolean isDelete,
+			@Param("learningComponentId") Integer learningComponentId);
 
 	List<Course> getCourses(@Param("statusId") Integer statusId,
 			@Param("memberPersonaId") Integer memberPersonaId);

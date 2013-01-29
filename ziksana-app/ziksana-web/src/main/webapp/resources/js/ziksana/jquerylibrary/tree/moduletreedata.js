@@ -229,6 +229,37 @@ function onButtonClick(menuitemId, type) {
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
 		tree.deleteItem(tree.getSelectedItemId(), true);
+
+		ComponentId = tree.getSelectedItemId();
+		CourseId = tree.getParentId(ComponentId);
+
+		uri = '/ziksana-web/secure/removeCourseComponents';
+
+		token = ''; // dummy token for demo. you have to send real token.
+		request_type = 'POST'; // can be GET or POST. In this case, a GET
+		// request
+
+		var Course_id = $('#courseid').val();
+
+		var parameters = {
+			"Course_id" : CourseId,
+			"Component_id" : ComponentId
+		};
+		
+		$
+		.post(
+				uri,
+				parameters,
+				function(data) {
+					console.log(data);
+					if (data.response == 'success') {
+						course_id = data.id;
+					}else {
+						$('#tempdiv').html(
+								'<span style="color:red;">'
+										+ data.message + '</span>');
+					}
+
 	}
 	// tree.setItemColor(id, menuitemId.split("_")[1]);
 }

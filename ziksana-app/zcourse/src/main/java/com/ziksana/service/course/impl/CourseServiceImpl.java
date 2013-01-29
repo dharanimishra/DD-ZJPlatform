@@ -206,7 +206,7 @@ public class CourseServiceImpl implements CourseService {
 		if (course == null) {
 			throw new CourseException("Course cannot be null");
 		}
-		
+
 		courseDetails = course.getCourseDetails();
 
 		if (courseDetails == null) {
@@ -647,53 +647,71 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> getCoursesByStatus(CourseStatus courseStatus) {
 		// TODO Auto-generated method stub
 		int status = courseStatus.getID();
-		System.out.println(" COURSE STATUS IS "+status);
+		System.out.println(" COURSE STATUS IS " + status);
 		String memberPersonaId = ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID();
-		
-		List<Course> courses =  courseMapper.getCourses(Integer.valueOf(status),Integer.valueOf(memberPersonaId));
-		return getCourseProgress(courses,Integer.valueOf(memberPersonaId));
-		
+
+		List<Course> courses = courseMapper.getCourses(Integer.valueOf(status),
+				Integer.valueOf(memberPersonaId));
+		return getCourseProgress(courses, Integer.valueOf(memberPersonaId));
+
 	}
 
 	@Override
 	public List<Course> getAllCoursesByStatus(CourseStatus courseStatus) {
-		
+
 		int status = courseStatus.getID();
 		String memberPersonaId = ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID();
-		
-		return courseMapper.getAllCourses(Integer.valueOf(status),Integer.valueOf(memberPersonaId));
+
+		return courseMapper.getAllCourses(Integer.valueOf(status),
+				Integer.valueOf(memberPersonaId));
 	}
 
 	@Override
 	public Integer totalNumberOfCoursesByStatus(CourseStatus courseStatus) {
-		
+
 		int status = courseStatus.getID();
 		String memberPersonaId = ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID();
-		
-		return courseMapper.totalNumberOfCourses(Integer.valueOf(status),Integer.valueOf(memberPersonaId));
+
+		return courseMapper.totalNumberOfCourses(Integer.valueOf(status),
+				Integer.valueOf(memberPersonaId));
 	}
 
 	@Override
 	public List<LearningProgram> getLearningPrograms() {
-		
+
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
-		
+
 		return subscriptionMapper.getLearningPrograms(Integer
-				.valueOf(memberRoleId)); 
+				.valueOf(memberRoleId));
 	}
 
 	@Override
 	public List<Course> getCoursesByLearningProgram(Integer learningProgramId) {
-		
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
-		
-		return subscriptionMapper.getCoursesByLearningProgram(Integer.valueOf(memberRoleId), learningProgramId);
+
+		return subscriptionMapper.getCoursesByLearningProgram(
+				Integer.valueOf(memberRoleId), learningProgramId);
 	}
-	
+
+	@Override
+	public void removeCourseComponents(Integer learningComponentId) {
+		LOGGER.info("Entering Class :"
+				+ getClass()
+				+ " Method Name :removeCourseComponents(Integer learningComponentId)"
+				+ learningComponentId);
+
+		Boolean isDelete = true;
+		learningComponentMapper.delete(isDelete, learningComponentId);
+
+		LOGGER.info("Exiting Class :"
+				+ getClass()
+				+ " Method Name :removeCourseComponents(Integer learningComponentId)"
+				+ learningComponentId);
+	}
 
 }

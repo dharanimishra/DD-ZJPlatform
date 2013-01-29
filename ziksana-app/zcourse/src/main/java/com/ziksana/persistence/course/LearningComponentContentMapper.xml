@@ -108,14 +108,4 @@
 		where ID =
 		#{learningComponentContentId.storageID,jdbcType=INTEGER}
 	</update>
-
-	<!-- <insert id="saveLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent" 
-		useGeneratedKeys="true" keyProperty="learningComponentContentId" keyColumn="learningcomponentcontentid"> 
-		insert into corlearningcomponentcontent (creationdate, coursestatus, contenttype,contentdescription, 
-		active, contentversionused, learningcomponentid, learningcontentid ) values 
-		(sysdate(), #{courseStatusId,jdbcType=INTEGER}, #{compContentTypeId,jdbcType=INTEGER}, 
-		#{contentDescription,jdbcType=VARCHAR}, #{active,jdbcType=BIT}, #{contentVersionUsed,jdbcType=INTEGER}, 
-		#{learningComponent.learningComponentId,jdbcType=INTEGER} , #{baseLearningContent.learningContentId,jdbcType=INTEGER} 
-		) <selectKey keyProperty="learningComponentContentId" resultType="int" order="AFTER"> 
-		SELECT LAST_INSERT_ID(); </selectKey> </insert> -->
 </mapper>

@@ -12,17 +12,20 @@ import com.ziksana.domain.course.LearningComponent;
 public interface LearningComponentMapper {
 	/**
 	 * This method saves the Learning component
+	 * 
 	 * @param component
 	 * @return
 	 */
 	Integer saveLearningComponent(LearningComponent component);
-	
+
 	/**
 	 * Updates the existing LearningComponent
+	 * 
 	 * @param component
 	 * @return
 	 */
 	Integer updateLearningComponent(LearningComponent component);
+
 	/**
 	 * @param memberRoleId
 	 * @return
@@ -41,8 +44,6 @@ public interface LearningComponentMapper {
 	List<LearningComponent> getLearningObjects(Boolean isLearningObject,
 			Integer memberRoleId);
 
-
-	
 	/**
 	 * @param isLearningObject
 	 * @param integer
@@ -62,14 +63,15 @@ public interface LearningComponentMapper {
 	LearningComponent getLearningObjectById(Boolean isLearningObject,
 			Integer learningComponentId);
 
-	@Update({" update corlearningcomponent set isdelete = #{isdelete, jdbcType=BOOLEAN} where learningcomponentid =  #{learningComponentId,jdbcType=INTEGER}"})
+	@Update({ " update corlearningcomponent set isdelete = #{isdelete, jdbcType=BOOLEAN} where learningcomponentid =  #{learningComponentId,jdbcType=INTEGER}" })
 	void delete(Boolean isDelete, Integer learningComponentId);
 
-	
+	@Update({ "update corlearningcomponent set isdelete = #{isdelete, jdbcType=BOOLEAN} where learningcomponentid =  #{learningComponentId,jdbcType=INTEGER}" })
+	void learningComponentdelete(Boolean isDelete, Integer learningComponentId);
+
 	List<LearningComponent> getComponentsByCourseId(Integer courseId);
 
-	
-	@Select({"select * from corlearningcomponent where "})
+	@Select({ "select * from corlearningcomponent where " })
 	LearningComponent getComponentsByCourseComponentId(Integer integer);
 
 }
