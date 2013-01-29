@@ -54,7 +54,7 @@
 				
 			}
 			
-			var add_educator_content = function(content_type, course_id, node_id, duration, title, description, coordinates, url){
+			var add_educator_content = function(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid){
 				console.log('inside add educator content');
 				//TO BE IMPLEMENTED.
 				content_id = $('#e_content_id').val();
@@ -62,7 +62,7 @@
 				
 				node_id = 'LCONTENT_1_'+component_id+'_'+content_id;
 				
-				$.post('/ziksana-web/secure/addEducatorNote', {'contentType':content_type, 'courseId':course_id, 'nodeId':node_id, 'duration':duration, 'title':title, 'description':description, 'coordinates':coordinates, 'url':url}, function(data){
+				$.post('/ziksana-web/secure/addEducatorNote', {'contentType':content_type, 'courseId':course_id, 'nodeId':node_id, 'duration':duration, 'title':title, 'description':description, 'coordinates':coordinates, 'url':url, 'parentId':parentid}, function(data){
 					
 					if(data == '1'){ //add is successful
 						
@@ -76,13 +76,24 @@
 				
 			}
 			
+			
+			var educator_toc_items_string = '';
+			
+			function ff_get_toc(){ 
+				
+				return educator_toc_items_string;
+			}
+			
 			var get_all_educator_content = function(course_id, component_id, node_id){
+				educator_toc_items_string = ''; //reset the options string
 				console.log('inside get_all_educator_content');
 				
 				$.get('/ziksana-web/secure/getAllEducatorContent', {'courseId':course_id, 'nodeId':node_id, 'componentId':component_id}, function(data){
 					
 					
 					data_table_tbody_html = '';
+					$('select#ec_parentid').html(''); //empty the select dropdown options
+					$('select#ec_parentid').append('<option value="">Select One</option>');
 					
 					for(i in data){
 					
@@ -95,19 +106,23 @@
 						description = data[i].description;
 						coordinates = data[i].coordinates;
 						url = data[i].url;
+						parentId = data[i].parentId;
 						
 						
 						if(educatorContentType == 8){ //8 = Educator Note
-							data_table_tbody_html += '<tr><td>Note</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+description+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="note" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Note</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+description+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="note" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'" data-parentid=""><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 1){ //1 = Educator Reference
-							data_table_tbody_html += '<tr><td>Reference</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+url+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="reference" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Reference</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+url+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="reference" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'" data-parentid=""><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 9){ //9 = Educator HotSpot
-							data_table_tbody_html += '<tr><td>Hotspot</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td></td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="hotspot" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Hotspot</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td></td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="hotspot" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'" data-parentid=""><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 7){ //7 = TOC
-							data_table_tbody_html += '<tr><td>TOC Item</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>&nbsp</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="toc" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							option_html = '<option value="'+id+'">'+title+'</option>';
+							educator_toc_items_string += id+'||'+title+'|||';
+							$('select#ec_parentid').append(option_html);
+							data_table_tbody_html += '<tr><td>TOC Item</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>&nbsp</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="toc" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'" data-parentid="'+parentId+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 					
 					}
@@ -129,6 +144,7 @@
 				coordinates = edit_icon.attr('data-coordinates');
 				url = edit_icon.attr('data-url');
 				type = edit_icon.attr('data-type');
+				parentId = edit_icon.attr('data-parentid');
 
 				
 				//reset these fields
@@ -138,9 +154,10 @@
 				$('#ec_description').val('');
 				$('#ec_coordinates').val('');
 				$('#ec_url').val('');
+				$('#ec_parentid').val('');
 				
 				//hide the labels
-				 $('#l_ec_title, #l_ec_description, #l_ec_url').hide();
+				 $('#l_ec_title, #l_ec_description, #l_ec_url, #l_ec_parentid').hide();
 
 				//Populate the content from the variables recieved.
 				$('#ec_enrich_id').val(enrich_id);
@@ -149,11 +166,12 @@
 				$('#ec_description').val(description);
 				$('#ec_coordinates').val(coordinates);
 				$('#ec_url').val(url);
+				$('#ec_parentid').val(parentId);
 
 				//show the appropriate form fields based on the content type
 				if(type == 'note'){ $('#l_ec_title, #l_ec_description').show(); $('.educator_content_type').html('Note');}
 				if(type == 'reference'){ $('#l_ec_title, #l_ec_url').show(); $('.educator_content_type').html('Reference');}
-				if(type == 'toc'){ $('#l_ec_title').show(); $('.educator_content_type').html('TOC Item');}
+				if(type == 'toc'){ $('#l_ec_title, #l_ec_parentid').show(); $('.educator_content_type').html('TOC Item');}
 				if(type == 'hotspot'){ $('#l_ec_title').show(); $('.educator_content_type').html('Hotspot');}
 
 
@@ -172,8 +190,9 @@
 				description = $('#ec_description').val();
 				coordinates = $('#ec_coordinates').val();
 				url = $('#ec_url').val();
+				parentid = $('#ec_parentid').val();
 
-				$.post('/ziksana-web/secure/editEducatorContent', {id:id, duration:duration, title:title, description:description, coordinates:coordinates, url:url }, function(data){
+				$.post('/ziksana-web/secure/editEducatorContent', {id:id, duration:duration, title:title, description:description, coordinates:coordinates, url:url, parentId:parentid }, function(data){
 
 					if(data == 1){ //record is successfully updated
 						refresh_educator_content();
@@ -231,7 +250,8 @@
 				url = 'asd';
 				console.log("BFR VALL");
 				display_msg(content_type, course_id, node_id, duration, title, description, coordinates, url);
-				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url);
+				parentid = '';
+				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 				console.log("AFT CALL"); 	 
 			}
 			
@@ -262,7 +282,8 @@
 				description = '';
 				coordinates = '';
 				url = note_desc;
-				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url);
+				parentid = '';
+				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			
 			}
 
@@ -290,7 +311,8 @@
 				coordinates = note_desc;
 				description = '';
 				url = '';
-				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url);
+				parentid = '';
+				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			
 			}
 
@@ -315,7 +337,10 @@
 				description = note_desc; // will carry parent node id
 				coordinates = '';
 				url = '';
-				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url);
+				//parentItemString = note_desc;
+				parentid = note_desc;
+				
+				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			
 			}
 
@@ -327,7 +352,7 @@
 
 			var ff_get_position = function() {
 				var position = jwplayer(reftoplayer).getPosition();
-				console.log(position);
+				//console.log(position);
 				return position + "";
 			}
 
@@ -392,6 +417,9 @@
 		<label id="l_ec_description">Description: <br/><textarea id="ec_description"></textarea></label>
 		<input type="hidden" id="ec_coordinates" value=""/>
 		<label id="l_ec_url">Url: <br/><input type="text" id="ec_url" value=""/></label>
+		<label id="l_ec_parentid">Parent Item: <br/>
+			<select id="ec_parentid"></select>
+		</label>
 		<hr/>
 		<button onclick="update_educator_content();">Update</button>
 		<button onclick="$(this).parent().hide();">Cancel</button>
@@ -419,7 +447,7 @@ table.enrich_table td {
 div.tableofcontent { width: 570px; max-height: 200px; overflow-y: auto;}
 table.enrich_table td img {cursor:pointer; margin-right: .5em;}		
 #edit_educator_content {
-  background: rgba(1, 1, 1, .8);
+  background: #555;
   box-shadow: 0 0 12px black;
   color: white;
   display: inline-block;

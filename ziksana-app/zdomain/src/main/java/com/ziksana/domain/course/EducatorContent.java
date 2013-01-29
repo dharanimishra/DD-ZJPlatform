@@ -11,13 +11,21 @@ public class EducatorContent {
 	 
 	 Integer id;
 	
-	Integer contentType;
+	 Integer contentType;
 	 Integer duration;
 	 String title;
 	 String description;
 	 String coordinates;
 	 String url;
+	 Integer parentId;
 	 
+	 
+	public Integer getParentId() {
+		return parentId;
+	}
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
+	}
 	public Integer getContentType() {
 		return contentType;
 	}

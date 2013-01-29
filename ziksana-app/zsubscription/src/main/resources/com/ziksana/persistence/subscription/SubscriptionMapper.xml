@@ -8,11 +8,11 @@
 		parameterType="java.lang.Integer">
 
 
-		select 
-		program.* 
-		from 
-		sbnmembersubscriptionprogram subpgm join 
-		corlearningprogram program ON 
+		select
+		program.*
+		from
+		sbnmembersubscriptionprogram subpgm join
+		corlearningprogram program ON
 		subpgm.LearningProgramId=program.ID
 		where
 		subpgm.MemberRoleId=#{memberRoleId}
@@ -23,17 +23,32 @@
 
 	</select>
 
+
+
+	<select id="getLinkedLearningContent" resultMap="lcResultMap" parameterType="java.lang.Integer">
+
+		select link.ID, link.ContentName,link.ContentPath
+		from
+		corlearningcontent lc join
+		corlearningcontent link on
+		lc.LinkedLearningContentId=link.ID
+		where
+		lc.ID=#{learningContentId}
+
+	</select>
+
 	<select id="getCoursesByLearningProgram" resultMap="courseResultMap"
 		parameterType="map">
 
 
-	select
+		select
 		course.ID,
 		course.Name,
 		course.Description
 		from
 		sbnmembersubscriptionprogram sbnpgm
-		JOIN sbnsubscriptioncourse subcourse ON
+		JOIN sbnsubscriptioncourse
+		subcourse ON
 		sbnpgm.ID=subcourse.MemSubscriptionProgId
 		JOIN
 		corcurriculumcourse curcourse ON
@@ -42,7 +57,8 @@
 		corcourse course ON
 		curcourse.CourseId=course.ID
 		where
-		sbnpgm.MemberRoleId=#{memberRoleId} and
+		sbnpgm.MemberRoleId=#{memberRoleId}
+		and
 		sbnpgm.LearningProgramId=#{learningProgramId}
 
 
@@ -69,7 +85,8 @@
 		sbn.ID=notes.SubscriptionCourseId
 		join
 		corcurriculumcourse cor on
-		cor.ID =
+		cor.ID
+		=
 		sbn.CurriculumCourseId
 		join corlearningcomponentcontent corlc on
 		notes.LearningComponentContentId=corlc.ID
@@ -122,8 +139,8 @@
 
 
 	</select>
-	
-	
+
+
 	<select id="getAllEducatorContent" resultMap="educatorContentResultMap"
 		parameterType="map">
 
@@ -138,11 +155,11 @@
 		JOIN
 		corenrichment enr ON
 		cntenr.enrichmentid= enr.enrichmentId
-		
+
 		where
-		
+
 		<if test="subscrCourseId != null">
-			 enr.CourseId=#{subscrCourseId}
+			enr.CourseId=#{subscrCourseId}
 		</if>
 		and
 		enr.LearningComponentId=#{learnCompId} and
@@ -154,13 +171,13 @@
 
 
 	</select>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<select id="getEducatorHotspots" resultMap="hotspotsResultMap"
 		parameterType="map">
 
@@ -199,11 +216,11 @@
 
 
 	</select>
-	
-	
-	
-	
-	
+
+
+
+
+
 
 
 
@@ -231,7 +248,8 @@
 		sbnmembersubscriptionprogram subprgm ON
 		sbncourse.MemSubscriptionProgId=subprgm.id
 		where
-		cntenr.LinkType = #{contentType}
+		cntenr.LinkType =
+		#{contentType}
 		<if test="subscrCourseId != null">
 			AND enr.CourseId=#{subscrCourseId}
 		</if>
@@ -256,7 +274,7 @@
 		cntenr.duration,
 		cntenr.ID,
 		cntenr.parentContent
-		
+
 
 		from
 		corcontentenrichment
@@ -331,18 +349,21 @@
 		#{type},#{content},
 		(select subcourse.ID
 		from
-		sbnsubscriptioncourse subcourse,corcurriculumcourse curcourse
+		sbnsubscriptioncourse
+		subcourse,corcurriculumcourse curcourse
 		where
 		subcourse.CurriculumCourseId=curcourse.ID and
 		curcourse.courseId=#{courseId}),
 		#{learnCompId},
 		(select
-		ID from corlearningcomponentcontent where
-		LearningComponentId=#{learnCompId} and
+		ID from
+		corlearningcomponentcontent where
+		LearningComponentId=#{learnCompId}
+		and
 		LearningContentId=#{learnCmpContId}
 		),
 		(select
-	     ID
+		ID
 		from
 		sbnmembersubscriptionprogram
 		where
@@ -356,9 +377,11 @@
 	<insert id="addEducatorContent" parameterType="map"
 		useGeneratedKeys="true" keyProperty="ContentEnrichmentId">
 
-		insert into corcontentenrichment(LinkType, LinkDescription,uri,coordinates,duration,LinkElement,
+		insert into corcontentenrichment(LinkType,
+		LinkDescription,uri,coordinates,duration,LinkElement,parentContent
 		enrichmentid)
-		values(#{type},#{description} ,#{url} , #{coordinates},#{duration},#{title}, (select enrichmentid
+		values(#{type},#{description} ,#{url} ,
+		#{coordinates},#{duration},#{title},#{parentId} (select enrichmentid
 		from
 		corenrichment
 		where
@@ -381,37 +404,39 @@
 		delete from
 		sbnsubscribernotes where ID=#{noteId}
 	</delete>
-	
+
 	<delete id="deleteEducatorContent" parameterType="java.lang.Integer">
-	          delete from corcontentenrichment where id=#{contentId}
+		delete from corcontentenrichment where id=#{contentId}
 	</delete>
-	
+
 
 	<update id="updateNote" parameterType="map">
 
 		update sbnsubscribernotes
-		set NoteDescription=#{desc},NoteDuration=#{duration},NoteTitle=#{title}
+		set
+		NoteDescription=#{desc},NoteDuration=#{duration},NoteTitle=#{title}
 		where
 		ID=#{noteId}
 
 	</update>
-	
-	
+
+
 	<update id="editEducatorContent" parameterType="map">
-		
+
 		update corcontentenrichment
 		set uri=#{url},
 		duration=#{duration},
 		coordinates=#{coordinates},
 		LinkDescription=#{description},
-		LinkElement=#{title}
+		LinkElement=#{title},
+		parentContent=#{parentId}
 		where
 		ID=#{contentEnrId}
 
 	</update>
-	
-	
-	
+
+
+
 
 
 
@@ -422,32 +447,32 @@
 		<result property="description" column="NotesContent" />
 
 	</resultMap>
-	
+
 	<resultMap id="educatorContentResultMap" type="com.ziksana.domain.course.EducatorContent">
-        
-        <result property="id" column="id" />
+
+		<result property="id" column="id" />
 		<result property="contentType" column="LinkType" />
 		<result property="title" column="LinkElement" />
 		<result property="description" column="LinkDescription" />
 		<result property="url" column="uri" />
 		<result property="duration" column="duration" />
 		<result property="coordinates" column="coordinates" />
-		
-		
+        <result property="parentId" column="parentContent" />
+
 
 	</resultMap>
-	
-	
+
+
 	<resultMap id="hotspotsResultMap" type="com.ziksana.domain.course.Hotspot">
 
 		<result property="title" column="LinkElement" />
 		<result property="description" column="NotesContent" />
 
 	</resultMap>
-	
-	
-	
-	
+
+
+
+
 
 	<resultMap id="refResultMap" type="com.ziksana.domain.course.Reference">
 
@@ -496,12 +521,15 @@
 
 
 	</resultMap>
-
-
-
-
-
-
+	
+	
+	<resultMap type="com.ziksana.domain.course.LearningContent" id="lcResultMap">
+	    
+	    <result property="learningContentId" column="ID" />
+	    <result property="contentPath"  column="ContentPath" />
+	    <result property="contentName"  column="ContentName" />
+	    
+	 </resultMap>   
 
 
 

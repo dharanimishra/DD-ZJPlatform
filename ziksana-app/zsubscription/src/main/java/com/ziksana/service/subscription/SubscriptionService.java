@@ -8,6 +8,7 @@ import java.util.List;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
+import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
@@ -55,11 +56,11 @@ public interface SubscriptionService {
 
 	public Integer addEducatorContent(Integer courseId, Integer componentId,
 			Integer contentId, Integer contentType, String contentDesc,
-			String url, String coordinates, Integer duration, String title);
+			String url, String coordinates, Integer duration, String title,Integer parentId);
 	
 	
 	public int editEducatorContent(Integer contentEnrId, String contentDesc,
-			String url, String coordinates, Integer duration, String title);
+			String url, String coordinates, Integer duration, String title, Integer parentId);
 	
 
 	public int deleteEducatorContent(Integer contentEnrId);
@@ -114,5 +115,13 @@ public interface SubscriptionService {
 	 * @return
 	 */
 	public List<Course> getCoursesByLearningProgram(Integer learningProgramId);
+	
+	/**
+	 * It returns the linked learning content for the given learning content id
+	 * @param learningContentId
+	 * @return
+	 */
+	public LearningContent getLinkedLearningContent(Integer learningContentId);
+	
 
 }

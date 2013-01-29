@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
+import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
 import com.ziksana.domain.course.Hotspot;
@@ -103,7 +104,8 @@ public interface SubscriptionMapper {
 			@Param("url") String url, 
 			@Param("coordinates") String coordinates,
 			@Param("duration") Integer duration,
-			@Param("title") String title
+			@Param("title") String title,
+			@Param("parentId") Integer parentId
 			);
 	
 	public int editEducatorContent(
@@ -112,8 +114,13 @@ public interface SubscriptionMapper {
 			@Param("url")  String url, 
 			@Param("coordinates") String coordinates, 
 			@Param("duration") Integer duration, 
-			@Param("title") String title);
+			@Param("title") String title,
+			@Param("parentId") Integer parentId
+			);
 	
+	
+	
+	public LearningContent getLinkedLearningContent(Integer learningContentId);
 	
 	
 }

@@ -40,7 +40,7 @@ public class SubscriptionController {
 
 	@Autowired
 	SubscriptionService subscriptionService;
-	
+
 	@Autowired
 	ContentService contentService;
 
@@ -147,8 +147,7 @@ public class SubscriptionController {
 		return subscriptionService.getEducatorSuggestedReferences(
 				Integer.valueOf(courseId), node);
 	}
-	
-	
+
 	@RequestMapping(value = "/getAllEducatorContent", method = RequestMethod.GET)
 	public @ResponseBody
 	List<EducatorContent> getAllEducatorContent(
@@ -160,7 +159,7 @@ public class SubscriptionController {
 
 		Node node = new Node();
 		String parsedNodeId = nodeId.split("_")[3];
-		//String parsedParentNodeId = parentNodeId.split("_")[1];
+		// String parsedParentNodeId = parentNodeId.split("_")[1];
 		node.setId(Integer.valueOf(parsedNodeId));
 		// node.setType(Integer.valueOf(nodeType));
 		Node parent = new Node();
@@ -168,15 +167,10 @@ public class SubscriptionController {
 		// parent.setType(Integer.valueOf(parentNodeType));
 		node.setParent(parent);
 
-		return subscriptionService.getAllEducatorContent(Integer.valueOf(courseId), node);
-		
-		
-		
-		
+		return subscriptionService.getAllEducatorContent(
+				Integer.valueOf(courseId), node);
+
 	}
-	
-	
-	
 
 	@RequestMapping(value = "/getContentTOC", method = RequestMethod.GET)
 	public @ResponseBody
@@ -201,8 +195,7 @@ public class SubscriptionController {
 				node);
 
 	}
-	
-	
+
 	@RequestMapping(value = "/educatorHotspots", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Hotspot> showEducatorHotspots(
@@ -222,12 +215,11 @@ public class SubscriptionController {
 		// parent.setType(Integer.valueOf(parentNodeType));
 		node.setParent(parent);
 
-		//this code should be modified to call getEducatorHotspots()
-		//TODO 
+		// this code should be modified to call getEducatorHotspots()
+		// TODO
 		return subscriptionService.getEducatorHotspots(
 				Integer.valueOf(courseId), node);
 	}
-	
 
 	@RequestMapping(value = "/addLearnerQuestion", method = RequestMethod.POST)
 	public @ResponseBody
@@ -332,6 +324,7 @@ public class SubscriptionController {
 			@RequestParam(value = "title", required = true) String noteTitle,
 			@RequestParam(value = "description", required = false) String noteDescription,
 			@RequestParam(value = "duration", required = true) String noteDuration,
+			@RequestParam(value = "parentId", required = false) String parentId,
 			@RequestParam(value = "url", required = true) String url,
 			@RequestParam(value = "coordinates", required = true) String coordinates) {
 		// add_educator_content(content_type, course_id, node_id, duration,
@@ -359,12 +352,13 @@ public class SubscriptionController {
 				Integer.valueOf(courseId), Integer.valueOf(parsedComponentId),
 				Integer.valueOf(parsedContentId), Integer.valueOf(contentType),
 				noteDescription, url, coordinates,
-				Integer.valueOf(noteDuration),noteTitle );
+				Integer.valueOf(noteDuration), noteTitle,
+				Integer.valueOf(parentId));
 
 		System.out.println(" THE ERROR ....KEY IS  " + key);
 		System.out.println(" content id is  " + parsedContentId);
 		System.out.println(" component id is  " + parsedComponentId);
-		
+
 		return Integer.valueOf(key);
 
 	}
@@ -378,8 +372,7 @@ public class SubscriptionController {
 				.deleteEducatorContent(Integer.valueOf(eduContentEnrichId)));
 
 	}
-	
-	
+
 	@RequestMapping(value = "/editEducatorContent", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer editEducatoContent(
@@ -388,63 +381,46 @@ public class SubscriptionController {
 			@RequestParam(value = "description", required = false) String noteDescription,
 			@RequestParam(value = "duration", required = true) String noteDuration,
 			@RequestParam(value = "url", required = true) String url,
-			@RequestParam(value = "coordinates", required = true) String coordinates
-			) {
+			@RequestParam(value = "parentId", required = false) String parentId,
+			@RequestParam(value = "coordinates", required = true) String coordinates) {
 
-		return Integer.valueOf(subscriptionService
-				.editEducatorContent(Integer.valueOf(eduContentEnrichId), noteDescription, url, coordinates, Integer.valueOf(noteDuration), noteTitle));
+		return Integer.valueOf(subscriptionService.editEducatorContent(
+				Integer.valueOf(eduContentEnrichId), noteDescription, url,
+				coordinates, Integer.valueOf(noteDuration), noteTitle,Integer.valueOf(parentId)));
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value = "/enrichplayer/{courseId}/{componentId}/{contentId}", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView  enrichPlayer(@PathVariable String courseId,
-			@PathVariable String componentId,
-			@PathVariable String contentId
-			) {
+	ModelAndView enrichPlayer(@PathVariable String courseId,
+			@PathVariable String componentId, @PathVariable String contentId) {
 
-		
 		ModelAndView mv = new ModelAndView("courses/enrich_player");
-		mv.addObject("courseId",   courseId);
+		mv.addObject("courseId", courseId);
 		mv.addObject("componentId", componentId);
 		mv.addObject("contentId", contentId);
-		
+
 		Content content = contentService.getContent(Integer.valueOf(contentId));
 		mv.addObject("content", content);
-				
 
 		return mv;
-		
 
 	}
-	
-	
+
 	@RequestMapping(value = "/ev_enrichplayer/{courseId}/{componentId}/{contentId}", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView  ev_enrichPlayer(@PathVariable String courseId,
-			@PathVariable String componentId,
-			@PathVariable String contentId
-			) {
+	ModelAndView ev_enrichPlayer(@PathVariable String courseId,
+			@PathVariable String componentId, @PathVariable String contentId) {
 
-		
 		ModelAndView mv = new ModelAndView("courses/ev_enrich_player");
-		mv.addObject("courseId",   courseId);
+		mv.addObject("courseId", courseId);
 		mv.addObject("componentId", componentId);
 		mv.addObject("contentId", contentId);
-		
+
 		Content content = contentService.getContent(Integer.valueOf(contentId));
 		mv.addObject("content", content);
-				
 
 		return mv;
-		
 
 	}
 

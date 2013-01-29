@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorNote;
 import com.ziksana.domain.course.Hotspot;
+import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.Note;
@@ -212,9 +213,21 @@ public class SubscriptionServiceImplTest {
 
 		int rows = subscriptionService.editEducatorContent(Integer.valueOf(23),
 				"modified desc", "modified url", "modified coord",
-				Integer.valueOf(45), "modified title");
+				Integer.valueOf(45), "modified title", 112);
 		
 		assertTrue(rows == 1);
 	}
+	
+	
+	@Test
+	public void testGetLinkedLearningContent() {
+		String linkedLearningContent = "7";
+		LearningContent learningContent = subscriptionService.getLinkedLearningContent(Integer.valueOf(6));
+		System.out.println("linked learning content id is "+learningContent.getLearningContentId().getStorageID());
+		assertTrue(learningContent.getLearningContentId().getStorageID().equals(linkedLearningContent ));
+		
+	}
+	
+	
 
 }

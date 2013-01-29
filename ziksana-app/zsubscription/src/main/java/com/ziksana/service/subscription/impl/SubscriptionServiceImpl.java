@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
+import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
@@ -239,22 +240,19 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	@Override
 	public Integer addEducatorContent(Integer courseId, Integer componentId,
 			Integer contentId, Integer type, String description, String url,
-			String coordinates, Integer duration, String title) {
+			String coordinates, Integer duration, String title, Integer parentId) {
 		// TODO Auto-generated method stub
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
-		
-		System.out.println("member role id is "+memberRoleId);
+
+		System.out.println("member role id is " + memberRoleId);
 
 		return subscriptionMapper.addEducatorContent(
-				Integer.valueOf(memberRoleId), type, componentId,
-				contentId, courseId, description, url, coordinates, duration, title);
-		
-		
-		
-		
-		
+				Integer.valueOf(memberRoleId), type, componentId, contentId,
+				courseId, description, url, coordinates, duration, title,
+				parentId);
+
 	}
 
 	@Override
@@ -271,39 +269,45 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		return subscriptionMapper.deleteEducatorContent(contentId);
 	}
 
-	
-
 	@Override
 	public List<Hotspot> getEducatorHotspots(Integer courseId, Node node) {
 		// TODO Auto-generated method stub
-		
+
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getEducatorHotspots(7, Integer
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());
-		
+
 	}
 
 	@Override
-	public List<EducatorContent> getAllEducatorContent(Integer courseId, Node node) {
-		
+	public List<EducatorContent> getAllEducatorContent(Integer courseId,
+			Node node) {
+
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
-		
-		
+
 		return subscriptionMapper.getAllEducatorContent(Integer
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());
-		
+
 	}
 
 	@Override
 	public int editEducatorContent(Integer contentEnrId, String contentDesc,
-			String url, String coordinates, Integer duration, String title) {
-				
-		return subscriptionMapper.editEducatorContent(contentEnrId, contentDesc, url, coordinates, duration, title); 
+			String url, String coordinates, Integer duration, String title,
+			Integer parentId) {
+
+		return subscriptionMapper.editEducatorContent(contentEnrId,
+				contentDesc, url, coordinates, duration, title, parentId);
+	}
+
+	@Override
+	public LearningContent getLinkedLearningContent(Integer learningContentId) {
+		// TODO Auto-generated method stub
+		return subscriptionMapper.getLinkedLearningContent(learningContentId);
 	}
 
 }
