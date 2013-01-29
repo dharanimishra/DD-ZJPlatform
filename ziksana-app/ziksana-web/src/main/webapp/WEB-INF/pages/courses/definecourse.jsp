@@ -138,6 +138,9 @@
 				$("fieldset#signin_menu").hide();
 			}
 		});
+		
+		//Fetch course details and populate the form
+		getCourse();
 
 	});
 </script>
@@ -347,10 +350,10 @@ span.standartTreeRow:hover {
 							<form id="DegineCourse" class="form-horizontal formular"
 								method="post">
 								<div id="EditCourseDetails" class="ecd" style="height: 15px;">
-									<input type="button" class="btn btn-info f-r"
+									<!--<input type="button" class="btn btn-info f-r"
 										id="Editcoursedtl1" value="Edit Course Details"
 										onClick="getCourse(); return false;"
-										style="margin-right: -257px; margin-bottom: 4px; clear: both; display: none;">
+										style="display:none; margin-right: -257px; margin-bottom: 4px; clear: both; display: none;">-->
 								</div>
 
 								<br />
@@ -448,7 +451,7 @@ span.standartTreeRow:hover {
 											<label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Credits :</label>
 											<input type="text" id="Credits"
-												class="smartspinner validate[required]"
+												class="smartspinner "
 												style="margin-left: 18px;" />
 											<script type="text/javascript"
 												src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
