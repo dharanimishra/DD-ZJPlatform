@@ -83,9 +83,12 @@ public interface CourseService {
 	 * @param course
 	 * @return
 	 */
-	public void removeCourse(Course course) throws CourseException;
+
+	public void removeCourse(Integer courseId) throws CourseException;
 
 	public void removeCourseComponents(Integer learningComponentId);
+
+	public void learningContentdelete(Integer learningContentId);
 
 	/**
 	 * @param memberRoleId

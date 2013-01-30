@@ -36,15 +36,16 @@ public class CourseEditServiceImpl implements CourseEditService {
 	}
 
 	@Override
-	public ModuleEditResponse getModuleDetails(Integer courseId,
-			Integer learningCompId) {
+	public ModuleEditResponse getModuleDetails(Integer learningComponentId) {
 		LOGGER.debug("Entering Class :" + getClass()
-				+ " Method Name :getCourseDetails(Integer courseId)" + courseId);
+				+ " Method Name :getModuleDetails(Integer courseId)"
+				+ "learningComponentId :" + learningComponentId);
 		ModuleEditResponse moduleEditResponse = courseMapper
-				.getModuleDetails(courseId,learningCompId);
-		LOGGER.debug("Exiting Class :" + getClass()
-				+ " Method Name :getCourseDetails(Integer courseId)"
-				+ moduleEditResponse);
+				.getModuleDetails(learningComponentId);
+		LOGGER.debug("Exiting Class :"
+				+ getClass()
+				+ " Method Name :getCourseDetails(Integer courseId) :learningComponentId :"
+				+ learningComponentId + ":" + moduleEditResponse);
 
 		return moduleEditResponse;
 	}

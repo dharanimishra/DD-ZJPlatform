@@ -34,6 +34,7 @@ import com.ziksana.persistence.course.EnrichmentMapper;
 import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.persistence.course.LearningComponentNestMapper;
+import com.ziksana.persistence.course.LearningContentMapper;
 import com.ziksana.persistence.course.PlannerMapper;
 import com.ziksana.persistence.course.SocializeMapper;
 import com.ziksana.persistence.subscription.SubscriptionMapper;
@@ -57,6 +58,10 @@ public class CourseServiceImpl implements CourseService {
 	public CourseContentSecurityMapper contSecurityMapper;
 	@Autowired
 	public LearningComponentMapper learningComponentMapper;
+
+	@Autowired
+	public LearningContentMapper learningContentMapper;
+
 	@Autowired
 	public LearningComponentNestMapper componentNestMapper;
 	@Autowired
@@ -547,19 +552,6 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public void removeCourse(Course course) throws CourseException {
-
-		Boolean isDelete = true;
-		if (course.getCourseId() == null) {
-			throw new CourseException("Course Id cannot be null");
-		}
-
-		courseMapper.deleteCourse(isDelete,
-				Integer.valueOf(course.getCourseId().getStorageID()));
-
-	}
-
-	@Override
 	public List<LearningComponent> getLearningObjects(Integer memberRoleId)
 			throws CourseException {
 		List<LearningComponent> learningObjectList = null;
@@ -699,14 +691,25 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
+	public void removeCourse(Integer courseId) throws CourseException {
+		LOGGER.info("Entering Class :" + getClass()
+				+ " Method Name :removeCourse(Integer courseId)" + courseId);
+
+		courseMapper.deleteCourse(courseId);
+
+		LOGGER.info("Exiting Class :" + getClass()
+				+ " Method Name :removeCourse(Integer courseId)" + courseId);
+
+	}
+
+	@Override
 	public void removeCourseComponents(Integer learningComponentId) {
 		LOGGER.info("Entering Class :"
 				+ getClass()
 				+ " Method Name :removeCourseComponents(Integer learningComponentId)"
 				+ learningComponentId);
 
-		Boolean isDelete = true;
-		learningComponentMapper.delete(isDelete, learningComponentId);
+		learningComponentMapper.learningComponentdelete(learningComponentId);
 
 		LOGGER.info("Exiting Class :"
 				+ getClass()
@@ -714,4 +717,19 @@ public class CourseServiceImpl implements CourseService {
 				+ learningComponentId);
 	}
 
+	@Override
+	public void learningContentdelete(Integer learningContentId) {
+		LOGGER.info("Entering Class :"
+				+ getClass()
+				+ " Method Name :learningContentdelete(Integer learningContentId)"
+				+ learningContentId);
+
+		learningContentMapper.learningContentdelete(learningContentId);
+
+		LOGGER.info("Exiting Class :"
+				+ getClass()
+				+ " Method Name :learningContentdelete(Integer learningContentId)"
+				+ learningContentId);
+
+	}
 }

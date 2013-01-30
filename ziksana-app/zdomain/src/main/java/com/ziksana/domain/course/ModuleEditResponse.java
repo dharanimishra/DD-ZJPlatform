@@ -3,19 +3,21 @@ package com.ziksana.domain.course;
 public class ModuleEditResponse {
 
 	private String id;
-	private String coursename;
-	private String coursedesc;
+
+	private String modulename;
+	private String moduledesc;
 	private String subjectarea;
 	private String subject;
 	private String topic;
 	private String tagfield;
-	private String credits;
-	private String extracredits;
-	private String duration;
-	private String durationtype;
+	private String prescribedLCDuration;
+	private String prescribedLCDurationUnit;
+	private String subjClassificationId;
 	private String imageupload;
 	private String response;
 	private String message;
+
+	private Boolean learningObjectIndicator;
 
 	public String getId() {
 		return id;
@@ -25,20 +27,52 @@ public class ModuleEditResponse {
 		this.id = id;
 	}
 
-	public String getCoursename() {
-		return coursename;
+	public String getModulename() {
+		return modulename;
 	}
 
-	public void setCoursename(String coursename) {
-		this.coursename = coursename;
+	public void setModulename(String modulename) {
+		this.modulename = modulename;
 	}
 
-	public String getCoursedesc() {
-		return coursedesc;
+	public String getModuledesc() {
+		return moduledesc;
 	}
 
-	public void setCoursedesc(String coursedesc) {
-		this.coursedesc = coursedesc;
+	public void setModuledesc(String moduledesc) {
+		this.moduledesc = moduledesc;
+	}
+
+	public Boolean getLearningObjectIndicator() {
+		return learningObjectIndicator;
+	}
+
+	public void setLearningObjectIndicator(Boolean learningObjectIndicator) {
+		this.learningObjectIndicator = learningObjectIndicator;
+	}
+
+	public String getPrescribedLCDuration() {
+		return prescribedLCDuration;
+	}
+
+	public void setPrescribedLCDuration(String prescribedLCDuration) {
+		this.prescribedLCDuration = prescribedLCDuration;
+	}
+
+	public String getPrescribedLCDurationUnit() {
+		return prescribedLCDurationUnit;
+	}
+
+	public void setPrescribedLCDurationUnit(String prescribedLCDurationUnit) {
+		this.prescribedLCDurationUnit = prescribedLCDurationUnit;
+	}
+
+	public String getSubjClassificationId() {
+		return subjClassificationId;
+	}
+
+	public void setSubjClassificationId(String subjClassificationId) {
+		this.subjClassificationId = subjClassificationId;
 	}
 
 	public String getSubjectarea() {
@@ -71,38 +105,6 @@ public class ModuleEditResponse {
 
 	public void setTagfield(String tagfield) {
 		this.tagfield = tagfield;
-	}
-
-	public String getCredits() {
-		return credits;
-	}
-
-	public void setCredits(String credits) {
-		this.credits = credits;
-	}
-
-	public String getExtracredits() {
-		return extracredits;
-	}
-
-	public void setExtracredits(String extracredits) {
-		this.extracredits = extracredits;
-	}
-
-	public String getDuration() {
-		return duration;
-	}
-
-	public void setDuration(String duration) {
-		this.duration = duration;
-	}
-
-	public String getDurationtype() {
-		return durationtype;
-	}
-
-	public void setDurationtype(String durationtype) {
-		this.durationtype = durationtype;
 	}
 
 	public String getImageupload() {

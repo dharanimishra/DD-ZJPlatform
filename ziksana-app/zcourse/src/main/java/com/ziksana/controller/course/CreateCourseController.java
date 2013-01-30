@@ -202,7 +202,6 @@ public class CreateCourseController {
 				course.setVersion(1);
 
 			} else {
-
 				course.setName(CourseName);
 				course.setDescription(CourseDescription);
 				course.setCourseCredits(CourseCredits);
@@ -211,6 +210,7 @@ public class CreateCourseController {
 				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 				course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
 				course.setAdditionalInfoIndicator(true);
+				course.setIsDelete(false);
 				course.setVersion(1);
 				course.setSubjClassificationId(subjClassificationId);
 				Duration duration = new Duration(courseDuration,
@@ -422,10 +422,40 @@ public class CreateCourseController {
 		return json;
 	}
 
+	@RequestMapping(value = "/removeCourse/{courseId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	CourseJsonResponse removeCourse(@PathVariable String courseId)
+			throws CourseException {
+		LOGGER.info("Entering Class " + getClass()
+				+ " removeCourse(): CourseId :" + courseId);
+
+		Integer courseIds = 0;
+		try {
+			courseIds = Integer.parseInt(courseId.split("_")[1]);
+		} catch (NumberFormatException nfe) {
+			LOGGER.debug(" Class :" + getClass()
+					+ " Method: removeCourse : NumberFormatException" + nfe);
+		}
+		courseService.removeCourse(courseIds);
+
+		CourseJsonResponse json = new CourseJsonResponse();
+
+		json.setId(courseId);
+		json.setResponse("success");
+		json.setMessage("Course Delete Success");
+		LOGGER.info("Class :" + getClass()
+				+ " Method removeCourse : After courseService: CourseId :"
+				+ courseId);
+
+		return json;
+
+	}
+
 	@RequestMapping(value = "/removeCourseComponents", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView removeCourseComponents(
+	CourseJsonResponse removeCourseComponents(
 			@RequestParam(value = "Course_id", required = true) String CourseId,
 			@RequestParam(value = "Component_id", required = true) String learningComponentId)
 			throws CourseException {
@@ -435,18 +465,60 @@ public class CreateCourseController {
 
 		Integer learningCompId = 0;
 		try {
-			learningCompId = Integer.parseInt(learningComponentId);
+			learningCompId = Integer
+					.parseInt(learningComponentId.split("_")[1]);
 		} catch (NumberFormatException nfe) {
 			LOGGER.debug(" Class :" + getClass()
 					+ " Method: removeCourseComponents : NumberFormatException"
 					+ nfe);
 		}
 		courseService.removeCourseComponents(learningCompId);
-		ModelAndView mv = new ModelAndView("courses/createcourses");
-		LOGGER.info("Exiting Class " + getClass()
-				+ " removeCourseComponents(): ");
 
-		return mv;
+		CourseJsonResponse json = new CourseJsonResponse();
+
+		json.setId(CourseId);
+		json.setResponse("success");
+		json.setMessage("Component Delete Success");
+		LOGGER.info("Class :"
+				+ getClass()
+				+ " Method removeCourseComponents : After courseService: CourseId :"
+				+ CourseId);
+
+		return json;
+
+	}
+
+	@RequestMapping(value = "/removeCourseContents", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	CourseJsonResponse removeCourseContents(
+			@RequestParam(value = "Course_id", required = true) String CourseId,
+			@RequestParam(value = "Content_id", required = true) String learningContentId)
+			throws CourseException {
+		LOGGER.info("Entering Class " + getClass()
+				+ " removeCourseContents(): CourseId :" + CourseId
+				+ " ComponentId :" + learningContentId);
+
+		Integer learningContId = 0;
+		try {
+			learningContId = Integer.parseInt(learningContentId.split("_")[1]);
+		} catch (NumberFormatException nfe) {
+			LOGGER.debug(" Class :" + getClass()
+					+ " Method: removeCourseContents : NumberFormatException"
+					+ nfe);
+		}
+		courseService.learningContentdelete(learningContId);
+		CourseJsonResponse json = new CourseJsonResponse();
+		json.setId(CourseId);
+		json.setResponse("success");
+		json.setMessage("Component Delete Success");
+		LOGGER.info("Class :"
+				+ getClass()
+				+ " Method removeCourseContents : After courseService: CourseId :"
+				+ CourseId);
+
+		return json;
+
 	}
 
 	@RequestMapping(value = "/getCourse", method = { RequestMethod.GET,
@@ -488,18 +560,20 @@ public class CreateCourseController {
 			@RequestParam(value = "Component_id", required = true) String ComponentId)
 			throws CourseException {
 		LOGGER.info("Entering Class " + getClass()
-				+ " getCourseModule(): CourseId :" + CourseId);
+				+ " getCourseModule(): CourseId :" + CourseId
+				+ " learningComponentId :" + ComponentId);
 
-		Integer courseid = 0, learningCompId = 0;
+		Integer courseid = 0, learningComponentId = 0;
 		try {
 			courseid = Integer.parseInt(CourseId.split("_")[1]);
-			learningCompId = Integer.parseInt(ComponentId.split("_")[1]);
+			learningComponentId = Integer.parseInt(ComponentId.split("_")[1]);
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("NumberFormatException :" + nfe);
 		}
 
 		ModuleEditResponse json = null;
-		json = courseEditService.getModuleDetails(courseid, learningCompId);
+		json = courseEditService
+				.getModuleDetails(learningComponentId);
 		json.setResponse("success");
 		json.setSubjectarea("Computer science, knowledge & systems");
 		json.setSubject("Bibliography");
@@ -507,7 +581,8 @@ public class CreateCourseController {
 		json.setMessage("Course Edit Details");
 
 		LOGGER.info("Exiting Class " + getClass() + " getCourse(): CourseId :"
-				+ CourseId + " json :" + json);
+				+ CourseId + " learningComponentId :" + ComponentId + " json :"
+				+ json);
 
 		return json;
 	}

@@ -63,6 +63,9 @@
 			<if test="securityIndicator !=null">
 				contentsecurityneededindicator,
 			</if>
+			<if test="isDelete!=null">
+				isdelete,
+			</if>
 			<if test="extraCredits!=null">
 				extracredits,
 			</if>
@@ -102,12 +105,16 @@
 			<if test="securityIndicator !=null">
 				#{securityIndicator,jdbcType=BOOLEAN},
 			</if>
+			<if test="isDelete !=null">
+				#{isDelete,jdbcType=BOOLEAN},
+			</if>
 			<if test="extraCredits!=null">
 				#{extraCredits,jdbcType=VARCHAR},
 			</if>
 			<if test="additionalInfoIndicator !=null">
 				#{additionalInfoIndicator,jdbcType=BOOLEAN},
 			</if>
+
 			<if test="courseDuration!=null">
 				#{courseDuration.duration,jdbcType=INTEGER},
 			</if>

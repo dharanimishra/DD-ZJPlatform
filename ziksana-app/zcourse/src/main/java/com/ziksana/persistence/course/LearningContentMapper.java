@@ -64,4 +64,7 @@ public interface LearningContentMapper {
 	void deleteContentParts(@Param("isDelete") Boolean isDelete,
 			@Param("learningContentPartsId") Integer learningContentPartsId);
 
+	@Update({ "update corlearningcontent set isDelete = true where ID =  #{learningContentId,jdbcType=INTEGER}" })
+	void learningContentdelete(Integer learningContentId);
+
 }

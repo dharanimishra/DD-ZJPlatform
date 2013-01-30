@@ -1,4 +1,3 @@
-
 function fnCheckExt(fileName) {
 	var file = $("#imgultype").val();
 	var strExtn = file.substr(fileName.value.lastIndexOf(".") + 1, file.length);
@@ -170,10 +169,11 @@ function onButtonClick(menuitemId, type) {
 				playVideo('/ziksana-web/secure/modalplayer/' + data.contentId);
 
 			}
-			
+
 			if (content_type == 'ENHANCED_VIDEO') {
 
-				playEnhancedVideo('/ziksana-web/secure/ev_modalplayer/' + data.contentId);
+				playEnhancedVideo('/ziksana-web/secure/ev_modalplayer/'
+						+ data.contentId);
 
 			}
 
@@ -187,18 +187,17 @@ function onButtonClick(menuitemId, type) {
 
 			|| content_type == 'PPT' || content_type == 'IMAGESET'
 
-					|| content_type == 'EXCEL') {
+			|| content_type == 'EXCEL') {
 
 				// displayImageSet('/ziksana-web/secure/slides/'+data.contentId);
 				displayImageSet(content_path);
 
 			}
 
-			if(content_type == 'IMAGE'){
+			if (content_type == 'IMAGE') {
 
 				displayImage(content_url);
 			}
-
 
 		});
 
@@ -226,32 +225,37 @@ function onButtonClick(menuitemId, type) {
 
 		// //
 	} else if (menuaction == "Delete") {
-		// /
 		// alert("this should delete the form.");
+		content_id = tree.getSelectedItemId();
+		uri = '/ziksana-web/secure/removeCourseContents';
+		token = ''; // dummy token for demo. you have to send real token.
+		request_type = 'POST'; // can be GET or POST. In this case, a GET
+		var parameters = {
+			"Course_id" : CourseId,
+			"Component_id" : ComponentId
+		};
 
-		node_id = tree.getSelectedItemId();
+		$.post(uri, parameters,
+				function(data) {
+					console.log(data);
+					if (data.response == 'success') {
+						course_id = data.id;
+					} else {
+						$('#tempdiv').html(
+								'<span style="color:red;">' + data.message
+										+ '</span>');
+					}
 
-		$.post('/ziksana-web/secure/course/deleteNode', {
-			'courseId' : $('#courseId').val(),
-			'nodeId' : node_id
-		}, function(data) {
+				});
+		tree.deleteItem(tree.getSelectedItemId(), true);
 
-			if (data == 1) { // node is deleted successfully
-
-				window.location.href = window.location.href;
-
-			}
-
-		});
-
-		// //
 	} else if (menuaction == "Enhance") {
 
 		content_id = tree.getSelectedItemId();
 		parsed_content_id = content_id.split('_')[1];
 		component_id = tree.getParentId(content_id);
 		parsed_component_id = component_id.split('_')[1];
-		console.log('Component Id is: '+ component_id);
+		console.log('Component Id is: ' + component_id);
 		parsed_course_id = $('#courseid').val().split('_')[1];
 
 		$.get('/ziksana-web/secure/content/getContentInfo', {
@@ -272,7 +276,8 @@ function onButtonClick(menuitemId, type) {
 					|| content_type == 'EXCEL') {
 				// displayImageSet('/ziksana-web/secure/slides/'+data.contentId);
 				displayEnhanceModal("/ziksana-web/secure/enhancePlayer/"
-						+ parsed_content_id +'/'+parsed_component_id+'/'+parsed_course_id);
+						+ parsed_content_id + '/' + parsed_component_id + '/'
+						+ parsed_course_id);
 
 			}
 

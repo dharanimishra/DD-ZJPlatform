@@ -40,13 +40,17 @@ function onButtonClick(menuitemId, type) {
 		$('#Addmodulecontainer').hide();
 		$('#definequalifiercontainer').show();
 	} else if (menuaction == "Edit") {
-
-		nodeId = tree.getSelectedItemId();
-		nodeParentId = tree.getParentId(nodeId);
+		$('#Viewmodulecontainer').hide();
+		$('#instruction').hide();
+		$('#searchassociatecontainer').hide();
+		$('#DegineCourse2').hide();
+		$('#Addmodulecontainer').show();
+		ComponentId = tree.getSelectedItemId();
+		nodeParentId = tree.getParentId(ComponentId);
 
 		// use ajax to get the added value
 
-		uri = '/ziksana-web/secure/getCourse';
+		uri = '/ziksana-web/secure/getCourseModule';
 
 		token = ''; // dummy token for demo. you have to send real token.
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
@@ -55,7 +59,8 @@ function onButtonClick(menuitemId, type) {
 		var Course_id = $('#courseid').val();
 
 		var parameters = {
-			"Course_id" : Course_id
+			"Course_id" : Course_id,
+			"Component_id" : ComponentId
 		};
 
 		$
@@ -65,38 +70,33 @@ function onButtonClick(menuitemId, type) {
 						function(data) {
 							console.log(data);
 							if (data.response == 'success') {
-								course_id = data.id;
-								course_name = data.coursename;
-								course_desc = data.coursedesc;
+								module_id = data.id;
+								module_name = data.modulename;
+								module_desc = data.moduledesc;
 								subject_area = data.subjectarea;
 								subject = data.subject;
 								topic = data.topic;
 								tag_field = data.tagfield;
-								credits = data.credits;
-								extra_credits = data.extracredits;
-								duration = data.duration;
-								duration_type = data.durationtype;
+								prescribedLCDuration = data.prescribedLCDuration;
+								prescribedLCDurationUnit = data.prescribedLCDurationUnit;
 								image_upload = data.imageupload;
 
 								$('#courseid').val(course_id);
 
-								$('#defaultvalue').val(course_name);
+								$('#Cmoduletxtbox').val(module_name);
 
-								$('#Cdescription').val(course_desc);
+								$('#Cmoduledesc').val(module_desc);
 
-								$('#Cdescriptionrte').val(course_desc);
+								$('#Cmoduledescrte').val(module_desc);
 
-								$('#Ctagfield').val(tag_field);
+								$('#Addmoduletag').val(tag_field);
 
-								$('#Credits').val(credits);
+								$('#Cmoduleduration').val(prescribedLCDuration);
 
-								$('#ExtraCredits').val(extra_credits);
+								$('#Cmoduleunits')
+										.val(prescribedLCDurationUnit);
 
-								$('#Duration').val(duration);
-
-								$('#Cdurationtype').val(duration_type);
-
-								$('#Cimageupl').val(image_upload);
+								// $('#Cimageupl').val(image_upload);
 
 								// // populate subject area
 
@@ -121,13 +121,13 @@ function onButtonClick(menuitemId, type) {
 
 														option_string += option;
 													}
-													$('#Careaddl').html(
+													$('#Cmoduleareaddl').html(
 															option_string);
 													// now select the value
 													// already
 													// selected by the
 													// user
-													$('#Careaddl').val(
+													$('#Cmoduleareaddl').val(
 															subject_area);
 
 												});
@@ -161,10 +161,10 @@ function onButtonClick(menuitemId, type) {
 														option_string += option;
 													}
 
-													$('#Csubjectddl').html(
-															option_string);
-													$('#Csubjectddl').val(
-															subject);
+													$('#Cmodulesubjectddl')
+															.html(option_string);
+													$('#Cmodulesubjectddl')
+															.val(subject);
 
 												});
 
@@ -198,9 +198,10 @@ function onButtonClick(menuitemId, type) {
 														option_string += option;
 													}
 
-													$('#Ctopicddl').html(
+													$('#Cmoduletopicddl').html(
 															option_string);
-													$('#Ctopicddl').val(topic);
+													$('#Cmoduletopicddl').val(
+															topic);
 
 												});
 								// end populating topic
@@ -228,40 +229,37 @@ function onButtonClick(menuitemId, type) {
 		$('#Viewmodulecontainer').show();
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
-		tree.deleteItem(tree.getSelectedItemId(), true);
 
 		ComponentId = tree.getSelectedItemId();
-		CourseId = tree.getParentId(ComponentId);
-
+		console.log(ComponentId);
 		uri = '/ziksana-web/secure/removeCourseComponents';
 
 		token = ''; // dummy token for demo. you have to send real token.
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
 		// request
 
-		var Course_id = $('#courseid').val();
+		var CourseId = $('#courseid').val();
 
 		var parameters = {
 			"Course_id" : CourseId,
 			"Component_id" : ComponentId
 		};
-		
-		$
-		.post(
-				uri,
-				parameters,
+
+		$.post(uri, parameters,
 				function(data) {
 					console.log(data);
 					if (data.response == 'success') {
 						course_id = data.id;
-					}else {
+					} else {
 						$('#tempdiv').html(
-								'<span style="color:red;">'
-										+ data.message + '</span>');
+								'<span style="color:red;">' + data.message
+										+ '</span>');
 					}
 
+				});
+		tree.deleteItem(tree.getSelectedItemId(), true);
+
 	}
-	// tree.setItemColor(id, menuitemId.split("_")[1]);
 }
 
 function fixImage(id) {

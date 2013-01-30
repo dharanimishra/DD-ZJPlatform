@@ -62,6 +62,15 @@ public class Course extends AuditHistory {
 	private Integer courseStatusId = null;
 	private Rating rating = null;
 	private Boolean securityIndicator = null;
+	private Boolean isDelete = null;
+	public Boolean getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Boolean isDelete) {
+		this.isDelete = isDelete;
+	}
+
 	private CourseContentSecurity courseContSecurity = null;
 	/**
 	 * Maximum Length:5

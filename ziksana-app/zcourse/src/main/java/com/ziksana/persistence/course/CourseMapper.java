@@ -34,7 +34,7 @@ public interface CourseMapper {
 	 * @return
 	 */
 	@Select({ "select courseid, name, description, coursestatus ",
-			" from corcourse where courseid = #{courseId,jdbcType=INTEGER}" })
+			" from corcourse where id = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "courseId", column = "courseid"),
 			@Result(property = "name", column = "name"),
@@ -43,9 +43,7 @@ public interface CourseMapper {
 			@Result(property = "accountableMember.memberroleid", column = "memberroleid") })
 	Course getBaseCourseDetails(Integer courseId);
 
-	@Select({
-			"select id, name, description, TotalCredits,ExtraCredits,CourseDuration,CourseDurationUnit,SubjClassificationId ",
-			" from corcourse where id = #{courseId,jdbcType=INTEGER}" })
+	@Select({ "select id, name, description, TotalCredits,ExtraCredits,CourseDuration,CourseDurationUnit,SubjClassificationId from corcourse where id = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
 			@Result(property = "id", column = "courseid"),
 			@Result(property = "coursename", column = "name"),
@@ -57,19 +55,17 @@ public interface CourseMapper {
 			@Result(property = "subjClassificationId", column = "SubjClassificationId") })
 	CourseEditResponse getCourseDetails(Integer courseId);
 
-	@Select({
-			"select id, name, description, TotalCredits,ExtraCredits,CourseDuration,CourseDurationUnit,SubjClassificationId ",
-			" from corcourse where id = #{courseId,jdbcType=INTEGER}" })
+	@Select({ "select id, name, description,LearningObjectIndicator,PrescribedLCDuration,PrescribedLCDurationUnit,SubjClassificationId from corlearningcomponent  where id = #{learningComponentId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "id", column = "courseid"),
-			@Result(property = "coursename", column = "name"),
-			@Result(property = "coursedesc", column = "description"),
-			@Result(property = "credits", column = "TotalCredits"),
-			@Result(property = "extracredits", column = "ExtraCredits"),
-			@Result(property = "duration", column = "CourseDuration"),
-			@Result(property = "durationtype", column = "CourseDurationUnit"),
+			@Result(property = "id", column = "id"),
+			@Result(property = "modulename", column = "name"),
+			@Result(property = "moduledesc", column = "description"),
+			@Result(property = "learningObjectIndicator", column = "LearningObjectIndicator"),
+			@Result(property = "PrescribedLCDuration", column = "PrescribedLCDuration"),
+			@Result(property = "PrescribedLCDurationUnit", column = "PrescribedLCDurationUnit"),
+			@Result(property = "CourseDurationUnit", column = "CourseDurationUnit"),
 			@Result(property = "subjClassificationId", column = "SubjClassificationId") })
-	ModuleEditResponse getModuleDetails(Integer courseId, Integer learningCompId);
+	ModuleEditResponse getModuleDetails(Integer learningComponentId);
 
 	/**
 	 * Retrieves the list of base courses information
@@ -369,9 +365,8 @@ public interface CourseMapper {
 
 	// Course Tree structure related methods ENDS
 
-	@Update({ "update corcourse set isdelete = #{isDelete, jdbcType=BOOLEAN} where courseid = #{courseId, jdbcType=INTEGER}" })
-	void deleteCourse(@Param("isDelete") Boolean isDelete,
-			@Param("courseId") Integer courseId);
+	@Update({ "update corcourse set isDelete = true where ID =  #{courseId,jdbcType=INTEGER}" })
+	void deleteCourse(Integer courseId);
 
 	@Update({ "update corlearningcomponent set isdelete = #{isdelete, jdbcType=BOOLEAN} where ID =  #{learningComponentId,jdbcType=INTEGER}" })
 	void removeCourseComponents(@Param("isDelete") Boolean isDelete,

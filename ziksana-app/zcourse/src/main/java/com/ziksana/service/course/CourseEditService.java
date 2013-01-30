@@ -7,6 +7,6 @@ public interface CourseEditService {
 
 	public CourseEditResponse getCourseDetails(Integer courseId);
 
-	public ModuleEditResponse getModuleDetails(Integer courseId,Integer learningCompId);
+	public ModuleEditResponse getModuleDetails(Integer learningComponentId);
 
 }
