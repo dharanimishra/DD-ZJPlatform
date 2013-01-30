@@ -75,7 +75,7 @@ public class ContentController {
 		Content content = contentService.getContent(Integer
 				.valueOf(parsedContentId));
 
-		if (content.getContentType() != 1 && content.getContentType() != 11 && content.getContentType() != 2) {
+		if (content.getContentType() != 1 && content.getContentType() != 11 && content.getContentType() != 2 && content.getContentType() != 8 ) {
 			content.setContentUrl("/ziksana-web/secure/slides/"
 					+ content.getContentId());
 		}
@@ -97,7 +97,7 @@ public class ContentController {
 		Content content = contentService.getContent(Integer
 				.valueOf(parsedContentId));
 
-		if (content.getContentType() != 1 && content.getContentType() != 2) {
+		if (content.getContentType() != 1 && content.getContentType() != 2 && content.getContentType() != 8 ) {
 			content.setContentUrl("/ziksana-web/secure/slides/"
 					+ content.getContentId());
 		}
