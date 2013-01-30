@@ -57,7 +57,7 @@ function secondsToHms(d) {
 			function ff_get_recorded_file(){ return "http://54.243.235.88/${content.contentUrl}"; }
 
 			
-			var add_educator_content = function(content_type, course_id, node_id, duration, title, description, coordinates, url){
+			var add_educator_content = function(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid){
 				console.log('inside add educator content');
 				//TO BE IMPLEMENTED.
 				content_id = $('#e_content_id').val();
@@ -65,13 +65,13 @@ function secondsToHms(d) {
 				
 				node_id = 'LCONTENT_1_'+component_id+'_'+content_id;
 				
-				$.post('/ziksana-web/secure/addEducatorNote', {'contentType':content_type, 'courseId':course_id, 'nodeId':node_id, 'duration':duration, 'title':title, 'description':description, 'coordinates':coordinates, 'url':url}, function(data){
+				$.post('/ziksana-web/secure/addEducatorNote', {'contentType':content_type, 'courseId':course_id, 'nodeId':node_id, 'duration':duration, 'title':title, 'description':description, 'coordinates':coordinates, 'url':url, 'parentId':parentid}, function(data){
 					
 					if(data == '1'){ //add is successful
 						
 						get_all_educator_content(course_id, component_id, node_id);
-						jwplayer(reftoplayer).seek(duration); //resume playback from the position stopped.
 
+						jwplayer(reftoplayer).seek(duration); //resume playback from the position stopped.
 						
 					}
 					
@@ -79,13 +79,24 @@ function secondsToHms(d) {
 				
 			}
 			
+			
+			var educator_toc_items_string = '';
+			
+			function ff_get_toc(){ 
+				
+				return educator_toc_items_string;
+			}
+			
 			var get_all_educator_content = function(course_id, component_id, node_id){
+				educator_toc_items_string = ''; //reset the options string
 				console.log('inside get_all_educator_content');
 				
 				$.get('/ziksana-web/secure/getAllEducatorContent', {'courseId':course_id, 'nodeId':node_id, 'componentId':component_id}, function(data){
 					
 					
 					data_table_tbody_html = '';
+					$('select#ec_parentid').html(''); //empty the select dropdown options
+					$('select#ec_parentid').append('<option value="">Select One</option>');
 					
 					for(i in data){
 					
@@ -98,19 +109,23 @@ function secondsToHms(d) {
 						description = data[i].description;
 						coordinates = data[i].coordinates;
 						url = data[i].url;
+						parentId = data[i].parentId;
 						
 						
 						if(educatorContentType == 8){ //8 = Educator Note
-							data_table_tbody_html += '<tr><td>Note</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+description+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="note" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Note</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+description+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="note" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'" data-parentid=""><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 1){ //1 = Educator Reference
-							data_table_tbody_html += '<tr><td>Reference</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+url+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="reference" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Reference</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>'+url+'</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="reference" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'" data-parentid=""><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 9){ //9 = Educator HotSpot
-							data_table_tbody_html += '<tr><td>Hotspot</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td></td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="hotspot" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							data_table_tbody_html += '<tr><td>Hotspot</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td></td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="hotspot" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'" data-parentid=""><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 						if(educatorContentType == 7){ //7 = TOC
-							data_table_tbody_html += '<tr><td>TOC Item</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>&nbsp</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="toc" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
+							option_html = '<option value="'+id+'">'+title+'</option>';
+							educator_toc_items_string += id+'||'+title+'|||';
+							$('select#ec_parentid').append(option_html);
+							data_table_tbody_html += '<tr><td>TOC Item</td><td><strong onclick="jwplayer(reftoplayer).seek('+duration+')">'+title+'</strong></td><td>&nbsp</td><td>'+formated_duration+'</td><td><img onclick="delete_educator_content($(this));" data-id="'+id+'" src="/ziksana-web/resources/images/delete.jpg"><span onclick="prepare_to_update_educator_content($(this));" data-type="toc" data-id="'+id+'" data-duration="'+duration+'" data-title="'+title+'" data-description="'+description+'" data-coordinates="'+coordinates+'" data-url="'+url+'" data-parentid="'+parentId+'"><img src="/ziksana-web/resources/images/edit.png"/></span></td></tr>';
 						}
 					
 					}
@@ -132,6 +147,7 @@ function secondsToHms(d) {
 				coordinates = edit_icon.attr('data-coordinates');
 				url = edit_icon.attr('data-url');
 				type = edit_icon.attr('data-type');
+				parentId = edit_icon.attr('data-parentid');
 
 				
 				//reset these fields
@@ -141,9 +157,10 @@ function secondsToHms(d) {
 				$('#ec_description').val('');
 				$('#ec_coordinates').val('');
 				$('#ec_url').val('');
+				$('#ec_parentid').val('');
 				
 				//hide the labels
-				 $('#l_ec_title, #l_ec_description, #l_ec_url').hide();
+				 $('#l_ec_title, #l_ec_description, #l_ec_url, #l_ec_parentid').hide();
 
 				//Populate the content from the variables recieved.
 				$('#ec_enrich_id').val(enrich_id);
@@ -152,11 +169,12 @@ function secondsToHms(d) {
 				$('#ec_description').val(description);
 				$('#ec_coordinates').val(coordinates);
 				$('#ec_url').val(url);
+				$('#ec_parentid').val(parentId);
 
 				//show the appropriate form fields based on the content type
 				if(type == 'note'){ $('#l_ec_title, #l_ec_description').show(); $('.educator_content_type').html('Note');}
 				if(type == 'reference'){ $('#l_ec_title, #l_ec_url').show(); $('.educator_content_type').html('Reference');}
-				if(type == 'toc'){ $('#l_ec_title').show(); $('.educator_content_type').html('TOC Item');}
+				if(type == 'toc'){ $('#l_ec_title, #l_ec_parentid').show(); $('.educator_content_type').html('TOC Item');}
 				if(type == 'hotspot'){ $('#l_ec_title').show(); $('.educator_content_type').html('Hotspot');}
 
 
@@ -175,8 +193,11 @@ function secondsToHms(d) {
 				description = $('#ec_description').val();
 				coordinates = $('#ec_coordinates').val();
 				url = $('#ec_url').val();
+				parentid = $('#ec_parentid').val();
+				
+				if (parentid == ''){parentid = 0; }
 
-				$.post('/ziksana-web/secure/editEducatorContent', {id:id, duration:duration, title:title, description:description, coordinates:coordinates, url:url }, function(data){
+				$.post('/ziksana-web/secure/editEducatorContent', {id:id, duration:duration, title:title, description:description, coordinates:coordinates, url:url, parentId:parentid }, function(data){
 
 					if(data == 1){ //record is successfully updated
 						refresh_educator_content();
@@ -215,9 +236,10 @@ function secondsToHms(d) {
 				var note_desc = note.substring(0, delim2);
 				note = note.substring(delim2 + 2);
 				var note_time = Math.floor(note);
+				console.log('note time is: '+ note_time);
 				//window.alert("You have Added Note ITEM: "+note_title+ " descibed as " +  note_desc+ " at time " + note_time);
 				
-				//jwplayer(reftoplayer).play();
+				
 
 
 				content_type = "8"; //8 for note
@@ -233,7 +255,8 @@ function secondsToHms(d) {
 				url = 'asd';
 				console.log("BFR VALL");
 				display_msg(content_type, course_id, node_id, duration, title, description, coordinates, url);
-				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url);
+				parentid = '0';
+				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 				console.log("AFT CALL"); 	 
 			}
 			
@@ -242,7 +265,7 @@ function secondsToHms(d) {
 			}
 
 			var ff_add_reference = function(note) {
-				console.log('inside ff_add_reference');
+				//console.log('inside ff_add_reference');
 				var delim1 = note.indexOf("||");
 				var note_title = note.substring(0, delim1);
 				note = note.substring(delim1 + 2);
@@ -251,7 +274,6 @@ function secondsToHms(d) {
 				note = note.substring(delim2 + 2);
 				var note_time = note;
 				
-				//jwplayer(reftoplayer).play();
 
 				/*
 				note_anchor_string = '<a title="'+note_desc+'" onclick="jwplayer().seek('+note_time+').play(true);" data-iconprefix="note">'+note_title+'</a>';
@@ -265,12 +287,13 @@ function secondsToHms(d) {
 				description = '';
 				coordinates = '';
 				url = note_desc;
-				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url);
+				parentid = '0';
+				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			
 			}
 
 			var ff_add_hs = function(note) {
-				//console.log('inside ff_add_hs');
+				console.log('inside ff_add_hs');
 				var delim1 = note.indexOf("||");
 				var note_title = note.substring(0, delim1);
 				note = note.substring(delim1 + 2);
@@ -278,7 +301,6 @@ function secondsToHms(d) {
 				var note_desc = note.substring(0, delim2);
 				note = note.substring(delim2 + 2);
 				var note_time = note;
-				//window.alert("You have Added Reference ITEM: "+note_title+ " linking " +  note_desc+ " at time " + note_time);
 				
 				//jwplayer(reftoplayer).play();
 
@@ -294,12 +316,13 @@ function secondsToHms(d) {
 				coordinates = note_desc;
 				description = '';
 				url = '';
-				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url);
+				parentid = '0';
+				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			
 			}
 
 			var ff_add_toc = function(note) {
-				console.log('inside ff_add_toc');
+				//console.log('inside ff_add_toc');
 				var delim1 = note.indexOf("||");
 				var note_title = note.substring(0, delim1);
 				note = note.substring(delim1 + 2);
@@ -307,7 +330,7 @@ function secondsToHms(d) {
 				var note_desc = note.substring(0, delim2);
 				note = note.substring(delim2 + 2);
 				var note_time = note;
-				//window.alert("You have Added TOC ITEM: " + note_title + " under " + note_desc + " at time " + note_time);
+				//window.alert("You have Added TOC ITEM: " + note_titles	+ " under " + note_desc + " at time " + note_time);
 
 
 
@@ -319,7 +342,11 @@ function secondsToHms(d) {
 				description = note_desc; // will carry parent node id
 				coordinates = '';
 				url = '';
-				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url);
+				//parentItemString = note_desc;
+				parentid = note_desc;
+				//parentid = '0';
+				
+				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			
 			}
 
@@ -331,7 +358,7 @@ function secondsToHms(d) {
 
 			var ff_get_position = function() {
 				var position = jwplayer(reftoplayer).getPosition();
-				console.log(position);
+				//console.log(position);
 				return position + "";
 			}
 
@@ -357,6 +384,7 @@ function secondsToHms(d) {
 			}
 			
 			refresh_educator_content();
+			
 			
 			
 			
@@ -396,6 +424,9 @@ function secondsToHms(d) {
 		<label id="l_ec_description">Description: <br/><textarea id="ec_description"></textarea></label>
 		<input type="hidden" id="ec_coordinates" value=""/>
 		<label id="l_ec_url">Url: <br/><input type="text" id="ec_url" value=""/></label>
+		<label id="l_ec_parentid">Parent Item: <br/>
+			<select id="ec_parentid"></select>
+		</label>
 		<hr/>
 		<button onclick="update_educator_content();">Update</button>
 		<button onclick="$(this).parent().hide();">Cancel</button>
@@ -423,7 +454,7 @@ table.enrich_table td {
 div.tableofcontent { width: 570px; max-height: 200px; overflow-y: auto;}
 table.enrich_table td img {cursor:pointer; margin-right: .5em;}		
 #edit_educator_content {
-  background: rgba(1, 1, 1, .8);
+  background: #555;
   box-shadow: 0 0 12px black;
   color: white;
   display: inline-block;
@@ -441,5 +472,6 @@ table.enrich_table td img {cursor:pointer; margin-right: .5em;}
 		#edit_educator_content input[type="text"]{width: 90%;}
 	
 	</style>
+	
 
 

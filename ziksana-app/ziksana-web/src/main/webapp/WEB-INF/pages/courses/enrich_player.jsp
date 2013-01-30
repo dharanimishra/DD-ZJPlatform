@@ -191,6 +191,8 @@
 				coordinates = $('#ec_coordinates').val();
 				url = $('#ec_url').val();
 				parentid = $('#ec_parentid').val();
+				
+				if (parentid == ''){parentid = 0; }
 
 				$.post('/ziksana-web/secure/editEducatorContent', {id:id, duration:duration, title:title, description:description, coordinates:coordinates, url:url, parentId:parentid }, function(data){
 
@@ -338,8 +340,8 @@
 				coordinates = '';
 				url = '';
 				//parentItemString = note_desc;
-				//parentid = note_desc;
-				parentid = '0';
+				parentid = note_desc;
+				//parentid = '0';
 				
 				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			

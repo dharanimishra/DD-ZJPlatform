@@ -673,17 +673,28 @@ function load_tree(){
             var clickedItem = null;
             
             // open the context menu when the user presses the mouse right button.
-            $("#jqx_course_tree li").live('mousedown', function (event) {
-                var target = $(event.target).parents('li:first')[0];
+            $("#jqx_course_tree li div.jqx-tree-item").live('mousedown', function (event) {
+				console.log('mouse down triggered.');
+            	var target = $(event.target).parents('li:first')[0];
+                console.log($(event.target));
+                console.log(target);
             
                 var rightClick = isRightClick(event);
-                if (rightClick && target != null) {
+                //if (rightClick && target != null) {
+                if (rightClick) {
                     $("#jqx_course_tree").jqxTree('selectItem', target);
                     var scrollTop = $(window).scrollTop();
                     var scrollLeft = $(window).scrollLeft();
+                    console.log('target is');
+                    
+                    var content_type = $(target).attr('id').split('_')[1];
+                    console.log('content type is: '+ content_type);
+                    if(content_type != '1' && content_type != '11'){ return false; } 
                     contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
                     return false;
                 }
+                
+                
             });
             $("#rc_jqxMenu").bind('itemclick', function (event) {
                 var item = $(event.args).text();
