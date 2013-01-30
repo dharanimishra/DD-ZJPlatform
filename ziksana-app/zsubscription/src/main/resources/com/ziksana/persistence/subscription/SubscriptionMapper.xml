@@ -381,7 +381,7 @@
 		LinkDescription,uri,coordinates,duration,LinkElement,parentContent
 		enrichmentid)
 		values(#{type},#{description} ,#{url} ,
-		#{coordinates},#{duration},#{title},#{parentId} (select enrichmentid
+		#{coordinates},#{duration},#{title},#{parentId}, (select enrichmentid
 		from
 		corenrichment
 		where
