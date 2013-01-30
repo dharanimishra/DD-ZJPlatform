@@ -356,7 +356,69 @@ $('._cklo').show('');
             
          <!--end of learning objects-->   
             
+                        <!--Courses container-->
+               
+   <div class="center for-rounded-box all-box-shadow _course" style="width:973px; margin-left:-98px;border:1px solid #e8b7df; background:#f9ebf7;">
+                <div style="margin-left:850px;disply:table; top:-100">
+
+
+					 <div class="createnew" style="display:table-cell;width:100px;"><a href="/ziksana-web/secure/createcourse"><img src="../resources/images/plus.png" width=16px, height=16px>Create New</a></span> 
+
+					</div>
+					<div style="display:table-cell; padding-left:20px;">
+					<a href="#">  
+                   <img src="../resources/images/cross.png" onclick="closeactive()"></a>
+				   </div>
+                   </div>
+                   <div class="programisotope" id="mnuiso" style="height: 40px;margin-top: -20px; margin-right: 800px; width: 250px;">
+                  
+                    <li> <a class="btn btn-info" href="#linkurl" id="activec" onClick="showactivec()" style="float:right;">Active</a></li>
+                      <li> <a class="btn btn-info" href="#linkurl" id="reviewc" onClick="showreviewc()" style="float:right;">Review</a></li>
+                    <li><a class="btn btn-info" href="#linkurl" id="draftc" onclick="showdraftc()" style="float:right;">Draft</a></li>
+                   
+                    
+                    <li><a class="btn btn-info" href="#linkurl" id="allc" onclick="showallc()" style="float:right;">All</a> </li>
+                                      
+                                      
+                    
+                    </div>  <!--end of zeni isotope--> 
+					
+                  
                 
+                
+                <div id="_isocourse" style="margin-left:30px;">
+              
+               
+                
+            <!--learning objects-->
+                 <c:forEach var="course" items="${courses}">
+                 
+              <div class="col-lft li-1 All Draft" id="courseModel_${course.coursesId}" style="border:1px solid #ccc; width:170px;">
+              
+              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
+
+                <p style="height:30px;"class="titles-info1 text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
+                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="148" height="97"/>
+				</p>
+                <div class="icons-list">
+                  
+                 
+                 <a href="/ziksana-web/secure/createcourse/courseid_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
+
+                     
+                     
+                     
+               <a  onclick="delete_coursebycourseid(${course.coursesId})" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
+                </div>              
+              </div>
+                </div>
+             </c:forEach> 
+  
+    
+                
+                  </div> <!--end of isotope-->
+                
+                </div>  <!--end of Course container-->       
                 
                   <!--learning content-->
 				  
@@ -422,69 +484,7 @@ $('._cklo').show('');
     
     
       
-               <!--Courses container-->
-               
-                <div class="center for-rounded-box all-box-shadow _course" style="width:973px; padding-left:10px; padding-right:-10px;">
-                <div style="margin-left:850px;disply:table; top:-100">
 
-
-					 <div class="createnew" style="display:table-cell;width:100px;"><a href="/ziksana-web/secure/createcourse"><img src="../resources/images/plus.png" width=16px, height=16px>Create New</a></span> 
-
-					</div>
-					<div style="display:table-cell; padding-left:20px;">
-					<a href="#">  
-                   <img src="../resources/images/cross.png" onclick="closeactive()"></a>
-				   </div>
-                   </div>
-                   <div class="programisotope" id="mnuiso" style="height: 40px;margin-top: -20px; margin-right: 800px; width: 250px;">
-                  
-                    <li> <a class="btn btn-info" href="#linkurl" id="activec" onClick="showactivec()" style="float:right;">Active</a></li>
-                      <li> <a class="btn btn-info" href="#linkurl" id="reviewc" onClick="showreviewc()" style="float:right;">Review</a></li>
-                    <li><a class="btn btn-info" href="#linkurl" id="draftc" onclick="showdraftc()" style="float:right;">Draft</a></li>
-                   
-                    
-                    <li><a class="btn btn-info" href="#linkurl" id="allc" onclick="showallc()" style="float:right;">All</a> </li>
-                                      
-                                      
-                    
-                    </div>  <!--end of zeni isotope--> 
-					
-                  
-                
-                 <div id="_isocourse">
-                
-              
-               
-                
-            <!--learning objects-->
-                 <c:forEach var="course" items="${courses}">
-                 
-              <div class="col-lft li-1 All Draft" id="courseModel_${course.coursesId}" style="border:1px solid #ccc; width:170px;">
-              
-              <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
-
-                <p style="height:30px;"class="titles-info1 text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="148" height="97"/>
-				</p>
-                <div class="icons-list">
-                  
-                 
-                 <a href="/ziksana-web/secure/createcourse/courseid_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
-
-                     
-                     
-                     
-               <a  onclick="delete_coursebycourseid(${course.coursesId})" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
-                </div>              
-              </div>
-                </div>
-             </c:forEach> 
-  
-    
-                
-                  </div> <!--end of isotope-->
-                
-                </div>  <!--end of Course container-->
                       
                 </div>  <!--learning object container-->
                 
@@ -537,28 +537,7 @@ $('#edu-star').raty({
         
         
         </script> 
- <script type="text/javascript">
-   function delete_coursebycourseid(courseid){
-	   confirm_delete_alert = confirm('Are you sure you want to delete this Course?');
-		if(confirm_delete_alert == true){
-			
-			
-		
-		$.ajax({
-		  	type: 'POST',
-			url: '/ziksana-web/secure/removeCourse/COURSE_'+courseid+'',
-			dataType: 'json',
-			success: function( data ) {
-				$('#courseModel_'+courseid+'').hide();			
-				
-			}
-		});
-		
-		
-		}
-	   
-   }
-   </script> 
+
 
   <!--End Current Progress-->
         <!--Footer Container-->

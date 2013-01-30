@@ -1,4 +1,44 @@
+//soft delete course 
+   function delete_coursebycourseid(courseid){
+	   confirm_delete_alert = confirm('Are you sure you want to delete this Course?');
+		if(confirm_delete_alert == true){
+			
+			
+		
+		$.ajax({
+		  	type: 'POST',
+			url: '/ziksana-web/secure/removeCourse/COURSE_'+courseid+'',
+			dataType: 'json',
+			success: function( data ) {
+				$('#courseModel_'+courseid+'').hide();		
+				
+				window.location.href = "/ziksana-web/secure/showMyProgramsDraft";
+			}
+		});
+		
+		
+		}
+	   
+   }
+  
+
 // JavaScript Document
+function draftcall()
+	{
+	 
+		$('._course').slideDown('');
+		   $('#_isocourse').isotope({ filter: '.Draft' }); 
+		   $('#draftc').addClass('hover-btn'); 
+		   $('#draftc').removeClass('btn-info'); 
+		   $('#_lp').hide(''); 
+		   $('._lo').hide(''); 
+		   $('._lc').hide(''); 
+		   $('.arrowdown').show('');
+		   /*$('._cklo').hide('');	
+			$('._cklp').hide('');	
+			$('._cklc').hide('');*/
+			
+	  }
 
 function activecall()
 {
@@ -66,9 +106,9 @@ $(document).ready(function()
 			$('._lo').hide('');	
 			$('._lc').hide('');	
 			$('.arrowdown').show('');
-			$('._cklo').hide('');	
+			/*$('._cklo').hide('');	
 			$('._cklp').hide('');	
-			$('._cklc').hide('');
+			$('._cklc').hide('');*/
 			
 			
 			
