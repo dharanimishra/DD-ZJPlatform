@@ -2,6 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true"%>
 <!--slogen-->
+<style>
+.mnuclass{
+ font-size: 12px;
+ font-weight:normal;
+ font-family:verdana;
+ text-decoration:none;
+ color: #2277BB;
+ 
+}
+
+</style>
 <body>
 <div class="slogen-container">
 	<span class="text-size-px20 gray-777 bold font-Signika">Welcome
@@ -12,10 +23,10 @@
 	</span> --%> <c:url var="createlink" value="" />
 	<c:if test="${member.roleType eq 'EDUCATOR'}">
 		<div class="f-r">
-			<strong class="text-size-px16 light-gray"> <a
-				href="/ziksana-web/secure/createcourse">Create </a><strong>|</strong>
-				<a href="#">Publish</a> <strong>|</strong> <a href="#">Manage</a>
-			</strong>
+			<a class=" light-gray light-blue mnuclass"  
+				href="/ziksana-web/secure/createcourse">Create </a>|
+				<a href="#" class="light-blue mnuclass" > Manage </a> | <a class="light-blue mnuclass"  href="#"> Publish</a>
+			
 			<c:url var="imageUrl_header2" value="/resources/images/plus.png" />
 			<a href="#" class="light-blue"><img src="${imageUrl_header2}"
 				alt="add more" width="12" height="12" class="light-blue add-more"></img></a>

@@ -211,6 +211,14 @@ span.standartTreeRow:hover {
 	overflow-y: hidden; */
 	
 }
+.mnuclass{
+ font-size: 12px;
+ font-weight:normal;
+ font-family:verdana;
+ text-decoration:none;
+ color: #2277BB;
+ 
+}
 </style>
 </head>
 
@@ -286,10 +294,10 @@ span.standartTreeRow:hover {
 
 		<!--End Header Container-->
 		<div class="sub-nav">
-			<div class="f-l">
-				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong><strong
-					class="light-gray text-size-px12">Create New Course </strong>
+			<div class="f-r">
+				<a class="mnuclass ">Manage</a> | <a class="mnuclass ">Publish </a><a
+					class="light-blue"><img width="12" height="12"
+					alt="add more" src="/ziksana-web/resources/images/plus.png"> </a>
 			</div>
 			<div class="f-r">
 				<strong class="text-size-px14 light-gray"><a>Publish</a> |

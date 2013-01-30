@@ -60,14 +60,15 @@ $(document).ready(function()
 			$('._course').slideDown('');
 			$('#_isocourse').isotope({ filter: '.Draft' });	
 			$('#draftc').addClass('hover-btn');	
-			$('#draftc').removeClass('btn-info');	
+			$('#draftc').removeClass('btn-info');
+			$('#reviewc').addClass('btn-info');	
 			$('#_lp').hide('');	
 			$('._lo').hide('');	
 			$('._lc').hide('');	
 			$('.arrowdown').show('');
-			/*$('._cklo').hide('');	
+			$('._cklo').hide('');	
 			$('._cklp').hide('');	
-			$('._cklc').hide('');*/
+			$('._cklc').hide('');
 			
 			
 			
@@ -184,13 +185,25 @@ $('#draftc').removeClass('hover-btn');
 $('#reviewc').addClass('btn-info');	
 $('#draftc').addClass('btn-info');	
 $('#allc').addClass('hover-btn');
-$('#allc').removeClass('btn-info');		
+$('#allc').removeClass('btn-info');	
+$('#activec').removeClass('hover-btn');
+$('#activec').addClass('btn-info');
 }
 
 function showactivec()
 {
 $('#_isocourse').isotope({ filter: '.Active' });
 $('.createnew').css('visibility','hidden');
+
+$('#activec').removeClass('btn-info');
+$('#activec').addClass('hover-btn');
+$('#reviewc').addClass('btn-info');	
+$('#reviewc').removeClass('hover-btn');
+$('#allc').addClass('btn-info');
+$('#allc').removeClass('hover-btn');
+$('#draftc').addClass('btn-info');
+$('#draftc').removeClass('hover-btn');
+
 }
 
 function showdraftc()
@@ -201,7 +214,9 @@ $('#draftc').addClass('hover-btn');
 $('#reviewc').removeClass('hover-btn');	
 			$('#draftc').removeClass('btn-info');
 			$('#reviewc').addClass('btn-info');	
-			$('#allc').addClass('btn-info');	
+			$('#allc').addClass('btn-info');
+			$('#activec').removeClass('hover-btn');
+			$('#activec').addClass('btn-info');
 }
 
 function showreviewc()
@@ -211,7 +226,9 @@ $('.createnew').css('visibility','hidden');
 $('#draftc').addClass('btn-info');
 $('#reviewc').addClass('hover-btn');	
 $('#reviewc').removeClass('btn-info');
-$('#allc').addClass('btn-info');		
+$('#allc').addClass('btn-info');
+$('#activec').removeClass('hover-btn');
+$('#activec').addClass('btn-info');
 }
 	//end of _isocourse	
 

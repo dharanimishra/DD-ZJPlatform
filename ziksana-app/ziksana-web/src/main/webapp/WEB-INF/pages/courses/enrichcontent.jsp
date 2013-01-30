@@ -120,6 +120,17 @@
 .breadcrumb li:nth-child(3) a:after {
 	border-left-color: #6D9EC5 !important;
 }
+
+.mnuclass{
+ font-size: 12px;
+ font-weight:normal;
+ font-family:verdana;
+ text-decoration:none;
+ color: #2277BB;
+ 
+}
+
+
 </style>
 
 
@@ -203,7 +214,7 @@
 					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">
-				<strong class="text-size-px14 light-gray"><a>Publish</a> | <a>Manage</a></strong><a
+				<a class="mnuclass ">Manage</a> | <a class="mnuclass ">Publish </a><a
 					class="light-blue"><img width="12" height="12"
 					alt="add more" src="/ziksana-web/resources/images/plus.png"> </a>
 			</div>

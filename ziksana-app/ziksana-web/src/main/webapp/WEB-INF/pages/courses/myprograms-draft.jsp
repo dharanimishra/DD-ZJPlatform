@@ -81,6 +81,10 @@
 		   $('._lo').hide(''); 
 		   $('._lc').hide(''); 
 		   $('.arrowdown').show('');
+		   $('._cklo').hide('');	
+			$('._cklp').hide('');	
+			$('._cklc').hide('');
+			
 	  }
 	</script>
     <script type='text/javascript' src='../resources/js/jquery.tipsy.js'></script>
@@ -441,7 +445,9 @@ $('._cklo').show('');
                    <img src="../resources/images/cross.png" onclick="closeactive()"></a>
 				   </div>
                    </div>
-                   <div class="programisotope" style="height: 40px;margin-top: -30px; margin-right: 800px; width: 181px;">
+                      <div class="programisotope" id="mnuiso" style="height: 40px;margin-top: -20px; margin-right: 800px; width: 250px;">
+                  
+                    <li> <a class="btn btn-info" href="#linkurl" id="activec" onClick="showactivec()" style="float:right;">Active</a></li>
                   
                     
                       <li> <a class="btn btn-info" href="#linkurl" id="reviewc" onClick="showreviewc()" style="float:right;">Review</a></li>
