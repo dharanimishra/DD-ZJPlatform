@@ -42,6 +42,9 @@ public class Course extends AuditHistory {
 	}
 
 	private ZID courseId;
+	
+	private Integer coursesId;
+	
 	/**
 	 * Maximum Length:45
 	 */
@@ -131,6 +134,13 @@ public class Course extends AuditHistory {
 			throw new IllegalStateException("CoursePlaybook at index [" + index
 					+ "]  not found");
 		}
+	}
+	public Integer getCoursesId() {
+		return coursesId;
+	}
+
+	public void setCoursesId(Integer coursesId) {
+		this.coursesId = coursesId;
 	}
 
 	/**

@@ -120,17 +120,6 @@
 .breadcrumb li:nth-child(3) a:after {
 	border-left-color: #6D9EC5 !important;
 }
-
-.mnuclass{
- font-size: 12px;
- font-weight:normal;
- font-family:verdana;
- text-decoration:none;
- color: #2277BB;
- 
-}
-
-
 </style>
 
 
@@ -214,7 +203,7 @@
 					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">
-				<a class="mnuclass ">Manage</a> | <a class="mnuclass ">Publish </a><a
+				<strong class="text-size-px14 light-gray"><a>Publish</a> | <a>Manage</a></strong><a
 					class="light-blue"><img width="12" height="12"
 					alt="add more" src="/ziksana-web/resources/images/plus.png"> </a>
 			</div>
@@ -257,7 +246,7 @@
 
 
 
-						<!------------------------------------------------------Associate ------------------------------->
+						
 						<div class="associate">
 							<div class="definecontainer" style="float: left;">
 								<p class="definehelp all all-box-shadow"
@@ -281,14 +270,22 @@
 																			
 										</div>
 
-										<div id='jqxMenu' class="jqxMenu3">
+										<!-- <div id='rc_jqxMenu' class="jqxMenu3">
 											<ul>
 												<li id="videocontainer2"><img src="/ziksana-web/resources/images/view.png"
 													alt="View" height="10" width="10"
 													style="margin-right: 5px; margin-left: -5px;" /> Enrich
 													Content</li>
 											</ul>
-										</div>
+
+										</div>-->
+										<div id='rc_jqxMenu'>
+								            <ul>
+								                <li><img src="/ziksana-web/resources/images/view.png"
+													alt="View" height="10" width="10"
+													style="margin-right: 5px; margin-left: -5px;" />Enrich Content</li>
+								            </ul>
+								        </div>
 
 
 									</div>
@@ -302,7 +299,7 @@
 										
 										
 									</div>
-									<!-- End of Content Panel -->
+									<!-- End of Content Panel 
 
 								</div>
 								<!-- end tree function -->
@@ -600,7 +597,7 @@ function load_tree(){
 
 
 
-	$('#jqx_course_tree').bind(
+/* 	$('#jqx_course_tree').bind(
 
 			'select',
 
@@ -668,7 +665,115 @@ function load_tree(){
 
 
 
-			});
+			}); */
+
+
+		//Context Menu
+			var contextMenu = $("#rc_jqxMenu").jqxMenu({ width: '120px', height: '28px', autoOpenPopup: false, mode: 'popup' });
+            var clickedItem = null;
+            
+            // open the context menu when the user presses the mouse right button.
+            $("#jqx_course_tree li").live('mousedown', function (event) {
+                var target = $(event.target).parents('li:first')[0];
+            
+                var rightClick = isRightClick(event);
+                if (rightClick && target != null) {
+                    $("#jqx_course_tree").jqxTree('selectItem', target);
+                    var scrollTop = $(window).scrollTop();
+                    var scrollLeft = $(window).scrollLeft();
+                    contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
+                    return false;
+                }
+            });
+            $("#rc_jqxMenu").bind('itemclick', function (event) {
+                var item = $(event.args).text();
+                console.log(item);
+				var args = event.args;
+                switch (item) {
+                    case "Enrich Content":
+                        var selectedItem = $('#jqx_course_tree').jqxTree('selectedItem');
+                        if (selectedItem != null) {
+                            //$('#jqx_course_tree').jqxTree('addTo', { label: 'Item' }, selectedItem.element);
+
+// begin enhance menu logic
+
+						console.log("id is: "+selectedItem.id);
+				var item = $('#jqx_course_tree').jqxTree('getItem',
+
+						args.element);
+
+
+
+				var node_id = selectedItem.id;
+				
+				node_type = node_id.split('_')[0];
+				
+				if(node_type == "LCONTENT"){
+					content_id = node_id.split('_')[3];
+					component_id = node_id.split('_')[2];
+					content_type_id = node_id.split('_')[1];
+					
+					if(content_type_id == 1){//video -- 1
+						
+						course_id = $('#courseId').val();
+						$('#ContentPanel').empty();
+						$('#ContentPanel').append(
+							'<iframe src="/ziksana-web/secure/enrichplayer/'
+									+ course_id
+									+ '/'
+									+ component_id
+									+ '/'
+									+ content_id
+									+ '" style="width:705px; height:600px;" scrolling="no"></iframe>');						
+
+						
+					} else if(content_type_id == 11){//Enhanced video -- 11
+						
+						course_id = $('#courseId').val();
+						$('#ContentPanel').empty();
+						$('#ContentPanel').append(
+							'<iframe src="/ziksana-web/secure/ev_enrichplayer/'
+									+ course_id
+									+ '/'
+									+ component_id
+									+ '/'
+									+ content_id
+									+ '" style="width:800px; height:700px;" scrolling="no"></iframe>');		
+						
+					}else {
+						$('#ContentPanel').empty();
+						
+					}
+
+				}
+// end enhance menu logic
+
+
+
+                        }
+                        break;
+                    // case "Remove Item":
+                    //     var selectedItem = $('#jqx_course_tree').jqxTree('selectedItem');
+                    //     if (selectedItem != null) {
+                    //         $('#jqx_course_tree').jqxTree('removeItem', selectedItem.element);
+                    //     }
+                    //     break;
+                }
+            });
+            // disable the default browser's context menu.
+            $(document).bind('contextmenu', function (e) {
+                if ($(e.target).parents('.jqx-tree').length > 0) {
+                    return false;
+                }
+                return true;
+            });
+            function isRightClick(event) {
+                var rightclick;
+                if (!event) var event = window.event;
+                if (event.which) rightclick = (event.which == 3);
+                else if (event.button) rightclick = (event.button == 2);
+                return rightclick;
+            }
 
 
 }

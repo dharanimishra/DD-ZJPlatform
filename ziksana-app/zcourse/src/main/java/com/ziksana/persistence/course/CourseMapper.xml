@@ -148,8 +148,8 @@
 		corcourse
 		where
 		CourseStatus=#{statusId} and
-		MemberRoleId=#{memberPersonaId}
-		LIMIT 0, 3
+		MemberRoleId=#{memberPersonaId} and IsDelete = 0 order by CreationDate desc
+		LIMIT 0, 3 
 
 	</select>
 
@@ -162,7 +162,7 @@
 		corcourse
 		where
 		CourseStatus=#{statusId} and
-		MemberRoleId=#{memberPersonaId}
+		MemberRoleId=#{memberPersonaId} and IsDelete = 0 
 
 
 	</select>
@@ -178,7 +178,7 @@
 		corcourse
 		where
 		CourseStatus=#{statusId} and
-		MemberRoleId=#{memberPersonaId}
+		MemberRoleId=#{memberPersonaId} and IsDelete = 0
 
 
 	</select>
@@ -188,6 +188,7 @@
 	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
 
 		<result property="courseId" column="id" />
+		<result property="coursesId" column="id" />
 		<result property="name" column="name" />
 		<result property="description" column="description" />
 		<result property="Rating" column="courseProgress" />

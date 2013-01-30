@@ -250,7 +250,7 @@
 				url = 'asd';
 				console.log("BFR VALL");
 				display_msg(content_type, course_id, node_id, duration, title, description, coordinates, url);
-				parentid = '';
+				parentid = '0';
 				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 				console.log("AFT CALL"); 	 
 			}
@@ -282,7 +282,7 @@
 				description = '';
 				coordinates = '';
 				url = note_desc;
-				parentid = '';
+				parentid = '0';
 				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			
 			}
@@ -311,7 +311,7 @@
 				coordinates = note_desc;
 				description = '';
 				url = '';
-				parentid = '';
+				parentid = '0';
 				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			
 			}
@@ -338,7 +338,8 @@
 				coordinates = '';
 				url = '';
 				//parentItemString = note_desc;
-				parentid = note_desc;
+				//parentid = note_desc;
+				parentid = '0';
 				
 				add_educator_content(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid);
 			

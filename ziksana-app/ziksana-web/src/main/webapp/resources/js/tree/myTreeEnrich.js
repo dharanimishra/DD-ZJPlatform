@@ -80,11 +80,13 @@
             	
                 var rightClick = isRightClick(event);
                 if (rightClick && target != null) {
+                	
+      
                     $("#jqxTree").jqxTree('selectItem', target);
                     var scrollTop = $(window).scrollTop();
                     var scrollLeft = $(window).scrollLeft();
 
-                    contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
+                   // contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
                     return false;
 					$(".jqxMenu3").hide();
                 }
@@ -106,7 +108,7 @@
                     var scrollTop = $(window).scrollTop();
                     var scrollLeft = $(window).scrollLeft();
 
-                    contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
+                   // contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
                     return false;
 					$(".jqxMenu3").hide();
                 }
@@ -129,7 +131,7 @@
                     var scrollTop = $(window).scrollTop();
                     var scrollLeft = $(window).scrollLeft();
 
-                    contextMenuthi.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
+                   // contextMenuthi.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
                     return false;
                 }
             });

@@ -459,7 +459,7 @@ $('._cklo').show('');
             <!--learning objects-->
                  <c:forEach var="course" items="${courses}">
                  
-              <div class="col-lft li-1 All Draft" id="courseModel" style="border:1px solid #ccc; width:170px;">
+              <div class="col-lft li-1 All Draft" id="courseModel_${course.coursesId}" style="border:1px solid #ccc; width:170px;">
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
 
@@ -469,12 +469,12 @@ $('._cklo').show('');
                 <div class="icons-list">
                   
                  
-                 <a href="/ziksana-web/secure/createcourse/${courseId}" rel="tipsy" title="Edit"class="Icon-edit icons-right" style="margin-right:-6px;"></a>
+                 <a href="/ziksana-web/secure/createcourse/courseid_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
 
                      
                      
                      
-                <a  onclick="coursedel('courseModel','Model Thinking')" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
+               <a  onclick="delete_coursebycourseid(${course.coursesId})" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
                 </div>              
               </div>
                 </div>
@@ -537,7 +537,28 @@ $('#edu-star').raty({
         
         
         </script> 
-
+ <script type="text/javascript">
+   function delete_coursebycourseid(courseid){
+	   confirm_delete_alert = confirm('Are you sure you want to delete this Course?');
+		if(confirm_delete_alert == true){
+			
+			
+		
+		$.ajax({
+		  	type: 'POST',
+			url: '/ziksana-web/secure/removeCourse/COURSE_'+courseid+'',
+			dataType: 'json',
+			success: function( data ) {
+				$('#courseModel_'+courseid+'').hide();			
+				
+			}
+		});
+		
+		
+		}
+	   
+   }
+   </script> 
 
   <!--End Current Progress-->
         <!--Footer Container-->
