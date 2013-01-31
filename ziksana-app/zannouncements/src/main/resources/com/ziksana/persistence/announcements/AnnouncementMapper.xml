@@ -17,7 +17,7 @@
 	<select id="getAllAnnouncements" resultMap="announcementResultMap"
 		parameterType="int">
 		select * from corannouncement where MemberRoleId =
-		#{memberRoleId} and announcementdate between SUBDATE(CURDATE(), 7) and
+		#{memberRoleId} and announcementdate between SUBDATE(CURDATE(), 6) and
 		CURDATE()+ INTERVAL 1 DAY
 	</select>
 

@@ -1019,7 +1019,7 @@ $("#datepara").show();
      
            
            
-            <div id="cnlistimage" style="background-image:url(../resources/images/calender/cal-left.png); background-repeat:no-repeat; height:258px; margin-left:-5px; background-color:#fff; 
+            <div id="cnlistimage" style="background-image:url(../resources/images/calender/cal-left1.png); background-repeat:no-repeat; height:258px; margin-left:-5px; background-color:#fff; 
 border-radius: 5px;
 background-origin: content-box;
 padding: 5px;">

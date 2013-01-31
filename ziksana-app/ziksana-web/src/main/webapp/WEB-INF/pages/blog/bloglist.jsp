@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <%--
 // Hardcoding XML schema provides flexibility in creating any number of custom schemas.
 // Unlike use of JAXB where the entire object is marshalled.
@@ -33,7 +34,7 @@
 						<blogs>
 						
 						<c:forEach var="bloglist" items="${blogList}" varStatus="status">
-						<li class="_blogs" style='padding:0px 10px 0px 0px;'>
+						<li class="_blogs" style='padding:0px 10px 0px 0px;cursor:pointer;color:grey;'>
 						<blog id="${bloglist.blogPostId.displayID}">
 								<span class="_postD text-size-px9">
 								<c:set var="blogDate" value="${bloglist.createDate}"></c:set>
