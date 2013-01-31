@@ -20,6 +20,10 @@
 <script type="text/javascript"  src="../resources/js/jquery.hovercard.js"></script>
 <script type="text/javascript"  src="../resources/js/date.js"></script>
 
+
+<script src="../resources/js/cufon-yui.js" type="text/javascript"></script>
+<script src="../resources/js/Bebas_400.font.js" type="text/javascript"></script>
+
 <!--<script type="text/javascript" src="../resources/js/custom.js"></script>-->
  <!--fancybox-->
  <link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/jquery-ui-1.8.21.custom.css">
@@ -27,6 +31,8 @@
 	<script src="../resources/js/jquery.fancybox.pack.2.1.3.js"></script>
 	<script type="text/javascript" src="../resources/js/jquery.tipsy.js"></script>
 	<link href="../resources/css/news/newsticker.css" rel="stylesheet" type="text/css" />
+	<link href="../resources/css/calender-launch.css" rel="stylesheet" type="text/css" />
+	
 	<!--fancybox end-->
    
      <script type="text/javascript">
@@ -71,6 +77,7 @@
 
 
 <style>
+cufon{text-indent:0!important;}@media screen,projection{cufon{display:inline!important;display:inline-block!important;position:relative!important;vertical-align:middle!important;font-size:1px!important;line-height:1px!important;}cufon cufontext{display:-moz-inline-box!important;display:inline-block!important;width:0!important;height:0!important;overflow:hidden!important;text-indent:-10000in!important;}cufon canvas{position:relative!important;}}@media print{cufon{padding:0!important;}cufon canvas{display:none!important;}}
 .lnchwrapper
 {
 height:490px;	
@@ -189,7 +196,7 @@ margin-bottom:20px;
 .elementlinks
 {
 	float:right;
-	margin-right:30px;
+	
 	
 }
 
@@ -325,7 +332,129 @@ list-style:none;
 		.slide-up-boxes a:nth-child(5) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
 
 </style>
+<style type="text/css">
+span.reference a{
+text-shadow:1px 1px 1px #fff;
+color:#999;
+text-transform:uppercase;
+text-decoration:none;
+position:fixed;
+right:10px;
+top:10px;
+font-size:13px;
+font-weight:bold;
+ }
+span.reference a:hover{
+color:#555;
+}
+h1.title{
+color:#777;
+font-size:30px;
+margin:10px;
+font-weight:normal;
+text-shadow:1px 1px 1px #fff;
+}
+			
 
+</style>
+<style id="css-hovercard" type="text/css">.hc-preview { position: relative; display:inline; }.hc-name { font-weight:bold; position:relative; display:inline-block; }.hc-details { left:-10px; margin-right:80px; text-align:left; font-family:Sans-serif !important; font-size:12px !important; color:#666 !important; line-height:1.5em; border:solid 1px #ddd; position:absolute;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;top:-10px;padding:2em 10px 10px;-moz-box-shadow:5px 5px 5px #888;-webkit-box-shadow:5px 5px 5px #888;box-shadow:5px 5px 5px #888;display:none;}.hc-pic { width:70px; margin-top:-1em; float:right;  }.hc-details-open-left { left: auto; right:-10px; text-align:right; margin-left:80px; margin-right:0; } .hc-details-open-left > .hc-pic { float:left; } .hc-details-open-top { bottom:-10px; top:auto; padding: 10px 10px 2em;} .hc-details-open-top > .hc-pic { margin-top:10px; float:right;  }.hc-details .s-action{ position: absolute; top:8px; right:5px; } .hc-details .s-card-pad{ border-top: solid 1px #eee; margin-top:10px; padding-top:10px; overflow:hidden; } .hc-details-open-top .s-card-pad { border:none; border-bottom: solid 1px #eee; margin-top:0;padding-top:0; margin-bottom:10px;padding-bottom:10px; }.hc-details .s-card .s-strong{ font-weight:bold; color: #555; } .hc-details .s-img{ float: left; margin-right: 10px; max-width: 70px;} .hc-details .s-name{ color:#222; font-weight:bold;} .hc-details .s-loc{ float:left;}.hc-details-open-left .s-loc{ float:right;} .hc-details .s-href{ clear:both; float:left;} .hc-details .s-desc{ float:left; font-family: Georgia; font-style: italic; margin-top:5px;width:100%;} .hc-details .s-username{ text-decoration:none;} .hc-details .s-stats { display:block; float:left; margin-top:5px; clear:both; padding:0px;}.hc-details ul.s-stats li{ list-style:none; float:left; display:block; padding:0px 10px !important; border-left:solid 1px #eaeaea;} .hc-details ul.s-stats li:first-child{ border:none; padding-left:0 !important;} .hc-details .s-count { font-weight: bold;} .</style>
+<script type="text/javascript">
+            $(function() {
+                //caching
+				//next and prev buttons
+				var $cn_next	= $('#cn_next');
+				var $cn_prev	= $('#cn_prev');
+				//wrapper of the left items
+				var $cn_list 	= $('#cn_list');
+				var $pages		= $cn_list.find('.cn_page');
+				//how many pages
+				var cnt_pages	= $pages.length;
+				//the default page is the first one
+				var page		= 1;
+				//list of news (left items)
+				var $items 		= $cn_list.find('.cn_item');
+				//the current item being viewed (right side)
+				var $cn_preview = $('#cn_preview');
+				//index of the item being viewed. 
+				//the default is the first one
+				var current		= 1;
+				
+				/*
+				for each item we store its index relative to all the document.
+				we bind a click event that slides up or down the current item
+				and slides up or down the clicked one. 
+				Moving up or down will depend if the clicked item is after or
+				before the current one
+				*/
+				$items.each(function(i){
+					var $item = $(this);
+					$item.data('idx',i+1);
+					
+					$item.bind('click',function(){
+						var $this 		= $(this);
+						$cn_list.find('.selected').removeClass('selected');
+						$this.addClass('selected');
+						var idx			= $(this).data('idx');
+						var $current 	= $cn_preview.find('.cn_content:nth-child('+current+')');
+						var $next		= $cn_preview.find('.cn_content:nth-child('+idx+')');
+						
+						if(idx > current){
+							$current.stop().animate({'top':'-300px'},900,'',function(){
+								$(this).css({'top':'310px'});
+							});
+							$next.css({'top':'310px'}).stop().animate({'top':'5px'},900,'');
+						}
+						else if(idx < current){
+							$current.stop().animate({'top':'310px'},900,'',function(){
+								$(this).css({'top':'310px'});
+							});
+							$next.css({'top':'-300px'}).stop().animate({'top':'5px'},900,'');
+						}
+						current = idx;
+					});
+				});
+				
+				/*
+				shows next page if exists:
+				the next page fades in
+				also checks if the button should get disabled
+				*/
+				$cn_next.bind('click',function(e){
+					var $this = $(this);
+					$cn_prev.removeClass('disabled');
+					++page;
+					if(page == cnt_pages)
+						$this.addClass('disabled');
+					if(page > cnt_pages){ 
+						page = cnt_pages;
+						return;
+					}	
+					$pages.hide();
+					$cn_list.find('.cn_page:nth-child('+page+')').fadeIn();
+					e.preventDefault();
+				});
+				/*
+				shows previous page if exists:
+				the previous page fades in
+				also checks if the button should get disabled
+				*/
+				$cn_prev.bind('click',function(e){
+					var $this = $(this);
+					$cn_next.removeClass('disabled');
+					--page;
+					if(page == 1)
+						$this.addClass('disabled');
+					if(page < 1){ 
+						page = 1;
+						return;
+					}
+					$pages.hide();
+					$cn_list.find('.cn_page:nth-child('+page+')').fadeIn();
+					e.preventDefault();
+				});
+				
+            });
+        </script>
 </head>
 <c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
  <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
@@ -384,8 +513,7 @@ var d = new Date();
 var curr_date = d.getDate();
 var curr_month = d.getMonth();
 var curr_year = d.getFullYear();
-var mondate=curr_date + "- " + m_names[curr_month] 
-+ "";
+var mondate= m_names[curr_month] + "<br> " +curr_date + "";
 $('.dmonth').html(mondate);
 
 });
@@ -619,14 +747,25 @@ function changeImage(a){
 	 
 	  
 }
+function hidecalender1()
+{
+$("#calenderdiv").hide();
+$("#datepara").hide();
+$("#alerts_placeholder").hide();
+$("#todosdiv").show();
+}
 function hidecalender()
 {
 $("#calenderdiv").hide();
 $("#datepara").hide();
+$("#todosdiv").hide();
+$("#alerts_placeholder").show();
 }
 function showcalender()
 {
 $("#calenderdiv").show();
+$("#alerts_placeholder").hide();
+$("#todosdiv").hide();
 $("#datepara").show();
 }
 
@@ -713,12 +852,9 @@ $("#datepara").show();
    
                            <div class="lnchelement">
                            
-                    <div class="_cMain">
-                    
-                    	
-                       <div data-tabpane_contianer>
-                        <!-- Start of Alerts -->
-             		          <div class="alert_todo" style="display:none;" data-tabpane="alerts">
+      <div id="shadimage">
+       <div data-tabpane_contianer>	
+        <div class="alert_todo" style="display:none;" data-tabpane="alerts">
                    
                     
                    		<div id ="alerts_placeholder" class="alerts" >
@@ -727,113 +863,243 @@ $("#datepara").show();
                         </div> <!--end of alert-->
                         
                         </div>
-                       <!-- end of Alerts -->
-                       
-                       
-                        <!-- Start of Todo -->
-                        <div class="todos" style="display:none; margin-top: 22px;" data-tabpane="todos">
+                         <div class="todos" id="todosdiv" style="display:none; margin-top: 22px;" data-tabpane="todos">
                         	 <div id="todos_placeholder"></div>
                             
                         </div>
-                       <!-- end of Todo -->
-                       
-                   
-				<div class="calendar demo_message_container">
-				<div class="">
-				                	 <div class="demo_message" style="font-size:18px;height:100px; width:430px;">
+     
+     				
+	<div class="cn_wrapper calendar demo_message_container"  id= "calenderdiv" style="">
+			<div class="demo_message" style="font-size:18px;">
 					   
 					            For Demonstration Only. Functionality to be available in subsequent Playpens
 					            
 					            
 					
 					</div>
-               <c:url var="htmlUrl_planner" value="/calendar" />     	
-                       
-<div id= datepara style=" float:left;"><p> 
-<c:set var="now" value="<%=new java.util.Date()%>" />
-
-                    	<fmt:formatDate type="date" pattern="EEE, MMM d, ''yy" value="${now}"  /> 
-						</p></div>
-                        <div id= calenderdiv style=" float:left; margin-left: 5px; margin-top:5px;"><a class="icon-cal text-size-px11 lbx-calendar" data-tab="calendar">Calendar</a></div>
-                       
-                        <div class="_cLeft all-box-shadow" style="">    
-                            <div class="_upcoming _up1">
-                            	<div class="_cDate" style="color:#A80000;">
-                                	<span class="dmonth"></span><br> <b>09.00 AM</b>
-                                </div>
-                                
-                                <div class="_uevent" style="">
-                                	Recap on Ziksana.
-                                </div>
-                            </div>
-                            
-                            <div class="_upcoming _up1">
-                            	<div class="_uDate">
-                                	<b>23- JAN</b><br> <b>12.00 PM</b> 
-                                </div>
-                                
-                                <div class="_uevent">
-                                	Lunch with Ziksana
-                                </div>
-                            </div>
-                            
-                            <div class="_upcoming _up2">
-                            	<div class="_uDate">
-                                	<b>23- JAN</b><br> <b>02.00 PM</b> 
-                                </div>
-                                
-                                <div class="_uevent" style="padding-top:2px; text-align:middle;">
-                                	Experiment with <br/>Playpen
-                                </div>
-                            </div>
-                            
-
-                            
-                        	
-                        </div>
-                         <div class="_cMiddle">                        
-                        </div>
-                        <div class="_cRight all-box-shadow">
-                        	<div class="_e1">
-                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead"><span class="dmonth"></span> - Recap on Ziksana Capability</span></div>
-
-								<div><i class=" bold">Place: </i>UTD Administrative Building
-								<i class=" bold"><br>Time: </i>9:00 am - 12:00 pm </div>
-                            </div>
-                            
-                            <div class="_e2" style="display: none;">
-                            <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead">23-JAN - Lunch with Ziksana</span></div>
-						      <div><i class=" bold">Place: </i><br>
-						<i class=" bold">Time: </i>12:00 pm - 1:30 pm<br>
-                            </div>
-                            </div>
-                            
-                            <div class="_e3" style="display: none;">
-                             <div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 ehead"><span class="dmonth"></span> - Experiment with Playpen</span></div>
-                            	
-							<div><i class=" bold">Place: </i><br>
-							<i class=" bold">Time: </i> 2:00 pm</div>
-                            </div>
-                        </div>
-                    
-						</div>
-						</div> 
+            
+                  <div id="binder">
+           
+           </div>
+            
+            <div id="cn_preview" class="cn_preview">
+				<div class="cn_content" style="top: 310px;">
+					
+					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<br>	
+                    <br>				
+				  <p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
+                     <br>	
+                    <br>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+				<div class="cn_content" style="top: 310px;">
 						
-						</div>
+					<span class="eventhead">Teacher Student Meet</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Meet &amp; Greet Event</p>
+                     <br>	
+                    <br>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Cafeteria  </p>  
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+				<div class="cn_content" style="top: 310px;">
+						
+					<span class="eventhead">Meeting with Ziksana</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">We welcome you to join us on our seminar on Artificial intelligence.</p>
+                     <br>	
+                    <br>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Adminnistrative Building  </p>  
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+				<div class="cn_content" style="top: 5px;">
+					
+					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
+                     <br>	
+                    <br>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+				<div class="cn_content">
+						
+					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
+                     <br>	
+                    <br>
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                    <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+				<div class="cn_content">
+					
+					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
+                     <br>	
+                    <br>
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                    <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+				<div class="cn_content">
+						
+					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
+                     <br>	
+                    <br>
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                    <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+				<div class="cn_content">
+						
+					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
+                     <br>	
+                    <br>
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                    <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+				<div class="cn_content">
+					
+					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
+                     <br>	
+                    <br>
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                    <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+				<div class="cn_content">
+					
+					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
+                     <br>	
+                    <br>
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                    <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+					
+				</div>
+			</div>
+           
+           
+     
+           
+           
+            <div id="cnlistimage" style="background-image:url(../resources/images/calender/cal-left.png); background-repeat:no-repeat; height:258px; margin-left:-5px; background-color:#fff; 
+border-radius: 5px;
+background-origin: content-box;
+padding: 5px;">
+            
+            
+			<div id="cn_list" class="cn_list">
+				<div class="cn_page" style="display:block;">
+					<div class="cn_item">
+						<span class="cal dmonth">  </span><span class="eventtext">Upcoming Event</span>
+						
 					</div>
+					<div class="cn_item">
+						<span class="cal"> JAN <br>23 </span><span class="eventtext">Upcoming Event</span>
+					</div>
+					<div class="cn_item">
+						<span class="cal"> JAN <br>23 </span><span class="eventtext">Upcoming Event</span>
+					</div>
+					<div class="cn_item selected">
+						<span class="cal"> JAN <br>23 </span><span class="eventtext">Upcoming Event</span>
+					</div>
+				</div>
+				<div class="cn_page">
+					<div class="cn_item">
+						<span class="cal"> JAN <br>23 </span><span class="eventtext">Upcoming Event</span>
+					</div>
+					
+				</div>
+                
+               
+				<!--<div class="cn_nav">
+					<a id="cn_prev" class="cn_prev disabled"></a>
+					<a id="cn_next" class="cn_next"></a>
+				</div>-->
+			
+           </div> 
+           
+          
+           
+            </div>
+		</div>
+		
+        
+        
+        
+         <!-- Start of Alerts -->
+             		          <div class="alert_todo" style="display: none;">
+                   
+                    
+ <!--end of alert-->
+                        
+                        </div>
+                       <!-- end of Alerts -->
+      
+      
+      
+     <!-- start of todo  -->
+     
+     <!-- Start of Alerts -->
+
+                       <!-- end of Alerts -->
+        
+        
+         
+           </div> 
 <div class="clearfix"> </div>
                          
 <br />
                          <!--end of elementlinks-->
                          
-                       <div class="elementlinks" style="margin:20px;">
+                       
+                  </div>        
+                    <div class="elementlinks" >
  						<ul>
                         <li><a id="alertlink" onclick="hidecalender()" data-tab="alerts">Alerts</a></li>
-                        <li><a id="todolink" onclick="hidecalender()" data-tab="todos">To Dos</a></li>
+                        <li><a id="todolink" onclick="hidecalender1()" data-tab="todos">To Dos</a></li>
                         <li><a id="calendarlink"onclick="showcalender()" data-tab="calendar">Calendar</a></li>
                         </ul>
-  			       </div> 
-                          
+  			       </div>        
+                           
+                           
                            </div> <!--end of lnchelement-->
    
      
@@ -903,7 +1169,11 @@ $("#datepara").show();
    
     </div><!-- end of lnchrightnavlinks-->
      
-     
+     <div class="lnchbottom" style=" float: right; margin-right: 200px; margin-top: 30px;z-index: 1000;position: relative;">
+
+	
+   <a id="calendarlink" class="navquit" onclick="window.parent.confirmFancyboxClose()">Quit</a>
+   </div>
      
      <div class="clearfix"> </div>
 
@@ -913,11 +1183,7 @@ $("#datepara").show();
 
 
 
-<div class="lnchbottom" style="float: right; margin-right: 200px; margin-top: -60px;z-index: 1000;position: relative;">
-
-	
-   <a id="calendarlink" class="navquit" onclick="window.parent.confirmFancyboxClose()">Quit</a>
-   </div><!--end of lnchbottom-->
+<!--end of lnchbottom-->
 
 <div class="clearfix"> </div>
 
