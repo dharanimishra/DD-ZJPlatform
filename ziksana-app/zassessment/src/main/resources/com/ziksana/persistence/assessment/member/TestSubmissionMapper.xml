@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.assessment.member.TestSubmissionMapper" >
+  <resultMap id="BaseResultMap" type="com.ziksana.domain.assessment.member.TestSubmission" >
+    <id column="TestSubmissionId" property="testSubmissionId" jdbcType="INTEGER" />
+    <result column="SubmittedResponse" property="submittedResponse" jdbcType="VARCHAR" />
+    <result column="Duration" property="duration" jdbcType="INTEGER" />
+    <result column="ZeniEvaluatedIndicator" property="zeniEvaluatedIndicator" jdbcType="BIT" />
+    <result column="ResponseTypeIndicator" property="responseTypeIndicator" jdbcType="BIT" />
+    <result column="ResponseContentLink" property="responseContentLink" jdbcType="VARCHAR" />
+    <result column="CorrectnessIndicator" property="correctnessIndicator" jdbcType="BIT" />
+    <result column="FeedbackComment" property="feedbackComment" jdbcType="VARCHAR" />
+    <result column="ZeniCommentedIndicator" property="zeniCommentedIndicator" jdbcType="BIT" />
+    <result column="PeerEvaluatedIndicator" property="peerEvaluatedIndicator" jdbcType="BIT" />
+    <result column="AssignmentTestId" property="assignmentTestId" jdbcType="INTEGER" />
+    <result column="TestQuestionId" property="testQuestionId" jdbcType="INTEGER" />
+    <result column="QuestionBankAnswerId" property="questionBankAnswerId" jdbcType="INTEGER" />
+    <result column="MemberRoleId" property="memberRoleId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TestSubmissionId, SubmittedResponse, Duration, ZeniEvaluatedIndicator, ResponseTypeIndicator, 
+    ResponseContentLink, CorrectnessIndicator, FeedbackComment, ZeniCommentedIndicator, 
+    PeerEvaluatedIndicator, AssignmentTestId, TestQuestionId, QuestionBankAnswerId, MemberRoleId
+  </sql>
+  <insert id="insertSelective" parameterType="com.ziksana.domain.assessment.member.TestSubmission" >
+    insert into msmtestsubmission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="testSubmissionId != null" >
+        TestSubmissionId,
+      </if>
+      <if test="submittedResponse != null" >
+        SubmittedResponse,
+      </if>
+      <if test="duration != null" >
+        Duration,
+      </if>
+      <if test="zeniEvaluatedIndicator != null" >
+        ZeniEvaluatedIndicator,
+      </if>
+      <if test="responseTypeIndicator != null" >
+        ResponseTypeIndicator,
+      </if>
+      <if test="responseContentLink != null" >
+        ResponseContentLink,
+      </if>
+      <if test="correctnessIndicator != null" >
+        CorrectnessIndicator,
+      </if>
+      <if test="feedbackComment != null" >
+        FeedbackComment,
+      </if>
+      <if test="zeniCommentedIndicator != null" >
+        ZeniCommentedIndicator,
+      </if>
+      <if test="peerEvaluatedIndicator != null" >
+        PeerEvaluatedIndicator,
+      </if>
+      <if test="assignmentTestId != null" >
+        AssignmentTestId,
+      </if>
+      <if test="testQuestionId != null" >
+        TestQuestionId,
+      </if>
+      <if test="questionBankAnswerId != null" >
+        QuestionBankAnswerId,
+      </if>
+      <if test="memberRoleId != null" >
+        MemberRoleId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="testSubmissionId != null" >
+        #{testSubmissionId,jdbcType=INTEGER},
+      </if>
+      <if test="submittedResponse != null" >
+        #{submittedResponse,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="zeniEvaluatedIndicator != null" >
+        #{zeniEvaluatedIndicator,jdbcType=BIT},
+      </if>
+      <if test="responseTypeIndicator != null" >
+        #{responseTypeIndicator,jdbcType=BIT},
+      </if>
+      <if test="responseContentLink != null" >
+        #{responseContentLink,jdbcType=VARCHAR},
+      </if>
+      <if test="correctnessIndicator != null" >
+        #{correctnessIndicator,jdbcType=BIT},
+      </if>
+      <if test="feedbackComment != null" >
+        #{feedbackComment,jdbcType=VARCHAR},
+      </if>
+      <if test="zeniCommentedIndicator != null" >
+        #{zeniCommentedIndicator,jdbcType=BIT},
+      </if>
+      <if test="peerEvaluatedIndicator != null" >
+        #{peerEvaluatedIndicator,jdbcType=BIT},
+      </if>
+      <if test="assignmentTestId != null" >
+        #{assignmentTestId,jdbcType=INTEGER},
+      </if>
+      <if test="testQuestionId != null" >
+        #{testQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="questionBankAnswerId != null" >
+        #{questionBankAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="memberRoleId != null" >
+        #{memberRoleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziksana.domain.assessment.member.TestSubmission" >
+    update msmtestsubmission
+    <set >
+      <if test="submittedResponse != null" >
+        SubmittedResponse = #{submittedResponse,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null" >
+        Duration = #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="zeniEvaluatedIndicator != null" >
+        ZeniEvaluatedIndicator = #{zeniEvaluatedIndicator,jdbcType=BIT},
+      </if>
+      <if test="responseTypeIndicator != null" >
+        ResponseTypeIndicator = #{responseTypeIndicator,jdbcType=BIT},
+      </if>
+      <if test="responseContentLink != null" >
+        ResponseContentLink = #{responseContentLink,jdbcType=VARCHAR},
+      </if>
+      <if test="correctnessIndicator != null" >
+        CorrectnessIndicator = #{correctnessIndicator,jdbcType=BIT},
+      </if>
+      <if test="feedbackComment != null" >
+        FeedbackComment = #{feedbackComment,jdbcType=VARCHAR},
+      </if>
+      <if test="zeniCommentedIndicator != null" >
+        ZeniCommentedIndicator = #{zeniCommentedIndicator,jdbcType=BIT},
+      </if>
+      <if test="peerEvaluatedIndicator != null" >
+        PeerEvaluatedIndicator = #{peerEvaluatedIndicator,jdbcType=BIT},
+      </if>
+      <if test="assignmentTestId != null" >
+        AssignmentTestId = #{assignmentTestId,jdbcType=INTEGER},
+      </if>
+      <if test="testQuestionId != null" >
+        TestQuestionId = #{testQuestionId,jdbcType=INTEGER},
+      </if>
+      <if test="questionBankAnswerId != null" >
+        QuestionBankAnswerId = #{questionBankAnswerId,jdbcType=INTEGER},
+      </if>
+      <if test="memberRoleId != null" >
+        MemberRoleId = #{memberRoleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where TestSubmissionId = #{testSubmissionId,jdbcType=INTEGER}
+  </update>
+</mapper>
