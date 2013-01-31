@@ -140,13 +140,14 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		try{
 		Date formatStartDate = dateFormat.parse(startDate);
+		Date formatedStartDate = combineDateTime(formatStartDate);
 		Date formatDate = dateFormat.parse(endDate);
 		Date formatEndDate = combineDateTime(formatDate);
 		System.out.println(" start date is "+formatEndDate);
 		
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
 		
-		announcement = announcementMapper.getInstitutionAnnouncements(memberRoleId, formatStartDate, formatEndDate);
+		announcement = announcementMapper.getInstitutionAnnouncements(memberRoleId, formatedStartDate, formatEndDate);
 		LOGGER.info("Institution Announcement Size :"+announcement.size());
 		
 		
@@ -162,13 +163,14 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		try{
 		Date formatStartDate = (Date)dateFormat.parse(startDate);
+		Date formatedStartDate = combineDateTime(formatStartDate);
 		Date formatDate = dateFormat.parse(endDate);
 		Date formatEndDate = combineDateTime(formatDate);
 		 System.out.println(" end date is "+formatEndDate);
 		
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
 		
-		announcement = announcementMapper.getInstitutionUnitAnnouncements(memberRoleId, formatStartDate, formatEndDate);
+		announcement = announcementMapper.getInstitutionUnitAnnouncements(memberRoleId, formatedStartDate, formatEndDate);
 		LOGGER.info("Institution Announcement Size :"+announcement.size());
 		
 		
@@ -184,13 +186,14 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		try{
 		Date formatStartDate = (Date)dateFormat.parse(startDate);
+		Date formatedStartDate = combineDateTime(formatStartDate);
 		Date formatDate = dateFormat.parse(endDate);
 		Date formatEndDate = combineDateTime(formatDate);
         System.out.println(" end date is "+formatEndDate);
         
         Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
         
-		announcement = announcementMapper.getCourseAnnouncements(memberRoleId, formatStartDate, formatEndDate);
+		announcement = announcementMapper.getCourseAnnouncements(memberRoleId, formatedStartDate, formatEndDate);
 				LOGGER.info("Institution Announcement Size :"+announcement.size());
 		
 		
@@ -220,13 +223,14 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		try{
 		Date formatStartDate = (Date)dateFormat.parse(startDate);
+		Date formatedStartDate = combineDateTime(formatStartDate);
 		Date formatDate = dateFormat.parse(endDate);
 		Date formatEndDate = combineDateTime(formatDate);
 		 System.out.println(" end date is "+formatEndDate);
         
         Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
         
-		announcement = announcementMapper.getAllAnnouncementsByDate(memberRoleId, formatStartDate, formatEndDate);
+		announcement = announcementMapper.getAllAnnouncementsByDate(memberRoleId, formatedStartDate, formatEndDate);
 				LOGGER.info("All Announcement Size :"+announcement.size());
 		
 		

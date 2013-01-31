@@ -61,7 +61,7 @@
 
 		select distinct memmember.*, 
 		memmemberrole.ID,
-		IF(memmemberrole.RoleType=2,'EDUCATOR','LEARNER') AS RoleType
+		IF(memmemberrole.RoleType=761,'EDUCATOR','LEARNER') AS RoleType
 		from memmember,
 		memmemberrole,
 		secmembercredential

@@ -509,10 +509,11 @@ $(document).ready(function() {
 					$(data).find("recommenditem").each(function(index){
 						
 						output+="<ol>";
-	                    output+="<li class='p-p _blogs bckground-blue-light todotip_container'>";
+	                    output+="<li class='p-p _blogs bckground-blue-light '>";
 	                    output+="<b >"+ $(this).find("title").text()+"</b>";
 	                    output+="<br/>";
-	                    output+="<div  style='display:inline;' style='padding-left: 10px;'>"+ $(this).find("description").text()+"</div><div class='recommendtip'>"+$(this).find("description").text()+" </div>";
+	                   // output+="<div class='todotip_container' style='display:inline;' style='padding-left: 10px;'>"+ $(this).find("description").text()+"</div><div class='announcementtip'>"+$(this).find("description").text()+" </div>";
+	                    output+="<div class='todotip_container' ><a href=''>"+short_string( $(this).find("description").text())+"</a><div class='recommendtip' style='font-family:verdana;'>"+$(this).find("description").text()+" </div></div>";
 	                    output+="</li></ol>";
 												
 					});
