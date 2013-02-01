@@ -401,13 +401,7 @@ $('._cklo').show('');
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
-                  
-                 
-                 <a href="/ziksana-web/secure/createcourse/courseid_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
-
-                     
-                     
-                     
+                 <a href="/ziksana-web/secure/editcourse/COURSE_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
                <a  onclick="delete_coursebycourseid(${course.coursesId})" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
                 </div>              
               </div>

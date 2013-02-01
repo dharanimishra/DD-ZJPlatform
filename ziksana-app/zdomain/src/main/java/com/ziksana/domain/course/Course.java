@@ -42,6 +42,16 @@ public class Course extends AuditHistory {
 	}
 
 	private ZID courseId;
+	private int coursesId;
+	
+	public int getCoursesId() {
+		return coursesId;
+	}
+
+	public void setCoursesId(int coursesId) {
+		this.coursesId = coursesId;
+	}
+
 	/**
 	 * Maximum Length:45
 	 */
