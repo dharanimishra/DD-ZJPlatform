@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <sbnsubscribernotes id="1000" 
+    NoteTitle="Test note from dbunit" 
+    subscriptioncourseid="101" 
+    learningcomponentid="51" 
+    LearningComponentContentId="75"
+    MemSubscriptionProgId="2"
+    NotesType="2000"
+    />
+    
+</dataset>
