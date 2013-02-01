@@ -65,6 +65,26 @@ public class CreateCourseController {
 		return mv;
 	}
 
+	@RequestMapping(value = "/editcourse/{courseId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView showMyEditCourse(@PathVariable String courseId) {
+		LOGGER.info(" Entering Class " + getClass() + " showCourse()");
+
+		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
+		ModelAndView modelView = null;
+		if (course_id > 0) {
+			modelView = new ModelAndView("courses/definecourse");
+			modelView.addObject("CourseId", course_id);
+		} else {
+			modelView = new ModelAndView("courses/definecourse");
+			modelView.addObject("CourseId", course_id);
+		}
+
+		LOGGER.info("Class " + getClass() + "Exiting showCourse(): ");
+		return modelView;
+	}
+
 	@RequestMapping(value = "/createcourse/{courseId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
@@ -131,7 +151,7 @@ public class CreateCourseController {
 				+ CourseExtraCredits + " Course_Duration :" + CourseDuration
 				+ " CourseDurationUnit :" + CourseDurationUnit);
 
-		Integer courseDuration = 0, courseId = 0, courseDurationUnit = 1, subjClassificationId = 0;
+		Integer courseId = 0, courseDuration = 1, courseDurationUnit = 1, subjClassificationId = 0;
 
 		try {
 			courseId = Integer.parseInt(CourseId);
@@ -272,6 +292,7 @@ public class CreateCourseController {
 	CourseJsonResponse saveCourseComponents(
 			@RequestParam(value = "Course_id", required = true) String CourseId,
 			@RequestParam(value = "CourseLearningComponentId", required = false) String CourseLearningComponentId,
+			@RequestParam(value = "LearningComponentId", required = false) String LearningComponentId,
 			@RequestParam(value = "Course_Module", required = true) String CourseModule,
 			@RequestParam(value = "Module_Description", required = true) String CourseModuleDescription,
 			@RequestParam(value = "Subject_Area", required = true) String Subject_Area,
@@ -295,29 +316,55 @@ public class CreateCourseController {
 				+ " Duration :" + Duration + " UnitofDuration :"
 				+ UnitofDuration + " UploadImage :" + UploadImage);
 
-		Integer courseid = 0, learningComponentId = 0;
+		Integer courseid = 0, courseLearningComponentId = 0, learningComponentId = 0;
 		try {
 			courseid = Integer.parseInt(CourseId.split("_")[1]);
+			LOGGER.info("Entering Class " + getClass()
+					+ " saveCourseComponents(): courseid :" + courseid);
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("NumberFormatException courseid :" + courseid + nfe);
 		}
 
 		try {
-			learningComponentId = Integer.parseInt(CourseLearningComponentId
-					.split("_")[1]);
+			courseLearningComponentId = Integer
+					.parseInt(CourseLearningComponentId);
+			LOGGER.info("Entering Class " + getClass()
+					+ " saveCourseComponents():  courseLearningComponentId :"
+					+ courseLearningComponentId);
+		} catch (NumberFormatException nfe) {
+			LOGGER.error("Class "
+					+ getClass()
+					+ " saveCourseComponents(): NumberFormatException courseLearningComponentId :"
+					+ courseLearningComponentId + nfe);
+		}
+
+		try {
+			learningComponentId = Integer.parseInt(LearningComponentId);
+			LOGGER.info("Entering Class " + getClass()
+					+ " saveCourseComponents(): learningComponentId :"
+					+ learningComponentId);
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("NumberFormatException learningComponentId :"
 					+ learningComponentId + nfe);
 		}
-		Integer courseDuration = 0, moduleWeight = 0;
+		Integer courseDuration = 1, unitofDuration = 1, moduleWeight = 0;
 		try {
 			courseDuration = Integer.parseInt(Duration);
-			moduleWeight = Integer.parseInt(ModuleWeight);
+			unitofDuration = Integer.parseInt(UnitofDuration);
 		} catch (NumberFormatException nfe) {
 			LOGGER.debug(" Class :"
 					+ getClass()
 					+ " Method: saveCourse : NumberFormatException : courseDuration:"
-					+ courseDuration + "moduleWeight :" + moduleWeight + nfe);
+					+ courseDuration + nfe);
+		}
+
+		try {
+			moduleWeight = Integer.parseInt(ModuleWeight);
+		} catch (NumberFormatException nfe) {
+			LOGGER.debug(" Class :"
+					+ getClass()
+					+ " Method: saveCourse : NumberFormatException : moduleWeight :"
+					+ moduleWeight + nfe);
 		}
 
 		MemberPersona accountableMember = new MemberPersona();
@@ -333,42 +380,98 @@ public class CreateCourseController {
 			course.setAccountableMember(accountableMember);
 			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 			course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
-			course.setDescription(CourseModuleDescription);
 
-			LearningComponent comp1 = new LearningComponent();
-			comp1.setAuthoredMember(accountableMember);
+			if (courseLearningComponentId > 0 && learningComponentId > 0) {
 
-			comp1.setName(CourseModule);
-			LearningComponentNest compNest1 = new LearningComponentNest(null,
-					comp1);
-			compNest1.setNestLearningComponent(comp1);
-			// compNest1.setComponentNestId(11);
-			LearningComponentDetails compDetails1 = new LearningComponentDetails();
-			// comp1.getLearningComponentDetails();
-			compDetails1.setLearningComponentNest(compNest1);
+				LearningComponent comp1 = new LearningComponent();
+				comp1.setLearningComponentId(learningComponentId);
+				comp1.setAuthoredMember(accountableMember);
+				comp1.setName(CourseModule);
+				comp1.setDescription(CourseModuleDescription);
+				comp1.setThumbnailPicturePath(UploadImage);
+				Duration prescribedDuration = new Duration(courseDuration,
+						unitofDuration);
+				comp1.setPrescribedDuration(prescribedDuration);
+				LearningComponentNest compNest1 = new LearningComponentNest(
+						null, comp1);
+				compNest1.setNestLearningComponent(comp1);
+				LearningComponentDetails compDetails1 = new LearningComponentDetails();
+				compDetails1.setLearningComponentNest(compNest1);
 
-			LearningComponentType compType1 = new LearningComponentType();
-			compType1.setLearningComponentTypeId(1);
+				LearningComponentType compType1 = new LearningComponentType();
+				compType1.setLearningComponentTypeId(1);
 
-			comp1.setLearningComponentType(compType1);
+				comp1.setLearningComponentType(compType1);
 
-			CourseLearningComponent corComp1 = new CourseLearningComponent();
-			corComp1.setLearningComponent(comp1);
-			corComp1.setLearningComponentType(compType1);
-			corComp1.setCourse(course);
+				CourseLearningComponent corComp1 = new CourseLearningComponent();
+				corComp1.setCourseLearningComponentId(courseLearningComponentId);
+				corComp1.setLearningComponent(comp1);
+				corComp1.setLearningComponentType(compType1);
+				corComp1.setCourse(course);
 
-			compDetails1.setCourseLearningComponent(corComp1);
+				compDetails1.setCourseLearningComponent(corComp1);
 
-			comp1.setLearningComponentDetails(compDetails1);
+				comp1.setLearningComponentDetails(compDetails1);
 
-			compList.add(corComp1);
+				compList.add(corComp1);
 
-			CourseDetails courseDetails = new CourseDetails();
+				CourseDetails courseDetails = new CourseDetails();
 
-			courseDetails.setCourseLearningComponentsList(compList);
+				courseDetails.setCourseLearningComponentsList(compList);
 
-			course.setCourseDetails(courseDetails);
+				course.setCourseDetails(courseDetails);
+				LOGGER.error("Entering Class "
+						+ getClass()
+						+ " saveCourseComponents()  After Edit Module service : courseId :"
+						+ CourseId + " getting course " + course);
 
+			} else {
+
+				LearningComponent comp1 = new LearningComponent();
+				comp1.setAuthoredMember(accountableMember);
+				comp1.setName(CourseModule);
+				comp1.setDescription(CourseModuleDescription);
+				comp1.setThumbnailPicturePath(UploadImage);
+				Duration prescribedDuration = new Duration(courseDuration,
+						unitofDuration);
+				comp1.setPrescribedDuration(prescribedDuration);
+
+				LearningComponentNest compNest1 = new LearningComponentNest(
+						null, comp1);
+				compNest1.setNestLearningComponent(comp1);
+				// compNest1.setComponentNestId(11);
+				LearningComponentDetails compDetails1 = new LearningComponentDetails();
+				// comp1.getLearningComponentDetails();
+				compDetails1.setLearningComponentNest(compNest1);
+
+				LearningComponentType compType1 = new LearningComponentType();
+				compType1.setLearningComponentTypeId(1);
+
+				comp1.setLearningComponentType(compType1);
+
+				CourseLearningComponent corComp1 = new CourseLearningComponent();
+				corComp1.setLearningComponent(comp1);
+				corComp1.setLearningComponentType(compType1);
+				corComp1.setCourse(course);
+
+				compDetails1.setCourseLearningComponent(corComp1);
+
+				comp1.setLearningComponentDetails(compDetails1);
+
+				compList.add(corComp1);
+
+				CourseDetails courseDetails = new CourseDetails();
+
+				courseDetails.setCourseLearningComponentsList(compList);
+
+				course.setCourseDetails(courseDetails);
+
+				LOGGER.error("Entering Class "
+						+ getClass()
+						+ " saveCourseComponents()  After Add Module service : courseId :"
+						+ CourseId + " getting course " + course);
+
+			}
 			System.out.println("Constructed Course  : " + course);
 
 			LOGGER.error("Entering Class "
@@ -376,7 +479,6 @@ public class CreateCourseController {
 					+ " saveCourseComponents()  before calling service : courseId :"
 					+ CourseId + " getting course " + course);
 
-			System.out.println("Constructed Course  : " + course);
 			// Saving the course Object
 			courseObj = courseService.saveOrUpadteCourseComponents(course);
 

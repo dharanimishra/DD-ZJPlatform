@@ -38,6 +38,10 @@
 				courseduration=
 				#{courseDuration.duration,jdbcType=INTEGER},
 			</if>
+			<if test="courseDuration!=null">
+				CourseDurationUnit=
+				#{courseDuration.durationUnit,jdbcType=INTEGER},
+			</if>
 			<if test="thumbnailPicturePath!=null">
 				thumbnailpicturepath =
 				#{thumbnailPicturePath,jdbcType=VARCHAR},
@@ -74,6 +78,9 @@
 			</if>
 			<if test="courseDuration!=null">
 				courseduration,
+			</if>
+			<if test="courseDuration!=null">
+				CourseDurationUnit,
 			</if>
 			<if test="thumbnailPicturePath!=null">
 				thumbnailpicturepath,
@@ -118,6 +125,9 @@
 			<if test="courseDuration!=null">
 				#{courseDuration.duration,jdbcType=INTEGER},
 			</if>
+			<if test="courseDuration!=null">
+				#{courseDuration.durationUnit,jdbcType=INTEGER},
+			</if>
 			<if test="thumbnailPicturePath!=null">
 				#{thumbnailPicturePath,jdbcType=VARCHAR},
 			</if>
@@ -148,8 +158,8 @@
 		corcourse
 		where
 		CourseStatus=#{statusId} and
-		MemberRoleId=#{memberPersonaId} and IsDelete = 0 order by CreationDate desc
-		LIMIT 0, 3 
+		MemberRoleId=#{memberPersonaId}
+		LIMIT 0, 3
 
 	</select>
 
@@ -162,7 +172,7 @@
 		corcourse
 		where
 		CourseStatus=#{statusId} and
-		MemberRoleId=#{memberPersonaId} and IsDelete = 0 
+		MemberRoleId=#{memberPersonaId}
 
 
 	</select>
@@ -178,7 +188,7 @@
 		corcourse
 		where
 		CourseStatus=#{statusId} and
-		MemberRoleId=#{memberPersonaId} and IsDelete = 0
+		MemberRoleId=#{memberPersonaId}
 
 
 	</select>
@@ -188,7 +198,6 @@
 	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
 
 		<result property="courseId" column="id" />
-		<result property="coursesId" column="id" />
 		<result property="name" column="name" />
 		<result property="description" column="description" />
 		<result property="Rating" column="courseProgress" />

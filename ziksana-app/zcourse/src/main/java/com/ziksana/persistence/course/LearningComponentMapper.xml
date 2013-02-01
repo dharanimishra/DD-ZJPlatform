@@ -8,7 +8,7 @@
 	</sql>
 	<insert id="saveLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent"
 		useGeneratedKeys="true" keyProperty="learningComponentId" keyColumn="learningcomponentid">
-		insert into corlearningcomponent 
+		insert into corlearningcomponent
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="name != null"> name, </if>
 			<if test="description != null"> description, </if>
@@ -22,7 +22,7 @@
 			<if test="learningObjIndicator != null"> learningobjectindicator, </if>
 			<if test="thumbnailPicturePath != null"> thumbnailpicturepath, </if>
 			<if test="prescribedDuration != null"> prescribedlcduration, </if>
-			<if test="prescribedDuration != null"> prescribedlcdurationunit, </if>
+			<if test="prescribedDuration != null"> PrescribedLCDurationUnit, </if>
 			<if test="authoredMember != null"> memberroleid, </if>
 			<if test="learningComponentType != null"> learningcomponenttypeid, </if>
 			<if test="subjClassification != null"> subjclassificationid, </if>
@@ -39,11 +39,15 @@
 			<if test="extraCredits != null"> #{extraCredits,jdbcType=VARCHAR}, </if>
 			<if test="learningObjIndicator != null"> #{learningObjIndicator,jdbcType=BOOLEAN}, </if>
 			<if test="thumbnailPicturePath != null"> #{thumbnailPicturePath,jdbcType=VARCHAR}, </if>
-			<if test="prescribedDuration != null"> #{prescribedLCDuration,jdbcType=INTEGER}, </if>
-			<if test="prescribedDuration != null"> #{prescribedLCDurationUnit,jdbcType=INTEGER}, </if>
+			<if test="prescribedDuration != null"> #{prescribedDuration.duration,jdbcType=INTEGER}, </if>
+			<if test="prescribedDuration != null"> #{prescribedDuration.durationUnit,jdbcType=INTEGER}, </if>
 			<if test="authoredMember != null"> #{authoredMember.memberRoleId,jdbcType=INTEGER}, </if>
-			<if test="learningComponentType != null"> #{learningComponentType.learningComponentTypeId.storageID,jdbcType=INTEGER}, </if>
-			<if test="subjClassification != null"> #{subjClassification.subjClassificationId,jdbcType=INTEGER}, </if>
+			<if test="learningComponentType != null">
+				#{learningComponentType.learningComponentTypeId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="subjClassification != null">
+				#{subjClassification.subjClassificationId,jdbcType=INTEGER},
+			</if>
 		</trim>
 		<selectKey keyProperty="learningComponentId" resultType="int"
 			order="AFTER">
@@ -51,8 +55,10 @@
 		</selectKey>
 	</insert>
 	<update id="updateLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent">
-		update corlearningcomponent 
+		update corlearningcomponent
 		<set>
+			<if test="name != null">name= #{name,jdbcType=VARCHAR}, </if>
+			<if test="description != null">description= #{description,jdbcType=VARCHAR}, </if>
 			<if test="validFrom != null"> validfrom = #{validFrom,jdbcType=DATE}, </if>
 			<if test="validTo != null"> validto = #{validTo,jdbcType=DATE}, </if>
 			<if test="courseStatus != null"> coursestatus = #{courseStatusId,jdbcType=INTEGER}, </if>
@@ -61,6 +67,12 @@
 			<if test="extraCreditsIndicator != null"> extracreditsindicator =
 				#{extraCreditsIndicator,jdbcType=BOOLEAN},
 			</if>
+			<if test="prescribedDuration != null">prescribedlcduration=
+				#{prescribedDuration.duration,jdbcType=INTEGER},
+			</if>
+			<if test="prescribedDuration != null">PrescribedLCDurationUnit=
+				#{prescribedDuration.durationUnit,jdbcType=INTEGER},
+			</if>
 			<if test="extraCredits != null"> extracredits = #{extraCredits,jdbcType=VARCHAR}, </if>
 			<if test="learningObjIndicator != null"> learningObjectIndicator =
 				#{learningObjIndicator,jdbcType=BOOLEAN},
@@ -68,7 +80,9 @@
 			<if test="thumbnailPicturePath != null"> thumbnailpicturepath =
 				#{thumbnailPicturePath,,jdbcType=VARCHAR},
 			</if>
-			<if test="authoredMember != null"> memberroleid=#{authoredMember.memberRoleId,jdbcType=INTEGER}, </if>
+			<if test="authoredMember != null">
+				memberroleid=#{authoredMember.memberRoleId,jdbcType=INTEGER},
+			</if>
 			<if test="learningComponentType != null">
 				learningComponentTypeId=#{learningComponentType.learningComponentTypeId.storageID,jdbcType=INTEGER},
 			</if>
@@ -76,31 +90,21 @@
 				#{subjClassification.subjClassificationId,jdbcType=INTEGER},
 			</if>
 		</set>
-		where learningcomponentid = #{learningComponentId.storageID,jdbcType=INTEGER}
+		where ID = #{learningComponentId.storageID,jdbcType=INTEGER}
 	</update>
 
-<!-- 	<insert id="saveLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent"
-		useGeneratedKeys="true" keyProperty="learningComponentId" keyColumn="learningcomponentid">
-		insert into corlearningcomponent (validfrom,
-		validto, name, description, coursestatus, weightage, totalcredits,
-		extracreditsindicator, extracredits, prescribedlcduration,
-		prescribedlcdurationunit, learningobjectindicator, memberroleid,
-		learningcomponenttypeid)
-		values (#{validFrom,jdbcType=DATE},
-		#{validTo,jdbcType=DATE}, #{name,jdbcType=VARCHAR},
-		#{description,jdbcType=VARCHAR}, #{courseStatusId,jdbcType=INTEGER},
-		#{weightage,jdbcType=INTEGER}, #{totalCredits,jdbcType=VARCHAR},
-		#{extraCreditsIndicator,jdbcType=BIT},
-		#{extraCredits,jdbcType=VARCHAR},
-		#{prescribedLCDuration.duration,jdbcType=INTEGER},
-		#{prescribedLCDuration.durationUnits,jdbcType=INTEGER},
-		#{learningObjIndicator,jdbcType=INTEGER},
-		#{authoredMember.memberRoleId,jdbcType=INTEGER},
-		#{learningComponentType.learningComponentTypeId,jdbcType=INTEGER} )
-		<selectKey keyProperty="learningComponentId" resultType="int"
-			order="AFTER">
-			SELECT LAST_INSERT_ID();
-		</selectKey>
-	</insert>
-
- --></mapper>
+	<!-- <insert id="saveLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent" 
+		useGeneratedKeys="true" keyProperty="learningComponentId" keyColumn="learningcomponentid"> 
+		insert into corlearningcomponent (validfrom, validto, name, description, 
+		coursestatus, weightage, totalcredits, extracreditsindicator, extracredits, 
+		prescribedlcduration, prescribedlcdurationunit, learningobjectindicator, 
+		memberroleid, learningcomponenttypeid) values (#{validFrom,jdbcType=DATE}, 
+		#{validTo,jdbcType=DATE}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+		#{courseStatusId,jdbcType=INTEGER}, #{weightage,jdbcType=INTEGER}, #{totalCredits,jdbcType=VARCHAR}, 
+		#{extraCreditsIndicator,jdbcType=BIT}, #{extraCredits,jdbcType=VARCHAR}, 
+		#{prescribedLCDuration.duration,jdbcType=INTEGER}, #{prescribedLCDuration.durationUnits,jdbcType=INTEGER}, 
+		#{learningObjIndicator,jdbcType=INTEGER}, #{authoredMember.memberRoleId,jdbcType=INTEGER}, 
+		#{learningComponentType.learningComponentTypeId,jdbcType=INTEGER} ) <selectKey 
+		keyProperty="learningComponentId" resultType="int" order="AFTER"> SELECT 
+		LAST_INSERT_ID(); </selectKey> </insert> -->
+</mapper>

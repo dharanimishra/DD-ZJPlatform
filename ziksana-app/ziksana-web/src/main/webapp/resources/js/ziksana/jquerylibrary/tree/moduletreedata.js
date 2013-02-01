@@ -45,6 +45,7 @@ function onButtonClick(menuitemId, type) {
 		$('#searchassociatecontainer').hide();
 		$('#DegineCourse2').hide();
 		$('#Addmodulecontainer').show();
+
 		ComponentId = tree.getSelectedItemId();
 		nodeParentId = tree.getParentId(ComponentId);
 
@@ -70,7 +71,8 @@ function onButtonClick(menuitemId, type) {
 						function(data) {
 							console.log(data);
 							if (data.response == 'success') {
-								module_id = data.id;
+								courseLearningComponentId = data.courseLearningComponentId;
+								learningComponentId = data.learningComponentId;
 								module_name = data.modulename;
 								module_desc = data.moduledesc;
 								subject_area = data.subjectarea;
@@ -83,13 +85,23 @@ function onButtonClick(menuitemId, type) {
 
 								$('#courseid').val(course_id);
 
+								$('#courseLearningComponentId').val(
+										courseLearningComponentId);
+
+								$('#learningComponentId').val(
+										learningComponentId);
+
 								$('#Cmoduletxtbox').val(module_name);
 
 								$('#Cmoduledesc').val(module_desc);
 
 								$('#Cmoduledescrte').val(module_desc);
 
-								$('#Addmoduletag').val(tag_field);
+								$('#Addmoduletag').val(module_name);
+
+								$('#addmodulecheckbox').attr('checked','checked'); // checks the checkbox.
+
+								$('#saveassociateobject').attr('enabled','enabled'); // enabled the
 
 								$('#Cmoduleduration').val(prescribedLCDuration);
 

@@ -214,14 +214,6 @@ span.standartTreeRow:hover {
 	border-radius: 3px;
 	padding: 3px;
 }
-.mnuclass{
- font-size: 12px;
- font-weight:normal;
- font-family:verdana;
- text-decoration:none;
- color: #2277BB;
- 
-}
 </style>
 </head>
 
@@ -249,10 +241,10 @@ span.standartTreeRow:hover {
 			<nav>
 				<div class="menu" style="margin-left: 0px;">
 					<ul>
-						<li><a href="/ziksana-web/secure/educatordashboard">My
+						<li><a href="/ziksana-web//secure/educatordashboard">My
 								Home</a>
 							<div class="nav-line"></div></li>
-						<li><a href="/ziksana-web/secure/showMyPrograms"
+						<li><a href="/ziksana-web//secure/showMyPrograms"
 							class="current">My Programs</a>
 							<div class="nav-line"></div></li>
 						<li><a>My Students</a>
@@ -308,9 +300,10 @@ span.standartTreeRow:hover {
 					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
 			<div class="f-r">
-				<a class="mnuclass ">Manage</a> | <a class="mnuclass ">Publish </a><a
-					class="light-blue"><img width="12" height="12"
-					alt="add more" src="/ziksana-web/resources/images/plus.png"> </a>
+				<strong class="text-size-px14 light-gray"><a>Publish</a> |
+					<a>Manage</a></strong><a class="light-blue"><img width="12" height="12"
+					alt="add more" src="/ziksana-web/resources/images/plus.png">
+				</a>
 			</div>
 		</div>
 		<!--Main Content-->
@@ -666,9 +659,9 @@ span.standartTreeRow:hover {
 								<input type="submit" class="btn btn-info f-r" id="sbtvalidation"
 									value="Submit" onClick="createCourse(); return false;"
 									style="margin-right: -200px;">
-								<a href="/ziksana-web/secure/createmodule/${courseId}"
+								<!-- <a href="/ziksana-web/secure/createmodule/${courseId}"
 									style="float:right; margin-bottom: 20px; margin-top: 2px; display: inline-block;right: -118px;position: relative;"
-									class="btn btn-info">Save and Continue</a>
+									class="btn btn-info">Save and Continue</a> -->
 
 							</form>
 							

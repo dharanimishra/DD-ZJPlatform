@@ -55,15 +55,15 @@ public interface CourseMapper {
 			@Result(property = "subjClassificationId", column = "SubjClassificationId") })
 	CourseEditResponse getCourseDetails(Integer courseId);
 
-	@Select({ "select id, name, description,LearningObjectIndicator,PrescribedLCDuration,PrescribedLCDurationUnit,SubjClassificationId from corlearningcomponent  where id = #{learningComponentId,jdbcType=INTEGER}" })
+	@Select({ "select cclc.ID as courseLearningComponentId, clc.id as learningComponentId, clc.name, clc.description,clc.LearningObjectIndicator,clc.PrescribedLCDuration,clc.PrescribedLCDurationUnit,clc.SubjClassificationId from corcourselearningcomponent cclc, corlearningcomponent clc where cclc.LearningComponentId=clc.ID and  clc.id = #{learningComponentId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "id", column = "id"),
+			@Result(property = "courseLearningComponentId", column = "courseLearningComponentId"),
+			@Result(property = "learningComponentId", column = "learningComponentId"),
 			@Result(property = "modulename", column = "name"),
 			@Result(property = "moduledesc", column = "description"),
 			@Result(property = "learningObjectIndicator", column = "LearningObjectIndicator"),
-			@Result(property = "PrescribedLCDuration", column = "PrescribedLCDuration"),
-			@Result(property = "PrescribedLCDurationUnit", column = "PrescribedLCDurationUnit"),
-			@Result(property = "CourseDurationUnit", column = "CourseDurationUnit"),
+			@Result(property = "prescribedLCDuration", column = "PrescribedLCDuration"),
+			@Result(property = "prescribedLCDurationUnit", column = "PrescribedLCDurationUnit"),
 			@Result(property = "subjClassificationId", column = "SubjClassificationId") })
 	ModuleEditResponse getModuleDetails(Integer learningComponentId);
 

@@ -71,7 +71,7 @@ public interface LearningComponentMapper {
 
 	List<LearningComponent> getComponentsByCourseId(Integer courseId);
 
-	@Select({ "select * from corlearningcomponent where " })
-	LearningComponent getComponentsByCourseComponentId(Integer integer);
+	@Select({ "select ID from corcourselearningcomponent where LearningComponentId=#{learningComponentId,jdbcType=INTEGER}" })
+	Integer getComponentsByCourseComponentId(Integer learningComponentId);
 
 }

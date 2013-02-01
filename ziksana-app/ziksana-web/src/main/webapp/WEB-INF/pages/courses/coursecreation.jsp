@@ -342,15 +342,15 @@ span.standartTreeRow:hover {
 
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 
-							<a href="/ziksana-web/secure/createcourse/${courseId}"
+							<a href="/ziksana-web/secure/editcourse/${courseId}"
 								class="btn btn-info f-r"
 								style="margin-right: -257px; margin-bottom: 4px; clear: both;">Edit
 								Course Details </a>
 						</div>
 
-						<br> <br> <input type="hidden" id="courseid"
-							value="${courseId}" /> <input type="hidden"
-							id="courseLearningComponentId" value="" />
+						<br> <br> <input type="hidden" id="courseid" value="${courseId}" /> 
+							<input type="hidden" id="courseLearningComponentId" value="" />
+							<input type="hidden" id="learningComponentId" value="" />
 						<style>
 #splitter {
 	width: 975px;
@@ -511,9 +511,9 @@ span.standartTreeRow:hover {
 													name="Cmoduleunits" class="defaultvalue validate[required]"
 													id="Cmoduleunits" style="margin-left: 5px;">
 
-													<option value="week">Weeks</option>
-													<option value="month">Months</option>
-													<option value="day">Days</option>
+													<option value="1">Weeks</option>
+													<option value="2">Months</option>
+													<option value="3">Days</option>
 												</select>
 												<div class="associateimage" style="margin-top: 15px;">
 													<img src="/ziksana-web/resources/images/icons/upload.png"

@@ -194,6 +194,7 @@ $(document)
 
 		var course_id = $('#courseid').val();
 		var CourseLearningComponentId = $('#courseLearningComponentId').val();
+		var learningComponentId = $('#learningComponentId').val();
 		var Module_Name = $('#Cmoduletxtbox').val();
 		var Module_Description = $('#Cmoduledesc').val();
 		var Subject_Area = $('#Cmoduleareaddl').val();
@@ -208,6 +209,7 @@ $(document)
 		var parameters = {
 			"Course_id" : course_id,
 			"CourseLearningComponentId" : CourseLearningComponentId,
+			"LearningComponentId" : learningComponentId,
 			"Course_Module" : Module_Name,
 			"Module_Description" : Module_Description,
 			"Subject_Area" : Subject_Area,

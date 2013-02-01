@@ -230,11 +230,12 @@ public class CourseServiceImpl implements CourseService {
 			}
 
 			// UPDATE OPERATION
-			if (courseLearningComponent.getCourseLearningComponentId() != null) {
-
+			// if (courseLearningComponent.getCourseLearningComponentId() !=
+			// null) {
+			if (learningComp.getLearningComponentId() != null) {
 				LOGGER.debug("Before Updating the CourseLearningComponent ....");
-				courseLComponentMapper
-						.updateCourseLearningComponent(courseLearningComponent);
+				// courseLComponentMapper
+				// .updateCourseLearningComponent(courseLearningComponent);
 
 				LOGGER.debug("Before Updating the Learning Component ....");
 				learningComponentMapper.updateLearningComponent(learningComp);
@@ -732,4 +733,5 @@ public class CourseServiceImpl implements CourseService {
 				+ learningContentId);
 
 	}
+
 }

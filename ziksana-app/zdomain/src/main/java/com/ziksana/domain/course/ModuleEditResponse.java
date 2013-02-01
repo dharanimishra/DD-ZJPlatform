@@ -2,8 +2,8 @@ package com.ziksana.domain.course;
 
 public class ModuleEditResponse {
 
-	private String id;
-
+	private String learningComponentId;
+	private String courseLearningComponentId;
 	private String modulename;
 	private String moduledesc;
 	private String subjectarea;
@@ -19,12 +19,20 @@ public class ModuleEditResponse {
 
 	private Boolean learningObjectIndicator;
 
-	public String getId() {
-		return id;
+	public String getLearningComponentId() {
+		return learningComponentId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setLearningComponentId(String learningComponentId) {
+		this.learningComponentId = learningComponentId;
+	}
+
+	public String getCourseLearningComponentId() {
+		return courseLearningComponentId;
+	}
+
+	public void setCourseLearningComponentId(String courseLearningComponentId) {
+		this.courseLearningComponentId = courseLearningComponentId;
 	}
 
 	public String getModulename() {

@@ -50,25 +50,19 @@
 		update corcourselearningcomponent
 		<set>
 			<if test="usageStartDate != null">
-				usagestartdate = #{usageStartDate,jdbcType=TIMESTAMP},
+				UsageStartDate = #{usageStartDate,jdbcType=TIMESTAMP},
 			</if>
 			<if test="usageEndDate != null">
-				usageenddate = #{usageEndDate,jdbcType=TIMESTAMP},
+				UsageEndDate = #{usageEndDate,jdbcType=TIMESTAMP},
 			</if>
 			<if test="active != null"> active = #{active,jdbcType=BOOLEAN}, </if>
-			<if test="weightage != null"> weightage = #{weightage,jdbcType=INTEGER}, </if>
-			<if test="totalCredits != null"> totalcredits = #{totalCredits,jdbcType=INTEGER}, </if>
-			<if test="extraCredits != null"> extracredits = #{extraCredits,jdbcType=INTEGER}, </if>
+
 			<if test="courseLCDuration != null">
 				duration = #{courseLCDuration.duration,jdbcType=INTEGER},
 			</if>
 			<if test="courseLCDuration != null">
 				durationunit =
 				#{courseLCDuration.durationUnits,jdbcType=INTEGER},
-			</if>
-			<if test="isLearningComponentOveridden != null">
-				learningcomponentoveriddenindicator =
-				#{isLearningComponentOveridden,jdbcType=BOOLEAN}
 			</if>
 			<if test="learningComponentType != null">
 				#{learningComponentType.learningComponentTypeId.storageID,jdbcType=INTEGER},
