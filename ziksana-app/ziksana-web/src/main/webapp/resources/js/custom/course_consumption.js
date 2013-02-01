@@ -364,13 +364,13 @@ $(document).ready(
 
 					if (content_type == 'VIDEO') {
 
-						playVideo('http://54.243.235.88/zikload-xml/uploads/'+content_path);
+						playVideo('https://video.beta.ziksana.com/'+content_path);
 
 					}
 					
 					if (content_type == 'ENHANCED_VIDEO') {
 
-						playEnhancedVideo('http://54.243.235.88/'+content_path);
+						playEnhancedVideo('https://video.beta.ziksana.com/'+content_path);
 
 					}
 
@@ -378,7 +378,7 @@ $(document).ready(
 
 					if (content_type == 'AUDIO') {
 
-						playAudio('http://54.243.235.88/zikload-xml/uploads/'+content_path);
+						playAudio('https://video.beta.ziksana.com/'+content_path);
 
 					}
 

@@ -161,7 +161,7 @@ function onButtonClick(menuitemId, type) {
 		}, function(data) {
 
 			content_type = (data.contentTypeString).toUpperCase();
-			content_url = 'http://54.243.235.88/zikload-xml/uploads'
+			content_url = 'https://video.beta.ziksana.com/'
 					+ data.contentUrl;
 			content_path = data.contentUrl;
 
@@ -249,7 +249,7 @@ function onButtonClick(menuitemId, type) {
 		}, function(data) {
 
 			content_type = (data.contentTypeString).toUpperCase();
-			content_url = 'http://54.243.235.88/zikload-xml/uploads'
+			content_url = 'https://video.beta.ziksana.com/'
 					+ data.contentUrl;
 			content_path = data.contentUrl;
 

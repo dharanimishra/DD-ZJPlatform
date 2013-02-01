@@ -504,7 +504,7 @@ span.standartTreeRow:hover {
 																		.uploadify(
 																				{
 																					'swf' : '/ziksana-web/resources/swf/uploadify.swf',
-																					'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+																					'uploader' : 'http://video.beta.ziksana.com/zikload/uploadify.php',
 																					'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 																					'fileSizeLimit' : '10024KB',
 																					//'debug': true,

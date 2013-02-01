@@ -26,13 +26,11 @@ body{min-width: 490px; min-height: 270px; background: white;}
 
 		$(function(){
 
-			var MediaServerDomainUrl = 'http://54.243.235.88';
-			var MediaUploadDirectory = '/zikload-xml/uploads';
 			jwplayer("lbmediaplayer").setup({
 				flashplayer: "/ziksana-web/resources/jwplayer/player.swf",
 				height: 385,
 				width: 640,
-				file: MediaServerDomainUrl + MediaUploadDirectory + '${content.contentUrl}'
+				file: 'https://video.beta.ziksana.com/${content.contentUrl}'
 			}).play('true');		
 			
 		});

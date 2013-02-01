@@ -39,7 +39,7 @@
 				} */			
 				
 			function ff_player_mode() { return "enhance"; }
-			function ff_load_images() { return "http://54.243.235.88/zikload-xml/uploads"+"${content.thumbnailPicturePath}"+"|||"+"${content.numberOfThumbnails}";}
+			function ff_load_images() { return "https://video.beta.ziksana.com/"+"${content.thumbnailPicturePath}"+"|||"+"${content.numberOfThumbnails}";}
 			function ff_recording_save_path(path) {
 				console.log(path);
 				enhanced_video_path = path;

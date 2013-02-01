@@ -28,7 +28,7 @@
 		var MediaUploadDirectory = 'http://54.243.235.88/zikload-xml/uploads';
 		
 			var flashvars = {
-				'file' : 'http://54.243.235.88/zikload-xml/uploads${content.contentUrl}',
+				'file' : 'https://video.beta.ziksana.com/${content.contentUrl}',
 				'provider' : 'http',
 				'http.startparam' : 'starttime',
 				'autostart':'true'
