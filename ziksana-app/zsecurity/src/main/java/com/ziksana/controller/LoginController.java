@@ -141,7 +141,7 @@ public class LoginController {
 			throws ServletException {
 
 		Cookie cookie = new Cookie(AuthenticationFilter.COOKIE_NAME, "");
-		cookie.setMaxAge(-1);
+		cookie.setMaxAge(30*60);
 		cookie.setPath("/");
 
 		try {
