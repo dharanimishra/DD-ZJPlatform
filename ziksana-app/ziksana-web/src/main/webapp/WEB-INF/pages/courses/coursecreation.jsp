@@ -541,7 +541,7 @@ span.standartTreeRow:hover {
 																'#thumbnail_image_file_upload')
 																.uploadify(
 																		{
-																			'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																			'swf' : 'http://video.beta.ziksana.com/resources/swf/uploadify.swf',
 																			'queueSizeLimit' : 1,
 																			'successTimeout' : 350,
 																			'uploader' : 'http://video.beta.ziksana.com/zikload/uploadify.php',
