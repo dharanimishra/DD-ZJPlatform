@@ -39,7 +39,8 @@
 				
 			function ff_player_mode() { return "playback"; }
 			//function ff_load_images() { return "http://54.243.235.88/zikload-xml/uploads"+"${content.thumbnailPicturePath}"+"|||"+"${content.numberOfThumbnails}"; }
-			function ff_get_recorded_file(){ return "https://video.beta.ziksana.com/${content.contentUrl}"; }
+			function ff_get_recorded_file(){ return "https://video.beta.ziksana.com/zikload/flashrecording/${content.contentUrl}"; }
+			function  ff_get_flash_recorder() { return "https://video.beta.ziksana.com/zikload/flashrecording/FlashRecording4.php" };
 
         </script>
 
