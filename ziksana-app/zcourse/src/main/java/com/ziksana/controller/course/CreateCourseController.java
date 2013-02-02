@@ -20,6 +20,7 @@ import com.ziksana.domain.course.CourseEditResponse;
 import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.CourseLearningComponent;
 import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.CourseTagcloud;
 
 import com.ziksana.domain.course.Duration;
@@ -34,6 +35,7 @@ import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseEditService;
 import com.ziksana.service.course.CourseService;
+import com.ziksana.service.course.CourseSubjectDetailService;
 import com.ziksana.service.course.CourseTreeNodeService;
 
 /**
@@ -51,6 +53,9 @@ public class CreateCourseController {
 
 	@Autowired
 	CourseEditService courseEditService;
+
+	@Autowired
+	CourseSubjectDetailService courseSubjectDetailService;
 
 	@Autowired
 	CourseTreeNodeService courseTreeNodeService;
@@ -132,9 +137,9 @@ public class CreateCourseController {
 			@RequestParam(value = "Course_id", required = false) String CourseId,
 			@RequestParam(value = "Course_Name", required = true) String CourseName,
 			@RequestParam(value = "Course_Description", required = false) String CourseDescription,
-			@RequestParam(value = "Subject_Area", required = false) String Subject_Area,
-			@RequestParam(value = "Subject", required = false) String Subject,
-			@RequestParam(value = "Topic", required = false) String Topic,
+			@RequestParam(value = "Subject_Area", required = false) String subjectArea,
+			@RequestParam(value = "Subject", required = false) String subjectCategory,
+			@RequestParam(value = "Topic", required = false) String subjectTopic,
 			@RequestParam(value = "Coursetag_Field", required = false) String CourseTags,
 			@RequestParam(value = "Course_Credits", required = false) String CourseCredits,
 			@RequestParam(value = "Extra_Credits", required = false) String CourseExtraCredits,
@@ -145,8 +150,8 @@ public class CreateCourseController {
 		LOGGER.info("Entering Class " + getClass()
 				+ " saveCourse(): CourseId :" + CourseId + " CourseName :"
 				+ CourseName + " CourseDescription :" + CourseDescription
-				+ " Subject_Area:" + Subject_Area + "Subject " + Subject
-				+ "Topic " + Topic + " Coursetag_Field:" + CourseTags
+				+ " Subject_Area:" + subjectArea + "Subject " + subjectCategory
+				+ "Topic " + subjectTopic + " Coursetag_Field:" + CourseTags
 				+ " CourseCredits :" + CourseCredits + " CourseExtraCredits :"
 				+ CourseExtraCredits + " Course_Duration :" + CourseDuration
 				+ " CourseDurationUnit :" + CourseDurationUnit);
@@ -171,21 +176,17 @@ public class CreateCourseController {
 					+ nf);
 		}
 
-		try {
-			subjClassificationId = Integer.parseInt(Topic);
-		} catch (NumberFormatException fe) {
-			LOGGER.debug(" Class :"
-					+ getClass()
-					+ " Method: saveCourse() : NumberFormatException : subjClassificationId"
-					+ fe);
-		}
-
 		MemberPersona accountableMember = new MemberPersona();
 		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 
 		// Service call for Course
 
+		CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
+				.getSubjectClassification(subjectTopic);
+		LOGGER.debug(" Class :" + getClass()
+				+ " Method: saveCourse() courseSubjectClassification :"
+				+ courseSubjectClassification);
 		Course courseObj = null;
 
 		try {
@@ -202,12 +203,15 @@ public class CreateCourseController {
 				course.setAccountableMember(accountableMember);
 				course.setSecurityIndicator(true);
 				course.setCourseCredits(CourseCredits);
+				course.setExtraCredits(CourseExtraCredits);
 				course.setAdditionalInfoIndicator(true);
 				Duration duration = new Duration(courseDuration,
 						courseDurationUnit);
 				course.setCourseDuration(duration);
 				course.setThumbnailPicturePath(UploadImage);
 				course.setVersion(1);
+				course.setSubjClassificationId(courseSubjectClassification
+						.getSubjClassificationId());
 
 			} else {
 				course.setName(CourseName);
@@ -226,6 +230,9 @@ public class CreateCourseController {
 				course.setCourseDuration(duration);
 				course.setSecurityIndicator(true);
 				course.setAccountableMember(accountableMember);
+				course.setSubjClassificationId(courseSubjectClassification
+						.getSubjClassificationId());
+				// course.setSubjClassificationId(1);
 			}
 
 			LOGGER.info("Class :" + getClass()
@@ -240,8 +247,8 @@ public class CreateCourseController {
 			LOGGER.error("Class :" + getClass()
 					+ " Method Exception :saveCourse : CourseId :" + CourseId
 					+ " Course Name :" + CourseName + " CourseDescription:"
-					+ CourseDescription + " Subject_Area:" + Subject_Area
-					+ "Subject " + Subject + "Topic " + Topic
+					+ CourseDescription + " Subject_Area:" + subjectArea
+					+ "Subject " + subjectCategory + "Topic " + subjectTopic
 					+ " CourseCredits :" + CourseCredits
 					+ " CourseExtraCredits :" + CourseExtraCredits
 					+ " courseDuration :" + courseDuration + "-" + e);
@@ -279,10 +286,10 @@ public class CreateCourseController {
 
 		LOGGER.info("Exiting Class " + getClass() + " saveCourse(): CourseId :"
 				+ " Course Name :" + CourseName + " CourseDescription:"
-				+ CourseDescription + " Subject_Area:" + Subject_Area
-				+ "Subject " + Subject + "Topic " + Topic + " CourseCredits :"
-				+ CourseCredits + " CourseExtraCredits :" + CourseExtraCredits
-				+ " courseDuration :" + courseDuration);
+				+ CourseDescription + " Subject_Area:" + subjectArea
+				+ "Subject " + subjectCategory + "Topic " + subjectTopic
+				+ " CourseCredits :" + CourseCredits + " CourseExtraCredits :"
+				+ CourseExtraCredits + " courseDuration :" + courseDuration);
 
 		return json;
 	}
@@ -297,7 +304,7 @@ public class CreateCourseController {
 			@RequestParam(value = "Module_Description", required = true) String CourseModuleDescription,
 			@RequestParam(value = "Subject_Area", required = true) String Subject_Area,
 			@RequestParam(value = "Subject", required = true) String Subject,
-			@RequestParam(value = "Topic", required = true) String Topic,
+			@RequestParam(value = "Topic", required = true) String subjectTopic,
 			@RequestParam(value = "Moduletag_Field", required = false) String ModuleTags,
 			@RequestParam(value = "Module_Weight", required = false) String ModuleWeight,
 			@RequestParam(value = "LearningObject", required = false) String LearningObject,
@@ -329,7 +336,7 @@ public class CreateCourseController {
 			courseLearningComponentId = Integer
 					.parseInt(CourseLearningComponentId);
 			LOGGER.info("Entering Class " + getClass()
-					+ " saveCourseComponents():  courseLearningComponentId :"
+					+ " saveCourseComponents(): courseLearningComponentId :"
 					+ courseLearningComponentId);
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("Class "
@@ -367,6 +374,9 @@ public class CreateCourseController {
 					+ moduleWeight + nfe);
 		}
 
+		CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
+				.getSubjectClassification(subjectTopic);
+
 		MemberPersona accountableMember = new MemberPersona();
 		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
 				.getToken().getMemberPersonaId().getStorageID()));
@@ -392,6 +402,8 @@ public class CreateCourseController {
 				Duration prescribedDuration = new Duration(courseDuration,
 						unitofDuration);
 				comp1.setPrescribedDuration(prescribedDuration);
+				comp1.setSubjClassificationId(courseSubjectClassification
+						.getSubjClassificationId());
 				LearningComponentNest compNest1 = new LearningComponentNest(
 						null, comp1);
 				compNest1.setNestLearningComponent(comp1);
@@ -422,7 +434,7 @@ public class CreateCourseController {
 				course.setCourseDetails(courseDetails);
 				LOGGER.error("Entering Class "
 						+ getClass()
-						+ " saveCourseComponents()  After Edit Module service : courseId :"
+						+ " saveCourseComponents() After Edit Module service : courseId :"
 						+ CourseId + " getting course " + course);
 
 			} else {
@@ -435,6 +447,8 @@ public class CreateCourseController {
 				Duration prescribedDuration = new Duration(courseDuration,
 						unitofDuration);
 				comp1.setPrescribedDuration(prescribedDuration);
+				comp1.setSubjClassificationId(courseSubjectClassification
+						.getSubjClassificationId());
 
 				LearningComponentNest compNest1 = new LearningComponentNest(
 						null, comp1);
@@ -468,15 +482,15 @@ public class CreateCourseController {
 
 				LOGGER.error("Entering Class "
 						+ getClass()
-						+ " saveCourseComponents()  After Add Module service : courseId :"
+						+ " saveCourseComponents() After Add Module service : courseId :"
 						+ CourseId + " getting course " + course);
 
 			}
-			System.out.println("Constructed Course  : " + course);
+			System.out.println("Constructed Course : " + course);
 
 			LOGGER.error("Entering Class "
 					+ getClass()
-					+ " saveCourseComponents()  before calling service : courseId :"
+					+ " saveCourseComponents() before calling service : courseId :"
 					+ CourseId + " getting course " + course);
 
 			// Saving the course Object
@@ -484,7 +498,7 @@ public class CreateCourseController {
 
 			LOGGER.error("Entering Class "
 					+ getClass()
-					+ " saveCourseComponents()  after calling service : courseId :"
+					+ " saveCourseComponents() after calling service : courseId :"
 					+ CourseId + " getting course " + course);
 
 		} catch (Exception e) {
@@ -638,12 +652,8 @@ public class CreateCourseController {
 		}
 
 		CourseEditResponse json = null;
-
 		json = courseEditService.getCourseDetails(courseid);
 		json.setResponse("success");
-		json.setSubjectarea("Computer science, knowledge & systems");
-		json.setSubject("Bibliography");
-		json.setTopic("Bibliography");
 		json.setMessage("Course Edit Details");
 
 		LOGGER.info("Exiting Class " + getClass() + " getCourse(): CourseId :"
@@ -674,9 +684,6 @@ public class CreateCourseController {
 		ModuleEditResponse json = null;
 		json = courseEditService.getModuleDetails(learningComponentId);
 		json.setResponse("success");
-		json.setSubjectarea("Computer science, knowledge & systems");
-		json.setSubject("Bibliography");
-		json.setTopic("Bibliography");
 		json.setMessage("Course Edit Details");
 
 		LOGGER.info("Exiting Class " + getClass() + " getCourse(): CourseId :"
@@ -692,12 +699,12 @@ public class CreateCourseController {
 	ModelAndView searchCourseComponents(@RequestParam String memberRoleId,
 			@RequestParam String searchIndicator,
 			@RequestParam LearningComponent learningComponent) {
-		LOGGER.info("Entering  Class " + getClass()
+		LOGGER.info("Entering Class " + getClass()
 				+ "searchCourseComponents(): coursename :" + memberRoleId
 				+ " coursedescription :" + searchIndicator);
 
 		ModelAndView mv = new ModelAndView("courses/createcourses");
-		LOGGER.info("Exiting  Class " + getClass()
+		LOGGER.info("Exiting Class " + getClass()
 				+ "searchCourseComponents(): ");
 
 		return mv;

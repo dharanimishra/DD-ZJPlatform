@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
+import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.Option;
 
 /**
@@ -35,6 +36,14 @@ public interface CourseSubjectDetailMapper {
 	@Select({ "select  distinct SubjectTopic, SubjectTopic from utlsubjectclassification  where SubjectCategory = #{subjectCategory,jdbcType=VARCHAR}" })
 	@Results(value = { @Result(property = "value", column = "SubjectTopic"),
 			@Result(property = "label", column = "SubjectTopic") })
-	List<Option> getSubjectTopic(String subjectArea);
+	List<Option> getSubjectTopic(String subjectCategory);
+
+	@Select({ "select ID,SubjectArea, SubjectCategory,SubjectTopic from utlsubjectclassification  where  SubjectTopic=#{subjectTopic,jdbcType=VARCHAR}" })
+	@Results(value = {
+			@Result(property = "subjClassificationId", column = "ID"),
+			@Result(property = "subjectArea", column = "SubjectArea"),
+			@Result(property = "subjectCategory", column = "SubjectCategory"),
+			@Result(property = "subjectTopic", column = "SubjectTopic") })
+	CourseSubjectClassification getSubjectClassification(String subjectTopic);
 
 }

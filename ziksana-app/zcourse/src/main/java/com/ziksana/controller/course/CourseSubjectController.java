@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.Option;
 import com.ziksana.service.course.CourseSubjectDetailService;
 
@@ -61,5 +61,20 @@ public class CourseSubjectController {
 		LOGGER.info("Exiting Class " + getClass() + " getTopic(): ");
 
 		return list;
+	}
+
+	@RequestMapping(value = "/getSubjectClassification", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	CourseSubjectClassification getSubjectClassification(
+			@RequestParam(value = "Course_Area", required = false) String subjectArea,
+			@RequestParam(value = "Course_Subject", required = false) String subjectCategory,
+			@RequestParam(value = "Course_Topic", required = false) String subjectTopic) {
+		LOGGER.info("Entering Class " + getClass() + " getTopic()");
+		CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
+				.getSubjectClassification(subjectTopic);
+		LOGGER.info("Exiting Class " + getClass() + " getTopic(): ");
+
+		return courseSubjectClassification;
 	}
 }

@@ -101,7 +101,7 @@ public class CourseServiceImpl implements CourseService {
 
 			if (tagcloudList != null && tagcloudList.size() > 0) {
 
-				LOGGER.debug("Course Tagcloud list size  : "
+				LOGGER.debug("Course Tagcloud list size : "
 						+ tagcloudList.size());
 
 				for (CourseTagcloud courseTagcloud : tagcloudList) {
@@ -144,7 +144,7 @@ public class CourseServiceImpl implements CourseService {
 
 			if (tagcloudList != null && tagcloudList.size() > 0) {
 
-				LOGGER.debug("Cours	e Tagcloud list size  : "
+				LOGGER.debug("Cours e Tagcloud list size : "
 						+ tagcloudList.size());
 				for (CourseTagcloud courseTagcloud : tagcloudList) {
 
@@ -172,7 +172,7 @@ public class CourseServiceImpl implements CourseService {
 				LOGGER.debug("Course Content Security Indicator ....: "
 						+ isSecurity);
 				if (contSecurity != null) {
-					LOGGER.debug("Course Content Security  ....: "
+					LOGGER.debug("Course Content Security ....: "
 							+ contSecurity.toString());
 					LOGGER.debug("Course Content Security CourseID ....: "
 							+ course.getCourseId());
@@ -356,7 +356,7 @@ public class CourseServiceImpl implements CourseService {
 
 		if (courseList != null && courseList.size() > 0) {
 
-			LOGGER.debug("Courses  size : " + courseList.size());
+			LOGGER.debug("Courses size : " + courseList.size());
 			LearningComponent component = null;
 
 			for (Course course : courseList) {
@@ -371,7 +371,7 @@ public class CourseServiceImpl implements CourseService {
 
 				courseId = Integer.valueOf(course.getCourseId().getDisplayID());
 
-				LOGGER.debug("CoursesID   : " + courseId);
+				LOGGER.debug("CoursesID : " + courseId);
 
 				couseCompList = courseLComponentMapper
 						.getBaseCourseLearningComponentsByCourse(courseId);
@@ -496,7 +496,7 @@ public class CourseServiceImpl implements CourseService {
 						}
 					}
 				}
-				LOGGER.debug(" Course ID :: [" + courseId + "]  Progress :["
+				LOGGER.debug(" Course ID :: [" + courseId + "] Progress :["
 						+ courseProgress + "]");
 				course.setCourseProgress(courseProgress);
 

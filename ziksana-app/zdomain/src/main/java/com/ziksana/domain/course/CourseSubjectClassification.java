@@ -6,9 +6,9 @@ public class CourseSubjectClassification {
 
 	private String subjectCategory;
 
-	private String SubjectArea;
+	private String subjectArea;
 
-	private String SubjectTopic;
+	private String subjectTopic;
 
 	public CourseSubjectClassification() {
 		super();
@@ -19,8 +19,8 @@ public class CourseSubjectClassification {
 		super();
 		this.subjClassificationId = subjClassificationId;
 		this.subjectCategory = subjectCategory;
-		SubjectArea = subjectArea;
-		SubjectTopic = subjectTopic;
+		this.subjectArea = subjectArea;
+		this.subjectTopic = subjectTopic;
 	}
 
 	public Integer getSubjClassificationId() {
@@ -40,19 +40,19 @@ public class CourseSubjectClassification {
 	}
 
 	public String getSubjectArea() {
-		return SubjectArea;
+		return subjectArea;
 	}
 
 	public void setSubjectArea(String subjectArea) {
-		SubjectArea = subjectArea;
+		this.subjectArea = subjectArea;
 	}
 
 	public String getSubjectTopic() {
-		return SubjectTopic;
+		return subjectTopic;
 	}
 
 	public void setSubjectTopic(String subjectTopic) {
-		SubjectTopic = subjectTopic;
+		this.subjectTopic = subjectTopic;
 	}
 
 }

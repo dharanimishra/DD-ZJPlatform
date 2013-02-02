@@ -2,6 +2,7 @@ package com.ziksana.service.course;
 
 import java.util.List;
 
+import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.Option;
 
 /**
@@ -11,10 +12,13 @@ import com.ziksana.domain.course.Option;
  */
 public interface CourseSubjectDetailService {
 
-	List<Option> getSubjectCategory();
+	public List<Option> getSubjectCategory();
 
-	List<Option> getSubjectArea(String subjectArea);
+	public List<Option> getSubjectArea(String subjectArea);
 
-	List<Option> getSubjectTopic(String subjectTopic);
+	public List<Option> getSubjectTopic(String subjectTopic);
+
+	public CourseSubjectClassification getSubjectClassification(
+			String subjectTopic);
 
 }

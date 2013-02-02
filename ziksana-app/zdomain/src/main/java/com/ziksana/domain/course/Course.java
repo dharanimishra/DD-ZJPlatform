@@ -43,7 +43,7 @@ public class Course extends AuditHistory {
 
 	private ZID courseId;
 	private int coursesId;
-	
+
 	public int getCoursesId() {
 		return coursesId;
 	}
@@ -73,6 +73,7 @@ public class Course extends AuditHistory {
 	private Rating rating = null;
 	private Boolean securityIndicator = null;
 	private Boolean isDelete = null;
+
 	public Boolean getIsDelete() {
 		return isDelete;
 	}
@@ -85,6 +86,9 @@ public class Course extends AuditHistory {
 	/**
 	 * Maximum Length:5
 	 */
+
+	private String totalCredits = null;
+
 	private String courseCredits = null;
 	/**
 	 * Maximum Length:5
@@ -139,7 +143,7 @@ public class Course extends AuditHistory {
 			return coursePlaybookList.get(index);
 		} catch (Exception e) {
 			throw new IllegalStateException("CoursePlaybook at index [" + index
-					+ "]  not found");
+					+ "] not found");
 		}
 	}
 
@@ -176,7 +180,7 @@ public class Course extends AuditHistory {
 			return courseTagClouds.get(index);
 		} catch (Exception e) {
 			throw new IllegalStateException("Course Tag cloud at index ["
-					+ index + "]  not found");
+					+ index + "] not found");
 		}
 	}
 
@@ -356,6 +360,14 @@ public class Course extends AuditHistory {
 	 */
 	public void setCourseProgress(Integer courseProgress) {
 		this.courseProgress = courseProgress;
+	}
+
+	public String getTotalCredits() {
+		return totalCredits;
+	}
+
+	public void setTotalCredits(String totalCredits) {
+		this.totalCredits = totalCredits;
 	}
 
 	public String getExtraCredits() {

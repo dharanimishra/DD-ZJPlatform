@@ -1,11 +1,12 @@
-
 package com.ziksana.service.course.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.Option;
 import com.ziksana.persistence.course.CourseSubjectDetailMapper;
 import com.ziksana.service.course.CourseSubjectDetailService;
@@ -18,6 +19,9 @@ import com.ziksana.service.course.CourseSubjectDetailService;
 @Service
 public class CourseSubjectDetailsServiceImpl implements
 		CourseSubjectDetailService {
+
+	private final static Logger LOGGER = Logger
+			.getLogger(CourseSubjectDetailsServiceImpl.class);
 
 	@Autowired
 	CourseSubjectDetailMapper courseSubjectDetailMapper;
@@ -63,6 +67,34 @@ public class CourseSubjectDetailsServiceImpl implements
 		List<Option> list = courseSubjectDetailMapper
 				.getSubjectTopic(subjectTopic);
 		return list;
+	}
+
+	@Override
+	public CourseSubjectClassification getSubjectClassification(
+			String subjectTopic) {
+		CourseSubjectClassification courseSubjectClassification = null;
+		LOGGER.debug("Entering Class :"
+				+ getClass()
+				+ " Method Name :getSubjectClassification(String subjectArea, String subjectCategory, String subjectTopic) :subjectArea "
+
+				+ " subjectTopic :" + subjectTopic);
+		try {
+			courseSubjectClassification = courseSubjectDetailMapper
+					.getSubjectClassification(subjectTopic);
+		} catch (Exception e) {
+			LOGGER.error("Exiting Class :"
+					+ getClass()
+					+ " Method Name :getCoursgetSubjectClassificationeDetails(String subjectArea, String subjectCategory, String subjectTopic):subjectArea "
+
+					+ " subjectTopic :" + subjectTopic + "Exception :" + e);
+		}
+
+		LOGGER.debug("Exiting Class :"
+				+ getClass()
+				+ " Method Name :getCoursgetSubjectClassificationeDetails(String subjectArea, String subjectCategory, String subjectTopic):subjectArea "
+				+ " subjectTopic :" + subjectTopic);
+
+		return courseSubjectClassification;
 	}
 
 }

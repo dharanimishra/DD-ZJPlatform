@@ -15,7 +15,6 @@ public class CourseEditResponse {
 	private String durationtype;
 	private String imageupload;
 	private String response;
-	private String subjClassificationId;
 	private String message;
 
 	public String getId() {

@@ -13,7 +13,6 @@ import com.ziksana.id.ZID;
  */
 public class LearningComponent extends AuditHistory {
 
-
 	public LearningComponent(Date validFrom, Date validTo,
 			CourseStatus courseStatus,
 			LearningComponentType learningComponentType, Course course,
@@ -30,7 +29,7 @@ public class LearningComponent extends AuditHistory {
 			MemberPersona authoredMember) {
 		this.prescribedDuration = prescribedDuration;
 		this.learningComponentType = learningComponentType;
-			this.authoredMember = authoredMember;
+		this.authoredMember = authoredMember;
 	}
 
 	public LearningComponent() {
@@ -40,37 +39,47 @@ public class LearningComponent extends AuditHistory {
 		this.learningComponentType = learningComponentType;
 	}
 
-	protected ZID	 		learningComponentId;
-	private String 			name					= null;
+	protected ZID learningComponentId;
+	private String name = null;
 	/**
 	 * Maximum Length:240
 	 */
-	private String 			description				= null;
-	private Date 			validFrom 				= null;
-	private Date 			validTo 				= null;
-	private CourseStatus 	courseStatus 			= null;
-	private Integer	 		courseStatusId 			= null;
-	private Integer 		weightage 				= null;
-	private Integer 		learningObjIndicator 	= null;
-	/**						
+	private String description = null;
+	private Date validFrom = null;
+	private Date validTo = null;
+	private CourseStatus courseStatus = null;
+	private Integer courseStatusId = null;
+	private Integer weightage = null;
+	private Integer learningObjIndicator = null;
+	/**
 	 * Maximum Length:72
 	 */
-	private String 			thumbnailPicturePath 	= null;
-	private Duration 		prescribedDuration 	= null;
-	private Integer 		version 				= null;
-	private Integer			totalCredits			= null;
-	private Integer			extraCredits			= null;
-	private Integer			extraCreditsIndicator   = null;
+	private String thumbnailPicturePath = null;
+	private Duration prescribedDuration = null;
+	private Integer version = null;
+	private Integer totalCredits = null;
+	private Integer extraCredits = null;
+	private Integer extraCreditsIndicator = null;
 
 	/**
 	 * Maximum Length:240
 	 */
-	private String 					versionRemarks 			= null;
-	private LearningComponentType 	learningComponentType 	= null;
-	private MemberPersona 			authoredMember 			= null;
-	private SubjectClassification 	subjClassification 		= null;
+	private String versionRemarks = null;
+	private LearningComponentType learningComponentType = null;
+	private MemberPersona authoredMember = null;
+	private SubjectClassification subjClassification = null;
 
 	private LearningComponentDetails learningComponentDetails = null;
+
+	private Integer subjClassificationId = null;
+
+	public Integer getSubjClassificationId() {
+		return subjClassificationId;
+	}
+
+	public void setSubjClassificationId(Integer subjClassificationId) {
+		this.subjClassificationId = subjClassificationId;
+	}
 
 	/**
 	 * @return the name
@@ -80,7 +89,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -94,7 +104,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -108,7 +119,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param validFrom the validFrom to set
+	 * @param validFrom
+	 *            the validFrom to set
 	 */
 	public void setValidFrom(Date validFrom) {
 		this.validFrom = validFrom;
@@ -122,7 +134,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param validTo the validTo to set
+	 * @param validTo
+	 *            the validTo to set
 	 */
 	public void setValidTo(Date validTo) {
 		this.validTo = validTo;
@@ -136,11 +149,12 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param courseStatus the courseStatus to set
+	 * @param courseStatus
+	 *            the courseStatus to set
 	 */
 	public void setCourseStatus(CourseStatus courseStatus) {
-		
-		if(courseStatusId!=null){
+
+		if (courseStatusId != null) {
 			courseStatus = CourseStatus.getCourseStatus(courseStatusId);
 		}
 		this.courseStatus = courseStatus;
@@ -154,7 +168,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param weightage the weightage to set
+	 * @param weightage
+	 *            the weightage to set
 	 */
 	public void setWeightage(Integer weightage) {
 		this.weightage = weightage;
@@ -168,7 +183,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param learningObjIndictor the learningObjIndictor to set
+	 * @param learningObjIndictor
+	 *            the learningObjIndictor to set
 	 */
 	public void setLearningObjIndicator(Integer learningObjIndicator) {
 		this.learningObjIndicator = learningObjIndicator;
@@ -182,11 +198,13 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param thumbnailPicturePath the thumbnailPicturePath to set
+	 * @param thumbnailPicturePath
+	 *            the thumbnailPicturePath to set
 	 */
 	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
 	}
+
 	/**
 	 * @return the version
 	 */
@@ -195,7 +213,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param version the version to set
+	 * @param version
+	 *            the version to set
 	 */
 	public void setVersion(Integer version) {
 		this.version = version;
@@ -209,7 +228,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param versionRemarks the versionRemarks to set
+	 * @param versionRemarks
+	 *            the versionRemarks to set
 	 */
 	public void setVersionRemarks(String versionRemarks) {
 		this.versionRemarks = versionRemarks;
@@ -223,9 +243,11 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param learningComponentType the learningComponentType to set
+	 * @param learningComponentType
+	 *            the learningComponentType to set
 	 */
-	public void setLearningComponentType(LearningComponentType learningComponentType) {
+	public void setLearningComponentType(
+			LearningComponentType learningComponentType) {
 		this.learningComponentType = learningComponentType;
 	}
 
@@ -237,7 +259,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param authoredMember the authoredMember to set
+	 * @param authoredMember
+	 *            the authoredMember to set
 	 */
 	public void setAuthoredMember(MemberPersona authoredMember) {
 		this.authoredMember = authoredMember;
@@ -251,7 +274,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param subjClassification the subjClassification to set
+	 * @param subjClassification
+	 *            the subjClassification to set
 	 */
 	public void setSubjClassification(SubjectClassification subjClassification) {
 		this.subjClassification = subjClassification;
@@ -265,13 +289,14 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param learningComponentDetails the learningComponentDetails to set
+	 * @param learningComponentDetails
+	 *            the learningComponentDetails to set
 	 */
 	public void setLearningComponentDetails(
 			LearningComponentDetails learningComponentDetails) {
 		this.learningComponentDetails = learningComponentDetails;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "LearningComponent [name=" + name + ", description="
@@ -292,7 +317,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param prescribedLCDuration the prescribedLCDuration to set
+	 * @param prescribedLCDuration
+	 *            the prescribedLCDuration to set
 	 */
 	public void setPrescribedDuration(Duration prescribedDuration) {
 		this.prescribedDuration = prescribedDuration;
@@ -306,7 +332,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param totalCredits the totalCredits to set
+	 * @param totalCredits
+	 *            the totalCredits to set
 	 */
 	public void setTotalCredits(Integer totalCredits) {
 		this.totalCredits = totalCredits;
@@ -320,7 +347,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param extraCreditsIndicator the extraCreditsIndicator to set
+	 * @param extraCreditsIndicator
+	 *            the extraCreditsIndicator to set
 	 */
 	public void setExtraCreditsIndicator(Integer extraCreditsIndicator) {
 		this.extraCreditsIndicator = extraCreditsIndicator;
@@ -334,7 +362,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param extraCredits the extraCredits to set
+	 * @param extraCredits
+	 *            the extraCredits to set
 	 */
 	public void setExtraCredits(Integer extraCredits) {
 		this.extraCredits = extraCredits;
@@ -348,7 +377,8 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param learningComponentId the learningComponentId to set
+	 * @param learningComponentId
+	 *            the learningComponentId to set
 	 */
 	public void setLearningComponentId(Integer learningComponentId) {
 		this.learningComponentId = new IntegerZID(learningComponentId);
@@ -362,11 +392,11 @@ public class LearningComponent extends AuditHistory {
 	}
 
 	/**
-	 * @param courseStatusId the courseStatusId to set
+	 * @param courseStatusId
+	 *            the courseStatusId to set
 	 */
 	public void setCourseStatusId(Integer courseStatusId) {
 		this.courseStatusId = courseStatusId;
 	}
-
 
 }
