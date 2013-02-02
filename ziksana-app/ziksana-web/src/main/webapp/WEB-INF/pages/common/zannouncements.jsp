@@ -63,7 +63,7 @@
 		function showenddate()
 		{
 		var today = new Date();
-		var last_week = Date.prev().week().toString('MM/dd/yyyy');
+		var last_week = Date.today().addDays(-6).toString('MM/dd/yyyy');
 		var last_month = Date.prev().month();
 		
 		document.getElementById("startDate").value=last_week;

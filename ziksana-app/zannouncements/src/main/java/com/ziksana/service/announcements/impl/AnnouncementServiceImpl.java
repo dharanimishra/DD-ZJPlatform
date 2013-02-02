@@ -147,7 +147,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
 		
-		announcement = announcementMapper.getInstitutionAnnouncements(memberRoleId, formatedStartDate, formatEndDate);
+		announcement = announcementMapper.getInstitutionAnnouncements(memberRoleId, formatStartDate, formatEndDate);
 		LOGGER.info("Institution Announcement Size :"+announcement.size());
 		
 		
@@ -170,7 +170,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
 		
-		announcement = announcementMapper.getInstitutionUnitAnnouncements(memberRoleId, formatedStartDate, formatEndDate);
+		announcement = announcementMapper.getInstitutionUnitAnnouncements(memberRoleId, formatStartDate, formatEndDate);
 		LOGGER.info("Institution Announcement Size :"+announcement.size());
 		
 		
@@ -193,7 +193,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         
         Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
         
-		announcement = announcementMapper.getCourseAnnouncements(memberRoleId, formatedStartDate, formatEndDate);
+		announcement = announcementMapper.getCourseAnnouncements(memberRoleId, formatStartDate, formatEndDate);
 				LOGGER.info("Institution Announcement Size :"+announcement.size());
 		
 		
@@ -230,7 +230,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         
         Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
         
-		announcement = announcementMapper.getAllAnnouncementsByDate(memberRoleId, formatedStartDate, formatEndDate);
+		announcement = announcementMapper.getAllAnnouncementsByDate(memberRoleId, formatStartDate, formatEndDate);
 				LOGGER.info("All Announcement Size :"+announcement.size());
 		
 		

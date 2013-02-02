@@ -41,11 +41,19 @@
 								<c:set var="blogDateTrim" value="${fn:substring(blogDate, 4, 10)}"></c:set>
 									<date><c:out value="${blogDateTrim}"></c:out></date>
 									
-								</span><br>
-								<b><a href=""><blogtitle>${bloglist.title}</blogtitle></a></b>
-								<br />
+								</span>
+								<c:set var="bTitle" value="${bloglist.title}"></c:set>
+								<c:set var="blogTitle" value="${fn:substring(bTitle, 0, 26)}" />
+								<c:set var="blogTitle" value="${blogTitle}" />
+			
+								
+								<p style="font-weight: bold;color:#4F81BD;font-family: Calibri,Verdana,Arial,sans-serif;font-size:14px;"><blogtitle><c:out value="${blogTitle}"/></blogtitle></p>
+								
 								<p class="_postP">
-									<detail>${bloglist.content}</detail>
+								<c:set var="bContent" value="${bloglist.content}"></c:set>
+								<c:set var="blogContent" value="${fn:substring(bContent, 0, 29)}" />
+							
+									<p style="font-size:12px;"><detail><c:out value="${blogContent}"/><c:out value="..." /></detail>
 								</p>
 								
 								<p class="_postT">
@@ -53,8 +61,12 @@
 						
 									<c:forEach items="${bloglist.tags}" var="items"
 										varStatus="loop">
-										<a class="text-size-px11" href="#"><tag>${items.name}</tag></a>
+										<c:set var="blogTag" value="${items.name}"></c:set>
+										<c:set var="blogContenttag" value="${fn:substring(blogTag, 0, 12)}" />
+									<a class="text-size-px11" href="#"><tag><c:out value="${blogContenttag}"/><c:out value="..." /></tag></a>
+										
 									</c:forEach>
+									
 									)
 							
 									</p>

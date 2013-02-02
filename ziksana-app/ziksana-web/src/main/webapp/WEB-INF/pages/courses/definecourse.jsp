@@ -384,9 +384,9 @@ span.standartTreeRow:hover {
 
 										<br /> <label for="coursedescription" class="labelclass"
 											style="font-weight: bold;"><b>Course Description
-												:</b></label> <a class="f-r _plainText" href="#linkurl"
+												:</b></label> <a class="f-r _plainText" href="#"
 											style="text-decoration: none;">Plain Text Editor</a> <a
-											class="f-r _richText" href="#linkurl"
+											class="f-r _richText" id="rich_text_editor" href="#"
 											style="text-decoration: none;">Rich Text Editor</a>
 										<textarea placeholder="Describe the Course being created"
 											cols="124" rows="8" id="Cdescription"

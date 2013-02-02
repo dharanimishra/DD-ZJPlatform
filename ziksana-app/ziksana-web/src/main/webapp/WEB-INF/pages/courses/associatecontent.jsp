@@ -291,10 +291,11 @@ span.standartTreeRow:hover {
 					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong><strong
 					class="light-gray text-size-px12">Create New Course </strong>
 			</div>
-			<div class="f-r">
+		<div class="f-r">
 				<strong class="text-size-px14 light-gray"><a>Publish</a> |
 					<a>Manage</a></strong><a class="light-blue"><img width="12" height="12"
-					alt="add more" src="images/plus.png"> </a>
+					alt="add more" src="/ziksana-web/resources/images/plus.png">
+				</a>
 			</div>
 		</div>
 		<!--Main Content-->
@@ -394,10 +395,11 @@ span.standartTreeRow:hover {
 									style="font-size: 11px; background-image: none; margin-left: 25px;">
 									<!-- Start of Default Instruction -->
 
-									<div id="instruction" style="padding: 10px;">
-										<img src="/ziksana-web/resources/images/ContentContextualHelp.jpg"
-											alt="instructions" title="Key-Board instruction" width="660"
-											style="border: 1px solid #ccc; padding: 5px;">
+								<div id="instruction" style="padding: 10px;">
+										<img src="/ziksana-web/resources/images/ContentContextualHelp1.jpg"
+											class="all-box-shadow" alt="instructions"
+											title="Key-Board instruction" width="720"
+											style="border: 1px solid #ccc; padding: 5px; border: 1px solid #ccc;">
 									</div>
 
 									<!-- End of Default Instruction -->

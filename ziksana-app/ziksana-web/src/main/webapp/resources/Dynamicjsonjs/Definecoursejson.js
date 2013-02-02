@@ -244,6 +244,14 @@ function createCourse() {
 		var Course_Name = $('#defaultvalue').val();
 
 		var Course_Description = $('#Cdescription').val();
+		
+		var Course_Description1 = CKEDITOR.instances['Cdescriptionrte'].getData();
+		/*
+		var corstartTrim =  Course_Description1.substring(3);
+		
+		corstartTrim = corstartTrim.substr(0, corstartTrim.length-5);*/
+		
+		var Course_Descriptions = Course_Description+Course_Description1;
 
 		var Subject_Area = $('#Careaddl').val();
 
@@ -266,7 +274,7 @@ function createCourse() {
 		var parameters = {
 			"Course_id" : Course_id,
 			"Course_Name" : Course_Name,
-			"Course_Description" : Course_Description,
+			"Course_Description" : Course_Descriptions,
 			"Subject_Area" : Subject_Area,
 			"Subject" : Subject,
 			"Topic" : Topic,
@@ -342,9 +350,18 @@ function getCourse() {
 
 							$('#defaultvalue').val(course_name);
 
-							$('#Cdescription').val(course_desc);
-
+							if(course_desc.charAt(0)=='<'){
+								
 							$('#Cdescriptionrte').val(course_desc);
+							
+							$('#rich_text_editor').click(); 						
+								
+							}else{
+								
+							$('#Cdescription').val(course_desc);
+							
+							}
+							
 
 							$('#Ctagfield').val(course_desc);
 
