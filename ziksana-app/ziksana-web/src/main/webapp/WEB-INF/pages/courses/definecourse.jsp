@@ -138,7 +138,7 @@
 				$("fieldset#signin_menu").hide();
 			}
 		});
-		
+
 		//Fetch course details and populate the form
 		getCourse();
 
@@ -609,7 +609,7 @@ span.standartTreeRow:hover {
 																	'swf' : '/ziksana-web/resources/swf/uploadify.swf',
 																	'queueSizeLimit' : 1,
 																	'successTimeout' : 350,
-																	'uploader' : 'http://video.beta.ziksana.com/zikload/uploadify.php',
+																	'uploader' : '${ms.uploadScript}',
 																	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 																	'fileSizeLimit' : '10024KB',
 																	'onUploadStart': function(file){ $('#sbtvalidation').attr('disabled','disabled'); },
@@ -664,7 +664,7 @@ span.standartTreeRow:hover {
 									class="btn btn-info">Save and Continue</a> -->
 
 							</form>
-							
+
 
 							<br> <br>
 
@@ -751,7 +751,7 @@ span.standartTreeRow:hover {
 
 									</div>
 									<!-- Content Panel End -->
-									
+
 
 								</div>
 								<!-- end of definecontainer--->

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
 import com.ziksana.service.data.ContentService;
+import com.ziksana.service.security.MediaService;
 
 /**
  * @author prabu
@@ -30,14 +32,21 @@ public class ContentController {
 
 	@Autowired
 	ContentService contentService;
+	
+	@Autowired
+	MediaService mediaService;
 
 	@RequestMapping(value = "/slides/{contentId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView slides(@PathVariable Integer contentId) {
 		ModelAndView mav = new ModelAndView("courses/Slides");
 		Content content = contentService.getContent(contentId);
+		MediaServerURL mediaServerURL = new MediaServerURL();
+		mediaServerURL = mediaService.getMediaContents();
 
 		mav.addObject("content", content);
+		mav.addObject("ms", mediaServerURL);
+		
 
 		return mav;
 

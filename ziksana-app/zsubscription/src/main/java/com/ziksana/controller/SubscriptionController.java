@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
 import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
@@ -25,6 +26,7 @@ import com.ziksana.domain.course.subscription.ContentReference;
 import com.ziksana.domain.course.Hotspot;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.service.data.ContentService;
+import com.ziksana.service.security.MediaService;
 import com.ziksana.service.subscription.SubscriptionService;
 
 /**
@@ -43,7 +45,12 @@ public class SubscriptionController {
 
 	@Autowired
 	ContentService contentService;
+	
+	@Autowired
+	MediaService mediaService;
 
+	MediaServerURL mediaServerURL = new MediaServerURL();
+	
 	@RequestMapping(value = "/getLearnerNotes", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Note> showLearnerNotes(
@@ -402,7 +409,8 @@ public class SubscriptionController {
 
 		Content content = contentService.getContent(Integer.valueOf(contentId));
 		mv.addObject("content", content);
-
+		mediaServerURL = mediaService.getMediaContents();
+		mv.addObject("ms", mediaServerURL);
 		return mv;
 
 	}
@@ -419,7 +427,8 @@ public class SubscriptionController {
 
 		Content content = contentService.getContent(Integer.valueOf(contentId));
 		mv.addObject("content", content);
-
+		mediaServerURL = mediaService.getMediaContents();
+		mv.addObject("ms", mediaServerURL);
 		return mv;
 
 	}

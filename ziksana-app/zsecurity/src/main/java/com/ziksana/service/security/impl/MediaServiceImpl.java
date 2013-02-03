@@ -17,6 +17,13 @@ public class MediaServiceImpl implements MediaService{
 
 	@Value("#{myProperties['uploadcontent']}")
 	private String uploadContent;
+	
+	@Value("#{myProperties['flashrecordingscript']}")
+	private String flashRecordingScript;
+	
+	@Value("#{myProperties['flashrecordingfolder']}")
+	private String flashRecordingFolder;
+	
 
 	@Override
 	public MediaServerURL getMediaContents() {
@@ -25,7 +32,8 @@ public class MediaServiceImpl implements MediaService{
 		media.setUrl(url);
 		media.setUploadScript(uploadScript);
 		media.setUploadContent(uploadContent);
-		
+		media.setFlashRecordingScript(flashRecordingScript);
+		media.setFlashRecordingFolder(flashRecordingFolder);
 		return media;
 	}
 

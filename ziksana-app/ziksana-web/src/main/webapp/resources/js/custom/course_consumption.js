@@ -1,6 +1,23 @@
-$(document).ready(
-
-		function() {
+	
+$(document).ready(function() {
+	
+			mediaserver_url = '';
+	        mediaserver_uploadscript = '';
+	        mediaserver_uploadcontent = '';
+	     
+	            $.get("/ziksana-web/getmediacontents", function(data) {
+	            	
+			             console.log(data);
+			             mediaserver_url = data.url.toString();
+			             mediaserver_uploadscript = data.uploadScript.toString();
+			             mediaserver_uploadcontent = data.uploadContent.toString();			            	  
+	            	  	console.log(mediaserver_url);
+	            	  	console.log(mediaserver_uploadscript);
+	            	  	console.log(mediaserver_uploadcontent);
+	            	  	
+	            		
+	            });
+			
 
 			$('#videoSection, #video_actions').css('visibility', 'hidden');
 			$('.add_note_trigger, .add_question_trigger').css('visibility', 'hidden');
@@ -359,18 +376,19 @@ $(document).ready(
 
 
 					content_path = data.contentUrl;
+					content_url = mediaserver_url + content_path;
 
 
 
 					if (content_type == 'VIDEO') {
 
-						playVideo('https://video.beta.ziksana.com/'+content_path);
+						playVideo(mediaserver_url + content_path);
 
 					}
 					
 					if (content_type == 'ENHANCED_VIDEO') {
 
-						playEnhancedVideo('https://video.beta.ziksana.com/'+content_path);
+						playEnhancedVideo(mediaserver_url + content_path);
 
 					}
 
@@ -378,7 +396,7 @@ $(document).ready(
 
 					if (content_type == 'AUDIO') {
 
-						playAudio('https://video.beta.ziksana.com/'+content_path);
+						playAudio(mediaserver_url + content_path);
 
 					}
 
@@ -389,12 +407,14 @@ $(document).ready(
 							|| content_type == 'PPT'
 							|| content_type == 'EXCEL'
 
-							|| content_type == 'IMAGE'
-
 							|| content_type == 'TEXTUAL') {
 
 						displayImageSet(content_path);
 
+					}
+					
+					if (content_type == 'IMAGE') {
+						displayImage(content_url);
 					}
 
 
@@ -641,75 +661,47 @@ function playAudio(path) {
 }
 
 
-
 function displayImageSet(path) {
 
-
-
-	$(
-
-			'#notes_and_bookmarks_container, #table_of_contents_container, #questions_container')
+	$('#notes_and_bookmarks_container, #table_of_contents_container, #questions_container')
 
 			.css('visibility', 'hidden');
 
+	$('#videoSection').css('visibility', 'hidden');
+	$('.add_note_trigger, .add_question_trigger').css('visibility', 'hidden');
+	jwplayer('player').stop();
+	$('#video_actions').css('visibility', 'hidden');
+	$('#play-vedio').css('visibility', 'hidden');
+	$.fancybox({
+		'width' : 700,
+		'height' : 800,
+		'autoDimensions' : true,
+		'transitionIn' : 'fade',
+		'transitionOut' : 'fade',
+		'type' : 'iframe',
+		'href' : path
+	});
+}
 
+
+function displayImage(path) {
+
+	$('#notes_and_bookmarks_container, #table_of_contents_container, #questions_container')
+
+			.css('visibility', 'hidden');
 
 	$('#videoSection').css('visibility', 'hidden');
-
-
-
 	$('.add_note_trigger, .add_question_trigger').css('visibility', 'hidden');
-
-
-
 	jwplayer('player').stop();
-
-
-
 	$('#video_actions').css('visibility', 'hidden');
-
-
-
 	$('#play-vedio').css('visibility', 'hidden');
-
-
-
 	$.fancybox({
-
-
-
-		'width' : 700,
-
-
-
-		'height' : 800,
-
-
-
-		'autoDimensions' : true,
-
-
-
+		'autoSize' : true,
 		'transitionIn' : 'fade',
-
-
-
 		'transitionOut' : 'fade',
-
-
-
-		'type' : 'iframe',
-
-
-
+		'type' : 'image',
 		'href' : path
-
-
-
 	});
-
-
-
 }
 
 

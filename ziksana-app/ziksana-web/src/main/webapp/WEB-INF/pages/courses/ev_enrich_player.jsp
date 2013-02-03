@@ -54,8 +54,8 @@ function secondsToHms(d) {
 				
 			function ff_player_mode() { return "enrich"; }
 			//function ff_load_images() { return "http://54.243.235.88/zikload-xml/uploads"+"${content.thumbnailPicturePath}"+"|||"+"${content.numberOfThumbnails}"; }
-			function ff_get_recorded_file(){ return "https://video.beta.ziksana.com/zikload/flashrecording/${content.contentUrl}"; }
-			function  ff_get_flash_recorder() { return "https://video.beta.ziksana.com/zikload/flashrecording/FlashRecording4.php" };
+			function ff_get_recorded_file(){ return "${ms.flashRecordingFolder}${content.contentUrl}"; }
+			function  ff_get_flash_recorder() { return '${ms.flashRecordingScript}';};
 
 			
 			var add_educator_content = function(content_type, course_id, node_id, duration, title, description, coordinates, url, parentid){

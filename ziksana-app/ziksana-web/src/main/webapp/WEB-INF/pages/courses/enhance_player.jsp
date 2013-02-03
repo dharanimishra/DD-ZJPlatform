@@ -40,13 +40,13 @@
 				
 			function ff_player_mode() { return "enhance"; }
 			function ff_load_images() { 
-			return "https://video.beta.ziksana.com/"+"${content.thumbnailPicturePath}"+"|||"+"${content.numberOfThumbnails}";}
+			return "${ms.url}"+"${content.thumbnailPicturePath}"+"|||"+"${content.numberOfThumbnails}";}
 			function ff_recording_save_path(path) {
 				console.log(path);
 				enhanced_video_path = path;
 				window.parent.assoicateEnhancedVideo('${courseId}', '${componentId}', '${contentId}', enhanced_video_path);
 			}
-			function  ff_get_flash_recorder() { return "https://video.beta.ziksana.com/zikload/flashrecording/FlashRecording4.php" };
+			function  ff_get_flash_recorder() { return '${ms.flashRecordingRcript}';};
 
         </script>
 </head>

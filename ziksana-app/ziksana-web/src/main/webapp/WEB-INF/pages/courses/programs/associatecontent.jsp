@@ -474,7 +474,7 @@ span.standartTreeRow:hover {
 																	.uploadify(
 																			{
 																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
-																				'uploader' : 'http://video.beta.ziksana.com/zikload/uploadify.php',
+																				'uploader' : '${ms.uploadScript}',
 																				'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 																				'fileSizeLimit' : '10024KB',
 																				//'debug': true,
@@ -555,7 +555,7 @@ span.standartTreeRow:hover {
 																	.uploadify(
 																			{
 																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
-																				'uploader' : 'http://video.beta.ziksana.com/zikload/uploadify.php',
+																				'uploader' : '${ms.uploadScript}',
 																				//'debug': true,
 																				//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 																				'onUploadSuccess' : function(

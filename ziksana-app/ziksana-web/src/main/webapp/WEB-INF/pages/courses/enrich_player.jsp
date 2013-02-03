@@ -24,11 +24,10 @@
 			return ((h > 0 ? h + ":" : "") + (m > 0 ? (h > 0 && m < 10 ? "0" : "") + m + ":" : "0:") + (s < 10 ? "0" : "") + s); 
 			}
 		
-		var MediaServerDomainUrl = 'http://54.243.235.88';
-		var MediaUploadDirectory = 'http://54.243.235.88/zikload-xml/uploads';
+	
 		
 			var flashvars = {
-				'file' : 'https://video.beta.ziksana.com/${content.contentUrl}',
+				'file' : '${ms.url}${content.contentUrl}',
 				'provider' : 'http',
 				'http.startparam' : 'starttime',
 				'autostart':'true'

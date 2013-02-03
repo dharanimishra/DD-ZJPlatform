@@ -498,14 +498,19 @@ span.standartTreeRow:hover {
 														id="thumbnail_image_file_upload" />
 													<div id="status"></div>
 													<script type="text/javascript">
+													var mediaserver_url = '${ms.url}';
+													
+													</script>
+													<script type="text/javascript">
 														$(function() {
+															
 															$(
 																	'#thumbnail_image_file_upload')
 																	.uploadify(
 																			{
-																				'swf' : 'http://video.beta.ziksana.com/resources/swf/uploadify.swf',
+																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
 																				'queueSizeLimit' : 1,
-																				'uploader' : 'http://video.beta.ziksana.com/zikload/uploadify.php',
+																				'uploader' : '${ms.uploadScript}',
 																				'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 																				'fileSizeLimit' : '10024KB',
 																				'onUploadStart': function(file){ $('#btnsbtassoccontent').attr('disabled','disabled'); },
@@ -585,10 +590,10 @@ span.standartTreeRow:hover {
 															$('#file_upload')
 																	.uploadify(
 																			{
-																				'swf' : 'http://video.beta.ziksana.com/resources/swf/uploadify.swf',
+																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
 																				'queueSizeLimit' : 1,
 																				'successTimeout' : 350,
-																				'uploader' : 'http://video.beta.ziksana.com/zikload/uploadify.php',
+																				'uploader' : '${ms.uploadScript}',
 																				//'debug': true,
 																				//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 																				'onUploadStart': function(file){ $('#btnsbtassoccontent').attr('disabled','disabled'); },

@@ -30,7 +30,7 @@ body{min-width: 490px; min-height: 270px; background: white;}
 				flashplayer: "/ziksana-web/resources/jwplayer/player.swf",
 				height: 385,
 				width: 640,
-				file: 'https://video.beta.ziksana.com/${content.contentUrl}'
+				file: '${ms.url}'+'${content.contentUrl}'
 			}).play('true');		
 			
 		});

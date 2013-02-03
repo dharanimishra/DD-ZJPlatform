@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseEditResponse;
@@ -37,6 +38,7 @@ import com.ziksana.service.course.CourseEditService;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.CourseSubjectDetailService;
 import com.ziksana.service.course.CourseTreeNodeService;
+import com.ziksana.service.security.MediaService;
 
 /**
  * @author ratneshkumar
@@ -59,13 +61,21 @@ public class CreateCourseController {
 
 	@Autowired
 	CourseTreeNodeService courseTreeNodeService;
+	
+	@Autowired
+	MediaService mediaService;
+	
+	MediaServerURL mediaServerURL = new MediaServerURL();
 
 	@RequestMapping(value = "/createcourse", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView showCourse() {
 		LOGGER.info(" Entering Class " + getClass() + " showCourse()");
+		mediaServerURL = mediaService.getMediaContents();
+		
 		ModelAndView mv = new ModelAndView("courses/definecourse");
+		mv.addObject("ms", mediaServerURL);
 		LOGGER.info("Class " + getClass() + "Exiting showCourse(): ");
 		return mv;
 	}
@@ -80,10 +90,13 @@ public class CreateCourseController {
 		ModelAndView modelView = null;
 		if (course_id > 0) {
 			modelView = new ModelAndView("courses/definecourse");
+			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("CourseId", course_id);
+			modelView.addObject("ms", mediaServerURL);
 		} else {
-			modelView = new ModelAndView("courses/definecourse");
+			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("CourseId", course_id);
+			modelView.addObject("ms", mediaServerURL);
 		}
 
 		LOGGER.info("Class " + getClass() + "Exiting showCourse(): ");
@@ -97,13 +110,17 @@ public class CreateCourseController {
 		LOGGER.info(" Entering Class " + getClass() + " showCourse()");
 
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
+		mediaServerURL = mediaService.getMediaContents();
 		ModelAndView modelView = null;
 		if (course_id > 0) {
+			
 			modelView = new ModelAndView("courses/coursecreation");
 			modelView.addObject("CourseId", course_id);
+			modelView.addObject("ms", mediaServerURL);
 		} else {
 			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("CourseId", course_id);
+			modelView.addObject("ms", mediaServerURL);
 		}
 
 		LOGGER.info("Class " + getClass() + "Exiting showCourse(): ");
@@ -117,13 +134,16 @@ public class CreateCourseController {
 
 		LOGGER.info(" Entering Class " + getClass() + " courseModule()");
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
+		mediaServerURL = mediaService.getMediaContents();
 		ModelAndView modelView = null;
 		if (course_id > 0) {
 			modelView = new ModelAndView("courses/coursecreation");
 			modelView.addObject("CourseId", course_id);
+			modelView.addObject("ms", mediaServerURL);
 		} else {
 			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("CourseId", course_id);
+			modelView.addObject("ms", mediaServerURL);
 		}
 
 		LOGGER.info("Class " + getClass() + "Exiting courseModule(): ");

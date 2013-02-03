@@ -11,6 +11,28 @@ public class MediaServerURL {
 	
 	
 	private String uploadContent;
+	
+	private String flashRecordingScript;
+	
+	private String flashRecordingFolder;
+
+	public String getFlashRecordingFolder() {
+		return flashRecordingFolder;
+	}
+
+	public void setFlashRecordingFolder(String flashRecordingFolder) {
+		this.flashRecordingFolder = flashRecordingFolder;
+	}
+
+	
+
+	public String getFlashRecordingScript() {
+		return flashRecordingScript;
+	}
+
+	public void setFlashRecordingScript(String flashRecordingScript) {
+		this.flashRecordingScript = flashRecordingScript;
+	}
 
 	public String getUrl() {
 		return url;

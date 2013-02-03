@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
 import com.ziksana.service.data.ContentService;
+import com.ziksana.service.security.MediaService;
 
 /**
  * @author ratneshkumar
@@ -26,6 +28,11 @@ public class AssociateCourseController {
 
 	@Autowired
 	ContentService contentService;
+	
+	@Autowired
+	MediaService mediaService;
+	
+	MediaServerURL mediaServerURL = new MediaServerURL();
 
 	@RequestMapping(value = "/associatecontent", method = { RequestMethod.GET,
 			RequestMethod.POST })
@@ -34,6 +41,8 @@ public class AssociateCourseController {
 		LOGGER.info("Entering showAssociateCourse(): ");
 		ModelAndView modelView = null;
 		modelView = new ModelAndView("courses/definecourse");
+		mediaServerURL = mediaService.getMediaContents();
+		modelView.addObject("ms", mediaServerURL);
 		return modelView;
 	}
 
@@ -50,12 +59,20 @@ public class AssociateCourseController {
 					+ nfe);
 		}
 		ModelAndView modelView = null;
+		
+		
+		
+
 		if (course_id > 0) {
 			modelView = new ModelAndView("courses/associatecontent");
 			modelView.addObject("CourseId", courseId);
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
 		} else {
 			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("CourseId", courseId);
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
 		}
 
 		return modelView;
@@ -67,10 +84,12 @@ public class AssociateCourseController {
 	ModelAndView showmodalplayer(@PathVariable String contentId) {
 		LOGGER.info("Entering showmodalplayer(): ");
 		ModelAndView mv = new ModelAndView("courses/modalplayer");
-
+		mediaServerURL = mediaService.getMediaContents();
 		Content content = contentService.getContent(Integer.valueOf(contentId));
 		mv.addObject("content", content);
-
+		mv.addObject("ms", mediaServerURL);
+		
+		
 		return mv;
 	}
 	
@@ -83,7 +102,8 @@ public class AssociateCourseController {
 
 		Content content = contentService.getContent(Integer.valueOf(contentId));
 		mv.addObject("content", content);
-
+		mediaServerURL = mediaService.getMediaContents();
+		mv.addObject("ms", mediaServerURL);
 		return mv;
 	}
 
@@ -93,6 +113,8 @@ public class AssociateCourseController {
 			@RequestParam(value = "flashcontentpath", required = true) String flashcontentpath) {
 		ModelAndView mav = new ModelAndView("courses/enrich_player");
 		mav.addObject("flashcontentpath", flashcontentpath);
+		mediaServerURL = mediaService.getMediaContents();
+		mav.addObject("ms", mediaServerURL);
 		return mav;
 
 	}

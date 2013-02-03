@@ -1,3 +1,21 @@
+$(function(){			 
+				var mediaserver_url = '';
+		        var mediaserver_uploadscript = '';
+		        var mediaserver_uploadcontent = '';
+		     
+		            $.get("/ziksana-web/getmediacontents", function(data) {
+		            	
+		             console.log(data);
+		             console.log(data);
+		             mediaserver_url = data.url.toString();
+		             mediaserver_uploadscript = data.uploadScript.toString();
+		             mediaserver_uploadcontent = data.uploadContent.toString();			            	  
+            	  	 console.log(mediaserver_url);
+            	  	 console.log(mediaserver_uploadscript);
+            	  	 console.log(mediaserver_uploadcontent);
+		            
+		            });
+});//end document ready	
 // JavaScript Document
 function fnCheckExt(fileName) {
 	var file = $("#imgultype").val();
@@ -161,8 +179,7 @@ function onButtonClick(menuitemId, type) {
 		}, function(data) {
 
 			content_type = (data.contentTypeString).toUpperCase();
-			content_url = 'https://video.beta.ziksana.com/'
-					+ data.contentUrl;
+			content_url = mediaserver_url + data.contentUrl;
 			content_path = data.contentUrl;
 
 			if (content_type == 'VIDEO') {
@@ -249,8 +266,7 @@ function onButtonClick(menuitemId, type) {
 		}, function(data) {
 
 			content_type = (data.contentTypeString).toUpperCase();
-			content_url = 'https://video.beta.ziksana.com/'
-					+ data.contentUrl;
+			content_url = mediaserver_url + data.contentUrl;
 			content_path = data.contentUrl;
 
 			if (content_type == 'PDF' || content_type == 'DOC'

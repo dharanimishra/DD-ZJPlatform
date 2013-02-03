@@ -541,10 +541,10 @@ span.standartTreeRow:hover {
 																'#thumbnail_image_file_upload')
 																.uploadify(
 																		{
-																			'swf' : 'http://video.beta.ziksana.com/resources/swf/uploadify.swf',
+																			'swf' : '/ziksana-web/resources/swf/uploadify.swf',
 																			'queueSizeLimit' : 1,
 																			'successTimeout' : 350,
-																			'uploader' : 'http://video.beta.ziksana.com/zikload/uploadify.php',
+																			'uploader' : '${ms.uploadScript}',
 																			'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 																			'fileSizeLimit' : '10024KB',
 																			'onUploadStart': function(file){ $('#Btnsbtcmodule').attr('disabled','disabled'); },
