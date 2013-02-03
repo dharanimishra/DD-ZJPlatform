@@ -11,6 +11,7 @@
 
 
 
+	<util:properties id="myProperties" location="classpath:/mediaserver.properties" /> 
 	<util:properties id="ldapProperties" location="classpath:/ldap.properties" />
 
 	<!-- Scans within the base package of the application for @Components to 

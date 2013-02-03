@@ -70,6 +70,24 @@
             $(function(){
                 $("#slides").slides({generateNextPrev: true});
             });
+            $(function(){			 
+				mediaserver_url = '';
+		        mediaserver_uploadscript = '';
+		        mediaserver_uploadcontent = '';
+		     
+		            $.get("/ziksana-web/getmediacontents", function(data) {
+		            	
+				             console.log(data);
+				             mediaserver_url = data.url.toString();
+				             mediaserver_uploadscript = data.uploadScript.toString();
+				             mediaserver_uploadcontent = data.uploadContent.toString();			            	  
+		            	  	console.log(mediaserver_url);
+		            	  	console.log(mediaserver_uploadscript);
+		            	  	console.log(mediaserver_uploadcontent);
+		            	  	
+		            		
+		            });
+});//end document ready	
         </script>
     </head>
     
@@ -79,7 +97,7 @@
             <div class="slides_container">	
 			<c:forEach var="i" begin="0" end="${content.numberOfThumbnails-1}" step="1" varStatus ="status">
 				<div>
-				<image src="https://video.beta.ziksana.com/${content.thumbnailPicturePath}img<c:out value="${i}" />.jpg" />
+				<image src="<c:out value="${media}"/>${content.thumbnailPicturePath}img<c:out value="${i}" />.jpg" />
 				</div>
 			</c:forEach>
           
