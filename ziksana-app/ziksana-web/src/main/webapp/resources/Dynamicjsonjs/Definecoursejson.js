@@ -18,7 +18,7 @@ $(document)
 									function(data) {
 										options = data;
 										var option_string = '';
-										option_string += '<option value="">Select Course Area</option>';
+										option_string += '<option value="Select Subject">Select Subject</option>';
 
 										for (i in options) {
 											label = options[i].label;
@@ -53,7 +53,7 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															option_string += '<option value="">Select Course Subject</option>';
+															option_string += '<option value="Select Subject Area">Select Subject Area</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
@@ -122,7 +122,7 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															option_string += '<option value="">Select Course Topic</option>';
+															option_string += '<option value="Select Topic">Select Topic</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
@@ -244,14 +244,15 @@ function createCourse() {
 		var Course_Name = $('#defaultvalue').val();
 
 		var Course_Description = $('#Cdescription').val();
+
+		var Course_Description1 = CKEDITOR.instances['Cdescriptionrte']
+				.getData();
+
+		var corstartTrim = Course_Description1.substring(3);
 		
-		var Course_Description1 = CKEDITOR.instances['Cdescriptionrte'].getData();
-		/*
-		var corstartTrim =  Course_Description1.substring(3);
-		
-		corstartTrim = corstartTrim.substr(0, corstartTrim.length-5);*/
-		
-		var Course_Descriptions = Course_Description+Course_Description1;
+		corstartTrim = corstartTrim.substr(0, corstartTrim.length - 5);
+
+		var Course_Descriptions = Course_Description + Course_Description1;
 
 		var Subject_Area = $('#Careaddl').val();
 
@@ -299,7 +300,7 @@ function createCourse() {
 										+ course_id;
 
 							} else {
-								$('#tempdiv').html(
+								$('#tempdiv1').html(
 										'<span style="color:red;">'
 												+ data.message + '</span>');
 							}
@@ -350,18 +351,17 @@ function getCourse() {
 
 							$('#defaultvalue').val(course_name);
 
-							if(course_desc.charAt(0)=='<'){
-								
-							$('#Cdescriptionrte').val(course_desc);
-							
-							$('#rich_text_editor').click(); 						
-								
-							}else{
-								
-							$('#Cdescription').val(course_desc);
-							
+							if (course_desc.charAt(0) == '<') {
+
+								$('#Cdescriptionrte').val(course_desc);
+
+								$('#rich_text_editor').click();
+
+							} else {
+
+								$('#Cdescription').val(course_desc);
+
 							}
-							
 
 							$('#Ctagfield').val(course_desc);
 

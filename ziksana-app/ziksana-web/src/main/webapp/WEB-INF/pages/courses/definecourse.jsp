@@ -398,9 +398,9 @@ span.standartTreeRow:hover {
 												id="Cdescriptionrte" name="editor1pageload"
 												class="defaultvalue _focus"></textarea>
 										</div>
-										<script type="text/javascript">
+										 <script type="text/javascript">
 											CKEDITOR.replace('Cdescriptionrte');
-										</script>
+										</script> 
 
 									</div>
 									<!-- end of coursename--->
@@ -423,16 +423,16 @@ span.standartTreeRow:hover {
 											<select name="Careaddl" id="Careaddl"
 												class="defaultvalue labelclass"
 												style="margin-right: 15px; width: 200px;">
-												<option value="">Select Course Area</option>
+												<option value="Select Subject">Select Subject</option>
 
 											</select> <select name="Csubjectddl" id="Csubjectddl"
 												class="defaultvalue labelclass"
 												style="margin-right: 15px; width: 200px;">
-												<option value="">Select Course Subject</option>
+												<option value="Select Subject Area">Select Subject Area</option>
 
 											</select> <select name="Ctopicddl" id="Ctopicddl"
 												class="defaultvalue labelclass " style="width: 200px;">
-												<option value="">Select Course Topic</option>
+												<option value="Select Topic">Select Topic</option>
 
 											</select>
 										</div>
@@ -450,8 +450,7 @@ span.standartTreeRow:hover {
 										<div class="coursecredits">
 											<label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Credits :</label>
-											<input type="text" id="Credits"
-												class="smartspinner "
+											<input type="text" id="Credits" class="smartspinner "
 												style="margin-left: 18px;" />
 											<script type="text/javascript"
 												src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
@@ -612,7 +611,14 @@ span.standartTreeRow:hover {
 																	'uploader' : '${ms.uploadScript}',
 																	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 																	'fileSizeLimit' : '10024KB',
-																	'onUploadStart': function(file){ $('#sbtvalidation').attr('disabled','disabled'); },
+																	'onUploadStart' : function(
+																			file) {
+																		$(
+																				'#sbtvalidation')
+																				.attr(
+																						'disabled',
+																						'disabled');
+																	},
 																	//'debug': true,
 																	//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 																	'onUploadSuccess' : function(
@@ -641,7 +647,10 @@ span.standartTreeRow:hover {
 																					.html(
 																							data_object.message);
 																		}
-																		$('#sbtvalidation').removeAttr('disabled'); //enable submit button
+																		$(
+																				'#sbtvalidation')
+																				.removeAttr(
+																						'disabled'); //enable submit button
 
 																	}
 																// Your options here
@@ -710,7 +719,7 @@ span.standartTreeRow:hover {
 										<!-- Start of Default Instruction -->
 
 										<div id="instruction" style="padding: 10px;">
-											<img src="/ziksana-web/resources/images/instruction.jpg"
+											<img src="/ziksana-web/resources/images/instruction.png"
 												class="all-box-shadow" alt="instructions"
 												title="Key-Board instruction" width="720"
 												style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;">

@@ -93,15 +93,29 @@ function onButtonClick(menuitemId, type) {
 
 								$('#Cmoduletxtbox').val(module_name);
 
+								if (module_desc.charAt(0) == '<') {
+
+									$('#Cmoduledescrte').val(module_desc);
+
+									$('#addmodulerichedit').click();
+
+								} else {
+
+									$('#Cmoduledesc').val(module_desc);
+
+								}
+
 								$('#Cmoduledesc').val(module_desc);
 
 								$('#Cmoduledescrte').val(module_desc);
 
 								$('#Addmoduletag').val(module_name);
 
-								$('#addmodulecheckbox').attr('checked','checked'); // checks the checkbox.
+								$('#addmodulecheckbox').attr('checked',
+										'checked'); // checks the checkbox.
 
-								$('#saveassociateobject').attr('enabled','enabled'); // enabled the
+								$('#saveassociateobject').attr('enabled',
+										'enabled'); // enabled the
 
 								$('#Cmoduleduration').val(prescribedLCDuration);
 
@@ -119,7 +133,7 @@ function onButtonClick(menuitemId, type) {
 												function(data) {
 													options = data;
 													var option_string = '';
-													option_string += '<option value="">Select Course Area</option>';
+													option_string += '<option value="Select Subject">Select Subject</option>';
 
 													for (i in options) {
 														label = options[i].label;
@@ -159,7 +173,7 @@ function onButtonClick(menuitemId, type) {
 												function(data) {
 													options = data;
 													var option_string = '';
-													option_string += '<option value="">Select Course Subject</option>';
+													option_string += '<option value="Select Subject Area">Select Subject Area</option>';
 													for (i in options) {
 														label = options[i].label;
 														value = options[i].value;
@@ -196,7 +210,7 @@ function onButtonClick(menuitemId, type) {
 												function(data) {
 													options = data;
 													var option_string = '';
-													option_string += '<option value="">Select Course Topic</option>';
+													option_string += '<option value="Select Topic">Select Topic</option>';
 													for (i in options) {
 														label = options[i].label;
 														value = options[i].value;
@@ -219,7 +233,7 @@ function onButtonClick(menuitemId, type) {
 								// end populating topic
 
 							} else {
-								$('#tempdiv').html(
+								$('#tempdiv1').html(
 										'<span style="color:red;">'
 												+ data.message + '</span>');
 							}

@@ -10,7 +10,7 @@ $(document)
 									function(data) {
 										options = data;
 										var option_string = '';
-										option_string += '<option value="">Select Module Area</option>';
+										option_string += '<option value="Select Subject">Select Subject</option>';
 
 										for (i in options) {
 											label = options[i].label;
@@ -45,7 +45,7 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															option_string += '<option value="">Select Module Subject</option>';
+															option_string += '<option value="Select Subject Area">Select Subject Area</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
@@ -106,7 +106,7 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															option_string += '<option value="">Select Module Topic</option>';
+															option_string += '<option value="Select Topic">Select Topic</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
@@ -178,7 +178,7 @@ $(document)
 
 				});
 
-	function getaddmodulesave() {
+function getaddmodulesave() {
 
 	validation = jQuery("#AddModule").validationEngine('validate');
 	if (validation == true) {
@@ -197,6 +197,15 @@ $(document)
 		var learningComponentId = $('#learningComponentId').val();
 		var Module_Name = $('#Cmoduletxtbox').val();
 		var Module_Description = $('#Cmoduledesc').val();
+		var Module_Description1 = CKEDITOR.instances['Cmoduledescrte']
+				.getData();
+
+		var corstartTrim = Module_Description1.substring(3);
+
+		corstartTrim = corstartTrim.substr(0, corstartTrim.length - 5);
+
+		var Module_Descriptions = Module_Description + Module_Description1;
+
 		var Subject_Area = $('#Cmoduleareaddl').val();
 		var Subject = $('#Cmodulesubjectddl').val();
 		var Topic = $('#Cmoduletopicddl').val();
@@ -211,7 +220,7 @@ $(document)
 			"CourseLearningComponentId" : CourseLearningComponentId,
 			"LearningComponentId" : learningComponentId,
 			"Course_Module" : Module_Name,
-			"Module_Description" : Module_Description,
+			"Module_Description" : Module_Descriptions,
 			"Subject_Area" : Subject_Area,
 			"Subject" : Subject,
 			"Topic" : Topic,
@@ -222,26 +231,20 @@ $(document)
 			"Assoc_Image" : Assoc_Image
 		};
 
-		// successCallback = onSuccessfulModuleCreation;
-		// errorCallback = commonErrorCallback;
-		// // Step 2: Send Message Using sendMessage(); function.
-		// sendMessage(uri, token, parameters, request_type, successCallback,
-		// errorCallback);
-		//
-		// alert("Module created..");
-
 		$.post(uri, parameters, function(data) {
 			console.log(data);
 			if (data.response == 'success') {
 				course_id = data.id;
 				$('#courseid').val(course_id);
 				if (course_id != '' & course_id != null) {
-					window.location.href = window.location.href;
-					$('#tempdiv').html(
+					$('#courseid').val(course_id);
+					window.location.href = "/ziksana-web/secure/createmodule/"
+							+ course_id;
+					$('#tempdiv1').html(
 							'<span style="color:red;">' + data.message
 									+ '</span>');
 				} else {
-					$('#tempdiv').html(
+					$('#tempdiv1').html(
 							'<span style="color:red;">' + data.message
 									+ '</span>');
 				}

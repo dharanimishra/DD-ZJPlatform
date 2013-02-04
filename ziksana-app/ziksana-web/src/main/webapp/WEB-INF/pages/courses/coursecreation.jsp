@@ -46,7 +46,8 @@
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/table/tablerow.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/search/search.js"></script>
-
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/ziksana/ckeditor/adapters/jquery.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/ziksana/ckeditor/ckeditor.js"></script>
 <script type="text/javascript"
@@ -348,9 +349,10 @@ span.standartTreeRow:hover {
 								Course Details </a>
 						</div>
 
-						<br> <br> <input type="hidden" id="courseid" value="${courseId}" /> 
-							<input type="hidden" id="courseLearningComponentId" value="" />
-							<input type="hidden" id="learningComponentId" value="" />
+						<br> <br> <input type="hidden" id="courseid"
+							value="${courseId}" /> <input type="hidden"
+							id="courseLearningComponentId" value="" /> <input type="hidden"
+							id="learningComponentId" value="" />
 						<style>
 #splitter {
 	width: 975px;
@@ -390,12 +392,12 @@ span.standartTreeRow:hover {
 									<!-- Start of Default Instruction -->
 
 									<div id="instruction" style="padding: 10px;">
-										<img src="/ziksana-web/resources/images/instruction.jpg"
+										<img src="/ziksana-web/resources/images/instruction.png"
 											class="all-box-shadow" alt="instructions"
 											title="Key-Board instruction" width="720"
 											style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;">
 									</div>
-								
+
 
 									<!-- End of Default Instruction -->
 									<!-- Add Module Container -->
@@ -426,9 +428,9 @@ span.standartTreeRow:hover {
 
 													<br /> <label for="moduledescription" class="labelclass"
 														style="font-weight: bold;">Module Description :</label> <a
-														class="f-r _richText" id="addmodulerichedit"
-														href="#linkurl" style="text-decoration: none;">Rich
-														Text Editor</a> <a class="f-r _plainText" href="#linkurl"
+														class="f-r _richText" id="addmodulerichedit" href="#"
+														style="text-decoration: none;">Rich Text Editor</a> <a
+														class="f-r _plainText"  href="#"
 														style="text-decoration: none;">Plain Text Editor</a>
 
 
@@ -438,54 +440,60 @@ span.standartTreeRow:hover {
 													<br />
 													<div class="_richTextShow">
 														<textarea placeholder="Describe the Course being created"
-															id="Cmoduledescrte" name="editor2"
-															class="defaultvalue _focus validate[required]"></textarea>
+															id="Cmoduledescrte" name="editor1pageload"
+															class="defaultvalue _focus"></textarea>
 													</div>
+													<!--  <script type="text/javascript">
+														CKEDITOR
+																.replace('Cmoduledescrte');
+													</script> -->
 												</div>
 
 
 											</div>
 											<!-- end of coursename--->
-									
-									<!-- end of control group--->
 
-									<!----------------- start of second container --------------->
-									<div class="secondcontainer">
-										<div class="control-group">
-											<div>
-												<label class="labelclass" style="font-weight: bold;">Subject
-													Area : </label> <label class="labelclass"
-													style="margin-left: 115px; font-weight: bold;">Subject:
-												</label> <label class="labelclass"
-													style="margin-left: 155px; font-weight: bold;">Topic:
-												</label>
-											</div>
-											<div class="moduleselection">
-												<select name="Cmoduleareaddl" id="Cmoduleareaddl"
-													class="defaultvalue labelclass"
-													style="margin-right: 15px; width: 200px;">
-													<option value="">Select Subject Area</option>
+											<!-- end of control group--->
 
-												</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl"
-													class="defaultvalue labelclass"
-													style="margin-right: 15px; width: 200px;">
-													<option value="">Select Module Area</option>
+											<!----------------- start of second container --------------->
+											<div class="secondcontainer">
+												<div class="control-group">
+													<div>
+														<label class="labelclass" style="font-weight: bold;">Subject
+															Area : </label> <label class="labelclass"
+															style="margin-left: 115px; font-weight: bold;">Subject:
+														</label> <label class="labelclass"
+															style="margin-left: 155px; font-weight: bold;">Topic:
+														</label>
+													</div>
+													<div class="moduleselection">
+														<select name="Cmoduleareaddl" id="Cmoduleareaddl"
+															class="defaultvalue labelclass"
+															style="margin-right: 15px; width: 200px;">
+															<option value="Select Subject">Select Subject</option>
 
-												</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"
-													class="defaultvalue labelclass" style="width: 200px;">
-													<option value="">Select Module Topic</option>
+														</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl"
+															class="defaultvalue labelclass"
+															style="margin-right: 15px; width: 200px;">
+															<option value="Select Subject Area">Select
+																Subject Area</option>
 
-												</select>
-											</div>
-											<!-- end of moduleselection--->
+														</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"
+															class="defaultvalue labelclass" style="width: 200px;">
+															<option value="Select Topic">Select Topic</option>
 
-											<div class="coursetags">
-												<br /> <label class="control-label labelclass"
-													for="moduletags"
-													style="margin-top: -2px; font-weight: bold;">Specify
-													any tags : </label> <input id="Addmoduletag" type="text"></input> <br />
+														</select>
+													</div>
+													<!-- end of moduleselection--->
 
-												<!--   <label class="control-label labelclass"
+													<div class="coursetags">
+														<br /> <label class="control-label labelclass"
+															for="moduletags"
+															style="margin-top: -2px; font-weight: bold;">Specify
+															any tags : </label> <input id="Addmoduletag" type="text"></input>
+														<br />
+
+														<!--   <label class="control-label labelclass"
 															for="CourseName" style="margin-top: -4px;">Enter
 															Weight :</label>
 														<div class="controls">
@@ -495,208 +503,220 @@ span.standartTreeRow:hover {
 																style="width: 240px; margin-left: 35px;" />
 														</div> -->
 
-											</div>
-											<!-- end of coursetags--->
-											<br /> <input type="checkbox" id="addmodulecheckbox"
-												class="labelclass" value="Institution Logo" /> <span
-												class="labelclass"
-												style="padding-left: 5px; font-weight: bold;">Save as
-												a Learning Object? </span>
-											<div class="courseduration" id="saveassociateobject">
-												<br /> <label for="Learning Duration" class="labelclass"
-													style="font-weight: bold;">Specify the Duration of
-													the Learning Object :</label> <input type="text"
-													id="Cmoduleduration" style="width: 30px;"
-													class="defaultvalue validate[required]" /> <select
-													name="Cmoduleunits" class="defaultvalue validate[required]"
-													id="Cmoduleunits" style="margin-left: 5px;">
+													</div>
+													<!-- end of coursetags--->
+													<br /> <input type="checkbox" id="addmodulecheckbox"
+														class="labelclass" value="Institution Logo" /> <span
+														class="labelclass"
+														style="padding-left: 5px; font-weight: bold;">Save
+														as a Learning Object? </span>
+													<div class="courseduration" id="saveassociateobject">
+														<br /> <label for="Learning Duration" class="labelclass"
+															style="font-weight: bold;">Specify the Duration
+															of the Learning Object :</label> <input type="text"
+															id="Cmoduleduration" style="width: 30px;"
+															class="defaultvalue validate[required]" /> <select
+															name="Cmoduleunits"
+															class="defaultvalue validate[required]" id="Cmoduleunits"
+															style="margin-left: 5px;">
 
-													<option value="1">Weeks</option>
-													<option value="2">Months</option>
-													<option value="3">Days</option>
-												</select>
-												<div class="associateimage" style="margin-top: 15px;">
-													<img src="/ziksana-web/resources/images/icons/upload.png"
-														align="left" />
-													<p class="labelclass">
-														<b>Associate an Image for your Learning Object</b>
-													</p>
-													<input type="hidden" readonly="readonly" id="Cmoduleimgupl"
-														placeholder="specify an image" style="margin-left: 20px;" />
-													<!--  <a href=""
+															<option value="1">Weeks</option>
+															<option value="2">Months</option>
+															<option value="3">Days</option>
+														</select>
+														<div class="associateimage" style="margin-top: 15px;">
+															<img src="/ziksana-web/resources/images/icons/upload.png"
+																align="left" />
+															<p class="labelclass">
+																<b>Associate an Image for your Learning Object</b>
+															</p>
+															<input type="hidden" readonly="readonly"
+																id="Cmoduleimgupl" placeholder="specify an image"
+																style="margin-left: 20px;" />
+															<!--  <a href=""
 																id="cancellinkadd"><img
 																src="/ziksana-web/resources/images/delete.jpg" />Cancel</a> -->
 
+														</div>
+
+
+														<div id="thubmnail_upload_message"></div>
+														<div id="loaderText"></div>
+														<input type="file" name="thumbnail_image_file_upload"
+															id="thumbnail_image_file_upload" />
+														<div id="status"></div>
+														<script type="text/javascript">
+															$(function() {
+																$(
+																		'#thumbnail_image_file_upload')
+																		.uploadify(
+																				{
+																					'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																					'queueSizeLimit' : 1,
+																					'successTimeout' : 350,
+																					'uploader' : '${ms.uploadScript}',
+																					'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+																					'fileSizeLimit' : '10024KB',
+																					'onUploadStart' : function(
+																							file) {
+																						$(
+																								'#Btnsbtcmodule')
+																								.attr(
+																										'disabled',
+																										'disabled');
+																					},
+																					//'debug': true,
+																					//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+																					'onUploadSuccess' : function(
+																							file,
+																							data,
+																							response) {
+																						json_string = data;
+																						data_object = $
+																								.parseJSON(json_string);
+																						console
+																								.log(data_object);
+																						if (data_object.Uploaded == 'true') {
+																							$(
+																									'#Cmoduleimgupl')
+																									.val(
+																											data_object.ContentPath);
+																							$(
+																									'#thubmnail_upload_message')
+																									.html(
+																											'Thumbnail Image Upload Successful! ');
+
+																						} else { //there is an error in the upload process
+
+																							$(
+																									'#message')
+																									.html(
+																											data_object.message);
+																						}
+																						$(
+																								'#Btnsbtcmodule')
+																								.removeAttr(
+																										'disabled'); //enable submit button
+
+																					}
+																				// Your options here
+																				});
+															});
+														</script>
+
+
+														<!-- end of associateimage--->
+
+													</div>
+													<!-- end of courseduration--->
 												</div>
-
-
-												<div id="thubmnail_upload_message"></div>
-												<div id="loaderText"></div>
-												<input type="file" name="thumbnail_image_file_upload"
-													id="thumbnail_image_file_upload" />
-												<div id="status"></div>
-												<script type="text/javascript">
-													$(function() {
-														$(
-																'#thumbnail_image_file_upload')
-																.uploadify(
-																		{
-																			'swf' : '/ziksana-web/resources/swf/uploadify.swf',
-																			'queueSizeLimit' : 1,
-																			'successTimeout' : 350,
-																			'uploader' : '${ms.uploadScript}',
-																			'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-																			'fileSizeLimit' : '10024KB',
-																			'onUploadStart': function(file){ $('#Btnsbtcmodule').attr('disabled','disabled'); },
-																			//'debug': true,
-																			//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
-																			'onUploadSuccess' : function(
-																					file,
-																					data,
-																					response) {
-																				json_string = data;
-																				data_object = $
-																						.parseJSON(json_string);
-																				console
-																						.log(data_object);
-																				if (data_object.Uploaded == 'true') {
-																					$(
-																							'#Cmoduleimgupl')
-																							.val(
-																									data_object.ContentPath);
-																					$(
-																							'#thubmnail_upload_message')
-																							.html(
-																									'Thumbnail Image Upload Successful! ');
-
-																				} else { //there is an error in the upload process
-
-																					$(
-																							'#message')
-																							.html(
-																									data_object.message);
-																				}
-																				$('#Btnsbtcmodule').removeAttr('disabled'); //enable submit button
-
-																			}
-																		// Your options here
-																		});
-													});
-												</script>
-
-
-												<!-- end of associateimage--->
-
+												<!-- end of secondcontainer--->
 											</div>
-											<!-- end of courseduration--->
-										</div>
-										<!-- end of secondcontainer--->
-									</div>
-									<!-- end of control group--->
-									<div id="tempdiv2"></div>
-									<input type="button"
-										class="cancellinkdefinecourse btn btn-info"
-										id="Btncmodulecncl" value="Cancel"
-										style="float: right; margin-right: 20px;" /> <input
-										type="submit" class="btn btn-info" id="Btnsbtcmodule"
-										value="Submit" onClick="getaddmodulesave(); return false;"
-										style="float: right; margin-right: 20px;" /> <br /> <br />
+											<!-- end of control group--->
+											<div id="tempdiv2"></div>
+											<input type="button"
+												class="cancellinkdefinecourse btn btn-info"
+												id="Btncmodulecncl" value="Cancel"
+												style="float: right; margin-right: 20px;" /> <input
+												type="submit" class="btn btn-info" id="Btnsbtcmodule"
+												value="Submit" onClick="getaddmodulesave(); return false;"
+												style="float: right; margin-right: 20px;" /> <br /> <br />
 
-								</form>
+										</form>
+
+									</div>
+
+									<!-- end of add module container -->
+									<!-- start of search and associate content -->
+
+									<!-- End of search and associate content -->
+
+									<!-- Start of Third Container -->
+
+									<!-- end of definecontainer--->
+
+									<!-- End of Third Container -->
+
+									<!-- Start of Viewmodelthinking -->
+
+
+									<a href="/ziksana-web/secure/associatecontent/${courseId}"
+										style="float: right; margin-bottom: 20px; margin-top: 20px;"
+										class="btn btn-info">Save and Continue</a>
+									<!-- End of viewmodelthinking -->
+
+									<!-- start view modelthinking 2 -->
+
+									<!-- End of viewmodelthinking -->
+									<!-- End of view modelthinkin 2 -->
 
 								</div>
-									
-								<!-- end of add module container -->
-								<!-- start of search and associate content -->
-
-								<!-- End of search and associate content -->
-
-								<!-- Start of Third Container -->
-
-								<!-- end of definecontainer--->
-
-								<!-- End of Third Container -->
-
-								<!-- Start of Viewmodelthinking -->
-
-
-								<a href="/ziksana-web/secure/associatecontent/${courseId}"
-									style="float: right; margin-bottom: 20px; margin-top: 20px;"
-									class="btn btn-info">Save and Continue</a>
-								<!-- End of viewmodelthinking -->
-
-								<!-- start view modelthinking 2 -->
-
-								<!-- End of viewmodelthinking -->
-								<!-- End of view modelthinkin 2 -->
+								<!-- Content Panel End -->
 
 							</div>
-							<!-- Content Panel End -->
+							<!-- end of definecontainer--->
+
+
+
+							<!------------------------------- end of first Tab ---------------------------------------------->
+
+							<!--End Center Container-->
 
 						</div>
-						<!-- end of definecontainer--->
-
-
-
-						<!------------------------------- end of first Tab ---------------------------------------------->
-
-						<!--End Center Container-->
-
 					</div>
 				</div>
 			</div>
-	</div>
-	
-	<!--End Main Content-->
-	<!--Current Progress-->
-	<div class="col border-top">
-		<div class="collapse">
-			<h3 class="border-left border-right border-top">Your current
-				progress [ Starting ... ]</h3>
-			<div>
-				<p class="caption text-size-px18">Your progress this session...
-				</p>
+
+			<!--End Main Content-->
+			<!--Current Progress-->
+			<div class="col border-top">
+				<div class="collapse">
+					<h3 class="border-left border-right border-top">Your current
+						progress [ Starting ... ]</h3>
+					<div>
+						<p class="caption text-size-px18">Your progress this
+							session...</p>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
 
-	<script>
-		$(".collapse").collapse({
-			show : function() {
-				this.animate({
-					opacity : 'toggle',
-					height : 'toggle'
-				}, 300);
-			},
-			hide : function() {
+			<script>
+				$(".collapse").collapse({
+					show : function() {
+						this.animate({
+							opacity : 'toggle',
+							height : 'toggle'
+						}, 300);
+					},
+					hide : function() {
 
-				this.animate({
-					opacity : 'toggle',
-					height : 'toggle'
-				}, 300);
-			}
-		});
-
-		//rating-star
-		$('#edu-star').raty({
-
-			click : function(score, evt) {
-				$(this).fadeOut(function() {
-					$(this).fadeIn();
+						this.animate({
+							opacity : 'toggle',
+							height : 'toggle'
+						}, 300);
+					}
 				});
-			},
-			targetKeep : true,
-			path : 'img/',
-			score : 4,
-			cancel : true
-		});
-	</script>
+
+				//rating-star
+				$('#edu-star').raty({
+
+					click : function(score, evt) {
+						$(this).fadeOut(function() {
+							$(this).fadeIn();
+						});
+					},
+					targetKeep : true,
+					path : 'img/',
+					score : 4,
+					cancel : true
+				});
+			</script>
 
 
-	<!--End Current Progress-->
-	<!--Footer Container-->
-	<footer> </footer>
-	<!--End Footer Container-->
+			<!--End Current Progress-->
+			<!--Footer Container-->
+			<footer> </footer>
+			<!--End Footer Container-->
 	</div>
 
 
