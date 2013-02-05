@@ -9,6 +9,9 @@ public class CourseEditResponse {
 	private String subject;
 	private String topic;
 	private String tagfield;
+	private String selected_tags;
+	private String available_tags;
+
 	private String credits;
 	private String extracredits;
 	private String duration;
@@ -127,6 +130,22 @@ public class CourseEditResponse {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getSelected_tags() {
+		return selected_tags;
+	}
+
+	public void setSelected_tags(String selected_tags) {
+		this.selected_tags = selected_tags;
+	}
+
+	public String getAvailable_tags() {
+		return available_tags;
+	}
+
+	public void setAvailable_tags(String available_tags) {
+		this.available_tags = available_tags;
 	}
 
 }

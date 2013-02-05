@@ -249,7 +249,7 @@ function createCourse() {
 				.getData();
 
 		var corstartTrim = Course_Description1.substring(3);
-		
+
 		corstartTrim = corstartTrim.substr(0, corstartTrim.length - 5);
 
 		var Course_Descriptions = Course_Description + Course_Description1;
@@ -260,7 +260,9 @@ function createCourse() {
 
 		var Topic = $('#Ctopicddl').val();
 
-		var Coursetag_Field = $('#Ctagfield').val();
+		var Coursetag_Field = $('#Ctagfield_e').val();
+		
+		console.log(Coursetag_Field);
 
 		var Course_Credits = $('#Credits').val();
 
@@ -327,6 +329,8 @@ function getCourse() {
 		"Course_id" : Course_id
 	};
 
+	var available_tags, selected_tags;
+
 	$
 			.post(
 					uri,
@@ -340,7 +344,9 @@ function getCourse() {
 							subject_area = data.subjectarea;
 							subject = data.subject;
 							topic = data.topic;
-							tag_field = data.tagfield;
+							// tag_field = data.tagfield;
+							selected_tags = data.selected_tags.split(',');
+							available_tags = data.available_tags.split(',');
 							credits = data.credits;
 							extra_credits = data.extracredits;
 							duration = data.duration;
@@ -363,8 +369,12 @@ function getCourse() {
 
 							}
 
-							$('#Ctagfield').val(course_desc);
-
+							$('#Ctagfield_e').superblyTagField({
+								allowNewTags : true,
+								showTagsNumber : 10,
+								preset : selected_tags,
+								tags : available_tags
+							});
 							$('#Credits').val(credits);
 
 							$('#ExtraCredits').val(extra_credits);
@@ -384,7 +394,7 @@ function getCourse() {
 											function(data) {
 												options = data;
 												var option_string = '';
-												option_string += '<option value="">Select Course Area</option>';
+												option_string += '<option value="Select Subject">Select Subject</option>';
 
 												for (i in options) {
 													label = options[i].label;
@@ -422,7 +432,7 @@ function getCourse() {
 											function(data) {
 												options = data;
 												var option_string = '';
-												option_string += '<option value="">Select Course Subject</option>';
+												option_string += '<option value="Select Subject Area">Select Subject Area</option>';
 												for (i in options) {
 													label = options[i].label;
 													value = options[i].value;
@@ -457,7 +467,7 @@ function getCourse() {
 											function(data) {
 												options = data;
 												var option_string = '';
-												option_string += '<option value="">Select Course Topic</option>';
+												option_string += '<option value="Select Topic">Select Topic</option>';
 												for (i in options) {
 													label = options[i].label;
 													value = options[i].value;

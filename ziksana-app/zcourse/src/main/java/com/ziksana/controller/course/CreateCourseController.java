@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseDetails;
@@ -38,6 +39,7 @@ import com.ziksana.service.course.CourseEditService;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.CourseSubjectDetailService;
 import com.ziksana.service.course.CourseTreeNodeService;
+import com.ziksana.service.course.TagCloudService;
 import com.ziksana.service.security.MediaService;
 
 /**
@@ -57,14 +59,17 @@ public class CreateCourseController {
 	CourseEditService courseEditService;
 
 	@Autowired
+	TagCloudService tagCloudService;
+
+	@Autowired
 	CourseSubjectDetailService courseSubjectDetailService;
 
 	@Autowired
 	CourseTreeNodeService courseTreeNodeService;
-	
+
 	@Autowired
 	MediaService mediaService;
-	
+
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
 	@RequestMapping(value = "/createcourse", method = { RequestMethod.GET,
@@ -73,7 +78,7 @@ public class CreateCourseController {
 	ModelAndView showCourse() {
 		LOGGER.info(" Entering Class " + getClass() + " showCourse()");
 		mediaServerURL = mediaService.getMediaContents();
-		
+
 		ModelAndView mv = new ModelAndView("courses/definecourse");
 		mv.addObject("ms", mediaServerURL);
 		LOGGER.info("Class " + getClass() + "Exiting showCourse(): ");
@@ -113,7 +118,7 @@ public class CreateCourseController {
 		mediaServerURL = mediaService.getMediaContents();
 		ModelAndView modelView = null;
 		if (course_id > 0) {
-			
+
 			modelView = new ModelAndView("courses/coursecreation");
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("ms", mediaServerURL);
@@ -252,7 +257,7 @@ public class CreateCourseController {
 				course.setAccountableMember(accountableMember);
 				course.setSubjClassificationId(courseSubjectClassification
 						.getSubjClassificationId());
-				// course.setSubjClassificationId(1);
+
 			}
 
 			LOGGER.info("Class :" + getClass()
@@ -285,20 +290,57 @@ public class CreateCourseController {
 					+ " Method saveCourse : After courseService: CourseId Exception :"
 					+ e);
 		}
-
+		if (courseIds > 0 && courseId > 0) {
+			CourseTagcloud tagcloud = new CourseTagcloud();
+			try {
+				CourseTagcloud getTagcloud = tagCloudService
+						.getCourseTagClouds(courseId);
+				tagcloud.setTagCloudId(getTagcloud.getTagCloudId());
+				tagcloud.setCourseTagCloudId(getTagcloud.getTagCloudId());
+				tagcloud.setTagName(CourseTags);
+				try {
+					tagcloud.setTagType(TagType.TAG_TYPE1);
+				} catch (NoSuchMethodException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				tagcloud.setCourseId(courseIds);
+				tagCloudService.saveOrUpadteTags(tagcloud);
+			} catch (Exception e) {
+				LOGGER.info("Class :"
+						+ getClass()
+						+ " Method saveCourse : After courseService: CourseId Exception :tagcloud"
+						+ tagcloud + e);
+			}
+		} else if (courseIds > 0) {
+			CourseTagcloud tagcloud = new CourseTagcloud();
+			try {
+				tagcloud.setTagName(CourseTags);
+				try {
+					tagcloud.setTagType(TagType.TAG_TYPE1);
+				} catch (NoSuchMethodException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				tagcloud.setCourseId(courseIds);
+				tagCloudService.saveOrUpadteTags(tagcloud);
+			} catch (Exception e) {
+				LOGGER.info("Class :"
+						+ getClass()
+						+ " Method saveCourse : After courseService: CourseId Exception :tagcloud"
+						+ tagcloud + e);
+			}
+		}
 		CourseJsonResponse json = new CourseJsonResponse();
 
 		if (courseIds == 0) {
 			json.setResponse("failed");
-			json.setMessage("Course Creation Failed!");
 			LOGGER.info("Class :" + getClass()
 					+ " Method saveCourse : After courseService: CourseId :"
 					+ CourseId);
 		} else {
 			json.setId("COURSE_" + courseIds);
 			json.setResponse("success");
-			json.setMessage("Course Creation Success");
-
 			LOGGER.info("Class :" + getClass()
 					+ " Method saveCourse : After courseService: CourseId :"
 					+ CourseId);
@@ -322,9 +364,9 @@ public class CreateCourseController {
 			@RequestParam(value = "LearningComponentId", required = false) String LearningComponentId,
 			@RequestParam(value = "Course_Module", required = true) String CourseModule,
 			@RequestParam(value = "Module_Description", required = true) String CourseModuleDescription,
-			@RequestParam(value = "Subject_Area", required = true) String Subject_Area,
-			@RequestParam(value = "Subject", required = true) String Subject,
-			@RequestParam(value = "Topic", required = true) String subjectTopic,
+			@RequestParam(value = "Subject_Area", required = false) String Subject_Area,
+			@RequestParam(value = "Subject", required = false) String Subject,
+			@RequestParam(value = "Topic", required = false) String subjectTopic,
 			@RequestParam(value = "Moduletag_Field", required = false) String ModuleTags,
 			@RequestParam(value = "Module_Weight", required = false) String ModuleWeight,
 			@RequestParam(value = "LearningObject", required = false) String LearningObject,
@@ -613,6 +655,7 @@ public class CreateCourseController {
 		json.setId(CourseId);
 		json.setResponse("success");
 		json.setMessage("Component Delete Success");
+
 		LOGGER.info("Class :"
 				+ getClass()
 				+ " Method removeCourseComponents : After courseService: CourseId :"
@@ -670,10 +713,22 @@ public class CreateCourseController {
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("NumberFormatException :" + nfe);
 		}
+		String selected_tags = "";
+		String available_tags = "";
+		CourseTagcloud tag = null;
+		try {
+			tag = tagCloudService.getCourseTagClouds(courseid);
+			selected_tags = tag.getTagName();
+			available_tags = tag.getTagName();
+		} catch (Exception e) {
+			LOGGER.error("tag Exception :" + tag);
+		}
 
 		CourseEditResponse json = null;
 		json = courseEditService.getCourseDetails(courseid);
 		json.setResponse("success");
+		json.setSelected_tags(selected_tags);
+		json.setAvailable_tags(available_tags);
 		json.setMessage("Course Edit Details");
 
 		LOGGER.info("Exiting Class " + getClass() + " getCourse(): CourseId :"

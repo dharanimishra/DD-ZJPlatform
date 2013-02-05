@@ -8,33 +8,31 @@ import org.apache.ibatis.annotations.Select;
 
 import com.ziksana.domain.course.CourseTagcloud;
 
-
 public interface CourseTagcloudMapper {
 	/**
 	 * This saves the course tagcloud keys
+	 * 
+	 * @return
 	 */
-	void save(CourseTagcloud tagCloud);
-	
-	
+	CourseTagcloud save(CourseTagcloud tagCloud);
+
 	/**
 	 * @param integer
 	 * @return
 	 */
-	@Select({"select ID as coursetagcloudid,tagname, tagtype, courseId,memberroleId  from corcoursetagcloud where courseid = #{courseId,jdbcType=INTEGER}" })
-	@Results(value={
-			@Result(property="courseTagcloudId", column="coursetagcloudid"),
-			@Result(property="tagName", column="tagname"),
-			@Result(property="tagType", column="tagtype"),
-			@Result(property="course.courseId", column="courseId"),
-			@Result(property="creatingMember.memberRoleId", column="memberroleId")
-	})
-	List<CourseTagcloud> getCourseTagClouds(Integer integer);
+	@Select({ "select ID as coursetagcloudid,tagname, tagtype, courseId  from corcoursetagcloud where courseid = #{courseId,jdbcType=INTEGER} limit 1" })
+	@Results(value = {
+			@Result(property = "tagCloudId", column = "coursetagcloudid"),
+			@Result(property = "tagName", column = "tagname"),
+			@Result(property = "tagType", column = "tagtype"),
+			@Result(property = "courseId", column = "courseId") })
+	CourseTagcloud getCourseTagClouds(Integer courseId);
 
-	
 	/**
 	 * This update / override the course tagcloud keys
+	 * 
 	 * @param courseTagcloud
 	 */
-	void update(CourseTagcloud courseTagcloud);
+	CourseTagcloud update(CourseTagcloud courseTagcloud);
 
 }

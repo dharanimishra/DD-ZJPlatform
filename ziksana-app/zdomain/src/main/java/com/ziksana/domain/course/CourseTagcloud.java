@@ -8,41 +8,68 @@ import com.ziksana.id.ZID;
 /**
  * @author bhashasp
  */
-public class CourseTagcloud extends TagCloud{
-	
+public class CourseTagcloud extends TagCloud {
+
 	public CourseTagcloud() {
 		super();
 	}
-
 
 	public CourseTagcloud(String tagName, TagType tagType) {
 		super(tagName, tagType);
 	}
 
-	private ZID 				courseTagCloudId;
-	private Course				course					= null;
-	
+	private ZID courseTagCloudId;
+	private Course course = null;
+	private Integer tagCloudId = null;
+
+	public Integer getTagCloudId() {
+		return tagCloudId;
+	}
+
+	public void setTagCloudId(Integer tagCloudId) {
+		this.tagCloudId = tagCloudId;
+	}
+
+	private Integer courseId = null;
+
+	public Integer getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
+	}
+
 	/**
 	 * @return the courseTagCloudId
 	 */
 	public ZID getCourseTagCloudId() {
 		return courseTagCloudId;
 	}
+
 	/**
-	 * @param courseTagCloudId the courseTagCloudId to set
+	 * @param courseTagCloudId
+	 *            the courseTagCloudId to set
 	 */
 	public void setCourseTagCloudId(Integer courseTagCloudId) {
-		
+
 		this.courseTagCloudId = new IntegerZID(courseTagCloudId);
 	}
+
+	public void setCourseTagCloudId(ZID courseTagCloudId) {
+		this.courseTagCloudId = courseTagCloudId;
+	}
+
 	/**
 	 * @return the course
 	 */
 	public Course getCourse() {
 		return course;
 	}
+
 	/**
-	 * @param course the course to set
+	 * @param course
+	 *            the course to set
 	 */
 	public void setCourse(Course course) {
 		this.course = course;

@@ -83,7 +83,7 @@ function onButtonClick(menuitemId, type) {
 								prescribedLCDurationUnit = data.prescribedLCDurationUnit;
 								image_upload = data.imageupload;
 
-								$('#courseid').val(course_id);
+								$('#courseid').val(Course_id);
 
 								$('#courseLearningComponentId').val(
 										courseLearningComponentId);
@@ -105,14 +105,10 @@ function onButtonClick(menuitemId, type) {
 
 								}
 
-								$('#Cmoduledesc').val(module_desc);
-
-								$('#Cmoduledescrte').val(module_desc);
-
 								$('#Addmoduletag').val(module_name);
 
 								$('#addmodulecheckbox').attr('checked',
-										'checked'); // checks the checkbox.
+										'checked');
 
 								$('#saveassociateobject').attr('enabled',
 										'enabled'); // enabled the
@@ -149,17 +145,12 @@ function onButtonClick(menuitemId, type) {
 													}
 													$('#Cmoduleareaddl').html(
 															option_string);
-													// now select the value
-													// already
-													// selected by the
-													// user
+
 													$('#Cmoduleareaddl').val(
 															subject_area);
 
 												});
 
-								// // end populating subject area
-								// // start populating subject
 								token = '';
 								request_type = 'GET';
 								uri = '/ziksana-web/secure/getSubject';
@@ -193,10 +184,6 @@ function onButtonClick(menuitemId, type) {
 															.val(subject);
 
 												});
-
-								// // end populating subject
-
-								// Start populating topic
 
 								uri = '/ziksana-web/secure/getTopic';
 								token = '';
