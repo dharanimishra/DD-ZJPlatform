@@ -193,26 +193,22 @@ function getaddmodulesave() {
 		// request
 
 		var course_id = $('#courseid').val();
-		
+
 		var CourseLearningComponentId = $('#courseLearningComponentId').val();
-		
+
 		var learningComponentId = $('#learningComponentId').val();
 
 		var Module_Name = $('#Cmoduletxtbox').val();
-		
+
 		var Module_Description = $('#Cmoduledesc').val();
 		
-		console.log(Module_Description);
-		
-	//	var Module_Description1 = CKEDITOR.instances['Cmoduledescrte']
-	//			.getData();
+		var Module_Description1 = CKEDITOR.instances['Cmoduledescrte'].getData();
 
-		// var corstartTrim = Module_Description1.substring(3);
+		var corstartTrim = Module_Description1.substring(3);
 
-		// corstartTrim = corstartTrim.substr(0, corstartTrim.length - 5);
+		corstartTrim = corstartTrim.substr(0, corstartTrim.length - 5);
 
-		var Module_Descriptions = Module_Description;
-		console.log(Module_Descriptions);
+		var Module_Descriptions = Module_Description + Module_Description1;
 
 		var Subject_Area = $('#Cmoduleareaddl').val();
 		var Subject = $('#Cmodulesubjectddl').val();

@@ -261,7 +261,7 @@ function createCourse() {
 		var Topic = $('#Ctopicddl').val();
 
 		var Coursetag_Field = $('#Ctagfield_e').val();
-		
+
 		console.log(Coursetag_Field);
 
 		var Course_Credits = $('#Credits').val();
@@ -357,6 +357,8 @@ function getCourse() {
 
 							$('#defaultvalue').val(course_name);
 
+							console.log(course_desc);
+							
 							if (course_desc.charAt(0) == '<') {
 
 								$('#Cdescriptionrte').val(course_desc);
@@ -375,6 +377,7 @@ function getCourse() {
 								preset : selected_tags,
 								tags : available_tags
 							});
+
 							$('#Credits').val(credits);
 
 							$('#ExtraCredits').val(extra_credits);
@@ -523,7 +526,7 @@ function onSuccessfulCourseCreation(data) {
 		window.location.href = "/ziksana-web/secure/createmodule/" + course_id;
 
 	} else {
-		$('#tempdiv').html(
+		$('#tempdiv1').html(
 				'<span style="color:red;">' + data.message + '</span>');
 	}
 
