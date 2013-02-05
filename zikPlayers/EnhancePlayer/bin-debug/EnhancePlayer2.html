@@ -44,7 +44,7 @@
             var params = {};
             params.quality = "high";
             params.bgcolor = "#ffffff";
-            params.allowscriptaccess = "sameDomain";
+            params.allowscriptaccess = "always";
             params.allowfullscreen = "true";
             var attributes = {};
             attributes.id = "EnhancePlayer";
@@ -57,6 +57,12 @@
                 flashvars, params, attributes);
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
             swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+				var setUrl = function()
+				{
+					var fl = document.getElementById('EnhancePlayer');
+					fl.load_images_js("http://54.243.235.88/zikload-xml/uploads/document/f1358370903/thumbnails/|||4");
+				}			
+
         </script>
     </head>
     <body>
@@ -73,43 +79,12 @@
                 var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
                 document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
                                 + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
-				var setUrl = funtion()
-				{
-					var fl = document.getElementById('EnhancePlayer');
-					fl.player_set_image_data()
-				}
+
 			</script> 
 			
 			
         </div>
-        
-        <noscript>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="600px" height="400px" id="EnhancePlayer">
-                <param name="movie" value="EnhancePlayer.swf" />
-                <param name="quality" value="high" />
-                <param name="bgcolor" value="#ffffff" />
-                <param name="allowScriptAccess" value="sameDomain" />
-                <param name="allowFullScreen" value="true" />
-                <!--[if !IE]>-->
-                <object type="application/x-shockwave-flash" data="EnhancePlayer.swf" width="600px" height="400px">
-                    <param name="quality" value="high" />
-                    <param name="bgcolor" value="#ffffff" />
-                    <param name="allowScriptAccess" value="sameDomain" />
-                    <param name="allowFullScreen" value="true" />
-                <!--<![endif]-->
-                <!--[if gte IE 6]>-->
-                    <p> 
-                        Either scripts and active content are not permitted to run or Adobe Flash Player version
-                        11.4.0 or greater is not installed.
-                    </p>
-                <!--<![endif]-->
-                    <a href="http://www.adobe.com/go/getflashplayer">
-                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
-                    </a>
-                <!--[if !IE]>-->
-                </object>
-                <!--<![endif]-->
-            </object>
-        </noscript>     
+       
+<b onclick="setUrl();"> LOADIMAGES </b>		
    </body>
 </html>
