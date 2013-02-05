@@ -23,3 +23,6 @@ Servers/
 *.DS_Store
 *.bak
 ~$*
+
+*.iml
+/ziksana-app/.idea/
