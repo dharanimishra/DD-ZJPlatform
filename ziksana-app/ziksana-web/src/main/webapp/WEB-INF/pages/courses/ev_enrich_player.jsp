@@ -216,7 +216,15 @@ function secondsToHms(d) {
 				$.post('/ziksana-web/secure/deleteEducatorContent', {eduContentEnrichId: content_id}, function(data){
 					if(data == 1){//row is successfully deleted
 						//go ahead and remove the row.
-						row_to_delete.remove();
+						//row_to_delete.remove();
+						
+						//refresh all educator content
+						
+						content_id = $('#e_content_id').val();
+						component_id = $('#e_component_id').val();
+				
+						node_id = 'LCONTENT_1_'+component_id+'_'+content_id;
+						get_all_educator_content(course_id, component_id, node_id);
 						
 					}
 					
