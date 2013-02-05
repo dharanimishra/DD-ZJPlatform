@@ -181,7 +181,7 @@ public class CreateCourseController {
 				+ CourseExtraCredits + " Course_Duration :" + CourseDuration
 				+ " CourseDurationUnit :" + CourseDurationUnit);
 
-		Integer courseId = 0, courseDuration = 1, courseDurationUnit = 1, subjClassificationId = 0;
+		Integer courseId = 0, courseDuration = 0, courseDurationUnit = 1, subjClassificationId = 0;
 
 		try {
 			courseId = Integer.parseInt(CourseId);
@@ -363,7 +363,7 @@ public class CreateCourseController {
 			@RequestParam(value = "CourseLearningComponentId", required = false) String CourseLearningComponentId,
 			@RequestParam(value = "LearningComponentId", required = false) String LearningComponentId,
 			@RequestParam(value = "Course_Module", required = true) String CourseModule,
-			@RequestParam(value = "Module_Description", required = true) String CourseModuleDescription,
+			@RequestParam(value = "Module_Description", required = false) String CourseModuleDescription,
 			@RequestParam(value = "Subject_Area", required = false) String Subject_Area,
 			@RequestParam(value = "Subject", required = false) String Subject,
 			@RequestParam(value = "Topic", required = false) String subjectTopic,
@@ -416,7 +416,7 @@ public class CreateCourseController {
 			LOGGER.error("NumberFormatException learningComponentId :"
 					+ learningComponentId + nfe);
 		}
-		Integer courseDuration = 1, unitofDuration = 1, moduleWeight = 0;
+		Integer courseDuration = 0, unitofDuration = 1, moduleWeight = 0;
 		try {
 			courseDuration = Integer.parseInt(Duration);
 			unitofDuration = Integer.parseInt(UnitofDuration);
@@ -619,7 +619,6 @@ public class CreateCourseController {
 
 		json.setId(courseId);
 		json.setResponse("success");
-		json.setMessage("Course Delete Success");
 		LOGGER.info("Class :" + getClass()
 				+ " Method removeCourse : After courseService: CourseId :"
 				+ courseId);
@@ -654,7 +653,6 @@ public class CreateCourseController {
 
 		json.setId(CourseId);
 		json.setResponse("success");
-		json.setMessage("Component Delete Success");
 
 		LOGGER.info("Class :"
 				+ getClass()
@@ -688,7 +686,6 @@ public class CreateCourseController {
 		CourseJsonResponse json = new CourseJsonResponse();
 		json.setId(CourseId);
 		json.setResponse("success");
-		json.setMessage("Component Delete Success");
 		LOGGER.info("Class :"
 				+ getClass()
 				+ " Method removeCourseContents : After courseService: CourseId :"
@@ -729,7 +726,6 @@ public class CreateCourseController {
 		json.setResponse("success");
 		json.setSelected_tags(selected_tags);
 		json.setAvailable_tags(available_tags);
-		json.setMessage("Course Edit Details");
 
 		LOGGER.info("Exiting Class " + getClass() + " getCourse(): CourseId :"
 				+ CourseId + " json :" + json);
@@ -759,7 +755,6 @@ public class CreateCourseController {
 		ModuleEditResponse json = null;
 		json = courseEditService.getModuleDetails(learningComponentId);
 		json.setResponse("success");
-		json.setMessage("Course Edit Details");
 
 		LOGGER.info("Exiting Class " + getClass() + " getCourse(): CourseId :"
 				+ CourseId + " learningComponentId :" + ComponentId + " json :"
