@@ -365,13 +365,12 @@ span.standartTreeRow:hover {
 										style="padding-left: 5px; margin-right: 4px; margin-top: -8px;" />Provide
 									Course Details
 								</div>
-								<div id="tempdiv"></div>
-
+								
 								<!----------------- start of first container --------------->
 								<div class="_coursename">
 									<div class="control-group">
-										<input type="hidden" id="courseid" value="${courseId}" /> <label
-											class="control-label labelclass " for="CourseName"
+										<input type="hidden" id="courseid" value="${courseId}" /> 
+										<label	class="control-label labelclass " for="CourseName"
 											style="margin-top: -4px; font-weight: bold;">Course
 											Name :</label>
 										<div class="controls">
@@ -384,23 +383,19 @@ span.standartTreeRow:hover {
 
 										<br /> <label for="coursedescription" class="labelclass"
 											style="font-weight: bold;"><b>Course Description
-												:</b></label> <a class="f-r _plainText" href="#"
-											style="text-decoration: none;">Plain Text Editor</a> <a
-											class="f-r _richText" id="rich_text_editor" href="#"
-											style="text-decoration: none;">Rich Text Editor</a>
-										<textarea placeholder="Describe the Course being created"
-											cols="124" rows="8" id="Cdescription"
-											class="_plainTextShow defaultvaluem labelclass"
-											style="width: 880px; color: #666;"></textarea>
+												:</b></label> 
+												
+										<a class="f-r _plainText" href="#" style="text-decoration: none;">Plain Text Editor</a> 
+										<a class="f-r _richText" id="rich_text_editor" href="#" style="text-decoration: none;">Rich Text Editor</a>
+										
+										<textarea placeholder="Describe the Course being created" cols="124" rows="8" id="Cdescription" class="_plainTextShow defaultvaluem labelclass" style="width: 880px; color: #666;"></textarea>
 										<br />
 										<div class="_richTextShow">
-											<textarea placeholder="Describe the Course being created"
-												id="Cdescriptionrte" name="editor1pageload"
-												class="defaultvalue _focus"></textarea>
+										<textarea placeholder="Describe the Course being created" id="Cdescriptionrte" name="editor1pageload" class="defaultvalue _focus"></textarea>
 										</div>
-										 <script type="text/javascript">
+										<script type="text/javascript">
 											CKEDITOR.replace('Cdescriptionrte');
-										</script> 
+										</script>
 
 									</div>
 									<!-- end of coursename--->
@@ -428,7 +423,8 @@ span.standartTreeRow:hover {
 											</select> <select name="Csubjectddl" id="Csubjectddl"
 												class="defaultvalue labelclass"
 												style="margin-right: 15px; width: 200px;">
-												<option value="Select Subject Area">Select Subject Area</option>
+												<option value="Select Subject Area">Select Subject
+													Area</option>
 
 											</select> <select name="Ctopicddl" id="Ctopicddl"
 												class="defaultvalue labelclass " style="width: 200px;">
@@ -442,7 +438,7 @@ span.standartTreeRow:hover {
 											<br /> <label class="control-label labelclass"
 												for="coursetags"
 												style="margin-top: -2px; font-weight: bold;">Specify
-												any tags : </label> <input id="Ctagfield" type="text"
+												any tags : </label> <input id="Ctagfield_e" type="text"
 												style="margin-left: 290px;"></input> <br /> <br />
 										</div>
 										<!-- end of coursetags--->

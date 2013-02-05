@@ -107,9 +107,8 @@ function onButtonClick(menuitemId, type) {
 
 								$('#Addmoduletag').val(module_name);
 
-								$('#addmodulecheckbox').attr('checked',
-										'checked');
-
+								$('#addmodulecheckbox').attr('checked',false);
+							
 								$('#saveassociateobject').attr('enabled',
 										'enabled'); // enabled the
 

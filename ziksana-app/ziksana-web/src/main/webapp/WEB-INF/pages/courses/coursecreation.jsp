@@ -349,10 +349,10 @@ span.standartTreeRow:hover {
 								Course Details </a>
 						</div>
 
-						<br> <br> <input type="hidden" id="courseid"
-							value="${courseId}" /> <input type="hidden"
-							id="courseLearningComponentId" value="" /> <input type="hidden"
-							id="learningComponentId" value="" />
+						<br> <br> 
+							<input type="hidden" id="courseid" value="${courseId}" /> 
+							<input type="hidden" id="courseLearningComponentId" value="" /> 
+							<input type="hidden" id="learningComponentId" value="" />
 						<style>
 #splitter {
 	width: 975px;
@@ -374,9 +374,7 @@ span.standartTreeRow:hover {
 									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>Right
 									Click over the Tree Node to further Define the Course. </b>
 							</p>
-							<div id="tempdiv"></div>
-
-
+						
 							<div id="splitter" style='clear: both;'>
 
 								<!-- Start of Tree -->
@@ -427,26 +425,15 @@ span.standartTreeRow:hover {
 
 
 													<br /> <label for="moduledescription" class="labelclass"
-														style="font-weight: bold;">Module Description :</label> <a
-														class="f-r _richText" id="addmodulerichedit" href="#"
-														style="text-decoration: none;">Rich Text Editor</a> <a
-														class="f-r _plainText"  href="#"
-														style="text-decoration: none;">Plain Text Editor</a>
-
-
-													<textarea placeholder="Describe the Course being created"
-														class="_plainTextShow label" class="defaultvalue"
-														id="Cmoduledesc" cols="80" rows="7" style="resize: none;"></textarea>
+														style="font-weight: bold;">Module Description :</label> 
+														<a class="f-r _richText" id="addmodulerichedit" href="#" style="text-decoration: none;">Rich Text Editor</a> 
+														<a class="f-r _plainText" href="#" style="text-decoration: none;">Plain Text Editor</a>
+	
+													<textarea placeholder="Describe the Course being created" class="_plainTextShow label" class="defaultvalue" id="Cmoduledesc" cols="80" rows="7" style="resize: none;"></textarea>
 													<br />
 													<div class="_richTextShow">
-														<textarea placeholder="Describe the Course being created"
-															id="Cmoduledescrte" name="editor1pageload"
-															class="defaultvalue _focus"></textarea>
+														<textarea placeholder="Describe the Course being created" id="Cmoduledescrte" name="editor2" class="defaultvalue _focus"></textarea>
 													</div>
-													<!--  <script type="text/javascript">
-														CKEDITOR
-																.replace('Cmoduledescrte');
-													</script> -->
 												</div>
 
 
@@ -475,8 +462,7 @@ span.standartTreeRow:hover {
 														</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl"
 															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
-															<option value="Select Subject Area">Select
-																Subject Area</option>
+															<option value="Select Subject Area">Select Subject Area</option>
 
 														</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"
 															class="defaultvalue labelclass" style="width: 200px;">
@@ -505,21 +491,16 @@ span.standartTreeRow:hover {
 
 													</div>
 													<!-- end of coursetags--->
-													<br /> <input type="checkbox" id="addmodulecheckbox"
-														class="labelclass" value="Institution Logo" /> <span
-														class="labelclass"
-														style="padding-left: 5px; font-weight: bold;">Save
-														as a Learning Object? </span>
+													<br /> 
+													<input type="checkbox" id="addmodulecheckbox" class="labelclass" value="Institution Logo" /> 
+													<span	class="labelclass"	style="padding-left: 5px; font-weight: bold;">Save as a Learning Object? </span>
 													<div class="courseduration" id="saveassociateobject">
 														<br /> <label for="Learning Duration" class="labelclass"
 															style="font-weight: bold;">Specify the Duration
 															of the Learning Object :</label> <input type="text"
 															id="Cmoduleduration" style="width: 30px;"
-															class="defaultvalue validate[required]" /> <select
-															name="Cmoduleunits"
-															class="defaultvalue validate[required]" id="Cmoduleunits"
-															style="margin-left: 5px;">
-
+															class="defaultvalue validate[required]" /> 
+															<select name="Cmoduleunits" class="defaultvalue validate[required]" id="Cmoduleunits" style="margin-left: 5px;">
 															<option value="1">Weeks</option>
 															<option value="2">Months</option>
 															<option value="3">Days</option>
