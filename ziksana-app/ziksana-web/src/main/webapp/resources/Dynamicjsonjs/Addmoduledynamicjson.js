@@ -190,7 +190,6 @@ function getaddmodulesave() {
 		token = ''; // dummy token for demo. you have to send real token.
 
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
-		// request
 
 		var course_id = $('#courseid').val();
 
@@ -199,16 +198,13 @@ function getaddmodulesave() {
 		var learningComponentId = $('#learningComponentId').val();
 
 		var Module_Name = $('#Cmoduletxtbox').val();
+		var Module_Description;
 
-		var Module_Description = $('#Cmoduledesc').val();
-		
-		var Module_Description1 = CKEDITOR.instances['Cmoduledescrte'].getData();
-
-		var corstartTrim = Module_Description1.substring(3);
-
-		corstartTrim = corstartTrim.substr(0, corstartTrim.length - 5);
-
-		var Module_Descriptions = Module_Description + Module_Description1;
+		if (CKEDITOR.instances['Cmoduledescrte'] == undefined) {
+			Module_Description = $('#Cmoduledesc').val();
+		} else {
+			Module_Description = CKEDITOR.instances['Cmoduledescrte'].getData();
+		}
 
 		var Subject_Area = $('#Cmoduleareaddl').val();
 		var Subject = $('#Cmodulesubjectddl').val();
@@ -224,7 +220,7 @@ function getaddmodulesave() {
 			"CourseLearningComponentId" : CourseLearningComponentId,
 			"LearningComponentId" : learningComponentId,
 			"Course_Module" : Module_Name,
-			"Module_Description" : Module_Descriptions,
+			"Module_Description" : Module_Description,
 			"Subject_Area" : Subject_Area,
 			"Subject" : Subject,
 			"Topic" : Topic,
