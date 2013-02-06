@@ -28,9 +28,6 @@ public class TodoController {
 	@Autowired
 	TodoService todoService;
 	
-	//educatorlouncher
-	
-	
 	/**
 	 * Retrive all todo items to display on the dashboard
 	 */
@@ -157,6 +154,27 @@ public class TodoController {
 		
 		logger.info("Exiting deleteTodoItem(): " + todoItemId);
 		return "Successfully Deleted";
+	}
+	
+	@RequestMapping(value = "/updatetodo", method=RequestMethod.POST)
+	public @ResponseBody void updateTodo(
+			@RequestParam(value = "todoItemId", required = true) String todoItemId,
+			@RequestParam(value = "notificationContent", required = true) String notificationContent,
+			@RequestParam(value = "category", required = true) String category) {
+		
+		Todo todo = new Todo();
+		todo.setId(Integer.parseInt(todoItemId));
+		todo.setCategory(category);
+		todo.setNotificationContent(notificationContent);
+		todo.setCreationDate(new Date());
+		todo.setActivationDate(new Date());
+		try {			
+			todoService.updateTodo(todo);
+			
+		} catch (Exception exception) {
+			logger.error("Caught Exception. class ="+ exception.getClass().getName() + ",message ="+ exception.getMessage());
+		}
+		
 	}
 	
 	@RequestMapping(value = "/gettodocategory/{memberId}", method = RequestMethod.GET)

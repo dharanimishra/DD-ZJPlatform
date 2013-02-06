@@ -68,15 +68,13 @@
 	<update id="updateTodo" parameterType="com.ziksana.domain.todo.Todo">
 		update memmembernotification
 		<set>
-			<if test="category != null">Category=#{category},</if>
-			<if test="activationDate != null">ActivationDate=#{activationDate},</if>
-			<if test="creationDate != null">CreationDate=#{creationDate},</if>
-			<if test="notificationType != null">NotificationType=#{notificationType},</if>
-			<if test="description != null">Description=#{description},</if>
-			<if test="priority != null">Priority=#{priority},</if>
+			Category=#{category},
+			ActivationDate=#{activationDate},
+			CreationDate=#{creationDate},
+			NotificationContent=#{notificationContent}				
 		</set>
 		where
-		MemberNotificationId = #{id}
+		ID = #{id}
 	</update>
 
 	<delete id="deleteTodo" parameterType="int">

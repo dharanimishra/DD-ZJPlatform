@@ -4,10 +4,7 @@ import java.util.Date;
 
 import com.ziksana.domain.member.MemberPersona;
 
-/**
- * @author ratneshkumar
- * 
- */
+
 public class Todo {
 
 	private int id;

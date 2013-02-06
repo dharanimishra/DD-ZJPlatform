@@ -35,6 +35,31 @@ background-color:#ffffff;
 </style>
 
 <script type="text/javascript">
+function updateTodo()
+{
+	
+	 editupdate_todo_category = $('#update_todo_categories').val();
+	 editupdate_todo_description = $('#todo_edit_description').val();
+	 
+	 if(editupdate_todo_description ==''){return false;}
+	 
+	 if(editupdate_todo_category.toLowerCase() == 'add_new_category'){editupdate_todo_category = '';}
+	 console.log(editupdate_todo_category);
+	 console.log(editupdate_todo_description);
+	 console.log(selectedRowId);
+				  $.post( '<c:url value='/secure/updatetodo'/>'
+		        , {'todoItemId':selectedRowId,'category':editupdate_todo_category,'notificationContent':editupdate_todo_description}
+		        , function( data )
+		        {
+		        
+		        	//refresh the page
+		        	window.location.href = window.location.href;
+		 
+		        }
+				, 'xml' );  
+	
+	
+}
  function addTodo()
  {
 	 
@@ -101,20 +126,33 @@ function closeit(){
  <c:url var="todo" value="../resources/images/icons/todo.png" />
   <script type="text/javascript">
 $(document).ready(function() {
-	
+	//ADD NEW CATEGORY
 	$('#todo_category_name').focusout(function(){add_new_category_item();});
-	$('#todo_description').focusout(function(){addTodo();});
+	$('#todo_description').keypress(function(event) {
+	    var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if(keycode == '13') {
+	        addTodo();  
+	    }
+	});
+	//$('#todo_description').focusout(function(){addTodo();});
+	//UPDATE ADD NEW CATEGORY
+	$('#update_todo_category_name').focusout(function(){add_new_category_item_update();});
 	
 	
-	
+	//ADD TODO
 	$('select#todo_categories').change(function(){
 		
 		//if($(this).val().toLowerCase() == 'add_new_category'){}
 		if($(this).val() == 'add_new_category'){ show_category_form(); }
 	});
 	
+	//UPDATE TODO
+	$('select#update_todo_categories').change(function(){
+				
+		if($(this).val() == 'add_new_category'){ show_add_category_form(); }
+	});
 	
-	//setTimeout('console.log("hello");', 300);
+	
 	
 	$.ajax({
 		  	type: 'GET',
@@ -130,14 +168,17 @@ $(document).ready(function() {
 					
 						indexValue = index;
 						
+						output+="<div ondblclick='edit_todorow_and_update("+$(this).find("id").text()+")' id='todo-row-update"+$(this).find("id").text()+"'>";
+					
 						output+="<div id='todoid"+$(this).find("id").text()+"' class='todocontainer' style='border:1px solid #F5F5F5;' id='contodo1'>";
-						output+="<div class='todoinfo' style='height:28px;padding:5px;'>";
-						output+="<div id='todo-row' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
+						output+="<div  class='todoinfo' style='height:28px;padding:5px;'>";
+						
+						output+="<div  id='todo-row"+$(this).find("id").text()+"' class='todoinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
 						output+="<img src='${todo}' alt='Info' /></div>";
-						output+="<div class='todoinfo-category todotip_container'style='display:inline;' >"+short_string_category($(this).find("categoryName").text())+"<div class='categorytip'>"+$(this).find("categoryName").text()+" </div></div>";
+						output+="<div class='todoinfo-category todotip_container'style='display:inline;' >"+short_string_category($(this).find("categoryName").text())+"<div id='category_value"+$(this).find("id").text()+"' class='categorytip'>"+$(this).find("categoryName").text()+" </div></div>";
 						
-						output+="<div class='todotip_more_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'><a rel='tipsy'  style='cursor:default;' >"+short_string($(this).find('subject').text())+"</a><div class='todomoretip'>"+$(this).find("subject").text()+" </div></div><input type='checkbox' onChange='deleteTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
+						output+="<div class='todotip_more_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline;text-decoration:none; margin-left:10px; cursor:pointer;'><a rel='tipsy'  style='cursor:default;' >"+short_string($(this).find('subject').text())+"</a><div id='categoryDescription"+$(this).find("id").text()+"' class='todomoretip'>"+$(this).find("subject").text()+" </div></div><input type='checkbox' onChange='deleteTodoItem("+$(this).find("id").text()+")' id='cktodo1' style='float:right;'></div>";
 						
 						output+="</div></div>";
 						
@@ -188,20 +229,33 @@ $(document).ready(function() {
 					
 
 					
-					
+					updateselect = '<option value="">&nbsp;</option>'+option_string + '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_add_category_form();" value="add_new_category">Add New Category</option></optgroup>';
 					select = '<option value="">&nbsp;</option>'+option_string + '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
 					$('select#todo_categories').html(select);
-	
+					//update
+					$('select#update_todo_categories').html(select);
 					
 					
 			}
 	});	
+	
+	$('#todo_edit_description').keypress(function(event) {
+	    var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if(keycode == '13') {
+	        updateTodo();  
+	    }
+	});
+		
+	
 	
 });
 
 
 function show_category_form(){
 	$('#add_new_category_form').show(); $('select#todo_categories').hide();
+}
+function show_add_category_form(){
+	$('#add_new_edit_category_form').show(); $('select#update_todo_categories').hide();
 }
 
 function displayToolTip(val){
@@ -215,6 +269,13 @@ function add_new_category_item(){
 	$('#add_new_category_form').hide();
 	$('select#todo_categories').show();
 	$('select#todo_categories').val(capitalize($('#todo_category_name').val()));
+}
+function add_new_category_item_update(){
+	new_update_category_option = '<option value="'+capitalize($('#update_todo_category_name').val())+'">'+capitalize($('#update_todo_category_name').val())+'</option>';
+	$('select#update_todo_categories').prepend(new_update_category_option);
+	$('#add_new_edit_category_form').hide();
+	$('select#update_todo_categories').show();
+	$('select#update_todo_categories').val(capitalize($('#update_todo_category_name').val()));
 }
 /// TODO: move this function to a common js file later
 function short_string(string){
@@ -232,10 +293,39 @@ function short_string_category(value){
 		return value;
 	}	
 }
+
 function capitalize(s){
     return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
 };
-///
+function edit_todorow_and_update(rowId){
+	selectedRowId = rowId;
+	$('#update_todo_fields_container').show();
+	var categorySelectedValue = $('#category_value'+rowId+'').text();
+	console.log(categorySelectedValue); 
+	var value = categorySelectedValue.substring(0, categorySelectedValue.length - 1);
+	console.log(value);
+	var vals = [value,value]; 
+	console.log(vals);
+	$('select#update_todo_categories').each(function(){
+		$('option').each(function(){
+			   var $t = $(this);
+
+			   for (var n=vals.length; n--; )
+			      if ($t.text() == vals[n]){            // method used is different
+			         $t.prop('selected', true);
+			         return;
+			      }
+			});
+	   
+	});
+	var cateDescriptionSelectedValue = $('#categoryDescription'+rowId+'').text();
+	console.log(cateDescriptionSelectedValue);
+	$('#todo_edit_description').val(cateDescriptionSelectedValue);
+	$('.add_todo_button').hide();
+}
+
+
+
 </script>
  <!-- End -->
 <title>Todo List</title>
@@ -246,7 +336,7 @@ function capitalize(s){
         	My To Do's
         </div>
 <hr/>
-<div id = "todo_form_container" class="addtodo" style=" width:650px; background-color:#FFFFFF;">
+<div id ="todo_form_container" class="addtodo" style=" width:650px; background-color:#FFFFFF;">
 
 
 <div id="add_todo_fields_container" style="display:none;">
@@ -260,9 +350,24 @@ function capitalize(s){
 	</span>
 	Description: <input id="todo_description" style="width:330px">
 </div>
-	
+</div> <!--end of container --> 
 
-</div> <!--end of container -->  
+<div id = "update_todo_form_container"  class="updatetodo" style=" width:650px; background-color:#FFFFFF;">
+
+	<div id="update_todo_fields_container" style="display:none;">
+	Category: 
+	
+	<select id="update_todo_categories">
+		
+	</select>
+	<span id="add_new_edit_category_form" style="display:none;">
+	 	<input id="update_todo_category_name"/>
+	</span>
+	Description: <input id="todo_edit_description" style="width:330px">
+</div>
+</div>
+
+ 
 	<hr/>
 <a class='btn btn-info f-r' style='margin-right:70px;' onclick='closeit()'> Return </a> 
 <a class='btn btn-info f-r add_todo_button' onclick='$("#add_todo_fields_container").show(); $(this).attr("disabled",true);' style='margin-right:10px;'> Add To DO </a>

@@ -50,7 +50,8 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public void updateTodo(Todo todo) {
-		// TODO Auto-generated method stub
+		
+		todoMapper.updateTodo(todo);
 
 	}
 
