@@ -1,20 +1,20 @@
-$(function(){			 
-				var mediaserver_url = '';
-		        var mediaserver_uploadscript = '';
-		        var mediaserver_uploadcontent = '';
-		     
-		            $.get("/ziksana-web/getmediacontents", function(data) {
-		            	
-		            	  	console.log(data);
-				             mediaserver_url = data.url.toString();
-				             mediaserver_uploadscript = data.uploadScript.toString();
-				             mediaserver_uploadcontent = data.uploadContent.toString();			            	  
-		            	  	console.log(mediaserver_url);
-		            	  	console.log(mediaserver_uploadscript);
-		            	  	console.log(mediaserver_uploadcontent);
-		            
-		            });
-});//end document ready	
+$(function() {
+	var mediaserver_url = '';
+	var mediaserver_uploadscript = '';
+	var mediaserver_uploadcontent = '';
+
+	$.get("/ziksana-web/getmediacontents", function(data) {
+
+		console.log(data);
+		mediaserver_url = data.url.toString();
+		mediaserver_uploadscript = data.uploadScript.toString();
+		mediaserver_uploadcontent = data.uploadContent.toString();
+		console.log(mediaserver_url);
+		console.log(mediaserver_uploadscript);
+		console.log(mediaserver_uploadcontent);
+
+	});
+});// end document ready
 function fnCheckExt(fileName) {
 	var file = $("#imgultype").val();
 	var strExtn = file.substr(fileName.value.lastIndexOf(".") + 1, file.length);
@@ -243,12 +243,13 @@ function onButtonClick(menuitemId, type) {
 	} else if (menuaction == "Delete") {
 		// alert("this should delete the form.");
 		content_id = tree.getSelectedItemId();
+		CourseId = $('#courseid').val();
 		uri = '/ziksana-web/secure/removeCourseContents';
 		token = ''; // dummy token for demo. you have to send real token.
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
 		var parameters = {
 			"Course_id" : CourseId,
-			"Component_id" : ComponentId
+			"Content_id" : content_id
 		};
 
 		$.post(uri, parameters,
