@@ -10,11 +10,11 @@
 				<Questions>			
 				<Question>${unanswered.text}</Question>
 				<questiobankid>${unanswered.questionId}</questiobankid>		
-					<options>	
-								
+					<options>								
 						<c:forEach var="choice" items="${unanswered.choices}">
-							<memberpsttestid>${choice.memPstTestId}</memberpsttestid>
-							<option index="${choice.index}">${choice.text}</option>					
+							
+								<option index="${choice.index}">${choice.text}</option>									
+										
 						</c:forEach>
 					</options>					
 				</Questions>

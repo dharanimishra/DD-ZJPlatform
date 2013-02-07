@@ -1,4 +1,4 @@
-\<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -86,174 +86,150 @@
 		get_and_UnAnswered_questions();
 	
 	}); // end of doc ready
-  
-  
-function get_and_UnAnswered_questions(){ 
-  currentQuestion = 0;
-
-	$.ajax({
+	
+	
+	function get_and_UnAnswered_questions(){
+		$.ajax({
 		  	type: 'GET',
 			url: '${showUnAnswered}',
 			dataType: 'xml',
 			success: function( data ) {
-					if (console && console.log){
-								console.log( 'unanswered data:', data);
-					}
 					var output="";
-					 questionArray= new Array();
-					 questionIdArray = new Array();
-					 optionArray = new Array();
-					 optionIndexArray = new Array();
-					 memberPersonalitytestId=0;
-					 
-					$(data).find("Questions").each(function(index){
+					var firstpollid="";
+					var lastpollid="";
+						$(data).find("unanswered").each(function(index){
+							var question = "<br/><p style='font-weight:bold; clear:both;display:inline; text-decoration:none; margin-left:0px; cursor:pointer;color:grey;'>" + $(this).find("Question").text() + "</p><br/>";
+							var currentId = $(this).find("questiobankid").text();
+							output+="<div id='question_info_message' style='font-family:verdana; '></div>";
+							if ($(this).find("Questions").find("Question").text()){
+						 		output+="<div id='q" + index + "' style='width: 418px;' class='knowmequestion'>";
+						 		output+=question;
+						 		
+						 		output+="<input type='hidden' id='quesId"+index+"' name='quesId"+index+"' value='" + $(this).find("questiobankid").text() + "'>";
+						 		output+="<input type='hidden' id='quesValue"+index+"' name='quesValue"+index+"' value='" + $(this).find("Question").text() + "'>";
+						 		
+						 		
+						 		var answers="";
+						 		var quesAnswerArray = new Array();
+						 		var quesAnsArrayindex = new Array();
+						 		$(this).find("options").find("option").each(function(answerindex){
+						 			
+						 			quesAnswerArray[$(this).attr('index')-1]=$(this).text();
+									quesAnsArrayindex[$(this).attr('index')-1]=$(this).attr('index');
+						 			
+									
+						 								 				
+						 		});
+						 		
+						 		for(var i = 0; i < quesAnswerArray.length ; i++){
+						 			answers+= "<br/>";
+						 			if(i == 0){
+						 			answers+= "<input type='radio'  checked  id='checked-val'  name='question_" + currentId +"' value='"+quesAnsArrayindex[i]+"--"+quesAnswerArray[i]+"'>" + quesAnswerArray[i] + "<br/>";
+						 			}else{
+						 				answers+= "<input type='radio' id='checked-val'  name='question_" + currentId +"' value='"+quesAnsArrayindex[i]+"--"+quesAnswerArray[i]+"'>" + quesAnswerArray[i] + "<br/>";
+						 			}
+						 		}
+						 		
+					 		
+						 		
+						 		output+=answers;
+						 		output+="<br/>";
+							} else {
+								output+="<div id='q" + index + "' style='width: 225px;' class='knowmequestion' expired='true'>";
+								output+=question;
+							}
+							var result="";
+							if (index == 0){
+								firstquestionId = $(this).find("questiobankid").text();
+								
+								output+="<div style='width:300px;margin-left:118px;margin-top:30px;' id='result" + index + "' class='knowmeresult'>"+result+"<button id='submit_knowme" + index + "' onClick='submitKnowmeBetter(" + index + ")' style='width:70px;height:30px; margin-left:30px; ' class='votebtn btn btn btn-info-knowme'>Submit</button><button id='" + index + "' onclick='' style='margin-left:25px;height:30px; width:70px;' class='btnnext btn btn-info-knowme'>Next </button></div></div>";
+					 		} else {
+					 			if (index == ($(data).find("unanswered").size()-1)){
+
+									lastquestionId = $(this).find("questiobankid").text();
+									
+									output+="<div style='width:300px;margin-left:118px;margin-top:30px;' id='result" + index + "' class='knowmeresult'>"+result+"<button  style='float:left; height:30px; width:70px;' onclick='' class='btnprev btn btn-info-knowme' id='"+ index +"' >Prev</button><button id='submit_knowme" + index + "' onClick='submitKnowmeBetter(" + index + ")' style='width:70px; height:30px;margin-left:30px;' class='votebtn btn btn btn-info-knowme'>Submit</button></div></div>";
+								}
+								else {
+									
+						 			output+="<div  style='width:300px; margin-left:118px; margin-top:30px;' id='result" + index + "' class='knowmeresult '>"+result+"<button onclick='' id='"+ index + "' style='float:right;width:70px;height:30px;' class='btnnext btn btn-info-knowme'>Next </button><button  style='width:70px;margin-left:30px;height:30px;' class='btnprev btn btn-info-knowme' id='"+ index + "' >Prev</button><button id='submit_knowme" + index + "' onClick='submitKnowmeBetter(" + index + ")'style='width:70px;margin-left:30px;height:30px;'  class='votebtn btn btn btn-info-knowme'>Submit</button></div></div>";
+						 		};
+					 		}
+							
+							
+						});
 						
-						//var pairIdQuestion = $(this).find("questiobankid").text()+"="+$(this).find("Question").text();
-						 questionArray.push($(this).find("Question").text()); 
+					$('#newque').html(output);
+					//to view the very first poll when page loads
+			        //hide all result first
+			       
+			        $("div.knowmequestion").hide();
+			        
+			        //show the first poll question
+			        $("div#q0").show();
+					
+					$('input[type=radio]').click( function(event){
+			        	//alert('test alert')
+			        	//console.log("radio button clicked " + $(this).attr('name'));
+              			
+              			$(this).parent().children("input#optionIndex").attr("value", $(this).attr("value"));
+              			console.log("hidden input#optionIndex value " + $(this).parent().children("input#optionIndex").attr("value"));
+              		});
+					
+					//associate click event to all next buttons
+					$("button.btnnext").click( function(event){
+						$("div#q" + event.target.id).hide();
+              			$("div#q" + (parseInt(event.target.id)+1)).show();
+						$('div#question_info_message').hide();
+              			if($("div#q" + (parseInt(event.target.id)+1)).attr("expired")){
+              				$("div#result" + (parseInt(event.target.id)+1)).show();
+              			}
+              		});
+					
+					//associate click event to all previous buttons
+					$("button.btnprev").click( function(event){
+						$("div#q" + event.target.id).hide();
+						$("div#q" + (parseInt(event.target.id)-1)).show();
+						$('div#question_info_message').hide();
+						if($("div#q" + (parseInt(event.target.id)-1)).attr("expired")){
+              				$("div#result" + (parseInt(event.target.id)-1)).show();
+              			}
+              		});
+					
+					}
+					
+					
+				});
+		
+	
+	}
+	
+	function submitKnowmeBetter(index){
+		var cur_question_id = $('#quesId'+index+'').val();
+		var testQuestionValue =  $('#quesValue'+index+'').val();
+		var question_answer = $('input[name="question_'+cur_question_id+'"]:checked').val();
+		var answerid_answer_pair = new Array();
+		answerid_answer_pair = question_answer.split("--");
+		var questionBankAnswerId = answerid_answer_pair[0];
+		var memberAnswer = answerid_answer_pair[1];	    
+	
+		 $.post('<c:url value='/secure/saveknowme'/>'
+			        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':cur_question_id,'questionBankAnswerId':questionBankAnswerId}
+			        , function( data )
+			        {
+			        
+						$('div#question_info_message').show();
+						$('#question_info_message').html("Answer Submitted Successfully");
+						 $('#submit_knowme'+index+'').attr('disabled','true');						 
+						 $('#submit_knowme'+index+'').removeClass('btn-info-knowme'); 
 						
-						questionIdArray.push($(this).find("questiobankid").text());
-						
-						var options = "";
-						var option_index= "";
-				 		$(this).find("options").each(function(){
-				 			memberPersonalitytestId = $(this).find("memberpsttestid").text();
-				 			$(this).find("option").each(function(){
-				 				
-				 				options +=  $(this).text()+"/";
-				 				option_index += $(this).attr('index')+"/";
-				 				
-				 			});
-				 			options = options.substring(0,options.length-1);
-				 			option_index = option_index.substring(0,option_index.length-1);
-				 			
-				 			optionArray.push(options);
-				 			optionIndexArray.push(option_index);	
-				 			console.log(options);
-					 		console.log(optionIndexArray);
-				 		});
-				 		
-			 			
-					
-					});
-					// console.log("unAnswered Question Id ==>"+ questionIdArray);
-					// console.log("unanswered array: ==> " + questionArray);
-					// console.log("option array==>"+  optionArray);
-					// console.log("memberPersonalitytestId==>"+memberPersonalitytestId);
-				
-					
-					
-
-					
-				
-					
-					displayUnAnsweredPairs(currentQuestion);		
-					
-			}
-	
-	});
-	
-
-}
-
-
-function displayUnAnsweredPairs(current){
-	var outputResult="";
-	if(questionIdArray[current] == null){
-		outputResult+="<br/><br/><div style='text-align=center'>No New Questions</div>";
-	}else{
-	outputResult+="<div id='quest'>";
-	outputResult+="<div id='question_info_message'></div>";
-	outputResult+="<input type='hidden' id='cur-qus-id' value='"+questionIdArray[current]+"'/><label id='cur-qus-value'>"+questionArray[current]+"</label><label style='display:none;' id='cur-user-member'>"+memberPersonalitytestId+"</label> ";
-	outputResult+="<table  width='180px' height='30px' >";
-
-	var optionsList = optionArray[current].split("/");
-	var optionsIdList = optionIndexArray[current].split("/");
-	var optionsList1=[];
-	var optionsIdList1=[];
-	for(var i = 0; i < optionsIdList.length ; i++){
-		
-		optionsList1[optionsIdList[i]-1]=optionsList[i];
-		optionsIdList1[optionsIdList[i]-1]=optionsIdList[i];
-	}
-	
-	 for(var i = 0; i < optionsIdList.length ; i++){
-		
-			if(i==0){
-			outputResult+= "<tr><td ><input type='radio'  checked  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";
-			} else {
-			outputResult+= "<tr><td ><input type='radio'  id='checked-val'  name='question_" + questionIdArray[current] +"' value='"+optionsIdList1[i]+"--"+optionsList1[i]+"'>" + optionsList1[i] + "</td></tr>";	
-			}
-		}
-	
-	outputResult+="</table>";
-	outputResult+="<br/>";
+			        }
+					);   
 	
 	
-	outputResult+="<div style='width:270px;margin-left:150px;'  id='question_buttons_container'>";
-	if(current!=0){
-		outputResult+="<div width='90px'><input class='btn btn-info-knowme' style='width:70px;' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
-	}else{
-		outputResult+="<div width='90px'><input class='btn btn-info-knowme'  style='display: none; width:70px;' type='button' id='previous_question' onClick='prevquestion()' value='Previous'/></div>";
-	}
-	outputResult+="<div width='90px'><input class='btn btn-info-knowme'style='width:70px;' type='submit' id='submit_question_button' onClick='submitValue()' value='Submit'/></div>";
-	if(current!=questionArray.length-1){
-	outputResult+="<div width='90px'><input class='btn btn-info-knowme' style='width:70px;'  type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
-	} else {
-	outputResult+="<div width='90px'><input class='btn btn-info-knowme' style='display: none; width:70px;' type='button' id='next_question' onClick='nextquestion()' value='Next' /></div>";
-	}
-	
-	outputResult+='</div>';	
-		
-		 
-	}
-	
-	$('#newque').html(outputResult);
-}
-
-function checkBoxSelection(val){
-	alert(val);
-}
-
-function nextquestion(){
-	//var cur=currentQuestion+1<questionArray.length-2?currentQuestion++:questionArray.lengt;
-	displayUnAnsweredPairs(++currentQuestion);
-	
-}
-function prevquestion(){
-	//var cur=currentQuestion+1<questionArray.length-2?currentQuestion++:questionArray.lengt;
-	displayUnAnsweredPairs(--currentQuestion);
-}
-
-function submitValue(){
-	question_id = $('#cur-qus-id').val();
-	var testQuestionValue = $('#cur-qus-value').text();
-	memberPstTestQuestionId = $('#cur-user-member').text();
-	question_answer = $('input[name="question_'+question_id+'"]:checked').val();
-
-	
-	//console.log(question_answer);
-	
-	var answerid_answer_pair = new Array();
-	answerid_answer_pair = question_answer.split("--");
-	questionBankAnswerId = answerid_answer_pair[0];
-	memberAnswer = answerid_answer_pair[1];
-
-		   
-		       $.post('<c:url value='/secure/saveknowme'/>'
-				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId, 'memPstTestId':memberPstTestQuestionId}
-				        , function( data )
-				        {
-				        
-							//alert("Answer Submitted Successfully");
-							$('#question_info_message').html("Answer Submitted Successfully");
-							$("#knowme-save").attr('disabled','true');
-				        }
-						);   
-		  
-		    
-		
   
 }
+
 </script>
 <script type="text/javascript">
    function change(value){
@@ -262,7 +238,9 @@ function submitValue(){
 	{
 	   get_and_Answered_questions();
 	$('.new-que').hide();
+	$('#answered_question_form_container').hide();
 	$('.pre-que').show();
+	
 	}
 	else
 	{
@@ -428,6 +406,7 @@ function answeredQuestionDisplay(){
 	
 	
 	for(var i = 0; i<answeredQuestion.length;i++){
+		
 		outputResult+="<tr  id='knowmew_row_"+i+"' onClick='displayAnsweredQuestionContainer("+i+")' ><td style='border-bottom:1px solid gray;' width='200px'><a style='text-decoration:none; margin-left:0px;' ><label  id='questionUpdate"+i+"'>"+answeredQuestion[i]+"</label> </td><td style='border-bottom:1px solid gray;'><label  id='questionDate"+i+"'>"+answerDate[i]+"</label><label style='display:none;' id='questionAnswerId"+i+"'>"+answerAnsIndex[i]+"</label><label style='display:none;' id='questionAnswer"+i+"'>"+answeredAnsewer[i]+"</label></a></td></tr>";
 		
 		}
@@ -468,19 +447,16 @@ function displayAnsweredQuestionContainer(loop){
 				answerArray[$(this).attr('index')-1]=$(this).text();
 				ansArrayindex[$(this).attr('index')-1]=$(this).attr('index');
 				
-		 				//if(checkedvalex == $(this).attr('index')){
-		 				//outputAns+="<br/><input type='radio' name='optbtn' checked value='"+$(this).attr('index')+"/"+$(this).text()+"'/><label id='cur-id'>"+$(this).text()+"</label>";
-		 				//}else
-		 				//outputAns+="<br/><input type='radio' name='optbtn' value='"+$(this).attr('index')+"/"+$(this).text()+"'/><label id='cur-id'>"+$(this).text()+"</label>";
+		 				
 		 	});
-			//alert(answerArray);
+
 			for(var i=0;i<ansArrayindex.length;i++){
 				if(checkedvalex == ansArrayindex[i]){
 	 				outputAns+="<br/><input type='radio' name='optbtn' checked value='"+ansArrayindex[i]+"/"+answerArray[i]+"'/><label id='cur-id'>"+answerArray[i]+"</label>";
 	 				}else
 	 				outputAns+="<br/><input type='radio' name='optbtn' value='"+ansArrayindex[i]+"/"+answerArray[i]+"'/><label id='cur-id'>"+answerArray[i]+"</label>";
 			}
-		 	///
+
 		 	outputAns+="</div>"; 
 		 	outputAns+="<div>"; 
 		 	outputAns+="<button class='btn btn-info-knowme' style='margin-left:0px;margin-top:30px;height:30px;' onClick='updateValues()' class='f-rt'>Submit Revisions</button>";
@@ -505,11 +481,7 @@ function updateValues(){
 
 	var split_ansid_ans = new Array();
 	split_ansid_ans = editAnsId.split("/");
-	/* alert(editQuesid);
-	alert(editQuesval);
-	alert(editAnsId);
-	alert("Id"+split_ansid_ans[0]);
-	alert("value"+split_ansid_ans[1]); */
+	
 
 	
 	   
@@ -518,9 +490,10 @@ function updateValues(){
 		        , function( data )
 		        {
 		        
-					change(2);
-		        	$('#question_info_message_update').html("Answer Updated Successfully");
 					
+					$('#question_info_message_update').show();
+		        	$('#question_info_message_update').html("Answer Updated Successfully");
+		        	get_and_Answered_questions();
 
 		        }
 				 );  

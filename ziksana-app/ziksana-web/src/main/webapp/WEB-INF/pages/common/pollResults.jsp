@@ -111,15 +111,15 @@ $("#details-poll").show();
 }	 */
 function showdate()
 {
-var today = Date.today().toString('dd/MM/yyyy');
+var today = Date.today().toString('MM/dd/yyyy');
 
 document.getElementById("EDate").value=today;
 }
 function showenddate()
 {
 var today = new Date();
-var last_week = Date.prev().week().toString('dd/MM/yyyy');
-var last_month = Date.prev().month().toString('dd/MM/yyyy');
+var last_week = Date.prev().week().toString('MM/dd/yyyy');
+var last_month = Date.prev().month().toString('MM/dd/yyyy');
 
 document.getElementById("vDate").value=last_month;
 }				
