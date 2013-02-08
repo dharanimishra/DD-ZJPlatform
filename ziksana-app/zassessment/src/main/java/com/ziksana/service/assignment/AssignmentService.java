@@ -141,7 +141,7 @@ public interface AssignmentService {
 	 * CReates assignment and returns the created assignment
 	 * @return
 	 */
-	public Assignment createAssignment();
+	public Assignment createAssignment(Integer learningComponentId);
 	
 	
 	

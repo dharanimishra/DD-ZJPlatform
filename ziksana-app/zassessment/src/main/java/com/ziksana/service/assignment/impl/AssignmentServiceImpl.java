@@ -557,7 +557,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 	}
 
 	@Override
-	public Assignment createAssignment() {
+	public Assignment createAssignment(Integer learningComponentId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
