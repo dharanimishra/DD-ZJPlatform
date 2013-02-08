@@ -454,6 +454,12 @@ span.standartTreeRow:hover {
 												$(document)
 														.ready(
 																function() {
+																	
+																	$('#Duration').spinit(); 
+																	$('#Credits').spinit();  
+																	$('#ExtraCredits').spinit();  
+																	
+																	
 																	var s = $(
 																			'#Credits')
 																			.spinit(

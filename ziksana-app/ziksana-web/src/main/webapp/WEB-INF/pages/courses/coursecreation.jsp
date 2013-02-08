@@ -692,6 +692,25 @@ span.standartTreeRow:hover {
 					cancel : true
 				});
 			</script>
+			
+			<script type="text/javascript">
+				$(function(){
+  
+					
+					
+					$('#Cmoduleduration')
+							.spinit(
+									{
+										height : 20,
+										width : 30,
+										min : null,
+										placeholder : null,
+										initValue : null,
+										max : 20,
+									});
+					
+				});//end of doc ready
+			</script>
 
 
 			<!--End Current Progress-->

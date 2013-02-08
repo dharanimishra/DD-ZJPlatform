@@ -379,9 +379,9 @@ $(document).ready(function()
 						
 		
 				//spinner
-				$('#Duration').spinit(); 
-				$('#Credits').spinit();  
-				$('#ExtraCredits').spinit();      
+//				$('#Duration').spinit(); 
+//				$('#Credits').spinit();  
+//				$('#ExtraCredits').spinit();      
     
 	
 	
