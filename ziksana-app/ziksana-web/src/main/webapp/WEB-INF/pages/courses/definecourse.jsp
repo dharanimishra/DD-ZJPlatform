@@ -323,7 +323,7 @@ span.standartTreeRow:hover {
 										class="bcumb">1.</span> Define Course</a></li>
 								<li><a
 									href="/ziksana-web/secure/associatecontent/${courseId}"
-									style="text-align: center;">2. Associate Content</a></li>
+									style="text-align: center;">2. Organize Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a style="width: 130px; text-align: center;">4.
@@ -455,9 +455,7 @@ span.standartTreeRow:hover {
 														.ready(
 																function() {
 																	
-																	$('#Duration').spinit(); 
-																	$('#Credits').spinit();  
-																	$('#ExtraCredits').spinit();  
+																	
 																	
 																	
 																	var s = $(

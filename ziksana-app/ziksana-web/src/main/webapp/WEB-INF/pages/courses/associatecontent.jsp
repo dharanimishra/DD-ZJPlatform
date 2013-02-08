@@ -319,7 +319,7 @@ span.standartTreeRow:hover {
 										class="bcumb">1.</span> Define Course</a></li>
 								<li><a
 									href="/ziksana-web/secure/associatecontent/${courseId}"
-									style="text-align: center;">2. Associate Content</a></li>
+									style="text-align: center;">2. Organize Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a href="" style="width: 130px; text-align: center;">4.
@@ -342,10 +342,10 @@ span.standartTreeRow:hover {
 
 
 						<div class="definecontainer" id="definetab">
-
+							<span style="font-size:16px; font-wight:bold;  color:#27b;">Organize and Enhance Content</span>
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 						</div>
-						<br> <br> <input type="hidden" id="courseid"
+						<br>  <input type="hidden" id="courseid"
 							value="${courseId}" /> <input type="hidden"
 							id="courseLearningComponentId" value="" /> <input type="hidden"
 							id="learningComponentId" value="" /> <input type="hidden"
