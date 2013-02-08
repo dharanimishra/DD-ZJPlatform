@@ -327,9 +327,11 @@ list-style:none;
 			-o-transform: rotate(0); 
 		}
 		.slide-up-boxes a:nth-child(2) div { background: #367db2 url(images/icons/createcourse.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(3) div { background: #000000 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(3) div { background: #367db2 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 60px; }
 		.slide-up-boxes a:nth-child(4) div { background: #000000 url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 60px; }
 		.slide-up-boxes a:nth-child(5) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(6) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
+		
 
 </style>
 <style type="text/css">
@@ -495,7 +497,7 @@ function deleteFunction(val){
 $(document).ready(function() {
 	setInterval(function() {
 		get_and_populate_todo();
-		
+ 
 	}, 1*30*1000);	
 	
 	get_and_populate_todo();
@@ -885,7 +887,7 @@ $("#datepara").show();
             <div id="cn_preview" class="cn_preview">
 				<div class="cn_content" style="top: 310px;">
 					
-					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<span class="eventhead">Recap on Ziksana Capability</span>
 					<br>	
                     <br>				
 				  <p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
@@ -924,14 +926,14 @@ $("#datepara").show();
 				</div>
 				<div class="cn_content" style="top: 5px;">
 					
-					<span class="eventhead">Seminar on Artificial Intelligence</span>
+					<span class="eventhead">Recap on Ziksana Capability</span>
 					<br>	
                     <br>				
-					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Meeting with Ziksana</p>
                      <br>	
                     <br>
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Adminnistrative Building  </p>  
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span> 9:00am - 12:00 pm </p>
                   <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
 					
 				</div>
@@ -969,8 +971,8 @@ $("#datepara").show();
 					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
                      <br>	
                     <br>
-                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
-                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD administrative Building  </p>  
+                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  9:00 am - 12:00 pm </p>
                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
 					
 				</div>
@@ -1028,16 +1030,16 @@ padding: 5px;">
 			<div id="cn_list" class="cn_list">
 				<div class="cn_page" style="display:block;">
 					<div class="cn_item">
-						<span class="cal dmonth">  </span><span class="eventtext">Upcoming Event</span>
+						<span class=" selected cal dmonth ">  </span><span class="eventtext">Recap on Ziksana</span>
 						
 					</div>
 					<div class="cn_item">
-						<span class="cal"> JAN <br>23 </span><span class="eventtext">Upcoming Event</span>
+						<span class="cal"> JAN <br>23 </span><span class="eventtext">Lunch with Ziksana</span>
 					</div>
 					<div class="cn_item">
-						<span class="cal"> JAN <br>23 </span><span class="eventtext">Upcoming Event</span>
+						<span class="cal"> JAN <br>23 </span><span class="eventtext">Experiment with Playpen</span>
 					</div>
-					<div class="cn_item selected">
+					<div class="cn_item ">
 						<span class="cal"> JAN <br>23 </span><span class="eventtext">Upcoming Event</span>
 					</div>
 				</div>
@@ -1123,6 +1125,11 @@ padding: 5px;">
 			<a class="fancyboxclose" href="/ziksana-web/secure/createcourse" target="_parent" >
 				<h5>Create Course</h5>
 				<div>Create your course with an easy 7 step process </div>				
+			</a>
+			
+			<a class="fancyboxclose" href="/ziksana-web/secure/showMyProgramsDraft" target="_parent">
+				<h5>Draft Courses</h5>
+				<div style="text-align:center;">Draft courses</div>					
 			</a>
 				
 			<a class="fancyboxclose" href="#linkurl">
