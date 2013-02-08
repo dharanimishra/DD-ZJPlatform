@@ -556,4 +556,10 @@ public class AssignmentServiceImpl implements AssignmentService {
 		return testSubmission;
 	}
 
+	@Override
+	public Assignment createAssignment() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

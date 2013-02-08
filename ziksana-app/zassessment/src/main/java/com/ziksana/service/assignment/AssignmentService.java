@@ -135,6 +135,17 @@ public interface AssignmentService {
 	 * @throws AssignmentException
 	 */
 	public TestSubmission getTestSubmissionInfo(Integer memberRoleId) throws AssignmentException;
+	
+	
+	/**
+	 * CReates assignment and returns the created assignment
+	 * @return
+	 */
+	public Assignment createAssignment();
+	
+	
+	
+	
 
 	
 }
