@@ -299,7 +299,7 @@ $('._cklo').show('');
                 <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Program</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;"> Learning Programs </span> Defines the Curriculum necessary to meet the Learning Objectives..</p>
-                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">8</p>
+                <span class="number-creat-box f-r font-Signika bold for-rounded-box" style=" margin-top:-4px;font-size:18px;color:#fff;">8<span style="font-size:14px;"> Learning Programs</span> </span>
 				
                 <div class="icons-list">
                   <a href="#linkurl" rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
@@ -320,7 +320,7 @@ $('._cklo').show('');
 
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Course </span> is a Learning Unit that Heps in Achieving the Learning Objects of the Learning Program..</p>
-                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">${courseCount}</p>
+                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style=" margin-top:-4px;font-size:20px;color:#fff;">${courseCount} <span style="font-size:15px;">courses</span></span></p>
 				
                 <div class="icons-list">
                   <a href="#linkurl"  rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
@@ -345,7 +345,7 @@ $('._cklo').show('');
                 <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning object</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Learning Object  </span> is an Learning Unit that can be used as a building block for creating a course..</p>
-                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">4</p>
+                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;font-size:18px;color:#fff;">4<span style="font-size:14px;"> Learning Objects</span></p>
 				
                 <div class="icons-list">
                    <a href="#linkurl" rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
@@ -426,7 +426,7 @@ $('._cklo').show('');
                 <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Content</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Learning Contents </span> are  materials that can be associated to a course or a  to meet the Objectives..</p>
-                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;">3</p>
+                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;font-size:18px;color:#fff;">3 <span style="font-size:14px;"> Learning Contents</span></p>
 				
                 <div class="icons-list">
                   <a href="#linkurl" rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>

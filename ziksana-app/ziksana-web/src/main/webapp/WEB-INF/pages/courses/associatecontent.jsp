@@ -114,6 +114,15 @@
 	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
 
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+$(".containerTableStyle").css('height','400px');
+$(".containerTableStyle").css('overflow','auto');
+
+});
+</script> 
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".signin").click(function(e) {
@@ -427,7 +436,7 @@ span.standartTreeRow:hover {
 														<input type="text" id="contentname"
 															class="defaultvalue validate[required]" autofocus
 															placeholder="Specify the name of the Content"
-															style="width: 240px; margin-left: 10px;" />
+															style="width: 240px; margin-left: 10px; color: #666;" />
 													</div>
 
 													<br /> <label for="moduledescription" class="labelclass"
@@ -438,7 +447,7 @@ span.standartTreeRow:hover {
 														style="text-decoration: none;">Plain Text Editor</a>
 													<textarea placeholder="Describe the Content being created"
 														class="_plainTextShow labelclass defaultvalue" cols="90"
-														rows="7" style="resize: none;"> </textarea>
+														rows="7" style="resize: none;color: #666;"> </textarea>
 													<br />
 													<div class="_richTextShow">
 														<textarea placeholder="Describe the Content being created"
@@ -483,7 +492,7 @@ span.standartTreeRow:hover {
 															for="contenttags"
 															style="margin-top: -2px; font-weight: bold;">Specify
 															any tags : </label> <input type="text" id="Associatetag"
-															style="margin-left: 290px;"></input> <br />
+															style="margin-left: 290px;color: #666;"></input> <br />
 													</div>
 													<!-- end of coursetags--->
 													<img src="/ziksana-web/resources/images/icons/upload.png"

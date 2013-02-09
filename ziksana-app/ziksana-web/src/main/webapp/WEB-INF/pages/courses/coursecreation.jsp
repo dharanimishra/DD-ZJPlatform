@@ -122,6 +122,15 @@
 	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+	
+	<script type="text/javascript">
+$(document).ready(function(e) {
+$(".containerTableStyle").css('height','400px');
+$(".containerTableStyle").css('overflow','auto');
+
+});
+</script> 
+	
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".signin").click(function(e) {
@@ -420,7 +429,7 @@ span.standartTreeRow:hover {
 														<input type="text" id="Cmoduletxtbox"
 															class="defaultvalue validate[required]" autofocus
 															placeholder="Specify the name of the Course Module"
-															style="width: 240px; margin-left: 10px;" />
+															style="width: 240px; margin-left: 10px; color: #666;" />
 													</div>
 
 
@@ -429,7 +438,7 @@ span.standartTreeRow:hover {
 														<a class="f-r _richText" id="addmodulerichedit" href="#" style="text-decoration: none;">Rich Text Editor</a> 
 														<a class="f-r _plainText" href="#" style="text-decoration: none;">Plain Text Editor</a>
 	
-													<textarea placeholder="Describe the Course being created" class="_plainTextShow label" class="defaultvalue" id="Cmoduledesc" cols="80" rows="7" style="resize: none;"></textarea>
+													<textarea placeholder="Describe the Course being created" class="_plainTextShow label" class="defaultvalue" id="Cmoduledesc" cols="80" rows="7" style="resize: none;color: #666;"></textarea>
 													<br />
 													<div class="_richTextShow">
 														<textarea placeholder="Describe the Course being created" id="Cmoduledescrte" name="editor2" class="defaultvalue _focus"></textarea>
@@ -476,7 +485,7 @@ span.standartTreeRow:hover {
 														<br /> <label class="control-label labelclass"
 															for="moduletags"
 															style="margin-top: -2px; font-weight: bold;">Specify
-															any tags : </label> <input id="Addmoduletag" type="text"></input>
+															any tags : </label> <input id="Addmoduletag" style="color: #666;" type="text"></input>
 														<br />
 
 														<!--   <label class="control-label labelclass"
