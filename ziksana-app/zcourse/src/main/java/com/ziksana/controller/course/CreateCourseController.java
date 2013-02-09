@@ -466,8 +466,15 @@ public class CreateCourseController {
 				comp1.setPrescribedDuration(prescribedDuration);
 				comp1.setSubjClassificationId(courseSubjectClassification
 						.getSubjClassificationId());
+
+				// Learning Component Nesting
+
 				LearningComponentNest compNest1 = new LearningComponentNest(
 						null, comp1);
+				compNest1.setNestLevel(0);
+
+				// Learning Component Nesting
+
 				compNest1.setNestLearningComponent(comp1);
 				LearningComponentDetails compDetails1 = new LearningComponentDetails();
 				compDetails1.setLearningComponentNest(compNest1);
@@ -512,8 +519,14 @@ public class CreateCourseController {
 				comp1.setSubjClassificationId(courseSubjectClassification
 						.getSubjClassificationId());
 
+				// Learning Component Nesting
+
 				LearningComponentNest compNest1 = new LearningComponentNest(
 						null, comp1);
+				compNest1.setNestLevel(0);
+
+				// Learning Component Nesting
+
 				compNest1.setNestLearningComponent(comp1);
 				// compNest1.setComponentNestId(11);
 				LearningComponentDetails compDetails1 = new LearningComponentDetails();

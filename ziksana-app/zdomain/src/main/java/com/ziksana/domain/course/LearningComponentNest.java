@@ -15,7 +15,7 @@ public class LearningComponentNest extends AuditHistory{
 		setNestLearningComponent(learningComponentNest);
 	}
 
-	private ZID		 		componentNestId;
+	private ZID		 		    componentNestId;
 	private Date 				creationDate 			= null;
 	private Integer 			nestLevel 				= null;
 	private LearningComponent 	learningComponentParent	= null;
