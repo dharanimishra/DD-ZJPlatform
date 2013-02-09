@@ -13,7 +13,8 @@ function onButtonClick(menuitemId, type) {
 		$('#DegineCourse2').hide();
 		$('#definequalifiercontainer').hide();
 		$('#Addmodulecontainer').show();
-
+		document.getElementById('AddModule').reset();
+		document.getElementById("contentname").focus();
 		$("#Btnsbtcmodule").click(
 				function(event) {
 					var d = new Date();
@@ -92,7 +93,8 @@ function onButtonClick(menuitemId, type) {
 										learningComponentId);
 
 								$('#Cmoduletxtbox').val(module_name);
-
+								
+						
 								if (module_desc.charAt(0) == '<') {
 
 									$('#Cmoduledescrte').val(module_desc);
@@ -104,7 +106,7 @@ function onButtonClick(menuitemId, type) {
 									$('#Cmoduledesc').val(module_desc);
 
 								}
-
+								
 								$('#Addmoduletag').val(module_name);
 
 								$('#addmodulecheckbox').attr('checked',false);

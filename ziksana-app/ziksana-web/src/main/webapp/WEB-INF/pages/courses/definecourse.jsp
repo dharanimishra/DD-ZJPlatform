@@ -121,7 +121,6 @@
 	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
-	
 	<script type="text/javascript">
 $(document).ready(function(e) {
 $(".containerTableStyle").css('height','400px');
@@ -129,8 +128,6 @@ $(".containerTableStyle").css('overflow','auto');
 
 });
 </script> 
-	
-	
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".signin").click(function(e) {
@@ -449,7 +446,7 @@ span.standartTreeRow:hover {
 												for="coursetags"
 												style="margin-top: -2px; font-weight: bold;">Specify
 												any tags : </label> <input id="Ctagfield_e" type="text"
-												style="margin-left: 290px; color: #666;"></input> <br /> <br />
+												style="margin-left: 290px;"></input> <br /> <br />
 										</div>
 										<!-- end of coursetags--->
 

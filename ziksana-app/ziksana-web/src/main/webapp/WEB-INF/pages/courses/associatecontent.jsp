@@ -114,17 +114,18 @@
 	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
 
-
-<script type="text/javascript">
+	<script type="text/javascript">
 $(document).ready(function(e) {
 $(".containerTableStyle").css('height','400px');
 $(".containerTableStyle").css('overflow','auto');
 
 });
 </script> 
-
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		
+		 
 		$(".signin").click(function(e) {
 			e.preventDefault();
 			$("fieldset#signin_menu").toggle();
@@ -415,7 +416,15 @@ span.standartTreeRow:hover {
 
 
 									<div class="definecontainer" id="associatedefinecontainer">
-
+									<script type="text/javascript">
+											$(function() {
+												
+												 window.onload = function() {
+													  document.getElementById("contentname").focus();
+													};
+											
+											});
+											</script>
 										<div class="definehelp"
 											style="width: 680px; font-family: Helvetica; font-weight: bold; color: #125F92; line-height: 20px;">
 											<img src="/ziksana-web/resources/images/icons/helpicon.png"
@@ -434,9 +443,9 @@ span.standartTreeRow:hover {
 														Name:</label>
 													<div class="controls">
 														<input type="text" id="contentname"
-															class="defaultvalue validate[required]" autofocus
+															class="defaultvalue validate[required]"
 															placeholder="Specify the name of the Content"
-															style="width: 240px; margin-left: 10px; color: #666;" />
+															style="width: 240px; margin-left: 10px;" />
 													</div>
 
 													<br /> <label for="moduledescription" class="labelclass"
@@ -447,7 +456,7 @@ span.standartTreeRow:hover {
 														style="text-decoration: none;">Plain Text Editor</a>
 													<textarea placeholder="Describe the Content being created"
 														class="_plainTextShow labelclass defaultvalue" cols="90"
-														rows="7" style="resize: none;color: #666;"> </textarea>
+														rows="7" style="resize: none;"> </textarea>
 													<br />
 													<div class="_richTextShow">
 														<textarea placeholder="Describe the Content being created"
@@ -492,10 +501,10 @@ span.standartTreeRow:hover {
 															for="contenttags"
 															style="margin-top: -2px; font-weight: bold;">Specify
 															any tags : </label> <input type="text" id="Associatetag"
-															style="margin-left: 290px;color: #666;"></input> <br />
+															style="margin-left: 290px;"></input> <br />
 													</div>
 													<!-- end of coursetags--->
-													<img src="/ziksana-web/resources/images/icons/upload.png"
+													<!-- <img src="/ziksana-web/resources/images/icons/upload.png"
 														align="left" /><label class="control-label labelclass"
 														for="uploadimage"
 														style="margin-top: -2px; font-weight: bold;">Upload
@@ -505,7 +514,7 @@ span.standartTreeRow:hover {
 													<div id="loaderText"></div>
 													<input type="file" name="thumbnail_image_file_upload"
 														id="thumbnail_image_file_upload" />
-													<div id="status"></div>
+													<div id="status"></div> -->
 													<script type="text/javascript">
 													var mediaserver_url = '${ms.url}';
 													
