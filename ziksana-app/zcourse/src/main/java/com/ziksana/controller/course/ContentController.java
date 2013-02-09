@@ -61,7 +61,7 @@ public class ContentController {
 		mav.addObject("content", content);
 		mav.addObject("contentId", contentId);
 		mav.addObject("componentId", componentId);
-
+		mav.addObject("ms",mediaService.getMediaContents());
 		return mav;
 
 	}
