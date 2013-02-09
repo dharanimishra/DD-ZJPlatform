@@ -390,7 +390,7 @@ span.standartTreeRow:hover {
 									<!-- Start of Default Instruction -->
 
 									<div id="instruction" style="padding: 10px;">
-										<img src="/ziksana-web/resources/images/instruction.png"
+										<img src="/ziksana-web/resources/images/instruction.jpg"
 											class="all-box-shadow" alt="instructions"
 											title="Key-Board instruction" width="720"
 											style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;">
