@@ -23,9 +23,9 @@ public class AssignmentServiceImpl implements AssignmentService {
 	public Assignment createAssignment(Assignment assignment) {
 		// TODO Auto-generated method stub
 		Integer assignmentId = assignmentMapper.insertAssignment(assignment);
-		logger.debug(" THE ASSIGNMENT ID IS "+assignmentId);
-		logger.debug(" THE ASSIGNMENT ID FROM THE OBJECT  IS "+assignment.getId());
-		return assignmentMapper.getAssignmentById(assignment.getId());
+		System.out.println("THE ASSIGNMENT ID IS "+assignmentId);
+		System.out.println("THE ASSIGNMENT ID FROM THE OBJECT  IS "+assignment.getId());
+		return assignment;
 
 	}
 
