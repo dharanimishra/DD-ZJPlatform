@@ -479,7 +479,7 @@ $(document).ready(function() {
 
 function playVideo(path) {
 
-
+	$('#enhanced_video_player_container').css('visibility','hidden');
 
 	// console.log('inside play video');
 
@@ -604,7 +604,7 @@ function ff_get_recorded_file(){ return $('#enhanced_video_path').val(); }
 
 function playAudio(path) {
 
-
+	$('#enhanced_video_player_container').css('visibility','hidden');
 
 	$(
 
@@ -662,6 +662,8 @@ function playAudio(path) {
 
 
 function displayImageSet(path) {
+	
+	$('#enhanced_video_player_container').css('visibility','hidden');
 
 	$('#notes_and_bookmarks_container, #table_of_contents_container, #questions_container')
 
@@ -685,6 +687,7 @@ function displayImageSet(path) {
 
 
 function displayImage(path) {
+	$('#enhanced_video_player_container').css('visibility','hidden');
 
 	$('#notes_and_bookmarks_container, #table_of_contents_container, #questions_container')
 
