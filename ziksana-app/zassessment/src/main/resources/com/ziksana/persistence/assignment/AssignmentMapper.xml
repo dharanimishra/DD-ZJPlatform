@@ -21,7 +21,7 @@
 		#{creatingMemberRoleId}
 		 )
 
-		<selectKey keyProperty="id" resultType="java.lang.Integer"
+		<selectKey keyProperty="id" resultType="java.lang.Integer" 
 			order="AFTER">
 			select LAST_INSERT_ID()
 		</selectKey>

@@ -3,7 +3,7 @@
  */
 package com.ziksana.service.assignment.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.ziksana.id.StringZID;
@@ -90,6 +89,9 @@ public class AssignmentServiceImplTest {
 		
 		Assignment createdAssignment = assignmentService
 				.createAssignment(assignment);
+		
+		assertEquals(assignment.getName() ,createdAssignment.getName());
+	
 
 	}
 
