@@ -111,6 +111,27 @@ public class MyCoursesController {
 		}
 
 	}
+	
+	@RequestMapping(value = "/learnercourses", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView readLearnerMyPrograms() throws CourseException {
+		
+		List<LearningProgram> programs = courseService
+				.getLearningPrograms();
+		LearningProgram program = programs.get(0);
+		List<Course> courses = courseService
+				.getThreeCoursesByLearningProgram(Integer.valueOf(program
+						.getLearningProgramId().getStorageID()));
+
+		System.out
+				.println(" TOTAL NUMBER OF COURSES IS  " + courses.size());
+		System.out.println(" THE COURSE NAME IS   "
+				+ courses.get(0).getName());
+		ModelAndView mvLearner = new ModelAndView("courses/learner-courses");
+		mvLearner.addObject("program", program.getName());
+		return mvLearner.addObject("courses", courses);
+	
+	}
+	
 
 	@RequestMapping(value = "/showMyPrograms", method = RequestMethod.GET)
 	public @ResponseBody

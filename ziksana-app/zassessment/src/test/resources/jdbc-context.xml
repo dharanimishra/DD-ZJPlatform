@@ -11,7 +11,7 @@
 			http://www.springframework.org/schema/context/spring-context-3.0.xsd
 	   		">
 
-	<context:property-placeholder location="/jdbc.properties" />
+	<context:property-placeholder location="classpath:/config/spring/jdbc.properties" />
 
 	<!-- Enable annotation style of managing transactions -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
@@ -38,7 +38,7 @@
 
     <!-- scan for mappers and let them be autowired -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.ziksana.persistence.course" />
+        <property name="basePackage" value="com.ziksana.persistence.assignment" />
     </bean>
     
 </beans>

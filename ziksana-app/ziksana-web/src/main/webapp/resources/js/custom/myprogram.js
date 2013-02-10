@@ -81,7 +81,7 @@ $(document).ready(function()
 		$('._lo').hide();
 		$('._lc').hide();
 		
-		$("._cklp").click( function(){
+		/*$("._cklp").click( function(){
 		
 			$('#_lp').slideDown('');	
 			$('._course').hide('');	
@@ -93,7 +93,7 @@ $(document).ready(function()
 			$('._cklc').hide('');
 			$('.arrowdown').show('');
 			
-		});
+		});*/
 		
 		$("._ckcourse").click( function(){
 	/*$('#course1').addClass('marginl');*/	
@@ -114,7 +114,7 @@ $(document).ready(function()
 			
 		});
 		
-		$("._cklo").click( function(){
+		/*$("._cklo").click( function(){
 			$('._lo').slideDown('');	
 			$('._course').hide('');	
 			$('#_lp').hide('');	
@@ -124,9 +124,9 @@ $(document).ready(function()
 			$('._cklp').hide('');	
 			$('._cklc').hide('');
 			$('.arrowdown').show('');
-		});
+		});*/
 		
-		$("._cklc").click( function(){
+		/*$("._cklc").click( function(){
 			$('._lc').slideDown('');	
 			$('._lo').hide('');	
 			$('._course').hide('');	
@@ -136,7 +136,7 @@ $(document).ready(function()
 			$('._cklo').hide('');
 			$('.arrowdown').show('');
 			
-		});
+		});*/
 		
 		//top wizard active step 
 	

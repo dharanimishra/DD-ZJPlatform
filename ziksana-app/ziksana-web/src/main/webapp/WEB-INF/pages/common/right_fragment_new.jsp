@@ -298,35 +298,32 @@ $(document).ready(function() {
 
 </c:if>
 <c:if test="${member.roleType =='LEARNER'}">
+<c:url var="showLearner" value="/secure/learnercourses" />
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
 		  	type: 'GET',
-			url: '${showCourseUrl}',
+			url: '${showLearner}',
 			dataType: 'xml',
 			success: function( data ) {
 					
-					var draftcourse="";
+					var learnercourse="";
 					
 					
-					$(data).find("draftedcourses").find("course").each(function(index){
+					$(data).find("learnercourses").find("course").each(function(index){
 						
-						var progress =  $(this).find("progress").text()+"%";
+						
 						
 					    console.log("Yes I am in");  
-					    draftcourse+="<p class='blok-title-L'><a href='#'>" +  ": " + $(this).find("title").text() + "</a></p>";
-					          
-							draftcourse+="<p></p>";
-							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
-							draftcourse+="<div style='width: " + progress + ";' class='ui-progressbar-value ui-widget-header ui-corner-left'></div>";
-							draftcourse+="</div><span class='light-blue'>&nbsp;&nbsp;" + progress + " complete</span><p></p><p>&nbsp; </p>";
+					    learnercourse+="<p class='blok-title-L'><a href='/ziksana-web/secure/course/"+$(this).attr('id')+"'>" +  " " + $(this).find("title").text() + "</a></p>";
+					
 						
 					    
 					    	console.log("it is written"); 
 					});
 					
-					draftcourse+='<a class="moreclass" style="float:right; margin: 1em;" href="/ziksana-web/secure/showMyProgramsDraft">More</a><div class="clear"></div>';
-					$('#draft_placeholder').html(draftcourse);
+					learnercourse+='<a class="moreclass" style="float:right; margin: 1em;" href="/ziksana-web/secure/showMyProgramsDraft">More</a><div class="clear"></div>';
+					$('#learner_placeholder').html(learnercourse);
 			}
 	});
 	
@@ -413,7 +410,7 @@ function short_string(string){
                    <div class="Performance">   
                         <p class="jdash-head-title titles-info t_toggler t_up">My Courses<br></p>
                         <div class="t_content">
-       						<div id="draft_placeholder"></div>
+       						<div id="learner_placeholder"></div>
        					</div>
        				</div>
        			

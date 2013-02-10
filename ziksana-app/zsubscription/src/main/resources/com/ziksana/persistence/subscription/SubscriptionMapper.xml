@@ -42,7 +42,7 @@
 
 
 		select
-		course.ID,
+		course.ID as courseId,
 		course.Name,
 		course.Description
 		from
@@ -66,6 +66,33 @@
 	</select>
 
 
+<select id="getThreeCoursesByLearningProgram" resultMap="courseResultMap"
+		parameterType="map">
+
+
+		select
+		course.ID as courseId,
+		course.Name,
+		course.Description
+		from
+		sbnmembersubscriptionprogram sbnpgm
+		JOIN sbnsubscriptioncourse
+		subcourse ON
+		sbnpgm.ID=subcourse.MemSubscriptionProgId
+		JOIN
+		corcurriculumcourse curcourse ON
+		subcourse.CurriculumCourseId=curcourse.ID
+		JOIN
+		corcourse course ON
+		curcourse.CourseId=course.ID
+		where
+		sbnpgm.MemberRoleId=#{memberRoleId}
+		and
+		sbnpgm.LearningProgramId=#{learningProgramId} LIMIT 0, 3
+
+
+
+	</select>
 
 
 
@@ -517,6 +544,8 @@
 	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
 
 		<result property="courseId" column="courseid" />
+		<result property="coursesId" column="courseid" />
+		
 		<result property="name" column="name" />
 		<result property="description" column="description" />
 

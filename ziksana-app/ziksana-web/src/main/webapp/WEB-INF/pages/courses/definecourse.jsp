@@ -121,6 +121,13 @@
 	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+	<script type="text/javascript">
+$(document).ready(function(e) {
+$(".containerTableStyle").css('height','400px');
+$(".containerTableStyle").css('overflow','auto');
+
+});
+</script> 
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".signin").click(function(e) {

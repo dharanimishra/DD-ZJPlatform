@@ -32,7 +32,7 @@
 		
 		$.fancybox({
 			'width': '85%',
-			'height': '500',
+			'height': 550,
 			'autoScale': false,
 			'transitionIn': 'fade',
 			'transitionOut': 'fade',
@@ -41,8 +41,10 @@
 			'type': 'iframe',
 			'href': '/ziksana-web/secure/launcher',
 			'showCloseButton': false,
-			'onComplete': setTimeout("add_ziklogo_and_close_button()", 2000),
-			'onClose': function(){window.location.href=window.location.href; }
+			'onComplete': setTimeout("add_ziklogo_and_close_button()", 3000),
+			'onCleanup'   :   function() {
+		        return window.confirm('Close?');
+		    }
 			
 			
 		});
@@ -52,7 +54,7 @@
 <script type="text/javascript">
 function add_ziklogo_and_close_button(){
 
-	logo_html = '<img id="zik_fancy_logo" width="120" height="120" style="cursor: pointer; left: -36px; margin: 0 auto; position: absolute; top: -36px; z-index: 10000;" alt="" src="/ziksana-web/resources/images/ziksana_button_logo.png">';
+	logo_html = '<img src="/ziksana-web/resources/images/ziksana_button_logo.png" id="zik_fancy_logo"  style="cursor: pointer; left: -36px; margin: 0 auto; position: absolute; top: -36px; z-index: 10000;width:120px; height:120px;" alt="" >';
 	//$(fancy_iframe).parent().find('#zik_fnacy_logo, #custom_fancybox_close').remove(); //initially remove the logo if exists.
 
 	fancybox_wrapper = $.fancybox.wrap;

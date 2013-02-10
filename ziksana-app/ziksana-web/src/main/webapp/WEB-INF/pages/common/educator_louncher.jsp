@@ -37,7 +37,7 @@
    
      <script type="text/javascript">
 	 $( document).ready(function(e) {
-     
+    
 		$("a.lbx-calendar").fancybox({
 				'width'				: 800,
 				'height'			: 800,
@@ -80,7 +80,8 @@
 cufon{text-indent:0!important;}@media screen,projection{cufon{display:inline!important;display:inline-block!important;position:relative!important;vertical-align:middle!important;font-size:1px!important;line-height:1px!important;}cufon cufontext{display:-moz-inline-box!important;display:inline-block!important;width:0!important;height:0!important;overflow:hidden!important;text-indent:-10000in!important;}cufon canvas{position:relative!important;}}@media print{cufon{padding:0!important;}cufon canvas{display:none!important;}}
 .lnchwrapper
 {
-height:490px;	
+height:550px;	
+border:1px solid #fff;
 
 }
 
@@ -89,7 +90,7 @@ height:490px;
 width: 1000px;
 margin-right: auto;
 margin-left: auto;	
-
+height:100px;
 
 }
 
@@ -102,6 +103,7 @@ margin-bottom:20px;
 -webkit-box-shadow: 3px 4px 4px -3px #D9D9D9;
 box-shadow: 3px 4px 4px -3px #D9D9D9;*/
 /*border:1px solid #ccc;*/
+
 }
 
 .lnchlogo
@@ -114,6 +116,7 @@ box-shadow: 3px 4px 4px -3px #D9D9D9;*/
 float:right;
 background-color: #6D9EC5;	
 margin-right:22px;
+
 }
 
 .lnchaccountleft
@@ -131,7 +134,7 @@ float:right;
 
 .navlinks
 {
-		
+
 /*border:1px solid #ccc;*/
 }
 
@@ -141,7 +144,7 @@ float:right;
 /*border:1px solid #ccc;*/
 
 font-family: 'Signika', sans-serif;
-font-weight: 600;
+font-weight: bold;
 font-size: 18px;
 color: #666;
 
@@ -149,7 +152,7 @@ color: #666;
 .navquit
 {
 font-family: 'Signika', sans-serif;
-font-weight: 600;
+font-weight: bold;
 font-size: 20px;
 color:grey;
 
@@ -157,7 +160,7 @@ color:grey;
 .navsublinks a
 {
 font-family: 'Signika', sans-serif;
-font-weight: 600;
+font-weight: bold;
 font-size: 18px;
 color:#5B809E;
 
@@ -181,6 +184,7 @@ list-style:none;
 {
 /*border:1px solid #ccc;*/
 margin-bottom:20px;
+border:1px solid green;
 }
 
 .lnchelement
@@ -188,7 +192,8 @@ margin-bottom:20px;
 	width:530px;
 	float:left;
    /* border:1px solid #ccc;*/
-	margin-left:20px;	
+	margin-left:20px;
+			
 }
 
 
@@ -220,7 +225,7 @@ list-style:none;
 	margin-top:20px;
 	margin-right:20px;
 	/*border:1px solid #ccc;*/
-	
+
 }
 
 .lnchrightnavlinks P
@@ -357,11 +362,18 @@ font-weight:normal;
 text-shadow:1px 1px 1px #fff;
 }
 			
-
+.fancybox-inner {
+overflow: auto;
+width: 1104px;
+height: 553px;
+}
 </style>
 <style id="css-hovercard" type="text/css">.hc-preview { position: relative; display:inline; }.hc-name { font-weight:bold; position:relative; display:inline-block; }.hc-details { left:-10px; margin-right:80px; text-align:left; font-family:Sans-serif !important; font-size:12px !important; color:#666 !important; line-height:1.5em; border:solid 1px #ddd; position:absolute;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;top:-10px;padding:2em 10px 10px;-moz-box-shadow:5px 5px 5px #888;-webkit-box-shadow:5px 5px 5px #888;box-shadow:5px 5px 5px #888;display:none;}.hc-pic { width:70px; margin-top:-1em; float:right;  }.hc-details-open-left { left: auto; right:-10px; text-align:right; margin-left:80px; margin-right:0; } .hc-details-open-left > .hc-pic { float:left; } .hc-details-open-top { bottom:-10px; top:auto; padding: 10px 10px 2em;} .hc-details-open-top > .hc-pic { margin-top:10px; float:right;  }.hc-details .s-action{ position: absolute; top:8px; right:5px; } .hc-details .s-card-pad{ border-top: solid 1px #eee; margin-top:10px; padding-top:10px; overflow:hidden; } .hc-details-open-top .s-card-pad { border:none; border-bottom: solid 1px #eee; margin-top:0;padding-top:0; margin-bottom:10px;padding-bottom:10px; }.hc-details .s-card .s-strong{ font-weight:bold; color: #555; } .hc-details .s-img{ float: left; margin-right: 10px; max-width: 70px;} .hc-details .s-name{ color:#222; font-weight:bold;} .hc-details .s-loc{ float:left;}.hc-details-open-left .s-loc{ float:right;} .hc-details .s-href{ clear:both; float:left;} .hc-details .s-desc{ float:left; font-family: Georgia; font-style: italic; margin-top:5px;width:100%;} .hc-details .s-username{ text-decoration:none;} .hc-details .s-stats { display:block; float:left; margin-top:5px; clear:both; padding:0px;}.hc-details ul.s-stats li{ list-style:none; float:left; display:block; padding:0px 10px !important; border-left:solid 1px #eaeaea;} .hc-details ul.s-stats li:first-child{ border:none; padding-left:0 !important;} .hc-details .s-count { font-weight: bold;} .</style>
+
 <script type="text/javascript">
             $(function() {
+            	
+            	
                 //caching
 				//next and prev buttons
 				var $cn_next	= $('#cn_next');
@@ -458,8 +470,8 @@ text-shadow:1px 1px 1px #fff;
             });
         </script>
 </head>
-<c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
- <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
+<c:url var="closeicon" value="/resources/images/icons/close-icon.png" /><c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
+ 
  <c:url var="htmlUrl_alert" value="/secure/getalertpopupwindow" />
  <c:url var="deleteTodoUrl" value="/secure/deletetodo/" />                          
   <c:url var="urgent" value='resources/images/icons/urgent.png' />                        
@@ -772,7 +784,8 @@ $("#datepara").show();
 }
 
 </script>
-<body style="background-image:none;" >
+<body  style="background-image:none;" >
+
 
 		<div class="lnchwrapper">
 
@@ -850,7 +863,7 @@ $("#datepara").show();
      </div> <!--end of navcontainer-->
 
 
-   <div class="lnchcontent">
+   <!--  <div class="lnchcontent">-->
    
                            <div class="lnchelement">
                            
@@ -1182,17 +1195,17 @@ padding: 5px;">
    <a id="calendarlink" class="navquit" onclick="window.parent.confirmFancyboxClose()">Quit</a>
    </div>
      
-     <div class="clearfix"> </div>
+    
 
 	 
 
-      </div> <!--end of lnchcontent-->
+     <!--   </div>--> <!--end of lnchcontent-->
 
 
 
 <!--end of lnchbottom-->
 
-<div class="clearfix"> </div>
+
 
 
 

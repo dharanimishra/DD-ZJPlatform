@@ -152,4 +152,6 @@ public interface CourseService {
 
 	public List<Course> getCoursesByLearningProgram(Integer learningProgramId);
 
+	public List<Course> getThreeCoursesByLearningProgram(Integer learningProgramId);
+
 }

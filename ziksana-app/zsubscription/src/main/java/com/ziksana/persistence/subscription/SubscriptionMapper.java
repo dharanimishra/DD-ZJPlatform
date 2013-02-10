@@ -93,6 +93,10 @@ public interface SubscriptionMapper {
 	public List<Course> getCoursesByLearningProgram(
 			@Param("memberRoleId") Integer memberRoleId,
 			@Param("learningProgramId") Integer learningProgramId);
+	
+	public List<Course> getThreeCoursesByLearningProgram(
+			@Param("memberRoleId") Integer memberRoleId,
+			@Param("learningProgramId") Integer learningProgramId);
 
 	public Integer addEducatorContent(
 			@Param("memberRoleId") Integer memberRoleId,
