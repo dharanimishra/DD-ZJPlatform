@@ -931,7 +931,7 @@ function add_learner_content_note(note_title, note_description, note_duration) {
 
 
 
-			get_learner_content_notes(node_id, course_id); // refresh learner
+			get_learner_content_notes(node_id, course_id);// refresh learner
 
 															// notes
 
@@ -951,8 +951,10 @@ function add_learner_content_note(note_title, note_description, note_duration) {
 
 
 
-			jwplayer('player').play(true); // resume play
-
+			jwplayer('player').seek(note_duration - 1).play(true); // resume play
+			
+			
+			
 
 
 			$('.add_note_title, .add_note_description').val(''); // clear the
@@ -1138,6 +1140,7 @@ function get_learner_content_notes(node_id, course_id) {
 						sort_by_position('descending'); // sorts by descending
 
 														// order
+						
 
 
 
@@ -1201,9 +1204,9 @@ function add_learner_question(question_title, question_duration) {
 
 
 
-			jwplayer('player').play(true); // resume play
+			jwplayer('player').seek(question_duration-1).play(true); // resume play
 
-
+			
 
 			$('.add_question_title').val(''); // clear the value
 
@@ -1592,7 +1595,6 @@ function get_learner_questions(node_id, course_id) {
 						sort_by_position('descending'); // sorts by descending
 
 														// order
-
 
 
 					});
