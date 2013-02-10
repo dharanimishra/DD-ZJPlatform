@@ -119,7 +119,7 @@ public class MyCoursesController {
 				.getLearningPrograms();
 		LearningProgram program = programs.get(0);
 		List<Course> courses = courseService
-				.getCoursesByLearningProgram(Integer.valueOf(program
+				.getThreeCoursesByLearningProgram(Integer.valueOf(program
 						.getLearningProgramId().getStorageID()));
 
 		System.out

@@ -690,6 +690,14 @@ public class CourseServiceImpl implements CourseService {
 		return subscriptionMapper.getCoursesByLearningProgram(
 				Integer.valueOf(memberRoleId), learningProgramId);
 	}
+	
+	@Override
+	public List<Course> getThreeCoursesByLearningProgram(Integer learningProgramId) {
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+
+		return subscriptionMapper.getThreeCoursesByLearningProgram(Integer.valueOf(memberRoleId), learningProgramId);
+	}
 
 	@Override
 	public void removeCourse(Integer courseId) throws CourseException {
