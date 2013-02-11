@@ -11,7 +11,7 @@ $(document)
 									function(data) {
 										options = data;
 										var option_string = '';
-										option_string += '<option value="">Select Course Area</option>';
+										option_string += '<option value="Select Subject Area">Select Subject Area</option>';
 
 										for (i in options) {
 											label = options[i].label;
@@ -46,7 +46,7 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															option_string += '<option value="">Select Course Subject</option>';
+															option_string += '<option value="Select Subject">Select Subject</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
@@ -115,7 +115,7 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															option_string += '<option value="">Select Course Topic</option>';
+															option_string += '<option value="Select Topic">Select Topic</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;

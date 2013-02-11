@@ -484,16 +484,16 @@ span.standartTreeRow:hover {
 														<select name="Careaddl" id="Careaddl"
 															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
-															<option value="">Select Subject Area</option>
+															<!--  <option value="">Select Subject Area</option> -->
 
 														</select> <select name="Csubjectddl" id="Csubjectddl"
 															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
-															<option value="">Select Subject</option>
+														<option value="Select Subject">Select Subject</option>
 
 														</select> <select name="Ctopicddl" id="Ctopicddl"
 															class="defaultvalue labelclass" style="width: 200px;">
-															<option value="">Select Topic</option>
+															<option value="Select Topic">Select Topic</option>
 														</select>
 													</div>
 													<div class="coursetags">
