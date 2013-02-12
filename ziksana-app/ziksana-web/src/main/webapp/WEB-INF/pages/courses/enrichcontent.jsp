@@ -70,26 +70,29 @@
 <!-- end for number spinner -->
 <script src="/ziksana-web/resources/js/dropdown/hover-dropdown.min.js"></script>
 <script src="/ziksana-web/resources/js/dropdown/tiwtter.js"></script>
-<script type="text/javascript"> 
- $(document).ready(function() { 
-   $(".signin").click(function(e) {          
-   e.preventDefault();
-   $("fieldset#signin_menu").toggle();
-   $(".signin").toggleClass("menu-open");
-   });
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		
+		 
+		$(".signin1").click(function(e) {
+			e.preventDefault();
+			$("fieldset#signin_menu").toggle();
+			$(".signin1").toggleClass("menu-open");
+		});
 
-   $("fieldset#signin_menu").mouseup(function() {
-   return false
-   });
-   $(document).mouseup(function(e) {
-   if($(e.target).parent("a.signin").length==0) {
-   $(".signin").removeClass("menu-open");
-   $("fieldset#signin_menu").hide();
-   }
-   }); 
- 
-}); 
- </script>
+		$("fieldset#signin_menu").mouseup(function() {
+			return false
+		});
+		$(document).mouseup(function(e) {
+			if ($(e.target).parent("a.signin").length == 0) {
+				$(".signin1").removeClass("menu-open");
+				$("fieldset#signin_menu").hide();
+			}
+		});
+
+	});
+</script>
 <script>
 	$(document).ready(function() {
 		$('.js-activated').dropdownHover();
@@ -187,7 +190,7 @@
 					<div class="account-container two-bottom-rounded-box">
 						<div class="container">
 							<div class="topnav">
-								<a class="signin wite bold"><span
+								<a class="signin1 wite bold"><span
 									class="text-size-px12 wite bold">My Account</span></a>
 							</div>
 							<fieldset id="signin_menu">

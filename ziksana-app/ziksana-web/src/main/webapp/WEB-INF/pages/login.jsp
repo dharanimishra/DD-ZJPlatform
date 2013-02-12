@@ -262,6 +262,15 @@
 .btnLogin:active {
 	text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0px;
 }
+.loginbottom ul {
+    color: #FFFFFF;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 60px;
+    width: 680px;
+     
+}
+ 
 </style>
 
 </head>
@@ -378,6 +387,7 @@ box-shadow: 1px 2px 5px #000000;"/>
 
 						<!-- <input type="submit" class="btnLogin" value="Register" tabindex="4">-->
 						<div class="clearfix"></div>
+						<a href="#" class="rLink" tabindex="5" style="margin-top: 10px;float:left;">Connect with Ziksana </a>
 						<a href="#" class="rLink" tabindex="5" style="margin-top: 10px;">Can't access your account?</a>
 						<!-- </footer>-->
 					</form>
@@ -397,7 +407,20 @@ box-shadow: 1px 2px 5px #000000;"/>
 
 
 
-		<div class="loginbottom"></div>
+		<div class="loginbottom">
+		
+		 
+ 
+  <ul>
+  <li>Copyright © 2013 <span style="color:#f28920;">Ziksana! </span> All rights reserved.&nbsp;|&nbsp; <span style="color:#9a9797;"><a href="#linkurl"  style="color:#9a9797;"> Terms of Service. </a></span>&nbsp;|&nbsp;<a href="#linkurl"  style="color:#9a9797;"> Guide to Online Security</a></span>&nbsp;|&nbsp;<a href="#linkurl" style="color:#9a9797;"> Privacy Policy </a></span></li> 
+  
+ </ul>
+ 
+ 
+ 
+   
+		
+		</div>
 		<!--end of loginbottom-->
 
 	</div>
