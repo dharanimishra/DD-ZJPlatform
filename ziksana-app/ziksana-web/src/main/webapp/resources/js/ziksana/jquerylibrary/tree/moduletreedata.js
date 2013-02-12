@@ -93,8 +93,7 @@ function onButtonClick(menuitemId, type) {
 										learningComponentId);
 
 								$('#Cmoduletxtbox').val(module_name);
-								
-						
+
 								if (module_desc.charAt(0) == '<') {
 
 									$('#Cmoduledescrte').val(module_desc);
@@ -106,11 +105,11 @@ function onButtonClick(menuitemId, type) {
 									$('#Cmoduledesc').val(module_desc);
 
 								}
-								
+
 								$('#Addmoduletag').val(module_name);
 
-								$('#addmodulecheckbox').attr('checked',false);
-							
+								$('#addmodulecheckbox').attr('checked', false);
+
 								$('#saveassociateobject').attr('enabled',
 										'enabled'); // enabled the
 
@@ -327,27 +326,33 @@ function createtree(course_id) {
 		// tree._selected();
 
 		node_type = itemId.split('_')[0];
-		if (node_type = "COMPONENT") {
+		//console.log(node_type);
+
+		if (node_type == "COURSE") {
+			$('#courseid').val(itemId);
+		}
+
+		if (node_type == "COMPONENT") {
 			$('#courseLearningComponentId').val(itemId);
 		}
-		console.log(itemId);
 
 		tree.selectItem(itemId, false);
 		var id = tree.getSelectedItemId();
-		// alert(id);
+		alert(id);
 
 		// tree.selectItem(id,true);
 		if (node_type == "COURSE") {
-			// alert(tree.contextID);
+			menu.showItem('Add_Module');
 			menu.hideItem('Delete');
-			menu.hideItem('View');
-			menu.showItem('RootView');
+			//menu.showItem('View');
+		}
 
-		} else {
-			// alert(tree.contextID);
-			menu.hideItem('RootView');
+		if (node_type == "COMPONENT") {
+			menu.showItem('Add_Module');
+			menu.showItem('Edit');
+			//menu.hideItem('RootView');
 			menu.showItem('Delete');
-			menu.showItem('View');
+			//menu.showItem('View');
 		}
 		return true;
 	});
