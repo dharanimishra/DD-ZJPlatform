@@ -40,7 +40,7 @@ function onButtonClick(menuitemId, type) {
 		$('#DegineCourse2').hide();
 		$('#Addmodulecontainer').hide();
 		$('#definequalifiercontainer').show();
-	} else if (menuaction == "Edit") {
+	} else if (menuaction == "ModuleEdit") {
 		$('#Viewmodulecontainer').hide();
 		$('#instruction').hide();
 		$('#searchassociatecontainer').hide();
@@ -229,9 +229,11 @@ function onButtonClick(menuitemId, type) {
 
 		// }//end of validation if block
 
-	} else if (menuaction == "RootView") {
-		// alert("open the menu for Edit module.");
-		window.location.href = "viewmodelthinking.html";
+	} else if (menuaction == "CourseEdit") {
+		//alert("open the menu for CourseEdit module.");
+		var CourseId = $('#courseid').val();
+		$('#courseid').val(CourseId);
+		window.location.href = "/ziksana-web/secure/editcourse/" + CourseId;
 	} else if (menuaction == "View") {
 		// alert("open the menu for View module.");
 		$('#instruction').hide();
@@ -326,7 +328,7 @@ function createtree(course_id) {
 		// tree._selected();
 
 		node_type = itemId.split('_')[0];
-		//console.log(node_type);
+		// console.log(node_type);
 
 		if (node_type == "COURSE") {
 			$('#courseid').val(itemId);
@@ -338,21 +340,22 @@ function createtree(course_id) {
 
 		tree.selectItem(itemId, false);
 		var id = tree.getSelectedItemId();
-		alert(id);
+		// alert(id);
 
 		// tree.selectItem(id,true);
 		if (node_type == "COURSE") {
 			menu.showItem('Add_Module');
 			menu.hideItem('Delete');
-			//menu.showItem('View');
+			menu.showItem('CourseEdit');
+			menu.hideItem('ModuleEdit');
 		}
 
 		if (node_type == "COMPONENT") {
 			menu.showItem('Add_Module');
-			menu.showItem('Edit');
-			//menu.hideItem('RootView');
+			menu.showItem('ModuleEdit');
+			menu.hideItem('CourseEdit');
 			menu.showItem('Delete');
-			//menu.showItem('View');
+			// menu.showItem('View');
 		}
 		return true;
 	});
