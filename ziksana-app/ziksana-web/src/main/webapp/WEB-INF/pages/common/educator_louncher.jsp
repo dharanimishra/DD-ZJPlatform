@@ -332,10 +332,10 @@ list-style:none;
 			-o-transform: rotate(0); 
 		}
 		.slide-up-boxes a:nth-child(2) div { background: #367db2 url(images/icons/createcourse.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(3) div { background: #367db2 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(4) div { background: #000000 url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(5) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(6) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 60px; }
+		.slide-up-boxes a:nth-child(3) div { background: #367db2 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 120px; }
+		.slide-up-boxes a:nth-child(4) div { background: #000000 url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 95px; }
+		.slide-up-boxes a:nth-child(5) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 95px; }
+		.slide-up-boxes a:nth-child(6) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 95px; }
 		
 
 </style>
@@ -1137,28 +1137,28 @@ padding: 5px;">
     <c:if test="${member.roleType eq 'EDUCATOR'}">
 			<a class="fancyboxclose" href="/ziksana-web/secure/createcourse" target="_parent" >
 				<h5>Create Course</h5>
-				<div>Create your course with an easy 7 step process </div>				
+				<div >Create your course with an easy 7 step process </div>				
 			</a>
 			
 			<a class="fancyboxclose" href="/ziksana-web/secure/showMyProgramsDraft" target="_parent">
 				<h5>Draft Courses</h5>
-				<div style="text-align:center;">Edit your draft courses</div>					
+				<div >Edit your draft courses</div>					
 			</a>
 				
 			<a class="fancyboxclose" href="#linkurl">
 				<h5>Manage Course</h5>
-				<div style="text-align:center;">To be released in next Playpen.</div>					
+				<div >To be released in next Playpen.</div>					
 			</a>
 			
 			<a class="fancyboxclose" href="#linkurl">
 				
                 <h5>Publish Course</h5>
-				<div style="text-align:center;">To be released in next Playpen.</div>			
+				<div >To be released in next Playpen.</div>			
 			</a>
 
             <a class="fancyboxclose" href="#linkurl">
 				<h5>Grade Students</h5>
-				<div style="text-align:center;">To be released in next Playpen.</div>				
+				<div >To be released in next Playpen.</div>				
 			</a>
 	</c:if>
 	 <c:if test="${member.roleType eq 'LEARNER'}">

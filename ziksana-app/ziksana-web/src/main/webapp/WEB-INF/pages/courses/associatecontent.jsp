@@ -358,7 +358,7 @@ span.standartTreeRow:hover {
 
 
 						<div class="definecontainer" id="definetab">
-							<span style="font-size:16px; font-wight:bold;  color:#27b;">Organize and Enhance Content</span>
+							<span style="font-size:16px; font-wight:bold;  color:#27b;"></span>
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 						</div>
 						<input type="hidden" id="courseid"
@@ -390,8 +390,7 @@ span.standartTreeRow:hover {
 								style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92; height: 30px;">
 								<img src="/ziksana-web/resources/images/icons/helpicon.png"
 									align="left"
-									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>Right
-									Click over the Tree Node to further Define the Course. </b>
+									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>Organize and Enhance Content </b>
 							</p>
 
 
@@ -411,11 +410,11 @@ span.standartTreeRow:hover {
 									style="font-size: 11px; background-image: none; margin-left: 25px;">
 									<!-- Start of Default Instruction -->
 
-								<div id="instruction" style="padding: 10px;">
-										<img src="/ziksana-web/resources/images/ContentContextualHelp1.jpg"
+								<div id="instruction" style="padding: 10px;height:300px;">
+										<!-- <img src="/ziksana-web/resources/images/ContentContextualHelp1.jpg"
 											class="all-box-shadow" alt="instructions"
 											title="Key-Board instruction" width="720"
-											style="border: 1px solid #ccc; padding: 5px; border: 1px solid #ccc;">
+											style="border: 1px solid #ccc; padding: 5px; border: 1px solid #ccc;"> -->
 									</div>
 
 									<!-- End of Default Instruction -->
@@ -434,10 +433,7 @@ span.standartTreeRow:hover {
 										<div class="definehelp"
 											style="width: 680px; font-family: Helvetica; font-weight: bold; color: #125F92; line-height: 20px;">
 											<img src="/ziksana-web/resources/images/icons/helpicon.png"
-												align="left" style="margin-right: 5px;" />Create new
-											content by either uploading an already available content, <br />
-											providing an URL reference or by Creating a document as your
-											content.
+												align="left" style="margin-right: 5px;" />Upload Course material/content
 										</div>
 
 										<form id="Associatequalifier" class="form-horizontal">
@@ -460,14 +456,10 @@ span.standartTreeRow:hover {
 														style="text-decoration: none;">Rich Text Editor</a> <a
 														class="f-r _plainText" href="#linkurl"
 														style="text-decoration: none;">Plain Text Editor</a>
-													<textarea placeholder="Describe the Content being created"
-														class="_plainTextShow labelclass defaultvalue" cols="90"
-														rows="7" style="resize: none;"> </textarea>
+													<textarea  class="_plainTextShow labelclass defaultvalue" placeholder="Describe your course content" cols="90" rows="7" style="resize: none;"> </textarea>
 													<br />
 													<div class="_richTextShow">
-														<textarea placeholder="Describe the Content being created"
-															id="Associatecdescrte" name="Associatecdescrte"
-															class="defaultvalue _focus"></textarea>
+														<textarea  id="Associatecdescrte" placeholder="Describe your course content" name="Associatecdescrte" class="defaultvalue _focus"></textarea>
 													</div>
 
 												</div>

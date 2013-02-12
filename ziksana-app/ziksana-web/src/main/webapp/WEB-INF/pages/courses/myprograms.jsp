@@ -319,8 +319,8 @@ $('._cklo').show('');
                 <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Course</p>
 
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
-				<span style="font-weight:bold;">Course </span> is a Learning Unit that Heps in Achieving the Learning Objects of the Learning Program..</p>
-                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style=" margin-top:-4px;font-size:20px;color:#fff;">${courseCount} <span style="font-size:15px;">courses</span></span></p>
+				<span style="font-weight:bold;">Course </span> is a Learning Unit that Helps in Achieving the Learning Objectives of the Learning Program..</p>
+                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style=" margin-top:-4px;font-size:20px;color:#fff;">${courseCount} <span style="font-size:15px;">Courses</span></p>
 				
                 <div class="icons-list">
                   <a href="#linkurl"  rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
@@ -362,7 +362,7 @@ $('._cklo').show('');
                 <div style="margin-left:850px;disply:table; top:-100">
 
 
-					 <div class="createnew" style="display:table-cell;width:100px;"><a href="/ziksana-web/secure/createcourse"><img src="../resources/images/plus.png" width=16px, height=16px>Create New</a></span> 
+					 <div class="createnew" style="display:table-cell;width:100px;"><a href="/ziksana-web/secure/createcourse"><img src="../resources/images/plus.png" width=12px, height=12px>&nbsp;Create New</a> 
 
 					</div>
 					<div style="display:table-cell; padding-left:20px;">

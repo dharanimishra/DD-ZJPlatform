@@ -489,7 +489,7 @@ color:#666;
             
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
                 <p class="titles-info1 text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:12px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="162" height="97"/>
+                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:12px; margin-top:-4px;"> <img src="../resources/images/programs/ECourse.jpg" width="162" height="97"/>
 				</p>
 				<div class="course_progress_bar_container" ><a href="#" rel="tipsy"  title="80%">
 					<div class="course_progress_bar" style="width: 80%" > </div></a>

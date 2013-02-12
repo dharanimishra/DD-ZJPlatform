@@ -43,6 +43,15 @@ public class Course extends AuditHistory {
 
 	private ZID courseId;
 	private int coursesId;
+	private int memberRoleId;
+	
+	public int getMemberRoleId() {
+		return memberRoleId;
+	}
+
+	public void setMemberRoleId(int memberRoleId) {
+		this.memberRoleId = memberRoleId;
+	}
 
 	public int getCoursesId() {
 		return coursesId;

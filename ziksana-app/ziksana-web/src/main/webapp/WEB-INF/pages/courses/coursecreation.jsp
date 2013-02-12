@@ -227,6 +227,7 @@ span.standartTreeRow:hover {
     font-weight: normal;
     text-decoration: none;
 }
+
 </style>
 </head>
 
@@ -357,13 +358,10 @@ span.standartTreeRow:hover {
 
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 
-							<a href="/ziksana-web/secure/editcourse/${courseId}"
-								class="btn btn-info f-r"
-								style="margin-right: -257px; margin-bottom: 4px; clear: both;">Edit
-								Course Details </a>
+							
 						</div>
 
-						<br> <br> 
+						 <br> 
 							<input type="hidden" id="courseid" value="${courseId}" /> 
 							<input type="hidden" id="courseLearningComponentId" value="" /> 
 							<input type="hidden" id="learningComponentId" value="" />
@@ -385,8 +383,8 @@ span.standartTreeRow:hover {
 								style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92; height: 30px;">
 								<img src="/ziksana-web/resources/images/icons/helpicon.png"
 									align="left"
-									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>Right
-									Click over the Tree Node to further Define the Course. </b>
+									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>
+									Define your Course structure </b>
 							</p>
 						
 							<div id="splitter" style='clear: both;'>
@@ -403,11 +401,11 @@ span.standartTreeRow:hover {
 									style="font-size: 11px; background-image: none; margin-left: 25px;">
 									<!-- Start of Default Instruction -->
 
-									<div id="instruction" style="padding: 10px;">
-										<img src="/ziksana-web/resources/images/instruction.jpg"
+									<div id="instruction" style="padding: 10px; height:300px;">
+										<!-- <img src="/ziksana-web/resources/images/instruction.jpg"
 											class="all-box-shadow" alt="instructions"
 											title="Key-Board instruction" width="720"
-											style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;">
+											style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;"> -->
 									</div>
 
 
@@ -443,7 +441,7 @@ span.standartTreeRow:hover {
 														<a class="f-r _richText" id="addmodulerichedit" href="#" style="text-decoration: none;">Rich Text Editor</a> 
 														<a class="f-r _plainText" href="#" style="text-decoration: none;">Plain Text Editor</a>
 	
-													<textarea placeholder="Describe the Course being created" class="_plainTextShow label" class="defaultvalue" id="Cmoduledesc" cols="80" rows="7" style="resize: none;"></textarea>
+													<textarea placeholder="Describe the Module being created" class="_plainTextShow label" class="defaultvalue" id="Cmoduledesc" cols="90" rows="7" style="resize: none;font-family: Verdana;font-size:13px; color: #666;"></textarea>
 													<br />
 													<div class="_richTextShow">
 														<textarea placeholder="Describe the Course being created" id="Cmoduledescrte" name="editor2" class="defaultvalue _focus"></textarea>
@@ -633,7 +631,10 @@ span.standartTreeRow:hover {
 									<!-- End of Third Container -->
 
 									<!-- Start of Viewmodelthinking -->
-
+							<a href="/ziksana-web/secure/editcourse/${courseId}"
+								class="btn btn-info f-r"
+								style="float:left; margin-top: 16px; clear: both;">Edit
+								Course Details </a>
 
 									<a href="/ziksana-web/secure/associatecontent/${courseId}"
 										style="float: right; margin-bottom: 20px; margin-top: 20px;"

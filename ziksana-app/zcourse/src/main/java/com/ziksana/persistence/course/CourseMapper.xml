@@ -161,7 +161,17 @@
 			SELECT LAST_INSERT_ID();
 		</selectKey>
 	</insert>
-
+	
+	<select id="getCourseByCourseId" resultMap="mapCourseResult"
+		parameterType="int">
+		select
+		id,name,description,memberroleid
+		from
+		corcourse
+		where id=#{courseId}
+		
+	</select>
+	
 	<select id="getCourses" resultMap="courseResultMap"
 		parameterType="map">
 
@@ -207,7 +217,24 @@
 
 
 	</select>
+	
+	<insert id="saveCurriculamCourse" parameterType="map">
+		INSERT INTO corcurriculumcourse (CreationDate, Active,PrescribedDurationUnit, ProgramCurriculumId,courseId, MemberRoleId) VALUES(now(),1,1, 1,#{courseId}, #{memberRoleId})
+	</insert>
+	
+	<insert id="saveAndEnableCourse" parameterType="int">
+		INSERT INTO sbnsubscriptioncourse (MemSubscriptionProgId, CurriculumCourseId) VALUES( 2, (select id from corcurriculumcourse where courseId=#{courseId}));
+	</insert>
+	
+	<resultMap id="mapCourseResult" type="com.ziksana.domain.course.Course">
+	
+		<result property="coursesId" column="id" />
+		<result property="name" column="name" />
+		<result property="description" column="description" />
+		<result property="memberRoleId" column="memberRoleId" />
 
+	</resultMap>
+	
 	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
 
 		<result property="courseId" column="id" />
