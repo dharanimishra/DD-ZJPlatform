@@ -1142,7 +1142,7 @@ padding: 5px;">
 			
 			<a class="fancyboxclose" href="/ziksana-web/secure/showMyProgramsDraft" target="_parent">
 				<h5>Draft Courses</h5>
-				<div style="text-align:center;">Draft courses</div>					
+				<div style="text-align:center;">Edit your draft courses</div>					
 			</a>
 				
 			<a class="fancyboxclose" href="#linkurl">

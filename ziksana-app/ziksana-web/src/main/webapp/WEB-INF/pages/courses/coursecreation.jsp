@@ -220,6 +220,13 @@ span.standartTreeRow:hover {
 	border-radius: 3px;
 	padding: 3px;
 }
+.mnuclass {
+    color: #2277BB;
+    font-family: verdana;
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+}
 </style>
 </head>
 
@@ -302,13 +309,12 @@ span.standartTreeRow:hover {
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong><strong
-					class="light-gray text-size-px12">Create New Course </strong>
+					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong>|<strong
+					class="light-gray text-size-px12 font-Signika">Create New Course </strong>
 			</div>
 			<div class="f-r">
-				<strong class="text-size-px14 light-gray"><a>Publish</a> |
-					<a>Manage</a></strong><a class="light-blue"><img width="12" height="12"
-					alt="add more" src="/ziksana-web/resources/images/plus.png">
+				<a href="#" class="mnuclass" > Manage </a> | <a class="mnuclass"  href="#"> Publish</a>
+				<a class="light-blue"><img width="12" height="12" alt="add more" src="/ziksana-web/resources/images/plus.png">
 				</a>
 			</div>
 		</div>

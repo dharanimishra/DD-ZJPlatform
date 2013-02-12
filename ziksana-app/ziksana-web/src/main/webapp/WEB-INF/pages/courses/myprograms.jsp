@@ -398,7 +398,7 @@ $('._cklo').show('');
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
 
                 <p style="height:30px;"class="titles-info1 text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/Model Thinking.jpg" width="148" height="97"/>
+                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/ECourse.jpg" width="148" height="97"/>
 				</p>
                 <div class="icons-list">
                  <a href="/ziksana-web/secure/editcourse/COURSE_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
