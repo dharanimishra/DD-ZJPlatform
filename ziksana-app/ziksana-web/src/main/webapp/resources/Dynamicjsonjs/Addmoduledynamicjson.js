@@ -10,12 +10,17 @@ $(document)
 									function(data) {
 										options = data;
 										var option_string = '';
-										option_string += '<option value="Select Subject Area">Select Subject Area</option>';
+										//option_string += '<option value="Select Subject Area">Select Subject Area</option>';
 
 										for (i in options) {
 											label = options[i].label;
 											value = options[i].value;
-
+											if(i==0) {
+												option = '<option selected="selected" value="' + value
+												+ '">' + label
+												+ '</option>';
+											}
+											else
 											option = '<option value="' + value
 													+ '">' + label
 													+ '</option>';
@@ -45,11 +50,16 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															option_string += '<option value="Select Subject">Select Subject</option>';
+															//option_string += '<option value="Select Subject">Select Subject</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
-
+																if(i==0) {
+																	option = '<option selected="selected" value="' + value
+																	+ '">' + label
+																	+ '</option>';
+																}
+																else
 																option = '<option value="'
 																		+ value
 																		+ '">'
@@ -106,11 +116,16 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															option_string += '<option value="Select Topic">Select Topic</option>';
+															//option_string += '<option value="Select Topic">Select Topic</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
-
+																if(i==0) {
+																	option = '<option selected="selected" value="' + value
+																	+ '">' + label
+																	+ '</option>';
+																}
+																else
 																option = '<option value="'
 																		+ value
 																		+ '">'

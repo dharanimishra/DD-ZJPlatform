@@ -129,17 +129,19 @@ function onButtonClick(menuitemId, type) {
 												function(data) {
 													options = data;
 													var option_string = '';
-													option_string += '<option value="Select Subject Area">Select Subject Area</option>';
+													// option_string += '<option
+													// value="Select Subject
+													// Area">Select Subject
+													// Area</option>';
 
 													for (i in options) {
 														label = options[i].label;
 														value = options[i].value;
-
-														option = '<option value="'
-																+ value
-																+ '">'
-																+ label
-																+ '</option>';
+															option = '<option value="'
+																	+ value
+																	+ '">'
+																	+ label
+																	+ '</option>';
 
 														option_string += option;
 													}
@@ -164,16 +166,18 @@ function onButtonClick(menuitemId, type) {
 												function(data) {
 													options = data;
 													var option_string = '';
-													option_string += '<option value="Select Subject">Select Subject</option>';
+													// option_string += '<option
+													// value="Select
+													// Subject">Select
+													// Subject</option>';
 													for (i in options) {
 														label = options[i].label;
 														value = options[i].value;
-
-														option = '<option value="'
-																+ value
-																+ '">'
-																+ label
-																+ '</option>';
+															option = '<option value="'
+																	+ value
+																	+ '">'
+																	+ label
+																	+ '</option>';
 
 														option_string += option;
 													}
@@ -197,16 +201,19 @@ function onButtonClick(menuitemId, type) {
 												function(data) {
 													options = data;
 													var option_string = '';
-													option_string += '<option value="Select Topic">Select Topic</option>';
+													// option_string += '<option
+													// value="Select
+													// Topic">Select
+													// Topic</option>';
 													for (i in options) {
 														label = options[i].label;
 														value = options[i].value;
-
-														option = '<option value="'
-																+ value
-																+ '">'
-																+ label
-																+ '</option>';
+		
+															option = '<option value="'
+																	+ value
+																	+ '">'
+																	+ label
+																	+ '</option>';
 
 														option_string += option;
 													}
@@ -230,7 +237,7 @@ function onButtonClick(menuitemId, type) {
 		// }//end of validation if block
 
 	} else if (menuaction == "CourseEdit") {
-		//alert("open the menu for CourseEdit module.");
+		// alert("open the menu for CourseEdit module.");
 		var CourseId = $('#courseid').val();
 		$('#courseid').val(CourseId);
 		window.location.href = "/ziksana-web/secure/editcourse/" + CourseId;

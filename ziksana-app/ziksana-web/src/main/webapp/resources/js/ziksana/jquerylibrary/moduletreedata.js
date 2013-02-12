@@ -126,6 +126,7 @@ function createtree(course_id) {
 			menu.hideItem('Delete');
 			menu.hideItem('View');
 			menu.showItem('RootView');
+			menu.showItem('CourseEdit');
 
 		} else {
 			// alert(tree.contextID);
