@@ -257,7 +257,6 @@
 						<div class="associate">
 						
 							<div class="definecontainer" style="float: left;">
-							<br/><br/>
 								<p class="definehelp all all-box-shadow"
 									style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92;">
 									<img src="/ziksana-web/resources/images/icons/helpicon.png" align="left"

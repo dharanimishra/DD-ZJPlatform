@@ -361,7 +361,7 @@ span.standartTreeRow:hover {
 							<span style="font-size:16px; font-wight:bold;  color:#27b;">Organize and Enhance Content</span>
 							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 						</div>
-						<br>  <input type="hidden" id="courseid"
+						<input type="hidden" id="courseid"
 							value="${courseId}" /> <input type="hidden"
 							id="courseLearningComponentId" value="" /> <input type="hidden"
 							id="learningComponentId" value="" /> <input type="hidden"

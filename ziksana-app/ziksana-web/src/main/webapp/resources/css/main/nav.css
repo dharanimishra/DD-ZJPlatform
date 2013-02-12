@@ -511,7 +511,10 @@ h3 {
 	width: 1000px;
 	margin-right: auto;
 	margin-left: auto;
+	display:none;
 }
+
+.associateimage, #thumbnail_image_file_upload {display:none;}
 
 h3 a {color: #000; text-decoration:none;}
 .active {
