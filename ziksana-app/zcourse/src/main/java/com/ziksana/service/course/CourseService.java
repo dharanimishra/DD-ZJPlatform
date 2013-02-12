@@ -154,4 +154,9 @@ public interface CourseService {
 
 	public List<Course> getThreeCoursesByLearningProgram(Integer learningProgramId);
 
+	public Course getCourseByCourseId(Integer courseId);
+
+	public Integer createNewCurriculamCourse(int coursesId, int memberRoleId);
+
+	public void getCurriculamCourseByCourseId(int coursesId);
 }

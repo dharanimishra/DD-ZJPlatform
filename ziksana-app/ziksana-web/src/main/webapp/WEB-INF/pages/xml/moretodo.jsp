@@ -330,7 +330,7 @@ function edit_todorow_and_update(rowId){
  <!-- End -->
 <title>Todo List</title>
 <body style="background-color:#FFFFFF;">
-<div class="todoWrap" style="background-color:#FFFFFF;">
+<div class="todoWrap" style="background-color:#FFFFFF;height:450;">
 <!-- <div width="270px;" class="titles-info font-Signika text-size-px18 light-gray"> My To Do's</div> -->
 <div class="helptext">
         	My To Do's
@@ -352,7 +352,7 @@ function edit_todorow_and_update(rowId){
 </div>
 </div> <!--end of container --> 
 
-<div id = "update_todo_form_container"  class="updatetodo" style=" width:650px; background-color:#FFFFFF;">
+<div id = "update_todo_form_container"  class="updatetodo" style=" width:650px;  background-color:#FFFFFF;">
 
 	<div id="update_todo_fields_container" style="display:none;">
 	Category: 

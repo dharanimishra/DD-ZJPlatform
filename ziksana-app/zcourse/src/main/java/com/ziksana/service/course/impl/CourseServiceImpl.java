@@ -742,4 +742,21 @@ public class CourseServiceImpl implements CourseService {
 
 	}
 
+	@Override
+	public Course getCourseByCourseId(Integer courseId) {
+		
+		return courseMapper.getCourseByCourseId(courseId);
+	}
+
+	@Override
+	public Integer createNewCurriculamCourse(int coursesId, int memberRoleId) {
+		return courseMapper.saveCurriculamCourse(coursesId,memberRoleId);
+		
+	}
+
+	@Override
+	public void getCurriculamCourseByCourseId(int coursesId) {
+		courseMapper.saveAndEnableCourse(coursesId);
+	}
+
 }

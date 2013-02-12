@@ -383,5 +383,11 @@ public interface CourseMapper {
 
 	Integer totalNumberOfCourses(@Param("statusId") Integer statusId,
 			@Param("memberPersonaId") Integer memberPersonaId);
+	
+	public Course getCourseByCourseId(Integer courseId);
+
+	public Integer saveCurriculamCourse(@Param("courseId")Integer courseId, @Param("memberRoleId") Integer memberRoleId);
+
+	public void saveAndEnableCourse(int coursesId);
 
 }

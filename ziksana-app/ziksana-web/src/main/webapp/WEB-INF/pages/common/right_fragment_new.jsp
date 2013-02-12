@@ -236,7 +236,7 @@ $(document).ready(function() {
 						var progress =  $(this).find("progress").text()+"%";
 						
 					    console.log("Yes I am in");  
-					    draftcourse+="<p class='blok-title-L'><a href='/ziksana-web/secure/createcourse/courseid_"+$(this).attr('id')+"'>" +  " " + $(this).find("title").text() + "</a></p>";
+					    draftcourse+="<p class='blok-title-L'><a href='/ziksana-web/secure/createcourse/courseid_"+$(this).attr('id')+"'>" +  " " +short_mycourse_title( $(this).find("title").text() )+ "</a></p>";
 					          
 							draftcourse+="";
 							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
@@ -293,7 +293,13 @@ $(document).ready(function() {
 	});
 	
 });
-
+function short_mycourse_title(value){
+	if(value.length > 31){
+		return value.substring(0,31)+'...';
+	} else {
+		return value;
+	}	
+}
 </script>
 
 </c:if>
