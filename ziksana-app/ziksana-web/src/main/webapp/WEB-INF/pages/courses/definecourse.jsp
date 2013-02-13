@@ -478,6 +478,7 @@ span.standartTreeRow:hover {
 																						height : 20,
 																						width : 30,
 																						min : null,
+																						stepInc: .5,
 																						placeholder : null,
 																						initValue : null,
 																						max : 20,
@@ -501,6 +502,7 @@ span.standartTreeRow:hover {
 																						height : 20,
 																						width : 30,
 																						min : null,
+																						stepInc: .5,
 																						initValue : null,
 																						max : 20,
 																					});
@@ -556,8 +558,8 @@ span.standartTreeRow:hover {
 
 
 								<!----------------- start of third container --------------->
-								<div class="_thirdcontainer">
-									<!-- <div class="contentsecurity">
+								<!--<div class="_thirdcontainer">
+									 <div class="contentsecurity">
 
 										<img id="aSide"
 											src="/ziksana-web/resources/images/tipsy-east.gif"
@@ -680,7 +682,7 @@ span.standartTreeRow:hover {
 
 								<input type="submit" class="btn btn-info f-r" id="sbtvalidation"
 									value="Submit" onClick="createCourse(); return false;"
-									style="margin-right: -200px;">
+									style="margin-right: 10px;">
 								<!-- <a href="/ziksana-web/secure/createmodule/${courseId}"
 									style="float:right; margin-bottom: 20px; margin-top: 2px; display: inline-block;right: -118px;position: relative;"
 									class="btn btn-info">Save and Continue</a> -->
