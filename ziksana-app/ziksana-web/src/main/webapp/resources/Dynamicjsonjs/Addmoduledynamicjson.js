@@ -73,6 +73,8 @@ $(document)
 																	'#Cmodulesubjectddl')
 																	.html(
 																			option_string);
+															var topic = '<option value="Select Topic">Select Topic</option>';
+															$('#Cmoduletopicddl').html(topic);
 
 														});
 

@@ -81,9 +81,11 @@ $(document)
 															$('#Csubjectddl')
 																	.html(
 																			option_string);
+															
 
 														});
-
+										var topic = '<option value="Select Topic">Select Topic</option>';
+										$('#Ctopicddl').html(topic);
 									});
 
 					function noteSuccessCallbackcoursearea(data) {
@@ -476,6 +478,7 @@ function getCourse() {
 
 				$('#Csubjectddl').html(option_string);
 				$('#Csubjectddl').val(subject);
+				
 
 			});
 

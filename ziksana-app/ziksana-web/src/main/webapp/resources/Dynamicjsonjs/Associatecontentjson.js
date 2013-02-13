@@ -71,6 +71,8 @@ $(document)
 															$('#Csubjectddl')
 																	.html(
 																			option_string);
+															var topic = '<option value="Select Topic">Select Topic</option>';
+															$('#Ctopicddl').html(topic);
 
 														});
 
