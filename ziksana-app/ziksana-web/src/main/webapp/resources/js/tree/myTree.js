@@ -411,7 +411,8 @@
             
 
 			// keyboard events
-			var isCtrl = false; 
+			/*
+			 var isCtrl = false; 
 			$(document).keyup(function (e) { 
 			if(e.which == 16) isCtrl=false; 
 			}).keydown(function (e) { 
@@ -482,7 +483,7 @@
 						}
 				 }	  
 		 });	
-		 
+		 */
 		 //disable browser default key shortcuts
 		
 

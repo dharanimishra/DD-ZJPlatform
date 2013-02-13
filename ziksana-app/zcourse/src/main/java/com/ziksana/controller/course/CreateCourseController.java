@@ -139,7 +139,7 @@ public class CreateCourseController {
 
 		LOGGER.info(" Entering Class " + getClass() + " courseModule()");
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
-		
+
 		mediaServerURL = mediaService.getMediaContents();
 		ModelAndView modelView = null;
 		if (course_id > 0) {
@@ -299,18 +299,24 @@ public class CreateCourseController {
 				tagcloud.setTagCloudId(getTagcloud.getTagCloudId());
 				tagcloud.setCourseTagCloudId(getTagcloud.getTagCloudId());
 				tagcloud.setTagName(CourseTags);
-				try {
-					tagcloud.setTagType(TagType.TAG_TYPE1);
-				} catch (NoSuchMethodException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				getTagcloud.setZeniSuggestedIndicator(true);
+//				tagcloud.setCourseId(courseIds);
+//				try {
+//					tagcloud.setTagType(TagType.TAG_TYPE1);
+//				} catch (NoSuchMethodException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 				tagcloud.setCourseId(courseIds);
 				tagCloudService.saveOrUpadteTags(tagcloud);
+
+				LOGGER.info("Class :"
+						+ getClass()
+						+ " Method saveOrUpadteTags : After courseService: Update CourseId Exception :tagcloud");
 			} catch (Exception e) {
 				LOGGER.info("Class :"
 						+ getClass()
-						+ " Method saveCourse : After courseService: CourseId Exception :tagcloud"
+						+ " Method saveCourse : After courseService: CourseId Exception :Update tagcloud"
 						+ tagcloud + e);
 			}
 		} else if (courseIds > 0) {
@@ -325,10 +331,13 @@ public class CreateCourseController {
 				}
 				tagcloud.setCourseId(courseIds);
 				tagCloudService.saveOrUpadteTags(tagcloud);
+				LOGGER.info("Class :"
+						+ getClass()
+						+ " Method saveOrUpadteTags : After courseService: Save CourseId Exception :tagcloud");
 			} catch (Exception e) {
 				LOGGER.info("Class :"
 						+ getClass()
-						+ " Method saveCourse : After courseService: CourseId Exception :tagcloud"
+						+ " Method saveCourse : After courseService: CourseId Exception : Save tagcloud"
 						+ tagcloud + e);
 			}
 		}
@@ -342,17 +351,20 @@ public class CreateCourseController {
 		} else {
 			json.setId("COURSE_" + courseIds);
 			json.setResponse("success");
-			//IF COURSE CREATION SUCCESSFUL ASSOCIATE CURRICULUM COURSE
-			//get Course BY courseId
+			// IF COURSE CREATION SUCCESSFUL ASSOCIATE CURRICULUM COURSE
+			// get Course BY courseId
 			Course course = new Course();
 			course = courseService.getCourseByCourseId(courseIds);
-			//Ensure only Educator(207) if SUCCESS create a new curriculam course  
-			if(course.getMemberRoleId() == 207){
-				
-				Integer curriculamId = courseService.createNewCurriculamCourse(course.getCoursesId(), course.getMemberRoleId());
-				System.out.println("curriculamId == >"+curriculamId);
-				if(curriculamId == 1){
-					courseService.getCurriculamCourseByCourseId(course.getCoursesId());
+			// Ensure only Educator(207) if SUCCESS create a new curriculam
+			// course
+			if (course.getMemberRoleId() == 207) {
+
+				Integer curriculamId = courseService.createNewCurriculamCourse(
+						course.getCoursesId(), course.getMemberRoleId());
+				System.out.println("curriculamId == >" + curriculamId);
+				if (curriculamId == 1) {
+					courseService.getCurriculamCourseByCourseId(course
+							.getCoursesId());
 				}
 			}
 			LOGGER.info("Class :" + getClass()

@@ -406,13 +406,16 @@ function getCourse() {
 
 			}
 
-			$('#Ctagfield_e').superblyTagField({
+			/*$('#Ctagfield_e').superblyTagField({
 				allowNewTags : true,
 				showTagsNumber : 10,
 				preset : selected_tags,
 				tags : available_tags
 			});
+			*/
 
+			$('#Ctagfield_e').val(selected_tags);
+			
 			$('#Credits').val(credits);
 
 			$('#ExtraCredits').val(extra_credits);

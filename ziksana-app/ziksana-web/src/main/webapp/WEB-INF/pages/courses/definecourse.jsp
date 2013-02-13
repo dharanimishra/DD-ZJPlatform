@@ -382,7 +382,8 @@ span.standartTreeRow:hover {
 								<!----------------- start of first container --------------->
 								<div class="_coursename">
 									<div class="control-group">
-										<input type="hidden" id="courseid" value="${courseId}" /> <label
+										<input type="hidden" id="courseid" value="${courseId}" />
+										 <label
 											class="control-label labelclass " for="CourseName"
 											style="margin-top: -4px; font-weight: bold;">Course
 											Name :</label>
@@ -449,11 +450,12 @@ span.standartTreeRow:hover {
 										<!-- end of moduleselection--->
 
 										<div class="coursetags">
-											<br /> <label class="control-label labelclass"
+											<br /> 
+											<label class="labelclass"
 												for="coursetags"
 												style="margin-top: -2px; font-weight: bold;">Specify
 												any tags : </label> <input id="Ctagfield_e" type="text"
-												style="margin-left: 290px;"></input> <br /> <br />
+												style="margin-left: 20px;width:250px;height:25px;"></input> <br /> <br />
 										</div>
 										<!-- end of coursetags--->
 

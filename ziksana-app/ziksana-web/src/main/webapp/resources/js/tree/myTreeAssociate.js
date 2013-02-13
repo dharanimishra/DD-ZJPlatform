@@ -598,6 +598,7 @@
 			
 			//alert();
 			// keyboard events
+			/*
 			var isCtrl = false; 
 			$(document).keyup(function (e) { 
 			if(e.which == 16) isCtrl=false; 
@@ -662,6 +663,7 @@
 				 
 				 // still shortcut key to enhance content is remaining.
 		 });	
+		 */
 		 
 		 //disable browser default key shortcuts
 		

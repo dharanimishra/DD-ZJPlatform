@@ -262,7 +262,7 @@
 			
 			
 
-			
+		/*	
 			// keyboard events
 			var isCtrl = false; 
 			$(document).keyup(function (e) { 
@@ -285,7 +285,7 @@
 						}
 				 }	  
 		 });	
-		 
+		 */
 		 //disable browser default key shortcuts
 		
 
