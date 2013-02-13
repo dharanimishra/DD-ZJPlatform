@@ -268,7 +268,7 @@
     margin-right: auto;
     padding-top: 60px;
     width: 680px;
-     
+    text-align:center; 
 }
  
 </style>

@@ -358,7 +358,7 @@ $('._cklo').show('');
             
                         <!--Courses container-->
                
-   <div class="center for-rounded-box all-box-shadow _course" style="width:973px; margin-left:-98px;border:1px solid #e8b7df; background:#f9ebf7;">
+   <div class="center for-rounded-box all-box-shadow _course" style="width:973px; margin-left:-98px;border:1px solid #a9a5a5; background:#e2dbdb;">
                 <div style="margin-left:850px;disply:table; top:-100">
 
 

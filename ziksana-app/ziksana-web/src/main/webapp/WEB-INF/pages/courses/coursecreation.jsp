@@ -631,14 +631,15 @@ span.standartTreeRow:hover {
 									<!-- End of Third Container -->
 
 									<!-- Start of Viewmodelthinking -->
-							<a href="/ziksana-web/secure/editcourse/${courseId}"
-								class="btn btn-info f-r"
-								style="float:left; margin-top: 16px; clear: both;">Edit
-								Course Details </a>
-
-									<a href="/ziksana-web/secure/associatecontent/${courseId}"
-										style="float: right; margin-bottom: 20px; margin-top: 20px;"
-										class="btn btn-info">Save and Continue</a>
+							<div style="float: right; margin-bottom: 20px; margin-top: 20px;">
+							<a href="/ziksana-web/secure/associatecontent/${courseId}" class="btn btn-info" style="margin-left:20px;">Save and Continue</a>
+							<a href="/ziksana-web/secure/editcourse/${courseId}" class="btn btn-info f-r" style=" float:left;margin-left:20px;">Edit Course Details </a>
+								
+					
+				
+										
+								</div>
+								
 									<!-- End of viewmodelthinking -->
 
 									<!-- start view modelthinking 2 -->

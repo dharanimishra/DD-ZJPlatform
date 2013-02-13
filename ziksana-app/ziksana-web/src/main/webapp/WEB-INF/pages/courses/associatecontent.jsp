@@ -456,12 +456,12 @@ span.standartTreeRow:hover {
 														style="text-decoration: none;">Rich Text Editor</a> <a
 														class="f-r _plainText" href="#linkurl"
 														style="text-decoration: none;">Plain Text Editor</a>
-													<textarea  class="_plainTextShow labelclass defaultvalue" placeholder="Describe your course content" cols="90" rows="7" style="resize: none;"> </textarea>
+													<textarea placeholder="Describe your course content" class="_plainTextShow label" class="defaultvalue"  cols="90" rows="7" style="resize: none;font-family: Verdana;font-size:13px; color: #666;"></textarea>
 													<br />
 													<div class="_richTextShow">
-														<textarea  id="Associatecdescrte" placeholder="Describe your course content" name="Associatecdescrte" class="defaultvalue _focus"></textarea>
+														<textarea placeholder="Describe your course content" id="Associatecdescrte" name="Associatecdescrte" class="defaultvalue _focus"></textarea>
 													</div>
-
+												
 												</div>
 												<!-- end of coursename--->
 											</div>

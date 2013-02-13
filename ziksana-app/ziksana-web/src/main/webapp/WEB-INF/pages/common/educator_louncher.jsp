@@ -1169,18 +1169,18 @@ padding: 5px;">
 				
 			<a class="fancyboxclose" href="#linkurl">
 				<h5>Tutorial</h5>
-				<div style="text-align:center;">To be released in next Playpen.</div>					
+				<div style=" background: #000000" >To be released in next Playpen.</div>					
 			</a>
 			
 			<a class="fancyboxclose" href="#linkurl">
 				
                 <h5>Assignments</h5>
-				<div style="text-align:center;">To be released in next Playpen.</div>					
+				<div >To be released in next Playpen.</div>					
 			</a>
 
             <a class="fancyboxclose" href="#linkurl">
 				<h5>Performance</h5>
-				<div style="text-align:center;">To be released in next Playpen.</div>					
+				<div >To be released in next Playpen.</div>					
 			</a>
 	 </c:if>
 		</section>               
