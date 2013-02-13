@@ -428,7 +428,7 @@ function short_string_category(value){
                             
                             <div class="_upcoming _up1">
                             	<div class="_uDate">
-                                	<b>23-JAN</b><br> <b>12.00 PM</b> 
+                                	<b>14-JAN</b><br> <b>12.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="" >
@@ -438,7 +438,7 @@ function short_string_category(value){
                             
                             <div class="_upcoming _up2">
                             	<div class="_uDate">
-                                	<b>23-JAN</b><br> <b>02.00 PM</b> 
+                                	<b>14-JAN</b><br> <b>02.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="padding-top:2px; text-align:middle;">

@@ -848,16 +848,28 @@ $("#datepara").show();
 
 	   </div> <!-- end of  navlinks-->
      <c:url var="educatorPage" value="/secure/educatordashboard"></c:url>
+      <c:if test="${member.roleType eq 'EDUCATOR'}">
        <div class="navsublinks" style="margin-right:23px;padding-top:35px;">
 
  						<ul>
                         <li><a href="${educatorPage}" target="_parent">My Home</a></li>
-                        <li><a href="#">Analytics</a></li>
+                        <li><a href="/ziksana-web/resources/analytics/Educator_performance.html" target="_parent">Analytics</a></li>
                         <li><a href="#">Locker</a></li>
 						</ul>
 
    				</div> <!--end of navsublinks-->
-     
+     </c:if>
+      <c:if test="${member.roleType eq 'LEARNER'}">
+       <div class="navsublinks" style="margin-right:23px;padding-top:35px;">
+
+ 						<ul>
+                        <li><a href="${educatorPage}" target="_parent">My Home</a></li>
+                        <li><a href="/ziksana-web/resources/analytics/students_performance.html" target="_parent">Analytics</a></li>
+                        <li><a href="#">Locker</a></li>
+						</ul>
+
+   				</div> <!--end of navsublinks-->
+     </c:if>
      <div class="clearfix"> </div>
      
      </div> <!--end of navcontainer-->
@@ -1047,18 +1059,18 @@ padding: 5px;">
 						
 					</div>
 					<div class="cn_item">
-						<span class="cal"> JAN <br>23 </span><span class="eventtext">Lunch with Ziksana</span>
+						<span class="cal"> JAN <br>14 </span><span class="eventtext">Lunch with Ziksana</span>
 					</div>
 					<div class="cn_item">
-						<span class="cal"> JAN <br>23 </span><span class="eventtext">Experiment with Playpen</span>
+						<span class="cal"> JAN <br>14 </span><span class="eventtext">Experiment with Playpen</span>
 					</div>
 					<div class="cn_item ">
-						<span class="cal"> JAN <br>23 </span><span class="eventtext">Upcoming Event</span>
+						<span class="cal"> JAN <br>14 </span><span class="eventtext">Upcoming Event</span>
 					</div>
 				</div>
 				<div class="cn_page">
 					<div class="cn_item">
-						<span class="cal"> JAN <br>23 </span><span class="eventtext">Upcoming Event</span>
+						<span class="cal"> JAN <br>14 </span><span class="eventtext">Upcoming Event</span>
 					</div>
 					
 				</div>
