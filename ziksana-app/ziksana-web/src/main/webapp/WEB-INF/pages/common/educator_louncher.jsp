@@ -1201,7 +1201,7 @@ padding: 5px;">
    
     </div><!-- end of lnchrightnavlinks-->
      
-     <div class="lnchbottom" style=" float: right; margin-right: 200px; margin-top: 30px;z-index: 1000;position: relative;">
+     <div class="lnchbottom" style=" float: right; margin-right: 200px; margin-top: -25px;z-index: 1000;position: relative;">
 
 	
    <a id="calendarlink" class="navquit" onclick="window.parent.confirmFancyboxClose()">Quit</a>

@@ -310,7 +310,7 @@ span.standartTreeRow:hover {
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong>|<strong
+					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong>|&nbsp;<strong
 					class="light-gray text-size-px12 font-Signika">Create New Course </strong>
 			</div>
 			<div class="f-r">
@@ -362,7 +362,7 @@ span.standartTreeRow:hover {
 							<!--<a class="btn btn-info f-r saveTop"  id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
 							<form id="DegineCourse" class="form-horizontal formular"
 								method="post">
-								<div id="EditCourseDetails" class="ecd" style="height: 15px;">
+								<div id="EditCourseDetails" class="ecd" style="height: 0px;">
 									<!--<input type="button" class="btn btn-info f-r"
 										id="Editcoursedtl1" value="Edit Course Details"
 										onClick="getCourse(); return false;"
@@ -502,7 +502,7 @@ span.standartTreeRow:hover {
 																						height : 20,
 																						width : 30,
 																						min : null,
-																						stepInc: .5,
+																						stepInc: .5
 																						initValue : null,
 																						max : 20,
 																					});

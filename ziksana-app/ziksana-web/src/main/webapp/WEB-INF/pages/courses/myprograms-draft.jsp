@@ -313,7 +313,7 @@ $('._cklo').show('');
                 <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Course</p>
 
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
-				<span style="font-weight:bold;">Course </span> is a Learning Unit that Heps in Achieving the Learning Objects of the Learning Program..</p>
+				<span style="font-weight:bold;">Course </span> is a Learning Unit that Helps in Achieving the Learning Objectives of the Learning Program..</p>
               <p class="number-creat-box f-r font-Signika bold for-rounded-box" style=" margin-top:-4px;font-size:20px;color:#fff;">${courseCount} <span style="font-size:15px;">Courses</span></span></p>
 				
                 <div class="icons-list">

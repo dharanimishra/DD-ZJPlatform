@@ -1563,7 +1563,9 @@ font-weight:bold;
 .definecontainer
 {
 width:719px;
-padding:15px;
+padding-left:15px;
+padding-top:0px;
+margin-top:2px;
 }
 
 .defineassignment
