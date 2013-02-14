@@ -1195,7 +1195,7 @@ display:inline;
 }
 
 ._cMain p{
-	width: 110px;
+	width: 120px;
 	height: 16px;
 	background-color:#6D9EC5;
 	font-weight:bold;
@@ -1260,7 +1260,7 @@ display:inline;
 
 ._upcoming{
 	clear:both;
-	width: 200px;
+	width: 210px;
 	height: 30px;
 	padding:5px;
 	cursor:pointer;
@@ -1286,7 +1286,7 @@ display:inline;
 ._uevent
 {
 	float:left;
-	padding-top: 8px;
+	padding-top: 4px;
 }
 
 .b-b {
@@ -1442,9 +1442,9 @@ font-weight:bold;
 .definecontainer
 {
 width:719px;
-padding:15px;
+padding: 0 15px 15px 15px;
+margin-top:2px;
 }
-
 .Addmodulecontainer
 {
 	width:705px;

@@ -422,27 +422,36 @@ function short_string_category(value){
                                 </div>
                                 
                                 <div class="_uevent" style="">
-                                	Recap on Ziksana.
+                                	Lecture -<br/> Critical Thinking
                                 </div>
                             </div>
                             
                             <div class="_upcoming _up1">
                             	<div class="_uDate">
-                                	<b>14-JAN</b><br> <b>12.00 PM</b> 
+                                	<b>15-FEB</b><br> <b>12.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="" >
-                                	Lunch with Ziksana. 
+                                	Students Meet
                                 </div>
                             </div>
                             
                             <div class="_upcoming _up2">
                             	<div class="_uDate">
-                                	<b>14-JAN</b><br> <b>02.00 PM</b> 
+                                	<b>16-FEB</b><br> <b>02.00 PM</b> 
                                 </div>
                                 
                                 <div class="_uevent" style="padding-top:2px; text-align:middle;">
-                                	Experiment with<br/> Playpen
+                                	Lecture - <br/> Model Thinking
+                                </div>
+                            </div>
+                             <div class="_upcoming _up2">
+                            	<div class="_uDate">
+                                	<b>17-FEB</b><br> <b>02.00 PM</b> 
+                                </div>
+                                
+                                <div class="_uevent" style="padding-top:2px; text-align:middle;">
+                                	Lecture - <br/>Think Mental Models          
                                 </div>
                             </div>
                             
@@ -454,10 +463,11 @@ function short_string_category(value){
                         </div>
                         <div class="_cRight all-box-shadow">
                         	<div class="_e1">
-                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead"><span class="dmonth"></span> - Recap on Ziksana Capability</span></div>
+                            	<div style="margin-top:9px; padding-bottom: 9px; padding-left: 5px;"><span class="bold text-size-px12 orange ehead"><span class="dmonth"></span> Lecture - Critical Thinking</span></div>
 
-								<div><i class=" bold">Place: </i>UTD Administrative Building
-								<i class=" bold"><br>Time: </i>9:00 am - 12:00 pm </div>
+								<div><i class=" bold">Place: </i>Building A, Room 1A<br>
+								<i class=" bold"><br>Time: </i>9:00 am - 10:30 am <br>
+								<i class=" bold"><br>Contact: </i>(680) 231 6899 </div>
                             </div>
                             
                             <div class="_e2" style="display: none;">

@@ -356,11 +356,13 @@ span.standartTreeRow:hover {
 
 						<!--start of first Tab -->
 
-
+					<!-- 
 						<div class="definecontainer" id="definetab">
 							<span style="font-size:16px; font-wight:bold;  color:#27b;"></span>
-							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>-->
+							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>
 						</div>
+						 -->
+						 <br/>
 						<input type="hidden" id="courseid"
 							value="${courseId}" /> <input type="hidden"
 							id="courseLearningComponentId" value="" /> <input type="hidden"

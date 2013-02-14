@@ -62,6 +62,34 @@
 .jdash-head-title:hover { color: #ccc; }
 .jdash-head-title:hover span.sub-title { color: #666666; }
 .moreclass {font-size:12px;color:#27B;}
+.user-info .user-belt1 {
+	width: 235px;
+	float: left;
+	height: 57px;
+	background-image: url(/ziksana-web/resources/images/user/yellowbelt.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	text-align: center;
+	line-height: 67px;
+	margin-top: 10px;
+	margin-right: 0;
+	margin-bottom: 10px;
+	margin-left: 0;
+	
+}
+.user-info .learner-belt {
+	width: 235px;
+	float: left;
+	height: 41px;
+
+	text-align: center;
+	line-height: 67px;
+	margin-top: 10px;
+	margin-right: 0;
+	margin-bottom: 10px;
+	margin-left: 0;
+	
+}
 </style>
 <body>
 
@@ -110,10 +138,17 @@
 			<div id="edu-star"></div>
 		</div>
 		<c:url var="htmlUrl_profile1" value="/resources/popup/e-status.html" />
-		<div class="user-belt">
+		 <c:if test="${member.roleType eq 'EDUCATOR'}">
+		<div class="user-belt1">
 			<span class="blue text-size-px12 text-weight-600"><a
 				class="lbx-70-50" href="${htmlUrl_profile1}">Guru</a></span>
 		</div>
+		</c:if>
+		  <c:if test="${member.roleType eq 'LEARNER'}">
+		<div class="learner-belt">
+			<img width="120" height="40" src="/ziksana-web/resources/images/user/honor_student.jpg">
+		</div>
+		</c:if>
 	</div>
 	<!--test githup-->
 	<!-- blogs added by sundip-->

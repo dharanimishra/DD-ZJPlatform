@@ -544,7 +544,10 @@ function fancyBoxCloseLogout(){
 	}
 
 function get_and_populate_alerts(){
-
+	var images = new Array();
+	images[0] = "<c:url  value='../resources/images/icons/urgent.png' />";
+	images[1] = "<c:url  value='../resources/images/icons/warning.png' />";
+	images[2] = "<c:url  value='../resources/images/icons/info.png' />";
 
 	$.ajax({
 	  	type: 'GET',
@@ -587,7 +590,7 @@ function get_and_populate_alerts(){
 						output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 						output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 						 
-						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
+						output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='"+images[index]+"' alt='INFO' /> </a></div>";
 						output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 						
 						output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
@@ -608,7 +611,7 @@ function get_and_populate_alerts(){
 					output+="<div class='alertinfo' style='height:28px;padding:5px;'>";
 					output+="<div class='alertinfo-icon' style='float:left;display:inline; margin-right:10px;'>";
 					 
-					output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='${info}' onload='changeImage("+$(this).find("priority").text()+")' alt='INFO' /> </a></div>";
+					output+="<a href='#linkurl' rel='tipsy'  style='cursor:default;' > <img id='exp' src='"+images[index]+"' alt='INFO' /> </a></div>";
 					output+="<div class='alertinfo-category todotip_container' style='display:inline;' >"+short_string_category($(this).find("category").text())+"<div class='categorytip'>"+$(this).find("category").text()+" </div></div>";
 					
 					output+="<div class='todotip_container' id='demo-basic"+$(this).find("id").text()+"' style='font-weight:lighter;clear:both;display:inline; margin-left:10px; cursor:pointer;'>"+short_string($(this).find('description').text())+"</a><div class='todotip'>"+$(this).find("description").text()+" </div></div><a href='#' onclick='deleteFunction("+$(this).find('id').text()+")'  title='Delete' style='float:right; id='btalert3' rel='tipsy' title='Close'> <img src='${closeicon}' height='15' width='15'/> </a></div>";
@@ -743,24 +746,7 @@ function short_string_category(value){
 
 </script>
 <script type="text/javascript">
-function changeImage(a){
-	
-	var images = new Array();
-	images[0] = "<c:url  value='../resources/images/icons/urgent.png' />";
-	images[1] = "<c:url  value='../resources/images/icons/warning.png' />";
-	images[2] = "<c:url  value='../resources/images/icons/info.png' />";
-	
-	 var comic = document.getElementById("exp").src;
-	 if(a==1000){
-		  $("#exp").attr('src', images[0]);
-	 }else if(a==1001){
-		 $("#exp").attr('src', images[1]);
-	 }else if(a==1002){
-		 $("#exp").attr('src', images[2]);
-	 }
-	 
-	  
-}
+
 function hidecalender1()
 {
 $("#calenderdiv").hide();
@@ -895,73 +881,70 @@ $("#datepara").show();
                             
                         </div>
      
-     				
-	<div class="cn_wrapper calendar demo_message_container"  id= "calenderdiv" style="">
-			<div class="demo_message" style="font-size:18px;">
-					   
-					            For Demonstration Only. Functionality to be available in subsequent Playpens
-					            
-					            
-					
-					</div>
+    <div class="  demo_message_container"  id= "calenderdiv" style=""> 				
+	<div class="cn_wrapper calendar"   style="">
+			<!--  <div class="demo_message" style="font-size:18px;">
+					   For Demonstration Only. Functionality to be available in subsequent Playpens
+			</div>-->
             
                   <div id="binder">
            
            </div>
             
             <div id="cn_preview" class="cn_preview">
-				<div class="cn_content" style="top: 310px;">
-					
-					<span class="eventhead">Recap on Ziksana Capability</span>
-					<br>	
-                    <br>				
-				  <p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Preview and discuss current Ziksana Course Creation Model and related functionality</p>
-                     <br>	
-                    <br>
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Building  </p>  
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
-					
-				</div>
-				<div class="cn_content" style="top: 310px;">
-						
-					<span class="eventhead">Teacher Student Meet</span>
-					<br>	
-                    <br>				
-					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Meet &amp; Greet Event</p>
-                     <br>	
-                    <br>
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Cafeteria  </p>  
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
-					
-				</div>
-				<div class="cn_content" style="top: 310px;">
-						
-					<span class="eventhead">Meeting with Ziksana</span>
-					<br>	
-                    <br>				
-					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">We welcome you to join us on our seminar on Artificial intelligence.</p>
-                     <br>	
-                    <br>
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Adminnistrative Building  </p>  
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  1:00 pm - 4:00 pm </p>
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
-					
-				</div>
 				<div class="cn_content" style="top: 5px;">
 					
-					<span class="eventhead">Recap on Ziksana Capability</span>
+					<span class="eventhead">Lecture - Critical Thinking</span>
 					<br>	
                     <br>				
-					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;">Meeting with Ziksana</p>
+				  <p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;"></p>
                      <br>	
                     <br>
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  UTD Adminnistrative Building  </p>  
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span> 9:00am - 12:00 pm </p>
-                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  Building A, Room 1A  </p>  
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  9:00 am - 10:30 am</p>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(680) 231 6899  </p>   
 					
 				</div>
+				<div class="cn_content" style="top: 310px;">
+						
+					<span class="eventhead">Students Meet</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;"></p>
+                     <br>	
+                    <br>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span> Cafeteria  </p>  
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  12:00 pm - 1:30 pm </p>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(680) 231 2413  </p>   
+					
+				</div>
+				<div class="cn_content" style="top: 310px;">
+						
+					<span class="eventhead">Lecture - Model Thinking</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;"></p>
+                     <br>	
+                    <br>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  Building C, Room 3C </p>  
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span>  9:00 am - 10:30 am </p>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;"> </span> </p>   
+					
+				</div>
+				<div class="cn_content" style="top: 310px;">
+					
+					<span class="eventhead">Lecture - Think Mental Models</span>
+					<br>	
+                    <br>				
+					<p style="font-size:12px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; margin-top:5px; line-height:18px; color:#993300;"></p>
+                     <br>	
+                    <br>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Place: </span>  Building C, Room 3C  </p>  
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Time: </span> 2:00 pm - 3:30 pm</p>
+                  <p style="margin-bottom:7px; color:#993300; font-weight:bold; "><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;"> </span> </p>   
+					
+				</div>
+			 
 				<div class="cn_content">
 						
 					<span class="eventhead">Seminar on Artificial Intelligence</span>
@@ -975,6 +958,7 @@ $("#datepara").show();
                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
 					
 				</div>
+					<!-- 
 				<div class="cn_content">
 					
 					<span class="eventhead">Seminar on Artificial Intelligence</span>
@@ -1040,6 +1024,7 @@ $("#datepara").show();
                     <p style="margin-bottom:7px; color:#993300; font-weight:bold; letter-spacing:1px;"><span style="font-weight:bold; font-family:Verdana, Geneva, sans-serif; color:#000;">Contact: </span>(690) 231-9666  </p>   
 					
 				</div>
+				-->
 			</div>
            
            
@@ -1055,22 +1040,22 @@ padding: 5px;">
 			<div id="cn_list" class="cn_list">
 				<div class="cn_page" style="display:block;">
 					<div class="cn_item">
-						<span class=" selected cal dmonth ">  </span><span class="eventtext">Recap on Ziksana</span>
+						<span class=" selected cal dmonth ">  </span><span class="eventtext">Lecture - Critical Thinking</span>
 						
 					</div>
 					<div class="cn_item">
-						<span class="cal"> JAN <br>14 </span><span class="eventtext">Lunch with Ziksana</span>
+						<span class="cal"> FEB <br>15 </span><span class="eventtext">Students Meet</span>
 					</div>
 					<div class="cn_item">
-						<span class="cal"> JAN <br>14 </span><span class="eventtext">Experiment with Playpen</span>
+						<span class="cal"> FEB <br>16 </span><span class="eventtext">Lecture - Model Thinking </span>
 					</div>
 					<div class="cn_item ">
-						<span class="cal"> JAN <br>14 </span><span class="eventtext">Upcoming Event</span>
+						<span class="cal"> FEB <br>17 </span><span class="eventtext">Lecture - Think Mental Models</span>
 					</div>
 				</div>
 				<div class="cn_page">
 					<div class="cn_item">
-						<span class="cal"> JAN <br>14 </span><span class="eventtext">Upcoming Event</span>
+						<span class="cal"> FEB <br>18 </span><span class="eventtext">Upcoming Event</span>
 					</div>
 					
 				</div>
@@ -1083,12 +1068,13 @@ padding: 5px;">
 			
            </div> 
            
-          
+         
            
             </div>
+            	
 		</div>
-		
-        
+	<span style="margin-left:470px;margin-top:5px;"><a href="#">More</a></span> 
+       </div> 
         
         
          <!-- Start of Alerts -->

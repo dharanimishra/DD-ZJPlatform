@@ -254,18 +254,19 @@
 						</div>
 						<!--Wizard end  -->
 
-
+					
 
 						
 						<div class="associate">
-						
+							
 							<div class="definecontainer" style="float: left;">
+							<br/>
 								<p class="definehelp all all-box-shadow"
 									style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92;">
 									<img src="/ziksana-web/resources/images/icons/helpicon.png" align="left"
 										style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>You
 										can enrich your Video content by associating related
-										materials/notes at different points in the video timeline. <br>
+										materials/notes at different points in the video timeline. 
 										Right Click over the Course Content to enrich it.
 									</b>
 								</p>

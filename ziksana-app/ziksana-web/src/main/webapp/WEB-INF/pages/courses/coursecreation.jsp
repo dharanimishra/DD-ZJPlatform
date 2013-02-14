@@ -379,7 +379,7 @@ span.standartTreeRow:hover {
 </style>
 
 						<div id="gggg" style="font-size: 10px; margin-bottom: 10px;">
-
+<br/>
 							<p class="definehelp all all-box-shadow"
 								style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92; height: 30px;">
 								<img src="/ziksana-web/resources/images/icons/helpicon.png"
