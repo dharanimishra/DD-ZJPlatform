@@ -8,6 +8,7 @@ public interface LearningComponentTagCloudService {
 	public CourseTagcloud saveOrUpadteTags(CourseTagcloud courseTagcloud)
 			throws CourseException;
 
-	public CourseTagcloud getComponentTagClouds(Integer learningComponentId);
+	public CourseTagcloud getComponentTagClouds(Integer learningComponentId,
+			Integer courseId);
 
 }

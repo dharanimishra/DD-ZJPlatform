@@ -349,143 +349,163 @@ function getCourse() {
 
 	var available_tags, selected_tags;
 
-	$.post(uri, parameters, function(data) {
-		console.log(data);
-		if (data.response == 'success') {
-			course_id = data.id;
-			course_name = data.coursename;
-			course_desc = data.coursedesc;
-			subject_area = data.subjectarea;
-			subject = data.subject;
-			topic = data.topic;
-			// tag_field = data.tagfield;
-			selected_tags = data.selected_tags.split(',');
-			available_tags = data.available_tags.split(',');
-			credits = data.credits;
-			extra_credits = data.extracredits;
-			duration = data.duration;
-			duration_type = data.durationtype;
-			image_upload = data.imageupload;
+	$
+			.post(
+					uri,
+					parameters,
+					function(data) {
+						console.log(data);
+						if (data.response == 'success') {
+							course_id = data.id;
+							course_name = data.coursename;
+							course_desc = data.coursedesc;
+							subject_area = data.subjectarea;
+							subject = data.subject;
+							topic = data.topic;
+							// tag_field = data.tagfield;
+							selected_tags = data.selected_tags.split(',');
+							available_tags = data.available_tags.split(',');
+							credits = data.credits;
+							extra_credits = data.extracredits;
+							duration = data.duration;
+							duration_type = data.durationtype;
+							image_upload = data.imageupload;
 
-			$('#courseid').val(course_id);
+							$('#courseid').val(course_id);
 
-			$('#defaultvalue').val(course_name);
+							$('#defaultvalue').val(course_name);
 
-			console.log(course_desc);
+							console.log(course_desc);
 
-			if (course_desc.charAt(0) == '<') {
+							if (course_desc.charAt(0) == '<') {
 
-				$('#Cdescriptionrte').val(course_desc);
+								$('#Cdescriptionrte').val(course_desc);
 
-				$('#rich_text_editor').click();
+								$('#rich_text_editor').click();
 
-			} else {
+							} else {
 
-				$('#Cdescription').val(course_desc);
+								$('#Cdescription').val(course_desc);
 
-			}
+							}
 
-			$('#Ctagfield_e').val(selected_tags);
+							$('#Ctagfield_e').val(selected_tags);
 
-			$('#Credits').val(credits);
+							$('#Credits').val(credits);
 
-			$('#ExtraCredits').val(extra_credits);
+							$('#ExtraCredits').val(extra_credits);
 
-			$('#Duration').val(duration);
+							$('#Duration').val(duration);
 
-			$('#Cdurationtype').val(duration_type);
+							$('#Cdurationtype').val(duration_type);
 
-			$('#Cimageupl').val(image_upload);
+							$('#Cimageupl').val(image_upload);
 
-			// // populate subject area
+							// // populate subject area
 
-			$.get('/ziksana-web/secure/getSubjectArea', {}, function(data) {
-				options = data;
-				var option_string = '';
-				// option_string += '<option value="Select Subject Area">Select
-				// Subject Area</option>';
+							$.get('/ziksana-web/secure/getSubjectArea', {},
+									function(data) {
+										options = data;
+										var option_string = '';
+										// option_string += '<option
+										// value="Select Subject Area">Select
+										// Subject Area</option>';
 
-				for (i in options) {
-					label = options[i].label;
-					value = options[i].value;
+										for (i in options) {
+											label = options[i].label;
+											value = options[i].value;
 
-					option = '<option value="' + value + '">' + label
-							+ '</option>';
+											option = '<option value="' + value
+													+ '">' + label
+													+ '</option>';
 
-					option_string += option;
-				}
-				$('#Careaddl').html(option_string);
-				// now select the value already
-				// selected by the
-				// user
-				$('#Careaddl').val(subject_area);
+											option_string += option;
+										}
+										$('#Careaddl').html(option_string);
+										// now select the value already
+										// selected by the
+										// user
+										$('#Careaddl').val(subject_area);
 
-			});
+									});
 
-			// // end populating subject area
-			// // start populating subject
-			token = '';
-			request_type = 'GET';
-			uri = '/ziksana-web/secure/getSubject';
+							// // end populating subject area
+							// // start populating subject
+							token = '';
+							request_type = 'GET';
+							uri = '/ziksana-web/secure/getSubject';
 
-			$.get(uri, {
-				'Course_Area' : subject_area
-			}, function(data) {
-				options = data;
-				var option_string = '';
-				// option_string += '<option value="Select Subject">Select
-				// Subject</option>';
-				for (i in options) {
-					label = options[i].label;
-					value = options[i].value;
+							$
+									.get(
+											uri,
+											{
+												'Course_Area' : subject_area
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												option_string += '<option value="Select Subject">Select Subject</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
 
-					option = '<option value="' + value + '">' + label
-							+ '</option>';
+													option = '<option value="'
+															+ value + '">'
+															+ label
+															+ '</option>';
 
-					option_string += option;
-				}
+													option_string += option;
+												}
 
-				$('#Csubjectddl').html(option_string);
-				$('#Csubjectddl').val(subject);
+												$('#Csubjectddl').html(
+														option_string);
+												$('#Csubjectddl').val(subject);
 
-			});
+											});
 
-			// // end populating subject
+							// // end populating subject
 
-			// Start populating topic
+							// Start populating topic
 
-			uri = '/ziksana-web/secure/getTopic';
-			token = '';
-			request_type = 'GET';
-			$.get(uri, {
-				'Course_Subject' : subject
-			}, function(data) {
-				options = data;
-				var option_string = '';
-				// option_string += '<option value="Select Topic">Select
-				// Topic</option>';
-				for (i in options) {
-					label = options[i].label;
-					value = options[i].value;
+							uri = '/ziksana-web/secure/getTopic';
+							token = '';
+							request_type = 'GET';
+							$
+									.get(
+											uri,
+											{
+												'Course_Subject' : subject
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												option_string += '<option value="Select Topic">Select Topic</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
 
-					option = '<option value="' + value + '">' + label
-							+ '</option>';
+													option = '<option value="'
+															+ value + '">'
+															+ label
+															+ '</option>';
 
-					option_string += option;
-				}
+													option_string += option;
+												}
 
-				$('#Ctopicddl').html(option_string);
-				$('#Ctopicddl').val(topic);
+												$('#Ctopicddl').html(
+														option_string);
+												$('#Ctopicddl').val(topic);
 
-			});
-			// end populating topic
+											});
+							// end populating topic
 
-		} else {
-			$('#tempdiv').html(
-					'<span style="color:red;">' + data.message + '</span>');
-		}
+						} else {
+							$('#tempdiv').html(
+									'<span style="color:red;">' + data.message
+											+ '</span>');
+						}
 
-	});
+					});
 
 	// }//end of validation if block
 

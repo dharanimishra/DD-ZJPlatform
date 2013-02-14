@@ -26,10 +26,21 @@ public class LearningComponentTagCloudServiceImpl implements
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :saveOrUpadteTags(Integer courseId)"
 				+ courseTagcloud);
-		if (courseTagcloud.getTagCloudId() > 0) {
-			tags = learningComponentTagcloudMapper.update(courseTagcloud);
-		} else {
-			tags = learningComponentTagcloudMapper.save(courseTagcloud);
+		try {
+			if (courseTagcloud.getTagCloudId() != null) {
+				tags = learningComponentTagcloudMapper.update(courseTagcloud);
+			} else {
+				tags = learningComponentTagcloudMapper.save(courseTagcloud);
+			}
+			LOGGER.debug("Exiting Class :" + getClass()
+					+ " Method Name :saveOrUpadteTags(Integer courseId):"
+					+ tags);
+
+		} catch (Exception e) {
+			LOGGER.debug("Exiting Class :"
+					+ getClass()
+					+ " Method Name :saveOrUpadteTags(Integer courseId): Exception"
+					+ tags);
 		}
 
 		LOGGER.debug("Exiting Class :" + getClass()
@@ -40,18 +51,34 @@ public class LearningComponentTagCloudServiceImpl implements
 	}
 
 	@Override
-	public CourseTagcloud getComponentTagClouds(Integer learningComponentId) {
+	public CourseTagcloud getComponentTagClouds(Integer learningComponentId,
+			Integer courseId) {
 		CourseTagcloud tags = null;
-		LOGGER.debug("Entering Class :" + getClass()
-				+ " Method Name :getComponentTagClouds(Integer courseId)"
-				+ learningComponentId);
+		LOGGER.debug("Entering Class :"
+				+ getClass()
+				+ " Method Name :getComponentTagClouds(Integer learningComponentId,Integer courseId)"
+				+ learningComponentId + "courseId:" + courseId);
+		try {
+			tags = learningComponentTagcloudMapper.getComponentTagClouds(
+					learningComponentId, courseId);
+			LOGGER.debug("Exiting Class :"
+					+ getClass()
+					+ " Method Name :getComponentTagClouds(Integer learningComponentId,Integer courseId):"
+					+ tags + "learningComponentId" + learningComponentId
+					+ "courseId:" + courseId);
+		} catch (Exception e) {
+			LOGGER.debug("Exiting Class :"
+					+ getClass()
+					+ " Method Name :getComponentTagClouds(Integer learningComponentId,Integer courseId): Exception"
+					+ tags + "learningComponentId" + learningComponentId
+					+ "courseId:" + courseId);
+		}
 
-		tags = learningComponentTagcloudMapper
-				.getComponentTagClouds(learningComponentId);
-
-		LOGGER.debug("Exiting Class :" + getClass()
-				+ " Method Name :getComponentTagClouds(Integer courseId)"
-				+ learningComponentId);
+		LOGGER.debug("Exiting Class :"
+				+ getClass()
+				+ " Method Name :getComponentTagClouds(Integer learningComponentId,Integer courseId)"
+				+ "learningComponentId" + learningComponentId + "courseId:"
+				+ courseId);
 
 		return tags;
 	}

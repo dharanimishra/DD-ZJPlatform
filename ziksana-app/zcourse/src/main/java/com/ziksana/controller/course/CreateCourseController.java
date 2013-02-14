@@ -461,6 +461,8 @@ public class CreateCourseController {
 		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 
+		boolean flag = false;
+
 		Course courseObj = null;
 		try {
 			List<CourseLearningComponent> compList = new ArrayList<CourseLearningComponent>();
@@ -472,7 +474,7 @@ public class CreateCourseController {
 			course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
 
 			if (courseLearningComponentId > 0 && learningComponentId > 0) {
-
+				flag = true;
 				LearningComponent comp1 = new LearningComponent();
 				comp1.setLearningComponentId(learningComponentId);
 				comp1.setAuthoredMember(accountableMember);
@@ -520,13 +522,14 @@ public class CreateCourseController {
 				courseDetails.setCourseLearningComponentsList(compList);
 
 				course.setCourseDetails(courseDetails);
+
 				LOGGER.error("Entering Class "
 						+ getClass()
 						+ " saveCourseComponents() After Edit Module service : courseId :"
 						+ CourseId + " getting course " + course);
 
 			} else {
-
+				flag = false;
 				LearningComponent comp1 = new LearningComponent();
 				comp1.setAuthoredMember(accountableMember);
 				comp1.setName(CourseModule);
@@ -602,59 +605,6 @@ public class CreateCourseController {
 					+ e.getMessage());
 
 		}
-
-		CourseTagcloud tagcloud = new CourseTagcloud();
-		CourseTagcloud getTagcloud = null;
-
-		try {
-			getTagcloud = learningComponentTagCloudService
-					.getComponentTagClouds(learningComponentId);
-		} catch (Exception e) {
-			LOGGER.error("Class :"
-					+ getClass()
-					+ " Method saveCourse : After getComponentTagClouds: CourseId Exception :Update tagcloud"
-					+ getTagcloud + e);
-		}
-		if (getTagcloud.getTagCloudId() < 1) {
-			try {
-				tagcloud.setTagName(ModuleTags);
-				try {
-					tagcloud.setTagType(TagType.TAG_TYPE1);
-				} catch (NoSuchMethodException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				learningComponentTagCloudService.saveOrUpadteTags(tagcloud);
-				LOGGER.info("Class :"
-						+ getClass()
-						+ " Method saveOrUpadteTags : After courseService: Save CourseId Exception :tagcloud"
-						+ tagcloud);
-			} catch (Exception e) {
-				LOGGER.error("Class :"
-						+ getClass()
-						+ " Method saveCourse : After courseService: CourseId Exception : Save tagcloud"
-						+ tagcloud + e);
-			}
-
-		} else {
-			try {
-				tagcloud.setTagCloudId(getTagcloud.getTagCloudId());
-				tagcloud.setTagName(ModuleTags);
-				getTagcloud.setZeniSuggestedIndicator(true);
-				getTagcloud.setLearningComponentId(learningComponentId);
-				
-				learningComponentTagCloudService.saveOrUpadteTags(tagcloud);
-
-				LOGGER.info("Class :"
-						+ getClass()
-						+ " Method saveOrUpadteTags : After courseService: Update CourseId Exception :tagcloud");
-			} catch (Exception e) {
-				LOGGER.info("Class :"
-						+ getClass()
-						+ " Method saveCourse : After courseService: CourseId Exception :Update tagcloud"
-						+ tagcloud + e);
-			}
-		}
 		Integer courseIds = 0;
 		try {
 			courseIds = Integer
@@ -663,6 +613,97 @@ public class CreateCourseController {
 			LOGGER.info("Class :"
 					+ getClass()
 					+ " Method saveCourse : After courseService: CourseId Exception :"
+					+ e);
+		}
+
+		CourseTagcloud getTagcloud = null;
+		CourseTagcloud tagcloudObj = new CourseTagcloud();
+		try {
+			getTagcloud = learningComponentTagCloudService
+					.getComponentTagClouds(learningComponentId, courseIds);
+			LOGGER.error("Class :"
+					+ getClass()
+					+ " Method saveCourse : After getComponentTagClouds: tagcloud"
+					+ getTagcloud + "getTagcloud.getTagCloudId() :"
+					+ getTagcloud.getTagCloudId()
+					+ "learningComponentId, courseIds" + learningComponentId
+					+ courseIds);
+		} catch (Exception e) {
+			LOGGER.error("Class :"
+					+ getClass()
+					+ " Method saveCourse : After getComponentTagClouds: CourseId Exception :Update tagcloud"
+					+ getTagcloud + "learningComponentId, courseIds"
+					+ learningComponentId + courseIds + e);
+		}
+
+		try {
+			CourseTagcloud tagcloud = new CourseTagcloud();
+			if (flag) {
+				try {
+					tagcloud.setTagCloudId(getTagcloud.getTagCloudId());
+					tagcloud.setTagName(ModuleTags);
+					tagcloud.setZeniSuggestedIndicator(true);
+					tagcloud.setLearningComponentId(learningComponentId);
+					tagcloud.setCourseId(courseid);
+					tagcloudObj = learningComponentTagCloudService
+							.saveOrUpadteTags(tagcloud);
+
+					LOGGER.info("Class :"
+							+ getClass()
+							+ " Method saveOrUpadteTags : After courseService: :tagcloud"
+							+ tagcloud + " learningComponentId :"
+							+ learningComponentId);
+				} catch (Exception e) {
+					LOGGER.info("Class :"
+							+ getClass()
+							+ " Method saveCourse : After courseService: CourseId Exception :Update tagcloud"
+							+ tagcloud + e);
+				}
+
+			} else {
+				try {
+					tagcloud.setTagName(ModuleTags);
+					tagcloud.setZeniSuggestedIndicator(true);
+					tagcloud.setLearningComponentId(courseLearningComponentId);
+					tagcloud.setCourseId(courseid);
+					try {
+						tagcloud.setTagType(TagType.TAG_TYPE1);
+					} catch (NoSuchMethodException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					tagcloudObj = learningComponentTagCloudService
+							.saveOrUpadteTags(tagcloud);
+					LOGGER.info("Class :"
+							+ getClass()
+							+ " Method saveOrUpadteTags : After courseService :tagcloud"
+							+ tagcloud + "learningComponentId :"
+							+ learningComponentId);
+				} catch (Exception e) {
+					LOGGER.error("Class :"
+							+ getClass()
+							+ " Method saveCourse : After courseService: Exception : Save tagcloud"
+							+ tagcloud + "learningComponentId :"
+							+ learningComponentId + e);
+				}
+
+			}
+		} catch (Exception e) {
+			LOGGER.info("Class :"
+					+ getClass()
+					+ " Method saveCourse : After courseService: CourseId Exception : getTagcloud"
+					+ getTagcloud + e);
+		}
+
+		try {
+			learningComponentTagCloudService.saveOrUpadteTags(tagcloudObj);
+			LOGGER.info("Class :"
+					+ getClass()
+					+ " Method saveCourse : After courseService: learningComponentTagCloudService : learningComponentTagCloudService");
+		} catch (Exception e) {
+			LOGGER.info("Class :"
+					+ getClass()
+					+ " Method saveCourse : After courseService: learningComponentTagCloudService :Exception: learningComponentTagCloudService"
 					+ e);
 		}
 
@@ -840,8 +881,8 @@ public class CreateCourseController {
 		String tagfield = "";
 		CourseTagcloud tag = null;
 		try {
-			tag = learningComponentTagCloudService
-					.getComponentTagClouds(learningComponentId);
+			tag = learningComponentTagCloudService.getComponentTagClouds(
+					learningComponentId, courseid);
 			tagfield = tag.getTagName();
 			LOGGER.error("Exiting Class " + getClass() + "tag  :" + tag
 					+ "tagfield :" + tagfield);

@@ -4,7 +4,7 @@
 
 	<insert id="save" parameterType="com.ziksana.domain.course.CourseTagcloud"
 		useGeneratedKeys="true" keyProperty="courseTagCloudId" keyColumn="ID">
-		
+
 		insert into corlearningcomponenttagcloud
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,
@@ -16,6 +16,9 @@
 			</if>
 			<if test="learningComponentId !=null">
 				LearningComponentId,
+			</if>
+			<if test="courseId !=null">
+				courseId,
 			</if>
 
 		</trim>
@@ -30,6 +33,9 @@
 			<if test="learningComponentId !=null">
 				#{learningComponentId,jdbcType=INTEGER},
 			</if>
+			<if test="courseId !=null">
+				#{courseId,jdbcType=INTEGER},
+			</if>
 		</trim>
 		<selectKey keyProperty="courseTagCloudId" resultType="int"
 			order="AFTER">
@@ -41,6 +47,9 @@
 		update corlearningcomponenttagcloud
 		<set>
 			tagname=#{tagName,jdbcType=VARCHAR},
+		</set>
+		<set>
+			learningComponentId=#{learningComponentId,jdbcType=INTEGER},
 		</set>
 		where
 		ID = #{tagCloudId,jdbcType=INTEGER}
