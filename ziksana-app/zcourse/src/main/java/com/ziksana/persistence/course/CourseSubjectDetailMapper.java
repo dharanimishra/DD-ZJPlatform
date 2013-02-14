@@ -46,4 +46,12 @@ public interface CourseSubjectDetailMapper {
 			@Result(property = "subjectTopic", column = "SubjectTopic") })
 	CourseSubjectClassification getSubjectClassification(String subjectTopic);
 
+	@Select({ "select utl.ID as ID, SubjectArea, SubjectCategory,SubjectTopic from utlsubjectclassification utl,corcourse course where utl.ID=course.SubjClassificationId and course.id= #{courseId,jdbcType=INTEGER}" })
+	@Results(value = {
+			@Result(property = "subjClassificationId", column = "ID"),
+			@Result(property = "subjectArea", column = "SubjectArea"),
+			@Result(property = "subjectCategory", column = "SubjectCategory"),
+			@Result(property = "subjectTopic", column = "SubjectTopic") })
+	CourseSubjectClassification getCourseClassification(Integer courseId);
+
 }

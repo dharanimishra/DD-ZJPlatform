@@ -3,19 +3,42 @@ $(document)
 		.ready(
 				function(e) {
 
+					var course_id = $('#courseid').val();
+					console.log(course_id);
+					var subjectArea = '', subjectCategory = '', subjectTopic = '';
+					var subClassificationId = 0;
+					$.post('/ziksana-web/secure/getSubClassification', {
+						'CourseId' : course_id
+					}, function(data) {
+						console.log(data);
+						subClassificationId = data.subjClassificationId;
+						var subArea = data.subjectArea;
+						var subCategory = data.subjectCategory;
+						var subTopic = data.subjectTopic;
+
+						subjectArea = '<option selected="selected" value="'
+								+ subArea + '">' + subArea + '</option>';
+						subjectCategory = '<option selected="selected" value="'
+								+ subCategory + '">' + subCategory
+								+ '</option>';
+						subjectTopic = '<option selected="selected" value="'
+								+ subTopic + '">' + subTopic + '</option>';
+
+					});
+
 					$.get('/ziksana-web/secure/getSubjectArea', {}, function(
 							data) {
 						options = data;
 						var option_string = '';
-						// option_string += '<option value="Select Subject
-						// Area">Select Subject Area</option>';
-
+						if (subClassificationId > 0) {
+							option_string += subjectArea;
+						}
 						for (i in options) {
 							label = options[i].label;
 							value = options[i].value;
 							if (i == 0) {
-								option = '<option selected="selected" value="'
-										+ value + '">' + label + '</option>';
+								option = '<option value="' + value + '">'
+										+ label + '</option>';
 							} else
 								option = '<option value="' + value + '">'
 										+ label + '</option>';
@@ -23,6 +46,10 @@ $(document)
 							option_string += option;
 						}
 						$('#Cmoduleareaddl').html(option_string);
+						if (subClassificationId > 0) {
+							$('#Cmodulesubjectddl').html(subjectCategory);
+							$('#Cmoduletopicddl').html(subjectTopic);
+						}
 
 					});
 
@@ -44,7 +71,9 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
+
 															option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
+
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
@@ -68,6 +97,7 @@ $(document)
 																	'#Cmodulesubjectddl')
 																	.html(
 																			option_string);
+
 															var topic = '<option value="Select Topic">Select Topic</option>';
 															$(
 																	'#Cmoduletopicddl')

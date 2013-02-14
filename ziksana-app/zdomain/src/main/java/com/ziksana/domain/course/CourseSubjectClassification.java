@@ -55,4 +55,12 @@ public class CourseSubjectClassification {
 		this.subjectTopic = subjectTopic;
 	}
 
+	@Override
+	public String toString() {
+		return "CourseSubjectClassification [subjClassificationId="
+				+ subjClassificationId + ", subjectCategory=" + subjectCategory
+				+ ", subjectArea=" + subjectArea + ", subjectTopic="
+				+ subjectTopic + "]";
+	}
+
 }

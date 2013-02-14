@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -74,6 +75,30 @@ public class CourseSubjectController {
 		CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
 				.getSubjectClassification(subjectTopic);
 		LOGGER.info("Exiting Class " + getClass() + " getTopic(): ");
+
+		return courseSubjectClassification;
+	}
+
+	@RequestMapping(value = "/getSubClassification", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	CourseSubjectClassification getSubClassification(
+			@RequestParam(value = "CourseId", required = false) String CourseId) {
+
+		Integer course_id = 0;
+		LOGGER.info("Entering Class " + getClass()
+				+ " getSubClassification():course_id:" + course_id);
+		try {
+			course_id = Integer.parseInt(CourseId.split("_")[1]);
+		} catch (NumberFormatException nfe) {
+			LOGGER.error("Entering getSubClassification(): NumberFormatException nfe: "
+					+ nfe);
+		}
+
+		CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
+				.getCourseClassification(course_id);
+		LOGGER.info("Exiting Class " + getClass()
+				+ " getSubClassification(): course_id:" + course_id);
 
 		return courseSubjectClassification;
 	}

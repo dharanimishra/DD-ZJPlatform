@@ -263,29 +263,15 @@ function createCourse() {
 		var Course_Descriptionrte;
 
 		Course_Description = $('#Cdescription').val();
-		// alert("Course_Description :"+Course_Description);
 
 		if (Course_Description.length > 0) {
 			Course_Descriptions = Course_Description;
-			// alert("Course_Descriptions :" + Course_Descriptions);
 		} else {
 			Course_Descriptionrte = CKEDITOR.instances['Cdescriptionrte']
 					.getData();
 			Course_Descriptions = Course_Descriptionrte;
-			// alert("Course_Descriptions :" + Course_Descriptions);
 		}
 
-		// if (CKEDITOR.instances['Cdescriptionrte'] == undefined) {
-		//
-		// //Course_Description = $('#Cdescription').val();
-		// //alert("Course_Description :" + Course_Description);
-		//
-		// } else {
-		// Course_Descriptionrte = CKEDITOR.instances['Cdescriptionrte']
-		// .getData();
-		// }
-
-		// var Course_Descriptions = Course_Description + Course_Descriptionrte;
 		var Subject_Area = $('#Careaddl').val();
 
 		var Subject = $('#Csubjectddl').val();
@@ -398,12 +384,6 @@ function getCourse() {
 				$('#Cdescription').val(course_desc);
 
 			}
-
-			/*
-			 * $('#Ctagfield_e').superblyTagField({ allowNewTags : true,
-			 * showTagsNumber : 10, preset : selected_tags, tags :
-			 * available_tags });
-			 */
 
 			$('#Ctagfield_e').val(selected_tags);
 

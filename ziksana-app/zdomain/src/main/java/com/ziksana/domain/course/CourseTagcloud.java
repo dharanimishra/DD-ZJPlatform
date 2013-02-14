@@ -6,7 +6,7 @@ import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
- * @author bhashasp
+ * @author Ratnesh Kumar
  */
 public class CourseTagcloud extends TagCloud {
 
@@ -32,12 +32,22 @@ public class CourseTagcloud extends TagCloud {
 
 	private Integer courseId = null;
 
+	private Integer learningComponentId = null;
+
 	public Integer getCourseId() {
 		return courseId;
 	}
 
 	public void setCourseId(Integer courseId) {
 		this.courseId = courseId;
+	}
+
+	public Integer getLearningComponentId() {
+		return learningComponentId;
+	}
+
+	public void setLearningComponentId(Integer learningComponentId) {
+		this.learningComponentId = learningComponentId;
 	}
 
 	/**
