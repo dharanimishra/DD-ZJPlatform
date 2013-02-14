@@ -53,16 +53,12 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															// option_string +=
-															// '<option
-															// value="Select
-															// Subject">Select
-															// Subject</option>';
+															option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
 																if (i == 0) {
-																	option = '<option selected="selected" value="'
+																	option = '<option  value="'
 																			+ value
 																			+ '">'
 																			+ label
@@ -81,7 +77,6 @@ $(document)
 															$('#Csubjectddl')
 																	.html(
 																			option_string);
-															
 
 														});
 										var topic = '<option value="Select Topic">Select Topic</option>';
@@ -135,16 +130,12 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															// option_string +=
-															// '<option
-															// value="Select
-															// Topic">Select
-															// Topic</option>';
+															option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
 																if (i == 0) {
-																	option = '<option selected="selected" value="'
+																	option = '<option value="'
 																			+ value
 																			+ '">'
 																			+ label
@@ -276,12 +267,12 @@ function createCourse() {
 
 		if (Course_Description.length > 0) {
 			Course_Descriptions = Course_Description;
-			//alert("Course_Descriptions :" + Course_Descriptions);
+			// alert("Course_Descriptions :" + Course_Descriptions);
 		} else {
 			Course_Descriptionrte = CKEDITOR.instances['Cdescriptionrte']
 					.getData();
 			Course_Descriptions = Course_Descriptionrte;
-			//alert("Course_Descriptions :" + Course_Descriptions);
+			// alert("Course_Descriptions :" + Course_Descriptions);
 		}
 
 		// if (CKEDITOR.instances['Cdescriptionrte'] == undefined) {
@@ -408,16 +399,14 @@ function getCourse() {
 
 			}
 
-			/*$('#Ctagfield_e').superblyTagField({
-				allowNewTags : true,
-				showTagsNumber : 10,
-				preset : selected_tags,
-				tags : available_tags
-			});
-			*/
+			/*
+			 * $('#Ctagfield_e').superblyTagField({ allowNewTags : true,
+			 * showTagsNumber : 10, preset : selected_tags, tags :
+			 * available_tags });
+			 */
 
 			$('#Ctagfield_e').val(selected_tags);
-			
+
 			$('#Credits').val(credits);
 
 			$('#ExtraCredits').val(extra_credits);
@@ -478,7 +467,6 @@ function getCourse() {
 
 				$('#Csubjectddl').html(option_string);
 				$('#Csubjectddl').val(subject);
-				
 
 			});
 

@@ -4,32 +4,28 @@ $(document)
 		.ready(
 				function(e) {
 
-					$
-							.get(
-									'/ziksana-web/secure/getSubjectArea',
-									{},
-									function(data) {
-										options = data;
-										var option_string = '';
-										//option_string += '<option value="Select Subject Area">Select Subject Area</option>';
+					$.get('/ziksana-web/secure/getSubjectArea', {}, function(
+							data) {
+						options = data;
+						var option_string = '';
+						// option_string += '<option value="Select Subject
+						// Area">Select Subject Area</option>';
 
-										for (i in options) {
-											label = options[i].label;
-											value = options[i].value;
-											if(i==0) {
-												option = '<option selected="selected" value="' + value
-												+ '">' + label
-												+ '</option>';
-											} else
-											option = '<option value="' + value
-													+ '">' + label
-													+ '</option>';
+						for (i in options) {
+							label = options[i].label;
+							value = options[i].value;
+							if (i == 0) {
+								option = '<option selected="selected" value="'
+										+ value + '">' + label + '</option>';
+							} else
+								option = '<option value="' + value + '">'
+										+ label + '</option>';
 
-											option_string += option;
-										}
-										$('#Careaddl').html(option_string);
+							option_string += option;
+						}
+						$('#Careaddl').html(option_string);
 
-									});
+					});
 
 					// Function for Subject Area drop down list on change of a
 					// value
@@ -50,20 +46,22 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															//option_string += '<option value="Select Subject">Select Subject</option>';
+															option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
-																if(i==0) {
-																	option = '<option selected="selected" value="' + value
-																	+ '">' + label
-																	+ '</option>';
+																if (i == 0) {
+																	option = '<option value="'
+																			+ value
+																			+ '">'
+																			+ label
+																			+ '</option>';
 																} else
-																option = '<option value="'
-																		+ value
-																		+ '">'
-																		+ label
-																		+ '</option>';
+																	option = '<option value="'
+																			+ value
+																			+ '">'
+																			+ label
+																			+ '</option>';
 
 																option_string += option;
 															}
@@ -72,7 +70,8 @@ $(document)
 																	.html(
 																			option_string);
 															var topic = '<option value="Select Topic">Select Topic</option>';
-															$('#Ctopicddl').html(topic);
+															$('#Ctopicddl')
+																	.html(topic);
 
 														});
 
@@ -125,20 +124,22 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															//option_string += '<option value="Select Topic">Select Topic</option>';
+															option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
-																if(i==0) {
-																	option = '<option selected="selected" value="' + value
-																	+ '">' + label
-																	+ '</option>';
+																if (i == 0) {
+																	option = '<option  value="'
+																			+ value
+																			+ '">'
+																			+ label
+																			+ '</option>';
 																} else
-																option = '<option value="'
-																		+ value
-																		+ '">'
-																		+ label
-																		+ '</option>';
+																	option = '<option value="'
+																			+ value
+																			+ '">'
+																			+ label
+																			+ '</option>';
 
 																option_string += option;
 															}
@@ -312,7 +313,7 @@ function getAssociateContentSave() {
 			"ContentType" : ContentType
 
 		};
-	
+
 		$.post(uri, parameters, function(data) {
 			console.log(data);
 			if (data.response == 'success') {
@@ -334,101 +335,98 @@ function getAssociateContentSave() {
 
 }
 
+function assoicateEnhancedVideo(course_id, component_id, parent_content_id,
+		enhanced_video_path) {
 
-function assoicateEnhancedVideo(course_id, component_id, parent_content_id, enhanced_video_path) {
+	console.log('inside associateEnhancedVideo');
 
+	// Step 1: Assign Parameters required by the sendMessage function.
+	uri = '/ziksana-web/secure/saveOrUpdateContent';
 
+	token = ''; // dummy token for demo. you have to send real token.
+	request_type = 'POST'; // can be GET or POST. In this case, a GET
+	// request
 
-console.log('inside associateEnhancedVideo');
+	var Course_id = 'COURSE_' + course_id;
 
-		// Step 1: Assign Parameters required by the sendMessage function.
-		uri = '/ziksana-web/secure/saveOrUpdateContent';
+	var CourseLearningComponentId = 'COMPONENT_' + component_id;
 
-		token = ''; // dummy token for demo. you have to send real token.
-		request_type = 'POST'; // can be GET or POST. In this case, a GET
-		// request
+	var LearningComponentId = 'COMPONENT_' + component_id;
 
-		var Course_id = 'COURSE_'+course_id;
+	var LearningContentId = '';
 
-		var CourseLearningComponentId = 'COMPONENT_'+component_id;
+	var Content_Name = 'Enhanced Video - ' + parent_content_id;
 
-		var LearningComponentId = 'COMPONENT_'+component_id;
+	var Content_Description = $('#Associatecdescrte').val();
 
-		var LearningContentId = '';
+	var Subject_Area = '';
 
-		var Content_Name = 'Enhanced Video - '+parent_content_id;
+	var Subject = '';
 
-		var Content_Description = $('#Associatecdescrte').val();
+	var Topic = '';
 
-		var Subject_Area = '';
+	var Contenttag_Field = '';
 
-		var Subject = '';
+	var AssocContent_Image = '';
 
-		var Topic = '';
+	var LinkType = 'UploadContent';
 
-		var Contenttag_Field ='';
+	var ContentUpload = $('#imgultype').val();
 
-		var AssocContent_Image = '';
+	var ContentUrl = $('#conturl').val();
 
-		var LinkType = 'UploadContent';
+	var ContentDesc = "-";
 
-		var ContentUpload = $('#imgultype').val();
+	var ContentPath = enhanced_video_path;
 
-		var ContentUrl = $('#conturl').val();
+	var ThumbnailPicturePath = '';
 
-		var ContentDesc = "-";
+	var NumberOfThumbnails = '';
 
-		var ContentPath = enhanced_video_path;
+	var ContentType = 11; // 11 refers to enhanced video
 
-		var ThumbnailPicturePath = '';
+	var parameters = {
+		"Course_id" : Course_id,
+		"LearningComponentId" : LearningComponentId,
+		"LearningContentId" : LearningContentId,
+		"Content_Name" : Content_Name,
+		"Content_Description" : Content_Description,
+		"Subject_Area" : Subject_Area,
+		"Subject" : Subject,
+		"Topic" : Topic,
+		"Contenttag_Field" : Contenttag_Field,
+		"AssocContent_Image" : AssocContent_Image,
+		"LinkType" : LinkType,
+		"ContentUpload" : ContentUpload,
+		"ContentUrl" : ContentUrl,
+		"ContentDesc" : ContentDesc,
+		"ContentPath" : ContentPath,
+		"ThumbnailPicturePath" : ThumbnailPicturePath,
+		"NumberOfThumbnails" : NumberOfThumbnails,
+		"ContentType" : ContentType
 
-		var NumberOfThumbnails = '';
+	};
 
-		var ContentType = 11; //11 refers to enhanced video
-
-		var parameters = {
-			"Course_id" : Course_id,
-			"LearningComponentId" : LearningComponentId,
-			"LearningContentId" : LearningContentId,
-			"Content_Name" : Content_Name,
-			"Content_Description" : Content_Description,
-			"Subject_Area" : Subject_Area,
-			"Subject" : Subject,
-			"Topic" : Topic,
-			"Contenttag_Field" : Contenttag_Field,
-			"AssocContent_Image" : AssocContent_Image,
-			"LinkType" : LinkType,
-			"ContentUpload" : ContentUpload,
-			"ContentUrl" : ContentUrl,
-			"ContentDesc" : ContentDesc,
-			"ContentPath" : ContentPath,
-			"ThumbnailPicturePath" : ThumbnailPicturePath,
-			"NumberOfThumbnails" : NumberOfThumbnails,
-			"ContentType" : ContentType
-
-		};
-
-		$.post(uri, parameters, function(data) {
-			console.log(data);
-			if (data.response == 'success') {
-				course_id = data.id;
-				$('#courseid').val(course_id);
-				if (course_id != '' & course_id != null) {
-					window.location.href = window.location.href;
-					$('#tempdiv').html(
-							'<span style="color:red;">' + data.message
-									+ '</span>');
-				} else {
-					$('#tempdiv').html(
-							'<span style="color:red;">' + data.message
-									+ '</span>');
+	$.post(uri, parameters,
+			function(data) {
+				console.log(data);
+				if (data.response == 'success') {
+					course_id = data.id;
+					$('#courseid').val(course_id);
+					if (course_id != '' & course_id != null) {
+						window.location.href = window.location.href;
+						$('#tempdiv').html(
+								'<span style="color:red;">' + data.message
+										+ '</span>');
+					} else {
+						$('#tempdiv').html(
+								'<span style="color:red;">' + data.message
+										+ '</span>');
+					}
 				}
-			}
-		});
-
+			});
 
 }
-
 
 function noteSuccessCallback(data) {
 

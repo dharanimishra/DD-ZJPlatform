@@ -3,34 +3,28 @@ $(document)
 		.ready(
 				function(e) {
 
-					$
-							.get(
-									'/ziksana-web/secure/getSubjectArea',
-									{},
-									function(data) {
-										options = data;
-										var option_string = '';
-										//option_string += '<option value="Select Subject Area">Select Subject Area</option>';
+					$.get('/ziksana-web/secure/getSubjectArea', {}, function(
+							data) {
+						options = data;
+						var option_string = '';
+						// option_string += '<option value="Select Subject
+						// Area">Select Subject Area</option>';
 
-										for (i in options) {
-											label = options[i].label;
-											value = options[i].value;
-											if(i==0) {
-												option = '<option selected="selected" value="' + value
-												+ '">' + label
-												+ '</option>';
-											}
-											else
-											option = '<option value="' + value
-													+ '">' + label
-													+ '</option>';
+						for (i in options) {
+							label = options[i].label;
+							value = options[i].value;
+							if (i == 0) {
+								option = '<option selected="selected" value="'
+										+ value + '">' + label + '</option>';
+							} else
+								option = '<option value="' + value + '">'
+										+ label + '</option>';
 
-											option_string += option;
-										}
-										$('#Cmoduleareaddl')
-												.html(option_string);
+							option_string += option;
+						}
+						$('#Cmoduleareaddl').html(option_string);
 
-									});
+					});
 
 					$("#Cmoduleareaddl")
 							.change(
@@ -50,21 +44,22 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															//option_string += '<option value="Select Subject">Select Subject</option>';
+															option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
-																if(i==0) {
-																	option = '<option selected="selected" value="' + value
-																	+ '">' + label
-																	+ '</option>';
-																}
-																else
-																option = '<option value="'
-																		+ value
-																		+ '">'
-																		+ label
-																		+ '</option>';
+																if (i == 0) {
+																	option = '<option  value="'
+																			+ value
+																			+ '">'
+																			+ label
+																			+ '</option>';
+																} else
+																	option = '<option value="'
+																			+ value
+																			+ '">'
+																			+ label
+																			+ '</option>';
 
 																option_string += option;
 															}
@@ -74,7 +69,9 @@ $(document)
 																	.html(
 																			option_string);
 															var topic = '<option value="Select Topic">Select Topic</option>';
-															$('#Cmoduletopicddl').html(topic);
+															$(
+																	'#Cmoduletopicddl')
+																	.html(topic);
 
 														});
 
@@ -118,21 +115,22 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															//option_string += '<option value="Select Topic">Select Topic</option>';
+															option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
-																if(i==0) {
-																	option = '<option selected="selected" value="' + value
-																	+ '">' + label
-																	+ '</option>';
-																}
-																else
-																option = '<option value="'
-																		+ value
-																		+ '">'
-																		+ label
-																		+ '</option>';
+																if (i == 0) {
+																	option = '<option  value="'
+																			+ value
+																			+ '">'
+																			+ label
+																			+ '</option>';
+																} else
+																	option = '<option value="'
+																			+ value
+																			+ '">'
+																			+ label
+																			+ '</option>';
 
 																option_string += option;
 															}
