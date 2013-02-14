@@ -10,9 +10,11 @@ public class ModuleEditResponse {
 	private String subject;
 	private String topic;
 	private String tagfield;
+	private Integer learningObjIndicator;
 	private String prescribedLCDuration;
 	private String prescribedLCDurationUnit;
 	private String subjClassificationId;
+
 	private String imageupload;
 	private String response;
 	private String message;
@@ -137,6 +139,30 @@ public class ModuleEditResponse {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Integer getLearningObjIndicator() {
+		return learningObjIndicator;
+	}
+
+	public void setLearningObjIndicator(Integer learningObjIndicator) {
+		this.learningObjIndicator = learningObjIndicator;
+	}
+
+	@Override
+	public String toString() {
+		return "ModuleEditResponse [learningComponentId=" + learningComponentId
+				+ ", courseLearningComponentId=" + courseLearningComponentId
+				+ ", modulename=" + modulename + ", moduledesc=" + moduledesc
+				+ ", subjectarea=" + subjectarea + ", subject=" + subject
+				+ ", topic=" + topic + ", tagfield=" + tagfield
+				+ ", learningObjIndicator=" + learningObjIndicator
+				+ ", prescribedLCDuration=" + prescribedLCDuration
+				+ ", prescribedLCDurationUnit=" + prescribedLCDurationUnit
+				+ ", subjClassificationId=" + subjClassificationId
+				+ ", imageupload=" + imageupload + ", response=" + response
+				+ ", message=" + message + ", learningObjectIndicator="
+				+ learningObjectIndicator + "]";
 	}
 
 }

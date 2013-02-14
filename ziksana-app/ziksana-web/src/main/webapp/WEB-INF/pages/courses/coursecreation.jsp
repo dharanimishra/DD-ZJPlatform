@@ -485,7 +485,12 @@ span.standartTreeRow:hover {
 													</div>
 													<!-- end of moduleselection--->
 
-													<div class="coursetags">
+												<div  style="margin-top:20px;"> 
+												<label  style="font-weight: bold; padding-top:10px;">Specify any tags : </label>
+												 <input id="Addmoduletag1" type="text" style="margin-left: 20px;width:250px;height:20px;"></input> 
+												
+												</div>
+												<!--  	<div class="coursetags">
 														<br /> <label class="control-label labelclass"
 															for="moduletags"
 															style="margin-top: -2px; font-weight: bold;">Specify
@@ -502,7 +507,7 @@ span.standartTreeRow:hover {
 																style="width: 240px; margin-left: 35px;" />
 														</div> -->
 
-													</div>
+												<!--	</div> -->
 													<!-- end of coursetags--->
 													<br /> 
 													<input type="checkbox" id="addmodulecheckbox" class="labelclass" value="Institution Logo" /> 

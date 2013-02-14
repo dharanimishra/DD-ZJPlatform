@@ -85,4 +85,12 @@ public class CourseTagcloud extends TagCloud {
 		this.course = course;
 	}
 
+	@Override
+	public String toString() {
+		return "CourseTagcloud [courseTagCloudId=" + courseTagCloudId
+				+ ", course=" + course + ", tagCloudId=" + tagCloudId
+				+ ", courseId=" + courseId + ", learningComponentId="
+				+ learningComponentId + "]";
+	}
+
 }

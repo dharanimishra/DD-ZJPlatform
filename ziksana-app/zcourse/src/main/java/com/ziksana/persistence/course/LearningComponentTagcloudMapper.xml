@@ -15,7 +15,7 @@
 				tagtype,
 			</if>
 			<if test="learningComponentId !=null">
-				learningComponentId,
+				LearningComponentId,
 			</if>
 
 		</trim>
@@ -43,6 +43,6 @@
 			tagname=#{tagName,jdbcType=VARCHAR},
 		</set>
 		where
-		LearningComponentId = #{learningComponentId,jdbcType=INTEGER}
+		ID = #{tagCloudId,jdbcType=INTEGER}
 	</update>
 </mapper>

@@ -80,6 +80,7 @@ function onButtonClick(menuitemId, type) {
 								subject = data.subject;
 								topic = data.topic;
 								tag_field = data.tagfield;
+								learningObjectIndicator = data.learningObjectIndicator;
 								prescribedLCDuration = data.prescribedLCDuration;
 								prescribedLCDurationUnit = data.prescribedLCDurationUnit;
 								image_upload = data.imageupload;
@@ -105,13 +106,16 @@ function onButtonClick(menuitemId, type) {
 									$('#Cmoduledesc').val(module_desc);
 
 								}
-
-								$('#Addmoduletag').val(module_name);
-
-								$('#addmodulecheckbox').attr('checked', false);
-
-								$('#saveassociateobject').attr('enabled',
-										'enabled'); // enabled the
+								$('#Addmoduletag1').val(tag_field);
+								if (learningObjectIndicator == true) {
+									$('#addmodulecheckbox').attr('checked',
+											true);
+									$('#saveassociateobject').show();
+								} else {
+									$('#addmodulecheckbox').attr('checked',
+											false);
+									$('#saveassociateobject').hide();
+								}
 
 								$('#Cmoduleduration').val(prescribedLCDuration);
 
@@ -122,108 +126,89 @@ function onButtonClick(menuitemId, type) {
 
 								// // populate subject area
 
-								$
-										.get(
-												'/ziksana-web/secure/getSubjectArea',
-												{},
-												function(data) {
-													options = data;
-													var option_string = '';
-													// option_string += '<option
-													// value="Select Subject
-													// Area">Select Subject
-													// Area</option>';
+								$.get('/ziksana-web/secure/getSubjectArea', {},
+										function(data) {
+											options = data;
+											var option_string = '';
+											// option_string += '<option
+											// value="Select Subject
+											// Area">Select Subject
+											// Area</option>';
 
-													for (i in options) {
-														label = options[i].label;
-														value = options[i].value;
-															option = '<option value="'
-																	+ value
-																	+ '">'
-																	+ label
-																	+ '</option>';
+											for (i in options) {
+												label = options[i].label;
+												value = options[i].value;
+												option = '<option value="'
+														+ value + '">' + label
+														+ '</option>';
 
-														option_string += option;
-													}
-													$('#Cmoduleareaddl').html(
-															option_string);
+												option_string += option;
+											}
+											$('#Cmoduleareaddl').html(
+													option_string);
 
-													$('#Cmoduleareaddl').val(
-															subject_area);
+											$('#Cmoduleareaddl').val(
+													subject_area);
 
-												});
+										});
 
 								token = '';
 								request_type = 'GET';
 								uri = '/ziksana-web/secure/getSubject';
 
-								$
-										.get(
-												uri,
-												{
-													'Course_Area' : subject_area
-												},
-												function(data) {
-													options = data;
-													var option_string = '';
-													// option_string += '<option
-													// value="Select
-													// Subject">Select
-													// Subject</option>';
-													for (i in options) {
-														label = options[i].label;
-														value = options[i].value;
-															option = '<option value="'
-																	+ value
-																	+ '">'
-																	+ label
-																	+ '</option>';
+								$.get(uri, {
+									'Course_Area' : subject_area
+								},
+										function(data) {
+											options = data;
+											var option_string = '';
+											// option_string += '<option
+											// value="Select
+											// Subject">Select
+											// Subject</option>';
+											for (i in options) {
+												label = options[i].label;
+												value = options[i].value;
+												option = '<option value="'
+														+ value + '">' + label
+														+ '</option>';
 
-														option_string += option;
-													}
+												option_string += option;
+											}
 
-													$('#Cmodulesubjectddl')
-															.html(option_string);
-													$('#Cmodulesubjectddl')
-															.val(subject);
+											$('#Cmodulesubjectddl').html(
+													option_string);
+											$('#Cmodulesubjectddl')
+													.val(subject);
 
-												});
+										});
 
 								uri = '/ziksana-web/secure/getTopic';
 								token = '';
 								request_type = 'GET';
-								$
-										.get(
-												uri,
-												{
-													'Course_Subject' : subject
-												},
-												function(data) {
-													options = data;
-													var option_string = '';
-													// option_string += '<option
-													// value="Select
-													// Topic">Select
-													// Topic</option>';
-													for (i in options) {
-														label = options[i].label;
-														value = options[i].value;
-		
-															option = '<option value="'
-																	+ value
-																	+ '">'
-																	+ label
-																	+ '</option>';
+								$.get(uri, {
+									'Course_Subject' : subject
+								}, function(data) {
+									options = data;
+									var option_string = '';
+									// option_string += '<option
+									// value="Select
+									// Topic">Select
+									// Topic</option>';
+									for (i in options) {
+										label = options[i].label;
+										value = options[i].value;
 
-														option_string += option;
-													}
+										option = '<option value="' + value
+												+ '">' + label + '</option>';
 
-													$('#Cmoduletopicddl').html(
-															option_string);
-													$('#Cmoduletopicddl').val(
-															topic);
+										option_string += option;
+									}
 
-												});
+									$('#Cmoduletopicddl').html(option_string);
+									$('#Cmoduletopicddl').val(topic);
+
+								});
 								// end populating topic
 
 							} else {

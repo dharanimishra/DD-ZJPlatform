@@ -26,7 +26,7 @@ public class LearningComponentTagCloudServiceImpl implements
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :saveOrUpadteTags(Integer courseId)"
 				+ courseTagcloud);
-		if (courseTagcloud.getCourseTagCloudId() != null) {
+		if (courseTagcloud.getTagCloudId() > 0) {
 			tags = learningComponentTagcloudMapper.update(courseTagcloud);
 		} else {
 			tags = learningComponentTagcloudMapper.save(courseTagcloud);

@@ -236,6 +236,8 @@ function getaddmodulesave() {
 
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
 
+		var Learning_Object = 0;
+
 		var course_id = $('#courseid').val();
 
 		var CourseLearningComponentId = $('#courseLearningComponentId').val();
@@ -250,11 +252,17 @@ function getaddmodulesave() {
 		} else {
 			Module_Description = CKEDITOR.instances['Cmoduledescrte'].getData();
 		}
+		var valid = $('#addmodulecheckbox').is(':checked');
+		if (valid == true) {
+			Learning_Object = 1;
+		} else {
+			Learning_Object = 0;
+		}
 
 		var Subject_Area = $('#Cmoduleareaddl').val();
 		var Subject = $('#Cmodulesubjectddl').val();
 		var Topic = $('#Cmoduletopicddl').val();
-		var Moduletag_Field = $('#Addmoduletag').val();
+		var Moduletag_Field = $('#Addmoduletag1').val();
 		var Module_Weight = $('#Cmoduleweight').val();
 		var Module_Duration = $('#Cmoduleduration').val();
 		var ModuleDuration_Type = $('#Cmoduleunits').val();
@@ -270,6 +278,7 @@ function getaddmodulesave() {
 			"Subject" : Subject,
 			"Topic" : Topic,
 			"Moduletag_Field" : Moduletag_Field,
+			"Learning_Object":Learning_Object,
 			"Module_Weight" : Module_Weight,
 			"Module_Duration" : Module_Duration,
 			"ModuleDuration_Type" : ModuleDuration_Type,

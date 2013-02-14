@@ -39,6 +39,7 @@ import com.ziksana.service.course.CourseEditService;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.CourseSubjectDetailService;
 import com.ziksana.service.course.CourseTreeNodeService;
+import com.ziksana.service.course.LearningComponentTagCloudService;
 import com.ziksana.service.course.TagCloudService;
 import com.ziksana.service.security.MediaService;
 
@@ -60,6 +61,9 @@ public class CreateCourseController {
 
 	@Autowired
 	TagCloudService tagCloudService;
+
+	@Autowired
+	LearningComponentTagCloudService learningComponentTagCloudService;
 
 	@Autowired
 	CourseSubjectDetailService courseSubjectDetailService;
@@ -300,13 +304,6 @@ public class CreateCourseController {
 				tagcloud.setCourseTagCloudId(getTagcloud.getTagCloudId());
 				tagcloud.setTagName(CourseTags);
 				getTagcloud.setZeniSuggestedIndicator(true);
-//				tagcloud.setCourseId(courseIds);
-//				try {
-//					tagcloud.setTagType(TagType.TAG_TYPE1);
-//				} catch (NoSuchMethodException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
 				tagcloud.setCourseId(courseIds);
 				tagCloudService.saveOrUpadteTags(tagcloud);
 
@@ -351,22 +348,6 @@ public class CreateCourseController {
 		} else {
 			json.setId("COURSE_" + courseIds);
 			json.setResponse("success");
-			// IF COURSE CREATION SUCCESSFUL ASSOCIATE CURRICULUM COURSE
-			// get Course BY courseId
-			Course course = new Course();
-			course = courseService.getCourseByCourseId(courseIds);
-			// Ensure only Educator(207) if SUCCESS create a new curriculam
-			// course
-			if (course.getMemberRoleId() == 207) {
-
-				Integer curriculamId = courseService.createNewCurriculamCourse(
-						course.getCoursesId(), course.getMemberRoleId());
-				System.out.println("curriculamId == >" + curriculamId);
-				if (curriculamId == 1) {
-					courseService.getCurriculamCourseByCourseId(course
-							.getCoursesId());
-				}
-			}
 			LOGGER.info("Class :" + getClass()
 					+ " Method saveCourse : After courseService: CourseId :"
 					+ CourseId);
@@ -394,6 +375,7 @@ public class CreateCourseController {
 			@RequestParam(value = "Subject", required = false) String Subject,
 			@RequestParam(value = "Topic", required = false) String subjectTopic,
 			@RequestParam(value = "Moduletag_Field", required = false) String ModuleTags,
+			@RequestParam(value = "Learning_Object", required = false) String Learning_Object,
 			@RequestParam(value = "Module_Weight", required = false) String ModuleWeight,
 			@RequestParam(value = "LearningObject", required = false) String LearningObject,
 			@RequestParam(value = "Module_Duration", required = false) String Duration,
@@ -411,7 +393,7 @@ public class CreateCourseController {
 				+ " Duration :" + Duration + " UnitofDuration :"
 				+ UnitofDuration + " UploadImage :" + UploadImage);
 
-		Integer courseid = 0, courseLearningComponentId = 0, learningComponentId = 0;
+		Integer courseid = 0, courseLearningComponentId = 0, learningComponentId = 0, learningObjIndicator = 0;
 		try {
 			courseid = Integer.parseInt(CourseId.split("_")[1]);
 			LOGGER.info("Entering Class " + getClass()
@@ -441,6 +423,16 @@ public class CreateCourseController {
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("NumberFormatException learningComponentId :"
 					+ learningComponentId + nfe);
+		}
+
+		try {
+			learningObjIndicator = Integer.parseInt(Learning_Object);
+			LOGGER.info("Entering Class " + getClass()
+					+ " saveCourseComponents(): Learning_Object :"
+					+ Learning_Object);
+		} catch (NumberFormatException nfe) {
+			LOGGER.error("NumberFormatException Learning_Object :"
+					+ Learning_Object + nfe);
 		}
 		Integer courseDuration = 0, unitofDuration = 1, moduleWeight = 0;
 		try {
@@ -492,6 +484,7 @@ public class CreateCourseController {
 				comp1.setPrescribedDuration(prescribedDuration);
 				comp1.setSubjClassificationId(courseSubjectClassification
 						.getSubjClassificationId());
+				comp1.setLearningObjIndicator(learningObjIndicator);
 
 				// Learning Component Nesting
 
@@ -544,6 +537,7 @@ public class CreateCourseController {
 				comp1.setPrescribedDuration(prescribedDuration);
 				comp1.setSubjClassificationId(courseSubjectClassification
 						.getSubjClassificationId());
+				comp1.setLearningObjIndicator(learningObjIndicator);
 
 				// Learning Component Nesting
 
@@ -607,6 +601,59 @@ public class CreateCourseController {
 					+ "Method : saveCourseComponents :Exception :"
 					+ e.getMessage());
 
+		}
+
+		CourseTagcloud tagcloud = new CourseTagcloud();
+		CourseTagcloud getTagcloud = null;
+
+		try {
+			getTagcloud = learningComponentTagCloudService
+					.getComponentTagClouds(learningComponentId);
+		} catch (Exception e) {
+			LOGGER.error("Class :"
+					+ getClass()
+					+ " Method saveCourse : After getComponentTagClouds: CourseId Exception :Update tagcloud"
+					+ getTagcloud + e);
+		}
+		if (getTagcloud.getTagCloudId() < 1) {
+			try {
+				tagcloud.setTagName(ModuleTags);
+				try {
+					tagcloud.setTagType(TagType.TAG_TYPE1);
+				} catch (NoSuchMethodException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				learningComponentTagCloudService.saveOrUpadteTags(tagcloud);
+				LOGGER.info("Class :"
+						+ getClass()
+						+ " Method saveOrUpadteTags : After courseService: Save CourseId Exception :tagcloud"
+						+ tagcloud);
+			} catch (Exception e) {
+				LOGGER.error("Class :"
+						+ getClass()
+						+ " Method saveCourse : After courseService: CourseId Exception : Save tagcloud"
+						+ tagcloud + e);
+			}
+
+		} else {
+			try {
+				tagcloud.setTagCloudId(getTagcloud.getTagCloudId());
+				tagcloud.setTagName(ModuleTags);
+				getTagcloud.setZeniSuggestedIndicator(true);
+				getTagcloud.setLearningComponentId(learningComponentId);
+				
+				learningComponentTagCloudService.saveOrUpadteTags(tagcloud);
+
+				LOGGER.info("Class :"
+						+ getClass()
+						+ " Method saveOrUpadteTags : After courseService: Update CourseId Exception :tagcloud");
+			} catch (Exception e) {
+				LOGGER.info("Class :"
+						+ getClass()
+						+ " Method saveCourse : After courseService: CourseId Exception :Update tagcloud"
+						+ tagcloud + e);
+			}
 		}
 		Integer courseIds = 0;
 		try {
@@ -790,10 +837,23 @@ public class CreateCourseController {
 		} catch (NumberFormatException nfe) {
 			LOGGER.error("NumberFormatException :" + nfe);
 		}
+		String tagfield = "";
+		CourseTagcloud tag = null;
+		try {
+			tag = learningComponentTagCloudService
+					.getComponentTagClouds(learningComponentId);
+			tagfield = tag.getTagName();
+			LOGGER.error("Exiting Class " + getClass() + "tag  :" + tag
+					+ "tagfield :" + tagfield);
+
+		} catch (Exception e) {
+			LOGGER.error("tag Exception :" + tag);
+		}
 
 		ModuleEditResponse json = null;
 		json = courseEditService.getModuleDetails(learningComponentId);
 		json.setResponse("success");
+		json.setTagfield(tagfield);
 
 		LOGGER.info("Exiting Class " + getClass() + " getCourse(): CourseId :"
 				+ CourseId + " learningComponentId :" + ComponentId + " json :"
