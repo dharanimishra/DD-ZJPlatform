@@ -4,6 +4,7 @@ package com.ziksana.player.enhance
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
 	import flash.display.Loader;
+	import flash.display.LoaderInfo;
 	import flash.display.MovieClip;
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -32,13 +33,13 @@ package com.ziksana.player.enhance
 	import flash.net.URLRequestMethod;
 	import flash.system.Security;
 	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFieldType;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	import flash.utils.clearTimeout;
 	import flash.utils.getTimer;
 	import flash.utils.setTimeout;
-	import flash.display.LoaderInfo;
 
 	
 	
@@ -101,6 +102,43 @@ package com.ziksana.player.enhance
 		[Embed(source='../../../../../icons/loading11.swf')]
 		public static var LOADING:Class;
 		
+		[Embed(source='../../../../../icons/prof.png')]
+		public static var Professor:Class;
+		
+		[Embed(source='../../../../../icons/reference.png')]
+		public static var Reference:Class;
+		
+		[Embed(source='../../../../../icons/class.png')]
+		public static var ClassNotes:Class;
+		
+		[Embed(source='../../../../../icons/books.png')]
+		public static var Books:Class;
+		
+		[Embed(source='../../../../../icons/addq.png')]
+		public static var AddQ:Class;
+		
+		[Embed(source='../../../../../icons/notes.png')]
+		public static var Notes:Class;
+		
+		[Embed(source='../../../../../icons/addn.png')]
+		public static var AddN:Class;
+		
+		[Embed(source='../../../../../icons/toc.png')]
+		public static var TOC:Class;
+		
+		[Embed(source='../../../../../icons/viewq.png')]
+		public static var ViewQ:Class;
+		
+		[Embed(source='../../../../../icons/leftmenu.png')]
+		public static var LeftMenu:Class;
+		
+		[Embed(source='../../../../../icons/editnq.png')]
+		public static var EditNQ:Class;
+		
+		[Embed(source='../../../../../icons/deletenq.png')]
+		public static var DeleteNQ:Class;
+		
+		
 		private static var _stage:Stage;
 		private var fileNameRecorded:String = '';
 		private static var _playerState:String = "STOPPED";
@@ -109,6 +147,7 @@ package com.ziksana.player.enhance
 		protected var videoCapture:MovieClip = new MovieClip();
 		protected var controls:MovieClip = new MovieClip();
 		protected var enrichUI:MovieClip = new MovieClip();
+		protected var consumeUI:MovieClip = new MovieClip();
 		protected var loadingGifDO:DisplayObject;
 		protected var loadingGif:MovieClip = new MovieClip();
 		
@@ -135,10 +174,14 @@ package com.ziksana.player.enhance
 		
 		
 		//ENRICH
-		protected var hotspotIcon:MovieClip = new MovieClip();
+
 		protected var eNoteIcon:MovieClip = new MovieClip();
 		protected var eTocIcon:MovieClip = new MovieClip();
 		protected var eRefIcon = new MovieClip();
+		protected var TOCData:String = "";
+		protected var tocContent:Array = new Array();
+		protected var tocId:Array = new Array();
+		protected var tocTime:Array = new Array();
 		 
 		protected var imageData:String;
 		protected var sliderImages:Array = new Array();
@@ -168,7 +211,7 @@ package com.ziksana.player.enhance
 		
 		protected var videoContainer:Video = new Video(160, 120);
 		protected var cam:Camera = Camera.getCamera();
-		protected var mic:Microphone = Microphone.getMicrophone();
+		protected var mic:Microphone;
 		private var ns:NetStream = null;
 		private var ns2:NetStream = null;
 		private var presentNS:NetStream = null;
@@ -180,13 +223,60 @@ package com.ziksana.player.enhance
 		private const SLIDER_LENGTH = 280;
 		private var nsStopped:Boolean = false;
 		
+		
+		protected var addHotspotBox:MovieClip = new MovieClip();
+		protected var addQuestion:MovieClip = new MovieClip();
+		protected var addNotes:MovieClip = new MovieClip();
+		protected var viewNotes:MovieClip = new MovieClip();
+		protected var toc:MovieClip = new MovieClip();
+		protected var leftMenu:MovieClip = new MovieClip();
+		protected var qnqBox:MovieClip = new MovieClip();
+		protected var tocBox:MovieClip = new MovieClip();
+		protected var viewQuestion:MovieClip = new MovieClip();
+		protected var classNotes:MovieClip = new MovieClip();
+		protected var reference:MovieClip = new MovieClip();
+		protected var professor:MovieClip = new MovieClip();
+		protected var books:MovieClip = new MovieClip();
+		protected var classNotesBox:MovieClip = new MovieClip();
+		protected var referenceBox:MovieClip = new MovieClip();
+		protected var professorBox:MovieClip = new MovieClip();
+		protected var booksBox:MovieClip = new MovieClip();
+		protected var hotspotIcon:MovieClip = new MovieClip();
+		protected var hotspotDisplay:MovieClip = new MovieClip();
+		
 		private var strokesRecording:XML=<RECORD_EVENTS></RECORD_EVENTS>;
 	
+		
+		protected var QID:Array = new Array();
+		protected var NID:Array = new Array();
+		protected var Questions:Array = new Array();
+		protected var QuestionsTBS:Array = new Array();
+		protected var NotesTitle:Array = new Array();
+		protected var NotesTitleTBS:Array = new Array();
+		protected var QTime:Array = new Array();
+		protected var NotesTime:Array = new Array();
+		protected var NotesDesc:Array = new Array();
+		protected var References:Array = new Array();
+		protected var ReferencesTBS:Array = new Array();
+		protected var RefLinks:Array = new Array();
+		protected var RefTime:Array = new Array();
+		protected var hotspotX:Array = new Array();
+		protected var hotspotY:Array = new Array();
+		protected var hotspotTitles:Array = new Array();
+		protected var hotspotTime:Array = new Array();
+		protected var hotspotDuration:Array = new Array();
+		protected var hotspotMovieC:Array = new Array();
+		protected var NoteData:String = "";
+		protected var QuestionData:String = "";
+		protected var EduRefData:String = "";
+		protected var EduNoteData:String = "";
+		
+		
 		public function EnhancePlayer()
 		{
-			nc.connect("rtmp://video.beta.ziksana.com/oflaDemo");
-			nc2.connect("rtmp://video.beta.ziksana.com/oflaDemo");
-			deployMode = ExternalInterface.call("ff_player_mode"); //"enrich" "enhance" "playback" "consumption"
+			nc.connect("rtmp://54.243.235.88/oflaDemo");
+			nc2.connect("rtmp://54.243.235.88/oflaDemo");
+			//deployMode = ExternalInterface.call("ff_player_mode"); //"enrich" "enhance" "playback" "consume"
 			addEventListener( Event.ADDED_TO_STAGE, DoAfterAddingToStage );
 			nc.addEventListener(NetStatusEvent.NET_STATUS, NSConnectHandler);
 			nc2.addEventListener(NetStatusEvent.NET_STATUS, NSConnectHandler2);
@@ -279,7 +369,7 @@ package com.ziksana.player.enhance
 		public function sendDataToPHP():void {
 			var loader:URLLoader = new URLLoader();
 			configureListeners(loader);
-			
+			Security.loadPolicyFile("https://video.beta.ziksana.com/crossdomain.xml");
 			var recorderPHP:String = ExternalInterface.call("ff_get_flash_recorder");
 			var request : URLRequest = new URLRequest(recorderPHP);  
 			//var request : URLRequest = new URLRequest("https://video.beta.ziksana.com/zikload/flashrecording/FlashRecordingTest.php");  
@@ -305,23 +395,25 @@ package com.ziksana.player.enhance
 		private function completeHandler(event:Event):void {
 			var loader:URLLoader = URLLoader(event.target);
 			trace("completeHandler: " + loader.data);
+			ShowPopUp("Saved Successfully!");
 			ExternalInterface.call("ff_recording_save_path",loader.data); 
+			ExternalInterface.call("ff_display_console_message",loader.data); 
 		}
 		
 		private function openHandler(event:Event):void {
-			trace("openHandler: " + event);
+			ExternalInterface.call("ff_display_console_message","openHandler: " + event.toString());
 		}
 		
 		private function progressHandler(event:ProgressEvent):void {
-			trace("progressHandler loaded:" + event.bytesLoaded + " total: " + event.bytesTotal);
+			ExternalInterface.call("ff_display_console_message","progressHandler loaded:" + event.bytesLoaded + " total: " + event.bytesTotal);
 		}
 		
 		private function securityErrorHandler(event:SecurityErrorEvent):void {
-			trace("securityErrorHandler: " + event);
+			ExternalInterface.call("ff_display_console_message","securityErrorHandler: " + event.toString());
 		}
 		
 		private function httpStatusHandler(event:HTTPStatusEvent):void {
-			trace("httpStatusHandler: " + event);
+			ExternalInterface.call("ff_display_console_message","httpStatusHandler: " + event.toString());
 		}
 		
 		private function ioErrorHandler(event:IOErrorEvent):void {
@@ -331,6 +423,7 @@ package com.ziksana.player.enhance
 		public function StartRecording():void
 		{
 			ns.attachCamera(cam);
+			mic = Microphone.getMicrophone();
 			ns.attachAudio(mic);
 			var myDate:Date = new Date();
 			var unixTime:Number = Math.round(myDate.getTime()/1000);
@@ -503,6 +596,7 @@ package com.ziksana.player.enhance
 			this.addChildAt(controls, 3);
 			
 			this.addChildAt(enrichUI, 4);
+			this.addChildAt(consumeUI, 4);
 			
 			this.addChildAt(popUp, 5);
 			
@@ -519,6 +613,7 @@ package com.ziksana.player.enhance
 			loadingGif.graphics.endFill();
 			loadingGif.addChild(loadingGifDO); 
 			enrichUI.addChild(loadingGif);
+			
 			ShowPopUp("...Connecting to Video Server...", 10000);
 
 			loadingGifDO.x = (stage.stageWidth - loadingGifDO.width) / 2;
@@ -528,10 +623,14 @@ package com.ziksana.player.enhance
 			AddSliderWindow();
 			AddControls();
 			AddVideoWindow();
+			if(deployMode=="consume")
+			{
+				AddConsumeUI();
+			}
 			videoCapture.visible= false;
 			//TESTING
-			//LoadImages("http://54.243.235.88/zikload-xml/uploads/document/f1359221827/thumbnails/", 7);
-			if(deployMode=="playback" || deployMode=="enrich")
+			LoadImages("http://54.243.235.88/zikload-xml/uploads/document/f1359221827/thumbnails/", 7);
+			if(deployMode=="playback" || deployMode=="enrich" || deployMode =="consume")
 			{
 				//var rFilePath:String = "https://video.beta.ziksana.com/zikload/flashrecording/dataTesting1.ecxml";
 				var rFilePath:String = ExternalInterface.call("ff_get_recorded_file");
@@ -543,8 +642,8 @@ package com.ziksana.player.enhance
 			}
 			else if (deployMode == "enhance")
 			{
-				var imagePath:String= ExternalInterface.call("ff_load_images");
-				LoadImagesJS(imagePath); /// "Http://54.243.235.88/zikload-xml/uploads/doc/thumbnails|||10"
+				//var imagePath:String= ExternalInterface.call("ff_load_images");
+				//LoadImagesJS(imagePath); /// "Http://54.243.235.88/zikload-xml/uploads/doc/thumbnails|||10"
 			}
 			ChangeOptionMode(null);
 			videoCaptureMode.alpha=0.4;
@@ -556,11 +655,1043 @@ package com.ziksana.player.enhance
 			//addChild(tempTF);
 		}
 		
+		private function over(myEvent:MouseEvent):void { }
+		private function out(myEvent:MouseEvent):void { }
+		private function AddConsumeUI():void {
+			addQuestion.buttonMode = true;
+			addQuestion.useHandCursor = true;
+			addQuestion.y=10;
+			var test:Bitmap = new AddQ();
+			addQuestion.addChild(test);
+			addQuestion.addEventListener(MouseEvent.MOUSE_OVER, over); 
+			addQuestion.addEventListener(MouseEvent.MOUSE_OUT, out); 
+			
+			addNotes.buttonMode = true;
+			addNotes.useHandCursor = true;
+			addNotes.y=10;
+			var test:Bitmap = new AddN();
+			addNotes.addChild(test);
+			addNotes.addEventListener(MouseEvent.MOUSE_OVER, over); 
+			addNotes.addEventListener(MouseEvent.MOUSE_OUT, out); 
+			
+			viewNotes.buttonMode = true;
+			viewNotes.useHandCursor = true;
+			viewNotes.y=10;
+			var test:Bitmap = new Notes();
+			viewNotes.addChild(test);
+			viewNotes.addEventListener(MouseEvent.MOUSE_OVER, over); 
+			viewNotes.addEventListener(MouseEvent.MOUSE_OUT, out); 
+			
+			toc.buttonMode = true;
+			toc.useHandCursor = true;
+			toc.y=10;
+			var test:Bitmap = new TOC();
+			toc.addChild(test);
+			toc.addEventListener(MouseEvent.MOUSE_OVER, over); 
+			toc.addEventListener(MouseEvent.MOUSE_OUT, out); 
+			
+			viewQuestion.buttonMode = true;
+			viewQuestion.useHandCursor = true;
+			viewQuestion.y=10;
+			var test:Bitmap = new ViewQ();
+			viewQuestion.addChild(test);
+			viewQuestion.addEventListener(MouseEvent.MOUSE_OVER, over); 
+			viewQuestion.addEventListener(MouseEvent.MOUSE_OUT, out); 
+			
+			leftMenu.useHandCursor = true;
+			leftMenu.y=10;
+			leftMenu.x=10;
+			var test:Bitmap = new LeftMenu();
+			leftMenu.addChild(test);
+			
+			professor.buttonMode = true;
+			professor.useHandCursor = true;
+			professor.x=25;
+			professor.y=21;
+			var test:Bitmap = new Professor();
+			professor.addChild(test);
+			professor.addEventListener(MouseEvent.MOUSE_OVER, over); 
+			professor.addEventListener(MouseEvent.MOUSE_OUT, out); 
+			
+			classNotes.buttonMode = true;
+			classNotes.useHandCursor = true;
+			classNotes.x=25;
+			classNotes.y=240;
+			var test:Bitmap = new ClassNotes();
+			classNotes.addChild(test);
+			classNotes.addEventListener(MouseEvent.MOUSE_OVER, over); 
+			classNotes.addEventListener(MouseEvent.MOUSE_OUT, out); 
+			
+			reference.buttonMode = true;
+			reference.useHandCursor = true;
+			reference.x=25;
+			reference.y=95
+			var test:Bitmap = new Reference();
+			reference.addChild(test);
+			reference.addEventListener(MouseEvent.MOUSE_OVER, over); 
+			reference.addEventListener(MouseEvent.MOUSE_OUT, out); 
+			
+			books.buttonMode = true;
+			books.useHandCursor = true;
+			books.x=25;
+			books.y=165;
+			var test:Bitmap = new Books();
+			books.addChild(test);
+			books.addEventListener(MouseEvent.MOUSE_OVER, over); 
+			books.addEventListener(MouseEvent.MOUSE_OUT, out); 
+			
+			leftMenu.addChild(professor);
+			leftMenu.addChild(reference);
+			leftMenu.addChild(classNotes);
+			leftMenu.addChild(books);
+			leftMenu.addChild(professor);
+			
+			//var test:Bitmap = new TOCBox();
+			//tocBox.addChild(test);
+			tocBox.visible=false;
+			
+			//var test:Bitmap = new NNQBox();
+			//.addChild(test);	
+			nnqBox.visible=false;			
+			
+			qnqBox.visible=false;
+			
+			//var test:Bitmap = new ANBox();
+			//addnBox.addChild(test);
+			addnBox.visible=false;
+			// var buttonTest:Button = new Button();
+			// buttonTest.label="submit";
+			// buttonTest.x= 350;
+			// buttonTest.y = 350;
+			// addnBox.addChild(buttonTest);
+			
+			//var test:Bitmap = new AQBox();
+			//addqBox.addChild(test);
+			addqBox.visible=false;
+			//var mc:MovieClip = new MovieClip();  
+			professorBox.visible=false;
+			classNotesBox.visible=false;
+			booksBox.visible = false;
+			referenceBox.visible=false;
+			
+			professor.addEventListener(MouseEvent.CLICK, fProfessor);
+			addNotes.addEventListener(MouseEvent.CLICK, fAddNote);
+			viewNotes.addEventListener(MouseEvent.CLICK, fNnq);
+			toc.addEventListener(MouseEvent.CLICK, fToc);
+			viewQuestion.addEventListener(MouseEvent.CLICK, fQnq);
+			addQuestion.addEventListener(MouseEvent.CLICK, fAddQuestions);
+			
+			professorBox.y = 10;
+			professorBox.x = 90;
+			classNotesBox.y = 10;
+			classNotesBox.x = 90;
+			booksBox.y = 10;
+			booksBox.x = 90;
+			referenceBox.y = 10;
+			referenceBox.x = 90;
+			
+			consumeUI.addChild(professorBox);
+			consumeUI.addChild(classNotesBox);
+			consumeUI.addChild(booksBox);
+			consumeUI.addChild(referenceBox);
+			consumeUI.addChild(addQuestion);
+			consumeUI.addChild(viewQuestion);
+			consumeUI.addChild(leftMenu);
+			consumeUI.addChild(addNotes);
+			consumeUI.addChild(viewNotes);
+			consumeUI.addChild(toc);
+			consumeUI.addChild(tocBox);
+			consumeUI.addChild(nnqBox);
+			consumeUI.addChild(qnqBox);
+			consumeUI.addChild(addnBox);
+			//consumeUI.addChild(addqBox);
+			consumeUI.visible = false;
+			
+		}
+		
+		private function fAddQuestions(myEvent:MouseEvent):void{
+			Security.allowDomain("*");
+			addnBox.visible=false;
+			while (addqBox.numChildren > 0) {
+				addqBox.removeChildAt(0);
+			}	
+			addqBox.graphics.clear();					
+			if (ExternalInterface.available) 
+			{
+				//ExternalInterface.call("ff_pause_player");
+				addqBox.graphics.beginFill(0x555555);  
+				addqBox.graphics.drawRect( 0, 0, 300, 170 );  
+				addqBox.graphics.endFill();  
+				
+				var t:TextField = new TextField();  
+				//t.embedFonts = true;
+				if(editNQMode>-1)
+					t.text = "Edit your Question";
+				else
+					t.text = "Enter Your Question";
+				
+				
+				var tf:TextFormat = new TextFormat();
+				tf.color = 0xFFFFFF;
+				tf.size = 18;
+				tf.font = "Calibri";
+				tf.align=TextFormatAlign.CENTER;
+				
+				t.setTextFormat(tf);
+				t.x=50;
+				t.y=20;
+				t.width=200;
+				addqBox.addChild(t);  
+				myFirstTextBox.type = TextFieldType.INPUT; 
+				myFirstTextBox.background = true; 
+				addqBox.addChild(myFirstTextBox); 
+				myFirstTextBox.x = 20;
+				myFirstTextBox.y=70;
+				myFirstTextBox.width=250;
+				
+				myFirstTextBox.height = 20;
+				if(editNQMode>-1)
+					myFirstTextBox.text=Questions[editNQMode];
+				else
+					myFirstTextBox.text="Question?";
+				myFirstTextBox.addEventListener(MouseEvent.CLICK, clearText);
+				//myFirstTextBox.addEventListener(TextEvent.TEXT_INPUT, inputEventCapture);
+				var button:TextField = new TextField();
+				button.text = "Submit";
+				button.x = 70;
+				button.width =70;
+				button.y = 115;
+				button.height=30;
+				button.border = true;
+				button.addEventListener(MouseEvent.CLICK, AddQues);
+				button.setTextFormat(tf);
+				addqBox.addChild(button);
+				var button2:TextField = new TextField();
+				button2.text = "Cancel";
+				button2.x = 160;
+				button2.width =70;
+				button2.y = 115;
+				button2.border = true;
+				button2.height=30;
+				button2.addEventListener(MouseEvent.CLICK, CancelQ);
+				button2.setTextFormat(tf);
+				addqBox.addChild(button2);
+				consumeUI.addChild(addqBox);
+				try { //var retData:Object = ExternalInterface.call("JSFunc"); 
+				}
+				catch(error:Error){
+					t.text= error.toString();
+				}
+				if(addqBox.visible) addqBox.visible=false;
+				else addqBox.visible=true;
+				
+				// } else {
+				
+				
+				
+			}
+		}
+		private function sleep(ms:int):void {
+			var init:int = getTimer();
+			while(true) {
+				if(getTimer() - init >= ms) {
+					break;
+				}
+			}
+		}
+		private function AddQues(myEvent:MouseEvent):void
+		{
+			//JS UPDATE CALL
+			//var time:String = ExternalInterface.call("ff_get_position") as String;
+			var inputString:String = myFirstTextBox.text+"||"+"0";//time;
+			if(editNQMode==-1)
+			{
+				Questions[Questions.length] = myFirstTextBox.text;
+				QTime[QTime.length] = '0';//time;
+				ExternalInterface.call("ff_add_question",inputString );
+			}
+			else 
+			{
+				Questions[editNQMode] = myFirstTextBox.text;
+				ExternalInterface.call("ff_edit_lquestion",QID[editNQMode]+"||"+ Questions[editNQMode]+"||"+QTime[editNQMode]);
+			}
+			addqBox.visible=false;
+			sleep(1000);
+			if(editNQMode>-1)
+			{
+				//reload
+				QuestionData = ExternalInterface.call("ff_load_question_data");
+				Questions.splice(0);QTime.splice(0);QuestionsTBS.splice(0); QuestionsTBS.length=0;
+				while(QuestionData!="")
+				{
+					var delimQ:Number = QuestionData.indexOf("|||");
+					if(delimQ!=-1)
+						var qTemp:String = QuestionData.substr(0,delimQ);
+					else var qTemp:String = QuestionData.substr(0);
+					var delim1:Number = qTemp.indexOf("||");
+					QID[QID.length] = qTemp.substr(0,delim1);
+					qTemp = qTemp.substr(delim1+2);
+					var delim1:Number = qTemp.indexOf("||");
+					Questions[Questions.length] = qTemp.substr(0,delim1);
+					qTemp = qTemp.substr(delim1+2);
+					QTime[QTime.length] = qTemp;
+					ExternalInterface.call("ff_display_console_message", Questions[Questions.length -1 ] + "---" +QTime[QTime.length-1]+"---");
+					if(delimQ != -1) QuestionData = QuestionData.slice(delimQ+3);
+					else QuestionData="";
+				}
+			}
+			
+			editNQMode=-1;
+		}
+		
+		
+		protected var editNQMode:Number = -1;
+		private function editNotes(e:MouseEvent):void {
+			var tempMC:MovieClip = e.currentTarget as MovieClip;
+			var targetY:Number = tempMC.y;
+			
+			for(var i=0; i<rectClipNotes.numChildren-1; i++)
+			{
+				if(rectClipNotes.getChildAt(i) is TextField && rectClipNotes.getChildAt(i).y == targetY)
+				{
+					var tempTF:TextField = rectClipNotes.getChildAt(i) as TextField;
+					var counter:Number = 0;
+					while(counter<=NotesTime.length-1)
+					{
+						if(tempTF.htmlText.indexOf(NotesTitle[counter])!=-1)
+						{
+							ExternalInterface.call("ff_display_console_message",NotesTitle[counter]+"||"+NotesTime[counter]);
+							editNQMode=counter;
+							fAddNote(null);
+							break;
+						}
+						counter++;
+					}
+				}
+			}
+		}
+
+
+		private function fToc(myEvent:MouseEvent):void{
+			
+			if(qnqBox.visible) qnqBox.visible=false;
+			if(nnqBox.visible) nnqBox.visible=false;
+			Security.allowDomain("*");
+			
+			
+			Security.allowDomain("*");
+			while (tocBox.numChildren > 0) {
+				tocBox.removeChildAt(0);
+			}
+			tocBox.graphics.clear();
+			var t:TextField = new TextField();  
+			//t.embedFonts = true;
+			t.text = "Table of Contents";
+			var container:Sprite = new Sprite();
+			var tf:TextFormat = new TextFormat();
+			tf.color = 0xFFFFFF;
+			tf.size = 18;
+			tf.font = "Calibri";
+			tf.align=TextFormatAlign.CENTER;
+			
+			t.setTextFormat(tf);
+			
+			t.y=20;
+			t.width=300;
+			
+			var tf2:TextFormat = new TextFormat();
+			tf2.color = 0xFFFFFF;
+			tf2.size = 14;
+			tf2.font = "Calibri";
+			tf2.align=TextFormatAlign.LEFT;
+			
+			
+			var rect:Sprite = new Sprite;
+			rect.graphics.beginFill(0x555555, 1);
+			rect.graphics.drawRect(0, 0, 100, 100);
+			rect.graphics.endFill();
+			rect.width = 280;
+			tocBox.addChild(container);
+			container.addChild(rect);
+			container.addChild(t);
+			
+			
+			var counter:Number = 0;
+			rect.height=50;
+			while(counter<=tocContent.length-1)
+			{
+				var t1:TextField = new TextField();  
+				//t.embedFonts = true;
+				t1.htmlText= "<u>"+tocContent[counter]+"</u>";
+				t1.y=rect.height;
+				t1.x=10;
+				t1.setTextFormat(tf2);
+				t1.width = 280;
+				//rect.width = t1.width+20;
+				rect.height = t1.y + 25;
+				t1.addEventListener(MouseEvent.CLICK, playStartTOC);
+				container.addChild(t1);
+				counter++;
+			}	
+			
+			
+			consumeUI.addChild(tocBox);
+			if(tocBox.visible) tocBox.visible=false;
+			else tocBox.visible=true;
+			
+			
+		}
+		private function updateQNQ():void
+		{
+			qnqBox.visible=false;
+			fQnq(null);
+		}
+		
+		private var secondaryTF:TextFormat = new TextFormat();
+		private function fQnq(myEvent:MouseEvent):void{
+			
+			var buttonMask:Sprite = new Sprite();
+			Security.allowDomain("*");
+			if(tocBox.visible) tocBox.visible=false;
+			if(nnqBox.visible) nnqBox.visible=false;				
+			//if (ExternalInterface.available) 
+			{
+				while (qnqBox.numChildren > 0) {
+					qnqBox.removeChildAt(0);
+				}
+				//qnqBox = new MovieClip();
+				qnqBox.y = 70;
+				qnqBox.x = _stage.stageWidth-280;
+				rectClipNotes = new Sprite();
+				var rect:Sprite = new Sprite;
+				rect.graphics.beginFill(0x555555, 1);
+				rect.graphics.drawRect(0, 0, 45,45);
+				rect.graphics.endFill();
+				var rectTitle:Sprite = new Sprite;
+				rectTitle.graphics.beginFill(0x777777, 1);
+				rectTitle.graphics.drawRect(0, 0, 45, 45);
+				rectTitle.graphics.endFill();
+				
+				rectTitle.width = 270;
+				qnqBox.addChild(rectTitle);
+				buttonMask      = new Sprite();
+				buttonMask.graphics.beginFill( 0x000000 );  
+				buttonMask.graphics.drawRect( 0 , 0 , 280 , 200 );
+				buttonMask.y = 45;
+				qnqBox.addChild(buttonMask);
+				rectClipNotes.mask = buttonMask;
+				qnqBox.addChild(rectClipNotes);
+				rectClipNotes.addChild(rect);
+				rectClipNotes.y=45;		 
+				rectClipNotes.addEventListener(MouseEvent.MOUSE_WHEEL,handleMouseWheel);		 
+				var t:TextField = new TextField();  
+				//t.embedFonts = true;
+				t.text = "Questions";
+				
+				
+				var tf:TextFormat = new TextFormat();
+				tf.color = 0xFFFFFF;
+				tf.size = 18;
+				tf.font = "Calibri";
+				tf.align=TextFormatAlign.CENTER;
+				
+				t.setTextFormat(tf);
+				t.y=5;
+				t.width=280;
+				t.height=30;
+				qnqBox.addChild(t);  
+				var counter:Number = QuestionsTBS.length-1;
+				rect.width = 270;
+				rect.height = 20;
+				while(counter>=0)
+				{
+					var t1:TextField = new TextField();  
+					//t.embedFonts = true;
+					t1.htmlText =  "<a href='event:null'>"+ Questions[new Number(QuestionsTBS[counter])] + "</a>";
+					t1.y=rect.height;
+					t1.x=10;
+					t1.height = 30;
+					t1.multiline = false;
+					t1.wordWrap = false;
+					t1.autoSize = TextFieldAutoSize.LEFT;
+					if (t1.width > 200)
+					{
+						t1.multiline = true;
+						t1.width = 200;
+						t1.wordWrap = true;
+					}
+					t1.setTextFormat(secondaryTF);
+					rect.height = t1.y + t1.height +10;
+					t1.addEventListener(MouseEvent.CLICK, playStartQ);
+					rectClipNotes.addChild(t1);
+					var editNQ:MovieClip = new MovieClip();
+					var test:Bitmap = new EditNQ();
+					editNQ.addChild(test);
+					editNQ.x = t1.x + 210+2;
+					editNQ.y = t1.y;
+					editNQ.alpha = 0.2;
+					editNQ.visible = true;
+					editNQ.addEventListener(MouseEvent.MOUSE_OVER, increaseOpacity); 
+					editNQ.addEventListener(MouseEvent.MOUSE_OUT, decreaseOpacity); 
+					editNQ.addEventListener(MouseEvent.CLICK, editQuestion); 
+					var deleteNQ:MovieClip = new MovieClip();
+					test = new DeleteNQ();
+					deleteNQ.addChild(test);
+					deleteNQ.x = t1.x + 210+26;
+					deleteNQ.alpha = 0.2;
+					ExternalInterface.call("ff_display_console_message",t1.x + t1.width+14);
+					deleteNQ.y = t1.y;
+					deleteNQ.visible = true;
+					deleteNQ.addEventListener(MouseEvent.MOUSE_OVER, increaseOpacity); 
+					deleteNQ.addEventListener(MouseEvent.MOUSE_OUT, decreaseOpacity); 
+					deleteNQ.addEventListener(MouseEvent.CLICK, deleteQuestion); 
+					rectClipNotes.addChild(editNQ);
+					rectClipNotes.addChild(deleteNQ);
+					
+					counter--;
+				}
+				
+				
+				if(qnqBox.visible) qnqBox.visible=false;
+				else qnqBox.visible=true;
+				
+				
+				
+				
+				
+			}
+			
+		}
+
+		
+		private function playStartNotes(myEvent:MouseEvent):void {
+			ExternalInterface.call("ff_display_console_message", "Entered PlayStart");
+			var counter:Number = 0;
+			var tempTF:TextField = myEvent.currentTarget as TextField;
+			while(counter<=NotesTime.length-1)
+			{
+				if(tempTF.htmlText.indexOf(NotesTitle[counter])!=-1)
+					
+				{
+					//ExternalInterface.call("ff_play_position",NotesTime[counter]+"");
+					break;
+				}
+				counter++;
+			}
+		}
+		private function playStartTOC(myEvent:MouseEvent):void{
+			
+			var counter:Number = 0;
+			var tempTF:TextField = myEvent.currentTarget as TextField;
+			while(counter<=tocContent.length-1)
+			{
+				//if(tempTF.htmlText.indexOf(tocContent[counter])!=-1)
+					//ExternalInterface.call("ff_play_position",tocTime[counter]+"");
+				counter++;
+			}
+		}
+		private function playStartQ(myEvent:MouseEvent):void{
+			
+			var counter:Number = 0;
+			var tempTF:TextField = myEvent.currentTarget as TextField;
+			ExternalInterface.call("ff_display_console_message", "Entered PlayStart OUT");
+			while(QTime.length!=0 && counter<=QTime.length-1)
+			{
+				ExternalInterface.call("ff_display_console_message", tempTF.text);
+				ExternalInterface.call("ff_display_console_message", Questions[counter]);
+				//if(tempTF.htmlText.indexOf(Questions[counter])!=-1)
+					//ExternalInterface.call("ff_play_position",QTime[counter]+"");
+				counter++;
+			}
+		}
+		
+		var noteNumber:Number = 0;
+		var deltaMove:Number = 0;
+		private function editQuestion(e:MouseEvent) {
+			var tempMC:MovieClip = e.currentTarget as MovieClip;
+			var targetY:Number = tempMC.y;
+			ExternalInterface.call("ff_display_console_message","Entered Edit Mode");
+			for(var i=0; i<rectClipNotes.numChildren-1; i++)
+			{
+				if(rectClipNotes.getChildAt(i) is TextField && rectClipNotes.getChildAt(i).y == targetY)
+				{
+					var tempTF:TextField = rectClipNotes.getChildAt(i) as TextField;
+					var counter:Number = 0;
+					while(counter<=Questions.length-1)
+					{
+						if(tempTF.htmlText.indexOf(Questions[counter])!=-1)
+						{
+							//ExternalInterface.call("ff_edit_notes",NotesTitle[counter]+"||"+NotesTime[counter]);
+							ExternalInterface.call("ff_display_console_message",Questions[counter]+"||"+QTime[counter]);
+							editNQMode=counter;
+							fAddQuestions(null);
+							break;
+						}
+						counter++;
+					}
+				}
+			}
+		}
+		
+		private function deleteQuestion(e:MouseEvent):void {
+			var tempMC:MovieClip = e.currentTarget as MovieClip;
+			var targetY:Number = tempMC.y;
+			
+			for(var i=0; i<rectClipNotes.numChildren-1; i++)
+			{
+				if(rectClipNotes.getChildAt(i) is TextField && rectClipNotes.getChildAt(i).y == targetY)
+				{
+					var tempTF:TextField = rectClipNotes.getChildAt(i) as TextField;
+					var counter:Number = 0;
+					while(counter<=Questions.length-1)
+					{
+						if(tempTF.htmlText.indexOf(Questions[counter])!=-1)
+						{
+							ExternalInterface.call("ff_delete_lquestion",QID[counter]);
+							ExternalInterface.call("ff_display_console_message",Questions[counter]+"||"+QTime[counter]);
+							QTime[counter] = 99999;
+							QuestionsTBS.splice(0);
+							break;
+						}
+						counter++;
+					}
+				}
+			}
+		}
+		
+		private function deleteNotes(e:MouseEvent):void {
+			var tempMC:MovieClip = e.currentTarget as MovieClip;
+			var targetY:Number = tempMC.y;
+			
+			for(var i=0; i<rectClipNotes.numChildren-1; i++)
+			{
+				if(rectClipNotes.getChildAt(i) is TextField && rectClipNotes.getChildAt(i).y == targetY)
+				{
+					var tempTF:TextField = rectClipNotes.getChildAt(i) as TextField;
+					var counter:Number = 0;
+					while(counter<=NotesTime.length-1)
+					{
+						if(tempTF.htmlText.indexOf(NotesTitle[counter])!=-1)
+						{
+							//ExternalInterface.call("ff_edit_notes",NotesTitle[counter]+"||"+NotesTime[counter]);
+							NotesTime[counter] = 99999;
+							NotesTitleTBS.splice(0);
+							ExternalInterface.call("ff_delete_lnote",NID[counter]);
+							//ExternalInterface.call("ff_display_console_message",NotesTitle[counter]+"||"+NotesTime[counter]);
+							break;
+						}
+						counter++;
+					}
+				}
+			}
+		}
+		
+		private function fNnq(myEvent:MouseEvent):void {
+			var buttonMask:Sprite = new Sprite();
+			Security.allowDomain("*");
+			if(tocBox.visible) tocBox.visible=false;
+			if(qnqBox.visible) qnqBox.visible=false;				
+			//if (ExternalInterface.available) 
+			{
+				while (nnqBox.numChildren > 0) {
+					nnqBox.removeChildAt(0);
+				}
+				//nnqBox = new MovieClip();
+				nnqBox.y = 70;
+				nnqBox.x = _stage.stageWidth-280;
+				rectClipNotes = new Sprite();
+				var rect:Sprite = new Sprite;
+				rect.graphics.beginFill(0x555555, 1);
+				rect.graphics.drawRect(0, 0, 45,45);
+				rect.graphics.endFill();
+				var rectTitle:Sprite = new Sprite;
+				rectTitle.graphics.beginFill(0x777777, 1);
+				rectTitle.graphics.drawRoundRectComplex(0, 0, 280, 45, 0, 0, 0 , 0);
+				rectTitle.graphics.endFill();
+				
+				rectTitle.width = 270;
+				nnqBox.addChild(rectTitle);
+				buttonMask      = new Sprite();
+				buttonMask.graphics.beginFill( 0x000000 );  
+				buttonMask.graphics.drawRect( 0 , 0 , 280 , 200 );
+				buttonMask.y = 45;
+				nnqBox.addChild(buttonMask);
+				rectClipNotes.mask = buttonMask;
+				nnqBox.addChild(rectClipNotes);
+				rectClipNotes.addChild(rect);
+				rectClipNotes.y=45;		 
+				rectClipNotes.addEventListener(MouseEvent.MOUSE_WHEEL,handleMouseWheel);		 
+				var t:TextField = new TextField();  
+				//t.embedFonts = true;
+				t.text = "Notes";
+				
+				
+				var tf:TextFormat = new TextFormat();
+				tf.color = 0xFFFFFF;
+				tf.size = 18;
+				tf.font = "Calibri";
+				tf.align=TextFormatAlign.CENTER;
+				
+				t.setTextFormat(tf);
+				t.y=05;
+				t.width=280;
+				t.height=30;
+				nnqBox.addChild(t);  
+				var counter:Number = NotesTitleTBS.length-1;
+				rect.width = 270;
+				rect.height = 20;
+				while(counter>=0)
+				{
+					var t1:TextField = new TextField();  
+					//t.embedFonts = true;
+					t1.htmlText = "<a href='event:null'>"+NotesTitle[new Number(NotesTitleTBS[counter])]+ "</a>";
+					t1.y=rect.height;
+					t1.x=10;
+					t1.multiline = false;
+					t1.wordWrap = false;
+					t1.setTextFormat(secondaryTF);
+					t1.autoSize = TextFieldAutoSize.LEFT;
+					if (t1.width > 200)
+					{
+						t1.wordWrap = true;
+						t1.multiline = true;
+						t1.width = 200;
+					}
+					rect.height = t1.y + t1.textHeight +10;
+					ExternalInterface.call("ff_display_console_message",t1.text);
+					t1.addEventListener(MouseEvent.MOUSE_OVER, over); 
+					t1.addEventListener(MouseEvent.MOUSE_OUT, out); 
+					t1.addEventListener(MouseEvent.CLICK, playStartNotes);
+					rectClipNotes.addChild(t1);
+					var editNQ:MovieClip = new MovieClip();
+					var test:Bitmap = new EditNQ();
+					editNQ.addChild(test);
+					editNQ.x = t1.x + 210+2;
+					editNQ.y = t1.y;
+					editNQ.alpha = 0.2;
+					editNQ.visible = true;
+					editNQ.addEventListener(MouseEvent.MOUSE_OVER, increaseOpacity); 
+					editNQ.addEventListener(MouseEvent.MOUSE_OUT, decreaseOpacity); 
+					editNQ.addEventListener(MouseEvent.CLICK, editNotes); 
+					var deleteNQ:MovieClip = new MovieClip();
+					test = new DeleteNQ();
+					deleteNQ.addChild(test);
+					deleteNQ.x = t1.x + 210+26;
+					deleteNQ.alpha = 0.2;
+					ExternalInterface.call("ff_display_console_message",t1.x + t1.width+14);
+					deleteNQ.y = t1.y;
+					deleteNQ.visible = true;
+					deleteNQ.addEventListener(MouseEvent.MOUSE_OVER, increaseOpacity); 
+					deleteNQ.addEventListener(MouseEvent.MOUSE_OUT, decreaseOpacity); 
+					deleteNQ.addEventListener(MouseEvent.CLICK, deleteNotes); 
+					rectClipNotes.addChild(editNQ);
+					rectClipNotes.addChild(deleteNQ);
+					counter--;
+				}
+				
+				
+				if(nnqBox.visible) nnqBox.visible=false;
+				else nnqBox.visible=true;
+				
+				// } else {
+				
+				
+				
+			}
+		}
+		
+		private function fAddNote(myEvent:MouseEvent):void {
+			Security.allowDomain("*");
+			addqBox.visible=false;	
+			while (addnBox.numChildren > 0) {
+				addnBox.removeChildAt(0);
+			}
+			addnBox.graphics.clear();
+			
+			if (ExternalInterface.available) 
+			{
+				//ExternalInterface.call("ff_pause_player");
+				addnBox.graphics.beginFill(0x555555);  
+				addnBox.graphics.drawRect( 0, 0, 300, 210 );  
+				addnBox.graphics.endFill();  
+				
+				var t:TextField = new TextField();  
+				//t.embedFonts = true;
+				if(editNQMode >-1)
+					t.text = "Edit Your Note";
+				else 
+					t.text = "Enter Your Note";
+				
+				var tf:TextFormat = new TextFormat();
+				tf.color = 0xFFFFFF;
+				tf.size = 18;
+				tf.font = "Calibri";
+				tf.align=TextFormatAlign.CENTER;
+				
+				t.setTextFormat(tf);
+				t.x=50;
+				t.y=20;
+				t.width=200;
+				addnBox.addChild(t);  
+				myFirstTextBox.type = TextFieldType.INPUT; 
+				myFirstTextBox.background = true; 
+				addnBox.addChild(myFirstTextBox); 
+				if(editNQMode>-1)
+					myFirstTextBox.text=NotesTitle[editNQMode];
+				else
+					myFirstTextBox.text="Title";
+				myFirstTextBox.x = 20;
+				myFirstTextBox.y=70;
+				myFirstTextBox.width=250;
+				myFirstTextBox.height = 20;
+				myFirstTextBox.tabEnabled=true;
+				myFirstTextBox.tabIndex=1;
+				myFirstTextBox.addEventListener(MouseEvent.CLICK, clearText);
+				descTextBox.type = TextFieldType.INPUT; 
+				descTextBox.background = true; 
+				addnBox.addChild(descTextBox); 
+				if(editNQMode>-1)
+					descTextBox.text=NotesDesc[editNQMode];
+				else
+					descTextBox.text="Description";
+				descTextBox.x = 20;
+				descTextBox.tabIndex = 2;
+				descTextBox.y=100;
+				descTextBox.width=250;
+				descTextBox.height = 20;
+				descTextBox.addEventListener(MouseEvent.CLICK, clearText);
+				//myFirstTextBox.addEventListener(TextEvent.TEXT_INPUT, inputEventCapture);
+				var button:TextField = new TextField();
+				button.text = "Submit";
+				button.x = 70;
+				button.width =70;
+				button.y = 145;
+				button.height=30;
+				button.border = true;
+				button.addEventListener(MouseEvent.CLICK, AddNote);
+				button.setTextFormat(tf);
+				addnBox.addChild(button);
+				var button2:TextField = new TextField();
+				button2.text = "Cancel";
+				button2.x = 160;
+				button2.width =70;
+				button2.y = 145;
+				button2.border = true;
+				button2.height=30;
+				button2.setTextFormat(tf);
+				button2.addEventListener(MouseEvent.CLICK, CancelNote);
+				addnBox.addChild(button2);
+				
+				consumeUI.addChild(addnBox);
+				try { //var retData:Object = ExternalInterface.call("JSFunc"); 
+				}
+				catch(error:Error){
+					t.text= error.toString();
+				}
+				if(addnBox.visible) addnBox.visible=false;
+				else addnBox.visible=true;
+				
+				// } else {
+				
+				
+				
+			}
+		}
+		
 		private function processXML(e:Event):void {
 			var myXML:XML = new XML(e.target.data);
 			initiateRecordingData(myXML);
 		}
+		private var rectClip:Sprite = new Sprite();
+		private var rectClipNotes:Sprite = new Sprite();
 		
+		
+		public function handleMouseWheel(event:MouseEvent){
+			var tempTF:Sprite = event.currentTarget as Sprite;
+			if( (tempTF.y+event.delta*2)<(45) && (tempTF.height+tempTF.y+event.delta*2)>=240 )
+			{
+				tempTF.y+=event.delta*2;
+				
+			}
+			ExternalInterface.call("ff_display_console_message", tempTF.y+"---"+event.delta +"---" +tempTF.height+tempTF.y );
+		}
+		
+		
+		private function fProfessor(myEvent:MouseEvent):void {
+			
+			while (professorBox.numChildren > 0) {
+				professorBox.removeChildAt(0);
+			}	
+			referenceBox.visible=false;
+			booksBox.visible=false;
+			classNotesBox.visible=false;
+			professorBox.graphics.clear();
+			professorBox.x = leftMenu.width+10;		
+			var buttonMask:Sprite = new Sprite();
+			
+			rectClipNotes = new Sprite();
+			var rect:Sprite = new Sprite;
+			rect.graphics.beginFill(0x555555, 1);
+			rect.graphics.drawRect(0, 0, 45,45);
+			rect.graphics.endFill();
+			var rectTitle:Sprite = new Sprite;
+			rectTitle.graphics.beginFill(0x555555, 1);
+			rectTitle.graphics.drawRect(0, 0, 45, 45);
+			rectTitle.graphics.endFill();
+			
+			rectTitle.width = 300;
+			professorBox.addChild(rectTitle);
+			buttonMask      = new Sprite();
+			buttonMask.graphics.beginFill( 0x000000 );  
+			buttonMask.graphics.drawRect( 0 , 0 , 300 , 300 );
+			buttonMask.y = 45;
+			professorBox.addChild(buttonMask);
+			rectClipNotes.mask = buttonMask;
+			professorBox.addChild(rectClipNotes);
+			rectClipNotes.addChild(rect);
+			rectClipNotes.y=45;		 
+			rectClipNotes.addEventListener(MouseEvent.MOUSE_WHEEL,handleMouseWheel);		 
+			var t:TextField = new TextField();  
+			//t.embedFonts = true;
+			t.text = "Educator Suggestions";
+			
+			
+			var tf:TextFormat = new TextFormat();
+			tf.color = 0xFFFFFF;
+			tf.size = 18;
+			tf.font = "Calibri";
+			tf.align=TextFormatAlign.CENTER;
+			
+			t.setTextFormat(tf);
+			t.y=05;
+			t.width=300;
+			t.height=30;
+			professorBox.addChild(t);  
+			var counter:Number = ReferencesTBS.length-1;
+			rect.width = 300;
+			rect.height = 20;
+			
+			
+			while(counter>=0)
+			{
+				var t1:TextField = new TextField();  
+				//t.embedFonts = true;
+				t1.htmlText = " <a href='event:null'><u>"+References[new Number(ReferencesTBS[counter])]+"</u></a>";
+				t1.y=10+(References.length-1-counter)*25;
+				t1.x=10;
+				t1.multiline = false;
+				t1.wordWrap = false;
+				t1.width = 280;
+				t1.height = 30;
+				t1.autoSize = TextFieldAutoSize.LEFT;
+				if (t1.width > 280)
+				{
+					t1.multiline = true;
+					t1.wordWrap = true;
+					t1.width = 280;
+				}
+				t1.setTextFormat(secondaryTF);
+				rect.height = t1.y + t1.textHeight +10;
+				if(RefLinks[counter].indexOf("note:")==-1)
+					t1.addEventListener(MouseEvent.CLICK, gotoURL);
+				else 
+				{
+					t1.addEventListener(MouseEvent.MOUSE_OVER, over);
+					t1.addEventListener(MouseEvent.MOUSE_OUT, out);
+					t1.addEventListener(MouseEvent.CLICK, playPositionRef);
+				}
+				rectClipNotes.addChild(t1);
+				
+				counter--;
+			}
+			
+			
+			if(professorBox.visible) professorBox.visible=false;
+			else professorBox.visible=true;
+			
+			
+		}
+		
+		private function playPositionRef(e:MouseEvent):void{
+			
+			var counter:Number = 0;
+			var tempTF:TextField = e.currentTarget as TextField;
+			while(counter<=References.length-1)
+			{
+				if(tempTF.htmlText.indexOf(References[counter])!=-1)
+					
+				{
+					//ExternalInterface.call("ff_play_position", RefTime[counter]);
+				}
+				counter++;
+				
+			}
+			
+			
+		}
+		private function gotoURL(myEvent:MouseEvent):void{
+			
+			var temp:TextField = myEvent.currentTarget as TextField;
+			
+			var counter:Number=0;
+			while(counter<=References.length-1){
+				//if(temp.htmlText.indexOf(References[counter])!=-1) {ExternalInterface.call("ff_navigate_to_url", RefLinks[counter]);
+					//ExternalInterface.call("ff_play_position", RefTime[counter]);}
+				counter++;
+			}
+		}
+		
+		private function AddNote(myEvent:MouseEvent):void
+		{
+			//JS UPDATE CALL
+			
+			//var time:String = ExternalInterface.call("ff_get_position") as String;
+			var inputString:String = myFirstTextBox.text+"||"+descTextBox.text+"||"+"0";//time;
+			
+			if(editNQMode==-1)
+			{
+				ExternalInterface.call("ff_add_note",inputString );
+				NotesTitle[NotesTitle.length] = myFirstTextBox.text;
+				NotesDesc[NotesDesc.length] = descTextBox.text;
+				NotesTime[NotesTime.length] ='0';// time;
+			}
+			else
+			{
+				NotesTitle[editNQMode] = myFirstTextBox.text;
+				NotesDesc[editNQMode] = descTextBox.text;
+				ExternalInterface.call("ff_edit_lnote",NID[editNQMode]+"||"+NotesTitle[editNQMode]+"||"+NotesDesc[editNQMode]+"||"+NotesTime[editNQMode]);
+			}		
+			addnBox.visible=false;
+		//	ExternalInterface.call("ff_play_position", time);
+			sleep(1000);
+			//reload
+			if(editNQMode > -1){
+				NoteData = ExternalInterface.call("ff_load_note_data");
+				NotesTitle.splice(0);NotesDesc.splice(0);NotesTime.splice(0);NotesTitleTBS.splice(0); NotesTitleTBS.length=0;
+				while(NoteData!="")
+				{
+					var delimQ:Number = NoteData.indexOf("|||");
+					if(delimQ!=-1)
+						var noteTemp:String = NoteData.substr(0,delimQ);
+					else var noteTemp:String = NoteData.substr(0);
+					var delim1:Number = noteTemp.indexOf("||");
+					NID[NID.length] = noteTemp.substr(0,delim1);
+					noteTemp = noteTemp.substr(delim1+2);
+					var delim1:Number = noteTemp.indexOf("||");
+					NotesTitle[NotesTitle.length] = noteTemp.substr(0,delim1);
+					noteTemp = noteTemp.substr(delim1+2);
+					delim1 = noteTemp.indexOf("||");
+					NotesDesc[NotesDesc.length] = noteTemp.substr(0,delim1);
+					noteTemp = noteTemp.substr(delim1+2);
+					NotesTime[NotesTime.length] = noteTemp;
+					//ExternalInterface.call("ff_display_console_message", NotesTitle[NotesTitle.length -1 ] + "---" +NotesDesc[NotesDesc.length-1] + NotesTime[NotesTime.length-1]+"---");
+					if(delimQ != -1) NoteData = NoteData.slice(delimQ+3);
+					else NoteData="";
+				}
+				editNQMode=-1;
+			}
+		}
+
 		private function initiateRecordingData(xmlData:XML):void
 		{
 			recordingData.startRecording(xmlData.INIT[0].TIME);
@@ -1085,9 +2216,29 @@ package com.ziksana.player.enhance
 				currentlyPlayingTime=seekLevel;
 				presentNS.seek((seekLevel-lastSwitchTime)/1000);
 			}
-			if(_playerState == "SEEKING" || _playerState == "PAUSED" ) 
+			if( _playerState == "PAUSED" ) 
 			{
 				return;
+			}
+			if(_playerState == "SEEKING" )
+			{
+				presentSlideStrokes.splice(0);
+				strokesData.dispose();
+				sliderImages[presentSlide].visible = false;
+				sliderImages[recordingData.startSlideNumber].visible = true;
+				presentSlide = recordingData.startSlideNumber;
+				strokesData = new BitmapData(sliderImages[0].width,sliderImages[0].height,true,0);
+				strokesBmp = new Bitmap(strokesData);
+				strokes.addChild (strokesBmp);
+				seekBar.visible = true;
+				currentlyPlayingEvent = 0;
+				currentlyPlayingTime = 0;
+				seekBarIndicator.x = SLIDER_LENGTH * (currentlyPlayingTime/recordingData.totalTime);
+				seekBarText.text = Math.floor(currentlyPlayingTime/60000) + ":"+ Math.floor((currentlyPlayingTime%60000)/1000);
+				lastSwitchTime = 0;
+				playbackreturned= true;
+				return;
+				
 			}
 			if(_playerState == "STOPPED")
 			{
@@ -1136,10 +2287,30 @@ package com.ziksana.player.enhance
 			}
 			currentlyPlayingEvent++;
 			
-				if(_playerState == "SEEKING" || _playerState == "PAUSED" ) 
-				{
-					return;
-				}
+			if( _playerState == "PAUSED" ) 
+			{
+				return;
+			}
+			if(_playerState == "SEEKING" )
+			{
+				presentSlideStrokes.splice(0);
+				strokesData.dispose();
+				sliderImages[presentSlide].visible = false;
+				sliderImages[recordingData.startSlideNumber].visible = true;
+				presentSlide = recordingData.startSlideNumber;
+				strokesData = new BitmapData(sliderImages[0].width,sliderImages[0].height,true,0);
+				strokesBmp = new Bitmap(strokesData);
+				strokes.addChild (strokesBmp);
+				seekBar.visible = true;
+				currentlyPlayingEvent = 0;
+				currentlyPlayingTime = 0;
+				seekBarIndicator.x = SLIDER_LENGTH * (currentlyPlayingTime/recordingData.totalTime);
+				seekBarText.text = Math.floor(currentlyPlayingTime/60000) + ":"+ Math.floor((currentlyPlayingTime%60000)/1000);
+				lastSwitchTime = 0;
+				playbackreturned= true;
+				return;
+				
+			}
 				if(_playerState == "STOPPED")
 				{
 					presentSlideStrokes.splice(0);
@@ -1373,26 +2544,156 @@ package com.ziksana.player.enhance
 				i++;
 			}
 			sendDataToPHP();
-			ShowPopUp("Saved Successfully!");
+
 			loadingGif.visible = false;
 		}
-		
+		protected var TBSUpdateEnabled = false;
 		private function FullScreen(e:MouseEvent):void {
 			//ShowPopUp("Fullscreen mode DISABLED in this release.");
 			if(loadingGif.visible == true) { ShowPopUp("Please try after Loadin/Processing completes."); return; }
 			if(_stage.displayState != StageDisplayState.FULL_SCREEN)
 			{
 				_stage.displayState = StageDisplayState.FULL_SCREEN
+				if(deployMode=="consume")
+				{
+					consumeUI.visible=true;
+					viewQuestion.x= _stage.stageWidth-55;
+					toc.x = _stage.stageWidth-55*2;
+					viewNotes.x = _stage.stageWidth-55*3;
+					addNotes.x = _stage.stageWidth-55*4;
+					addQuestion.x = _stage.stageWidth-55*5; 
+					addqBox.x= (_stage.stageWidth-300)/2;
+					addqBox.y= (_stage.stageHeight-150)/2;
+					addnBox.x= (_stage.stageWidth-300)/2;
+					addnBox.y= (_stage.stageHeight-150)/2;
+					tocBox.y = 70;
+					tocBox.x = _stage.stageWidth-280;
+					nnqBox.y = 70;
+					nnqBox.x = _stage.stageWidth-280;
+					qnqBox.y = 70;
+					qnqBox.x = _stage.stageWidth-280;
+					NoteData = ExternalInterface.call("ff_load_note_data");
+					QuestionData = ExternalInterface.call("ff_load_question_data");
+					EduRefData = ExternalInterface.call("ff_load_edu_references");
+					EduNoteData = ExternalInterface.call("ff_load_edu_notes");
+					TOCData = ExternalInterface.call("ff_load_toc_data");
+					NotesTitle.splice(0);NotesDesc.splice(0);NotesTime.splice(0);NotesTitleTBS.splice(0); NotesTitleTBS.length=0;
+					Questions.splice(0);QTime.splice(0);QuestionsTBS.splice(0); QuestionsTBS.length=0;
+					References.splice(0); RefLinks.splice(0);ReferencesTBS.splice(0);ReferencesTBS.length=0;RefTime.splice(0);
+					tocContent.splice(0); tocTime.splice(0);
+					qnqBox.visible=false;
+					nnqBox.visible=false;
+					TBSUpdateEnabled = true;
+					
+					
+					while(EduRefData!="")
+					{
+						var delimQ:Number = EduRefData.indexOf("|||");
+						if(delimQ!=-1)
+							var qTemp:String = EduRefData.substr(0,delimQ);
+						else var qTemp:String = EduRefData.substr(0);
+						var delim1:Number = qTemp.indexOf("||");
+						References[References.length] = qTemp.substr(0,delim1);
+						qTemp = qTemp.substr(delim1+2);
+						delim1 = qTemp.indexOf("||");
+						RefLinks[RefLinks.length] =  qTemp.substr(0,delim1);;
+						qTemp = qTemp.substr(delim1+2);
+						RefTime[RefTime.length] = qTemp;
+						//ExternalInterface.call("ff_display_console_message", References[References.length -1 ] + "---" +RefLinks[RefLinks.length-1]+"---");
+						if(delimQ != -1) EduRefData = EduRefData.slice(delimQ+3);
+						else EduRefData="";
+					}
+					while(EduNoteData!="")
+					{
+						var delimQ:Number = EduNoteData.indexOf("|||");
+						if(delimQ!=-1)
+							var qTemp:String = EduNoteData.substr(0,delimQ);
+						else var qTemp:String = EduNoteData.substr(0);
+						var delim1:Number = qTemp.indexOf("||");
+						References[References.length] = qTemp.substr(0,delim1);
+						qTemp = qTemp.substr(delim1+2);
+						delim1 = qTemp.indexOf("||");
+						RefLinks[RefLinks.length] = qTemp.substr(0,delim1);
+						qTemp = qTemp.substr(delim1+2);
+						RefTime[RefTime.length] = qTemp;
+						//ExternalInterface.call("ff_display_console_message", References[References.length -1 ] + "---" +RefLinks[RefLinks.length-1]+"---");
+						if(delimQ != -1) EduNoteData = EduNoteData.slice(delimQ+3);
+						else EduNoteData="";
+					}
+					
+					while(NoteData!="")
+					{
+						var delimQ:Number = NoteData.indexOf("|||");
+						if(delimQ!=-1)
+							var noteTemp:String = NoteData.substr(0,delimQ);
+						else var noteTemp:String = NoteData.substr(0);
+						var delim1:Number = noteTemp.indexOf("||");
+						NID[NID.length] = noteTemp.substr(0,delim1);
+						noteTemp = noteTemp.substr(delim1+2);
+						var delim1:Number = noteTemp.indexOf("||");
+						NotesTitle[NotesTitle.length] = noteTemp.substr(0,delim1);
+						noteTemp = noteTemp.substr(delim1+2);
+						delim1 = noteTemp.indexOf("||");
+						NotesDesc[NotesDesc.length] = noteTemp.substr(0,delim1);
+						noteTemp = noteTemp.substr(delim1+2);
+						NotesTime[NotesTime.length] = noteTemp;
+						ExternalInterface.call("ff_display_console_message", NotesTitle[NotesTitle.length -1 ] + "---" +NotesDesc[NotesDesc.length-1] + NotesTime[NotesTime.length-1]+"---");
+						if(delimQ != -1) NoteData = NoteData.slice(delimQ+3);
+						else NoteData="";
+					}
+					
+					while(QuestionData!="")
+					{
+						var delimQ:Number = QuestionData.indexOf("|||");
+						if(delimQ!=-1)
+							var qTemp:String = QuestionData.substr(0,delimQ);
+						else var qTemp:String = QuestionData.substr(0);
+						var delim1:Number = qTemp.indexOf("||");
+						QID[QID.length] = qTemp.substr(0,delim1);
+						qTemp = qTemp.substr(delim1+2);
+						var delim1:Number = qTemp.indexOf("||");
+						Questions[Questions.length] = qTemp.substr(0,delim1);
+						qTemp = qTemp.substr(delim1+2);
+						QTime[QTime.length] = qTemp;
+						ExternalInterface.call("ff_display_console_message", Questions[Questions.length -1 ] + "---" +QTime[QTime.length-1]+"---");
+						if(delimQ != -1) QuestionData = QuestionData.slice(delimQ+3);
+						else QuestionData="";
+					}
+					
+					while(TOCData!="")
+					{
+						var delimQ:Number = TOCData.indexOf("|||");
+						if(delimQ!=-1)
+							var qTemp:String = TOCData.substr(0,delimQ);
+						else var qTemp:String = TOCData.substr(0);
+						var delim1:Number = qTemp.indexOf("||");
+						tocContent[tocContent.length] = qTemp.substr(0,delim1);
+						qTemp = qTemp.substr(delim1+2);
+						tocTime[tocTime.length] = qTemp;
+						ExternalInterface.call("ff_display_console_message", tocContent[tocContent.length -1 ] + "---" +tocTime[tocTime.length-1]+"---");
+						if(delimQ != -1) TOCData = TOCData.slice(delimQ+3);
+						else TOCData="";
+					}
+				}
 			}
-			else _stage.displayState = StageDisplayState.NORMAL;
+			else {
+				_stage.displayState = StageDisplayState.NORMAL;
+				if(deployMode=="consume")
+				{
+					consumeUI.visible=false;
+				}
+			}
 		}
+		public var playbackreturned:Boolean = false;
 		public function seekUpdate(e:MouseEvent):void {
 			_playerState = "SEEKING";
 			seekBarIndicator.x = e.localX;
 			var seekLevel:Number = seekBarIndicator.x/SLIDER_LENGTH * recordingData.totalTime;
-			PlayRecording();
-			//PlayBack(seekLevel);	
+			//PlayRecording();
+			while(!playbackreturned){sleep(100);};
+			PlayBack(seekLevel);	
 			seekBarText.text = Math.floor(seekLevel/60000) + ":"+ Math.floor((seekLevel%60000)/1000);
+			playbackreturned =false;
 		}
 		private function AddControls():void
 		{
@@ -1413,7 +2714,7 @@ package com.ziksana.player.enhance
 			seekBarRectangle.graphics.drawRoundRectComplex(0,0,SLIDER_LENGTH,4,2,2,2,2);
 			seekBarRectangle.graphics.endFill();
 			seekBar.addChild(seekBarRectangle);
-			//seekBarRectangle.addEventListener(MouseEvent.CLICK,seekUpdate);
+			seekBarRectangle.addEventListener(MouseEvent.CLICK,seekUpdate);
 			
 			seekBarIndicator.graphics.beginFill(0xFFFFFF, 1);
 			seekBarIndicator.graphics.drawCircle(0,0,6);
@@ -1490,6 +2791,7 @@ package com.ziksana.player.enhance
 				eTocIcon.useHandCursor = true;
 				var test:Bitmap = new ETOCICON();
 				eTocIcon.addChild(test);
+				eTocIcon.addEventListener(MouseEvent.CLICK, fAddEToc);
 				enrichUI.addChild(eTocIcon);
 				
 				eNoteIcon.y=10;
@@ -1510,7 +2812,13 @@ package com.ziksana.player.enhance
 				enrichUI.addChild(eRefIcon);
 				eRefIcon.addEventListener(MouseEvent.CLICK, fAddERef);
 				
+				enrichUI.addChild(addnBox);
+				enrichUI.addChild(addqBox);
+				enrichUI.addChild(nnqBox);
 				
+				addnBox.visible=false;
+				addqBox.visible=false;
+				nnqBox.visible=false;
 				
 			}
 			//if(deployMode!="playback" && deployMode!="enrich")
@@ -1577,7 +2885,7 @@ package com.ziksana.player.enhance
 			
 			controls.addChild(play);
 			controls.addChild(stop);
-			if(deployMode!="playback" && deployMode!="enrich")
+			if(deployMode=="enhance")
 			{
 				controls.addChild(record);
 				controls.addChild(save);
@@ -1641,6 +2949,10 @@ package com.ziksana.player.enhance
 		private function resizeHandler(event:Event=null):void
 		{
 			resizing = true;
+			if(_stage.displayState != StageDisplayState.FULL_SCREEN)
+			{
+				consumeUI.visible=false;
+			}
 			this.graphics.clear();
 			this.graphics.beginFill(0x000000, 1);
 			this.graphics.drawRect(0, 0, _stage.stageWidth, _stage.stageHeight);
@@ -1748,6 +3060,8 @@ package com.ziksana.player.enhance
 			
 			if (ExternalInterface.available) 
 			{
+				Pause(null);
+				pause.alpha = 0.4;
 				//ExternalInterface.call("ff_pause_player");
 				addnBox.graphics.beginFill(0x555555);  
 				addnBox.graphics.drawRect( 0, 0, 400, 210 );  
@@ -1844,7 +3158,7 @@ package com.ziksana.player.enhance
 				button2.addEventListener(MouseEvent.CLICK, CancelNote);
 				addnBox.addChild(button2);
 				
-				enrichUI.addChild(addnBox);
+				
 				if(addnBox.visible) addnBox.visible=false;
 				else addnBox.visible=true;
 			}
@@ -1857,12 +3171,16 @@ package com.ziksana.player.enhance
 			var inputString:String = myFirstTextBox.text+"||"+descTextBox.text+"||"+time;
 			ExternalInterface.call("ff_add_note",inputString );
 			addnBox.visible=false;
+			Play(null);
+			play.alpha = 0.4;
 		}
 		
 		
 		private function CancelNote(myEvent:MouseEvent):void
 		{
 			addnBox.visible=false;
+			Play(null);
+			play.alpha = 0.4;
 		}
 		
 		private function clearText(myEvent:MouseEvent) {
@@ -1883,6 +3201,8 @@ package com.ziksana.player.enhance
 			if (ExternalInterface.available) 
 			{
 				//ExternalInterface.call("ff_pause_player");
+				Pause(null);
+				pause.alpha = 0.4;
 				addqBox.graphics.beginFill(0x555555);  
 				addqBox.graphics.drawRect( 0, 0, 400, 210 );  
 				addqBox.graphics.endFill();  
@@ -1981,7 +3301,7 @@ package com.ziksana.player.enhance
 				button2.addEventListener(MouseEvent.CLICK, CancelQ);
 				addqBox.addChild(button2);
 				
-				enrichUI.addChild(addqBox);
+				
 				if(addqBox.visible) addqBox.visible=false;
 				else addqBox.visible=true;
 				
@@ -1999,13 +3319,244 @@ package com.ziksana.player.enhance
 			var inputString:String = myFirstTextBox.text+"||"+descTextBox.text+"||"+time;
 			ExternalInterface.call("ff_add_reference",inputString );
 			addqBox.visible=false;
+			Play(null);
+			play.alpha = 0.4;
 		}
-		private function CancelQ(myEvent:MouseEvent)
+		private function CancelQ(myEvent:MouseEvent):void
 		{
 			addqBox.visible=false;
+			Play(null);
+			play.alpha = 0.4;
 		}
-
-
+		
+		private function fAddEToc(myEvent:MouseEvent):void {
+			Security.allowDomain("*");
+			addqBox.visible=false;	
+			addnBox.visible=false;
+			while (nnqBox.numChildren > 0) {
+				nnqBox.removeChildAt(0);
+			}
+			nnqBox.graphics.clear();
+			TOCData = ExternalInterface.call("ff_get_toc");
+			tocContent.splice(0); tocTime.splice(0);
+			tocId.splice(0);
+			
+			while(TOCData!="")
+			{
+				var delimQ:Number = TOCData.indexOf("|||");
+				if(delimQ!=-1)
+					var qTemp:String = TOCData.substr(0,delimQ);
+				else var qTemp:String = TOCData.substr(0);
+				var delim1:Number = qTemp.indexOf("||");
+				tocId[tocId.length] = qTemp.substr(0,delim1);
+				qTemp = qTemp.substr(delim1+2);
+				tocContent[tocContent.length] = qTemp;
+				//ExternalInterface.call("ff_display_console_message", tocContent[tocContent.length -1 ] + "---" +tocId[tocId.length-1]+"---");
+				if(delimQ != -1) TOCData = TOCData.slice(delimQ+3);
+				else TOCData="";
+				//for(var i:Number=0; i<tocContent.length;i++) {
+				//	//ExternalInterface.call("ff_display_console_message", tocContent[i] + "---" +tocId[i]+"---"); }
+				
+			}
+			
+			if (ExternalInterface.available) 
+			{
+				Pause(null);
+				pause.alpha = 0.4;
+				//ExternalInterface.call("ff_pause_player");
+				nnqBox.graphics.beginFill(0x555555);  
+				nnqBox.graphics.drawRect( 0, 0, 400, 210 );  
+				nnqBox.graphics.endFill();  
+				nnqBox.x = (_stage.stageWidth-400)/2;
+				nnqBox.y = (_stage.stageHeight-210)/2;
+				var t:TextField = new TextField();  
+				//t.embedFonts = true;
+				t.text = "Enter Content Title";
+				
+				
+				var tf:TextFormat = new TextFormat();
+				tf.color = 0xFFFFFF;
+				tf.size = 18;
+				tf.font = "Calibri";
+				tf.align=TextFormatAlign.CENTER;
+				
+				t.setTextFormat(tf);
+				t.x=50;
+				t.y=20;
+				t.width=300;
+				nnqBox.addChild(t);  
+				
+				
+				// Title TextBOX
+				var titleText:TextField = new TextField();  
+				//t.embedFonts = true;
+				titleText.text = "TOC Title";
+				
+				
+				var tf2:TextFormat = new TextFormat();
+				tf2.color = 0xFFFFFF;
+				tf2.size = 11;
+				tf2.font = "Calibri";
+				tf2.align=TextFormatAlign.LEFT;
+				
+				titleText.setTextFormat(tf2);
+				titleText.x=10;
+				titleText.y=70;
+				titleText.width=50;
+				nnqBox.addChild(titleText);  
+				
+				//Description TextBOX
+				
+				var descText:TextField = new TextField();  
+				//t.embedFonts = true;
+				descText.text = "Associate Item";
+				descText.setTextFormat(tf2);
+				descText.x=10;
+				descText.y=100;
+				descText.width=75;
+				nnqBox.addChild(descText);  
+				
+				
+				myFirstTextBox.type = TextFieldType.INPUT; 
+				myFirstTextBox.background = true; 
+				myFirstTextBox.text="Enter Toc Item";
+				myFirstTextBox.addEventListener(MouseEvent.CLICK,clearText);
+				nnqBox.addChild(myFirstTextBox); 
+				myFirstTextBox.x = 90;
+				myFirstTextBox.y=70;
+				myFirstTextBox.width=270;
+				myFirstTextBox.height = 20;
+				descTextBox.type = TextFieldType.INPUT; 
+				descTextBox.background = true; 
+				nnqBox.addChild(descTextBox); 
+				descTextBox.text="Associate this as a subsection of previous TOC";
+				descTextBox.x = 90;
+				descTextBox.y=100;
+				descTextBox.width=270;
+				descTextBox.height = 20;
+				dropdown.visible=false;
+				descTextBox.addEventListener(MouseEvent.CLICK, fShowDropDown);
+				var button:TextField = new TextField();
+				button.htmlText = "<a href='event:null'>Associate TOC</a>";
+				button.x = 70;
+				button.width =140;
+				button.y = 145;
+				button.height=30;
+				button.border = true;
+				button.addEventListener(MouseEvent.CLICK, AddEToc);
+				button.setTextFormat(tf);
+				nnqBox.addChild(button);
+				var button2:TextField = new TextField();
+				button2.htmlText = "<a href='event:null'>Cancel</a>";
+				button2.x = 220;
+				button2.width =70;
+				button2.y = 145;
+				button2.border = true;
+				button2.height=30;
+				button2.setTextFormat(tf);
+				button2.addEventListener(MouseEvent.CLICK, CancelToc);
+				nnqBox.addChild(button2);
+				
+				if(nnqBox.visible) nnqBox.visible=false;
+				else nnqBox.visible=true;
+				
+				// } else {
+				
+				
+				
+			}
+		}
+			private function CancelToc(myEvent:MouseEvent):void
+			{
+				nnqBox.visible=false;
+				Play(null);
+				play.alpha = 0.4;
+			}
+			
+		protected var dropdown:Sprite = new Sprite();
+		private function fShowDropDown(myEvent:MouseEvent):void
+		{
+			
+			
+			if(dropdown.visible == true) 
+				dropdown.visible=false;
+			else dropdown.visible=true;
+			while (dropdown.numChildren > 0) {
+				dropdown.removeChildAt(0);
+			}
+			var tf2:TextFormat = new TextFormat();
+			tf2.color = 0xFFFFFF;
+			tf2.size = 11;
+			tf2.font = "Calibri";
+			tf2.align=TextFormatAlign.LEFT;
+			
+			dropdown.x = descTextBox.x;
+			dropdown.y = descTextBox.y+25;
+			var rect:Sprite = new Sprite;
+			rect.graphics.beginFill(0x555555, 1);
+			rect.graphics.drawRect(0, 0, 100, 100);
+			rect.graphics.endFill();
+			
+			nnqBox.addChild(dropdown);
+			dropdown.addChild(rect);
+			
+			
+			var t:TextField = new TextField();  
+			rect.height = 20;
+			rect.width = descTextBox.width;
+			var counter:Number = 0;
+			
+			while(counter<=tocContent.length-1)
+			{
+				var t1:TextField = new TextField();  
+				//t.embedFonts = true;
+				t1.text= tocContent[counter];
+				t1.y=10+counter*15;
+				t1.x=10;
+				t1.setTextFormat(tf2);
+				//rect.width = t1.width+20;
+				rect.height = t1.y + 20;
+				t1.addEventListener(MouseEvent.CLICK, selectToc);
+				dropdown.addChild(t1);
+				counter++;
+			}	
+			
+			
+			
+		}
+		protected var selectedTOC:String ="None";
+		private function selectToc(myEvent:MouseEvent):void
+		{
+			var temp:TextField = myEvent.currentTarget as TextField;
+			if(temp.text!="Associate this as a subsection of previous TOC") selectedTOC = temp.text;
+			else selectedTOC ="None";
+			descTextBox.text = selectedTOC;
+			dropdown.visible=false;
+		}
+		
+		private function AddEToc(myEvent:MouseEvent):void
+		{
+			//JS UPDATE CALL
+			
+			//var time:String = ExternalInterface.call("ff_get_position") as String;
+			var parentID:String = "0";
+			for(var i:Number = 0; i<tocContent.length; i++)
+			{
+				if(tocContent[i]==selectedTOC)
+				{
+					parentID=tocId[i];
+					ExternalInterface.call("ff_display_console_message", "parentID" + tocId[i] +"Comaprison between" + tocContent[i] + "---" + selectedTOC);
+					break;
+				}
+			}
+			var inputString:String = myFirstTextBox.text+"||"+parentID+"||"+(lastSwitchTime/1000+ns.time);
+			tocContent[tocContent.length] = myFirstTextBox.text;
+			ExternalInterface.call("ff_add_toc",inputString );
+			nnqBox.visible=false;
+			Play(null);
+			play.alpha = 0.4;
+			//ExternalInterface.call("ff_play_position", time);
+		}
 
 	}
 }

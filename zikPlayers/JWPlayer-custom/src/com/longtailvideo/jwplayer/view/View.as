@@ -19,10 +19,10 @@ package com.longtailvideo.jwplayer.view {
 	import com.longtailvideo.jwplayer.utils.Logger;
 	import com.longtailvideo.jwplayer.utils.RootReference;
 	import com.longtailvideo.jwplayer.utils.Stretcher;
+	import com.longtailvideo.jwplayer.view.Scrollbar;
 	import com.longtailvideo.jwplayer.view.interfaces.IPlayerComponent;
 	import com.longtailvideo.jwplayer.view.interfaces.ISkin;
-	import com.longtailvideo.jwplayer.view.Scrollbar;
-	
+		import flash.ui.Mouse;
 	import flash.display.Bitmap;
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
@@ -36,24 +36,28 @@ package com.longtailvideo.jwplayer.view {
 	import flash.events.ErrorEvent;
 	import flash.events.Event;
 	import flash.events.FocusEvent;
-	import flash.utils.getTimer;
 	import flash.events.IOErrorEvent;
+	import flash.utils.clearTimeout;
+	import flash.utils.getTimer;
+	import flash.utils.setTimeout;
+
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.external.ExternalInterface;
 	import flash.geom.Rectangle;
 	import flash.net.URLRequest;
 	import flash.system.LoaderContext;
+	import flash.system.Security;
 	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFieldType;
 	import flash.text.TextFormat;
+	import flash.text.TextFormatAlign;
 	import flash.ui.Keyboard;
 	import flash.utils.Timer;
+	import flash.utils.getTimer;
+	
 	import spark.components.Button;
-	import flash.external.ExternalInterface;    
-	import flash.system.Security;	
-	import flash.text.*;
-  import flash.events.*;
-  import spark.components.Button;
 
 	public class View extends GlobalEventDispatcher {
 		protected var _player:IPlayer;
@@ -82,6 +86,7 @@ package com.longtailvideo.jwplayer.view {
 		protected var _instreamPlugin:IPlugin;
 		protected var _instreamAnim:Animations;
 		protected var _zikFullScreenUI:MovieClip;
+		protected var popUp:MovieClip;
 		protected var _zikEnrichUI:MovieClip;
 		
 		protected var _displayMasker:MovieClip;
@@ -222,6 +227,7 @@ package com.longtailvideo.jwplayer.view {
 		protected var RefLinks:Array = new Array();
 		protected var RefTime:Array = new Array();
 		protected var tocContent:Array = new Array();
+		protected var tocId:Array = new Array();
 		protected var tocTime:Array = new Array();
 		protected var hotspotX:Array = new Array();
 		protected var hotspotY:Array = new Array();
@@ -251,30 +257,36 @@ package com.longtailvideo.jwplayer.view {
 		public function View(player:IPlayer, model:Model) {
 			_player = player;
 			_model = model;
-			//References[0] = "Aggregating Preferences in Multi-Issue Domains";
-			//References[1] = "Preference Ordering";
-			//References[2] = "Critical Concept";
+			References[0] = "Aggregating Preferences in Multi-Issue Domains";
+			References[1] = "Preference Ordering";
+			References[2] = "Critical Concept";
 			
-			//RefLinks[0] = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.151.9419";
-			//RefLinks[1] = "http://faculty.arts.ubc.ca/pbartha/p321f01/p321ovh2.pdf";
-			//RefLinks[2] = "note:Make sure you understand this concept before proceeding. Please make use of the references provided or contact me to seek any clarifications.";
+			RefLinks[0] = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.151.9419";
+			RefLinks[1] = "http://faculty.arts.ubc.ca/pbartha/p321f01/p321ovh2.pdf";
+			RefLinks[2] = "note:Make sure you understand this concept before proceeding. Please make use of the references provided or contact me to seek any clarifications.";
 			
-			//tocContent[0]= "Preference Ordering";
-			//tocContent[1] = "Transitive Preferences";
-			//tocContent[2]= "Collective Preferences";
+			tocContent[0]= "Preference Ordering";
+			tocContent[1] = "Transitive Preferences";
+			tocContent[2]= "Collective Preferences";
 			
-			hotspotX[0] = "40";
-			hotspotY[0] = "50";
+			hotspotX[0] = "10";
+			hotspotY[0] = "48";
 			
-			hotspotX[1] = "30";
-			hotspotY[1] = "30";
+			hotspotX[1] = "15";
+			hotspotY[1] = "50";
+			
+			hotspotX[2] = "40";
+			hotspotY[2] = "40";
 		
-			hotspotTitles[0] = "Test 1";
-			hotspotTitles[1] = "Test 2";
 		
-			hotspotTime[0] = "5";hotspotTime[1] = "15";
-			hotspotDuration[0] = 5;
-			hotspotDuration[1]=10;
+			hotspotTitles[0] = "This is an Apple";
+			hotspotTitles[1] = "This is a Banana";
+			hotspotTitles[2] = "This is a Coconut";
+		
+			hotspotTime[0] = "38";hotspotTime[1] = "50";hotspotTime[2] = "50";
+			hotspotDuration[0] = 10;
+			hotspotDuration[1]=30;
+			hotspotDuration[2]=40;
 			//protected var hotspotDuration:Array = new Array();
 			//tocTime[0] = "75";tocTime[1] = "248";tocTime[2] = "310";
 			RootReference.stage.scaleMode = StageScaleMode.NO_SCALE;
@@ -361,7 +373,8 @@ package com.longtailvideo.jwplayer.view {
 
 		
 		
-		while(counter<hotspotDuration.length && _fullscreen)
+		
+		while(counter<hotspotDuration.length )
 			{	
 				
 				var timeN:Number = new Number(time);
@@ -392,12 +405,12 @@ package com.longtailvideo.jwplayer.view {
 			rectClip.visible=false;
 		}
 		function over(myEvent:MouseEvent):void {
-
+			ExternalInterface.call("ff_display_console_message", "OVER CALLED");
 	rectClip = new Sprite();
 		var rect:Sprite = new Sprite;
 		rect.graphics.clear;
-		rect.graphics.beginFill(0x000000, 1);
-		rect.graphics.drawRect(0, 0, 100, 100);
+		rect.graphics.beginFill(0x444444, 1);
+		rect.graphics.drawRoundRectComplex(0, 0, 100, 100, 5, 5, 5 , 5);
 		rect.graphics.endFill();
 		//ExternalInterface.call("ff_display_console_message", "OVER CALLED");
 		var tf:TextField = new TextField();
@@ -408,16 +421,16 @@ package com.longtailvideo.jwplayer.view {
 			if(myEvent.currentTarget is MovieClip) temp = myEvent.currentTarget as MovieClip;
 			if(myEvent.currentTarget is TextField) tempTF= myEvent.currentTarget as TextField;
 			var counter:Number = 0;
-			if(temp!=null)
+			if(temp!=null )
 				while(counter<hotspotDuration.length )
 				{	
-				
+					//ExternalInterface.call("ff_display_console_message", "CHECK CALLED"+hotspotMovieC[counter].x +"--"+temp.x);
 					if(hotspotMovieC[counter].x == temp.x)
 					{
-					//ExternalInterface.call("ff_display_console_message", "OVER CALLED");
+					
 					tf.text = hotspotTitles[counter];
-					//_zikEnrichUI.addChild(rectClip);
-					_zikFullScreenUI.addChild(rectClip);
+					if(deployMode=="ENRICH") _zikEnrichUI.addChild(rectClip);
+					if(deployMode=="CONSUME")popUp.addChild(rectClip);
 
 					}
 									counter++;
@@ -459,12 +472,13 @@ package com.longtailvideo.jwplayer.view {
 		rectClip.y = myEvent.stageY;
 		if(temp!=null && deployMode == "ENRICH")
 		{
-							
+			ExternalInterface.call("ff_display_console_message","INSDIE ENRICH ");	
 					if(temp.x == hotspotIcon.x)
 					{
 					tf.text = "Add Hotspot";
 					rectClip.x = hotspotIcon.x-50;
 				rectClip.y = hotspotIcon.y +45;
+				ExternalInterface.call("ff_display_console_message","ADD HOTSPOT ");
 					}
 					else if(temp.x == eTocIcon.x)
 					{
@@ -542,7 +556,7 @@ package com.longtailvideo.jwplayer.view {
 				rectClip.x = toc.x-50;
 				rectClip.y = toc.y +50;
 			}
-			_zikFullScreenUI.addChild(rectClip);
+			popUp.addChild(rectClip);
 		}
 		
 		rectClip.visible=true;
@@ -551,8 +565,8 @@ package com.longtailvideo.jwplayer.view {
 		rectClip.addChild(rect);
 		rectClip.addChild(tf);
 //ExternalInterface.call("ff_display_console_message", "Came here");
-		rect.width = tf.textWidth + 12;
-		rect.height = tf.textHeight + 12;
+		rect.width = tf.textWidth + 24;
+		rect.height = tf.textHeight + 24;
 		tf.x = Math.round(rect.width/2 - tf.width/2);
 		tf.y = Math.round(rect.height/2 - tf.height/2);
 		}
@@ -801,6 +815,7 @@ var secondaryTF:TextFormat = new TextFormat();
 			
 			
 			}
+			popUp = setupLayer("popUp", currentLayer++);
 			addQuestion.addEventListener(MouseEvent.CLICK, fAddQuestions);
 			
 			// if you want a hand cursor
@@ -938,8 +953,8 @@ var secondaryTF:TextFormat = new TextFormat();
 			booksBox.x = 90;
 			referenceBox.y = 10;
 			referenceBox.x = 90;
-				
-				
+			if(deployMode=="CONSUME")
+				initHotspot();
 			_zikFullScreenUI.addChild(professorBox);
 			_zikFullScreenUI.addChild(classNotesBox);
 			_zikFullScreenUI.addChild(booksBox);
@@ -967,15 +982,21 @@ var secondaryTF:TextFormat = new TextFormat();
 					addHotspotBox = new MovieClip();
 					
 					addHotspotBox.visible=true;
-					addHotspotBox.graphics.beginFill(0x555555);  
+					addHotspotBox.graphics.beginFill(0x555555, 0.4);  
 					addHotspotBox.graphics.drawRect( 0, 0, RootReference.stage.stageWidth, RootReference.stage.stageHeight );  
 					addHotspotBox.graphics.endFill();  
-					addHotspotBox.alpha= 0.4;
+					addHotspotBox.alpha= 1;
 					addHotspotBox.addEventListener(MouseEvent.CLICK, fAddHotspotDetails);
 					var t:TextField = new TextField();  
 					//t.embedFonts = true;
-					t.text = "Click on the point where you would like to add a HOTSPOT";
-	
+					ShowPopUp("Click on the point where you would like to add a HOTSPOT", 10000);
+					var pointer:MovieClip = new MovieClip();
+					var test:Bitmap = new Bitmap();
+					test = new HSDisplay();
+					pointer.addChild(test);
+					addHotspotBox.addChild(pointer);
+					pointer.startDrag("true");
+					Mouse.hide();
 					var tf:TextFormat = new TextFormat();
 					tf.color = 0xFFFFFF;
 					tf.size = 18;
@@ -985,13 +1006,15 @@ var secondaryTF:TextFormat = new TextFormat();
 					t.width=500;
 					t.y=RootReference.stage.stageHeight/2;
 					t.x = (RootReference.stage.stageWidth - t.width)/2;
-					addHotspotBox.addChild(t); 
+					//addHotspotBox.addChild(t); 
 					_zikEnrichUI.addChild(addHotspotBox);
 					
 			
 		}
 		
 		function fAddHotspotDetails (myEvent:MouseEvent) {
+		HidePopUp();
+		Mouse.show();
 				addHotspotBox.visible= false;
 				var time:String = ExternalInterface.call("ff_get_position") as String;
 				hotspotX[hotspotTitles.length] = (myEvent.stageX*100)/RootReference.stage.stageWidth;
@@ -1030,9 +1053,9 @@ var secondaryTF:TextFormat = new TextFormat();
 					hotspotTitle.width=250;
 					hotspotTitle.height = 20;
 					hotspotTitle.text="Title";
-					//myFirstTextBox.addEventListener(TextEvent.TEXT_INPUT, inputEventCapture);
+					hotspotTitle.addEventListener(MouseEvent.CLICK, clearText);
 					var button:TextField = new TextField();
-					button.text = "Submit";
+					button.htmlText = "<a href='event:null'>Submit</a>";
 					button.x = 70;
 					button.width =70;
 					button.y = 115;
@@ -1042,7 +1065,7 @@ var secondaryTF:TextFormat = new TextFormat();
 					button.setTextFormat(tf);
 					hotspotDetailsBox.addChild(button);
 					var button2:TextField = new TextField();
-					button2.text = "Cancel";
+					button2.htmlText = "<a href='event:null'>Cancel</a>";
 					button2.x = 160;
 					button2.width =70;
 					button2.y = 115;
@@ -1074,7 +1097,7 @@ var secondaryTF:TextFormat = new TextFormat();
 					hotspotMovieC[HotspotInit].addChild(test);
 					hotspotMovieC[HotspotInit].x=(new Number(hotspotX[HotspotInit])*RootReference.stage.stageWidth)/100;
 					hotspotMovieC[HotspotInit].y=(new Number(hotspotY[HotspotInit])*RootReference.stage.stageHeight)/100;
-					_zikFullScreenUI.addChild(hotspotMovieC[HotspotInit]);
+					popUp.addChild(hotspotMovieC[HotspotInit]);
 					//ExternalInterface.call("ff_display_console_message", "HOTSPOT INIT"+"---"+hotspotMovieC[HotspotInit].x);
 					hotspotMovieC[HotspotInit].visible=false;
 			}
@@ -1093,17 +1116,24 @@ var secondaryTF:TextFormat = new TextFormat();
 					hotspotMovieC[hotspotDuration.length].x=(new Number(hotspotX[hotspotDuration.length])*RootReference.stage.stageWidth)/100;
 					hotspotMovieC[hotspotDuration.length].y=(new Number(hotspotY[hotspotDuration.length])*RootReference.stage.stageHeight)/100;
 					//ExternalInterface.call("ff_display_console_message", "Timer is Triggered"+hotspotMovieC[hotspotDuration.length].x + hotspotMovieC[hotspotDuration.length].y);
-					//_zikEnrichUI.addChild(hotspotMovieC[hotspotDuration.length]);
-					_zikFullScreenUI.addChild(hotspotMovieC[hotspotDuration.length]);
+					if(deployMode=="ENRICH")_zikEnrichUI.addChild(hotspotMovieC[hotspotDuration.length]);
+					if(deployMode=="CONSUME")_zikFullScreenUI.addChild(hotspotMovieC[hotspotDuration.length]);
 								hotspotDuration[hotspotDuration.length]="999";
 			
 
 			var inputString:String = hotspotTitle.text+"||("+hotspotX[hotspotTitles.length-1]+","+hotspotY[hotspotTitles.length-1]+")||"+hotspotTime[hotspotTitles.length-1];
 			ExternalInterface.call("ff_add_hs",inputString );
 			addnBox.visible=false;
+			ShowPopUp("Click the hotspot again to disable it", 4000);
 			ExternalInterface.call("ff_play_position", hotspotTime[hotspotTitles.length-1]);
 					
 			
+		}
+		
+				private function HidePopUp():void
+		{
+			popUp.visible=false;
+			//popUpTimer.stop();
 		}
 		function CancelHSTitle(myEvent:MouseEvent) {
 			hotspotDetailsBox.visible = false;
@@ -1168,13 +1198,13 @@ var secondaryTF:TextFormat = new TextFormat();
 					rect.width = 300;
 					rect.height = 20;
 					
-
+					ExternalInterface.call("ff_display_console_message", counter+"COUNTERVALUE");
 					while(counter>=0)
 					{
 						var t1:TextField = new TextField();  
 					//t.embedFonts = true;
 						t1.htmlText = " <a href='event:null'><u>"+References[new Number(ReferencesTBS[counter])]+"</u></a>";
-						t1.y=10+(References.length-1-counter)*25;
+						t1.y=10+(ReferencesTBS.length-1-counter)*25;
 						t1.x=10;
 						t1.multiline = false;
 						t1.wordWrap = false;
@@ -1231,8 +1261,8 @@ var secondaryTF:TextFormat = new TextFormat();
 		
 		var counter:Number=0;
 		while(counter<=References.length-1){
-		if(temp.htmlText.indexOf(References[counter])!=-1) {ExternalInterface.call("ff_navigate_to_url", RefLinks[counter]);
-			ExternalInterface.call("ff_play_position", RefTime[counter]);}
+		if(temp.htmlText.indexOf(References[counter])!=-1) {ExternalInterface.call("ff_navigate_to_url", RefLinks[counter]); }
+			//ExternalInterface.call("ff_play_position", RefTime[counter]);}
 		counter++;
 		}
 		}
@@ -1406,6 +1436,7 @@ addqBox.graphics.clear();
 					myFirstTextBox.x = 20;
 					myFirstTextBox.y=70;
 					myFirstTextBox.width=250;
+					
 					myFirstTextBox.height = 20;
 					if(editNQMode>-1)
 					myFirstTextBox.text=Questions[editNQMode];
@@ -1558,6 +1589,8 @@ addqBox.graphics.clear();
 					myFirstTextBox.y=70;
 					myFirstTextBox.width=250;
 					myFirstTextBox.height = 20;
+					myFirstTextBox.tabEnabled=true;
+					myFirstTextBox.tabIndex=1;
 					myFirstTextBox.addEventListener(MouseEvent.CLICK, clearText);
 					descTextBox.type = TextFieldType.INPUT; 
 					descTextBox.background = true; 
@@ -1567,6 +1600,7 @@ addqBox.graphics.clear();
 					else
 					descTextBox.text="Description";
 					descTextBox.x = 20;
+					descTextBox.tabIndex = 2;
 					descTextBox.y=100;
 					descTextBox.width=250;
 					descTextBox.height = 20;
@@ -1610,7 +1644,7 @@ addqBox.graphics.clear();
 		}
 		
 		
-		
+				private var popUpID:Number = -1;
 		function fAddENote(myEvent:MouseEvent){
 						Security.allowDomain("*");
 						addqBox.visible=false;	
@@ -1682,6 +1716,9 @@ addqBox.graphics.clear();
 					myFirstTextBox.y=70;
 					myFirstTextBox.width=250;
 					myFirstTextBox.height = 20;
+					myFirstTextBox.tabEnabled=true;
+					myFirstTextBox.tabIndex=1;
+					myFirstTextBox.addEventListener(MouseEvent.CLICK, clearText);
 					descTextBox.type = TextFieldType.INPUT; 
 					descTextBox.background = true; 
 					addnBox.addChild(descTextBox); 
@@ -1690,11 +1727,14 @@ addqBox.graphics.clear();
 					descTextBox.y=100;
 					descTextBox.width=250;
 					descTextBox.height = 20;
+					descTextBox.tabEnabled=true;
+					descTextBox.tabIndex=2;
+					descTextBox.addEventListener(MouseEvent.CLICK, clearText);
 					//myFirstTextBox.addEventListener(TextEvent.TEXT_INPUT, inputEventCapture);
 					var button:TextField = new TextField();
-					button.text = "Submit";
-					button.x = 130;
-					button.width =70;
+					button.htmlText = "<a href='event:null'>Associate Note</a>";
+					button.x = 70;
+					button.width =130;
 					button.y = 145;
 					button.height=30;
 					button.border = true;
@@ -1702,7 +1742,7 @@ addqBox.graphics.clear();
 					button.setTextFormat(tf);
 					addnBox.addChild(button);
 					var button2:TextField = new TextField();
-					button2.text = "Cancel";
+					button2.htmlText = "<a href='event:null'>Cancel</a>";
 					button2.x = 220;
 					button2.width =70;
 					button2.y = 145;
@@ -1722,6 +1762,38 @@ addqBox.graphics.clear();
 
 			}
 		}
+		private function ShowPopUp(text:String, time:Number=1700):void
+		{
+			if(popUpID!=-1) clearTimeout(popUpID);
+			while (popUp.numChildren > 0) {
+				popUp.removeChildAt(0);
+			}	
+			popUp.alpha = 0.6;
+			var rect:Sprite = new Sprite();
+			rect.graphics.clear;
+			rect.graphics.beginFill(0x000000, 1);
+			rect.graphics.drawRoundRectComplex(0,0,200,50,5,5,5,5);
+			rect.graphics.endFill();
+			
+			var tf:TextField = new TextField();
+			tf.autoSize = "left";
+			tf.textColor = 0xFFFFFF;
+			var my_fmt:TextFormat = new TextFormat();
+			my_fmt.size = 18;
+			tf.defaultTextFormat = my_fmt;
+			tf.text = text;
+			rect.width = tf.textWidth + 12;
+			rect.height = tf.textHeight + 12;
+			tf.x = Math.round(rect.width/2 - tf.width/2);
+			tf.y = Math.round(rect.height/2 - tf.height/2);
+			popUp.addChild(tf);
+			popUp.addChildAt(rect, 0);
+			popUp.visible = true;
+			popUp.x=(RootReference.stage.stageWidth-popUp.width)/2;
+			popUp.y=RootReference.stage.stageHeight - 200;
+			popUpID=setTimeout(HidePopUp, time);
+			
+		}
 		
 		
 		function fAddEToc(myEvent:MouseEvent){
@@ -1732,7 +1804,28 @@ addqBox.graphics.clear();
 						nnqBox.removeChildAt(0);
 					}
 					nnqBox.graphics.clear();
-			
+				TOCData = ExternalInterface.call("ff_get_toc");
+				tocContent.splice(0); tocTime.splice(0);
+				tocId.splice(0);
+				
+				while(TOCData!="")
+				{
+					var delimQ:Number = TOCData.indexOf("|||");
+					if(delimQ!=-1)
+						var qTemp:String = TOCData.substr(0,delimQ);
+					else var qTemp:String = TOCData.substr(0);
+					var delim1:Number = qTemp.indexOf("||");
+					tocId[tocId.length] = qTemp.substr(0,delim1);
+					qTemp = qTemp.substr(delim1+2);
+					tocContent[tocContent.length] = qTemp;
+					ExternalInterface.call("ff_display_console_message", tocContent[tocContent.length -1 ] + "---" +tocId[tocId.length-1]+"---");
+					if(delimQ != -1) TOCData = TOCData.slice(delimQ+3);
+					else TOCData="";
+					for(var i:Number=0; i<tocContent.length;i++) {
+					ExternalInterface.call("ff_display_console_message", tocContent[i] + "---" +tocId[i]+"---"); }
+					
+				}
+				
 			if (ExternalInterface.available) 
 			{
 					ExternalInterface.call("ff_pause_player");
@@ -1773,7 +1866,9 @@ addqBox.graphics.clear();
 				
 					titleText.setTextFormat(tf2);
 					titleText.x=10;
+					if(tocContent.length>0)
 					titleText.y=70;
+					else titleText.y=85;
 					titleText.width=50;
 					nnqBox.addChild(titleText);  
 					
@@ -1781,24 +1876,30 @@ addqBox.graphics.clear();
 					
 					var descText:TextField = new TextField();  
 					//t.embedFonts = true;
+					
 					descText.text = "Associate Item";
 					descText.setTextFormat(tf2);
 					descText.x=10;
 					descText.y=100;
 					descText.width=75;
+					if(tocContent.length>0)
 					nnqBox.addChild(descText);  
 					
 					
 					myFirstTextBox.type = TextFieldType.INPUT; 
 					myFirstTextBox.background = true; 
 					myFirstTextBox.text="Enter Toc Item";
+					myFirstTextBox.addEventListener(MouseEvent.CLICK,clearText);
 					nnqBox.addChild(myFirstTextBox); 
 					myFirstTextBox.x = 90;
+					if(tocContent.length>0)
 					myFirstTextBox.y=70;
+					else myFirstTextBox.y=85;
 					myFirstTextBox.width=270;
 					myFirstTextBox.height = 20;
 					descTextBox.type = TextFieldType.INPUT; 
 					descTextBox.background = true; 
+					if(tocContent.length>0)
 					nnqBox.addChild(descTextBox); 
 					descTextBox.text="Associate this as a subsection of previous TOC";
 					descTextBox.x = 90;
@@ -1808,8 +1909,8 @@ addqBox.graphics.clear();
 					dropdown.visible=false;
 					descTextBox.addEventListener(MouseEvent.CLICK, fShowDropDown);
 					var button:TextField = new TextField();
-					button.text = "Associate TOC";
-					button.x = 70;
+					button.htmlText = "<a href='event:null'>Associate TOC</a>";
+					button.x = 95;
 					button.width =140;
 					button.y = 145;
 					button.height=30;
@@ -1818,8 +1919,8 @@ addqBox.graphics.clear();
 					button.setTextFormat(tf);
 					nnqBox.addChild(button);
 					var button2:TextField = new TextField();
-					button2.text = "Cancel";
-					button2.x = 220;
+					button2.htmlText = "<a href='event:null'>Cancel</a>";
+					button2.x = 245;
 					button2.width =70;
 					button2.y = 145;
 					button2.border = true;
@@ -1904,7 +2005,17 @@ addqBox.graphics.clear();
 			//JS UPDATE CALL
 
 			var time:String = ExternalInterface.call("ff_get_position") as String;
-			var inputString:String = myFirstTextBox.text+"||"+selectedTOC+"||"+time;
+			var parentID:String = "0";
+			for(var i:Number = 0; i<tocContent.length; i++)
+			{
+				if(tocContent[i]==selectedTOC)
+				{
+					parentID=tocId[i];
+					ExternalInterface.call("ff_display_console_message", "parentID" + tocId[i] +"Comaprison between" + tocContent[i] + "---" + selectedTOC);
+					break;
+				}
+			}
+			var inputString:String = myFirstTextBox.text+"||"+parentID+"||"+time;
 			tocContent[tocContent.length] = myFirstTextBox.text;
 			ExternalInterface.call("ff_add_toc",inputString );
 			nnqBox.visible=false;
@@ -1979,7 +2090,10 @@ addqBox.graphics.clear();
 					addqBox.addChild(descText);  
 					
 					myFirstTextBox.type = TextFieldType.INPUT; 
+					myFirstTextBox.addEventListener(MouseEvent.CLICK, clearText);
 					myFirstTextBox.background = true; 
+					myFirstTextBox.tabEnabled=true;
+					myFirstTextBox.tabIndex=1;
 					addqBox.addChild(myFirstTextBox); 
 					myFirstTextBox.text="";
 					myFirstTextBox.x = 120;
@@ -1992,12 +2106,15 @@ addqBox.graphics.clear();
 					descTextBox.text="http://";
 					descTextBox.x = 120;
 					descTextBox.y=100;
+					descTextBox.tabEnabled=true;
+					descTextBox.tabIndex=2;
 					descTextBox.width=250;
 					descTextBox.height = 20;
+					descTextBox.addEventListener(MouseEvent.CLICK, clearText);
 					//myFirstTextBox.addEventListener(TextEvent.TEXT_INPUT, inputEventCapture);
 					var button:TextField = new TextField();
 					button.setTextFormat(tf2);
-					button.text = "Associate Reference";
+					button.htmlText = "<a href='event:null'>Associate Reference</a>";
 					button.x = 70;
 					button.width =160;
 					button.y = 145;
@@ -2007,7 +2124,7 @@ addqBox.graphics.clear();
 					button.setTextFormat(tf);
 					addqBox.addChild(button);
 					var button2:TextField = new TextField();
-					button2.text = "Cancel";
+					button2.htmlText = "<a href='event:null'>Cancel</a>";
 					button2.x = 250;
 					button2.width =70;
 					button2.y = 145;
@@ -2253,7 +2370,7 @@ addqBox.graphics.clear();
 						var t1:TextField = new TextField();  
 					//t.embedFonts = true;
 						t1.htmlText =  "<a href='event:null'>"+ Questions[new Number(QuestionsTBS[counter])] + "</a>";
-						t1.y=10+(QuestionsTBS.length-1-counter)*25;
+						t1.y=rect.height;
 						t1.x=10;
 						t1.height = 30;
 						t1.multiline = false;
@@ -2266,7 +2383,7 @@ addqBox.graphics.clear();
 						t1.wordWrap = true;
 						}
 						t1.setTextFormat(secondaryTF);
-						rect.height = t1.y + t1.textHeight +10;
+						rect.height = t1.y + t1.height +10;
 						t1.addEventListener(MouseEvent.CLICK, playStartQ);
 						rectClipNotes.addChild(t1);
 						var editNQ:MovieClip = new MovieClip();
@@ -2311,7 +2428,6 @@ addqBox.graphics.clear();
 			var tempTF:TextField = myEvent.currentTarget as TextField;
 			tempTF.text="";
 			tempTF.removeEventListener(MouseEvent.CLICK, clearText);
-		
 		}
 		
 		function playStartNotes(myEvent:MouseEvent){
@@ -2394,7 +2510,7 @@ public function handleMouseWheel(event:MouseEvent){
 					rect.graphics.endFill();
 					var rectTitle:Sprite = new Sprite;
 					rectTitle.graphics.beginFill(0x777777, 1);
-					rectTitle.graphics.drawRoundRectComplex(0, 0, 280, 45, 20, 20, 0 , 0);
+					rectTitle.graphics.drawRoundRectComplex(0, 0, 280, 45, 0, 0, 0 , 0);
 					rectTitle.graphics.endFill();
 
 					rectTitle.width = 270;
@@ -2433,7 +2549,7 @@ public function handleMouseWheel(event:MouseEvent){
 						var t1:TextField = new TextField();  
 					//t.embedFonts = true;
 						t1.htmlText = "<a href='event:null'>"+NotesTitle[new Number(NotesTitleTBS[counter])]+ "</a>";
-						t1.y=10+(NotesTitleTBS.length-1-counter)*25;
+						t1.y=rect.height;
 						t1.x=10;
 						t1.multiline = false;
 						t1.wordWrap = false;
@@ -2735,10 +2851,29 @@ public function handleMouseWheel(event:MouseEvent){
 					hotspotDetailsBox.x= (RootReference.stage.stageWidth - 300)/2;
 				hotspotDetailsBox.y= (RootReference.stage.stageHeight - 170)/2;
 				
+				TOCData = ExternalInterface.call("ff_get_toc");
+				tocContent.splice(0); tocTime.splice(0);
+				tocId.splice(0);
+				
+				while(TOCData!="")
+				{
+					var delimQ:Number = TOCData.indexOf("|||");
+					if(delimQ!=-1)
+						var qTemp:String = TOCData.substr(0,delimQ);
+					else var qTemp:String = TOCData.substr(0);
+					var delim1:Number = qTemp.indexOf("||");
+					tocId[tocId.length] = qTemp.substr(0,delim1);
+					qTemp = qTemp.substr(delim1+2);
+					tocContent[tocContent.length] = qTemp;
+					ExternalInterface.call("ff_display_console_message", tocContent[tocContent.length -1 ] + "---" +tocId[tocId.length-1]+"---");
+					if(delimQ != -1) TOCData = TOCData.slice(delimQ+3);
+					else TOCData="";
+				}
+				
 				}
 				if(deployMode == "CONSUME") 
 				{
-						initHotspot();
+
 						_zikFullScreenUI.visible = true;
 						viewQuestion.x= RootReference.stage.stageWidth-55;
 						toc.x = RootReference.stage.stageWidth-55*2;
@@ -2782,7 +2917,7 @@ public function handleMouseWheel(event:MouseEvent){
 							RefLinks[RefLinks.length] =  qTemp.substr(0,delim1);;
 							qTemp = qTemp.substr(delim1+2);
 							RefTime[RefTime.length] = qTemp;
-							//ExternalInterface.call("ff_display_console_message", References[References.length -1 ] + "---" +RefLinks[RefLinks.length-1]+"---");
+							ExternalInterface.call("ff_display_console_message", References[References.length -1 ] + "---" +RefLinks[RefLinks.length-1]+"---");
 							if(delimQ != -1) EduRefData = EduRefData.slice(delimQ+3);
 							else EduRefData="";
 						}
@@ -2799,7 +2934,7 @@ public function handleMouseWheel(event:MouseEvent){
 							RefLinks[RefLinks.length] = qTemp.substr(0,delim1);
 							qTemp = qTemp.substr(delim1+2);
 							RefTime[RefTime.length] = qTemp;
-							//ExternalInterface.call("ff_display_console_message", References[References.length -1 ] + "---" +RefLinks[RefLinks.length-1]+"---");
+							ExternalInterface.call("ff_display_console_message", References[References.length -1 ] + "---" +RefLinks[RefLinks.length-1]+"---");
 							if(delimQ != -1) EduNoteData = EduNoteData.slice(delimQ+3);
 							else EduNoteData="";
 						}
