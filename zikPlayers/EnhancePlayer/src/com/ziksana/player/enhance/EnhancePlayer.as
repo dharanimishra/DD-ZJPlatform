@@ -213,6 +213,7 @@ package com.ziksana.player.enhance
 		protected var cam:Camera = Camera.getCamera();
 		protected var mic:Microphone;
 		private var ns:NetStream = null;
+
 		private var ns2:NetStream = null;
 		private var presentNS:NetStream = null;
 		private var currentlyPlayingVideo:Number = 0;
@@ -220,7 +221,7 @@ package com.ziksana.player.enhance
 		private var nc:NetConnection = new NetConnection();
 		private var nc2:NetConnection = new NetConnection();
 		private var videoRecordName:String;
-		private const SLIDER_LENGTH = 280;
+		private const SLIDER_LENGTH:Number = 280;
 		private var nsStopped:Boolean = false;
 		
 		
@@ -274,9 +275,9 @@ package com.ziksana.player.enhance
 		
 		public function EnhancePlayer()
 		{
-			nc.connect("rtmp://54.243.235.88/oflaDemo");
-			nc2.connect("rtmp://54.243.235.88/oflaDemo");
-			//deployMode = ExternalInterface.call("ff_player_mode"); //"enrich" "enhance" "playback" "consume"
+			nc.connect("rtmp://video.beta.ziksana.com/oflaDemo");
+			nc2.connect("rtmp://video.beta.ziksana.com/oflaDemo");
+			deployMode = ExternalInterface.call("ff_player_mode"); //"enrich" "enhance" "playback" "consume"
 			addEventListener( Event.ADDED_TO_STAGE, DoAfterAddingToStage );
 			nc.addEventListener(NetStatusEvent.NET_STATUS, NSConnectHandler);
 			nc2.addEventListener(NetStatusEvent.NET_STATUS, NSConnectHandler2);
@@ -292,6 +293,9 @@ package com.ziksana.player.enhance
 					ShowPopUp("Video server connected! Loading content...", 10000);
 					else {
 						ShowPopUp("Loading Complete.");
+						slider.visible = true;
+						controls.visible = true;
+						videoCapture.visible=true;
 						loadingGif.visible=false;
 					}
 					serverConnected = true;
@@ -301,7 +305,7 @@ package com.ziksana.player.enhance
 
 						ns.addEventListener(NetStatusEvent.NET_STATUS, statusHandler);
 						ns.soundTransform = new SoundTransform(1); 
-						ns.client = { onStatus:function():void{}};
+						ns.client = { onMetaData:function(info:Object):void{trace("metadata: duration=" + info.duration + " framerate=" + info.framerate);}, onStatus:function():void{}};
 					}
 					//if(pendingStartRecording) { StartRecording(); pendingStartRecording = false; }
 					break;
@@ -422,6 +426,8 @@ package com.ziksana.player.enhance
 		
 		public function StartRecording():void
 		{
+			trace("RECORIDNG START");
+			ns.close();
 			ns.attachCamera(cam);
 			mic = Microphone.getMicrophone();
 			ns.attachAudio(mic);
@@ -442,17 +448,13 @@ package com.ziksana.player.enhance
 		public function PlayRecording(time:Number = 0):void
 		{
 			// attach the netStream object to the video object
+			ns.close();
 			videoContainer.attachNetStream(ns);	
 			// play back the recorded stream
 			nsStopped = false;
 			currentlyPlayingVideo=0;
 			ns.play(recordingData.getVideoFeed(0));
-			if(recordingData.getVideoFeed(1))
-				{
-					ns2.play(recordingData.getVideoFeed(1));
-					ns2.pause();
-				}
-			if(time>0) ns.seek(time);
+
 			presentNS = ns;
 		}
 		private function ShowPopUp(text:String, time:Number=1700):void
@@ -469,6 +471,10 @@ package com.ziksana.player.enhance
 			rect.graphics.endFill();
 			
 			var tf:TextField = new TextField();
+			var tFormat:TextFormat = new TextFormat();
+			tFormat.font= "Calibri";
+			tFormat.size = 15;
+			tf.defaultTextFormat = tFormat;
 			tf.autoSize = "left";
 			tf.textColor = 0xFFFFFF;
 			tf.text = text;
@@ -494,11 +500,13 @@ package com.ziksana.player.enhance
 		private function _onMouseDown (e:MouseEvent):void {
 
 			var time:Number = getTimer();
-			presentSlideStrokes[presentSlideStrokes.length]=new RecordEvent(RecordEvent.MOUSE_DOWN, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,time);
+			presentSlideStrokes[presentSlideStrokes.length]=new RecordEvent(RecordEvent.MOUSE_DOWN, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,lastSwitchTime +ns.time*1000);
 			if(_playerState=="RECORDING")
 			{
-				recordingData.AddEvent(new RecordEvent(RecordEvent.MOUSE_DOWN, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,time));
-				
+				{
+					recordingData.AddEvent(new RecordEvent(RecordEvent.MOUSE_DOWN, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,lastSwitchTime+ns.time*1000+ 0));
+					trace("Adding Event at: NS>TIME" +ns.time*1000+"LAST SWITCH"+ lastSwitchTime);
+				}
 				/*var revent:XML=<RECORD_EVENT>
 						<TYPE> {RecordEvent.MOUSE_DOWN} </TYPE>
 						<X> {e.localX} </X>
@@ -518,10 +526,10 @@ package com.ziksana.player.enhance
 		//
 		private function _onMouseUp (e:MouseEvent):void {
 			var time:Number = getTimer();
-			presentSlideStrokes[presentSlideStrokes.length]=new RecordEvent(RecordEvent.MOUSE_UP, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,time);
+			presentSlideStrokes[presentSlideStrokes.length]=new RecordEvent(RecordEvent.MOUSE_UP, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,lastSwitchTime +ns.time *1000);
 			if(_playerState=="RECORDING")
 			{
-				recordingData.AddEvent(new RecordEvent(RecordEvent.MOUSE_UP, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,time));
+				recordingData.AddEvent(new RecordEvent(RecordEvent.MOUSE_UP, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,lastSwitchTime+ns.time*1000+ 0));
 				/*var revent:XML=<RECORD_EVENT>
 										<TYPE> {RecordEvent.MOUSE_UP} </TYPE>
 										<X> {e.localX} </X>
@@ -543,10 +551,10 @@ package com.ziksana.player.enhance
 		//
 		private function _onMouseMove (e:MouseEvent):void {
 			var time:Number = getTimer();
-			presentSlideStrokes[presentSlideStrokes.length]=new RecordEvent(RecordEvent.MOUSE_MOVE, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,time);
+			presentSlideStrokes[presentSlideStrokes.length]=new RecordEvent(RecordEvent.MOUSE_MOVE, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected,ns.time*1000+ lastSwitchTime);
 			if(_playerState=="RECORDING")
 			{
-				recordingData.AddEvent(new RecordEvent(RecordEvent.MOUSE_MOVE, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected, time));
+				recordingData.AddEvent(new RecordEvent(RecordEvent.MOUSE_MOVE, e.localX/strokesData.width, e.localY/strokesData.height, e.ctrlKey, toolSelected, lastSwitchTime+ns.time*1000+ 0));
 					/*var revent:XML =<RECORD_EVENT>
 										<TYPE> {RecordEvent.MOUSE_MOVE} </TYPE>
 										<X> {e.localX} </X>
@@ -616,7 +624,7 @@ package com.ziksana.player.enhance
 			
 			ShowPopUp("...Connecting to Video Server...", 10000);
 
-			loadingGifDO.x = (stage.stageWidth - loadingGifDO.width) / 2;
+			loadingGifDO.x = (stage.stageWidth - loadingGifDO.width +30) / 2;
 			loadingGifDO.y = (stage.stageHeight - loadingGifDO.height) / 2;
 
 			
@@ -627,25 +635,32 @@ package com.ziksana.player.enhance
 			{
 				AddConsumeUI();
 			}
-			videoCapture.visible= false;
+
+			slider.visible = false;
+			controls.visible = false;
+			
 			//TESTING
-			LoadImages("http://54.243.235.88/zikload-xml/uploads/document/f1359221827/thumbnails/", 7);
+			//LoadImages("http://54.243.235.88/zikload-xml/uploads/document/f1359221827/thumbnails/", 7);
 			if(deployMode=="playback" || deployMode=="enrich" || deployMode =="consume")
 			{
-				//var rFilePath:String = "https://video.beta.ziksana.com/zikload/flashrecording/dataTesting1.ecxml";
+				//var rFilePath:String = "https://video.beta.ziksana.com/zikload/flashrecording/dataTesting1361186301.ecxml?time="+getTimer();
 				var rFilePath:String = ExternalInterface.call("ff_get_recorded_file");
+				rFilePath += "?time="+getTimer();
 				var start:Number = rFilePath.lastIndexOf("/data");
-				fileNameRecorded = rFilePath.substr(start+1);
+				var end:Number = rFilePath.lastIndexOf("time=");
+				fileNameRecorded = rFilePath.substr(start+1, end-start-2);
+				trace("FILENAME:"+fileNameRecorded);
 				var myLoader:URLLoader = new URLLoader();
 				myLoader.load(new URLRequest(rFilePath));
 				myLoader.addEventListener(Event.COMPLETE, processXML);
 			}
 			else if (deployMode == "enhance")
 			{
-				//var imagePath:String= ExternalInterface.call("ff_load_images");
-				//LoadImagesJS(imagePath); /// "Http://54.243.235.88/zikload-xml/uploads/doc/thumbnails|||10"
+				var imagePath:String= ExternalInterface.call("ff_load_images");
+				LoadImagesJS(imagePath); /// "Http://54.243.235.88/zikload-xml/uploads/doc/thumbnails|||10"
 			}
 			ChangeOptionMode(null);
+			videoCapture.visible=false;
 			videoCaptureMode.alpha=0.4;
 			
 			//var myLoader:URLLoader = new URLLoader();
@@ -1708,7 +1723,7 @@ package com.ziksana.player.enhance
 			videoRecordName = xmlData.VIDEO[0];
 			//StartRecording();
 			var numberOfEvents:Number = xmlData.RECORD_EVENT.length();
-			trace(xmlData.INIT[0].IMAGEPATH +"---"+ numberOfEvents);
+			//trace(xmlData.INIT[0].IMAGEPATH +"---"+ numberOfEvents);
 			for (var i=0; i<numberOfEvents; i++)
 			{
 				var ctrlKey:Boolean = (xmlData.RECORD_EVENT[i].CTRLKEY=="TRUE")? true: false;
@@ -1736,7 +1751,7 @@ package com.ziksana.player.enhance
 				image.x=10;
 				image.y=15;
 				var urlReq:URLRequest = new URLRequest(path+"img"+i+".jpg");
-				trace("loading image: " + path+"img"+i+".jpg");
+				//trace("loading image: " + path+"img"+i+".jpg");
 				ldr.load(urlReq);
 				ldr.contentLoaderInfo.addEventListener(Event.COMPLETE, imageCompleteHandler);
 
@@ -1798,6 +1813,9 @@ package com.ziksana.player.enhance
 				ShowPopUp("Content Loaded , Connecting to Video Server..", 10000);
 			else {
 				ShowPopUp("Loading Complete");
+				slider.visible = true;
+				controls.visible = true;
+				videoCapture.visible=true;
 				loadingGif.visible=false;
 			}
 		}
@@ -1881,7 +1899,7 @@ package com.ziksana.player.enhance
 					if(_playerState=="RECORDING")
 					{
 						var time:Number = getTimer();
-						recordingData.AddEvent(new RecordEvent(RecordEvent.SLIDE_NEXT, presentSlide, 0, false, 0, time));
+						recordingData.AddEvent(new RecordEvent(RecordEvent.SLIDE_NEXT, presentSlide, 0, false, 0, lastSwitchTime+ns.time*1000+ 0));
 					}
 					strokesData = new BitmapData(sliderImages[i+1].width,sliderImages[i+1].height,true,0);
 					strokesBmp = new Bitmap(strokesData);
@@ -1910,7 +1928,7 @@ package com.ziksana.player.enhance
 					if(_playerState=="RECORDING")
 					{
 						var time:Number = getTimer();
-						recordingData.AddEvent(new RecordEvent(RecordEvent.SLIDE_PREV, presentSlide, 0, false, 0, time));
+						recordingData.AddEvent(new RecordEvent(RecordEvent.SLIDE_PREV, presentSlide, 0, false, 0,  lastSwitchTime+ns.time*1000));
 						/*var revent:XML =<RECORD_EVENT>
 																<TYPE> {RecordEvent.SLIDE_PREV} </TYPE>
 																<X> {presentSlide} </X>
@@ -1970,12 +1988,14 @@ package com.ziksana.player.enhance
 						ShowPopUp("Unable to handle request. Choose another point to start recording");
 						return;
 					}
-					var timeOfSwitch:Number = lastSwitchTime + presentNS.time*1000;
+					var timeOfSwitch:Number = lastSwitchTime+presentNS.time*1000 ;
+					lastSwitchTime =  timeOfSwitch;
+					trace("TIME OF SWITCH:"+ lastSwitchTime);
 					var endTime = presentNS.time;
 					_playerState == "PAUSED";
-					presentNS.pause();
+					ns.pause();
 					
-					presentNS.close();
+					ns.close();
 					trace("RE-RECORDING");
 					strokes.addEventListener (MouseEvent.MOUSE_DOWN, _onMouseDown);
 					strokes.addEventListener (MouseEvent.MOUSE_MOVE, _onMouseMove);
@@ -1991,7 +2011,7 @@ package com.ziksana.player.enhance
 					recordingData.reRecordFrom(currentlyPlayingEvent, timeOfSwitch, getTimer());
 					currentlyPlayingEvent = 0;
 					_playerState = "RECORDING";
-					recordingData.AddEvent(new RecordEvent(RecordEvent.VIDEO_SWITCH, addedVideoNumber, 0, false, 0,getTimer()+1));
+					recordingData.AddEvent(new RecordEvent(RecordEvent.VIDEO_SWITCH, addedVideoNumber, 0, false, 0,timeOfSwitch));
 				}
 				else if(recordingData.hasRecordingData && !recordingData.isRecording && (currentlyPlayingTime==0 && _playerState=="PAUSED"))
 				{
@@ -2027,8 +2047,9 @@ package com.ziksana.player.enhance
 			{
 				if(recordingData.isRecording)
 				{
+					var timeOfSwitch:Number = lastSwitchTime + ns.time*1000 ;
 					ShowPopUp("Stopping Record. You can now play it back!");
-					recordingData.stopRecording();
+					recordingData.stopRecording(timeOfSwitch);
 					StopRecording();
 				}
 				else 
@@ -2152,22 +2173,23 @@ package com.ziksana.player.enhance
 		private function SwitchNetStream(videoName:String):void{
 			trace("SWITCH STREAM");
 			//videoContainer.attachNetStream(null);
-			if(currentlyPlayingVideo%2==0){	
-				presentNS = ns2;
+				
 				ns.close();
+				ns = new NetStream(nc);	
+				
+				ns.addEventListener(NetStatusEvent.NET_STATUS, statusHandler);
+				ns.soundTransform = new SoundTransform(1); 
+				ns.client = { onMetaData:function(info:Object):void{trace("metadata: duration=" + info.duration + " framerate=" + info.framerate);}, onStatus:function():void{}};
 				currentlyPlayingVideo++;
-				if(recordingData.getVideoFeed(currentlyPlayingVideo+1)!=null)
-				{
-					ns.play(recordingData.getVideoFeed(currentlyPlayingVideo+1));
-					ns.pause();
-				}
-				videoContainer.attachNetStream(presentNS);
+					ns.play(videoName);
+					presentNS = ns;
+				videoContainer.attachNetStream(ns);
 				//presentNS.seek(0);
-				presentNS.resume();
-			}
+			/*
 			else {
+				
+				presentNS.close();
 				presentNS = ns;
-				ns2.close();
 				currentlyPlayingVideo++;
 				if(recordingData.getVideoFeed(currentlyPlayingVideo+1)!=null)
 				{
@@ -2177,7 +2199,7 @@ package com.ziksana.player.enhance
 					videoContainer.attachNetStream(presentNS);
 				//presentNS.seek(0);
 				presentNS.resume();
-			}
+			}*/
 		}
 		var lastSwitchTime:Number = 0;
 		private function SimulateEvents(time:Number, seekLevel:Number = 0):void {
@@ -2203,8 +2225,8 @@ package com.ziksana.player.enhance
 						GotoPreviousImage(null);
 					else if (currentRecordEvent.eventType == RecordEvent.VIDEO_SWITCH)
 					{
-						SwitchNetStream(recordingData.getVideoFeed(currentRecordEvent.eventX));
 						lastSwitchTime += presentNS.time *1000;
+						SwitchNetStream(recordingData.getVideoFeed(currentRecordEvent.eventX));
 					}
 					if (recordingData.getEvent(currentlyPlayingEvent).eventTime>seekLevel) seekDone=true;
 					currentlyPlayingEvent++;
@@ -2283,7 +2305,7 @@ package com.ziksana.player.enhance
 			{
 				lastSwitchTime += presentNS.time *1000;
 				trace("LAST SWITCH TIME:" + lastSwitchTime);
-					SwitchNetStream(recordingData.getVideoFeed(currentRecordEvent.eventX));
+				SwitchNetStream(recordingData.getVideoFeed(currentRecordEvent.eventX));
 			}
 			currentlyPlayingEvent++;
 			
@@ -2379,9 +2401,12 @@ package com.ziksana.player.enhance
 					record.removeChildAt(0);
 					var test:Bitmap = new RERECORD();
 					record.addChild(test);
+					trace("END TIME IS:"+ ns.time);
 					var endTime = ns.time; 
 					recordingData.addEndTime(-1);
-					recordingData.stopRecording();
+					var timeOfSwitch:Number = lastSwitchTime + ns.time*1000 ;
+					//lastSwitchTime = ns.time*1000;
+					recordingData.stopRecording(timeOfSwitch);
 					StopRecording();
 					play.addEventListener(MouseEvent.CLICK, Play);
 					lastSwitchTime =0;
@@ -2501,6 +2526,7 @@ package com.ziksana.player.enhance
 			var data:String =fileNameRecorded;
 			if(deployMode=="playback")
 			{
+				trace("GETTING INTO SAVE MODE");
 				var revent:XML =<INIT>
 									<FILE>{data}</FILE>
 									<STARTSLIDE> {recordingData.startSlideNumber} </STARTSLIDE>
@@ -2908,6 +2934,7 @@ package com.ziksana.player.enhance
 		protected function EditVideo(event:MouseEvent):void
 		{
 			// TODO Auto-generated method stub
+			ns2.attachCamera(cam);
 			editVideo.visible= false;
 			controls.addChild(record);
 			controls.addChild(save);
@@ -2916,6 +2943,7 @@ package com.ziksana.player.enhance
 			controls.addChild(marker);
 			controls.addChild(eraser);
 			var test:Bitmap = new RERECORD();
+			record.removeChildAt(0);
 			record.addChild(test);
 			marker.visible = true;
 			
@@ -3033,7 +3061,7 @@ package com.ziksana.player.enhance
 			loadingGif.graphics.beginFill(0x000000, 0.8);
 			loadingGif.graphics.drawRect( (stage.stageWidth - 84) / 2, (stage.stageHeight - 84) / 2, 65,65);
 			loadingGif.graphics.endFill();			
-			loadingGifDO.x = (stage.stageWidth - loadingGifDO.width) / 2;
+			loadingGifDO.x = (stage.stageWidth - loadingGifDO.width) / 2 ;
 			loadingGifDO.y = (stage.stageHeight - loadingGifDO.height) / 2;
 
 			resizing = false;

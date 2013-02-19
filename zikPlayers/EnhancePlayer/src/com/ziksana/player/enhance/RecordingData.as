@@ -64,7 +64,7 @@ package com.ziksana.player.enhance
 		public function addVideoFeed(videoName:String):Number
 		{
 			videoFeedList[videoFeedList.length] = videoName;
-			//trace("ADDED VIDEO"+videoName);
+			trace("ADDED VIDEO"+videoName );
 			return (videoFeedList.length-1);
 		}
 		
@@ -79,13 +79,14 @@ package com.ziksana.player.enhance
 		{
 			startSlideNumber = sn;
 		}
-		public function stopRecording():void
+		public function stopRecording(tT:Number):void
 		{
 			recording = false;
 			hasRecordingData = true;
-			if(lastRestartTime > 0 )
-			totalTime +=  getTimer()-lastRestartTime;
-			else totalTime = getTimer() - startTime;
+			//if(lastRestartTime > 0 )
+			//totalTime +=  getTimer()-lastRestartTime;
+			//else totalTime = getTimer() - startTime;
+			totalTime = tT;
 			trace(totalTime);
 			lastRestartTime = 0;
 		}
@@ -138,14 +139,14 @@ package com.ziksana.player.enhance
 		public function AddEvent(re:RecordEvent):void {
 			//trace("Added Event" + re.eventX);
 			//re.eventTime -= pausedTime;
-			if(lastRestartTime>0)
+			/*if(lastRestartTime>0)
 			{
 				re.eventTime=totalTime+(re.eventTime - lastRestartTime);
 			}
 			else 
 			{ 
 				re.eventTime=(re.eventTime - startTime);
-			}
+			}*/
 			//trace(re.eventTime);
 			eventsArray[eventsArray.length] = re;
 		}
