@@ -370,6 +370,14 @@ function getCourse() {
 							duration = data.duration;
 							duration_type = data.durationtype;
 							image_upload = data.imageupload;
+							
+							if(image_upload == ''){
+								thumbnail_url = '/ziksana-web/resources/images/default-course.jpg';
+							} else {
+								thumbnail_url = media_server_url + image_upload;
+							}
+							$('#course_thumbnail_image').attr('src', thumbnail_url);
+							$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
 
 							$('#courseid').val(course_id);
 

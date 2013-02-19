@@ -19,7 +19,7 @@ $(function(){
 			'type': 'iframe',
 			'href': launchpage,
 			'showCloseButton': false,
-			'onComplete': setTimeout("add_ziklogo_and_close_button();", 2000)
+			'onComplete': setInterval("add_ziklogo_and_close_button();", 2000)
 			
 		});
 		
@@ -54,8 +54,10 @@ function add_ziklogo_and_close_button(){
 
 	fancybox_wrapper = $.fancybox.wrap;
 	if(fancybox_wrapper != null){
-	fancybox_wrapper.prepend(logo_html);
-	fancybox_wrapper.find(".fancybox-close").attr('onclick','confirmFancyboxClose(); return false;').removeAttr('href');
+		if(fancybox_wrapper.find('#zik_fancy_logo').length == 0){ //remove the logo if it exists.
+			fancybox_wrapper.prepend(logo_html);
+		}
+		fancybox_wrapper.find(".fancybox-close").attr('onclick','confirmFancyboxClose(); return false;').removeAttr('href');
 	
 
 	} 

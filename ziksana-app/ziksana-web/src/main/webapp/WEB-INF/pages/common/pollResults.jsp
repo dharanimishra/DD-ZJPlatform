@@ -45,6 +45,9 @@ function details(asd)
 	$('#row_selection_'+asd+'').addClass('row-hover');
 questionId = $('#edit_message'+asd+'').text();
 questionName = $('#edit_description'+asd+'').text();
+poll_option1 = $('#poll_option1'+asd+'').text();
+poll_option2 = $('#poll_option2'+asd+'').text();
+poll_option3 = $('#poll_option3'+asd+'').text();
 //alert(questionId);
  var outputAnswers="";
 
@@ -58,16 +61,20 @@ questionName = $('#edit_description'+asd+'').text();
 				
 				$(data).find("QuestionsAnswersList").each(function(){
 				
-				
-				outputAnswers+="Strongly agree <br/>";
-				outputAnswers+="<div style='width:"+$(this).find("answer1").text()+"%; height:20px; background-color:green;'></div>";
+				outputAnswers+=poll_option1;
+				outputAnswers+="<br/>";
+				outputAnswers+="<div style='width:"+$(this).find("answer1").text()+"%; height:20px; background-color:Turquoise;'></div>";
 				outputAnswers+=""+$(this).find("answer1").text()+"%vote<br/>";
-				outputAnswers+="Agree <br/>";
-				outputAnswers+="<div style='width:"+$(this).find("answer2").text()+"%; height:20px; background-color:red;'></div>";
+				outputAnswers+=poll_option2;
+				outputAnswers+="<br/>";
+				outputAnswers+="<div style='width:"+$(this).find("answer2").text()+"%; height:20px; background-color:SpringGreen;'></div>";
 				outputAnswers+=""+$(this).find("answer2").text()+"%vote<br/>";
-				outputAnswers+="Disagree <br/>";
-				outputAnswers+="<div style='width:"+$(this).find("answer3").text()+"%; height:20px; background-color:blue;'></div>";
-				outputAnswers+=""+$(this).find("answer3").text()+"%vote";
+				if(poll_option3 != ''){
+				outputAnswers+=poll_option3;
+				outputAnswers+="<br/>";
+				outputAnswers+="<div style='width:"+$(this).find("answer3").text()+"%; height:20px; background-color:Salmon;'></div>";
+				outputAnswers+=""+$(this).find("answer3").text()+"%vote<br/>";
+				}
 				 //alert(outputAnswers);
 				 $('#bars-answer').html(outputAnswers);
 				});
@@ -146,7 +153,7 @@ $(document).ready(function() {
 					$(data).find("QuestionsList").each(function(){
 						$(data).find("Questions").each(function(index){
 						
-						output_announcement+="<tr id='row_selection_"+index+"' onClick='details("+index+")' ><td style=''><label style='display:none' id='edit_message"+index+"'>"+ $(this).find("questionId").text()+"</label><label id='edit_messages"+index+"'>"+ $(this).find("questionDate").text()+"</label></td>";
+						output_announcement+="<tr id='row_selection_"+index+"' onClick='details("+index+")' ><td style=''><label style='display:none' id='edit_message"+index+"'>"+ $(this).find("questionId").text()+"</label><label id='edit_messages"+index+"'>"+ $(this).find("questionDate").text()+"</label><label style='display:none;' id='poll_option1"+index+"'>"+ $(this).find("answer1").text()+"</label><label style='display:none;' id='poll_option2"+index+"'>"+ $(this).find("answer2").text()+"</label><label style='display:none;' id='poll_option3"+index+"'>"+ $(this).find("answer3").text()+"</label></td>";
 						output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("questionName").text()+"</label></td></tr>"; 
 						
 						});

@@ -16,12 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
-import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
+import com.ziksana.service.security.MediaService;
 
 /**
  * @author prabu
@@ -36,6 +36,9 @@ public class MyCoursesController {
 
 	@Autowired
 	CourseService courseService;
+	
+	@Autowired
+	private MediaService mediaService;
 
 	@RequestMapping(value = "/showmycourse/111111", method = RequestMethod.GET)
 	public @ResponseBody
@@ -77,6 +80,7 @@ public class MyCoursesController {
 			ModelAndView mv = new ModelAndView("courses/myprograms-draft");
 			mv.addObject("courses", courses);
 			mv.addObject("courseCount", courseCount);
+			mv.addObject("ms",mediaService.getMediaContents());
 			return mv;
 		} else {
 
@@ -95,14 +99,14 @@ public class MyCoursesController {
 				courses = courseService
 						.getCoursesByLearningProgram(Integer.valueOf(program
 								.getLearningProgramId().getStorageID()));
-				System.out.println(" TOTAL NUMBER OF COURSES IS  "
-						+ courses.size());
+				System.out.println(" TOTAL NUMBER OF COURSES IS  "+ courses.size());
+				
 				System.out.println(" THE COURSE NAME IS   "
 						+ courses.get(0).getName());
 				mvLearner.addObject("program", program.getName());
-				
+							
 				mvLearner.addObject("courses", courses);
-
+				mvLearner.addObject("ms",mediaService.getMediaContents());
 				
 			}
 
@@ -114,21 +118,25 @@ public class MyCoursesController {
 	
 	@RequestMapping(value = "/learnercourses", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView readLearnerMyPrograms() throws CourseException {
-		
+		ModelAndView mvLearner = new ModelAndView("courses/learner-courses");
 		List<LearningProgram> programs = courseService
 				.getLearningPrograms();
+		
 		LearningProgram program = programs.get(0);
 		List<Course> courses = courseService
 				.getThreeCoursesByLearningProgram(Integer.valueOf(program
 						.getLearningProgramId().getStorageID()));
-
+		
 		System.out
 				.println(" TOTAL NUMBER OF COURSES IS  " + courses.size());
 		System.out.println(" THE COURSE NAME IS   "
 				+ courses.get(0).getName());
-		ModelAndView mvLearner = new ModelAndView("courses/learner-courses");
+		
 		mvLearner.addObject("program", program.getName());
+		mvLearner.addObject("ms",mediaService.getMediaContents());
 		return mvLearner.addObject("courses", courses);
+		
+		
 	
 	}
 	
@@ -149,6 +157,7 @@ public class MyCoursesController {
 			ModelAndView mv = new ModelAndView("courses/myprograms");
 			mv.addObject("courses", courses);
 			mv.addObject("courseCount", courseCount);
+			mv.addObject("ms",mediaService.getMediaContents());
 			return mv;
 		} else {
 
@@ -161,12 +170,13 @@ public class MyCoursesController {
 
 			System.out
 					.println(" TOTAL NUMBER OF COURSES IS  " + courses.size());
+			int learnerCourseSize = courses.size();
 			System.out.println(" THE COURSE NAME IS   "
 					+ courses.get(0).getName());
 			ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
 			mvLearner.addObject("program", program.getName());
 			mvLearner.addObject("courses", courses);
-
+			mvLearner.addObject("learnerCourseSize",learnerCourseSize);	
 			// TODO need to implement learner my programs...
 			return mvLearner;
 

@@ -88,7 +88,7 @@
 		where
 		sbnpgm.MemberRoleId=#{memberRoleId}
 		and
-		sbnpgm.LearningProgramId=#{learningProgramId} LIMIT 0, 3
+		sbnpgm.LearningProgramId=#{learningProgramId} order by course.CreationDate DESC LIMIT 0, 3
 
 
 
@@ -317,10 +317,8 @@
 		sbnmembersubscriptionprogram subprgm ON
 		sbncourse.MemSubscriptionProgId=subprgm.id
 		where
-		cntenr.LinkType = 7
-		<if test="subscrCourseId != null">
-			AND enr.CourseId=#{subscrCourseId}
-		</if>
+		cntenr.LinkType = 7 AND enr.CourseId=#{subscrCourseId}
+	
 		and
 		enr.LearningComponentId=#{learnCompId} and
 		enr.LearningContentId=#{learnCmpContId} and
@@ -525,8 +523,7 @@
 
 		<result property="title" column="LinkElement" />
 		<result property="duration" column="duration" />
-		<result property="" column="" />
-		<result property="" column="parentContent" />
+		
 
 	</resultMap>
 

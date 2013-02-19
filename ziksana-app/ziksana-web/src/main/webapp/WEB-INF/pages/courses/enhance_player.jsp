@@ -46,7 +46,7 @@
 				enhanced_video_path = path;
 				window.parent.assoicateEnhancedVideo('${courseId}', '${componentId}', '${contentId}', enhanced_video_path);
 			}
-			function  ff_get_flash_recorder() { return '${ms.flashRecordingRcript}';};
+			function  ff_get_flash_recorder() { return '${ms.flashRecordingScript}';};
 
         </script>
 </head>

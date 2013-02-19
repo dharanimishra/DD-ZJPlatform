@@ -379,7 +379,7 @@ span.standartTreeRow:hover {
 </style>
 
 						<div id="gggg" style="font-size: 10px; margin-bottom: 10px;">
-
+<br>
 							<p class="definehelp all all-box-shadow"
 								style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92; height: 30px;">
 								<img src="/ziksana-web/resources/images/icons/helpicon.png"
@@ -523,88 +523,85 @@ span.standartTreeRow:hover {
 															<option value="2">Months</option>
 															<option value="3">Days</option>
 														</select>
-														<div class="associateimage" style="margin-top: 15px;">
-															<img src="/ziksana-web/resources/images/icons/upload.png"
-																align="left" />
-															<p class="labelclass">
-																<b>Associate an Image for your Learning Object</b>
-															</p>
-															<input type="hidden" readonly="readonly"
-																id="Cmoduleimgupl" placeholder="specify an image"
-																style="margin-left: 20px;" />
-															<!--  <a href=""
-																id="cancellinkadd"><img
-																src="/ziksana-web/resources/images/delete.jpg" />Cancel</a> -->
+														<div class="associateimage" style="margin-top: 30px;">
 
-														</div>
-
-
-														<div id="thubmnail_upload_message"></div>
-														<div id="loaderText"></div>
-														<input type="file" name="thumbnail_image_file_upload"
-															id="thumbnail_image_file_upload" />
-														<div id="status"></div>
-														<script type="text/javascript">
-															$(function() {
-																$(
-																		'#thumbnail_image_file_upload')
-																		.uploadify(
-																				{
-																					'swf' : '/ziksana-web/resources/swf/uploadify.swf',
-																					'queueSizeLimit' : 1,
-																					'successTimeout' : 350,
-																					'uploader' : '${ms.uploadScript}',
-																					'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-																					'fileSizeLimit' : '10024KB',
-																					'onUploadStart' : function(
-																							file) {
-																						$(
-																								'#Btnsbtcmodule')
-																								.attr(
-																										'disabled',
-																										'disabled');
-																					},
-																					//'debug': true,
-																					//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
-																					'onUploadSuccess' : function(
-																							file,
-																							data,
-																							response) {
-																						json_string = data;
-																						data_object = $
-																								.parseJSON(json_string);
-																						console
-																								.log(data_object);
-																						if (data_object.Uploaded == 'true') {
-																							$(
-																									'#Cmoduleimgupl')
-																									.val(
-																											data_object.ContentPath);
-																							$(
-																									'#thubmnail_upload_message')
-																									.html(
-																											'Thumbnail Image Upload Successful! ');
-
-																						} else { //there is an error in the upload process
-
-																							$(
-																									'#message')
-																									.html(
-																											data_object.message);
-																						}
-																						$(
-																								'#Btnsbtcmodule')
-																								.removeAttr(
-																										'disabled'); //enable submit button
-
-																					}
-																				// Your options here
-																				});
-															});
-														</script>
-
-
-														<!-- end of associateimage--->
+																<p class="labelclass" style="font-weight: bold;">Associate
+																	an Image for your Course</p>
+																<br /> 
+																<img id="course_thumbnail_image" src="/ziksana-web/resources/images/course_default_thumbnail.png" align="left" /> 
+																<input
+																	readonly="readonly" type="hidden" id="Cimageupl"
+																	style="margin-left: 20px;" />
+						
+						
+																<div id="thubmnail_upload_message"></div>
+																<div id="loaderText"></div>
+																<input type="file" name="thumbnail_image_file_upload"
+																	id="thumbnail_image_file_upload" />
+																<div id="status"></div>
+																<script type="text/javascript">
+																	$(function() {
+																		$('#thumbnail_image_file_upload')
+																				.uploadify(
+																						{
+																							'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																							'queueSizeLimit' : 1,
+																							'successTimeout' : 350,
+																							'uploader' : '${ms.uploadScript}',
+																							'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+																							'fileSizeLimit' : '10024KB',
+																							'onUploadStart' : function(
+																									file) {
+																								$(
+																										'#sbtvalidation')
+																										.attr(
+																												'disabled',
+																												'disabled');
+																							},
+																							//'debug': true,
+																							//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+																							'onUploadSuccess' : function(
+																									file,
+																									data,
+																									response) {
+																								json_string = data;
+																								data_object = $.parseJSON(json_string);
+																								console.log(data_object);
+																								
+																								if (data_object.Uploaded == 'true') {
+																									$('#Cimageupl').val(data_object.ContentPath);
+																									$('#course_thumbnail_image').attr('src','${ms.url}'+data_object.ContentPath);
+																									$('#thubmnail_upload_message')
+																											.html('<strong>['+ file.name + ']</strong> <a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X]</a>');
+						
+																								} else { //there is an error in the upload process
+						
+																									$(
+																											'#message')
+																											.html(
+																													data_object.message);
+																								}
+																								$(
+																										'#sbtvalidation')
+																										.removeAttr(
+																												'disabled'); //enable submit button
+						
+																							}
+																						// Your options here
+																						});
+																	});
+																	
+																	function remove_uploaded_thumbnail(){
+																		$('#Cimageupl').val('');//clear uploaded file path
+																		$('#thubmnail_upload_message').html('');
+																		$('#course_thumbnail_image').attr('src','/ziksana-web/resources/images/course_default_thumbnail.png');
+												
+																	}
+																</script>
+						
+						
+															</div>
+															<!-- end of associateimage--->
 
 													</div>
 													<!-- end of courseduration--->

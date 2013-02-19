@@ -29,7 +29,7 @@
             attributes.align = "middle";
             swfobject.embedSWF(
                 "/ziksana-web/resources/jwplayer/EnhancePlayer.swf", "flashContent", 
-                "700px", "500px", 
+                "730px", "545px", 
                 swfVersionStr, xiSwfUrlStr, 
                 flashvars, params, attributes);
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.

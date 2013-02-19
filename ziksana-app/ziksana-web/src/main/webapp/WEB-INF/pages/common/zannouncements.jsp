@@ -151,7 +151,7 @@ function getMessagedescription(indexValue){
 	var announcement_dec = $('#announcement_row_'+indexValue+' .edit_desc').text();
 
 	outputDetails_description+="<div  id='row_selection_form_container1'>";
-	outputDetails_description+="<br/><b> Details of the select Row in the table should be displayed here</b>";
+	
 	outputDetails_description+="<div>";
 	outputDetails_description+="<br/></br><u><label style='font-weight:bold;'>"+announcement_message+"</label></u><label >"+announcement_date+"</label><label  >"+announcement_dec+"</label>";
 	outputDetails_description+="</div>";

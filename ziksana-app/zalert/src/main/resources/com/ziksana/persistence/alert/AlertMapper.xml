@@ -24,7 +24,7 @@
 		  where v.CategoryName='Notification Type' and
 		  l.LookupValueId=490 and
 		 
-		  n.ForMemberRoleId=#{userMemberRoleId}
+		  n.ForMemberRoleId=#{userMemberRoleId} 
 		  
 
 	</select>

@@ -127,6 +127,9 @@
 		$(".containerTableStyle").css('overflow', 'auto');
 
 	});
+	
+	var media_server_url = '${ms.url}';
+	
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -255,7 +258,7 @@ span.standartTreeRow:hover {
 			<nav>
 				<div class="menu" style="margin-left: 0px;">
 					<ul>
-						<li><a href="/ziksana-web//secure/educatordashboard">My
+						<li><a href="/ziksana-web/secure/educatordashboard">My
 								Home</a>
 							<div class="nav-line"></div></li>
 						<li><a href="/ziksana-web//secure/showMyPrograms"
@@ -489,7 +492,7 @@ span.standartTreeRow:hover {
 											<label for="coursetags" class="labelclass"
 												style="margin-left: 20px; font-weight: bold;">Specify
 												Course Extra Credits :</label> <input type="text" id="ExtraCredits"
-												class="defaultvalue validate[required]"
+												class="smartspinner "
 												style="width: 30px; margin-left: 10px;" />
 											<script type="text/javascript">
 												$(document)
@@ -502,7 +505,7 @@ span.standartTreeRow:hover {
 																						height : 20,
 																						width : 30,
 																						min : null,
-																						stepInc: .5
+																						stepInc: 0.5,
 																						initValue : null,
 																						max : 20,
 																					});
@@ -551,6 +554,7 @@ span.standartTreeRow:hover {
 												href="/ziksana-web/secure/getAddnlInfo">Add New
 												Information </a>
 										</div> -->
+										
 									</div>
 									<!-- end of secondcontainer--->
 								</div>
@@ -599,15 +603,12 @@ span.standartTreeRow:hover {
 
 										<p class="labelclass" style="font-weight: bold;">Associate
 											an Image for your Course</p>
-										<br /> <img
-											src="/ziksana-web/resources/images/modelthinking.png"
-											alt="Modelthinking" width="94" height="94" border="3"
-											style="border: 2px solid #ccc;" /> <input
+										<br /> 
+										<img id="course_thumbnail_image" src="/ziksana-web/resources/images/default-course.jpg" align="left" /> 
+										<input
 											readonly="readonly" type="hidden" id="Cimageupl"
 											style="margin-left: 20px;" />
-										<!--  <a href="#linkurl"
-											id="cancellink"> <img
-											src="/ziksana-web/resources/images/delete.jpg" />Cancel</a>-->
+
 
 										<div id="thubmnail_upload_message"></div>
 										<div id="loaderText"></div>
@@ -616,8 +617,7 @@ span.standartTreeRow:hover {
 										<div id="status"></div>
 										<script type="text/javascript">
 											$(function() {
-												$(
-														'#thumbnail_image_file_upload')
+												$('#thumbnail_image_file_upload')
 														.uploadify(
 																{
 																	'swf' : '/ziksana-web/resources/swf/uploadify.swf',
@@ -641,19 +641,14 @@ span.standartTreeRow:hover {
 																			data,
 																			response) {
 																		json_string = data;
-																		data_object = $
-																				.parseJSON(json_string);
-																		console
-																				.log(data_object);
+																		data_object = $.parseJSON(json_string);
+																		console.log(data_object);
+																		
 																		if (data_object.Uploaded == 'true') {
-																			$(
-																					'#Cimageupl')
-																					.val(
-																							data_object.ContentPath);
-																			$(
-																					'#thubmnail_upload_message')
-																					.html(
-																							'Thumbnail Image Upload Successful! ');
+																			$('#Cimageupl').val(data_object.ContentPath);
+																			$('#course_thumbnail_image').attr('src','${ms.url}'+data_object.ContentPath);
+																			$('#thubmnail_upload_message')
+																					.html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
 
 																		} else { //there is an error in the upload process
 
@@ -671,6 +666,13 @@ span.standartTreeRow:hover {
 																// Your options here
 																});
 											});
+											
+											function remove_uploaded_thumbnail(){
+												$('#Cimageupl').val('');//clear uploaded file path
+												$('#thubmnail_upload_message').html('');
+												$('#course_thumbnail_image').attr('src','/ziksana-web/resources/images/default-course.jpg');
+						
+											}
 										</script>
 
 

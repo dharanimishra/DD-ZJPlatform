@@ -514,7 +514,7 @@ h3 {
 	display:none;
 }
 
-.associateimage, #thumbnail_image_file_upload {display:none;}
+/* .associateimage, #thumbnail_image_file_upload {display:none;} */
 
 h3 a {color: #000; text-decoration:none;}
 .active {

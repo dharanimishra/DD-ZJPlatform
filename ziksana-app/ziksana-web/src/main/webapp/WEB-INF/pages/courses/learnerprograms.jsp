@@ -381,14 +381,15 @@ color:#666;
 	
     
     
-		<div class="col-stud" style="border:1px solid #ccc; width:210px; display:table-cell;">
+		<div class="col-stud" style="border:1px solid #ccc; width:240px; display:table-cell;">
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
                 <p class="titles-info1 text-size-px18 font-Signika blue uppercase">${program}</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;"> Learning Programs </span> Defines the Curriculum necessary to meet the Learning Objectives..</p>
-                <p class="number-creat-boxs f-r font-Signika bold for-rounded-box" style="margin-top:10px;">2</p>
+               <!--  <p class="number-creat-boxs f-r font-Signika bold for-rounded-box" style="margin-top:10px;"><span style="font-size:15px;">${learnerCourseSize}Course</span>  </p>-->
+                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style=" margin-top:-4px;font-size:20px;color:#fff;">${learnerCourseSize}<br/> <span style="font-size:15px;">Course</span></p>
 				<div class="icons-list" >
-                  <a onclick="showcourse()" rel="tipsy" title="List Courses" class="Icon-listp icons-left"> </a>
+                  <a onclick="showcourse()" rel="tipsy" title="List Courses" class="Icon-listp icons-right"> </a>
 				 	<img src="../resources/images/nav-arow.png" class="arrowdown" style="padding-top:0px; margin-top:36px; position:absolute; margin-left:73px; display:none;"> 
 				</div>
 			
@@ -398,7 +399,7 @@ color:#666;
 	
     <br/>
     
-		<div class="col-stud" style="border:1px solid #ccc;width:210px;display:table-cell;" >
+		<!-- <div class="col-stud" style="border:1px solid #ccc;width:210px;display:table-cell;" >
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
                 <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Program 2</p>
@@ -413,14 +414,14 @@ color:#666;
 				  
                 </div>              
               </div>
-    </div>
+    </div> -->
 		
         
       <br>
 
        
     
-		<div class="col-stud" style="border:1px solid #ccc;width:210px;display:table-cell;" >
+		<!-- <div class="col-stud" style="border:1px solid #ccc;width:210px;display:table-cell;" >
               
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
                 <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning Program 3</p>
@@ -435,7 +436,7 @@ color:#666;
 				  
                 </div>              
               </div>
-    </div>
+    </div> -->
        
    
 
@@ -461,13 +462,13 @@ color:#666;
     
         
         
-     <div class="stdwrapper" style=" height:250px; visibility:hidden;" >
+     <div class="stdwrapper" style=" margin-left:60px;  visibility:hidden; text-align:center;" >
      
 	 
 	
 	 
 	 
-     <div class="stdnavlink">
+     <div class="stdnavlink" >
 	 <!--
 	   <div class="programisotope" style="height:40px;">
                 
@@ -480,10 +481,7 @@ color:#666;
                    
                 </div> --> <!--end of programisotope--> 
 	
-	 <div class="col-lft li-1 All" style=" width:60px;">
-              
-              
-			</div>  
+	  
 				<c:forEach var="course" items="${courses}">
 				 <div class="col-lft li-1 All" style="border:1px solid #ccc; width:205px;">
             

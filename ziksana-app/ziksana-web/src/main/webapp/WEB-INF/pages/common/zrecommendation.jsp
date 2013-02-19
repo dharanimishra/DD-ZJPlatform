@@ -133,7 +133,7 @@ function show_recommendation_tab(tab){
 						output+="<div  class='zenititle'><label style='display:none;' id='recomendTitle"+index+"'> "+ $(this).find("title").text()+"</label><label style='display:none;'> "+ $(this).find("ignorecount").text()+"</label></div>";
 						output+="<div class='zenisubtitle'>";
 						output+="<div class='zsublink1 zenileft'>Created by : <span class='zlinktext'>Ziksana </span></div>";
-						output+="<div class='zsublink2 zenileft'>Valid upto : <span class='zlinktext2'> 31/09/2012  </span></div><br/><br/></div>";
+						output+="<div class='zsublink2 zenileft'>Valid upto : <span class='zlinktext2'> 18/02/2013  </span></div><br/><br/></div>";
 						output+="<div class='zenirecommendcenter'>";
 						output+="<div class='zenirecommendborder zenileft'></div>";
 						output+="<div class='zenircommendcenterlink zenileft'>";

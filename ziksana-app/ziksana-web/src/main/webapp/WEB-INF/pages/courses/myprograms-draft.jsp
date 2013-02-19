@@ -352,7 +352,7 @@ $('._cklo').show('');
             
                         <!--Courses container-->
                
-   <div class="center for-rounded-box all-box-shadow _course" style="width:973px; margin-left:-98px;border:1px solid #a9a5a5; background:#e2dbdb;">
+   <div class="center for-rounded-box all-box-shadow _course" style="width:973px; margin-left:-98px;border:1px solid #a9a5a5; background:#e1e1e1;">
                 <div style="margin-left:850px;disply:table; top:-100">
 
 
@@ -392,7 +392,15 @@ $('._cklo').show('');
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
 
                 <p style="height:30px;"class="titles-info1 text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> <img src="../resources/images/programs/ECourse.jpg" width="148" height="97"/>
+                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> 
+	               <c:choose>
+	                 <c:when test="${course.thumbnailPicturePath != ''}">              
+	               		 <img src="<c:out value="${ms.url}"/><c:out value="${course.thumbnailPicturePath}"/>" width="148" height="97"/>
+	                </c:when>
+	                <c:otherwise>
+				        <img src="/ziksana-web/resources/images/default-course.jpg" width="148" height="97"/>
+				    </c:otherwise>
+	                </c:choose>
 				</p>
                 <div class="icons-list">
                   

@@ -191,7 +191,7 @@
 		parameterType="map">
 
 		select
-		id,name,description
+		id,name,description,thumbnailPicturePath
 		from
 		corcourse
 		where
@@ -219,11 +219,11 @@
 	</select>
 	
 	<insert id="saveCurriculamCourse" parameterType="map">
-		INSERT INTO corcurriculumcourse (CreationDate, Active,PrescribedDurationUnit, ProgramCurriculumId,courseId, MemberRoleId) VALUES(now(),1,1, 1,#{courseId}, #{memberRoleId})
+		INSERT INTO corcurriculumcourse (CreationDate, Active,PrescribedDurationUnit, ProgramCurriculumId,courseId, MemberRoleId) VALUES(now(),1,1, 3,#{courseId}, #{memberRoleId})
 	</insert>
 	
 	<insert id="saveAndEnableCourse" parameterType="int">
-		INSERT INTO sbnsubscriptioncourse (MemSubscriptionProgId, CurriculumCourseId) VALUES( 2, (select id from corcurriculumcourse where courseId=#{courseId}));
+		INSERT INTO sbnsubscriptioncourse (MemSubscriptionProgId, CurriculumCourseId) VALUES( 4, (select id from corcurriculumcourse where courseId=#{courseId}));
 	</insert>
 	
 	<resultMap id="mapCourseResult" type="com.ziksana.domain.course.Course">
@@ -242,6 +242,7 @@
 		<result property="name" column="name" />
 		<result property="description" column="description" />
 		<result property="Rating" column="courseProgress" />
+		<result property="thumbnailPicturePath" column="thumbnailPicturePath"/>
 
 	</resultMap>
 

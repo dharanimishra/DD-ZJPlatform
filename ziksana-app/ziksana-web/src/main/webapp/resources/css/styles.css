@@ -2906,3 +2906,6 @@ a {
 cursor: pointer;
 color: #2277BB;
 }
+
+#course_thumbnail_image {margin-bottom: .5em; margin-right: .5em; height: 100px; box-shadow: 0 0 2px #222; padding: .25em; background: white; }
+#thubmnail_upload_message strong {font-weight: bold; }

@@ -11,6 +11,9 @@
 			<Questions>
 			<questionId>${questions.ID}</questionId>
 			<questionDate>${questions.pollDate}</questionDate>
+			<answer1>${questions.answer1}</answer1>
+			<answer2>${questions.answer2}</answer2>
+			<answer3>${questions.answer3}</answer3>
 			<questionName>${questions.questionText}</questionName>
 			</Questions>
 		</c:forEach>
