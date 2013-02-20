@@ -679,38 +679,6 @@ span.standartTreeRow:hover {
 					</div>
 				</div>
 			</div>
-
-			<script>
-				$(".collapse").collapse({
-					show : function() {
-						this.animate({
-							opacity : 'toggle',
-							height : 'toggle'
-						}, 300);
-					},
-					hide : function() {
-
-						this.animate({
-							opacity : 'toggle',
-							height : 'toggle'
-						}, 300);
-					}
-				});
-
-				//rating-star
-				$('#edu-star').raty({
-
-					click : function(score, evt) {
-						$(this).fadeOut(function() {
-							$(this).fadeIn();
-						});
-					},
-					targetKeep : true,
-					path : 'img/',
-					score : 4,
-					cancel : true
-				});
-			</script>
 			
 			<script type="text/javascript">
 				$(function(){

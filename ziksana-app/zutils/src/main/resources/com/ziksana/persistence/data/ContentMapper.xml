@@ -8,10 +8,10 @@
 	</select>
 
 	<resultMap id="contenteResultMap" type="com.ziksana.domain.course.Content">
-
 		<result property="contentId" column="ID" />
 		<result property="contentType" column="ContentType" />
 		<result property="contentUrl" column="ContentPath" />
+		<result property="contentName" column="ContentName" />
 		<result property="numberOfThumbnails" column="NumberOfThumbnails" />
 	</resultMap>
 </mapper>

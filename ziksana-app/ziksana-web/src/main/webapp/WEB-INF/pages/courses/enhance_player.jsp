@@ -44,7 +44,7 @@
 			function ff_recording_save_path(path) {
 				console.log(path);
 				enhanced_video_path = path;
-				window.parent.assoicateEnhancedVideo('${courseId}', '${componentId}', '${contentId}', enhanced_video_path);
+				window.parent.assoicateEnhancedVideo('${courseId}', '${componentId}', '${contentId}', enhanced_video_path,'${enhanced_video_name}');
 			}
 			function  ff_get_flash_recorder() { return '${ms.flashRecordingScript}';};
 

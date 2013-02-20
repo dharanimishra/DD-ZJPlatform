@@ -5,53 +5,95 @@ $(document)
 
 					var course_id = $('#courseid').val();
 					console.log(course_id);
-					var subjectArea = '', subjectCategory = '', subjectTopic = '';
-					var subClassificationId = 0;
+					
 					$.post('/ziksana-web/secure/getSubClassification', {
 						'CourseId' : course_id
 					}, function(data) {
 						console.log(data);
-						subClassificationId = data.subjClassificationId;
-						var subArea = data.subjectArea;
-						var subCategory = data.subjectCategory;
-						var subTopic = data.subjectTopic;
+						var subClassificationId = data.subjClassificationId;
+						var subject_area_pre = data.subjectArea;
+						var subject_pre = data.subjectCategory;
+						var topic_pre = data.subjectTopic;
+						
+						// Start
 
-						subjectArea = '<option selected="selected" value="'
-								+ subArea + '">' + subArea + '</option>';
-						subjectCategory = '<option selected="selected" value="'
-								+ subCategory + '">' + subCategory
-								+ '</option>';
-						subjectTopic = '<option selected="selected" value="'
-								+ subTopic + '">' + subTopic + '</option>';
+						$.get('/ziksana-web/secure/getSubjectArea', {},
+								function(data) {
+									options = data;
+									var option_string = '';
+									for (i in options) {
+										label = options[i].label;
+										value = options[i].value;
+										
+										if(value == subject_area_pre){
+											option = '<option selected="selected" value="'+ value + '">' + label + '</option>';
+
+										}else{
+											option = '<option value="'+ value + '">' + label + '</option>';
+
+										}
+
+										option_string += option;
+									}
+									$('#Cmoduleareaddl').html(option_string);
+									console.log("subject area is: "+subject_area_pre);
+									//setTimeout("$('#Cmoduleareaddl').val('Religion'); alert('hellos');", 3000);
+								});
+
+						token = '';
+						request_type = 'GET';
+						uri = '/ziksana-web/secure/getSubject';
+
+						$.get(uri, {
+							'Course_Area' : subject_area_pre
+						},
+								function(data) {
+									options = data;
+									var option_string = '';
+									option_string += '<option value="Select Subject">Select Subject</option>';
+									for (i in options) {
+										label = options[i].label;
+										value = options[i].value;
+										if(value == subject_pre){
+											option = '<option selected="selected" value="'+ value + '">' + label + '</option>';
+										}else{
+											option = '<option value="'+ value + '">' + label + '</option>';
+										}	
+
+										option_string += option;
+									}
+
+									$('#Cmodulesubjectddl').html(option_string);
+								});
+
+						uri = '/ziksana-web/secure/getTopic';
+						token = '';
+						request_type = 'GET';
+						$.get(uri, {
+							'Course_Subject' : subject_pre
+						}, function(data) {
+							options = data;
+							var option_string = '';
+							option_string += '<option value="Select Topic">Select Topic</option>';
+							for (i in options) {
+								label = options[i].label;
+								value = options[i].value;
+								if(value == topic_pre){
+									option = '<option selected="selected" value="'+ value + '">' + label + '</option>';
+								}else{
+									option = '<option value="'+ value + '">' + label + '</option>';
+								}
+								option_string += option;
+							}
+							$('#Cmoduletopicddl').html(option_string);
+
+						});
+						
+						// End
 
 					});
 
-					$.get('/ziksana-web/secure/getSubjectArea', {}, function(
-							data) {
-						options = data;
-						var option_string = '';
-						if (subClassificationId > 0) {
-							option_string += subjectArea;
-						}
-						for (i in options) {
-							label = options[i].label;
-							value = options[i].value;
-							if (i == 0) {
-								option = '<option value="' + value + '">'
-										+ label + '</option>';
-							} else
-								option = '<option value="' + value + '">'
-										+ label + '</option>';
-
-							option_string += option;
-						}
-						$('#Cmoduleareaddl').html(option_string);
-						if (subClassificationId > 0) {
-							$('#Cmodulesubjectddl').html(subjectCategory);
-							$('#Cmoduletopicddl').html(subjectTopic);
-						}
-
-					});
+					
 
 					$("#Cmoduleareaddl")
 							.change(
@@ -72,7 +114,7 @@ $(document)
 															options = data;
 															var option_string = '';
 
-															option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
+															//option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
 
 															for (i in options) {
 																label = options[i].label;
@@ -145,7 +187,7 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-															option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
+															//option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
@@ -278,7 +320,7 @@ function getaddmodulesave() {
 			"Subject" : Subject,
 			"Topic" : Topic,
 			"Moduletag_Field" : Moduletag_Field,
-			"Learning_Object":Learning_Object,
+			"Learning_Object" : Learning_Object,
 			"Module_Weight" : Module_Weight,
 			"Module_Duration" : Module_Duration,
 			"ModuleDuration_Type" : ModuleDuration_Type,

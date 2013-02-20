@@ -1,4 +1,3 @@
-
 package com.ziksana.domain.course;
 
 /**
@@ -16,6 +15,8 @@ public class Content {
 	Integer numberOfThumbnails;
 
 	String thumbnailPicturePath;
+
+	String contentName;
 
 	public Integer getNumberOfThumbnails() {
 		return numberOfThumbnails;
@@ -65,4 +66,11 @@ public class Content {
 		this.contentUrl = contentUrl;
 	}
 
+	public String getContentName() {
+		return contentName;
+	}
+
+	public void setContentName(String contentName) {
+		this.contentName = contentName;
+	}
 }

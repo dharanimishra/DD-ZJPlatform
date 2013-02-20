@@ -32,7 +32,7 @@ public class ContentController {
 
 	@Autowired
 	ContentService contentService;
-	
+
 	@Autowired
 	MediaService mediaService;
 
@@ -46,7 +46,6 @@ public class ContentController {
 
 		mav.addObject("content", content);
 		mav.addObject("ms", mediaServerURL);
-		
 
 		return mav;
 
@@ -58,10 +57,12 @@ public class ContentController {
 			@PathVariable Integer componentId, @PathVariable Integer courseId) {
 		ModelAndView mav = new ModelAndView("courses/enhance_player");
 		Content content = contentService.getContent(contentId);
+		String enhanced_video_name = content.getContentName() + "-EV";
 		mav.addObject("content", content);
 		mav.addObject("contentId", contentId);
 		mav.addObject("componentId", componentId);
-		mav.addObject("ms",mediaService.getMediaContents());
+		mav.addObject("enhanced_video_name", enhanced_video_name);
+		mav.addObject("ms", mediaService.getMediaContents());
 		return mav;
 
 	}
