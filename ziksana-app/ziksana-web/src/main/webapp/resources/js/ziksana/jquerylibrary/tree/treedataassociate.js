@@ -244,6 +244,8 @@ function onButtonClick(menuitemId, type) {
 		// alert("this should delete the form.");
 		content_id = tree.getSelectedItemId();
 		CourseId = $('#courseid').val();
+		confirm_delete_coursecontent = confirm('Are you sure you want to delete this item?');
+		if(confirm_delete_coursecontent == true){
 		uri = '/ziksana-web/secure/removeCourseContents';
 		token = ''; // dummy token for demo. you have to send real token.
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
@@ -265,7 +267,7 @@ function onButtonClick(menuitemId, type) {
 
 				});
 		tree.deleteItem(tree.getSelectedItemId(), true);
-
+		}
 	} else if (menuaction == "Enhance") {
 
 		content_id = tree.getSelectedItemId();
@@ -300,6 +302,7 @@ function onButtonClick(menuitemId, type) {
 		});
 
 	}
+	
 }
 
 function fixImage(id) {

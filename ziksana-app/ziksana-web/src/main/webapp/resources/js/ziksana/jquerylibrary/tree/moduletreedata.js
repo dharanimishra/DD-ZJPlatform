@@ -14,7 +14,8 @@ function onButtonClick(menuitemId, type) {
 		$('#definequalifiercontainer').hide();
 		$('#Addmodulecontainer').show();
 		document.getElementById('AddModule').reset();
-		document.getElementById("contentname").focus();
+		$("#courseLearningComponentId").remove();
+		$("#learningComponentId").remove();
 		$("#Btnsbtcmodule").click(
 				function(event) {
 					var d = new Date();
@@ -239,6 +240,8 @@ function onButtonClick(menuitemId, type) {
 
 		ComponentId = tree.getSelectedItemId();
 		console.log(ComponentId);
+		confirm_delete_component = confirm('Are you sure you want to delete this item?');
+		if(confirm_delete_component == true){
 		uri = '/ziksana-web/secure/removeCourseComponents';
 
 		token = ''; // dummy token for demo. you have to send real token.
@@ -266,6 +269,7 @@ function onButtonClick(menuitemId, type) {
 				});
 		tree.deleteItem(tree.getSelectedItemId(), true);
 
+	}
 	}
 }
 

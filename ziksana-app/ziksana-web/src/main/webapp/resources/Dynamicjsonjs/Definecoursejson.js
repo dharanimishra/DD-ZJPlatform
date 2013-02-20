@@ -346,7 +346,9 @@ function getCourse() {
 	var parameters = {
 		"Course_id" : Course_id
 	};
-
+	if(Course_id != ''){
+	$('#sbtvalidation').attr('value', 'Done');
+	}
 	var available_tags, selected_tags;
 
 	$
