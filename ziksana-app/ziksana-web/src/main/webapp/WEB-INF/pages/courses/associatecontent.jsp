@@ -447,7 +447,7 @@ span.standartTreeRow:hover {
 														Name:</label>
 													<div class="controls">
 														<input type="text" id="contentname"
-															class="defaultvalue validate[required]"
+															class="defaultvalue validate[required]" tabindex="1"
 															placeholder="Specify the name of the Content"
 															style="width: 240px; margin-left: 10px;" />
 													</div>
@@ -458,10 +458,10 @@ span.standartTreeRow:hover {
 														style="text-decoration: none;">Rich Text Editor</a> <a
 														class="f-r _plainText" href="#linkurl"
 														style="text-decoration: none;">Plain Text Editor</a>
-													<textarea placeholder="Describe your course content" class="_plainTextShow label" class="defaultvalue"  cols="90" rows="7" style="resize: none;font-family: Verdana;font-size:13px; color: #666;"></textarea>
+													<textarea placeholder="Describe your course content" class="_plainTextShow label" class="defaultvalue"  cols="90" rows="7" tabindex="2" style="resize: none;font-family: Verdana;font-size:13px; color: #666;"></textarea>
 													<br />
 													<div class="_richTextShow">
-														<textarea placeholder="Describe your course content" id="Associatecdescrte" name="Associatecdescrte" class="defaultvalue _focus"></textarea>
+														<textarea placeholder="Describe your course content" id="Associatecdescrte" tabindex="2" name="Associatecdescrte" class="defaultvalue _focus"></textarea>
 													</div>
 												
 												</div>
@@ -481,17 +481,17 @@ span.standartTreeRow:hover {
 															Topic: </label>
 													</div>
 													<div class="moduleselection">
-														<select name="Careaddl" id="Careaddl"
+														<select name="Careaddl" id="Careaddl" tabindex="3"
 															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
 															<!--  <option value="">Select Subject Area</option> -->
 
-														</select> <select name="Csubjectddl" id="Csubjectddl"
+														</select> <select name="Csubjectddl" id="Csubjectddl" tabindex="4"
 															class="defaultvalue labelclass"
 															style="margin-right: 15px; width: 200px;">
 														<option value="Select Subject">Select Subject</option>
 
-														</select> <select name="Ctopicddl" id="Ctopicddl"
+														</select> <select name="Ctopicddl" id="Ctopicddl" tabindex="5"
 															class="defaultvalue labelclass" style="width: 200px;">
 															<option value="Select Topic">Select Topic</option>
 														</select>
@@ -500,8 +500,10 @@ span.standartTreeRow:hover {
 														<br /> <label class="control-label labelclass"
 															for="contenttags"
 															style="margin-top: -2px; font-weight: bold;">Specify
-															any tags : </label> <input type="text" id="Associatetag"
-															style="margin-left: 290px;"></input> <br />
+															any tags : </label> 
+															<input id="Associate_tag" type="text" tabindex="6"
+												style="margin-left: 20px;width:250px;height:25px;"></input>
+														 <br />
 													</div>
 													<!-- end of coursetags--->
 													<!-- <img src="/ziksana-web/resources/images/icons/upload.png"
@@ -577,7 +579,7 @@ span.standartTreeRow:hover {
 												<!-- start of forth container--->
 
 												<div class="moduleselection">
-													<select name="q_type"
+													<select name="q_type" tabindex="7"
 														class="defaultvalue labelclass validate[required]"
 														id="q_type" style="margin-right: 15px; width: 410px;">
 														<option value="">Select how would you like to add
@@ -594,7 +596,7 @@ span.standartTreeRow:hover {
 												<br />
 												<div id="type-1">
 													<img src="/ziksana-web/resources/images/icons/upload.png"
-														align="left" /><label class="control-label labelclass"
+														align="left" tabindex="8" /><label class="control-label labelclass"
 														for="uploadimage"
 														style="margin-top: -2px; font-weight: bold;">Upload
 														the Content (mp4/mp3/doc/docx/ppt/pptx/pdf): </label>
@@ -660,7 +662,7 @@ span.standartTreeRow:hover {
 												<div id="type-2">
 													<label class="control-label labelclass" for="uploadimage"
 														style="margin-top: -2px;">Associate URL: </label> <input
-														type="text" id="defaultvalue"
+														type="text" id="defaultvalue" tabindex="9"
 														class="defaultvalue validate[required]"
 														placeholder="Provide the full URL/Web Address including HTTP://"
 														style="width: 310px; margin-left: 10px;" />
@@ -670,7 +672,7 @@ span.standartTreeRow:hover {
 												<div id="type-3">
 													<label for="moduledescription" class="labelclass">Content
 														Description :</label> <br /> <br />
-													<textarea id="q_typecdesdcrte" name="q_typecdesdcrte"
+													<textarea id="q_typecdesdcrte" name="q_typecdesdcrte" tabindex="10"
 														class="defaultvalue validate[required]">Type the Content Here</textarea>
 
 												</div>
@@ -680,10 +682,10 @@ span.standartTreeRow:hover {
 											<!-- end of forth container--->
 
 											<div class="buttonassoc" style="height: 20px;">
-												<a class="cancellinkassociatecontent btn btn-info" href=""
+												<a class="cancellinkassociatecontent btn btn-info" tabindex="12" href=""
 													style="float: right; margin-right: 20px; text-decoration: none;">
 													Cancel </a> <input type="submit" class="btn btn-info"
-													id="btnsbtassoccontent" value="Submit"
+													id="btnsbtassoccontent" value="Submit" tabindex="11"
 													onClick="getAssociateContentSave(); return false;"
 													style="float: right; margin-right: 20px; text-decoration: none;" />
 
@@ -706,7 +708,7 @@ span.standartTreeRow:hover {
 								<!-- Content Panel End -->
 
 								<a class="btn btn-info"
-									href="/ziksana-web/secure/enrichcontent/${courseId}"
+									href="/ziksana-web/secure/enrichcontent/${courseId}"  tabindex="13"
 									style="float: right; margin-bottom: 20px; margin-top: 20px;"
 									id="">Save and Continue</a>
 

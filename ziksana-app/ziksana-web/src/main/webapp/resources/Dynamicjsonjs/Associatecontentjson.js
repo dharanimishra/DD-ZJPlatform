@@ -300,7 +300,7 @@ function getAssociateContentSave() {
 
 		var Topic = $('#Ctopicddl').val();
 
-		var Contenttag_Field = $('#Associatetag').val();
+		var Contenttag_Field = $('#Associate_tag').val();
 
 		var AssocContent_Image = $('#Cimageupl').val();
 

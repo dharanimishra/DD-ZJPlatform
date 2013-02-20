@@ -44,6 +44,9 @@
 <style>
 .loginwrapper {
 	background-color: #FFFFFF;
+	background-image:url("/ziksana-web/resources/images/slider/unibg.png");
+	background-repeat:no-repeat;
+	background-size:100% auto;
 }
 
 .loginhead {

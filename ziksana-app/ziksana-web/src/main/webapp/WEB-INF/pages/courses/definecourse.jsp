@@ -393,7 +393,7 @@ span.standartTreeRow:hover {
 										<div class="controls">
 											<input type="text" autofocus
 												class="defaultvaluem treeRoot validate[required]"
-												id="defaultvalue"
+												id="defaultvalue" tabindex="1" 
 												style="width: 240px; margin-left: 10px; color: #666;"
 												placeholder="Specify the Course Name" />
 										</div>
@@ -405,10 +405,10 @@ span.standartTreeRow:hover {
 											class="f-r _richText" id="rich_text_editor" href="#" onClick="richText()"
 											style="text-decoration: none;">Rich Text Editor</a>
 
-										<textarea placeholder="Describe the Course being created" cols="124" rows="8" id="Cdescription" class="_plainTextShow defaultvaluem labelclass" style="width: 880px; color: #666;"></textarea>
+										<textarea placeholder="Describe the Course being created" cols="124" rows="8" id="Cdescription" tabindex="2"  class="_plainTextShow defaultvaluem labelclass" style="width: 880px; color: #666;"></textarea>
 										<br />
 										<div class="_richTextShow">
-											<textarea placeholder="Describe the Course being created" id="Cdescriptionrte" name="editor2" class="defaultvalue _focus"></textarea>
+											<textarea placeholder="Describe the Course being created" id="Cdescriptionrte" name="editor2" tabindex="2" class="defaultvalue _focus"></textarea>
 										</div>
 										<script type="text/javascript">
 											CKEDITOR.replace('Cdescriptionrte');
@@ -432,7 +432,7 @@ span.standartTreeRow:hover {
 										</div>
 
 										<div class="moduleselection">
-											<select name="Careaddl" id="Careaddl"
+											<select name="Careaddl" id="Careaddl" tabindex="3"
 												class="defaultvalue labelclass"
 												style="margin-right: 15px; width: 200px;">
 												<!--  <option value="Select Subject Area">Select Subject
@@ -440,11 +440,11 @@ span.standartTreeRow:hover {
 
 
 											</select> <select name="Csubjectddl" id="Csubjectddl"
-												class="defaultvalue labelclass"
+												class="defaultvalue labelclass" tabindex="4"
 												style="margin-right: 15px; width: 200px;">
 												<option value="Select Subject">Select Subject</option>
 
-											</select> <select name="Ctopicddl" id="Ctopicddl"
+											</select> <select name="Ctopicddl" id="Ctopicddl" tabindex="5"
 												class="defaultvalue labelclass " style="width: 200px;">
 												<option value="Select Topic">Select Topic</option>
 
@@ -457,7 +457,7 @@ span.standartTreeRow:hover {
 											<label class="labelclass"
 												for="coursetags"
 												style="margin-top: -2px; font-weight: bold;">Specify
-												any tags : </label> <input id="Ctagfield_e" type="text"
+												any tags : </label> <input id="Ctagfield_e" type="text" tabindex="6"
 												style="margin-left: 20px;width:250px;height:25px;"></input> <br /> <br />
 										</div>
 										<!-- end of coursetags--->
@@ -465,7 +465,7 @@ span.standartTreeRow:hover {
 										<div class="coursecredits">
 											<label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Credits :</label>
-											<input type="text" id="Credits" class="smartspinner "
+											<input type="text" id="Credits" class="smartspinner " tabindex="7"
 												style="margin-left: 18px;" />
 											<script type="text/javascript"
 												src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
@@ -492,7 +492,7 @@ span.standartTreeRow:hover {
 											<label for="coursetags" class="labelclass"
 												style="margin-left: 20px; font-weight: bold;">Specify
 												Course Extra Credits :</label> <input type="text" id="ExtraCredits"
-												class="smartspinner "
+												class="smartspinner " tabindex="8"
 												style="width: 30px; margin-left: 10px;" />
 											<script type="text/javascript">
 												$(document)
@@ -518,9 +518,9 @@ span.standartTreeRow:hover {
 										<div class="courseduration">
 											<br /> <label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Duration :</label>
-											<input type="text" id="Duration"
+											<input type="text" id="Duration" tabindex="9"
 												style="width: 30px; margin-left: 9px;"
-												class="defaultvalue validate[required]" />
+												class="defaultvalue" />
 											<script type="text/javascript">
 												$(document)
 														.ready(
@@ -538,7 +538,7 @@ span.standartTreeRow:hover {
 
 																});
 											</script>
-											<select name="SelectArea" id="Cdurationtype"
+											<select name="SelectArea" id="Cdurationtype" tabindex="10"
 												class="defaultvalue" style="margin-left: 20px;">
 												<option value="1">Weeks</option>
 												<option value="2">Months</option>
@@ -612,7 +612,7 @@ span.standartTreeRow:hover {
 
 										<div id="thubmnail_upload_message"></div>
 										<div id="loaderText"></div>
-										<input type="file" name="thumbnail_image_file_upload"
+										<input type="file" name="thumbnail_image_file_upload" tabindex="11"
 											id="thumbnail_image_file_upload" />
 										<div id="status"></div>
 										<script type="text/javascript">
@@ -682,7 +682,7 @@ span.standartTreeRow:hover {
 								</div>
 								<!-- end of third container--->
 
-								<input type="submit" class="btn btn-info f-r" id="sbtvalidation"
+								<input type="submit" class="btn btn-info f-r" id="sbtvalidation" tabindex="13"
 									value="Submit" onClick="createCourse(); return false;"
 									style="margin-right: 10px;">
 								<!-- <a href="/ziksana-web/secure/createmodule/${courseId}"
