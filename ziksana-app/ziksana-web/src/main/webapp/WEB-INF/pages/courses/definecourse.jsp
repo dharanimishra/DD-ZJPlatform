@@ -154,7 +154,19 @@
 
 		//Fetch course details and populate the form
 		getCourse();
-
+		//Course Name Validation for Duplication while creating a course
+		$('#defaultvalue').focusout(function(){
+			var courseId = $('#courseid').val();
+			var courseName = $('#defaultvalue').val();
+			uri = '/ziksana-web/secure/iscourseexists/';
+			var parameters = {
+					"courseId" : courseId,
+					"courseName" : courseName,
+					
+				};
+	
+	
+}
 	});
 </script>
 <style type="text/css">

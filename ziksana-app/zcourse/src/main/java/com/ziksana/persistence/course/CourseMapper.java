@@ -16,6 +16,7 @@ import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseAdditionalProperty;
 import com.ziksana.domain.course.CourseEditResponse;
 import com.ziksana.domain.course.CourseLearningComponent;
+import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningComponentNest;
@@ -390,5 +391,11 @@ public interface CourseMapper {
 	public Integer saveCurriculamCourse(@Param("courseId")Integer courseId, @Param("memberRoleId") Integer memberRoleId);
 
 	public void saveAndEnableCourse(int coursesId);
+
+
+
+	public int isCourseNameExists(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId,@Param("courseName") String courseName);
+
+	public List<Course> getCoursesByCoursename(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId,@Param("courseName") String courseName);
 
 }

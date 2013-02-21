@@ -201,7 +201,19 @@
 
 	</select>
 
-
+	<select id="isCourseNameExists" resultType="java.lang.Integer" parameterType="map">
+		select distinct
+		COUNT(name) 
+		
+		from
+		corcourse
+		where
+		name = #{courseName} and
+		CourseStatus=#{statusId} and
+		MemberRoleId=#{memberPersonaId} and
+		IsDelete = 0
+	
+	</select>
 
 	<select id="totalNumberOfCourses" resultType="java.lang.Integer"
 		parameterType="map">
@@ -217,6 +229,17 @@
 
 
 	</select>
+	<select id="getCoursesByCoursename" resultMap="courseResultMap" parameterType="map">
+		select
+		id,name,description,thumbnailPicturePath
+		from
+		corcourse
+		where
+		name = #{courseName} and
+		CourseStatus=#{statusId} and
+		MemberRoleId=#{memberPersonaId} and
+		IsDelete = 0
+	</select>
 	
 	<insert id="saveCurriculamCourse" parameterType="map">
 		INSERT INTO corcurriculumcourse (CreationDate, Active,PrescribedDurationUnit, ProgramCurriculumId,courseId, MemberRoleId) VALUES(now(),1,1, 3,#{courseId}, #{memberRoleId})
@@ -225,6 +248,8 @@
 	<insert id="saveAndEnableCourse" parameterType="int">
 		INSERT INTO sbnsubscriptioncourse (MemSubscriptionProgId, CurriculumCourseId) VALUES( 4, (select id from corcurriculumcourse where courseId=#{courseId}));
 	</insert>
+	
+	
 	
 	<resultMap id="mapCourseResult" type="com.ziksana.domain.course.Course">
 	

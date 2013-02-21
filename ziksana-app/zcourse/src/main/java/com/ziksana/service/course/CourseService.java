@@ -159,4 +159,8 @@ public interface CourseService {
 	public Integer createNewCurriculamCourse(int coursesId, int memberRoleId);
 
 	public void getCurriculamCourseByCourseId(int coursesId);
+
+	public int isCourseNameExists(CourseStatus courseStatus, String courseName);
+
+	public List<Course> getCoursesByCoursename(CourseStatus underConstruct,String courseName);
 }

@@ -759,4 +759,20 @@ public class CourseServiceImpl implements CourseService {
 		courseMapper.saveAndEnableCourse(coursesId);
 	}
 
+	
+	@Override
+	public int isCourseNameExists(CourseStatus courseStatus, String courseName) {
+		int status = courseStatus.getID();
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
+		return courseMapper.isCourseNameExists(Integer.valueOf(status),Integer.valueOf(memberRoleId),courseName);
+	}
+
+	@Override
+	public List<Course> getCoursesByCoursename(CourseStatus courseStatus,
+			String courseName) {
+		int status = courseStatus.getID();
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
+		return courseMapper.getCoursesByCoursename(Integer.valueOf(status),Integer.valueOf(memberRoleId),courseName);
+	}
+
 }
