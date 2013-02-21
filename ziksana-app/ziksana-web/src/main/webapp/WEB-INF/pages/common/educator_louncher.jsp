@@ -82,6 +82,7 @@ cufon{text-indent:0!important;}@media screen,projection{cufon{display:inline!imp
 {
 height:550px;	
 border:1px solid #fff;
+background: #ddd;
 
 }
 
@@ -283,23 +284,34 @@ list-style:none;
 }
 
 
-	.slide-up-boxes a { 
-			display: block; 
-			height: 130px; 
-			margin: 0 0 10px 0; 
-			background: rgba(215, 215, 215, 0.5); 
-			border: 1px solid #ccc; 
-			height: 45px; 
-			overflow: hidden; 
-			text-decoration:none;
+		.slide-up-boxes a {
+		 background: #fcfff4;
+			background: -moz-linear-gradient(top,  #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfff4), color-stop(40%,#dfe5d7), color-stop(100%,#b3bead));
+			background: -webkit-linear-gradient(top,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+			background: -o-linear-gradient(top,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+			background: -ms-linear-gradient(top,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+			background: linear-gradient(to bottom,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+
+		  border: 1px solid #CCCCCC;
+		  border-radius: 3px 3px 3px 3px;
+		  box-shadow: 2px 2px 2px #222222;
+		  display: inline-block;
+		  height: 75px;
+		  margin: 0 0.5em 0.5em 0;
+		  overflow: hidden;
+		  padding: 10px;
+		  text-decoration: none;
+		  width: 75px;
 		}
-		
 		.slide-up-boxes h5 { 
 			color: #2A659B; 
 			text-align:center;
-			height:65px; 
-			font:18px/45px Georgia, Serif;    /* Vertically center text by making line height equal to height */
-			 
+			height:100px; 
+			margin-top: 10px;
+			font: bold 12px/2.5em Tahoma;    /* Vertically center text by making line height equal to height */
+
 			 opacity: 1;
 			 -webkit-transition: all 0.2s linear; 
 			 -moz-transition: all 0.2s linear; 
@@ -307,23 +319,23 @@ list-style:none;
 		}
 		
 		.slide-up-boxes a:hover h5 { 
-			margin-top: -65px; 
+			margin-top: -100px; 
 			opacity: 0; 
 		}
 		
-		.slide-up-boxes div { 
-			position: relative; 
-			color: white; 
-			font: 12px/14px Georgia, Serif;
-			height: 45px; 
-			padding: 10px; 
-			opacity: 0; 
-			/*-webkit-transform: rotate(6deg); 
-			-webkit-transition: all 0.4s linear; 
-			-moz-transform: rotate(6deg); 
-			-moz-transition: all 0.4s linear; 
-			-o-transform: rotate(6deg); 
-			-o-transition: all 0.4s linear; */
+		.slide-up-boxes div {
+		  border-radius: 2px 2px 2px 2px;
+		  bottom: 0;
+		  color: white;
+		  display: inline-block;
+		  font: 12px/14px Arial;
+		  height: 55px;
+		  left: 0;
+		  opacity: 0;
+		  padding: 10px;
+		  position: relative;
+		  right: 0;
+		  top: 0;
 		}
 		.slide-up-boxes a:hover div { 
 			opacity: 1; 
@@ -331,11 +343,11 @@ list-style:none;
 			-moz-transform: rotate(0); 
 			-o-transform: rotate(0); 
 		}
-		.slide-up-boxes a:nth-child(2) div { background: #367db2 url(images/icons/createcourse.png) 5px 5px no-repeat; padding-left: 60px; }
-		.slide-up-boxes a:nth-child(3) div { background: #367db2 url(images/icons/manage.png) 5px 5px no-repeat; padding-left: 120px; }
-		.slide-up-boxes a:nth-child(4) div { background: #000000 url(images/icons/publish.png) 5px 5px no-repeat; padding-left: 95px; }
-		.slide-up-boxes a:nth-child(5) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 95px; }
-		.slide-up-boxes a:nth-child(6) div { background: #000000  url(images/icons/grade.png) 5px 5px no-repeat; padding-left: 95px; }
+		.slide-up-boxes a:nth-child(2) div { background: #367db2;  }
+		.slide-up-boxes a:nth-child(3) div { background: #367db2;  }
+		.slide-up-boxes a:nth-child(4) div { background: #000000; }
+		.slide-up-boxes a:nth-child(5) div { background: #000000; }
+		.slide-up-boxes a:nth-child(6) div { background: #000000; }
 		
 
 </style>
@@ -1134,50 +1146,52 @@ padding: 5px;">
 	 </script>
     <c:if test="${member.roleType eq 'EDUCATOR'}">
 			<a class="fancyboxclose" href="/ziksana-web/secure/createcourse" target="_parent" >
-				<h5>Create Course</h5>
-				<div >Create your course with an easy 7 step process </div>				
+				
+				
+				<h5><img src='/ziksana-web/resources/images/icons/course-create.png'><br/>Create</h5>
+				<div >Create a course in 7 easy steps </div>				
 			</a>
 			
 			<a class="fancyboxclose" href="/ziksana-web/secure/showMyProgramsDraft" target="_parent">
-				<h5>Draft Courses</h5>
+				<h5><img src='/ziksana-web/resources/images/icons/course-draft.png'><br/>Draft</h5>
 				<div >Edit your draft courses</div>					
 			</a>
 				
 			<a class="fancyboxclose" href="#linkurl">
-				<h5>Manage Course</h5>
-				<div >To be released in next Playpen.</div>					
+				<h5><img src='/ziksana-web/resources/images/icons/course-manage.png'><br/>Manage</h5>
+				<div>To be released in next Playpen.</div>					
 			</a>
 			
 			<a class="fancyboxclose" href="#linkurl">
 				
-                <h5>Publish Course</h5>
+                <h5><img src='/ziksana-web/resources/images/icons/course-publish.png'><br/>Publish</h5>
 				<div >To be released in next Playpen.</div>			
 			</a>
 
             <a class="fancyboxclose" href="#linkurl">
-				<h5>Grade Students</h5>
+				<h5><img src='/ziksana-web/resources/images/icons/course-grade.png'><br/>Grade</h5>
 				<div >To be released in next Playpen.</div>				
 			</a>
 	</c:if>
 	 <c:if test="${member.roleType eq 'LEARNER'}">
 	 <a class="fancyboxclose" href="/ziksana-web/secure/showMyPrograms" target="_parent" >
-				<h5>Course</h5>
-				<div>Study the courses that you have subcribed to </div>				
+				<h5><img src='/ziksana-web/resources/images/icons/course-view.png'><br/>Course</h5>
+				<div>Study the courses you  subcribed  </div>				
 			</a>
 				
 			<a class="fancyboxclose" href="#linkurl">
-				<h5>Tutorial</h5>
+				<h5><img src='/ziksana-web/resources/images/icons/tutorial.png'><br/>Tutorial</h5>
 				<div style=" background: #000000" >To be released in next Playpen.</div>					
 			</a>
 			
 			<a class="fancyboxclose" href="#linkurl">
 				
-                <h5>Assignments</h5>
+                <h5><img src='/ziksana-web/resources/images/icons/course-assignment.png'><br/>Assignments</h5>
 				<div >To be released in next Playpen.</div>					
 			</a>
 
             <a class="fancyboxclose" href="#linkurl">
-				<h5>Performance</h5>
+				<h5><img src='/ziksana-web/resources/images/icons/performance.png'><br/>Performance</h5>
 				<div >To be released in next Playpen.</div>					
 			</a>
 	 </c:if>

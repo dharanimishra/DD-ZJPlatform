@@ -377,7 +377,7 @@ box-shadow: 1px 2px 5px #000000;"/>
 							<label>Username</label> <input type="text" autofocus="autofocus" name="username"
 								tabindex="1" placeholder="Enter your Username">
 							<div id="uerror"></div>
-							<label><a href="#" class="rLink" tabindex="5">Forgot your password?
+							<label><a href="/ziksana-web/resources/html/forgotpassword.html" class="rLink" tabindex="5">Forgot your password?
 									</a>Password</label> <input type="password" name="password"
 								tabindex="2" placeholder="Enter your Password">
 							<div id="perror"></div>
@@ -391,7 +391,7 @@ box-shadow: 1px 2px 5px #000000;"/>
 						<!-- <input type="submit" class="btnLogin" value="Register" tabindex="4">-->
 						<div class="clearfix"></div>
 						<a href="#" class="rLink" tabindex="5" style="margin-top: 10px;float:left;">Connect with Ziksana </a>
-						<a href="#" class="rLink" tabindex="5" style="margin-top: 10px;">Can't access your account?</a>
+						<a href="/ziksana-web/resources/html/register.html" class="rLink" tabindex="5" style="margin-top: 10px;">Can't access your account?</a>
 						<!-- </footer>-->
 					</form>
 

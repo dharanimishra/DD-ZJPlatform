@@ -54,6 +54,13 @@ function add_ziklogo_and_close_button(){
 
 	fancybox_wrapper = $.fancybox.wrap;
 	if(fancybox_wrapper != null){
+		
+		//First check if the src points to launcher modal. If not, do nothing.
+		iframe_src = fancybox_wrapper.find('.fancybox-iframe').attr('src');
+
+		if(iframe_src != '/ziksana-web/secure/launcher'){return false;}
+		
+		
 		if(fancybox_wrapper.find('#zik_fancy_logo').length == 0){ //remove the logo if it exists.
 			fancybox_wrapper.prepend(logo_html);
 		}

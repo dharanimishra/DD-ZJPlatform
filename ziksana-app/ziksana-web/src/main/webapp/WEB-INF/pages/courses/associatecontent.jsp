@@ -26,8 +26,7 @@
 	rel="stylesheet" type="text/css" />
 <link href="/ziksana-web/resources/css/common/validation/validation.css"
 	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/js/ui/jquery.fancybox-1.3.4.css"
-	media="screen" rel="stylesheet" type="text/css" />
+
 <link href="/ziksana-web/resources/js/tree/styles/styleTree.css"
 	rel="stylesheet" type="text/css" />
 <!-- for the layout of the tree -->
@@ -100,8 +99,12 @@
 <script
 	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
 	type="text/javascript"></script>
-<script src="/ziksana-web/resources/js/ui/jquery.fancybox-1.3.4.pack.js"
-	type="text/javascript"></script>
+    <!--fancybox-->
+	<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+
+     <script src="../resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+	 <link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
+	<!--fancybox end-->
 <script src="/ziksana-web/resources/js/custom/libraryfunction.js"
 	type="text/javascript"></script>
 <script
