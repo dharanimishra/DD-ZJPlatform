@@ -283,6 +283,8 @@ function getaddmodulesave() {
 		var course_id = $('#courseid').val();
 
 		var CourseLearningComponentId = $('#courseLearningComponentId').val();
+		
+		var ParentLearningComponentId = $('#parentLearningComponentId').val();
 
 		var learningComponentId = $('#learningComponentId').val();
 
@@ -313,6 +315,7 @@ function getaddmodulesave() {
 		var parameters = {
 			"Course_id" : course_id,
 			"CourseLearningComponentId" : CourseLearningComponentId,
+			"ParentLearningComponentId": ParentLearningComponentId,
 			"LearningComponentId" : learningComponentId,
 			"Course_Module" : Module_Name,
 			"Module_Description" : Module_Description,

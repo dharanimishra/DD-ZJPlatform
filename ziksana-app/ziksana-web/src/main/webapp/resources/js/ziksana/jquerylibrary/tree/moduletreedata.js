@@ -317,12 +317,27 @@ function createtree(course_id) {
 
 		if (node_type == "COURSE") {
 			$('#courseid').val(itemId);
+			console.log("COURSE "+itemId);
 		}
 
 		if (node_type == "COMPONENT") {
 			$('#courseLearningComponentId').val(itemId);
+			console.log("COMPONENT "+itemId);
 		}
 
+
+		parent_node_id = tree.getParentId(itemId);
+
+		if (parent_node_id == '0') {
+			console.log('Node parent id is: ' + parent_node_id);		
+		} else {
+			console.log('Node parent id is COMPONENT: ' + parent_node_id);
+			parent_node_type = parent_node_id.split('_')[0];
+			if (parent_node_type = "COMPONENT") {
+				$('#parentLearningComponentId').val(itemId);
+			}
+			console.log("parent_node_id "+parent_node_id);
+		}
 		tree.selectItem(itemId, false);
 		var id = tree.getSelectedItemId();
 		// alert(id);
@@ -351,7 +366,8 @@ function createtree(course_id) {
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
 
 	courseId = course_id.split('_')[1];
-	tree.loadXML("/ziksana-web/secure/getparenttree/" + courseId);
+	//tree.loadXML("/ziksana-web/secure/getparenttree/" + courseId);
+	tree.loadXML("/ziksana-web/secure/getparent/" + courseId);
 
 }
 

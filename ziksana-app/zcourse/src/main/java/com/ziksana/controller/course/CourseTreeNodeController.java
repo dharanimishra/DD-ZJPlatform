@@ -57,7 +57,7 @@ public class CourseTreeNodeController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/getcoursetree/{courseId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getcoursetree1/{courseId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showMyTreenode(@PathVariable String courseId)
 			throws CourseException {

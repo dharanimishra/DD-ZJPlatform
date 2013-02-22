@@ -405,6 +405,7 @@ public class CreateCourseController {
 	CourseJsonResponse saveCourseComponents(
 			@RequestParam(value = "Course_id", required = true) String CourseId,
 			@RequestParam(value = "CourseLearningComponentId", required = false) String CourseLearningComponentId,
+			@RequestParam(value = "ParentLearningComponentId", required = false) String ParentLearningComponentId,
 			@RequestParam(value = "LearningComponentId", required = false) String LearningComponentId,
 			@RequestParam(value = "Course_Module", required = true) String CourseModule,
 			@RequestParam(value = "Module_Description", required = false) String CourseModuleDescription,
@@ -423,6 +424,8 @@ public class CreateCourseController {
 		LOGGER.info("Entering Class " + getClass()
 				+ " saveCourseComponents(): courseId :" + CourseId
 				+ "CourseLearningComponentId :" + CourseLearningComponentId
+				+ "ParentLearningComponentId :" + ParentLearningComponentId
+				+ "LearningComponentId :" + LearningComponentId
 				+ " CourseModule :" + CourseModule
 				+ " CourseModuleDescription :" + CourseModuleDescription
 				+ " ModuleTags :" + ModuleTags + " ModuleWeight :"
@@ -430,7 +433,7 @@ public class CreateCourseController {
 				+ " Duration :" + Duration + " UnitofDuration :"
 				+ UnitofDuration + " UploadImage :" + UploadImage);
 
-		Integer courseid = 0, courseLearningComponentId = 0, learningComponentId = 0, learningObjIndicator = 0;
+		Integer courseid = 0, courseLearningComponentId = 0, learningComponentId = 0, learningObjIndicator = 0, parentLearningComponentId = 0;
 		try {
 			courseid = Integer.parseInt(CourseId.split("_")[1]);
 			LOGGER.info("Entering Class " + getClass()
@@ -446,10 +449,27 @@ public class CreateCourseController {
 					+ " saveCourseComponents(): courseLearningComponentId :"
 					+ courseLearningComponentId);
 		} catch (NumberFormatException nfe) {
+			courseLearningComponentId = 0;
 			LOGGER.error("Class "
 					+ getClass()
 					+ " saveCourseComponents(): NumberFormatException courseLearningComponentId :"
 					+ courseLearningComponentId + nfe);
+		}
+
+		try {
+			parentLearningComponentId = Integer
+					.parseInt(ParentLearningComponentId.split("_")[1]);
+			LOGGER.info("Entering Class " + getClass()
+					+ " saveCourseComponents(): parentLearningComponentId :"
+					+ parentLearningComponentId);
+
+		} catch (ArrayIndexOutOfBoundsException nfe) {
+			parentLearningComponentId = 0;
+			LOGGER.error("ArrayIndexOutOfBoundsException parentLearningComponentId :"
+					+ parentLearningComponentId + nfe);
+		} catch (NumberFormatException nfe) {
+			LOGGER.error("NumberFormatException learningComponentId :"
+					+ learningComponentId + nfe);
 		}
 
 		try {
@@ -509,7 +529,7 @@ public class CreateCourseController {
 			course.setAccountableMember(accountableMember);
 			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 			course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
-
+			LearningComponent learningComponentParent = null;
 			if (courseLearningComponentId > 0 && learningComponentId > 0) {
 				flag = true;
 				LearningComponent comp1 = new LearningComponent();
@@ -526,9 +546,23 @@ public class CreateCourseController {
 				comp1.setLearningObjIndicator(learningObjIndicator);
 
 				// Learning Component Nesting
+				try {
+					learningComponentParent = new LearningComponent();
+					if (parentLearningComponentId == courseid) {
+						parentLearningComponentId = 0;
+					} else {
+						learningComponentParent
+								.setLearningComponentId(parentLearningComponentId);
+					}
+				} catch (Exception e) {
+					LOGGER.debug(" Class :"
+							+ getClass()
+							+ " Method: saveCourse : NumberFormatException : parentLearningComponentId :"
+							+ parentLearningComponentId + e);
+				}
 
 				LearningComponentNest compNest1 = new LearningComponentNest(
-						null, comp1);
+						learningComponentParent, comp1);
 				compNest1.setNestLevel(0);
 
 				// Learning Component Nesting
@@ -581,8 +615,23 @@ public class CreateCourseController {
 
 				// Learning Component Nesting
 
+				try {
+					learningComponentParent = new LearningComponent();
+					if (learningComponentId == courseid) {
+						parentLearningComponentId = 0;
+					} else {
+						learningComponentParent
+								.setLearningComponentId(parentLearningComponentId);
+					}
+				} catch (Exception e) {
+					LOGGER.debug(" Class :"
+							+ getClass()
+							+ " Method: saveCourse : NumberFormatException : parentLearningComponentId :"
+							+ learningComponentId + e);
+				}
+
 				LearningComponentNest compNest1 = new LearningComponentNest(
-						null, comp1);
+						learningComponentParent, comp1);
 				compNest1.setNestLevel(0);
 
 				// Learning Component Nesting
@@ -642,6 +691,17 @@ public class CreateCourseController {
 					+ e.getMessage());
 
 		}
+		LOGGER.info("Exiting Class " + getClass()
+				+ " saveCourseComponents(): courseId :" + CourseId
+				+ "CourseLearningComponentId :" + CourseLearningComponentId
+				+ "ParentLearningComponentId :" + ParentLearningComponentId
+				+ "LearningComponentId :" + LearningComponentId
+				+ " CourseModule :" + CourseModule
+				+ " CourseModuleDescription :" + CourseModuleDescription
+				+ " ModuleTags :" + ModuleTags + " ModuleWeight :"
+				+ ModuleWeight + " LearningObject :" + LearningObject
+				+ " Duration :" + Duration + " UnitofDuration :"
+				+ UnitofDuration + " UploadImage :" + UploadImage);
 		Integer courseIds = 0;
 		try {
 			courseIds = Integer

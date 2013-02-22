@@ -8,11 +8,14 @@
 <course> <id>${courseIds}</id> <name>${coursename}</name> <nodes>
 <node> <id>COURSE_${courseIds}</id> <parentId>-1</parentId> <title>${coursename}</title>
 <icon>/ziksana-web/resources/images/tree_icons/course.png</icon> <expanded>true</expanded>
-</node> <c:forEach var="treenode" items="${treeList}">
+</node> 
+
+<c:forEach var="treenode" items="${treeList}">
 	<node> <id>LCOMPONENT_${treenode.id}</id> <parentId>COURSE_${courseIds}</parentId>
 	<title>${treenode.title}</title> <icon>${parentIcon}</icon> <expanded>${treenode.expanded}</expanded>
 	</node>
-</c:forEach> <c:forEach var="childtreenode" items="${childList}">
+</c:forEach> 
+<c:forEach var="childtreenode" items="${childList}">
 	<node> <id>LCONTENT_${childtreenode.contentType}_${childtreenode.parentId}_${childtreenode.id}</id>
 	<parentId>LCOMPONENT_${childtreenode.parentId}</parentId> <title>${childtreenode.contentname}</title>
 
