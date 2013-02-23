@@ -40,6 +40,9 @@ package com.ziksana.player.enhance
 	import flash.utils.clearTimeout;
 	import flash.utils.getTimer;
 	import flash.utils.setTimeout;
+	import flash.events.TimerEvent;
+	import flash.ui.Mouse;
+	import flash.utils.Timer;
 
 	
 	
@@ -138,6 +141,9 @@ package com.ziksana.player.enhance
 		[Embed(source='../../../../../icons/deletenq.png')]
 		public static var DeleteNQ:Class;
 		
+		[Embed(source='../../../../../icons/hsdisplay.png')]
+		public static var HSDisplay:Class;
+		
 		
 		private static var _stage:Stage;
 		private var fileNameRecorded:String = '';
@@ -152,6 +158,7 @@ package com.ziksana.player.enhance
 		protected var loadingGif:MovieClip = new MovieClip();
 		
 		protected var record:MovieClip = new MovieClip();
+		protected var hotspotDetailsBox:MovieClip = new MovieClip();
 		protected var play:MovieClip = new MovieClip();
 		protected var pause:MovieClip = new MovieClip();
 		protected var stop:MovieClip = new MovieClip();
@@ -192,6 +199,7 @@ package com.ziksana.player.enhance
 		protected var dataPath:String;
 		protected var numberOfImages:Number;
 		protected var resizing:Boolean = false;
+		
 		
 		protected var strokesData:BitmapData;
 		protected var strokesBmp:Bitmap;
@@ -271,10 +279,103 @@ package com.ziksana.player.enhance
 		protected var QuestionData:String = "";
 		protected var EduRefData:String = "";
 		protected var EduNoteData:String = "";
+		private var myTimer:Timer = new Timer(1000);
 		
+		private function timerListener (e:TimerEvent):void{
+			var counter:Number = 0;
+			var counterTBS:Number = 0;
+			var time:Number = currentlyPlayingTime;
+			trace("INSIDE HOTSPOT CHEING!!!");
+			while(counter<hotspotDuration.length )
+			{	
+				
+				var timeN:Number = new Number(time);
+				var hotspotTimeN:Number = new Number(hotspotTime[counter]);
+				var hotspotDurationN:Number = new Number(hotspotDuration[counter]);
+				trace("INSIDE HOTSPOT!!!"+hotspotTimeN +"--"+ hotspotDuration[counter] +"--"+ timeN +"--"+hotspotDurationN);
+				//ExternalInterface.call("ff_display_console_message", hotspotTimeN +"--"+ hotspotDuration[counter] +"--"+ timeN +"--"+hotspotDurationN);
+				if(hotspotTimeN<=timeN && (hotspotDuration[counter]=="999" || timeN<hotspotTimeN+hotspotDurationN))
+				{
+					//ExternalInterface.call("ff_display_console_message", hotspotX[counter] +"--"+ hotspotY[counter] +"--"+ timeN +"--"+hotspotDurationN);
+					if(hotspotDuration[counter]=="999")
+						hotspotMovieC[counter].addEventListener(MouseEvent.CLICK, setHSDuration);
+					hotspotMovieC[counter].x = (hotspotX[counter] *_stage.stageWidth)/100;
+					hotspotMovieC[counter].y = (hotspotY[counter] *_stage.stageHeight)/100;
+					hotspotMovieC[counter].addEventListener(MouseEvent.MOUSE_OVER, over); 
+					hotspotMovieC[counter].addEventListener(MouseEvent.MOUSE_OUT, out); 
+					
+					hotspotMovieC[counter].visible = true;
+				}
+				else if (hotspotMovieC[counter]) hotspotMovieC[counter].visible=false;
+				counter++;
+			}
+		}
+		
+		private function over(myEvent:MouseEvent):void {
+			//ExternalInterface.call("ff_display_console_message", "OVER CALLED");
+			rectClip = new Sprite();
+			var rect:Sprite = new Sprite;
+			rect.graphics.clear;
+			rect.graphics.beginFill(0x444444, 1);
+			rect.graphics.drawRoundRectComplex(0, 0, 100, 100, 5, 5, 5 , 5);
+			rect.graphics.endFill();
+			rectClip.x = myEvent.stageX;
+			rectClip.y = myEvent.stageY;
+			//ExternalInterface.call("ff_display_console_message", "OVER CALLED");
+			var tf:TextField = new TextField();
+			tf.autoSize = "left";
+			tf.textColor = 0xFFFFFF;
+			var temp:MovieClip = null;
+			var tempTF:TextField = null;
+			if(myEvent.currentTarget is MovieClip) temp = myEvent.currentTarget as MovieClip;
+			if(myEvent.currentTarget is TextField) tempTF= myEvent.currentTarget as TextField;
+			var counter:Number = 0;
+			if(temp!=null )
+				while(counter<hotspotDuration.length )
+				{	
+					//ExternalInterface.call("ff_display_console_message", "CHECK CALLED"+hotspotMovieC[counter].x +"--"+temp.x);
+					if(hotspotMovieC[counter].x == temp.x)
+					{
+						
+						tf.text = hotspotTitles[counter];
+						if(deployMode=="enrich") enrichUI.addChild(rectClip);
+						if(deployMode=="consume")popUp.addChild(rectClip);
+						
+					}
+					counter++;
+				}
+			rectClip.visible=true;
+			rectClip.addChild(rect);
+			rectClip.addChild(tf);
+			//ExternalInterface.call("ff_display_console_message", "Came here");
+			rect.width = tf.textWidth + 24;
+			rect.height = tf.textHeight + 24;
+			tf.x = Math.round(rect.width/2 - tf.width/2);
+			tf.y = Math.round(rect.height/2 - tf.height/2);
+		}
+
+		
+		private function setHSDuration(myEvent:MouseEvent):void{
+			var temp:MovieClip = myEvent.currentTarget as MovieClip;
+			var counter:Number = 0;
+			while(counter<hotspotDuration.length)
+			{	
+				if(hotspotMovieC[counter].x == temp.x)
+				{
+					var time = currentlyPlayingTime;//ExternalInterface.call("ff_get_position") as String;
+					var timeN:Number = new Number(time);
+					hotspotDuration[counter] = timeN - new Number(hotspotTime[counter]) ;
+					hotspotMovieC[counter].removeEventListener(MouseEvent.CLICK, setHSDuration);
+					
+				}
+				counter++;
+			}
+		}
 		
 		public function EnhancePlayer()
 		{
+			myTimer.addEventListener(TimerEvent.TIMER, timerListener);
+			myTimer.start();
 			nc.connect("rtmp://video.beta.ziksana.com/oflaDemo");
 			nc2.connect("rtmp://video.beta.ziksana.com/oflaDemo");
 			deployMode = ExternalInterface.call("ff_player_mode"); //"enrich" "enhance" "playback" "consume"
@@ -670,8 +771,10 @@ package com.ziksana.player.enhance
 			//addChild(tempTF);
 		}
 		
-		private function over(myEvent:MouseEvent):void { }
-		private function out(myEvent:MouseEvent):void { }
+		private function out(myEvent:MouseEvent):void
+		{
+			rectClip.visible=false;
+		}
 		private function AddConsumeUI():void {
 			addQuestion.buttonMode = true;
 			addQuestion.useHandCursor = true;
@@ -2808,6 +2911,7 @@ package com.ziksana.player.enhance
 				hotspotIcon.x= stage.stageWidth - 50;
 				var test:Bitmap = new HOTSPOTICON();
 				hotspotIcon.addChild(test);
+				hotspotIcon.addEventListener(MouseEvent.CLICK, fAddHotspot);
 				enrichUI.addChild(hotspotIcon);
 				trace("ADDIONG HOTSPOT ICON");
 				
@@ -2931,6 +3035,169 @@ package com.ziksana.player.enhance
 			//trace(controls.width +"==="+controls.height);
 		}
 		
+		
+		
+		private function fAddHotspot(myEvent:MouseEvent=null) {
+			//ExternalInterface.call("ff_pause_player");
+			Pause(null);
+			pause.alpha = 0.4;
+			addnBox.visible = false;
+			addqBox.visible = false;
+			nnqBox.visible = false;
+			addHotspotBox = new MovieClip();
+			
+			addHotspotBox.visible=true;
+			addHotspotBox.graphics.beginFill(0x555555, 0.4);  
+			addHotspotBox.graphics.drawRect( 0, 0, _stage.stageWidth, _stage.stageHeight );  
+			addHotspotBox.graphics.endFill();  
+			addHotspotBox.alpha= 1;
+			addHotspotBox.addEventListener(MouseEvent.CLICK, fAddHotspotDetails);
+			var t:TextField = new TextField();  
+			//t.embedFonts = true;
+			ShowPopUp("Click on the point where you would like to add a HOTSPOT", 10000);
+			var pointer:MovieClip = new MovieClip();
+			var test:Bitmap = new Bitmap();
+			test = new HSDisplay();
+			pointer.addChild(test);
+			addHotspotBox.addChild(pointer);
+			pointer.startDrag("true");
+			Mouse.hide();
+			var tf:TextFormat = new TextFormat();
+			tf.color = 0xFFFFFF;
+			tf.size = 18;
+			tf.font = "Calibri";
+			tf.align=TextFormatAlign.CENTER;
+			t.setTextFormat(tf);
+			t.width=500;
+			t.y=_stage.stageHeight/2;
+			t.x = (_stage.stageWidth - t.width)/2;
+			//addHotspotBox.addChild(t); 
+			enrichUI.addChild(addHotspotBox);
+		}
+		private var hotspotTitle:TextField = new TextField();
+		private function fAddHotspotDetails (myEvent:MouseEvent) {
+			HidePopUp();
+			Mouse.show();
+			addHotspotBox.visible= false;
+			var time:String = ExternalInterface.call("ff_get_position") as String;
+			hotspotX[hotspotTitles.length] = (myEvent.stageX*100)/_stage.stageWidth;
+			hotspotY[hotspotTitles.length] = (myEvent.stageY*100)/_stage.stageHeight;
+			hotspotTime[hotspotTitles.length] = time;
+			
+			hotspotDetailsBox.graphics.clear();
+			hotspotDetailsBox.visible=true;
+			hotspotDetailsBox.x= (_stage.stageWidth - 300)/2;
+			hotspotDetailsBox.y= (_stage.stageHeight - 170)/2;
+			hotspotDetailsBox.graphics.beginFill(0x555555);  
+			hotspotDetailsBox.graphics.drawRect( 0, 0, 300, 170 );  
+			hotspotDetailsBox.graphics.endFill();  
+			
+			var t:TextField = new TextField();  
+			//t.embedFonts = true;
+			t.text = "Enter HOTSPOT Title";
+			
+			
+			var tf:TextFormat = new TextFormat();
+			tf.color = 0xFFFFFF;
+			tf.size = 18;
+			tf.font = "Calibri";
+			tf.align=TextFormatAlign.CENTER;
+			
+			t.setTextFormat(tf);
+			t.x=50;
+			t.y=20;
+			t.width=200;
+			hotspotDetailsBox.addChild(t);  
+			hotspotTitle.type = TextFieldType.INPUT; 
+			hotspotTitle.background = true; 
+			hotspotDetailsBox.addChild(hotspotTitle); 
+			hotspotTitle.x = 20;
+			hotspotTitle.y=70;
+			hotspotTitle.width=250;
+			hotspotTitle.height = 20;
+			hotspotTitle.text="Title";
+			hotspotTitle.addEventListener(MouseEvent.CLICK, clearText);
+			var button:TextField = new TextField();
+			button.htmlText = "<a href='event:null'>Submit</a>";
+			button.x = 70;
+			button.width =70;
+			button.y = 115;
+			button.height=35;
+			button.border = true;
+			button.addEventListener(MouseEvent.CLICK, AddHSTitle);
+			button.setTextFormat(tf);
+			hotspotDetailsBox.addChild(button);
+			var button2:TextField = new TextField();
+			button2.htmlText = "<a href='event:null'>Cancel</a>";
+			button2.x = 160;
+			button2.width =70;
+			button2.y = 115;
+			button2.border = true;
+			button2.height=35;
+			button2.addEventListener(MouseEvent.CLICK, CancelHSTitle);
+			button2.setTextFormat(tf);
+			hotspotDetailsBox.addChild(button2);
+			enrichUI.addChild(hotspotDetailsBox);
+			
+			
+			
+		}
+		
+		private function initHotspot()
+		{
+			var HotspotInit:Number = 0;
+			for ( HotspotInit =0; HotspotInit<hotspotMovieC.length; HotspotInit++)
+			{
+				hotspotMovieC[HotspotInit].visible=false;
+			}
+			HotspotInit = 0;
+			//ExternalInterface.call("ff_display_console_message","HOTSPOT DURATION LENGTH"+hotspotDuration.length);
+			for ( HotspotInit =0; HotspotInit<hotspotDuration.length; HotspotInit++)
+			{
+				
+				hotspotMovieC[HotspotInit] = new MovieClip();
+				var test:Bitmap = new HSDisplay();
+				hotspotMovieC[HotspotInit].addChild(test);
+				hotspotMovieC[HotspotInit].x=(new Number(hotspotX[HotspotInit])*_stage.stageWidth)/100;
+				hotspotMovieC[HotspotInit].y=(new Number(hotspotY[HotspotInit])*_stage.stageHeight)/100;
+				popUp.addChild(hotspotMovieC[HotspotInit]);
+				//ExternalInterface.call("ff_display_console_message", "HOTSPOT INIT"+"---"+hotspotMovieC[HotspotInit].x);
+				hotspotMovieC[HotspotInit].visible=false;
+			}
+		}
+		
+		private function AddHSTitle (myEvent:MouseEvent)
+		{
+			hotspotTitles[hotspotTitles.length]=hotspotTitle.text;
+			//ExternalInterface.call("ff_display_console_message", hotspotX[hotspotTitles.length-1] +"-"+ hotspotY[hotspotTitles.length-1]+"-"+hotspotTitles[hotspotTitles.length-1]);
+			hotspotDetailsBox.visible=false;
+			
+			hotspotMovieC[hotspotDuration.length] = new MovieClip();
+			var test:Bitmap = new HSDisplay();
+			hotspotMovieC[hotspotDuration.length].addChild(test);
+			hotspotMovieC[hotspotDuration.length].x=(new Number(hotspotX[hotspotDuration.length])*_stage.stageWidth)/100;
+			hotspotMovieC[hotspotDuration.length].y=(new Number(hotspotY[hotspotDuration.length])*_stage.stageHeight)/100;
+			//ExternalInterface.call("ff_display_console_message", "Timer is Triggered"+hotspotMovieC[hotspotDuration.length].x + hotspotMovieC[hotspotDuration.length].y);
+			if(deployMode=="enrich")enrichUI.addChild(hotspotMovieC[hotspotDuration.length]);
+			//if(deployMode=="CONSUME")_zikFullScreenUI.addChild(hotspotMovieC[hotspotDuration.length]);
+			hotspotDuration[hotspotDuration.length]="999";
+			
+			
+			var inputString:String = hotspotTitle.text+"||("+hotspotX[hotspotTitles.length-1]+","+hotspotY[hotspotTitles.length-1]+")||"+hotspotTime[hotspotTitles.length-1];
+			ExternalInterface.call("ff_add_hs",inputString );
+			addnBox.visible=false;
+			ShowPopUp("Click the hotspot again to disable it", 4000);
+			//ExternalInterface.call("ff_play_position", hotspotTime[hotspotTitles.length-1]);
+			Play(null);
+			play.alpha = 0.4;
+		}
+		
+		private function CancelHSTitle(myEvent:MouseEvent):void {
+			hotspotDetailsBox.visible = false;
+			Play(null);
+			play.alpha = 0.4;
+		}
+		
 		protected function EditVideo(event:MouseEvent):void
 		{
 			// TODO Auto-generated method stub
@@ -2977,6 +3244,8 @@ package com.ziksana.player.enhance
 		private function resizeHandler(event:Event=null):void
 		{
 			resizing = true;
+			hotspotDetailsBox.x= (_stage.stageWidth - 300)/2;
+			hotspotDetailsBox.y= (_stage.stageHeight - 170)/2;
 			if(_stage.displayState != StageDisplayState.FULL_SCREEN)
 			{
 				consumeUI.visible=false;
@@ -3195,7 +3464,7 @@ package com.ziksana.player.enhance
 		private function AddENote(myEvent:MouseEvent):void
 		{
 			//JS UPDATE CALL
-			var time:Number = ns.time;
+			var time:Number = currentlyPlayingTime/1000;
 			var inputString:String = myFirstTextBox.text+"||"+descTextBox.text+"||"+time;
 			ExternalInterface.call("ff_add_note",inputString );
 			addnBox.visible=false;
@@ -3328,22 +3597,15 @@ package com.ziksana.player.enhance
 				button2.setTextFormat(tf);
 				button2.addEventListener(MouseEvent.CLICK, CancelQ);
 				addqBox.addChild(button2);
-				
-				
 				if(addqBox.visible) addqBox.visible=false;
 				else addqBox.visible=true;
-				
-				// } else {
-				
-				
-				
 			}
 		}
 		
 		private function AddERef (myEvent:MouseEvent):void
 		{
 			//JS UPDATE CALL
-			var time:Number = ns.time/1000;
+			var time:Number = currentlyPlayingTime/1000;
 			var inputString:String = myFirstTextBox.text+"||"+descTextBox.text+"||"+time;
 			ExternalInterface.call("ff_add_reference",inputString );
 			addqBox.visible=false;
@@ -3365,7 +3627,7 @@ package com.ziksana.player.enhance
 				nnqBox.removeChildAt(0);
 			}
 			nnqBox.graphics.clear();
-			TOCData = ExternalInterface.call("ff_get_toc");
+			//TOCData = ExternalInterface.call("ff_get_toc");
 			tocContent.splice(0); tocTime.splice(0);
 			tocId.splice(0);
 			
@@ -3577,7 +3839,7 @@ package com.ziksana.player.enhance
 					break;
 				}
 			}
-			var inputString:String = myFirstTextBox.text+"||"+parentID+"||"+(lastSwitchTime/1000+ns.time);
+			var inputString:String = myFirstTextBox.text+"||"+parentID+"||"+ currentlyPlayingTime/1000;
 			tocContent[tocContent.length] = myFirstTextBox.text;
 			ExternalInterface.call("ff_add_toc",inputString );
 			nnqBox.visible=false;
