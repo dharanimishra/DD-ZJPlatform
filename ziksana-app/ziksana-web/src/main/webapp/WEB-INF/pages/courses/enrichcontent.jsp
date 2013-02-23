@@ -347,14 +347,12 @@ span.standartTreeRow:hover {
 									style="text-align: center;">2. Organize Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								<li><a href="" style="width: 130px; text-align: center;">4.
-										Define Assignment</a></li>
-								<li><a href="" style="text-align: center;">5. Define
-										Planner</a></li>
-								<li><a href="" style="text-align: center;">6. Define
-										Playbook</a></li>
-								<li><a href="" style="width: 120px; text-align: center;">7.
-										Socialize Course</a></li>
+								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
+						          Define Assignment</a></li>
+						        <li><a href="/ziksana-web/resources/html/defineplanner.html" style="text-align: center;">5. Define Planner</a></li>
+						        <li><a href="/ziksana-web/resources/html/defineplaybook.html" style="text-align: center;">6. Define Playbook</a></li>
+						        <li><a href="/ziksana-web/resources/html/definesocialize.html" style="width: 120px; text-align: center;">7.
+						          Socialize Course</a></li>
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
 							</ul>

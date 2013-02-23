@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:url var="showPollUrl" value="/secure/showpoll/111111" />
 
 <c:url var="jsJqueryFormUrl" value="../resources/js/jquery.form.js" /> 
@@ -14,6 +14,13 @@
  font-size:12px;
  color:#27B;
  }
+.pollOptionBG {
+	background: #ffffff;
+	padding: 1px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	border-top:1px solid #eeeeee;
+	border-bottom:1px solid #eeeeee; 
 </style> 
 
 <script type="text/javascript">
@@ -99,12 +106,14 @@ $(document).ready(function() {
 						 		
 						 		var answers="";
 						 		$(this).find("pollQuestion").find("option").each(function(answerindex){
+						 			
 						 			if (answerindex == 0){
 						 				answers+= "<input type='radio' name='radiobtn" + currentId + "' value='" + $(this).attr("index") + "' checked>" + "<label style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;' for='" + answerindex + "'>&nbsp;" + $(this).text() + "</label><br/>";
 						 				output+="<input type='hidden' id='optionIndex' name='optionIndex' value='" + $(this).attr("index") + "'>";
 						 			}else{
 						 				answers+= "<input type='radio' name='radiobtn" + currentId + "' value='" + $(this).attr("index") + "'>" + "<label style='font-weight:lighter; clear:both;display:inline; text-decoration:none; margin-left:10px; cursor:pointer;color:grey;' for='" + answerindex + "'>&nbsp;" + $(this).text() + "</label><br/>";
-						 			}						 				
+						 			}	
+						 		
 						 		});
 						 		
 						 		output+=answers;
@@ -515,8 +524,9 @@ function short_string(string){
 		 					 $(this).find("pollResult").find("option").each(function(index)
 		 							
 		 							 {
-		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("optiontext").text()+"</p>";  
-		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("percentage").text()+"% Votes</p>";
+		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ $(this).find("optiontext").text()+"</p>"; 
+		 					
+		 						output_poll+="<p  style='padding-left: 2px;padding-bottom: 10px;'>"+ short_string_result($(this).find("percentage").text())+"% Votes</p>";
 		 						
 		 						output_poll+="<div style='width:"+ $(this).find("percentage").text()+ "%; height:20px; background-color:"+colorNames[index]+";'></div>"; 
 		 						
@@ -537,6 +547,12 @@ function short_string(string){
 	  document.getElementById("submit_poll"+indexVal).disabled=true;
 	  $('.nextbutton_vote').hide();
 	 $('#submit_poll'+indexVal+'').removeClass('btn-info-poll'); 
+	 
+	 function short_string_result(value){
+			
+				return value.substring(0,4);
+			
+		}
  }
  
  function buttonPrevious(){

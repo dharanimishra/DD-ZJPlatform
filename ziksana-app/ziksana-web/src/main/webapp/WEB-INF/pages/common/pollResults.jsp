@@ -64,16 +64,16 @@ poll_option3 = $('#poll_option3'+asd+'').text();
 				outputAnswers+=poll_option1;
 				outputAnswers+="<br/>";
 				outputAnswers+="<div style='width:"+$(this).find("answer1").text()+"%; height:20px; background-color:Turquoise;'></div>";
-				outputAnswers+=""+$(this).find("answer1").text()+"%vote<br/>";
+				outputAnswers+=""+short_string_result($(this).find("answer1").text())+"%vote<br/>";
 				outputAnswers+=poll_option2;
 				outputAnswers+="<br/>";
 				outputAnswers+="<div style='width:"+$(this).find("answer2").text()+"%; height:20px; background-color:SpringGreen;'></div>";
-				outputAnswers+=""+$(this).find("answer2").text()+"%vote<br/>";
+				outputAnswers+=""+short_string_result($(this).find("answer2").text())+"%vote<br/>";
 				if(poll_option3 != ''){
 				outputAnswers+=poll_option3;
 				outputAnswers+="<br/>";
 				outputAnswers+="<div style='width:"+$(this).find("answer3").text()+"%; height:20px; background-color:Salmon;'></div>";
-				outputAnswers+=""+$(this).find("answer3").text()+"%vote<br/>";
+				outputAnswers+=""+short_string_result($(this).find("answer3").text())+"%vote<br/>";
 				}
 				 //alert(outputAnswers);
 				 $('#bars-answer').html(outputAnswers);
@@ -91,6 +91,11 @@ $("#zReturn1").hide();
 
 $("#linksdetails").html();
 $("#details-poll").hide(); */
+	 function short_string_result(value){
+			
+			return value.substring(0,4);
+		
+	}
 
 }			
 			

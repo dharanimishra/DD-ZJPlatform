@@ -340,12 +340,12 @@ span.standartTreeRow:hover {
 									style="text-align: center;">2.Organize Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								<li><a style="width: 130px; text-align: center;">4.
-										Define Assignment</a></li>
-								<li><a style="text-align: center;">5. Define Planner</a></li>
-								<li><a style="text-align: center;">6. Define Playbook</a></li>
-								<li><a style="width: 120px; text-align: center;">7.
-										Socialize Course</a></li>
+								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
+							          Define Assignment</a></li>
+							        <li><a href="/ziksana-web/resources/html/defineplanner.html" style="text-align: center;">5. Define Planner</a></li>
+							        <li><a href="/ziksana-web/resources/html/defineplaybook.html" style="text-align: center;">6. Define Playbook</a></li>
+							        <li><a href="/ziksana-web/resources/html/definesocialize.html" style="width: 120px; text-align: center;">7.
+							          Socialize Course</a></li>
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
 							</ul>
@@ -532,7 +532,7 @@ span.standartTreeRow:hover {
 																<p class="labelclass" style="font-weight: bold;">Associate
 																	an Image for your Course</p>
 																<br /> 
-																<img id="course_thumbnail_image" src="/ziksana-web/resources/images/course_default_thumbnail.png" align="left" /> 
+																<img id="course_thumbnail_image" src="/ziksana-web/resources/images/default-course.jpg" align="left" /> 
 																<input
 																	readonly="readonly" type="hidden" id="Cimageupl"
 																	style="margin-left: 20px;" tabindex="9"/>
@@ -617,10 +617,10 @@ span.standartTreeRow:hover {
 											<input type="button" tabindex="11"
 												class="cancellinkdefinecourse btn btn-info"
 												id="Btncmodulecncl" value="Cancel"
-												style="float: right; margin-right: 20px;" /> <input
+												style="float: right; margin-right: 20px; height:28px; with:80px;" /> <input
 												type="submit"  tabindex="10" class="btn btn-info" id="Btnsbtcmodule"
 												value="Submit" onClick="getaddmodulesave(); return false;"
-												style="float: right; margin-right: 20px;" /> <br /> <br />
+												style="float: right; margin-right: 20px; height:28px; with:80px;" /> <br /> <br />
 
 										</form>
 

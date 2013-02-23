@@ -162,5 +162,5 @@ public interface CourseService {
 
 	public int isCourseNameExists(CourseStatus courseStatus, String courseName);
 
-	public List<Course> getCoursesByCoursename(CourseStatus underConstruct,String courseName);
+	public int getCoursesByCoursename(CourseStatus underConstruct,String courseName, int courseId);
 }

@@ -76,41 +76,41 @@ public class CreateCourseController {
 
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
-	@RequestMapping(value = "/iscourseexists", method = { RequestMethod.POST})
-	public @ResponseBody String isCourseNameExists(
+	@RequestMapping(value = "/iscourseexists", method = { RequestMethod.POST })
+	public @ResponseBody
+	String isCourseNameExists(
 			@RequestParam(value = "courseId", required = false) String courseId,
-			@RequestParam(value = "courseName", required = true) String courseName){
+			@RequestParam(value = "courseName", required = true) String courseName) {
 
 		String iscourseExists = "";
 		int courseCount;
-		if(courseId.isEmpty()){	
+		if (courseId.isEmpty()) {
 			LOGGER.info("CourseId is Empty");
-			courseCount = courseService.isCourseNameExists(CourseStatus.UNDER_CONSTRUCT, courseName);
-			if(courseCount == 0){
-				//Allow user to create a new course
+			courseCount = courseService.isCourseNameExists(
+					CourseStatus.UNDER_CONSTRUCT, courseName);
+			if (courseCount == 0) {
+				// Allow user to create a new course
 				iscourseExists = "COURSE NOT EXISTS";
-			}else{
-				//Don't allow user to create a new course
+			} else {
+				// Don't allow user to create a new course
 				iscourseExists = "COURSE EXISTS";
 			}
-		}else{
+		} else {
 			LOGGER.info("CourseId is not is Empty");
-			courseCount = courseService.isCourseNameExists(CourseStatus.UNDER_CONSTRUCT, courseName);
-			List<Course> courseList = new ArrayList<Course>();
-			courseList = courseService.getCoursesByCoursename(CourseStatus.UNDER_CONSTRUCT, courseName);
-			for(Course course : courseList){
-				if(Integer.parseInt(courseId) == course.getCoursesId()){
-					iscourseExists = "COURSE EXISTS";
-				}else{
-					iscourseExists = "COURSE NOT EXISTS";
-				}
-				
+			courseCount = courseService.getCoursesByCoursename(
+					CourseStatus.UNDER_CONSTRUCT, courseName,
+					Integer.parseInt(courseId));
+			if (courseCount == 0) {
+				// Allow user to create a new course
+				iscourseExists = "COURSE NOT EXISTS";
+			} else {
+				// Don't allow user to create a new course
+				iscourseExists = "COURSE EXISTS";
 			}
 		}
 		return iscourseExists;
-	
+
 	}
-	
 
 
 	@RequestMapping(value = "/createcourse", method = { RequestMethod.GET,

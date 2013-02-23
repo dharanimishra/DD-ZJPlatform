@@ -102,10 +102,10 @@
 	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
 	type="text/javascript"></script>
     <!--fancybox-->
-	<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
 
-     <script src="../resources/js/jquery.fancybox.pack.2.1.3.js"></script>
-	 <link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
+     <script src="/ziksana-web/resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+	 <link rel="stylesheet" type="text/css" href="/ziksana-web/resources/css/jquery.fancybox.2.1.3.css"/>
 	<!--fancybox end-->
 <script src="/ziksana-web/resources/js/custom/libraryfunction.js"
 	type="text/javascript"></script>
@@ -164,9 +164,22 @@
 					"courseName" : courseName,
 					
 				};
+
+				$.post(
+								uri,
+								parameters,
+								function(data) {
+									console.log(data);
+									if(data == 'COURSE EXISTS'){
+										if(courseName != ""){
+										var course = "' "+courseName.toUpperCase()+" '";
+										
+											alert("The course "+course+" already exists, try with another course name" );
+										}
+									}
+								});	
+		});
 	
-	
-}
 	});
 </script>
 <style type="text/css">
@@ -357,12 +370,12 @@ span.standartTreeRow:hover {
 									style="text-align: center;">2. Organize Content</a></li>
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								<li><a style="width: 130px; text-align: center;">4.
-										Define Assignment</a></li>
-								<li><a style="text-align: center;">5. Define Planner</a></li>
-								<li><a style="text-align: center;">6. Define Playbook</a></li>
-								<li><a style="width: 120px; text-align: center;">7.
-										Socialize Course</a></li>
+								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
+							          Define Assignment</a></li>
+							        <li><a href="/ziksana-web/resources/html/defineplanner.html" style="text-align: center;">5. Define Planner</a></li>
+							        <li><a href="/ziksana-web/resources/html/defineplaybook.html" style="text-align: center;">6. Define Playbook</a></li>
+							        <li><a href="/ziksana-web/resources/html/definesocialize.html" style="width: 120px; text-align: center;">7.
+							          Socialize Course</a></li>
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
 							</ul>
@@ -410,7 +423,7 @@ span.standartTreeRow:hover {
 												class="defaultvaluem treeRoot validate[required]"
 												id="defaultvalue" tabindex="1" 
 												style="width: 240px; margin-left: 10px; color: #666;"
-												placeholder="Specify the Course Name" />
+												maxlength="64" placeholder="Specify the Course Name" />
 										</div>
 
 										<br /> <label for="coursedescription" class="labelclass"

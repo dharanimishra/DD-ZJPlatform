@@ -6,11 +6,11 @@ public class PollResult {
 	
 	private Integer questionId;
 	private String question;
-	private Integer answer1;
-	private Integer answer2;
-	private Integer answer3;
-	private Integer answer4;
-	private Integer answer5;
+	private String answer1;
+	private String answer2;
+	private String answer3;
+	private String answer4;
+	private String answer5;
 	
 	private Date pollQuestionDate;
 	
@@ -27,34 +27,35 @@ public class PollResult {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	public Integer getAnswer1() {
+	
+	public String getAnswer1() {
 		return answer1;
 	}
-	public void setAnswer1(Integer answer1) {
+	public void setAnswer1(String answer1) {
 		this.answer1 = answer1;
 	}
-	public Integer getAnswer2() {
+	public String getAnswer2() {
 		return answer2;
 	}
-	public void setAnswer2(Integer answer2) {
+	public void setAnswer2(String answer2) {
 		this.answer2 = answer2;
 	}
-	public Integer getAnswer3() {
+	public String getAnswer3() {
 		return answer3;
 	}
-	public void setAnswer3(Integer answer3) {
+	public void setAnswer3(String answer3) {
 		this.answer3 = answer3;
 	}
-	public Integer getAnswer4() {
+	public String getAnswer4() {
 		return answer4;
 	}
-	public void setAnswer4(Integer answer4) {
+	public void setAnswer4(String answer4) {
 		this.answer4 = answer4;
 	}
-	public Integer getAnswer5() {
+	public String getAnswer5() {
 		return answer5;
 	}
-	public void setAnswer5(Integer answer5) {
+	public void setAnswer5(String answer5) {
 		this.answer5 = answer5;
 	}
 	/**

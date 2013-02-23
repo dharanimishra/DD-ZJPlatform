@@ -13,15 +13,15 @@ public class PollQuestionResult {
     Integer answer4Count;
     Integer answer5Count;
     
-    private Integer percentage1;
+    private String percentage1;
     
-    private Integer percentage2;
+    private String percentage2;
     
-    private Integer percentage3;
+    private String percentage3;
     
-    private Integer percentage4;
+    private String percentage4;
     
-    private Integer percentage5;
+    private String percentage5;
     
    
 	
@@ -134,73 +134,43 @@ public class PollQuestionResult {
     	question.setTotalRespondents(totalRespondents.longValue());
     }
 
-	/**
-	 * @return the percentage1
-	 */
-	public Integer getPercentage1() {
+	public String getPercentage1() {
 		return percentage1;
 	}
 
-	/**
-	 * @param percentage1 the percentage1 to set
-	 */
-	public void setPercentage1(Integer percentage1) {
+	public void setPercentage1(String percentage1) {
 		this.percentage1 = percentage1;
 	}
 
-	/**
-	 * @return the percentage2
-	 */
-	public Integer getPercentage2() {
+	public String getPercentage2() {
 		return percentage2;
 	}
 
-	/**
-	 * @param percentage2 the percentage2 to set
-	 */
-	public void setPercentage2(Integer percentage2) {
+	public void setPercentage2(String percentage2) {
 		this.percentage2 = percentage2;
 	}
 
-	/**
-	 * @return the percentage3
-	 */
-	public Integer getPercentage3() {
+	public String getPercentage3() {
 		return percentage3;
 	}
 
-	/**
-	 * @param percentage3 the percentage3 to set
-	 */
-	public void setPercentage3(Integer percentage3) {
+	public void setPercentage3(String percentage3) {
 		this.percentage3 = percentage3;
 	}
 
-	/**
-	 * @return the percentage4
-	 */
-	public Integer getPercentage4() {
+	public String getPercentage4() {
 		return percentage4;
 	}
 
-	/**
-	 * @param percentage4 the percentage4 to set
-	 */
-	public void setPercentage4(Integer percentage4) {
+	public void setPercentage4(String percentage4) {
 		this.percentage4 = percentage4;
 	}
 
-	/**
-	 * @return the percentage5
-	 */
-	public Integer getPercentage5() {
+	public String getPercentage5() {
 		return percentage5;
 	}
 
-	/**
-	 * @param percentage5 the percentage5 to set
-	 */
-	public void setPercentage5(Integer percentage5) {
+	public void setPercentage5(String percentage5) {
 		this.percentage5 = percentage5;
 	}
 

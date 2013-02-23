@@ -229,16 +229,17 @@
 
 
 	</select>
-	<select id="getCoursesByCoursename" resultMap="courseResultMap" parameterType="map">
+	<select id="getCoursesByCoursename" resultType="java.lang.Integer" parameterType="map">
 		select
-		id,name,description,thumbnailPicturePath
+		COUNT(name)
+		
 		from
 		corcourse
 		where
 		name = #{courseName} and
 		CourseStatus=#{statusId} and
 		MemberRoleId=#{memberPersonaId} and
-		IsDelete = 0
+		IsDelete = 0 and id != #{courseId} 
 	</select>
 	
 	<insert id="saveCurriculamCourse" parameterType="map">

@@ -768,11 +768,11 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public List<Course> getCoursesByCoursename(CourseStatus courseStatus,
-			String courseName) {
+	public int getCoursesByCoursename(CourseStatus courseStatus,
+			String courseName, int courseId) {
 		int status = courseStatus.getID();
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
-		return courseMapper.getCoursesByCoursename(Integer.valueOf(status),Integer.valueOf(memberRoleId),courseName);
+		return courseMapper.getCoursesByCoursename(Integer.valueOf(status),Integer.valueOf(memberRoleId),courseName, courseId);
 	}
 
 }
