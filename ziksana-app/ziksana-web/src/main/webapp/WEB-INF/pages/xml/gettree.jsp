@@ -19,6 +19,7 @@
 <%!public String printTree(List<NestTreeNode> parents) {
 		StringBuffer sb = new StringBuffer();
 		String chapterIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/chapter.png";
+		
 		for (NestTreeNode node : parents) {
 			if (node.getParentLearningComponentId() == 0)
 				sb.append("<item text=\"" + node.getTitle() + "\" im0=\""

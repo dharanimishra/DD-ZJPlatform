@@ -147,10 +147,11 @@ $(document).ready(function() {
 				id : 'id',
 
 
-
-				url : "/ziksana-web/secure/getcoursetree/"
-
-						+ $('#courseId').val(),
+//
+//				url : "/ziksana-web/secure/getcoursetree/"
+//
+//						+ $('#courseId').val(),
+				url : "/ziksana-web/secure/getcoursetree/"+ $('#courseId').val(),
 
 
 

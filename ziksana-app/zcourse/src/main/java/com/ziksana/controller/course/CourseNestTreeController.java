@@ -202,6 +202,81 @@ public class CourseNestTreeController {
 		return modelView;
 	}
 
+	@RequestMapping(value = "/getenrichtree/{courseId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView showEnrichTree(@PathVariable String courseId)
+			throws CourseException {
+
+		LOGGER.info("Entering showEnrichTree(): " + courseId);
+		Integer courseIds = 0;
+		Integer courseIdValue = 0;
+		String coursename = null;
+
+		ModelAndView modelView = new ModelAndView("xml/getenrichtree");
+
+		try {
+			courseIds = Integer.parseInt(courseId);
+			LOGGER.info("showEnrichTree():  courseIds :" + courseIds);
+		} catch (NumberFormatException nfe) {
+			LOGGER.error("Class :" + getClass()
+					+ ".showEnrichTree(): NumberFormatException :"
+					+ nfe.getMessage());
+			modelView.addObject("Exception", nfe);
+			return modelView;
+		}
+
+		try {
+			List<NestTreeNode> nodeList = courseNestTreeService
+					.getCourseComponent(courseIds);
+
+			for (NestTreeNode node : nodeList) {
+				courseIdValue = node.getCourseId();
+				coursename = node.getCoursename();
+				modelView.addObject("courseIds", courseIdValue);
+				modelView.addObject("coursename", coursename);
+			}
+		} catch (Exception exp) {
+			LOGGER.error("Class :" + getClass()
+					+ ".showEnrichTree() getCourseComp() : " + exp);
+			modelView.addObject("Exception", exp);
+			return modelView;
+		}
+
+		try {
+			List<NestTreeNode> treeNodeList = courseNestTreeService
+					.getModuleComponents(courseIds);
+
+			LOGGER.debug(NestTreeNode.debugTrace(treeNodeList));
+
+			modelView.addObject("parentList", treeNodeList);
+		} catch (Exception exp) {
+			LOGGER.error("Class :" + getClass()
+					+ ".showEnrichTree() getModuleCom() : " + exp);
+			modelView.addObject("Exception", exp);
+			return modelView;
+		}
+
+		modelView.addObject("courseIds", courseIds);
+		modelView.addObject("parentIcon", parentIcon);
+		modelView.addObject("courseIcon", courseIcon);
+		modelView.addObject("chapterIcon", chapterIcon);
+		modelView.addObject("docIcon", docIcon);
+		modelView.addObject("pdfIcon", pdfIcon);
+		modelView.addObject("pptIcon", pptIcon);
+		modelView.addObject("videoIcon", videoIcon);
+		modelView.addObject("linkIcon", linkIcon);
+		modelView.addObject("noteIcon", noteIcon);
+		modelView.addObject("imageIcon", imageIcon);
+		modelView.addObject("audioIcon", audioIcon);
+		modelView.addObject("excelIcon", excelIcon);
+		modelView.addObject("folderClosed", folderClosed);
+		modelView.addObject("folderOpen", folderOpen);
+
+		LOGGER.info("Exiting showMyTreenode(): " + courseId);
+		return modelView;
+	}
+
 	@RequestMapping(value = "/getcoursetree/{courseId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showCourseTree(@PathVariable String courseId)
@@ -217,7 +292,7 @@ public class CourseNestTreeController {
 			courseIds = Integer.parseInt(courseId);
 			LOGGER.info("showCourseTree():  courseIds :" + courseIds);
 		} catch (NumberFormatException nfe) {
-			LOGGER.debug("Class :" + getClass()
+			LOGGER.error("Class :" + getClass()
 					+ ".showCourseTree(): NumberFormatException :"
 					+ nfe.getMessage());
 			modelView.addObject("Exception", nfe);
@@ -250,11 +325,12 @@ public class CourseNestTreeController {
 			modelView.addObject("parentList", treeNodeList);
 		} catch (Exception exp) {
 			LOGGER.error("Class :" + getClass()
-					+ ".showCourseTree() getModuleComp() : " + exp);
+					+ ".showCourseTree() getModuleCom() : " + exp);
 			modelView.addObject("Exception", exp);
 			return modelView;
 		}
 
+		modelView.addObject("courseIds", courseIds);
 		modelView.addObject("parentIcon", parentIcon);
 		modelView.addObject("courseIcon", courseIcon);
 		modelView.addObject("chapterIcon", chapterIcon);
@@ -270,7 +346,7 @@ public class CourseNestTreeController {
 		modelView.addObject("folderClosed", folderClosed);
 		modelView.addObject("folderOpen", folderOpen);
 
-		LOGGER.info("Exiting showMyTreenode(): " + courseId);
+		LOGGER.info("Exiting showCourseTree(): " + courseId);
 		return modelView;
 	}
 }

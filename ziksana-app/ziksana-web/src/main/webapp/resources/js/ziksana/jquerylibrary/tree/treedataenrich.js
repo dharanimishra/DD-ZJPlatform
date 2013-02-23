@@ -163,112 +163,7 @@ function onButtonClick(menuitemId, type) {
 
 				});
 
-	} else if (menuaction == "Search_Associate_Content") {
-		// alert("open the menu for Search_Add_Module module.");
-		$('#instruction').hide();
-		$('#associatedefinecontainer').hide();
-		$('#Associatecontentsearch').show();
-	} else if (menuaction == "View") {
-		content_id = tree.getSelectedItemId();
-
-		$.get('/ziksana-web/secure/content/getContentInfo', {
-			'courseId' : $('#courseId').val(),
-			'contentId' : content_id
-		}, function(data) {
-
-			content_type = (data.contentTypeString).toUpperCase();
-			content_url = mediaserver_url + data.contentUrl;
-			content_path = data.contentUrl;
-
-			if (content_type == 'VIDEO') {
-
-				playVideo('/ziksana-web/secure/modalplayer/' + data.contentId);
-
-			}
-
-			if (content_type == 'ENHANCED_VIDEO') {
-
-				playEnhancedVideo('/ziksana-web/secure/ev_modalplayer/'
-						+ data.contentId);
-
-			}
-
-			if (content_type == 'AUDIO') {
-
-				playAudio('/ziksana-web/secure/modalplayer/' + data.contentId);
-
-			}
-
-			if (content_type == 'PDF' || content_type == 'DOC'
-
-			|| content_type == 'PPT' || content_type == 'IMAGESET'
-
-			|| content_type == 'EXCEL') {
-
-				// displayImageSet('/ziksana-web/secure/slides/'+data.contentId);
-				displayImageSet(content_path);
-
-			}
-
-			if (content_type == 'IMAGE') {
-
-				displayImage(content_url);
-			}
-
-		});
-
-	} else if (menuaction == "Edit") {
-		// /
-		$('#associatedefinecontainer').show(); // show the associate container.
-
-		node_id = tree.getSelectedItemId();
-
-		$.post('/ziksana-web/secure/course/editNode', {
-			'courseId' : $('#courseId').val(),
-			'nodeId' : node_id
-		}, function(data) {
-
-			if (data) { // data will have the node content
-
-				// window.location.href = window.location.href;
-				$('#content_id').val(data.contentId);
-				$('#contentname').val(data.contentName);
-				$('.defaultvalue').html('Trignomentry details here');
-
-			}
-
-		});
-
-		// //
-	} else if (menuaction == "Delete") {
-		// alert("this should delete the form.");
-		content_id = tree.getSelectedItemId();
-		CourseId = $('#courseid').val();
-		confirm_delete_coursecontent = confirm('Are you sure you want to delete this item?');
-		if(confirm_delete_coursecontent == true){
-		uri = '/ziksana-web/secure/removeCourseContents';
-		token = ''; // dummy token for demo. you have to send real token.
-		request_type = 'POST'; // can be GET or POST. In this case, a GET
-		var parameters = {
-			"Course_id" : CourseId,
-			"Content_id" : content_id
-		};
-
-		$.post(uri, parameters,
-				function(data) {
-					console.log(data);
-					if (data.response == 'success') {
-						course_id = data.id;
-					} else {
-						$('#tempdiv').html(
-								'<span style="color:red;">' + data.message
-										+ '</span>');
-					}
-
-				});
-		tree.deleteItem(tree.getSelectedItemId(), true);
-		}
-	} else if (menuaction == "Enhance") {
+	} else if (menuaction == "Enrich") {
 
 		content_id = tree.getSelectedItemId();
 		parsed_content_id = content_id.split('_')[1];
@@ -277,32 +172,58 @@ function onButtonClick(menuitemId, type) {
 		console.log('Component Id is: ' + component_id);
 		parsed_course_id = $('#courseid').val().split('_')[1];
 
-		$.get('/ziksana-web/secure/content/getContentInfo', {
-			'courseId' : $('#courseId').val(),
-			'contentId' : content_id
-		}, function(data) {
+		// begin enhance menu logic
 
-			content_type = (data.contentTypeString).toUpperCase();
-			content_url = mediaserver_url + data.contentUrl;
-			content_path = data.contentUrl;
+		console.log("HI content id is: " + content_id);
 
-			if (content_type == 'PDF' || content_type == 'DOC'
+		var node_id = tree.getSelectedItemId();
 
-			|| content_type == 'PPT' || content_type == 'IMAGESET'
-					|| content_type == 'IMAGE'
+		node_type = node_id.split('_')[0];
+		content_type_id = 1;
 
-					|| content_type == 'EXCEL') {
-				// displayImageSet('/ziksana-web/secure/slides/'+data.contentId);
-				displayEnhanceModal("/ziksana-web/secure/enhancePlayer/"
-						+ parsed_content_id + '/' + parsed_component_id + '/'
-						+ parsed_course_id);
+		if (node_type == "CONTENT") {
+			// content_id = node_id.split('_')[3];
+			// component_id = node_id.split('_')[2];
+			// content_type_id = node_id.split('_')[1];
+
+			if (content_type_id == 1) {// video -- 1
+
+				course_id = $('#courseId').val();
+				$('#ContentPanel').empty();
+				$('#ContentPanel')
+						.append(
+								'<iframe src="/ziksana-web/secure/enrichplayer/'
+										+ parsed_course_id
+										+ '/'
+										+ parsed_component_id
+										+ '/'
+										+ parsed_content_id
+										+ '" style="width:705px; height:600px;" scrolling="no"></iframe>');
+
+			} else if (content_type_id == 11) {// Enhanced video -- 11
+
+				course_id = $('#courseId').val();
+				$('#ContentPanel').empty();
+				$('#ContentPanel')
+						.append(
+								'<iframe src="/ziksana-web/secure/ev_enrichplayer/'
+										+ parsed_course_id
+										+ '/'
+										+ parsed_component_id
+										+ '/'
+										+ parsed_content_id
+										+ '" style="width:800px; height:700px;" scrolling="no"></iframe>');
+
+			} else {
+				$('#ContentPanel').empty();
 
 			}
 
-		});
+		}
+		// end enhance menu logic
 
 	}
-	
+
 }
 
 function fixImage(id) {
@@ -358,7 +279,8 @@ function createtree(course_id) {
 		console.log(itemId);
 
 		node_type = itemId.split('_')[0];
-
+		content_type = itemId.split('_')[2];
+		console.log("contenttype: " + content_type);
 		if (node_type == "COURSE") {
 			$('#courseid').val(itemId);
 		}
@@ -373,7 +295,9 @@ function createtree(course_id) {
 
 		tree.selectItem(itemId, false);
 		var id = tree.getSelectedItemId();
-		// alert(id);
+		// var content_type =
+		// tree.getAttribute(tree.getSelectedItemId(),"contenttype");
+		// alert(content_type);
 		var instr = id.indexOf("Child");
 		// alert(instr);
 		var txt = tree.getItemText(tree.getSelectedItemId());
@@ -390,7 +314,7 @@ function createtree(course_id) {
 			menu.hideItem('Edit');
 			menu.hideItem('Enhance');
 			menu.hideItem('Enrich');
-			menu.showItem('Associate_Content');
+			menu.hideItem('Associate_Content');
 			menu.hideItem('Search_Associate_Content');
 
 		}
@@ -402,7 +326,7 @@ function createtree(course_id) {
 			menu.hideItem('Edit');
 			menu.hideItem('Enhance');
 			menu.hideItem('Enrich');
-			menu.showItem('Associate_Content');
+			menu.hideItem('Associate_Content');
 			menu.hideItem('Search_Associate_Content');
 
 		}
@@ -410,11 +334,16 @@ function createtree(course_id) {
 			// alert(tree.contextID);
 			menu.hideItem('Associate_Content');
 			menu.hideItem('Search_Associate_Content');
-			menu.showItem('Delete');
-			menu.showItem('View');
-			menu.showItem('Edit');
-			menu.showItem('Enhance');
-			menu.hideItem('Enrich');
+			menu.hideItem('Delete');
+			menu.hideItem('View');
+			menu.hideItem('Edit');
+			menu.hideItem('Enhance');
+			if (content_type != '1' && content_type != '11') {
+				return false;
+			} else { // 1-video and // 11-Enhanced video
+				menu.showItem('Enrich');
+				console.log("Enrich enter :" + content_type);
+			}
 		}
 		return true;
 	});
@@ -426,7 +355,7 @@ function createtree(course_id) {
 	// tree.loadXML("/ziksana-web/resources/js/ziksana/jquerylibrary/tree/xml/treemodel.xml");
 	// tree.loadXML("/ziksana-web/secure/getchildtree/150");
 	courseId = course_id.split('_')[1];
-	tree.loadXML("/ziksana-web/secure/getchildtree/" + courseId);
+	tree.loadXML("/ziksana-web/secure/getenrichtree/" + courseId);
 
 }
 

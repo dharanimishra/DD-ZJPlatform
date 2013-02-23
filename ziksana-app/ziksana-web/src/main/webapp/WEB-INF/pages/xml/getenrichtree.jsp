@@ -48,21 +48,18 @@
 									+ videoIcon + "\" im1=\"" + chapterIcon
 									+ "\" im2=\"" + videoIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId() + " contenttype="
-									+ content.getContentType()
-									+ " parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ content.getContentId()+"_"+content.getContentType()
+									+ "\" nodeid=\"CONTENT_"+ content.getContentId()
+									+ " contenttype="+content.getContentType()+" parentId=\"COMPONENT_"+ node.getParentLearningComponentId()
 									+ "\"></item>");
-
+							
 						} else if (content.getContentType().equals("2")) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ videoIcon + "\" im1=\"" + audioIcon
 									+ "\" im2=\"" + audioIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -75,7 +72,7 @@
 									+ noteIcon + "\" im1=\"" + noteIcon
 									+ "\" im2=\"" + noteIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -88,7 +85,7 @@
 									+ pdfIcon + "\" im1=\"" + pdfIcon
 									+ "\" im2=\"" + pdfIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -101,7 +98,7 @@
 									+ docIcon + "\" im1=\"" + docIcon
 									+ "\" im2=\"" + docIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -114,7 +111,7 @@
 									+ pptIcon + "\" im1=\"" + pptIcon
 									+ "\" im2=\"" + pptIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -127,7 +124,7 @@
 									+ excelIcon + "\" im1=\"" + excelIcon
 									+ "\" im2=\"" + excelIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -140,7 +137,7 @@
 									+ imageIcon + "\" im1=\"" + imageIcon
 									+ "\" im2=\"" + imageIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -153,7 +150,7 @@
 									+ linkIcon + "\" im1=\"" + linkIcon
 									+ "\" im2=\"" + linkIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -179,13 +176,8 @@
 									+ videoIcon + "\" im1=\"" + chapterIcon
 									+ "\" im2=\"" + videoIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId() + "_"
-									+ content.getContentType()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  contenttype=\""
-									+ content.getContentType()
-									+ "\" parentId=\"COMPONENT_"
+									+ content.getContentId()+"_"+content.getContentType()
+									+ "\" nodeid=\"CONTENT_"+ content.getContentId()+"_"+content.getContentType()+"\"  contenttype=\""+content.getContentType()+"\" parentId=\"COMPONENT_"
 									+ node.getParentLearningComponentId()
 									+ "\"></item>");
 						} else if (content.getContentType().equals("2")) {
@@ -194,7 +186,7 @@
 									+ videoIcon + "\" im1=\"" + audioIcon
 									+ "\" im2=\"" + audioIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -207,7 +199,7 @@
 									+ noteIcon + "\" im1=\"" + noteIcon
 									+ "\" im2=\"" + noteIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -220,7 +212,7 @@
 									+ pdfIcon + "\" im1=\"" + pdfIcon
 									+ "\" im2=\"" + pdfIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -233,7 +225,7 @@
 									+ docIcon + "\" im1=\"" + docIcon
 									+ "\" im2=\"" + docIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -246,7 +238,7 @@
 									+ pptIcon + "\" im1=\"" + pptIcon
 									+ "\" im2=\"" + pptIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -259,7 +251,7 @@
 									+ excelIcon + "\" im1=\"" + excelIcon
 									+ "\" im2=\"" + excelIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -272,7 +264,7 @@
 									+ imageIcon + "\" im1=\"" + imageIcon
 									+ "\" im2=\"" + imageIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
@@ -285,7 +277,7 @@
 									+ linkIcon + "\" im1=\"" + linkIcon
 									+ "\" im2=\"" + linkIcon
 									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
+									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
