@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Subscription</title>
+<link href="../css/main/styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/common/validation/validation.css"/>
+<link rel="stylesheet" href="../css/main/subscription.css"/>
+<link rel="stylesheet" type="text/css" href="../js/ui/jquery.fancybox-1.3.4.css" media="screen" />
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+<script src="../js/ziksana/validation/jquery.validationen.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/ziksana/validation/jquery.validation.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="../js/ui/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+
+ <script type="text/javascript">
+
+$(document).ready(function () {
+	
+	$('#toggle-view li').click(function () {
+
+		var text = $(this).children('div.panel');
+
+		if (text.is(':hidden')) {
+			text.slideDown('200');
+			$(this).children('.tgbdesc').html('-');		
+		} else {
+			text.slideUp('200');
+			$(this).children('.tgbdesc').html('+');		
+		}
+		
+	});
+
+});
+
+</script>
+ 
+
+</head>
+
+<body style="background-image:none;">
+
+
+		<div id="subswrapper">
+
+
+              <div id="subupwrapper">
+ 
+ 
+                  <div id="subscription">
+                  
+                 <p class="headtitle" >Subscription</p> 
+                  
+             <ol class="rounded-list" id="toggle-view" style="margin-left:20px;">
+      
+     <li><p  href="#linkurl">Date <input type="text" class="inputbox" placeholder="Z5" /> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Event Description
+              <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+           
+    </li>
+	 
+   <li><p  href="#linkurl">Date <input type="text" placeholder="Z5" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			  Event Description
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="Z5" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			  Event Description
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="Z5" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Event Description
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+  
+    
+    </ol>
+                  
+                  
+                  </div> <!--end of subscription-->
+                  
+                  
+                   <div id="studyhistory">
+        
+         <p class="headtitle">Study History</p>
+        
+        
+         <ol class="rounded-list" id="toggle-view" style="margin-left:20px;">
+      
+     <li><p  href="#linkurl">Date <input type="text" placeholder="1Hr" class="inputboxsh"> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Component
+              <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+           
+    </li>
+	 
+   <li><p  href="#linkurl">Date <input type="text" placeholder="1Hr" class="inputboxsh"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Component
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="1Hr"class="inputboxsh"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Component
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="1Hr" class="inputboxsh"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Component
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+
+    
+    </ol>
+   
+                  </div> <!--end of studyhistory-->
+                  
+                  
+                   <div id="assignmenthistory">
+      
+      
+      <p class="headtitle">Assignment History</p>
+      
+      
+        <ol class="rounded-list" id="toggle-view" style="margin-left:20px;">
+      
+     <li><p  href="#linkurl">Date <input type="text" placeholder="A-" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Assignment
+              <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+           
+    </li>
+	 
+   <li><p  href="#linkurl">Date <input type="text" placeholder="A+" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Assignment
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="A-" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Assignment
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="A+" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			Assignment
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+
+    
+    </ol>
+      
+      
+                  
+                  
+                  </div> <!--end of assignmenthistory-->
+                 
+                 
+                <div class="clearboth"> </div>  
+                                 
+                 </div> <!--end of subupwrapper-->
+                 
+                 
+                 
+          
+             <div id="sublrwrapper">
+ 
+ 
+                  <div id="myalerts">
+                  
+                  
+                      <p class="headtitle">My Alerts</p>
+      
+      
+        <ol class="rounded-list" id="toggle-view" style="margin-left:20px;">
+      
+     <li><p  href="#linkurl">Date <input type="text" placeholder="H" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Alert Description
+              <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+           
+    </li>
+	 
+   <li><p  href="#linkurl">Date <input type="text" placeholder="M" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Alert Description
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="L" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Alert Description
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="H" class="inputbox"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			Alert Description
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+
+    
+    </ol>
+      
+                  </div> <!--end of myalerts-->
+                  
+                  
+                   <div id="myshcedule">
+                  
+                  
+               <p class="headtitle">My Schedule</p>
+      
+      
+        <ol class="rounded-list" id="toggle-view" style="margin-left:20px;">
+      
+     <li><p  href="#linkurl">Date <input type="text" placeholder="8am" class="inputboxms"> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			Activity Description
+              <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+           
+    </li>
+	 
+   <li><p  href="#linkurl">Date <input type="text" placeholder="8am" class="inputboxms"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Activity Description
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="8am" class="inputboxms"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Activity Description
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Date<input type="text" placeholder="8am" class="inputboxms"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Activity Description
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+
+    
+    </ol>         
+                  
+                  
+                  
+                  
+                  </div> <!--end of myshcedule-->
+                  
+                  
+                   <div id="mynotes">
+         
+              <p class="headtitle">My Notes</p>
+      
+      
+        <ol class="rounded-list" id="toggle-view" style="margin-left:20px;">
+      
+     <li><p  href="#linkurl">Component <input type="text" placeholder="Video" class="inputboxmn"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			Note Link
+              <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+           
+    </li>
+	 
+   <li><p  href="#linkurl">Component <input type="text" placeholder="Doc" class="inputboxmn"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Note Link
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Component<input type="text" placeholder="Doc" class="inputboxmn"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Note Link
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+     <li><p  href="#linkurl">Component<input type="text" placeholder="Video" class="inputboxmn"/> <span class="tgbdesc">+</span></p> 
+        	 <div class="panel">
+			 Nonte Link
+             <a href="#linkurl" style="margin-left:150px;">Details</a>
+             </div>
+            
+    </li>
+    
+
+    
+    </ol> 
+                  
+                  
+                  </div> <!--end of mynotes-->
+                 
+                 
+                <div class="clearboth"> </div>  
+                                 
+                 </div> <!--end of sublrwrapper-->       
+                 
+                 
+
+
+
+     	</div> <!--end of subswrapper-->
+
+
+
+</body>
+</html>

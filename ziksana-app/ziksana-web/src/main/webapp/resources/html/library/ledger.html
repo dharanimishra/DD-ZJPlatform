@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ledger</title>
+<link href="../css/main/styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/common/validation/validation.css"/>
+<link rel="stylesheet" type="text/css" href="../js/ui/jquery.fancybox-1.3.4.css" media="screen" />
+<link href="../css/common/search/ledgersearch.css" rel="stylesheet" type="text/css"> 
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+<script src="../js/ziksana/validation/jquery.validationen.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/ziksana/validation/jquery.validation.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="../js/ui/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/table/tablerow.js"></script>
+<style>
+#ledgwrapper
+{
+	margin-left:auto;
+	margin-right:auto;
+	width:950px;
+	border:1px solid #ccc;
+	background-color:#fff;
+
+}
+
+#hwrap
+{
+	
+	padding:10px;
+	border-bottom:1px solid #ccc;
+	margin-bottom:5px;
+	margin-top:10px;
+}
+
+.incont
+{
+	width:900px; 
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.ledgtype
+{
+   float:left;	
+}
+
+.ledgerselection
+{
+	float:left;
+	margin-left:20px;
+}
+
+.ClearFixes {
+	float: none;
+	clear: both;
+}
+.margtp
+{
+	margin-top:40px;
+}
+
+#bdcontainer
+{
+margin-top:10px;
+padding:15px;
+}
+
+#tblledger
+{
+	height:300px;
+	overflow:scroll;
+    overflow-x: hidden;	
+	margin-top:10px;
+	border:4px solid #ccc;
+	padding:5px;
+}
+
+#lddtlscont
+{
+margin-top:10px;
+	
+}
+
+#ldgtransaction
+{
+float:left;
+border:1px solid #ccc;
+width:300px;
+padding:10px;
+margin-right:20px;
+}
+
+
+
+#ldgtransreltdinf
+{
+float:left;
+border:1px solid #ccc;
+width:300px;
+padding:10px;	
+}
+
+#ledgrbutton
+{
+margin-top:10px;
+}
+
+#ledgrbutton ul
+{
+	
+}
+
+#ledgrbutton li
+{
+	display:inline;
+	float:right;
+	padding-right:5px;
+}
+
+#ledgrbutton a
+{
+	text-decoration:none;
+}
+
+#ledgrbutton a:hover
+{
+	color:#ccc;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+
+		<div id="ledgwrapper">
+
+           <div id="hwrap">
+           
+            
+             <div class="incont">
+             
+      <form id="ledgerdetails">  
+     
+    		 <div class="ledgtype">
+     <p><input type="radio" name="ledgersel" value="ledger" class=""><span class="labelclass" style="font-weight:bold; margin-top:-3px;"> Ledger </span></p>
+     <p><input type="radio" name="ledgersel" value="ledger" class="margtp"><span class="labelclass" style="font-weight:bold;"> Search Transaction </span> </p>
+    		 </div> <!--end of ledgtype-->
+     
+    		    <div class="ledgerselection">
+     <select name="ledgercategory" class="defaultvalue" style="width:200px;"> 
+     <option value=""> Category </option>
+     </select>
+     
+     <select name="ledgertype" class="defaultvalue" style="width:200px;"> 
+      <option value=""> Type </option>
+     </select> 
+        <br />
+       <div id="ui_search" class="sb_qualifier" style="margin-top:20px;">
+   	   <span class="sb_downq"></span>
+                       
+	<input class="sb_inputq" type="text" placeholder="Name of the Question" style="font-size:13px; padding-left:-14px;"/>
+    <input class="sb_searchq" type="submit" value="" style="height:29px;" /> 
+    <span><a href="#linkurl" class="btn" style="margin-top:4px; margin-left:2px; 
+           height:18px; text-decoration:none;" id="_btnadvanced"> Advanced </a> </span>           
+					<ul class="sb_dropdownq" style="display:none;">
+						<li class="sb_filterq">Filter your search</li>
+				        <li style="padding-right:90px;"><input type="checkbox"/><label for="All">All</label></li>
+						<li><input type="checkbox"/><label for="Owned">Owned/Customized Content</label></li>
+                        <br />
+                        <br />
+                        <br />
+						<li style="padding-right:5px;"><input type="checkbox"/><label for="Institution Specified">Shared Content</label></li>
+                        <li><input type="checkbox"/><label for="Institution Specified">Library Content </label></li>
+						
+					</ul>
+        </div> <!--end of uisearch button-->
+    
+             </div><!-- end of ledgerselection-->
+       
+              <div class="ClearFixes"> </div>
+      
+      </form>
+             
+             
+        </div> <!--end of incont-->
+        
+
+        </div> <!--end of headwrap-->
+        
+        
+        <div id="bdcontainer">
+                  
+       <input type="text" class="defaultvalue" id="ledgertblacttransaction" placeholder="Selected Transaction/Ledger" style="width:280px;"/>
+       <div id="tblledger">
+       <table id="tblledgerdtls" class="table reviewtable" style="margin-bottom:0px; border:1px solid #ccc;">
+               <thead style="font-size:8px; font-family:tahoma; font-style:normal; color:#666;">
+                	<tr style="background-color:#E1E8F0; padding: .5em;">
+                    	<th >Component</th>
+                        <th>Guidance</th>
+                        <th>Typical</th>
+                        <th>Average</th>
+                                              
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="ledgerdtlrow1">
+                        <td>Chapter-1</td>
+                        <td>Spend Sufficient Prep</td>
+                        <td>2 Hrs</td>
+                        <td>2.4 Hrs</td>
+                    
+                    </tr>
+                     <tr id="ledgerdtlrow2">
+                    	<td>Assignment-1</td>
+                        <td>Take Practice Test</td>
+                        <td>3 Hrs</td>
+                        <td>2.75 Hrs</td>
+                    </tr>
+                    
+                     <tr id="ledgerdtlrow3">
+                    	<td>Chapter-2</td>
+                        <td>Study all Embedded Content</td>
+                        <td>4 Hrs</td>
+                        <td>5.6 Hrs</td>
+                    </tr>
+                    
+                     <tr id="ledgerdtlrow4">
+                        <td>Chapter-1</td>
+                        <td>Spend Sufficient Prep</td>
+                        <td>2 Hrs</td>
+                        <td>2.4 Hrs</td>
+                    
+                    </tr>
+                     <tr id="ledgerdtlrow5">
+                    	<td>Assignment-1</td>
+                        <td>Take Practice Test</td>
+                        <td>3 Hrs</td>
+                        <td>2.75 Hrs</td>
+                    </tr>
+                    
+                     <tr id="ledgerdtlrow6">
+                    	<td>Chapter-2</td>
+                        <td>Study all Embedded Content</td>
+                        <td>4 Hrs</td>
+                        <td>5.6 Hrs</td>
+                    </tr>
+                    
+                    
+                     <tr id="ledgerdtlrow7">
+                        <td>Chapter-1</td>
+                        <td>Spend Sufficient Prep</td>
+                        <td>2 Hrs</td>
+                        <td>2.4 Hrs</td>
+                    
+                    </tr>
+                     <tr id="ledgerdtlrow8">
+                    	<td>Assignment-1</td>
+                        <td>Take Practice Test</td>
+                        <td>3 Hrs</td>
+                        <td>2.75 Hrs</td>
+                    </tr>
+                    
+                     <tr id="ledgerdtlrow9">
+                    	<td>Chapter-2</td>
+                        <td>Study all Embedded Content</td>
+                        <td>4 Hrs</td>
+                        <td>5.6 Hrs</td>
+                    </tr>
+                    
+                    
+                   
+                           </tbody>                                
+                </table>
+        </div><!-- end of tbledger-->
+        
+        <script language="javascript">
+		$(document).ready(function(e) {
+            tablecloth();
+			$("#ldgtransaction").hide();
+			$("#ldgtransreltdinf").hide();
+			$("#hruler").hide();
+			$("#tblledgerdtls tr").click(function(e) {
+				var rowselect = $(this).attr('id');
+               // alert($('#ledgerdtlrow7 td:first').html());
+				var val1 = $("#"+rowselect+" td:eq(0)").html();
+				var val2 = $("#"+rowselect+" td:eq(1)").html();
+				var val3 = $("#"+rowselect+" td:eq(2)").html();
+				var val4 = $("#"+rowselect+" td:eq(3)").html();
+				$("#ldgtransaction").show();
+				$("#ldgtransreltdinf").show();
+				$("#hruler").show();
+				
+				$("#ledgertblacttransaction").val(val1);
+				
+				$("#ldgtransaction").empty();
+				$("#ldgtransaction").append('<p><span style="font-weight:bold;">Guidance:</span>&nbsp;&nbsp;'+val2+'</p><br/>');
+				$("#ldgtransreltdinf").empty();
+				$("#ldgtransreltdinf").append('<p><span style="font-weight:bold;">Typical Time:</span>&nbsp;&nbsp;'+val3+'<br/><span style="font-weight:bold;">Average Time:</span>&nbsp;&nbsp;'+val4+'</p>');
+				
+            });
+			
+			
+        });
+		</script>
+        
+        <hr />
+        
+        
+     <div id="lddtlscont">
+        
+        <div id="ldgtransaction">
+        
+            <!--
+            Dynamic html content coming from the javascript
+             -->
+        
+        </div> <!--end of ldgtransaction-->
+        
+        
+         <div id="ldgtransreltdinf">
+        
+        	<!--
+            Dynamic html content coming from the javascript
+             -->           
+        
+        </div> <!--end of ldgtransreltdinf-->
+        
+     </div><!-- end of lddtlscont-->
+        
+     <div class="ClearFixes"> </div> 
+        
+    <!-- div for the ruller-->
+    <div id="hruler">
+    <hr />
+    </div>
+    <!-- end of div hruler -->
+    
+    <div id="ledgrbutton">
+    
+    <ul>
+   
+    <li><a href="#" class="btn btn-danger">Close</a> </li> 
+    <li><a href="#" class="btn btn-info">Reconcile </a> </li>
+    <li><a href="#" class="btn btn-info">Journal </a> </li>
+    <li><a href="#" class="btn btn-info">Balance </a> </li>
+     
+     
+        
+    </ul>
+    
+    </div><!-- end of ledgrbutton -->
+    
+     <div class="ClearFixes"> </div>
+    
+         </div> <!--end of bdconatiner-->
+    
+
+		</div> <!--end of ledgwrapper-->
+
+    
+
+
+</body>
+</html>

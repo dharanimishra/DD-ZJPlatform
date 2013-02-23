@@ -1,0 +1,8 @@
+		ul#tabs li a {
+			color: #222;
+			text-decoration: none;	
+			display: block;
+			padding: 19px;
+			height: 60px;
+			outline: none;
+		}

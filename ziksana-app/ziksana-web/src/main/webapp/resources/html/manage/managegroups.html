@@ -1,0 +1,844 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Manage Groups</title>
+<!--Body Style sheet-->
+
+<link href="../css/main/styles.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/type-setting.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/effects.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/nav.css" rel="stylesheet" type="text/css"/>
+<link href="../css/manage/publish.css" rel="stylesheet" type="text/css">
+<link href="../css/common/wizard/wizardstylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../css/common/spinner/smartspinner.css" rel="stylesheet" type="text/css"/>
+<link href="../css/manage/modal.min.css" rel="stylesheet" type="text/css">
+<link href="../js/ziksana/jquerylibrary/common/datepicker/datepicker.css" rel="stylesheet" type="text/css"/>
+<link href="../css/common/validation/validation.css" rel="stylesheet" />
+<!--End Body Style sheet-->
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/datepicker/date.js"></script>
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/datepicker/jquery.datePicker-2.1.2.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('.date-pick').datePicker().val(new Date().asString()).trigger('change');
+});
+</script>
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/table/tablerow.js"></script> 
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
+<script type="text/javascript" src="../js/ziksana/manage/modal.min.js"></script>
+<script src="../js/ziksana/validation/jquery.validationen.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/ziksana/validation/jquery.validation.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/managegroup.js"></script>	
+<script>
+		jQuery(document).ready( function() {
+			// binds form submission and fields to the validation engine
+			$("#managegroup").validationEngine();
+			$("#managegroupmember").validationEngine();
+			$("#frmmngmembermessage").validationEngine();
+			$("#frmmngmemberinteraction").validationEngine();
+			
+			
+		});
+		
+		
+</script> 
+ <style>
+ .modal.fade.in
+ {
+	top:20%; 
+ }
+ 
+ a.dp-choose-date {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 5px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../images/icons/calendar.png) no-repeat; 
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+	float: left;
+}
+
+#dp-popup
+{
+width:185px;	
+}
+
+.form-horizontal .controls {
+margin-left: 120px;
+}
+.erroediv
+{
+	color:#F00;
+	font-size: 12px;
+}
+ </style>
+         
+</head>
+
+<body>
+	
+<div id="wrapper"> 
+        <!--Header Container-->
+        	<header class="bottom-box-shadow bckground-wihte">
+            	<div class="topheader"> 
+          <!--logo container-->
+          <div class="logo"><p><a href="#"><img height="123" width="149" src="../images/logo.jpg"/></a></p></div>
+          <!--end logo container-->
+          <div class="status-container">
+            <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box">
+              <ul>
+                <li><a href="#" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
+                <li><a href="#" class="alart-icon orange-bc" rel="tipsy" title="1 Connect Request"><span class="wite-title">1</span></a></li>
+                <li><a href="#" class="announcement-icon orange-bc" rel="tipsy" title="3 New Announcement"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
+               
+              </ul>
+              <div > </div>
+            </div>
+            <div class="account-container two-bottom-rounded-box">
+              <div class="container">
+                <div class="topnav" ><a href="#" class="signin wite bold"><span class="text-size-px12 wite bold">My Account</span></a> </div>
+                <fieldset id="signin_menu">
+                 <ul>
+                   <li><a href="#">Preferences</a></li>
+                   <li><a href="#">Privacy</a></li>
+                   <li><a href="#">Sign Out</a></li></ul>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+            <nav>
+                <!--menu-->
+                    <div class="menu">
+                      <ul>
+                        <li><a href="../educatorHomepage.html" class="current">My Home</a><div class="nav-line"></div></li>
+                        <li><a href="../myprograms.html">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
+                        <li><a href="#" style="margin-left:-10px;">My Locker</a></li>
+                      </ul>
+                    </div>
+                  
+              </nav>
+            </header>
+        <!--End Header Container-->
+  <div class="sub-nav">
+    <div class="f-l"><strong class="text-size-px12 font-Signika blue"><a href="#">My Courses </a> > </strong><strong class="light-gray text-size-px12">Create New Course </strong></div>
+    <div class="f-r"><strong class="text-size-px14 light-gray"><a href="../publish.html">Publish</a> | <a href="../defineengagement.html">Manage</a></strong><a class="light-blue" href="#"><img width="12" height="12" alt="add more" src="../images/plus.png"> </a></div>
+  </div>
+  <!--Main Content-->
+ 
+  <section>
+    <div class="section"> 
+   
+
+      <div class="col-create" style="width:1000px;">
+              <div  class="for-rounded-box  all-box-shadow white-bg">
+      
+      
+    		
+       <div id="managegroupcontainer">
+       
+       
+       <div id="managegroupupper">
+       
+    <div id="reviewtop">
+    
+    
+    
+    
+     </div> <!--reviewtop-->
+       
+
+
+      <select id="Showme" name="Showme" class="defaultvalue labelclass" style="width:280px;">
+        <option value=""> Select Course</option>
+        <option value="Course"> Course1</option>
+        <option value="Course" selected> Course2</option>
+        <option value="Course"> Course3</option>
+      </select>
+      <div class="managegrouptable">
+            
+            
+             <table id="reviewtable" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="130" align="left">Group Name</th>
+                    	<th width="40" align="left">Start Date</th><th width="114" align="left">Members</th><th width="84" align="left">Progress</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="grupdtl1">
+                    	<td>Group1</td>
+                        <td>01 Jan 2012</td>
+                        <td>10</td>
+                        <td>55%</td>
+                       
+                    </tr>
+                    
+                     <tr id="grupdtl2">
+                    	<td>Group2</td>
+                        <td>01 Mar 2012</td>
+                        <td>9</td>
+                        <td>15%</td>
+                    </tr>
+                     
+                    <tr id="grupdtl3">
+                    	<td>Group3</td>
+                        <td>01 Mar 2012</td>
+                        <td>9</td>
+                        <td>15%</td>
+                    </tr>
+                     
+                     
+                     <tr id="grupdtl4">
+                    	<td>Group4</td>
+                        <td>01 Jan 2012</td>
+                        <td>10</td>
+                        <td>55%</td>
+                    </tr>
+                     
+                     
+                     <tr id="grupdtl5">
+                    	<td>Group5</td>
+                        <td>01 Mar 2012</td>
+                        <td>9</td>
+                        <td>15%</td>
+                    </tr>
+                     
+                      <tr id="grupdtl6">
+                    	<td>Group6</td>
+                        <td>01 Jan 2012</td>
+                        <td>10</td>
+                        <td>55%</td>
+                    </tr>
+                    
+                    
+                    <tr id="grupdtl7">
+                    	<td>Group7</td>
+                        <td>01 Mar 2012</td>
+                        <td>9</td>
+                        <td>15%</td>
+                    </tr>
+                     
+                      <tr id="grupdtl8">
+                    	<td>Group8</td>
+                        <td>01 Jan 2012</td>
+                        <td>10</td>
+                        <td>55%</td>
+                    </tr>
+                                     
+                  </tbody>                                
+                </table>
+                                  
+           </div> <!--managestudenttable-->
+           
+           
+
+  		<div id="grouplink">
+         <hr>
+         <div class="managestudentlink">
+        <a href="#linkurl" style="float:right;" id="delgroup">Remove Group</a>
+        <a href="#addgroup" role="button" data-toggle="modal" style="float:right; padding-right:10px;">Add Group</a><!-- Modal -->
+<div id="addgroup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <p class="titlehead" id="myModalLabel">Add Group</p>
+  </div>
+  <div class="modal-body">
+   
+   
+    <p>
+    
+    <form id="managegroup" class="form-horizontal" action="" >
+  
+	        
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Group Name</label>
+      <div class="controls">
+	  <input type="text" class="text-input defaultvalue" name="mngrpname" id="mngrpname" tabindex="1" 
+      placeholder="Enter Group Name" />
+		<div id="errormngrpname" class="erroediv"></div>
+      </div> </div>
+      
+      
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Start Date</label>
+      <div class="controls">
+    	<input name="memdate" id="memdate" class="date-pick dp-applied defaultvalue">
+        <div id="errormemdate" class="erroediv"></div>
+         </div> </div>
+     
+     
+     <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Members</label>
+      <div class="controls">
+	<input type="text" id="mngmembers"  class="defaultvalue"/>
+    <div id="errormngmembers" class="erroediv"></div>
+<script type="text/javascript">
+        $(document).ready(function() {
+            var s =  $('#mngmembers').spinit({ height: 20, width: 140, min: 0, initValue: 0, max: 20,  });        
+
+        });
+    </script>
+         </div> </div>
+     
+     
+      <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Progress</label>
+      <div class="controls">
+	<input type="text" id="mngprogress" placeholder="0"  class="defaultvalue" data-prompt-position="inline"/>
+    <div id="errormngprogress" class="erroediv"></div>
+         </div> </div>
+     
+     
+	  
+      </form>
+      </p>
+  
+  
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true" 
+    onClick="document.getElementById('managegroup').reset();">Close</button>
+    <input type="button" value="Save" id="addgrouptabrow" class="btn btn-primary">
+  </div>
+</div>
+<!-- end of Modal -->
+
+
+ 
+
+
+         </div>
+         <!--<a href="#linkurl" id="getdtl" style="height:10px;"> Get Details </a>-->
+        <br/>
+        <hr>
+       </div> <!--end of managestudentsupper-->
+      
+        </div>
+        
+     <div class="managegrouplowercontainer" style="margin-top:15px;">
+   
+   
+   <div class="Membersgroup">
+   
+    <p class="managstudentsheading" style="font-size:14px; font-weight:bold; font-family:verdana; color:#328AA4;   background-color:#CCCCCC; height:20px; padding:5px; margin-bottom:3px;"> Members </p>
+   
+    <div class="Membersgrouptable">
+            
+           
+            
+             <table id="studenttable" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="109" align="left">Student Name</th>
+                    	<th width="64" align="left">Start Date</th><th width="61" align="left">Position</th><th width="46" align="left">Grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="stutab1">
+                    	<td>John Smith</td>
+                        <td>01 Jan 2012</td>
+                        <td>Leader</td>
+                        <td>A</td>
+                    </tr>
+                     <tr id="stutab2">
+                    		<td>Harry Reid</td>
+                        <td>02 Jan 2012</td>
+                        <td>Member</td>
+                        <td>NR</td>
+                    </tr>
+                    
+                      <tr id="stutab3">
+                    	<td>John Smith</td>
+                        <td>01 Jan 2012</td>
+                        <td>Leader</td>
+                        <td>A</td>
+                    </tr>
+                     <tr id="stutab4">
+                    	<td>Harry Reid</td>
+                        <td>02 Jan 2012</td>
+                        <td>Member</td>
+                        <td>NR</td>
+                    </tr>
+                                     
+                    </tbody>                                
+                </table>
+            
+          
+            
+           </div> <!--courseperformancetable-->
+    
+      <hr>
+     
+     <div class="Membergroupactvitieslinks" style="height:10px;">
+   <a href="#linkurl" id="delstudent" style="float:right;"> Remove Student </a>
+   <a href="#addstudents" id="addstudenttogrp" role="button" data-toggle="modal" style="float:right; padding-right:10px;"> Add Student </a>
+    <div class="ClearFix"> </div>      
+           <!-- Modal -->
+<div id="addstudents" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <p class="titlehead" id="myModalLabel">Add Members</p>
+  </div>
+  <div class="modal-body">
+   
+   
+    <p>
+    
+    <form id="managegroupmember" class="form-horizontal" action="" >
+  
+	        
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Student Name</label>
+      <div class="controls">
+	  <input type="text" class="text-input defaultvalue" name="mngmemberstdname" id="mngmemberstdname" tabindex="1" 
+      placeholder="Enter Student Name" data-prompt-position="inline"/>
+		<div id="errormngmemberstdname"  class="erroediv"></div>
+      </div> </div>
+      
+      
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Start Date</label>
+      <div class="controls">
+    	<input name="mngmemberdate" id="mngmemberdate" class="date-pick dp-applied defaultvalue" data-prompt-position="inline"/>
+                <div id="errormngmemberdate" class="erroediv"></div>
+         </div> </div>
+     
+     
+     <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Position</label>
+      <div class="controls">
+	<select name="mngmemberposition" id="mngmemberposition" class="defaultvalue" data-prompt-position="inline">
+    <option value="">Select Postion </option>
+    <option value="Leader">Leader</option>
+    <option value="Member">Member</option>
+    </select>
+     <div id="errormngmemberposition"  class="erroediv"></div>
+         </div> </div>
+     
+     
+      <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Grade</label>
+      <div class="controls">
+	<select name="mngmembergrade" id="mngmembergrade" class="defaultvalue" data-prompt-position="inline">
+    <option value="">Select Grade </option>
+    <option value="Leader">A</option>
+    <option value="Member">B</option>
+    <option value="Member">C</option>
+     <option value="Member">NR</option>
+    </select>
+     <div id="errormngmembergrade"  class="erroediv"></div>
+         </div> </div>
+     
+     
+	  
+      </form>
+      </p>
+  
+  
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true" onClick="document.getElementById('managegroupmember').reset();">Close</button>
+    <button id="addstutogrouptabrow" class="btn btn-primary">Save</button>
+  </div>
+</div>
+<!-- end of Modal -->
+     
+     
+     
+    
+    
+     </div> <!--end of groupperformancelinks-->
+    
+     <hr>
+
+        <div class="Membergroupdetails">
+        
+        <br>
+        
+        <label for="Total Time Spent" class="labelclass" style="font-size:11px;">Total Time Spent:</label>
+
+    <input type="text" class="defaultvalue labelclass" value="20" style="width:30px; font-size:11px; margin-left:2px;" id="crDate"/> </input>
+    
+    <label for="Hrs" class="labelclass" style="font-size:11px;">Hrs</label>
+  
+   <input type="text" class="defaultvalue labelclass" value="11" style="width:30px; font-size:11px; margin-left:2px;" id="crDate"/> </input>
+        
+   <label for="Mins" class="labelclass" style="font-size:11px;">Mins</label>      
+        <br>
+          <br>
+     
+      <label for="Exceptions" class="labelclass" style="font-size:11px;">Number of Exceptions:</label>
+
+    <input type="text" class="defaultvalue labelclass" value="100" style="width:100px; font-size:11px; margin-left:2px;" id="crDate"/> </input>   
+    
+    
+        <br>
+        <br>
+             
+      <label for="Exceptions" class="labelclass" style="font-size:11px;">Leaderboard Position:</label>
+
+    <input type="text" class="defaultvalue labelclass" value="Leader" style="width:120px; font-size:11px; margin-left:2px;" /> </input>   
+        
+       
+       <div class="ClearFix"> </div>
+        
+        </div> <!--end of courseperformancedetails-->
+   
+   
+   </div> <!--end of coursepreformance-->
+   
+  
+   
+  <div class="Membergroupactvities">
+   
+     <p class="managstudentsheading" style="font-size:14px; font-weight:bold; font-family:verdana; color:#328AA4;   background-color:#CCCCCC; height:20px; padding:5px; margin-bottom:3px;"> Activities </p>
+   
+   
+    <div class="Membergroupactvitiestable">
+            
+            
+             <table id="activitytab" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="72" align="left">Activity</th>
+                    	<th width="74" align="left">Date</th><th width="80" align="left">Student</th><th width="54" align="left">Progress</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    	<td>Assignment 1</td>
+                        <td>02 Aug 2012</td>
+                        <td>John Smith</td>
+                        <td>75%</td>
+                        
+                       
+                    </tr>
+                     <tr>
+                    	<td>Assignment 2</td>
+                        <td>02 Sep 2012</td>
+                        <td>Harry Reid</td>
+                        <td>100%</td>
+                    </tr>
+                     
+                     
+                     <tr>
+                    	<td>Assignment 1</td>
+                        <td>02 Aug 2012</td>
+                        <td>John Smith</td>
+                        <td>75%</td>
+                        
+                       
+                    </tr>
+                     <tr>
+                    	<td>Assignment 2</td>
+                        <td>02 Sep 2012</td>
+                        <td>Harry Reid</td>
+                        <td>100%</td>
+                    </tr>
+                                     
+                    </tbody>                                
+                </table>
+            
+           
+            
+           </div> <!--groupperformancetable-->
+     <hr>
+     
+     <div class="Membergroupactvitieslinks" style="height:10px;">
+       <a href="#mngmembermessage" role="button" data-toggle="modal" style="float:right;"> Send Message </a>
+       <div class="ClearFix"> </div>     
+     
+           <!-- Modal -->
+<div id="mngmembermessage" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <p class="titlehead" id="myModalLabel">Send Message</p>
+  </div>
+  <div class="modal-body">
+   
+   
+    <p>
+    
+    <form id="frmmngmembermessage" class="form-horizontal" >
+  
+	        
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Message Title</label>
+      <div class="controls" style="margin-left:160px;">
+	  <input type="text" class=" text-input defaultvalue" name="mngmembermsgtitle" id="mngmembermsgtitle" tabindex="1" 
+      placeholder="Enter Message Title" data-prompt-position="inline"/>
+		<div id="errormngmembermsgtitle" class="erroediv"></div>
+      </div> </div>
+      
+      
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Message description</label>
+      <div class="controls" style="margin-left:160px;">
+        <textarea name="mngmembermsgdesc" class="defaultvalue" id="mngmembermsgdesc" placeholder="Enter Description" data-prompt-position="inline"></textarea>
+        <div id="errormngmembermsgdesc" class="erroediv"></div>
+         </div> </div>
+  </form>
+      </p>
+  
+  
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true" onClick="document.getElementById('frmmngmembermessage').reset();">Close</button>
+    <input type="submit" value="Save" id="addgroupactivitytabrow" class="btn btn-primary">
+  </div>
+</div>
+<!-- end of Modal -->
+     
+    
+    
+     </div> <!--end of groupperformancelinks-->
+    
+     <hr>
+    
+        <div class="Membergroupactvitiesdetails">
+        
+        <br>
+        
+        <label for="Attendance" class="labelclass" style="font-size:11px;">Group Participation:</label>
+
+    <input type="text" class="defaultvalue labelclass" value="Group Participation" style="width:160px; font-size:11px; margin-left:2px;" id="crDate"/> </input>
+        
+        <br>
+        <br>
+     
+      <label for="Exceptions" class="labelclass" style="font-size:11px;">Group Leaderboard Position:</label>
+
+    <input type="text" class="defaultvalue labelclass" value="Leader" style="width:100px; font-size:11px; margin-left:2px;"/> </input>   
+    
+     <div class="ClearFix"> </div>      
+        
+        </div> <!--end of groupperformancedetails-->
+   
+   
+   </div> <!--end of grouppreformance--> 
+   
+
+  <div class="Membergroupinteraction" >
+   
+    <p class="managstudentsheading" style="font-size:14px; font-weight:bold; font-family:verdana; color:#328AA4;   background-color:#CCCCCC; height:20px; padding:5px; margin-bottom:3px;"> Interaction </p>
+    
+    <div class="Membergroupinteractiontable">
+            
+            
+             <table id="interactiontab" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="77" align="left">When</th>
+                    	<th width="66" align="left">Mode</th><th width="76" align="left">Status</th><th width="81" align="left">Reason</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="grpinteraction1">
+                    	<td>12 Sep 2012</td>
+                        <td>Video Chat</td>
+                        <td>Complete</td>
+                        <td>to guide with test 2</td>
+                        
+                       
+                    </tr>
+                     <tr id="grpinteraction2">
+                    	<td>12 Nov 2012</td>
+                        <td>Face Meeting</td>
+                        <td>Planned</td>
+                        <td>Discuss Grade</td>
+                    </tr>
+                     
+                                     
+                    </tbody>                                
+                </table>
+                      
+           </div> <!--interactionetable-->
+     <hr>
+     
+     <div class="Membergroupinteractionlinks" style="height:10px;">
+     <a href="#linkurl" id="delint" style="float:right;"> Remove Interaction </a>
+     <a href="#mngmemberinteraction" role="button" data-toggle="modal" style="float:right; padding-right:10px;"> Add Interaction </a>
+      <div class="ClearFix"> </div>     
+           
+           <!-- Modal -->
+<div id="mngmemberinteraction" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <p class="titlehead" id="myModalLabel">Send Message</p>
+  </div>
+  <div class="modal-body">
+   
+   
+    <p>
+    
+   <form id="frmmngmemberinteraction" class="form-horizontal" action="" >
+  
+	        
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">When</label>
+      <div class="controls">
+	 <input name="mnginteractiondate" id="mnginteractiondate" class="date-pick dp-applied defaultvalue"></div>
+	<div id="errormnginteractiondate" class="erroediv"></div>
+       </div>
+      
+      
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Mode</label>
+      <div class="controls">
+    	<select name="mnginteractionstatus" id="mnginteractionstatus" class="defaultvalue " data-prompt-position="inline">
+        <option value=""> Select Mode </option>
+        <option value="Video Chat"> Video Chat </option>
+         <option value="Face Meeting"> Face Meeting </option>
+        </select>
+        <div id="errormnginteractionstatus" class="erroediv"></div>
+         </div> </div>
+     
+     
+     <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Position</label>
+      <div class="controls">
+	<select name="mnginteractionposition" id="mnginteractionposition" class="defaultvalue " data-prompt-position="inline">
+    <option value="">Select Staus </option>
+    <option value="Complete">Complete</option>
+    <option value="Planned">Planned</option>
+    </select>
+    <div id="errormnginteractionposition" class="erroediv"></div>
+         </div> </div>
+     
+     
+        <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Reason</label>
+      <div class="controls">
+        <textarea name="mnginteractiondesc" class="defaultvalue " id="mnginteractiondesc" placeholder="Enter Reason" data-prompt-position="inline"></textarea>
+        <div id="errormnginteractiondesc" class="erroediv"></div>
+         </div> </div>
+     
+     
+	  
+      </form>
+      </p>
+  
+  
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true" onClick="document.getElementById('frmmngmemberinteraction').reset();">Close</button>
+    <input type="submit" value="Save" id="addstuintinmangrp" class="btn btn-primary">
+  </div>
+</div>
+<!-- end of Modal -->
+     
+     
+        
+     </div> <!--end of interaction links-->
+     <hr>
+        <div class="Membergroupinteractiondetails"> 
+             
+     <textarea name="EngagementNotes" class="defaultvalue labelclass" cols="36" rows="7" style="width:280px; height:110px;">Engagement Notes </textarea>
+           
+        </div> <!--end of interactiondetails-->
+   
+     <div class="ClearFix"> </div>
+   
+   
+   </div> <!--end of interaction--> 
+
+   </div> <!--end of manage lower-->
+    
+
+      <div class="managemainbutton" style="height:30px;" >   
+              		 
+ 				<input type="button" value="Return" class="btn btn-info" style="float:right;"/>
+                <input type="button" value="Save" class="btn btn-info" style="float:right;"/> 
+                
+        <div class="ClearFix"> </div>          
+          </div><!-- end zReturn -->
+
+   
+    
+    
+    
+    
+ 
+ 	   </div>  <!--end of managecontainer-->
+ 
+ 
+        
+    
+<!--End Center Container--> 
+    
+   </div>
+    </div>
+    </div>
+  </section>
+  <!--End Main Content--> 
+ <!--Current Progress-->
+<div class="col border-top">
+  <div class="collapse">
+     <h3 class="border-left border-right border-top">Your current progress  [ Starting ... ]</h3>
+         <div>
+        <p class="caption text-size-px18">Your progress this session... </p>
+      </div>
+    </div>
+  </div>
+            
+  <script>
+            $(".collapse").collapse({show: function(){
+                    this.animate({
+                        opacity: 'toggle', 
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+                    
+                    this.animate({
+                        opacity: 'toggle', 
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        
+//rating-star	
+$('#edu-star').raty({
+					
+					click		: function(score, evt) {
+						$(this).fadeOut(function() { $(this).fadeIn(); });
+					},
+					targetKeep	: true,
+					path:'images/img/',
+					score		: 4,
+					cancel: true
+				});
+        
+        
+        </script> 
+
+
+  <!--End Current Progress-->
+        <!--Footer Container-->
+	 		<footer>
+      		</footer>
+        <!--End Footer Container-->
+	</div>
+    
+  
+</body>
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Manage Grades</title>
+<!--Body Style sheet-->
+
+<link href="../css/main/styles.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/type-setting.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/effects.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/nav.css" rel="stylesheet" type="text/css"/>
+<link href="../css/manage/publish.css" rel="stylesheet" type="text/css">
+<link href="../css/common/wizard/wizardstylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../css/common/datepicker/datepicker.css"  rel="stylesheet"  type="text/css">
+<link href="../css/manage/modal.min.css" rel="stylesheet" type="text/css">
+<!--End Body Style sheet-->
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/table/tablerow.js"></script> 
+
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/datepicker/zebra_datepicker.js"></script>
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/datepicker/functions.js"></script>
+<script type="text/javascript" src="../js/ziksana/manage/modal.min.js"></script>
+ 
+ 
+         <script language="javascript">
+	$(document).ready(function(e) {
+		tablecloth();
+		
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth(); //January is 0!
+//		if(mm==0){mm = Jan;}else if(mm == 1){mm = Feb;}else if(mm == 2){mm = Mar;}
+//		else if(mm == 3){mm = Apr;}else if(mm == 4){mm = May;}else if(mm == 5){mm = Jun;}
+//		else if(mm == 6){mm = Jul;}else if(mm == 7){mm = Aug;}else if(mm == 8){mm = Sep;}
+//		else if(mm == 9){mm = Oct;}else if(mm == 10){mm = Nov;}else if(mm == 11){mm = Dec;}
+		var yyyy = today.getFullYear();
+		var tarikh = dd +'/'+mm +'/'+yyyy;
+		//alert(tarikh);
+		var rowSelect2 = null;
+		var addgrouprow = 9;
+		
+		
+		$('#reviewtable tr').click( function(){
+			rowSelect2 = $(this).attr('id');
+		});
+		
+		$("#addgroup").click(function(e) {
+			var chkstr = confirm("Are you sure you want to add group!");
+			if(chkstr == true)
+			{
+            $(".reviewtable").append('<tr id=grupdtl'+addgrouprow+'><td>Group'+addgrouprow+'</td><td>'+tarikh+'</td><td>0</td><td>0%</td></tr>');
+			tablecloth();
+			}
+			$('#delgroup').click(function(e) {
+				var chkstr = confirm ("Are you sure to Delete!");
+				if(chkstr == true)
+				{
+				$('#grupdtl'+addgrouprow).remove();
+				}
+        });
+		
+        });
+		
+		$('#delgroup').click(function(e) {
+			if(rowSelect2 != null)
+			{
+				var chkstr = confirm ("Are you sure to Delete!");
+			
+				if(chkstr == true)
+				{
+				$('#'+rowSelect2).fadeOut();
+				}
+			}
+        });
+		
+		
+		
+		//$(".managegrouptable").hide();
+		//$("#grouplink").hide();
+		$(".managegrouplowercontainer").hide();
+		$(".managemainbutton").hide();
+        	$('#Showme').change( function () {
+        if ($('#Showme').val() == "Course"){
+			$(".managegrouptable").show();
+			$("#grouplink").show();
+		}
+			});
+			
+			
+			var rowSelect = null;
+		$('#reviewtable tr').click( function(){
+			rowSelect = $(this).attr('id');
+            if(rowSelect != null)
+			{
+				$(".managegrouplowercontainer").show();
+				
+			}
+			else
+			{
+				alert('Select a student to Get Details!');
+			}
+		});
+	});
+       </script>
+         
+</head>
+
+<body>
+	
+<div id="wrapper"> 
+        <!--Header Container-->
+        	<header class="bottom-box-shadow bckground-wihte">
+            	<div class="topheader"> 
+          <!--logo container-->
+          <div class="logo"><p><a href="#"><img height="123" width="149" src="../images/logo.jpg"/></a></p></div>
+          <!--end logo container-->
+          <div class="status-container">
+            <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box">
+              <ul>
+                <li><a href="#" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
+                <li><a href="#" class="alart-icon orange-bc" rel="tipsy" title="1 Connect Request"><span class="wite-title">1</span></a></li>
+                <li><a href="#" class="announcement-icon orange-bc" rel="tipsy" title="3 New Announcement"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
+               
+              </ul>
+              <div > </div>
+            </div>
+            <div class="account-container two-bottom-rounded-box">
+              <div class="container">
+                <div class="topnav" ><a href="#" class="signin wite bold"><span class="text-size-px12 wite bold">My Account</span></a> </div>
+                <fieldset id="signin_menu">
+                 <ul>
+                   <li><a href="#">Preferences</a></li>
+                   <li><a href="#">Privacy</a></li>
+                   <li><a href="#">Sign Out</a></li></ul>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+            <nav>
+                <!--menu-->
+                    <div class="menu">
+                      <ul>
+                        <li><a href="../educatorHomepage.html" class="current">My Home</a><div class="nav-line"></div></li>
+                        <li><a href="../myprograms.html">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
+                        <li><a href="#" style="margin-left:-10px;">My Locker</a></li>
+                      </ul>
+                    </div>
+                  
+              </nav>
+            </header>
+        <!--End Header Container-->
+  <div class="sub-nav">
+    <div class="f-l"><strong class="text-size-px12 font-Signika blue"><a href="#">My Courses </a> > </strong><strong class="light-gray text-size-px12">Manage</strong> > <strong class="light-gray text-size-px12">Manage Grades</strong> </div>
+    <div class="f-r"><strong class="text-size-px14 light-gray"><a href="../publish.html">Publish</a> | <a href="../defineengagement.html">Manage</a></strong><a class="light-blue" href="#"><img width="12" height="12" alt="add more" src="../images/plus.png"> </a></div>
+  </div>
+  <!--Main Content-->
+ 
+  <section>
+    <div class="section"> 
+   
+
+      <div class="col-create" style="width:1000px;">
+              <div  class="for-rounded-box  all-box-shadow white-bg">
+   
+  
+          <!--<div class="managepublishlinks">
+           <ul>
+           <br>
+          <li><a href="defineengagement.html"><span> 1. </span> Define Engagement</a> </li> 
+           <li><a href="managestudents.html"><span> 2. </span> Manage Students</a> </li>
+           <li><a href="managegroups.html"><span> 3. </span> Manage Groups </a> </li>
+            <li><a href="managegrades.html"><span style="background-color:#0080C0;"> 4. </span> Manage Grades </a> </li>
+             <li><a href="manageperformance.html"><span> 5. </span> Manage Performance </a> </li>
+           </ul>     
+           <br>
+         </div>-->
+        
+      
+    		
+       <div id="managegradescontainer">
+       
+       
+       <div id="managegradeupper">
+       
+    <div id="reviewtop">
+    <select id="Showme" name="Showme" class="defaultvalue labelclass" style="width:280px;">
+   <option value=""> Select Course</option>
+    <option value="Course" selected> Course1</option>
+    <option value="Course"> Course2</option>
+    <option value="Course"> Course3</option>
+    </select>
+    
+    <script language="javascript">
+	
+    	$(document).ready(function(e) {
+		$(".managestudentlink").hide();
+		$(".Gradesdetails").hide();
+		$(".Gradeelement").hide();
+		
+		
+		//showing a value on changing a value of drop down
+        	$('#Showme').change( function () {
+        if ($('#Showme').val() == "Course"){
+			$(".hruler").show();
+			$(".managegradetable").show();
+			$(".managestudentlink").show();
+		}
+		else
+		{
+			$(".hruler").hide();
+			$(".managegradetable").hide();
+			$(".managestudentlink").hide();
+			$(".Gradesdetails").hide();
+			$(".Gradeelement").hide();
+		}
+			});
+			var rowSelect2 = null;
+		$('#reviewtable tr').click( function(){
+			rowSelect2 = $(this).attr('id');
+			$(".Gradesdetails").show();
+		});
+			
+			$('#getdtllink').click(function(e) {
+             if(rowSelect2 != null)
+			{
+				
+			}
+			else
+			{
+				alert('Select a group to Delete!');
+			}
+        });
+		
+		var rowSelect = null;
+		$('#testreviewtable tr').click( function(){
+			rowSelect = $(this).attr('id');
+			$(".Gradeelement").show();
+		});
+		
+		
+			
+		});
+    
+    </script>
+    
+     </div> <!--reviewtop-->
+       
+
+
+      <div class="managegradetable">
+            
+            
+             <table id="reviewtable" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="130" align="left">Assignment</th>
+                    	<th width="40" align="left">Weight</th><th width="114" align="left">Start Date</th><th width="84" align="left">End Date</th> <th width="84" align="left">Progress</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="testdtlrow1">
+                    	<td>Test 1</td>
+                        <td>20%</td>
+                        <td>01 Jan 2012</td>
+                        <td>15 Jan 2012</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr id="testdtlrow2">
+                   		<td>Test 2</td>
+                        <td>15%</td>
+                        <td>03 Jan 2012</td>
+                        <td>08 Jan 2012</td>
+                        <td>85%</td>
+                    </tr>
+                     
+                      <tr id="testdtlrow3">
+                    	<td>Test 1</td>
+                        <td>20%</td>
+                        <td>01 Jan 2012</td>
+                        <td>15 Jan 2012</td>
+                        <td>100%</td>
+                        
+                       
+                    </tr>
+                    <tr id="testdtlrow4">
+                    	<td>Test 2</td>
+                        <td>15%</td>
+                        <td>03 Jan 2012</td>
+                        <td>08 Jan 2012</td>
+                        <td>85%</td>
+                    </tr>
+                                     
+                           </tbody>                                
+                </table>
+                                  
+           </div> <!--managestudenttable-->
+              
+
+       </div> <!--end of managestudentsupper-->
+        
+          <div class="hruler">
+         <hr/>
+		</div>
+        
+     <div class="managegradelowercontainer" style="margin-top:25px;">
+   
+   <div class="Gradesdetails">
+  
+   <div id="studentperformancedtl">
+    <div class="Gradesdetailstable">
+            
+           
+            
+             <table id="testreviewtable" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="109" align="left">Student Name</th>
+                    	<th width="64" align="left">Submission Date</th><th width="61" align="left">Auto Grade</th><th width="46" align="left">Final Grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="testreview1">
+                    	<td>Patty Griffin 1</td>
+                        <td>01 Jan 2012</td>
+                        <td>A-</td>
+                        <td>NR</td>
+                    </tr>
+                     <tr id="testreview2">
+                    	<td>Piers Morgan</td>
+                        <td>03 Jan 2012</td>
+                        <td>B+</td>
+                        <td>NR</td>
+                    </tr>
+                    
+                      <tr id="testreview3">
+                    	<td>Patty Griffin 1</td>
+                        <td>01 Jan 2012</td>
+                        <td>A-</td>
+                        <td>NR</td>
+                    </tr>
+                     <tr id="testreview4">
+                    		<td>Piers Morgan</td>
+                        <td>03 Jan 2012</td>
+                        <td>B+</td>
+                        <td>NR</td>
+                    </tr>
+                    
+                     <tr id="testreview5">
+                    	<td>Patty Griffin 1</td>
+                        <td>01 Jan 2012</td>
+                        <td>A-</td>
+                        <td>NR</td>
+                    </tr>
+                     <tr id="testreview6">
+                    	<td>Piers Morgan</td>
+                        <td>03 Jan 2012</td>
+                        <td>B+</td>
+                        <td>NR</td>
+                    </tr>
+                    
+                      <tr id="testreview7">
+                    	<td>Patty Griffin 1</td>
+                        <td>01 Jan 2012</td>
+                        <td>A-</td>
+                        <td>NR</td>
+                    </tr>
+                     <tr id="testreview8">
+                    	<td>Piers Morgan</td>
+                        <td>03 Jan 2012</td>
+                        <td>B+</td>
+                        <td>NR</td>
+                    </tr>
+                    
+                     <tr id="testreview9">
+                    	<td>Patty Griffin 1</td>
+                        <td>01 Jan 2012</td>
+                        <td>A-</td>
+                        <td>NR</td>
+                    </tr>
+                     <tr id="testreview10">
+                    	<td>Piers Morgan</td>
+                        <td>03 Jan 2012</td>
+                        <td>B+</td>
+                        <td>NR</td>
+                    </tr>
+                    
+                      <tr id="testreview11">
+                    	<td>Patty Griffin 1</td>
+                        <td>01 Jan 2012</td>
+                        <td>A-</td>
+                        <td>NR</td>
+                    </tr>
+                     <tr id="testreview12">
+                    	<td>Piers Morgan</td>
+                        <td>03 Jan 2012</td>
+                        <td>B+</td>
+                        <td>NR</td>
+                    </tr>
+                                     
+                           </tbody>                                
+                </table>
+            
+                         
+           </div> <!--courseperformancetable-->
+     
+     
+     </div>
+   <hr>
+     
+     <div class="Membergroupactvitieslinks" style="height:30px;">
+     <a href="#linkurl"class="lbx-video btn btn-info" style="float:right;"> View Submission </a>
+    
+     </div> <!--end of groupperformancelinks-->
+   
+   </div> <!--end of coursepreformance-->
+   
+  
+   
+  
+
+  <div class="Gradeelement" >
+   
+   
+    
+    <div class="Gradeelementtable">
+            
+            
+             <table class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="77" align="left">Element</th>
+                    	<th width="50" align="left">For Student</th><th width="50" align="left">Class Average</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    	<td>Time Spent on Assignment</td>
+                        <td>4 Hrs</td>
+                        <td>4.5 Hrs</td>
+                       
+                        
+                       
+                    </tr>
+                     <tr>
+                    	<td>#Attempts</td>
+                        <td>1</td>
+                        <td>1.5</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                    	<td>Time Spent on Course</td>
+                        <td>19 Hrs</td>
+                        <td>24.5 Hrs</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                    	<td>Group Participation</td>
+                        <td>4 Hrs</td>
+                        <td>4.5 Hrs</td>
+                        
+                    </tr>
+                     
+                                     
+                           </tbody>                                
+                </table>
+                      
+           </div> <!--interactionetable-->
+    
+     <hr>
+     
+   
+    
+    
+        <div class="Membergroupinteractiondetails"> 
+             
+      
+      <input type="checkbox" class="defaultvalue labelclass" /> <span class="labelclass " style="font-size:11px; margin-right:20px;"> Ask student to Repeat </span>
+      
+       <label for="Attendance" class="labelclass" style="font-size:11px;">Final Grade:</label>
+
+    <input type="text" class="defaultvalue labelclass" Placeholder="Grade" style="width:70px; font-size:11px; margin-left:2px;"/> </input>
+        
+    
+      
+  
+  <div style="width:420px; height:130px; margin-top:10px;">
+     <textarea name="EngagementNotes" class="defaultvalue labelclass" cols="54" rows="4" style="font-size:11px; height:50px; width:400px;">Feedback to Student</textarea>
+     <br>
+     <br>
+      <textarea name="EngagementNotes" class="defaultvalue labelclass" cols="54" rows="4" style="font-size:11px; height:50px; width:400px;">Notes on Student for future reference</textarea>
+
+</div>
+           
+        </div> <!--end of interactiondetails-->
+   
+   
+   </div> <!--end of interaction--> 
+
+   
+   </div> <!--end of manage lower-->
+    
+<div class="managegradebutton" style="height:30px;" >   
+              		 
+ 				<input type="button" value="Return" class="btn btn-info" style="float:right;"/>
+                <input type="button" value="Save" id="cSave" class="btn btn-info" style="float:right;"/> 
+          </div><!-- end zReturn -->
+       
+    
+    
+    
+    
+ 
+ 	   </div>  <!--end of managecontainer-->
+ 
+ 
+        
+    
+<!--End Center Container--> 
+    
+   </div>
+    </div>
+    </div>
+  </section>
+  <!--End Main Content--> 
+ <!--Current Progress-->
+<div class="col border-top">
+  <div class="collapse">
+     <h3 class="border-left border-right border-top">Your current progress  [ Starting ... ]</h3>
+         <div>
+        <p class="caption text-size-px18">Your progress this session... </p>
+      </div>
+    </div>
+  </div>
+            
+  <script>
+            $(".collapse").collapse({show: function(){
+                    this.animate({
+                        opacity: 'toggle', 
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+                    
+                    this.animate({
+                        opacity: 'toggle', 
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        
+//rating-star	
+$('#edu-star').raty({
+					
+					click		: function(score, evt) {
+						$(this).fadeOut(function() { $(this).fadeIn(); });
+					},
+					targetKeep	: true,
+					path:'images/img/',
+					score		: 4,
+					cancel: true
+				});
+        
+        
+        </script> 
+
+
+  <!--End Current Progress-->
+        <!--Footer Container-->
+	 		<footer>
+      		</footer>
+        <!--End Footer Container-->
+	</div>
+    
+  
+</body>
+</html>

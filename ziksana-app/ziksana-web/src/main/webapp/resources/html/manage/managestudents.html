@@ -1,0 +1,731 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Manage Students</title>
+<!--Body Style sheet-->
+
+<link href="../css/main/styles.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/type-setting.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/effects.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/nav.css" rel="stylesheet" type="text/css"/>
+<link href="../css/manage/publish.css" rel="stylesheet" type="text/css">
+<link href="../css/common/wizard/wizardstylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../css/common/datepicker/datepicker.css"  rel="stylesheet"  type="text/css">
+<link href="../css/manage/modal.min.css" rel="stylesheet" type="text/css">
+<link href="../js/ziksana/jquerylibrary/common/datepicker/datepicker.css" rel="stylesheet" type="text/css"/>
+<link href="../css/common/validation/validation.css" rel="stylesheet" />
+<!--End Body Style sheet-->
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/datepicker/date.js"></script>
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/datepicker/jquery.datePicker-2.1.2.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	$('.date-pick').datePicker().val(new Date().asString()).trigger('change');
+});
+</script>
+
+<script type="text/javascript" src="../js/ziksana/jquerylibrary/common/table/tablerow.js"></script> 
+<script type="text/javascript" src="../js/ziksana/manage/modal.min.js"></script>
+<script src="../js/ziksana/validation/jquery.validationen.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/ziksana/validation/jquery.validation.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/managestudents.js"></script>	
+<script>
+		jQuery(document).ready( function() {
+			// binds form submission and fields to the validation engine
+			jQuery("#managestudent").validationEngine();
+			jQuery("#managestuinteraction").validationEngine();
+		
+			
+		});
+		
+		
+</script> 
+ 
+    <style>
+ .modal.fade.in
+ {
+	top:20%; 
+ }
+ 
+ a.dp-choose-date {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 5px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../images/icons/calendar.png) no-repeat; 
+	margin-left: -20px;
+z-index: 99999;
+margin-top: 8px;
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+	float: left;
+}
+
+#dp-popup
+{
+width:185px;	
+}
+.erroediv
+{
+	color:#F00;
+	font-size: 12px;
+}
+	</style>   
+         
+</head>
+
+<body>
+	
+<div id="wrapper"> 
+        <!--Header Container-->
+        	<header class="bottom-box-shadow bckground-wihte">
+            	<div class="topheader"> 
+          <!--logo container-->
+          <div class="logo"><p><a href="#"><img height="123" width="149" src="../images/logo.jpg"/></a></p></div>
+          <!--end logo container-->
+          <div class="status-container">
+            <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box">
+              <ul>
+                <li><a href="#" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
+                <li><a href="#" class="alart-icon orange-bc" rel="tipsy" title="1 Connect Request"><span class="wite-title">1</span></a></li>
+                <li><a href="#" class="announcement-icon orange-bc" rel="tipsy" title="3 New Announcement"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
+               
+              </ul>
+              <div > </div>
+            </div>
+            <div class="account-container two-bottom-rounded-box">
+              <div class="container">
+                <div class="topnav" ><a href="#" class="signin wite bold"><span class="text-size-px12 wite bold">My Account</span></a> </div>
+                <fieldset id="signin_menu">
+                 <ul>
+                   <li><a href="#">Preferences</a></li>
+                   <li><a href="#">Privacy</a></li>
+                   <li><a href="#">Sign Out</a></li></ul>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+            <nav>
+                <!--menu-->
+                    <div class="menu">
+                      <ul>
+                        <li><a href="../educatorHomepage.html" class="current">My Home</a><div class="nav-line"></div></li>
+                        <li><a href="../myprograms.html">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
+                        <li><a href="#" style="margin-left:-10px;">My Locker</a></li>
+                      </ul>
+                    </div>
+                  
+              </nav>
+            </header>
+        <!--End Header Container-->
+  <div class="sub-nav">
+    <div class="f-l"><strong class="text-size-px12 font-Signika blue"><a href="#">My Courses </a> > </strong><strong class="light-gray text-size-px12">Manage</strong> > <strong class="light-gray text-size-px12">Manage Students</strong> </div>
+    <div class="f-r"><strong class="text-size-px14 light-gray"><a href="../publish.html">Publish</a> | <a href="../defineengagement.html">Manage</a></strong><a class="light-blue" href="#"><img width="12" height="12" alt="add more" src="../images/plus.png"> </a></div>
+  </div>
+  <!--Main Content-->
+ 
+  <section>
+    <div class="section"> 
+   
+
+      <div class="col-create" style="width:1000px; height:auto;">
+              <div  class="for-rounded-box  all-box-shadow white-bg">
+   
+  
+         <!-- <div class="managepublishlinks">
+           <ul>
+           <br>
+          <li><a href="defineengagement.html"><span> 1. </span> Define Engagement</a> </li> 
+           <li><a href="managestudents.html"><span style="background-color:#0080C0;"> 2. </span> Manage Students</a> </li>
+           <li><a href="managegroups.html"><span> 3. </span> Manage Groups </a> </li>
+            <li><a href="managegrades.html"><span> 4. </span> Manage Grades </a> </li>
+             <li><a href="manageperformance.html"><span> 5. </span> Manage Performance </a> </li>
+           </ul>     
+           <br>
+         </div>
+        -->
+      
+    		
+       <div id="managestudentcontainer">
+       
+       
+       <div id="managestudentsupper">
+       
+    <div id="reviewtop">
+    <select id="Showme" name="Showme" class="defaultvalue labelclass" style="width:280px;">
+    <option value=""> Select Course</option>
+    <option value="Course"> Course1</option>
+    <option value="Course" selected> Course2</option>
+    <option value="Course"> Course3</option>
+    </select>
+    
+     </div> <!--reviewtop-->
+       
+
+
+      <div class="managestudenttable">
+            
+            
+             <table id="reviewtable" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="130" align="left">Student Name</th>
+                    	<th width="40" align="left">Start Date</th><th width="114" align="left">Progress</th><th width="84" align="left">Performance Band</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="sdata1">
+                    	<td>Joe Montana</td>
+                        <td>01 Jan 2012</td>
+                        <td>55%</td>
+                        <td>B10</td>
+                    </tr>
+                     <tr id="sdata2">
+                    		<td>Tim Tebow</td>
+                        <td>01 Mar 2012</td>
+                        <td>15%</td>
+                        <td>B9</td>
+                    </tr>
+                     
+                       <tr id="sdata3">
+                    	<td>Tim Tebow</td>
+                        <td>01 Mar 2012</td>
+                        <td>15%</td>
+                        <td>B9</td>
+                    </tr>
+                     
+                     
+                     <tr id="sdata4">
+                    	<td>Joe Montana</td>
+                        <td>01 Jan 2012</td>
+                        <td>55%</td>
+                        <td>B10</td>
+                    </tr>
+                     
+                     
+                       <tr id="sdata5">
+                    		<td>Tim Tebow</td>
+                        <td>01 Mar 2012</td>
+                        <td>15%</td>
+                        <td>B9</td>
+                    </tr>
+                     
+                      <tr id="sdata6">
+                    	<td>Joe Montana</td>
+                        <td>01 Jan 2012</td>
+                        <td>55%</td>
+                        <td>B10</td>
+                    </tr>
+                    
+                    
+                       <tr id="sdata7">
+                    		<td>Tim Tebow</td>
+                        <td>01 Mar 2012</td>
+                        <td>15%</td>
+                        <td>B9</td>
+                    </tr>
+                     
+                      <tr id="sdata8">
+                    	<td>Joe Montana</td>
+                        <td>01 Jan 2012</td>
+                        <td>55%</td>
+                        <td>B10</td>
+                       
+                       
+                    </tr>
+                                     
+                           </tbody>                                
+                </table>
+               
+                         
+             
+           </div> <!--managestudenttable-->
+  
+         <div class="managestudentlink" style="margin:5px;">
+<!--                              <hr>
+         <a href="#linkurl" id="getdtl" style="float:right; height:10px;"> Get Details </a>
+-->        <br/>
+          <hr>
+          <br/>
+         </div>
+      
+       
+       </div> <!--end of managestudentsupper-->
+       
+       
+        
+     <div class="managestudentlowercontainer" style="margin-top:20px;">
+   
+   
+   <div class="courseperformance">
+   
+    <p class="managstudentsheading" style="font-size:14px; font-weight:bold; font-family:verdana; color:#328AA4;   background-color:#CCCCCC; height:20px; padding:5px; margin-bottom:3px;"> Course Performance </p>
+   
+    <div class="courseperformancetable">
+            
+           
+            
+             <table id="courseperformancetab" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="109" align="left">Course</th>
+                    	<th width="64" align="left">Duration</th><th width="61" align="left">Progress</th><th width="46" align="left">Grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="couperform1">
+                    	<td>Chapter 1</td>
+                        <td>5.3 Hrs</td>
+                        <td>100%</td>
+                        <td>A</td>
+                        
+                       
+                    </tr>
+                     <tr  id="couperform2">
+                    		<td>Chapter 2</td>
+                        <td>22 Hrs.</td>
+                        <td>65%</td>
+                        <td>NR</td>
+                    </tr>
+                    
+                      <tr  id="couperform3">
+                    	<td>Chapter 1</td>
+                        <td>5.3 Hrs</td>
+                        <td>100%</td>
+                        <td>A</td>
+                        
+                       
+                    </tr>
+                     <tr  id="couperform4">
+                    		<td>Chapter 2</td>
+                        <td>22 Hrs.</td>
+                        <td>65%</td>
+                        <td>NR</td>
+                    </tr>
+                      <tr  id="couperform5">
+                    	<td>Chapter 1</td>
+                        <td>5.3 Hrs</td>
+                        <td>100%</td>
+                        <td>A</td>
+                        
+                       
+                    </tr>
+                    
+                                     
+                           </tbody>                                
+                </table>
+            
+          
+            
+           </div> <!--courseperformancetable-->
+    
+      <hr>
+        <div class="courseperformancedetails">
+        
+        
+        <label for="Attendance" class="labelclass" style="font-size:11px;">Attendance in Days</label>
+
+    <input type="text" class="defaultvalue labelclass" value="Attendance" style="width:100px; font-size:11px; margin-left:2px;" id="crDate"/> </input>
+        
+        <br>
+          <br>
+     
+      <label for="Exceptions" class="labelclass" style="font-size:11px;">Number of Exceptions:</label>
+
+    <input type="text" class="defaultvalue labelclass" value="100" style="width:100px; font-size:11px; margin-left:2px;" id="crDate"/> </input>   
+    
+    
+        <br>
+        <br>
+             
+      <label for="Exceptions" class="labelclass" style="font-size:11px;">Leaderboard Position:</label>
+
+    <input type="text" class="defaultvalue labelclass" value="100" style="width:100px; font-size:11px; margin-left:2px;" id="crDate"/> </input>   
+        
+        </div> <!--end of courseperformancedetails-->
+   
+   
+   </div> <!--end of coursepreformance-->
+   
+  <div class="divider">  
+  </div>  <!--end of divider-->
+   
+   
+   
+  <div class="groupperformance">
+   
+     <p class="managstudentsheading" style="font-size:14px; font-weight:bold; font-family:verdana; color:#328AA4;   background-color:#CCCCCC; height:20px; padding:5px; margin-bottom:3px;"> Group Performance </p>
+   
+   
+    <div class="groupperformancetable">
+            
+            
+             <table id="grpperformancetab" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="72" align="left">Group</th>
+                    	<th width="74" align="left">Position</th><th width="80" align="left">Participation</th><th width="54" align="left">Grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="gprperformance1">
+                    	<td>Group 1</td>
+                        <td>Leader</td>
+                        <td>60%</td>
+                        <td>B</td>
+                        
+                       
+                    </tr>
+                     <tr id="gprperformance2">
+                    		<td>Group 2</td>
+                        <td>Member</td>
+                        <td>65%</td>
+                        <td>NR</td>
+                    </tr>
+                     
+                     
+                       <tr id="gprperformance3">
+                    	<td>Group 1</td>
+                        <td>Leader</td>
+                        <td>60%</td>
+                        <td>B</td>
+                        
+                       
+                    </tr>
+                     <tr id="gprperformance4">
+                    		<td>Group 2</td>
+                        <td>Member</td>
+                        <td>65%</td>
+                        <td>NR</td>
+                    </tr>
+                                     
+                           </tbody>                                
+                </table>
+            
+           
+            
+           </div> <!--groupperformancetable-->
+    
+     <hr>
+     <div class="groupperformancelinks" style="height:10px;">
+       <a href="#linkurl" id="removegrp" class="lbx-video" style="float:right;"> Remove from Group </a>
+     <a href="#addstudentgroup" role="button"  data-toggle="modal" style="float:right; padding-right:10px;"> Add to Group </a>
+    
+     </div> <!--end of groupperformancelinks-->
+ 
+<!-- Modal -->
+<div id="addstudentgroup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <p class="titlehead" id="myModalLabel">Add Student To Group Performance</p>
+  </div>
+  <div class="modal-body">
+   
+   
+    <p>
+    
+    <form id="managestudent" class="form-horizontal" action="" >
+  
+	        
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Group Name</label>
+      <div class="controls">
+	  <input type="text" class="defaultvalue " name="mngrpname" id="mngrpname" tabindex="1" 
+      placeholder="Enter Group Name" data-prompt-position="inline"/>
+		 <div id="errormngrpname" class="erroediv"></div>
+      </div> </div>
+      
+      
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Position</label>
+      <div class="controls">
+		<select name="mngstupaticipation" id="mngstupaticipation"  class="defaultvalue" data-prompt-position="inline">
+        <option value="">Select Role</option>
+        <option value="Leader">Leader</option>
+        <option value="Member">Member</option>
+        </select>
+        <div id="errormngstupaticipation" class="erroediv"></div>
+         </div>      </div>
+     
+     
+     <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Participation</label>
+       <div class="controls">
+    	<input type="text" id="mngstuposition" class="defaultvalue " data-prompt-position="inline">
+        <div id="errormngstuposition" class="erroediv"></div>
+       </div>      </div>
+     
+     
+      <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Grade:</label>
+      <div class="controls">
+     <select name="mngstugrd" id="mngstugrd" class="defaultvalue " data-prompt-position="inline">
+    <option value="">Select Grade </option>
+    <option value="Leader">A</option>
+    <option value="Member">B</option>
+    <option value="Member">C</option>
+     <option value="Member">NR</option>
+    </select>
+    <div id="errormngstugrd" class="erroediv"></div>
+         </div> </div>
+     
+     
+	  
+      </form>
+      </p>
+  
+  
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true" onClick="document.getElementById('managestudent').reset();">Close</button>
+    <button id="addstudenttogrouptabrow" class="btn btn-primary">Save</button>
+  </div>
+</div>
+<!-- end of Modal --> 
+ 
+ 
+    
+     <hr>
+    
+        <div class="groupperformancedetails">
+        
+        
+        <label for="Attendance" class="labelclass" style="font-size:11px;">Group Participation</label>
+
+    <input type="text" class="defaultvalue labelclass" value="Attendance" style="width:100px; font-size:11px; margin-left:2px;" id="crDate"/> </input>
+        
+        <br>
+        <br>
+     
+      <label for="Exceptions" class="labelclass" style="font-size:11px;">Number of Exceptions:</label>
+
+    <input type="text" class="defaultvalue labelclass" value="100" style="width:100px; font-size:11px; margin-left:2px;" id="crDate"/> </input>   
+    
+         
+        
+        </div> <!--end of groupperformancedetails-->
+   
+   
+   </div> <!--end of grouppreformance--> 
+   
+ <div class="divider">  
+  </div>  <!--end of divider-->
+   
+  <div class="interaction" >
+   
+    <p class="managstudentsheading" style="font-size:14px; font-weight:bold; font-family:verdana; color:#328AA4;   background-color:#CCCCCC; height:20px; padding:5px; margin-bottom:3px;"> Interaction </p>
+    
+    <div class="interactiontable">
+            
+            
+             <table id="interactiontab" class="table reviewtable" style="border:1px solid #ccc; font-family:verdana;">
+                        <thead>
+                	<tr>
+                    	<th width="77" align="left">When</th>
+                    	<th width="66" align="left">Mode</th><th width="76" align="left">Status</th><th width="81" align="left">Reason</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="interactionrow1">
+                    	<td>12 Sep 2012</td>
+                        <td>Video Chat</td>
+                        <td>Complete</td>
+                        <td>to guide with test 2</td>
+                        
+                       
+                    </tr>
+                     <tr id="interactionrow2">
+                    		<td>12 Nov 2012</td>
+                        <td>Face Meeting</td>
+                        <td>Planned</td>
+                        <td>Discuss Grade</td>
+                    </tr>
+                     
+                                     
+                           </tbody>                                
+                </table>
+                      
+           </div> <!--interactionetable-->
+    
+     <hr>
+     <div class="interactionlinks" style="height:10px;">
+       <a href="#linkurl" id="removeinteraction" class="lbx-video" style="float:right;"> Remove Interaction </a>
+     <a href="#addstuinteraction"  role="button"  data-toggle="modal" style="float:right; padding-right:10px;"> Add Interaction </a>
+        
+     </div> <!--end of interaction links-->
+
+<!-- Modal -->
+<div id="addstuinteraction" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <p class="titlehead" id="myModalLabel">Add Student Interaction</p>
+  </div>
+  <div class="modal-body">
+   
+   
+    <p>
+    
+    <form id="managestuinteraction" class="form-horizontal" action="" >
+  
+	        
+       <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px; z-index:0;">Date</label>
+      <div class="controls">
+	 <input name="mngstuintdate" id="mngstuintdate" class="date-pick dp-applied defaultvalue">
+      <div id="errormngstuintdate" class="erroediv"></div>   
+      </div> </div>
+      
+     <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Mode</label>
+       <div class="controls">
+        <select name="mngstintmode" id="mngstintmode" class="defaultvalue" data-prompt-position="inline">
+        <option value=""> Select Mode </option>
+        <option value="Face Meeting"> Face Meeting </option>
+         <option value="Video Chat"> Video Chat </option>
+        </select>
+        <div id="errormngstintmode" class="erroediv"></div>
+         </div>      </div>
+     
+     
+     <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Status</label>
+      <div class="controls">
+		<select name="mngstuintstatus" id="mngstuintstatus"  class="defaultvalue" data-prompt-position="inline">
+        <option value="">Select Staus</option>
+        <option value="Complete">Complete</option>
+        <option value="Planned">Planned</option>
+        </select>
+        <div id="errormngstuintstatus" class="erroediv"></div>
+         </div>      </div>  
+     
+     
+      <div class="control-group">
+      <label class="control-label labelclass" style="font-weight:bold; padding-top:-10px;">Reason</label>
+      <div class="controls">
+  <textarea name="mngstuintreason" class="defaultvalue" id="mngstuintreason" placeholder="Enter Reason" data-prompt-position="inline"></textarea>
+  <div id="errormngstuintreason" class="erroediv"></div>
+         </div> </div>
+     
+     
+	  
+      </form>
+      </p>
+  
+  
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true" onClick="document.getElementById('managestuinteraction').reset();">Close</button>
+    <button id="addstudentinttabrow" class="btn btn-primary">Save</button>
+  </div>
+</div>
+<!-- end of Modal --> 
+    	
+     <hr>
+        <div class="interactiondetails"> 
+             
+     <textarea name="EngagementNotes" class="defaultvalue labelclass" cols="36" rows="7" style="width:280px; height:110px;">Engagement Notes </textarea>
+           
+        </div> <!--end of interactiondetails-->
+   
+   
+   </div> <!--end of interaction--> 
+
+
+ 
+
+  
+   </div> <!--end of manage lower-->
+    
+
+     <div class="managemainbutton" style="height:30px;" >   
+              		 
+ 				<input type="button" value="Return"  class="btn btn-info" style="float:right;"/>
+                <input type="button" value="Save"  class="btn btn-info" style="float:right;"/> 
+          </div><!-- end zReturn -->  
+    
+    
+    
+    
+ 
+ 	   </div>  <!--end of managecontainer-->
+ 
+ 
+        
+    
+<!--End Center Container--> 
+    
+   </div>
+    </div>
+    </div>
+  </section>
+  <!--End Main Content--> 
+ <!--Current Progress-->
+<div class="col border-top">
+  <div class="collapse">
+     <h3 class="border-left border-right border-top">Your current progress  [ Starting ... ]</h3>
+         <div>
+        <p class="caption text-size-px18">Your progress this session... </p>
+      </div>
+    </div>
+  </div>
+            
+  <script>
+            $(".collapse").collapse({show: function(){
+                    this.animate({
+                        opacity: 'toggle', 
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+                    
+                    this.animate({
+                        opacity: 'toggle', 
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        
+//rating-star	
+$('#edu-star').raty({
+					
+					click		: function(score, evt) {
+						$(this).fadeOut(function() { $(this).fadeIn(); });
+					},
+					targetKeep	: true,
+					path:'images/img/',
+					score		: 4,
+					cancel: true
+				});
+        
+        
+        </script> 
+
+
+  <!--End Current Progress-->
+        <!--Footer Container-->
+	 		<footer>
+      		</footer>
+        <!--End Footer Container-->
+	</div>
+    
+  
+</body>
+</html>

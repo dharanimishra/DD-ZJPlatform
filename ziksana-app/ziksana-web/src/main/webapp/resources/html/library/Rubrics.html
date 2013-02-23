@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link rel="stylesheet" href="../css/library/rubrics.css" type="text/css" />
+ <link rel="stylesheet" href="../css/main/styles.css" type="text/css"/>
+ <script type="text/javascript" src="../js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+ <script type="text/javascript" src="../js/library/rubrics.js"></script>
+ <script type="text/javascript" src="../js/table/tablerow.js"></script>
+ 
+ 
+<title>Rubrics</title>
+
+</head>
+
+<body>
+	<div id="rubricContainer">
+    	<div id="usage">
+        	<select name="usageArea" class="defaultvalue" id="usageArea">
+            	<option value="Select" >- Select Option -</option>
+            	<option value="Usage" selected="selected">All Usage</option>
+                <option value="Science" >Science</option>
+                 <option value="Music" >Music</option>
+                  <option value="Language" >Language</option>
+            </select>        	
+        </div><!-- end usage -->
+        
+        <div id="usageData">
+        	<table class="reviewtable table" cellpadding="15" width="688" style="margin-bottom:0px;" >
+            	<tr style="text-align:left;">
+                	<!--<th>Select</th>--><th style="padding: .7em;">Usage</th><th style="padding: .7em;">Name</th><th style="padding: .7em;">Created By</th><th style="padding: .7em;">#Uses</th>
+                </tr>
+              	<tr id="tr1">
+                   	<!--<td><input id="selecttr1" type="checkbox" /></td>--><td>Science</td><td>Lab report</td><td>Job huntsman</td><td>201</td>
+               </tr>
+               <tr id="tr2">
+                  <!-- <td><input id="selecttr2" type="checkbox" />	--><td>Music</td><td>Tone analysis</td><td>Peter Norton</td><td>5</td>
+               </tr>
+                <tr id="tr3">
+                   <!--<td><input id="selecttr3" type="checkbox" />	--><td>Language</td><td>Reading</td><td>Kim Rogers</td><td>12</td>
+               </tr>
+            </table>            
+        </div><!-- end usageData -->
+        
+        <div id="description">
+        	 <textarea id="descArea" placeholder="Description of the selected rubrics" rows="4" cols="108" style="resize: none;" ></textarea>
+        </div><!-- end description -->
+        
+        <div id="formButton">
+       	 <input class="btn btn-info" type="button" id="create" value="Create"/>
+         <input class="btn btn-info" type="button" id="clone" value="Clone"/>
+         <input class="btn btn-info" type="button" id="view" value="view"/>
+         <input class="btn btn-info" type="button" id="return" value="Return"/>
+        </div><!-- end formButtons -->
+        
+        <div id="createRubric">
+        	<div id="defineRubric">
+            <ul>
+            	<li><input type="text" class="defaultvalue" placeholder="Rubric name"/></li>
+                <li><input type="text" class="defaultvalue" placeholder="Created by"/></li>
+                <li><input type="text" class="defaultvalue" placeholder="Rating"/></li>
+                <li><input type="text" class="defaultvalue" placeholder="#Uses"/></li>
+                <li><input type="text" class="defaultvalue" placeholder="#Category:"/></li>
+                <li><input type="text" class="defaultvalue" placeholder="#Weights:"/></li>
+             </ul>
+            </div><!-- defineRubric -->
+            
+            <div id="descCreate">
+        	 <textarea id="deCreate" class="defaultvalue" placeholder="Description of the selected rubrics" rows="4" cols="108"style="resize: none;" ></textarea>
+        	</div><!-- end descCreate -->
+            
+            <div id="createTable">
+            	<table id="rubricstable" style="padding:10px;">
+                	<tr style=" text-align:center;">
+                    	<td></td>
+                    	<td><input type="text" class="defaultvalue" placeholder="Weight:" /></td>
+                    	<td><input type="text" class="defaultvalue" placeholder="Weight:" /></td>
+                        <td><input type="text" class="defaultvalue" placeholder="Weight:" /></td>
+                        <td><input type="text" class="defaultvalue" placeholder="Weight:" /></td>
+                    </tr>
+                    <tr>
+                    	<td style="vertical-align: top;">
+                        	<select id="createCategory1" class="defaultvalue" style=" width:140px; margin-bottom:5px;"><option value="category">Category</option></select><br/>
+                        	<input type="text" class="defaultvalue" style=" width:90px;" placeholder="Add category" /> <a href="#" style=" font-size:9px;">Add New</a>
+                        </td>
+                    	<td><textarea placeholder="Descriptive text" id="test" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                    	<td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                        <td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                        <td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                    </tr>
+                     <tr>
+                    	<td style="vertical-align: top;">
+                        	<select id="createCategory2" class="defaultvalue" style=" width:140px; margin-bottom:5px;"><option value="category">Category</option></select><br/>
+                        	<input type="text" class="defaultvalue" style=" width:90px;" placeholder="Add category" /> <a href="#" style=" font-size:9px;">Add New</a>
+                        </td>
+                    	<td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                    	<td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                        <td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                        <td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                    </tr>
+                     <tr>
+                    	<td style="vertical-align: top;">
+                        	<select id="createCategory3" class="defaultvalue" style=" width:140px; margin-bottom:5px;"><option value="category">Category</option></select><br/>
+                        	<input type="text" class="defaultvalue" style=" width:90px;" placeholder="Add category" /> <a href="#" style=" font-size:9px;">Add New</a>
+                        </td>
+                    	<td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                    	<td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                        <td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                        <td><textarea placeholder="Descriptive text" class="defaultvalue" rows="4" cols="13"></textarea></td>
+                    </tr>
+                </table>
+                <input class="btn btn-info" type="button" style=" margin-left:765px;" id="Addnewrowtable" value="Add Row"/>
+            </div><!-- end createTable -->
+            <div id="createButton">
+            	 <input class="btn btn-info" type="button" id="save" value="Save"/>
+        		 <input class="btn btn-info" type="button" id="createReturn" value="Return"/>
+            </div>
+        </div><!-- end createRubric -->
+        
+    </div><!-- end rubricContainer -->
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Define planner</title>
+<!--Body Style sheet-->
+<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+
+<link href="/ziksana-web/resources/css/type-setting.css" rel="stylesheet" type="text/css"/>
+<link href="/ziksana-web/resources/css/effects.css" rel="stylesheet" type="text/css"/>
+<link href="/ziksana-web/resources/css/nav.css" rel="stylesheet" type="text/css"/>
+
+
+
+<link href="css/common/wizard/wizardstylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="css/common/spinner/smartspinner.css" rel="stylesheet" type="text/css"/>
+<link href="css/common/tags/superbly-tagfield.css" rel="stylesheet" type="text/css"/>
+<link href="css/common/search/search.css" rel="stylesheet" type="text/css"/> 
+<link href="css/common/validation/validation.css" rel="stylesheet" type="text/css"/>
+
+<link href="js/tree/styles/styleTree.css" rel="stylesheet" type="text/css" /> <!-- for the layout of the tree -->
+<link rel="stylesheet" type="text/css" href="css/common/grid/dhtmlxgrid.css" />
+<link rel="stylesheet" type="text/css" href="css/common/grid/dhtmlxgrid_dhx_skyblue.css" />
+<link rel="stylesheet" type="text/css" href="css/common/tree/menu.css" />
+<link rel="stylesheet" type="text/css" href="css/common/tree/menu.css" />
+<!--End Body Style sheet-->
+<script type="text/javascript" src="js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="Dynamicjsonjs/z_message.js"></script>
+<script type="text/javascript" src="Dynamicjsonjs/z_simulation_message.js"></script>
+<script type="text/javascript" src="js/ziksana/jquerylibrary/common/table/tablerow.js"></script> 
+<script type='text/javascript' src="js/socialize/jquery_socialize.js"></script>
+<script type='text/javascript' src="js/socialize/soc.js"></script>
+<script type='text/javascript' src="js/socialize/jquery_socialize.js"></script>
+<script type="text/javascript" src="js/ziksana/ckeditor/adapters/jquery.js"></script>
+<script type="text/javascript" src="js/ziksana/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
+<script type='text/javascript' src="js/ziksana/coursecreation/socialize.js"></script>
+
+<!-- scripts for tree -->   
+<script type="text/javascript" src="js/tree/gettheme.js"></script> 
+<script type="text/javascript" src="js/tree/core.js"></script>
+<script type="text/javascript" src="js/tree/buttons.js"></script>
+<script type="text/javascript" src="js/tree/scrollbar.js"></script>
+<script type="text/javascript" src="js/tree/panel.js"></script>
+<script type="text/javascript" src="js/tree/dragdrop.js"></script>
+<script type="text/javascript" src="js/tree/tree.js"></script>
+<script type="text/javascript" src="js/tree/menujq.js"></script>
+<script type="text/javascript" src="js/tree/splitter.js"></script>
+<script type="text/javascript" src="js/tree/jqxexpander.js"></script>
+
+ 
+<script src="js/ziksana/jquerylibrary/tree/Common/common.js"></script>
+<script src="js/ziksana/jquerylibrary/tree/Common/dtree.js"></script>	
+<script language="JavaScript" src="js/ziksana/jquerylibrary/tree/Menu/menu.js"></script>
+<script language="JavaScript" src="js/ziksana/jquerylibrary/tree/Menu/menu_ext.js"></script>
+<script language="javascript" src="js/ziksana/jquerylibrary/tree/treedatasocialize.js"></script>
+<script language="javascript" src="js/ziksana/jquerylibrary/tree/Common/tree_ed.js"></script>
+<script language="javascript" src="js/ziksana/jquerylibrary/tree/Common/dhtmlxtree_xw.js"></script>
+<script language="javascript" src="js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
+<!-- End tree -->
+<!-- Start of Grid -->
+
+<script language="javascript" src="js/ziksana/jquerylibrary/tree/Grid/dhtmlxgrid.js"></script>
+<script language="javascript" src="js/ziksana/jquerylibrary/tree/Grid/dhtmlxgridcell.js"></script>
+<script language="javascript" src="js/ziksana/jquerylibrary/tree/Grid/dhtmlxcommon.js"></script>
+<script language="javascript" src="js/ziksana/jquerylibrary/tree/Grid/dhtmlxgrid_drag.js"></script>
+<!-- End of Grid -->
+
+<script src="js/custom/libraryfunction.js" type="text/javascript"></script>
+<script src="js/ziksana/jquerylibrary/common/tags/superbly-tagfield.min.js"  type="text/javascript"></script>
+<script src="js/ziksana/validation/jquery.validationen.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/ziksana/validation/jquery.validation.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="/ziksana-web/resources/js/custom/z_common.js"></script>
+<script src="/ziksana-web/resources/js/custom/z_plugins.js"></script>
+<!--fancybox-->
+	<script type="text/javascript" src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+
+     <script src="/ziksana-web/resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+	 <link rel="stylesheet" type="text/css" href="/ziksana-web/resources/css/jquery.fancybox.2.1.3.css"/>
+	<!--fancybox end-->
+
+
+<style>
+.jqx-widget-content {-moz-background-clip: padding; background-clip: padding-box; -webkit-background-clip: padding-box; -webkit-tap-highlight-color: rgba(0,0,0,0); font-family: Verdana,Arial,sans-serif; font-style: normal; font-size: 18px; border-color: rgba(199, 199, 199, 0.38); background: #fff; }
+.jqx-widget{-moz-background-clip: padding; background-clip: padding-box; -webkit-background-clip: padding-box; direction: ltr; -webkit-tap-highlight-color: rgba(0,0,0,0); font-family: Verdana,Arial,sans-serif; font-style: normal; font-size: 19px;}
+.breadcrumb li:nth-child(5) a       { background:#6D9EC5; color:#fff;}
+.breadcrumb li:nth-child(5) a:after { border-left-color: #6D9EC5 !important; }
+
+
+
+
+.selectedTreeRow
+{
+border-color:#27b; background: #6D9EC5; color:#fff;
+font-weight:bold;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;	
+padding-top:-2px;
+padding-bottom:-2px;
+padding-left:3px;
+padding-right:3px;
+}
+
+span.standartTreeRow:hover
+{
+background: rgba(85, 142, 187, 0.63);
+color:#fff;	
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+padding:3px;
+}
+
+.containerTableStyle
+{
+overflow:scroll;
+overflow-y:hidden;	
+}
+
+
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".signin1").click(function(e) {
+			e.preventDefault();
+			
+			$("fieldset#signin_menu").toggle();
+			$(".signin1").toggleClass("menu-open");
+		});
+
+		$("fieldset#signin_menu").mouseup(function() {
+			return false
+		});
+		$(document).mouseup(function(e) {
+			if ($(e.target).parent("a.signin").length == 0) {
+				$(".signin1").removeClass("menu-open");
+				$("fieldset#signin_menu").hide();
+			}
+		});
+
+		//Fetch course details and populate the form
+		getCourse();
+
+	});
+</script>
+</head>
+
+<body onload="createChartControl('GanttDiv')">
+	
+<div id="wrapper"> 
+        <!--Header Container-->
+        		<!--Header Container-->
+        	  
+		<p><a><img data-launcher
+				data-launchpage="/ziksana-web/secure/launcher"
+				src="/ziksana-web/resources/images/ziksana_button_logo.png"
+				width=120px height=120px
+				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a></p>
+		
+        	<header class="bottom-box-shadow bckground-wihte">
+			
+            	<div class="topheader"> 
+          <!--logo container-->
+          
+          <!--end logo container-->
+		    
+ 
+        </div>
+            <nav>
+			<div class="menu" style=" margin-left:0px;">
+                      <ul>
+                        <li><a href="/ziksana-web/secure/educatordashboard" >My Home</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/secure/showMyPrograms" class="current">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
+                        <li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;My Locker</a></li>
+                      </ul>
+                    </div>
+					
+                       <div class="status-container">
+		
+            <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box ">
+			
+              <ul>
+                <li><a href="#" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
+                <li><a href="#" class="alart-icon orange-bc" rel="tipsy" title="1 Connect Request"><span class="wite-title">1</span></a></li>
+                <li><a href="#" class="announcement-icon orange-bc" rel="tipsy" title="3 New Announcement"><span class="wite-title">3</span></a></li>
+                 <li><a href="#" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
+               
+              </ul>
+              <div > </div>
+            </div>
+             <div class="account-container two-bottom-rounded-box">
+              <div class="container">
+                <div class="topnav" ><a href="#" class="signin1 wite bold"><span class="text-size-px12 wite bold">My Account</span></a> </div>
+                <fieldset id="signin_menu">
+                 <ul>
+                   <li><a href="#">Preferences</a></li>
+                   <li><a href="#">Privacy</a></li>
+
+                   <li><a href="/ziksana-web/secure/logout">Sign Out</a></li></ul>
+
+                </fieldset>
+              </div>
+            </div>
+          </div>
+              </nav>
+            </header>
+        <!--End Header Container-->
+  <div class="sub-nav">
+    <div class="f-l"><strong class="text-size-px12 font-Signika blue"><a href="#">My Courses </a> > </strong><strong class="light-gray text-size-px12">Create New Course </strong></div>
+    <div class="f-r"><strong class="text-size-px14 light-gray"><a href="publish.html">Publish</a> | <a href="defineengagement.html">Manage</a></strong><a class="light-blue" href="#"><img width="12" height="12" alt="add more" src="/ziksana-web/resources/images/plus.png"> </a></div>
+  </div>
+  <!--Main Content-->
+  <section>
+    <div class="section"> 
+           <div class="col-create" style="width:1000px; background-color:#FFFFFF;">
+              <div  class="for-rounded-box  all-box-shadow white-bg">
+         
+         
+ 
+	<!--Wizard start-->
+<div id="page-wrap">
+
+	    <ul class="breadcrumb" style="padding:1px;">
+	     <li><a  href="/ziksana-web/secure/createcourse/" style="width:100px; text-align:center;" ><span class="bcumb" >1.</span> Define Course</a></li>
+			<li><a href="/ziksana-web/secure/associatecontent/" style="text-align:center;">2. Associate Content</a></li>
+			<li><a href="/ziksana-web/secure/enrichcontent/" style=" width:124px; text-align:center;">3. Enrich Content</a></li>
+			<li><a  href="defineassignment.html" style=" width:130px; text-align:center; ">4. Define Assignment</a></li>
+			<li><a href="defineplanner.html" style=" text-align:center; ">5. Define Planner</a></li>
+			<li><a  href="defineplaybook.html" style="text-align:center; ">6. Define Playbook</a></li>
+			<li><a href="definesocialize.html" style="width:120px; text-align:center; ">7. Socialize Course</a></li>
+			<li></li>
+           <!--<li><a href="#">Hidden</a></li>-->
+	  </ul>
+
+	
+</div>
+<!--Wizard end  -->    
+ 
+
+<!------------------------------------------------------Associate ------------------------------
+ <div class="associate"  style=" height:1100px;">
+   <div class="definecontainer" style=" float:left;"> -->
+   
+    <div class="content">
+    <link type="text/css" rel="stylesheet" href="dhtmlxGantt/codebase/dhtmlxgantt.css">
+    <script type="text/javascript" language="JavaScript" src="dhtmlxGantt/codebase/dhtmlxcommon.js"></script>
+    <script type="text/javascript" language="JavaScript" src="dhtmlxGantt/codebase/dhtmlxgantt.js"></script>
+     
+     <link rel="stylesheet" type="text/css" href="dhtmlxMenu/codebase/skins/dhtmlxmenu_dhx_skyblue.css">
+	
+	<script type="text/javascript" language="JavaScript" src="dhtmlxMenu/codebase/dhtmlxmenu.js"></script>
+	
+   
+	<script type="text/javascript" language="JavaScript" src="dhtmlxMenu/codebase/ext/dhtmlxmenu_ext.js"></script>
+    
+    </script>
+
+    <script type="text/javascript" language="JavaScript">
+	
+	var ganttChartControl;
+    /*<![CDATA[*/
+    function createChartControl(htmlDiv1)
+    {
+        // Initialize Gantt data structures
+
+        //project 1
+        var project1 = new GanttProjectInfo(1, "Model Thinking", new Date(2012, 5, 11));
+
+        var parentTask1 = new GanttTaskInfo(1, "Why Model Thinking", new Date(2012, 5, 11), 150, 50, "");
+		var childTask2 = new GanttTaskInfo(2, "Why Model", new Date(2012, 5, 14), 20, 40, "");
+		var childTask21 = new GanttTaskInfo(21, "Assignment 1", new Date(2012, 5, 15), 5, 80, "");
+		var childTask211 = new GanttTaskInfo(211, "Chapter 1 Exit Test", new Date(2012, 5, 15), 3, 80, "");
+        
+		parentTask1.addChildTask(childTask2);
+		childTask2.addChildTask(childTask21);
+		childTask21.addChildTask(childTask211);
+		
+		
+        parentTask1.addChildTask(new GanttTaskInfo(13, "Intelligent Citizens of the World", new Date(2012, 5, 21), 15, 30, "2"));
+
+       
+	   var parentTask2 = new GanttTaskInfo(3, "Aggregation", new Date(2012, 5, 30), 80, 80, "1");
+       
+	    parentTask2.addChildTask(new GanttTaskInfo(31, "Six Sigma", new Date(2012, 5, 31), 20, 1, ""));
+       
+	    parentTask2.addChildTask(new GanttTaskInfo(32, "Aggregation", new Date(2012, 6, 7), 8, 10, "31"));
+       
+	    parentTask2.addChildTask(new GanttTaskInfo(33, "Preference Aggregation", new Date(2012, 6, 7), 8, 90, "31"));
+
+		
+		var parentTask3 = new GanttTaskInfo(4, "Decision Models ", new Date(2012, 6, 10), 70, 80, "3");
+      
+		parentTask3.addChildTask(new GanttTaskInfo(41, "Introduction to Decision Making", new Date(2012, 6, 11), 20, 80, ""));
+
+       parentTask3.addChildTask(new GanttTaskInfo(42, "Probability: The Basics", new Date(2012, 6, 14), 30, 100, "41"));
+       
+        project1.addTask(parentTask1);
+        project1.addTask(parentTask2);
+		project1.addTask(parentTask3);
+
+      
+        // Create Gantt control
+       ganttChartControl = new GanttChart();
+        // Setup paths and behavior
+        ganttChartControl.setImagePath("dhtmlxGantt/codebase/imgs/");
+		 ganttChartControl.setStylePath("dhtmlxGantt/codebase/dhtmlxgantt.css");
+        ganttChartControl.setEditable(true);
+        ganttChartControl.showTreePanel(true);
+        ganttChartControl.showContextMenu(true);
+        ganttChartControl.showDescTask(true,'d,s-f');
+        ganttChartControl.showDescProject(true,'n,d');
+		
+		
+		
+		
+		// Sample custom menu
+    var menu = new dhtmlXMenuObject();
+    menu.setIconsPath("dhtmlxMenu/codebase/imgs/dhtmlxmenu_dhx_skyblue");
+    menu.renderAsContextMenu();
+    menu.loadXMLString('<menu><item id="m1" text="Item name placeholder"/><item id="m2" text="Get info"/><item id="m3" text="Delete Task"/></menu>');
+    menu.attachEvent("onClick", function(id){
+        var obj = menu.getUserData("","obj");
+        if (obj) {
+            var o = obj.o;
+            if (obj.type == "p") {
+                alert("Project, id=" + o.getId() + ", name=" + o.getName() + ", start date=" + o.getStartDate() +
+                        ", duration=" + o.getDuration() + "hours, percent complete=" + o.getPercentCompleted() + "%");
+            } else
+            if (obj.type == "t") {
+                if(id=="m3") {
+                    // Handle "Delete Task" menu
+                    if (confirm("Delete task \""+o.getName()+"\"?")) ganttChartControl.getProjectById(1).deleteTask(o.getId());
+                } else
+                    alert("Task, id=" + obj.o.getId() + ", name=" + obj.o.getName() + ", EST=" + obj.o.getEST() +
+                          ", duration=" + o.getDuration() + "hours, percent complete=" + o.getPercentCompleted() + "%" +
+                          ", parentTaskId=" + o.getParentTaskId() + ", pred.taskId=" + o.getPredecessorTaskId());
+            }
+        }
+    });
+    ganttChartControl.setContextMenu(menu);
+    ganttChartControl.attachEvent("onBeforeContextMenu", function(menu,obj) {
+        // Sample of disabling menu for a particular item with Id = 13
+        if (obj.getId()==13) {alert("This task has no menu."); return false;}
+        if (obj.isProject) {
+            // Project menu
+            menu.setItemText("m1", "Project: " + obj.getName());
+            menu.setUserData("","obj",{type:"p",o:obj});
+            menu.setItemDisabled("m3");
+        } else if (obj.isTask) {
+            // Task menu
+            menu.setItemText("m1", "Task: " + obj.getName());
+            menu.setUserData("","obj",{type:"t",o:obj});
+            menu.setItemEnabled("m3");
+        }
+    });
+		
+		
+        // Load data structure		
+        ganttChartControl.addProject(project1);
+      //  ganttChartControl.addProject(project2);
+
+        // Build control on the page
+        ganttChartControl.create(htmlDiv1);
+    }
+    /*]]>*/
+</script>
+    <div style="width:950px; height:620px; position:relative;" id="GanttDiv"></div>
+			
+	<p>
+	<!--  
+<input onclick="ganttChartControl.printToWindow()" type="button" value="Print Planner Chart" style="margin-left:550px">
+-->
+</p>
+</div>
+    <br/>
+    <br/>
+    
+   <a class="btn btn-info f-r"  id="saveBottomAssociate" style="" >Save and Continue</a>  
+        
+  <!-- </div>  
+        
+</div> -->
+  
+<!----------------end of associate ------------------------->   
+
+         
+    
+<!--End Center Container--> 
+      
+  </div>
+    </div>
+    </div>
+  </section>
+  <!--End Main Content--> 
+ <!--Current Progress-->
+<div class="col border-top">
+  <div class="collapse">
+     <h3 class="border-left border-right border-top">Your current progress  [ Starting ... ]</h3>
+         <div>
+        <p class="caption text-size-px18">Your progress this session... </p>
+      </div>
+    </div>
+  </div>
+            
+  <script>
+            $(".collapse").collapse({show: function(){
+                    this.animate({
+                        opacity: 'toggle', 
+                        height: 'toggle'
+                    }, 300);
+                },
+                hide : function() {
+                    
+                    this.animate({
+                        opacity: 'toggle', 
+                        height: 'toggle'
+                    }, 300);
+                }
+            });
+        
+//rating-star	
+$('#edu-star').raty({
+					
+					click		: function(score, evt) {
+						$(this).fadeOut(function() { $(this).fadeIn(); });
+					},
+					targetKeep	: true,
+					path:'images/img/',
+					score		: 4,
+					cancel: true
+				});
+        
+        
+        </script> 
+
+
+  <!--End Current Progress-->
+        <!--Footer Container-->
+	 		<footer>
+      		</footer>
+        <!--End Footer Container-->
+	</div>
+    
+     
+    <script type="text/javascript" src="js/widget/jquery-ui-personalized-1.6rc2.min.js"></script>
+</body>
+</html>
