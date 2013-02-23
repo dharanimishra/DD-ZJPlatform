@@ -80,8 +80,8 @@
 						if (content.getContentType().equals("1")
 								|| content.getContentType().equals("11")) {	
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+videoIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
@@ -89,40 +89,40 @@
 
 						} else if (content.getContentType().equals("2")) {
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+audioIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
 							sb.append("</node>");
 						} else if (content.getContentType().equals("3")) {
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+noteIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
 							sb.append("</node>");
 						} else if (content.getContentType().equals("4")) {
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+pdfIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
 							sb.append("</node>");
 						} else if (content.getContentType().equals("5")) {
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+wordIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
 							sb.append("</node>");
 						} else if (content.getContentType().equals("6")) {
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+pptIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
@@ -130,32 +130,32 @@
 
 						} else if (content.getContentType().equals("7")) {
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+excelIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
 							sb.append("</node>");
 						} else if (content.getContentType().equals("8")) {
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+imageIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
 							sb.append("</node>");
 						} else if (content.getContentType().equals("9")) {
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+linkIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
 							sb.append("</node>");
 						}else{
 							sb.append("<node>");
-							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getParentLearningComponentId()+"_"+content.getContentId()+"</id>");
-							sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
+							sb.append("<id>LCONTENT_"+content.getContentType()+"_"+node.getNestLearningComponentId()+"_"+content.getContentId()+"</id>");
+							sb.append("<parentId>LCOMPONENT_"+node.getNestLearningComponentId()+"</parentId>");
 							sb.append("<title>"+content.getContentname()+"</title>");
 							sb.append("<icon>"+imageIcon+"</icon>");
 							sb.append("<expanded>true</expanded>");
