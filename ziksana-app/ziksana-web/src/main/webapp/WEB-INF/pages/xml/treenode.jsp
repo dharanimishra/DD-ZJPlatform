@@ -27,7 +27,7 @@
 				sb.append("<node>");
 				sb.append("<id>LCOMPONENT_"+node.getId()+"</id>");
 				sb.append("<parentId>COURSE_"+node.getCourseId()+"</parentId>");
-				sb.append("<title>LCOMPONENT_"+node.getTitle()+"</title>");
+				sb.append("<title>"+node.getTitle()+"</title>");
 				sb.append("<icon>"+chapterIcon+"</icon>");
 				sb.append("<expanded>true</expanded>");
 				sb.append("</node>");
@@ -35,7 +35,7 @@
 				sb.append("<node>");
 				sb.append("<id>LCOMPONENT_"+node.getId()+"</id>");
 				sb.append("<parentId>LCOMPONENT_"+node.getParentLearningComponentId()+"</parentId>");
-				sb.append("<title>LCOMPONENT_"+node.getTitle()+"</title>");
+				sb.append("<title>"+node.getTitle()+"</title>");
 				sb.append("<icon>"+chapterIcon+"</icon>");
 				sb.append("<expanded>true</expanded>");
 				sb.append("</node>");	

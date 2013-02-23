@@ -9,7 +9,5 @@
 		<!--<item text="Edit content" img="edit.png" id="Edit"></item> -->
 		<item text="Delete content" img="cross.png"  id="Delete"></item>
 		<item text="Enhance content" img="enhance.png"  id="Enhance"></item>	
-		<item text="Enrich content" img="enrich.png"  id="Enrich"></item>
-	
 </menu>
 

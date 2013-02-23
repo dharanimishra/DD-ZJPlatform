@@ -358,7 +358,7 @@ function createtree(course_id) {
 		console.log(itemId);
 
 		node_type = itemId.split('_')[0];
-		content_type = itemId.split('_')[2];
+		//content_type = itemId.split('_')[2];
 
 		if (node_type == "COURSE") {
 			$('#courseid').val(itemId);
@@ -414,13 +414,7 @@ function createtree(course_id) {
 			menu.showItem('Delete');
 			menu.showItem('View');
 			menu.showItem('Edit');
-			menu.showItem('Enhance');
-			if (content_type != '1' && content_type != '11') {
-				return false;
-			} else { // 1-video and // 11-Enhanced video
-				menu.showItem('Enrich');
-				console.log("Enrich enter :" + content_type);
-			}
+			menu.showItem('Enhance');	
 		}
 		return true;
 	});
@@ -432,7 +426,7 @@ function createtree(course_id) {
 	// tree.loadXML("/ziksana-web/resources/js/ziksana/jquerylibrary/tree/xml/treemodel.xml");
 	// tree.loadXML("/ziksana-web/secure/getchildtree/150");
 	courseId = course_id.split('_')[1];
-	tree.loadXML("/ziksana-web/secure/getenrichtree/" + courseId);
+	tree.loadXML("/ziksana-web/secure/getchildtree/" + courseId);
 
 }
 

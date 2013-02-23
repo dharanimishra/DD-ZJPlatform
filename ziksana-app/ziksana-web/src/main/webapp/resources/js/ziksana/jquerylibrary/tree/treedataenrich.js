@@ -253,7 +253,7 @@ function createtree(course_id) {
 	menu.renderAsContextMenu();
 	menu.attachEvent("onClick", onButtonClick);
 	menu
-			.loadXML("/ziksana-web/resources/js/ziksana/jquerylibrary/tree/xml/_contextassociate.xml");
+			.loadXML("/ziksana-web/resources/js/ziksana/jquerylibrary/tree/xml/_contextenrich.xml");
 
 	tree = new dhtmlXTreeObject("treeboxbox_tree", "100%", "100%", 0);
 	tree.setSkin('dhx_skyblue');
