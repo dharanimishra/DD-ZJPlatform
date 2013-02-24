@@ -50,7 +50,7 @@
 									+ "\" id=\"CONTENT_"
 									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"+ content.getContentId()
-									+ " contenttype="+content.getContentType()+" parentId=\"COMPONENT_"+ node.getParentLearningComponentId()
+									+ " parentId=\"COMPONENT_"+ node.getParentLearningComponentId()
 									+ "\"></item>");
 							
 						} else if (content.getContentType().equals("2")) {
@@ -177,7 +177,7 @@
 									+ "\" im2=\"" + videoIcon
 									+ "\" id=\"CONTENT_"
 									+ content.getContentId()+"_"+content.getContentType()
-									+ "\" nodeid=\"CONTENT_"+ content.getContentId()+"_"+content.getContentType()+"\"  contenttype=\""+content.getContentType()+"\" parentId=\"COMPONENT_"
+									+ "\" nodeid=\"CONTENT_"+ content.getContentId()+"_"+content.getContentType()+"\"  parentId=\"COMPONENT_"
 									+ node.getParentLearningComponentId()
 									+ "\"></item>");
 						} else if (content.getContentType().equals("2")) {
