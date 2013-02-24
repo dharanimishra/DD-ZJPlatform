@@ -50,9 +50,7 @@
 									+ "\" id=\"CONTENT_"
 									+ content.getContentId()
 									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId() + " contenttype="
-									+ content.getContentType()
-									+ " parentId=\"COMPONENT_"
+									+ content.getContentId() + "\"  parentId=\"COMPONENT_"
 									+ node.getParentLearningComponentId()
 									+ "\"></item>");
 
@@ -183,9 +181,7 @@
 									+ content.getContentType()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
-									+ "\"  contenttype=\""
-									+ content.getContentType()
-									+ "\" parentId=\"COMPONENT_"
+									+ "\"   parentId=\"COMPONENT_"
 									+ node.getParentLearningComponentId()
 									+ "\"></item>");
 						} else if (content.getContentType().equals("2")) {
