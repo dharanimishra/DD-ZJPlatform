@@ -4,7 +4,7 @@ function playVideo(path) {
 
 		'width' : 660,
 
-		'height' : 500,
+		'height' : 600,
 
 		'autoDimensions' : true,
 
@@ -89,7 +89,7 @@ function displayImageSet(path) {
 
 		'width' : 800,
 
-		'height' : 600,
+		'height' : 800,
 
 		'autoDimensions' : true,
 
