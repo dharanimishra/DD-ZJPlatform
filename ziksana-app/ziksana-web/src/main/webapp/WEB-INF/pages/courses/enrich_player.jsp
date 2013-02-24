@@ -218,7 +218,8 @@
 				
 					row_to_delete = delete_icon.parents('tr');
 					content_id = delete_icon.attr('data-id');
-					$.post('/ziksana-web/secure/deleteEducatorContent', {eduContentEnrichId: content_id}, function(data){
+					content_type = delete_icon.attr('data-type');
+					$.post('/ziksana-web/secure/deleteEducatorContent', {eduContentEnrichId: content_id, contentType: content_type}, function(data){
 						if(data == 1){//row is successfully deleted
 							//go ahead and remove the row.
 							//row_to_delete.remove();
