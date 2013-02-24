@@ -51,7 +51,7 @@
 									+ content.getContentId()
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId() + "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("2")) {
@@ -64,7 +64,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("3")) {
@@ -77,7 +77,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("4")) {
@@ -90,7 +90,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("5")) {
@@ -103,7 +103,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("6")) {
@@ -116,7 +116,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("7")) {
@@ -129,7 +129,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("8")) {
@@ -142,7 +142,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("9")) {
@@ -155,7 +155,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						}
@@ -182,7 +182,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"   parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 						} else if (content.getContentType().equals("2")) {
 							sb.append("<item text=\""
@@ -194,7 +194,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("3")) {
@@ -207,7 +207,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("4")) {
@@ -220,7 +220,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("5")) {
@@ -233,7 +233,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("6")) {
@@ -246,7 +246,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("7")) {
@@ -259,7 +259,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("8")) {
@@ -272,7 +272,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("9")) {
@@ -285,7 +285,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						}

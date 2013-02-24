@@ -18,6 +18,7 @@
  %> </item> </tree>
 
 <%!public String printTree(List<NestTreeNode> parents) {
+	
 		StringBuffer sb = new StringBuffer();
 		String chapterIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/chapter.png";
 		String videoIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/video.png";
@@ -50,7 +51,7 @@
 									+ "\" id=\"CONTENT_"
 									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"+ content.getContentId()
-									+ " parentId=\"COMPONENT_"+ node.getParentLearningComponentId()
+									+ "\" parentId=\"COMPONENT_"+ node.getNestLearningComponentId()
 									+ "\"></item>");
 							
 						} else if (content.getContentType().equals("2")) {
@@ -63,7 +64,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("3")) {
@@ -76,7 +77,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("4")) {
@@ -89,7 +90,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("5")) {
@@ -102,7 +103,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("6")) {
@@ -115,7 +116,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("7")) {
@@ -128,7 +129,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("8")) {
@@ -141,7 +142,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("9")) {
@@ -154,7 +155,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						}
@@ -178,7 +179,7 @@
 									+ "\" id=\"CONTENT_"
 									+ content.getContentId()+"_"+content.getContentType()
 									+ "\" nodeid=\"CONTENT_"+ content.getContentId()+"_"+content.getContentType()+"\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 						} else if (content.getContentType().equals("2")) {
 							sb.append("<item text=\""
@@ -190,7 +191,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("3")) {
@@ -203,7 +204,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("4")) {
@@ -216,7 +217,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("5")) {
@@ -229,7 +230,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("6")) {
@@ -242,7 +243,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("7")) {
@@ -255,7 +256,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("8")) {
@@ -268,7 +269,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						} else if (content.getContentType().equals("9")) {
@@ -281,7 +282,7 @@
 									+ "\" nodeid=\"CONTENT_"
 									+ content.getContentId()
 									+ "\"  parentId=\"COMPONENT_"
-									+ node.getParentLearningComponentId()
+									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
 						}
