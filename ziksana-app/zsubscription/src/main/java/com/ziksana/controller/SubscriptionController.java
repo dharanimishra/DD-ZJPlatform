@@ -427,21 +427,19 @@ public class SubscriptionController {
 						for (EducatorContent toc : tocList) {
 							if (toc.getParentId() > 0) {
 								List<EducatorContent> tocList1 = subscriptionService
-										.getEducatorTOCByParentEnrichId(educatorContent
-												.getParentId());
+										.getEducatorTOCByParentEnrichId(toc.getParentId());
 								try {
 									for (EducatorContent toc1 : tocList1) {
 										try {
 											if (toc1.getParentId() > 0) {
 												List<EducatorContent> tocList2 = subscriptionService
-														.getEducatorTOCByParentEnrichId(educatorContent
-																.getParentId());
+														.getEducatorTOCByParentEnrichId(toc1.getParentId());
 
 												for (EducatorContent toc2 : tocList2) {
 													if (toc2.getParentId() > 0) {
 														response = subscriptionService
 																.deleteEducatorContent(toc2
-																		.getId());
+																		.getParentId());
 														logger.info("Class :"
 																+ getClass()
 																+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent response"
