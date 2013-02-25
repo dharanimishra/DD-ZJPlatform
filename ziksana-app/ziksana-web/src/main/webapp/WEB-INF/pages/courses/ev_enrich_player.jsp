@@ -215,7 +215,7 @@ function secondsToHms(d) {
 
 			}
 			
-			var delete_educator_content = function(delete_icon){
+var delete_educator_content = function(delete_icon){
 				
 				confirm_delete = confirm('Are you sure you want to delete this?');
 				
@@ -223,8 +223,9 @@ function secondsToHms(d) {
 				
 					row_to_delete = delete_icon.parents('tr');
 					content_id = delete_icon.attr('data-id');
-					content_type = delete_icon.attr('data-type');
-					$.post('/ziksana-web/secure/deleteEducatorContent', {eduContentEnrichId: content_id, contentType: content_type}, function(data){
+					content_type = delete_icon.next('span').attr('data-type');
+					console.log("content_type :"+content_type);
+					$.post('/ziksana-web/secure/deleteEducatorContent', {"eduContentEnrichId": content_id, "contentType": content_type}, function(data){
 						if(data == 1){//row is successfully deleted
 							//go ahead and remove the row.
 							//row_to_delete.remove();
