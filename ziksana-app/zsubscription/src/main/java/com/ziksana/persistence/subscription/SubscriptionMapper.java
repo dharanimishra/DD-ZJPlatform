@@ -36,15 +36,14 @@ public interface SubscriptionMapper {
 			@Param("subscrCourseId") Integer subscrCourseId,
 			@Param("learnCompId") Integer learnCompId,
 			@Param("learnCmpContId") Integer learnCmpContId);
-	//getAllEducatorContent
-	
+
+	// getAllEducatorContent
+
 	public List<EducatorContent> getAllEducatorContent(
 			@Param("memberRoleId") Integer memberRoleId,
 			@Param("subscrCourseId") Integer subscrCourseId,
 			@Param("learnCompId") Integer learnCompId,
 			@Param("learnCmpContId") Integer learnCmpContId);
-	
-	
 
 	public List<Reference> getEducatorReferences(
 			@Param("contentType") Integer contentType,
@@ -59,17 +58,13 @@ public interface SubscriptionMapper {
 			@Param("subscrCourseId") Integer subscrCourseId,
 			@Param("learnCompId") Integer learnCompId,
 			@Param("learnCmpContId") Integer learnCmpContId);
-	
-	
+
 	public List<Hotspot> getEducatorHotspots(
 			@Param("contentType") Integer contentType,
 			@Param("memberRoleId") Integer memberRoleId,
 			@Param("subscrCourseId") Integer subscrCourseId,
 			@Param("learnCompId") Integer learnCompId,
 			@Param("learnCmpContId") Integer learnCmpContId);
-	
-	
-	
 
 	public List<Note> getContentByType(
 			@Param("subscrCourseId") Integer subscrCourseId,
@@ -93,38 +88,34 @@ public interface SubscriptionMapper {
 	public List<Course> getCoursesByLearningProgram(
 			@Param("memberRoleId") Integer memberRoleId,
 			@Param("learningProgramId") Integer learningProgramId);
-	
+
 	public List<Course> getThreeCoursesByLearningProgram(
 			@Param("memberRoleId") Integer memberRoleId,
 			@Param("learningProgramId") Integer learningProgramId);
 
 	public Integer addEducatorContent(
 			@Param("memberRoleId") Integer memberRoleId,
-			@Param("type") Integer type, 
+			@Param("type") Integer type,
 			@Param("learningCompId") Integer learningCompId,
 			@Param("learningContId") Integer learningContId,
 			@Param("courseId") Integer courseId,
-			@Param("description") String description,
-			@Param("url") String url, 
+			@Param("description") String description, @Param("url") String url,
 			@Param("coordinates") String coordinates,
-			@Param("duration") Integer duration,
-			@Param("title") String title,
-			@Param("parentId") Integer parentId
-			);
-	
-	public int editEducatorContent(
-			@Param("contentEnrId") Integer contentEnrId, 
-			@Param("description") String contentDesc,
-			@Param("url")  String url, 
-			@Param("coordinates") String coordinates, 
-			@Param("duration") Integer duration, 
-			@Param("title") String title,
-			@Param("parentId") Integer parentId
-			);
-	
-	
-	
+			@Param("duration") Integer duration, @Param("title") String title,
+			@Param("parentId") Integer parentId);
+
+	public int editEducatorContent(@Param("contentEnrId") Integer contentEnrId,
+			@Param("description") String contentDesc, @Param("url") String url,
+			@Param("coordinates") String coordinates,
+			@Param("duration") Integer duration, @Param("title") String title,
+			@Param("parentId") Integer parentId);
+
 	public LearningContent getLinkedLearningContent(Integer learningContentId);
-	
-	
+
+	public EducatorContent getEducatorTOCByContentEnrichId(
+			@Param("eduContentEnrichId") Integer eduContentEnrichId);
+
+	public List<EducatorContent> getEducatorTOCByParentEnrichId(
+			@Param("parentEnrichId") Integer parentEnrichId);
+
 }

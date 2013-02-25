@@ -310,4 +310,20 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		return subscriptionMapper.getLinkedLearningContent(learningContentId);
 	}
 
+	@Override
+	public EducatorContent getEducatorTOCByContentEnrichId(
+			Integer eduContentEnrichId) {
+		EducatorContent educatorContent = subscriptionMapper
+				.getEducatorTOCByContentEnrichId(eduContentEnrichId);
+		return educatorContent;
+	}
+
+	@Override
+	public List<EducatorContent> getEducatorTOCByParentEnrichId(
+			Integer parentEnrichId) {
+		List<EducatorContent> educatorContentList = subscriptionMapper
+				.getEducatorTOCByParentEnrichId(parentEnrichId);
+		return educatorContentList;
+	}
+
 }

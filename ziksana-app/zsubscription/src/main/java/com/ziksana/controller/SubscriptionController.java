@@ -45,12 +45,12 @@ public class SubscriptionController {
 
 	@Autowired
 	ContentService contentService;
-	
+
 	@Autowired
 	MediaService mediaService;
 
 	MediaServerURL mediaServerURL = new MediaServerURL();
-	
+
 	@RequestMapping(value = "/getLearnerNotes", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Note> showLearnerNotes(
@@ -373,10 +373,82 @@ public class SubscriptionController {
 	@RequestMapping(value = "/deleteEducatorContent", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer deleteEducatoContent(
-			@RequestParam(value = "eduContentEnrichId", required = true) String eduContentEnrichId) {
+			@RequestParam(value = "eduContentEnrichId", required = true) String eduContentEnrichId,
+			@RequestParam(value = "contentType", required = false) String contentType) {
+		Integer response = 0, enrichId = 0, linkType = 0;
 
-		return Integer.valueOf(subscriptionService
-				.deleteEducatorContent(Integer.valueOf(eduContentEnrichId)));
+		logger.debug("Entering Class :"
+				+ getClass()
+				+ " Method Name :deleteEducatorContent(String deleteEducatorContent,String contentType): eduContentEnrichId"
+				+ eduContentEnrichId + "contentType" + contentType);
+
+		try {
+			enrichId = Integer.parseInt(eduContentEnrichId);
+			logger.info("Class :"
+					+ getClass()
+					+ "Method deleteEducatorContent(eduContentEnrichId):enrichId"
+					+ enrichId);
+		} catch (NumberFormatException nfe) {
+			logger.error("Class :"
+					+ getClass()
+					+ "Method deleteEducatorContent(eduContentEnrichId):NumberFormatException"
+					+ nfe);
+		}
+
+		try {
+			if (contentType.equalsIgnoreCase("TOC")) {
+				linkType = 7;
+				logger.info("Class :"
+						+ getClass()
+						+ "Method deleteEducatorContent(eduContentEnrichId):linkType"
+						+ linkType);
+			}
+
+		} catch (Exception e) {
+			linkType = 0;
+			logger.error("Class :"
+					+ getClass()
+					+ "Method deleteEducatorContent(eduContentEnrichId):linkType"
+					+ linkType);
+		}
+		if (linkType == 7) {
+			enrichId = Integer.parseInt(eduContentEnrichId);
+			EducatorContent educatorContent = subscriptionService
+					.getEducatorTOCByContentEnrichId(enrichId);
+			logger.info("Class :"
+					+ getClass()
+					+ "Method Name :deleteEducatorContent(eduContentEnrichId):enrichId"
+					+ enrichId);
+			try {
+				if (educatorContent.getParentId() > 0) {
+					List<EducatorContent> list = subscriptionService
+							.getEducatorTOCByParentEnrichId(educatorContent
+									.getParentId());
+					for (EducatorContent content : list) {
+						response = subscriptionService
+								.deleteEducatorContent(content.getId());
+						logger.info("Class :"
+								+ getClass()
+								+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List"
+								+ content);
+					}
+				}
+			} catch (Exception e) {
+				logger.info("Class :"
+						+ getClass()
+						+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List Exception :"
+						+ e);
+			}
+			response = subscriptionService.deleteEducatorContent(enrichId);
+		} else {
+			response = subscriptionService.deleteEducatorContent(enrichId);
+		}
+		logger.debug("Exiting Class :"
+				+ getClass()
+				+ " Method Name :deleteEducatorContent(String deleteEducatorContent,String contentType): eduContentEnrichId"
+				+ eduContentEnrichId + "contentType" + contentType);
+
+		return response;
 
 	}
 
@@ -393,7 +465,8 @@ public class SubscriptionController {
 
 		return Integer.valueOf(subscriptionService.editEducatorContent(
 				Integer.valueOf(eduContentEnrichId), noteDescription, url,
-				coordinates, Integer.valueOf(noteDuration), noteTitle,Integer.valueOf(parentId)));
+				coordinates, Integer.valueOf(noteDuration), noteTitle,
+				Integer.valueOf(parentId)));
 
 	}
 

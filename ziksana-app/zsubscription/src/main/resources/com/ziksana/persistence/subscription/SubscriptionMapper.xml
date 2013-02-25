@@ -11,7 +11,8 @@
 		select
 		program.*
 		from
-		sbnmembersubscriptionprogram subpgm join
+		sbnmembersubscriptionprogram subpgm
+		join
 		corlearningprogram program ON
 		subpgm.LearningProgramId=program.ID
 		where
@@ -25,7 +26,8 @@
 
 
 
-	<select id="getLinkedLearningContent" resultMap="lcResultMap" parameterType="java.lang.Integer">
+	<select id="getLinkedLearningContent" resultMap="lcResultMap"
+		parameterType="java.lang.Integer">
 
 		select link.ID, link.ContentName,link.ContentPath
 		from
@@ -47,14 +49,17 @@
 		course.Description
 		from
 		sbnmembersubscriptionprogram sbnpgm
-		JOIN sbnsubscriptioncourse
+		JOIN
+		sbnsubscriptioncourse
 		subcourse ON
 		sbnpgm.ID=subcourse.MemSubscriptionProgId
 		JOIN
-		corcurriculumcourse curcourse ON
+		corcurriculumcourse
+		curcourse ON
 		subcourse.CurriculumCourseId=curcourse.ID
 		JOIN
-		corcourse course ON
+		corcourse
+		course ON
 		curcourse.CourseId=course.ID
 		where
 		sbnpgm.MemberRoleId=#{memberRoleId}
@@ -66,7 +71,7 @@
 	</select>
 
 
-<select id="getThreeCoursesByLearningProgram" resultMap="courseResultMap"
+	<select id="getThreeCoursesByLearningProgram" resultMap="courseResultMap"
 		parameterType="map">
 
 
@@ -76,19 +81,23 @@
 		course.Description
 		from
 		sbnmembersubscriptionprogram sbnpgm
-		JOIN sbnsubscriptioncourse
+		JOIN
+		sbnsubscriptioncourse
 		subcourse ON
 		sbnpgm.ID=subcourse.MemSubscriptionProgId
 		JOIN
-		corcurriculumcourse curcourse ON
+		corcurriculumcourse
+		curcourse ON
 		subcourse.CurriculumCourseId=curcourse.ID
 		JOIN
-		corcourse course ON
+		corcourse
+		course ON
 		curcourse.CourseId=course.ID
 		where
 		sbnpgm.MemberRoleId=#{memberRoleId}
 		and
-		sbnpgm.LearningProgramId=#{learningProgramId} order by course.CreationDate DESC LIMIT 0, 3
+		sbnpgm.LearningProgramId=#{learningProgramId} order by
+		course.CreationDate DESC LIMIT 0, 3
 
 
 
@@ -307,7 +316,8 @@
 		corcontentenrichment
 		cntenr
 		JOIN
-		corenrichment enr ON
+		corenrichment
+		enr ON
 		cntenr.enrichmentid= enr.enrichmentId
 		JOIN
 		sbnsubscriptioncourse
@@ -317,8 +327,9 @@
 		sbnmembersubscriptionprogram subprgm ON
 		sbncourse.MemSubscriptionProgId=subprgm.id
 		where
-		cntenr.LinkType = 7 AND enr.CourseId=#{subscrCourseId}
-	
+		cntenr.LinkType = 7 AND
+		enr.CourseId=#{subscrCourseId}
+
 		and
 		enr.LearningComponentId=#{learnCompId} and
 		enr.LearningContentId=#{learnCmpContId} and
@@ -407,7 +418,7 @@
 		enrichmentid)
 		values(#{type},#{description} ,#{url} ,
 		#{coordinates},#{duration},#{title},#{parentId},
-		 (select enrichmentid
+		(select enrichmentid
 		from
 		corenrichment
 		where
@@ -432,7 +443,8 @@
 	</delete>
 
 	<delete id="deleteEducatorContent" parameterType="java.lang.Integer">
-		delete from corcontentenrichment where id=#{contentId}
+		delete from
+		corcontentenrichment where id=#{contentId}
 	</delete>
 
 
@@ -449,7 +461,8 @@
 
 	<update id="editEducatorContent" parameterType="map">
 
-		update corcontentenrichment
+		update
+		corcontentenrichment
 		set uri=#{url},
 		duration=#{duration},
 		coordinates=#{coordinates},
@@ -483,7 +496,7 @@
 		<result property="url" column="uri" />
 		<result property="duration" column="duration" />
 		<result property="coordinates" column="coordinates" />
-        <result property="parentId" column="parentContent" />
+		<result property="parentId" column="parentContent" />
 
 
 	</resultMap>
@@ -523,7 +536,7 @@
 
 		<result property="title" column="LinkElement" />
 		<result property="duration" column="duration" />
-		
+
 
 	</resultMap>
 
@@ -542,23 +555,36 @@
 
 		<result property="courseId" column="courseid" />
 		<result property="coursesId" column="courseid" />
-		
+
 		<result property="name" column="name" />
 		<result property="description" column="description" />
 
 
 	</resultMap>
-	
-	
-	<resultMap type="com.ziksana.domain.course.LearningContent" id="lcResultMap">
-	    
-	    <result property="learningContentId" column="ID" />
-	    <result property="contentPath"  column="ContentPath" />
-	    <result property="contentName"  column="ContentName" />
-	    
-	 </resultMap>   
 
 
+	<resultMap type="com.ziksana.domain.course.LearningContent"
+		id="lcResultMap">
+
+		<result property="learningContentId" column="ID" />
+		<result property="contentPath" column="ContentPath" />
+		<result property="contentName" column="ContentName" />
+
+	</resultMap>
+
+	<select id="getEducatorTOCByContentEnrichId" resultMap="educatorContentResultMap"
+		parameterType="map">
+		select * from corcontentenrichment where
+		id=#{eduContentEnrichId} and LinkType = 7
+
+	</select>
+
+	<select id="getEducatorTOCByParentEnrichId" resultMap="educatorContentResultMap"
+		parameterType="map">
+		select * from corcontentenrichment where
+		parentContent=#{parentEnrichId} and LinkType = 7
+
+	</select>
 
 
 </mapper>

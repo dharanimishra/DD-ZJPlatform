@@ -36,32 +36,27 @@ public interface SubscriptionService {
 	 */
 	public List<EducatorNote> getEducatorContent(SubscriptionCourse course,
 			Node node, Integer contentType);
-	
-	
-	
 
 	public List<EducatorNote> getEducatorNotes(Integer courseId, Node node);
-	
-	
-	
-	public List<EducatorContent> getAllEducatorContent(Integer courseId, Node node);
+
+	public List<EducatorContent> getAllEducatorContent(Integer courseId,
+			Node node);
 
 	public List<Reference> getEducatorSuggestedReferences(Integer courseId,
 			Node node);
 
 	public List<ContentReference> getContentTOC(Integer courseId, Node node);
-	
+
 	public List<Hotspot> getEducatorHotspots(Integer courseId, Node node);
-	
 
 	public Integer addEducatorContent(Integer courseId, Integer componentId,
 			Integer contentId, Integer contentType, String contentDesc,
-			String url, String coordinates, Integer duration, String title,Integer parentId);
-	
-	
+			String url, String coordinates, Integer duration, String title,
+			Integer parentId);
+
 	public int editEducatorContent(Integer contentEnrId, String contentDesc,
-			String url, String coordinates, Integer duration, String title, Integer parentId);
-	
+			String url, String coordinates, Integer duration, String title,
+			Integer parentId);
 
 	public int deleteEducatorContent(Integer contentEnrId);
 
@@ -115,13 +110,19 @@ public interface SubscriptionService {
 	 * @return
 	 */
 	public List<Course> getCoursesByLearningProgram(Integer learningProgramId);
-	
+
 	/**
 	 * It returns the linked learning content for the given learning content id
+	 * 
 	 * @param learningContentId
 	 * @return
 	 */
 	public LearningContent getLinkedLearningContent(Integer learningContentId);
-	
+
+	public EducatorContent getEducatorTOCByContentEnrichId(
+			Integer eduContentEnrichId);
+
+	public List<EducatorContent> getEducatorTOCByParentEnrichId(
+			Integer eduContentEnrichId);
 
 }
