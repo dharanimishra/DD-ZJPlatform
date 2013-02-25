@@ -420,10 +420,9 @@ public class SubscriptionController {
 					+ "Method Name :deleteEducatorContent(eduContentEnrichId):enrichId"
 					+ enrichId);
 			try {
-				if (educatorContent.getParentId() > 0) {
+				if (enrichId > 0) {
 					List<EducatorContent> tocList = subscriptionService
-							.getEducatorTOCByParentEnrichId(educatorContent
-									.getParentId());
+							.getEducatorTOCByParentEnrichId(enrichId);
 					try {
 						for (EducatorContent toc : tocList) {
 							if (toc.getParentId() > 0) {
@@ -450,34 +449,39 @@ public class SubscriptionController {
 													}
 												}
 											}
+
+											response = subscriptionService.deleteEducatorContent(toc1.getId());
+											logger.info("Class :"
+													+ getClass()
+													+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:toc1 response"
+													+ response);
 										} catch (Exception e) {
 											logger.info("Class :"
 													+ getClass()
 													+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List"
-													+ toc);
+													+ toc1);
 										}
-										response = subscriptionService
-												.deleteEducatorContent(toc1
-														.getId());
+										response = subscriptionService.deleteEducatorContent(toc1.getId());
+
+										logger.info("Class :"
+												+ getClass()
+												+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent response"
+												+ response);
 									}
 
-									logger.info("Class :"
-											+ getClass()
-											+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List"
-											+ toc);
 								} catch (Exception e) {
 									logger.info("Class :"
 											+ getClass()
 											+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List"
 											+ e);
 								}
+								response = subscriptionService.deleteEducatorContent(toc.getId());
+								logger.info("Class :"
+										+ getClass()
+										+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:toc :response"
+										+ response);
 							}
-							response = subscriptionService
-									.deleteEducatorContent(toc.getId());
-							logger.info("Class :"
-									+ getClass()
-									+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent response"
-									+ response);
+							
 						}
 
 					} catch (Exception e) {

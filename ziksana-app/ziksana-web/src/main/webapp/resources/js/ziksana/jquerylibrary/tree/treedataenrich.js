@@ -179,7 +179,9 @@ function onButtonClick(menuitemId, type) {
 		var node_id = tree.getSelectedItemId();
 
 		node_type = node_id.split('_')[0];
-		content_type_id = 1;
+		content_type_id = node_id.split('_')[2];
+		
+		console.log("content_type_id in player :"+content_type_id);
 
 		if (node_type == "CONTENT") {
 			// content_id = node_id.split('_')[3];
@@ -281,6 +283,7 @@ function createtree(course_id) {
 		node_type = itemId.split('_')[0];
 		content_type = itemId.split('_')[2];
 		console.log("contenttype: " + content_type);
+		
 		if (node_type == "COURSE") {
 			$('#courseid').val(itemId);
 		}

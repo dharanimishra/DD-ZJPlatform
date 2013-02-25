@@ -574,15 +574,13 @@
 
 	<select id="getEducatorTOCByContentEnrichId" resultMap="educatorContentResultMap"
 		parameterType="map">
-		select * from corcontentenrichment where
-		id=#{eduContentEnrichId} and LinkType = 7
+		select * from corcontentenrichment where id=#{eduContentEnrichId} and LinkType = 7
 
 	</select>
 
 	<select id="getEducatorTOCByParentEnrichId" resultMap="educatorContentResultMap"
 		parameterType="map">
-		select * from corcontentenrichment where
-		parentContent=#{parentEnrichId} and LinkType = 7
+		select * from corcontentenrichment where parentContent=#{parentEnrichId} and LinkType = 7
 
 	</select>
 
