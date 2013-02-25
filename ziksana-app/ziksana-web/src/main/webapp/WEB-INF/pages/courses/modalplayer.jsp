@@ -9,7 +9,7 @@
 
 
 <style type="text/css">
-body{min-width: 490px; min-height: 270px; background: white;}
+body{min-width: 490px; min-height: 270px; background: white; overflow:hidden !important;}
 </style>
 	<script type="text/javascript">
 		function getQueryVariable(variable) {
@@ -25,7 +25,7 @@ body{min-width: 490px; min-height: 270px; background: white;}
 		}
 
 		$(function(){
-
+			
 			jwplayer("lbmediaplayer").setup({
 				flashplayer: "/ziksana-web/resources/jwplayer/player.swf",
 				height: 385,

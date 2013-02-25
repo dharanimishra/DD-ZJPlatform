@@ -221,7 +221,7 @@
 					content_type = delete_icon.next('span').attr('data-type');
 					console.log("content_type :"+content_type);
 					$.post('/ziksana-web/secure/deleteEducatorContent', {"eduContentEnrichId": content_id, "contentType": content_type}, function(data){
-						if(data == 1){//row is successfully deleted
+					//if(data == 1){//row is successfully deleted
 							//go ahead and remove the row.
 							//row_to_delete.remove();
 						
@@ -234,7 +234,7 @@
 							get_all_educator_content(course_id, component_id, node_id);
 	
 							
-						}
+					//	}
 						
 					});
 				

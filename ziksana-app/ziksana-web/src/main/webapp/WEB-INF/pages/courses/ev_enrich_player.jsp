@@ -141,7 +141,7 @@ function secondsToHms(d) {
 			
 			var prepare_to_update_educator_content = function(edit_icon){
 				
-				jwplayer(reftoplayer).pause(true); //pause jwplayer
+				//jwplayer(reftoplayer).pause(true); //pause jwplayer
 
 				enrich_id = edit_icon.attr('data-id');
 				duration = edit_icon.attr('data-duration');
@@ -226,7 +226,7 @@ var delete_educator_content = function(delete_icon){
 					content_type = delete_icon.next('span').attr('data-type');
 					console.log("content_type :"+content_type);
 					$.post('/ziksana-web/secure/deleteEducatorContent', {"eduContentEnrichId": content_id, "contentType": content_type}, function(data){
-						if(data == 1){//row is successfully deleted
+						//if(data == 1){//row is successfully deleted
 							//go ahead and remove the row.
 							//row_to_delete.remove();
 						
@@ -239,7 +239,7 @@ var delete_educator_content = function(delete_icon){
 							get_all_educator_content(course_id, component_id, node_id);
 	
 							
-						}
+						//}
 						
 					});
 				

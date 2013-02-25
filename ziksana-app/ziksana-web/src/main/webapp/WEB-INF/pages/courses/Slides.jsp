@@ -11,13 +11,13 @@
     
         <style type="text/css" media="screen">
 .slides_container {
-  height: 487px;
+  height: 800px;
   margin: 0 auto;
   width: 696px;
 }
             .slides_container div {
                 width:696px;
-                height:487px;
+                height:800px;
                 display:block;
                 overflow: auto;
             }
