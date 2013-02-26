@@ -127,28 +127,12 @@ overflow-y:hidden;
 
 </style>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$(".signin1").click(function(e) {
-			e.preventDefault();
-			
-			$("fieldset#signin_menu").toggle();
-			$(".signin1").toggleClass("menu-open");
-		});
-
-		$("fieldset#signin_menu").mouseup(function() {
-			return false
-		});
-		$(document).mouseup(function(e) {
-			if ($(e.target).parent("a.signin").length == 0) {
-				$(".signin1").removeClass("menu-open");
-				$("fieldset#signin_menu").hide();
-			}
-		});
-
-		//Fetch course details and populate the form
-		getCourse();
-
-	});
+function sign_menuopen()
+{
+	$("fieldset#signin_menu").toggle();
+	$(".signin").toggleClass("menu-open");
+	}
+	
 </script>
 </head>
 
@@ -199,7 +183,7 @@ overflow-y:hidden;
             </div>
              <div class="account-container two-bottom-rounded-box">
               <div class="container">
-                <div class="topnav" ><a href="#" class="signin1 wite bold"><span class="text-size-px12 wite bold">My Account</span></a> </div>
+                <div class="topnav" ><a onclick="sign_menuopen()" class="signin wite bold"><span class="text-size-px12 wite bold">My Account</span></a> </div>
                 <fieldset id="signin_menu">
                  <ul>
                    <li><a href="#">Preferences</a></li>

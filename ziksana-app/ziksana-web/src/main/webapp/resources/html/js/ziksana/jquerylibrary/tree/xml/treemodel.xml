@@ -1,7 +1,7 @@
 
 <?xml version="1.0" encoding="utf-8"?>
 <tree id="0">
-	<item text="Model Thinking" id="Model Thinking" im0="Tree.png" im1="Tree.png" im2="Tree.png" call="1" open="1" select="1">
+	<item text="Model Thinking" id="Model Thinking" im0="tree.png" im1="tree.png" im2="tree.png" call="1" open="1" select="1">
 		<item text="Why Model Thinking" im0="notesIcon.png" im1="notesIcon.png" im2="notesIcon.png" id="Child Why Model Thinking">
 		<item text = "Why Model" im0="ppt.png" im1="ppt.png" im2="ppt.png" id="ppt Why Model"/>
 		<item text = "Intelligent Citizens of The World" im0="pdf.png" im1="pdf.png" im2="pdf.png" id="pdf Intelligent Citizens of The world"/>
