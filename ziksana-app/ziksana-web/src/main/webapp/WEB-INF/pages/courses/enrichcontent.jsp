@@ -14,6 +14,7 @@
 	rel="stylesheet" type="text/css" />
 <link href="/ziksana-web/resources/css/main/nav.css" rel="stylesheet"
 	type="text/css" />
+
 <link
 	href="/ziksana-web/resources/css/common/wizard/wizardstylesheet.css"
 	rel="stylesheet" type="text/css" />
@@ -130,29 +131,7 @@ $(".containerTableStyle").css('overflow','auto');
 
 });
 </script> 
-<script type="text/javascript">
-	$(document).ready(function() {
-		
-		
-		 
-		$(".signin").click(function(e) {
-			e.preventDefault();
-			$("fieldset#signin_menu").toggle();
-			$(".signin").toggleClass("menu-open");
-		});
 
-		$("fieldset#signin_menu").mouseup(function() {
-			return false
-		});
-		$(document).mouseup(function(e) {
-			if ($(e.target).parent("a.signin").length == 0) {
-				$(".signin").removeClass("menu-open");
-				$("fieldset#signin_menu").hide();
-			}
-		});
-
-	});
-</script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		jQuery("#Associatequalifier").validationEngine();
@@ -294,7 +273,7 @@ span.standartTreeRow:hover {
 					<div class="account-container two-bottom-rounded-box">
 						<div class="container">
 							<div class="topnav">
-								<a class="signin wite bold"><span
+								<a class="signin wite bold" onclick="signin_menu_open()"><span
 									class="text-size-px12 wite bold">My Account</span></a>
 							</div>
 							<fieldset id="signin_menu">
@@ -480,6 +459,10 @@ span.standartTreeRow:hover {
 				score : 4,
 				cancel : true
 			});
+			function signin_menu_open(){
+				$("fieldset#signin_menu").toggle();
+				$(".signin").toggleClass("menu-open");
+			}
 		</script>
 
 
