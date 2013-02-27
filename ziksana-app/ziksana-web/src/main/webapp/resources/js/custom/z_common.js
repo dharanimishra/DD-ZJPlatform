@@ -26,6 +26,22 @@ $(function(){
 		return false; 
 	});
 
+//start row highlight
+	$('table.row_highlight tr').live('click', function(){
+		tr = $(this);
+		parent_table = tr.parents('table');
+		
+		parent_table.find('tr').removeClass('highlighted_row');
+		tr.addClass('highlighted_row');
+		
+		
+	});
+
+//end row highlight
+
+
+
+
 }); //End of document ready
 
 

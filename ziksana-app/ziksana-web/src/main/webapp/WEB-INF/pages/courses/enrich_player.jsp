@@ -9,6 +9,7 @@
 <script type="text/javascript" src="/ziksana-web/resources/js/custom/course_enrichment.js"></script>
 <script type='text/javascript' src="/ziksana-web/resources/jwplayer/swfobject.js"></script>
 <script type="text/javascript" src="/ziksana-web/resources/jwplayer/jwplayer.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/custom/z_common.js"></script>
 
 
 	<div id="video">
@@ -410,14 +411,11 @@
 
 
 	</div>
-
-	<div class="tableofcontent">
-
-		<table align="left" id="dataTable" class="table table-hover enrich_table"
+<div class="tableofcontent1" >
+	<table align="left" id="dataTable1" class="enrich_table"
 			style="width: 550px;">
-			<thead
-				style="font-size: 8px; font-family: tahoma; font-style: normal; color: #666;">
-				<tr style="background-color: #E1E8F0;">
+			<thead style="font-size: 11px; font-family: tahoma; font-style: normal; color: #fff; ">
+				<tr style="background-color: #3ca3c1; ">
 					<th width="15%">Type</th>
 					<th width="20%">Name</th>
 					<th width="40%">Details</th>
@@ -426,6 +424,18 @@
 				</tr>
 
 			</thead>
+			<tbody>
+
+
+			</tbody>
+		</table>
+
+</div>
+	<div class="tableofcontent" >
+		
+		<table align="left" id="dataTable" class="table enrich_table row_highlight"
+			style="width: 550px;">
+			
 			<tbody>
 
 
@@ -469,6 +479,7 @@ table.enrich_table td {
   font-size: 11px;
   padding: 1em;
 }
+div.tableofcontent1 { width: 570px; max-height: 200px;}
 div.tableofcontent { width: 570px; max-height: 200px; overflow-y: auto;}
 table.enrich_table td img {cursor:pointer; margin-right: .5em;}		
 #edit_educator_content {
@@ -488,6 +499,10 @@ table.enrich_table td img {cursor:pointer; margin-right: .5em;}
 		#edit_educator_content h2 {margin: 0; font-weight: normal; font-size: 18px; color: gray;}
 		#edit_educator_content label {display: block; margin-bottom: .5em;}
 		#edit_educator_content input[type="text"]{width: 90%;}
+		
+		
+	.highlighted_row td {background: #3ca3c1;}
+	.row_highlight tr:hover td {background: #CADFE2;}
 	
 	</style>
 
