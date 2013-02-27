@@ -41,13 +41,13 @@ public class SubscriptionController {
 			.getLogger(SubscriptionController.class);
 
 	@Autowired
-	SubscriptionService subscriptionService;
+	private SubscriptionService subscriptionService;
 
 	@Autowired
-	ContentService contentService;
+	private ContentService contentService;
 
 	@Autowired
-	MediaService mediaService;
+	private MediaService mediaService;
 
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
@@ -132,6 +132,31 @@ public class SubscriptionController {
 				node);
 	}
 
+	//Get Hotspot
+	@RequestMapping(value = "/gethotspot", method = RequestMethod.GET)
+	public @ResponseBody
+	List<EducatorNote> showHotspotNotes(
+			@RequestParam(value = "courseId", required = true) String courseId,
+			@RequestParam(value = "nodeId", required = true) String nodeId,
+			@RequestParam(value = "nodeType", required = false) String nodeType,
+			@RequestParam(value = "parentNodeId", required = true) String parentNodeId,
+			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
+
+		Node node = new Node();
+		String parsedNodeId = nodeId.split("_")[3];
+		String parsedParentNodeId = parentNodeId.split("_")[1];
+		node.setId(Integer.valueOf(parsedNodeId));
+		// node.setType(Integer.valueOf(nodeType));
+		Node parent = new Node();
+		parent.setId(Integer.valueOf(parsedParentNodeId));
+		// parent.setType(Integer.valueOf(parentNodeType));
+		node.setParent(parent);
+
+		return subscriptionService.getHotspotNotes(Integer.valueOf(courseId),
+				node);
+	}
+	
+	
 	@RequestMapping(value = "/educatorReferences", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Reference> showEducatorReferences(

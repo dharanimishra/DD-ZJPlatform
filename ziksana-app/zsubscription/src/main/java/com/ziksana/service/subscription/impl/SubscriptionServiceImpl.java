@@ -5,18 +5,17 @@ package com.ziksana.service.subscription.impl;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
+import com.ziksana.domain.course.Hotspot;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
-import com.ziksana.domain.course.Hotspot;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.domain.institution.LearningProgram;
@@ -324,6 +323,17 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		List<EducatorContent> educatorContentList = subscriptionMapper
 				.getEducatorTOCByParentEnrichId(parentEnrichId);
 		return educatorContentList;
+	}
+
+	@Override
+	public List<EducatorNote> getHotspotNotes(Integer courseId, Node node) {
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+
+		// TODO
+		return subscriptionMapper.getEducatorNotes(9, Integer
+				.valueOf(memberRoleId), courseId, node.getParent().getId(),
+				node.getId());
 	}
 
 }
