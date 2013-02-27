@@ -130,6 +130,12 @@ $(".containerTableStyle").css('height','400px');
 $(".containerTableStyle").css('overflow','auto');
 
 });
+$(document).mouseup(function(e) {
+	if ($(e.target).parent("a.signin").length == 0) {
+		$(".signin").removeClass("menu-open");
+		$("fieldset#signin_menu").hide();
+	}
+});
 </script> 
 
 <script type="text/javascript">
