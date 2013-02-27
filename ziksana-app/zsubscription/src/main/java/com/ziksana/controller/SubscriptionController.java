@@ -453,37 +453,127 @@ public class SubscriptionController {
 							if (toc.getParentId() > 0) {
 								List<EducatorContent> tocList1 = subscriptionService
 										.getEducatorTOCByParentEnrichId(toc
-												.getParentId());
+												.getId());
+								logger.info("Class :"
+										+ getClass()
+										+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC ParentId"
+										+ toc.getId());
 								try {
 									for (EducatorContent toc1 : tocList1) {
 										try {
 											if (toc1.getParentId() > 0) {
 												List<EducatorContent> tocList2 = subscriptionService
 														.getEducatorTOCByParentEnrichId(toc1
-																.getParentId());
+																.getId());
+												logger.info("Class :"
+														+ getClass()
+														+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC1 ParentId"
+														+ toc1.getId());
 												try {
 													for (EducatorContent toc2 : tocList2) {
 														if (toc2.getParentId() > 0) {
 															List<EducatorContent> tocList3 = subscriptionService
-																	.getEducatorTOCByParentEnrichId(toc1
-																			.getParentId());
+																	.getEducatorTOCByParentEnrichId(toc2
+																			.getId());
+															logger.info("Class :"
+																	+ getClass()
+																	+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC2 ParentId"
+																	+ toc2.getParentId());
 															try {
 																for (EducatorContent toc3 : tocList3) {
 																	if (toc3.getParentId() > 0) {
-																		resp = subscriptionService
-																				.deleteEducatorContent(toc3
+
+																		List<EducatorContent> tocList4 = subscriptionService
+																				.getEducatorTOCByParentEnrichId(toc3
 																						.getId());
 																		logger.info("Class :"
 																				+ getClass()
+																				+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC3 ParentId"
+																				+ toc3.getId());
+
+																		try {
+																			for (EducatorContent toc4 : tocList4) {
+																				if (toc4.getParentId() > 0) {
+
+																					List<EducatorContent> tocList5 = subscriptionService
+																							.getEducatorTOCByParentEnrichId(toc4
+																									.getId());
+																					logger.info("Class :"
+																							+ getClass()
+																							+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC5 ParentId"
+																							+ toc4.getId());
+																					try {
+																						for (EducatorContent toc5 : tocList5) {
+																							if (toc5.getParentId() > 0) {
+																								resp = subscriptionService
+																										.deleteEducatorContent(toc5
+																												.getId());
+																								logger.info("Class :"
+																										+ getClass()
+																										+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC5 resp"
+																										+ resp
+																										+ ": toc5.getId()"
+																										+ toc5.getId());
+
+																							}
+																							logger.info("Class :"
+																									+ getClass()
+																									+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC5 List"
+																									+ toc5);
+																						}
+
+																					} catch (Exception e) {
+																						logger.info("Class :"
+																								+ getClass()
+																								+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception TOC5"
+																								+ e);
+																					}
+
+																					resp = subscriptionService
+																							.deleteEducatorContent(toc4
+																									.getId());
+																					logger.info("Class :"
+																							+ getClass()
+																							+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC4 resp"
+																							+ resp
+																							+ ": toc4.getId()"
+																							+ toc4.getId());
+																				}
+																				logger.info("Class :"
+																						+ getClass()
+																						+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC4 List"
+																						+ toc4);
+																			}
+
+																		} catch (Exception e) {
+																			logger.info("Class :"
+																					+ getClass()
+																					+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception TOC4"
+																					+ e);
+																		}
+
+																		resp = subscriptionService
+																				.deleteEducatorContent(toc3
+																						.getId());
+
+																		logger.info("Class :"
+																				+ getClass()
 																				+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC3 resp"
-																				+ resp);
+																				+ resp
+																				+ ": toc3.getId()"
+																				+ toc3.getId());
 																	}
+																	logger.info("Class :"
+																			+ getClass()
+																			+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC3 List"
+																			+ toc3);
 
 																}
+
 															} catch (Exception e) {
 																logger.info("Class :"
 																		+ getClass()
-																		+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC3"
+																		+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception TOC3"
 																		+ e);
 															}
 
@@ -493,14 +583,22 @@ public class SubscriptionController {
 															logger.info("Class :"
 																	+ getClass()
 																	+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC2 resp"
-																	+ resp);
+																	+ resp
+																	+ ": toc2.getId()"
+																	+ toc2.getId());
 														}
+
+														logger.info("Class :"
+																+ getClass()
+																+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC2 List"
+																+ toc2);
+
 													}
 												} catch (Exception e) {
-													logger.info("Class :"
+													logger.error("Class :"
 															+ getClass()
-															+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List"
-															+ toc1);
+															+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception TOC2"
+															+ e);
 												}
 												resp = subscriptionService
 														.deleteEducatorContent(toc1
@@ -508,16 +606,21 @@ public class SubscriptionController {
 												logger.info("Class :"
 														+ getClass()
 														+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC1 resp"
-														+ resp);
+														+ resp
+														+ ": toc1.getId()"
+														+ toc1.getId());
 											}
 
 										} catch (Exception e) {
 											logger.info("Class :"
 													+ getClass()
-													+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List"
-													+ toc1);
+													+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception :"
+													+ e);
 										}
-
+										logger.info("Class :"
+												+ getClass()
+												+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC1 List"
+												+ toc1);
 									}
 
 								} catch (Exception e) {
@@ -531,15 +634,19 @@ public class SubscriptionController {
 								logger.info("Class :"
 										+ getClass()
 										+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent: TOC :resp"
-										+ resp);
+										+ resp + ": toc.getId()" + toc.getId());
 							}
+							logger.info("Class :"
+									+ getClass()
+									+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC List"
+									+ toc);
 
 						}
 
 					} catch (Exception e) {
 						logger.error("Class :"
 								+ getClass()
-								+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List"
+								+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception :"
 								+ e);
 					}
 					resp = subscriptionService.deleteEducatorContent(enrichId);
@@ -549,7 +656,7 @@ public class SubscriptionController {
 							+ resp);
 				}
 			} catch (Exception e) {
-				logger.info("Class :"
+				logger.error("Class :"
 						+ getClass()
 						+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List Exception :"
 						+ e);
@@ -567,7 +674,6 @@ public class SubscriptionController {
 		return dbresp;
 
 	}
-
 	@RequestMapping(value = "/editEducatorContent", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer editEducatoContent(
