@@ -357,6 +357,14 @@ function createtree(course_id) {
 			menu.showItem('Delete');
 			// menu.showItem('View');
 		}
+		
+		if (node_type == "CONTENT") {
+			menu.hideItem('Add_Module');
+			menu.hideItem('ModuleEdit');
+			menu.hideItem('CourseEdit');
+			menu.hideItem('Delete');
+			
+		}
 		return true;
 	});
 
@@ -367,7 +375,8 @@ function createtree(course_id) {
 
 	courseId = course_id.split('_')[1];
 	//tree.loadXML("/ziksana-web/secure/getparenttree/" + courseId);
-	tree.loadXML("/ziksana-web/secure/getparent/" + courseId);
+	//tree.loadXML("/ziksana-web/secure/getparent/" + courseId);
+	tree.loadXML("/ziksana-web/secure/getchildtree/" + courseId);
 
 }
 

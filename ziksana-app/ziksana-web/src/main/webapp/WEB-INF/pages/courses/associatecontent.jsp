@@ -466,6 +466,110 @@ span.standartTreeRow:hover {
 												</div>
 												<!-- end of coursename--->
 											</div>
+											
+											<div class="forthcontainer">
+												<!-- start of forth container--->
+
+												<div class="moduleselection">
+													<select name="q_type" tabindex="7"
+														class="defaultvalue labelclass validate[required]"
+														id="q_type" style="margin-right: 15px; width: 410px;">
+														<option value="">Select how would you like to add
+															Content</option>
+													<option value="UploadContent">Upload Content</option>
+													 <option value="ExternalWebPage">Associate URL of
+															the Content</option>
+
+														<option value="CreateContent">Create Content</option> 
+													</select>
+												</div>
+												<!-- end of moduleselection--->
+												<br />
+												<div id="type-1">
+													<img src="/ziksana-web/resources/images/icons/upload.png"
+														align="left" tabindex="8" /><label class="control-label labelclass"
+														for="uploadimage"
+														style="margin-top: -2px; font-weight: bold;">Upload
+														the Content (mp4/mp3/doc/docx/ppt/pptx/pdf): </label>
+
+													<div id="message"></div>
+													<div id="loaderText"></div>
+													<input type="file" name="file_upload" id="file_upload" />
+													<div id="status"></div>
+													<script type="text/javascript">
+														$(function() {
+															$('#file_upload')
+																	.uploadify(
+																			{
+																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																				'queueSizeLimit' : 1,
+																				'successTimeout' : 350,
+																				'uploader' : '${ms.uploadScript}',
+																				//'debug': true,
+																				//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+																				'onUploadStart': function(file){ $('#btnsbtassoccontent').attr('disabled','disabled'); },
+																				'onUploadSuccess' : function(
+																						file,
+																						data,
+																						response) {
+																					json_string = data;
+																					data_object = $
+																							.parseJSON(json_string);
+																					console
+																							.log(data_object);
+																					if (data_object.Uploaded == 'true') {
+																						//console.log('inside true');
+																						//$('#message').html(data_object);
+																						$('#ContentPath').val(data_object.ContentPath);
+																						$('#ThumbnailPicturePath').val(data_object.ThumbnailPicturePath);
+																						$('#NumberOfThumbnails').val(data_object.NumberOfThumbnails);
+																						$('#ContentType').val(
+																										data_object.ContentType);
+																						$(
+																								'#message')
+																								.html(
+																										'Upload Successful! You may now click Submit Button to Associate the Content!');
+
+																					} else { //there is an error in the upload process
+
+																						$(
+																								'#message')
+																								.html(
+																										data_object.message);
+																					}
+																					
+																					$('#btnsbtassoccontent').removeAttr('disabled'); //enable submit button
+
+																				}
+																			// Your options here
+																			});
+														});
+													</script>
+
+
+												</div>
+												<!----- end of type=1 --->
+
+												<div id="type-2">
+													<label class="control-label labelclass" for="uploadimage"
+														style="margin-top: -2px;">Associate URL: </label> <input
+														type="text" id="defaultvalue" tabindex="9"
+														class="defaultvalue validate[required]"
+														placeholder="Provide the full URL/Web Address including HTTP://"
+														style="width: 310px; margin-left: 10px;" />
+												</div>
+												<!----- end of type=2 --->
+
+												<div id="type-3">
+													<label for="moduledescription" class="labelclass">Content
+														Description :</label> <br /> <br />
+													<textarea id="q_typecdesdcrte" name="q_typecdesdcrte" tabindex="10"
+														class="defaultvalue validate[required]">Type the Content Here</textarea>
+
+												</div>
+												<!----- end of type=2 --->
+
+											</div>
 											<!-- end of control group--->
 
 											<!----------------- start of second container --------------->
@@ -574,110 +678,7 @@ span.standartTreeRow:hover {
 											</div>
 											<!-- end of control group--->
 
-											<div class="forthcontainer">
-												<!-- start of forth container--->
-
-												<div class="moduleselection">
-													<select name="q_type" tabindex="7"
-														class="defaultvalue labelclass validate[required]"
-														id="q_type" style="margin-right: 15px; width: 410px;">
-														<option value="">Select how would you like to add
-															Content</option>
-														<option value="UploadContent">Upload Content</option>
-
-														<!--  <option value="ExternalWebPage">Associate URL of
-															the Content</option>
-
-														<option value="CreateContent">Create Content</option> -->
-													</select>
-												</div>
-												<!-- end of moduleselection--->
-												<br />
-												<div id="type-1">
-													<img src="/ziksana-web/resources/images/icons/upload.png"
-														align="left" tabindex="8" /><label class="control-label labelclass"
-														for="uploadimage"
-														style="margin-top: -2px; font-weight: bold;">Upload
-														the Content (mp4/mp3/doc/docx/ppt/pptx/pdf): </label>
-
-													<div id="message"></div>
-													<div id="loaderText"></div>
-													<input type="file" name="file_upload" id="file_upload" />
-													<div id="status"></div>
-													<script type="text/javascript">
-														$(function() {
-															$('#file_upload')
-																	.uploadify(
-																			{
-																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
-																				'queueSizeLimit' : 1,
-																				'successTimeout' : 350,
-																				'uploader' : '${ms.uploadScript}',
-																				//'debug': true,
-																				//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
-																				'onUploadStart': function(file){ $('#btnsbtassoccontent').attr('disabled','disabled'); },
-																				'onUploadSuccess' : function(
-																						file,
-																						data,
-																						response) {
-																					json_string = data;
-																					data_object = $
-																							.parseJSON(json_string);
-																					console
-																							.log(data_object);
-																					if (data_object.Uploaded == 'true') {
-																						//console.log('inside true');
-																						//$('#message').html(data_object);
-																						$('#ContentPath').val(data_object.ContentPath);
-																						$('#ThumbnailPicturePath').val(data_object.ThumbnailPicturePath);
-																						$('#NumberOfThumbnails').val(data_object.NumberOfThumbnails);
-																						$('#ContentType').val(
-																										data_object.ContentType);
-																						$(
-																								'#message')
-																								.html(
-																										'Upload Successful! You may now click Submit Button to Associate the Content!');
-
-																					} else { //there is an error in the upload process
-
-																						$(
-																								'#message')
-																								.html(
-																										data_object.message);
-																					}
-																					
-																					$('#btnsbtassoccontent').removeAttr('disabled'); //enable submit button
-
-																				}
-																			// Your options here
-																			});
-														});
-													</script>
-
-
-												</div>
-												<!----- end of type=1 --->
-
-												<div id="type-2">
-													<label class="control-label labelclass" for="uploadimage"
-														style="margin-top: -2px;">Associate URL: </label> <input
-														type="text" id="defaultvalue" tabindex="9"
-														class="defaultvalue validate[required]"
-														placeholder="Provide the full URL/Web Address including HTTP://"
-														style="width: 310px; margin-left: 10px;" />
-												</div>
-												<!----- end of type=2 --->
-
-												<div id="type-3">
-													<label for="moduledescription" class="labelclass">Content
-														Description :</label> <br /> <br />
-													<textarea id="q_typecdesdcrte" name="q_typecdesdcrte" tabindex="10"
-														class="defaultvalue validate[required]">Type the Content Here</textarea>
-
-												</div>
-												<!----- end of type=2 --->
-
-											</div>
+											
 											<!-- end of forth container--->
 
 											<div class="buttonassoc" style="height: 20px;">
