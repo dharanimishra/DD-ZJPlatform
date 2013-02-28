@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -135,6 +136,7 @@
 	
 </script>
 <script type="text/javascript">
+
 	$(document).ready(function() {
 		$(".signin").click(function(e) {
 			e.preventDefault();
@@ -154,6 +156,7 @@
 
 		//Fetch course details and populate the form
 		getCourse();
+		
 		//Course Name Validation for Duplication while creating a course
 		$('#defaultvalue').focusout(function(){
 			var courseId = $('#courseid').val();
@@ -289,7 +292,7 @@ span.standartTreeRow:hover {
 						<li><a href="/ziksana-web/secure/educatordashboard">My
 								Home</a>
 							<div class="nav-line"></div></li>
-						<li><a href="/ziksana-web//secure/showMyPrograms"
+						<li><a href="/ziksana-web/secure/showMyPrograms"
 							class="current">My Programs</a>
 							<div class="nav-line"></div></li>
 						<li><a>My Students</a>
@@ -358,29 +361,50 @@ span.standartTreeRow:hover {
 					<div class="for-rounded-box  all-box-shadow white-bg">
 						<!--Wizard start-->
 						<div id="page-wrap">
-
+					 <c:if test="${courseId == null}">
+						
 							<ul class="breadcrumb" style="padding: 1px;">
 
-
-								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
+								<li><a href="/ziksana-web/secure/createcourse"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<li><a
-									href="/ziksana-web/secure/associatecontent/${courseId}"
-									style="text-align: center;">2. Organize Content</a></li>
-								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
-									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
+																
+								<li><a style="text-align: center;">2. Organize Content</a></li>
+
+								<li><a style="width: 124px; text-align: center;">3. Enrich Content</a></li>
+
 								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
 							          Define Assignment</a></li>
 							        <li><a href="/ziksana-web/resources/html/defineplanner.html" style="text-align: center;">5. Define Planner</a></li>
 							        <li><a href="/ziksana-web/resources/html/defineplaybook.html" style="text-align: center;">6. Define Playbook</a></li>
 							        <li><a href="/ziksana-web/resources/html/definesocialize.html" style="width: 120px; text-align: center;">7.
 							          Socialize Course</a></li>
-								<li></li>
-								<!--<li><a href="#">Hidden</a></li>-->
+								<li></li>						
 							</ul>
+						</c:if>
+						 <c:if test="${courseId != null}">
+						
+							<ul class="breadcrumb" style="padding: 1px;">
 
+								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
+									style="width: 100px; text-align: center;"><span
+										class="bcumb">1.</span> Define Course</a></li>
+																
+								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
+									style="text-align: center;">2. Organize Content</a></li>
 
+								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
+									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
+
+								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
+							          Define Assignment</a></li>
+							        <li><a href="/ziksana-web/resources/html/defineplanner.html" style="text-align: center;">5. Define Planner</a></li>
+							        <li><a href="/ziksana-web/resources/html/defineplaybook.html" style="text-align: center;">6. Define Playbook</a></li>
+							        <li><a href="/ziksana-web/resources/html/definesocialize.html" style="width: 120px; text-align: center;">7.
+							          Socialize Course</a></li>
+								<li></li>						
+							</ul>
+						</c:if>
 						</div>
 						<!--Wizard end  -->
 
@@ -414,6 +438,7 @@ span.standartTreeRow:hover {
 								<div class="_coursename">
 									<div class="control-group">
 										<input type="hidden" id="courseid" value="${courseId}" />
+										<input type="hidden" id="moduleexists" value="${module}" />
 										 <label
 											class="control-label labelclass " for="CourseName"
 											style="margin-top: -4px; font-weight: bold;">Course
@@ -866,6 +891,9 @@ span.standartTreeRow:hover {
 				score : 4,
 				cancel : true
 			});
+			function testCall(){
+				alert("Please create a Course and add modules");
+			}
 		</script>
 
 

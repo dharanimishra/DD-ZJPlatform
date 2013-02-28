@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
+import com.ziksana.service.course.CourseService;
 import com.ziksana.service.data.ContentService;
 import com.ziksana.service.security.MediaService;
 
@@ -31,6 +32,9 @@ public class AssociateCourseController {
 	
 	@Autowired
 	MediaService mediaService;
+	
+	@Autowired
+	CourseService courseService;
 	
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
@@ -64,10 +68,16 @@ public class AssociateCourseController {
 		
 
 		if (course_id > 0) {
+			int isModuleExists = courseService.isModuleExists(course_id);
+			LOGGER.info("Module Size= >"+isModuleExists);
+			if(isModuleExists == 0 ){
+				return new ModelAndView("redirect:/secure/createcourse/"+courseId+"");
+			}else{
 			modelView = new ModelAndView("courses/associatecontent");
 			modelView.addObject("CourseId", courseId);
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
+			}
 		} else {
 			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("CourseId", courseId);

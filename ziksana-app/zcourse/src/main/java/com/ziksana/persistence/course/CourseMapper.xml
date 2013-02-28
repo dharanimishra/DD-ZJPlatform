@@ -214,7 +214,16 @@
 		IsDelete = 0
 	
 	</select>
-
+	<select id="isModuleExists" resultType="java.lang.Integer" parameterType="int">
+	
+		select count(*) from corlearningcomponent where isDelete = 0 and id in(select id from corcourselearningcomponent where courseid=#{courseId})		
+	
+	</select>
+	<select id="isContentExists" resultType="java.lang.Integer" parameterType="int">
+	
+		select count(*) from corcourselearningcomponent cclc,corlearningcomponent clc, corlearningcomponentcontent clcc, corlearningcontent corlearncontent  where clcc.LearningContentId = corlearncontent.ID and  clcc.LearningComponentId=clc.ID and cclc.CourseId=#{courseId} and cclc.LearningComponentId=clc.ID and corlearncontent.isdelete=false and clc.isdelete=false 
+	
+	</select>
 	<select id="totalNumberOfCourses" resultType="java.lang.Integer"
 		parameterType="map">
 

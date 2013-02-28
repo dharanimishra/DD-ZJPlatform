@@ -398,4 +398,8 @@ public interface CourseMapper {
 
 	public int getCoursesByCoursename(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId,@Param("courseName") String courseName,@Param("courseId") int courseId);
 
+	public int isModuleExists(Integer courseId);
+
+	public int isContentExists(Integer courseId);
+
 }

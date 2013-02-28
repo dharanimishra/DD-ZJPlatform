@@ -332,7 +332,18 @@ function createCourse() {
 }
 
 function getCourse() {
+	//course contains module is exists
+	var Course_id = $('#courseid').val();
 
+	$.ajax({
+		  	type: 'GET',
+			url: '/ziksana-web/secure/ismoduleexists/'+Course_id+'',
+		success: function( data ) {
+		
+			$('#moduleExists').val(data);
+			
+		}
+	});
 	// validation = jQuery("#DegineCourse").validationEngine('validate');
 	// if(validation == true){
 	// Step 1: Assign Parameters required by the sendMessage function.
@@ -341,7 +352,7 @@ function getCourse() {
 	token = ''; // dummy token for demo. you have to send real token.
 	request_type = 'POST'; // can be GET or POST. In this case, a GET request
 
-	var Course_id = $('#courseid').val();
+	
 
 	var parameters = {
 		"Course_id" : Course_id

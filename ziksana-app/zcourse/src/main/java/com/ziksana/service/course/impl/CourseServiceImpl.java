@@ -775,4 +775,16 @@ public class CourseServiceImpl implements CourseService {
 		return courseMapper.getCoursesByCoursename(Integer.valueOf(status),Integer.valueOf(memberRoleId),courseName, courseId);
 	}
 
+	@Override
+	public int isModuleExists(Integer courseId) {
+		// TODO Auto-generated method stub
+		return courseMapper.isModuleExists(courseId);
+	}
+
+	@Override
+	public int isContentExists(Integer courseId) {
+		// TODO Auto-generated method stub
+		return courseMapper.isContentExists(courseId);
+	}
+
 }

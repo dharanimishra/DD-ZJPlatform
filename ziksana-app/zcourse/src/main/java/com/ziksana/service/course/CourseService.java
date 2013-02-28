@@ -163,4 +163,10 @@ public interface CourseService {
 	public int isCourseNameExists(CourseStatus courseStatus, String courseName);
 
 	public int getCoursesByCoursename(CourseStatus underConstruct,String courseName, int courseId);
+
+	public int isModuleExists(Integer course_id);
+
+	public int isContentExists(Integer courseId);
+
+
 }

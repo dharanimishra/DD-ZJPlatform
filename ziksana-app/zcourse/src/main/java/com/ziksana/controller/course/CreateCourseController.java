@@ -112,7 +112,17 @@ public class CreateCourseController {
 
 	}
 
-
+	@RequestMapping(value = "/ismoduleexists/{courseId}", method = { RequestMethod.GET })
+	public @ResponseBody int isModuleExists(@PathVariable String courseId){
+		int isModuleExists = 0;
+		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
+		if(course_id != null){
+			isModuleExists = courseService.isModuleExists(course_id);
+			LOGGER.info("Module Size= >"+isModuleExists);
+		}
+				return isModuleExists;
+	
+	}
 	@RequestMapping(value = "/createcourse", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
@@ -133,16 +143,24 @@ public class CreateCourseController {
 		LOGGER.info(" Entering Class " + getClass() + " showCourse()");
 
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
+		
+		int isModuleExists = 0;
+		if(course_id != null){
+			isModuleExists = courseService.isModuleExists(course_id);
+			LOGGER.info("Module Size= >"+isModuleExists);
+		}
 		ModelAndView modelView = null;
 		if (course_id > 0) {
 			modelView = new ModelAndView("courses/definecourse");
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("module",isModuleExists);
 		} else {
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("module",isModuleExists);
 		}
 
 		LOGGER.info("Class " + getClass() + "Exiting showCourse(): ");
@@ -156,6 +174,11 @@ public class CreateCourseController {
 		LOGGER.info(" Entering Class " + getClass() + " showCourse()");
 
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
+		int isModuleExists = 0;
+		if(course_id != null){
+			isModuleExists = courseService.isModuleExists(course_id);
+			LOGGER.info("Module Size= >"+isModuleExists);
+		}
 		mediaServerURL = mediaService.getMediaContents();
 		ModelAndView modelView = null;
 		if (course_id > 0) {
@@ -163,10 +186,12 @@ public class CreateCourseController {
 			modelView = new ModelAndView("courses/coursecreation");
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("module",isModuleExists);
 		} else {
 			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("module",isModuleExists);
 		}
 
 		LOGGER.info("Class " + getClass() + "Exiting showCourse(): ");
@@ -180,16 +205,21 @@ public class CreateCourseController {
 
 		LOGGER.info(" Entering Class " + getClass() + " courseModule()");
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
-
+		int isModuleExists = 0;
+		if(course_id != null){
+			isModuleExists = courseService.isModuleExists(course_id);
+		}
 		mediaServerURL = mediaService.getMediaContents();
 		ModelAndView modelView = null;
 		if (course_id > 0) {
 			modelView = new ModelAndView("courses/coursecreation");
 			modelView.addObject("CourseId", course_id);
+			modelView.addObject("module",isModuleExists);
 			modelView.addObject("ms", mediaServerURL);
 		} else {
 			modelView = new ModelAndView("courses/definecourse");
 			modelView.addObject("CourseId", course_id);
+			modelView.addObject("module",isModuleExists);
 			modelView.addObject("ms", mediaServerURL);
 		}
 

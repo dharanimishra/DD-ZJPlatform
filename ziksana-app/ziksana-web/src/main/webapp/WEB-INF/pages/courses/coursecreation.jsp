@@ -1,8 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Define Course</title>
+<title>Course Creation</title>
 <!--Body Style sheet-->
 <link href="/ziksana-web/resources/css/main/styles.css" rel="stylesheet"
 	type="text/css" />
@@ -332,14 +333,32 @@ span.standartTreeRow:hover {
 						<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
+								<c:if test="${module == 0}">
+								<li><a onclick="testModule()"
+									style="width: 100px; text-align: center;"><span
+										class="bcumb">1.</span> Define Course</a></li>
+								</c:if>
+								<c:if test="${module != 0}">
 								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
-								<li><a
-									href="/ziksana-web/secure/associatecontent/${courseId}"
-									style="text-align: center;">2.Organize Content</a></li>
+								</c:if>
+								<c:if test="${module == 0}">
+									<li><a onclick="testModule()"
+									style="text-align: center;">2. Organize Content</a></li>
+								</c:if>
+								<c:if test="${module != 0}">
+								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
+									style="text-align: center;">2. Organize Content</a></li>
+								</c:if>
+								<c:if test="${module == 0}">
+								<li><a onclick="testModule()"
+									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
+								</c:if>
+								<c:if test="${module != 0}">
 								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
+								</c:if>
 								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
 							          Define Assignment</a></li>
 							        <li><a href="/ziksana-web/resources/html/defineplanner.html" style="text-align: center;">5. Define Planner</a></li>
@@ -349,6 +368,7 @@ span.standartTreeRow:hover {
 								<li></li>
 								<!--<li><a href="#">Hidden</a></li>-->
 							</ul>
+
 
 
 						</div>
@@ -701,6 +721,9 @@ span.standartTreeRow:hover {
 									});
 					
 				});//end of doc ready
+				function testModule(){
+					alert("Please add module");
+				}
 			</script>
 
 
