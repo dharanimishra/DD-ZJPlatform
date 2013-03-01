@@ -125,6 +125,25 @@
 	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+	
+	
+<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/spinner/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/spinner/ui.spinner.css" />
+	
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/ziksana-web/resources/spinner/ui.spinner.js"></script>
+	
+<script type="text/javascript">
+		jQuery().ready(function($) {
+		
+			$('#Duration').spinner({ min:0, max: 20,step: 1,});
+			$('#Credits').spinner({ min: 0, max: 20 });
+			$('#ExtraCredits').spinner({ min: 0, max: 20 });
+			
+		});
+	</script>	
+	
 <script type="text/javascript">
 	$(document).ready(function(e) {
 		$(".containerTableStyle").css('height', '400px');
@@ -518,80 +537,25 @@ span.standartTreeRow:hover {
 										<div class="coursecredits">
 											<label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Credits :</label>
-											<input type="text" id="Credits" class="smartspinner " tabindex="7"
-												style="margin-left: 18px;" />
-											<script type="text/javascript"
-												src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
-											<script type="text/javascript">
-												$(document)
-														.ready(
-																function() {
-
-																	var s = $(
-																			'#Credits')
-																			.spinit(
-																					{
-																						height : 20,
-																						width : 30,
-																						min : null,
-																						stepInc: .5,
-																						placeholder : null,
-																						initValue : null,
-																						max : 20,
-																					});
-
-																});
-											</script>
+											<input type="text" id="Credits" value="0" class="" tabindex="7"
+												style=" width: 35px; margin-left: 18px;" />
+											
 											<label for="coursetags" class="labelclass"
 												style="margin-left: 20px; font-weight: bold;">Specify
 												Course Extra Credits :</label> <input type="text" id="ExtraCredits"
-												class="smartspinner " tabindex="8"
-												style="width: 30px; margin-left: 10px;" />
-											<script type="text/javascript">
-												$(document)
-														.ready(
-																function() {
-																	var s = $(
-																			'#ExtraCredits')
-																			.spinit(
-																					{
-																						height : 20,
-																						width : 30,
-																						min : null,
-																						stepInc: 0.5,
-																						initValue : null,
-																						max : 20,
-																					});
-
-																});
-											</script>
+												class=" " value="0" tabindex="8"
+												style="width: 35px; margin-left: 10px;" />
+											
 										</div>
 										<!-- end of coursecredits--->
 
 										<div class="courseduration">
 											<br /> <label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Duration :</label>
-											<input type="text" id="Duration" tabindex="9"
-												style="width: 30px; margin-left: 9px;"
-												class="defaultvalue" />
-											<script type="text/javascript">
-												$(document)
-														.ready(
-																function() {
-																	var s = $(
-																			'#Duration')
-																			.spinit(
-																					{
-																						height : 20,
-																						width : 30,
-																						min : null,
-																						stepInc: 0.5,
-																						initValue : null,
-																						max : 20,
-																					});
-
-																});
-											</script>
+											<input type="text" id="Duration" value="0"  tabindex="9"
+												style="width: 35px; margin-left: 9px;"
+												class="" />
+										
 											<select name="SelectArea" id="Cdurationtype" tabindex="10"
 												class="defaultvalue" style="margin-left: 20px;">
 												<option value="1">Weeks</option>

@@ -480,7 +480,7 @@ table.enrich_table td {
   padding: 1em;
 }
 div.tableofcontent1 { width: 570px; max-height: 200px;}
-div.tableofcontent { width: 570px; max-height: 200px; overflow-y: auto;}
+div.tableofcontent { width: 570px; max-height: 150px; overflow-y: auto;}
 table.enrich_table td img {cursor:pointer; margin-right: .5em;}		
 #edit_educator_content {
   background: #555;

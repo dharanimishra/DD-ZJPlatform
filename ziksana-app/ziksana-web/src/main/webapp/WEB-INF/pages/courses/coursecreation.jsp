@@ -18,8 +18,7 @@
 <link
 	href="/ziksana-web/resources/css/common/wizard/wizardstylesheet.css"
 	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/common/spinner/smartspinner.css"
-	rel="stylesheet" type="text/css" />
+
 <link
 	href="/ziksana-web/resources/css/common/tags/superbly-tagfield.css"
 	rel="stylesheet" type="text/css" />
@@ -50,8 +49,7 @@
 	src="/ziksana-web/resources/js/ziksana/ckeditor/adapters/jquery.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/ziksana/ckeditor/ckeditor.js"></script>
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
+
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/ziksana/coursecreation/define.js"></script>
 <!-- scripts for tree -->
@@ -127,10 +125,23 @@
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
 	
+	
+	
+	<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/spinner/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/spinner/ui.spinner.css" />
+
+	
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/ziksana-web/resources/spinner/ui.spinner.js"></script>
+	
+	
+	
 	<script type="text/javascript">
 $(document).ready(function(e) {
 $(".containerTableStyle").css('height','400px');
 $(".containerTableStyle").css('overflow','auto');
+$('.cduration').spinner({ min: 0, max: 20,  });
 
 });
 </script> 
@@ -161,6 +172,19 @@ $(".containerTableStyle").css('overflow','auto');
 }
 </style>
 <style>
+.ui-spinner-up
+{
+margin-left: -1px !important; 
+margin-top: -1px !important;
+width:14px  !important;
+height:8px  !important;
+}
+.ui-spinner-down{
+margin-left: -1px !important; 
+margin-top: 1.5px !important;
+width:14px  !important;
+height:8px  !important;
+}
 .jqx-widget-content {
 	-moz-background-clip: padding;
 	background-clip: padding-box;
@@ -539,9 +563,10 @@ span.standartTreeRow:hover {
 													<div class="courseduration" id="saveassociateobject">
 														<br /> <label for="Learning Duration" class="labelclass"
 															style="font-weight: bold;">Specify the Duration
-															of the Learning Object :</label> <input type="text" tabindex="8"
-															id="Cmoduleduration" style="width: 30px;"
-															class="defaultvalue validate[required]" /> 
+															of the Learning Object :</label>
+															
+															<input type="number" tabindex="8" id="Cmoduleduration" value="0" 
+															class="cduration" style="width:40px;"/ > 
 															<select name="Cmoduleunits" tabindex="9" class="defaultvalue validate[required]" id="Cmoduleunits" style="margin-left: 5px;">
 															<option value="1">Weeks</option>
 															<option value="2">Months</option>
