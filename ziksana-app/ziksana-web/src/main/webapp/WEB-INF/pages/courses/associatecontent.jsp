@@ -477,10 +477,10 @@ span.standartTreeRow:hover {
 														<option value="">Select how would you like to add
 															Content</option>
 													<option value="UploadContent">Upload Content</option>
-													 <option value="ExternalWebPage">Associate URL of
+													 <!-- <option value="ExternalWebPage">Associate URL of
 															the Content</option>
 
-														<option value="CreateContent">Create Content</option> 
+														<option value="CreateContent">Create Content</option>  -->
 													</select>
 												</div>
 												<!-- end of moduleselection--->
