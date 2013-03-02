@@ -377,7 +377,7 @@ function getCourse() {
 							topic = data.topic;
 							// tag_field = data.tagfield;
 							selected_tags = data.selected_tags.split(',');
-							available_tags = data.available_tags.split(',');
+							available_tags = data.selected_tags.split(',');
 							credits = data.credits;
 							extra_credits = data.extracredits;
 							duration = data.duration;
@@ -410,7 +410,14 @@ function getCourse() {
 
 							}
 
-							$('#Ctagfield_e').val(selected_tags);
+							//$('#Ctagfield_e').val(selected_tags);
+							
+							$("#Ctagfield_e").superblyTagField({
+								allowNewTags : true,
+								showTagsNumber : 10,
+								preset : selected_tags,
+								tags : available_tags
+							});
 
 							$('#Credits').val(credits);
 
@@ -566,4 +573,13 @@ function onSuccessfulCourseCreation(data) {
 	function richText() {
 		$('#Cdescription').val('');
 	}
+}
+
+function populate_tag_cloud(selected_tags, available_tags) {
+	$("#Ctagfield_e").superblyTagField({
+		allowNewTags : true,
+		showTagsNumber : 10,
+		preset : selected_tags,
+		tags : available_tags
+	});
 }

@@ -65,7 +65,7 @@ function onButtonClick(menuitemId, type) {
 			"Course_id" : Course_id,
 			"Component_id" : ComponentId
 		};
-
+		var available_tags, selected_tags;
 		$
 				.post(
 						uri,
@@ -80,7 +80,9 @@ function onButtonClick(menuitemId, type) {
 								subject_area = data.subjectarea;
 								subject = data.subject;
 								topic = data.topic;
-								tag_field = data.tagfield;
+								//tag_field = data.tagfield;
+								selected_tags = data.tagfield.split(',');
+								available_tags = data.tagfield.split(',');
 								learningObjectIndicator = data.learningObjectIndicator;
 								prescribedLCDuration = data.prescribedLCDuration;
 								prescribedLCDurationUnit = data.prescribedLCDurationUnit;
@@ -107,7 +109,15 @@ function onButtonClick(menuitemId, type) {
 									$('#Cmoduledesc').val(module_desc);
 
 								}
-								$('#Addmoduletag1').val(tag_field);
+								
+								//$('#Addmoduletag1').val(tag_field);
+								
+								$("#Addmoduletag1").superblyTagField({
+									allowNewTags : true,
+									showTagsNumber : 10,
+									preset : selected_tags,
+									tags : available_tags
+								});
 								if (learningObjectIndicator == true) {
 									$('#addmodulecheckbox').attr('checked',
 											true);

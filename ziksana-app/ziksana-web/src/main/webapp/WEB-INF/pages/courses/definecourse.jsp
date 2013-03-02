@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -102,12 +102,14 @@
 <script
 	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
 	type="text/javascript"></script>
-    <!--fancybox-->
-	<script type="text/javascript" src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+<!--fancybox-->
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
 
-     <script src="/ziksana-web/resources/js/jquery.fancybox.pack.2.1.3.js"></script>
-	 <link rel="stylesheet" type="text/css" href="/ziksana-web/resources/css/jquery.fancybox.2.1.3.css"/>
-	<!--fancybox end-->
+<script src="/ziksana-web/resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="/ziksana-web/resources/css/jquery.fancybox.2.1.3.css" />
+<!--fancybox end-->
 <script src="/ziksana-web/resources/js/custom/libraryfunction.js"
 	type="text/javascript"></script>
 <script
@@ -125,84 +127,107 @@
 	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
-	
-	
-<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/spinner/jquery-ui.css" />
-	<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/spinner/ui.spinner.css" />
-	
 
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/ziksana-web/resources/spinner/ui.spinner.js"></script>
-	
+
+<link rel="stylesheet" type="text/css"
+	href="/ziksana-web/resources/spinner/jquery-ui.css" />
+<link rel="stylesheet" type="text/css"
+	href="/ziksana-web/resources/spinner/ui.spinner.css" />
+
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="/ziksana-web/resources/spinner/ui.spinner.js"></script>
+
 <script type="text/javascript">
-		jQuery().ready(function($) {
-		
-			$('#Duration').spinner({ min:0, max: 20,step: 1,});
-			$('#Credits').spinner({ min: 0, max: 20 });
-			$('#ExtraCredits').spinner({ min: 0, max: 20 });
-			
+	jQuery().ready(function($) {
+
+		$('#Duration').spinner({
+			min : 0,
+			max : 20,
+			step : 1,
 		});
-	</script>	
-	
+		$('#Credits').spinner({
+			min : 0,
+			max : 20
+		});
+		$('#ExtraCredits').spinner({
+			min : 0,
+			max : 20
+		});
+
+	});
+</script>
+
 <script type="text/javascript">
 	$(document).ready(function(e) {
 		$(".containerTableStyle").css('height', '400px');
 		$(".containerTableStyle").css('overflow', 'auto');
 
 	});
-	
+
 	var media_server_url = '${ms.url}';
-	
 </script>
 <script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						$(".signin").click(function(e) {
+							e.preventDefault();
+							$("fieldset#signin_menu").toggle();
+							$(".signin").toggleClass("menu-open");
+						});
 
-	$(document).ready(function() {
-		$(".signin").click(function(e) {
-			e.preventDefault();
-			$("fieldset#signin_menu").toggle();
-			$(".signin").toggleClass("menu-open");
-		});
+						$("fieldset#signin_menu").mouseup(function() {
+							return false
+						});
+						$(document).mouseup(function(e) {
+							if ($(e.target).parent("a.signin").length == 0) {
+								$(".signin").removeClass("menu-open");
+								$("fieldset#signin_menu").hide();
+							}
+						});
 
-		$("fieldset#signin_menu").mouseup(function() {
-			return false
-		});
-		$(document).mouseup(function(e) {
-			if ($(e.target).parent("a.signin").length == 0) {
-				$(".signin").removeClass("menu-open");
-				$("fieldset#signin_menu").hide();
-			}
-		});
+						//Fetch course details and populate the form
+						getCourse();
 
-		//Fetch course details and populate the form
-		getCourse();
-		
-		//Course Name Validation for Duplication while creating a course
-		$('#defaultvalue').focusout(function(){
-			var courseId = $('#courseid').val();
-			var courseName = $('#defaultvalue').val();
-			uri = '/ziksana-web/secure/iscourseexists/';
-			var parameters = {
-					"courseId" : courseId,
-					"courseName" : courseName,
-					
-				};
+						//Course Name Validation for Duplication while creating a course
+						$('#defaultvalue')
+								.focusout(
+										function() {
+											var courseId = $('#courseid').val();
+											var courseName = $('#defaultvalue')
+													.val();
+											uri = '/ziksana-web/secure/iscourseexists/';
+											var parameters = {
+												"courseId" : courseId,
+												"courseName" : courseName,
 
-				$.post(
-								uri,
-								parameters,
-								function(data) {
-									console.log(data);
-									if(data == 'COURSE EXISTS'){
-										if(courseName != ""){
-										var course = "' "+courseName.toUpperCase()+" '";
-										
-											alert("The course "+course+" already exists, try with another course name" );
-										}
-									}
-								});	
-		});
-	
-	});
+											};
+
+											$
+													.post(
+															uri,
+															parameters,
+															function(data) {
+																console
+																		.log(data);
+																if (data == 'COURSE EXISTS') {
+																	if (courseName != "") {
+																		var course = "' "
+																				+ courseName
+																						.toUpperCase()
+																				+ " '";
+
+																		alert("The course "
+																				+ course
+																				+ " already exists, try with another course name");
+																	}
+																}
+															});
+										});
+
+					});
 </script>
 <style type="text/css">
 #message {
@@ -274,12 +299,13 @@ span.standartTreeRow:hover {
 	border-radius: 3px;
 	padding: 3px;
 }
+
 .mnuclass {
-    color: #2277BB;
-    font-family: verdana;
-    font-size: 12px;
-    font-weight: normal;
-    text-decoration: none;
+	color: #2277BB;
+	font-family: verdana;
+	font-size: 12px;
+	font-weight: normal;
+	text-decoration: none;
 }
 </style>
 </head>
@@ -364,12 +390,14 @@ span.standartTreeRow:hover {
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
 					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong>|&nbsp;<strong
-					class="light-gray text-size-px12 font-Signika">Create New Course </strong>
+					class="light-gray text-size-px12 font-Signika">Create New
+					Course </strong>
 			</div>
 			<div class="f-r">
-				<a href="#" class="mnuclass" > Manage </a> | <a class="mnuclass"  href="#"> Publish</a>
-				<a class="light-blue"><img width="12" height="12" alt="add more" src="/ziksana-web/resources/images/plus.png">
-				</a>
+				<a href="#" class="mnuclass"> Manage </a> | <a class="mnuclass"
+					href="#"> Publish</a> <a class="light-blue"><img width="12"
+					height="12" alt="add more"
+					src="/ziksana-web/resources/images/plus.png"> </a>
 			</div>
 		</div>
 		<!--Main Content-->
@@ -380,50 +408,70 @@ span.standartTreeRow:hover {
 					<div class="for-rounded-box  all-box-shadow white-bg">
 						<!--Wizard start-->
 						<div id="page-wrap">
-					 <c:if test="${courseId == null}">
-						
-							<ul class="breadcrumb" style="padding: 1px;">
+							<c:if test="${courseId == null}">
 
-								<li><a href="/ziksana-web/secure/createcourse"
-									style="width: 100px; text-align: center;"><span
-										class="bcumb">1.</span> Define Course</a></li>
-																
-								<li><a style="text-align: center;">2. Organize Content</a></li>
+								<ul class="breadcrumb" style="padding: 1px;">
 
-								<li><a style="width: 124px; text-align: center;">3. Enrich Content</a></li>
+									<li><a href="/ziksana-web/secure/createcourse"
+										style="width: 100px; text-align: center;"><span
+											class="bcumb">1.</span> Define Course</a></li>
 
-								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
-							          Define Assignment</a></li>
-							        <li><a href="/ziksana-web/resources/html/defineplanner.html" style="text-align: center;">5. Define Planner</a></li>
-							        <li><a href="/ziksana-web/resources/html/defineplaybook.html" style="text-align: center;">6. Define Playbook</a></li>
-							        <li><a href="/ziksana-web/resources/html/definesocialize.html" style="width: 120px; text-align: center;">7.
-							          Socialize Course</a></li>
-								<li></li>						
-							</ul>
-						</c:if>
-						 <c:if test="${courseId != null}">
-						
-							<ul class="breadcrumb" style="padding: 1px;">
+									<li><a style="text-align: center;">2. Organize Content</a></li>
 
-								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
-									style="width: 100px; text-align: center;"><span
-										class="bcumb">1.</span> Define Course</a></li>
-																
-								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
-									style="text-align: center;">2. Organize Content</a></li>
+									<li><a style="width: 124px; text-align: center;">3.
+											Enrich Content</a></li>
 
-								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
-									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
+									<li><a
+										href="/ziksana-web/resources/html/defineassignment.html"
+										style="width: 130px; text-align: center;">4. Define
+											Assignment</a></li>
+									<li><a
+										href="/ziksana-web/resources/html/defineplanner.html"
+										style="text-align: center;">5. Define Planner</a></li>
+									<li><a
+										href="/ziksana-web/resources/html/defineplaybook.html"
+										style="text-align: center;">6. Define Playbook</a></li>
+									<li><a
+										href="/ziksana-web/resources/html/definesocialize.html"
+										style="width: 120px; text-align: center;">7. Socialize
+											Course</a></li>
+									<li></li>
+								</ul>
+							</c:if>
+							<c:if test="${courseId != null}">
 
-								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
-							          Define Assignment</a></li>
-							        <li><a href="/ziksana-web/resources/html/defineplanner.html" style="text-align: center;">5. Define Planner</a></li>
-							        <li><a href="/ziksana-web/resources/html/defineplaybook.html" style="text-align: center;">6. Define Playbook</a></li>
-							        <li><a href="/ziksana-web/resources/html/definesocialize.html" style="width: 120px; text-align: center;">7.
-							          Socialize Course</a></li>
-								<li></li>						
-							</ul>
-						</c:if>
+								<ul class="breadcrumb" style="padding: 1px;">
+
+									<li><a href="/ziksana-web/secure/createcourse/${courseId}"
+										style="width: 100px; text-align: center;"><span
+											class="bcumb">1.</span> Define Course</a></li>
+
+									<li><a
+										href="/ziksana-web/secure/associatecontent/${courseId}"
+										style="text-align: center;">2. Organize Content</a></li>
+
+									<li><a
+										href="/ziksana-web/secure/enrichcontent/${courseId}"
+										style="width: 124px; text-align: center;">3. Enrich
+											Content</a></li>
+
+									<li><a
+										href="/ziksana-web/resources/html/defineassignment.html"
+										style="width: 130px; text-align: center;">4. Define
+											Assignment</a></li>
+									<li><a
+										href="/ziksana-web/resources/html/defineplanner.html"
+										style="text-align: center;">5. Define Planner</a></li>
+									<li><a
+										href="/ziksana-web/resources/html/defineplaybook.html"
+										style="text-align: center;">6. Define Playbook</a></li>
+									<li><a
+										href="/ziksana-web/resources/html/definesocialize.html"
+										style="width: 120px; text-align: center;">7. Socialize
+											Course</a></li>
+									<li></li>
+								</ul>
+							</c:if>
 						</div>
 						<!--Wizard end  -->
 
@@ -456,16 +504,15 @@ span.standartTreeRow:hover {
 								<!----------------- start of first container --------------->
 								<div class="_coursename">
 									<div class="control-group">
-										<input type="hidden" id="courseid" value="${courseId}" />
-										<input type="hidden" id="moduleexists" value="${module}" />
-										 <label
+										<input type="hidden" id="courseid" value="${courseId}" /> <input
+											type="hidden" id="moduleexists" value="${module}" /> <label
 											class="control-label labelclass " for="CourseName"
 											style="margin-top: -4px; font-weight: bold;">Course
 											Name :</label>
 										<div class="controls">
 											<input type="text" autofocus
 												class="defaultvaluem treeRoot validate[required]"
-												id="defaultvalue" tabindex="1" 
+												id="defaultvalue" tabindex="1"
 												style="width: 240px; margin-left: 10px; color: #666;"
 												maxlength="64" placeholder="Specify the Course Name" />
 										</div>
@@ -474,13 +521,19 @@ span.standartTreeRow:hover {
 											style="font-weight: bold;"><b>Course Description
 												:</b></label> <a class="f-r _plainText" href="#" onClick="plainText()"
 											style="text-decoration: none;">Plain Text Editor</a> <a
-											class="f-r _richText" id="rich_text_editor" href="#" onClick="richText()"
-											style="text-decoration: none;">Rich Text Editor</a>
+											class="f-r _richText" id="rich_text_editor" href="#"
+											onClick="richText()" style="text-decoration: none;">Rich
+											Text Editor</a>
 
-										<textarea placeholder="Describe the Course being created" cols="124" rows="8" id="Cdescription" tabindex="2"  class="_plainTextShow defaultvaluem labelclass" style="width: 880px; color: #666;"></textarea>
+										<textarea placeholder="Describe the Course being created"
+											cols="124" rows="8" id="Cdescription" tabindex="2"
+											class="_plainTextShow defaultvaluem labelclass"
+											style="width: 880px; color: #666;"></textarea>
 										<br />
 										<div class="_richTextShow">
-											<textarea placeholder="Describe the Course being created" id="Cdescriptionrte" name="editor2" tabindex="2" class="defaultvalue _focus"></textarea>
+											<textarea placeholder="Describe the Course being created"
+												id="Cdescriptionrte" name="editor2" tabindex="2"
+												class="defaultvalue _focus"></textarea>
 										</div>
 										<script type="text/javascript">
 											CKEDITOR.replace('Cdescriptionrte');
@@ -525,38 +578,34 @@ span.standartTreeRow:hover {
 										<!-- end of moduleselection--->
 
 										<div class="coursetags">
-											<br /> 
-											<label class="labelclass"
-												for="coursetags"
+											<br /> <label class="labelclass" for="coursetags"
 												style="margin-top: -2px; font-weight: bold;">Specify
 												any tags : </label> <input id="Ctagfield_e" type="text" tabindex="6"
-												style="margin-left: 20px;width:250px;height:25px;"></input> <br /> <br />
+												style="margin-left: 20px; width: 250px; height: 25px;"></input>
+											<br /> <br />
 										</div>
 										<!-- end of coursetags--->
 
 										<div class="coursecredits">
 											<label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Credits :</label>
-											<input type="text" id="Credits" value="0" class="" tabindex="7"
-												style=" width: 35px; margin-left: 18px;" />
-											
-											<label for="coursetags" class="labelclass"
+											<input type="text" id="Credits" value="0" class=""
+												tabindex="7" style="width: 35px; margin-left: 18px;" /> <label
+												for="coursetags" class="labelclass"
 												style="margin-left: 20px; font-weight: bold;">Specify
 												Course Extra Credits :</label> <input type="text" id="ExtraCredits"
 												class=" " value="0" tabindex="8"
 												style="width: 35px; margin-left: 10px;" />
-											
+
 										</div>
 										<!-- end of coursecredits--->
 
 										<div class="courseduration">
 											<br /> <label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Duration :</label>
-											<input type="text" id="Duration" value="0"  tabindex="9"
-												style="width: 35px; margin-left: 9px;"
-												class="" />
-										
-											<select name="SelectArea" id="Cdurationtype" tabindex="10"
+											<input type="text" id="Duration" value="0" tabindex="9"
+												style="width: 35px; margin-left: 9px;" class="" /> <select
+												name="SelectArea" id="Cdurationtype" tabindex="10"
 												class="defaultvalue" style="margin-left: 20px;">
 												<option value="1">Weeks</option>
 												<option value="2">Months</option>
@@ -572,7 +621,7 @@ span.standartTreeRow:hover {
 												href="/ziksana-web/secure/getAddnlInfo">Add New
 												Information </a>
 										</div> -->
-										
+
 									</div>
 									<!-- end of secondcontainer--->
 								</div>
@@ -615,105 +664,119 @@ span.standartTreeRow:hover {
 										</div>
 
 									</div> -->
-									<!-- end of contentsecurty--->
+								<!-- end of contentsecurty--->
 
-									<div class="associateimage" style="margin-top: 30px;">
+								<div class="associateimage" style="margin-top: 30px;">
 
-										<p class="labelclass" style="font-weight: bold;">Associate
-											an Image for your Course</p>
-										<br /> 
-										<img id="course_thumbnail_image" src="/ziksana-web/resources/images/default-course.jpg" align="left" /> 
-										<input
-											readonly="readonly" type="hidden" id="Cimageupl"
-											style="margin-left: 20px;" />
+									<p class="labelclass" style="font-weight: bold;">Associate
+										an Image for your Course</p>
+									<br /> <img id="course_thumbnail_image"
+										src="/ziksana-web/resources/images/default-course.jpg"
+										align="left" /> <input readonly="readonly" type="hidden"
+										id="Cimageupl" style="margin-left: 20px;" />
 
 
-										<div id="thubmnail_upload_message"></div>
-										<div id="loaderText"></div>
-										<input type="file" name="thumbnail_image_file_upload" tabindex="11"
-											id="thumbnail_image_file_upload" />
-										<div id="status"></div>
-										<script type="text/javascript">
-											$(function() {
-												$('#thumbnail_image_file_upload')
-														.uploadify(
-																{
-																	'swf' : '/ziksana-web/resources/swf/uploadify.swf',
-																	'queueSizeLimit' : 1,
-																	'successTimeout' : 350,
-																	'uploader' : '${ms.uploadScript}',
-																	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-																	'fileSizeLimit' : '10024KB',
-																	'onUploadStart' : function(
-																			file) {
+									<div id="thubmnail_upload_message"></div>
+									<div id="loaderText"></div>
+									<input type="file" name="thumbnail_image_file_upload"
+										tabindex="11" id="thumbnail_image_file_upload" />
+									<div id="status"></div>
+									<script type="text/javascript">
+										$(function() {
+											$('#thumbnail_image_file_upload')
+													.uploadify(
+															{
+																'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																'queueSizeLimit' : 1,
+																'successTimeout' : 350,
+																'uploader' : '${ms.uploadScript}',
+																'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+																'fileSizeLimit' : '10024KB',
+																'onUploadStart' : function(
+																		file) {
+																	$(
+																			'#sbtvalidation')
+																			.attr(
+																					'disabled',
+																					'disabled');
+																},
+																//'debug': true,
+																//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+																'onUploadSuccess' : function(
+																		file,
+																		data,
+																		response) {
+																	json_string = data;
+																	data_object = $
+																			.parseJSON(json_string);
+																	console
+																			.log(data_object);
+
+																	if (data_object.Uploaded == 'true') {
 																		$(
-																				'#sbtvalidation')
+																				'#Cimageupl')
+																				.val(
+																						data_object.ContentPath);
+																		$(
+																				'#course_thumbnail_image')
 																				.attr(
-																						'disabled',
-																						'disabled');
-																	},
-																	//'debug': true,
-																	//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
-																	'onUploadSuccess' : function(
-																			file,
-																			data,
-																			response) {
-																		json_string = data;
-																		data_object = $.parseJSON(json_string);
-																		console.log(data_object);
-																		
-																		if (data_object.Uploaded == 'true') {
-																			$('#Cimageupl').val(data_object.ContentPath);
-																			$('#course_thumbnail_image').attr('src','${ms.url}'+data_object.ContentPath);
-																			$('#thubmnail_upload_message')
-																					.html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
-
-																		} else { //there is an error in the upload process
-
-																			$(
-																					'#message')
-																					.html(
-																							data_object.message);
-																		}
+																						'src',
+																						'${ms.url}'
+																								+ data_object.ContentPath);
 																		$(
-																				'#sbtvalidation')
-																				.removeAttr(
-																						'disabled'); //enable submit button
+																				'#thubmnail_upload_message')
+																				.html(
+																						'<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
 
+																	} else { //there is an error in the upload process
+
+																		$(
+																				'#message')
+																				.html(
+																						data_object.message);
 																	}
-																// Your options here
-																});
-											});
-											
-											function remove_uploaded_thumbnail(){
-												$('#Cimageupl').val('');//clear uploaded file path
-												$('#thubmnail_upload_message').html('');
-												$('#course_thumbnail_image').attr('src','/ziksana-web/resources/images/default-course.jpg');
-						
-											}
-										</script>
+																	$(
+																			'#sbtvalidation')
+																			.removeAttr(
+																					'disabled'); //enable submit button
 
+																}
+															// Your options here
+															});
+										});
 
-									</div>
-									<!-- end of associateimage--->
+										function remove_uploaded_thumbnail() {
+											$('#Cimageupl').val('');//clear uploaded file path
+											$('#thubmnail_upload_message')
+													.html('');
+											$('#course_thumbnail_image')
+													.attr('src',
+															'/ziksana-web/resources/images/default-course.jpg');
+
+										}
+									</script>
+
 
 								</div>
-								<!-- end of third container--->
+								<!-- end of associateimage--->
+						</div>
+						<!-- end of third container--->
 
-								<input type="submit" class="btn btn-info f-r" id="sbtvalidation" tabindex="13"
-									value="Submit" onClick="createCourse(); return false;"
-									style="margin-right: 10px;">
-								<!-- <a href="/ziksana-web/secure/createmodule/${courseId}"
+						<input type="submit" class="btn btn-info f-r" id="sbtvalidation"
+							tabindex="13" value="Submit"
+							onClick="createCourse(); return false;"
+							style="margin-right: 10px;">
+						<!-- <a href="/ziksana-web/secure/createmodule/${courseId}"
 									style="float:right; margin-bottom: 20px; margin-top: 2px; display: inline-block;right: -118px;position: relative;"
 									class="btn btn-info">Save and Continue</a> -->
 
-							</form>
+						</form>
 
 
-							<br> <br>
+						<br> <br>
 
 
-							<style>
+						<style>
 #splitter {
 	width: 975px;
 	height: auto;
@@ -725,146 +788,146 @@ span.standartTreeRow:hover {
 }
 </style>
 
-							<div id="treeHideShow"
-								style="font-size: 10px; margin-bottom: 10px;">
+						<div id="treeHideShow"
+							style="font-size: 10px; margin-bottom: 10px;">
 
-								<p class="definehelp all all-box-shadow"
-									style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92; height: 30px;">
-									<img src="/ziksana-web/resources/images/icons/helpicon.png"
-										align="left"
-										style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>Right
-										Click over the Tree Node to further Define the Course. </b>
-								</p>
+							<p class="definehelp all all-box-shadow"
+								style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92; height: 30px;">
+								<img src="/ziksana-web/resources/images/icons/helpicon.png"
+									align="left"
+									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>Right
+									Click over the Tree Node to further Define the Course. </b>
+							</p>
 
 
-								<div id="splitter" style='clear: both;'>
+							<div id="splitter" style='clear: both;'>
 
-									<!-- Start of Tree -->
-									<div id="treeboxbox_tree" style="padding: 5px;"
-										class="dhtmlxTree"
-										setImagePath="../resourcse/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
+								<!-- Start of Tree -->
+								<div id="treeboxbox_tree" style="padding: 5px;"
+									class="dhtmlxTree"
+									setImagePath="../resourcse/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
 
+								</div>
+
+
+								<!-- End of Tree -->
+
+								<div id="ContentPanel2"
+									style="font-size: 11px; background-image: none; margin-left: 25px;">
+									<!-- Start of Default Instruction -->
+
+									<div id="instruction" style="padding: 10px;">
+										<img src="/ziksana-web/resources/images/instruction.png"
+											class="all-box-shadow" alt="instructions"
+											title="Key-Board instruction" width="720"
+											style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;">
 									</div>
 
+									<!-- End of Default Instruction  -->
+									<!-- Add Module Container -->
 
-									<!-- End of Tree -->
-
-									<div id="ContentPanel2"
-										style="font-size: 11px; background-image: none; margin-left: 25px;">
-										<!-- Start of Default Instruction -->
-
-										<div id="instruction" style="padding: 10px;">
-											<img src="/ziksana-web/resources/images/instruction.png"
-												class="all-box-shadow" alt="instructions"
-												title="Key-Board instruction" width="720"
-												style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;">
-										</div>
-
-										<!-- End of Default Instruction  -->
-										<!-- Add Module Container -->
-
-										<!-- start of search and associate content -->
+									<!-- start of search and associate content -->
 
 
-										<!-- End of search and associate content -->
+									<!-- End of search and associate content -->
 
-										<!-- Start of Third Container -->
+									<!-- Start of Third Container -->
 
 
-										<!-- end of definecontainer--->
+									<!-- end of definecontainer--->
 
 
 
-										<!-- End of Third Container -->
+									<!-- End of Third Container -->
 
-										<!-- Start of Viewmodelthinking -->
-
-
-										<!-- End of viewmodelthinking -->
-
-										<!-- start view modelthinking 2 -->
+									<!-- Start of Viewmodelthinking -->
 
 
-										<!-- End of viewmodelthinking -->
+									<!-- End of viewmodelthinking -->
 
-										<!-- End of view modelthinkin 2 -->
+									<!-- start view modelthinking 2 -->
 
 
+									<!-- End of viewmodelthinking -->
+
+									<!-- End of view modelthinkin 2 -->
 
 
 
-									</div>
-									<!-- Content Panel End -->
 
 
 								</div>
-								<!-- end of definecontainer--->
+								<!-- Content Panel End -->
 
-
-
-								<!------------------------------- end of first Tab ---------------------------------------------->
-
-								<!--End Center Container-->
 
 							</div>
+							<!-- end of definecontainer--->
+
+
+
+							<!------------------------------- end of first Tab ---------------------------------------------->
+
+							<!--End Center Container-->
+
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!--End Main Content-->
-		<!--Current Progress-->
-		<div class="col border-top">
-			<div class="collapse">
-				<h3 class="border-left border-right border-top">Your current
-					progress [ Starting ... ]</h3>
-				<div>
-					<p class="caption text-size-px18">Your progress this session...
-					</p>
-				</div>
+	</div>
+	</section>
+	<!--End Main Content-->
+	<!--Current Progress-->
+	<div class="col border-top">
+		<div class="collapse">
+			<h3 class="border-left border-right border-top">Your current
+				progress [ Starting ... ]</h3>
+			<div>
+				<p class="caption text-size-px18">Your progress this session...
+				</p>
 			</div>
 		</div>
+	</div>
 
-		<script>
-			$(".collapse").collapse({
-				show : function() {
-					this.animate({
-						opacity : 'toggle',
-						height : 'toggle'
-					}, 300);
-				},
-				hide : function() {
+	<script>
+		$(".collapse").collapse({
+			show : function() {
+				this.animate({
+					opacity : 'toggle',
+					height : 'toggle'
+				}, 300);
+			},
+			hide : function() {
 
-					this.animate({
-						opacity : 'toggle',
-						height : 'toggle'
-					}, 300);
-				}
-			});
-
-			//rating-star	
-			$('#edu-star').raty({
-
-				click : function(score, evt) {
-					$(this).fadeOut(function() {
-						$(this).fadeIn();
-					});
-				},
-				targetKeep : true,
-				path : 'images/img/',
-				score : 4,
-				cancel : true
-			});
-			function testCall(){
-				alert("Please create a Course and add modules");
+				this.animate({
+					opacity : 'toggle',
+					height : 'toggle'
+				}, 300);
 			}
-		</script>
+		});
+
+		//rating-star	
+		$('#edu-star').raty({
+
+			click : function(score, evt) {
+				$(this).fadeOut(function() {
+					$(this).fadeIn();
+				});
+			},
+			targetKeep : true,
+			path : 'images/img/',
+			score : 4,
+			cancel : true
+		});
+		function testCall() {
+			alert("Please create a Course and add modules");
+		}
+	</script>
 
 
-		<!--End Current Progress-->
-		<!--Footer Container-->
-		<footer> </footer>
-		<!--End Footer Container-->
+	<!--End Current Progress-->
+	<!--Footer Container-->
+	<footer> </footer>
+	<!--End Footer Container-->
 	</div>
 </body>
 </html>

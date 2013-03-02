@@ -1,14 +1,15 @@
 package com.ziksana.service.course;
 
-import com.ziksana.domain.course.CourseTagcloud;
+import com.ziksana.domain.course.LearningComponentTagcloud;
 import com.ziksana.exception.course.CourseException;
 
 public interface LearningComponentTagCloudService {
 
-	public CourseTagcloud saveOrUpadteTags(CourseTagcloud courseTagcloud)
+	public LearningComponentTagcloud saveOrUpadteTags(
+			LearningComponentTagcloud learningComponentTagcloud)
 			throws CourseException;
 
-	public CourseTagcloud getComponentTagClouds(Integer learningComponentId,
-			Integer courseId);
+	public LearningComponentTagcloud getComponentTagClouds(
+			Integer learningComponentId);
 
 }

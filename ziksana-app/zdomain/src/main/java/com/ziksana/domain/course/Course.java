@@ -117,6 +117,16 @@ public class Course extends AuditHistory {
 	private Integer duration = null;
 	private Integer durationUnits = null;
 	private Integer subjClassificationId = null;
+	
+	private ZID learningComponentId =null;
+
+	public ZID getLearningComponentId() {
+		return learningComponentId;
+	}
+
+	public void setLearningComponentId(ZID learningComponentId) {
+		this.learningComponentId = learningComponentId;
+	}
 
 	public Integer getSubjClassificationId() {
 		return subjClassificationId;

@@ -533,11 +533,13 @@ span.standartTreeRow:hover {
 													</div>
 													<!-- end of moduleselection--->
 
-												<div  style="margin-top:20px;"> 
-												<label  style="font-weight: bold; padding-top:10px;">Specify any tags : </label>
-												 <input id="Addmoduletag1"  tabindex="6" type="text" style="margin-left: 20px;width:250px;height:20px;"></input> 
-												
-												</div>
+												<div class="coursetags">
+											<br /> 
+											<label class="labelclass" for="coursetags"
+												style="margin-top: -2px; font-weight: bold;">Specify
+												any tags : </label> <input id="Addmoduletag1" type="text" tabindex="6"
+												style="margin-left: 20px;width:250px;height:25px;"></input> <br /> <br />
+											</div>
 												<!--  	<div class="coursetags">
 														<br /> <label class="control-label labelclass"
 															for="moduletags"

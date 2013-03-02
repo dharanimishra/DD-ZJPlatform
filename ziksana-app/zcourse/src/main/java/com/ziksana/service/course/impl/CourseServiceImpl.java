@@ -240,6 +240,9 @@ public class CourseServiceImpl implements CourseService {
 				LOGGER.debug("Before Updating the Learning Component ....");
 				learningComponentMapper.updateLearningComponent(learningComp);
 				LOGGER.debug("After Updating the CourseLearningComponent : ");
+				
+				course.setLearningComponentId(learningComp.getLearningComponentId());
+
 
 			} else {
 				// SAVE OPERATION
@@ -250,6 +253,8 @@ public class CourseServiceImpl implements CourseService {
 
 				LOGGER.debug("After Saving the CourseLearningComponent Course ID..: "
 						+ course.getCourseId().getDisplayID());
+				
+				course.setLearningComponentId(learningComp.getLearningComponentId());
 
 				courseLearningComponent.setCourse(course);
 
