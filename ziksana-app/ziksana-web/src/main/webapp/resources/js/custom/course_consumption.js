@@ -291,7 +291,9 @@ $(document).ready(function() {
 
 
 						get_educator_notes(node_id, parent_node_id, course_id);
-
+						
+						//Get Hotspot
+						get_hotspot(node_id, parent_node_id, course_id);
 
 
 						// Get Educator Suggested References
@@ -894,7 +896,50 @@ function get_educator_notes(node_id, parent_node_id, course_id) {
 
 }
 
+//get Hostpot
+function get_hotspot(node_id, parent_node_id, course_id){
+	console.log("Hello Hostpot");
+	
+	
 
+	$.get('/ziksana-web/secure/gethotspot', {
+
+		'nodeId' : node_id,
+
+		"parentNodeId" : parent_node_id,
+
+		"courseId" : course_id
+
+	}, function(data) {
+
+
+
+		notes1 = data;
+		
+		hotspot_notes = '';
+		for (i in notes1)
+
+
+
+		{
+		hotspot_title = notes1[i].title;
+
+
+
+		hotspot_description = notes1[i].description;
+
+
+
+		hotspot_duration = notes1[i].duration;
+		
+		hotspot_notes = hotspot_notes + hotspot_title + "||:" + hotspot_duration + ":"+ hotspot_description + "|||";
+		
+		}
+		console.log("Hotspot log="+hotspot_notes);
+		
+	});
+	
+}
 
 // add learner note
 
