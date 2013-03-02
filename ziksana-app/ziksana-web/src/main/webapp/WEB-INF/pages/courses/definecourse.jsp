@@ -577,12 +577,12 @@ span.standartTreeRow:hover {
 										</div>
 										<!-- end of moduleselection--->
 
-										<div class="coursetags">
+										<div class="coursetags" >
 											<br /> <label class="labelclass" for="coursetags"
 												style="margin-top: -2px; font-weight: bold;">Specify
-												any tags : </label> <input id="Ctagfield_e" type="text" tabindex="6"
-												style="margin-left: 20px; width: 250px; height: 25px;"></input>
-											<br /> <br />
+												any tags with comma seperator : </label> <br /> <input id="Ctagfield_e" type="text" tabindex="6"
+												style="margin-left: 20px; width:350px; height: 50px; overflow:auto;"></input>
+											<br /> 
 										</div>
 										<!-- end of coursetags--->
 

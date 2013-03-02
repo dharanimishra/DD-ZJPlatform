@@ -791,6 +791,7 @@ public class CreateCourseController {
 			if (flag) {
 				try {
 					tagcloud.setTagCloudId(getTagcloud.getTagCloudId());
+					tagcloud.setComponentTagCloudId(updatedLearningComponentId);
 					tagcloud.setTagName(ModuleTags);
 					tagcloud.setZeniSuggestedIndicator(true);
 					tagcloud.setLearningComponentId(updatedLearningComponentId);

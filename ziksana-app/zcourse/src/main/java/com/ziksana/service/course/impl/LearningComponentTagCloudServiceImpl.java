@@ -29,7 +29,7 @@ public class LearningComponentTagCloudServiceImpl implements
 				+ " Method Name :saveOrUpadteTags(LearningComponentTagcloud learningComponentTagcloud)"
 				+ learningComponentTagcloud);
 		try {
-			if (learningComponentTagcloud.getComponentTagCloudId() != null) {
+			if (learningComponentTagcloud.getTagCloudId() != null) {
 				tags = learningComponentTagcloudMapper
 						.update(learningComponentTagcloud);
 			} else {

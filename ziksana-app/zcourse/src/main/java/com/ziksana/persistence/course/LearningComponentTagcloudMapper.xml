@@ -41,8 +41,6 @@
 		update corlearningcomponenttagcloud
 		<set>
 			tagname=#{tagName,jdbcType=VARCHAR},
-		</set>
-		<set>
 			learningComponentId=#{learningComponentId,jdbcType=INTEGER},
 		</set>
 		where
