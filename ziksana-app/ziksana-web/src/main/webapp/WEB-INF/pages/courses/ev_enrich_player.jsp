@@ -9,6 +9,7 @@
 <script type="text/javascript" src="/ziksana-web/resources/js/custom/course_enrichment.js"></script>
 <script type='text/javascript' src="/ziksana-web/resources/jwplayer/swfobject.js"></script>
 <script type="text/javascript" src="/ziksana-web/resources/jwplayer/jwplayer.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/custom/z_common.js"></script>
 
 
 	<div id="video">
@@ -418,13 +419,13 @@ var delete_educator_content = function(delete_icon){
 
 	</div>
 
-	<div class="tableofcontent">
+	<div class="tableofcontent1">
 
-		<table align="left" id="dataTable" class="table table-hover enrich_table"
-			style="width: 550px;">
+		<table align="left" id="dataTable1" class="enrich_table"
+			style="width: 700px;">
 			<thead
-				style="font-size: 8px; font-family: tahoma; font-style: normal; color: #666;">
-				<tr style="background-color: #E1E8F0;">
+				style="font-size: 11px; font-family: tahoma; font-style: normal; color: #fff;">
+				<tr style="background-color: #3ca3c1;">
 					<th width="15%">Type</th>
 					<th width="20%">Name</th>
 					<th width="40%">Details</th>
@@ -440,7 +441,18 @@ var delete_educator_content = function(delete_icon){
 		</table>
 
 	</div>
-	
+	<div class="tableofcontent">
+
+		<table align="left" id="dataTable" class="table row_highlight enrich_table"
+			style="width: 680px;">
+			
+			<tbody>
+
+
+			</tbody>
+		</table>
+
+	</div>
 	<div id="edit_educator_content" style="display:none;">
 		<h2>Edit <span class="educator_content_type">Type</span></h2><hr/>
 		<input type="hidden" id="ec_enrich_id" value=""/>
@@ -476,7 +488,8 @@ table.enrich_table td {
   font-size: 11px;
   padding: 1em;
 }
-div.tableofcontent { width: 570px; max-height: 200px; overflow-y: auto;}
+div.tableofcontent { width: 705px; max-height: 200px; overflow-y: auto;}
+div.tableofcontent1 { width: 705px; max-height: 200px; overflow-y: auto;}
 table.enrich_table td img {cursor:pointer; margin-right: .5em;}		
 #edit_educator_content {
   background: #555;
@@ -496,6 +509,9 @@ table.enrich_table td img {cursor:pointer; margin-right: .5em;}
 		#edit_educator_content label {display: block; margin-bottom: .5em;}
 		#edit_educator_content input[type="text"]{width: 90%;}
 	
+	
+	.highlighted_row td {background: #3ca3c1;}
+	.row_highlight tr:hover td {background: #CADFE2;}
 	</style>
 	
 
