@@ -503,7 +503,8 @@ span.standartTreeRow:hover {
 																			{
 																				'swf' : '/ziksana-web/resources/swf/uploadify.swf',
 																				'queueSizeLimit' : 1,
-																				'successTimeout' : 350,
+																				'successTimeout' : 900, // 15 minute timeout
+																				'fileSizeLimit' : '102400KB', // allow upto 100 mb
 																				'uploader' : '${ms.uploadScript}',
 																				//'debug': true,
 																				//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
