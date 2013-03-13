@@ -1,4 +1,4 @@
-package com.ziksana.controller;
+package com.ziksana.controller.polls;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ziksana.controller;
+package com.ziksana.controller.announcements;
 
 import java.util.ArrayList;
 import java.util.List;

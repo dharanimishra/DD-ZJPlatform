@@ -29,7 +29,7 @@ public class EnrichCourseController {
 	public @ResponseBody
 	ModelAndView showEnrichCourse() {
 		LOGGER.info("Entering showEnrichCourse(): ");
-		ModelAndView mv = new ModelAndView("courses/enrichcontent");
+		ModelAndView mv = new ModelAndView("organizeenrichcontent");
 
 		return mv;
 	}
@@ -51,11 +51,11 @@ public class EnrichCourseController {
 			if(contentCount == 0){
 				return new ModelAndView("redirect:/secure/associatecontent/course_"+courseid+"");
 			}else{
-				modelView = new ModelAndView("courses/enrichcontent");
+				modelView = new ModelAndView("organizeenrichcontent");
 				modelView.addObject("courseid", courseid);
 			}
 		} else {
-			modelView = new ModelAndView("courses/definecourse");
+			modelView = new ModelAndView("createcourse");
 			modelView.addObject("courseid", courseid);
 		}
 		modelView.addObject("courseId", contentId);

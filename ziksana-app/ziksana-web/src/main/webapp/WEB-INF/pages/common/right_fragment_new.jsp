@@ -550,7 +550,7 @@ function short_string(string){
 	 
 	 function short_string_result(value){
 			
-				return value.substring(0,4);
+				return value.substring(0,5);
 			
 		}
  }

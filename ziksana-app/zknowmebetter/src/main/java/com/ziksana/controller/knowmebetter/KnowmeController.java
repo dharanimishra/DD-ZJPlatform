@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ziksana.controller;
+package com.ziksana.controller.knowmebetter;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

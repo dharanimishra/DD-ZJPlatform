@@ -44,7 +44,7 @@ public class AssociateCourseController {
 	ModelAndView showAssociateContent() {
 		LOGGER.info("Entering showAssociateCourse(): ");
 		ModelAndView modelView = null;
-		modelView = new ModelAndView("courses/definecourse");
+		modelView = new ModelAndView("createcourse");
 		mediaServerURL = mediaService.getMediaContents();
 		modelView.addObject("ms", mediaServerURL);
 		return modelView;
@@ -73,13 +73,13 @@ public class AssociateCourseController {
 			if(isModuleExists == 0 ){
 				return new ModelAndView("redirect:/secure/createcourse/"+courseId+"");
 			}else{
-			modelView = new ModelAndView("courses/associatecontent");
+			modelView = new ModelAndView("createmodule");
 			modelView.addObject("CourseId", courseId);
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
 			}
 		} else {
-			modelView = new ModelAndView("courses/definecourse");
+			modelView = new ModelAndView("createcourse");
 			modelView.addObject("CourseId", courseId);
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);

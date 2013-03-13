@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ziksana.controller;
+package com.ziksana.controller.recommendations;
 
 import static com.ziksana.util.Util.getHeader;
 

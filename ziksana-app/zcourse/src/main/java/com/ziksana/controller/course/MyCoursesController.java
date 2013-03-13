@@ -77,14 +77,14 @@ public class MyCoursesController {
 					.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
 			Integer courseCount = courseService
 					.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-			ModelAndView mv = new ModelAndView("courses/myprograms-draft");
+			ModelAndView mv = new ModelAndView("draftedcourses");
 			mv.addObject("courses", courses);
 			mv.addObject("courseCount", courseCount);
 			mv.addObject("ms",mediaService.getMediaContents());
 			return mv;
 		} else {
 
-			ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
+			ModelAndView mvLearner = new ModelAndView("learnerdraftedcourses");
 			
 			List<LearningProgram> programs = courseService
 					.getLearningPrograms();
@@ -154,7 +154,7 @@ public class MyCoursesController {
 					.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
 			Integer courseCount = courseService
 					.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-			ModelAndView mv = new ModelAndView("courses/myprograms");
+			ModelAndView mv = new ModelAndView("mycoursesdraft");
 			mv.addObject("courses", courses);
 			mv.addObject("courseCount", courseCount);
 			mv.addObject("ms",mediaService.getMediaContents());
@@ -173,7 +173,7 @@ public class MyCoursesController {
 			int learnerCourseSize = courses.size();
 			System.out.println(" THE COURSE NAME IS   "
 					+ courses.get(0).getName());
-			ModelAndView mvLearner = new ModelAndView("courses/learnerprograms");
+			ModelAndView mvLearner = new ModelAndView("learnerdraftedcourses");
 			mvLearner.addObject("program", program.getName());
 			mvLearner.addObject("courses", courses);
 			mvLearner.addObject("learnerCourseSize",learnerCourseSize);	

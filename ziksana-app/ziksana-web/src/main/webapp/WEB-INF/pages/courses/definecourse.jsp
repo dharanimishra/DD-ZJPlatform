@@ -163,7 +163,9 @@
 	$(document).ready(function(e) {
 		$(".containerTableStyle").css('height', '400px');
 		$(".containerTableStyle").css('overflow', 'auto');
-
+		
+		  $('#homepage_nav').removeClass('current');
+	      $('#myprograms_nav').addClass('current');
 	});
 
 	var media_server_url = '${ms.url}';
@@ -314,77 +316,7 @@ span.standartTreeRow:hover {
 
 	<div id="wrapper">
 		<!--Header Container-->
-		<!--Header Container-->
-		<p>
-			<a><img data-launcher
-				data-launchpage="/ziksana-web/secure/launcher"
-				src="/ziksana-web/resources/images/ziksana_button_logo.png"
-				width=120px height=120px
-				style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a>
-		</p>
-		<header class="bottom-box-shadow bckground-wihte">
-
-			<div class="topheader">
-				<!--logo container-->
-
-				<!--end logo container-->
-
-
-			</div>
-			<nav>
-				<div class="menu" style="margin-left: 0px;">
-					<ul>
-						<li><a href="/ziksana-web/secure/educatordashboard">My
-								Home</a>
-							<div class="nav-line"></div></li>
-						<li><a href="/ziksana-web/secure/showMyPrograms"
-							class="current">My Programs</a>
-							<div class="nav-line"></div></li>
-						<li><a>My Students</a>
-							<div class="nav-line"></div></li>
-						<li><a style="margin-left: -10px;">My Locker</a></li>
-					</ul>
-				</div>
-
-				<div class="status-container">
-
-					<div id="status-icons"
-						class="bottom-box-shadow two-bottom-rounded-box ">
-
-						<ul>
-							<li><a class="email-icon" rel="tipsy" title="3 New Messages"><span
-									class="wite-title">3</span></a></li>
-							<li><a class="peoples-icon orange-bc" rel="tipsy"
-								title="5 Contact requests"><span class="wite-title">5</span></a></li>
-							<li><a class="alart-icon orange-bc" rel="tipsy"
-								title="1 Connect Request"><span class="wite-title">1</span></a></li>
-							<li><a class="announcement-icon orange-bc" rel="tipsy"
-								title="3 New Announcement"><span class="wite-title">3</span></a></li>
-							<li><a class=" amount-icon blue-bc" rel="tipsy"
-								title="Ziks available"><span class="wite-title">355500</span></a></li>
-
-						</ul>
-						<div></div>
-					</div>
-					<div class="account-container two-bottom-rounded-box">
-						<div class="container">
-							<div class="topnav">
-								<a class="signin wite bold"><span
-									class="text-size-px12 wite bold">My Account</span></a>
-							</div>
-							<fieldset id="signin_menu">
-								<ul>
-									<li><a>Preferences</a></li>
-									<li><a>Privacy</a></li>
-									<li><a href="/ziksana-web/secure/logout">Sign Out</a></li>
-								</ul>
-							</fieldset>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</header>
-		<!--End Header Container-->
+		
 		<!--End Header Container-->
 		<div class="sub-nav">
 			<div class="f-l">
@@ -926,7 +858,6 @@ span.standartTreeRow:hover {
 
 	<!--End Current Progress-->
 	<!--Footer Container-->
-	<footer> </footer>
 	<!--End Footer Container-->
 	</div>
 </body>

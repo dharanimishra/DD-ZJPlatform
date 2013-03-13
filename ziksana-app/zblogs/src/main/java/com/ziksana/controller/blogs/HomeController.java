@@ -1,4 +1,4 @@
-package com.ziksana.controller;
+package com.ziksana.controller.blogs;
 
 import java.util.HashMap;
 import java.util.Map;

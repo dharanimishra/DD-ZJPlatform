@@ -133,7 +133,7 @@ public class CreateCourseController {
 		LOGGER.info(" Entering Class " + getClass() + " showCourse()");
 		mediaServerURL = mediaService.getMediaContents();
 
-		ModelAndView mv = new ModelAndView("courses/definecourse");
+		ModelAndView mv = new ModelAndView("createcourse");
 		mv.addObject("ms", mediaServerURL);
 		LOGGER.info("Class " + getClass() + "Exiting showCourse(): ");
 		return mv;
@@ -154,7 +154,7 @@ public class CreateCourseController {
 		}
 		ModelAndView modelView = null;
 		if (course_id > 0) {
-			modelView = new ModelAndView("courses/definecourse");
+			modelView = new ModelAndView("createcourse");
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("ms", mediaServerURL);
@@ -186,12 +186,12 @@ public class CreateCourseController {
 		ModelAndView modelView = null;
 		if (course_id > 0) {
 
-			modelView = new ModelAndView("courses/coursecreation");
+			modelView = new ModelAndView("editcourse");
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("module", isModuleExists);
 		} else {
-			modelView = new ModelAndView("courses/definecourse");
+			modelView = new ModelAndView("createcourse");
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("module", isModuleExists);
@@ -215,12 +215,12 @@ public class CreateCourseController {
 		mediaServerURL = mediaService.getMediaContents();
 		ModelAndView modelView = null;
 		if (course_id > 0) {
-			modelView = new ModelAndView("courses/coursecreation");
+			modelView = new ModelAndView("editcourse");
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("module", isModuleExists);
 			modelView.addObject("ms", mediaServerURL);
 		} else {
-			modelView = new ModelAndView("courses/definecourse");
+			modelView = new ModelAndView("createcourse");
 			modelView.addObject("CourseId", course_id);
 			modelView.addObject("module", isModuleExists);
 			modelView.addObject("ms", mediaServerURL);

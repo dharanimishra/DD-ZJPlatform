@@ -18,7 +18,11 @@
 		<servlet-name>ziks-servlet</servlet-name>
 
 	</filter-mapping>
-
+	
+	<listener>
+		<description>sessionListener</description>
+		<listener-class>com.ziksana.session.listener.SessionAttributeListener</listener-class>
+	</listener>
 
 	<servlet>
 		<servlet-name>ziks-servlet</servlet-name>

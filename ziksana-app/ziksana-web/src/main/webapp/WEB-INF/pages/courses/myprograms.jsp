@@ -210,6 +210,10 @@ $('._cklo').show('');
     $(document).ready(function() {
 	
       $('.js-activated').dropdownHover();
+      
+     
+      $('#homepage_nav').removeClass('current');
+      $('#myprograms_nav').addClass('current');
     });
   </script>   
              
@@ -219,60 +223,10 @@ $('._cklo').show('');
         
 </head>
 <body >
-<div id="wrapper">
+<div >
         <!--Header Container-->
         	<!--Header Container-->
-        	 <c:url var="launcherPage" value="/secure/launcher"/>
-		<p><a><img data-launcher data-launchpage="${launcherPage}" src="../resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute;top:3px;left:30px; margin-left:0px;  "/></a></p>
-        	<header class="bottom-box-shadow bckground-wihte">
-			
-            	<div class="topheader"> 
-          <!--logo container-->
-          
-          <!--end logo container-->
-		    
- 
-        </div>
-            <nav>
-			<div class="menu" style=" margin-left:0px;">
-                      <ul>
-                        <li><a href="/ziksana-web/secure/educatordashboard" >My Home</a><div class="nav-line"></div></li>
-                        <li><a href="/ziksana-web/secure/showMyPrograms" class="current">My Programs</a><div class="nav-line"></div></li>
-                        <li><a href="#">My Students</a><div class="nav-line"></div></li>
-                        <li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;My Locker</a></li>
-                      </ul>
-                    </div>
-					
-                       <div class="status-container">
-		
-            <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box ">
-			
-              <ul>
-                <li><a href="#" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
-                 <li><a href="#" class="peoples-icon orange-bc" rel="tipsy" title="5 Contact requests"><span class="wite-title">5</span></a></li>
-                <li><a href="#" class="alart-icon orange-bc" rel="tipsy" title="1 Connect Request"><span class="wite-title">1</span></a></li>
-                <li><a href="#" class="announcement-icon orange-bc" rel="tipsy" title="3 New Announcement"><span class="wite-title">3</span></a></li>
-                 <li><a href="#" class=" amount-icon blue-bc"  rel="tipsy" title="Ziks available"><span class="wite-title">355500</span></a></li>
-               
-              </ul>
-              <div > </div>
-            </div>
-             <div class="account-container two-bottom-rounded-box">
-              <div class="container">
-                <div class="topnav" ><a href="#" class="signin wite bold"><span class="text-size-px12 wite bold">My Account</span></a> </div>
-                <fieldset id="signin_menu">
-                 <ul>
-                   <li><a href="#">Preferences</a></li>
-                   <li><a href="#">Privacy</a></li>
-
-                   <li><a href="/ziksana-web/secure/logout">Sign Out</a></li></ul>
-
-                </fieldset>
-              </div>
-            </div>
-          </div>
-              </nav>
-            </header>
+      
         <!--End Header Container-->
         <!--End Header Container-->
         <!--slogen-->
@@ -543,10 +497,7 @@ $('#edu-star').raty({
 
 
   <!--End Current Progress-->
-        <!--Footer Container-->
-	 		<footer>
-      		</footer>
-        <!--End Footer Container-->
+        
 </div>
      
     <script type="text/javascript" src="../resources/js/widget/jquery-ui-personalized-1.6rc2.min.js"></script>

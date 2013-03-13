@@ -391,7 +391,7 @@ $(document).ready(function() {
 					
 					if (content_type == 'ENHANCED_VIDEO') {
 
-						playEnhancedVideo(mediaserver_url + content_path);
+						playEnhancedVideo(mediaserver_url +"/"+ content_path);
 
 					}
 
