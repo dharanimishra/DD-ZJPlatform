@@ -20,7 +20,7 @@
                 <c:if test="${member.roleType eq 'EDUCATOR'}">
                     <div class="menu" >
                       <ul>
-                        <li><a href="/ziksana-web/secure/educatordashboard" class="current">My Home</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/secure/homepage" class="current">My Home</a><div class="nav-line"></div></li>
 						
                         <li><a href="/ziksana-web/secure/showMyPrograms">My Programs</a><div class="nav-line"></div></li>
                         <li><a href="#">My Students</a><div class="nav-line"></div></li>
@@ -31,7 +31,7 @@
                      <c:if test="${member.roleType eq 'LEARNER'}">
                     <div class="menu" >
                       <ul>
-                        <li><a href="/ziksana-web/secure/educatordashboard" class="current">My Home</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/secure/homepage" class="current">My Home</a><div class="nav-line"></div></li>
 						
                         <li><a href="/ziksana-web/secure/showMyPrograms">My Programs</a><div class="nav-line"></div></li>
                         <li><a href="#">My Performance</a><div class="nav-line"></div></li>

@@ -47,7 +47,7 @@ function updateTodo()
 	 console.log(editupdate_todo_category);
 	 console.log(editupdate_todo_description);
 	 console.log(selectedRowId);
-				  $.post( '<c:url value='/secure/updatetodo'/>'
+				  $.post( '<c:url value='/ztodo/updatetodo'/>'
 		        , {'todoItemId':selectedRowId,'category':editupdate_todo_category,'notificationContent':editupdate_todo_description}
 		        , function( data )
 		        {
@@ -71,7 +71,7 @@ function updateTodo()
 	 if(todo_category.toLowerCase() == 'add_new_category'){todo_category = '';}
 	
 		
-		$.post( '<c:url value='/secure/createtodo'/>'
+		$.post( '<c:url value='/ztodo/createtodo'/>'
         , {'category':todo_category,'notificationContent':todo_description}
         , function( data )
         {
@@ -88,7 +88,7 @@ function updateTodo()
  }
  </script>
  <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
- <c:url var="deleteTodoUrl" value="/secure/deletetodo/" />
+ <c:url var="deleteTodoUrl" value="/ztodo/deletetodo/" />
 <script type="text/javascript">
 
 //function checkonTodoItem(val){ deleteTodoFunction(val);}
@@ -121,8 +121,8 @@ function closeit(){
 	}
 </script>
  <!-- TODO LIst -->
-  <c:url var="todocategory" value="/secure/gettodocategory/111111" />
- <c:url var="showmoretodo" value="/secure/showmytodo/111111" />
+  <c:url var="todocategory" value="/ztodo/gettodocategory" />
+ <c:url var="showmoretodo" value="/ztodo/showalltodo" />
  <c:url var="todo" value="../resources/images/icons/todo.png" />
   <script type="text/javascript">
 $(document).ready(function() {

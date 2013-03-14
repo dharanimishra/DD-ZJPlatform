@@ -3,9 +3,6 @@ package com.ziksana.controller.blogs;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,28 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.member.Member;
-import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.blogs.BlogService;
 import com.ziksana.service.security.MemberService;
-import com.ziksana.util.Util;
 
 @Controller
-public class HomeController {
+public class BlogController {
 	
 	private static final Logger logger = LoggerFactory
-			.getLogger(HomeController.class);
+			.getLogger(BlogController.class);
 	
 	@Autowired
-	BlogService blogService;
+	private BlogService blogService;
 	
 	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
 
-	@RequestMapping(value="/home")
-	public String home() {
-		System.out.println("Entering Home Controller...");
-		return "dashboard";
-	}
+	
 	
 	@RequestMapping(value="/home2")
 	public ModelAndView home2() {
@@ -86,10 +77,7 @@ public class HomeController {
 	@RequestMapping(value="/blog/list")
 	public ModelAndView getBlogList() {
 		
-		System.out.println("HomeController::getBlogList()...");
-		
-		
-		
+	
 		ModelAndView mview = new ModelAndView("blog/bloglist");
 		
 				

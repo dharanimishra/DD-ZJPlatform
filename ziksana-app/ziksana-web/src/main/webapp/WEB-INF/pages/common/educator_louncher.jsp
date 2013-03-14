@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta />
-<title>Louncher</title>
+<title>Launcher</title>
 
 
 <link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
@@ -482,20 +482,20 @@ height: 553px;
             });
         </script>
 </head>
-<c:url var="closeicon" value="/resources/images/icons/close-icon.png" /><c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
+<c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
+<c:url var="deleteAlertUrl" value="/zalert/deletealert/" />
  
- <c:url var="htmlUrl_alert" value="/secure/getalertpopupwindow" />
- <c:url var="deleteTodoUrl" value="/secure/deletetodo/" />                          
+ <c:url var="htmlUrl_alert" value="/zalert/alertpopuppage" />
+ <c:url var="deleteTodoUrl" value="/ztodo/deletetodo/" />                          
   <c:url var="urgent" value='resources/images/icons/urgent.png' />                        
 <c:url var="todoImageUrl" value="/resources/images/background-pattern.jpg" />
-<c:url var="showAlertUrl" value="/secure/showalert/111111" />
+<c:url var="showAlertUrl" value="/zalert/getthreealerts" />
 <c:url var="info"  value='/resources/images/icons/info.png' />
- <c:url var="htmlUrl_todo" value="/secure/gettodopopupwindow" />
+ <c:url var="htmlUrl_todo" value="/ztodo/gettodopopuppage" />
  <c:url var="todo" value="/resources/images/icons/todo.png" />
-<c:url var="showTodoUrl" value="/secure/showtodo/111111" />
+<c:url var="showTodoUrl" value="/ztodo/getthreetodo" />
 <script type="text/javascript">
 function deleteFunction(val){
-	/* alert('${deleteAlertUrl}'+val); */
 	
 	confirm_delete_alert = confirm('Are you sure you want to delete this item?');
 	if(confirm_delete_alert == true){
@@ -569,8 +569,8 @@ function get_and_populate_alerts(){
 			
 				var no_of_available_alerts;
 				
-				$.get('/ziksana-web/secure/getalertsize/111111', {}, function(size){
-////////////////////////////////////////				
+				$.get('/ziksana-web/zalert/getalertsize', {}, function(size){
+				
 					no_of_available_alerts = size;
 				
 				
@@ -667,7 +667,7 @@ $.ajax({
 			//get All Todo size
 			var no_of_available_todo;
 			
-			$.get('/ziksana-web/secure/getmytodosize/111111', {}, function(size){ 
+			$.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
 				no_of_available_todo = size;
 			
 				var ouputEmptyTodo="";
@@ -845,7 +845,7 @@ $("#datepara").show();
 
 
 	   </div> <!-- end of  navlinks-->
-     <c:url var="educatorPage" value="/secure/educatordashboard"></c:url>
+     <c:url var="educatorPage" value="/secure/homepage"></c:url>
       <c:if test="${member.roleType eq 'EDUCATOR'}">
        <div class="navsublinks" style="margin-right:23px;padding-top:35px;">
 

@@ -1,4 +1,4 @@
-package com.ziksana.controller;
+package com.ziksana.controller.todo;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,33 +21,29 @@ import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.todo.TodoService;
 
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/ztodo")
 public class TodoController {
 	private static final Logger logger = LoggerFactory.getLogger(TodoController.class);
 	
 	@Autowired
-	TodoService todoService;
+	private TodoService todoService;
 	
 	/**
 	 * Retrive all todo items to display on the dashboard
 	 */
-	@RequestMapping(value = "/showmytodo/{memberId}", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView showMyTodos(@PathVariable String memberId) {
-		logger.info("Entering showMyTodos(): " + memberId);
+	@RequestMapping(value = "/showalltodo", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView showMyTodos() {
+		
 		ModelAndView modelView = new ModelAndView("xml/todolist");
-		
-		
+				
 		modelView.addObject("todoItems", todoService.getTodos());
-		
-		
-		
-		logger.info("Exiting showMyTodos(): " + memberId);
+
 		return modelView;
 	}
 	
-	@RequestMapping(value = "/getmytodosize/{memberId}", method = RequestMethod.GET)
-	public @ResponseBody int getTodoSize(@PathVariable String memberId) {
-		logger.info("Entering showMyTodos(): " + memberId);
+	@RequestMapping(value = "/gettodosize", method = RequestMethod.GET)
+	public @ResponseBody int getTodoSize() {
+
 		int todoSize = 0;
 		List<Todo> todoList = new ArrayList<Todo>();
 		todoList = todoService.getTodos();
@@ -61,14 +57,13 @@ public class TodoController {
 	/**
 	 * Retrive Three todo items to display on the dashboard
 	 */
-	@RequestMapping(value = "/showtodo/{memberId}", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView showTodos(@PathVariable String memberId) {
-		logger.info("Entering showMyTodos(): " + memberId);
-		ModelAndView modelView = new ModelAndView("xml/todolist");
-		
+	@RequestMapping(value = "/getthreetodo", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView showTodos() {
+
+		ModelAndView modelView = new ModelAndView("xml/todolist");	
 		
 		modelView.addObject("todoItems", todoService.getMapperTodos());
-		logger.info("Exiting showMyTodos(): " + memberId);
+
 		return modelView;
 	}
 	
@@ -82,8 +77,7 @@ public class TodoController {
 			@RequestParam(value = "notificationContent", required = true) String notificationContent) {
 
 		logger.info("Entering  the Create New Todo item");
-		logger.info("category  :"+category);
-		logger.info("NotificationContent  :"+notificationContent);
+	
 		// service call
 		Todo todo = new Todo();
 		todo.setCategory(category);
@@ -111,10 +105,10 @@ public class TodoController {
 
 	}
 
-	@RequestMapping(value = "/gettodopopupwindow", method = RequestMethod.GET)
+	@RequestMapping(value = "/gettodopopuppage", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView getPopupWindow() {
 		logger.info("Popup window");
-		ModelAndView modelAndView = new ModelAndView("xml/moretodo");
+		ModelAndView modelAndView = new ModelAndView("common/todo");
 		
 
 		return modelAndView;
@@ -123,26 +117,7 @@ public class TodoController {
 	
 	
 	
-	@RequestMapping(value = "/launcher", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getEducatorLouncher() {
-		logger.info("Popup window");
-		ModelAndView modelAndView = new ModelAndView("common/educator_louncher");
-		
-
-		return modelAndView;
-		
-	}
 	
-	
-	@RequestMapping(value = "/educatordashboard", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView redirectEducatorLauncherPage() {
-		logger.info("Popup window");
-		ModelAndView modelAndView = new ModelAndView("dashboard-div");
-		
-
-		return modelAndView;
-		
-	}
 	/**
 	 * Delete a todo item based on todo item id
 	 */
@@ -177,9 +152,9 @@ public class TodoController {
 		
 	}
 	
-	@RequestMapping(value = "/gettodocategory/{memberId}", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getCategoryById(@PathVariable String memberId){
-		logger.info("Entering showMyTodos(): " + memberId);
+	@RequestMapping(value = "/gettodocategory", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getCategoryById(){
+		
 		ModelAndView modelView = new ModelAndView();
 		
 		List<Todo> todoList = new ArrayList<Todo>();

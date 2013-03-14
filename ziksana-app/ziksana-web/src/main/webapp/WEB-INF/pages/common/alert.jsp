@@ -56,7 +56,7 @@ pageEncoding="ISO-8859-1"%>
 <c:url var="info" value="/resources/images/icons/info.png" />
 <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
  
-	<c:url var="deleteAlertUrl" value="/secure/deletealert/111111/" />
+	<c:url var="deleteAlertUrl" value="/zalert/deletealert/" />
 <script type="text/javascript">
 function deleteFunction(val){
 	
@@ -89,8 +89,8 @@ parent.jQuery.fancybox.close();
 </script>
 	
 	
-	<c:url var="showAlertUrl" value="/secure/showmyalert/111111" />
-	 <c:url var="deleteAlertUrl" value="/secure/deletealert/" />
+	<c:url var="showAlertUrl" value="/zalert/getalerts" />
+	 <c:url var="deleteAlertUrl" value="/zalert/deletealert/" />
 	 <script type="text/javascript">
 	 $(document).ready(function() {
 		 var images = new Array();

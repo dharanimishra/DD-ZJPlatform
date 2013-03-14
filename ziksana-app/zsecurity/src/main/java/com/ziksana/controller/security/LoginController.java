@@ -1,4 +1,4 @@
-package com.ziksana.controller;
+package com.ziksana.controller.security;
 
 import java.net.MalformedURLException;
 import java.net.URL;
