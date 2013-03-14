@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ziksana.controller.knowmebetter;
 
 import org.apache.log4j.Logger;
@@ -19,94 +16,103 @@ import com.ziksana.service.knowmebetter.PersonalityTestService;
 
 /**
  * @author vtg-p13
- *
+ * 
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/knowmebetter")
 public class KnowmeController {
-	
-	private static final Logger logger = Logger.getLogger(KnowmeController.class);
-	
+
+	private static final Logger logger = Logger
+			.getLogger(KnowmeController.class);
+
 	@Autowired
-	PersonalityTestService personalityService;
-	
+	private PersonalityTestService personalityService;
+
 	@RequestMapping(value = "/getansweredquestions", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getansweredQuestions() {
-		
+	public @ResponseBody
+	ModelAndView getansweredQuestions() {
+
 		logger.info("Know me Better || getansweredQuestions()");
 		ModelAndView modelAndView = new ModelAndView("xml/answeredquestions");
-		modelAndView.addObject("answeredquesList", personalityService.answeredQuestions());
+		modelAndView.addObject("answeredquesList",
+				personalityService.answeredQuestions());
 		logger.info("Exit Know me Better");
-		
+
 		return modelAndView;
-		 
+
 	}
-	
+
 	@RequestMapping(value = "/getunansweredquestionsbyid/{questionBankId}", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getUnansweredQuestionsByQuestionId(@PathVariable Integer questionBankId) {
-		
+	public @ResponseBody
+	ModelAndView getUnansweredQuestionsByQuestionId(
+			@PathVariable Integer questionBankId) {
+
 		logger.info("Know me Better || getunansweredQuestions()");
-		ModelAndView modelAndView = new ModelAndView("xml/singleunansweredquestions");
-		modelAndView.addObject("unansweredquesList", personalityService.getUnansweredQuestionsbyId(questionBankId));
+		ModelAndView modelAndView = new ModelAndView(
+				"xml/singleunansweredquestions");
+		modelAndView.addObject("unansweredquesList",
+				personalityService.getUnansweredQuestionsbyId(questionBankId));
 		logger.info("Exit Know me Better");
-		
+
 		return modelAndView;
-		
+
 	}
+
 	@RequestMapping(value = "/getunansweredquestions", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getUnansweredQuestions() {
-		
+	public @ResponseBody
+	ModelAndView getUnansweredQuestions() {
+
 		logger.info("Know me Better || getunansweredQuestions()");
 		ModelAndView modelAndView = new ModelAndView("xml/unansweredquestions");
-		modelAndView.addObject("unansweredquesList", personalityService.getUnansweredQuestions());
+		modelAndView.addObject("unansweredquesList",
+				personalityService.getUnansweredQuestions());
 		logger.info("Exit Know me Better");
-		
+
 		return modelAndView;
-		
+
 	}
-	@RequestMapping(value = "/getknowmepopupwindow", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView getPopupWindow() {
-		logger.info("Popup window");
-		ModelAndView modelAndView = new ModelAndView("xml/e-know-me");
-		
-		
+
+	@RequestMapping(value = "/knowmebetterpopuppage", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView getPopupWindow() {
+		logger.info("Knowmebetter Popup window");
+		ModelAndView modelAndView = new ModelAndView("common/knowmebetter");
+
 		return modelAndView;
-		
+
 	}
-	
+
 	@RequestMapping(value = "/saveknowme", method = RequestMethod.POST)
-	public @ResponseBody String submitKnowme(
+	public @ResponseBody
+	String submitKnowme(
 			@RequestParam(value = "memberAnswer", required = true) String memberAnswer,
 			@RequestParam(value = "testQuestionValue", required = true) String testQuestionValue,
 			@RequestParam(value = "testQuestionId", required = true) Integer testQuestionId,
-			@RequestParam(value = "questionBankAnswerId", required = true) Integer questionBankAnswerId){
-		
-		
-	   
-		
-		Question question = new Question(testQuestionId,testQuestionValue);
-		Choice userChoice =new Choice(questionBankAnswerId, null, memberAnswer);
-		
-		//userChoice.setMemPstTestId(Integer.valueOf(1));
+			@RequestParam(value = "questionBankAnswerId", required = true) Integer questionBankAnswerId) {
+
+		Question question = new Question(testQuestionId, testQuestionValue);
+		Choice userChoice = new Choice(questionBankAnswerId, null, memberAnswer);
+
+		// userChoice.setMemPstTestId(Integer.valueOf(1));
 		personalityService.saveAnswer(question, userChoice);
 		return "Answer Submitted Successfully";
 	}
-	
+
 	@RequestMapping(value = "/updateknowmebetter", method = RequestMethod.POST)
-	public @ResponseBody String updateKnowme(
+	public @ResponseBody
+	String updateKnowme(
 			@RequestParam(value = "editCheckedAnswer", required = true) String editCheckedAnswer,
-			@RequestParam(value = "editQuesval", required = true) String editQuesval,			
-			@RequestParam(value = "editQuesid", required = true) Integer editQuesid,			
+			@RequestParam(value = "editQuesval", required = true) String editQuesval,
+			@RequestParam(value = "editQuesid", required = true) Integer editQuesid,
 			@RequestParam(value = "editAnsId", required = true) Integer editAnsId,
-			@RequestParam(value = "memberPersonalityTestId", required = true) Integer memberPersonalityTestId){
-		
-		
-		Question question = new Question(editQuesid,editQuesval);
-		Choice userChoice =new Choice(editAnsId, editAnsId, editCheckedAnswer, memberPersonalityTestId);
-		
+			@RequestParam(value = "memberPersonalityTestId", required = true) Integer memberPersonalityTestId) {
+
+		Question question = new Question(editQuesid, editQuesval);
+		Choice userChoice = new Choice(editAnsId, editAnsId, editCheckedAnswer,
+				memberPersonalityTestId);
+
 		personalityService.updateAnswer(question, userChoice);
 		return "Answer Updated Successfully";
 	}
-	
 
 }

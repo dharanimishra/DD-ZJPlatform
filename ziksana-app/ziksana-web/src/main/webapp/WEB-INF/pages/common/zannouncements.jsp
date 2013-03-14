@@ -6,7 +6,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>zAnnouncements</title>
+<title>ZAnnouncements</title>
 
 <link rel="stylesheet" href="../resources/css/zCss.css" type="text/css" />
 <link type="text/css"
@@ -74,16 +74,12 @@
 
 <!-- Announcement  -->
 
-<c:url var="getAnnouncementAllDateUrl"
-	value='/secure/getannouncementsallbydate' />
-<c:url var="getInstitutionAnnouncementUrl"
-	value='/secure/getinstitutionannouncements' />
-<c:url var="getInstitutionunitAnnouncementUrl"
-	value='/secure/getinstitutionunitannouncements' />
-<c:url var="getCourseAnnouncementUrl"
-	value='/secure/getcourseannouncements' />
-<c:url var="showannouncements" value="/secure/showannouncements" />
-<c:url var="showannouncementsall" value="/secure/showannouncementsAll" />
+<c:url var="getAnnouncementAllDateUrl" value='/zannouncements/getannouncementsallbydate' />
+<c:url var="getInstitutionAnnouncementUrl" value='/zannouncements/getinstitutionannouncements' />
+<c:url var="getInstitutionunitAnnouncementUrl" value='/zannouncements/getinstitutionunitannouncements' />
+<c:url var="getCourseAnnouncementUrl" value='/zannouncements/getcourseannouncements' />
+<c:url var="showannouncements" value="/zannouncements/getannouncements" />
+<c:url var="showannouncementsall" value="/zannouncements/getallannouncements" />
 <script type="text/javascript">
 $(document).ready(function() {
 	$(document).ready(function() {
@@ -312,9 +308,7 @@ function getCategoryByBetweenDates(){
 						});
 						});
 						output_announcement+="</tbody></table>";
-						//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
-						//console.log("Announcements: " + output_announcement);
-					
+						
 						
 						$('#announcement_placeholder').html(output_announcement);
 						

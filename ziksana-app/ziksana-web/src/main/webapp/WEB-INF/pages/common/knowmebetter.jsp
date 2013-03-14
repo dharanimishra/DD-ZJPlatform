@@ -52,8 +52,8 @@
 }
 </style>
 	<!-- unanswered script -->
-<c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
-<c:url var="showAnswered" value="/secure/getansweredquestions" />
+<c:url var="showUnAnswered" value="/knowmebetter/getunansweredquestions" />
+<c:url var="showAnswered" value="/knowmebetter/getansweredquestions" />
 	<style>
 		.highlighted_row td {background: orange;}
 		.highlighted_row tr:hover td {background: orange !important;}
@@ -213,7 +213,7 @@
 		var questionBankAnswerId = answerid_answer_pair[0];
 		var memberAnswer = answerid_answer_pair[1];	    
 	
-		 $.post('<c:url value='/secure/saveknowme'/>'
+		 $.post('<c:url value='/knowmebetter/saveknowme'/>'
 			        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':cur_question_id,'questionBankAnswerId':questionBankAnswerId}
 			        , function( data )
 			        {
@@ -418,7 +418,7 @@ function answeredQuestionDisplay(){
 }
 
 
-<c:url var="showUnAnsweredbyId" value="/secure/getunansweredquestionsbyid/" />
+<c:url var="showUnAnsweredbyId" value="/knowmebetter/getunansweredquestionsbyid/" />
 function displayAnsweredQuestionContainer(loop){
 	
 	 $('#updateTable tr').removeClass('row-hover');
@@ -485,7 +485,7 @@ function updateValues(){
 
 	
 	   
-	    $.post( '<c:url value='/secure/updateknowmebetter'/>'
+	    $.post( '<c:url value='/knowmebetter/updateknowmebetter'/>'
 		        , {'editCheckedAnswer':split_ansid_ans[1],'editQuesval':editQuesval,'editQuesid':editQuesid,'editAnsId':split_ansid_ans[0],'memberPersonalityTestId':memberpersonalityTestIdAnswered}
 		        , function( data )
 		        {

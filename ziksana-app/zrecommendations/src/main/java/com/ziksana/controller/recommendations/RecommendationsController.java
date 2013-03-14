@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ziksana.controller.recommendations;
 
 import static com.ziksana.util.Util.getHeader;
@@ -33,13 +30,13 @@ import com.ziksana.service.todo.TodoService;
  * @version $Revision: 1.0 $
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zrecommendations")
 public class RecommendationsController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(RecommendationsController.class);
 
 	@Autowired
-	RecommendationsService recomendationsService;
+	private RecommendationsService recomendationsService;
 
 	@Autowired
 	private TodoService todoService;
@@ -50,11 +47,10 @@ public class RecommendationsController {
 	 *            category of the recommendations(Possible values are )
 	 * @return
 	 */
-	@RequestMapping(value = "/showrecByCateg/{category}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getrecommendationbycategory/{category}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showRecommendationsByCategory(@PathVariable Integer category) {
 
-		logger.info("Category Id: " + category);
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
 
 		List<Recommendation> recommendations = recomendationsService
@@ -76,32 +72,26 @@ public class RecommendationsController {
 	public @ResponseBody
 	ModelAndView getRecommendationsAllRecommendations() {
 
-		logger.info("All recommendations: ");
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
 
 		List<Recommendation> recommendations = recomendationsService
 				.getAllRecommendations();
 
 		modelAndView.addObject("recommendations", recommendations);
-		String showTab = "new";
-
-		logger.info("Exit Recommend");
 
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/getmapperrecomendations", method = RequestMethod.GET)
+	@RequestMapping(value = "/getthreerecomendations", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getRecommendations() {
 
-		logger.info("All recommemendations: ");
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
 
 		List<Recommendation> recommendations = recomendationsService
 				.getMapperRecommendation();
 
 		modelAndView.addObject("recommendations", recommendations);
-		logger.info("Exit Recommend");
 
 		return modelAndView;
 	}
@@ -185,10 +175,8 @@ public class RecommendationsController {
 
 	}
 
-	/*
-	 * Get popup Alert window
-	 */
-	@RequestMapping(value = "/zrecommendpopup", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/recommendationpopupage", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getPopupWindow() {
 

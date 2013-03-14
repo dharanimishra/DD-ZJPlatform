@@ -5,7 +5,7 @@ pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta />
-<title>poll details</title>
+<title>Poll Results</title>
 <link rel="stylesheet" href="../resources/css/zCss.css" type="text/css"/>
 <link type="text/css" href="../resources/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 <link rel="stylesheet" href="../resources/css/bootstrap.css" />
@@ -31,7 +31,7 @@ pageEncoding="ISO-8859-1"%>
 
 </style>
 		
-<c:url var="pollquestionsanswers" value="/secure/getallpollquestionsanswers/" />
+<c:url var="pollquestionsanswers" value="/zpolls/getallpollquestionsanswers/" />
 		<script type="text/javascript">
 			$(function(){
 				// Datepicker
@@ -84,13 +84,6 @@ poll_option3 = $('#poll_option3'+asd+'').text();
 	
 	
 
-//var val= $('#row_selection_'+asd+'').html();
-
-/* $("#linksMeeting").fadeIn();
-$("#zReturn1").hide();
-
-$("#linksdetails").html();
-$("#details-poll").hide(); */
 	 function short_string_result(value){
 			
 			return value.substring(0,4);
@@ -107,20 +100,7 @@ function selectrow()
 {
 $('#tr1').css("background-color", "#000000");
 }	
-/* function showdetails()
-{
-var test=$("#linksdetails").html();
 
-if(test=="")
-{
-alert("Please select a row and click the details button");
-}
-else{
-$("#zReturn1").show();
-$("#details-poll").show();
-
-}
-}	 */
 function showdate()
 {
 var today = Date.today().toString('MM/dd/yyyy');
@@ -136,8 +116,8 @@ var last_month = Date.prev().month().toString('MM/dd/yyyy');
 document.getElementById("vDate").value=last_month;
 }				
 		</script>
-<c:url var="getpollbetweendate" value="/secure/getpollsbetweendate/"/>	
- <c:url var="getAllPollQues" value="/secure/getallpollquestion" />
+<c:url var="getpollbetweendate" value="/zpolls/getpollsbetweendate/"/>	
+ <c:url var="getAllPollQues" value="/zpolls/getallpollquestion" />
   <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -165,7 +145,7 @@ $(document).ready(function() {
 												
 					});
 					output_announcement+="</tbody></table>";
-					console.log("All Poll Questions: " + output_announcement);
+
 				
 					
 					$('#tblGroup').html(output_announcement);
@@ -257,27 +237,27 @@ function hideContents(){
 				        {
 				        
 						
-						var output_announcement="";
+						var output_polls="";
 						
-						output_announcement+="<table id='updateTable' class='table tb1'>";
-						output_announcement+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Poll Date</th>";
-						output_announcement+="<th  width='200px' style='color:#fff;'>Questions</th></tr>";
-						output_announcement+="<tbody>";
+						output_polls+="<table id='updateTable' class='table tb1'>";
+						output_polls+="<tr style='background-color:#3ca3c1;height:30px;border:1px solid gray;'><th width='200px' style='color:#fff;'>Poll Date</th>";
+						output_polls+="<th  width='200px' style='color:#fff;'>Questions</th></tr>";
+						output_polls+="<tbody>";
 						
 						$(data).find("QuestionsList").each(function(){
 							$(data).find("Questions").each(function(index){
 							
-							output_announcement+="<tr id='row_selection_"+index+"' onClick='details("+index+")' ><td style=''><label style='display:none' id='edit_message"+index+"'>"+ $(this).find("questionId").text()+"</label><label id='edit_messages"+index+"'>"+ $(this).find("questionDate").text()+"</label></td>";
-							output_announcement+="<td><label id='edit_description"+index+"'>"+ $(this).find("questionName").text()+"</label></td></tr>"; 
+								output_polls+="<tr id='row_selection_"+index+"' onClick='details("+index+")' ><td style=''><label style='display:none' id='edit_message"+index+"'>"+ $(this).find("questionId").text()+"</label><label id='edit_messages"+index+"'>"+ $(this).find("questionDate").text()+"</label></td>";
+								output_polls+="<td><label id='edit_description"+index+"'>"+ $(this).find("questionName").text()+"</label></td></tr>"; 
 							
 							});
 													
 						});
-						output_announcement+="</tbody></table>";
-						console.log("All Poll Questions: " + output_announcement);
+						output_polls+="</tbody></table>";
+
 					
 						
-						$('#tblGroup').html(output_announcement);
+						$('#tblGroup').html(output_polls);
 						
 				        });
 		

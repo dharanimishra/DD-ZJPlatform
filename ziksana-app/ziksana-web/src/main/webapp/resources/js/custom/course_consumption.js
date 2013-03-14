@@ -768,7 +768,7 @@ function get_educator_suggested_references(node_id, parent_node_id, course_id) {
 
 
 
-							link = '<a style="display:none;" data-iconprefix="link" class="position" data-position="'
+							link = '<a style="display:none;" data-iconprefix="link" class="position" onclick="jwplayer(player).pause(\'true\');" data-position="'
 
 									+ duration
 
@@ -860,7 +860,7 @@ function get_educator_notes(node_id, parent_node_id, course_id) {
 
 
 
-			link = '<a style="display:none;" class="position" data-position="'
+			link = '<a style="display:none;" class="position"  onclick="jwplayer(player).pause(\'true\');"  data-position="'
 
 					+ duration + '" data-iconprefix="note" href="#" title="'
 

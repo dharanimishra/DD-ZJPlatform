@@ -1,12 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<c:url var="showPollUrl" value="/secure/showpoll/111111" />
+<c:url var="showPollUrl" value="/zpolls/showpoll" />
 
 <c:url var="jsJqueryFormUrl" value="../resources/js/jquery.form.js" /> 
 <script type="text/javascript" src="${jsJqueryFormUrl}"></script>
 <%@ page session="true"%>
 
-<c:url var="showpoll" value="/secure/getpollpopupwindow" />          
+<c:url var="showpoll" value="/zpolls/getpollpopuppage" />          
        
  <style>
  .moreclass
@@ -346,8 +346,8 @@ $(document).ready(function() {
 </script>		
 </c:if>
 
- <c:url var="showAnnouncementUrl" value="/secure/getannouncement" />
- <c:url var="getannouncementbyid" value="/secure/showannouncementbyid/" />
+ <c:url var="showAnnouncementUrl" value="/zannouncements/getannouncements" />
+ <c:url var="getannouncementbyid" value="/zannouncements/showannouncementbyid/" />
   <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -492,7 +492,7 @@ function short_string(string){
           			          
       
           <p class="txt-r _bgmain" style="padding-right:10px; clear:both;">
-          <c:url var="showannounpopup" value="/secure/showannouncementpopup" />
+          <c:url var="showannounpopup" value="/zannouncements/showannouncementpopup" />
             <span><a class="text-size-px11  lbx-70-50 moreclass" href="${showannounpopup}">More</a></span>
           </p>
         </div>
@@ -508,7 +508,7 @@ function short_string(string){
 	 
 	 pollid = $('#pollId'+indexVal+'').val();	
 	 optionindex = $('#optionIndex').val();
-	  $.post( '<c:url value='/secure/submitpoll/'/>'
+	  $.post( '<c:url value='/zpolls/submitpoll/'/>'
 		 		 , {'pollId':pollid,'optionIndex':optionindex}
 		 		 , function( data )
 		  			{

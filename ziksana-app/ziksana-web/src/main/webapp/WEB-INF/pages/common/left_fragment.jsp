@@ -355,9 +355,9 @@
 	</div>
 
 	<!-- unanswered script -->
-	<c:url var="knowmwpopup" value="/secure/getknowmepopupwindow" />
+	<c:url var="knowmwpopup" value="/knowmebetter/knowmebetterpopuppage" />
 
-	<c:url var="showUnAnswered" value="/secure/getunansweredquestions" />
+	<c:url var="showUnAnswered" value="/knowmebetter/getunansweredquestions" />
 	<script type="text/javascript">
 
   setInterval(function() {
@@ -502,7 +502,7 @@ function submitValue(){
 	memberAnswer = answerid_answer_pair[1];
 
 		   
-		       $.post( '<c:url value='/secure/saveknowme'/>'
+		       $.post( '<c:url value='/knowmebetter/saveknowme'/>'
 				        , {'memberAnswer':memberAnswer,'testQuestionValue':testQuestionValue,'testQuestionId':question_id,'questionBankAnswerId':questionBankAnswerId}
 				        , function(data)
 				        {
@@ -529,7 +529,7 @@ function submitValue(){
 	<label ></label>
 	<!-- recommendation zeni -->
 
-	<c:url var="showRecomendUrl" value="/secure/getmapperrecomendations" />
+	<c:url var="showRecomendUrl" value="/zrecommendations/getthreerecomendations" />
 	  <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -578,7 +578,7 @@ $(document).ready(function() {
 
 
 			<p class="txt-r _bgmain" style="padding-right: 10px; clear: both;">
-				<c:url var="htmlUrl_profile2" value="/secure/zrecommendpopup" />
+				<c:url var="htmlUrl_profile2" value="/zrecommendations/recommendationpopupage" />
 				<span><a class="text-size-px11  lbx-70-50 moreclass" href="${htmlUrl_profile2}" >More</a></span>
 			</p>
 			</div>

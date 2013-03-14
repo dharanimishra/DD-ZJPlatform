@@ -12,7 +12,7 @@
 <html>
 <head>
 
-<title>Zrecommend</title>
+<title>ZRecommendations</title>
 <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" />
 <style type="text/css">
 .recommendation-info-category
@@ -59,8 +59,8 @@
 <!----- end for tooltip script ----> 
 <script src="../resources/js/zRecommend.js"></script>
 
- <c:url var="showRecomendByCateg" value="/secure/showrecByCateg/" />
- <c:url var="getAllRecommendations" value="/secure/getallrecomendations" />
+ <c:url var="showRecomendByCateg" value="/zrecommendations/getrecommendationbycategory/" />
+ <c:url var="getAllRecommendations" value="/zrecommendations/getallrecomendations" />
   <script type="text/javascript">
   function closeIt(){
 	 
@@ -221,7 +221,7 @@ function addTodo_and_update_recommendation(index){
 	recommend_id = $('#recomendId'+index+'').html(); 
 	categoryId= $('#categoryId'+index+'').html();
 	
-	$.post( '<c:url value='/secure/createtodoandrecomendationupdation'/>'
+	$.post( '<c:url value='/zrecommendations/createtodoandrecomendationupdation'/>'
 	 		 , {'categoryName':recommend_title,'notificationContent':recommend_description,'recommendationId':recommend_id,'category':942}
 	 		 , function( data )
 	  			{
@@ -242,7 +242,7 @@ function moveIgnored(index){
 	recommend_id = $('#recomendId'+index+'').html(); 
 	categoryId= $('#categoryId'+index+'').html();
 	
-	 $.post( '<c:url value='/secure/updaterecommendation'/>'
+	 $.post( '<c:url value='/zrecommendations/updaterecommendation'/>'
     		 , {'recommendationId':recommend_id,'category':943}
     		 , function( data )
      			{

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ziksana.controller.announcements;
 
 import java.util.ArrayList;
@@ -25,19 +22,19 @@ import com.ziksana.service.announcements.AnnouncementService;
  * 
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zannouncements")
 public class AnnouncementsController {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(AnnouncementsController.class);
 
 	@Autowired
-	AnnouncementService announcementService;
+	private AnnouncementService announcementService;
 
 	/**
 	 * Retrive announcement to display
 	 */
-	@RequestMapping(value = "/showannouncementsAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/getallannouncements", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getAnnouncement() {
 
@@ -51,7 +48,7 @@ public class AnnouncementsController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/showannouncementsinglepopup", method = RequestMethod.GET)
+	@RequestMapping(value = "/announcementpopuppage", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getAnnouncementByAnnouncementId(
 			@RequestParam(value = "anouncementId", required = true) int anouncementId) {
@@ -68,7 +65,7 @@ public class AnnouncementsController {
 	/**
 	 * Retrive announcement to display
 	 */
-	@RequestMapping(value = "/getannouncement", method = RequestMethod.GET)
+	@RequestMapping(value = "/getannouncements", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getAnnouncementById() {
 

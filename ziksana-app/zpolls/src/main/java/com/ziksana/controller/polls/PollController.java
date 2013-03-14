@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ziksana.domain.announcements.Announcement;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollQuestionResult;
@@ -22,7 +21,7 @@ import com.ziksana.domain.polls.PollResultNQuestion;
 import com.ziksana.service.polls.PollService;
 
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zpolls")
 public class PollController {
 
 	private static final Logger logger = LoggerFactory
@@ -98,19 +97,11 @@ public class PollController {
 		return modelView;
 	}
 	
+
+
+	@RequestMapping(value = "/showpoll", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView showPolls() {
 	
-	@RequestMapping(value = "/homePage.htm", method = RequestMethod.GET, params = {})
-	public @ResponseBody
-	List<PollQuestion> getPollQuestions(Integer memberRoleId) {
-		// TODO
-		return null;
-
-	}
-
-	@RequestMapping(value = "/showpoll/{memberId}", method = RequestMethod.GET)
-	public @ResponseBody
-	ModelAndView showPolls(@PathVariable String memberId) {
-		logger.info("Entering showPolls(-----): " + memberId);
 		ModelAndView modelView = new ModelAndView("xml/pollResultNQuestionNew");
 		
 		List<PollResultNQuestion> pollQuestionList = pollService.getPollQuestionsAndResults();
@@ -119,9 +110,7 @@ public class PollController {
 				pollService.getPollQuestionsAndResults());
 
 		modelView.addObject("pollSize", pollSize);
-		
-		
-		logger.info("Exiting showPolls(-----): " + memberId);
+
 		return modelView;
 	}
 
@@ -177,7 +166,7 @@ public class PollController {
 
 	}
 	
-	@RequestMapping(value = "/getpollpopupwindow", method = RequestMethod.GET)
+	@RequestMapping(value = "/getpollpopuppage", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView getPopupWindow() {
 		
 		ModelAndView modelAndView = new ModelAndView("common/pollResults");
