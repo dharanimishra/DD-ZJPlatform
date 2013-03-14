@@ -38,6 +38,11 @@
 		
 				
 			function ff_player_mode() { return "playback"; }
+			function ff_recording_save_path(path) {
+				//console.log(path);
+				parent.$.fancybox.close();
+
+			}
 			//function ff_load_images() { return "http://54.243.235.88/zikload-xml/uploads"+"${content.thumbnailPicturePath}"+"|||"+"${content.numberOfThumbnails}"; }
 			function ff_get_recorded_file(){ return "${ms.flashRecordingFolder}${content.contentUrl}"; }
 			function  ff_get_flash_recorder() { return "${ms.flashRecordingScript}";};
