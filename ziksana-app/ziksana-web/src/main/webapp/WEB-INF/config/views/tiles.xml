@@ -5,17 +5,6 @@
 
 <tiles-definitions>
 
-	<definition name="baseDivLayout" template="/WEB-INF/pages/layout/div-layout.jsp">
-		<put-attribute name="head_static" value="" />
-		<put-attribute name="header" value="/WEB-INF/pages/common/header.jsp" />
-		<put-attribute name="slogan" value="" />
-		<put-attribute name="left" value="" />
-		<put-attribute name="body" value="" />
-		<put-attribute name="right" value="" />
-		<put-attribute name="footer" value="/WEB-INF/pages/common/footer.jsp" />
-		<put-attribute name="footer_static" value="" />
-	</definition>
-	
 	<!--Common Page layout  -->
 	<definition name="commonPageLayout" template="/WEB-INF/pages/layout/div-layout.jsp">
 	  <put-attribute name="head_static" value="" />
@@ -29,7 +18,7 @@
 	 </definition>
 	 
 	 <!--HomePage Educator/Learner -->
-	<definition name="dashboard-div" extends="baseDivLayout">
+	<definition name="dashboard-div" extends="commonPageLayout">
 		<put-attribute name="head_static" value="/WEB-INF/pages/dashboard/dashboard_static.jsp" />
 		<put-attribute name="slogan" value="/WEB-INF/pages/common/slogan.jsp" />
 		<put-attribute name="body" value="/WEB-INF/pages/dashboard/educator_dashboard.jsp" />
