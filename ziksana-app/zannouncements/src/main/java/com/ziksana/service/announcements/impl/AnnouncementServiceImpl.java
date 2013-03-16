@@ -12,7 +12,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ import com.ziksana.service.announcements.AnnouncementService;
 @Service
 public class AnnouncementServiceImpl implements AnnouncementService {
 
-	private static final Logger LOGGER = Logger
+	private static final Logger LOGGER = LoggerFactory
 			.getLogger(AnnouncementServiceImpl.class);
 
 	@Autowired

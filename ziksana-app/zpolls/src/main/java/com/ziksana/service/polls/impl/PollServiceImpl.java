@@ -10,7 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ import com.ziksana.service.polls.PollService;
 @Service
 public class PollServiceImpl implements PollService {
 
-	private static Logger logger = Logger.getLogger(PollServiceImpl.class);
+	private static Logger logger = LoggerFactory.getLogger(PollServiceImpl.class);
 
 	@Autowired
 	public PollQuestionMapper pollQuestionMapper;

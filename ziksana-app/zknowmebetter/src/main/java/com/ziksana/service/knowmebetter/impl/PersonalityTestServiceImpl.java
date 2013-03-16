@@ -3,7 +3,8 @@ package com.ziksana.service.knowmebetter.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ import com.ziksana.service.knowmebetter.PersonalityTestService;
 @Service
 public class PersonalityTestServiceImpl implements PersonalityTestService {
 
-	private static Logger logger = Logger.getLogger(PersonalityTestServiceImpl.class);
+	private static Logger logger = LoggerFactory.getLogger(PersonalityTestServiceImpl.class);
 	
 	@Autowired
 	PersonalityTestMapper personalityTestMapper;

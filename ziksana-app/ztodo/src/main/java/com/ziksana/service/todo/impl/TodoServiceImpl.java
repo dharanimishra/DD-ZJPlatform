@@ -7,7 +7,8 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.ibatis.session.RowBounds;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ import com.ziksana.service.todo.TodoService;
 @Service
 public class TodoServiceImpl implements TodoService {
 
-	private static final Logger logger = Logger
+	private static final Logger logger = LoggerFactory
 			.getLogger(TodoServiceImpl.class);
 	@Autowired
 	TodoMapper todoMapper;

@@ -2,7 +2,6 @@ package com.ziksana.service.program.impl;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.institution.LearningProgram;

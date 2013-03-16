@@ -1,6 +1,7 @@
 package com.ziksana.service.assignment.impl;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.assessment.member.TestProgress;
@@ -10,7 +11,7 @@ import com.ziksana.service.assignment.AssignmentTestService;
 
 public class AssignmentTestServiceImpl implements AssignmentTestService {
 
-	private static Logger LOGGER = Logger
+	private static Logger LOGGER = LoggerFactory
 			.getLogger(AssignmentTestServiceImpl.class);
 
 	@Autowired

@@ -2,7 +2,8 @@ package com.ziksana.service.course.impl;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +35,7 @@ import com.ziksana.service.course.CourseSocializeService;
 
 public class CoursePublishServiceImpl implements CoursePublishService {
 
-	private final static Logger LOGGER = Logger
+	private final static Logger LOGGER = LoggerFactory
 			.getLogger(CoursePublishServiceImpl.class);
 
 	@Autowired

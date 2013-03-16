@@ -3,11 +3,13 @@ package com.ziksana.domain.course;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class TreeNodeList {
 
-	private final static Logger LOGGER = Logger.getLogger(TreeNodeList.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(TreeNodeList.class);
 
 	private List<NestTreeNode> allTreeNodes = null;
 	private List<NestContentNode> allContentNodes = null;

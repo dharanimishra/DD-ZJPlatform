@@ -2,7 +2,8 @@ package com.ziksana.service.course.impl;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.course.Course;
@@ -16,7 +17,7 @@ import com.ziksana.service.course.CoursePlannerService;
  */
 public class CoursePlannerServiceImpl implements CoursePlannerService {
 
-	private final static Logger LOGGER = Logger
+	private final static Logger LOGGER = LoggerFactory
 			.getLogger(CoursePlannerServiceImpl.class);
 
 	@Autowired

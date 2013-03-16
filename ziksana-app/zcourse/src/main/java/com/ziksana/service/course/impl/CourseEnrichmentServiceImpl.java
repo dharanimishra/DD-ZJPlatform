@@ -1,6 +1,7 @@
 package com.ziksana.service.course.impl;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import com.ziksana.service.course.CourseEnrichmentService;
 @Service
 public class CourseEnrichmentServiceImpl implements CourseEnrichmentService {
 
-	private final static Logger LOGGER = Logger
+	private final static Logger LOGGER = LoggerFactory
 			.getLogger(CourseEnrichmentServiceImpl.class);
 
 	@Autowired

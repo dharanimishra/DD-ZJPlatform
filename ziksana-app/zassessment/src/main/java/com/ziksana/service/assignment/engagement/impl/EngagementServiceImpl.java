@@ -2,7 +2,8 @@ package com.ziksana.service.assignment.engagement.impl;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.assessment.engagement.Engagement;
@@ -15,7 +16,7 @@ import com.ziksana.service.assignment.engagement.EngagementService;
  */
 public class EngagementServiceImpl implements EngagementService {
 
-	private static Logger LOGGER = Logger
+	private static Logger LOGGER = LoggerFactory
 			.getLogger(EngagementServiceImpl.class);
 
 	@Autowired

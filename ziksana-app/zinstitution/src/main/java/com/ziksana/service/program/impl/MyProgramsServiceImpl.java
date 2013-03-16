@@ -3,7 +3,8 @@ package com.ziksana.service.program.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.institution.ProgramNameType;
@@ -16,7 +17,7 @@ import com.ziksana.service.program.MyProgramsService;
  */
 public class MyProgramsServiceImpl implements MyProgramsService {
 
-	private static Logger logger = Logger.getLogger(MyProgramsServiceImpl.class);
+	private static Logger logger = LoggerFactory.getLogger(MyProgramsServiceImpl.class);
 	
 	@Autowired
 	public ProgramsMapper programsMapper;

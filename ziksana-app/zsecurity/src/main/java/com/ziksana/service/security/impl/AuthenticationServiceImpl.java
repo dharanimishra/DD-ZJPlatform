@@ -5,7 +5,8 @@ package com.ziksana.service.security.impl;
 
 import javax.naming.directory.DirContext;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.ldap.support.LdapUtils;
@@ -20,7 +21,7 @@ import com.ziksana.service.security.AuthenticationService;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-	private static Logger logger = Logger
+	private static Logger logger = LoggerFactory
 			.getLogger(AuthenticationServiceImpl.class);
 
 	@Value("#{ldapProperties['url']}")
