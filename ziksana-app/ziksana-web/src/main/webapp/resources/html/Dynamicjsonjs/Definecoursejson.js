@@ -7,7 +7,7 @@ $(document).ready(function(e) {
 	$("#Careaddl").change(function(e) {
 		//alert("Careaddl has changed");
 		
-	uri = '/ziksana-web/secure/getSubjectArea'; //this is a demo uri which will return a hardcoded data when simulation is on.
+	uri = '/ziksana-web/zcourse/getsubjectarea'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -29,9 +29,9 @@ $(document).ready(function(e) {
     //Get the data from the text and input field.
 
 	var Course_Area = $('#Careaddl').val(); //gets the value typed in description field
-    uri = '/ziksana-web/secure/getSubjectArea';
+    uri = '/ziksana-web/zcourse/getsubjectarea';
 
-	ziksanaSimulationMessages['/ziksana-web/secure/getSubjectArea'].C_Area = Course_Area;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/getsubjectarea'].C_Area = Course_Area;
 	//alert(Course_Area);
 }			
 
@@ -62,7 +62,7 @@ $(document).ready(function(e) {
 	$("#Csubjectddl").change(function(e) {
 		//alert ("Inside subject change handler");
 	
-	uri = '/ziksana-web/secure/getSubject'; //this is a demo uri which will return a hardcoded data when simulation is on.
+	uri = '/ziksana-web/zcourse/getsubject'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -85,9 +85,9 @@ $(document).ready(function(e) {
     //Get the data from the text and input field.
 
 	var Course_Subject = $('#Csubjectddl').val();
-    uri = '/ziksana-web/secure/getSubject';
+    uri = '/ziksana-web/zcourse/getsubject';
 
-	ziksanaSimulationMessages['/ziksana-web/secure/getSubject'].C_Subject = Course_Subject;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/getsubject'].C_Subject = Course_Subject;
 }			
 
 	function noteSuccessCallbackcoursesubject(data){
@@ -117,7 +117,7 @@ $(document).ready(function(e) {
 	$("#Ctopicddl").change(function(e) {
 	//alert("Topic change handler");
     
-	uri = '/ziksana-web/secure/getTopic'; //this is a demo uri which will return a hardcoded data when simulation is on.
+	uri = '/ziksana-web/zcourse/gettopic'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -139,9 +139,9 @@ $(document).ready(function(e) {
     //Get the data from the text and input field.
 
 	 var Course_Topic = $('#Ctopicddl').val(); //gets the value typed in description field
-    uri = '/ziksana-web/secure/getTopic';
+    uri = '/ziksana-web/zcourse/gettopic';
 
-	ziksanaSimulationMessages['/ziksana-web/secure/getTopic'].C_Topic = Course_Topic;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/gettopic'].C_Topic = Course_Topic;
 	//alert(Course_Topic);
 	}		
 
@@ -231,7 +231,7 @@ function getdefinecoursesave(){
     //This function demonstrates how to send a message using sendMessage() function. This does not use Ziksana Message format for communication. The communicaiton is direct.
 
     //Step 1: Assign Parameters required by the sendMessage function.
-    uri = '/ziksana-web/secure/saveCourse'; //this is a demo uri which will return a hardcoded data when simulation is on.
+    uri = '/ziksana-web/zcourse/savecourse'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -267,19 +267,19 @@ function constructNoteformrest(){
 	var Course_Subject = $('#Csubjectddl').val(); //gets the value typed in title field
     var Course_Topic = $('#Ctopicddl').val(); //gets the value typed in description field
 */	var Assoc_Image = $('#Cimageupl').val(); //gets the value typed in description field
-    uri = '/ziksana-web/secure/saveCourse';
-	 ziksanaSimulationMessages['/ziksana-web/secure/saveCourse'].id = Course_id;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveCourse'].title = Course_Name;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveCourse'].description = Course_Description;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveCourse'].Ct_Field = Coursetag_Field;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveCourse'].Credits = Course_Credits;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveCourse'].E_Credits = Extra_Credits;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveCourse'].Duration = Course_Duration;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveCourse'].D_Type = Duration_Type;
-/*	ziksanaSimulationMessages['/ziksana-web/secure/getSubjectArea'].C_Area = Course_Area;
-	ziksanaSimulationMessages['/ziksana-web/secure/getSubject'].C_Subject = Course_Subject;
-    ziksanaSimulationMessages['/ziksana-web/secure/getTopic'].C_Topic = Course_Topic;
-	ziksanaSimulationMessages['/ziksana-web/secure/uploadFile'].A_Image = Assoc_Image;
+    uri = '/ziksana-web/zcourse/savecourse';
+	 ziksanaSimulationMessages['/ziksana-web/zcourse/savecourse'].id = Course_id;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/savecourse'].title = Course_Name;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/savecourse'].description = Course_Description;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/savecourse'].Ct_Field = Coursetag_Field;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/savecourse'].Credits = Course_Credits;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/savecourse'].E_Credits = Extra_Credits;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/savecourse'].Duration = Course_Duration;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/savecourse'].D_Type = Duration_Type;
+/*	ziksanaSimulationMessages['/ziksana-web/zcourse/getsubjectarea'].C_Area = Course_Area;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/getsubject'].C_Subject = Course_Subject;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/gettopic'].C_Topic = Course_Topic;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/uploadfile'].A_Image = Assoc_Image;
 */
 	
 }

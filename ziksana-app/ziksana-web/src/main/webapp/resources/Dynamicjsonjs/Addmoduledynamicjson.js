@@ -6,7 +6,7 @@ $(document)
 					var course_id = $('#courseid').val();
 					console.log(course_id);
 					
-					$.post('/ziksana-web/secure/getSubClassification', {
+					$.post('/ziksana-web/zcourse/getsubclassification', {
 						'CourseId' : course_id
 					}, function(data) {
 						console.log(data);
@@ -17,7 +17,7 @@ $(document)
 						
 						// Start
 
-						$.get('/ziksana-web/secure/getSubjectArea', {},
+						$.get('/ziksana-web/zcourse/getsubjectarea', {},
 								function(data) {
 									options = data;
 									var option_string = '';
@@ -42,7 +42,7 @@ $(document)
 
 						token = '';
 						request_type = 'GET';
-						uri = '/ziksana-web/secure/getSubject';
+						uri = '/ziksana-web/zcourse/getsubject';
 
 						$.get(uri, {
 							'Course_Area' : subject_area_pre
@@ -66,7 +66,7 @@ $(document)
 									$('#Cmodulesubjectddl').html(option_string);
 								});
 
-						uri = '/ziksana-web/secure/getTopic';
+						uri = '/ziksana-web/zcourse/gettopic';
 						token = '';
 						request_type = 'GET';
 						$.get(uri, {
@@ -100,7 +100,7 @@ $(document)
 									function(e) {
 										token = '';
 										request_type = 'GET';
-										uri = '/ziksana-web/secure/getSubject';
+										uri = '/ziksana-web/zcourse/getsubject';
 										var Course_Area = $('#Cmoduleareaddl')
 												.val();
 
@@ -171,7 +171,7 @@ $(document)
 					$("#Cmodulesubjectddl")
 							.change(
 									function(e) {
-										uri = '/ziksana-web/secure/getTopic';
+										uri = '/ziksana-web/zcourse/gettopic';
 										token = '';
 										request_type = 'GET';
 
@@ -234,7 +234,7 @@ $(document)
 					}
 					$("#Cmoduletopicddl").change(function(e) {
 
-						uri = '/ziksana-web/secure/getTopic';
+						uri = '/ziksana-web/zcourse/gettopic';
 						token = '';
 						request_type = 'GET';
 
@@ -272,7 +272,7 @@ function getaddmodulesave() {
 		// Step 1: Assign Parameters required by the sendMessage function.
 		$('#Btnsbtcmodule').attr('disabled', 'disabled'); // disables the
 
-		uri = '/ziksana-web/secure/saveLearningComponent';
+		uri = '/ziksana-web/zcourse/savelearningcomponent';
 
 		token = ''; // dummy token for demo. you have to send real token.
 
@@ -337,7 +337,7 @@ function getaddmodulesave() {
 				$('#courseid').val(course_id);
 				if (course_id != '' & course_id != null) {
 					$('#courseid').val(course_id);
-					window.location.href = "/ziksana-web/secure/createmodule/"
+					window.location.href = "/ziksana-web/zcourse/createmodule/"
 							+ course_id;
 					$('#tempdiv1').html(
 							'<span style="color:red;">' + data.message

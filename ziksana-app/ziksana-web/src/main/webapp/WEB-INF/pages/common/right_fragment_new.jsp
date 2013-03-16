@@ -220,7 +220,7 @@ $(document).ready(function() {
 
 </script>
 
-<c:url var="showCourseUrl" value="/secure/showmycourse/111111" />
+<c:url var="showCourseUrl" value="/zcourse/educatorcourses" />
 
 
 
@@ -245,7 +245,7 @@ $(document).ready(function() {
 						var progress =  $(this).find("progress").text()+"%";
 						
 					    console.log("Yes I am in");  
-					    draftcourse+="<p class='blok-title-L'><a href='/ziksana-web/secure/createcourse/courseid_"+$(this).attr('id')+"'>" +  " " +short_mycourse_title( $(this).find("title").text() )+ "</a></p>";
+					    draftcourse+="<p class='blok-title-L'><a href='/ziksana-web/zcourse/createcourse/courseid_"+$(this).attr('id')+"'>" +  " " +short_mycourse_title( $(this).find("title").text() )+ "</a></p>";
 					          
 							draftcourse+="";
 							draftcourse+="<div aria-valuenow='30' aria-valuemax='100' aria-valuemin='0' role='progressbar' id='progressbar30' style='width:100px;border:1px solid gray;' class='f-l ui-progressbar ui-widget ui-widget-content ui-corner-all'>";
@@ -255,7 +255,7 @@ $(document).ready(function() {
 					    
 					    console.log("it is written"); 
 					});
-						draftcourse+='<a class="moreclass" style="float:right; margin: 1em;" href="/ziksana-web/secure/showMyProgramsDraft">More</a><div class="clear"></div>';
+						draftcourse+='<a class="moreclass" style="float:right; margin: 1em;" href="/ziksana-web/zcourse/myprogramsdraft">More</a><div class="clear"></div>';
 	                   }
 					
 					var reviewcourse='';
@@ -313,7 +313,7 @@ function short_mycourse_title(value){
 
 </c:if>
 <c:if test="${member.roleType =='LEARNER'}">
-<c:url var="showLearner" value="/secure/learnercourses" />
+<c:url var="showLearner" value="/zcourse/learnercourses" />
 <script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
@@ -330,14 +330,14 @@ $(document).ready(function() {
 						
 						
 					    console.log("Yes I am in");  
-					    learnercourse+="<p class='blok-title-L'><a href='/ziksana-web/secure/course/"+$(this).attr('id')+"'>" +  " " + $(this).find("title").text() + "</a></p>";
+					    learnercourse+="<p class='blok-title-L'><a href='/ziksana-web/zcourse/course/"+$(this).attr('id')+"'>" +  " " + $(this).find("title").text() + "</a></p>";
 					
 						
 					    
 					    	console.log("it is written"); 
 					});
 					
-					learnercourse+='<a class="moreclass" style="float:right; margin: 1em;" href="/ziksana-web/secure/showMyProgramsDraft">More</a><div class="clear"></div>';
+					learnercourse+='<a class="moreclass" style="float:right; margin: 1em;" href="/ziksana-web/zcourse/myprogramsdraft">More</a><div class="clear"></div>';
 					$('#learner_placeholder').html(learnercourse);
 			}
 	});

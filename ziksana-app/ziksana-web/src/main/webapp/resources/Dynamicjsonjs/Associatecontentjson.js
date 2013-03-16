@@ -7,7 +7,7 @@ $(document)
 					var course_id = $('#courseid').val();
 					console.log(course_id);
 					
-					$.post('/ziksana-web/secure/getSubClassification', {
+					$.post('/ziksana-web/zcourse/getsubclassification', {
 						'CourseId' : course_id
 					}, function(data) {
 						console.log(data);
@@ -18,7 +18,7 @@ $(document)
 						
 						// Start
 
-						$.get('/ziksana-web/secure/getSubjectArea', {},
+						$.get('/ziksana-web/zcourse/getsubjectarea', {},
 								function(data) {
 									options = data;
 									var option_string = '';
@@ -42,7 +42,7 @@ $(document)
 
 						token = '';
 						request_type = 'GET';
-						uri = '/ziksana-web/secure/getSubject';
+						uri = '/ziksana-web/zcourse/getsubject';
 
 						$.get(uri, {
 							'Course_Area' : subject_area_pre
@@ -66,7 +66,7 @@ $(document)
 									$('#Csubjectddl').html(option_string);
 								});
 
-						uri = '/ziksana-web/secure/getTopic';
+						uri = '/ziksana-web/zcourse/gettopic';
 						token = '';
 						request_type = 'GET';
 						$.get(uri, {
@@ -99,7 +99,7 @@ $(document)
 									function(e) {
 										token = '';
 										request_type = 'GET';
-										uri = '/ziksana-web/secure/getSubject';
+										uri = '/ziksana-web/zcourse/getsubject';
 										var Course_Area = $('#Careaddl').val();
 
 										$
@@ -169,7 +169,7 @@ $(document)
 										// alert ("Inside subject change
 										// handler");
 
-										uri = '/ziksana-web/secure/getTopic';
+										uri = '/ziksana-web/zcourse/gettopic';
 										token = '';
 										request_type = 'GET';
 
@@ -235,7 +235,7 @@ $(document)
 					}
 					$("#Ctopicddl").change(function(e) {
 
-						uri = '/ziksana-web/secure/getTopic';
+						uri = '/ziksana-web/zcourse/gettopic';
 						token = '';
 						request_type = 'GET';
 
@@ -313,7 +313,7 @@ function getAssociateContentSave() {
 		// of forms
 
 		// Step 1: Assign Parameters required by the sendMessage function.
-		uri = '/ziksana-web/secure/saveOrUpdateContent';
+		uri = '/ziksana-web/zcourse/saveorupdatecontent';
 
 		token = ''; // dummy token for demo. you have to send real token.
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
@@ -406,7 +406,7 @@ function assoicateEnhancedVideo(course_id, component_id, parent_content_id,
 	console.log('inside associateEnhancedVideo');
 
 	// Step 1: Assign Parameters required by the sendMessage function.
-	uri = '/ziksana-web/secure/saveOrUpdateContent';
+	uri = '/ziksana-web/zcourse/saveorupdatecontent';
 
 	token = ''; // dummy token for demo. you have to send real token.
 	request_type = 'POST'; // can be GET or POST. In this case, a GET
@@ -523,5 +523,5 @@ function noteSuccessCallback(data) {
 
 function onSuccessfulCourseCreation(data) {
 	course_id = data.id;
-	window.location.href = "/ziksana-web/secure/associatecontent/" + course_id;
+	window.location.href = "/ziksana-web/zcourse/associatecontent/" + course_id;
 }

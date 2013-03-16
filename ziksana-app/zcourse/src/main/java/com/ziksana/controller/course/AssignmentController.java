@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author ratneshkumar
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class AssignmentController {
 
 	private static final Logger LOGGER = LoggerFactory

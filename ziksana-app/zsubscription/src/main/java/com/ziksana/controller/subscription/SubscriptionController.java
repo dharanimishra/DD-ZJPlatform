@@ -1,7 +1,5 @@
-/**
- * 
- */
-package com.ziksana.controller;
+ 
+package com.ziksana.controller.subscription;
 
 import java.util.List;
 
@@ -34,7 +32,7 @@ import com.ziksana.service.subscription.SubscriptionService;
  * 
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/subscription")
 public class SubscriptionController {
 
 	private static final Logger logger = LoggerFactory
@@ -51,7 +49,7 @@ public class SubscriptionController {
 
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
-	@RequestMapping(value = "/getLearnerNotes", method = RequestMethod.GET)
+	@RequestMapping(value = "/getlearnernotes", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Note> showLearnerNotes(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -80,7 +78,7 @@ public class SubscriptionController {
 				Integer.valueOf(parsedContentId), 1000);
 	}
 
-	@RequestMapping(value = "/getLearnerQuestions", method = RequestMethod.GET)
+	@RequestMapping(value = "/getlearnerquestions", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Note> showLearnerQuestions(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -109,7 +107,7 @@ public class SubscriptionController {
 				Integer.valueOf(parsedContentId), 2000);
 	}
 
-	@RequestMapping(value = "/educatorNotes", method = RequestMethod.GET)
+	@RequestMapping(value = "/educatornotes", method = RequestMethod.GET)
 	public @ResponseBody
 	List<EducatorNote> showEducatorNotes(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -157,7 +155,7 @@ public class SubscriptionController {
 	}
 	
 	
-	@RequestMapping(value = "/educatorReferences", method = RequestMethod.GET)
+	@RequestMapping(value = "/educatorreferences", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Reference> showEducatorReferences(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -180,7 +178,7 @@ public class SubscriptionController {
 				Integer.valueOf(courseId), node);
 	}
 
-	@RequestMapping(value = "/getAllEducatorContent", method = RequestMethod.GET)
+	@RequestMapping(value = "/getalleducatorcontent", method = RequestMethod.GET)
 	public @ResponseBody
 	List<EducatorContent> getAllEducatorContent(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -204,7 +202,7 @@ public class SubscriptionController {
 
 	}
 
-	@RequestMapping(value = "/getContentTOC", method = RequestMethod.GET)
+	@RequestMapping(value = "/getcontenttoc", method = RequestMethod.GET)
 	public @ResponseBody
 	List<ContentReference> showContentReferences(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -228,7 +226,7 @@ public class SubscriptionController {
 
 	}
 
-	@RequestMapping(value = "/educatorHotspots", method = RequestMethod.GET)
+	@RequestMapping(value = "/educatorhotspots", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Hotspot> showEducatorHotspots(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -253,7 +251,7 @@ public class SubscriptionController {
 				Integer.valueOf(courseId), node);
 	}
 
-	@RequestMapping(value = "/addLearnerQuestion", method = RequestMethod.POST)
+	@RequestMapping(value = "/addlearnerquestion", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer addLearnerQuestion(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -287,7 +285,7 @@ public class SubscriptionController {
 
 	}
 
-	@RequestMapping(value = "/addLearnerNote", method = RequestMethod.POST)
+	@RequestMapping(value = "/addlearnernote", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer addLearnerNote(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -323,7 +321,7 @@ public class SubscriptionController {
 
 	}
 
-	@RequestMapping(value = "/deleteLearnerContent", method = RequestMethod.POST)
+	@RequestMapping(value = "/deletelearnercontent", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer deleteLearnerContent(
 			@RequestParam(value = "contentId", required = true) String noteId) {
@@ -333,7 +331,7 @@ public class SubscriptionController {
 
 	}
 
-	@RequestMapping(value = "/editLearnerContent", method = RequestMethod.POST)
+	@RequestMapping(value = "/editlearnercontent", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer editLearnerContent(
 			@RequestParam(value = "contentId", required = true) String noteId,
@@ -347,7 +345,7 @@ public class SubscriptionController {
 
 	}
 
-	@RequestMapping(value = "/addEducatorNote", method = RequestMethod.POST)
+	@RequestMapping(value = "/addeducatornote", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer addEducatorNote(
 			@RequestParam(value = "courseId", required = true) String courseId,
@@ -395,7 +393,7 @@ public class SubscriptionController {
 
 	}
 
-	@RequestMapping(value = "/deleteEducatorContent", method = RequestMethod.POST)
+	@RequestMapping(value = "/deleteeducatorcontent", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer deleteEducatoContent(
 			@RequestParam(value = "eduContentEnrichId", required = true) String eduContentEnrichId,
@@ -674,7 +672,7 @@ public class SubscriptionController {
 		return dbresp;
 
 	}
-	@RequestMapping(value = "/editEducatorContent", method = RequestMethod.POST)
+	@RequestMapping(value = "/editeducatorcontent", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer editEducatoContent(
 			@RequestParam(value = "id", required = true) String eduContentEnrichId,

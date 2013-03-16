@@ -62,7 +62,7 @@
 				
 				node_id = 'LCONTENT_1_'+component_id+'_'+content_id;
 				
-				$.post('/ziksana-web/secure/addEducatorNote', {'contentType':content_type, 'courseId':course_id, 'nodeId':node_id, 'duration':duration, 'title':title, 'description':description, 'coordinates':coordinates, 'url':url, 'parentId':parentid}, function(data){
+				$.post('/ziksana-web/subscription/addeducatornote', {'contentType':content_type, 'courseId':course_id, 'nodeId':node_id, 'duration':duration, 'title':title, 'description':description, 'coordinates':coordinates, 'url':url, 'parentId':parentid}, function(data){
 					
 					if(data == '1'){ //add is successful
 						
@@ -88,7 +88,7 @@
 				educator_toc_items_string = ''; //reset the options string
 				console.log('inside get_all_educator_content');
 				
-				$.get('/ziksana-web/secure/getAllEducatorContent', {'courseId':course_id, 'nodeId':node_id, 'componentId':component_id}, function(data){
+				$.get('/ziksana-web/subscription/getalleducatorcontent', {'courseId':course_id, 'nodeId':node_id, 'componentId':component_id}, function(data){
 					
 					
 					data_table_tbody_html = '';
@@ -196,7 +196,7 @@
 				
 				if (parentid == ''){parentid = 0; }
 
-				$.post('/ziksana-web/secure/editEducatorContent', {id:id, duration:duration, title:title, description:description, coordinates:coordinates, url:url, parentId:parentid }, function(data){
+				$.post('/ziksana-web/subscription/editeducatorcontent', {id:id, duration:duration, title:title, description:description, coordinates:coordinates, url:url, parentId:parentid }, function(data){
 
 					if(data == 1){ //record is successfully updated
 						refresh_educator_content();
@@ -221,7 +221,7 @@
 					content_id = delete_icon.attr('data-id');
 					content_type = delete_icon.next('span').attr('data-type');
 					console.log("content_type :"+content_type);
-					$.post('/ziksana-web/secure/deleteEducatorContent', {"eduContentEnrichId": content_id, "contentType": content_type}, function(data){
+					$.post('/ziksana-web/subscription/deleteeducatorcontent', {"eduContentEnrichId": content_id, "contentType": content_type}, function(data){
 					//if(data == 1){//row is successfully deleted
 							//go ahead and remove the row.
 							//row_to_delete.remove();

@@ -28,7 +28,7 @@ import com.ziksana.service.security.MediaService;
  * 
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class MyCoursesController {
 
 	private static final Logger LOGGER = LoggerFactory
@@ -40,7 +40,7 @@ public class MyCoursesController {
 	@Autowired
 	private MediaService mediaService;
 
-	@RequestMapping(value = "/showmycourse/111111", method = RequestMethod.GET)
+	@RequestMapping(value = "/educatorcourses", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyCourses() throws CourseException {
 
@@ -64,7 +64,7 @@ public class MyCoursesController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/showMyProgramsDraft", method = RequestMethod.GET)
+	@RequestMapping(value = "/myprogramsdraft", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyProgramsDraft() throws CourseException {
 
@@ -141,7 +141,7 @@ public class MyCoursesController {
 	}
 	
 
-	@RequestMapping(value = "/showMyPrograms", method = RequestMethod.GET)
+	@RequestMapping(value = "/myprograms", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyPrograms() throws CourseException {
 

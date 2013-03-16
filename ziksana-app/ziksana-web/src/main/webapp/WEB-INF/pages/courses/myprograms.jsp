@@ -316,7 +316,7 @@ $('._cklo').show('');
                 <div style="margin-left:850px;disply:table; top:-100">
 
 
-					 <div class="createnew" style="display:table-cell;width:100px;"><a href="/ziksana-web/secure/createcourse"><img src="../resources/images/plus.png" width=12px, height=12px>&nbsp;Create New</a> 
+					 <div class="createnew" style="display:table-cell;width:100px;"><a href="/ziksana-web/zcourse/createcourse"><img src="../resources/images/plus.png" width=12px, height=12px>&nbsp;Create New</a> 
 
 					</div>
 					<div style="display:table-cell; padding-left:20px;">
@@ -364,7 +364,7 @@ $('._cklo').show('');
                 </c:choose>
 				</p>
                 <div class="icons-list">
-                 <a href="/ziksana-web/secure/editcourse/COURSE_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
+                 <a href="/ziksana-web/zcourse/editcourse/COURSE_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
                <a  onclick="delete_coursebycourseid(${course.coursesId})" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
                 </div>              
               </div>

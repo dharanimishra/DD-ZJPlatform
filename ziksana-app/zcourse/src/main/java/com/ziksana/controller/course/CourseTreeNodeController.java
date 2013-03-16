@@ -22,7 +22,7 @@ import com.ziksana.service.course.CourseTreeNodeService;
  * @author ratneshkumar
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class CourseTreeNodeController {
 
 	private static final Logger LOGGER = LoggerFactory

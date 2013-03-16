@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,16 +16,16 @@ import com.ziksana.domain.course.Option;
 import com.ziksana.service.course.CourseSubjectDetailService;
 
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class CourseSubjectController {
 
 	private static final Logger LOGGER = LoggerFactory
-			.getLogger(CourseTreeController.class);
+			.getLogger(CourseSubjectController.class);
 
 	@Autowired
 	CourseSubjectDetailService courseSubjectDetailService;
 
-	@RequestMapping(value = "/getSubjectArea", method = { RequestMethod.GET,
+	@RequestMapping(value = "/getsubjectarea", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	List<Option> getSubjectArea(
@@ -40,7 +39,7 @@ public class CourseSubjectController {
 		return list;
 	}
 
-	@RequestMapping(value = "/getSubject", method = { RequestMethod.GET,
+	@RequestMapping(value = "/getsubject", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	List<Option> getSubject(
@@ -52,7 +51,7 @@ public class CourseSubjectController {
 		return list;
 	}
 
-	@RequestMapping(value = "/getTopic", method = { RequestMethod.GET,
+	@RequestMapping(value = "/gettopic", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	List<Option> getTopic(
@@ -64,7 +63,7 @@ public class CourseSubjectController {
 		return list;
 	}
 
-	@RequestMapping(value = "/getSubjectClassification", method = {
+	@RequestMapping(value = "/getsubjectclassification", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	CourseSubjectClassification getSubjectClassification(
@@ -79,7 +78,7 @@ public class CourseSubjectController {
 		return courseSubjectClassification;
 	}
 
-	@RequestMapping(value = "/getSubClassification", method = {
+	@RequestMapping(value = "/getsubclassification", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	CourseSubjectClassification getSubClassification(

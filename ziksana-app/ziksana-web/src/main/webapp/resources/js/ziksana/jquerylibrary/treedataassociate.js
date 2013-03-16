@@ -173,7 +173,7 @@ function onButtonClick(menuitemId, type) {
 	} else if (menuaction == "View") {
 		content_id = tree.getSelectedItemId();
 
-		$.get('/ziksana-web/secure/content/getContentInfo', {
+		$.get('/ziksana-web/zcourse/content/getcontentinfo', {
 			'courseId' : $('#courseId').val(),
 			'contentId' : content_id
 		}, function(data) {
@@ -184,13 +184,13 @@ function onButtonClick(menuitemId, type) {
 
 			if (content_type == 'VIDEO') {
 
-				playVideo('/ziksana-web/secure/modalplayer/' + data.contentId);
+				playVideo('/ziksana-web/zcourse/modalplayer/' + data.contentId);
 
 			}
 
 			if (content_type == 'AUDIO') {
 
-				playAudio('/ziksana-web/secure/modalplayer/' + data.contentId);
+				playAudio('/ziksana-web/zcourse/modalplayer/' + data.contentId);
 
 			}
 
@@ -201,7 +201,7 @@ function onButtonClick(menuitemId, type) {
 
 					|| content_type == 'EXCEL') {
 
-				// displayImageSet('/ziksana-web/secure/slides/'+data.contentId);
+				// displayImageSet('/ziksana-web/zcourse/slides/'+data.contentId);
 				displayImageSet(content_path);
 
 			}
@@ -214,7 +214,7 @@ function onButtonClick(menuitemId, type) {
 
 		node_id = tree.getSelectedItemId();
 
-		$.post('/ziksana-web/secure/course/editNode', {
+		$.post('/ziksana-web/zcourse/course/editNode', {
 			'courseId' : $('#courseId').val(),
 			'nodeId' : node_id
 		}, function(data) {
@@ -237,7 +237,7 @@ function onButtonClick(menuitemId, type) {
 
 		node_id = tree.getSelectedItemId();
 
-		$.post('/ziksana-web/secure/course/deleteNode', {
+		$.post('/ziksana-web/zcourse/course/deletenode', {
 			'courseId' : $('#courseId').val(),
 			'nodeId' : node_id
 		}, function(data) {
@@ -260,7 +260,7 @@ function onButtonClick(menuitemId, type) {
 		console.log('Component Id is: '+ component_id);
 		parsed_course_id = $('#courseid').val().split('_')[1];
 
-		$.get('/ziksana-web/secure/content/getContentInfo', {
+		$.get('/ziksana-web/zcourse/content/getcontentinfo', {
 			'courseId' : $('#courseId').val(),
 			'contentId' : content_id
 		}, function(data) {
@@ -275,8 +275,8 @@ function onButtonClick(menuitemId, type) {
 					|| content_type == 'IMAGE'
 
 					|| content_type == 'EXCEL') {
-				// displayImageSet('/ziksana-web/secure/slides/'+data.contentId);
-				displayEnhanceModal("/ziksana-web/secure/enhancePlayer/"
+				// displayImageSet('/ziksana-web/zcourse/slides/'+data.contentId);
+				displayEnhanceModal("/ziksana-web/zcourse/enhanceplayer/"
 						+ parsed_content_id +'/'+parsed_component_id+'/'+parsed_course_id);
 
 			}
@@ -402,9 +402,9 @@ function createtree(course_id) {
 	tree.setImageArrays("minus", "minus_ar.png", "minus_ar.png",
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
 	// tree.loadXML("/ziksana-web/resources/js/ziksana/jquerylibrary/tree/xml/treemodel.xml");
-	// tree.loadXML("/ziksana-web/secure/getchildtree/150");
+	// tree.loadXML("/ziksana-web/zcourse/getchildtree/150");
 	courseId = course_id.split('_')[1];
-	tree.loadXML("/ziksana-web/secure/getchildtree/" + courseId);
+	tree.loadXML("/ziksana-web/zcourse/getchildtree/" + courseId);
 
 }
 

@@ -9,11 +9,11 @@ $(document).ready(function(e) {
 			var info_Descriptionnumeric = $('#Caddnewinfonumeric').val();
 			var info_Descriptiondate = $('#Caddnewinfodate').val();
 			var info_Descriptiontext = $('#Caddnewinfotext').val();
-			uri = '/ziksana-web/secure/saveAddnlInfo';
-			ziksanaSimulationMessages['/ziksana-web/secure/saveAddnlInfo'].Newinfo = new_Info;
-			ziksanaSimulationMessages['/ziksana-web/secure/saveAddnlInfo'].Descnumeric = info_Descriptionnumeric;
-			ziksanaSimulationMessages['/ziksana-web/secure/saveAddnlInfo'].Descdate = info_Descriptiondate;
-			ziksanaSimulationMessages['/ziksana-web/secure/saveAddnlInfo'].Desctext = info_Descriptiontext;
+			uri = '/ziksana-web/zcourse/saveaddnlinfo';
+			ziksanaSimulationMessages['/ziksana-web/zcourse/saveaddnlinfo'].Newinfo = new_Info;
+			ziksanaSimulationMessages['/ziksana-web/zcourse/saveaddnlinfo'].Descnumeric = info_Descriptionnumeric;
+			ziksanaSimulationMessages['/ziksana-web/zcourse/saveaddnlinfo'].Descdate = info_Descriptiondate;
+			ziksanaSimulationMessages['/ziksana-web/zcourse/saveaddnlinfo'].Desctext = info_Descriptiontext;
 			}			
 
 	
@@ -26,7 +26,7 @@ $(document).ready(function(e) {
 							    //This function demonstrates how to send a message using sendMessage() function. This does not use Ziksana Message format for communication. The communicaiton is direct.
 
     //Step 1: Assign Parameters required by the sendMessage function.
-    uri = '/ziksana-web/secure/saveAddnlInfo'; //this is a demo uri which will return a hardcoded data when simulation is on.
+    uri = '/ziksana-web/zcourse/saveAddnlInfo'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -49,7 +49,7 @@ $(document).ready(function(e) {
 							    //This function demonstrates how to send a message using sendMessage() function. This does not use Ziksana Message format for communication. The communicaiton is direct.
 
     //Step 1: Assign Parameters required by the sendMessage function.
-    uri = '/ziksana-web/secure/saveAddnlInfo'; //this is a demo uri which will return a hardcoded data when simulation is on.
+    uri = '/ziksana-web/zcourse/saveaddnlinfo'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -72,7 +72,7 @@ $(document).ready(function(e) {
 								    //This function demonstrates how to send a message using sendMessage() function. This does not use Ziksana Message format for communication. The communicaiton is direct.
 
     //Step 1: Assign Parameters required by the sendMessage function.
-    uri = '/ziksana-web/secure/saveAddnlInfo'; //this is a demo uri which will return a hardcoded data when simulation is on.
+    uri = '/ziksana-web/zcourse/saveaddnlinfo'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 

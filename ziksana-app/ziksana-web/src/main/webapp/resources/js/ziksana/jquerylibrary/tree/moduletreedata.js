@@ -53,7 +53,7 @@ function onButtonClick(menuitemId, type) {
 
 		// use ajax to get the added value
 
-		uri = '/ziksana-web/secure/getCourseModule';
+		uri = '/ziksana-web/zcourse/getcoursemodule';
 
 		token = ''; // dummy token for demo. you have to send real token.
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
@@ -137,7 +137,7 @@ function onButtonClick(menuitemId, type) {
 
 								// // populate subject area
 
-								$.get('/ziksana-web/secure/getSubjectArea', {},
+								$.get('/ziksana-web/zcourse/getsubjectarea', {},
 										function(data) {
 											options = data;
 											var option_string = '';
@@ -161,7 +161,7 @@ function onButtonClick(menuitemId, type) {
 
 								token = '';
 								request_type = 'GET';
-								uri = '/ziksana-web/secure/getSubject';
+								uri = '/ziksana-web/zcourse/getsubject';
 
 								$.get(uri, {
 									'Course_Area' : subject_area
@@ -187,7 +187,7 @@ function onButtonClick(menuitemId, type) {
 
 										});
 
-								uri = '/ziksana-web/secure/getTopic';
+								uri = '/ziksana-web/zcourse/gettopic';
 								token = '';
 								request_type = 'GET';
 								$.get(uri, {
@@ -225,7 +225,7 @@ function onButtonClick(menuitemId, type) {
 		// alert("open the menu for CourseEdit module.");
 		var CourseId = $('#courseid').val();
 		$('#courseid').val(CourseId);
-		window.location.href = "/ziksana-web/secure/editcourse/" + CourseId;
+		window.location.href = "/ziksana-web/zcourse/editcourse/" + CourseId;
 	} else if (menuaction == "View") {
 		// alert("open the menu for View module.");
 		$('#instruction').hide();
@@ -241,7 +241,7 @@ function onButtonClick(menuitemId, type) {
 		console.log(ComponentId);
 		confirm_delete_component = confirm('Are you sure you want to delete this item?');
 		if(confirm_delete_component == true){
-		uri = '/ziksana-web/secure/removeCourseComponents';
+		uri = '/ziksana-web/zcourse/removecoursecomponents';
 
 		token = ''; // dummy token for demo. you have to send real token.
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
@@ -384,9 +384,9 @@ function createtree(course_id) {
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
 
 	courseId = course_id.split('_')[1];
-	//tree.loadXML("/ziksana-web/secure/getparenttree/" + courseId);
-	//tree.loadXML("/ziksana-web/secure/getparent/" + courseId);
-	tree.loadXML("/ziksana-web/secure/getchildtree/" + courseId);
+	//tree.loadXML("/ziksana-web/zcourse/getparenttree/" + courseId);
+	//tree.loadXML("/ziksana-web/zcourse/getparent/" + courseId);
+	tree.loadXML("/ziksana-web/zcourse/getchildtree/" + courseId);
 
 }
 

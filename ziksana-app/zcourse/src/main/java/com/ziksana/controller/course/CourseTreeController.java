@@ -1,6 +1,5 @@
 package com.ziksana.controller.course;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -21,7 +20,7 @@ import com.ziksana.service.course.CourseTreeNodeService;
  * @author ratneshkumar
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class CourseTreeController {
 
 	private static final Logger LOGGER = LoggerFactory

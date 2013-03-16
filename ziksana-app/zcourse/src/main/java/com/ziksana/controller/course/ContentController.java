@@ -24,7 +24,7 @@ import com.ziksana.service.security.MediaService;
  * 
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class ContentController {
 
 	private static final Logger LOGGER = LoggerFactory
@@ -51,7 +51,7 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "/enhancePlayer/{contentId}/{componentId}/{courseId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/enhanceplayer/{contentId}/{componentId}/{courseId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView enhancePlayer(@PathVariable Integer contentId,
 			@PathVariable Integer componentId, @PathVariable Integer courseId) {
@@ -67,7 +67,7 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "/content/getContent", method = RequestMethod.GET)
+	@RequestMapping(value = "/content/getcontent", method = RequestMethod.GET)
 	public @ResponseBody
 	Content getContent(
 			@RequestParam(value = "contentId", required = true) String contentId
@@ -85,14 +85,14 @@ public class ContentController {
 		if (content.getContentType() != 1 && content.getContentType() != 11
 				&& content.getContentType() != 2
 				&& content.getContentType() != 8) {
-			content.setContentUrl("/ziksana-web/secure/slides/"
+			content.setContentUrl("/ziksana-web/zcourse/slides/"
 					+ content.getContentId());
 		}
 
 		return content;
 	}
 
-	@RequestMapping(value = "/content/getContentInfo", method = RequestMethod.GET)
+	@RequestMapping(value = "/content/getcontentinfo", method = RequestMethod.GET)
 	public @ResponseBody
 	Content getContentInfo(
 			@RequestParam(value = "contentId", required = true) String contentId) {
@@ -109,7 +109,7 @@ public class ContentController {
 		if (content.getContentType() != 1 && content.getContentType() != 11
 				&& content.getContentType() != 2
 				&& content.getContentType() != 8) {
-			content.setContentUrl("/ziksana-web/secure/slides/"
+			content.setContentUrl("/ziksana-web/zcourse/slides/"
 					+ content.getContentId());
 		}
 

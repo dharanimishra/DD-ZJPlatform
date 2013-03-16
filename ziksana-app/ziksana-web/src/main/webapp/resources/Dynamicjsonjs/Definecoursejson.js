@@ -11,7 +11,7 @@ $(document)
 						$('#Editcoursedtl1').hide();
 					}
 
-					$.get('/ziksana-web/secure/getSubjectArea', {}, function(
+					$.get('/ziksana-web/zcourse/getsubjectarea', {}, function(
 							data) {
 						options = data;
 						var option_string = '';
@@ -41,7 +41,7 @@ $(document)
 									function(e) {
 										token = '';
 										request_type = 'GET';
-										uri = '/ziksana-web/secure/getSubject';
+										uri = '/ziksana-web/zcourse/getsubject';
 										var Course_Area = $('#Careaddl').val();
 
 										$
@@ -110,7 +110,7 @@ $(document)
 										// alert ("Inside subject change
 										// handler");
 
-										uri = '/ziksana-web/secure/getTopic';
+										uri = '/ziksana-web/zcourse/gettopic';
 										token = '';
 										request_type = 'GET';
 
@@ -177,7 +177,7 @@ $(document)
 					}
 					$("#Ctopicddl").change(function(e) {
 
-						uri = '/ziksana-web/secure/getTopic';
+						uri = '/ziksana-web/zcourse/gettopic';
 						token = '';
 						request_type = 'GET';
 
@@ -248,7 +248,7 @@ function createCourse() {
 	validation = jQuery("#DegineCourse").validationEngine('validate');
 	if (validation == true) {
 		// Step 1: Assign Parameters required by the sendMessage function.
-		uri = '/ziksana-web/secure/saveCourse';
+		uri = '/ziksana-web/zcourse/savecourse';
 
 		token = ''; // dummy token for demo. you have to send real token.
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
@@ -316,7 +316,7 @@ function createCourse() {
 							if (data.response == 'success') {
 								course_id = data.id;
 								$('#courseid').val(course_id);
-								window.location.href = "/ziksana-web/secure/createmodule/"
+								window.location.href = "/ziksana-web/zcourse/createmodule/"
 										+ course_id;
 
 							} else {
@@ -337,7 +337,7 @@ function getCourse() {
 
 	$.ajax({
 		  	type: 'GET',
-			url: '/ziksana-web/secure/ismoduleexists/'+Course_id+'',
+			url: '/ziksana-web/zcourse/ismoduleexists/'+Course_id+'',
 		success: function( data ) {
 		
 			$('#moduleExists').val(data);
@@ -347,7 +347,7 @@ function getCourse() {
 	// validation = jQuery("#DegineCourse").validationEngine('validate');
 	// if(validation == true){
 	// Step 1: Assign Parameters required by the sendMessage function.
-	uri = '/ziksana-web/secure/getCourse';
+	uri = '/ziksana-web/zcourse/getcourse';
 
 	token = ''; // dummy token for demo. you have to send real token.
 	request_type = 'POST'; // can be GET or POST. In this case, a GET request
@@ -431,7 +431,7 @@ function getCourse() {
 
 							// // populate subject area
 
-							$.get('/ziksana-web/secure/getSubjectArea', {},
+							$.get('/ziksana-web/zcourse/getsubjectarea', {},
 									function(data) {
 										options = data;
 										var option_string = '';
@@ -461,7 +461,7 @@ function getCourse() {
 							// // start populating subject
 							token = '';
 							request_type = 'GET';
-							uri = '/ziksana-web/secure/getSubject';
+							uri = '/ziksana-web/zcourse/getsubject';
 
 							$
 									.get(
@@ -495,7 +495,7 @@ function getCourse() {
 
 							// Start populating topic
 
-							uri = '/ziksana-web/secure/getTopic';
+							uri = '/ziksana-web/zcourse/gettopic';
 							token = '';
 							request_type = 'GET';
 							$
@@ -560,7 +560,7 @@ function onSuccessfulCourseCreation(data) {
 	if (data.response == 'success') {
 		course_id = data.id;
 		$('#courseid').val(course_id);
-		window.location.href = "/ziksana-web/secure/createmodule/" + course_id;
+		window.location.href = "/ziksana-web/zcourse/createmodule/" + course_id;
 
 	} else {
 		$('#tempdiv1').html(

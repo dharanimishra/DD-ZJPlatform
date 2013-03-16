@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,13 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
  * @author ratneshkumar
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class FileUploadController {
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(FileUploadController.class);
 
-	@RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
+	@RequestMapping(value = "/fileupload", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView fileUpload(@RequestParam File file) {
 		LOGGER.info("Entering Class " + getClass() + " fileUpload()");

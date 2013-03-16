@@ -155,9 +155,9 @@
 			<nav>
 				<div class="menu" style="margin-left: 0px;">
 					<ul>
-						<li><a href="/ziksana-web/secure/educatordashboard">My Home</a>
+						<li><a href="/ziksana-web/secure/homepage">My Home</a>
 							<div class="nav-line"></div></li>
-						<li><a href="/ziksana-web/secure/showMyPrograms" class="current">My
+						<li><a href="/ziksana-web/zcourse/myprograms" class="current">My
 								Programs</a>
 							<div class="nav-line"></div></li>
 						<li><a>My Students</a>
@@ -209,7 +209,7 @@
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong>|&nbsp;<strong
+					href="/ziksana-web/zcourse/myprograms">My Courses </a> </strong>|&nbsp;<strong
 					class="light-gray text-size-px12 font-Signika">Create New Course </strong>
 			</div>
 			<div class="f-r">
@@ -231,13 +231,13 @@
 									<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
-								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
+								<li><a href="/ziksana-web/zcourse/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
 								<li><a
-									href="/ziksana-web/secure/associatecontent/${courseId}"
+									href="/ziksana-web/zcourse/associatecontent/${courseId}"
 									style="text-align: center;">2. Organize Content</a></li>
-								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
+								<li><a href="/ziksana-web/zcourse/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a  style="width: 130px; text-align: center;">4.
 										Define Assignment</a></li>
@@ -508,7 +508,7 @@ function load_tree(){
 
 
 
-		url : "/ziksana-web/secure/getcoursetree/"
+		url : "/ziksana-web/zcourse/getcoursetree/"
 
 				+ $('#courseId').val(),
 
@@ -641,7 +641,7 @@ function load_tree(){
 						course_id = $('#courseId').val();
 						$('#ContentPanel').empty();
 						$('#ContentPanel').append(
-							'<iframe src="/ziksana-web/secure/enrichplayer/'
+							'<iframe src="/ziksana-web/subscription/enrichplayer/'
 									+ course_id
 									+ '/'
 									+ component_id
@@ -655,7 +655,7 @@ function load_tree(){
 						course_id = $('#courseId').val();
 						$('#ContentPanel').empty();
 						$('#ContentPanel').append(
-							'<iframe src="/ziksana-web/secure/ev_enrichplayer/'
+							'<iframe src="/ziksana-web/subscription/ev_enrichplayer/'
 									+ course_id
 									+ '/'
 									+ component_id
@@ -741,7 +741,7 @@ function load_tree(){
 						course_id = $('#courseId').val();
 						$('#ContentPanel').empty();
 						$('#ContentPanel').append(
-							'<iframe src="/ziksana-web/secure/enrichplayer/'
+							'<iframe src="/ziksana-web/subscription/enrichplayer/'
 									+ course_id
 									+ '/'
 									+ component_id
@@ -755,7 +755,7 @@ function load_tree(){
 						course_id = $('#courseId').val();
 						$('#ContentPanel').empty();
 						$('#ContentPanel').append(
-							'<iframe src="/ziksana-web/secure/ev_enrichplayer/'
+							'<iframe src="/ziksana-web/subscription/ev_enrichplayer/'
 									+ course_id
 									+ '/'
 									+ component_id

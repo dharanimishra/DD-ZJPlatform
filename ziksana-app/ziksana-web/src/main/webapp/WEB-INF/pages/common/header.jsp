@@ -22,7 +22,7 @@
                       <ul>
                         <li><a href="/ziksana-web/secure/homepage" class="current">My Home</a><div class="nav-line"></div></li>
 						
-                        <li><a href="/ziksana-web/secure/showMyPrograms">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/zcourse/myprograms">My Programs</a><div class="nav-line"></div></li>
                         <li><a href="#">My Students</a><div class="nav-line"></div></li>
                         <li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;My Locker</a></li>
                       </ul>
@@ -33,7 +33,7 @@
                       <ul>
                         <li><a href="/ziksana-web/secure/homepage" class="current">My Home</a><div class="nav-line"></div></li>
 						
-                        <li><a href="/ziksana-web/secure/showMyPrograms">My Programs</a><div class="nav-line"></div></li>
+                        <li><a href="/ziksana-web/zcourse/myprograms">My Programs</a><div class="nav-line"></div></li>
                         <li><a href="#">My Performance</a><div class="nav-line"></div></li>
                         <li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;My Locker</a></li>
                       </ul>

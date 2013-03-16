@@ -48,7 +48,7 @@ import com.ziksana.service.security.MediaService;
  * @author ratneshkumar
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class CreateCourseController {
 
 	private static final Logger LOGGER = LoggerFactory
@@ -231,7 +231,7 @@ public class CreateCourseController {
 		return modelView;
 	}
 
-	@RequestMapping(value = "/saveCourse", method = RequestMethod.POST)
+	@RequestMapping(value = "/savecourse", method = RequestMethod.POST)
 	public @ResponseBody
 	CourseJsonResponse saveCourse(
 			@RequestParam(value = "Course_id", required = false) String CourseId,
@@ -433,7 +433,7 @@ public class CreateCourseController {
 		return json;
 	}
 
-	@RequestMapping(value = "/saveLearningComponent", method = RequestMethod.POST)
+	@RequestMapping(value = "/savelearningcomponent", method = RequestMethod.POST)
 	public @ResponseBody
 	CourseJsonResponse saveCourseComponents(
 			@RequestParam(value = "Course_id", required = true) String CourseId,
@@ -881,7 +881,7 @@ public class CreateCourseController {
 		return json;
 	}
 
-	@RequestMapping(value = "/removeCourse/{courseId}", method = {
+	@RequestMapping(value = "/removecourse/{courseId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	CourseJsonResponse removeCourse(@PathVariable String courseId)
@@ -910,7 +910,7 @@ public class CreateCourseController {
 
 	}
 
-	@RequestMapping(value = "/removeCourseComponents", method = {
+	@RequestMapping(value = "/removecoursecomponents", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	CourseJsonResponse removeCourseComponents(
@@ -946,7 +946,7 @@ public class CreateCourseController {
 
 	}
 
-	@RequestMapping(value = "/removeCourseContents", method = {
+	@RequestMapping(value = "/removecoursecontents", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	CourseJsonResponse removeCourseContents(
@@ -978,7 +978,7 @@ public class CreateCourseController {
 
 	}
 
-	@RequestMapping(value = "/getCourse", method = { RequestMethod.GET,
+	@RequestMapping(value = "/getcourse", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	CourseEditResponse getCourse(
@@ -1016,7 +1016,7 @@ public class CreateCourseController {
 		return json;
 	}
 
-	@RequestMapping(value = "/getCourseModule", method = { RequestMethod.GET,
+	@RequestMapping(value = "/getcoursemodule", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	ModuleEditResponse getCourseModule(
@@ -1061,7 +1061,7 @@ public class CreateCourseController {
 		return json;
 	}
 
-	@RequestMapping(value = "/searchCourseComponents", method = {
+	@RequestMapping(value = "/searchcoursecomponents", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView searchCourseComponents(@RequestParam String memberRoleId,

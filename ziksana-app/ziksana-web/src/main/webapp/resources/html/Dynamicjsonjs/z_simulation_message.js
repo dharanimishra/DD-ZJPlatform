@@ -49,50 +49,50 @@ ziksanaSimulationMessages['/note/'] = {
 								"description":"You can add simulated message objects like this in the 'z_simulated_message.js'. Have a look at the file to see how normal and ziksanaMessage simulation objects are added."	
 }
 
-ziksanaSimulationMessages['/ziksana-web/secure/getSubjectArea'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/getsubjectarea'] = {
 								"title": "Subject Area",
 								"description":"Getting Subject Area from Simulator"	
 }
 
-ziksanaSimulationMessages['/ziksana-web/secure/getSubject'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/getsubject'] = {
 								"title": "Subject",
 								"description":"Getting Subject from Simulator"	
 }
 
-ziksanaSimulationMessages['/ziksana-web/secure/getTopic'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/gettopic'] = {
 								"title": "Topic",
 								"description":"Getting Topic from Simulator"	
 }
 
-ziksanaSimulationMessages['/ziksana-web/secure/saveCourse'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/savecourse'] = {
 								"title": "Save Course",
 								"description":"Saving the whole page"	
 }
-ziksanaSimulationMessages['/ziksana-web/secure/saveAddnlInfo'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/saveaddnlinfo'] = {
 								"title": "Save Additional Information",
 								"description":"Saving the whole page"	
 }
-ziksanaSimulationMessages['/ziksana-web/secure/getModuleArea'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/getmodulearea'] = {
 								"title": "Save Additional Information",
 								"description":"Saving the whole page"	
 }
-ziksanaSimulationMessages['/ziksana-web/secure/getModule'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/getmodule'] = {
 								"title": "Save Additional Information",
 								"description":"Saving the whole page"	
 }
-ziksanaSimulationMessages['/ziksana-web/secure/getModuleTopic'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/getmoduletopic'] = {
 								"title": "Save Additional Information",
 								"description":"Saving the whole page"	
 }
-ziksanaSimulationMessages['/ziksana-web/secure/saveLearningComponent'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/savelearningcomponent'] = {
 								"title": "Save Additional Information",
 								"description":"Saving the whole page"	
 }
-ziksanaSimulationMessages['/ziksana-web/secure/saveQualifier'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/savequalifier'] = {
 								"title": "Save Additional Information",
 								"description":"Saving the whole page"	
 }
-ziksanaSimulationMessages['/ziksana-web/secure/saveorupdatenewplaybook'] = {
+ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatenewplaybook'] = {
 								"title": "Save Additional Information",
 								"description":"Saving the whole page"	
 }

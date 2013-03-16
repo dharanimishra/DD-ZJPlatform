@@ -443,7 +443,7 @@ color:#666;
 				</div>
                 <div class="icons-list">
 				
-					<a href="/ziksana-web/secure/course/${course.coursesId}" rel="tipsy" title="Observe Course" class="Icon-course icons-right"></a>
+					<a href="/ziksana-web/zcourse/course/${course.coursesId}" rel="tipsy" title="Observe Course" class="Icon-course icons-right"></a>
 				    <a href="#" rel="tipsy" title="View Playbook" class="Icon-Strategy icons-right"></a>
 				   <a href="#" rel="tipsy" title="View Assignments  " class="Icon-view icons-left" style="margin-right:-2px;"></a>
                  <a href="#" rel="tipsy" title="List View Calendar" class="Icon-Calendar3 icons-right"></a>

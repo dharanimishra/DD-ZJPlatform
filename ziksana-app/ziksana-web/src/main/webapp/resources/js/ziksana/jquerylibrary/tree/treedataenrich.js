@@ -194,7 +194,7 @@ function onButtonClick(menuitemId, type) {
 				$('#ContentPanel').empty();
 				$('#ContentPanel')
 						.append(
-								'<iframe src="/ziksana-web/secure/enrichplayer/'
+								'<iframe src="/ziksana-web/subscription/enrichplayer/'
 										+ parsed_course_id
 										+ '/'
 										+ parsed_component_id
@@ -208,7 +208,7 @@ function onButtonClick(menuitemId, type) {
 				$('#ContentPanel').empty();
 				$('#ContentPanel')
 						.append(
-								'<iframe src="/ziksana-web/secure/ev_enrichplayer/'
+								'<iframe src="/ziksana-web/subscription/ev_enrichplayer/'
 										+ parsed_course_id
 										+ '/'
 										+ parsed_component_id
@@ -356,9 +356,9 @@ function createtree(course_id) {
 	tree.setImageArrays("minus", "minus_ar.png", "minus_ar.png",
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
 	// tree.loadXML("/ziksana-web/resources/js/ziksana/jquerylibrary/tree/xml/treemodel.xml");
-	// tree.loadXML("/ziksana-web/secure/getchildtree/150");
+	// tree.loadXML("/ziksana-web/zcourse/getchildtree/150");
 	courseId = course_id.split('_')[1];
-	tree.loadXML("/ziksana-web/secure/getenrichtree/" + courseId);
+	tree.loadXML("/ziksana-web/zcourse/getenrichtree/" + courseId);
 
 }
 

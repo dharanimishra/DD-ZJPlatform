@@ -19,7 +19,7 @@ import com.ziksana.service.course.CourseService;
  */
 
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class AddNewInfoController {
 
 	private static final Logger LOGGER = LoggerFactory
@@ -28,7 +28,7 @@ public class AddNewInfoController {
 	@Autowired
 	CourseService courseService;
 
-	@RequestMapping(value = "/getAddnlInfo", method = { RequestMethod.GET,
+	@RequestMapping(value = "/getaddnlinfo", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView getAddnlInfo() throws CourseException {
@@ -39,7 +39,7 @@ public class AddNewInfoController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/saveAddnlInfo", method = { RequestMethod.GET,
+	@RequestMapping(value = "/saveaddnlinfo", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView saveAddnlInfo(
@@ -61,7 +61,7 @@ public class AddNewInfoController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/updateAddnlInfo", method = { RequestMethod.GET,
+	@RequestMapping(value = "/updateaddnlinfo", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView updateAddnlInfo(
@@ -81,7 +81,7 @@ public class AddNewInfoController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/deleteAddnlInfo", method = RequestMethod.POST)
+	@RequestMapping(value = "/deleteaddnlinfo", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView deleteAddnlInfo(
 			@RequestParam CourseAdditionalProperty courseAdditionalProperty) {

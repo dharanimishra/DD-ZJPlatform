@@ -253,7 +253,7 @@ span.standartTreeRow:hover {
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong>|&nbsp;<strong
+					href="/ziksana-web/zcourse/myprograms">My Courses </a> </strong>|&nbsp;<strong
 					class="light-gray text-size-px12 font-Signika">Create New Course </strong>
 			</div>
 			<div class="f-r">
@@ -278,13 +278,13 @@ span.standartTreeRow:hover {
 						<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
-								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
+								<li><a href="/ziksana-web/zcourse/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
 								<li><a
-									href="/ziksana-web/secure/associatecontent/${courseId}"
+									href="/ziksana-web/zcourse/associatecontent/${courseId}"
 									style="text-align: center;">2. Organize Content</a></li>
-								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
+								<li><a href="/ziksana-web/zcourse/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
 						          Define Assignment</a></li>
@@ -359,7 +359,7 @@ span.standartTreeRow:hover {
 								<!-- Content Panel End -->
 
 								<!-- <a class="btn btn-info"
-									href="/ziksana-web/secure/enrichcontent/${courseId}"  tabindex="13"
+									href="/ziksana-web/zcourse/enrichcontent/${courseId}"  tabindex="13"
 									style="float: right; margin-bottom: 20px; margin-top: 20px;"
 									id="">Save and Continue</a> -->
 

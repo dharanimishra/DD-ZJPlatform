@@ -21,9 +21,6 @@ import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.id.StringZID;
-import com.ziksana.id.ZID;
-import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseContentService;
 import com.ziksana.service.course.CourseEnrichmentService;
@@ -32,7 +29,7 @@ import com.ziksana.service.course.CourseEnrichmentService;
  * @author ratneshkumar
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class CourseContentController {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(CourseContentController.class);
@@ -43,7 +40,7 @@ public class CourseContentController {
 	@Autowired
 	CourseEnrichmentService enrichService;
 
-	@RequestMapping(value = "/saveOrUpdateContent", method = {
+	@RequestMapping(value = "/saveorupdatecontent", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	CourseJsonResponse saveOrUpdateContent(
@@ -190,17 +187,17 @@ public class CourseContentController {
 		return json;
 	}
 
-	@RequestMapping(value = "/getComponentContent", method = RequestMethod.POST)
+	@RequestMapping(value = "/getcomponentcontent", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView getComponentContent(@RequestParam Course course) {
 		LOGGER.info("Entering Class " + getClass() + " getComponentContent()");
-		ModelAndView mv = new ModelAndView("courses/associatecontent");
+		ModelAndView mv = new ModelAndView("createmodule");
 		LOGGER.info("Exiting Class " + getClass() + " getComponentContent(): ");
 
 		return mv;
 	}
 
-	@RequestMapping(value = "/course/deleteNode", method = RequestMethod.POST)
+	@RequestMapping(value = "/course/deletenode", method = RequestMethod.POST)
 	public @ResponseBody
 	String deleteContent(@RequestParam String nodeId) {
 		LOGGER.info("Entering Class " + getClass() + " deleteContent()");

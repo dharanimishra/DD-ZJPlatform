@@ -17,7 +17,7 @@ import com.ziksana.exception.course.CourseException;
 import com.ziksana.service.course.CourseNestTreeService;
 
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class CourseNestTreeController {
 
 	private static final Logger LOGGER = LoggerFactory
@@ -41,7 +41,7 @@ public class CourseNestTreeController {
 	private String noteIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/note.png";
 	private String linkIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/link.png";
 
-	@RequestMapping(value = "/gettree1", method = RequestMethod.GET)
+	@RequestMapping(value = "/gettreesample", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showCourseTree1() {
 		LOGGER.info("Entering Class " + getClass() + " showCourseTree()");

@@ -7,7 +7,7 @@ $(document).ready(function(e) {
 	$("#Assoccontentarea").change(function(e) {
 	//alert("Topic change handler");
     
-	uri = '/ziksana-web/secure/getContentArea'; //this is a demo uri which will return a hardcoded data when simulation is on.
+	uri = '/ziksana-web/zcourse/getContentArea'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -29,9 +29,9 @@ $(document).ready(function(e) {
     //Get the data from the text and input field.
 
 	 var Course_Topic = $('#Assoccontentarea').val(); //gets the value typed in description field
-    uri = '/ziksana-web/secure/getContentArea';
+    uri = '/ziksana-web/zcourse/getContentArea';
 	alert(Course_Topic);
-	ziksanaSimulationMessages['/ziksana-web/secure/getContentArea'].CM_Area= Course_Topic;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/getContentArea'].CM_Area= Course_Topic;
 	
 	}		
 
@@ -62,7 +62,7 @@ $(document).ready(function(e) {
 	$("#Assoccontentsubject").change(function(e) {
 	//alert("Topic change handler");
     
-	uri = '/ziksana-web/secure/getContent'; //this is a demo uri which will return a hardcoded data when simulation is on.
+	uri = '/ziksana-web/zcourse/getcontent'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -84,9 +84,9 @@ $(document).ready(function(e) {
     //Get the data from the text and input field.
 
 	 var Course_Topic = $('#Assoccontentsubject').val(); //gets the value typed in description field
-    uri = '/ziksana-web/secure/getContent';
+    uri = '/ziksana-web/zcourse/getcontent';
 
-	ziksanaSimulationMessages['/ziksana-web/secure/getContent'].CM_Area= Course_Topic;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/getcontent'].CM_Area= Course_Topic;
 	alert(Course_Topic);
 }		
 
@@ -118,7 +118,7 @@ $(document).ready(function(e) {
 	$("#Assoccontenttopic").change(function(e) {
 	//alert("Topic change handler");
     
-	uri = '/ziksana-web/secure/getTopic'; //this is a demo uri which will return a hardcoded data when simulation is on.
+	uri = '/ziksana-web/zcourse/gettopic'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -140,9 +140,9 @@ $(document).ready(function(e) {
     //Get the data from the text and input field.
 
 	 var Course_Topic = $('#Assoccontenttopic').val(); //gets the value typed in description field
-    uri = '/ziksana-web/secure/getTopic';
+    uri = '/ziksana-web/zcourse/gettopic';
 
-	ziksanaSimulationMessages['/ziksana-web/secure/getTopic'].CM_Area= Course_Topic;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/gettopic'].CM_Area= Course_Topic;
 	//alert(Course_Topic);
 }		
 
@@ -173,7 +173,7 @@ $(document).ready(function(e) {
 function  getassociatecontentsave()
 {
 	
-	uri = '/ziksana-web/secure/saveOrUpdateContent'; //this is a demo uri which will return a hardcoded data when simulation is on.
+	uri = '/ziksana-web/zcourse/saveorupdatecontent'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -202,48 +202,48 @@ function constructNoteassociatecontentformrest()
 	var Assoctab_Image = $('#associateimgupl').val(); //gets the value typed in description field
 	var Content_type = $('#q_type').val(); //gets the value typed in title field
 	var Assoctype_img = $("#imgultype").val();
-    uri = '/ziksana-web/secure/saveOrUpdateContent';
+    uri = '/ziksana-web/zcourse/saveorupdatecontent';
 	if(Content_type == "Upload Content")
 	{
 		var Assoctype_content = $("#imgultype").val();
-		ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].id = course_id;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].title = Assoc_Name;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].description = Assoc_Description;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].At_Field = Assoctag_Field;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].AM_Image = Assoctab_Image;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].Ac_Type = Content_type;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].Ac_Desc = Assoctype_content;
+		ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].id = course_id;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].title = Assoc_Name;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].description = Assoc_Description;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].At_Field = Assoctag_Field;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].AM_Image = Assoctab_Image;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].Ac_Type = Content_type;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].Ac_Desc = Assoctype_content;
 	}
 	else if(Content_type == "External WebPage")
 	{
 		var Assoctype_content = $("#defaultvalue").val();
-		ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].id = course_id;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].title = Assoc_Name;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].description = Assoc_Description;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].At_Field = Assoctag_Field;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].AM_Image = Assoctab_Image;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].Ac_Type = Content_type;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].Ac_Desc = Assoctype_content;
+		ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].id = course_id;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].title = Assoc_Name;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].description = Assoc_Description;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].At_Field = Assoctag_Field;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].AM_Image = Assoctab_Image;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].Ac_Type = Content_type;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].Ac_Desc = Assoctype_content;
 	}
 	else if(Content_type == "Create Content")
 	{
 		var Assoctype_content = $("#q_typecdesdcrte").val();
-		ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].id = course_id;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].title = Assoc_Name;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].description = Assoc_Description;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].At_Field = Assoctag_Field;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].AM_Image = Assoctab_Image;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].Ac_Type = Content_type;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].Ac_Desc = Assoctype_content;
+		ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].id = course_id;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].title = Assoc_Name;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].description = Assoc_Description;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].At_Field = Assoctag_Field;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].AM_Image = Assoctab_Image;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].Ac_Type = Content_type;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].Ac_Desc = Assoctype_content;
 	}
 	else
 	{
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].id = course_id;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].title = Assoc_Name;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].description = Assoc_Description;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].At_Field = Assoctag_Field;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].AM_Image = Assoctab_Image;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveOrUpdateContent'].Ac_Type = Content_type;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].id = course_id;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].title = Assoc_Name;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].description = Assoc_Description;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].At_Field = Assoctag_Field;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].AM_Image = Assoctab_Image;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/saveorupdatecontent'].Ac_Type = Content_type;
 	}
 }
 

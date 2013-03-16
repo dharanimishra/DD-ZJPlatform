@@ -180,7 +180,7 @@ function getaddmodulesave()
 	 //This function demonstrates how to send a message using sendMessage() function. This does not use Ziksana Message format for communication. The communicaiton is direct.
 
     //Step 1: Assign Parameters required by the sendMessage function.
-    uri = '/ziksana-web/secure/saveLearningComponent'; //this is a demo uri which will return a hardcoded data when simulation is on.
+    uri = '/ziksana-web/zcourse/savelearningcomponent'; //this is a demo uri which will return a hardcoded data when simulation is on.
 
     token = ''; //dummy token for demo. you have to send real token.
 
@@ -211,15 +211,15 @@ function constructNoteaddmoduleformrest(){
 	var Assoc_Image = $('#Cmoduleimgupl').val(); //gets the value typed in description field
 	//alert(course_id);
 	
-    uri = '/ziksana-web/secure/saveLearningComponent';
-	ziksanaSimulationMessages['/ziksana-web/secure/saveLearningComponent'].id = course_id;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveLearningComponent'].title = Module_Name;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveLearningComponent'].description = Module_Description;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveLearningComponent'].Mt_Field = Moduletag_Field;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveLearningComponent'].Mcredits = Module_Credits;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveLearningComponent'].MDuration = Module_Duration;
-    ziksanaSimulationMessages['/ziksana-web/secure/saveLearningComponent'].DM_Type = ModuleDuration_Type;
-	ziksanaSimulationMessages['/ziksana-web/secure/saveLearningComponent'].AM_Image = Assoc_Image;
+    uri = '/ziksana-web/zcourse/savelearningcomponent';
+	ziksanaSimulationMessages['/ziksana-web/zcourse/savelearningcomponent'].id = course_id;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/savelearningcomponent'].title = Module_Name;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/savelearningcomponent'].description = Module_Description;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/savelearningcomponent'].Mt_Field = Moduletag_Field;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/savelearningcomponent'].Mcredits = Module_Credits;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/savelearningcomponent'].MDuration = Module_Duration;
+    ziksanaSimulationMessages['/ziksana-web/zcourse/savelearningcomponent'].DM_Type = ModuleDuration_Type;
+	ziksanaSimulationMessages['/ziksana-web/zcourse/savelearningcomponent'].AM_Image = Assoc_Image;
 	//alert('out of the function');
 	
 }

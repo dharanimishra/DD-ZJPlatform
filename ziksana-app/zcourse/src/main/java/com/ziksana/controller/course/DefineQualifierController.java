@@ -18,7 +18,7 @@ import com.ziksana.service.course.DefineQualifierService;
  * @author ratneshkumar
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class DefineQualifierController {
 
 	private static final Logger LOGGER = LoggerFactory
@@ -27,7 +27,7 @@ public class DefineQualifierController {
 	@Autowired
 	DefineQualifierService defineQualifierService;
 
-	@RequestMapping(value = "/getDefinedQualifiers", method = RequestMethod.POST)
+	@RequestMapping(value = "/getdefinedqualifiers", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView getDefinedQualifiers(@RequestParam Course course) {
 		LOGGER.info("Entering Class " + getClass() + " getDefinedQualifiers()");
@@ -37,7 +37,7 @@ public class DefineQualifierController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/updateQualifier", method = RequestMethod.POST)
+	@RequestMapping(value = "/updatequalifier", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView updateQualifier(
 			@RequestParam LearningComponent learningComponent) {
@@ -48,7 +48,7 @@ public class DefineQualifierController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/deleteQualifier", method = RequestMethod.POST)
+	@RequestMapping(value = "/deletequalifier", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView deleteQualifier(
 			@RequestParam LearningComponent learningComponent) {

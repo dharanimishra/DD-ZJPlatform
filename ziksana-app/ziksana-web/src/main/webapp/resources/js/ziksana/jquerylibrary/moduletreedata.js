@@ -143,7 +143,7 @@ function createtree(course_id) {
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
 
 	courseId = course_id.split('_')[1];
-	tree.loadXML("/ziksana-web/secure/getparenttree/" + courseId);
+	tree.loadXML("/ziksana-web/zcourse/getparenttree/" + courseId);
 
 }
 

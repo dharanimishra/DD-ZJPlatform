@@ -282,13 +282,13 @@ span.standartTreeRow:hover {
 						<div id="page-wrap">
 
 							<ul class="breadcrumb" style="padding: 1px;">
-								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
+								<li><a href="/ziksana-web/zcourse/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
 								<li><a
-									href="/ziksana-web/secure/associatecontent/${courseId}"
+									href="/ziksana-web/zcourse/associatecontent/${courseId}"
 									style="text-align: center;">2. Associate Content</a></li>
-								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
+								<li><a href="/ziksana-web/zcourse/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								<li><a href="#" style="width: 130px; text-align: center;">4.
 										Define Assignment</a></li>
@@ -1088,7 +1088,7 @@ var s = $('#Duration').spinit({ height: 20, width: 30, min: 0, initValue: 0, max
 										</div>
 
 									</div>
-									<a href="/ziksana-web/secure/associatecontent/${courseId}"
+									<a href="/ziksana-web/zcourse/associatecontent/${courseId}"
 										style="float: right; margin-bottom: 20px; margin-top: 20px;"
 										class="btn btn-info">Save and Continue</a>
 									<!-- End of viewmodelthinking -->

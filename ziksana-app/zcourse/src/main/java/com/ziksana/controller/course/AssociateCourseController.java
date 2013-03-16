@@ -21,7 +21,7 @@ import com.ziksana.service.security.MediaService;
  * @author ratneshkumar
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class AssociateCourseController {
 
 	private static final Logger LOGGER = LoggerFactory
@@ -71,7 +71,7 @@ public class AssociateCourseController {
 			int isModuleExists = courseService.isModuleExists(course_id);
 			LOGGER.info("Module Size= >"+isModuleExists);
 			if(isModuleExists == 0 ){
-				return new ModelAndView("redirect:/secure/createcourse/"+courseId+"");
+				return new ModelAndView("redirect:/zcourse/createcourse/"+courseId+"");
 			}else{
 			modelView = new ModelAndView("createmodule");
 			modelView.addObject("CourseId", courseId);

@@ -129,7 +129,7 @@ $(document).ready(function() {
 });
 </script>
 
-<c:url var="showCourseUrl" value="/secure/showmycourse/111111" />
+<c:url var="showCourseUrl" value="/zcourse/educatorcourses" />
 
 <script type="text/javascript">
 $(document).ready(function() {

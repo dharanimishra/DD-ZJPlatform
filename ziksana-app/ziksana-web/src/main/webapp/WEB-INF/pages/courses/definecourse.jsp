@@ -200,7 +200,7 @@
 											var courseId = $('#courseid').val();
 											var courseName = $('#defaultvalue')
 													.val();
-											uri = '/ziksana-web/secure/iscourseexists/';
+											uri = '/ziksana-web/zcourse/iscourseexists/';
 											var parameters = {
 												"courseId" : courseId,
 												"courseName" : courseName,
@@ -321,7 +321,7 @@ span.standartTreeRow:hover {
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong>|&nbsp;<strong
+					href="/ziksana-web/zcourse/myprograms">My Courses </a> </strong>|&nbsp;<strong
 					class="light-gray text-size-px12 font-Signika">Create New
 					Course </strong>
 			</div>
@@ -344,7 +344,7 @@ span.standartTreeRow:hover {
 
 								<ul class="breadcrumb" style="padding: 1px;">
 
-									<li><a href="/ziksana-web/secure/createcourse"
+									<li><a href="/ziksana-web/zcourse/createcourse"
 										style="width: 100px; text-align: center;"><span
 											class="bcumb">1.</span> Define Course</a></li>
 
@@ -374,16 +374,16 @@ span.standartTreeRow:hover {
 
 								<ul class="breadcrumb" style="padding: 1px;">
 
-									<li><a href="/ziksana-web/secure/createcourse/${courseId}"
+									<li><a href="/ziksana-web/zcourse/createcourse/${courseId}"
 										style="width: 100px; text-align: center;"><span
 											class="bcumb">1.</span> Define Course</a></li>
 
 									<li><a
-										href="/ziksana-web/secure/associatecontent/${courseId}"
+										href="/ziksana-web/zcourse/associatecontent/${courseId}"
 										style="text-align: center;">2. Organize Content</a></li>
 
 									<li><a
-										href="/ziksana-web/secure/enrichcontent/${courseId}"
+										href="/ziksana-web/zcourse/enrichcontent/${courseId}"
 										style="width: 124px; text-align: center;">3. Enrich
 											Content</a></li>
 
@@ -550,7 +550,7 @@ span.standartTreeRow:hover {
 
 										<!--  <div class="addinformation">
 											<a class="lbx-addnew" id="_addNewInfo"
-												href="/ziksana-web/secure/getAddnlInfo">Add New
+												href="/ziksana-web/zcourse/getaddnlinfo">Add New
 												Information </a>
 										</div> -->
 
@@ -698,7 +698,7 @@ span.standartTreeRow:hover {
 							tabindex="13" value="Submit"
 							onClick="createCourse(); return false;"
 							style="margin-right: 10px;">
-						<!-- <a href="/ziksana-web/secure/createmodule/${courseId}"
+						<!-- <a href="/ziksana-web/zcourse/createmodule/${courseId}"
 									style="float:right; margin-bottom: 20px; margin-top: 2px; display: inline-block;right: -118px;position: relative;"
 									class="btn btn-info">Save and Continue</a> -->
 

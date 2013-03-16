@@ -16,7 +16,7 @@ import com.ziksana.service.course.CourseService;
  * @author ratneshkumar
  */
 @Controller
-@RequestMapping("/secure")
+@RequestMapping("/zcourse")
 public class EnrichCourseController {
 
 	private static final Logger LOGGER = LoggerFactory
@@ -49,7 +49,7 @@ public class EnrichCourseController {
 		if (courseid > 0) {
 			int contentCount = courseService.isContentExists(courseid);
 			if(contentCount == 0){
-				return new ModelAndView("redirect:/secure/associatecontent/course_"+courseid+"");
+				return new ModelAndView("redirect:/zcourse/associatecontent/course_"+courseid+"");
 			}else{
 				modelView = new ModelAndView("organizeenrichcontent");
 				modelView.addObject("courseid", courseid);

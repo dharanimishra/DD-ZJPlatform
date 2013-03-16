@@ -269,7 +269,7 @@ span.standartTreeRow:hover {
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/secure/showMyPrograms">My Courses </a> </strong>|<strong
+					href="/ziksana-web/zcourse/myprograms">My Courses </a> </strong>|<strong
 					class="light-gray text-size-px12 font-Signika">Create New Course </strong>
 			</div>
 			<div class="f-r">
@@ -294,7 +294,7 @@ span.standartTreeRow:hover {
 										class="bcumb">1.</span> Define Course</a></li>
 								</c:if>
 								<c:if test="${module != 0}">
-								<li><a href="/ziksana-web/secure/createcourse/${courseId}"
+								<li><a href="/ziksana-web/zcourse/createcourse/${courseId}"
 									style="width: 100px; text-align: center;"><span
 										class="bcumb">1.</span> Define Course</a></li>
 								</c:if>
@@ -303,7 +303,7 @@ span.standartTreeRow:hover {
 									style="text-align: center;">2. Organize Content</a></li>
 								</c:if>
 								<c:if test="${module != 0}">
-								<li><a href="/ziksana-web/secure/associatecontent/${courseId}"
+								<li><a href="/ziksana-web/zcourse/associatecontent/${courseId}"
 									style="text-align: center;">2. Organize Content</a></li>
 								</c:if>
 								<c:if test="${module == 0}">
@@ -311,7 +311,7 @@ span.standartTreeRow:hover {
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								</c:if>
 								<c:if test="${module != 0}">
-								<li><a href="/ziksana-web/secure/enrichcontent/${courseId}"
+								<li><a href="/ziksana-web/zcourse/enrichcontent/${courseId}"
 									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
 								</c:if>
 								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
@@ -617,8 +617,8 @@ span.standartTreeRow:hover {
 
 									<!-- Start of Viewmodelthinking -->
 							<div style="float: right; margin-bottom: 20px; margin-top: 20px;">
-							<a href="/ziksana-web/secure/associatecontent/${courseId}" class="btn btn-info" tabindex="13"  style="margin-left:20px;">Save and Continue</a>
-							<a href="/ziksana-web/secure/editcourse/${courseId}" class="btn btn-info f-r" style=" float:left;margin-left:20px;">Edit Course Details </a>
+							<a href="/ziksana-web/zcourse/associatecontent/${courseId}" class="btn btn-info" tabindex="13"  style="margin-left:20px;">Save and Continue</a>
+							<a href="/ziksana-web/zcourse/editcourse/${courseId}" class="btn btn-info f-r" style=" float:left;margin-left:20px;">Edit Course Details </a>
 								
 					
 				

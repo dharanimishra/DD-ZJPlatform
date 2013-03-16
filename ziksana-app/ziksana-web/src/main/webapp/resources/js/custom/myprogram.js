@@ -7,12 +7,12 @@
 		
 		$.ajax({
 		  	type: 'POST',
-			url: '/ziksana-web/secure/removeCourse/COURSE_'+courseid+'',
+			url: '/ziksana-web/zcourse/removecourse/COURSE_'+courseid+'',
 			dataType: 'json',
 			success: function( data ) {
 				$('#courseModel_'+courseid+'').hide();		
 				
-				window.location.href = "/ziksana-web/secure/showMyProgramsDraft";
+				window.location.href = "/ziksana-web/zcourse/myprogramsdraft";
 			}
 		});
 		

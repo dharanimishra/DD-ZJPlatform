@@ -1145,14 +1145,14 @@ padding: 5px;">
 
 	 </script>
     <c:if test="${member.roleType eq 'EDUCATOR'}">
-			<a class="fancyboxclose" href="/ziksana-web/secure/createcourse" target="_parent" >
+			<a class="fancyboxclose" href="/ziksana-web/zcourse/createcourse" target="_parent" >
 				
 				
 				<h5><img src='/ziksana-web/resources/images/icons/course-create.png'><br/>Create</h5>
 				<div >Create a course in 7 easy steps </div>				
 			</a>
 			
-			<a class="fancyboxclose" href="/ziksana-web/secure/showMyProgramsDraft" target="_parent">
+			<a class="fancyboxclose" href="/ziksana-web/zcourse/myprogramsdraft" target="_parent">
 				<h5><img src='/ziksana-web/resources/images/icons/course-draft.png'><br/>Draft</h5>
 				<div >Edit your draft courses</div>					
 			</a>
@@ -1174,7 +1174,7 @@ padding: 5px;">
 			</a>
 	</c:if>
 	 <c:if test="${member.roleType eq 'LEARNER'}">
-	 <a class="fancyboxclose" href="/ziksana-web/secure/showMyPrograms" target="_parent" >
+	 <a class="fancyboxclose" href="/ziksana-web/zcourse/myprograms" target="_parent" >
 				<h5><img src='/ziksana-web/resources/images/icons/course-view.png'><br/>Course</h5>
 				<div>Study the courses you  subcribed  </div>				
 			</a>

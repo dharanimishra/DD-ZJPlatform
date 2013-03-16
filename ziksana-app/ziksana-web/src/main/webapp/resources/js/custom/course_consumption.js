@@ -148,10 +148,10 @@ $(document).ready(function() {
 
 
 //
-//				url : "/ziksana-web/secure/getcoursetree/"
+//				url : "/ziksana-web/zcourse/getcoursetree/"
 //
 //						+ $('#courseId').val(),
-				url : "/ziksana-web/secure/getcoursetree/"+ $('#courseId').val(),
+				url : "/ziksana-web/zcourse/getcoursetree/"+ $('#courseId').val(),
 
 
 
@@ -362,7 +362,7 @@ $(document).ready(function() {
 
 
 
-				$.get('/ziksana-web/secure/content/getContent', {
+				$.get('/ziksana-web/zcourse/content/getcontent', {
 
 					'contentId' : node_id,
 
@@ -720,7 +720,7 @@ function get_educator_suggested_references(node_id, parent_node_id, course_id) {
 
 			.get(
 
-					'/ziksana-web/secure/educatorReferences',
+					'/ziksana-web/subscription/educatorreferences',
 
 					{
 
@@ -816,7 +816,7 @@ function get_educator_notes(node_id, parent_node_id, course_id) {
 
 
 
-	$.get('/ziksana-web/secure/educatorNotes', {
+	$.get('/ziksana-web/subscription/educatornotes', {
 
 		'nodeId' : node_id,
 
@@ -902,7 +902,7 @@ function get_hotspot(node_id, parent_node_id, course_id){
 	
 	
 
-	$.get('/ziksana-web/secure/gethotspot', {
+	$.get('/ziksana-web/subscription/gethotspot', {
 
 		'nodeId' : node_id,
 
@@ -957,7 +957,7 @@ function add_learner_content_note(note_title, note_description, note_duration) {
 
 
 
-	$.post('/ziksana-web/secure/addLearnerNote', {
+	$.post('/ziksana-web/subscription/addlearnernote', {
 
 		"courseId" : course_id,
 
@@ -1031,7 +1031,7 @@ function delete_learner_content_note(note_anchor) {
 
 
 
-	$.post('/ziksana-web/secure/deleteLearnerContent', {
+	$.post('/ziksana-web/subscription/deletelearnercontent', {
 
 		"contentId" : note_id
 
@@ -1075,7 +1075,7 @@ function get_learner_content_notes(node_id, course_id) {
 
 			.get(
 
-					'/ziksana-web/secure/getLearnerNotes',
+					'/ziksana-web/subscription/getlearnernotes',
 
 					{
 
@@ -1214,7 +1214,7 @@ function add_learner_question(question_title, question_duration) {
 
 
 
-	$.post('/ziksana-web/secure/addLearnerQuestion', {
+	$.post('/ziksana-web/subscription/addlearnerquestion', {
 
 		"courseId" : course_id,
 
@@ -1336,7 +1336,7 @@ function edit_learner_content_note(note_title, note_description, note_duration,
 
 
 
-	$.post('/ziksana-web/secure/editLearnerContent', {
+	$.post('/ziksana-web/subscription/editlearnercontent', {
 
 		"contentId" : note_id,
 
@@ -1418,7 +1418,7 @@ function edit_learner_question(question_title, question_duration, question_id) {
 
 
 
-	$.post('/ziksana-web/secure/editLearnerContent', {
+	$.post('/ziksana-web/subscription/editlearnercontent', {
 
 		"contentId" : question_id,
 
@@ -1506,7 +1506,7 @@ function delete_learner_question(question_anchor) {
 
 
 
-	$.post('/ziksana-web/secure/deleteLearnerContent', {
+	$.post('/ziksana-web/subscription/deletelearnercontent', {
 
 		"contentId" : question_id
 
@@ -1554,7 +1554,7 @@ function get_learner_questions(node_id, course_id) {
 
 			.get(
 
-					'/ziksana-web/secure/getLearnerQuestions',
+					'/ziksana-web/subscription/getlearnerquestions',
 
 					{
 
@@ -1675,7 +1675,7 @@ function get_content_toc(node_id, course_id) {
 
 			.get(
 
-					'/ziksana-web/secure/getContentTOC',
+					'/ziksana-web/subscription/getcontenttoc',
 
 					{
 
