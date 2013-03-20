@@ -61,7 +61,7 @@
 		values(#{category}, #{activationDate}, #{creationDate},#{notificationType},
 		#{notificationContent},
 		#{priority},
-		#{forMember.memberRoleId},
+		#{forMember.memberRoleId}
 		#{creatingMember.memberRoleId} )
 	</insert>
 

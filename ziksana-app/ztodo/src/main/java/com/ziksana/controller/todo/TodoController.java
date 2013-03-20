@@ -37,9 +37,12 @@ public class TodoController {
 	public @ResponseBody ModelAndView showMyTodos() {
 		
 		ModelAndView modelView = new ModelAndView("xml/todolist");
-				
+		try{		
 		modelView.addObject("todoItems", todoService.getTodos());
-
+		}catch (ZiksanaException zexception) {
+			modelView.addObject("errorResponse", zexception.getMessage());
+			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
 		return modelView;
 	}
 	
@@ -48,7 +51,12 @@ public class TodoController {
 
 		int todoSize = 0;
 		List<Todo> todoList = new ArrayList<Todo>();
+		try{
 		todoList = todoService.getTodos();
+		}catch (ZiksanaException zexception) {
+			
+			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
 		todoSize = todoList.size();
 		
 		return todoSize;
@@ -63,9 +71,12 @@ public class TodoController {
 	public @ResponseBody ModelAndView showTodos() {
 
 		ModelAndView modelView = new ModelAndView("xml/todolist");	
-		
+		try{
 		modelView.addObject("todoItems", todoService.getMapperTodos());
-
+		}catch (ZiksanaException zexception) {
+			modelView.addObject("errorResponse", zexception.getMessage());
+			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
 		return modelView;
 	}
 	

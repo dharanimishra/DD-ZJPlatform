@@ -23,9 +23,5 @@ public interface TodoService {
 
 	public void deleteTodo(int todoId);
 
-	public Todo completeTodo(int todoId);
-
-	
-	
 
 }
