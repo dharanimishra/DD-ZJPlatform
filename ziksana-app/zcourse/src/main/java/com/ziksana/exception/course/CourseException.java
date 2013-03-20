@@ -10,19 +10,5 @@ public class CourseException extends ZiksanaException {
 		super(code);
 	}
 	
-	public CourseException(Exception exp) {
-		super(exp);
-	}
-
-	public CourseException(String code, Exception exp) {
-		super(code, exp);
-	}
-
-	public CourseException(String code, String message) {
-		super(code, message);
-	}
-
-	public CourseException(String code, String message, Exception exp) {
-		super(code, message, exp);
-	}
+	
 }

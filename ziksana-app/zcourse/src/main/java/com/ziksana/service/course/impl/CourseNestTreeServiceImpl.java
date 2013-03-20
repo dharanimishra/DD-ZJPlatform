@@ -81,7 +81,7 @@ public class CourseNestTreeServiceImpl implements CourseNestTreeService {
 		} catch (Exception exp) {
 			LOGGER.error("CourseNestTreeService.getModuleComponents getTree() :" + exp);
 			throw new CourseException(
-					"Unable to create learning component tree", exp);
+					"Unable to create learning component tree");
 		}
 
 		if (tree == null) {

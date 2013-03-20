@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.alert.AlertsService;
 
 @Controller
@@ -30,11 +31,15 @@ public class AlertController {
 	ModelAndView showMyAlerts() {
 
 		ModelAndView mv = new ModelAndView("calendar/alerts");
-
+		try{
 		mv.addObject("alerts", this.alertsService.getAlertList());
 		logger.info("Number of alerts is  "
 				+ this.alertsService.getAlertList().size());
-
+		}
+		catch(ZiksanaException ziksanaException){
+			
+			mv.addObject("dbconnectionError", ziksanaException.getMessage());
+		}
 		return mv;
 	}
 

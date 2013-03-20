@@ -17,7 +17,7 @@ public interface LearningProgramService {
 	 * @return
 	 * @throws CourseException
 	 */
-	public List<LearningProgram> getLearningPrograms(Integer memberRoleId) throws ProgramsException;
+	public List<LearningProgram> getLearningPrograms(Integer memberRoleId);
 	
 	
 

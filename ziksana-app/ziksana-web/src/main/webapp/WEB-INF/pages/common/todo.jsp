@@ -52,11 +52,18 @@ function updateTodo()
 		        , function( data )
 		        {
 		        
-		        	//refresh the page
-		        	window.location.href = window.location.href;
+		        	 if(data == 'TODO UPDATED SUCCESSFULLY'){
+		          	   
+		          	   $('#todo_response_message').html(data.fontcolor("green"));
+		          	   setTimeout(doRefreshCall,3000);
+
+		             }
+		             if(data == 'Todo Updation Failed'){
+		          	   $('#todo_response_message').html(data);
+		          	   setTimeout(doRefreshCall,3000);
+		             }
 		 
-		        }
-				, 'xml' );  
+		        });  
 	
 	
 }
@@ -70,21 +77,34 @@ function updateTodo()
 	 
 	 if(todo_category.toLowerCase() == 'add_new_category'){todo_category = '';}
 	
-		
+	 
+
 		$.post( '<c:url value='/ztodo/createtodo'/>'
         , {'category':todo_category,'notificationContent':todo_description}
         , function( data )
         {
-        
-        	//refresh the page
-        	window.location.href = window.location.href;
+        	
+           if(data == 'TODO INSERTED SUCCESSFULLY'){
+        	   
+        	   $('#todo_response_message').html(data.fontcolor("green"));
+        	   setTimeout(doRefreshCall,3000);
+
+           }
+           if(data == 'Insert query problem'){
+        	   $('#todo_response_message').html(data);
+        	   setTimeout(doRefreshCall,3000);
+           }
  
-        }
-		, 'xml' );           
+        });           
 	
 	
 	
 	$('.add_todo_button').removeAttr('disabled');
+ }
+ function doRefreshCall(){
+	 $('#todo_response_message').hide();
+	 window.location.href = window.location.href;
+	 
  }
  </script>
  <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
@@ -188,12 +208,7 @@ $(document).ready(function() {
 					
 					
 					output+="<form id='newForm' name='newForm' action='/secure/createtodo' onsubmit='return false;' method='post'>";
-					output+="<table><tbody>";
-					output+="<tr width='100%' class='todocontainer todoinfo' style='height:30px; padding:5px;' id='contodo4'>";
-					output+="<td width='20px' class='todoinfo-icon' style='float:left; margin-top:7px;'></td>";
-					
-					output+="</tr></tbody></table>";
-					
+					output+="<div id='todo_response_message' style='height:30px; padding:5px;color:red';align:center;></div>";
 					output+="</div></form>";
 					$('#todo_form_container').prepend(output);
 

@@ -5,8 +5,6 @@ package com.ziksana.service.todo;
 
 import java.util.List;
 
-import org.apache.ibatis.session.RowBounds;
-
 import com.ziksana.domain.todo.Todo;
 
 /**
@@ -15,17 +13,17 @@ import com.ziksana.domain.todo.Todo;
  */
 public interface TodoService {
 	
-	List<Todo> getTodos();
+	public List<Todo> getTodos();
 	
-	List<Todo> getMapperTodos();
+	public List<Todo> getMapperTodos();
 
-	void createTodo(Todo todo);
+	public void createTodo(Todo todo);
 
-	void updateTodo(Todo todo);
+	public void updateTodo(Todo todo);
 
-	void deleteTodo(int todoId);
+	public void deleteTodo(int todoId);
 
-	Todo completeTodo(int todoId);
+	public Todo completeTodo(int todoId);
 
 	
 	

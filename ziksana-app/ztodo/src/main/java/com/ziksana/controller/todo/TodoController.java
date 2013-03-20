@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.constants.ZiksanaConstants;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.todo.Todo;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.todo.TodoService;
 
@@ -72,12 +74,13 @@ public class TodoController {
 	 * @return mav
 	 */
 	@RequestMapping(value = "/createtodo", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView createTodo(
+	public @ResponseBody String createTodo(
 			@RequestParam(value = "category", required = true) String category,
 			@RequestParam(value = "notificationContent", required = true) String notificationContent) {
 
 		logger.info("Entering  the Create New Todo item");
-	
+		
+		String response = "";
 		// service call
 		Todo todo = new Todo();
 		todo.setCategory(category);
@@ -94,14 +97,14 @@ public class TodoController {
 		todo.setForMember(creatingMember);
 		try {			
 			todoService.createTodo(todo);
+			response = ZiksanaConstants.TODO_INSERTED_SUCCESSFULLY;
 			
-		} catch (Exception exception) {
-			logger.error("Caught Exception. class ="+ exception.getClass().getName() + ",message ="+ exception.getMessage());
+		} catch (ZiksanaException zexception) {
+			response = zexception.getMessage();		
+			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
 		}
-		// retrun the Todo domain object
-		ModelAndView modelView = new ModelAndView("xml/todolist");
-		modelView.addObject("todoItems", todoService.getTodos());
-		return modelView;
+		
+		return response;
 
 	}
 
@@ -123,20 +126,27 @@ public class TodoController {
 	 */
 	@RequestMapping(value = "/deletetodo/{todoItemId}", method = RequestMethod.DELETE)
 	public @ResponseBody String deleteTodoItem(@PathVariable String todoItemId) {
-		logger.info("Entering deleteTodoItem(): " + todoItemId);
-		
+	
+		String response = "";
+		try{
 		todoService.deleteTodo(Integer.valueOf(todoItemId));
-		
+		response = ZiksanaConstants.TODO_DELETED_SUCCESSFULLY;
+		}
+		catch(ZiksanaException zexception){
+			response = zexception.getMessage();
+			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
 		logger.info("Exiting deleteTodoItem(): " + todoItemId);
-		return "Successfully Deleted";
+		return response;
 	}
 	
 	@RequestMapping(value = "/updatetodo", method=RequestMethod.POST)
-	public @ResponseBody void updateTodo(
+	public @ResponseBody String updateTodo(
 			@RequestParam(value = "todoItemId", required = true) String todoItemId,
 			@RequestParam(value = "notificationContent", required = true) String notificationContent,
 			@RequestParam(value = "category", required = true) String category) {
 		
+		String response = "";
 		Todo todo = new Todo();
 		todo.setId(Integer.parseInt(todoItemId));
 		todo.setCategory(category);
@@ -145,11 +155,13 @@ public class TodoController {
 		todo.setActivationDate(new Date());
 		try {			
 			todoService.updateTodo(todo);
-			
-		} catch (Exception exception) {
-			logger.error("Caught Exception. class ="+ exception.getClass().getName() + ",message ="+ exception.getMessage());
+			response = ZiksanaConstants.TODO_UPDATED_SUCCESSFULLY;
+		} catch (ZiksanaException ZException) {
+			logger.error("Caught Exception. class ="+ ZException.getClass().getName() + ",message ="+ ZException.getMessage());
+			response = ZException.getMessage();
 		}
 		
+		return response;
 	}
 	
 	@RequestMapping(value = "/gettodocategory", method = RequestMethod.GET)

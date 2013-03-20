@@ -64,8 +64,8 @@ public class TodoServiceImplTest {
 	@Before
 	public void setUp() throws Exception {
 
-		ZID memberId = new StringZID("1000");
-		ZID memberPersonaId = new StringZID("100");
+		ZID memberId = new StringZID("1001");
+		ZID memberPersonaId = new StringZID("201");
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
 		ThreadLocalUtil.setToken(token);
 
@@ -84,20 +84,20 @@ public class TodoServiceImplTest {
 	 * {@link com.ziksana.service.todo.TodoServiceImpl#getTodos()}.
 	 */
 	
-	@Test
+	@Ignore
 	public void testGetTodos() {
 
 		List<Todo> todos = todoService.getTodos();
 		//assertEquals(todos);
 
 	}
-	@Test
+	@Ignore
 	public void testMapperTodos(){
 		List<Todo> todoMapper = todoService.getMapperTodos();
 		logger.info("Mappper todos :"+todoMapper.size());
 	}
 	
-	@Test
+	@Ignore
 	public void testGetAllDataBaseDatas(){
 		
 		// Fetch database data after executing your code

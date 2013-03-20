@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ziksana.domain.institution.ProgramNameType;
-import com.ziksana.exception.program.ProgramsException;
 import com.ziksana.persistence.program.ProgramsMapper;
 import com.ziksana.service.program.MyProgramsService;
 
@@ -25,14 +24,11 @@ public class MyProgramsServiceImpl implements MyProgramsService {
 	
 	@Override
 	public Map<ProgramNameType, Integer> getMyPrograms(Integer memberRoleId)
-			throws ProgramsException {
+			{
 
 		Map<ProgramNameType, Integer> myProgramsMap = new HashMap<ProgramNameType,Integer>();
 		int rowCount = 0;
 		
-		if(memberRoleId == null){
-			throw new ProgramsException("Member Role ID cannot be null ");
-		}
 		
 		logger.debug("Member role ID : "+memberRoleId);
 		

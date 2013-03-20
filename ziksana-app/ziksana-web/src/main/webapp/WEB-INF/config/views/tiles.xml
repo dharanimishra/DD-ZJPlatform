@@ -29,7 +29,7 @@
 	<!-- Educator courses -->
 	<definition name="mycoursesdraft" extends="commonPageLayout">
 	  <put-attribute name="title" value="My Programs" />
-	  <put-attribute name="head_static" value="" />
+	  <put-attribute name="head_static" value="/WEB-INF/pages/dashboard/dashboard_static.jsp" />
 	  <put-attribute name="body" value="/WEB-INF/pages/courses/myprograms.jsp" /> 
 	 </definition>
 	 

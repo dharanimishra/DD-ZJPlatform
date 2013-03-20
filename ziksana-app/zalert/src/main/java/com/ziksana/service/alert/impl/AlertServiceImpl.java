@@ -3,6 +3,7 @@
  */
 package com.ziksana.service.alert.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -31,10 +32,13 @@ public class AlertServiceImpl implements AlertsService {
 	 */
 	@Override
 	public List<Alert> getAlertList() {
-		// TODO Auto-generated method stub
-
-		return alertMapper.getAlerts(Integer.valueOf(ThreadLocalUtil.getToken()
+		
+		List<Alert> alertList = new ArrayList<Alert>();
+		
+		alertList = alertMapper.getAlerts(Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID()));
+		
+		return alertList;
 	}
 
 	/*

@@ -23,9 +23,9 @@ public interface TodoMapper {
 
 	public Todo selectByNotificationType(int notificationType);
 
-	public void updateTodo(Todo todo);
+	public int updateTodo(Todo todo);
 
-	public void deleteTodo(int todoId);
+	public int deleteTodo(int todoId);
 
 	public void createTodo(Todo todo);
 

@@ -19,6 +19,6 @@ public interface MyProgramsService {
 	 * @return
 	 * @throws ProgramsException
 	 */
-	public Map<ProgramNameType,Integer> getMyPrograms(Integer memberRoleId) throws ProgramsException;
+	public Map<ProgramNameType,Integer> getMyPrograms(Integer memberRoleId);
 
 }

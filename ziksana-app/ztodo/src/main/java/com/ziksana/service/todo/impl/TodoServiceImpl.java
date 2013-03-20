@@ -3,15 +3,17 @@
  */
 package com.ziksana.service.todo.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
+import org.apache.ibatis.jdbc.RuntimeSqlException;
 import org.apache.ibatis.session.RowBounds;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.ziksana.constants.ZiksanaConstants;
 import com.ziksana.domain.todo.Todo;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.persistence.todos.TodoMapper;
@@ -25,7 +27,7 @@ import com.ziksana.service.todo.TodoService;
 @Service
 public class TodoServiceImpl implements TodoService {
 
-	private static final Logger logger = LoggerFactory
+	private static final Logger logger = Logger
 			.getLogger(TodoServiceImpl.class);
 	@Autowired
 	TodoMapper todoMapper;
@@ -42,27 +44,48 @@ public class TodoServiceImpl implements TodoService {
 	}
 
 	@Override
-	public void createTodo(Todo todo) {
+	public void createTodo(Todo todo){
 		logger.info("TODO || Create");
-
+		try{
 		todoMapper.createTodo(todo);
-
+		}
+	
+		catch(DataAccessException dae){
+			logger.info("Data Access Exception called");
+			throw new ZiksanaException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, new Object[] { dae.getMessage() }, dae);			
+		}
 	}
 
 	@Override
 	public void updateTodo(Todo todo) {
+		int rowCount = 0;
+		try{
+		rowCount = todoMapper.updateTodo(todo);
+		}
+	
+		catch(DataAccessException dae){
+			logger.info("Data Access Exception called");
+			throw new ZiksanaException(ZiksanaConstants.TODO_UPDATEQUERY_PROBLEM, new Object[] { dae.getMessage() }, dae);			
+		}
+		catch(Exception e){
+			logger.info("Data Access Exception called");
+			throw new ZiksanaException(ZiksanaConstants.TODO_UPDATECOUNT_ERROR, new Object[] { e.getMessage() }, e);			
+		}
 		
-		todoMapper.updateTodo(todo);
 
 	}
 
 	@Override
 	public void deleteTodo(int todoId) {
 		logger.info("TODO || Delete");
+		int deleteCount = 0;
 		try {
-			todoMapper.deleteTodo(todoId);
+			deleteCount  = todoMapper.deleteTodo(todoId);
 
 		} catch (Exception e) {
+			if(!(deleteCount == 0)){
+				throw new ZiksanaException(ZiksanaConstants.TODO_DELETION_FAILURE, new Object[] { e.getMessage() }, e);		
+			}
 
 		}
 
