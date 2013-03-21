@@ -2,55 +2,66 @@ package com.ziksana.exception;
 
 import com.ziksana.util.MessageUtil;
 
-public class ZiksanaException extends RuntimeException {
+public abstract class ZiksanaException extends RuntimeException {
 
-	
 	private static final long serialVersionUID = -8021176035004246465L;
 
 	private String errorCode;
+	/**
+	 * This attribute will define the type of the exception. e.g. APPLICATION,
+	 * SYSTEM
+	 * 
+	 */
+	private String errorType;
 
-	  private Object[] args;
+	private Throwable error;
 
-	  
-	  public ZiksanaException(String errorCode)
-	  {
-	    this(errorCode, null, null);
-	  }
+	private String exceptionDescription;
 
-	   
-	  public ZiksanaException(String errorCode, Object[] args)
-	  {
-	    this(errorCode, args, null);
-	  }
+	public ZiksanaException(String errorCode) {
+		setErrorCode(errorCode);
+		setExceptionDescription(MessageUtil.getMessage(errorCode));
+	}
 
-	  
-	  public ZiksanaException(String errorCode, Throwable t)
-	  {
-	    this(errorCode, null, t);
-	  }
+	public ZiksanaException(String errorCode, Throwable error) {
+		this(errorCode);
+		setError(error);
+	}
 
-	  
-	  public ZiksanaException(String errorCode, Object[] args, Throwable t)
-	  {
-	    super(MessageUtil.getMessage(errorCode, args), t);
-	    this.errorCode = errorCode;
-	    this.args = args;
-	  }
+	/**
+	 * @return the errorCode
+	 */
+	public String getErrorCode() {
+		return errorCode;
+	}
 
-	  /**
-	   * @return the errorCode
-	   */
-	  public String getErrorCode()
-	  {
-	    return errorCode;
-	  }
+	private void setErrorCode(String errorCode) {
 
-	  /**
-	   * @return the arguments
-	   */
-	  public Object[] getArgs()
-	  {
-	    return args;
-	  }
+		this.errorCode = errorCode;
+	}
+
+	public String getErrorType() {
+		return errorType;
+	}
+
+	protected void setErrorType(String errorType) {
+		this.errorType = errorType;
+	}
+
+	public String getExceptionDescription() {
+		return exceptionDescription;
+	}
+
+	private void setExceptionDescription(String description) {
+		this.exceptionDescription = description;
+	}
+
+	public Throwable getError() {
+		return error;
+	}
+
+	private void setError(Throwable error) {
+		this.error = error;
+	}
 
 }

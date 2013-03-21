@@ -1,6 +1,5 @@
 package com.ziksana.service.todo.impl;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.ziksana.constants.ZiksanaConstants;
 import com.ziksana.domain.todo.Todo;
-import com.ziksana.exception.ZiksanaException;
+import com.ziksana.exception.SystemException;
 import com.ziksana.persistence.todos.TodoMapper;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.todo.TodoService;
@@ -25,8 +24,9 @@ import com.ziksana.service.todo.TodoService;
 @Service
 public class TodoServiceImpl implements TodoService {
 
-	private static final Logger logger = LoggerFactory.getLogger(TodoServiceImpl.class);
-	
+	private static final Logger logger = LoggerFactory
+			.getLogger(TodoServiceImpl.class);
+
 	@Autowired
 	TodoMapper todoMapper;
 
@@ -39,9 +39,7 @@ public class TodoServiceImpl implements TodoService {
 					.getToken().getMemberPersonaId().getStorageID()));
 		} catch (CannotGetJdbcConnectionException dae) {
 			logger.info("Data Access Exception called");
-			throw new ZiksanaException(
-					ZiksanaConstants.DATABASE_CONNECTION_PROBLEM,
-					new Object[] { dae.getMessage() }, dae);
+			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
 		}
 		return todoList;
 	}
@@ -55,9 +53,7 @@ public class TodoServiceImpl implements TodoService {
 
 		catch (Exception dae) {
 			logger.info("Data Access Exception called");
-			throw new ZiksanaException(
-					ZiksanaConstants.TODO_INSERTQUERY_PROBLEM,
-					new Object[] { dae.getMessage() });
+			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
 		}
 	}
 
@@ -70,13 +66,10 @@ public class TodoServiceImpl implements TodoService {
 
 		catch (CannotGetJdbcConnectionException dae) {
 			logger.info("Data Access Exception called");
-			throw new ZiksanaException(
-					ZiksanaConstants.TODO_UPDATEQUERY_PROBLEM,
-					new Object[] { dae.getMessage() }, dae);
+			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
 		} catch (Exception e) {
 			logger.info("Data Access Exception called");
-			throw new ZiksanaException(ZiksanaConstants.TODO_UPDATECOUNT_ERROR,
-					new Object[] { e.getMessage() }, e);
+			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, e);
 		}
 
 	}
@@ -90,9 +83,7 @@ public class TodoServiceImpl implements TodoService {
 
 		} catch (Exception e) {
 			if (!(deleteCount == 0)) {
-				throw new ZiksanaException(
-						ZiksanaConstants.TODO_DELETION_FAILURE,
-						new Object[] { e.getMessage() }, e);
+				throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, e);
 			}
 
 		}
@@ -112,11 +103,14 @@ public class TodoServiceImpl implements TodoService {
 			todoList = todoMapper.getMapperTodos(memberRoleId, rowBounds);
 		} catch (CannotGetJdbcConnectionException dae) {
 			logger.info("Data Access Exception called");
-			throw new ZiksanaException(
-					ZiksanaConstants.TODO_UPDATEQUERY_PROBLEM,
-					new Object[] { dae.getMessage() }, dae);
+			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
 		}
 		return todoList;
+	}
+
+	public Todo completeTodo(int todoId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
