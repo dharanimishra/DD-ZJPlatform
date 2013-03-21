@@ -1,18 +1,19 @@
 package com.ziksana.exception;
 
+import com.ziksana.constants.ZiksanaConstants;
+import com.ziksana.util.MessageUtil;
+
 public class DataBaseException extends SystemException {
 
-	public DataBaseException(String errorCode, Object[] args, Throwable t) {
-		super(errorCode, args, t);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2707644546730801000L;
+
+	public DataBaseException(Throwable t) {
+		super(MessageUtil.getMessage(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM), t);
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }
