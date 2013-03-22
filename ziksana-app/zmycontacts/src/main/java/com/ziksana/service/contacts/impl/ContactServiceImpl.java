@@ -17,7 +17,6 @@ public class ContactServiceImpl implements ContactService {
 	
 	@Override
 	public List<MemberPersona> getAllContacts() {
-		// TODO Auto-generated method stub
 		return contactMapper.getAllContacts(Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID()));
 	}

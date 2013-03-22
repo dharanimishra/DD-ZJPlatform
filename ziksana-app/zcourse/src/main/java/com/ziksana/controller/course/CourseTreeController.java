@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.TreeNode;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.service.course.CourseTreeNodeService;
 
@@ -47,9 +48,9 @@ public class CourseTreeController {
 	@RequestMapping(value = "/gettree", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showCourseTree() {
-		LOGGER.info("Entering Class " + getClass() + " showCourseTree()");
+		LOGGER.debug("Entering Class " + getClass() + " showCourseTree()");
 		ModelAndView mv = new ModelAndView("xml/context");
-		LOGGER.info("Exiting Class " + getClass() + " showCourseTree(): ");
+		LOGGER.debug("Exiting Class " + getClass() + " showCourseTree(): ");
 
 		return mv;
 	}
@@ -59,55 +60,51 @@ public class CourseTreeController {
 	public @ResponseBody
 	ModelAndView showTreenode(@PathVariable String courseId)
 			throws CourseException {
-		LOGGER.info("Entering showTreenode(): " + courseId);
-		Integer courseIds = 0;
-		String courseIdValue = "";
-		String coursename = "";
-
-		try {
-			courseIds = Integer.parseInt(courseId);
-			LOGGER.info("Exiting showTreenode():  courseIds :" + courseIds);
-		} catch (NumberFormatException nfe) {
-			LOGGER.debug("Class :" + getClass()
-					+ "showTreenode(): NumberFormatException :"
-					+ nfe.getMessage());
-		}
-
-		List<TreeNode> NodeList = courseTreeNodeService
-				.getCourseComponent(courseIds);
-		for (TreeNode node : NodeList) {
-			courseIdValue = node.getCourseId().toString();
-			coursename = node.getCoursename();
-		}
-
-		List<TreeNode> treeNodeList = courseTreeNodeService
-				.getModuleComponents(courseIds);
-
-		LOGGER.debug("Class :" + getClass()
-				+ "showTreenode(): treeNodeList Size :" + treeNodeList.size());
-
-
+		LOGGER.debug("Entering showTreenode(): " + courseId);
 		ModelAndView modelView = new ModelAndView("xml/getparenttree");
+		try {
+			Integer courseIds = 0;
+			String courseIdValue = "";
+			String coursename = "";
+				courseIds = Integer.parseInt(courseId);
+				LOGGER.debug("Exiting showTreenode():  courseIds :" + courseIds);
+			List<TreeNode> NodeList = courseTreeNodeService
+					.getCourseComponent(courseIds);
+			for (TreeNode node : NodeList) {
+				courseIdValue = node.getCourseId().toString();
+				coursename = node.getCoursename();
+			}
 
-		modelView.addObject("courseIds", courseIdValue);
-		modelView.addObject("coursename", coursename);
-		modelView.addObject("parentIcon", parentIcon);
-		modelView.addObject("courseIcon", courseIcon);
-		modelView.addObject("chapterIcon", chapterIcon);	
-		modelView.addObject("docIcon", docIcon);
-		modelView.addObject("pdfIcon", pdfIcon);
-		modelView.addObject("pptIcon", pptIcon);
-		modelView.addObject("videoIcon", videoIcon);	
-		modelView.addObject("linkIcon", linkIcon);
-		modelView.addObject("noteIcon", noteIcon);
-		modelView.addObject("imageIcon", imageIcon);
-		modelView.addObject("audioIcon", audioIcon);	
-		modelView.addObject("excelIcon", excelIcon);
-		modelView.addObject("folderClosed", folderClosed);
-		modelView.addObject("folderOpen", folderOpen);
-		modelView.addObject("parentList", treeNodeList);
+			List<TreeNode> treeNodeList = courseTreeNodeService
+					.getModuleComponents(courseIds);
 
-		LOGGER.info("Exiting showMyTreenode(): " + courseId);
+			LOGGER.debug("Class :" + getClass()
+					+ "showTreenode(): treeNodeList Size :" + treeNodeList.size());
+
+
+
+			modelView.addObject("courseIds", courseIdValue);
+			modelView.addObject("coursename", coursename);
+			modelView.addObject("parentIcon", parentIcon);
+			modelView.addObject("courseIcon", courseIcon);
+			modelView.addObject("chapterIcon", chapterIcon);	
+			modelView.addObject("docIcon", docIcon);
+			modelView.addObject("pdfIcon", pdfIcon);
+			modelView.addObject("pptIcon", pptIcon);
+			modelView.addObject("videoIcon", videoIcon);	
+			modelView.addObject("linkIcon", linkIcon);
+			modelView.addObject("noteIcon", noteIcon);
+			modelView.addObject("imageIcon", imageIcon);
+			modelView.addObject("audioIcon", audioIcon);	
+			modelView.addObject("excelIcon", excelIcon);
+			modelView.addObject("folderClosed", folderClosed);
+			modelView.addObject("folderOpen", folderOpen);
+			modelView.addObject("parentList", treeNodeList);
+
+			LOGGER.debug("Exiting showMyTreenode(): " + courseId);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 		return modelView;
 	}
 
@@ -116,14 +113,14 @@ public class CourseTreeController {
 //	public @ResponseBody
 //	ModelAndView showChildTreenode(@PathVariable String courseId)
 //			throws CourseException {
-//		LOGGER.info("Entering showChildTreenode(): " + courseId);
+//		LOGGER.debug("Entering showChildTreenode(): " + courseId);
 //		Integer courseIds = 0;
 //		String courseIdValue = "";
 //		String coursename = "";
 //		Integer learningComponentId = 0;
 //		try {
 //			courseIds = Integer.parseInt(courseId);
-//			LOGGER.info("Exiting showChildTreenode():  courseIds :" + courseIds);
+//			LOGGER.debug("Exiting showChildTreenode():  courseIds :" + courseIds);
 //
 //		} catch (NumberFormatException nfe) {
 //			LOGGER.debug("Class :" + getClass()
@@ -158,11 +155,11 @@ public class CourseTreeController {
 //					for (TreeNode childnode : childtreeNodeList) {
 //						
 //						childList.add(childnode);
-//						LOGGER.info("Class :" + getClass()
+//						LOGGER.debug("Class :" + getClass()
 //								+ "showChildTreenode(): childnode :"+childnode.getContentType());
 //
 //					}
-//					LOGGER.info("Class :" + getClass()
+//					LOGGER.debug("Class :" + getClass()
 //							+ "showChildTreenode(): List size found");
 //				} catch (Exception e) {
 //					LOGGER.debug("Class :" + getClass()
@@ -198,7 +195,7 @@ public class CourseTreeController {
 //		modelView.addObject("parentList", treeNodeList);
 //		modelView.addObject("childList", childList);
 //
-//		LOGGER.info("Exiting showChildTreenode(): " + courseId);
+//		LOGGER.debug("Exiting showChildTreenode(): " + courseId);
 //		return modelView;
 //	}
 }

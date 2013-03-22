@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningComponent;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.course.DefineQualifierService;
 
 /**
@@ -30,9 +31,14 @@ public class DefineQualifierController {
 	@RequestMapping(value = "/getdefinedqualifiers", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView getDefinedQualifiers(@RequestParam Course course) {
-		LOGGER.info("Entering Class " + getClass() + " getDefinedQualifiers()");
+		LOGGER.debug("Entering Class " + getClass() + " getDefinedQualifiers()");
 		ModelAndView mv = new ModelAndView("courses/createcourses");
-		LOGGER.info("Exiting Class " + getClass() + " getDefinedQualifiers(): ");
+		try {
+			//TODO add code here
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Exiting Class " + getClass() + " getDefinedQualifiers(): ");
 
 		return mv;
 	}
@@ -42,9 +48,14 @@ public class DefineQualifierController {
 	ModelAndView updateQualifier(
 			@RequestParam LearningComponent learningComponent) {
 
-		LOGGER.info("Entering Class " + getClass() + " updateQualifier()");
+		LOGGER.debug("Entering Class " + getClass() + " updateQualifier()");
 		ModelAndView mv = new ModelAndView("courses/createcourses");
-		LOGGER.info("Exiting Class " + getClass() + " updateQualifier(): ");
+		try {
+			//TODO add code here
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Exiting Class " + getClass() + " updateQualifier(): ");
 		return mv;
 	}
 
@@ -52,9 +63,14 @@ public class DefineQualifierController {
 	public @ResponseBody
 	ModelAndView deleteQualifier(
 			@RequestParam LearningComponent learningComponent) {
-		LOGGER.info("Entering Class " + getClass() + " deleteQualifier()");
+		LOGGER.debug("Entering Class " + getClass() + " deleteQualifier()");
 		ModelAndView mv = new ModelAndView("courses/createcourses");
-		LOGGER.info("Exiting Class " + getClass() + " deleteAddnlInfo(): ");
+		try {
+			//TODO add code here
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Exiting Class " + getClass() + " deleteAddnlInfo(): ");
 
 		return mv;
 	}

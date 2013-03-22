@@ -1,4 +1,3 @@
- 
 package com.ziksana.controller.subscription;
 
 import java.util.List;
@@ -18,11 +17,12 @@ import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
 import com.ziksana.domain.course.EducatorContent;
 import com.ziksana.domain.course.EducatorNote;
+import com.ziksana.domain.course.Hotspot;
 import com.ziksana.domain.course.Node;
 import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
-import com.ziksana.domain.course.Hotspot;
 import com.ziksana.domain.course.subscription.Note;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.data.ContentService;
 import com.ziksana.service.security.MediaService;
 import com.ziksana.service.subscription.SubscriptionService;
@@ -35,7 +35,7 @@ import com.ziksana.service.subscription.SubscriptionService;
 @RequestMapping("/subscription")
 public class SubscriptionController {
 
-	private static final Logger logger = LoggerFactory
+	private static final Logger LOGGER = LoggerFactory
 			.getLogger(SubscriptionController.class);
 
 	@Autowired
@@ -58,24 +58,30 @@ public class SubscriptionController {
 		String parsedContentId = null;
 		String parsedComponentId = null;
 		String parsedCourseId = courseId;
+		List<Note> notes = null;
 
-		Node node = new Node();
-		String parsedNodeType = nodeId.split("_")[0];
+		try {
+			Node node = new Node();
+			String parsedNodeType = nodeId.split("_")[0];
 
-		if (parsedNodeType.equals("LCONTENT")) {
-			parsedContentId = nodeId.split("_")[3];
-			parsedComponentId = nodeId.split("_")[2];
+			if (parsedNodeType.equals("LCONTENT")) {
+				parsedContentId = nodeId.split("_")[3];
+				parsedComponentId = nodeId.split("_")[2];
 
-		} else if (parsedNodeType.equals("LCOMPONENT")) {
-			parsedComponentId = nodeId.split("_")[1];
+			} else if (parsedNodeType.equals("LCOMPONENT")) {
+				parsedComponentId = nodeId.split("_")[1];
 
-		} else if (parsedNodeType.equals("COURSE")) {
+			} else if (parsedNodeType.equals("COURSE")) {
 
+			}
+			notes = subscriptionService.getLearnerNotes(
+					Integer.valueOf(courseId),
+					Integer.valueOf(parsedComponentId),
+					Integer.valueOf(parsedContentId), 1000);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
-
-		return subscriptionService.getLearnerNotes(Integer.valueOf(courseId),
-				Integer.valueOf(parsedComponentId),
-				Integer.valueOf(parsedContentId), 1000);
+		return notes;
 	}
 
 	@RequestMapping(value = "/getlearnerquestions", method = RequestMethod.GET)
@@ -87,24 +93,30 @@ public class SubscriptionController {
 		String parsedContentId = null;
 		String parsedComponentId = null;
 		String parsedCourseId = courseId;
+		List<Note> notes = null;
 
-		Node node = new Node();
-		String parsedNodeType = nodeId.split("_")[0];
+		try {
+			Node node = new Node();
+			String parsedNodeType = nodeId.split("_")[0];
 
-		if (parsedNodeType.equals("LCONTENT")) {
-			parsedContentId = nodeId.split("_")[3];
-			parsedComponentId = nodeId.split("_")[2];
+			if (parsedNodeType.equals("LCONTENT")) {
+				parsedContentId = nodeId.split("_")[3];
+				parsedComponentId = nodeId.split("_")[2];
 
-		} else if (parsedNodeType.equals("LCOMPONENT")) {
-			parsedComponentId = nodeId.split("_")[1];
+			} else if (parsedNodeType.equals("LCOMPONENT")) {
+				parsedComponentId = nodeId.split("_")[1];
 
-		} else if (parsedNodeType.equals("COURSE")) {
+			} else if (parsedNodeType.equals("COURSE")) {
 
+			}
+			notes = subscriptionService.getLearnerNotes(
+					Integer.valueOf(courseId),
+					Integer.valueOf(parsedComponentId),
+					Integer.valueOf(parsedContentId), 2000);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
-
-		return subscriptionService.getLearnerNotes(Integer.valueOf(courseId),
-				Integer.valueOf(parsedComponentId),
-				Integer.valueOf(parsedContentId), 2000);
+		return notes;
 	}
 
 	@RequestMapping(value = "/educatornotes", method = RequestMethod.GET)
@@ -115,22 +127,27 @@ public class SubscriptionController {
 			@RequestParam(value = "nodeType", required = false) String nodeType,
 			@RequestParam(value = "parentNodeId", required = true) String parentNodeId,
 			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
+		List<EducatorNote> educatorNotes = null;
+		try {
+			Node node = new Node();
+			String parsedNodeId = nodeId.split("_")[3];
+			String parsedParentNodeId = parentNodeId.split("_")[1];
+			node.setId(Integer.valueOf(parsedNodeId));
+			// node.setType(Integer.valueOf(nodeType));
+			Node parent = new Node();
+			parent.setId(Integer.valueOf(parsedParentNodeId));
+			// parent.setType(Integer.valueOf(parentNodeType));
+			node.setParent(parent);
 
-		Node node = new Node();
-		String parsedNodeId = nodeId.split("_")[3];
-		String parsedParentNodeId = parentNodeId.split("_")[1];
-		node.setId(Integer.valueOf(parsedNodeId));
-		// node.setType(Integer.valueOf(nodeType));
-		Node parent = new Node();
-		parent.setId(Integer.valueOf(parsedParentNodeId));
-		// parent.setType(Integer.valueOf(parentNodeType));
-		node.setParent(parent);
-
-		return subscriptionService.getEducatorNotes(Integer.valueOf(courseId),
-				node);
+			educatorNotes = subscriptionService.getEducatorNotes(
+					Integer.valueOf(courseId), node);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return educatorNotes;
 	}
 
-	//Get Hotspot
+	// Get Hotspot
 	@RequestMapping(value = "/gethotspot", method = RequestMethod.GET)
 	public @ResponseBody
 	List<EducatorNote> showHotspotNotes(
@@ -140,21 +157,26 @@ public class SubscriptionController {
 			@RequestParam(value = "parentNodeId", required = true) String parentNodeId,
 			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
 
-		Node node = new Node();
-		String parsedNodeId = nodeId.split("_")[3];
-		String parsedParentNodeId = parentNodeId.split("_")[1];
-		node.setId(Integer.valueOf(parsedNodeId));
-		// node.setType(Integer.valueOf(nodeType));
-		Node parent = new Node();
-		parent.setId(Integer.valueOf(parsedParentNodeId));
-		// parent.setType(Integer.valueOf(parentNodeType));
-		node.setParent(parent);
+		List<EducatorNote> educatorNotes = null;
+		try {
+			Node node = new Node();
+			String parsedNodeId = nodeId.split("_")[3];
+			String parsedParentNodeId = parentNodeId.split("_")[1];
+			node.setId(Integer.valueOf(parsedNodeId));
+			// node.setType(Integer.valueOf(nodeType));
+			Node parent = new Node();
+			parent.setId(Integer.valueOf(parsedParentNodeId));
+			// parent.setType(Integer.valueOf(parentNodeType));
+			node.setParent(parent);
+			educatorNotes = subscriptionService.getHotspotNotes(
+					Integer.valueOf(courseId), node);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 
-		return subscriptionService.getHotspotNotes(Integer.valueOf(courseId),
-				node);
+		return educatorNotes;
 	}
-	
-	
+
 	@RequestMapping(value = "/educatorreferences", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Reference> showEducatorReferences(
@@ -163,19 +185,23 @@ public class SubscriptionController {
 			@RequestParam(value = "nodeType", required = false) String nodeType,
 			@RequestParam(value = "parentNodeId", required = true) String parentNodeId,
 			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
-
-		Node node = new Node();
-		String parsedNodeId = nodeId.split("_")[3];
-		String parsedParentNodeId = parentNodeId.split("_")[1];
-		node.setId(Integer.valueOf(parsedNodeId));
-		// node.setType(Integer.valueOf(nodeType));
-		Node parent = new Node();
-		parent.setId(Integer.valueOf(parsedParentNodeId));
-		// parent.setType(Integer.valueOf(parentNodeType));
-		node.setParent(parent);
-
-		return subscriptionService.getEducatorSuggestedReferences(
-				Integer.valueOf(courseId), node);
+		List<Reference> references = null;
+		try {
+			Node node = new Node();
+			String parsedNodeId = nodeId.split("_")[3];
+			String parsedParentNodeId = parentNodeId.split("_")[1];
+			node.setId(Integer.valueOf(parsedNodeId));
+			// node.setType(Integer.valueOf(nodeType));
+			Node parent = new Node();
+			parent.setId(Integer.valueOf(parsedParentNodeId));
+			// parent.setType(Integer.valueOf(parentNodeType));
+			node.setParent(parent);
+			references = subscriptionService.getEducatorSuggestedReferences(
+					Integer.valueOf(courseId), node);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return references;
 	}
 
 	@RequestMapping(value = "/getalleducatorcontent", method = RequestMethod.GET)
@@ -186,19 +212,24 @@ public class SubscriptionController {
 			@RequestParam(value = "nodeType", required = false) String nodeType,
 			@RequestParam(value = "componentId", required = true) String parentNodeId,
 			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
+		List<EducatorContent> educatorContents = null;
+		try {
+			Node node = new Node();
+			String parsedNodeId = nodeId.split("_")[3];
+			// String parsedParentNodeId = parentNodeId.split("_")[1];
+			node.setId(Integer.valueOf(parsedNodeId));
+			// node.setType(Integer.valueOf(nodeType));
+			Node parent = new Node();
+			parent.setId(Integer.valueOf(parentNodeId));
+			// parent.setType(Integer.valueOf(parentNodeType));
+			node.setParent(parent);
 
-		Node node = new Node();
-		String parsedNodeId = nodeId.split("_")[3];
-		// String parsedParentNodeId = parentNodeId.split("_")[1];
-		node.setId(Integer.valueOf(parsedNodeId));
-		// node.setType(Integer.valueOf(nodeType));
-		Node parent = new Node();
-		parent.setId(Integer.valueOf(parentNodeId));
-		// parent.setType(Integer.valueOf(parentNodeType));
-		node.setParent(parent);
-
-		return subscriptionService.getAllEducatorContent(
-				Integer.valueOf(courseId), node);
+			educatorContents = subscriptionService.getAllEducatorContent(
+					Integer.valueOf(courseId), node);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return educatorContents;
 
 	}
 
@@ -210,20 +241,24 @@ public class SubscriptionController {
 			@RequestParam(value = "nodeType", required = false) String nodeType,
 			@RequestParam(value = "parentNodeId", required = false) String parentNodeId,
 			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
+		List<ContentReference> contentReferences = null;
+		try {
+			Node node = new Node();
+			String parsedNodeId = nodeId.split("_")[3];
+			String parsedParentNodeId = nodeId.split("_")[2];
+			node.setId(Integer.valueOf(parsedNodeId));
+			// node.setType(Integer.valueOf(nodeType));
+			Node parent = new Node();
+			parent.setId(Integer.valueOf(parsedParentNodeId));
+			// parent.setType(Integer.valueOf(parentNodeType));
+			node.setParent(parent);
 
-		Node node = new Node();
-		String parsedNodeId = nodeId.split("_")[3];
-		String parsedParentNodeId = nodeId.split("_")[2];
-		node.setId(Integer.valueOf(parsedNodeId));
-		// node.setType(Integer.valueOf(nodeType));
-		Node parent = new Node();
-		parent.setId(Integer.valueOf(parsedParentNodeId));
-		// parent.setType(Integer.valueOf(parentNodeType));
-		node.setParent(parent);
-
-		return subscriptionService.getContentTOC(Integer.valueOf(courseId),
-				node);
-
+			contentReferences = subscriptionService.getContentTOC(
+					Integer.valueOf(courseId), node);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return contentReferences;
 	}
 
 	@RequestMapping(value = "/educatorhotspots", method = RequestMethod.GET)
@@ -235,20 +270,26 @@ public class SubscriptionController {
 			@RequestParam(value = "parentNodeId", required = true) String parentNodeId,
 			@RequestParam(value = "parentNodeType", required = false) String parentNodeType) {
 
-		Node node = new Node();
-		String parsedNodeId = nodeId.split("_")[3];
-		String parsedParentNodeId = parentNodeId.split("_")[1];
-		node.setId(Integer.valueOf(parsedNodeId));
-		// node.setType(Integer.valueOf(nodeType));
-		Node parent = new Node();
-		parent.setId(Integer.valueOf(parsedParentNodeId));
-		// parent.setType(Integer.valueOf(parentNodeType));
-		node.setParent(parent);
+		List<Hotspot> hotspots = null;
+		try {
+			Node node = new Node();
+			String parsedNodeId = nodeId.split("_")[3];
+			String parsedParentNodeId = parentNodeId.split("_")[1];
+			node.setId(Integer.valueOf(parsedNodeId));
+			// node.setType(Integer.valueOf(nodeType));
+			Node parent = new Node();
+			parent.setId(Integer.valueOf(parsedParentNodeId));
+			// parent.setType(Integer.valueOf(parentNodeType));
+			node.setParent(parent);
 
-		// this code should be modified to call getEducatorHotspots()
-		// TODO
-		return subscriptionService.getEducatorHotspots(
-				Integer.valueOf(courseId), node);
+			// this code should be modified to call getEducatorHotspots()
+			// TODO
+			hotspots = subscriptionService.getEducatorHotspots(
+					Integer.valueOf(courseId), node);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return hotspots;
 	}
 
 	@RequestMapping(value = "/addlearnerquestion", method = RequestMethod.POST)
@@ -263,24 +304,30 @@ public class SubscriptionController {
 		String parsedComponentId = null;
 		String parsedCourseId = courseId;
 
-		Node node = new Node();
-		String parsedNodeType = nodeId.split("_")[0];
+		int key = 0;
+		try {
+			Node node = new Node();
+			String parsedNodeType = nodeId.split("_")[0];
 
-		if (parsedNodeType.equals("LCONTENT")) {
-			parsedContentId = nodeId.split("_")[3];
-			parsedComponentId = nodeId.split("_")[2];
+			if (parsedNodeType.equals("LCONTENT")) {
+				parsedContentId = nodeId.split("_")[3];
+				parsedComponentId = nodeId.split("_")[2];
 
-		} else if (parsedNodeType.equals("LCOMPONENT")) {
-			parsedComponentId = nodeId.split("_")[1];
+			} else if (parsedNodeType.equals("LCOMPONENT")) {
+				parsedComponentId = nodeId.split("_")[1];
 
-		} else if (parsedNodeType.equals("COURSE")) {
+			} else if (parsedNodeType.equals("COURSE")) {
 
+			}
+
+			key = subscriptionService.addLearnerContent(
+					Integer.valueOf(courseId),
+					Integer.valueOf(parsedComponentId),
+					Integer.valueOf(parsedContentId), questionTitle, null,
+					Integer.valueOf(questionDuration), 2000);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
-
-		int key = subscriptionService.addLearnerContent(
-				Integer.valueOf(courseId), Integer.valueOf(parsedComponentId),
-				Integer.valueOf(parsedContentId), questionTitle, null,
-				Integer.valueOf(questionDuration), 2000);
 		return Integer.valueOf(key);
 
 	}
@@ -298,27 +345,32 @@ public class SubscriptionController {
 		String parsedComponentId = null;
 		String parsedCourseId = courseId;
 
-		Node node = new Node();
-		String parsedNodeType = nodeId.split("_")[0];
+		int key = 0;
+		try {
+			Node node = new Node();
+			String parsedNodeType = nodeId.split("_")[0];
 
-		if (parsedNodeType.equals("LCONTENT")) {
-			parsedContentId = nodeId.split("_")[3];
-			parsedComponentId = nodeId.split("_")[2];
+			if (parsedNodeType.equals("LCONTENT")) {
+				parsedContentId = nodeId.split("_")[3];
+				parsedComponentId = nodeId.split("_")[2];
 
-		} else if (parsedNodeType.equals("LCOMPONENT")) {
-			parsedComponentId = nodeId.split("_")[1];
+			} else if (parsedNodeType.equals("LCOMPONENT")) {
+				parsedComponentId = nodeId.split("_")[1];
 
-		} else if (parsedNodeType.equals("COURSE")) {
+			} else if (parsedNodeType.equals("COURSE")) {
 
+			}
+
+			key = subscriptionService.addLearnerContent(
+					Integer.valueOf(courseId),
+					Integer.valueOf(parsedComponentId),
+					Integer.valueOf(parsedContentId), noteTitle,
+					noteDescription, Integer.valueOf(noteDuration), 1000);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
-
-		int key = subscriptionService.addLearnerContent(
-				Integer.valueOf(courseId), Integer.valueOf(parsedComponentId),
-				Integer.valueOf(parsedContentId), noteTitle, noteDescription,
-				Integer.valueOf(noteDuration), 1000);
-		System.out.println(" THE ERROR ....KEY IS  " + key);
+		LOGGER.debug(" THE ERROR ....KEY IS  " + key);
 		return Integer.valueOf(key);
-
 	}
 
 	@RequestMapping(value = "/deletelearnercontent", method = RequestMethod.POST)
@@ -326,8 +378,14 @@ public class SubscriptionController {
 	Integer deleteLearnerContent(
 			@RequestParam(value = "contentId", required = true) String noteId) {
 
-		return Integer.valueOf(subscriptionService.deleteLearnerContent(Integer
-				.valueOf(noteId)));
+		int returnVal = 0;
+		try {
+			returnVal = Integer.valueOf(subscriptionService
+					.deleteLearnerContent(Integer.valueOf(noteId)));
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return returnVal;
 
 	}
 
@@ -339,9 +397,17 @@ public class SubscriptionController {
 			@RequestParam(value = "contentDuration", required = true) String duration,
 			@RequestParam(value = "contentDescription", required = false) String desc) {
 
-		return Integer.valueOf(subscriptionService.editLearnerContent(
-				Integer.valueOf(noteId), desc, Integer.parseInt(duration),
-				title));
+		int returnVal = 0;
+		try {
+			returnVal = Integer.valueOf(subscriptionService
+					.deleteLearnerContent(Integer.valueOf(noteId)));
+			Integer.valueOf(subscriptionService.editLearnerContent(
+					Integer.valueOf(noteId), desc, Integer.parseInt(duration),
+					title));
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return returnVal;
 
 	}
 
@@ -363,31 +429,37 @@ public class SubscriptionController {
 		String parsedContentId = null;
 		String parsedComponentId = null;
 		String parsedCourseId = courseId;
+		int key = 0;
 
-		Node node = new Node();
-		String parsedNodeType = nodeId.split("_")[0];
+		try {
+			Node node = new Node();
+			String parsedNodeType = nodeId.split("_")[0];
 
-		if (parsedNodeType.equals("LCONTENT")) {
-			parsedContentId = nodeId.split("_")[3];
-			parsedComponentId = nodeId.split("_")[2];
+			if (parsedNodeType.equals("LCONTENT")) {
+				parsedContentId = nodeId.split("_")[3];
+				parsedComponentId = nodeId.split("_")[2];
 
-		} else if (parsedNodeType.equals("LCOMPONENT")) {
-			parsedComponentId = nodeId.split("_")[1];
+			} else if (parsedNodeType.equals("LCOMPONENT")) {
+				parsedComponentId = nodeId.split("_")[1];
 
-		} else if (parsedNodeType.equals("COURSE")) {
+			} else if (parsedNodeType.equals("COURSE")) {
 
+			}
+
+			key = subscriptionService.addEducatorContent(
+					Integer.valueOf(courseId),
+					Integer.valueOf(parsedComponentId),
+					Integer.valueOf(parsedContentId),
+					Integer.valueOf(contentType), noteDescription, url,
+					coordinates, Integer.valueOf(noteDuration), noteTitle,
+					Integer.valueOf(parentId));
+
+			LOGGER.debug(" THE ERROR ....KEY IS  " + key);
+			LOGGER.debug(" content id is  " + parsedContentId);
+			LOGGER.debug(" component id is  " + parsedComponentId);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
-
-		int key = subscriptionService.addEducatorContent(
-				Integer.valueOf(courseId), Integer.valueOf(parsedComponentId),
-				Integer.valueOf(parsedContentId), Integer.valueOf(contentType),
-				noteDescription, url, coordinates,
-				Integer.valueOf(noteDuration), noteTitle,
-				Integer.valueOf(parentId));
-
-		System.out.println(" THE ERROR ....KEY IS  " + key);
-		System.out.println(" content id is  " + parsedContentId);
-		System.out.println(" component id is  " + parsedComponentId);
 
 		return Integer.valueOf(key);
 
@@ -400,278 +472,188 @@ public class SubscriptionController {
 			@RequestParam(value = "contentType", required = false) String contentType) {
 		Integer response = 1, enrichId = 0, linkType = 0, resp = 0, dbresp = 1;
 
-		logger.debug("Entering Class :"
+		LOGGER.debug("Entering Class :"
 				+ getClass()
 				+ " Method Name :deleteEducatorContent(String deleteEducatorContent,String contentType): eduContentEnrichId"
 				+ eduContentEnrichId + "contentType" + contentType);
 
 		try {
 			enrichId = Integer.parseInt(eduContentEnrichId);
-			logger.info("Class :"
-					+ getClass()
+			LOGGER.debug("Class :" + getClass()
 					+ "Method deleteEducatorContent(eduContentEnrichId):enrichId"
 					+ enrichId);
-		} catch (NumberFormatException nfe) {
-			logger.error("Class :"
-					+ getClass()
-					+ "Method deleteEducatorContent(eduContentEnrichId):NumberFormatException"
-					+ nfe);
-		}
-
-		try {
 			if (contentType.equalsIgnoreCase("TOC")) {
 				linkType = 7;
-				logger.info("Class :"
-						+ getClass()
-						+ "Method deleteEducatorContent(eduContentEnrichId):linkType"
-						+ linkType);
+				LOGGER.debug("content type is TOC and setting link type to :"+ linkType);
 			}
-
-		} catch (Exception e) {
-			linkType = 0;
-			logger.error("Class :"
-					+ getClass()
-					+ "Method deleteEducatorContent(eduContentEnrichId):linkType"
-					+ linkType);
-		}
-		if (linkType == 7) {
-			enrichId = Integer.parseInt(eduContentEnrichId);
-			EducatorContent educatorContent = subscriptionService
-					.getEducatorTOCByContentEnrichId(enrichId);
-			logger.info("Class :"
-					+ getClass()
-					+ "Method Name :deleteEducatorContent(eduContentEnrichId):enrichId"
-					+ enrichId);
-			try {
+			if (linkType == 7) {
+				enrichId = Integer.parseInt(eduContentEnrichId);
+				EducatorContent educatorContent = subscriptionService
+						.getEducatorTOCByContentEnrichId(enrichId);
 				if (enrichId > 0) {
 					List<EducatorContent> tocList = subscriptionService
 							.getEducatorTOCByParentEnrichId(enrichId);
-					try {
-						for (EducatorContent toc : tocList) {
-							if (toc.getParentId() > 0) {
-								List<EducatorContent> tocList1 = subscriptionService
-										.getEducatorTOCByParentEnrichId(toc
-												.getId());
-								logger.info("Class :"
-										+ getClass()
-										+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC ParentId"
-										+ toc.getId());
-								try {
-									for (EducatorContent toc1 : tocList1) {
-										try {
-											if (toc1.getParentId() > 0) {
-												List<EducatorContent> tocList2 = subscriptionService
-														.getEducatorTOCByParentEnrichId(toc1
-																.getId());
-												logger.info("Class :"
-														+ getClass()
-														+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC1 ParentId"
-														+ toc1.getId());
-												try {
-													for (EducatorContent toc2 : tocList2) {
-														if (toc2.getParentId() > 0) {
-															List<EducatorContent> tocList3 = subscriptionService
-																	.getEducatorTOCByParentEnrichId(toc2
+					for (EducatorContent toc : tocList) {
+						if (toc.getParentId() > 0) {
+							List<EducatorContent> tocList1 = subscriptionService
+									.getEducatorTOCByParentEnrichId(toc.getId());
+							LOGGER.debug("Class :"
+									+ getClass()
+									+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC ParentId"
+									+ toc.getId());
+							for (EducatorContent toc1 : tocList1) {
+								if (toc1.getParentId() > 0) {
+									List<EducatorContent> tocList2 = subscriptionService
+											.getEducatorTOCByParentEnrichId(toc1
+													.getId());
+									LOGGER.debug("Class :"
+											+ getClass()
+											+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC1 ParentId"
+											+ toc1.getId());
+									for (EducatorContent toc2 : tocList2) {
+										if (toc2.getParentId() > 0) {
+											List<EducatorContent> tocList3 = subscriptionService
+													.getEducatorTOCByParentEnrichId(toc2
+															.getId());
+											LOGGER.debug("Class :"
+													+ getClass()
+													+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC2 ParentId"
+													+ toc2.getParentId());
+											for (EducatorContent toc3 : tocList3) {
+												if (toc3.getParentId() > 0) {
+
+													List<EducatorContent> tocList4 = subscriptionService
+															.getEducatorTOCByParentEnrichId(toc3
+																	.getId());
+													LOGGER.debug("Class :"
+															+ getClass()
+															+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC3 ParentId"
+															+ toc3.getId());
+
+													for (EducatorContent toc4 : tocList4) {
+														if (toc4.getParentId() > 0) {
+
+															List<EducatorContent> tocList5 = subscriptionService
+																	.getEducatorTOCByParentEnrichId(toc4
 																			.getId());
-															logger.info("Class :"
+															LOGGER.debug("Class :"
 																	+ getClass()
-																	+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC2 ParentId"
-																	+ toc2.getParentId());
-															try {
-																for (EducatorContent toc3 : tocList3) {
-																	if (toc3.getParentId() > 0) {
-
-																		List<EducatorContent> tocList4 = subscriptionService
-																				.getEducatorTOCByParentEnrichId(toc3
-																						.getId());
-																		logger.info("Class :"
-																				+ getClass()
-																				+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC3 ParentId"
-																				+ toc3.getId());
-
-																		try {
-																			for (EducatorContent toc4 : tocList4) {
-																				if (toc4.getParentId() > 0) {
-
-																					List<EducatorContent> tocList5 = subscriptionService
-																							.getEducatorTOCByParentEnrichId(toc4
-																									.getId());
-																					logger.info("Class :"
-																							+ getClass()
-																							+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC5 ParentId"
-																							+ toc4.getId());
-																					try {
-																						for (EducatorContent toc5 : tocList5) {
-																							if (toc5.getParentId() > 0) {
-																								resp = subscriptionService
-																										.deleteEducatorContent(toc5
-																												.getId());
-																								logger.info("Class :"
-																										+ getClass()
-																										+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC5 resp"
-																										+ resp
-																										+ ": toc5.getId()"
-																										+ toc5.getId());
-
-																							}
-																							logger.info("Class :"
-																									+ getClass()
-																									+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC5 List"
-																									+ toc5);
-																						}
-
-																					} catch (Exception e) {
-																						logger.info("Class :"
-																								+ getClass()
-																								+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception TOC5"
-																								+ e);
-																					}
-
-																					resp = subscriptionService
-																							.deleteEducatorContent(toc4
-																									.getId());
-																					logger.info("Class :"
-																							+ getClass()
-																							+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC4 resp"
-																							+ resp
-																							+ ": toc4.getId()"
-																							+ toc4.getId());
-																				}
-																				logger.info("Class :"
-																						+ getClass()
-																						+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC4 List"
-																						+ toc4);
-																			}
-
-																		} catch (Exception e) {
-																			logger.info("Class :"
-																					+ getClass()
-																					+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception TOC4"
-																					+ e);
-																		}
-
-																		resp = subscriptionService
-																				.deleteEducatorContent(toc3
-																						.getId());
-
-																		logger.info("Class :"
-																				+ getClass()
-																				+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC3 resp"
-																				+ resp
-																				+ ": toc3.getId()"
-																				+ toc3.getId());
-																	}
-																	logger.info("Class :"
+																	+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC5 ParentId"
+																	+ toc4.getId());
+															for (EducatorContent toc5 : tocList5) {
+																if (toc5.getParentId() > 0) {
+																	resp = subscriptionService
+																			.deleteEducatorContent(toc5
+																					.getId());
+																	LOGGER.debug("Class :"
 																			+ getClass()
-																			+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC3 List"
-																			+ toc3);
+																			+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC5 resp"
+																			+ resp
+																			+ ": toc5.getId()"
+																			+ toc5.getId());
 
 																}
-
-															} catch (Exception e) {
-																logger.info("Class :"
+																LOGGER.debug("Class :"
 																		+ getClass()
-																		+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception TOC3"
-																		+ e);
+																		+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC5 List"
+																		+ toc5);
 															}
 
 															resp = subscriptionService
-																	.deleteEducatorContent(toc2
+																	.deleteEducatorContent(toc4
 																			.getId());
-															logger.info("Class :"
+															LOGGER.debug("Class :"
 																	+ getClass()
-																	+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC2 resp"
+																	+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC4 resp"
 																	+ resp
-																	+ ": toc2.getId()"
-																	+ toc2.getId());
+																	+ ": toc4.getId()"
+																	+ toc4.getId());
 														}
-
-														logger.info("Class :"
+														LOGGER.debug("Class :"
 																+ getClass()
-																+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC2 List"
-																+ toc2);
-
+																+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC4 List"
+																+ toc4);
 													}
-												} catch (Exception e) {
-													logger.error("Class :"
+													resp = subscriptionService
+															.deleteEducatorContent(toc3
+																	.getId());
+
+													LOGGER.debug("Class :"
 															+ getClass()
-															+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception TOC2"
-															+ e);
+															+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC3 resp"
+															+ resp
+															+ ": toc3.getId()"
+															+ toc3.getId());
 												}
-												resp = subscriptionService
-														.deleteEducatorContent(toc1
-																.getId());
-												logger.info("Class :"
+												LOGGER.debug("Class :"
 														+ getClass()
-														+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC1 resp"
-														+ resp
-														+ ": toc1.getId()"
-														+ toc1.getId());
+														+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC3 List"
+														+ toc3);
+
 											}
 
-										} catch (Exception e) {
-											logger.info("Class :"
+											resp = subscriptionService
+													.deleteEducatorContent(toc2
+															.getId());
+											LOGGER.debug("Class :"
 													+ getClass()
-													+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception :"
-													+ e);
+													+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC2 resp"
+													+ resp + ": toc2.getId()"
+													+ toc2.getId());
 										}
-										logger.info("Class :"
+
+										LOGGER.debug("Class :"
 												+ getClass()
-												+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC1 List"
-												+ toc1);
+												+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC2 List"
+												+ toc2);
+
 									}
-
-								} catch (Exception e) {
-									logger.info("Class :"
+									resp = subscriptionService
+											.deleteEducatorContent(toc1.getId());
+									LOGGER.debug("Class :"
 											+ getClass()
-											+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List"
-											+ e);
+											+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC1 resp"
+											+ resp + ": toc1.getId()"
+											+ toc1.getId());
 								}
-								resp = subscriptionService
-										.deleteEducatorContent(toc.getId());
-								logger.info("Class :"
-										+ getClass()
-										+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent: TOC :resp"
-										+ resp + ": toc.getId()" + toc.getId());
+
 							}
-							logger.info("Class :"
+
+							resp = subscriptionService.deleteEducatorContent(toc
+									.getId());
+							LOGGER.debug("Class :"
 									+ getClass()
-									+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC List"
-									+ toc);
-
+									+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent: TOC :resp"
+									+ resp + ": toc.getId()" + toc.getId());
 						}
-
-					} catch (Exception e) {
-						logger.error("Class :"
+						LOGGER.debug("Class :"
 								+ getClass()
-								+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent Exception :"
-								+ e);
+								+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent:TOC List"
+								+ toc);
+
 					}
 					resp = subscriptionService.deleteEducatorContent(enrichId);
-					logger.info("Class :"
+					LOGGER.debug("Class :"
 							+ getClass()
 							+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent TOC resp"
 							+ resp);
 				}
-			} catch (Exception e) {
-				logger.error("Class :"
-						+ getClass()
-						+ "Method Name :deleteEducatorContent(eduContentEnrichId):EducatorContent List Exception :"
-						+ e);
+			} else {
+				response = subscriptionService.deleteEducatorContent(enrichId);
 			}
-
-		} else {
-			response = subscriptionService.deleteEducatorContent(enrichId);
+			LOGGER.debug("Exiting Class :"
+					+ getClass()
+					+ " Method Name :deleteEducatorContent(String deleteEducatorContent,String contentType): eduContentEnrichId"
+					+ eduContentEnrichId + "contentType" + contentType
+					+ "response :" + response);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
-		logger.debug("Exiting Class :"
-				+ getClass()
-				+ " Method Name :deleteEducatorContent(String deleteEducatorContent,String contentType): eduContentEnrichId"
-				+ eduContentEnrichId + "contentType" + contentType
-				+ "response :" + response);
 
 		return dbresp;
 
 	}
+
 	@RequestMapping(value = "/editeducatorcontent", method = RequestMethod.POST)
 	public @ResponseBody
 	Integer editEducatoContent(
@@ -683,10 +665,16 @@ public class SubscriptionController {
 			@RequestParam(value = "parentId", required = false) String parentId,
 			@RequestParam(value = "coordinates", required = true) String coordinates) {
 
-		return Integer.valueOf(subscriptionService.editEducatorContent(
-				Integer.valueOf(eduContentEnrichId), noteDescription, url,
-				coordinates, Integer.valueOf(noteDuration), noteTitle,
-				Integer.valueOf(parentId)));
+		int returnVal = 0;
+		try {
+			returnVal = Integer.valueOf(subscriptionService.editEducatorContent(
+					Integer.valueOf(eduContentEnrichId), noteDescription, url,
+					coordinates, Integer.valueOf(noteDuration), noteTitle,
+					Integer.valueOf(parentId)));
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return returnVal;
 
 	}
 
@@ -696,14 +684,18 @@ public class SubscriptionController {
 			@PathVariable String componentId, @PathVariable String contentId) {
 
 		ModelAndView mv = new ModelAndView("courses/enrich_player");
-		mv.addObject("courseId", courseId);
-		mv.addObject("componentId", componentId);
-		mv.addObject("contentId", contentId);
+		try {
+			mv.addObject("courseId", courseId);
+			mv.addObject("componentId", componentId);
+			mv.addObject("contentId", contentId);
 
-		Content content = contentService.getContent(Integer.valueOf(contentId));
-		mv.addObject("content", content);
-		mediaServerURL = mediaService.getMediaContents();
-		mv.addObject("ms", mediaServerURL);
+			Content content = contentService.getContent(Integer.valueOf(contentId));
+			mv.addObject("content", content);
+			mediaServerURL = mediaService.getMediaContents();
+			mv.addObject("ms", mediaServerURL);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 		return mv;
 
 	}
@@ -714,14 +706,18 @@ public class SubscriptionController {
 			@PathVariable String componentId, @PathVariable String contentId) {
 
 		ModelAndView mv = new ModelAndView("courses/ev_enrich_player");
-		mv.addObject("courseId", courseId);
-		mv.addObject("componentId", componentId);
-		mv.addObject("contentId", contentId);
+		try {
+			mv.addObject("courseId", courseId);
+			mv.addObject("componentId", componentId);
+			mv.addObject("contentId", contentId);
 
-		Content content = contentService.getContent(Integer.valueOf(contentId));
-		mv.addObject("content", content);
-		mediaServerURL = mediaService.getMediaContents();
-		mv.addObject("ms", mediaServerURL);
+			Content content = contentService.getContent(Integer.valueOf(contentId));
+			mv.addObject("content", content);
+			mediaServerURL = mediaService.getMediaContents();
+			mv.addObject("ms", mediaServerURL);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 		return mv;
 
 	}

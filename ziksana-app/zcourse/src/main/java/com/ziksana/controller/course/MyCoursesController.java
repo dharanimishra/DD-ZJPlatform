@@ -18,6 +18,7 @@ import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.domain.member.MemberRoleType;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
@@ -44,97 +45,106 @@ public class MyCoursesController {
 	public @ResponseBody
 	ModelAndView readMyCourses() throws CourseException {
 
-		LOGGER.info("Entering Class " + getClass() + " showCourse()");
-
-		List<Course> draftedCourses = courseService
-				.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-		List<Course> reviewedCourses = courseService
-				.getCoursesByStatus(CourseStatus.REVIEW);
-		List<Course> activeCourses = courseService
-				.getCoursesByStatus(CourseStatus.ACTIVE);
-
+		LOGGER.debug("Entering Class " + getClass() + " showCourse()");
 		ModelAndView mv = new ModelAndView("courses/course-list-new");
 
-		LOGGER.info("Exiting Class " + getClass() + " showCourse(): ");
+		try {
+			List<Course> draftedCourses = courseService
+					.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+			List<Course> reviewedCourses = courseService
+					.getCoursesByStatus(CourseStatus.REVIEW);
+			List<Course> activeCourses = courseService
+					.getCoursesByStatus(CourseStatus.ACTIVE);
 
-		// TODO we need to add object
-		mv.addObject("DRAFTED_COURSES", draftedCourses);
-		mv.addObject("REVIEWED_COURSES", reviewedCourses);
-		mv.addObject("ACTIVE_COURSES", activeCourses);
+
+			LOGGER.debug("Exiting Class " + getClass() + " showCourse(): ");
+
+			// TODO we need to add object
+			mv.addObject("DRAFTED_COURSES", draftedCourses);
+			mv.addObject("REVIEWED_COURSES", reviewedCourses);
+			mv.addObject("ACTIVE_COURSES", activeCourses);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 		return mv;
 	}
 
 	@RequestMapping(value = "/myprogramsdraft", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView readMyProgramsDraft() throws CourseException {
+	ModelAndView readMyProgramsDraft(){
 
-		LOGGER.info("Entering Class " + getClass() + " readMyPrograms()");
+		LOGGER.debug("Entering Class " + getClass() + " readMyPrograms()");
+		ModelAndView mv =null;
+		try {
+			MemberRoleType roleType = ThreadLocalUtil.getToken().getRole();
 
-		MemberRoleType roleType = ThreadLocalUtil.getToken().getRole();
-
-		if (roleType == MemberRoleType.EDUCATOR) {
-			List<Course> courses = courseService
-					.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-			Integer courseCount = courseService
-					.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-			ModelAndView mv = new ModelAndView("draftedcourses");
-			mv.addObject("courses", courses);
-			mv.addObject("courseCount", courseCount);
-			mv.addObject("ms",mediaService.getMediaContents());
-			return mv;
-		} else {
-
-			ModelAndView mvLearner = new ModelAndView("learnerdraftedcourses");
 			
-			List<LearningProgram> programs = courseService
-					.getLearningPrograms();
-			LOGGER.info("Learner Program Size==>" + programs.size());
-			LearningProgram program = null;
-			List<Course> courses = null;
+			if (roleType == MemberRoleType.EDUCATOR) {
+				List<Course> courses = courseService
+						.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+				Integer courseCount = courseService
+						.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+				 mv = new ModelAndView("draftedcourses");
+				mv.addObject("courses", courses);
+				mv.addObject("courseCount", courseCount);
+				mv.addObject("ms",mediaService.getMediaContents());
+			} else {
 
-			if (programs.size() >= 1) {
+				mv = new ModelAndView("learnerdraftedcourses");
 				
-				program = programs.get(0);
+				List<LearningProgram> programs = courseService
+						.getLearningPrograms();
+				LOGGER.debug("Learner Program Size==>" + programs.size());
+				LearningProgram program = null;
+				List<Course> courses = null;
 
-				courses = courseService
-						.getCoursesByLearningProgram(Integer.valueOf(program
-								.getLearningProgramId().getStorageID()));
-				System.out.println(" TOTAL NUMBER OF COURSES IS  "+ courses.size());
-				
-				System.out.println(" THE COURSE NAME IS   "
-						+ courses.get(0).getName());
-				mvLearner.addObject("program", program.getName());
-							
-				mvLearner.addObject("courses", courses);
-				mvLearner.addObject("ms",mediaService.getMediaContents());
-				
+				if (programs.size() >= 1) {
+					
+					program = programs.get(0);
+
+					courses = courseService
+							.getCoursesByLearningProgram(Integer.valueOf(program
+									.getLearningProgramId().getStorageID()));
+					System.out.println(" TOTAL NUMBER OF COURSES IS  "+ courses.size());
+					
+					System.out.println(" THE COURSE NAME IS   "
+							+ courses.get(0).getName());
+					mv.addObject("program", program.getName());
+								
+					mv.addObject("courses", courses);
+					mv.addObject("ms",mediaService.getMediaContents());
+				}
 			}
-
-			
-			return mvLearner;
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
+		return mv;
 
 	}
 	
 	@RequestMapping(value = "/learnercourses", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView readLearnerMyPrograms() throws CourseException {
 		ModelAndView mvLearner = new ModelAndView("courses/learner-courses");
-		List<LearningProgram> programs = courseService
-				.getLearningPrograms();
-		
-		LearningProgram program = programs.get(0);
-		List<Course> courses = courseService
-				.getThreeCoursesByLearningProgram(Integer.valueOf(program
-						.getLearningProgramId().getStorageID()));
-		
-		System.out
-				.println(" TOTAL NUMBER OF COURSES IS  " + courses.size());
-		System.out.println(" THE COURSE NAME IS   "
-				+ courses.get(0).getName());
-		
-		mvLearner.addObject("program", program.getName());
-		mvLearner.addObject("ms",mediaService.getMediaContents());
-		return mvLearner.addObject("courses", courses);
+		try {
+			List<LearningProgram> programs = courseService
+					.getLearningPrograms();
+			
+			LearningProgram program = programs.get(0);
+			List<Course> courses = courseService
+					.getThreeCoursesByLearningProgram(Integer.valueOf(program
+							.getLearningProgramId().getStorageID()));
+			
+			LOGGER.debug(" TOTAL NUMBER OF COURSES IS  " + courses.size());
+			LOGGER.debug(" THE COURSE NAME IS   "
+					+ courses.get(0).getName());
+			
+			mvLearner.addObject("program", program.getName());
+			mvLearner.addObject("ms",mediaService.getMediaContents());
+			mvLearner.addObject("courses", courses);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return mvLearner;
 		
 		
 	
@@ -145,43 +155,43 @@ public class MyCoursesController {
 	public @ResponseBody
 	ModelAndView readMyPrograms() throws CourseException {
 
-		LOGGER.info("Entering Class " + getClass() + " readMyPrograms()");
+		LOGGER.debug("Entering Class " + getClass() + " readMyPrograms()");
 
-		MemberRoleType roleType = ThreadLocalUtil.getToken().getRole();
+		ModelAndView mv = null;
+		try {
+			MemberRoleType roleType = ThreadLocalUtil.getToken().getRole();
+			if (roleType == MemberRoleType.EDUCATOR) {
+				List<Course> courses = courseService
+						.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+				Integer courseCount = courseService
+						.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+				mv = new ModelAndView("mycoursesdraft");
+				mv.addObject("courses", courses);
+				mv.addObject("courseCount", courseCount);
+				mv.addObject("ms",mediaService.getMediaContents());
+			} else {
 
-		if (roleType == MemberRoleType.EDUCATOR) {
-			List<Course> courses = courseService
-					.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-			Integer courseCount = courseService
-					.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-			ModelAndView mv = new ModelAndView("mycoursesdraft");
-			mv.addObject("courses", courses);
-			mv.addObject("courseCount", courseCount);
-			mv.addObject("ms",mediaService.getMediaContents());
-			return mv;
-		} else {
+				List<LearningProgram> programs = courseService
+						.getLearningPrograms();
+				LearningProgram program = programs.get(0);
+				List<Course> courses = courseService
+						.getCoursesByLearningProgram(Integer.valueOf(program
+								.getLearningProgramId().getStorageID()));
 
-			List<LearningProgram> programs = courseService
-					.getLearningPrograms();
-			LearningProgram program = programs.get(0);
-			List<Course> courses = courseService
-					.getCoursesByLearningProgram(Integer.valueOf(program
-							.getLearningProgramId().getStorageID()));
-
-			System.out
-					.println(" TOTAL NUMBER OF COURSES IS  " + courses.size());
-			int learnerCourseSize = courses.size();
-			System.out.println(" THE COURSE NAME IS   "
-					+ courses.get(0).getName());
-			ModelAndView mvLearner = new ModelAndView("learnerdraftedcourses");
-			mvLearner.addObject("program", program.getName());
-			mvLearner.addObject("courses", courses);
-			mvLearner.addObject("learnerCourseSize",learnerCourseSize);	
-			// TODO need to implement learner my programs...
-			return mvLearner;
-
+				LOGGER.debug(" TOTAL NUMBER OF COURSES IS  " + courses.size());
+				int learnerCourseSize = courses.size();
+				LOGGER.debug(" THE COURSE NAME IS   "
+						+ courses.get(0).getName());
+				mv = new ModelAndView("learnerdraftedcourses");
+				mv.addObject("program", program.getName());
+				mv.addObject("courses", courses);
+				mv.addObject("learnerCourseSize",learnerCourseSize);	
+				// TODO need to implement learner my programs...
+			}
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
-
+		return mv;
 	}
 
 }

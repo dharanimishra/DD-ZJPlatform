@@ -1,7 +1,6 @@
 package com.ziksana.controller.course;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.course.TreeNode;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.service.course.CourseTreeNodeService;
 
@@ -49,10 +49,10 @@ public class CourseTreeNodeController {
 	@RequestMapping(value = "/course/{courseId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showCourseTreeNode(@PathVariable String courseId) {
-		LOGGER.info("Entering Class " + getClass() + " showCourseTreeNode()");
+		LOGGER.debug("Entering Class " + getClass() + " showCourseTreeNode()");
 		ModelAndView mv = new ModelAndView("courses/course");
 		mv.addObject("CourseId", courseId);
-		LOGGER.info("Exiting Class " + getClass() + " showCourseTreeNode(): ");
+		LOGGER.debug("Exiting Class " + getClass() + " showCourseTreeNode(): ");
 
 		return mv;
 	}
@@ -61,67 +61,61 @@ public class CourseTreeNodeController {
 	public @ResponseBody
 	ModelAndView showMyTreenode(@PathVariable String courseId)
 			throws CourseException {
-		LOGGER.info("Entering showMyTreenode(): " + courseId);
-		Integer courseIds = 0;
-		String courseIdValue = "";
-		String coursename = "";
-		Integer learningComponentId = 0;
-
-		try {
-			courseIds = Integer.parseInt(courseId);
-			LOGGER.info("Exiting showMyTreenode():  courseIds :" + courseIds);
-
-		} catch (NumberFormatException nfe) {
-			courseIds = 100;
-			LOGGER.debug("Class :" + getClass()
-					+ "showMyTreenode(): NumberFormatException :"
-					+ nfe.getMessage());
-		}
-
-		List<TreeNode> NodeList = courseTreeNodeService
-				.getCourseComponent(courseIds);
-		for (TreeNode node : NodeList) {
-			courseIdValue = node.getCourseId().toString();
-			coursename = node.getCoursename();
-		}
-		
-		List<TreeNode> childList = new ArrayList<TreeNode>();
-		List<TreeNode> treeNodeList = courseTreeNodeService
-				.getParentTreeComponents(courseIds);
-		List<TreeNode> childtreeNodeList = null;
-
-		LOGGER.info("PAENT NODE SIZE" + treeNodeList.size());
-		for (TreeNode node : treeNodeList) {
-			courseIdValue = node.getCourseId().toString();
-			learningComponentId = node.getId();
-			LOGGER.error("childtreeNodeListlearningComponentId : "
-					+ learningComponentId);
-			childtreeNodeList = courseTreeNodeService
-					.getTreeContentComponents(learningComponentId);
-			LOGGER.error("childtreeNodeList NODE SIZE : "
-					+ childtreeNodeList.size());
-			for (TreeNode childnode : childtreeNodeList) {
-
-				childList.add(childnode);
-			}
-		}
-
+		LOGGER.debug("Entering showMyTreenode(): " + courseId);
 		ModelAndView modelView = new ModelAndView("xml/treenode");
+		try {
+			Integer courseIds = 0;
+			String courseIdValue = "";
+			String coursename = "";
+			Integer learningComponentId = 0;
+			courseIds = Integer.parseInt(courseId);
+			LOGGER.debug("Exiting showMyTreenode():  courseIds :" + courseIds);
 
-		modelView.addObject("courseIds", courseIdValue);
-		modelView.addObject("coursename", coursename);
-		modelView.addObject("parentIcon", parentIcon);
-		modelView.addObject("imageIcon", imageIcon);
-		modelView.addObject("pdfIcon", pdfIcon);
-		modelView.addObject("linkIcon", linkIcon);
-		modelView.addObject("docIcon", docIcon);
-		modelView.addObject("pptIcon", pptIcon);
-		modelView.addObject("videoIcon", videoIcon);
-		modelView.addObject("audioIcon", audioIcon);
-		modelView.addObject("treeList", treeNodeList);
-		modelView.addObject("childList", childList);
+			List<TreeNode> NodeList = courseTreeNodeService
+					.getCourseComponent(courseIds);
+			for (TreeNode node : NodeList) {
+				courseIdValue = node.getCourseId().toString();
+				coursename = node.getCoursename();
+			}
 
-		LOGGER.info("Exiting showMyTreenode(): " + courseId);
+			List<TreeNode> childList = new ArrayList<TreeNode>();
+			List<TreeNode> treeNodeList = courseTreeNodeService
+					.getParentTreeComponents(courseIds);
+			List<TreeNode> childtreeNodeList = null;
+
+			LOGGER.debug("PAENT NODE SIZE" + treeNodeList.size());
+			for (TreeNode node : treeNodeList) {
+				courseIdValue = node.getCourseId().toString();
+				learningComponentId = node.getId();
+				LOGGER.error("childtreeNodeListlearningComponentId : "
+						+ learningComponentId);
+				childtreeNodeList = courseTreeNodeService
+						.getTreeContentComponents(learningComponentId);
+				LOGGER.error("childtreeNodeList NODE SIZE : "
+						+ childtreeNodeList.size());
+				for (TreeNode childnode : childtreeNodeList) {
+
+					childList.add(childnode);
+				}
+			}
+
+			modelView.addObject("courseIds", courseIdValue);
+			modelView.addObject("coursename", coursename);
+			modelView.addObject("parentIcon", parentIcon);
+			modelView.addObject("imageIcon", imageIcon);
+			modelView.addObject("pdfIcon", pdfIcon);
+			modelView.addObject("linkIcon", linkIcon);
+			modelView.addObject("docIcon", docIcon);
+			modelView.addObject("pptIcon", pptIcon);
+			modelView.addObject("videoIcon", videoIcon);
+			modelView.addObject("audioIcon", audioIcon);
+			modelView.addObject("treeList", treeNodeList);
+			modelView.addObject("childList", childList);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+
+		LOGGER.debug("Exiting showMyTreenode(): " + courseId);
 		return modelView;
 	}
 }

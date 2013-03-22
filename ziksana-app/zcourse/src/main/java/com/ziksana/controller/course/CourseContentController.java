@@ -60,10 +60,9 @@ public class CourseContentController {
 			@RequestParam(value = "ContentPath", required = false) String ContentPath,
 			@RequestParam(value = "ThumbnailPicturePath", required = false) String ThumbnailPicturePath,
 			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
-			@RequestParam(value = "ContentType", required = false) Integer ContentType)
-			throws CourseException {
+			@RequestParam(value = "ContentType", required = false) Integer ContentType) {
 
-		LOGGER.info("Entering Class " + getClass()
+		LOGGER.debug("Entering Class " + getClass()
 				+ " saveOrUpdateContent(): CourseId :" + CourseId
 				+ " Content_Name :" + ContentName + " ContentDescription:"
 				+ ContentDescription + " Subject_Area:" + SubjectArea
@@ -81,33 +80,19 @@ public class CourseContentController {
 				+ " Method: saveCourse() : setMemberRoleId"
 				+ Integer.valueOf(ThreadLocalUtil.getToken()
 						.getMemberPersonaId().getStorageID()));
-
+		CourseJsonResponse json = null;
+		try {
 		MemberPersona accountableMember = new MemberPersona();
 		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 
 		Integer courseid = 0, contentTypeId = 0;
-		try {
-			courseid = Integer.parseInt(CourseId.split("_")[1]);
-		} catch (NumberFormatException nfe) {
-			LOGGER.error("NumberFormatException courseid:" + nfe);
-		}
-
-		try {
-			contentTypeId = ContentType;
-		} catch (NumberFormatException nfe) {
-			LOGGER.error("NumberFormatException courseid:" + nfe);
-		}
-
+		courseid = Integer.parseInt(CourseId.split("_")[1]);
+		contentTypeId = ContentType;
 		Integer learnComponentId = 0;
-		try {
-			learnComponentId = Integer
+		learnComponentId = Integer
 					.parseInt(LearningComponentId.split("_")[1]);
-		} catch (NumberFormatException nfe) {
-			LOGGER.error("NumberFormatException :learnComponentId" + nfe);
-		}
-
-		try {
+		 
 			Course course = new Course();
 			course.setCourseId(courseid);
 
@@ -150,6 +135,25 @@ public class CourseContentController {
 
 			enrichService.saveReference(enrichment);
 
+			json = new CourseJsonResponse();
+
+		if (courseid == 0) {
+			json.setResponse("failed");
+			json.setMessage("Content Creation Failed!");
+			LOGGER.info("CourseContentController.saveOrUpdateContent(), content creation failed");
+			LOGGER.debug("Class :" + getClass()
+					+ " Method saveCourse : After courseService: CourseId :"
+					+ CourseId);
+		} else {
+			json.setId("COURSE_" + courseid);
+			json.setResponse("success");
+			json.setMessage("Content Creation Success");
+
+			LOGGER.debug("Class :" + getClass()
+					+ " Method saveCourse success : After courseService: CourseId :"
+					+ CourseId);
+		}
+
 		} catch (CourseException ce) {
 			LOGGER.error("Class :" + getClass()
 					+ " Method Exception :saveOrUpdateContent() : CourseId :"
@@ -166,33 +170,15 @@ public class CourseContentController {
 					+ numberOfThumbnails + " ContentType :" + ContentType + ce);
 		}
 
-		CourseJsonResponse json = new CourseJsonResponse();
-
-		if (courseid == 0) {
-			json.setResponse("failed");
-			json.setMessage("Content Creation Failed!");
-			LOGGER.info("Class :" + getClass()
-					+ " Method saveCourse : After courseService: CourseId :"
-					+ CourseId);
-		} else {
-			json.setId("COURSE_" + courseid);
-			json.setResponse("success");
-			json.setMessage("Content Creation Success");
-
-			LOGGER.info("Class :" + getClass()
-					+ " Method saveCourse : After courseService: CourseId :"
-					+ CourseId);
-		}
-
 		return json;
 	}
 
 	@RequestMapping(value = "/getcomponentcontent", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView getComponentContent(@RequestParam Course course) {
-		LOGGER.info("Entering Class " + getClass() + " getComponentContent()");
+		LOGGER.debug("Entering Class " + getClass() + " getComponentContent()");
 		ModelAndView mv = new ModelAndView("createmodule");
-		LOGGER.info("Exiting Class " + getClass() + " getComponentContent(): ");
+		LOGGER.debug("Exiting Class " + getClass() + " getComponentContent(): ");
 
 		return mv;
 	}
@@ -200,9 +186,9 @@ public class CourseContentController {
 	@RequestMapping(value = "/course/deletenode", method = RequestMethod.POST)
 	public @ResponseBody
 	String deleteContent(@RequestParam String nodeId) {
-		LOGGER.info("Entering Class " + getClass() + " deleteContent()");
+		LOGGER.debug("Entering Class " + getClass() + " deleteContent()");
 
-		LOGGER.info("Exiting Class " + getClass() + " deleteContent(): ");
+		LOGGER.debug("Exiting Class " + getClass() + " deleteContent(): ");
 
 		return "1";
 	}

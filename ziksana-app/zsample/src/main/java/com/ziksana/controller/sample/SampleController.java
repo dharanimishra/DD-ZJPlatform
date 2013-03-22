@@ -2,6 +2,8 @@ package com.ziksana.controller.sample;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.sample.Course;
 import com.ziksana.domain.sample.CourseAddlInfo;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.sample.SampleService;
 
 @Controller
 @RequestMapping(value="/sample")
 public class SampleController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(SampleController.class);
 	
 	@Autowired
 	SampleService sampleService;
@@ -27,7 +32,7 @@ public class SampleController {
 	 */
 	@RequestMapping(value="/home")
 	public String home() {
-		System.out.println("SampleController::home()...");
+		LOGGER.debug("SampleController::home()...");
 		return "dashboard";
 	}
 	
@@ -37,11 +42,13 @@ public class SampleController {
 	@RequestMapping(value="/course/list")
 	public String getCoursesAvailableXML(Model model) {
 		
-		System.out.println("SampleController::getCoursesAvailableXML()...");
-		List<Course> courseList = sampleService.getAvailableCourses();
-		
-		model.addAttribute("courseList", courseList);
-		
+		LOGGER.debug("SampleController::getCoursesAvailableXML()...");
+		try {
+			List<Course> courseList = sampleService.getAvailableCourses();
+			model.addAttribute("courseList", courseList);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 		return "courses/course-list";
 	}
 
@@ -51,12 +58,15 @@ public class SampleController {
 	@RequestMapping(value="/course/list-json")
 	public ModelAndView getCoursesAvailableJSON() {
 		
-		System.out.println("SampleController::getCoursesAvailableJSON()...");
-		List<Course> courseList = sampleService.getAvailableCourses();
-		
+		LOGGER.debug("SampleController::getCoursesAvailableJSON()...");
 		ModelAndView modelView = new ModelAndView("courses/course-list-json");
-		modelView.addObject("courseList", courseList);
-		
+		try {
+			List<Course> courseList = sampleService.getAvailableCourses();
+			
+			modelView.addObject("courseList", courseList);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 		return modelView;
 	}
 	
@@ -70,6 +80,7 @@ public class SampleController {
 	public @ResponseBody CourseAddlInfo getCourseDetailsJAXB(
 			@RequestParam(value="courseId", required=true) String courseId) {
 		
+		//TODO throw application exception
 		throw new UnsupportedOperationException("Not supported. Model bean requires JAXB annotations.");
 	}
 
@@ -84,8 +95,13 @@ public class SampleController {
 	public @ResponseBody CourseAddlInfo getCourseDetailsJackson(
 			@RequestParam(value="courseId", required=true) String courseId) {
 		
-		System.out.println("SampleController::getCourseDetails()...");
-		CourseAddlInfo course = sampleService.getCourseDetails(courseId);
+		LOGGER.debug("SampleController::getCourseDetails()...");
+		CourseAddlInfo course =  null;
+		try {
+			course = sampleService.getCourseDetails(courseId);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 		return course;
 	}
 	
@@ -99,12 +115,14 @@ public class SampleController {
 	@RequestMapping(value="/course/details-jsonlib", method=RequestMethod.GET)
 	public ModelAndView getCourseDetailsJsonlib(
 			@RequestParam(value="courseId", required=true) String courseId) {
-		
-		System.out.println("SampleController::getCourseDetailsJsonlib()...");
-		CourseAddlInfo course = sampleService.getCourseDetails(courseId);
-		
 		ModelAndView modelView = new ModelAndView("jsonView");
-		modelView.addObject("course", course);
+		LOGGER.debug("SampleController::getCourseDetailsJsonlib()...");
+		try {
+			CourseAddlInfo course = sampleService.getCourseDetails(courseId);
+			modelView.addObject("course", course);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 		return modelView;
 	}
 }

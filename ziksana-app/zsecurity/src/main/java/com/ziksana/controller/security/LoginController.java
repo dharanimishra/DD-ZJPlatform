@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.member.MemberRoleType;
+import com.ziksana.exception.CookieNotCreatedException;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.filters.AuthenticationFilter;
@@ -44,111 +45,107 @@ public class LoginController {
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response) {
 
-		System.out.println(" Entering to LoginController.login");
+		logger.debug(" Entering to LoginController.login");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		System.out.println(" Username is " + username);
+		logger.debug(" Username is " + username);
 		// System.out.println(" password is  "+username);
+		ModelAndView mv = null;
+		try {
+			if (username == null && password == null) {
 
-		if (username == null && password == null) {
+				mv = new ModelAndView("login");
+				// mv.addObject("applicationTitle", applicationTitle);
+			}
 
-			ModelAndView mv = new ModelAndView("login");
-			// mv.addObject("applicationTitle", applicationTitle);
-			return mv;
+			logger.debug(" going to auth service");
 
-		}
+			boolean userAuthenticated = authService.authenticateUser(username,
+					password);
 
-		System.out.println(" going to auth service");
+			if (userAuthenticated) {
+				logger.info("USER AUTHENTICATED");
+				// create user session and put the secure token there..
+				// create cookie and send it to the client
 
-		boolean userAuthenticated = authService.authenticateUser(username,
-				password);
+				// Constructing SecurityToken object
+				Member member = memberService.getMemberByUser(username);
 
-		if (userAuthenticated) {
-			System.out.println("USER AUTHENTICATED");
-			// create user session and put the secure token there..
-			// create cookie and send it to the client
+				ZID memberId = new StringZID();
+				memberId.setStorageID(member.getMemberId().toString());
 
-			// Constructing SecurityToken object
-			Member member = memberService.getMemberByUser(username);
+				ZID memberPersonaId = new StringZID();
 
-			ZID memberId = new StringZID();
-			memberId.setStorageID(member.getMemberId().toString());
+				// Determining the educator memberpersona of the user
+				List<MemberPersona> memberPersonas = member.getMemberPersonas();
+				MemberRoleType roleType = null;
 
-			ZID memberPersonaId = new StringZID();
+				for (MemberPersona memberPersona : memberPersonas) {
+					if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR) {
+						memberPersonaId.setStorageID(memberPersona
+								.getMemberRoleId().toString());
+						roleType = MemberRoleType.EDUCATOR;
+						break;
 
-			// Determining the educator memberpersona of the user
-			List<MemberPersona> memberPersonas = member.getMemberPersonas();
-			MemberRoleType roleType = null;
+					} else {
+						memberPersonaId.setStorageID(memberPersona
+								.getMemberRoleId().toString());
+						roleType = MemberRoleType.LEARNER;
+						break;
 
-			for (MemberPersona memberPersona : memberPersonas) {
-				if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR) {
-					memberPersonaId.setStorageID(memberPersona
-							.getMemberRoleId().toString());
-					roleType = MemberRoleType.EDUCATOR;
-					break;
-
-				} else {
-					memberPersonaId.setStorageID(memberPersona
-							.getMemberRoleId().toString());
-					roleType = MemberRoleType.LEARNER;
-					break;
+					}
 
 				}
+				
+				logger.info("login() MemberRoleType is " + roleType);
 
+				SecurityToken token = new SecurityToken(memberId, memberPersonaId,
+						roleType);
+
+				// Need to add the token to the session
+				HttpSession session = request.getSession(true);
+				session.setAttribute("TOKEN", token);
+
+				// Need to create cookie
+					response.addCookie(newSessionCookie(request, username));
+
+				mv = new ModelAndView("common/pre_launch");
+				session.setAttribute("member", member);
+
+				ThreadLocalUtil.unset();
+
+			} else {
+
+				// redirect to the login page with error message
+				logger.info(" User is not authenticated");
+				request.setAttribute("loginResult", "true");
+				mv = new ModelAndView("login");
+				ThreadLocalUtil.unset();
+				return mv;
 			}
-
-			SecurityToken token = new SecurityToken(memberId, memberPersonaId,
-					roleType);
-
-			// Need to add the token to the session
-			HttpSession session = request.getSession(true);
-			session.setAttribute("TOKEN", token);
-
-			// Need to create cookie
-			try {
-				response.addCookie(newSessionCookie(request, username));
-			} catch (ServletException e) {
-				// TODO Auto-generated catch block
-				System.out.println(" THE EXCEPTION IS " + e.getMessage());
-				e.printStackTrace();
-			}
-
-			ModelAndView mvHome = new ModelAndView("common/pre_launch");
-			session.setAttribute("member", member);
-
-			ThreadLocalUtil.unset();
-			return mvHome;
-
-		} else {
-
-			// redirect to the login page with error message
-			System.out.println(" User is not authenticated");
-			request.setAttribute("loginResult", "true");
-			ModelAndView mvLogin = new ModelAndView("login");
-			ThreadLocalUtil.unset();
-			return mvLogin;
-			// response.sendRedirect("/login");
-
+		} catch (ZiksanaException exception) {
+			logger.error(exception.getMessage(), exception);
 		}
 
 		// If the user is authenticated, create a session and put the secure
 		// token there
+		return mv;
 
 	}
 
-	Cookie newSessionCookie(HttpServletRequest request, String userId)
-			throws ServletException {
+	private Cookie newSessionCookie(HttpServletRequest request, String userId)
+		throws ZiksanaException	{
 
 		Cookie cookie = new Cookie(AuthenticationFilter.COOKIE_NAME, "");
+		try {
 		cookie.setMaxAge(-1);
 		cookie.setPath("/");
 
-		try {
-			cookie.setDomain(new URL(request.getRequestURL().toString())
-					.getHost());
+			cookie.setDomain(new URL(request.getRequestURL().toString()).getHost());
 		} catch (MalformedURLException e) {
-			throw new ServletException(e);
+			logger.error("Exception occured while creatig a new Session Cookie "+ e.getMessage());
+			throw new CookieNotCreatedException(e) ;
 		}
 
 		return cookie;

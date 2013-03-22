@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.course.CourseService;
 
 /**
@@ -28,7 +29,7 @@ public class EnrichCourseController {
 	@RequestMapping(value = "/enrichcontent", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showEnrichCourse() {
-		LOGGER.info("Entering showEnrichCourse(): ");
+		LOGGER.debug("Entering showEnrichCourse(): ");
 		ModelAndView mv = new ModelAndView("organizeenrichcontent");
 
 		return mv;
@@ -37,28 +38,28 @@ public class EnrichCourseController {
 	@RequestMapping(value = "/enrichcontent/{contentId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView showEnrichMyCourse(@PathVariable String contentId) {
-		LOGGER.info("Entering showEnrichCourse(): ");
+		LOGGER.debug("Entering showEnrichCourse(): ");
 
-		Integer courseid = 0;
-		try {
-			courseid = Integer.parseInt(contentId.split("_")[1]);
-		} catch (NumberFormatException nfe) {
-			LOGGER.error("NumberFormatException courseid:" + nfe);
-		}
 		ModelAndView modelView = null;
-		if (courseid > 0) {
-			int contentCount = courseService.isContentExists(courseid);
-			if(contentCount == 0){
-				return new ModelAndView("redirect:/zcourse/associatecontent/course_"+courseid+"");
-			}else{
-				modelView = new ModelAndView("organizeenrichcontent");
+		try {
+			Integer courseid = 0;
+				courseid = Integer.parseInt(contentId.split("_")[1]);
+			if (courseid > 0) {
+				int contentCount = courseService.isContentExists(courseid);
+				if(contentCount == 0){
+					return new ModelAndView("redirect:/zcourse/associatecontent/course_"+courseid+"");
+				}else{
+					modelView = new ModelAndView("organizeenrichcontent");
+					modelView.addObject("courseid", courseid);
+				}
+			} else {
+				modelView = new ModelAndView("createcourse");
 				modelView.addObject("courseid", courseid);
 			}
-		} else {
-			modelView = new ModelAndView("createcourse");
-			modelView.addObject("courseid", courseid);
+			modelView.addObject("courseId", contentId);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
-		modelView.addObject("courseId", contentId);
 		return modelView;
 	}
 }

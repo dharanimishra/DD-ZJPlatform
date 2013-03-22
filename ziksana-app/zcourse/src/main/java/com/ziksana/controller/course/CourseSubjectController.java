@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.Option;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.course.CourseSubjectDetailService;
 
 @Controller
@@ -30,11 +31,16 @@ public class CourseSubjectController {
 	public @ResponseBody
 	List<Option> getSubjectArea(
 			@RequestParam(value = "subjectArea", required = false) String subject) {
-		LOGGER.info("Entering Class " + getClass() + " getSubjectArea()");
+		LOGGER.debug("Entering Class " + getClass() + " getSubjectArea()");
 
-		List<Option> list = courseSubjectDetailService.getSubjectCategory();
+		List<Option> list = null;
+		try {
+			list = courseSubjectDetailService.getSubjectCategory();
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 
-		LOGGER.info("Exiting Class " + getClass() + " getSubjectArea(): ");
+		LOGGER.debug("Exiting Class " + getClass() + " getSubjectArea(): ");
 
 		return list;
 	}
@@ -44,9 +50,14 @@ public class CourseSubjectController {
 	public @ResponseBody
 	List<Option> getSubject(
 			@RequestParam(value = "Course_Area", required = false) String subject) {
-		LOGGER.info("Entering Class " + getClass() + " getSubject()");
-		List<Option> list = courseSubjectDetailService.getSubjectArea(subject);
-		LOGGER.info("Exiting Class " + getClass() + " getSubjectArea(): ");
+		LOGGER.debug("Entering Class " + getClass() + " getSubject()");
+		List<Option> list = null;
+		try {
+			list = courseSubjectDetailService.getSubjectArea(subject);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Exiting Class " + getClass() + " getSubjectArea(): ");
 
 		return list;
 	}
@@ -56,9 +67,14 @@ public class CourseSubjectController {
 	public @ResponseBody
 	List<Option> getTopic(
 			@RequestParam(value = "Course_Subject", required = false) String subject) {
-		LOGGER.info("Entering Class " + getClass() + " getTopic()");
-		List<Option> list = courseSubjectDetailService.getSubjectTopic(subject);
-		LOGGER.info("Exiting Class " + getClass() + " getTopic(): ");
+		LOGGER.debug("Entering Class " + getClass() + " getTopic()");
+		List<Option> list = null;
+		try {
+			list = courseSubjectDetailService.getSubjectTopic(subject);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Exiting Class " + getClass() + " getTopic(): ");
 
 		return list;
 	}
@@ -70,10 +86,15 @@ public class CourseSubjectController {
 			@RequestParam(value = "Course_Area", required = false) String subjectArea,
 			@RequestParam(value = "Course_Subject", required = false) String subjectCategory,
 			@RequestParam(value = "Course_Topic", required = false) String subjectTopic) {
-		LOGGER.info("Entering Class " + getClass() + " getTopic()");
-		CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
-				.getSubjectClassification(subjectTopic);
-		LOGGER.info("Exiting Class " + getClass() + " getTopic(): ");
+		LOGGER.debug("Entering Class " + getClass() + " getTopic()");
+		CourseSubjectClassification courseSubjectClassification = null;
+		try {
+			courseSubjectClassification = courseSubjectDetailService
+					.getSubjectClassification(subjectTopic);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Exiting Class " + getClass() + " getTopic(): ");
 
 		return courseSubjectClassification;
 	}
@@ -85,18 +106,18 @@ public class CourseSubjectController {
 			@RequestParam(value = "CourseId", required = false) String CourseId) {
 
 		Integer course_id = 0;
-		LOGGER.info("Entering Class " + getClass()
+		LOGGER.debug("Entering Class " + getClass()
 				+ " getSubClassification():course_id:" + course_id);
-		try {
-			course_id = Integer.parseInt(CourseId.split("_")[1]);
-		} catch (NumberFormatException nfe) {
-			LOGGER.error("Entering getSubClassification(): NumberFormatException nfe: "
-					+ nfe);
-		}
+		course_id = Integer.parseInt(CourseId.split("_")[1]);
 
-		CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
-				.getCourseClassification(course_id);
-		LOGGER.info("Exiting Class " + getClass()
+		CourseSubjectClassification courseSubjectClassification = null;
+		try {
+			courseSubjectClassification = courseSubjectDetailService
+					.getCourseClassification(course_id);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Exiting Class " + getClass()
 				+ " getSubClassification(): course_id:" + course_id);
 
 		return courseSubjectClassification;

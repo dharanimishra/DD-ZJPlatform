@@ -37,6 +37,7 @@ public class AlertController {
 				+ this.alertsService.getAlertList().size());
 		}
 		catch(ZiksanaException ziksanaException){
+			logger.info(ziksanaException.getMessage());
 			
 			mv.addObject("dbconnectionError", ziksanaException.getMessage());
 		}
@@ -49,7 +50,11 @@ public class AlertController {
 
 		int alertSize = 0;
 
-		alertSize = alertsService.getAlertList().size();
+		try {
+			alertSize = alertsService.getAlertList().size();
+		} catch (ZiksanaException e) {
+			logger.info(e.getMessage());
+		}
 
 		return alertSize;
 	}

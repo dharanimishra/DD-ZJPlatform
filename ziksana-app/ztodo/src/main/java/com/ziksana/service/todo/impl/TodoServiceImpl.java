@@ -39,7 +39,7 @@ public class TodoServiceImpl implements TodoService {
 					.getToken().getMemberPersonaId().getStorageID()));
 		} catch (CannotGetJdbcConnectionException dae) {
 			logger.info("Data Access Exception called");
-			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
+			//throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
 		}
 		return todoList;
 	}
@@ -53,7 +53,7 @@ public class TodoServiceImpl implements TodoService {
 
 		catch (Exception dae) {
 			logger.info("Data Access Exception called");
-			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
+			//throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
 		}
 	}
 
@@ -66,10 +66,10 @@ public class TodoServiceImpl implements TodoService {
 
 		catch (CannotGetJdbcConnectionException dae) {
 			logger.info("Data Access Exception called");
-			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
+			//throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
 		} catch (Exception e) {
 			logger.info("Data Access Exception called");
-			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, e);
+			//throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, e);
 		}
 
 	}
@@ -83,7 +83,7 @@ public class TodoServiceImpl implements TodoService {
 
 		} catch (Exception e) {
 			if (!(deleteCount == 0)) {
-				throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, e);
+				//throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, e);
 			}
 
 		}
@@ -103,7 +103,7 @@ public class TodoServiceImpl implements TodoService {
 			todoList = todoMapper.getMapperTodos(memberRoleId, rowBounds);
 		} catch (CannotGetJdbcConnectionException dae) {
 			logger.info("Data Access Exception called");
-			throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
+			//throw new SystemException(ZiksanaConstants.DATABASE_CONNECTION_PROBLEM, dae);
 		}
 		return todoList;
 	}

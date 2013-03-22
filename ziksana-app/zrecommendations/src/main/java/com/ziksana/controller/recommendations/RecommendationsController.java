@@ -20,9 +20,11 @@ import com.ziksana.domain.common.ZiksanaMessage;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.recommendations.Recommendation;
 import com.ziksana.domain.todo.Todo;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.recommendations.RecommendationsService;
 import com.ziksana.service.todo.TodoService;
+import com.ziksana.util.MessageUtil;
 
 /**
  * @author vtg-p13
@@ -32,7 +34,7 @@ import com.ziksana.service.todo.TodoService;
 @Controller
 @RequestMapping("/zrecommendations")
 public class RecommendationsController {
-	private static final Logger logger = LoggerFactory
+	private static final Logger LOGGER = LoggerFactory
 			.getLogger(RecommendationsController.class);
 
 	@Autowired
@@ -53,18 +55,21 @@ public class RecommendationsController {
 
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
 
-		List<Recommendation> recommendations = recomendationsService
-				.getRecommendations(category);
+		try {
+			List<Recommendation> recommendations = recomendationsService
+					.getRecommendations(category);
 
-		// Creating ziksana message
-		ZiksanaMessage<Recommendation> message = new ZiksanaMessage<Recommendation>();
+			// Creating ziksana message
+			ZiksanaMessage<Recommendation> message = new ZiksanaMessage<Recommendation>();
 
-		message.setContent(recommendations);
-		message.setHeader(getHeader(getClass().getSimpleName().toUpperCase()));
+			message.setContent(recommendations);
+			message.setHeader(getHeader(getClass().getSimpleName().toUpperCase()));
 
-		modelAndView.addObject("recommendations", recommendations);
-		logger.info("Exit Recommend By category");
-
+			modelAndView.addObject("recommendations", recommendations);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Exit Recommend By category");
 		return modelAndView;
 	}
 
@@ -74,10 +79,14 @@ public class RecommendationsController {
 
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
 
-		List<Recommendation> recommendations = recomendationsService
-				.getAllRecommendations();
+		try {
+			List<Recommendation> recommendations = recomendationsService
+					.getAllRecommendations();
 
-		modelAndView.addObject("recommendations", recommendations);
+			modelAndView.addObject("recommendations", recommendations);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 
 		return modelAndView;
 	}
@@ -88,10 +97,14 @@ public class RecommendationsController {
 
 		ModelAndView modelAndView = new ModelAndView("xml/zrecommendations");
 
-		List<Recommendation> recommendations = recomendationsService
-				.getMapperRecommendation();
+		try {
+			List<Recommendation> recommendations = recomendationsService
+					.getMapperRecommendation();
 
-		modelAndView.addObject("recommendations", recommendations);
+			modelAndView.addObject("recommendations", recommendations);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 
 		return modelAndView;
 	}
@@ -103,21 +116,24 @@ public class RecommendationsController {
 			@RequestParam(value = "category", required = true) Integer category) {
 
 		Recommendation recommend = new Recommendation();
-		recommend = recomendationsService
-				.getRecommendationByRecommendationId(recommendationId);
+		int updatedRow = 0;
+		try {
+			recommend = recomendationsService
+					.getRecommendationByRecommendationId(recommendationId);
 
-		// get ignorecount and increment by one
-		int ignoreCount = recommend.getIgnoreCount();
-		logger.info("ignoreCount==>" + ignoreCount);
-		ignoreCount = ignoreCount + 1;
-		logger.info("ignoreCount incremented==>" + ignoreCount);
+			// get ignorecount and increment by one
+			int ignoreCount = recommend.getIgnoreCount();
+			LOGGER.debug("ignoreCount==>" + ignoreCount);
+			ignoreCount = ignoreCount + 1;
+			LOGGER.debug("ignoreCount incremented==>" + ignoreCount);
 
-		int updatedRow;
+			updatedRow = recomendationsService.updateRecommendationsCategoryById(
+					recommendationId, category, ignoreCount);
+			LOGGER.debug("updated row==>" + updatedRow);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
 
-		updatedRow = recomendationsService.updateRecommendationsCategoryById(
-				recommendationId, category, ignoreCount);
-
-		logger.info("updated row==>" + updatedRow);
 		return updatedRow;
 
 	}
@@ -131,46 +147,49 @@ public class RecommendationsController {
 			@RequestParam(value = "recommendationId", required = true) Integer recommendationId,
 			@RequestParam(value = "category", required = true) Integer category) {
 
-		// creating a todo
-		Todo todo = new Todo();
-		todo.setCategory(categoryName);
-		todo.setNotificationContent(notificationContent.toString());
-		todo.setActivationDate(new Date());
-		
-		todo.setNotificationType(491);
-		todo.setPriority(163);
-		MemberPersona creatingMember = new MemberPersona();
-		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
-				.getToken().getMemberPersonaId().getStorageID()));
-		logger.info("Member Role Id :" + creatingMember.getMemberRoleId());
-		todo.setCreatingMember(creatingMember);
-		todo.setForMember(creatingMember);
+		int updatedRow = 0;
 		try {
-			todoService.createTodo(todo);
+			// creating a todo
+			Todo todo = new Todo();
+			todo.setCategory(categoryName);
+			todo.setNotificationContent(notificationContent.toString());
+			todo.setActivationDate(new Date());
+			
+			todo.setNotificationType(491);
+			todo.setPriority(163);
+			MemberPersona creatingMember = new MemberPersona();
+			creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+					.getToken().getMemberPersonaId().getStorageID()));
+			LOGGER.debug("Member Role Id :" + creatingMember.getMemberRoleId());
+			todo.setCreatingMember(creatingMember);
+			todo.setForMember(creatingMember);
+			try {
+				todoService.createTodo(todo);
 
-		} catch (Exception exception) {
-			logger.error("Caught Exception. class ="
-					+ exception.getClass().getName() + ",message ="
-					+ exception.getMessage());
+			} catch (Exception exception) {
+				LOGGER.error("Caught Exception. class ="
+						+ exception.getClass().getName() + ",message ="
+						+ exception.getMessage());
+			}
+
+			// update the recommendation status
+			// get recommendation by recommendationId
+			Recommendation recommend = new Recommendation();
+			recommend = recomendationsService
+					.getRecommendationByRecommendationId(recommendationId);
+
+			// get ignorecount and increment by one
+			int ignoreCount = recommend.getIgnoreCount();
+			LOGGER.debug("ignoreCount==>" + ignoreCount);
+			ignoreCount = ignoreCount + 1;
+			LOGGER.debug("ignoreCount incremented==>" + ignoreCount);
+
+			updatedRow = recomendationsService.updateRecommendationsCategoryById(
+					recommendationId, category, ignoreCount);
+			LOGGER.debug("updated row==>" + updatedRow);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
 		}
-
-		// update the recommendation status
-		// get recommendation by recommendationId
-		Recommendation recommend = new Recommendation();
-		recommend = recomendationsService
-				.getRecommendationByRecommendationId(recommendationId);
-
-		// get ignorecount and increment by one
-		int ignoreCount = recommend.getIgnoreCount();
-		logger.info("ignoreCount==>" + ignoreCount);
-		ignoreCount = ignoreCount + 1;
-		logger.info("ignoreCount incremented==>" + ignoreCount);
-
-		int updatedRow;
-
-		updatedRow = recomendationsService.updateRecommendationsCategoryById(
-				recommendationId, category, ignoreCount);
-		logger.info("updated row==>" + updatedRow);
 		return updatedRow;
 
 	}

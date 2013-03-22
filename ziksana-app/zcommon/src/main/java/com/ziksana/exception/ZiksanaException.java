@@ -14,18 +14,16 @@ public abstract class ZiksanaException extends RuntimeException {
 	 */
 	private String errorType;
 
-	private Throwable error;
 
-	private String exceptionDescription;
 
 	public ZiksanaException(String errorCode) {
+		super(MessageUtil.getMessage(errorCode));
 		setErrorCode(errorCode);
-		setExceptionDescription(MessageUtil.getMessage(errorCode));
 	}
 
 	public ZiksanaException(String errorCode, Throwable error) {
-		this(errorCode);
-		setError(error);
+		super(MessageUtil.getMessage(errorCode),error);
+		setErrorCode(errorCode);
 	}
 
 	/**
@@ -48,20 +46,6 @@ public abstract class ZiksanaException extends RuntimeException {
 		this.errorType = errorType;
 	}
 
-	public String getExceptionDescription() {
-		return exceptionDescription;
-	}
 
-	private void setExceptionDescription(String description) {
-		this.exceptionDescription = description;
-	}
-
-	public Throwable getError() {
-		return error;
-	}
-
-	private void setError(Throwable error) {
-		this.error = error;
-	}
 
 }

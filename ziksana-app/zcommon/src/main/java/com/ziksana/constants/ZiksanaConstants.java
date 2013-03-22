@@ -24,6 +24,9 @@ public interface ZiksanaConstants {
 	
 	 //DATABASE CONNECTION FAILURE MESSAGE CONSTANTS
 	 public static final String DATABASE_CONNECTION_PROBLEM = "ziksana.database.error";
+	 
+	 public static final String COOKIE_NOT_CREATED_EXCEPTION = "ziksana.system.cookie.notcreated";
+	 public static final String COOKIE_NOT_DELETED_EXCEPTION = "ziksana.system.cookie.notdeleted";
 	
 	 //TODO ERROR MESSAGE CONSTANTS
 	 public static final String TODO_INSERTQUERY_PROBLEM = "todo.insert.error";

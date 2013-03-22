@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.Choice;
 import com.ziksana.domain.common.Question;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.knowmebetter.PersonalityTestService;
 
 /**
@@ -32,29 +33,34 @@ public class KnowmeController {
 	@RequestMapping(value = "/getansweredquestions", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getansweredQuestions() {
-
-		logger.info("Know me Better || getansweredQuestions()");
+		logger.debug("Entered Know me Better || getansweredQuestions()");
 		ModelAndView modelAndView = new ModelAndView("xml/answeredquestions");
-		modelAndView.addObject("answeredquesList",
-				personalityService.answeredQuestions());
-		logger.info("Exit Know me Better");
+		try {
+			
+			modelAndView.addObject("answeredquesList",
+					personalityService.answeredQuestions());
+		} catch (ZiksanaException exception) {
+			logger.error(exception.getMessage(), exception);
+		}
 
+		logger.debug("Exiting Know me Better");
 		return modelAndView;
-
 	}
 
 	@RequestMapping(value = "/getunansweredquestionsbyid/{questionBankId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getUnansweredQuestionsByQuestionId(
 			@PathVariable Integer questionBankId) {
-
-		logger.info("Know me Better || getunansweredQuestions()");
+		logger.debug("Know me Better || getunansweredQuestions()");
 		ModelAndView modelAndView = new ModelAndView(
 				"xml/singleunansweredquestions");
-		modelAndView.addObject("unansweredquesList",
-				personalityService.getUnansweredQuestionsbyId(questionBankId));
-		logger.info("Exit Know me Better");
-
+		try {
+			modelAndView.addObject("unansweredquesList",
+					personalityService.getUnansweredQuestionsbyId(questionBankId));
+		} catch (ZiksanaException exception) {
+			logger.error(exception.getMessage(), exception);
+		}
+		logger.debug("Exit Know me Better");
 		return modelAndView;
 
 	}
@@ -62,13 +68,15 @@ public class KnowmeController {
 	@RequestMapping(value = "/getunansweredquestions", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getUnansweredQuestions() {
-
-		logger.info("Know me Better || getunansweredQuestions()");
+		logger.debug("Know me Better || getunansweredQuestions()");
 		ModelAndView modelAndView = new ModelAndView("xml/unansweredquestions");
-		modelAndView.addObject("unansweredquesList",
-				personalityService.getUnansweredQuestions());
-		logger.info("Exit Know me Better");
-
+		try {
+			modelAndView.addObject("unansweredquesList",
+					personalityService.getUnansweredQuestions());
+		} catch (ZiksanaException exception) {
+			logger.error(exception.getMessage(), exception);
+		}
+		logger.debug("Exit Know me Better");
 		return modelAndView;
 
 	}
@@ -91,11 +99,16 @@ public class KnowmeController {
 			@RequestParam(value = "testQuestionId", required = true) Integer testQuestionId,
 			@RequestParam(value = "questionBankAnswerId", required = true) Integer questionBankAnswerId) {
 
-		Question question = new Question(testQuestionId, testQuestionValue);
-		Choice userChoice = new Choice(questionBankAnswerId, null, memberAnswer);
+		try {
+			Question question = new Question(testQuestionId, testQuestionValue);
+			Choice userChoice = new Choice(questionBankAnswerId, null, memberAnswer);
 
-		// userChoice.setMemPstTestId(Integer.valueOf(1));
-		personalityService.saveAnswer(question, userChoice);
+			// userChoice.setMemPstTestId(Integer.valueOf(1));
+			personalityService.saveAnswer(question, userChoice);
+		} catch (ZiksanaException exception) {
+			logger.error(exception.getMessage(), exception);
+		}
+		//TODO get this message from properties file
 		return "Answer Submitted Successfully";
 	}
 
@@ -108,11 +121,17 @@ public class KnowmeController {
 			@RequestParam(value = "editAnsId", required = true) Integer editAnsId,
 			@RequestParam(value = "memberPersonalityTestId", required = true) Integer memberPersonalityTestId) {
 
-		Question question = new Question(editQuesid, editQuesval);
-		Choice userChoice = new Choice(editAnsId, editAnsId, editCheckedAnswer,
-				memberPersonalityTestId);
+		try {
+			Question question = new Question(editQuesid, editQuesval);
+			Choice userChoice = new Choice(editAnsId, editAnsId, editCheckedAnswer,
+					memberPersonalityTestId);
 
-		personalityService.updateAnswer(question, userChoice);
+			personalityService.updateAnswer(question, userChoice);
+		} catch (ZiksanaException exception) {
+			logger.error(exception.getMessage(), exception);
+		}
+		
+		//TODO get it from properties file
 		return "Answer Updated Successfully";
 	}
 
