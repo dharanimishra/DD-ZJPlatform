@@ -278,7 +278,10 @@ public class CreateCourseController {
 		CourseJsonResponse json = new CourseJsonResponse();
 
 		try {
-			courseId = Integer.parseInt(CourseId);
+			if (!"".equals(CourseId) && CourseId != null) {
+				courseId = Integer.parseInt(CourseId);
+			}
+
 			courseDuration = Integer.parseInt(CourseDuration);
 			courseDurationUnit = Integer.parseInt(CourseDurationUnit);
 			MemberPersona accountableMember = new MemberPersona();
@@ -400,12 +403,13 @@ public class CreateCourseController {
 		}
 		// TODO no statck trace for above errors
 
-		LOGGER.debug("Exiting Class " + getClass() + " saveCourse(): CourseId :"
-				+ " Course Name :" + CourseName + " CourseDescription:"
-				+ CourseDescription + " Subject_Area:" + subjectArea
-				+ "Subject " + subjectCategory + "Topic " + subjectTopic
-				+ " CourseCredits :" + CourseCredits + " CourseExtraCredits :"
-				+ CourseExtraCredits + " courseDuration :" + courseDuration);
+		LOGGER.debug("Exiting Class " + getClass()
+				+ " saveCourse(): CourseId :" + " Course Name :" + CourseName
+				+ " CourseDescription:" + CourseDescription + " Subject_Area:"
+				+ subjectArea + "Subject " + subjectCategory + "Topic "
+				+ subjectTopic + " CourseCredits :" + CourseCredits
+				+ " CourseExtraCredits :" + CourseExtraCredits
+				+ " courseDuration :" + courseDuration);
 
 		return json;
 	}
@@ -842,8 +846,8 @@ public class CreateCourseController {
 	CourseEditResponse getCourse(
 			@RequestParam(value = "Course_id", required = true) String CourseId)
 			throws CourseException {
-		LOGGER.debug("Entering Class " + getClass() + " getCourse(): CourseId :"
-				+ CourseId);
+		LOGGER.debug("Entering Class " + getClass()
+				+ " getCourse(): CourseId :" + CourseId);
 
 		CourseEditResponse json = null;
 		try {
@@ -886,12 +890,12 @@ public class CreateCourseController {
 			learningComponentId = Integer.parseInt(ComponentId.split("_")[1]);
 			String tagfield = "";
 			LearningComponentTagcloud tag = null;
-				tag = learningComponentTagCloudService
-						.getComponentTagClouds(learningComponentId);
-				tagfield = tag.getTagName();
-				LOGGER.error("Class " + getClass()
-						+ "Method Name :getCourseModule : tag  :" + tag
-						+ "tagfield :" + tagfield);
+			tag = learningComponentTagCloudService
+					.getComponentTagClouds(learningComponentId);
+			tagfield = tag.getTagName();
+			LOGGER.error("Class " + getClass()
+					+ "Method Name :getCourseModule : tag  :" + tag
+					+ "tagfield :" + tagfield);
 
 			json = courseEditService.getModuleDetails(learningComponentId);
 			json.setResponse("success");

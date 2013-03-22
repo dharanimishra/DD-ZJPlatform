@@ -56,73 +56,76 @@ public class LoginController {
 			if (username == null && password == null) {
 
 				mv = new ModelAndView("login");
+				return mv;
 				// mv.addObject("applicationTitle", applicationTitle);
-			}
+			} else {
 
-			logger.debug(" going to auth service");
+				logger.debug(" going to auth service");
 
-			boolean userAuthenticated = authService.authenticateUser(username,
-					password);
+				boolean userAuthenticated = authService.authenticateUser(
+						username, password);
 
-			if (userAuthenticated) {
-				logger.info("USER AUTHENTICATED");
-				// create user session and put the secure token there..
-				// create cookie and send it to the client
+				if (userAuthenticated) {
+					logger.info("USER AUTHENTICATED");
+					// create user session and put the secure token there..
+					// create cookie and send it to the client
 
-				// Constructing SecurityToken object
-				Member member = memberService.getMemberByUser(username);
+					// Constructing SecurityToken object
+					Member member = memberService.getMemberByUser(username);
 
-				ZID memberId = new StringZID();
-				memberId.setStorageID(member.getMemberId().toString());
+					ZID memberId = new StringZID();
+					memberId.setStorageID(member.getMemberId().toString());
 
-				ZID memberPersonaId = new StringZID();
+					ZID memberPersonaId = new StringZID();
 
-				// Determining the educator memberpersona of the user
-				List<MemberPersona> memberPersonas = member.getMemberPersonas();
-				MemberRoleType roleType = null;
+					// Determining the educator memberpersona of the user
+					List<MemberPersona> memberPersonas = member
+							.getMemberPersonas();
+					MemberRoleType roleType = null;
 
-				for (MemberPersona memberPersona : memberPersonas) {
-					if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR) {
-						memberPersonaId.setStorageID(memberPersona
-								.getMemberRoleId().toString());
-						roleType = MemberRoleType.EDUCATOR;
-						break;
+					for (MemberPersona memberPersona : memberPersonas) {
+						if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR) {
+							memberPersonaId.setStorageID(memberPersona
+									.getMemberRoleId().toString());
+							roleType = MemberRoleType.EDUCATOR;
+							break;
 
-					} else {
-						memberPersonaId.setStorageID(memberPersona
-								.getMemberRoleId().toString());
-						roleType = MemberRoleType.LEARNER;
-						break;
+						} else {
+							memberPersonaId.setStorageID(memberPersona
+									.getMemberRoleId().toString());
+							roleType = MemberRoleType.LEARNER;
+							break;
+
+						}
 
 					}
 
-				}
-				
-				logger.info("login() MemberRoleType is " + roleType);
+					logger.info("login() MemberRoleType is " + roleType);
 
-				SecurityToken token = new SecurityToken(memberId, memberPersonaId,
-						roleType);
+					SecurityToken token = new SecurityToken(memberId,
+							memberPersonaId, roleType);
 
-				// Need to add the token to the session
-				HttpSession session = request.getSession(true);
-				session.setAttribute("TOKEN", token);
+					// Need to add the token to the session
+					HttpSession session = request.getSession(true);
+					session.setAttribute("TOKEN", token);
 
-				// Need to create cookie
+					// Need to create cookie
 					response.addCookie(newSessionCookie(request, username));
 
-				mv = new ModelAndView("common/pre_launch");
-				session.setAttribute("member", member);
+					mv = new ModelAndView("common/pre_launch");
+					session.setAttribute("member", member);
 
-				ThreadLocalUtil.unset();
+					ThreadLocalUtil.unset();
 
-			} else {
+				} else {
 
-				// redirect to the login page with error message
-				logger.info(" User is not authenticated");
-				request.setAttribute("loginResult", "true");
-				mv = new ModelAndView("login");
-				ThreadLocalUtil.unset();
-				return mv;
+					// redirect to the login page with error message
+					logger.info(" User is not authenticated");
+					request.setAttribute("loginResult", "true");
+					mv = new ModelAndView("login");
+					ThreadLocalUtil.unset();
+					return mv;
+				}
 			}
 		} catch (ZiksanaException exception) {
 			logger.error(exception.getMessage(), exception);
@@ -135,17 +138,19 @@ public class LoginController {
 	}
 
 	private Cookie newSessionCookie(HttpServletRequest request, String userId)
-		throws ZiksanaException	{
+			throws ZiksanaException {
 
 		Cookie cookie = new Cookie(AuthenticationFilter.COOKIE_NAME, "");
 		try {
-		cookie.setMaxAge(-1);
-		cookie.setPath("/");
+			cookie.setMaxAge(-1);
+			cookie.setPath("/");
 
-			cookie.setDomain(new URL(request.getRequestURL().toString()).getHost());
+			cookie.setDomain(new URL(request.getRequestURL().toString())
+					.getHost());
 		} catch (MalformedURLException e) {
-			logger.error("Exception occured while creatig a new Session Cookie "+ e.getMessage());
-			throw new CookieNotCreatedException(e) ;
+			logger.error("Exception occured while creatig a new Session Cookie "
+					+ e.getMessage());
+			throw new CookieNotCreatedException(e);
 		}
 
 		return cookie;
