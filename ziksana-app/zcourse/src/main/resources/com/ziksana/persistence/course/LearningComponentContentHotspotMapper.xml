@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.LearningComponentContentHotspotMapper">
+
+	<insert id="save" parameterType="com.ziksana.domain.course.LearningComponentContentHotspot"
+		useGeneratedKeys="true" keyProperty="componentContentHotspotId" keyColumn="componentcontenthotspotid">
+		insert into corlearningcomponentcontenthotspot
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			creationdate,
+			<if test="coordinates!=null">
+				coordinates,
+			</if>
+			<if test="name!=null">
+				name,
+			</if>
+			<if test="description!=null">
+				description,
+			</if>
+			<if test="active!=null">
+				active,
+			</if>
+			<if test="learningComponentContent !=null">
+				learningcomponentcontentid,
+			</if>
+			<if test="memberPersona !=null">
+				memberroleid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="coordinates!=null">
+				 #{coordinates,jdbcType.VARCHAR},
+			</if>
+			<if test="name!=null">
+				#{name,jdbcType.VARCHAR},
+			</if>
+			<if test="description!=null">
+				#{description,jdbcType.VARCHAR},
+			</if>
+			<if test="active!=null">
+				#{active,jdbcType.BOOLEAN},
+			</if>
+			<if test="learningComponentContent!=null">
+				#{learningComponentContent.learningComponentContentId.storageID,jdbcType.INTEGER},
+			</if>
+			<if test="memberPersona !=null">
+				#{memberPersona.memberRoleId,jdbcType.INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="componentContentHotspotId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+	<update id="update" parameterType="com.ziksana.domain.course.LearningComponentContentHotspot">
+		update corlearningcomponentcontenthotspot
+		<set>
+		<if test="coordinates!=null">
+				 coordinates = #{coordinates,jdbcType.VARCHAR},
+			</if>
+			<if test="name!=null">
+				name = #{name,jdbcType.VARCHAR},
+			</if>
+			<if test="description!=null">
+				description = #{description,jdbcType.VARCHAR},
+			</if>
+		</set>
+	componentcontenthotspotid =
+	#{componentContentHotspotId.storageID,jdbcType=INTEGER}
+	</update>
+</mapper>
