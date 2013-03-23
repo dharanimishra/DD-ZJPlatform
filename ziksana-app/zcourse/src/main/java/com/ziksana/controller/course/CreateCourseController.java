@@ -274,7 +274,7 @@ public class CreateCourseController {
 				+ CourseExtraCredits + " Course_Duration :" + CourseDuration
 				+ " CourseDurationUnit :" + CourseDurationUnit);
 
-		Integer courseId = 0, courseDuration = 0, courseDurationUnit = 1, subjClassificationId = 0;
+		Integer courseId = 0, courseDuration = 0, courseDurationUnit = 1, subjClassificationId = 0, courseIds = 0;
 		CourseJsonResponse json = new CourseJsonResponse();
 
 		try {
@@ -347,7 +347,7 @@ public class CreateCourseController {
 			courseObj = courseService.saveOrUpdateCourse(course);
 			LOGGER.debug("Class :" + getClass()
 					+ " Method saveCourse : After courseService:" + courseObj);
-			Integer courseIds = 0;
+
 			courseIds = Integer
 					.parseInt(courseObj.getCourseId().getStorageID());
 			if (courseIds > 0 && courseId > 0) {
@@ -375,20 +375,6 @@ public class CreateCourseController {
 						+ " Method saveOrUpadteTags : After courseService: Save CourseId Exception :tagcloud");
 			}
 
-			if (courseIds == 0) {
-				json.setResponse("failed");
-				LOGGER.debug("Class :"
-						+ getClass()
-						+ " Method saveCourse : After courseService: CourseId :"
-						+ CourseId);
-			} else {
-				json.setId("COURSE_" + courseIds);
-				json.setResponse("success");
-				LOGGER.debug("Class :"
-						+ getClass()
-						+ " Method saveCourse : After courseService: CourseId :"
-						+ CourseId);
-			}
 		} catch (CourseException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		} catch (NumberFormatException e) {
@@ -403,6 +389,18 @@ public class CreateCourseController {
 		}
 		// TODO no statck trace for above errors
 
+		if (courseIds == 0) {
+			json.setResponse("failed");
+			LOGGER.debug("Class :" + getClass()
+					+ " Method saveCourse : After courseService: CourseId :"
+					+ CourseId);
+		} else {
+			json.setId("COURSE_" + courseIds);
+			json.setResponse("success");
+			LOGGER.debug("Class :" + getClass()
+					+ " Method saveCourse : After courseService: CourseId :"
+					+ CourseId);
+		}
 		LOGGER.debug("Exiting Class " + getClass()
 				+ " saveCourse(): CourseId :" + " Course Name :" + CourseName
 				+ " CourseDescription:" + CourseDescription + " Subject_Area:"
@@ -447,24 +445,34 @@ public class CreateCourseController {
 				+ " Duration :" + Duration + " UnitofDuration :"
 				+ UnitofDuration + " UploadImage :" + UploadImage);
 		CourseJsonResponse json = new CourseJsonResponse();
+		Integer courseIds = 0;
 		try {
 
 			Integer courseid = 0, courseLearningComponentId = 0, learningComponentId = 0, learningObjIndicator = 0, parentLearningComponentId = 0;
 			courseid = Integer.parseInt(CourseId.split("_")[1]);
 			LOGGER.debug("Entering Class " + getClass()
 					+ " saveCourseComponents(): courseid :" + courseid);
-			courseLearningComponentId = Integer
-					.parseInt(CourseLearningComponentId);
+			if (!"".equals(CourseLearningComponentId)
+					&& CourseLearningComponentId != null) {
+				courseLearningComponentId = Integer
+						.parseInt(CourseLearningComponentId);
+			}
+
 			LOGGER.debug("Entering Class " + getClass()
 					+ " saveCourseComponents(): courseLearningComponentId :"
 					+ courseLearningComponentId);
-
-			parentLearningComponentId = Integer
-					.parseInt(ParentLearningComponentId.split("_")[1]);
+			if (!"".equals(ParentLearningComponentId)
+					&& ParentLearningComponentId != null) {
+				parentLearningComponentId = Integer
+						.parseInt(ParentLearningComponentId.split("_")[1]);
+			}
 			LOGGER.debug("Entering Class " + getClass()
 					+ " saveCourseComponents(): parentLearningComponentId :"
 					+ parentLearningComponentId);
-			learningComponentId = Integer.parseInt(LearningComponentId);
+
+			if (!"".equals(LearningComponentId) && LearningComponentId != null) {
+				learningComponentId = Integer.parseInt(LearningComponentId);
+			}
 			LOGGER.debug("Entering Class " + getClass()
 					+ " saveCourseComponents(): learningComponentId :"
 					+ learningComponentId);
@@ -476,8 +484,9 @@ public class CreateCourseController {
 			Integer courseDuration = 0, unitofDuration = 1, moduleWeight = 0;
 			courseDuration = Integer.parseInt(Duration);
 			unitofDuration = Integer.parseInt(UnitofDuration);
-
-			moduleWeight = Integer.parseInt(ModuleWeight);
+			if (!"".equals(ModuleWeight) && ModuleWeight != null) {
+				moduleWeight = Integer.parseInt(ModuleWeight);
+			}
 			CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
 					.getSubjectClassification(subjectTopic);
 
@@ -644,7 +653,7 @@ public class CreateCourseController {
 					+ ModuleWeight + " LearningObject :" + LearningObject
 					+ " Duration :" + Duration + " UnitofDuration :"
 					+ UnitofDuration + " UploadImage :" + UploadImage);
-			Integer courseIds = 0, updatedLearningComponentId = 0;
+			Integer updatedLearningComponentId = 0;
 
 			courseIds = Integer
 					.parseInt(courseObj.getCourseId().getStorageID());
@@ -710,21 +719,6 @@ public class CreateCourseController {
 					+ getClass()
 					+ " Method saveCourse : After courseService: learningComponentTagCloudService : learningComponentTagCloudService");
 
-			if (courseIds == 0) {
-				json.setResponse("failed");
-
-				LOGGER.debug("Class :"
-						+ getClass()
-						+ " Method saveCourse : After courseService: CourseId :"
-						+ CourseId);
-			} else {
-				json.setId("COURSE_" + courseIds);
-				json.setResponse("success");
-				LOGGER.debug("Class :"
-						+ getClass()
-						+ " Method saveCourse : After courseService: CourseId :"
-						+ CourseId);
-			}
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		} catch (NumberFormatException e) {
@@ -733,6 +727,20 @@ public class CreateCourseController {
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+
+		if (courseIds == 0) {
+			json.setResponse("failed");
+
+			LOGGER.debug("Class :" + getClass()
+					+ " Method saveCourse : After courseService: CourseId :"
+					+ CourseId);
+		} else {
+			json.setId("COURSE_" + courseIds);
+			json.setResponse("success");
+			LOGGER.debug("Class :" + getClass()
+					+ " Method saveCourse : After courseService: CourseId :"
+					+ CourseId);
 		}
 		return json;
 	}
