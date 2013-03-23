@@ -208,6 +208,7 @@ function get_and_populate_alerts(){
 				var outputAlertEmpty="";
 				outputAlertEmpty+="<div  class='alerts'>";
 				outputAlertEmpty+="<span class='titles-info jdash-head-title''>Alerts</span>";
+	
 				outputAlertEmpty+="<b>No Alerts Found</b></div>";
 				
 				console.log('No of avaliable alerts: '+no_of_available_alerts);

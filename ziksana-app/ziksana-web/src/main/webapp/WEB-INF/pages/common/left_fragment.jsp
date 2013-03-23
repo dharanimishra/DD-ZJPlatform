@@ -153,7 +153,7 @@
 	<!--test githup-->
 	<!-- blogs added by sundip-->
 
-	<c:url var="blogListUrl" value="/blog/list" />
+	<c:url var="blogListUrl" value="/zblogs/getblogs" />
 
 
 	<script type="text/javascript">

@@ -20,4 +20,5 @@
 				</Questions>
 		</unanswered>
 	</c:forEach>
+<errorMessage>${errorResponse}</errorMessage>
 </unansweredquestions>

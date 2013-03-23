@@ -1,12 +1,8 @@
-/**
- * 
- */
 package com.ziksana.service.announcements.impl;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -15,9 +11,13 @@ import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.stereotype.Service;
 
+import com.ziksana.constants.ZiksanaConstants;
 import com.ziksana.domain.announcements.Announcement;
+import com.ziksana.exception.DataBaseException;
+import com.ziksana.exception.announcements.AnnouncementsException;
 import com.ziksana.persistence.announcements.AnnouncementMapper;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.announcements.AnnouncementService;
@@ -35,23 +35,29 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	@Autowired
 	AnnouncementMapper announcementMapper;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.vtg.service.AnnouncementService#selectById(int)
-	 */
+	
 	public List<Announcement> getAnnouncement() {
-		LOGGER.info("Class :" + getClass()
-				+ " : Entering Method :selectById(int announcementDaoImpl)");
 		
-		List<Announcement> announcement = new  ArrayList<Announcement>();
-
 		
+		List<Announcement> announcementList = new  ArrayList<Announcement>();
+		try{
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
 		int offset = 0;
 		int limit = 2;
 		RowBounds rowBounds = new RowBounds(offset, limit);
-		return announcementMapper.getAnnouncement(memberRoleId, rowBounds);
+		announcementList = announcementMapper.getAnnouncement(memberRoleId, rowBounds);
+		}
+		catch (CannotGetJdbcConnectionException dae) {
+			throw new DataBaseException(dae);
+		}
+		catch(NullPointerException ne){
+			throw new AnnouncementsException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
+		}
+		if(announcementList.isEmpty()){
+			throw new AnnouncementsException(ZiksanaConstants.ANNOUNCEMENT_NOT_FOUND);
+		}
+		
+		return announcementList;
 		
 		
 		
@@ -149,11 +155,15 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
 		
 		announcement = announcementMapper.getInstitutionAnnouncements(memberRoleId, formatStartDate, formatEndDate);
-		LOGGER.info("Institution Announcement Size :"+announcement.size());
 		
-		
-		}catch(Exception e){
-			e.printStackTrace();
+		}catch(ParseException pe){
+			throw new AnnouncementsException(ZiksanaConstants.ANNOUNCEMENT_PARSE_ERROR,pe);
+		}
+		catch (CannotGetJdbcConnectionException dae) {
+			throw new DataBaseException(dae);
+		}
+		catch(NullPointerException ne){
+			throw new AnnouncementsException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
 		}
 		return announcement;
 	}
@@ -172,11 +182,14 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
 		
 		announcement = announcementMapper.getInstitutionUnitAnnouncements(memberRoleId, formatStartDate, formatEndDate);
-		LOGGER.info("Institution Announcement Size :"+announcement.size());
-		
-		
-		}catch(Exception e){
-			e.printStackTrace();
+		}catch(ParseException pe){
+			throw new AnnouncementsException(ZiksanaConstants.ANNOUNCEMENT_PARSE_ERROR,pe);
+		}
+		catch (CannotGetJdbcConnectionException dae) {
+			throw new DataBaseException(dae);
+		}
+		catch(NullPointerException ne){
+			throw new AnnouncementsException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
 		}
 		return announcement;
 	}
@@ -195,11 +208,14 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
         
 		announcement = announcementMapper.getCourseAnnouncements(memberRoleId, formatStartDate, formatEndDate);
-				LOGGER.info("Institution Announcement Size :"+announcement.size());
-		
-		
-		}catch(Exception e){
-			e.printStackTrace();
+		}catch(ParseException pe){
+			throw new AnnouncementsException(ZiksanaConstants.ANNOUNCEMENT_PARSE_ERROR,pe);
+		}
+		catch (CannotGetJdbcConnectionException dae) {
+			throw new DataBaseException(dae);
+		}
+		catch(NullPointerException ne){
+			throw new AnnouncementsException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
 		}
 		return announcement;
 	}
@@ -207,14 +223,37 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	@Override
 	public List<Announcement> getAllAnnouncement() {
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-				return announcementMapper.getAllAnnouncements(memberRoleId);
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		try{
+		announcementList = announcementMapper.getAllAnnouncements(memberRoleId);
+		}
+		catch (CannotGetJdbcConnectionException dae) {
+			throw new DataBaseException(dae);
+		}
+		catch(NullPointerException ne){
+			throw new AnnouncementsException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
+		}
+		if(announcementList.isEmpty()){
+			throw new AnnouncementsException(ZiksanaConstants.ANNOUNCEMENT_NOT_FOUND);
+		}
+		return announcementList;
 	}
 
 	@Override
-	public Announcement getAnnouncementById(
-			int anouncementId) {
+	public Announcement getAnnouncementById(int anouncementId) {
+		
+		Announcement announcement = new Announcement();
+		try{
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-		return announcementMapper.getAnnouncementById(memberRoleId, anouncementId);
+		announcement = announcementMapper.getAnnouncementById(memberRoleId, anouncementId);
+		}
+		catch (CannotGetJdbcConnectionException dae) {
+			throw new DataBaseException(dae);
+		}
+		catch(NullPointerException ne){
+			throw new AnnouncementsException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
+		}
+		return announcement;
 	}
 
 	@Override
@@ -232,11 +271,15 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
         
 		announcement = announcementMapper.getAllAnnouncementsByDate(memberRoleId, formatStartDate, formatEndDate);
-				LOGGER.info("All Announcement Size :"+announcement.size());
-		
-		
-		}catch(Exception e){
-			e.printStackTrace();
+		}
+		catch(ParseException pe){
+			throw new AnnouncementsException(ZiksanaConstants.ANNOUNCEMENT_PARSE_ERROR,pe);
+		}
+		catch (CannotGetJdbcConnectionException dae) {
+			throw new DataBaseException(dae);
+		}
+		catch(NullPointerException ne){
+			throw new AnnouncementsException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
 		}
 		return announcement;
 	}

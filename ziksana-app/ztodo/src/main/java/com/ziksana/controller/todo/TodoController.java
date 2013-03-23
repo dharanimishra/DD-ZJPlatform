@@ -39,6 +39,7 @@ public class TodoController {
 		ModelAndView modelView = new ModelAndView("xml/todolist");
 		try{		
 		modelView.addObject("todoItems", todoService.getTodos());
+		modelView.addObject("todoSize", todoService.getTodos().size());
 		}catch (ZiksanaException zexception) {
 			modelView.addObject("errorResponse", zexception.getMessage());
 			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());

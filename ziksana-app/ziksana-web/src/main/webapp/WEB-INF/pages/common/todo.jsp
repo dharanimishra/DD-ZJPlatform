@@ -128,7 +128,9 @@ function deleteTodoItem(val){
 		success: function( data ) {
 			
 			$('#todoid'+val).remove();
-			window.location.href = window.location.href;
+			$('#todo_response_message').html(data);
+       	   setTimeout(doRefreshCall,3000);
+			
 		}
 	});
 	
@@ -184,6 +186,10 @@ $(document).ready(function() {
 					var output="";
 					
 					var indexValue = 0;
+					$(data).find("todolist").each(function(){
+						if($(this).find("todoSize").text()==0){
+							output+="<div STYLE='font-family: Arial Black;font-size: 18px; color: Green;text-align:center;'>No To-Dos Found</div>";
+						}
 					$(data).find("todoitem").each(function(index){
 					
 						indexValue = index;
@@ -204,7 +210,7 @@ $(document).ready(function() {
 						
 												
 					});
-					
+					});
 					
 					
 					output+="<form id='newForm' name='newForm' action='/secure/createtodo' onsubmit='return false;' method='post'>";

@@ -12,7 +12,7 @@ public class AlertNotFoundException extends BusinessException {
 
 
 	public AlertNotFoundException() {
-		super(ZiksanaConstants.ALERT_RETRIEVE_NOT_FOUND);
+		super(ZiksanaConstants.ALERT_NOT_FOUND);
 	}
 	
 	/**
@@ -20,7 +20,7 @@ public class AlertNotFoundException extends BusinessException {
 	 * @param t
 	 */
 	public AlertNotFoundException(Throwable t) {
-		super(ZiksanaConstants.ALERT_RETRIEVE_NOT_FOUND, t);
+		super(ZiksanaConstants.ALERT_NOT_FOUND, t);
 
 	}
 

@@ -1,6 +1,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="true"%>
-
+<script type="text/javascript">
+$(document).ready(function() {
+	setInterval(function() {
+		isSessionExpired();
+	}, 1*30*1000);
+	isSessionExpired();
+});
+function isSessionExpired(){
+	console.log("calling");
+	
+	<c:if test='${empty member.roleType}'>
+		
+		confirm_delete_alert = confirm('Your current session was expired, can we continue to login?');
+		if(confirm_delete_alert == true){
+			document.location.href = '/ziksana-web/login';
+		}
+	</c:if>
+}
+</script>
  
       <header class="bottom-box-shadow bckground-wihte">
            
@@ -41,6 +59,7 @@
                       </ul>
                     </div>
                     </c:if>
+                
                     <!--End menu-->
        	   	  		 <div class="status-container">
             <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box">

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.constants.ZiksanaConstants;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.alert.AlertsService;
 
@@ -31,15 +32,11 @@ public class AlertController {
 	ModelAndView showMyAlerts() {
 
 		ModelAndView mv = new ModelAndView("calendar/alerts");
-		try{
-		mv.addObject("alerts", this.alertsService.getAlertList());
-		logger.info("Number of alerts is  "
-				+ this.alertsService.getAlertList().size());
-		}
-		catch(ZiksanaException ziksanaException){
-			logger.info(ziksanaException.getMessage());
-			
-			mv.addObject("dbconnectionError", ziksanaException.getMessage());
+		try {
+			mv.addObject("alerts", this.alertsService.getAlertList());
+		} catch (ZiksanaException ziksanaException) {
+
+			mv.addObject("errorResponse", ziksanaException.getMessage());
 		}
 		return mv;
 	}
@@ -52,18 +49,14 @@ public class AlertController {
 
 		try {
 			alertSize = alertsService.getAlertList().size();
-		} catch (ZiksanaException e) {
-			logger.info(e.getMessage());
+		} catch (ZiksanaException ae) {
+			logger.error("Alert Error " + ae.getMessage());
+
 		}
 
 		return alertSize;
 	}
 
-	/**
-	 * 
-	 * @param alertItemId
-	 * @return
-	 */
 	/**
 	 * @param alertItemId
 	 * @return
@@ -71,13 +64,17 @@ public class AlertController {
 	@RequestMapping(value = "/deletealert/{alertItemId}", method = RequestMethod.DELETE)
 	public @ResponseBody
 	String deleteAlertItem(@PathVariable String alertItemId) {
+		String errorResponse = "";
 
-		// Calling service to delete alert
-		logger.info(" ALERT ITEM ID IS " + alertItemId);
-		this.alertsService.deleteAlertItem(Integer.valueOf(alertItemId));
+		try {
+			this.alertsService.deleteAlertItem(Integer.valueOf(alertItemId));
+			errorResponse = ZiksanaConstants.ALERT_DELETION_SUCCESS;
 
-		logger.info("Exiting deleteAlertItem(): " + alertItemId);
-		return "Deleted Successfully!";
+		} catch (ZiksanaException ae) {
+			errorResponse = ae.getMessage();
+		}
+
+		return errorResponse;
 	}
 
 	/*
@@ -101,10 +98,11 @@ public class AlertController {
 	ModelAndView showThreeAlerts() {
 
 		ModelAndView modelView = new ModelAndView("calendar/alerts");
-
-		modelView.addObject("alerts", alertsService.getMapperAlerts());
-
-		logger.info("alerts Size is  " + alertsService.getMapperAlerts().size());
+		try {
+			modelView.addObject("alerts", alertsService.getMapperAlerts());
+		} catch (ZiksanaException ae) {
+			modelView.addObject("errorResponse", ae.getMessage());
+		}
 		return modelView;
 	}
 }

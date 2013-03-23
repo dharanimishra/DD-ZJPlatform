@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.announcements.Announcement;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.announcements.AnnouncementService;
 
 /**
@@ -40,11 +41,15 @@ public class AnnouncementsController {
 
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
+		try{
 		announcementList = announcementService.getAllAnnouncement();
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementService.getAllAnnouncement());
-
+		mav.addObject("announcements", announcementList);
+		}
+		catch(ZiksanaException ze){
+			mav.addObject("errorResponse", ze.getMessage());
+		}
 		return mav;
 	}
 
@@ -55,8 +60,7 @@ public class AnnouncementsController {
 
 		ModelAndView mav = new ModelAndView("common/announcementsinglepage");
 
-		mav.addObject("announcement",
-				announcementService.getAnnouncementById(anouncementId));
+		mav.addObject("announcement", announcementService.getAnnouncementById(anouncementId));
 
 		logger.info("announcement ID: " + anouncementId);
 		return mav;
@@ -72,11 +76,15 @@ public class AnnouncementsController {
 		ModelAndView mav = new ModelAndView("xml/announcements");
 
 		List<Announcement> announcementList = new ArrayList<Announcement>();
+		try{
 		announcementList = announcementService.getAnnouncement();
 		int announcementSize = announcementList.size();
-		mav.addObject("announcements", announcementService.getAnnouncement());
+		mav.addObject("announcements", announcementList);
 		mav.addObject("announcementSize", announcementSize);
-
+		}
+		catch(ZiksanaException ze){
+			mav.addObject("errorResponse", ze.getMessage());
+		}
 		return mav;
 	}
 
@@ -117,13 +125,15 @@ public class AnnouncementsController {
 
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList = announcementService.getAllAnnouncementsByDate(
-				startDate, endDate);
+		try{
+		announcementList = announcementService.getAllAnnouncementsByDate(startDate, endDate);
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementService
-				.getAllAnnouncementsByDate(startDate, endDate));
-
+		mav.addObject("announcements",announcementList);
+		}
+		catch(ZiksanaException ze){
+			mav.addObject("errorResponse", ze.getMessage());
+		}
 		return mav;
 	}
 
@@ -135,13 +145,14 @@ public class AnnouncementsController {
 
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList = announcementService.getInstitutionAnnouncements(
-				startDate, endDate);
+		try{
+		announcementList = announcementService.getInstitutionAnnouncements(startDate, endDate);
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementService
-				.getInstitutionAnnouncements(startDate, endDate));
-
+		mav.addObject("announcements", announcementList);
+		}catch(ZiksanaException ze){
+			mav.addObject("errorResponse", ze.getMessage());
+		}
 		return mav;
 	}
 
@@ -154,32 +165,33 @@ public class AnnouncementsController {
 
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList = announcementService.getInstitutionUnitAnnouncements(
-				startDate, endDate);
+		try{
+		announcementList = announcementService.getInstitutionUnitAnnouncements(startDate, endDate);
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementService
-				.getInstitutionUnitAnnouncements(startDate, endDate));
-
+		mav.addObject("announcements", announcementList);
+		}catch(ZiksanaException ze){
+			mav.addObject("errorResponse", ze.getMessage());
+		}
 		return mav;
 	}
 
 	@RequestMapping(value = "/getcourseannouncements", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView getCourseAnnouncements(
-
-	@RequestParam(value = "startDate", required = true) String startDate,
+			@RequestParam(value = "startDate", required = true) String startDate,
 			@RequestParam(value = "endDate", required = true) String endDate) {
 
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		announcementList = announcementService.getCourseAnnouncements(
-				startDate, endDate);
+		try{
+		announcementList = announcementService.getCourseAnnouncements(startDate, endDate);
 		int announcementSize = announcementList.size();
 		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements",
-				announcementService.getCourseAnnouncements(startDate, endDate));
-
+		mav.addObject("announcements",announcementList);
+		}catch(ZiksanaException ze){
+			mav.addObject("errorResponse", ze.getMessage());
+		}
 		return mav;
 	}
 
