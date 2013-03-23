@@ -12,7 +12,30 @@ public class EnumUtil {
 	@Autowired
 	EnumDataService enumDataService;
 
-	// private Map<String, Integer> mapUtil = new HashMap<String, Integer>();
+	private String category;
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	private Map<String, Integer> mapUtil = null;
+
+	public Map<String, Integer> getMapUtil() {
+		System.out.println("getMapUtil :");
+		mapUtil = new HashMap<String, Integer>();
+		System.out.println("getMapUtil 2:"+mapUtil);
+		mapUtil = getEnumData(category);
+		System.out.println("getMapUtil 3:"+mapUtil);
+		return mapUtil;
+	}
+
+	public void setMapUtil(Map<String, Integer> mapUtil) {
+		this.mapUtil = mapUtil;
+	}
 
 	public Map<String, Integer> getEnumData(String category) {
 		System.out.println("geography :");

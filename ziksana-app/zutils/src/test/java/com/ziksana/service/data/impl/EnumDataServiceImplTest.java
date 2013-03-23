@@ -74,7 +74,7 @@ public class EnumDataServiceImplTest {
 
 		System.out
 				.println("######################3FetchData() 2:###################"
-						+ map.size());
+						+ map.get("Asia"));
 
 		assertTrue(map.size() == 6);
 	}

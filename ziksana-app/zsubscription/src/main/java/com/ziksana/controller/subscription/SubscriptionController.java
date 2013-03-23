@@ -23,9 +23,9 @@ import com.ziksana.domain.course.Reference;
 import com.ziksana.domain.course.subscription.ContentReference;
 import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.exception.ZiksanaException;
-import com.ziksana.service.data.ContentService;
-import com.ziksana.service.security.MediaService;
+import com.ziksana.service.subscription.SubscriptionContentService;
 import com.ziksana.service.subscription.SubscriptionService;
+import com.ziksana.service.security.MediaService;
 
 /**
  * @author prabu
@@ -42,7 +42,7 @@ public class SubscriptionController {
 	private SubscriptionService subscriptionService;
 
 	@Autowired
-	private ContentService contentService;
+	private SubscriptionContentService subscriptionContentService;
 
 	@Autowired
 	private MediaService mediaService;
@@ -689,7 +689,7 @@ public class SubscriptionController {
 			mv.addObject("componentId", componentId);
 			mv.addObject("contentId", contentId);
 
-			Content content = contentService.getContent(Integer.valueOf(contentId));
+			Content content = subscriptionContentService.getContent(Integer.valueOf(contentId));
 			mv.addObject("content", content);
 			mediaServerURL = mediaService.getMediaContents();
 			mv.addObject("ms", mediaServerURL);
@@ -711,7 +711,7 @@ public class SubscriptionController {
 			mv.addObject("componentId", componentId);
 			mv.addObject("contentId", contentId);
 
-			Content content = contentService.getContent(Integer.valueOf(contentId));
+			Content content = subscriptionContentService.getContent(Integer.valueOf(contentId));
 			mv.addObject("content", content);
 			mediaServerURL = mediaService.getMediaContents();
 			mv.addObject("ms", mediaServerURL);

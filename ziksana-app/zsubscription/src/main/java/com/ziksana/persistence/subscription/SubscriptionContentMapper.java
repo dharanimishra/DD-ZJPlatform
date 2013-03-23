@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ziksana.service.data;
+package com.ziksana.persistence.subscription;
 
 import com.ziksana.domain.course.Content;
 
@@ -9,10 +9,8 @@ import com.ziksana.domain.course.Content;
  * @author prabu
  *
  */
-public interface ContentService {
+public interface SubscriptionContentMapper {
 	
 	public Content getContent(Integer contentId);
-	
-	
 
 }
