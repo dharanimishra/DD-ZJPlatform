@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.EnrichmentMapper">
+
+	<insert id="saveReference" parameterType="com.ziksana.domain.course.Enrichment"
+		useGeneratedKeys="true" keyProperty="enrichmentId" keyColumn="ID">
+		insert into corenrichment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			creationdate,
+			<if test="active != null">
+				active,
+			</if>
+			<if test="visibility != null">
+				visibility,
+			</if>
+			<if test="overrideAt != null">
+				overrideat,
+			</if>
+			<if test="learningContent != null">
+				learningcontentid,
+			</if>
+			<if test="learningComponent != null">
+				learningcomponentid,
+			</if>
+			<if test="course != null">
+				courseid,
+			</if>
+			<if test="creatorMemberPersona != null">
+				creatormemberroleid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="active != null">
+				#{active,jdbcType=BOOLEAN},
+			</if>
+			<if test="visibility != null">
+				#{visibilityId,jdbcType=INTEGER},
+			</if>
+			<if test="overrideAt != null">
+				#{overrideAt,jdbcType=INTEGER},
+			</if>
+			<if test="learningContent != null">
+				#{learningContent.learningContentId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="learningComponent != null">
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="course != null">
+				#{course.courseId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="creatorMemberPersona != null">
+				#{creatorMemberPersona.memberRoleId,jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="enrichmentId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+
+	<insert id="saveRefenceContent" parameterType="com.ziksana.domain.course.ContentEnrichment"
+		useGeneratedKeys="true" keyProperty="contentEnrichmentId" keyColumn="ID">
+		insert into corcontentenrichment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="startTime != null">
+				starttime,
+			</if>
+			<if test="endTime != null">
+				endtime,
+			</if>
+			<if test="linkType != null">
+				linktype,
+			</if>
+			<if test="linkElement != null">
+				linkelement,
+			</if>
+			<if test="linkDescription != null">
+				linkdescription,
+			</if>
+			<if test="linkItemAuthor != null">
+				linkitemauthor,
+			</if>
+			<if test="linkItemCost != null">
+				linkitemcost,
+			</if>
+			<if test="linkSource != null">
+				linksourceid,
+			</if>
+			<if test="active != null">
+				Active,
+			</if>
+			<if test="enrichment != null">
+				enrichmentid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="startTime != null">
+				#{startTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endTime != null">
+				#{endTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="linkType != null">
+				#{linkTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="linkElement != null">
+				#{linkElement,jdbcType=VARCHAR},
+			</if>
+			<if test="linkDescription != null">
+				#{linkDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="linkItemAuthor != null">
+				#{linkItemAuthor,jdbcType=VARCHAR},
+			</if>
+			<if test="linkItemCost != null">
+				#{linkItemCost,jdbcType=INTEGER},
+			</if>
+			<if test="linkSource != null">
+				#{linkSourceId,jdbcType=INTEGER},
+			</if>
+			<if test="active != null">
+				#{active,jdbcType=BIT},
+			</if>
+			<if test="enrichment.enrichmentId != null">
+				#{enrichment.enrichmentId.storageID,jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="contentEnrichmentId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+	<update id="updateContentEnrichment" parameterType="com.ziksana.domain.course.ContentEnrichment">
+		update corContentEnrichment
+		<set>
+			<if test="startTime != null">
+				starttime = #{startTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endTime != null">
+				endtime = #{endTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="linkType != null">
+				linktype = #{linkTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="linkElement != null">
+				linkelement = #{linkElement,jdbcType=VARCHAR},
+			</if>
+			<if test="linkDescription != null">
+				linkdescription = #{linkDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="linkItemAuthor != null">
+				linkitemauthor = #{linkItemAuthor,jdbcType=VARCHAR},
+			</if>
+			<if test="linkItemCost != null">
+				linkitemcost = #{linkItemCost,jdbcType=INTEGER},
+			</if>
+			<if test="linkSource != null">
+				linksource = #{linkSourceId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where ID = #{contentEnrichmentId.storageID,jdbcType.INTEGER}
+	</update>
+
+
+<!-- 	<insert id="saveReference" parameterType="com.ziksana.domain.course.Enrichment"
+		useGeneratedKeys="true" keyProperty="enrichmentId" keyColumn="enrichmentid">
+		insert into corenrichment ( creationdate, active, visibility,
+		overrideat, learningcontentid, creatormemberroleid)
+		values (sysdate(),
+		#{active,jdbcType=BOOLEAN},
+		#{visibilityId,jdbcType=INTEGER},
+		#{overrideAt,jdbcType=INTEGER},
+		#{learningContent.learningContentId,jdbcType=INTEGER},
+		#{creatorMemberPersona.memberRoleId,jdbcType=INTEGER})
+		<selectKey keyProperty="enrichmentId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+ -->
+ 
+ <!-- 	<insert id="saveRefenceContent" parameterType="com.ziksana.domain.course.ContentEnrichment"
+		useGeneratedKeys="true" keyProperty="contentEnrichmentId" keyColumn="contentenrichmentid">
+		insert into corcontentenrichment (starttime, endtime, linktype,
+		linkelement, linkdescription,
+		linkitemcost, linksource, active,
+		isdelete, enrichmentid ) values
+		(#{startTime,jdbcType=TIMESTAMP},
+		#{endTime,jdbcType=TIMESTAMP},
+		#{linkTypeId,jdbcType=INTEGER},
+		#{linkElement,jdbcType=VARCHAR},
+		#{linkDescription,jdbcType=VARCHAR},
+		#{linkItemCost,jdbcType=INTEGER},
+		#{linkSourceId,jdbcType=INTEGER},
+		#{active,jdbcType=BOOLEAN},
+		#{isDelete,jdbcType=BOOLEAN},
+		#{enrichment.enrichmentId,jdbcType=INTEGER}) })
+		<selectKey keyProperty="contentEnrichmentId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+ -->
+</mapper>

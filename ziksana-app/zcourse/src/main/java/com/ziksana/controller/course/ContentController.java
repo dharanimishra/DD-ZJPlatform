@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
 import com.ziksana.exception.ZiksanaException;
-import com.ziksana.service.data.ContentService;
+import com.ziksana.service.course.ContentService;
 import com.ziksana.service.security.MediaService;
 
 /**

@@ -15,7 +15,7 @@ import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.course.CourseService;
-import com.ziksana.service.data.ContentService;
+import com.ziksana.service.course.ContentService;
 import com.ziksana.service.security.MediaService;
 
 /**

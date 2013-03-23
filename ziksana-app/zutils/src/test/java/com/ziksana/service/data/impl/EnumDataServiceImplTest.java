@@ -15,18 +15,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ziksana.service.data.DataService;
+import com.ziksana.service.data.EnumDataService;
 
 /**
- * @author prabu
+ * @author Ratnesh Kumar
  * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
-public class DataServiceImplTest {
+public class EnumDataServiceImplTest {
 
 	@Autowired
-	DataService dataService;
+	EnumDataService enumDataService;
 
 	/**
 	 * @throws java.lang.Exception
@@ -60,18 +60,23 @@ public class DataServiceImplTest {
 
 	/**
 	 * Test method for
-	 * {@link com.ziksana.service.data.impl.DataServiceImpl#fetchData(java.lang.String)}
+	 * {@link com.ziksana.service.data.impl.EnumDataServiceImpl#fetchData(java.lang.String)}
 	 * .
 	 */
 	@Test
 	public void testFetchData() {
-		Map<String, Integer> map = dataService.fetchData("Geography");
+		Map<String, Integer> map = enumDataService.fetchData("Geography");
+
+		System.out
+				.println("@@@@@@@@@@@@@@@@@@@@@@@@@@FetchData() 1 @@@@@@@@@@@@@@@@@@@:"
+						+ map.size());
 		Assert.assertNotNull(map);
-		System.out.println("@@@@@@@@@@@@@@@@@@Enum Test :@@@@@@@@@@@@@@@"
-				+ map.size());
+
+		System.out
+				.println("######################3FetchData() 2:###################"
+						+ map.size());
+
 		assertTrue(map.size() == 6);
-		System.out.println("$$$$$$$$$$$$$$$$$$Enum Test 2 $$$$$$$$$$$$$$:"
-				+ map.size());
 	}
 
 }
