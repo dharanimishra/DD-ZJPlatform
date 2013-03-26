@@ -1,68 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-    
-    
-<!DOCTYPE html>
-
-<html>
-	<head>
-	<meta charset="utf-8">
-    <!-- fix. IE 6-->
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" >
-	<!-- fix. IE 6-->
-	<script>
-	  document.createElement('header');
-	  document.createElement('nav');
-	  document.createElement('section');
-	  document.createElement('article');
-	  document.createElement('aside');
-	  document.createElement('footer');
-	</script>
-	<!-- end fix. IE 6-->
-	<title>My Programs</title>
-	<!--Body Style sheet-->
-	 <link rel="stylesheet" type="text/css" href="../resources/css/dropdown.css" />
-    <link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../resources/css/tag/tagit-simple-blue.css">
-    <link rel="stylesheet" href="../resources/css/tipsy.css" type="text/css" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
    
      <link href="../resources/css/news/newsticker.css" rel="stylesheet" type="text/css" />
      
       <link rel="stylesheet" href="../resources/zeni/css/zeni/zeni2.css" />
 	
-	<script src="../resources/js/jquery-1.7.2.min.js"></script>
-	
-	<script src="../resources/js/custom/z_plugins.js"></script>
-<script src="../resources/js/custom/z_common.js"></script>
-<script src="../resources/js/jquery_confirm/jquery.confirm.js"></script>
-<link rel="stylesheet" href="../resources/js/jquery_confirm/jquery.confirm.css"/>
 
+	   
+
+	
 
      <script src="../resources/js/jquery.isotope.min.js"></script>
     <script src="../resources/js/dropdown/hover-dropdown.min.js"></script>
        <script src="../resources/js/dropdown/tiwtter.js"></script>
   
-    <script type='text/javascript' src="../resources/js/custom/myprogram.js"></script>
-	<script src="../resources/js/ui/jquery.ui.core.js"></script>
-	<script src="../resources/js/ui/jquery.ui.widget.js"></script>
-	<script src="../resources/js/ui/jquery.ui.button.js"></script>
-	<script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
-	<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
-    <!--fancybox-->
-	<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-	     <script src="../resources/js/jquery.fancybox.pack.2.1.3.js"></script>
-	 <link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
-	<!--fancybox end-->
-	   
+   
+   <script type='text/javascript' src="../resources/js/custom/myprogram.js"></script>
+    
    <style>
-	.ui-progressbar .ui-progressbar-value { background-image: url(images/pbar-ani.gif); }	
+	.ui-progressbar .ui-progressbar-value { background-image: url(images/pbar-ani.gif); }
+
    </style>
 	<script>
 	$(function() {
@@ -70,12 +27,11 @@
 			value: 65
 		});
 	});
-	
 	</script>
     <script type='text/javascript' src='../resources/js/jquery.tipsy.js'></script>
 	<script src="../resources/js/jquery.collapse.js"></script>
 	<script src="../resources/js/ui/jquery.raty.min.js"></script>    
-    <script src="../resources/js/custom.js" type="text/javascript"></script> 
+   
    
    <link rel="stylesheet" type="text/css" href="../resources/jdashboard/jdashboard.css" />
 		
@@ -122,23 +78,28 @@ vertical-align:middle;
 z-index: 99;
 }
 .hover-btn
-{   
+{
+ 
+    
+   
+   
     color: #000000;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
+}		
+.marginl{
+margin-left:-80px;
+}			
+
+
 .titles-info1 {
     background-color: rgba(218, 216, 216, 0.17);
     border-bottom: 1px solid #CCCCCC;
     border-radius: 3px 3px 0 0;
     display: block;
-    margin: 1px 0 10px;
-    padding: 7.5px 10px;
+    margin: 0 0 10px;
+    padding: 7.5px 13px;
     position: relative;
-}		
-.marginl{
-margin-left:-80px;
 }			
-			
 			
 		</style>
 		
@@ -188,10 +149,10 @@ $('._cklo').show('');
 				$("#jDashleft").jDashboard({ columns: 1 ,columnWidth: 100 });
 				
 			});
-			function coursedel(courseid,asd)
+			function coursedel(courseid)
 			{
 			
-			var con=confirm("Do You Realy Want to Delete the Course' " +asd+"'?");
+			var con=confirm("Do You Realy Want to Delete the Course?");
 			if (con==true)
 			{
 			$('#'+courseid).hide();
@@ -204,19 +165,22 @@ $('._cklo').show('');
     $(document).ready(function() {
 	
       $('.js-activated').dropdownHover();
-    
+      
+      draftcall();
+      $('#homepage_nav').removeClass('current');
+      $('#myprograms_nav').addClass('current');
     });
   </script>   
              
  
   
         
-        
-</head>
-<body onload="draftcall()">
-<div id="wrapper">
+
+<div >
         <!--Header Container-->
-        	
+        	<!--Header Container-->
+      
+        <!--End Header Container-->
         <!--End Header Container-->
         <!--slogen-->
   
@@ -263,7 +227,7 @@ $('._cklo').show('');
 
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Course </span> is a Learning Unit that Helps in Achieving the Learning Objectives of the Learning Program..</p>
-              <p class="number-creat-box f-r font-Signika bold for-rounded-box" style=" margin-top:-4px;font-size:20px;color:#fff;">${courseCount} <span style="font-size:15px;">Courses</span></span></p>
+                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style=" margin-top:-4px;font-size:20px;color:#fff;">${courseCount} <span style="font-size:15px;">Courses</span></p>
 				
                 <div class="icons-list">
                   <a href="#linkurl"  rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
@@ -288,7 +252,7 @@ $('._cklo').show('');
                 <p class="titles-info1 text-size-px18 font-Signika blue uppercase">Learning object</p>
                 <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
 				<span style="font-weight:bold;">Learning Object  </span> is an Learning Unit that can be used as a building block for creating a course..</p>
-                      <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;font-size:18px;color:#fff;">4<span style="font-size:14px;"> Learning Objects</span></p>
+                <p class="number-creat-box f-r font-Signika bold for-rounded-box" style="margin-top:-4px;font-size:18px;color:#fff;">4<span style="font-size:14px;"> Learning Objects</span></p>
 				
                 <div class="icons-list">
                    <a href="#linkurl" rel="tipsy" title="List View" class="Icon-listp icons-right" ></a>
@@ -305,7 +269,7 @@ $('._cklo').show('');
                 <div style="margin-left:850px;disply:table; top:-100">
 
 
-					 <div class="createnew" style="display:table-cell;width:100px;"><a href="/ziksana-web/zcourse/createcourse"><img src="../resources/images/plus.png" width=12px, height=12px >&nbsp;Create New</a> 
+					 <div class="createnew" style="display:table-cell;width:100px;"><a href="/ziksana-web/zcourse/createcourse"><img src="../resources/images/plus.png" width=12px, height=12px>&nbsp;Create New</a> 
 
 					</div>
 					<div style="display:table-cell; padding-left:20px;">
@@ -341,24 +305,19 @@ $('._cklo').show('');
               <div class="bckground-wihte for-rounded-box all-box-shadow creat-boxhover">
 
                 <p style="height:30px;"class="titles-info1 text-size-px14 font-Signika blue uppercase"><c:out value="${course.name}"/></p>
-                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;"> 
-	               <c:choose>
-	                 <c:when test="${course.thumbnailPicturePath != ''}">              
-	               		 <img src="<c:out value="${ms.url}"/><c:out value="${course.thumbnailPicturePath}"/>" width="148" height="97"/>
-	                </c:when>
-	                <c:otherwise>
-				        <img src="/ziksana-web/resources/images/default-course.jpg" width="148" height="97"/>
-				    </c:otherwise>
-	                </c:choose>
+                
+                <p class="p-p create-box-width f-l" style="margin-bottom:5px; margin-left:3px; margin-top:-4px;">
+                <c:choose>
+                 <c:when test="${course.thumbnailPicturePath != ''}">              
+               		 <img src="<c:out value="${ms.url}"/><c:out value="${course.thumbnailPicturePath}"/>" width="148" height="97"/>
+                </c:when>
+                <c:otherwise>
+			        <img src="/ziksana-web/resources/images/default-course.jpg" width="148" height="97"/>
+			    </c:otherwise>
+                </c:choose>
 				</p>
                 <div class="icons-list">
-                  
-                 
-                 <a href="/ziksana-web/zcourse/createcourse/courseid_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
-
-                     
-                     
-                     
+                 <a href="/ziksana-web/zcourse/editcourse/COURSE_${course.coursesId}" rel="tipsy" title="Edit" class="Icon-edit icons-right" style="margin-right:-6px;"></a>
                <a  onclick="delete_coursebycourseid(${course.coursesId})" rel="tipsy" title="Delete" class="Icon-delete icons-right" style="margin-right:-6px;"></a>
                 </div>              
               </div>
@@ -491,13 +450,8 @@ $('#edu-star').raty({
 
 
   <!--End Current Progress-->
-        <!--Footer Container-->
-	 		<footer>
-      		</footer>
-        <!--End Footer Container-->
+        
 </div>
      
-    <script type="text/javascript" src="../resources/js/widget/jquery-ui-personalized-1.6rc2.min.js"></script>
-   
-</body>
-</html>
+ <!--    <script type="text/javascript" src="../resources/js/widget/jquery-ui-personalized-1.6rc2.min.js"></script>
+ -->

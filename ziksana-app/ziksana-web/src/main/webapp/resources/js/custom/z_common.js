@@ -27,7 +27,7 @@ $(function(){
 	});
 
 //start row highlight
-	$('table.row_highlight tr').live('click', function(){
+	$('table.row_highlight tr').on('click', function(){
 		tr = $(this);
 		parent_table = tr.parents('table');
 		

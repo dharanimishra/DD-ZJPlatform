@@ -7,19 +7,23 @@
 
 	<!--Common Page layout  -->
 	<definition name="commonPageLayout" template="/WEB-INF/pages/layout/div-layout.jsp">
-	  <put-attribute name="head_static" value="" />
-	  <put-attribute name="header" value="/WEB-INF/pages/common/common_header.jsp" />
-	  <put-attribute name="slogan" value="" />
-	  <put-attribute name="left" value="" />
-	  <put-attribute name="body" value="" />
-	  <put-attribute name="right" value="" />
-	  <put-attribute name="footer" value="/WEB-INF/pages/common/footer.jsp" />
-	  <put-attribute name="footer_static" value="" />
+		<put-attribute name="page_title" value="Ziksana!" />
+		<put-attribute name="common_css" value="/WEB-INF/pages/includes/common_css.jsp" />
+		<put-attribute name="page_css" value="" />
+		<put-attribute name="common_js" value="/WEB-INF/pages/includes/common_js.jsp" />
+		<put-attribute name="page_js" value="" />
+		<put-attribute name="page_class" value="" />
+		<put-attribute name="main_menu" value="/WEB-INF/pages/includes/main_menu.jsp" />
+		<put-attribute name="slogan" value="" />
+		<put-attribute name="left" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="right" value="" />
+		<put-attribute name="page_footer" value="/WEB-INF/pages/common/footer.jsp" />
 	 </definition>
 	 
 	 <!--HomePage Educator/Learner -->
 	<definition name="dashboard-div" extends="commonPageLayout">
-		<put-attribute name="head_static" value="/WEB-INF/pages/dashboard/dashboard_static.jsp" />
+		<put-attribute name="page_title" value="Dashboard" />
 		<put-attribute name="slogan" value="/WEB-INF/pages/common/slogan.jsp" />
 		<put-attribute name="body" value="/WEB-INF/pages/dashboard/educator_dashboard.jsp" />
 		<put-attribute name="left" value="/WEB-INF/pages/common/left_fragment.jsp" />
@@ -28,50 +32,43 @@
 	
 	<!-- Educator courses -->
 	<definition name="mycoursesdraft" extends="commonPageLayout">
-	  <put-attribute name="title" value="My Programs" />
-	  <put-attribute name="head_static" value="/WEB-INF/pages/dashboard/dashboard_static.jsp" />
+	  <put-attribute name="page_title" value="My Programs" />
 	  <put-attribute name="body" value="/WEB-INF/pages/courses/myprograms.jsp" /> 
 	 </definition>
 	 
 	 <!-- Educator drafted courses -->
 	<definition name="draftedcourses" extends="commonPageLayout">
-	  <put-attribute name="title" value="My Programs" />
-	  <put-attribute name="head_static" value="" />
+	  <put-attribute name="page_title" value="My Programs" />
 	  <put-attribute name="body" value="/WEB-INF/pages/courses/myprograms-draft.jsp" /> 
 	 </definition>
 	 
 	 <!-- learner programs -->
 	<definition name="learnerdraftedcourses" extends="commonPageLayout">
-	  <put-attribute name="title" value="My Programs" />
-	  <put-attribute name="head_static" value="" />
+	  <put-attribute name="page_title" value="My Programs" />
 	  <put-attribute name="body" value="/WEB-INF/pages/courses/learnerprograms.jsp" /> 
 	 </definition>
 	
 	<!-- New Course Creation -->
 	<definition name="createcourse" extends="commonPageLayout">
-		<put-attribute name="title" value="Course Creation" />
-		<put-attribute name="head_static" value="" />
+		<put-attribute name="page_title" value="Course Creation" />
 		<put-attribute name="body" value="/WEB-INF/pages/courses/definecourse.jsp" />
 	</definition>
 	
 	<!-- Edit Course -->
 	<definition name="editcourse" extends="commonPageLayout">
-		<put-attribute name="title" value="Edit Course" />
-		<put-attribute name="head_static" value="" />
+		<put-attribute name="page_title" value="Edit Course" />
 		<put-attribute name="body" value="/WEB-INF/pages/courses/coursecreation.jsp" />
 	</definition>
 	
 	<!-- Associate Content Page-->
 	<definition name="createmodule" extends="commonPageLayout">
-		<put-attribute name="title" value="Associate Content" />
-		<put-attribute name="head_static" value="" />
+		<put-attribute name="page_title" value="Associate Content" />
 		<put-attribute name="body" value="/WEB-INF/pages/courses/associatecontent.jsp" />
 	</definition>
 	
 	<!-- Enrich Content Page-->
 	<definition name="organizeenrichcontent" extends="commonPageLayout">
-		<put-attribute name="title" value="Enrich Content" />
-		<put-attribute name="head_static" value="" />
+		<put-attribute name="page_title" value="Enrich Content" />
 		<put-attribute name="body" value="/WEB-INF/pages/courses/enrichcontent.jsp" />
 	</definition>
 

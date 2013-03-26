@@ -1229,7 +1229,7 @@ padding: 5px;">
 <script type="text/javascript">
 $(function(){
 	// TABS
- $('[data-tab]').live('click',function(){  
+ $('[data-tab]').on'click',function(){  
   tab_trigger = $(this);
   tab_trigger.addClass('hover_state').siblings('[data-tab]').removeClass('hover_state');
   tab_name = tab_trigger.attr('data-tab');

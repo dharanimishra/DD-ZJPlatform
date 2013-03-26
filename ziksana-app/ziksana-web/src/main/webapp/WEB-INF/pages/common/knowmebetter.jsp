@@ -59,7 +59,7 @@
 		.highlighted_row tr:hover td {background: orange !important;}
 	</style>
   <script type="text/javascript">
-  $('table.highlight_rows td').live('click', function(){
+  $('table.highlight_rows td').on('click', function(){
 		td = $(this);
 		table = $(this).parents('table');
 		td.click(function(){
