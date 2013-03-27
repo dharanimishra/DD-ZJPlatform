@@ -1,3 +1,6 @@
+
+
+ 
 //soft delete course 
    function delete_coursebycourseid(courseid){
 	   confirm_delete_alert = confirm('Are you sure you want to delete this Course?');
@@ -20,7 +23,22 @@
 		}
 	   
    }
-  
+   function myfunction()
+   {
+   $('._cklo').show('');	
+   			$('._cklp').show('');	
+   			$('._cklc').show('');
+   			$('._ckcourse').css('display','block');
+   			
+   			
+   			$('._course').hide('');	
+   			$('._lc').hide('');
+   			$('#_lp').hide('');
+   			$('._lo').hide('');
+   			
+   		
+
+   }  
 
 // JavaScript Document
 function draftcall()

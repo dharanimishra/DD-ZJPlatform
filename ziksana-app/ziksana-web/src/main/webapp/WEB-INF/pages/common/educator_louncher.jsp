@@ -24,16 +24,21 @@
 <script src="../resources/js/cufon-yui.js" type="text/javascript"></script>
 <script src="../resources/js/Bebas_400.font.js" type="text/javascript"></script>
 
+<script src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/fancybox/jquery.fancybox.js"></script>
+<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/fancybox/jquery.fancybox.css" media="screen" />
+
 <!--<script type="text/javascript" src="../resources/js/custom.js"></script>-->
- <!--fancybox-->
+ <!--fancybox
  <link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/jquery-ui-1.8.21.custom.css">
 	<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
 	<script src="../resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+	
+	
+	-->
 	<script type="text/javascript" src="../resources/js/jquery.tipsy.js"></script>
 	<link href="../resources/css/news/newsticker.css" rel="stylesheet" type="text/css" />
 	<link href="../resources/css/calender-launch.css" rel="stylesheet" type="text/css" />
-	
-	<!--fancybox end-->
    
      <script type="text/javascript">
 	 $( document).ready(function(e) {

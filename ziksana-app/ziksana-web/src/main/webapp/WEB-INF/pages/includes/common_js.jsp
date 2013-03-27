@@ -12,6 +12,9 @@
 <script src="/ziksana-web/resources/js/plugins/jquery.uploadify-3.1.min.js"></script>
 <script src="/ziksana-web/resources/js/spinner/smartspinner.js"></script>
 <script src="/ziksana-web/resources/js/ui/jquery.raty.min.js"></script>    
+<script src="/ziksana-web/resources/js/dropdown/hover-dropdown.min.js"></script>
+<script src="/ziksana-web/resources/js/dropdown/tiwtter.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/jdashboard/jdashboard.min.js"></script>
 
 <!--  Common Ziksana-Specific JS Files -->
 <script src="/ziksana-web/resources/js/custom/z_plugins.js"></script>

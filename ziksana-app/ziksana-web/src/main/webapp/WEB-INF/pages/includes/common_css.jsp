@@ -10,3 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/ziksana-web/resources/fancybox/jquery.fancybox.css" media="screen" />
 <link href="/ziksana-web/resources/js/jquery_confirm/jquery.confirm.css" rel="stylesheet"/>
 <link href="/ziksana-web/resources/css/uploadify.css" rel="stylesheet" /> 
+<link href="/ziksana-web/resources/css/news/newsticker.css" rel="stylesheet" type="text/css" />
+ <link rel="stylesheet" href="/ziksana-web/resources/zeni/css/zeni/zeni2.css" />
+ <link rel="stylesheet" type="text/css" href="/ziksana-web/resources/jdashboard/jdashboard.css" />
+	
