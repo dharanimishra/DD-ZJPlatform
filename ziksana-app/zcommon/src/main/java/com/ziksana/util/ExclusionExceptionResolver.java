@@ -9,6 +9,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
+import com.ziksana.constants.ZiksanaConstants;
+
 public class ExclusionExceptionResolver extends SimpleMappingExceptionResolver
 		implements InitializingBean {
 	
@@ -26,9 +28,10 @@ public class ExclusionExceptionResolver extends SimpleMappingExceptionResolver
 	    //return super.doResolveException(request, response, handler, ex);
 	    
 	    
-	    LOGGER.debug("---------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	    LOGGER.error(ex.getMessage(), ex);
-	    return new ModelAndView("common/error");
+	    ModelAndView modelAndView = new ModelAndView("common/ziksana_error");
+	    modelAndView.addObject("errorMessage", MessageUtil.getMessage(ZiksanaConstants.COMMON_ERROR_MESSAGE));
+	    return modelAndView;
 	  }
 	  public void setExcludedExceptions(Class<Exception>[] excludedExceptions) {
 	    this.excludedExceptions = excludedExceptions;

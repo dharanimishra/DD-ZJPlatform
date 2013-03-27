@@ -12,7 +12,10 @@ package com.ziksana.constants;
  * 
  */
 public interface ZiksanaConstants {
-
+	
+	public static final String COMMON_ERROR_MESSAGE = "ziksana.common.error.message";
+	
+	//ziksana.common.error.message
 	public static final String SYSTEM_EXCEPTION = "SYSTEM";
 	public static final String APPLICATION_EXCEPTION = "APPLICATION";
 
