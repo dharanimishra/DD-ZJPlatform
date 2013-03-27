@@ -11,7 +11,7 @@
 
 
 
-	<util:properties id="myProperties" location="classpath:/mediaserver.properties" /> 
+	<util:properties id="myProperties" location="classpath:/mediaserver.properties" />
 	<util:properties id="ldapProperties" location="classpath:/ldap.properties" />
 
 	<!-- Scans within the base package of the application for @Components to 
@@ -21,13 +21,14 @@
 
 	<mvc:annotation-driven />
 
- 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
- 	        <property name="basename" value="ziksana_error_messages"/>
-    </bean>
-    
-    
-    <bean class="com.ziksana.util.MessageUtil"/>
-    
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="ziksana_error_messages" />
+	</bean>
+
+
+	<bean class="com.ziksana.util.MessageUtil" />
+
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 
@@ -72,7 +73,14 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</bean>
-	
-	<import resource="jdbc-context.xml" />
 
+	<import resource="jdbc-context.xml" />
+	<!-- Generic Exception Resolver it excludes ZiksanaException-->
+	<bean id="exceptionResolver" class="com.ziksana.util.ExclusionExceptionResolver">
+		<property name="excludedExceptions">
+			<value>
+				com.ziksana.exception.ZiksanaException
+		</value>
+		</property>
+	</bean>
 </beans>
