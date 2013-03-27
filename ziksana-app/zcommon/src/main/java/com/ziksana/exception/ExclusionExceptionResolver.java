@@ -1,4 +1,4 @@
-package com.ziksana.util;
+package com.ziksana.exception;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import com.ziksana.constants.ZiksanaConstants;
+import com.ziksana.util.MessageUtil;
 
 public class ExclusionExceptionResolver extends SimpleMappingExceptionResolver
 		implements InitializingBean {

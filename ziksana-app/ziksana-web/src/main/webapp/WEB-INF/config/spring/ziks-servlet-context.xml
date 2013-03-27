@@ -76,7 +76,7 @@
 
 	<import resource="jdbc-context.xml" />
 	<!-- Generic Exception Resolver it excludes ZiksanaException-->
-	<bean id="exceptionResolver" class="com.ziksana.util.ExclusionExceptionResolver">
+	<bean id="exceptionResolver" class="com.ziksana.exception.ExclusionExceptionResolver">
 		<property name="excludedExceptions">
 			<value>
 				com.ziksana.exception.ZiksanaException
