@@ -69,7 +69,7 @@ public class AssociateCourseController {
 				int isModuleExists = courseService.isModuleExists(course_id);
 				LOGGER.debug("Module Size= >"+isModuleExists);
 				if(isModuleExists == 0 ){
-					return new ModelAndView("redirect:/zcourse/createcourse/"+courseId+"");
+					modelView =  new ModelAndView("redirect:/zcourse/createcourse/"+courseId+"");
 				}else{
 				modelView = new ModelAndView("createmodule");
 				modelView.addObject("CourseId", courseId);

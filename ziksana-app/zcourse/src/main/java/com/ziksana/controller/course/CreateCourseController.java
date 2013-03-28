@@ -82,7 +82,7 @@ public class CreateCourseController {
 			@RequestParam(value = "courseId", required = false) String courseId,
 			@RequestParam(value = "courseName", required = true) String courseName) {
 
-		String iscourseExists = "";
+		String iscourseExists = null;
 		try {
 			int courseCount;
 			if (courseId.isEmpty()) {
