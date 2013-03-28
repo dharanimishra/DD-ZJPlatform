@@ -11,7 +11,7 @@
 <link href="resources/css/styles.css" rel="stylesheet" type="text/css">
 <link href="resources/css/type-setting.css" rel="stylesheet" type="text/css">
 <link href="resources/css/effects.css" rel="stylesheet" type="text/css">
-<link href="resources/css/nav.css" rel="stylesheet" type="text/css">
+<link href="${properties.staticFileServer}resources/css/nav.css" rel="stylesheet" type="text/css">
 
 <!--End Body Style sheet-->
 
