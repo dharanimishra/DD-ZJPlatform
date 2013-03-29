@@ -120,6 +120,9 @@ public class KnowmeController {
 			@RequestParam(value = "editQuesid", required = true) Integer editQuesid,
 			@RequestParam(value = "editAnsId", required = true) Integer editAnsId,
 			@RequestParam(value = "memberPersonalityTestId", required = true) Integer memberPersonalityTestId) {
+		
+		//TODO get it from properties file
+		String response  = "Answer Updated Successfully";
 
 		try {
 			Question question = new Question(editQuesid, editQuesval);
@@ -128,11 +131,11 @@ public class KnowmeController {
 
 			personalityService.updateAnswer(question, userChoice);
 		} catch (ZiksanaException exception) {
+			response = "Answer Updatation Failed";
 			logger.error(exception.getMessage(), exception);
 		}
 		
-		//TODO get it from properties file
-		return "Answer Updated Successfully";
+		return response;
 	}
 
 }

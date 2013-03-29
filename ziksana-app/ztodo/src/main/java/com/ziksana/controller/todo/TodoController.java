@@ -60,7 +60,7 @@ public class TodoController {
 		}
 		todoSize = todoList.size();
 		
-		return todoSize;
+		return Integer.valueOf(todoSize);
 	}
 	
 	
@@ -92,7 +92,7 @@ public class TodoController {
 
 		logger.info("Entering  the Create New Todo item");
 		
-		String response = "";
+		String response = null;
 		// service call
 		Todo todo = new Todo();
 		todo.setCategory(category);

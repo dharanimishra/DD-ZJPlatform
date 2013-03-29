@@ -385,7 +385,7 @@ public class SubscriptionController {
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
-		return returnVal;
+		return Integer.valueOf(returnVal);
 
 	}
 
@@ -407,7 +407,7 @@ public class SubscriptionController {
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
-		return returnVal;
+		return Integer.valueOf(returnVal);
 
 	}
 
@@ -650,7 +650,8 @@ public class SubscriptionController {
 			LOGGER.error(exception.getMessage(), exception);
 		}
 
-		return dbresp;
+		//TODO the varible which we returning will always have the value as 1, what to do we need to return here? 
+		return Integer.valueOf(dbresp);
 
 	}
 
@@ -674,7 +675,7 @@ public class SubscriptionController {
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
-		return returnVal;
+		return Integer.valueOf(returnVal);
 
 	}
 

@@ -38,7 +38,7 @@ public class AlertController {
 		try {
 			mv.addObject("alerts", this.alertsService.getAlertList());
 		} catch (ZiksanaException ziksanaException) {
-
+			logger.error(ziksanaException.getMessage(), ziksanaException);
 			mv.addObject("errorResponse", ziksanaException.getMessage());
 		}
 		return mv;
@@ -48,16 +48,16 @@ public class AlertController {
 	public @ResponseBody
 	int getAlertSize() {
 
-		int alertSize = 0;
+		Integer alertSize = 0;
 
 		try {
 			
 			List<Alert> alertList = alertsService.getAlertList();
 			if(alertList != null){
-				alertSize = alertsService.getAlertList().size();
+				alertSize = alertList.size();
 			}
 		} catch (ZiksanaException ae) {
-			logger.error("Alert Error " + ae.getMessage());
+			logger.error("Alert Error " + ae.getMessage(), ae);
 
 		}
 
@@ -79,6 +79,7 @@ public class AlertController {
 
 		} catch (ZiksanaException ae) {
 			errorResponse = ae.getMessage();
+			logger.error(ae.getMessage(), ae);
 		}
 
 		return errorResponse;
@@ -109,6 +110,7 @@ public class AlertController {
 			modelView.addObject("alerts", alertsService.getMapperAlerts());
 		} catch (ZiksanaException ae) {
 			modelView.addObject("errorResponse", ae.getMessage());
+			logger.error(ae.getMessage(), ae);
 		}
 		return modelView;
 	}

@@ -49,6 +49,7 @@ public class AnnouncementsController {
 		}
 		catch(ZiksanaException ze){
 			mav.addObject("errorResponse", ze.getMessage());
+			logger.error(ze.getMessage(), ze);
 		}
 		return mav;
 	}
@@ -60,7 +61,11 @@ public class AnnouncementsController {
 
 		ModelAndView mav = new ModelAndView("common/announcementsinglepage");
 
-		mav.addObject("announcement", announcementService.getAnnouncementById(anouncementId));
+		try {
+			mav.addObject("announcement", announcementService.getAnnouncementById(anouncementId));
+		} catch (ZiksanaException exception) {
+			logger.error(exception.getMessage(), exception);
+		}
 
 		logger.info("announcement ID: " + anouncementId);
 		return mav;
@@ -84,6 +89,7 @@ public class AnnouncementsController {
 		}
 		catch(ZiksanaException ze){
 			mav.addObject("errorResponse", ze.getMessage());
+			logger.error(ze.getMessage(), ze);
 		}
 		return mav;
 	}
@@ -98,8 +104,12 @@ public class AnnouncementsController {
 
 		ModelAndView mav = new ModelAndView("xml/announcement");
 
-		mav.addObject("announcements",
-				announcementService.getAnnouncementById(announcementId));
+		try {
+			mav.addObject("announcements",
+					announcementService.getAnnouncementById(announcementId));
+		} catch (ZiksanaException exception) {
+			logger.error(exception.getMessage(), exception);
+		}
 
 		return mav;
 	}
@@ -133,6 +143,7 @@ public class AnnouncementsController {
 		}
 		catch(ZiksanaException ze){
 			mav.addObject("errorResponse", ze.getMessage());
+			logger.error(ze.getMessage(), ze);
 		}
 		return mav;
 	}
@@ -152,6 +163,7 @@ public class AnnouncementsController {
 		mav.addObject("announcements", announcementList);
 		}catch(ZiksanaException ze){
 			mav.addObject("errorResponse", ze.getMessage());
+			logger.error(ze.getMessage(), ze);
 		}
 		return mav;
 	}
@@ -172,6 +184,7 @@ public class AnnouncementsController {
 		mav.addObject("announcements", announcementList);
 		}catch(ZiksanaException ze){
 			mav.addObject("errorResponse", ze.getMessage());
+			logger.error(ze.getMessage(), ze);
 		}
 		return mav;
 	}
@@ -191,6 +204,7 @@ public class AnnouncementsController {
 		mav.addObject("announcements",announcementList);
 		}catch(ZiksanaException ze){
 			mav.addObject("errorResponse", ze.getMessage());
+			logger.error(ze.getMessage(), ze);
 		}
 		return mav;
 	}
