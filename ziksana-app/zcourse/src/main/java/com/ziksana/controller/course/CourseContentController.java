@@ -20,7 +20,7 @@ import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
-import com.ziksana.exception.ZiksanaException;
+import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseContentService;
 import com.ziksana.service.course.CourseEnrichmentService;
@@ -82,16 +82,17 @@ public class CourseContentController {
 						.getMemberPersonaId().getStorageID()));
 		CourseJsonResponse json = null;
 		try {
-			MemberPersona accountableMember = new MemberPersona();
-			accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
-					.getToken().getMemberPersonaId().getStorageID()));
+		MemberPersona accountableMember = new MemberPersona();
+		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+				.getToken().getMemberPersonaId().getStorageID()));
 
-			Integer courseid = 0;
-			courseid = Integer.parseInt(CourseId.split("_")[1]);
-			Integer learnComponentId = 0;
-			learnComponentId = Integer
+		Integer courseid = 0, contentTypeId = 0;
+		courseid = Integer.parseInt(CourseId.split("_")[1]);
+		contentTypeId = ContentType;
+		Integer learnComponentId = 0;
+		learnComponentId = Integer
 					.parseInt(LearningComponentId.split("_")[1]);
-
+		 
 			Course course = new Course();
 			course.setCourseId(courseid);
 
@@ -136,26 +137,24 @@ public class CourseContentController {
 
 			json = new CourseJsonResponse();
 
-			if (courseid == 0) {
-				json.setResponse("failed");
-				json.setMessage("Content Creation Failed!");
-				LOGGER.info("CourseContentController.saveOrUpdateContent(), content creation failed");
-				LOGGER.debug("Class :"
-						+ getClass()
-						+ " Method saveCourse : After courseService: CourseId :"
-						+ CourseId);
-			} else {
-				json.setId("COURSE_" + courseid);
-				json.setResponse("success");
-				json.setMessage("Content Creation Success");
+		if (courseid == 0) {
+			json.setResponse("failed");
+			json.setMessage("Content Creation Failed!");
+			LOGGER.info("CourseContentController.saveOrUpdateContent(), content creation failed");
+			LOGGER.debug("Class :" + getClass()
+					+ " Method saveCourse : After courseService: CourseId :"
+					+ CourseId);
+		} else {
+			json.setId("COURSE_" + courseid);
+			json.setResponse("success");
+			json.setMessage("Content Creation Success");
 
-				LOGGER.debug("Class :"
-						+ getClass()
-						+ " Method saveCourse success : After courseService: CourseId :"
-						+ CourseId);
-			}
+			LOGGER.debug("Class :" + getClass()
+					+ " Method saveCourse success : After courseService: CourseId :"
+					+ CourseId);
+		}
 
-		} catch (ZiksanaException ce) {
+		} catch (CourseException ce) {
 			LOGGER.error("Class :" + getClass()
 					+ " Method Exception :saveOrUpdateContent() : CourseId :"
 					+ CourseId + " Content_Name :" + ContentName

@@ -105,9 +105,9 @@ public class MyCoursesController {
 					courses = courseService
 							.getCoursesByLearningProgram(Integer.valueOf(program
 									.getLearningProgramId().getStorageID()));
-					LOGGER.debug(" TOTAL NUMBER OF COURSES IS  "+ courses.size());
+					System.out.println(" TOTAL NUMBER OF COURSES IS  "+ courses.size());
 					
-					LOGGER.debug(" THE COURSE NAME IS   "
+					System.out.println(" THE COURSE NAME IS   "
 							+ courses.get(0).getName());
 					mv.addObject("program", program.getName());
 								

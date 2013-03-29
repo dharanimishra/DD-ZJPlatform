@@ -47,7 +47,7 @@ public class EnrichCourseController {
 			if (courseid > 0) {
 				int contentCount = courseService.isContentExists(courseid);
 				if(contentCount == 0){
-					modelView = new ModelAndView("redirect:/zcourse/associatecontent/course_"+courseid+"");
+					return new ModelAndView("redirect:/zcourse/associatecontent/course_"+courseid+"");
 				}else{
 					modelView = new ModelAndView("organizeenrichcontent");
 					modelView.addObject("courseid", courseid);

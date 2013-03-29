@@ -111,6 +111,7 @@ public class ContentController {
 			@RequestParam(value = "contentId", required = true) String contentId) {
 		LOGGER.debug("Entering Class " + getClass() + " getContent()");
 
+		String parsedNodeType = contentId.split("_")[0];
 		String parsedContentId = contentId.split("_")[1];
 
 		Content content = null;
@@ -125,6 +126,7 @@ public class ContentController {
 						+ content.getContentId());
 			}
 		} catch (ZiksanaException exception) {
+			// TODO Auto-generated catch block
 			LOGGER.error(exception.getMessage(), exception);
 		}
 
