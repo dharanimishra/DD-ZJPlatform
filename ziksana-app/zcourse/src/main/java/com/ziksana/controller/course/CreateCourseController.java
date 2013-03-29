@@ -82,7 +82,7 @@ public class CreateCourseController {
 			@RequestParam(value = "courseId", required = false) String courseId,
 			@RequestParam(value = "courseName", required = true) String courseName) {
 
-		String iscourseExists = "";
+		String iscourseExists = null;
 		try {
 			int courseCount;
 			if (courseId.isEmpty()) {
@@ -119,6 +119,7 @@ public class CreateCourseController {
 	@RequestMapping(value = "/ismoduleexists/{courseId}", method = { RequestMethod.GET })
 	public @ResponseBody
 	int isModuleExists(@PathVariable String courseId) {
+		//TODO this method should return Integer
 		int isModuleExists = 0;
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
 		try {
@@ -167,7 +168,9 @@ public class CreateCourseController {
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("ms", mediaServerURL);
 				modelView.addObject("module", isModuleExists);
-			} else {
+			} 
+			//TODO do we need this else?? secondly it can lead to null pointer.
+			else {
 				mediaServerURL = mediaService.getMediaContents();
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("ms", mediaServerURL);
