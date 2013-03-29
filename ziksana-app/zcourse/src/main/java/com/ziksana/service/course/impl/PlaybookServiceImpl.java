@@ -80,10 +80,9 @@ public class PlaybookServiceImpl implements PlaybookService {
 				}
 			}
 
-			return coursePB;
 		}
 
-		return null;
+		return coursePB;
 	}
 
 	@Override
@@ -92,9 +91,6 @@ public class PlaybookServiceImpl implements PlaybookService {
 
 		List<CoursePlaybook> playbookList = null;
 
-		if (courseId == null) {
-			throw new CourseException("Course ID cannot be null");
-		}
 
 		Boolean isDelete = false;
 
@@ -103,10 +99,9 @@ public class PlaybookServiceImpl implements PlaybookService {
 
 		if (playbookList != null) {
 			LOGGER.debug("Playbook list size :" + playbookList.size());
-			return playbookList;
 		}
 
-		return null;
+		return playbookList;
 	}
 
 	@Override
@@ -114,10 +109,6 @@ public class PlaybookServiceImpl implements PlaybookService {
 			throws CourseException {
 		Boolean isDelete = false;
 		List<CoursePlaybook> playbookList = null;
-
-		if (courseId == null) {
-			throw new CourseException("Course ID cannot be null");
-		}
 
 		playbookList = coursePlaybookMapper.getCoursePlaybookList(isDelete,
 				new Integer(courseId.getStorageID()));
@@ -143,9 +134,6 @@ public class PlaybookServiceImpl implements PlaybookService {
 
 		CoursePlaybookView playbookView = null;
 
-		if (coursePlaybook.getCourse() == null) {
-			throw new CourseException("Course ID cannot be null");
-		}
 
 		if (coursePlaybook.getPlaybookType() == PlaybookType.REGULAR) {
 
@@ -172,10 +160,6 @@ public class PlaybookServiceImpl implements PlaybookService {
 	public void updateCoursePlaybook(CoursePlaybook coursePB)
 			throws CourseException {
 
-		if (coursePB.getCoursePlaybookId() == null) {
-			throw new CourseException("Course Playbook ID cannot be null");
-		}
-
 		coursePlaybookMapper.updateCoursePlaybook(coursePB.getPlaybookView());
 
 	}
@@ -185,9 +169,6 @@ public class PlaybookServiceImpl implements PlaybookService {
 	public void deleteCoursePlaybook(ZID coursePBId) throws CourseException {
 
 		Boolean isDelete = true;
-		if (coursePBId == null) {
-			throw new CourseException("Course Playbook ID cannot be null");
-		}
 		LOGGER.debug("Playbook Id : " + new Integer(coursePBId.getStorageID()));
 
 		coursePlaybookMapper.deleteCoursePlaybook(isDelete, new Integer(
@@ -201,10 +182,6 @@ public class PlaybookServiceImpl implements PlaybookService {
 			throws CourseException {
 
 		CoursePlaybookView playbookView = null;
-
-		if (coursePlaybook.getCourse() == null) {
-			throw new CourseException("Course ID cannot be null");
-		}
 
 		if (coursePlaybook.getPlaybookType() == PlaybookType.PREVIEW) {
 			playbookView = coursePlaybook.getPlaybookView();

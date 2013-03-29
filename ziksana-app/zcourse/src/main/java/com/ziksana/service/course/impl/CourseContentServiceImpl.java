@@ -41,15 +41,9 @@ public class CourseContentServiceImpl implements CourseContentService {
 		List<LearningContentParts> contentParts = null;
 		LearningContent learningContent = null;
 
-		if (learningComponentContent == null) {
-			throw new CourseException("LearningComponentContent cannot be null");
-		}
 
 		learningContent = learningComponentContent.getBaseLearningContent();
 
-		if (learningContent == null) {
-			throw new CourseException("Learning Content cannot be null");
-		}
 
 		// UPDATE OPERATION
 		if (learningComponentContent.getLearningComponentContentId() != null) {
@@ -131,10 +125,6 @@ public class CourseContentServiceImpl implements CourseContentService {
 		LearningComponentContent lCompContent = null;
 		Boolean isDelete = false;
 
-		if (learningComponentId == null) {
-			throw new CourseException(
-					"learningComponentContent ID cannot be null");
-		}
 
 		lCompContent = compContentMapper.getLearningComponentContentDetails(
 				learningComponentId, isDelete);
@@ -165,17 +155,10 @@ public class CourseContentServiceImpl implements CourseContentService {
 		LearningContent learningContent = null;
 		List<LearningContentParts> contentPartsList = null;
 
-		if (compContent == null) {
-			throw new CourseException(
-					"Learning Component Content cannot be null");
-		}
 
 		// Enhanced LearningContent
 		learningContent = compContent.getBaseLearningContent();
 
-		if (learningContent == null) {
-			throw new CourseException("Learning Content cannot be null");
-		}
 
 		// associate parent content as a linked content
 		learningContent.setLinkedLearningContent(learningContent);
@@ -203,9 +186,6 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 		List<LearningContent> contentList = null;
 
-		if (memberRoleId == null) {
-			throw new CourseException("Member Role ID cannot be null ");
-		}
 		contentList = new ArrayList<LearningContent>();
 
 		LOGGER.debug("Member role ID : " + memberRoleId);

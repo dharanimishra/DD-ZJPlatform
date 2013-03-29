@@ -5,7 +5,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ziksana.domain.course.ContentReviewRating;
@@ -59,11 +58,6 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 			List<LearningContentReviewProgress> reviewComponentsList,
 			Course course) throws CourseException {
 
-		if (course == null) {
-			throw new CourseException(
-					"Course/LearningObject/Content Cannot be null");
-		}
-
 		courseService.saveCourseComponetsForReview(reviewComponentsList);
 
 		if (course != null) {
@@ -81,10 +75,6 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 
 		List<LearningContentReviewProgress> reviewList = null;
 
-		if (memberRoleId == null) {
-			throw new CourseException("Member RoleID cannot be null");
-		}
-
 		reviewList = publishMapper
 				.getReviewComponentsByMemberRoleId(new Integer(memberRoleId
 						.getStorageID()));
@@ -97,9 +87,6 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 			throws CourseException {
 
 		Boolean isDelete = true;
-		if (reviewCommentId == null) {
-			throw new CourseException("Review CommentID cannot be null");
-		}
 
 		publishMapper.deleteReviewComment(isDelete, reviewCommentId);
 
@@ -107,11 +94,6 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 
 	@Override
 	public void reviewCourseContent(Course course) throws CourseException {
-
-		if (course == null) {
-			throw new CourseException(
-					"Course/LearningObject/Content Cannot be null");
-		}
 
 		if (course != null) {
 
@@ -126,11 +108,6 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 	@Override
 	public void refineCourse(Course course) throws CourseException {
 
-		if (course == null) {
-			throw new CourseException(
-					"Course/LearningObject/Content Cannot be null");
-		}
-
 		if (course != null) {
 
 			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
@@ -143,11 +120,6 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 
 	@Override
 	public void releaseCourse(Course course) throws CourseException {
-
-		if (course == null) {
-			throw new CourseException(
-					"Course/LearningObject/Content Cannot be null");
-		}
 
 		if (course != null) {
 
@@ -165,11 +137,6 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 
 		LearningContentReviewProgress reviewItem = null;
 
-		if (reviewProgressId == null) {
-			throw new CourseException(
-					"LearningContentReviewProgressID Cannot be null");
-		}
-
 		reviewItem = publishMapper.getReviewContentDetails(new Integer(
 				reviewProgressId.getStorageID()));
 
@@ -181,11 +148,6 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 			throws CourseException {
 
 		ContentReviewWorkflow workflow = null;
-
-		if (reviewProgressId == null) {
-			throw new CourseException(
-					"LearningContentReviewProgressID Cannot be null");
-		}
 
 		workflow = publishMapper.getWorkflow(reviewProgressId);
 
@@ -199,11 +161,6 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 	public void addContentReviewComment(MemberPersona memberRole,
 			ContentReviewWorkflow workflow, WorkflowParticipantComment comment)
 			throws CourseException {
-
-		if (workflow.getReviewProgress() == null) {
-			throw new CourseException(
-					"LearningContentReviewProgress Cannot be null");
-		}
 
 		if (memberRole.getMemberRoleId() == null) {
 			throw new CourseException("Member Role ID cannot be null");
@@ -240,31 +197,16 @@ public class CoursePublishServiceImpl implements CoursePublishService {
 			Integer reviewProgressId) throws CourseException {
 
 		ContentReviewRating reviewRating = null;
-		List<ContentReviewRating> contentReviewRatingList = null;
-		List<ContentReviewRating> authorReviewRatingList = null;
-
-		if (reviewProgressId == null) {
-			throw new CourseException(
-					"LearningContentReviewProgress ID Cannot be null");
-		}
 
 		if (memberRoleId == null) {
 			throw new CourseException("Member Role ID cannot be null");
 		}
 
-		contentReviewRatingList = publishMapper
-				.getContentReviewRating(reviewProgressId);
+		publishMapper.getContentReviewRating(reviewProgressId);
 
-		for (ContentReviewRating contentReviewRating : contentReviewRatingList) {
-			// contentReviewRating.getReviewerRating().
-		}
+		publishMapper.getAuthorReviewRating(memberRoleId);
 
-		authorReviewRatingList = publishMapper
-				.getAuthorReviewRating(memberRoleId);
-
-		for (ContentReviewRating contentReviewRating : authorReviewRatingList) {
-
-		}
+		// TODO need to add business logic here for review rating
 
 		return reviewRating;
 	}

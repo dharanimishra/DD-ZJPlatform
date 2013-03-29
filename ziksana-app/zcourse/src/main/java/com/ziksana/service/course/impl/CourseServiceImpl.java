@@ -209,15 +209,9 @@ public class CourseServiceImpl implements CourseService {
 		LearningComponentNest compNest = null;
 		LearningComponent learningComp = null;
 
-		if (course == null) {
-			throw new CourseException("Course cannot be null");
-		}
 
 		courseDetails = course.getCourseDetails();
 
-		if (courseDetails == null) {
-			throw new CourseException("Course Details cannot be null");
-		}
 
 		courseLearningComponentList = courseDetails
 				.getCourseLearningComponentsList();
@@ -226,9 +220,6 @@ public class CourseServiceImpl implements CourseService {
 
 			learningComp = courseLearningComponent.getLearningComponent();
 
-			if (learningComp == null) {
-				throw new CourseException("Learning Component cannot be null");
-			}
 
 			// UPDATE OPERATION
 			// if (courseLearningComponent.getCourseLearningComponentId() !=
@@ -267,17 +258,9 @@ public class CourseServiceImpl implements CourseService {
 
 				compDetails = learningComp.getLearningComponentDetails();
 
-				if (compDetails == null) {
-					throw new CourseException(
-							"Learning Component Details cannot be null");
-				}
 
 				compNest = compDetails.getLearningComponentNest();
 
-				if (compNest == null) {
-					throw new CourseException(
-							"LearningComponent Nest cannot be null");
-				}
 
 				compNest.setNestLearningComponent(learningComp);
 
@@ -297,19 +280,12 @@ public class CourseServiceImpl implements CourseService {
 
 		Course course = null;
 
-		if (courseId == null) {
-			throw new CourseException("Course Id cannot be null");
-		}
 
 		LOGGER.debug("Before retrieving the base course details ");
 
 		course = courseMapper.getBaseCourseDetails(new Integer(courseId
 				.getStorageID()));
 
-		if (course != null) {
-
-			LOGGER.debug("Got the course details : " + course.toString());
-		}
 
 		return course;
 	}
@@ -322,9 +298,6 @@ public class CourseServiceImpl implements CourseService {
 		courseList = new ArrayList<Course>();
 		Integer memberRoleId = null;
 
-		if (memberPersonaId == null) {
-			throw new CourseException(" MemberRoleID cannot be null");
-		}
 
 		LOGGER.debug("MemberRoleID : " + memberPersonaId);
 
@@ -518,9 +491,6 @@ public class CourseServiceImpl implements CourseService {
 	public Course getCourseComponents(ZID courseId) throws CourseException {
 
 		Course course = null;
-		if (courseId == null) {
-			throw new CourseException("Course ID cannot be null");
-		}
 
 		course = courseMapper.getCourseComponents(Integer.valueOf(courseId
 				.getStorageID()));
@@ -534,10 +504,6 @@ public class CourseServiceImpl implements CourseService {
 			CourseAdditionalProperty courseAdditionalProperty)
 			throws CourseException {
 
-		if (courseAdditionalProperty == null) {
-			throw new CourseException(
-					"Course Additional Property cannot be null");
-		}
 
 		LOGGER.debug("Before saving the Course Additional Information ... ");
 		courseMapper.saveAddnlInfo(courseAdditionalProperty);
@@ -548,9 +514,6 @@ public class CourseServiceImpl implements CourseService {
 	public Course getCourseDetails(ZID courseId) throws CourseException {
 
 		Course course = null;
-		if (courseId == null) {
-			throw new CourseException("Course Id cannot be null");
-		}
 
 		course = courseMapper.getBaseCourseDetails(new Integer(courseId
 				.getStorageID()));
@@ -564,9 +527,6 @@ public class CourseServiceImpl implements CourseService {
 		List<LearningComponent> learningObjectList = null;
 		Boolean isLearningObject = true;
 
-		if (memberRoleId == null) {
-			throw new CourseException("Member Role ID cannot be null ");
-		}
 
 		LOGGER.debug("Member role ID : " + memberRoleId);
 
@@ -582,9 +542,6 @@ public class CourseServiceImpl implements CourseService {
 
 		LearningComponent learningObject = null;
 		Boolean isLearningObject = true;
-		if (learningComponentId == null) {
-			throw new CourseException("learningComponent ID cannot be null ");
-		}
 
 		learningObject = learningComponentMapper.getLearningObjectById(
 				isLearningObject,
@@ -707,26 +664,26 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public void removeCourse(Integer courseId) throws CourseException {
-		LOGGER.info("Entering Class :" + getClass()
+		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :removeCourse(Integer courseId)" + courseId);
 
 		courseMapper.deleteCourse(courseId);
 
-		LOGGER.info("Exiting Class :" + getClass()
+		LOGGER.debug("Exiting Class :" + getClass()
 				+ " Method Name :removeCourse(Integer courseId)" + courseId);
 
 	}
 
 	@Override
 	public void removeCourseComponents(Integer learningComponentId) {
-		LOGGER.info("Entering Class :"
+		LOGGER.debug("Entering Class :"
 				+ getClass()
 				+ " Method Name :removeCourseComponents(Integer learningComponentId)"
 				+ learningComponentId);
 
 		learningComponentMapper.learningComponentdelete(learningComponentId);
 
-		LOGGER.info("Exiting Class :"
+		LOGGER.debug("Exiting Class :"
 				+ getClass()
 				+ " Method Name :removeCourseComponents(Integer learningComponentId)"
 				+ learningComponentId);
@@ -734,14 +691,14 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public void learningContentdelete(Integer learningContentId) {
-		LOGGER.info("Entering Class :"
+		LOGGER.debug("Entering Class :"
 				+ getClass()
 				+ " Method Name :learningContentdelete(Integer learningContentId)"
 				+ learningContentId);
 
 		learningContentMapper.learningContentdelete(learningContentId);
 
-		LOGGER.info("Exiting Class :"
+		LOGGER.debug("Exiting Class :"
 				+ getClass()
 				+ " Method Name :learningContentdelete(Integer learningContentId)"
 				+ learningContentId);

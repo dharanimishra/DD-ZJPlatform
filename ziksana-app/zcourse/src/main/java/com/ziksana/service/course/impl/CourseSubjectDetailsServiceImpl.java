@@ -79,17 +79,8 @@ public class CourseSubjectDetailsServiceImpl implements
 				+ " Method Name :getSubjectClassification(String subjectArea, String subjectCategory, String subjectTopic) :subjectArea "
 
 				+ " subjectTopic :" + subjectTopic);
-		try {
-			courseSubjectClassification = courseSubjectDetailMapper
-					.getSubjectClassification(subjectTopic);
-		} catch (Exception e) {
-			LOGGER.error("Exiting Class :"
-					+ getClass()
-					+ " Method Name :getCoursgetSubjectClassificationeDetails(String subjectArea, String subjectCategory, String subjectTopic):subjectArea "
-
-					+ " subjectTopic :" + subjectTopic + "Exception :" + e);
-		}
-
+		courseSubjectClassification = courseSubjectDetailMapper
+				.getSubjectClassification(subjectTopic);
 		LOGGER.debug("Exiting Class :"
 				+ getClass()
 				+ " Method Name :getCoursgetSubjectClassificationeDetails(String subjectArea, String subjectCategory, String subjectTopic):subjectArea "
@@ -105,16 +96,8 @@ public class CourseSubjectDetailsServiceImpl implements
 				+ " Method Name :getSubjectClassification(Integer courseId) : "
 
 				+ " courseId :" + courseId);
-		try {
-			courseSubjectClassification = courseSubjectDetailMapper
-					.getCourseClassification(courseId);
-		} catch (Exception e) {
-			LOGGER.error("Exiting Class :"
-					+ getClass()
-					+ " Method Name :getCourseClassification(Integer courseId):  courseId :"
-					+ courseId + "Exception :" + e);
-		}
-
+		courseSubjectClassification = courseSubjectDetailMapper
+				.getCourseClassification(courseId);
 		LOGGER.debug("Exiting Class :"
 				+ getClass()
 				+ " Method Name :getCourseClassification(Integer courseId): courseId :"

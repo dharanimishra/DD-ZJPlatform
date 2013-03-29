@@ -37,48 +37,21 @@ public class TodoServiceImpl implements TodoService {
 	public List<Todo> getTodos() {
 
 		List<Todo> todoList = new ArrayList<Todo>();
-		try {
-			todoList = todoMapper.getTodos(Integer.valueOf(ThreadLocalUtil
-					.getToken().getMemberPersonaId().getStorageID()));
-		} catch (CannotGetJdbcConnectionException dae) {
-			logger.info("Data Access Exception called");
-			throw new DataBaseException(dae);
-		}
-		catch(NullPointerException ne){
-			throw new TodoException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
-		}
+		todoList = todoMapper.getTodos(Integer.valueOf(ThreadLocalUtil
+				.getToken().getMemberPersonaId().getStorageID()));
 		return todoList;
 	}
 
 	@Override
 	public void createTodo(Todo todo) {
 		logger.info("TODO || Create");
-		try {
-			todoMapper.createTodo(todo);
-		}
-
-		catch (CannotGetJdbcConnectionException dae) {
-			logger.info("Data Access Exception called");
-			throw new DataBaseException(dae);
-		}
-		catch(BadSqlGrammarException bq){
-			throw new TodoException(ZiksanaConstants.SQL_ERROR, new Object[] {bq.getSQLException()});
-		}
+		todoMapper.createTodo(todo);
 	}
 
 	@Override
 	public void updateTodo(Todo todo) {
 		int rowCount = 0;
-		try {
-			rowCount = todoMapper.updateTodo(todo);
-		}
-
-		catch (CannotGetJdbcConnectionException dae) {
-			logger.info("Data Access Exception called");
-			throw new DataBaseException(dae);
-		} catch(NullPointerException ne){
-			throw new TodoException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
-		}
+		rowCount = todoMapper.updateTodo(todo);
 
 	}
 
@@ -86,40 +59,20 @@ public class TodoServiceImpl implements TodoService {
 	public void deleteTodo(int todoId) {
 		logger.info("TODO || Delete");
 		int deleteCount = 0;
-		try {
-			deleteCount = todoMapper.deleteTodo(todoId);
-
-		} catch(CannotGetJdbcConnectionException e) {
-			
-				throw new TodoException(ZiksanaConstants.TODO_UPDATECOUNT_ERROR, e);
-			
-
-		}
-
+		deleteCount = todoMapper.deleteTodo(todoId);
 	}
 
 	@Override
 	public List<Todo> getMapperTodos() {
 
-		
 		int offset = 0;
 		int limit = 3;
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		List<Todo> todoList = new ArrayList<Todo>();
-		try {
-			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
-					.getMemberPersonaId().getStorageID());
-			todoList = todoMapper.getMapperTodos(memberRoleId, rowBounds);
-		} 
-		catch (CannotGetJdbcConnectionException dae) {
-			logger.info("Data Access Exception called");
-			throw new DataBaseException(dae);
-		}
-		catch(NullPointerException ne){
-			throw new TodoException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
-		}
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		todoList = todoMapper.getMapperTodos(memberRoleId, rowBounds);
 		return todoList;
 	}
 
-	
 }

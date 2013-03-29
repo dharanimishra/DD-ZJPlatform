@@ -18,6 +18,7 @@ public interface ZiksanaConstants {
 	//ziksana.common.error.message
 	public static final String SYSTEM_EXCEPTION = "SYSTEM";
 	public static final String APPLICATION_EXCEPTION = "APPLICATION";
+	public static final String DATE_PARSE_ERROR = "ziksana.date.parse.error";
 
 	// DATABASE CONNECTION FAILURE MESSAGE CONSTANTS
 	public static final String DATABASE_CONNECTION_PROBLEM = "ziksana.database.error";
@@ -58,5 +59,9 @@ public interface ZiksanaConstants {
 	public static final String KNOWMEBETTER_SQL_DATACCESS_ERROR = "knowmebetter.sql.error";
 	public static final String KNOWMEBETTER_ANSWER_SAVED_SUCCESSFULLY = "ANSWER SAVED SUCCESSFULLY";
 	public static final String KNOWMEBETTER_ANSWER_UPDATED_SUCCESSFULLY = "ANSWER UPDATED SUCCESSFULLY";
+	
+	// POLLS ERROR MESSAGE CONSTANTS
+	public static final String POLL_NOT_FOUND = "announcement.not.found";
+	public static final String POLL_DATE_PARSE_ERROR = "poll.date.parse.error";
 
 }

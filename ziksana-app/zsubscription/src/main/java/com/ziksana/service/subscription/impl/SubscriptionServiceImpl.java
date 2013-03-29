@@ -39,9 +39,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
-		// TODO
-		Integer learnCmpId = null;
-		Integer learnCmpCntId = null;
 
 		return subscriptionMapper.getLearnerNotes(
 				Integer.valueOf(memberRoleId), Integer.valueOf(courseId),
@@ -51,7 +48,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	@Override
 	public List<EducatorNote> getEducatorContent(SubscriptionCourse course,
 			Node node, Integer contentType) {
-		// TODO Auto-generated method stub
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
@@ -72,7 +68,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 					.getStorageID());
 		}
 
-		// TODO
 		return subscriptionMapper.getEducatorNotes(contentType,
 				Integer.valueOf(memberRoleId), courseId, learnCompId,
 				learnCompCntId);
@@ -84,7 +79,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	 * String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 	 * .getStorageID();
 	 * 
-	 * // TODO Integer learnCompId = 0; Integer learnCmpContId = 0; // TODO
+	 * // Integer learnCompId = 0; Integer learnCmpContId = 0; 
 	 * 
 	 * List<Note> tocs = subscriptionMapper.getContentByType(null, learnCompId,
 	 * learnCmpContId, Integer.valueOf(memberRoleId), node.getType()); return
@@ -95,7 +90,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	public int addLearnerContent(Integer courseId, Integer componentId,
 			Integer contentId, String noteTitle, String noteDescription,
 			Integer noteDuration, Integer type) {
-		// TODO Auto-generated method stub
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
@@ -126,7 +120,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		Integer learnCompId = null;
 		Integer learnCmpCntId = null;
 
-		// This logic needs to be revisited based on the sbnsubscribernotes
+		// This logic needs to be revisited based on the sbn subscriber notes
 		if (node.getType() == 1000) {
 			learnCompId = node.getId();
 		} else if (node.getType() == 1001) {
@@ -147,12 +141,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
-		// TODO
 		return subscriptionMapper.getEducatorNotes(8, Integer
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -195,7 +186,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	@Override
 	public List<Note> getLearnerQuestions(Integer courseId,
 			Integer componentId, Integer contentId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -240,12 +230,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	public Integer addEducatorContent(Integer courseId, Integer componentId,
 			Integer contentId, Integer type, String description, String url,
 			String coordinates, Integer duration, String title, Integer parentId) {
-		// TODO Auto-generated method stub
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
-		System.out.println("member role id is " + memberRoleId);
 
 		return subscriptionMapper.addEducatorContent(
 				Integer.valueOf(memberRoleId), type, componentId, contentId,
@@ -257,20 +245,17 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	@Override
 	public int editLearnerContent(Integer learnerContentId, String description,
 			int duration, String title) {
-		// TODO Auto-generated method stub
 		return subscriptionMapper.updateNote(learnerContentId, description,
 				duration, title);
 	}
 
 	@Override
 	public int deleteEducatorContent(Integer contentId) {
-		// TODO Auto-generated method stub
 		return subscriptionMapper.deleteEducatorContent(contentId);
 	}
 
 	@Override
 	public List<Hotspot> getEducatorHotspots(Integer courseId, Node node) {
-		// TODO Auto-generated method stub
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
@@ -305,7 +290,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	@Override
 	public LearningContent getLinkedLearningContent(Integer learningContentId) {
-		// TODO Auto-generated method stub
 		return subscriptionMapper.getLinkedLearningContent(learningContentId);
 	}
 
@@ -330,7 +314,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
-		// TODO
 		return subscriptionMapper.getEducatorNotes(9, Integer
 				.valueOf(memberRoleId), courseId, node.getParent().getId(),
 				node.getId());

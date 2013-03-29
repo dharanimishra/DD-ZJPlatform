@@ -62,11 +62,6 @@ public class CourseNestTreeServiceImpl implements CourseNestTreeService {
 				+ courseId);
 
 		List<NestTreeNode> list = courseNestTreeNodeMapper.getModuleComponents(courseId);
-		if (list == null) {
-			throw new CourseException(
-					"Unable to retrieve nested learning components from mapper for course ID ["
-							+ courseId + "]");
-		}
 
 		List<NestContentNode> contentlist = courseNestTreeNodeMapper
 							.getContentComponents(courseId);
@@ -78,18 +73,13 @@ public class CourseNestTreeServiceImpl implements CourseNestTreeService {
 
 		try {
 			tree = rawList.getTree();
+			//TODO need to handle this differently this is not the correct way. Arvind
 		} catch (Exception exp) {
 			LOGGER.error("CourseNestTreeService.getModuleComponents getTree() :" + exp);
 			throw new CourseException(
 					"Unable to create learning component tree");
 		}
 
-		if (tree == null) {
-			LOGGER.error("CourseNestTreeService.getModuleComponents getTree() : null");
-			throw new CourseException(
-					"Unable to create learning component tree for course ID ["
-							+ courseId + "]");
-		}
 
 		LOGGER.debug("Exiting Class :" + getClass()
 				+ " Method Name :getModuleComponents(Integer courseId)");

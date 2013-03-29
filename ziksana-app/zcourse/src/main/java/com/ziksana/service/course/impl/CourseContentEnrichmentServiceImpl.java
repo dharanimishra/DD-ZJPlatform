@@ -117,15 +117,6 @@ public class CourseContentEnrichmentServiceImpl implements
 			LinkType enrichLinkType) throws CourseException {
 		ContentEnrichment contentEnrichment = null;
 
-		if (enrichment == null) {
-			throw new CourseException("Enrichment cannot be null");
-		}
-
-		if (enrichment.getLearningContent() == null) {
-			throw new CourseException(
-					"Learning Content cannot be null for Enrichment");
-		}
-
 		LOGGER.debug("Before Saving the Enrichment ....");
 		enrichMapper.saveReference(enrichment);
 		LOGGER.debug("After Saving the Enrichment .ID :"
@@ -160,21 +151,8 @@ public class CourseContentEnrichmentServiceImpl implements
 			throws CourseException {
 
 		ContentEnrichment contentEnrichment = null;
-
-		if (enrichment == null) {
-			throw new CourseException("Enrichment cannot be null");
-		}
-
-		if (enrichment.getLearningContent() == null) {
-			throw new CourseException(
-					"Learning Content cannot be null for Enrichment");
-		}
-
 		contentEnrichment = enrichment.getContentEnrich();
 
-		if (contentEnrichment == null) {
-			throw new CourseException("Content enrichment cannot be null");
-		}
 
 		LOGGER.debug("Before Deleting the Enrichment Content ....:"
 				+ contentEnrichment.getLinkType());
@@ -199,20 +177,9 @@ public class CourseContentEnrichmentServiceImpl implements
 
 		ContentEnrichment contentEnrichment = null;
 
-		if (enrichment == null) {
-			throw new CourseException("Enrichment cannot be null");
-		}
-
-		if (enrichment.getLearningContent() == null) {
-			throw new CourseException(
-					"Learning Content cannot be null for Enrichment");
-		}
 
 		contentEnrichment = enrichment.getContentEnrich();
 
-		if (contentEnrichment == null) {
-			throw new CourseException("Content enrichment cannot be null");
-		}
 
 		// update delete indicator status to remove the association with
 		// applyenrichment
@@ -236,9 +203,6 @@ public class CourseContentEnrichmentServiceImpl implements
 		topicContentEnrichList = new ArrayList<ContentEnrichment>();
 		notesContentEnrichList = new ArrayList<ContentEnrichment>();
 
-		if (memberPersonaId == null) {
-			throw new CourseException("Member cannot be null");
-		}
 
 		enrichList = enrichMapper.getAllEnrichments(new Integer(memberPersonaId
 				.getStorageID()));
@@ -281,10 +245,6 @@ public class CourseContentEnrichmentServiceImpl implements
 
 		List<LearningComponentContentHotspot> hotspotList = null;
 
-		if (compContent.getLearningComponentContentId() == null) {
-			throw new CourseException(
-					"Learning Component Content ID cannot be null");
-		}
 
 		hotspotList = new ArrayList<LearningComponentContentHotspot>();
 
@@ -301,9 +261,6 @@ public class CourseContentEnrichmentServiceImpl implements
 
 		List<LearningContent> contents = null;
 
-		if (searchCriteria == null) {
-			throw new CourseException("ReferenceSearchCriteria cannot be null");
-		}
 
 		contents = enrichMapper.basicSearchReferenceMaterial(searchCriteria);
 
@@ -318,9 +275,6 @@ public class CourseContentEnrichmentServiceImpl implements
 
 		List<LearningContent> contents = null;
 
-		if (searchCriteria == null) {
-			throw new CourseException("ReferenceSearchCriteria cannot be null");
-		}
 
 		contents = enrichMapper.advanceSearchReferenceMaterial(searchCriteria);
 
@@ -336,10 +290,6 @@ public class CourseContentEnrichmentServiceImpl implements
 
 		LearningComponentContent compContent = null;
 
-		if (hotspot == null) {
-			throw new CourseException(
-					"LearningComponentContentHotspot cannot be  null");
-		}
 
 		compContent = hotspot.getLearningComponentContent();
 
@@ -356,10 +306,6 @@ public class CourseContentEnrichmentServiceImpl implements
 			throws CourseException {
 		LearningComponentContent compContent = null;
 
-		if (hotspot == null) {
-			throw new CourseException(
-					"LearningComponentContentHotspot cannot be  null");
-		}
 
 		compContent = hotspot.getLearningComponentContent();
 
@@ -382,10 +328,6 @@ public class CourseContentEnrichmentServiceImpl implements
 
 		LearningComponentContent compContent = null;
 
-		if (hotspot == null) {
-			throw new CourseException(
-					"LearningComponentContentHotspot cannot be  null");
-		}
 
 		compContent = hotspot.getLearningComponentContent();
 

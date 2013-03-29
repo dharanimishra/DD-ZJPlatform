@@ -38,6 +38,9 @@ public class CoursePlannerServiceImpl implements CoursePlannerService {
 				plannerMapper.saveCourseLearningPlanner(courseLearningPlanner);
 
 			}
+		} else {
+			// TODO what to do? Ideally we should not reach this method if we do
+			// not have any course learning planner to save
 		}
 
 	}

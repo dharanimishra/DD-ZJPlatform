@@ -36,10 +36,6 @@ public class DefineQualifierServiceImpl implements DefineQualifierService {
 
 		final Boolean isDelete = true;
 
-		if (learningComponentTypeId == null) {
-			throw new CourseException("LearningComponentTypeId cannot be null");
-		}
-
 		courseMapper.deleteQualifier(isDelete, memberRoleId,
 				Integer.valueOf(learningComponentTypeId.getStorageID()));
 
@@ -48,10 +44,6 @@ public class DefineQualifierServiceImpl implements DefineQualifierService {
 	@Override
 	public void updateQualifier(LearningComponentType learningComponentType)
 			throws CourseException {
-
-		if (learningComponentType == null) {
-			throw new CourseException("LearningComponentTypeId cannot be null");
-		}
 
 		courseMapper.updateQualifier(learningComponentType);
 
@@ -110,10 +102,6 @@ public class DefineQualifierServiceImpl implements DefineQualifierService {
 			final ZID learningComponentTypeId) throws CourseException {
 		LearningComponentType learningComponentType = null;
 		Boolean isDelete = false;
-
-		if (learningComponentTypeId == null) {
-			throw new CourseException("LearningComponentTypeId cannot be null");
-		}
 
 		learningComponentType = courseMapper.getQualifier(isDelete,
 				memberRoleId,

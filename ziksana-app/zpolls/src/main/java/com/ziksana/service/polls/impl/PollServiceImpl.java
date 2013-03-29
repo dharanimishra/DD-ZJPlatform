@@ -1,5 +1,3 @@
-		
-
 package com.ziksana.service.polls.impl;
 
 import java.text.ParseException;
@@ -15,17 +13,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ziksana.exception.polls.PollException;
-import com.ziksana.domain.member.Member;
-import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.constants.ZiksanaConstants;
 import com.ziksana.domain.polls.PollQuestion;
 import com.ziksana.domain.polls.PollQuestionOption;
 import com.ziksana.domain.polls.PollQuestionResponse;
 import com.ziksana.domain.polls.PollQuestionResult;
 import com.ziksana.domain.polls.PollResult;
 import com.ziksana.domain.polls.PollResultNQuestion;
-
-import com.ziksana.persistence.polls.PollMapper;
+import com.ziksana.exception.polls.PollException;
 import com.ziksana.persistence.polls.PollQuestionEntity;
 import com.ziksana.persistence.polls.PollQuestionMapper;
 import com.ziksana.persistence.polls.PollQuestionResponseMapper;
@@ -40,7 +35,8 @@ import com.ziksana.service.polls.PollService;
 @Service
 public class PollServiceImpl implements PollService {
 
-	private static Logger logger = LoggerFactory.getLogger(PollServiceImpl.class);
+	private static Logger logger = LoggerFactory
+			.getLogger(PollServiceImpl.class);
 
 	@Autowired
 	public PollQuestionMapper pollQuestionMapper;
@@ -50,35 +46,30 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public List<PollResultNQuestion> getPollQuestionsAndResults() {
 
-
 		List<PollResultNQuestion> pollQuestionsNResults = new ArrayList<PollResultNQuestion>();
 
 		/*
-		List<PollQuestionResult> pollResults = pollQuestionMapper
-				.getPollResults(Integer.valueOf(ThreadLocalUtil.getToken()
-						.getMemberPersonaId().getStorageID()));
-		
-
-		System.out.println(" THE MEMBER PERSONA ID IN POLL IS "+Integer.valueOf(ThreadLocalUtil.getToken()
-				.getMemberPersonaId().getStorageID()));
-		
-		System.out.println(" THE POLL RESULTS SIZE IS "+pollResults.size());
-		
-		
-
-		for (PollQuestionResult pollResult : pollResults) {
-			PollResultNQuestion pollQuestionResult = new PollResultNQuestion();
-            
-			if (pollResult == null )
-			{
-				System.out.println(" POLL RESULT IS NULL");
-			}
-			
-			pollQuestionResult.setPollResult(pollResult);
-
-			pollQuestionsNResults.add(pollQuestionResult);
-		}
-		*/
+		 * List<PollQuestionResult> pollResults = pollQuestionMapper
+		 * .getPollResults(Integer.valueOf(ThreadLocalUtil.getToken()
+		 * .getMemberPersonaId().getStorageID()));
+		 * 
+		 * 
+		 * logger.debug(" THE MEMBER PERSONA ID IN POLL IS "+Integer.valueOf(
+		 * ThreadLocalUtil.getToken() .getMemberPersonaId().getStorageID()));
+		 * 
+		 * logger.debug(" THE POLL RESULTS SIZE IS "+pollResults.size());
+		 * 
+		 * 
+		 * 
+		 * for (PollQuestionResult pollResult : pollResults) {
+		 * PollResultNQuestion pollQuestionResult = new PollResultNQuestion();
+		 * 
+		 * if (pollResult == null ) { logger.debug(" POLL RESULT IS NULL"); }
+		 * 
+		 * pollQuestionResult.setPollResult(pollResult);
+		 * 
+		 * pollQuestionsNResults.add(pollQuestionResult); }
+		 */
 
 		List<PollQuestionEntity> pollQuestions = pollQuestionMapper
 				.getPollQuestions(Integer.valueOf(ThreadLocalUtil.getToken()
@@ -91,21 +82,21 @@ public class PollServiceImpl implements PollService {
 			// needs to happen here
 
 			PollQuestion pollQuestion = new PollQuestion();
-			System.out.println("QUESTION ID IS "
-					+ pollQuestionEntity.getID());
+
+			logger.debug("QUESTION ID IS " + pollQuestionEntity.getID());
 
 			pollQuestion.setID(pollQuestionEntity.getID());
-			System.out.println("QUESTION TEXT IS "
+			logger.debug("QUESTION TEXT IS "
 					+ pollQuestionEntity.getQuestionText());
 			pollQuestion.setQuestionText(pollQuestionEntity.getQuestionText());
 			List<PollQuestionOption> options = new ArrayList<PollQuestionOption>();
 			addOptions(options, pollQuestionEntity);
-			System.out.println("THE TOTAL NUMBER OF OPTIONS "+options.size());
+			logger.debug("THE TOTAL NUMBER OF OPTIONS " + options.size());
 			pollQuestion.setActive(true);
 			pollQuestion.setOptions(options);
 
 			pollQuestionResult.setPollQuestion(pollQuestion);
-			//pollQuestionResult.setPollResult(null);		
+			// pollQuestionResult.setPollResult(null);
 
 			pollQuestionsNResults.add(pollQuestionResult);
 
@@ -122,15 +113,13 @@ public class PollServiceImpl implements PollService {
 	 * .member.Member, com.ziksana.domain.polls.PollResponse)
 	 */
 	@Override
-	public void pollResponse(
-			PollQuestionResponse pollQuestionResponse) {
+	public void pollResponse(PollQuestionResponse pollQuestionResponse) {
 
 		Validate.notNull(pollQuestionResponse, "PollQuestion cannot be null.");
 
-
 		pollQuestionResponseMapper.createPollTrackerEntry(pollQuestionResponse
-				.getPollQuestion().getID(), Integer.valueOf(ThreadLocalUtil.getToken()
-						.getMemberPersonaId().getStorageID()));
+				.getPollQuestion().getID(), Integer.valueOf(ThreadLocalUtil
+				.getToken().getMemberPersonaId().getStorageID()));
 		pollQuestionResponseMapper.createPollResponse(pollQuestionResponse);
 
 	}
@@ -145,33 +134,31 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public PollQuestionResult getPollResult(PollQuestion pollQuestion) {
 
-
 		Validate.notNull(pollQuestion, "PollQuestion cannot be null.");
 		PollQuestionResult pollResult = pollQuestionResponseMapper
-				.getPollResultByQuestion(pollQuestion.getID(),
+				.getPollResultByQuestion(
+						pollQuestion.getID(),
 						Integer.valueOf(ThreadLocalUtil.getToken()
 								.getMemberPersonaId().getStorageID()));
-		PollQuestionEntity pollQuestionEntity = pollQuestionResponseMapper.getPollQuestionById(pollQuestion.getID());
-
+		PollQuestionEntity pollQuestionEntity = pollQuestionResponseMapper
+				.getPollQuestionById(pollQuestion.getID());
 
 		PollQuestion question = new PollQuestion();
-		System.out.println("QUESTION ID IS "
-				+ pollQuestionEntity.getID());
+		logger.debug("QUESTION ID IS " + pollQuestionEntity.getID());
 
 		question.setID(pollQuestionEntity.getID());
-		System.out.println("QUESTION TEXT IS "
-				+ pollQuestionEntity.getQuestionText());
+		logger.debug("QUESTION TEXT IS " + pollQuestionEntity.getQuestionText());
 		question.setQuestionText(pollQuestionEntity.getQuestionText());
 		List<PollQuestionOption> options = new ArrayList<PollQuestionOption>();
 		addOptions(options, pollQuestionEntity);
-		System.out.println("THE TOTAL NUMBER OF OPTIONS "+options.size());
+		logger.debug("THE TOTAL NUMBER OF OPTIONS " + options.size());
 		question.setActive(true);
 		question.setOptions(options);
 
-
 		pollResult.setQuestion(question);
 
-		PollResult pr = pollQuestionMapper.getPollResultByQuestion(pollQuestionEntity.getID());
+		PollResult pr = pollQuestionMapper
+				.getPollResultByQuestion(pollQuestionEntity.getID());
 		pollResult.setPercentage1(pr.getAnswer1());
 		pollResult.setPercentage2(pr.getAnswer2());
 		pollResult.setPercentage3(pr.getAnswer3());
@@ -187,7 +174,7 @@ public class PollServiceImpl implements PollService {
 		assert pollQuestionEntity != null;
 
 		if (pollQuestionEntity.getAnswer1() != null) {
-			options.add( getOption(0, pollQuestionEntity.getAnswer1()));
+			options.add(getOption(0, pollQuestionEntity.getAnswer1()));
 
 		}
 
@@ -195,13 +182,13 @@ public class PollServiceImpl implements PollService {
 			options.add(getOption(1, pollQuestionEntity.getAnswer2()));
 
 		if (pollQuestionEntity.getAnswer3() != null)
-			options.add( getOption(2, pollQuestionEntity.getAnswer3()));
+			options.add(getOption(2, pollQuestionEntity.getAnswer3()));
 
 		if (pollQuestionEntity.getAnswer4() != null)
-			options.add( getOption(3, pollQuestionEntity.getAnswer4()));
+			options.add(getOption(3, pollQuestionEntity.getAnswer4()));
 
 		if (pollQuestionEntity.getAnswer5() != null)
-			options.add( getOption(4, pollQuestionEntity.getAnswer5()));
+			options.add(getOption(4, pollQuestionEntity.getAnswer5()));
 
 	}
 
@@ -215,78 +202,69 @@ public class PollServiceImpl implements PollService {
 	@Override
 	public List<PollQuestionEntity> getAllPollQuestions() {
 		// TODO Auto-generated method stub
-		return pollQuestionMapper.getPollQuestions(Integer.valueOf(ThreadLocalUtil.getToken()
-						.getMemberPersonaId().getStorageID()));
+		return pollQuestionMapper.getPollQuestions(Integer
+				.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId()
+						.getStorageID()));
 	}
 
 	@Override
 	public PollResult getPollResultByQuestion(Integer questionId) {
 		// TODO Auto-generated method stub
-		 return pollQuestionMapper.getPollResultByQuestion(questionId);
+		return pollQuestionMapper.getPollResultByQuestion(questionId);
 	}
 
-//	@Override
-//	public List<PollQuestionEntity> getAllPollQuestionsByDate(Date startDate,
-//			Date endDate) {
-//
-//		return pollQuestionMapper.getPollQuestionsByDate(startDate, endDate);
-//
-//
-//	}
+	// @Override
+	// public List<PollQuestionEntity> getAllPollQuestionsByDate(Date startDate,
+	// Date endDate) {
+	//
+	// return pollQuestionMapper.getPollQuestionsByDate(startDate, endDate);
+	//
+	//
+	// }
 
 	@Override
 	public List<PollQuestionEntity> getAllPollQuestion() {
 		// TODO Auto-generated method stub
-		return pollQuestionMapper.getPollQuestion(Integer.valueOf(ThreadLocalUtil.getToken()
-				.getMemberPersonaId().getStorageID()));
+		return pollQuestionMapper.getPollQuestion(Integer
+				.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId()
+						.getStorageID()));
 	}
 
 	@Override
 	public List<PollQuestionEntity> getAllPollQuestionsByDate(String startDate,
-				String endDate) {
-		
-		
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		
-		Date formatStartDate = null;
-		try {
-			formatStartDate = dateFormat.parse(startDate);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Date formatDate = null;
-		try {
-			formatDate = dateFormat.parse(endDate);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Date formatEndDate = combineDateTime(formatDate);
-		System.out.println(" start date is "+formatEndDate);
-		
-		//Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-		return pollQuestionMapper.getPollQuestionsByDate(formatStartDate, formatEndDate);
-		
-	
-}
+			String endDate) {
 
-	
-	private static Date combineDateTime(Date dateFormat){
-		Date time = new Date();
-		 time.setHours(23);
-		 time.setMinutes(59);
-		 time.setSeconds(59);
-		 Calendar calendar=Calendar.getInstance();
-        calendar.setTime(dateFormat);
-        Calendar calendar1=Calendar.getInstance();
-        calendar1.setTime(time);
-        calendar.set(Calendar.HOUR_OF_DAY, calendar1.get(Calendar.HOUR_OF_DAY));
-        calendar.set(Calendar.MINUTE, calendar1.get(Calendar.MINUTE));
-        calendar.set(Calendar.SECOND, calendar1.get(Calendar.SECOND));
-        
-        return calendar.getTime();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date formatStartDate;
+		Date formatEndDate;
+		try {
+			formatStartDate = null;
+			formatStartDate = dateFormat.parse(startDate);
+			Date formatDate = null;
+			formatEndDate = combineDateTime(formatDate);
+			formatDate = dateFormat.parse(endDate);
+			logger.debug(" start date is " + formatEndDate);
+		} catch (ParseException e) {
+			throw new PollException(
+					ZiksanaConstants.POLL_DATE_PARSE_ERROR, e);
+		}
+
+		// Integer memberRoleId =
+		// Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
+		return pollQuestionMapper.getPollQuestionsByDate(formatStartDate,
+				formatEndDate);
+
 	}
-	
+
+	private static Date combineDateTime(Date dateFormat) {
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(dateFormat);
+		calendar.set(Calendar.HOUR_OF_DAY, 23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+
+		return calendar.getTime();
+	}
+
 }
