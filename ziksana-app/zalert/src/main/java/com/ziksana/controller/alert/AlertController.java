@@ -1,5 +1,7 @@
 package com.ziksana.controller.alert;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.constants.ZiksanaConstants;
+import com.ziksana.domain.alerts.Alert;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.service.alert.AlertsService;
 
@@ -48,7 +51,11 @@ public class AlertController {
 		int alertSize = 0;
 
 		try {
-			alertSize = alertsService.getAlertList().size();
+			
+			List<Alert> alertList = alertsService.getAlertList();
+			if(alertList != null){
+				alertSize = alertsService.getAlertList().size();
+			}
 		} catch (ZiksanaException ae) {
 			logger.error("Alert Error " + ae.getMessage());
 
@@ -64,7 +71,7 @@ public class AlertController {
 	@RequestMapping(value = "/deletealert/{alertItemId}", method = RequestMethod.DELETE)
 	public @ResponseBody
 	String deleteAlertItem(@PathVariable String alertItemId) {
-		String errorResponse = "";
+		String errorResponse = null;
 
 		try {
 			this.alertsService.deleteAlertItem(Integer.valueOf(alertItemId));

@@ -34,20 +34,9 @@ public class AlertServiceImpl implements AlertsService {
 	@Override
 	public List<Alert> getAlertList() {
 		
-		List<Alert> alertList = new ArrayList<Alert>();
-		try{
+		List<Alert> alertList = null;
 		alertList = alertMapper.getAlerts(Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID()));
-		}
-		catch (CannotGetJdbcConnectionException dae) {
-			throw new DataBaseException(dae);
-		}
-		catch(NullPointerException ne){
-			throw new AlertException(ZiksanaConstants.ZIKSANA_OBJECT_NULL);
-		}
-		if(alertList.isEmpty()){
-			throw new AlertException(ZiksanaConstants.ALERT_NOT_FOUND);
-		}
 		
 		return alertList;
 	}
