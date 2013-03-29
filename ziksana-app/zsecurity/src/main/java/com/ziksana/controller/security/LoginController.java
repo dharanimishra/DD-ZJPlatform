@@ -27,6 +27,7 @@ import com.ziksana.security.filters.AuthenticationFilter;
 import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.security.AuthenticationService;
+import com.ziksana.service.security.MediaService;
 import com.ziksana.service.security.MemberService;
 
 @Controller
@@ -36,10 +37,13 @@ public class LoginController {
 			.getLogger(LoginController.class);
 
 	@Autowired
-	AuthenticationService authService;
+	private AuthenticationService authService;
 
 	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
+	
+	@Autowired
+	private MediaService mediaService;
 
 	@RequestMapping(value = "/login")
 	public ModelAndView login(HttpServletRequest request,
@@ -108,7 +112,7 @@ public class LoginController {
 					// Need to add the token to the session
 					HttpSession session = request.getSession(true);
 					session.setAttribute("TOKEN", token);
-
+					session.setAttribute("staticFileServer", mediaService.getMediaContents().getStaticFileServer());
 					// Need to create cookie
 					response.addCookie(newSessionCookie(request, username));
 

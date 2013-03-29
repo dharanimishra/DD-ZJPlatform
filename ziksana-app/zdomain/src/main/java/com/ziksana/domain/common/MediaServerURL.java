@@ -15,6 +15,16 @@ public class MediaServerURL {
 	private String flashRecordingScript;
 	
 	private String flashRecordingFolder;
+	
+	private String staticFileServer;
+
+	public String getStaticFileServer() {
+		return staticFileServer;
+	}
+
+	public void setStaticFileServer(String staticFileServer) {
+		this.staticFileServer = staticFileServer;
+	}
 
 	public String getFlashRecordingFolder() {
 		return flashRecordingFolder;
