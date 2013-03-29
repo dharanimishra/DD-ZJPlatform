@@ -14,36 +14,33 @@ public class ContactServiceImpl implements ContactService {
 
 	@Autowired
 	public ContactMapper contactMapper;
-	
+
 	@Override
 	public List<MemberPersona> getAllContacts() {
-		return contactMapper.getAllContacts(Integer.valueOf(ThreadLocalUtil.getToken()
-				.getMemberPersonaId().getStorageID()));
+		return contactMapper.getAllContacts(Integer.valueOf(ThreadLocalUtil
+				.getToken().getMemberPersonaId().getStorageID()));
 	}
 
-	
-	
 	@Override
-	public List<MemberPersona> getContactsByCircle(RelationshipType relationshipType) {
-		
-		
+	public List<MemberPersona> getContactsByCircle(
+			RelationshipType relationshipType) {
+
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID());
-		
-		if (relationshipType.equals(RelationshipType.CIRCLEFIRST))
-		{
-			return contactMapper.getContacts(memberRoleId, Integer.valueOf(1000));			
+		List<MemberPersona> list = null;
+
+		if (relationshipType.equals(RelationshipType.CIRCLEFIRST)) {
+			list = contactMapper.getContacts(memberRoleId,
+					Integer.valueOf(1000));
+		} else if (relationshipType.equals(RelationshipType.CIRCLESECOND)) {
+			list = contactMapper.getContacts(memberRoleId,
+					Integer.valueOf(1001));
+		} else {
+			list = contactMapper.getContacts(memberRoleId,
+					Integer.valueOf(1002));
 		}
-		else if(relationshipType.equals( RelationshipType.CIRCLESECOND))
-		{
-			return contactMapper.getContacts(memberRoleId, Integer.valueOf(1001));
-		}
-		else
-		{
-			return contactMapper.getContacts(memberRoleId, Integer.valueOf(1002));
-		}
-		
-		
+
+		return list;
 	}
 
 }

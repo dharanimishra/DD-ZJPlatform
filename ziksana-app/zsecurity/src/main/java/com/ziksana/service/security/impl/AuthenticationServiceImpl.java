@@ -36,7 +36,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	@Override
 	public boolean authenticateUser(String userId, String pwd) {
 		// TODO Auto-generated method s LDAtub
-        System.out.println(" entering to LDAP AUTH");
+        logger.debug(" entering to LDAP AUTH");
 		DirContext ctx = null;
 		LdapContextSource contextSource = new LdapContextSource();
 		// These values may be given via spring configuration file
@@ -53,7 +53,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 		try {
 			if (contextSource != null) {
-				System.out.println(" The context source is not null");
+				logger.debug(" The context source is not null");
 				ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system,dc=test,dc=lan", pwd);
 				//ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system", pwd);
 				

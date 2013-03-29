@@ -59,17 +59,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method :addToCalendar(Recommendation recommendation)");
-		try {
-			recommendationMapper.addToCalendar(recommendation);
-			LOGGER.debug("Class :"
-					+ getClass()
-					+ " : Method :addToCalendar(Recommendation recommendation) :recommendationsDaoImpl.addToCalendar(recommendation):");
-		} catch (Exception e) {
-			LOGGER.debug("Class :"
-					+ getClass()
-					+ " : Method :addToCalendar(Recommendation recommendation) :recommendationsDaoImpl.addToCalendar(recommendation): Exception :"
-					+ e);
-		}
+		recommendationMapper.addToCalendar(recommendation);
 		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method : addToCalendar(Recommendation recommendation) ");
@@ -87,17 +77,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method :addToTodo(Recommendation recommendation) ");
-		try {
-			recommendationMapper.addToTodo(recommendation);
-			LOGGER.debug("Class :"
-					+ getClass()
-					+ " : Method :addToTodo(Recommendation recommendation) :recommendationsDaoImpl.addToTodo(recommendation):");
-		} catch (Exception e) {
-			LOGGER.debug("Class :"
-					+ getClass()
-					+ " : Method :addToTodo(Recommendation recommendation) :recommendationsDaoImpl.addToTodo(recommendation): Exception :"
-					+ e);
-		}
+		recommendationMapper.addToTodo(recommendation);
 		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method :addToTodo(Recommendation recommendation) ");
@@ -115,17 +95,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Entering Method :addToIgnore(Recommendation recommendation) ");
-		try {
-			recommendationMapper.addToIgnore(recommendation);
-			LOGGER.debug("Class :"
-					+ getClass()
-					+ " : Method :addToIgnore(Recommendation recommendation) :recommendationsDaoImpl.addToIgnore(recommendation):");
-		} catch (Exception e) {
-			LOGGER.debug("Class :"
-					+ getClass()
-					+ " : Method :addToIgnore(Recommendation recommendation) :recommendationsDaoImpl.addToIgnore(recommendation): Exception :"
-					+ e);
-		}
+		recommendationMapper.addToIgnore(recommendation);
 		LOGGER.info("Class :"
 				+ getClass()
 				+ " : Leaving Method :addToIgnore(Recommendation recommendation) ");
