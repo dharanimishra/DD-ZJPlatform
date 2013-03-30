@@ -1,30 +1,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE HTML>
-<html>
-<head>
+
+
 <meta charset="utf-8">
 <title>Define Course</title>
 <!--Body Style sheet-->
-<link href="/ziksana-web/resources/css/main/styles.css" rel="stylesheet"
-	type="text/css" />
-<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet"
-	type="text/css" />
-<link href="/ziksana-web/resources/css/main/type-setting.css"
-	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/main/effects.css"
-	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/main/nav.css" rel="stylesheet"
-	type="text/css" />
+
+
+
 <link
 	href="/ziksana-web/resources/css/common/wizard/wizardstylesheet.css"
 	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/common/spinner/smartspinner.css"
-	rel="stylesheet" type="text/css" />
+
 <link
 	href="/ziksana-web/resources/css/common/tags/superbly-tagfield.css"
 	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/common/search/search.css"
-	rel="stylesheet" type="text/css" />
+
 <link href="/ziksana-web/resources/css/common/validation/validation.css"
 	rel="stylesheet" type="text/css" />
 
@@ -32,8 +22,7 @@
 	rel="stylesheet" type="text/css" />
 <!-- for the layout of the tree -->
 <!--End Body Style sheet-->
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+
 <script type="text/javascript"
 	src="/ziksana-web/resources/Dynamicjsonjs/z_message.js"></script>
 <script type="text/javascript"
@@ -96,20 +85,12 @@
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/tree_ed.js"></script>
 <script
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
-<script src="/ziksana-web/resources/js/custom/z_plugins.js"></script>
-<script src="/ziksana-web/resources/js/custom/z_common.js"></script>
+
 <!-- End tree -->
 <script
 	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
 	type="text/javascript"></script>
-<!--fancybox-->
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
 
-<script src="/ziksana-web/resources/js/jquery.fancybox.pack.2.1.3.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/css/jquery.fancybox.2.1.3.css" />
-<!--fancybox end-->
 <script src="/ziksana-web/resources/js/custom/libraryfunction.js"
 	type="text/javascript"></script>
 <script
@@ -163,7 +144,7 @@
 	$(document).ready(function(e) {
 		$(".containerTableStyle").css('height', '400px');
 		$(".containerTableStyle").css('overflow', 'auto');
-		
+		self.scrollTo(0,0);
 		  $('#homepage_nav').removeClass('current');
 	      $('#myprograms_nav').addClass('current');
 	});
@@ -310,9 +291,9 @@ span.standartTreeRow:hover {
 	text-decoration: none;
 }
 </style>
-</head>
 
-<body onLoad="self.scrollTo(0,0)">
+
+
 
 	<div id="wrapper">
 		<!--Header Container-->
@@ -859,6 +840,3 @@ span.standartTreeRow:hover {
 	<!--End Current Progress-->
 	<!--Footer Container-->
 	<!--End Footer Container-->
-	</div>
-</body>
-</html>

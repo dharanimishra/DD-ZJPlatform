@@ -4,38 +4,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE HTML>
-<html>
-	<head>
+
 	<meta charset="utf-8">
     <!-- fix. IE 6-->
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" >
 	<!-- fix. IE 6-->
-	<script>
-	  document.createElement('header');
-	  document.createElement('nav');
-	  document.createElement('section');
-	  document.createElement('article');
-	  document.createElement('aside');
-	  document.createElement('footer');
-	</script>
+	
 	<!-- end fix. IE 6-->
 	<title>My Courses</title>
-	<!--Body Style sheet-->
-	 <link rel="stylesheet" type="text/css" href="../resources/css/dropdown.css" />
-    <link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../resources/css/tag/tagit-simple-blue.css">
-    <link rel="stylesheet" href="../resources/css/tipsy.css" type="text/css" />
-    <link rel="stylesheet" href="../resources/zeni/css/zeni/zeni2.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/jdashboard/jdashboard.css" />
 	
-	<script src="../resources/js/jquery-1.7.2.min.js"></script>
 	
-	<script src="../resources/js/custom/z_plugins.js"></script>
-<script src="../resources/js/custom/z_common.js"></script>
+	
+
 <script src="../resources/js/jquery_confirm/jquery.confirm.js"></script>
 <link rel="stylesheet" href="../resources/js/jquery_confirm/jquery.confirm.css"/>
 
@@ -50,17 +30,10 @@
 	<script src="../resources/js/ui/jquery.ui.button.js"></script>
 	<script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
 	<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
-    <!--fancybox-->
-	<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-     <script src="../resources/js/jquery.fancybox.pack.2.1.3.js"></script>
-	 <link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
-	<!--fancybox end-->
+   
 	
-	<script type='text/javascript' src='../resources/js/jquery.tipsy.js'></script>
-	<script src="../resources/js/jquery.collapse.js"></script>
-	<script src="../resources/js/ui/jquery.raty.min.js"></script>    
-    <script src="../resources/js/custom.js" type="text/javascript"></script> 
-  	<script type="text/javascript" src="../resources/jdashboard/jdashboard.min.js"></script>
+
+
 	<script type="text/javascript">
 			
 		$(function() {
@@ -300,9 +273,7 @@ color:#666;
 		</style>
   
         
-        
-</head>
-<body>
+
 <div id="wrapper">
        <!--Header Container-->
         
@@ -582,6 +553,5 @@ $('#edu-star').raty({
 	.course_progress_bar {background: seagreen; display: block; height: 5px;}
    </style>
   
-</body>
-</html>
+
 

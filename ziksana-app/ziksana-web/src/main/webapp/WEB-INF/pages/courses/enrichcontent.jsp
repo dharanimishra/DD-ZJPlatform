@@ -1,19 +1,8 @@
-<!DOCTYPE HTML>
-<html>
-<head>
+
 <meta charset="utf-8">
 <title>Enrich Content</title>
 <!--Body Style sheet-->
-<link href="/ziksana-web/resources/css/main/styles.css" rel="stylesheet"
-	type="text/css" />
-<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet"
-	type="text/css" />
-<link href="/ziksana-web/resources/css/main/type-setting.css"
-	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/main/effects.css"
-	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/main/nav.css" rel="stylesheet"
-	type="text/css" />
+
 
 <link
 	href="/ziksana-web/resources/css/common/wizard/wizardstylesheet.css"
@@ -94,8 +83,7 @@
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/tree_ed.js"></script>
 <script
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
-<script src="/ziksana-web/resources/js/custom/z_plugins.js"></script>
-<script src="/ziksana-web/resources/js/custom/z_common.js"></script>
+
 <!-- End tree -->
 
 <link rel="stylesheet" type="text/css"
@@ -136,6 +124,7 @@ $('#myprograms_nav').addClass('current');
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		self.scrollTo(0,0);
 		jQuery("#Associatequalifier").validationEngine();
 		
 		 
@@ -243,9 +232,6 @@ span.standartTreeRow:hover {
     text-decoration: none;
 }
 </style>
-</head>
-
-<body onLoad="self.scrollTo(0,0)">
 
 	<div id="wrapper">
 		
@@ -441,5 +427,3 @@ span.standartTreeRow:hover {
 	top: 2px;
 }
 </style>
-</body>
-</html>

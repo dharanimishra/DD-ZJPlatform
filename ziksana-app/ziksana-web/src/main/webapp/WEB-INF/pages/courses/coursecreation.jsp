@@ -1,20 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
-<html>
-<head>
+
 <meta charset="utf-8">
 <title>Course Creation</title>
 <!--Body Style sheet-->
-<link href="/ziksana-web/resources/css/main/styles.css" rel="stylesheet"
-	type="text/css" />
-<link href="/ziksana-web/resources/css/styles.css" rel="stylesheet"
-	type="text/css" />
-<link href="/ziksana-web/resources/css/main/type-setting.css"
-	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/main/effects.css"
-	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/main/nav.css" rel="stylesheet"
-	type="text/css" />
+
 <link
 	href="/ziksana-web/resources/css/common/wizard/wizardstylesheet.css"
 	rel="stylesheet" type="text/css" />
@@ -94,8 +84,7 @@
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/tree_ed.js"></script>
 <script
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
-<script src="/ziksana-web/resources/js/custom/z_plugins.js"></script>
-<script src="/ziksana-web/resources/js/custom/z_common.js"></script>
+
 <!-- End tree -->
 <script
 	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
@@ -141,6 +130,7 @@
 $(document).ready(function(e) {
 $(".containerTableStyle").css('height','400px');
 $(".containerTableStyle").css('overflow','auto');
+self.scrollTo(0,0);
 $('.cduration').spinner({ min: 0, max: 20,  });
 
 });
@@ -258,9 +248,9 @@ span.standartTreeRow:hover {
 }
 
 </style>
-</head>
 
-<body onLoad="self.scrollTo(0,0)">
+
+
 
 	<div id="wrapper">
 		<!--Header Container-->
@@ -690,5 +680,3 @@ span.standartTreeRow:hover {
 	</div>
 
 
-</body>
-</html>
