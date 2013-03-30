@@ -44,7 +44,7 @@ public class Course extends AuditHistory {
 	private ZID courseId;
 	private int coursesId;
 	private int memberRoleId;
-	
+
 	public int getMemberRoleId() {
 		return memberRoleId;
 	}
@@ -117,8 +117,8 @@ public class Course extends AuditHistory {
 	private Integer duration = null;
 	private Integer durationUnits = null;
 	private Integer subjClassificationId = null;
-	
-	private ZID learningComponentId =null;
+
+	private ZID learningComponentId = null;
 
 	public ZID getLearningComponentId() {
 		return learningComponentId;
@@ -143,46 +143,10 @@ public class Course extends AuditHistory {
 	private Integer version = null;
 
 	private List<CourseTagcloud> courseTagClouds = null;
-	private List<CoursePlaybook> coursePlaybookList = null;
+
 	private List<CourseLearningPlanner> courseLearningPlannerList = null;
 	private TestPackage testPackage = null;
 	private List<Engagement> engagementList = null;
-
-	/**
-	 * @param index
-	 * @return
-	 */
-	public CoursePlaybook getCoursePlaybook(int index) {
-		if (coursePlaybookList == null) {
-			throw new IllegalArgumentException(
-					"CoursePlaybook cannot set to null");
-		}
-
-		try {
-			return coursePlaybookList.get(index);
-		} catch (Exception e) {
-			throw new IllegalStateException("CoursePlaybook at index [" + index
-					+ "] not found");
-		}
-	}
-
-	/**
-	 * @param playbook
-	 */
-	public void addCoursePlaybook(CoursePlaybook playbook) {
-		if (coursePlaybookList == null) {
-			coursePlaybookList = new ArrayList<CoursePlaybook>();
-		}
-		playbook.setCourse(this);
-		coursePlaybookList.add(playbook);
-	}
-
-	/**
-	 * @param list
-	 */
-	public void setCoursePlaybookList(List<CoursePlaybook> list) {
-		this.coursePlaybookList = list;
-	}
 
 	/**
 	 * @param index

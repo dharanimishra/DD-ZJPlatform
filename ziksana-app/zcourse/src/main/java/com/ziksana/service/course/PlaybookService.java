@@ -2,8 +2,7 @@ package com.ziksana.service.course;
 
 import java.util.List;
 
-import com.ziksana.domain.course.CoursePlaybook;
-import com.ziksana.domain.course.CoursePlaybookView;
+
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.id.ZID;
 
@@ -20,8 +19,8 @@ public interface PlaybookService {
 	 * @return
 	 * @throws CourseException
 	 */
-	public CoursePlaybook getCoursePlaybook(Integer playbookId)
-			throws CourseException;
+//	public CoursePlaybook getCoursePlaybook(Integer playbookId)
+//			throws CourseException;
 
 	/**
 	 * PlaybookNameType: Enum holds the
@@ -35,8 +34,8 @@ public interface PlaybookService {
 	 * @return
 	 * @throws CourseException
 	 */
-	public List<CoursePlaybook> getPlaybookList(Integer courseId)
-			throws CourseException;
+//	public List<CoursePlaybook> getPlaybookList(Integer courseId)
+//			throws CourseException;
 
 	/**
 	 * Retrieves the playbook components for course and learning component
@@ -44,7 +43,7 @@ public interface PlaybookService {
 	 * @return
 	 * @throws CourseException
 	 */
-	public List<CoursePlaybook> getCoursePlaybookList(ZID courseId)	throws CourseException;
+	//public List<CoursePlaybook> getCoursePlaybookList(ZID courseId)	throws CourseException;
 			
 	/**
 	 * @param member
@@ -54,14 +53,14 @@ public interface PlaybookService {
 	 * @return
 	 * @throws CourseException
 	 */
-	public void  createNewCoursePlaybook(CoursePlaybook coursePB,CoursePlaybookView coursePBView) throws CourseException;
+	//public void  createNewCoursePlaybook(CoursePlaybook coursePB,CoursePlaybookView coursePBView) throws CourseException;
 	
 	/**
 	 * @param coursePB
 	 * @param coursePBView
 	 * @throws CourseException
 	 */
-	public void updateCoursePlaybook(CoursePlaybook coursePB) throws CourseException;
+	//public void updateCoursePlaybook(CoursePlaybook coursePB) throws CourseException;
 	
 	/**
 	 * @param coursePB
@@ -74,14 +73,14 @@ public interface PlaybookService {
 	 * @param coursePB
 	 * @throws CourseException
 	 */
-	public void previewPlaybook(CoursePlaybook coursePB) throws CourseException;
+//	public void previewPlaybook(CoursePlaybook coursePB) throws CourseException;
 
 	/**
 	 * Creates the Default playbook for all course components.
 	 * @param coursePB
 	 * @throws CourseException
 	 */
-	public void  generatePlaybook(CoursePlaybook coursePB) throws CourseException;
+	//public void  generatePlaybook(CoursePlaybook coursePB) throws CourseException;
 	
 
 	/**
@@ -89,5 +88,5 @@ public interface PlaybookService {
 	 * @param course
 	 * @throws CourseException
 	 */
-	public void createDefaultPlaybook(CoursePlaybook coursePlaybook)  throws CourseException;
+	//public void createDefaultPlaybook(CoursePlaybook coursePlaybook)  throws CourseException;
 }
