@@ -38,7 +38,7 @@
 	 </definition>
 	 
 	 <!--HomePage Educator/Learner -->
-	<definition name="dashboard-div" extends="commonPageLayoutLatest">
+	<definition name="homepagelayout" extends="commonPageLayoutLatest">
 		<put-attribute name="page_title" value="Dashboard" />
 		<put-attribute name="slogan" value="/WEB-INF/pages/common/slogan.jsp" />
 		<put-attribute name="body" value="/WEB-INF/pages/dashboard/educator_dashboard.jsp" />
