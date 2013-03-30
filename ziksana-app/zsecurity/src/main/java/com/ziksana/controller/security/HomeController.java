@@ -18,17 +18,16 @@ public class HomeController {
 	public @ResponseBody
 	ModelAndView getEducatorLouncher() {
 		logger.info("Launcher Page");
-		ModelAndView modelAndView = new ModelAndView("common/educator_louncher");
+		ModelAndView modelAndView = new ModelAndView("common/launcher");
 
 		return modelAndView;
 
 	}
 
 	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
-	public @ResponseBody
-	ModelAndView redirectEducatorLauncherPage() {
-		logger.info("Popup window");
-		ModelAndView modelAndView = new ModelAndView("dashboard-div");
+	public @ResponseBody ModelAndView homePage() {
+
+		ModelAndView modelAndView = new ModelAndView("homepagelayout");
 
 		return modelAndView;
 

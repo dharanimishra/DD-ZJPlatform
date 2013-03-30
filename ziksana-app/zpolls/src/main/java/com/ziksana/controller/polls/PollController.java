@@ -41,7 +41,7 @@ public class PollController {
 	ModelAndView getPollQuestions() {
 
 
-		ModelAndView modelView = new ModelAndView("xml/pollQuestionsList");
+		ModelAndView modelView = new ModelAndView("xml/pollquestionslist");
 		
 
 		try {
@@ -59,10 +59,10 @@ public class PollController {
 	ModelAndView getPollQuestion() {
 
 
-		ModelAndView modelView = new ModelAndView("xml/pollQuestionsList");
+		ModelAndView modelView = new ModelAndView("xml/pollquestionslist");
 		try {
 
-			modelView.addObject("pollQuestionsList",pollService.getAllPollQuestion());
+			modelView.addObject("pollsList",pollService.getAllPollQuestion());
 		} catch (ZiksanaException exception) {
 			LOGGER.error(MessageUtil.getMessage(exception.getMessage()), exception );
 		}
@@ -76,7 +76,7 @@ public class PollController {
 			@RequestParam(value = "startDate", required = true) String startDate,
 			@RequestParam(value = "endDate", required = true) String endDate) {
 
-		ModelAndView modelView = new ModelAndView("xml/pollQuestionsList");
+		ModelAndView modelView = new ModelAndView("xml/pollquestionslist");
 		try {
 
 			modelView.addObject("pollQuestionsList",pollService.getAllPollQuestionsByDate(startDate, endDate));
@@ -93,7 +93,7 @@ public class PollController {
 	@RequestMapping(value = "/getallpollquestionsanswers/{questionId}", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView getPollQuestionsAndAnswers(@PathVariable Integer questionId) {
-		ModelAndView modelView = new ModelAndView("xml/pollQuestionsAnswersList");
+		ModelAndView modelView = new ModelAndView("xml/pollquestionsanswerslist");
 		try {
 
 			modelView.addObject("pollQuestionsAnswersList",pollService.getPollResultByQuestion(questionId));
@@ -107,7 +107,7 @@ public class PollController {
 
 	@RequestMapping(value = "/showpoll", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView showPolls() {
-		ModelAndView modelView = new ModelAndView("xml/pollResultNQuestionNew");
+		ModelAndView modelView = new ModelAndView("xml/pollresultlist");
 		try {
 
 			List<PollResultNQuestion> pollQuestionList = pollService.getPollQuestionsAndResults();
@@ -179,7 +179,7 @@ public class PollController {
 	@RequestMapping(value = "/getpollpopuppage", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView getPopupWindow() {
 		
-		ModelAndView modelAndView = new ModelAndView("common/pollResults");
+		ModelAndView modelAndView = new ModelAndView("common/pollresultspage");
 		
 
 		return modelAndView;

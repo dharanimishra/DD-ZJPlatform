@@ -60,28 +60,7 @@
 		where
 		mpt.MemberRoleId=  #{memberRoleId} and
 		qb.ID=#{questionBankId}
-		<!-- select distinct qb.questionbankid as questionBankId,
-		qba.QuestionBankAnswerId,
-		qb.QuestionContent,
-		qba.`Answer Content`,
-		qba.`Answer Sequence` ,mpt.MemberRoleId,
-		mpt.MemberPersonalityTestId
-
-		from
-		psttestquestion q
-		JOIN asmquestionbank qb
-		ON
-		q.QuestionBankId=qb.QuestionBankId
-		JOIN asmquestionbankanswer qba ON
-		qb.QuestionBankId=qba.QuestionBankId
-		JOIN
-		pstmemberpersonalitytest mpt
-		ON
-		mpt.MemberPersonalityTestId=mpt.MemberPersonalityTestId
-		where
-		mpt.MemberRoleId= #{memberRoleId} and
-		qb.QuestionBankId=#{questionBankId}
- -->
+		
 	</select>
 
 

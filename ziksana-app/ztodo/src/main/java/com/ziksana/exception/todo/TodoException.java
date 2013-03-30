@@ -11,10 +11,12 @@ public class TodoException extends ZiksanaException {
 		super(errorCode, error);
 		
 	}
+	
 	public TodoException(String errorCode) {
 		super(errorCode);
 		
 	}
+	//TODO Exception Error Code with Dyanamic Message
 	public TodoException(String errorCode, Object[] args) {
 		
 		super(MessageUtil.getMessage(errorCode, args));

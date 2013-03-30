@@ -89,7 +89,7 @@
 		<property name="excludedExceptions">
 			<value>
 				com.ziksana.exception.ZiksanaException
-		</value>
+			</value>
 		</property>
 	</bean>
 </beans>

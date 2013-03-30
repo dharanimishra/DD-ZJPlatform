@@ -2,8 +2,6 @@ package com.ziksana.domain.recommendations;
 
 import java.util.Date;
 
-import com.ziksana.domain.member.MemberPersona;
-
 public class Recommendation {
 
 	private Integer ID;
@@ -13,8 +11,6 @@ public class Recommendation {
 	private String description;
 
 	private Integer category;
-
-	private MemberPersona memberPersona;
 
 	private String currentState;
 
@@ -88,14 +84,6 @@ public class Recommendation {
 
 	public void setCategory(Integer category) {
 		this.category = category;
-	}
-
-	public MemberPersona getMemberPersona() {
-		return memberPersona;
-	}
-
-	public void setMemberPersona(MemberPersona memberPersona) {
-		this.memberPersona = memberPersona;
 	}
 
 	public String getCurrentState() {

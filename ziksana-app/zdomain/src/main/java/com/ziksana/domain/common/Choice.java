@@ -8,7 +8,7 @@ public class Choice implements Comparable<Choice> {
 	private ZID id;
 	private Integer index;
 	private String text;
-	private String imageUrl;
+
 	private Integer memPstTestId;
 
 	
@@ -66,24 +66,10 @@ public class Choice implements Comparable<Choice> {
 		return text;
 	}
 
-	/**
-	 * @param imageUrl
-	 *            the imageUrl to set
-	 */
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-
-	/**
-	 * @return the imageUrl
-	 */
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
+	
 	@Override
 	public int compareTo(Choice o) {
-		// TODO Auto-generated method stub
+		
 		return Integer.valueOf(index).compareTo(Integer.valueOf(o.index));
 	}
 

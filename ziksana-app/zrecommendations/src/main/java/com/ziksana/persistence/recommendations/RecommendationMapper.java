@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import com.ziksana.domain.recommendations.Recommendation;
-import com.ziksana.domain.todo.Todo;
 
 /**
  * @author

@@ -24,7 +24,6 @@ import com.ziksana.exception.ZiksanaException;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.recommendations.RecommendationsService;
 import com.ziksana.service.todo.TodoService;
-import com.ziksana.util.MessageUtil;
 
 /**
  * @author vtg-p13

@@ -1,4 +1,4 @@
-/**
+	/**
  * 
  */
 package com.ziksana.domain.announcements;

@@ -5,13 +5,6 @@
 	<select id="getPollResultByQuestion" resultMap="pollResultMap"
 		parameterType="int">
 
-		<!-- select (answer1count/totalrespondents)*100 as answer1
-		,(answer2count/totalrespondents)*100 as answer2,
-		(answer3count/totalrespondents)*100 as answer3,
-		(answer4count/totalrespondents)*100 as answer4
-		,(answer5count/totalrespondents)*100 as answer5
-		from
-		utlzpollquestionresponse where pollquestionid=#{questionId} -->
 		select 
 		(answer1count/sum(answer1count+answer2count+answer3count))*100 as answer1,
 		(answer2count/sum(answer1count+answer2count+answer3count))*100 as answer2,
@@ -26,13 +19,6 @@
 	<select id="getPollQuestion" resultMap="pollQuestionMap"
 		parameterType="int">
 
-		<!-- select
-		distinct question.*
-		from
-		utlzpollquestion question join
-		utlzpolltracker tracker ON question.ID=tracker.pollQuestionId
-		where
-		tracker.answeringMemberRoleId=#{userMemberRoleId} -->
 		select
 		distinct question.*
 		from

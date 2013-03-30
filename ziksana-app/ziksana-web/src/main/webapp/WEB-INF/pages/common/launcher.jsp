@@ -827,7 +827,7 @@ $("#datepara").show();
                
                 <div class="account-container two-bottom-rounded-box" style="border:none;">
               <div class="container">
-                <div class="topnav" style="width:145px;" ><a href="#" class="signin wite bold" style="line-height:35px;"><span class="text-size-px12 wite bold">My Account</span></a> </div>
+                <div class="topnav" style="width:145px;" ><a href="#" class="signin wite bold" style="line-height:35px;"><span class="text-size-px12 wite bold">Account</span></a> </div>
                 <fieldset id="signin_menu">
                  <ul>
                    <li><a href="#">Preferences</a></li>
@@ -855,7 +855,7 @@ $("#datepara").show();
        <div class="navsublinks" style="margin-right:23px;padding-top:35px;">
 
  						<ul>
-                        <li><a href="${educatorPage}" target="_parent">My Home</a></li>
+                        <li><a href="${educatorPage}" target="_parent">Home</a></li>
                         <li><a href="/ziksana-web/resources/analytics/Educator_performance.html" target="_parent">Analytics</a></li>
                         <li><a href="#">Locker</a></li>
 						</ul>
@@ -866,7 +866,7 @@ $("#datepara").show();
        <div class="navsublinks" style="margin-right:23px;padding-top:35px;">
 
  						<ul>
-                        <li><a href="${educatorPage}" target="_parent">My Home</a></li>
+                        <li><a href="${educatorPage}" target="_parent">Home</a></li>
                         <li><a href="/ziksana-web/resources/analytics/students_performance.html" target="_parent">Analytics</a></li>
                         <li><a href="#">Locker</a></li>
 						</ul>

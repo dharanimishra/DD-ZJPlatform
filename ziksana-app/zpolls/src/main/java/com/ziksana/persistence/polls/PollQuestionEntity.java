@@ -9,157 +9,123 @@ import com.ziksana.domain.polls.Poll;
 
 /**
  * @author prabu
- *
+ * 
  */
 public class PollQuestionEntity {
-	
-   private Poll poll;
-	  
-	    
-	
-    private Integer ID;
 
-    
-    private Integer creatorMemberRoleId;
+	private Poll poll;
 
-    
-    private Integer pollId;
+	private Integer ID;
 
-    
-    private Integer questionType;
+	private Integer creatorMemberRoleId;
 
-    
-    private Boolean active;
+	private Integer pollId;
 
-    
-    private String questionText;
+	private Integer questionType;
 
-    
-    private String answer1;
+	private Boolean active;
 
-    
-    private String answer2;
+	private String questionText;
 
-    
-    private String answer3;
+	private String answer1;
 
-    
-    private String answer4;
+	private String answer2;
 
-    
-    private String answer5;
-    
-    private Date pollDate;
+	private String answer3;
 
-    
-    public Integer getID() {
-        return ID;
-    }
+	private String answer4;
 
-    
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
+	private String answer5;
 
-    
-    public Integer getCreatorMemberRoleId() {
-        return creatorMemberRoleId;
-    }
+	private Date pollDate;
 
-    
-    public void setCreatorMemberRoleId(Integer creatorMemberRoleId) {
-        this.creatorMemberRoleId = creatorMemberRoleId;
-    }
+	public Integer getID() {
+		return ID;
+	}
 
-    
-    public Integer getPollId() {
-        return pollId;
-    }
+	public void setID(Integer ID) {
+		this.ID = ID;
+	}
 
-    
-    public void setPollId(Integer pollId) {
-        this.pollId = pollId;
-    }
+	public Integer getCreatorMemberRoleId() {
+		return creatorMemberRoleId;
+	}
 
-    
-    public Integer getQuestionType() {
-        return questionType;
-    }
+	public void setCreatorMemberRoleId(Integer creatorMemberRoleId) {
+		this.creatorMemberRoleId = creatorMemberRoleId;
+	}
 
-    
-    public void setQuestionType(Integer questionType) {
-        this.questionType = questionType;
-    }
+	public Integer getPollId() {
+		return pollId;
+	}
 
-    
-    public Boolean getActive() {
-        return active;
-    }
+	public void setPollId(Integer pollId) {
+		this.pollId = pollId;
+	}
 
-    
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
+	public Integer getQuestionType() {
+		return questionType;
+	}
 
-    
-    public String getQuestionText() {
-        return questionText;
-    }
+	public void setQuestionType(Integer questionType) {
+		this.questionType = questionType;
+	}
 
-    
-    public void setQuestionText(String questionText) {
-        this.questionText = questionText == null ? null : questionText.trim();
-    }
+	public Boolean getActive() {
+		return active;
+	}
 
-    
-    public String getAnswer1() {
-        return answer1;
-    }
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
 
-    
-    public void setAnswer1(String answer1) {
-        this.answer1 = answer1 == null ? null : answer1.trim();
-    }
+	public String getQuestionText() {
+		return questionText;
+	}
 
-        public String getAnswer2() {
-        return answer2;
-    }
+	public void setQuestionText(String questionText) {
+		this.questionText = questionText == null ? null : questionText.trim();
+	}
 
-    
-    public void setAnswer2(String answer2) {
-        this.answer2 = answer2 == null ? null : answer2.trim();
-    }
+	public String getAnswer1() {
+		return answer1;
+	}
 
-    
-    public String getAnswer3() {
-        return answer3;
-    }
+	public void setAnswer1(String answer1) {
+		this.answer1 = answer1 == null ? null : answer1.trim();
+	}
 
-    
-    public void setAnswer3(String answer3) {
-        this.answer3 = answer3 == null ? null : answer3.trim();
-    }
+	public String getAnswer2() {
+		return answer2;
+	}
 
-    
-    public String getAnswer4() {
-        return answer4;
-    }
+	public void setAnswer2(String answer2) {
+		this.answer2 = answer2 == null ? null : answer2.trim();
+	}
 
-    
-    public void setAnswer4(String answer4) {
-        this.answer4 = answer4 == null ? null : answer4.trim();
-    }
+	public String getAnswer3() {
+		return answer3;
+	}
 
-    
-    public String getAnswer5() {
-        return answer5;
-    }
+	public void setAnswer3(String answer3) {
+		this.answer3 = answer3 == null ? null : answer3.trim();
+	}
 
-    
-    public void setAnswer5(String answer5) {
-        this.answer5 = answer5 == null ? null : answer5.trim();
-    }
+	public String getAnswer4() {
+		return answer4;
+	}
 
+	public void setAnswer4(String answer4) {
+		this.answer4 = answer4 == null ? null : answer4.trim();
+	}
+
+	public String getAnswer5() {
+		return answer5;
+	}
+
+	public void setAnswer5(String answer5) {
+		this.answer5 = answer5 == null ? null : answer5.trim();
+	}
 
 	/**
 	 * @return the poll
@@ -168,36 +134,33 @@ public class PollQuestionEntity {
 		return poll;
 	}
 
-
 	/**
-	 * @param poll the poll to set
+	 * @param poll
+	 *            the poll to set
 	 */
 	public void setPoll(Poll poll) {
 		this.poll = poll;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return String.format("The question is %s, answer1 is %s, answer2 is %s, " +
-				"answer3 is %s, answer4 is %s, answer5 is %s", 
-				questionText,answer1,answer2,answer3,answer4,answer5);
+		return String.format(
+				"The question is %s, answer1 is %s, answer2 is %s, "
+						+ "answer3 is %s, answer4 is %s, answer5 is %s",
+				questionText, answer1, answer2, answer3, answer4, answer5);
 	}
-
 
 	public Date getPollDate() {
 		return pollDate;
 	}
 
-
 	public void setPollDate(Date pollDate) {
 		this.pollDate = pollDate;
-	}   
- 
-	
+	}
 
 }

@@ -21,8 +21,9 @@
 		<put-attribute name="page_footer" value="/WEB-INF/pages/common/footer.jsp" />
 	 </definition>
 	 
+	 
 	 <!--HomePage Educator/Learner -->
-	<definition name="dashboard-div" extends="commonPageLayout">
+	<definition name="homepagelayout" extends="commonPageLayout">
 		<put-attribute name="page_title" value="Dashboard" />
 		<put-attribute name="slogan" value="/WEB-INF/pages/common/slogan.jsp" />
 		<put-attribute name="body" value="/WEB-INF/pages/dashboard/educator_dashboard.jsp" />
@@ -72,9 +73,5 @@
 		<put-attribute name="body" value="/WEB-INF/pages/courses/enrichcontent.jsp" />
 	</definition>
 
-	<!-- Common Error Page-->
-	<definition name="error-page">
-		<put-attribute name="page_title" value="Error !!" />
-		<put-attribute name="body" value="/WEB-INF/errorPage.jsp" />
-	</definition>
+	
 </tiles-definitions>

@@ -7,7 +7,7 @@
 
 <QuestionsList>
 
-		<c:forEach var="questions" items="${pollQuestionsList}">
+		<c:forEach var="questions" items="${pollsList}">
 			<Questions>
 			<questionId>${questions.ID}</questionId>
 			<questionDate>${questions.pollDate}</questionDate>

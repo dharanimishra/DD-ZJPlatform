@@ -1,8 +1,6 @@
 package com.ziksana.persistence.polls;
 
 import com.ziksana.domain.polls.Poll;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface PollMapper {
     /**
