@@ -29,15 +29,12 @@ import com.ziksana.id.ZID;
 import com.ziksana.persistence.course.CourseContentSecurityMapper;
 import com.ziksana.persistence.course.CourseLearningComponentMapper;
 import com.ziksana.persistence.course.CourseMapper;
-import com.ziksana.persistence.course.CoursePlaybookMapper;
 import com.ziksana.persistence.course.CourseTagcloudMapper;
 import com.ziksana.persistence.course.EnrichmentMapper;
 import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.persistence.course.LearningComponentNestMapper;
 import com.ziksana.persistence.course.LearningContentMapper;
-import com.ziksana.persistence.course.PlannerMapper;
-import com.ziksana.persistence.course.SocializeMapper;
 import com.ziksana.persistence.subscription.SubscriptionMapper;
 import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.course.CourseService;
@@ -71,12 +68,7 @@ public class CourseServiceImpl implements CourseService {
 	public LearningComponentContentMapper learningComponentContentMapper;
 	@Autowired
 	public EnrichmentMapper enrichMapper;
-	@Autowired
-	public PlannerMapper plannerMapper;
-	@Autowired
-	public CoursePlaybookMapper playbookMapper;
-	@Autowired
-	public SocializeMapper socializeMapper;
+
 	@Autowired
 	public SubscriptionMapper subscriptionMapper;
 
@@ -209,9 +201,7 @@ public class CourseServiceImpl implements CourseService {
 		LearningComponentNest compNest = null;
 		LearningComponent learningComp = null;
 
-
 		courseDetails = course.getCourseDetails();
-
 
 		courseLearningComponentList = courseDetails
 				.getCourseLearningComponentsList();
@@ -219,7 +209,6 @@ public class CourseServiceImpl implements CourseService {
 		for (CourseLearningComponent courseLearningComponent : courseLearningComponentList) {
 
 			learningComp = courseLearningComponent.getLearningComponent();
-
 
 			// UPDATE OPERATION
 			// if (courseLearningComponent.getCourseLearningComponentId() !=
@@ -232,9 +221,9 @@ public class CourseServiceImpl implements CourseService {
 				LOGGER.debug("Before Updating the Learning Component ....");
 				learningComponentMapper.updateLearningComponent(learningComp);
 				LOGGER.debug("After Updating the CourseLearningComponent : ");
-				
-				course.setLearningComponentId(learningComp.getLearningComponentId());
 
+				course.setLearningComponentId(learningComp
+						.getLearningComponentId());
 
 			} else {
 				// SAVE OPERATION
@@ -245,8 +234,9 @@ public class CourseServiceImpl implements CourseService {
 
 				LOGGER.debug("After Saving the CourseLearningComponent Course ID..: "
 						+ course.getCourseId().getDisplayID());
-				
-				course.setLearningComponentId(learningComp.getLearningComponentId());
+
+				course.setLearningComponentId(learningComp
+						.getLearningComponentId());
 
 				courseLearningComponent.setCourse(course);
 
@@ -258,9 +248,7 @@ public class CourseServiceImpl implements CourseService {
 
 				compDetails = learningComp.getLearningComponentDetails();
 
-
 				compNest = compDetails.getLearningComponentNest();
-
 
 				compNest.setNestLearningComponent(learningComp);
 
@@ -280,12 +268,10 @@ public class CourseServiceImpl implements CourseService {
 
 		Course course = null;
 
-
 		LOGGER.debug("Before retrieving the base course details ");
 
 		course = courseMapper.getBaseCourseDetails(new Integer(courseId
 				.getStorageID()));
-
 
 		return course;
 	}
@@ -297,7 +283,6 @@ public class CourseServiceImpl implements CourseService {
 		List<Course> courseList = null;
 		courseList = new ArrayList<Course>();
 		Integer memberRoleId = null;
-
 
 		LOGGER.debug("MemberRoleID : " + memberPersonaId);
 
@@ -410,65 +395,65 @@ public class CourseServiceImpl implements CourseService {
 									assignmentSize = courseMapper
 											.checkAssignment(lCompId);
 
-									if (assignmentSize > 0) {
-
-										if (isAssignmentExist.equals(false)
-												|| enrichCheck.equals(true)) {
-											isAssignmentExist = true;
-											courseProgress = courseProgress + 15;
-										} else {
-											assignCheck = true;
-										}
-										count = plannerMapper
-												.isPlannerExists(
-														courseId,
-														new Integer(
-																courseLearningComp
-																		.getCourseLearningComponentId()
-																		.getStorageID()));
-
-										if (count > 0) {
-
-											if (isPlannerExists.equals(false)
-													|| assignCheck.equals(true)) {
-												isPlannerExists = true;
-												courseProgress = courseProgress + 15;
-											} else {
-												plannerCheck = true;
-											}
-
-											coursePlaybookSize = playbookMapper
-													.isPlaybookExists(courseId);
-
-											if (coursePlaybookSize > 0) {
-
-												if (isPlaybookExists
-														.equals(false)
-														|| plannerCheck
-																.equals(true)) {
-													isPlaybookExists = true;
-													courseProgress = courseProgress + 15;
-												} else {
-													playbookCheck = true;
-												}
-												reviewProgressSize = socializeMapper
-														.isSocializeExists(
-																courseId,
-																memberRoleId);
-
-												if (reviewProgressSize > 0) {
-
-													if (isSocialized
-															.equals(false)
-															|| playbookCheck
-																	.equals(true)) {
-														isSocialized = true;
-														courseProgress = courseProgress + 15;
-													}
-												}
-											}
-										}
-									}
+//									if (assignmentSize > 0) {
+//
+//										if (isAssignmentExist.equals(false)
+//												|| enrichCheck.equals(true)) {
+//											isAssignmentExist = true;
+//											courseProgress = courseProgress + 15;
+//										} else {
+//											assignCheck = true;
+//										}
+//										count = plannerMapper
+//												.isPlannerExists(
+//														courseId,
+//														new Integer(
+//																courseLearningComp
+//																		.getCourseLearningComponentId()
+//																		.getStorageID()));
+//
+//										if (count > 0) {
+//
+//											if (isPlannerExists.equals(false)
+//													|| assignCheck.equals(true)) {
+//												isPlannerExists = true;
+//												courseProgress = courseProgress + 15;
+//											} else {
+//												plannerCheck = true;
+//											}
+//
+//											coursePlaybookSize = playbookMapper
+//													.isPlaybookExists(courseId);
+//
+//											if (coursePlaybookSize > 0) {
+//
+//												if (isPlaybookExists
+//														.equals(false)
+//														|| plannerCheck
+//																.equals(true)) {
+//													isPlaybookExists = true;
+//													courseProgress = courseProgress + 15;
+//												} else {
+//													playbookCheck = true;
+//												}
+//												reviewProgressSize = socializeMapper
+//														.isSocializeExists(
+//																courseId,
+//																memberRoleId);
+//
+//												if (reviewProgressSize > 0) {
+//
+//													if (isSocialized
+//															.equals(false)
+//															|| playbookCheck
+//																	.equals(true)) {
+//														isSocialized = true;
+//														courseProgress = courseProgress + 15;
+//													}
+//												}
+//											}
+//										}
+//									}
 								}
 							}
 
@@ -504,7 +489,6 @@ public class CourseServiceImpl implements CourseService {
 			CourseAdditionalProperty courseAdditionalProperty)
 			throws CourseException {
 
-
 		LOGGER.debug("Before saving the Course Additional Information ... ");
 		courseMapper.saveAddnlInfo(courseAdditionalProperty);
 
@@ -526,7 +510,6 @@ public class CourseServiceImpl implements CourseService {
 			throws CourseException {
 		List<LearningComponent> learningObjectList = null;
 		Boolean isLearningObject = true;
-
 
 		LOGGER.debug("Member role ID : " + memberRoleId);
 
@@ -653,13 +636,15 @@ public class CourseServiceImpl implements CourseService {
 		return subscriptionMapper.getCoursesByLearningProgram(
 				Integer.valueOf(memberRoleId), learningProgramId);
 	}
-	
+
 	@Override
-	public List<Course> getThreeCoursesByLearningProgram(Integer learningProgramId) {
+	public List<Course> getThreeCoursesByLearningProgram(
+			Integer learningProgramId) {
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
-		return subscriptionMapper.getThreeCoursesByLearningProgram(Integer.valueOf(memberRoleId), learningProgramId);
+		return subscriptionMapper.getThreeCoursesByLearningProgram(
+				Integer.valueOf(memberRoleId), learningProgramId);
 	}
 
 	@Override
@@ -707,14 +692,14 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public Course getCourseByCourseId(Integer courseId) {
-		
+
 		return courseMapper.getCourseByCourseId(courseId);
 	}
 
 	@Override
 	public Integer createNewCurriculamCourse(int coursesId, int memberRoleId) {
-		return courseMapper.saveCurriculamCourse(coursesId,memberRoleId);
-		
+		return courseMapper.saveCurriculamCourse(coursesId, memberRoleId);
+
 	}
 
 	@Override
@@ -722,20 +707,23 @@ public class CourseServiceImpl implements CourseService {
 		courseMapper.saveAndEnableCourse(coursesId);
 	}
 
-	
 	@Override
 	public int isCourseNameExists(CourseStatus courseStatus, String courseName) {
 		int status = courseStatus.getID();
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
-		return courseMapper.isCourseNameExists(Integer.valueOf(status),Integer.valueOf(memberRoleId),courseName);
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		return courseMapper.isCourseNameExists(Integer.valueOf(status),
+				Integer.valueOf(memberRoleId), courseName);
 	}
 
 	@Override
 	public int getCoursesByCoursename(CourseStatus courseStatus,
 			String courseName, int courseId) {
 		int status = courseStatus.getID();
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID();
-		return courseMapper.getCoursesByCoursename(Integer.valueOf(status),Integer.valueOf(memberRoleId),courseName, courseId);
+		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+				.getStorageID();
+		return courseMapper.getCoursesByCoursename(Integer.valueOf(status),
+				Integer.valueOf(memberRoleId), courseName, courseId);
 	}
 
 	@Override
