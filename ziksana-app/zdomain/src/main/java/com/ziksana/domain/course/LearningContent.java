@@ -10,6 +10,10 @@ import com.ziksana.domain.utils.SubjectClassification;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
+/**
+ * @author Ratnesh Kumar
+ */
+
 public class LearningContent extends AuditHistory {
 
 	public LearningContent() {
@@ -52,6 +56,7 @@ public class LearningContent extends AuditHistory {
 	 * Maximum Length:45
 	 */
 	private String contentName = null;
+
 	public Boolean getActive() {
 		return active;
 	}

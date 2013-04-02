@@ -3,9 +3,11 @@
  */
 package com.ziksana.domain.course;
 
+
 /**
- * @author bhashasp
+ * @author Ratnesh Kumar
  */
+
 public enum LearningContentDeleteType {
 	
 	LEARNINGCONTENT					(1, "Learning Content Only"),  

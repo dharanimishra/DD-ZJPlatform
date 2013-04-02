@@ -18,8 +18,8 @@ public enum Geography {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData("Geography");
-		mapUtil.put("Asia", 1);
-		System.out.println("geography :mapUtil :" + mapUtil);
+		System.out.println("Getting static values :geography :mapUtil :"
+				+ mapUtil.size());
 		setGeography();
 	}
 
@@ -41,7 +41,7 @@ public enum Geography {
 		// Geography.REST_OF_WORLD.setID(mapUtil.get("Rest of the World")
 		// .intValue());
 
-		System.out.println("geography :2");
+		System.out.println("geography :2 Geography :"+Geography.ASIA);
 	}
 
 	public int getID() {

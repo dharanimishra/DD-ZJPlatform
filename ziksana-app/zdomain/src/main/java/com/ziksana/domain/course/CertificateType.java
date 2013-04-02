@@ -1,5 +1,9 @@
 package com.ziksana.domain.course;
 
+/**
+ * @author Ratnesh Kumar
+ */
+
 public enum CertificateType {
 	
 	// TODO: retrieve the ids from the static data service

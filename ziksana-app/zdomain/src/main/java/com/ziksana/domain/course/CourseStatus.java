@@ -4,8 +4,9 @@ import java.util.NoSuchElementException;
 
 
 /**
- * @author bhashasp
+ * @author Ratnesh Kumar
  */
+
 public enum CourseStatus {
 
 	// TODO: retrieve the ids from the static data service

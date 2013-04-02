@@ -6,17 +6,21 @@ import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
-public class LearningContentParts extends AuditHistory{
+/**
+ * @author Ratnesh Kumar
+ */
 
-	private ZID		 	contentPartsId;
-	private Date 			creationDate 	= null;
+public class LearningContentParts extends AuditHistory {
+
+	private ZID contentPartsId;
+	private Date creationDate = null;
 	/**
 	 * Maximum Length:45
 	 */
-	private String 			partPath 		= null;
-	private Integer 		partSequence 	= null;
+	private String partPath = null;
+	private Integer partSequence = null;
 	private LearningContent learningContent = null;
-	private Boolean 		isDelete		= null;
+	private Boolean isDelete = null;
 
 	/**
 	 * @return the value of property contentPartsId
@@ -63,7 +67,6 @@ public class LearningContentParts extends AuditHistory{
 		this.partPath = partPath == null ? null : partPath.trim();
 	}
 
-
 	/**
 	 * @return the partSequence
 	 */
@@ -87,7 +90,8 @@ public class LearningContentParts extends AuditHistory{
 	}
 
 	/**
-	 * @param learningContent the learningContent to set
+	 * @param learningContent
+	 *            the learningContent to set
 	 */
 	public void setLearningContent(LearningContent learningContent) {
 		this.learningContent = learningContent;
@@ -96,8 +100,7 @@ public class LearningContentParts extends AuditHistory{
 	@Override
 	public String toString() {
 		return "LearningContentParts [partPath=" + partPath + ", partSequence="
-				+ partSequence + ", learningContent=" + learningContent
-				+ "]";
+				+ partSequence + ", learningContent=" + learningContent + "]";
 	}
 
 	/**
@@ -108,7 +111,8 @@ public class LearningContentParts extends AuditHistory{
 	}
 
 	/**
-	 * @param isDelete the isDelete to set
+	 * @param isDelete
+	 *            the isDelete to set
 	 */
 	public void setIsDelete(Boolean isDelete) {
 		this.isDelete = isDelete;

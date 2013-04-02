@@ -4,10 +4,11 @@
 package com.ziksana.domain.course;
 
 /**
- * @author bhashasp
+ * @author Ratnesh Kumar
  */
+
 public enum EnrichmentType {
-	
-	NOTES,REFERENCE,TOPIC;
+
+	NOTES, REFERENCE, TOPIC;
 
 }

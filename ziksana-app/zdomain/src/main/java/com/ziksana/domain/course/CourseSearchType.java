@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 
 /**This enum is for searching the course components (either Learning Object/Component Content).
- * @author bhashasp
+ * @author Ratnesh Kumar
  */
 public enum CourseSearchType {
 

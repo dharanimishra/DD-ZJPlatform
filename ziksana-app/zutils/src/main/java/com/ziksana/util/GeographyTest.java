@@ -9,9 +9,9 @@ public class GeographyTest {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Hello World!");
 
-		Geography geography = Geography.getGeography(1);
+		Geography geography = Geography.ASIA;
 
-		System.out.println("geography :" + geography);
+		System.out.println("geography :" + geography.ASIA.getID());
 	}
 
 }

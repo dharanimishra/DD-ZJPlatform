@@ -8,15 +8,15 @@ import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
- * @author bhashasp
+ * @author Ratnesh Kumar
  */
-public class LearningComponentType extends AuditHistory{
 
-	
-	public LearningComponentType(){
-		
+public class LearningComponentType extends AuditHistory {
+
+	public LearningComponentType() {
+
 	}
-	
+
 	public LearningComponentType(String compTypeName,
 			String compTypeDescription, Boolean isDefineQualifier,
 			Boolean active) {
@@ -26,18 +26,18 @@ public class LearningComponentType extends AuditHistory{
 		this.active = active;
 	}
 
-	private ZID		 		learningComponentTypeId;
-	private Date 			creationDate 		= null;
-	
+	private ZID learningComponentTypeId;
+	private Date creationDate = null;
+
 	@Deprecated
-	private ComponentType 	componentType 		= null;
-	
-	private String 			compTypeName		= null;
-	private String 			compTypeDescription = null;
-	private Boolean 		isDefineQualifier	= null;
-	private Boolean 		active		 		= null;
-	private MemberPersona 	creatorMemberPersona= null;
-	private String			definedBy			= null;
+	private ComponentType componentType = null;
+
+	private String compTypeName = null;
+	private String compTypeDescription = null;
+	private Boolean isDefineQualifier = null;
+	private Boolean active = null;
+	private MemberPersona creatorMemberPersona = null;
+	private String definedBy = null;
 
 	/**
 	 * @return the value of property CreationDate
@@ -69,7 +69,6 @@ public class LearningComponentType extends AuditHistory{
 		this.active = active;
 	}
 
-
 	/**
 	 * @return the componentTypeName
 	 */
@@ -78,7 +77,8 @@ public class LearningComponentType extends AuditHistory{
 	}
 
 	/**
-	 * @param componentTypeName the componentTypeName to set
+	 * @param componentTypeName
+	 *            the componentTypeName to set
 	 */
 	public void setComponentType(ComponentType componentType) {
 		this.componentType = componentType;
@@ -92,7 +92,8 @@ public class LearningComponentType extends AuditHistory{
 	}
 
 	/**
-	 * @param compTypeName the compTypeName to set
+	 * @param compTypeName
+	 *            the compTypeName to set
 	 */
 	public void setCompTypeName(String compTypeName) {
 		this.compTypeName = compTypeName;
@@ -106,7 +107,8 @@ public class LearningComponentType extends AuditHistory{
 	}
 
 	/**
-	 * @param compTypeDescription the compTypeDescription to set
+	 * @param compTypeDescription
+	 *            the compTypeDescription to set
 	 */
 	public void setCompTypeDescription(String compTypeDescription) {
 		this.compTypeDescription = compTypeDescription;
@@ -120,7 +122,8 @@ public class LearningComponentType extends AuditHistory{
 	}
 
 	/**
-	 * @param creatorMemberPersona the creatorMemberPersona to set
+	 * @param creatorMemberPersona
+	 *            the creatorMemberPersona to set
 	 */
 	public void setCreatorMemberPersona(MemberPersona creatorMemberPersona) {
 		this.creatorMemberPersona = creatorMemberPersona;
@@ -134,7 +137,8 @@ public class LearningComponentType extends AuditHistory{
 	}
 
 	/**
-	 * @param qualifierIndicator the qualifierIndicator to set
+	 * @param qualifierIndicator
+	 *            the qualifierIndicator to set
 	 */
 	public void setQualifierIndicator(Boolean qualifierIndicator) {
 		this.isDefineQualifier = qualifierIndicator;
@@ -148,7 +152,8 @@ public class LearningComponentType extends AuditHistory{
 	}
 
 	/**
-	 * @param definedBy the definedBy to set
+	 * @param definedBy
+	 *            the definedBy to set
 	 */
 	public void setDefinedBy(String definedBy) {
 		this.definedBy = definedBy;
@@ -156,10 +161,10 @@ public class LearningComponentType extends AuditHistory{
 
 	@Override
 	public String toString() {
-		return "LearningComponentType [comptypeid="+learningComponentTypeId+", compTypeName=" + compTypeName
-				+ ", compTypeDescription=" + compTypeDescription
-				+ ", qualifierIndicator=" + isDefineQualifier + ", active="
-				+ active + "]";
+		return "LearningComponentType [comptypeid=" + learningComponentTypeId
+				+ ", compTypeName=" + compTypeName + ", compTypeDescription="
+				+ compTypeDescription + ", qualifierIndicator="
+				+ isDefineQualifier + ", active=" + active + "]";
 	}
 
 	/**
@@ -170,12 +175,11 @@ public class LearningComponentType extends AuditHistory{
 	}
 
 	/**
-	 * @param learningComponentTypeId the learningComponentTypeId to set
+	 * @param learningComponentTypeId
+	 *            the learningComponentTypeId to set
 	 */
 	public void setLearningComponentTypeId(Integer learningComponentTypeId) {
 		this.learningComponentTypeId = new IntegerZID(learningComponentTypeId);
 	}
-
-
 
 }

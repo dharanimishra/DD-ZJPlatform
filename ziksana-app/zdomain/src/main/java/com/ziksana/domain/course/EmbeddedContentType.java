@@ -1,5 +1,10 @@
 package com.ziksana.domain.course;
 
+
+/**
+ * @author Ratnesh Kumar
+ */
+
 public enum EmbeddedContentType {
 	
 	// TODO: retrieve the ids from the static data service

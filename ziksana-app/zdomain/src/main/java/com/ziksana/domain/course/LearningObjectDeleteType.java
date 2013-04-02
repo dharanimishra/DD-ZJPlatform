@@ -1,8 +1,10 @@
 package com.ziksana.domain.course;
 
+
 /**
- * @author bhashasp
+ * @author Ratnesh Kumar
  */
+
 public enum LearningObjectDeleteType {
 	
 	LEARNINGOBJECT					(1, "Learning Object Only"),  

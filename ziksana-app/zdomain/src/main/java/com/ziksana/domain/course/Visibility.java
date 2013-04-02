@@ -2,6 +2,11 @@ package com.ziksana.domain.course;
 
 import java.util.NoSuchElementException;
 
+
+/**
+ * @author Ratnesh Kumar
+ */
+
 public enum Visibility {
 
 	// TODO: retrieve the ids from the static data service
