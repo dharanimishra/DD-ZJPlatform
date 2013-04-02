@@ -4,7 +4,10 @@
  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <!--  jQuery Plugins -->
 <script src="${staticFileServer}resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-<script type="text/javascript" src="${staticFileServer}resources/fancybox/jquery.fancybox.js"></script>
+<script src="${staticFileServer}resources/fancybox/jquery.fancybox.js"></script>
+
+<script src="${staticFileServer}resources/js/validation/jquery.validate.js"></script>
+<script src="${staticFileServer}resources/js/validation/additional-methods.js"></script>
 
 <script src="${staticFileServer}resources/js/jquery.tipsy.js"></script>
 <script src="${staticFileServer}resources/js/ziksana/ckeditor/ckeditor.js"></script>
