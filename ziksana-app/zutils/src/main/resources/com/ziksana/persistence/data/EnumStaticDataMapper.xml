@@ -4,7 +4,7 @@
 
 	<select id="fetchData" resultMap="dataResultMap" parameterType="int">
 		select
-		v.ValueId,
+		v.LookupValueId,
 		v.LookupValue
 		from
 		utllookup l join
