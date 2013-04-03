@@ -9,6 +9,9 @@
 <c:url var="showpoll" value="/zpolls/getpollpopuppage" />          
        
  <style>
+ .ui-progressbar {
+ height: 1em;
+  }
  .moreclass
  {
  font-size:12px;

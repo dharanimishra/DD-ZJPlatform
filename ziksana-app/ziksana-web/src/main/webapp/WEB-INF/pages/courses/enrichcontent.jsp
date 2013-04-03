@@ -130,108 +130,14 @@ $('#myprograms_nav').addClass('current');
 		 
 	});
 </script>
-<script type="text/javascript">
-	$(document).ready(function() {
-	$(".signin").click(function(e) {
-		alert("inside");	
-		e.preventDefault();
-			
-			$("fieldset#signin_menu").toggle();
-			$(".signin").toggleClass("menu-open");
-		});
 
-		$("fieldset#signin_menu").mouseup(function() {
-			return false
-		});
-		$(document).mouseup(function(e) {
-			if ($(e.target).parent("a.signin").length == 0) {
-				$(".signin").removeClass("menu-open");
-				$("fieldset#signin_menu").hide();
-			}
-		});
-
-	});
-</script>
 <link rel="stylesheet" type="text/css"
 	href="/ziksana-web/resources/css/uploadify.css" />
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
-<style type="text/css">
-#message {
-	padding: 1em 0;
-	color: steelblue;
-}
-</style>
-<style>
-.jqx-widget-content {
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	-webkit-background-clip: padding-box;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	font-family: Verdana, Arial, sans-serif;
-	font-style: normal;
-	font-size: 18px;
-	border-color: rgba(199, 199, 199, 0.38);
-	background: #fff;
-}
 
-.jqx-widget {
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	-webkit-background-clip: padding-box;
-	direction: ltr;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	font-family: Verdana, Arial, sans-serif;
-	font-style: normal;
-	font-size: 19px;
-}
-
-.breadcrumb li:nth-child(3) a {
-	background: #6D9EC5;
-	color: #fff;
-}
-
-.breadcrumb li:nth-child(3) a:after {
-	border-left-color: #6D9EC5 !important;
-}
-
-.selectedTreeRow {
-	border-color: #27b;
-	background: #6D9EC5;
-	color: #fff;
-	font-weight: bold;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	padding-top: -2px;
-	padding-bottom: -2px;
-	padding-left: 3px;
-	padding-right: 3px;
-}
-
-span.standartTreeRow:hover {
-	background: rgba(85, 142, 187, 0.63);
-	color: #fff;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	padding: 3px;
-}
-
-.containerTableStyle { /* overflow: scroll;
-	overflow-y: hidden; */
-	
-}
-.mnuclass {
-    color: #2277BB;
-    font-family: verdana;
-    font-size: 12px;
-    font-weight: normal;
-    text-decoration: none;
-}
-</style>
 
 	<div id="wrapper">
 		
@@ -425,5 +331,79 @@ span.standartTreeRow:hover {
 	left: 0;
 	cursor: pointer;
 	top: 2px;
+}
+</style>
+<style type="text/css">
+#message {
+	padding: 1em 0;
+	color: steelblue;
+}
+</style>
+<style>
+.jqx-widget-content {
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	-webkit-background-clip: padding-box;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: Verdana, Arial, sans-serif;
+	font-style: normal;
+	font-size: 18px;
+	border-color: rgba(199, 199, 199, 0.38);
+	background: #fff;
+}
+
+.jqx-widget {
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	-webkit-background-clip: padding-box;
+	direction: ltr;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: Verdana, Arial, sans-serif;
+	font-style: normal;
+	font-size: 19px;
+}
+
+.breadcrumb li:nth-child(3) a {
+	background: #6D9EC5;
+	color: #fff;
+}
+
+.breadcrumb li:nth-child(3) a:after {
+	border-left-color: #6D9EC5 !important;
+}
+
+.selectedTreeRow {
+	border-color: #27b;
+	background: #6D9EC5;
+	color: #fff;
+	font-weight: bold;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding-top: -2px;
+	padding-bottom: -2px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+span.standartTreeRow:hover {
+	background: rgba(85, 142, 187, 0.63);
+	color: #fff;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 3px;
+}
+
+.containerTableStyle { /* overflow: scroll;
+	overflow-y: hidden; */
+	
+}
+.mnuclass {
+    color: #2277BB;
+    font-family: verdana;
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
 }
 </style>

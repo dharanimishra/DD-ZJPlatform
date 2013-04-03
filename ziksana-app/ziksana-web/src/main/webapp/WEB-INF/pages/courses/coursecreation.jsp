@@ -119,9 +119,9 @@
 	<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/spinner/jquery-ui.css" />
 	<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/spinner/ui.spinner.css" />
 
-	
+	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
 
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>  -->
 	<script type="text/javascript" src="/ziksana-web/resources/spinner/ui.spinner.js"></script>
 	
 	
@@ -132,122 +132,11 @@ $(".containerTableStyle").css('height','400px');
 $(".containerTableStyle").css('overflow','auto');
 self.scrollTo(0,0);
 $('.cduration').spinner({ min: 0, max: 20,  });
-
+$('#homepage_nav').removeClass('current');
+$('#myprograms_nav').addClass('current');
 });
 </script> 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".signin").click(function(e) {
-			e.preventDefault();
-			$("fieldset#signin_menu").toggle();
-			$(".signin").toggleClass("menu-open");
-		});
 
-		$("fieldset#signin_menu").mouseup(function() {
-			return false
-		});
-		$(document).mouseup(function(e) {
-			if ($(e.target).parent("a.signin").length == 0) {
-				$(".signin").removeClass("menu-open");
-				$("fieldset#signin_menu").hide();
-			}
-		});
-		  $('#homepage_nav').removeClass('current');
-	      $('#myprograms_nav').addClass('current');
-	});
-</script>
-<style type="text/css">
-#message {
-	padding: 1em 0;
-	color: steelblue;
-}
-</style>
-<style>
-.ui-spinner-up
-{
-margin-left: -1px !important; 
-margin-top: -1px !important;
-width:14px  !important;
-height:8px  !important;
-}
-.ui-spinner-down{
-margin-left: -1px !important; 
-margin-top: 1.5px !important;
-width:14px  !important;
-height:8px  !important;
-}
-.jqx-widget-content {
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	-webkit-background-clip: padding-box;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	font-family: Verdana, Arial, sans-serif;
-	font-style: normal;
-	font-size: 18px;
-	border-color: rgba(199, 199, 199, 0.38);
-	background: #fff;
-}
-
-.jqx-widget {
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	-webkit-background-clip: padding-box;
-	direction: ltr;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	font-family: Verdana, Arial, sans-serif;
-	font-style: normal;
-	font-size: 19px;
-}
-
-.breadcrumb li:nth-child(1) a {
-	background: #6D9EC5;
-	color: #fff;
-}
-
-.breadcrumb li:nth-child(1) a:after {
-	border-left-color: #6D9EC5 !important;
-}
-
-.selectedTreeRow {
-	border-color: #27b;
-	background: #6D9EC5;
-	color: #fff;
-	font-weight: bold;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	padding-top: -2px;
-	padding-bottom: -2px;
-	padding-left: 3px;
-	padding-right: 3px;
-}
-
-/*.standartTreeRow:hover
-{
-width:auto;
-border-color:#000; background:none; color:#900;
--moz-border-radius: 3px;
--webkit-border-radius: 3px;
-border-radius: 3px;
-padding:-5px;
-}*/
-span.standartTreeRow:hover {
-	background: rgba(85, 142, 187, 0.63);
-	color: #fff;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	padding: 3px;
-}
-.mnuclass {
-    color: #2277BB;
-    font-family: verdana;
-    font-size: 12px;
-    font-weight: normal;
-    text-decoration: none;
-}
-
-</style>
 
 
 
@@ -367,9 +256,8 @@ span.standartTreeRow:hover {
 								<!-- End of Tree -->
 
 
-								<div id="ContentPanel2"
-									style="font-size: 11px; background-image: none; margin-left: 25px;">
-									<!-- Start of Default Instruction -->
+								<div id="ContentPanel2">
+																	<!-- Start of Default Instruction -->
 
 									<div id="instruction" style="padding: 10px; height:300px;">
 										<!-- <img src="/ziksana-web/resources/images/instruction.jpg"
@@ -679,4 +567,100 @@ span.standartTreeRow:hover {
 		
 	</div>
 
+<style type="text/css">
+#message {
+	padding: 1em 0;
+	color: steelblue;
+}
+
+.ui-spinner-up
+{
+margin-left: -1px !important; 
+margin-top: -1px !important;
+width:14px  !important;
+height:8px  !important;
+}
+.ui-spinner-down{
+margin-left: -1px !important; 
+margin-top: 1.5px !important;
+width:14px  !important;
+height:8px  !important;
+}
+.jqx-widget-content {
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	-webkit-background-clip: padding-box;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: Verdana, Arial, sans-serif;
+	font-style: normal;
+	font-size: 18px;
+	border-color: rgba(199, 199, 199, 0.38);
+	background: #fff;
+}
+
+.jqx-widget {
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	-webkit-background-clip: padding-box;
+	direction: ltr;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: Verdana, Arial, sans-serif;
+	font-style: normal;
+	font-size: 19px;
+}
+
+.breadcrumb li:nth-child(1) a {
+	background: #6D9EC5;
+	color: #fff;
+}
+
+.breadcrumb li:nth-child(1) a:after {
+	border-left-color: #6D9EC5 !important;
+}
+
+.selectedTreeRow {
+	border-color: #27b;
+	background: #6D9EC5;
+	color: #fff;
+	font-weight: bold;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding-top: -2px;
+	padding-bottom: -2px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+/*.standartTreeRow:hover
+{
+width:auto;
+border-color:#000; background:none; color:#900;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+padding:-5px;
+}*/
+span.standartTreeRow:hover {
+	background: rgba(85, 142, 187, 0.63);
+	color: #fff;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 3px;
+}
+.mnuclass {
+    color: #2277BB;
+    font-family: verdana;
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+}
+#ContentPanel2 {
+font-size: 11px;
+ background-image: none;
+ margin-left: 25px;
+}
+									
+</style>
 

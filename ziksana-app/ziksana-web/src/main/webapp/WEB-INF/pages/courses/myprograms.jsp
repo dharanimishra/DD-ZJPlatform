@@ -1,83 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <script src="../resources/js/jquery.isotope.min.js"></script>
 <script type='text/javascript' src="../resources/js/custom/myprogram.js"></script>
-
-<style>
-.ui-progressbar .ui-progressbar-value {
-	background-image: url(images/pbar-ani.gif);
-}
-</style>
-
-
-<style type="text/css">
-body {
-	background: #F9F9F9 url("../resources/images/grain-light.png");
-}
-
-#jDash {
-	min-height: 500px;
-	/* [disabled]background: white; */
-}
-
-.demo1 {
-	border: 1px solid #ccc;
-	margin-top: 10px;
-	font-size: 12px;
-}
-
-.demo1 div div {
-	padding: 10px;
-	border-bottom: 1px solid #ccc;
-}
-
-.demo_message_container1 {
-	position: relative;
-}
-
-.demo_message_container1:hover .demo_message1 {
-	display: block !important;
-	padding-top: 22% !important;
-}
-
-.demo_message1 {
-	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
-	bottom: 0;
-	color: white;
-	display: none;
-	font-size: 10px;
-	left: 0;
-	padding: 1em;
-	position: absolute;
-	right: 0;
-	top: 0;
-	text-align: center;
-	vertical-align: middle;
-	z-index: 99;
-}
-
-.hover-btn {
-	color: #000000;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
-
-.marginl {
-	margin-left: -80px;
-}
-
-.titles-info1 {
-	background-color: rgba(218, 216, 216, 0.17);
-	border-bottom: 1px solid #CCCCCC;
-	border-radius: 3px 3px 0 0;
-	display: block;
-	margin: 0 0 10px;
-	padding: 7.5px 13px;
-	position: relative;
-}
-</style>
-
-
-
 
 <script>
     
@@ -90,9 +13,6 @@ body {
             $('#myprograms_nav').addClass('current');
           });
   </script>
-
-
-
 
 
 <div>
@@ -337,12 +257,6 @@ body {
 
 
 
-
-
-
-
-
-
 			</div>
 
 
@@ -407,7 +321,75 @@ body {
 </div>
 
 
+<style type="text/css">
+.ui-progressbar .ui-progressbar-value {
+	background-image: url(images/pbar-ani.gif);
+}
 
+body {
+	background: #F9F9F9 url("../resources/images/grain-light.png");
+}
+
+#jDash {
+	min-height: 500px;
+	/* [disabled]background: white; */
+}
+
+.demo1 {
+	border: 1px solid #ccc;
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+.demo1 div div {
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.demo_message_container1 {
+	position: relative;
+}
+
+.demo_message_container1:hover .demo_message1 {
+	display: block !important;
+	padding-top: 22% !important;
+}
+
+.demo_message1 {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+	bottom: 0;
+	color: white;
+	display: none;
+	font-size: 10px;
+	left: 0;
+	padding: 1em;
+	position: absolute;
+	right: 0;
+	top: 0;
+	text-align: center;
+	vertical-align: middle;
+	z-index: 99;
+}
+
+.hover-btn {
+	color: #000000;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.marginl {
+	margin-left: -80px;
+}
+
+.titles-info1 {
+	background-color: rgba(218, 216, 216, 0.17);
+	border-bottom: 1px solid #CCCCCC;
+	border-radius: 3px 3px 0 0;
+	display: block;
+	margin: 0 0 10px;
+	padding: 7.5px 13px;
+	position: relative;
+}
+</style>
 
 
 

@@ -104,10 +104,8 @@
 	type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css"
 	href="/ziksana-web/resources/css/uploadify.css" />
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+
+
 
 
 <link rel="stylesheet" type="text/css"
@@ -154,22 +152,7 @@
 <script type="text/javascript">
 	$(document)
 			.ready(
-					function() {
-						$(".signin").click(function(e) {
-							e.preventDefault();
-							$("fieldset#signin_menu").toggle();
-							$(".signin").toggleClass("menu-open");
-						});
-
-						$("fieldset#signin_menu").mouseup(function() {
-							return false
-						});
-						$(document).mouseup(function(e) {
-							if ($(e.target).parent("a.signin").length == 0) {
-								$(".signin").removeClass("menu-open");
-								$("fieldset#signin_menu").hide();
-							}
-						});
+					
 
 						//Fetch course details and populate the form
 						getCourse();
