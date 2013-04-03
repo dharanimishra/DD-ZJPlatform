@@ -85,17 +85,9 @@
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
 
 <!-- End tree -->
-<script
-	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
-	type="text/javascript"></script>
-    <!--fancybox-->
-	<script type="text/javascript" src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
 
-     <script src="/ziksana-web/resources/js/jquery.fancybox.pack.2.1.3.js"></script>
-	 <link rel="stylesheet" type="text/css" href="/ziksana-web/resources/css/jquery.fancybox.2.1.3.css"/>
-	<!--fancybox end-->
-<script src="/ziksana-web/resources/js/custom/libraryfunction.js"
-	type="text/javascript"></script>
+    
+
 <script
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/tags/superbly-tagfield.min.js"
 	type="text/javascript"></script>
@@ -114,29 +106,7 @@ $(".containerTableStyle").css('overflow','auto');
 
 });
 </script> 
-<script type="text/javascript">
-	$(document).ready(function() {
-		
-		
-		 
-		$(".signin").click(function(e) {
-			e.preventDefault();
-			$("fieldset#signin_menu").toggle();
-			$(".signin").toggleClass("menu-open");
-		});
 
-		$("fieldset#signin_menu").mouseup(function() {
-			return false
-		});
-		$(document).mouseup(function(e) {
-			if ($(e.target).parent("a.signin").length == 0) {
-				$(".signin").removeClass("menu-open");
-				$("fieldset#signin_menu").hide();
-			}
-		});
-
-	});
-</script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		jQuery("#Associatequalifier").validationEngine();
@@ -147,79 +117,9 @@ $(".containerTableStyle").css('overflow','auto');
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
 <style type="text/css">
-#message {
-	padding: 1em 0;
-	color: steelblue;
-}
+
 </style>
-<style>
-.jqx-widget-content {
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	-webkit-background-clip: padding-box;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	font-family: Verdana, Arial, sans-serif;
-	font-style: normal;
-	font-size: 18px;
-	border-color: rgba(199, 199, 199, 0.38);
-	background: #fff;
-}
 
-.jqx-widget {
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	-webkit-background-clip: padding-box;
-	direction: ltr;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	font-family: Verdana, Arial, sans-serif;
-	font-style: normal;
-	font-size: 19px;
-}
-
-.breadcrumb li:nth-child(2) a {
-	background: #6D9EC5;
-	color: #fff;
-}
-
-.breadcrumb li:nth-child(2) a:after {
-	border-left-color: #6D9EC5 !important;
-}
-
-.selectedTreeRow {
-	border-color: #27b;
-	background: #6D9EC5;
-	color: #fff;
-	font-weight: bold;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	padding-top: -2px;
-	padding-bottom: -2px;
-	padding-left: 3px;
-	padding-right: 3px;
-}
-
-span.standartTreeRow:hover {
-	background: rgba(85, 142, 187, 0.63);
-	color: #fff;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	padding: 3px;
-}
-
-.containerTableStyle { /* overflow: scroll;
-	overflow-y: hidden; */
-	
-}
-.mnuclass {
-    color: #2277BB;
-    font-family: verdana;
-    font-size: 12px;
-    font-weight: normal;
-    text-decoration: none;
-}
-</style>
 
 
 
@@ -709,5 +609,77 @@ span.standartTreeRow:hover {
 	cursor: pointer;
 	top: 2px;
 }
+
+.jqx-widget-content {
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	-webkit-background-clip: padding-box;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: Verdana, Arial, sans-serif;
+	font-style: normal;
+	font-size: 18px;
+	border-color: rgba(199, 199, 199, 0.38);
+	background: #fff;
+}
+
+.jqx-widget {
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	-webkit-background-clip: padding-box;
+	direction: ltr;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: Verdana, Arial, sans-serif;
+	font-style: normal;
+	font-size: 19px;
+}
+
+.breadcrumb li:nth-child(2) a {
+	background: #6D9EC5;
+	color: #fff;
+}
+
+.breadcrumb li:nth-child(2) a:after {
+	border-left-color: #6D9EC5 !important;
+}
+
+.selectedTreeRow {
+	border-color: #27b;
+	background: #6D9EC5;
+	color: #fff;
+	font-weight: bold;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding-top: -2px;
+	padding-bottom: -2px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+span.standartTreeRow:hover {
+	background: rgba(85, 142, 187, 0.63);
+	color: #fff;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 3px;
+}
+
+.containerTableStyle { /* overflow: scroll;
+	overflow-y: hidden; */
+	
+}
+.mnuclass {
+    color: #2277BB;
+    font-family: verdana;
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+}
+#message {
+	padding: 1em 0;
+	color: steelblue;
+}
 </style>
+
 
