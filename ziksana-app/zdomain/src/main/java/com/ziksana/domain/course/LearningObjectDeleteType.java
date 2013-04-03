@@ -1,5 +1,10 @@
 package com.ziksana.domain.course;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.ziksana.util.EnumUtil;
+
 
 /**
  * @author Ratnesh Kumar
@@ -14,6 +19,18 @@ public enum LearningObjectDeleteType {
 	private final int id;
 	
 	private final String name;
+	
+	private final static String category ="ObjectDeleteType";
+	
+	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
+	
+	static {
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category :mapUtil :"
+				+ mapUtil.size());
+	}
+
 
 	private LearningObjectDeleteType(int id, String name) {
 		this.id = id;

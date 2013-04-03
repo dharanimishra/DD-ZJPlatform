@@ -1,6 +1,10 @@
 package com.ziksana.domain.course;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.NoSuchElementException;
+
+import com.ziksana.util.EnumUtil;
 
 
 /**
@@ -24,6 +28,18 @@ public enum LinkType {
 	private final int id;
 	private final String name;
 
+	private final static String category ="Link Type";
+	
+	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
+	
+	static {
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category :mapUtil :"
+				+ mapUtil.size());
+	}
+
+	
 	private LinkType(int id, String name) {
 		this.id = id;
 		this.name = name;

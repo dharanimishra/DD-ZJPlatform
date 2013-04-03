@@ -1,5 +1,10 @@
 package com.ziksana.domain.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.ziksana.util.EnumUtil;
+
 public enum MemberRoleType {
 
 	// TODO: We may want to retrieve the ids from the static data service
@@ -7,6 +12,17 @@ public enum MemberRoleType {
 
 	private int id;
 	
+
+	private final static String category ="WorkFlowItemStatus";
+	
+	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
+	
+	static {
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category :mapUtil :"
+				+ mapUtil.size());
+	}
 
 	
 	public int getId() {
