@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import com.ziksana.util.EnumUtil;
-
-
 /**
  * @author Ratnesh Kumar
  */
@@ -14,27 +11,23 @@ import com.ziksana.util.EnumUtil;
 public enum WorkflowType {
 
 	// TODO: retrieve the ids from the static data service
-	CREATION      		(1, "Creation"),
-	REVIEW      		(2, "Review"),
-	ADMINISTRATION   	(3, "Administration"),
-	PUBLISHING 			(4, "Publishing");
-	
+	CREATION(1, "Creation"), REVIEW(2, "Review"), ADMINISTRATION(3,
+			"Administration"), PUBLISHING(4, "Publishing");
 
 	private final int id;
-	
-	private final String name;
-	
-	private final static String category ="WorkFlowType";
-	
-	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-	
-	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category :mapUtil :"
-				+ mapUtil.size());
-	}
 
+	private final String name;
+
+	private final static String category = "WorkFlowType";
+
+	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
+
+	static {
+//		EnumUtil enumUtil = new EnumUtil();
+//		mapUtil = enumUtil.getEnumData(category);
+//		System.out.println("Getting static values :category :mapUtil :"
+//				+ mapUtil.size());
+	}
 
 	private WorkflowType(int id, String name) {
 		this.id = id;
@@ -56,7 +49,8 @@ public enum WorkflowType {
 			}
 		}
 
-		throw new NoSuchElementException("Workflow Type ID [" + ID + "] not found");
+		throw new NoSuchElementException("Workflow Type ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {

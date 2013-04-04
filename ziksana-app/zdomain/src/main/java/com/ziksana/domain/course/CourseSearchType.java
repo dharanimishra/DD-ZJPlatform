@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import com.ziksana.util.EnumUtil;
 
 
 /**This enum is for searching the course components (either Learning Object/Component Content).
@@ -28,10 +27,10 @@ public enum CourseSearchType {
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 	
 	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category :mapUtil :"
-				+ mapUtil.size());
+//		EnumUtil enumUtil = new EnumUtil();
+//		mapUtil = enumUtil.getEnumData(category);
+//		System.out.println("Getting static values :category :mapUtil :"
+//				+ mapUtil.size());
 	}
 
 

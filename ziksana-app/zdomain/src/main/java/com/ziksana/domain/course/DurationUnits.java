@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import com.ziksana.util.EnumUtil;
- 
-
 /**
  * @author Ratnesh Kumar
  */
@@ -14,25 +11,22 @@ import com.ziksana.util.EnumUtil;
 public enum DurationUnits {
 
 	// TODO: retrieve the ids from the static data service
-	DAY           (1, "Days"),
-	WEEK          (2, "Weeks"),
-	MONTH         (3, "Months");
-	
+	DAY(1, "Days"), WEEK(2, "Weeks"), MONTH(3, "Months");
+
 	private final int id;
 	private final String name;
 
-	private final static String category ="Duration Unit";
-	
+	private final static String category = "Duration Unit";
+
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-	
+
 	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category :mapUtil :"
-				+ mapUtil.size());
+//		EnumUtil enumUtil = new EnumUtil();
+//		mapUtil = enumUtil.getEnumData(category);
+//		System.out.println("Getting static values :category :mapUtil :"
+//				+ mapUtil.size());
 	}
 
-	
 	private DurationUnits(int id, String name) {
 		this.id = id;
 		this.name = name;
@@ -53,7 +47,8 @@ public enum DurationUnits {
 			}
 		}
 
-		throw new NoSuchElementException("DurationUnits ID [" + ID + "] not found");
+		throw new NoSuchElementException("DurationUnits ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {

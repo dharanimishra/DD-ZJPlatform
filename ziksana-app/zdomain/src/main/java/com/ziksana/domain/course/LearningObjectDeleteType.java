@@ -3,34 +3,29 @@ package com.ziksana.domain.course;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ziksana.util.EnumUtil;
-
-
 /**
  * @author Ratnesh Kumar
  */
 
 public enum LearningObjectDeleteType {
-	
-	LEARNINGOBJECT					(1, "Learning Object Only"),  
-	LEARNINGOBJECT_AND_CONTENTS		(2, "Learning Object and its Contents");
-	  
-	
-	private final int id;
-	
-	private final String name;
-	
-	private final static String category ="ObjectDeleteType";
-	
-	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-	
-	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category :mapUtil :"
-				+ mapUtil.size());
-	}
 
+	LEARNINGOBJECT(1, "Learning Object Only"), LEARNINGOBJECT_AND_CONTENTS(2,
+			"Learning Object and its Contents");
+
+	private final int id;
+
+	private final String name;
+
+	private final static String category = "ObjectDeleteType";
+
+	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
+
+	static {
+//		EnumUtil enumUtil = new EnumUtil();
+//		mapUtil = enumUtil.getEnumData(category);
+//		System.out.println("Getting static values :category :mapUtil :"
+//				+ mapUtil.size());
+	}
 
 	private LearningObjectDeleteType(int id, String name) {
 		this.id = id;
@@ -45,14 +40,17 @@ public enum LearningObjectDeleteType {
 		return name;
 	}
 
-	public static LearningObjectDeleteType getCourseDeleteType(int ID) throws NoSuchMethodException  {
-		for (LearningObjectDeleteType deleteType : LearningObjectDeleteType.values()) {
+	public static LearningObjectDeleteType getCourseDeleteType(int ID)
+			throws NoSuchMethodException {
+		for (LearningObjectDeleteType deleteType : LearningObjectDeleteType
+				.values()) {
 			if (deleteType.getID() == ID) {
 				return deleteType;
 			}
 		}
 
-		throw new NoSuchMethodException("CourseDeleteType ID [" + ID + "] not found");
+		throw new NoSuchMethodException("CourseDeleteType ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {

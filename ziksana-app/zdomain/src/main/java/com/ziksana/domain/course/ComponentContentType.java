@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import com.ziksana.util.EnumUtil;
+
 
 /**
  * @author Ratnesh Kumar
@@ -29,10 +29,10 @@ private final static String category ="Course Status";
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 	
 	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category :mapUtil :"
-				+ mapUtil.size());
+//		EnumUtil enumUtil = new EnumUtil();
+//		mapUtil = enumUtil.getEnumData(category);
+//		System.out.println("Getting static values :category :mapUtil :"
+//				+ mapUtil.size());
 	}
 
 	

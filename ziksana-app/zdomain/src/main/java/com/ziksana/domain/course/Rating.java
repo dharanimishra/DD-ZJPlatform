@@ -4,10 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import com.ziksana.util.EnumUtil;
-
-
-
 /**
  * @author Ratnesh Kumar
  */
@@ -15,26 +11,23 @@ import com.ziksana.util.EnumUtil;
 public enum Rating {
 
 	// TODO: retrieve the ids from the static data service
-	STAR_1   	(1, "1 Star"),
-	STAR_2 		(2, "2 Star"),
-	STAR_3   	(3, "3 Star"),
-	STAR_4 		(4, "4 Star"),
-	STAR_5   	(5, "5 Star");
+	STAR_1(1, "1 Star"), STAR_2(2, "2 Star"), STAR_3(3, "3 Star"), STAR_4(4,
+			"4 Star"), STAR_5(5, "5 Star");
 
-	private final int 		id;
-	private final String 	name;
+	private final int id;
+	private final String name;
 
-	private final static String category ="Rating";
-	
+	private final static String category = "Rating";
+
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-	
+
 	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category :mapUtil :"
-				+ mapUtil.size());
+//		EnumUtil enumUtil = new EnumUtil();
+//		mapUtil = enumUtil.getEnumData(category);
+//		System.out.println("Getting static values :category :mapUtil :"
+//				+ mapUtil.size());
 	}
-	
+
 	private Rating(int id, String name) {
 		this.id = id;
 		this.name = name;

@@ -6,7 +6,6 @@ package com.ziksana.domain.course;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ziksana.util.EnumUtil;
 
 
 /**
@@ -29,10 +28,10 @@ public enum LearningContentDeleteType {
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 	
 	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category :mapUtil :"
-				+ mapUtil.size());
+//		EnumUtil enumUtil = new EnumUtil();
+//		mapUtil = enumUtil.getEnumData(category);
+//		System.out.println("Getting static values :category :mapUtil :"
+//				+ mapUtil.size());
 	}
 
 	
