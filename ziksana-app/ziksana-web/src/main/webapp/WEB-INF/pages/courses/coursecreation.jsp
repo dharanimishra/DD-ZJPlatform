@@ -1,9 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE HTML>
 
-<meta charset="utf-8">
-<title>Course Creation</title>
-<!--Body Style sheet-->
 
 <link
 	href="/ziksana-web/resources/css/common/wizard/wizardstylesheet.css"
@@ -21,8 +17,9 @@
 	rel="stylesheet" type="text/css" />
 <!-- for the layout of the tree -->
 <!--End Body Style sheet-->
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+ <script type="text/javascript"
+	src="/ziksana-web/resources/js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script> 
+
 <script type="text/javascript"
 	src="/ziksana-web/resources/Dynamicjsonjs/z_message.js"></script>
 <script type="text/javascript"
@@ -89,12 +86,7 @@
 <script
 	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
 	type="text/javascript"></script>
-    <!--fancybox-->
-	<script type="text/javascript" src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-
-     <script src="/ziksana-web/resources/js/jquery.fancybox.pack.2.1.3.js"></script>
-	 <link rel="stylesheet" type="text/css" href="/ziksana-web/resources/css/jquery.fancybox.2.1.3.css"/>
-	<!--fancybox end-->
+    
 <script src="/ziksana-web/resources/js/custom/libraryfunction.js"
 	type="text/javascript"></script>
 <script
@@ -107,13 +99,7 @@
 	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
 
-<link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/css/uploadify.css" />
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
-	
+
 	
 	
 	<link rel="stylesheet" type="text/css" href="/ziksana-web/resources/spinner/jquery-ui.css" />
@@ -124,6 +110,8 @@
 	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>  -->
 	<script type="text/javascript" src="/ziksana-web/resources/spinner/ui.spinner.js"></script>
 	
+
+     <script src="/ziksana-web/resources/js/jquery.fancybox.pack.2.1.3.js"></script>
 	
 	
 	<script type="text/javascript">

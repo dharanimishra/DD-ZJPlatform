@@ -1,25 +1,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!-- <script type="text/javascript" src="resources/js/tree/jquery-1.8.0.min.js"></script> -->
 
-<!-- <link href="../resources/css/styles.css" rel="stylesheet" type="text/css"> -->
 
-	<!-- <link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css"> -->
-	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
-	
-	<link rel="stylesheet" type="text/css" href="../resources/css/dropdown.css" />
-	<link rel="stylesheet" type="text/css" href="../resources/css/jquery.fancybox.2.1.3.css"/>
-	<!-- <link rel="stylesheet" type="text/css" href="resources/css/masks.css" /> -->
-	
-    <link rel="stylesheet" type="text/css" href="../resources/css/tag/tagit-simple-blue.css">
-    <link rel="stylesheet" href="../resources/css/tipsy.css" type="text/css" />
-    
-    <link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/jquery-ui-1.8.21.custom.css">
-     <link href="../resources/css/news/newsticker.css" rel="stylesheet" type="text/css" />
-     <link href="../resources/css/tipsy.css" rel="stylesheet" type="text/css" />
-     
    	
 	 <script src="../resources/js/jquery-1.7.2.min.js"></script>
 	 <script src="../resources/js/ui/jquery.ui.core.js"></script>
@@ -32,18 +15,11 @@
      <script src="../resources/js/jquery.collapse.js"></script>
      <script src="../resources/js/todo.js" type="text/javascript"></script> 
      <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
-	<script type="text/javascript" src="../resources/js/jquery-1.2.2.pack.js"></script>
-	
+
 	<script type="text/javascript" src="../resources/js/jquery.tipsy.js"></script>
-	<script type="text/javascript" src="../resources/js/custom/z_common.js"></script>
 	
-<style>
-.moreclass
- {
- font-size:12px;
- color:#27B;
- }
-</style>
+	
+
 <c:url var="deleteAlertUrl" value="/ziksana-web/zalert/deletealert/" />
 <script type="text/javascript">
 
@@ -547,3 +523,11 @@ function short_string_category(value){
                 </div>
  
 	</body>
+	<style>
+.moreclass
+ {
+ font-size:12px;
+ color:#27B;
+ }
+
+</style>

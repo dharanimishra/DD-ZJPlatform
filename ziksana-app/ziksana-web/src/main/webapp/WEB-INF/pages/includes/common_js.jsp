@@ -12,7 +12,7 @@
 <script src="${staticFileServer}resources/js/jquery.tipsy.js"></script>
 <script src="${staticFileServer}resources/js/ziksana/ckeditor/ckeditor.js"></script>
 <script src="${staticFileServer}resources/js/jquery_confirm/jquery.confirm.js"></script>
-<script src="${staticFileServer}resources/js/plugins/jquery.uploadify-3.1.min.js"></script>
+<script src="${staticFileServer}resources/js/custom/jquery.uploadify-3.1.min.js"></script>
 <script src="${staticFileServer}resources/js/spinner/smartspinner.js"></script>
 <script src="${staticFileServer}resources/js/ui/jquery.raty.min.js"></script>    
 <script src="${staticFileServer}resources/js/dropdown/hover-dropdown.min.js"></script>

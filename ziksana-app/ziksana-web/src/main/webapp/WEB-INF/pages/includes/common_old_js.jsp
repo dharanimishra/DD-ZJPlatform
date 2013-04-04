@@ -1,6 +1,7 @@
 <!-- Common JavaScript Library Files -->
 
- <script  src="${staticFileServer}resources/js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+ <script src="${staticFileServer}resources/js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+ 
 <!--  jQuery Plugins -->
 <script src="${staticFileServer}resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
 <script type="text/javascript" src="${staticFileServer}resources/fancybox/jquery.fancybox.js"></script>
