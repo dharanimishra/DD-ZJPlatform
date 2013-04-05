@@ -8,26 +8,22 @@
 <head>
 <title>ZAnnouncements</title>
 
-<link rel="stylesheet" href="../resources/css/zCss.css" type="text/css" />
-<link type="text/css"
-	href="../resources/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
-<link rel="stylesheet" href="../resources/css/bootstrap.css" />
-<link href="../resources/css/jquery.mCustomScrollbar.css"
-	rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="../resources/css/zeni/zeni2.css" />
-</head>
-<script type="text/javascript"
-	src="../resources/js/tree/jquery-1.8.0.min.js"></script>
+<link rel="stylesheet" href="../resources/css/zCss.css" type="text/css" >
+<link rel="stylesheet" type="text/css" href="../resources/css/jquery-ui-1.8.23.custom.css"  >
+<link rel="stylesheet" href="../resources/css/bootstrap.css" >
+<link href="../resources/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" href="../resources/css/zeni/zeni2.css" >
+
+<script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="../resources/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript"
-	src="../resources/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-ui-1.8.21.custom.min.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
 <script src="../resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="../resources/js/jquery.js"></script>
 <script type="text/javascript" src="../resources/js/zGroup.js"></script>
 <script type="text/javascript" src="../resources/js/tablerow.js"></script>
 <script type="text/javascript" src="../resources/js/date.js"></script>
-<!--<script src="js/isotope/jquery-1.7.2.min.js"></script>-->
+
 <script type="text/javascript" src="../resources/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript"
 	src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -121,8 +117,7 @@ $(document).ready(function() {
 					});
 					});
 					output_announcement+="</tbody></table>";
-					//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container1\").show();'>Details</a>";
-					//console.log("Announcements: " + output_announcement);
+					
 				
 					
 					$('#announcement_placeholder').html(output_announcement);
@@ -153,7 +148,7 @@ function getMessagedescription(indexValue){
 	outputDetails_description+="</div>";
 	
 
-	//$("#linksMeeting").fadeIn();
+	
 	$("#linksdetails").html(outputDetails_description);
 	
 }
@@ -194,8 +189,7 @@ function getCategoryByBetweenDates(){
 						});
 						});
 						output_announcement+="</tbody></table>";
-						//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
-						//console.log("Announcements: " + output_announcement);
+						
 					
 						
 						$('#announcement_placeholder').html(output_announcement);
@@ -234,9 +228,7 @@ function getCategoryByBetweenDates(){
 						});
 						});
 						output_announcement+="</tbody></table>";
-						//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
-						//console.log("Announcements: " + output_announcement);
-					
+						
 						
 						$('#announcement_placeholder').html(output_announcement);
 						
@@ -271,8 +263,7 @@ function getCategoryByBetweenDates(){
 						});
 						});
 						output_announcement+="</tbody></table>";
-						//output_announcement+="<a class='' style='color:blue;float:right;' href='#' onClick='$(\"#row_selection_form_container\").show();'>Details</a>";
-						//console.log("Announcements: " + output_announcement);
+						
 					
 						
 						$('#announcement_placeholder').html(output_announcement);
@@ -322,7 +313,7 @@ function getCategoryByBetweenDates(){
 	
 }
 </script>
-
+</head>
 <body onload="showdate(),showenddate()">
 
 	<div class="zannouncementwrapper">

@@ -17,8 +17,7 @@
 	rel="stylesheet" type="text/css" />
 <!-- for the layout of the tree -->
 <!--End Body Style sheet-->
- <script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script> 
+ 
 
 <script type="text/javascript"
 	src="/ziksana-web/resources/Dynamicjsonjs/z_message.js"></script>

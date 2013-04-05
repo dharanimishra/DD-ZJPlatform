@@ -35,13 +35,11 @@
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/table/tablerow.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/search/search.js"></script>
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/ckeditor/adapters/jquery.js"></script>
+
 
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/ziksana/ckeditor/ckeditor.js"></script>
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
+
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/ziksana/coursecreation/define.js"></script>
 <!-- scripts for tree -->
@@ -108,18 +106,12 @@
 
 
 
-<link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/spinner/jquery-ui.css" />
-<link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/spinner/ui.spinner.css" />
 
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-<script type="text/javascript"
-	src="/ziksana-web/resources/spinner/ui.spinner.js"></script>
+
+
 
 <script type="text/javascript">
-	jQuery().ready(function($) {
+	$('document').ready(function() {
 
 		$('#Duration').spinner({
 			min : 0,
@@ -151,7 +143,7 @@
 </script>
 <script type="text/javascript">
 	$(document)
-			.ready(
+			.ready(function(){
 					
 
 						//Fetch course details and populate the form
@@ -486,12 +478,12 @@ span.standartTreeRow:hover {
 											<label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Credits :</label>
 											<input type="text" id="Credits" value="0" class=""
-												tabindex="7" style="width: 35px; margin-left: 18px;" /> <label
+												tabindex="7" style="width: 25px; margin-left: 18px;" /> <label
 												for="coursetags" class="labelclass"
 												style="margin-left: 20px; font-weight: bold;">Specify
 												Course Extra Credits :</label> <input type="text" id="ExtraCredits"
 												class=" " value="0" tabindex="8"
-												style="width: 35px; margin-left: 10px;" />
+												style="width: 25px; margin-left: 10px;" />
 
 										</div>
 										<!-- end of coursecredits--->
@@ -500,7 +492,7 @@ span.standartTreeRow:hover {
 											<br /> <label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Duration :</label>
 											<input type="text" id="Duration" value="0" tabindex="9"
-												style="width: 35px; margin-left: 9px;" class="" /> <select
+												style="width: 25px; margin-left: 9px;" class="" /> <select
 												name="SelectArea" id="Cdurationtype" tabindex="10"
 												class="defaultvalue" style="margin-left: 20px;">
 												<option value="1">Weeks</option>

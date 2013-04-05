@@ -29,7 +29,7 @@
 <script type="text/javascript">
 
 
-$('.t_toggler').on('click',function(){
+$('.t_toggler').live('click',function(){
 		$(this).toggle(
 			function(){
 				toggle_handle = $(this);

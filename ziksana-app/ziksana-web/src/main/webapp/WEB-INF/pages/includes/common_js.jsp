@@ -1,13 +1,17 @@
 <!-- Common JavaScript Library Files -->
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
- <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+ <%-- <script src="${staticFileServer}resources/js/jquery-1.7.1.min.js"></script> --%>
+<%--  <script src="${staticFileServer}resources/js/jquery-ui-1.10.2.custom/js/jquery-1.9.1.js"></script>
+ <script src="${staticFileServer}resources/js/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+ <link href="${staticFileServer}resources/js/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.css" type="text/css"/> --%>
+  
+ <script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-1.8.3.js"></script>
+ <script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+ <link href="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css"/>
+ 
 <!--  jQuery Plugins -->
 <script src="${staticFileServer}resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-<script src="${staticFileServer}resources/fancybox/jquery.fancybox.js"></script>
-
-<script src="${staticFileServer}resources/js/validation/jquery.validate.js"></script>
-<script src="${staticFileServer}resources/js/validation/additional-methods.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/fancybox/jquery.fancybox.js"></script>
 
 <script src="${staticFileServer}resources/js/jquery.tipsy.js"></script>
 <script src="${staticFileServer}resources/js/ziksana/ckeditor/ckeditor.js"></script>

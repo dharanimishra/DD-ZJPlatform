@@ -685,7 +685,7 @@ function load_tree(){
             var clickedItem = null;
             
             // open the context menu when the user presses the mouse right button.
-            $("#jqx_course_tree li div.jqx-tree-item").on('mousedown', function (event) {
+            $("#jqx_course_tree li div.jqx-tree-item").live('mousedown', function (event) {
 				console.log('mouse down triggered.');
             	var target = $(event.target).parents('li:first')[0];
                 console.log($(event.target));

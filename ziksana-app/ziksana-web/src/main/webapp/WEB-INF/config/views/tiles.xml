@@ -66,25 +66,25 @@
 	
 	
 	<!-- New Course Creation -->
-	<definition name="createcourse" extends="commonPageLayout">
+	<definition name="createcourse" extends="commonPageLayoutLatest">
 		<put-attribute name="page_title" value="Course Creation" />
 		<put-attribute name="body" value="/WEB-INF/pages/courses/definecourse.jsp" />
 	</definition>
 	
 	<!-- Edit Course -->
-	<definition name="editcourse" extends="commonPageLayout">
+	<definition name="editcourse" extends="commonPageLayoutLatest">
 		<put-attribute name="page_title" value="Edit Course" />
 		<put-attribute name="body" value="/WEB-INF/pages/courses/coursecreation.jsp" />
 	</definition>
 	
 	<!-- Associate Content Page-->
-	<definition name="createmodule" extends="commonPageLayout">
+	<definition name="createmodule" extends="commonPageLayoutLatest">
 		<put-attribute name="page_title" value="Associate Content" />
 		<put-attribute name="body" value="/WEB-INF/pages/courses/associatecontent.jsp" />
 	</definition>
 	
 	<!-- Enrich Content Page-->
-	<definition name="organizeenrichcontent" extends="commonPageLayout">
+	<definition name="organizeenrichcontent" extends="commonPageLayoutLatest">
 		<put-attribute name="page_title" value="Enrich Content" />
 		<put-attribute name="body" value="/WEB-INF/pages/courses/enrichcontent.jsp" />
 	</definition>
