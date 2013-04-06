@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ziksana.domain.common.NameValue;
+import com.ziksana.domain.utils.NameValue;
 import com.ziksana.persistence.data.EnumStaticDataMapper;
 import com.ziksana.service.data.EnumDataService;
 

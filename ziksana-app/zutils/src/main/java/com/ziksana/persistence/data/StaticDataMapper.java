@@ -5,7 +5,7 @@ package com.ziksana.persistence.data;
 
 import java.util.List;
 
-import com.ziksana.domain.common.NameValue;
+import com.ziksana.domain.utils.NameValue;
 
 /**
  * @author prabu

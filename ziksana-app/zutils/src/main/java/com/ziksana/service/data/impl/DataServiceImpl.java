@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ziksana.domain.common.NameValue;
+import com.ziksana.domain.utils.NameValue;
 import com.ziksana.persistence.data.StaticDataMapper;
 import com.ziksana.service.data.DataService;
 

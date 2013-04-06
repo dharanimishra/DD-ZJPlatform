@@ -62,7 +62,7 @@ public class RecommendationsController {
 			ZiksanaMessage<Recommendation> message = new ZiksanaMessage<Recommendation>();
 
 			message.setContent(recommendations);
-			message.setHeader(getHeader(getClass().getSimpleName().toUpperCase()));
+			//message.setHeader(getHeader(getClass().getSimpleName().toUpperCase()));
 
 			modelAndView.addObject("recommendations", recommendations);
 		} catch (ZiksanaException exception) {
