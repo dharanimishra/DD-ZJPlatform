@@ -3,43 +3,53 @@ package com.ziksana.domain.course;
 import java.util.HashMap;
 import java.util.Map;
 
-
+import com.ziksana.util.EnumUtil;
 
 /**
  * @author Ratnesh Kumar
  */
 
 public enum CertificateType {
-	
+
 	// TODO: retrieve the ids from the static data service
-	MASTER 				(1,"Masters"), 
-	BACHELORS 			(2,"Bachelors"),
-	EXECUTIVE 			(3,"Executive"), 
-	DIPLOMA 			(4,"Diploma"),
-	CERTIFICATE 		(5,"Certificate"),
-	DOCTORATE 			(6,"Doctorate"),
-	UNDERGRADUATE 		(7,"Undergraduate"),
-	NONE 				(8,"None");
+	MASTER(), BACHELORS(), EXECUTIVE(), DIPLOMA(), CERTIFICATE(), DOCTORATE(), UNDERGRADUATE(), NONE();
 
-	private final int id;
-	
-	private final String name;
+	private int id;
 
-	
-private final static String category ="Course Status";
-	
+	private String name;
+
+	private final static String category = "Certificate Type";
+
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-	
+
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category " + category
+				+ " :mapUtil :" + mapUtil.size());
+
+		MASTER.setID(mapUtil.get("Masters").intValue());
+		BACHELORS.setID(mapUtil.get("Bachelors").intValue());
+		EXECUTIVE.setID(mapUtil.get("Executive").intValue());
+		DIPLOMA.setID(mapUtil.get("Diploma").intValue());
+		CERTIFICATE.setID(mapUtil.get("Certificate").intValue());
+		DOCTORATE.setID(mapUtil.get("Doctorate").intValue());
+		UNDERGRADUATE.setID(mapUtil.get("Undergraduate").intValue());
+		NONE.setID(mapUtil.get("None").intValue());
+	}
+
+	private CertificateType() {
+
 	}
 
 	private CertificateType(int id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	private void setID(int id) {
+		this.id = id;
+
 	}
 
 	public int getID() {
@@ -50,14 +60,16 @@ private final static String category ="Course Status";
 		return name;
 	}
 
-	public static CertificateType getCertificateType(int ID) throws NoSuchMethodException  {
+	public static CertificateType getCertificateType(int ID)
+			throws NoSuchMethodException {
 		for (CertificateType certType : CertificateType.values()) {
 			if (certType.getID() == ID) {
 				return certType;
 			}
 		}
 
-		throw new NoSuchMethodException("CertificateType ID [" + ID + "] not found");
+		throw new NoSuchMethodException("CertificateType ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {
@@ -65,4 +77,3 @@ private final static String category ="Course Status";
 	}
 
 }
-

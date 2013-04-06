@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import com.ziksana.util.EnumUtil;
+
 /**
  * @author Ratnesh Kumar
  */
@@ -11,23 +13,36 @@ import java.util.NoSuchElementException;
 public enum PropertyUsageType {
 
 	// TODO: retrieve the ids from the static data service
-	DEFINITION(3400, "Definition"), // Course Addnl property
-	VALIDATION(3401, "Validation"), // Member Addnl property
-	ANALYTICS(3402, "Analytics"); // Curriculum Addnl property
+	DEFINITION(), // Course Addnl property
+	VALIDATION(), // Member Addnl property
+	ANALYTICS(); // Curriculum Addnl property
 
-	private final int id;
+	private int id;
 
-	private final String name;
+	private String name;
 
 	private final static String category = "Property Usage Type";
 
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category " + category
+				+ " :mapUtil :" + mapUtil.size());
+
+		DEFINITION.setID(mapUtil.get("Definition").intValue());
+		VALIDATION.setID(mapUtil.get("Validation").intValue());
+		ANALYTICS.setID(mapUtil.get("Analytics").intValue());
+
+	}
+
+	private PropertyUsageType() {
+
+	}
+
+	private void setID(int id) {
+		this.id = id;
 	}
 
 	private PropertyUsageType(int id, String name) {

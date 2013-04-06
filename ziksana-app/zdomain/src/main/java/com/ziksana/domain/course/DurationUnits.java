@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import com.ziksana.util.EnumUtil;
+
 /**
  * @author Ratnesh Kumar
  */
@@ -11,25 +13,39 @@ import java.util.NoSuchElementException;
 public enum DurationUnits {
 
 	// TODO: retrieve the ids from the static data service
-	DAY(1, "Days"), WEEK(2, "Weeks"), MONTH(3, "Months");
+	DAY(), WEEK(), MONTH();
 
-	private final int id;
-	private final String name;
+	private int id;
+	private String name;
 
 	private final static String category = "Duration Unit";
 
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category " + category
+				+ " :mapUtil :" + mapUtil.size());
+
+		DAY.setID(mapUtil.get("Days").intValue());
+		WEEK.setID(mapUtil.get("Weeks").intValue());
+		MONTH.setID(mapUtil.get("Months").intValue());
+
+	}
+
+	private DurationUnits() {
+
 	}
 
 	private DurationUnits(int id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	private void setID(int id) {
+		this.id = id;
+
 	}
 
 	public int getID() {

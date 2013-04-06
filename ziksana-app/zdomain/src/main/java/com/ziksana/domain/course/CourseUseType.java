@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-
-
+import com.ziksana.util.EnumUtil;
 
 /**
  * @author Ratnesh Kumar
@@ -14,27 +13,36 @@ import java.util.NoSuchElementException;
 public enum CourseUseType {
 
 	// TODO: retrieve the ids from the static data service
-	MAJOR      (1, "Major"),
-	MINOR      (2, "Minor"),
-	ELECTIVE   (3, "Elective"),
-	ADDITIONAL (4, "Additional");
-	
+	MAJOR(), MINOR(), ELECTIVE(), ADDITIONAL();
 
-	private final int id;
-	
-	private final String name;
-	
-	private final static String category ="Course Status";
-	
+	private int id;
+
+	private String name;
+
+	private final static String category = "Course Use Type";
+
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-	
+
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category " + category
+				+ " :mapUtil :" + mapUtil.size());
+
+		MAJOR.setID(mapUtil.get("Major").intValue());
+		MINOR.setID(mapUtil.get("Minor").intValue());
+		ELECTIVE.setID(mapUtil.get("Elective").intValue());
+		ADDITIONAL.setID(mapUtil.get("Additional").intValue());
 	}
 
+	private CourseUseType() {
+
+	}
+
+	private void setID(int id) {
+		this.id = id;
+
+	}
 
 	private CourseUseType(int id, String name) {
 		this.id = id;
@@ -56,7 +64,8 @@ public enum CourseUseType {
 			}
 		}
 
-		throw new NoSuchElementException("CourseUse Type ID [" + ID + "] not found");
+		throw new NoSuchElementException("CourseUse Type ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {

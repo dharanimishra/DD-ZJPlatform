@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import com.ziksana.util.EnumUtil;
+
 /**
  * @author Ratnesh Kumar
  */
@@ -14,19 +16,33 @@ public enum GradeType {
 	PERCENTAGE(1, "Perncentage"), PERCENTILE(2, "Percentile"), RELATIVE_POSITION(
 			3, "Relative Position"), GPA(4, "GPA"), A_PLUS(5, "A +");
 
-	private final int id;
+	private int id;
 
-	private final String name;
+	private String name;
 
-	private final static String category = "GradeType";
+	private final static String category = "Grade Type";
 
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category " + category
+				+ " :mapUtil :" + mapUtil.size());
+
+		PERCENTAGE.setID(mapUtil.get("Perncentage").intValue());
+		PERCENTILE.setID(mapUtil.get("Percentile").intValue());
+		RELATIVE_POSITION.setID(mapUtil.get("Relative Position").intValue());
+		GPA.setID(mapUtil.get("GPA").intValue());
+		A_PLUS.setID(mapUtil.get("A +").intValue());
+	}
+
+	private GradeType() {
+
+	}
+
+	private void setID(int id) {
+		this.id = id;
 	}
 
 	private GradeType(int id, String name) {

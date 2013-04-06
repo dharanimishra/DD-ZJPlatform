@@ -1,7 +1,7 @@
 package com.ziksana.domain.course;
 
 /**
- * @author bhashasp
+ * @author Ratnesh Kumar
  */
 public enum CourseComponentType {
 	

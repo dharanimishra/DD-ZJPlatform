@@ -6,9 +6,6 @@ import java.util.NoSuchElementException;
 
 import com.ziksana.util.EnumUtil;
 
-
-
-
 /**
  * @author Ratnesh Kumar
  */
@@ -16,30 +13,42 @@ import com.ziksana.util.EnumUtil;
 public enum CourseStatus {
 
 	// TODO: retrieve the ids from the static data service
-	UNDER_CONSTRUCT (1, "Under Construction"),
-	REVIEW          (2, "Under Review"),
-	RELEASE        	(3, "Ready for release"),
-	ACTIVE         	(4, "Active"),
-	HOLD      		(5, "Hold"),
-	ARCHIVED       	(6, "Archived");
-	
-	private final int id;
-	private final String name;
-	
-	private final static String category ="Course Status";
-	
+	UNDER_CONSTRUCT(), REVIEW(), RELEASE(), ACTIVE(), HOLD(), ARCHIVED();
+
+	private int id;
+	private String name;
+
+	private final static String category = "Course Status";
+
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-	
+
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category :mapUtil :"
-				+ mapUtil.size());
+		System.out.println("Getting static values :category " + category
+				+ " :mapUtil :" + mapUtil.size());
+
+		UNDER_CONSTRUCT.setID(mapUtil.get("Under Construction").intValue());
+		REVIEW.setID(mapUtil.get("Under Review").intValue());
+		RELEASE.setID(mapUtil.get("Ready for Release").intValue());
+		ACTIVE.setID(mapUtil.get("Active").intValue());
+		HOLD.setID(mapUtil.get("Hold").intValue());
+		ARCHIVED.setID(mapUtil.get("Archived").intValue());
+
+	}
+
+	private CourseStatus() {
+
 	}
 
 	private CourseStatus(int id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	private void setID(int id) {
+		this.id = id;
+
 	}
 
 	public int getID() {
@@ -57,7 +66,8 @@ public enum CourseStatus {
 			}
 		}
 
-		throw new NoSuchElementException("CourseStatus ID [" + ID + "] not found");
+		throw new NoSuchElementException("CourseStatus ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {

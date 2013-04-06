@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import com.ziksana.util.EnumUtil;
+
 /**
  * @author Ratnesh Kumar
  */
@@ -11,26 +13,40 @@ import java.util.NoSuchElementException;
 public enum LinkSource {
 
 	// TODO: retrieve the ids from the static data service
-	ZIKSANA_INTERNAL(1, "Ziksana Internal"), UNIVERSITY_INTERNAL(2,
-			"University Internal"), PRIVATE(3, "Private"), PUBLIC(4, "Public");
+	ZIKSANA_INTERNAL(), UNIVERSITY_INTERNAL(), PRIVATE(), PUBLIC();
 
-	private final int id;
-	private final String name;
+	private int id;
+	private String name;
 
 	private final static String category = "Link Source";
 
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category " + category
+				+ " :mapUtil :" + mapUtil.size());
+
+		ZIKSANA_INTERNAL.setID(mapUtil.get("Ziksana Internal").intValue());
+		UNIVERSITY_INTERNAL
+				.setID(mapUtil.get("University Internal").intValue());
+		PRIVATE.setID(mapUtil.get("Relative Private").intValue());
+		PUBLIC.setID(mapUtil.get("Public").intValue());
+
+	}
+
+	private LinkSource() {
+
 	}
 
 	private LinkSource(int id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	private void setID(int id) {
+		this.id = id;
 	}
 
 	public int getID() {

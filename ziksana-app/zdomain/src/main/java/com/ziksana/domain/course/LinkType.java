@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import com.ziksana.util.EnumUtil;
+
 /**
  * @author Ratnesh Kumar
  */
@@ -11,29 +13,46 @@ import java.util.NoSuchElementException;
 public enum LinkType {
 
 	// TODO: retrieve the ids from the static data service
-	REFERENCE(1, "Reference"), ADDITIONAL_INFO(2, "Additional information"), VARIATION_INFO(
-			3, "Variation information"), LOCALIZATION_INFO(4,
-			"Localization information"), EXAMPLE_INFO(5, "External URI"), TEST_INFO(
-			6, "Test information"), TOC(7, "Table of Contents / Topic"), NOTE(
-			8, "Note");
+	REFERENCE(), ADDITIONAL_INFO(), VARIATION_INFO(), LOCALIZATION_INFO(), EXAMPLE_INFO(), TEST_INFO(), TOC(), NOTE();
 
-	private final int id;
-	private final String name;
+	private int id;
+	private String name;
 
 	private final static String category = "Link Type";
 
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category " + category
+				+ " :mapUtil :" + mapUtil.size());
+
+		REFERENCE.setID(mapUtil.get("Reference").intValue());
+		ADDITIONAL_INFO.setID(mapUtil.get("Additional information").intValue());
+		VARIATION_INFO.setID(mapUtil.get("Variation information").intValue());
+		LOCALIZATION_INFO.setID(mapUtil.get("Localization information")
+				.intValue());
+
+		EXAMPLE_INFO.setID(mapUtil.get("External URI").intValue());
+		TEST_INFO.setID(mapUtil.get("Test information").intValue());
+		TOC.setID(mapUtil.get("Table of Contents / Topic").intValue());
+		NOTE.setID(mapUtil.get("Note").intValue());
+
+	}
+
+	private LinkType() {
+
 	}
 
 	private LinkType(int id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	private void setID(int id) {
+		this.id = id;
+
 	}
 
 	public int getID() {

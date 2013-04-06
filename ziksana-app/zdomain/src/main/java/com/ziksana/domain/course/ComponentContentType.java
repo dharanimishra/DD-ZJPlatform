@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-
+import com.ziksana.util.EnumUtil;
 
 /**
  * @author Ratnesh Kumar
@@ -13,29 +13,39 @@ import java.util.NoSuchElementException;
 public enum ComponentContentType {
 
 	// TODO: retrieve the ids from the static data service
-	PREVIEW_CONTENT      	(1, "Preview Content"),
-	PROMOTIONAL_CONTENT     (2, "Promotional Content"),
-	PRACTICE_CONTENT   		(3, "Practice Content"),
-	COURSE_CONTENT			(4, "Course Content");
-	
+	PREVIEW_CONTENT(), PROMOTIONAL_CONTENT(), PRACTICE_CONTENT(), COURSE_CONTENT();
 
-	private final int id;
-	
-	private final String name;
+	private int id;
 
-	
-private final static String category ="Course Status";
-	
+	private String name;
+
+	private final static String category = "Course Status";
+
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-	
+
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+		EnumUtil enumUtil = new EnumUtil();
+		mapUtil = enumUtil.getEnumData(category);
+		System.out.println("Getting static values :category " + category
+				+ " :mapUtil :" + mapUtil.size());
+
+		PREVIEW_CONTENT.setID(mapUtil.get("Preview Content").intValue());
+		PROMOTIONAL_CONTENT
+				.setID(mapUtil.get("Promotional Content").intValue());
+		PRACTICE_CONTENT.setID(mapUtil.get("Practice Content").intValue());
+		COURSE_CONTENT.setID(mapUtil.get("Course Content").intValue());
+
 	}
 
-	
+	private ComponentContentType() {
+
+	}
+
+	private void setID(int id) {
+		this.id = id;
+
+	}
+
 	private ComponentContentType(int id, String name) {
 		this.id = id;
 		this.name = name;
@@ -50,16 +60,19 @@ private final static String category ="Course Status";
 	}
 
 	public static ComponentContentType getComponentContentType(int ID) {
-		for (ComponentContentType compContentType : ComponentContentType.values()) {
+		for (ComponentContentType compContentType : ComponentContentType
+				.values()) {
 			if (compContentType.getID() == ID) {
 				return compContentType;
 			}
 		}
 
-		throw new NoSuchElementException("Component Content Type ID [" + ID + "] not found");
+		throw new NoSuchElementException("Component Content Type ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {
-		return "Component  Content Type [" + getName() + "] ID [" + getID() + "]";
+		return "Component  Content Type [" + getName() + "] ID [" + getID()
+				+ "]";
 	}
 }
