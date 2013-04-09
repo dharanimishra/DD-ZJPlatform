@@ -28,18 +28,7 @@ public class CourseSubjectDetailTest extends BaseTest {
 
 	@Test
 	public void testgetSubjectDetails() throws Exception {
-		
-		/*
-		System.out
-				.println("inside Test ****************************************");
 
-		Map<String, String> map = courseSubjectDetailService
-				.getSubjectCategory();
-
-		System.out.println("new saved course : ");
-
-		Assert.isTrue(map != null);
-		*/
 	}
 
 }

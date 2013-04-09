@@ -25,9 +25,7 @@ public enum DurationUnits {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
-
+	
 		DAY.setID(mapUtil.get("Days").intValue());
 		WEEK.setID(mapUtil.get("Weeks").intValue());
 		MONTH.setID(mapUtil.get("Months").intValue());

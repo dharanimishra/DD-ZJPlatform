@@ -25,8 +25,6 @@ public enum EmbeddedContentType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
 
 		SUMMARY.setID(mapUtil.get("Summary").intValue());
 		RECAP.setID(mapUtil.get("Recap").intValue());

@@ -28,17 +28,15 @@ import com.ziksana.service.course.CourseService;
 
 /**
  * @author prabu
- *
+ * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class CourseServiceImplTest {
 
-	
 	@Autowired
 	public CourseService courseService;
-	
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -63,7 +61,6 @@ public class CourseServiceImplTest {
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
 		ThreadLocalUtil.setToken(token);
 
-		
 	}
 
 	/**
@@ -74,39 +71,40 @@ public class CourseServiceImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.ziksana.service.course.impl.CourseServiceImpl#getCoursesByStatus(com.ziksana.domain.course.CourseStatus)}.
+	 * Test method for
+	 * {@link com.ziksana.service.course.impl.CourseServiceImpl#getCoursesByStatus(com.ziksana.domain.course.CourseStatus)}
+	 * .
 	 */
 	@Ignore
 	public void testGetCoursesByStatus() {
-		
-		List<Course> courses = courseService.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+
+		List<Course> courses = courseService
+				.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
 		assertTrue(courses.size() == 1);
-				
-		
-		
+
 	}
-	
-	@Ignore 
+
+	@Ignore
 	public void testGetAllCoursesByStatus() {
-		List<Course> courses = courseService.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+		List<Course> courses = courseService
+				.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
 		assertTrue(courses.size() == 1);
-		
-		
+
 	}
-	
+
 	@Ignore
 	public void testTotalNumberOfCourses() {
-		Integer total = courseService.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+		Integer total = courseService
+				.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
 		assertTrue(total > 0);
-		
+
 	}
-	
+
 	@Test
-	public void testGetCourseByCourseId()
-	{
+	public void testGetCourseByCourseId() {
 		Course course = new Course();
 		course = courseService.getCourseByCourseId(277);
-		System.out.println("course Name"+ course.getName());
+
 	}
 
 }

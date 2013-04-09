@@ -1,7 +1,5 @@
 package com.ziksana.service.course.impl;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,8 +51,6 @@ public class CourseTest extends BaseTest {
 
 		newCourse = courseService.saveOrUpdateCourse(course);
 
-		System.out.println("new saved course : " + course.toString());
-
 		Assert.isTrue(newCourse != null);
 	}
 
@@ -71,8 +67,6 @@ public class CourseTest extends BaseTest {
 		Course course = buildCourseWithComponentForUpdate();
 
 		newCourse = courseService.saveOrUpadteCourseComponents(course);
-
-		System.out.println("new saved course : " + course.toString());
 
 		Assert.isTrue(newCourse != null);
 
@@ -106,8 +100,6 @@ public class CourseTest extends BaseTest {
 		// tagcloud.setCourse(course1);
 		course1.setCourseTagClouds(tagcloudList);
 
-		System.out.println("Constructed Course  : " + course1);
-
 		return course1;
 
 	}
@@ -140,8 +132,6 @@ public class CourseTest extends BaseTest {
 		tagcloud.setTagType(TagType.TAG_TYPE1);
 		tagcloudList.add(tagcloud); // tagcloud.setCourse(course1);
 		course1.setCourseTagClouds(tagcloudList);
-
-		System.out.println("Constructed Course  : " + course1);
 
 		return course1;
 
@@ -185,8 +175,6 @@ public class CourseTest extends BaseTest {
 
 		courseDetails.setCourseLearningComponentsList(compList);
 
-		System.out.println("Constructed Course  : " + course1);
-
 		return course1;
 
 	}
@@ -228,8 +216,6 @@ public class CourseTest extends BaseTest {
 		CourseDetails courseDetails = new CourseDetails();
 
 		courseDetails.setCourseLearningComponentsList(compList);
-
-		System.out.println("Constructed Course  : " + course1);
 
 		return course1;
 
@@ -296,8 +282,6 @@ public class CourseTest extends BaseTest {
 		courseDetails.setCourseLearningComponentsList(compList);
 
 		course1.setCourseDetails(courseDetails);
-
-		System.out.println("Constructed Course  : " + course1);
 
 		return course1;
 
@@ -468,8 +452,6 @@ public class CourseTest extends BaseTest {
 		courseDetails.setLearningComponents(compList);
 
 		course1.setCourseDetails(courseDetails);
-
-		System.out.println("course  : " + course1);
 
 		return course1;
 

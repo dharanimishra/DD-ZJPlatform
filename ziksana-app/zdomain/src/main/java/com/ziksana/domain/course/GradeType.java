@@ -27,9 +27,7 @@ public enum GradeType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
-
+		
 		PERCENTAGE.setID(mapUtil.get("Perncentage").intValue());
 		PERCENTILE.setID(mapUtil.get("Percentile").intValue());
 		RELATIVE_POSITION.setID(mapUtil.get("Relative Position").intValue());

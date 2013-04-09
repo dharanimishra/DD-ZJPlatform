@@ -155,7 +155,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			Date formatStartDate = (Date) dateFormat.parse(startDate);
 			Date formatDate = dateFormat.parse(endDate);
 			Date formatEndDate = combineDateTime(formatDate);
-			System.out.println(" end date is " + formatEndDate);
+		
 
 			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
 					.getMemberPersonaId().getStorageID());
@@ -202,7 +202,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			Date formatStartDate = (Date) dateFormat.parse(startDate);
 			Date formatDate = dateFormat.parse(endDate);
 			Date formatEndDate = combineDateTime(formatDate);
-			System.out.println(" end date is " + formatEndDate);
+		
 
 			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
 					.getMemberPersonaId().getStorageID());

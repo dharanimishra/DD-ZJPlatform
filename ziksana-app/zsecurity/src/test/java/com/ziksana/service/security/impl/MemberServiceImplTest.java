@@ -7,8 +7,6 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -28,7 +26,7 @@ import com.ziksana.service.security.MemberService;
 
 /**
  * @author prabu
- *
+ * 
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,8 +35,7 @@ public class MemberServiceImplTest {
 
 	@Autowired
 	MemberService memberService;
-	
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -68,59 +65,50 @@ public class MemberServiceImplTest {
 	}
 
 	/**
-	 * Test method for {@link com.ziksana.service.security.impl.MemberServiceImpl#getMemberByUser(java.lang.String)}.
+	 * Test method for
+	 * {@link com.ziksana.service.security.impl.MemberServiceImpl#getMemberByUser(java.lang.String)}
+	 * .
 	 */
 	@Test
 	public void testGetMemberByUser() {
 		Member member = memberService.getMemberByUser("sandraf");
-		
+
 		List<MemberPersona> memberPersonas = member.getMemberPersonas();
 		MemberRoleType role = null;
-		
-		//TODO
-		for (MemberPersona memberPersona: memberPersonas)
-		{
-			if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR)
-			{
+
+		// TODO
+		for (MemberPersona memberPersona : memberPersonas) {
+			if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR) {
 				role = memberPersona.getRoleType();
-			}else if (memberPersona.getRoleType() == MemberRoleType.LEARNER)
-			{
+			} else if (memberPersona.getRoleType() == MemberRoleType.LEARNER) {
 				role = memberPersona.getRoleType();
 			}
-			
-			
+
 		}
-		
-		
-		//System.out.println(" Role type is "+member.)
-		//assertTrue( member.getMemberPersonas().size() == 4);
-		assertTrue(role!=null);
+
+		// assertTrue( member.getMemberPersonas().size() == 4);
+		assertTrue(role != null);
 
 	}
+
 	@Test
 	public void testGetMemberByMemberId() {
 		Member member = memberService.getMemberByMemberId(1002);
-		
+
 		List<MemberPersona> memberPersonas = member.getMemberPersonas();
 		MemberRoleType role = null;
-		
-		
-		for (MemberPersona memberPersona: memberPersonas)
-		{
-			if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR)
-			{
+
+		for (MemberPersona memberPersona : memberPersonas) {
+			if (memberPersona.getRoleType() == MemberRoleType.EDUCATOR) {
 				role = memberPersona.getRoleType();
-			}else if (memberPersona.getRoleType() == MemberRoleType.LEARNER)
-			{
+			} else if (memberPersona.getRoleType() == MemberRoleType.LEARNER) {
 				role = memberPersona.getRoleType();
 			}
-			
+
 		}
-		
-		
-		//System.out.println(" Role type is "+member.)
-		//assertTrue( member.getMemberPersonas().size() == 4);
-		assertTrue(role!=null);
+
+		// assertTrue( member.getMemberPersonas().size() == 4);
+		assertTrue(role != null);
 
 	}
 }

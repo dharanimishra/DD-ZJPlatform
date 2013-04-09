@@ -49,24 +49,18 @@ public class CourseServiceTest extends BaseTest {
 				.println("inside Test ****************************************");
 
 		Course newCourse = null;
-		//Course course = buildCourseForSave();
-		 Course course = buildCourseForUpdate();
+		// Course course = buildCourseForSave();
+		Course course = buildCourseForUpdate();
 
 		newCourse = courseService.saveOrUpdateCourse(course);
 
-		System.out.println("new saved course : " + course.toString());
-
 	}
-
 
 	public void testgetListOfCourses() throws CourseException {
 
 		List<Course> courses = courseService.getListOfCourses(100);
-		System.out.println(" The number of courses are " + courses.size());
 
 		Course course = courses.get(0);
-		System.out.println(" course status is " + course.getCourseProgress());
-		System.out.println(" course status is " + course.getCourseStatusId());
 
 	}
 
@@ -79,13 +73,11 @@ public class CourseServiceTest extends BaseTest {
 
 		Course newCourse = null;
 
-		 //Course course = buildCourseWithComponentForSave();
+		// Course course = buildCourseWithComponentForSave();
 
 		Course course = buildCourseWithComponentForUpdate();
 
 		newCourse = courseService.saveOrUpadteCourseComponents(course);
-
-		System.out.println("new saved course : " + course.toString());
 
 	}
 
@@ -116,8 +108,6 @@ public class CourseServiceTest extends BaseTest {
 		tagcloudList.add(tagcloud);
 		// tagcloud.setCourse(course1);
 		course1.setCourseTagClouds(tagcloudList);
-
-		System.out.println("Constructed Course  : " + course1);
 
 		return course1;
 
@@ -151,8 +141,6 @@ public class CourseServiceTest extends BaseTest {
 		tagcloud.setTagType(TagType.TAG_TYPE1);
 		tagcloudList.add(tagcloud); // tagcloud.setCourse(course1);
 		course1.setCourseTagClouds(tagcloudList);
-
-		System.out.println("Constructed Course  : " + course1);
 
 		return course1;
 
@@ -196,8 +184,6 @@ public class CourseServiceTest extends BaseTest {
 
 		courseDetails.setCourseLearningComponentsList(compList);
 
-		System.out.println("Constructed Course  : " + course1);
-
 		return course1;
 
 	}
@@ -239,8 +225,6 @@ public class CourseServiceTest extends BaseTest {
 		CourseDetails courseDetails = new CourseDetails();
 
 		courseDetails.setCourseLearningComponentsList(compList);
-
-		System.out.println("Constructed Course  : " + course1);
 
 		return course1;
 
@@ -307,8 +291,6 @@ public class CourseServiceTest extends BaseTest {
 		courseDetails.setCourseLearningComponentsList(compList);
 
 		course1.setCourseDetails(courseDetails);
-
-		System.out.println("Constructed Course  : " + course1);
 
 		return course1;
 
@@ -479,8 +461,6 @@ public class CourseServiceTest extends BaseTest {
 		courseDetails.setLearningComponents(compList);
 
 		course1.setCourseDetails(courseDetails);
-
-		System.out.println("course  : " + course1);
 
 		return course1;
 

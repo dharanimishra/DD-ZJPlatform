@@ -26,8 +26,6 @@ public enum CourseUseType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
 
 		MAJOR.setID(mapUtil.get("Major").intValue());
 		MINOR.setID(mapUtil.get("Minor").intValue());

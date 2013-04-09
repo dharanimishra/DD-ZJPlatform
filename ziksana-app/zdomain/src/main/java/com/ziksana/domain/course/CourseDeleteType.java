@@ -27,8 +27,6 @@ public enum CourseDeleteType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
 
 		CONTENT.setID(mapUtil.get("Content Only").intValue());
 		CONTENT_PARTS.setID(mapUtil.get("Content Parts only").intValue());

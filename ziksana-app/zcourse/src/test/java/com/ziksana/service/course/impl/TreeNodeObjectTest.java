@@ -26,19 +26,10 @@ public class TreeNodeObjectTest extends BaseTest {
 	public void getTreeComponetTest() throws Exception {
 		Integer courseId = 100;
 
-		System.out.print(" list :");
-		List<TreeNode> list = courseTreeNodeService.getParentTreeComponents(courseId);
-		System.out.print(" list :" + list.size());
+		List<TreeNode> list = courseTreeNodeService
+				.getParentTreeComponents(courseId);
 
 		for (TreeNode node : list) {
-
-			System.out.println(" node.getCourseId() :" + node.getCourseId());
-			System.out
-					.println(" node.getCoursename() :" + node.getCoursename());
-			System.out.println(" node.getContentType() :"
-					+ node.getContentType());
-			System.out.println(" node.getContentTypeId() :"
-					+ node.getContentTypeId());
 
 		}
 

@@ -25,8 +25,6 @@ public enum LinkType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
 
 		REFERENCE.setID(mapUtil.get("Reference").intValue());
 		ADDITIONAL_INFO.setID(mapUtil.get("Additional information").intValue());

@@ -26,8 +26,6 @@ public enum ComponentType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
 
 		MODULE.setID(mapUtil.get("Module").intValue());
 		SUBJECT.setID(mapUtil.get("Subject").intValue());

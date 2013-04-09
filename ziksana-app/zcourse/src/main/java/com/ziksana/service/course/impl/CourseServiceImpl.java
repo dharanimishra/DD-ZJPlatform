@@ -586,7 +586,7 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> getCoursesByStatus(CourseStatus courseStatus) {
 		// TODO Auto-generated method stub
 		int status = courseStatus.getID();
-		System.out.println(" COURSE STATUS IS " + status);
+	
 		String memberPersonaId = ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID();
 

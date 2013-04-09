@@ -26,9 +26,7 @@ public enum ContentType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
-
+	
 		VIDEO.setID(mapUtil.get("Video").intValue());
 		ENHANCED_VIDEO.setID(mapUtil.get("ENHANCED_VIDEO").intValue());
 		AUDIO.setID(mapUtil.get("Audio").intValue());

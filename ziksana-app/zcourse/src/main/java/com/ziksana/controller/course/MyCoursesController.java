@@ -37,7 +37,7 @@ public class MyCoursesController {
 
 	@Autowired
 	CourseService courseService;
-	
+
 	@Autowired
 	private MediaService mediaService;
 
@@ -56,7 +56,6 @@ public class MyCoursesController {
 			List<Course> activeCourses = courseService
 					.getCoursesByStatus(CourseStatus.ACTIVE);
 
-
 			LOGGER.debug("Exiting Class " + getClass() + " showCourse(): ");
 
 			// TODO we need to add object
@@ -71,27 +70,26 @@ public class MyCoursesController {
 
 	@RequestMapping(value = "/myprogramsdraft", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView readMyProgramsDraft(){
+	ModelAndView readMyProgramsDraft() {
 
 		LOGGER.debug("Entering Class " + getClass() + " readMyPrograms()");
-		ModelAndView mv =null;
+		ModelAndView mv = null;
 		try {
 			MemberRoleType roleType = ThreadLocalUtil.getToken().getRole();
 
-			
 			if (roleType == MemberRoleType.EDUCATOR) {
 				List<Course> courses = courseService
 						.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
 				Integer courseCount = courseService
 						.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
-				 mv = new ModelAndView("draftedcourses");
+				mv = new ModelAndView("draftedcourses");
 				mv.addObject("courses", courses);
 				mv.addObject("courseCount", courseCount);
-				mv.addObject("ms",mediaService.getMediaContents());
+				mv.addObject("ms", mediaService.getMediaContents());
 			} else {
 
 				mv = new ModelAndView("learnerdraftedcourses");
-				
+
 				List<LearningProgram> programs = courseService
 						.getLearningPrograms();
 				LOGGER.debug("Learner Program Size==>" + programs.size());
@@ -99,20 +97,17 @@ public class MyCoursesController {
 				List<Course> courses = null;
 
 				if (programs.size() >= 1) {
-					
+
 					program = programs.get(0);
 
-					courses = courseService
-							.getCoursesByLearningProgram(Integer.valueOf(program
-									.getLearningProgramId().getStorageID()));
-					System.out.println(" TOTAL NUMBER OF COURSES IS  "+ courses.size());
-					
-					System.out.println(" THE COURSE NAME IS   "
-							+ courses.get(0).getName());
+					courses = courseService.getCoursesByLearningProgram(Integer
+							.valueOf(program.getLearningProgramId()
+									.getStorageID()));
+
 					mv.addObject("program", program.getName());
-								
+
 					mv.addObject("courses", courses);
-					mv.addObject("ms",mediaService.getMediaContents());
+					mv.addObject("ms", mediaService.getMediaContents());
 				}
 			}
 		} catch (ZiksanaException exception) {
@@ -121,35 +116,32 @@ public class MyCoursesController {
 		return mv;
 
 	}
-	
+
 	@RequestMapping(value = "/learnercourses", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView readLearnerMyPrograms() throws CourseException {
+	public @ResponseBody
+	ModelAndView readLearnerMyPrograms() throws CourseException {
 		ModelAndView mvLearner = new ModelAndView("courses/learner-courses");
 		try {
 			List<LearningProgram> programs = courseService
 					.getLearningPrograms();
-			
+
 			LearningProgram program = programs.get(0);
 			List<Course> courses = courseService
 					.getThreeCoursesByLearningProgram(Integer.valueOf(program
 							.getLearningProgramId().getStorageID()));
-			
+
 			LOGGER.debug(" TOTAL NUMBER OF COURSES IS  " + courses.size());
-			LOGGER.debug(" THE COURSE NAME IS   "
-					+ courses.get(0).getName());
-			
+			LOGGER.debug(" THE COURSE NAME IS   " + courses.get(0).getName());
+
 			mvLearner.addObject("program", program.getName());
-			mvLearner.addObject("ms",mediaService.getMediaContents());
+			mvLearner.addObject("ms", mediaService.getMediaContents());
 			mvLearner.addObject("courses", courses);
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
 		return mvLearner;
-		
-		
-	
+
 	}
-	
 
 	@RequestMapping(value = "/myprograms", method = RequestMethod.GET)
 	public @ResponseBody
@@ -168,7 +160,7 @@ public class MyCoursesController {
 				mv = new ModelAndView("mycoursesdraft");
 				mv.addObject("courses", courses);
 				mv.addObject("courseCount", courseCount);
-				mv.addObject("ms",mediaService.getMediaContents());
+				mv.addObject("ms", mediaService.getMediaContents());
 			} else {
 
 				List<LearningProgram> programs = courseService
@@ -185,7 +177,7 @@ public class MyCoursesController {
 				mv = new ModelAndView("learnerdraftedcourses");
 				mv.addObject("program", program.getName());
 				mv.addObject("courses", courses);
-				mv.addObject("learnerCourseSize",learnerCourseSize);	
+				mv.addObject("learnerCourseSize", learnerCourseSize);
 				// TODO need to implement learner my programs...
 			}
 		} catch (ZiksanaException exception) {

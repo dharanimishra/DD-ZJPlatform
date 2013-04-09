@@ -25,9 +25,6 @@ public enum CourseStatus {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
-
 		UNDER_CONSTRUCT.setID(mapUtil.get("Under Construction").intValue());
 		REVIEW.setID(mapUtil.get("Under Review").intValue());
 		RELEASE.setID(mapUtil.get("Ready for Release").intValue());

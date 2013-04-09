@@ -37,8 +37,6 @@ public class CourseEnrichmentServiceTest extends BaseTest {
 
 		enrichment = constructEnrichment(enrichment, linkType.REFERENCE);
 
-		System.out.println("constructed enrichment : " + enrichment.toString());
-
 		enrichmentService.saveReference(enrichment, LinkType.REFERENCE);
 
 		Assert.assertNotNull(enrichment != null);

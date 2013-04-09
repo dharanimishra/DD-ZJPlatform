@@ -277,6 +277,8 @@ public class CreateCourseController {
 				+ CourseExtraCredits + " Course_Duration :" + CourseDuration
 				+ " CourseDurationUnit :" + CourseDurationUnit);
 
+		LOGGER.debug("Class :" + getClass()
+				+ " Method saveCourse :Before courseService CourseStatus.UNDER_CONSTRUCT.getID():" + CourseStatus.UNDER_CONSTRUCT.getID());
 		Integer courseId = 0, courseDuration = 0, courseDurationUnit = 1, subjClassificationId = 0, courseIds = 0;
 		CourseJsonResponse json = new CourseJsonResponse();
 
@@ -285,8 +287,14 @@ public class CreateCourseController {
 				courseId = Integer.parseInt(CourseId);
 			}
 
-			courseDuration = Integer.parseInt(CourseDuration);
-			courseDurationUnit = Integer.parseInt(CourseDurationUnit);
+			if (!"".equals(CourseDuration) && CourseDuration != null) {
+				courseDuration = Integer.parseInt(CourseDuration);
+			}
+			if (!"".equals(CourseDurationUnit) && CourseDurationUnit != null) {
+				courseDurationUnit = Integer.parseInt(CourseDurationUnit);
+			}
+			
+			
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
 					.getToken().getMemberPersonaId().getStorageID()));
@@ -329,6 +337,7 @@ public class CreateCourseController {
 				course.setThumbnailPicturePath(UploadImage);
 				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 				course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+				
 				course.setAdditionalInfoIndicator(true);
 				course.setIsDelete(false);
 				course.setVersion(1);

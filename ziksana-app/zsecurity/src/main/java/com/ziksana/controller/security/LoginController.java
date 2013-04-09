@@ -54,7 +54,7 @@ public class LoginController {
 		String password = request.getParameter("password");
 
 		logger.debug(" Username is " + username);
-		// System.out.println(" password is  "+username);
+	
 		ModelAndView mv = null;
 		try {
 			if (username == null && password == null) {

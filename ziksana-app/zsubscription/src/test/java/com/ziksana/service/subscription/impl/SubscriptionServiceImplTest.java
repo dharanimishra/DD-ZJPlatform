@@ -223,7 +223,7 @@ public class SubscriptionServiceImplTest {
 	public void testGetLinkedLearningContent() {
 		String linkedLearningContent = "7";
 		LearningContent learningContent = subscriptionService.getLinkedLearningContent(Integer.valueOf(6));
-		System.out.println("linked learning content id is "+learningContent.getLearningContentId().getStorageID());
+
 		assertTrue(learningContent.getLearningContentId().getStorageID().equals(linkedLearningContent ));
 		
 	}

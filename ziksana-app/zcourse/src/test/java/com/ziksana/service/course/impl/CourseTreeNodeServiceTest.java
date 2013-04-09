@@ -38,43 +38,24 @@ public class CourseTreeNodeServiceTest extends BaseTest {
 				.println("@@@@@@@@@@@@@@@@@@@@@getLearningComponentTypeTest()() @@@@@@@@@@@@@@@@@@@@@@@@");
 		LearningComponentType learningComponentType = courseTreeNodeService
 				.getLearningComponentType(learningComponentTypeId);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out
-				.println("learningComponentType :"
-						+ learningComponentType.getQualifierIndicator()
-						+ " learningComponentType "
-						+ learningComponentType.getActive());
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 	}
 
 	@Test
 	public void getLearningContentPartsTest() throws Exception {
 		Integer learningContentId = 6;
-		System.out
-				.println("@@@@@@@@@@@@@@@@@@@@@getLearningComponentTest() @@@@@@@@@@@@@@@@@@@@@@@@");
 
 		List<LearningContentParts> list = courseTreeNodeService
 				.getLearningContentParts(learningContentId);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("learningComponent list  :" + list.size());
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 	}
 
 	@Test
 	public void getLearningContentTest() throws Exception {
 		Integer learningContentId = 7;
-		System.out
-				.println("@@@@@@@@@@@@@@@@@@@@@getLearningContentTest() @@@@@@@@@@@@@@@@@@@@@@@@");
 
 		LearningContent LearningContent = courseTreeNodeService
 				.getLearningContent(learningContentId);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("LearningContent  :" + LearningContent
-				+ " LearningContent :" + LearningContent.getContentName());
-
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 	}
 
@@ -86,38 +67,23 @@ public class CourseTreeNodeServiceTest extends BaseTest {
 
 		LearningComponent learningComponent = courseTreeNodeService
 				.getLearningComponent(learningComponentId);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("learningComponent list  :"
-				+ learningComponent.getName() + learningComponent);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 	}
 
 	@Test
 	public void CourseLearningComponentTest() throws Exception {
 		Integer courseId = 101;
-		System.out
-				.println("@@@@@@@@@@@@@@@@@@@@@CourseLearningComponentTest() @@@@@@@@@@@@@@@@@@@@@@@@");
+
 		List<CourseLearningComponent> list = courseTreeNodeService
 				.getLearningComponents(courseId);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("List<CourseLearningComponent> list  :"
-				+ list.size());
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 	}
 
 	@Test
 	public void CourseTreeNodeTest() throws Exception {
-		System.out
-				.println("@@@@@@@@@@@@@@@@@@@ CourseTreeNodeTest() @@@@@@@@@@@@@@@@@@@@@@@@@@");
+
 		Integer courseId = 100;
 		Course course = courseTreeNodeService.getCourseComponents(courseId);
-
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.out.println("Course :" + course.getName());
-		System.out.println("Course Description:" + course.getDescription());
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 	}
 

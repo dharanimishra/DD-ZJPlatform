@@ -28,9 +28,7 @@ public enum CourseSearchType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
-
+		
 		LEARNINGCOMPONENT.setID(mapUtil.get("Learning Component").intValue());
 		COMPONENTCONTENT.setID(mapUtil.get("Component Content").intValue());
 		OTHER.setID(mapUtil.get("Other").intValue());

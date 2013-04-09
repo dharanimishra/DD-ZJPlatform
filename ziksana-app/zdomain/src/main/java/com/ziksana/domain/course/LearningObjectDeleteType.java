@@ -21,10 +21,7 @@ public enum LearningObjectDeleteType {
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+
 	}
 
 	private LearningObjectDeleteType(int id, String name) {

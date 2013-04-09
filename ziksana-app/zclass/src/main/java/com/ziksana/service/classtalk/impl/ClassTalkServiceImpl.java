@@ -24,8 +24,8 @@ public class ClassTalkServiceImpl implements ClassTalkService {
 	public List<LearnerOnline> getAllOnlineLearners(Course course) {
 		// TODO Auto-generated method stub
 		
-		return classTalkMapper.getAllOnlineLearners(Integer.valueOf(course.getCourseId().getStorageID()));
-		
+		//return classTalkMapper.getAllOnlineLearners(Integer.valueOf(course.getCourseId().getStorageID()));
+		return null;
 	}
 
 	@Override

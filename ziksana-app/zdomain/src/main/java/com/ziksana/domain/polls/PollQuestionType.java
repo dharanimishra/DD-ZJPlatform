@@ -3,7 +3,6 @@ package com.ziksana.domain.polls;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public enum PollQuestionType {
 
 	// TODO: We may want to fetch the ids from the static data service
@@ -17,10 +16,7 @@ public enum PollQuestionType {
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
 	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		System.out.println("Getting static values :category :mapUtil :"
-//				+ mapUtil.size());
+
 	}
 
 	private PollQuestionType(int id, String name) {

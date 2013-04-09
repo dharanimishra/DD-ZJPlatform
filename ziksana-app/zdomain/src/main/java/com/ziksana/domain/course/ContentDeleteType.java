@@ -27,9 +27,7 @@ public enum ContentDeleteType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
-
+		
 		LEARNNGOBJECT.setID(mapUtil.get("Learning Object Only").intValue());
 		LEARNNGOBJECT_CONTENTS.setID(mapUtil.get(
 				"Learning Object Contents only").intValue());

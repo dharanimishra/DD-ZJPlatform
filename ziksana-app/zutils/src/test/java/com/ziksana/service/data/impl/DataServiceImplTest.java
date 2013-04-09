@@ -67,11 +67,9 @@ public class DataServiceImplTest {
 	public void testFetchData() {
 		Map<String, Integer> map = dataService.fetchData("Geography");
 		Assert.assertNotNull(map);
-		System.out.println("@@@@@@@@@@@@@@@@@@Enum Test :@@@@@@@@@@@@@@@"
-				+ map.size());
+
 		assertTrue(map.size() == 6);
-		System.out.println("$$$$$$$$$$$$$$$$$$Enum Test 2 $$$$$$$$$$$$$$:"
-				+ map.size());
+
 	}
 
 }

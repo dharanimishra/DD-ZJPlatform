@@ -25,9 +25,6 @@ public enum CertificateType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
-
 		MASTER.setID(mapUtil.get("Masters").intValue());
 		BACHELORS.setID(mapUtil.get("Bachelors").intValue());
 		EXECUTIVE.setID(mapUtil.get("Executive").intValue());

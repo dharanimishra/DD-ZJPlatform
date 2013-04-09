@@ -25,11 +25,11 @@ public class EnumUtil {
 	private Map<String, Integer> mapUtil = null;
 
 	public Map<String, Integer> getMapUtil() {
-		System.out.println("getMapUtil :");
+
 		mapUtil = new HashMap<String, Integer>();
-		System.out.println("getMapUtil 2:"+mapUtil);
+
 		mapUtil = getEnumData(category);
-		System.out.println("getMapUtil 3:"+mapUtil);
+
 		return mapUtil;
 	}
 
@@ -38,15 +38,15 @@ public class EnumUtil {
 	}
 
 	public Map<String, Integer> getEnumData(String category) {
-		System.out.println("geography :");
+
 		Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 		try {
 			mapUtil = enumDataService.fetchData(category);
 
 		} catch (Exception e) {
-			System.out.println("geography :Exception :" + e);
+
 		}
-		System.out.println("geography :mapUtil :" + mapUtil);
+
 		return mapUtil;
 	}
 

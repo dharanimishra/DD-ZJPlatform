@@ -28,8 +28,6 @@ public enum PropertyUsageType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
 
 		DEFINITION.setID(mapUtil.get("Definition").intValue());
 		VALIDATION.setID(mapUtil.get("Validation").intValue());

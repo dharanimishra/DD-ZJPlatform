@@ -1,34 +1,27 @@
 package com.ziksana.domain.polls;
 
-
-
 public class PollQuestionResult {
 
-	private Integer      ID       = null;
-    private PollQuestion question = null;
-    
-    Integer answer1Count;
-    Integer answer2Count;
-    Integer answer3Count;
-    Integer answer4Count;
-    Integer answer5Count;
-    
-    private String percentage1;
-    
-    private String percentage2;
-    
-    private String percentage3;
-    
-    private String percentage4;
-    
-    private String percentage5;
-    
-   
-	
-    
-    
-    
-    public Integer getAnswer1Count() {
+	private Integer ID = null;
+	private PollQuestion question = null;
+
+	Integer answer1Count;
+	Integer answer2Count;
+	Integer answer3Count;
+	Integer answer4Count;
+	Integer answer5Count;
+
+	private String percentage1;
+
+	private String percentage2;
+
+	private String percentage3;
+
+	private String percentage4;
+
+	private String percentage5;
+
+	public Integer getAnswer1Count() {
 		return answer1Count;
 	}
 
@@ -69,70 +62,70 @@ public class PollQuestionResult {
 	}
 
 	public PollQuestionResult() {
-    	
-    }
 
-    public PollQuestionResult(Integer id, PollQuestion qs) {
-    	setID(id);
-    	setQuestion(qs);
-    }
-    
-    public Integer getID() {
-        return ID;
-    }
+	}
 
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
+	public PollQuestionResult(Integer id, PollQuestion qs) {
+		setID(id);
+		setQuestion(qs);
+	}
 
-    public PollQuestion getQuestion() {
-    	return question;
-    }
-    
-    public void setQuestion(PollQuestion question) {
-    	this.question = question;
-    }
-    
-    public boolean isValid() {
-    	if (question != null) {
-    		question.updateTotals();
-    	} else {
-    		throw new IllegalStateException("Question not set in the result");
-    	}
-    	
-    	return false;
-    }
-    
-    public Integer getOptionCount(int index) {
-    	isValid();
-        
-    	//Need to revisit
-    	return null;
-    	//return question.getOption(index).getOptionTotal();
-    }
+	public Integer getID() {
+		return ID;
+	}
 
-    public void setOptionCount(int index, Integer count) {
-        if (question == null) {
-        	throw new IllegalStateException("Question not set in the result");
-        }
-        
-        //question.getOption(index).setOptionTotal(count);
-        isValid();
-    }
-    
-    public Long getTotalRespondents() {
-    	isValid();
-        return question.getTotalRespondents();
-    }
-    
-    
-    public void setTotalRespondents(Integer totalRespondents) {
-    	System.out.println(" Total respondents "+totalRespondents);
-    	long temp = Long.parseLong(Integer.toString(totalRespondents.intValue()));
-    	System.out.println(" TEMP value is "+temp);
-    	if (question != null)
-    	question.setTotalRespondents(totalRespondents.longValue());
-    }
+	public void setID(Integer ID) {
+		this.ID = ID;
+	}
+
+	public PollQuestion getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(PollQuestion question) {
+		this.question = question;
+	}
+
+	public boolean isValid() {
+		if (question != null) {
+			question.updateTotals();
+		} else {
+			throw new IllegalStateException("Question not set in the result");
+		}
+
+		return false;
+	}
+
+	public Integer getOptionCount(int index) {
+		isValid();
+
+		// Need to revisit
+		return null;
+		// return question.getOption(index).getOptionTotal();
+	}
+
+	public void setOptionCount(int index, Integer count) {
+		if (question == null) {
+			throw new IllegalStateException("Question not set in the result");
+		}
+
+		// question.getOption(index).setOptionTotal(count);
+		isValid();
+	}
+
+	public Long getTotalRespondents() {
+		isValid();
+		return question.getTotalRespondents();
+	}
+
+	public void setTotalRespondents(Integer totalRespondents) {
+
+		long temp = Long
+				.parseLong(Integer.toString(totalRespondents.intValue()));
+
+		if (question != null)
+			question.setTotalRespondents(totalRespondents.longValue());
+	}
 
 	public String getPercentage1() {
 		return percentage1;
@@ -174,6 +167,4 @@ public class PollQuestionResult {
 		this.percentage5 = percentage5;
 	}
 
-	
-    
 }

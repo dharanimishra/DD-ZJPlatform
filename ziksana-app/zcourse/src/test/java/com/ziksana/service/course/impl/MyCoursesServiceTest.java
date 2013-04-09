@@ -31,8 +31,6 @@ public class MyCoursesServiceTest extends BaseTest {
 		coursesList = courseService.getListOfCourses(memberPersona
 				.getMemberRoleId());
 
-		System.out.println("Courses List in Test case : " + coursesList.size());
-
 		Assert.isTrue(coursesList.size() > 0);
 
 	}

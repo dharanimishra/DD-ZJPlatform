@@ -19,7 +19,6 @@ import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentDeleteType;
 import com.ziksana.domain.member.MemberPersona;
-import com.ziksana.id.ZID;
 import com.ziksana.service.course.CourseContentService;
 
 /**
@@ -73,8 +72,7 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 	@Test
 	public void testlDeleteContentPartsOnly() throws Exception {
 
-		System.out
-				.println("********* Inside testlDeleteContentPartsOnly method ***********");
+	
 		Integer learningContentId = 6;
 
 		courseContentService.deleteContent(
@@ -86,8 +84,7 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 	@Test
 	public void testlDeleteContentAndParts() throws Exception {
 
-		System.out
-				.println("********* Inside testlDeleteContentAndParts method ***********");
+	
 		Integer learningContentId = 6;
 
 		courseContentService.deleteContent(
@@ -109,7 +106,7 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 		List<LearningContent> contentList = courseContentService
 				.getLearningContent(rightsOwningMember.getMemberRoleId());
 
-		System.out.println("list size : " + contentList.size());
+	
 
 		Assert.assertTrue(contentList.size() > 0);
 

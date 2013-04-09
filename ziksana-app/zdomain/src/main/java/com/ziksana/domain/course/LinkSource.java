@@ -25,8 +25,6 @@ public enum LinkSource {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
 
 		ZIKSANA_INTERNAL.setID(mapUtil.get("Ziksana Internal").intValue());
 		UNIVERSITY_INTERNAL

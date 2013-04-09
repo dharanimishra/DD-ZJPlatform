@@ -26,8 +26,6 @@ public enum PropertyDataType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
 
 		NUMBER.setID(mapUtil.get("Number").intValue());
 		DATE.setID(mapUtil.get("Date").intValue());

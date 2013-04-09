@@ -26,8 +26,6 @@ public enum ComponentContentType {
 	static {
 		EnumUtil enumUtil = new EnumUtil();
 		mapUtil = enumUtil.getEnumData(category);
-		System.out.println("Getting static values :category " + category
-				+ " :mapUtil :" + mapUtil.size());
 
 		PREVIEW_CONTENT.setID(mapUtil.get("Preview Content").intValue());
 		PROMOTIONAL_CONTENT
