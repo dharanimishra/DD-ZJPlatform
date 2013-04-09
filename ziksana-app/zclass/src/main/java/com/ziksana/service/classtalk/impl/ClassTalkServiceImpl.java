@@ -12,19 +12,16 @@ import com.ziksana.security.util.ThreadLocalUtil;
 import com.ziksana.service.classtalk.ClassTalkService;
 
 public class ClassTalkServiceImpl implements ClassTalkService {
-	
-	
+
 	@Autowired
 	public ClassTalkMapper classTalkMapper;
-	
-	
-	
 
 	@Override
 	public List<LearnerOnline> getAllOnlineLearners(Course course) {
 		// TODO Auto-generated method stub
-		
-		//return classTalkMapper.getAllOnlineLearners(Integer.valueOf(course.getCourseId().getStorageID()));
+
+		// return
+		// classTalkMapper.getAllOnlineLearners(Integer.valueOf(course.getCourseId().getStorageID()));
 		return null;
 	}
 
@@ -33,25 +30,21 @@ public class ClassTalkServiceImpl implements ClassTalkService {
 			RelationshipType relationshipType) {
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID());
-		
-		
-		if (relationshipType.equals(RelationshipType.CIRCLEFIRST))
-		{
-			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId().getStorageID()), memberRoleId, Integer.valueOf(1000));			
+
+		if (relationshipType.equals(RelationshipType.CIRCLEFIRST)) {
+			return classTalkMapper.getOnlineLearnersByCircle(
+					Integer.valueOf(course.getCourseId().getStorageID()),
+					memberRoleId, Integer.valueOf(1000));
+		} else if (relationshipType.equals(RelationshipType.CIRCLESECOND)) {
+			return classTalkMapper.getOnlineLearnersByCircle(
+					Integer.valueOf(course.getCourseId().getStorageID()),
+					memberRoleId, Integer.valueOf(1001));
+		} else {
+			return classTalkMapper.getOnlineLearnersByCircle(
+					Integer.valueOf(course.getCourseId().getStorageID()),
+					memberRoleId, Integer.valueOf(1002));
 		}
-		else if(relationshipType.equals( RelationshipType.CIRCLESECOND))
-		{
-			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId().getStorageID()), memberRoleId, Integer.valueOf(1001)); 	
-		}
-		else
-		{
-			return classTalkMapper.getOnlineLearnersByCircle(Integer.valueOf(course.getCourseId().getStorageID()), memberRoleId, Integer.valueOf(1002));
-		}
-		
-		
-		
-		
-		
+
 	}
 
 }

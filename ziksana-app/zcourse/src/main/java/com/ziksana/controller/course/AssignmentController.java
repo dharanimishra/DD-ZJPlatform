@@ -20,7 +20,7 @@ public class AssignmentController {
 
 	@RequestMapping(value = "/createassignment", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView showAssociateCourse() {
+	ModelAndView createAssignment() {
 		LOGGER.debug("Entering showAssociateCourse(): ");
 		ModelAndView mv = new ModelAndView("courses/assignment");
 

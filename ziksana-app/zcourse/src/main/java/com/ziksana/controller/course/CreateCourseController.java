@@ -134,7 +134,7 @@ public class CreateCourseController {
 	@RequestMapping(value = "/createcourse", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView showCourse() {
+	ModelAndView reateNewCourse() {
 		LOGGER.debug(" Entering Class " + getClass() + " showCourse()");
 		ModelAndView mv = new ModelAndView("createcourse");
 		try {
@@ -187,7 +187,7 @@ public class CreateCourseController {
 	@RequestMapping(value = "/createcourse/{courseId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView showMyCourse(@PathVariable String courseId) {
+	ModelAndView editCourse(@PathVariable String courseId) {
 		LOGGER.debug(" Entering Class " + getClass() + " showCourse()");
 		ModelAndView modelView = null;
 

@@ -1,6 +1,6 @@
 package com.ziksana.util;
 
-import com.ziksana.domain.common.Header;
+import com.ziksana.domain.utils.Header;
 import com.ziksana.security.util.ThreadLocalUtil;
 
 public class Util {
