@@ -24,7 +24,6 @@ public class AlertServiceImpl implements AlertsService {
 	/**
 	 * get alert list
 	 */
-	@Override
 	public List<Alert> getAlertList() {
 
 		List<Alert> alertList = null;
@@ -34,25 +33,21 @@ public class AlertServiceImpl implements AlertsService {
 		return alertList;
 	}
 
-	@Override
 	public void createAlertItem(Alert AlertItem) {
 
 		alertMapper.createAlert(AlertItem);
 
 	}
 
-	@Override
 	public void editAlertItem(Alert AlertItem) {
 		alertMapper.updateAlert(AlertItem);
 
 	}
 
-	@Override
 	public void deleteAlertItem(Integer alertId) {
 		alertMapper.deleteAlert(alertId);
 	}
 
-	@Override
 	public List<Alert> getMapperAlerts() {
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID());

@@ -19,7 +19,6 @@ public class AssignmentServiceImpl implements AssignmentService {
 	@Autowired
 	AssignmentMapper assignmentMapper;
 
-	@Override
 	public Assignment createAssignment(Assignment assignment) {
 		Integer assignmentId = assignmentMapper.insertAssignment(assignment);
 		return assignment;

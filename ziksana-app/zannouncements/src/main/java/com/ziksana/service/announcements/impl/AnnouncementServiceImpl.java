@@ -100,7 +100,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 				+ announcement.getAnnouncementId());
 	}
 
-	@Override
 	public List<Announcement> getInstitutionAnnouncements(String startDate,
 			String endDate) {
 
@@ -124,7 +123,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		return announcement;
 	}
 
-	@Override
 	public List<Announcement> getInstitutionUnitAnnouncements(String startDate,
 			String endDate) {
 		List<Announcement> announcement = new ArrayList<Announcement>();
@@ -146,7 +144,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		return announcement;
 	}
 
-	@Override
 	public List<Announcement> getCourseAnnouncements(String startDate,
 			String endDate) {
 		List<Announcement> announcement = new ArrayList<Announcement>();
@@ -155,7 +152,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			Date formatStartDate = (Date) dateFormat.parse(startDate);
 			Date formatDate = dateFormat.parse(endDate);
 			Date formatEndDate = combineDateTime(formatDate);
-		
 
 			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
 					.getMemberPersonaId().getStorageID());
@@ -169,7 +165,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		return announcement;
 	}
 
-	@Override
 	public List<Announcement> getAllAnnouncement() {
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID());
@@ -182,7 +177,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		return announcementList;
 	}
 
-	@Override
 	public Announcement getAnnouncementById(int anouncementId) {
 
 		Announcement announcement = new Announcement();
@@ -193,7 +187,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		return announcement;
 	}
 
-	@Override
 	public List<Announcement> getAllAnnouncementsByDate(String startDate,
 			String endDate) {
 		List<Announcement> announcement = new ArrayList<Announcement>();
@@ -202,7 +195,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			Date formatStartDate = (Date) dateFormat.parse(startDate);
 			Date formatDate = dateFormat.parse(endDate);
 			Date formatEndDate = combineDateTime(formatDate);
-		
 
 			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
 					.getMemberPersonaId().getStorageID());

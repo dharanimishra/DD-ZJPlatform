@@ -17,7 +17,6 @@ public class AssignmentTestServiceImpl implements AssignmentTestService {
 	@Autowired
 	AssignmentTestMapper assignmentTestMapper;
 
-	@Override
 	public TestSubmission getStudentAssignmentPerformance(Integer memberRoleId) {
 
 		TestSubmission testSubmission = assignmentTestMapper
@@ -26,7 +25,6 @@ public class AssignmentTestServiceImpl implements AssignmentTestService {
 		return testSubmission;
 	}
 
-	@Override
 	public TestProgress getStudentTestProgress(Integer testId) {
 		TestProgress testProgress = assignmentTestMapper
 				.getStudentTestProgress(testId);
@@ -35,7 +33,6 @@ public class AssignmentTestServiceImpl implements AssignmentTestService {
 		return testProgress;
 	}
 
-	@Override
 	public void saveStudentFeedback(TestSubmission testSubmission) {
 		assignmentTestMapper.saveStudentFeedback(testSubmission);
 		LOGGER.debug(" In method saveStudentFeedback(TestSubmission testSubmission) ");

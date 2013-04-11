@@ -16,66 +16,55 @@ import com.ziksana.service.knowmebetter.PersonalityTestService;
 @Service
 public class PersonalityTestServiceImpl implements PersonalityTestService {
 
-	
-	
 	@Autowired
 	PersonalityTestMapper personalityTestMapper;
-	
-	@Override
+
 	public List<Question> getUnansweredQuestions() {
-		 List<Question> questionList = new ArrayList<Question>();
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-		
-		questionList =personalityTestMapper.getUnansweredQuestions(memberRoleId);
-		
-		
+		List<Question> questionList = new ArrayList<Question>();
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+
+		questionList = personalityTestMapper
+				.getUnansweredQuestions(memberRoleId);
+
 		return questionList;
 	}
 
-	
-
-	@Override
 	public void saveAnswer(Question question, Choice userChoice) {
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-		
-		personalityTestMapper.saveAnswer(question, userChoice,memberRoleId);
-		
-		
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+
+		personalityTestMapper.saveAnswer(question, userChoice, memberRoleId);
 
 	}
 
-	@Override
 	public List<QuestionResponse> answeredQuestions() {
 		List<QuestionResponse> questionResponse = new ArrayList<QuestionResponse>();
-		
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-		questionResponse = personalityTestMapper.answeredQuestions(memberRoleId);
-		
+
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		questionResponse = personalityTestMapper
+				.answeredQuestions(memberRoleId);
+
 		return questionResponse;
-		
+
 	}
 
-
-
-	@Override
 	public void updateAnswer(Question question, Choice userChoice) {
-		
-	
+
 		personalityTestMapper.updateAnswer(question, userChoice);
-		
+
 	}
 
-
-
-	@Override
 	public List<Question> getUnansweredQuestionsbyId(Integer questionBankId) {
-		 List<Question> questionList = new ArrayList<Question>();
-			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
-		
-			questionList =personalityTestMapper.getUnansweredQuestionsbyId(memberRoleId, questionBankId);
-			
-			return questionList;
+		List<Question> questionList = new ArrayList<Question>();
+		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+
+		questionList = personalityTestMapper.getUnansweredQuestionsbyId(
+				memberRoleId, questionBankId);
+
+		return questionList;
 	}
-	
-	
+
 }

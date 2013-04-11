@@ -90,7 +90,6 @@ public class Alert implements Comparable<Alert> {
 		this.priority = priority;
 	}
 
-	@Override
 	public int compareTo(Alert o) {
 		// TODO Auto-generated method stub
 		return this.completeBy.compareTo(o.completeBy);

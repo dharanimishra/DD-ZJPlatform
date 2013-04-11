@@ -23,7 +23,6 @@ public class CourseNestTreeServiceImpl implements CourseNestTreeService {
 	@Autowired
 	public TreeNodeMapper courseNestTreeNodeMapper;
 
-	@Override
 	public List<NestTreeNode> getCourseComponent(Integer courseId)
 			throws CourseException {
 		LOGGER.debug("Entering Class :" + getClass()
@@ -53,7 +52,6 @@ public class CourseNestTreeServiceImpl implements CourseNestTreeService {
 		return list;
 	}
 
-	@Override
 	public List<NestTreeNode> getModuleComponents(Integer courseId)
 			throws CourseException {
 
@@ -61,25 +59,28 @@ public class CourseNestTreeServiceImpl implements CourseNestTreeService {
 				+ " Method Name :getModuleComponents(Integer courseId)"
 				+ courseId);
 
-		List<NestTreeNode> list = courseNestTreeNodeMapper.getModuleComponents(courseId);
+		List<NestTreeNode> list = courseNestTreeNodeMapper
+				.getModuleComponents(courseId);
 
 		List<NestContentNode> contentlist = courseNestTreeNodeMapper
-							.getContentComponents(courseId);
+				.getContentComponents(courseId);
 
 		TreeNodeList rawList = new TreeNodeList(list, contentlist);
-		LOGGER.debug("CourseNestTreeService.getModuleComponents :" + rawList.debugTrace());
+		LOGGER.debug("CourseNestTreeService.getModuleComponents :"
+				+ rawList.debugTrace());
 
 		List<NestTreeNode> tree = null;
 
 		try {
 			tree = rawList.getTree();
-			//TODO need to handle this differently this is not the correct way. Arvind
+			// TODO need to handle this differently this is not the correct way.
+			// Arvind
 		} catch (Exception exp) {
-			LOGGER.error("CourseNestTreeService.getModuleComponents getTree() :" + exp);
+			LOGGER.error("CourseNestTreeService.getModuleComponents getTree() :"
+					+ exp);
 			throw new CourseException(
 					"Unable to create learning component tree");
 		}
-
 
 		LOGGER.debug("Exiting Class :" + getClass()
 				+ " Method Name :getModuleComponents(Integer courseId)");
@@ -87,9 +88,8 @@ public class CourseNestTreeServiceImpl implements CourseNestTreeService {
 		return tree;
 	}
 
-	@Override
-	public List<NestContentNode> getContentComponents(
-			Integer courseId) throws CourseException {
+	public List<NestContentNode> getContentComponents(Integer courseId)
+			throws CourseException {
 		LOGGER.debug("Entering Class :"
 				+ getClass()
 				+ " Method Name :getContentComponents(Integer learningComponentId)"

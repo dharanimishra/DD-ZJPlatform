@@ -27,7 +27,7 @@ public class MediaServiceImpl implements MediaService{
 	@Value("#{myProperties['staticFileServer']}")
 	private String staticFileServer;
 
-	@Override
+
 	public MediaServerURL getMediaContents() {
 		MediaServerURL media = new MediaServerURL();
 			

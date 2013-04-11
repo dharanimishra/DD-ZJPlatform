@@ -100,8 +100,6 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 				+ getClass()
 				+ " : Leaving Method :addToIgnore(Recommendation recommendation) ");
 	}
-
-	@Override
 	public List<Recommendation> getRecommendationsByCurrentState(
 			String currentState) {
 		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
@@ -119,7 +117,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		return recomendationList;
 	}
 
-	@Override
+
 	public List<Recommendation> getAllRecommendationsList() {
 		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
 		LOGGER.info("Class :" + getClass()
@@ -135,7 +133,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		return recomendationList;
 	}
 
-	@Override
+
 	public List<Recommendation> getAllRecommendations() {
 		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
 		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
@@ -149,7 +147,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		return recomendationList;
 	}
 
-	@Override
+
 	public Integer updateRecommendationsCategoryById(Integer recommendationId,
 			Integer category, Integer ignoreCount) {
 		return recommendationMapper.updateRecommendationsCategoryById(
@@ -157,7 +155,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 
 	}
 
-	@Override
+
 	public List<Recommendation> getMapperRecommendation() {
 		int offset = 0;
 		int limit = 3;
@@ -168,7 +166,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 				rowBounds);
 	}
 
-	@Override
+
 	public Recommendation getRecommendationByRecommendationId(
 			Integer recommendationId) {
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()

@@ -31,8 +31,6 @@ public class BlogPost implements Comparable<BlogPost> {
 	private List<Comment> comments = new ArrayList<Comment>();
 
 	private List<Tag> tags = new ArrayList<Tag>();
-	
-	
 
 	public BlogPost(Integer blogPostId, String title, String content,
 			Integer postingMember, Date createDate, Integer viewCount) {
@@ -42,7 +40,7 @@ public class BlogPost implements Comparable<BlogPost> {
 		this.content = content;
 		this.postingMember = new MemberPersona();
 		this.postingMember.setMemberRoleId(postingMember);
-		
+
 		this.createDate = createDate;
 		this.viewCount = viewCount;
 	}
@@ -90,9 +88,7 @@ public class BlogPost implements Comparable<BlogPost> {
 	public void setTags(List<Tag> tags) {
 		this.tags = new ArrayList<Tag>(tags);
 	}
-	
 
-	@Override
 	public int compareTo(BlogPost o) {
 		// TODO Auto-generated method stub
 		return createDate.compareTo(o.createDate);

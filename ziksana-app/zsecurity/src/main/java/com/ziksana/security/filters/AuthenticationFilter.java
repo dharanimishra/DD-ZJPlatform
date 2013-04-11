@@ -28,7 +28,6 @@ public class AuthenticationFilter implements Filter {
 	public static final String COOKIE_NAME = "SessionCookieToken";
 	private static final String LOGIN_URL = "login";
 
-	@Override
 	public void doFilter(ServletRequest servletRequest,
 			ServletResponse servletResponse, FilterChain filterChain)
 			throws IOException, ServletException {
@@ -82,7 +81,6 @@ public class AuthenticationFilter implements Filter {
 	 * 
 	 * @see javax.servlet.Filter#init(javax.servlet.FilterConfig)
 	 */
-	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
 
@@ -93,7 +91,6 @@ public class AuthenticationFilter implements Filter {
 	 * 
 	 * @see javax.servlet.Filter#destroy()
 	 */
-	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
 

@@ -33,7 +33,6 @@ public class CourseContentServiceImpl implements CourseContentService {
 	public LearningContentMapper contentMapper;
 
 	@Transactional
-	@Override
 	public void saveOrUpdateContent(
 			final LearningComponentContent learningComponentContent)
 			throws CourseException {
@@ -41,9 +40,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 		List<LearningContentParts> contentParts = null;
 		LearningContent learningContent = null;
 
-
 		learningContent = learningComponentContent.getBaseLearningContent();
-
 
 		// UPDATE OPERATION
 		if (learningComponentContent.getLearningComponentContentId() != null) {
@@ -118,13 +115,11 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 	}
 
-	@Override
 	public LearningComponentContent getLearningComponentContent(
 			Integer learningComponentId) throws CourseException {
 
 		LearningComponentContent lCompContent = null;
 		Boolean isDelete = false;
-
 
 		lCompContent = compContentMapper.getLearningComponentContentDetails(
 				learningComponentId, isDelete);
@@ -140,7 +135,6 @@ public class CourseContentServiceImpl implements CourseContentService {
 		return null;
 	}
 
-	@Override
 	public List<LearningComponentContent> searchLearningComponentContent(
 			String searchCriteria, LearningComponentContent compContent)
 			throws CourseException {
@@ -148,17 +142,14 @@ public class CourseContentServiceImpl implements CourseContentService {
 	}
 
 	@Transactional
-	@Override
 	public void enhaceContent(LearningComponentContent compContent)
 			throws CourseException {
 
 		LearningContent learningContent = null;
 		List<LearningContentParts> contentPartsList = null;
 
-
 		// Enhanced LearningContent
 		learningContent = compContent.getBaseLearningContent();
-
 
 		// associate parent content as a linked content
 		learningContent.setLinkedLearningContent(learningContent);
@@ -180,7 +171,6 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 	}
 
-	@Override
 	public List<LearningContent> getLearningContent(Integer memberRoleId)
 			throws CourseException {
 
@@ -199,7 +189,6 @@ public class CourseContentServiceImpl implements CourseContentService {
 	}
 
 	@Transactional
-	@Override
 	public void deleteContent(LearningContentDeleteType deleteType,
 			final Integer learningContentId) throws CourseException {
 

@@ -9,14 +9,13 @@ import com.ziksana.service.course.ContentService;
 
 @Service
 public class ContentServiceImpl implements ContentService {
-     
+
 	@Autowired
 	ContentMapper contentMapper;
-	
-	@Override
+
 	public Content getContent(Integer contentId) {
 		// TODO Auto-generated method stub
-		return  contentMapper.getContent(contentId);
+		return contentMapper.getContent(contentId);
 	}
 
 }

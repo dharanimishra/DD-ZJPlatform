@@ -10,11 +10,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>zcourse</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<dependencies>
 		<!-- <dependency> <groupId>com.ziksana</groupId> <artifactId>zmycontacts</artifactId> 
 			<version>0.0.1-SNAPSHOT</version> </dependency> -->
 
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zcommon</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.ziksana</groupId>
@@ -36,20 +41,15 @@
 			<artifactId>zconfig</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>com.ziksana</groupId>
-			<artifactId>zcommon</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
+
+
 		<dependency>
 			<groupId>com.ziksana</groupId>
 			<artifactId>zsubscription</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
-		
-		
+
+
+
 	</dependencies>
 </project>

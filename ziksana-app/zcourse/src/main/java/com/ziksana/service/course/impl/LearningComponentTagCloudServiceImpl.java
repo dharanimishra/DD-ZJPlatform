@@ -20,7 +20,6 @@ public class LearningComponentTagCloudServiceImpl implements
 	@Autowired
 	public LearningComponentTagcloudMapper learningComponentTagcloudMapper;
 
-	@Override
 	public LearningComponentTagcloud saveOrUpadteTags(
 			LearningComponentTagcloud learningComponentTagcloud)
 			throws CourseException {
@@ -49,7 +48,6 @@ public class LearningComponentTagCloudServiceImpl implements
 		return tags;
 	}
 
-	@Override
 	public LearningComponentTagcloud getComponentTagClouds(
 			Integer learningComponentId) {
 		LearningComponentTagcloud tags = null;

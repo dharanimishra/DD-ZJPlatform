@@ -16,7 +16,6 @@ public class ClassTalkServiceImpl implements ClassTalkService {
 	@Autowired
 	public ClassTalkMapper classTalkMapper;
 
-	@Override
 	public List<LearnerOnline> getAllOnlineLearners(Course course) {
 		// TODO Auto-generated method stub
 
@@ -25,7 +24,6 @@ public class ClassTalkServiceImpl implements ClassTalkService {
 		return null;
 	}
 
-	@Override
 	public List<LearnerOnline> getOnlineLearnersByCircle(Course course,
 			RelationshipType relationshipType) {
 		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()

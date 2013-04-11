@@ -9,16 +9,4 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>zutils</artifactId>
-
-	<dependencies>
-
-		<dependency>
-			<groupId>com.ziksana</groupId>
-			<artifactId>zsecurity</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
-
-
-	</dependencies>
 </project>

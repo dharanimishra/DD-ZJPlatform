@@ -34,7 +34,7 @@ public class CourseSubjectDetailsServiceImpl implements
 	 * com.ziksana.service.course.CourseSubjectDetailService#getSubjectCategory
 	 * ()
 	 */
-	@Override
+
 	public List<Option> getSubjectCategory() {
 		// TODO Auto-generated method stub
 
@@ -49,7 +49,7 @@ public class CourseSubjectDetailsServiceImpl implements
 	 * com.ziksana.service.course.CourseSubjectDetailService#getSubjectArea(
 	 * java.lang.Integer)
 	 */
-	@Override
+
 	public List<Option> getSubjectArea(String subjectArea) {
 		List<Option> list = courseSubjectDetailMapper
 				.getSubjectArea(subjectArea);
@@ -63,14 +63,13 @@ public class CourseSubjectDetailsServiceImpl implements
 	 * com.ziksana.service.course.CourseSubjectDetailService#getSubjectTopic
 	 * (java.lang.Integer)
 	 */
-	@Override
+
 	public List<Option> getSubjectTopic(String subjectTopic) {
 		List<Option> list = courseSubjectDetailMapper
 				.getSubjectTopic(subjectTopic);
 		return list;
 	}
 
-	@Override
 	public CourseSubjectClassification getSubjectClassification(
 			String subjectTopic) {
 		CourseSubjectClassification courseSubjectClassification = null;
@@ -89,7 +88,6 @@ public class CourseSubjectDetailsServiceImpl implements
 		return courseSubjectClassification;
 	}
 
-	@Override
 	public CourseSubjectClassification getCourseClassification(Integer courseId) {
 		CourseSubjectClassification courseSubjectClassification = null;
 		LOGGER.debug("Entering Class :" + getClass()

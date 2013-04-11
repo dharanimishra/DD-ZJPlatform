@@ -22,7 +22,6 @@ public class EngagementServiceImpl implements EngagementService {
 	@Autowired
 	public EngagementMapper engagementMapper;
 
-	@Override
 	public List<Engagement> getEngagementeRulesByCourseId(Integer courseId) {
 		List<Engagement> engagementList = null;
 
@@ -35,37 +34,31 @@ public class EngagementServiceImpl implements EngagementService {
 		return engagementList;
 	}
 
-	@Override
 	public void saveEngagement(Engagement engagement) {
 		engagementMapper.saveEngagement(engagement);
 
 	}
 
-	@Override
 	public void saveCriteria(EngagementCriteria criteria) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void updateCriteria(EngagementCriteria criteria) {
 		engagementMapper.updateCriteria(criteria);
 
 	}
 
-	@Override
 	public void updateEngagement(Engagement engagement) {
 		engagementMapper.updateEngagement(engagement);
 
 	}
 
-	@Override
 	public void deleteCriteria(Boolean isDelete, Integer engagementCriteriaId) {
 		engagementMapper.deleteCriteria(isDelete, engagementCriteriaId);
 
 	}
 
-	@Override
 	public void deleteEngagement(Boolean isDelete, Integer engagementId) {
 		engagementMapper.deleteEngagement(isDelete, engagementId);
 

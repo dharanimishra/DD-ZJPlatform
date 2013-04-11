@@ -10,7 +10,6 @@ import com.ziksana.service.course.FileUploadService;
 
 public class FileUploadServiceImpl implements FileUploadService {
 
-	@Override
 	public void fileUpload(File file) {
 		// TODO Auto-generated method stub
 

@@ -1,4 +1,3 @@
-
 package com.ziksana.session.listener;
 
 import javax.servlet.http.HttpSessionAttributeListener;
@@ -8,35 +7,33 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * A session attribute listener receives notifications when a session is added or changed.
- *
+ * A session attribute listener receives notifications when a session is added
+ * or changed.
+ * 
  */
-public class SessionAttributeListener implements HttpSessionAttributeListener  {
+public class SessionAttributeListener implements HttpSessionAttributeListener {
 
-	private static final Logger logger = LoggerFactory.getLogger(SessionAttributeListener.class);
-	
+	private static final Logger logger = LoggerFactory
+			.getLogger(SessionAttributeListener.class);
 
-
-	@Override
 	public void attributeAdded(HttpSessionBindingEvent sessionEvent) {
-		
-		logger.info("Session Attribute Added :"+sessionEvent.getName() +" : " + sessionEvent.getValue());
+
+		logger.info("Session Attribute Added :" + sessionEvent.getName()
+				+ " : " + sessionEvent.getValue());
 	}
 
-	@Override
 	public void attributeRemoved(HttpSessionBindingEvent sessionEvent) {
-		
-		logger.info("Session Attribute Removed :"+sessionEvent.getName() +" : " + sessionEvent.getValue());
-		
+
+		logger.info("Session Attribute Removed :" + sessionEvent.getName()
+				+ " : " + sessionEvent.getValue());
+
 	}
 
-	@Override
 	public void attributeReplaced(HttpSessionBindingEvent sessionEvent) {
-		
-		logger.info("Session Attribute Replaced :"+sessionEvent.getName() +" : " + sessionEvent.getValue());
-		
+
+		logger.info("Session Attribute Replaced :" + sessionEvent.getName()
+				+ " : " + sessionEvent.getValue());
+
 	}
-	
-	
 
 }

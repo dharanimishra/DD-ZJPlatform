@@ -1,4 +1,5 @@
 package com.ziksana.domain.common;
+import com.ziksana.domain.common.Header;
 
 public class Header {
 
@@ -6,6 +7,19 @@ public class Header {
 	private String codeError;
 	private String msgType;
 	private String controllerName;
+
+	public static Header getHeader(String controller) {
+		// Creating ziksana message header
+		Header header = new Header();
+
+//		String token = ThreadLocalUtil.getToken().getMemberPersonaId()
+//				.getStorageID().toString();
+
+		// Setting the controller and token
+		header.setControllerName(controller);
+		//header.setToken(token);
+		return header;
+	}
 
 	public String getToken() {
 		return token;

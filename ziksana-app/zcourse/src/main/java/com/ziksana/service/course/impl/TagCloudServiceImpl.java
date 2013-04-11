@@ -19,7 +19,6 @@ public class TagCloudServiceImpl implements TagCloudService {
 	@Autowired
 	public CourseTagcloudMapper courseTagcloudMapper;
 
-	@Override
 	public CourseTagcloud saveOrUpadteTags(CourseTagcloud courseTagcloud)
 			throws CourseException {
 		CourseTagcloud tags = null;
@@ -39,7 +38,6 @@ public class TagCloudServiceImpl implements TagCloudService {
 		return tags;
 	}
 
-	@Override
 	public CourseTagcloud getCourseTagClouds(Integer courseId) {
 		CourseTagcloud tags = null;
 		LOGGER.debug("Entering Class :" + getClass()

@@ -33,7 +33,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	@Value("#{ldapProperties['pwd']}")
 	private String password;
 
-	@Override
+
 	public boolean authenticateUser(String userId, String pwd) {
 		// TODO Auto-generated method s LDAtub
         logger.debug(" entering to LDAP AUTH");

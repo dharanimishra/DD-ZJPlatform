@@ -13,28 +13,23 @@ import com.ziksana.service.blogs.BlogService;
 @Controller
 @RequestMapping("/zblogs")
 public class BlogController {
-	
+
 	private static final Logger logger = LoggerFactory
 			.getLogger(BlogController.class);
-	
+
 	@Autowired
 	private BlogService blogService;
-	
-	
-	@RequestMapping(value="/getblogs")
+
+	@RequestMapping(value = "/getblogs")
 	public ModelAndView getBlogList() {
 
 		ModelAndView mview = new ModelAndView("blog/bloglist");
-		try{
-		mview.addObject("blogList", blogService.getBlogs());
-		}
-		catch(ZiksanaException ze){
+		try {
+			mview.addObject("blogList", blogService.getBlogs());
+		} catch (ZiksanaException ze) {
 			mview.addObject("errorResponse", ze.getMessage());
 			logger.error(ze.getMessage(), ze);
 		}
 		return mview;
 	}
-	
-	
-	
 }

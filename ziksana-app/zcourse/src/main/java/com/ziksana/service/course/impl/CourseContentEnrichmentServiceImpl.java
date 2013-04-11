@@ -39,14 +39,12 @@ public class CourseContentEnrichmentServiceImpl implements
 	public LearningComponentContentHotspotMapper hotspotMapper;
 
 	@Transactional
-	@Override
 	public void saveOrUpdateEnrichContent(Enrichment enrich)
 			throws CourseException {
 
 	}
 
 	@Transactional
-	@Override
 	public void saveReference(Enrichment enrichment, LinkType enrichLinkType)
 			throws CourseException {
 
@@ -54,20 +52,17 @@ public class CourseContentEnrichmentServiceImpl implements
 	}
 
 	@Transactional
-	@Override
 	public void deleteReference(Enrichment enrichment) throws CourseException {
 		deleteReferenceOrTopicOrNotes(enrichment);
 	}
 
 	@Transactional
-	@Override
 	public void saveNotes(Enrichment enrichment, LinkType enrichLinkType)
 			throws CourseException {
 		saveReferenceOrTopicOrNotes(enrichment, LinkType.ADDITIONAL_INFO);
 	}
 
 	@Transactional
-	@Override
 	public void deleteNotes(Enrichment enrichment) throws CourseException {
 
 		deleteReferenceOrTopicOrNotes(enrichment);
@@ -75,7 +70,6 @@ public class CourseContentEnrichmentServiceImpl implements
 	}
 
 	@Transactional
-	@Override
 	public void updateNotes(Enrichment enrichment) throws CourseException {
 
 		updateReferenceOrTopicOrNotes(enrichment);
@@ -83,7 +77,6 @@ public class CourseContentEnrichmentServiceImpl implements
 	}
 
 	@Transactional
-	@Override
 	public void saveTOC(Enrichment enrichment, LinkType enrichLinkType)
 			throws CourseException {
 
@@ -92,7 +85,6 @@ public class CourseContentEnrichmentServiceImpl implements
 	}
 
 	@Transactional
-	@Override
 	public void deleteTOC(Enrichment enrichment) throws CourseException {
 
 		deleteReferenceOrTopicOrNotes(enrichment);
@@ -100,11 +92,8 @@ public class CourseContentEnrichmentServiceImpl implements
 	}
 
 	@Transactional
-	@Override
 	public void updateTOC(Enrichment enrichment) throws CourseException {
-
 		updateReferenceOrTopicOrNotes(enrichment);
-
 	}
 
 	/**
@@ -153,7 +142,6 @@ public class CourseContentEnrichmentServiceImpl implements
 		ContentEnrichment contentEnrichment = null;
 		contentEnrichment = enrichment.getContentEnrich();
 
-
 		LOGGER.debug("Before Deleting the Enrichment Content ....:"
 				+ contentEnrichment.getLinkType());
 		// update delete indicator status to remove the association with
@@ -177,9 +165,7 @@ public class CourseContentEnrichmentServiceImpl implements
 
 		ContentEnrichment contentEnrichment = null;
 
-
 		contentEnrichment = enrichment.getContentEnrich();
-
 
 		// update delete indicator status to remove the association with
 		// applyenrichment
@@ -187,7 +173,6 @@ public class CourseContentEnrichmentServiceImpl implements
 	}
 
 	@Transactional
-	@Override
 	public Map<EnrichmentType, List<ContentEnrichment>> getAllEnrichmentContents(
 			ZID memberPersonaId) throws CourseException {
 
@@ -202,7 +187,6 @@ public class CourseContentEnrichmentServiceImpl implements
 		refContentEnrichList = new ArrayList<ContentEnrichment>();
 		topicContentEnrichList = new ArrayList<ContentEnrichment>();
 		notesContentEnrichList = new ArrayList<ContentEnrichment>();
-
 
 		enrichList = enrichMapper.getAllEnrichments(new Integer(memberPersonaId
 				.getStorageID()));
@@ -239,12 +223,10 @@ public class CourseContentEnrichmentServiceImpl implements
 		return enrichmentMap;
 	}
 
-	@Override
 	public List<LearningComponentContentHotspot> getCompContentHotspotList(
 			LearningComponentContent compContent) throws CourseException {
 
 		List<LearningComponentContentHotspot> hotspotList = null;
-
 
 		hotspotList = new ArrayList<LearningComponentContentHotspot>();
 
@@ -255,12 +237,10 @@ public class CourseContentEnrichmentServiceImpl implements
 
 	}
 
-	@Override
 	public List<LearningContent> basicSearchReferences(
 			ReferenceSearchCriteria searchCriteria) throws CourseException {
 
 		List<LearningContent> contents = null;
-
 
 		contents = enrichMapper.basicSearchReferenceMaterial(searchCriteria);
 
@@ -269,12 +249,10 @@ public class CourseContentEnrichmentServiceImpl implements
 		return contents;
 	}
 
-	@Override
 	public List<LearningContent> advanceSearchReferences(
 			ReferenceSearchCriteria searchCriteria) throws CourseException {
 
 		List<LearningContent> contents = null;
-
 
 		contents = enrichMapper.advanceSearchReferenceMaterial(searchCriteria);
 
@@ -284,12 +262,10 @@ public class CourseContentEnrichmentServiceImpl implements
 	}
 
 	@Transactional
-	@Override
 	public void saveHotspot(LearningComponentContentHotspot hotspot)
 			throws CourseException {
 
 		LearningComponentContent compContent = null;
-
 
 		compContent = hotspot.getLearningComponentContent();
 
@@ -301,11 +277,9 @@ public class CourseContentEnrichmentServiceImpl implements
 		}
 	}
 
-	@Override
 	public void deleteHotspot(LearningComponentContentHotspot hotspot)
 			throws CourseException {
 		LearningComponentContent compContent = null;
-
 
 		compContent = hotspot.getLearningComponentContent();
 
@@ -322,12 +296,10 @@ public class CourseContentEnrichmentServiceImpl implements
 
 	}
 
-	@Override
 	public void updateHotspot(LearningComponentContentHotspot hotspot)
 			throws CourseException {
 
 		LearningComponentContent compContent = null;
-
 
 		compContent = hotspot.getLearningComponentContent();
 

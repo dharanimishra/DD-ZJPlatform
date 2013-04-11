@@ -8,17 +8,17 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>zutils</module>
-		<module>zcommon</module>
 		<module>zconfig</module>
+		<module>zcommon</module>
+		<module>zutils</module>
+		<module>zdomain</module>
 		<module>zsecurity</module>
+		<module>zassessment</module>
 		<module>zcourse</module>
 		<module>zmember</module>
 		<module>ziksana-web</module>
-		<module>zdomain</module>
 		<module>zpolls</module>
 		<module>zsample</module>
-		<module>zassessment</module>
 		<module>zalert</module>
 		<module>zblogs</module>
 		<module>zknowmebetter</module>
@@ -40,19 +40,19 @@
 
 	<build>
 		<plugins>
-			<plugin>
+		<!--  	<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<!-- use JDK 1.6 -->
+				
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
 				</configuration>
-			</plugin>
+			</plugin> -->
 
-			<plugin>
+		<!-- <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>
@@ -68,7 +68,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 
 		</plugins>
 	</build>

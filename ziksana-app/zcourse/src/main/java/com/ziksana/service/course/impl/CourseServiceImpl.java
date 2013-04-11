@@ -73,7 +73,6 @@ public class CourseServiceImpl implements CourseService {
 	public SubscriptionMapper subscriptionMapper;
 
 	@Transactional
-	@Override
 	public Course saveOrUpdateCourse(Course course) throws CourseException {
 
 		CourseContentSecurity contSecurity = null;
@@ -192,7 +191,6 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Transactional
-	@Override
 	public Course saveOrUpadteCourseComponents(Course course)
 			throws CourseException {
 		CourseDetails courseDetails = null;
@@ -263,7 +261,6 @@ public class CourseServiceImpl implements CourseService {
 
 	}
 
-	@Override
 	public Course getBaseCourseDetails(ZID courseId) throws CourseException {
 
 		Course course = null;
@@ -276,7 +273,6 @@ public class CourseServiceImpl implements CourseService {
 		return course;
 	}
 
-	@Override
 	public List<Course> getListOfCourses(Integer memberPersonaId)
 			throws CourseException {
 
@@ -395,65 +391,65 @@ public class CourseServiceImpl implements CourseService {
 									assignmentSize = courseMapper
 											.checkAssignment(lCompId);
 
-//									if (assignmentSize > 0) {
-//
-//										if (isAssignmentExist.equals(false)
-//												|| enrichCheck.equals(true)) {
-//											isAssignmentExist = true;
-//											courseProgress = courseProgress + 15;
-//										} else {
-//											assignCheck = true;
-//										}
-//										count = plannerMapper
-//												.isPlannerExists(
-//														courseId,
-//														new Integer(
-//																courseLearningComp
-//																		.getCourseLearningComponentId()
-//																		.getStorageID()));
-//
-//										if (count > 0) {
-//
-//											if (isPlannerExists.equals(false)
-//													|| assignCheck.equals(true)) {
-//												isPlannerExists = true;
-//												courseProgress = courseProgress + 15;
-//											} else {
-//												plannerCheck = true;
-//											}
-//
-//											coursePlaybookSize = playbookMapper
-//													.isPlaybookExists(courseId);
-//
-//											if (coursePlaybookSize > 0) {
-//
-//												if (isPlaybookExists
-//														.equals(false)
-//														|| plannerCheck
-//																.equals(true)) {
-//													isPlaybookExists = true;
-//													courseProgress = courseProgress + 15;
-//												} else {
-//													playbookCheck = true;
-//												}
-//												reviewProgressSize = socializeMapper
-//														.isSocializeExists(
-//																courseId,
-//																memberRoleId);
-//
-//												if (reviewProgressSize > 0) {
-//
-//													if (isSocialized
-//															.equals(false)
-//															|| playbookCheck
-//																	.equals(true)) {
-//														isSocialized = true;
-//														courseProgress = courseProgress + 15;
-//													}
-//												}
-//											}
-//										}
-//									}
+									// if (assignmentSize > 0) {
+									//
+									// if (isAssignmentExist.equals(false)
+									// || enrichCheck.equals(true)) {
+									// isAssignmentExist = true;
+									// courseProgress = courseProgress + 15;
+									// } else {
+									// assignCheck = true;
+									// }
+									// count = plannerMapper
+									// .isPlannerExists(
+									// courseId,
+									// new Integer(
+									// courseLearningComp
+									// .getCourseLearningComponentId()
+									// .getStorageID()));
+									//
+									// if (count > 0) {
+									//
+									// if (isPlannerExists.equals(false)
+									// || assignCheck.equals(true)) {
+									// isPlannerExists = true;
+									// courseProgress = courseProgress + 15;
+									// } else {
+									// plannerCheck = true;
+									// }
+									//
+									// coursePlaybookSize = playbookMapper
+									// .isPlaybookExists(courseId);
+									//
+									// if (coursePlaybookSize > 0) {
+									//
+									// if (isPlaybookExists
+									// .equals(false)
+									// || plannerCheck
+									// .equals(true)) {
+									// isPlaybookExists = true;
+									// courseProgress = courseProgress + 15;
+									// } else {
+									// playbookCheck = true;
+									// }
+									// reviewProgressSize = socializeMapper
+									// .isSocializeExists(
+									// courseId,
+									// memberRoleId);
+									//
+									// if (reviewProgressSize > 0) {
+									//
+									// if (isSocialized
+									// .equals(false)
+									// || playbookCheck
+									// .equals(true)) {
+									// isSocialized = true;
+									// courseProgress = courseProgress + 15;
+									// }
+									// }
+									// }
+									// }
+									// }
 								}
 							}
 
@@ -472,7 +468,6 @@ public class CourseServiceImpl implements CourseService {
 
 	}
 
-	@Override
 	public Course getCourseComponents(ZID courseId) throws CourseException {
 
 		Course course = null;
@@ -484,7 +479,6 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Transactional
-	@Override
 	public void saveAdditionalCourseProperty(
 			CourseAdditionalProperty courseAdditionalProperty)
 			throws CourseException {
@@ -494,18 +488,13 @@ public class CourseServiceImpl implements CourseService {
 
 	}
 
-	@Override
 	public Course getCourseDetails(ZID courseId) throws CourseException {
-
 		Course course = null;
-
 		course = courseMapper.getBaseCourseDetails(new Integer(courseId
 				.getStorageID()));
-
 		return course;
 	}
 
-	@Override
 	public List<LearningComponent> getLearningObjects(Integer memberRoleId)
 			throws CourseException {
 		List<LearningComponent> learningObjectList = null;
@@ -519,7 +508,6 @@ public class CourseServiceImpl implements CourseService {
 		return learningObjectList;
 	}
 
-	@Override
 	public LearningComponent getLearningObject(ZID learningComponentId)
 			throws CourseException {
 
@@ -534,7 +522,6 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Transactional
-	@Override
 	public void deleteLearningObject(ZID learningComponentId,
 			LearningObjectDeleteType deleteType) throws CourseException {
 
@@ -566,7 +553,6 @@ public class CourseServiceImpl implements CourseService {
 		}
 	}
 
-	@Override
 	public Map getCourseComponentsToPublish(Integer memberRoleId)
 			throws CourseException {
 
@@ -582,11 +568,10 @@ public class CourseServiceImpl implements CourseService {
 		return componentsMap;
 	}
 
-	@Override
 	public List<Course> getCoursesByStatus(CourseStatus courseStatus) {
 		// TODO Auto-generated method stub
 		int status = courseStatus.getID();
-	
+
 		String memberPersonaId = ThreadLocalUtil.getToken()
 				.getMemberPersonaId().getStorageID();
 
@@ -596,7 +581,6 @@ public class CourseServiceImpl implements CourseService {
 
 	}
 
-	@Override
 	public List<Course> getAllCoursesByStatus(CourseStatus courseStatus) {
 
 		int status = courseStatus.getID();
@@ -607,7 +591,6 @@ public class CourseServiceImpl implements CourseService {
 				Integer.valueOf(memberPersonaId));
 	}
 
-	@Override
 	public Integer totalNumberOfCoursesByStatus(CourseStatus courseStatus) {
 
 		int status = courseStatus.getID();
@@ -618,7 +601,6 @@ public class CourseServiceImpl implements CourseService {
 				Integer.valueOf(memberPersonaId));
 	}
 
-	@Override
 	public List<LearningProgram> getLearningPrograms() {
 
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
@@ -628,7 +610,6 @@ public class CourseServiceImpl implements CourseService {
 				.valueOf(memberRoleId));
 	}
 
-	@Override
 	public List<Course> getCoursesByLearningProgram(Integer learningProgramId) {
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
 				.getStorageID();
@@ -637,7 +618,6 @@ public class CourseServiceImpl implements CourseService {
 				Integer.valueOf(memberRoleId), learningProgramId);
 	}
 
-	@Override
 	public List<Course> getThreeCoursesByLearningProgram(
 			Integer learningProgramId) {
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
@@ -647,7 +627,6 @@ public class CourseServiceImpl implements CourseService {
 				Integer.valueOf(memberRoleId), learningProgramId);
 	}
 
-	@Override
 	public void removeCourse(Integer courseId) throws CourseException {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :removeCourse(Integer courseId)" + courseId);
@@ -659,7 +638,6 @@ public class CourseServiceImpl implements CourseService {
 
 	}
 
-	@Override
 	public void removeCourseComponents(Integer learningComponentId) {
 		LOGGER.debug("Entering Class :"
 				+ getClass()
@@ -674,7 +652,6 @@ public class CourseServiceImpl implements CourseService {
 				+ learningComponentId);
 	}
 
-	@Override
 	public void learningContentdelete(Integer learningContentId) {
 		LOGGER.debug("Entering Class :"
 				+ getClass()
@@ -690,24 +667,20 @@ public class CourseServiceImpl implements CourseService {
 
 	}
 
-	@Override
 	public Course getCourseByCourseId(Integer courseId) {
 
 		return courseMapper.getCourseByCourseId(courseId);
 	}
 
-	@Override
 	public Integer createNewCurriculamCourse(int coursesId, int memberRoleId) {
 		return courseMapper.saveCurriculamCourse(coursesId, memberRoleId);
 
 	}
 
-	@Override
 	public void getCurriculamCourseByCourseId(int coursesId) {
 		courseMapper.saveAndEnableCourse(coursesId);
 	}
 
-	@Override
 	public int isCourseNameExists(CourseStatus courseStatus, String courseName) {
 		int status = courseStatus.getID();
 		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
@@ -716,7 +689,6 @@ public class CourseServiceImpl implements CourseService {
 				Integer.valueOf(memberRoleId), courseName);
 	}
 
-	@Override
 	public int getCoursesByCoursename(CourseStatus courseStatus,
 			String courseName, int courseId) {
 		int status = courseStatus.getID();
@@ -726,13 +698,11 @@ public class CourseServiceImpl implements CourseService {
 				Integer.valueOf(memberRoleId), courseName, courseId);
 	}
 
-	@Override
 	public int isModuleExists(Integer courseId) {
 		// TODO Auto-generated method stub
 		return courseMapper.isModuleExists(courseId);
 	}
 
-	@Override
 	public int isContentExists(Integer courseId) {
 		// TODO Auto-generated method stub
 		return courseMapper.isContentExists(courseId);

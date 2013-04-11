@@ -69,7 +69,7 @@ public class PollQuestion implements Comparable<PollQuestion> {
 	}
 
 	public List<PollQuestionOption> getAllOptions() {
-	
+
 		return options;
 	}
 
@@ -169,7 +169,7 @@ public class PollQuestion implements Comparable<PollQuestion> {
 	 * Provided to facilitate sorting (UI Poll widget). Comparison is based on
 	 * (parent) Poll. In case parents are same, the question ID is used
 	 */
-	@Override
+
 	public int compareTo(PollQuestion question) {
 		if (question == null) {
 			return 1;

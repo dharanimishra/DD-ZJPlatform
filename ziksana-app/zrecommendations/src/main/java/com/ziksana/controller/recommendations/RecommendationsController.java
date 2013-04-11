@@ -1,6 +1,5 @@
 package com.ziksana.controller.recommendations;
 
-import static com.ziksana.util.Util.getHeader;
 
 import java.util.Date;
 import java.util.List;

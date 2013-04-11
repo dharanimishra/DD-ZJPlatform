@@ -11,8 +11,6 @@ public class Choice implements Comparable<Choice> {
 
 	private Integer memPstTestId;
 
-	
-
 	/**
 	 * @param index
 	 * @param text
@@ -23,8 +21,9 @@ public class Choice implements Comparable<Choice> {
 		this.id = new IntegerZID(id);
 		this.index = index;
 		this.text = text;
-		
+
 	}
+
 	public Choice(Integer id, Integer index, String text, Integer memPstTestId) {
 		super();
 		this.id = new IntegerZID(id);
@@ -32,8 +31,7 @@ public class Choice implements Comparable<Choice> {
 		this.text = text;
 		this.memPstTestId = memPstTestId;
 	}
-	
-	
+
 	/**
 	 * @return the memPstTestId
 	 */
@@ -48,9 +46,6 @@ public class Choice implements Comparable<Choice> {
 	public void setMemPstTestId(Integer memPstTestId) {
 		this.memPstTestId = memPstTestId;
 	}
-	
-	
-	
 
 	/**
 	 * @return the index
@@ -66,10 +61,8 @@ public class Choice implements Comparable<Choice> {
 		return text;
 	}
 
-	
-	@Override
 	public int compareTo(Choice o) {
-		
+
 		return Integer.valueOf(index).compareTo(Integer.valueOf(o.index));
 	}
 

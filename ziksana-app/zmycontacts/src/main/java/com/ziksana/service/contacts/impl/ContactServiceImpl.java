@@ -15,13 +15,11 @@ public class ContactServiceImpl implements ContactService {
 	@Autowired
 	public ContactMapper contactMapper;
 
-	@Override
 	public List<MemberPersona> getAllContacts() {
 		return contactMapper.getAllContacts(Integer.valueOf(ThreadLocalUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 	}
 
-	@Override
 	public List<MemberPersona> getContactsByCircle(
 			RelationshipType relationshipType) {
 

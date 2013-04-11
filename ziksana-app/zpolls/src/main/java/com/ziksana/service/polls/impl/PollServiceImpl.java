@@ -43,7 +43,6 @@ public class PollServiceImpl implements PollService {
 	@Autowired
 	public PollQuestionResponseMapper pollQuestionResponseMapper;
 
-	@Override
 	public List<PollResultNQuestion> getPollQuestionsAndResults() {
 
 		List<PollResultNQuestion> pollQuestionsNResults = new ArrayList<PollResultNQuestion>();
@@ -112,7 +111,7 @@ public class PollServiceImpl implements PollService {
 	 * com.ziksana.service.polls.PollService#pollResponse(com.ziksana.domain
 	 * .member.Member, com.ziksana.domain.polls.PollResponse)
 	 */
-	@Override
+
 	public void pollResponse(PollQuestionResponse pollQuestionResponse) {
 
 		Validate.notNull(pollQuestionResponse, "PollQuestion cannot be null.");
@@ -131,7 +130,7 @@ public class PollServiceImpl implements PollService {
 	 * com.ziksana.service.polls.PollService#getPollResult(com.ziksana.domain
 	 * .member.Member, com.ziksana.domain.polls.PollQuestion)
 	 */
-	@Override
+
 	public PollQuestionResult getPollResult(PollQuestion pollQuestion) {
 
 		Validate.notNull(pollQuestion, "PollQuestion cannot be null.");
@@ -199,7 +198,6 @@ public class PollServiceImpl implements PollService {
 		return pollQuestionOption;
 	}
 
-	@Override
 	public List<PollQuestionEntity> getAllPollQuestions() {
 		// TODO Auto-generated method stub
 		return pollQuestionMapper.getPollQuestions(Integer
@@ -207,7 +205,6 @@ public class PollServiceImpl implements PollService {
 						.getStorageID()));
 	}
 
-	@Override
 	public PollResult getPollResultByQuestion(Integer questionId) {
 		// TODO Auto-generated method stub
 		return pollQuestionMapper.getPollResultByQuestion(questionId);
@@ -222,7 +219,6 @@ public class PollServiceImpl implements PollService {
 	//
 	// }
 
-	@Override
 	public List<PollQuestionEntity> getAllPollQuestion() {
 		// TODO Auto-generated method stub
 		return pollQuestionMapper.getPollQuestion(Integer
@@ -230,7 +226,6 @@ public class PollServiceImpl implements PollService {
 						.getStorageID()));
 	}
 
-	@Override
 	public List<PollQuestionEntity> getAllPollQuestionsByDate(String startDate,
 			String endDate) {
 
@@ -245,8 +240,7 @@ public class PollServiceImpl implements PollService {
 			formatDate = dateFormat.parse(endDate);
 			logger.debug(" start date is " + formatEndDate);
 		} catch (ParseException e) {
-			throw new PollException(
-					ZiksanaConstants.POLL_DATE_PARSE_ERROR, e);
+			throw new PollException(ZiksanaConstants.POLL_DATE_PARSE_ERROR, e);
 		}
 
 		// Integer memberRoleId =

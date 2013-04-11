@@ -35,7 +35,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 	@Autowired
 	public CourseTreeNodeMapper courseTreeNodeMapper;
 
-	@Override
 	public List<CourseLearningComponent> getLearningComponents(Integer courseId) {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getLearningComponents(Integer courseId)"
@@ -49,7 +48,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return courseLearningComponent;
 	}
 
-	@Override
 	public LearningComponentType getLearningComponentType(
 			Integer learningComponentTypeId) {
 		LOGGER.debug("Entering Class :"
@@ -66,7 +64,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return learningComponentType;
 	}
 
-	@Override
 	public LearningComponent getLearningComponent(Integer learningComponentId) {
 		LOGGER.debug("Entering Class :"
 				+ getClass()
@@ -82,7 +79,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return learningComponent;
 	}
 
-	@Override
 	public LearningComponentNest getLearningComponentNest(
 			Integer learningComponentNestId) {
 		LOGGER.debug("Entering Class :"
@@ -99,7 +95,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return learningComponentNest;
 	}
 
-	@Override
 	public List<LearningComponentContent> getLearningComponentContents(
 			Integer learningComponentId) {
 		LOGGER.debug("Entering Class :"
@@ -116,7 +111,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return list;
 	}
 
-	@Override
 	public LearningContent getLearningContent(Integer learningContentId) {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getLearningContent(Integer learningContentId)"
@@ -130,7 +124,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return learningContent;
 	}
 
-	@Override
 	public List<LearningContentParts> getLearningContentParts(
 			Integer learningContentId) {
 		LOGGER.debug("Entering Class :"
@@ -147,7 +140,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return list;
 	}
 
-	@Override
 	public List<TreeNode> getParentTreeComponents(Integer courseId) {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getCourseComponents(Integer courseId)"
@@ -159,7 +151,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return list;
 	}
 
-	@Override
 	public List<TreeNode> getTreeContentComponents(Integer courseId) {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getTreeContentComponents(Integer courseId)"
@@ -172,13 +163,11 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return list;
 	}
 
-	@Override
 	public Course getCourseComponents(Integer courseId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<TreeNode> getModuleComponents(Integer courseId) {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getModuleComponents(Integer courseId)"
@@ -190,7 +179,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return list;
 	}
 
-	@Override
 	public List<TreeNode> getModuleContents(Integer learningComponentId) {
 		LOGGER.debug("Entering Class :"
 				+ getClass()
@@ -205,7 +193,6 @@ public class CourseTreeNodeServiceImpl implements CourseTreeNodeService {
 		return list;
 	}
 
-	@Override
 	public List<TreeNode> getCourseComponent(Integer courseId) {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getCourseComponent(Integer courseId)"

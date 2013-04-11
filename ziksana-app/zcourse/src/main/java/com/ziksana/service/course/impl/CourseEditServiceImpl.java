@@ -23,7 +23,6 @@ public class CourseEditServiceImpl implements CourseEditService {
 	@Autowired
 	public CourseTagcloudMapper tagCloudMapper;
 
-	@Override
 	public CourseEditResponse getCourseDetails(Integer courseId) {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getCourseDetails(Integer courseId)" + courseId);
@@ -36,7 +35,6 @@ public class CourseEditServiceImpl implements CourseEditService {
 		return courseEditResponse;
 	}
 
-	@Override
 	public ModuleEditResponse getModuleDetails(Integer learningComponentId) {
 		LOGGER.debug("Entering Class :" + getClass()
 				+ " Method Name :getModuleDetails(Integer courseId)"

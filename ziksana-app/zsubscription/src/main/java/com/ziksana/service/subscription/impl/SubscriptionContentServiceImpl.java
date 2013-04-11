@@ -14,7 +14,6 @@ public class SubscriptionContentServiceImpl implements
 	@Autowired
 	SubscriptionContentMapper subscriptionContentMapper;
 
-	@Override
 	public Content getContent(Integer contentId) {
 		// TODO Auto-generated method stub
 		return subscriptionContentMapper.getContent(contentId);

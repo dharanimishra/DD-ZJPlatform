@@ -31,7 +31,7 @@ public class BlogServiceImpl implements BlogService {
 	 * 
 	 * @see com.ziksana.service.blogs.BlogService#getBlogs()
 	 */
-	@Override
+
 	public List<BlogPost> getBlogs() {
 
 		List<BlogPost> blogList = new ArrayList<BlogPost>();

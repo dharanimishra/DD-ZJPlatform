@@ -10,16 +10,17 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zcommon</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.1.0</version>
 		</dependency>
-
-
-
 	</dependencies>
 	<build>
-
 		<plugins>
 
 			<plugin>
