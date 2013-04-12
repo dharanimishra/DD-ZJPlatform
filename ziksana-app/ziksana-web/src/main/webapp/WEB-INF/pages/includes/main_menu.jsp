@@ -2,6 +2,7 @@
          <%@ page session="true"%>
             <nav>
                 <!--menu-->
+                   <p style="font-size: 12px;color: red;text-align: center;" class="sessionTimer"></p>
                     <div class="menu" >
                       <ul>                
                 		

@@ -70,7 +70,53 @@ public class LogoutController {
 		return modelAndView;
 
 	}
+	@RequestMapping(value = "/sessiontimeout")
+	public ModelAndView sessionTimeout(HttpServletRequest request,
+			HttpServletResponse response) {
 
+		try {
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				LOGGER.info(" SESSION IS INVALIDATED");
+				// session.invalidate();
+
+				Cookie[] cookies = request.getCookies();
+
+				if (cookies == null) {
+					return null;
+				}
+				LOGGER.debug(" number of cookies " + cookies.length);
+				for (Cookie cookie : cookies) {
+					String path = cookie.getPath();
+					LOGGER.debug("path is " + path);
+					LOGGER.debug("name of the cookie is  " + cookie.getName());
+					LOGGER.debug("domain of the cookie is  "
+							+ cookie.getDomain());
+					LOGGER.debug("value  of the cookie is  "
+							+ cookie.getValue());
+
+					if (cookie.getName().equals(AuthenticationFilter.COOKIE_NAME)) {
+
+						LOGGER.info("CLEARING COOKIE" + cookie.getName());
+							response.addCookie(eraseCookie(request,
+									AuthenticationFilter.COOKIE_NAME, "/"
+									));
+						break;
+					}
+
+				}
+
+			}
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+
+		ModelAndView modelAndView = new ModelAndView("login");
+		modelAndView.addObject("timeout", "Your current session was Expired, Login Again");
+		return modelAndView;
+
+	}
+	
 	private static Cookie eraseCookie(HttpServletRequest request, String strCookieName, String strPath
 			) throws ZiksanaException {
 		

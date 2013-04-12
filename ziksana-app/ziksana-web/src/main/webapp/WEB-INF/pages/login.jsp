@@ -8,26 +8,26 @@
 <title>Login</title>
 
 <!--Body Style sheet-->
-<link href="resources/css/styles.css" rel="stylesheet" type="text/css">
-<link href="resources/css/type-setting.css" rel="stylesheet" type="text/css">
-<link href="resources/css/effects.css" rel="stylesheet" type="text/css">
+<link href="${properties.staticFileServer}resources/css/styles.css" rel="stylesheet" type="text/css">
+<link href="${properties.staticFileServer}resources/css/type-setting.css" rel="stylesheet" type="text/css">
+<link href="${properties.staticFileServer}resources/css/effects.css" rel="stylesheet" type="text/css">
 <link href="${properties.staticFileServer}resources/css/nav.css" rel="stylesheet" type="text/css">
 
 <!--End Body Style sheet-->
 
 <!--<link rel="stylesheet" type="text/css" href="resources/css/easyslider/demo.css" />-->
-<link rel="stylesheet" type="text/css" href="resources/css/easyslider/style2.css" />
+<link rel="stylesheet" type="text/css" href="${properties.staticFileServer}resources/css/easyslider/style2.css" />
 <link
 	href='http://fonts.googleapis.com/css?family=Economica:700,400italic'
 	rel='stylesheet' type='text/css'>
 <noscript>
-	<link rel="stylesheet" type="text/css" href="resources/css/easyslider/nojs.css" />
+	<link rel="stylesheet" type="text/css" href="${properties.staticFileServer}resources/css/easyslider/nojs.css" />
 </noscript>
 <script type="text/javascript"
-	src="resources/js/easyslider/modernizr.custom.28468.js"></script>
-<script type="text/javascript" src="resources/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="resources/js/custom/login.js"></script>
-<script type="text/javascript" src="resources/js/easyslider/jquery.cslider.js"></script>
+	src="${properties.staticFileServer}resources/js/easyslider/modernizr.custom.28468.js"></script>
+<script type="text/javascript" src="${properties.staticFileServer}resources/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${properties.staticFileServer}resources/js/custom/login.js"></script>
+<script type="text/javascript" src="${properties.staticFileServer}resources/js/easyslider/jquery.cslider.js"></script>
 <script type="text/javascript">
 	$(function() {
 
@@ -288,7 +288,7 @@
 	<div class="loginwrapper">
 
 		<div class="loginhead">
-
+ 					<div style="font-size: 12px;color: red;text-align: center;" id="timeoutMessage">${timeout}</div>
 <!-- 			<div class="zenimainlogo">
 				<img src="resources/images/Ziksana.jpg" alt="Ziksana" width="116" height="112" border="3" style="border:3px solid #F6902B; background-color:#FFFFFF; padding:10px; -moz-box-shadow: 1px 2px 5px #000000;
 -webkit-box-shadow: 1px 2px 5px #000000;

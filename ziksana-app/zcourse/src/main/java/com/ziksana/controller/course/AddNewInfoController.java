@@ -19,14 +19,12 @@ import com.ziksana.service.course.CourseService;
  * @author ratneshkumar
  */
 
-@Controller
 @RequestMapping("/zcourse")
 public class AddNewInfoController {
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(AddNewInfoController.class);
 
-	@Autowired
 	CourseService courseService;
 
 	@RequestMapping(value = "/getaddnlinfo", method = { RequestMethod.GET,
@@ -55,9 +53,10 @@ public class AddNewInfoController {
 
 		LOGGER.debug("Entering Class " + getClass() + " showCourse()");
 		try {
-			courseService.saveAdditionalCourseProperty(courseAdditionalProperty);
+			courseService
+					.saveAdditionalCourseProperty(courseAdditionalProperty);
 		} catch (ZiksanaException exception) {
-			LOGGER.error(exception.getMessage(),exception);
+			LOGGER.error(exception.getMessage(), exception);
 		}
 
 		LOGGER.debug("Exiting Class " + getClass() + " showCourse(): ");
@@ -79,9 +78,10 @@ public class AddNewInfoController {
 				null, info_Description, null, info_Descriptiontext);
 		LOGGER.debug("Entering Class " + getClass() + " showCourse()");
 		try {
-			courseService.saveAdditionalCourseProperty(courseAdditionalProperty);
+			courseService
+					.saveAdditionalCourseProperty(courseAdditionalProperty);
 		} catch (ZiksanaException exception) {
-			LOGGER.error(exception.getMessage(),exception);
+			LOGGER.error(exception.getMessage(), exception);
 		}
 		LOGGER.debug("Exiting Class " + getClass() + " showCourse(): ");
 

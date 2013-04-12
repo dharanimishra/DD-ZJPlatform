@@ -1,5 +1,8 @@
 package com.ziksana.controller.security;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -30,6 +33,17 @@ public class HomeController {
 		ModelAndView modelAndView = new ModelAndView("homepagelayout");
 
 		return modelAndView;
+
+	}
+	@RequestMapping(value = "/extendsession", method = RequestMethod.GET)
+	public @ResponseBody String extendSession(HttpServletRequest request) {
+
+		HttpSession session = request.getSession(true);
+		
+		session.setMaxInactiveInterval(30*60);
+		String response = "success";
+		
+		return response;
 
 	}
 }

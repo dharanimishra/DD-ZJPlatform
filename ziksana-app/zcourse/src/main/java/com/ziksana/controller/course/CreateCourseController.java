@@ -134,7 +134,7 @@ public class CreateCourseController {
 	@RequestMapping(value = "/createcourse", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView reateNewCourse() {
+	ModelAndView createNewCourse() {
 		LOGGER.debug(" Entering Class " + getClass() + " showCourse()");
 		ModelAndView mv = new ModelAndView("createcourse");
 		try {

@@ -116,4 +116,34 @@ function confirmFancyboxClose(){
 	});	
 	
 }
-		
+//setInterval('extendSessionViaAjax();', 28*60*1000);
+//
+var countdown;
+
+function startCount() {
+    var count = 59;
+    countdown = setInterval(function() {
+    	$('p.sessionTimer').show();
+        $("p.sessionTimer").html('Your session will expire in<span style="color:blue; font-weight:bold;"> '+count+'</span> &nbsp;seconds. <a onclick="extendSessionViaAjax(); return false;">Extend Session</a> before timer expires.');
+        if (count == 0) {
+            window.location.href = '/ziksana-web/secure/sessiontimeout';
+        }
+        count--;
+    }, 1000);
+}
+
+
+function stopTimer() {
+    clearInterval(countdown);
+}
+
+function extendSessionViaAjax(){
+	
+	$.get('/ziksana-web/secure/extendsession',{},function(data){
+		if(data="success"){ //session is extended in server		
+			stopTimer();
+			$('p.sessionTimer').hide();
+		}
+	});
+}
+				

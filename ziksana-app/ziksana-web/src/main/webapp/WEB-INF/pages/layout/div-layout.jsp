@@ -44,23 +44,22 @@
 
 	<div id="copyright">&copy; 2013 Ziksana.</div>
 </body>
+<!-- ${pageContext.session.maxInactiveInterval}; -->
 <script type="text/javascript">
 $(document).ready(function() {
-	setInterval(function() {
-		isSessionExpired();
-	}, 1*30*1000);
-	isSessionExpired();
-});
-function isSessionExpired(){
-	console.log("calling");
 	
-	<c:if test='${empty member.roleType}'>
-		
-		confirm_delete_alert = confirm('Your current session was expired, can we continue to login?');
-		if(confirm_delete_alert == true){
-			document.location.href = '/ziksana-web/login';
-		}
-	</c:if>
-}
+
+setInterval(function() {
+	var secondsBeforeExpire =80;
+	var timeToDecide = 60;
+	var timeEstimate = (secondsBeforeExpire - timeToDecide);
+	console.log("secondsBeforeExpire = " + timeEstimate);	
+	
+	setTimeout(function(){
+		startCount();
+		},timeEstimate*1000);
+	
+});
+});
 </script>
 </html>
