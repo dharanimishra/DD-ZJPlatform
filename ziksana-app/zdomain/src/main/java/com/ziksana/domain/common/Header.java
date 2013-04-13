@@ -12,7 +12,7 @@ public class Header {
 		// Creating ziksana message header
 		Header header = new Header();
 
-//		String token = ThreadLocalUtil.getToken().getMemberPersonaId()
+//		String token = SecurityTokenUtil.getToken().getMemberPersonaId()
 //				.getStorageID().toString();
 
 		// Setting the controller and token

@@ -1,7 +1,5 @@
 package com.ziksana.service.knowmebetter.impl;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import junit.framework.Assert;
@@ -23,7 +21,7 @@ import com.ziksana.domain.common.QuestionResponse;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.knowmebetter.PersonalityTestService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -47,7 +45,7 @@ public class PersonalityTestServiceImplTest {
 		ZID memberPersonaId = new StringZID("100");
 
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 
 	}
 
@@ -61,7 +59,7 @@ public class PersonalityTestServiceImplTest {
 		ZID memberPersonaId = new StringZID("100");
 
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 
 		List<Question> questions = personalityTestService
 				.getUnansweredQuestions();

@@ -24,7 +24,7 @@ import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.model.assignment.Assignment;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.assignment.AssignmentService;
 
 /**
@@ -62,7 +62,7 @@ public class AssignmentServiceImplTest {
 		ZID memberId = new StringZID("1002");
 		ZID memberPersonaId = new StringZID("202");
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 
 	}
 

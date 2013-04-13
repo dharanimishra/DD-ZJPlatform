@@ -21,7 +21,7 @@ import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.CourseContentService;
 import com.ziksana.service.course.CourseEnrichmentService;
 
@@ -78,12 +78,12 @@ public class CourseContentController {
 		LOGGER.debug(" Class :"
 				+ getClass()
 				+ " Method: saveCourse() : setMemberRoleId"
-				+ Integer.valueOf(ThreadLocalUtil.getToken()
+				+ Integer.valueOf(SecurityTokenUtil.getToken()
 						.getMemberPersonaId().getStorageID()));
 		CourseJsonResponse json = null;
 		try {
 		MemberPersona accountableMember = new MemberPersona();
-		accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+		accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 
 		Integer courseid = 0, contentTypeId = 0;

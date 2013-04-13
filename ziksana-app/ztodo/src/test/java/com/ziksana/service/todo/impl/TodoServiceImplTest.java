@@ -27,7 +27,7 @@ import com.ziksana.domain.todo.Todo;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.todo.TodoService;
 /**
  * @author prabu
@@ -67,7 +67,7 @@ public class TodoServiceImplTest {
 		ZID memberId = new StringZID("1001");
 		ZID memberPersonaId = new StringZID("201");
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 
 	}
 
@@ -76,7 +76,7 @@ public class TodoServiceImplTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		ThreadLocalUtil.unset();
+		SecurityTokenUtil.unset();
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class TodoServiceImplTest {
 		//member.setNotificationType(1);
 		member.setNotificationContent("Todo Services testing");
 		MemberPersona creatingMember = new MemberPersona();
-		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+		creatingMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 		.getToken().getMemberPersonaId().getStorageID()));
 		logger.info("Member Role Id :"+creatingMember.getMemberRoleId());
 		member.setCreatingMember(creatingMember);

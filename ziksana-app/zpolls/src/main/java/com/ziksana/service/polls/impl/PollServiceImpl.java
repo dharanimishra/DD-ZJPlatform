@@ -24,7 +24,7 @@ import com.ziksana.exception.polls.PollException;
 import com.ziksana.persistence.polls.PollQuestionEntity;
 import com.ziksana.persistence.polls.PollQuestionMapper;
 import com.ziksana.persistence.polls.PollQuestionResponseMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.polls.PollService;
 
 /**
@@ -49,12 +49,12 @@ public class PollServiceImpl implements PollService {
 
 		/*
 		 * List<PollQuestionResult> pollResults = pollQuestionMapper
-		 * .getPollResults(Integer.valueOf(ThreadLocalUtil.getToken()
+		 * .getPollResults(Integer.valueOf(SecurityTokenUtil.getToken()
 		 * .getMemberPersonaId().getStorageID()));
 		 * 
 		 * 
 		 * logger.debug(" THE MEMBER PERSONA ID IN POLL IS "+Integer.valueOf(
-		 * ThreadLocalUtil.getToken() .getMemberPersonaId().getStorageID()));
+		 * SecurityTokenUtil.getToken() .getMemberPersonaId().getStorageID()));
 		 * 
 		 * logger.debug(" THE POLL RESULTS SIZE IS "+pollResults.size());
 		 * 
@@ -71,7 +71,7 @@ public class PollServiceImpl implements PollService {
 		 */
 
 		List<PollQuestionEntity> pollQuestions = pollQuestionMapper
-				.getPollQuestions(Integer.valueOf(ThreadLocalUtil.getToken()
+				.getPollQuestions(Integer.valueOf(SecurityTokenUtil.getToken()
 						.getMemberPersonaId().getStorageID()));
 
 		for (PollQuestionEntity pollQuestionEntity : pollQuestions) {
@@ -117,7 +117,7 @@ public class PollServiceImpl implements PollService {
 		Validate.notNull(pollQuestionResponse, "PollQuestion cannot be null.");
 
 		pollQuestionResponseMapper.createPollTrackerEntry(pollQuestionResponse
-				.getPollQuestion().getID(), Integer.valueOf(ThreadLocalUtil
+				.getPollQuestion().getID(), Integer.valueOf(SecurityTokenUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 		pollQuestionResponseMapper.createPollResponse(pollQuestionResponse);
 
@@ -137,7 +137,7 @@ public class PollServiceImpl implements PollService {
 		PollQuestionResult pollResult = pollQuestionResponseMapper
 				.getPollResultByQuestion(
 						pollQuestion.getID(),
-						Integer.valueOf(ThreadLocalUtil.getToken()
+						Integer.valueOf(SecurityTokenUtil.getToken()
 								.getMemberPersonaId().getStorageID()));
 		PollQuestionEntity pollQuestionEntity = pollQuestionResponseMapper
 				.getPollQuestionById(pollQuestion.getID());
@@ -201,7 +201,7 @@ public class PollServiceImpl implements PollService {
 	public List<PollQuestionEntity> getAllPollQuestions() {
 		// TODO Auto-generated method stub
 		return pollQuestionMapper.getPollQuestions(Integer
-				.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId()
+				.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId()
 						.getStorageID()));
 	}
 
@@ -222,7 +222,7 @@ public class PollServiceImpl implements PollService {
 	public List<PollQuestionEntity> getAllPollQuestion() {
 		// TODO Auto-generated method stub
 		return pollQuestionMapper.getPollQuestion(Integer
-				.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId()
+				.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId()
 						.getStorageID()));
 	}
 
@@ -244,7 +244,7 @@ public class PollServiceImpl implements PollService {
 		}
 
 		// Integer memberRoleId =
-		// Integer.valueOf(ThreadLocalUtil.getToken().getMemberPersonaId().getStorageID());
+		// Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID());
 		return pollQuestionMapper.getPollQuestionsByDate(formatStartDate,
 				formatEndDate);
 

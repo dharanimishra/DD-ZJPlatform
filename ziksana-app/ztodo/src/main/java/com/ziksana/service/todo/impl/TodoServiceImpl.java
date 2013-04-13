@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.ziksana.domain.todo.Todo;
 
 import com.ziksana.persistence.todos.TodoMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.todo.TodoService;
 
 /**
@@ -33,7 +33,7 @@ public class TodoServiceImpl implements TodoService {
 	public List<Todo> getTodos() {
 
 		List<Todo> todoList = new ArrayList<Todo>();
-		todoList = todoMapper.getTodos(Integer.valueOf(ThreadLocalUtil
+		todoList = todoMapper.getTodos(Integer.valueOf(SecurityTokenUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 		return todoList;
 	}
@@ -65,7 +65,7 @@ public class TodoServiceImpl implements TodoService {
 		int limit = 3;
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		List<Todo> todoList = new ArrayList<Todo>();
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		todoList = todoMapper.getMapperTodos(memberRoleId, rowBounds);
 		return todoList;

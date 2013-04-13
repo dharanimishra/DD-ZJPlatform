@@ -23,7 +23,7 @@ import com.ziksana.domain.myblogs.Tag;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.blogs.BlogService;
 
 
@@ -60,7 +60,7 @@ public class BlogServiceImplTest {
 		
 		
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 			
 		
 		List<BlogPost> blogs = blogService.getBlogs();

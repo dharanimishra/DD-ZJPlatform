@@ -19,7 +19,7 @@ import com.ziksana.domain.course.Course;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.classtalk.ClassTalkService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -43,12 +43,12 @@ public class ClassTalkServiceImplTest {
 		ZID memberPersonaId = new StringZID("100");
 
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		ThreadLocalUtil.unset();
+		SecurityTokenUtil.unset();
 	}
 
 	@Test

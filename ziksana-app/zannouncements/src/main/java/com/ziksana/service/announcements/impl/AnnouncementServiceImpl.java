@@ -19,7 +19,7 @@ import com.ziksana.domain.announcements.Announcement;
 import com.ziksana.exception.DataBaseException;
 import com.ziksana.exception.announcements.AnnouncementsException;
 import com.ziksana.persistence.announcements.AnnouncementMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.announcements.AnnouncementService;
 
 /**
@@ -38,7 +38,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	public List<Announcement> getAnnouncement() {
 
 		List<Announcement> announcementList = new ArrayList<Announcement>();
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		int offset = 0;
 		int limit = 2;
@@ -110,7 +110,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			Date formatDate = dateFormat.parse(endDate);
 			Date formatEndDate = combineDateTime(formatDate);
 
-			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+			Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 
 			announcement = announcementMapper.getInstitutionAnnouncements(
@@ -132,7 +132,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			Date formatDate = dateFormat.parse(endDate);
 			Date formatEndDate = combineDateTime(formatDate);
 
-			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+			Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 
 			announcement = announcementMapper.getInstitutionUnitAnnouncements(
@@ -153,7 +153,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			Date formatDate = dateFormat.parse(endDate);
 			Date formatEndDate = combineDateTime(formatDate);
 
-			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+			Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 
 			announcement = announcementMapper.getCourseAnnouncements(
@@ -166,7 +166,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	}
 
 	public List<Announcement> getAllAnnouncement() {
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		List<Announcement> announcementList = new ArrayList<Announcement>();
 		announcementList = announcementMapper.getAllAnnouncements(memberRoleId);
@@ -180,7 +180,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	public Announcement getAnnouncementById(int anouncementId) {
 
 		Announcement announcement = new Announcement();
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		announcement = announcementMapper.getAnnouncementById(memberRoleId,
 				anouncementId);
@@ -196,7 +196,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			Date formatDate = dateFormat.parse(endDate);
 			Date formatEndDate = combineDateTime(formatDate);
 
-			Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+			Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 
 			announcement = announcementMapper.getAllAnnouncementsByDate(

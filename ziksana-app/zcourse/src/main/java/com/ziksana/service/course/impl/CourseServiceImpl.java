@@ -36,7 +36,7 @@ import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.persistence.course.LearningComponentNestMapper;
 import com.ziksana.persistence.course.LearningContentMapper;
 import com.ziksana.persistence.subscription.SubscriptionMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.CourseService;
 
 /**
@@ -572,7 +572,7 @@ public class CourseServiceImpl implements CourseService {
 		// TODO Auto-generated method stub
 		int status = courseStatus.getID();
 
-		String memberPersonaId = ThreadLocalUtil.getToken()
+		String memberPersonaId = SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID();
 
 		List<Course> courses = courseMapper.getCourses(Integer.valueOf(status),
@@ -584,7 +584,7 @@ public class CourseServiceImpl implements CourseService {
 	public List<Course> getAllCoursesByStatus(CourseStatus courseStatus) {
 
 		int status = courseStatus.getID();
-		String memberPersonaId = ThreadLocalUtil.getToken()
+		String memberPersonaId = SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID();
 
 		return courseMapper.getAllCourses(Integer.valueOf(status),
@@ -594,7 +594,7 @@ public class CourseServiceImpl implements CourseService {
 	public Integer totalNumberOfCoursesByStatus(CourseStatus courseStatus) {
 
 		int status = courseStatus.getID();
-		String memberPersonaId = ThreadLocalUtil.getToken()
+		String memberPersonaId = SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID();
 
 		return courseMapper.totalNumberOfCourses(Integer.valueOf(status),
@@ -603,7 +603,7 @@ public class CourseServiceImpl implements CourseService {
 
 	public List<LearningProgram> getLearningPrograms() {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getLearningPrograms(Integer
@@ -611,7 +611,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	public List<Course> getCoursesByLearningProgram(Integer learningProgramId) {
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getCoursesByLearningProgram(
@@ -620,7 +620,7 @@ public class CourseServiceImpl implements CourseService {
 
 	public List<Course> getThreeCoursesByLearningProgram(
 			Integer learningProgramId) {
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getThreeCoursesByLearningProgram(
@@ -683,7 +683,7 @@ public class CourseServiceImpl implements CourseService {
 
 	public int isCourseNameExists(CourseStatus courseStatus, String courseName) {
 		int status = courseStatus.getID();
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 		return courseMapper.isCourseNameExists(Integer.valueOf(status),
 				Integer.valueOf(memberRoleId), courseName);
@@ -692,7 +692,7 @@ public class CourseServiceImpl implements CourseService {
 	public int getCoursesByCoursename(CourseStatus courseStatus,
 			String courseName, int courseId) {
 		int status = courseStatus.getID();
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 		return courseMapper.getCoursesByCoursename(Integer.valueOf(status),
 				Integer.valueOf(memberRoleId), courseName, courseId);

@@ -20,7 +20,7 @@ import com.ziksana.domain.course.subscription.Note;
 import com.ziksana.domain.course.subscription.SubscriptionCourse;
 import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.persistence.subscription.SubscriptionMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.subscription.SubscriptionService;
 
 /**
@@ -36,7 +36,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	public List<Note> getLearnerNotes(Integer courseId, Integer componentId,
 			Integer contentId, Integer type) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getLearnerNotes(
@@ -47,7 +47,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	public List<EducatorNote> getEducatorContent(SubscriptionCourse course,
 			Node node, Integer contentType) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		Integer learnCompId = null;
@@ -74,7 +74,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	/*
 	 * @Override public List<Note> getTOC(Node node) {
 	 * 
-	 * String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+	 * String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 	 * .getStorageID();
 	 * 
 	 * // Integer learnCompId = 0; Integer learnCmpContId = 0;
@@ -88,7 +88,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 			Integer contentId, String noteTitle, String noteDescription,
 			Integer noteDuration, Integer type) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		Note note = new Note();
@@ -110,7 +110,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	public List<Note> getLearnerContent(SubscriptionCourse course, Node node) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		Integer learnCompId = null;
@@ -133,7 +133,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	public List<EducatorNote> getEducatorNotes(Integer courseId, Node node) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getEducatorNotes(8, Integer
@@ -144,7 +144,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	public List<Reference> getEducatorSuggestedReferences(Integer courseId,
 			Node node) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getEducatorReferences(1, Integer
@@ -155,7 +155,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	public void addLearnerQuestion(Integer courseId, String question, Node node) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		Note note = new Note();
@@ -183,7 +183,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	public List<ContentReference> getContentTOC(Integer courseId, Node node) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getContentTOC(7, Integer
@@ -193,7 +193,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	public List<LearningProgram> getLearningPrograms() {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getLearningPrograms(Integer
@@ -202,7 +202,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	public List<Course> getCoursesByLearningProgram(Integer learningProgramId) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getCoursesByLearningProgram(
@@ -218,7 +218,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 			Integer contentId, Integer type, String description, String url,
 			String coordinates, Integer duration, String title, Integer parentId) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.addEducatorContent(
@@ -240,7 +240,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 	public List<Hotspot> getEducatorHotspots(Integer courseId, Node node) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getEducatorHotspots(7, Integer
@@ -252,7 +252,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	public List<EducatorContent> getAllEducatorContent(Integer courseId,
 			Node node) {
 
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getAllEducatorContent(Integer
@@ -288,7 +288,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	}
 
 	public List<EducatorNote> getHotspotNotes(Integer courseId, Node node) {
-		String memberRoleId = ThreadLocalUtil.getToken().getMemberPersonaId()
+		String memberRoleId = SecurityTokenUtil.getToken().getMemberPersonaId()
 				.getStorageID();
 
 		return subscriptionMapper.getEducatorNotes(9, Integer

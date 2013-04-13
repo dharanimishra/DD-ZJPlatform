@@ -26,7 +26,7 @@ import com.ziksana.domain.announcements.Announcement;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.announcements.AnnouncementService;
 
 
@@ -67,7 +67,7 @@ public class AnnouncementServiceImplTest {
 		ZID memberPersonaId = new StringZID("100");
 
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 
 	}
 	/**
@@ -75,7 +75,7 @@ public class AnnouncementServiceImplTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		ThreadLocalUtil.unset();
+		SecurityTokenUtil.unset();
 	}
 	@Ignore
 	public void testInsert() {

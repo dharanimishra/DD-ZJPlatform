@@ -20,7 +20,7 @@ import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.security.MediaService;
 
@@ -75,7 +75,7 @@ public class MyCoursesController {
 		LOGGER.debug("Entering Class " + getClass() + " readMyPrograms()");
 		ModelAndView mv = null;
 		try {
-			MemberRoleType roleType = ThreadLocalUtil.getToken().getRole();
+			MemberRoleType roleType = SecurityTokenUtil.getToken().getRole();
 
 			if (roleType == MemberRoleType.EDUCATOR) {
 				List<Course> courses = courseService
@@ -151,7 +151,7 @@ public class MyCoursesController {
 
 		ModelAndView mv = null;
 		try {
-			MemberRoleType roleType = ThreadLocalUtil.getToken().getRole();
+			MemberRoleType roleType = SecurityTokenUtil.getToken().getRole();
 			if (roleType == MemberRoleType.EDUCATOR) {
 				List<Course> courses = courseService
 						.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);

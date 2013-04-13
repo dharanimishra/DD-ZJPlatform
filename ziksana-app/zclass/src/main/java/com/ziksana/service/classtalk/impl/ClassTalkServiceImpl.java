@@ -8,7 +8,7 @@ import com.ziksana.domain.classtalk.LearnerOnline;
 import com.ziksana.domain.contacts.RelationshipType;
 import com.ziksana.domain.course.Course;
 import com.ziksana.persistence.classtalk.ClassTalkMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.classtalk.ClassTalkService;
 
 public class ClassTalkServiceImpl implements ClassTalkService {
@@ -26,7 +26,7 @@ public class ClassTalkServiceImpl implements ClassTalkService {
 
 	public List<LearnerOnline> getOnlineLearnersByCircle(Course course,
 			RelationshipType relationshipType) {
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 
 		if (relationshipType.equals(RelationshipType.CIRCLEFIRST)) {

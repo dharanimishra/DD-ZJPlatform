@@ -6,7 +6,7 @@ import org.junit.Before;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 
 /**
  * @author ratneshkumar
@@ -24,7 +24,7 @@ public class BaseTest {
 		ZID memberPersonaId = new StringZID("100");
 
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class BaseTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		ThreadLocalUtil.unset();
+		SecurityTokenUtil.unset();
 	}
 
 }

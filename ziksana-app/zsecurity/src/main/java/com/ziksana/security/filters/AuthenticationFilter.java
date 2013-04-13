@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 
 /**
  * @author prabu
@@ -47,7 +47,7 @@ public class AuthenticationFilter implements Filter {
 				SecurityToken token = (SecurityToken) httpSession
 						.getAttribute("TOKEN");
 
-				ThreadLocalUtil.setToken(token);
+				SecurityTokenUtil.setToken(token);
 			}
 
 			// filterChain.doFilter(servletRequest, servletResponse);

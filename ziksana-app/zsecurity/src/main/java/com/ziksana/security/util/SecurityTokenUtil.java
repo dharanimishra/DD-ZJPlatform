@@ -1,6 +1,6 @@
 package com.ziksana.security.util;
 
-public class ThreadLocalUtil {
+public class SecurityTokenUtil {
 	
 private static final ThreadLocal<SecurityToken> THREADLOCAL = new ThreadLocal<SecurityToken>();
 	

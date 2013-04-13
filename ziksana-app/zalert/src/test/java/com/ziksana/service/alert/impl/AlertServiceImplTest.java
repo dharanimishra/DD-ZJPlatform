@@ -26,7 +26,7 @@ import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.alert.AlertsService;
 
 /**
@@ -65,7 +65,7 @@ public class AlertServiceImplTest {
 		ZID memberPersonaId = new StringZID("100");
 
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 
 	}
 
@@ -74,7 +74,7 @@ public class AlertServiceImplTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		ThreadLocalUtil.unset();
+		SecurityTokenUtil.unset();
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class AlertServiceImplTest {
 		alert.setCategory("Assignment");
 		alert.setActivationDate(new Date());
 		MemberPersona creatingMember = new MemberPersona();
-		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+		creatingMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 		alert.setCreatingMember(creatingMember);
 		alert.setForMember(creatingMember);

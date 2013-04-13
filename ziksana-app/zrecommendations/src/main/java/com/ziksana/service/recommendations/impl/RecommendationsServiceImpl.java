@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.recommendations.Recommendation;
 import com.ziksana.persistence.recommendations.RecommendationMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.recommendations.RecommendationsService;
 
 /**
@@ -40,7 +40,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
 
 		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		recomendationList = recommendationMapper.getRecommendations(category,
 				memberRoleId);
@@ -122,7 +122,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		List<Recommendation> recomendationList = new ArrayList<Recommendation>();
 		LOGGER.info("Class :" + getClass()
 				+ " : Entering Method :getAllRecommendationsList()");
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		recomendationList = recommendationMapper
 				.getAllRecommendationsList(memberRoleId);
@@ -139,7 +139,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		LOGGER.info("Class :" + getClass() + " : Entering Method :selectAll()");
 
 		LOGGER.info("Class :" + getClass() + " : Leaving Method :selectAll()");
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		recomendationList = recommendationMapper
 				.getAllRecommendations(memberRoleId);
@@ -160,7 +160,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 		int offset = 0;
 		int limit = 3;
 		RowBounds rowBounds = new RowBounds(offset, limit);
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		return recommendationMapper.getMapperRecommendation(memberRoleId,
 				rowBounds);
@@ -169,7 +169,7 @@ public class RecommendationsServiceImpl implements RecommendationsService {
 
 	public Recommendation getRecommendationByRecommendationId(
 			Integer recommendationId) {
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		return recommendationMapper.getRecommendationByRecommendationId(
 				recommendationId, memberRoleId);

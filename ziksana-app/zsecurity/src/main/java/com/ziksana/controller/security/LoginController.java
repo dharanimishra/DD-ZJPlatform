@@ -25,7 +25,7 @@ import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.filters.AuthenticationFilter;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.security.AuthenticationService;
 import com.ziksana.service.security.MediaService;
 import com.ziksana.service.security.MemberService;
@@ -119,7 +119,7 @@ public class LoginController {
 					mv = new ModelAndView("common/pre_launch");
 					session.setAttribute("member", member);
 
-					ThreadLocalUtil.unset();
+					SecurityTokenUtil.unset();
 
 				} else {
 
@@ -127,7 +127,7 @@ public class LoginController {
 					logger.info(" User is not authenticated");
 					request.setAttribute("loginResult", "true");
 					mv = new ModelAndView("login");
-					ThreadLocalUtil.unset();
+					SecurityTokenUtil.unset();
 					return mv;
 				}
 			}

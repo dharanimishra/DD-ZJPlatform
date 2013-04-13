@@ -34,7 +34,7 @@ import com.ziksana.domain.course.ModuleEditResponse;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.CourseEditService;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.CourseSubjectDetailService;
@@ -296,7 +296,7 @@ public class CreateCourseController {
 			
 			
 			MemberPersona accountableMember = new MemberPersona();
-			accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
 
 			// Service call for Course
@@ -503,7 +503,7 @@ public class CreateCourseController {
 					.getSubjectClassification(subjectTopic);
 
 			MemberPersona accountableMember = new MemberPersona();
-			accountableMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
 
 			boolean flag = false;

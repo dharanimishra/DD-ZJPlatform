@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.ziksana.domain.contacts.RelationshipType;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.persistence.contacts.ContactMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.contacts.ContactService;
 
 public class ContactServiceImpl implements ContactService {
@@ -16,14 +16,14 @@ public class ContactServiceImpl implements ContactService {
 	public ContactMapper contactMapper;
 
 	public List<MemberPersona> getAllContacts() {
-		return contactMapper.getAllContacts(Integer.valueOf(ThreadLocalUtil
+		return contactMapper.getAllContacts(Integer.valueOf(SecurityTokenUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 	}
 
 	public List<MemberPersona> getContactsByCircle(
 			RelationshipType relationshipType) {
 
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		List<MemberPersona> list = null;
 

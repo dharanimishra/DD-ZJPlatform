@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.myblogs.BlogPost;
 import com.ziksana.persistence.blogs.BlogMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.blogs.BlogService;
 
 /**
@@ -35,7 +35,7 @@ public class BlogServiceImpl implements BlogService {
 	public List<BlogPost> getBlogs() {
 
 		List<BlogPost> blogList = new ArrayList<BlogPost>();
-		Integer postingMemberRoleId = Integer.valueOf(ThreadLocalUtil
+		Integer postingMemberRoleId = Integer.valueOf(SecurityTokenUtil
 				.getToken().getMemberPersonaId().getStorageID());
 		int offset = 0;
 		int limit = 3;

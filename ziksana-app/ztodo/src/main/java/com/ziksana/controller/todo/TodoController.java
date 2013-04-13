@@ -19,7 +19,7 @@ import com.ziksana.constants.ZiksanaConstants;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.todo.Todo;
 import com.ziksana.exception.ZiksanaException;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.todo.TodoService;
 
 @Controller
@@ -102,7 +102,7 @@ public class TodoController {
 		todo.setNotificationType(491);
 		todo.setPriority(163);
 		MemberPersona creatingMember = new MemberPersona();
-		creatingMember.setMemberRoleId(Integer.valueOf(ThreadLocalUtil
+		creatingMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 		.getToken().getMemberPersonaId().getStorageID()));
 		logger.info("Member Role Id :"+creatingMember.getMemberRoleId());
 		todo.setCreatingMember(creatingMember);

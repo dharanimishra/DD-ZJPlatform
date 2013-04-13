@@ -23,7 +23,7 @@ import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
 import com.ziksana.security.util.SecurityToken;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.CourseService;
 
 /**
@@ -59,7 +59,7 @@ public class CourseServiceImplTest {
 		ZID memberId = new StringZID("1007");
 		ZID memberPersonaId = new StringZID("107");
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
-		ThreadLocalUtil.setToken(token);
+		SecurityTokenUtil.setToken(token);
 
 	}
 

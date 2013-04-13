@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.alerts.Alert;
 import com.ziksana.persistence.alert.AlertMapper;
-import com.ziksana.security.util.ThreadLocalUtil;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.alert.AlertsService;
 
 /**
@@ -27,7 +27,7 @@ public class AlertServiceImpl implements AlertsService {
 	public List<Alert> getAlertList() {
 
 		List<Alert> alertList = null;
-		alertList = alertMapper.getAlerts(Integer.valueOf(ThreadLocalUtil
+		alertList = alertMapper.getAlerts(Integer.valueOf(SecurityTokenUtil
 				.getToken().getMemberPersonaId().getStorageID()));
 
 		return alertList;
@@ -49,7 +49,7 @@ public class AlertServiceImpl implements AlertsService {
 	}
 
 	public List<Alert> getMapperAlerts() {
-		Integer memberRoleId = Integer.valueOf(ThreadLocalUtil.getToken()
+		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		int offset = 0;
 		int limit = 3;
