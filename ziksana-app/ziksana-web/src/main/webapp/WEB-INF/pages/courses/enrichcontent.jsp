@@ -5,111 +5,111 @@
 
 
 <link
-	href="/ziksana-web/resources/css/common/wizard/wizardstylesheet.css"
+	href="${staticFileServer}resources/css/common/wizard/wizardstylesheet.css"
 	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/common/spinner/smartspinner.css"
+<link href="${staticFileServer}resources/css/common/spinner/smartspinner.css"
 	rel="stylesheet" type="text/css" />
 <link
-	href="/ziksana-web/resources/css/common/tags/superbly-tagfield.css"
+	href="${staticFileServer}resources/css/common/tags/superbly-tagfield.css"
 	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/common/search/search.css"
+<link href="${staticFileServer}resources/css/common/search/search.css"
 	rel="stylesheet" type="text/css" />
-<link href="/ziksana-web/resources/css/common/validation/validation.css"
+<link href="${staticFileServer}resources/css/common/validation/validation.css"
 	rel="stylesheet" type="text/css" />
 
-<link href="/ziksana-web/resources/js/tree/styles/styleTree.css"
+<link href="${staticFileServer}resources/js/tree/styles/styleTree.css"
 	rel="stylesheet" type="text/css" />
 <!-- for the layout of the tree -->
 <!--End Body Style sheet-->
+<!-- <script type="text/javascript"
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script> -->
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/main/jquery-1.7.1.min.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/z_message.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/Dynamicjsonjs/z_message.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/z_simulation_message.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/Dynamicjsonjs/z_simulation_message.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/Associatecontentjson.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/Dynamicjsonjs/Associatecontentjson.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/Addmoduledynamicjson.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/Dynamicjsonjs/Addmoduledynamicjson.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/common/table/tablerow.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/table/tablerow.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/common/search/search.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/search/search.js"></script>
+	src="${staticFileServer}resources/js/ziksana/ckeditor/ckeditor.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/ckeditor/ckeditor.js"></script>
-<script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/common/spinner/smartspinner.js"></script>
 <script type='text/javascript'
-	src="/ziksana-web/resources/js/ziksana/coursecreation/associate.js"></script>
+	src="${staticFileServer}resources/js/ziksana/coursecreation/associate.js"></script>
 <script type='text/javascript'
-	src="/ziksana-web/resources/js/custom/course_associate.js"></script>
+	src="${staticFileServer}resources/js/custom/course_associate.js"></script>
 <!-- scripts for tree -->
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/gettheme.js"></script>
+	src="${staticFileServer}resources/js/tree/gettheme.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/core.js"></script>
+	src="${staticFileServer}resources/js/tree/core.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/buttons.js"></script>
+	src="${staticFileServer}resources/js/tree/buttons.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/scrollbar.js"></script>
+	src="${staticFileServer}resources/js/tree/scrollbar.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/panel.js"></script>
+	src="${staticFileServer}resources/js/tree/panel.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/dragdrop.js"></script>
+	src="${staticFileServer}resources/js/tree/dragdrop.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/tree.js"></script>
+	src="${staticFileServer}resources/js/tree/tree.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/menujq.js"></script>
+	src="${staticFileServer}resources/js/tree/menujq.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/splitter.js"></script>
+	src="${staticFileServer}resources/js/tree/splitter.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/jqxexpander.js"></script>
+	src="${staticFileServer}resources/js/tree/jqxexpander.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/css/common/tree/menu.css" />
+	href="${staticFileServer}resources/css/common/tree/menu.css" />
 <link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/css/common/tree/menu.css" />
+	href="${staticFileServer}resources/css/common/tree/menu.css" />
 
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/common.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/common.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dtree.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/dtree.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Menu/menu.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Menu/menu.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Menu/menu_ext.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Menu/menu_ext.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/treedataenrich.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/treedataenrich.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/tree_ed.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/tree_ed.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
-
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
+<script src="${staticFileServer}resources/js/custom/z_common.js"></script>
 <!-- End tree -->
 
 <link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
+	href="${staticFileServer}resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-<script type="text/javascript" src="/ziksana-web/resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
-<script type='text/javascript' src="/ziksana-web/resources/js/custom/libraryfunction.js"></script>
+	src="${staticFileServer}resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
+<script type='text/javascript' src="${staticFileServer}resources/js/custom/libraryfunction.js"></script>
 <!-- scripts for number spinner -->
-<script type="text/javascript" src="/ziksana-web/resources/js/chosen/superbly-tagfield.min.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/chosen/superbly-tagfield.min.js"></script>
 <script
-	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
+	src="${staticFileServer}resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
 	type="text/javascript"></script>
     <!--fancybox-->
-	<script type="text/javascript" src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="${staticFileServer}resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
 
-     <script src="/ziksana-web/resources/js/jquery.fancybox.pack.2.1.3.js"></script>
-	 <link rel="stylesheet" type="text/css" href="/ziksana-web/resources/css/jquery.fancybox.2.1.3.css"/>
+     <script src="${staticFileServer}resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+	 <link rel="stylesheet" type="text/css" href="${staticFileServer}resources/css/jquery.fancybox.2.1.3.css"/>
 	<!--fancybox end-->
-<script src="/ziksana-web/resources/js/custom/libraryfunction.js"
+<script src="${staticFileServer}resources/js/custom/libraryfunction.js"
 	type="text/javascript"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/validation/jquery.validationen.js"
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validationen.js"
 	type="text/javascript" charset="utf-8"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
 
 	<script type="text/javascript">
@@ -132,11 +132,11 @@ $('#myprograms_nav').addClass('current');
 </script>
 
 <link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/css/uploadify.css" />
+	href="${staticFileServer}resources/css/uploadify.css" />
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/jquery.uploadify-3.1.min.js"></script>
+	src="${staticFileServer}resources/js/jquery.uploadify-3.1.min.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+	src="${staticFileServer}resources/js/custom/jquery.uploadify-3.1.min.js"></script>
 
 
 	<div id="wrapper">
@@ -150,7 +150,7 @@ $('#myprograms_nav').addClass('current');
 			</div>
 			<div class="f-r">
 				<a href="#" class="mnuclass" > Manage </a> | <a class="mnuclass"  href="#"> Publish</a>
-				<a class="light-blue"><img width="12" height="12" alt="add more" src="/ziksana-web/resources/images/plus.png">
+				<a class="light-blue"><img width="12" height="12" alt="add more" src="${staticFileServer}resources/images/plus.png">
 				</a>
 			</div>
 		</div>
@@ -228,7 +228,7 @@ $('#myprograms_nav').addClass('current');
 
 							<p class="definehelp all all-box-shadow"
 								style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92; height: 30px;">
-								<img src="/ziksana-web/resources/images/icons/helpicon.png"
+								<img src="${staticFileServer}resources/images/icons/helpicon.png"
 									align="left"
 									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>Organize and Enhance Content </b>
 							</p>
@@ -239,7 +239,7 @@ $('#myprograms_nav').addClass('current');
 								<!-- Start of Tree -->
 								<div id="treeboxbox_tree" style="padding: 5px;"
 									class="dhtmlxTree"
-									setImagePath="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
+									setImagePath="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
 								</div>
 
 
@@ -251,7 +251,7 @@ $('#myprograms_nav').addClass('current');
 								<!-- Content Panel End -->
 
 								<!-- <a class="btn btn-info"
-									href="/ziksana-web/zcourse/enrichcontent/${courseId}"  tabindex="13"
+									href="${staticFileServer}zcourse/enrichcontent/${courseId}"  tabindex="13"
 									style="float: right; margin-bottom: 20px; margin-top: 20px;"
 									id="">Save and Continue</a> -->
 

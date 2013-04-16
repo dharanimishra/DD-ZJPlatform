@@ -50,7 +50,7 @@ $(document).ready(function() {
 	
 
 setInterval(function() {
-	var secondsBeforeExpire =80;
+	var secondsBeforeExpire =${pageContext.session.maxInactiveInterval};
 	var timeToDecide = 60;
 	var timeEstimate = (secondsBeforeExpire - timeToDecide);
 	console.log("secondsBeforeExpire = " + timeEstimate);	

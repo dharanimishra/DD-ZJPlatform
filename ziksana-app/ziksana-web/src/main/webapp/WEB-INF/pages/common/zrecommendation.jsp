@@ -2,18 +2,20 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
+<!-- <script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="../resources/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="../resources/js/jquery-ui-1.8.21.custom.min.js">
 
-</script>
-
+</script> -->
+<script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-1.8.3.js"></script>
+ <script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+ <link href="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css"/>
 
 <html>
 <head>
 
 <title>ZRecommendations</title>
-<link rel="stylesheet" href="../resources/css/zeni/zeni2.css" />
+<link rel="stylesheet" href="${staticFileServer}resources/css/zeni/zeni2.css" />
 <style type="text/css">
 .recommendation-info-category
 {
@@ -35,8 +37,8 @@
    
 }
 </style>
-<link rel="stylesheet" href="../resources/css/bootstrap.css" />
- <link href="../resources/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" /> 
+<link rel="stylesheet" href="${staticFileServer}resources/css/bootstrap.css" />
+ <link href="${staticFileServer}resources/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" /> 
 
 <!--[if gte IE 9]>
   <style type="text/css">
@@ -51,13 +53,11 @@
 	.zeniwrapper{margin:0 auto;}
 </style>
 
-<script src="../resources/js/isotope/jquery-1.7.2.min.js"></script>
-<script src="../resources/js/isotope/jquery.isotope.min.js"></script>
 <!----- included for tooltip ---->
-   <script src="../resources/js/bootstrap.min.js"></script>
-   <script src="../resources/js/bootstrap.js"></script>
+   <script src="${staticFileServer}resources/js/bootstrap.min.js"></script>
+   <script src="${staticFileServer}resources/js/bootstrap.js"></script>
 <!----- end for tooltip script ----> 
-<script src="../resources/js/zRecommend.js"></script>
+<script src="${staticFileServer}resources/js/zRecommend.js"></script>
 
  <c:url var="showRecomendByCateg" value="/zrecommendations/getrecommendationbycategory/" />
  <c:url var="getAllRecommendations" value="/zrecommendations/getallrecomendations" />

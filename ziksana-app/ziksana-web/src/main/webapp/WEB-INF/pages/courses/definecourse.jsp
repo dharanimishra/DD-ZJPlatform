@@ -8,100 +8,100 @@
 
 
 <link
-	href="/ziksana-web/resources/css/common/wizard/wizardstylesheet.css"
+	href="${staticFileServer}resources/css/common/wizard/wizardstylesheet.css"
 	rel="stylesheet" type="text/css" />
 
 <link
-	href="/ziksana-web/resources/css/common/tags/superbly-tagfield.css"
+	href="${staticFileServer}resources/css/common/tags/superbly-tagfield.css"
 	rel="stylesheet" type="text/css" />
 
-<link href="/ziksana-web/resources/css/common/validation/validation.css"
+<link href="${staticFileServer}resources/css/common/validation/validation.css"
 	rel="stylesheet" type="text/css" />
 
-<link href="/ziksana-web/resources/js/tree/styles/styleTree.css"
+<link href="${staticFileServer}resources/js/tree/styles/styleTree.css"
 	rel="stylesheet" type="text/css" />
 <!-- for the layout of the tree -->
 <!--End Body Style sheet-->
 
 <script type="text/javascript"
-	src="/ziksana-web/resources/Dynamicjsonjs/z_message.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/z_message.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/Dynamicjsonjs/z_simulation_message.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/z_simulation_message.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/Dynamicjsonjs/Definecoursejson.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/Definecoursejson.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/Dynamicjsonjs/Addmoduledynamicjson.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/Addmoduledynamicjson.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/table/tablerow.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/common/table/tablerow.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/search/search.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/common/search/search.js"></script>
 
 
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/ckeditor/ckeditor.js"></script>
+	src="${staticFileServer}resources/js/ziksana/ckeditor/ckeditor.js"></script>
 
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/ziksana/coursecreation/define.js"></script>
+	src="${staticFileServer}resources/js/ziksana/coursecreation/define.js"></script>
 <!-- scripts for tree -->
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/gettheme.js"></script>
+	src="${staticFileServer}resources/js/tree/gettheme.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/core.js"></script>
+	src="${staticFileServer}resources/js/tree/core.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/buttons.js"></script>
+	src="${staticFileServer}resources/js/tree/buttons.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/scrollbar.js"></script>
+	src="${staticFileServer}resources/js/tree/scrollbar.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/panel.js"></script>
+	src="${staticFileServer}resources/js/tree/panel.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/dragdrop.js"></script>
+	src="${staticFileServer}resources/js/tree/dragdrop.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/tree.js"></script>
+	src="${staticFileServer}resources/js/tree/tree.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/menu.js"></script>
+	src="${staticFileServer}resources/js/tree/menu.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/myTree.js"></script>
+	src="${staticFileServer}resources/js/tree/myTree.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/splitter.js"></script>
+	src="${staticFileServer}resources/js/tree/splitter.js"></script>
 <script type="text/javascript"
-	src="/ziksana-web/resources/js/tree/jqxexpander.js"></script>
+	src="${staticFileServer}resources/js/tree/jqxexpander.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/css/common/tree/menu.css" />
+	href="${staticFileServer}resources/css/common/tree/menu.css" />
 <link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/css/common/tree/menu.css" />
+	href="${staticFileServer}resources/css/common/tree/menu.css" />
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/common.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/common.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dtree.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/dtree.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Menu/menu.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Menu/menu.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Menu/menu_ext.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Menu/menu_ext.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/treedata.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/treedata.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/tree_ed.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/tree_ed.js"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
 
 <!-- End tree -->
 <script
-	src="/ziksana-web/resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
+	src="${staticFileServer}resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
 	type="text/javascript"></script>
 
-<script src="/ziksana-web/resources/js/custom/libraryfunction.js"
+<script src="${staticFileServer}resources/js/custom/libraryfunction.js"
 	type="text/javascript"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/jquerylibrary/common/tags/superbly-tagfield.min.js"
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/common/tags/superbly-tagfield.min.js"
 	type="text/javascript"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/validation/jquery.validationen.js"
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validationen.js"
 	type="text/javascript" charset="utf-8"></script>
 <script
-	src="/ziksana-web/resources/js/ziksana/validation/jquery.validation.js"
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css"
-	href="/ziksana-web/resources/css/uploadify.css" />
+	href="${staticFileServer}resources/css/uploadify.css" />
 
 
 
@@ -277,7 +277,7 @@ span.standartTreeRow:hover {
 		<div class="sub-nav">
 			<div class="f-l">
 				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/zcourse/myprograms">My Courses </a> </strong>|&nbsp;<strong
+					href="/ziksana-web//zcourse/myprograms">My Courses </a> </strong>|&nbsp;<strong
 					class="light-gray text-size-px12 font-Signika">Create New
 					Course </strong>
 			</div>
@@ -285,7 +285,7 @@ span.standartTreeRow:hover {
 				<a href="#" class="mnuclass"> Manage </a> | <a class="mnuclass"
 					href="#"> Publish</a> <a class="light-blue"><img width="12"
 					height="12" alt="add more"
-					src="/ziksana-web/resources/images/plus.png"> </a>
+					src="${staticFileServer}resources/images/plus.png"> </a>
 			</div>
 		</div>
 		<!--Main Content-->
@@ -383,7 +383,7 @@ span.standartTreeRow:hover {
 
 								<div class="definehelp"
 									style="width: 900px; font-family: Helvetica; font-weight: bold; color: #125F92;">
-									<img src="/ziksana-web/resources/images/icons/helpicon.png"
+									<img src="${staticFileServer}resources/images/icons/helpicon.png"
 										align="left"
 										style="padding-left: 5px; margin-right: 4px; margin-top: -8px;" />Provide
 									Course Details
@@ -478,12 +478,12 @@ span.standartTreeRow:hover {
 											<label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Credits :</label>
 											<input type="text" id="Credits" value="0" class=""
-												tabindex="7" style="width: 25px; margin-left: 18px;" /> <label
+												tabindex="7" style="width: 15px; margin-left: 18px;" /> <label
 												for="coursetags" class="labelclass"
 												style="margin-left: 20px; font-weight: bold;">Specify
 												Course Extra Credits :</label> <input type="text" id="ExtraCredits"
 												class=" " value="0" tabindex="8"
-												style="width: 25px; margin-left: 10px;" />
+												style="width: 15px; margin-left: 10px;" />
 
 										</div>
 										<!-- end of coursecredits--->
@@ -492,7 +492,7 @@ span.standartTreeRow:hover {
 											<br /> <label for="coursetags" class="labelclass"
 												style="font-weight: bold;">Specify Course Duration :</label>
 											<input type="text" id="Duration" value="0" tabindex="9"
-												style="width: 25px; margin-left: 9px;" class="" /> <select
+												style="width: 15px; margin-left: 9px;" class="" /> <select
 												name="SelectArea" id="Cdurationtype" tabindex="10"
 												class="defaultvalue" style="margin-left: 20px;">
 												<option value="1">Weeks</option>
@@ -506,7 +506,7 @@ span.standartTreeRow:hover {
 
 										<!--  <div class="addinformation">
 											<a class="lbx-addnew" id="_addNewInfo"
-												href="/ziksana-web/zcourse/getaddnlinfo">Add New
+												href="${staticFileServer}zcourse/getaddnlinfo">Add New
 												Information </a>
 										</div> -->
 
@@ -521,11 +521,11 @@ span.standartTreeRow:hover {
 									 <div class="contentsecurity">
 
 										<img id="aSide"
-											src="/ziksana-web/resources/images/tipsy-east.gif"
+											src="${staticFileServer}resources/images/tipsy-east.gif"
 											align="left"
 											style="height: 10px; width: 10px; margin-top: 5px; cursor: pointer;"
 											title="View Requirements" /> <img id="aDown"
-											src="/ziksana-web/resources/images/tipsy-south.gif"
+											src="${staticFileServer}resources/images/tipsy-south.gif"
 											align="left"
 											style="height: 10px; width: 10px; margin-top: 5px; cursor: pointer;"
 											title="Hide Requirements" />
@@ -559,7 +559,7 @@ span.standartTreeRow:hover {
 									<p class="labelclass" style="font-weight: bold;">Associate
 										an Image for your Course</p>
 									<br /> <img id="course_thumbnail_image"
-										src="/ziksana-web/resources/images/default-course.jpg"
+										src="${staticFileServer}resources/images/default-course.jpg"
 										align="left" /> <input readonly="readonly" type="hidden"
 										id="Cimageupl" style="margin-left: 20px;" />
 
@@ -574,7 +574,7 @@ span.standartTreeRow:hover {
 											$('#thumbnail_image_file_upload')
 													.uploadify(
 															{
-																'swf' : '/ziksana-web/resources/swf/uploadify.swf',
+																'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 																'queueSizeLimit' : 1,
 																'successTimeout' : 350,
 																'uploader' : '${ms.uploadScript}',
@@ -639,7 +639,7 @@ span.standartTreeRow:hover {
 													.html('');
 											$('#course_thumbnail_image')
 													.attr('src',
-															'/ziksana-web/resources/images/default-course.jpg');
+															'${staticFileServer}resources/images/default-course.jpg');
 
 										}
 									</script>
@@ -654,7 +654,7 @@ span.standartTreeRow:hover {
 							tabindex="13" value="Submit"
 							onClick="createCourse(); return false;"
 							style="margin-right: 10px;">
-						<!-- <a href="/ziksana-web/zcourse/createmodule/${courseId}"
+						<!-- <a href="${staticFileServer}zcourse/createmodule/${courseId}"
 									style="float:right; margin-bottom: 20px; margin-top: 2px; display: inline-block;right: -118px;position: relative;"
 									class="btn btn-info">Save and Continue</a> -->
 
@@ -681,7 +681,7 @@ span.standartTreeRow:hover {
 
 							<p class="definehelp all all-box-shadow"
 								style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92; height: 30px;">
-								<img src="/ziksana-web/resources/images/icons/helpicon.png"
+								<img src="${staticFileServer}resources/images/icons/helpicon.png"
 									align="left"
 									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>Right
 									Click over the Tree Node to further Define the Course. </b>
@@ -705,7 +705,7 @@ span.standartTreeRow:hover {
 									<!-- Start of Default Instruction -->
 
 									<div id="instruction" style="padding: 10px;">
-										<img src="/ziksana-web/resources/images/instruction.png"
+										<img src="${staticFileServer}resources/images/instruction.png"
 											class="all-box-shadow" alt="instructions"
 											title="Key-Board instruction" width="720"
 											style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;">

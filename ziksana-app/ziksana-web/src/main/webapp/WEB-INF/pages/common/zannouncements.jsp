@@ -8,25 +8,25 @@
 <head>
 <title>ZAnnouncements</title>
 
-<link rel="stylesheet" href="../resources/css/zCss.css" type="text/css" >
-<link rel="stylesheet" type="text/css" href="../resources/css/jquery-ui-1.8.23.custom.css"  >
-<link rel="stylesheet" href="../resources/css/bootstrap.css" >
-<link href="../resources/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" >
-<link rel="stylesheet" href="../resources/css/zeni/zeni2.css" >
+<link rel="stylesheet" href="${staticFileServer}resources/css/zCss.css" type="text/css" >
+<link rel="stylesheet" type="text/css" href="${staticFileServer}resources/css/jquery-ui-1.8.23.custom.css"  >
+<link rel="stylesheet" href="${staticFileServer}resources/css/bootstrap.css" >
+<link href="${staticFileServer}resources/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" href="${staticFileServer}resources/css/zeni/zeni2.css" >
 
-<script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="../resources/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="../resources/js/jquery-ui-1.8.21.custom.min.js"></script>
-<script src="../resources/js/bootstrap.min.js"></script>
-<script src="../resources/js/bootstrap.js"></script>
-<script type="text/javascript" src="../resources/js/jquery.js"></script>
-<script type="text/javascript" src="../resources/js/zGroup.js"></script>
-<script type="text/javascript" src="../resources/js/tablerow.js"></script>
-<script type="text/javascript" src="../resources/js/date.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/tree/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script src="${staticFileServer}resources/js/bootstrap.min.js"></script>
+<script src="${staticFileServer}resources/js/bootstrap.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/jquery.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/zGroup.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/tablerow.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/date.js"></script>
 
-<script type="text/javascript" src="../resources/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript"
-	src="../resources/js/jquery-ui-1.8.23.custom.min.js"></script>
+	src="${staticFileServer}resources/js/jquery-ui-1.8.23.custom.min.js"></script>
 <style>
 
 .row-hover {
@@ -374,11 +374,11 @@ function getCategoryByBetweenDates(){
 				</div>
 				 <!-- linksMeeting -->
                 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-	<script>!window.jQuery.ui && document.write(unescape('%3Cscript src="../resources/jquery/jquery-ui-1.8.21.custom.min.js"%3E%3C/script%3E'))</script>
+	<script>!window.jQuery.ui && document.write(unescape('%3Cscript src="${staticFileServer}resources/jquery/jquery-ui-1.8.21.custom.min.js"%3E%3C/script%3E'))</script>
 	<!-- mousewheel plugin -->
-				<script src="../resources/js/scrollbar/jquery.mousewheel.min.js"></script>
+				<script src="${staticFileServer}resources/js/scrollbar/jquery.mousewheel.min.js"></script>
 				<!-- custom scrollbars plugin -->
-				<!-- <script src="../resources/js/scrollbar/jquery.mCustomScrollbar.js"></script>
+				<!-- <script src="${staticFileServer}resources/js/scrollbar/jquery.mCustomScrollbar.js"></script>
 	<script>
 		(function($){
 			$(window).load(function(){

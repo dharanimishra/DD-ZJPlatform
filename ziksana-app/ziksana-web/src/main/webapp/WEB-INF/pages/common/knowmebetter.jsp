@@ -4,21 +4,29 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html >
 <head>
-	 <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" />
-<!--	<link rel="stylesheet" href="../resources/css/bootstrap.css" /> -->
-	<link href="../resources/images/ziksana-icon.png" rel="shortcut icon"/>
-	<link rel="stylesheet" type="text/css" media="screen" href="../resources/css/basic-styles.css"/>
-		<link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/old-jquery-ui-1.8.21.custom.css">
-	<link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/jquery-ui-1.8.21.custom.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../resources/css/type-setting.css"/>
-  
-	<script src="../resources/js/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="../resources/js/sortable.js"></script>
-	<script src="../resources/js/ui/jquery.ui.core.js"></script>
-	<script src="../resources/js/ui/jquery.ui.widget.js"></script>
-	<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
-	<script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
-	<script src="../resources/js/ui/jquery.ui.button.js"></script>
+	<script type="text/javascript" src="${staticFileServer}resources/js/tree/jquery-1.8.0.min.js"></script>
+<link href="${staticFileServer}resources/css/styles.css" rel="stylesheet" type="text/css">
+	<link href="${staticFileServer}resources/css/type-setting.css" rel="stylesheet" type="text/css">
+	<link href="${staticFileServer}resources/css/effects.css" rel="stylesheet" type="text/css">
+	<link href="${staticFileServer}resources/css/nav.css" rel="stylesheet" type="text/css">
+   	
+   	<script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-1.8.3.js"></script>
+ <script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+ <link href="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css"/>
+ 
+   	
+   	
+ 	
+	
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.widget.js"></script>
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.button.js"></script>
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.progressbar.js"></script>
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.tabs.js"></script>
+     <script src="${staticFileServer}resources/js/jquery.hovercard.js"></script>
+     <script src="${staticFileServer}resources/js/todo.js" type="text/javascript"></script> 
+      <link rel="stylesheet" href="${staticFileServer}resources/css/zCss.css" type="text/css"/>
+	 <link rel="stylesheet" href="${staticFileServer}resources/css/zeni/zeni2.css" type="text/css"/>
+     <script language="javascript" type="text/javascript" src="${staticFileServer}resources/js/custom/Todoalertshovercard.js"></script>
 	
 <style>
 .row-hover {

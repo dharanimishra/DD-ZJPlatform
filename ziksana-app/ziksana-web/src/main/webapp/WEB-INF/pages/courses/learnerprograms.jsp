@@ -14,9 +14,10 @@
 	<title>My Courses</title>
 	
 	
-	
+	<script src="${staticFileServer}resources/js/jquery.isotope.min.js"></script>
+<script type='text/javascript' src="${staticFileServer}resources/js/custom/myprogram.js"></script>
 
-<script src="../resources/js/jquery_confirm/jquery.confirm.js"></script>
+<!-- <script src="../resources/js/jquery_confirm/jquery.confirm.js"></script>
 <link rel="stylesheet" href="../resources/js/jquery_confirm/jquery.confirm.css"/>
 
 
@@ -30,7 +31,7 @@
 	<script src="../resources/js/ui/jquery.ui.button.js"></script>
 	<script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
 	<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
-   
+    -->
 	
 
 
@@ -82,12 +83,9 @@
    $('.js-activated').dropdownHover();
     });
   </script>   
-   <script type="text/javascript" language="javascript" src="../resources/js/easyslider/jquery.carouFredSel-6.1.0-packed.js"></script>
-
+  
 		<!-- optionally include helper plugins -->
-		<script type="text/javascript" language="javascript" src="../resources/js/easyslider/jquery.mousewheel.min.js"></script>
-		<script type="text/javascript" language="javascript" src="../resources/js/easyslider/jquery.touchSwipe.min.js"></script>
-		<script type="text/javascript" language="javascript" src="../resources/js/easyslider/jquery.ba-throttle-debounce.min.js"></script>          
+		
    
 		
 		<style type="text/css">

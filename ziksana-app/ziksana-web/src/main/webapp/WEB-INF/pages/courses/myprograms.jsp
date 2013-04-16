@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="../resources/js/jquery.isotope.min.js"></script>
-<script type='text/javascript' src="../resources/js/custom/myprogram.js"></script>
+<script src="${staticFileServer}resources/js/jquery.isotope.min.js"></script>
+<script type='text/javascript' src="${staticFileServer}resources/js/custom/myprogram.js"></script>
 
 <script>
     

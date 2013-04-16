@@ -299,8 +299,7 @@ $(document).ready(function() {
 					
 				
 					$('#draft_placeholder').html( draftcourse);
-					$('#active_placeholder').html( activecourse);
-					$('#review_placeholder').html( reviewcourse);
+					
 			}
 	});
 	

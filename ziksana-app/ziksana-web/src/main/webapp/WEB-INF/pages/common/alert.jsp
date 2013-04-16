@@ -7,36 +7,31 @@ pageEncoding="ISO-8859-1"%>
 <head>
 <title>Alerts</title>
 <!--Body Style sheet-->
-  <link rel="stylesheet" href="../resources/css/zCss.css" type="text/css"/>
- <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" type="text/css"/>
- <link rel="stylesheet" type="text/css" href="../css/dropdown.css" />
-<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="../resources/css/tag/tagit-simple-blue.css">
-<link rel="stylesheet" href="../resources/css/tipsy.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/old-jquery-ui-1.8.21.custom.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/custom-theme/jquery-ui-1.8.21.custom.css">
-<link href="../resources/css/news/newsticker.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="../js/accordion/style.css" />
-<script src="../resources/js/jquery-1.7.2.min.js"></script>
- <script src="../resources/js/dropdown/hover-dropdown.min.js"></script>
-   <script src="../resources/js/dropdown/tiwtter.js"></script>
-<script src="../resources/js/ui/jquery.ui.core.js"></script>
-<script src="../resources/js/ui/jquery.ui.widget.js"></script>
-<script src="../resources/js/ui/jquery.ui.button.js"></script>
-<script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
-<script src="../resources/js/ui/jquery.ui.tabs.js"></script>
- <script src="../resources/js/jquery.hovercard.js"></script>
+<script type="text/javascript" src="${staticFileServer}resources/js/tree/jquery-1.8.0.min.js"></script>
+<link href="${staticFileServer}resources/css/styles.css" rel="stylesheet" type="text/css">
+	<link href="${staticFileServer}resources/css/type-setting.css" rel="stylesheet" type="text/css">
+	<link href="${staticFileServer}resources/css/effects.css" rel="stylesheet" type="text/css">
+	<link href="${staticFileServer}resources/css/nav.css" rel="stylesheet" type="text/css">
+   	
+   	<script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-1.8.3.js"></script>
+ <script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+ <link href="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css"/>
  
- <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
-  <!--fancybox-->
-<script type="text/javascript" src="../resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-<script type="text/javascript" src="../resources/js/ui/jquery.fancybox-1.3.4.pack.js"></script>
-  <script type="text/javascript" src="../resources/js/todo.js"></script>
-<link rel="stylesheet" type="text/css" href="../resources/js/ui/jquery.fancybox-1.3.4.css" media="screen" />
-<!--fancybox end-->
+   	
+   	
+ 	
+	
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.widget.js"></script>
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.button.js"></script>
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.progressbar.js"></script>
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.tabs.js"></script>
+     <script src="${staticFileServer}resources/js/jquery.hovercard.js"></script>
+     <script src="${staticFileServer}resources/js/todo.js" type="text/javascript"></script> 
+      <link rel="stylesheet" href="${staticFileServer}resources/css/zCss.css" type="text/css"/>
+	 <link rel="stylesheet" href="${staticFileServer}resources/css/zeni/zeni2.css" type="text/css"/>
+     <script language="javascript" type="text/javascript" src="${staticFileServer}resources/js/custom/Todoalertshovercard.js"></script>
+ 
+
 </head>
  <style>
 	.ui-progressbar .ui-progressbar-value { background-image: url(images/pbar-ani.gif); }	
@@ -94,13 +89,13 @@ parent.jQuery.fancybox.close();
 	 <script type="text/javascript">
 	 $(document).ready(function() {
 		 var images = new Array();
-			images[0] = "<c:url  value='../resources/images/icons/urgent.png' />";
-			images[1] = "<c:url  value='../resources/images/icons/warning.png' />";
-			images[2] = "<c:url  value='../resources/images/icons/info.png' />";
-			images[3] = "<c:url  value='../resources/images/icons/info.png' />";
-			images[4] = "<c:url  value='../resources/images/icons/info.png' />";
-			images[5] = "<c:url  value='../resources/images/icons/info.png' />";
-			images[6] = "<c:url  value='../resources/images/icons/info.png' />";
+			images[0] = "<c:url  value='${staticFileServer}resources/images/icons/urgent.png' />";
+			images[1] = "<c:url  value='${staticFileServer}resources/images/icons/warning.png' />";
+			images[2] = "<c:url  value='${staticFileServer}resources/images/icons/info.png' />";
+			images[3] = "<c:url  value='${staticFileServer}resources/images/icons/info.png' />";
+			images[4] = "<c:url  value='${staticFileServer}resources/images/icons/info.png' />";
+			images[5] = "<c:url  value='${staticFileServer}resources/images/icons/info.png' />";
+			images[6] = "<c:url  value='${staticFileServer}resources/images/icons/info.png' />";
 	 	$.ajax({
 	 		  	type: 'GET',
 	 			url: '${showAlertUrl}',

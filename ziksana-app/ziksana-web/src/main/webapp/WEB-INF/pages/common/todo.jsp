@@ -2,23 +2,29 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<script type="text/javascript" src="../resources/js/tree/jquery-1.8.0.min.js"></script>
-<link href="../resources/css/styles.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/type-setting.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/effects.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/nav.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${staticFileServer}resources/js/tree/jquery-1.8.0.min.js"></script>
+<link href="${staticFileServer}resources/css/styles.css" rel="stylesheet" type="text/css">
+	<link href="${staticFileServer}resources/css/type-setting.css" rel="stylesheet" type="text/css">
+	<link href="${staticFileServer}resources/css/effects.css" rel="stylesheet" type="text/css">
+	<link href="${staticFileServer}resources/css/nav.css" rel="stylesheet" type="text/css">
    	
-	 <script src="../resources/js/jquery-1.7.2.min.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.core.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.widget.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.button.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.progressbar.js"></script>
-	 <script src="../resources/js/ui/jquery.ui.tabs.js"></script>
-     <script src="../resources/js/jquery.hovercard.js"></script>
-     <script src="../resources/js/todo.js" type="text/javascript"></script> 
-      <link rel="stylesheet" href="../resources/css/zCss.css" type="text/css"/>
-	 <link rel="stylesheet" href="../resources/css/zeni/zeni2.css" type="text/css"/>
-     <script language="javascript" type="text/javascript" src="../resources/js/custom/Todoalertshovercard.js"></script>
+   	<script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-1.8.3.js"></script>
+ <script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+ <link href="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css"/>
+ 
+   	
+   	
+ 	
+	
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.widget.js"></script>
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.button.js"></script>
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.progressbar.js"></script>
+	 <script src="${staticFileServer}resources/js/ui/jquery.ui.tabs.js"></script>
+     <script src="${staticFileServer}resources/js/jquery.hovercard.js"></script>
+     <script src="${staticFileServer}resources/js/todo.js" type="text/javascript"></script> 
+      <link rel="stylesheet" href="${staticFileServer}resources/css/zCss.css" type="text/css"/>
+	 <link rel="stylesheet" href="${staticFileServer}resources/css/zeni/zeni2.css" type="text/css"/>
+     <script language="javascript" type="text/javascript" src="${staticFileServer}resources/js/custom/Todoalertshovercard.js"></script>
 <html>
 
 <head>
@@ -107,7 +113,7 @@ function updateTodo()
 	 
  }
  </script>
- <c:url var="closeicon" value="/resources/images/icons/close-icon.png" />
+ <c:url var="closeicon" value="${staticFileServer}resources/images/icons/close-icon.png" />
  <c:url var="deleteTodoUrl" value="/ztodo/deletetodo/" />
 <script type="text/javascript">
 
@@ -145,7 +151,7 @@ function closeit(){
  <!-- TODO LIst -->
   <c:url var="todocategory" value="/ztodo/gettodocategory" />
  <c:url var="showmoretodo" value="/ztodo/showalltodo" />
- <c:url var="todo" value="../resources/images/icons/todo.png" />
+ <c:url var="todo" value="${staticFileServer}resources/images/icons/todo.png" />
   <script type="text/javascript">
 $(document).ready(function() {
 	//ADD NEW CATEGORY
