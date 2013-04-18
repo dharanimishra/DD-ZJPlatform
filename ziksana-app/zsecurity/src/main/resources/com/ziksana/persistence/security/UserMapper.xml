@@ -12,7 +12,9 @@
 		memmember.FirstName as FirstName,
 		memmember.LastName as LastName,
 		memmember.designation as Designation,
-
+		memmember.userId as userId,
+		memmember.active as active,
+		memmember.primaryEmailId,
 		memmember.PicturePath as PicturePath,
 		Role.LookupValue as RoleType,
 		Rating.LookupValue as Rating
@@ -80,6 +82,9 @@
 		<result property="roleType" column="RoleType"/>
 		<result property="designation" column="Designation"/>
 		<result property="picturePath" column="PicturePath"/>
+		<result property="userId" column="userId"/>
+		<result property="primaryEmailId" column="primaryEmailId"/>
+		<result property="active" column="active"/>
 		<result property="rating" column="Rating"/>
 		<collection property="memberPersonas"  ofType="com.ziksana.domain.member.MemberPersona" >
 		         <result property="memberRoleId" column="MemberRoleId"/>

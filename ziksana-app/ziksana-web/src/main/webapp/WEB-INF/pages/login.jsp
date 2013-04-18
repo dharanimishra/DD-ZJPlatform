@@ -392,7 +392,7 @@ box-shadow: 1px 2px 5px #000000;"/>
 						<!-- <input type="submit" class="btnLogin" value="Register" tabindex="4">-->
 						<div class="clearfix"></div>
 						<a href="#" class="rLink" tabindex="5" style="margin-top: 10px;float:left;margin-left:9px;">Connect with Ziksana </a>
-						<a href="/ziksana-web/resources/html/register.html" class="rLink" tabindex="5" style="margin-top: 10px;">Can't access your account?</a>
+						<a href="/ziksana-web/secure/troublelogginin" class="rLink" tabindex="5" style="margin-top: 10px;">Can't access your account?</a>
 						<!-- </footer>-->
 					</form>
 

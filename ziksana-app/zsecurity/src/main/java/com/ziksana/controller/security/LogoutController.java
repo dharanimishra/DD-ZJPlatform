@@ -32,7 +32,7 @@ public class LogoutController {
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				LOGGER.info(" SESSION IS INVALIDATED");
-				// session.invalidate();
+				session.invalidate();
 
 				Cookie[] cookies = request.getCookies();
 
@@ -65,7 +65,7 @@ public class LogoutController {
 			LOGGER.error(exception.getMessage(), exception);
 		}
 
-		ModelAndView modelAndView = new ModelAndView("redirect:/secure/home2");
+		ModelAndView modelAndView = new ModelAndView("redirect:/login");
 
 		return modelAndView;
 

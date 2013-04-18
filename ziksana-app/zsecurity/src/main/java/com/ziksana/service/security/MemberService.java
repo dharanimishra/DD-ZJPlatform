@@ -14,4 +14,5 @@ public interface MemberService {
 	public Member getMemberByUser(String userName);
 	
 	public Member getMemberByMemberId(int memberId);
+
 }

@@ -50,22 +50,24 @@ public class AuthenticationFilter implements Filter {
 				SecurityTokenUtil.setToken(token);
 			}
 
-			// filterChain.doFilter(servletRequest, servletResponse);
-
-			// return;
-
 		}
 
 		else if (sessionToken == null) {
 
-			// Need to redirect to login page
+			// Need to redirect to login page if user wants to access unsecured uri redirect Trouble logging in page
 			if (!url.endsWith(LOGIN_URL)) {
-
-				httpResponse.sendRedirect(httpRequest.getScheme() + "://"
-						+ httpRequest.getServerName() + ":"
-						+ httpRequest.getServerPort()
-						+ httpRequest.getContextPath() + "/" + LOGIN_URL);
-				return;
+					if(shouldExclude(servletRequest)){
+						
+						filterChain.doFilter(servletRequest, servletResponse);
+						
+					}else {
+						
+						httpResponse.sendRedirect(httpRequest.getScheme() + "://"
+								+ httpRequest.getServerName() + ":"
+								+ httpRequest.getServerPort()
+								+ httpRequest.getContextPath() + "/" + LOGIN_URL);
+						return;
+					}
 			}
 
 			// return;
@@ -82,7 +84,7 @@ public class AuthenticationFilter implements Filter {
 	 * @see javax.servlet.Filter#init(javax.servlet.FilterConfig)
 	 */
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -92,7 +94,7 @@ public class AuthenticationFilter implements Filter {
 	 * @see javax.servlet.Filter#destroy()
 	 */
 	public void destroy() {
-		// TODO Auto-generated method stub
+
 
 	}
 
@@ -109,7 +111,6 @@ public class AuthenticationFilter implements Filter {
 			return null;
 		}
 		for (Cookie cookie : cookies) {
-			String path = cookie.getPath();
 			if (cookie.getName().equals(COOKIE_NAME)) {
 				return cookie.getValue();
 
@@ -119,4 +120,11 @@ public class AuthenticationFilter implements Filter {
 		return null;
 	}
 
+	private boolean shouldExclude(ServletRequest req) {
+        if(req instanceof HttpServletRequest) {
+            HttpServletRequest httpRequest = (HttpServletRequest) req;
+            return (httpRequest.getRequestURI().contains("unsecure"));
+        }
+        return false;
+   }
 }

@@ -1,0 +1,33 @@
+.alertclass {
+    background-color: skyblue;
+    border-bottom: 2px solid #FFFFFF;
+    height: 30px;
+   }
+   .alertinfo-category
+{
+ height:14px; 
+ border:1px solid rgba(0, 68, 119, 0.28); 
+margin-left:10px; 
+padding:2px; 
+font-family:arial; 
+font-size:10px; 
+color:rgba(27, 110, 172, 0.94);
+ width:65px; 
+ font-weight:bold;
+-webkit-border-radius: 2px;
+border-radius: 2px;	
+background-color:#F7F7F7;
+cursor: pointer;
+display:inline;
+}
+ .alertinfo-description
+{
+
+margin-left:3px; 
+
+font-family:arial; 
+font-size:10px; 
+color:rgba(27, 110, 172, 0.94);
+ 
+display:inline;
+}
