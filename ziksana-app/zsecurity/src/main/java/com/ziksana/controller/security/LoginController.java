@@ -30,7 +30,6 @@ import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.security.AuthenticationService;
 import com.ziksana.service.security.MediaService;
 import com.ziksana.service.security.MemberService;
-import com.ziksana.service.security.ProfileService;
 
 @Controller
 public class LoginController {
@@ -43,12 +42,9 @@ public class LoginController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
 	@Autowired
 	private MediaService mediaService;
-	
-	@Autowired
-	private ProfileService profileService;
 
 	@RequestMapping(value = "/login")
 	public ModelAndView login(HttpServletRequest request,
@@ -59,7 +55,7 @@ public class LoginController {
 		String password = request.getParameter("password");
 
 		logger.debug(" Username is " + username);
-	
+
 		ModelAndView mv = null;
 		try {
 			if (username == null && password == null) {
@@ -76,14 +72,16 @@ public class LoginController {
 						username, password);
 
 				if (userAuthenticated) {
-					/*Member member = memberService.getMemberByUser(username);
-					int isUserProfileUpdated = profileService.isProfileCompleted(member.getMemberId());
-					if(isUserProfileUpdated == 1){
-					session.setAttribute("userName", username);
-					mv = new ModelAndView("redirect:/secure/homepage");
-					}else{
-						mv = new ModelAndView("redirect:/profile/profilepage"+member.getMemberId()+"");
-					}*/
+					/*
+					 * Member member = memberService.getMemberByUser(username);
+					 * int isUserProfileUpdated =
+					 * profileService.isProfileCompleted(member.getMemberId());
+					 * if(isUserProfileUpdated == 1){
+					 * session.setAttribute("userName", username); mv = new
+					 * ModelAndView("redirect:/secure/homepage"); }else{ mv =
+					 * new ModelAndView("redirect:/profile/profilepage"+member.
+					 * getMemberId()+""); }
+					 */
 					logger.info("USER AUTHENTICATED");
 					// create user session and put the secure token there..
 					// create cookie and send it to the client
@@ -124,12 +122,13 @@ public class LoginController {
 							memberPersonaId, roleType);
 
 					// Need to add the token to the session
-					//HttpSession session = request.getSession(true);
+					// HttpSession session = request.getSession(true);
 					session.setAttribute("TOKEN", token);
-					session.setAttribute("staticFileServer", mediaService.getMediaContents().getStaticFileServer());
+					session.setAttribute("staticFileServer", mediaService
+							.getMediaContents().getStaticFileServer());
 					// Need to create cookie
 					response.addCookie(newSessionCookie(request, username));
-				
+
 					session.setAttribute("member", member);
 					mv = new ModelAndView("redirect:/secure/homepage");
 					SecurityTokenUtil.unset();
@@ -139,8 +138,8 @@ public class LoginController {
 					// redirect to the login page with error message
 					logger.info(" User is not authenticated");
 					request.setAttribute("loginResult", "true");
-					 mv = new ModelAndView("masterlogin");
-					 mv.addObject("pageTitle", "Login");
+					mv = new ModelAndView("masterlogin");
+					mv.addObject("pageTitle", "Login");
 					int loginAttempt;
 					if (session.getAttribute("loginCount") == null) {
 						session.setAttribute("loginCount", 0);
@@ -161,7 +160,9 @@ public class LoginController {
 							session.invalidate();
 						} else {
 
-							mv.addObject("accountLocked","Your account has temprorily locked ,please contact <a href=\"register.jsp\">Administrator</a>");
+							mv.addObject(
+									"accountLocked",
+									"Your account has temprorily locked ,please contact <a href=\"register.jsp\">Administrator</a>");
 						}
 
 					} else {
@@ -171,7 +172,7 @@ public class LoginController {
 								+ loginAttempt
 								+ ". Invalid username or password.");
 					}
-		            session.setAttribute("loginCount",loginAttempt);
+					session.setAttribute("loginCount", loginAttempt);
 					return mv;
 				}
 			}
