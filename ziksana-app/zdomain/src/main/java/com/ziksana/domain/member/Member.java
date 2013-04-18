@@ -99,6 +99,38 @@ public class Member implements Serializable {
 	
 	private Integer rating;
 	
+	private String primaryEmailId;
+	
+	/**
+	 * @return the primaryEmailId
+	 */
+	public String getPrimaryEmailId() {
+		return primaryEmailId;
+	}
+
+	/**
+	 * @param primaryEmailId the primaryEmailId to set
+	 */
+	public void setPrimaryEmailId(String primaryEmailId) {
+		this.primaryEmailId = primaryEmailId;
+	}
+
+	/**
+	 * @return the userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	private String userId;
+	
 	/**
 	 * This method returns the value of the database column memmember.ID
 	 * 
