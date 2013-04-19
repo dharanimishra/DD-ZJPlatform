@@ -56,7 +56,7 @@ public class HomeController {
 	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView homePage(HttpServletRequest request, HttpServletResponse response) {
 
-		ModelAndView modelAndView = new ModelAndView("masterhome");
+		ModelAndView modelAndView = new ModelAndView("homepagelayout");
 		/*modelAndView.addObject("pageTitle", "Home");
 		try{
 			// Need to add the token to the session

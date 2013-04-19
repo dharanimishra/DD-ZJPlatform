@@ -26,9 +26,9 @@ function isSessionExpired(){
             	<div class="topheader"> 
           <!--logo container-->
          
-          	<c:url var="imageUrl_header1" value="/resources/images/ziksana_button_logo.png" />
+          	<c:url var="imageUrl_header1" value="/ziksana-web/resources/images/logo_ziksana_100.png" />
             <c:url var="launcherPage" value="/secure/launcher"/>
-            <p><a><img data-launcher data-launchpage="${launcherPage}" src="${imageUrl_header1}" width=120px height=120px style="position: absolute;top:3px;  left:30px; margin-left:0px;  "/></a></p>
+            <p><a><img data-launcher data-launchpage="${launcherPage}" src="${imageUrl_header1}"  style="margin-left: 0px; position: absolute; z-index: 1; top: -12px; left: 175px;"/></a></p>
         	<!-- <header class="bottom-box-shadow bckground-wihte"> -->
 			
          

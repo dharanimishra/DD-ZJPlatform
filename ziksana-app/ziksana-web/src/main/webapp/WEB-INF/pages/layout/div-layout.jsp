@@ -18,7 +18,7 @@
 		<header class="bottom-box-shadow bckground-wihte">
 
 			<div class="topheader">
-				<p><a><img data-launcher data-launchpage="/ziksana-web/secure/launcher" src="/ziksana-web/resources/images/ziksana_button_logo.png" width=120px height=120px style="position: absolute; top: 3px; left: 30px; margin-left: 0px;" /></a></p>
+				<p><a><img data-launcher data-launchpage="/ziksana-web/secure/launcher" src="/ziksana-web/resources/images/logo_ziksana_100.png" style="margin-left: 0px; position: absolute; z-index: 1; top: -12px; left: 175px;" /></a></p>
 			</div>
 
 			<tiles:insertAttribute name="main_menu" />
@@ -42,7 +42,7 @@
 
 	</div>
 
-	<div id="copyright">&copy; 2013 Ziksana.</div>
+
 </body>
 <!-- ${pageContext.session.maxInactiveInterval}; -->
 <script type="text/javascript">

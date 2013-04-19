@@ -7,15 +7,15 @@
                       <ul>                
                 		
 
-                        <li><a id="homepage_nav" href="/ziksana-web/secure/homepage" class="current">Home</a><div class="nav-line"></div></li>
-                        <li><a id="myprograms_nav" href="/ziksana-web/zcourse/myprograms">Programs</a><div class="nav-line"></div></li>
+                        <li><a id="homepage_nav" href="/ziksana-web/secure/homepage" class="current">Home</a></li>
+                        <li><a id="myprograms_nav" href="/ziksana-web/zcourse/myprograms">Programs</a></li>
 					<c:if test="${member.roleType eq 'EDUCATOR'}">
-                        <li><a href="#">Students</a><div class="nav-line"></div></li>
+                        <li><a href="#">Students</a></li>
                     </c:if>
                      <c:if test="${member.roleType eq 'LEARNER'}">
-                        <li><a href="#">Performance</a><div class="nav-line"></div></li>
+                        <li><a href="#">Performance</a></li>
                     </c:if>
-                    	<li><a href="#" style="margin-left:-10px;">&nbsp;&nbsp;Locker</a></li>
+                    	<li><a href="#">&nbsp;&nbsp;Locker</a></li>
 					</ul>
                     </div>
                     <!--End menu-->

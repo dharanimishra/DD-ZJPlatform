@@ -28,7 +28,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	background-image: url(../images/background-pattern.jpg);
+	background: skyblue !important;
 }
 ol, ul {
 	list-style: none;
@@ -54,7 +54,10 @@ a {cursor: pointer; color: #2277BB;}
 
 
 #wrapper {
-
+  background: none repeat scroll 0 0 white;
+  display: table;
+  margin: 3em auto;
+  width: 995px;
 }
 
 
@@ -99,7 +102,7 @@ header {
 
 .status-container {
 	float: right;
-	margin-top: 20px
+	margin-top: 6px
 }
 #status-icons {
 	float: left;
@@ -130,21 +133,21 @@ header {
 
 
 nav {
-	width: 1000px;
-	clear: both;
-	margin-right: auto;
-	margin-left: auto;
-	height: 70px;
-	position: relative;
-	
+  background: none repeat scroll 0 0 steelblue;
+  clear: both;
+  color: white;
+  display: block;
+  height: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 1000px;
 }
 .menu {
-  float: right;
-  height: 33px;
-  left: 0;
+  left: -62px;
   position: absolute;
-  top: 27px;
-  width: 625px;
+  top: 100px;
+  width: 62px;
 }
 .searchpanel {
 	width: 220px;

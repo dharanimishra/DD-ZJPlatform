@@ -60,8 +60,7 @@ public class LoginController {
 		try {
 			if (username == null && password == null) {
 
-				mv = new ModelAndView("masterlogin");
-				mv.addObject("pageTitle", "Login");
+				mv = new ModelAndView("login");
 				return mv;
 				// mv.addObject("applicationTitle", applicationTitle);
 			} else {

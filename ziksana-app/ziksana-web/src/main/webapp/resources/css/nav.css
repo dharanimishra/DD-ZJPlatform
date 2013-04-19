@@ -6,26 +6,26 @@ a {
 }
 .menu ul li {
 	display: inline-block;
+	text-align: center;
 }
 
 .menu ul li a {
-  color: #666666;
+  border-radius: 10px 0 0 10px;
+  color: white;
   display: inline-block;
   font-family: 'Signika',sans-serif;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
-  height: 50px;
-  line-height: 14px;
-  padding: 10px 0.5em 0;
+  padding: 0.25em;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
+  min-height: 42px;
+  margin-bottom: .5em;
 }
 
 .menu ul li a.current {
-	background-image: url(../images/nav-arow.png);
-	background-repeat: no-repeat;
-	background-position: center 43px;
+	background: white;
 	color: #6D9EC5;
 }
 .menu ul li a:hover {
