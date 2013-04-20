@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <meta>
@@ -286,9 +287,14 @@
 <body style="background-image: none;">
 
 	<div class="loginwrapper">
-
+     
 		<div class="loginhead">
- 					<div style="font-size: 12px;color: red;text-align: center;" id="timeoutMessage">${timeout}</div>
+		
+ <span style="float:right; color:red; font-weight:bold; padding:30px;"> <a style="color:#ffffff;" href="?siteLanguage=en_US">English</a>|<a style="color:#ffffff;"  href="?siteLanguage=fr_FR">French</a></span>
+    
+ 
+ 
+ 					<div style="font-size: 12px;color: red;text-align: center;" id="timeoutMessage"></div>
 <!-- 			<div class="zenimainlogo">
 				<img src="resources/images/Ziksana.jpg" alt="Ziksana" width="116" height="112" border="3" style="border:3px solid #F6902B; background-color:#FFFFFF; padding:10px; -moz-box-shadow: 1px 2px 5px #000000;
 -webkit-box-shadow: 1px 2px 5px #000000;
@@ -375,11 +381,11 @@ box-shadow: 1px 2px 5px #000000;"/>
 					<form name="loginfrm" class="box login" method="POST"
 						action="/ziksana-web/login">
 						<fieldset class="boxBody">
-							<label>Username</label> <input type="text" autofocus="autofocus" name="username"
+							<label><fmt:message key="login.username"/></label> <input type="text" autofocus="autofocus" name="username"
 								tabindex="1" placeholder="Enter your Username">
 							<div id="uerror"></div>
 							<label><a href="/ziksana-web/resources/html/forgotpassword.html" class="rLink" tabindex="5">Forgot your password?
-									</a>Password</label> <input type="password" name="password"
+									</a><fmt:message key="login.password"/></label> <input type="password" name="password"
 								tabindex="2" placeholder="Enter your Password">
 							<div id="perror"></div>
 						</fieldset>
@@ -431,4 +437,21 @@ box-shadow: 1px 2px 5px #000000;"/>
 	<!--end of loginwrapper-->
 
 </body>
+<script type="text/javascript" charset="UTF-8">
+    $(document).ready(function () {
+
+        // Populate dropdown based on cookie language
+        var language = $.cookies.get('org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE');
+        $('#language')
+                .val(language)
+                .change(function () {
+                    var newHref = window.location.href;
+                    if (newHref.indexOf('?siteLanguage') > 0) {
+                        newHref = newHref.substring(0, newHref.indexOf('?siteLanguage'));
+                    }
+                    newHref += '?siteLanguage=' + $('#language').val();
+                    window.location.href = newHref;
+                });
+    });
+</script>
 </html>

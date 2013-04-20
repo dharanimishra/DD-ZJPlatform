@@ -1,5 +1,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page session="true"%>
 <!--slogen-->
 <style>
@@ -15,8 +17,7 @@
 </style>
 <body>
 <div class="slogen-container">
-	<span class="text-size-px20 gray-777 bold font-Signika">Welcome
-		back <c:out value="${member.firstName}" />!<br> <c:url
+	<span class="text-size-px20 gray-777 bold font-Signika"><spring:message code="welcome.message"/> <c:out value="${member.firstName}" />!<br> <c:url
 			var="htmlUrl_header1" value="/resources/popup/z-zini.html" /> <%-- A few <span><a href="${htmlUrl_header1}"
 			class=" text-size-px20 font-Signika">recommendations</a></span> for you to
 		save time and meet your goals today
