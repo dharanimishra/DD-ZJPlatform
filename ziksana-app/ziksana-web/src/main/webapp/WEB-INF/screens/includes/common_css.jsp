@@ -14,5 +14,16 @@
  <link rel="stylesheet" href="${staticFileServer}resources/zeni/css/zeni/zeni2.css" />
  <link rel="stylesheet" type="text/css" href="${staticFileServer}resources/jdashboard/jdashboard.css" /> --%>
  
- 
+ <link href="../css/main/styles.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/type-setting.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/effects.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/nav.css" rel="stylesheet" type="text/css"/>
+<link href="../css/main/coursecreationnav.css" rel="stylesheet" type="text/css"/>
+<link href="../css/common/wizard/wizardstylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../css/common/spinner/smartspinner.css" rel="stylesheet" type="text/css"/>
+<link href="../css/common/tags/superbly-tagfield.css" rel="stylesheet" type="text/css"/>
+<link href="../css/common/search/search.css" rel="stylesheet" type="text/css"/> 
+<link href="../css/common/validation/validation.css" rel="stylesheet" type="text/css"/>
+<link href="../js/ui/jquery.fancybox-1.3.4.css" media="screen"  rel="stylesheet" type="text/css" />
+<link href="../js/tree/styles/styleTree.css" rel="stylesheet" type="text/css" /> 
 	

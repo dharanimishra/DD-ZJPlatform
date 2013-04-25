@@ -24,7 +24,6 @@
 	 <!--Ziksana Metro-->
 	<definition name="ziksana-master" template="/WEB-INF/screens/layout/master-layout.jsp">
 		<put-attribute name="master_title" value="Ziksana!"/>
-		
 		<put-attribute name="header" value="/WEB-INF/screens/includes/header.jsp" />
 		<put-attribute name="content" value="" />
 		<put-attribute name="footer" value="/WEB-INF/screens/includes/footer.jsp" />
@@ -44,6 +43,12 @@
 		<put-attribute name="content" value="/WEB-INF/screens/home/home.jsp" />
 
 	</definition>
+	
+	<!-- Metro Course Creation -->
+	<definition name="mastercreatecourse" extends="commonPageLayout">
+		<put-attribute name="master_title" value="Course Creation" />
+		<put-attribute name="body" value="/WEB-INF/screens/courses/definecourse.jsp" />
+	</definition>
 	 
 	 <!--Common Page layout  JQuery 1.7.1 version-->
 	<definition name="commonPageLayout" template="/WEB-INF/pages/layout/div-layout.jsp">
@@ -53,7 +58,7 @@
 		<put-attribute name="common_js" value="/WEB-INF/pages/includes/common_old_js.jsp" />
 		<put-attribute name="page_js" value="" />
 		<put-attribute name="page_class" value="" />
-		<put-attribute name="main_menu" value="/WEB-INF/pages/includes/main_menu.jsp" />
+		<put-attribute name="main_menu" value="/WEB-INF/pages/includes/main_menu.jsp1" />
 		<put-attribute name="slogan" value="" />
 		<put-attribute name="left" value="" />
 		<put-attribute name="body" value="" />

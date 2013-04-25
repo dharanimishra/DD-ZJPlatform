@@ -119,7 +119,7 @@ public class CreateCourseController {
 	@RequestMapping(value = "/ismoduleexists/{courseId}", method = { RequestMethod.GET })
 	public @ResponseBody
 	int isModuleExists(@PathVariable String courseId) {
-		//TODO this method should return Integer
+		// TODO this method should return Integer
 		int isModuleExists = 0;
 		Integer course_id = Integer.parseInt(courseId.split("_")[1]);
 		try {
@@ -140,6 +140,7 @@ public class CreateCourseController {
 		try {
 			mediaServerURL = mediaService.getMediaContents();
 			mv.addObject("ms", mediaServerURL);
+			mv.addObject("pageTitle", "CreateCourse");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
@@ -168,8 +169,8 @@ public class CreateCourseController {
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("ms", mediaServerURL);
 				modelView.addObject("module", isModuleExists);
-			} 
-			//TODO do we need this else?? secondly it can lead to null pointer.
+			}
+			// TODO do we need this else?? secondly it can lead to null pointer.
 			else {
 				mediaServerURL = mediaService.getMediaContents();
 				modelView.addObject("CourseId", course_id);
@@ -277,8 +278,10 @@ public class CreateCourseController {
 				+ CourseExtraCredits + " Course_Duration :" + CourseDuration
 				+ " CourseDurationUnit :" + CourseDurationUnit);
 
-		LOGGER.debug("Class :" + getClass()
-				+ " Method saveCourse :Before courseService CourseStatus.UNDER_CONSTRUCT.getID():" + CourseStatus.UNDER_CONSTRUCT.getID());
+		LOGGER.debug("Class :"
+				+ getClass()
+				+ " Method saveCourse :Before courseService CourseStatus.UNDER_CONSTRUCT.getID():"
+				+ CourseStatus.UNDER_CONSTRUCT.getID());
 		Integer courseId = 0, courseDuration = 0, courseDurationUnit = 1, subjClassificationId = 0, courseIds = 0;
 		CourseJsonResponse json = new CourseJsonResponse();
 
@@ -293,8 +296,7 @@ public class CreateCourseController {
 			if (!"".equals(CourseDurationUnit) && CourseDurationUnit != null) {
 				courseDurationUnit = Integer.parseInt(CourseDurationUnit);
 			}
-			
-			
+
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
@@ -337,7 +339,7 @@ public class CreateCourseController {
 				course.setThumbnailPicturePath(UploadImage);
 				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
 				course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
-				
+
 				course.setAdditionalInfoIndicator(true);
 				course.setIsDelete(false);
 				course.setVersion(1);

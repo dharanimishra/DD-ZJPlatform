@@ -15,7 +15,7 @@
         <ul class="menu">
             <li><a data-tabname="home" href="/home.php"><i class="icon-home"></i> Home</a></li>
             <li>
-                <a data-tabname="courses" href="/courses.php"><i class="icon-stats"></i> Courses</a>
+                <a data-tabname="courses" href="/ziksana-web/zcourse/createcourse"><i class="icon-stats"></i> Courses</a>
             </li>
             <li><a data-tabname="students" href="/students.php"><i class="icon-user-2"></i> Students</a>
             </li>
