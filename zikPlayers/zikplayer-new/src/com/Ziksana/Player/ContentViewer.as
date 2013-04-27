@@ -1,7 +1,8 @@
-package com.Ziksana.Player
+package com.ziksana.player
 {
 	import flash.display.MovieClip;
 	import flash.events.EventDispatcher;
+	import com.ziksana.content.Content;
 	
 	public class ContentViewer extends EventDispatcher
 	{

@@ -1,4 +1,4 @@
-package com.Ziksana.Player
+package com.ziksana.player
 {
 	import flash.display.Bitmap;
 	import flash.display.MovieClip;

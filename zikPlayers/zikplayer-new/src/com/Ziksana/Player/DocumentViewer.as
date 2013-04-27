@@ -1,10 +1,12 @@
-package com.Ziksana.Player
+package com.ziksana.player
 {
 	import flash.display.Bitmap;
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import com.ziksana.content.Content;
+	import com.ziksana.events.CustomEvent;
 
 	public class DocumentViewer extends ContentViewer
 	{
