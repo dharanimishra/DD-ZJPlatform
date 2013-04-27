@@ -1,10 +1,7 @@
 package com.ziksana.controller.security;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,11 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.domain.member.MemberRoleType;
-import com.ziksana.exception.CookieNotCreatedException;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.id.StringZID;
 import com.ziksana.id.ZID;
-import com.ziksana.security.filters.AuthenticationFilter;
 import com.ziksana.security.util.SecurityToken;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.security.MediaService;
@@ -56,12 +51,12 @@ public class HomeController {
 	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView homePage(HttpServletRequest request, HttpServletResponse response) {
 
-		ModelAndView modelAndView = new ModelAndView("homepagelayout");
-		/*modelAndView.addObject("pageTitle", "Home");
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("pageTitle", "Home");
 		try{
 			// Need to add the token to the session
 			HttpSession session = request.getSession(true);
-			logger.info("USER AUTHENTICATED");
+			
 			// create user session and put the secure token there..
 			// create cookie and send it to the client
 
@@ -102,18 +97,18 @@ public class HomeController {
 
 			
 			session.setAttribute("TOKEN", token);
-			session.setAttribute("staticFileServer", mediaService.getMediaContents().getStaticFileServer());
-			// Need to create cookie
-			response.addCookie(newSessionCookie(request, member.getUserId()));
+			
+			
 		
 			session.setAttribute("member", member);
 			modelAndView = new ModelAndView("masterhome");
+			modelAndView.addObject("applicationTitle", "Home");
 			SecurityTokenUtil.unset();
 
 		}
 		catch(ZiksanaException exception){
 			
-		}*/
+		}
 		return modelAndView;
 
 	}

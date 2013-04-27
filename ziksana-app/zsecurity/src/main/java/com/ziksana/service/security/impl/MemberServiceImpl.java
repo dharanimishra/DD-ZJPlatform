@@ -29,13 +29,44 @@ public class MemberServiceImpl implements MemberService {
 	UserMapper userMapper;
 
 	public Member getMemberByUser(String userName) {
-		// TODO Auto-generated method stub
+		
 		return userMapper.getMemberByUser(userName);
 	}
 
 	public Member getMemberByMemberId(int memberId) {
-		// TODO Auto-generated method stub
+		
 		return userMapper.getMemberByMemberId(memberId);
+	}
+
+	public int isMemberAccountLocked(String username) {
+	
+		return userMapper.isMemberAccountLocked(username);
+	}
+
+	public int lockMemberAccountByUserId(String username) {
+	
+		return userMapper.lockMemberAccountByUserId(username);
+	}
+
+	public Member getMemberByEmailId(String emailId) {
+		
+		return userMapper.getMemberByEmailId(emailId);
+	}
+
+	public int updateMemberProfileImage(String profileImage, int memberId) {
+		
+		return userMapper.updateMemberProfileImage(profileImage, memberId);
+		
+	}
+
+	public boolean isUserNameExists(String username) {
+		// TODO Auto-generated method stub
+		return userMapper.isUserNameExists(username);
+	}
+
+	public boolean isPasswordExists(String password) {
+		// TODO Auto-generated method stub
+		return userMapper.isPasswordExists(password);
 	}
 
 }

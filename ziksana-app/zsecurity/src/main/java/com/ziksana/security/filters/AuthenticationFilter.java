@@ -123,7 +123,7 @@ public class AuthenticationFilter implements Filter {
 	private boolean shouldExclude(ServletRequest req) {
         if(req instanceof HttpServletRequest) {
             HttpServletRequest httpRequest = (HttpServletRequest) req;
-            return (httpRequest.getRequestURI().contains("unsecure"));
+            return (httpRequest.getRequestURI().contains("unsecure") || httpRequest.getRequestURI().contains("profile"));
         }
         return false;
    }

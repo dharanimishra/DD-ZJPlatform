@@ -1,4 +1,5 @@
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
          <%@ page session="true"%>
             <nav>
                 <!--menu-->
@@ -19,7 +20,9 @@
 					</ul>
                     </div>
                     <!--End menu-->
+                  
        	   	  		 <div class="status-container">
+       	   	  		
             <div id="status-icons" class="bottom-box-shadow two-bottom-rounded-box">
               <ul>
                 <li><a href="#" class="email-icon" rel="tipsy" title="3 New Messages"><span class="wite-title">3</span></a></li>
@@ -46,3 +49,4 @@
           </div>
    	   	  	  		
                     </nav>
+                    

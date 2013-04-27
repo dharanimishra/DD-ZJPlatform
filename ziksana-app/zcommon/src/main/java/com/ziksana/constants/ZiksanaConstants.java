@@ -63,5 +63,11 @@ public interface ZiksanaConstants {
 	// POLLS ERROR MESSAGE CONSTANTS
 	public static final String POLL_NOT_FOUND = "announcement.not.found";
 	public static final String POLL_DATE_PARSE_ERROR = "poll.date.parse.error";
-
+	
+	//Trouble Logging in ERROR MESSAGE CONSTANTS
+	public static final String PROFILE_SECURITY_ANSWER_ISNULL = "profile.security.answer.error";
+	public static final String USERID_ISNULL = "userid.null";
+	public static final String USERID_WRONG = "userid.wrong";
+	public static final String USERID_VERFICATION_SUCCESS = "userid.verification.success";
+	public static final String SECRET_ANSWER_WRONG = "secret.answer.wrong";
 }

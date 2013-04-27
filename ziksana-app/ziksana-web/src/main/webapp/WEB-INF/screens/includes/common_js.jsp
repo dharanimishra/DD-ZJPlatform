@@ -1,29 +1,22 @@
-<!-- Common JavaScript Library Files -->
 
- <%-- <script src="${staticFileServer}resources/js/jquery-1.7.1.min.js"></script> --%>
-<%--  <script src="${staticFileServer}resources/js/jquery-ui-1.10.2.custom/js/jquery-1.9.1.js"></script>
- <script src="${staticFileServer}resources/js/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
- <link href="${staticFileServer}resources/js/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.css" type="text/css"/> --%>
+<script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
+<script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-ui-1.10.1.custom.min.js'></script>
+<script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-migrate-1.1.1.min.js'></script>
+<script type='text/javascript' src='/ziksana-web/resources/js/custom/respond.min.js'></script>
+<script type='text/javascript' src='/ziksana-web/resources/js/lib/ckeditor/ckeditor.js'></script>
+<script type='text/javascript' src="/ziksana-web/resources/js/lib/uniform/jquery.uniform.min.js"></script>
+<script type='text/javascript' src='/ziksana-web/resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
+<script type='text/javascript' src="/ziksana-web/resources/js/lib/select/select2.min.js"></script>
+<script type='text/javascript' src="/ziksana-web/resources/js/lib/plupload/previewupload.js"></script> 
+<script type='text/javascript' src='/ziksana-web/resources/js/custom/plugins.js'></script>
+<script type='text/javascript' src='/ziksana-web/resources/js/lib/slider/fwslider.js'></script>
+<script type='text/javascript' src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
+
   
- <script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-1.8.3.js"></script>
- <script src="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
- <link href="${staticFileServer}resources/js/jquery-ui-1.9.2.custom/css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css"/>
+ <script src="/ziksana-web/resources/js/jquery-ui-1.9.2.custom/js/jquery-1.8.3.js"></script>
+ <script src="/ziksana-web/resources/js/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
  
-<!--  jQuery Plugins -->
-<script src="${staticFileServer}resources/js/ui/jquery.mousewheel-3.0.4.pack.js"></script>
-<script type="text/javascript" src="${staticFileServer}resources/fancybox/jquery.fancybox.js"></script>
 
-<script src="${staticFileServer}resources/js/jquery.tipsy.js"></script>
-<script src="${staticFileServer}resources/js/ziksana/ckeditor/ckeditor.js"></script>
-<script src="${staticFileServer}resources/js/jquery_confirm/jquery.confirm.js"></script>
-<script src="${staticFileServer}resources/js/custom/jquery.uploadify-3.1.min.js"></script>
-<script src="${staticFileServer}resources/js/spinner/smartspinner.js"></script>
-<script src="${staticFileServer}resources/js/ui/jquery.raty.min.js"></script>    
-<script src="${staticFileServer}resources/js/dropdown/hover-dropdown.min.js"></script>
-<script src="${staticFileServer}resources/js/dropdown/tiwtter.js"></script>
-<script type="text/javascript" src="${staticFileServer}resources/jdashboard/jdashboard.min.js"></script>
+<script src="/ziksana-web/resources/js/jquery_confirm/jquery.confirm.js"></script>
+<script src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
 
-<!--  Common Ziksana-Specific JS Files -->
-<script src="${staticFileServer}resources/js/custom/z_plugins.js"></script>
-<script src="${staticFileServer}resources/js/custom/z_common.js"></script>
-<script src="${staticFileServer}resources/js/custom.js"></script>

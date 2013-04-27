@@ -373,7 +373,12 @@ box-shadow: 1px 2px 5px #000000;"/>
 									&& ((String) request.getAttribute("loginResult"))
 											.equals("true")) {
 						%>
+						<c:if test="${accountLocked !=null}">
+						<p ><c:out value="${accountLocked}"></c:out><a href="/unsecure/admin/contactadminstrator#">&nbsp;Administrator</a></p>
+						</c:if>		
+						<c:if test="${accountLocked ==null}">
 						<p style="color:#d14836;">Login Failed. Please try again.</p>
+						</c:if>
 						<%
 							}
 						%>
@@ -392,7 +397,7 @@ box-shadow: 1px 2px 5px #000000;"/>
 						<!--	<footer>-->
 
 						<input type="submit" id="btnloginsecurity" class="btnLogin"
-							value="Login" tabindex="4"> <label><input
+							value="<fmt:message key="login.button"/>" tabindex="4"> <label><input
 							type="checkbox" tabindex="3"><span style="color: #27b;">Stay signed in </span></label>
 
 						<!-- <input type="submit" class="btnLogin" value="Register" tabindex="4">-->

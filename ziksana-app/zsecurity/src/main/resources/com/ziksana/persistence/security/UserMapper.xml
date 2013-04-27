@@ -7,6 +7,63 @@
 		parameterType="java.lang.String">
 
 		select 
+ 		memmember.ID as ID,
+		memmemberrole.ID as MemberRoleId,
+		memmember.FirstName as FirstName,
+		memmember.LastName as LastName,
+		memmember.designation as Designation,
+		memmember.primaryEmailId as primaryEmailId,
+		memmember.userId as userId,
+		memmember.active as active,
+		memmember.primaryEmailId,
+		memmember.PicturePath as PicturePath,
+		Role.LookupValue as RoleType,
+		Rating.LookupValue as Rating
+		from 
+		memmember,
+		memmemberrole,
+		secmembercredential,
+		
+		
+			(
+		select
+		v.LookupValueId,
+		v.LookupValue
+		from
+		utllookup l join
+		utllookupvalue v on
+		l.LookupId=v.LookupId
+		where
+		l.CategoryName='Role Type'
+
+		)Role,
+		(
+		select
+		v.LookupValueId,
+		v.LookupValue
+		from
+		utllookup l join
+		utllookupvalue v on
+		l.LookupId=v.LookupId
+		where
+		l.CategoryName='Rating'
+
+		)Rating
+		
+		WHERE
+		memmember.ID=secmembercredential.MemberId and
+		memmember.ID=memmemberrole.memberId and
+		memmemberrole.RoleType=Role.LookupValueId and
+		memmember.rating = Rating.LookupValueId and
+		secmembercredential.UserName=#{userName}
+		
+	</select>
+	
+	
+	<select id="getMemberByEmailId" resultMap="memberResultMap"
+		parameterType="java.lang.String">
+
+		select 
  		memmember.ID as MemberId,
 		memmemberrole.ID as MemberRoleId,
 		memmember.FirstName as FirstName,
@@ -54,10 +111,9 @@
 		memmember.ID=memmemberrole.memberId and
 		memmemberrole.RoleType=Role.LookupValueId and
 		memmember.rating = Rating.LookupValueId and
-		secmembercredential.UserName=#{userName}
+		memmember.primaryEmailId==#{emailId}
 		
 	</select>
-
 	<select id="getMemberByMemberId" resultMap="memberResultMap"
 		parameterType="java.lang.String">
 
@@ -74,9 +130,46 @@
 
 
 	</select>
-
+	<select id="isMemberAccountLocked" resultType="java.lang.Integer" parameterType="String">
+			select active from memmember where userId=#{username}
+	</select>
+	<update id="lockMemberAccountByUserId" parameterType="java.lang.String">
+		update memmember		
+		<set>
+			active=1
+		</set>
+		where userId=#{username}
+	</update>
+	
+	<update id="updateMemberProfileImage"  parameterType="map">
+	update memmember		
+		<set>
+			PicturePath=#{profileImage}
+		</set>
+		where ID=#{memberId}
+	</update>
+	
+	<select id="getUserPassword" resultType="java.lang.String" parameterType="String">
+		select password from secmembercredential where userName=#{userId}
+	</select>
+	
+	<update id="updateSecMemberCredentional" parameterType="map">
+		update secmembercredential		
+		<set>
+			password=#{password}
+		</set>
+		where userId=#{userId}
+	</update>
+	
+	<select id="isUserNameExists" resultType="java.lang.Boolean" parameterType="String">
+		select count(*) from secmembercredential where userName=#{username}
+	</select>
+	<select id="isPasswordExists" resultType="java.lang.Boolean" parameterType="String">
+		select count(*) from secmembercredential where password=#{password}
+	</select>
+	
 	<resultMap id="memberResultMap" type="com.ziksana.domain.member.Member">
-		<result property="memberId" column="MemberId" />
+		<result property="memberId" column="ID" />
 		<result property="firstName" column="FirstName" />
 		<result property="lastName" column="LastName" />
 		<result property="roleType" column="RoleType"/>

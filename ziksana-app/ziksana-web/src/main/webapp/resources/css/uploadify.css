@@ -22,6 +22,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 		left top,
 		color-stop(0, #2F96B4),
 		color-stop(1, #49AFCD)
+		
 	);
 	background-position: center top;
 	background-repeat: no-repeat;
@@ -34,6 +35,9 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	text-align: center;
 	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
 	width: 100%;
+	margin-left:35px;
+	margin-top:8px;
+	
 }
 .uploadify:hover .uploadify-button {
 	background-color: #6ab7cd;
@@ -92,4 +96,4 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	width: 1px;
 }
 
-.fileupload .swfupload {left: 0; top: 2px; cursor:poniter;} 
+.fileupload .swfupload {left: 8; top: 12px; cursor:poniter;} 

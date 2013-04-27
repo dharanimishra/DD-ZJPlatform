@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.security.TroubleLoginMapper">
+
+	<select id="isUserIdExists" resultType="java.lang.Boolean" parameterType="String">
+		select count(*) from memmember where userId = #{userId}
+	</select>
+	
+	<select id="isSecretAnswerExists" resultType="java.lang.Boolean" parameterType="map">
+		select count(memberAnswer) from memmemberprofile where memberAnswer=#{answer} and SecurityQuestionText=#{secretQuestion} and memberId =#{memberId}
+	</select>
+	
+</mapper>

@@ -21,12 +21,14 @@
 		<put-attribute name="page_footer" value="/WEB-INF/pages/common/footer.jsp" />
 	 </definition>
 	 
-	 <!--Ziksana Metro-->
+	 <!--Ziksana new Screen Template-->
 	<definition name="ziksana-master" template="/WEB-INF/screens/layout/master-layout.jsp">
 		<put-attribute name="master_title" value="Ziksana!"/>
+		<put-attribute name="common_css" value="/WEB-INF/screens/includes/common_css.jsp"/>
+		<put-attribute name="common_js" value="/WEB-INF/screens/includes/common_js.jsp"/>
 		<put-attribute name="header" value="/WEB-INF/screens/includes/header.jsp" />
 		<put-attribute name="content" value="" />
-		<put-attribute name="footer" value="/WEB-INF/screens/includes/footer.jsp" />
+		<put-attribute name="page_footer" value="/WEB-INF/screens/includes/footer.jsp" />
 	 </definition>
 	 
 	 
@@ -34,6 +36,13 @@
 	<definition name="masterlogin" extends="ziksana-master">
 		<put-attribute name="master_title" value="Login"/>
 		<put-attribute name="content" value="/WEB-INF/screens/home/login.jsp" />
+
+	</definition>
+	
+	 <!--Profile set Page-->
+	<definition name="profilepagesetup" extends="ziksana-master">
+		<put-attribute name="master_title" value="Profile Setup"/>
+		<put-attribute name="content" value="/WEB-INF/screens/account/userprofilepage.jsp" />
 
 	</definition>
 	
