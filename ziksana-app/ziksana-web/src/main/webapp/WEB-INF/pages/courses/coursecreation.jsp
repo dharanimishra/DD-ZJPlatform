@@ -1,30 +1,44 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
+<link href="${staticFileServer}resources/css/main/styles2.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link href="${staticFileServer}resources/css/main/icons.css"
+	rel="stylesheet" type="text/css" />
+<link href="${staticFileServer}resources/css/stylesheets.css"
+	rel="stylesheet" type="text/css" />
 <link
 	href="${staticFileServer}resources/css/common/wizard/wizardstylesheet.css"
 	rel="stylesheet" type="text/css" />
-
 <link
 	href="${staticFileServer}resources/css/common/tags/superbly-tagfield.css"
 	rel="stylesheet" type="text/css" />
 <link href="${staticFileServer}resources/css/common/search/search.css"
 	rel="stylesheet" type="text/css" />
-<link href="${staticFileServer}resources/css/common/validation/validation.css"
+<link
+	href="${staticFileServer}resources/css/common/validation/validation.css"
 	rel="stylesheet" type="text/css" />
 
 <link href="${staticFileServer}resources/js/tree/styles/styleTree.css"
 	rel="stylesheet" type="text/css" />
-<!-- for the layout of the tree -->
-<!--End Body Style sheet-->
- 
+<script type='text/javascript'
+	src='${staticFileServer}resources/js/lib/jquery/jquery-ui-1.10.1.custom.min.js'></script>
+<script type='text/javascript'
+	src='${staticFileServer}resources/js/lib/jquery/jquery-migrate-1.1.1.min.js'></script>
+<script type='text/javascript'
+	src='${staticFileServer}resources/js/custom/respond.min.js'></script>
+<script type='text/javascript'
+	src='${staticFileServer}resources/js/lib/ckeditor/ckeditor.js'></script>
+<script type='text/javascript'
+	src="${staticFileServer}resources/js/lib/uniform/jquery.uniform.min.js"></script>
+<script type='text/javascript'
+	src='${staticFileServer}resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
+<script type='text/javascript'
+	src="${staticFileServer}resources/js/lib/select/select2.min.js"></script>
+<script type='text/javascript'
+	src="${staticFileServer}resources/js/lib/plupload/previewupload.js"></script>
+<script type='text/javascript'
+	src='${staticFileServer}resources/js/custom/plugins.js'></script>
 
-<script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/z_message.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/z_simulation_message.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/Definecoursejson.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/Addmoduledynamicjson.js"></script>
 <script type="text/javascript"
@@ -33,8 +47,7 @@
 	src="${staticFileServer}resources/js/ziksana/jquerylibrary/common/search/search.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/ckeditor/adapters/jquery.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/ziksana/ckeditor/ckeditor.js"></script>
+
 <script src="${staticFileServer}resources/js/custom/z_common.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/coursecreation/define.js"></script>
@@ -63,8 +76,6 @@
 	src="${staticFileServer}resources/js/tree/jqxexpander.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/css/common/tree/menu.css" />
-<link rel="stylesheet" type="text/css"
-	href="${staticFileServer}resources/css/common/tree/menu.css" />
 
 <script
 	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/common.js"></script>
@@ -81,573 +92,429 @@
 <script
 	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/dataprocessor.js"></script>
 
-<!-- End tree -->
 <script
-	src="${staticFileServer}resources/js/ui/jquery.mousewheel-3.0.4.pack.js"
-	type="text/javascript"></script>
-    
-<script src="${staticFileServer}resources/js/custom/libraryfunction.js"
-	type="text/javascript"></script>
-<script
-	src="${staticFileServer}resources/js/ziksana/jquerylibrary/common/tags/superbly-tagfield.min.js"
-	type="text/javascript"></script>
-<script
-	src="${staticFileServer}resources/js/ziksana/validation/jquery.validationen.js"
-	type="text/javascript" charset="utf-8"></script>
-<script
-	src="${staticFileServer}resources/js/ziksana/validation/jquery.validation.js"
-	type="text/javascript" charset="utf-8"></script>
+	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/moduletreedata.js"></script>
 
 
-	
-	
-	<link rel="stylesheet" type="text/css" href="${staticFileServer}resources/spinner/jquery-ui.css" />
-	<link rel="stylesheet" type="text/css" href="${staticFileServer}resources/spinner/ui.spinner.css" />
+<link rel="stylesheet" type="text/css"
+	href="${staticFileServer}resources/spinner/jquery-ui.css" />
+<link rel="stylesheet" type="text/css"
+	href="${staticFileServer}resources/spinner/ui.spinner.css" />
 
-	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
 
 	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>  -->
-	<script type="text/javascript" src="${staticFileServer}resources/spinner/ui.spinner.js"></script>
-	
-
-     <script src="${staticFileServer}resources/js/jquery.fancybox.pack.2.1.3.js"></script>
-	
-	
-	<script type="text/javascript">
-$(document).ready(function(e) {
-$(".containerTableStyle").css('height','400px');
-$(".containerTableStyle").css('overflow','auto');
-self.scrollTo(0,0);
-$('.cduration').spinner({ min: 0, max: 20,  });
-$('#homepage_nav').removeClass('current');
-$('#myprograms_nav').addClass('current');
-});
-</script> 
+<script type="text/javascript"
+	src="${staticFileServer}resources/spinner/ui.spinner.js"></script>
 
 
+<script
+	src="${staticFileServer}resources/js/jquery.fancybox.pack.2.1.3.js"></script>
 
+<div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
+	<div class="Zikbreadcrumb f-l">
 
-	<div id="wrapper">
-		<!--Header Container-->
-		
-		<!--End Header Container-->
-		<div class="sub-nav">
-			<div class="f-l">
-				<strong class="text-size-px12 font-Signika blue"><a
-					href="/ziksana-web/zcourse/myprograms">My Courses </a> </strong>|<strong
-					class="light-gray text-size-px12 font-Signika">Create New Course </strong>
-			</div>
-			<div class="f-r">
-				<a href="#" class="mnuclass" > Manage </a> | <a class="mnuclass"  href="#"> Publish</a>
-				<a class="light-blue"><img width="12" height="12" alt="add more" src="${staticFileServer}resources/images/plus.png">
-				</a>
-			</div>
+		<div class="fifteen columns" id="page-title">
+			<a class="back" href="javascript:history.back()"></a>
+			<p class="page-title">
+				<span style="font-size: 13px; color: #6bbde8;">Home</span> < Create
+				Course
+			</p>
 		</div>
-		<!--Main Content-->
 
-		<section>
-			<div class="section">
-				<div class="col-create" style="width: 1000px;">
-					<div class="for-rounded-box all-box-shadow white-bg">
-						<!--Wizard start-->
-						<div id="page-wrap">
+	</div>
+</div>
 
-							<ul class="breadcrumb" style="padding: 1px;">
-								<c:if test="${module == 0}">
-								<li><a onclick="testModule()"
-									style="width: 100px; text-align: center;"><span
-										class="bcumb">1.</span> Define Course</a></li>
-								</c:if>
-								<c:if test="${module != 0}">
-								<li><a href="/ziksana-web/zcourse/createcourse/${courseId}"
-									style="width: 100px; text-align: center;"><span
-										class="bcumb">1.</span> Define Course</a></li>
-								</c:if>
-								<c:if test="${module == 0}">
-									<li><a onclick="testModule()"
-									style="text-align: center;">2. Organize Content</a></li>
-								</c:if>
-								<c:if test="${module != 0}">
-								<li><a href="/ziksana-web/zcourse/associatecontent/${courseId}"
-									style="text-align: center;">2. Organize Content</a></li>
-								</c:if>
-								<c:if test="${module == 0}">
-								<li><a onclick="testModule()"
-									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								</c:if>
-								<c:if test="${module != 0}">
-								<li><a href="/ziksana-web/zcourse/enrichcontent/${courseId}"
-									style="width: 124px; text-align: center;">3. Enrich Content</a></li>
-								</c:if>
-								<li><a href="/ziksana-web/resources/html/defineassignment.html" style="width: 130px; text-align: center;">4.
-							          Define Assignment</a></li>
-							        <li><a href="/ziksana-web/resources/html/defineplanner.html" style="text-align: center;">5. Define Planner</a></li>
-							        <li><a href="/ziksana-web/resources/html/defineplaybook.html" style="text-align: center;">6. Define Playbook</a></li>
-							        <li><a href="/ziksana-web/resources/html/definesocialize.html" style="width: 120px; text-align: center;">7.
-							          Socialize Course</a></li>
-								<li></li>
-								<!--<li><a href="#">Hidden</a></li>-->
-							</ul>
+<div class="Clearfix"></div>
+<div id="contentpanel">
+	<div id="Wizard_header">
 
-
-
-						</div>
-						<!--Wizard end -->
-
-						<!--start of first Tab -->
-
-<!--  
-						<div class="definecontainer" id="definetab">
-
-							<!--<a class="btn btn-info f-r saveTop" id="topSave" style="margin-right:-200px;" >Save and Continue</a>
-
-							
-						</div>
-						-->
-
-						
-							<input type="hidden" id="courseid" value="${courseId}" /> 
-							<input type="hidden" id="courseLearningComponentId" value="" /> 
-							<input type="hidden" id="parentLearningComponentId" value="" /> 
-							<input type="hidden" id="learningComponentId" value="" />
-						<style>
-#splitter {
-	width: 975px;
-	height: auto;
-}
-
-#jqxTree {
-	height: auto;
-	width: auto;
-}
-</style>
-
-						<div id="gggg" style="font-size: 10px; margin-bottom: 10px;">
-<br>
-							<p class="definehelp all all-box-shadow"
-								style="width: 965px; padding: 5px; font-family: Helvetica; font-weight: bold; font-size: 18px; color: #125F92; height: 30px;">
-								<img src="${staticFileServer}resources/images/icons/helpicon.png"
-									align="left"
-									style="padding-left: 5px; margin-right: 4px; line-height: 28px;" /><b>
-									Define your Course structure </b>
-							</p>
-						
-							<div id="splitter" style='clear: both;'>
-
-								<!-- Start of Tree -->
-								<div id="treeboxbox_tree" style="padding: 5px;"
-									class="dhtmlxTree"
-									setImagePath="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
-								</div>
-								<!-- End of Tree -->
-
-
-								<div id="ContentPanel2">
-																	<!-- Start of Default Instruction -->
-
-									<div id="instruction" style="padding: 10px; height:300px;">
-										<!-- <img src="${staticFileServer}resources/images/instruction.jpg"
-											class="all-box-shadow" alt="instructions"
-											title="Key-Board instruction" width="720"
-											style="border: 1px solid #ccc; padding: 5px; border-radius: 7px; border: 1px solid #ccc;"> -->
-									</div>
-
-
-									<!-- End of Default Instruction -->
-									<!-- Add Module Container -->
-									<div class="Addmodulecontainer" id="Addmodulecontainer">
-										<form id="AddModule" class="form-horizontal">
-											<br />
-											<div class="definehelp"
-												style="width: 680px; font-family: Helvetica; font-weight: bold; color: #125F92;">
-												<img src="${staticFileServer}resources/images/icons/helpicon.png"
-													align="left"
-													style="padding-left: 5px; margin-right: 4px; margin-top: -8px;" />Define
-												a New Course Module
-											</div>
-
-											<!----------------- start of first container --------------->
-											<div class="coursename">
-												<div class="control-group">
-													<label class="control-label labelclass" for="CourseName"
-														style="margin-top: -4px; font-weight: bold;">Course
-														Module :</label>
-													<div class="controls">
-														<input type="text" id="Cmoduletxtbox" tabindex="1"
-															class="defaultvalue validate[required]" autofocus
-															placeholder="Specify the name of the Course Module"
-															style="width: 240px; margin-left: 10px;" />
-													</div>
-
-
-													<br /> <label for="moduledescription" class="labelclass"
-														style="font-weight: bold;">Module Description :</label> 
-														<a class="f-r _richText" id="addmodulerichedit" href="#" style="text-decoration: none;">Rich Text Editor</a> 
-														<a class="f-r _plainText" href="#" style="text-decoration: none;">Plain Text Editor</a>
-	
-													<textarea placeholder="Describe the Module being created" class="_plainTextShow label" tabindex="2" class="defaultvalue" id="Cmoduledesc" cols="90" rows="7" style="resize: none;font-family: Verdana;font-size:13px; color: #666;"></textarea>
-													<br />
-													<div class="_richTextShow">
-														<textarea placeholder="Describe the Course being created" id="Cmoduledescrte" name="editor2" tabindex="2" class="defaultvalue _focus"></textarea>
-													</div>
-												</div>
-
-
-											</div>
-											<!-- end of coursename--->
-
-											<!-- end of control group--->
-
-											<!----------------- start of second container --------------->
-											<div class="secondcontainer">
-												<div class="control-group">
-													<div>
-														<label class="labelclass" style="font-weight: bold;">Subject
-															Area : </label> <label class="labelclass"
-															style="margin-left: 115px; font-weight: bold;">Subject:
-														</label> <label class="labelclass"
-															style="margin-left: 155px; font-weight: bold;">Topic:
-														</label>
-													</div>
-													<div class="moduleselection">
-														<select name="Cmoduleareaddl" id="Cmoduleareaddl" tabindex="3"
-															class="defaultvalue labelclass"
-															style="margin-right: 15px; width: 200px;">
-														<!--  <option value="Select Subject Area">Select Subject Area</option> -->			
-
-														</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl" tabindex="4"
-															class="defaultvalue labelclass"
-															style="margin-right: 15px; width: 200px;">
-														<option value="Select Subject">Select Subject</option>
-
-														</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"  tabindex="5"
-															class="defaultvalue labelclass" style="width: 200px;">
-															<option value="Select Topic">Select Topic</option>
-
-														</select>
-													</div>
-													<!-- end of moduleselection--->
-
-												<div class="coursetags">
-											<br /> 
-											<label class="labelclass" for="coursetags"
-												style="margin-top: -2px; font-weight: bold;">Specify
-												any tags with comma seperator : </label> <input id="Addmoduletag1" type="text" tabindex="6"
-												style="margin-left: 20px;width:250px;height:25px;"></input> <br /> <br />
-											</div>
-												<!--  	<div class="coursetags">
-														<br /> <label class="control-label labelclass"
-															for="moduletags"
-															style="margin-top: -2px; font-weight: bold;">Specify
-															any tags : </label> <input id="Addmoduletag" type="text"></input>
-														<br />
-
-														<!--   <label class="control-label labelclass"
-															for="CourseName" style="margin-top: -4px;">Enter
-															Weight :</label>
-														<div class="controls">
-															<input type="text" id="Cmoduleweight"
-																class="defaultvalue validate[required]"
-																placeholder="Enter the Weight for the Module"
-																style="width: 240px; margin-left: 35px;" />
-														</div> -->
-
-												<!--	</div> -->
-													<!-- end of coursetags--->
-													<br /> 
-													<input type="checkbox" id="addmodulecheckbox" class="labelclass" tabindex="7" value="Institution Logo" /> 
-													<span	class="labelclass"	style="padding-left: 5px; font-weight: bold;">Save as a Learning Object? </span>
-													<div class="courseduration" id="saveassociateobject">
-														<br /> <label for="Learning Duration" class="labelclass"
-															style="font-weight: bold;">Specify the Duration
-															of the Learning Object :</label>
-															
-															<input type="number" tabindex="8" id="Cmoduleduration" value="0" 
-															class="cduration" style="width:40px;"/ > 
-															<select name="Cmoduleunits" tabindex="9" class="defaultvalue validate[required]" id="Cmoduleunits" style="margin-left: 5px;">
-															<option value="1">Weeks</option>
-															<option value="2">Months</option>
-															<option value="3">Days</option>
-														</select>
-														<div class="associateimage" style="margin-top: 30px;">
-
-																<p class="labelclass" style="font-weight: bold;">Associate
-																	an Image for your Course</p>
-																<br /> 
-																<img id="course_thumbnail_image" src="${staticFileServer}resources/images/default-course.jpg" align="left" /> 
-																<input
-																	readonly="readonly" type="hidden" id="Cimageupl"
-																	style="margin-left: 20px;" tabindex="9"/>
-						
-						
-																<div id="thubmnail_upload_message"></div>
-																<div id="loaderText"></div>
-																<input type="file" name="thumbnail_image_file_upload"
-																	id="thumbnail_image_file_upload" tabindex="10" />
-																<div id="status"></div>
-																<script type="text/javascript">
-																	$(function() {
-																		$('#thumbnail_image_file_upload')
-																				.uploadify(
-																						{
-																							'swf' : '${staticFileServer}resources/swf/uploadify.swf',
-																							'queueSizeLimit' : 1,
-																							'successTimeout' : 350,
-																							'uploader' : '${ms.uploadScript}',
-																							'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-																							'fileSizeLimit' : '10024KB',
-																							'onUploadStart' : function(
-																									file) {
-																								$(
-																										'#sbtvalidation')
-																										.attr(
-																												'disabled',
-																												'disabled');
-																							},
-																							//'debug': true,
-																							//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
-																							'onUploadSuccess' : function(
-																									file,
-																									data,
-																									response) {
-																								json_string = data;
-																								data_object = $.parseJSON(json_string);
-																								console.log(data_object);
-																								
-																								if (data_object.Uploaded == 'true') {
-																									$('#Cimageupl').val(data_object.ContentPath);
-																									$('#course_thumbnail_image').attr('src','${ms.url}'+data_object.ContentPath);
-																									$('#thubmnail_upload_message')
-																											.html('<strong>['+ file.name + ']</strong> <a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X]</a>');
-						
-																								} else { //there is an error in the upload process
-						
-																									$(
-																											'#message')
-																											.html(
-																													data_object.message);
-																								}
-																								$(
-																										'#sbtvalidation')
-																										.removeAttr(
-																												'disabled'); //enable submit button
-						
-																							}
-																						// Your options here
-																						});
-																	});
-																	
-																	function remove_uploaded_thumbnail(){
-																		$('#Cimageupl').val('');//clear uploaded file path
-																		$('#thubmnail_upload_message').html('');
-																		$('#course_thumbnail_image').attr('src','${staticFileServer}resources/images/course_default_thumbnail.png');
-												
-																	}
-																</script>
-						
-						
-															</div>
-															<!-- end of associateimage--->
-
-													</div>
-													<!-- end of courseduration--->
-												</div>
-												<!-- end of secondcontainer--->
-											</div>
-											<!-- end of control group--->
-											<div id="tempdiv2"></div>
-											<input type="button" tabindex="11"
-												class="cancellinkdefinecourse btn btn-info"
-												id="Btncmodulecncl" value="Cancel"
-												style="float: right; margin-right: 20px; height:28px; with:80px;" /> <input
-												type="submit"  tabindex="10" class="btn btn-info" id="Btnsbtcmodule"
-												value="Submit" onClick="getaddmodulesave(); return false;"
-												style="float: right; margin-right: 20px; height:28px; with:80px;" /> <br /> <br />
-
-										</form>
-
-									</div>
-
-									<!-- end of add module container -->
-									<!-- start of search and associate content -->
-
-									<!-- End of search and associate content -->
-
-									<!-- Start of Third Container -->
-
-									<!-- end of definecontainer--->
-
-									<!-- End of Third Container -->
-
-									<!-- Start of Viewmodelthinking -->
-							<div style="float: right; margin-bottom: 20px; margin-top: 20px;">
-							<a href="/ziksana-web/zcourse/associatecontent/${courseId}" class="btn btn-info" tabindex="13"  style="margin-left:20px;">Save and Continue</a>
-							<a href="/ziksana-web/zcourse/editcourse/${courseId}" class="btn btn-info f-r" style=" float:left;margin-left:20px;">Edit Course Details </a>
-								
-					
-				
-										
-								</div>
-								
-									<!-- End of viewmodelthinking -->
-
-									<!-- start view modelthinking 2 -->
-
-									<!-- End of viewmodelthinking -->
-									<!-- End of view modelthinkin 2 -->
-
-								</div>
-								<!-- Content Panel End -->
-
-							</div>
-							<!-- end of definecontainer--->
-
-
-
-							<!------------------------------- end of first Tab ---------------------------------------------->
-
-							<!--End Center Container-->
-
-						</div>
+		<div id="uplpcontainer" class="all-box-shadow">
+			<div id="lpcontainer">
+				<div class="bordertop"></div>
+				<!--end of bordertop-->
+				<div id="buildtab" class="lpboxtab1 all-box-shadow" style="">
+					<div class="tbboxhead">
+						<p>
+							<img src="${staticFileServer}resources/images/icons/toola.png"
+								class="tbboximg" /><span class="tbboxheadfnt"> Define </span>
+						</p>
 					</div>
-				</div>
-			</div>
+					<!--end of tbboxhead  -->
 
-			<!--End Main Content-->
-			<!--Current Progress-->
-			<div class="col border-top">
-				<div class="collapse">
-					<h3 class="border-left border-right border-top">Your current
-						progress [ Starting ... ]</h3>
-					<div>
-						<p class="caption text-size-px18">Your progress this
-							session...</p>
+					<div class="tbboxnum">
+
+						<span class="badge1 badge-warning" style="font-size: 20px;">
+							1. </span>
 					</div>
+					<!--end of tbboximg  -->
+
+					<div class="tbboxdesc">
+
+						<p>Create the course structure and course content</p>
+
+					</div>
+					<!--end of tbboxdesc  -->
+
+
 				</div>
+				<!--end of lptab1-->
+
+
+
+				<div id="enrichtab" class="lpboxtab1">
+
+
+					<div class="tbboxheadds">
+
+						<p>
+							<img src="${staticFileServer}resources/images/icons/review.png"
+								class="tbboximgds" /><span class="tbboxheadfntds">
+								Enrich </span>
+						</p>
+
+					</div>
+					<!--end of tbboxhead  -->
+
+
+					<div class="tbboxnumds">
+
+						<span class="badge1" style="font-size: 20px;"> 2. </span>
+					</div>
+					<!--end of tbboximg  -->
+
+
+
+					<div class="tbboxdescds">
+
+						<p>Personalize and enrich your content</p>
+
+					</div>
+					<!--end of tbboxdesc  -->
+
+				</div>
+				<!--end of lptab1-->
+
+
+				<div id="publishtab" class="lpboxtab1">
+
+					<div class="tbboxheadds">
+
+						<p>
+							<img src="${staticFileServer}resources/images/icons/publish1.png"
+								class="tbboximgds" /><span class="tbboxheadfntds">
+								Publish </span>
+						</p>
+
+					</div>
+					<!--end of tbboxhead  -->
+
+
+					<div class="tbboxnumds">
+
+						<span class="badge1 badge-warningds" style="font-size: 20px;">
+							3. </span>
+					</div>
+					<!--end of tbboximg  -->
+
+					<div class="tbboxdescds">
+						<p>Publish the course created</p>
+
+					</div>
+					<!--end of tbboxdesc  -->
+
+				</div>
+				<!--end of lptab1-->
+
+
+
 			</div>
-			
-			<script type="text/javascript">
-				$(function(){
-  
-					
-					
-					$('#Cmoduleduration')
-							.spinit(
-									{
-										height : 20,
-										width : 30,
-										min : null,
-										placeholder : null,
-										initValue : null,
-										max : 20,
-									});
-					
-				});//end of doc ready
-				function testModule(){
-					alert("Please add module");
-				}
-			</script>
+			<!--end of lpcontainer-->
+
+		</div>
+		<!--end of uplpcontainer-->
 
 
-			<!--End Current Progress-->
-		
+		<div class="ClearFix"></div>
+
 	</div>
 
-<style type="text/css">
-#message {
-	padding: 1em 0;
-	color: steelblue;
-}
+	<div id="subnavlink">
 
-.ui-spinner-up
-{
-margin-left: -1px !important; 
-margin-top: -1px !important;
-width:14px  !important;
-height:8px  !important;
-}
-.ui-spinner-down{
-margin-left: -1px !important; 
-margin-top: 1.5px !important;
-width:14px  !important;
-height:8px  !important;
-}
-.jqx-widget-content {
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	-webkit-background-clip: padding-box;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	font-family: Verdana, Arial, sans-serif;
-	font-style: normal;
-	font-size: 18px;
-	border-color: rgba(199, 199, 199, 0.38);
-	background: #fff;
-}
 
-.jqx-widget {
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	-webkit-background-clip: padding-box;
-	direction: ltr;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	font-family: Verdana, Arial, sans-serif;
-	font-style: normal;
-	font-size: 19px;
-}
+		<!--<div class="linkinside">-->
 
-.breadcrumb li:nth-child(1) a {
-	background: #6D9EC5;
-	color: #fff;
-}
 
-.breadcrumb li:nth-child(1) a:after {
-	border-left-color: #6D9EC5 !important;
-}
+		<div class="navheadlp">
 
-.selectedTreeRow {
-	border-color: #27b;
-	background: #6D9EC5;
-	color: #fff;
-	font-weight: bold;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	padding-top: -2px;
-	padding-bottom: -2px;
-	padding-left: 3px;
-	padding-right: 3px;
-}
+			<ul>
+				<li style="margin-left: 40px; color: #0a91ac;">Describe Course
+				</li>
+				<li>Define Structure</li>
+				<li>Associate Content</li>
+				<li>Define Assignment</li>
 
-/*.standartTreeRow:hover
-{
-width:auto;
-border-color:#000; background:none; color:#900;
--moz-border-radius: 3px;
--webkit-border-radius: 3px;
-border-radius: 3px;
-padding:-5px;
-}*/
-span.standartTreeRow:hover {
-	background: rgba(85, 142, 187, 0.63);
-	color: #fff;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	padding: 3px;
-}
-.mnuclass {
-    color: #2277BB;
-    font-family: verdana;
-    font-size: 12px;
-    font-weight: normal;
-    text-decoration: none;
-}
-#ContentPanel2 {
-font-size: 11px;
- background-image: none;
- margin-left: 25px;
-}
-									
-</style>
+			</ul>
+
+		</div>
+		<!--end of navheadlp-->
+
+		<div class="arrow1"></div>
+		<div class="clearfix"></div>
+
+
+		<div class="progress-bar blue stripes">
+			<span style="width: 20%"></span>
+		</div>
+
+
+
+
+		<div class="clearfix"></div>
+
+		<div class="navnumber">
+
+
+			<ul>
+
+				<li>
+					<div class="circle-outer1">
+						<a class="circle orange1" href="definecourse.html">1</a>
+					</div> <!--circle-outer ends here-->
+
+				</li>
+
+				<li>
+					<div class="circle-outer0" style="margin-left: 30px;">
+						<a class="circle orange0" href="definestructure.html">2</a>
+					</div> <!--circle-outer ends here-->
+
+				</li>
+
+				<li>
+					<div class="circle-outer0">
+						<a class="circle orange0" href="associatecontent.html">3</a>
+					</div> <!--circle-outer ends here-->
+
+				</li>
+
+				<li>
+					<div class="circle-outer0" style="margin-left: 50px;">
+						<a class="circle orange0" href="defineassignment.html">4</a>
+					</div> <!--circle-outer ends here-->
+
+				</li>
+
+
+			</ul>
+		</div>
+		<!--end of navnumber-->
+
+		<div class="clearfix"></div>
+
+
+
+
+	</div>
+	<!--End of subnavlink -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id="definestructureformcontainer">
+
+		<div class="page-header"
+			style="padding-left: 0px !important; margin-bottom: 0px !important;">
+			<div class="icon">
+				<img
+					src="${staticFileServer}resources/images/icons/information_icon.png"
+					style="height: 25px;" />
+			</div>
+			<h1>Organize your course into course modules/chapters</h1>
+		</div>
+		<!--End of page-header -->
+
+		<div class="clearfix"></div>
+
+		<div class="contentarea">
+
+			<!-- BEGIN FORM-->
+			<div id='jqxWidget'>
+				<div id="splitter">
+
+					<!-- Start of Tree -->
+					<div id="treeboxbox_tree"
+						style="overflow: scroll; overflow-y: hidden;" class="dhtmlxTree"
+						setImagePath="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
+					</div>
+					<!-- End of Tree -->
+
+					<div class="splitter-panel">
+						<div class="addmodulecontainer" style="padding: 10px;">
+							<form action="#linkurl" class="form-horizontal">
+								<!--module form-->
+
+								<!--Course Name-->
+
+								<div class="control-group">
+
+									<label class="control-label nexaf" for="Course Name">Module
+										Name :</label>
+									<div class="controls">
+										<input type="text" class="span6" id="Module_Name"
+											placeholder="Course Name" style="margin-left: -45px;" />
+									</div>
+								</div>
+
+								<!--end of course name-->
+
+
+								<label for="Course Description" class="nexaf">Module
+									Description :</label>
+
+
+
+								<textarea placeholder="Module Description"
+									name="Module_Description" rows="5" id="Module_Description"
+									style="width: 95%"></textarea>
+								<!--<textarea id="Module_ckeditor"  class="span6" style="height: 300px;"></textarea>-->
+
+
+
+
+
+								<!--Course Selection-->
+
+
+								<div class="control-group" style="margin-top: 20px;">
+
+									<div>
+										<label class="labelclass nexaf f-l"> Module Area : </label> <label
+											class="labelclass nexaf f-l" style="margin-left: 130px;">
+											Module Subject: </label> <label class="labelclass nexaf f-l"
+											style="margin-left: 110px;"> Module Topic: </label>
+									</div>
+
+									<div class="clearfix"></div>
+
+
+									<div class="moduleselection">
+										<select name="s_example" class="select">
+											<option value="0">choose a option...</option>
+											<option value="1">Computer science</option>
+											<option value="2">Philosophy and psychology</option>
+											<option value="3">Religion</option>
+											<option value="4">Social science</option>
+											<option value="5">Technology and applied science</option>
+											<option value="6">Literature</option>
+											<option value="7">History and geography</option>
+										</select> <select name="s_example" class="select"
+											style="margin-right: 30px;">
+											<option value="0">choose a option...</option>
+											<option value="1">Computer science</option>
+											<option value="2">Philosophy and psychology</option>
+											<option value="3">Religion</option>
+											<option value="4">Social science</option>
+											<option value="5">Technology and applied science</option>
+											<option value="6">Literature</option>
+											<option value="7">History and geography</option>
+										</select> <select name="s_example" class="select"
+											style="margin-right: 0px;">
+											<option value="0">choose a option...</option>
+											<option value="1">Computer science</option>
+											<option value="2">Philosophy and psychology</option>
+											<option value="3">Religion</option>
+											<option value="4">Social science</option>
+											<option value="5">Technology and applied science</option>
+											<option value="6">Literature</option>
+											<option value="7">History and geography</option>
+										</select>
+
+									</div>
+									<!-- end of moduleselection--->
+
+								</div>
+								<!--end of Subject Selection-->
+
+
+
+								<div class="control-group" style="width: 72%">
+									<label class="control-label nexaf" for="Specify Tags"
+										style="width: 120px;">Specify Tags :</label>
+									<div class="controls" style="margin-left: 120px;">
+										<input type="text" class="tags"
+											value="Computer Science, Literature, History" />
+									</div>
+								</div>
+
+
+
+								<button class="btn f-r" type="button"
+									style="margin-right: 10px;">Cancel</button>
+								<button class="btn f-r" type="button"
+									style="margin-right: 20px;">Submit</button>
+
+								<div class="Clearfix"></div>
+
+								<!--module form-->
+							</form>
+						</div>
+						<!--End of Add Module -->
+
+					</div>
+					<!--End of splitter-panel -->
+
+				</div>
+				<!--End of splitter -->
+			</div>
+			<!--End of jqxWidget-->
+			<!-- END FORM -->
+
+		</div>
+		<!--End of contentarea -->
+
+	</div>
+	<!--End of definestructureformcontainer -->
+
+</div>
+<!--end of contentpanel-->
+
+<button class="btn f-r" type="button" style="margin-right: 30px;">Save
+	and Continue</button>
+<div class="Clearfix"></div>
+
+</div>
+<!--end of leftpanel-->
+
+
+</section>
+<!--end of section leftpanel-->
+
+
+<div class="Clearfix"></div>
+
+
+</div>
+<!--end of body wrapper-->
+
+</div>
+
+
+<script>
+	var ckeditor = CKEDITOR.replace('Module_Description');
+	CKEDITOR.disableAutoInline = true;
+	CKEDITOR.inline('editable');
+</script>
+
+
 

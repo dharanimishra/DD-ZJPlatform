@@ -3,21 +3,11 @@
 $(document)
 		.ready(
 				function(e) {
-
-					course_id = $('#courseid').val();
-					if (course_id != '' & course_id != null) {
-						$('#Editcoursedtl1').show();
-					} else {
-						$('#Editcoursedtl1').hide();
-					}
-
+					alert("get area...");
 					$.get('/ziksana-web/zcourse/getsubjectarea', {}, function(
 							data) {
 						options = data;
 						var option_string = '';
-						// option_string += '<option value="Select Subject
-						// Area">Select Subject Area</option>';
-
 						for (i in options) {
 							label = options[i].label;
 							value = options[i].value;
@@ -332,16 +322,16 @@ function createCourse() {
 }
 
 function getCourse() {
-	//course contains module is exists
+	// course contains module is exists
 	var Course_id = $('#courseid').val();
 
 	$.ajax({
-		  	type: 'GET',
-			url: '/ziksana-web/zcourse/ismoduleexists/'+Course_id+'',
-		success: function( data ) {
-		
+		type : 'GET',
+		url : '/ziksana-web/zcourse/ismoduleexists/' + Course_id + '',
+		success : function(data) {
+
 			$('#moduleExists').val(data);
-			
+
 		}
 	});
 	// validation = jQuery("#DegineCourse").validationEngine('validate');
@@ -352,13 +342,11 @@ function getCourse() {
 	token = ''; // dummy token for demo. you have to send real token.
 	request_type = 'POST'; // can be GET or POST. In this case, a GET request
 
-	
-
 	var parameters = {
 		"Course_id" : Course_id
 	};
-	if(Course_id != ''){
-	$('#sbtvalidation').attr('value', 'Done');
+	if (Course_id != '') {
+		$('#sbtvalidation').attr('value', 'Done');
 	}
 	var available_tags, selected_tags;
 
@@ -383,14 +371,17 @@ function getCourse() {
 							duration = data.duration;
 							duration_type = data.durationtype;
 							image_upload = data.imageupload;
-							
-							if(image_upload == ''){
+
+							if (image_upload == '') {
 								thumbnail_url = '/ziksana-web/resources/images/default-course.jpg';
 							} else {
 								thumbnail_url = media_server_url + image_upload;
 							}
-							$('#course_thumbnail_image').attr('src', thumbnail_url);
-							$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
+							$('#course_thumbnail_image').attr('src',
+									thumbnail_url);
+							$('#thubmnail_upload_message')
+									.html(
+											'<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
 
 							$('#courseid').val(course_id);
 
@@ -410,8 +401,8 @@ function getCourse() {
 
 							}
 
-							//$('#Ctagfield_e').val(selected_tags);
-							
+							// $('#Ctagfield_e').val(selected_tags);
+
 							$("#Ctagfield_e").superblyTagField({
 								allowNewTags : true,
 								showTagsNumber : 10,
@@ -582,4 +573,28 @@ function populate_tag_cloud(selected_tags, available_tags) {
 		preset : selected_tags,
 		tags : available_tags
 	});
+
+	function getArea() {
+
+		console.log("get area...");
+		$.get('/ziksana-web/zcourse/getsubjectarea', {}, function(data) {
+			options = data;
+			var option_string = '';
+			for (i in options) {
+				label = options[i].label;
+				value = options[i].value;
+				if (i == 0) {
+					option = '<option selected="selected" value="' + value
+							+ '">' + label + '</option>';
+				} else
+					option = '<option value="' + value + '">' + label
+							+ '</option>';
+
+				option_string += option;
+			}
+			$('#Careaddl').html(option_string);
+
+		});
+
+	}
 }

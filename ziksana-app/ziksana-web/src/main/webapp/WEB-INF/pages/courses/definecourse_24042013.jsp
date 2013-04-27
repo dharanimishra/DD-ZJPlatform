@@ -392,8 +392,10 @@ span.standartTreeRow:hover {
 								<!----------------- start of first container --------------->
 								<div class="_coursename">
 									<div class="control-group">
-										<input type="hidden" id="courseid" value="${courseId}" /> <input
-											type="hidden" id="moduleexists" value="${module}" /> <label
+										<input type="hidden" id="courseid" value="${courseId}" /> 
+										<input type="hidden" id="moduleexists" value="${module}" />
+											
+											 <label
 											class="control-label labelclass " for="CourseName"
 											style="margin-top: -4px; font-weight: bold;">Course
 											Name :</label>
