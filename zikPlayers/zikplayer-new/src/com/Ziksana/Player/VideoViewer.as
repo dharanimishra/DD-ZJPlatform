@@ -2,31 +2,34 @@ package com.ziksana.player
 {
 	import com.ziksana.content.Content;
 	import com.ziksana.content.VideoContent;
+	import com.ziksana.content.VideoRecorder;
 	import com.ziksana.events.CustomEvent;
+	import com.ziksana.events.EventsList;
 	import com.ziksana.util.Logger;
 	
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.media.Video;
-	
-	import com.ziksana.events.EventsList;
 
 	public class VideoViewer extends ContentViewer
 	{
 		private var m_VideoContainer : Video = new Video();
 		private var m_ContentLoadEvent : CustomEvent = null;
+		private var m_VideoRecorder : VideoRecorder = null;
 		
 		public function VideoViewer(contentObj : Content, contentDisplayObject : MovieClip)
 		{
 			super(contentObj, contentDisplayObject);
 			
+			m_VideoRecorder = new VideoRecorder();
 			RegisterContentEvents ();
 		}
 		
 		public override function Load () : void
 		{
-			SetContent ();
-			m_Content.Load();
+			//SetContent ();
+			//m_Content.Load();
+			m_VideoRecorder.Load();
 		}
 		
 		public override function Unload () : void
@@ -37,11 +40,7 @@ package com.ziksana.player
 		{
 			var m_VideoURLArray:Array = new Array ();
 
-			//m_VideoURLArray.push("http://54.243.235.88/1.flv");
-			//m_VideoURLArray.push("http://54.243.235.88/Real Madrid HD.mp4");
-			//m_VideoURLArray.push("http://54.243.235.88/3.flv");
-			
-			m_VideoURLArray.push("d:\\3.flv");
+			m_VideoURLArray.push("http://54.243.235.88/3.flv");
 			
 			m_Content.SetContentURL(m_VideoURLArray);
 		}
@@ -64,7 +63,9 @@ package com.ziksana.player
 		{
 			addEventListener(EventsList.CONTENT_TYPE_VIDEO_LOAD, OnContentLoadEvent);
 			m_ContentLoadEvent = new CustomEvent(EventsList.CONTENT_TYPE_VIDEO_LOAD, this, this);
-			m_Content.RegisterOnCompletionEvent(m_ContentLoadEvent);
+			
+			m_VideoRecorder.RegisterOnCompletionEvent(m_ContentLoadEvent);
+			//m_Content.RegisterOnCompletionEvent(m_ContentLoadEvent);
 			
 			m_ContentDisplayObject.addEventListener (MouseEvent.MOUSE_DOWN, OnPageContainerMouseDown);
 			m_ContentDisplayObject.addEventListener (MouseEvent.MOUSE_MOVE, OnPageContainerMouseMove);
@@ -79,8 +80,10 @@ package com.ziksana.player
 			
 			UpdateUI();
 			
-			VideoContent(m_Content).AttachStreamOutputContainer(m_VideoContainer);
-			VideoContent(m_Content).StartPlayback();
+			m_VideoRecorder.AttachStreamOutputContainer(m_VideoContainer);
+			
+			//VideoContent(m_Content).AttachStreamOutputContainer(m_VideoContainer);
+			//VideoContent(m_Content).StartPlayback();
 		}
 		
 		private function OnPageContainerMouseDown (mouseEvent : MouseEvent) : void 

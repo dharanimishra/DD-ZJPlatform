@@ -5,18 +5,16 @@ package com.ziksana.content
 	import com.ziksana.connection.IConnection;
 	import com.ziksana.events.CustomEvent;
 	import com.ziksana.util.Logger;
+	import com.ziksana.events.EventsList;
 
 	public class VideoContent extends Content
 	{
 		private var m_Connection : IConnection;
-		private var m_ConnectionMGR : ConnectionFactory;
 		private var m_ConnectionURL : String;
 		
 		private var m_VideoConnectionEvent : CustomEvent = null;
-		private static const VideoConnectionEvent:String = "ON_VIDEO_CONNECTION";
-
 		private var m_VideoStreamConnectionEvent : CustomEvent = null;
-		private static const VideoStreamConectionEvent:String = "ON_VIDEO_STREAM_CONNECTION";
+		private var m_ContentLoadEvent : CustomEvent = null;
 		
 		public function VideoContent()
 		{
@@ -38,12 +36,12 @@ package com.ziksana.content
 					return false;
 				}
 				
-				addEventListener(VideoConnectionEvent, OnVideoConnectionEvent);
-				m_VideoConnectionEvent = new CustomEvent(VideoConnectionEvent, this, this);
+				addEventListener(EventsList.VIDEO_CONNECTION_EVENT, OnVideoConnectionEvent);
+				m_VideoConnectionEvent = new CustomEvent(EventsList.VIDEO_CONNECTION_EVENT, this, this);
 				m_Connection.RegisterOnConnectionStatusEvent(m_VideoConnectionEvent);
 				
-				addEventListener(VideoConnectionEvent, OnVideoStreamConnectionEvent);
-				m_VideoStreamConnectionEvent = new CustomEvent(VideoConnectionEvent, this, this);
+				addEventListener(EventsList.VIDEO_STREAM_CONNECTION_EVENT, OnVideoStreamConnectionEvent);
+				m_VideoStreamConnectionEvent = new CustomEvent(EventsList.VIDEO_STREAM_CONNECTION_EVENT, this, this);
 				m_Connection.RegisterOnStreamStatusEvent(m_VideoConnectionEvent);
 				
 				retVal = m_Connection.Connect(null);
@@ -112,7 +110,6 @@ package com.ziksana.content
 		public function StartPlayback () : void
 		{
 			//Output container should be part of display stuff.
-			//m_ConnectionMGR.AttachStreamOutputContainer();
 			if (m_ContentURLArray.length > 0)
 				m_Connection.StartPlayback(m_ContentURLArray[0]);
 		}

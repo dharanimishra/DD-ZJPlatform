@@ -1,6 +1,6 @@
 package com.ziksana.util
 {
-	public class Util
+	public final class Util
 	{
 		public static const RECORDING_FILE_NAME_PREFIX :String = "red5RecordDemo_";
 		
@@ -8,7 +8,7 @@ package com.ziksana.util
 		{
 		}
 		
-		public function GenerateRecordingFileName () : String
+		public static function GenerateRecordingFileName () : String
 		{
 			var currentDate:Date = new Date();
 			var unixTime:Number = Math.round(currentDate.getTime()/1000);

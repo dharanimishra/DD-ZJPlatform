@@ -135,6 +135,14 @@ package com.ziksana.ui
 			height = 240;
 
 			m_ContentViewers[1].SetCoordinates(left, top, width, height);
+			
+			//Set the Video Player Position
+			left = 0;
+			top = 0;
+			width = 65;
+			height = 410;
+			
+			m_ContentViewers[2].SetCoordinates(left, top, width, height);
 		}
 		
 		private function GetPercentValue (actualValue : Number, percentageFactor : Number) : Number
