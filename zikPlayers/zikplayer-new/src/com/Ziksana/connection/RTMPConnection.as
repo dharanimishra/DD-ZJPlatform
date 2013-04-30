@@ -261,6 +261,16 @@ package com.ziksana.connection
 			m_NetStream.pause();
 			//CloseNetStream();			
 		}
+		
+		public function PausePlayback () : void
+		{
+			m_NetStream.pause();
+		}
+		
+		public function ResumePlayback () : void
+		{
+			m_NetStream.resume();
+		}
 				
 		//Todo : Add parameters, Video Source, Audio Source
 		public function StartRecording (publishURL : String) : Boolean

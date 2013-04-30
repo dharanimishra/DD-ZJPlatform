@@ -5,6 +5,8 @@ package com.ziksana.player
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	
+	import com.ziksana.events.EventsList;
 	import com.ziksana.content.Content;
 	import com.ziksana.events.CustomEvent;
 
@@ -17,47 +19,32 @@ package com.ziksana.player
 		[Embed(source='../../../../resources/MoveRight.png')]
 		public static var MOVETONEXTPAGE_BUTTON:Class;
 		
-		private var m_PageContainer : MovieClip = new MovieClip();
-		private var m_ContentLoadEvent : CustomEvent = null;
-		
-		private static const ContentLoadEvent:String = "ON_CONTENT_LOAD";
 		private static const CHILD_IMAGEMASK_INDEX : uint = 0;
 		private static const CHILD_IMAGECONTENT_INDEX : uint = 1;
 		private static const CHILD_MOVETOPREVIOUSIMAGE_BUTTON_INDEX : uint = 2;
 		private static const CHILD_MOVETONEXTIMAGE_BUTTON_INDEX : uint = 3;
 		
+		private var m_PageContainer : MovieClip = new MovieClip();
+		private var m_ContentLoadEvent : CustomEvent = null;
+		
 		private var m_LastImageDrawn : DisplayObject = null;
 		private var m_LastImageMask : DisplayObject = null;
-		
-		
-		private var bFirstTime : Boolean = true;
-		
-	
+		private var bIsDrawingFirstTime : Boolean = true;
 		
 		public function DocumentViewer(contentObj : Content, contentDisplayObject : MovieClip)
 		{
 			super(contentObj, contentDisplayObject);
-			
 			m_ContentDisplayObject.addChild(m_PageContainer);
 			
 			//up arrow
 			//down arrow
-			RegisterContentEvents ();
+			RegisterEvents ();
 		}
 		
 		public override function Load () : void
 		{
-			m_Content.Load("d:\\images\\1.jpg");
-			//m_Content.Load("http://54.243.235.88/zikload-xml/uploads/document/f1364629539/thumbnails/img1.jpg");
-			m_Content.Load("d:\\images\\2.jpg");
-			m_Content.Load("http://54.243.235.88/zikload-xml/uploads/document/f1364629539/thumbnails/img0.jpg");
-			m_Content.Load("d:\\images\\3.jpg");
-			m_Content.Load("d:\\images\\4.jpg");
-			m_Content.Load("d:\\images\\5.jpg");
-			m_Content.Load("d:\\images\\6.jpg");
-			m_Content.Load("d:\\images\\7.jpg");
-			m_Content.Load("d:\\images\\8.jpg");
-			m_Content.Load("d:\\images\\9.jpg");
+			SetContent();
+			m_Content.Load();
 		}
 		
 		public override function Unload () : void
@@ -65,10 +52,48 @@ package com.ziksana.player
 		}
 		
 		
-		private function RegisterContentEvents () : void
+		private function SetContent () : void
 		{
-			addEventListener(ContentLoadEvent, OnContentLoadEvent);
-			m_ContentLoadEvent = new CustomEvent(ContentLoadEvent, this, this);
+			var m_ImageURLArray:Array = new Array ();
+			/*
+			var currentImage : int;
+			var numberOfImages : int;
+			var imagePath : String;
+			var currentImageToDownload : String;
+			
+			numberOfImages = JavaExternalInterface.GetNumberOfImages();
+			imagePath = JavaExternalInterface.GetImagePath();
+			
+			//Just use number of images as number of position
+			SetNumberOfPosition(numberOfImages);
+			
+			Logger.WriteMessage ("DocumentContent::DownloadImage ==> Loading All Images Image");
+			
+			for (currentImage = 0; currentImage < numberOfImages; currentImage++)
+			{
+			currentImageToDownload = imagePath + "img" + currentImage + ".jpg";
+			LoadImage (currentImageToDownload);
+			}
+			*/
+			//temporary..
+			
+			m_ImageURLArray.push("d:\\images\\1.jpg");
+			m_ImageURLArray.push("d:\\images\\2.jpg");
+			m_ImageURLArray.push("d:\\images\\3.jpg");
+			m_ImageURLArray.push("d:\\images\\4.jpg");
+			m_ImageURLArray.push("d:\\images\\5.jpg");
+			m_ImageURLArray.push("d:\\images\\6.jpg");
+			m_ImageURLArray.push("d:\\images\\7.jpg");
+			m_ImageURLArray.push("d:\\images\\8.jpg");
+			m_ImageURLArray.push("d:\\images\\9.jpg");
+			
+			m_Content.SetContentURL(m_ImageURLArray);
+		}
+		
+		private function RegisterEvents () : void
+		{
+			addEventListener(EventsList.CONTENT_TYPE_IMAGE_LOAD, OnContentLoadEvent);
+			m_ContentLoadEvent = new CustomEvent(EventsList.CONTENT_TYPE_IMAGE_LOAD, this, this);
 			m_Content.RegisterOnCompletionEvent(m_ContentLoadEvent);
 			
 			m_PageContainer.addEventListener (MouseEvent.MOUSE_DOWN, OnPageContainerMouseDown);
@@ -148,9 +173,9 @@ package com.ziksana.player
 		public function OnContentLoadEvent (contentLoadEvent : CustomEvent) : void
 		{
 			var param : Object = contentLoadEvent.GetEventParam();
-			if (bFirstTime)
+			if (bIsDrawingFirstTime)
 				DisplayContentData ();
-			bFirstTime = false;
+			bIsDrawingFirstTime = false;
 		}
 		
 		private function OnPageContainerMouseDown (mouseEvent : MouseEvent) : void 

@@ -9,6 +9,7 @@ package com.ziksana.content
 	public class Content extends EventDispatcher implements ITimeLinePosition
 	{
 		protected var m_ContentID : int;
+		protected var m_ContentURLArray : Array = new Array ();
 		protected var m_ContentDescription : String;
 		protected var m_ContentType : int;
 		
@@ -25,22 +26,27 @@ package com.ziksana.content
 		public function Content()
 		{
 			m_ContentID = 0;
-			m_ContentDescription = "";
-			
 			m_ContentType = ContentType.CONTENT_TYPE_UNKNOWN;
+			m_ContentDescription = ContentType.CONTENT_TYPE_UNKNOWN_STRING;
+			
 			m_CurrentPosition = 0;
 			m_NumberOfPosition = 0;
 			m_CurrentTimeStamp = 0;
 			
 		}
 		
-		public function Load(contentURL : String) : Boolean
+		public function Load() : Boolean
 		{
 			return true;
 		}
 		
 		public function Unload () : void
 		{
+		}
+		
+		public function SetContentURL (contentURLArray : Array) : void
+		{
+			m_ContentURLArray = contentURLArray.slice();
 		}
 		
 		public function GetContentID () : int

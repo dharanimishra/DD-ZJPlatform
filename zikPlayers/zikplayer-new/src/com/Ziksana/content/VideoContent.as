@@ -9,7 +9,6 @@ package com.ziksana.content
 	public class VideoContent extends Content
 	{
 		private var m_Connection : IConnection;
-		private var m_ContentURL : String;
 		private var m_ConnectionMGR : ConnectionFactory;
 		private var m_ConnectionURL : String;
 		
@@ -22,17 +21,15 @@ package com.ziksana.content
 		public function VideoContent()
 		{
 			super.SetContentType(ContentType.CONTENT_TYPE_VIDEO);
-			super.SetContentDescription("Video");
+			super.SetContentDescription(ContentType.CONTENT_TYPE_VIDEO_STRING);
 		}
 		
-		public override function Load(contentURL : String) : Boolean
+		public override function Load() : Boolean
 		{
 			try 
 			{
 				//super.Load();
 				var retVal : Boolean = true;
-				
-				m_ContentURL = contentURL;
 				
 				//Establish connection here. Get the live content.
 				m_Connection = ConnectionFactory.CreateConnection(ConnectionType.CONNECTION_TYPE_RTMP);
@@ -116,12 +113,18 @@ package com.ziksana.content
 		{
 			//Output container should be part of display stuff.
 			//m_ConnectionMGR.AttachStreamOutputContainer();
-			m_Connection.StartPlayback(m_ContentURL);
+			if (m_ContentURLArray.length > 0)
+				m_Connection.StartPlayback(m_ContentURLArray[0]);
 		}
 		
 		public function StopPlayback () : void
 		{
 			m_Connection.StopPlayback ();
+		}
+		
+		public function PausePlayback () : void
+		{
+			m_Connection.PausePlayback ();
 		}
 		
 		//NAVIGATION STUFF

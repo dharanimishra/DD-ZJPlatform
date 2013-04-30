@@ -9,44 +9,25 @@ package com.ziksana.content
 	
 	public class DocumentContent extends Content
 	{
-		private var m_ImageURLArray:Array = new Array ();
 		private var m_ImageArray:Array = new Array();
 		private var m_EventReceiver : Object = null;
 		
 		public function DocumentContent()
 		{
 			super.SetContentType(ContentType.CONTENT_TYPE_DOCUMENT);
-			super.SetContentDescription("Document");
+			super.SetContentDescription(ContentType.CONTENT_TYPE_DOCUMENT_STRING);
 		}
 		
-		public override function Load(contentURL : String) : Boolean
+		public override function Load() : Boolean
 		{
+			var currentImage : int;
 			try 
 			{
-				super.Load(contentURL);
+				super.Load();
 				
-				var currentImage : int;
-				var numberOfImages : int;
-				var imagePath : String;
-				var currentImageToDownload : String;
-				
-				/*
-				numberOfImages = JavaExternalInterface.GetNumberOfImages();
-				imagePath = JavaExternalInterface.GetImagePath();
-				
-				//Just use number of images as number of position
-				SetNumberOfPosition(numberOfImages);
-				
-				Logger.WriteMessage ("DocumentContent::DownloadImage ==> Loading All Images Image");
-				
-				for (currentImage = 0; currentImage < numberOfImages; currentImage++)
-				{
-					currentImageToDownload = imagePath + "img" + currentImage + ".jpg";
-					LoadImage (currentImageToDownload);
-				}
-				*/
-				//temporary..
-				LoadImage (contentURL);
+				//Load first image here
+				if (m_ContentURLArray.length > 0)
+					LoadImage(m_ContentURLArray[0]);
 			}
 			catch (errorCode : Error)
 			{
@@ -59,7 +40,6 @@ package com.ziksana.content
 		
 		private function LoadImage (imageToDownload : String) : Boolean
 		{
-			m_ImageURLArray.push(imageToDownload);
 			DownloadImage (imageToDownload);
 			return true;
 		}
@@ -77,17 +57,21 @@ package com.ziksana.content
 
 		private function OnImageDownloadComplete (e:Event) : void 
 		{
-			//ZIKLogger.WriteMessage (e.target, ZIKLogger.LOG_LEVEL_INFO);
 			var imageLoaderInfo :LoaderInfo = LoaderInfo(e.target);
 			
-			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Image Loaded    ------------------");
+			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Image [" + (m_NumberOfPosition+1) + "] Loaded    ------------------");
 			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Content Type    = " + imageLoaderInfo.contentType);
 			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Number of Bytes = " + imageLoaderInfo.bytesLoaded);
 			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Width           = " + imageLoaderInfo.width);
 			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Container       = " + imageLoaderInfo.loaderURL);
+			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> -------------------------------------------------------------------");
 			
 			m_ImageArray.push(e.target.content);
 			m_NumberOfPosition++;
+			
+			//Load Next Image
+			if (m_NumberOfPosition < m_ContentURLArray.length)
+				LoadImage(m_ContentURLArray[m_NumberOfPosition]);
 			
 			if (m_ContentLoadEvent)
 				m_ContentLoadEvent.DispatchEvent();
@@ -119,8 +103,6 @@ package com.ziksana.content
 		{
 			if ((currentPosition >= 0) && (currentPosition < m_NumberOfPosition))
 				m_CurrentPosition = currentPosition;
-			
-			//Move the current data pointer here.
 		}
 	}
 }

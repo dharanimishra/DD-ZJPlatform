@@ -14,6 +14,9 @@ package com.ziksana.connection
 		
 		function StartPlayback (streamingURL : String) : Boolean;
 		function StopPlayback () : void;
+		function PausePlayback () : void;
+		function ResumePlayback () : void;
+		
 		function StartRecording (publishURL : String) : Boolean;
 		function StopRecording () : void;
 		

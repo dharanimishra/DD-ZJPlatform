@@ -9,12 +9,12 @@ package com.ziksana.ui
 	public class ZIKPLAYER extends Sprite
 	{
 		private static var m_Stage : Stage;
-		private var m_UIMgr:UIManager = null;
+		private var m_EnhanceUI : EnhanceUIManager = null;
 		
 		public function ZIKPLAYER()
 		{
 			addEventListener(Event.ADDED_TO_STAGE, OnAddStage);
-			m_UIMgr = new UIManager();
+			m_EnhanceUI = new EnhanceUIManager();
 		}
 		
 		private function OnAddStage (event : Event = null) : void
@@ -22,13 +22,13 @@ package com.ziksana.ui
 			this.stage.addEventListener (Event.RESIZE, OnResize);
 			
 			//Init our UI here..
-			m_UIMgr.InitUI(this.stage);
+			m_EnhanceUI.Init(this.stage);
 		}
 		
 		private function OnResize (event : Event = null) : void
 		{
 			//Just the redirection
-			m_UIMgr.OnResize (event);
+			m_EnhanceUI.OnResize (event);
 		}
 	}
 }

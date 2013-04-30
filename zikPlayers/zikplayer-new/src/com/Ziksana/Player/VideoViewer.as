@@ -8,12 +8,13 @@ package com.ziksana.player
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.media.Video;
+	
+	import com.ziksana.events.EventsList;
 
 	public class VideoViewer extends ContentViewer
 	{
-		public var m_VideoContainer : Video = new Video();
+		private var m_VideoContainer : Video = new Video();
 		private var m_ContentLoadEvent : CustomEvent = null;
-		private static const ContentLoadEvent:String = "ON_VIDEO_CONTENT_LOAD";
 		
 		public function VideoViewer(contentObj : Content, contentDisplayObject : MovieClip)
 		{
@@ -24,14 +25,25 @@ package com.ziksana.player
 		
 		public override function Load () : void
 		{
-			//m_Content.Load("http://54.243.235.88/1.flv");
-			//m_Content.Load("http://54.243.235.88/Real Madrid HD.mp4");
-			m_Content.Load("http://54.243.235.88/3.flv");
-			//m_Content.Load("d:\\3.flv");
+			SetContent ();
+			m_Content.Load();
 		}
 		
 		public override function Unload () : void
 		{
+		}
+		
+		private function SetContent () : void
+		{
+			var m_VideoURLArray:Array = new Array ();
+
+			//m_VideoURLArray.push("http://54.243.235.88/1.flv");
+			//m_VideoURLArray.push("http://54.243.235.88/Real Madrid HD.mp4");
+			//m_VideoURLArray.push("http://54.243.235.88/3.flv");
+			
+			m_VideoURLArray.push("d:\\3.flv");
+			
+			m_Content.SetContentURL(m_VideoURLArray);
 		}
 
 		private function UpdateUI():void
@@ -50,8 +62,8 @@ package com.ziksana.player
 		
 		private function RegisterContentEvents () : void
 		{
-			addEventListener(ContentLoadEvent, OnContentLoadEvent);
-			m_ContentLoadEvent = new CustomEvent(ContentLoadEvent, this, this);
+			addEventListener(EventsList.CONTENT_TYPE_VIDEO_LOAD, OnContentLoadEvent);
+			m_ContentLoadEvent = new CustomEvent(EventsList.CONTENT_TYPE_VIDEO_LOAD, this, this);
 			m_Content.RegisterOnCompletionEvent(m_ContentLoadEvent);
 			
 			m_ContentDisplayObject.addEventListener (MouseEvent.MOUSE_DOWN, OnPageContainerMouseDown);
@@ -66,6 +78,7 @@ package com.ziksana.player
 			var param : Object = contentLoadEvent.GetEventParam();
 			
 			UpdateUI();
+			
 			VideoContent(m_Content).AttachStreamOutputContainer(m_VideoContainer);
 			VideoContent(m_Content).StartPlayback();
 		}
