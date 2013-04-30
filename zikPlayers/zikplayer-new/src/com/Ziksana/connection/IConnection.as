@@ -1,5 +1,7 @@
 package com.ziksana.connection
 {
+	import com.ziksana.events.CustomEvent;
+
 	/** 
 	 * IConnection interface
 	 * 
@@ -20,6 +22,9 @@ package com.ziksana.connection
 		
 		function GetFrameRate () : Number;
 		function GetDuration() : Number;
+		
+		function RegisterOnConnectionStatusEvent (contentLoadEvent : CustomEvent) : void;
+		function RegisterOnStreamStatusEvent (contentLoadEvent : CustomEvent) : void;
 		
 		function AttachStreamInputSource (streamInputSourceType : int, streamInputSource : Object) : void;
 		function AttachStreamOutputContainer (streamOutputContainer : Object) : void;

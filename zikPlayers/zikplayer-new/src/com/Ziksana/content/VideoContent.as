@@ -3,6 +3,7 @@ package com.ziksana.content
 	import com.ziksana.connection.ConnectionFactory;
 	import com.ziksana.connection.ConnectionType;
 	import com.ziksana.connection.IConnection;
+	import com.ziksana.events.CustomEvent;
 	import com.ziksana.util.Logger;
 
 	public class VideoContent extends Content
@@ -11,6 +12,12 @@ package com.ziksana.content
 		private var m_ContentURL : String;
 		private var m_ConnectionMGR : ConnectionFactory;
 		private var m_ConnectionURL : String;
+		
+		private var m_VideoConnectionEvent : CustomEvent = null;
+		private static const VideoConnectionEvent:String = "ON_VIDEO_CONNECTION";
+
+		private var m_VideoStreamConnectionEvent : CustomEvent = null;
+		private static const VideoStreamConectionEvent:String = "ON_VIDEO_STREAM_CONNECTION";
 		
 		public function VideoContent()
 		{
@@ -34,11 +41,19 @@ package com.ziksana.content
 					return false;
 				}
 				
+				addEventListener(VideoConnectionEvent, OnVideoConnectionEvent);
+				m_VideoConnectionEvent = new CustomEvent(VideoConnectionEvent, this, this);
+				m_Connection.RegisterOnConnectionStatusEvent(m_VideoConnectionEvent);
+				
+				addEventListener(VideoConnectionEvent, OnVideoStreamConnectionEvent);
+				m_VideoStreamConnectionEvent = new CustomEvent(VideoConnectionEvent, this, this);
+				m_Connection.RegisterOnStreamStatusEvent(m_VideoConnectionEvent);
+				
 				retVal = m_Connection.Connect(null);
 				if (retVal)
 					Logger.WriteMessage ("DocumentContent::DownloadImage ==> Successfully established connection to RTMP server.");
 				else
-					Logger.WriteMessage ("DocumentContent::DownloadImage ==> Failed toestablish connection to RTMP server.");
+					Logger.WriteMessage ("DocumentContent::DownloadImage ==> Failed to establish connection to RTMP server.");
 			}
 			catch (errorCode : Error)
 			{
@@ -52,6 +67,27 @@ package com.ziksana.content
 		public override function Unload () : void
 		{
 			m_Connection.Disconnect();
+		}
+		
+		
+		public function OnVideoConnectionEvent (contentLoadEvent : CustomEvent) : void
+		{
+			var param : Object = contentLoadEvent.GetEventParam();
+			if (m_ContentLoadEvent)
+				m_ContentLoadEvent.DispatchEvent();
+		}
+		
+		public function OnVideoStreamConnectionEvent (contentLoadEvent : CustomEvent) : void
+		{
+			var param : Object = contentLoadEvent.GetEventParam();
+			if (m_ContentLoadEvent)
+				m_ContentLoadEvent.DispatchEvent();
+		}
+		
+		public function AttachStreamOutputContainer (streamOutputContainer : Object) : void
+		{
+			if (m_Connection)
+				m_Connection.AttachStreamOutputContainer(streamOutputContainer);
 		}
 		
 		public override function GetData () : Object

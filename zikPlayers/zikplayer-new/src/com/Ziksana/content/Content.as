@@ -1,9 +1,12 @@
 package com.ziksana.content
 {
 	import com.ziksana.events.CustomEvent;
+	import com.ziksana.events.EventData;
 	import com.ziksana.timeline.ITimeLinePosition;
+	
+	import flash.events.EventDispatcher;
 
-	public class Content implements ITimeLinePosition
+	public class Content extends EventDispatcher implements ITimeLinePosition
 	{
 		protected var m_ContentID : int;
 		protected var m_ContentDescription : String;

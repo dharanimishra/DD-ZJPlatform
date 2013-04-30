@@ -1,13 +1,18 @@
 package com.ziksana.player
 {
+	import com.ziksana.content.Content;
+	
 	import flash.display.MovieClip;
 	import flash.events.EventDispatcher;
-	import com.ziksana.content.Content;
 	
 	public class ContentViewer extends EventDispatcher
 	{
 		protected var m_Content : Content;
 		protected var m_ContentDisplayObject : MovieClip;
+		protected var m_Top : Number = 0;
+		protected var m_Left : Number = 0;
+		protected var m_Width : Number = 0;
+		protected var m_Height : Number = 0;
 		
 		public function ContentViewer(contentObj : Content, contentDisplayObject : MovieClip)
 		{
@@ -16,12 +21,24 @@ package com.ziksana.player
 			RegisterEvents ();
 		}
 		
-		private function RegisterEvents () : void
+		public function RegisterEvents () : void
 		{
 		}
 		
-		public function SetCoordinates (width : Number, height : Number) : void
+		public function Load () : void
 		{
+		}
+		
+		public function Unload () : void
+		{
+		}
+
+		public function SetCoordinates (left: Number, top : Number, width : Number, height : Number) : void
+		{
+			m_Left = left;
+			m_Top = top;
+			m_Width = width;
+			m_Height = height;
 		}
 		
 		public function MoveToPreviousPosition () : void		
@@ -43,6 +60,5 @@ package com.ziksana.player
 		{
 			m_Content.SetCurrentPosition (m_Content.GetCurrentPosition() - 1);
 		}
-		
 	}
 }

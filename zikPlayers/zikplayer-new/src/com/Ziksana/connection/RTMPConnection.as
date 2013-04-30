@@ -1,5 +1,7 @@
 package com.ziksana.connection
 {
+	import com.ziksana.events.CustomEvent;
+	
 	import flash.events.NetStatusEvent;
 	import flash.events.SecurityErrorEvent;
 	import flash.media.Camera;
@@ -25,6 +27,13 @@ package com.ziksana.connection
 		
 		//PUBLISH TYPE
 		private var PUBLISH_URL_TYPE_RECORD : String = "record";
+		
+		private static const OnConnectionStatusEvent:String = "ON_CONNECTION_EVENT";
+		private static const OnStreamStatusEvent:String = "ON_STREAM_EVENT";
+		
+		private var m_OnConnectionStatusEvent : CustomEvent = null;
+		private var m_OnStreamStatusEvent : CustomEvent = null;
+		
 		
 		public function RTMPConnection()
 		{
@@ -120,6 +129,8 @@ package com.ziksana.connection
 			{
 				case "NetConnection.Connect.Success":
 					InitNetStream();
+					if (m_OnConnectionStatusEvent)
+						m_OnConnectionStatusEvent.DispatchEvent();
 					break;
 				case "NetConnection.Connect.Failed":
 					break;
@@ -178,16 +189,24 @@ package com.ziksana.connection
 		}
 		
 		
-		private function OnMetaDataHandler (info:Object) : void
+		private function OnMetaDataHandler (videoMetaData : Object) : void
 		{
-			trace("OnMetaDataHandler ==> metadata: Duration=" + info.duration + " Frame Rate =" + info.framerate);
-			m_Duration = info.duration;
-			m_FrameRate = info.framerate;
+			//trace("OnMetaDataHandler ==> Video Duration = " + info.duration + " Frame Rate = " + info.framerate);
+			var key:String; 
+			for (key in videoMetaData) 
+			{ 
+				trace(key + ": " + videoMetaData[key]); 
+			} 
+			
+			m_Duration = videoMetaData.duration;
+			m_FrameRate = videoMetaData.framerate;
 		}
 		
 		private function OnStatusHandler () : void
 		{
 			trace("OnStatusHandler ==> ");
+			if (m_OnStreamStatusEvent)
+				m_OnStreamStatusEvent.DispatchEvent();
 		}
 		
 		private function OnNetStreamBandWidthDoneHandler():void
@@ -239,7 +258,8 @@ package com.ziksana.connection
 		
 		public function StopPlayback () : void
 		{	
-			CloseNetStream();			
+			m_NetStream.pause();
+			//CloseNetStream();			
 		}
 				
 		//Todo : Add parameters, Video Source, Audio Source
@@ -282,6 +302,16 @@ package com.ziksana.connection
 		{
 			//We deal in milliseconds
 			m_NetStream.seek(nPosition/1000);		
+		}
+		
+		public function RegisterOnConnectionStatusEvent (contentLoadEvent : CustomEvent) : void
+		{
+			m_OnConnectionStatusEvent = contentLoadEvent;
+		}
+		
+		public function RegisterOnStreamStatusEvent (contentLoadEvent : CustomEvent) : void
+		{
+			m_OnStreamStatusEvent = contentLoadEvent;
 		}
 		
 		public function AttachStreamInputSource (streamInputSourceType : int, streamInputSource : Object) : void

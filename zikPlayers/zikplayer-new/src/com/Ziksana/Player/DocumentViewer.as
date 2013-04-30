@@ -19,8 +19,6 @@ package com.ziksana.player
 		
 		private var m_PageContainer : MovieClip = new MovieClip();
 		private var m_ContentLoadEvent : CustomEvent = null;
-		private var m_AllotedWidth : Number = 0;
-		private var m_AllotedHeight : Number = 0;
 		
 		private static const ContentLoadEvent:String = "ON_CONTENT_LOAD";
 		private static const CHILD_IMAGEMASK_INDEX : uint = 0;
@@ -45,7 +43,10 @@ package com.ziksana.player
 			//up arrow
 			//down arrow
 			RegisterContentEvents ();
-			
+		}
+		
+		public override function Load () : void
+		{
 			m_Content.Load("d:\\images\\1.jpg");
 			//m_Content.Load("http://54.243.235.88/zikload-xml/uploads/document/f1364629539/thumbnails/img1.jpg");
 			m_Content.Load("d:\\images\\2.jpg");
@@ -58,6 +59,11 @@ package com.ziksana.player
 			m_Content.Load("d:\\images\\8.jpg");
 			m_Content.Load("d:\\images\\9.jpg");
 		}
+		
+		public override function Unload () : void
+		{
+		}
+		
 		
 		private function RegisterContentEvents () : void
 		{
@@ -85,7 +91,7 @@ package com.ziksana.player
 			imageToDraw.x = 0;
 			imageToDraw.y = 0;
 			imageToDraw.rotation = 0;
-			imageToDraw.scaleX = new Number(m_AllotedWidth/imageToDraw.width);
+			imageToDraw.scaleX = new Number(m_Width/imageToDraw.width);
 			imageToDraw.scaleY = imageToDraw.scaleX;
 			
 			if (m_LastImageDrawn)
@@ -101,7 +107,7 @@ package com.ziksana.player
 			
 			var imageMask:Sprite      = new Sprite();
 			imageMask.graphics.beginFill( 0xFF6600, 0 );  
-			imageMask.graphics.drawRoundRectComplex(0, 0, m_AllotedWidth, m_AllotedHeight, 6, 6, 6, 6);
+			imageMask.graphics.drawRoundRectComplex(m_Left, m_Top, m_Width, m_Height, 6, 6, 6, 6);
 			m_LastImageDrawn = m_PageContainer.addChildAt (imageMask, CHILD_IMAGEMASK_INDEX);
 			
 			imageToDraw.mask = imageMask;
@@ -122,13 +128,13 @@ package com.ziksana.player
 				var previousButtonClip : MovieClip = new MovieClip();
 				var previousPageButton:Bitmap = new MOVETOPREVIOUSPAGE_BUTTON();
 				previousPageButton.x=0;
-				previousPageButton.y=(m_AllotedHeight-previousPageButton.height)/2;
+				previousPageButton.y=(m_Height-previousPageButton.height)/2;
 				previousButtonClip.addChild(previousPageButton);
 				
 				var  nextButtonClip : MovieClip = new MovieClip();
 				var nextPageButton : Bitmap = new MOVETONEXTPAGE_BUTTON();
-				nextPageButton.x=m_AllotedWidth-previousPageButton.width;
-				nextPageButton.y=(m_AllotedHeight-previousPageButton.height)/2
+				nextPageButton.x=m_Width-previousPageButton.width;
+				nextPageButton.y=(m_Height-previousPageButton.height)/2
 				nextButtonClip.addChild(nextPageButton);
 				
 				previousButtonClip.addEventListener(MouseEvent.CLICK, OnGoToPreviousImage);
@@ -139,12 +145,6 @@ package com.ziksana.player
 			}
 		}
 		
-		public override function SetCoordinates (width : Number, height : Number) : void
-		{
-			m_AllotedWidth = width;
-			m_AllotedHeight = height;
-		}
-
 		public function OnContentLoadEvent (contentLoadEvent : CustomEvent) : void
 		{
 			var param : Object = contentLoadEvent.GetEventParam();

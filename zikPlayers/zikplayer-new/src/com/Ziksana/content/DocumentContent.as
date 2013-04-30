@@ -1,10 +1,11 @@
 package com.ziksana.content
 {
+	import com.ziksana.util.Logger;
+	
 	import flash.display.Loader;
 	import flash.display.LoaderInfo;
 	import flash.events.Event;
 	import flash.net.URLRequest;
-	import com.ziksana.util.Logger;
 	
 	public class DocumentContent extends Content
 	{
