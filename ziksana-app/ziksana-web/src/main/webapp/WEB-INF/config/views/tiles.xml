@@ -5,129 +5,166 @@
 
 <tiles-definitions>
 
-	<!--Common Page layout  JQuery Latest version-->
+	<!--Common Page layout JQuery Latest version -->
 	<definition name="commonPageLayoutLatest" template="/WEB-INF/pages/layout/div-layout.jsp">
 		<put-attribute name="page_title" value="Ziksana!" />
-		<put-attribute name="common_css" value="/WEB-INF/pages/includes/common_css.jsp" />
+		<put-attribute name="common_css"
+			value="/WEB-INF/pages/includes/common_css.jsp" />
 		<put-attribute name="page_css" value="" />
-		<put-attribute name="common_js" value="/WEB-INF/pages/includes/common_js.jsp" />
+		<put-attribute name="common_js"
+			value="/WEB-INF/pages/includes/common_js.jsp" />
 		<put-attribute name="page_js" value="" />
 		<put-attribute name="page_class" value="" />
-		<put-attribute name="main_menu" value="/WEB-INF/pages/includes/main_menu.jsp" />
+		<put-attribute name="main_menu"
+			value="/WEB-INF/pages/includes/main_menu.jsp" />
 		<put-attribute name="slogan" value="" />
 		<put-attribute name="left" value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="right" value="" />
 		<put-attribute name="page_footer" value="/WEB-INF/pages/common/footer.jsp" />
-	 </definition>
-	 
-	 <!--Ziksana new Screen Template-->
+	</definition>
+
+	<!--Ziksana new Screen Template -->
 	<definition name="ziksana-master" template="/WEB-INF/screens/layout/master-layout.jsp">
-		<put-attribute name="master_title" value="Ziksana!"/>
-		<put-attribute name="common_css" value="/WEB-INF/screens/includes/common_css.jsp"/>
-		<put-attribute name="common_js" value="/WEB-INF/screens/includes/common_js.jsp"/>
-		<put-attribute name="header" value="/WEB-INF/screens/includes/header.jsp" />
+		<put-attribute name="master_title" value="Ziksana!" />
+		<put-attribute name="common_css"
+			value="/WEB-INF/screens/includes/common_css.jsp" />
+		<put-attribute name="common_js"
+			value="/WEB-INF/screens/includes/common_js.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/screens/includes/header.jsp" />
 		<put-attribute name="content" value="" />
-		<put-attribute name="page_footer" value="/WEB-INF/screens/includes/footer.jsp" />
-	 </definition>
-	 
-	 
-	 <!--Login Page-->
+		<put-attribute name="page_footer"
+			value="/WEB-INF/screens/includes/footer.jsp" />
+	</definition>
+
+
+	<!--Login Page -->
 	<definition name="masterlogin" extends="ziksana-master">
-		<put-attribute name="master_title" value="Login"/>
+		<put-attribute name="master_title" value="Login" />
 		<put-attribute name="content" value="/WEB-INF/screens/home/login.jsp" />
 
 	</definition>
-	
-	 <!--Profile set Page-->
+
+	<!--Profile set Page -->
 	<definition name="profilepagesetup" extends="ziksana-master">
-		<put-attribute name="master_title" value="Profile Setup"/>
-		<put-attribute name="content" value="/WEB-INF/screens/account/userprofilepage.jsp" />
+		<put-attribute name="master_title" value="Profile Setup" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/account/userprofilepage.jsp" />
 
 	</definition>
-	
-	 <!--Home Page-->
+
+	<!--Home Page -->
 	<definition name="masterhome" extends="ziksana-master">
 		<put-attribute name="master_title" value="Dashboard" />
 		<put-attribute name="content" value="/WEB-INF/screens/home/home.jsp" />
 
 	</definition>
-	
+
 	<!-- Metro Course Creation -->
-	<definition name="mastercreatecourse" extends="commonPageLayout">
+	<definition name="mastercreatecourse" extends="ziksana-master">
 		<put-attribute name="master_title" value="Course Creation" />
-		<put-attribute name="body" value="/WEB-INF/screens/courses/definecourse.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/definecourse.jsp" />
 	</definition>
-	 
-	 <!--Common Page layout  JQuery 1.7.1 version-->
+	
+	<!-- Metro Create Module -->
+	<definition name="mastercreatemodule" extends="ziksana-master">
+		<put-attribute name="master_title" value="Course Creation" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/coursecreation.jsp" />
+	</definition>
+	
+	
+	<!-- Metro Associate Content -->
+	<definition name="masterassociatecontent" extends="ziksana-master">
+		<put-attribute name="master_title" value="Course Creation" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/coursecreation.jsp" />
+	</definition>
+
+	<!--Common Page layout JQuery 1.7.1 version -->
 	<definition name="commonPageLayout" template="/WEB-INF/pages/layout/div-layout.jsp">
 		<put-attribute name="page_title" value="Ziksana!" />
-		<put-attribute name="common_css" value="/WEB-INF/pages/includes/common_css.jsp" />
+		<put-attribute name="common_css"
+			value="/WEB-INF/pages/includes/common_css.jsp" />
 		<put-attribute name="page_css" value="" />
-		<put-attribute name="common_js" value="/WEB-INF/pages/includes/common_old_js.jsp" />
+		<put-attribute name="common_js"
+			value="/WEB-INF/pages/includes/common_old_js.jsp" />
 		<put-attribute name="page_js" value="" />
 		<put-attribute name="page_class" value="" />
-		<put-attribute name="main_menu" value="/WEB-INF/pages/includes/main_menu.jsp1" />
+		<put-attribute name="main_menu"
+			value="/WEB-INF/pages/includes/main_menu.jsp1" />
 		<put-attribute name="slogan" value="" />
 		<put-attribute name="left" value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="right" value="" />
 		<put-attribute name="page_footer" value="/WEB-INF/pages/common/footer.jsp" />
-	 </definition>
-	 
-	 <!--HomePage Educator/Learner -->
+	</definition>
+
+	<!--HomePage Educator/Learner -->
 	<definition name="homepagelayout" extends="commonPageLayoutLatest">
 		<put-attribute name="page_title" value="Dashboard" />
 		<put-attribute name="slogan" value="/WEB-INF/pages/common/slogan.jsp" />
-		<put-attribute name="body" value="/WEB-INF/pages/dashboard/educator_dashboard.jsp" />
-		<put-attribute name="left" value="/WEB-INF/pages/common/left_fragment.jsp" />
-		<put-attribute name="right" value="/WEB-INF/pages/common/right_fragment_new.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/dashboard/educator_dashboard.jsp" />
+		<put-attribute name="left"
+			value="/WEB-INF/pages/common/left_fragment.jsp" />
+		<put-attribute name="right"
+			value="/WEB-INF/pages/common/right_fragment_new.jsp" />
 	</definition>
-	
+
 	<!-- Educator courses -->
 	<definition name="mycoursesdraft" extends="commonPageLayoutLatest">
-	  <put-attribute name="page_title" value="My Programs" />
-	  <put-attribute name="body" value="/WEB-INF/pages/courses/myprograms.jsp" /> 
-	 </definition>
-	 
-	 <!-- Educator drafted courses -->
+		<put-attribute name="page_title" value="My Programs" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/courses/myprograms.jsp" />
+	</definition>
+
+	<!-- Educator drafted courses -->
 	<definition name="draftedcourses" extends="commonPageLayoutLatest">
-	  <put-attribute name="page_title" value="My Programs" />
-	  <put-attribute name="body" value="/WEB-INF/pages/courses/myprograms-draft.jsp" /> 
-	 </definition>
-	 
-	 <!-- learner programs -->
+		<put-attribute name="page_title" value="My Programs" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/courses/myprograms-draft.jsp" />
+	</definition>
+
+	<!-- learner programs -->
 	<definition name="learnerdraftedcourses" extends="commonPageLayoutLatest">
-	  <put-attribute name="page_title" value="My Programs" />
-	  <put-attribute name="body" value="/WEB-INF/pages/courses/learnerprograms.jsp" /> 
-	 </definition>
-	
-	
+		<put-attribute name="page_title" value="My Programs" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/courses/learnerprograms.jsp" />
+	</definition>
+
+
 	<!-- New Course Creation -->
 	<definition name="createcourse" extends="commonPageLayoutLatest">
 		<put-attribute name="page_title" value="Course Creation" />
-		<put-attribute name="body" value="/WEB-INF/pages/courses/definecourse.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/courses/definecourse.jsp" />
 	</definition>
-	
+
 	<!-- Edit Course -->
 	<definition name="editcourse" extends="commonPageLayoutLatest">
 		<put-attribute name="page_title" value="Edit Course" />
-		<put-attribute name="body" value="/WEB-INF/pages/courses/coursecreation.jsp" />
-	</definition>
-	
-	<!-- Associate Content Page-->
-	<definition name="createmodule" extends="commonPageLayoutLatest">
-		<put-attribute name="page_title" value="Associate Content" />
-		<put-attribute name="body" value="/WEB-INF/pages/courses/associatecontent.jsp" />
-	</definition>
-	
-	<!-- Enrich Content Page-->
-	<definition name="organizeenrichcontent" extends="commonPageLayoutLatest">
-		<put-attribute name="page_title" value="Enrich Content" />
-		<put-attribute name="body" value="/WEB-INF/pages/courses/enrichcontent.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/courses/coursecreation.jsp" />
 	</definition>
 
-	<!-- Common Error Page-->
+	<!-- Associate Content Page -->
+	<definition name="createmodule" extends="commonPageLayoutLatest">
+		<put-attribute name="page_title" value="Associate Content" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/courses/associatecontent.jsp" />
+	</definition>
+
+	<!-- Enrich Content Page -->
+	<definition name="organizeenrichcontent" extends="commonPageLayoutLatest">
+		<put-attribute name="page_title" value="Enrich Content" />
+		<put-attribute name="body"
+			value="/WEB-INF/pages/courses/enrichcontent.jsp" />
+	</definition>
+
+	<!-- Common Error Page -->
 	<definition name="error-page">
 		<put-attribute name="page_title" value="Error !!" />
 		<put-attribute name="body" value="/WEB-INF/errorPage.jsp" />

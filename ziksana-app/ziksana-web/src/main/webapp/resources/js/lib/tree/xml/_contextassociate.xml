@@ -1,0 +1,15 @@
+<?xml version='1.0' ?>
+<menu id="1">
+		<!-- Menu For the Roort and the First Child Elements -->
+		<item text="Associate Content" img="plus.png"  id="Associate_Content"></item>	
+		<item text="Search and Associate Content" img="find.png"  id="Search_Associate_Content"></item>	
+		
+		
+		<!--Menu For the Second Child Elements -->
+		<item text="View Content" img="view.png"  id="View"></item>	
+		<item text="Edit content" img="edit.png" id="Edit"></item>
+		<item text="Delete content" img="cross.png"  id="Delete"></item>
+		<item text="Enhance content" img="enhance.png"  id="Enhance"></item>	
+	
+</menu>
+

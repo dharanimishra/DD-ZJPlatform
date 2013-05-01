@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link href="${staticFileServer}resources/css/main/styles2.css"
 	rel="stylesheet" type="text/css" media="all" />
@@ -20,6 +20,34 @@
 
 <link href="${staticFileServer}resources/js/tree/styles/styleTree.css"
 	rel="stylesheet" type="text/css" />
+
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/ziksana/coursecreation/define.js"></script>
+<!-- scripts for tree -->
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/gettheme.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/core.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/buttons.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/scrollbar.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/panel.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/dragdrop.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/tree.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/menujq.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/myTree.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/splitter.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/tree/jqxexpander.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${staticFileServer}resources/css/common/tree/menu.css" />
 <script type='text/javascript'
 	src='${staticFileServer}resources/js/lib/jquery/jquery-ui-1.10.1.custom.min.js'></script>
 <script type='text/javascript'
@@ -49,33 +77,7 @@
 	src="${staticFileServer}resources/js/ziksana/ckeditor/adapters/jquery.js"></script>
 
 <script src="${staticFileServer}resources/js/custom/z_common.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/ziksana/coursecreation/define.js"></script>
-<!-- scripts for tree -->
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/gettheme.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/core.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/buttons.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/scrollbar.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/panel.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/dragdrop.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/tree.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/menujq.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/myTree.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/splitter.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/jqxexpander.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="${staticFileServer}resources/css/common/tree/menu.css" />
+
 
 <script
 	src="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/Common/common.js"></script>
@@ -101,15 +103,166 @@
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/spinner/ui.spinner.css" />
 
-<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
 
-	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>  -->
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/spinner/ui.spinner.js"></script>
-
-
 <script
 	src="${staticFileServer}resources/js/jquery.fancybox.pack.2.1.3.js"></script>
+
+<script
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validationen.js"
+	type="text/javascript" charset="utf-8"></script>
+<script
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validation.js"
+	type="text/javascript" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+	function showrich() {
+		$('._richTextShow').css("display", "none");
+		$('#richText').css("display", "none");
+		$('._plainTextShow').show();
+		$('#plainText').css("display", "block");
+	}
+	function showplain() {
+
+		$('._richTextShow').css("display", "block");
+		$('#richText').css("display", "block");
+		$('._plainTextShow').css("display", "none");
+		$('#plainText').css("display", "none");
+	}
+	function getArea() {
+		console.log("get module area...");
+		$
+				.get(
+						'/ziksana-web/zcourse/getsubjectarea',
+						{},
+						function(data) {
+							options = data;
+							var option_string = '';
+							for (i in options) {
+								label = options[i].label;
+								value = options[i].value;
+								if (i == 0) {
+									option = '<option selected="selected" value="' + value
+						+ '">'
+											+ label + '</option>';
+								} else
+									option = '<option value="' + value + '">'
+											+ label + '</option>';
+
+								option_string += option;
+							}
+							$('#Cmoduleareaddl').html(option_string);
+
+						});
+
+		$("#Cmoduleareaddl")
+				.change(
+						function(e) {
+							token = '';
+							request_type = 'GET';
+							uri = '/ziksana-web/zcourse/getsubject';
+
+							var Course_Area = '';
+							Course_Area = $('#Cmoduleareaddl').val();
+							$
+									.get(
+											uri,
+											{
+												'Course_Area' : Course_Area
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												var area_string = '<option selected="selected" value='+Course_Area+'>'
+														+ Course_Area
+														+ '</option>';
+												option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
+													if (i == 0) {
+														option = '<option  value="'
+										+ value
+										+ '">'
+																+ label
+																+ '</option>';
+													} else
+
+														option = '<option value="'
+										+ value
+										+ '">'
+																+ label
+																+ '</option>';
+
+													option_string += option;
+												}
+
+												$('#Cmoduleareaddl').html(
+														area_string);
+												$('#Cmodulesubjectddl').html(
+														option_string);
+
+											});
+							var topic = '<option value="Select Topic">Select Topic</option>';
+							$('#Cmoduletopicddl').html(topic);
+						});
+
+		$("#Cmodulesubjectddl")
+				.change(
+						function(e) {
+							console.log("Inside subject change handler");
+							uri = '/ziksana-web/zcourse/gettopic';
+							token = '';
+							request_type = 'GET';
+							var Course_Subject = $('#Cmodulesubjectddl').val();
+							var parameters = {
+								"Course_Subject" : Course_Subject
+							};
+
+							$
+									.get(
+											uri,
+											{
+												'Course_Subject' : Course_Subject
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
+													if (i == 0) {
+														option = '<option value="'
+										+ value
+										+ '">'
+																+ label
+																+ '</option>';
+													} else
+
+														option = '<option value="'
+										+ value
+										+ '">'
+																+ label
+																+ '</option>';
+
+													option_string += option;
+												}
+
+												$('#Cmoduletopicddl').html(
+														option_string);
+
+											});
+
+						});
+	} // End getArea()
+</script>
 
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
@@ -161,31 +314,19 @@
 				</div>
 				<!--end of lptab1-->
 
-
-
 				<div id="enrichtab" class="lpboxtab1">
-
-
 					<div class="tbboxheadds">
-
 						<p>
 							<img src="${staticFileServer}resources/images/icons/review.png"
 								class="tbboximgds" /><span class="tbboxheadfntds">
 								Enrich </span>
 						</p>
-
 					</div>
 					<!--end of tbboxhead  -->
-
-
 					<div class="tbboxnumds">
-
 						<span class="badge1" style="font-size: 20px;"> 2. </span>
 					</div>
 					<!--end of tbboximg  -->
-
-
-
 					<div class="tbboxdescds">
 
 						<p>Personalize and enrich your content</p>
@@ -254,83 +395,44 @@
 				<li>Define Structure</li>
 				<li>Associate Content</li>
 				<li>Define Assignment</li>
-
 			</ul>
-
 		</div>
 		<!--end of navheadlp-->
-
 		<div class="arrow1"></div>
 		<div class="clearfix"></div>
-
-
 		<div class="progress-bar blue stripes">
 			<span style="width: 20%"></span>
 		</div>
-
-
-
-
 		<div class="clearfix"></div>
-
 		<div class="navnumber">
-
-
 			<ul>
-
 				<li>
 					<div class="circle-outer1">
 						<a class="circle orange1" href="definecourse.html">1</a>
 					</div> <!--circle-outer ends here-->
-
 				</li>
-
 				<li>
 					<div class="circle-outer0" style="margin-left: 30px;">
 						<a class="circle orange0" href="definestructure.html">2</a>
 					</div> <!--circle-outer ends here-->
-
 				</li>
-
 				<li>
 					<div class="circle-outer0">
 						<a class="circle orange0" href="associatecontent.html">3</a>
 					</div> <!--circle-outer ends here-->
-
 				</li>
-
 				<li>
 					<div class="circle-outer0" style="margin-left: 50px;">
 						<a class="circle orange0" href="defineassignment.html">4</a>
 					</div> <!--circle-outer ends here-->
-
 				</li>
-
-
 			</ul>
 		</div>
 		<!--end of navnumber-->
 
 		<div class="clearfix"></div>
-
-
-
-
 	</div>
 	<!--End of subnavlink -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<div id="definestructureformcontainer">
 
 		<div class="page-header"
@@ -361,83 +463,63 @@
 
 					<div class="splitter-panel">
 						<div class="addmodulecontainer" style="padding: 10px;">
-							<form action="#linkurl" class="form-horizontal">
+							<form id="AddModule" method="post" class="form-horizontal">
+								<input type="hidden" id="courseid" value="${courseId}" /> <input
+									type="hidden" id="courseLearningComponentId" value="" /> <input
+									type="hidden" id="parentLearningComponentId" value="" /> <input
+									type="hidden" id="learningComponentId" value="" />
 								<!--module form-->
-
 								<!--Course Name-->
-
 								<div class="control-group">
-
 									<label class="control-label nexaf" for="Course Name">Module
 										Name :</label>
 									<div class="controls">
-										<input type="text" class="span6" id="Module_Name"
+										<input type="text" class="span6" id="Course_Module"
 											placeholder="Course Name" style="margin-left: -45px;" />
 									</div>
 								</div>
 
 								<!--end of course name-->
 
-
-								<label for="Course Description" class="nexaf">Module
-									Description :</label>
-
-
-
-								<textarea placeholder="Module Description"
-									name="Module_Description" rows="5" id="Module_Description"
-									style="width: 95%"></textarea>
-								<!--<textarea id="Module_ckeditor"  class="span6" style="height: 300px;"></textarea>-->
-
-
-
-
-
-								<!--Course Selection-->
-
-
+								<br /> <label for="Course Description" class="labelclass"
+									style="font-weight: bold;"><b>Course Description :</b></label>
+								<a class="f-r _plainText" id="plainText" href="#linkurl"
+									style="text-decoration: none;" onclick="showplain()">Rich
+									Text Editor</a> <a class="f-r _richText" id="richText"
+									href="#linkurl" style="text-decoration: none; display: none;"
+									onclick="showrich()">Plain Text Editor</a>
+								<textarea cols="124" rows="8" id="Module_Description"
+									class="_plainTextShow defaultvaluem labelclass"
+									style="width: 100%; color: #666;"> 
+											</textarea>
+								<br />
+								<div class="_richTextShow" style="display: none;">
+									<textarea id="Cmoduledescrte" name="editor1pageload"
+										class="defaultvalue _focus">
+													<b>Describe the Module being created</b>
+												</textarea>
+								</div>
+								<script type="text/javascript">
+									CKEDITOR.replace('Cmoduledescrte');
+								</script>
 								<div class="control-group" style="margin-top: 20px;">
-
 									<div>
 										<label class="labelclass nexaf f-l"> Module Area : </label> <label
 											class="labelclass nexaf f-l" style="margin-left: 130px;">
 											Module Subject: </label> <label class="labelclass nexaf f-l"
 											style="margin-left: 110px;"> Module Topic: </label>
 									</div>
-
 									<div class="clearfix"></div>
-
-
 									<div class="moduleselection">
-										<select name="s_example" class="select">
+										<select name="Cmoduleareaddl" id="Cmoduleareaddl"
+											class="defaultvalue labelclass" onclick="getArea();">
 											<option value="0">choose a option...</option>
-											<option value="1">Computer science</option>
-											<option value="2">Philosophy and psychology</option>
-											<option value="3">Religion</option>
-											<option value="4">Social science</option>
-											<option value="5">Technology and applied science</option>
-											<option value="6">Literature</option>
-											<option value="7">History and geography</option>
-										</select> <select name="s_example" class="select"
-											style="margin-right: 30px;">
+										</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl"
+											class="defaultvalue labelclass" style="margin-right: 30px;">
 											<option value="0">choose a option...</option>
-											<option value="1">Computer science</option>
-											<option value="2">Philosophy and psychology</option>
-											<option value="3">Religion</option>
-											<option value="4">Social science</option>
-											<option value="5">Technology and applied science</option>
-											<option value="6">Literature</option>
-											<option value="7">History and geography</option>
-										</select> <select name="s_example" class="select"
-											style="margin-right: 0px;">
+										</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"
+											class="defaultvalue labelclass" style="margin-right: 0px;">
 											<option value="0">choose a option...</option>
-											<option value="1">Computer science</option>
-											<option value="2">Philosophy and psychology</option>
-											<option value="3">Religion</option>
-											<option value="4">Social science</option>
-											<option value="5">Technology and applied science</option>
-											<option value="6">Literature</option>
-											<option value="7">History and geography</option>
 										</select>
 
 									</div>
@@ -445,23 +527,17 @@
 
 								</div>
 								<!--end of Subject Selection-->
-
-
-
 								<div class="control-group" style="width: 72%">
 									<label class="control-label nexaf" for="Specify Tags"
 										style="width: 120px;">Specify Tags :</label>
 									<div class="controls" style="margin-left: 120px;">
-										<input type="text" class="tags"
-											value="Computer Science, Literature, History" />
+										<input id="Addmoduletag" type="text" class="tags" value="" />
 									</div>
 								</div>
-
-
-
 								<button class="btn f-r" type="button"
 									style="margin-right: 10px;">Cancel</button>
 								<button class="btn f-r" type="button"
+									onClick="getaddmodulesave();return false;"
 									style="margin-right: 20px;">Submit</button>
 
 								<div class="Clearfix"></div>
@@ -492,29 +568,5 @@
 <button class="btn f-r" type="button" style="margin-right: 30px;">Save
 	and Continue</button>
 <div class="Clearfix"></div>
-
-</div>
-<!--end of leftpanel-->
-
-
-</section>
-<!--end of section leftpanel-->
-
-
 <div class="Clearfix"></div>
-
-
-</div>
-<!--end of body wrapper-->
-
-</div>
-
-
-<script>
-	var ckeditor = CKEDITOR.replace('Module_Description');
-	CKEDITOR.disableAutoInline = true;
-	CKEDITOR.inline('editable');
-</script>
-
-
 

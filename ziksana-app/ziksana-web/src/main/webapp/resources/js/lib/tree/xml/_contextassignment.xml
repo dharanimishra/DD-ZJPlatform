@@ -1,0 +1,20 @@
+<?xml version='1.0' ?>
+<menu id="1">
+		<!-- Menu For the Roort and the First Child Elements -->
+		<item text="Define Assignment" img="plus.png"  id="Define_Assignment"></item>	
+		
+		
+		<!--Menu For the Assignment Created By the Root and First child Element -->
+		<item text="Add Test" img="plus.png"  id="Add_test"></item>	
+		<item text="View Asssignment" img="View.png"  id="View_assignment"></item>
+		<item text="Edit Assignment" img="edit.png" id="Edit_assignment"></item>
+		<item text="Delete content" img="cross.png"  id="Delete_assignment"></item>
+		
+		
+		<!--Menu For the Test Created By the Menu on The Assignment-->
+		<item text="Associate Questions" img="plus.png"  id="Associate_Question"></item>	
+		<item text="View Test Detail" img="View.png"  id="View_test_detail"></item>
+		<item text="Edit Test detail" img="edit.png" id="Edit_test_detail"></item>
+		<item text="Delete Test" img="cross.png"  id="Delete_test"></item>	
+</menu>
+
