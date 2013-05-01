@@ -1,7 +1,9 @@
 package com.ziksana.connection
 {
 	import com.ziksana.events.CustomEvent;
+	import com.ziksana.util.Logger;
 	
+	import flash.events.AsyncErrorEvent;
 	import flash.events.NetStatusEvent;
 	import flash.events.SecurityErrorEvent;
 	import flash.media.Camera;
@@ -50,7 +52,7 @@ package com.ziksana.connection
 		 *
 		 * @return Success or failure Boolean
 		 *
-		 * @see RegisterNetConnectionEvents
+		 * @see RegisterEvents
 		 */
 
 		private function InitNetConnection () : Boolean
@@ -63,7 +65,7 @@ package com.ziksana.connection
 			if (!m_NetConnection)
 				return false;
 
-			RegisterNetConnectionEvents();
+			RegisterEvents();
 			
 			return true;
 		}
@@ -77,9 +79,10 @@ package com.ziksana.connection
 		}
 		
 		
-		private function RegisterNetConnectionEvents () : Boolean
+		private function RegisterEvents () : Boolean
 		{
 			//Register net connection status events here
+			m_NetConnection.addEventListener (AsyncErrorEvent.ASYNC_ERROR, AsyncErrorEventHandler);
 			m_NetConnection.addEventListener (NetStatusEvent.NET_STATUS, NetConnectionStatusHandler);
 			m_NetConnection.addEventListener(SecurityErrorEvent.SECURITY_ERROR, securityErrorHandler);
 			m_NetConnection.client = { onBWDone: function():void{ } };
@@ -115,30 +118,53 @@ package com.ziksana.connection
 			if (IsConnected())
 			{
 				m_NetConnection.close();
+				m_NetConnection.removeEventListener (AsyncErrorEvent.ASYNC_ERROR, AsyncErrorEventHandler);
 				m_NetConnection.removeEventListener (NetStatusEvent.NET_STATUS, NetConnectionStatusHandler);
 				m_NetConnection.removeEventListener (SecurityErrorEvent.SECURITY_ERROR, securityErrorHandler);
 			}
 		}
 		
 			
+		public function AsyncErrorEventHandler(event:AsyncErrorEvent):void 
+		{
+			trace("RTMPConnection::AsyncErrorEventHandler ==> EVENT_TEXT = " + event.text);
+		}
+		
 		//// COMMON STATUS HANDLER - NET CONNECTION AND NET STREAM ///////
 		private function NetConnectionStatusHandler (event : NetStatusEvent) : void 
 		{
-			trace("RTMPConnection::NetConnectionStatusHandler ==> EVENT INFO CODE = " + event.info.code);
+			trace("RTMPConnection::NetConnectionStatusHandler ==> EVENT_INFO_LEVEL = " + event.info.level + " EVENT INFO CODE = " + event.info.code);
 			switch (event.info.code) 
 			{
 				case "NetConnection.Connect.Success":
+					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Successfully established connection");
 					InitNetStream();
 					if (m_OnConnectionStatusEvent)
 						m_OnConnectionStatusEvent.DispatchEvent();
 					break;
 				case "NetConnection.Connect.Failed":
+					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Failed to establish connection");
+					break;
+				case "NetConnection.Connect.Rejected":
+					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Connection Rejected", Logger.LOG_LEVEL_ERROR);
 					break;
 				case "NetStream.Play.Start":
+					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Playing Video");
 					break;
 				case "NetStream.Play.Stop": 
+					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Stopping Video");
 					break; 
 				case "NetStream.Play.StreamNotFound" :
+					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Stream not found");
+					break;
+				case "NetStream.Publish.Start" :
+					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Publishing Video");
+					break;
+				case "NetStream.Record.Start" :
+					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Recording Video");
+					break;
+				case "NetStream.Publish.BadName" :
+					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Stream Name is already used");
 					break;
 				default:
 					for (var prop:Object in event) 
@@ -218,6 +244,7 @@ package com.ziksana.connection
 		private function RegisterNetStreamEvents () : Boolean
 		{
 			m_NetStream.addEventListener(NetStatusEvent.NET_STATUS, NetConnectionStatusHandler);
+			m_NetStream.addEventListener (AsyncErrorEvent.ASYNC_ERROR, AsyncErrorEventHandler);
 			
 			// Add bandwidth detection handlers on the NetConnection Client to
 			// prevent Reference Errors at runtime when using the "live" and "vod" applications.          

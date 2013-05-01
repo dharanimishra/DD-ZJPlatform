@@ -65,7 +65,7 @@ package com.ziksana.util
 		{
 			var localContent : Content = new DocumentContent ();
 			
-			localContent.Load("");
+			//localContent.Load();
 		}
 		
 		private function TestRTMPConnection () : void
@@ -89,8 +89,8 @@ package com.ziksana.util
 		{
 			var localContent : Content = new VideoContent ();
 			
-			localContent.Load ("http://54.243.235.88/1.flv");
-			VideoContent(localContent).StartPlayback();
+			//localContent.Load ("http://54.243.235.88/1.flv");
+			//VideoContent(localContent).StartPlayback();
 		}
 	}
 }

@@ -13,9 +13,11 @@ package com.ziksana.player
 
 	public class VideoViewer extends ContentViewer
 	{
-		private var m_VideoContainer : Video = new Video();
+		private var m_VideoContainer : Video = new Video(320, 240);
 		private var m_ContentLoadEvent : CustomEvent = null;
 		private var m_VideoRecorder : VideoRecorder = null;
+		//public static const DEFAULT_CONNECTION_URL : String = "rtmp://video.beta.ziksana.com/oflaDemo";
+		public static const DEFAULT_CONNECTION_URL : String = "rtmp://54.243.235.88/oflaDemo";
 		
 		public function VideoViewer(contentObj : Content, contentDisplayObject : MovieClip)
 		{
@@ -27,7 +29,9 @@ package com.ziksana.player
 		
 		public override function Load () : void
 		{
-			//SetContent ();
+			UpdateUI();
+			
+			SetContent ();
 			//m_Content.Load();
 			m_VideoRecorder.Load();
 		}
@@ -39,10 +43,13 @@ package com.ziksana.player
 		private function SetContent () : void
 		{
 			var m_VideoURLArray:Array = new Array ();
+			m_VideoURLArray.push(DEFAULT_CONNECTION_URL);
 
-			m_VideoURLArray.push("http://54.243.235.88/3.flv");
+			//m_VideoURLArray.push("http://54.243.235.88/3.flv");
+			//m_VideoURLArray.push("d:\\3.flv");
 			
-			m_Content.SetContentURL(m_VideoURLArray);
+			//m_Content.SetContentURL(m_VideoURLArray);
+			m_VideoRecorder.SetContentURL(m_VideoURLArray);
 		}
 
 		private function UpdateUI():void
@@ -50,19 +57,18 @@ package com.ziksana.player
 			m_ContentDisplayObject.graphics.clear();
 			m_ContentDisplayObject.graphics.beginFill(0x999999, 0.8);
 			m_ContentDisplayObject.graphics.drawRoundRectComplex(m_Left, m_Top, m_Width, m_Height, 0, 0, 0, 0);
-			
-			m_VideoContainer.x = m_Left;
-			m_VideoContainer.y = m_Top;
-			
 			m_ContentDisplayObject.graphics.endFill();
 			
 			m_ContentDisplayObject.addChild(m_VideoContainer);
+			
+			m_VideoContainer.x = m_Left;
+			m_VideoContainer.y = m_Top;
 		}
 		
 		private function RegisterContentEvents () : void
 		{
-			addEventListener(EventsList.CONTENT_TYPE_VIDEO_LOAD, OnContentLoadEvent);
-			m_ContentLoadEvent = new CustomEvent(EventsList.CONTENT_TYPE_VIDEO_LOAD, this, this);
+			addEventListener(EventsList.CONTENT_TYPE_VIDEO_RECORD, OnContentLoadEvent);
+			m_ContentLoadEvent = new CustomEvent(EventsList.CONTENT_TYPE_VIDEO_RECORD, this, this);
 			
 			m_VideoRecorder.RegisterOnCompletionEvent(m_ContentLoadEvent);
 			//m_Content.RegisterOnCompletionEvent(m_ContentLoadEvent);
@@ -77,8 +83,6 @@ package com.ziksana.player
 		public function OnContentLoadEvent (contentLoadEvent : CustomEvent) : void
 		{
 			var param : Object = contentLoadEvent.GetEventParam();
-			
-			UpdateUI();
 			
 			m_VideoRecorder.AttachStreamOutputContainer(m_VideoContainer);
 			

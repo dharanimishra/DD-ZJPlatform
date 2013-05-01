@@ -44,6 +44,14 @@ package com.ziksana.content
 		{
 		}
 		
+		public function GetContentURL (index : int) : String
+		{
+			if (m_ContentURLArray.length > index)
+				return m_ContentURLArray[index];
+			
+			return "";
+		}
+		
 		public function SetContentURL (contentURLArray : Array) : void
 		{
 			m_ContentURLArray = contentURLArray.slice();

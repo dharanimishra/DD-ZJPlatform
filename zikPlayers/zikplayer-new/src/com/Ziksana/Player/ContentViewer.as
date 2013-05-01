@@ -60,5 +60,9 @@ package com.ziksana.player
 		{
 			m_Content.SetCurrentPosition (m_Content.GetCurrentPosition() - 1);
 		}
+		
+		public function SetVisible (visible : Boolean) : void
+		{
+		}
 	}
 }

@@ -15,20 +15,24 @@ package com.ziksana.content
 
 	public class VideoRecorder  extends EventDispatcher implements ContentGenerator
 	{
-		private var m_ConnectionMGR : ConnectionFactory;
-		private var m_VideoContent : VideoContent = null;
 		private var m_Connection : IConnection;
+		private var m_VideoContent : VideoContent = null;
+		
 		private var m_VideoConnectionEvent : CustomEvent = null;
-		private var m_VideoStreamConnectionEvent : CustomEvent = null;
-		protected var m_Camera : Camera = Camera.getCamera();
-		protected var m_Microphone : Microphone;
-		private var m_ContentLoadEvent : CustomEvent;
+		private var m_VideoConnectionParentNotifyEvent : CustomEvent;
+		
+		private var m_VideoCamera : Camera = null;
+		private var m_Microphone : Microphone = null;
 		
 		public function VideoRecorder()
 		{
 			m_VideoContent = new VideoContent();
-			m_Camera = Camera.getCamera();
+			m_VideoCamera = Camera.getCamera();
 			m_Microphone = Microphone.getMicrophone();
+			
+			//For now use best quality and 320, 240 resolution
+			m_VideoCamera.setQuality(0, 100);
+			m_VideoCamera.setMode(320, 240, 30);
 		}
 
 		public function Load () : Boolean
@@ -47,19 +51,15 @@ package com.ziksana.content
 				m_VideoConnectionEvent = new CustomEvent(EventsList.VIDEO_CONNECTION_EVENT, this, this);
 				m_Connection.RegisterOnConnectionStatusEvent(m_VideoConnectionEvent);
 				
-				addEventListener(EventsList.VIDEO_STREAM_CONNECTION_EVENT, OnVideoStreamConnectionEvent);
-				m_VideoStreamConnectionEvent = new CustomEvent(EventsList.VIDEO_STREAM_CONNECTION_EVENT, this, this);
-				m_Connection.RegisterOnStreamStatusEvent(m_VideoConnectionEvent);
-				
-				retVal = m_Connection.Connect(null);
+				retVal = m_Connection.Connect(m_VideoContent.GetContentURL(0));
 				if (retVal)
-					Logger.WriteMessage ("DocumentContent::DownloadImage ==> Successfully established connection to RTMP server.");
+					Logger.instance.WriteMessage ("DocumentContent::DownloadImage ==> Successfully established connection to RTMP server.");
 				else
-					Logger.WriteMessage ("DocumentContent::DownloadImage ==> Failed to establish connection to RTMP server.");
+					Logger.instance.WriteMessage ("DocumentContent::DownloadImage ==> Failed to establish connection to RTMP server.");
 			}
 			catch (errorCode : Error)
 			{
-				Logger.WriteMessage ("DocumentContent::Load ==> Error while calling function, Error Code : " + errorCode.errorID + " Error Description : " + errorCode.message)
+				Logger.instance.WriteMessage ("DocumentContent::Load ==> Error while calling function, Error Code : " + errorCode.errorID + " Error Description : " + errorCode.message)
 				return false;
 			}
 			
@@ -90,31 +90,27 @@ package com.ziksana.content
 				var recordingFileName : String;
 				recordingFileName = Util.GenerateRecordingFileName();
 				
-				m_Connection.AttachStreamInputSource(StreamSourceType.STREAM_SOURCE_TYPE_VIDEO, m_Camera);
+				m_Connection.AttachStreamInputSource(StreamSourceType.STREAM_SOURCE_TYPE_VIDEO, m_VideoCamera);
 				m_Connection.AttachStreamInputSource(StreamSourceType.STREAM_SOURCE_TYPE_AUDIO, m_Microphone);
 				
 				m_Connection.StartRecording(recordingFileName);
 				
-				if (m_ContentLoadEvent)
-					m_ContentLoadEvent.DispatchEvent();
+				//Notify parent that we have started video recording.
+				if (m_VideoConnectionParentNotifyEvent)
+					m_VideoConnectionParentNotifyEvent.DispatchEvent();
 			}
-		}
-		
-		public function OnVideoStreamConnectionEvent (contentLoadEvent : CustomEvent) : void
-		{
-			var param : Object = contentLoadEvent.GetEventParam();
 		}
 		
 		public function AttachStreamOutputContainer (streamOutputContainer : Object) : void
 		{
 			//if (m_Connection)
 			//	m_Connection.AttachStreamOutputContainer(streamOutputContainer);
-			streamOutputContainer.attachCamera(m_Camera);
+			streamOutputContainer.attachCamera(m_VideoCamera);
 		}
 		
 		public function RegisterOnCompletionEvent (contentLoadEvent : CustomEvent) : void
 		{
-			m_ContentLoadEvent = contentLoadEvent;
+			m_VideoConnectionParentNotifyEvent = contentLoadEvent;
 		}
 	}
 }

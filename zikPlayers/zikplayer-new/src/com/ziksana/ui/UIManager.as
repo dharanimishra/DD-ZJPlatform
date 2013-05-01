@@ -8,20 +8,23 @@ package com.ziksana.ui
 	import com.ziksana.player.VideoViewer;
 	import com.ziksana.skin.PlayerSkin;
 	import com.ziksana.skin.SkinParser;
+	import com.ziksana.util.Logger;
 	
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
-	public class EnhanceUIManager
+	public class UIManager
 	{
 		private var m_Stage : Stage;
 		
 		private var m_Contents : Array = new Array();
 		private var m_ContentViewers : Array = new Array ();
 		private var m_ContentMovieClip : Array = new Array ();
+		
 		private var m_NumberOfContents : int = 0;
 		private var m_Background : MovieClip = null;
 		private var m_NumberOfLayers : int = 0;
@@ -29,7 +32,7 @@ package com.ziksana.ui
 		private static const BACKGROUND_X : uint = 5;
 		private static const BACKGROUND_Y : uint = 5;
 		
-		public function EnhanceUIManager()
+		public function UIManager()
 		{
 		}
 		
@@ -60,6 +63,16 @@ package com.ziksana.ui
 			SetCoordinates();
 			
 			LoadViewers();
+			
+			m_Stage.addEventListener (MouseEvent.MOUSE_MOVE, OnMouseMove);
+		}
+		
+		
+		private function OnMouseMove (mouseEvent : MouseEvent) : void 
+		{
+			Logger.instance.WriteMessage("DocumentViewer::OnMouseMove ==> " + "X = " + mouseEvent.localX + "Y = " + mouseEvent.localY);
+			if (mouseEvent.localX <= 1)
+				m_ContentViewers[2].SetVisible(true);
 		}
 		
 		private function CreateContents () : void

@@ -46,13 +46,13 @@ package com.ziksana.content
 				
 				retVal = m_Connection.Connect(null);
 				if (retVal)
-					Logger.WriteMessage ("DocumentContent::DownloadImage ==> Successfully established connection to RTMP server.");
+					Logger.instance.WriteMessage ("DocumentContent::DownloadImage ==> Successfully established connection to RTMP server.");
 				else
-					Logger.WriteMessage ("DocumentContent::DownloadImage ==> Failed to establish connection to RTMP server.");
+					Logger.instance.WriteMessage ("DocumentContent::DownloadImage ==> Failed to establish connection to RTMP server.");
 			}
 			catch (errorCode : Error)
 			{
-				Logger.WriteMessage ("DocumentContent::Load ==> Error while calling function, Error Code : " + errorCode.errorID + " Error Description : " + errorCode.message)
+				Logger.instance.WriteMessage ("DocumentContent::Load ==> Error while calling function, Error Code : " + errorCode.errorID + " Error Description : " + errorCode.message)
 				return false;
 			}
 			
@@ -89,22 +89,6 @@ package com.ziksana.content
 		{
 			//Need to get specific position data here.
 			return null;
-		}
-		
-		//Implement display methods too here.
-		public function InitDisplay () : void
-		{
-			
-		}
-		
-		public function DrawContent () : void
-		{
-		
-		}
-		
-		public function ClearDrawArea () : void
-		{
-			
 		}
 		
 		public function StartPlayback () : void

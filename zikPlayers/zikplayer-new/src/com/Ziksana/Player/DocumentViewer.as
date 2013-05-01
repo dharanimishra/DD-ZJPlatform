@@ -24,7 +24,7 @@ package com.ziksana.player
 		private static const CHILD_MOVETOPREVIOUSIMAGE_BUTTON_INDEX : uint = 2;
 		private static const CHILD_MOVETONEXTIMAGE_BUTTON_INDEX : uint = 3;
 		
-		private var m_PageContainer : MovieClip = new MovieClip();
+		private var m_DocumentPage : MovieClip = new MovieClip();
 		private var m_ContentLoadEvent : CustomEvent = null;
 		
 		private var m_LastImageDrawn : DisplayObject = null;
@@ -34,7 +34,7 @@ package com.ziksana.player
 		public function DocumentViewer(contentObj : Content, contentDisplayObject : MovieClip)
 		{
 			super(contentObj, contentDisplayObject);
-			m_ContentDisplayObject.addChild(m_PageContainer);
+			m_ContentDisplayObject.addChild(m_DocumentPage);
 			
 			//up arrow
 			//down arrow
@@ -55,6 +55,8 @@ package com.ziksana.player
 		private function SetContent () : void
 		{
 			var m_ImageURLArray:Array = new Array ();
+			
+			//Download images here
 			/*
 			var currentImage : int;
 			var numberOfImages : int;
@@ -96,10 +98,10 @@ package com.ziksana.player
 			m_ContentLoadEvent = new CustomEvent(EventsList.CONTENT_TYPE_IMAGE_LOAD, this, this);
 			m_Content.RegisterOnCompletionEvent(m_ContentLoadEvent);
 			
-			m_PageContainer.addEventListener (MouseEvent.MOUSE_DOWN, OnPageContainerMouseDown);
-			m_PageContainer.addEventListener (MouseEvent.MOUSE_MOVE, OnPageContainerMouseMove);
-			m_PageContainer.addEventListener (MouseEvent.MOUSE_UP, OnPageContainerMouseUp);
-			m_PageContainer.addEventListener (MouseEvent.MOUSE_OUT, OnPageContainerMouseUp);
+			m_DocumentPage.addEventListener (MouseEvent.MOUSE_DOWN, OnPageContainerMouseDown);
+			m_DocumentPage.addEventListener (MouseEvent.MOUSE_MOVE, OnPageContainerMouseMove);
+			m_DocumentPage.addEventListener (MouseEvent.MOUSE_UP, OnPageContainerMouseUp);
+			m_DocumentPage.addEventListener (MouseEvent.MOUSE_OUT, OnPageContainerMouseUp);
 		}
 		
 		private function DisplayContentData () : void
@@ -121,31 +123,31 @@ package com.ziksana.player
 			
 			if (m_LastImageDrawn)
 			{
-				m_PageContainer.removeChild(m_LastImageDrawn);
+				m_DocumentPage.removeChild(m_LastImageDrawn);
 				m_LastImageDrawn = null;
 			}
 			if (m_LastImageMask)
 			{
-				m_PageContainer.removeChild(m_LastImageMask);
+				m_DocumentPage.removeChild(m_LastImageMask);
 				m_LastImageMask = null;
 			}
 			
 			var imageMask:Sprite      = new Sprite();
 			imageMask.graphics.beginFill( 0xFF6600, 0 );  
 			imageMask.graphics.drawRoundRectComplex(m_Left, m_Top, m_Width, m_Height, 6, 6, 6, 6);
-			m_LastImageDrawn = m_PageContainer.addChildAt (imageMask, CHILD_IMAGEMASK_INDEX);
+			m_LastImageDrawn = m_DocumentPage.addChildAt (imageMask, CHILD_IMAGEMASK_INDEX);
 			
 			imageToDraw.mask = imageMask;
-			m_LastImageMask = m_PageContainer.addChildAt(imageToDraw, CHILD_IMAGECONTENT_INDEX);
+			m_LastImageMask = m_DocumentPage.addChildAt(imageToDraw, CHILD_IMAGECONTENT_INDEX);
 		}
 		
 		private function AddNavigationButtons () : void
 		{
 			var buttonExist : Boolean = false;
-			if (m_PageContainer.numChildren >= 4)
+			if (m_DocumentPage.numChildren >= 4)
 			{
-				buttonExist =  m_PageContainer.getChildAt(CHILD_MOVETOPREVIOUSIMAGE_BUTTON_INDEX) &&
-					m_PageContainer.getChildAt(CHILD_MOVETONEXTIMAGE_BUTTON_INDEX);
+				buttonExist =  m_DocumentPage.getChildAt(CHILD_MOVETOPREVIOUSIMAGE_BUTTON_INDEX) &&
+					m_DocumentPage.getChildAt(CHILD_MOVETONEXTIMAGE_BUTTON_INDEX);
 			}
 					
 			if (!buttonExist)
@@ -165,8 +167,8 @@ package com.ziksana.player
 				previousButtonClip.addEventListener(MouseEvent.CLICK, OnGoToPreviousImage);
 				nextButtonClip.addEventListener(MouseEvent.CLICK, OnGoToNextImage);
 
-				m_PageContainer.addChildAt(previousButtonClip, CHILD_MOVETOPREVIOUSIMAGE_BUTTON_INDEX);
-				m_PageContainer.addChildAt(nextButtonClip, CHILD_MOVETONEXTIMAGE_BUTTON_INDEX);
+				m_DocumentPage.addChildAt(previousButtonClip, CHILD_MOVETOPREVIOUSIMAGE_BUTTON_INDEX);
+				m_DocumentPage.addChildAt(nextButtonClip, CHILD_MOVETONEXTIMAGE_BUTTON_INDEX);
 			}
 		}
 		

@@ -2,10 +2,14 @@ package com.ziksana.player
 {
 	import com.nocircleno.graffiti.GraffitiCanvas;
 	import com.ziksana.content.Content;
+	import com.ziksana.events.CustomEvent;
+	import com.ziksana.events.EventsList;
 	import com.ziksana.player.ContentViewer;
+	import com.ziksana.util.Logger;
 	
 	import flash.display.Bitmap;
 	import flash.display.MovieClip;
+	import flash.events.MouseEvent;
 	
 	public class ScribbleViewer extends ContentViewer
 	{
@@ -49,6 +53,7 @@ package com.ziksana.player
 		{
 			super(contentObj, contentDisplayObject);
 			InitScribbler ();
+			RegisterEvents();
 		}
 		
 		private function InitScribbler () : void
@@ -117,6 +122,15 @@ package com.ziksana.player
 			}
 		}		
 		
+		
+		private function RegisterEvents () : void
+		{
+			m_ToolBar.addEventListener (MouseEvent.MOUSE_DOWN, OnPageContainerMouseDown);
+			m_ToolBar.addEventListener (MouseEvent.MOUSE_MOVE, OnPageContainerMouseMove);
+			m_ToolBar.addEventListener (MouseEvent.MOUSE_UP, OnPageContainerMouseUp);
+			m_ToolBar.addEventListener (MouseEvent.MOUSE_OUT, OnPageContainerMouseOut);
+		}
+		
 		private function CreateToolBar () : void
 		{
 			m_ToolBar = new MovieClip ();
@@ -133,6 +147,35 @@ package com.ziksana.player
 			buttonClip.addChild(buttonBitmap);
 			
 			return buttonClip;
+		}
+		
+		public override function SetVisible (visible : Boolean) : void
+		{
+			m_Scribbler.visible = visible;
+			//m_ToolBar.visible = visible; 
+		}
+		
+		private function OnPageContainerMouseDown (mouseEvent : MouseEvent) : void 
+		{
+			//Logger.instance.WriteMessage("ScribbleViewer::OnMouseDown ==> " + "X = " + mouseEvent.localX + "Y = " + mouseEvent.localY); 
+		}
+		
+		private function OnPageContainerMouseUp (mouseEvent : MouseEvent) : void 
+		{
+			//Logger.instance.WriteMessage("ScribbleViewer::OnMouseUp ==> " + "X = " + mouseEvent.localX + "Y = " + mouseEvent.localY);
+		}
+		
+		private function OnPageContainerMouseMove (mouseEvent : MouseEvent) : void 
+		{
+			//Logger.instance.WriteMessage("ScribbleViewer::OnMouseMove ==> " + "X = " + mouseEvent.localX + "Y = " + mouseEvent.localY);
+			//if (mouseEvent.localX <= 5)
+			//	SetVisible(true);
+		}
+		
+		private function OnPageContainerMouseOut (mouseEvent : MouseEvent) : void 
+		{
+			Logger.instance.WriteMessage("ScribbleViewer::OnMouseOut ==> " + "X = " + mouseEvent.localX + "Y = " + mouseEvent.localY);
+			SetVisible(false);
 		}
 	}
 }

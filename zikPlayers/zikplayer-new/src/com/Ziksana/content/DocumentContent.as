@@ -31,7 +31,7 @@ package com.ziksana.content
 			}
 			catch (errorCode : Error)
 			{
-				Logger.WriteMessage ("DocumentContent::Load ==> Error while calling function, Error Code : " + errorCode.errorID + " Error Description : " + errorCode.message)
+				Logger.instance.WriteMessage ("DocumentContent::Load ==> Error while calling function, Error Code : " + errorCode.errorID + " Error Description : " + errorCode.message)
 				return false;
 			}
 
@@ -59,12 +59,13 @@ package com.ziksana.content
 		{
 			var imageLoaderInfo :LoaderInfo = LoaderInfo(e.target);
 			
-			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Image [" + (m_NumberOfPosition+1) + "] Loaded    ------------------");
-			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Content Type    = " + imageLoaderInfo.contentType);
-			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Number of Bytes = " + imageLoaderInfo.bytesLoaded);
-			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Width           = " + imageLoaderInfo.width);
-			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Container       = " + imageLoaderInfo.loaderURL);
-			Logger.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> -------------------------------------------------------------------");
+			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Image [" + (m_NumberOfPosition+1) + "] Loaded    ------------------");
+			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Content Type    = " + imageLoaderInfo.contentType);
+			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Number of Bytes = " + imageLoaderInfo.bytesLoaded);
+			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Height           = " + imageLoaderInfo.height);
+			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Width           = " + imageLoaderInfo.width);
+			//Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Container       = " + imageLoaderInfo.loaderURL);
+			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> -------------------------------------------------------------------");
 			
 			m_ImageArray.push(e.target.content);
 			m_NumberOfPosition++;
