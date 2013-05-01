@@ -267,10 +267,10 @@ $(document)
 
 function getaddmodulesave() {
 
-	validation = jQuery("#AddModule").validationEngine('validate');
-	if (validation == true) {
+//	validation = jQuery("#AddModule").validationEngine('validate');
+//	if (validation == true) {
 		// Step 1: Assign Parameters required by the sendMessage function.
-		$('#Btnsbtcmodule').attr('disabled', 'disabled'); // disables the
+		//$('#Btnsbtcmodule').attr('disabled', 'disabled'); // disables the
 
 		uri = '/ziksana-web/zcourse/savelearningcomponent';
 
@@ -288,29 +288,23 @@ function getaddmodulesave() {
 
 		var learningComponentId = $('#learningComponentId').val();
 
-		var Module_Name = $('#Cmoduletxtbox').val();
+		var Module_Name = $('#Course_Module').val();
 		var Module_Description;
 
 		if (CKEDITOR.instances['Cmoduledescrte'] == undefined) {
-			Module_Description = $('#Cmoduledesc').val();
+			Module_Description = $('#Module_Description').val();
 		} else {
 			Module_Description = CKEDITOR.instances['Cmoduledescrte'].getData();
 		}
-		var valid = $('#addmodulecheckbox').is(':checked');
-		if (valid == true) {
-			Learning_Object = 1;
-		} else {
-			Learning_Object = 0;
-		}
-
+		
 		var Subject_Area = $('#Cmoduleareaddl').val();
 		var Subject = $('#Cmodulesubjectddl').val();
 		var Topic = $('#Cmoduletopicddl').val();
-		var Moduletag_Field = $('#Addmoduletag1').val();
-		var Module_Weight = $('#Cmoduleweight').val();
-		var Module_Duration = $('#Cmoduleduration').val();
-		var ModuleDuration_Type = $('#Cmoduleunits').val();
-		var Assoc_Image = $('#Cmoduleimgupl').val();
+		var Moduletag_Field = $('#Addmoduletag').val();
+//		var Module_Weight = $('#Cmoduleweight').val();
+//		var Module_Duration = $('#Cmoduleduration').val();
+//		var ModuleDuration_Type = $('#Cmoduleunits').val();
+//		var Assoc_Image = $('#Cmoduleimgupl').val();
 
 		var parameters = {
 			"Course_id" : course_id,
@@ -322,12 +316,12 @@ function getaddmodulesave() {
 			"Subject_Area" : Subject_Area,
 			"Subject" : Subject,
 			"Topic" : Topic,
-			"Moduletag_Field" : Moduletag_Field,
-			"Learning_Object" : Learning_Object,
-			"Module_Weight" : Module_Weight,
-			"Module_Duration" : Module_Duration,
-			"ModuleDuration_Type" : ModuleDuration_Type,
-			"Assoc_Image" : Assoc_Image
+			"Moduletag_Field" : Moduletag_Field
+//			"Learning_Object" : Learning_Object,
+//			"Module_Weight" : Module_Weight,
+//			"Module_Duration" : Module_Duration,
+//			"ModuleDuration_Type" : ModuleDuration_Type,
+//			"Assoc_Image" : Assoc_Image
 		};
 
 		$.post(uri, parameters, function(data) {
@@ -349,7 +343,7 @@ function getaddmodulesave() {
 				}
 			}
 		});
-	}
+	//}
 }
 
 function noteSuccessCallbackaddmodule(data) {

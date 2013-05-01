@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link href="${staticFileServer}resources/css/main/styles2.css"
 	rel="stylesheet" type="text/css" media="all" />
@@ -54,7 +57,6 @@
 
 <script type="text/javascript">
 	$('document').ready(function() {
-
 		$('#Duration').spinner({
 			min : 0,
 			max : 20,
@@ -144,9 +146,143 @@
 		$('._plainTextShow').css("display", "none");
 		$('#plainText').css("display", "none");
 	}
+
+	function getArea() {
+		console.log("get area...");
+		$
+				.get(
+						'/ziksana-web/zcourse/getsubjectarea',
+						{},
+						function(data) {
+							options = data;
+							var option_string = '';
+							for (i in options) {
+								label = options[i].label;
+								value = options[i].value;
+								if (i == 0) {
+									option = '<option selected="selected" value="' + value
+							+ '">'
+											+ label + '</option>';
+								} else
+									option = '<option value="' + value + '">'
+											+ label + '</option>';
+
+								option_string += option;
+							}
+							$('#Careaddl').html(option_string);
+
+						});
+
+		//	}
+
+		//function getSubject() {
+		$("#Careaddl")
+				.change(
+						function(e) {
+							token = '';
+							request_type = 'GET';
+							uri = '/ziksana-web/zcourse/getsubject';
+
+							var Course_Area = '';
+							Course_Area = $('#Careaddl').val();
+							$
+									.get(
+											uri,
+											{
+												'Course_Area' : Course_Area
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												var area_string = '<option selected="selected" value='+Course_Area+'>'
+														+ Course_Area
+														+ '</option>';
+												option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
+													if (i == 0) {
+														option = '<option  value="'
+											+ value
+											+ '">'
+																+ label
+																+ '</option>';
+													} else
+
+														option = '<option value="'
+											+ value
+											+ '">'
+																+ label
+																+ '</option>';
+
+													option_string += option;
+												}
+
+												$('#Careaddl')
+														.html(area_string);
+												$('#Csubjectddl').html(
+														option_string);
+
+											});
+							var topic = '<option value="Select Topic">Select Topic</option>';
+							$('#Ctopicddl').html(topic);
+						});
+
+		//}
+
+		//function getTopic() {
+
+		$("#Csubjectddl")
+				.change(
+						function(e) {
+							console.log("Inside subject change handler");
+							uri = '/ziksana-web/zcourse/gettopic';
+							token = '';
+							request_type = 'GET';
+							var Course_Subject = $('#Csubjectddl').val();
+							var parameters = {
+								"Course_Subject" : Course_Subject
+							};
+
+							$
+									.get(
+											uri,
+											{
+												'Course_Subject' : Course_Subject
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
+													if (i == 0) {
+														option = '<option value="'
+											+ value
+											+ '">'
+																+ label
+																+ '</option>';
+													} else
+
+														option = '<option value="'
+											+ value
+											+ '">'
+																+ label
+																+ '</option>';
+
+													option_string += option;
+												}
+
+												$('#Ctopicddl').html(
+														option_string);
+
+											});
+
+						});
+		//}
+	} // End getArea()
 </script>
-
-
 <div id="background">
 
 	<div id="wrapper">
@@ -374,8 +510,7 @@
 						</div>
 						<div class="widget-body form">
 							<!-- BEGIN FORM-->
-							<form id="DegineCourse" method="post" class="form-horizontal"
-								onload="getArea();">
+							<form id="DegineCourse" method="post" class="form-horizontal">
 								<!--Course Name-->
 								<div class="_coursename">
 									<div class="control-group">
@@ -435,35 +570,16 @@
 
 
 									<div class="moduleselection">
-										<select name="Careaddl" class="select" id="Careaddl">
+										<select name="Careaddl" id="Careaddl"
+											class="defaultvalue labelclass" onclick="getArea();">
 											<option value="0">choose a option...</option>
-											<!--  <option value="1">Computer science</option>
-											<option value="2">Philosophy and psychology</option>
-											<option value="3">Religion</option>
-											<option value="4">Social science</option>
-											<option value="5">Technology and applied science</option>
-											<option value="6">Literature</option>
-											<option value="7">History and geography</option> -->
-										</select> <select name="Csubjectddl" class="select" id="Csubjectddl">
+										</select> <select name="Csubjectddl" id="Csubjectddl"
+											class="defaultvalue labelclass">
 											<option value="0">choose a option...</option>
-											<!--  <option value="1">Computer science</option>
-											<option value="2">Philosophy and psychology</option>
-											<option value="3">Religion</option>
-											<option value="4">Social science</option>
-											<option value="5">Technology and applied science</option>
-											<option value="6">Literature</option>
-											<option value="7">History and geography</option> -->
-										</select> <select name="Ctopicddl" class="select" id="Ctopicddl">
+										</select> <select name="Ctopicddl" id="Ctopicddl"
+											class="defaultvalue labelclass">
 											<option value="0">choose a option...</option>
-											<!--  <option value="1">Computer science</option>
-											<option value="2">Philosophy and psychology</option>
-											<option value="3">Religion</option>
-											<option value="4">Social science</option>
-											<option value="5">Technology and applied science</option>
-											<option value="6">Literature</option>
-											<option value="7">History and geography</option> -->
 										</select>
-
 									</div>
 									<!-- end of moduleselection--->
 
@@ -515,7 +631,7 @@
 									<option value="3">Days</option>
 								</select>
 								<div class="clearfix"></div>
-								<div class="control-group">
+								<!--  <div class="control-group">
 									<label class="control-label nexaf" for="Asscoiate Content"
 										style="width: 230px;"> Associate an Image for the
 										Course :</label>
@@ -538,102 +654,101 @@
 										</div>
 										<div id="status"></div>
 									</div>
-								</div>
+								</div> -->
 
-								<!-- <div style="margin-top: 30px;">
+								<div style="margin-top: 30px;">
 
-										<p class="labelclass" style="font-weight: bold;">Associate
-											an Image for your Course</p>
-										<br /> <img id="course_thumbnail_image"
-											src="${staticFileServer}resources/images/default-course.jpg"
-											align="left" /> <input readonly="readonly" type="hidden"
-											id="Cimageupl" style="margin-left: 20px;" />
+									<p class="labelclass" style="font-weight: bold;">Associate
+										an Image for your Course</p>
+									<br /> <img id="course_thumbnail_image"
+										src="${staticFileServer}resources/images/default-course.jpg"
+										align="left" /> <input readonly="readonly" type="hidden"
+										id="Cimageupl" style="margin-left: 20px;" />
 
-										<div id="message"></div>		
-										<div id="thubmnail_upload_message"></div>
-										<div id="loaderText"></div>
-										<input type="file" name="thumbnail_image_file_upload"
-											tabindex="11" id="thumbnail_image_file_upload" />
-										<div id="status"></div>
-										<script type="text/javascript">
-											$(function() {
-												alert("test");
-												$(
-														'#thumbnail_image_file_upload')
-														.uploadify(
-																{
-																	'swf' : '${staticFileServer}resources/swf/uploadify.swf',
-																	'queueSizeLimit' : 1,
-																	'successTimeout' : 350,
-																	//'uploader' : '${ms.uploadScript}',
-																	'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
-																	'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-																	'fileSizeLimit' : '10024KB',
-																	'onUploadStart' : function(
-																			file) {
+									<div id="message"></div>
+									<div id="thubmnail_upload_message"></div>
+									<div id="loaderText"></div>
+									<input type="file" name="thumbnail_image_file_upload"
+										tabindex="11" id="thumbnail_image_file_upload" />
+									<div id="status"></div>
+									<script type="text/javascript">
+										$(function() {
+											alert("test");
+											$('#thumbnail_image_file_upload')
+													.uploadify(
+															{
+																'swf' : '${staticFileServer}resources/swf/uploadify.swf',
+																'queueSizeLimit' : 1,
+																'successTimeout' : 350,
+																'uploader' : '${ms.uploadScript}',
+																//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+																'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+																'fileSizeLimit' : '10024KB',
+																'onUploadStart' : function(
+																		file) {
+																	$(
+																			'#sbtvalidation')
+																			.attr(
+																					'disabled',
+																					'disabled');
+																},
+																'debug' : true,
+																//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+
+																'onUploadSuccess' : function(
+																		file,
+																		data,
+																		response) {
+																	json_string = data;
+																	data_object = $
+																			.parseJSON(json_string);
+																	console
+																			.log(data_object);
+
+																	if (data_object.Uploaded == 'true') {
 																		$(
-																				'#sbtvalidation')
+																				'#Cimageupl')
+																				.val(
+																						data_object.ContentPath);
+																		$(
+																				'#course_thumbnail_image')
 																				.attr(
-																						'disabled',
-																						'disabled');
-																	},
-																	'debug' : true,
-																	//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
-																
-																	'onUploadSuccess' : function(
-																			file,
-																			data,
-																			response) {
-																		json_string = data;
-																		data_object = $
-																				.parseJSON(json_string);
-																		console
-																				.log(data_object);
-
-																		if (data_object.Uploaded == 'true') {
-																			$(
-																					'#Cimageupl')
-																					.val(
-																							data_object.ContentPath);
-																			$(
-																					'#course_thumbnail_image')
-																					.attr(
-																							'src',
-																							'${ms.url}'
-																									+ data_object.ContentPath);
-																			$(
-																					'#thubmnail_upload_message')
-																					.html(
-																							'<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
-
-																		} else { //there is an error in the upload process
-
-																			$(
-																					'#message')
-																					.html(
-																							data_object.message);
-																		}
+																						'src',
+																						'${ms.url}'
+																								+ data_object.ContentPath);
 																		$(
-																				'#sbtvalidation')
-																				.removeAttr(
-																						'disabled'); //enable submit button
+																				'#thubmnail_upload_message')
+																				.html(
+																						'<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
 
+																	} else { //there is an error in the upload process
+
+																		$(
+																				'#message')
+																				.html(
+																						data_object.message);
 																	}
-																// Your options here
-																});
-											});
+																	$(
+																			'#sbtvalidation')
+																			.removeAttr(
+																					'disabled'); //enable submit button
 
-											function remove_uploaded_thumbnail() {
-												$('#Cimageupl').val('');//clear uploaded file path
-												$('#thubmnail_upload_message')
-														.html('');
-												$('#course_thumbnail_image')
-														.attr('src',
-																'${staticFileServer}resources/images/default-course.jpg');
+																}
+															// Your options here
+															});
+										});
 
-											}
-										</script>
-									</div> -->
+										function remove_uploaded_thumbnail() {
+											$('#Cimageupl').val('');//clear uploaded file path
+											$('#thubmnail_upload_message')
+													.html('');
+											$('#course_thumbnail_image')
+													.attr('src',
+															'${staticFileServer}resources/images/default-course.jpg');
+
+										}
+									</script>
+								</div>
 								<button class="btn f-r" type="button"
 									onClick="createCourse();return false;">Save and
 									Continue</button>
@@ -654,9 +769,7 @@
 		</section>
 		<!--end of section leftpanel-->
 
-
 		<div class="Clearfix"></div>
-
 
 	</div>
 	<!--end of body wrapper-->
