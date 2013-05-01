@@ -2,10 +2,7 @@
 $(document)
 		.ready(
 				function(e) {
-
 					var course_id = $('#courseid').val();
-					console.log(course_id);
-					
 					$.post('/ziksana-web/zcourse/getsubclassification', {
 						'CourseId' : course_id
 					}, function(data) {

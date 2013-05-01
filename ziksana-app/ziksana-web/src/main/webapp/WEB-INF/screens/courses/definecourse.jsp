@@ -9,6 +9,9 @@
 <link href="${staticFileServer}resources/css/stylesheets.css"
 	rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet"
+	href="${staticFileServer}resources/css/common/tags/superbly-tagfield.css" />
+
 <script type='text/javascript'
 	src='${staticFileServer}resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
 <script type='text/javascript'
@@ -39,8 +42,6 @@
 	src="${staticFileServer}resources/Dynamicjsonjs/z_simulation_message.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/Definecoursejson.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/Addmoduledynamicjson.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/jquerylibrary/common/table/tablerow.js"></script>
 <script type="text/javascript"
@@ -148,7 +149,6 @@
 	}
 
 	function getArea() {
-		console.log("get area...");
 		$
 				.get(
 						'/ziksana-web/zcourse/getsubjectarea',
@@ -283,10 +283,28 @@
 		//}
 	} // End getArea()
 </script>
+
+
 <div id="background">
+
+
 
 	<div id="wrapper">
 		<section>
+			<div id="headercontainer">
+
+				<div id="HeaderLogo" class="f-l">
+
+					<img src="/ziksana-web/resources/images/home/loginlogo.png"
+						style="height: 80px;" />
+
+				</div>
+				<!--end of headerlogo-->
+
+				<div class="clearfix"></div>
+
+
+			</div>
 			<div id="leftpanel">
 				<div id="Zikbreadcrumbback" style="margin-left: 20px;">
 

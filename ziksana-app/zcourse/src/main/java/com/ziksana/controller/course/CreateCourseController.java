@@ -136,7 +136,7 @@ public class CreateCourseController {
 	public @ResponseBody
 	ModelAndView createNewCourse() {
 		LOGGER.debug(" Entering Class " + getClass() + " showCourse()");
-		ModelAndView mv = new ModelAndView("createcourse");
+		ModelAndView mv = new ModelAndView("mastercreatecourse");
 		try {
 			mediaServerURL = mediaService.getMediaContents();
 			mv.addObject("ms", mediaServerURL);
@@ -202,12 +202,12 @@ public class CreateCourseController {
 			mediaServerURL = mediaService.getMediaContents();
 			if (course_id > 0) {
 
-				modelView = new ModelAndView("editcourse");
+				modelView = new ModelAndView("mastercreatemodule");
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("ms", mediaServerURL);
 				modelView.addObject("module", isModuleExists);
 			} else {
-				modelView = new ModelAndView("createcourse");
+				modelView = new ModelAndView("mastercreatecourse");
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("ms", mediaServerURL);
 				modelView.addObject("module", isModuleExists);
@@ -235,12 +235,12 @@ public class CreateCourseController {
 			}
 			mediaServerURL = mediaService.getMediaContents();
 			if (course_id > 0) {
-				modelView = new ModelAndView("editcourse");
+				modelView = new ModelAndView("mastercreatemodule");
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("module", isModuleExists);
 				modelView.addObject("ms", mediaServerURL);
 			} else {
-				modelView = new ModelAndView("createcourse");
+				modelView = new ModelAndView("mastercreatecourse");
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("module", isModuleExists);
 				modelView.addObject("ms", mediaServerURL);
@@ -349,8 +349,8 @@ public class CreateCourseController {
 				course.setCourseDuration(duration);
 				course.setSecurityIndicator(true);
 				course.setAccountableMember(accountableMember);
-				course.setSubjClassificationId(courseSubjectClassification
-						.getSubjClassificationId());
+				// course.setSubjClassificationId(courseSubjectClassification
+				// .getSubjClassificationId());
 
 			}
 
@@ -463,7 +463,10 @@ public class CreateCourseController {
 		try {
 
 			Integer courseid = 0, courseLearningComponentId = 0, learningComponentId = 0, learningObjIndicator = 0, parentLearningComponentId = 0;
-			courseid = Integer.parseInt(CourseId.split("_")[1]);
+
+			if (!"".equals(CourseId) && CourseId != null) {
+				courseid = Integer.parseInt(CourseId.split("_")[1]);
+			}
 			LOGGER.debug("Entering Class " + getClass()
 					+ " saveCourseComponents(): courseid :" + courseid);
 			if (!"".equals(CourseLearningComponentId)
@@ -491,13 +494,20 @@ public class CreateCourseController {
 					+ " saveCourseComponents(): learningComponentId :"
 					+ learningComponentId);
 
-			learningObjIndicator = Integer.parseInt(Learning_Object);
+			if (!"".equals(Learning_Object) && Learning_Object != null) {
+				learningObjIndicator = Integer.parseInt(Learning_Object);
+			}
+
 			LOGGER.debug("Entering Class " + getClass()
 					+ " saveCourseComponents(): Learning_Object :"
 					+ Learning_Object);
 			Integer courseDuration = 0, unitofDuration = 1, moduleWeight = 0;
-			courseDuration = Integer.parseInt(Duration);
-			unitofDuration = Integer.parseInt(UnitofDuration);
+			if (!"".equals(Duration) && Duration != null) {
+				courseDuration = Integer.parseInt(Duration);
+			}
+			if (!"".equals(UnitofDuration) && UnitofDuration != null) {
+				unitofDuration = Integer.parseInt(UnitofDuration);
+			}
 			if (!"".equals(ModuleWeight) && ModuleWeight != null) {
 				moduleWeight = Integer.parseInt(ModuleWeight);
 			}
@@ -717,8 +727,19 @@ public class CreateCourseController {
 				tagcloud.setZeniSuggestedIndicator(true);
 				tagcloud.setLearningComponentId(updatedLearningComponentId);
 				tagcloud.setTagType(TagType.TAG_TYPE1);
-				tagcloudObj = learningComponentTagCloudService
-						.saveOrUpadteTags(tagcloud);
+
+				try {
+					tagcloudObj = learningComponentTagCloudService
+							.saveOrUpadteTags(tagcloud);
+				} catch (Exception e) {
+					LOGGER.error("Class :"
+							+ getClass()
+							+ " Method saveOrUpadteTags Exception : After courseService :tagcloud"
+							+ tagcloud + "learningComponentId :"
+							+ learningComponentId
+							+ "updatedLearningComponentId :"
+							+ updatedLearningComponentId);
+				}
 				LOGGER.debug("Class :"
 						+ getClass()
 						+ " Method saveOrUpadteTags : After courseService :tagcloud"
@@ -728,10 +749,16 @@ public class CreateCourseController {
 
 			}
 
-			learningComponentTagCloudService.saveOrUpadteTags(tagcloudObj);
-			LOGGER.debug("Class :"
-					+ getClass()
-					+ " Method saveCourse : After courseService: learningComponentTagCloudService : learningComponentTagCloudService");
+			try {
+				learningComponentTagCloudService.saveOrUpadteTags(tagcloudObj);
+				LOGGER.debug("Class :"
+						+ getClass()
+						+ " Method saveCourse : After courseService: learningComponentTagCloudService : learningComponentTagCloudService");
+			} catch (Exception e) {
+				LOGGER.error("Class :"
+						+ getClass()
+						+ " Method saveCourse Exception : After courseService: learningComponentTagCloudService : learningComponentTagCloudService");
+			}
 
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
@@ -745,7 +772,6 @@ public class CreateCourseController {
 
 		if (courseIds == 0) {
 			json.setResponse("failed");
-
 			LOGGER.debug("Class :" + getClass()
 					+ " Method saveCourse : After courseService: CourseId :"
 					+ CourseId);

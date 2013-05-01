@@ -136,26 +136,28 @@
 	</definition>
 
 
-	<!-- New Course Creation -->
-	<definition name="createcourse" extends="commonPageLayoutLatest">
-		<put-attribute name="page_title" value="Course Creation" />
-		<put-attribute name="body"
-			value="/WEB-INF/pages/courses/definecourse.jsp" />
+	<!-- Metro Course Creation -->
+	<definition name="createcourse" extends="ziksana-master">
+		<put-attribute name="master_title" value="Course Creation" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/definecourse.jsp" />
+	</definition>
+	
+	<!-- Metro Create Module -->
+	<definition name="createmodule" extends="ziksana-master">
+		<put-attribute name="master_title" value="Course Creation" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/coursecreation.jsp" />
+	</definition>
+	
+	
+	<!-- Metro Associate Content -->
+	<definition name="associatecontent" extends="ziksana-master">
+		<put-attribute name="master_title" value="Course Creation" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/coursecreation.jsp" />
 	</definition>
 
-	<!-- Edit Course -->
-	<definition name="editcourse" extends="commonPageLayoutLatest">
-		<put-attribute name="page_title" value="Edit Course" />
-		<put-attribute name="body"
-			value="/WEB-INF/pages/courses/coursecreation.jsp" />
-	</definition>
-
-	<!-- Associate Content Page -->
-	<definition name="createmodule" extends="commonPageLayoutLatest">
-		<put-attribute name="page_title" value="Associate Content" />
-		<put-attribute name="body"
-			value="/WEB-INF/pages/courses/associatecontent.jsp" />
-	</definition>
 
 	<!-- Enrich Content Page -->
 	<definition name="organizeenrichcontent" extends="commonPageLayoutLatest">
