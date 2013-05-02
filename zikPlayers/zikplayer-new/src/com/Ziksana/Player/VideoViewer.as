@@ -54,10 +54,6 @@ package com.ziksana.player
 
 		private function UpdateUI():void
 		{
-			m_ContentDisplayObject.graphics.clear();
-			m_ContentDisplayObject.graphics.beginFill(0x999999, 0.8);
-			m_ContentDisplayObject.graphics.drawRoundRectComplex(m_Left, m_Top, m_Width, m_Height, 0, 0, 0, 0);
-			m_ContentDisplayObject.graphics.endFill();
 			
 			m_ContentDisplayObject.addChild(m_VideoContainer);
 			

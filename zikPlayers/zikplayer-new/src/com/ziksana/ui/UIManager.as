@@ -5,6 +5,7 @@ package com.ziksana.ui
 	import com.ziksana.content.VideoContent;
 	import com.ziksana.events.GlobalEventDispatcher;
 	import com.ziksana.events.ZEvent;
+	import com.ziksana.player.ContentViewer;
 	import com.ziksana.player.DocumentViewer;
 	import com.ziksana.player.ScribbleViewer;
 	import com.ziksana.player.VideoViewer;
@@ -14,6 +15,7 @@ package com.ziksana.ui
 	import com.ziksana.util.XMLUtil;
 	
 	import flash.display.MovieClip;
+	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
@@ -21,7 +23,7 @@ package com.ziksana.ui
 	import flash.events.EventDispatcher;
 	import flash.events.MouseEvent;
 	
-	public class UIManager extends EventDispatcher
+	public class UIManager
 	{
 		private var m_Stage : Stage;
 		
@@ -38,6 +40,8 @@ package com.ziksana.ui
 		private var m_UIConfigurationFileURL: String = null;
 		private var m_XMLUtil : XMLUtil = null;
 		
+		private static const CONTENT_ANNOTATOR:String = "CONTENT_ANNOTATOR";
+		private static const ANNOTATED_CONTENT_RECORDER:String = "ANNOTATED_CONTENT_RECORDER";
 		public function UIManager(uiConfigurationFileURL : String)
 		{
 			m_UIConfigurationFileURL = uiConfigurationFileURL;
@@ -45,45 +49,61 @@ package com.ziksana.ui
 		
 		public function Init (stage : Stage) : void
 		{
-			//Get UI file from Configuration.
-			LoadXML(m_UIConfigurationFileURL);
-			
 			m_Stage = stage;
-
-			//Logger ("UIManager::InitUI ==> Stage Width = " + m_Stage.stageWidth + " Height =" + m_Stage.stageHeight);
 			m_Stage.align = StageAlign.TOP_LEFT;
 			m_Stage.scaleMode = StageScaleMode.NO_SCALE;
-			
-			//Add a resize handler here
 			m_Stage.addEventListener(Event.RESIZE, OnResize);
+			LoadXML(m_UIConfigurationFileURL);
 		}
 		
-		private function InitUI () : void
+		private function InitUI (spec:Object) : void
 		{
 			
-			//get Required contents from the UI file specification.
-			//Ask the Player to instantiate appropriate contents.
-			//Throw error if unknown content type or unknown UI layout spec is encountered.
-			//Find mismatch or unused Contents / Viewers and report the same
+			var layers:Array = spec.LAYER as Array;
+		
+			for(var i:int = 0; i<layers.length; i++)
+			{
+				trace("i=="+i);
+				m_ContentMovieClip[i] = new MovieClip();
+				(m_ContentMovieClip[i] as MovieClip).x = new Number(layers[i].X.toString());
+				(m_ContentMovieClip[i] as MovieClip).y = new Number(layers[i].Y.toString());
+				(m_ContentMovieClip[i] as MovieClip).graphics.beginFill(0x006600, 0.2);
+				(m_ContentMovieClip[i] as MovieClip).graphics.drawRect(0,0, (new Number(layers[i].WIDTH.toString())*m_Stage.stageWidth)/100, (new Number(layers[i].HEIGHT.toString())*m_Stage.stageHeight)/100);
+				(m_ContentMovieClip[i] as MovieClip).graphics.endFill();
+				(m_ContentMovieClip[i] as MovieClip).width = (new Number(layers[i].WIDTH.toString())*m_Stage.stageWidth)/100;
+				(m_ContentMovieClip[i] as MovieClip).height =(new Number(layers[i].HEIGHT.toString())*m_Stage.stageHeight)/100;
+				trace((m_ContentMovieClip[i] as MovieClip).height);
+				trace (layers[i].CONTENTVIEWER.toString().toLowerCase());
+				switch(layers[i].CONTENTVIEWER.toString().toLowerCase())
+				{
+					case "documentviewer":
+					case "document-viewer":	
+					case "document viewer":	
+					case "document_viewer":
+						m_Contents[i] = new DocumentContent();
+						m_ContentViewers[i] = new DocumentViewer(m_Contents[i], m_ContentMovieClip[i]);
+						
+						break;
+					case "scribbler":
+						m_Contents[i] = new ScribbleContent();
+						m_ContentViewers[i] = new ScribbleViewer(m_Contents[i], m_ContentMovieClip[i]);
+						break;
+					case "webcamrecorder":
+						trace("WCRECO");
+						m_Contents[i] = new VideoContent();
+						m_ContentViewers[i] = new VideoViewer(m_Contents[i], m_ContentMovieClip[i]);
+						break;
+					default:
+						break;
+				}
+				(m_ContentViewers[i] as ContentViewer).SetCoordinates((m_ContentMovieClip[i] as MovieClip).x,
+					(m_ContentMovieClip[i] as MovieClip).y, (m_ContentMovieClip[i] as MovieClip).width,
+					(m_ContentMovieClip[i] as MovieClip).height);
+				(m_ContentViewers[i] as ContentViewer).Load();
+			}
 
-			//m_Stage.addEventListener (MouseEvent.MOUSE_MOVE, OnMouseMove);
-			
-			CreateContents ();
-			CreateContentContainer();
-			CreateContentViewers ();
-			
-			//First add the background layer
-			AddBackgroundLayer();
-			
-			PlayerSkin.DrawRectangle(m_Background, SkinParser.GetBackgroundColor(), 0, 0, m_Stage.stageWidth, m_Stage.stageHeight);
-			
-			//Next add other layers
-			for (var currentViewer : int = 0; currentViewer < m_NumberOfContents; currentViewer++)
+			for (var currentViewer : int = 0; currentViewer < i; currentViewer++)
 				AddLayer (m_ContentMovieClip[currentViewer]);
-			
-			SetCoordinates();
-			
-			LoadViewers();
 		}
 		
 		private function OnMouseMove (mouseEvent : MouseEvent) : void 
@@ -196,9 +216,8 @@ package com.ziksana.ui
 		
 		private function onAnnotatorUIXMLParsed (zEvent:ZEvent):void
 		{
-			var annotatorFile:Object = m_XMLUtil.GetXMLParsedData();
-			
-			InitUI();
+			var annotatorFileData:Object = m_XMLUtil.GetXMLParsedData();
+			InitUI(annotatorFileData);
 		}
 		
 	}
