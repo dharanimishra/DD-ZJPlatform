@@ -1,20 +1,20 @@
 package com.ziksana.player
 {
-	import com.ziksana.content.Content;
-	import com.ziksana.content.VideoContent;
-	import com.ziksana.content.VideoRecorder;
-	import com.ziksana.events.CustomEvent;
-	import com.ziksana.events.EventsList;
-	import com.ziksana.util.Logger;
-	
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.media.Video;
 
+	import com.ziksana.content.Content;
+	import com.ziksana.content.VideoContent;
+	import com.ziksana.content.VideoRecorder;
+	import com.ziksana.events.ZEvent;
+	import com.ziksana.events.GlobalEventDispatcher;
+	import com.ziksana.util.Logger;
+
 	public class VideoViewer extends ContentViewer
 	{
 		private var m_VideoContainer : Video = new Video(320, 240);
-		private var m_ContentLoadEvent : CustomEvent = null;
+		private var m_ContentLoadEvent : ZEvent = null;
 		private var m_VideoRecorder : VideoRecorder = null;
 		//public static const DEFAULT_CONNECTION_URL : String = "rtmp://video.beta.ziksana.com/oflaDemo";
 		public static const DEFAULT_CONNECTION_URL : String = "rtmp://54.243.235.88/oflaDemo";
@@ -67,11 +67,9 @@ package com.ziksana.player
 		
 		private function RegisterContentEvents () : void
 		{
-			addEventListener(EventsList.CONTENT_TYPE_VIDEO_RECORD, OnContentLoadEvent);
-			m_ContentLoadEvent = new CustomEvent(EventsList.CONTENT_TYPE_VIDEO_RECORD, this, this);
-			
-			m_VideoRecorder.RegisterOnCompletionEvent(m_ContentLoadEvent);
-			//m_Content.RegisterOnCompletionEvent(m_ContentLoadEvent);
+			GlobalEventDispatcher.instance.addGlobalListener(ZEvent.EVENT_CONTENT_VIDEO_LOADED, OnContentLoadEvent);
+			m_VideoRecorder.RegisterOnCompletionEvent(ZEvent.EVENT_CONTENT_VIDEO_LOADED);
+			//m_Content.RegisterOnCompletionEvent(ZEvent.EVENT_CONTENT_VIDEO_LOADED);
 			
 			m_ContentDisplayObject.addEventListener (MouseEvent.MOUSE_DOWN, OnPageContainerMouseDown);
 			m_ContentDisplayObject.addEventListener (MouseEvent.MOUSE_MOVE, OnPageContainerMouseMove);
@@ -80,10 +78,8 @@ package com.ziksana.player
 		}
 		
 		
-		public function OnContentLoadEvent (contentLoadEvent : CustomEvent) : void
+		public function OnContentLoadEvent (contentLoadEvent : ZEvent) : void
 		{
-			var param : Object = contentLoadEvent.GetEventParam();
-			
 			m_VideoRecorder.AttachStreamOutputContainer(m_VideoContainer);
 			
 			//VideoContent(m_Content).AttachStreamOutputContainer(m_VideoContainer);

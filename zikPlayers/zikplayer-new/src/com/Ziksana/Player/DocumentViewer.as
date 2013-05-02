@@ -5,11 +5,10 @@ package com.ziksana.player
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	
-	import com.ziksana.events.EventsList;
 	import com.ziksana.content.Content;
-	import com.ziksana.events.CustomEvent;
-
+	import com.ziksana.events.ZEvent;
+	import com.ziksana.events.GlobalEventDispatcher;
+	
 	public class DocumentViewer extends ContentViewer
 	{
 		
@@ -25,7 +24,6 @@ package com.ziksana.player
 		private static const CHILD_MOVETONEXTIMAGE_BUTTON_INDEX : uint = 3;
 		
 		private var m_DocumentPage : MovieClip = new MovieClip();
-		private var m_ContentLoadEvent : CustomEvent = null;
 		
 		private var m_LastImageDrawn : DisplayObject = null;
 		private var m_LastImageMask : DisplayObject = null;
@@ -92,11 +90,10 @@ package com.ziksana.player
 			m_Content.SetContentURL(m_ImageURLArray);
 		}
 		
-		private function RegisterEvents () : void
+		public override function RegisterEvents () : void
 		{
-			addEventListener(EventsList.CONTENT_TYPE_IMAGE_LOAD, OnContentLoadEvent);
-			m_ContentLoadEvent = new CustomEvent(EventsList.CONTENT_TYPE_IMAGE_LOAD, this, this);
-			m_Content.RegisterOnCompletionEvent(m_ContentLoadEvent);
+			GlobalEventDispatcher.instance.addGlobalListener(ZEvent.EVENT_CONTENT_IMAGE_LOADED, OnContentLoadEvent);
+			m_Content.RegisterOnCompletionEvent(ZEvent.EVENT_CONTENT_IMAGE_LOADED);
 			
 			m_DocumentPage.addEventListener (MouseEvent.MOUSE_DOWN, OnPageContainerMouseDown);
 			m_DocumentPage.addEventListener (MouseEvent.MOUSE_MOVE, OnPageContainerMouseMove);
@@ -172,7 +169,7 @@ package com.ziksana.player
 			}
 		}
 		
-		public function OnContentLoadEvent (contentLoadEvent : CustomEvent) : void
+		public function OnContentLoadEvent (contentLoadEvent : ZEvent) : void
 		{
 			var param : Object = contentLoadEvent.GetEventParam();
 			if (bIsDrawingFirstTime)

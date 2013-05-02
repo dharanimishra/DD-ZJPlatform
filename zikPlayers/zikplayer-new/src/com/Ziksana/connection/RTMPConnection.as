@@ -1,6 +1,7 @@
 package com.ziksana.connection
 {
-	import com.ziksana.events.CustomEvent;
+	import com.ziksana.events.GlobalEventDispatcher;
+	import com.ziksana.events.ZEvent;
 	import com.ziksana.util.Logger;
 	
 	import flash.events.AsyncErrorEvent;
@@ -30,11 +31,8 @@ package com.ziksana.connection
 		//PUBLISH TYPE
 		private var PUBLISH_URL_TYPE_RECORD : String = "record";
 		
-		private static const OnConnectionStatusEvent:String = "ON_CONNECTION_EVENT";
-		private static const OnStreamStatusEvent:String = "ON_STREAM_EVENT";
-		
-		private var m_OnConnectionStatusEvent : CustomEvent = null;
-		private var m_OnStreamStatusEvent : CustomEvent = null;
+		private var m_OnConnectionStatusEvent : String = null;
+		private var m_OnStreamStatusEvent : String = null;
 		
 		
 		public function RTMPConnection()
@@ -105,7 +103,7 @@ package com.ziksana.connection
 			}
 			catch (error : ArgumentError) 
 			{
-				trace ("RTMPConnection::Connect ==> Connection Failure !!! Invalid connection URL.");
+				Logger.instance.WriteMessage ("RTMPConnection::Connect ==> Connection Failure !!! Invalid connection URL.");
 				return false;
 			}
 						
@@ -127,20 +125,22 @@ package com.ziksana.connection
 			
 		public function AsyncErrorEventHandler(event:AsyncErrorEvent):void 
 		{
-			trace("RTMPConnection::AsyncErrorEventHandler ==> EVENT_TEXT = " + event.text);
+			Logger.instance.WriteMessage("RTMPConnection::AsyncErrorEventHandler ==> EVENT_TEXT = " + event.text);
 		}
 		
 		//// COMMON STATUS HANDLER - NET CONNECTION AND NET STREAM ///////
 		private function NetConnectionStatusHandler (event : NetStatusEvent) : void 
 		{
-			trace("RTMPConnection::NetConnectionStatusHandler ==> EVENT_INFO_LEVEL = " + event.info.level + " EVENT INFO CODE = " + event.info.code);
+			Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> EVENT_INFO_LEVEL = " + event.info.level + " EVENT INFO CODE = " + event.info.code);
 			switch (event.info.code) 
 			{
 				case "NetConnection.Connect.Success":
 					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Successfully established connection");
 					InitNetStream();
 					if (m_OnConnectionStatusEvent)
-						m_OnConnectionStatusEvent.DispatchEvent();
+					{
+						GlobalEventDispatcher.instance.dispatch (new ZEvent(m_OnConnectionStatusEvent));
+					}
 					break;
 				case "NetConnection.Connect.Failed":
 					Logger.instance.WriteMessage("RTMPConnection::NetConnectionStatusHandler ==> Failed to establish connection");
@@ -169,14 +169,14 @@ package com.ziksana.connection
 				default:
 					for (var prop:Object in event) 
 					{
-						trace("\t"+prop+":\t"+event[prop]);
+						Logger.instance.WriteMessage("\t"+prop+":\t"+event[prop]);
 					}
 					break;
 			}
 		}
 		
-		private function securityErrorHandler(event:SecurityErrorEvent):void {
-			trace("securityErrorHandler: " + event);
+		private function securityErrorHandler(event:SecurityErrorEvent):void 
+		{
 		}
 		
 		//// NET STREAM ///////
@@ -217,11 +217,10 @@ package com.ziksana.connection
 		
 		private function OnMetaDataHandler (videoMetaData : Object) : void
 		{
-			//trace("OnMetaDataHandler ==> Video Duration = " + info.duration + " Frame Rate = " + info.framerate);
 			var key:String; 
 			for (key in videoMetaData) 
 			{ 
-				trace(key + ": " + videoMetaData[key]); 
+				Logger.instance.WriteMessage(key + ": " + videoMetaData[key]); 
 			} 
 			
 			m_Duration = videoMetaData.duration;
@@ -230,14 +229,14 @@ package com.ziksana.connection
 		
 		private function OnStatusHandler () : void
 		{
-			trace("OnStatusHandler ==> ");
+			Logger.instance.WriteMessage("OnStatusHandler ==> ");
 			if (m_OnStreamStatusEvent)
-				m_OnStreamStatusEvent.DispatchEvent();
+				GlobalEventDispatcher.instance.dispatch (new ZEvent(m_OnStreamStatusEvent));
 		}
 		
 		private function OnNetStreamBandWidthDoneHandler():void
 		{
-			trace("OnNetStreamBandWidthDoneHandler ==> ");
+			Logger.instance.WriteMessage("OnNetStreamBandWidthDoneHandler ==> ");
 		}
 		
 
@@ -341,14 +340,14 @@ package com.ziksana.connection
 			m_NetStream.seek(nPosition/1000);		
 		}
 		
-		public function RegisterOnConnectionStatusEvent (contentLoadEvent : CustomEvent) : void
+		public function RegisterOnConnectionStatusEvent (eventName : String) : void
 		{
-			m_OnConnectionStatusEvent = contentLoadEvent;
+			m_OnConnectionStatusEvent = eventName;
 		}
 		
-		public function RegisterOnStreamStatusEvent (contentLoadEvent : CustomEvent) : void
+		public function RegisterOnStreamStatusEvent (eventName : String) : void
 		{
-			m_OnStreamStatusEvent = contentLoadEvent;
+			m_OnStreamStatusEvent = eventName;
 		}
 		
 		public function AttachStreamInputSource (streamInputSourceType : int, streamInputSource : Object) : void

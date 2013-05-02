@@ -1,5 +1,8 @@
 package com.ziksana.util
 {
+	import com.ziksana.events.GlobalEventDispatcher;
+	import com.ziksana.events.ZEvent;
+	
 	import flash.events.Event;
 	import flash.events.HTTPStatusEvent;
 	import flash.events.IOErrorEvent;
@@ -7,8 +10,6 @@ package com.ziksana.util
 	import flash.events.SecurityErrorEvent;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
-	
-	import com.ziksana.events.CustomEvent;
 	
 	/** 
 	 * XMLUtil is the utility class to load XML files from local or HTTP location and parse to a tree data structure.
@@ -36,8 +37,9 @@ package com.ziksana.util
 		private var xmlLoader:URLLoader = null;
 		private var status:String = "UNINITIALIZED";
 		private var progress:Number = 0;
-		private var m_XMLLoadEvent : CustomEvent = null;
-		public var resultForParsing:Object = null;
+		private var m_XMLLoadEvent : ZEvent = null;
+		public var m_XMLParsedData:Object = null;
+		private var m_CompletionEvent : String = null;
 		/** 
 		 * Constructor for XMLUtil which takes in type of the 
 		 * XMLUtil - TYPE_HTTP or TYPE_LOCAL
@@ -54,6 +56,12 @@ package com.ziksana.util
 			urlRequest = new URLRequest(url); 
 			status = "INITIALIZED";
 			xmlLoader = new URLLoader(); 
+		}
+		
+
+		public function setCompletionEvent (eventName : String) : void
+		{
+			m_CompletionEvent = eventName;
 		}
 		
 		/** 
@@ -77,27 +85,29 @@ package com.ziksana.util
 			xmlLoader.addEventListener(IOErrorEvent.DISK_ERROR, throwZikNetworkError);
 			xmlLoader.addEventListener(IOErrorEvent.NETWORK_ERROR, throwZikNetworkError);
 			
-			Logger.instance.WriteMessage("TESTING LOGGER", Logger.LOG_LEVEL_ERROR);
+			//Logger.instance.WriteMessage("TESTING LOGGER", Logger.LOG_LEVEL_ERROR);
 		} 
 		
-		
-		public function registerOnCompletionEvent (xmlLoadEvent : CustomEvent) : void
-		{
-			m_XMLLoadEvent = xmlLoadEvent;
-		}
 		
 		/**
 		 * This is the function that will be called upon successful completion of loading the data. 
 		 * The property 'data' will contain the loaded XML data.
 		 */
 		private function onXMLLoadCompletion(event:Event):void 
-		{ 
+		{
 			data = XML(xmlLoader.data); 
 			var xmlParser:XMLParser = new XMLParser(data);
-			resultForParsing = xmlParser.parse();
+			m_XMLParsedData = xmlParser.parse();
 			
-			if (m_XMLLoadEvent)
-				m_XMLLoadEvent.DispatchEvent();
+			if (m_CompletionEvent)
+			{
+				GlobalEventDispatcher.instance.dispatch (new ZEvent(m_CompletionEvent, null));
+			}
+		}
+		
+		public function GetXMLParsedData () : Object
+		{
+			return m_XMLParsedData;
 		}
 		
 		/**

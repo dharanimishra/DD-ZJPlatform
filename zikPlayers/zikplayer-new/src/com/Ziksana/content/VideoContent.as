@@ -3,18 +3,17 @@ package com.ziksana.content
 	import com.ziksana.connection.ConnectionFactory;
 	import com.ziksana.connection.ConnectionType;
 	import com.ziksana.connection.IConnection;
-	import com.ziksana.events.CustomEvent;
+	import com.ziksana.events.GlobalEventDispatcher;
+	import com.ziksana.events.ZEvent;
 	import com.ziksana.util.Logger;
-	import com.ziksana.events.EventsList;
 
 	public class VideoContent extends Content
 	{
 		private var m_Connection : IConnection;
 		private var m_ConnectionURL : String;
 		
-		private var m_VideoConnectionEvent : CustomEvent = null;
-		private var m_VideoStreamConnectionEvent : CustomEvent = null;
-		private var m_ContentLoadEvent : CustomEvent = null;
+		private var m_VideoConnectionEvent : ZEvent = null;
+		private var m_VideoStreamConnectionEvent : ZEvent = null;
 		
 		public function VideoContent()
 		{
@@ -36,13 +35,11 @@ package com.ziksana.content
 					return false;
 				}
 				
-				addEventListener(EventsList.VIDEO_CONNECTION_EVENT, OnVideoConnectionEvent);
-				m_VideoConnectionEvent = new CustomEvent(EventsList.VIDEO_CONNECTION_EVENT, this, this);
-				m_Connection.RegisterOnConnectionStatusEvent(m_VideoConnectionEvent);
+				GlobalEventDispatcher.instance.addGlobalListener(ZEvent.EVENT_VIDEO_SERVER_CONNECTED, OnVideoConnectionEvent);
+				m_Connection.RegisterOnConnectionStatusEvent(ZEvent.EVENT_VIDEO_SERVER_CONNECTED);
 				
-				addEventListener(EventsList.VIDEO_STREAM_CONNECTION_EVENT, OnVideoStreamConnectionEvent);
-				m_VideoStreamConnectionEvent = new CustomEvent(EventsList.VIDEO_STREAM_CONNECTION_EVENT, this, this);
-				m_Connection.RegisterOnStreamStatusEvent(m_VideoConnectionEvent);
+				GlobalEventDispatcher.instance.addGlobalListener(ZEvent.EVENT_VIDEO_STREAM_CONNECTED, OnVideoStreamConnectionEvent);
+				m_Connection.RegisterOnStreamStatusEvent(ZEvent.EVENT_VIDEO_STREAM_CONNECTED);
 				
 				retVal = m_Connection.Connect(null);
 				if (retVal)
@@ -65,18 +62,23 @@ package com.ziksana.content
 		}
 		
 		
-		public function OnVideoConnectionEvent (contentLoadEvent : CustomEvent) : void
+		public function OnVideoConnectionEvent (contentLoadEvent : ZEvent) : void
 		{
 			var param : Object = contentLoadEvent.GetEventParam();
 			if (m_ContentLoadEvent)
-				m_ContentLoadEvent.DispatchEvent();
+			{
+				GlobalEventDispatcher.instance.dispatch(new ZEvent(m_ContentLoadEvent));
+			}
 		}
 		
-		public function OnVideoStreamConnectionEvent (contentLoadEvent : CustomEvent) : void
+		public function OnVideoStreamConnectionEvent (contentLoadEvent : ZEvent) : void
 		{
 			var param : Object = contentLoadEvent.GetEventParam();
-			if (m_ContentLoadEvent)
-				m_ContentLoadEvent.DispatchEvent();
+			/*if (m_ContentLoadEvent)
+			{
+				Logger.instance.WriteMessage ("VideoContent::OnVideoConnectionEvent ==> Calling Dispatcher : " + m_ContentLoadEvent);
+				GlobalEventDispatcher.instance.dispatch(new ZEvent(m_ContentLoadEvent));
+			}*/
 		}
 		
 		public function AttachStreamOutputContainer (streamOutputContainer : Object) : void

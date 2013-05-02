@@ -4,8 +4,8 @@ package com.ziksana.content
 	import com.ziksana.connection.ConnectionType;
 	import com.ziksana.connection.IConnection;
 	import com.ziksana.connection.StreamSourceType;
-	import com.ziksana.events.CustomEvent;
-	import com.ziksana.events.EventsList;
+	import com.ziksana.events.GlobalEventDispatcher;
+	import com.ziksana.events.ZEvent;
 	import com.ziksana.util.Logger;
 	import com.ziksana.util.Util;
 	
@@ -18,8 +18,8 @@ package com.ziksana.content
 		private var m_Connection : IConnection;
 		private var m_VideoContent : VideoContent = null;
 		
-		private var m_VideoConnectionEvent : CustomEvent = null;
-		private var m_VideoConnectionParentNotifyEvent : CustomEvent;
+		private var m_VideoConnectionEvent : ZEvent = null;
+		private var m_VideoConnectionParentNotifyEvent : String = null;
 		
 		private var m_VideoCamera : Camera = null;
 		private var m_Microphone : Microphone = null;
@@ -47,9 +47,8 @@ package com.ziksana.content
 					return false;
 				}
 				
-				addEventListener(EventsList.VIDEO_CONNECTION_EVENT, OnVideoConnectionEvent);
-				m_VideoConnectionEvent = new CustomEvent(EventsList.VIDEO_CONNECTION_EVENT, this, this);
-				m_Connection.RegisterOnConnectionStatusEvent(m_VideoConnectionEvent);
+				GlobalEventDispatcher.instance.addGlobalListener(ZEvent.EVENT_VIDEO_SERVER_CONNECTED, OnVideoConnectionEvent);
+				m_Connection.RegisterOnConnectionStatusEvent(ZEvent.EVENT_VIDEO_SERVER_CONNECTED);
 				
 				retVal = m_Connection.Connect(m_VideoContent.GetContentURL(0));
 				if (retVal)
@@ -81,7 +80,7 @@ package com.ziksana.content
 			return m_VideoContent;
 		}
 		
-		public function OnVideoConnectionEvent (contentLoadEvent : CustomEvent) : void
+		public function OnVideoConnectionEvent (contentLoadEvent : ZEvent) : void
 		{
 			var param : Object = contentLoadEvent.GetEventParam();
 			
@@ -97,7 +96,9 @@ package com.ziksana.content
 				
 				//Notify parent that we have started video recording.
 				if (m_VideoConnectionParentNotifyEvent)
-					m_VideoConnectionParentNotifyEvent.DispatchEvent();
+				{
+					GlobalEventDispatcher.instance.dispatch (new ZEvent(m_VideoConnectionParentNotifyEvent, null));
+				}
 			}
 		}
 		
@@ -108,9 +109,9 @@ package com.ziksana.content
 			streamOutputContainer.attachCamera(m_VideoCamera);
 		}
 		
-		public function RegisterOnCompletionEvent (contentLoadEvent : CustomEvent) : void
+		public function RegisterOnCompletionEvent (eventName : String) : void
 		{
-			m_VideoConnectionParentNotifyEvent = contentLoadEvent;
+			m_VideoConnectionParentNotifyEvent = eventName;
 		}
 	}
 }

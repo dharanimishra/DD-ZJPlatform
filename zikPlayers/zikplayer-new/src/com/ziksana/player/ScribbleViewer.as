@@ -2,8 +2,7 @@ package com.ziksana.player
 {
 	import com.nocircleno.graffiti.GraffitiCanvas;
 	import com.ziksana.content.Content;
-	import com.ziksana.events.CustomEvent;
-	import com.ziksana.events.EventsList;
+	import com.ziksana.events.ZEvent;
 	import com.ziksana.player.ContentViewer;
 	import com.ziksana.util.Logger;
 	
@@ -123,7 +122,7 @@ package com.ziksana.player
 		}		
 		
 		
-		private function RegisterEvents () : void
+		public override function RegisterEvents () : void
 		{
 			m_ToolBar.addEventListener (MouseEvent.MOUSE_DOWN, OnPageContainerMouseDown);
 			m_ToolBar.addEventListener (MouseEvent.MOUSE_MOVE, OnPageContainerMouseMove);

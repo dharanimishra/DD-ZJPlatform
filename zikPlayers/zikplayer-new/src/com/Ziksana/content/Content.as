@@ -1,7 +1,5 @@
 package com.ziksana.content
 {
-	import com.ziksana.events.CustomEvent;
-	import com.ziksana.events.EventData;
 	import com.ziksana.timeline.ITimeLinePosition;
 	
 	import flash.events.EventDispatcher;
@@ -17,7 +15,7 @@ package com.ziksana.content
 		protected var m_CurrentPosition : Number;
 		protected var m_NumberOfPosition : Number;
 		protected var m_CurrentTimeStamp : Number;
-		protected var m_ContentLoadEvent : CustomEvent = null;
+		protected var m_ContentLoadEvent : String = null;
 
 		//Todo : Need to see what type could be declared here.
 		//m_ContentConfiguration : Object;
@@ -113,9 +111,9 @@ package com.ziksana.content
 		{
 		}
 		
-		public function RegisterOnCompletionEvent (contentLoadEvent : CustomEvent) : void
+		public function RegisterOnCompletionEvent (eventName : String) : void
 		{
-			m_ContentLoadEvent = contentLoadEvent;
+			m_ContentLoadEvent = eventName;
 		}
 		
 	}

@@ -6,7 +6,7 @@ package com.ziksana.util
 	import com.ziksana.connection.IConnection;
 	import com.ziksana.content.Content;
 	import com.ziksana.data.ContentXMLData;
-	import com.ziksana.events.CustomEvent;
+	import com.ziksana.events.ZEvent;
 	import com.ziksana.content.DocumentContent;
 	import com.ziksana.content.VideoContent;
 	import com.ziksana.data.XMLParser;
@@ -14,7 +14,6 @@ package com.ziksana.util
 	public class UnitTests
 	{
 		public static const DEFAULT_CONNECTION_URL : String = "rtmp://video.beta.ziksana.com/oflaDemo";
-		public static const XMLLoadCompletionEvent:String = "ON_XML_LOAD_COMPLETION";
 		private var m_Parent : Sprite = null;
 		public function UnitTests(parentObj : Sprite)
 		{
@@ -23,42 +22,9 @@ package com.ziksana.util
 
 		private function TestComponents () : void
 		{
-			TestXMLParser ();
 			TestRTMPConnection ();
 			TestDocumentContent();
 			TestLiveContent ();
-		}
-		
-		private function TestXMLParser () : void
-		{
-			var xmlParser : XMLParser;
-			var xmlURL : String = "D:\\VTG\\data1359274006.ecxml";
-			var xmlLoadEvent : CustomEvent;
-			
-			xmlParser = new XMLParser(xmlURL);
-			
-			m_Parent.addEventListener(XMLLoadCompletionEvent, OnXMLLoadCompletion);
-			xmlLoadEvent = new CustomEvent(XMLLoadCompletionEvent, m_Parent, xmlParser);
-			
-			xmlParser.RegisterOnCompletionEvent(xmlLoadEvent);
-		}
-		
-		
-		public function OnXMLLoadCompletion (xmlEvent : CustomEvent) : void
-		{
-			var contentXMLData : ContentXMLData;
-			contentXMLData = new ContentXMLData();
-			
-			var xmlParser : XMLParser = XMLParser (xmlEvent.GetEventParam());
-			var bXMLLoaded : Boolean = xmlParser.GetContentXMLData(contentXMLData);
-			
-			if (bXMLLoaded)
-				Logger ("XML : " + xmlParser.GetXMLURL() + " Loaded successfully.");
-			else
-				Logger ("Error Failed to Load XML : " + xmlParser.GetXMLURL());
-			
-			Logger ("Image Path : " + contentXMLData.GetImagePath());
-			
 		}
 		
 		private function TestDocumentContent () : void

@@ -3,21 +3,25 @@ package com.ziksana.ui
 	import com.ziksana.content.DocumentContent;
 	import com.ziksana.content.ScribbleContent;
 	import com.ziksana.content.VideoContent;
+	import com.ziksana.events.GlobalEventDispatcher;
+	import com.ziksana.events.ZEvent;
 	import com.ziksana.player.DocumentViewer;
 	import com.ziksana.player.ScribbleViewer;
 	import com.ziksana.player.VideoViewer;
 	import com.ziksana.skin.PlayerSkin;
 	import com.ziksana.skin.SkinParser;
 	import com.ziksana.util.Logger;
+	import com.ziksana.util.XMLUtil;
 	
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
+	import flash.events.EventDispatcher;
 	import flash.events.MouseEvent;
 	
-	public class UIManager
+	public class UIManager extends EventDispatcher
 	{
 		private var m_Stage : Stage;
 		
@@ -31,13 +35,19 @@ package com.ziksana.ui
 		
 		private static const BACKGROUND_X : uint = 5;
 		private static const BACKGROUND_Y : uint = 5;
+		private var m_UIConfigurationFileURL: String = null;
+		private var m_XMLUtil : XMLUtil = null;
 		
-		public function UIManager()
+		public function UIManager(uiConfigurationFileURL : String)
 		{
+			m_UIConfigurationFileURL = uiConfigurationFileURL;
 		}
 		
 		public function Init (stage : Stage) : void
 		{
+			//Get UI file from Configuration.
+			LoadXML(m_UIConfigurationFileURL);
+			
 			m_Stage = stage;
 
 			//Logger ("UIManager::InitUI ==> Stage Width = " + m_Stage.stageWidth + " Height =" + m_Stage.stageHeight);
@@ -46,6 +56,17 @@ package com.ziksana.ui
 			
 			//Add a resize handler here
 			m_Stage.addEventListener(Event.RESIZE, OnResize);
+		}
+		
+		private function InitUI () : void
+		{
+			
+			//get Required contents from the UI file specification.
+			//Ask the Player to instantiate appropriate contents.
+			//Throw error if unknown content type or unknown UI layout spec is encountered.
+			//Find mismatch or unused Contents / Viewers and report the same
+
+			//m_Stage.addEventListener (MouseEvent.MOUSE_MOVE, OnMouseMove);
 			
 			CreateContents ();
 			CreateContentContainer();
@@ -63,10 +84,7 @@ package com.ziksana.ui
 			SetCoordinates();
 			
 			LoadViewers();
-			
-			m_Stage.addEventListener (MouseEvent.MOUSE_MOVE, OnMouseMove);
 		}
-		
 		
 		private function OnMouseMove (mouseEvent : MouseEvent) : void 
 		{
@@ -167,5 +185,21 @@ package com.ziksana.ui
 		{
 			//Update width and height here.
 		}
+		private function LoadXML (xmlURL : String) : void
+		{
+			m_XMLUtil = new XMLUtil(XMLUtil.TYPE_HTTP, xmlURL);
+			m_XMLUtil.setCompletionEvent(ZEvent.EVENT_ANNOTATOR_UI_XML_PARSED);
+			GlobalEventDispatcher.instance.addGlobalListener(ZEvent.EVENT_ANNOTATOR_UI_XML_PARSED, onAnnotatorUIXMLParsed);
+			
+			m_XMLUtil.loadAndParse();
+		}
+		
+		private function onAnnotatorUIXMLParsed (zEvent:ZEvent):void
+		{
+			var annotatorFile:Object = m_XMLUtil.GetXMLParsedData();
+			
+			InitUI();
+		}
+		
 	}
 }

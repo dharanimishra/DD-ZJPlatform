@@ -1,5 +1,7 @@
 package com.ziksana.content
 {
+	import com.ziksana.events.GlobalEventDispatcher;
+	import com.ziksana.events.ZEvent;
 	import com.ziksana.util.Logger;
 	
 	import flash.display.Loader;
@@ -75,7 +77,9 @@ package com.ziksana.content
 				LoadImage(m_ContentURLArray[m_NumberOfPosition]);
 			
 			if (m_ContentLoadEvent)
-				m_ContentLoadEvent.DispatchEvent();
+			{
+				GlobalEventDispatcher.instance.dispatch(new ZEvent(m_ContentLoadEvent, null));
+			}
 		}
 		
 
