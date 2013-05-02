@@ -27,7 +27,7 @@ background:rgb(67, 178, 236);
 color: #F9F9F9;
 text-shadow: none;
 margin-bottom: 3px;
-width:120px ! important;
+width:120px;
 }
 .btn:hover {
 background: #008DC4;
@@ -131,4 +131,10 @@ color: #FFF;
 
 @media only screen and (max-width: 1279px) {
     .wrapper.fixed{width: auto; margin: 0px 10px;}
+}
+.requiredField{
+	color:red;
+}
+.button-submit{
+	background-color: #ADD8E6;
 }

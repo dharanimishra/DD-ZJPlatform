@@ -1766,3 +1766,30 @@ margin-left:-60px;
 }
 
 /* Sequence Slider::END */
+
+.frgtpassmiddle
+{
+background-color:#FFF;
+margin-right: auto;
+margin-left: auto;
+width: 550px;
+/*border:1px solid #ccc;*/
+padding:20px;
+margin-top:20px;
+-moz-box-shadow: 1px 2px 15px #000000;
+-webkit-box-shadow: 1px 2px 15px #000000;
+box-shadow: 1px 2px 15px #000000;
+margin-bottom:20px;	
+	
+}
+
+
+.reghead
+{
+font-size:18px;
+color:rgb(27, 166, 206);
+}
+.pad_tb
+{
+  padding:6px 0px;
+}
