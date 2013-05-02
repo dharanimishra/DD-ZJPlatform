@@ -335,9 +335,9 @@ $(document).ready(
 			// $(".addmodulecontainer").hide();
 			function createnode() {
 
-				var im0 = "tree.png"; // the icon for a leaf node
-				var im1 = "tree.png"; // the icon for an expanded parent node
-				var im2 = "tree.png";
+				var im0 = "Tree.png"; // the icon for a leaf node
+				var im1 = "Tree.png"; // the icon for an expanded parent node
+				var im2 = "Tree.png";
 				// tree.insertNewChild(tree.getSelectedItemId()||0,(new
 				// Date()).valueOf(),'New item')
 

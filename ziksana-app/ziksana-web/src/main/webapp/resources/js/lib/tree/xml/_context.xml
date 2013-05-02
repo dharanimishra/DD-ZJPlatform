@@ -2,8 +2,8 @@
 <menu id="1">
 		<item text="Add Module" img="plus.png"  id="Add_Module"></item>	
 		<item text="Edit" img="edit.png" id="Edit"></item>
-		<item text="View" img="view.png"  id="RootView"></item>
-		<item text="View" img="view.png"  id="View"></item>	
+		<!-- <item text="View" img="view.png"  id="RootView"></item>
+		<item text="View" img="view.png"  id="View"></item>	 -->
 		<item text="Delete" img="cross.png"  id="Delete"></item>	
 	
 </menu>

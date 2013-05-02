@@ -268,7 +268,7 @@ function createCourse() {
 
 		var Topic = $('#Ctopicddl').val();
 
-		var Coursetag_Field = $('#Ctagfield_e').val();
+		var Coursetag_Field = $('#Ctagfield_course').val();
 
 		console.log(Coursetag_Field);
 

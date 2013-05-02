@@ -1,0 +1,56 @@
+#splitterContainer { /* Main splitter element */
+	height: 95%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border-bottom: solid 1px #9cbdff;overflow: auto;
+}
+
+#leftPane {
+	float: left;
+	width: 25%;
+	height: 100%;
+	border-top: solid 1px #9cbdff;
+	overflow: auto;
+}
+
+#rightPane { /*Contains toolbar and horizontal splitter*/
+	float: right;
+	width: 70%;
+	height: 100%;
+}
+
+/* Splitbar styles; these are the default class names and required styles */
+.splitbarV {
+	float: left;
+	width:4px;
+	height: 100%!important;
+	line-height: 0px;
+	font-size: 0px;
+	border-left: solid 1px #9cbdff;
+	border-right: solid 1px #9cbdff;
+	background: #cbe1fb url(img/panev.gif) 0% 50%;
+	border:1px solid #000;
+}
+
+.splitbuttonV {
+	margin-top: -41px;
+	margin-left: -4px;
+	top: 50%;
+	position: relative;
+	height: 83px;
+	width: 10px;
+	background: transparent url(img/panevc.gif) 10px 50% ;
+}
+
+.splitbuttonV.invert {
+	margin-left: 0px;
+	background: transparent url(img/panevc.gif) 0px 50%;
+}
+
+.splitbarV.working,.splitbarH.working,.splitbuttonV.working,.splitbuttonH.working
+	{
+	-moz-opacity: .50;
+	filter: alpha(opacity =   50);
+	opacity: .50;
+}

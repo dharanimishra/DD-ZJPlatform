@@ -328,9 +328,12 @@ public class CreateCourseController {
 				course.setCourseDuration(duration);
 				course.setThumbnailPicturePath(UploadImage);
 				course.setVersion(1);
-				course.setSubjClassificationId(courseSubjectClassification
-						.getSubjClassificationId());
+				try {
+					course.setSubjClassificationId(courseSubjectClassification
+							.getSubjClassificationId());
+				} catch (Exception e) {
 
+				}
 			} else {
 				course.setName(CourseName);
 				course.setDescription(CourseDescription);
@@ -349,8 +352,12 @@ public class CreateCourseController {
 				course.setCourseDuration(duration);
 				course.setSecurityIndicator(true);
 				course.setAccountableMember(accountableMember);
-				// course.setSubjClassificationId(courseSubjectClassification
-				// .getSubjClassificationId());
+				try {
+					course.setSubjClassificationId(courseSubjectClassification
+							.getSubjClassificationId());
+				} catch (Exception e) {
+
+				}
 
 			}
 
@@ -711,8 +718,18 @@ public class CreateCourseController {
 				tagcloud.setTagName(ModuleTags);
 				tagcloud.setZeniSuggestedIndicator(true);
 				tagcloud.setLearningComponentId(updatedLearningComponentId);
-				tagcloudObj = learningComponentTagCloudService
-						.saveOrUpadteTags(tagcloud);
+				try {
+					tagcloudObj = learningComponentTagCloudService
+							.saveOrUpadteTags(tagcloud);
+				} catch (Exception e) {
+					LOGGER.error("Class :"
+							+ getClass()
+							+ " Method saveOrUpadteTags Exception : After courseService :tagcloud"
+							+ tagcloud + "learningComponentId :"
+							+ learningComponentId
+							+ "updatedLearningComponentId :"
+							+ updatedLearningComponentId);
+				}
 				LOGGER.debug("Class :"
 						+ getClass()
 						+ " Method saveOrUpadteTags : After courseService: :tagcloud"

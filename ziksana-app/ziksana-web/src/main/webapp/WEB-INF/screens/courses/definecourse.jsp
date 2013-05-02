@@ -9,9 +9,6 @@
 <link href="${staticFileServer}resources/css/stylesheets.css"
 	rel="stylesheet" type="text/css" />
 
-<link rel="stylesheet"
-	href="${staticFileServer}resources/css/common/tags/superbly-tagfield.css" />
-
 <script type='text/javascript'
 	src='${staticFileServer}resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
 <script type='text/javascript'
@@ -286,23 +283,15 @@
 
 
 <div id="background">
-
-
-
 	<div id="wrapper">
 		<section>
 			<div id="headercontainer">
-
 				<div id="HeaderLogo" class="f-l">
-
 					<img src="/ziksana-web/resources/images/home/loginlogo.png"
 						style="height: 80px;" />
-
 				</div>
 				<!--end of headerlogo-->
-
 				<div class="clearfix"></div>
-
 
 			</div>
 			<div id="leftpanel">
@@ -521,7 +510,8 @@
 					<div id="formcontainer">
 						<div class="page-header">
 							<div class="icon">
-								<img src="../images/icons/information_icon.png"
+								<img
+									src="${staticFileServer}resources/images/icons/information_icon.png"
 									style="height: 25px;" />
 							</div>
 							<h1>Provide Course Details</h1>
@@ -576,7 +566,6 @@
    										 <textarea id="ckeditor" style="height: 300px;"></textarea>  -->
 								<!--Course Selection-->
 								<div class="control-group" style="margin-top: 20px;">
-
 									<div>
 										<label class="labelclass nexaf f-l"> Course Area : </label> <label
 											class="labelclass nexaf f-l" style="margin-left: 160px;">
@@ -585,7 +574,6 @@
 									</div>
 
 									<div class="clearfix"></div>
-
 
 									<div class="moduleselection">
 										<select name="Careaddl" id="Careaddl"
@@ -603,14 +591,11 @@
 
 								</div>
 								<!--end of Subject Selection-->
-
-
-
 								<div class="control-group" style="width: 69%">
 									<label class="control-label nexaf" for="Specify Tags">Specify
 										Tags :</label>
 									<div class="controls">
-										<input id="Ctagfield_e" type="text" class="tags"
+										<input type="text" class="tags" 
 											value="Computer Science, Literature, History" />
 									</div>
 								</div>
@@ -649,7 +634,7 @@
 									<option value="3">Days</option>
 								</select>
 								<div class="clearfix"></div>
-								<!--  <div class="control-group">
+								<div class="control-group">
 									<label class="control-label nexaf" for="Asscoiate Content"
 										style="width: 230px;"> Associate an Image for the
 										Course :</label>
@@ -672,9 +657,9 @@
 										</div>
 										<div id="status"></div>
 									</div>
-								</div> -->
+								</div>
 
-								<div style="margin-top: 30px;">
+								<!-- <div style="margin-top: 30px;">
 
 									<p class="labelclass" style="font-weight: bold;">Associate
 										an Image for your Course</p>
@@ -766,7 +751,7 @@
 
 										}
 									</script>
-								</div>
+								</div> -->
 								<button class="btn f-r" type="button"
 									onClick="createCourse();return false;">Save and
 									Continue</button>
