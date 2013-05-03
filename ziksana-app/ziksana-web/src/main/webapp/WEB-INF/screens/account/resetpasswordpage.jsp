@@ -66,7 +66,8 @@
 					      
 					      <label  style="padding-top:-10px;">User-Id</label>
 					     
-					      <input placeholder="Enter your User-Id" autocomplete="off" type="text" name="frgtuserid" id="frgtuserid" tabindex="2" data-prompt-position="inline"/> <a href="/ziksana-web/unsecure/forgotuserid"><span  style=" float:right; font-size:14px;">Forgot your User Id?</span></a>				     
+					      <input placeholder="Enter your User-Id" autocomplete="off" type="text" name="frgtuserid" id="frgtuserid" tabindex="2" data-prompt-position="inline"/>
+					       <a  style=" float:right; font-size:14px;" href="/ziksana-web/unsecure/forgotuserid">Forgot your User Id?</a>				     
 					      
 					 </div><!-- end of separate  -->   
 					    
@@ -321,7 +322,10 @@ function validateUserId(){
 	forgotUserId = $('#frgtuserid').val();
 	if(forgotUserId == ''){
 		$('#errorUserIdResponse').html("Enter UserId");		
-	}else {
+	}else if(forgotUserId.indexOf(' ') >= 0){
+		  
+		   $('#errorUserIdResponse').html("Enter UserId without whitespace");
+	}else{
 		if(("#errorUserIdResponse.inside:contains('Enter UserId')")){
 			document.getElementById("errorUserIdResponse").innerHTML = '';
 		}
@@ -485,10 +489,13 @@ function checkpass()
 {
 	if(passwordStrength){
 		
-
+		if($('#retypePassword').val()==''){
+			$('#result1').html("Enter Confirm Password");
+		}
 		
-		if ($('#password').val()!=$('#retypePassword').val()){
+		else if ($('#password').val()!=$('#retypePassword').val()){
 			$('#result1').html("Confirm Password must be equal to new Password");
+			
 		}else{
 			newPassword = $('#password').val();
 			retypePassword = $('#retypePassword').val();
