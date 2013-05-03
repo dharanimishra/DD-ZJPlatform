@@ -56,6 +56,7 @@ public class LoginController {
 		
 		String userIdValidationResponse = null;
 		String passwordValidationResponse = null;
+		int loginAttempt;
 		
 		ModelAndView mv = null;
 		try {
@@ -83,11 +84,13 @@ public class LoginController {
 						
 					}else if(memberService.isUserNameExists(username) && memberService.isPasswordExists(password)){
 						
+						
 						userAuthenticated= authService.authenticateUser(username, password);
+						
 					}
 					
 					if (userAuthenticated) {
-
+								loginAttempt = 0;
 								Member member = memberService.getMemberByUser(username);
 								session.setAttribute("userName", username);
 								session.setAttribute("staticFileServer", mediaService.getMediaContents().getStaticFileServer());
@@ -125,7 +128,7 @@ public class LoginController {
 								mv.addObject("passwordValidationResponse", passwordValidationResponse);
 								
 								
-								int loginAttempt;
+								
 								if (session.getAttribute("loginCount") == null) {
 									session.setAttribute("loginCount", 0);
 									loginAttempt = 0;
@@ -150,7 +153,9 @@ public class LoginController {
 									}
 
 								} else {
+									if(memberService.isUserNameExists(username)){
 									loginAttempt++;
+									}
 									int allowLogin = 3 - loginAttempt;
 									//mv.addObject("accountLocked", "loginAttempt="+ loginAttempt+ ". Invalid username or password.");
 								}

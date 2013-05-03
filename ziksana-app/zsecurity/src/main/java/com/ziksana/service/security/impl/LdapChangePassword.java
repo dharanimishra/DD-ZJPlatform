@@ -7,6 +7,7 @@ import javax.naming.directory.ModificationItem;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.ldap.OperationNotSupportedException;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.ldap.support.LdapUtils;
 
@@ -16,8 +17,8 @@ public class LdapChangePassword {
 
 	
 	
-	static String userId = "sandraf";
-	static String pwd ="vtgindia"; 
+	static String userId = "ravip";
+	static String pwd ="prakash"; 
 	
 	public static void main(String args[]){
 		String response = ldapAuthentication();
@@ -37,10 +38,10 @@ public class LdapChangePassword {
 		DirContext ctx = null;
 		LdapContextSource contextSource = new LdapContextSource();
 		// These values may be given via spring configuration file
-		contextSource.setUrl("ldap://localhost:10389/ou=system");
+		contextSource.setUrl("ldap://23.23.77.75:389/ou=system");
 		// contextSource.setBase("ou=system");
-		contextSource.setUserDn("uid=admin,ou=system");
-		contextSource.setPassword("selvan");
+		contextSource.setUserDn("cn=Manager,dc=test,dc=lan");
+		contextSource.setPassword("@zikroot123");
 		try {
 			contextSource.afterPropertiesSet();
 		} catch (Exception e1) {
@@ -50,18 +51,18 @@ public class LdapChangePassword {
 
 		try {
 			if (contextSource != null) {
-				logger.debug(" The context source is not null");
-				//ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system,dc=test,dc=lan", pwd);
-				ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system", pwd);
-				
-				/*ModificationItem[] mods = new ModificationItem[1];
 
-			    Attribute mod0 = new BasicAttribute("userPassword", "sathish");
+				ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system,dc=test,dc=lan", pwd);
+				//ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system", pwd);
+				
+				ModificationItem[] mods = new ModificationItem[1];
+
+			    Attribute mod0 = new BasicAttribute("userPassword", "ziksanatest");
 			   
 			    mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, mod0);
 
 
-			    ctx.modifyAttributes("uid=sandraf, ou=users", mods);*/
+			    ctx.modifyAttributes("uid="+userId+",dc=test,dc=lan,ou=system,ou=users",mods);
 			}
 			// ctx = contextSource.getContext(userid, password);
 			response = "success";

@@ -111,7 +111,7 @@
 		memmember.ID=memmemberrole.memberId and
 		memmemberrole.RoleType=Role.LookupValueId and
 		memmember.rating = Rating.LookupValueId and
-		memmember.primaryEmailId==#{emailId}
+		memmember.primaryEmailId=#{emailId}
 		
 	</select>
 	<select id="getMemberByMemberId" resultMap="memberResultMap"
@@ -156,16 +156,24 @@
 	<update id="updateSecMemberCredentional" parameterType="map">
 		update secmembercredential		
 		<set>
-			password=#{password}
+			password=#{newPassword}
 		</set>
-		where userId=#{userId}
+		where userName=#{userId}
 	</update>
 	
 	<select id="isUserNameExists" resultType="java.lang.Boolean" parameterType="String">
-		select count(*) from secmembercredential where userName=#{username}
+		select count(*) from secmembercredential where BINARY userName=#{username}
 	</select>
 	<select id="isPasswordExists" resultType="java.lang.Boolean" parameterType="String">
-		select count(*) from secmembercredential where password=#{password}
+		select count(*) from secmembercredential where BINARY password=#{password}
+	</select>
+	<select id="isPrimaryEmailIdExists" resultType="java.lang.Boolean" parameterType="String">
+		select count(*) from memmember where primaryemailId=#{emailId}
+		
+	</select>
+	
+	<select id="getUserIdByMember" resultType="java.lang.String" parameterType="int">
+			select userId from memmember where ID=#{memberId}
 	</select>
 	
 	<resultMap id="memberResultMap" type="com.ziksana.domain.member.Member">

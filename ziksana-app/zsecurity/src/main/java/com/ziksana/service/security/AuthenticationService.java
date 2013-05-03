@@ -3,8 +3,6 @@
  */
 package com.ziksana.service.security;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author prabu

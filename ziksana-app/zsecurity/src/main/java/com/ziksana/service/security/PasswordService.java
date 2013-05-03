@@ -9,10 +9,12 @@ package com.ziksana.service.security;
  */
 public interface PasswordService {
 
-	public String replaceExistingPassword(String newPassword, String userId);
+	public String replaceExistingPassword(String newPassword, String userId, String password);
 
 	public String getUserPassword(String userId);
 
 	public void updateSecMemberCredentional(String newPassword, String userId);
+
+	public String getUserIdByMember(int memberId);
 
 }

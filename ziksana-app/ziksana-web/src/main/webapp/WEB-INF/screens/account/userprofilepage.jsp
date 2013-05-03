@@ -37,10 +37,10 @@
 				<div class="associateimage">
 
 					<c:if test="${empty member.picturePath}">
-						<img style="width: 200px; height: 150px;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg"/>
+						<img style="width: 122px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg"/>
 					</c:if>
 					<c:if test="${not empty ms.url && not empty member.picturePath}">
-						<img style="width: 200px; height: 150px;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
+						<img style="width: 122px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
 					</c:if> 
 					<input readonly="readonly" type="hidden" id="Cimageupl" />
 
@@ -61,9 +61,10 @@
 												'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 												'queueSizeLimit' : 1,
 												'successTimeout' : 350,
+												'buttonText' : 'Upload Image',
 												'uploader' : '${ms.uploadScript}',
 												'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-												'fileSizeLimit' : '10024KB',
+												'fileSizeLimit' : '1024KB',
 												'onUploadStart' : function(file) {
 													$('#sbtvalidation').attr(
 															'disabled',
@@ -165,7 +166,7 @@
 					
 				<div class="control-group">
 					<label class="control-label nexaf" for="Course Name"><fmt:message
-							key="profile.alternateemail"></fmt:message> :</label>
+							key="profile.alternateemail"></fmt:message> </label>
 					<div class="controls">
 						<input autofocus="autofocus"
 							
@@ -173,13 +174,14 @@
 							name="alt_mail" placeholder="Alternate Email" />
 					</div>
 					<div style="color: red; padding: 5px;" id="erroralternateEmailId"></div>
+					<div style="color: red; padding: 5px;" id="errorEmailId"></div>
 				</div>
 
 
 				<div class="control-group">
 					<label class="control-label nexaf" for="Course Name"
 						style="width: 180px;"><fmt:message
-							key="profile.securityquestion1"></fmt:message> :</label>
+							key="profile.securityquestion1"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
 						<select class="profileselect" id="securityQuestionOne">
 							<option selected="selected">Select the Security Question</option>
@@ -195,7 +197,7 @@
 
 				<div class="control-group">
 					<label class="control-label nexaf" for="Course Name"><fmt:message
-							key="profile.securityanswer1"></fmt:message> :</label>
+							key="profile.securityanswer1"></fmt:message><span class="requiredField">*</span></label>
 					<div class="controls">
 						<input type="text" class="profileinput" id="securityAnswerone"
 							name="sec_answer1" placeholder="Security Answer 1" />
@@ -208,7 +210,7 @@
 				<div class="control-group">
 					<label class="control-label nexaf" for="Course Name"
 						style="width: 180px;"><fmt:message
-							key="profile.securityquestion2"></fmt:message> :</label>
+							key="profile.securityquestion2"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
 
 						<select class="profileselect" id="securityQuestionTwo">
@@ -226,7 +228,7 @@
 				<div class="control-group">
 					<label class="control-label nexaf" for="Course Name"
 						style="width: 180px;"><fmt:message
-							key="profile.securityanswer2"></fmt:message> :</label>
+							key="profile.securityanswer2"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
 						<input type="text" class="profileinput" id="securityAnswertwo"
 							name="sec_answer2" placeholder="Security Answer 2" />
@@ -240,10 +242,10 @@
 
 
 				<input class="btn btn-primary f-r"
-					style="margin-right: -15px; height: 30px;" type="submit"
+					style="margin-right: -15px; height: 30px; width:80px;" type="submit"
 					onclick="updateUserProfile()"
 					value="<fmt:message key="profile.submit"></fmt:message>" /> 
-					<input onclick="clearProfileForm()" class="btn btn-primary f-r" style="margin-right: 20px; height: 30px;" type="reset"
+					<input onclick="clearProfileForm()" class="btn btn-primary f-r" style="margin-right: 20px; height: 30px; width:80px;" type="reset"
 					value="<fmt:message key="profile.cancel"></fmt:message>" />
 				<div class="clearfix"></div>
 
@@ -294,7 +296,7 @@ function clearProfileForm(){
 		
 		secondQuestionValidation(securityQuestionTwo);
 		secondAnswerValidation(securityAnswerTwo);
-		isEmailAlreadyExists( $('#memberProfileImageValue').val());
+		isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');
 		checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo);
 		if(firstQuestionValidation(securityQuestionOne) && firstAnswerValidation(securityAnswerone) && secondQuestionValidation(securityQuestionTwo) && secondAnswerValidation(securityAnswerTwo) && checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo)){
 			$.post( '<c:url value='/profile/updateprofile'/>'
@@ -381,11 +383,12 @@ function clearProfileForm(){
 		
 		if(securityQuestionTwo !='Select the Security Question'){
 		if(securityQuestionOne == securityQuestionTwo){
-			$('#errorsecurityQuestionTwo').html("Alternate email id should not be same as Primary email id");
+			
+			$('#errorsecurityQuestionTwo').html("Please choose Different Question");
 			return false;
 		}else{
-			if(("#errorsecurityQuestionTwo.inside:contains('Alternate email id should not be same as Primary email id')")){
-				document.getElementById("errorsecurityAnswertwo").innerHTML = '';
+			if(("#errorsecurityQuestionTwo.inside:contains('Please choose Different Question')")){
+				document.getElementById("errorsecurityQuestionTwo").innerHTML = '';
 			}
 			return true;
 		}
@@ -396,21 +399,25 @@ function clearProfileForm(){
 		alternateEmailId = $("#alternateEmailId").val();
 		
 		if(alternateEmailId != ''){
-		if (alternateEmailId == primaryEmailId) {
-			$('#erroralternateEmailId').html("Alternate email id should not be same as Primary email id");
-		}else{
-			document.getElementById("erroralternateEmailId").innerHTML = '';
-		}
+			if (primaryEmailId == alternateEmailId) {
+				console.log("hi");
+				$('#errorEmailId').html("Alternate email id should not be same as Primary email id");
+				
+			}else{
+				if(("#errorEmailId.inside:contains('email')")){
+				document.getElementById("errorEmailId").innerHTML = '';
+				}
+			}
 			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
 			if(alternateEmailId.match(mailformat))  
 			{  
 				document.getElementById("erroralternateEmailId").innerHTML = '';
 			}else{
-				$('#erroralternateEmailId').html("You have entered an invalid email address!");
+				$('#erroralternateEmailId').html("Invalid email format");
 				
 			}
 		
-	}else{document.getElementById("erroralternateEmailId").innerHTML = '';}
+	}
 	}
 	
 	function doRefreshCall(){

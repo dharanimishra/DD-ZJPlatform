@@ -138,6 +138,10 @@
 									&& ((String) request.getAttribute("loginResult"))
 											.equals("true")) {
 						%>
+						<c:if test="${ldapResponse !=null }">
+							<p  style="color:#d14836;"><c:out value="${accountLocked}"></c:out></p>
+							
+						</c:if>
 						<c:if test="${accountLocked !=null}">
 						<p style="color:#d14836;"><c:out value="${accountLocked}"></c:out><a href="/unsecure/admin/contactadminstrator#">&nbsp;Administrator</a></p>
 						</c:if>		
@@ -150,7 +154,7 @@
 					</div>
 				<form name="loginfrm"  method="POST" action="/ziksana-web/login" onsubmit="return(validate());">
 				<div class="control-group">
-					<label for="Username" class="login-label"><fmt:message key="login.username"></fmt:message>:</label>
+					<label for="Username" class="login-label"><fmt:message key="login.username"></fmt:message></label>
 					<div class="controls">
 						<input  autofocus="autofocus" name="username" type="text" class="textBox"
 							style="background-image: url(/ziksana-web/resources/images/home/logintext.png); background-position: left; background-repeat: no-repeat; padding-left: 45px; height: 30px; border-radius: 0; width: 230px"
@@ -165,7 +169,7 @@
 				</div>
 
 				<div class="control-group">
-					<label for="Password" class="login-label"><fmt:message key="login.password"></fmt:message>:</label>
+					<label for="Password" class="login-label"><fmt:message key="login.password"></fmt:message></label>
 					<div class="controls">
 						<input  name="password" type="Password" class="textBox"
 							style="background-image: url(/ziksana-web/resources/images/home/passwordtext.png); background-position: left; background-repeat: no-repeat; padding-left: 45px; height: 30px; border-radius: 0; width: 230px;"
@@ -179,8 +183,8 @@
 				</div>
 
 				<div class="clearfix"></div>
-				<a href="#linkurl"> Trouble Signing in? </a>
-					<input type="submit" class="btn f-r" style="padding: 7px; margin: 5px;" value="Log in"/>
+				<a href="/ziksana-web/unsecure/userverficationpage"> Trouble Signing in? </a>
+					<input type="submit" class="btn f-r" style="padding: 7px; margin: 5px;width:80px;" value="Log in"/>
 				
 					</form>
 			</div>
@@ -200,19 +204,20 @@
 <div class="Clearfix"> </div>
 <script type="text/javascript" charset="UTF-8">
 function validate(){
-	
+	$(".btn").addClass("button-submit"); 
 	if(document.loginfrm.username.value == ""){		
 		 $('#userIdValidation').html("Enter User ID");
 		 document.getElementById("passwordValidation").innerHTML = '';
 		 document.loginfrm.username.focus();
+		 $(".btn").removeClass("button-submit");
 		 return false;
 		 
 	}else if(document.loginfrm.password.value == ""){
 		$('#passwordValidation').html("Enter Password");
 		document.getElementById("userIdValidation").innerHTML = '';
 			document.loginfrm.password.focus();
+			$(".btn").removeClass("button-submit");
 			return false;
-		 
 	}else {
 		document.getElementById("userIdValidation").innerHTML = '';
 		document.getElementById("passwordValidation").innerHTML = '';

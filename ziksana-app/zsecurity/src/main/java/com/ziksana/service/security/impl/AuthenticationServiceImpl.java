@@ -54,8 +54,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		try {
 			if (contextSource != null) {
 				logger.debug(" The context source is not null");
-				ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system,dc=test,dc=lan", pwd);
-				//ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system", pwd);
+				//ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system,dc=test,dc=lan", pwd);
+				ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system", pwd);
 				
 			}
 			// ctx = contextSource.getContext(userid, password);
@@ -63,7 +63,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		} catch (Exception e) {
 			// Context creation failed - authentication did not succeed
 			// logger.error("Login failed", e);
-
+			
 			logger.debug(" The exception is " + e);
 			return false;
 		} finally {

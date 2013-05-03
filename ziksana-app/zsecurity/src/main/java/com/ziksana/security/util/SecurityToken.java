@@ -1,7 +1,5 @@
 package com.ziksana.security.util;
 
-import java.io.Serializable;
-
 import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.id.ZID;
 

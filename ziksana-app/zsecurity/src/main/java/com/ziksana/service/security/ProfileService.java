@@ -23,5 +23,7 @@ public interface ProfileService {
 
 	public MemberProfile getMemberProfile(String userId,
 			String securityQuestionId);
+	public MemberProfile getMemberProfileByMemberId(int memberId,
+			String securityQuestionId);
 	
 }

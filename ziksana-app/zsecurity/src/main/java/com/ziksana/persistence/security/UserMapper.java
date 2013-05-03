@@ -38,4 +38,8 @@ public interface UserMapper {
 
 	public boolean isPasswordExists(String password);
 
+	public String getUserIdByMember(int memberId);
+
+	public boolean isPrimaryEmailIdExists(String emailId);
+
 }

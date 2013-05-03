@@ -61,6 +61,13 @@
 
 	</definition>
 
+ <!--Reset Password Page-->
+	<definition name="masterresetpassword" extends="ziksana-master">
+		<put-attribute name="master_title" value="Reset Password" />
+		<put-attribute name="content" value="/WEB-INF/screens/account/resetpasswordpage.jsp" />
+
+	</definition>
+	
 	<!-- Metro Course Creation -->
 	<definition name="mastercreatecourse" extends="ziksana-master">
 		<put-attribute name="master_title" value="Course Creation" />

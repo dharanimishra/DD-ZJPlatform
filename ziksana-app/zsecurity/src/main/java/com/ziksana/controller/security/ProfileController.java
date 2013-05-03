@@ -77,6 +77,7 @@ public class ProfileController {
 		String responseMsg ="";
 	
 		try{	
+	
 			boolean updateResponse = false;
 			int response = 0;
 			if(firstSecurityAnswer.length()<=0 && secondSecurityAnswer.length() <=0){

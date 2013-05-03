@@ -4,6 +4,9 @@
 package com.ziksana.security.velocitymail;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
@@ -15,6 +18,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.velocity.VelocityEngineUtils;
+
+import com.ziksana.domain.member.Member;
 
 @Component("emailSender")
 public class ZiksanaEmailSender {
@@ -26,7 +32,32 @@ public class ZiksanaEmailSender {
     private VelocityEngine velocityEngine;
 
 
-    public void sendEmail(final String toEmailAddresses, final String fromEmailAddress,
+    public void sendEmailText1(final Member member) {
+    	 MimeMessagePreparator preparator = new MimeMessagePreparator() {
+             public void prepare(MimeMessage mimeMessage) throws Exception {
+                 MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true);
+                 message.setTo(member.getPrimaryEmailId());
+                 //message.setFrom(new InternetAddress(fromEmailAddress));
+                 message.setSubject("Ziksana User Id"); 
+                 String imagePath="http://192.168.10.115:8080/ziksana-web/resources/images/home/loginlogo.png";
+ 			 	Map model = new HashMap();
+ 				model.put("member", member);
+ 				model.put("path", imagePath);
+ 				String body;
+ 				body = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, "mailtemplate/reminder.vm", "UTF-8", model);
+                 message.setText(body, true);
+                 
+             }
+             
+         };
+         boolean alreadyExecuted = false;
+			if(!alreadyExecuted) {
+         mailSender.send(preparator);
+         alreadyExecuted = true;
+		}
+	}
+    
+    public void sendEmailText(final String toEmailAddresses, final String fromEmailAddress,
                           final String subject,String body) {
         sendEmail(toEmailAddresses, fromEmailAddress, subject, null, null,body);
     }
@@ -45,7 +76,8 @@ public class ZiksanaEmailSender {
                 MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true);
                 message.setTo(toEmailAddresses);
                 message.setFrom(new InternetAddress(fromEmailAddress));
-                message.setSubject(subject);         
+                message.setSubject(subject); 
+              
                 message.setText(body, true);
                 if (!StringUtils.isBlank(attachmentPath)) {
                     FileSystemResource file = new FileSystemResource(attachmentPath);
@@ -55,5 +87,7 @@ public class ZiksanaEmailSender {
         };
         this.mailSender.send(preparator);
     }
+
+	
 }
 

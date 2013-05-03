@@ -56,7 +56,7 @@ public class PasswordServiceImplTest {
 	
 	@Test
 	public void testChangeLdapPassword(){
-		passwordService.replaceExistingPassword("ziksanatest", "sandraf");
+		//passwordService.replaceExistingPassword("ziksanatest", "sandraf");
 	}
 	
 }

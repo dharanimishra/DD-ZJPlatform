@@ -3,7 +3,7 @@
 <mapper namespace="com.ziksana.persistence.security.TroubleLoginMapper">
 
 	<select id="isUserIdExists" resultType="java.lang.Boolean" parameterType="String">
-		select count(*) from memmember where userId = #{userId}
+		select count(*) from memmember  where binary userId = #{userId}
 	</select>
 	
 	<select id="isSecretAnswerExists" resultType="java.lang.Boolean" parameterType="map">

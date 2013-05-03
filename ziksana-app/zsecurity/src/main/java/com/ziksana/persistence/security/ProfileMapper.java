@@ -23,4 +23,6 @@ public interface ProfileMapper {
 	public int isProfileCompleted(String userId);
 
 	public MemberProfile getMemberProfile(@Param("userId")String userId,@Param("securityQuestionId")String securityQuestionId);
+
+	public MemberProfile getMemberProfileByMemberId(@Param("memberId")int memberId, @Param("securityQuestionId")String securityQuestionId);
 }

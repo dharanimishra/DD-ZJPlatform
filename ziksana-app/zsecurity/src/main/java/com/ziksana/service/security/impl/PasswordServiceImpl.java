@@ -42,7 +42,7 @@ public class PasswordServiceImpl implements PasswordService {
 	/* 
 	 * replace the password in LDAP
 	 */
-	public String replaceExistingPassword(String newPassword, String userId) {
+	public String replaceExistingPassword(String newPassword, String userId, String password) {
 
 		String response = "";
 
@@ -65,7 +65,7 @@ public class PasswordServiceImpl implements PasswordService {
 			if (contextSource != null) {
 				logger.debug(" The context source is not null");
 				//ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system,dc=test,dc=lan", pwd);
-				ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system", getUserPassword(userId));
+				ctx = contextSource.getContext("uid="+userId+",ou=users,ou=system", password);
 				
 				ModificationItem[] mods = new ModificationItem[1];
 
@@ -74,7 +74,7 @@ public class PasswordServiceImpl implements PasswordService {
 			    mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, mod0);
 
 
-			    ctx.modifyAttributes("uid=sandraf, ou=users", mods);
+			    ctx.modifyAttributes("uid="+userId+", ou=users", mods);
 			}
 			// ctx = contextSource.getContext(userid, password);
 			response = "success";
@@ -103,6 +103,11 @@ public class PasswordServiceImpl implements PasswordService {
 	public void updateSecMemberCredentional(String newPassword, String userId) {
 		userMapper.updateSecMemberCredentional(newPassword,userId);
 		
+	}
+
+	public String getUserIdByMember(int memberId) {
+		// TODO Auto-generated method stub
+		return userMapper.getUserIdByMember(memberId);
 	}
 
 }

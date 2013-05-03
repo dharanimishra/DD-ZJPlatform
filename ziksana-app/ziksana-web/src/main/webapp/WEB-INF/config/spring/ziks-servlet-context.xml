@@ -106,7 +106,8 @@
 			</value>
 		</property>
 	</bean>
-	
+		
+		
 	<!-- Spring velocity mail configuration setup. -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="javaMailProperties">
@@ -129,5 +130,5 @@
             </value>
         </property>
     </bean>
-    
+	
 </beans>

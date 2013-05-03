@@ -1,13 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
 <body>
-Hi Selvan,<p/>
 
-<p style="color:red;">This is a Test email. <p/>
+<div style="background-color:#333333;margin-bottom: 30px;height:65px;width:580px;color:#fff;text-align:center;font-size:30px;margin-top: 3px;text-indent: -11px;text-overline-color: skyblue;">
+	<img align="left" width="100px" height="50px;" src="${path}"/> welcome to ziksana
+</div>
 
+Dear <b>${member.firstName} ${member.lastName},</b>
+<br/><br/>
+<div>
+   Your ziksana userId is <b>${member.userId}.</b>
+</div>
+<br/>
+<br/>
 
-Thanks<br/>
-Selvan K.
+Regards,<br/>
+Ziksana Team
+
 
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
+import com.ziksana.domain.member.Member;
 import com.ziksana.security.velocitymail.ZiksanaEmailSender;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,10 +22,12 @@ public class EmailSenderTest {
 
     @Test
     public void testSendEmail() throws Exception {
-    	   String body="";
+    	  String body="";
            body+="Hello User,<br/>";
            body+= VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, "mailtemplate/reminder.vm", "UTF-8", null);
-        emailSender.sendEmail("selvan52@gmail.com", "selvan52@gmail.com", "selva Test",body);
+           Member member = new Member();
+           member.setPrimaryEmailId("selvan.kumar@vtgindia.com");
+        emailSender.sendEmailText1( member);
     }
 
   } 

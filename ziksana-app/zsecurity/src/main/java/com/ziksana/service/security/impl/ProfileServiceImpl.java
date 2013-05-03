@@ -49,6 +49,11 @@ public class ProfileServiceImpl implements ProfileService {
 
 		return profileMapper.getMemberProfile(userId,securityQuestionId);
 	}
+	public MemberProfile getMemberProfileByMemberId(int memberId,
+			String securityQuestionId) {
+		
+		return profileMapper.getMemberProfileByMemberId(memberId, securityQuestionId);
+	}
 
 	
 

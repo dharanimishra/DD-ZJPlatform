@@ -26,6 +26,8 @@ public interface MemberService {
 	public boolean isUserNameExists(String username);
 
 	public boolean isPasswordExists(String password);
+
+	public boolean isPrimaryEmailIdExists(String emailId);
 	
 
 }
