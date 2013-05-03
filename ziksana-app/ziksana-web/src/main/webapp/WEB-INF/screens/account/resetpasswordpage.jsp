@@ -340,7 +340,21 @@ function validateUserId(){
 				}
 				if(data == 'UserId Verification Successful.'){
 					
-					window.location.href = "/ziksana-web/unsecure/firstsecurityverfication/"+forgotUserId+"";
+							$.ajax({
+							  	type: 'GET',
+								url: '/ziksana-web/unsecure/isprofilecompleted/'+forgotUserId,
+								success: function( data ) {
+									console.log(data);
+									if(data == 'SUCCESS'){										
+										window.location.href = "/ziksana-web/unsecure/firstsecurityverfication/"+forgotUserId+"";
+									}else{
+										$('#errorUserIdResponse').html(data);
+									}
+								
+									
+								}
+							});
+			
 				}
 			
 				

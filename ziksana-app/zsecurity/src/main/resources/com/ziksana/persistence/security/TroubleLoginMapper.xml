@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="isSecretAnswerExists" resultType="java.lang.Boolean" parameterType="map">
-		select count(memberAnswer) from memmemberprofile where memberAnswer=#{answer} and SecurityQuestionText=#{secretQuestion} and memberId =#{memberId}
+		select count(memberAnswer) from memmemberprofile where binary memberAnswer=#{answer} and SecurityQuestionText=#{secretQuestion} and memberId =#{memberId}
 	</select>
 	
 </mapper>

@@ -91,6 +91,29 @@ public class TroubleLoginController {
 		return pageResponse;
 		
 	}
+	@RequestMapping(value = "/isprofilecompleted/{username}", method = RequestMethod.GET)
+	public @ResponseBody String isProfileCompleted(@PathVariable String username) {
+		String pageResponse = null;
+		try{
+			
+			int isUserProfileUpdated = profileService.isProfileCompleted(username);
+				 if(isUserProfileUpdated == 1){
+					 pageResponse = "SUCCESS";
+					
+				}else{
+					pageResponse = "Setup your basic profile page or Contact <a href='#'>Administrator</a>";
+				}
+			
+			
+		}
+		catch(ZiksanaException zexception){
+	
+			LOGGER.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
+		return pageResponse;
+		
+	}
+	
 	
 	@RequestMapping(value = "/firstsecurityverfication/{userId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView securityFormFirstPage(@PathVariable String userId) {
