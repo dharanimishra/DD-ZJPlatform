@@ -1,6 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script>
+
+
+</script>
 <div id="loginwrapper">
 
 
@@ -45,12 +49,12 @@
 					<input readonly="readonly" type="hidden" id="Cimageupl" />
 
 
-					<div id="thubmnail_upload_message"></div>
+					<div id="thubmnail_upload_message" ></div>
 					<div id="loaderText"></div>
 
 					<input
-						style="height: 30px; width: 120px; margin-left: 37px; margin-top: 8px;"
-						type="file" name="thumbnail_image_file_upload"
+						style="height: 25px; width: 120px; margin-left: 37px; margin-top: 8px;"
+						type="file" name="thumbnail_image_file_upload" 
 						id="thumbnail_image_file_upload" />
 					<div id="status"></div>
 					<script type="text/javascript">
@@ -270,6 +274,11 @@
 <!--end of loginwrapper-->
 
 <script type="text/javascript">
+$(document).ready(function() {
+	
+ $("#thumbnail_image_file_upload-button").removeClass("uploadify-button"); 
+	 $("#thumbnail_image_file_upload-button").addClass("btnupload");  
+	});
 function clearProfileForm(){
 	/* $("input[type=text]").val('');
 	
@@ -426,4 +435,22 @@ function clearProfileForm(){
 		 
 	}
 </script>
-
+<style>
+.btnupload
+{
+-webkit-border-radius: 0px;
+border-radius: 6px;
+border: 0px;
+background:rgb(67, 178, 236);
+color: #F9F9F9;
+text-shadow: none;
+text-align: center;
+margin-bottom: 3px;
+width:120px !important;
+}
+.btnupload:hover {
+background: #008DC4;
+color: #FFF;
+width:120px !important;
+}
+</style>
