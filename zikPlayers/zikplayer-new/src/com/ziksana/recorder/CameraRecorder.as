@@ -43,7 +43,6 @@ package com.ziksana.recorder
 			//For now use best quality and 320, 240 resolution
 			m_VideoCamera.setQuality(0, 100);
 			
-			trace ("VideoRecorder ==> " + "Width : " + contentDisplayObject.width + " Height : " + contentDisplayObject.height);
 			//m_VideoCamera.setMode(contentDisplayObject.width as int, contentDisplayObject.height as int, 30);
 			//m_VideoContainer = new Video(contentDisplayObject.width as int, contentDisplayObject.height as int);
 			m_VideoContainer = new Video(160, 120);

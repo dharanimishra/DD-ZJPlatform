@@ -1,22 +1,25 @@
 package com.ziksana.recorder
 {
-	import flash.display.Bitmap;
-	import flash.display.MovieClip;
-	import flash.text.TextFormat;
-	import flash.text.Font;
-	
-	import com.nocircleno.graffiti.tools.ITool;
 	import com.nocircleno.graffiti.tools.BitmapTool;
 	import com.nocircleno.graffiti.tools.BrushTool;
 	import com.nocircleno.graffiti.tools.BrushType;
+	import com.nocircleno.graffiti.tools.ITool;
 	import com.nocircleno.graffiti.tools.LineTool;
 	import com.nocircleno.graffiti.tools.LineType;
 	import com.nocircleno.graffiti.tools.ShapeTool;
 	import com.nocircleno.graffiti.tools.ShapeType;
-	import com.nocircleno.graffiti.tools.ToolMode;
 	import com.nocircleno.graffiti.tools.TextSettings;
 	import com.nocircleno.graffiti.tools.TextTool;
-
+	import com.nocircleno.graffiti.tools.ToolMode;
+	import com.ziksana.util.Util;
+	
+	import flash.display.Bitmap;
+	import flash.display.MovieClip;
+	import flash.text.Font;
+	import flash.text.TextFormat;
+	
+	
+	
 	public class ScribbleTool
 	{
 		//Selection
@@ -51,15 +54,15 @@ package com.ziksana.recorder
 		[Embed(source='../../../../resources/SettingsTool.png')]
 		public static var TOOL_SETTINGS:Class;
 
-		private var _brushSize:Number = 2;
-		private var _strokeColor:uint = 0x00FF00;
-		private var _fillColor:uint = 0xFF0000;
-		private var _strokeAlpha:Number = 1;
-		private var _fillAlpha:Number = 1;
-		private var _brushBlur:Number = 0;
-		private var _fontColor:uint = 0x00FF00;
-		private var _fontSize:uint = 14;
-		//private var _fontList:DataProvider;
+		private var m_BrushSize:Number = 4;
+		private var m_StrokeColor:uint = uint(Util.RGBToHex(239, 228, 176));
+		private var m_FillColor:uint = 0;
+		private var m_StrokeAlpha:Number = 1;
+		private var m_FillAlpha:Number = 0;
+		private var m_BrushBlur:Number = 0;
+		private var m_FontColor:uint = uint(Util.RGBToHex(255, 255, 255));;
+		private var m_FontSize:uint = 20;
+		private var m_FontsList:Array = null;
 		
 		public static const SCRIBBLE_TOOL_BRUSH : int = 0;
 		public static const SCRIBBLE_TOOL_ERASER : int = 1; 
@@ -71,14 +74,8 @@ package com.ziksana.recorder
 		
 		public function ScribbleTool()
 		{
-			/*_fontList = new DataProvider();
-			
-			var embeddedFonts:Array = Font.enumerateFonts(true);
-			embeddedFonts.sortOn("fontName", Array.CASEINSENSITIVE);
-			
-			for (var i:int = 0; i < embeddedFonts.length; i++) {
-				_fontList.addItem( {label: embeddedFonts[i].fontName, data: embeddedFonts[i] } );
-			}*/
+			m_FontsList = Font.enumerateFonts(true);
+			m_FontsList.sortOn("fontName", Array.CASEINSENSITIVE);
 		}
 		
 		public function CreateToolButton (toolType : int, left : int, top : int, width : int, height : int) : MovieClip
@@ -120,22 +117,22 @@ package com.ziksana.recorder
 			switch (toolType)
 			{
 				case SCRIBBLE_TOOL_BRUSH :
-					grafitiTool = new BrushTool(_brushSize, _fillColor, _fillAlpha, _brushBlur, BrushType.ROUND);
+					grafitiTool = new BrushTool(m_BrushSize, m_FillColor, 1, m_BrushBlur, BrushType.ROUND);
 					break;
 				case SCRIBBLE_TOOL_ERASER :
-					grafitiTool = new BrushTool(_brushSize, _fillColor, 1, _brushBlur, BrushType.ROUND, ToolMode.ERASE);
+					grafitiTool = new BrushTool(m_BrushSize, m_FillColor, 1, m_BrushBlur, BrushType.ROUND, ToolMode.ERASE);
 					break;
 				case SCRIBBLE_TOOL_LINE : 
-					grafitiTool = new LineTool(2, _strokeColor, _strokeAlpha, LineType.SOLID);
+					grafitiTool = new LineTool(2, m_StrokeColor, m_StrokeAlpha, LineType.SOLID);
 					break;
 				case SCRIBBLE_TOOL_CIRCLE : 
-					grafitiTool = new ShapeTool(2, _strokeColor, _fillColor, _strokeAlpha, _fillAlpha, ShapeType.CIRCLE);
+					grafitiTool = new ShapeTool(2, m_StrokeColor, m_FillColor, m_StrokeAlpha, m_FillAlpha, ShapeType.CIRCLE);
 					break;
 				case SCRIBBLE_TOOL_SQUARE : 
-					grafitiTool = new ShapeTool(2, _strokeColor, _fillColor, _strokeAlpha, _fillAlpha, ShapeType.SQUARE);
+					grafitiTool = new ShapeTool(2, m_StrokeColor, m_FillColor, m_StrokeAlpha, m_FillAlpha, ShapeType.SQUARE);
 					break;
 				case SCRIBBLE_TOOL_TEXT :
-					//grafitiTool = new TextTool(new TextSettings(Font(_fontList.getItemAt(0).data), new TextFormat(null, _fontSize, _fontColor)));
+					grafitiTool = new TextTool(new TextSettings(Font(m_FontsList[0]), new TextFormat(null, m_FontSize, m_FontColor)));
 					break;
 				case SCRIBBLE_TOOL_SETTINGS : 
 					break;

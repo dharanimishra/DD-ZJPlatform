@@ -1,14 +1,17 @@
 package com.ziksana.recorder
 {
 	import com.nocircleno.graffiti.GraffitiCanvas;
+	import com.nocircleno.graffiti.display.Text;
 	import com.nocircleno.graffiti.tools.ITool;
-	import com.ziksana.recorder.ScribbleTool;
-	import com.ziksana.util.Logger;
 	import com.ziksana.content.Content;
 	import com.ziksana.content.ScribbleContent;
+	import com.ziksana.recorder.ScribbleTool;
+	import com.ziksana.util.Logger;
 	
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
 
 	public class ScribbleRecorder extends ContentRecorder
 	{
@@ -107,6 +110,24 @@ package com.ziksana.recorder
 			left = 10;
 			top = 10;
 			
+			m_ToolBar.graphics.beginFill(0x568ea9,1);
+			m_ToolBar.graphics.drawRect(0, 3, toolButtonWidth, 20);
+			m_ToolBar.graphics.beginFill(0x214254,1);
+			m_ToolBar.graphics.drawRect(3, 3, toolButtonWidth-10, 18);
+			m_ToolBar.graphics.endFill();
+			var title:TextField = new TextField();
+			title.text = "Tools";
+			title.defaultTextFormat.bold = true;
+			var format:TextFormat = new TextFormat();
+			format.size = 18;
+			format.color = 0xFFFFFF;
+			title.setTextFormat(format);
+			title.textColor = 0xFFFFFF;
+			title.x = 4;
+			title.y = -2;
+			m_ToolBar.addChildAt(title,0);
+			top = 25;
+			
 			for (var currentToolButton : int = 0; currentToolButton < m_ToolTypesArray.length; currentToolButton++)
 			{
 				toolButton = m_GraffitiTool.CreateToolButton (m_ToolTypesArray[currentToolButton], left, top, 0, 0);
@@ -118,7 +139,7 @@ package com.ziksana.recorder
 				top += toolButtonHeight;
 				toolButton.addEventListener(MouseEvent.CLICK, OnToolButtonClick);
 				
-				m_ToolBar.addChildAt(toolButton, currentToolButton);
+				m_ToolBar.addChildAt(toolButton, currentToolButton+1);
 			}
 			
 			//By default null
@@ -157,8 +178,8 @@ package com.ziksana.recorder
 			var toolButtonHeight : int = 50;
 			
 			var opacity : Number = 0.8;
-			var backgroundColor : uint = 0x0999999;
-			var buttonColor : uint = 0x060101;
+			var backgroundColor : uint = 0x214254;
+			var buttonColor : uint = 0x214254;
 			
 			m_Container.graphics.clear();
 			m_Container.graphics.beginFill(backgroundColor, opacity);
@@ -168,7 +189,7 @@ package com.ziksana.recorder
 			for (var currentToolButton : int = 0; currentToolButton < m_ToolButtonsArray.length; currentToolButton++)
 			{
 				m_Container.graphics.beginFill(buttonColor, opacity);
-				m_Container.graphics.drawRect(0, (currentToolButton * toolButtonHeight), toolButtonWidth, toolButtonHeight-2);
+				m_Container.graphics.drawRect(0, (currentToolButton * toolButtonHeight+25), toolButtonWidth, toolButtonHeight-2);
 				m_Container.graphics.endFill();
 			}
 		}

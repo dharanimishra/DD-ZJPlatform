@@ -19,5 +19,12 @@ package com.ziksana.util
 			
 			return videoRecordingFileName;
 		}
+		
+		public static function RGBToHex (red : int, green : int, blue : int) : Number
+		{
+			var hexNumber:Number = Number("0x" + red.toString(16) + green.toString(16) + blue.toString(16));
+			
+			return hexNumber;
+		}
 	}
 }

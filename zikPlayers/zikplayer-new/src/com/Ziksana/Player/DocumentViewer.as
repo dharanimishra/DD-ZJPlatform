@@ -77,7 +77,7 @@ package com.ziksana.player
 			*/
 			//temporary..
 			
-			m_ImageURLArray.push("d:\\images\\1.jpg");
+			//m_ImageURLArray.push("d:\\images\\1.jpg");
 			m_ImageURLArray.push("d:\\images\\2.jpg");
 			m_ImageURLArray.push("d:\\images\\3.jpg");
 			m_ImageURLArray.push("d:\\images\\4.jpg");
