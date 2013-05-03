@@ -1,6 +1,6 @@
 package com.ziksana.data
 {
-	public class EnhanceData
+	public static class EnhanceData
 	{
 		public var m_ContentType : uint;
 		public var m_ContentURL : String;

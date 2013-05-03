@@ -9,7 +9,7 @@ package com.ziksana.util
 		public static const LOG_LEVEL_INFO: int = 1;
 		public static const LOG_LEVEL_ERROR: int = 2;
 		public static const LOG_LEVEL_CRITICAL: int = 3;
-		private static var m_LoggingLevel:int = LOG_LEVEL_CRITICAL;
+		private static var m_LoggingLevel:int = LOG_LEVEL_INFO;
 		
 		private static var _instance:Logger;
 		

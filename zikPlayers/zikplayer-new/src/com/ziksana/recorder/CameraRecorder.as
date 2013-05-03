@@ -4,21 +4,24 @@ package com.ziksana.recorder
 	import com.ziksana.connection.ConnectionType;
 	import com.ziksana.connection.IConnection;
 	import com.ziksana.connection.StreamSourceType;
+	import com.ziksana.content.Content;
+	import com.ziksana.content.VideoContent;
 	import com.ziksana.events.GlobalEventDispatcher;
 	import com.ziksana.events.ZEvent;
 	import com.ziksana.util.Logger;
 	import com.ziksana.util.Util;
 	
-	import flash.events.EventDispatcher;
+	import flash.display.MovieClip;
+	import flash.events.MouseEvent;
 	import flash.media.Camera;
 	import flash.media.Microphone;
-	import com.ziksana.content.Content;
-	import com.ziksana.content.VideoContent;
+	import flash.media.Video;
 
-	public class VideoRecorder  extends EventDispatcher implements ContentGenerator
+	public class CameraRecorder extends ContentRecorder
 	{
 		private var m_Connection : IConnection;
 		private var m_VideoContent : VideoContent = null;
+		private var m_VideoContainer : Video = null;
 		
 		private var m_VideoConnectionEvent : ZEvent = null;
 		private var m_VideoConnectionParentNotifyEvent : String = null;
@@ -26,21 +29,55 @@ package com.ziksana.recorder
 		private var m_VideoCamera : Camera = null;
 		private var m_Microphone : Microphone = null;
 		
-		public function VideoRecorder()
+		public static const DEFAULT_CONNECTION_URL : String = "rtmp://54.243.235.88/oflaDemo";
+
+		
+		public function CameraRecorder(contentDisplayObject : MovieClip)
 		{
+			super (contentDisplayObject);
+			
 			m_VideoContent = new VideoContent();
 			m_VideoCamera = Camera.getCamera();
 			m_Microphone = Microphone.getMicrophone();
 			
 			//For now use best quality and 320, 240 resolution
 			m_VideoCamera.setQuality(0, 100);
-			m_VideoCamera.setMode(320, 240, 30);
+			
+			trace ("VideoRecorder ==> " + "Width : " + contentDisplayObject.width + " Height : " + contentDisplayObject.height);
+			//m_VideoCamera.setMode(contentDisplayObject.width as int, contentDisplayObject.height as int, 30);
+			//m_VideoContainer = new Video(contentDisplayObject.width as int, contentDisplayObject.height as int);
+			m_VideoContainer = new Video(160, 120);
+			m_VideoCamera.setMode(160, 120, 30);
 		}
 
-		public function Load () : Boolean
+		
+		private function SetContent () : void
+		{
+			//Test code
+			var m_VideoURLArray:Array = new Array ();
+			m_VideoURLArray.push(DEFAULT_CONNECTION_URL);
+			
+			//m_VideoURLArray.push("http://54.243.235.88/3.flv");
+			//m_VideoURLArray.push("d:\\3.flv");
+			
+			SetContentURL(m_VideoURLArray);
+		}
+
+		private function RegisterContentEvents () : void
+		{
+			RegisterOnCompletionEvent(ZEvent.EVENT_CONTENT_VIDEO_LOADED);
+		}
+		
+		
+		public override function Load () : Boolean
 		{
 			try 
 			{
+				UpdateUI();
+				
+				//Test code only
+				SetContent ();
+
 				//super.Load();
 				var retVal : Boolean = true;
 				m_Connection = ConnectionFactory.CreateConnection(ConnectionType.CONNECTION_TYPE_RTMP);
@@ -67,17 +104,25 @@ package com.ziksana.recorder
 			return true;
 		}
 		
-		public function Unload () : void
+		public override function Unload () : void
 		{
 			m_Connection.Disconnect();
 		}
 		
+		
+		private function UpdateUI():void
+		{
+			m_ContentDisplayObject.addChild(m_VideoContainer);
+			m_VideoContainer.x = m_Left;
+			m_VideoContainer.y = m_Top;
+		}
+
 		public function SetContentURL (contentURLArray : Array) : void
 		{
 			m_VideoContent.SetContentURL(contentURLArray);
 		}
 		
-		public function GetContent () : Content
+		public override function GetContent () : Content
 		{
 			return m_VideoContent;
 		}
@@ -91,6 +136,8 @@ package com.ziksana.recorder
 				var recordingFileName : String;
 				recordingFileName = Util.GenerateRecordingFileName();
 				
+				AttachStreamOutputContainer(m_VideoContainer);
+
 				m_Connection.AttachStreamInputSource(StreamSourceType.STREAM_SOURCE_TYPE_VIDEO, m_VideoCamera);
 				m_Connection.AttachStreamInputSource(StreamSourceType.STREAM_SOURCE_TYPE_AUDIO, m_Microphone);
 				
@@ -111,7 +158,7 @@ package com.ziksana.recorder
 			streamOutputContainer.attachCamera(m_VideoCamera);
 		}
 		
-		public function RegisterOnCompletionEvent (eventName : String) : void
+		public override function RegisterOnCompletionEvent (eventName : String) : void
 		{
 			m_VideoConnectionParentNotifyEvent = eventName;
 		}
