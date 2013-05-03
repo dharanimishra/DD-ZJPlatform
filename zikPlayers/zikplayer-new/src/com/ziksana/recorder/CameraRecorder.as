@@ -1,5 +1,7 @@
 package com.ziksana.recorder
 {
+	import com.ziksana.application.ApplicationConfiguration;
+	import com.ziksana.application.ZIKPLAYER;
 	import com.ziksana.connection.ConnectionFactory;
 	import com.ziksana.connection.ConnectionType;
 	import com.ziksana.connection.IConnection;
@@ -12,22 +14,20 @@ package com.ziksana.recorder
 	import com.ziksana.util.Util;
 	
 	import flash.display.MovieClip;
-	import flash.events.MouseEvent;
 	import flash.media.Camera;
 	import flash.media.Microphone;
 	import flash.media.Video;
 
 	public class CameraRecorder extends ContentRecorder
 	{
+		private var m_Container : Video = null;
 		private var m_Connection : IConnection;
+		
 		private var m_VideoContent : VideoContent = null;
-		private var m_VideoContainer : Video = null;
-		
-		private var m_VideoConnectionEvent : ZEvent = null;
-		private var m_VideoConnectionParentNotifyEvent : String = null;
-		
 		private var m_VideoCamera : Camera = null;
 		private var m_Microphone : Microphone = null;
+		
+		private var m_VideoConnectionParentNotifyEvent : String = null;
 		
 		public static const DEFAULT_CONNECTION_URL : String = "rtmp://54.243.235.88/oflaDemo";
 
@@ -44,14 +44,16 @@ package com.ziksana.recorder
 			m_VideoCamera.setQuality(0, 100);
 			
 			//m_VideoCamera.setMode(contentDisplayObject.width as int, contentDisplayObject.height as int, 30);
-			//m_VideoContainer = new Video(contentDisplayObject.width as int, contentDisplayObject.height as int);
-			m_VideoContainer = new Video(160, 120);
+			//m_Container = new Video(contentDisplayObject.width as int, contentDisplayObject.height as int);
+			m_Container = new Video(160, 120);
 			m_VideoCamera.setMode(160, 120, 30);
 		}
 
-		
 		private function SetContent () : void
 		{
+			//var appConfigration : ApplicationConfiguration;
+			//var rtmpHost : String = ZIKPLAYER.
+			
 			//Test code
 			var m_VideoURLArray:Array = new Array ();
 			m_VideoURLArray.push(DEFAULT_CONNECTION_URL);
@@ -111,9 +113,9 @@ package com.ziksana.recorder
 		
 		private function UpdateUI():void
 		{
-			m_ContentDisplayObject.addChild(m_VideoContainer);
-			m_VideoContainer.x = m_Left;
-			m_VideoContainer.y = m_Top;
+			m_ContentDisplayObject.addChild(m_Container);
+			m_Container.x = m_Left;
+			m_Container.y = m_Top;
 		}
 
 		public function SetContentURL (contentURLArray : Array) : void
@@ -135,7 +137,7 @@ package com.ziksana.recorder
 				var recordingFileName : String;
 				recordingFileName = Util.GenerateRecordingFileName();
 				
-				AttachStreamOutputContainer(m_VideoContainer);
+				AttachStreamOutputContainer(m_Container);
 
 				m_Connection.AttachStreamInputSource(StreamSourceType.STREAM_SOURCE_TYPE_VIDEO, m_VideoCamera);
 				m_Connection.AttachStreamInputSource(StreamSourceType.STREAM_SOURCE_TYPE_AUDIO, m_Microphone);

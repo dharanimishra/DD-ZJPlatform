@@ -30,26 +30,6 @@ package com.ziksana.recorder
 				ScribbleTool.SCRIBBLE_TOOL_SQUARE, ScribbleTool.SCRIBBLE_TOOL_TEXT,
 				ScribbleTool.SCRIBBLE_TOOL_SETTINGS);
 		
-		
-		private var m_ToolBar_left : uint = 0;
-		private var m_ToolBar_top : uint = 0;
-		private var m_ToolBar_width : uint = 0;
-		private var m_ToolBar_height : uint = 0;
-		
-		private var m_AnnotationList_left : uint = 0;
-		private var m_AnnotationList_top : uint = 0;
-		private var m_AnnotationList_width : uint = 0;
-		private var m_AnnotationList_height : uint = 0;
-		
-		private var m_ScriptPad_left : uint = 0;
-		private var m_ScriptPad_top : uint = 0;
-		private var m_ScriptPad_width : uint = 0;
-		private var m_ScriptPad_height : uint = 0;
-		
-		public static const PANEL_TYPE_TOOLS : uint = 0;
-		public static const PANEL_TYPE_ANOTATIONLIST : uint = 0;
-		public static const PANEL_TYPE_SCRIPTPAD : uint = 0;
-		
 		public function ScribbleRecorder (contentDisplayObject : MovieClip)
 		{
 			super (contentDisplayObject);
@@ -81,8 +61,6 @@ package com.ziksana.recorder
 			CreateScribblingTools();
 			CreateToolBar ();
 			CreateToolsPanel();
-			CreateAnnotationList ();
-			CreateScriptPad ();
 			
 			DrawUI ();
 		}
@@ -195,41 +173,6 @@ package com.ziksana.recorder
 		}
 		
 		
-		public function CreateAnnotationList () : void
-		{
-			
-		}
-		
-		public function CreateScriptPad () : void
-		{
-			
-		}
-		
-		public function SetPanelCoordinates (panelType : uint, left : int, top : int, width : int, height : int) : void
-		{
-			if (panelType == PANEL_TYPE_TOOLS)
-			{
-				m_ToolBar_left = left;
-				m_ToolBar_top = top;
-				m_ToolBar_width = width;
-				m_ToolBar_height = height;
-			}
-			else if (panelType == PANEL_TYPE_ANOTATIONLIST)
-			{
-				m_AnnotationList_left = left;
-				m_AnnotationList_top = top;
-				m_AnnotationList_width = width;
-				m_AnnotationList_height = height;
-			}
-			else if (panelType == PANEL_TYPE_SCRIPTPAD)
-			{
-				m_ScriptPad_left = left;
-				m_ScriptPad_top = top;
-				m_ScriptPad_width = width;
-				m_ScriptPad_height = height;
-			}
-		}
-
 		public override function SetVisible (visible : Boolean) : void
 		{
 			m_ToolBar.visible = visible;
@@ -239,7 +182,7 @@ package com.ziksana.recorder
 		{
 			var selectedTool : MovieClip = null;
 			
-			Logger.instance.WriteMessage("ScribbleViewer::OnToolButtonClick ==> " + "X = " + mouseEvent.localX + "Y = " + mouseEvent.localY);
+			//Logger.instance.WriteMessage("ScribbleViewer::OnToolButtonClick ==> " + "X = " + mouseEvent.localX + "Y = " + mouseEvent.localY);
 			if (mouseEvent.target)
 			{
 				selectedTool = (mouseEvent.target as MovieClip);

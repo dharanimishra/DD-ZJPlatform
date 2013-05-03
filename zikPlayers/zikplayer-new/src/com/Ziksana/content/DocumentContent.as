@@ -66,7 +66,6 @@ package com.ziksana.content
 			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Number of Bytes = " + imageLoaderInfo.bytesLoaded);
 			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Height           = " + imageLoaderInfo.height);
 			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Width           = " + imageLoaderInfo.width);
-			//Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> Container       = " + imageLoaderInfo.loaderURL);
 			Logger.instance.WriteMessage ("DocumentContent::OnImageDownloadComplete ==> -------------------------------------------------------------------");
 			
 			m_ImageArray.push(e.target.content);

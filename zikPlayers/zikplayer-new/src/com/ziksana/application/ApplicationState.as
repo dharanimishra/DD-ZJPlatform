@@ -1,4 +1,4 @@
-package com.ziksana
+package com.ziksana.application
 {
 	public class ApplicationState
 	{
