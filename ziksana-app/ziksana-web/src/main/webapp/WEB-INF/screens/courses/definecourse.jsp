@@ -10,29 +10,9 @@
 	rel="stylesheet" type="text/css" />
 
 <script type='text/javascript'
-	src='${staticFileServer}resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
-<script type='text/javascript'
-	src='${staticFileServer}resources/js/lib/jquery/jquery-ui-1.10.1.custom.min.js'></script>
-<script type='text/javascript'
-	src='${staticFileServer}resources/js/lib/jquery/jquery-migrate-1.1.1.min.js'></script>
-<script type='text/javascript'
-	src='${staticFileServer}resources/js/custom/respond.min.js'></script>
-<script type='text/javascript'
-	src='${staticFileServer}resources/js/lib/ckeditor/ckeditor.js'></script>
-<script type='text/javascript'
-	src="${staticFileServer}resources/js/lib/uniform/jquery.uniform.min.js"></script>
-<script type='text/javascript'
 	src='${staticFileServer}resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
 <script type='text/javascript'
 	src="${staticFileServer}resources/js/lib/select/select2.min.js"></script>
-<script type='text/javascript'
-	src="${staticFileServer}resources/js/lib/plupload/previewupload.js"></script>
-<script type='text/javascript'
-	src='${staticFileServer}resources/js/custom/plugins.js'></script>
-
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/ziksana/coursecreation/define.js"></script>
-
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/z_message.js"></script>
 <script type="text/javascript"
@@ -50,8 +30,6 @@
 	src="${staticFileServer}resources/js/ziksana/validation/jquery.validation.js"
 	type="text/javascript" charset="utf-8"></script>
 
-<link rel="stylesheet" type="text/css"
-	href="${staticFileServer}resources/css/uploadify.css" />
 
 <script type="text/javascript">
 	$('document').ready(function() {
@@ -88,7 +66,6 @@
 			.ready(
 					function() {
 						//Fetch course details and populate the form
-						console.log("on page ...");
 						getCourse();
 						//Course Name Validation for Duplication while creating a course
 						$('#defaultvalue')
@@ -595,7 +572,7 @@
 									<label class="control-label nexaf" for="Specify Tags">Specify
 										Tags :</label>
 									<div class="controls">
-										<input type="text" class="tags" 
+										<input type="text" class="tags" id="Ctagfield_course"
 											value="Computer Science, Literature, History" />
 									</div>
 								</div>
@@ -634,12 +611,11 @@
 									<option value="3">Days</option>
 								</select>
 								<div class="clearfix"></div>
-								<div class="control-group">
+								<!--  <div class="control-group">
 									<label class="control-label nexaf" for="Asscoiate Content"
 										style="width: 230px;"> Associate an Image for the
 										Course :</label>
 									<div class="controls">
-
 										<div class="fileupload fileupload-new"
 											data-provides="fileupload">
 											<div class="fileupload-new thumbnail"
@@ -652,31 +628,33 @@
 												class="fileupload-new">Upload image</span><span
 												class="fileupload-exists">Change</span> <input type="file"
 												name="thumbnail_image_file_upload"
-												id="thumbnail_image_file_upload1" /></span> <a href="#"
+												id="thumbnail_image_file_upload" /></span> <a href="#"
 												class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
 										</div>
 										<div id="status"></div>
 									</div>
-								</div>
+								</div> -->
 
-								<!-- <div style="margin-top: 30px;">
+								<div style="margin-top: 30px;">
+									<label style="width: 230px;" for="input"
+										class="control-label nexaf">Associate an Image for
+										your Course :</label>
 
-									<p class="labelclass" style="font-weight: bold;">Associate
-										an Image for your Course</p>
-									<br /> <img id="course_thumbnail_image"
-										src="${staticFileServer}resources/images/default-course.jpg"
-										align="left" /> <input readonly="readonly" type="hidden"
-										id="Cimageupl" style="margin-left: 20px;" />
+									<div style="width: 122px; height: 120px; float: left">
+										<img id="course_thumbnail_image"
+											src="${staticFileServer}resources/images/default-course.jpg"
+											align="left" /> <input readonly="readonly" type="hidden"
+											id="Cimageupl" style="margin-left: 20px;" />
+									</div>
 
 									<div id="message"></div>
 									<div id="thubmnail_upload_message"></div>
 									<div id="loaderText"></div>
 									<input type="file" name="thumbnail_image_file_upload"
-										tabindex="11" id="thumbnail_image_file_upload" />
+										tabindex="11" id="thumbnail_image_file_upload" style="margin-left:196px;" />
 									<div id="status"></div>
 									<script type="text/javascript">
 										$(function() {
-											alert("test");
 											$('#thumbnail_image_file_upload')
 													.uploadify(
 															{
@@ -695,7 +673,7 @@
 																					'disabled',
 																					'disabled');
 																},
-																'debug' : true,
+																//'debug' : true,
 																//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 
 																'onUploadSuccess' : function(
@@ -722,7 +700,7 @@
 																		$(
 																				'#thubmnail_upload_message')
 																				.html(
-																						'<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
+																						'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove">Remove</a>');
 
 																	} else { //there is an error in the upload process
 
@@ -751,7 +729,7 @@
 
 										}
 									</script>
-								</div> -->
+								</div>
 								<button class="btn f-r" type="button"
 									onClick="createCourse();return false;">Save and
 									Continue</button>

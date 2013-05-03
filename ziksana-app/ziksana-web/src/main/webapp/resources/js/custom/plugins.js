@@ -22,17 +22,18 @@ $(document).ready(function(){
         });
     }
     // Tagsinput
-    if($(".tags").length > 0)
-        $(".tags").tagsInput({'width':'100%',
-                              'height':'auto',
-                              'onAddTag': function(text){
-                                //action
-                              },
-                              'onRemoveTag': function(text){
-                                //action
+					    if ($(".tags").length > 0)
+						$(".tags").tagsInput({
+							'width' : '100%',
+							'height' : 'auto',
+							'onAddTag' : function(text) {
+								// action
+							},
+							'onRemoveTag' : function(text) {
+								// action
                               }});
         
-    // Masked input  
+    // Masked input
     if($("[class^='mask_']").length > 0){
         $("input.mask_tin").mask('99-9999999',{completed:function(){
                                                 //action
@@ -291,11 +292,11 @@ $(document).ready(function(){
     
     // popovers
     
-    $("#popover_top").popover({placement: 'top', title: 'Popover title', content: 'Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.'});
-    $("#popover_right").popover({placement: 'right', title: 'Popover title', content: 'Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.'});
-    $("#popover_bottom").popover({placement: 'bottom', title: 'Popover title', content: 'Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.'});
-    $("#popover_left").popover({placement: 'left', title: 'Popover title', content: 'Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.'});
-    
+//    $("#popover_top").popover({placement: 'top', title: 'Popover title', content: 'Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.'});
+//    $("#popover_right").popover({placement: 'right', title: 'Popover title', content: 'Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.'});
+//    $("#popover_bottom").popover({placement: 'bottom', title: 'Popover title', content: 'Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.'});
+//    $("#popover_left").popover({placement: 'left', title: 'Popover title', content: 'Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.'});
+//    
     // eof popovers
     
     // jQuery dialogs
@@ -367,8 +368,8 @@ $(document).ready(function(){
     // eof wysiwyg editor
     
     //syntax highlight
-    SyntaxHighlighter.defaults['toolbar'] = false;
-    SyntaxHighlighter.all();    
+   // SyntaxHighlighter.defaults['toolbar'] = false;
+  //  SyntaxHighlighter.all();    
     //eof syntax highlight
     
     // easy pie chart
@@ -473,5 +474,3 @@ $('.wrapper').resize(function(){
     if($("#mail_wysiwyg").length > 0) m_editor.refresh();
     
 });
-
-

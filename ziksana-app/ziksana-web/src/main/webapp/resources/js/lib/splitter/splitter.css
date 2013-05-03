@@ -7,40 +7,37 @@
 }
 
 #leftPane {
-	float: left;
-	width: 25%;
-	height: 100%;
-	border-top: solid 1px #9cbdff;
-	overflow: auto;
+  border-top: 1px solid #9CBDFF;
+  float: left;
+  height: 100%;
+  min-height: 200px;
+  overflow: auto;
+  width: 24%;
 }
 
 #rightPane { /*Contains toolbar and horizontal splitter*/
 	float: right;
 	width: 70%;
 	height: 100%;
+	border-left: 2px solid #eee;
+	margin-left: -1%;
+	min-height: 200px;
 }
 
 /* Splitbar styles; these are the default class names and required styles */
 .splitbarV {
-	float: left;
-	width:4px;
-	height: 100%!important;
-	line-height: 0px;
-	font-size: 0px;
-	border-left: solid 1px #9cbdff;
-	border-right: solid 1px #9cbdff;
-	background: #cbe1fb url(img/panev.gif) 0% 50%;
-	border:1px solid #000;
+  float: left;
+  font-size: 0;
+  height: 100% !important;
+  line-height: 0;
 }
 
 .splitbuttonV {
-	margin-top: -41px;
-	margin-left: -4px;
-	top: 50%;
-	position: relative;
-	height: 83px;
-	width: 10px;
-	background: transparent url(img/panevc.gif) 10px 50% ;
+  background: url("img/panevc.gif") repeat scroll 10px 50% transparent;
+  height: 83px;
+  margin-left: -11px;
+  position: relative;
+  width: 10px;
 }
 
 .splitbuttonV.invert {

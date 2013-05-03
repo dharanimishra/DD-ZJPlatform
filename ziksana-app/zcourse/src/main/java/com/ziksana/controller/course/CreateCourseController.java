@@ -735,9 +735,7 @@ public class CreateCourseController {
 						+ " Method saveOrUpadteTags : After courseService: :tagcloud"
 						+ tagcloud + " learningComponentId :"
 						+ learningComponentId + "updatedLearningComponentId :"
-						+ updatedLearningComponentId
-						+ " ComponentTagCloudId() :"
-						+ getTagcloud.getComponentTagCloudId().getStorageID());
+						+ updatedLearningComponentId);
 
 			} else {
 				tagcloud.setTagName(ModuleTags);

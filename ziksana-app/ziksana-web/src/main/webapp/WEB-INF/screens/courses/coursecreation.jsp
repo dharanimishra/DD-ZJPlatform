@@ -99,7 +99,7 @@
 			splitVertical : true,
 			A : $('#leftPane'),
 			B : $('#rightPane'),
-			slave : $("#rightSplitterContainer"),
+			//slave : $("#rightSplitterContainer"),
 			closeableto : 0
 		});
 

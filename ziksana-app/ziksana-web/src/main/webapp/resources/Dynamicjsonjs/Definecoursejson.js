@@ -3,7 +3,6 @@
 $(document)
 		.ready(
 				function(e) {
-					alert("get area...");
 					$.get('/ziksana-web/zcourse/getsubjectarea', {}, function(
 							data) {
 						options = data;
@@ -281,6 +280,8 @@ function createCourse() {
 		var Duration_Type = $('#Cdurationtype').val();
 
 		var Assoc_Image = $('#Cimageupl').val();
+
+		console.log('Assoc_Image ..' + Assoc_Image);
 
 		var parameters = {
 			"Course_id" : Course_id,
