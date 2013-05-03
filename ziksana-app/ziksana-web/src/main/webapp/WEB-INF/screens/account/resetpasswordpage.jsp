@@ -361,7 +361,7 @@ function securityQuestionOne(){
 		        , function( data )
 		        {
 		        	if(data == 'SUCCESS'){
-		        		window.location.href = "/ziksana-web/unsecure/secondsecurityverfication/"+memberIdSQOne+"";;
+		        		window.location.href = "/ziksana-web/unsecure/secondsecurityverfication/"+memberIdSQOne+"";
 					}else{
 						$('#errorAnswerOneResponse').html(data);
 						
@@ -392,7 +392,7 @@ function securityQuestionTwo(){
 		        , function( data )
 		        {
 		        	if(data == 'SUCCESS'){
-		        		$('#errorAnswerTwoResponse').html(data);
+		        		window.location.href = "/ziksana-web/unsecure/password/newpassword/"+memberIdSQTwo+"";
 		        		 
 					}else{
 						$('#errorAnswerTwoResponse').html(data);
