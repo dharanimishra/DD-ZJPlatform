@@ -1,4 +1,4 @@
-package com.ziksana.content
+package com.ziksana.recorder
 {
 	import com.ziksana.connection.ConnectionFactory;
 	import com.ziksana.connection.ConnectionType;
@@ -12,6 +12,8 @@ package com.ziksana.content
 	import flash.events.EventDispatcher;
 	import flash.media.Camera;
 	import flash.media.Microphone;
+	import com.ziksana.content.Content;
+	import com.ziksana.content.VideoContent;
 
 	public class VideoRecorder  extends EventDispatcher implements ContentGenerator
 	{

@@ -1,4 +1,4 @@
-package com.ziksana.player
+package com.ziksana.exception
 {
 	public class Exception extends Error
 	{

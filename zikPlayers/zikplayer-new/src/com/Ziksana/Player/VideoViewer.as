@@ -6,7 +6,7 @@ package com.ziksana.player
 
 	import com.ziksana.content.Content;
 	import com.ziksana.content.VideoContent;
-	import com.ziksana.content.VideoRecorder;
+	import com.ziksana.recorder.VideoRecorder;
 	import com.ziksana.events.ZEvent;
 	import com.ziksana.events.GlobalEventDispatcher;
 	import com.ziksana.util.Logger;

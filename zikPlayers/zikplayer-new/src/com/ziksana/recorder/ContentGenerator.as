@@ -1,5 +1,7 @@
-package com.ziksana.content
+package com.ziksana.recorder
 {
+	import com.ziksana.content.Content;
+
 	public interface ContentGenerator
 	{
 		function Load () : Boolean;

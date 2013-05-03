@@ -67,7 +67,7 @@ package com.ziksana.ui
 				m_ContentMovieClip[i] = new MovieClip();
 				(m_ContentMovieClip[i] as MovieClip).x = new Number(layers[i].X.toString());
 				(m_ContentMovieClip[i] as MovieClip).y = new Number(layers[i].Y.toString());
-				(m_ContentMovieClip[i] as MovieClip).graphics.beginFill(0x006600, 0.2);
+				(m_ContentMovieClip[i] as MovieClip).graphics.beginFill(0x006600, 0);
 				(m_ContentMovieClip[i] as MovieClip).graphics.drawRect(0,0, (new Number(layers[i].WIDTH.toString())*m_Stage.stageWidth)/100, (new Number(layers[i].HEIGHT.toString())*m_Stage.stageHeight)/100);
 				(m_ContentMovieClip[i] as MovieClip).graphics.endFill();
 				(m_ContentMovieClip[i] as MovieClip).width = (new Number(layers[i].WIDTH.toString())*m_Stage.stageWidth)/100;
@@ -85,6 +85,8 @@ package com.ziksana.ui
 						
 						break;
 					case "scribbler":
+						//(m_ContentMovieClip[i] as MovieClip).mouseChildren=false;
+						//(m_ContentMovieClip[i] as MovieClip).mouseEnabled=false;
 						m_Contents[i] = new ScribbleContent();
 						m_ContentViewers[i] = new ScribbleViewer(m_Contents[i], m_ContentMovieClip[i]);
 						break;
