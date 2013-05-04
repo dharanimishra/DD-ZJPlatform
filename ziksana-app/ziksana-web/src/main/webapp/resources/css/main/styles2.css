@@ -258,7 +258,7 @@ padding: 7px;
 font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
 color: #6bbde8;
 font-weight: 200;
-font-size: 16pt;
+font-size: 13pt;
 letter-spacing: 0.01em;
 margin-top: 26px;
 margin-left: 10px;
@@ -427,31 +427,28 @@ a.back:hover {
 
 #Wizard_header
 {	
-padding:10px;	
 }
 
 #uplpcontainer
 {
 	
-	height:109px;
+	
 	
 }
 
 #lpcontainer
 {	
-height: 95px;	
+height: 84px;	
 margin-left:40px;
-border-bottom:1px solid #CCC;
 width:1050px;
 }
 
 
 .lpboxtab1
 {
-width:335px;
-height: 95px;
+width:340px;
+height: 84px;
 float:left;
-margin-left:11px;
 
  -webkit-transition: all 300ms linear;
     -moz-transition: all 300ms linear;
@@ -476,8 +473,8 @@ position: relative;
 
 .lpboxtab1:hover
 {
-width: 335px;
-height: 95px;
+width: 340px;
+height: 84px;
 float: left;
 background-color: rgb(223, 224, 224);
 background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(rgb(231, 227, 227)), to(rgb(218, 218, 218)));
@@ -503,7 +500,7 @@ margin-top:5px; width:100%; padding-left:16px;
 .tbboxheadfnt
 {
 font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
-font-size:30px; margin-left:10px; color:#4bb1cf;
+font-size:22px; margin-left:10px; color:#4bb1cf;
 letter-spacing: 1px; 
 text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.54);
 vertical-align:middle;
@@ -511,7 +508,7 @@ vertical-align:middle;
 
 .tbboxnum
 {
-float:left; margin-top:12px; margin-left:8px; height:60px; width: 45px;
+float:left; margin-left:0px; height:60px; width: 45px;
 }
 
 .badge {
@@ -531,23 +528,24 @@ float:left; margin-top:12px; margin-left:8px; height:60px; width: 45px;
  
   padding: 2px 2px;
   font-size: 11.844px;
-  font-weight: bold;
   line-height: 14px;
   color: #ffffff;
-  vertical-align: baseline;
-  white-space: nowrap;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #999999;
 }
 
 .badge1 {
- padding-left: 9px;
-padding-right: 9px;
-padding-bottom: 5px;
--webkit-border-radius: 25px;
--moz-border-radius: 25px;
-border-radius: 25px;
+float: left;
 border: 2px solid #fff;
+border-radius: 30px;
+height: 20px;
+width: 20px;
+vertical-align: middle;
+text-align: center;
+color: #f0f0f0;
+line-height: 20px;
+margin-left:11px;
+font-size: 1.2em;
+text-shadow: 0 1px 1px #ccc;
 }
 
 
@@ -607,21 +605,21 @@ border: 2px solid #ccc;
 
 .tbboxdesc
 {
-float:left; width:275px; margin-top:0px;
+float:left; width:295px; margin-top:0px;
 }
 
 .tbboxdesc p
 {
 font-weight:100; 
-font-size:14px; color:#4bb1cf;
+font-size:13px; color:#4bb1cf;
 font-family: 'segoe ui', sans-serif;
 }
 
 
 .tbboximg
 {
-width:42px; 
-height:38px; 	
+width:32px; 
+height:28px; 	
 }
 
 
@@ -637,11 +635,12 @@ margin-top:5px; width:100%; padding-left:16px;
 
 .tbboxheadfntds
 {
-font-size:30px; margin-left:10px; color: rgb(139, 139, 139);
+font-size:22px; margin-left:10px; color: rgb(139, 139, 139);
 font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
 letter-spacing: 1px; 
 text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.54);
 margin-top:30px;
+vertical-align: middle;
 }
 
 #headercontainer
@@ -652,10 +651,13 @@ margin-bottom: 30px;
 
 #profilecontainer
 {
-	width:600px;
-	margin:auto;
-	padding:20px;
-	margin-bottom:20px;
+width: 600px;
+margin: auto;
+padding: 50px;
+margin-bottom: 20px;
+-moz-box-shadow: 1px 2px 15px #000000;
+-webkit-box-shadow: 1px 2px 15px #000000;
+box-shadow: 1px 2px 15px #000000;
 
 }
 
@@ -733,7 +735,7 @@ font-size:15px;
 
 .tbboxnumds
 {
-float:left; margin-top:8px; margin-left:8px; height:60px; width: 45px;
+float:left; margin-left:8px; height:60px; width: 45px;
 }
 
 .tbboxdescds
@@ -743,14 +745,14 @@ float:left; width:275px;
 
 .tbboxdescds p
 {
-font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif; font-size:16px; color:rgb(177, 177, 177);
+font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif; font-size:14px; color:rgb(177, 177, 177);
 }
 
 .tbboximgds
 {
 opacity: 0.5;
-width:42px; 
-height:38px; 	
+width:32px; 
+height:28px; 	
 }
 
 /*for complete */
@@ -956,11 +958,9 @@ margin-left: 80px;
 /*strat of subnavlink */
 #subnavlink
 {
-margin-right: auto;
-margin-bottom: 20px;
-margin-left: 22px;
-margin-right: 10px;
+width:900px;
 margin-top:-15px;
+margin:auto;
 }
 
 /*strat of Navigational links*/
@@ -973,14 +973,13 @@ margin-top:-15px;
 {
 display: inline;
 float:left;
-font-size: 18px;
+font-size: 15px;
 font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
 color: rgb(114, 114, 114);
 margin-right: 13px;
 margin-left: 25px;
 letter-spacing: 1px;
-margin-top: 15px;
-margin-bottom: 8px;
+margin-bottom: 20px;
 } 
 
 /*start of radiobutton css*/
@@ -1264,7 +1263,7 @@ font-size: 17px; font-weight:bold;
 
 .widget-body
 {
-padding:20px;	
+	
 }
 #formcontainer
 {
@@ -1277,7 +1276,7 @@ margin:auto;
 font-family: Nexa;
 font-weight: bold;
 letter-spacing: 1.1px;
-font-size: 15px;
+font-size: 13px;
 color: rgb(65, 65, 65);
 }
 
@@ -1767,6 +1766,7 @@ margin-left:-60px;
 
 /* Sequence Slider::END */
 
+
 .frgtpassmiddle
 {
 background-color:#FFF;
@@ -1788,8 +1788,4 @@ margin-bottom:20px;
 {
 font-size:18px;
 color:rgb(27, 166, 206);
-}
-.pad_tb
-{
-  padding:6px 0px;
 }
