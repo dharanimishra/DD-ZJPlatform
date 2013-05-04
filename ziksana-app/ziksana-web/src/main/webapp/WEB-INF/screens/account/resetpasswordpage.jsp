@@ -200,10 +200,14 @@
 			    <div class="resetpassword">
 			    <label style="display:none"; id="memberIdRef">${memberId}</label>
 			     <!--  <p class="reghead" style="margin-left:150px;">Select your Password </p> --> 
-			      <div class="separate" style="margin-left:150px;"> 
+			      <div class="separate" style="margin-left:10px; text-align:center;"> 
 			      
-			      
-			 
+			    <p class="reghead" style="margin-left:40px;">Select your Password </p>  
+			    <p style="text-align:center;margin-top:10px; color:#999;">
+Please Select a Password with at least 8 characters in length and at least one Capital Letter/Number/Special Character. 
+</p>
+<hr style="background-color:#f28920; margin-bottom:20px; width: 550px; margin-left: -0px;">
+			<div style="width:390px;text-align:left; margin-left:150px;"> 
 			 <div class="control-group">
 			      <label class="control-label" style="padding-top:-10px;">New Password</label>
 			      <div class="controls">
@@ -229,6 +233,7 @@
 			<a onclick="checkpass()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "> Submit </a> 	
 			  <div class="clearfix"> </div>
 			  
+			</div>
 			</div>
 			
 			      

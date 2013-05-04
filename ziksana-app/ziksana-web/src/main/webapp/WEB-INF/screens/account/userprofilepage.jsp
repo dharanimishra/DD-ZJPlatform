@@ -38,7 +38,7 @@
 
 
 			<div class="fileupload  f-l">
-				<div class="associateimage">
+				<div class="associateimage" width="300px">
 
 					<c:if test="${empty member.picturePath}">
 						<img style="width: 122px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg"/>
@@ -452,5 +452,11 @@ width:120px !important;
 background: #008DC4;
 color: #FFF;
 width:120px !important;
+}
+#profilecontainer {
+    box-shadow: 1px 2px 15px #000000;
+    margin: auto auto 20px;
+    padding: 50px;
+    width: 600px;
 }
 </style>
