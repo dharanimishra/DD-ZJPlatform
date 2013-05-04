@@ -100,7 +100,7 @@
 </script>
 
 <script type="text/javascript">
-	function showrich() {
+	/* function showrich() {
 
 		$('._richTextShow').css("display", "none");
 		$('#richText').css("display", "none");
@@ -113,7 +113,7 @@
 		$('#richText').css("display", "block");
 		$('._plainTextShow').css("display", "none");
 		$('#plainText').css("display", "none");
-	}
+	} */
 
 	function getArea() {
 		$
@@ -302,22 +302,22 @@
 							class="defaultvaluem treeRoot validate[required] "
 							id="defaultvalue"
 							style="width: 240px; margin-left: 10px; color: #666;"
-							tabindex="1" placeholder="Course Name" />
+							tabindex="1" placeholder="Enter course name" />
 					</div>
 
 					<br /> <label for="Course Description" class="nexaf">Course
-						Description :</label> <a class="f-r _plainText" id="plainText"
+						Description :</label> <!-- <a class="f-r _plainText" id="plainText"
 						href="#linkurl" style="text-decoration: none;"
 						onclick="showplain()">Rich Text Editor</a> <a
 						class="f-r _richText" id="richText" href="#linkurl"
 						style="text-decoration: none; display: none;" onclick="showrich()">Plain
-						Text Editor</a>
-					<textarea cols="124" rows="8" id="Cdescription"
+						Text Editor</a> -->
+				<!-- 	<textarea cols="124" rows="8" id="Cdescription"
 						class="_plainTextShow defaultvaluem labelclass"
 						style="width: 100%; color: #666;"> 
-											</textarea>
+											</textarea> -->
 					<br />
-					<div class="_richTextShow" style="display: none;">
+					<div class="_richTextShow">
 						<textarea id="Cdescriptionrte" name="editor1pageload"
 							class="defaultvalue _focus">
 													<b>Describe the Course being created</b>
@@ -375,7 +375,7 @@
 					Tags :</label>
 				<div class="controls">
 					<input type="text" class="tags" id="Ctagfield_course"
-						value="Computer Science, Literature, History" />
+						value="" />
 				</div>
 			</div>
 			<div class="control-group f-l">

@@ -80,19 +80,9 @@ function onButtonClick(menuitemId, type) {
 
 								console.log('module_desc : ' + module_desc);
 
-								if (module_desc.charAt(0) == '<') {
+								$('#Cmoduledescrte').val(module_desc);
 
-									$('#Cmoduledescrte').val(module_desc);
-
-									$('#richText').click();
-
-								} else {
-
-									$('#Module_Description').val(module_desc);
-
-								}
-
-								// // populate subject area
+								// populate subject area
 
 								$.get('/ziksana-web/zcourse/getsubjectarea',
 										{}, function(data) {
@@ -332,7 +322,7 @@ $(document).ready(
 		function(e) {
 			var id = null;
 			createtree($('#courseid').val());
-			// $(".addmodulecontainer").hide();
+			 $(".Addmodulecontainer").hide();
 			function createnode() {
 
 				var im0 = "Tree.png"; // the icon for a leaf node

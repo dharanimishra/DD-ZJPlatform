@@ -247,19 +247,11 @@ function createCourse() {
 
 		var Course_Name = $('#defaultvalue').val();
 
-		var Course_Description;
 		var Course_Descriptions;
 		var Course_Descriptionrte;
 
-		Course_Description = $('#Cdescription').val();
-
-		if (Course_Description.length > 0) {
-			Course_Descriptions = Course_Description;
-		} else {
-			Course_Descriptionrte = CKEDITOR.instances['Cdescriptionrte']
-					.getData();
-			Course_Descriptions = Course_Descriptionrte;
-		}
+		Course_Descriptionrte = CKEDITOR.instances['Cdescriptionrte'].getData();
+		Course_Descriptions = Course_Descriptionrte;
 
 		var Subject_Area = $('#Careaddl').val();
 

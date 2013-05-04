@@ -318,7 +318,7 @@ function getaddmodulesave() {
 
 	request_type = 'POST'; // can be GET or POST. In this case, a GET
 
-	var Course_Descriptionrte='';
+	var Course_Descriptionrte = '';
 
 	var course_id = $('#courseid').val();
 
@@ -330,29 +330,13 @@ function getaddmodulesave() {
 
 	var Module_Name = $('#Course_Module').val();
 
-	var Module_Description = $('#Module_Description').val();
-
-	if (Module_Description.length > 0) {
-
-	} else {
-		Course_Descriptionrte = CKEDITOR.instances['Cmoduledescrte'].getData();
-		Module_Description = Course_Descriptionrte;
-	}
-
-	// if (CKEDITOR.instances['Cmoduledescrte'] == undefined) {
-	// Module_Description = $('#Module_Description').val();
-	// } else {
-	// Module_Description = CKEDITOR.instances['Cmoduledescrte'].getData();
-	// }
+	Course_Descriptionrte = CKEDITOR.instances['Cmoduledescrte'].getData();
+	Module_Description = Course_Descriptionrte;
 
 	var Subject_Area = $('#Cmoduleareaddl').val();
 	var Subject = $('#Cmodulesubjectddl').val();
 	var Topic = $('#Cmoduletopicddl').val();
 	// var Moduletag_Field = $('#Addmoduletag').val();
-	// var Module_Weight = $('#Cmoduleweight').val();
-	// var Module_Duration = $('#Cmoduleduration').val();
-	// var ModuleDuration_Type = $('#Cmoduleunits').val();
-	// var Assoc_Image = $('#Cmoduleimgupl').val();
 
 	var parameters = {
 		"Course_id" : course_id,
@@ -365,11 +349,7 @@ function getaddmodulesave() {
 		"Subject" : Subject,
 		"Topic" : Topic
 	// "Moduletag_Field" : Moduletag_Field
-	// "Learning_Object" : Learning_Object,
-	// "Module_Weight" : Module_Weight,
-	// "Module_Duration" : Module_Duration,
-	// "ModuleDuration_Type" : ModuleDuration_Type,
-	// "Assoc_Image" : Assoc_Image
+
 	};
 
 	$

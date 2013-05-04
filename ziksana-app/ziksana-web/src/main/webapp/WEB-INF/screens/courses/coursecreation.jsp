@@ -86,7 +86,7 @@
 }
 </style>
 <script type="text/javascript">
-	function showrich() {
+	/* function showrich() {
 		$('._richTextShow').css("display", "none");
 		$('#richText').css("display", "none");
 		$('._plainTextShow').show();
@@ -98,7 +98,7 @@
 		$('#richText').css("display", "block");
 		$('._plainTextShow').css("display", "none");
 		$('#plainText').css("display", "none");
-	}
+	} */
 	function getArea() {
 
 		$
@@ -273,7 +273,7 @@
 
 	<div class="clearfix"></div>
 
-	<div class="contentarea">
+	<div >
 
 		<!-- BEGIN FORM-->
 		<div id="splitterContainer">
@@ -299,14 +299,15 @@
 								Name :</label>
 							<div class="controls">
 								<input type="text" class="span6" id="Course_Module"
-									placeholder="Course Name" style="margin-left: -45px;" />
+									placeholder="Enter module name" style="margin-left: -45px;" />
 							</div>
 						</div>
 
 						<!--end of course name-->
 
 						<br /> <label for="Course Description" class="labelclass"
-							style="font-weight: bold;"><b>Course Description :</b></label> <a
+							style="font-weight: bold;"><b>Course Description :</b></label> 
+							<!-- <a
 							class="f-r _plainText" id="plainText" href="#"
 							style="text-decoration: none;" onclick="showplain()">Rich
 							Text Editor</a> <a class="f-r _richText" id="richText" href="#"
@@ -315,9 +316,9 @@
 						<textarea cols="124" rows="8" id="Module_Description"
 							class="_plainTextShow defaultvaluem labelclass"
 							style="width: 98%; color: #666;"> 
-											</textarea>
+											</textarea> -->
 						<br />
-						<div class="_richTextShow" style="display: none;">
+						<div class="_richTextShow">
 							<textarea id="Cmoduledescrte" name="editor1pageload"
 								class="defaultvalue _focus">
 													<b>Describe the Module being created</b>
