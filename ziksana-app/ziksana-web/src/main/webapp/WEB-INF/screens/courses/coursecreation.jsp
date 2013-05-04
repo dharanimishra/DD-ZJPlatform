@@ -73,7 +73,7 @@
 			splitVertical : true,
 			A : $('#leftPane'),
 			B : $('#rightPane'),
-			//slave : $("#rightSplitterContainer"),
+			slave : $("#rightSplitterContainer"),
 			closeableto : 0
 		});
 
@@ -335,12 +335,12 @@
 							</div>
 							<div class="clearfix"></div>
 							<div class="moduleselection">
-								<select name="s_example" id="Careaddl" class="select"
+								<select name="s_example" id="Cmoduleareaddl" class="select"
 									onclick="getArea();">
 									<option value="0">choose a option...</option>
-								</select> <select name="s_example" class="select" id="Csubjectddl">
+								</select> <select name="s_example" class="select" id="Cmodulesubjectddl">
 									<option value="0">choose a option...</option>
-								</select><select name="s_example" class="select" id="Ctopicddl">
+								</select><select name="s_example" class="select" id="Cmoduletopicddl">
 									<option value="0">choose a option...</option>
 								</select>
 							</div>

@@ -251,8 +251,10 @@
 	} // End getArea()
 </script>
 
+<style>
+.uploadify {margin-left:260px;}
 
-
+</style>
 
 <div class="navheadlp" style="padding-left: 151px;">
 	<ul>
@@ -300,7 +302,7 @@
 							class="defaultvaluem treeRoot validate[required] "
 							id="defaultvalue"
 							style="width: 240px; margin-left: 10px; color: #666;"
-							tabindex="1" placeholder="Model Thinking" />
+							tabindex="1" placeholder="Course Name" />
 					</div>
 
 					<br /> <label for="Course Description" class="nexaf">Course
@@ -435,7 +437,7 @@
 									</div>
 								</div> -->
 
-			<div class="control-group">
+			<!-- <div class="control-group">
 				<label class="control-label nexaf" for="Asscoiate Content"
 					style="width: 230px;"> Associate an Image for the Course :</label>
 				<div class="controls">
@@ -453,9 +455,9 @@
 					</div>
 				</div>
 
-			</div>
+			</div> -->
 			<div style="margin-top: 30px;">
-				<label style="width: 230px;" for="input" class="control-label nexaf">Associate
+				<label style="width: 260px;" for="input" class="control-label nexaf">Associate
 					an Image for your Course :</label>
 
 				<div style="width: 122px; height: 120px; float: left">
@@ -509,7 +511,7 @@
 													$(
 															'#thubmnail_upload_message')
 															.html(
-																	'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove">Remove</a>');
+																	'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
 
 												} else { //there is an error in the upload process
 
