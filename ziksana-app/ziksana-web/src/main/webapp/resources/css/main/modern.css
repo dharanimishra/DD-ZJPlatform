@@ -915,7 +915,7 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
 .metrouicss #state .link:active {
   color: rgba(45, 173, 237, 0.6);
 }
-.metrouicss a,
+/*.metrouicss a,
 .metrouicss .link {
   font-family: 'Segoe UI', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -924,7 +924,7 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   line-height: 13pt;
   color: #2e92cf;
   text-decoration: none;
-}
+}*/
 .metrouicss a:hover,
 .metrouicss .link:hover {
   color: rgba(45, 173, 237, 0.8);
@@ -952,7 +952,7 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   color: #000000;
 }
 .metrouicss h1:hover {
-  color: rgba(0, 0, 0, 0.8);
+  /*color: rgba(0, 0, 0, 0.8);*/
 }
 .metrouicss h1:active {
   color: rgba(0, 0, 0, 0.4);
@@ -975,16 +975,17 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
 .metrouicss h3 {
   font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
   font-weight: 200;
-  font-size: 20pt;
-  letter-spacing: 0.01em;
-  line-height: 22pt;
   font-smooth: always;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 16pt;
-  line-height: 24px;
+  
+  margin-left: 10px;
+font-size: 20px;
+width: 30px;
+margin-top: 8px;
+line-height: 22px;
 }
 .metrouicss h3:hover {
-  color: rgba(0, 0, 0, 0.8);
+  /*color: rgba(0, 0, 0, 0.8);*/
 }
 .metrouicss h3:active {
   color: rgba(0, 0, 0, 0.4);
@@ -1156,47 +1157,7 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   color: rgba(0, 0, 0, 0.4);
   margin-left: 5px;
 }
-.metrouicss ul,
-.metrouicss ol {
-  padding: 0;
-  margin: 0 0 10px 0px;
-  display: block;
-}
-.metrouicss ul:nth-child(1) {
-  margin-left: 25px;
-}
-.metrouicss ul ul,
-.metrouicss ul ol,
-.metrouicss ol ol,
-.metrouicss ol ul {
-  margin-bottom: 0 !important;
-}
-.metrouicss ul {
-  list-style-position: inside;
-  list-style-type: square;
-}
-.metrouicss ul ul {
-  list-style-type: circle;
-}
-.metrouicss ul,
-.metrouicss ol {
-  list-style-position: inside;
-}
-.metrouicss ul li,
-.metrouicss ol li {
-  display: list-item;
-  font-size: 14px;
-  line-height: 20px;
-}
-.metrouicss ol {
-  list-style-type: decimal;
-}
-.metrouicss ul.unstyled,
-.metrouicss ol.unstyled,
-.metrouicss .unstyled {
-  margin-left: 0;
-  list-style: none;
-}
+
 .metrouicss .inline-tag,
 .metrouicss .label {
   display: inline-block;
@@ -2703,6 +2664,10 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
 .metrouicss .bg-color-blueDark {
   background-color: #2b5797 !important;
 }
+
+.metrouicss .bg-color-blueDark:hover {
+  background-color: #000 !important;
+}
 .metrouicss .bg-color-green {
   background-color: #00a300 !important;
 }
@@ -4084,135 +4049,7 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   background-color: #ffffff;
   cursor: default;
 }
-.metrouicss table {
-  width: 100%;
-  border-collapse: separate;
-  margin: 0 0 20px;
-}
-.metrouicss table thead tr th,
-.metrouicss table thead tr td {
-  display: table-cell;
-  vertical-align: bottom;
-  padding-bottom: 5px;
-  padding-top: 10px;
-  padding-left: 5px;
-  border-bottom: 1px #ddd solid;
-  border-right: 1px #ddd solid;
-  border-left: 1px transparent solid;
-  border-top: 1px transparent solid;
-  font-family: 'Segoe UI', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 11pt;
-  letter-spacing: 0.01em;
-  line-height: 13pt;
-  font-smooth: always;
-  color: rgba(0, 0, 0, 0.6);
-  text-align: left;
-}
-.metrouicss table thead tr th.right,
-.metrouicss table thead tr td.right {
-  text-align: right;
-  padding-right: 10px;
-}
-.metrouicss table thead tr th.last,
-.metrouicss table thead tr td.last {
-  border-right: 1px transparent solid;
-}
-.metrouicss table thead tr th:last-child,
-.metrouicss table thead tr td:last-child {
-  border-right: 1px transparent solid;
-}
-.metrouicss table tbody tr {
-  border: 1px #fff solid;
-}
-.metrouicss table tbody tr td {
-  font-family: 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
-  font-weight: 300;
-  font-size: 11pt;
-  letter-spacing: 0.02em;
-  line-height: 14pt;
-  font-smooth: always;
-  padding: 3px 10px;
-  border-right: 1px #ddd solid;
-  border-bottom: 1px #ddd solid;
-  border-left: 1px transparent solid;
-  border-top: 1px transparent solid;
-  box-sizing: border-box;
-}
-.metrouicss table tbody tr td.right {
-  text-align: right;
-}
-.metrouicss table tbody tr td.center {
-  text-align: center;
-}
-.metrouicss table tbody tr td.last {
-  border-right: 1px transparent solid;
-}
-.metrouicss table tbody tr td:last-child {
-  border-right: 1px transparent solid;
-}
-.metrouicss table tbody tr.success {
-  background-color: #00a300 !important;
-}
-.metrouicss table tbody tr.error {
-  background-color: #b91d47 !important;
-}
-.metrouicss table tbody tr.warning {
-  background-color: #e3a21a !important;
-}
-.metrouicss table tbody tr.info {
-  background-color: #2d89ef !important;
-}
-.metrouicss table tbody tr.info td,
-.metrouicss table tbody tr.warning td,
-.metrouicss table tbody tr.error td,
-.metrouicss table tbody tr.success td {
-  color: #ffffff !important;
-}
-.metrouicss table tbody tr.selected-row {
-  background-color: rgba(28, 183, 236, 0.1) !important;
-}
-.metrouicss table tbody tr.selected-row td:first-child {
-  border-left: 1px #1c98cc solid;
-}
-.metrouicss table tbody tr.selected-row td:last-child {
-  border-right: 1px #1c98cc solid;
-}
-.metrouicss table tbody tr.selected-row td {
-  border-top: 1px #1c98cc solid;
-  border-bottom: 1px #1c98cc solid;
-}
-.metrouicss table.striped tbody tr:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-.metrouicss table.hovered {
-  border-collapse: separate !important;
-}
-.metrouicss table.hovered thead tr th:hover,
-.metrouicss table.hovered thead tr td:hover {
-  border: 1px #1c98cc solid;
-  background: rgba(28, 183, 236, 0.1);
-}
-.metrouicss table.hovered tbody tr:hover {
-  background-color: rgba(28, 183, 236, 0.1);
-}
-.metrouicss table.hovered tbody tr:hover td:first-child {
-  border-left: 1px #1c98cc solid;
-}
-.metrouicss table.hovered tbody tr:hover td:last-child {
-  border-right: 1px #1c98cc solid;
-}
-.metrouicss table.hovered tbody tr:hover td {
-  border-top: 1px #1c98cc solid;
-  border-bottom: 1px #1c98cc solid;
-}
-.metrouicss table.bordered {
-  border-collapse: separate !important;
-  border: 1px #ccc solid !important;
-}
-.metrouicss table.bordered tbody tr:last-child td {
-  border-bottom: 0;
-}
+
 .metrouicss .oh,
 .metrouicss .ot,
 .metrouicss .tt {
@@ -5283,8 +5120,8 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   display: block;
   float: left;
   background-color: #525252;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   cursor: pointer;
   box-shadow: inset 0px 0px 1px #FFFFCC;
   text-decoration: none;
@@ -5298,6 +5135,12 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   font-smooth: always;
   margin: 0 10px 10px 0;
   overflow: hidden;
+  border-radius:10px;
+  -webkit-transition: all 300ms linear;
+    -moz-transition: all 300ms linear;
+    -o-transition: all 300ms linear;
+    -ms-transition: all 300ms linear;
+    transition: all 300ms linear;
 }
 .metrouicss .tile * {
   color: #ffffff;
@@ -5411,6 +5254,11 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   height: auto;
   min-height: 100%;
   max-width: 100%;
+  -webkit-transition: all .5s ease-in-out;
+-moz-transition: all .5s ease-in-out;
+-o-transition: all .5s ease-in-out;
+-ms-transition: all .5s ease-in-out;
+transition: all .5s ease-in-out;
 }
 .metrouicss .tile.image-set > .tile-content {
   margin: 0;
@@ -5441,7 +5289,7 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   width: 630px;
 }
 .metrouicss .tile.double-vertical {
-  height: 310px;
+  height: 250px;
 }
 .metrouicss .tile.triple-vertical {
   height: 470px;
@@ -5607,7 +5455,10 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
   color: #ffffff;
 }
 .metrouicss .tile:hover {
-  outline: 3px #3a3a3a solid;
+
+-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
+box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75);
 }
 .metrouicss .input-control.checkbox {
   display: inline-block;

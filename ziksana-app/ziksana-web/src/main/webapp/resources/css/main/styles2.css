@@ -68,7 +68,6 @@ width: 1270px;
 margin: auto;
 background-color: #6bbde8;
 padding: 5px;
-overflow:auto
 }	
 }
 
@@ -249,10 +248,138 @@ margin-left: 40px;
 padding: 7px;
 }
 
-#HeaderNav 
-{	
+.imagewrapper
+{
+position:absolute;
+width:650px;
+background-image:url(../../images/home/bghome.png);
+height:380px;
+}
+
+.panelhead
+{
+position:absolute;	
+}
+
+.panelhead ul
+{
+list-style:none;
+background-color:#6bbde8;
+padding:10px;
+width:650px;
+border-bottom:2px solid #333;
+}
+
+.panelhead ul li 
+{
+display:inline;
+
+padding-left:60px;
+width:500px;
+font-size:18px;
+color:#fff;
 
 }
+
+.isotopbutton
+{
+float:right; 
+width:450px; 
+margin-top:-30px; 
+background:none; 
+border:none;
+}
+
+.isotophead
+{
+	padding:10px;
+	height:40px;
+	background-color:#00F;
+}
+
+.isotoplinks a
+{
+	color:#fff;
+	font-size:16px;
+}
+
+.isotopbody img
+{
+	padding:5px;
+}
+
+.crtnew
+{
+float:left;	
+}
+
+.panelhead ul li a 
+{
+font-size:19px;
+color:#fff;
+}
+
+.panelhead ul li a:hover
+{
+font-size:19px;
+color:#fff;
+text-shadow: 1px 1px 8px rgba(150, 150, 150, 1);
+text-decoration:none;
+}
+
+.contentareaevent
+{
+	position:absolute;
+	margin-top:60px;
+}
+
+.box-blue
+{background-color:#0066CC;	
+}
+.box-grey
+{
+background-color:#036;	
+}
+
+.contentareaevent ul 
+{
+
+}
+
+
+.contentareaevent ul li
+{
+display:inline;
+list-style:none;
+font-size:15px;
+color:#fff;
+background-color:#0066CC;
+padding:10px;
+margin-right:5px;	
+}
+
+
+.alertsdatacontainer
+{
+height:330px;
+width:600px; 
+/*background-color:#f00;*/ 
+position:absolute; 
+margin-top:60px; 
+margin-left:25px;
+overflow:auto;  	
+}
+
+
+
+
+
+.completedtask
+{
+text-decoration:line-through;
+}
+
+
 
 #ProfileName
 {	
@@ -322,9 +449,9 @@ color: #fff;
 font-size: 14px;
 margin-top:24px;
 margin-left:10px;
-width:140px;
+width:150px;
 background-color:#73ab3e;
-padding:3px;	
+padding:6px;	
 text-align:center;
 border-radius:4px;
 margin-right: 10px;
@@ -1272,6 +1399,7 @@ width:90%;
 margin:auto;	
 }
 
+
 .nexaf
 {
 font-family: Nexa;
@@ -1300,6 +1428,13 @@ height:10px;
 background-image:url(../../images/home/footercontent.png);
 background-repeat:no-repeat;
 height:80px;	
+padding:20px;
+}
+
+#footercontent2
+{
+background-image:url(../../images/home/footercontent.png);
+background-repeat:no-repeat;	
 padding:20px;
 }
 #footerbordernav
@@ -1394,6 +1529,10 @@ margin-left: 20px;
 margin-top:10px;	
 }
 
+#copyright2
+{
+margin-top:10px;	
+}
 .locationnav ul li a
 {
 font-family: Nexa;
@@ -1414,10 +1553,22 @@ margin-left:380px;
 margin-top:15px;
 }
 
+#socialmeadia2
+{
+margin-left: 490px;
+margin-top: -35px;
+}
+
 #footercontainer
 {
 margin:auto;
 width:80%;	
+}
+
+#footercontainer2
+{
+width:91%;
+margin-left:114px;	
 }
 
 
@@ -1773,7 +1924,7 @@ margin-left:-60px;
 background-color:#FFF;
 margin-right: auto;
 margin-left: auto;
-width: 550px;
+width: 570px;
 /*border:1px solid #ccc;*/
 padding:20px;
 margin-top:20px;
@@ -1789,4 +1940,146 @@ margin-bottom:20px;
 {
 font-size:18px;
 color:rgb(27, 166, 206);
+}
+
+.tilecontainer
+{
+padding:20px;
+width:460px;
+
+}
+
+.contentarea
+{
+width: 650px;
+height: 540px;
+margin-top: 20px;
+margin-right: 20px;	
+}
+
+.tileimg
+{
+margin-top: 15px;
+margin-left: 20px;	
+}
+
+.tilehead
+{
+margin-left: 10px;
+font-size: 20px;
+width: 30px;
+margin-top: 8px;
+line-height: 22px;	
+}
+
+.profiletilename
+{
+width: 60px;
+font-size: 20px;
+line-height: 25px;
+margin-top: 15px;	
+}
+
+.coursebox
+{
+background:#fff;
+height:178px;
+}
+
+.courseheader p
+{
+position: absolute;
+padding-left: 60px;
+padding-top: 10px;
+font-weight: 500;
+color: #fff;
+}
+
+.courseheader img
+{
+padding:0px !important;
+}
+
+.coursebody img
+{
+height:110px;
+width:175px;
+padding:0px !important;
+padding:5px;
+}
+
+.coursefooter
+{
+background-color:#D7D7D7;
+height:30px;
+padding:5px;
+}
+
+.coursefooter img
+{
+padding:0px !important;
+margin-left:5px;
+}
+
+/*Iso top functionality*/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+
+/* disable CSS transitions for containers with infinite scrolling*/
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
 }
