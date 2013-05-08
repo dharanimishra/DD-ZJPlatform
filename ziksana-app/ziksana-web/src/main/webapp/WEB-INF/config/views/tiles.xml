@@ -37,8 +37,20 @@
 		<put-attribute name="page_footer"
 			value="/WEB-INF/screens/includes/footer.jsp" />
 	</definition>
+	
+	
+	<!--Ziksana Home Page Template -->
+	<definition name="ziksana-home-master" template="/WEB-INF/screens/layout/home-layout.jsp">
+		<put-attribute name="master_title" value="Ziksana!" />
+		<put-attribute name="common_css" value="/WEB-INF/screens/includes/common_css.jsp" />
+		<put-attribute name="common_js" value="/WEB-INF/screens/includes/common_js.jsp" />
+		<put-attribute name="header" value="/WEB-INF/screens/includes/home_header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/screens/includes/coursenav.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="page_footer" value="/WEB-INF/screens/includes/page_footer.jsp" />
+	</definition>
 
-	<!--Ziksana new Screen Template -->
+	<!--Ziksana course Template -->
 	<definition name="course-ziksana-master"
 		template="/WEB-INF/screens/layout/course-master-layout.jsp">
 		<put-attribute name="master_title" value="Ziksana!" />
@@ -67,11 +79,8 @@
 
 	</definition>
 
-	<!--Profile set Page -->
-	
-
 	<!--Home Page -->
-	<definition name="masterhome" extends="ziksana-master">
+	<definition name="masterhome" extends="ziksana-home-master">
 		<put-attribute name="master_title" value="Dashboard" />
 		<put-attribute name="content" value="/WEB-INF/screens/home/home.jsp" />
 
@@ -107,6 +116,13 @@
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/coursecreation.jsp" />
 	</definition>
+	
+	
+	
+	
+	
+	
+	
 	
 	<!--Common Page layout JQuery 1.7.1 version -->
 	<definition name="commonPageLayout" template="/WEB-INF/pages/layout/div-layout.jsp">

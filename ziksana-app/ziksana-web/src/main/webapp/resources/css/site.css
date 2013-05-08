@@ -26,7 +26,7 @@ body {
   text-align: center;
   width: 90px;
   border-radius: 10px 0 0 10px;
-}
+}z
 .menu li a.active {background: white; color: skyblue !important; border-radius: 10px 0 0 10px;}
 .menu li a i {
   font-size: 30px !important;
