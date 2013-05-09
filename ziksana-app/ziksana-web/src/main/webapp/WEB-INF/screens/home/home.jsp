@@ -63,13 +63,13 @@ margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.l
   
   </div>
   
-  
-   <div class="tile bg-color-blue">
+  <a href="/ziksana-web/zcourse/createcourse">
+   <div  class="tile bg-color-blue">
   
    <img class="tileimg" src="/ziksana-web/resources/images/icons/createcourse.png"/>
    <h3 style="margin-left:10px; font-size:20px; width:30px;">Create course</h3>
   
-  </div>
+  </div></a>
   
   
   
