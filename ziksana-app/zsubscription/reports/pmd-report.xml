@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2013-03-26T11:44:13.507">
+<file name="src/main/java/com/ziksana/controller/subscription/SubscriptionController.java">
+<violation beginline="36" endline="725" begincolumn="0" endcolumn="0" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The class 'SubscriptionController' has a Cyclomatic Complexity of 4 (Highest = 17).
+</violation>
+<violation beginline="36" endline="725" begincolumn="0" endcolumn="0" rule="TooManyMethods" ruleset="Code Size Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#TooManyMethods" priority="3">
+This class has too many methods, consider refactoring it.
+</violation>
+<violation beginline="42" endline="42" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like subscriptionService
+</violation>
+<violation beginline="42" endline="42" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="45" endline="45" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like subscriptionContentService
+</violation>
+<violation beginline="45" endline="45" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="48" endline="48" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="50" endline="50" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="50" endline="50" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="55" endline="55" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'courseId' is not assigned and could be declared final
+</violation>
+<violation beginline="55" endline="55" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;courseId&quot; appears 13 times in this file; the first occurrence is on line 55
+</violation>
+<violation beginline="56" endline="56" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'nodeId' is not assigned and could be declared final
+</violation>
+<violation beginline="56" endline="56" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;nodeId&quot; appears 11 times in this file; the first occurrence is on line 56
+</violation>
+<violation beginline="58" endline="68" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedContentId' (lines '58'-'68').
+</violation>
+<violation beginline="59" endline="69" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '59'-'69').
+</violation>
+<violation beginline="59" endline="72" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '59'-'72').
+</violation>
+<violation beginline="60" endline="60" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'parsedCourseId'.
+</violation>
+<violation beginline="60" endline="85" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'parsedCourseId' (lines '60'-'85').
+</violation>
+<violation beginline="60" endline="60" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'parsedCourseId' could be declared final
+</violation>
+<violation beginline="61" endline="77" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'notes' (lines '61'-'77').
+</violation>
+<violation beginline="64" endline="64" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'node'.
+</violation>
+<violation beginline="64" endline="85" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'node' (lines '64'-'85').
+</violation>
+<violation beginline="64" endline="64" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'node' could be declared final
+</violation>
+<violation beginline="65" endline="65" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'parsedNodeType' could be declared final
+</violation>
+<violation beginline="67" endline="67" begincolumn="0" endcolumn="0" rule="PositionLiteralsFirstInComparisons" ruleset="Design Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#PositionLiteralsFirstInComparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="67" endline="67" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;LCONTENT&quot; appears 5 times in this file; the first occurrence is on line 67
+</violation>
+<violation beginline="71" endline="71" begincolumn="0" endcolumn="0" rule="PositionLiteralsFirstInComparisons" ruleset="Design Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#PositionLiteralsFirstInComparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="71" endline="71" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;LCOMPONENT&quot; appears 5 times in this file; the first occurrence is on line 71
+</violation>
+<violation beginline="74" endline="76" begincolumn="0" endcolumn="0" rule="EmptyIfStmt" ruleset="Basic Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="74" endline="74" begincolumn="0" endcolumn="0" rule="PositionLiteralsFirstInComparisons" ruleset="Design Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#PositionLiteralsFirstInComparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="74" endline="74" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;COURSE&quot; appears 5 times in this file; the first occurrence is on line 74
+</violation>
+<violation beginline="90" endline="90" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'courseId' is not assigned and could be declared final
+</violation>
+<violation beginline="91" endline="91" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'nodeId' is not assigned and could be declared final
+</violation>
+<violation beginline="93" endline="103" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedContentId' (lines '93'-'103').
+</violation>
+<violation beginline="94" endline="104" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '94'-'104').
+</violation>
+<violation beginline="94" endline="107" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '94'-'107').
+</violation>
+<violation beginline="95" endline="95" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'parsedCourseId'.
+</violation>
+<violation beginline="95" endline="120" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'parsedCourseId' (lines '95'-'120').
+</violation>
+<violation beginline="95" endline="95" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'parsedCourseId' could be declared final
+</violation>
+<violation beginline="96" endline="112" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'notes' (lines '96'-'112').
+</violation>
+<violation beginline="99" endline="99" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'node'.
+</violation>
+<violation beginline="99" endline="120" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'node' (lines '99'-'120').
+</violation>
+<violation beginline="99" endline="99" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'node' could be declared final
+</violation>
+<violation beginline="102" endline="102" begincolumn="0" endcolumn="0" rule="PositionLiteralsFirstInComparisons" ruleset="Design Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#PositionLiteralsFirstInComparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="106" endline="106" begincolumn="0" endcolumn="0" rule="PositionLiteralsFirstInComparisons" ruleset="Design Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#PositionLiteralsFirstInComparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="109" endline="111" begincolumn="0" endcolumn="0" rule="EmptyIfStmt" ruleset="Basic Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="125" endline="125" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'courseId' is not assigned and could be declared final
+</violation>
+<violation beginline="130" endline="142" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'educatorNotes' (lines '130'-'142').
+</violation>
+<violation beginline="134" endline="134" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like parsedParentNodeId
+</violation>
+<violation beginline="160" endline="171" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'educatorNotes' (lines '160'-'171').
+</violation>
+<violation beginline="164" endline="164" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like parsedParentNodeId
+</violation>
+<violation beginline="188" endline="199" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'references' (lines '188'-'199').
+</violation>
+<violation beginline="192" endline="192" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like parsedParentNodeId
+</violation>
+<violation beginline="215" endline="227" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'educatorContents' (lines '215'-'227').
+</violation>
+<violation beginline="244" endline="256" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'contentReferences' (lines '244'-'256').
+</violation>
+<violation beginline="273" endline="287" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'hotspots' (lines '273'-'287').
+</violation>
+<violation beginline="303" endline="313" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedContentId' (lines '303'-'313').
+</violation>
+<violation beginline="304" endline="314" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '304'-'314').
+</violation>
+<violation beginline="304" endline="317" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '304'-'317').
+</violation>
+<violation beginline="305" endline="305" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'parsedCourseId'.
+</violation>
+<violation beginline="305" endline="333" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'parsedCourseId' (lines '305'-'333').
+</violation>
+<violation beginline="307" endline="323" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'key' (lines '307'-'323').
+</violation>
+<violation beginline="309" endline="333" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'node' (lines '309'-'333').
+</violation>
+<violation beginline="319" endline="321" begincolumn="0" endcolumn="0" rule="EmptyIfStmt" ruleset="Basic Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="344" endline="354" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedContentId' (lines '344'-'354').
+</violation>
+<violation beginline="345" endline="355" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '345'-'355').
+</violation>
+<violation beginline="345" endline="358" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '345'-'358').
+</violation>
+<violation beginline="346" endline="374" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'parsedCourseId' (lines '346'-'374').
+</violation>
+<violation beginline="348" endline="364" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'key' (lines '348'-'364').
+</violation>
+<violation beginline="350" endline="374" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'node' (lines '350'-'374').
+</violation>
+<violation beginline="360" endline="362" begincolumn="0" endcolumn="0" rule="EmptyIfStmt" ruleset="Basic Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="381" endline="383" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'returnVal' (lines '381'-'383').
+</violation>
+<violation beginline="400" endline="402" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'returnVal' (lines '400'-'402').
+</violation>
+<violation beginline="429" endline="439" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedContentId' (lines '429'-'439').
+</violation>
+<violation beginline="430" endline="440" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '430'-'440').
+</violation>
+<violation beginline="430" endline="443" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'parsedComponentId' (lines '430'-'443').
+</violation>
+<violation beginline="431" endline="466" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'parsedCourseId' (lines '431'-'466').
+</violation>
+<violation beginline="432" endline="449" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'key' (lines '432'-'449').
+</violation>
+<violation beginline="435" endline="466" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'node' (lines '435'-'466').
+</violation>
+<violation beginline="445" endline="447" begincolumn="0" endcolumn="0" rule="EmptyIfStmt" ruleset="Basic Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyIfStmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="470" endline="655" begincolumn="0" endcolumn="0" rule="ExcessiveMethodLength" ruleset="Code Size Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#ExcessiveMethodLength" priority="3">
+Avoid really long methods.
+</violation>
+<violation beginline="470" endline="655" begincolumn="0" endcolumn="0" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'deleteEducatoContent' has a Cyclomatic Complexity of 17.
+</violation>
+<violation beginline="473" endline="481" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'enrichId' (lines '473'-'481').
+</violation>
+<violation beginline="473" endline="486" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'linkType' (lines '473'-'486').
+</violation>
+<violation beginline="473" endline="545" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'resp' (lines '473'-'545').
+</violation>
+<violation beginline="491" endline="655" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'educatorContent' (lines '491'-'655').
+</violation>
+<violation beginline="668" endline="670" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'returnVal' (lines '668'-'670').
+</violation>
+<violation beginline="686" endline="686" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like mv
+</violation>
+<violation beginline="705" endline="706" begincolumn="0" endcolumn="0" rule="MethodNamingConventions" ruleset="Naming Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#MethodNamingConventions" priority="1">
+Method names should not contain underscores
+</violation>
+<violation beginline="708" endline="708" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="com.ziksana.controller.subscription" class="SubscriptionController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like mv
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/subscription/SubscriptionContentMapper.java">
+<violation beginline="14" endline="14" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.subscription" class="SubscriptionContentMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java">
+<violation beginline="26" endline="31" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="27" endline="27" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;memberRoleId&quot; appears 10 times in this file; the first occurrence is on line 27
+</violation>
+<violation beginline="28" endline="28" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;subscrCourseId&quot; appears 7 times in this file; the first occurrence is on line 28
+</violation>
+<violation beginline="29" endline="29" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;learnCompId&quot; appears 7 times in this file; the first occurrence is on line 29
+</violation>
+<violation beginline="30" endline="30" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;learnCmpContId&quot; appears 7 times in this file; the first occurrence is on line 30
+</violation>
+<violation beginline="33" endline="38" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="34" endline="34" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;contentType&quot; appears 4 times in this file; the first occurrence is on line 34
+</violation>
+<violation beginline="42" endline="46" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="48" endline="53" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="55" endline="60" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="96" endline="105" begincolumn="0" endcolumn="0" rule="ExcessiveParameterList" ruleset="Code Size Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#ExcessiveParameterList" priority="3">
+Avoid really long parameter lists.
+</violation>
+<violation beginline="116" endline="116" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.persistence.subscription" class="SubscriptionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like eduContentEnrichId
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/subscription/SubscriptionContentService.java">
+<violation beginline="14" endline="14" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.subscription" class="SubscriptionContentService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/subscription/SubscriptionService.java">
+<violation beginline="36" endline="37" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.subscription" class="SubscriptionService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="39" endline="39" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.subscription" class="SubscriptionService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="41" endline="42" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.subscription" class="SubscriptionService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="44" endline="45" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.subscription" class="SubscriptionService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="47" endline="47" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.subscription" class="SubscriptionService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="51" endline="54" begincolumn="0" endcolumn="0" rule="ExcessiveParameterList" ruleset="Code Size Rules" package="com.ziksana.service.subscription" class="SubscriptionService" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#ExcessiveParameterList" priority="3">
+Avoid really long parameter lists.
+</violation>
+<violation beginline="122" endline="122" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.subscription" class="SubscriptionService" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like eduContentEnrichId
+</violation>
+<violation beginline="125" endline="125" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.subscription" class="SubscriptionService" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like eduContentEnrichId
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/subscription/impl/SubscriptionContentServiceImpl.java">
+<violation beginline="14" endline="15" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionContentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="15" endline="15" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionContentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like subscriptionContentMapper
+</violation>
+<violation beginline="15" endline="15" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionContentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionContentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'contentId' is not assigned and could be declared final
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java">
+<violation beginline="33" endline="34" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="34" endline="34" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like subscriptionMapper
+</violation>
+<violation beginline="34" endline="34" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="37" endline="37" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'componentId' is not assigned and could be declared final
+</violation>
+<violation beginline="37" endline="37" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'courseId' is not assigned and could be declared final
+</violation>
+<violation beginline="38" endline="38" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'contentId' is not assigned and could be declared final
+</violation>
+<violation beginline="38" endline="38" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'type' is not assigned and could be declared final
+</violation>
+<violation beginline="40" endline="41" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberRoleId' could be declared final
+</violation>
+<violation beginline="43" endline="43" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'learnCmpId'.
+</violation>
+<violation beginline="43" endline="49" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'learnCmpId' (lines '43'-'49').
+</violation>
+<violation beginline="43" endline="43" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'learnCmpId' could be declared final
+</violation>
+<violation beginline="44" endline="44" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'learnCmpCntId'.
+</violation>
+<violation beginline="44" endline="49" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'learnCmpCntId' (lines '44'-'49').
+</violation>
+<violation beginline="44" endline="44" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'learnCmpCntId' could be declared final
+</violation>
+<violation beginline="52" endline="52" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'course' is not assigned and could be declared final
+</violation>
+<violation beginline="56" endline="57" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberRoleId' could be declared final
+</violation>
+<violation beginline="59" endline="63" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'learnCompId' (lines '59'-'63').
+</violation>
+<violation beginline="60" endline="65" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'learnCompCntId' (lines '60'-'65').
+</violation>
+<violation beginline="68" endline="71" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'courseId' (lines '68'-'71').
+</violation>
+<violation beginline="100" endline="101" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberRoleId' could be declared final
+</violation>
+<violation beginline="126" endline="126" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'learnCompId'.
+</violation>
+<violation beginline="126" endline="131" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'learnCompId' (lines '126'-'131').
+</violation>
+<violation beginline="126" endline="142" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'learnCompId' (lines '126'-'142').
+</violation>
+<violation beginline="127" endline="127" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'learnCmpCntId'.
+</violation>
+<violation beginline="127" endline="133" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'learnCmpCntId' (lines '127'-'133').
+</violation>
+<violation beginline="127" endline="142" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'learnCmpCntId' (lines '127'-'142').
+</violation>
+<violation beginline="131" endline="142" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'learnCompId' (lines '131'-'142').
+</violation>
+<violation beginline="133" endline="142" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'learnCmpCntId' (lines '133'-'142').
+</violation>
+<violation beginline="240" endline="242" begincolumn="0" endcolumn="0" rule="ExcessiveParameterList" ruleset="Code Size Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#ExcessiveParameterList" priority="3">
+Avoid really long parameter lists.
+</violation>
+<violation beginline="248" endline="248" begincolumn="0" endcolumn="0" rule="SystemPrintln" ruleset="Java Logging Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln" priority="2">
+System.out.print is used
+</violation>
+<violation beginline="314" endline="314" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like eduContentEnrichId
+</violation>
+<violation beginline="323" endline="323" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like educatorContentList
+</violation>
+</file>
+<file name="src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java">
+<violation beginline="44" endline="45" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="45" endline="45" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like subscriptionService
+</violation>
+<violation beginline="45" endline="45" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="48" endline="48" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="48" endline="48" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="48" endline="49" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="52" endline="52" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="52" endline="52" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="52" endline="53" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="58" endline="58" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberId' could be declared final
+</violation>
+<violation beginline="59" endline="59" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberPersonaId' could be declared final
+</violation>
+<violation beginline="60" endline="60" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'token' could be declared final
+</violation>
+<violation beginline="66" endline="67" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="74" endline="74" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'notes' could be declared final
+</violation>
+<violation beginline="75" endline="75" begincolumn="0" endcolumn="0" rule="JUnitAssertionsShouldIncludeMessage" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplDbunitTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitAssertionsShouldIncludeMessage" priority="3">
+JUnit assertions should include a message
+</violation>
+</file>
+<file name="src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java">
+<violation beginline="36" endline="233" begincolumn="0" endcolumn="0" rule="TooManyMethods" ruleset="Code Size Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#TooManyMethods" priority="3">
+This class has too many methods, consider refactoring it.
+</violation>
+<violation beginline="38" endline="39" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="39" endline="39" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like subscriptionService
+</violation>
+<violation beginline="39" endline="39" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="42" endline="42" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="42" endline="42" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="42" endline="43" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="46" endline="46" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="46" endline="46" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="46" endline="47" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="52" endline="52" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberId' could be declared final
+</violation>
+<violation beginline="53" endline="53" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberPersonaId' could be declared final
+</violation>
+<violation beginline="54" endline="54" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'token' could be declared final
+</violation>
+<violation beginline="60" endline="61" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="67" endline="67" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'course' could be declared final
+</violation>
+<violation beginline="69" endline="69" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'node' could be declared final
+</violation>
+<violation beginline="77" endline="77" begincolumn="0" endcolumn="0" rule="JUnitAssertionsShouldIncludeMessage" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitAssertionsShouldIncludeMessage" priority="3">
+JUnit assertions should include a message
+</violation>
+<violation beginline="96" endline="96" begincolumn="0" endcolumn="0" rule="JUnitAssertionsShouldIncludeMessage" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitAssertionsShouldIncludeMessage" priority="3">
+JUnit assertions should include a message
+</violation>
+<violation beginline="98" endline="98" begincolumn="0" endcolumn="0" rule="JUnitAssertionsShouldIncludeMessage" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitAssertionsShouldIncludeMessage" priority="3">
+JUnit assertions should include a message
+</violation>
+<violation beginline="98" endline="98" begincolumn="0" endcolumn="0" rule="UseCollectionIsEmpty" ruleset="Design Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UseCollectionIsEmpty" priority="3">
+Substitute calls to size() == 0 (or size() != 0) with calls to isEmpty()
+</violation>
+<violation beginline="98" endline="98" begincolumn="0" endcolumn="0" rule="UseAssertSameInsteadOfAssertTrue" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#UseAssertSameInsteadOfAssertTrue" priority="3">
+Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+</violation>
+<violation beginline="118" endline="118" begincolumn="0" endcolumn="0" rule="JUnitAssertionsShouldIncludeMessage" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitAssertionsShouldIncludeMessage" priority="3">
+JUnit assertions should include a message
+</violation>
+<violation beginline="120" endline="120" begincolumn="0" endcolumn="0" rule="JUnitAssertionsShouldIncludeMessage" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitAssertionsShouldIncludeMessage" priority="3">
+JUnit assertions should include a message
+</violation>
+<violation beginline="120" endline="120" begincolumn="0" endcolumn="0" rule="UseCollectionIsEmpty" ruleset="Design Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UseCollectionIsEmpty" priority="3">
+Substitute calls to size() == 0 (or size() != 0) with calls to isEmpty()
+</violation>
+<violation beginline="120" endline="120" begincolumn="0" endcolumn="0" rule="UseAssertSameInsteadOfAssertTrue" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#UseAssertSameInsteadOfAssertTrue" priority="3">
+Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+</violation>
+<violation beginline="126" endline="139" begincolumn="0" endcolumn="0" rule="JUnitTestsShouldIncludeAssert" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitTestsShouldIncludeAssert" priority="3">
+JUnit tests should include assert() or fail()
+</violation>
+<violation beginline="127" endline="127" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'noteText'.
+</violation>
+<violation beginline="127" endline="139" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'noteText' (lines '127'-'139').
+</violation>
+<violation beginline="146" endline="146" begincolumn="0" endcolumn="0" rule="UseAssertSameInsteadOfAssertTrue" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#UseAssertSameInsteadOfAssertTrue" priority="3">
+Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+</violation>
+<violation beginline="154" endline="154" begincolumn="0" endcolumn="0" rule="UseAssertSameInsteadOfAssertTrue" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#UseAssertSameInsteadOfAssertTrue" priority="3">
+Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+</violation>
+<violation beginline="162" endline="162" begincolumn="0" endcolumn="0" rule="UseAssertSameInsteadOfAssertTrue" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#UseAssertSameInsteadOfAssertTrue" priority="3">
+Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+</violation>
+<violation beginline="166" endline="175" begincolumn="0" endcolumn="0" rule="JUnitTestsShouldIncludeAssert" ruleset="JUnit Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitTestsShouldIncludeAssert" priority="3">
+JUnit tests should include assert() or fail()
+</violation>
+<violation beginline="207" endline="207" begincolumn="0" endcolumn="0" rule="UseCollectionIsEmpty" ruleset="Design Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UseCollectionIsEmpty" priority="3">
+Substitute calls to size() == 0 (or size() != 0) with calls to isEmpty()
+</violation>
+<violation beginline="224" endline="224" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like linkedLearningContent
+</violation>
+<violation beginline="226" endline="226" begincolumn="0" endcolumn="0" rule="SystemPrintln" ruleset="Java Logging Rules" package="com.ziksana.service.subscription.impl" class="SubscriptionServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln" priority="2">
+System.out.print is used
+</violation>
+</file>
+</pmd>

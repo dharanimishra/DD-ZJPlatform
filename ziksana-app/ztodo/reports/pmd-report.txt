@@ -1,0 +1,96 @@
+
+src/main/java/com/ziksana/controller/todo/TodoController.java:28	Variables that are final and static should be in all caps.
+src/main/java/com/ziksana/controller/todo/TodoController.java:31	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/controller/todo/TodoController.java:39	Local variable 'modelView' could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:45	The String literal ",message =" appears 6 times in this file; the first occurrence is on line 45
+src/main/java/com/ziksana/controller/todo/TodoController.java:45	The String literal "Caught Exception. class =" appears 6 times in this file; the first occurrence is on line 45
+src/main/java/com/ziksana/controller/todo/TodoController.java:53	Found 'DD'-anomaly for variable 'todoSize' (lines '53'-'61').
+src/main/java/com/ziksana/controller/todo/TodoController.java:54	Found 'DD'-anomaly for variable 'todoList' (lines '54'-'56').
+src/main/java/com/ziksana/controller/todo/TodoController.java:74	Local variable 'modelView' could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:90	Parameter 'category' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:91	Avoid excessively long variable names like notificationContent
+src/main/java/com/ziksana/controller/todo/TodoController.java:91	Parameter 'notificationContent' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:95	Found 'DD'-anomaly for variable 'response' (lines '95'-'112').
+src/main/java/com/ziksana/controller/todo/TodoController.java:97	Local variable 'todo' could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:104	Local variable 'creatingMember' could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:112	Found 'DD'-anomaly for variable 'response' (lines '112'-'115').
+src/main/java/com/ziksana/controller/todo/TodoController.java:126	Local variable 'modelAndView' could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:140	Parameter 'todoItemId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:142	Found 'DD'-anomaly for variable 'response' (lines '142'-'145').
+src/main/java/com/ziksana/controller/todo/TodoController.java:145	Found 'DD'-anomaly for variable 'response' (lines '145'-'148').
+src/main/java/com/ziksana/controller/todo/TodoController.java:157	Parameter 'todoItemId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:158	Avoid excessively long variable names like notificationContent
+src/main/java/com/ziksana/controller/todo/TodoController.java:158	Parameter 'notificationContent' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/todo/TodoController.java:161	Found 'DD'-anomaly for variable 'response' (lines '161'-'170').
+src/main/java/com/ziksana/controller/todo/TodoController.java:170	Found 'DD'-anomaly for variable 'response' (lines '170'-'173').
+src/main/java/com/ziksana/controller/todo/TodoController.java:185	Found 'DU'-anomaly for variable 'categoryList' (lines '185'-'193').
+src/main/java/com/ziksana/exception/todo/TodoException.java:10	Parameter 'error' is not assigned and could be declared final
+src/main/java/com/ziksana/exception/todo/TodoException.java:10	Parameter 'errorCode' is not assigned and could be declared final
+src/main/java/com/ziksana/exception/todo/TodoException.java:14	Parameter 'errorCode' is not assigned and could be declared final
+src/main/java/com/ziksana/exception/todo/TodoException.java:18	Parameter 'args' is not assigned and could be declared final
+src/main/java/com/ziksana/exception/todo/TodoException.java:18	Parameter 'errorCode' is not assigned and could be declared final
+src/main/java/com/ziksana/persistence/todos/TodoMapper.java:18	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/todos/TodoMapper.java:20	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/todos/TodoMapper.java:22	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/todos/TodoMapper.java:24	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/todos/TodoMapper.java:26	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/todo/TodoService.java:16	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/todo/TodoService.java:18	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/todo/TodoService.java:20	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/todo/TodoService.java:22	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/todo/TodoService.java:24	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:17	Avoid unused imports such as 'com.ziksana.exception.SystemException'
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:17	Avoid unused imports such as 'com.ziksana.exception.SystemException'
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:30	Variables that are final and static should be in all caps.
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:33	Use explicit scoping instead of the default package private level
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:34	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:39	Found 'DD'-anomaly for variable 'todoList' (lines '39'-'41').
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:41	Found 'DU'-anomaly for variable 'todoList' (lines '41'-'51').
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:44	The String literal "Data Access Exception called" appears 4 times in this file; the first occurrence is on line 44
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:47	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:48	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:54	Parameter 'todo' is not assigned and could be declared final
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:65	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:70	Parameter 'todo' is not assigned and could be declared final
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:71	Avoid unused local variables such as 'rowCount'.
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:71	Found 'DD'-anomaly for variable 'rowCount' (lines '71'-'73').
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:73	Found 'DU'-anomaly for variable 'rowCount' (lines '73'-'83').
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:79	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:80	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:86	Parameter 'todoId' is not assigned and could be declared final
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:88	Avoid unused local variables such as 'deleteCount'.
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:88	Found 'DD'-anomaly for variable 'deleteCount' (lines '88'-'90').
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:90	Found 'DU'-anomaly for variable 'deleteCount' (lines '90'-'99').
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:105	Local variable 'offset' could be declared final
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:106	Local variable 'limit' could be declared final
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:107	Local variable 'rowBounds' could be declared final
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:108	Found 'DD'-anomaly for variable 'todoList' (lines '108'-'112').
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:110	Local variable 'memberRoleId' could be declared final
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:112	Found 'DU'-anomaly for variable 'todoList' (lines '112'-'122').
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:118	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/main/java/com/ziksana/service/todo/impl/TodoServiceImpl.java:119	New exception is thrown in catch block, original stack trace may be lost
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:24	Avoid unused imports such as 'com.github.springtestdbunit.annotation.DatabaseSetup'
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:24	Avoid unused imports such as 'com.github.springtestdbunit.annotation.DatabaseSetup'
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:42	Variables that are final and static should be in all caps.
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:44	Use explicit scoping instead of the default package private level
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:45	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:51	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:51	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:51	Document empty method
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:58	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:58	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:58	Document empty method
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:67	Local variable 'memberId' could be declared final
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:68	Local variable 'memberPersonaId' could be declared final
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:69	Local variable 'token' could be declared final
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:87	JUnit 4 tests that execute tests should use the @Test annotation
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:90	Avoid unused local variables such as 'todos'.
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:90	Found 'DU'-anomaly for variable 'todos' (lines '90'-'93').
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:90	Local variable 'todos' could be declared final
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:94	JUnit 4 tests that execute tests should use the @Test annotation
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:96	Local variable 'todoMapper' could be declared final
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:100	JUnit 4 tests that execute tests should use the @Test annotation
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:139	JUnit assertions should include a message
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:148	JUnit 4 tests that execute tests should use the @Test annotation
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:157	JUnit assertions should include a message
+src/test/java/com/ziksana/service/todo/impl/TodoServiceImplTest.java:167	JUnit 4 tests that execute tests should use the @Test annotation
