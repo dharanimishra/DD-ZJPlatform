@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="getMemberProfileList" resultMap="profileResultMap" parameterType="int">
-		select * from memmemberProfile where memberId = #{memberId}
+		select * from memmemberprofile where memberId = #{memberId}
 	</select>
 	
 	<select id="getMemberProfileByMemberId" resultMap="profileResultMap" parameterType="map">
@@ -32,7 +32,7 @@
 	</update>
 	
 	<select id="isProfileCompleted" resultType="java.lang.Integer" parameterType="String">
-		select distinct active from memmemberProfile where memberId = (select id from memmember where userId=#{userId})
+		select distinct active from memmemberprofile where memberId = (select id from memmember where userId=#{userId})
 	</select>
 	
 	<resultMap id="profileResultMap" type="com.ziksana.domain.member.MemberProfile" >
