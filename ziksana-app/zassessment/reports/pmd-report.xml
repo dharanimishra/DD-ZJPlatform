@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2013-03-26T11:41:33.929">
+<file name="src/main/java/com/ziksana/exception/assignment/AssignmentException.java">
+<violation beginline="18" endline="21" begincolumn="0" endcolumn="0" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="com.ziksana.exception.assignment" class="AssignmentException" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'args'.
+</violation>
+<violation beginline="18" endline="21" begincolumn="0" endcolumn="0" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="com.ziksana.exception.assignment" class="AssignmentException" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'errorCode'.
+</violation>
+<violation beginline="18" endline="21" begincolumn="0" endcolumn="0" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="com.ziksana.exception.assignment" class="AssignmentException" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 't'.
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="com.ziksana.exception.assignment" class="AssignmentException" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like t
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.exception.assignment" class="AssignmentException" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'args' is not assigned and could be declared final
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.exception.assignment" class="AssignmentException" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'errorCode' is not assigned and could be declared final
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.exception.assignment" class="AssignmentException" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 't' is not assigned and could be declared final
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/model/assignment/Assignment.java">
+<violation beginline="5" endline="5" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+<violation beginline="8" endline="8" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like learningComponentId
+</violation>
+<violation beginline="9" endline="9" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like creatingMemberRoleId
+</violation>
+<violation beginline="17" endline="17" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+<violation beginline="17" endline="17" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'id' is not assigned and could be declared final
+</violation>
+<violation beginline="23" endline="23" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'name' is not assigned and could be declared final
+</violation>
+<violation beginline="29" endline="29" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'content' is not assigned and could be declared final
+</violation>
+<violation beginline="35" endline="35" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like learningComponentId
+</violation>
+<violation beginline="35" endline="35" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'learningComponentId' is not assigned and could be declared final
+</violation>
+<violation beginline="41" endline="41" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like creatingMemberRoleId
+</violation>
+<violation beginline="41" endline="41" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.model.assignment" class="Assignment" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'creatingMemberRoleId' is not assigned and could be declared final
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/assessment/AssignmentTestMapper.java">
+<violation beginline="21" endline="211" begincolumn="0" endcolumn="0" rule="TooManyMethods" ruleset="Code Size Rules" package="com.ziksana.persistence.assessment" class="AssignmentTestMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#TooManyMethods" priority="3">
+This class has too many methods, consider refactoring it.
+</violation>
+<violation beginline="92" endline="92" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.assessment" class="AssignmentTestMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;name&quot; appears 6 times in this file; the first occurrence is on line 92
+</violation>
+<violation beginline="94" endline="94" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.assessment" class="AssignmentTestMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;status&quot; appears 4 times in this file; the first occurrence is on line 94
+</violation>
+<violation beginline="139" endline="139" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.assessment" class="AssignmentTestMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;assignmenttestid&quot; appears 6 times in this file; the first occurrence is on line 139
+</violation>
+<violation beginline="164" endline="164" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.assessment" class="AssignmentTestMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;testsubmissionid&quot; appears 4 times in this file; the first occurrence is on line 164
+</violation>
+<violation beginline="165" endline="165" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.assessment" class="AssignmentTestMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;submitteddate&quot; appears 4 times in this file; the first occurrence is on line 165
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/assessment/TestQuestionMapper.java">
+<violation beginline="20" endline="181" begincolumn="0" endcolumn="0" rule="TooManyMethods" ruleset="Code Size Rules" package="com.ziksana.persistence.assessment" class="TestQuestionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#TooManyMethods" priority="3">
+This class has too many methods, consider refactoring it.
+</violation>
+<violation beginline="59" endline="59" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.assessment" class="TestQuestionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;questionBankId&quot; appears 5 times in this file; the first occurrence is on line 59
+</violation>
+<violation beginline="59" endline="59" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.assessment" class="TestQuestionMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;questionbankid&quot; appears 6 times in this file; the first occurrence is on line 59
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/assessment/VisualSpotMapper.java">
+<violation beginline="3" endline="3" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.ziksana.domain.assessment.VisualSpot'
+</violation>
+<violation beginline="3" endline="3" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.ziksana.domain.assessment.VisualSpot'
+</violation>
+<violation beginline="4" endline="4" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.ibatis.annotations.Delete'
+</violation>
+<violation beginline="4" endline="4" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.ibatis.annotations.Delete'
+</violation>
+<violation beginline="5" endline="5" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.ibatis.annotations.Insert'
+</violation>
+<violation beginline="5" endline="5" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.ibatis.annotations.Insert'
+</violation>
+<violation beginline="6" endline="6" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.ibatis.annotations.ResultMap'
+</violation>
+<violation beginline="6" endline="6" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.ibatis.annotations.ResultMap'
+</violation>
+<violation beginline="7" endline="7" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.ibatis.annotations.Select'
+</violation>
+<violation beginline="7" endline="7" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.assessment" class="VisualSpotMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.ibatis.annotations.Select'
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/assessment/engagement/EngagementMapper.java">
+<violation beginline="26" endline="26" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.assessment.engagement" class="EngagementMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;engagementid&quot; appears 4 times in this file; the first occurrence is on line 26
+</violation>
+<violation beginline="27" endline="27" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.persistence.assessment.engagement" class="EngagementMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;engagementcriteriaid&quot; appears 5 times in this file; the first occurrence is on line 27
+</violation>
+<violation beginline="41" endline="41" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.persistence.assessment.engagement" class="EngagementMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like engagementCriteriaId
+</violation>
+<violation beginline="82" endline="82" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.persistence.assessment.engagement" class="EngagementMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like engagementCriteriaId
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/assignment/AssignmentMapper.java">
+<violation beginline="16" endline="16" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.assignment" class="AssignmentMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.assignment" class="AssignmentMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/assignment/AssignmentService.java">
+<violation beginline="17" endline="17" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.assignment" class="AssignmentService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/assignment/engagement/EngagementService.java">
+<violation beginline="23" endline="23" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.assignment.engagement" class="EngagementService" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like engagementCriteriaId
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/assignment/engagement/impl/EngagementServiceImpl.java">
+<violation beginline="19" endline="20" begincolumn="0" endcolumn="0" rule="LoggerIsNotStaticFinal" ruleset="Java Logging Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#LoggerIsNotStaticFinal" priority="2">
+The Logger variable declaration does not contain the static and final modifiers
+</violation>
+<violation beginline="19" endline="20" begincolumn="0" endcolumn="0" rule="SuspiciousConstantFieldName" ruleset="Naming Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#SuspiciousConstantFieldName" priority="3">
+The field name indicates a constant but its modifiers do not
+</violation>
+<violation beginline="19" endline="20" begincolumn="0" endcolumn="0" rule="VariableNamingConventions" ruleset="Naming Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character
+</violation>
+<violation beginline="23" endline="23" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="26" endline="26" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'courseId' is not assigned and could be declared final
+</violation>
+<violation beginline="27" endline="30" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'engagementList' (lines '27'-'30').
+</violation>
+<violation beginline="39" endline="39" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'engagement' is not assigned and could be declared final
+</violation>
+<violation beginline="45" endline="45" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'criteria' is not assigned and could be declared final
+</violation>
+<violation beginline="51" endline="51" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'criteria' is not assigned and could be declared final
+</violation>
+<violation beginline="57" endline="57" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'engagement' is not assigned and could be declared final
+</violation>
+<violation beginline="63" endline="63" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.assignment.engagement.impl" class="EngagementServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like engagementCriteriaId
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/assignment/impl/AssignmentServiceImpl.java">
+<violation beginline="17" endline="17" begincolumn="0" endcolumn="0" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'logger'.
+</violation>
+<violation beginline="17" endline="18" begincolumn="0" endcolumn="0" rule="LoggerIsNotStaticFinal" ruleset="Java Logging Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#LoggerIsNotStaticFinal" priority="2">
+The Logger variable declaration does not contain the static and final modifiers
+</violation>
+<violation beginline="20" endline="21" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="21" endline="21" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="24" endline="24" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'assignment' is not assigned and could be declared final
+</violation>
+<violation beginline="26" endline="26" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'assignmentId' could be declared final
+</violation>
+<violation beginline="27" endline="27" begincolumn="0" endcolumn="0" rule="SystemPrintln" ruleset="Java Logging Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln" priority="2">
+System.out.print is used
+</violation>
+<violation beginline="28" endline="28" begincolumn="0" endcolumn="0" rule="SystemPrintln" ruleset="Java Logging Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln" priority="2">
+System.out.print is used
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/assignment/impl/AssignmentTestServiceImpl.java">
+<violation beginline="14" endline="15" begincolumn="0" endcolumn="0" rule="LoggerIsNotStaticFinal" ruleset="Java Logging Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#LoggerIsNotStaticFinal" priority="2">
+The Logger variable declaration does not contain the static and final modifiers
+</violation>
+<violation beginline="14" endline="15" begincolumn="0" endcolumn="0" rule="SuspiciousConstantFieldName" ruleset="Naming Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#SuspiciousConstantFieldName" priority="3">
+The field name indicates a constant but its modifiers do not
+</violation>
+<violation beginline="14" endline="15" begincolumn="0" endcolumn="0" rule="VariableNamingConventions" ruleset="Naming Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character
+</violation>
+<violation beginline="17" endline="18" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like assignmentTestMapper
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="21" endline="21" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'memberRoleId' is not assigned and could be declared final
+</violation>
+<violation beginline="23" endline="24" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'testSubmission' could be declared final
+</violation>
+<violation beginline="30" endline="30" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'testId' is not assigned and could be declared final
+</violation>
+<violation beginline="31" endline="32" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'testProgress' could be declared final
+</violation>
+<violation beginline="39" endline="39" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentTestServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'testSubmission' is not assigned and could be declared final
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/assignment/impl/QuestionSearchCriteria.java">
+<violation beginline="28" endline="28" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="QuestionSearchCriteria" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'name' is not assigned and could be declared final
+</violation>
+<violation beginline="40" endline="40" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="QuestionSearchCriteria" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'area' is not assigned and could be declared final
+</violation>
+<violation beginline="52" endline="52" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="QuestionSearchCriteria" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'subject' is not assigned and could be declared final
+</violation>
+<violation beginline="64" endline="64" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="QuestionSearchCriteria" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'topic' is not assigned and could be declared final
+</violation>
+<violation beginline="76" endline="76" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="QuestionSearchCriteria" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'tags' is not assigned and could be declared final
+</violation>
+</file>
+<file name="src/test/java/com/ziksana/service/assignment/impl/AssignmentServiceImplTest.java">
+<violation beginline="40" endline="41" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="41" endline="41" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="47" endline="47" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="47" endline="47" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="47" endline="48" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="54" endline="54" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="54" endline="54" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="54" endline="55" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="62" endline="62" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberId' could be declared final
+</violation>
+<violation beginline="63" endline="63" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberPersonaId' could be declared final
+</violation>
+<violation beginline="64" endline="64" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'token' could be declared final
+</violation>
+<violation beginline="73" endline="74" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="85" endline="85" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'assignment' could be declared final
+</violation>
+<violation beginline="90" endline="91" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'createdAssignment' could be declared final
+</violation>
+<violation beginline="93" endline="93" begincolumn="0" endcolumn="0" rule="JUnitAssertionsShouldIncludeMessage" ruleset="JUnit Rules" package="com.ziksana.service.assignment.impl" class="AssignmentServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitAssertionsShouldIncludeMessage" priority="3">
+JUnit assertions should include a message
+</violation>
+</file>
+</pmd>

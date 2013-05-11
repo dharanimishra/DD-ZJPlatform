@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>Title</title>
+	<!--Body Style sheet-->
+    <link rel="stylesheet" href="../js/upload/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
+	<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	<link href="../css/type-setting.css" rel="stylesheet" type="text/css">
+	<link href="../css/effects.css" rel="stylesheet" type="text/css">
+	<link href="../css/nav.css" rel="stylesheet" type="text/css">
+    
+	
+    
+    <!---upload Style sheet-->
+    <link rel="stylesheet" href="../css/upload/bootstrap.min.css">
+<link rel="stylesheet" href="css/upload/style.css">
+<link rel="stylesheet" href="css/upload/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="css/upload/jquery.fileupload-ui.css">
+	<!--End Body Style sheet-->
+<script src="../development-bundle/jquery-1.7.2.js"></script>
+<script language="javascript" type="text/javascript">
+  $(document).ready(function () {
+            $('.highlights, textarea, select').addClass("setIdle");
+            $('.highlights, textarea, select').focus(function () {
+                $(this).removeClass("setIdle").addClass("setFocus");
+            });
+
+            $('.highlights, textarea, select').blur(function () {
+                $(this).removeClass("setFocus").addClass("setIdle");
+            });
+
+            //Applying MSIE Check
+            if ($.browser.msie) {
+                $("select").bind("focusin", function () {
+                    $(this).addClass("setFocus");
+                });
+
+                $("select").bind("focusout", function () {
+                    $(this).removeClass("setFocus");
+                });
+            }
+			
+			$('._edit').hide();
+			$('.quename1').hover(function()
+			{
+				$('._edit').show();
+				},function()
+			{
+				$('._edit').hide();
+				
+			});
+			
+			$('._edit2').hide();
+			$('.quename2').hover(function()
+			{
+				$('._edit2').show();
+				},function()
+			{
+				$('._edit2').hide();
+				
+			});
+			
+			$('._edit3').hide();
+			$('.quename3').hover(function()
+			{
+				$('._edit3').show();
+				},function()
+			{
+				$('._edit3').hide();
+				
+			});
+
+        });
+</script>  
+
+
+
+
+<script type="text/javascript" src="../js/outerpages/jquery.js"></script>
+<script type="text/javascript" src="../js/outerpages/save.js"></script>
+<script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="../js/ckeditor/adapters/jquery.js"></script>
+<script type="text/javascript" src="../js/outerpages/main.js"></script>
+
+<script type="text/javascript" src="../js/upload/plupload.js"></script>
+<script type="text/javascript" src="../js/upload/plupload.gears.js"></script>
+<script type="text/javascript" src="../js/upload/plupload.browserplus.js"></script>
+<script type="text/javascript" src="../js/upload/plupload.html4.js"></script>
+<script type="text/javascript" src="../js/upload/plupload.html5.js"></script>
+<script type="text/javascript" src="../js/upload/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+
+<script type="text/javascript">
+
+
+
+
+function closeit(){
+parent.$.fancybox.close();
+}
+function addtests() {
+    
+    node_title = $("#txtTest").val();
+	
+
+	new_des=$("#txtDes").val();
+	new_option = '<option>'+node_title+'</option>';
+	
+	
+	parent.$('#associatedtest').append(new_option).val(node_title);
+	parent.$('#test-descrip').text(new_des);
+	
+	parent_node_id = parent.$("#nodeHid").val();
+	 //alert(nodeId);
+	 
+	//parent.$(".tree_container").jstree("create",'#'+nodeId,"last",new_option_value,false,true);
+	parent.createTestNode(parent_node_id, node_title, 'question');
+
+	
+	//parent.$('#node_2').html(new_option_value);
+	
+    
+	parent.$.fancybox.close();
+}
+function viewTest(){
+test_name=$("#txtTest").val();
+test_desc=$("#txtDes").val();
+type_test=$("#typetest").val();
+
+
+ 
+}
+</script>
+
+   
+  </head>
+<body>
+<div id="wrapper" style="width:600px; >
+
+
+  <div class="col-1000 for-rounded-box all-box-shadow bckground-wihte">
+                <p>
+                  <input type='text' id="txtTest"class='highlights' placeholder="Enter the Test Name" style="width:500px; margin-bottom:10px;" title="Enter title" />
+                  <textarea name="textarea2" class="textarea" style="width:500px; margin-bottom:10px;"  title="Text Area" dir="ltr" placeholder="Provide Any description"></textarea>
+                </p>
+    <p>
+                  <textarea name="textarea" class="textarea" style="width:500px; margin-bottom:10px;"  title="Text Area" dir="ltr" placeholder="Specifiy Any instructon to Students"></textarea>
+                </p>
+    <p>
+     <select name="select3" style="width:200px" class="ui-state-default ui-combobox-input ui-autocomplete-input ui-widget ui-widget-content ui-corner-left">
+       <option value="selected">Specify the Type of Test</option>
+       <option value="IT"> IT </option>
+       <option value="Electric" > Electric </option>
+       <option value="Web" > Web </option>
+     </select>
+     &nbsp;
+      &nbsp;
+      &nbsp;&nbsp;
+                  &nbsp;
+      <select name="select5" style="width:200px" class="ui-state-default ui-combobox-input ui-autocomplete-input ui-widget ui-widget-content ui-corner-left">
+                    <option value="selected">Specify the Difficulty Level</option>
+                     <option value="IT"> IT </option>
+    	     <option value="Electric" > Electric </option>
+    	     <option value="Web" > Web </option>
+      </select>
+    </p>
+   
+      <strong>1.</strong> &nbsp;
+      <select name="select6" style="width:200px" class="ui-state-default ui-combobox-input ui-autocomplete-input ui-widget ui-widget-content ui-corner-left">
+        <option value="selected">Select Rubrics</option>
+        <option value="IT"> IT </option>
+        <option value="Electric" > Electric </option>
+        <option value="Web" > Web </option>
+    </select>
+      </select>
+      &nbsp;
+       &nbsp;
+      <strong>2. </strong> &nbsp;<a href="#">Complete Rubrics</a>
+     
+    
+    <p></p>
+    <p>
+      <input type='text' class='highlights' placeholder="Specify the Total Points" style="width:500px; margin-bottom:10px;" title="Specify the Total Points" />
+    </p>
+    
+    <p style="font-size:12px">
+      <input name="peer" type="checkbox" value="" placeholder=""> 
+    Open for Peer Assessment?</p>
+    
+    </p>
+    
+    <div id="test" style="font-size:14px;"> 
+     	<a href="#" id="show_security" name="show_security">> &nbsp;</a>Test Setting
+        
+</div> 
+
+   <div id="security" style="margin-left: 20px; font-size:14px;"> 
+   <br/>
+     <p style="font-size:14px;"><strong>Security Settings</strong></p>
+           <br/>
+       <input name="proctored" type="checkbox" value="proctored"/> 
+       Proctored
+       &nbsp;
+       <input name="proctored" type="checkbox" value="proctored"/> 
+       &nbsp;
+       Face Capture
+       &nbsp;
+       <input name="proctored" type="checkbox" value="proctored"/> 
+       Randomize Questions     </p>
+    
+       <input type='text' class='highlights' placeholder="Total Time for timed test" style="width:130px; margin-bottom:10px; font-size:12px;" title="Enter title" />
+       &nbsp;
+       &nbsp;
+      <input name="Synchronous" type="checkbox" value="Synchronous"/>        Synchronous Testing only    
+       </p>
+       <p> 
+     <p style="font-size:14px;"><strong>Multiple attempt Settings</strong><br/>
+     <br/>
+     <input name="mul_txt" type="text" value="Enter max attempts" maxlength="200" />
+     <br/>
+     <br/>
+     <input name="mul_rad" type="radio" value="Average scores for grading?" checked="checked" />
+     Average scores for grading?
+     </input>
+     <input name="mul_rad2" type="radio" value="Maximum score for grading?" />
+     Maximum score for grading?
+     </input>
+     </span></p>
+</div>
+<br>
+ <input name="exit_set4" onClick="closeit()" id="exit_set4"type="button" value="Exit"  />
+  
+<input name="exit_set2" onClick="addtests()" id="exit_set2"type="button" value="Done" />
+
+
+
+  </div>
+        </div>
+ 
+
+</body>
+</html>

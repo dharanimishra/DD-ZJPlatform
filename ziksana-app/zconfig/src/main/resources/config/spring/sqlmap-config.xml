@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="true" />
+	</settings>
+	<!-- <typeAliases> <typeAlias type="com.ziksana.domain.course.CorBookmarkShare" 
+		alias="corbookmarkshare"/> <typeAlias type="com.ziksana.domain.course.CorChapterContentBookmark" 
+		alias="corchapterconentbokmark"/> <typeAlias type="com.ziksana.domain.course.CorComponentContentEnrichment" 
+		alias="corcomponentcontentenrichment"/> <typeAlias type="com.ziksana.domain.course.CorContent" 
+		alias="corcontent"/> <typeAlias type="com.ziksana.domain.course.CorContentParts" 
+		alias="corcontentparts"/> <typeAlias type="com.ziksana.domain.course.CorCourse" 
+		alias="corcourse"/> <typeAlias type="com.ziksana.domain.course.CorCourseAdditionalProperty" 
+		alias="corcourseAddinitionalproperty"/> <typeAlias type="com.ziksana.domain.course.CorCourseContentSecurity" 
+		alias="corcoursecontentsecurity"/> <typeAlias type="com.ziksana.domain.course.CorCoursePlaybook" 
+		alias="corcourseplaybook"/> <typeAlias type="com.ziksana.domain.course.CorCourseProgress" 
+		alias="corcourseprogress"/> <typeAlias type="com.ziksana.domain.course.CorCourseProgressWorkflow" 
+		alias="corcourseprogressworkflow"/> <typeAlias type="com.ziksana.domain.course.CorCourseReviewRating" 
+		alias="corcoursereviewrating"/> <typeAlias type="com.ziksana.domain.course.CorCurriculumCourse" 
+		alias="corcurriculumcourse"/> <typeAlias type="com.ziksana.domain.course.CorCurriculumCourseDelivery" 
+		alias="corcurriculumcoursedelivery"/> <typeAlias type="com.ziksana.domain.course.CorCurriculumCourseProperty" 
+		alias="corcurriculumcourseproperty"/> <typeAlias type="com.ziksana.domain.course.CorPlaybookComponent" 
+		alias="corplaybokcomponent"/> <typeAlias type="com.ziksana.domain.course.CorPlaybookComponentCalendar" 
+		alias="corplaybookcomponentcontent"/> <typeAlias type="com.ziksana.domain.course.CorPlaybookComponentNest" 
+		alias="corplaybookcomponentnest"/> <typeAlias type="com.ziksana.domain.course.CorPlaybookComponentType" 
+		alias="corplaybookcomponenttype"/> <typeAlias type="com.ziksana.domain.course.CorPlaybookComponentWall" 
+		alias="corplaybookcomponentwall"/> <typeAlias type="com.ziksana.domain.course.CorPlaybookComponentWallResponse" 
+		alias="corplaybookcomponentwallresponse"/> <typeAlias type="com.ziksana.domain.course.CorProgramParticipants" 
+		alias="corprogramparticipants"/> <typeAlias type="com.ziksana.domain.course.CorWorkflowParticipant" 
+		alias="corworkflowparticipant"/> <typeAlias type="com.ziksana.domain.course.CorWorkflowParticipantComment" 
+		alias="corworkflowparticipantcomment"/> <typeAlias type="com.ziksana.domain.course.InstitutionUnit" 
+		alias="corinstitutionunit"/> <typeAlias type="com.ziksana.domain.course.MemberAdditionalProperty" 
+		alias="memmemberadditionalproperty"/> <typeAlias type="com.ziksana.domain.course.MemberAddress" 
+		alias="memmemberaddress"/> <typeAlias type="com.ziksana.domain.course.MemberEmail" 
+		alias="memmembermmail"/> <typeAlias type="com.ziksana.domain.course.MemberInterestsSummary" 
+		alias="memmemberinterestssummary"/> <typeAlias type="com.ziksana.domain.course.MemberLifestyleSummary" 
+		alias="memmemberlifestylesummary"/> <typeAlias type="com.ziksana.domain.course.MemberPhone" 
+		alias="memmemberphone"/> <typeAlias type="com.ziksana.domain.course.MemberProfile" 
+		alias="memmemberprofile"/> <typeAlias type="com.ziksana.domain.course.MemberRelationship" 
+		alias="memmemberrelationship"/> <typeAlias type="com.ziksana.domain.course.MemProfileComponent" 
+		alias="memprofilecomponent"/> </typeAliases= -->
+
+
+	<typeAliases>
+		<typeAlias alias="memmember" type="com.ziksana.domain.member.Member" />
+
+		<typeAlias type="com.ziksana.domain.member.MemberRole"
+			alias="memmemberole" />
+
+		<typeAlias type="com.ziksana.domain.course.CorInstitution"
+			alias="corinstitution" />
+
+		<typeAlias alias="coracademicprogram"
+			type="com.ziksana.domain.course.CorAcademicProgram" />
+
+		<typeAlias alias="corprogrammcurriculum"
+			type="com.ziksana.domain.course.CorProgrammCurriculum" />
+
+		<typeAlias alias="corcourse" type="com.ziksana.domain.course.CorCourse" />
+
+		<typeAlias type="com.ziksana.domain.course.CorCoursePlaybook"
+			alias="corcourseplaybook" />
+
+		<typeAlias type="com.ziksana.domain.course.CorPlaybookComponent"
+			alias="corplaybokcomponent" />
+
+		<typeAlias type="com.ziksana.domain.course.CorContent"
+			alias="corcontent" />
+
+		<typeAlias type="com.ziksana.domain.course.CorPlaybookComponentType"
+			alias="corplaybookcomponenttype" />
+
+		<typeAlias type="com.ziksana.domain.course.CorPlaybookComponentContent" 
+		alias="corplaybookcomponentcontent"/>
+
+		<typeAlias type="com.ziksana.domain.course.CorContentParts"
+			alias="corcontentparts" />
+		
+	</typeAliases>
+</configuration>

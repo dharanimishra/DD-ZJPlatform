@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.classtalk.ClassTalkMapper">
+
+
+	<select id="getAllOnlineLearners" resultMap="learnerResultMap"
+		parameterType="Integer">
+
+		select
+		cr.CourseId,
+		cr.Name,
+		cr.Description,
+		cpgm.LearningProgramId,
+		cpgm.ProgramName,
+		cpgm.ProgramDescription,
+		m.FirstName,
+		m.LastName,
+		m.MiddleName,
+		m.PicturePath,
+		mood.MemberMoodMessage
+		from
+		sbnsubscriptioncourse course
+		join sbnmembersubscriptionprogram spr ON
+		course.MemSubscriptionProgId=spr.MemSubscriptionProgId
+		join memmemberrole mr ON spr.MemberRoleId=mr.MemberRoleId
+		join memmember m ON mr.MemberId=m.MemberId
+		join memmembermood mood ON m.MemberId=mood.MemberId
+		join clnonlinemember onl ON mr.MemberRoleId=onl.MemberRoleId
+		join corcurriculumcourse cor ON
+		course.CurriculumCourseId=cor.CurriculumCourseId
+		join corcourse cr ON cor.CourseId=cr.CourseId
+		join corlearningprogram cpgm ON
+		spr.LearningProgramId=cpgm.LearningProgramId
+		where
+		cr.CourseId=#{courseId}
+
+	</select>
+    
+    
+    
+    <select id="getOnlineLearnersByCircle" resultMap="learnerResultMap"
+		parameterType="map">
+		
+		select
+		cr.CourseId,
+		cr.Name,
+		cr.Description,
+		cpgm.LearningProgramId,
+		cpgm.ProgramName,
+		cpgm.ProgramDescription,
+		m.FirstName,
+		m.LastName,
+		m.MiddleName,
+		m.PicturePath,
+		mood.MemberMoodMessage
+		from
+		sbnsubscriptioncourse course
+		join sbnmembersubscriptionprogram spr ON
+		course.MemSubscriptionProgId=spr.MemSubscriptionProgId
+		join memmemberrole mr ON spr.MemberRoleId=mr.MemberRoleId
+		join memmember m ON mr.MemberId=m.MemberId
+		join memmembermood mood ON m.MemberId=mood.MemberId
+		join clnonlinemember onl ON mr.MemberRoleId=onl.MemberRoleId
+		join memmemberrelationship rel ON rel.RelatingMemberRoleId=mr.MemberRoleId
+		join corcurriculumcourse cor ON
+		course.CurriculumCourseId=cor.CurriculumCourseId
+		join corcourse cr ON cor.CourseId=cr.CourseId
+		join corlearningprogram cpgm ON
+		spr.LearningProgramId=cpgm.LearningProgramId
+		where
+		cr.CourseId=#{courseId} and rel.RelationshioType=#{relationshipType} and rel.SourceMemberRoleId=#{memberRoleId}
+		
+		
+		
+		
+		
+		
+	</select>	
+    
+    
+    
+
+	<resultMap id="learnerResultMap" type="com.ziksana.domain.classtalk.LearnerOnline">
+             <result property="mood" column="MemberMoodMessage" />
+             <result property="courseName" column="Name" />
+             <result property="learningProgram" column="ProgramName" />
+             
+             
+
+
+		<association property="memberPersona"
+			javaType="com.ziksana.domain.member.MemberPersona">
+
+
+
+			<association property="member" javaType="com.ziksana.domain.member.Member">
+				<result property="firstName" column="FirstName" />
+				<result property="lastName" column="LastName" />
+				<result property="middleName" column="MiddleName" />
+				<result property="picturePath" column="PicturePath" />
+
+
+			</association>
+
+
+		</association>
+
+
+	</resultMap>
+
+
+
+
+
+
+</mapper>

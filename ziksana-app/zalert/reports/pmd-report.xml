@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2013-03-26T11:16:12.165">
+<file name="src/main/java/com/ziksana/alert/exception/AlertException.java">
+<violation beginline="16" endline="16" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.alert.exception" class="AlertException" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'error' is not assigned and could be declared final
+</violation>
+<violation beginline="16" endline="16" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.alert.exception" class="AlertException" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'errorCode' is not assigned and could be declared final
+</violation>
+<violation beginline="20" endline="20" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.alert.exception" class="AlertException" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'errorCode' is not assigned and could be declared final
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/alert/exception/AlertNotFoundException.java">
+<violation beginline="22" endline="22" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="com.ziksana.alert.exception" class="AlertNotFoundException" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like t
+</violation>
+<violation beginline="22" endline="22" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.alert.exception" class="AlertNotFoundException" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 't' is not assigned and could be declared final
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/controller/alert/AlertController.java">
+<violation beginline="21" endline="22" begincolumn="0" endcolumn="0" rule="VariableNamingConventions" ruleset="Naming Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be in all caps.
+</violation>
+<violation beginline="25" endline="25" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="34" endline="34" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like mv
+</violation>
+<violation beginline="34" endline="34" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'mv' could be declared final
+</violation>
+<violation beginline="48" endline="51" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'alertSize' (lines '48'-'51').
+</violation>
+<violation beginline="66" endline="66" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'alertItemId' is not assigned and could be declared final
+</violation>
+<violation beginline="67" endline="71" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'errorResponse' (lines '67'-'71').
+</violation>
+<violation beginline="71" endline="74" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'errorResponse' (lines '71'-'74').
+</violation>
+<violation beginline="87" endline="87" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'modelAndView' could be declared final
+</violation>
+<violation beginline="100" endline="100" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.alert" class="AlertController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'modelView' could be declared final
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/alert/AlertMapper.java">
+<violation beginline="17" endline="17" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.persistence.alert" class="AlertMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like memberNotificationId
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/alert/AlertsService.java">
+<violation beginline="16" endline="16" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.alert" class="AlertsService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="20" endline="20" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.alert" class="AlertsService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="22" endline="22" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.alert" class="AlertsService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="24" endline="24" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.alert" class="AlertsService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/alert/impl/AlertServiceImpl.java">
+<violation beginline="29" endline="29" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="37" endline="39" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'alertList' (lines '37'-'39').
+</violation>
+<violation beginline="39" endline="53" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'alertList' (lines '39'-'53').
+</violation>
+<violation beginline="45" endline="45" begincolumn="0" endcolumn="0" rule="AvoidCatchingNPE" ruleset="Strict Exception Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/strictexception.html#AvoidCatchingNPE" priority="3">
+Avoid catching NullPointerException; consider removing the cause of the NPE.
+</violation>
+<violation beginline="46" endline="46" begincolumn="0" endcolumn="0" rule="PreserveStackTrace" ruleset="Design Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#PreserveStackTrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="57" endline="57" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'AlertItem' is not assigned and could be declared final
+</violation>
+<violation beginline="65" endline="65" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'AlertItem' is not assigned and could be declared final
+</violation>
+<violation beginline="72" endline="72" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'alertId' is not assigned and could be declared final
+</violation>
+<violation beginline="76" endline="76" begincolumn="0" endcolumn="0" rule="AvoidCatchingNPE" ruleset="Strict Exception Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/strictexception.html#AvoidCatchingNPE" priority="3">
+Avoid catching NullPointerException; consider removing the cause of the NPE.
+</violation>
+<violation beginline="78" endline="78" begincolumn="0" endcolumn="0" rule="PreserveStackTrace" ruleset="Design Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#PreserveStackTrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="92" endline="93" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberRoleId' could be declared final
+</violation>
+<violation beginline="94" endline="94" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'offset' could be declared final
+</violation>
+<violation beginline="95" endline="95" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'limit' could be declared final
+</violation>
+<violation beginline="96" endline="96" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'rowBounds' could be declared final
+</violation>
+<violation beginline="99" endline="99" begincolumn="0" endcolumn="0" rule="AvoidCatchingNPE" ruleset="Strict Exception Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/strictexception.html#AvoidCatchingNPE" priority="3">
+Avoid catching NullPointerException; consider removing the cause of the NPE.
+</violation>
+<violation beginline="100" endline="100" begincolumn="0" endcolumn="0" rule="PreserveStackTrace" ruleset="Design Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#PreserveStackTrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+</file>
+<file name="src/test/java/com/ziksana/service/alert/impl/AlertServiceImplTest.java">
+<violation beginline="39" endline="40" begincolumn="0" endcolumn="0" rule="VariableNamingConventions" ruleset="Naming Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be in all caps.
+</violation>
+<violation beginline="43" endline="43" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="49" endline="49" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="49" endline="49" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="49" endline="50" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="56" endline="56" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="56" endline="56" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="56" endline="57" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="64" endline="64" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberId' could be declared final
+</violation>
+<violation beginline="65" endline="65" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberPersonaId' could be declared final
+</violation>
+<violation beginline="67" endline="67" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'token' could be declared final
+</violation>
+<violation beginline="87" endline="87" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'alerts' could be declared final
+</violation>
+<violation beginline="99" endline="114" begincolumn="0" endcolumn="0" rule="JUnit4TestShouldUseTestAnnotation" ruleset="Migration Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/migrating.html#JUnit4TestShouldUseTestAnnotation" priority="3">
+JUnit 4 tests that execute tests should use the @Test annotation
+</violation>
+<violation beginline="102" endline="102" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'alert' could be declared final
+</violation>
+<violation beginline="121" endline="130" begincolumn="0" endcolumn="0" rule="JUnit4TestShouldUseTestAnnotation" ruleset="Migration Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/migrating.html#JUnit4TestShouldUseTestAnnotation" priority="3">
+JUnit 4 tests that execute tests should use the @Test annotation
+</violation>
+<violation beginline="137" endline="141" begincolumn="0" endcolumn="0" rule="JUnit4TestShouldUseTestAnnotation" ruleset="Migration Rules" package="com.ziksana.service.alert.impl" class="AlertServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/migrating.html#JUnit4TestShouldUseTestAnnotation" priority="3">
+JUnit 4 tests that execute tests should use the @Test annotation
+</violation>
+</file>
+</pmd>

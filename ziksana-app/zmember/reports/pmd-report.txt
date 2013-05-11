@@ -1,0 +1,6 @@
+
+src/main/java/com/ziksana/persistence/member/collaboration/GroupMapper.java:39	The String literal "groupId" appears 6 times in this file; the first occurrence is on line 39
+src/main/java/com/ziksana/persistence/member/collaboration/GroupMapper.java:39	The String literal "groupid" appears 4 times in this file; the first occurrence is on line 39
+src/main/java/com/ziksana/persistence/member/collaboration/GroupMapper.java:51	The String literal "name" appears 4 times in this file; the first occurrence is on line 51
+src/main/java/com/ziksana/persistence/member/collaboration/GroupMapper.java:73	Avoid excessively long variable names like sourceGroupMemberId
+src/main/java/com/ziksana/persistence/member/collaboration/GroupMapper.java:118	Avoid excessively long variable names like curriculumCourseId

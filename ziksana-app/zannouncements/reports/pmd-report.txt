@@ -1,0 +1,114 @@
+
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:29	Variables that are final and static should be in all caps.
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:33	Avoid excessively long variable names like announcementService
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:33	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:42	Local variable 'mav' could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:42	The String literal "xml/announcements" appears 6 times in this file; the first occurrence is on line 42
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:43	Found 'DD'-anomaly for variable 'announcementList' (lines '43'-'45').
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:46	Local variable 'announcementSize' could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:47	The String literal "announcementSize" appears 6 times in this file; the first occurrence is on line 47
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:48	The String literal "announcements" appears 7 times in this file; the first occurrence is on line 48
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:51	The String literal "errorResponse" appears 6 times in this file; the first occurrence is on line 51
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:59	Parameter 'anouncementId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:61	Local variable 'mav' could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:76	Local variable 'mav' could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:78	Found 'DD'-anomaly for variable 'announcementList' (lines '78'-'80').
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:81	Local variable 'announcementSize' could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:97	Parameter 'announcementId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:123	Parameter 'startDate' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:123	The String literal "startDate" appears 4 times in this file; the first occurrence is on line 123
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:124	Parameter 'endDate' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:127	Found 'DD'-anomaly for variable 'announcementList' (lines '127'-'129').
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:143	Parameter 'startDate' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:147	Found 'DD'-anomaly for variable 'announcementList' (lines '147'-'149').
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:167	Found 'DD'-anomaly for variable 'announcementList' (lines '167'-'169').
+src/main/java/com/ziksana/controller/announcements/AnnouncementsController.java:186	Found 'DD'-anomaly for variable 'announcementList' (lines '186'-'188').
+src/main/java/com/ziksana/exception/announcements/AnnouncementsException.java:13	Parameter 'error' is not assigned and could be declared final
+src/main/java/com/ziksana/exception/announcements/AnnouncementsException.java:13	Parameter 'errorCode' is not assigned and could be declared final
+src/main/java/com/ziksana/exception/announcements/AnnouncementsException.java:17	Parameter 'errorCode' is not assigned and could be declared final
+src/main/java/com/ziksana/persistence/announcements/AnnouncementMapper.java:20	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/announcements/AnnouncementMapper.java:22	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/announcements/AnnouncementMapper.java:25	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/announcements/AnnouncementMapper.java:27	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/announcements/AnnouncementMapper.java:29	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/announcements/AnnouncementMapper.java:32	The String literal "memberRoleId" appears 5 times in this file; the first occurrence is on line 32
+src/main/java/com/ziksana/persistence/announcements/AnnouncementMapper.java:38	The String literal "endDate" appears 4 times in this file; the first occurrence is on line 38
+src/main/java/com/ziksana/persistence/announcements/AnnouncementMapper.java:38	The String literal "startDate" appears 4 times in this file; the first occurrence is on line 38
+src/main/java/com/ziksana/service/announcements/AnnouncementService.java:15	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/announcements/AnnouncementService.java:17	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/announcements/AnnouncementService.java:19	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/announcements/AnnouncementService.java:21	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/announcements/AnnouncementService.java:23	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:35	Use explicit scoping instead of the default package private level
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:36	Avoid excessively long variable names like announcementMapper
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:36	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:42	Found 'DD'-anomaly for variable 'announcementList' (lines '42'-'48').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:44	Local variable 'memberRoleId' could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:45	Local variable 'offset' could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:46	Local variable 'limit' could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:47	Local variable 'rowBounds' could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:48	Found 'DU'-anomaly for variable 'announcementList' (lines '48'-'64').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:53	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:54	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:72	Parameter 'announcement' is not assigned and could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:73	The String literal "Class :" appears 12 times in this file; the first occurrence is on line 73
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:95	Parameter 'announcementId' is not assigned and could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:121	Parameter 'announcement' is not assigned and could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:144	Parameter 'endDate' is not assigned and could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:144	Parameter 'startDate' is not assigned and could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:146	Found 'DD'-anomaly for variable 'announcement' (lines '146'-'157').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:147	Local variable 'dateFormat' could be declared final
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:147	The String literal "MM/dd/yyyy" appears 4 times in this file; the first occurrence is on line 147
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:147	When instantiating a SimpleDateFormat object, specify a Locale
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:150	Avoid unused local variables such as 'formatedStartDate'.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:150	Found 'DU'-anomaly for variable 'formatedStartDate' (lines '150'-'169').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:153	System.out.print is used
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:157	Found 'DU'-anomaly for variable 'announcement' (lines '157'-'169').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:165	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:166	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:173	Found 'DD'-anomaly for variable 'announcement' (lines '173'-'184').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:174	When instantiating a SimpleDateFormat object, specify a Locale
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:177	Avoid unused local variables such as 'formatedStartDate'.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:177	Found 'DU'-anomaly for variable 'formatedStartDate' (lines '177'-'195').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:180	System.out.print is used
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:184	Found 'DU'-anomaly for variable 'announcement' (lines '184'-'195').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:191	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:192	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:199	Found 'DD'-anomaly for variable 'announcement' (lines '199'-'210').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:200	When instantiating a SimpleDateFormat object, specify a Locale
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:203	Avoid unused local variables such as 'formatedStartDate'.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:203	Found 'DU'-anomaly for variable 'formatedStartDate' (lines '203'-'221').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:206	System.out.print is used
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:210	Found 'DU'-anomaly for variable 'announcement' (lines '210'-'221').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:217	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:218	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:226	Found 'DD'-anomaly for variable 'announcementList' (lines '226'-'228').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:228	Found 'DU'-anomaly for variable 'announcementList' (lines '228'-'240').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:233	Avoid catching NullPointerException; consider removing the cause of the NPE.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:234	New exception is thrown in catch block, original stack trace may be lost
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:245	Found 'DD'-anomaly for variable 'announcement' (lines '245'-'248').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:248	Found 'DU'-anomaly for variable 'announcement' (lines '248'-'257').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:262	Found 'DD'-anomaly for variable 'announcement' (lines '262'-'273').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:263	When instantiating a SimpleDateFormat object, specify a Locale
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:266	Avoid unused local variables such as 'formatedStartDate'.
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:266	Found 'DU'-anomaly for variable 'formatedStartDate' (lines '266'-'285').
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:269	System.out.print is used
+src/main/java/com/ziksana/service/announcements/impl/AnnouncementServiceImpl.java:273	Found 'DU'-anomaly for variable 'announcement' (lines '273'-'285').
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:17	Avoid unused imports such as 'org.junit.Test'
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:17	Avoid unused imports such as 'org.junit.Test'
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:42	Variables that are final and static should be in all caps.
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:46	Avoid excessively long variable names like announcementService
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:46	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:51	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:51	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:51	Document empty method
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:58	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:58	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:58	Document empty method
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:66	Local variable 'memberId' could be declared final
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:67	Local variable 'memberPersonaId' could be declared final
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:69	Local variable 'token' could be declared final
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:80	JUnit 4 tests that execute tests should use the @Test annotation
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:83	Local variable 'actual' could be declared final
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:102	JUnit 4 tests that execute tests should use the @Test annotation
+src/test/java/com/ziksana/service/announcements/impl/AnnouncementServiceImplTest.java:105	Local variable 'announcement' could be declared final

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.SocializeMapper">
+
+	<insert id="saveComponentForReview"
+		parameterType="com.ziksana.domain.course.LearningContentReviewProgress"
+		useGeneratedKeys="true" keyProperty="reviewProgressId" keyColumn="reviewprogressid">
+		insert into corenrichment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="startDate != null">
+				startdate,
+			</if>
+			<if test="endDate != null">
+				enddate,
+			</if>
+			<if test="totalDuration != null">
+				totalduration,
+			</if>
+			<if test="totalDuration != null">
+				totaldurationunit,
+			</if>
+			<if test="averageRating != null">
+				averagerating,
+			</if>
+			<if test="degreeOfCompletion != null">
+				degreeofcompletion,
+			</if>
+			<if test="courseStatus != null">
+				coursestatus,
+			</if>
+			<if test="description != null">
+				description,
+			</if>
+			<if test="course != null">
+				courseid,
+			</if>
+			<if test="learningComponent != null">
+				learningcomponentid,
+			</if>
+			<if test="leraningComponentContent != null">
+				leraningcomponentcontentid,
+			</if>
+			<if test="authoringMemberRole != null">
+				memberroleid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="endDate != null">
+				#{endDate,jdbcType=DATE},
+			</if>
+			<if test="totalDuration != null">
+				#{totalDuration.duration,jdbcType=INTEGER},
+			</if>
+			<if test="totalDuration != null">
+				#{totalDuration.durationUnits,jdbcType=INTEGER},
+			</if>
+			<if test="averageRating != null">
+				#{averageRatingId,jdbcType=INTEGER},
+			</if>
+			<if test="degreeofcompletion != null">
+				#{degreeOfCompletion,jdbcType=INTEGER},
+			</if>
+			<if test="courseStatus != null">
+				#{courseStatusId,jdbcType=INTEGER},
+			</if>
+			<if test="description != null">
+				#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="course != null">
+				#{course.courseId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="learningComponent != null">
+				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="learningComponentContent != null">
+				#{learningComponentContent.learningComponentContentId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="authoringMemberRole != null">
+				#{authoringMemberRole.memberRoleId,jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="reviewProgressId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+
+	<insert id="saveReviewWorkflow" parameterType="com.ziksana.domain.course.ContentReviewWorkflow"
+		useGeneratedKeys="true" keyProperty="contentReviewWorkflowId"
+		keyColumn="reviewworkflowid">
+		insert into corcontentreviewworkflow
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+				createdate,
+			<if test="workflowType != null">
+				workflowtype,
+			</if>
+			<if test="completeBy != null">
+				completeby,
+			</if>
+			<if test="notes != null">
+				notes,
+			</if>
+			<if test="learningContentReviewProgress != null">
+				learningcontentreviewprogressid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="workflowType != null">
+				#{workflowTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="completeBy != null">
+				#{completeBy,jdbcType=DATE},
+			</if>
+			<if test="notes != null">
+				#{notes,jdbcType=VARCHAR},
+			</if>
+			<if test="reviewProgress != null">
+				#{reviewProgress.reviewProgressId.storageID.,jdbcType=INTEGER},
+			</if>
+		</trim>
+		<selectKey keyProperty="contentReviewWorkflowId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+	<update id="saveContentReviewInfo" parameterType="com.ziksana.domain.course.ContentReviewWorkflow">
+		update corcontentreviewworkflow
+		<set>
+			<if test="workflowType != null">
+				workflowType = #{workflowTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="completeBy != null">
+				completeBy = #{completeBy,jdbcType=DATE},
+			</if>
+			<if test="notes != null">
+				notes= #{notes,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where contentreviewworkflowid = #{contentReviewWorkflowId.storageID, jdbcType=INTEGER}
+	</update>
+
+	<insert id="saveWorkflowParticipant" parameterType="com.ziksana.domain.course.WorkflowParticipant"
+		useGeneratedKeys="true" keyProperty="participantId" keyColumn="workflowparticipantid">
+		insert into corworkflowparticipant
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="communicatedDate !=null" >
+				communicateddate,
+			</if>
+			<if test="participantType != null">
+				participanttype,
+			</if>
+			<if test="participateMemberRole != null">
+				memberroleid,
+			</if>
+			<if test="courseWorkflow != null">
+				contentreviewworkflowid,
+			</if>
+			<if test="startDate != null">
+				startdate,
+			</if>
+			<if test="endDate != null">
+				enddate,
+			</if>
+		</trim>
+		<trim prefix=" values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="participantType != null">
+				#{participantTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="participateMemberRole != null">
+				#{participateMemberRole.memberRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="courseWorkflow != null">
+				#{courseWorkflow.reviewWorkflowId.storageID,jdbcType=INTEGER},
+			</if>
+			<if test="startDate != null">
+				#{startDate, jdbcType=DATE},
+			</if>
+			<if test="endDate != null">
+				#{startDate, jdbcType=DATE},
+			</if>
+		</trim>
+		<selectKey keyProperty="participantId" resultType="int"
+			order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+
+
+	<!-- <insert id="saveReference" parameterType="com.ziksana.domain.course.Enrichment" 
+		useGeneratedKeys="true" keyProperty="enrichmentId" keyColumn="enrichmentid"> 
+		insert into corenrichment ( creationdate, active, visibility, overrideat, 
+		learningcontentid, creatormemberroleid) values (sysdate(), #{active,jdbcType=BOOLEAN}, 
+		#{visibilityId,jdbcType=INTEGER}, #{overrideAt,jdbcType=INTEGER}, #{learningContent.learningContentId,jdbcType=INTEGER}, 
+		#{creatorMemberPersona.memberRoleId,jdbcType=INTEGER}) <selectKey keyProperty="enrichmentId" 
+		resultType="int" order="AFTER"> SELECT LAST_INSERT_ID(); </selectKey> </insert> -->
+
+	<!-- <insert id="saveRefenceContent" parameterType="com.ziksana.domain.course.ContentEnrichment" 
+		useGeneratedKeys="true" keyProperty="contentEnrichmentId" keyColumn="contentenrichmentid"> 
+		insert into corcontentenrichment (starttime, endtime, linktype, linkelement, 
+		linkdescription, linkitemcost, linksource, active, isdelete, enrichmentid 
+		) values (#{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+		#{linkTypeId,jdbcType=INTEGER}, #{linkElement,jdbcType=VARCHAR}, #{linkDescription,jdbcType=VARCHAR}, 
+		#{linkItemCost,jdbcType=INTEGER}, #{linkSourceId,jdbcType=INTEGER}, #{active,jdbcType=BOOLEAN}, 
+		#{isDelete,jdbcType=BOOLEAN}, #{enrichment.enrichmentId,jdbcType=INTEGER}) 
+		}) <selectKey keyProperty="contentEnrichmentId" resultType="int" order="AFTER"> 
+		SELECT LAST_INSERT_ID(); </selectKey> </insert> -->
+</mapper>

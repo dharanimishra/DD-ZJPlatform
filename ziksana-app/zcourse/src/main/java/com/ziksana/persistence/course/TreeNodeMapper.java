@@ -1,0 +1,40 @@
+package com.ziksana.persistence.course;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+
+import com.ziksana.domain.course.NestContentNode;
+import com.ziksana.domain.course.NestTreeNode;
+
+public interface TreeNodeMapper {
+
+	@Select({ "select ID as courseid,Name as coursename  from  corcourse where ID=#{courseId,jdbcType=INTEGER} and isdelete=false" })
+	@Results(value = { @Result(property = "courseId", column = "courseid"),
+			@Result(property = "coursename", column = "coursename") })
+	List<NestTreeNode> getCourseComponent(Integer courseId);
+
+	@Select({ "select cclc.CourseId as courseid,c.ID as learningcomponentid, c.Name as modulename,nest.ParentLearningComponentId as ParentLearningComponentId,nest.NestLearningComponentId as NestLearningComponentId  from corcourse course, corcourselearningcomponent cclc, corlearningcomponent c,corlearningcomponentnest nest where cclc.LearningComponentId=c.ID and  cclc.courseid=#{courseId,jdbcType=INTEGER} and c.isdelete=false and course.ID= cclc.courseid and course.IsDelete=false and c.ID=nest.NestLearningComponentId" })
+	@Results(value = {
+			@Result(property = "courseId", column = "courseid"),
+			@Result(property = "id", column = "learningcomponentid"),
+			@Result(property = "title", column = "modulename"),
+			@Result(property = "parentLearningComponentId", column = "ParentLearningComponentId"),
+			@Result(property = "nestLearningComponentId", column = "NestLearningComponentId")
+
+	})
+	List<NestTreeNode> getModuleComponents(Integer courseId);
+
+	@Select({ "select clc.ID AS LearningComponentId, clcc.ID AS LearningComponentContentId,corlearncontent.ID AS contentid,corlearncontent.ContentName AS contentname,corlearncontent.ContentPath AS contentpath,corlearncontent.ContentType AS contenttype from corcourselearningcomponent cclc,corlearningcomponent clc, corlearningcomponentcontent clcc, corlearningcontent corlearncontent  where clcc.LearningContentId = corlearncontent.ID and  clcc.LearningComponentId=clc.ID and cclc.CourseId=#{courseId,jdbcType=INTEGER} and cclc.LearningComponentId=clc.ID and corlearncontent.isdelete=false and clc.isdelete=false" })
+	@Results(value = {
+			@Result(property = "parentLearningComponentId", column = "LearningComponentId"),
+			@Result(property = "id", column = "LearningComponentContentId"),
+			@Result(property = "contentId", column = "contentid"),
+			@Result(property = "contentname", column = "contentname"),
+			@Result(property = "icon", column = "contentpath"),
+			@Result(property = "contentType", column = "contenttype") })
+	List<NestContentNode> getContentComponents(Integer courseId);
+
+}

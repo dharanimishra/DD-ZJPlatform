@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.recommendations.RecommendationMapper">
+
+	<select id="getRecommendations" resultMap="recommendationResultMap"
+		parameterType="map">
+		SELECT * FROM memmemberziksanarecommendation WHERE
+		RecommendationCategory = #{category} and memberRoleId =
+		#{memberRoleId} order by RecommendedDate ASC
+	</select>
+
+
+	<select id="getAllRecommendations" resultMap="recommendationResultMap"
+		parameterType="int">
+			SELECT * ,l.LookupValue as Recommendation
+ 		   FROM memmemberziksanarecommendation n
+ 
+			join utllookupvalue l ON
+		    n.RecommendationCategory=l.LookupValueId 
+		   join utllookup v ON
+		  l.LookupId=v.LookupId 
+			where memberRoleId =#{memberRoleId} order by n.RecommendedDate ASC
+	</select>
+
+	<select id="getMapperRecommendation" resultMap="recommendationResultMap"
+		parameterType="int">
+
+		SELECT * ,l.LookupValue as Recommendation
+ 		   FROM memmemberziksanarecommendation n
+ 
+			join utllookupvalue l ON
+		    n.RecommendationCategory=l.LookupValueId 
+		   join utllookup v ON
+		  l.LookupId=v.LookupId 
+			where memberRoleId =#{memberRoleId} order by n.RecommendedDate ASC
+	</select>
+
+	<select id="getRecommendationByRecommendationId" resultMap="recommendationResultMap"
+		parameterType="map">
+			SELECT * ,l.LookupValue as Recommendation
+ 		   FROM memmemberziksanarecommendation n
+ 
+			join utllookupvalue l ON
+		    n.RecommendationCategory=l.LookupValueId 
+		   join utllookup v ON
+		  l.LookupId=v.LookupId 
+			where memberRoleId =#{memberRoleId} and ID = #{recommendationId}  order by n.RecommendedDate ASC
+			
+		
+	</select>
+
+
+	<resultMap id="recommendationResultMap"
+		type="com.ziksana.domain.recommendations.Recommendation">
+		<result property="ID" column="ID" />
+		<result property="title" column="Title" />
+		<result property="description" column="Description" />
+		<result property="category" column="RecommendationCategory" />
+		<result property="currentState" column="CurrentState" />
+		<result property="targetState" column="TargetState" />
+		<result property="durationtoBump" column="DurationtoBump" />
+		<result property="active" column="Active" />
+		<result property="creationDate" column="CreationDate" />
+		<result property="memberRoleId" column="MemberRoleId" />
+		<result property="ignoreCount" column="IgnoreCount" />
+	</resultMap>
+
+	<select id="getRecommendationsByCurrentState" resultMap="recommendationResultMap"
+		parameterType="String">
+		SELECT * FROM memmemberziksanarecommendation WHERE
+		currentState = #{currentState} order by
+		RecommendedDate ASC
+	</select>
+
+	<update id="updateRecommendationsCategoryById" parameterType="map">
+		update memmemberziksanarecommendation set RecommendationCategory =
+		#{category}, IgnoreCount = #{ignoreCount}, RecommendedDate = now() where
+		ID = #{recommendationId}
+
+	</update>
+
+	<select id="getAllRecommendationsList" resultMap="recommendationResultMap"
+		parameterType="int">
+		SELECT * ,l.LookupValue as Recommendation
+ 		   FROM memmemberziksanarecommendation n
+ 
+			join utllookupvalue l ON
+		    n.RecommendationCategory=l.LookupValueId 
+		   join utllookup v ON
+		  l.LookupId=v.LookupId 
+			where memberRoleId =#{memberRoleId} order by n.RecommendedDate ASC
+	</select>
+
+
+
+
+
+	<insert id="addToCalendar" parameterType="com.ziksana.domain.recommendations.Recommendation"
+		useGeneratedKeys="true" keyProperty="ID">
+		INSERT INTO
+		memmemberziksanarecommendation
+		(MemziksanaRecommendationId,Title,Description,RecommendationCategory,CurrentState,TargetState,DurationtoBump,Active,CreationDate,MemberRoleId)
+		VALUES
+		(#{ID},#{title},#{description},#{category},#{currentState},#{targetState},#{durationtoBump},#{active},#{creationDate},#{memberRoleId})
+
+	</insert>
+
+	<insert id="addToTodo" parameterType="com.ziksana.domain.recommendations.Recommendation"
+		useGeneratedKeys="true" keyProperty="ID">
+		INSERT INTO
+		memmemberziksanarecommendation
+		(MemziksanaRecommendationId,Title,Description,RecommendationCategory,CurrentState,TargetState,DurationtoBump,Active,CreationDate,MemberRoleId)
+		VALUES
+		(#{ID},#{title},#{description},#{category},#{currentState},#{targetState},#{durationtoBump},#{active},#{creationDate},#{memberRoleId})
+
+	</insert>
+	<insert id="addToIgnore" parameterType="com.ziksana.domain.recommendations.Recommendation"
+		useGeneratedKeys="true" keyProperty="announcementId">
+		INSERT INTO
+		memmemberziksanarecommendation
+		(MemziksanaRecommendationId,Title,Description,RecommendationCategory,CurrentState,TargetState,DurationtoBump,Active,CreationDate,MemberRoleId)
+		VALUES
+		(#{ID},#{title},#{description},#{category},#{currentState},#{targetState},#{durationtoBump},#{active},#{creationDate},#{memberRoleId})
+
+	</insert>
+
+</mapper>

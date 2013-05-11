@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2013-03-26T11:43:50.212">
+<file name="src/main/java/com/ziksana/controller/recommendations/RecommendationsController.java">
+<violation beginline="27" endline="27" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.ziksana.util.MessageUtil'
+</violation>
+<violation beginline="27" endline="27" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.ziksana.util.MessageUtil'
+</violation>
+<violation beginline="41" endline="41" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like recomendationsService
+</violation>
+<violation beginline="41" endline="41" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="44" endline="44" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="54" endline="54" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'category' is not assigned and could be declared final
+</violation>
+<violation beginline="56" endline="56" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'modelAndView' could be declared final
+</violation>
+<violation beginline="59" endline="60" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'recommendations' could be declared final
+</violation>
+<violation beginline="63" endline="63" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'message' could be declared final
+</violation>
+<violation beginline="80" endline="80" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'modelAndView' could be declared final
+</violation>
+<violation beginline="83" endline="84" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'recommendations' could be declared final
+</violation>
+<violation beginline="115" endline="115" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'recommendationId' is not assigned and could be declared final
+</violation>
+<violation beginline="116" endline="116" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'category' is not assigned and could be declared final
+</violation>
+<violation beginline="118" endline="121" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'recommend' (lines '118'-'121').
+</violation>
+<violation beginline="119" endline="130" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'updatedRow' (lines '119'-'130').
+</violation>
+<violation beginline="144" endline="144" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'categoryName' is not assigned and could be declared final
+</violation>
+<violation beginline="145" endline="145" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like notificationContent
+</violation>
+<violation beginline="145" endline="145" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'notificationContent' is not assigned and could be declared final
+</violation>
+<violation beginline="150" endline="187" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'updatedRow' (lines '150'-'187').
+</violation>
+<violation beginline="177" endline="178" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.controller.recommendations" class="RecommendationsController" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'recommend' (lines '177'-'178').
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/recommendations/RecommendationMapper.java">
+<violation beginline="12" endline="12" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.recommendations" class="RecommendationMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.ziksana.domain.todo.Todo'
+</violation>
+<violation beginline="12" endline="12" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.persistence.recommendations" class="RecommendationMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.ziksana.domain.todo.Todo'
+</violation>
+<violation beginline="20" endline="22" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.recommendations" class="RecommendationMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="24" endline="26" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.recommendations" class="RecommendationMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="28" endline="29" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.recommendations" class="RecommendationMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="31" endline="31" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.recommendations" class="RecommendationMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="33" endline="34" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.persistence.recommendations" class="RecommendationMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/recommendations/RecommendationsService.java">
+<violation beginline="9" endline="9" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.recommendations" class="RecommendationsService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="11" endline="11" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.recommendations" class="RecommendationsService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="13" endline="14" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.recommendations" class="RecommendationsService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="16" endline="17" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.recommendations" class="RecommendationsService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="19" endline="19" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.recommendations" class="RecommendationsService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/recommendations/impl/RecommendationsServiceImpl.java">
+<violation beginline="28" endline="28" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like recommendationMapper
+</violation>
+<violation beginline="28" endline="28" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="37" endline="37" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'category' is not assigned and could be declared final
+</violation>
+<violation beginline="39" endline="45" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'recomendationList' (lines '39'-'45').
+</violation>
+<violation beginline="40" endline="40" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;Class :&quot; appears 20 times in this file; the first occurrence is on line 40
+</violation>
+<violation beginline="43" endline="44" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberRoleId' could be declared final
+</violation>
+<violation beginline="47" endline="47" begincolumn="0" endcolumn="0" rule="AvoidDuplicateLiterals" ruleset="String and StringBuffer Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/strings.html#AvoidDuplicateLiterals" priority="3">
+The String literal &quot;Recommendation Size&quot; appears 4 times in this file; the first occurrence is on line 47
+</violation>
+<violation beginline="58" endline="58" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'recommendation' is not assigned and could be declared final
+</violation>
+<violation beginline="86" endline="86" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'recommendation' is not assigned and could be declared final
+</violation>
+<violation beginline="114" endline="114" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'recommendation' is not assigned and could be declared final
+</violation>
+<violation beginline="136" endline="136" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'currentState' is not assigned and could be declared final
+</violation>
+<violation beginline="137" endline="142" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'recomendationList' (lines '137'-'142').
+</violation>
+<violation beginline="154" endline="159" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'recomendationList' (lines '154'-'159').
+</violation>
+<violation beginline="157" endline="158" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberRoleId' could be declared final
+</violation>
+<violation beginline="170" endline="176" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'recomendationList' (lines '170'-'176').
+</violation>
+<violation beginline="174" endline="175" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberRoleId' could be declared final
+</violation>
+<violation beginline="192" endline="192" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'offset' could be declared final
+</violation>
+<violation beginline="193" endline="193" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.recommendations.impl" class="RecommendationsServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'limit' could be declared final
+</violation>
+</file>
+<file name="src/test/java/com/ziksana/test/RecommendationTest.java">
+<violation beginline="5" endline="5" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.junit.Assert.assertNotSame'
+</violation>
+<violation beginline="5" endline="5" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.junit.Assert.assertNotSame'
+</violation>
+<violation beginline="6" endline="6" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.junit.Assert.assertNull'
+</violation>
+<violation beginline="6" endline="6" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.junit.Assert.assertNull'
+</violation>
+<violation beginline="36" endline="37" begincolumn="0" endcolumn="0" rule="VariableNamingConventions" ruleset="Naming Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be in all caps.
+</violation>
+<violation beginline="38" endline="39" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="39" endline="39" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like recommendationService
+</violation>
+<violation beginline="39" endline="39" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="42" endline="44" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="47" endline="49" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="56" endline="56" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'recomend' could be declared final
+</violation>
+<violation beginline="68" endline="68" begincolumn="0" endcolumn="0" rule="JUnitAssertionsShouldIncludeMessage" ruleset="JUnit Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitAssertionsShouldIncludeMessage" priority="3">
+JUnit assertions should include a message
+</violation>
+<violation beginline="78" endline="92" begincolumn="0" endcolumn="0" rule="JUnit4TestShouldUseTestAnnotation" ruleset="Migration Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/migrating.html#JUnit4TestShouldUseTestAnnotation" priority="3">
+JUnit 4 tests that execute tests should use the @Test annotation
+</violation>
+<violation beginline="80" endline="80" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like recommendationList
+</violation>
+<violation beginline="80" endline="82" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'recommendationList' (lines '80'-'82').
+</violation>
+<violation beginline="98" endline="111" begincolumn="0" endcolumn="0" rule="JUnit4TestShouldUseTestAnnotation" ruleset="Migration Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/migrating.html#JUnit4TestShouldUseTestAnnotation" priority="3">
+JUnit 4 tests that execute tests should use the @Test annotation
+</violation>
+<violation beginline="100" endline="100" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like recommendationList
+</violation>
+<violation beginline="100" endline="102" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'recommendationList' (lines '100'-'102').
+</violation>
+<violation beginline="103" endline="103" begincolumn="0" endcolumn="0" rule="JUnitAssertionsShouldIncludeMessage" ruleset="JUnit Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitAssertionsShouldIncludeMessage" priority="3">
+JUnit assertions should include a message
+</violation>
+<violation beginline="117" endline="133" begincolumn="0" endcolumn="0" rule="JUnit4TestShouldUseTestAnnotation" ruleset="Migration Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/migrating.html#JUnit4TestShouldUseTestAnnotation" priority="3">
+JUnit 4 tests that execute tests should use the @Test annotation
+</violation>
+<violation beginline="119" endline="119" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like recommendationList
+</violation>
+<violation beginline="119" endline="124" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'recommendationList' (lines '119'-'124').
+</violation>
+<violation beginline="121" endline="121" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'currentStatus' could be declared final
+</violation>
+<violation beginline="141" endline="153" begincolumn="0" endcolumn="0" rule="JUnit4TestShouldUseTestAnnotation" ruleset="Migration Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/migrating.html#JUnit4TestShouldUseTestAnnotation" priority="3">
+JUnit 4 tests that execute tests should use the @Test annotation
+</violation>
+<violation beginline="143" endline="143" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'actual'.
+</violation>
+<violation beginline="143" endline="153" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'actual' (lines '143'-'153').
+</violation>
+<violation beginline="143" endline="144" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'actual' could be declared final
+</violation>
+<violation beginline="146" endline="146" begincolumn="0" endcolumn="0" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'expected'.
+</violation>
+<violation beginline="146" endline="153" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'expected' (lines '146'-'153').
+</violation>
+<violation beginline="146" endline="147" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'expected' could be declared final
+</violation>
+<violation beginline="163" endline="163" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="163" endline="166" begincolumn="0" endcolumn="0" rule="JUnitTestsShouldIncludeAssert" ruleset="JUnit Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitTestsShouldIncludeAssert" priority="3">
+JUnit tests should include assert() or fail()
+</violation>
+<violation beginline="174" endline="183" begincolumn="0" endcolumn="0" rule="JUnit4TestShouldUseTestAnnotation" ruleset="Migration Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/migrating.html#JUnit4TestShouldUseTestAnnotation" priority="3">
+JUnit 4 tests that execute tests should use the @Test annotation
+</violation>
+<violation beginline="175" endline="175" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.test" class="RecommendationTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+</file>
+</pmd>

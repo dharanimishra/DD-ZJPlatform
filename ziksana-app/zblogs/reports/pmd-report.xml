@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2013-03-26T11:41:46.812">
+<file name="src/main/java/com/ziksana/controller/blogs/BlogController.java">
+<violation beginline="17" endline="17" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.controller.blogs" class="BlogController" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="23" endline="23" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.controller.blogs" class="BlogController" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'mview' could be declared final
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/persistence/blogs/BlogMapper.java">
+<violation beginline="11" endline="11" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.persistence.blogs" class="BlogMapper" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like postingMemberRoleId
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/blogs/BlogService.java">
+<violation beginline="16" endline="16" begincolumn="0" endcolumn="0" rule="UnusedModifier" ruleset="Controversial Rules" package="com.ziksana.service.blogs" class="BlogService" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="src/main/java/com/ziksana/service/blogs/impl/BlogServiceImpl.java">
+<violation beginline="30" endline="30" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="38" endline="44" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DD'-anomaly for variable 'blogList' (lines '38'-'44').
+</violation>
+<violation beginline="40" endline="40" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like postingMemberRoleId
+</violation>
+<violation beginline="40" endline="40" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'postingMemberRoleId' could be declared final
+</violation>
+<violation beginline="41" endline="41" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'offset' could be declared final
+</violation>
+<violation beginline="42" endline="42" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'limit' could be declared final
+</violation>
+<violation beginline="43" endline="43" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'rowBounds' could be declared final
+</violation>
+</file>
+<file name="src/test/java/com/ziksana/service/blogs/impl/BlogServiceImplTest.java">
+<violation beginline="3" endline="3" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.junit.Assert'
+</violation>
+<violation beginline="19" endline="19" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.ziksana.domain.alerts.Alert'
+</violation>
+<violation beginline="19" endline="19" begincolumn="0" endcolumn="0" rule="UnusedImports" ruleset="Type Resolution Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.ziksana.domain.alerts.Alert'
+</violation>
+<violation beginline="35" endline="35" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="40" endline="40" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="40" endline="40" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="40" endline="41" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="44" endline="44" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="44" endline="44" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="44" endline="45" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="48" endline="49" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="52" endline="53" begincolumn="0" endcolumn="0" rule="UncommentedEmptyMethod" ruleset="Design Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyMethod" priority="3">
+Document empty method
+</violation>
+<violation beginline="58" endline="58" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberId' could be declared final
+</violation>
+<violation beginline="59" endline="59" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'memberPersonaId' could be declared final
+</violation>
+<violation beginline="62" endline="62" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'token' could be declared final
+</violation>
+<violation beginline="66" endline="66" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'blogs' could be declared final
+</violation>
+<violation beginline="68" endline="68" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="com.ziksana.service.blogs.impl" class="BlogServiceImplTest" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'blogPost' could be declared final
+</violation>
+</file>
+</pmd>

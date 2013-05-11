@@ -1,0 +1,60 @@
+
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:27	Variables that are final and static should be in all caps.
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:31	Avoid excessively long variable names like personalityService
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:31	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:37	Local variable 'modelAndView' could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:53	Parameter 'questionBankId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:55	Local variable 'modelAndView' could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:72	Local variable 'modelAndView' could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:88	Local variable 'modelAndView' could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:97	Parameter 'memberAnswer' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:98	Parameter 'testQuestionValue' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:99	Parameter 'testQuestionId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:100	Avoid excessively long variable names like questionBankAnswerId
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:100	Parameter 'questionBankAnswerId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:103	Local variable 'question' could be declared final
+src/main/java/com/ziksana/controller/knowmebetter/KnowmeController.java:122	Avoid excessively long variable names like memberPersonalityTestId
+src/main/java/com/ziksana/persistence/knowmebetter/PersonalityTestMapper.java:13	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/knowmebetter/PersonalityTestMapper.java:15	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/knowmebetter/PersonalityTestMapper.java:17	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/knowmebetter/PersonalityTestMapper.java:19	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/knowmebetter/PersonalityTestMapper.java:21	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/knowmebetter/PersonalityTestService.java:18	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/knowmebetter/PersonalityTestService.java:20	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/knowmebetter/PersonalityTestService.java:22	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/knowmebetter/PersonalityTestService.java:24	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/knowmebetter/PersonalityTestService.java:26	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:21	Use explicit scoping instead of the default package private level
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:22	Avoid excessively long variable names like personalityTestMapper
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:22	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:26	Found 'DD'-anomaly for variable 'questionList' (lines '26'-'29').
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:27	Local variable 'memberRoleId' could be declared final
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:38	Parameter 'question' is not assigned and could be declared final
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:38	Parameter 'userChoice' is not assigned and could be declared final
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:39	Local variable 'memberRoleId' could be declared final
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:49	Found 'DD'-anomaly for variable 'questionResponse' (lines '49'-'52').
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:51	Local variable 'memberRoleId' could be declared final
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:61	Parameter 'question' is not assigned and could be declared final
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:61	Parameter 'userChoice' is not assigned and could be declared final
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:71	Parameter 'questionBankId' is not assigned and could be declared final
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:72	Found 'DD'-anomaly for variable 'questionList' (lines '72'-'75').
+src/main/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImpl.java:73	Local variable 'memberRoleId' could be declared final
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:3	Avoid unused imports such as 'org.junit.Assert'
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:34	Avoid excessively long variable names like personalityTestService
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:34	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:37	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:37	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:37	Document empty method
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:41	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:41	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:41	Document empty method
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:46	Local variable 'memberId' could be declared final
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:47	Local variable 'memberPersonaId' could be declared final
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:49	Local variable 'token' could be declared final
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:55	Document empty method
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:58	JUnit 4 tests that execute tests should use the @Test annotation
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:60	Local variable 'memberId' could be declared final
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:61	Local variable 'memberPersonaId' could be declared final
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:73	JUnit 4 tests that execute tests should use the @Test annotation
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:86	JUnit tests should include assert() or fail()
+src/test/java/com/ziksana/service/knowmebetter/impl/PersonalityTestServiceImplTest.java:95	JUnit 4 tests that execute tests should use the @Test annotation

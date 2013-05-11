@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.polls.PollQuestionResponseMapper">
+
+	<select id="getPollResultByQuestion" resultMap="pollResultMap"
+		parameterType="map">
+
+		select DISTINCT utlzpollquestionresponse.*
+		FROM utlzpollquestionresponse,
+		utlzpolltracker
+		WHERE
+		utlzpollquestionresponse.pollQuestionId=utlzpolltracker.pollQuestionId
+		and
+		utlzpolltracker.pollQuestionId=#{pollQuestionId} and
+		utlzpolltracker.answeringMemberRoleId=#{answeringMemberRoleId}
+
+
+
+
+	</select>
+	
+	<select id="getPollQuestionById" resultMap="pollQuestionMap"
+		parameterType="int">
+
+		
+		select * from utlzpollquestion where id=#{pollQuestionId} 
+
+
+
+	</select>
+	
+	
+
+
+
+
+
+
+	<resultMap id="pollResultMap" type="com.ziksana.domain.polls.PollQuestionResult">
+		
+		<result property="answer1Count" column="Answer1Count" />
+		<result property="answer2Count" column="Answer2Count" />
+		<result property="answer3Count" column="Answer3Count" />
+		<result property="answer4Count" column="Answer4Count" />
+		<result property="answer5Count" column="Answer5Count" />
+		
+		
+		<association property="question" javaType="com.ziksana.domain.polls.PollQuestion">
+			
+			<result property="ID" column="pollQuestionId" />
+			
+		</association>
+		
+		
+		
+		
+	</resultMap>
+	
+	
+	<resultMap id="pollQuestionMap" type="com.ziksana.persistence.polls.PollQuestionEntity">
+	    <result property="ID" column="ID" /> 
+	    <result property="questionText" column="questionText" /> 
+	    <result property="answer1" column="Answer1" />
+		<result property="answer2" column="Answer2" />
+		<result property="answer3" column="Answer3" />
+		<result property="answer4" column="Answer4" />
+		<result property="answer5" column="Answer5" />
+		<result property="percentage1" column="percentage1" />
+		<result property="percentage2" column="percentage2" />
+		<result property="percentage3" column="percentage3" />
+		<result property="percentage4" column="percentage4" />
+		<result property="percentage5" column="percentage5" />
+	       
+	</resultMap>
+	
+	
+	
+	
+</mapper>

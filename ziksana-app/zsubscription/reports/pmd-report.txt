@@ -1,0 +1,199 @@
+
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:36	The class 'SubscriptionController' has a Cyclomatic Complexity of 4 (Highest = 17).
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:36	This class has too many methods, consider refactoring it.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:42	Avoid excessively long variable names like subscriptionService
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:42	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:45	Avoid excessively long variable names like subscriptionContentService
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:45	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:48	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:50	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:50	Use explicit scoping instead of the default package private level
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:55	Parameter 'courseId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:55	The String literal "courseId" appears 13 times in this file; the first occurrence is on line 55
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:56	Parameter 'nodeId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:56	The String literal "nodeId" appears 11 times in this file; the first occurrence is on line 56
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:58	Found 'DD'-anomaly for variable 'parsedContentId' (lines '58'-'68').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:59	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '59'-'69').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:59	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '59'-'72').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:60	Avoid unused local variables such as 'parsedCourseId'.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:60	Found 'DU'-anomaly for variable 'parsedCourseId' (lines '60'-'85').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:60	Local variable 'parsedCourseId' could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:61	Found 'DD'-anomaly for variable 'notes' (lines '61'-'77').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:64	Avoid unused local variables such as 'node'.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:64	Found 'DU'-anomaly for variable 'node' (lines '64'-'85').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:64	Local variable 'node' could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:65	Local variable 'parsedNodeType' could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:67	Position literals first in String comparisons
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:67	The String literal "LCONTENT" appears 5 times in this file; the first occurrence is on line 67
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:71	Position literals first in String comparisons
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:71	The String literal "LCOMPONENT" appears 5 times in this file; the first occurrence is on line 71
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:74	Avoid empty if statements
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:74	Position literals first in String comparisons
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:74	The String literal "COURSE" appears 5 times in this file; the first occurrence is on line 74
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:90	Parameter 'courseId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:91	Parameter 'nodeId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:93	Found 'DD'-anomaly for variable 'parsedContentId' (lines '93'-'103').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:94	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '94'-'104').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:94	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '94'-'107').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:95	Avoid unused local variables such as 'parsedCourseId'.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:95	Found 'DU'-anomaly for variable 'parsedCourseId' (lines '95'-'120').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:95	Local variable 'parsedCourseId' could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:96	Found 'DD'-anomaly for variable 'notes' (lines '96'-'112').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:99	Avoid unused local variables such as 'node'.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:99	Found 'DU'-anomaly for variable 'node' (lines '99'-'120').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:99	Local variable 'node' could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:102	Position literals first in String comparisons
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:106	Position literals first in String comparisons
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:109	Avoid empty if statements
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:125	Parameter 'courseId' is not assigned and could be declared final
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:130	Found 'DD'-anomaly for variable 'educatorNotes' (lines '130'-'142').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:134	Avoid excessively long variable names like parsedParentNodeId
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:160	Found 'DD'-anomaly for variable 'educatorNotes' (lines '160'-'171').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:164	Avoid excessively long variable names like parsedParentNodeId
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:188	Found 'DD'-anomaly for variable 'references' (lines '188'-'199').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:192	Avoid excessively long variable names like parsedParentNodeId
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:215	Found 'DD'-anomaly for variable 'educatorContents' (lines '215'-'227').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:244	Found 'DD'-anomaly for variable 'contentReferences' (lines '244'-'256').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:273	Found 'DD'-anomaly for variable 'hotspots' (lines '273'-'287').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:303	Found 'DD'-anomaly for variable 'parsedContentId' (lines '303'-'313').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:304	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '304'-'314').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:304	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '304'-'317').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:305	Avoid unused local variables such as 'parsedCourseId'.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:305	Found 'DU'-anomaly for variable 'parsedCourseId' (lines '305'-'333').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:307	Found 'DD'-anomaly for variable 'key' (lines '307'-'323').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:309	Found 'DU'-anomaly for variable 'node' (lines '309'-'333').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:319	Avoid empty if statements
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:344	Found 'DD'-anomaly for variable 'parsedContentId' (lines '344'-'354').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:345	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '345'-'355').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:345	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '345'-'358').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:346	Found 'DU'-anomaly for variable 'parsedCourseId' (lines '346'-'374').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:348	Found 'DD'-anomaly for variable 'key' (lines '348'-'364').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:350	Found 'DU'-anomaly for variable 'node' (lines '350'-'374').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:360	Avoid empty if statements
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:381	Found 'DD'-anomaly for variable 'returnVal' (lines '381'-'383').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:400	Found 'DD'-anomaly for variable 'returnVal' (lines '400'-'402').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:429	Found 'DD'-anomaly for variable 'parsedContentId' (lines '429'-'439').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:430	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '430'-'440').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:430	Found 'DD'-anomaly for variable 'parsedComponentId' (lines '430'-'443').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:431	Found 'DU'-anomaly for variable 'parsedCourseId' (lines '431'-'466').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:432	Found 'DD'-anomaly for variable 'key' (lines '432'-'449').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:435	Found 'DU'-anomaly for variable 'node' (lines '435'-'466').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:445	Avoid empty if statements
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:470	Avoid really long methods.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:470	The method 'deleteEducatoContent' has a Cyclomatic Complexity of 17.
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:473	Found 'DD'-anomaly for variable 'enrichId' (lines '473'-'481').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:473	Found 'DD'-anomaly for variable 'linkType' (lines '473'-'486').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:473	Found 'DD'-anomaly for variable 'resp' (lines '473'-'545').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:491	Found 'DU'-anomaly for variable 'educatorContent' (lines '491'-'655').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:668	Found 'DD'-anomaly for variable 'returnVal' (lines '668'-'670').
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:686	Avoid variables with short names like mv
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:705	Method names should not contain underscores
+src/main/java/com/ziksana/controller/subscription/SubscriptionController.java:708	Avoid variables with short names like mv
+src/main/java/com/ziksana/persistence/subscription/SubscriptionContentMapper.java:14	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:26	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:27	The String literal "memberRoleId" appears 10 times in this file; the first occurrence is on line 27
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:28	The String literal "subscrCourseId" appears 7 times in this file; the first occurrence is on line 28
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:29	The String literal "learnCompId" appears 7 times in this file; the first occurrence is on line 29
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:30	The String literal "learnCmpContId" appears 7 times in this file; the first occurrence is on line 30
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:33	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:34	The String literal "contentType" appears 4 times in this file; the first occurrence is on line 34
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:42	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:48	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:55	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:96	Avoid really long parameter lists.
+src/main/java/com/ziksana/persistence/subscription/SubscriptionMapper.java:116	Avoid excessively long variable names like eduContentEnrichId
+src/main/java/com/ziksana/service/subscription/SubscriptionContentService.java:14	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/subscription/SubscriptionService.java:36	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/subscription/SubscriptionService.java:39	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/subscription/SubscriptionService.java:41	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/subscription/SubscriptionService.java:44	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/subscription/SubscriptionService.java:47	Avoid modifiers which are implied by the context
+src/main/java/com/ziksana/service/subscription/SubscriptionService.java:51	Avoid really long parameter lists.
+src/main/java/com/ziksana/service/subscription/SubscriptionService.java:122	Avoid excessively long variable names like eduContentEnrichId
+src/main/java/com/ziksana/service/subscription/SubscriptionService.java:125	Avoid excessively long variable names like eduContentEnrichId
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionContentServiceImpl.java:14	Use explicit scoping instead of the default package private level
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionContentServiceImpl.java:15	Avoid excessively long variable names like subscriptionContentMapper
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionContentServiceImpl.java:15	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionContentServiceImpl.java:18	Parameter 'contentId' is not assigned and could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:33	Use explicit scoping instead of the default package private level
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:34	Avoid excessively long variable names like subscriptionMapper
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:34	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:37	Parameter 'componentId' is not assigned and could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:37	Parameter 'courseId' is not assigned and could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:38	Parameter 'contentId' is not assigned and could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:38	Parameter 'type' is not assigned and could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:40	Local variable 'memberRoleId' could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:43	Avoid unused local variables such as 'learnCmpId'.
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:43	Found 'DU'-anomaly for variable 'learnCmpId' (lines '43'-'49').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:43	Local variable 'learnCmpId' could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:44	Avoid unused local variables such as 'learnCmpCntId'.
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:44	Found 'DU'-anomaly for variable 'learnCmpCntId' (lines '44'-'49').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:44	Local variable 'learnCmpCntId' could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:52	Parameter 'course' is not assigned and could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:56	Local variable 'memberRoleId' could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:59	Found 'DD'-anomaly for variable 'learnCompId' (lines '59'-'63').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:60	Found 'DD'-anomaly for variable 'learnCompCntId' (lines '60'-'65').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:68	Found 'DD'-anomaly for variable 'courseId' (lines '68'-'71').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:100	Local variable 'memberRoleId' could be declared final
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:126	Avoid unused local variables such as 'learnCompId'.
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:126	Found 'DD'-anomaly for variable 'learnCompId' (lines '126'-'131').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:126	Found 'DU'-anomaly for variable 'learnCompId' (lines '126'-'142').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:127	Avoid unused local variables such as 'learnCmpCntId'.
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:127	Found 'DD'-anomaly for variable 'learnCmpCntId' (lines '127'-'133').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:127	Found 'DU'-anomaly for variable 'learnCmpCntId' (lines '127'-'142').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:131	Found 'DU'-anomaly for variable 'learnCompId' (lines '131'-'142').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:133	Found 'DU'-anomaly for variable 'learnCmpCntId' (lines '133'-'142').
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:240	Avoid really long parameter lists.
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:248	System.out.print is used
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:314	Avoid excessively long variable names like eduContentEnrichId
+src/main/java/com/ziksana/service/subscription/impl/SubscriptionServiceImpl.java:323	Avoid excessively long variable names like educatorContentList
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:44	Use explicit scoping instead of the default package private level
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:45	Avoid excessively long variable names like subscriptionService
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:45	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:48	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:48	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:48	Document empty method
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:52	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:52	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:52	Document empty method
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:58	Local variable 'memberId' could be declared final
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:59	Local variable 'memberPersonaId' could be declared final
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:60	Local variable 'token' could be declared final
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:66	Document empty method
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:74	Local variable 'notes' could be declared final
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplDbunitTest.java:75	JUnit assertions should include a message
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:36	This class has too many methods, consider refactoring it.
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:38	Use explicit scoping instead of the default package private level
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:39	Avoid excessively long variable names like subscriptionService
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:39	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:42	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:42	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:42	Document empty method
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:46	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:46	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:46	Document empty method
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:52	Local variable 'memberId' could be declared final
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:53	Local variable 'memberPersonaId' could be declared final
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:54	Local variable 'token' could be declared final
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:60	Document empty method
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:67	Local variable 'course' could be declared final
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:69	Local variable 'node' could be declared final
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:77	JUnit assertions should include a message
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:96	JUnit assertions should include a message
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:98	JUnit assertions should include a message
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:98	Substitute calls to size() == 0 (or size() != 0) with calls to isEmpty()
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:98	Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:118	JUnit assertions should include a message
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:120	JUnit assertions should include a message
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:120	Substitute calls to size() == 0 (or size() != 0) with calls to isEmpty()
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:120	Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:126	JUnit tests should include assert() or fail()
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:127	Avoid unused local variables such as 'noteText'.
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:127	Found 'DU'-anomaly for variable 'noteText' (lines '127'-'139').
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:146	Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:154	Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:162	Use assertSame(x, y) instead of assertTrue(x==y), or assertNotSame(x,y) vs assertFalse(x==y)
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:166	JUnit tests should include assert() or fail()
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:207	Substitute calls to size() == 0 (or size() != 0) with calls to isEmpty()
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:224	Avoid excessively long variable names like linkedLearningContent
+src/test/java/com/ziksana/service/subscription/impl/SubscriptionServiceImplTest.java:226	System.out.print is used

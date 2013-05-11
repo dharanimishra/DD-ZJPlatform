@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en-us" dir="ltr">
+  <head>
+  <meta charset="utf-8">
+
+    <title>search form</title>
+    
+    <link href="../css/uni-form.css" media="screen" rel="stylesheet"/>
+    <link href="./css/demo.css" media="screen" rel="stylesheet"/>
+    <link href="../css/default.uni-form.css" id="formStyle" title="Default Style" media="screen" rel="stylesheet"/>
+
+    <!--[if lte ie 7]>
+      <style type="text/css" media="screen">
+        /* Move these to your IE6/7 specific stylesheet if possible */
+        .uniForm, .uniForm fieldset, .uniForm .ctrlHolder, .uniForm .formHint, .uniForm .buttonHolder, .uniForm .ctrlHolder ul{ zoom:1; }
+      </style>
+    <![endif]-->
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/outerpages/question.js"></script>
+    <script type="text/javascript" src="../js/uni-form.jquery.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        
+        // init Uni-Form
+        $('form.uniForm').uniform();
+        
+        // specific for this page
+        $(".browse a").click(function(e) {
+          e.preventDefault();
+          $("#formStyle").attr("href",$(this).attr('rel'));
+          return false;
+        });
+      });
+    </script>
+
+  </head>
+
+  <body>
+
+    <h1>&nbsp;</h1>
+    
+    <p class="intro">&nbsp;</p>
+    
+    <form action="#" class="uniForm">
+      
+      
+   
+              
+        <div class="ctrlHolder">
+        <select id="people" name="people" style="width: 250px;" > 
+            <option value="People" selected="selected">
+            People
+            </option>
+            <option value="sundip" >
+            sundip
+            </option>
+            <option value="kay" >
+            kay
+            </option>
+            </select> 
+            
+          <div class="searchpanel">
+       	   	  		  <form name="form1" method="post" action="">
+       	   	  		      <input type="text" name="search" id="search" placeholder="Search..." title="Search..." autosave="unique" class="two-left-rounded-box two-right-rounded-box">
+   	   	  		       
+       	   	  		  </form>
+            <span id="error_search" style="background-color: #CCF; color: red; width: 100px;">*Required</span>      
+         <br/>
+         
+             <input type="button" id="btn_top_search" name="btn_top_search" value="Search" style="margin-top: -6px;"/>
+            <input type="button" id="btn_advance" name="btn_advance" value="Advanced"  style="margin-top: -6px;"/>
+        </div>
+        
+      
+              <div class="ctrlHolder">
+         <!--  <textarea name="" id="" rows="25" cols="25"></textarea>-->
+           <div id="advance_search_form" >
+        	 <input id="q_name" name="q_name" type="text" value="Specify question name" class='highlights' maxlength="100" onFocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+             <span id="error_search2" style="background-color: #CCF; color: red; width: 100px;">*Required</span>
+             <br/><br/>
+             <select id="byarea" name="byarea" style="width:250px"  > 
+              <option value="Filter by area" selected="selected">
+            Filter by area
+            </option>
+            <option value="IT">
+            IT
+            </option>
+            <option value="Electric" >
+            Electric
+            </option>
+            <option value="Web" >
+            Web
+            </option>
+            </select>
+            &nbsp;
+             <select id="bysubject" name="bysubject" style="width: 250px;" > 
+              <option value="Filter by subject" selected="selected">
+            Filter by subject
+            </option>
+            <option value="IT">
+            IT
+            </option>
+            <option value="Electric" >
+            Electric
+            </option>
+            <option value="Web" >
+            Web
+            </option>
+            </select>
+             &nbsp;
+             <select id="bytopic" name="bytopic" style="width: 250px;" > 
+              <option value="Filter by topic" selected="selected">
+            Filter by topic
+            </option>
+            <option value="IT">
+            IT
+            </option>
+            <option value="Electric" >
+            Electric
+            </option>
+            <option value="Web" >
+            Web
+            </option>
+            </select>
+            <br/><br/>
+             <input id="q_tags" name="q_tags" type="text" value="Search by tags" maxlength="100" class='highlights' onFocus="this.value = ( this.value == this.defaultValue ) ? '' : this.value;return true;" /> 
+              <span id="error_search3" style="background-color: #CCF; color: red; width: 100px;">*Required</span>
+             <br/><br/>
+             <input type="button" id="btn_exit" name="btn_exit" value="Exit"/>&nbsp;
+             <input type="button" id="btn_search" name="btn_search" value="Search"/>
+             </form>
+             </div>
+        </div>    
+     </form>
+  </body>
+</html>
