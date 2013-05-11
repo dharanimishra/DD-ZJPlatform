@@ -16,7 +16,7 @@
 	
 	
 	<update id="updateMemberProfile" parameterType="com.ziksana.domain.member.MemberProfile">
-	update memmemberProfile
+	update memmemberprofile
 		<set>
 			<if test="memberAnswer != null">
 				memberAnswer=#{memberAnswer},

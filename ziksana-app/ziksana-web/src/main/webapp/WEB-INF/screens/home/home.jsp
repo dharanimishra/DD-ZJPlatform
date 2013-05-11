@@ -3,7 +3,7 @@
 <div class="Zikbreadcrumb f-l">
 
 <div class="fifteen columns" id="page-title">
-        <a style="margin-top:-3px;" class="back" href="#"></a>
+
  <p class="page-title">
             <span style="font-size:13px; color:#6bbde8;">Home</span></p>
 
@@ -29,9 +29,12 @@
 
 
   <div class="tile bg-color-blue" style="width:270px;">
- 
+ <c:if test="${empty member.picturePath}">
  <p><img src="<c:out value="/ziksana-web${member.picturePath}"/> " align="left" style="margin-top: 15px; margin-left: 5px; height:100px; margin-right:10px;" class="img-polaroid"/></p>
- 
+ </c:if>
+ <c:if test="${not empty ms.url && not empty member.picturePath}">
+ <p><img src="${ms.url}<c:out value="${member.picturePath}"/>" align="left" style="margin-top: 15px; margin-left: 5px; height:100px; margin-right:10px;" class="img-polaroid"/></p>
+ </c:if>
  <p  class="profiletilename pull-left" style="font-size: 20px; width:120px;
 margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.lastName}"/></p>
 <p> <c:out value="${member.designation}"/> </p>
