@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page session="true"%>
 <div class="page">
 <div class="nav-bar bg-color-blueDark">

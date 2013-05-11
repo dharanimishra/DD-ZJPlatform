@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <script type="text/javascript" src="${staticFileServer}resources/js/tree/jquery-1.8.0.min.js"></script>
 <link href="${staticFileServer}resources/css/styles.css" rel="stylesheet" type="text/css">
 	<link href="${staticFileServer}resources/css/type-setting.css" rel="stylesheet" type="text/css">

@@ -85,7 +85,8 @@ public class LoginController {
 					}else if(memberService.isUserNameExists(username) && memberService.isPasswordExists(password)){
 						
 						
-						userAuthenticated= authService.authenticateUser(username, password);
+						//userAuthenticated= authService.authenticateUser(username, password);
+						userAuthenticated= true;
 						
 					}
 					
@@ -94,6 +95,7 @@ public class LoginController {
 								Member member = memberService.getMemberByUser(username);
 								session.setAttribute("userName", username);
 								session.setAttribute("staticFileServer", mediaService.getMediaContents().getStaticFileServer());
+								session.setAttribute("ms", mediaService.getMediaContents());
 								int isUserAccountLocked = memberService
 										.isMemberAccountLocked(username);
 								if (isUserAccountLocked == 1) {

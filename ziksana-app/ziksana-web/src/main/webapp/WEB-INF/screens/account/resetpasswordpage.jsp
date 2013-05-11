@@ -511,7 +511,7 @@ function checkpass()
 		}
 		
 		else if ($('#password').val()!=$('#retypePassword').val()){
-			$('#result1').html("Confirm Password must be equal to new Password");
+			$('#result1').html("Passwords do not match");
 			
 		}else{
 			newPassword = $('#password').val();

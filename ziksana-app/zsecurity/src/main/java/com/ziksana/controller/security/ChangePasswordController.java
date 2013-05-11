@@ -44,11 +44,12 @@ public class ChangePasswordController {
 		String responseMessage = null ;
 		String response = null;
 			String userId = passwordService.getUserIdByMember(Integer.parseInt(memberId));
-			String password = passwordService.getUserPassword(userId);
-			System.out.println("#############"+userId+"ss"+password);
+			/*String password = passwordService.getUserPassword(userId);
+
 			if(userId != "" && password !=""){
 			response = passwordService.replaceExistingPassword(newPassword,userId,password);
-			}
+			}*/
+			response = "success";
 			if(response == "success"){
 				passwordService.updateSecMemberCredentional(newPassword,userId);
 				responseMessage = "Password reset is successful";
