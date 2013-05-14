@@ -37,17 +37,22 @@
 		<put-attribute name="page_footer"
 			value="/WEB-INF/screens/includes/footer.jsp" />
 	</definition>
-	
-	
+
+
 	<!--Ziksana Home Page Template -->
 	<definition name="ziksana-home-master" template="/WEB-INF/screens/layout/home-layout.jsp">
 		<put-attribute name="master_title" value="Ziksana!" />
-		<put-attribute name="common_css" value="/WEB-INF/screens/includes/common_css.jsp" />
-		<put-attribute name="common_js" value="/WEB-INF/screens/includes/common_js.jsp" />
-		<put-attribute name="header" value="/WEB-INF/screens/includes/home_header.jsp" />
-		<put-attribute name="menu" value="/WEB-INF/screens/includes/coursenav.jsp" />
+		<put-attribute name="common_css"
+			value="/WEB-INF/screens/includes/common_css.jsp" />
+		<put-attribute name="common_js"
+			value="/WEB-INF/screens/includes/common_js.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/screens/includes/home_header.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/screens/includes/coursenav.jsp" />
 		<put-attribute name="content" value="" />
-		<put-attribute name="page_footer" value="/WEB-INF/screens/includes/page_footer.jsp" />
+		<put-attribute name="page_footer"
+			value="/WEB-INF/screens/includes/page_footer.jsp" />
 	</definition>
 
 	<!--Ziksana course Template -->
@@ -86,13 +91,14 @@
 
 	</definition>
 
- <!--Reset Password Page-->
+	<!--Reset Password Page -->
 	<definition name="masterresetpassword" extends="ziksana-master">
 		<put-attribute name="master_title" value="Reset Password" />
-		<put-attribute name="content" value="/WEB-INF/screens/account/resetpasswordpage.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/account/resetpasswordpage.jsp" />
 
 	</definition>
-	
+
 	<!-- Metro Course Creation -->
 	<definition name="mastercreatecourse" extends="course-ziksana-master">
 		<put-attribute name="master_title" value="Course Creation" />
@@ -116,14 +122,33 @@
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/coursecreation.jsp" />
 	</definition>
-	
-	
-	
-	
-	
-	
-	
-	
+
+	<!-- Metro Create Content -->
+	<definition name="mastercreatecontent" extends="ziksana-home-master">
+		<put-attribute name="master_title" value="Create Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/createcontent.jsp" />
+	</definition>
+
+
+	<!-- Metro Edit Content -->
+	<definition name="mastereditcontent" extends="ziksana-home-master">
+		<put-attribute name="master_title" value="Edit Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/editcontent.jsp" />
+	</definition>
+
+
+	<!-- Metro Weblink Content -->
+	<definition name="masterweblinkcontent" extends="ziksana-home-master">
+		<put-attribute name="master_title" value="Weblink Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/weblinkcontent.jsp" />
+	</definition>
+
+
+
+
 	<!--Common Page layout JQuery 1.7.1 version -->
 	<definition name="commonPageLayout" template="/WEB-INF/pages/layout/div-layout.jsp">
 		<put-attribute name="page_title" value="Ziksana!" />
@@ -183,15 +208,15 @@
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/definecourse.jsp" />
 	</definition>
-	
+
 	<!-- Metro Create Module -->
 	<definition name="createmodule" extends="ziksana-master">
 		<put-attribute name="master_title" value="Course Creation" />
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/coursecreation.jsp" />
 	</definition>
-	
-	
+
+
 	<!-- Metro Associate Content -->
 	<definition name="associatecontent" extends="ziksana-master">
 		<put-attribute name="master_title" value="Course Creation" />
