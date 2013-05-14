@@ -18,7 +18,6 @@ import com.ziksana.service.course.UserContentService;
  * 
  */
 
-@Service
 public class UserContentServiceImpl implements UserContentService {
 
 	private final static Logger LOGGER = LoggerFactory

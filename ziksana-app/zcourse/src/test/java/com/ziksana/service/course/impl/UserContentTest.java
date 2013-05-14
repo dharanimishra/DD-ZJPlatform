@@ -12,9 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
-import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.UserContent;
-import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.UserContentService;
 
 /**
@@ -30,7 +28,7 @@ public class UserContentTest extends BaseTest {
 	public UserContentService contentService;
 
 	@Test
-	public void testgetUserContent() throws Exception {
+	public void getUserContent() throws Exception {
 		System.out
 				.println("inside Test ****************************************");
 
