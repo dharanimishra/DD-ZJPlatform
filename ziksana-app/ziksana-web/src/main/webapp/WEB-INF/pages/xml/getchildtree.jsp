@@ -4,8 +4,6 @@
 <%@page import="com.ziksana.domain.course.NestTreeNode"%>
 <%@page import="com.ziksana.domain.course.NestContentNode"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <?xml version='1.0' ?>
 <tree id="0"> <item text="${coursename}" id="COURSE_${courseIds}"
