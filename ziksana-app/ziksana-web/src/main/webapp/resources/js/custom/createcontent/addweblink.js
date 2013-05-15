@@ -1,7 +1,7 @@
 // JavaScript Document
 $(document).ready(function(e) {
-    var counterodd = 1;
-	var countereven = 2;
+    var counterodd = 2;
+	var countereven = 1;
 	var value = 3;
 	$(".adlink").click(function(e) {
 		if((value%2) == 0)
