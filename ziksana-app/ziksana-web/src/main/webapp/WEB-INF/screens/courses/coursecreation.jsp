@@ -1,5 +1,4 @@
 
-
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/z_message.js"></script>
 <script type="text/javascript"
@@ -21,10 +20,6 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/treedata.js"></script>
 
-<!-- Added JS FILE  -->
-
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/ziksana/coursecreation/define.js"></script> --%>
 <!-- scripts for tree -->
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/tree/gettheme.js"></script>
@@ -46,10 +41,6 @@
 
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/tree/menujq.js"></script>
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/myTree.js"></script> --%>
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/splitter.js"></script> --%>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/tree/jqxexpander.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -98,7 +89,140 @@
 		$('._plainTextShow').css("display", "none");
 		$('#plainText').css("display", "none");
 	} */
+
 	function getArea() {
+
+		var course_id = $('#courseid').val();
+		$
+				.post(
+						'/ziksana-web/zcourse/getsubclassification',
+						{
+							'CourseId' : course_id
+						},
+						function(data) {
+							console.log(data);
+							var subClassificationId = data.subjClassificationId;
+							var subject_area_pre = data.subjectArea;
+							var subject_pre = data.subjectCategory;
+							var topic_pre = data.subjectTopic;
+
+							// Start
+
+							$
+									.get(
+											'/ziksana-web/zcourse/getsubjectarea',
+											{},
+											function(data) {
+												options = data;
+												var option_string = '';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
+
+													if (value == subject_area_pre) {
+														option = '<option selected="selected" value="'
+																+ value
+																+ '">'
+																+ label
+																+ '</option>';
+
+													} else {
+														option = '<option value="'
+																+ value
+																+ '">'
+																+ label
+																+ '</option>';
+
+													}
+
+													option_string += option;
+												}
+												$('#Cmoduleareaddl').html(
+														option_string);
+												console.log("subject area is: "
+														+ subject_area_pre);
+												// setTimeout("$('#Cmoduleareaddl').val('Religion');
+												// alert('hellos');",
+												// 3000);
+											});
+
+							token = '';
+							request_type = 'GET';
+							uri = '/ziksana-web/zcourse/getsubject';
+
+							$
+									.get(
+											uri,
+											{
+												'Course_Area' : subject_area_pre
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												option_string += '<option value="Select Subject">Select Subject</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
+													if (value == subject_pre) {
+														option = '<option selected="selected" value="'
+																+ value
+																+ '">'
+																+ label
+																+ '</option>';
+													} else {
+														option = '<option value="'
+																+ value
+																+ '">'
+																+ label
+																+ '</option>';
+													}
+
+													option_string += option;
+												}
+
+												$('#Cmodulesubjectddl').html(
+														option_string);
+											});
+
+							uri = '/ziksana-web/zcourse/gettopic';
+							token = '';
+							request_type = 'GET';
+							$
+									.get(
+											uri,
+											{
+												'Course_Subject' : subject_pre
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												option_string += '<option value="Select Topic">Select Topic</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
+													if (value == topic_pre) {
+														option = '<option selected="selected" value="'
+																+ value
+																+ '">'
+																+ label
+																+ '</option>';
+													} else {
+														option = '<option value="'
+																+ value
+																+ '">'
+																+ label
+																+ '</option>';
+													}
+													option_string += option;
+												}
+												$('#Cmoduletopicddl').html(
+														option_string);
+
+											});
+
+							// End
+
+						});
 
 		$
 				.get(
@@ -272,7 +396,7 @@
 
 	<div class="clearfix"></div>
 
-	<div >
+	<div>
 
 		<!-- BEGIN FORM-->
 		<div id="splitterContainer">
@@ -305,8 +429,8 @@
 						<!--end of course name-->
 
 						<br /> <label for="Course Description" class="labelclass"
-							style="font-weight: bold;"><b>Course Description :</b></label> 
-							<!-- <a
+							style="font-weight: bold;"><b>Course Description :</b></label>
+						<!-- <a
 							class="f-r _plainText" id="plainText" href="#"
 							style="text-decoration: none;" onclick="showplain()">Rich
 							Text Editor</a> <a class="f-r _richText" id="richText" href="#"
@@ -361,14 +485,14 @@
 
 						</div>
 						<!--end of Subject Selection-->
-						<!--<div class="control-group" style="width: 69%">
-												<label class="control-label nexaf" for="Specify Tags">Specify
-													Tags :</label>
-												<div class="controls">
-													<input id="Ctagfield_e" type="text" class="tags"
-														value="Computer Science, Literature, History" />
-												</div>
-											</div> -->
+						<div class="control-group" style="width: 69%">
+							<label class="control-label nexaf" for="Specify Tags">Specify
+								Tags :</label>
+							<div class="controls">
+								<input id="Ctagfield_e" type="text" class="tags"
+									value="Computer Science, Literature, History" />
+							</div>
+						</div>
 						<button class="btn f-r" type="button" style="margin-right: 10px;">Cancel</button>
 						<button class="btn f-r" type="button"
 							onClick="getaddmodulesave();return false;"
