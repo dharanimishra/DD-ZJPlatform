@@ -496,8 +496,14 @@ body {
 	margin-right: 10px;
 }
 
-.Profilepic {
-	vertical-align: sub;
+.Profilepic
+{
+	font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+color: #6bbde8;
+font-weight: 200;
+font-size: 13pt;
+letter-spacing: 0.01em;
+vertical-align:sub;	
 }
 
 .Dropdown {
@@ -1778,10 +1784,13 @@ a.circle {
 	height: 50px;
 }
 
-#footerbordernav p {
-	margin-left: 210px;
-	width: 700px;
-	padding-top: 13px;
+#footerbordernav p
+{
+/* margin-left: 210px;
+width: 700px; */
+padding-top: 13px;
+width:100%;
+text-align:center;
 }
 
 #comapnyinfo {
@@ -2365,23 +2374,19 @@ a.circle {
 }
 
 #HeaderNav {
-	width: 345px;
+  width: 60%;
 }
-
-#user_menu_container {
-	position: relative;
-}
-
+#user_menu_container {position: relative;}
 #user_menu {
-	display: none;
-	background: none repeat scroll 0 0 #73AB3E;
-	border-radius: 3px 3px 3px 3px;
-	color: white;
-	position: absolute;
-	right: 21px;
-	top: 57px;
-	z-index: 2;
-	width: 150px;
+  display: none;
+  background: none repeat scroll 0 0 #73AB3E;
+  border-radius: 3px 3px 3px 3px;
+  color: white;
+  position: absolute;
+  right: 47px;
+  top: 57px;
+  z-index: 2;
+  width: 150px;
 }
 
 #user_menu_container:hover #user_menu {

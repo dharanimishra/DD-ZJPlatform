@@ -45,11 +45,11 @@
 					   
 					  
 						
-					 <p style="text-align:center; font-size:18px;">Forgot Password?</p>
+					 <p style="text-align:center; font-size:18px;"><fmt:message key="restpass.forgotpass"></fmt:message></p>
 					 
-					  <p class="reghead" style="text-align:center;">We need some information to verify your ID </p>
+					  <p class="reghead" style="text-align:center;"><fmt:message key="restpass.verifytext"></fmt:message> </p>
 					  
-					  <p style="text-align:center;margin-top:10px; color:#999;">This protects your account from unauthorized access</p> 
+					  <p style="text-align:center;margin-top:10px; color:#999;"><fmt:message key="restpass.smalltext"></fmt:message></p> 
 					  <hr style="background-color:#f28920; margin-bottom:20px; width: 550px;
 					margin-left: -0px;">
 					
@@ -62,10 +62,10 @@
 					     	  
 					       
 					      
-					      <label  style="padding-top:-10px;">User-Id</label>
+					      <label  style="padding-top:-10px;"><fmt:message key="restpass.userid"></fmt:message></label>
 					     
-					      <input placeholder="Enter your User-Id" autocomplete="off" type="text" name="frgtuserid" id="frgtuserid" tabindex="2" data-prompt-position="inline"/>
-					       <a  style=" float:right; font-size:14px;" href="/ziksana-web/unsecure/forgotuserid">Forgot your User Id?</a>				     
+					      <input placeholder="<fmt:message key="restpass.Enteruid"></fmt:message>" autocomplete="off" type="text" name="frgtuserid" id="frgtuserid" tabindex="2" data-prompt-position="inline"/>
+					       <a  style=" float:right; font-size:14px;" href="/ziksana-web/unsecure/forgotuserid"><fmt:message key="restpass.forgotuid"></fmt:message></a>				     
 					      
 					 </div><!-- end of separate  -->   
 					    
@@ -77,8 +77,8 @@
 					
 					<div class="btnseperate" style="margin-right:10px;">
 					
-					<a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"> Cancel </a> 	
-					<a onclick="validateUserId()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "> Next </a>
+					<a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"> <fmt:message key="profile.cancel"></fmt:message> </a> 	
+					<a onclick="validateUserId()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "> <fmt:message key="home.next"></fmt:message> </a>
 					
 					  
 					  
@@ -94,9 +94,9 @@
 				  <div class="frmsecques1">
 			
 				
-				<p class="reghead" style="text-align:center;">We can try to verify your identity using your secret questions </p>
+				<p class="reghead" style="text-align:center;"><fmt:message key="restpass.verifyquest"></fmt:message> </p>
 				  
-				  <p style="text-align:center;margin-top:10px; color:#999;">When you set up your <span style="color:#f28920;"> Ziksana! </span> account, you selected and answered two secret questions.Answer both questions correctly to access your account.</p> 
+				  <p style="text-align:center;margin-top:10px; color:#999;"><fmt:message key="restpass.text"></fmt:message></p> 
 				
 				  <hr style="background-color:#f28920; margin-bottom:20px; width: 550px; margin-left: -0px;">
 				
@@ -104,16 +104,16 @@
 				 <div class="separate" style="margin-left:150px;"> 
 				
 				
-				 <label  style="font-weight:bold; padding-top:-10px; margin-left:50px;">Question 1 of 2</label>   
+				 <label  style="font-weight:bold; padding-top:-10px; margin-left:50px;"><fmt:message key="restpass.qust10f2"></fmt:message></label>   
 					        
 				 <p id="securityQuestionOneText" style="margin-top:10px; margin-bottom:7px;">${profile.securityQuestionText}</p>
 				 <label style ="display:none;" id="securityQuestionOneId">${profile.securityQuestionId}</label>
 				 <label style ="display:none;" id="memberIdSQOne">${profile.memberId}</label>
 					  <input type="text" class="validate[required] text-input" autocomplete="off" value="" id="txtsec1" tabindex="1" 
-				      placeholder="Enter your Secret Answer" data-prompt-position="inline"/>
+				      placeholder="<fmt:message key="restpass.enterAns"></fmt:message>" data-prompt-position="inline"/>
 				       
 				<p  id='errorAnswerOneResponse' style="margin-top:5px; color:red;"></p>
-				<p style="margin-top:5px; color:#999; font-size:10px;">Last updated August 18, 2012 </p>
+				<p style="margin-top:5px; color:#999; font-size:10px;"> </p>
 					
 				
 				</div>  <!-- end of sepeate    -->  
@@ -124,8 +124,8 @@
 				 
 				<div class="btnseperate" style="margin-right:80px;">
 				
-				 <a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"> Cancel </a> 	
-					<a onclick="securityQuestionOne()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "> Next </a> 	
+				 <a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"><fmt:message key="profile.cancel"></fmt:message> </a> 	
+					<a onclick="securityQuestionOne()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "><fmt:message key="home.next"></fmt:message></a> 	
 				 <div class="clearfix"> </div>
 				       
 				</div>
@@ -146,9 +146,9 @@
 				  <div class="frmsecques2">
 			
 				
-				<p class="reghead" style="text-align:center;">We can try to verify your identity using your secret questions </p>
+				<p class="reghead" style="text-align:center;"><fmt:message key="restpass.verifyquest"></fmt:message></p>
 				  
-				  <p style="text-align:center;margin-top:10px; color:#999;">When you set up your <span style="color:#f28920;"> Ziksana! </span> account, you selected and answered two secret questions.Answer both questions correctly to access your account.</p> 
+				  <p style="text-align:center;margin-top:10px; color:#999;"><fmt:message key="restpass.text"></fmt:message></p> 
 				
 				  <hr style="background-color:#f28920; margin-bottom:20px; width: 550px; margin-left: -0px;">
 				
@@ -156,16 +156,16 @@
 				 <div class="separate" style="margin-left:150px;"> 
 				
 				
-				 <label  style="font-weight:bold; padding-top:-10px; margin-left:50px;">Question 2 of 2</label>   
+				 <label  style="font-weight:bold; padding-top:-10px; margin-left:50px;"><fmt:message key="restpass.qust20f2"></fmt:message></label>   
 					        
 				 <p id="securityQuestionTwoText" style="margin-top:10px; margin-bottom:7px;">${profile.securityQuestionText}</p>
 				 <label style ="display:none;" id="securityQuestionTwo">${profile.securityQuestionId}</label>
 				 <label style ="display:none;" id="memberIdSQTwo">${profile.memberId}</label>
 					  <input type="text" class="validate[required] text-input" autocomplete="off" value="" id="txtsec2" tabindex="1" 
-				      placeholder="Enter your Secret Answer" data-prompt-position="inline"/>
+				      placeholder="<fmt:message key="restpass.enterAns"></fmt:message>" data-prompt-position="inline"/>
 				       
 				<p  id='errorAnswerTwoResponse' style="margin-top:5px; color:red;"></p>
-				<p style="margin-top:5px; color:#999; font-size:10px;">Last updated August 18, 2012 </p>
+				<p style="margin-top:5px; color:#999; font-size:10px;"> </p>
 					
 				
 				</div>  <!-- end of sepeate    -->  
@@ -176,8 +176,8 @@
 				 
 				<div class="btnseperate" style="margin-right:80px;">
 				
-				   <a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"> Cancel </a> 	
-					<a onclick="securityQuestionTwo()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "> Next </a> 		
+				   <a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"><fmt:message key="profile.cancel"></fmt:message> </a> 	
+					<a onclick="securityQuestionTwo()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "><fmt:message key="home.next"></fmt:message> </a> 		
 				 <div class="clearfix"> </div>
 				       
 				</div>
@@ -200,26 +200,26 @@
 			     <!--  <p class="reghead" style="margin-left:150px;">Select your Password </p> --> 
 			      <div class="separate" style="margin-left:10px; text-align:center;"> 
 			      
-			    <p class="reghead" style="margin-left:40px;">Select your Password </p>  
+			    <p class="reghead" style="margin-left:40px;"><fmt:message key="restpass.selpass"></fmt:message> </p>  
 			    <p style="text-align:center;margin-top:10px; color:#999;">
-Please Select a Password with at least 8 characters in length and at least one Capital Letter/Number/Special Character. 
+<fmt:message key="restpass.passworddes"></fmt:message> 
 </p>
 <hr style="background-color:#f28920; margin-bottom:20px; width: 550px; margin-left: -0px;">
 			<div style="width:390px;text-align:left; margin-left:150px;"> 
 			 <div class="control-group">
-			      <label class="control-label" style="padding-top:-10px;">New Password</label>
+			      <label class="control-label" style="padding-top:-10px;"><fmt:message key="new.password"></fmt:message></label>
 			      <div class="controls">
 				<div style="color: red;" id="result"></div>
-			      <input value="" placeholder="Enter Password"  type="password" name="password" id="password" data-prompt-position="inline"/>
+			      <input value="" placeholder="<fmt:message key="new.password"></fmt:message>"  type="password" name="password" id="password" data-prompt-position="inline"/>
 			      
 			      </div></div> 
 			      
 			      
 			        <div class="control-group">
-			      <label class="control-label" style="">Confirm Password</label>
+			      <label class="control-label" style=""><fmt:message key="confirm.password"></fmt:message></label>
 			      <div class="controls">
 				
-			     <input value="" placeholder="Confirm Password"  type="password" name="passwordcng" id="retypePassword" data-prompt-position="inline"  />
+			     <input value="" placeholder="<fmt:message key="confirm.password"></fmt:message>"  type="password" name="passwordcng" id="retypePassword" data-prompt-position="inline"  />
 			      </div>
 			       
 			      </div>
@@ -227,8 +227,8 @@ Please Select a Password with at least 8 characters in length and at least one C
 			 <div class="btnseperate" style="margin-right:80px;">
 			<br/><br/>
 			
-			<a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"> Cancel </a> 	
-			<a onclick="checkpass()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "> Submit </a> 	
+			<a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"> <fmt:message key="profile.cancel"></fmt:message> </a> 	
+			<a onclick="checkpass()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "> <fmt:message key="profile.submit"></fmt:message> </a> 	
 			  <div class="clearfix"> </div>
 			  
 			</div>
@@ -282,8 +282,8 @@ Please Select a Password with at least 8 characters in length and at least one C
 					
 					<div class="btnseperate" style="margin-right:80px;">
 						
-						<a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"> Cancel </a> 	
-						<a onclick="validateEmailId()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "> Submit </a> 	
+						<a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"> <fmt:message key="profile.cancel"></fmt:message> </a> 	
+						<a onclick="validateEmailId()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "><fmt:message key="profile.submit"></fmt:message> </a> 	
 								
 					  
 					  <div class="clearfix"> </div>

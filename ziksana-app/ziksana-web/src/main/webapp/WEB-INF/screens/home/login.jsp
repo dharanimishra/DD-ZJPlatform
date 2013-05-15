@@ -16,14 +16,13 @@
 
 
 			<div class="f-l" style="padding-left: 0px;">
-				<p class="tbboxheadfntds"
-					style="font-weight: bolder; font-size: 22px; margin-left: 90px; color: #fff;">
-					Welcome to Ziksana</p>
+				<p class="tbboxheadfntds" style="font-weight: bolder; font-size: 22px; margin-left: 90px; color: #fff;">
+					<fmt:message key="login.welcome"></fmt:message> </p>
 					
 			</div>
 			<!--End of page-header -->
 			<div class="clearfix">
-				 <span style="float:right; color:#fff; font-weight:bold; padding:30px;"> <a style="color:#fff;" href="?siteLanguage=en_US">English</a>|<a style="color:#fff;"  href="?siteLanguage=fr_FR">French</a></span>
+				 <span style="float:right; color:#fff; font-weight:bold; padding:30px;"> <a style="color:#fff;" href="?siteLanguage=en_US">English</a>|<a style="color:#fff;"  href="?siteLanguage=du_DU">Dutch</a></span>
 			</div>
 
 
@@ -49,13 +48,12 @@
 							<div class="slide_content">
 								<div class="slide_content_wrap">
 									<!-- Text title -->
-									<h4 class="title">Zik Power</h4>
+									<h4 class="title"><fmt:message key="login.sliderhead1"></fmt:message></h4>
 									<!-- /Text title -->
 
 									<!-- Text description -->
-									<p class="description">
-										Ziksana has given me the Power to Leave at my Pace the way<br />
-										i want..
+									<p class="description"> <fmt:message key="login.sliderdescrip1"></fmt:message>
+										
 									</p>
 									<!-- /Text description -->
 								</div>
@@ -71,10 +69,9 @@
 							<img src="/ziksana-web/resources/images/login/Educationrevolution.jpg">
 							<div class="slide_content">
 								<div class="slide_content_wrap">
-									<h4 class="title">Revolution</h4>
-									<p class="description">
-										Dreams do come true if you keep believing in yourself.<br />
-										Anything is possible.
+									<h4 class="title"><fmt:message key="login.sliderhead2"></fmt:message></h4>
+									<p class="description"><fmt:message key="login.sliderdescrip2"></fmt:message>
+										
 									</p>
 
 								</div>
@@ -86,10 +83,9 @@
 							<img src="/ziksana-web/resources/images/login/foundationofeducation.jpg">
 							<div class="slide_content">
 								<div class="slide_content_wrap">
-									<h4 class="title">Foundation For Life</h4>
-									<p class="description">
-										To accomplish great things, we must not only act,<br /> but
-										also dream; not only plan, but also believe.
+									<h4 class="title"><fmt:message key="login.sliderhead3"></fmt:message></h4>
+									<p class="description"><fmt:message key="login.sliderdescrip3"></fmt:message>
+										
 									</p>
 
 								</div>
@@ -125,8 +121,7 @@
 
 			<div id="loginheader">
 
-				<p style="font-size: 22px; color: #fff;">Sign in to your Account
-				</p>
+				<p style="font-size: 22px; color: #fff;"><fmt:message key="login.singaccount"></fmt:message> </p>
 
 			</div>
 		
@@ -157,7 +152,7 @@
 					<div class="controls">
 						<input  autofocus="autofocus" name="username" type="text" class="textBox"
 							style="background-image: url(/ziksana-web/resources/images/home/logintext.png); background-position: left; background-repeat: no-repeat; padding-left: 45px; height: 30px; border-radius: 0; width: 230px"
-							placeholder="Enter your Username" />
+							placeholder="<fmt:message key="login.enterusername"></fmt:message>" />
 					</div>
 					
 					<p style="color:#d14836;" id="userIdValidation">
@@ -172,7 +167,7 @@
 					<div class="controls">
 						<input  name="password" type="Password" class="textBox"
 							style="background-image: url(/ziksana-web/resources/images/home/passwordtext.png); background-position: left; background-repeat: no-repeat; padding-left: 45px; height: 30px; border-radius: 0; width: 230px;"
-							placeholder="Enter your Password" />
+							placeholder="<fmt:message key="login.enterpassword"></fmt:message>" />
 					</div>
 					<p style="color:#d14836;" id="passwordValidation">
 					<c:if test="${ not empty passwordValidationResponse}">
@@ -182,8 +177,8 @@
 				</div>
 
 				<div class="clearfix"></div>
-				<a href="/ziksana-web/unsecure/userverficationpage"> Trouble Signing in? </a>
-					<input type="submit" class="btn f-r" style="padding: 7px; margin: 5px;width:80px;" value="Log in"/>
+				<a href="/ziksana-web/unsecure/userverficationpage"><fmt:message key="login.trouble"></fmt:message>  </a>
+					<input type="submit" class="btn f-r" style="padding: 7px; margin: 5px;width:80px;" value="<fmt:message key="login.button"></fmt:message>"/>
 				
 					</form>
 			</div>

@@ -10,6 +10,7 @@
 		select * from memmemberprofile where memberId = #{memberId}
 	</select>
 	
+	
 	<select id="getMemberProfileByMemberId" resultMap="profileResultMap" parameterType="map">
 		select *from memmemberprofile where memberId = #{memberId}  and securityQuestionId like #{securityQuestionId}
 	</select>

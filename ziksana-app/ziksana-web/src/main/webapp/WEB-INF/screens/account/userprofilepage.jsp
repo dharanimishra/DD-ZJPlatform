@@ -31,7 +31,7 @@
 				<div class="icon">
 					<img src="/ziksana-web/resources/images/icons/information_icon.png"style="height: 25px;"/>
 				</div>
-				<h1>User Profile Setup</h1>
+				<h1><fmt:message key="profile.setup.name"></fmt:message> </h1>
 			</div>
 
 
@@ -63,7 +63,7 @@
 												'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 												'queueSizeLimit' : 1,
 												'successTimeout' : 350,
-												'buttonText' : 'Upload Image',
+												'buttonText' : '<fmt:message key="profile.button.text"></fmt:message>',
 												'uploader' : '${ms.uploadScript}',
 												'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 												'fileSizeLimit' : '1024KB',
@@ -186,7 +186,7 @@
 							key="profile.securityquestion1"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
 						<select class="profileselect" id="securityQuestionOne">
-							<option selected="selected">Select the Security Question</option>
+							<option selected="selected"><fmt:message key="profile.select.text"></fmt:message></option>
 							<c:forEach var="profile" items="${profileList}">
 								<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
 							</c:forEach>
@@ -202,7 +202,8 @@
 							key="profile.securityanswer1"></fmt:message><span class="requiredField">*</span></label>
 					<div class="controls">
 						<input type="text" class="profileinput" id="securityAnswerone"
-							name="sec_answer1" placeholder="Security Answer 1" />
+							name="sec_answer1" placeholder="<fmt:message
+							key="profile.securityanswer1"></fmt:message>" />
 					</div>
 					<div style="color: red; padding: 5px;" id="errorsecurityAnswerone"></div>
 				</div>
@@ -216,7 +217,7 @@
 					<div class="controls">
 
 						<select class="profileselect" id="securityQuestionTwo">
-							<option selected="selected">Select the Security Question</option>
+							<option selected="selected"><fmt:message key="profile.select.text"></fmt:message></option>
 							<c:forEach var="profile" items="${profileList}">
 								<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
 							</c:forEach>
@@ -233,7 +234,8 @@
 							key="profile.securityanswer2"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
 						<input type="text" class="profileinput" id="securityAnswertwo"
-							name="sec_answer2" placeholder="Security Answer 2" />
+							name="sec_answer2" placeholder="<fmt:message
+							key="profile.securityanswer2"></fmt:message>" />
 					</div>
 					<div style="color: red; padding: 5px;" id="errorsecurityAnswertwo"></div>
 				</div>

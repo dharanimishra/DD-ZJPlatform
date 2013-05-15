@@ -13,7 +13,7 @@
         <!-- <div class="divider"></div> -->
 	<c:if test="${not empty member.roleType}">
         <ul class="menu">
-            <li><a data-tabname="home" href="/home.php"><i class="icon-home"></i> Home</a></li>
+            <li><a data-tabname="home" href="/home.php"><i class="icon-home"></i> Home1</a></li>
             <li>
                 <a data-tabname="courses" href="/ziksana-web/zcourse/createcourse"><i class="icon-stats"></i> Courses</a>
             </li>

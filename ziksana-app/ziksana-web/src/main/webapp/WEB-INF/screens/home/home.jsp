@@ -5,7 +5,7 @@
 <div class="fifteen columns" id="page-title">
 
  <p class="page-title">
-            <span style="font-size:13px; color:#6bbde8;">Home</span></p>
+            <span style="font-size:13px; color:#6bbde8;"><fmt:message key="home.hometext"></fmt:message></span></p>
 
 </div>
  
@@ -48,13 +48,13 @@ margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.l
   
   <div class="tile bg-color-blueDark">
    <img class="tileimg" src="/ziksana-web/resources/images/icons/createcontent.png"/>
-   <h3>Create Content</h3>
+   <h3><fmt:message key="home.createcontent"></fmt:message></h3>
   
   </div>
   <div class="tile">
   
    <img class="tileimg" src="/ziksana-web/resources/images/icons/managecourse.png"/>
-   <h3>Manage Content</h3>
+   <h3><fmt:message key="home.managecontent"></fmt:message></h3>
   
   </div>
   
@@ -62,7 +62,7 @@ margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.l
    <div class="tile bg-color-blueDark">
   
    <img class="tileimg" src="/ziksana-web/resources/images/icons/editcoursecontent.png"/>
-   <h3 style="width:90px;">Edit draft course</h3>
+   <h3 style="width:90px;"><fmt:message key="home.editcourse"></fmt:message></h3>
   
   </div>
   
@@ -70,7 +70,7 @@ margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.l
    <div  class="tile bg-color-blue">
   
    <img class="tileimg" src="/ziksana-web/resources/images/icons/createcourse.png"/>
-   <h3 style="margin-left:10px; font-size:20px; width:30px;">Create course</h3>
+   <h3 style="margin-left:10px; font-size:20px; width:30px;"><fmt:message key="home.createcourse"></fmt:message></h3>
   
   </div></a>
   
@@ -82,7 +82,7 @@ margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.l
                             <img src="/ziksana-web/resources/images/icons/courseanaltic.png" />
                         </div>
                         <div class="brand">
-                            <h3 style="margin-left:10px; font-size:22px; width:160px;">Course Analytics</h3>
+                            <h3 style="margin-left:10px; font-size:22px; width:160px;"><fmt:message key="home.analytics"></fmt:message></h3>
                         </div>
             </div>
                     
@@ -92,7 +92,7 @@ margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.l
                        <div class="tile-content"><img src="/ziksana-web/resources/images/icons/announcement.png" alt="mes" />
                         </div>
                         <div class="brand">
-                            <h3 style="margin-left:10px; font-size:22px;">Announcements</h3>
+                            <h3 style="margin-left:10px; font-size:22px;"><fmt:message key="home.announcement"></fmt:message></h3>
                         </div>
             </div>                 
                     
@@ -118,9 +118,9 @@ margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.l
  <div class="panelhead" style="margin-top:-10px;">
   
   <ul>
-  <li><a href="#linkrl" class="tagevent"> Events </a> </li> 
-  <li><a href="#linkurl" class="tagalert"> Alerts </a> </li>
-  <li><a href="#linkurl" class="tagtask"> To Do </a> </li>
+  <li><a href="#linkrl" class="tagevent"> <fmt:message key="home.events"></fmt:message></a> </li> 
+  <li><a href="#linkurl" class="tagalert"> <fmt:message key="home.alerts"></fmt:message> </a> </li>
+  <li><a href="#linkurl" class="tagtask"> <fmt:message key="home.todo"></fmt:message> </a> </li>
 
   
   </ul>
@@ -133,9 +133,9 @@ margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.l
  
  <p class="pull-left" style="color: rgb(255, 255, 255);
 font-size: 15px;
-margin-top: 5px;"> List of Events Today </p>
+margin-top: 5px;"> <fmt:message key="home.listofevents"></fmt:message> </p>
  
- <p class="pull-right" style="color:#fff;">Manage Events <a href="#linkurl"> <img src="/ziksana-web/resources/images/icons/calendar.png" style="height:30px; margin-left:6px; vertical-align:middle;"/> </a> </p> 
+ <p class="pull-right" style="color:#fff;"><fmt:message key="home.manageevents"></fmt:message> <a href="#linkurl"> <img src="/ziksana-web/resources/images/icons/calendar.png" style="height:30px; margin-left:6px; vertical-align:middle;"/> </a> </p> 
  </div>
  
  <div class="eventcontent" style="height:270px;">
@@ -186,9 +186,9 @@ margin-top: 5px;"> List of Events Today </p>
  
  <p class="pull-left" style="color: rgb(255, 255, 255);
 font-size: 15px;
-margin-top: 5px;"> List of Events Today </p>
+margin-top: 5px;"><fmt:message key="home.listofevents"></fmt:message>  </p>
  
- <p class="pull-right" style="color:#fff;">Manage Events <a href="#linkurl"> <img src="/ziksana-web/resources/images/icons/calendar.png" style="height:30px; margin-left:6px; vertical-align:middle;"/> </a> </p> 
+ <p class="pull-right" style="color:#fff;"><fmt:message key="home.manageevents"></fmt:message> <a href="#linkurl"> <img src="/ziksana-web/resources/images/icons/calendar.png" style="height:30px; margin-left:6px; vertical-align:middle;"/> </a> </p> 
  </div>
  
  <div class="eventcontent" style="height:270px;">

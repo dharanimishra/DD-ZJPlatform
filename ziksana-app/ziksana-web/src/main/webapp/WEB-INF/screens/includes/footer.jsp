@@ -3,10 +3,9 @@
 	<div id="footerbordernav">
 
 		<p>
-			<span style="color: #fff; font-size: 14px;"> Newsletter Signup
+			<span style="color: #fff; font-size: 14px;"><fmt:message key="footer.newsletter"></fmt:message> 
 			</span> <img src="/ziksana-web/resources/images/home/newsletter.png" style="height: 25px;" /><span
-				style="color: #fff; font-size: 14px;"> to get prompt reply
-				for your queries </span>
+				style="color: #fff; font-size: 14px;"> <fmt:message key="footer.newstext"></fmt:message> </span>
 		</p>
 
 	</div>
@@ -18,10 +17,10 @@
 			<div class="companynav">
 				<ul>
 					<li><a href="#linkurl" style="color: rgb(90, 90, 90);">
-							Company : </a></li>
-					<li><a href="#linkurl"> About Us </a></li>
-					<li><a href="#linkurl"> Ziksana Connect </a></li>
-					<li><a href="#linkurl"> Contact us </a></li>
+							<fmt:message key="footer.company"></fmt:message> </a></li>
+					<li><a href="#linkurl"><fmt:message key="footer.aboutus"></fmt:message>  </a></li>
+					<li><a href="#linkurl"> <fmt:message key="footer.connect"></fmt:message> </a></li>
+					<li><a href="#linkurl"><fmt:message key="footer.contactus"></fmt:message>  </a></li>
 
 				</ul>
 
@@ -39,10 +38,10 @@
 
 				<ul>
 					<li><a href="#linkurl" style="color: rgb(90, 90, 90);">
-							Location : </a></li>
-					<li><a href="#linkurl"> New york </a></li>
-					<li><a href="#linkurl"> Amsterdam </a></li>
-					<li><a href="#linkurl"> Bangalore </a></li>
+							<fmt:message key="footer.location"></fmt:message>  </a></li>
+					<li><a href="#linkurl"> <fmt:message key="footer.newyork"></fmt:message> </a></li>
+					<li><a href="#linkurl"> <fmt:message key="footer.amsterdam"></fmt:message> </a></li>
+					<li><a href="#linkurl"> <fmt:message key="footer.Bangalore"></fmt:message> </a></li>
 				</ul>
 
 			</div>
@@ -68,7 +67,7 @@
 					src="/ziksana-web/resources/images/socialmedia/youtube.png" alt="YouTube" /></a>
 			</div>
 
-			<p id="copyright">Copyright@2013 Ziksana</p>
+			<p id="copyright"><fmt:message key="footer.copyright"></fmt:message></p>
 
 		</div>
 	</div>
