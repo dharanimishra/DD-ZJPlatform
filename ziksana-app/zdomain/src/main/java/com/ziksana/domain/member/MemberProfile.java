@@ -1,5 +1,7 @@
 package com.ziksana.domain.member;
 
+import java.util.Date;
+
 public class MemberProfile {
 
 	private int profileId;
@@ -15,6 +17,22 @@ public class MemberProfile {
 	private String alternateEmailId;
 	
 	private int active;
+	
+	private Date profileUpdated;
+
+	/**
+	 * @return the profileUpdated
+	 */
+	public Date getProfileUpdated() {
+		return profileUpdated;
+	}
+
+	/**
+	 * @param profileUpdated the profileUpdated to set
+	 */
+	public void setProfileUpdated(Date profileUpdated) {
+		this.profileUpdated = profileUpdated;
+	}
 
 	/**
 	 * @return the profileId

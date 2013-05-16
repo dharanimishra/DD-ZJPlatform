@@ -74,4 +74,9 @@ public class MemberServiceImpl implements MemberService {
 		return userMapper.isPrimaryEmailIdExists(emailId) ;
 	}
 
+	public String getPasswordUpdatedOn(int memberId) {
+		// TODO Auto-generated method stub
+		return userMapper.getPasswordUpdatedOn(memberId);
+	}
+
 }

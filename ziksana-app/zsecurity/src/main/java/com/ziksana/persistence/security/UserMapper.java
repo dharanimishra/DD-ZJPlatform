@@ -28,7 +28,7 @@ public interface UserMapper {
 
 	public String getUserPassword(String userId);
 
-	public void updateSecMemberCredentional(@Param("newPassword")String newPassword,@Param("userId") String userId);
+	public int updateSecMemberCredentional(@Param("newPassword")String newPassword,@Param("userId") String userId);
 
 	public Member getMemberByEmailId(String emailId);
 
@@ -41,5 +41,7 @@ public interface UserMapper {
 	public String getUserIdByMember(int memberId);
 
 	public boolean isPrimaryEmailIdExists(String emailId);
+
+	public String getPasswordUpdatedOn(int memberId);
 
 }

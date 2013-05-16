@@ -111,12 +111,12 @@ public class LoginController {
 										
 										// Need to create cookie
 										response.addCookie(newSessionCookie(request, member.getUserId()));
-										mv = new ModelAndView("redirect:/secure/homepage");
+										mv = new ModelAndView("redirect:/secure/1/homepage");
 										SecurityTokenUtil.unset();
 									} else {
 										// Need to create cookie
 										response.addCookie(newSessionCookie(request, member.getUserId()));
-										mv = new ModelAndView("redirect:/profile/profilepage/"+ member.getMemberId() + "");
+										mv = new ModelAndView("redirect:/profile/1/profilepage/"+ member.getMemberId() + "");
 									}
 								}
 

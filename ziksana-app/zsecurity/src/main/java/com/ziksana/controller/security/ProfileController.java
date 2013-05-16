@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.member.Member;
 import com.ziksana.domain.member.MemberProfile;
 import com.ziksana.exception.ZiksanaException;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.security.MediaService;
 import com.ziksana.service.security.MemberService;
 import com.ziksana.service.security.ProfileService;
@@ -43,7 +44,7 @@ public class ProfileController {
 	@Autowired
 	private MediaService mediaService;
 	
-	@RequestMapping(value = "/profilepage/{memberId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/profilepage/{memberId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView showUserProfileForm(@PathVariable int memberId) {
 		ModelAndView modelAndView = new ModelAndView("profilepagesetup");
 		try{		
@@ -51,8 +52,9 @@ public class ProfileController {
 			
 			profileList = profileService.getMemberProfileList(memberId);
 			Member member = memberService.getMemberByMemberId(memberId);
-			modelAndView.addObject("applicationTitle", "User Profile Page");
+			modelAndView.addObject("applicationTitle", "User Profile Page creation");
 			modelAndView.addObject("profileList", profileList);
+			
 			modelAndView.addObject("member", member);
 			modelAndView.addObject("ms", mediaService.getMediaContents());
 		}
@@ -64,7 +66,31 @@ public class ProfileController {
 		
 	}
 	
-	@RequestMapping(value = "/updateprofile", method = RequestMethod.POST)
+	@RequestMapping(value = "/1/manageprofile/{memberId}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView showManageProfile(@PathVariable int memberId) {
+		ModelAndView modelAndView = new ModelAndView("profilepagesetup");
+		try{		
+			List<MemberProfile> profileList = new ArrayList<MemberProfile>();
+			
+			profileList = profileService.getMemberProfileList(memberId);
+			Member member = memberService.getMemberByMemberId(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
+			modelAndView.addObject("applicationTitle", "User Profile Page Edit");
+			modelAndView.addObject("profileList", profileList);
+			modelAndView.addObject("passwordUpdated", getFormattedDate(memberService.getPasswordUpdatedOn(memberId)));
+			modelAndView.addObject("profileAnswerOne",profileService.getMemberProfileByMemberId(memberId, "1SQ%"));
+			modelAndView.addObject("profileAnswerTwo",profileService.getMemberProfileByMemberId(memberId, "2SQ%"));
+			modelAndView.addObject("member", member);
+			modelAndView.addObject("ms", mediaService.getMediaContents());
+		}
+		catch(ZiksanaException zexception){
+
+			LOGGER.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
+		return modelAndView;
+		
+	}
+	
+	@RequestMapping(value = "/1/updateprofile", method = RequestMethod.POST)
 	public @ResponseBody String updateUserProfile(
 			@RequestParam(value = "memberId", required = true) String memberId,
 			@RequestParam(value = "alternateEmailId", required = false) String alternateEmailId,
@@ -120,6 +146,59 @@ public class ProfileController {
 		}
 		return responseMsg;
 		
+	}
+	
+	@RequestMapping(value = "/1/updatealternatemail", method = RequestMethod.POST)
+	public @ResponseBody int updateProfileAlternateMail(
+			@RequestParam(value = "memberId", required = true) String memberId,
+			@RequestParam(value = "alternateEmailId", required = false) String alternateEmailId) {
+		int response = 0;
+		try{		
+			
+			
+		}
+		catch(ZiksanaException zexception){
+
+			LOGGER.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
+		return response;
+		
+	}
+	
+	
+	private  String getFormattedDate(String value) {
+		String month = value.substring(5, 7);
+		String monthText = "";
+		if(month.equalsIgnoreCase("01")){
+			monthText = "January";
+		}else if(month.equalsIgnoreCase("02")){
+			monthText = "February";
+		}else if(month.equalsIgnoreCase("03")){
+			monthText = "March";			
+		}else if(month.equalsIgnoreCase("04")){
+			monthText = "April";
+		}else if(month.equalsIgnoreCase("05")){
+			monthText = "May";
+		}else if(month.equalsIgnoreCase("06")){
+			monthText = "June";
+		}else if(month.equalsIgnoreCase("07")){
+			monthText = "July";
+		}else if(month.equalsIgnoreCase("08")){
+			monthText = "August";
+		}else if(month.equalsIgnoreCase("09")){
+			monthText = "September";
+		}else if(month.equalsIgnoreCase("10")){
+			monthText = "October";
+		}else if(month.equalsIgnoreCase("11")){
+			monthText = "November";
+		}else {
+			monthText = "December";
+		}
+		
+		String year = value.substring(0, 4);
+		String date = value.substring(8, 11);
+				
+		return "Last updated "+monthText+" "+date+", "+year+"";
 	}
 
 }

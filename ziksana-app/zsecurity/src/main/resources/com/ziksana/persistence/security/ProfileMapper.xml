@@ -3,17 +3,17 @@
 <mapper namespace="com.ziksana.persistence.security.ProfileMapper">
 	
 	<select id="getMemberProfile" resultMap="profileResultMap" parameterType="map">
-		select *from memmemberprofile where memberId = (select ID from memmember where userId =#{userId}) and securityQuestionId like #{securityQuestionId}
+		select * from memmemberprofile where memberId = (select ID from memmember where userId =#{userId}) and securityQuestionId like #{securityQuestionId}
 	</select>
 	
 	<select id="getMemberProfileList" resultMap="profileResultMap" parameterType="int">
 		select * from memmemberprofile where memberId = #{memberId}
 	</select>
 	
-	
 	<select id="getMemberProfileByMemberId" resultMap="profileResultMap" parameterType="map">
-		select *from memmemberprofile where memberId = #{memberId}  and securityQuestionId like #{securityQuestionId}
+		select * from memmemberprofile where memberId = #{memberId}  and securityQuestionId like #{securityQuestionId}
 	</select>
+	
 	
 	
 	<update id="updateMemberProfile" parameterType="com.ziksana.domain.member.MemberProfile">
@@ -44,6 +44,7 @@
 		<result property="memberAnswer" column="memberAnswer"/>
 		<result property="alternateEmailId" column="alternateEmailId"/>
 		<result property="active" column="Active"/>
+		<result property="profileUpdated" column="profileUpdated"/>
 	</resultMap>
 
 </mapper>

@@ -177,7 +177,7 @@
 				</div>
 
 				<div class="clearfix"></div>
-				<a href="/ziksana-web/unsecure/userverficationpage"><fmt:message key="login.trouble"></fmt:message>  </a>
+				<a href="/ziksana-web/unsecure/0/userverficationpage"><fmt:message key="login.trouble"></fmt:message>  </a>
 					<input type="submit" class="btn f-r" style="padding: 7px; margin: 5px;width:80px;" value="<fmt:message key="login.button"></fmt:message>"/>
 				
 					</form>

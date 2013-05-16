@@ -48,7 +48,7 @@ public class HomeController {
 
 	}
 
-	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/homepage", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView homePage(HttpServletRequest request, HttpServletResponse response) {
 
 		ModelAndView modelAndView = new ModelAndView();

@@ -65,7 +65,7 @@
 					      <label  style="padding-top:-10px;"><fmt:message key="restpass.userid"></fmt:message></label>
 					     
 					      <input placeholder="<fmt:message key="restpass.Enteruid"></fmt:message>" autocomplete="off" type="text" name="frgtuserid" id="frgtuserid" tabindex="2" data-prompt-position="inline"/>
-					       <a  style=" float:right; font-size:14px;" href="/ziksana-web/unsecure/forgotuserid"><fmt:message key="restpass.forgotuid"></fmt:message></a>				     
+					       <a  style=" float:right; font-size:14px;" href="/ziksana-web/unsecure/0/forgotuserid"><fmt:message key="restpass.forgotuid"></fmt:message></a>				     
 					      
 					 </div><!-- end of separate  -->   
 					    
@@ -316,8 +316,8 @@
 
 
 </div> <!--end of loginwrapper-->
- <c:url var="userverfyUrl" value="/unsecure/isuseridexists/" />
- <c:url var="emailverfyUrl" value="/unsecure/senduserid/" />
+ <c:url var="userverfyUrl" value="/unsecure/0/isuseridexists/" />
+ <c:url var="emailverfyUrl" value="/unsecure/0/senduserid/" />
 
 <script type="text/javascript">
 function validateUserId(){
@@ -345,11 +345,11 @@ function validateUserId(){
 					
 							$.ajax({
 							  	type: 'GET',
-								url: '/ziksana-web/unsecure/isprofilecompleted/'+forgotUserId,
+								url: '/ziksana-web/unsecure/0/isprofilecompleted/'+forgotUserId,
 								success: function( data ) {
 									console.log(data);
 									if(data == 'SUCCESS'){										
-										window.location.href = "/ziksana-web/unsecure/firstsecurityverfication/"+forgotUserId+"";
+										window.location.href = "/ziksana-web/unsecure/0/firstsecurityverfication/"+forgotUserId+"";
 									}else{
 										$('#errorUserIdResponse').html(data);
 									}
@@ -377,12 +377,12 @@ function securityQuestionOne(){
 		if(("#errorAnswerOneResponse.inside:contains('* This Field is Required')")){
 			document.getElementById("errorAnswerOneResponse").innerHTML = '';
 		}
-		$.post( '/ziksana-web/unsecure/checkfirstanswer'
+		$.post( '/ziksana-web/unsecure/0/checkfirstanswer'
 		        , {'answer':securityAnswerOne,'secretQuestion':securityQuestionOneText,'memberId':memberIdSQOne}
 		        , function( data )
 		        {
 		        	if(data == 'SUCCESS'){
-		        		window.location.href = "/ziksana-web/unsecure/secondsecurityverfication/"+memberIdSQOne+"";
+		        		window.location.href = "/ziksana-web/unsecure/0/secondsecurityverfication/"+memberIdSQOne+"";
 					}else{
 						$('#errorAnswerOneResponse').html(data);
 						
@@ -408,12 +408,12 @@ function securityQuestionTwo(){
 		if(("#errorAnswerTwoResponse.inside:contains('* This Field is Required')")){
 			document.getElementById("errorAnswerTwoResponse").innerHTML = '';
 		}
-		$.post( '/ziksana-web/unsecure/checksecondanswer'
+		$.post( '/ziksana-web/unsecure/0/checksecondanswer'
 		        , {'answer':securityAnswerTwo,'secretQuestion':securityQuestionTwoText,'memberId':memberIdSQTwo}
 		        , function( data )
 		        {
 		        	if(data == 'SUCCESS'){
-		        		window.location.href = "/ziksana-web/unsecure/password/newpassword/"+memberIdSQTwo+"";
+		        		window.location.href = "/ziksana-web/unsecure/0/password/newpassword/"+memberIdSQTwo+"";
 		        		 
 					}else{
 						$('#errorAnswerTwoResponse').html(data);
@@ -522,7 +522,7 @@ function checkpass()
 			console.log(retypePassword);
 			console.log(memberIdRef);
 			
-			 $.post( '/ziksana-web/unsecure/password/changepassword'
+			 $.post( '/ziksana-web/unsecure/0/password/changepassword'
 			        , {'newPassword':newPassword,'confirmPassword':retypePassword,'memberId':memberIdRef}
 			        , function( data )
 			        {
@@ -573,7 +573,7 @@ function validateEmailId(){
 		}
 		
 		
-		$.post( '/ziksana-web/unsecure/senduserid'
+		$.post( '/ziksana-web/unsecure/0/senduserid'
 		        , {'emailId':forgotEmailId}
 		        , function( data )
 		        {

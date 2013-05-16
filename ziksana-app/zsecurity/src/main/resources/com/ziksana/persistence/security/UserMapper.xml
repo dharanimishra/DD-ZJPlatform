@@ -141,6 +141,10 @@
 		where userId=#{username}
 	</update>
 	
+	<select id="getPasswordUpdatedOn" resultType="java.lang.String" parameterType="int">
+		select CreationDate from secmembercredential where memberId= #{memberId}
+	</select>
+	
 	<update id="updateMemberProfileImage"  parameterType="map">
 	update memmember		
 		<set>
@@ -156,7 +160,7 @@
 	<update id="updateSecMemberCredentional" parameterType="map">
 		update secmembercredential		
 		<set>
-			password=#{newPassword}
+			password=#{newPassword}, CreationDate=now()
 		</set>
 		where userName=#{userId}
 	</update>

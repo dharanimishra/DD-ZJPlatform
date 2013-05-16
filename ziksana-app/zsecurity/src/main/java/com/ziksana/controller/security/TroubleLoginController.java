@@ -55,7 +55,7 @@ public class TroubleLoginController {
 	/*
 	 * In Login Page user click TroubleLoggingin link it will redirect user verification page
 	*/
-	@RequestMapping(value = "/userverficationpage", method = RequestMethod.GET)
+	@RequestMapping(value = "/0/userverficationpage", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView showUserProfileForm() {
 		ModelAndView modelAndView = new ModelAndView("masterresetpassword");
 		try{
@@ -69,7 +69,7 @@ public class TroubleLoginController {
 		return modelAndView;
 		
 	}
-	@RequestMapping(value = "/isuseridexists/{userId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/0/isuseridexists/{userId}", method = RequestMethod.GET)
 	public @ResponseBody String isUserIdExists(@PathVariable String userId) {
 		String pageResponse = null;
 		try{
@@ -91,7 +91,7 @@ public class TroubleLoginController {
 		return pageResponse;
 		
 	}
-	@RequestMapping(value = "/isprofilecompleted/{username}", method = RequestMethod.GET)
+	@RequestMapping(value = "/0/isprofilecompleted/{username}", method = RequestMethod.GET)
 	public @ResponseBody String isProfileCompleted(@PathVariable String username) {
 		String pageResponse = null;
 		try{
@@ -115,7 +115,7 @@ public class TroubleLoginController {
 	}
 	
 	
-	@RequestMapping(value = "/firstsecurityverfication/{userId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/0/firstsecurityverfication/{userId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView securityFormFirstPage(@PathVariable String userId) {
 		ModelAndView modelAndView = new ModelAndView("masterresetpassword");
 		try{
@@ -132,7 +132,7 @@ public class TroubleLoginController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/secondsecurityverfication/{memberId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/0/secondsecurityverfication/{memberId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView securityFormSecondPage(@PathVariable String memberId) {
 		ModelAndView modelAndView = new ModelAndView("masterresetpassword");
 		try{
@@ -148,7 +148,7 @@ public class TroubleLoginController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/checkfirstanswer", method = RequestMethod.POST)
+	@RequestMapping(value = "/0/checkfirstanswer", method = RequestMethod.POST)
 	public @ResponseBody String secretAnswerVerification(
 			@RequestParam(value = "answer", required = true) String answer,
 			@RequestParam(value = "secretQuestion", required = false) String secretQuestion,
@@ -169,7 +169,7 @@ public class TroubleLoginController {
 		return pageResponse;
 	}
 	
-	@RequestMapping(value = "/checksecondanswer", method = RequestMethod.POST)
+	@RequestMapping(value = "/0/checksecondanswer", method = RequestMethod.POST)
 	public @ResponseBody String secretSecondAnswerVerification(
 			@RequestParam(value = "answer", required = true) String answer,
 			@RequestParam(value = "secretQuestion", required = false) String secretQuestion,
@@ -190,7 +190,7 @@ public class TroubleLoginController {
 		return pageResponse;
 	}
 	
-	@RequestMapping(value = "/forgotuserid", method = RequestMethod.GET)
+	@RequestMapping(value = "/0/forgotuserid", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView forgotUserIdPage(){
 		ModelAndView modelAndView = new ModelAndView("masterresetpassword");
 		modelAndView.addObject("emailVerfication", EMAIL_VERIFICATION_PAGE);
@@ -198,7 +198,7 @@ public class TroubleLoginController {
 		
 	}
 	
-	@RequestMapping(value = "/senduserid", method = RequestMethod.POST)
+	@RequestMapping(value = "/0/senduserid", method = RequestMethod.POST)
 	public @ResponseBody String submitforgotUserIdPage(
 		   @RequestParam(value = "emailId", required = true) String emailId){
 		

@@ -81,6 +81,7 @@ function get_and_populate_alerts(){
 }
 
 //TODO Ajax Call
+var no_of_available_todo;
 function get_and_populate_todo(){
 	$.ajax({
 	  	type: 'GET',
@@ -93,7 +94,7 @@ function get_and_populate_todo(){
 				var indexValue = 0;
 				
 			
-				var no_of_available_todo;
+				
 				
 				$.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
 					no_of_available_todo = size;
@@ -107,15 +108,20 @@ function get_and_populate_todo(){
 						 
 						ouputEmptyTodo+="<div class='alrtheader' style='height:50px; background-color: rgba(50, 50, 50, 0.75); padding:10px; border-bottom:1px solid #ccc;'>";
 						ouputEmptyTodo+="<p class='pull-left' style='color: rgb(255, 255, 255); font-size: 15px;margin-top: 5px;'> TO Do's </p>";
-						ouputEmptyTodo+="<p class='pull-right' style='color:#fff;'>ManageTO Do's <a href='#linkurl'> <img src='/ziksana-web/resources/images/icons/calendar.png' style='height:30px; margin-left:6px; vertical-align:middle;'/> </a> </p> </div>";
+						ouputEmptyTodo+="<p class='pull-right' style='color:#fff;'>Manage TO Do's <a href='#linkurl'> <img src='/ziksana-web/resources/images/icons/calendar.png' style='height:30px; margin-left:6px; vertical-align:middle;'/> </a> </p> </div>";
 						ouputEmptyTodo+="<div class='alrtcontent' style='height:270px; padding-left:20px;'>";
-						ouputEmptyTodo+="<table class='table table-hover'><tbody>";
+						ouputEmptyTodo+="<table class='table innertable table-hover'><tbody>";
 						 $(data).find("todoitem").each(function(index){
-							 ouputEmptyTodo+="<tr><td width='20%'><input type='checkbox' ></td><td width='70%' style='vertical-align:middle;'>"+$(this).find("categoryName").text()+"</td></tr> ";
+							 if($(this).find("status").text() == 1){
+							 ouputEmptyTodo+="<tr id='todorow"+$(this).find('id').text()+"' class='closedtodo'><td width='10%'><input  name='checkstatus"+$(this).find('id').text()+"' onchange='handleChange(this,"+$(this).find('id').text()+");' type='checkbox' value='' checked /></td><td width='30%' style='vertical-align:middle;'>"+$(this).find("categoryName").text()+"</td><td width='70%' style='vertical-align:middle;'>"+$(this).find("subject").text()+"</td></tr> ";
+							 }else{
+								 ouputEmptyTodo+="<tr id='todorow"+$(this).find('id').text()+"'><td width='10%'><input name='checkstatus"+$(this).find('id').text()+"' type='checkbox' onchange='handleChange(this,"+$(this).find('id').text()+");' value=''/ ></td><td width='30%' style='vertical-align:middle;'>"+$(this).find("categoryName").text()+"</td><td width='70%' style='vertical-align:middle;'>"+$(this).find("subject").text()+"</td></tr> ";
+							 }
+							 
 						 });
 						ouputEmptyTodo+="</tbody></table> </div>";
 						ouputEmptyTodo+="<div class='eventfooter' style='height:30px; background-color: rgba(50, 50, 50, 0.75); padding:10px; border-top:1px solid #ccc; padding:5px; padding-left:10px; color:#fff;'>";
-						ouputEmptyTodo+="<p class='f-l'> You have 1 Incompleted Task </p><p class='f-r'> <a href='#' style='color:#fff;'>Remove completed Task</a></p></div>";
+						ouputEmptyTodo+="<p id='incompletesize'class='f-l'> You have "+no_of_available_todo+" Incompleted Task </p><p class='f-r'> <a href='#' style='color:#fff;'>Remove completed Task</a></p></div>";
 						 
 						$('#todos_placeholder').html(ouputEmptyTodo);
 						
@@ -127,3 +133,37 @@ function get_and_populate_todo(){
 	});
 						  
 }
+
+function handleChange(a,cb) {
+	  var i = $('#checkstatus'+cb+'').val();
+	  if(a.checked == true){
+		  
+		  $.post( '/ziksana-web/ztodo/updatetodostatus'
+			        , {'todoItemId':cb,'status':a.checked}
+			        , function( data )
+			        {
+			        
+			        	 $('#todorow'+cb+'').addClass('closedtodo');
+
+							$.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
+								x = "You have "+size+"";
+								$('#incompletesize').html(x);
+							});
+			 
+			        });  
+		  
+	  }else{
+		  $.post( '/ziksana-web/ztodo/updatetodostatus'
+			        , {'todoItemId':cb,'status':a.checked}
+			        , function( data )
+			        {
+			        	 $('#todorow'+cb+'').removeClass('closedtodo');
+			        	 $.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
+								x = "You have "+size+"";
+								$('#incompletesize').html(x);
+							});
+			        });  
+	  }
+
+
+	}

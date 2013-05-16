@@ -9,6 +9,7 @@
 				<id>${todo.id}</id>
 				 <categoryName>${todo.category}</categoryName>
 				<subject>${todo.notificationContent}</subject>
+				<status>${todo.status}</status>
 			</todoitem>
 	</c:forEach>
 

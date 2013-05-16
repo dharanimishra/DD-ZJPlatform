@@ -13,7 +13,7 @@ public interface PasswordService {
 
 	public String getUserPassword(String userId);
 
-	public void updateSecMemberCredentional(String newPassword, String userId);
+	public int updateSecMemberCredentional(String newPassword, String userId);
 
 	public String getUserIdByMember(int memberId);
 

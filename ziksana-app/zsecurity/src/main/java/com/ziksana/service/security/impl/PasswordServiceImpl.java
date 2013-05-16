@@ -100,8 +100,8 @@ public class PasswordServiceImpl implements PasswordService {
 		return userMapper.getUserPassword(userId);
 	}
 	
-	public void updateSecMemberCredentional(String newPassword, String userId) {
-		userMapper.updateSecMemberCredentional(newPassword,userId);
+	public int updateSecMemberCredentional(String newPassword, String userId) {
+		return userMapper.updateSecMemberCredentional(newPassword,userId);
 		
 	}
 

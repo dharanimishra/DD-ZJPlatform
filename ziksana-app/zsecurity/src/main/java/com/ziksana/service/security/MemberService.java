@@ -28,6 +28,8 @@ public interface MemberService {
 	public boolean isPasswordExists(String password);
 
 	public boolean isPrimaryEmailIdExists(String emailId);
+
+	public String getPasswordUpdatedOn(int memberId);
 	
 
 }
