@@ -5,11 +5,7 @@
 	src="${staticFileServer}resources/Dynamicjsonjs/z_simulation_message.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/Addmoduledynamicjson.js"></script>
-<script type='text/javascript'
-	src='${staticFileServer}resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
 
-<script type='text/javascript'
-	src='${staticFileServer}resources/js/lib/jquery/jquery-ui-1.10.1.custom.min.js'></script>
 <!--Script for the Tree -->
 <script src="${staticFileServer}resources/js/lib/tree/Common/common.js"></script>
 <script src="${staticFileServer}resources/js/lib/tree/Common/dtree.js"></script>
@@ -21,7 +17,7 @@
 	src="${staticFileServer}resources/js/lib/tree/treedata.js"></script>
 
 <!-- scripts for tree -->
-<script type="text/javascript"
+<%-- <script type="text/javascript"
 	src="${staticFileServer}resources/js/tree/gettheme.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/tree/core.js"></script>
@@ -35,7 +31,7 @@
 	src="${staticFileServer}resources/js/tree/dragdrop.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/tree/tree.js"></script>
-
+ --%>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/tree/tooltip.js"></script>
 
@@ -45,16 +41,13 @@
 	src="${staticFileServer}resources/js/tree/jqxexpander.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/css/common/tree/menu.css" />
-
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/js/lib/splitter/splitter.css" />
-
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/splitter/jquery-1.4.3.min.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/splitter/splitter.js"></script>
 
-
+<script type='text/javascript'
+	src='${staticFileServer}resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#splitterContainer").splitter({
@@ -74,6 +67,11 @@
 	margin-left: 40px;
 	color: #0a91ac !important;
 }
+.select2-container {
+    
+    margin-right: 59px;
+   
+}
 </style>
 <script type="text/javascript">
 	/* function showrich() {
@@ -91,138 +89,6 @@
 	} */
 
 	function getArea() {
-
-		var course_id = $('#courseid').val();
-		$
-				.post(
-						'/ziksana-web/zcourse/getsubclassification',
-						{
-							'CourseId' : course_id
-						},
-						function(data) {
-							console.log(data);
-							var subClassificationId = data.subjClassificationId;
-							var subject_area_pre = data.subjectArea;
-							var subject_pre = data.subjectCategory;
-							var topic_pre = data.subjectTopic;
-
-							// Start
-
-							$
-									.get(
-											'/ziksana-web/zcourse/getsubjectarea',
-											{},
-											function(data) {
-												options = data;
-												var option_string = '';
-												for (i in options) {
-													label = options[i].label;
-													value = options[i].value;
-
-													if (value == subject_area_pre) {
-														option = '<option selected="selected" value="'
-																+ value
-																+ '">'
-																+ label
-																+ '</option>';
-
-													} else {
-														option = '<option value="'
-																+ value
-																+ '">'
-																+ label
-																+ '</option>';
-
-													}
-
-													option_string += option;
-												}
-												$('#Cmoduleareaddl').html(
-														option_string);
-												console.log("subject area is: "
-														+ subject_area_pre);
-												// setTimeout("$('#Cmoduleareaddl').val('Religion');
-												// alert('hellos');",
-												// 3000);
-											});
-
-							token = '';
-							request_type = 'GET';
-							uri = '/ziksana-web/zcourse/getsubject';
-
-							$
-									.get(
-											uri,
-											{
-												'Course_Area' : subject_area_pre
-											},
-											function(data) {
-												options = data;
-												var option_string = '';
-												option_string += '<option value="Select Subject">Select Subject</option>';
-												for (i in options) {
-													label = options[i].label;
-													value = options[i].value;
-													if (value == subject_pre) {
-														option = '<option selected="selected" value="'
-																+ value
-																+ '">'
-																+ label
-																+ '</option>';
-													} else {
-														option = '<option value="'
-																+ value
-																+ '">'
-																+ label
-																+ '</option>';
-													}
-
-													option_string += option;
-												}
-
-												$('#Cmodulesubjectddl').html(
-														option_string);
-											});
-
-							uri = '/ziksana-web/zcourse/gettopic';
-							token = '';
-							request_type = 'GET';
-							$
-									.get(
-											uri,
-											{
-												'Course_Subject' : subject_pre
-											},
-											function(data) {
-												options = data;
-												var option_string = '';
-												option_string += '<option value="Select Topic">Select Topic</option>';
-												for (i in options) {
-													label = options[i].label;
-													value = options[i].value;
-													if (value == topic_pre) {
-														option = '<option selected="selected" value="'
-																+ value
-																+ '">'
-																+ label
-																+ '</option>';
-													} else {
-														option = '<option value="'
-																+ value
-																+ '">'
-																+ label
-																+ '</option>';
-													}
-													option_string += option;
-												}
-												$('#Cmoduletopicddl').html(
-														option_string);
-
-											});
-
-							// End
-
-						});
 
 		$
 				.get(
@@ -395,7 +261,7 @@
 	<!--End of page-header -->
 
 	<div class="clearfix"></div>
-
+	 
 	<div>
 
 		<!-- BEGIN FORM-->
@@ -468,29 +334,15 @@
 									<option value="0">choose a option...</option>
 								</select>
 							</div>
-							<!-- <div class="moduleselection">
-								<select name="Cmoduleareaddl" id="Cmoduleareaddl"
-									class="defaultvalue labelclass" onclick="getArea();">
-									<option value="0">choose a option...</option>
-								</select> <select name="Cmodulesubjectddl" id="Cmodulesubjectddl"
-									class="defaultvalue labelclass" style="margin-right: 30px;">
-									<option value="0">choose a option...</option>
-								</select> <select name="Cmoduletopicddl" id="Cmoduletopicddl"
-									class="defaultvalue labelclass" style="margin-right: 0px;">
-									<option value="0">choose a option...</option>
-								</select>
-
-							</div> -->
-							<!-- end of moduleselection--->
-
+						
 						</div>
 						<!--end of Subject Selection-->
-						<div class="control-group" style="width: 69%">
+						<div class="control-group" style="width: 90%">
 							<label class="control-label nexaf" for="Specify Tags">Specify
 								Tags :</label>
 							<div class="controls">
-								<input id="Ctagfield_e" type="text" class="tags"
-									value="Computer Science, Literature, History" />
+								<input id="Addmoduletag" type="text" class="tags"
+									value="" />
 							</div>
 						</div>
 						<button class="btn f-r" type="button" style="margin-right: 10px;">Cancel</button>

@@ -53,9 +53,7 @@ $(document)
 															console
 																	.log("subject area is: "
 																			+ subject_area_pre);
-															// setTimeout("$('#Cmoduleareaddl').val('Religion');
-															// alert('hellos');",
-															// 3000);
+
 														});
 
 										token = '';
@@ -158,14 +156,6 @@ $(document)
 														function(data) {
 															options = data;
 															var option_string = '';
-
-															// option_string +=
-															// '<option
-															// selected="selected"
-															// value="Select
-															// Subject">Select
-															// Subject</option>';
-
 															for (i in options) {
 																label = options[i].label;
 																value = options[i].value;
@@ -232,9 +222,6 @@ $(document)
 								}, function(data) {
 									options = data;
 									var option_string = '';
-									// option_string += '<option
-									// selected="selected" value="Select
-									// Topic">Select Topic</option>';
 									for (i in options) {
 										label = options[i].label;
 										value = options[i].value;
@@ -336,7 +323,7 @@ function getaddmodulesave() {
 	var Subject_Area = $('#Cmoduleareaddl').val();
 	var Subject = $('#Cmodulesubjectddl').val();
 	var Topic = $('#Cmoduletopicddl').val();
-	// var Moduletag_Field = $('#Addmoduletag').val();
+	var Moduletag_Field = $('#Addmoduletag').val();
 
 	var parameters = {
 		"Course_id" : course_id,
@@ -347,8 +334,8 @@ function getaddmodulesave() {
 		"Module_Description" : Module_Description,
 		"Subject_Area" : Subject_Area,
 		"Subject" : Subject,
-		"Topic" : Topic
-	// "Moduletag_Field" : Moduletag_Field
+		"Topic" : Topic,
+		"Moduletag_Field" : Moduletag_Field
 
 	};
 
@@ -375,7 +362,6 @@ function getaddmodulesave() {
 							}
 						}
 					});
-	// }
 }
 
 function noteSuccessCallbackaddmodule(data) {
