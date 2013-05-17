@@ -39,7 +39,7 @@ public class AssociateCourseController {
 	
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
-	@RequestMapping(value = "/associatecontent", method = { RequestMethod.GET,
+	@RequestMapping(value = "/1/associatecontent", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView showAssociateContent() {
@@ -54,7 +54,7 @@ public class AssociateCourseController {
 		return modelView;
 	}
 
-	@RequestMapping(value = "/associatecontent/{courseId}", method = {
+	@RequestMapping(value = "/1/associatecontent/{courseId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView showAssociateCourse(@PathVariable String courseId) {
@@ -71,7 +71,7 @@ public class AssociateCourseController {
 				if(isModuleExists == 0 ){
 					return new ModelAndView("redirect:/zcourse/createcourse/"+courseId+"");
 				}else{
-				modelView = new ModelAndView("createmodule");
+				modelView = new ModelAndView("associatecontent");
 				modelView.addObject("CourseId", courseId);
 				mediaServerURL = mediaService.getMediaContents();
 				modelView.addObject("ms", mediaServerURL);
