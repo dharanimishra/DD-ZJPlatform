@@ -67,10 +67,9 @@
 	margin-left: 40px;
 	color: #0a91ac !important;
 }
+
 .select2-container {
-    
-    margin-right: 59px;
-   
+	margin-right: 59px;
 }
 </style>
 <script type="text/javascript">
@@ -261,7 +260,7 @@
 	<!--End of page-header -->
 
 	<div class="clearfix"></div>
-	 
+
 	<div>
 
 		<!-- BEGIN FORM-->
@@ -295,18 +294,7 @@
 						<!--end of course name-->
 
 						<br /> <label for="Course Description" class="labelclass"
-							style="font-weight: bold;"><b>Course Description :</b></label>
-						<!-- <a
-							class="f-r _plainText" id="plainText" href="#"
-							style="text-decoration: none;" onclick="showplain()">Rich
-							Text Editor</a> <a class="f-r _richText" id="richText" href="#"
-							style="text-decoration: none; display: none;"
-							onclick="showrich()">Plain Text Editor</a>
-						<textarea cols="124" rows="8" id="Module_Description"
-							class="_plainTextShow defaultvaluem labelclass"
-							style="width: 98%; color: #666;"> 
-											</textarea> -->
-						<br />
+							style="font-weight: bold;"><b>Course Description :</b></label> <br />
 						<div class="_richTextShow">
 							<textarea id="Cmoduledescrte" name="editor1pageload"
 								class="defaultvalue _focus">
@@ -317,42 +305,52 @@
 							CKEDITOR.replace('Cmoduledescrte');
 						</script>
 						<div class="control-group" style="margin-top: 20px;">
-							<div>
+							<!-- 		<div>
 								<label class="labelclass nexaf f-l"> Module Area : </label> <label
 									class="labelclass nexaf f-l" style="margin-left: 130px;">
 									Module Subject: </label> <label class="labelclass nexaf f-l"
 									style="margin-left: 110px;"> Module Topic: </label>
-							</div>
+							</div> -->
 							<div class="clearfix"></div>
 							<div class="moduleselection">
-								<select name="s_example" id="Cmoduleareaddl" class="select"
-									onclick="getArea();">
-									<option value="0">choose a option...</option>
-								</select> <select name="s_example" class="select" id="Cmodulesubjectddl">
-									<option value="0">choose a option...</option>
-								</select><select name="s_example" class="select" id="Cmoduletopicddl">
-									<option value="0">choose a option...</option>
-								</select>
-							</div>
-						
-						</div>
-						<!--end of Subject Selection-->
-						<div class="control-group" style="width: 90%">
-							<label class="control-label nexaf" for="Specify Tags">Specify
-								Tags :</label>
-							<div class="controls">
-								<input id="Addmoduletag" type="text" class="tags"
-									value="" />
-							</div>
-						</div>
-						<button class="btn f-r" type="button" style="margin-right: 10px;">Cancel</button>
-						<button class="btn f-r" type="button"
-							onClick="getaddmodulesave();return false;"
-							style="margin-right: 20px;">Submit</button>
+								<div style="width: 38%;margin-right:2px" class="f-l">
+									<label class="labelclass nexaf f-l"> Module Area : </label> <select
+										name="s_example" id="Cmoduleareaddl" class="select"
+										onclick="getArea();">
+										<option value="0">choose a option...</option>
+									</select>
+								</div>
+								<div style="width: 38%;" class="f-l">
+									<label class="labelclass nexaf f-l"> Module Subject: </label> <select
+										name="s_example" class="select" id="Cmodulesubjectddl">
+										<option value="0">choose a option...</option>
+									</select>
+								</div>
+								<div style="width: 22%;" class="f-l">
+									<label class="labelclass nexaf f-l"> Module Topic: </label> <select
+										name="s_example" class="select" id="Cmoduletopicddl">
+										<option value="0">choose a option...</option>
+									</select>
+								</div>
+								</div>
 
-						<div class="Clearfix"></div>
+							</div>
+							<!--end of Subject Selection-->
+							<div class="control-group" style="width: 90%">
+								<label class="control-label nexaf" for="Specify Tags">Specify
+									Tags :</label>
+								<div class="controls">
+									<input id="Addmoduletag" type="text" class="tags" value="" />
+								</div>
+							</div>
+							<button class="btn f-r" type="button" style="margin-right: 10px;">Cancel</button>
+							<button class="btn f-r" type="button"
+								onClick="getaddmodulesave();return false;"
+								style="margin-right: 20px;">Submit</button>
 
-						<!--module form-->
+							<div class="Clearfix"></div>
+
+							<!--module form-->
 					</form>
 				</div>
 			</div>
