@@ -15,16 +15,12 @@
 		<module>zsecurity</module>
 		<module>zassessment</module>
 		<module>zcourse</module>
-		<module>zmember</module>
 		<module>ziksana-web</module>
 		<module>zpolls</module>
-		<module>zsample</module>
 		<module>zalert</module>
 		<module>zblogs</module>
 		<module>zknowmebetter</module>
 		<module>zmycontacts</module>
-		<module>zinstitution</module>
-		<module>zclass</module>
 		<module>ztodo</module>
 		<module>zrecommendations</module>
 		<module>zsubscription</module>
