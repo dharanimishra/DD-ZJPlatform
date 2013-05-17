@@ -118,9 +118,9 @@
 
 	<!-- Metro Associate Content -->
 	<definition name="masterassociatecontent" extends="ziksana-master">
-		<put-attribute name="master_title" value="Course Creation" />
+		<put-attribute name="master_title" value="Associate Content" />
 		<put-attribute name="content"
-			value="/WEB-INF/screens/courses/coursecreation.jsp" />
+			value="/WEB-INF/screens/courses/associatecontent.jsp" />
 	</definition>
 
 	<!-- Metro Create Content -->
@@ -218,10 +218,10 @@
 
 
 	<!-- Metro Associate Content -->
-	<definition name="associatecontent" extends="ziksana-master">
-		<put-attribute name="master_title" value="Course Creation" />
+	<definition name="associatecontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Associate Content" />
 		<put-attribute name="content"
-			value="/WEB-INF/screens/courses/coursecreation.jsp" />
+			value="/WEB-INF/screens/courses/associatecontent.jsp" />
 	</definition>
 
 
