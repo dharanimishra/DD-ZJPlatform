@@ -21,7 +21,7 @@
 
 <span class="Accounthead">Account Settings</span> <img id="user_menu_trigger" class="Dropdown" src="/ziksana-web/resources/images/home/dropdown.png"/> </div>    
 <div id="user_menu">
-	<a href="#">Manage Profile</a>
+	<a href="/ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/>">Manage Profile</a>
 	<a href="/ziksana-web/secure/logout">Sign Out</a>
 </div>   
 </div> 

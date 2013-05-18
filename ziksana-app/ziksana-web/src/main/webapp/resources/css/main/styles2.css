@@ -250,15 +250,14 @@ padding: 7px;
 
 .imagewrapper
 {
-position:absolute;
-width:650px;
-background-image:url(../../images/home/bghome.png);
-height:380px;
+
+/* background-image:url(../../images/home/bghome.png); */
+
 }
 
 .panelhead
 {
-position:absolute;	
+background:#009AD7 !important;	
 }
 
 .panelhead ul
@@ -266,15 +265,15 @@ position:absolute;
 list-style:none;
 background-color:#6bbde8;
 padding:10px;
-width:650px;
+width:690px;
 border-bottom:2px solid #333;
 }
 
 .panelhead ul li 
 {
 display:inline;
-
-padding-left:60px;
+padding-left:10px;
+padding-right:60px;
 width:500px;
 font-size:18px;
 color:#fff;
@@ -295,6 +294,37 @@ border:none;
 	padding:10px;
 	height:40px;
 	background-color:#00F;
+}
+.previewarea
+ {
+overflow:auto;
+ margin-left:10px;
+height:325px;
+width:650px;
+ background-color:#525252;
+
+ margin-bottom:10px;
+ }
+
+.messagecontainer
+ {
+
+   margin:auto; 
+
+  height:320px;
+   overflow:auto;
+
+  
+ }
+ reviewtable table, td{
+  
+ }
+ .reviewtable table{width:100%;border-collapse:collapse;margin:1em 0;}
+ .reviewtable th, td{text-align:left;padding:.5em; padding-left:0;}
+	height:320px;
+ overflow:auto;
+ overflow-x:hidden;
+ background-color: #525252;  
 }
 
 .isotoplinks a
@@ -330,7 +360,7 @@ text-decoration:none;
 .contentareaevent
 {
 	position:absolute;
-	margin-top:60px;
+	margin-top:-13px;
 }
 
 .box-blue
@@ -1561,7 +1591,7 @@ margin-top:15px;
 #socialmeadia2
 {
 margin-left: 490px;
-margin-top: -35px;
+margin-top: -15px;
 }
 
 #footercontainer
@@ -1950,16 +1980,18 @@ color:rgb(27, 166, 206);
 
 .tilecontainer
 {
-padding:20px;
-width:460px;
+padding-left: 15px;
+padding-top: 20px;
+width: 435px;
 
 }
 
 .contentarea
 {
-width: 650px;
-height: 540px;
+width: 690px;
 margin-top: 20px;
+margin-right: 10px;  
+background-color: rgb(22, 142, 190);
 margin-right: 20px;	
 }
 
@@ -2113,6 +2145,128 @@ margin-left:5px;
   padding: 0.25em 0.5em;
   text-decoration: none;
 }
+
+.flip-container {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+
+	border: 1px solid #ccc;
+}
+
+	.flip-container:hover .flipper,  
+  .flip-container.hover .flipper {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 427px;
+}
+
+.flipper {
+	-webkit-transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+
+	-moz-transition: 0.6s;
+	-moz-transform-style: preserve-3d;
+  
+  -o-transition: 0.6s;
+	-o-transform-style: preserve-3d;
+
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+.front, .back {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front {
+	background: url(http://davidwalsh.name/demo/dwflip.jpg) 0 0 no-repeat;
+	z-index: 2;
+}
+
+.back {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+
+	background: #f8f8f8;
+}
+
+.front .name {
+	font-size: 2em;
+	display: inline-block;
+	background: rgba(33, 33, 33, 0.9);
+	color: #f8f8f8;
+	font-family: Courier;
+	padding: 5px 10px;
+	border-radius: 5px;
+	bottom: 60px;
+	left: 25%;
+	position: absolute;
+	text-shadow: 0.1em 0.1em 0.05em #333;
+
+	-webkit-transform: rotate(-20deg);
+	-moz-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+	transform: rotate(-20deg);
+}
+
+
+
+
+.back p {
+	position: absolute;
+	bottom: 40px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	padding: 0 20px;
+  font-family: arial;
+  line-height: 2em;
+}
+
+
+input[type="checkbox"] {
+    display:none;
+}
+
+input[type="checkbox"] + label {
+    color:#f2f2f2;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+}
+
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url(../../images/check_radio_sheet.png) left top no-repeat;
+    cursor:pointer;
+}
+
+input[type="checkbox"]:checked + label span {
+    background:url(../../images/check_radio_sheet.png) -19px top no-repeat;
+}
+
 #user_menu a:hover {background: black; color: white; }
 
 .closedtodo{cursor: pointer; text-decoration:line-through;}
