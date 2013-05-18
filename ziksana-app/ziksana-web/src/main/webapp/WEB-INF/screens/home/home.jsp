@@ -1,5 +1,7 @@
 
-
+<script src="/ziksana-web/resources/js/custom/table/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/custom/alertstodoevents.js"></script>
+<script type="text/javascript" src="/ziksana-web/resources/js/custom/jquery.hovercard.js"></script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
 	<div class="Zikbreadcrumb f-l">
@@ -8,7 +10,7 @@
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
 			<p class="page-title">
-				<span style="font-size: 13px; color: #6bbde8;">Home</span> < Create
+				<span style="font-size: 13px; color: #6bbde8;"><fmt:message key="home.hometext"></fmt:message></span>
 				Course
 			</p>
 
@@ -53,16 +55,17 @@
 
 		</div>
 
-
+<a href="/ziksana-web/zcourse/createcontent">
 		<div class="tile bg-color-blueDark">
 			<img class="tileimg" src="/ziksana-web/resources/images/icons/createcontent.png" />
-			<h3>Create Content</h3>
+			<h3><fmt:message key="home.createcontent"></fmt:message></h3>
 
 		</div>
+		</a>
 		<div class="tile">
 
 			<img class="tileimg" src="/ziksana-web/resources/images/icons/managecourse.png" />
-			<h3>Manage Content</h3>
+			<h3><fmt:message key="home.managecontent"/></h3>
 
 		</div>
 
@@ -70,19 +73,18 @@
 		<div class="tile bg-color-blueDark">
 
 			<img class="tileimg" src="/ziksana-web/resources/images/icons/editcoursecontent.png" />
-			<h3 style="width: 90px;">Edit draft course</h3>
+			<h3 style="width: 90px;"><fmt:message key="home.editcourse"/></h3>
 
 		</div>
 
-
+<a href="/ziksana-web/zcourse/createcourse">
 		<div class="tile bg-color-blue">
 
 			<img class="tileimg" src="/ziksana-web/resources/images/icons/createcourse.png" />
-			<h3 style="margin-left: 10px; font-size: 20px; width: 30px;">Create
-				course</h3>
+			<h3 style="margin-left: 10px; font-size: 20px; width: 30px;"><fmt:message key="home.createcourse"/></h3>
 
 		</div>
-
+</a>
 
 
 
@@ -92,8 +94,7 @@
 				<img src="/ziksana-web/resources/images/icons/courseanaltic.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 22px; width: 160px;">Course
-					Analytics</h3>
+				<h3 style="margin-left: 6px; font-size: 22px; width:98%;"><fmt:message key="home.analytics"/></h3>
 			</div>
 		</div>
 
@@ -105,7 +106,7 @@
 				<img src="/ziksana-web/resources/images/icons/announcement.png" alt="mes" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 22px;">Announcements</h3>
+				<h3 style="margin-left: 10px; font-size: 22px;"><fmt:message key="home.announcement"/></h3>
 			</div>
 		</div>
 
@@ -451,7 +452,7 @@ font-size:13px;
 color:#fff;	
 }
 
-.metrouicss a
+/* .metrouicss a
 {
 color:#fff;	
 }
@@ -459,7 +460,7 @@ color:#fff;
 .metrouicss a:hover
 {
 color:#333;	
-}
+} */
 
 .tileheadaa
 {
@@ -502,3 +503,22 @@ display:none;
 display:none;	
 }
 </style>
+ <script src="/ziksana-web/resources/js/custom/table/breakpoints/breakpoints.js"></script>	
+	<!-- ie8 fixes -->
+	<!--[if lt IE 9]>
+	<script src="assets/js/excanvas.js"></script>
+	<script src="assets/js/respond.js"></script>
+	<![endif]-->	
+	
+	<script type="text/javascript" src="/ziksana-web/resources/js/custom/table/data-tables/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="/ziksana-web/resources/js/custom/table/data-tables/DT_bootstrap.js"></script>
+	<script src="/ziksana-web/resources/js/custom/table/js/app.js"></script>		
+	<script>
+		jQuery(document).ready(function() {			
+			// initiate layout and plugins
+			App.setPage("table_editable");
+			App.init();
+			
+			$('table').dataTable({"bFilter": false,"bInfo": false});
+		});
+	</script>

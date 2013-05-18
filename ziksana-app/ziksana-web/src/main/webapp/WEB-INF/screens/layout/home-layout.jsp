@@ -8,7 +8,7 @@
 <tiles:insertAttribute name="common_js" />
 </head>
 <body class="metrouicss">
-	<div id="background" style="overflow:hidden;">
+	<div id="background"  >
 		<div id="wrapper">
 				<section >
 					<tiles:insertAttribute name="menu" />			
@@ -19,12 +19,14 @@
 					<div id="leftpanel">
 						<tiles:insertAttribute name="header" />		
 						<tiles:insertAttribute name="content" />
+						<tiles:insertAttribute name="page_footer" />
 					</div>
 					
 				</section>
+							 
+				
 		 </div>
 		
-			<tiles:insertAttribute name="page_footer" /> 
 			
 </div>
 
