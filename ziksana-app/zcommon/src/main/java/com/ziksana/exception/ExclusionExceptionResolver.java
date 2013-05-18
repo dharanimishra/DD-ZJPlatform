@@ -30,7 +30,8 @@ public class ExclusionExceptionResolver extends SimpleMappingExceptionResolver
 		// return super.doResolveException(request, response, handler, ex);
 
 		LOGGER.error(ex.getMessage(), ex);
-		ModelAndView modelAndView = new ModelAndView("error/ziksana_error");
+		//TODO fetch it from propertis 
+		ModelAndView modelAndView = new ModelAndView(MessageUtil.getMessage(ZiksanaConstants.ZIKSANA_ERROR_PAGE_PATH));
 		modelAndView.addObject("errorMessage",
 				MessageUtil.getMessage(ZiksanaConstants.COMMON_ERROR_MESSAGE));
 		return modelAndView;

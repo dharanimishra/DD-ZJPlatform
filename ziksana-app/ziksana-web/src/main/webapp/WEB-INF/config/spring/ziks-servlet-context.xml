@@ -84,7 +84,7 @@
 		<property name="order" value="3" />
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="prefix" value="/WEB-INF/screens/" />
 		<property name="suffix" value=".jsp" />
 		<property name="exposedContextBeanNames">
         <list><value>properties</value></list>

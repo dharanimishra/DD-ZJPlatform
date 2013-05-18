@@ -14,6 +14,7 @@ package com.ziksana.constants;
 public interface ZiksanaConstants {
 	
 	public static final String COMMON_ERROR_MESSAGE = "ziksana.common.error.message";
+	public static final String ZIKSANA_ERROR_PAGE_PATH = "ziksana_error_page_path";
 	
 	//ziksana.common.error.message
 	public static final String SYSTEM_EXCEPTION = "SYSTEM";
