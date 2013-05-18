@@ -113,8 +113,7 @@
 							$('#Cimageupl').val('');//clear uploaded file path
 							$('#thubmnail_upload_message').html('');
 							$('#profile_thumbnail_image')
-									.attr('src',
-											'${staticFileServer}resources/images/default-course.jpg');
+									.attr('src','/ziksana-web/resources/images/no-image.jpg');
 
 						}
 					</script>
@@ -158,8 +157,8 @@
 
 
 			<div class="clearfix"></div>
-			<div id="profile_response_message"style="color: red; padding: 5px; text-align: center;"></div>
-			<div id="profile_response_success"style="color: green; padding: 5px; text-align: center;"></div>
+			<div id="profile_response_message"style="color: red; text-align: center;"></div>
+			<div id="profile_response_success"style="color: green; text-align: center;"></div>
 			<hr />
 
 			<div class="formcontainer">
@@ -184,7 +183,7 @@
 						style="width: 180px;"><fmt:message
 							key="profile.securityquestion1"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
-						<select class="profileselect" id="securityQuestionOne">
+						<select class="profileselect nexaf" style="font-weight:normal" id="securityQuestionOne">
 							<option selected="selected">Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
 								<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
@@ -214,7 +213,7 @@
 							key="profile.securityquestion2"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
 
-						<select class="profileselect" id="securityQuestionTwo">
+						<select class="profileselect nexaf" style="font-weight:normal" id="securityQuestionTwo">
 							<option selected="selected">Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
 								<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
@@ -403,8 +402,9 @@
 						
 						
 						<div  id="passEdit">
-					<label class="control-label nexaf" for="Change Password">Change Password :</label><label id="passwordUpdatedDate"><c:out value="${passwordUpdated}"></c:out></label>	
-						 <a   id="lblpass" onclick="showchangepwd('Edit_pass')" class="editfeild">Edit</a>
+					<label class="control-label nexaf" for="Change Password">Change Password :</label>
+					<label id="passwordUpdatedDate" class="control-label nexaf"  style="margin-left: 20px;width:300px"><c:out value="${passwordUpdated}"></c:out></label>	
+						 <a   id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild">Edit</a>
 						 </div>
 					      
 						  <div class="editcontroll" style="display:none;" id="Edit_pass" ><a style="float:right;cursor:pointer;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
@@ -419,14 +419,13 @@
 					  		<button class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" >Save</button>
 						  </div>
 						  </div>
-						</div>
-					   
-						
-						<div class="control-group"> 
-					     
+						 </div>
+						  
+					      <div class="control-group"> 
+					      <div class="clearfix"></div>
 						 <div  id="lblaltEmail">
 						 <label class="control-label nexaf" for="Course Name">Alternate Email :</label>
-						 <label class="control-label nexaf"  for="AlternativeEmail Name" style="margin-left:20px;"><c:out value="${profileAnswerOne.alternateEmailId}"></c:out></label>
+						 <label class="control-label nexaf" id="alternateMailLabel" for="AlternativeEmail Name" style="margin-left:20px;"><c:out value="${profileAnswerOne.alternateEmailId}"></c:out></label>
 						 
 						
 						 <a  onclick="editFeilds('EditAlt_mail')" class="editfeild">Edit</a>
@@ -449,19 +448,19 @@
 						  <div  id="lblsq1">
 					     <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 1 :</label>
 						  
-						 <label class="control-label nexaf" style="width:65%"><c:out value="${profileAnswerOne.securityQuestionText}"></c:out></label>
+						 <label id="ques_text_diplayone" class="control-label nexaf" style="width:65%"><c:out value="${profileAnswerOne.securityQuestionText}"></c:out></label>
 					      <a  onclick="changesq1('Editsq1')" class="editfeild" >Edit</a>
 						 </div>
 					     
 						  <div class="clearfix"></div>
 						  
-					      <div  id ="Editsq1" class="editcontroll"  style="display:none;">
+					      <div  id ="Editsq1" class="editcontroll"  style="display:none;"><a style="float:right;cursor:pointer;" onclick="showlblsq1('lblsq1')" title="Close">[X]</a>
 						  <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 1 :</label>
 						   
-					    <select class="profileselect" id="securityQuestionOne" style="margin-bottom:5px;width:380px;">
+					    <select class="profileselect nexaf" style="font-weight:normal" id="editQuestionOne" style="margin-bottom:5px;width:380px;">
 							<option>Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
-								<c:if test="${profileAnswerOne.securityQuestionText ==profile.securityQuestionText}">
+										<c:if test="${profileAnswerOne.securityQuestionText ==profile.securityQuestionText}">
 											<option selected="selected" value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
 										</c:if>
 										<c:if test="${profileAnswerOne.securityQuestionText != profile.securityQuestionText}">
@@ -472,11 +471,12 @@
 					
 					<label class="control-label nexaf" for="Course Name">Security Answer 1 :</label>
 					     <div class="controls">
-					      <input type="password" class="profileinput" id="sec_answer1" value="${profileAnswerOne.memberAnswer}"  name="sec_answer1" placeholder="Security Answer 1" style="width:368px;" />         
+					      <input type="password" class="profileinput" id="editSecAnswerOne" value="${profileAnswerOne.memberAnswer}"  name="sec_answer1" placeholder="Security Answer 1" style="width:368px;" />         
 					      </div>
+					      <p id="secQuesOneError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
-						   <button class="btn btn-primary f-r" type="button" style="margin-right:-15px;" onclick="showlblsq1('lblsq1')" >Cancel</button>
-					  <button class="btn btn-primary f-r" type="button" style="margin-right:20px;" >Save</button>
+						   
+ 					  <button class="btn btn-primary f-r" onclick="editUpdateSecuQuestion()" type="button" style="margin-right:20px;" >Save</button>
 						  </div>
 						  
 					      </div>
@@ -488,23 +488,23 @@
 					     
 						 <div id="lblsq2">
 						 <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 2 :</label>
-						 <label class="control-label nexaf" style="width:65%"><c:out value="${profileAnswerTwo.securityQuestionText}"></c:out></label>
+						 <label id="ques_text_diplaytwo" class="control-label nexaf" style="width:65%"><c:out value="${profileAnswerTwo.securityQuestionText}"></c:out></label>
 					      <a  onclick="changesq2('Editsq2')" class="editfeild" >Edit</a>
 						 </div>
 					      
 						  <div class="clearfix"></div>
 						  
-					      <div  id ="Editsq2" class="editcontroll"  style="display:none;">
+					      <div  id ="Editsq2" class="editcontroll"  style="display:none;"><a style="float:right;cursor:pointer;" onclick="showlblsq2('lblsq2');" title="Close">[X]</a>
 						  <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 2 :</label>
 					    
-					<select class="profileselect" id="securityQuestionTwo" style="margin-bottom:5px;width:380px;">
+					<select class="profileselect nexaf" style="font-weight:normal" id="securityQuestionTwo" style="margin-bottom:5px;width:380px;">
 							<option >Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
 									
 										<c:if test="${profileAnswerTwo.securityQuestionText ==profile.securityQuestionText}">
 											<option selected="selected" value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
 										</c:if>
-										<c:if test="${profileAnswerOne.securityQuestionText != profile.securityQuestionText}">
+										<c:if test="${profileAnswerTwo.securityQuestionText != profile.securityQuestionText}">
 											<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
 										</c:if>
 									
@@ -514,11 +514,12 @@
 						</select>
 					<label class="control-label nexaf" for="Course Name">Security Answer 2 :</label>
 					     <div class="controls">
-					      <input type="password" class="profileinput" id="sec_answer1" value="${profileAnswerTwo.memberAnswer}" name="sec_answer2" placeholder="Security Answer 1" style="width:368px;"/>         
+					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="${profileAnswerTwo.memberAnswer}" name="sec_answer2" placeholder="Security Answer 1" style="width:368px;"/>         
 					      </div>
+					      <p id="secQuesTwoError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
-						   <button class="btn btn-primary f-r" type="button" style="margin-right:-15px;" onclick="showlblsq2('lblsq2')" >Cancel</button>
-					  <button class="btn btn-primary f-r" type="button" style="margin-right:20px;" >Save</button>
+						   
+					  <button class="btn btn-primary f-r" onclick="editSaveSecQuesTwo()" type="button" style="margin-right:20px;" >Save</button>
 						  </div>
 						  
 					      </div>
@@ -746,7 +747,7 @@ function clearProfileForm(){
 		function alterEmailSubmit(email){
 			
 			alternateEmailId = $("#alttenateEmailValue").val();
-			memberIdVal = $("#memberIdValue").val();
+			memberIdVal = $("#memberIdValue").text();
 			if(alternateEmailId != ''){
 				if (primaryEmailId == alternateEmailId) {
 					$('#alternateEmailError').html("Alternate email id should not be same as Primary email id");
@@ -760,15 +761,14 @@ function clearProfileForm(){
 				if(alternateEmailId.match(mailformat))  
 				{  
 					$.post( '/ziksana-web/profile/1/updatealternatemail'
-					        , {'memberId':memberId,'alternateEmailId':alternateEmailId}
+					        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId}
 					        , function( data )
 					        {
 					        
-					        	if(data == 'success'){
-						          	   
-						          	   $('#profile_response_success').html("Profile Updated Sucessfully");
-						          	   setTimeout(doRefreshCall,3000);
-
+					        	if(data == 2){
+				
+						          	   $('#alternateMailLabel').html(alternateEmailId);						          	  
+						          	 showlbl('lblaltEmail');
 						             }
 							
 					        }
@@ -936,6 +936,64 @@ function passwordStartCharectors(val){
 		return false;
 	}
 }
+function editUpdateSecuQuestion(){
+	alternateEmailId = $("#alttenateEmailValue").val();
+	memberIdVal = $("#memberIdValue").text();
+	editQuestionOne = $("#editQuestionOne").val();
+	
+	var Select = document.getElementById("editQuestionOne");
+
+	var editQuestionOneValue = Select.options[Select.selectedIndex].text;
+
+	editSecAnswerOne= $("#editSecAnswerOne").val();
+	console.log(alternateEmailId,memberIdVal,editQuestionOne,editQuestionOneValue,editSecAnswerOne);
+	 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
+	        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionOne,'SecurityQuestionValue':editQuestionOneValue,'SecurityAnswer':editSecAnswerOne}
+	        , function( data )
+	        {
+	        
+	        	if(data == 1){
+		          	   	          	 
+	        		showlblsq2('lblsq2');
+		          	$('#ques_text_diplayone').html(editQuestionOneValue);
+		          	
+		             }else{
+		            	  $('#secQuesTwoError').html("Error"); 
+		             }
+			
+	        }
+			 );  
+}
+
+function editSaveSecQuesTwo(){
+	alternateEmailId = $("#alttenateEmailValue").val();
+	memberIdVal = $("#memberIdValue").text();
+	editQuestionTwo = $("#securityQuestionTwo").val();
+	
+	var Select = document.getElementById("securityQuestionTwo");
+
+	var editQuestionOneValue = Select.options[Select.selectedIndex].text;
+
+	editSecAnswerTwo= $("#editSecAnswerTwo").val();
+	console.log(alternateEmailId,memberIdVal,editQuestionOne,editQuestionOneValue,editSecAnswerOne);
+	 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
+	        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionTwo,'SecurityQuestionValue':editQuestionOneValue,'SecurityAnswer':editSecAnswerTwo}
+	        , function( data )
+	        {
+	        
+	        	if(data == 1){
+		          	   	          	 
+		          	 showlblsq1('lblsq1');
+		          	$('#ques_text_diplaytwo').html(editQuestionOneValue);
+		          	
+		             }else{
+		            	  $('#secQuesOneError').html("Error"); 
+		             }
+			
+	        }
+			 );  
+}
+
 
 </script>
 <style>

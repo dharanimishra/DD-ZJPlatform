@@ -28,6 +28,5 @@ public interface ProfileMapper {
 
 	public List<MemberProfile> getMemberProfileListByRole(int memberRoleId);
 
-	public int updateProfileAlternateMail(String memberId,
-			String alternateEmailId);
+	public int updateProfileAlternateMail(@Param("memberId")int memberId,@Param("alternateEmailId")String alternateEmailId);
 }

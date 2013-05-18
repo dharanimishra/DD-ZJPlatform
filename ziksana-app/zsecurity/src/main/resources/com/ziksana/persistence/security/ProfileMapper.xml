@@ -14,6 +14,13 @@
 		select * from memmemberprofile where memberId = #{memberId}  and securityQuestionId like #{securityQuestionId}
 	</select>
 	
+	<update id="updateProfileAlternateMail"  parameterType="map">
+	update memmemberprofile		
+		<set>
+			alternateEmailId=#{alternateEmailId}
+		</set>
+		where memberId=#{memberId}
+	</update>
 	
 	
 	<update id="updateMemberProfile" parameterType="com.ziksana.domain.member.MemberProfile">
@@ -22,7 +29,7 @@
 			<if test="memberAnswer != null">
 				memberAnswer=#{memberAnswer},
 			</if>
-			<if test="alternateEmailId != null">
+			<if test="alternateEmailId != ''">
 				alternateEmailId=#{alternateEmailId},
 			</if>
 			<if test="active != null">

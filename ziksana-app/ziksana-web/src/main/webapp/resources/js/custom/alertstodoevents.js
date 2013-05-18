@@ -27,6 +27,7 @@ $(".tagtask").click(function(e) {
 	 $(".contentareaalrt").slideUp(200); 
     $(".contentareaevent").slideUp(200);
 	$(".contentareamanagetodo").slideUp(500);
+	get_and_populate_todo();
 	$(".contentareatodo").slideDown(500);
 	
 });
@@ -43,6 +44,7 @@ $(".managetodo").click(function(e) {
 	 $(".contentareaalrt").slideUp(200); 
     $(".contentareaevent").slideUp(200);
 	$(".contentareatodo").slideUp(200);
+
 	$(".contentareamanagetodo").slideDown(500);
 	});
 
@@ -79,5 +81,7 @@ if($("#todocategoryddl").val() == "University")
 	
 
 });
+
+
 
 

@@ -148,14 +148,41 @@ public class ProfileController {
 		
 	}
 	
+	@RequestMapping(value = "/1/editupdateprofile", method = RequestMethod.POST)
+	public @ResponseBody int editAndUpdateUserProfile(
+			@RequestParam(value = "memberId", required = true) String memberId,
+			@RequestParam(value = "alternateEmailId", required = false) String alternateEmailId,
+			@RequestParam(value = "SecurityQuestionId", required = true) String SecurityQuestionId,
+			@RequestParam(value = "SecurityQuestionValue", required = true) String SecurityQuestionValue,
+			@RequestParam(value = "SecurityAnswer", required = true) String SecurityAnswer) {
+		
+		int response = 0;
+	
+		try{	
+				MemberProfile profile = new MemberProfile();
+				profile.setAlternateEmailId(alternateEmailId);
+				profile.setMemberId(Integer.parseInt(memberId));
+				profile.setSecurityQuestionId(SecurityQuestionId);
+				profile.setSecurityQuestionText(SecurityQuestionValue);
+				profile.setMemberAnswer(SecurityAnswer);
+				response = profileService.updateMemberProfile(profile);
+		}
+		catch(ZiksanaException zexception){
+
+			LOGGER.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
+		return response;
+		
+	}
+	
 	@RequestMapping(value = "/1/updatealternatemail", method = RequestMethod.POST)
 	public @ResponseBody int updateProfileAlternateMail(
 			@RequestParam(value = "memberId", required = true) String memberId,
-			@RequestParam(value = "alternateEmailId", required = false) String alternateEmailId) {
+			@RequestParam(value = "alternateEmailId", required = true) String alternateEmailId) {
 		int response = 0;
 		try{		
 			
-			
+			response = profileService.updateProfileAlternateMail(Integer.parseInt(memberId), alternateEmailId);
 		}
 		catch(ZiksanaException zexception){
 

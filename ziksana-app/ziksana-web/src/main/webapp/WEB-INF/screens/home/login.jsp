@@ -225,8 +225,7 @@ function validate(){
 
         // Populate user based on cookie language
         var language = $.cookies.get('org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE');
-        $('#language')
-                .val(language)
+        $('#language').val(language)
                 .change(function () {
                     var newHref = window.location.href;
                     if (newHref.indexOf('?siteLanguage') > 0) {

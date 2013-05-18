@@ -35,25 +35,22 @@
 
 
 
-		<div class="tile bg-color-blue" style="width: 270px;">
-
-			<p>
-				<img src="/ziksana-web/resources/images/home/profilepic.png" align="left"
-					style="margin-top: 15px; margin-left: 5px; height: 100px; margin-right: 10px;"
-					class="img-polaroid" />
-			</p>
-
-			<p class="profiletilename pull-left"
-				style="font-size: 20px; width: 120px; margin-top: 15px;">Scott
-				Chris</p>
-			<p>Associate Professor</p>
-
-
-			<img src="/ziksana-web/resources/images/home/badge.png" width="146"
-				style="width: 148px; margin-left: -4px;" />
-
-
-		</div>
+		<div class="tile bg-color-blue" style="width:270px;">
+			 <c:if test="${empty member.picturePath}">
+			 <p><img src="<c:out value="/ziksana-web${member.picturePath}"/> " align="left" style="margin-top: 15px; margin-left: 5px; height:100px; margin-right:10px;" class="img-polaroid"/></p>
+			 </c:if>
+			 <c:if test="${not empty ms.url && not empty member.picturePath}">
+			 <p><img src="${ms.url}<c:out value="${member.picturePath}"/>" align="left" style="margin-top: 15px; margin-left: 5px; height:100px; margin-right:10px;" class="img-polaroid"/></p>
+			 </c:if>
+			 <p  class="profiletilename pull-left" style="font-size: 20px; width:120px;
+			margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.lastName}"/></p>
+			<p> <c:out value="${member.designation}"/> </p>
+			
+			 
+			  <img  src="/ziksana-web/resources/images/home/badge.png" width="146" style="width:148px; margin-left:-4px;"/>
+ 
+ 
+  </div>
 
 <a href="/ziksana-web/zcourse/createcontent">
 		<div class="tile bg-color-blueDark">
@@ -135,8 +132,8 @@
 			<div class="panelhead" style="margin-top: -12px;">
 
 				<ul>
-					<li><a href="#linkrl" class="tagevent"> Events </a></li>
-					<li><a href="#linkurl" class="tagtask"> To Do </a></li>
+					<li><a href="#" class="tagevent"> Events </a></li>
+					<li><a href="#" class="tagtask"> To Do </a></li>
 
 
 				</ul>
@@ -243,94 +240,9 @@
 			<!-- __________________________________ to do container ____________________ -->
 
 
-			<div class="contentareatodo" style="position: absolute; width: 690px;">
+			<div class="contentareatodo" id="todos_placeholder" style="position: absolute; width: 690px;">
 
-				<div class="eventheader"
-					style="height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top:-12px;">
-
-					<p class="pull-left"
-						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
-						To DO List</p>
-
-
-
-
-				</div>
-				<!--end of eventheader-->
-
-
-
-
-				<div class="eventcontent"
-					style="height: 280px; overflow: auto; overflow-x: hidden;">
-					<table class="table table-hover table-striped">
-
-						<tbody>
-
-							<tr>
-								<td><input type="checkbox" id="c1" name="cc" /> <label
-									for="c1"><span></span></label></td>
-								<td>University</td>
-								<td class="todoinfo-decription" style=><span width="200px"
-									id="demo-basic" style="cursor: pointer; margin-bottom: 6px;">Joe
-										Miller for Aero Dynamics: Assn-1</span>
-							</tr>
-							<tr>
-								<td><input type="checkbox" id="c2" name="cc2" /> <label
-									for="c2"><span></span></label></td>
-								<td>University</td>
-								<td>Football Match at university Ground</td>
-
-							</tr>
-
-							<tr>
-								<td><input type="checkbox" id="c3" name="cc" /> <label
-									for="c3"><span></span></label></td>
-								<td>University</td>
-								<td>Football Match at university Ground</td>
-
-							</tr>
-
-							<tr>
-								<td><input type="checkbox" id="c4" name="cc" /> <label
-									for="c4"><span></span></label></td>
-								<td>University</td>
-								<td>Football Match at university Ground</td>
-
-							</tr>
-							<tr>
-								<td><input type="checkbox" id="c5" name="cc" /> <label
-									for="c5"><span></span></label></td>
-								<td>University</td>
-								<td>Football Match at university Ground</td>
-
-							</tr>
-
-
-
-
-						</tbody>
-					</table>
-			</div>
-				<!--end of eventcontent-->
-
-
-
-				<div class="eventfooter"
-					style="height: 30px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
-
-					<p class="pull-right" style="color: #fff;">
-						<a  class="managetodo" coords="#fff !important;">
-							<img src="/ziksana-web/resources/images/icons/settings.png" align="Manage todo"
-							style="height: 20px; margin-left: 6px; vertical-align: middle;" />
-						</a>
-					</p>
-
-					<div class="clearfix"></div>
-
-				</div>
-				<!--end of eventfooter-->
-
+				
 
 			</div>
 			<!--end of contentareaevent-->
@@ -517,8 +429,61 @@ display:none;
 		jQuery(document).ready(function() {			
 			// initiate layout and plugins
 			App.setPage("table_editable");
-			App.init();
-			
+			App.init();		
 			$('table').dataTable({"bFilter": false,"bInfo": false});
+			
 		});
+		//TODO Ajax Call
+		var no_of_available_todo;
+		function get_and_populate_todo(){
+			$.ajax({
+			  	type: 'GET',
+				url: '/ziksana-web/ztodo/showalltodo',
+				dataType: 'xml',
+				success: function( data ) {
+						
+						var output_todo="";
+						
+						var indexValue = 0;
+						
+					
+						
+						
+						$.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
+							no_of_available_todo = size;
+						
+							var ouputEmptyTodo="";
+							
+							
+							if(no_of_available_todo == 0){$('#todos_placeholder').html(ouputEmptyTodo);} else{
+								
+
+								 
+								ouputEmptyTodo+="<div class='eventheader'style='height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top:-12px;'>";
+								ouputEmptyTodo+="<p class='pull-left' style='color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;'>To DO List</p></div>";
+								ouputEmptyTodo+="<div class='eventcontent' style='height: 280px; overflow: auto; overflow-x: hidden;'>";
+								ouputEmptyTodo+="<table class='table table-hover table-striped'>";
+								ouputEmptyTodo+="<tbody>";
+								 $(data).find("todoitem").each(function(index){
+									 ouputEmptyTodo+="<tr id='todorow"+$(this).find('id').text()+"'><td><input type='checkbox'  name='checkstatus"+$(this).find('id').text()+"' /> <label><span></span></label></td><td>"+$(this).find("categoryName").text()+"</td>";
+									 ouputEmptyTodo+="<td class='todoinfo-decription'><span width='200px' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;'>"+$(this).find("subject").text()+"</span></tr>";
+									 
+								 });
+								 ouputEmptyTodo+="</tbody></table></div>";
+								 ouputEmptyTodo+="<div class='eventfooter' style='height: 30px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;'>";
+								 ouputEmptyTodo+="<p class='pull-right' style='color: #fff;'>";
+								 ouputEmptyTodo+="<a  class='managetodo' coords='#fff !important;'><img src='/ziksana-web/resources/images/icons/settings.png' align='Manage todo' style='height: 20px; margin-left: 6px; vertical-align: middle;' /></a>";
+								 ouputEmptyTodo+="</p><div class='clearfix'></div></div>";
+								 
+								$('#todos_placeholder').html(ouputEmptyTodo);
+								
+								
+							}
+							
+						});
+				}	
+			});
+								  
+		}
+	
 	</script>

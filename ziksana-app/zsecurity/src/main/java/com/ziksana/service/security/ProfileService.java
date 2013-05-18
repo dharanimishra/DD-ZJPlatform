@@ -26,8 +26,7 @@ public interface ProfileService {
 	public MemberProfile getMemberProfileByMemberId(int memberId,
 			String securityQuestionId);
 
-	public int updateProfileAlternateMail(int i,
-			String alternateEmailId);
+	public int updateProfileAlternateMail(int memberId,String alternateEmailId);
 
 	
 }

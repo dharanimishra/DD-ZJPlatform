@@ -54,15 +54,12 @@ public class ProfileServiceImpl implements ProfileService {
 		
 		return profileMapper.getMemberProfileByMemberId(memberId, securityQuestionId);
 	}
-	public int updateProfileAlternateMail(String memberId,
-			String alternateEmailId) {
-		return 0;
-		//return profileMapper.updateProfileAlternateMail(memberId,alternateEmailId);
+	
+	public int updateProfileAlternateMail(int memberId, String alternateEmailId) {
+		
+		return profileMapper.updateProfileAlternateMail(memberId,alternateEmailId);
 	}
-	public int updateProfileAlternateMail(int i, String alternateEmailId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 	
 
 	
