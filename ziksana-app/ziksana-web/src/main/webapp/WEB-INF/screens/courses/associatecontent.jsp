@@ -81,7 +81,7 @@
 	
 	);
 	$(document).ready(function() {
-		getAllLearningContentsByType();
+		getAllLearningContents();
 	});
 	
 	function test(){
@@ -96,25 +96,24 @@
 	function getLearningContentsByType(contentType){
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
-		var object = jQuery.parseJSON( jsonString );
+		var contentArray = jQuery.parseJSON( jsonString );
 		
-		var contentArray = object.learningContents;
+		var divs = '';
 		for(i=0;i<contentArray.length;i++){
 			//alert("contentType from arr" + contentArray[i].contentType);
 			if(contentType == contentArray[i].contentType){
-				var div = getDiv(contentArray[i]);
+				divs = divs + getDiv(contentArray[i]);
 				//$('#page1').append(div);
-				$('#page1').html(div);
 				//alert(div);
 			}
+			$('#page1').html(div);
 		}
 	}
-	function getAllLearningContentsByType(){
+	function getAllLearningContents(){
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
-		var object = jQuery.parseJSON( jsonString );
+		var contentArray = jQuery.parseJSON( jsonString );
 		
-		var contentArray = object.learningContents;
 		var divs = '';
 		for(i=0;i<contentArray.length;i++){
 			divs = divs + getDiv(contentArray[i]);
@@ -314,9 +313,11 @@ _______$tag_____$tag_________________________________________________$tag_____$t
 			<!-- #leftPane -->
 			<div id="rightPane">
 				<div class="definecontainer" id="definetab">
-				<form onload="getAllLearningContentsByType()">
+				<form onload="getAllLearningContents()">
+					<!--
 					<input type="hidden" id="learingContents" value='{"learningContents": [{"id": "1", "contentType": "2", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test1","ContentDescription": "this is a test", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "2", "contentType": "1", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test2", "ContentDescription": "test2", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "3", "contentType": "3", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test3", "ContentDescription": "test3", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"}]}' />
-
+					-->
+					<input type="hidden" id="learingContents" value="${learningContentAsJSONString}"/>
 					<style>
 #splitter {
 	width: 975px;
@@ -352,7 +353,7 @@ _______$tag_____$tag_________________________________________________$tag_____$t
 
 									<div id="associateul">
 										<div id="content_type_filter">
-											<a href="#" class="active_filter" onclick="getAllLearningContentsByType()">All</a><a href="#" onclick="getLearningContentsByType('1')">Video
+											<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a><a href="#" onclick="getLearningContentsByType('1')">Video
 												Contents</a><a href="#" onclick="getLearningContentsByType(2)">Web Link Contents</a><a href="#" onclick="getLearningContentsByType(3)">Others</a>
 										</div>
 										<!--  <p style="font-size:14px; color:#0a91ac; cursor:pointer; text-align: right; "><a href="#linkurl" id="cereatecontent"> Create Content </a></p>

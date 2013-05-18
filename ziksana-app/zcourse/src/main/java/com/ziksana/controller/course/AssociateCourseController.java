@@ -1,5 +1,7 @@
 package com.ziksana.controller.course;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
+import com.ziksana.domain.course.LearningContent;
 import com.ziksana.exception.ZiksanaException;
-import com.ziksana.service.course.CourseService;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.ContentService;
+import com.ziksana.service.course.CourseService;
 import com.ziksana.service.security.MediaService;
+import com.ziksana.util.JSONUtil;
 
 /**
  * @author ratneshkumar
@@ -36,6 +41,8 @@ public class AssociateCourseController {
 	
 	@Autowired
 	CourseService courseService;
+
+	
 	
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
@@ -44,12 +51,23 @@ public class AssociateCourseController {
 	public @ResponseBody
 	ModelAndView showAssociateContent() {
 		LOGGER.debug("Entering showAssociateCourse(): ");
-		ModelAndView modelView = new ModelAndView("createcourse");
+		ModelAndView modelView = new ModelAndView("associatecontent");
 		try {
-			mediaServerURL = mediaService.getMediaContents();
-			modelView.addObject("ms", mediaServerURL);
+				
+			//Map listttt = enumDataService.fetchData("corLearningContent_Content Type");	
+			
+			Integer memberId = Integer.valueOf(SecurityTokenUtil
+						.getToken().getMemberPersonaId().getStorageID());
+				List<LearningContent> learningContents = contentService.getUserContent(memberId);
+				String jsonString = JSONUtil.objectToJSONString(learningContents);
+				
+				modelView.addObject("learningContentAsJSONString", jsonString);
+				
+
+				mediaServerURL = mediaService.getMediaContents();
+				modelView.addObject("ms", mediaServerURL);
 		} catch (ZiksanaException exception) {
-			LOGGER.error(exception.getMessage(),exception);
+			LOGGER.error(exception.getMessage() + exception);
 		}
 		return modelView;
 	}
@@ -114,6 +132,7 @@ public class AssociateCourseController {
 
 		try {
 			Content content = contentService.getContent(Integer.valueOf(contentId));
+			
 			mv.addObject("content", content);
 			mediaServerURL = mediaService.getMediaContents();
 			mv.addObject("ms", mediaServerURL);
