@@ -31,25 +31,27 @@
 			</div>
 
 
-			<div class="fileupload  f-l">
-				<div class="associateimage" width="300px">
-
+			<div class="fileupload  f-l" style="width:250px;  ">
+				<div class="associateimage" style="text-align:center;" >
+            <div style="height:150px">
 					<c:if test="${empty member.picturePath}">
-						<img style="width: 122px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg"/>
+						<img style="width: 185px; margin-bottom: .25em;margin-left: 40px;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg" align="center"/>
 					</c:if>
 					<c:if test="${not empty ms.url && not empty member.picturePath}">
-						<img style="width: 122px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
-					</c:if> 
-					<input readonly="readonly" type="hidden" id="Cimageupl" />
+						<img style="width: 185px; margin-bottom: .25em;margin-left: 40px;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
+					</c:if> </div>
+					<div class="clearfix"></div>
+					<div style="width:120px;height:20px; margin-left: 37px; margin-top: 8px;"><input
+						style="height: 25px; width: 120px;border:1px solid"
+						type="file" name="thumbnail_image_file_upload" 
+						id="thumbnail_image_file_upload" /></div>
+					 <input readonly="readonly" type="hidden" id="Cimageupl" /> 
 
 
 					<div id="thubmnail_upload_message" ></div>
 					<div id="loaderText"></div>
-
-					<input
-						style="height: 25px; width: 120px; margin-left: 37px; margin-top: 8px;"
-						type="file" name="thumbnail_image_file_upload" 
-						id="thumbnail_image_file_upload" />
+ 
+					
 					<div id="status"></div>
 					<script type="text/javascript">
 						$(function() {
@@ -88,10 +90,11 @@
 																		'${ms.url}'
 																				+ data_object.ContentPath);
 														$(
-																'#thubmnail_upload_message')
-																.html('');
+														'#thubmnail_upload_message')
+														.html(
+																'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="margin-left:20px">Remove</a>');
 
-													} else { //there is an error in the upload process
+											} else { //there is an error in the upload process
 
 														$('#message')
 																.html(
@@ -128,7 +131,7 @@
 			</div>
 
 
-			<div class="profiledetail f-l">
+			<div class="profiledetail f-l" style="width:50%; word-wrap:break-word;">
 
 				<P class="ppname">
 					<span class="ppnamespan"> <fmt:message key="profile.name"></fmt:message>
@@ -239,12 +242,13 @@
 
 
 
-				<input class="btn btn-primary f-r"
-					style="margin-right: -15px; height: 30px; width:80px;" type="submit"
+				
+					<input onclick="clearProfileForm()" class="btn btn-primary f-r" style="margin-right: -15px;width:120px; " type="reset"
+					value="<fmt:message key="profile.cancel"></fmt:message>" />
+					<input class="btn btn-primary f-r"
+					style="margin-right: 20px;width:120px; " type="submit"
 					onclick="updateUserProfile()"
 					value="<fmt:message key="profile.submit"></fmt:message>" /> 
-					<input onclick="clearProfileForm()" class="btn btn-primary f-r" style="margin-right: 20px; height: 30px; width:80px;" type="reset"
-					value="<fmt:message key="profile.cancel"></fmt:message>" />
 				<div class="clearfix"></div>
 
 
@@ -946,8 +950,10 @@ text-shadow: none;
 text-align: center;
 margin-bottom: 3px;
 width:120px !important;
+position:relative;
+ top: -35px;
 }
-.btnupload:hover {
+.btnupload:hover  {
 background: #008DC4;
 color: #FFF;
 width:120px !important;
@@ -970,5 +976,30 @@ display:none;
 .editfeild{
 float:right;
  cursor:pointer;
+}
+.fileupload .swfupload {
+    position: relative !important;
+    top: 0!important;
+}
+.rmv { 
+    background: none repeat scroll 0 0 #43B2EC !important;
+    border: 0 none;
+    border-radius: 6px 6px 6px 6px;
+    color: #F9F9F9;
+    cursor: pointer;
+    float: left;
+    left: 142px;
+    margin-bottom: 3px;
+    margin-left: -11px;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+    text-shadow: none;
+    top: -19px;
+    width: 93px;
+    text-decoration:none!important;
+    }
+ .uploadify-queue {
+     width: 250px;
 }
 </style>
