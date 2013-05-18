@@ -11,6 +11,7 @@ import com.ziksana.domain.course.Content;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.UserContent;
 import com.ziksana.persistence.course.ContentMapper;
+import com.ziksana.persistence.course.LearningContentMapper;
 import com.ziksana.service.course.ContentService;
 
 @Service
@@ -21,6 +22,9 @@ public class ContentServiceImpl implements ContentService {
 
 	@Autowired
 	ContentMapper contentMapper;
+	
+	@Autowired
+	LearningContentMapper learningContentMapper;
 
 	public Content getContent(Integer contentId) {
 		// TODO Auto-generated method stub
@@ -31,6 +35,7 @@ public class ContentServiceImpl implements ContentService {
 		LOGGER.info("Entering Class :" + getClass()
 				+ " Method Name :getUserContent(Integer memberId)");
 
+		//List<LearningContent> list = learningContentMapper.getListOfContentsByMemberRoleId(207);
 		List<LearningContent> list = contentMapper.getUserContent(memberId);
 
 		LOGGER.info("Exiting Class :" + getClass()

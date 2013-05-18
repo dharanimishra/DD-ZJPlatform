@@ -24,7 +24,7 @@ public interface ContentMapper {
 	@Select({ "select ID,ContentType,ContentPath,ContentName,ContentDescription,ThumbnailPicturePath from corlearningcontent where AuthoringMemberRoleId=#{memberId,jdbcType=INTEGER} and isdelete=false" })
 	@Results(value = {
 			@Result(property = "learningContentId", column = "ID"),
-			@Result(property = "contentType", column = "ContentType"),
+			@Result(property = "contentTypeId", column = "ContentType"),
 			@Result(property = "contentUrl", column = "ContentPath"),
 			@Result(property = "contentName", column = "ContentName"),
 			@Result(property = "contentDescription", column = "ContentDescription"),

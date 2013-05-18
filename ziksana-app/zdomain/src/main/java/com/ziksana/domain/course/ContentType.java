@@ -1,53 +1,30 @@
 package com.ziksana.domain.course;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.NoSuchElementException;
 
-import com.ziksana.util.EnumUtil;
+import com.ziksana.util.UTLLookUpUtil;
 
-/**
- * @author Ratnesh Kumar
- */
 
 public enum ContentType {
 
-	// TODO: retrieve the ids from the static data service
-	VIDEO(610,"Video"), ENHANCED_VIDEO(), AUDIO(), TEXTUAL(), PDF(), DOC(), PPT(), EXCEL(), IMAGE(), LINK();
+		// TODO: retrieve the ids from the static data service
+	VIDEO(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type","VIDEO"),"Video"), 
+	ENHANCED_VIDEO(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "ENHANCED_VIDEO"), "ENHANCED_VIDEO"), 
+	AUDIO(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "AUDIO"), "Audio"), 
+	//TEXTUAL(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "TEXTUAL"), "TEXTUAL"), 
+	PDF(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "PDF"), "PDF"), 
+	DOC(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "DOC"), "DOC"), 
+	PPT(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "PPT"), "PPT"), 
+	//EXCEL(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "EXCEL"), "EXCEL"), 
+	IMAGE(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "IMAGE"), "IMAGE") 
+	//LINK(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "LINK"), "LINK")
+	;
 
-	private int id;
+	
 
-	private String name;
-
-	private final static String category = "corLearningContent_Content Type";
-
-	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-
-	//static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//
-//		VIDEO.setID(mapUtil.get("Video").intValue());
-//		ENHANCED_VIDEO.setID(mapUtil.get("ENHANCED_VIDEO").intValue());
-//		AUDIO.setID(mapUtil.get("Audio").intValue());
-//		TEXTUAL.setID(mapUtil.get("Textual").intValue());
-//		PDF.setID(mapUtil.get("PDF").intValue());
-//		DOC.setID(mapUtil.get("DOC").intValue());
-//		PPT.setID(mapUtil.get("PPT").intValue());
-//		EXCEL.setID(mapUtil.get("EXCEL").intValue());
-//		IMAGE.setID(mapUtil.get("IMAGE").intValue());
-//		LINK.setID(mapUtil.get("LINK").intValue());
-
-//	}
-
-	private ContentType() {
-
-	}
-
-	public void setID(int id) {
-		this.id = id;
-
-	}
+	private final int id;
+	
+	private final String name;
 
 	private ContentType(int id, String name) {
 		this.id = id;
@@ -69,8 +46,7 @@ public enum ContentType {
 			}
 		}
 
-		throw new NoSuchElementException("Content Type ID [" + ID
-				+ "] not found");
+		throw new NoSuchElementException("Content Type ID [" + ID + "] not found");
 	}
 
 	public String toString() {

@@ -130,5 +130,7 @@
             </value>
         </property>
     </bean>
+<bean id="utlLookUpUtil" class="com.ziksana.util.UTLLookUpUtil" init-method="init"/>
+
 	
 </beans>

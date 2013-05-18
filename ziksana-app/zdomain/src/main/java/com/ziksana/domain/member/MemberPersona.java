@@ -20,11 +20,12 @@ public class MemberPersona {
 
 	private int            memberRoleId;
 	private MemberRoleType roleType;
-	private Date           roleStartDate = null;
+	private Date           roleStartDate = new Date();
 	private Boolean        active;
 	private Boolean        doNotMarketIndicator;
 	private String        thumbnailPicturePath;
 	private Member         member;
+	private Integer rightsOwningMemberRoleId;
 
 	
 	
@@ -91,6 +92,18 @@ public class MemberPersona {
 
 	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
+	}
+
+	public Integer getRightsOwningMemberRoleId() {
+		return rightsOwningMemberRoleId;
+	}
+
+	public void setRightsOwningMemberRoleId(Integer rightsOwningMemberRoleId) {
+		this.rightsOwningMemberRoleId = rightsOwningMemberRoleId;
+	}
+
+	public void setMemberRoleId(int memberRoleId) {
+		this.memberRoleId = memberRoleId;
 	}
 	  
 	  

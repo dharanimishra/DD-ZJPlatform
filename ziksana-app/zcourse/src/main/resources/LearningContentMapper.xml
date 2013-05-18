@@ -7,7 +7,7 @@
 		<!-- <result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" 
 			/> --><!-- <result column="Active" property="active" jdbcType="BIT" /> -->
 		<result column="ContentType" property="contentTypeId" jdbcType="INTEGER" />
-		<result column="ContentPath" property="contentPatId" jdbcType="VARCHAR" />
+		<result column="ContentPath" property="contentPath" jdbcType="VARCHAR" />
 		<result column="ContentFormat" property="contentFormat"
 			jdbcType="INTEGER" />
 		<!-- <result column="Status" property="statusId" jdbcType="INTEGER" /> --><!-- <result column="Version" property="version" jdbcType="INTEGER" /> --><!-- <result column="VersionRemarks" property="version" jdbcType="VARCHAR" 

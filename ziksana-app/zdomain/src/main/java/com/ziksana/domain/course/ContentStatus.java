@@ -24,15 +24,20 @@ public enum ContentStatus {
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
 	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
+		try {
+			EnumUtil enumUtil = new EnumUtil();
+			mapUtil = enumUtil.getEnumData(category);
 
-		DRAFT.setID(mapUtil.get("Under Construction").intValue());
-		REVIEW.setID(mapUtil.get("Under Review").intValue());
-		RELEASE.setID(mapUtil.get("Ready for Release").intValue());
-		ACTIVE.setID(mapUtil.get("Active").intValue());
-		HOLD.setID(mapUtil.get("Hold").intValue());
-		ARCHIVED.setID(mapUtil.get("Archived").intValue());
+			DRAFT.setID(mapUtil.get("Under Construction").intValue());
+			REVIEW.setID(mapUtil.get("Under Review").intValue());
+			RELEASE.setID(mapUtil.get("Ready for Release").intValue());
+			ACTIVE.setID(mapUtil.get("Active").intValue());
+			HOLD.setID(mapUtil.get("Hold").intValue());
+			ARCHIVED.setID(mapUtil.get("Archived").intValue());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

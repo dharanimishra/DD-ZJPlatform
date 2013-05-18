@@ -475,4 +475,28 @@ public class LearningContent extends AuditHistory {
 	public void setIsDelete(Boolean isDelete) {
 		this.isDelete = isDelete;
 	}
+	
+	private Integer contentPartid;
+	private String contentUrl;
+	public Integer getContentPartid() {
+		return contentPartid;
+	}
+
+	public void setContentPartid(Integer contentPartid) {
+		this.contentPartid = contentPartid;
+	}
+
+	public void setLearningContentId(ZID learningContentId) {
+		this.learningContentId = learningContentId;
+	}
+
+	public String getContentUrl() {
+		return contentUrl;
+	}
+
+	public void setContentUrl(String contentUrl) {
+		this.contentUrl = contentUrl;
+	}
+	
+	
 }
