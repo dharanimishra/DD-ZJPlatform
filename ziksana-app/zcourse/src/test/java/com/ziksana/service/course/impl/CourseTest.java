@@ -331,7 +331,7 @@ public class CourseTest extends BaseTest {
 
 		LearningContent content1 = new LearningContent();
 		content1.setLearningContentId(1111);
-		content1.setContentType(ContentType.TEXTUAL);
+		content1.setContentType(ContentType.DOC);
 		content1.setContentName("SampleTextFile");
 		content1.setContentPath("/filepath");
 		content1.setActive(true);

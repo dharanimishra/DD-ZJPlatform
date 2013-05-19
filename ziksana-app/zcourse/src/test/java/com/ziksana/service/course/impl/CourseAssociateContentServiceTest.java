@@ -130,7 +130,7 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 		content.setContentDescription("Trigonommetry Introduction");
 		content.setContentName("Trigonommetry_Intro");
 		content.setContentPath("/content/");
-		content.setContentTypeId(ContentType.TEXTUAL.getID());
+		content.setContentTypeId(ContentType.DOC.getID());
 		content.setRightsOwningMember(authoredMember);
 		content.setContentFormatId(ContentFormat.WORD.getID());
 
