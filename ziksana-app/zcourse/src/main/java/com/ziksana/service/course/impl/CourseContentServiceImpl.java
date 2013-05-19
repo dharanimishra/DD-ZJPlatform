@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ziksana.constants.ZiksanaConstants;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentDeleteType;
 import com.ziksana.domain.course.LearningContentParts;
+import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningContentMapper;
@@ -230,35 +232,44 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 	}
 
+	@Transactional
 	public void saveOrUpdateLearningContent(
 			final LearningContent learningContent) throws CourseException {
 
 		List<LearningContentParts> contentParts = null;
 
-		// UPDATE OPERATION
-		if (learningContent.getLearningContentId() != null) {
+		try {
+			// UPDATE OPERATION
+			if (learningContent.getLearningContentId() != null) {
 
-			LOGGER.debug("Before UPDATING the LearningContent ...");
-			contentMapper.updateContent(learningContent);
-			LOGGER.debug("After UPDATING the LearningContent ID...:"
-					+ learningContent.getLearningContentId());
+				LOGGER.debug("Before UPDATING the LearningContent ...");
+				contentMapper.updateContent(learningContent);
+				LOGGER.debug("After UPDATING the LearningContent ID...:"
+						+ learningContent.getLearningContentId());
 
-			contentParts = learningContent.getAllLearningContentParts();
+				contentParts = learningContent.getAllLearningContentParts();
 
-			// Save Or Updates the LearningContentParts
-			saveOrUpdateContentParts(learningContent, contentParts);
+				// Save Or Updates the LearningContentParts
+				saveOrUpdateContentParts(learningContent, contentParts);
 
-		} else { // SAVE OPERATION
+			} else { // SAVE OPERATION
 
-			LOGGER.debug("Before saving the LearningContent ...");
+				LOGGER.debug("Before saving the LearningContent ...");
 
-			contentMapper.saveContent(learningContent);
+				contentMapper.saveContent(learningContent);
 
-			contentParts = learningContent.getAllLearningContentParts();
+				contentParts = learningContent.getAllLearningContentParts();
 
-			// Save Or Updates the LearningContentParts
-			saveOrUpdateContentParts(learningContent, contentParts);
+				// Save Or Updates the LearningContentParts
+				saveOrUpdateContentParts(learningContent, contentParts);
+			}
+		} catch (Exception e) {
+			LOGGER.error("Class :"
+					+ getClass()
+					+ " : Method :saveOrUpdateLearningContent(LearningContent learningContent)"
+					+ e);
+			throw new ZiksanaException(ZiksanaConstants.COMMON_ERROR_MESSAGE, e) {
+			};
 		}
 	}
-
 }
