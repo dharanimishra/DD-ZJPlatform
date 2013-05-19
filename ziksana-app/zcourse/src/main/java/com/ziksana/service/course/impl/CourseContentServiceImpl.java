@@ -230,4 +230,35 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 	}
 
+	public void saveOrUpdateLearningContent(
+			final LearningContent learningContent) throws CourseException {
+
+		List<LearningContentParts> contentParts = null;
+
+		// UPDATE OPERATION
+		if (learningContent.getLearningContentId() != null) {
+
+			LOGGER.debug("Before UPDATING the LearningContent ...");
+			contentMapper.updateContent(learningContent);
+			LOGGER.debug("After UPDATING the LearningContent ID...:"
+					+ learningContent.getLearningContentId());
+
+			contentParts = learningContent.getAllLearningContentParts();
+
+			// Save Or Updates the LearningContentParts
+			saveOrUpdateContentParts(learningContent, contentParts);
+
+		} else { // SAVE OPERATION
+
+			LOGGER.debug("Before saving the LearningContent ...");
+
+			contentMapper.saveContent(learningContent);
+
+			contentParts = learningContent.getAllLearningContentParts();
+
+			// Save Or Updates the LearningContentParts
+			saveOrUpdateContentParts(learningContent, contentParts);
+		}
+	}
+
 }

@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ziksana.domain.course.ComponentContentType;
 import com.ziksana.domain.course.ContentStatus;
 
+import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.CourseStatus;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentContent;
@@ -36,46 +37,36 @@ public class CreateContentTest extends BaseTest {
 	public void testSaveContent() throws Exception {
 		System.out
 				.println("inside Test ****************************************");
-		Integer learnComponentId = 100;
+
 		MemberPersona accountableMember = new MemberPersona();
 		accountableMember.setMemberRoleId(100);
 
-		String ContentDescription = "Video";
-		String ContentPath = "";
+		String ContentDescription = "Video1";
+		String ContentPath = "/video/f1358615977/f1358615977.mp4";
 		String ThumbnailPicturePath = "";
 		String ScreenshotPath = "";
 		Integer numberOfThumbnails = 1;
+		try {
+			LearningContent content = new LearningContent();
+			content.setAuthoringMember(accountableMember);
+			content.setContentName("Videos");
+			content.setContentDescription(ContentDescription);
+			content.setContentPath(ContentPath);
+			content.setStatusId(1);
+			content.setActive(true);
+			content.setContentTypeId(612);
+			content.setThumbnailPicturePath(ThumbnailPicturePath);
+			content.setScreenshotPath(ScreenshotPath);
+			// content.setStatus(ContentStatus.ACTIVE);
+			content.setNumberOfThumbnails(numberOfThumbnails);
+			content.setRightsOwningMember(accountableMember);
 
-		LearningComponent component = new LearningComponent();
-		component.setLearningComponentId(learnComponentId);
-
-		LearningContent content = new LearningContent();
-		content.setAuthoringMember(accountableMember);
-		content.setContentName("Videos");
-		content.setContentDescription(ContentDescription);
-		content.setContentPath(ContentPath);
-		content.setStatusId(1);
-		content.setActive(true);
-		// content.setContentTypeId(ContentType);
-		content.setThumbnailPicturePath(ThumbnailPicturePath);
-		content.setScreenshotPath(ScreenshotPath);
-//		content.setStatus(ContentStatus.ACTIVE);
-		content.setNumberOfThumbnails(numberOfThumbnails);
-		content.setRightsOwningMember(accountableMember);
-
-		LearningComponentContent compContent = new LearningComponentContent();
-		compContent.setContentDescription(ContentDescription);
-		compContent.setLearningComponent(component);
-//		compContent.setCompContentTypeId(ComponentContentType.COURSE_CONTENT
-//				.getID());
-		compContent.setBaseLearningContent(content);
-
-		compContent.setCourseStatusId(CourseStatus.ACTIVE.getID());
-
-		courseContentService.saveOrUpdateContent(compContent);
+			courseContentService.saveOrUpdateLearningContent(content);
+		} catch (Exception e) {
+			System.out.println("Exception :" + e);
+		}
 
 		System.out.println("Tested ...");
 
 	}
-
 }
