@@ -14,4 +14,5 @@ import com.ziksana.domain.utils.UTLLookup;
  */
 public interface UTLLookupService {
 	public Map<String, List<UTLLookup>> getUTLLookupMap();
+	public Map<String, Integer> getUTLLookupMap(String category);
 }
