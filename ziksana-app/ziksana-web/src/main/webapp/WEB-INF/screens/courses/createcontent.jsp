@@ -4,6 +4,9 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/custom/createcontent/addweblink.js"></script>
 
+<script type="text/javascript"
+	src="${staticFileServer}resources/Dynamicjsonjs/createcontentjson.js"></script>
+
 
 <style>
 .tileheadaa {
@@ -77,25 +80,25 @@ table tr td {
 	<div class="contentarea pull-right" style="width: 650px;">
 		<div class="createcontentwrapper">
 			<div class="uploadcontent1">
-				<div class="createcontentpanelhead">Upload Content</div>
-				<!--end of panel head-->
-				<div class="draganddrop pull-left">
+				<form id="createcontentform" method="post">
+					<div class="createcontentpanelhead">Upload Content</div>
+					<!--end of panel head-->
+					<div class="draganddrop pull-left">
 
-					<form id="upload" method="POST" enctype="multipart/form-data">
+
 						<div style="margin-top: 30px;">
 							<label style="width: 260px;" for="input"
 								class="control-label nexaf">Associate an Image for your
 								Course :</label>
 
-							<!--   <div style="width: 122px; height: 120px; float: left">
+							<div style="width: 122px; height: 120px; float: left">
 								<img id="course_thumbnail_image"
 									src="${staticFileServer}resources/images/default-course.jpg"
 									align="left" />
-									</div>
-							-->
+							</div>
+
 							<input readonly="readonly" type="hidden" id="Cimageupl"
 								style="margin-left: 20px;" />
-
 
 							<div id="message"></div>
 							<div id="thubmnail_upload_message"></div>
@@ -123,7 +126,7 @@ table tr td {
 																			'disabled',
 																			'disabled');
 														},
-														//'debug' : true,
+														'debug' : true,
 														//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 
 														'onUploadSuccess' : function(
@@ -189,40 +192,41 @@ table tr td {
 						<div id="submitbutton">
 							<button type="submit">Upload Files</button>
 						</div> -->
-					</form>
-				</div>
-				<!--end of drag anf drop-->
-				<div class="previewarea pull-left">
-					<div class="messagecontainer">
-						<p class="uploadheads"
-							style="font-size: 30px; margin-left: 70px; padding-top: 180px;">Preview
-							Area</p>
 
-						<div id="messages" style="min-height: 100px;"></div>
-						<!--End of Messages -->
-						<div class="ClearFix"></div>
-						<!--End of ClearFix -->
 					</div>
-					<!--End of Messagecontainer -->
-				</div>
-				<!--end of preview area-->
-				<div class="clearfix"></div>
-				<div class="createcontentpanelhead" style="margin-top: 4px;">
-					<a href="#linkurl" class="btn pull-right"
-						style="margin-left: 10px;"> Cancel </a> <a
-						href="/ziksana-web/zcourse/editcontent"
-						class="btn pull-right saveup1"> Next </a>
+					<!--end of drag anf drop-->
+					<div class="previewarea pull-left">
+						<div class="messagecontainer">
+							<p class="uploadheads"
+								style="font-size: 30px; margin-left: 70px; padding-top: 180px;">Preview
+								Area</p>
+
+							<div id="messages" style="min-height: 100px;"></div>
+							<!--End of Messages -->
+							<div class="ClearFix"></div>
+							<!--End of ClearFix -->
+						</div>
+						<!--End of Messagecontainer -->
+					</div>
+					<!--end of preview area-->
 					<div class="clearfix"></div>
-				</div>
-				<!--end of panel head-->
+					<div class="createcontentpanelhead" style="margin-top: 4px;">
+						<a href="#linkurl" class="btn pull-right"
+							style="margin-left: 10px;"> Cancel </a>
+						<button class="btn pull-right saveup1" type="button"
+							onClick="createContent();return false;">Next</button>
+						<div class="clearfix"></div>
+					</div>
+					<!--end of panel head-->
+				</form>
 			</div>
 			<!--end of uploadcontent1-->
-			</div>
-			<!--end of weblink-->
 		</div>
-		<!--end of image wrapper -->
+		<!--end of weblink-->
 	</div>
-	<!--end of contentarea-->
+	<!--end of image wrapper -->
+</div>
+<!--end of contentarea-->
 </div>
 <!--end of contentpanel-->
 

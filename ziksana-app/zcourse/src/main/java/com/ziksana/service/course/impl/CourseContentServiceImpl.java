@@ -268,8 +268,8 @@ public class CourseContentServiceImpl implements CourseContentService {
 					+ getClass()
 					+ " : Method :saveOrUpdateLearningContent(LearningContent learningContent)"
 					+ e);
-			throw new ZiksanaException(ZiksanaConstants.COMMON_ERROR_MESSAGE, e) {
-			};
+			//throw new ZiksanaException(ZiksanaConstants.COMMON_ERROR_MESSAGE, e) {
+			//};
 		}
 	}
 }

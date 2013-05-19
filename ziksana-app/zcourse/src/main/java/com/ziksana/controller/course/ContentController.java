@@ -146,13 +146,13 @@ public class ContentController {
 
 	@RequestMapping(value = "1/createcontent", method = RequestMethod.POST)
 	public @ResponseBody
-	CourseJsonResponse createContent(
+	ModelAndView createContent(
 			@RequestParam(value = "ContentId", required = false) String contentId,
-			@RequestParam(value = "Content_Name", required = true) String contentName,
-			@RequestParam(value = "Content_Description", required = true) String contentDescription,
-			@RequestParam(value = "Subject_Area", required = true) String SubjectArea,
-			@RequestParam(value = "Subject", required = true) String Subject,
-			@RequestParam(value = "Topic", required = true) String Topic,
+			@RequestParam(value = "ContentName", required = true) String contentName,
+			@RequestParam(value = "Content_Description", required = false) String contentDescription,
+			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
+			@RequestParam(value = "Subject", required = false) String Subject,
+			@RequestParam(value = "Topic", required = false) String Topic,
 			@RequestParam(value = "Contenttag_Field", required = false) String contentTags,
 			@RequestParam(value = "AssocContent_Image", required = false) String screenshotPath,
 			@RequestParam(value = "LinkType", required = false) String linkType,
@@ -162,6 +162,8 @@ public class ContentController {
 			@RequestParam(value = "ThumbnailPicturePath", required = false) String thumbnailPicturePath,
 			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
 			@RequestParam(value = "ContentType", required = false) Integer contentType) {
+
+		ModelAndView mav = new ModelAndView("mastereditcontent");
 
 		try {
 			MemberPersona accountableMember = new MemberPersona();
@@ -184,7 +186,7 @@ public class ContentController {
 			learningContent.setContentTypeId(contentType);
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(screenshotPath);
-			learningContent.setStatus(ContentStatus.ACTIVE);
+			// learningContent.setStatus(ContentStatus.ACTIVE);
 			learningContent.setNumberOfThumbnails(numberOfThumbnails);
 			learningContent.setRightsOwningMember(accountableMember);
 
@@ -200,7 +202,7 @@ public class ContentController {
 			e.printStackTrace();
 		}
 
-		return null;
+		return mav;
 
 	}
 
