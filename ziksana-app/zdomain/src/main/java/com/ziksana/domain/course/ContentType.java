@@ -1,7 +1,6 @@
 package com.ziksana.domain.course;
 
 import java.util.List;
-import java.util.Map;
 import java.util.NoSuchElementException;
 
 import org.slf4j.Logger;
@@ -27,7 +26,7 @@ public enum ContentType  {
 	;
 */
 	
-	VIDEO(),ENHANCED_VIDEO(),AUDIO(),TEXTUAL(),PDF(),DOC(),PPT(),EXCEL(),IMAGE(),LINK();
+	VIDEO(),ENHANCED_VIDEO(),AUDIO(),PDF(),DOC(),PPT(),EXCEL(),IMAGE(),LINK();
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ContentType.class);
 	
@@ -44,24 +43,15 @@ public enum ContentType  {
 	private static boolean initialized = false;
     
     
-	//Use following intitialize method as it is setting the values dynamically
-	@Deprecated
-	private static synchronized void initialize2() {
-        if (initialized) { return; }
-        
-        //List<UTLLookup> utlLookUpList = UTLLookUpUtil.getUTLLookUpList(CATEGORY);
-
-        VIDEO.setID(UTLLookUpUtil.getUTLLookUp(CATEGORY, VIDEO.name).getLookupValueId());
-
-        initialized = true;
-    }
 	
 	private static synchronized void initialize(){
         if (initialized) { return; }
 		ContentType[] contentTypes = ContentType.values();
-		Map<String, Integer> utlLookUpMap = UTLLookUpUtil.getUTLLookUpUtil().getUTLLookUpMapForCategory(CATEGORY);
 		for (ContentType contentType : contentTypes) {
-			contentType.id=utlLookUpMap.get(contentType.name());
+			//System.out.println("contentType " + contentType.name());
+			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY, contentType.name());
+			contentType.id=utlLookup.getLookupValueId();
+			contentType.name=utlLookup.getLookupValue();
 		}
         initialized = true;
 		LOGGER.debug("Content Type initialized " + contentTypes);

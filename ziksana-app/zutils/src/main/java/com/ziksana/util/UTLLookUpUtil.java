@@ -27,10 +27,9 @@ public class UTLLookUpUtil {
 	private static Map<String, List<UTLLookup>> utlLookupMap;
 	
 	public void init(){
-		//utlLookupMap = utlLookupService.getUTLLookupMap();
+		utlLookupMap = utlLookupService.getUTLLookupMap();
 	}
 	
-	@Deprecated
 	public static UTLLookup getUTLLookUp(String key, String lookUpValue){
 		
 		
@@ -45,13 +44,11 @@ public class UTLLookUpUtil {
 		return utlLookupToReturn;
 	}
 
-	@Deprecated
 	public static List<UTLLookup> getUTLLookUpList(String key){
 		
 		return utlLookupMap.get(key);
 	}
 
-	@Deprecated
 	public static Integer getUTLLookUpValueId(String key, String lookUpValue){
 		Integer test = null;
 		try {
