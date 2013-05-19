@@ -398,6 +398,7 @@ public class LearningContent extends AuditHistory {
 	 */
 	public void setContentTypeId(Integer contentTypeId) {
 		this.contentTypeId = contentTypeId;
+		setContentType(ContentType.getContentType(contentTypeId));
 	}
 
 	/**

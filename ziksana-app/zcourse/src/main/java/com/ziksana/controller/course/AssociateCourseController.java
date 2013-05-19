@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
+import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.security.util.SecurityTokenUtil;
@@ -53,7 +54,8 @@ public class AssociateCourseController {
 		LOGGER.debug("Entering showAssociateCourse(): ");
 		ModelAndView modelView = new ModelAndView("associatecontent");
 		try {
-				
+			LearningContent content = new LearningContent();
+			content.setContentType(ContentType.getContentType(612));
 			//Map listttt = enumDataService.fetchData("corLearningContent_Content Type");	
 			
 			Integer memberId = Integer.valueOf(SecurityTokenUtil
@@ -77,7 +79,7 @@ public class AssociateCourseController {
 	public @ResponseBody
 	ModelAndView showAssociateCourse(@PathVariable String courseId) {
 		Integer course_id = 0;
-		ModelAndView modelView = null;
+		ModelAndView modelView =  new ModelAndView("associatecontent");
 		try {
 			LOGGER.debug("Entering showAssociateCourse(): ");
 			course_id = Integer.parseInt(courseId.split("_")[1]);
@@ -89,7 +91,12 @@ public class AssociateCourseController {
 				if(isModuleExists == 0 ){
 					return new ModelAndView("redirect:/zcourse/createcourse/"+courseId+"");
 				}else{
-				modelView = new ModelAndView("associatecontent");
+				Integer memberId = Integer.valueOf(SecurityTokenUtil
+						.getToken().getMemberPersonaId().getStorageID());
+				List<LearningContent> learningContents = contentService.getUserContent(memberId);
+				String jsonString = JSONUtil.objectToJSONString(learningContents);
+				
+				modelView.addObject("learningContentAsJSONString", jsonString);
 				modelView.addObject("CourseId", courseId);
 				mediaServerURL = mediaService.getMediaContents();
 				modelView.addObject("ms", mediaServerURL);

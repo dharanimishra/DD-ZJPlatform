@@ -21,14 +21,17 @@ public interface ContentMapper {
 	public Content getContent(Integer contentId);
 	
 	
-	@Select({ "select ID,ContentType,ContentPath,ContentName,ContentDescription,ThumbnailPicturePath from corlearningcontent where AuthoringMemberRoleId=#{memberId,jdbcType=INTEGER} and isdelete=false" })
+	@Select({ "select ID,ContentType,ContentPath,ContentName,ContentDescription,ThumbnailPicturePath from corlearningcontent where AuthoringMemberRoleId=#{memberId,jdbcType=INTEGER} and isdelete=false and active=true" })
 	@Results(value = {
 			@Result(property = "learningContentId", column = "ID"),
 			@Result(property = "contentTypeId", column = "ContentType"),
+			@Result(property = "activeFlag", column = "activeFlag"),
+			@Result(property = "active", column = "active"),
 			@Result(property = "contentUrl", column = "ContentPath"),
 			@Result(property = "contentName", column = "ContentName"),
 			@Result(property = "contentDescription", column = "ContentDescription"),
-			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath")
+			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath"),
+			@Result(property = "creationDate", column = "creationDate")
 
 	})
 	List<LearningContent> getUserContent(Integer memberId);

@@ -93,27 +93,48 @@
 		//getLearningContentsByType("1");
 	}
 	 
+	function getOtherLearningContents(contentType){
+		$('#page1').empty();
+		var jsonString = document.getElementById("learingContents").value;
+		var contentArray = jQuery.parseJSON( jsonString );
+		
+		//alert(contentType);
+		var divs = '';
+		for(i=0;i<contentArray.length;i++){
+			//alert("contentType from arr" + contentArray[i].contentType + " --- " +  contentType);
+			if('VIDEO' != contentArray[i].contentType.toUpperCase() && 'LINK' != contentArray[i].contentType.toUpperCase()){
+				divs = divs + getDiv(contentArray[i]);
+				//$('#page1').append(div);
+				//alert(div);
+			} 
+			$('#page1').html(divs);
+		}
+	}
+
 	function getLearningContentsByType(contentType){
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
 		var contentArray = jQuery.parseJSON( jsonString );
 		
+		//alert(contentType);
 		var divs = '';
 		for(i=0;i<contentArray.length;i++){
-			//alert("contentType from arr" + contentArray[i].contentType);
-			if(contentType == contentArray[i].contentType){
+			//alert("contentType from arr" + contentArray[i].contentType + " --- " +  contentType);
+			if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
 				divs = divs + getDiv(contentArray[i]);
 				//$('#page1').append(div);
 				//alert(div);
-			}
-			$('#page1').html(div);
+			} 
+			$('#page1').html(divs);
 		}
 	}
+
 	function getAllLearningContents(){
+		//alert("Hi");
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
+		//alert(jsonString);
 		var contentArray = jQuery.parseJSON( jsonString );
-		
 		var divs = '';
 		for(i=0;i<contentArray.length;i++){
 			divs = divs + getDiv(contentArray[i]);
@@ -122,6 +143,8 @@
 		//$('#page1').append(divs);
 		$('#page1').html(divs);
 	}
+
+	
 	
 	function getDiv(learningContentObject){
 		
@@ -317,7 +340,7 @@ _______$tag_____$tag_________________________________________________$tag_____$t
 					<!--
 					<input type="hidden" id="learingContents" value='{"learningContents": [{"id": "1", "contentType": "2", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test1","ContentDescription": "this is a test", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "2", "contentType": "1", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test2", "ContentDescription": "test2", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "3", "contentType": "3", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test3", "ContentDescription": "test3", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"}]}' />
 					-->
-					<input type="hidden" id="learingContents" value="${learningContentAsJSONString}"/>
+					<input type="hidden" id="learingContents" value='${learningContentAsJSONString}'/>
 					<style>
 #splitter {
 	width: 975px;
@@ -353,8 +376,8 @@ _______$tag_____$tag_________________________________________________$tag_____$t
 
 									<div id="associateul">
 										<div id="content_type_filter">
-											<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a><a href="#" onclick="getLearningContentsByType('1')">Video
-												Contents</a><a href="#" onclick="getLearningContentsByType(2)">Web Link Contents</a><a href="#" onclick="getLearningContentsByType(3)">Others</a>
+											<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a><a href="#" onclick="getLearningContentsByType('VIDEO')">Video
+												Contents</a><a href="#" onclick="getLearningContentsByType('LINK')">Web Link Contents</a><a href="#" onclick="getOtherLearningContents('Others')">Others</a>
 										</div>
 										<!--  <p style="font-size:14px; color:#0a91ac; cursor:pointer; text-align: right; "><a href="#linkurl" id="cereatecontent"> Create Content </a></p>
  <p class="associatecategory">Sort by : <a href="#linkurl">Tag</a>/<a href="#linkurl">Category</a>/<a href="#linkurl">Name </a></p>
