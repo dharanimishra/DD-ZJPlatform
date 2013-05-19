@@ -39,7 +39,7 @@ public class CreateContentTest extends BaseTest {
 				.println("inside Test ****************************************");
 
 		MemberPersona accountableMember = new MemberPersona();
-		accountableMember.setMemberRoleId(100);
+		accountableMember.setMemberRoleId(207);
 
 		String ContentDescription = "Video1";
 		String ContentPath = "/video/f1358615977/f1358615977.mp4";
@@ -49,7 +49,7 @@ public class CreateContentTest extends BaseTest {
 		try {
 			LearningContent content = new LearningContent();
 			content.setAuthoringMember(accountableMember);
-			content.setContentName("Videos");
+			content.setContentName(ContentDescription);
 			content.setContentDescription(ContentDescription);
 			content.setContentPath(ContentPath);
 			content.setStatusId(1);
@@ -57,7 +57,8 @@ public class CreateContentTest extends BaseTest {
 			content.setContentTypeId(612);
 			content.setThumbnailPicturePath(ThumbnailPicturePath);
 			content.setScreenshotPath(ScreenshotPath);
-			// content.setStatus(ContentStatus.ACTIVE);
+			//content.setStatus(ContentStatus.ACTIVE);
+			//content.setStatus(0);
 			content.setNumberOfThumbnails(numberOfThumbnails);
 			content.setRightsOwningMember(accountableMember);
 
