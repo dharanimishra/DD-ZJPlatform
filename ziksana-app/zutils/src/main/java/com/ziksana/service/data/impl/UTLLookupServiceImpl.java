@@ -50,7 +50,7 @@ public class UTLLookupServiceImpl implements UTLLookupService {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		List<UTLLookup> utlLookupList = utlLookupMapper.getUTLLookupList(category);
 		for (UTLLookup utlLookup : utlLookupList) {
-			map.put(utlLookup.getLookupValue(), utlLookup.getLookupValueId());
+			map.put(utlLookup.getLookupValue().toUpperCase(), utlLookup.getLookupValueId());
 		}
 		return map;
 	}
