@@ -65,7 +65,7 @@ table tr td {
 				<img src="${staticFileServer}resources/images/content/upload.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/0/createcontent"></a>Upload
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/1/createcontent"></a>Upload
 					Content</h3>
 			</div>
 		</div>
@@ -76,7 +76,7 @@ table tr td {
 				<img src="${staticFileServer}resources/images/content/link.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/0/weblinkcontent"></a>Add
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/1/weblinkcontent"></a>Add
 					Web Link</h3>
 			</div>
 		</div>
