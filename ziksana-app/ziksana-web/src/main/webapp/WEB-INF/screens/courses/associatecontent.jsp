@@ -19,7 +19,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/Menu/menu_ext.js"></script>
 <script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/tree/treedata.js"></script>
+	src="${staticFileServer}resources/js/lib/tree/associate-content-treedata.js"></script>
 
 <!-- Added JS FILE  -->
 
@@ -226,11 +226,10 @@
 								if (i == 0) {
 									option = '<option selected="selected" value="' + value
 						+ '">'
-											+ label
-											+ '</option>_______________________________________<option value="' + value + '">} else
-									option = '<option___________________________________________________$tag_____$tag_________________________'
-											+ label
-											+ '_$tag_____________________________________________________$tag_____$tag__________________________$tag____';
+											+ label + '</option>';
+								} else
+									option = '<option value="' + value + '">'
+											+ label + '</option>';
 
 								option_string += option;
 							}
@@ -256,26 +255,89 @@
 											function(data) {
 												options = data;
 												var option_string = '';
-												var area_string = '_$tag_____________________________________________________$tag_____$tag__________________________$tag_____$tag_____________________________________________'
+												var area_string = '<option selected="selected" value='+Course_Area+'>'
 														+ Course_Area
 														+ '</option>';
-			__________________________________________$tag_lected" v_________________________$tag_____$tag_____________										for (i in options) {
-													label =					option_string += '_$tag___________________ed" value_________________________$tag_____$tag__________________________$tag_____$tag______________________________________________$tag_____$tag______________________________________________Select Subject_$tag__________________________________________													label = options[____________									$tag_____$tag______________________________________________$tag_____$tag_______________________________________________$tag____';
+												option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
 												for (i in options) {
 													label = options[i].label;
 													value = options[i].value;
 													if (i == 0) {
-														option = '_$tag_____________________________________________________$tag_____$tag__________________________$tag_____$tag______________________________________________$tag_____$tag_______________________________________________$tag_____$tag________________________________________________'
+														option = '<option  value="'
+										+ value
+										+ '">'
 																+ label
-																+ '_$tag__________________________________											option = '<option value="'
-										_________$ta							+ g______________________________________________$tag_____$tag_______________________________________________$tag_____$tag_________________________________________________$					area_string);
-												$('#Cmodulesubjectddon = '_$tag____________________________________						+ '________$tag_____$tag__________________________$tagoption>';
+																+ '</option>';
+													} else
+
+														option = '<option value="'
+										+ value
+										+ '">'
+																+ label
+																+ '</option>';
 
 													option_string += option;
-___$tag_____$tag_______________________________').html(
-_______$tag_____$tag_________________________________________________$tag_____$tag_______________________________________________'
+												}
+
+												$('#Cmoduleareaddl').html(
+														area_string);
+												$('#Cmodulesubjectddl').html(
+														option_string);
+
+											});
+							var topic = '<option value="Select Topic">Select Topic</option>';
+							$('#Cmoduletopicddl').html(topic);
+						});
+
+		$("#Cmodulesubjectddl")
+				.change(
+						function(e) {
+							console.log("Inside subject change handler");
+							uri = '/ziksana-web/zcourse/gettopic';
+							token = '';
+							request_type = 'GET';
+							var Course_Subject = $('#Cmodulesubjectddl').val();
+							var parameters = {
+								"Course_Subject" : Course_Subject
+							};
+
+							$
+									.get(
+											uri,
+											{
+												'Course_Subject' : Course_Subject
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
+													if (i == 0) {
+														option = '<option value="'
+										+ value
+										+ '">'
 																+ label
-																+ '_$tag_____
+																+ '</option>';
+													} else
+
+														option = '<option value="'
+										+ value
+										+ '">'
+																+ label
+																+ '</option>';
+
+													option_string += option;
+												}
+
+												$('#Cmoduletopicddl').html(
+														option_string);
+
+											});
+
+						});
+	} // End getArea()
 </script>
 <style>
 #splitter {
@@ -337,6 +399,10 @@ _______$tag_____$tag_________________________________________________$tag_____$t
 			<div id="rightPane">
 				<div class="definecontainer" id="definetab">
 				<form onload="getAllLearningContents()">
+					<input type="hidden" id="courseid" value="${courseId}" /> 
+					<input type="hidden" id="courseLearningComponentId" value=""/> 
+					<input type="hidden" id="parentLearningComponentId" value="" /> 
+					<input type="hidden" id="learningComponentId" value="" />
 					<!--
 					<input type="hidden" id="learingContents" value='{"learningContents": [{"id": "1", "contentType": "2", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test1","ContentDescription": "this is a test", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "2", "contentType": "1", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test2", "ContentDescription": "test2", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "3", "contentType": "3", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test3", "ContentDescription": "test3", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"}]}' />
 					-->
@@ -364,7 +430,6 @@ _______$tag_____$tag_________________________________________________$tag_____$t
 
 
 							<!-- End of Tree -->
-
 
 							<div id="ContentPanel2"
 								style="font-size: 11px; background-image: none; margin-left: 15px;">
