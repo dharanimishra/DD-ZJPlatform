@@ -2446,3 +2446,17 @@ input[type="checkbox"]:checked+label span {
 	top: 10px;
 	width: 150px;
 }
+
+.createcontentpanelhead {
+    background-color: #6BBDE8;
+    color: #FFFFFF;
+    font-size: 20px !important;
+    padding: 10px;
+}
+.draganddrop {
+    background-color: #0099CC;
+    border: 1px solid #CCCCCC;
+    height: 320px;
+    margin-bottom: 10px;
+    width: 270px;
+}
