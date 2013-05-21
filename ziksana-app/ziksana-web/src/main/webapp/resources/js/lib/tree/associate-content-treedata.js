@@ -295,20 +295,21 @@ function createtree(course_id) {
 		}
 
 		if (node_type == "COMPONENT") {
-			//menu.showItem('Add_Module');
-			//menu.showItem('ModuleEdit');
-			//menu.hideItem('CourseEdit');
+			menu.showItem('Add_Module');
+			menu.showItem('ModuleEdit');
+			menu.hideItem('CourseEdit');
 			//menu.showItem('Delete');
 			//menu.showItem('Associate_Content');
 			// menu.showItem('View');
 		}
 
 		if (node_type == "CONTENT") {
-			//menu.hideItem('Add_Module');
-			//menu.hideItem('ModuleEdit');
-			//menu.hideItem('CourseEdit');
-			menu.hideItem('View_Content');
-			menu.hideItem('Delete');
+			alert("I am in");
+			menu.hideItem('Add_Module');
+			menu.hideItem('ModuleEdit');
+			menu.hideItem('CourseEdit');
+			menu.showItem('View_Content');
+			menu.showItem('Delete');
 
 		}
 		return true;
