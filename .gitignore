@@ -34,3 +34,21 @@ Servers/
 *.iml
 /ziksana-app/.idea/
 >>>>>>> origin/Ziksana_Platform_V0.5
+
+/ziksana-app/zutils/bin
+/ziksana-app/ztodo/bin
+/ziksana-app/zsubscription/bin
+/ziksana-app/zsecurity/bin
+/ziksana-app/zalert/bin/
+/ziksana-app/zannouncements/bin
+/ziksana-app/zassessment/bin
+/ziksana-app/zblogs/bin
+/ziksana-app/zcommon/bin
+/ziksana-app/zconfig/bin
+/ziksana-app/zcourse/bin
+/ziksana-app/zdomain/bin
+/ziksana-app/ziksana-web/bin
+/ziksana-app/zknowmebetter/bin
+/ziksana-app/zmycontacts/bin
+/ziksana-app/zpolls/bin
+/ziksana-app/zrecommendations/bin
