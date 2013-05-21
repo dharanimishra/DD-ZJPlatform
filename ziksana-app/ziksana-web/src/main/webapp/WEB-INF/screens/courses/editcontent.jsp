@@ -3,6 +3,8 @@
 	src="${staticFileServer}resources/js/lib/plupload/previewupload.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/custom/createcontent/addweblink.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/Dynamicjsonjs/editcontentjson.js"></script>
 
 <style>
 .tileheada {
@@ -50,8 +52,9 @@ table tr td {
 				<img src="${staticFileServer}resources/images/content/upload.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">Upload
-					Content</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+					<a href="ziksana-web/zcourse/1/createcontent"></a>Upload Content
+				</h3>
 			</div>
 		</div>
 
@@ -61,8 +64,9 @@ table tr td {
 				<img src="${staticFileServer}resources/images/content/link.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">Add
-					Web Link</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+					<a href="ziksana-web/zcourse/1/weblinkcontent"></a>Add Web Link
+				</h3>
 			</div>
 		</div>
 
@@ -123,11 +127,12 @@ table tr td {
 
 						<div class="editslide pull-left" style="margin-left: 5px;">
 							<input type="text" placeholder="Specify Tags"
-								style="height: 30px; margin-top: 7px; width: 220px;"> <select>
+								style="height: 30px; margin-top: 7px; width: 220px;"> <select
+								id="Careaddl" class="select">
 								<option>Specify Subject</option>
-							</select> <br> <select>
+							</select> <br> <select class="select" id="Csubjectddl">
 								<option>Specify Subject</option>
-							</select> <select>
+							</select> <select class="select" id="Ctopicddl">
 								<option>Specify Subject</option>
 							</select>
 						</div>

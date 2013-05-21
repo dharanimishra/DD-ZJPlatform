@@ -20,6 +20,7 @@
 	src="${staticFileServer}resources/js/lib/tree/Menu/menu_ext.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/associate-content-treedata.js"></script>
+	
 
 <!-- Added JS FILE  -->
 
@@ -57,6 +58,9 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/js/lib/splitter/splitter.css" />
+
+<link rel="stylesheet" type="text/css"
+	href="${staticFileServer}resources/css/associatecontent.css" />
 
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/splitter/jquery-1.4.3.min.js"></script>
@@ -152,9 +156,9 @@
 	
 			'<div class="associatesearchitem">'+
 	
-				'<div class="associateleft f-l" style="width:100%">'+
-					'<input type="checkbox"/>'+
-					'<img src="../images/programs/tsunami.jpg" alt="" border="4px solid #999;" style="vertical-align:middle;" class="associatesearchimg  all-box-shadow"/> </li>'+
+				'<div class="associateleft f-l" style="width:100%;">'+
+					'<input type="checkbox" style="border:1px solid;"/>'+
+					'<img src="../images/programs/tsunami.jpg" alt="" border="4px solid #999;" style="vertical-align:middle;" class="associatesearchimg  all-box-shadow"/>'+
 					'</div> <!--end of associtemleft-->'+
 	
 					'<div class="associateright f-l">'+
@@ -409,7 +413,7 @@
 					<input type="hidden" id="learingContents" value='${learningContentAsJSONString}'/>
 					<style>
 #splitter {
-	width: 975px;
+	width: 100%;
 	height: auto;
 }
 

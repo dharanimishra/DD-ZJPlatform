@@ -144,7 +144,7 @@ public class ContentController {
 		return content;
 	}
 
-	@RequestMapping(value = "1/createcontent", method = RequestMethod.POST)
+	@RequestMapping(value = "1/createcontents", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView createContent(
 			@RequestParam(value = "ContentId", required = false) String contentId,
@@ -208,7 +208,7 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "1/weblinkcontent", method = RequestMethod.POST)
+	@RequestMapping(value = "1/weblinkcontents", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView createWeblinkContent(
 			@RequestParam(value = "ContentId", required = false) String contentId,
@@ -227,7 +227,7 @@ public class ContentController {
 			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
 			@RequestParam(value = "ContentType", required = false) Integer contentType) {
 
-		ModelAndView mav = new ModelAndView("mastereditcontent");
+		ModelAndView mav = new ModelAndView("masterweblinkcontent");
 
 		try {
 			MemberPersona accountableMember = new MemberPersona();
