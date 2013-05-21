@@ -18,8 +18,6 @@ function createContent() {
 
 	var ContentType = $('#ContentType').val();
 
-	console.log("ContentType :" + ContentType);
-
 	var parameters = {
 		"ContentName" : ContentName,
 		"ContentPath" : ContentPath,

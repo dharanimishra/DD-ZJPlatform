@@ -126,7 +126,7 @@ table tr td {
 																			'disabled',
 																			'disabled');
 														},
-														'debug' : true,
+														//'debug' : true,
 														//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 
 														'onUploadSuccess' : function(
@@ -213,8 +213,8 @@ table tr td {
 					<div class="createcontentpanelhead" style="margin-top: 4px;">
 						<a href="#linkurl" class="btn pull-right"
 							style="margin-left: 10px;"> Cancel </a>
-						<button class="btn pull-right saveup1" type="button"
-							onClick="createContent();return false;">Next</button>
+						<a class="btn pull-right saveup1" type="button"
+							onClick="createContent();return false;">Next</a>
 						<div class="clearfix"></div>
 					</div>
 					<!--end of panel head-->
