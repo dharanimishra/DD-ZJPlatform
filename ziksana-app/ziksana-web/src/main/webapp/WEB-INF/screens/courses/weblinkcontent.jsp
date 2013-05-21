@@ -3,7 +3,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/custom/createcontent/addweblink.js"></script>
 <script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/weblinkcontentjsonjs.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/weblinkcontentjson.js"></script>
 
 <style>
 .tileheadaa {
@@ -52,7 +52,7 @@ table tr td {
 				<img src="${staticFileServer}resources/images/content/upload.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">Upload
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/0/createcontent"></a>Upload
 					Content</h3>
 			</div>
 		</div>
@@ -63,7 +63,7 @@ table tr td {
 				<img src="${staticFileServer}resources/images/content/link.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">Add
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/0/weblinkcontent"></a>Add
 					Web Link</h3>
 			</div>
 		</div>
@@ -84,7 +84,7 @@ table tr td {
 						Add Web Link
 						<div class="addmpre pull-right">
 
-							<a href="#linkurl" class="adlink" id="weblink"><img
+							<a class="adlink" id="weblink"><img
 								src="${staticFileServer}resources/images/content/plus.png"
 								style="height: 30px;" /></a>
 
@@ -113,11 +113,11 @@ table tr td {
 							<!--end of uploadphoto-->
 							<div class="rowfields pull-left">
 								<ul>
-									<li><input type="text" placeholder="Enter Name"
+									<li><input type="text" placeholder="Enter Name" id="linkname"
 										style="height: 25px; margin-top: 15px; width: 150px;" /></li>
-									<li><input type="text" placeholder="Htttp://"
+									<li><input type="text" placeholder="htttp://" id="linkurl"
 										style="height: 25px; margin-top: 15px; width: 150px;" /></li>
-									<li><a href="#linkurl" class="editdetailsweblink">Edit
+									<li><a class="editdetailsweblink">Edit
 											Details</a></li>
 								</ul>
 							</div>

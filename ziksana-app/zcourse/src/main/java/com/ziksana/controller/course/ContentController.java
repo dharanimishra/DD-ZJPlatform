@@ -227,7 +227,7 @@ public class ContentController {
 			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
 			@RequestParam(value = "ContentType", required = false) Integer contentType) {
 
-		ModelAndView mav = new ModelAndView("mastereditcontent");
+		ModelAndView mav = new ModelAndView("masterweblinkcontent");
 
 		try {
 			MemberPersona accountableMember = new MemberPersona();

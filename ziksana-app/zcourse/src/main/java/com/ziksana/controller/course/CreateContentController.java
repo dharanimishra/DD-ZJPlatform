@@ -37,7 +37,7 @@ public class CreateContentController {
 
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
-	@RequestMapping(value = "/createcontent", method = { RequestMethod.GET,
+	@RequestMapping(value = "0/createcontent", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView createContent() {
@@ -54,7 +54,7 @@ public class CreateContentController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/editcontent", method = { RequestMethod.GET,
+	@RequestMapping(value = "0/editcontent", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView editContent() {
@@ -71,7 +71,7 @@ public class CreateContentController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/weblinkcontent", method = { RequestMethod.GET,
+	@RequestMapping(value = "0/weblinkcontent", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView webLinkContent() {
