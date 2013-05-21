@@ -55,9 +55,9 @@
 			maxAsize : 800,
 			splitVertical : true,
 			A : $('#leftPane'),
-			B : $('#rightPane'),
-			slave : $("#rightSplitterContainer"),
-			closeableto : 0
+			B : $('#rightPane')
+			//slave : $("#rightSplitterContainer")
+			//closeableto : 0
 		});
 
 	});
