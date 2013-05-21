@@ -1,9 +1,3 @@
-<link href="${staticFileServer}resources/css/main/styles2.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="${staticFileServer}resources/css/stylesheets.css"
-	rel="stylesheet" type="text/css" />
-<link href="${staticFileServer}resources/css/main/modern.css"
-	rel="stylesheet" type="text/css" />
 
 <script type='text/javascript'
 	src="${staticFileServer}resources/js/lib/plupload/previewupload.js"></script>
@@ -11,7 +5,7 @@
 	src="${staticFileServer}resources/js/custom/createcontent/addweblink.js"></script>
 
 <style>
-.tileheadaa {
+.tileheada {
 	margin-left: 20px;
 	font-size: 20px;
 	font-size: 30px;
@@ -32,7 +26,6 @@ table tr td {
 .table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
 	background-color: rgba(206, 204, 204, 0.27);
 }
-
 </style>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 	<div class="Zikbreadcrumb f-l">
