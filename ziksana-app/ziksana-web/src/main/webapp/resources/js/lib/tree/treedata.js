@@ -80,9 +80,10 @@ function onButtonClick(menuitemId, type) {
 
 								console.log('module_desc : ' + module_desc);
 
-								//$('#Cmoduledescrte').val(module_desc);
-								
-								CKEDITOR.instances['Cmoduledescrte'].setData(module_desc);
+								// $('#Cmoduledescrte').val(module_desc);
+
+								CKEDITOR.instances['Cmoduledescrte']
+										.setData(removeNewline(module_desc));
 
 								// populate subject area
 
@@ -324,7 +325,7 @@ $(document).ready(
 		function(e) {
 			var id = null;
 			createtree($('#courseid').val());
-			 $(".Addmodulecontainer").hide();
+			$(".Addmodulecontainer").hide();
 			function createnode() {
 
 				var im0 = "Tree.png"; // the icon for a leaf node
@@ -342,3 +343,15 @@ $(document).ready(
 			}
 
 		});
+
+escape = function(str) {
+	return str.replace(/[\\]/g, '\\\\').replace(/[\"]/g, '\\\"').replace(
+			/[\/]/g, '\\/').replace(/[\b]/g, '\\b').replace(/[\f]/g, '\\f')
+			.replace(/[\n]/g, '\\n').replace(/[\r]/g, '\\r').replace(/[\t]/g,
+					'\\t');
+};
+
+removeNewline = function(str) {
+	return str.replace(/[\n]/g, '').replace(/[\r]/g, '').replace(/[\t]/g,
+					'');
+};
