@@ -30,6 +30,13 @@ table tr td {
 .table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
 	background-color: rgba(206, 204, 204, 0.27);
 }
+.uploadify {
+    clear: both;
+    left: 50px;
+    margin-bottom: 1em;
+    position: relative;
+    left:10px;
+}
 </style>
 
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
@@ -49,35 +56,41 @@ table tr td {
 <div class="Clearfix"></div>
 <div id="contentpanel">
 	<div class="tilecontainer pull-left"
-		style="margin-top: 40px; width: 240px;">
-		<div class="tile bg-color-blueDark icon" id="uploadbtn"
-			style="width: 300px; height: 140px;">
+		style="margin-top: 40px; width: 140px;">
+
+
+
+		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
 				<img src="${staticFileServer}resources/images/content/upload.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 18px; width: 160px;">
-					<a href="/ziksana-web/zcourse/createcontent"></a>Upload Content
-				</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">Upload
+					Content</h3>
 			</div>
 		</div>
 
 
-		<div class="tile bg-color-grayDark icon" id="addweblinkbtn"
-			style="width: 300px; height: 140px;">
+		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
 				<img src="${staticFileServer}resources/images/content/link.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 18px; width: 160px;">
-					<a href="/ziksana-web/zcourse/weblinkcontent"></a>Add Web Link
-				</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">Add
+					Web Link</h3>
 			</div>
 		</div>
+
+
+
 		<div class="Clearfix"></div>
+
+
 	</div>
 	<!--end of tilescontainer-->
-	<div class="contentarea pull-right" style="width: 650px;">
+
+	<!--end of tilescontainer-->
+	<div class="contentarea pull-right" style="width: 940px;">
 		<div class="createcontentwrapper">
 			<div class="uploadcontent1">
 				<form id="createcontentform" method="post">
@@ -87,9 +100,9 @@ table tr td {
 
 
 						<div style="margin-top: 30px;">
-							<label style="width: 260px;" for="input"
+							<!--<label style="width: 260px;" for="input"
 								class="control-label nexaf">Associate an Image for your
-								Course :</label>
+								Course :</label> -->
 
 							<div style="width: 122px; height: 120px; float: left">
 								<img id="course_thumbnail_image"
@@ -212,8 +225,8 @@ table tr td {
 					<div class="clearfix"></div>
 					<div class="createcontentpanelhead" style="margin-top: 4px;">
 						<a href="#linkurl" class="btn pull-right"
-							style="margin-left: 10px;"> Cancel </a>
-						<a class="btn pull-right saveup1" type="button"
+							style="margin-left: 10px;"> Cancel </a> <a
+							class="btn pull-right saveup1" type="button"
 							onClick="createContent();return false;">Next</a>
 						<div class="clearfix"></div>
 					</div>

@@ -44,36 +44,37 @@ table tr td {
 <div class="Clearfix"></div>
 <div id="contentpanel">
 	<div class="tilecontainer pull-left"
-		style="margin-top: 40px; width: 240px;">
-		<div class="tile bg-color-blueDark icon" id="uploadbtn"
-			style="width: 300px; height: 140px;">
+		style="margin-top: 40px; width: 140px;">
+		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
 				<img src="${staticFileServer}resources/images/content/upload.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 18px; width: 160px;">
-					<a href="/ziksana-web/zcourse/createcontent"></a>Upload Content
-				</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">Upload
+					Content</h3>
 			</div>
 		</div>
 
 
-		<div class="tile bg-color-grayDark icon" id="addweblinkbtn"
-			style="width: 300px; height: 140px;">
+		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
 				<img src="${staticFileServer}resources/images/content/link.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 18px; width: 160px;">
-					<a href="/ziksana-web/zcourse/weblinkcontent"></a>Add Web Link
-				</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">Add
+					Web Link</h3>
 			</div>
 		</div>
+
+
+
 		<div class="Clearfix"></div>
+
+
 	</div>
 	<!--end of tiles container-->
 
-	<div class="contentarea pull-right" style="width: 650px;">
+	<div class="contentarea pull-right" style="width: 940px;">
 		<div class="createcontentwrapper">
 			<div class="addweblink">
 				<div class="createcontentpanelhead">
