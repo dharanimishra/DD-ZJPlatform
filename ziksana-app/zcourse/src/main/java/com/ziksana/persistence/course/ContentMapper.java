@@ -36,4 +36,5 @@ public interface ContentMapper {
 	})
 	List<LearningContent> getUserContent(Integer memberId);
 
+	public LearningContent getLearningContent(Integer learningContentId);
 }

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.course.Content;
 import com.ziksana.domain.course.LearningContent;
-import com.ziksana.domain.course.UserContent;
 import com.ziksana.persistence.course.ContentMapper;
 import com.ziksana.persistence.course.LearningContentMapper;
 import com.ziksana.service.course.ContentService;
@@ -42,6 +41,10 @@ public class ContentServiceImpl implements ContentService {
 				+ " Method Name :getUserContent(Integer memberId)");
 		
 		return list;
+	}
+	
+	public LearningContent getLearningContent(Integer learningContentId){
+		return contentMapper.getLearningContent(learningContentId);
 	}
 
 }

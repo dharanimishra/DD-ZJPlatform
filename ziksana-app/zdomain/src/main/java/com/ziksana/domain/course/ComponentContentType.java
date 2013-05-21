@@ -4,7 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.ziksana.domain.utils.UTLLookup;
 import com.ziksana.util.EnumUtil;
+import com.ziksana.util.UTLLookUpUtil;
 
 /**
  * @author Ratnesh Kumar
@@ -14,25 +19,31 @@ public enum ComponentContentType {
 
 	// TODO: retrieve the ids from the static data service
 	PREVIEW_CONTENT(), PROMOTIONAL_CONTENT(), PRACTICE_CONTENT(), COURSE_CONTENT();
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ComponentContentType.class);
+
 
 	private int id;
 
 	private String name;
+	
+	private static boolean initialized;
 
-	private final static String category = "Course Status";
+	private final static String CATEGORY = "corLearningComponentContent_Content Type";
 
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
-	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-
-		PREVIEW_CONTENT.setID(mapUtil.get("Preview Content").intValue());
-		PROMOTIONAL_CONTENT
-				.setID(mapUtil.get("Promotional Content").intValue());
-		PRACTICE_CONTENT.setID(mapUtil.get("Practice Content").intValue());
-		COURSE_CONTENT.setID(mapUtil.get("Course Content").intValue());
-
+	private static synchronized void initialize(){
+        if (initialized) { return; }
+		ComponentContentType[] componentContentTypes = ComponentContentType.values();
+		for (ComponentContentType componentContentType : componentContentTypes) {
+			//System.out.println("contentType " + contentType.name());
+			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY, componentContentType.name());
+			componentContentType.id=utlLookup.getLookupValueId();
+			componentContentType.name=utlLookup.getLookupValue();
+		}
+        initialized = true;
+		LOGGER.debug("Content Type initialized " + componentContentTypes);
 	}
 
 	private ComponentContentType() {
@@ -58,7 +69,8 @@ public enum ComponentContentType {
 	}
 
 	public static ComponentContentType getComponentContentType(int ID) {
-		for (ComponentContentType compContentType : ComponentContentType
+        if (!initialized) { initialize(); }
+        for (ComponentContentType compContentType : ComponentContentType
 				.values()) {
 			if (compContentType.getID() == ID) {
 				return compContentType;

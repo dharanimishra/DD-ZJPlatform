@@ -1,5 +1,6 @@
 package com.ziksana.controller.course;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -14,8 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
+import com.ziksana.domain.course.ComponentContentType;
 import com.ziksana.domain.course.Content;
 import com.ziksana.domain.course.ContentType;
+import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.security.util.SecurityTokenUtil;
@@ -113,6 +117,51 @@ public class AssociateCourseController {
 		return modelView;
 	}
 
+	@RequestMapping(value = "/1/associatecontent/", method = {
+			RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView associateContents(
+			@RequestParam(value = "courseId", required = true) String courseId,
+			@RequestParam(value = "learningComponentId", required = false) String learningComponentId,
+			@RequestParam(value = "learningContentToBeAssociated", required = true) String learningContentToBeAssociated
+			) {
+		Integer course_id = 0;
+		ModelAndView modelView =  new ModelAndView("associatecontent");
+		try {
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage() + exception);
+		}
+		return modelView;
+	}
+	
+	private List<LearningComponentContent> getLearningComponentContents(int courseId, int learningComponentId, String learningContentsToBeAssociated){
+		
+		String[] contentIdArray = learningContentsToBeAssociated.split(",");
+		
+		List<LearningComponentContent> learningComponentContentList = new ArrayList<LearningComponentContent>();
+		
+		Course course = courseService.getCourseByCourseId(courseId);
+		
+		for (String stringContentId : contentIdArray) {
+			
+			LearningContent learningContent = contentService.getLearningContent(Integer.parseInt(stringContentId));
+			LearningComponentContent componentContent = new LearningComponentContent();
+			componentContent.setActive(true);
+			componentContent.setCompContentType(ComponentContentType.PREVIEW_CONTENT);
+			componentContent.setCompContentTypeId(ComponentContentType.PREVIEW_CONTENT.getID());
+			componentContent.setContentDescription(learningContent.getContentDescription());
+			componentContent.setCourseStatus(course.getCourseStatus());
+			
+		}
+		
+		
+		
+		return learningComponentContentList;
+	}
+	
+	
+	
+	
 	@RequestMapping(value = "/modalplayer/{contentId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
