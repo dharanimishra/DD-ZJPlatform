@@ -80,7 +80,9 @@ function onButtonClick(menuitemId, type) {
 
 								console.log('module_desc : ' + module_desc);
 
-								$('#Cmoduledescrte').val(module_desc);
+								//$('#Cmoduledescrte').val(module_desc);
+								
+								CKEDITOR.instances['Cmoduledescrte'].setData(module_desc);
 
 								// populate subject area
 

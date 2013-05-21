@@ -35,7 +35,7 @@ table tr td {
     left: 50px;
     margin-bottom: 1em;
     position: relative;
-    left:50px;
+    left:10px;
 }
 </style>
 
