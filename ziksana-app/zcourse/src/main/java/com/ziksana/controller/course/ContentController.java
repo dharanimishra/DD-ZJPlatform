@@ -28,7 +28,7 @@ import com.ziksana.service.course.CourseContentService;
 import com.ziksana.service.security.MediaService;
 
 /**
- * @author prabu
+ * @author Ratnesh Kumar
  * 
  */
 @Controller
@@ -183,7 +183,73 @@ public class ContentController {
 			learningContent.setContentPath(contentPath);
 			learningContent.setStatusId(1);
 			learningContent.setActive(true);
-			learningContent.setContentTypeId(contentType);
+			if (!"".equals(contentType) && contentType != null) {
+				learningContent.setContentTypeId(contentType);
+			}
+			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
+			learningContent.setScreenshotPath(screenshotPath);
+			// learningContent.setStatus(ContentStatus.ACTIVE);
+			learningContent.setNumberOfThumbnails(numberOfThumbnails);
+			learningContent.setRightsOwningMember(accountableMember);
+
+			courseContentService.saveOrUpdateLearningContent(learningContent);
+
+		} catch (CourseException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return mav;
+
+	}
+
+	@RequestMapping(value = "1/weblinkcontent", method = RequestMethod.POST)
+	public @ResponseBody
+	ModelAndView createWeblinkContent(
+			@RequestParam(value = "ContentId", required = false) String contentId,
+			@RequestParam(value = "ContentName", required = true) String contentName,
+			@RequestParam(value = "Content_Description", required = false) String contentDescription,
+			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
+			@RequestParam(value = "Subject", required = false) String Subject,
+			@RequestParam(value = "Topic", required = false) String Topic,
+			@RequestParam(value = "Contenttag_Field", required = false) String contentTags,
+			@RequestParam(value = "AssocContent_Image", required = false) String screenshotPath,
+			@RequestParam(value = "LinkType", required = false) String linkType,
+			@RequestParam(value = "ContentUpload", required = false) String contentUpload,
+			@RequestParam(value = "ContentUrl", required = false) String contentUrl,
+			@RequestParam(value = "ContentPath", required = false) String contentPath,
+			@RequestParam(value = "ThumbnailPicturePath", required = false) String thumbnailPicturePath,
+			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
+			@RequestParam(value = "ContentType", required = false) Integer contentType) {
+
+		ModelAndView mav = new ModelAndView("mastereditcontent");
+
+		try {
+			MemberPersona accountableMember = new MemberPersona();
+			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
+					.getToken().getMemberPersonaId().getStorageID()));
+
+			Integer learningContentId = 0;
+
+			LearningContent learningContent = new LearningContent();
+			if (!"".equals(contentId) && contentId != null) {
+				learningContentId = Integer.parseInt(contentId);
+				learningContent.setLearningContentId(learningContentId);
+			}
+			learningContent.setAuthoringMember(accountableMember);
+			learningContent.setContentName(contentName);
+			learningContent.setContentDescription(contentDescription);
+			learningContent.setContentPath(contentPath);
+			learningContent.setStatusId(1);
+			learningContent.setActive(true);
+			if (!"".equals(contentType) && contentType != null) {
+				learningContent.setContentTypeId(contentType);
+			}
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(screenshotPath);
 			// learningContent.setStatus(ContentStatus.ACTIVE);
