@@ -87,4 +87,21 @@ public class CreateContentController {
 		LOGGER.debug("Class " + getClass() + "Exiting webLinkContent(): ");
 		return mv;
 	}
+
+	@RequestMapping(value = "1/mycontent", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView myContent() {
+		LOGGER.debug(" Entering Class " + getClass() + " myContent()");
+		ModelAndView mv = new ModelAndView("mastermycontent");
+		try {
+			mediaServerURL = mediaService.getMediaContents();
+			mv.addObject("ms", mediaServerURL);
+			mv.addObject("pageTitle", "My Content");
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Class " + getClass() + "Exiting myContent(): ");
+		return mv;
+	}
 }

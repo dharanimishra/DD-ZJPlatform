@@ -147,6 +147,12 @@
 	</definition>
 
 
+	<!-- Metro Weblink Content -->
+	<definition name="mastermycontent" extends="ziksana-home-master">
+		<put-attribute name="master_title" value="My Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/mycontent.jsp" />
+	</definition>
 
 
 	<!--Common Page layout JQuery 1.7.1 version -->
