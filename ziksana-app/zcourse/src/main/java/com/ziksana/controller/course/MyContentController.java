@@ -3,6 +3,8 @@
  */
 package com.ziksana.controller.course;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,9 @@ import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.SecurityTokenUtil;
-import com.ziksana.service.course.CourseContentService;
 import com.ziksana.service.course.MyContentService;
 import com.ziksana.service.security.MediaService;
+import com.ziksana.util.JSONUtil;
 
 /**
  * @author Ratnesh Kumar
@@ -94,21 +96,29 @@ public class MyContentController {
 		return mv;
 	}
 
-	@RequestMapping(value = "1/mycontent", method = { RequestMethod.GET,
-			RequestMethod.POST })
+	@RequestMapping(value = "1/mycontent", method = { RequestMethod.GET })
 	public @ResponseBody
 	ModelAndView myContent() {
 		LOGGER.debug(" Entering Class " + getClass() + " myContent()");
-		ModelAndView mv = new ModelAndView("mastermycontent");
+		ModelAndView modelView = new ModelAndView("mastermycontent");
 		try {
 			mediaServerURL = mediaService.getMediaContents();
-			mv.addObject("ms", mediaServerURL);
-			mv.addObject("pageTitle", "My Content");
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "My Content");
+
+			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
+					.getMemberPersonaId().getStorageID());
+			List<LearningContent> learningContents = myContentService
+					.getMyContents(memberId);
+			String jsonString = JSONUtil.objectToJSONString(learningContents);
+
+			modelView.addObject("learningContentAsJSONString", jsonString);
+
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
 		LOGGER.debug("Class " + getClass() + "Exiting myContent(): ");
-		return mv;
+		return modelView;
 	}
 
 	@RequestMapping(value = "1/createcontents", method = RequestMethod.POST)

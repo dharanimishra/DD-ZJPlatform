@@ -1,5 +1,8 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/isotope/jquery.isotope.min.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/Dynamicjsonjs/mycontent.js"></script>
+
 <script>
 	$('#container4').isotope({
 
@@ -114,41 +117,36 @@
 		});
 	});
 </script>
-<div id="Zikbreadcrumbback" style="margin-left:20px;">     
- 
-<div class="Zikbreadcrumb f-l">
+<div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
-<div class="fifteen columns" id="page-title">
-        <a style="margin-top:-3px;" class="back" href="javascript:history.back()"></a>
- <p class="page-title">
-            <span style="font-size:13px; color:#6bbde8;">Home</span> < My Content      </p>
+	<div class="Zikbreadcrumb f-l">
 
+		<div class="fifteen columns" id="page-title">
+			<a style="margin-top: -3px;" class="back"
+				href="javascript:history.back()"></a>
+			<p class="page-title">
+				<span style="font-size: 13px; color: #6bbde8;">Home</span> < My
+				Content
+			</p>
+
+		</div>
+
+	</div>
+	<!--end of breadcrumb-->
 </div>
- 
-</div> <!--end of breadcrumb-->       
-   
- 
- 
-</div>
 
-<div class="Clearfix"> </div>
-
-
+<div class="Clearfix"></div>
 <div class="announcementcontainer">
 	<div class="headtag pull-left" style="margin-top: 10px;">My
 		Content</div>
 
 	<div class="isotophead pull-right">
 		<div class="isotoplinks">
-
-			<a href="#linkurl" data-option-value="straightDown"
-				style="padding: 5px;" onclick="showall()">All </a> <a
-				href="#linkurl" data-option-value="straightDown"
-				style="padding: 5px;" onclick="showactive()">Video</a> <a
-				href="#linkurl" data-option-value="straightDown"
-				style="padding: 5px;" onclick="showreview()">Weblinks </a> <a
-				href="#linkurl" data-option-value="straightDown"
-				style="padding: 5px;" onclick="showreview()">Others </a>
+			<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a><a
+				href="#" onclick="getLearningContentsByType('VIDEO')">Video
+				Contents</a><a href="#" onclick="getLearningContentsByType('LINK')">Web
+				Link Contents</a><a href="#"
+				onclick="getOtherLearningContents('Others')">Others</a>
 
 		</div>
 	</div>
@@ -161,255 +159,18 @@
 	<hr>
 
 	<div class="announcementswrapper" style="margin-left: 50px;">
+		<form>
+			<input type="hidden" id="learingContents"
+				value='${learningContentAsJSONString}' />
 
-
-		<div id="container4" class="createcontent-mainwrapper isotopbody">
-
-
-			<div id="createcontent-main" class="item All">
-
-				<p class="createcontenthead">Science</p>
-				<p class="createcontentimg">
-					<img
-						src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/view-content.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
+			<div id="container4" class="createcontent-mainwrapper isotopbody">
 
 
 
 			</div>
-			<!-- end of createcontent-main-->
+			<!--end of ann-mainwrapper-->
 
-
-
-			<div id="createcontent-main" class="item All Review">
-
-				<p class="createcontenthead">Geology</p>
-				<p class="createcontentimg">
-					<img src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/edit.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
-			</div>
-
-			<!-- end of createcontent-main-->
-
-
-
-			<div id="createcontent-main" class="item All Review">
-
-				<p class="createcontenthead">Chemistry</p>
-				<p class="createcontentimg">
-					<img
-						src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/edit.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
-			</div>
-
-			<!-- end of createcontent-main-->
-
-
-
-			<div id="createcontent-main" class="item All Review">
-
-				<p class="createcontenthead">Marine</p>
-				<p class="createcontentimg">
-					<img src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/edit.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
-			</div>
-
-			<!-- end of createcontent-main-->
-
-
-			<div id="createcontent-main" class="item All Review">
-
-				<p class="createcontenthead">Meterology</p>
-				<p class="createcontentimg">
-					<img
-						src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/edit.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
-			</div>
-			<!-- end of createcontent-main-->
-
-
-
-			<div id="createcontent-main" class="item All Review">
-
-				<p class="createcontenthead">Sea</p>
-				<p class="createcontentimg">
-					<img
-						src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/view-content.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
-			</div>
-			<!-- end of createcontent-main-->
-
-
-
-			<div id="createcontent-main" class="item All Review">
-
-				<p class="createcontenthead">Science</p>
-				<p class="createcontentimg">
-					<img
-						src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/edit.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
-			</div>
-			<!-- end of createcontent-main-->
-
-
-
-			<div id="createcontent-main" class="item All Review">
-
-				<p class="createcontenthead">Science</p>
-				<p class="createcontentimg">
-					<img
-						src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/edit.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
-			</div>
-			<!-- end of createcontent-main-->
-
-
-
-			<div id="createcontent-main" class="item All Review">
-
-				<p class="createcontenthead">Science</p>
-				<p class="createcontentimg">
-					<img
-						src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/vi.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
-			</div>
-			<!-- end of createcontent-main-->
-
-
-			<div id="createcontent-main" class="item All Review">
-
-				<p class="createcontenthead">Science</p>
-				<p class="createcontentimg">
-					<img
-						src="${staticFileServer}resources/images/genetics.jpg" />
-				</p>
-				<div class="description">
-
-					<a href="#linkurl" class="pull-right"><img class="iconcc"
-						src="${staticFileServer}resources/images/content/edit.png"
-						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-						src="${staticFileServer}resources/images/content/deleteicon.png"
-						style="height: 35px;" /></a>
-
-				</div>
-
-				<div class="Clearfix"></div>
-
-			</div>
-			<!-- end of createcontent-main-->
-
-		</div>
-		<!--end of ann-mainwrapper-->
-
-
+		</form>
 	</div>
 	<div class="annprogressbar pull-right"
 		style="margin: 20px; margin-right: 30px;">
@@ -432,7 +193,8 @@
 	<div class="Clearfix"></div>
 
 
-</div></div>
+</div>
+</div>
 <!--end of announcement container-->
 
 <script
