@@ -2034,12 +2034,12 @@ var App = function () {
         if (App.isTouchDevice()) { // if touch device, some tooltips can be skipped in order to not conflict with click events
             jQuery('.tooltips:not(.no-tooltip-on-touch-device)').tooltip();
         } else {
-            jQuery('.tooltips').tooltip();
+//            jQuery('.tooltips').tooltip();
         }
     }
 
     var handlePopover = function () {
-        jQuery('.popovers').popover();
+       // jQuery('.popovers').popover();
     }
 
     var handleChoosenSelect = function () {

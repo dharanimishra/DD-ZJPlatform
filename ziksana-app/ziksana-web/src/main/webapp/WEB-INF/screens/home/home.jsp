@@ -52,7 +52,7 @@
  
   </div>
 
-<a href="/ziksana-web/zcourse/createcontent">
+<a href="/ziksana-web/zcourse/1/createcontent">
 		<div class="tile bg-color-blueDark">
 			<img class="tileimg" src="/ziksana-web/resources/images/icons/createcontent.png" />
 			<h3><fmt:message key="home.createcontent"></fmt:message></h3>
@@ -240,7 +240,46 @@
 			<!-- __________________________________ to do container ____________________ -->
 
 
-			<div class="contentareatodo" id="todos_placeholder" style="position: absolute; width: 690px;">
+			<div class="contentareatodo" style="position: absolute; width: 690px;">
+
+				<div class="eventheader"
+					style="height: 50px; width: 690px;background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc;margin-top:-12px;">
+
+					<p class="pull-left"
+						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
+						To DO List</p>
+
+
+
+
+				</div>
+				<!--end of eventheader-->
+
+
+
+
+				<div id="todos_placeholder" class="eventcontent"
+					style="height: 270px; overflow: auto; overflow-x: hidden;">
+					</div>
+				<!--end of eventcontent-->
+
+
+
+				<div class="eventfooter"
+					style="height: 30px;width: 691px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
+
+					<p class="pull-right" style="color: #fff;">
+						<a href="#linkurl" class="managetodo" coords="#fff !important;">
+							<img src="/ziksana-web/resources/images/icons/settings.png" align="Manage todo"
+							style="height: 20px; margin-left: 6px; vertical-align: middle;" />
+						</a>
+					</p>
+
+					<div class="clearfix"></div>
+
+				</div>
+				<!--end of eventfooter-->
+
 
 				
 
@@ -256,7 +295,7 @@
 				style="position: absolute; width: 690px;">
 
 				<div class="eventheader"
-					style="height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc;">
+					style="height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc;margin-top: -12px;">
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
@@ -275,38 +314,28 @@
 
 
 
-				<div class="eventcontent"
-					style="height: 270px; overflow: auto; overflow-x: hidden; width: 100%">
+				<div class="eventcontent" style="height: 270px; overflow: auto; overflow-x: hidden; width: 100%">
 
 
 					<div class="portlet box blue">
 
 						<div class="portlet-body">
-							<div class="clearfix"></div>
-							<table class="table table-striped table-hover"
-								id="sample_editable_1">
-								<thead style="display: none;">
-									<tr>
-
-										<th>Points</th>
-										<th>Notes</th>
-										<th>Edit</th>
-										<th>Delete</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="">
-
-										<td>Category</td>
-										<td class="center">To Do</td>
-										<td><a class="edit" href="javascript:;">Edit</a></td>
-										<td><a class="delete" href="javascript:;">Delete</a></td>
-									</tr>
-
-								</tbody>
-							</table>
+					<div id="add_todo_fields_container" style="display:none;">
+							<select id="todo_categories" style="margin-left:50px;width:150px;">
+								
+							</select>
+							<span id="add_new_category_form" style="display:none;">
+							 <input id="todo_category_name"/><!-- <button onclick="add_new_category_item();">Add</button> -->
+							</span>
+								<input id="todo_description" style="margin-left:50px;width:200px;height:28px;">
+							<a onclick="addTodo()" style="margin-left:30px;color:white;">Save</a><a onclick="hideTodoAdd()" style="margin-left:30px;color:white;">Cancel</a>
 						</div>
+					<div id="todos_placeholder_more" class="eventcontent" style="height: 270px; overflow: auto; overflow-x: hidden;">
+					
 					</div>
+							
+					</div>
+				</div>
 					<!-- END EXAMPLE TABLE PORTLET-->
 
 				</div>
@@ -433,57 +462,5 @@ display:none;
 			$('table').dataTable({"bFilter": false,"bInfo": false});
 			
 		});
-		//TODO Ajax Call
-		var no_of_available_todo;
-		function get_and_populate_todo(){
-			$.ajax({
-			  	type: 'GET',
-				url: '/ziksana-web/ztodo/showalltodo',
-				dataType: 'xml',
-				success: function( data ) {
-						
-						var output_todo="";
-						
-						var indexValue = 0;
-						
-					
-						
-						
-						$.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
-							no_of_available_todo = size;
-						
-							var ouputEmptyTodo="";
-							
-							
-							if(no_of_available_todo == 0){$('#todos_placeholder').html(ouputEmptyTodo);} else{
-								
-
-								 
-								ouputEmptyTodo+="<div class='eventheader'style='height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top:-12px;'>";
-								ouputEmptyTodo+="<p class='pull-left' style='color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;'>To DO List</p></div>";
-								ouputEmptyTodo+="<div class='eventcontent' style='height: 280px; overflow: auto; overflow-x: hidden;'>";
-								ouputEmptyTodo+="<table class='table table-hover table-striped'>";
-								ouputEmptyTodo+="<tbody>";
-								 $(data).find("todoitem").each(function(index){
-									 ouputEmptyTodo+="<tr id='todorow"+$(this).find('id').text()+"'><td><input type='checkbox'  name='checkstatus"+$(this).find('id').text()+"' /> <label><span></span></label></td><td>"+$(this).find("categoryName").text()+"</td>";
-									 ouputEmptyTodo+="<td class='todoinfo-decription'><span width='200px' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;'>"+$(this).find("subject").text()+"</span></tr>";
-									 
-								 });
-								 ouputEmptyTodo+="</tbody></table></div>";
-								 ouputEmptyTodo+="<div class='eventfooter' style='height: 30px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;'>";
-								 ouputEmptyTodo+="<p class='pull-right' style='color: #fff;'>";
-								 ouputEmptyTodo+="<a  class='managetodo' coords='#fff !important;'><img src='/ziksana-web/resources/images/icons/settings.png' align='Manage todo' style='height: 20px; margin-left: 6px; vertical-align: middle;' /></a>";
-								 ouputEmptyTodo+="</p><div class='clearfix'></div></div>";
-								 
-								$('#todos_placeholder').html(ouputEmptyTodo);
-								
-								
-							}
-							
-						});
-				}	
-			});
-								  
-		}
-	
+		
 	</script>

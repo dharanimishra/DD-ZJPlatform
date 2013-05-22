@@ -12,9 +12,7 @@
 <script type='text/javascript' src='/ziksana-web/resources/js/lib/slider/fwslider.js'></script>
 <script type='text/javascript' src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
 
- 
 
-<script src="/ziksana-web/resources/js/jquery_confirm/jquery.confirm.js"></script>
 <script src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
 
 <script type='text/javascript' src='/ziksana-web/resources/js/custom/jqueryeasing.js'></script>

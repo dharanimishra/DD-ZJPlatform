@@ -2385,6 +2385,7 @@ input[type="checkbox"]:checked+label span {
 
 .closedtodo {
 	cursor: pointer;
+	color:red;
 	text-decoration: line-through;
 }
 
