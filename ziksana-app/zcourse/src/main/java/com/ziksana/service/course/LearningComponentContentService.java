@@ -12,4 +12,11 @@ public interface LearningComponentContentService {
 	 */
 	public void saveLearningComponentContents(List<LearningComponentContent> learningComponentContents);
 	
+	/**
+	 * This method only marks the specified {@link LearningComponentContent} as deleted
+	 * @param learningComponentContentId
+	 */
+	public void updateLearningComponentContent(LearningComponentContent learningComponentContent);
+	
+	public LearningComponentContent getLearningComponentContent(Integer learningComponentContentId);
 }

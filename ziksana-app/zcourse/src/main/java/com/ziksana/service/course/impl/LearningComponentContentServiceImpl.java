@@ -25,4 +25,16 @@ public class LearningComponentContentServiceImpl implements
 		}
 	}
 
+	public void updateLearningComponentContent(
+			LearningComponentContent learningComponentContent) {
+		learningComponentContent.setDeleted(true);
+		learningComponentContentMapper.updateLearningComponentContent(learningComponentContent);
+	}
+
+	public LearningComponentContent getLearningComponentContent(
+			Integer learningComponentContentId) {
+		// TODO Auto-generated method stub
+		return learningComponentContentMapper.getLearningComponentContent(learningComponentContentId);
+	}
+
 }
