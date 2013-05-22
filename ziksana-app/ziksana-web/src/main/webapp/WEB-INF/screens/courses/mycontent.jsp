@@ -114,7 +114,24 @@
 		});
 	});
 </script>
+<div id="Zikbreadcrumbback" style="margin-left:20px;">     
+ 
+<div class="Zikbreadcrumb f-l">
 
+<div class="fifteen columns" id="page-title">
+        <a style="margin-top:-3px;" class="back" href="javascript:history.back()"></a>
+ <p class="page-title">
+            <span style="font-size:13px; color:#6bbde8;">Home</span> < My Content      </p>
+
+</div>
+ 
+</div> <!--end of breadcrumb-->       
+   
+ 
+ 
+</div>
+
+<div class="Clearfix"> </div>
 
 
 <div class="announcementcontainer">
@@ -143,7 +160,6 @@
 
 	<hr>
 
-
 	<div class="announcementswrapper" style="margin-left: 50px;">
 
 
@@ -168,11 +184,232 @@
 				</div>
 
 				<div class="Clearfix"></div>
+
+
+
+
+			</div>
+			<!-- end of createcontent-main-->
+
+
+
+			<div id="createcontent-main" class="item All Review">
+
+				<p class="createcontenthead">Geology</p>
+				<p class="createcontentimg">
+					<img src="${staticFileServer}resources/images/genetics.jpg" />
+				</p>
+				<div class="description">
+
+					<a href="#linkurl" class="pull-right"><img class="iconcc"
+						src="${staticFileServer}resources/images/content/deleteicon.png"
+						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+						src="${staticFileServer}resources/images/content/edit.png"
+						style="height: 35px;" /></a>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
+			</div>
+
+			<!-- end of createcontent-main-->
+
+
+
+			<div id="createcontent-main" class="item All Review">
+
+				<p class="createcontenthead">Chemistry</p>
+				<p class="createcontentimg">
+					<img
+						src="${staticFileServer}resources/images/genetics.jpg" />
+				</p>
+				<div class="description">
+
+					<a href="#linkurl" class="pull-right"><img class="iconcc"
+						src="${staticFileServer}resources/images/content/deleteicon.png"
+						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+						src="${staticFileServer}resources/images/content/edit.png"
+						style="height: 35px;" /></a>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
+			</div>
+
+			<!-- end of createcontent-main-->
+
+
+
+			<div id="createcontent-main" class="item All Review">
+
+				<p class="createcontenthead">Marine</p>
+				<p class="createcontentimg">
+					<img src="${staticFileServer}resources/images/genetics.jpg" />
+				</p>
+				<div class="description">
+
+					<a href="#linkurl" class="pull-right"><img class="iconcc"
+						src="${staticFileServer}resources/images/content/deleteicon.png"
+						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+						src="${staticFileServer}resources/images/content/edit.png"
+						style="height: 35px;" /></a>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
+			</div>
+
+			<!-- end of createcontent-main-->
+
+
+			<div id="createcontent-main" class="item All Review">
+
+				<p class="createcontenthead">Meterology</p>
+				<p class="createcontentimg">
+					<img
+						src="${staticFileServer}resources/images/genetics.jpg" />
+				</p>
+				<div class="description">
+
+					<a href="#linkurl" class="pull-right"><img class="iconcc"
+						src="${staticFileServer}resources/images/content/deleteicon.png"
+						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+						src="${staticFileServer}resources/images/content/edit.png"
+						style="height: 35px;" /></a>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
+			</div>
+			<!-- end of createcontent-main-->
+
+
+
+			<div id="createcontent-main" class="item All Review">
+
+				<p class="createcontenthead">Sea</p>
+				<p class="createcontentimg">
+					<img
+						src="${staticFileServer}resources/images/genetics.jpg" />
+				</p>
+				<div class="description">
+
+					<a href="#linkurl" class="pull-right"><img class="iconcc"
+						src="${staticFileServer}resources/images/content/deleteicon.png"
+						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+						src="${staticFileServer}resources/images/content/view-content.png"
+						style="height: 35px;" /></a>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
+			</div>
+			<!-- end of createcontent-main-->
+
+
+
+			<div id="createcontent-main" class="item All Review">
+
+				<p class="createcontenthead">Science</p>
+				<p class="createcontentimg">
+					<img
+						src="${staticFileServer}resources/images/genetics.jpg" />
+				</p>
+				<div class="description">
+
+					<a href="#linkurl" class="pull-right"><img class="iconcc"
+						src="${staticFileServer}resources/images/content/edit.png"
+						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+						src="${staticFileServer}resources/images/content/deleteicon.png"
+						style="height: 35px;" /></a>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
+			</div>
+			<!-- end of createcontent-main-->
+
+
+
+			<div id="createcontent-main" class="item All Review">
+
+				<p class="createcontenthead">Science</p>
+				<p class="createcontentimg">
+					<img
+						src="${staticFileServer}resources/images/genetics.jpg" />
+				</p>
+				<div class="description">
+
+					<a href="#linkurl" class="pull-right"><img class="iconcc"
+						src="${staticFileServer}resources/images/content/edit.png"
+						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+						src="${staticFileServer}resources/images/content/deleteicon.png"
+						style="height: 35px;" /></a>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
+			</div>
+			<!-- end of createcontent-main-->
+
+
+
+			<div id="createcontent-main" class="item All Review">
+
+				<p class="createcontenthead">Science</p>
+				<p class="createcontentimg">
+					<img
+						src="${staticFileServer}resources/images/genetics.jpg" />
+				</p>
+				<div class="description">
+
+					<a href="#linkurl" class="pull-right"><img class="iconcc"
+						src="${staticFileServer}resources/images/content/vi.png"
+						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+						src="${staticFileServer}resources/images/content/deleteicon.png"
+						style="height: 35px;" /></a>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
+			</div>
+			<!-- end of createcontent-main-->
+
+
+			<div id="createcontent-main" class="item All Review">
+
+				<p class="createcontenthead">Science</p>
+				<p class="createcontentimg">
+					<img
+						src="${staticFileServer}resources/images/genetics.jpg" />
+				</p>
+				<div class="description">
+
+					<a href="#linkurl" class="pull-right"><img class="iconcc"
+						src="${staticFileServer}resources/images/content/edit.png"
+						style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+						src="${staticFileServer}resources/images/content/deleteicon.png"
+						style="height: 35px;" /></a>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
 			</div>
 			<!-- end of createcontent-main-->
 
 		</div>
 		<!--end of ann-mainwrapper-->
+
+
 	</div>
 	<div class="annprogressbar pull-right"
 		style="margin: 20px; margin-right: 30px;">
@@ -195,5 +432,25 @@
 	<div class="Clearfix"></div>
 
 
-</div>
+</div></div>
 <!--end of announcement container-->
+
+<script
+	src="${staticFileServer}resources/js/custom/table/breakpoints/breakpoints.js"></script>
+<!-- ie8 fixes -->
+<!--[if lt IE 9]>
+	<script src="assets/js/excanvas.js"></script>
+	<script src="assets/js/respond.js"></script>
+	<![endif]-->
+
+<script
+	src="${staticFileServer}resources/js/custom/bootstrap/js/bootstrap.min.js"></script>
+<script src="${staticFileServer}resources/js/custom/table/js/app.js"></script>
+<script>
+	jQuery(document).ready(function() {
+		// initiate layout and plugins
+
+		App.init();
+
+	});
+</script>

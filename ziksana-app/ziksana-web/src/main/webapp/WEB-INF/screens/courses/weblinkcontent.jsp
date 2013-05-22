@@ -170,6 +170,7 @@ table tr td {
 <!--end of body wrapper-->
 
 <div class="Clearfix"></div>
+</div>
 
 
 <%-- <script type="text/javascript"
