@@ -147,7 +147,7 @@
 	</definition>
 
 
-	<!-- Metro Weblink Content -->
+	<!-- Metro My Content -->
 	<definition name="mastermycontent" extends="ziksana-home-master">
 		<put-attribute name="master_title" value="My Content" />
 		<put-attribute name="content"
