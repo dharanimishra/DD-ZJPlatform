@@ -419,121 +419,7 @@ reviewtable table,td {
 	padding-left: 0;
 }
 
-height
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-320
-px
-
-
-
-
-
-
-
-
-;
-overflow
-
-
-
-
-
-
-
-
-
-
-:auto
-
-
-
-
-
-
-
-
-
-
-;
-overflow-x
-
-
-
-
-
-
-
-
-
-
-:hidden
-
-
-
-
-
-
-
-
-
-
-;
-background-color
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
  
-
-
-
-
-
-#525252
-
-
-
-
-
-
-
-
-
-
-;
-}
 .isotoplinks a {
 	color: #fff;
 	font-size: 16px;
@@ -1051,7 +937,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', end
 }
 
 #contentpanel {
-	
+    margin-bottom: 30px;
+    overflow: auto;
 }
 
 .profileinput {

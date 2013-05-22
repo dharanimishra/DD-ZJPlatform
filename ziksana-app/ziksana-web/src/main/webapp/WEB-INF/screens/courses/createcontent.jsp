@@ -54,7 +54,7 @@ table tr td {
 </div>
 
 <div class="Clearfix"></div>
-<div id="contentpanel">
+<div id="contentpanel"  >
 	<div class="tilecontainer pull-left"
 		style="margin-top: 40px; width: 140px;">
 
@@ -99,7 +99,7 @@ table tr td {
 					<div class="draganddrop pull-left">
 
 
-						<div style="margin-top: 30px;">
+						<div style="margin-top: 30px;margin-left: 60px;">
 							<!--<label style="width: 260px;" for="input"
 								class="control-label nexaf">Associate an Image for your
 								Course :</label> -->
@@ -246,7 +246,7 @@ table tr td {
 <div class="Clearfix"></div>
 <!--end of body wrapper-->
 
-<div class="Clearfix"></div>
+
 
 
 <%-- <script type="text/javascript"

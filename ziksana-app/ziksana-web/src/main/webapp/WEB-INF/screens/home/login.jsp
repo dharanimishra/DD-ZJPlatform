@@ -2,7 +2,7 @@
 <div id="loginwrapper">
 
 
-	<div id="contentpanel">
+	<div id="contentpanel" style="margin-bottom:0px">
 
 
 		<div id="headercontainer">
