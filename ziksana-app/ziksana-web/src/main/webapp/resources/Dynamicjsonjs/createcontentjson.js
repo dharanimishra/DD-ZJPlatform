@@ -8,7 +8,7 @@ function createContent() {
 	token = ''; // dummy token for demo. you have to send real token.
 	request_type = 'POST'; // can be GET or POST. In this case, a GET request
 
-	var ContentName = "Test Content";
+	var ContentName = $('#ContentName').val();
 
 	var ContentPath = $('#Cimageupl').val();
 

@@ -32,7 +32,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 	@Autowired
 	public LearningComponentContentMapper compContentMapper;
 	@Autowired
-	public LearningContentMapper contentMapper;
+	public LearningContentMapper learningContentcontentMapper;
 
 	@Transactional
 	public void saveOrUpdateContent(
@@ -54,7 +54,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 					+ learningComponentContent.toString());
 
 			LOGGER.debug("Before UPDATING the LearningContent ...");
-			contentMapper.updateContent(learningContent);
+			learningContentcontentMapper.updateContent(learningContent);
 			LOGGER.debug("After UPDATING the LearningContent ID...:"
 					+ learningContent.getLearningContentId());
 
@@ -67,7 +67,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 			LOGGER.debug("Before saving the LearningContent ...");
 
-			contentMapper.saveContent(learningContent);
+			learningContentcontentMapper.saveContent(learningContent);
 
 			LOGGER.debug("After saving the LearningContent ID...:"
 					+ learningContent.getLearningContentId());
@@ -108,9 +108,11 @@ public class CourseContentServiceImpl implements CourseContentService {
 				learningContentParts.setLearningContent(baseLearningContent);
 
 				if (learningContentParts.getLearningContent() != null) {
-					contentMapper.updateContentParts(learningContentParts);
+					learningContentcontentMapper
+							.updateContentParts(learningContentParts);
 				} else {
-					contentMapper.saveContentParts(learningContentParts);
+					learningContentcontentMapper
+							.saveContentParts(learningContentParts);
 				}
 			}
 		}
@@ -158,12 +160,12 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 		if (learningContent.getLearningContentId() != null) {
 			LOGGER.debug("Before saving the LearningContent ");
-			contentMapper.saveContent(learningContent);
+			learningContentcontentMapper.saveContent(learningContent);
 			LOGGER.debug("After saving the LearningContent ID:"
 					+ learningContent.getLearningContentId());
 		} else {
 			LOGGER.debug("Before UPDATING the LearningContent ");
-			contentMapper.updateContent(learningContent);
+			learningContentcontentMapper.updateContent(learningContent);
 		}
 
 		contentPartsList = learningContent.getAllLearningContentParts();
@@ -182,7 +184,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 		LOGGER.debug("Member role ID : " + memberRoleId);
 
-		contentList = contentMapper
+		contentList = learningContentcontentMapper
 				.getListOfContentsByMemberRoleId(memberRoleId);
 
 		LOGGER.debug("Learning Content List : " + contentList.size());
@@ -202,32 +204,34 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 		if (deleteType.getID() == 1) {
 
-			contentMapper.deleteContent(isDelete, learningContentId);
+			learningContentcontentMapper.deleteContent(isDelete,
+					learningContentId);
 
 		} else if (deleteType.getID() == 2) {
 
-			learningContentIdList = contentMapper
+			learningContentIdList = learningContentcontentMapper
 					.getLearningContetPartsByContentId(learningContentId);
 
 			for (Integer learningContentPartsId : learningContentIdList) {
 
-				contentMapper.deleteContentParts(isDelete,
+				learningContentcontentMapper.deleteContentParts(isDelete,
 						learningContentPartsId);
 
 			}
 
 		} else if (deleteType.getID() == 3) {
 
-			learningContentIdList = contentMapper
+			learningContentIdList = learningContentcontentMapper
 					.getLearningContetPartsByContentId(learningContentId);
 
 			for (Integer learningContentPartsId : learningContentIdList) {
 
-				contentMapper.deleteContentParts(isDelete,
+				learningContentcontentMapper.deleteContentParts(isDelete,
 						learningContentPartsId);
 
 			}
-			contentMapper.deleteContent(isDelete, learningContentId);
+			learningContentcontentMapper.deleteContent(isDelete,
+					learningContentId);
 		}
 
 	}
@@ -243,7 +247,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 			if (learningContent.getLearningContentId() != null) {
 
 				LOGGER.debug("Before UPDATING the LearningContent ...");
-				contentMapper.updateContent(learningContent);
+				learningContentcontentMapper.updateContent(learningContent);
 				LOGGER.debug("After UPDATING the LearningContent ID...:"
 						+ learningContent.getLearningContentId());
 
@@ -256,7 +260,7 @@ public class CourseContentServiceImpl implements CourseContentService {
 
 				LOGGER.debug("Before saving the LearningContent ...");
 
-				contentMapper.saveContent(learningContent);
+				learningContentcontentMapper.saveContent(learningContent);
 
 				contentParts = learningContent.getAllLearningContentParts();
 
@@ -268,8 +272,9 @@ public class CourseContentServiceImpl implements CourseContentService {
 					+ getClass()
 					+ " : Method :saveOrUpdateLearningContent(LearningContent learningContent)"
 					+ e);
-			//throw new ZiksanaException(ZiksanaConstants.COMMON_ERROR_MESSAGE, e) {
-			//};
+			// throw new ZiksanaException(ZiksanaConstants.COMMON_ERROR_MESSAGE,
+			// e) {
+			// };
 		}
 	}
 }
