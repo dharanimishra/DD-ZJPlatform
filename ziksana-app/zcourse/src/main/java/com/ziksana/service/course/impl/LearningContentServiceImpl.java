@@ -18,7 +18,7 @@ import com.ziksana.service.course.LearningContentService;
 public class LearningContentServiceImpl implements LearningContentService {
 
 	private final static Logger LOGGER = LoggerFactory
-			.getLogger(UserContentServiceImpl.class);
+			.getLogger(LearningContentServiceImpl.class);
 
 	@Autowired
 	LearningContentMapper learningContentMapper;
@@ -122,7 +122,7 @@ public class LearningContentServiceImpl implements LearningContentService {
 
 	public void deleteLearningContent(Integer learningContentId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

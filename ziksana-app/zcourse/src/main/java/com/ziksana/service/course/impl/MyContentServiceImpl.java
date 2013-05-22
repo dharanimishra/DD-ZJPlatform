@@ -6,6 +6,7 @@ package com.ziksana.service.course.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.service.course.LearningContentService;
@@ -15,6 +16,7 @@ import com.ziksana.service.course.MyContentService;
  * @author Ratnesh Kumar
  * 
  */
+@Service
 public class MyContentServiceImpl implements MyContentService {
 
 	@Autowired
