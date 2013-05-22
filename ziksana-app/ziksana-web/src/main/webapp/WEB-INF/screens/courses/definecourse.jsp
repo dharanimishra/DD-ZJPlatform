@@ -251,7 +251,24 @@
 
 <style>
 .uploadify {margin-left:260px;}
-
+.remove {
+    background: none repeat scroll 0 0 #43B2EC;
+    border: 0 none;
+    border-radius: 6px 6px 6px 6px;
+    color: #F9F9F9;
+    cursor: pointer !important;
+    float: left;
+    margin-bottom: 3px;
+    margin-left: -11px;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+    text-shadow: none;
+    top: 121px;
+    width: 92px;
+}
+.remove:hover{width: 92px;}
 </style>
 
 <div class="navheadlp" style="padding-left: 151px;">
@@ -291,7 +308,7 @@
 			<!--Course Name-->
 			<div class=" ">
 				<div class="control-group">
-					<input type="hidden" id="courseid" value="${courseId}" /> <input
+					<input type="hidden" id="courseid" value="${courseId}"  /> <input
 						type="hidden" id="moduleexists" value="${module}" /> <label
 						class="control-label nexaf" for="Course Name">Course Name
 						:</label>
@@ -336,9 +353,9 @@
 			<div class="control-group" style="margin-top: 20px;">
 				<div>
 					<label class="labelclass nexaf f-l"> Course Area : </label> <label
-						class="labelclass nexaf f-l" style="margin-left: 190px;">
+						class="labelclass nexaf f-l" style="margin-left: 156px;">
 						Course Subject: </label> <label class="labelclass nexaf f-l"
-						style="margin-left: 180px;"> Course Topic: </label>
+						style="margin-left: 142px;"> Course Topic: </label>
 				</div>
 
 				<div class="clearfix"></div>
@@ -478,7 +495,8 @@
 										{
 											'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 											'queueSizeLimit' : 1,
-											'successTimeout' : 350,
+											 'successTimeout' : 350,
+											 'buttonText' : 'Upload Image',
 											'uploader' : '${ms.uploadScript}',
 											//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 											'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
@@ -560,4 +578,19 @@
 <!--end of body wrapper-->
 
 </div>
-
+<style>
+.select2-container {
+    
+    margin-right: 10px!important;
+    
+    width: 235px;
+}
+.formErrorContent {
+    
+    color: red;
+    left: 67px;
+    overflow: auto;
+    position: relative;
+    top: 81px;
+}
+</style>
