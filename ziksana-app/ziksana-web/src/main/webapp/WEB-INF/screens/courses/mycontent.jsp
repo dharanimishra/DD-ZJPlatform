@@ -162,14 +162,9 @@
 		<form>
 			<input type="hidden" id="learingContents"
 				value='${learningContentAsJSONString}' />
-
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
-
-
-
 			</div>
 			<!--end of ann-mainwrapper-->
-
 		</form>
 	</div>
 	<div class="annprogressbar pull-right"
