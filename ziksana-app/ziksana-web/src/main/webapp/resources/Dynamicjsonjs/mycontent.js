@@ -1,4 +1,7 @@
-var divName = 'container4';
+$(document).ready(function() {
+	getAllLearningContents();
+});
+
 function getOtherLearningContents(contentType) {
 	$('#container4').empty();
 	var jsonString = document.getElementById("learingContents").value;
