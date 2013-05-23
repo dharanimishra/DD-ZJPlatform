@@ -2,6 +2,7 @@ package com.ziksana.service.course;
 
 import java.util.List;
 
+import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningContent;
 
 public interface AssociateContentService {
@@ -14,5 +15,9 @@ public interface AssociateContentService {
 	public void associateContents(Integer authMemberRoleId, Integer courseId, Integer learningComponentId, String learningContentsToBeAssociated);
 	
 	public void unAssociateContent(Integer learningcomponentContentId);
+	
+	public Course getCourse(Integer courseId);
+	
+	public boolean isModuleExist(Integer courseId);
 	
 }

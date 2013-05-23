@@ -100,4 +100,16 @@ public class AssociateContentServiceImpl implements AssociateContentService {
 		learningComponentContentService.updateLearningComponentContent(learningComponentContent);
 	}
 
+	public boolean isModuleExist(Integer courseId) {
+		Integer result = courseService.isModuleExists(courseId);
+		Boolean exists = false;
+		if(result > 0){
+			exists = true;
+		}
+		else{
+			exists = false;
+		}
+		return exists;
+	}
+
 }

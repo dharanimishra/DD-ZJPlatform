@@ -20,6 +20,8 @@
 	src="${staticFileServer}resources/js/lib/tree/Menu/menu_ext.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/associate-content-treedata.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
 	
 
 <!-- Added JS FILE  -->
@@ -68,6 +70,9 @@
 	src="${staticFileServer}resources/js/lib/splitter/splitter.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/associate-content/associate-content.js"></script>
+<script type="text/javascript"
+	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
+	
 
 
 <script type="text/javascript">
@@ -295,10 +300,11 @@
 					<input type="hidden" id="courseLearningComponentId" value=""/> 
 					<input type="hidden" id="parentLearningComponentId" value="" /> 
 					<input type="hidden" id="learningComponentId" value="" />
+					<input type="hidden" id="learingContents" value='${learningContentAsJSONString}'/>
 					<!--
 					<input type="hidden" id="learingContents" value='{"learningContents": [{"id": "1", "contentType": "2", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test1","ContentDescription": "this is a test", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "2", "contentType": "1", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test2", "ContentDescription": "test2", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "3", "contentType": "3", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test3", "ContentDescription": "test3", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"}]}' />
-					-->
 					<input type="hidden" id="learingContents" value='${learningContentAsJSONString}'/>
+					-->
 					<style>
 #splitter {
 	width: 100%;

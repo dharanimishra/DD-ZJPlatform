@@ -316,7 +316,7 @@ function createtree(course_id) {
 			"plus_ar.png", "plus_ar.png");
 	tree.setImageArrays("minus", "minus_ar.png", "minus_ar.png",
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
-	courseId = course_id.split('_')[1];
+	courseId = course_id;
 	tree.loadXML("/ziksana-web/zcourse/getchildtree/" + courseId);
 
 }
@@ -324,6 +324,7 @@ function createtree(course_id) {
 $(document).ready(
 		function(e) {
 			var id = null;
+			alert("$('#courseid').val() " + $('#courseid').val());
 			createtree($('#courseid').val());
 			 $(".Addmodulecontainer").hide();
 			function createnode() {

@@ -43,25 +43,35 @@ public class AssociateContentController {
 	
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
-	@RequestMapping(value = "/1/repositorycontents", method = { RequestMethod.GET,
-			RequestMethod.POST })
+	@RequestMapping(value = "/1/repositorycontents/{courseId}", method = { RequestMethod.GET })
 	public @ResponseBody
-	ModelAndView showAssociateContent() {
+	ModelAndView showAssociateContent(@PathVariable Integer courseId) {
 		LOGGER.debug("Entering showAssociateCourse(): ");
 		ModelAndView modelView = new ModelAndView("associatecontent");
 		try {
-			LearningContent content = new LearningContent();
-			content.setContentType(ContentType.getContentType(612));
-			Integer memberId = Integer.valueOf(SecurityTokenUtil
-						.getToken().getMemberPersonaId().getStorageID());
-				List<LearningContent> learningContents = associateContentService.getLearningContents(memberId);
-				String jsonString = JSONUtil.objectToJSONString(learningContents);
-				
-				modelView.addObject("learningContentAsJSONString", jsonString);
-				
+			
+			if (courseId > 0) {
+				modelView.addObject("courseId",courseId);
+				associateContentService.getCourse(courseId);
+				Boolean isModuleExists = associateContentService.isModuleExist(courseId); 
+				LOGGER.debug("Module Size= >"+isModuleExists);
+				if(isModuleExists){
+					LearningContent content = new LearningContent();
+					content.setContentType(ContentType.getContentType(612));
+					Integer memberId = Integer.valueOf(SecurityTokenUtil
+								.getToken().getMemberPersonaId().getStorageID());
+						List<LearningContent> learningContents = associateContentService.getLearningContents(memberId);
+						String jsonString = JSONUtil.objectToJSONString(learningContents);
+						
+						modelView.addObject("learningContentAsJSONString", jsonString);
+						
 
-				mediaServerURL = mediaService.getMediaContents();
-				modelView.addObject("ms", mediaServerURL);
+						mediaServerURL = mediaService.getMediaContents();
+						modelView.addObject("ms", mediaServerURL);
+				}else{
+					return new ModelAndView("redirect:/zcourse/createcourse/"+courseId+"");
+				}
+			}
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage() + exception);
 		}
@@ -105,8 +115,10 @@ public class AssociateContentController {
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(),exception);
 		}
+		//test
 		return mv;
 	}
+	
 	
 	@RequestMapping(value = "/ev_modalplayer/{contentId}", method = {
 			RequestMethod.GET, RequestMethod.POST })

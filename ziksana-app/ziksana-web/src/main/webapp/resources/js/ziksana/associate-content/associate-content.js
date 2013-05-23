@@ -1,12 +1,23 @@
 
-$(document).ready(function() {
+
+	$(document).ready(function() {
+		//var abc = '${learningContentAsJSONString}';
+		//alert("kjkjkjk "+ abc);
+		//putInSessionStorage("repositoryContents", '${learningContentAsJSONString}');
+		//addToSessionStorage(${learningContentAsJSONString});
 		getAllLearningContents();
 	});
 	
-	 
+	//var sessionKey = "repositoryContents";
+	function addToSessionStorage(value){
+		//alert("I am in" + sessionKey);
+		//putInSessionStorage(sessionKey, value);
+		//alert("Added to session storage "  + value);
+	} 
 	function getOtherLearningContents(contentType){
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
+		//var jsonString = getFromSessionStorage(sessionKey);
 		var contentArray = jQuery.parseJSON( jsonString );
 		
 		//alert(contentType);
@@ -24,7 +35,8 @@ $(document).ready(function() {
 
 	function getLearningContentsByType(contentType){
 		$('#page1').empty();
-		var jsonString = document.getElementById("learingContents").value;
+		//var jsonString = document.getElementById("learingContents").value;
+		//var jsonString = getFromSessionStorage(sessionKey);
 		var contentArray = jQuery.parseJSON( jsonString );
 		
 		//alert(contentType);
@@ -44,6 +56,7 @@ $(document).ready(function() {
 		//alert("Hi");
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
+		//var jsonString = getFromSessionStorage(sessionKey);
 		//alert(jsonString);
 		var contentArray = jQuery.parseJSON( jsonString );
 		var divs = '';
