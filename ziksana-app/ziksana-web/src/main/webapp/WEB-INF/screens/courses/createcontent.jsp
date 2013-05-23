@@ -124,6 +124,7 @@ table tr td {
 														'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 														'queueSizeLimit' : 1,
 														'successTimeout' : 350,
+														 'buttonText' : 'Upload File',
 														'uploader' : '${ms.uploadScript}',
 														//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 														'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
