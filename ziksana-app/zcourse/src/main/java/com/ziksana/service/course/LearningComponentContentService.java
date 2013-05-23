@@ -19,4 +19,13 @@ public interface LearningComponentContentService {
 	public void updateLearningComponentContent(LearningComponentContent learningComponentContent);
 	
 	public LearningComponentContent getLearningComponentContent(Integer learningComponentContentId);
+	
+	/**
+	 * This method retrieves the learningComponentContent object for the specified
+	 * learningComponentId and learningContentId 
+	 * @param learningComponentId
+	 * @param learningContentId
+	 * @return
+	 */
+	public LearningComponentContent getLearningComponentContent(Integer learningComponentId, Integer learningContentId);
 }

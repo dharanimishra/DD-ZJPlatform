@@ -37,4 +37,10 @@ public class LearningComponentContentServiceImpl implements
 		return learningComponentContentMapper.getLearningComponentContent(learningComponentContentId);
 	}
 
+	public LearningComponentContent getLearningComponentContent(
+			Integer learningComponentId, Integer learningContentId) {
+		// TODO Auto-generated method stub
+		return learningComponentContentMapper.getLearningComponentContent(learningComponentId, learningContentId);
+	}
+
 }

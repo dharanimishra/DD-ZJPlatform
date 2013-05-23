@@ -35,7 +35,7 @@
 
 	function getLearningContentsByType(contentType){
 		$('#page1').empty();
-		//var jsonString = document.getElementById("learingContents").value;
+		var jsonString = document.getElementById("learingContents").value;
 		//var jsonString = getFromSessionStorage(sessionKey);
 		var contentArray = jQuery.parseJSON( jsonString );
 		
@@ -72,6 +72,7 @@
 	
 	function getDiv(learningContentObject){
 		
+		
 			var learningContentDiv =  '<div id="associatelr">' +
 	
 			'<div class="associatesearchitem">'+
@@ -87,7 +88,6 @@
 					'<div class="associatecategoryhead">' + learningContentObject.contentName + '</div>'+
 	
 					'<div class="associatetagscontainer">'+
-						'<p class="associatecategorytags f-r"> Tags : <a href="#linkurl">x</a>,<a href="#linkurl">y</a>,<a href="#linkurl">z</a> </p>'+
 						'<p class="associatecategoryname f-l"> Category :   <a href="#linkurl"> Areas</a>/<a href="#linkurl">Topic</a>/<a href="#linkurl">Subject</a> </p>'+
 					'<div class="ClearFix"> </div>'+
 					'</div> <!--end of associatetagscontainer-->'+
@@ -95,7 +95,7 @@
 					'<div class="ClearFix"> </div>'+
 	
 					'<div class="associatedesccont"> '+
-						'<p class="associatecategorydesc">' + learningContentObject.ContentDescription + '</p>'+
+						'<p class="associatecategorydesc">' + learningContentObject.contentDescription + '</p>'+
 					'</div> <!--end of associatedesccont-->'+
 	
 					'<p class="f-r"><a href="#linkurl"> See More </a> </p>'+

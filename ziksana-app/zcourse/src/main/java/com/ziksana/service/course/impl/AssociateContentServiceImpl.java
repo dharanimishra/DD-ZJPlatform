@@ -95,8 +95,9 @@ public class AssociateContentServiceImpl implements AssociateContentService {
 		return learningComponentContentList;
 	}
 
-	public void unAssociateContent(Integer learningComponentContentId) {
-		LearningComponentContent learningComponentContent = learningComponentContentService.getLearningComponentContent(learningComponentContentId);
+	public void unAssociateContent(Integer learningComponentId, Integer learningContentId) {
+		LearningComponentContent learningComponentContent = learningComponentContentService.getLearningComponentContent(learningComponentId, learningContentId);
+		learningComponentContent.setDeleted(true);
 		learningComponentContentService.updateLearningComponentContent(learningComponentContent);
 	}
 

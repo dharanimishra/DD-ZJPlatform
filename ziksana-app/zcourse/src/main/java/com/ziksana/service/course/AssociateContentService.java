@@ -14,7 +14,7 @@ public interface AssociateContentService {
 
 	public void associateContents(Integer authMemberRoleId, Integer courseId, Integer learningComponentId, String learningContentsToBeAssociated);
 	
-	public void unAssociateContent(Integer learningcomponentContentId);
+	public void unAssociateContent(Integer learningComponentId, Integer learningContentId);
 	
 	public Course getCourse(Integer courseId);
 	

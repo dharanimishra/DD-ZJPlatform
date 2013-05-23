@@ -58,4 +58,12 @@ public interface LearningComponentContentMapper {
 				@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
 		})
 	LearningComponentContent getLearningComponentContent(Integer learningComponentContentId);
+	
+	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where " +
+	" learningComponentId = #{learningComponentId,jdbcType=INTEGER} and " + 
+	" learningContentId = #{learningContentId,jdbcType=INTEGER} "})
+		@Results(value = {
+				@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
+		})
+	LearningComponentContent getLearningComponentContent(Integer learningComponentId, Integer learningContentId);
 }

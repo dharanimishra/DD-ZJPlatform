@@ -140,13 +140,16 @@ public class AssociateContentController {
 	}
 
 	
-	@RequestMapping(value = "/unassociatecontent", method = RequestMethod.POST)
+	@RequestMapping(value = "/1/unassociatecontent", method = RequestMethod.POST)
 	public @ResponseBody
 	String unAssociateContent(
-			@RequestParam(value = "learningComponentContentId", required = true) String learningComponentContentId) {
+			@RequestParam(value = "contentId", required = true) Integer contentId,
+			@RequestParam(value = "courseId", required = true) Integer courseId,
+			@RequestParam(value = "componentId", required = true) Integer componentId)
+			{
 		try {
-			associateContentService.unAssociateContent(Integer.parseInt(learningComponentContentId));
-			
+			associateContentService.unAssociateContent(componentId, contentId);
+			LOGGER.debug("Un-Associated course "+ courseId + " component " + componentId + " content for " + contentId);
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(),exception);
 		}

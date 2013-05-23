@@ -1,7 +1,7 @@
 var counter = 0;
 function onButtonClick(menuitemId, type) {
 	var menuaction = menuitemId;
-	alert("menuaction " + menuaction);
+	//alert("menuaction " + menuaction);
 	if (menuaction == "Add_Module") {
 		// alert("open the menu for add module.");
 		$('#Viewmodulecontainer').hide();
@@ -178,19 +178,24 @@ function onButtonClick(menuitemId, type) {
 		console.log(ComponentId);
 		confirm_delete_component = confirm('Are you sure you want to delete this item?');
 		if (confirm_delete_component == true) {
-			uri = '/ziksana-web/zcourse/removecoursecomponents';
+			uri = '/ziksana-web/zcourse/1/unassociatecontent';
 
-			token = ''; // dummy token for demo. you have to send real token.
+			//token = ''; // dummy token for demo. you have to send real token.
 			request_type = 'POST'; // can be GET or POST. In this case, a GET
 			// request
 
 			var CourseId = $('#courseid').val();
+			nodeParentId = tree.getParentId(ComponentId);
+			//alert("ComponentId " + ComponentId.split('_')[1] + " CourseId "  + CourseId + " nodeParentId " + nodeParentId.split('_')[1]);
 
 			var parameters = {
-				"Course_id" : CourseId,
-				"Component_id" : ComponentId
+				"courseId" : CourseId,
+				"componentId" : nodeParentId.split('_')[1],
+				"contentId" : ComponentId.split('_')[1]
 			};
-
+			
+			//return;
+			
 			$.post(uri, parameters, function(data) {
 				console.log(data);
 				if (data.response == 'success') {
@@ -200,7 +205,7 @@ function onButtonClick(menuitemId, type) {
 							'<span style="color:red;">' + data.message
 									+ '</span>');
 				}
-
+				alert("data.message " + data.message);
 			});
 			tree.deleteItem(tree.getSelectedItemId(), true);
 
