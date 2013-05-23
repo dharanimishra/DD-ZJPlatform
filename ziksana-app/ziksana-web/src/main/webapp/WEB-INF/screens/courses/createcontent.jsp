@@ -100,11 +100,9 @@ table tr td {
 					<div class="createcontentpanelhead">Upload Content</div>
 					<!--end of panel head-->
 					<div class="draganddrop pull-left">
-						<div style="margin-top: 30px; margin-left: 60px;">
-							<div style="width: 122px; height: 120px; float: left">
-								<img id="course_thumbnail_image"
-									src="http://www.placehold.it/80x80/EFEFEF/AAAAAA" align="left" />
-
+						<div style="margin-top: 30px; margin-left: 10px;">
+							<div style="width: 122px; height: 100px; float: left">
+<img id="course_thumbnail_image" style="margin-left:65px" src="http://www.placehold.it/80x80/EFEFEF/AAAAAA" align="center" />
 							</div>
 
 							<input readonly="readonly" type="hidden" id="Cimageupl"
@@ -156,7 +154,7 @@ table tr td {
 																$('#ContentType').val(data_object.ContentType);
 																$('#ContentTypeName').val(data_object.ContentTypeName);
 																$('#course_thumbnail_image').attr('src','${ms.url}'+ data_object.ContentPath);
-																$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
+																$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px;padding:6px 35px;position:relative;top:106px">Remove</a>');
 
 															} else { //there is an error in the upload process
 
