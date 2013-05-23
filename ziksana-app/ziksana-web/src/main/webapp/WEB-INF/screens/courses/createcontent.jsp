@@ -30,12 +30,13 @@ table tr td {
 .table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
 	background-color: rgba(206, 204, 204, 0.27);
 }
+
 .uploadify {
-    clear: both;
-    left: 50px;
-    margin-bottom: 1em;
-    position: relative;
-    left:10px;
+	clear: both;
+	left: 50px;
+	margin-bottom: 1em;
+	position: relative;
+	left: 10px;
 }
 </style>
 
@@ -54,7 +55,7 @@ table tr td {
 </div>
 
 <div class="Clearfix"></div>
-<div id="contentpanel"  >
+<div id="contentpanel">
 	<div class="tilecontainer pull-left"
 		style="margin-top: 40px; width: 140px;">
 
@@ -65,8 +66,9 @@ table tr td {
 				<img src="${staticFileServer}resources/images/content/upload.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/1/createcontent"></a>Upload
-					Content</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+					<a href="ziksana-web/zcourse/1/createcontent"></a>Upload Content
+				</h3>
 			</div>
 		</div>
 
@@ -76,8 +78,9 @@ table tr td {
 				<img src="${staticFileServer}resources/images/content/link.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/1/weblinkcontent"></a>Add
-					Web Link</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+					<a href="ziksana-web/zcourse/1/weblinkcontent"></a>Add Web Link
+				</h3>
 			</div>
 		</div>
 
@@ -97,16 +100,10 @@ table tr td {
 					<div class="createcontentpanelhead">Upload Content</div>
 					<!--end of panel head-->
 					<div class="draganddrop pull-left">
-
-
-						<div style="margin-top: 30px;margin-left: 60px;">
-							<!--<label style="width: 260px;" for="input"
-								class="control-label nexaf">Associate an Image for your
-								Course :</label> -->
-
+						<div style="margin-top: 30px; margin-left: 60px;">
 							<div style="width: 122px; height: 120px; float: left">
 								<img id="course_thumbnail_image"
-									src="${staticFileServer}resources/images/default-course.jpg"
+									src="${staticFileServer}resources/images/genetics.jpg"
 									align="left" />
 							</div>
 

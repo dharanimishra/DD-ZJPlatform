@@ -42,6 +42,8 @@ public class LearningContent extends AuditHistory {
 	private Integer statusId = null;
 	private Integer version = null;
 
+	private Integer subjClassificationId = null;
+
 	private Integer numberOfThumbnails = null;
 
 	public Integer getNumberOfThumbnails() {
@@ -223,6 +225,14 @@ public class LearningContent extends AuditHistory {
 	 */
 	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
+	}
+
+	public Integer getSubjClassificationId() {
+		return subjClassificationId;
+	}
+
+	public void setSubjClassificationId(Integer subjClassificationId) {
+		this.subjClassificationId = subjClassificationId;
 	}
 
 	/**
@@ -476,9 +486,10 @@ public class LearningContent extends AuditHistory {
 	public void setIsDelete(Boolean isDelete) {
 		this.isDelete = isDelete;
 	}
-	
+
 	private Integer contentPartid;
 	private String contentUrl;
+
 	public Integer getContentPartid() {
 		return contentPartid;
 	}
@@ -498,6 +509,5 @@ public class LearningContent extends AuditHistory {
 	public void setContentUrl(String contentUrl) {
 		this.contentUrl = contentUrl;
 	}
-	
-	
+
 }

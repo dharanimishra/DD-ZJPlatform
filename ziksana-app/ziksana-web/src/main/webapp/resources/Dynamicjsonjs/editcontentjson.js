@@ -138,27 +138,33 @@ $(document)
 function editContent() {
 
 	// Step 1: Assign Parameters required by the sendMessage function.
-	uri = '/ziksana-web/zcourse/1/createcontents';
+	uri = '/ziksana-web/zcourse/1/editcontents';
 
 	token = ''; // dummy token for demo. you have to send real token.
 	request_type = 'POST'; // can be GET or POST. In this case, a GET request
 
+	var ContentId = $('#contentId').val();
+	
 	var ContentName = "Test Content";
-
-	var ContentPath = $('#Cimageupl').val();
 
 	var ThumbnailPicturePath = $('#ThumbnailPicturePath').val();
 
 	var NumberOfThumbnails = $('#NumberOfThumbnails').val();
 
-	var ContentType = $('#ContentType').val();
+	var Subject_Area = $('#Careaddl').val();
+
+	var Subject = $('#Csubjectddl').val();
+
+	var Topic = $('#Ctopicddl').val();
 
 	var parameters = {
 		"ContentName" : ContentName,
 		"ContentPath" : ContentPath,
 		"ThumbnailPicturePath" : ThumbnailPicturePath,
 		"NumberOfThumbnails" : NumberOfThumbnails,
-		"ContentType" : ContentType,
+		"Subject_Area" : Subject_Area,
+		"Subject" : Subject,
+		"Topic" : Topic
 
 	};
 

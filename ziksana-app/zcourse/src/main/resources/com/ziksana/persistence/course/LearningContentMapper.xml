@@ -91,6 +91,9 @@
 			<if test="numberOfThumbnails !=null">
 				numberOfThumbnails,
 			</if>
+			<if test="subjClassificationId !=null">
+				subjclassificationid,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			sysdate(),
@@ -133,7 +136,9 @@
 			<if test="numberOfThumbnails !=null">
 				#{numberOfThumbnails,jdbcType=INTEGER},
 			</if>
-
+			<if test="subjClassificationId !=null">
+				#{subjClassificationId,jdbcType=INTEGER},
+			</if>
 		</trim>
 		<selectKey keyProperty="learningContentId" resultType="int"
 			order="AFTER">
@@ -166,6 +171,10 @@
 			<if test="thumbnailPicturePath !=null">
 				thumbnailpicturepath =
 				#{thumbnailPicturePath,jdbcType=VARCHAR},
+			</if>
+			<if test="subjClassificationId!=null">
+				subjclassificationid=
+				#{subjClassificationId,jdbcType=INTEGER},
 			</if>
 		</set>
 		where learningcontentid = #{learningContentId.storageID,
