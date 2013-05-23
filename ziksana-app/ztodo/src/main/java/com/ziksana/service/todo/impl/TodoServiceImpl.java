@@ -69,4 +69,19 @@ public class TodoServiceImpl implements TodoService {
 		return todoList;
 	}
 
+
+	public int getTodosSize() {
+
+		return todoMapper.getTodoSize(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
+	}
+
+
+	public List<Todo> getTodoPagination(int pageIndex) {
+		
+		return todoMapper.getTodoPagination(pageIndex, Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
+	}
+
+
+	
+
 }

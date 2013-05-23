@@ -10,8 +10,8 @@
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
 			<p class="page-title">
-				<span style="font-size: 13px; color: #6bbde8;"><fmt:message key="home.hometext"></fmt:message></span>
-				Course
+				<span style="font-size: 15px; color: #6bbde8;"><fmt:message key="home.hometext"></fmt:message></span>
+
 			</p>
 
 		</div>
@@ -52,20 +52,21 @@
  
   </div>
 
-<a href="/ziksana-web/zcourse/1/createcontent">
-		<div class="tile bg-color-blueDark">
-			<img class="tileimg" src="/ziksana-web/resources/images/icons/createcontent.png" />
-			<h3><fmt:message key="home.createcontent"></fmt:message></h3>
-
-		</div>
+		<a href="/ziksana-web/zcourse/1/createcontent">
+			<div class="tile bg-color-blueDark">
+				<img class="tileimg" src="/ziksana-web/resources/images/icons/createcontent.png" />
+				<h3><fmt:message key="home.createcontent"></fmt:message></h3>
+	
+			</div>
 		</a>
+		<a href="/ziksana-web/zcourse/1/mycontent">
 		<div class="tile">
 
 			<img class="tileimg" src="/ziksana-web/resources/images/icons/managecourse.png" />
 			<h3><fmt:message key="home.managecontent"/></h3>
 
 		</div>
-
+		</a>
 
 		<div class="tile bg-color-blueDark">
 
@@ -259,14 +260,14 @@
 
 
 				<div id="todos_placeholder" class="eventcontent"
-					style="height: 270px; overflow: auto; overflow-x: hidden;">
+					style="height: 270px;">
 					</div>
 				<!--end of eventcontent-->
 
 
 
 				<div class="eventfooter"
-					style="height: 30px;width: 691px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
+					style="height: 30px;width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;margin-top:10px;">
 
 					<p class="pull-right" style="color: #fff;">
 						<a href="#linkurl" class="managetodo" coords="#fff !important;">
@@ -314,28 +315,26 @@
 
 
 
-				<div class="eventcontent" style="height: 270px; overflow: auto; overflow-x: hidden; width: 100%">
+				<div class="eventcontent" style="height: 270px; width: 100%;">
 
-
-					<div class="portlet box blue">
 
 						<div class="portlet-body">
 					<div id="add_todo_fields_container" style="display:none;">
-							<select id="todo_categories" style="margin-left:50px;width:150px;">
+							<select id="todo_categories" style="margin-left:100px;width:150px;">
 								
 							</select>
-							<span id="add_new_category_form" style="display:none;">
-							 <input id="todo_category_name"/><!-- <button onclick="add_new_category_item();">Add</button> -->
+							<span id="add_new_category_form" style="display:none;margin-left:100px;">
+							 <input id="todo_category_name"/>
 							</span>
-								<input id="todo_description" style="margin-left:50px;width:200px;height:28px;">
-							<a onclick="addTodo()" style="margin-left:30px;color:white;">Save</a><a onclick="hideTodoAdd()" style="margin-left:30px;color:white;">Cancel</a>
+								<input id="todo_description" style="margin-left:22px;width:200px;height:28px;">
+							<a onclick="addTodo()" style="margin-left:65px;color:white;">Save</a><a onclick="hideTodoAdd()" style="margin-left:40px;color:white;">Cancel</a>
 						</div>
-					<div id="todos_placeholder_more" class="eventcontent" style="height: 270px; overflow: auto; overflow-x: hidden;">
+					<div id="todos_placeholder_more" class="eventcontent" >
 					
 					</div>
 							
 					</div>
-				</div>
+				
 					<!-- END EXAMPLE TABLE PORTLET-->
 
 				</div>
@@ -344,7 +343,7 @@
 
 
 				<div class="eventfooter"
-					style="height: 30px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
+					style="height: 30px;width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;margin-top:10px;">
 
 
 				</div>
@@ -430,7 +429,9 @@ background-color: rgb(56, 111, 143) !important;
 margin-top:10px; !important;
 display: none;	
 }
-
+.dddd{
+disabled:true;
+}
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
 background-color: rgba(206, 204, 204, 0.27);
 }

@@ -2569,3 +2569,17 @@ input[type="checkbox"]:checked+label span {
     font-size: 26px !important;
     margin-left: 30px;
 }
+.todotip_container {position: relative;}
+.todotip_container:hover .categortip{display: inline-block;}
+.categortip {
+  background-color: #386F8F !important;
+  border-radius: 2px 2px 2px 2px;
+  box-shadow: 0 0 4px black;
+  display: none;
+  left: 0;
+  padding: 0.5em;
+  position: absolute;
+  top: 03px;
+  width: 200px;
+  z-index: 99;
+}

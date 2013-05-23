@@ -954,7 +954,8 @@ function editUpdateSecuQuestion(){
 	        
 	        	if(data == 1){
 		          	   	          	 
-	        		showlblsq2('lblsq2');
+	        		showlblsq1('lblsq1');
+	        		
 		          	$('#ques_text_diplayone').html(editQuestionOneValue);
 		          	
 		             }else{
@@ -983,7 +984,7 @@ function editSaveSecQuesTwo(){
 	        
 	        	if(data == 1){
 		          	   	          	 
-		          	 showlblsq1('lblsq1');
+	        		showlblsq2('lblsq2');
 		          	$('#ques_text_diplaytwo').html(editQuestionOneValue);
 		          	
 		             }else{
@@ -1024,7 +1025,6 @@ width:120px !important;
 }
 .editcontroll{
 display:none;
- background-color:#eee;
  padding:10px 20px 10px 4px;
  margin-bottom:10px;
   overflow: auto;

@@ -51,19 +51,31 @@ public class TodoController {
 	public @ResponseBody int getTodoSize() {
 
 		int todoSize = 0;
-		List<Todo> todoList = new ArrayList<Todo>();
+		
 		try{
-		todoList = todoService.getTodos();
+			todoSize = todoService.getTodosSize();
 		}catch (ZiksanaException zexception) {
 			
 			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
 		}
-		todoSize = todoList.size();
 		
-		return Integer.valueOf(todoSize);
+		
+		return todoSize;
 	}
 	
-	
+	@RequestMapping(value = "/showtodobypagination/{pageIndex}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView listTodoByPagination(@PathVariable String pageIndex) {
+		
+		ModelAndView modelView = new ModelAndView("xml/todolist");
+		try{		
+		modelView.addObject("todoItems", todoService.getTodoPagination(Integer.parseInt(pageIndex)));
+
+		}catch (ZiksanaException zexception) {
+			modelView.addObject("errorResponse", zexception.getMessage());
+			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
+		return modelView;
+	}
 
 	/**
 	 * Retrive Three todo items to display on the dashboard
