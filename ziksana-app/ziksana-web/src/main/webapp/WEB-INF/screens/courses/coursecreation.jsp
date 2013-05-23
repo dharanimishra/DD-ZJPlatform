@@ -68,9 +68,7 @@
 	color: #0a91ac !important;
 }
 
-.select2-container {
-	margin-right: 59px;
-}
+
 </style>
 <script type="text/javascript">
 	/* function showrich() {
@@ -313,14 +311,14 @@
 							</div> -->
 							<div class="clearfix"></div>
 							<div class="moduleselection">
-								<div style="width: 38%;margin-right:2px" class="f-l">
+								<div style="width: 30%;margin-right:2px" class="f-l">
 									<label class="labelclass nexaf f-l"> Module Area : </label> <select
 										name="s_example" id="Cmoduleareaddl" class="select"
 										onclick="getArea();">
 										<option value="0">choose a option...</option>
 									</select>
 								</div>
-								<div style="width: 38%;" class="f-l">
+								<div style="width: 30%;" class="f-l">
 									<label class="labelclass nexaf f-l"> Module Subject: </label> <select
 										name="s_example" class="select" id="Cmodulesubjectddl">
 										<option value="0">choose a option...</option>
@@ -396,3 +394,11 @@
 <div class="Clearfix"></div>
 <div class="Clearfix"></div>
 </div>
+<style>
+.select2-container {
+    
+    margin-right: 10px!important;
+    
+    width: 200px;
+}
+</style>

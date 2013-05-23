@@ -10,12 +10,6 @@
 <div id="leftpanel">
 
 	<div id="Headerborder">
-		<div id="HeaderLogo" class="f-l">
-			<img src="/ziksana-web/resources/images/home/logo2.png" />
-		</div>
-		<!--end of headerlogo-->
-
-		<div id="Headerborder">
 			<div id="HeaderLogo" class="f-l">
 
 				<img src="/ziksana-web/resources/images/home/logo2.png" />

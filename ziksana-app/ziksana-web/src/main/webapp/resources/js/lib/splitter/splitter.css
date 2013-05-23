@@ -3,7 +3,7 @@
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	border-bottom: solid 1px #9cbdff;overflow: auto;
+	overflow: auto;
 }
 
 #leftPane {
@@ -17,7 +17,7 @@
 
 #rightPane { /*Contains toolbar and horizontal splitter*/
 	float: right;
-	width: 70%;
+	width: 74%;
 	height: 100%;
 	border-left: 2px solid #eee;
 	margin-left: -1%;
