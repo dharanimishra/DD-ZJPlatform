@@ -131,7 +131,7 @@ public class MyContentController {
 	public @ResponseBody
 	ModelAndView createContent(
 			@RequestParam(value = "ContentId", required = false) String contentId,
-			@RequestParam(value = "ContentName", required = true) String contentName,
+			@RequestParam(value = "ContentName", required = false) String contentName,
 			@RequestParam(value = "Content_Description", required = false) String contentDescription,
 			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
 			@RequestParam(value = "Subject", required = false) String Subject,
@@ -168,7 +168,7 @@ public class MyContentController {
 			}
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(thumbnailPicturePath);
-			learningContent.setStatus(ContentStatus.ACTIVE);
+			//learningContent.setStatus(ContentStatus.ACTIVE);
 			learningContent.setNumberOfThumbnails(numberOfThumbnails);
 			learningContent.setRightsOwningMember(accountableMember);
 
@@ -194,7 +194,7 @@ public class MyContentController {
 	public @ResponseBody
 	ModelAndView editContent(
 			@RequestParam(value = "ContentId", required = true) String contentId,
-			@RequestParam(value = "ContentName", required = true) String contentName,
+			@RequestParam(value = "ContentName", required = false) String contentName,
 			@RequestParam(value = "Content_Description", required = false) String contentDescription,
 			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
 			@RequestParam(value = "Subject", required = false) String Subject,
@@ -233,7 +233,7 @@ public class MyContentController {
 			}
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(thumbnailPicturePath);
-			learningContent.setStatus(ContentStatus.ACTIVE);
+			//learningContent.setStatus(ContentStatus.ACTIVE);
 			learningContent.setNumberOfThumbnails(numberOfThumbnails);
 			learningContent.setRightsOwningMember(accountableMember);
 			try {
@@ -308,7 +308,7 @@ public class MyContentController {
 			}
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(screenshotPath);
-			learningContent.setStatus(ContentStatus.ACTIVE);
+			//learningContent.setStatus(ContentStatus.ACTIVE);
 			learningContent.setNumberOfThumbnails(numberOfThumbnails);
 			learningContent.setRightsOwningMember(accountableMember);
 

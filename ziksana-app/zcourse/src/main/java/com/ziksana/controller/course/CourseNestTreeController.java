@@ -52,6 +52,16 @@ public class CourseNestTreeController {
 		return mv;
 	}
 
+	@RequestMapping(value = "/gettree", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView showCourseTree() {
+		LOGGER.debug("Entering Class " + getClass() + " showCourseTree()");
+		ModelAndView mv = new ModelAndView("xml/context");
+		LOGGER.debug("Exiting Class " + getClass() + " showCourseTree(): ");
+
+		return mv;
+	}
+
 	@RequestMapping(value = "/getparent/{courseId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody

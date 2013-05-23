@@ -104,6 +104,9 @@ table tr td {
 							<div style="width: 122px; height: 120px; float: left">
 								<img id="course_thumbnail_image"
 									src="http://www.placehold.it/80x80/EFEFEF/AAAAAA" align="left" />
+								<input type="hidden" id="ContentName"> <input
+									type="hidden" id="ContentType"> <input type="hidden"
+									id="ContentTypeName">
 							</div>
 
 							<input readonly="readonly" type="hidden" id="Cimageupl"
@@ -124,7 +127,7 @@ table tr td {
 														'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 														'queueSizeLimit' : 1,
 														'successTimeout' : 350,
-														 'buttonText' : 'Upload File',
+														'buttonText' : 'Upload File',
 														'uploader' : '${ms.uploadScript}',
 														//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 														'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
