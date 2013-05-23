@@ -12,21 +12,8 @@ import com.ziksana.util.UTLLookUpUtil;
 
 public enum ContentType  {
 
-/*		// TODO: retrieve the ids from the static data service
-	VIDEO(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type","VIDEO"),"Video"), 
-	ENHANCED_VIDEO(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "ENHANCED_VIDEO"), "ENHANCED_VIDEO"), 
-	AUDIO(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "AUDIO"), "Audio"), 
-	//TEXTUAL(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "TEXTUAL"), "TEXTUAL"), 
-	PDF(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "PDF"), "PDF"), 
-	DOC(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "DOC"), "DOC"), 
-	PPT(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "PPT"), "PPT"), 
-	//EXCEL(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "EXCEL"), "EXCEL"), 
-	IMAGE(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "IMAGE"), "IMAGE") 
-	//LINK(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "LINK"), "LINK")
-	;
-*/
 	
-	VIDEO(),ENHANCED_VIDEO(),AUDIO(),PDF(),DOC(),PPT(),EXCEL(),IMAGE(),LINK();
+	VIDEO(),ENHANCED_VIDEO(),AUDIO(),TEXTUAL(), PDF(),DOC(),PPT(),EXCEL(),IMAGE(),LINK();
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ContentType.class);
 	
@@ -84,15 +71,6 @@ public enum ContentType  {
          throw new IndexOutOfBoundsException("ContentType ID [" + ID + "] not found");
 	 }
 
-	public static ContentType getContentType1(int ID) {
-		for (ContentType comntentType : ContentType.values()) {
-			if (comntentType.getID() == ID) {
-				return comntentType;
-			}
-		}
-
-		throw new NoSuchElementException("Content Type ID [" + ID + "] not found");
-	}
 
 	public String toString() {
 		return "Content Type [" + getName() + "] ID [" + getID() + "]";
