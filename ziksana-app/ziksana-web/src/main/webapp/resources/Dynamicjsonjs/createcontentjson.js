@@ -18,7 +18,10 @@ function createContent() {
 
 	var ContentType = $('#ContentType').val();
 
-	console.log("ContentType :" + ContentType);
+	var ContentTypeName = $('#ContentTypeName').val();
+
+	console.log("ContentType :" + ContentType + "ContentTypeName :"
+			+ ContentTypeName);
 
 	var parameters = {
 		"ContentName" : ContentName,
@@ -26,6 +29,7 @@ function createContent() {
 		"ThumbnailPicturePath" : ThumbnailPicturePath,
 		"NumberOfThumbnails" : NumberOfThumbnails,
 		"ContentType" : ContentType,
+		"ContentTypeName" : ContentTypeName,
 
 	};
 

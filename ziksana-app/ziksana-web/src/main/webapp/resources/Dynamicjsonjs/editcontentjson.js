@@ -144,12 +144,12 @@ function editContent() {
 	request_type = 'POST'; // can be GET or POST. In this case, a GET request
 
 	var ContentId = $('#contentId').val();
-	
-	var ContentName = "Test Content";
 
-	var ThumbnailPicturePath = $('#ThumbnailPicturePath').val();
+	var ContentName = $('#EditName').val();
 
-	var NumberOfThumbnails = $('#NumberOfThumbnails').val();
+	var ContentDescription = $('#ContentDescription').val();
+
+	var ThumbnailPicturePath = $('#Cimageupl').val();
 
 	var Subject_Area = $('#Careaddl').val();
 
@@ -158,10 +158,10 @@ function editContent() {
 	var Topic = $('#Ctopicddl').val();
 
 	var parameters = {
+		"ContentId" : ContentId,
 		"ContentName" : ContentName,
-		"ContentPath" : ContentPath,
+		"ContentDescription" : ContentDescription,
 		"ThumbnailPicturePath" : ThumbnailPicturePath,
-		"NumberOfThumbnails" : NumberOfThumbnails,
 		"Subject_Area" : Subject_Area,
 		"Subject" : Subject,
 		"Topic" : Topic

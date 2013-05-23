@@ -103,8 +103,7 @@ table tr td {
 						<div style="margin-top: 30px; margin-left: 60px;">
 							<div style="width: 122px; height: 120px; float: left">
 								<img id="course_thumbnail_image"
-									src="${staticFileServer}resources/images/genetics.jpg"
-									align="left" />
+									src="http://www.placehold.it/80x80/EFEFEF/AAAAAA" align="left" />
 							</div>
 
 							<input readonly="readonly" type="hidden" id="Cimageupl"

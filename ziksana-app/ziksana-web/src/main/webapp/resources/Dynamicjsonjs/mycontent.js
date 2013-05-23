@@ -54,20 +54,17 @@ function getAllLearningContents() {
 		// alert(div);
 	}
 	// $('#page1').append(divs);
-	alert("Divs :" + divs);
+	//alert("Divs :" + divs);
 	$('#container4').html(divs);
 }
 
 function getDiv(learningContentObject) {
 
-	alert('learningContentObject.contentName :'
-			+ learningContentObject.contentName);
-
 	var learningContentDiv = '<div id="createcontent-main" class="item All">'
 			+ '<p class="createcontenthead">'
 			+ learningContentObject.contentName + '</p></div>';
 	+'<div><p class="createcontentimg">'
-			+ '<img src="resources/images/genetics.jpg" />'
+			+ '<img src="/ziksana-web/resources/images/genetics.jpg" />'
 			+ '</p>'
 			+ '<div class="description">'
 			+ '<a href="#linkurl" class="pull-right"><img class="iconcc" src="${staticFileServer}resources/images/content/deleteicon.png"style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img src="${staticFileServer}resources/images/content/view-content.png" style="height: 35px;" /></a>'
