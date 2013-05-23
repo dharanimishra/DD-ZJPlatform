@@ -12,8 +12,14 @@
      
 	<div id="HeaderNav" class="f-r">
 <div style=" float:left;width:70%">
-<div id="ProfilePic" class="f-r "><img src="${ms.url}<c:out value="${member.picturePath}"/>" align="middle" class=" rounded_image Profile">
-   
+<div id="ProfilePic" class="f-r ">
+
+<c:if test="${empty member.picturePath}">
+<img src="/ziksana-web/resources/images/no-image.jpg" align="middle" class=" rounded_image Profile">
+</c:if>
+<c:if test="${not empty ms.url && not empty member.picturePath}">
+<img src="${ms.url}<c:out value="${member.picturePath}"/>" align="middle" class=" rounded_image Profile">
+</c:if>  
  <c:out value="${member.firstName}"/> <c:out value="${member.lastName}"/> </div>
 </div> 
 <div id="user_menu_container">

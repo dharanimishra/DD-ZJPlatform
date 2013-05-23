@@ -22,7 +22,7 @@
 		  where v.CategoryName='Notification Type' and
 		  l.LookupValueId=491 and
 		 
-		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate ASC  limit 0, 5
+		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate DESC  limit 0, 5
 	</select>
 	
 	
@@ -50,11 +50,11 @@
 		  where v.CategoryName='Notification Type' and
 		  l.LookupValueId=491 and
 		 
-		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate ASC  limit 0, 5
+		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate DESC  limit 0, 5
 	</select>
 	
 	<select id="getTodoSize" resultType="java.lang.Integer" parameterType="int">
-		select count(*) from memmembernotification where ForMemberRoleId=#{memberRoleId}
+		select distinct count(*) from memmembernotification n join utllookupvalue l ON n.NotificationType=l.LookupValueId join utllookup v ON l.LookupId=v.LookupId join utllookupvalue p ON n.Priority=p.LookupValueId join utllookup pl ON pl.LookupId=p.LookupId where v.CategoryName='Notification Type' and l.LookupValueId=491 and n.ForMemberRoleId=#{memberRoleId} order by n.ActivationDate DESC  
 	</select>
 
 	<select id="getTodoPagination"  resultMap="todoResultMap" parameterType="map">
@@ -77,7 +77,7 @@
 		  where v.CategoryName='Notification Type' and
 		  l.LookupValueId=491 and
 		 
-		  n.ForMemberRoleId=#{memberRoleId}  order by n.ActivationDate ASC  limit #{pageIndex}, 5
+		  n.ForMemberRoleId=#{memberRoleId}  order by n.ActivationDate DESC  limit #{pageIndex}, 5
 	</select>
 	
 	

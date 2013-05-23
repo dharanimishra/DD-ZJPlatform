@@ -37,7 +37,7 @@
 
 		<div class="tile bg-color-blue" style="width:270px;">
 			 <c:if test="${empty member.picturePath}">
-			 <p><img src="<c:out value="/ziksana-web${member.picturePath}"/> " align="left" style="margin-top: 15px; margin-left: 5px; height:100px; margin-right:10px;" class="img-polaroid"/></p>
+			 <p><img src="/ziksana-web/resources/images/no-image.jpg" align="left" style="margin-top: 15px; margin-left: 5px; height:100px; margin-right:10px;" class="img-polaroid"/></p>
 			 </c:if>
 			 <c:if test="${not empty ms.url && not empty member.picturePath}">
 			 <p><img src="${ms.url}<c:out value="${member.picturePath}"/>" align="left" style="margin-top: 15px; margin-left: 5px; height:100px; margin-right:10px;" class="img-polaroid"/></p>
@@ -98,7 +98,7 @@
 
 
 
-		<div class="tile bg-color-orange icon  mt-changescene"
+		<div class="tile bg-color-orange icon  mt-changescene announcement_box"
 			style="width: 200px; height: 130px;">
 			<div class="tile-content">
 				<img src="/ziksana-web/resources/images/icons/announcement.png" alt="mes" />
@@ -121,29 +121,25 @@
 
 
 
-	<div class="contentarea pull-right"
-		style="height: 406px; margin-top: 22px;">
+	<div class="contentarea pull-right " style="height: 406px; margin-top: 22px;">
 
-		<div class="imagewrapper" style="height: 395px;">
-
-
-			<!-- __________________________________ Panel head ____________________ -->
+		<div class="imagewrapper scrollbar force-overflow" id="style-6" style="height: 400px;">
+		
+		<!-- __________________________________ Panel head ____________________ -->
 
 
 			<div class="panelhead" style="margin-top: -12px;">
 
 				<ul>
-					<li><a href="#" class="tagevent"> Events </a></li>
-					<li><a href="#" class="tagtask"> To Do </a></li>
+					<li><a style="cursor:pointer" class="tagevent"> Events </a></li>
+					<li><a style="cursor:pointer" class="tagtask"> To Do </a></li>
 
 
 				</ul>
 
 			</div>
 			<!--end of panel head-->
-
-
-
+		
 			<!-- __________________________________ alert container ____________________ -->
 
 			<div class="contentareaevent"
@@ -237,7 +233,346 @@
 			<!--end of contentareaevent-->
 
 
+			
+		
+		
+			<!-- __________________________________ Announcement ____________________ -->
+			 
+			<div class="annnouncementpanel">
+			  
+				
+				 <div class="announcementmainhead pull-left">Announcement</div>  
+				 
+					 <div class="announcmentisotope pull-right"> 
+					 
+						 <ul>
+							 <li><a href="#linkurl" class="Allbtn"> All </a> </li>
+							 <li><a href="#linkurl" class="Universitybtn"> University </a> </li>
+							 <li><a href="#linkurl" class="Educatorbtn"> Educator </a> </li>
+						 </ul>
+					   
+					 </div>
+			 
+			 <div class="Clearfix"> </div>
+			  
+			 </div> <!--end of panel head-->
+ 			
+ 
+			 	<div class="announcementwrapper">
+			 
+			    
+			    <div class="announcementbox All" style="background-color:rgb(18, 122, 163);">
+			    
+			    <div class="announcementhead">
+			    
+			    <p class="announcementname pull-left"> Meeting with Ziksana </p>
+			    <p class="announcementdate pull-right"> 12-may-2013</p>
+			       
+			    <div class="Clearfix"> </div>
+			    
+			   
+			    
+			    </div> <!--end of announcementhead-->
+			    
+			    <div class="announcementbody">
+			    
+			Some students choose their college for its reputation and alumni, some for the style of residence accommodation it provides.
+			
+			<div id="collapseTwo" class="accordion-body collapse">
+			 <div class="accordion-inner">
+			The colleges also sponsor specialized academic programs that are open to all students. Whether students commute to campus or live in residence, their college is their community hub. It is where intramural sports teams compete, budding journalists publish their college papers and thespians perform. </div>
+			</div>
+			   
+			   
+			        <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+			                      Read More
+			                    </a>
+			                    <div class="Clearfix"> </div>    
+			    
+			    
+			    </div><!--end of announcementbody-->
+			    
+			    
+			    
+			    
+			    </div> <!--end of announcementbox-->
+			    
+			    
+			    
+			     
+			     
+			     
+			     
+			     
+			      
+			    <div class="announcementbox All">
+			    
+			    <div class="announcementhead">
+			    
+			    <p class="announcementname pull-left"> Meeting with Ziksana </p>
+			    <p class="announcementdate pull-right"> 12-may-2013</p>
+			       
+			    <div class="Clearfix"> </div>
+			    
+			   
+			    
+			    </div> <!--end of announcementhead-->
+			    
+			    <div class="announcementbody">
+			    
+			Some students choose their college for its reputation and alumni, some for the style of residence accommodation it provides.
+			
+			<div id="collapseTwo" class="accordion-body collapse">
+			 <div class="accordion-inner">
+			The colleges also sponsor specialized academic programs that are open to all students. Whether students commute to campus or live in residence, their college is their community hub. It is where intramural sports teams compete, budding journalists publish their college papers and thespians perform. </div>
+			</div>
+			   
+			   
+			        <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+			                      Read More
+			                    </a>
+			                    <div class="Clearfix"> </div>    
+			    
+			    
+			    </div><!--end of announcementbody-->
+			    
+			    
+			    
+			    
+			    </div> <!--end of announcementbox-->
+			    
+			    
+			    
+			     
+			     
+			     
+			     
+			      
+			    <div class="announcementbox All" style="background-color:rgb(18, 122, 163);">
+			    
+			    <div class="announcementhead">
+			    
+			    <p class="announcementname pull-left"> Meeting with Ziksana </p>
+			    <p class="announcementdate pull-right"> 12-may-2013</p>
+			       
+			    <div class="Clearfix"> </div>
+			    
+			   
+			    
+			    </div> <!--end of announcementhead-->
+			    
+			    <div class="announcementbody">
+			    
+			Some students choose their college for its reputation and alumni, some for the style of residence accommodation it provides.
+			
+			<div id="collapseTwo" class="accordion-body collapse">
+			 <div class="accordion-inner">
+			The colleges also sponsor specialized academic programs that are open to all students. Whether students commute to campus or live in residence, their college is their community hub. It is where intramural sports teams compete, budding journalists publish their college papers and thespians perform. </div>
+			</div>
+			   
+			   
+			        <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+			                      Read More
+			                    </a>
+			                    <div class="Clearfix"> </div>    
+			    
+			    
+			    </div><!--end of announcementbody-->
+			    
+			    
+			    
+			    
+			     
+			    </div> <!--end of announcementbox-->
+			    
+			    
+			    
+			     
+			     
+			     <div class="announcementbox University">
+			    
+			    <div class="announcementhead">
+			    
+			    <p class="announcementname pull-left"> Meeting with Ziksana </p>
+			    <p class="announcementdate pull-right"> 12-may-2013</p>
+			       
+			    <div class="Clearfix"> </div>
+			    
+			   
+			    
+			    </div> <!--end of announcementhead-->
+			    
+			    <div class="announcementbody">
+			    
+			Some students choose their college for its reputation and alumni, some for the style of residence accommodation it provides.
+			
+			<div id="collapseTwo" class="accordion-body collapse">
+			 <div class="accordion-inner">
+			The colleges also sponsor specialized academic programs that are open to all students. Whether students commute to campus or live in residence, their college is their community hub. It is where intramural sports teams compete, budding journalists publish their college papers and thespians perform. </div>
+			</div>
+			   
+			   
+			        <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+			                      Read More
+			                    </a>
+			                    <div class="Clearfix"> </div>    
+			    
+			    
+			    </div><!--end of announcementbody-->
+			    
+			    
+			    
+			    
+			    </div> <!--end of announcementbox-->
+			    
+			    
+			    
+			     
+			     
+			     
+			     <div class="announcementbox University" style="background-color:rgb(18, 122, 163);">
+			    
+			    <div class="announcementhead">
+			    
+			    <p class="announcementname pull-left"> Meeting with Ziksana </p>
+			    <p class="announcementdate pull-right"> 12-may-2013</p>
+			       
+			    <div class="Clearfix"> </div>
+			    
+			   
+			    
+			    </div> <!--end of announcementhead-->
+			    
+			    <div class="announcementbody">
+			    
+			Some students choose their college for its reputation and alumni, some for the style of residence accommodation it provides.
+			
+			<div id="collapseTwo" class="accordion-body collapse">
+			 <div class="accordion-inner">
+			The colleges also sponsor specialized academic programs that are open to all students. Whether students commute to campus or live in residence, their college is their community hub. It is where intramural sports teams compete, budding journalists publish their college papers and thespians perform. </div>
+			</div>
+			   
+			   
+			        <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+			                      Read More
+			                    </a>
+			                    <div class="Clearfix"> </div>    
+			    
+			    
+			    </div><!--end of announcementbody-->
+			    
+			    
+			      
+			    
+			    </div> <!--end of announcementbox-->
+			    
+			    
+			    <div class="announcementbox University">
+			    
+			    <div class="announcementhead">
+			    
+			    <p class="announcementname pull-left"> Meeting with Ziksana </p>
+			    <p class="announcementdate pull-right"> 12-may-2013</p>
+			       
+			    <div class="Clearfix"> </div>
+			    
+			   
+			    
+			    </div> <!--end of announcementhead-->
+			    
+			    <div class="announcementbody">
+			    
+			Some students choose their college for its reputation and alumni, some for the style of residence accommodation it provides.
+			
+			<div id="collapseTwo" class="accordion-body collapse">
+			 <div class="accordion-inner">
+			The colleges also sponsor specialized academic programs that are open to all students. Whether students commute to campus or live in residence, their college is their community hub. It is where intramural sports teams compete, budding journalists publish their college papers and thespians perform. </div>
+			</div>
+			   
+			   
+			        <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+			                      Read More
+			                    </a>
+			                    <div class="Clearfix"> </div>    
+			    
+			    
+			    </div><!--end of announcementbody-->
+			    
+			    
+			    
+			    
+			    </div> <!--end of announcementbox-->
+			    
+			    
+			    
+			     
+			     
+			     
+			     <div class="announcementbox Educator" style="background-color:rgb(18, 122, 163);">
+			    
+			    <div class="announcementhead">
+			    
+			    <p class="announcementname pull-left"> Meeting with Ziksana </p>
+			    <p class="announcementdate pull-right"> 12-may-2013</p>
+			       
+			    <div class="Clearfix"> </div>
+			    
+			   
+			    
+			    </div> <!--end of announcementhead-->
+			    
+			    <div class="announcementbody">
+			    
+			Some students choose their college for its reputation and alumni, some for the style of residence accommodation it provides.
+			
+			<div id="collapseTwo" class="accordion-body collapse">
+			 <div class="accordion-inner">
+			The colleges also sponsor specialized academic programs that are open to all students. Whether students commute to campus or live in residence, their college is their community hub. It is where intramural sports teams compete, budding journalists publish their college papers and thespians perform. </div>
+			</div>
+			   
+			   
+			        <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+			                      Read More
+			                    </a>
+			                    <div class="Clearfix"> </div>    
+			    
+			    
+			    </div><!--end of announcementbody-->
+			    
+			    
+			    
+			    </div> <!--end of announcementbox-->
+			    
+			    
+			    
+			   
+			     
+			     
+			     
+			     
+			     <div class="annprogressbar pull-right" style="padding:10px;">
+			 
+			 <div class="timer" style="background-color: #FC3;"><div class="progress" style="width: 100%; overflow: hidden; "></div>
+			 </div>
+			
+			  <div class="timer"><div class="progress" style="width: 100%; overflow: hidden;"></div>
+			 </div>
+			 
+			 
+			 <div class="timer"><div class="progress" style="width: 100%; overflow: hidden;"></div>
+			 </div>
+			
+			  </div> <!--end of annprogressbar-->
+			 
+			 <div class="Clearfix"> </div>
+			 
+			 	</div> <!--end of announcementwrapper-->
+			 
 
+			
+
+
+			
 			<!-- __________________________________ to do container ____________________ -->
 
 
@@ -270,7 +605,7 @@
 					style="height: 30px;width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;margin-top:10px;">
 
 					<p class="pull-right" style="color: #fff;">
-						<a href="#linkurl" class="managetodo" coords="#fff !important;">
+						<a style="cursor:pointer" class="managetodo" coords="#fff !important;">
 							<img src="/ziksana-web/resources/images/icons/settings.png" align="Manage todo"
 							style="height: 20px; margin-left: 6px; vertical-align: middle;" />
 						</a>
@@ -303,7 +638,7 @@
 						To DO List</p>
 
 					<p class="pull-right" style="color: #fff;">
-						<a href="#linkurl"> <img src="/ziksana-web/resources/images/content/plus.png"
+						<a style="cursor:pointer"> <img src="/ziksana-web/resources/images/content/plus.png"
 							style="height: 25px; margin-top: 10px;" title="Add To DO"
 							class="addtodobtn" id="sample_editable_1_new" /></a>
 					</p>
@@ -327,7 +662,7 @@
 							 <input id="todo_category_name"/>
 							</span>
 								<input id="todo_description" style="margin-left:22px;width:200px;height:28px;">
-							<a onclick="addTodo()" style="margin-left:65px;color:white;">Save</a><a onclick="hideTodoAdd()" style="margin-left:40px;color:white;">Cancel</a>
+							<a onclick="addTodo()" style="cursor:pointer;margin-left:65px;color:white;">Save</a><a onclick="hideTodoAdd()" style="cursor:pointer;margin-left:40px;color:white;">Cancel</a>
 						</div>
 					<div id="todos_placeholder_more" class="eventcontent" >
 					
@@ -444,6 +779,13 @@ display:none;
 {
 display:none;	
 }
+.annnouncementpanel{height:50px}
+.announcmentisotope {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top:2px;
+}
 </style>
  <script src="/ziksana-web/resources/js/custom/table/breakpoints/breakpoints.js"></script>	
 	<!-- ie8 fixes -->
@@ -463,5 +805,32 @@ display:none;
 			$('table').dataTable({"bFilter": false,"bInfo": false});
 			
 		});
-		
+		$(document).ready(function(e) {
+
+			$('.University').hide();
+			$('.Educator').hide();
+
+			$(".Allbtn").click(function(e) {
+				
+				$('.University').slideUp();
+				$('.Educator').slideUp();
+				$('.All').slideDown(200);
+				
+				});
+
+			$('.Universitybtn').click(function(e) {
+			    $('.All').slideUp();
+				 $('.Educator').slideUp();
+				$('.University').slideDown(200);
+			});
+
+
+			$('.Educatorbtn').click(function(e) {
+			    $('.All').slideUp();
+				$('.University').slideUp();
+				$('.Educator').slideDown(200);
+			});
+				
+			});
+
 	</script>

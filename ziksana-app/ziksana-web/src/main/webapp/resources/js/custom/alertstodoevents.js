@@ -3,8 +3,11 @@ $(document).ready(function(e) {
 $(".contentareaalrt").hide();
 $(".contentareatodo").hide();
 $(".contentareamanagetodo").hide(); 
+$(".annnouncementpanel").hide();
+$(".announcementwrapper").hide();
 $("#todotype").hide(); 
- $("#addtodorow").hide(); 
+ $("#addtodorow").hide();
+
 //$(".todocontainer").hide();
 
 
@@ -43,43 +46,50 @@ $(".managetodo").click(function(e) {
 	$(".contentareamanagetodo").slideDown(500);
 	});
 
-	
-$("#todocategoryddl").change(function(e) {
-    if($("#todocategoryddl").val() == "Other")
-	{
-		$("#todocategoryddl").hide();
-		$("#todotype").show();
+	//Announcement Page
+	$(".announcement_box").click(function(e){
 		
-	}
-	
-	
+		$(".contentareaalrt").hide();
+		$(".contentareatodo").hide();
+		$(".contentareamanagetodo").hide(); 
+		$("#todotype").hide(); 
+		$("#addtodorow").hide();
+		 $(".contentareaevent").hide(); 
+		 $(".panelhead").hide();
+		$(".annnouncementpanel").show(); 
+		$(".announcementwrapper").show();
+		
+		/*$('.University').hide();
+		$('.Educator').hide();
+
+		$(".Allbtn").click(function(e) {
+			
+			$('.University').slideUp();
+			$('.Educator').slideUp();
+			$('.All').slideDown(200);
+			
+			});
+
+		$('.Universitybtn').click(function(e) {
+		    $('.All').slideUp();
+			 $('.Educator').slideUp();
+			$('.University').slideDown(200);
+		});
+
+
+		$('.Educatorbtn').click(function(e) {
+		    $('.All').slideUp();
+			$('.University').slideUp();
+			$('.Educator').slideDown(200);
+		});*/
 	});
-	
-	
-if($("#todocategoryddl").val() == "University")
-	{
-		$("#todosave").click(function(e) {
-            var val1 = $("#todocategoryddl").val();
-			var val2 = $("#todotype").val();
-			var val3 = $("#tododescription").val();
-			if(val2 == "")
-			{
-				$(".eventdata").prepend(' <tr> <td><input type="checkbox" id="c1" name="cc" /> <label for="c1"><span></span></label></td> <td>'+val1+'</td><td>'+val3+'</td><td></td></tr>');
-			}
-			else
-			{
-				$(".eventdata").prepend(' <tr> <td><input type="checkbox" id="c1" name="cc" /> <label for="c1"><span></span></label></td> <td>'+val2+'</td><td>'+val3+'</td><td></td></tr>');
-			}
-        });
-	}
-		
-	
 
 });
 
 //TODO Ajax Call
 var no_of_available_todo;
 function get_and_populate_todo(val){
+	
 	$.ajax({
 	  	type: 'GET',
 		url: val,
@@ -95,13 +105,13 @@ function get_and_populate_todo(val){
 					no_of_available_todo = size;
 					paginationString ="";
 					if(size <= 5){
-						paginationString+= "<span style='cursor:pointer' onclick='pageOne()'>page1</span>";
+						paginationString+= "<span onclick='pageOne()'><span id='pag_active1' class='pagination_bar pactive'></span>";
 
 					}else if(size <= 10){
-						paginationString+= "<span style='cursor:pointer' onclick='pageOne()'>page1</span><span style='cursor:pointer' onclick='pageTwo()'>page2</span>";						
+						paginationString+= "<span onclick='pageOne()'><span id='pag_active1' class='pagination_bar pactive'></span><span onclick='pageTwo()'><span id='pag_active2' class='pagination_bar'></span>";						
 
 					}else if(size <= 15){
-						paginationString+= "<span onclick='pageOne()'>page1</span><span onclick='pageTwo()'>2</span><span onclick='pageThree()'>page3</span>";
+						paginationString+= "<span onclick='pageOne()' id='pag_active1' class='pagination_bar pactive'/><span onclick='pageTwo()' id='pag_active2' class='pagination_bar'></span><span onclick='pageThree()' id='pag_active3' class='pagination_bar'></span>";
 
 					}
 					
@@ -131,12 +141,22 @@ function get_and_populate_todo(val){
 						  
 } 
 function pageOne(){
+	$('#pag_active1').addClass('pactive');
+	$('#pag_active2').removeClass('pactive');
+	$('#pag_active3').removeClass('pactive');
 	get_and_populate_todo('/ziksana-web/ztodo/showtodobypagination/0');
 }
 function pageTwo(){
+	
+	$('#pag_active1').removeClass('pactive');
+	$('#pag_active2').addClass('pactive');
+	$('#pag_active3').removeClass('pactive');
 	get_and_populate_todo('/ziksana-web/ztodo/showtodobypagination/5');
 }
 function pageThree(){
+	$('#pag_active1').removeClass('pactive');
+	$('#pag_active2').removeClass('pactive');
+	$('#pag_active3').addClass('pactive');
 	get_and_populate_todo('/ziksana-web/ztodo/showtodobypagination/10');
 }
 function pageMoreOne(){
@@ -184,7 +204,7 @@ function get_and_populate_selecttag(){
 
 			select = '<option value="">&nbsp;</option>'+option_string + '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
 			
-			updateselect = '<option value="">&nbsp;</option>'+option_string + '';//
+			updateselect = '<option value="">&nbsp;</option>'+option_string + '';
 			
 			$('select#todo_categories').html(select);
 			
@@ -208,13 +228,13 @@ function get_and_populate_todo_value(val){
 					
 					paginationMoreString ="";
 					if(size <= 5){
-						paginationMoreString+= "<span style='cursor:pointer' onclick='pageMoreOne()'>page1</span>";
+						paginationMoreString+= "<span onclick='pageMoreOne()'><span class='pagination_bar'></span>";
 
 					}else if(size <= 10){
-						paginationMoreString+= "<span style='cursor:pointer' onclick='pageMoreOne()'>page1</span><span style='cursor:pointer' onclick='pageMoreTwo()'>page2</span>";						
+						paginationMoreString+= "<span onclick='pageMoreOne()'><span class='pagination_bar'></span><span style='cursor:pointer' onclick='pageMoreTwo()'><span class='pagination_bar'></span>";						
 
 					}else if(size <= 15){
-						paginationMoreString+= "<span onclick='pageMoreOne()'>page1</span><span onclick='pageMoreTwo()'>page2</span><span onclick='pageMoreThree()'>page3</span>";
+						paginationMoreString+= "<span onclick='pageMoreOne()'><span class='pagination_bar'></span></span><span onclick='pageMoreTwo()'><span class='pagination_bar'></span></span><span onclick='pageMoreThree()'><span class='pagination_bar'></span></span>";
 
 					}
 					
@@ -234,7 +254,7 @@ function get_and_populate_todo_value(val){
 							
 							 ouputEmptyTodo+="<tr id='moretodorow"+$(this).find('id').text()+"' style='height:40px;'>";
 							 ouputEmptyTodo+="<td><div ><input type='checkbox' id='c"+index+2 +"' onchange='handle(this,"+$(this).find('id').text()+");' /> <label for='c"+index+2 +"'><span></span></label></td><td><div id='category_value"+$(this).find("id").text()+"'>"+$(this).find("categoryName").text()+" </div></td>";
-							 ouputEmptyTodo+="<td><span id='categoryDescription"+$(this).find("id").text()+"' class='todoinfo-decription' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_string($(this).find("subject").text())+"</span></td><td><a id='todoEdithyperlink' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='margin-left:30px;color:white;disabled:true;'>Edit</a></td><td></td></div>";
+							 ouputEmptyTodo+="<td><span id='categoryDescription"+$(this).find("id").text()+"' class='todoinfo-decription' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_string($(this).find("subject").text())+"</span></td><td><a id='todoEdithyperlink' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;disabled:true;'>Edit</a></td><td></td></div>";
 							 
 							 ouputEmptyTodo+="</tr>";
 							 ouputEmptyTodo+="<tr style='display:none;'><td></td></tr>";
@@ -244,7 +264,7 @@ function get_and_populate_todo_value(val){
 							 
 							 ouputEmptyTodo+="<td></td><td><select onblur='updateSelectChange("+$(this).find('id').text()+")' id='update_todo_categories"+$(this).find('id').text()+"'' style='margin-left:40px;width:150px;'><optgroup><option style='color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;' onclick='show_add_category_form("+$(this).find('id').text()+");' value='add_new_category'>Add New Category</option></optgroup>'</select><span id='add_new_edit_category_form"+$(this).find('id').text()+"' style='display:none;'><input onblur='updateTextBoxChange("+$(this).find('id').text()+");' id='update_todo_category_name"+$(this).find('id').text()+"'/></span></td>";
 							
-							 ouputEmptyTodo+="<td><input id='todo_edit_description"+$(this).find('id').text()+"' style='width:200px;height:28px;'/></td><td><a onclick='saveRow_hideEdit("+$(this).find('id').text()+")' style='margin-left:30px;color:white;'>Update</a></td><td><a onclick='showRow_hideEdit("+$(this).find('id').text()+")' style='margin-left:30px;color:white;'>Cancel</a></td></div>";
+							 ouputEmptyTodo+="<td><input id='todo_edit_description"+$(this).find('id').text()+"' style='width:200px;height:28px;'/></td><td><a onclick='saveRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Update</a></td><td><a onclick='showRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Cancel</a></td></div>";
 							 ouputEmptyTodo+="</tr></div>";
 							
 						 });

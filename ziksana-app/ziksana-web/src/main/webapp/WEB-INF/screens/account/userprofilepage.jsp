@@ -35,10 +35,10 @@
 				<div class="associateimage" style="text-align:center;" >
             <div style="height:150px">
 					<c:if test="${empty member.picturePath}">
-						<img style="width: 185px; margin-bottom: .25em;margin-left: 40px;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg" align="center"/>
+						<img style="width: 144px; margin-bottom: .25em;margin-left: -55px;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg" align="center"/>
 					</c:if>
 					<c:if test="${not empty ms.url && not empty member.picturePath}">
-						<img style="width: 185px; margin-bottom: .25em;margin-left: 40px;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
+						<img style="width: 144px; margin-bottom: .25em;margin-left: -55px;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
 					</c:if> </div>
 					<div class="clearfix"></div>
 					<div style="width:120px;height:20px; margin-left: 37px; margin-top: 8px;"><input
@@ -242,10 +242,10 @@
 
 
 				
-					<input onclick="clearProfileForm()" class="btn btn-primary f-r" style="margin-right: -15px;width:120px; " type="reset"
+					<input onclick="clearProfileForm()" class="btn btn-primary f-r" style=" height: 28px;margin-right: -15px;width:120px; " type="reset"
 					value="<fmt:message key="profile.cancel"></fmt:message>" />
 					<input class="btn btn-primary f-r"
-					style="margin-right: 20px;width:120px; " type="submit"
+					style=" height: 28px;margin-right: 20px;width:120px; " type="submit"
 					onclick="updateUserProfile()"
 					value="<fmt:message key="profile.submit"></fmt:message>" /> 
 				<div class="clearfix"></div>
@@ -318,8 +318,8 @@
 
 													if (data_object.Uploaded == 'true') {
 														$('#Cimageupl')
-																.val(
-																		data_object.ContentPath);
+																.val(data_object.ContentPath);
+															saveUploadedImage(data_object.ContentPath);
 														$(
 																'#profile_thumbnail_image')
 																.attr(
@@ -327,14 +327,14 @@
 																		'${ms.url}'
 																				+ data_object.ContentPath);
 														$(
-																'#thubmnail_upload_message')
-																.html('');
+														'#thubmnail_upload_message')
+														.html(
+																'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="position: relative;top: 33px;">Remove</a>');
 
 													} else { //there is an error in the upload process
 
 														$('#message')
-																.html(
-																		data_object.message);
+																.html(data_object.message);
 													}
 													$('#sbtvalidation')
 															.removeAttr(
@@ -350,7 +350,7 @@
 							$('#thubmnail_upload_message').html('');
 							$('#profile_thumbnail_image')
 									.attr('src',
-											'${staticFileServer}resources/images/default-course.jpg');
+											'/ziksana-web/resources/images/no-image.jpg');
 
 						}
 					</script>
@@ -402,8 +402,8 @@
 						
 						
 						<div  id="passEdit">
-					<label class="control-label nexaf" for="Change Password">Change Password :</label>
-					<label id="passwordUpdatedDate" class="control-label nexaf"  style="margin-left: 20px;width:300px"><c:out value="${passwordUpdated}"></c:out></label>	
+					<label class="control-label nexaf" for="Change Password">Password :</label>
+					<label id="passwordUpdatedDate" class="control-label nexaf"  style="margin-left: 20px;width:300px;font-weight:normal"><c:out value="${passwordUpdated}"></c:out></label>	
 						 <a   id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild">Edit</a>
 						 </div>
 					      
@@ -411,11 +411,11 @@
 						  <p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetResponse"></p>
      						<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetFailResponse"></p>
 						  <label class="control-label nexaf" for="Change Password">Change Password :</label>
-						 <div class="controls"> <label class="nexaf">Current :</label><input type="password" class="passinput" id="currentPassword" name="alt_mail" placeholder="Type Current Password" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
-						   <label class="nexaf">New :</label> <input type="password" class="passinput" id="newPassword" name="alt_mail" placeholder="Type New Password" /><div class="clearfix"></div><div style="color: red;" id="errorNewPassword"></div>
-						    <label class="nexaf">Re-type new :</label><input type="password" class="passinput" id="retypePassword" name="alt_mail" placeholder="Re-Type New Password" /></div><div style="color: red;" id="errorRetypePassword"></div><div class="clearfix"></div>
+						 <div class="controls"> <label class="nexaf">Current :</label><input type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="Type Current Password" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
+						   <label class="nexaf">New :</label> <input type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="Type New Password" /><div class="clearfix"></div><div style="color: red;" id="errorNewPassword"></div>
+						    <label class="nexaf">Re-type new :</label><input type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="Re-Type New Password" /></div><div style="color: red;" id="errorRetypePassword"></div><div class="clearfix"></div>
 						   <div style="margin-top:6px;">
-						   <!-- <button class="btn btn-primary f-r" type="button" style="margin-right:-15px;" onclick="hidecncl('passEdit')">Cancel</button> -->
+						   
 					  		<button class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" >Save</button>
 						  </div>
 						  </div>
@@ -425,7 +425,7 @@
 					      <div class="clearfix"></div>
 						 <div  id="lblaltEmail">
 						 <label class="control-label nexaf" for="Course Name">Alternate Email :</label>
-						 <label class="control-label nexaf" id="alternateMailLabel" for="AlternativeEmail Name" style="margin-left:20px;"><c:out value="${profileAnswerOne.alternateEmailId}"></c:out></label>
+						 <label class="control-label nexaf" id="alternateMailLabel" for="AlternativeEmail Name" style="margin-left:20px;font-weight:normal"><c:out value="${profileAnswerOne.alternateEmailId}"></c:out></label>
 						 
 						
 						 <a  onclick="editFeilds('EditAlt_mail')" class="editfeild">Edit</a>
@@ -433,10 +433,10 @@
 					      </div>
 						  <div class="editcontroll" style="display:none;" id="EditAlt_mail" ><a style="float:right;cursor:pointer;" onclick="showlbl('lblaltEmail');" title="Close">[X]</a>
 						   <label class="control-label nexaf" for="Course Name">Alternate Email :</label>
-						   <input type="text" style="width:380px;" id="alttenateEmailValue"  name="alt_mail" placeholder="Alternate Email" />
+						   <input type="text" style="width:365px;margin-left:19px;" id="alttenateEmailValue"  name="alt_mail" placeholder="Alternate Email" />
 						   <p id="alternateEmailError" style="color:red;text-align:center"></p>
 						   <div style="margin-top:6px;">
-						   <!-- <button class="btn btn-primary f-r" type="button" style="margin-right:-15px;" onclick="showlbl('lblaltEmail')">Cancel</button> -->
+						  
 					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit('${profileAnswerOne.alternateEmailId}')" type="button" style="margin-right:20px;" >Save</button>
 						  </div>
 						  </div>
@@ -448,7 +448,7 @@
 						  <div  id="lblsq1">
 					     <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 1 :</label>
 						  
-						 <label id="ques_text_diplayone" class="control-label nexaf" style="width:65%"><c:out value="${profileAnswerOne.securityQuestionText}"></c:out></label>
+						 <label id="ques_text_diplayone" class="control-label nexaf" style="width:65%;font-weight:normal"><c:out value="${profileAnswerOne.securityQuestionText}"></c:out></label>
 					      <a  onclick="changesq1('Editsq1')" class="editfeild" >Edit</a>
 						 </div>
 					     
@@ -457,7 +457,7 @@
 					      <div  id ="Editsq1" class="editcontroll"  style="display:none;"><a style="float:right;cursor:pointer;" onclick="showlblsq1('lblsq1')" title="Close">[X]</a>
 						  <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 1 :</label>
 						   
-					    <select class="profileselect nexaf" style="font-weight:normal" id="editQuestionOne" style="margin-bottom:5px;width:380px;">
+					    <select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="editQuestionOne" >
 							<option>Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
 										<c:if test="${profileAnswerOne.securityQuestionText ==profile.securityQuestionText}">
@@ -471,7 +471,7 @@
 					
 					<label class="control-label nexaf" for="Course Name">Security Answer 1 :</label>
 					     <div class="controls">
-					      <input type="password" class="profileinput" id="editSecAnswerOne" value="${profileAnswerOne.memberAnswer}"  name="sec_answer1" placeholder="Security Answer 1" style="width:368px;" />         
+					      <input type="password" class="profileinput" id="editSecAnswerOne" value="${profileAnswerOne.memberAnswer}"  name="sec_answer1" placeholder="Security Answer 1" style="width:365px;" />         
 					      </div>
 					      <p id="secQuesOneError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
@@ -488,7 +488,7 @@
 					     
 						 <div id="lblsq2">
 						 <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 2 :</label>
-						 <label id="ques_text_diplaytwo" class="control-label nexaf" style="width:65%"><c:out value="${profileAnswerTwo.securityQuestionText}"></c:out></label>
+						 <label id="ques_text_diplaytwo" class="control-label nexaf" style="width:65%;font-weight:normal"><c:out value="${profileAnswerTwo.securityQuestionText}"></c:out></label>
 					      <a  onclick="changesq2('Editsq2')" class="editfeild" >Edit</a>
 						 </div>
 					      
@@ -497,7 +497,7 @@
 					      <div  id ="Editsq2" class="editcontroll"  style="display:none;"><a style="float:right;cursor:pointer;" onclick="showlblsq2('lblsq2');" title="Close">[X]</a>
 						  <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 2 :</label>
 					    
-					<select class="profileselect nexaf" style="font-weight:normal" id="securityQuestionTwo" style="margin-bottom:5px;width:380px;">
+					<select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="securityQuestionTwo">
 							<option >Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
 									
@@ -514,7 +514,7 @@
 						</select>
 					<label class="control-label nexaf" for="Course Name">Security Answer 2 :</label>
 					     <div class="controls">
-					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="${profileAnswerTwo.memberAnswer}" name="sec_answer2" placeholder="Security Answer 1" style="width:368px;"/>         
+					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="${profileAnswerTwo.memberAnswer}" name="sec_answer2" placeholder="Security Answer 1" style="width:365px;"/>         
 					      </div>
 					      <p id="secQuesTwoError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
@@ -995,7 +995,25 @@ function editSaveSecQuesTwo(){
 			 );  
 }
 
+function saveUploadedImage(val){
+	member_id = $("#memberIdValue").text();
+	profileImage = val;
+	$.post( '<c:url value='/profile/1/updateprofileimage'/>'
+	        , {'memberId':member_id,'profileImage':profileImage}
+	        , function( data )
+	        {
+	        
+	        		if(data == 1){
+		          	   	console.log("Profile Image Upload Success");          	 	        		
+		          	
+		             }else{
+		          	   	console.log("Profile Image Upload Failure");   
+		             }
+			
+	        }
+			 );  
 
+}
 </script>
 <style>
 .btnupload
