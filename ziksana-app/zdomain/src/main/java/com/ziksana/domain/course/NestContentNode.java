@@ -32,7 +32,9 @@ public class NestContentNode {
 	}
 
 	public void setContentType(String contentType) {
-		this.contentType = contentType;
+		
+		String strValue = ContentType.getContentType(Integer.parseInt(contentType)).getName();
+		this.contentType = strValue;
 	}
 
 	public String getContentname() {

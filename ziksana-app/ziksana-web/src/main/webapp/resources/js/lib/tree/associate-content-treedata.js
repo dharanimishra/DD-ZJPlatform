@@ -324,7 +324,7 @@ function createtree(course_id) {
 $(document).ready(
 		function(e) {
 			var id = null;
-			alert("$('#courseid').val() " + $('#courseid').val());
+			//alert("$('#courseid').val() " + $('#courseid').val());
 			createtree($('#courseid').val());
 			 $(".Addmodulecontainer").hide();
 			function createnode() {
