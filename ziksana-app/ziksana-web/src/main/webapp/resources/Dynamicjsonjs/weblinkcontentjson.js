@@ -152,9 +152,11 @@ function webLinkContent() {
 
 	var NumberOfThumbnails = $('#NumberOfThumbnails').val();
 
-	var ContentType = $('#ContentType').val();
+	var ContentType = '';
 
-	console.log("ContentType :" + ContentType);
+	var ContentTypeName = 'Link';
+
+	console.log("ContentTypeName :" + ContentTypeName);
 
 	var parameters = {
 		"ContentName" : ContentName,
@@ -162,6 +164,7 @@ function webLinkContent() {
 		"ThumbnailPicturePath" : ThumbnailPicturePath,
 		"NumberOfThumbnails" : NumberOfThumbnails,
 		"ContentType" : ContentType,
+		"ContentTypeName" : ContentTypeName
 
 	};
 

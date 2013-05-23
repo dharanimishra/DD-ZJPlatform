@@ -104,14 +104,13 @@ table tr td {
 							<div style="width: 122px; height: 120px; float: left">
 								<img id="course_thumbnail_image"
 									src="http://www.placehold.it/80x80/EFEFEF/AAAAAA" align="left" />
-								<input type="hidden" id="ContentName"> <input
-									type="hidden" id="ContentType"> <input type="hidden"
-									id="ContentTypeName">
+
 							</div>
 
 							<input readonly="readonly" type="hidden" id="Cimageupl"
-								style="margin-left: 20px;" />
-
+								style="margin-left: 20px;" /> <input type="hidden"
+								id="ContentName"> <input type="hidden" id="ContentType">
+							<input type="hidden" id="ContentTypeName">
 							<div id="message"></div>
 							<div id="thubmnail_upload_message"></div>
 							<div id="loaderText"></div>
@@ -152,19 +151,12 @@ table tr td {
 																	.log(data_object);
 
 															if (data_object.Uploaded == 'true') {
-																$('#Cimageupl')
-																		.val(
-																				data_object.ContentPath);
-																$(
-																		'#course_thumbnail_image')
-																		.attr(
-																				'src',
-																				'${ms.url}'
-																						+ data_object.ContentPath);
-																$(
-																		'#thubmnail_upload_message')
-																		.html(
-																				'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
+																$('#Cimageupl').val(data_object.ContentPath);
+																$('#ContentName').val(data_object.ContentName);
+																$('#ContentType').val(data_object.ContentType);
+																$('#ContentTypeName').val(data_object.ContentTypeName);
+																$('#course_thumbnail_image').attr('src','${ms.url}'+ data_object.ContentPath);
+																$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
 
 															} else { //there is an error in the upload process
 
@@ -183,10 +175,11 @@ table tr td {
 
 								function remove_uploaded_thumbnail() {
 									$('#Cimageupl').val('');//clear uploaded file path
+									$('#ContentName').val(''); //clear ContentName
+									$('#ContentType').val(''); //clear ContentType
+									$('#ContentTypeName').val(''); //clear ContentTypeName
 									$('#thubmnail_upload_message').html('');
-									$('#course_thumbnail_image')
-											.attr('src',
-													'${staticFileServer}resources/images/default-course.jpg');
+									$('#course_thumbnail_image').attr('src','${staticFileServer}resources/images/default-course.jpg');
 
 								}
 							</script>

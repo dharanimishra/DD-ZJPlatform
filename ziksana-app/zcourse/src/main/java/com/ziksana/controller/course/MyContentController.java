@@ -3,7 +3,9 @@
  */
 package com.ziksana.controller.course;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
-import com.ziksana.domain.course.ContentStatus;
 import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
@@ -140,10 +141,23 @@ public class MyContentController {
 			@RequestParam(value = "ContentPath", required = false) String contentPath,
 			@RequestParam(value = "ThumbnailPicturePath", required = false) String thumbnailPicturePath,
 			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
-			@RequestParam(value = "ContentType", required = false) Integer contentType,
+			@RequestParam(value = "ContentType", required = false) String contentType,
 			@RequestParam(value = "ContentTypeName", required = false) String contentTypeName) {
 
 		ModelAndView modelView = new ModelAndView("mastereditcontent");
+
+		Map<String, Integer> contentMap = new HashMap<String, Integer>();
+
+		contentMap.put("VIDEO", 612);
+		contentMap.put("ENHANCED_VIDEO", 954);
+		contentMap.put("AUDIO", 611);
+		contentMap.put("TEXTUAL", 610);
+		contentMap.put("PDF", 960);
+		contentMap.put("DOC", 955);
+		contentMap.put("PPT", 956);
+		contentMap.put("EXCEL", 957);
+		contentMap.put("IMAGE", 958);
+		contentMap.put("LINK", 959);
 
 		try {
 			MemberPersona accountableMember = new MemberPersona();
@@ -163,12 +177,14 @@ public class MyContentController {
 			learningContent.setContentPath(contentPath);
 			learningContent.setStatusId(1);
 			learningContent.setActive(true);
-			if (!"".equals(contentType) && contentType != null) {
-				learningContent.setContentTypeId(contentType);
+			if (!"".equals(contentTypeName) && contentTypeName != null) {
+
+				learningContent.setContentTypeId(contentMap
+						.get(contentTypeName));
 			}
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(thumbnailPicturePath);
-			//learningContent.setStatus(ContentStatus.ACTIVE);
+			// learningContent.setStatus(ContentStatus.ACTIVE);
 			learningContent.setNumberOfThumbnails(numberOfThumbnails);
 			learningContent.setRightsOwningMember(accountableMember);
 
@@ -233,7 +249,7 @@ public class MyContentController {
 			}
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(thumbnailPicturePath);
-			//learningContent.setStatus(ContentStatus.ACTIVE);
+			// learningContent.setStatus(ContentStatus.ACTIVE);
 			learningContent.setNumberOfThumbnails(numberOfThumbnails);
 			learningContent.setRightsOwningMember(accountableMember);
 			try {
@@ -278,9 +294,22 @@ public class MyContentController {
 			@RequestParam(value = "ContentPath", required = false) String contentPath,
 			@RequestParam(value = "ThumbnailPicturePath", required = false) String thumbnailPicturePath,
 			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
-			@RequestParam(value = "ContentType", required = false) Integer contentType) {
+			@RequestParam(value = "ContentType", required = false) String contentType,
+			@RequestParam(value = "ContentTypeName", required = false) String contentTypeName) {
 
 		ModelAndView modelView = new ModelAndView("masterweblinkcontent");
+
+		Map<String, Integer> contentMap = new HashMap<String, Integer>();
+		contentMap.put("VIDEO", 612);
+		contentMap.put("ENHANCED_VIDEO", 954);
+		contentMap.put("AUDIO", 611);
+		contentMap.put("TEXTUAL", 610);
+		contentMap.put("PDF", 960);
+		contentMap.put("DOC", 955);
+		contentMap.put("PPT", 956);
+		contentMap.put("EXCEL", 957);
+		contentMap.put("IMAGE", 958);
+		contentMap.put("LINK", 959);
 
 		try {
 			MemberPersona accountableMember = new MemberPersona();
@@ -303,12 +332,13 @@ public class MyContentController {
 			learningContent.setContentPath(contentPath);
 			learningContent.setStatusId(1);
 			learningContent.setActive(true);
-			if (!"".equals(contentType) && contentType != null) {
-				learningContent.setContentTypeId(contentType);
+			if (!"".equals(contentTypeName) && contentTypeName != null) {
+				learningContent.setContentTypeId(contentMap
+						.get(contentTypeName));
 			}
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(screenshotPath);
-			//learningContent.setStatus(ContentStatus.ACTIVE);
+			// learningContent.setStatus(ContentStatus.ACTIVE);
 			learningContent.setNumberOfThumbnails(numberOfThumbnails);
 			learningContent.setRightsOwningMember(accountableMember);
 

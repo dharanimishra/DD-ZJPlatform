@@ -35,6 +35,7 @@ function createContent() {
 
 	$.post(uri, parameters, function(data) {
 		console.log(data);
+		window.location.href = "/ziksana-web/zcourse/1/editcontent";
 
 	});
 
