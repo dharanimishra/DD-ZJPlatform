@@ -133,7 +133,7 @@ public class MyContentController {
 	ModelAndView createContent(
 			@RequestParam(value = "ContentId", required = false) String contentId,
 			@RequestParam(value = "ContentName", required = false) String contentName,
-			@RequestParam(value = "Content_Description", required = false) String contentDescription,
+			@RequestParam(value = "ContentDescription", required = false) String contentDescription,
 			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
 			@RequestParam(value = "Subject", required = false) String Subject,
 			@RequestParam(value = "Topic", required = false) String Topic,
@@ -211,7 +211,7 @@ public class MyContentController {
 	ModelAndView editContent(
 			@RequestParam(value = "ContentId", required = true) String contentId,
 			@RequestParam(value = "ContentName", required = false) String contentName,
-			@RequestParam(value = "Content_Description", required = false) String contentDescription,
+			@RequestParam(value = "ContentDescription", required = false) String contentDescription,
 			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
 			@RequestParam(value = "Subject", required = false) String Subject,
 			@RequestParam(value = "Topic", required = false) String Topic,
@@ -282,7 +282,7 @@ public class MyContentController {
 	ModelAndView createWeblinkContent(
 			@RequestParam(value = "ContentId", required = false) String contentId,
 			@RequestParam(value = "ContentName", required = true) String contentName,
-			@RequestParam(value = "Content_Description", required = false) String contentDescription,
+			@RequestParam(value = "ContentDescription", required = false) String contentDescription,
 			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
 			@RequestParam(value = "Subject", required = false) String Subject,
 			@RequestParam(value = "Topic", required = false) String Topic,
@@ -299,18 +299,6 @@ public class MyContentController {
 
 		ModelAndView modelView = new ModelAndView("masterweblinkcontent");
 
-		Map<String, Integer> contentMap = new HashMap<String, Integer>();
-		contentMap.put("VIDEO", 612);
-		contentMap.put("ENHANCED_VIDEO", 954);
-		contentMap.put("AUDIO", 611);
-		contentMap.put("TEXTUAL", 610);
-		contentMap.put("PDF", 960);
-		contentMap.put("DOC", 955);
-		contentMap.put("PPT", 956);
-		contentMap.put("EXCEL", 957);
-		contentMap.put("IMAGE", 958);
-		contentMap.put("LINK", 959);
-
 		try {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
@@ -324,7 +312,7 @@ public class MyContentController {
 			LearningContent learningContent = new LearningContent();
 			if (!"".equals(contentId) && contentId != null) {
 				learningContentId = Integer.parseInt(contentId);
-				learningContent.setLearningContentId(learningContentId);
+				// learningContent.setLearningContentId(learningContentId);
 			}
 			learningContent.setAuthoringMember(accountableMember);
 			learningContent.setContentName(contentName);
@@ -332,10 +320,8 @@ public class MyContentController {
 			learningContent.setContentPath(contentPath);
 			learningContent.setStatusId(1);
 			learningContent.setActive(true);
-			if (!"".equals(contentTypeName) && contentTypeName != null) {
-				learningContent.setContentTypeId(contentMap
-						.get(contentTypeName));
-			}
+			learningContent.setContentTypeId(959);
+
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(screenshotPath);
 			// learningContent.setStatus(ContentStatus.ACTIVE);

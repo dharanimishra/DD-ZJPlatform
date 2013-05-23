@@ -53,7 +53,7 @@ table tr td {
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="ziksana-web/zcourse/1/createcontent"></a>Upload Content
+					<a href="/ziksana-web/zcourse/1/createcontent"></a>Upload Content
 				</h3>
 			</div>
 		</div>
@@ -65,7 +65,7 @@ table tr td {
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="ziksana-web/zcourse/1/weblinkcontent"></a>Add Web Link
+					<a href="/ziksana-web/zcourse/1/weblinkcontent"></a>Add Web Link
 				</h3>
 			</div>
 		</div>
