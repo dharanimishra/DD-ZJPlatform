@@ -471,13 +471,13 @@
 				</div>
 
 			</div> -->
-			<div style="margin-top: 30px;">
+			<div style="margin-top: 0px;">
 				<label style="width: 260px;" for="input" class="control-label nexaf">Associate
 					an Image for your Course :</label>
 
-				<div style="width: 122px; height: 120px; float: left">
+				<div style="width: 122px; height: 105px; float: left;padding-top:15px">
 					<img id="course_thumbnail_image"
-						src="${staticFileServer}resources/images/default-course.jpg"
+						src="http://www.placehold.it/100x100/EFEFEF/AAAAAA"
 						align="left" /> <input readonly="readonly" type="hidden"
 						id="Cimageupl" style="margin-left: 20px;" />
 				</div>
@@ -593,4 +593,5 @@
     position: relative;
     top: 81px;
 }
+.uploadify-queue{margin-left:260px}
 </style>
