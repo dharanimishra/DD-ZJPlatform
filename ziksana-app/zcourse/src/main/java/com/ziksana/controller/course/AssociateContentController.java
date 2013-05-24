@@ -1,5 +1,6 @@
 package com.ziksana.controller.course;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.AssociateContentService;
@@ -64,7 +66,8 @@ public class AssociateContentController {
 						for (LearningContent learningContent : learningContents) {
 							System.out.println("learningContent " + learningContent.getLearningContentId());
 						}
-						String jsonString = JSONUtil.objectToJSONString(learningContents);
+						List<JSONLearningContent> jsonLearningContentlList = getJSONLearningContentObjects(learningContents); 
+						String jsonString = JSONUtil.objectToJSONString(jsonLearningContentlList);
 						
 						modelView.addObject("learningContentAsJSONString", jsonString);
 						
@@ -160,44 +163,17 @@ public class AssociateContentController {
 
 	}
 
-		/*	@RequestMapping(value = "/1/associatecontent/{courseId}", method = {
-		RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody
-	ModelAndView showAssociateCourse(@PathVariable String courseId) {
-	Integer course_id = 0;
-	ModelAndView modelView =  new ModelAndView("associatecontent");
-	try {
-		LOGGER.debug("Entering showAssociateCourse(): ");
-		course_id = Integer.parseInt(courseId.split("_")[1]);
-		if (course_id > 0) {
-			
-			//TODO we should throw module exist exception here??
-			int isModuleExists = courseService.isModuleExists(course_id);
-			LOGGER.debug("Module Size= >"+isModuleExists);
-			if(isModuleExists == 0 ){
-				return new ModelAndView("redirect:/zcourse/createcourse/"+courseId+"");
-			}else{
-			Integer memberId = Integer.valueOf(SecurityTokenUtil
-					.getToken().getMemberPersonaId().getStorageID());
-			List<LearningContent> learningContents = contentService.getLearningContents(memberId);
-			String jsonString = JSONUtil.objectToJSONString(learningContents);
-			
-			modelView.addObject("learningContentAsJSONString", jsonString);
-			modelView.addObject("CourseId", courseId);
-			mediaServerURL = mediaService.getMediaContents();
-			modelView.addObject("ms", mediaServerURL);
-			}
-		} else {
-			modelView = new ModelAndView("createcourse");
-			modelView.addObject("CourseId", courseId);
-			mediaServerURL = mediaService.getMediaContents();
-			modelView.addObject("ms", mediaServerURL);
+	/**
+	 * This method converts collection of {@link LearningContent} objects into {@link JSONLearningContent} objects
+	 * @param learningContentList
+	 * @return
+	 */
+	private List<JSONLearningContent> getJSONLearningContentObjects(List<LearningContent> learningContentList){
+		List<JSONLearningContent> jsonLearningContentList = new ArrayList<JSONLearningContent>();
+		for (LearningContent learningContent : learningContentList) {
+			jsonLearningContentList.add(new JSONLearningContent(learningContent));
 		}
-	} catch (ZiksanaException exception) {
-		LOGGER.error(exception.getMessage() + exception);
+		return jsonLearningContentList;
+		
 	}
-	return modelView;
-	}
-	*/
-
 }

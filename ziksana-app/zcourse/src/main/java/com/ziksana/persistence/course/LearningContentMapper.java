@@ -70,18 +70,16 @@ public interface LearningContentMapper {
 
 	public Content getContent(Integer contentId);
 
-	@Select({ "select ID,ContentType,ContentPath,ContentName,ContentDescription,ThumbnailPicturePath from corlearningcontent where AuthoringMemberRoleId=#{memberId,jdbcType=INTEGER} and isdelete=false and active=true" })
+	@Select({ "select ID , ContentType, Active,ContentPath,ContentName,ContentDescription,ThumbnailPicturePath,NumberOfThumbnails from corlearningcontent where AuthoringMemberRoleId=#{memberId,jdbcType=INTEGER} and isdelete=false and active=true" })
 	@Results(value = {
-			@Result(property = "learningContentId", column = "ID"),
+			@Result(property = "id", column = "ID"),
 			@Result(property = "contentTypeId", column = "ContentType"),
-			@Result(property = "activeFlag", column = "activeFlag"),
-			@Result(property = "active", column = "active"),
+			@Result(property = "activeFlag", column = "active"),
 			@Result(property = "contentUrl", column = "ContentPath"),
 			@Result(property = "contentName", column = "ContentName"),
 			@Result(property = "contentDescription", column = "ContentDescription"),
 			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath"),
-			@Result(property = "creationDate", column = "creationDate")
-
+			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails")
 	})
 	List<LearningContent> getUserContent(Integer memberId);
 

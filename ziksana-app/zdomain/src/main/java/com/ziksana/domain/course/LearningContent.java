@@ -28,9 +28,10 @@ public class LearningContent extends AuditHistory {
 	}
 
 	private ZID learningContentId;
+	private Integer id;
 	private Date creationDate = null;
 	private Boolean activeFlag = null;
-	private Boolean active = null;
+	//private Boolean active = null;
 	private ContentType contentType = null;
 	/**
 	 * Maximum Length:45
@@ -60,7 +61,7 @@ public class LearningContent extends AuditHistory {
 	private String contentName = null;
 
 	public Boolean getActive() {
-		return active;
+		return activeFlag;
 	}
 
 	public void setActiveFlag(Boolean activeFlag) {
@@ -508,6 +509,15 @@ public class LearningContent extends AuditHistory {
 
 	public void setContentUrl(String contentUrl) {
 		this.contentUrl = contentUrl;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+		setLearningContentId(new IntegerZID(id));
 	}
 
 }

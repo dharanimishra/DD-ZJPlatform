@@ -33,7 +33,7 @@ public class UTLLookupServiceImpl implements UTLLookupService {
 	public Map<String, List<UTLLookup>> getUTLLookupMap() {
 		Map<String, List<UTLLookup>> map = new HashMap<String, List<UTLLookup>>();
 		List<UTLLookup> utlLookupList = utlLookupMapper.getUTLLookupList();
-		LOGGER.debug("utlLookupList.toString() " + utlLookupList.toString());
+		//LOGGER.debug("utlLookupList.toString() " + utlLookupList.toString());
 		for (UTLLookup utlLookup : utlLookupList) {
 			if(map.containsKey(utlLookup.getcName())){
 				map.get(utlLookup.getcName()).add(utlLookup);
