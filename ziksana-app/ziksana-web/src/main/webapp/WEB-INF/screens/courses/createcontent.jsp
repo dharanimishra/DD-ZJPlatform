@@ -1,4 +1,3 @@
-
 <script type='text/javascript'
 	src="${staticFileServer}resources/js/lib/plupload/previewupload.js"></script>
 <script type="text/javascript"
@@ -96,133 +95,139 @@ table tr td {
 	<div class="contentarea pull-right" style="width: 940px;">
 		<div class="createcontentwrapper">
 			<div class="uploadcontent1">
-				<form id="createcontentform" method="post">
-					<div class="createcontentpanelhead">Upload Content</div>
-					<!--end of panel head-->
-					<div class="draganddrop pull-left">
-						<div style="margin-top: 30px; margin-left: 10px;">
-							<div style="width: 122px; height: 100px; float: left">
-<img id="course_thumbnail_image" style="margin-left:65px" src="http://www.placehold.it/80x80/EFEFEF/AAAAAA" align="center" />
-							</div>
 
-							<input readonly="readonly" type="hidden" id="Cimageupl"
-								style="margin-left: 20px;" /> <input type="hidden"
-								id="ContentName"> <input type="hidden" id="ContentType">
-							<input type="hidden" id="ContentTypeName">
-							<div id="message"></div>
-							<div id="thubmnail_upload_message"></div>
-							<div id="loaderText"></div>
-							<input type="file" name="thumbnail_image_file_upload"
-								tabindex="11" id="thumbnail_image_file_upload"
-								style="margin-left: 196px;" />
-							<div id="status"></div>
-							<script type="text/javascript">
-								$(function() {
-									$('#thumbnail_image_file_upload')
-											.uploadify(
-													{
-														'swf' : '${staticFileServer}resources/swf/uploadify.swf',
-														'queueSizeLimit' : 1,
-														'successTimeout' : 350,
-														'buttonText' : 'Upload File',
-														'uploader' : '${ms.uploadScript}',
-														//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
-														'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-														'fileSizeLimit' : '10024KB',
-														'onUploadStart' : function(
-																file) {
-															$('#sbtvalidation')
-																	.attr(
-																			'disabled',
-																			'disabled');
-														},
-														//'debug' : true,
-														//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+				<div class="createcontentpanelhead">Upload Content</div>
+				<!--end of panel head-->
+				<div class="draganddrop pull-left">
+					<div style="margin-top: 30px; margin-left: 10px;">
+						<!-- 							<div style="width: 122px; height: 100px; float: left">
+								<img id="course_thumbnail_image" style="margin-left: 65px"
+									src="http://www.placehold.it/80x80/EFEFEF/AAAAAA"
+									align="center" />
+							</div> -->
 
-														'onUploadSuccess' : function(
-																file, data,
-																response) {
-															json_string = data;
-															data_object = $
-																	.parseJSON(json_string);
-															console
-																	.log(data_object);
 
-															if (data_object.Uploaded == 'true') {
-																$('#Cimageupl').val(data_object.ContentPath);
-																$('#ContentName').val(data_object.ContentName);
-																$('#ContentType').val(data_object.ContentType);
-																$('#ContentTypeName').val(data_object.ContentTypeName);
-																$('#course_thumbnail_image').attr('src','${ms.url}'+ data_object.ContentPath);
-																$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px;padding:6px 35px;position:relative;top:106px">Remove</a>');
+						<div id="message"></div>
+						<div id="thubmnail_upload_message"></div>
+						<div id="loaderText"></div>
+						<input type="file" name="thumbnail_image_file_upload"
+							tabindex="11" id="thumbnail_image_file_upload"
+							style="margin-left: 196px;" />
+						<div id="status"></div>
+						<script type="text/javascript">
+							$(function() {
+								$('#thumbnail_image_file_upload')
+										.uploadify(
+												{
+													'swf' : '${staticFileServer}resources/swf/uploadify.swf',
+													'queueSizeLimit' : 1,
+													'successTimeout' : 350,
+													'buttonText' : 'Upload File',
+													'uploader' : '${ms.uploadScript}',
+													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx, *.pdf',
+													'fileSizeLimit' : '10024KB',
+													'onUploadStart' : function(
+															file) {
+														$('#sbtvalidation')
+																.attr(
+																		'disabled',
+																		'disabled');
+													},
+													//'debug' : true,
+													//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 
-															} else { //there is an error in the upload process
+													'onUploadSuccess' : function(
+															file, data,
+															response) {
+														json_string = data;
+														data_object = $
+																.parseJSON(json_string);
+														console
+																.log(data_object);
 
-																$('#message')
-																		.html(
-																				data_object.message);
-															}
-															$('#sbtvalidation')
-																	.removeAttr(
-																			'disabled'); //enable submit button
+														if (data_object.Uploaded == 'true') {
 
+															content_path = data_object.ContentPath;
+															content_name = data_object.ContentName;
+															content_type_id = data_object.ContentType;
+															content_type_name = data_object.ContentTypeName;
+
+															prepare_for_preview(
+																	content_path,
+																	content_name,
+																	content_type_id,
+																	content_type_name);
+
+														} else { //there is an error in the upload process
+
+															$('#message')
+																	.html(
+																			data_object.message);
 														}
-													// Your options here
-													});
-								});
+														$('#sbtvalidation')
+																.removeAttr(
+																		'disabled'); //enable submit button
 
-								function remove_uploaded_thumbnail() {
-									$('#Cimageupl').val('');//clear uploaded file path
-									$('#ContentName').val(''); //clear ContentName
-									$('#ContentType').val(''); //clear ContentType
-									$('#ContentTypeName').val(''); //clear ContentTypeName
-									$('#thubmnail_upload_message').html('');
-									$('#course_thumbnail_image').attr('src','${staticFileServer}resources/images/default-course.jpg');
+													}
+												// Your options here
+												});
+							});
 
+							function prepare_for_preview(content_path,
+									content_name, content_type_id,
+									content_type_name) {
+
+								thumbnail_image_src = '${ms.url}'
+										+ content_path;
+								if (content_type_name !== 'IMAGE') {
+									thumbnail_image_src = '${staticFileServer}resources/images/default-course.jpg';
 								}
-							</script>
-						</div>
-						<!-- 						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE"
-							value="300000" />
 
-						<div>
+								div_html = '<div class="preview_uploaded_content">';
+								div_html += '<div><img src="'+thumbnail_image_src+'" alt=""></div>';
+								div_html += '<div><span class="title">'
+										+ content_name
+										+ '</span><input type="hidden" name="contentPath[]" value="'+content_path+'" /> <input type="hidden" name="contentName[]" value="'+content_name+'"><input type="hidden" name="contentType[]" value="'+content_type_id+'"><input type="hidden" name="contentTypeName[]" value="'+content_type_name+'"></div>';
+								div_html += '<div><a class="remove_this" onclick="$(this).parents(\'.preview_uploaded_content\').remove();">X</a></div>';
+								div_html += '</div>';
 
-							<input type="file" id="fileselect" name="fileselect[]"
-								multiple/ style="margin-left: 20px; margin-top: 20px;">
-							<div id="filedrag" class="uploadheadsdrop">Drag and Drop
-								files here</div>
-						</div>
+								$('.previewarea .messagecontainer').remove();
+								$('.previewarea form#multiple_content_upload').append(div_html);
 
-						<div id="submitbutton">
-							<button type="submit">Upload Files</button>
-						</div> -->
-
+							}
+						</script>
 					</div>
-					<!--end of drag anf drop-->
-					<div class="previewarea pull-left">
-						<div class="messagecontainer">
-							<p class="uploadheads"
-								style="font-size: 30px; margin-left: 70px; padding-top: 180px;">Preview
-								Area</p>
+				</div>
+				<!--end of drag anf drop-->
+				<div class="previewarea pull-left">
+					<div class="messagecontainer">
+						<p class="uploadheads"
+							style="font-size: 30px; margin-left: 70px; padding-top: 180px;">Preview
+							Area</p>
 
-							<div id="messages" style="min-height: 100px;"></div>
-							<!--End of Messages -->
-							<div class="ClearFix"></div>
-							<!--End of ClearFix -->
-						</div>
-						<!--End of Messagecontainer -->
+						<div id="messages" style="min-height: 100px;"></div>
+						<!--End of Messages -->
+						<div class="ClearFix"></div>
+						<!--End of ClearFix -->
 					</div>
-					<!--end of preview area-->
+					<form id="multiple_content_upload" method="post"
+						action="/ziksana-web/zcourse/1/createcontents">
+
+					</form>
+					<!--End of Messagecontainer -->
+				</div>
+				<!--end of preview area-->
+				<div class="clearfix"></div>
+				<div class="createcontentpanelhead" style="margin-top: 4px;">
+					<a href="#linkurl" class="btn pull-right"
+						style="margin-left: 10px;"> Cancel </a> <a
+						class="btn pull-right saveup1" type="button"
+						onClick="$('form#multiple_content_upload').submit();">Next</a>
 					<div class="clearfix"></div>
-					<div class="createcontentpanelhead" style="margin-top: 4px;">
-						<a href="#linkurl" class="btn pull-right"
-							style="margin-left: 10px;"> Cancel </a> <a
-							class="btn pull-right saveup1" type="button"
-							onClick="createContent();return false;">Next</a>
-						<div class="clearfix"></div>
-					</div>
-					<!--end of panel head-->
-				</form>
+				</div>
+				<!--end of panel head-->
+
 			</div>
 			<!--end of uploadcontent1-->
 		</div>
@@ -237,7 +242,60 @@ table tr td {
 <div class="Clearfix"></div>
 <!--end of body wrapper-->
 
+<style type="text/css">
+.preview_uploaded_content {
+	background: none repeat scroll 0 0 silver;
+	border-radius: 2px 2px 2px 2px;
+	display: table;
+	margin: 0.5em 2%;
+	width: 96%;
+}
 
+.preview_uploaded_content>div {
+	display: table-cell;
+	min-height: 100px;
+	padding: .5em;
+	vertical-align: center;
+	position: relative;
+}
+
+.preview_uploaded_content>div:first-child {
+	width: 100px;
+}
+
+.preview_uploaded_content>div:last-child {
+	width: 32px;
+}
+
+.preview_uploaded_content img {
+	width: 100px;
+}
+
+.preview_uploaded_content .title {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+a.remove_this {
+	border: 2px solid white;
+	border-radius: 60px 60px 60px 60px;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 28px;
+	height: 42px;
+	line-height: 38px;
+	text-align: center;
+	text-decoration: none;
+	width: 42px;
+}
+
+a.remove_this:hover {
+	color: red;
+	border-color: red;
+	text-decoration: none;
+}
+</style>
 
 
 <%-- <script type="text/javascript"

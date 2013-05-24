@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
+import com.ziksana.domain.course.ContentStatus;
 import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
@@ -128,23 +129,28 @@ public class MyContentController {
 		return modelView;
 	}
 
-	@RequestMapping(value = "1/createcontents", method = RequestMethod.POST)
+	@RequestMapping(value = "1/createcontents", method = { RequestMethod.GET,
+			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView createContent(
-			@RequestParam(value = "ContentId", required = false) String contentId,
-			@RequestParam(value = "ContentName", required = false) String contentName,
-			@RequestParam(value = "ContentDescription", required = false) String contentDescription,
-			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
-			@RequestParam(value = "Subject", required = false) String Subject,
-			@RequestParam(value = "Topic", required = false) String Topic,
-			@RequestParam(value = "Contenttag_Field", required = false) String contentTags,
-			@RequestParam(value = "ContentPath", required = false) String contentPath,
-			@RequestParam(value = "ThumbnailPicturePath", required = false) String thumbnailPicturePath,
-			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
-			@RequestParam(value = "ContentType", required = false) String contentType,
-			@RequestParam(value = "ContentTypeName", required = false) String contentTypeName) {
+			@RequestParam(value = "contentPath[]", required = true) String[] contentPath,
+			@RequestParam(value = "contentName[]", required = true) String[] contentName,
+			@RequestParam(value = "contentType[]", required = true) String[] contentType,
+			@RequestParam(value = "contentTypeName[]", required = true) String[] contentTypeName) {
 
 		ModelAndView modelView = new ModelAndView("mastereditcontent");
+
+		LOGGER.info(" -------------------contentPath :" + contentPath
+				+ "contentPath :" + contentPath + "contentType :" + contentType
+				+ "contentTypeName :" + contentTypeName + "---------------");
+
+		for (int i = 0; i < contentPath.length; i++) {
+			LOGGER.info(" -------------------contentPath :" + contentPath[i]
+					+ "contentPath :" + contentPath[i] + "contentType :"
+					+ contentType[i] + "contentTypeName :" + contentTypeName[i]
+					+ "---------------");
+
+		}
 
 		Map<String, Integer> contentMap = new HashMap<String, Integer>();
 
@@ -165,30 +171,20 @@ public class MyContentController {
 					.getToken().getMemberPersonaId().getStorageID()));
 
 			Integer learningContentId = 374;
+			for (int i = 0; i < contentPath.length; i++) {
+				LearningContent learningContent = new LearningContent();
+				learningContent.setAuthoringMember(accountableMember);
+				learningContent.setContentName(contentName[i]);
+				learningContent.setContentPath(contentPath[i]);
+				learningContent.setStatusId(1);
+				learningContent.setActive(true);
+				learningContent.setContentTypeId(958);
+				learningContent.setThumbnailPicturePath(contentPath[i]);
+				learningContent.setStatus(ContentStatus.ACTIVE);
+				learningContent.setRightsOwningMember(accountableMember);
 
-			LearningContent learningContent = new LearningContent();
-			if (!"".equals(contentId) && contentId != null) {
-				learningContentId = Integer.parseInt(contentId);
-				learningContent.setLearningContentId(learningContentId);
+				myContentService.saveOrUpdate(learningContent);
 			}
-			learningContent.setAuthoringMember(accountableMember);
-			learningContent.setContentName(contentName);
-			learningContent.setContentDescription(contentDescription);
-			learningContent.setContentPath(contentPath);
-			learningContent.setStatusId(1);
-			learningContent.setActive(true);
-			if (!"".equals(contentTypeName) && contentTypeName != null) {
-
-				learningContent.setContentTypeId(contentMap
-						.get(contentTypeName));
-			}
-			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
-			learningContent.setScreenshotPath(thumbnailPicturePath);
-			// learningContent.setStatus(ContentStatus.ACTIVE);
-			learningContent.setNumberOfThumbnails(numberOfThumbnails);
-			learningContent.setRightsOwningMember(accountableMember);
-
-			myContentService.saveOrUpdate(learningContent);
 
 			modelView.addObject("contentId", learningContentId);
 
@@ -249,7 +245,7 @@ public class MyContentController {
 			}
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
 			learningContent.setScreenshotPath(thumbnailPicturePath);
-			// learningContent.setStatus(ContentStatus.ACTIVE);
+			learningContent.setStatus(ContentStatus.ACTIVE);
 			learningContent.setNumberOfThumbnails(numberOfThumbnails);
 			learningContent.setRightsOwningMember(accountableMember);
 			try {
