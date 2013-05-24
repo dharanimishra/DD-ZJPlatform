@@ -40,11 +40,9 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		List<Announcement> announcementList = new ArrayList<Announcement>();
 		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
-		int offset = 0;
-		int limit = 2;
-		RowBounds rowBounds = new RowBounds(offset, limit);
-		announcementList = announcementMapper.getAnnouncement(memberRoleId,
-				rowBounds);
+		
+		
+		announcementList = announcementMapper.getAnnouncement(memberRoleId);
 		return announcementList;
 
 	}

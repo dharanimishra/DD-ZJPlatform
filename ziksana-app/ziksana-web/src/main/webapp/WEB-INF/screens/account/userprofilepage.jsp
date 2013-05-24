@@ -525,7 +525,7 @@
 					      </div>
 					     </div>
 					      
-					<button class="btn btn-primary f-r" type="button" style="margin-right:-15px; " >Cancel</button>
+					<a href="/ziksana-web/secure/1/homepage"><button class="btn btn-primary f-r" type="button" style="margin-right:-15px; " >Cancel</button></a>
 					 
 					<div class="clearfix"> </div>   
 					
@@ -947,6 +947,10 @@ function editUpdateSecuQuestion(){
 
 	editSecAnswerOne= $("#editSecAnswerOne").val();
 	console.log(alternateEmailId,memberIdVal,editQuestionOne,editQuestionOneValue,editSecAnswerOne);
+	
+	if(editSecAnswerOne == ''){
+		$('#secQuesOneError').html("Enter Answer"); 
+	}else{
 	 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
 	        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionOne,'SecurityQuestionValue':editQuestionOneValue,'SecurityAnswer':editSecAnswerOne}
 	        , function( data )
@@ -957,13 +961,14 @@ function editUpdateSecuQuestion(){
 	        		showlblsq1('lblsq1');
 	        		
 		          	$('#ques_text_diplayone').html(editQuestionOneValue);
-		          	
+		          	$('#secQuesOneError').html(""); 
 		             }else{
 		            	  $('#secQuesTwoError').html("Error"); 
 		             }
 			
 	        }
-			 );  
+			 );
+	}
 }
 
 function editSaveSecQuesTwo(){
@@ -976,7 +981,9 @@ function editSaveSecQuesTwo(){
 	var editQuestionOneValue = Select.options[Select.selectedIndex].text;
 
 	editSecAnswerTwo= $("#editSecAnswerTwo").val();
-	console.log(alternateEmailId,memberIdVal,editQuestionOne,editQuestionOneValue,editSecAnswerOne);
+	if(editSecAnswerTwo == ''){
+		$('#secQuesTwoError').html("Enter Answer");
+	}else{
 	 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
 	        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionTwo,'SecurityQuestionValue':editQuestionOneValue,'SecurityAnswer':editSecAnswerTwo}
 	        , function( data )
@@ -986,13 +993,15 @@ function editSaveSecQuesTwo(){
 		          	   	          	 
 	        		showlblsq2('lblsq2');
 		          	$('#ques_text_diplaytwo').html(editQuestionOneValue);
+		          	$('#secQuesTwoError').html("");
 		          	
 		             }else{
 		            	  $('#secQuesOneError').html("Error"); 
 		             }
 			
 	        }
-			 );  
+			 );
+	}
 }
 
 function saveUploadedImage(val){

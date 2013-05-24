@@ -68,7 +68,7 @@ public class TodoController {
 		
 		ModelAndView modelView = new ModelAndView("xml/todolist");
 		try{		
-		modelView.addObject("todoItems", todoService.getTodoPagination(Integer.parseInt(pageIndex)));
+			modelView.addObject("todoItems", todoService.getTodoPagination(Integer.parseInt(pageIndex)));
 
 		}catch (ZiksanaException zexception) {
 			modelView.addObject("errorResponse", zexception.getMessage());

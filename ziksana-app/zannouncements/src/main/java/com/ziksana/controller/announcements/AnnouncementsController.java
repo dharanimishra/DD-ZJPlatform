@@ -23,7 +23,7 @@ import com.ziksana.service.announcements.AnnouncementService;
  * 
  */
 @Controller
-@RequestMapping("/zannouncements")
+@RequestMapping("/zannouncements/1/")
 public class AnnouncementsController {
 
 	private static final Logger logger = LoggerFactory
@@ -42,10 +42,10 @@ public class AnnouncementsController {
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
 		try{
-		announcementList = announcementService.getAllAnnouncement();
-		int announcementSize = announcementList.size();
-		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementList);
+			announcementList = announcementService.getAllAnnouncement();
+			int announcementSize = announcementList.size();
+			mav.addObject("announcementSize", announcementSize);
+			mav.addObject("announcements", announcementList);
 		}
 		catch(ZiksanaException ze){
 			mav.addObject("errorResponse", ze.getMessage());

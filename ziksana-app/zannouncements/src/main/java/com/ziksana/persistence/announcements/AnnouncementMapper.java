@@ -19,8 +19,7 @@ public interface AnnouncementMapper {
 
 	public List<Announcement> getAllAnnouncements(int memberRoleId);
 
-	public List<Announcement> getAnnouncement(int memberRoleId,
-			RowBounds rowBounds);
+	public List<Announcement> getAnnouncement(int memberRoleId);
 
 	public void updateAnnouncement(Announcement announcement);
 

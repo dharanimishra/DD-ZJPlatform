@@ -58,33 +58,41 @@ $(".managetodo").click(function(e) {
 		 $(".panelhead").hide();
 		$(".annnouncementpanel").show(); 
 		$(".announcementwrapper").show();
+		get_and_populate_announcements('/ziksana-web/zannouncements/1/getannouncements');
 		
-		/*$('.University').hide();
-		$('.Educator').hide();
-
-		$(".Allbtn").click(function(e) {
-			
-			$('.University').slideUp();
-			$('.Educator').slideUp();
-			$('.All').slideDown(200);
-			
-			});
-
-		$('.Universitybtn').click(function(e) {
-		    $('.All').slideUp();
-			 $('.Educator').slideUp();
-			$('.University').slideDown(200);
-		});
-
-
-		$('.Educatorbtn').click(function(e) {
-		    $('.All').slideUp();
-			$('.University').slideUp();
-			$('.Educator').slideDown(200);
-		});*/
 	});
 
 });
+//Announcement Ajax Call
+function get_and_populate_announcements(val){
+	$.ajax({
+	  	type: 'GET',
+		url: val,
+		dataType: 'xml',
+		success: function( data ) {
+			var announcement_all = '';
+			$(data).find("announcementsList").each(function(){
+				if($(this).find("announcementSize").text()==0){
+					announcement_all+="No New Announcements";
+				}
+				$(data).find("announcements").each(function(index){
+
+					announcement_all+="<div class='announcementhead'>";
+					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
+					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
+					announcement_all+="<div class='Clearfix'> </div>";
+					announcement_all+="</div><div class='announcementbody'>"+ $(this).find("description").text()+"";
+					announcement_all+="<div id='collapseTwo' class='accordion-body collapse'>";
+					announcement_all+="<div class='accordion-inner'>The colleges also sponsor specialized academic programs that are open to all students. Whether students commute to campus or live in residence, their college is their community hub. It is where intramural sports teams compete, budding journalists publish their college papers and thespians perform. </div></div>";
+					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo'>Read More</a><div class='Clearfix'> </div></div>";
+					
+				});
+				$('#announcement_box_all').html(announcement_all);
+			});
+			
+		}
+	});
+}
 
 //TODO Ajax Call
 var no_of_available_todo;
@@ -105,10 +113,10 @@ function get_and_populate_todo(val){
 					no_of_available_todo = size;
 					paginationString ="";
 					if(size <= 5){
-						paginationString+= "<span onclick='pageOne()'><span id='pag_active1' class='pagination_bar pactive'></span>";
+						paginationString+= "<span onclick='pageOne()' id='pag_active1' class='pagination_bar pactive'/>";
 
 					}else if(size <= 10){
-						paginationString+= "<span onclick='pageOne()'><span id='pag_active1' class='pagination_bar pactive'></span><span onclick='pageTwo()'><span id='pag_active2' class='pagination_bar'></span>";						
+						paginationString+= "<span onclick='pageOne()' id='pag_active1' class='pagination_bar pactive'/><span onclick='pageTwo()' id='pag_active2' class='pagination_bar'></span>";						
 
 					}else if(size <= 15){
 						paginationString+= "<span onclick='pageOne()' id='pag_active1' class='pagination_bar pactive'/><span onclick='pageTwo()' id='pag_active2' class='pagination_bar'></span><span onclick='pageThree()' id='pag_active3' class='pagination_bar'></span>";
@@ -141,6 +149,7 @@ function get_and_populate_todo(val){
 						  
 } 
 function pageOne(){
+	
 	$('#pag_active1').addClass('pactive');
 	$('#pag_active2').removeClass('pactive');
 	$('#pag_active3').removeClass('pactive');
@@ -228,13 +237,13 @@ function get_and_populate_todo_value(val){
 					
 					paginationMoreString ="";
 					if(size <= 5){
-						paginationMoreString+= "<span onclick='pageMoreOne()'><span class='pagination_bar'></span>";
+						paginationMoreString+= "<span onclick='pageMoreOne()' class='pagination_bar'/>";
 
 					}else if(size <= 10){
-						paginationMoreString+= "<span onclick='pageMoreOne()'><span class='pagination_bar'></span><span style='cursor:pointer' onclick='pageMoreTwo()'><span class='pagination_bar'></span>";						
+						paginationMoreString+= "<span onclick='pageMoreOne()' class='pagination_bar'/><span onclick='pageMoreTwo()' class='pagination_bar'></span>";						
 
 					}else if(size <= 15){
-						paginationMoreString+= "<span onclick='pageMoreOne()'><span class='pagination_bar'></span></span><span onclick='pageMoreTwo()'><span class='pagination_bar'></span></span><span onclick='pageMoreThree()'><span class='pagination_bar'></span></span>";
+						paginationMoreString+= "<span onclick='pageMoreOne()' class='pagination_bar'></span><span onclick='pageMoreTwo()' class='pagination_bar'></span><span onclick='pageMoreThree()' class='pagination_bar'></span>";
 
 					}
 					
@@ -253,18 +262,18 @@ function get_and_populate_todo_value(val){
 						 $(data).find("todoitem").each(function(index){
 							
 							 ouputEmptyTodo+="<tr id='moretodorow"+$(this).find('id').text()+"' style='height:40px;'>";
-							 ouputEmptyTodo+="<td><div ><input type='checkbox' id='c"+index+2 +"' onchange='handle(this,"+$(this).find('id').text()+");' /> <label for='c"+index+2 +"'><span></span></label></td><td><div id='category_value"+$(this).find("id").text()+"'>"+$(this).find("categoryName").text()+" </div></td>";
-							 ouputEmptyTodo+="<td><span id='categoryDescription"+$(this).find("id").text()+"' class='todoinfo-decription' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_string($(this).find("subject").text())+"</span></td><td><a id='todoEdithyperlink' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;disabled:true;'>Edit</a></td><td></td></div>";
+							 ouputEmptyTodo+="<td width='50px'><div ><input type='checkbox' id='c"+index+2 +"' onchange='handle(this,"+$(this).find('id').text()+");' /> <label for='c"+index+2 +"'><span></span></label></td><td width='200px'><div id='category_value"+$(this).find("id").text()+"'>"+$(this).find("categoryName").text()+"</div></td>";
+							 ouputEmptyTodo+="<td width='200px'><span id='categoryDescription"+$(this).find("id").text()+"' class='todoinfo-decription' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_string($(this).find("subject").text())+"</span></td><td width='75px'><a id='todoEdithyperlink"+index+"' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;disabled:true;'>Edit</a></td><td width='75px'></td></div>";
 							 
 							 ouputEmptyTodo+="</tr>";
 							 ouputEmptyTodo+="<tr style='display:none;'><td></td></tr>";
 							 
-							 ouputEmptyTodo+="<tr id = 'update_todo_form_container"+$(this).find('id').text()+"' style='height:50px;display:none;'>";
+							 ouputEmptyTodo+="<tr id = 'update_todo_form_container"+$(this).find('id').text()+"' style='height:40px;display:none;'>";
 							 ouputEmptyTodo+="<div class='updatetodo'>";
 							 
-							 ouputEmptyTodo+="<td></td><td><select onblur='updateSelectChange("+$(this).find('id').text()+")' id='update_todo_categories"+$(this).find('id').text()+"'' style='margin-left:40px;width:150px;'><optgroup><option style='color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;' onclick='show_add_category_form("+$(this).find('id').text()+");' value='add_new_category'>Add New Category</option></optgroup>'</select><span id='add_new_edit_category_form"+$(this).find('id').text()+"' style='display:none;'><input onblur='updateTextBoxChange("+$(this).find('id').text()+");' id='update_todo_category_name"+$(this).find('id').text()+"'/></span></td>";
+							 ouputEmptyTodo+="<td width='50px'></td><td width='200px'><select onblur='updateSelectChange("+$(this).find('id').text()+")' id='update_todo_categories"+$(this).find('id').text()+"'' style='margin-left:10px;width:190px;'><optgroup><option style='color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;' onclick='show_add_category_form("+$(this).find('id').text()+");' value='add_new_category'>Add New Category</option></optgroup>'</select><span id='add_new_edit_category_form"+$(this).find('id').text()+"' style='display:none;'><input onblur='updateTextBoxChange("+$(this).find('id').text()+");' id='update_todo_category_name"+$(this).find('id').text()+"'/></span></td>";
 							
-							 ouputEmptyTodo+="<td><input id='todo_edit_description"+$(this).find('id').text()+"' style='width:200px;height:28px;'/></td><td><a onclick='saveRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Update</a></td><td><a onclick='showRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Cancel</a></td></div>";
+							 ouputEmptyTodo+="<td width='200px'><input id='todo_edit_description"+$(this).find('id').text()+"' style='width:200px;height:28px;'/></td><td width='75px'><a onclick='saveRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Update</a></td><td width='75px'><a onclick='showRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Cancel</a></td></div>";
 							 ouputEmptyTodo+="</tr></div>";
 							
 						 });
@@ -307,6 +316,9 @@ function get_and_populate_todo_value(val){
 						$(data).find("todoitem").each(function(index){
 						$('select#update_todo_categories'+$(this).find('id').text()+'').prepend(updateselect);
 						});
+						
+						
+						
 					}
 					
 				});
@@ -476,6 +488,12 @@ function saveRow_hideEdit(v)
 		             }
 		 
 		        });  
+				for(var i=0;i<5;i++){
+					   
+					   $('#todoEdithyperlink'+i+'').attr('onclick');
+					   $('#todoEdithyperlink'+i+'').css('color','#fff');
+					  
+					 }
 	
 	
 }
@@ -532,34 +550,20 @@ function add_new_category_item_update(v){
 function edit_todorow_and_update(rowId){
 	
 	selectedRowId = rowId;
+	
 	$('#moretodorow'+rowId+'').hide();
 	$('#update_todo_form_container'+rowId+'').show();
 	var categorySelectedValue = $('#category_value'+rowId+'').text();
-	console.log(categorySelectedValue); 
-	var value = categorySelectedValue.substring(0, categorySelectedValue.length - 1);
-	console.log(value);
-	var vals = [value,value]; 
-	console.log(vals);
+	console.log('Category value: '+categorySelectedValue); 
+
+
 		
-	$('select#update_todo_categories'+rowId+'').each(function(){
-		$('option').each(function(){
-			   var $t = $(this);
-
-			   for (var n=vals.length; n--; )
-				   if ($t.text() == vals[n]){           
-				         $t.prop('selected', true);
-
-				         return;
-				      }       
-
-			      
-			});
-	   
-	});
+	$('select#update_todo_categories'+rowId).val(categorySelectedValue);
 	
 	var cateDescriptionSelectedValue = $('#categoryDescription'+rowId+'').text();
 	console.log(cateDescriptionSelectedValue);
 	$('#todo_edit_description'+rowId+'').val(cateDescriptionSelectedValue);
+	
 	
 
 }
@@ -569,6 +573,8 @@ function showRow_hideEdit(val){
 	
 	$('#add_new_edit_category_form'+val+'').hide();
 	$('select#update_todo_categories'+val+'').show();
+	
+	
 }
 
 
