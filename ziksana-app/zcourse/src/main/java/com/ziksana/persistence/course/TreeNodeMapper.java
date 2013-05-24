@@ -27,7 +27,7 @@ public interface TreeNodeMapper {
 	})
 	List<NestTreeNode> getModuleComponents(Integer courseId);
 
-	@Select({ "select clc.ID AS LearningComponentId, clcc.ID AS LearningComponentContentId,corlearncontent.ID AS contentid,corlearncontent.ContentName AS contentname,corlearncontent.ContentPath AS contentpath,corlearncontent.ContentType AS contenttype from corcourselearningcomponent cclc,corlearningcomponent clc, corlearningcomponentcontent clcc, corlearningcontent corlearncontent  where clcc.LearningContentId = corlearncontent.ID and  clcc.LearningComponentId=clc.ID and cclc.CourseId=#{courseId,jdbcType=INTEGER} and cclc.LearningComponentId=clc.ID and corlearncontent.isdelete=false and clc.isdelete=false" })
+	@Select({ "select clc.ID AS LearningComponentId, clcc.ID AS LearningComponentContentId,corlearncontent.ID AS contentid,corlearncontent.ContentName AS contentname,corlearncontent.ContentPath AS contentpath,corlearncontent.ContentType AS contenttype from corcourselearningcomponent cclc,corlearningcomponent clc, corlearningcomponentcontent clcc, corlearningcontent corlearncontent  where clcc.LearningContentId = corlearncontent.ID and  clcc.LearningComponentId=clc.ID and cclc.CourseId=#{courseId,jdbcType=INTEGER} and cclc.LearningComponentId=clc.ID and clcc.isdelete=false" })
 	@Results(value = {
 			@Result(property = "parentLearningComponentId", column = "LearningComponentId"),
 			@Result(property = "id", column = "LearningComponentContentId"),

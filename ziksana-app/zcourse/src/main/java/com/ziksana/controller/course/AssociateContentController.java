@@ -61,6 +61,9 @@ public class AssociateContentController {
 					Integer memberId = Integer.valueOf(SecurityTokenUtil
 								.getToken().getMemberPersonaId().getStorageID());
 						List<LearningContent> learningContents = associateContentService.getLearningContents(memberId);
+						for (LearningContent learningContent : learningContents) {
+							System.out.println("learningContent " + learningContent.getLearningContentId());
+						}
 						String jsonString = JSONUtil.objectToJSONString(learningContents);
 						
 						modelView.addObject("learningContentAsJSONString", jsonString);

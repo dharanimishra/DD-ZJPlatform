@@ -140,6 +140,7 @@ public class CourseNestTreeController {
 				coursename = node.getCoursename();
 				modelView.addObject("courseIds", courseIdValue);
 				modelView.addObject("coursename", coursename);
+				break;
 			}
 			List<NestTreeNode> treeNodeList = courseNestTreeService
 					.getModuleComponents(courseIds);
