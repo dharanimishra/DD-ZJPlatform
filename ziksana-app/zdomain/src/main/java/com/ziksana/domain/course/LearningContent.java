@@ -31,7 +31,7 @@ public class LearningContent extends AuditHistory {
 	private Integer id;
 	private Date creationDate = null;
 	private Boolean activeFlag = null;
-	//private Boolean active = null;
+	// private Boolean active = null;
 	private ContentType contentType = null;
 	/**
 	 * Maximum Length:45
@@ -384,18 +384,6 @@ public class LearningContent extends AuditHistory {
 		this.linkedLearningContent = linkedLearningContent;
 	}
 
-	@Override
-	public String toString() {
-		return "LearningContent [activeFlag=" + activeFlag + ", contentPath="
-				+ contentPath + ", contentFormat=" + contentFormat
-				+ ", status=" + status + ", contentName=" + contentName
-				+ ", contentDescription=" + contentDescription
-				+ ", thumbnailPicturePath=" + thumbnailPicturePath
-				+ ", subjClassification=" + subjClassification
-				+ ", learningContentPartsList=" + learningContentPartsList
-				+ ", baseComponentContent=" + baseComponentContent + "]";
-	}
-
 	/**
 	 * @return the contentTypeId
 	 */
@@ -518,6 +506,31 @@ public class LearningContent extends AuditHistory {
 	public void setId(Integer id) {
 		this.id = id;
 		setLearningContentId(new IntegerZID(id));
+	}
+
+	@Override
+	public String toString() {
+		return "LearningContent [learningContentId=" + learningContentId
+				+ ", id=" + id + ", creationDate=" + creationDate
+				+ ", activeFlag=" + activeFlag + ", contentType=" + contentType
+				+ ", contentPath=" + contentPath + ", contentFormat="
+				+ contentFormat + ", contentFormatId=" + contentFormatId
+				+ ", status=" + status + ", statusId=" + statusId
+				+ ", version=" + version + ", subjClassificationId="
+				+ subjClassificationId + ", numberOfThumbnails="
+				+ numberOfThumbnails + ", contentName=" + contentName
+				+ ", contentDescription=" + contentDescription
+				+ ", thumbnailPicturePath=" + thumbnailPicturePath
+				+ ", screenshotPath=" + screenshotPath
+				+ ", rightsOwningMember=" + rightsOwningMember
+				+ ", authoringMember=" + authoringMember
+				+ ", subjClassification=" + subjClassification
+				+ ", linkedLearningContent=" + linkedLearningContent
+				+ ", learningContentPartsList=" + learningContentPartsList
+				+ ", baseComponentContent=" + baseComponentContent
+				+ ", contentTypeId=" + contentTypeId + ", isDelete=" + isDelete
+				+ ", contentPartid=" + contentPartid + ", contentUrl="
+				+ contentUrl + "]";
 	}
 
 }

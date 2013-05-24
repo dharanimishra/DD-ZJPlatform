@@ -3,6 +3,7 @@
  */
 package com.ziksana.controller.course;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.ContentStatus;
+import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
@@ -139,7 +141,7 @@ public class MyContentController {
 			@RequestParam(value = "contentTypeName[]", required = true) String[] contentTypeName) {
 
 		ModelAndView modelView = new ModelAndView("mastereditcontent");
-
+		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 		LOGGER.info(" -------------------contentPath :" + contentPath
 				+ "contentPath :" + contentPath + "contentType :" + contentType
 				+ "contentTypeName :" + contentTypeName + "---------------");
@@ -148,29 +150,16 @@ public class MyContentController {
 			LOGGER.info(" -------------------contentPath :" + contentPath[i]
 					+ "contentPath :" + contentPath[i] + "contentType :"
 					+ contentType[i] + "contentTypeName :" + contentTypeName[i]
-					+ "---------------");
+					+ "---------------"
+					+ ContentType.valueOf(contentTypeName[i]).getID());
 
 		}
-
-		Map<String, Integer> contentMap = new HashMap<String, Integer>();
-
-		contentMap.put("VIDEO", 612);
-		contentMap.put("ENHANCED_VIDEO", 954);
-		contentMap.put("AUDIO", 611);
-		contentMap.put("TEXTUAL", 610);
-		contentMap.put("PDF", 960);
-		contentMap.put("DOC", 955);
-		contentMap.put("PPT", 956);
-		contentMap.put("EXCEL", 957);
-		contentMap.put("IMAGE", 958);
-		contentMap.put("LINK", 959);
 
 		try {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
 
-			Integer learningContentId = 374;
 			for (int i = 0; i < contentPath.length; i++) {
 				LearningContent learningContent = new LearningContent();
 				learningContent.setAuthoringMember(accountableMember);
@@ -178,16 +167,18 @@ public class MyContentController {
 				learningContent.setContentPath(contentPath[i]);
 				learningContent.setStatusId(1);
 				learningContent.setActive(true);
-				learningContent.setContentTypeId(958);
+//				learningContent.setContentTypeId(ContentType.valueOf(
+//						contentTypeName[i]).getID());
+				
+				learningContent.setContentTypeId(959);
 				learningContent.setThumbnailPicturePath(contentPath[i]);
-				learningContent.setStatus(ContentStatus.ACTIVE);
+			//	learningContent.setStatusId(ContentStatus.ACTIVE.getID());
 				learningContent.setRightsOwningMember(accountableMember);
-
-				myContentService.saveOrUpdate(learningContent);
+				LearningContent learningCont = myContentService
+						.saveOrUpdate(learningContent);
+				learningContentlist.add(learningCont);
 			}
-
-			modelView.addObject("contentId", learningContentId);
-
+			modelView.addObject("learningContentlist", learningContentlist);
 		} catch (CourseException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		} catch (NumberFormatException e) {
@@ -257,7 +248,8 @@ public class MyContentController {
 						+ "Subject Classification not found:" + e);
 			}
 
-			myContentService.saveOrUpdate(learningContent);
+			LearningContent learningCont = myContentService
+					.saveOrUpdate(learningContent);
 
 		} catch (CourseException exception) {
 			LOGGER.error(exception.getMessage(), exception);
