@@ -96,16 +96,18 @@
 	
 					'<div class="associatedesccont"> '+
 						'<p class="associatecategorydesc">' + learningContentObject.contentDescription + '</p>'+
-					'</div> <!--end of associatedesccont-->'+
-	
-					'<p class="f-r"><a href="#linkurl"> See More </a> </p>'+
+						'<a class="toggle_seemore" style="float:right;color:#fff" href="" > See More </a>'+
+					'</div> <!--end of associatedesccont-->'+ 
 					'<div class="ClearFix"> </div>'+
 	
 	
 	
 					'</div> <!--end of associtemright-->'+
+					 
 	
-	
+					
+					
+					
 				'<div class="ClearFix"> </div>'+
 	
 			'</div> <!--end  of associatesearchitem-->'+

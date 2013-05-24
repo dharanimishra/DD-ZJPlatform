@@ -64,10 +64,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/css/associatecontent.css" />
 
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/splitter/jquery-1.4.3.min.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/splitter/splitter.js"></script>
+
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/associate-content/associate-content.js"></script>
 <script type="text/javascript"
@@ -75,24 +72,16 @@
 	
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#splitterContainer").splitter({
-			minAsize : 100,
-			maxAsize : 800,
-			splitVertical : true,
-			A : $('#leftPane'),
-			B : $('#rightPane'),
-			slave : $("#rightSplitterContainer"),
-			closeableto : 0
-		});
-	});
-</script>
+ 
 <style>
 .ds {
 	margin-left: 40px;
 	color: #0a91ac !important;
 }
+#splitterContainer { /* Main splitter element */
+	overflow-x:hidden;
+}
+#ContentPanel2{width:76%}
 </style>
 <script type="text/javascript">
 	/* function showrich() {
@@ -318,17 +307,8 @@
 </style>
 
 					<div id="gggg" style="font-size: 10px; margin-bottom: 10px;">
-						<div id="splitter" style='clear: both;'>
-
-							<!-- Start of Tree -->
-							<div id="treeboxbox_tree" style="padding: 5px;"
-								class="dhtmlxTree"
-								setImagePath="js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
-							</div>
-
-
-							<!-- End of Tree -->
-
+						 
+ 
 							<div id="ContentPanel2"
 								style="font-size: 11px; background-image: none; margin-left: 15px;">
 
@@ -363,17 +343,16 @@
 
 									</div>
 									<!--end of page 1-->
-									<div class="paginationbutton f-r" style="margin-top: -15px;">
+									<div class="paginationbutton f-r" style="padding:10px">
 										<!-- <a class="cancel" href="associatecontent.html">Cancel</a> -->
-										<a href="#linkurl" id="btnpg1" class="swShowPage"
-											style="background-color: rgb(41, 147, 221);"></a> <a
-											href="#linkurl" id="btnpg2" class="swShowPage"></a> <a
+										<a href="#linkurl" id="btnpg1" class="swShowPageActive"></a>
+										 <a href="#linkurl" id="btnpg2" class="swShowPage"></a> <a
 											href="#linkurl" id="btnpg3" class="swShowPage"></a>
 
 									</div>
 									<!--end of paginationbutton-->
 
-									<p style="text-align: right; clear: both;">
+									<p style="text-align: right; clear: both;margin-top:10px">
 										<a target="" style="" href="associatecontent.html"
 											class="btn btn-info">Associate Content</a> <a target=""
 											style="" href="associatecontent.html" class="btn btn-danger">Cancel</a>
@@ -386,7 +365,7 @@
 								<div class="ClearFix"></div>
 							</div>
 							<!-- Content Panel End -->
-						</div>
+						 
 						<!-- end of definecontainer--->
 						<div class="ClearFix"></div>
 
@@ -414,10 +393,25 @@
 </div>
 <!--end of contentpanel-->
 
+<script>
 
-</div>
-</section>
-</div>
-<div class="Clearfix"></div>
-<div class="Clearfix"></div>
-</div>
+$(function(){
+   $('.toggle_seemore').on('click',function(){
+		p = $(this).prev('p');
+		console.log(p);
+		if(p.hasClass('show_more')){
+			p.removeClass('show_more');
+		} else {
+			p.addClass('show_more');
+		}
+		
+		return false;
+		
+	});
+
+});
+$(document).ready(function() {
+    $ ('div.associatesearchitem:even').addClass('even');
+    $ ('div.associatesearchitem:odd').addClass('odd');
+});
+  </script>
