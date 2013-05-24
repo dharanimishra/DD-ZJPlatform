@@ -57,8 +57,6 @@ table tr td {
 				</h3>
 			</div>
 		</div>
-
-
 		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
 				<img src="${staticFileServer}resources/images/content/link.png" />
@@ -69,12 +67,7 @@ table tr td {
 				</h3>
 			</div>
 		</div>
-
-
-
 		<div class="Clearfix"></div>
-
-
 	</div>
 	<!--end of tiles container-->
 
@@ -125,7 +118,8 @@ table tr td {
 						<div class="editslideup1">
 							<div class="editslide pull-left">
 								<textarea rows="4" cols="12"
-									style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription">Details for the upload image </textarea>
+									style="width: 350px; margin-bottom: 10px; margin-left: 5px;"
+									id="ContentDescription">Details for the upload image </textarea>
 							</div>
 							<div class="editslide pull-left" style="margin-left: 5px;">
 								<input type="text" placeholder="Specify Tags"
@@ -179,5 +173,3 @@ table tr td {
 	width: 235px;
 }
 </style>
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/custom/createcontent/filedrag.js"></script> --%>
