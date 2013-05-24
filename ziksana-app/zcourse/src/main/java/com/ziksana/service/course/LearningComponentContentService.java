@@ -16,7 +16,7 @@ public interface LearningComponentContentService {
 	 * This method only marks the specified {@link LearningComponentContent} as deleted
 	 * @param learningComponentContentId
 	 */
-	public void updateLearningComponentContent(LearningComponentContent learningComponentContent);
+	public void deleteLearningComponentContent(LearningComponentContent learningComponentContent);
 	
 	public LearningComponentContent getLearningComponentContent(Integer learningComponentContentId);
 	

@@ -25,10 +25,10 @@ public class LearningComponentContentServiceImpl implements
 		}
 	}
 
-	public void updateLearningComponentContent(
+	public void deleteLearningComponentContent(
 			LearningComponentContent learningComponentContent) {
-		learningComponentContent.setDeleted(true);
-		learningComponentContentMapper.updateLearningComponentContent(learningComponentContent);
+		Integer learningCompoentContentId = Integer.parseInt(learningComponentContent.getLearningComponentContentId().getStorageID());
+		learningComponentContentMapper.delete(learningCompoentContentId, true);
 	}
 
 	public LearningComponentContent getLearningComponentContent(

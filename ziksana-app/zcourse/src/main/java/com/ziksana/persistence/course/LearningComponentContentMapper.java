@@ -49,7 +49,7 @@ public interface LearningComponentContentMapper {
 
 	
 	@Update({"update corlearningcomponentcontent set isdelete = #{isDelete, jdbcType=BOOLEAN} where " +
-			"learningcomponentcontentId = #{learningComponentContentId, jdbcType=INTEGER}" })
+			"ID = #{learningComponentContentId, jdbcType=INTEGER}" })
 	void delete(@Param("learningComponentContentId") Integer learningComponentContentId, @Param("isDelete") Boolean isDelete);
 
 	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where " +
@@ -59,11 +59,12 @@ public interface LearningComponentContentMapper {
 		})
 	LearningComponentContent getLearningComponentContent(Integer learningComponentContentId);
 	
-	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where " +
+	
+	@Select({"select ID  from corlearningcomponentcontent where " +
 	" learningComponentId = #{learningComponentId,jdbcType=INTEGER} and " + 
 	" learningContentId = #{learningContentId,jdbcType=INTEGER} "})
 		@Results(value = {
-				@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
+				@Result(property = "learningComponentContentId", column = "ID"),
 		})
-	LearningComponentContent getLearningComponentContent(Integer learningComponentId, Integer learningContentId);
+	LearningComponentContent getLearningComponentContent(@Param("learningComponentId") Integer learningComponentId,@Param("learningContentId") Integer learningContentId);
 }

@@ -78,7 +78,7 @@
 			'<div class="associatesearchitem">'+
 	
 				'<div class="associateleft f-l" style="width:100%;">'+
-					'<input id="learningContentToBeAssociated" type="checkbox" style="border:1px solid;"/>'+
+					'<input id="learningContentToBeAssociated" type="checkbox" value="' + learningContentObject.learningContentId +'" style="border:1px solid;"/>'+
 					'<img src="../images/programs/tsunami.jpg" alt="" border="4px solid #999;" style="vertical-align:middle;" class="associatesearchimg  all-box-shadow"/>'+
 					'</div> <!--end of associtemleft-->'+
 	

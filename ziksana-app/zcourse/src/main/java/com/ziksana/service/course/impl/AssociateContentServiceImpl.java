@@ -98,7 +98,7 @@ public class AssociateContentServiceImpl implements AssociateContentService {
 	public void unAssociateContent(Integer learningComponentId, Integer learningContentId) {
 		LearningComponentContent learningComponentContent = learningComponentContentService.getLearningComponentContent(learningComponentId, learningContentId);
 		learningComponentContent.setDeleted(true);
-		learningComponentContentService.updateLearningComponentContent(learningComponentContent);
+		learningComponentContentService.deleteLearningComponentContent(learningComponentContent);
 	}
 
 	public boolean isModuleExist(Integer courseId) {
