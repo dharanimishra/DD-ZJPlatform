@@ -32,8 +32,9 @@ public class MyContentServiceImpl implements MyContentService {
 		return learningContentService.getLearningContent(learningContentId);
 	}
 
-	public void saveOrUpdate(LearningContent learningContent) {
-		learningContentService.saveOrUpdateLearningContent(learningContent);
+	public LearningContent saveOrUpdate(LearningContent learningContent) {
+		return learningContentService
+				.saveOrUpdateLearningContent(learningContent);
 
 	}
 

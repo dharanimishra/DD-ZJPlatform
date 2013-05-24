@@ -17,9 +17,8 @@ public interface MyContentService {
 
 	public LearningContent getContent(Integer learningContentId);
 
-	public void saveOrUpdate(LearningContent learningContent);
+	public LearningContent saveOrUpdate(LearningContent learningContent);
 
 	public void deleteContent(Integer learningContentId);
-	
-	
+
 }

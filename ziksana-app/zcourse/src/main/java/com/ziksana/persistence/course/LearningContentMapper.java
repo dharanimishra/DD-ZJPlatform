@@ -18,12 +18,12 @@ public interface LearningContentMapper {
 	/**
 	 * Saves the Learning Content
 	 */
-	Integer saveContent(LearningContent record);
+	LearningContent saveContent(LearningContent record);
 
 	/**
 	 * Updates the Learning Content
 	 */
-	Integer updateContent(LearningContent record);
+	LearningContent updateContent(LearningContent record);
 
 	/**
 	 * Saves the learningcontentparts
@@ -79,8 +79,7 @@ public interface LearningContentMapper {
 			@Result(property = "contentName", column = "ContentName"),
 			@Result(property = "contentDescription", column = "ContentDescription"),
 			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath"),
-			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails")
-	})
+			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails") })
 	List<LearningContent> getUserContent(Integer memberId);
 
 	public LearningContent getLearningContent(Integer learningContentId);

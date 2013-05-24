@@ -37,7 +37,8 @@ public interface LearningContentService {
 	 * 
 	 * @param learningContent
 	 */
-	public void saveOrUpdateLearningContent(LearningContent learningContent);
+	public LearningContent saveOrUpdateLearningContent(
+			LearningContent learningContent);
 
 	/**
 	 * Mark as deleted soft delete only

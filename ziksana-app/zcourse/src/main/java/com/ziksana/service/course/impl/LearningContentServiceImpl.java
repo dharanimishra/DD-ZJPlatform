@@ -48,7 +48,7 @@ public class LearningContentServiceImpl implements LearningContentService {
 	}
 
 	@Transactional
-	public void saveOrUpdateLearningContent(
+	public LearningContent saveOrUpdateLearningContent(
 			final LearningContent learningContent) {
 
 		List<LearningContentParts> contentParts = null;
@@ -87,6 +87,7 @@ public class LearningContentServiceImpl implements LearningContentService {
 			// e) {
 			// };
 		}
+		return learningContent;
 	}
 
 	/**
