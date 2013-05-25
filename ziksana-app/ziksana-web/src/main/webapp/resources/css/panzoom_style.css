@@ -1,0 +1,227 @@
+body {
+	color: #ccc;
+	font-size: 14px;
+	background: #222;
+	margin: 0
+	padding: 0;
+}
+
+div.wrapper {
+	/*width: 820px;*/
+	margin: 0 auto;
+}
+
+h1 {
+	font-size: 24px;
+}
+
+h2 {
+	font-size: 18px;
+	margin-top: 0;
+}
+
+h3 {
+	font-size: 16px;	
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+/* if you are reading this, the below is the start of the css for the image and wrapper div for the panner - thats probably what you are interested in */
+
+div#pan {
+	height: 800px;
+	overflow: hidden;
+}
+
+/* and this is the end */
+
+/* this is extra stuff for #pan to get the layout right for the eg - not necessary */
+div#pan {
+  margin-bottom: .5em;
+}
+
+div.me {
+	font-size: 12px;
+	width: 400px;
+	background-color: #eeeeee;
+	border: #dddddd 1px solid;
+	margin-bottom: 20px;
+}
+
+div.me img {
+	float: left;
+	margin-right: 20px;
+}
+
+div#output, div#images {
+	background-color: #444;
+	padding: 10px;
+}
+
+div#controls {
+  background: none repeat scroll 0 0 #444444;
+  border: 2px solid white;
+  border-radius: 9px 9px 9px 9px;
+  box-shadow: 0 0 10px black;
+  display: inline-block;
+  padding: 0.25em;
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  z-index: 2;
+  cursor: move;
+  width: 111px;
+  height: 111px;
+}
+div#controls table	{border: 0;}
+
+div#controls a {
+  background: none repeat scroll 0 0 #222;
+  border-radius: 3px 3px 3px 3px;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  height: 32px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  width: 32px;
+  line-height: 32px;
+}
+
+div#controls a img {
+	border: none;
+	vertical-align: middle;
+}
+
+div#controls a:hover {
+	text-decoration: underline;
+	background: #000;
+}
+
+#zoomin, #zoomout {
+  background: #333333 !important;
+}
+#zoomin:hover, #zoomout:hover {
+  background: #000 !important;
+}
+
+div#output, div#images {
+}
+
+div#images {
+  border-top: 4px solid gray;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  position: fixed;
+  right: 0;
+  z-index: 2;
+}
+
+div.clear {
+	clear: both;
+}
+
+
+
+/* dock - top */
+.dock {
+	position: relative; 
+	height: 50px; 
+	text-align: center;
+	z-index: 2;
+}
+.dock-container {
+	position: absolute;
+	height: 50px;
+	background: url(/ziksana-web/resources/images/panzoom/dock-bg2.gif);
+	padding-left: 20px;
+}
+a.dock-item {
+	display: block;
+	width: 40px;
+	color: #000;
+	position: absolute;
+	top: 0px;
+	text-align: center;
+	text-decoration: none;
+	font: bold 12px Arial, Helvetica, sans-serif;
+}
+.dock-item img {
+	border: none; 
+	margin: 5px 10px 0px; 
+	width: 100%; 
+}
+.dock-item span {
+	display: none; 
+	padding-left: 20px;
+}
+
+/* dock2 - bottom */
+#dock2 {
+	width: 100%;
+	bottom: 0px;
+	position: absolute;
+	left: 0px;
+}
+.dock-container2 {
+	position: absolute;
+	height: 55px;
+	background: url(/ziksana-web/resources/images/panzoom/dock-bg.gif);
+	padding-left: 35px;
+	border-radius: 7px;
+}
+a.dock-item2 {
+	display: block; 
+	font: bold 12px Arial, Helvetica, sans-serif;
+	width: 40px; 
+	color: #000; 
+	bottom: 0px; 
+	position: absolute;
+	text-align: center;
+	text-decoration: none;
+	margin: 0 .5em;
+}
+.dock-item2 span {
+  background: none repeat scroll 0 0 black;
+  border-radius: 30px 30px 30px 30px;
+  color: white;
+  display: inline-block;
+  font-weight: normal;
+  margin-left: 40px;
+  opacity: 0.8;
+  padding: 0.5em;
+  width: 32px;
+  display: none;
+}
+.dock-item2 img {
+	border: none; 
+	margin: 5px 10px 0px; 
+	width: 100%; 
+}
+.dock-item2.current {
+  opacity: 0.8;
+}
+.dock-item2.current span {display: block; color: red;}
+
+/*Thumbnail Next Previous Buttons*/
+#thumb_next, #thumb_previous {
+  background: none repeat scroll 0 0 black;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  height: 250px;
+  line-height: 250px;
+  opacity: 0.5;
+  padding: 0.5em;
+  position: absolute;
+  text-decoration: none;
+  top: 30%;
+  vertical-align: middle;
+  width: 32px;
+  z-index: 2;
+}
+#thumb_next:hover, #thumb_previous:hover { background: #444; }
+#thumb_previous { left: 0; border-radius: 0 13px 13px 0; }
+#thumb_next { right: 0; border-radius: 13px 0 0 13px; }

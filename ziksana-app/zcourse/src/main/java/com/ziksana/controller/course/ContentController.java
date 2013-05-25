@@ -23,6 +23,7 @@ import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.SecurityTokenUtil;
+import com.ziksana.service.course.ContentService;
 import com.ziksana.service.course.LearningContentService;
 import com.ziksana.service.course.CourseContentService;
 import com.ziksana.service.security.MediaService;
@@ -39,7 +40,10 @@ public class ContentController {
 			.getLogger(ContentController.class);
 
 	@Autowired
-	LearningContentService contentService;
+	LearningContentService learningContentService;
+
+	@Autowired
+	ContentService contentService;
 
 	@Autowired
 	MediaService mediaService;
@@ -143,7 +147,5 @@ public class ContentController {
 		LOGGER.debug("Exiting Class " + getClass() + " getContent(): ");
 		return content;
 	}
-
-	
 
 }

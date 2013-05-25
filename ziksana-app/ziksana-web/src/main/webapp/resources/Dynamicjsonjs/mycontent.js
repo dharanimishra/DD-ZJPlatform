@@ -65,7 +65,7 @@ function getDiv(learningContentObject) {
 			+ learningContentObject.contentName + '</p><p class="createcontentimg">'
 			+ '<img src="../../resources/images/genetics.jpg" />'
 			+ '</p>'+'<div class="description">'
-			+ '<a href="#linkurl" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.png"style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img src="../../resources/images/content/view-content.png" style="height: 35px;" /></a>'
+			+ '<a href="/ziksana-web/zcourse/slides/'+ learningContentObject.id + '" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.png"style="height: 35px;" /></a> <a href="/ziksana-web/zcourse/slides/'+ learningContentObject.id + '" class="pull-right"><img src="../../resources/images/content/view-content.png" style="height: 35px;" /></a>'
 			+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
 	
 
