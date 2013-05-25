@@ -15,7 +15,8 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/panzoom/interface.js"></script>
 
-<link rel="stylesheet" type="text/css" media="screen" href="${staticFileServer}resources/css/panzoom_style.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="${staticFileServer}resources/css/panzoom_style.css" />
 
 <script type="text/javascript">
 	function initPanZoom() {
@@ -108,11 +109,25 @@
 		<!--bottom dock -->
 		<div class="dock" id="dock2">
 			<div class="dock-container2">
-				<c:forEach var="i" begin="0" end="${content.numberOfThumbnails-1}"
-					step="1" varStatus="status">
-					<a class="dock-item2" href="#"><span>${i}</span><img
-						src="${ms.url}${content.thumbnailPicturePath}" /></a>
-				</c:forEach>
+				<!--   <a class="dock-item2" href="#"><span>1</span><img src="sample2.png" /></a> 
+  <a class="dock-item2" href="#"><span>2</span><img src="sample2.png" /></a> 
+  <a class="dock-item2" href="#"><span>3</span><img src="sample2.png" /></a>  -->
+
+
+				<c:choose>
+					<c:when test="${content.contentTypeString=='Image'}">
+						<a class="dock-item2" href="#"><span></span><img
+							src="${ms.url}${content.contentUrl}" /></a>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="i" begin="0" end="${content.numberOfThumbnails-1}"
+							step="1" varStatus="status">
+							<a class="dock-item2" href="#"><span>${i}</span><img
+								src="${ms.url}${content.thumbnailPicturePath}img<c:out value="${i}" />.jpg" /></a>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+
 
 			</div>
 		</div>
@@ -152,7 +167,3 @@
 
 </body>
 </html>
-
-
-
-

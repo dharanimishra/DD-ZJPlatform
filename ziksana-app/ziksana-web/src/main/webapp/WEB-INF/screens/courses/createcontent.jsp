@@ -147,17 +147,20 @@ table tr td {
 																.log(data_object);
 
 														if (data_object.Uploaded == 'true') {
-
 															content_path = data_object.ContentPath;
 															content_name = data_object.ContentName;
 															content_type_id = data_object.ContentType;
 															content_type_name = data_object.ContentTypeName;
+															thumbnail_path = data_object.ThumbnailPicturePath;
+															no_of_thumbnails = data_object.NumberOfThumbnails;
 
 															prepare_for_preview(
 																	content_path,
 																	content_name,
 																	content_type_id,
-																	content_type_name);
+																	content_type_name,
+																	thumbnail_path,
+																	no_of_thumbnails);
 
 														} else { //there is an error in the upload process
 
@@ -176,7 +179,8 @@ table tr td {
 
 							function prepare_for_preview(content_path,
 									content_name, content_type_id,
-									content_type_name) {
+									content_type_name, thumbnail_path,
+									no_of_thumbnails) {
 
 								thumbnail_image_src = '${ms.url}'
 										+ content_path;
@@ -188,12 +192,13 @@ table tr td {
 								div_html += '<div><img src="'+thumbnail_image_src+'" alt=""></div>';
 								div_html += '<div><span class="title">'
 										+ content_name
-										+ '</span><input type="hidden" name="contentPath[]" value="'+content_path+'" /> <input type="hidden" name="contentName[]" value="'+content_name+'"><input type="hidden" name="contentType[]" value="'+content_type_id+'"><input type="hidden" name="contentTypeName[]" value="'+content_type_name+'"></div>';
+										+ '</span><input type="hidden" name="contentPath[]" value="'+content_path+'" /> <input type="hidden" name="contentName[]" value="'+content_name+'"><input type="hidden" name="contentType[]" value="'+content_type_id+'"><input type="hidden" name="contentTypeName[]" value="'+content_type_name+'"><input type="hidden" name="thumbnailPath[]" value="'+thumbnail_path+'"><input type="hidden" name="noOfThumbnails[]" value="'+no_of_thumbnails+'"></div>';
 								div_html += '<div><a class="remove_this" onclick="$(this).parents(\'.preview_uploaded_content\').remove();">X</a></div>';
 								div_html += '</div>';
 
 								$('.previewarea .messagecontainer').remove();
-								$('.previewarea form#multiple_content_upload').append(div_html);
+								$('.previewarea form#multiple_content_upload')
+										.append(div_html);
 
 							}
 						</script>
@@ -212,9 +217,7 @@ table tr td {
 						<!--End of ClearFix -->
 					</div>
 					<form id="multiple_content_upload" method="post"
-						action="/ziksana-web/zcourse/1/createcontents">
-
-					</form>
+						action="/ziksana-web/zcourse/1/createcontents"></form>
 					<!--End of Messagecontainer -->
 				</div>
 				<!--end of preview area-->
@@ -296,7 +299,3 @@ a.remove_this:hover {
 	text-decoration: none;
 }
 </style>
-
-
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/custom/createcontent/filedrag.js"></script> --%>

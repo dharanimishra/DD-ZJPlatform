@@ -138,7 +138,9 @@ public class MyContentController {
 			@RequestParam(value = "contentPath[]", required = true) String[] contentPath,
 			@RequestParam(value = "contentName[]", required = true) String[] contentName,
 			@RequestParam(value = "contentType[]", required = true) String[] contentType,
-			@RequestParam(value = "contentTypeName[]", required = true) String[] contentTypeName) {
+			@RequestParam(value = "contentTypeName[]", required = true) String[] contentTypeName,
+			@RequestParam(value = "thumbnailPath[]", required = true) String[] thumbnailPath,
+			@RequestParam(value = "noOfThumbnails[]", required = true) String[] noOfThumbnails) {
 
 		ModelAndView modelView = new ModelAndView("mastereditcontent");
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
@@ -150,7 +152,7 @@ public class MyContentController {
 			LOGGER.info(" -------------------contentPath :" + contentPath[i]
 					+ "contentPath :" + contentPath[i] + "contentType :"
 					+ contentType[i] + "contentTypeName :" + contentTypeName[i]
-					+ "---------------"
+					+ "---------------thumbnailPath :" + "noOfThumbnails : -"
 					+ ContentType.valueOf(contentTypeName[i]).getID());
 
 		}
@@ -167,12 +169,19 @@ public class MyContentController {
 				learningContent.setContentPath(contentPath[i]);
 				learningContent.setStatusId(1);
 				learningContent.setActive(true);
-//				learningContent.setContentTypeId(ContentType.valueOf(
-//						contentTypeName[i]).getID());
-				
+				// learningContent.setContentTypeId(ContentType.valueOf(
+				// contentTypeName[i]).getID());
 				learningContent.setContentTypeId(959);
-				learningContent.setThumbnailPicturePath(contentPath[i]);
-			//	learningContent.setStatusId(ContentStatus.ACTIVE.getID());
+				learningContent.setContentTypeId(ContentType.valueOf(
+						contentTypeName[i]).getID());
+				try {
+					learningContent.setThumbnailPicturePath(thumbnailPath[i]);
+					learningContent.setNumberOfThumbnails(Integer
+							.parseInt(noOfThumbnails[i]));
+				} catch (Exception e) {
+
+				}
+				learningContent.setStatusId(1);
 				learningContent.setRightsOwningMember(accountableMember);
 				LearningContent learningCont = myContentService
 						.saveOrUpdate(learningContent);
