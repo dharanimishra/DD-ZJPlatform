@@ -144,11 +144,18 @@ public class MyContentController {
 
 		ModelAndView modelView = new ModelAndView("mastereditcontent");
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
+		LOGGER.info(" -------------ContentType.AUDIO.getName() :"
+				+ ContentType.AUDIO.getName());
 
+		LOGGER.info(" -------------contentTypeName :"
+				+ contentTypeName[0]
+				+ "content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName()"
+				+ ContentType.VIDEO.getName());
 		try {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
+
 			for (int i = 0; i < contentPath.length; i++) {
 				LearningContent learningContent = new LearningContent();
 				learningContent.setAuthoringMember(accountableMember);
@@ -156,8 +163,14 @@ public class MyContentController {
 				learningContent.setContentPath(contentPath[i]);
 				learningContent.setStatusId(1);
 				learningContent.setActive(true);
-				learningContent.setContentTypeId(ContentType.valueOf(
-						contentTypeName[i]).getID());
+				learningContent.setContentType(ContentType
+						.valueOf(contentTypeName[i]));
+				try {
+					learningContent.setContentTypeId(ContentType.valueOf(
+							contentTypeName[i]).getID());
+				} catch (Exception e) {
+					learningContent.setContentTypeId(612);
+				}
 				try {
 					learningContent.setThumbnailPicturePath(thumbnailPath[i]);
 					learningContent.setNumberOfThumbnails(Integer
