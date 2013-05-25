@@ -144,24 +144,11 @@ public class MyContentController {
 
 		ModelAndView modelView = new ModelAndView("mastereditcontent");
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
-		LOGGER.info(" -------------------contentPath :" + contentPath
-				+ "contentPath :" + contentPath + "contentType :" + contentType
-				+ "contentTypeName :" + contentTypeName + "---------------");
-
-		for (int i = 0; i < contentPath.length; i++) {
-			LOGGER.info(" -------------------contentPath :" + contentPath[i]
-					+ "contentPath :" + contentPath[i] + "contentType :"
-					+ contentType[i] + "contentTypeName :" + contentTypeName[i]
-					+ "---------------thumbnailPath :" + "noOfThumbnails : -"
-					+ ContentType.valueOf(contentTypeName[i]).getID());
-
-		}
 
 		try {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
-
 			for (int i = 0; i < contentPath.length; i++) {
 				LearningContent learningContent = new LearningContent();
 				learningContent.setAuthoringMember(accountableMember);
@@ -169,9 +156,6 @@ public class MyContentController {
 				learningContent.setContentPath(contentPath[i]);
 				learningContent.setStatusId(1);
 				learningContent.setActive(true);
-				// learningContent.setContentTypeId(ContentType.valueOf(
-				// contentTypeName[i]).getID());
-				learningContent.setContentTypeId(959);
 				learningContent.setContentTypeId(ContentType.valueOf(
 						contentTypeName[i]).getID());
 				try {
