@@ -183,8 +183,10 @@ public class MyContentController {
 				LearningContent learningCont = myContentService
 						.saveOrUpdate(learningContent);
 				learningContentlist.add(learningCont);
+				modelView.addObject("contentId", learningCont.getId());
 			}
 			modelView.addObject("learningContentlist", learningContentlist);
+
 		} catch (CourseException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		} catch (NumberFormatException e) {

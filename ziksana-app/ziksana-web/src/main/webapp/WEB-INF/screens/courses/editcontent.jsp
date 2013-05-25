@@ -117,7 +117,7 @@ table tr td {
 						<div class="rowfields pull-left">
 							<ul>
 								<li style="padding-right: 30px;">Edit Name<br> <input
-									type="text" id="EditName"/></li>
+									type="text" id="EditName"  value="'+content_path+'"/></li>
 								<li><a href="#linkurl" class="editdetailsweblink">Edit
 										Details</a></li>
 							</ul>
