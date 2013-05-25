@@ -281,6 +281,8 @@
 					setImagePath="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
 				</div>
 			</div>
+			<a class="splitclick"  href="" ></a>
+			 
 			<!-- #leftPane -->
 			<div id="rightPane">
 				<div class="definecontainer" id="definetab">
@@ -294,17 +296,7 @@
 					<input type="hidden" id="learingContents" value='{"learningContents": [{"id": "1", "contentType": "2", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test1","ContentDescription": "this is a test", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "2", "contentType": "1", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test2", "ContentDescription": "test2", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "3", "contentType": "3", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test3", "ContentDescription": "test3", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"}]}' />
 					<input type="hidden" id="learingContents" value='${learningContentAsJSONString}'/>
 					-->
-					<style>
-#splitter {
-	width: 100%;
-	height: auto;
-}
-
-#jqxTree {
-	height: auto;
-	width: auto;
-}
-</style>
+					 
 
 					<div id="gggg" style="font-size: 10px; margin-bottom: 10px;">
 						 
@@ -414,4 +406,37 @@ $(document).ready(function() {
     $ ('div.associatesearchitem:even').addClass('even');
     $ ('div.associatesearchitem:odd').addClass('odd');
 });
+$(function(){
+	   $('.splitclick').on('click',function(){
+			p = $(this).prev('div');
+			//console.log(p);
+			if(p.hasClass('hidetree')){
+				p.removeClass('hidetree');
+			} else {
+				p.addClass('hidetree');
+			}
+			
+			return false;
+			
+		});
+
+	});
   </script>
+  <style>
+  
+  .splitclick{
+  
+   background: url("/ziksana-web/resources/images/panevc.gif") no-repeat scroll -5px 20% #CBE1FB;
+    border: 1px solid #9CBDFF;
+    float: left;
+    font-size: 0;
+    height: 70%;
+    line-height: 0;
+    margin-left: 15px;
+    margin-top: 17px;
+    position: absolute;
+    width: 4px;
+}
+.hidetree{display:none;width:24%}
+  .odd{background-color:transparent}
+  </style>
