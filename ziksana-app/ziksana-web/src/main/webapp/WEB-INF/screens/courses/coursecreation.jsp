@@ -1,4 +1,4 @@
-
+<script type='text/javascript' src="${staticFileServer}resources/js/custom/plugins.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/z_message.js"></script>
 <script type="text/javascript"
@@ -32,36 +32,18 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/tree/tree.js"></script>
  --%>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/tooltip.js"></script>
-
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/menujq.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/jqxexpander.js"></script>
+ 
+ 
+ 
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/css/common/tree/menu.css" />
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/js/lib/splitter/splitter.css" />
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/splitter/splitter.js"></script>
+ 
 
 <script type='text/javascript'
 	src='${staticFileServer}resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#splitterContainer").splitter({
-			minAsize : 100,
-			maxAsize : 800,
-			splitVertical : true,
-			A : $('#leftPane'),
-			B : $('#rightPane')
-			//slave : $("#rightSplitterContainer")
-			//closeableto : 0
-		});
-
-	});
-</script>
+ 
 <style>
 .ds {
 	margin-left: 40px;
@@ -270,6 +252,7 @@
 				</div>
 			</div>
 			<!-- #leftPane -->
+			<a class="splitclick"  href="" ></a>
 			<div id="rightPane">
 				<div class="Addmodulecontainer" id="Addmodulecontainer"
 					style="padding: 10px;">
@@ -311,14 +294,14 @@
 							</div> -->
 							<div class="clearfix"></div>
 							<div class="moduleselection">
-								<div style="width: 30%;margin-right:2px" class="f-l">
+								<div style="width: 32%;margin-right:2px" class="f-l">
 									<label class="labelclass nexaf f-l"> Module Area : </label> <select
 										name="s_example" id="Cmoduleareaddl" class="select"
 										onclick="getArea();">
 										<option value="0">choose a option...</option>
 									</select>
 								</div>
-								<div style="width: 30%;" class="f-l">
+								<div style="width: 32%;" class="f-l">
 									<label class="labelclass nexaf f-l"> Module Subject: </label> <select
 										name="s_example" class="select" id="Cmodulesubjectddl">
 										<option value="0">choose a option...</option>
@@ -394,6 +377,25 @@
 <div class="Clearfix"></div>
 <div class="Clearfix"></div>
 </div>
+<script>
+$(function(){
+	   $('.splitclick').on('click',function(){
+			p = $(this).prev('div');
+			//console.log(p);
+			if(p.hasClass('hidetree')){
+				p.removeClass('hidetree');
+			} else {
+				p.addClass('hidetree');
+			}
+			
+			return false;
+			
+		});
+
+	});
+ 
+
+</script>
 <style>
 .select2-container {
     
@@ -401,4 +403,20 @@
     
     width: 200px;
 }
+ 
+  
+  .splitclick{
+  
+   background: url("/ziksana-web/resources/images/panevc.gif") no-repeat scroll -5px 20% #CBE1FB;
+    border: 1px solid #9CBDFF;
+    float: left;
+    font-size: 0;
+    height: 70%;
+    line-height: 0;
+    margin-left: 15px;
+    margin-top: 17px;
+    position: absolute;
+    width: 4px;
+}
+.hidetree{display:none;width:24%}
 </style>

@@ -1,5 +1,5 @@
 
-
+<script type='text/javascript' src="${staticFileServer}resources/js/custom/plugins.js"></script>
 
 <script type='text/javascript'
 	src='${staticFileServer}resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
@@ -385,8 +385,8 @@
 
 			</div>
 			<!--end of Subject Selection-->
-			<div class="control-group" style="width: 69%">
-				<label class="control-label nexaf" for="Specify Tags">Specify
+			<div class="control-group" style="width: 65%">
+				<label class="control-label nexaf" for="Specify Tags" style="width:229px">Specify
 					Tags :</label>
 				<div class="controls">
 					<input type="text" class="tags" id="Ctagfield_course"
@@ -403,7 +403,7 @@
 			</div>
 			<div class="control-group f-l">
 				<label class="control-label nexaf" for="Course Credits"
-					style="margin-left: 20px; width: 280px;">Specify Course
+					style="margin-left: 88px; width: 220px;">Specify Course
 					Extra Credits :</label>
 				<div class="controls" style="width: 212px;">
 					<input type="text" name="spi" id="spinner2" value="1"
@@ -422,7 +422,7 @@
 
 
 			<select name="SelectArea" id="Cdurationtype" class="defaultvalue f-l"
-				style="margin-left: 20px;">
+				style="margin-left: 20px;width:110px">
 				<option value="1">Weeks</option>
 				<option value="2">Months</option>
 				<option value="3">Days</option>
