@@ -48,7 +48,7 @@
 	</sql>
 
 	<insert id="saveContent" parameterType="com.ziksana.domain.course.LearningContent"
-		useGeneratedKeys="true" keyProperty="learningContentId" keyColumn="ID">
+		useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
 		insert into corlearningcontent
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,
@@ -140,7 +140,7 @@
 				#{subjClassificationId,jdbcType=INTEGER},
 			</if>
 		</trim>
-		<selectKey keyProperty="learningContentId" resultType="int"
+		<selectKey keyProperty="id" resultType="int"
 			order="AFTER">
 			SELECT LAST_INSERT_ID();
 		</selectKey>
@@ -177,7 +177,7 @@
 				#{subjClassificationId,jdbcType=INTEGER},
 			</if>
 		</set>
-		where learningcontentid = #{learningContentId.storageID,
+		where ID = #{learningContentId.storageID,
 		jdbcType=INTEGER}
 	</update>
 

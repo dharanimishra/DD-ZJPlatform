@@ -1,4 +1,6 @@
-
+<%@ page language="java" contentType="text/xml"%>
+<%@page import="java.util.*"%>
+<%@page import="com.ziksana.domain.course.LearningContent"%>
 <script type='text/javascript'
 	src="${staticFileServer}resources/js/lib/plupload/previewupload.js"></script>
 <script type="text/javascript"
@@ -83,6 +85,12 @@ table tr td {
 					<div class="uploadroweven" style="padding: 10px;">
 						<div class="uploadphoto pull-left" style="width: 350px">
 							<div style="width: 100%">
+
+								<%
+									List<LearningContent> list = (List<LearningContent>) request
+											.getAttribute("learningContentlist");
+									out.println("list :" + list.size());
+								%>
 								<div class="fileupload fileupload-new"
 									data-provides="fileupload">
 									<div class="fileupload-new thumbnail"
@@ -109,7 +117,7 @@ table tr td {
 						<div class="rowfields pull-left">
 							<ul>
 								<li style="padding-right: 30px;">Edit Name<br> <input
-									type="text" id="EditName" /></li>
+									type="text" id="EditName"/></li>
 								<li><a href="#linkurl" class="editdetailsweblink">Edit
 										Details</a></li>
 							</ul>
