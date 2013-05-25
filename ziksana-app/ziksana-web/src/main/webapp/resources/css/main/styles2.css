@@ -547,7 +547,7 @@ reviewtable table,td {
 	font-size: 14px;
 	margin-top: 24px;
 	margin-left: 10px;
-	width: 150px;
+	width: 165px;
 	background-color: #73ab3e;
 	padding: 6px;
 	text-align: center;
@@ -2241,10 +2241,10 @@ a.circle {
 	border-radius: 3px 3px 3px 3px;
 	color: white;
 	position: absolute;
-	right: 47px;
+	right: 32px;
 	top: 57px;
 	z-index: 2;
-	width: 150px;
+	width: 165px;
 }
 
 #user_menu_container:hover #user_menu {

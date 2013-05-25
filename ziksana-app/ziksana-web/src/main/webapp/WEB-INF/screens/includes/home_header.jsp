@@ -25,11 +25,11 @@
 <div id="user_menu_container">
 <div id="AccountSetting" class="f-l"><span><img class="Profilepic" src="/ziksana-web/resources/images/home/actlck.png"/></span> 
 
-<span class="Accounthead">Account Settings</span> <img id="user_menu_trigger" class="Dropdown" src="/ziksana-web/resources/images/home/dropdown.png"/> </div>    
+<span class="Accounthead"><fmt:message key="Account.Settings"></fmt:message></span> <img id="user_menu_trigger" class="Dropdown" src="/ziksana-web/resources/images/home/dropdown.png"/> </div>    
 <div id="user_menu">
 <!-- /ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/> -->
-	<a href="/ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/>">Manage Profile</a>
-	<a href="/ziksana-web/secure/logout">Sign Out</a>
+	<a href="/ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/>"><fmt:message key="Manage.profile"></fmt:message></a>
+	<a href="/ziksana-web/secure/logout"><fmt:message key="signout"></fmt:message></a>
 </div>   
 </div> 
    

@@ -266,7 +266,7 @@
 				<div class="icon">
 					<img src="/ziksana-web/resources/images/icons/information_icon.png"style="height: 25px;"/>
 				</div>
-				<h1>Edit Profile</h1>
+				<h1><fmt:message key="edit.profile"></fmt:message></h1>
 			</div>
 
 
@@ -402,21 +402,21 @@
 						
 						
 						<div  id="passEdit">
-					<label class="control-label nexaf" for="Change Password">Password :</label>
+					<label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
 					<label id="passwordUpdatedDate" class="control-label nexaf"  style="margin-left: 20px;width:300px;font-weight:normal"><c:out value="${passwordUpdated}"></c:out></label>	
-						 <a   id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild">Edit</a>
+						 <a   id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					      
-						  <div class="editcontroll" style="display:none;" id="Edit_pass" ><a style="float:right;cursor:pointer;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
+						  <div class="editcontroll border-user"  id="Edit_pass" ><a style="float:right;cursor:pointer;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
 						  <p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetResponse"></p>
      						<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetFailResponse"></p>
-						  <label class="control-label nexaf" for="Change Password">Change Password :</label>
-						 <div class="controls"> <label class="nexaf">Current :</label><input type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="Type Current Password" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
-						   <label class="nexaf">New :</label> <input type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="Type New Password" /><div class="clearfix"></div><div style="color: red;" id="errorNewPassword"></div>
-						    <label class="nexaf">Re-type new :</label><input type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="Re-Type New Password" /></div><div style="color: red;" id="errorRetypePassword"></div><div class="clearfix"></div>
+						  <label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
+						 <div class="controls"> <label class="nexaf"><fmt:message key="Current"></fmt:message> :</label><input type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="<fmt:message key="Enter.cur.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
+						   <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorNewPassword"></div>
+						    <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /></div><div style="color: red;" id="errorRetypePassword"></div><div class="clearfix"></div>
 						   <div style="margin-top:6px;">
 						   
-					  		<button class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" >Save</button>
+					  		<button class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  </div>
 						 </div>
@@ -424,20 +424,20 @@
 					      <div class="control-group"> 
 					      <div class="clearfix"></div>
 						 <div  id="lblaltEmail">
-						 <label class="control-label nexaf" for="Course Name">Alternate Email :</label>
+						 <label class="control-label nexaf" for="Course Name"><fmt:message key="profile.alternateemail"></fmt:message> :</label>
 						 <label class="control-label nexaf" id="alternateMailLabel" for="AlternativeEmail Name" style="margin-left:20px;font-weight:normal"><c:out value="${profileAnswerOne.alternateEmailId}"></c:out></label>
 						 
 						
-						 <a  onclick="editFeilds('EditAlt_mail')" class="editfeild">Edit</a>
+						 <a  onclick="editFeilds('EditAlt_mail')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
 						 
 					      </div>
-						  <div class="editcontroll" style="display:none;" id="EditAlt_mail" ><a style="float:right;cursor:pointer;" onclick="showlbl('lblaltEmail');" title="Close">[X]</a>
-						   <label class="control-label nexaf" for="Course Name">Alternate Email :</label>
+						  <div class="editcontroll border-user" id="EditAlt_mail" ><a style="float:right;cursor:pointer;" onclick="showlbl('lblaltEmail');" title="Close">[X]</a>
+						   <label class="control-label nexaf" for="Course Name"><fmt:message key="profile.alternateemail"></fmt:message> :</label>
 						   <input type="text" style="width:365px;margin-left:19px;" id="alttenateEmailValue"  name="alt_mail" placeholder="Alternate Email" />
 						   <p id="alternateEmailError" style="color:red;text-align:center"></p>
 						   <div style="margin-top:6px;">
 						  
-					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit('${profileAnswerOne.alternateEmailId}')" type="button" style="margin-right:20px;" >Save</button>
+					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit('${profileAnswerOne.alternateEmailId}')" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  </div>
 					      </div>
@@ -446,19 +446,19 @@
 					      
 					      <div class="control-group"> 
 						  <div  id="lblsq1">
-					     <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 1 :</label>
+					     <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion1"></fmt:message> :</label>
 						  
 						 <label id="ques_text_diplayone" class="control-label nexaf" style="width:65%;font-weight:normal"><c:out value="${profileAnswerOne.securityQuestionText}"></c:out></label>
-					      <a  onclick="changesq1('Editsq1')" class="editfeild" >Edit</a>
+					      <a  onclick="changesq1('Editsq1')" class="editfeild" ><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					     
 						  <div class="clearfix"></div>
 						  
-					      <div  id ="Editsq1" class="editcontroll"  style="display:none;"><a style="float:right;cursor:pointer;" onclick="showlblsq1('lblsq1')" title="Close">[X]</a>
-						  <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 1 :</label>
+					      <div  id ="Editsq1" class="editcontroll border-user"  "><a style="float:right;cursor:pointer;" onclick="showlblsq1('lblsq1')" title="Close">[X]</a>
+						  <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion1"></fmt:message> :</label>
 						   
 					    <select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="editQuestionOne" >
-							<option>Select the Security Question</option>
+							<option><fmt:message key="profile.select.text"></fmt:message></option>
 							<c:forEach var="profile" items="${profileList}">
 										<c:if test="${profileAnswerOne.securityQuestionText ==profile.securityQuestionText}">
 											<option selected="selected" value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
@@ -469,14 +469,14 @@
 							</c:forEach>
 						</select>
 					
-					<label class="control-label nexaf" for="Course Name">Security Answer 1 :</label>
+					<label class="control-label nexaf" for="Course Name"><fmt:message key="profile.securityanswer1"></fmt:message></label>
 					     <div class="controls">
 					      <input type="password" class="profileinput" id="editSecAnswerOne" value="${profileAnswerOne.memberAnswer}"  name="sec_answer1" placeholder="Security Answer 1" style="width:365px;" />         
 					      </div>
 					      <p id="secQuesOneError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
 						   
- 					  <button class="btn btn-primary f-r" onclick="editUpdateSecuQuestion()" type="button" style="margin-right:20px;" >Save</button>
+ 					  <button class="btn btn-primary f-r" onclick="editUpdateSecuQuestion()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  
 					      </div>
@@ -487,18 +487,18 @@
 					     <div class="control-group"> 
 					     
 						 <div id="lblsq2">
-						 <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 2 :</label>
+						 <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion2"></fmt:message> :</label>
 						 <label id="ques_text_diplaytwo" class="control-label nexaf" style="width:65%;font-weight:normal"><c:out value="${profileAnswerTwo.securityQuestionText}"></c:out></label>
-					      <a  onclick="changesq2('Editsq2')" class="editfeild" >Edit</a>
+					      <a  onclick="changesq2('Editsq2')" class="editfeild" ><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					      
 						  <div class="clearfix"></div>
 						  
-					      <div  id ="Editsq2" class="editcontroll"  style="display:none;"><a style="float:right;cursor:pointer;" onclick="showlblsq2('lblsq2');" title="Close">[X]</a>
-						  <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 2 :</label>
+					      <div  id ="Editsq2" class="editcontroll border-user"  ><a style="float:right;cursor:pointer;" onclick="showlblsq2('lblsq2');" title="Close">[X]</a>
+						  <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion2"></fmt:message> :</label>
 					    
 					<select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="securityQuestionTwo">
-							<option >Select the Security Question</option>
+							<option ><fmt:message key="profile.select.text"></fmt:message></option>
 							<c:forEach var="profile" items="${profileList}">
 									
 										<c:if test="${profileAnswerTwo.securityQuestionText ==profile.securityQuestionText}">
@@ -512,20 +512,20 @@
 									
 							</c:forEach>
 						</select>
-					<label class="control-label nexaf" for="Course Name">Security Answer 2 :</label>
+					<label class="control-label nexaf" for="Course Name"><fmt:message key="profile.securityanswer2"></fmt:message>:</label>
 					     <div class="controls">
 					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="${profileAnswerTwo.memberAnswer}" name="sec_answer2" placeholder="Security Answer 1" style="width:365px;"/>         
 					      </div>
 					      <p id="secQuesTwoError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
 						   
-					  <button class="btn btn-primary f-r" onclick="editSaveSecQuesTwo()" type="button" style="margin-right:20px;" >Save</button>
+					  <button class="btn btn-primary f-r" onclick="editSaveSecQuesTwo()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  
 					      </div>
 					     </div>
 					      
-					<a href="/ziksana-web/secure/1/homepage"><button class="btn btn-primary f-r" type="button" style="margin-right:-15px; " >Cancel</button></a>
+					<a href="/ziksana-web/secure/1/homepage"><button class="btn btn-primary f-r" type="button" style="margin-right:-15px; " ><fmt:message key="profile.cancel"></fmt:message></button></a>
 					 
 					<div class="clearfix"> </div>   
 					
@@ -1086,5 +1086,10 @@ float:right;
     }
  .uploadify-queue {
      width: 250px;
+}
+.border-user{
+display: none;
+border:1px solid #eee;
+border-radius: 6px 6px 6px 6px;"
 }
 </style>
