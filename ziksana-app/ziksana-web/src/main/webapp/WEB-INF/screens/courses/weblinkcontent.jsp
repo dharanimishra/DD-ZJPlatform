@@ -1,4 +1,6 @@
 <script type='text/javascript'
+	src="${staticFileServer}resources/js/custom/plugins.js"></script>
+<script type='text/javascript'
 	src="${staticFileServer}resources/js/lib/plupload/previewupload.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/custom/createcontent/addweblink.js"></script>
