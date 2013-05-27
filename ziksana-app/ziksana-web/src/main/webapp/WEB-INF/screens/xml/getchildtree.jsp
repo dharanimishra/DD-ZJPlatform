@@ -37,7 +37,6 @@
 						+ chapterIcon + "\" id=\"COMPONENT_" + node.getId()
 						+ "\" nodeid=\"COMPONENT_" + node.getId()
 						+ "\"  parentId=\"COURSE_" + node.getCourseId() + "\">");
-				System.out.println("the values are " + node.toString());				
 				if (node.getContent() != null) {
 					for (NestContentNode content : node.getContent()) {
 						System.out.println(" content ----------------------------------jkjlkjkj   " + content.getContentType());

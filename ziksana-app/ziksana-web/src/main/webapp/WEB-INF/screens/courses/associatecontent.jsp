@@ -345,9 +345,9 @@
 									<!--end of paginationbutton-->
 
 									<p style="text-align: right; clear: both;margin-top:10px">
-										<a target="" style="" href="associatecontent.html"
-											class="btn btn-info">Associate Content</a> <a target=""
-											style="" href="associatecontent.html" class="btn btn-danger">Cancel</a>
+										<a target="" style="" onClick="associateContents()"
+											class="btn btn-info" href="#">Associate Content</a> <a target=""
+											style="" href="associateContents()" class="btn btn-danger">Cancel</a>
 									</p>
 								</div>
 								<!--end of associatewrapper-->

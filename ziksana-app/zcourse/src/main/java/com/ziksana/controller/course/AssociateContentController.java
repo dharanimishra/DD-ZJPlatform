@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.ContentType;
+import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.exception.ZiksanaException;
@@ -36,13 +37,10 @@ public class AssociateContentController {
 
 	@Autowired
 	AssociateContentService associateContentService;
-	
+
 	@Autowired
 	MediaService mediaService;
-	
 
-	
-	
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
 	@RequestMapping(value = "/1/repositorycontents/{courseId}", method = { RequestMethod.GET })
@@ -51,31 +49,36 @@ public class AssociateContentController {
 		LOGGER.debug("Entering showAssociateCourse(): ");
 		ModelAndView modelView = new ModelAndView("associatecontent");
 		try {
-			
+
 			if (courseId > 0) {
-				modelView.addObject("courseId",courseId);
+				modelView.addObject("courseId", courseId);
 				associateContentService.getCourse(courseId);
-				Boolean isModuleExists = associateContentService.isModuleExist(courseId); 
-				LOGGER.debug("Module Size= >"+isModuleExists);
-				if(isModuleExists){
+				Boolean isModuleExists = associateContentService
+						.isModuleExist(courseId);
+				LOGGER.debug("Module Size= >" + isModuleExists);
+				if (isModuleExists) {
 					LearningContent content = new LearningContent();
 					content.setContentType(ContentType.getContentType(612));
 					Integer memberId = Integer.valueOf(SecurityTokenUtil
-								.getToken().getMemberPersonaId().getStorageID());
-						List<LearningContent> learningContents = associateContentService.getLearningContents(memberId);
-						for (LearningContent learningContent : learningContents) {
-							System.out.println("learningContent " + learningContent.getLearningContentId());
-						}
-						List<JSONLearningContent> jsonLearningContentlList = getJSONLearningContentObjects(learningContents); 
-						String jsonString = JSONUtil.objectToJSONString(jsonLearningContentlList);
-						
-						modelView.addObject("learningContentAsJSONString", jsonString);
-						
+							.getToken().getMemberPersonaId().getStorageID());
+					List<LearningContent> learningContents = associateContentService
+							.getLearningContents(memberId);
+					for (LearningContent learningContent : learningContents) {
+						System.out.println("learningContent "
+								+ learningContent.getLearningContentId());
+					}
+					List<JSONLearningContent> jsonLearningContentlList = getJSONLearningContentObjects(learningContents);
+					String jsonString = JSONUtil
+							.objectToJSONString(jsonLearningContentlList);
 
-						mediaServerURL = mediaService.getMediaContents();
-						modelView.addObject("ms", mediaServerURL);
-				}else{
-					return new ModelAndView("redirect:/zcourse/createcourse/"+courseId+"");
+					modelView.addObject("learningContentAsJSONString",
+							jsonString);
+
+					mediaServerURL = mediaService.getMediaContents();
+					modelView.addObject("ms", mediaServerURL);
+				} else {
+					return new ModelAndView("redirect:/zcourse/createcourse/"
+							+ courseId + "");
 				}
 			}
 		} catch (ZiksanaException exception) {
@@ -84,29 +87,26 @@ public class AssociateContentController {
 		return modelView;
 	}
 
-	@RequestMapping(value = "/1/associatecontent/", method = {
-			RequestMethod.POST })
+	@RequestMapping(value = "/1/associatecontent/", method = { RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView associateContents(
 			@RequestParam(value = "courseId", required = true) String courseId,
 			@RequestParam(value = "learningComponentId", required = false) String learningComponentId,
-			@RequestParam(value = "learningContentsToBeAssociated", required = true) String learningContentsToBeAssociated
-			) {
-		ModelAndView modelView =  new ModelAndView("associatecontent");
-		Integer authMemberRoleId = Integer.valueOf(SecurityTokenUtil
-				.getToken().getMemberPersonaId().getStorageID());
-		associateContentService.associateContents(authMemberRoleId, Integer.parseInt(courseId), Integer.parseInt(learningComponentId), learningContentsToBeAssociated);
+			@RequestParam(value = "learningContentsToBeAssociated", required = true) String learningContentsToBeAssociated) {
+		ModelAndView modelView = new ModelAndView("associatecontent");
+		Integer authMemberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
+				.getMemberPersonaId().getStorageID());
+		associateContentService.associateContents(authMemberRoleId,
+				Integer.parseInt(courseId),
+				Integer.parseInt(learningComponentId),
+				learningContentsToBeAssociated);
 		try {
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage() + exception);
 		}
 		return modelView;
 	}
-	
-	
-	
-	
-	
+
 	@RequestMapping(value = "/modalplayer/{contentId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
@@ -115,17 +115,17 @@ public class AssociateContentController {
 		ModelAndView mv = new ModelAndView("courses/modalplayer");
 		try {
 			mediaServerURL = mediaService.getMediaContents();
-			LearningContent learningContent = associateContentService.getLearningContent(Integer.valueOf(contentId));
+			LearningContent learningContent = associateContentService
+					.getLearningContent(Integer.valueOf(contentId));
 			mv.addObject("content", learningContent);
 			mv.addObject("ms", mediaServerURL);
 		} catch (ZiksanaException exception) {
-			LOGGER.error(exception.getMessage(),exception);
+			LOGGER.error(exception.getMessage(), exception);
 		}
-		//test
+		// test
 		return mv;
 	}
-	
-	
+
 	@RequestMapping(value = "/ev_modalplayer/{contentId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
@@ -134,46 +134,53 @@ public class AssociateContentController {
 		ModelAndView mv = new ModelAndView("courses/ev_modalplayer");
 
 		try {
-			LearningContent learningContent = associateContentService.getLearningContent(Integer.valueOf(contentId));
-			
+			LearningContent learningContent = associateContentService
+					.getLearningContent(Integer.valueOf(contentId));
+
 			mv.addObject("content", learningContent);
 			mediaServerURL = mediaService.getMediaContents();
 			mv.addObject("ms", mediaServerURL);
 		} catch (ZiksanaException exception) {
-			LOGGER.error(exception.getMessage(),exception);
+			LOGGER.error(exception.getMessage(), exception);
 		}
 		return mv;
 	}
 
-	
 	@RequestMapping(value = "/1/unassociatecontent", method = RequestMethod.POST)
 	public @ResponseBody
-	String unAssociateContent(
+	CourseJsonResponse unAssociateContent(
 			@RequestParam(value = "contentId", required = true) Integer contentId,
 			@RequestParam(value = "courseId", required = true) Integer courseId,
-			@RequestParam(value = "componentId", required = true) Integer componentId)
-			{
+			@RequestParam(value = "componentId", required = true) Integer componentId) {
+		CourseJsonResponse jsonResponse = new CourseJsonResponse();
 		try {
-			associateContentService.unAssociateContent(componentId, contentId);
-			LOGGER.debug("Un-Associated course "+ courseId + " component " + componentId + " content for " + contentId);
+			//associateContentService.unAssociateContent(componentId, contentId);
+			LOGGER.debug("Un-Associated course " + courseId + " component "
+					+ componentId + " content for " + contentId);
+			jsonResponse.setId(courseId.toString());
+			jsonResponse.setResponse("success");
 		} catch (ZiksanaException exception) {
-			LOGGER.error(exception.getMessage(),exception);
+			LOGGER.error(exception.getMessage(), exception);
 		}
-		return "redirect:associatecontent";
+		return jsonResponse;
 
 	}
 
 	/**
-	 * This method converts collection of {@link LearningContent} objects into {@link JSONLearningContent} objects
+	 * This method converts collection of {@link LearningContent} objects into
+	 * {@link JSONLearningContent} objects
+	 * 
 	 * @param learningContentList
 	 * @return
 	 */
-	private List<JSONLearningContent> getJSONLearningContentObjects(List<LearningContent> learningContentList){
+	private List<JSONLearningContent> getJSONLearningContentObjects(
+			List<LearningContent> learningContentList) {
 		List<JSONLearningContent> jsonLearningContentList = new ArrayList<JSONLearningContent>();
 		for (LearningContent learningContent : learningContentList) {
-			jsonLearningContentList.add(new JSONLearningContent(learningContent));
+			jsonLearningContentList
+					.add(new JSONLearningContent(learningContent));
 		}
 		return jsonLearningContentList;
-		
+
 	}
 }

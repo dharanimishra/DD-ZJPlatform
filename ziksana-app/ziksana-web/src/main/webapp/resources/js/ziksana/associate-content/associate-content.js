@@ -78,7 +78,7 @@
 			'<div class="associatesearchitem">'+
 	
 				'<div class="associateleft f-l" style="width:100%;">'+
-					'<input id="learningContentToBeAssociated" type="checkbox" value="' + learningContentObject.learningContentId +'" style="border:1px solid;"/>'+
+					'<input name="learningContentToBeAssociated" type="checkbox" value="' + learningContentObject.id +'" style="border:1px solid;"/>'+
 					'<img src="../images/programs/tsunami.jpg" alt="" border="4px solid #999;" style="vertical-align:middle;" class="associatesearchimg  all-box-shadow"/>'+
 					'</div> <!--end of associtemleft-->'+
 	
@@ -115,4 +115,26 @@
 		'</div> <!--end of associatelr-->' +
 		'<div class="ClearFix"> </div>';
 		return learningContentDiv;
+	}
+	
+	function associateContents(){
+		
+		//var array = document.getElementsByName('learningContentToBeAssociated[]');
+		var selectedContents = $("input:checkbox[name=learningContentToBeAssociated]:checked");
+		for(i=0;i < selectedContents.length;i++){
+			alert(selectedContents[i].value);
+		}
+		
+		alert("length is " + selectedContents.length);
+
+/*		for ($i=0; $i<count($_POST['learningContentToBeAssociated']); $i++){
+		$assistivetech_req = addslashes($_POST['assistivetech'][$i]);
+		//do this
+		//do that
+		}//end loop 		
+		var abc = $('#learningContentToBeAssociated').checked;
+		alert(" array " + abc);
+		var searchIDs = $("#learningContentToBeAssociated input:checkbox:checked");
+		alert("searchIDs "  + searchIDs.length);
+*/	
 	}

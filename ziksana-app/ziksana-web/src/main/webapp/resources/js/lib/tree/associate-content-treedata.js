@@ -205,7 +205,7 @@ function onButtonClick(menuitemId, type) {
 							'<span style="color:red;">' + data.message
 									+ '</span>');
 				}
-				alert("data.message " + data.message);
+				//alert("data.message " + data.message);
 			});
 			tree.deleteItem(tree.getSelectedItemId(), true);
 
