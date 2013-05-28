@@ -78,7 +78,8 @@ public class AssociateContentServiceImpl implements AssociateContentService {
 			learningComponentContent.setActive(true);
 			//learningComponentContent.setCompContentType(ComponentContentType.PREVIEW_CONTENT);
 			//learningComponentContent.setCompContentTypeId(ComponentContentType.PREVIEW_CONTENT.getID());
-			learningComponentContent.setContentDescription(learningContent.getContentDescription());
+			//TODO how we will insert the component content description. Inserting content description is wrong as the length of the column for content is 4800 and for learningcomponentcontent is 45.
+			//learningComponentContent.setContentDescription(learningContent.getContentDescription());
 			learningComponentContent.setCourseStatus(course.getCourseStatus());
 			//learningComponentContent.setCourseStatusId(course.getCourseStatus().getID());
 			

@@ -60,10 +60,6 @@ public class AssociateContentController {
 							.getToken().getMemberPersonaId().getStorageID());
 					List<LearningContent> learningContents = associateContentService
 							.getLearningContents(memberId);
-					for (LearningContent learningContent : learningContents) {
-						System.out.println("learningContent "
-								+ learningContent.getLearningContentId());
-					}
 					List<JSONLearningContent> jsonLearningContentlList = getJSONLearningContentObjects(learningContents);
 					String jsonString = JSONUtil
 							.objectToJSONString(jsonLearningContentlList);

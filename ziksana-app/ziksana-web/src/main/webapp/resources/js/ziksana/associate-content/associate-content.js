@@ -135,7 +135,7 @@
 		
 		$('#selectedLearningContentList').val(selectedContents); 
 		var compId = $("#selectedLearningComponentId").val();
-		
+		//alert("selectedContents " + selectedContents + " selected component id is " + compId);
 		console.log("selectedContents " + selectedContents + " selected component id is " + compId);
 		if(selectedContents == "" || !selectedContents){
 			alert("No content selected. Please select content to be associated.");
