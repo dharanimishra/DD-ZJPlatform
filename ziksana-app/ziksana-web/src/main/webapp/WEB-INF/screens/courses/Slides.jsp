@@ -115,7 +115,7 @@
 
 
 				<c:choose>
-					<c:when test="${content.contentTypeString=='Image'}">
+					<c:when test="${content.contentTypeString == 'IMAGE'}">
 						<a class="dock-item2" href="#"><span></span><img
 							src="${ms.url}${content.contentUrl}" /></a>
 					</c:when>

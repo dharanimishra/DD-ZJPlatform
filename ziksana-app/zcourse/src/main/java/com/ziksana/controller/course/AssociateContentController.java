@@ -112,7 +112,7 @@ public class AssociateContentController {
 	public @ResponseBody
 	ModelAndView showModalplayer(@PathVariable String contentId) {
 		LOGGER.debug("Entering showmodalplayer(): ");
-		ModelAndView mv = new ModelAndView("courses/modalplayer");
+		ModelAndView mv = new ModelAndView("screens/modalplayer");
 		try {
 			mediaServerURL = mediaService.getMediaContents();
 			LearningContent learningContent = associateContentService
@@ -131,7 +131,7 @@ public class AssociateContentController {
 	public @ResponseBody
 	ModelAndView showEVModalplayer(@PathVariable String contentId) {
 		LOGGER.debug("Entering showmodalplayer(): ");
-		ModelAndView mv = new ModelAndView("courses/ev_modalplayer");
+		ModelAndView mv = new ModelAndView("screens/ev_modalplayer");
 
 		try {
 			LearningContent learningContent = associateContentService
