@@ -53,11 +53,11 @@ public interface LearningComponentContentMapper {
 	void delete(@Param("learningComponentContentId") Integer learningComponentContentId, @Param("isDelete") Boolean isDelete);
 
 	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where " +
-	" learningComponentContentId = #{learningComponentContentId,jdbcType=INTEGER}"})
+	" id = #{learningComponentContentId,jdbcType=INTEGER}"})
 		@Results(value = {
 				@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
 		})
-	LearningComponentContent getLearningComponentContent(Integer learningComponentContentId);
+	LearningComponentContent getLearningComponentContent(Integer learningComponentContentId); 
 	
 	
 	@Select({"select ID  from corlearningcomponentcontent where " +
