@@ -171,3 +171,7 @@
 		});
 		//getAllLearningContents();
 	}
+	
+	function resetCheckBoxes(){
+		$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
+	}

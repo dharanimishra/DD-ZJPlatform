@@ -349,7 +349,7 @@
 									<p style="text-align: right; clear: both;margin-top:10px">
 										<a target="" style="" onClick="associateContents()"
 											class="btn btn-info" href="#">Associate Content</a> <a target=""
-											style="" href="associateContents()" class="btn btn-danger">Cancel</a>
+											style="" href="#" onClick="resetCheckBoxes()" class="btn btn-danger">Cancel</a>
 									</p>
 								</div>
 								<!--end of associatewrapper-->
