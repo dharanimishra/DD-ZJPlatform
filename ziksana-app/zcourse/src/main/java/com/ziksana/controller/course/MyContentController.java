@@ -163,11 +163,10 @@ public class MyContentController {
 				learningContent.setContentPath(contentPath[i]);
 				learningContent.setStatusId(1);
 				learningContent.setActive(true);
-				learningContent.setContentType(ContentType
-						.valueOf(contentTypeName[i]));
+				learningContent.setContentType(ContentType.getContentType(612));
 				try {
 					learningContent.setContentTypeId(ContentType.valueOf(
-							contentTypeName[i]).getID());
+							contentTypeName[i].toUpperCase()).getID());
 				} catch (Exception e) {
 					learningContent.setContentTypeId(612);
 				}
