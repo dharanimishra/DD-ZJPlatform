@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/xml"%>
-
+<%@page pageEncoding="UTF-8"%>
 <%@page import="java.util.*"%>
 <%@page import="com.ziksana.domain.course.NestTreeNode"%>
 

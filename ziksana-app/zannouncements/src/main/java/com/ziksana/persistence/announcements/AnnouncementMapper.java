@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.RowBounds;
 
 import com.ziksana.domain.announcements.Announcement;
 
@@ -19,7 +18,7 @@ public interface AnnouncementMapper {
 
 	public List<Announcement> getAllAnnouncements(int memberRoleId);
 
-	public List<Announcement> getAnnouncement(int memberRoleId);
+	public List<Announcement> getAnnouncement(@Param("memberRoleId")int memberRoleId,@Param("startIndex") Integer startIndex,@Param("itemsPerPage") int itemsPerPage);
 
 	public void updateAnnouncement(Announcement announcement);
 
@@ -38,14 +37,22 @@ public interface AnnouncementMapper {
 
 	public List<Announcement> getInstitutionAnnouncements(
 			@Param("memberRoleId") Integer memberRoleId,
-			@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+			@Param("startIndex") Integer startIndex, @Param("itemsPerPage") int itemsPerPage);
 
 	public List<Announcement> getInstitutionUnitAnnouncements(
 			@Param("memberRoleId") Integer memberRoleId,
-			@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+			@Param("startIndex") Integer startIndex,@Param("itemsPerPage") int itemsPerPage);
 
 	public List<Announcement> getCourseAnnouncements(
 			@Param("memberRoleId") Integer memberRoleId,
-			@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+			@Param("startIndex") Integer startIndex, @Param("itemsPerPage") int itemsPerPage);
+
+	public int getAllAnnoucementSize(Integer memberRoleId);
+
+	public int getUniversityAnnouncementsSize(Integer memberRoleId);
+
+	public int getDepartmentAnnouncementsSize(Integer memberRoleId);
+
+	public int getCourseAnnouncementsSize(Integer memberRoleId);
 
 }

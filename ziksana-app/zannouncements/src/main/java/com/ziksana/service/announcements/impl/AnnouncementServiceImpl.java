@@ -7,16 +7,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.stereotype.Service;
 
 import com.ziksana.constants.ZiksanaConstants;
 import com.ziksana.domain.announcements.Announcement;
-import com.ziksana.exception.DataBaseException;
 import com.ziksana.exception.announcements.AnnouncementsException;
 import com.ziksana.persistence.announcements.AnnouncementMapper;
 import com.ziksana.security.util.SecurityTokenUtil;
@@ -35,14 +32,14 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	@Autowired
 	AnnouncementMapper announcementMapper;
 
-	public List<Announcement> getAnnouncement() {
+	public List<Announcement> getAnnouncement(Integer startIndex, int itemsPerPage) {
 
 		List<Announcement> announcementList = new ArrayList<Announcement>();
 		Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
 		
 		
-		announcementList = announcementMapper.getAnnouncement(memberRoleId);
+		announcementList = announcementMapper.getAnnouncement(memberRoleId,startIndex,itemsPerPage);
 		return announcementList;
 
 	}
@@ -98,68 +95,41 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 				+ announcement.getAnnouncementId());
 	}
 
-	public List<Announcement> getInstitutionAnnouncements(String startDate,
-			String endDate) {
+	public List<Announcement> getInstitutionAnnouncements(Integer startIndex,
+			int itemsPerPage) {
 
 		List<Announcement> announcement = new ArrayList<Announcement>();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		try {
-			Date formatStartDate = dateFormat.parse(startDate);
-			Date formatDate = dateFormat.parse(endDate);
-			Date formatEndDate = combineDateTime(formatDate);
-
+		
 			Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 
 			announcement = announcementMapper.getInstitutionAnnouncements(
-					memberRoleId, formatStartDate, formatEndDate);
+					memberRoleId, startIndex, itemsPerPage);
 
-		} catch (ParseException pe) {
-			throw new AnnouncementsException(
-					ZiksanaConstants.ANNOUNCEMENT_PARSE_ERROR, pe);
-		}
+		
 		return announcement;
 	}
 
-	public List<Announcement> getInstitutionUnitAnnouncements(String startDate,
-			String endDate) {
+	public List<Announcement> getdepartmentAnnouncements(Integer startIndex,int itemsPerPage) {
 		List<Announcement> announcement = new ArrayList<Announcement>();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		try {
-			Date formatStartDate = (Date) dateFormat.parse(startDate);
-			Date formatDate = dateFormat.parse(endDate);
-			Date formatEndDate = combineDateTime(formatDate);
-
-			Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
+	
+				Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 
-			announcement = announcementMapper.getInstitutionUnitAnnouncements(
-					memberRoleId, formatStartDate, formatEndDate);
-		} catch (ParseException pe) {
-			throw new AnnouncementsException(
-					ZiksanaConstants.ANNOUNCEMENT_PARSE_ERROR, pe);
-		}
+			announcement = announcementMapper.getInstitutionUnitAnnouncements(memberRoleId, startIndex, itemsPerPage);
+		
 		return announcement;
 	}
 
-	public List<Announcement> getCourseAnnouncements(String startDate,
-			String endDate) {
+	public List<Announcement> getCourseAnnouncements(Integer startIndex,int itemsPerPage) {
 		List<Announcement> announcement = new ArrayList<Announcement>();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		try {
-			Date formatStartDate = (Date) dateFormat.parse(startDate);
-			Date formatDate = dateFormat.parse(endDate);
-			Date formatEndDate = combineDateTime(formatDate);
-
+		
 			Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 
 			announcement = announcementMapper.getCourseAnnouncements(
-					memberRoleId, formatStartDate, formatEndDate);
-		} catch (ParseException pe) {
-			throw new AnnouncementsException(
-					ZiksanaConstants.ANNOUNCEMENT_PARSE_ERROR, pe);
-		}
+					memberRoleId, startIndex, itemsPerPage);
+		
 		return announcement;
 	}
 
@@ -215,6 +185,26 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		calendar.set(Calendar.SECOND, 59);
 
 		return calendar.getTime();
+	}
+
+	public int getAllAnnouncementsSize() {
+		// TODO Auto-generated method stub
+		return announcementMapper.getAllAnnoucementSize(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
+	}
+
+	public int getUniversityAnnouncementsSize() {
+		// TODO Auto-generated method stub
+		return announcementMapper.getUniversityAnnouncementsSize(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
+	}
+
+	public int getDepartmentAnnouncementsSize() {
+		// TODO Auto-generated method stub
+		return announcementMapper.getDepartmentAnnouncementsSize(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
+	}
+
+	public int getCourseAnnouncementsSize() {
+		// TODO Auto-generated method stub
+		return announcementMapper.getCourseAnnouncementsSize(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
 	}
 
 }

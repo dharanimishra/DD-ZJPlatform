@@ -25,7 +25,7 @@ public interface TodoService {
 
 	public int getTodosSize();
 	
-	public List<Todo> getTodoPagination(int pageIndex);
+	public List<Todo> getTodoPagination(int pageIndex,int itemsPerPage);
 
 
 }

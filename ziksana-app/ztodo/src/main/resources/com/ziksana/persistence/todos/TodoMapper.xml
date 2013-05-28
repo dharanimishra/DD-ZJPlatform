@@ -77,7 +77,7 @@
 		  where v.CategoryName='Notification Type' and
 		  l.LookupValueId=491 and
 		 
-		  n.ForMemberRoleId=#{memberRoleId}  order by n.ActivationDate DESC  limit #{pageIndex}, 5
+		  n.ForMemberRoleId=#{memberRoleId}  order by n.ActivationDate DESC  limit #{pageIndex}, #{itemsPerPage}
 	</select>
 	
 	

@@ -32,6 +32,8 @@ public interface TodoMapper {
 
 	public int getTodoSize(Integer memberRoleId);
 
-	public List<Todo> getTodoPagination(@Param("pageIndex")int pageIndex,@Param("memberRoleId") Integer memberRoleId);
+	public List<Todo> getTodoPagination(@Param("pageIndex")int pageIndex,@Param("itemsPerPage")int itemsPerPage, @Param("memberRoleId") Integer memberRoleId);
+
+	
 
 }

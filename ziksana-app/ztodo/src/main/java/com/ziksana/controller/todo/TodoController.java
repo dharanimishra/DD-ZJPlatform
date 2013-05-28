@@ -7,6 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,9 @@ import com.ziksana.service.todo.TodoService;
 @RequestMapping("/ztodo")
 public class TodoController {
 	private static final Logger logger = LoggerFactory.getLogger(TodoController.class);
+	
+	@Value("#{pagination['todoitemsperpage']}")
+	private String itemsPerPage;
 	
 	@Autowired
 	private TodoService todoService;
@@ -68,7 +72,7 @@ public class TodoController {
 		
 		ModelAndView modelView = new ModelAndView("xml/todolist");
 		try{		
-			modelView.addObject("todoItems", todoService.getTodoPagination(Integer.parseInt(pageIndex)));
+			modelView.addObject("todoItems", todoService.getTodoPagination(Integer.parseInt(pageIndex),Integer.parseInt(itemsPerPage)));
 
 		}catch (ZiksanaException zexception) {
 			modelView.addObject("errorResponse", zexception.getMessage());

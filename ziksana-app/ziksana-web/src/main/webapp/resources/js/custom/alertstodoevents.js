@@ -31,7 +31,7 @@ $(".tagtask").click(function(e) {
 	 $(".contentareaalrt").slideUp(200); 
     $(".contentareaevent").slideUp(200);
 	$(".contentareamanagetodo").slideUp(500);
-	get_and_populate_todo('/ziksana-web/ztodo/showtodobypagination/0');
+	get_and_populate_todo(0);
 	$(".contentareatodo").slideDown(500);
 	
 });
@@ -42,13 +42,13 @@ $(".managetodo").click(function(e) {
 	 $(".contentareaalrt").slideUp(200); 
     $(".contentareaevent").slideUp(200);
 	$(".contentareatodo").slideUp(200);
-	get_and_populate_todo_value('/ziksana-web/ztodo/showtodobypagination/0');
+	get_and_populate_todo_value(0);
 	$(".contentareamanagetodo").slideDown(500);
 	});
 
 	//Announcement Page
 	$(".announcement_box").click(function(e){
-		
+		$("#announcementPagination").show();
 		$(".contentareaalrt").hide();
 		$(".contentareatodo").hide();
 		$(".contentareamanagetodo").hide(); 
@@ -58,49 +58,268 @@ $(".managetodo").click(function(e) {
 		 $(".panelhead").hide();
 		$(".annnouncementpanel").show(); 
 		$(".announcementwrapper").show();
-		get_and_populate_announcements('/ziksana-web/zannouncements/1/getannouncements');
+		get_and_populate_announcements(0);
 		
+	});
+	$(".Allbtn").click(function(e){
+		get_and_populate_announcements(0);
+	});
+	$(".Universitybtn").click(function(e){
+		get_and_populate_universityannouncements(0);
+	});
+	$(".Departmentbtn").click(function(e){
+		get_and_populate_departmentannouncements(0);
+	});
+	$(".Coursebtn").click(function(e){
+		get_and_populate_courseannouncements(0);
 	});
 
 });
+//Close Announcements
+function close_announcements(){
+	$(".annnouncementpanel").hide(); 
+	$(".announcementwrapper").hide();
+	$("#announcementPagination").hide();
+	 $(".panelhead").show();
+	 $(".contentareaalrt").slideUp(200); 
+	 $(".contentareatodo").slideUp(200);
+	 $(".contentareamanagetodo").slideUp(500);
+    $(".contentareaevent").slideDown(500); 
+}
 //Announcement Ajax Call
 function get_and_populate_announcements(val){
-	$.ajax({
+		$.ajax({
 	  	type: 'GET',
-		url: val,
+		url: '/ziksana-web/zannouncements/1/getannouncements/'+val,
 		dataType: 'xml',
 		success: function( data ) {
 			var announcement_all = '';
+			var totalSize = 0;
 			$(data).find("announcementsList").each(function(){
 				if($(this).find("announcementSize").text()==0){
+					console.log( $(this).find("announcementSize").text());
 					announcement_all+="No New Announcements";
 				}
+				totalSize = $(this).find("announcementSize").text();
+					paginationString ="";
+					for(var i=0;i<totalSize/3;i++){
+						
+						paginationString+= "<span onclick='get_and_populate_announcements(calculatePage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
+						
+					}
+				
+					
 				$(data).find("announcements").each(function(index){
 
-					announcement_all+="<div class='announcementhead'>";
+					announcement_all+="<div id='announcement' class='announcementhead'>";
 					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
-					announcement_all+="</div><div class='announcementbody'>"+ $(this).find("description").text()+"";
-					announcement_all+="<div id='collapseTwo' class='accordion-body collapse'>";
-					announcement_all+="<div class='accordion-inner'>The colleges also sponsor specialized academic programs that are open to all students. Whether students commute to campus or live in residence, their college is their community hub. It is where intramural sports teams compete, budding journalists publish their college papers and thespians perform. </div></div>";
-					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo'>Read More</a><div class='Clearfix'> </div></div>";
+					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
+					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo' style='color:#fff'>Read More</a></div>";
+					announcement_all+="<div class='Clearfix'> </div>";
 					
 				});
+				
 				$('#announcement_box_all').html(announcement_all);
+				paginationString+= "<a  style='float:left;cursor:pointer;color:red;' onclick='close_announcements()' title='Close'>Close</a>";
+				$('#announcementPagination').html(paginationString);
+				if(val == 0){					
+					$('#pag_active0').addClass('pactive');
+				}else if(val == 3){					
+					$('#pag_active1').addClass('pactive');
+				}else if(val == 6){
+					$('#pag_active2').addClass('pactive');
+				}
+				
+				
 			});
 			
 		}
 	});
 }
+function calculatePage(val){
+	if(val == 0){		
+		return 0;
+	}else if(val == 1){
+		
+		return 3;	
+	}else if(val == 2){
+	
+		return 6;
+	}
+	
+}
+function get_and_populate_universityannouncements(val){
+	$.ajax({
+	  	type: 'GET',
+		url: '/ziksana-web/zannouncements/1/getuniversityannouncements/'+val,
+		dataType: 'xml',
+		success: function( data ) {
+			var announcement_all = '';
+			var totalSize = 0;
+			$(data).find("announcementsList").each(function(){
+				if($(this).find("announcementSize").text()==0){
+					console.log( $(this).find("announcementSize").text());
+					announcement_all+="No New Announcements";
+				}
+				totalSize = $(this).find("announcementSize").text();
+					paginationString ="";
+					for(var i=0;i<totalSize/3;i++){
+						
+						paginationString+= "<span onclick='get_and_populate_announcements(calculatePage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
+						
+					}
+				$(data).find("announcements").each(function(index){
 
+					announcement_all+="<div id='announcement' class='announcementhead'>";
+					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
+					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
+					announcement_all+="<div class='Clearfix'> </div>";
+					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
+					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo' style='color:#fff'>Read More</a></div>";
+					announcement_all+="<div class='Clearfix'> </div>";
+					
+				});
+				
+				$('#announcement_box_all').html(announcement_all);
+				paginationString+= "<a  style='float:left;cursor:pointer;color:red;' onclick='close_announcements()' title='Close'>Close</a>";
+				$('#announcementPagination').html(paginationString);
+				if(val == 0){					
+					$('#pag_active0').addClass('pactive');
+				}else if(val == 3){					
+					$('#pag_active1').addClass('pactive');
+				}else if(val == 6){
+					$('#pag_active2').addClass('pactive');
+				}
+				
+			});
+			
+		}
+	});
+	
+}
+function get_and_populate_departmentannouncements(val){
+	$.ajax({
+	  	type: 'GET',
+		url: '/ziksana-web/zannouncements/1/getdeptannouncements/'+val,
+		dataType: 'xml',
+		success: function( data ) {
+			var announcement_all = '';
+			var totalSize = 0;
+			$(data).find("announcementsList").each(function(){
+				if($(this).find("announcementSize").text()==0){
+					console.log( $(this).find("announcementSize").text());
+					announcement_all+="No New Announcements";
+				}
+				totalSize = $(this).find("announcementSize").text();
+					paginationString ="";
+					for(var i=0;i<totalSize/3;i++){
+						
+						paginationString+= "<span onclick='get_and_populate_announcements(calculatePage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
+						
+					}
+				$(data).find("announcements").each(function(index){
+
+					announcement_all+="<div id='announcement' class='announcementhead'>";
+					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
+					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
+					announcement_all+="<div class='Clearfix'> </div>";
+					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
+					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo' style='color:#fff'>Read More</a></div>";
+					announcement_all+="<div class='Clearfix'> </div>";
+					
+				});
+				
+				$('#announcement_box_all').html(announcement_all);
+				paginationString+= "<a  style='float:left;cursor:pointer;color:red;' onclick='close_announcements()' title='Close'>Close</a>";
+				$('#announcementPagination').html(paginationString);
+				if(val == 0){					
+					$('#pag_active0').addClass('pactive');
+				}else if(val == 3){					
+					$('#pag_active1').addClass('pactive');
+				}else if(val == 6){
+					$('#pag_active2').addClass('pactive');
+				}
+				
+			});
+			
+		}
+	});
+}
+function get_and_populate_courseannouncements(val){
+	$.ajax({
+	  	type: 'GET',
+		url: '/ziksana-web/zannouncements/1/getcourseannouncements/'+val,
+		dataType: 'xml',
+		success: function( data ) {
+			var announcement_all = '';
+			var totalSize = 0;
+			$(data).find("announcementsList").each(function(){
+				if($(this).find("announcementSize").text()==0){
+					console.log( $(this).find("announcementSize").text());
+					announcement_all+="No New Announcements";
+				}
+				totalSize = $(this).find("announcementSize").text();
+					paginationString ="";
+					
+					for(var i=0;i<totalSize/3;i++){
+						
+						paginationString+= "<span onclick='get_and_populate_announcements(calculatePage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
+						
+					}
+					
+				$(data).find("announcements").each(function(index){
+
+					announcement_all+="<div id='announcement' class='announcementhead'>";
+					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
+					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
+					announcement_all+="<div class='Clearfix'> </div>";
+					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
+					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo' style='color:#fff'>Read More</a></div>";
+					announcement_all+="<div class='Clearfix'> </div>";
+					
+				});
+				
+				$('#announcement_box_all').html(announcement_all);
+				paginationString+= "<a  style='float:left;cursor:pointer;color:red;' onclick='close_announcements()' title='Close'>Close</a>";
+				$('#announcementPagination').html(paginationString);
+				if(val == 0){					
+					$('#pag_active0').addClass('pactive');
+				}else if(val == 3){					
+					$('#pag_active1').addClass('pactive');
+				}else if(val == 6){
+					$('#pag_active2').addClass('pactive');
+				}
+			});
+			
+		}
+	});
+}
+$(function(){
+   $('.accordion-toggle').click(function(e){
+		p = $(this).prev('p');
+		console.log(p);
+		if(p.hasClass('show_more')){
+			p.removeClass('show_more');
+		} else {
+			p.addClass('show_more');
+		}
+		
+		return false;
+		
+	});
+
+});
+
+ 
 //TODO Ajax Call
 var no_of_available_todo;
 function get_and_populate_todo(val){
 	
 	$.ajax({
 	  	type: 'GET',
-		url: val,
+		url: '/ziksana-web/ztodo/showtodobypagination/'+val,
 		dataType: 'xml',
 		success: function( data ) {
 				
@@ -112,17 +331,12 @@ function get_and_populate_todo(val){
 				$.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
 					no_of_available_todo = size;
 					paginationString ="";
-					if(size <= 5){
-						paginationString+= "<span onclick='pageOne()' id='pag_active1' class='pagination_bar pactive'/>";
-
-					}else if(size <= 10){
-						paginationString+= "<span onclick='pageOne()' id='pag_active1' class='pagination_bar pactive'/><span onclick='pageTwo()' id='pag_active2' class='pagination_bar'></span>";						
-
-					}else if(size <= 15){
-						paginationString+= "<span onclick='pageOne()' id='pag_active1' class='pagination_bar pactive'/><span onclick='pageTwo()' id='pag_active2' class='pagination_bar'></span><span onclick='pageThree()' id='pag_active3' class='pagination_bar'></span>";
-
+					for(var i=0;i<size/5;i++){
+						
+						paginationString+= "<span onclick='get_and_populate_todo(calculateTodoPage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
+						
 					}
-					
+										
 					var ouputMoreTodo="";
 			
 					
@@ -139,7 +353,17 @@ function get_and_populate_todo(val){
 						 ouputMoreTodo+="<div id='pagingControls' style='float:right;margin-right:50px;'>"+paginationString+"</div>";
 					
 						$('#todos_placeholder').html(ouputMoreTodo);
-						
+						if(val == 0){		
+							$('#pag_active0').addClass('pactive');}else if(val == 5){$('#pag_active1').addClass('pactive');	
+						}else if(val == 10){
+							$('#pag_active2').addClass('pactive');
+						}else if(val == 15){
+							$('#pag_active3').addClass('pactive');
+						}else if(val == 20){
+							$('#pag_active4').addClass('pactive');
+						}else if(val == 25){
+							$('#pag_active5').addClass('pactive');
+						}
 						
 					}
 					
@@ -148,35 +372,27 @@ function get_and_populate_todo(val){
 	});
 						  
 } 
-function pageOne(){
+function calculateTodoPage(val){
+	if(val == 0){		
+		return 0;
+	}else if(val == 1){
+		
+		return 5;	
+	}else if(val == 2){
 	
-	$('#pag_active1').addClass('pactive');
-	$('#pag_active2').removeClass('pactive');
-	$('#pag_active3').removeClass('pactive');
-	get_and_populate_todo('/ziksana-web/ztodo/showtodobypagination/0');
-}
-function pageTwo(){
+		return 10;
+	}else if(val == 3){
 	
-	$('#pag_active1').removeClass('pactive');
-	$('#pag_active2').addClass('pactive');
-	$('#pag_active3').removeClass('pactive');
-	get_and_populate_todo('/ziksana-web/ztodo/showtodobypagination/5');
+		return 15;
+	}else if(val == 4){
+	
+		return 20;
+	}else if(val == 5){
+	
+		return 25;
+	}
 }
-function pageThree(){
-	$('#pag_active1').removeClass('pactive');
-	$('#pag_active2').removeClass('pactive');
-	$('#pag_active3').addClass('pactive');
-	get_and_populate_todo('/ziksana-web/ztodo/showtodobypagination/10');
-}
-function pageMoreOne(){
-	get_and_populate_todo_value('/ziksana-web/ztodo/showtodobypagination/0');
-}
-function pageMoreTwo(){
-	get_and_populate_todo_value('/ziksana-web/ztodo/showtodobypagination/5');
-}
-function pageMoreThree(){
-	get_and_populate_todo_value('/ziksana-web/ztodo/showtodobypagination/10');
-}
+
 
 function get_and_populate_selecttag(){
 	$.ajax({
@@ -224,7 +440,7 @@ function get_and_populate_todo_value(val){
 	get_and_populate_selecttag();
 	$.ajax({
 	  	type: 'GET',
-		url: val,
+		url: '/ziksana-web/ztodo/showtodobypagination/'+val,
 		dataType: 'xml',
 		success: function( data ) {
 				
@@ -236,27 +452,18 @@ function get_and_populate_todo_value(val){
 					no_of_available_todo = size;
 					
 					paginationMoreString ="";
-					if(size <= 5){
-						paginationMoreString+= "<span onclick='pageMoreOne()' class='pagination_bar'/>";
-
-					}else if(size <= 10){
-						paginationMoreString+= "<span onclick='pageMoreOne()' class='pagination_bar'/><span onclick='pageMoreTwo()' class='pagination_bar'></span>";						
-
-					}else if(size <= 15){
-						paginationMoreString+= "<span onclick='pageMoreOne()' class='pagination_bar'></span><span onclick='pageMoreTwo()' class='pagination_bar'></span><span onclick='pageMoreThree()' class='pagination_bar'></span>";
-
+					for(var i=0;i<size/5;i++){
+						
+						paginationMoreString+= "<span onclick='get_and_populate_todo_value(calculateTodoPage("+i+"))' id='pag_active_more"+i+"' class='pagination_bar'/>";
+						
 					}
+					
 					
 					var ouputEmptyTodo="";
 					var updateEditValue="";
 					
 					if(no_of_available_todo == 0){$('#todos_placeholder_more').html(ouputEmptyTodo);} else{
 					
-						
-						
-						
-						
-						
 						ouputEmptyTodo+="<table id='todo_all_tablerows' class='table table-hover table-striped' >";
 						ouputEmptyTodo+="<tbody>";
 						 $(data).find("todoitem").each(function(index){
@@ -281,6 +488,17 @@ function get_and_populate_todo_value(val){
 						 ouputEmptyTodo+="<div id='pagingControlsMore' style='float:right;margin-right:50px;'>"+paginationMoreString+"</div>";
 						$('#todos_placeholder_more').html(ouputEmptyTodo);
 						
+						if(val == 0){		
+							$('#pag_active_more0').addClass('pactive');}else if(val == 5){$('#pag_active_more1').addClass('pactive');	
+						}else if(val == 10){
+							$('#pag_active_more2').addClass('pactive');
+						}else if(val == 15){
+							$('#pag_active_more3').addClass('pactive');
+						}else if(val == 20){
+							$('#pag_active_more4').addClass('pactive');
+						}else if(val == 25){
+							$('#pag_active_more5').addClass('pactive');
+						}
 						select_options = "";
 						
 						select_option_array = [];
@@ -460,10 +678,10 @@ function saveRow_hideEdit(v)
 	
 	
 	 editupdate_todo_category = $('#update_todo_categories'+v+'').val();
-	 editupdate_todo_description = $('#todo_edit_description'+v+'').val();
+	 editupdate_todo_description =encodeURIComponent( $('#todo_edit_description'+v+'').val() );
 	 selectedRowId = v;
 	 console.log(editupdate_todo_category);
-	 console.log(editupdate_todo_description);
+	 console.log( editupdate_todo_description );
 	 console.log(selectedRowId);
 	 if(editupdate_todo_description ==''){return false;}
 	 
@@ -528,6 +746,9 @@ $(document).ready(function() {
 
 
 function hideTodoAdd(){
+
+	$('#add_new_category_form').hide();
+	$('#todo_categories').show();
 	$('#add_todo_fields_container').hide();
 }
 //######Edit and UPDATE

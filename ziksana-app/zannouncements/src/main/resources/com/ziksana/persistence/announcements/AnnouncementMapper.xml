@@ -5,8 +5,15 @@
 	<select id="getAnnouncement" resultMap="announcementResultMap"
 		parameterType="int">
 		SELECT * FROM corannouncement WHERE MemberRoleId =
-		#{memberRoleId} order by announcementDate DESC
+		#{memberRoleId} order by announcementDate DESC limit #{startIndex} , #{itemsPerPage}
 	</select>
+	
+	<select id="getAllAnnoucementSize" resultType="java.lang.Integer" parameterType="int">
+		SELECT count(*) FROM corannouncement WHERE MemberRoleId =#{memberRoleId}
+	</select>
+	
+	
+	<!-- end -->
 
 	<select id="getAnnouncementById" resultMap="announcementResultMap"
 		parameterType="map">
@@ -32,27 +39,38 @@
 
 	<select id="getInstitutionAnnouncements" resultMap="announcementResultMap"
 		parameterType="map">
-		SELECT * FROM corannouncement WHERE
-		InstitutionId is not null and
-		MemberRoleId = #{memberRoleId} AND
-		AnnouncementDate >= #{startDate} and #{endDate}
+		SELECT * FROM corannouncement WHERE InstitutionId is not null and MemberRoleId = #{memberRoleId} order by announcementDate DESC limit #{startIndex} , #{itemsPerPage}
 
 	</select>
+	
+	<select id="getUniversityAnnouncementsSize" resultType="java.lang.Integer" parameterType="int">
+	
+		SELECT count(*) FROM corannouncement WHERE InstitutionId is not null and MemberRoleId = #{memberRoleId}
+
+	</select>
+	
 
 	<select id="getInstitutionUnitAnnouncements" resultMap="announcementResultMap"
 		parameterType="map">
-		SELECT * FROM corannouncement WHERE InstitutionUnitId is not null and
-		MemberRoleId = #{memberRoleId} AND AnnouncementDate between
-		#{startDate} AND #{endDate}
+		SELECT * FROM corannouncement WHERE InstitutionUnitId is not null and MemberRoleId = #{memberRoleId} order by announcementDate DESC limit #{startIndex} , #{itemsPerPage}
+		
+	</select>
+	<select id="getDepartmentAnnouncementsSize" resultType="java.lang.Integer" parameterType="int">
+	
+		SELECT count(*) FROM corannouncement WHERE InstitutionUnitId is not null and MemberRoleId = #{memberRoleId}
+
 	</select>
 
 	<select id="getCourseAnnouncements" resultMap="announcementResultMap"
 		parameterType="map">
-		SELECT * FROM corannouncement WHERE courseid is not null and MemberRoleId =
-		#{memberRoleId} AND AnnouncementDate between #{startDate} AND
-		#{endDate}
+		SELECT * FROM corannouncement WHERE courseid is not null and MemberRoleId = #{memberRoleId} order by announcementDate DESC limit #{startIndex} , #{itemsPerPage}
+		
 	</select>
+<select id="getCourseAnnouncementsSize" resultType="java.lang.Integer" parameterType="int">
+	
+		SELECT count(*) FROM corannouncement WHERE courseid is not null and MemberRoleId = #{memberRoleId}
 
+	</select>
 
 	<resultMap id="announcementResultMap" type="com.ziksana.domain.announcements.Announcement">
 		<result property="announcementId" column="ID" />

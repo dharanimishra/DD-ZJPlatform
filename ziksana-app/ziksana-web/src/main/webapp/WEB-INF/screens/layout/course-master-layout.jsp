@@ -1,6 +1,7 @@
 
 
 <!DOCTYPE html>
+<%@page pageEncoding="UTF-8"%>
 <html>
 <head>
 <title><tiles:insertAttribute name="master_title" /></title>
