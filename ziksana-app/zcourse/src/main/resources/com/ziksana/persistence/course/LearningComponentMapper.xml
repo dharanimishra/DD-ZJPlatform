@@ -7,7 +7,7 @@
 		learningcomponenttypeid, subjclassificationid
 	</sql>
 	<insert id="saveLearningComponent" parameterType="com.ziksana.domain.course.LearningComponent"
-		useGeneratedKeys="true" keyProperty="learningComponentId" keyColumn="learningcomponentid">
+		useGeneratedKeys="true" keyProperty="learningComponentId" keyColumn="id">
 		insert into corlearningcomponent
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="name != null"> name, </if>

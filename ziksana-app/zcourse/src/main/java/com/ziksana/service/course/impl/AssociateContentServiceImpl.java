@@ -15,6 +15,7 @@ import com.ziksana.domain.course.LearningContent;
 import com.ziksana.service.course.AssociateContentService;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.LearningComponentContentService;
+import com.ziksana.service.course.LearningComponentService;
 import com.ziksana.service.course.LearningContentService;
 
 
@@ -30,6 +31,9 @@ public class AssociateContentServiceImpl implements AssociateContentService {
 	
 	@Autowired
 	LearningContentService learningContentService;
+	
+	@Autowired
+	LearningComponentService learningComponentService;
 	
 	
 	
@@ -65,18 +69,18 @@ public class AssociateContentServiceImpl implements AssociateContentService {
 		List<LearningComponentContent> learningComponentContentList = new ArrayList<LearningComponentContent>();
 		
 		Course course = getCourse(courseId);
-		LearningComponent learningComponent = null;//learningComponentService.getLearningComponent(learningComponentId);
+		LearningComponent learningComponent = learningComponentService.getLearningComponent(learningComponentId);
 		
 		for (String stringContentId : contentIdArray) {
 			
 			LearningContent learningContent = getLearningContent(Integer.parseInt(stringContentId));
 			LearningComponentContent learningComponentContent = new LearningComponentContent();
 			learningComponentContent.setActive(true);
-			learningComponentContent.setCompContentType(ComponentContentType.PREVIEW_CONTENT);
-			learningComponentContent.setCompContentTypeId(ComponentContentType.PREVIEW_CONTENT.getID());
+			//learningComponentContent.setCompContentType(ComponentContentType.PREVIEW_CONTENT);
+			//learningComponentContent.setCompContentTypeId(ComponentContentType.PREVIEW_CONTENT.getID());
 			learningComponentContent.setContentDescription(learningContent.getContentDescription());
 			learningComponentContent.setCourseStatus(course.getCourseStatus());
-			learningComponentContent.setCourseStatusId(course.getCourseStatus().getID());
+			//learningComponentContent.setCourseStatusId(course.getCourseStatus().getID());
 			
 			//componentContent.setCreatedBy(memberId);
 			learningComponentContent.setCreatedOn(new Date());

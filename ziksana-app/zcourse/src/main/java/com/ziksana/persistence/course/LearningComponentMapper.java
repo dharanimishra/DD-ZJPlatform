@@ -74,5 +74,14 @@ public interface LearningComponentMapper {
 	@Select({ "select ID from corcourselearningcomponent where LearningComponentId=#{learningComponentId,jdbcType=INTEGER}" })
 	Integer getComponentsByCourseComponentId(Integer learningComponentId);
 
-	LearningComponent getLearningComponent(Integer id);
+	@Select({ "select id, name, description, coursestatus,learningcomponenttypeid, memberroleid, prescribedlcduration, prescribedlcdurationunit"
+			+ " from corlearningcomponent where id =  #{learningComponentId,jdbcType=INTEGER} " })
+	@Results(value = {
+			@Result(property = "learningComponentId", column = "id"),
+			@Result(property = "authoredMember.memberRoleId", column = "memberroleid"),
+			@Result(property = "name", column = "name"),
+			@Result(property = "description", column = "description"),
+			@Result(property = "courseStatus", column = "coursestatus"),
+			@Result(property = "learningComponentType.learningComponentTypeId", column = "learningcomponenttypeid")})
+	LearningComponent getLearningComponent(Integer learningComponentId);
 }

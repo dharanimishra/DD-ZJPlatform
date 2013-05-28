@@ -82,6 +82,16 @@ public interface LearningContentMapper {
 			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails") })
 	List<LearningContent> getUserContent(Integer memberId);
 
+	@Select({ "select ID , ContentType, Active,ContentPath,ContentName,ContentDescription,ThumbnailPicturePath,NumberOfThumbnails from corlearningcontent where id=#{learningContentId,jdbcType=INTEGER} " })
+	@Results(value = {
+			@Result(property = "id", column = "ID"),
+			@Result(property = "contentTypeId", column = "ContentType"),
+			@Result(property = "activeFlag", column = "active"),
+			@Result(property = "contentUrl", column = "ContentPath"),
+			@Result(property = "contentName", column = "ContentName"),
+			@Result(property = "contentDescription", column = "ContentDescription"),
+			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath"),
+			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails") })
 	public LearningContent getLearningContent(Integer learningContentId);
 
 }

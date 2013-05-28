@@ -22,154 +22,24 @@ function onButtonClick(menuitemId, type) {
 					fixImage(d.valueOf());
 					tree.refreshItem(tree.getSelectedItemId());
 				});
-	} else if (menuaction == "Search_Add_Module") {
-		// alert("open the menu for Search_Add_Module module.");
-	} else if (menuaction == "Define_Qualifiers") {
-		// alert("open the menu for Define_Qualifiers module.");
-	} else if (menuaction == "Edit") {
-		// alert("open the menu for Edit module.");
-
-		$('#Viewmodulecontainer').hide();
-		$('#instruction').hide();
-		$('#searchassociatecontainer').hide();
-		$('#DegineCourse2').hide();
-		$('#Addmodulecontainer').show();
-
-		ComponentId = tree.getSelectedItemId();
-		nodeParentId = tree.getParentId(ComponentId);
-
-		// use ajax to get the added value
-
-		uri = '/ziksana-web/zcourse/getcoursemodule';
-
-		token = ''; // dummy token for demo. you have to send real token.
-		request_type = 'POST'; // can be GET or POST. In this case, a GET
-		// request
-
-		var Course_id = $('#courseid').val();
+	} else if (menuaction == "Search_Associate_Content") {
+		//alert("open the menu for Search_Associate_Content module.");
+		var courseId = $('#courseid').val();
+		componentId = tree.getSelectedItemId();
+		var selectedComponentId = document.getElementById('selectedLearningComponentId').value = componentId.split('_')[1];
+		
+		//TODO following code is commented because right now we are handling the display through hidden parameter but in future we will need to do it at real time
+		//alert("selectedComponentId " + selectedComponentId);
+/*	
+		uri = '/ziksana-web/zcourse/1/repositorycontents/' + courseId; 
+		request_type = 'GET'; // can be GET or POST. In this case, a GET
 
 		var parameters = {
-			"Course_id" : Course_id,
-			"Component_id" : ComponentId
-		};
-		var available_tags, selected_tags;
-		$
-				.post(
-						uri,
-						parameters,
-						function(data) {
-							console.log(data);
-							if (data.response == 'success') {
-								courseLearningComponentId = data.courseLearningComponentId;
-								learningComponentId = data.learningComponentId;
-								module_name = data.modulename;
-								module_desc = data.moduledesc;
-								subject_area = data.subjectarea;
-								subject = data.subject;
-								topic = data.topic;
-
-								$('#courseid').val(Course_id);
-
-								$('#courseLearningComponentId').val(
-										courseLearningComponentId);
-
-								$('#learningComponentId').val(
-										learningComponentId);
-
-								$('#Course_Module').val(module_name);
-
-								console.log('module_desc : ' + module_desc);
-
-								$('#Cmoduledescrte').val(module_desc);
-
-								// populate subject area
-
-								$.get('/ziksana-web/zcourse/getsubjectarea',
-										{}, function(data) {
-											options = data;
-											var option_string = '';
-
-											for (i in options) {
-												label = options[i].label;
-												value = options[i].value;
-												option = '<option value="'
-														+ value + '">' + label
-														+ '</option>';
-
-												option_string += option;
-											}
-											$('#Cmoduleareaddl').html(
-													option_string);
-
-											$('#Cmoduleareaddl').val(
-													subject_area);
-
-										});
-
-								token = '';
-								request_type = 'GET';
-								uri = '/ziksana-web/zcourse/getsubject';
-
-								$.get(uri, {
-									'Course_Area' : subject_area
-								},
-										function(data) {
-											options = data;
-											var option_string = '';
-
-											for (i in options) {
-												label = options[i].label;
-												value = options[i].value;
-												option = '<option value="'
-														+ value + '">' + label
-														+ '</option>';
-
-												option_string += option;
-											}
-
-											$('#Cmodulesubjectddl').html(
-													option_string);
-											$('#Cmodulesubjectddl')
-													.val(subject);
-
-										});
-
-								uri = '/ziksana-web/zcourse/gettopic';
-								token = '';
-								request_type = 'GET';
-								$.get(uri, {
-									'Course_Subject' : subject
-								}, function(data) {
-									options = data;
-									var option_string = '';
-									for (i in options) {
-										label = options[i].label;
-										value = options[i].value;
-
-										option = '<option value="' + value
-												+ '">' + label + '</option>';
-
-										option_string += option;
-									}
-
-									$('#Cmoduletopicddl').html(option_string);
-									$('#Cmoduletopicddl').val(topic);
-
-								});
-								// end populating topic
-
-							} else {
-								$('#tempdiv1').html(
-										'<span style="color:red;">'
-												+ data.message + '</span>');
-							}
-
-						});
-
-		// }//end of validation if block
-
-	} else if (menuaction == "RootView") {
-		alert("open the menu for Edit module.");
+				"courseId" : courseId,
+				"componentId" : nodeParentId.split('_')[1]
+			};
+*/
+		getAllLearningContents();
 	} else if (menuaction == "View") {
 		alert("open the menu for View module.");
 	} else if (menuaction == "Delete") {
@@ -193,6 +63,9 @@ function onButtonClick(menuitemId, type) {
 				"componentId" : nodeParentId.split('_')[1],
 				"contentId" : ComponentId.split('_')[1]
 			};
+			
+			console.log("delete content course id is  " + CourseId);
+			console.log("parameters.length " + parameters.length);
 			
 			//return;
 			
@@ -299,6 +172,7 @@ function createtree(course_id) {
 			//menu.hideItem('ModuleEdit');
 			menu.hideItem('View');
 			menu.hideItem('Delete');
+			menu.hideItem('Search_Associate_Content');
 		}
 
 		if (node_type == "COMPONENT") {
@@ -307,12 +181,13 @@ function createtree(course_id) {
 			//menu.hideItem('CourseEdit');
 			//menu.showItem('Delete');
 			//menu.showItem('Associate_Content');
-			// menu.showItem('View');
+			menu.showItem('Search_Associate_Content');
 		}
 
 		if (node_type == "CONTENT") {
 			menu.showItem('View');
 			menu.showItem('Delete');
+			menu.hideItem('Search_Associate_Content');
 		}
 		return true;
 	});

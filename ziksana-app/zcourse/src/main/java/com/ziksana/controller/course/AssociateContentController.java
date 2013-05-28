@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
-import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
@@ -57,8 +56,6 @@ public class AssociateContentController {
 						.isModuleExist(courseId);
 				LOGGER.debug("Module Size= >" + isModuleExists);
 				if (isModuleExists) {
-					LearningContent content = new LearningContent();
-					content.setContentType(ContentType.getContentType(612));
 					Integer memberId = Integer.valueOf(SecurityTokenUtil
 							.getToken().getMemberPersonaId().getStorageID());
 					List<LearningContent> learningContents = associateContentService
@@ -87,24 +84,23 @@ public class AssociateContentController {
 		return modelView;
 	}
 
-	@RequestMapping(value = "/1/associatecontent/", method = { RequestMethod.POST })
+	@RequestMapping(value = "/1/associatecontent", method = { RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView associateContents(
-			@RequestParam(value = "courseId", required = true) String courseId,
-			@RequestParam(value = "learningComponentId", required = false) String learningComponentId,
+	CourseJsonResponse associateContents(
+			@RequestParam(value = "courseId", required = true) Integer courseId,
+			@RequestParam(value = "learningComponentId", required = true) Integer learningComponentId,
 			@RequestParam(value = "learningContentsToBeAssociated", required = true) String learningContentsToBeAssociated) {
-		ModelAndView modelView = new ModelAndView("associatecontent");
+		CourseJsonResponse courseJsonResponse = new CourseJsonResponse();
 		Integer authMemberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
 				.getMemberPersonaId().getStorageID());
-		associateContentService.associateContents(authMemberRoleId,
-				Integer.parseInt(courseId),
-				Integer.parseInt(learningComponentId),
-				learningContentsToBeAssociated);
 		try {
-		} catch (ZiksanaException exception) {
+			associateContentService.associateContents(authMemberRoleId, courseId, learningComponentId, learningContentsToBeAssociated);
+			courseJsonResponse.setResponse("success");
+	} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage() + exception);
+			courseJsonResponse.setResponse("failed");
 		}
-		return modelView;
+		return courseJsonResponse;
 	}
 
 	@RequestMapping(value = "/modalplayer/{contentId}", method = {
@@ -112,7 +108,7 @@ public class AssociateContentController {
 	public @ResponseBody
 	ModelAndView showModalplayer(@PathVariable String contentId) {
 		LOGGER.debug("Entering showmodalplayer(): ");
-		ModelAndView mv = new ModelAndView("screens/modalplayer");
+		ModelAndView mv = new ModelAndView("courses/modalplayer");
 		try {
 			mediaServerURL = mediaService.getMediaContents();
 			LearningContent learningContent = associateContentService
@@ -131,7 +127,7 @@ public class AssociateContentController {
 	public @ResponseBody
 	ModelAndView showEVModalplayer(@PathVariable String contentId) {
 		LOGGER.debug("Entering showmodalplayer(): ");
-		ModelAndView mv = new ModelAndView("screens/ev_modalplayer");
+		ModelAndView mv = new ModelAndView("courses/ev_modalplayer");
 
 		try {
 			LearningContent learningContent = associateContentService
@@ -154,14 +150,16 @@ public class AssociateContentController {
 			@RequestParam(value = "componentId", required = true) Integer componentId) {
 		CourseJsonResponse jsonResponse = new CourseJsonResponse();
 		try {
-			//associateContentService.unAssociateContent(componentId, contentId);
+			associateContentService.unAssociateContent(componentId, contentId);
 			LOGGER.debug("Un-Associated course " + courseId + " component "
 					+ componentId + " content for " + contentId);
 			jsonResponse.setId(courseId.toString());
 			jsonResponse.setResponse("success");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
+			jsonResponse.setResponse("Failed");
 		}
+		//showAssociateContent(courseId);
 		return jsonResponse;
 
 	}

@@ -5,7 +5,8 @@
 		//alert("kjkjkjk "+ abc);
 		//putInSessionStorage("repositoryContents", '${learningContentAsJSONString}');
 		//addToSessionStorage(${learningContentAsJSONString});
-		getAllLearningContents();
+		//getAllLearningContents();
+		$('#ContentPanel2').hide();
 	});
 	
 	//var sessionKey = "repositoryContents";
@@ -31,6 +32,7 @@
 			} 
 			$('#page1').html(divs);
 		}
+		$('#ContentPanel2').show();
 	}
 
 	function getLearningContentsByType(contentType){
@@ -50,6 +52,7 @@
 			} 
 			$('#page1').html(divs);
 		}
+		$('#ContentPanel2').show();
 	}
 
 	function getAllLearningContents(){
@@ -66,6 +69,7 @@
 		}
 		//$('#page1').append(divs);
 		$('#page1').html(divs);
+		$('#ContentPanel2').show();
 	}
 
 	
@@ -120,21 +124,50 @@
 	function associateContents(){
 		
 		//var array = document.getElementsByName('learningContentToBeAssociated[]');
-		var selectedContents = $("input:checkbox[name=learningContentToBeAssociated]:checked");
-		for(i=0;i < selectedContents.length;i++){
-			alert(selectedContents[i].value);
+		var selectedContentCheckBoxes = $("input:checkbox[name=learningContentToBeAssociated]:checked");
+		var selectedContents = "";
+		for(i=0;i < selectedContentCheckBoxes.length;i++){
+			selectedContents = selectedContents + selectedContentCheckBoxes[i].value;
+			if(selectedContentCheckBoxes.length-1 != i){
+				selectedContents = selectedContents + ",";
+			}
 		}
 		
-		alert("length is " + selectedContents.length);
+		$('#selectedLearningContentList').val(selectedContents); 
+		var compId = $("#selectedLearningComponentId").val();
+		
+		console.log("selectedContents " + selectedContents + " selected component id is " + compId);
+		if(selectedContents == "" || !selectedContents){
+			alert("No content selected. Please select content to be associated.");
+			return;
+		}
+		var uri = '/ziksana-web/zcourse/1/associatecontent';
 
-/*		for ($i=0; $i<count($_POST['learningContentToBeAssociated']); $i++){
-		$assistivetech_req = addslashes($_POST['assistivetech'][$i]);
-		//do this
-		//do that
-		}//end loop 		
-		var abc = $('#learningContentToBeAssociated').checked;
-		alert(" array " + abc);
-		var searchIDs = $("#learningContentToBeAssociated input:checkbox:checked");
-		alert("searchIDs "  + searchIDs.length);
-*/	
+		var courseId = $('#courseid').val();
+		
+		var parameters = {
+			"courseId" : courseId,
+			"learningComponentId" : compId,
+			"learningContentsToBeAssociated" : selectedContents
+		};
+		
+		console.log("courseId " + courseId + " selectedContents " + selectedContents + " selected component id is " + compId);
+
+		console.log("parameters.length " + parameters.length);
+		console.log("uri " + uri );
+		
+		$.post(uri, parameters, function(data) {
+			console.log(data);
+			if (data.response == 'success') {
+				course_id = data.id;
+				window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
+						+ courseId;
+
+			} else {
+				$('#tempdiv1').html(
+						'<span style="color:red;">'
+								+ data.message + '</span>');
+			}
+		});
+		//getAllLearningContents();
 	}

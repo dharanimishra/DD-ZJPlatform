@@ -286,11 +286,13 @@
 			<!-- #leftPane -->
 			<div id="rightPane">
 				<div class="definecontainer" id="definetab">
-				<form onload="getAllLearningContents()">
+				<form onload="" id="associateContentForm" action="/ziksana-web/zcourse/1/associatecontent" method="POST">
 					<input type="hidden" id="courseid" value="${courseId}" /> 
 					<input type="hidden" id="courseLearningComponentId" value=""/> 
 					<input type="hidden" id="parentLearningComponentId" value="" /> 
 					<input type="hidden" id="learningComponentId" value="" />
+					<input type="hidden" id="selectedLearningComponentId" value="" />
+					<input type="hidden" id="selectedLearningContentList" value="" />
 					<input type="hidden" id="learingContents" value='${learningContentAsJSONString}'/>
 					<!--
 					<input type="hidden" id="learingContents" value='{"learningContents": [{"id": "1", "contentType": "2", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test1","ContentDescription": "this is a test", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "2", "contentType": "1", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test2", "ContentDescription": "test2", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "3", "contentType": "3", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test3", "ContentDescription": "test3", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"}]}' />
