@@ -1,4 +1,6 @@
-
+	itemsPerPage = 2;
+	defaultPageIndex = 1;
+	noOfPages = new Number(0);
 
 	$(document).ready(function() {
 		//var abc = '${learningContentAsJSONString}';
@@ -15,59 +17,141 @@
 		//putInSessionStorage(sessionKey, value);
 		//alert("Added to session storage "  + value);
 	} 
-	function getOtherLearningContents(contentType){
+	function getOtherLearningContents(contentType, pageIndex){
+		
+		if(!pageIndex || "" == pageIndex){
+			pageIndex = defaultPageIndex;
+		}
+
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
 		//var jsonString = getFromSessionStorage(sessionKey);
 		var contentArray = jQuery.parseJSON( jsonString );
 		
-		//alert(contentType);
-		var divs = '';
+		// first create a separate array based on content type
+		var contentArrayBasedOnContentType = new Array();
+		var j =0;
 		for(i=0;i<contentArray.length;i++){
-			//alert("contentType from arr" + contentArray[i].contentType + " --- " +  contentType);
 			if('VIDEO' != contentArray[i].contentType.toUpperCase() && 'LINK' != contentArray[i].contentType.toUpperCase()){
-				divs = divs + getDiv(contentArray[i]);
-				//$('#page1').append(div);
-				//alert(div);
-			} 
-			$('#page1').html(divs);
+				contentArrayBasedOnContentType[j] = contentArray[i];
+				j++;
+			}
 		}
+		console.log("contentArray.length " + contentArray.length);
+		console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length);
+		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
+		console.log("noOfPages " + noOfPages);
+		
+		getPageDiv(noOfPages, "OTHERS");
+		console.log("getPageDiv(noOfPages, OTHERS)" + getPageDiv(noOfPages, "OTHERS"));
+		var divs = '';
+		if(pageIndex == 1){
+			for(i=0;i<contentArrayBasedOnContentType.length;i++){
+				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+				if(i==(itemsPerPage-1)){
+					break;
+				}
+			}
+			//console.log("othersssssssssssssss " + divs);
+		}
+		else{
+			for(i=((pageIndex-1) * itemsPerPage);i<contentArrayBasedOnContentType.length;i++){
+				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+				if(i == ((itemsPerPage * pageIndex)-1)){
+					break;
+				}
+			}
+			
+		}		
+		$('#page1').html(divs);
 		$('#ContentPanel2').show();
 	}
 
-	function getLearningContentsByType(contentType){
+	function getLearningContentsByType(contentType, pageIndex){
+
+		if(!pageIndex || "" == pageIndex){
+			pageIndex = defaultPageIndex;
+		}
+		
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
 		//var jsonString = getFromSessionStorage(sessionKey);
 		var contentArray = jQuery.parseJSON( jsonString );
 		
-		//alert(contentType);
-		var divs = '';
+		// first create a separate array based on content type
+		var contentArrayBasedOnContentType = new Array();
+		var j =0;
 		for(i=0;i<contentArray.length;i++){
-			//alert("contentType from arr" + contentArray[i].contentType + " --- " +  contentType);
 			if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
-				divs = divs + getDiv(contentArray[i]);
-				//$('#page1').append(div);
-				//alert(div);
-			} 
-			$('#page1').html(divs);
+				contentArrayBasedOnContentType[j] = contentArray[i];
+				j++;
+			}
 		}
+		console.log("contentArray.length " + contentArray.length);
+		console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length);
+		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
+		console.log("noOfPages " + noOfPages);
+		
+		getPageDiv(noOfPages, contentType);
+
+		var divs = '';
+		if(pageIndex == 1){
+			for(i=0;i<contentArrayBasedOnContentType.length;i++){
+				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+				if(i==(itemsPerPage-1)){
+					break;
+				}
+			}
+		}
+		else{
+			for(i=((pageIndex-1) * itemsPerPage);i<contentArrayBasedOnContentType.length;i++){
+				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+				if(i == ((itemsPerPage * pageIndex)-1)){
+					break;
+				}
+			}
+			
+		}		
+		//console.log("divs --->> " + divs);
+		$('#page1').html(divs);
 		$('#ContentPanel2').show();
 	}
 
-	function getAllLearningContents(){
-		//alert("Hi");
+	function getAllLearningContents(pageIndex){
+		
+		if(!pageIndex || "" == pageIndex){
+			pageIndex = defaultPageIndex;
+		}
+		
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
-		//var jsonString = getFromSessionStorage(sessionKey);
-		//alert(jsonString);
 		var contentArray = jQuery.parseJSON( jsonString );
+		console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
+		noOfPages = Math.ceil(contentArray.length/itemsPerPage);
+		
+		getPageDiv(noOfPages, "ALL");
+		
+		
+		console.log("noOfPages " + noOfPages);
 		var divs = '';
-		for(i=0;i<contentArray.length;i++){
-			divs = divs + getDiv(contentArray[i]);
-			//alert(div);
+		
+		if(pageIndex == 1){
+			for(i=0;i<contentArray.length;i++){
+				divs = divs + getDiv(contentArray[i]);
+				if(i==(itemsPerPage-1)){
+					break;
+				}
+			}
 		}
-		//$('#page1').append(divs);
+		else{
+			for(i=((pageIndex-1) * itemsPerPage);i<contentArray.length;i++){
+				divs = divs + getDiv(contentArray[i]);
+				if(i == ((itemsPerPage * pageIndex)-1)){
+					break;
+				}
+			}
+			
+		}		
 		$('#page1').html(divs);
 		$('#ContentPanel2').show();
 	}
@@ -119,6 +203,25 @@
 		return learningContentDiv;
 	}
 	
+	
+	function getPageDiv(noOfPages, filterType){
+		var pageDiv = $('#pageNumbers');
+		var functionName = '';
+		if("ALL" == filterType){
+			functionName = 'getAllLearningContents(';
+		}
+		else if("VIDEO" == filterType || "LINK" == filterType){
+			functionName = 'getLearningContentsByType(\''+ filterType + '\',';
+		}
+		if("OTHERS" == filterType){
+			functionName = 'getOtherLearningContents(\''+ filterType + '\',';
+		}
+		
+		pageDiv.empty();
+		for(i=1; i<=noOfPages; i++){
+				pageDiv.append('<a onClick="' + functionName + i +')" href="#" id="btnpg1" class="swShowPageActive"></a>');
+		}
+	}
 	function associateContents(){
 		
 		//var array = document.getElementsByName('learningContentToBeAssociated[]');

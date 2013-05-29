@@ -336,12 +336,13 @@
 
 									</div>
 									<!--end of page 1-->
-									<div class="paginationbutton f-r" style="padding:10px">
-										<!-- <a class="cancel" href="associatecontent.html">Cancel</a> -->
+									<div id="pageNumbers" class="paginationbutton f-r" style="padding:10px">
+										<!-- 
+										<a class="cancel" href="associatecontent.html">Cancel</a> 
 										<a href="#linkurl" id="btnpg1" class="swShowPageActive"></a>
 										 <a href="#linkurl" id="btnpg2" class="swShowPage"></a> <a
 											href="#linkurl" id="btnpg3" class="swShowPage"></a>
-
+										-->
 									</div>
 									<!--end of paginationbutton-->
 
