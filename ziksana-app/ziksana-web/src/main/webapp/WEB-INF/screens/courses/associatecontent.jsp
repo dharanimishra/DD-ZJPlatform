@@ -243,11 +243,11 @@
 		<li style="margin-left: 40px;"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span> Describe Course</li>
+		<li ><span><img
+				src="/ziksana-web/resources/images/navarrowb.png"
+				style="margin-right: 10px; height: 22px;"> </span> Define Structure</li>
 		<li style="color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Structure</li>
-		<li><span><img
-				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span> Associate Content</li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
@@ -404,25 +404,13 @@ $(function(){
 	});
 
 });
+</script>
+<script>
 $(document).ready(function() {
-    $ ('div.associatesearchitem:even').addClass('even');
-    $ ('div.associatesearchitem:odd').addClass('odd');
+    $ ('div.searchitem:even').addClass('even');
+    $ ('div.searchitem:odd').addClass('odd');
 });
-$(function(){
-	   $('.splitclick').on('click',function(){
-			p = $(this).prev('div');
-			//console.log(p);
-			if(p.hasClass('hidetree')){
-				p.removeClass('hidetree');
-			} else {
-				p.addClass('hidetree');
-			}
-			
-			return false;
-			
-		});
-
-	});
+ 
   </script>
   <style>
   
