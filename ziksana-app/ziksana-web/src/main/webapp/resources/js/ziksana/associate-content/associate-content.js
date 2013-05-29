@@ -17,6 +17,20 @@
 		//putInSessionStorage(sessionKey, value);
 		//alert("Added to session storage "  + value);
 	} 
+
+	function getLearningContentObject(learningContentId){
+		console.log("in getLearningContentObject id is " + learningContentId);
+		var jsonString = document.getElementById("learingContents").value;
+		var contentArray = jQuery.parseJSON( jsonString );
+		
+		for(i=0; i<contentArray.length; i++){
+			if(learningContentId == contentArray[i].id){
+				return contentArray[i];
+			}
+		}
+	}
+
+	
 	function getOtherLearningContents(contentType, pageIndex){
 		
 		if(!pageIndex || "" == pageIndex){

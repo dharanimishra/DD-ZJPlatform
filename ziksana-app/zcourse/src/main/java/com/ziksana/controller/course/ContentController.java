@@ -41,6 +41,8 @@ public class ContentController {
 
 	@Autowired
 	LearningContentService learningContentService;
+	
+	
 
 	@Autowired
 	ContentService contentService;
@@ -48,10 +50,12 @@ public class ContentController {
 	@Autowired
 	MediaService mediaService;
 
+	MediaServerURL mediaServerURL = new MediaServerURL();
+
 	@Autowired
 	CourseContentService courseContentService;
 
-	@RequestMapping(value = "/slides/{contentId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/slides/{contentId}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody
 	ModelAndView slides(@PathVariable Integer contentId) {
 		ModelAndView mav = new ModelAndView("courses/Slides");
@@ -70,7 +74,7 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "/enhanceplayer/{contentId}/{componentId}/{courseId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/enhanceplayer/{contentId}/{componentId}/{courseId}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody
 	ModelAndView enhancePlayer(@PathVariable Integer contentId,
 			@PathVariable Integer componentId, @PathVariable Integer courseId) {
@@ -90,7 +94,7 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "/content/getcontent", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/content/getcontent", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody
 	Content getContent(
 			@RequestParam(value = "contentId", required = true) String contentId
@@ -119,7 +123,7 @@ public class ContentController {
 		return content;
 	}
 
-	@RequestMapping(value = "/content/getcontentinfo", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/content/getcontentinfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody
 	Content getContentInfo(
 			@RequestParam(value = "contentId", required = true) String contentId) {
@@ -146,6 +150,45 @@ public class ContentController {
 
 		LOGGER.debug("Exiting Class " + getClass() + " getContent(): ");
 		return content;
+	}
+
+	@RequestMapping(value = "/1/modalplayer/{contentId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView showModalplayer(@PathVariable Integer contentId) {
+		LOGGER.debug("Entering showmodalplayer(): ");
+		ModelAndView mv = new ModelAndView("courses/modalplayer");
+		try {
+			mediaServerURL = mediaService.getMediaContents();
+			LearningContent learningContent = learningContentService
+					.getLearningContent(contentId);
+			mv.addObject("content", learningContent);
+			mv.addObject("ms", mediaServerURL);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		// test
+		return mv;
+	}
+
+	@RequestMapping(value = "/1/ev_modalplayer/{contentId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView showEVModalplayer(@PathVariable Integer contentId) {
+		LOGGER.debug("Entering showmodalplayer(): ");
+		ModelAndView mv = new ModelAndView("courses/ev_modalplayer");
+
+		try {
+			LearningContent learningContent = learningContentService
+					.getLearningContent(contentId);
+
+			mv.addObject("content", learningContent);
+			mediaServerURL = mediaService.getMediaContents();
+			mv.addObject("ms", mediaServerURL);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		return mv; 
 	}
 
 }

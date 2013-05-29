@@ -99,44 +99,7 @@ public class AssociateContentController {
 		return courseJsonResponse;
 	}
 
-	@RequestMapping(value = "/modalplayer/{contentId}", method = {
-			RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody
-	ModelAndView showModalplayer(@PathVariable String contentId) {
-		LOGGER.debug("Entering showmodalplayer(): ");
-		ModelAndView mv = new ModelAndView("courses/modalplayer");
-		try {
-			mediaServerURL = mediaService.getMediaContents();
-			LearningContent learningContent = associateContentService
-					.getLearningContent(Integer.valueOf(contentId));
-			mv.addObject("content", learningContent);
-			mv.addObject("ms", mediaServerURL);
-		} catch (ZiksanaException exception) {
-			LOGGER.error(exception.getMessage(), exception);
-		}
-		// test
-		return mv;
-	}
 
-	@RequestMapping(value = "/ev_modalplayer/{contentId}", method = {
-			RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody
-	ModelAndView showEVModalplayer(@PathVariable String contentId) {
-		LOGGER.debug("Entering showmodalplayer(): ");
-		ModelAndView mv = new ModelAndView("courses/ev_modalplayer");
-
-		try {
-			LearningContent learningContent = associateContentService
-					.getLearningContent(Integer.valueOf(contentId));
-
-			mv.addObject("content", learningContent);
-			mediaServerURL = mediaService.getMediaContents();
-			mv.addObject("ms", mediaServerURL);
-		} catch (ZiksanaException exception) {
-			LOGGER.error(exception.getMessage(), exception);
-		}
-		return mv;
-	}
 
 	@RequestMapping(value = "/1/unassociatecontent", method = RequestMethod.POST)
 	public @ResponseBody
