@@ -74,29 +74,29 @@ table tr td {
 			 <div class="createcontentwrapper"> 
 	
 <div class="uploadcontent2">
-<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
-<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
-<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
-	out.println("size:"+list.size());
- 	for (LearningContent content : list) {
- 		
- %> 
- <div class="edit_content_info" id="content_<%=content.getId()%>">
- <div class="Clearfix"></div> 
-	<div class="" style="padding: 10px;"> 
+	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
+	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
+	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
+		out.println("size:"+list.size());
+	 	for (LearningContent content : list) {
+	 		
+	 %> 
+		 <div class="edit_content_info" id="content_<%=content.getId()%>">
+		 <div class="Clearfix"></div> 
+		<div class="" style="padding: 10px;"> 
 	<!--  <div class="uploadphoto pull-left" style="width: 350px">
 	 <div style="width: 100%">  
 	 </div> 
 	 </div> -->
 
 
-<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/default-course.jpg" style="width: 100px;" align="left" />
-<div id="message_<%=content.getId()%>"></div>
+				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/genetics.jpg" style="width: 100px;" align="left" />
+				<div id="message_<%=content.getId()%>"></div>
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
 						<div id="loaderText_<%=content.getId()%>"></div>
 						<input type="file" name="thumbnail_image_file_upload_<%=content.getId()%>" id="thumbnail_image_file_upload_<%=content.getId()%>" style="margin-left: 196px;" />
 							<input type="hidden" name="content_id[]" value="<%=content.getId()%>"/>
-							<% String old_thumbnail_path = "${staticFileServer}resources/images/default-course.jpg"; %>
+							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
 							<input type="hidden" name="thumbnail_path[]" id="thumbnail_path_<%=content.getId()%>" value="<%=old_thumbnail_path%>"/>
 						<div id="status_<%=content.getId()%>"></div>
 						<script type="text/javascript">

@@ -201,5 +201,3 @@ table tr td {
 	margin-top: 16px;
 }
 </style>
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/custom/createcontent/filedrag.js"></script> --%>

@@ -178,7 +178,7 @@ table tr td {
 								thumbnail_image_src = '${ms.url}'
 										+ content_path;
 								if (content_type_name !== 'IMAGE') {
-									thumbnail_image_src = '${staticFileServer}resources/images/default-course.jpg';
+									thumbnail_image_src = '${staticFileServer}resources/images/genetics.jpg';
 								}
 
 								div_html = '<div class="preview_uploaded_content">';
