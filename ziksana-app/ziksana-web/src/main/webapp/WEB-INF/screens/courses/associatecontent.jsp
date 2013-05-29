@@ -392,7 +392,7 @@ function toggleSeemore(link){
 		p = link.prev('p');
 		 
 		if(p.hasClass('show_more')){
-			link.text('Show More');
+			link.text('Read More');
 			p.removeClass('show_more');
 		} else {
 			link.text('Hide')
