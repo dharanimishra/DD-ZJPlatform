@@ -81,7 +81,7 @@
 #splitterContainer { /* Main splitter element */
 	overflow-x:hidden;
 }
-#ContentPanel2{width:76%}
+ 
 </style>
 <script type="text/javascript">
 	/* function showrich() {
@@ -276,12 +276,11 @@
 		<!-- BEGIN FORM-->
 		<div id="splitterContainer">
 			<div id="leftPane">
-				<div id="treeboxbox_tree"
-					style="overflow: scroll; overflow-y: hidden;" class="dhtmlxTree"
+				<div id="treeboxbox_tree" style="width: 250px;" class="dhtmlxTree"
 					setImagePath="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
 				</div>
 			</div>
-			<a class="splitclick"  href="" ></a>
+			<div id="splitbarV" class="splitbarV"> </div>
 			 
 			<!-- #leftPane -->
 			<div id="rightPane">
@@ -389,44 +388,36 @@
 
 <script>
 
-$(function(){
-   $('.toggle_seemore').on('click',function(){
-		p = $(this).prev('p');
-		console.log(p);
+function toggleSeemore(link){
+		p = link.prev('p');
+		 
 		if(p.hasClass('show_more')){
+			link.text('Show More');
 			p.removeClass('show_more');
 		} else {
+			link.text('Hide')
 			p.addClass('show_more');
 		}
 		
 		return false;
-		
-	});
-
-});
-</script>
-<script>
-$(document).ready(function() {
-    $ ('div.searchitem:even').addClass('even');
-    $ ('div.searchitem:odd').addClass('odd');
-});
- 
-  </script>
-  <style>
-  
-  .splitclick{
-  
-   background: url("/ziksana-web/resources/images/panevc.gif") no-repeat scroll -5px 20% #CBE1FB;
-    border: 1px solid #9CBDFF;
-    float: left;
-    font-size: 0;
-    height: 70%;
-    line-height: 0;
-    margin-left: 15px;
-    margin-top: 17px;
-    position: absolute;
-    width: 4px;
 }
-.hidetree{display:none;width:24%}
-  .odd{background-color:transparent}
-  </style>
+
+
+   </script>
+    
+   <script>
+ $(function(){
+	$('#splitbarV').click(function(){
+		console.log("hello");
+		leftpane = $('#leftPane');
+		if(leftpane.hasClass('hidden')){
+			leftpane.removeClass('hidden').show();
+		} else {
+			leftpane.addClass('hidden').hide();
+		}
+	});
+	});
+ </script>
+ <style>
+ #treeboxbox_tree{overflow:auto!important}
+ </style>

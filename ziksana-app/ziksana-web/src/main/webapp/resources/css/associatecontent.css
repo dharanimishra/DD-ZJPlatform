@@ -1,7 +1,7 @@
  
 .definecontainer
 {
-width: 980px;
+width: 100%;
 padding: 0;
 margin-bottom: 15px;
 }
@@ -2401,9 +2401,13 @@ background-color: #525252;
 .associateleft{width:22%!important; }
 .associateleft input[type="checkbox"]{float:left;display:inline-block;margin-right:10px;}
 .associateleft img{float:left}
+.toggle_seemore{cursor:pointer;}
 .show_more{ 
-height:auto;
+height:auto;cursor:pointer;
 
 }
 #background{overflow:auto}
-.odd{background-color:transparent}
+
+.associatelr:nth-child(2n) .associatesearchitem {
+  background: none repeat scroll 0 0 transparent;
+}

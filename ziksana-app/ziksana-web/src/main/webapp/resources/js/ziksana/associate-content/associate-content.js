@@ -77,7 +77,7 @@
 	function getDiv(learningContentObject){
 		
 		
-			var learningContentDiv =  '<div id="associatelr">' +
+			var learningContentDiv =  '<div class="associatelr">' +
 	
 			'<div class="associatesearchitem">'+
 	
@@ -95,12 +95,11 @@
 						'<p class="associatecategoryname f-l"> Category :   <a href="#linkurl"> Areas</a>/<a href="#linkurl">Topic</a>/<a href="#linkurl">Subject</a> </p>'+
 					'<div class="ClearFix"> </div>'+
 					'</div> <!--end of associatetagscontainer-->'+
-	
-					'<div class="ClearFix"> </div>'+
+
 	
 					'<div class="associatedesccont"> '+
 						'<p class="associatecategorydesc">' + learningContentObject.contentDescription + '</p>'+
-						'<a class="toggle_seemore" style="float:right;color:#fff" href="" > See More </a>'+
+						'<a class="toggle_seemore" style="float:right;color:#fff" onclick="toggleSeemore($(this));" > Read More </a>'+
 					'</div> <!--end of associatedesccont-->'+ 
 					'<div class="ClearFix"> </div>'+
 	
@@ -116,8 +115,7 @@
 	
 			'</div> <!--end  of associatesearchitem-->'+
 	
-		'</div> <!--end of associatelr-->' +
-		'<div class="ClearFix"> </div>';
+		'</div> <!--end of associatelr-->';
 		return learningContentDiv;
 	}
 	
