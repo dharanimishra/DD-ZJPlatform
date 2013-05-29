@@ -174,14 +174,14 @@
 	
 	function getDiv(learningContentObject){
 		
-		
+			var staticFileServerPath = $("#staticFileServer").val();
 			var learningContentDiv =  '<div class="associatelr">' +
 	
 			'<div class="associatesearchitem">'+
 	
 				'<div class="associateleft f-l" style="width:100%;">'+
 					'<input name="learningContentToBeAssociated" type="checkbox" value="' + learningContentObject.id +'" style="border:1px solid;"/>'+
-					'<img src="../images/programs/tsunami.jpg" alt="" border="4px solid #999;" style="vertical-align:middle;" class="associatesearchimg  all-box-shadow"/>'+
+					'<img src="'+ staticFileServerPath +  learningContentObject.thumbnailPicturePath +'/img1.jpg" alt="" border="4px solid #999;" style="vertical-align:middle;" class="associatesearchimg  all-box-shadow"/>'+
 					'</div> <!--end of associtemleft-->'+
 	
 					'<div class="associateright f-l">'+
