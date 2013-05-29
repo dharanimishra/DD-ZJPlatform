@@ -161,7 +161,7 @@
 		style="height: 406px; margin-top: 22px;">
 
 		<div class="imagewrapper scrollbar force-overflow" id="style-6"
-			style="height: 400px;">
+			style="height: 406px;">
 
 			<!-- __________________________________ Panel head ____________________ -->
 
@@ -280,8 +280,9 @@
 
 
 				<div class="announcementmainhead pull-left">Announcement</div>
-
-				<div class="announcmentisotope pull-right">
+<div class="Clearfix"></div>
+				<div class="announcmentisotope" style="background-color: rgba(50, 50, 50, 0.75);border-bottom: 1px solid #CCCCCC;
+    height: 45px; float:left;width:100%;text-align:right">
 
 					<ul>
 						<li><a style="cursor: pointer" class="Allbtn"> All </a></li>
@@ -300,15 +301,19 @@
 			</div>
 			<!--end of panel head-->
 
-			<div class="announcementwrapper">
+			<div class="announcementwrapper" style='height:284px;float:left;overflow:auto'>
 				<div id="announcement_box_all" class='announcementbox All'
-					style='height: 324px !important; background-color: rgb(18, 122, 163);'>
+					style='background-color: rgb(18, 122, 163);'>
 
 				</div>
 
 
 			</div>
-			<div id="announcementPagination" style="float: right;"></div>
+			<div id="announcementPagination" style="float: right;margin-bottom:5px"></div>
+			<div id="annaouncementFooter" class="eventfooter" style="height: 30px; width: 100%;float:left; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
+					
+
+				</div>
 			<!-- __________________________________ to do container ____________________ -->
 
 
@@ -518,7 +523,9 @@ table tr td {
 }
 
 .annnouncementpanel {
-	height: 50px
+	background-color: #6BBDE8;
+    height: 40px;
+
 }
 
 .announcmentisotope {
@@ -531,6 +538,7 @@ table tr td {
 .show_more {
 	border: 1px solid red
 }
+
 </style>
 <script
 	src="/ziksana-web/resources/js/custom/table/breakpoints/breakpoints.js"></script>
@@ -546,5 +554,19 @@ table tr td {
 	src="/ziksana-web/resources/js/custom/table/data-tables/DT_bootstrap.js"></script>
 <script src="/ziksana-web/resources/js/custom/table/js/app.js"></script>
 <script>
-	
-</script>
+function toggleSeemore(link){
+  p = link.prev('p');
+   
+  if(p.hasClass('show_more')){
+   link.text('Read More');
+   p.removeClass('show_more');
+  } else {
+   link.text('Hide')
+   p.addClass('show_more');
+  }
+  
+  return false;
+}
+
+
+   </script>
