@@ -25,8 +25,7 @@ table tr th {
 }
 
 table tr td {
-	color: #fff;
-	font-size: 18px;
+	color: #fff;	font-size: 18px;
 	border: none !important;
 }
 
@@ -58,50 +57,137 @@ table tr td {
 	href="/ziksana-web/zcourse/1/weblinkcontent">Add Web Link</a> </h3> </div> </div> <div
 	class="Clearfix"></div> </div> <!--end of tiles container--> <div
 	class="contentarea pull-right" style="width: 940px;"> <div
-	class="createcontentwrapper"> <div class="uploadcontent2">
-<form id="editcontentform" method="post"> <div
-	class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
-<input type="hidden" id="contentId" value="${contentId}" /> <div
-	class="Clearfix"></div> <div class="uploadroweven"
-	style="padding: 10px;"> <div class="uploadphoto pull-left"
-	style="width: 350px"> <div style="width: 100%"> <%
- 	List<LearningContent> list = (List<LearningContent>) request
- 			.getAttribute("learningContentlist");
- 	out.println("list :" + list.size());
- %> <div class="fileupload fileupload-new" data-provides="fileupload">
-<div class="fileupload-new thumbnail"
-	style="width: 80px; height: 80px; float: left"> <img
-	src="http://www.placehold.it/80x80/EFEFEF/AAAAAA" /> </div> <div
-	class="fileupload-preview fileupload-exists thumbnail"
-	style="width: 80px; height: 80px; float: left"></div> <div
-	class="btn btn-file"
-	style="float: left; margin-top: 25px; margin-left: 4px"> <span
-	class="fileupload-new">Upload image</span> <span
-	class="fileupload-exists" style="margin-right: 4px">Change</span> <input
-	type="file" /> </div> <a href="#" class="btn fileupload-exists"
-	data-dismiss="fileupload" style="margin-top: 25px; margin-left: 3px">Remove</a>
-</div> </div> </div> <!--end of uploadphoto--> <div class="rowfields pull-left"> <ul>
-<li style="padding-right: 30px;">Edit Name<br> <input
-	type="text" id="EditName" value="'+content_path+'" /></li> <li> <a
-	href="#linkurl" class="editdetailsweblink">Edit Details</a></li> </ul> </div> <div
-	class="clearfix"></div> <div class="editslideup1"> <div
-	class="editslide pull-left"> <textarea rows="4" cols="12"
-	style="width: 350px; margin-bottom: 10px; margin-left: 5px;"
-	id="ContentDescription">Details for the upload image </textarea> </div> <div
-	class="editslide pull-left" style="margin-left: 5px;"> <input
-	type="text" placeholder="Specify Tags"
-	style="height: 30px; margin-right: 12px; width: 233px;"> <select
-	id="Careaddl" class="select"> <option>Specify Subject</option>
-</select> <br> <select class="select" id="Csubjectddl"> <option>Specify
-Subject</option> </select> <select class="select" id="Ctopicddl"> <option>Specify
-Subject</option> </select></div> </div> <!--end of continaer--> <div class="clearfix"></div> </div> <!-- end of uploadrow-->
+	class="createcontentwrapper"> 
+	
+<div class="uploadcontent2">
+<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
+<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
+<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
+	out.println("size:"+list.size());
+ 	for (LearningContent content : list) {
+ 		
+ %> 
+ <div class="edit_content_info" id="content_<%=content.getId()%>">
+ <div class="Clearfix"></div> 
+	<div class="" style="padding: 10px;"> 
+	<!--  <div class="uploadphoto pull-left" style="width: 350px">
+	 <div style="width: 100%">  
+	 </div> 
+	 </div> -->
+
+
+<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/default-course.jpg" style="width: 100px;" align="left" />
+<div id="message_<%=content.getId()%>"></div>
+						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
+						<div id="loaderText_<%=content.getId()%>"></div>
+						<input type="file" name="thumbnail_image_file_upload_<%=content.getId()%>" id="thumbnail_image_file_upload_<%=content.getId()%>" style="margin-left: 196px;" />
+							<input type="hidden" name="content_id[]" value="<%=content.getId()%>"/>
+							<% String old_thumbnail_path = "${staticFileServer}resources/images/default-course.jpg"; %>
+							<input type="hidden" name="thumbnail_path[]" id="thumbnail_path_<%=content.getId()%>" value="<%=old_thumbnail_path%>"/>
+						<div id="status_<%=content.getId()%>"></div>
+						<script type="text/javascript">
+							$(function() {
+								$('#thumbnail_image_file_upload_<%=content.getId()%>').uploadify(
+												{'swf' : '${staticFileServer}resources/swf/uploadify.swf',
+													'queueSizeLimit' : 1,
+													'successTimeout' : 350,
+													'buttonText' : 'Upload File',
+													'uploader' : '${ms.uploadScript}',
+													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx, *.pdf',
+													'fileSizeLimit' : '10024KB',
+													'onUploadStart' : function(
+															file) {
+														$('#sbtvalidation')
+																.attr(
+																		'disabled',
+																		'disabled');
+													},
+													//'debug' : true,
+													//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+
+													'onUploadSuccess' : function(
+															file, data,
+															response) {
+														json_string = data;
+														data_object = $
+																.parseJSON(json_string);
+														console
+																.log(data_object);
+
+														if (data_object.Uploaded == 'true') {
+															content_path = data_object.ContentPath;
+															content_name = data_object.ContentName;
+															content_type_id = data_object.ContentType;
+															content_type_name = data_object.ContentTypeName;
+															thumbnail_path = data_object.ThumbnailPicturePath;
+															no_of_thumbnails = data_object.NumberOfThumbnails;
+
+															$('#thumbnail_path_<%=content.getId()%>').val(content_path);
+															$('#thumbnail_image_<%=content.getId()%>').attr('src','${ms.url}'+content_path);
+
+
+
+														} else { //there is an error in the upload process
+
+															$('#message').html(data_object.message);
+														}
+														$('#sbtvalidation').removeAttr('disabled'); //enable submit button
+
+													}
+												// Your options here
+												});
+							});
+
+
+						</script>
+					</div>
+
+ <!--end of uploadphoto--> 
+ <div class="rowfields pull-left"> <ul>
+	<li style="padding-right: 30px;">Edit Name<br> 
+		<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" />
+	</li> 
+	</ul> 
+	</div> 
+<div class="clearfix"></div> 
+
+<div class="editslideup1"> 
+	<div class="editslide pull-left"> 
+	<textarea rows="4" cols="12"
+	style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]">Details for the upload image </textarea>
+	</div> 
+	<div class="editslide pull-left" style="margin-left: 5px;">
+	 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
+	
+	<select
+	class="Careaddl select" name="content_area[]"> <option>Specify Subject</option>
+</select> <br> 
+<select class="select Csubjectddl" name="content_subject[]"> <option>Specify
+Subject</option> </select> 
+
+<select class="select Ctopicddl" name="content_topic[]" > <option>Specify
+Subject</option> </select>
+
+</div> </div> <!--end of continaer--> <div class="clearfix"></div> </div> <!-- end of uploadrow-->
+
+<hr/>
+</div>
+
+<%
+	}
+%>
 <div class="createcontentpanelhead" style="margin-top: 4px;"> <a
 	href="#linkurl" class="btn pull-right saveup1"
 	style="margin-left: 10px;"> Add Content </a> <a href="#linkurl"
 	class="btn pull-right" style="margin-left: 10px;" type="button"
-	onClick="editContent();return false;"> Save </a> <a href="#linkurl"
+	onClick="$('form#editcontentform').submit();"> Save </a> <a href="#linkurl"
 	class="btn pull-right saveup1" style="margin-left: 10px;"> Previous
-</a> <div class="clearfix"></div> </div> <!--end of panel head--> </form> </div> <!--end of uploadcontent2-->
+</a> <div class="clearfix"></div> 
+</div> <!--end of panel head--> 
+
+</form> 
+</div> <!--end of uploadcontent2-->
 </div> <!--end of image wrapper --> </div> <!--end of contentarea--> </div>
 <!--end of contentpanel-->
 
@@ -112,6 +198,7 @@ Subject</option> </select></div> </div> <!--end of continaer--> <div class="clea
 <div class="Clearfix"></div>
 
 </div>
+
 
 <style>
 .select2-container {

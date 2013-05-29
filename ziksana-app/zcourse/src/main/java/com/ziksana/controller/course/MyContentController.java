@@ -201,60 +201,71 @@ public class MyContentController {
 	@RequestMapping(value = "1/editcontents", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView editContent(
-			@RequestParam(value = "ContentId", required = true) String contentId,
-			@RequestParam(value = "ContentName", required = false) String contentName,
-			@RequestParam(value = "ContentDescription", required = false) String contentDescription,
-			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
-			@RequestParam(value = "Subject", required = false) String Subject,
-			@RequestParam(value = "Topic", required = false) String Topic,
-			@RequestParam(value = "Contenttag_Field", required = false) String contentTags,
-			@RequestParam(value = "ContentPath", required = false) String contentPath,
-			@RequestParam(value = "ThumbnailPicturePath", required = false) String thumbnailPicturePath,
-			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
-			@RequestParam(value = "ContentType", required = false) Integer contentType) {
+			@RequestParam(value = "content_id[]", required = true) String[] contentId,
+			@RequestParam(value = "thumbnail_path[]", required = false) String[] screenshotPath,
+			@RequestParam(value = "content_name[]", required = false) String[] contentName,
+			@RequestParam(value = "content_desc[]", required = false) String[] contentDesc,
+			@RequestParam(value = "content_tags[]", required = false) String[] contentTags,
+			@RequestParam(value = "content_area[]", required = false) String[] contentArea,
+			@RequestParam(value = "content_subject[]", required = false) String[] contentSubject,
+			@RequestParam(value = "content_topic[]", required = false) String[] contentTopic) {
 
 		ModelAndView modelView = new ModelAndView("mastercreatecontent");
+
+		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 
 		try {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
 
-			Integer learningContentId = 0, subjClassificationId = 0;
+			Integer learningContentId = 0;
 
-			CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
-					.getSubjectClassification(Topic);
+			for (int i = 0; i < contentId.length; i++) {
 
-			LearningContent learningContent = new LearningContent();
-			if (!"".equals(contentId) && contentId != null) {
-				learningContentId = Integer.parseInt(contentId);
-				learningContent.setLearningContentId(learningContentId);
-			}
-			learningContent.setAuthoringMember(accountableMember);
-			learningContent.setContentName(contentName);
-			learningContent.setContentDescription(contentDescription);
-			learningContent.setContentPath(contentPath);
-			learningContent.setStatusId(1);
-			learningContent.setActive(true);
-			if (!"".equals(contentType) && contentType != null) {
-				learningContent.setContentTypeId(contentType);
-			}
-			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
-			learningContent.setScreenshotPath(thumbnailPicturePath);
-			learningContent.setStatus(ContentStatus.ACTIVE);
-			learningContent.setNumberOfThumbnails(numberOfThumbnails);
-			learningContent.setRightsOwningMember(accountableMember);
-			try {
-				learningContent
-						.setSubjClassificationId(courseSubjectClassification
-								.getSubjClassificationId());
-			} catch (Exception e) {
-				LOGGER.error("Class " + getClass()
-						+ "Subject Classification not found:" + e);
+				LOGGER.info("contentId[]:" + contentId[i]);
+
+				LearningContent learningContent = new LearningContent();
+				learningContent.setAuthoringMember(accountableMember);
+				learningContent.setStatusId(1);
+				learningContent.setActive(true);
+				learningContent.setRightsOwningMember(accountableMember);
+
+				try {
+					if (!"".equals(contentId) && contentId != null) {
+						learningContentId = Integer.parseInt(contentId[i]);
+						learningContent.setLearningContentId(learningContentId);
+					}
+
+					try {
+						learningContent.setContentName(contentName[i]);
+						learningContent.setContentDescription(contentDesc[i]);
+						learningContent.setScreenshotPath(screenshotPath[i]);
+					} catch (Exception e) {
+
+					}
+
+					try {
+						CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
+								.getSubjectClassification(contentTopic[i]);
+						learningContent
+								.setSubjClassificationId(courseSubjectClassification
+										.getSubjClassificationId());
+					} catch (Exception e) {
+
+					}
+				} catch (Exception e) {
+					LOGGER.error("Class " + getClass()
+							+ "Subject Classification not found:" + e);
+				}
+
+				LearningContent learningCont = myContentService
+						.saveOrUpdate(learningContent);
+
+				learningContentlist.add(learningCont);
 			}
 
-			LearningContent learningCont = myContentService
-					.saveOrUpdate(learningContent);
+			modelView.addObject("learningContentlist", learningContentlist);
 
 		} catch (CourseException exception) {
 			LOGGER.error(exception.getMessage(), exception);

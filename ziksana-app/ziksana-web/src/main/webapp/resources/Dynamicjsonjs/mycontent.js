@@ -71,6 +71,8 @@ function getDiv(learningContentObject) {
 	} else if (content_type == 'DOC' || content_type == 'PPT'
 			|| content_type == 'PDF') {
 		viewer_url = '/ziksana-web/zcourse/slides/' + learningContentObject.id;
+	} else if (content_type == 'LINK') {
+		viewer_url =   learningContentObject.contentUrl;
 	}
 
 	var learningContentDiv = '<div id="createcontent-main" class="item All">'

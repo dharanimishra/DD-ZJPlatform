@@ -19,20 +19,22 @@ $(document)
 
 							option_string += option;
 						}
-						$('#Careaddl').html(option_string);
+						$('select.Careaddl').select2("destroy");
+						$('select.Careaddl').html(option_string).select2();
 
 					});
 
 					// function getSubject() {
-					$("#Careaddl")
+					$("select.Careaddl")
 							.change(
 									function(e) {
+										edit_content_info_container = $(this).parents('.edit_content_info');
 										token = '';
 										request_type = 'GET';
 										uri = '/ziksana-web/zcourse/getsubject';
 
 										var Course_Area = '';
-										Course_Area = $('#Careaddl').val();
+										Course_Area = edit_content_info_container.find('select.Careaddl').val();
 										$
 												.get(
 														uri,
@@ -68,29 +70,26 @@ $(document)
 																option_string += option;
 															}
 
-															$('#Careaddl')
-																	.html(
-																			area_string);
-															$('#Csubjectddl')
-																	.html(
-																			option_string);
+															edit_content_info_container.find('select.Careaddl').select2("destroy").html(area_string).select2();
+															edit_content_info_container.find('select.Csubjectddl').select2("destroy").html(option_string).select2();
 
 														});
 										var topic = '<option value="Select Topic">Select Topic</option>';
-										$('#Ctopicddl').html(topic);
+										edit_content_info_container.find('select.Ctopicddl').select2("destroy").html(topic).select2();
 									});
 
 					// function getTopic() {
 
-					$("#Csubjectddl")
+					$("select.Csubjectddl")
 							.change(
 									function(e) {
+										edit_content_info_container = $(this).parents('.edit_content_info');
 										console
 												.log("Inside subject change handler");
 										uri = '/ziksana-web/zcourse/gettopic';
 										token = '';
 										request_type = 'GET';
-										var Course_Subject = $('#Csubjectddl')
+										var Course_Subject = edit_content_info_container.find('select.Csubjectddl')
 												.val();
 										var parameters = {
 											"Course_Subject" : Course_Subject
@@ -126,9 +125,7 @@ $(document)
 																option_string += option;
 															}
 
-															$('#Ctopicddl')
-																	.html(
-																			option_string);
+															edit_content_info_container.find('select.Ctopicddl').select2("destroy").html(option_string).select2();
 
 														});
 
