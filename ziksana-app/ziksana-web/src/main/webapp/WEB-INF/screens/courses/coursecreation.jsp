@@ -247,12 +247,12 @@
 		<div id="splitterContainer">
 			<div id="leftPane">
 				<div id="treeboxbox_tree"
-					style="overflow: scroll; overflow-y: hidden;" class="dhtmlxTree"
+					style="width: 250px;" class="dhtmlxTree"
 					setImagePath="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
 				</div>
 			</div>
 			<!-- #leftPane -->
-			<a class="splitclick"  href="" ></a>
+			<div id="splitbarV" class="splitbarV"> </div>
 			<div id="rightPane">
 				<div class="Addmodulecontainer" id="Addmodulecontainer"
 					style="padding: 10px;">
@@ -378,24 +378,22 @@
 <div class="Clearfix"></div>
 </div>
 <script>
-$(function(){
-	   $('.splitclick').on('click',function(){
-			p = $(this).prev('div');
-			//console.log(p);
-			if(p.hasClass('hidetree')){
-				p.removeClass('hidetree');
-			} else {
-				p.addClass('hidetree');
-			}
-			
-			return false;
-			
-		});
-
+ $(function(){
+	$('#splitbarV').click(function(){
+		console.log("hello");
+		leftpane = $('#leftPane');
+		if(leftpane.hasClass('hidden')){
+			leftpane.removeClass('hidden').show();
+		} else {
+			leftpane.addClass('hidden').hide();
+		}
 	});
- 
+	});
+ </script>
+ <style>
+ #treeboxbox_tree{overflow:auto!important}
+ </style>
 
-</script>
 <style>
 .select2-container {
     
@@ -411,7 +409,7 @@ $(function(){
     border: 1px solid #9CBDFF;
     float: left;
     font-size: 0;
-    height: 70%;
+    height: 40%;
     line-height: 0;
     margin-left: 15px;
     margin-top: 17px;
