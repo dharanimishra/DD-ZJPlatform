@@ -883,27 +883,6 @@ margin-left:0px !important;
 font-size:15px;
 }
 
-.tbboxnumds
-{
-float:left; margin-left:8px; height:60px; width: 45px;
-}
-
-.tbboxdescds
-{
-float:left; width:275px;margin-top: -9px;
-}
-
-.tbboxdescds p
-{
-font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif; font-size:14px; color:rgb(177, 177, 177);
-}
-
-.tbboximgds
-{
-opacity: 0.5;
-width:32px; 
-height:28px; 	
-}
 
 /*for complete */
 

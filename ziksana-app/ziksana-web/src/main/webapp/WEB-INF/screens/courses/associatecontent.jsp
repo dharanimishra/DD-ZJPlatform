@@ -248,7 +248,7 @@
 				style="margin-right: 10px; height: 22px;"> </span> Define Structure</li>
 		<li style="color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px; height: 22px;"> </span> Associate Content</li>
+				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span> Define Assignment</li>
