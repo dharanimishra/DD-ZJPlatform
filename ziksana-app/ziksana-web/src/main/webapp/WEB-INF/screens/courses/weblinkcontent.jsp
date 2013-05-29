@@ -50,7 +50,8 @@ table tr td {
 		style="margin-top: 40px; width: 140px;">
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
-				<img src="${staticFileServer}resources/images/content/upload.png" />
+				<a href="/ziksana-web/zcourse/1/createcontent">
+				<img src="${staticFileServer}resources/images/content/upload.png" /></a>
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
@@ -62,7 +63,8 @@ table tr td {
 
 		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
-				<img src="${staticFileServer}resources/images/content/link.png" />
+				<a href="/ziksana-web/zcourse/1/weblinkcontent">
+				<img src="${staticFileServer}resources/images/content/link.png" /></a>
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">

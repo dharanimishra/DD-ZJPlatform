@@ -16,22 +16,24 @@ body { min-height: 100%; font-family: "Segoe UI", arial, sans-serif; font-size: 
 
 
 
-.btn
+.btn, .btn.blue
 {
 -webkit-border-radius: 0px;
 border-radius: 6px;
 border: 0px;
 background:rgb(67, 178, 236);
-color: #F9F9F9;
+color: #F9F9F9 !important;
 text-shadow: none;
 margin-bottom: 3px;
 width:120px;
 }
-.btn:hover {
+.btn:hover, .btn.blue:hover {
 background: #008DC4;
 color: #FFF;
-width:120px;
+/*width:120px;*/
 }
+
+.btn:disabled { color: skyblue !important; }
 
 
 

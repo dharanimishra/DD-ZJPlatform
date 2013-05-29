@@ -58,11 +58,10 @@ table tr td {
 	<div class="tilecontainer pull-left"
 		style="margin-top: 40px; width: 140px;">
 
-
-
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
-				<img src="${staticFileServer}resources/images/content/upload.png" />
+				<a href="/ziksana-web/zcourse/1/createcontent">
+				<img src="${staticFileServer}resources/images/content/upload.png" /></a>
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
@@ -70,11 +69,10 @@ table tr td {
 				</h3>
 			</div>
 		</div>
-
-
 		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
-				<img src="${staticFileServer}resources/images/content/link.png" />
+				<a href="/ziksana-web/zcourse/1/weblinkcontent">
+				<img src="${staticFileServer}resources/images/content/link.png" /></a>
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
@@ -82,12 +80,7 @@ table tr td {
 				</h3>
 			</div>
 		</div>
-
-
-
 		<div class="Clearfix"></div>
-
-
 	</div>
 	<!--end of tilescontainer-->
 
@@ -100,7 +93,7 @@ table tr td {
 				<!--end of panel head-->
 				<div class="draganddrop pull-left">
 					<div style="margin-top: 30px; margin-left: 10px;">
-						<!-- 							<div style="width: 122px; height: 100px; float: left">
+						<!-- <div style="width: 122px; height: 100px; float: left">
 								<img id="course_thumbnail_image" style="margin-left: 65px"
 									src="http://www.placehold.it/80x80/EFEFEF/AAAAAA"
 									align="center" />
@@ -223,10 +216,10 @@ table tr td {
 				<!--end of preview area-->
 				<div class="clearfix"></div>
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
-					<a href="#linkurl" class="btn pull-right"
-						style="margin-left: 10px;"> Cancel </a> <a
-						class="btn pull-right saveup1" type="button"
-						onClick="$('form#multiple_content_upload').submit();">Next</a>
+					<button href="#linkurl" class="btn blue pull-right"
+						style="margin-left: 10px;"> Cancel </button> <button
+						class="btn blue pull-right saveup1" id="sbtvalidation"
+						onClick="$('form#multiple_content_upload').submit();" disabled="disabled">Next</button>
 					<div class="clearfix"></div>
 				</div>
 				<!--end of panel head-->
