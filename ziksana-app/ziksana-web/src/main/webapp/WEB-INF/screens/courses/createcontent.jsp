@@ -191,7 +191,7 @@ table tr td {
 
 								$('.previewarea .messagecontainer').remove();
 								$('.previewarea form#multiple_content_upload')
-										.append(div_html);
+										.prepend(div_html);
 
 							}
 						</script>
@@ -201,9 +201,8 @@ table tr td {
 				<div class="previewarea pull-left">
 					<div class="messagecontainer">
 						<p class="uploadheads"
-							style="font-size: 30px; margin-left: 70px; padding-top: 180px;">Preview
+							style="font-size: 30px; padding-top: 155px; margin-left: 245px;">Preview
 							Area</p>
-
 						<div id="messages" style="min-height: 100px;"></div>
 						<!--End of Messages -->
 						<div class="ClearFix"></div>
@@ -264,7 +263,7 @@ table tr td {
 }
 
 .preview_uploaded_content img {
-	width: 100px;
+	width: 75px;
 }
 
 .preview_uploaded_content .title {
@@ -290,5 +289,10 @@ a.remove_this:hover {
 	color: red;
 	border-color: red;
 	text-decoration: none;
+}
+
+#thumbnail_image_file_upload > object, #thumbnail_image_file_upload-button {
+  cursor: pointer !important;
+  width: 230px !important;
 }
 </style>

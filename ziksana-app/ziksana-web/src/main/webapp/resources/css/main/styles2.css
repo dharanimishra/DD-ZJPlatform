@@ -2472,7 +2472,7 @@ input[type="checkbox"]:checked+label span {
 
 .draganddrop {
 	background-color: #0099CC;
-	border: 1px solid #CCCCCC;
+	/*border: 1px solid #CCCCCC; */
 	height: 320px;
 	margin-bottom: 10px;
 	width: 270px;
