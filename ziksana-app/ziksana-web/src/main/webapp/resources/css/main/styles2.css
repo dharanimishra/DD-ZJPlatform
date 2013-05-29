@@ -2711,7 +2711,9 @@ color:#fff;
 .announcementhead
 {
 color:#fff;
-padding:5px;	
+padding:5px;
+overflow:auto;
+width:100%	
 }
 
 .announcementbody
@@ -2723,7 +2725,8 @@ font-size:12px !important;
 
 .announcementdate
 {
-font-size:12px !important;	
+font-size:12px !important;
+height:22px;
 }
 
 .announcementname
@@ -2734,7 +2737,7 @@ font-weight:500 !important;
 
 .announcementbox
 {	
-margin-top:4px;
+
 }
 
 .announcementwrapper
@@ -2797,4 +2800,15 @@ display:inline;
 {
 font-size:12px !important;	color:#fff
 
+}
+.show_more{
+	
+	height:auto; 
+}
+.nobgcolor {
+	color:#fff;
+	padding:5px;
+	overflow:auto;
+	width:100%;
+  	background-color: #168EBE
 }
