@@ -21,6 +21,7 @@ import com.ziksana.domain.course.ContentStatus;
 import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
@@ -118,7 +119,8 @@ public class MyContentController {
 					.getMemberPersonaId().getStorageID());
 			List<LearningContent> learningContents = myContentService
 					.getMyContents(memberId);
-			String jsonString = JSONUtil.objectToJSONString(learningContents);
+			List<JSONLearningContent> jsonLearningContentlList = getJSONLearningContentObjects(learningContents);
+			String jsonString = JSONUtil.objectToJSONString(jsonLearningContentlList);
 
 			modelView.addObject("learningContentAsJSONString", jsonString);
 
@@ -354,6 +356,23 @@ public class MyContentController {
 		}
 
 		return modelView;
+
+	}
+	/**
+	 * This method converts collection of {@link LearningContent} objects into
+	 * {@link JSONLearningContent} objects
+	 * 
+	 * @param learningContentList
+	 * @return
+	 */
+	private List<JSONLearningContent> getJSONLearningContentObjects(
+			List<LearningContent> learningContentList) {
+		List<JSONLearningContent> jsonLearningContentList = new ArrayList<JSONLearningContent>();
+		for (LearningContent learningContent : learningContentList) {
+			jsonLearningContentList
+					.add(new JSONLearningContent(learningContent));
+		}
+		return jsonLearningContentList;
 
 	}
 }
