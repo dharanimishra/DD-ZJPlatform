@@ -175,6 +175,12 @@
 	function getDiv(learningContentObject){
 		
 			var staticFileServerPath = $("#staticFileServer").val();
+			var readMoreLink = "";
+			
+			if(learningContentObject.contentDescription && learningContentObject.contentDescription.length > 150){
+				readMoreLink = '<a class="toggle_seemore" style="float:right;color:#fff" onclick="toggleSeemore($(this));" > Read More </a>';
+			}
+			
 			var learningContentDiv =  '<div class="associatelr">' +
 	
 			'<div class="associatesearchitem">'+
@@ -197,7 +203,8 @@
 	
 					'<div class="associatedesccont"> '+
 						'<p class="associatecategorydesc">' + learningContentObject.contentDescription + '</p>'+
-						'<a class="toggle_seemore" style="float:right;color:#fff" onclick="toggleSeemore($(this));" > Read More </a>'+
+						readMoreLink +
+						//'<a class="toggle_seemore" style="float:right;color:#fff" onclick="toggleSeemore($(this));" > Read More </a>'+
 					'</div> <!--end of associatedesccont-->'+ 
 					'<div class="ClearFix"> </div>'+
 	
@@ -290,3 +297,17 @@
 	function resetCheckBoxes(){
 		$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
 	}
+
+	function toggleSeemore(link){
+		p = link.prev('p');
+		 
+		if(p.hasClass('show_more')){
+			link.text('Read More');
+			p.removeClass('show_more');
+		} else {
+			link.text('Hide')
+			p.addClass('show_more');
+		}
+		
+		return false;
+}
