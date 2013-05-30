@@ -287,6 +287,7 @@
 				<div class="definecontainer" id="definetab">
 				<form onload="" id="associateContentForm" action="/ziksana-web/zcourse/1/associatecontent" method="POST">
 					<input type="hidden" id="courseid" value="${courseId}" /> 
+					<input type="hidden" id="itemsToBeDisplayedPerPage" value="${itemsPerPage}" /> 
 					<input type="hidden" id="courseLearningComponentId" value=""/> 
 					<input type="hidden" id="parentLearningComponentId" value="" /> 
 					<input type="hidden" id="learningComponentId" value="" />

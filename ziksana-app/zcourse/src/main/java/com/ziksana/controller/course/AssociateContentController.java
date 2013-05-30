@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,9 @@ public class AssociateContentController {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(AssociateContentController.class);
 
+	@Value("#{pagination['associate_content_items_per_page']}")
+	private String itemsPerPage;
+
 	@Autowired
 	AssociateContentService associateContentService;
 
@@ -47,6 +51,7 @@ public class AssociateContentController {
 	ModelAndView showAssociateContent(@PathVariable Integer courseId) {
 		LOGGER.debug("Entering showAssociateCourse(): ");
 		ModelAndView modelView = new ModelAndView("associatecontent");
+		modelView.addObject("itemsPerPage", itemsPerPage);
 		try {
 
 			if (courseId > 0) {

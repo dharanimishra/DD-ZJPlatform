@@ -1,4 +1,5 @@
-	itemsPerPage = 2;
+	//default is set to 5
+	itemsPerPage = 5;
 	defaultPageIndex = 1;
 	noOfPages = new Number(0);
 
@@ -9,7 +10,16 @@
 		//addToSessionStorage(${learningContentAsJSONString});
 		//getAllLearningContents();
 		$('#ContentPanel2').hide();
+		setItemsPerPage();
 	});
+	
+	function setItemsPerPage(){
+		if($('#itemsToBeDisplayedPerPage').val()){
+			itemsPerPage = $('#itemsToBeDisplayedPerPage').val();
+		}
+		//else it will default to 5
+		console.log("Items per page set to" + itemsPerPage);
+	}
 	
 	//var sessionKey = "repositoryContents";
 	function addToSessionStorage(value){
