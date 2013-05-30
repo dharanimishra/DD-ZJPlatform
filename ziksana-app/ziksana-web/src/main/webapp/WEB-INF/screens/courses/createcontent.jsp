@@ -37,6 +37,22 @@ table tr td {
 	position: relative;
 	left: 10px;
 }
+ .tile-content > a{
+ width:100%;
+  height:100%;float:left
+ }
+ .brand a:hover{
+ color:#fff!important;text-decoration:none
+ }
+ .tile-content > a >img {
+    height: 64px;
+    left: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    position: absolute;
+    top: 50%;
+    width: 64px;
+}
 </style>
 
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
@@ -61,11 +77,11 @@ table tr td {
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
 				<a href="/ziksana-web/zcourse/1/createcontent">
-				<img src="${staticFileServer}resources/images/content/upload.png" /></a>
+				<img src="${staticFileServer}resources/images/content/upload.png"   /></a>
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="/ziksana-web/zcourse/1/createcontent">Upload Content</a>
+					<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;">Upload Content</a>
 				</h3>
 			</div>
 		</div>
@@ -76,7 +92,7 @@ table tr td {
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="/ziksana-web/zcourse/1/weblinkcontent">Add Web Link</a>
+					<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;">Add Web Link</a>
 				</h3>
 			</div>
 		</div>
