@@ -18,7 +18,7 @@
 			itemsPerPage = $('#itemsToBeDisplayedPerPage').val();
 		}
 		//Uncomment following line it is only to test paginatio by setting it to 2 items per page
-		//itemsPerPage = 8;
+		itemsPerPage = 4;
 		//else it will default to 5
 		console.log("Items per page set to" + itemsPerPage);
 	}
@@ -69,7 +69,7 @@
 		console.log("noOfPages " + noOfPages);
 		
 		if(contentArrayBasedOnContentType.length > itemsPerPage){
-			getPageDiv(noOfPages, contentType);
+			getPageDiv(noOfPages, contentType, pageIndex);
 		}
 		
 		console.log("getPageDiv(noOfPages, OTHERS)" + getPageDiv(noOfPages, "OTHERS"));
@@ -122,7 +122,7 @@
 		console.log("noOfPages " + noOfPages);
 		
 		if(contentArrayBasedOnContentType.length > itemsPerPage){
-			getPageDiv(noOfPages, contentType);
+			getPageDiv(noOfPages, contentType, pageIndex);
 		}
 		var divs = '';
 		if(pageIndex == 1){
@@ -161,7 +161,7 @@
 		
 		
 		if( contentArray.length > itemsPerPage ){
-			getPageDiv(noOfPages, "ALL");
+			getPageDiv(noOfPages, "ALL", pageIndex);
 		}
 		
 		
@@ -244,7 +244,7 @@
 	}
 	
 	
-	function getPageDiv(noOfPages, filterType){
+	function getPageDiv(noOfPages, filterType, pageIndex){
 		var pageDiv = $('#pageNumbers');
 		var functionName = '';
 		if("ALL" == filterType){
@@ -259,7 +259,12 @@
 		
 		pageDiv.empty();
 		for(i=1; i<=noOfPages; i++){
-				pageDiv.append('<a onClick="' + functionName + i +')" href="#" id="btnpg1" class="swShowPageActive"></a>');
+				if(pageIndex == i){
+					pageDiv.append('<a onClick="' + functionName + i +')" href="#" id="btnpg1" class="swShowPageActive"></a>');
+				}
+				else{
+					pageDiv.append('<a onClick="' + functionName + i +')" href="#" id="btnpg1" class="swShowPage"></a>');
+				}
 		}
 	}
 	function associateContents(){
