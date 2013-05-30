@@ -46,7 +46,7 @@ public class AssociateContentController {
 
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
-	@RequestMapping(value = "/1/repositorycontents/{courseId}", method = { RequestMethod.GET })
+	@RequestMapping(value = "/1/repositorycontents/{courseId}", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView showAssociateContent(@PathVariable Integer courseId) {
 		LOGGER.debug("Entering showAssociateCourse(): ");

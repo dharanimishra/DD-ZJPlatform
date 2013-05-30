@@ -18,7 +18,7 @@
 			itemsPerPage = $('#itemsToBeDisplayedPerPage').val();
 		}
 		//Uncomment following line it is only to test paginatio by setting it to 2 items per page
-		itemsPerPage = 4;
+		//itemsPerPage = 4;
 		//else it will default to 5
 		console.log("Items per page set to" + itemsPerPage);
 	}
@@ -333,7 +333,31 @@
 	}
 	
 	function resetCheckBoxes(){
-		$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
+		//$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
+		var courseId = $('#courseid').val();
+		var uri = '/ziksana-web/zcourse/1/repositorycontents/' + courseId;
+
+		$.get(uri);
+		$('#ContentPanel2').hide();
+/*
+		var parameters = {
+				"courseId" : courseId
+		};
+		
+		$.post(uri, parameters, function(data) {
+			console.log(data);
+			if (data.response == 'success') {
+				course_id = data.id;
+				window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
+						+ courseId;
+
+			} else {
+				$('#tempdiv1').html(
+						'<span style="color:red;">'
+								+ data.message + '</span>');
+			}
+		});
+*/
 	}
 
 	function toggleSeemore(link){
