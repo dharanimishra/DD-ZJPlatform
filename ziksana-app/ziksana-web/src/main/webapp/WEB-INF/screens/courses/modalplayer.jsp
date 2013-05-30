@@ -1,13 +1,7 @@
-
 <html>
-
 <head>
-
-	
-<script type="text/javascript" src="/ziksana-web/resources/js/jquery-1.7.2.min.js"></script>
+<script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
 <script type="text/javascript" src="/ziksana-web/resources/js/jwplayer/jwplayer.js"></script>
-
-
 <style type="text/css">
 body{min-width: 490px; min-height: 270px; background: white; overflow:hidden !important;}
 </style>

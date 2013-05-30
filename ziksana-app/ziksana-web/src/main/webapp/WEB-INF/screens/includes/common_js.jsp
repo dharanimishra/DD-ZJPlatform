@@ -16,3 +16,4 @@
 <script src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
 
 <script type='text/javascript' src='/ziksana-web/resources/js/custom/jqueryeasing.js'></script>
+<script type='text/javascript' src='/ziksana-web/resources/js/fancybox/jquery.fancybox.js'></script>
