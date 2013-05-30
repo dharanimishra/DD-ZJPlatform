@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.ContentType;
+import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
@@ -350,6 +351,22 @@ public class MyContentController {
 		}
 
 		return modelView;
+
+	}
+
+	@RequestMapping(value = "/1/deletecontent", method = RequestMethod.POST)
+	public @ResponseBody
+	CourseJsonResponse deleteContent(
+			@RequestParam(value = "contentId", required = true) Integer contentId) {
+		CourseJsonResponse jsonResponse = new CourseJsonResponse();
+		try {
+			myContentService.deleteContent(contentId);
+			jsonResponse.setResponse("success");
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+			jsonResponse.setResponse("Failed");
+		}
+		return jsonResponse;
 
 	}
 
