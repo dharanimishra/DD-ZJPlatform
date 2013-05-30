@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
-import com.ziksana.domain.course.ContentStatus;
 import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.CourseSubjectClassification;
 import com.ziksana.domain.course.LearningContent;
@@ -120,7 +119,8 @@ public class MyContentController {
 			List<LearningContent> learningContents = myContentService
 					.getMyContents(memberId);
 			List<JSONLearningContent> jsonLearningContentlList = getJSONLearningContentObjects(learningContents);
-			String jsonString = JSONUtil.objectToJSONString(jsonLearningContentlList);
+			String jsonString = JSONUtil
+					.objectToJSONString(jsonLearningContentlList);
 
 			modelView.addObject("learningContentAsJSONString", jsonString);
 
@@ -286,52 +286,46 @@ public class MyContentController {
 	@RequestMapping(value = "1/weblinkcontents", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView createWeblinkContent(
-			@RequestParam(value = "ContentId", required = false) String contentId,
-			@RequestParam(value = "ContentName", required = true) String contentName,
-			@RequestParam(value = "ContentDescription", required = false) String contentDescription,
-			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
-			@RequestParam(value = "Subject", required = false) String Subject,
-			@RequestParam(value = "Topic", required = false) String Topic,
-			@RequestParam(value = "Contenttag_Field", required = false) String contentTags,
-			@RequestParam(value = "AssocContent_Image", required = false) String screenshotPath,
-			@RequestParam(value = "LinkType", required = false) String linkType,
-			@RequestParam(value = "ContentUpload", required = false) String contentUpload,
-			@RequestParam(value = "ContentUrl", required = false) String contentUrl,
-			@RequestParam(value = "ContentPath", required = false) String contentPath,
-			@RequestParam(value = "ThumbnailPicturePath", required = false) String thumbnailPicturePath,
-			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
-			@RequestParam(value = "ContentType", required = false) String contentType,
-			@RequestParam(value = "ContentTypeName", required = false) String contentTypeName) {
+			@RequestParam(value = "contentPath", required = false) String thumbnailPicturePath,
+			@RequestParam(value = "contentName", required = true) String contentName,
+			@RequestParam(value = "contentUrl", required = true) String contentUrl,
+			@RequestParam(value = "contentDescription", required = false) String contentDescription,
+			@RequestParam(value = "contentTag", required = false) String Topic,
+			@RequestParam(value = "contentArea", required = false) String contentArea,
+			@RequestParam(value = "contentSubject", required = false) String contentSubject,
+			@RequestParam(value = "contentTopic", required = false) String contentTopic) {
 
 		ModelAndView modelView = new ModelAndView("masterweblinkcontent");
+
+		LOGGER.info("Class :" + getClass() + " thumbnailPicturePath :"
+				+ thumbnailPicturePath);
 
 		try {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
 
-			Integer learningContentId = 0, subjClassificationId = 0;
-
 			CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
 					.getSubjectClassification(Topic);
 
 			LearningContent learningContent = new LearningContent();
-			if (!"".equals(contentId) && contentId != null) {
-				learningContentId = Integer.parseInt(contentId);
-				// learningContent.setLearningContentId(learningContentId);
-			}
+
 			learningContent.setAuthoringMember(accountableMember);
 			learningContent.setContentName(contentName);
 			learningContent.setContentDescription(contentDescription);
-			learningContent.setContentPath(contentPath);
+			learningContent.setContentPath(contentUrl);
 			learningContent.setStatusId(1);
 			learningContent.setActive(true);
-			learningContent.setContentTypeId(959);
+			learningContent.setContentType(ContentType.getContentType(612));
+			try {
+				learningContent.setContentTypeId(ContentType.valueOf(
+						"Link".toUpperCase()).getID());
+			} catch (Exception e) {
+				learningContent.setContentTypeId(959);
+			}
 
 			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
-			learningContent.setScreenshotPath(screenshotPath);
-			// learningContent.setStatus(ContentStatus.ACTIVE);
-			learningContent.setNumberOfThumbnails(numberOfThumbnails);
+			learningContent.setScreenshotPath(thumbnailPicturePath);
 			learningContent.setRightsOwningMember(accountableMember);
 
 			try {
@@ -358,6 +352,7 @@ public class MyContentController {
 		return modelView;
 
 	}
+
 	/**
 	 * This method converts collection of {@link LearningContent} objects into
 	 * {@link JSONLearningContent} objects

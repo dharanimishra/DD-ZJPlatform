@@ -50,8 +50,8 @@ table tr td {
 		style="margin-top: 40px; width: 140px;">
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
-				<a href="/ziksana-web/zcourse/1/createcontent">
-				<img src="${staticFileServer}resources/images/content/upload.png" /></a>
+				<a href="/ziksana-web/zcourse/1/createcontent"> <img
+					src="${staticFileServer}resources/images/content/upload.png" /></a>
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
@@ -63,8 +63,8 @@ table tr td {
 
 		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
-				<a href="/ziksana-web/zcourse/1/weblinkcontent">
-				<img src="${staticFileServer}resources/images/content/link.png" /></a>
+				<a href="/ziksana-web/zcourse/1/weblinkcontent"> <img
+					src="${staticFileServer}resources/images/content/link.png" /></a>
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
@@ -72,28 +72,22 @@ table tr td {
 				</h3>
 			</div>
 		</div>
-
-
-
 		<div class="Clearfix"></div>
-
-
 	</div>
 	<!--end of tiles container-->
 
 	<div class="contentarea pull-right" style="width: 940px;">
 		<div class="createcontentwrapper">
-			<form id="createweblinkform" method="post">
+			<form id="createweblinkform" method="post"
+				action="/ziksana-web/zcourse/1/weblinkcontents">
 				<div class="addweblink">
 					<div class="createcontentpanelhead">
 						Add Web Link
-						<div class="addmpre pull-right">
-
+						<!--<div class="addmpre pull-right">
 							<a class="adlink" id="weblink"><img
 								src="${staticFileServer}resources/images/content/plus.png"
 								style="height: 30px;" /></a>
-
-						</div>
+						</div> -->
 						<!--end of add more-->
 						<div class="Clearfix"></div>
 					</div>
@@ -101,70 +95,113 @@ table tr td {
 					<div class="weblinkcontainer">
 						<div class="uploadroweven" style="padding: 10px;">
 							<div class="uploadphoto pull-left" style="width: 350px">
-								<div style="width: 100%">
-									<div class="fileupload fileupload-new"
-										data-provides="fileupload">
-										<div class="fileupload-new thumbnail"
-											style="width: 80px; height: 80px; float: left">
-											<img src="http://www.placehold.it/80x80/EFEFEF/AAAAAA" />
-										</div>
-										<div class="fileupload-preview fileupload-exists thumbnail"
-											style="width: 80px; height: 80px; float: left"></div>
-										<div class="btn btn-file"
-											style="float: left; margin-top: 25px; margin-left: 4px">
-											<span class="fileupload-new">Upload image</span> <span
-												class="fileupload-exists" style="margin-right: 4px">Change</span><input
-												type="file" />
-										</div>
-										<a href="#" class="btn fileupload-exists"
-											data-dismiss="fileupload"
-											style="margin-top: 25px; margin-left: 3px">Remove</a>
-									</div>
-								</div>
+								<img id="thumbnail_image" src="${staticFileServer}resources/images/genetics.jpg" style="width: 100px;" align="left" />
+								<div id="message"></div>
+								<div id="thubmnail_upload_message"></div>
+								<div id="loaderText"></div>
+								<input type="file" name="thumbnail_image_file_upload"
+									tabindex="11" id="thumbnail_image_file_upload"
+									style="margin-left: 196px;" />
+									
+							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
+							<input type="hidden" name="contentPath" id="thumbnail_path" value="<%=old_thumbnail_path%>"/>
+								<div id="status"></div>
+								<script type="text/javascript">
+									$(function() {
+										$('#thumbnail_image_file_upload')
+												.uploadify(
+														{
+															'swf' : '${staticFileServer}resources/swf/uploadify.swf',
+															'queueSizeLimit' : 1,
+															'successTimeout' : 350,
+															'buttonText' : 'Upload Preview',
+															'uploader' : '${ms.uploadScript}',
+															//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+															'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+															'fileSizeLimit' : '10024KB',
+															'onUploadStart' : function(
+																	file) {
+																$(
+																		'#sbtvalidation')
+																		.attr(
+																				'disabled',
+																				'disabled');
+															},
+															'onUploadSuccess' : function(
+																	file, data,
+																	response) {
+																json_string = data;
+																data_object = $
+																		.parseJSON(json_string);
+																console
+																		.log(data_object);
 
+																if (data_object.Uploaded == 'true') {
+																	content_path = data_object.ContentPath;
+																	$('#thumbnail_image').attr('src','${ms.url}'+content_path);
+																	$('#thumbnail_path').val(content_path);
+																} else { //there is an error in the upload process
+
+																	$(
+																			'#message')
+																			.html(
+																					data_object.message);
+																}
+																$(
+																		'#sbtvalidation')
+																		.removeAttr(
+																				'disabled'); //enable submit button
+															}
+														// Your options here
+														});
+									});
+								</script>
 							</div>
-							<!--end of uploadphoto-->
-							<div class="rowfields pull-left">
-								<ul>
-									<li><input type="text" placeholder="Enter Name"
-										id="linkname"
-										style="height: 25px; margin-top: 15px; width: 170px;" /></li>
-									<li><input type="text" placeholder="htttp://" id="linkurl"
-										style="height: 25px; margin-top: 15px; width: 170px;" /></li>
-									<li><a href="#" class="editdetailsweblink">Edit
-											Details</a></li>
-								</ul>
-							</div>
-							<!--end of rowfields-->
-							<div class="clearfix"></div>
-							<div class="editslide pull-left">
-								<textarea rows="4" cols="12"
-									style="width: 374px; margin-bottom: 10px;">Details for the Web link </textarea>
-							</div>
-							<div class="editslide pull-left" style="margin-left: 5px;">
-								<input type="text" placeholder="Specify Tags"
-									style="height: 30px; margin-right: 12px; width: 233px;">
-								<select id="Careaddl" class="select">
-									<option>Specify Subject</option>
-								</select> <br> <select class="select" id="Csubjectddl">
-									<option>Specify Subject</option>
-								</select> <select class="select" id="Ctopicddl">
-									<option>Specify Subject</option>
-								</select>
-							</div>
-							<div class="clearfix"></div>
 						</div>
-						<!-- end of uploadrow-->
-
-					</div>
-					<!--End of weblink container -->
-					<div class="createcontentpanelhead" style="margin-top: 4px;">
-						<a class="btn pull-right saveup1" type="button"
-							onClick="webLinkContent();return false;"> Add Web link </a>
+						<!--end of uploadphoto-->
+						<div class="rowfields pull-left">
+							<ul>
+								<li>
+								<input type="hidden" name="contentPath" value="'++'"/>
+								<input type="text" placeholder="Enter Name"
+									name="contentName"
+									style="height: 25px; margin-top: 15px; width: 170px;" /></li>
+								<li><input type="text" placeholder="htttp://" id="linkurl" name="contentUrl"
+									style="height: 25px; margin-top: 15px; width: 170px;" /></li>
+								<li><a href="#" class="editdetailsweblink">Edit Details</a></li>
+							</ul>
+						</div>
+						<!--end of rowfields-->
+						<div class="clearfix"></div>
+						<div class="editslide pull-left">
+							<textarea rows="4" cols="12" name="contentDescription"
+								style="width: 374px; margin-bottom: 10px;">Details for the Web link </textarea>
+						</div>
+						<div class="editslide pull-left" style="margin-left: 5px;">
+							<input type="text" placeholder="Specify Tags" name="contentTag"
+								style="height: 30px; margin-right: 12px; width: 233px;">
+							<select id="Careaddl" name="contentArea" class="select Careaddl">
+								<option>Specify Subject</option>
+							</select> <br> <select class="select Csubjectddl" id="Csubjectddl"
+								name="contentSubject">
+								<option>Specify Subject</option>
+							</select> <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic">
+								<option>Specify Subject</option>
+							</select>
+						</div>
 						<div class="clearfix"></div>
 					</div>
-					<!--end of panel head-->
+					<!-- end of uploadrow-->
+
 				</div>
+				<!--End of weblink container -->
+				<div class="createcontentpanelhead" style="margin-top: 4px;">
+					<button class="btn blue pull-right saveup1" id="sbtvalidation"
+						onClick="$('form#createweblinkform').submit();"
+						disabled="disabled">Add Web link</button>
+					<div class="clearfix"></div>
+				</div>
+				<!--end of panel head-->
 			</form>
 			<!--end of weblink-->
 		</div>
@@ -201,3 +238,18 @@ table tr td {
 	margin-top: 16px;
 }
 </style>
+
+<style type="text/css">
+a.remove_this:hover {
+	color: red;
+	border-color: red;
+	text-decoration: none;
+}
+
+#thumbnail_image_file_upload>object,#thumbnail_image_file_upload-button
+	{
+	cursor: pointer !important;
+	width: 230px !important;
+}
+</style>
+

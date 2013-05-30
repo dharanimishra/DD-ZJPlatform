@@ -183,7 +183,9 @@ Subject</option> </select>
 <select class="select Ctopicddl" name="content_topic[]" > <option>Specify
 Subject</option> </select>
 
-</div> </div> <!--end of continaer--> <div class="clearfix"></div> </div> <!-- end of uploadrow-->
+</div> </div> <!--end of continaer--> <div class="clearfix"></div> 
+
+</div> <!-- end of uploadrow-->
 
 <hr/>
 </div>
