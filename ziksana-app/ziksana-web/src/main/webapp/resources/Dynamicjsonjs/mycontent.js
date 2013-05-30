@@ -1,4 +1,4 @@
-itemsPerPage = 10;
+itemsPerPage = 20;
 defaultPageIndex = 1;
 noOfPages = new Number(0);
 
@@ -195,8 +195,8 @@ function getPageDiv(noOfPages, filterType) {
 
 	pageDiv.empty();
 	for (i = 1; i <= noOfPages; i++) {
-		pageDiv.append('<a onClick="' + functionName + i
-				+ ')" href="#" id="btnpg1" class="swShowPageActive"></a>');
+		pageDiv.append('<span class="pagination_bar pactive"><a onClick="' + functionName + i
+				+ ')" href="#" id="btnpg1" class="swShowPageActive pagination_bar"></a></span>');
 	}
 }
 

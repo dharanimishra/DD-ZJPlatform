@@ -361,6 +361,7 @@ public class MyContentController {
 		CourseJsonResponse jsonResponse = new CourseJsonResponse();
 		try {
 			myContentService.deleteContent(contentId);
+			LOGGER.info("delete conetnt contentId :"+contentId);
 			jsonResponse.setResponse("success");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);

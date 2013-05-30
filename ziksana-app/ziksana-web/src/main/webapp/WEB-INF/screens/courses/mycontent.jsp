@@ -164,32 +164,13 @@
 				value='${learningContentAsJSONString}' />
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
 			</div>
-			<div id="pageNumbers" class="paginationbutton f-r" style="padding:10px">
+			<div class="Clearfix"></div>
+			<div id="pageNumbers" class="paginationbutton f-r" style="padding:10px;">
 			</div>
 	
 			<!--end of ann-mainwrapper-->
 		</form>
 	</div>
-	<!--  <div class="annprogressbar pull-right"
-		style="margin: 20px; margin-right: 30px;">
-
-		<div class="timer">
-			<div class="progress" style="width: 100%; overflow: hidden;"></div>
-		</div>
-
-		<div class="timer">
-			<div class="progress" style="width: 100%; overflow: hidden;"></div>
-		</div>
-
-
-		<div class="timer">
-			<div class="progress" style="width: 100%; overflow: hidden;"></div>
-		</div>
-	</div> -->
-	<!--end of annprogressbar-->
-	
-	
-
 	<div class="Clearfix"></div>
 
 
