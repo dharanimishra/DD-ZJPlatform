@@ -28,9 +28,23 @@
 		//alert("I am in" + sessionKey);
 		//putInSessionStorage(sessionKey, value);
 		//alert("Added to session storage "  + value);
-	} 
+	}
+	
+	function forceToAssociateSelectedContent(){
+		var selectedContentCheckBoxes = $("input:checkbox[name=learningContentToBeAssociated]:checked");
+		if (selectedContentCheckBoxes && selectedContentCheckBoxes.length > 0){
+			confirm_delete_component = confirm('Are you sure you don\'t want to associate the selected contents? \nClick OK if you want associate the selected content else click Cancel.');
+			if (confirm_delete_component == true) {
+				associateContents();
+			}
+			else{
+				return;
+			}
+		}
+	}
 
 	function getLearningContentObject(learningContentId){
+		
 		console.log("in getLearningContentObject id is " + learningContentId);
 		var jsonString = document.getElementById("learingContents").value;
 		var contentArray = jQuery.parseJSON( jsonString );
@@ -44,6 +58,8 @@
 
 	
 	function getOtherLearningContents(contentType, inPageIndex){
+		
+		forceToAssociateSelectedContent();
 		
 		if(!inPageIndex || "" == inPageIndex){
 			pageIndex = defaultPageIndex;
@@ -105,6 +121,8 @@
 
 	function getLearningContentsByType(contentType, pageIndex){
 
+		forceToAssociateSelectedContent();
+
 		if(!pageIndex || "" == pageIndex){
 			pageIndex = defaultPageIndex;
 		}
@@ -158,6 +176,8 @@
 	}
 
 	function getAllLearningContents(pageIndex){
+
+		forceToAssociateSelectedContent();
 		
 		if(!pageIndex || "" == pageIndex){
 			pageIndex = defaultPageIndex;
