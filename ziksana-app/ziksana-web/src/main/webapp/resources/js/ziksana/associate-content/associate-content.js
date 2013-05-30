@@ -43,11 +43,15 @@
 	}
 
 	
-	function getOtherLearningContents(contentType, pageIndex){
+	function getOtherLearningContents(contentType, inPageIndex){
 		
-		if(!pageIndex || "" == pageIndex){
+		if(!inPageIndex || "" == inPageIndex){
 			pageIndex = defaultPageIndex;
 		}
+		else{
+			pageIndex = inPageIndex;
+		}
+		console.log("In getOtherLearningContents pageIndex is " + pageIndex);
 
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
@@ -63,16 +67,19 @@
 				j++;
 			}
 		}
-		console.log("contentArray.length " + contentArray.length);
-		console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length);
+		//console.log("contentArray.length " + contentArray.length);
 		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
-		console.log("noOfPages " + noOfPages);
+		//console.log("noOfPages " + noOfPages + " itemsPerPage " + itemsPerPage);
 		
 		if(contentArrayBasedOnContentType.length > itemsPerPage){
+			console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length + " itemsPerPage " + itemsPerPage);
 			getPageDiv(noOfPages, contentType, pageIndex);
 		}
+		else{
+			$('#pageNumbers').empty();
+		}
+		console.log("In else contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length + " itemsPerPage " + itemsPerPage);
 		
-		console.log("getPageDiv(noOfPages, OTHERS)" + getPageDiv(noOfPages, "OTHERS"));
 		var divs = '';
 		if(pageIndex == 1){
 			for(i=0;i<contentArrayBasedOnContentType.length;i++){
@@ -124,6 +131,9 @@
 		if(contentArrayBasedOnContentType.length > itemsPerPage){
 			getPageDiv(noOfPages, contentType, pageIndex);
 		}
+		else{
+			$('#pageNumbers').empty();
+		}
 		var divs = '';
 		if(pageIndex == 1){
 			for(i=0;i<contentArrayBasedOnContentType.length;i++){
@@ -162,6 +172,9 @@
 		
 		if( contentArray.length > itemsPerPage ){
 			getPageDiv(noOfPages, "ALL", pageIndex);
+		}
+		else{
+			$('#pageNumbers').empty();
 		}
 		
 		
@@ -245,6 +258,7 @@
 	
 	
 	function getPageDiv(noOfPages, filterType, pageIndex){
+		console.log("In getPageDiv noOfPages " + noOfPages + " pageIndex " + pageIndex + " filterType " + filterType);
 		var pageDiv = $('#pageNumbers');
 		var functionName = '';
 		if("ALL" == filterType){
