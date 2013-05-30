@@ -17,6 +17,8 @@
 		if($('#itemsToBeDisplayedPerPage').val()){
 			itemsPerPage = $('#itemsToBeDisplayedPerPage').val();
 		}
+		//Uncomment following line it is only to test paginatio by setting it to 2 items per page
+		//itemsPerPage = 8;
 		//else it will default to 5
 		console.log("Items per page set to" + itemsPerPage);
 	}
@@ -66,7 +68,10 @@
 		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
 		console.log("noOfPages " + noOfPages);
 		
-		getPageDiv(noOfPages, "OTHERS");
+		if(contentArrayBasedOnContentType.length > itemsPerPage){
+			getPageDiv(noOfPages, contentType);
+		}
+		
 		console.log("getPageDiv(noOfPages, OTHERS)" + getPageDiv(noOfPages, "OTHERS"));
 		var divs = '';
 		if(pageIndex == 1){
@@ -116,8 +121,9 @@
 		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
 		console.log("noOfPages " + noOfPages);
 		
-		getPageDiv(noOfPages, contentType);
-
+		if(contentArrayBasedOnContentType.length > itemsPerPage){
+			getPageDiv(noOfPages, contentType);
+		}
 		var divs = '';
 		if(pageIndex == 1){
 			for(i=0;i<contentArrayBasedOnContentType.length;i++){
@@ -153,7 +159,10 @@
 		console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
 		noOfPages = Math.ceil(contentArray.length/itemsPerPage);
 		
-		getPageDiv(noOfPages, "ALL");
+		
+		if( contentArray.length > itemsPerPage ){
+			getPageDiv(noOfPages, "ALL");
+		}
 		
 		
 		console.log("noOfPages " + noOfPages);
