@@ -336,16 +336,24 @@
 	}
 	
 	function isItemPresent(childArrayString, contentItem){
+		if(!childArrayString){
+			return false;
+		}
 		var childArray = childArrayString.split(',');
-		for(i = 0; i < childArray.length; i++){
-			//alert("Yes got it " + childArray[i] + "  "  + contentItem);
-			if(childArray[i] == contentItem){
-				//alert("Yes got it");
-				return true;
+		if(childArray){
+			for(i = 0; i < childArray.length; i++){
+				//alert("Yes got it " + childArray[i] + "  "  + contentItem);
+				if(childArray[i] == contentItem){
+					//alert("Yes got it");
+					return true;
+				}
+				else{
+					return false; 
+				}
 			}
-			else{
-				return false;
-			}
+		}
+		else{
+			return false;
 		}
 	}
 	function associateContents(){
