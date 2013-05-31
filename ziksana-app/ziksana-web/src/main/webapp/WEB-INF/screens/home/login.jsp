@@ -138,7 +138,7 @@
 							
 						</c:if>
 						<c:if test="${accountLocked !=null}">
-						<p style="color:#d14836;"><c:out value="${accountLocked}"></c:out><a href="/unsecure/admin/contactadminstrator#">&nbsp;Administrator</a></p>
+						<p style="color:#d14836;"><fmt:message key="login.accountlock.message"/><a href="/unsecure/admin/contactadminstrator#">&nbsp;<fmt:message key="login.Administrator"/></a></p>
 						</c:if>		
 						<c:if test="${accountLocked ==null}">
 					
@@ -158,7 +158,7 @@
 					
 					<p style="color:#d14836;" id="userIdValidation">
 					<c:if test="${ not empty userIdValidationResponse}">
-							<c:out value="${userIdValidationResponse}" />
+							<fmt:message key="login.invalidusername"/>
 					</c:if>
 					</p>
 				</div>
@@ -172,7 +172,8 @@
 					</div>
 					<p style="color:#d14836;" id="passwordValidation">
 					<c:if test="${ not empty passwordValidationResponse}">
-					<c:out value="${passwordValidationResponse}"></c:out>
+						<c:if test="$"></c:if>
+							<fmt:message key="login.invalidpassword"/>
 					</c:if>
 					</p>
 				</div>
@@ -201,14 +202,14 @@
 function validate(){
 	$(".btn").addClass("button-submit"); 
 	if(document.loginfrm.username.value == ""){		
-		 $('#userIdValidation').html("Enter User ID");
+		 $('#userIdValidation').html("<fmt:message key="error.enteruser"></fmt:message>");
 		 document.getElementById("passwordValidation").innerHTML = '';
 		 document.loginfrm.username.focus();
 		 $(".btn").removeClass("button-submit");
 		 return false;
 		 
 	}else if(document.loginfrm.password.value == ""){
-		$('#passwordValidation').html("Enter Password");
+		$('#passwordValidation').html("<fmt:message key="error.enterpass"></fmt:message>");
 		document.getElementById("userIdValidation").innerHTML = '';
 			document.loginfrm.password.focus();
 			$(".btn").removeClass("button-submit");

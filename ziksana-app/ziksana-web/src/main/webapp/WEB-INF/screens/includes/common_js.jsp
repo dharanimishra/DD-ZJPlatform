@@ -8,6 +8,7 @@
 <script type='text/javascript' src='/ziksana-web/resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
 <script type='text/javascript' src="/ziksana-web/resources/js/lib/select/select2.min.js"></script>
 <script type='text/javascript' src="/ziksana-web/resources/js/lib/plupload/previewupload.js"></script> 
+<script type='text/javascript' src="/ziksana-web/resources/js/custom/placeholder.js"></script> 
 
 
 <script type='text/javascript' src="/ziksana-web/resources/js/custom/jquery.uploadify-3.1.min.js"></script>
