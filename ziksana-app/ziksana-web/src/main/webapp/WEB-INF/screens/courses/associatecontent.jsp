@@ -293,6 +293,7 @@
 					<input type="hidden" id="selectedLearningContentList" value="" />
 					<input type="hidden" id="learingContents" value='${learningContentAsJSONString}'/>
 					<input type="hidden" id="staticFileServer" value='${staticFileServer}'/>
+					<input type="hidden" id="fileServerPath" value='${ms.uploadContent}'/>
 					<!--
 					<input type="hidden" id="learingContents" value='{"learningContents": [{"id": "1", "contentType": "2", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test1","ContentDescription": "this is a test", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "2", "contentType": "1", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test2", "ContentDescription": "test2", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"},{"id": "3", "contentType": "3", "contentPath": "/document/f1358616560/f1358616560.pdf", "contentName": "test3", "ContentDescription": "test3", "ThumbnailPicturePath": "document/f1358616560/thumbnails/"}]}' />
 					<input type="hidden" id="learingContents" value='${learningContentAsJSONString}'/>

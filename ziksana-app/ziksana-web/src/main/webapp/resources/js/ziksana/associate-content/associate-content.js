@@ -223,13 +223,15 @@
 	}
 
 	function getPreviewPath(learningContentObject){
-		var staticFileServerPath = $("#staticFileServer").val();
+		var staticFileServerPath = $("#fileServerPath").val();
 		console.log("In associate content getPreviewPath" + staticFileServerPath);
 		var content_type = learningContentObject.contentType;
 		var previewPath = learningContentObject.screenshotPath;
+		console.log("In associate content screenshotPath for " + learningContentObject.contentName + " - " +previewPath);
 		var imagePath = '';
-		if(previewPath && "" != previewPath.trim()){
+		if(previewPath && (previewPath != null || previewPath.trim() != "")){
 			imagePath =staticFileServerPath + previewPath;
+			console.log("In associate content in the if  for " + learningContentObject.contentName + " - " +previewPath);
 		}
 		else{
 		
@@ -249,15 +251,15 @@
 			else if (content_type.toUpperCase() == 'LINK') {
 				imagePath = '../../../resources/images/preview/link.png';
 			}
-			console.log("In associate content imagePath " + imagePath);
-			return imagePath;
+			console.log("In associate content finallly the imagePath is ------------>>>> " + imagePath);
 		}
+		return imagePath;
 	}
 	
 	function getDiv(learningContentObject){
 		
 			var staticFileServerPath = $("#staticFileServer").val();
-			console.log("Hello the getPreviewPath(learningContentObject) " + getPreviewPath(learningContentObject) );
+			//console.log("Hello the getPreviewPath(learningContentObject) " + getPreviewPath(learningContentObject) );
 			var readMoreLink = "";
 			
 			if(learningContentObject.contentDescription && learningContentObject.contentDescription.length > 150){
