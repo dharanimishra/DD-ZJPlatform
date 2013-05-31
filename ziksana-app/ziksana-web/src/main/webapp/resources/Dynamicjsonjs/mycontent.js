@@ -147,27 +147,44 @@ function getAllLearningContents(pageIndex) {
 function getDiv(learningContentObject) {
 
 	var viewer_url = '';
+	var preview_path = '';
 	content_type = learningContentObject.contentType.toUpperCase();
 
-	if (content_type == 'VIDEO' || content_type == 'AUDIO') {
+	if (content_type == 'VIDEO') {
 		viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
 				+ learningContentObject.id;
+		preview_path = '../../resources/images/preview/video.png';
+	} else if (content_type == 'AUDIO') {
+		viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
+				+ learningContentObject.id;
+		preview_path = '../../resources/images/preview/audio.png';
 	} else if (content_type == 'IMAGE') {
 		viewer_url = '/ziksana-web/zcourse/1/slides/'
 				+ learningContentObject.id;
-	} else if (content_type == 'DOC' || content_type == 'PPT'
-			|| content_type == 'PDF') {
+		preview_path = '../../resources/images/preview/image.png';
+	} else if (content_type == 'DOC') {
 		viewer_url = '/ziksana-web/zcourse/1/slides/'
 				+ learningContentObject.id;
-	} else if (content_type == 'LINK') {
+		preview_path = '../../resources/images/preview/doc.png';
+	} else if (content_type == 'PPT') {
+		viewer_url = '/ziksana-web/zcourse/1/slides/'
+				+ learningContentObject.id;
+		preview_path = '../../resources/images/preview/ppt.jpg';
+	} else if (content_type == 'PDF') {
+		viewer_url = '/ziksana-web/zcourse/1/slides/'
+				+ learningContentObject.id;
+		preview_path = '../../resources/images/preview/pdf.png';
+	}
+	else if (content_type == 'LINK') {
 		viewer_url = learningContentObject.contentUrl;
+		preview_path = '../../resources/images/preview/link.png';
 	}
 
 	var learningContentDiv = '<div id="createcontent-main" class="item All">'
 			+ '<p class="createcontenthead">'
 			+ learningContentObject.contentName
 			+ '</p><p class="createcontentimg">'
-			+ '<img src="../../resources/images/genetics.jpg" />'
+			+ '<img src="'+preview_path+'" />'
 			+ '</p>'
 			+ '<div class="description">'
 			+ '<a onclick="deleteContent('
@@ -195,8 +212,11 @@ function getPageDiv(noOfPages, filterType) {
 
 	pageDiv.empty();
 	for (i = 1; i <= noOfPages; i++) {
-		pageDiv.append('<span class="pagination_bar pactive"><a onClick="' + functionName + i
-				+ ')" href="#" id="btnpg1" class="swShowPageActive pagination_bar"></a></span>');
+		pageDiv
+				.append('<span class="pagination_bar pactive"><a onClick="'
+						+ functionName
+						+ i
+						+ ')" href="#" id="btnpg1" class="swShowPageActive pagination_bar"></a></span>');
 	}
 }
 
@@ -207,21 +227,25 @@ function deleteContent(content_id) {
 		var parameters = {
 			"contentId" : content_id
 		};
-		$.post(uri, parameters, function(data) {
-			console.log(data);	
-			if (data.response == 'success') {
-				window.location.href = "/ziksana-web/zcourse/1/mycontent";
-			} else {
-				$('#tempdiv1').html(
-						'<span style="color:red;">'
-								+ data.message + '</span>');
-			}
+		$
+				.post(
+						uri,
+						parameters,
+						function(data) {
+							console.log(data);
+							if (data.response == 'success') {
+								window.location.href = "/ziksana-web/zcourse/1/mycontent";
+							} else {
+								$('#tempdiv1').html(
+										'<span style="color:red;">'
+												+ data.message + '</span>');
+							}
 
-		});
+						});
 
 	}
 }
 
-$(function(){
+$(function() {
 	$('.show_in_fancybox, .google').fancybox();
 });
