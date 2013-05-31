@@ -222,11 +222,42 @@
 		$('#ContentPanel2').show();
 	}
 
-	
+	function getPreviewPath(learningContentObject){
+		var staticFileServerPath = $("#staticFileServer").val();
+		console.log("In associate content getPreviewPath" + staticFileServerPath);
+		var content_type = learningContentObject.contentType;
+		var previewPath = learningContentObject.screenshotPath;
+		var imagePath = '';
+		if(previewPath && "" != previewPath.trim()){
+			imagePath =staticFileServerPath + previewPath;
+		}
+		else{
+		
+			if (content_type.toUpperCase() == 'VIDEO') {
+				imagePath = '../../../resources/images/preview/video.png';
+			} else if (content_type.toUpperCase() == 'AUDIO') {
+				imagePath = '../../../resources/images/preview/audio.png';
+			} else if (content_type.toUpperCase() == 'IMAGE') {
+				imagePath = '../../../resources/images/preview/image.png';
+			} else if (content_type.toUpperCase() == 'DOC') {
+				imagePath = '../../../resources/images/preview/doc.png';
+			} else if (content_type.toUpperCase() == 'PPT') {
+				imagePath = '../../../resources/images/preview/ppt.jpg';
+			} else if (content_type.toUpperCase() == 'PDF') {
+				imagePath = '../../../resources/images/preview/pdf.png';
+			}
+			else if (content_type.toUpperCase() == 'LINK') {
+				imagePath = '../../../resources/images/preview/link.png';
+			}
+			console.log("In associate content imagePath " + imagePath);
+			return imagePath;
+		}
+	}
 	
 	function getDiv(learningContentObject){
 		
 			var staticFileServerPath = $("#staticFileServer").val();
+			console.log("Hello the getPreviewPath(learningContentObject) " + getPreviewPath(learningContentObject) );
 			var readMoreLink = "";
 			
 			if(learningContentObject.contentDescription && learningContentObject.contentDescription.length > 150){
@@ -239,7 +270,7 @@
 	
 				'<div class="associateleft f-l" style="width:100%;">'+
 					'<input name="learningContentToBeAssociated" type="checkbox" value="' + learningContentObject.id +'" style="border:1px solid;"/>'+
-					'<img src="'+ staticFileServerPath +  learningContentObject.thumbnailPicturePath +'/img1.jpg" alt="" border="4px solid #999;" style="vertical-align:middle;" class="associatesearchimg  all-box-shadow"/>'+
+					'<img src="'+ getPreviewPath(learningContentObject) +'" alt="" border="4px solid #999;" style="vertical-align:middle;" class="associatesearchimg  all-box-shadow"/>'+
 					'</div> <!--end of associtemleft-->'+
 	
 					'<div class="associateright f-l">'+

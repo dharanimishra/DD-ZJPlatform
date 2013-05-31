@@ -9,6 +9,7 @@ public class JSONLearningContent {
 	private String contentType;
 	private String contentURL;
 	private String thumbnailPicturePath;
+	private String screenshotPath;
 
 
 	public JSONLearningContent(LearningContent learningContent){
@@ -18,6 +19,7 @@ public class JSONLearningContent {
 		this.setContentURL(learningContent.getContentUrl());
 		this.id = Integer.parseInt(learningContent.getLearningContentId().getDisplayID());
 		this.setThumbnailPicturePath(learningContent.getThumbnailPicturePath());
+		this.setScreenshotPath(learningContent.getScreenshotPath());
 	}
 
 	
@@ -69,6 +71,16 @@ public class JSONLearningContent {
 
 	public void setThumbnailPicturePath(String thumbnailPicturePath) {
 		this.thumbnailPicturePath = thumbnailPicturePath;
+	}
+
+
+	public String getScreenshotPath() {
+		return screenshotPath;
+	}
+
+
+	public void setScreenshotPath(String screenshotPath) {
+		this.screenshotPath = screenshotPath;
 	}
 
 
