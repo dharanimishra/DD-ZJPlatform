@@ -333,7 +333,7 @@ function inputLimiter(e,allow) {
 						:</label>
 					<div class="controls">
 						<input type="text" autofocus
-							class="defaultvaluem treeRoot validate[required] "
+							class="defaultvaluem treeRoot validate[required]"
 							id="defaultvalue" maxlength="64"
 							style="width: 240px; margin-left: 10px; color: #666;"
 							tabindex="1" placeholder="Enter course name" />
@@ -407,7 +407,7 @@ function inputLimiter(e,allow) {
 			<div class="control-group" style="width: 65%">
 				<label class="control-label nexaf" for="Specify Tags" style="width:229px">Specify
 					Tags :</label>
-				<div class="controls">
+				<div class="controls" style="margin-left:229px">
 					<input type="text" class="tags" id="Ctagfield_course"
 						value="" />
 				</div>
@@ -613,4 +613,9 @@ function inputLimiter(e,allow) {
     top: 81px;
 }
 .uploadify-queue{margin-left:260px}
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{ 
+   .formErrorContent  {top: 0px;}
+}
+
 </style>

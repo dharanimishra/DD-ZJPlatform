@@ -264,17 +264,17 @@
 						<!--module form-->
 						<!--Course Name-->
 						<div class="control-group">
-							<label class="control-label nexaf" for="Course Name">Module
+							<label class="control-label nexaf" for="Course Name" style="width:120px">Module
 								Name :</label>
-							<div class="controls">
-								<input type="text" class="span6" id="Course_Module"
-									placeholder="Enter module name" style="margin-left: -45px;" />
+							<div class="controls" style="margin-left: 130px;">
+								<input type="text" class="validate[required]" id="Course_Module"
+									placeholder="Enter module name" maxlength="64" style="width:300px;" />
 							</div>
 						</div>
 
 						<!--end of course name-->
 
-						<br /> <label for="Course Description" class="labelclass"
+						  <label for="Course Description" class="labelclass"
 							style="font-weight: bold;"><b>Course Description :</b></label> <br />
 						<div class="_richTextShow">
 							<textarea id="Cmoduledescrte" name="editor1pageload"
@@ -318,9 +318,9 @@
 							</div>
 							<!--end of Subject Selection-->
 							<div class="control-group" style="width: 90%">
-								<label class="control-label nexaf" for="Specify Tags">Specify
+								<label class="control-label nexaf" for="Specify Tags" style="width:120px">Specify
 									Tags :</label>
-								<div class="controls">
+								<div class="controls" style="margin-left:130px;">
 									<input id="Addmoduletag" type="text" class="tags" value="" />
 								</div>
 							</div>
