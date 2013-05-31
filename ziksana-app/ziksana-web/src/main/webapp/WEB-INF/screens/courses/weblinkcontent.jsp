@@ -6,6 +6,8 @@
 	src="${staticFileServer}resources/js/custom/createcontent/addweblink.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/weblinkcontentjson.js"></script>
+	<script type='text/javascript'
+	src="${staticFileServer}resources/js/validation/jquery.validate.js"></script>
 <style>
 .tileheadaa {
 	margin-left: 20px;
@@ -267,5 +269,18 @@ a.remove_this:hover {
 	cursor: pointer !important;
 	width: 230px !important;
 }
+label.error{color:#d14836;font-size:12px}
 </style>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+      $("#createweblinkform").validate({
+        rules: {
+        	contentName: "required",
+        
+        	contentUrl: "required",
+        },
+		
+        });
+    });
+  </script>
