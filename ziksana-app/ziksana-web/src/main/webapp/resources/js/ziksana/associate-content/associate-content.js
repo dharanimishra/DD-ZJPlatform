@@ -18,7 +18,7 @@
 			itemsPerPage = $('#itemsToBeDisplayedPerPage').val();
 		}
 		//Uncomment following line it is only to test paginatio by setting it to 2 items per page
-		//itemsPerPage = 4;
+		//itemsPerPage = 1;
 		//else it will default to 5
 		console.log("Items per page set to" + itemsPerPage);
 	}
@@ -58,7 +58,7 @@
 
 	
 	function getOtherLearningContents(contentType, inPageIndex){
-		
+		//console.log("hkjhjkhjkhjkhkjhjhjhjkhkjhjkhjh");
 		forceToAssociateSelectedContent();
 		
 		if(!inPageIndex || "" == inPageIndex){
@@ -314,33 +314,34 @@
 		console.log("In getPageDiv noOfPages " + noOfPages + " pageIndex " + pageIndex + " filterType " + filterType);
 		var pageDiv = $('#pageNumbers');
 		var functionName = '';
-		if("ALL" == filterType){
+		if("ALL" == filterType.toUpperCase()){
 			functionName = 'getAllLearningContents(';
 		}
-		else if("VIDEO" == filterType || "LINK" == filterType){
+		else if("VIDEO" == filterType.toUpperCase() || "LINK" == filterType.toUpperCase()){
 			functionName = 'getLearningContentsByType(\''+ filterType + '\',';
 		}
-		if("OTHERS" == filterType){
+		if("OTHERS" == filterType.toUpperCase()){
 			functionName = 'getOtherLearningContents(\''+ filterType + '\',';
 		}
 		
 		pageDiv.empty();
 		for(i=1; i<=noOfPages; i++){
 				if(pageIndex == i){
-					pageDiv.append('<a onClick="' + functionName + i +')" href="#" id="btnpg1" class="swShowPageActive"></a>');
+					pageDiv.append('<a onClick="' + functionName + i +')" title="'+ i + '" href="#" id="btnpg1" class="swShowPageActive"></a>');
 				}
 				else{
-					pageDiv.append('<a onClick="' + functionName + i +')" href="#" id="btnpg1" class="swShowPage"></a>');
+					pageDiv.append('<a onClick="' + functionName + i +')" title="'+ i + '" href="#" id="btnpg1" class="swShowPage"></a>');
 				}
 		}
 	}
 	
 	function isItemPresent(childArrayString, contentItem){
+		//alert("childArrayString " + childArrayString + " contentItem " + contentItem);
 		if(!childArrayString){
 			return false;
 		}
 		var childArray = childArrayString.split(',');
-		if(childArray){
+		if(childArray.length > 0){
 			for(i = 0; i < childArray.length; i++){
 				//alert("Yes got it " + childArray[i] + "  "  + contentItem);
 				if(childArray[i] == contentItem){
@@ -348,7 +349,7 @@
 					return true;
 				}
 				else{
-					return false; 
+					continue; 
 				}
 			}
 		}
@@ -382,7 +383,6 @@
 			}
 			
 		}
-		
 		$('#selectedLearningContentList').val(selectedContents); 
 		console.log("selectedContents " + selectedContents + " selected component id is " + compId);
 		if(selectedContents == "" || !selectedContents){
