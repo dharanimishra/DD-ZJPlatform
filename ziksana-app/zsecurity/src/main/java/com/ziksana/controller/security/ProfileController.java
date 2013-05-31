@@ -65,29 +65,6 @@ public class ProfileController {
 		return modelAndView;
 		
 	}
-	@RequestMapping(value = "/1/profilepagebylang", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView showUserProfileFormByLang(
-			@RequestParam(value = "memberId", required = true) String memberId,
-			@RequestParam(value = "language", required = true) String language) {
-		ModelAndView modelAndView = new ModelAndView("profilepagesetup");
-		try{		
-			List<MemberProfile> profileList = new ArrayList<MemberProfile>();
-			
-			profileList = profileService.getMemberProfileList(Integer.parseInt(memberId));
-			Member member = memberService.getMemberByMemberId(Integer.parseInt(memberId));
-			modelAndView.addObject("applicationTitle", "User Profile Page creation");
-			modelAndView.addObject("profileList", profileList);
-			
-			modelAndView.addObject("member", member);
-			modelAndView.addObject("ms", mediaService.getMediaContents());
-		}
-		catch(ZiksanaException zexception){
-
-			LOGGER.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
-		}
-		return modelAndView;
-		
-	}
 	
 	@RequestMapping(value = "/1/manageprofile/{memberId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView showManageProfile(@PathVariable int memberId) {

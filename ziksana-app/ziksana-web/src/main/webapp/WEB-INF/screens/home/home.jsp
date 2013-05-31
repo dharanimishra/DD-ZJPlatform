@@ -325,7 +325,7 @@
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
-						To DO List</p>
+						To Dos List</p>
 
 
 
@@ -378,7 +378,7 @@
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
-						To DO List</p>
+						To Dos List</p>
 
 					<p class="pull-right" style="color: #fff;">
 						<a style="cursor: pointer"> <img

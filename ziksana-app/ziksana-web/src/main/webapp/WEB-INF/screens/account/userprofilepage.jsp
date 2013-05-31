@@ -565,7 +565,6 @@ function clearProfileForm(){
 }
 
 	function updateUserProfile() {
-		
 		var memberId = $('#memberIdValue').text();
 		var alternateEmailId = $('#alternateEmailId').val();
 		var securityQuestionOne = $("#securityQuestionOne").val();
@@ -582,7 +581,11 @@ function clearProfileForm(){
 		secondAnswerValidation(securityAnswerTwo);
 		isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');
 		checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo);
-		if(firstQuestionValidation(securityQuestionOne) && firstAnswerValidation(securityAnswerone) && secondQuestionValidation(securityQuestionTwo) && secondAnswerValidation(securityAnswerTwo) && checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo) && isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />')){
+		if(firstQuestionValidation(securityQuestionOne) && firstAnswerValidation(securityAnswerone) && secondQuestionValidation(securityQuestionTwo) && secondAnswerValidation(securityAnswerTwo) && checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo))
+		{
+			if($('#errorEmailId').text().length != 0  || $('#erroralternateEmailId').text().length != 0 ){
+				
+			}else{
 			$.post( '<c:url value='/profile/1/updateprofile'/>'
 			        , {'memberId':memberId,'alternateEmailId':alternateEmailId,'firstSecurityQuestionId':securityQuestionOne,'firstSecurityAnswer':securityAnswerone,'secondSecurityQuestionId':securityQuestionTwo,'secondSecurityAnswer':securityAnswerTwo,'profileImage':profileAssoc_Image}
 			        , function( data )
@@ -597,6 +600,7 @@ function clearProfileForm(){
 					
 			        }
 					 ); 
+			}
 		}	
 		
 
@@ -684,28 +688,25 @@ function clearProfileForm(){
 		
 		if(alternateEmailId != ''){
 			if (primaryEmailId == alternateEmailId) {
-				console.log("hi");
+				
 				$('#errorEmailId').html("Alternate email id should not be same as Primary email id");
-				return false;
+				
 			}else{
 				if(("#errorEmailId.inside:contains('email')")){
 				document.getElementById("errorEmailId").innerHTML = '';
-				return true;
+				
 				}
 			}
 			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
 			if(alternateEmailId.match(mailformat))  
 			{  
-				return true;
 				document.getElementById("erroralternateEmailId").innerHTML = '';
+				
 			}else{
 				$('#erroralternateEmailId').html("Invalid email format");
-				return false;
 				
 			}
 		
-	}else{
-		return true;
 	}
 	}
 	

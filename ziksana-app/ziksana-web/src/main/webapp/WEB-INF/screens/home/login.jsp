@@ -222,18 +222,25 @@ function validate(){
 	
 	
 }
-$(document).ready(function () {
 
-    // Populate user based on cookie language
-    var language = $.cookies.get('org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE');
-    $('#language').val(language)
-            .change(function () {
-                var newHref = window.location.href;
-                if (newHref.indexOf('?siteLanguage') > 0) {
-                    newHref = newHref.substring(0, newHref.indexOf('?siteLanguage'));
-                }
-                newHref += '?siteLanguage=' + $('#language').val();
-                window.location.href = newHref;
-            });
-});    
+$(document).ready(function(e) {
+
+	
+	   var allcookies = document.cookie;
+	   //console.log("All Cookies : " + allcookies );
+
+	   // Get all the cookies pairs in an array
+	   cookiearray  = allcookies.split(';');
+
+	   // Now take key value pair out of this array
+	  value = new Array();
+	   for(var i=0; i<cookiearray.length; i++){
+	      name = cookiearray[i].split('=')[0];
+	      value.push(cookiearray[i].split('=')[1]);
+	      
+	      
+	
+	}
+	   console.log(value);
+	}); 
 </script>

@@ -106,7 +106,9 @@ function get_and_populate_announcements(val){
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
-					for(var i=0;i<totalSize/3;i++){
+					noOfPages = totalSize/3;
+					console.log(noOfPages);
+					for(var i=0;i<noOfPages;i++){
 						
 						paginationString+= "<span onclick='get_and_populate_announcements(calculatePage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
 						
@@ -119,7 +121,7 @@ function get_and_populate_announcements(val){
 					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
-					announcement_all+="<p class='announcementdate pull-right'>"+short_announcement($(this).find("description").text())+"</p>";
+					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
 					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					
@@ -127,7 +129,11 @@ function get_and_populate_announcements(val){
 				
 				$('#announcement_box_all').html(announcement_all);
 				closeAnnouncement+= "<img  onclick='close_announcements()' id='sample_editable_1_new' class='addtodobtn' title='Close Announcement' style='height: 26px; margin-top: -2px;float:right;cursor:pointer' src='/ziksana-web/resources/images/icons/close.png'>";
-				$('#announcementPagination').html(paginationString);
+				if(noOfPages > 1){
+					$('#announcementPagination').html(paginationString);
+				}else{
+					$('#announcementPagination').html("");
+				}
 				$('#annaouncementFooter').html(closeAnnouncement);
 				if(val == 0){					
 					$('#pag_active0').addClass('pactive');
@@ -172,7 +178,8 @@ function get_and_populate_universityannouncements(val){
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
-					for(var i=0;i<totalSize/3;i++){
+					noOfPages = totalSize/3;
+					for(var i=0;i<noOfPages;i++){
 						
 						paginationString+= "<span onclick='get_and_populate_announcements(calculatePage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
 						
@@ -184,14 +191,18 @@ function get_and_populate_universityannouncements(val){
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
-					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo' style='color:#fff'>Read More</a></div>";
+					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					
 				});
 				
 				$('#announcement_box_all').html(announcement_all);
 				closeAnnouncement+= "<img  onclick='close_announcements()' id='sample_editable_1_new' class='addtodobtn' title='Close Announcement' style='height: 26px; margin-top: -2px;float:right;cursor:pointer' src='/ziksana-web/resources/images/icons/close.png'>";
-				$('#announcementPagination').html(paginationString);
+				if(noOfPages > 1){
+					$('#announcementPagination').html(paginationString);
+				}else{
+					$('#announcementPagination').html("");
+				}
 				$('#annaouncementFooter').html(closeAnnouncement);
 				if(val == 0){					
 					$('#pag_active0').addClass('pactive');
@@ -224,7 +235,8 @@ function get_and_populate_departmentannouncements(val){
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
-					for(var i=0;i<totalSize/3;i++){
+					noOfPages = totalSize/3;
+					for(var i=0;i<noOfPages;i++){
 						
 						paginationString+= "<span onclick='get_and_populate_announcements(calculatePage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
 						
@@ -236,14 +248,18 @@ function get_and_populate_departmentannouncements(val){
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
-					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo' style='color:#fff'>Read More</a></div>";
+					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					
 				});
 				
 				$('#announcement_box_all').html(announcement_all);
 				closeAnnouncement+= "<img  onclick='close_announcements()' id='sample_editable_1_new' class='addtodobtn' title='Close Announcement' style='height: 26px; margin-top: -2px;float:right;cursor:pointer' src='/ziksana-web/resources/images/icons/close.png'>";
-				$('#announcementPagination').html(paginationString);
+				if(noOfPages > 1){
+					$('#announcementPagination').html(paginationString);
+				}else{
+					$('#announcementPagination').html("");
+				}
 				$('#annaouncementFooter').html(closeAnnouncement);
 				if(val == 0){					
 					$('#pag_active0').addClass('pactive');
@@ -275,8 +291,8 @@ function get_and_populate_courseannouncements(val){
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
-					
-					for(var i=0;i<totalSize/3;i++){
+					noOfPages = totalSize/3;
+					for(var i=0;i<noOfPages;i++){
 						
 						paginationString+= "<span onclick='get_and_populate_announcements(calculatePage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
 						
@@ -289,14 +305,19 @@ function get_and_populate_courseannouncements(val){
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
-					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' href='#collapseTwo' style='color:#fff'>Read More</a></div>";
+					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					
 				});
 				
 				$('#announcement_box_all').html(announcement_all);
 				closeAnnouncement+= "<img  onclick='close_announcements()' id='sample_editable_1_new' class='addtodobtn' title='Close Announcement' style='height: 26px; margin-top: -2px;float:right;cursor:pointer' src='/ziksana-web/resources/images/icons/close.png'>";
-				$('#announcementPagination').html(paginationString);
+				if(noOfPages > 1){
+					$('#announcementPagination').html(paginationString);
+				}else{
+					$('#announcementPagination').html("");
+				}
+				
 				$('#annaouncementFooter').html(closeAnnouncement);
 				if(val == 0){					
 					$('#pag_active0').addClass('pactive');
@@ -347,7 +368,8 @@ function get_and_populate_todo(val){
 				$.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
 					no_of_available_todo = size;
 					paginationString ="";
-					for(var i=0;i<size/5;i++){
+					noOfPages = size/5;
+					for(var i=0;i<noOfPages;i++){
 						
 						paginationString+= "<span onclick='get_and_populate_todo(calculateTodoPage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
 						
@@ -355,8 +377,9 @@ function get_and_populate_todo(val){
 										
 					var ouputMoreTodo="";
 			
+					var ouputEmpty = "<span style='margin-left:250px;font-family:verdana;color:white;'>No To-Dos to display</span>";
 					
-					if(no_of_available_todo == 0){$('#todos_placeholder').html(ouputMoreTodo);} else{
+					if(no_of_available_todo == 0){$('#todos_placeholder').html(ouputEmpty);} else{
 					
 						ouputMoreTodo+="<table id='todo_all_tablerows' class='table table-hover table-striped'>";
 						ouputMoreTodo+="<tbody>";
@@ -366,8 +389,9 @@ function get_and_populate_todo(val){
 						 });
 						
 						 ouputMoreTodo+="</tbody></table>";
+						 if(noOfPages > 1){
 						 ouputMoreTodo+="<div id='pagingControls' style='float:right;margin-right:50px;'>"+paginationString+"</div>";
-					
+						 }
 						$('#todos_placeholder').html(ouputMoreTodo);
 						if(val == 0){		
 							$('#pag_active0').addClass('pactive');}else if(val == 5){$('#pag_active1').addClass('pactive');	
@@ -466,9 +490,9 @@ function get_and_populate_todo_value(val){
 			
 				$.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
 					no_of_available_todo = size;
-					
+					noOfPages = size/5;
 					paginationMoreString ="";
-					for(var i=0;i<size/5;i++){
+					for(var i=0;i<noOfPages;i++){
 						
 						paginationMoreString+= "<span onclick='get_and_populate_todo_value(calculateTodoPage("+i+"))' id='pag_active_more"+i+"' class='pagination_bar'/>";
 						
@@ -477,8 +501,8 @@ function get_and_populate_todo_value(val){
 					
 					var ouputEmptyTodo="";
 					var updateEditValue="";
-					
-					if(no_of_available_todo == 0){$('#todos_placeholder_more').html(ouputEmptyTodo);} else{
+					var ouputEmpty = "<span style='margin-left:250px;font-family:verdana;color:white;'>No To-Dos to display</span>";
+					if(no_of_available_todo == 0){$('#todos_placeholder_more').html(ouputEmpty);} else{
 					
 						ouputEmptyTodo+="<table id='todo_all_tablerows' class='table table-hover table-striped' >";
 						ouputEmptyTodo+="<tbody>";
@@ -486,7 +510,7 @@ function get_and_populate_todo_value(val){
 							
 							 ouputEmptyTodo+="<tr id='moretodorow"+$(this).find('id').text()+"' style='height:40px;'>";
 							 ouputEmptyTodo+="<td width='50px'><div ><input type='checkbox' id='c"+index+2 +"' onchange='handle(this,"+$(this).find('id').text()+");' /> <label for='c"+index+2 +"'><span></span></label></td><td width='200px'><div id='category_value"+$(this).find("id").text()+"'>"+$(this).find("categoryName").text()+"</div></td>";
-							 ouputEmptyTodo+="<td width='200px'><span id='categoryDescription"+$(this).find("id").text()+"' class='todoinfo-decription' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_string($(this).find("subject").text())+"</span></td><td width='75px'><a id='todoEdithyperlink"+index+"' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;disabled:true;'>Edit</a></td><td width='75px'></td></div>";
+							 ouputEmptyTodo+="<td width='200px'><span id='categoryDescription"+$(this).find("id").text()+"' class='todoinfo-decription' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_string($(this).find("subject").text())+"</span></td><td width='75px'><a id='todoEdithyperlink"+index+"' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Edit</a></td><td width='75px'></td></div>";
 							 
 							 ouputEmptyTodo+="</tr>";
 							 ouputEmptyTodo+="<tr style='display:none;'><td></td></tr>";
@@ -501,7 +525,9 @@ function get_and_populate_todo_value(val){
 							
 						 });
 						 ouputEmptyTodo+="</tbody></table>";
+						 if(noOfPages > 1){
 						 ouputEmptyTodo+="<div id='pagingControlsMore' style='float:right;margin-right:50px;'>"+paginationMoreString+"</div>";
+						 }
 						$('#todos_placeholder_more').html(ouputEmptyTodo);
 						
 						if(val == 0){		
@@ -683,9 +709,9 @@ function addTodo()
        {
        	
           if(data == 'TODO INSERTED SUCCESSFULLY'){
-        	  console.log(data);
+        	  
         	  $(".managetodo").click();
-
+        	 $('input:text').val('');
           }
           if(data == 'Insert query problem'){
         	  console.log(data);
@@ -702,7 +728,7 @@ function saveRow_hideEdit(v)
 	
 	
 	 editupdate_todo_category = $('#update_todo_categories'+v+'').val();
-	 editupdate_todo_description =encodeURIComponent( $('#todo_edit_description'+v+'').val() );
+	 editupdate_todo_description = $('#todo_edit_description'+v+'').val() ;
 	 selectedRowId = v;
 	 console.log(editupdate_todo_category);
 	 console.log( editupdate_todo_description );
@@ -730,12 +756,7 @@ function saveRow_hideEdit(v)
 		             }
 		 
 		        });  
-				for(var i=0;i<5;i++){
-					   
-					   $('#todoEdithyperlink'+i+'').attr('onclick');
-					   $('#todoEdithyperlink'+i+'').css('color','#fff');
-					  
-					 }
+				
 	
 	
 }
@@ -769,6 +790,7 @@ function hideTodoAdd(){
 	$('#add_new_category_form').hide();
 	$('#todo_categories').show();
 	$('#add_todo_fields_container').hide();
+	$('input:text').val('');
 }
 //######Edit and UPDATE
 
@@ -788,7 +810,12 @@ function add_new_category_item_update(v){
 	$('select#update_todo_categories'+v+'').val(capitalize($('#update_todo_category_name').val()));
 }
 function edit_todorow_and_update(rowId){
-	
+	for(var i=0;i<5;i++){
+		   
+		   $('#todoEdithyperlink'+i+'').removeAttr('onclick');
+		   $('#todoEdithyperlink'+i+'').css('color','#000');
+		  
+		 }
 	selectedRowId = rowId;
 	
 	$('#moretodorow'+rowId+'').hide();
@@ -813,7 +840,7 @@ function showRow_hideEdit(val){
 	
 	$('#add_new_edit_category_form'+val+'').hide();
 	$('select#update_todo_categories'+val+'').show();
-	
+	$(".managetodo").click();
 	
 }
 

@@ -1,8 +1,6 @@
 
 
 <!DOCTYPE html>
-<%@page pageEncoding="UTF-8"%>
-
 <html>
 <head>
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
