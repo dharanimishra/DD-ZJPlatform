@@ -334,6 +334,20 @@
 				}
 		}
 	}
+	
+	function isItemPresent(childArrayString, contentItem){
+		var childArray = childArrayString.split(',');
+		for(i = 0; i < childArray.length; i++){
+			//alert("Yes got it " + childArray[i] + "  "  + contentItem);
+			if(childArray[i] == contentItem){
+				//alert("Yes got it");
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	}
 	function associateContents(){
 		
 		//var array = document.getElementsByName('learningContentToBeAssociated[]');
@@ -347,11 +361,14 @@
 			}
 		}
 		
+		var childArray = tree.getSubItems('COMPONENT_' + compId );
 		//check if the conent is already associated if yes then throw an alert and dont allow the user to duplicate.
 		//could have done it in the loop above but for simplicity doing it again
 		for(i=0;i < selectedContentCheckBoxes.length;i++){
 			var contentItem = selectedContentCheckBoxes[i].value;
-			if(tree.getItemText('CONTENT_'+contentItem )){
+			
+			
+			if(isItemPresent(childArray, 'CONTENT_'+ contentItem )){
 				alert("The " + tree.getItemText('CONTENT_'+contentItem )+ " is already associated with " + tree.getItemText(tree.getSelectedItemId()) );
 				return;
 			}
@@ -359,7 +376,6 @@
 		}
 		
 		$('#selectedLearningContentList').val(selectedContents); 
-		//alert("selectedContents " + selectedContents + " selected component id is " + compId);
 		console.log("selectedContents " + selectedContents + " selected component id is " + compId);
 		if(selectedContents == "" || !selectedContents){
 			alert("No content selected. Please select content to be associated.");

@@ -27,7 +27,7 @@ function onButtonClick(menuitemId, type) {
 		var courseId = $('#courseid').val();
 		componentId = tree.getSelectedItemId();
 		var selectedComponentId = document.getElementById('selectedLearningComponentId').value = componentId.split('_')[1];
-		
+		//alert("selectedComponentId " + selectedComponentId);
 		//TODO following code is commented because right now we are handling the display through hidden parameter but in future we will need to do it at real time
 		//alert("selectedComponentId " + selectedComponentId);
 /*	
