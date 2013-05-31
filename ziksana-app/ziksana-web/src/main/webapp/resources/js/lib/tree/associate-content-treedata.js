@@ -113,8 +113,21 @@ function onButtonClick(menuitemId, type) {
 			console.log("parameters.length " + parameters.length);
 			
 			//return;
-			
 			$.post(uri, parameters, function(data) {
+				console.log(data);
+				if (data.response == 'success') {
+					course_id = data.id;
+					window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
+							+ CourseId ;
+
+				} else {
+					$('#tempdiv1').html(
+							'<span style="color:red;">'
+									+ "Failed" + '</span>');
+				}
+			});
+					
+/*			$.post(uri, parameters, function(data) {
 				console.log(data);
 				if (data.response == 'success') {
 					course_id = data.id;
@@ -125,8 +138,11 @@ function onButtonClick(menuitemId, type) {
 				}
 				//alert("data.message " + data.message);
 			});
+*/
+			
 			tree.deleteItem(tree.getSelectedItemId(), true);
-
+			$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
+			$('#ContentPanel2').hide();
 		}
 	}else if (menuaction == "Associate_Content") {
 		alert("in associate content");

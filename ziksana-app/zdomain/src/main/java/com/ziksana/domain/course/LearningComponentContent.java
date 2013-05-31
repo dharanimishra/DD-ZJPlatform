@@ -30,6 +30,7 @@ public class LearningComponentContent extends AuditHistory {
 		this.baseLearningContent = baseLearningContent;
 	}
 
+	private Integer id;
 	private ZID learningComponentContentId;
 	private Date creationDate = null;
 	private CourseStatus courseStatus = null;
@@ -261,6 +262,15 @@ public class LearningComponentContent extends AuditHistory {
 
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+		setLearningComponentContentId(id);
 	}
 
 	/*
