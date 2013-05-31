@@ -826,7 +826,7 @@ $(document).ready(function() {
     if (password.length < 6) { 
 		$('#errorNewPassword').removeClass();
 		/*$('#result').addClass('short')*/
-		$('#errorNewPassword').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span></span><br/><span style="color:orange;">Password should be at least 8 characters</span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span></span><br/><span style="color:orange;"><fmt:message key="resetpass.8char"/></span>');
 		return false;
 	}
     
@@ -854,16 +854,16 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('weak');
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;">Weak password  </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/> </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
 		return false;			
 	} else if (strength == 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('good');
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><span style="padding-left:5px;color:green;">Good</span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.good"/></span>');
 		return true;	
 	} else {
 		$('#errorNewPassword').removeClass();
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><span style="padding-left:5px;color:green;">Strong</span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.strong"/></span>');
 		return true;
 	}
 }
@@ -875,12 +875,12 @@ function checkpass()
 	if(passwordStrength){
 		
 		if($('#currentPassword').val()==''){
-			$('#errorCurrentPassword').html("Enter Current Password");
+			$('#errorCurrentPassword').html("<fmt:message key="Enter.cur.pass"/>");
 			
 		}
 		
 		else if ($('#newPassword').val()!=$('#retypePassword').val()){
-			$('#errorRetypePassword').html("Passwords do not match");
+			$('#errorRetypePassword').html("<fmt:message key="resetpass.pass.do.match"/>");
 			
 			
 		}else{
@@ -901,7 +901,7 @@ function checkpass()
 			        	}else{
 			        	if(data != 'Password reset is not successful.'){
 			        		
-			        		$('#passwordResetResponse').html("Password reset is successful.");
+			        		$('#passwordResetResponse').html("<fmt:message key="resetpass.successful"/>");
 			        		$('#passwordUpdatedDate').html(data);
 			        		
 			        		setTimeout("showMsg()",3000);
@@ -918,7 +918,7 @@ function checkpass()
 		
 	}else{
 		if($('#newPassword').val() == ''){
-		$('#errorNewPassword').html("Please Enter Password");
+		$('#errorNewPassword').html("<fmt:message key="resetpass.enterpass"/>");
 		
 		}
 	}
