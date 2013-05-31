@@ -6,11 +6,9 @@
 	src="${staticFileServer}resources/Dynamicjsonjs/z_simulation_message.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/Addmoduledynamicjson.js"></script>
-<script type='text/javascript'
-	src='${staticFileServer}resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
 
-<script type='text/javascript'
-	src='${staticFileServer}resources/js/lib/jquery/jquery-ui-1.10.1.custom.min.js'></script>
+
+
 <!--Script for the Tree -->
 <script src="${staticFileServer}resources/js/lib/tree/Common/common.js"></script>
 <script src="${staticFileServer}resources/js/lib/tree/Common/dtree.js"></script>

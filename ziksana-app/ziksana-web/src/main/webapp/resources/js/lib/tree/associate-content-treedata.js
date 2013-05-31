@@ -47,37 +47,44 @@ function onButtonClick(menuitemId, type) {
 		//alert("content_type " + content_type);
 
 		
-		if (content_type == 'VIDEO') {
+		if (content_type.toUpperCase() == 'VIDEO') {
 			viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
 					+ learningContentId;
-			preview_path = '../../resources/images/preview/video.png';
-		} else if (content_type == 'AUDIO') {
+		} else if (content_type.toUpperCase() == 'AUDIO') {
 			viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
 					+ learningContentId;
-			preview_path = '../../resources/images/preview/audio.png';
-		} else if (content_type == 'IMAGE') {
+		} else if (content_type.toUpperCase() == 'IMAGE') {
 			viewer_url = '/ziksana-web/zcourse/1/slides/'
 					+ learningContentId;
 			preview_path = '../../resources/images/preview/image.png';
-		} else if (content_type == 'DOC') {
+		} else if (content_type.toUpperCase() == 'DOC') {
 			viewer_url = '/ziksana-web/zcourse/1/slides/'
 					+ learningContentId;
 			preview_path = '../../resources/images/preview/doc.png';
-		} else if (content_type == 'PPT') {
+		} else if (content_type.toUpperCase() == 'PPT') {
 			viewer_url = '/ziksana-web/zcourse/1/slides/'
 					+ learningContentId;
-			preview_path = '../../resources/images/preview/ppt.jpg';
-		} else if (content_type == 'PDF') {
+		} else if (content_type.toUpperCase() == 'PDF') {
 			viewer_url = '/ziksana-web/zcourse/1/slides/'
 					+ learningContentId;
-			preview_path = '../../resources/images/preview/pdf.png';
 		}
-		else if (content_type == 'LINK') {
+		else if (content_type.toUpperCase() == 'LINK') {
 			viewer_url =  getLearningContentObject(learningContentId).contentUrl;
-			preview_path = '../../resources/images/preview/link.png';
 		}
 
-		$.post(viewer_url);
+		
+		// open in lightbox
+		
+		 $.fancybox({
+				'width': '85%',
+				'height': '500',
+				'autoScale': true,
+				'transitionIn': 'fade',
+				'transitionOut': 'fade',
+				'type': 'iframe',
+				'href': viewer_url
+				
+			});
 		
 		
 	} else if (menuaction == "Delete") {
