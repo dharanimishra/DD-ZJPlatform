@@ -177,7 +177,7 @@
 
 	function getAllLearningContents(pageIndex){
 
-		forceToAssociateSelectedContent();
+		forceToAssociateSelectedContent(); 
 		
 		if(!pageIndex || "" == pageIndex){
 			pageIndex = defaultPageIndex;
@@ -397,7 +397,7 @@
 	}
 	
 	function resetCheckBoxes(){
-		//$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
+		$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
 		var courseId = $('#courseid').val();
 		var uri = '/ziksana-web/zcourse/1/repositorycontents/' + courseId ;
 
