@@ -72,7 +72,7 @@ table tr td {
 <div class="Clearfix"></div>
 <div id="contentpanel">
 	<div class="tilecontainer pull-left"
-		style="margin-top: 40px; width: 140px;">
+		style="margin-top: 40px; width: 140px;margin-left:10px;">
 
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
@@ -99,15 +99,14 @@ table tr td {
 		<div class="Clearfix"></div>
 	</div>
 	<!--end of tilescontainer-->
-
-	<!--end of tilescontainer-->
-	<div class="contentarea pull-right" style="width: 940px;">
+ 
+	<div class="contentarea pull-right" style="width: 940px;margin-right:25px">
 		<div class="createcontentwrapper">
 			<div class="uploadcontent1">
 
 				<div class="createcontentpanelhead">Upload Content</div>
 				<!--end of panel head-->
-				<div class="draganddrop pull-left">
+				<div class="draganddrop pull-left" style=height:325px>
 					<div style="margin-top: 30px; margin-left: 10px;">
 						<!-- <div style="width: 122px; height: 100px; float: left">
 								<img id="course_thumbnail_image" style="margin-left: 65px"

@@ -63,7 +63,7 @@ table tr td {
 <div class="Clearfix"></div>
 <div id="contentpanel">
 	<div class="tilecontainer pull-left"
-		style="margin-top: 40px; width: 140px;">
+		style="margin-top: 40px; width: 140px;margin-left:10px;">
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
 				<a href="/ziksana-web/zcourse/1/createcontent"> <img
@@ -92,7 +92,7 @@ table tr td {
 	</div>
 	<!--end of tiles container-->
 
-	<div class="contentarea pull-right" style="width: 940px;">
+	<div class="contentarea pull-right" style="width: 940px;margin-right:25px">
 		<div class="createcontentwrapper">
 			<form id="createweblinkform" method="post"
 				action="/ziksana-web/zcourse/1/weblinkcontents">
@@ -111,7 +111,7 @@ table tr td {
 					<div class="weblinkcontainer">
 						<div class="uploadroweven" style="padding: 10px;">
 							<div class="uploadphoto pull-left" style="width: 350px">
-								<img id="thumbnail_image" src="${staticFileServer}resources/images/genetics.jpg" style="width: 100px;" align="left" />
+								<img id="thumbnail_image" src="${staticFileServer}resources/images/genetics.jpg" style="width: 100px; margin-bottom: 5px;" align="left" />
 								<div id="message"></div>
 								<div id="thubmnail_upload_message"></div>
 								<div id="loaderText"></div>
@@ -180,18 +180,18 @@ table tr td {
 								<li>
 								<input type="hidden" name="contentPath" value="'++'"/>
 								<input type="text" placeholder="Enter Name"
-									name="contentName"
+									name="contentName" class="validate[required]"
 									style="height: 25px; margin-top: 15px; width: 170px;" /></li>
 								<li><input type="text" placeholder="http://" id="linkurl" name="contentUrl"
-									style="height: 25px; margin-top: 15px; width: 170px;" /></li>
+									style="height: 25px; margin-top: 15px; width: 170px;" class="validate[required]"/></li>
 								<li><a href="#" class="editdetailsweblink">Edit Details</a></li>
 							</ul>
 						</div>
 						<!--end of rowfields-->
 						<div class="clearfix"></div>
 						<div class="editslide pull-left">
-							<textarea rows="4" cols="12" name="contentDescription"
-								style="width: 374px; margin-bottom: 10px;">Details for the Web link </textarea>
+							<textarea rows="4" cols="12" name="contentDescription" 
+								style="width: 374px; margin-bottom: 10px; margin-left: 10px;">Details for the Web link </textarea>
 						</div>
 						<div class="editslide pull-left" style="margin-left: 5px;">
 							<input type="text" placeholder="Specify Tags" name="contentTag"

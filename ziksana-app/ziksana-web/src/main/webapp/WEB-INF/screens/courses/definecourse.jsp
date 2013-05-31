@@ -24,16 +24,17 @@
 
 <script type="text/javascript">
 	$('document').ready(function() {
-		$('#Duration').spinner({
+		$('#spinner').spinner({
+			numberFormat: "n",
 			min : 0,
 			max : 20,
-			step : 1,
+			
 		});
-		$('#Credits').spinner({
+		$('#spinner2').spinner({
 			min : 0,
 			max : 20
 		});
-		$('#ExtraCredits').spinner({
+		$('#spinner3').spinner({
 			min : 0,
 			max : 20
 		});
@@ -269,6 +270,7 @@
     width: 92px;
 }
 .remove:hover{width: 92px;}
+.ui-spinner-down,.ui-spinner-up{text-decoration: none !important;}
 </style>
 
 <div class="navheadlp" style="padding-left: 151px;">
@@ -315,7 +317,7 @@
 					<div class="controls">
 						<input type="text" autofocus
 							class="defaultvaluem treeRoot validate[required] "
-							id="defaultvalue"
+							id="defaultvalue" maxlength="64"
 							style="width: 240px; margin-left: 10px; color: #666;"
 							tabindex="1" placeholder="Enter course name" />
 					</div>
@@ -397,7 +399,7 @@
 				<label class="control-label nexaf" for="Course Credits"
 					style="width: 230px;">Specify Course Credits :</label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner" value="1"
+					<input type="text" name="spi" id="spinner" value="0"
 						style="width: 50px;" />
 				</div>
 			</div>
@@ -406,7 +408,7 @@
 					style="margin-left: 88px; width: 220px;">Specify Course
 					Extra Credits :</label>
 				<div class="controls" style="width: 212px;">
-					<input type="text" name="spi" id="spinner2" value="1"
+					<input type="text" name="spi" id="spinner2" value="0"
 						style="width: 50px;" />
 				</div>
 			</div>
@@ -415,7 +417,7 @@
 				<label class="control-label nexaf" for="input" style="width: 230px;">Specify
 					Course Duration :</label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner3" value="1"
+					<input type="text" name="spi" id="spinner3"  value="0"
 						style="width: 50px;" />
 				</div>
 			</div>
