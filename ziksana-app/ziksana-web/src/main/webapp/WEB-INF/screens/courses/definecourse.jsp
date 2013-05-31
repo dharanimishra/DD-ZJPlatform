@@ -249,7 +249,23 @@
 		//}
 	} // End getArea()
 </script>
+<script>
+function inputLimiter(e,allow) {
+    var AllowableCharacters = '';
+     if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+       var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+    if (k!=13 && k!=8 && k!=0){
+        if ((e.ctrlKey==false) && (e.altKey==false)) {
+        return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+        } else {
+        return true;
+        }
+    } else {
+        return true;
+    }
+}
 
+</script>
 <style>
 .uploadify {margin-left:260px;}
 .remove {
@@ -270,7 +286,8 @@
     width: 92px;
 }
 .remove:hover{width: 92px;}
-.ui-spinner-down,.ui-spinner-up{text-decoration: none !important;}
+ 
+
 </style>
 
 <div class="navheadlp" style="padding-left: 151px;">
@@ -355,9 +372,9 @@
 			<div class="control-group" style="margin-top: 20px;">
 				<div>
 					<label class="labelclass nexaf f-l"> Course Area : </label> <label
-						class="labelclass nexaf f-l" style="margin-left: 156px;">
+						class="labelclass nexaf f-l" style="margin-left: 217px;">
 						Course Subject: </label> <label class="labelclass nexaf f-l"
-						style="margin-left: 142px;"> Course Topic: </label>
+						style="margin-left:200px;"> Course Topic: </label>
 				</div>
 
 				<div class="clearfix"></div>
@@ -399,8 +416,8 @@
 				<label class="control-label nexaf" for="Course Credits"
 					style="width: 230px;">Specify Course Credits :</label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner" value="0"
-						style="width: 50px;" />
+					<input type="text" name="spi" id="spinner" value="0" 
+						style="width: 50px;" maxlength="2" onkeypress="return inputLimiter(event,'Numbers')" />
 				</div>
 			</div>
 			<div class="control-group f-l">
@@ -408,8 +425,8 @@
 					style="margin-left: 88px; width: 220px;">Specify Course
 					Extra Credits :</label>
 				<div class="controls" style="width: 212px;">
-					<input type="text" name="spi" id="spinner2" value="0"
-						style="width: 50px;" />
+					<input type="text" name="spi" id="spinner2" value="0" 
+						style="width: 50px;"  maxlength="2" onkeypress="return inputLimiter(event,'Numbers')"/>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -418,7 +435,7 @@
 					Course Duration :</label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner3"  value="0"
-						style="width: 50px;" />
+						style="width: 50px;" maxlength="2" onkeypress="return inputLimiter(event,'Numbers')" />
 				</div>
 			</div>
 
@@ -583,7 +600,7 @@
 <style>
 .select2-container {
     
-    margin-right: 10px!important;
+    margin-right: 70px!important;
     
     width: 235px;
 }

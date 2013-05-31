@@ -362,6 +362,7 @@ div.tagsinput div input{line-height: 20px; height: 20px; font-size: 11px; margin
                     -moz-box-shadow: inset 0px 1px 2px #FFF; -webkit-box-shadow: inset 0px 1px 2px #FFF; box-shadow: inset 0px 1px 2px #FFF;}
         .ui-spinner-up .ui-icon{ width: 16px; height: 13px; }
         .ui-spinner-down .ui-icon{ width: 16px; height: 10px; padding-right: 1px;}
+.ui-spinner-down,.ui-spinner-up{text-decoration: none !important;}
 /* eof spinner */
 
 /* Row form - new */
