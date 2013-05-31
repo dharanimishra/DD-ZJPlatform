@@ -69,10 +69,10 @@ function onButtonClick(menuitemId, type) {
 					+ learningContentId;
 		}
 		else if (content_type.toUpperCase() == 'LINK') {
-			viewer_url =  getLearningContentObject(learningContentId).contentUrl;
+			viewer_url =  getLearningContentObject(learningContentId).contentURL;
 		}
 
-		
+		//console.log("viewer_url ------------->>> " + viewer_url); 
 		// open in lightbox
 		
 		 $.fancybox({
