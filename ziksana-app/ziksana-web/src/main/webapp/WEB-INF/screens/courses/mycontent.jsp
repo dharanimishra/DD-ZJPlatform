@@ -142,10 +142,9 @@
 
 	<div class="isotophead pull-right">
 		<div class="isotoplinks">
-			<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a><a
-				href="#" onclick="getLearningContentsByType('VIDEO')">Video
-				Contents</a><a href="#" onclick="getLearningContentsByType('LINK')">Web
-				Link Contents</a><a href="#"
+			<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a>|<a
+				href="#" onclick="getLearningContentsByType('VIDEO')">Video</a>|<a href="#" onclick="getLearningContentsByType('LINK')">Web
+				Link</a>|<a href="#"
 				onclick="getOtherLearningContents('Others')">Others</a>
 
 		</div>
@@ -154,11 +153,8 @@
 
 
 	<div class="Clearfix"></div>
-
-
 	<hr>
-
-	<div class="announcementswrapper" style="margin-left: 50px;">
+		<div class="announcementswrapper" style="margin-left: 50px;">
 		<form>
 			<input type="hidden" id="learingContents"
 				value='${learningContentAsJSONString}' />

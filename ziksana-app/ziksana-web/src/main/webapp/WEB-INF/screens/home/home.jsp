@@ -43,7 +43,7 @@
 			<c:if test="${empty member.picturePath}">
 				<p>
 					<img src="/ziksana-web/resources/images/no-image.jpg" align="left"
-						style="margin-top: 15px; margin-left: 5px; height: 100px; margin-right: 10px;"
+						style="margin-top: 10px; margin-left: 5px; height: 80px; margin-right: 10px;"
 						class="img-polaroid" />
 				</p>
 			</c:if>
@@ -51,12 +51,12 @@
 				<p>
 					<img src="${ms.url}<c:out value="${member.picturePath}"/>"
 						align="left"
-						style="margin-top: 15px; margin-left: 5px; height: 100px; margin-right: 10px;"
+						style="margin-top: 15px; margin-left: 5px; height: 80px; margin-right: 10px;"
 						class="img-polaroid" />
 				</p>
 			</c:if>
 			<p class="profiletilename pull-left"
-				style="font-size: 20px; width: 120px; margin-top: 15px;">
+				style="font-size: 20px; width: 148px; margin-top: 15px;">
 				<c:out value="${member.firstName}" />
 				<c:out value="${member.lastName}" />
 			</p>
@@ -65,8 +65,8 @@
 			</p>
 
 
-			<img src="/ziksana-web/resources/images/home/badge.png" width="146"
-				style="width: 148px; margin-left: -4px;" />
+			<img src="/ziksana-web/resources/images/home/badge.png" width="126"
+				style="width: 128px; margin-left: 2px; margin-top:-2px;" />
 
 
 		</div>
