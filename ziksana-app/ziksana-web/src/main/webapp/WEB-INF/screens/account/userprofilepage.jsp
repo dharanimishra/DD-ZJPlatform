@@ -14,7 +14,7 @@
 
 			</div>
 			<!--end of headerlogo-->
-
+<a class="btnLogin" style="" href="/ziksana-web/secure/logout"><fmt:message key="signout"></fmt:message> </a>
 			<div class="clearfix"></div>
 
 
@@ -168,7 +168,7 @@
 					<label class="control-label nexaf" for="Course Name"><fmt:message
 							key="profile.alternateemail"></fmt:message> </label>
 					<div class="controls">
-						<input autofocus="autofocus"
+						<input autofocus="autofocus" onblur="isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');"
 							
 							id="alternateEmailId" type="text" class="profileinput"
 							name="alt_mail" placeholder="Alternate Email" />
@@ -231,7 +231,7 @@
 							key="profile.securityanswer2"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
 						<input type="text" class="profileinput" id="securityAnswertwo"
-							name="sec_answer2" placeholder="Security Answer 2" />
+							name="sec_answer2" placeholder="<fmt:message key="profile.securityanswer2"></fmt:message>" />
 					</div>
 					<div style="color: red; padding: 5px;" id="errorsecurityAnswertwo"></div>
 				</div>
@@ -579,7 +579,7 @@ function clearProfileForm(){
 		
 		secondQuestionValidation(securityQuestionTwo);
 		secondAnswerValidation(securityAnswerTwo);
-		isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');
+		
 		checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo);
 		if(firstQuestionValidation(securityQuestionOne) && firstAnswerValidation(securityAnswerone) && secondQuestionValidation(securityQuestionTwo) && secondAnswerValidation(securityAnswerTwo) && checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo))
 		{
@@ -593,7 +593,7 @@ function clearProfileForm(){
 			        
 			        	if(data == 'success'){
 				          	   
-				          	   $('#profile_response_success').html("Profile Updated Sucessfully");
+				          	   $('#profile_response_success').html("<fmt:message key="profile.updatemessage"></fmt:message>");
 				          	   setTimeout(doRefreshCall,3000);
 
 				             }
@@ -609,11 +609,11 @@ function clearProfileForm(){
 		firstSelectBox = document.getElementById("securityQuestionOne");
 		if (question == 'Select the Security Question') {
 			
-			$('#errorsecurityQuestionOne').html("Security questions are mandatory");
+			$('#errorsecurityQuestionOne').html("<fmt:message key="profile.error.question"></fmt:message>");
 
 			return false;
 		} else {
-			if(("#errorsecurityQuestionOne.inside:contains('Security questions are mandatory')")){
+			if(("#errorsecurityQuestionOne.inside:contains('<fmt:message key="profile.error.question"></fmt:message>')")){
 				document.getElementById("errorsecurityQuestionOne").innerHTML = '';
 			}
 			return true;
@@ -624,11 +624,11 @@ function clearProfileForm(){
 	function firstAnswerValidation(securityAnswerone){
 		firstAnswerBox = document.getElementById("securityAnswerone");
 		if (securityAnswerone == '') {
-			$('#errorsecurityAnswerone').html("Please Answer the Security Question");
+			$('#errorsecurityAnswerone').html("<fmt:message key="profile.error.securityquestion"></fmt:message>");
 
 			return false;
 		} else{
-			if(("#errorsecurityAnswerone.inside:contains('Please Answer the Security Question')")){
+			if(("#errorsecurityAnswerone.inside:contains('<fmt:message key="profile.error.securityquestion"></fmt:message>')")){
 				document.getElementById("errorsecurityAnswerone").innerHTML = '';
 			}
 			return true;
@@ -639,11 +639,11 @@ function clearProfileForm(){
 		secondSelectBox = document.getElementById("securityQuestionTwo");
 		if (question == 'Select the Security Question') {
 			
-			$('#errorsecurityQuestionTwo').html("Security questions are mandatory");
+			$('#errorsecurityQuestionTwo').html("<fmt:message key="profile.error.question"></fmt:message>");
 			
 			return false;
 		} else{
-			if(("#errorsecurityQuestionTwo.inside:contains('Security questions are mandatory')")){
+			if(("#errorsecurityQuestionTwo.inside:contains('<fmt:message key="profile.error.question"></fmt:message>')")){
 				document.getElementById("errorsecurityQuestionTwo").innerHTML = '';
 			}
 			
@@ -656,11 +656,11 @@ function clearProfileForm(){
 	function secondAnswerValidation(securityAnswerTwo){
 		secondAnswerBox = document.getElementById("securityAnswertwo");
 		if (securityAnswerTwo == '') {
-			$('#errorsecurityAnswertwo').html("Please Answer the Security Question");
+			$('#errorsecurityAnswertwo').html("<fmt:message key="profile.error.securityquestion"></fmt:message>");
 		
 			return false;
 		} else {
-			if(("#errorsecurityAnswertwo.inside:contains('Please Answer the Security Question')")){
+			if(("#errorsecurityAnswertwo.inside:contains('<fmt:message key="profile.error.securityquestion"></fmt:message>')")){
 				document.getElementById("errorsecurityAnswertwo").innerHTML = '';
 			}
 			return true;
@@ -672,10 +672,10 @@ function clearProfileForm(){
 		if(securityQuestionTwo !='Select the Security Question'){
 		if(securityQuestionOne == securityQuestionTwo){
 			
-			$('#errorsecurityQuestionTwo').html("Please choose Different Question");
+			$('#errorsecurityQuestionTwo').html("<fmt:message key="profile.error.difquestion"></fmt:message>");
 			return false;
 		}else{
-			if(("#errorsecurityQuestionTwo.inside:contains('Please choose Different Question')")){
+			if(("#errorsecurityQuestionTwo.inside:contains('<fmt:message key="profile.error.difquestion"></fmt:message>')")){
 				document.getElementById("errorsecurityQuestionTwo").innerHTML = '';
 			}
 			return true;
@@ -689,7 +689,7 @@ function clearProfileForm(){
 		if(alternateEmailId != ''){
 			if (primaryEmailId == alternateEmailId) {
 				
-				$('#errorEmailId').html("Alternate email id should not be same as Primary email id");
+				$('#errorEmailId').html("<fmt:message key="profile.error.altemail"></fmt:message>");
 				
 			}else{
 				if(("#errorEmailId.inside:contains('email')")){
@@ -703,10 +703,13 @@ function clearProfileForm(){
 				document.getElementById("erroralternateEmailId").innerHTML = '';
 				
 			}else{
-				$('#erroralternateEmailId').html("Invalid email format");
+				$('#erroralternateEmailId').html("<fmt:message key="profile.error.invalid"/>");
 				
 			}
 		
+	}else{
+		document.getElementById("errorEmailId").innerHTML = '';
+		document.getElementById("erroralternateEmailId").innerHTML = '';
 	}
 	}
 	
@@ -757,7 +760,7 @@ function clearProfileForm(){
 			memberIdVal = $("#memberIdValue").text();
 			if(alternateEmailId != ''){
 				if (primaryEmailId == alternateEmailId) {
-					$('#alternateEmailError').html("Alternate email id should not be same as Primary email id");
+					$('#alternateEmailError').html("<fmt:message key="profile.error.altemail"></fmt:message>");
 					
 				}else{
 					if(("#alternateEmailError.inside:contains('email')")){
@@ -783,7 +786,7 @@ function clearProfileForm(){
 					
 					document.getElementById("alternateEmailError").innerHTML = '';
 				}else{
-					$('#alternateEmailError').html("Invalid email format");
+					$('#alternateEmailError').html("<fmt:message key="profile.error.invalid"/>");
 					
 				}
 			
@@ -814,7 +817,7 @@ $(document).ready(function() {
     var x = $('#newPassword').val();
 	 if ((x.charAt(0).match(/([0-9,!,%,&,@,#,$,^,*,?,_,~])/)))
 	 {
-		 $('#errorNewPassword').html('<span style="padding-left:5px;">Password should start with a charactor</span>');
+		 $('#errorNewPassword').html('<span style="padding-left:5px;"><fmt:message key="profile.error.password"/></span>');
 	 	return false;
 	 }
 
@@ -823,7 +826,7 @@ $(document).ready(function() {
     if (password.length < 6) { 
 		$('#errorNewPassword').removeClass();
 		/*$('#result').addClass('short')*/
-		$('#errorNewPassword').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;">Too Short</span><br/><span style="color:orange;">Password should be at least 8 characters</span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span></span><br/><span style="color:orange;">Password should be at least 8 characters</span>');
 		return false;
 	}
     
@@ -1099,4 +1102,18 @@ display: none;
 border:1px solid #eee;
 border-radius: 6px 6px 6px 6px;"
 }
+.btnLogin {
+    border: 2px solid #FFFFFF !important;
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    font: bold 13px/9px Verdana,Tahomma,Geneva;
+    height: 10px;
+    margin-right: 50px;
+    margin-top: 20px;
+    padding: 10px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
 </style>
