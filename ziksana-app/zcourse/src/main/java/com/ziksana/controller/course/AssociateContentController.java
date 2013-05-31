@@ -54,7 +54,7 @@ public class AssociateContentController {
 		modelView.addObject("itemsPerPage", itemsPerPage);
 		try {
 
-			if (courseId > 0) {
+			if (courseId > 0) { 
 				modelView.addObject("courseId", courseId);
 				associateContentService.getCourse(courseId);
 				Boolean isModuleExists = associateContentService

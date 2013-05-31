@@ -306,6 +306,7 @@
 		//var array = document.getElementsByName('learningContentToBeAssociated[]');
 		var selectedContentCheckBoxes = $("input:checkbox[name=learningContentToBeAssociated]:checked");
 		var selectedContents = "";
+		var compId = $("#selectedLearningComponentId").val();
 		for(i=0;i < selectedContentCheckBoxes.length;i++){
 			selectedContents = selectedContents + selectedContentCheckBoxes[i].value;
 			if(selectedContentCheckBoxes.length-1 != i){
@@ -313,8 +314,18 @@
 			}
 		}
 		
+		//check if the conent is already associated if yes then throw an alert and dont allow the user to duplicate.
+		//could have done it in the loop above but for simplicity doing it again
+		for(i=0;i < selectedContentCheckBoxes.length;i++){
+			var contentItem = selectedContentCheckBoxes[i].value;
+			if(tree.getItemText('CONTENT_'+contentItem )){
+				alert("The " + tree.getItemText('CONTENT_'+contentItem )+ " is already associated with " + tree.getItemText(tree.getSelectedItemId()) );
+				return;
+			}
+			
+		}
+		
 		$('#selectedLearningContentList').val(selectedContents); 
-		var compId = $("#selectedLearningComponentId").val();
 		//alert("selectedContents " + selectedContents + " selected component id is " + compId);
 		console.log("selectedContents " + selectedContents + " selected component id is " + compId);
 		if(selectedContents == "" || !selectedContents){
@@ -341,7 +352,7 @@
 			if (data.response == 'success') {
 				course_id = data.id;
 				window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
-						+ courseId;
+						+ courseId ;
 
 			} else {
 				$('#tempdiv1').html(
@@ -355,7 +366,7 @@
 	function resetCheckBoxes(){
 		//$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
 		var courseId = $('#courseid').val();
-		var uri = '/ziksana-web/zcourse/1/repositorycontents/' + courseId;
+		var uri = '/ziksana-web/zcourse/1/repositorycontents/' + courseId ;
 
 		$.get(uri);
 		$('#ContentPanel2').hide();
@@ -387,7 +398,7 @@
 			link.text('Read More');
 			p.removeClass('show_more');
 		} else {
-			link.text('Hide')
+			link.text('Hide');
 			p.addClass('show_more');
 		}
 		
