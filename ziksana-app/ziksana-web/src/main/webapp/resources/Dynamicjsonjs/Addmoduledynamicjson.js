@@ -397,3 +397,15 @@ function onSuccessfulModuleCreation(data) {
 	}
 
 }
+
+function getSaveandContinue(){
+	
+	var course_id = $('#courseid').val();
+	var courseId = course_id.split('_')[1];
+	if (courseId != '' & courseId != null) {
+		window.location.href = '/ziksana-web/zcourse/1/repositorycontents/'+ courseId;
+	}else {
+		window.location.href = '/ziksana-web/zcourse/1/createcourse';
+	}
+
+}

@@ -338,7 +338,7 @@
 			<!-- #rightPane -->
 		</div>
 		<div class="Clearfix"></div>
-		<button class="btn f-r" type="button" style="margin-right: 30px;">Save
+		<button class="btn f-r" type="button" onClick="getSaveandContinue();return false;" style="margin-right: 30px;">Save
 			and Continue</button>
 		<!-- <div id='jqxWidget' style='display: none;'>
 								<div id="splitter" style='clear: both;'>
