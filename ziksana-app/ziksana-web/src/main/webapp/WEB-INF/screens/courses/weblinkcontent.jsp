@@ -110,7 +110,7 @@ table tr td {
 						<div class="Clearfix"></div>
 					</div>
 					<!--end of panel head-->
-					<div class="weblinkcontainer">
+					<div class="weblinkcontainer" style="background-color:#0099cc">
 						<div class="uploadroweven" style="padding: 10px;">
 							<div class="uploadphoto pull-left" style="width: 350px">
 								<img id="thumbnail_image" src="${staticFileServer}resources/images/genetics.jpg" style="width: 100px; margin-bottom: 5px;" align="left" />
@@ -183,9 +183,9 @@ table tr td {
 								<input type="hidden" name="contentPath" value="'++'"/>
 								<input type="text" placeholder="Enter Name"
 									name="contentName" class="validate[required]"
-									style="height: 25px; margin-top: 15px; width: 170px;" /></li>
-								<li><input type="text" placeholder="http://" id="linkurl" name="contentUrl"
-									style="height: 25px; margin-top: 15px; width: 170px;" class="validate[required]"/></li>
+									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
+								<li><input type="url" placeholder="http://" id="linkurl" name="contentUrl"
+									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" class="validate[required]"/></li>
 								<li><a href="#" class="editdetailsweblink">Edit Details</a></li>
 							</ul>
 						</div>
@@ -269,7 +269,7 @@ a.remove_this:hover {
 	cursor: pointer !important;
 	width: 230px !important;
 }
-label.error{color:#d14836;font-size:12px}
+label.error{color:#d14836;font-size:12px;margin-left:2px}
 </style>
 
 <script type="text/javascript">
@@ -277,10 +277,13 @@ label.error{color:#d14836;font-size:12px}
       $("#createweblinkform").validate({
         rules: {
         	contentName: "required",
-        
-        	contentUrl: "required",
+        	  contentUrl: "required",
+          
         },
-		
+        contentUrl: {
+			contentUrl: true
+        },
+        
         });
     });
   </script>
