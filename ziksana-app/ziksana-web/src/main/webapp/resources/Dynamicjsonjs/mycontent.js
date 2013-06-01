@@ -148,35 +148,88 @@ function getDiv(learningContentObject) {
 
 	var viewer_url = '';
 	var preview_path = '';
-	content_type = learningContentObject.contentType.toUpperCase();
+
+	var staticFileServerPath = $("#fileServerPath").val();
+	console.log("In my content getPreviewPath" + staticFileServerPath);
+	var content_type = learningContentObject.contentType.toUpperCase();
+	var screenshotPath = learningContentObject.screenshotPath;
 
 	if (content_type == 'VIDEO') {
 		viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
 				+ learningContentObject.id;
-		preview_path = '../../resources/images/preview/video.png';
+		if (screenshotPath
+				&& (screenshotPath != null || screenshotPath.trim() != "")) {
+			preview_path = staticFileServerPath + screenshotPath;
+			console.log("In my content in the if  for "
+					+ learningContentObject.contentName + " - " + preview_path);
+		} else {
+			preview_path = '../../resources/images/preview/video.png';
+		}
 	} else if (content_type == 'AUDIO') {
 		viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
 				+ learningContentObject.id;
-		preview_path = '../../resources/images/preview/audio.png';
+		if (screenshotPath
+				&& (screenshotPath != null || screenshotPath.trim() != "")) {
+			preview_path = staticFileServerPath + screenshotPath;
+			console.log("In my content in the if  for "
+					+ learningContentObject.contentName + " - " + preview_path);
+		} else {
+			preview_path = '../../resources/images/preview/audio.png';
+		}
 	} else if (content_type == 'IMAGE') {
 		viewer_url = '/ziksana-web/zcourse/1/slides/'
 				+ learningContentObject.id;
-		preview_path = '../../resources/images/preview/image.png';
+		if (screenshotPath
+				&& (screenshotPath != null || screenshotPath.trim() != "")) {
+			preview_path = staticFileServerPath + screenshotPath;
+			console.log("In my content in the if  for "
+					+ learningContentObject.contentName + " - " + preview_path);
+		} else {
+			preview_path = '../../resources/images/preview/image.png';
+		}
 	} else if (content_type == 'DOC') {
 		viewer_url = '/ziksana-web/zcourse/1/slides/'
 				+ learningContentObject.id;
-		preview_path = '../../resources/images/preview/doc.png';
+		if (screenshotPath
+				&& (screenshotPath != null || screenshotPath.trim() != "")) {
+			preview_path = staticFileServerPath + screenshotPath;
+			console.log("In my content in the if  for "
+					+ learningContentObject.contentName + " - " + preview_path);
+		} else {
+			preview_path = '../../resources/images/preview/doc.png';
+		}
 	} else if (content_type == 'PPT') {
 		viewer_url = '/ziksana-web/zcourse/1/slides/'
 				+ learningContentObject.id;
-		preview_path = '../../resources/images/preview/ppt.jpg';
+		if (screenshotPath
+				&& (screenshotPath != null || screenshotPath.trim() != "")) {
+			preview_path = staticFileServerPath + screenshotPath;
+			console.log("In my content in the if  for "
+					+ learningContentObject.contentName + " - " + preview_path);
+		} else {
+			preview_path = '../../resources/images/preview/ppt.jpg';
+		}
 	} else if (content_type == 'PDF') {
 		viewer_url = '/ziksana-web/zcourse/1/slides/'
 				+ learningContentObject.id;
-		preview_path = '../../resources/images/preview/pdf.png';
+		if (screenshotPath
+				&& (screenshotPath != null || screenshotPath.trim() != "")) {
+			preview_path = staticFileServerPath + screenshotPath;
+			console.log("In my content in the if  for "
+					+ learningContentObject.contentName + " - " + preview_path);
+		} else {
+			preview_path = '../../resources/images/preview/pdf.png';
+		}
 	} else if (content_type == 'LINK') {
 		viewer_url = learningContentObject.contentUrl;
-		preview_path = '../../resources/images/preview/link.png';
+		if (screenshotPath
+				&& (screenshotPath != null || screenshotPath.trim() != "")) {
+			preview_path = staticFileServerPath + screenshotPath;
+			console.log("In my content in the if  for "
+					+ learningContentObject.contentName + " - " + preview_path);
+		} else {
+			preview_path = '../../resources/images/preview/link.png';
+		}
 	}
 
 	var learningContentDiv = '<div id="createcontent-main" class="item All">'

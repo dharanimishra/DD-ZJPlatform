@@ -1,4 +1,4 @@
-	// JavaScript Document
+// JavaScript Document
 $(document)
 		.ready(
 				function(e) {
@@ -294,74 +294,71 @@ $(document)
 
 function getaddmodulesave() {
 
-	// validation = jQuery("#AddModule").validationEngine('validate');
-	// if (validation == true) {
-	// Step 1: Assign Parameters required by the sendMessage function.
-	// $('#Btnsbtcmodule').attr('disabled', 'disabled'); // disables the
+	validation = jQuery("#AddModule").validationEngine('validate');
+	if (validation == true) {
+		// Step 1: Assign Parameters required by the sendMessage function.
+		// $('#Btnsbtcmodule').attr('disabled', 'disabled'); // disables the
 
-	uri = '/ziksana-web/zcourse/savelearningcomponent';
+		uri = '/ziksana-web/zcourse/savelearningcomponent';
 
-	token = ''; // dummy token for demo. you have to send real token.
+		token = ''; // dummy token for demo. you have to send real token.
 
-	request_type = 'POST'; // can be GET or POST. In this case, a GET
+		request_type = 'POST'; // can be GET or POST. In this case, a GET
 
-	var Course_Descriptionrte = '';
+		var Course_Descriptionrte = '';
 
-	var course_id = $('#courseid').val();
+		var course_id = $('#courseid').val();
 
-	var CourseLearningComponentId = $('#courseLearningComponentId').val();
+		var CourseLearningComponentId = $('#courseLearningComponentId').val();
 
-	var ParentLearningComponentId = $('#parentLearningComponentId').val();
+		var ParentLearningComponentId = $('#parentLearningComponentId').val();
 
-	var learningComponentId = $('#learningComponentId').val();
+		var learningComponentId = $('#learningComponentId').val();
 
-	var Module_Name = $('#Course_Module').val();
+		var Module_Name = $('#Course_Module').val();
 
-	Course_Descriptionrte = CKEDITOR.instances['Cmoduledescrte'].getData();
-	Module_Description = Course_Descriptionrte;
+		Course_Descriptionrte = CKEDITOR.instances['Cmoduledescrte'].getData();
+		Module_Description = Course_Descriptionrte;
 
-	var Subject_Area = $('#Cmoduleareaddl').val();
-	var Subject = $('#Cmodulesubjectddl').val();
-	var Topic = $('#Cmoduletopicddl').val();
-	var Moduletag_Field = $('#Addmoduletag').val();
+		var Subject_Area = $('#Cmoduleareaddl').val();
+		var Subject = $('#Cmodulesubjectddl').val();
+		var Topic = $('#Cmoduletopicddl').val();
+		var Moduletag_Field = $('#Addmoduletag').val();
 
-	var parameters = {
-		"Course_id" : course_id,
-		"CourseLearningComponentId" : CourseLearningComponentId,
-		"ParentLearningComponentId" : ParentLearningComponentId,
-		"LearningComponentId" : learningComponentId,
-		"Course_Module" : Module_Name,
-		"Module_Description" : Module_Description,
-		"Subject_Area" : Subject_Area,
-		"Subject" : Subject,
-		"Topic" : Topic,
-		"Moduletag_Field" : Moduletag_Field
+		var parameters = {
+			"Course_id" : course_id,
+			"CourseLearningComponentId" : CourseLearningComponentId,
+			"ParentLearningComponentId" : ParentLearningComponentId,
+			"LearningComponentId" : learningComponentId,
+			"Course_Module" : Module_Name,
+			"Module_Description" : Module_Description,
+			"Subject_Area" : Subject_Area,
+			"Subject" : Subject,
+			"Topic" : Topic,
+			"Moduletag_Field" : Moduletag_Field
 
-	};
+		};
 
-	$
-			.post(
-					uri,
-					parameters,
-					function(data) {
-						console.log(data);
-						if (data.response == 'success') {
-							course_id = data.id;
-							$('#courseid').val(course_id);
-							if (course_id != '' & course_id != null) {
-								$('#courseid').val(course_id);
-								window.location.href = "/ziksana-web/zcourse/createmodule/"
-										+ course_id;
-								$('#tempdiv1').html(
-										'<span style="color:red;">'
-												+ data.message + '</span>');
-							} else {
-								$('#tempdiv1').html(
-										'<span style="color:red;">'
-												+ data.message + '</span>');
-							}
-						}
-					});
+		$.post(uri, parameters, function(data) {
+			console.log(data);
+			if (data.response == 'success') {
+				course_id = data.id;
+				$('#courseid').val(course_id);
+				if (course_id != '' & course_id != null) {
+					$('#courseid').val(course_id);
+					window.location.href = "/ziksana-web/zcourse/createmodule/"
+							+ course_id;
+					$('#tempdiv1').html(
+							'<span style="color:red;">' + data.message
+									+ '</span>');
+				} else {
+					$('#tempdiv1').html(
+							'<span style="color:red;">' + data.message
+									+ '</span>');
+				}
+			}
+		});
+	}
 }
 
 function noteSuccessCallbackaddmodule(data) {
@@ -398,13 +395,14 @@ function onSuccessfulModuleCreation(data) {
 
 }
 
-function getSaveandContinue(){
-	
+function getSaveandContinue() {
+
 	var course_id = $('#courseid').val();
 	var courseId = course_id.split('_')[1];
 	if (courseId != '' & courseId != null) {
-		window.location.href = '/ziksana-web/zcourse/1/repositorycontents/'+ courseId;
-	}else {
+		window.location.href = '/ziksana-web/zcourse/1/repositorycontents/'
+				+ courseId;
+	} else {
 		window.location.href = '/ziksana-web/zcourse/1/createcourse';
 	}
 

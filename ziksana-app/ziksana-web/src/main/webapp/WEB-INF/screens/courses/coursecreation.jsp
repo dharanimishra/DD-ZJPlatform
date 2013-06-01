@@ -16,24 +16,12 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/treedata.js"></script>
 
-<!-- scripts for tree -->
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/gettheme.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/core.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/buttons.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/scrollbar.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/panel.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/dragdrop.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/tree.js"></script>
- --%>
- 
- 
+<script
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validationen.js"
+	type="text/javascript" charset="utf-8"></script>
+<script
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validation.js"
+	type="text/javascript" charset="utf-8"></script>
  
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/css/common/tree/menu.css" />

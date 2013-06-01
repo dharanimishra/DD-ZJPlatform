@@ -330,9 +330,9 @@ public class MyContentController {
 			} catch (Exception e) {
 				learningContent.setContentTypeId(959);
 			}
-
-			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
-			learningContent.setScreenshotPath(thumbnailPicturePath);
+			String screenshotPath = thumbnailPicturePath.replace(",'++'","");
+			learningContent.setThumbnailPicturePath(screenshotPath);
+			learningContent.setScreenshotPath(screenshotPath);
 			learningContent.setRightsOwningMember(accountableMember);
 
 			try {

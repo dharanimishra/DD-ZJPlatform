@@ -158,6 +158,7 @@
 		<form>
 			<input type="hidden" id="learingContents"
 				value='${learningContentAsJSONString}' />
+				<input type="hidden" id="fileServerPath" value='${ms.uploadContent}'/>
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
 			</div>
 			<div class="Clearfix"></div>

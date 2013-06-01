@@ -158,6 +158,7 @@ table tr td {
 																	content_path = data_object.ContentPath;
 																	$('#thumbnail_image').attr('src','${ms.url}'+content_path);
 																	$('#thumbnail_path').val(content_path);
+																	console.log("content_path :"+content_path);
 																} else { //there is an error in the upload process
 
 																	$(
