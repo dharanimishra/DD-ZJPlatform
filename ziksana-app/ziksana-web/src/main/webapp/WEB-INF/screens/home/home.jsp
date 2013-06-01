@@ -398,15 +398,15 @@
 
 
 					<div class="portlet-body">
-						<div id="add_todo_fields_container" style="display: none;">
+						<div id="add_todo_fields_container" style="display: none;height:50px !important;">
 							<select id="todo_categories"
-								style="margin-left: 100px; width: 150px;">
+								style="margin-left: 100px; width: 150px;margin-top:5px;">
 
 							</select> <span id="add_new_category_form"
-								style="display: none; margin-left: 100px;"> <input
-								id="todo_category_name" />
+								style="display: none; margin-left: 100px;"> 
+								<input style="margin-top:8px; height:28px;width:150px;" id="todo_category_name" />
 							</span> <input id="todo_description"
-								style="margin-left: 22px; width: 200px; height: 28px;">
+								style="margin-left: 22px; width: 200px; height: 28px; margin-top:5px;">
 							<a onclick="addTodo()"
 								style="cursor: pointer; margin-left: 12px; color: white;"><fmt:message key="save"/></a><a
 								onclick="hideTodoAdd()"
