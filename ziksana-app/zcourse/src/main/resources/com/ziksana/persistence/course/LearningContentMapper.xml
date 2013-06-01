@@ -176,6 +176,10 @@
 				subjclassificationid=
 				#{subjClassificationId,jdbcType=INTEGER},
 			</if>
+			<if test="screenshotPath!=null">
+				screenshotPath=
+				#{screenshotPath,jdbcType=VARCHAR},
+			</if>
 		</set>
 		where ID = #{learningContentId.storageID,
 		jdbcType=INTEGER}

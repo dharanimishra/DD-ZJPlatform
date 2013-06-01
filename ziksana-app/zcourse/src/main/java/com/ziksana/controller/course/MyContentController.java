@@ -217,6 +217,8 @@ public class MyContentController {
 
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 
+		LOGGER.info("");
+
 		try {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
@@ -244,8 +246,12 @@ public class MyContentController {
 						learningContent.setContentName(contentName[i]);
 						learningContent.setContentDescription(contentDesc[i]);
 						learningContent.setScreenshotPath(screenshotPath[i]);
+						
+						LOGGER.info("screenshotPath:" + screenshotPath[i]);
+						
 					} catch (Exception e) {
 
+						LOGGER.error("Exception screenshotPath:" + e);
 					}
 
 					try {
@@ -361,7 +367,7 @@ public class MyContentController {
 		CourseJsonResponse jsonResponse = new CourseJsonResponse();
 		try {
 			myContentService.deleteContent(contentId);
-			LOGGER.info("delete conetnt contentId :"+contentId);
+			LOGGER.info("delete conetnt contentId :" + contentId);
 			jsonResponse.setResponse("success");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
