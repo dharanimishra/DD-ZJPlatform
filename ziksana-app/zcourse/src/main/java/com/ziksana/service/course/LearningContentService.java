@@ -6,6 +6,7 @@ package com.ziksana.service.course;
 import java.util.List;
 
 import com.ziksana.domain.course.Content;
+import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 
 /**
@@ -46,5 +47,15 @@ public interface LearningContentService {
 	 * @param learningContentId
 	 */
 	public void deleteLearningContent(Integer learningContentId);
+
+	/**
+	 * Check Content Association
+	 * 
+	 * @param learningContentId
+	 * @return
+	 */
+
+	public LearningComponentContent checkContentAssociation(
+			Integer learningContentId);
 
 }

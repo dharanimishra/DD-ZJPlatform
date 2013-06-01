@@ -246,9 +246,9 @@ public class MyContentController {
 						learningContent.setContentName(contentName[i]);
 						learningContent.setContentDescription(contentDesc[i]);
 						learningContent.setScreenshotPath(screenshotPath[i]);
-						
+
 						LOGGER.info("screenshotPath:" + screenshotPath[i]);
-						
+
 					} catch (Exception e) {
 
 						LOGGER.error("Exception screenshotPath:" + e);
@@ -369,6 +369,29 @@ public class MyContentController {
 			myContentService.deleteContent(contentId);
 			LOGGER.info("delete conetnt contentId :" + contentId);
 			jsonResponse.setResponse("success");
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+			jsonResponse.setResponse("Failed");
+		}
+		return jsonResponse;
+
+	}
+
+	@RequestMapping(value = "/1/checkcontentassociation", method = RequestMethod.POST)
+	public @ResponseBody
+	CourseJsonResponse checkContentAssociation(
+			@RequestParam(value = "contentId", required = true) Integer contentId) {
+		CourseJsonResponse jsonResponse = new CourseJsonResponse();
+		boolean check = false;
+		try {
+			check = myContentService.checkContentAssociation(contentId);
+			LOGGER.info("checkContentAssociation contentId :" + contentId);
+			if (check) {
+				jsonResponse.setResponse("active");
+			} else {
+				jsonResponse.setResponse("notactive");
+			}
+
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 			jsonResponse.setResponse("Failed");

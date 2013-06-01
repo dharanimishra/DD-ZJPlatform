@@ -21,4 +21,6 @@ public interface MyContentService {
 
 	public void deleteContent(Integer learningContentId);
 
+	public boolean checkContentAssociation(Integer learningContentId);
+
 }

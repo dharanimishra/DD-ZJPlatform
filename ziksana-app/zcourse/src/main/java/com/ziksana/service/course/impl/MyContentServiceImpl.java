@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.service.course.LearningContentService;
 import com.ziksana.service.course.MyContentService;
@@ -42,4 +43,12 @@ public class MyContentServiceImpl implements MyContentService {
 		learningContentService.deleteLearningContent(learningContentId);
 	}
 
+	public boolean checkContentAssociation(Integer learningContentId) {
+		LearningComponentContent learningComponentContent = learningContentService
+				.checkContentAssociation(learningContentId);
+		if (learningComponentContent.getId() > 0)
+			return true;
+		else
+			return false;
+	}
 }

@@ -174,8 +174,7 @@ function getDiv(learningContentObject) {
 		viewer_url = '/ziksana-web/zcourse/1/slides/'
 				+ learningContentObject.id;
 		preview_path = '../../resources/images/preview/pdf.png';
-	}
-	else if (content_type == 'LINK') {
+	} else if (content_type == 'LINK') {
 		viewer_url = learningContentObject.contentUrl;
 		preview_path = '../../resources/images/preview/link.png';
 	}
@@ -184,7 +183,9 @@ function getDiv(learningContentObject) {
 			+ '<p class="createcontenthead">'
 			+ learningContentObject.contentName
 			+ '</p><p class="createcontentimg">'
-			+ '<img src="'+preview_path+'" />'
+			+ '<img src="'
+			+ preview_path
+			+ '" />'
 			+ '</p>'
 			+ '<div class="description">'
 			+ '<a onclick="deleteContent('
@@ -221,29 +222,67 @@ function getPageDiv(noOfPages, filterType) {
 }
 
 function deleteContent(content_id) {
-	confirm_delete = confirm('Are you sure?');
-	if (confirm_delete == true) {
-		uri = '/ziksana-web/zcourse/1/deletecontent';
-		var parameters = {
-			"contentId" : content_id
-		};
-		$
-				.post(
-						uri,
-						parameters,
-						function(data) {
-							console.log(data);
-							if (data.response == 'success') {
-								window.location.href = "/ziksana-web/zcourse/1/mycontent";
-							} else {
-								$('#tempdiv1').html(
-										'<span style="color:red;">'
-												+ data.message + '</span>');
+
+	// Checking for Content Association
+
+	uri = '/ziksana-web/zcourse/1/checkcontentassociation';
+	var parameters = {
+		"contentId" : content_id
+	};
+	$
+			.post(
+					uri,
+					parameters,
+					function(data) {
+						console.log(data);
+						if (data.response == 'active') {
+							confirm_delete = confirm('There are Content Association found. Are you sure to delete?');
+							if (confirm_delete == true) {
+								uri = '/ziksana-web/zcourse/1/deletecontent';
+								var parameters = {
+									"contentId" : content_id
+								};
+								$
+										.post(
+												uri,
+												parameters,
+												function(data) {
+													console.log(data);
+													if (data.response == 'success') {
+														window.location.href = "/ziksana-web/zcourse/1/mycontent";
+													} else {
+														window.location.href = "/ziksana-web/zcourse/1/mycontent";
+													}
+
+												});
+
 							}
+						} else {
+							confirm_delete = confirm('There are no any Content Association found. Are you sure to delete?');
+							if (confirm_delete == true) {
+								uri = '/ziksana-web/zcourse/1/deletecontent';
+								var parameters = {
+									"contentId" : content_id
+								};
+								$
+										.post(
+												uri,
+												parameters,
+												function(data) {
+													console.log(data);
+													if (data.response == 'success') {
+														window.location.href = "/ziksana-web/zcourse/1/mycontent";
+													} else {
+														window.location.href = "/ziksana-web/zcourse/1/mycontent";
+													}
 
-						});
+												});
 
-	}
+							}
+						}
+
+					});
+
 }
 
 $(function() {

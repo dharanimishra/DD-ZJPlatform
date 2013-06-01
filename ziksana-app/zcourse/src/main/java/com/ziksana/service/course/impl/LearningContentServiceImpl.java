@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ziksana.domain.course.Content;
+import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentParts;
+import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningContentMapper;
 import com.ziksana.service.course.LearningContentService;
 
@@ -22,6 +24,9 @@ public class LearningContentServiceImpl implements LearningContentService {
 
 	@Autowired
 	LearningContentMapper learningContentMapper;
+
+	@Autowired
+	LearningComponentContentMapper learningComponentContentMapper;
 
 	public Content getContent(Integer contentId) {
 		// TODO Auto-generated method stub
@@ -122,8 +127,15 @@ public class LearningContentServiceImpl implements LearningContentService {
 	}
 
 	public void deleteLearningContent(Integer learningContentId) {
-		// TODO Auto-generated method stub
+		learningContentMapper.learningContentdelete(learningContentId);
 
+	}
+
+	public LearningComponentContent checkContentAssociation(
+			Integer learningContentId) {
+
+		return learningComponentContentMapper
+				.getAssociatedLearningContent(learningContentId);
 	}
 
 }
