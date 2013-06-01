@@ -11,28 +11,10 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/editcontentjson.js"></script>
 
-<style>
-.tileheada {
-	margin-left: 20px;
-	font-size: 20px;
-	font-size: 30px;
-}
+ 
 
-table tr th {
-	color: #fff;
-	font-size: 18px;
-	border: none !important;
-}
+ 
 
-table tr td {
-	color: #fff;	font-size: 18px;
-	border: none !important;
-}
-
-.table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
-	background-color: rgba(206, 204, 204, 0.27);
-}
-</style>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;"> <div
 	class="Zikbreadcrumb f-l"> <div class="fifteen columns"
 	id="page-title"> <a style="margin-top: -3px;" class="back"
@@ -43,7 +25,7 @@ table tr td {
 <div class="Clearfix"></div>
 <div id="contentpanel">
  <div class="tilecontainer pull-left"
-			style="margin-top: 40px; width: 140px;"> 
+			style="margin-top: 40px; width: 140px;margin-left:10px;"> 
 			<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content"> 
 				<a href="/ziksana-web/zcourse/1/createcontent">
@@ -51,7 +33,7 @@ table tr td {
 			</div>
 			<div class="brand"> 
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"> 
-				<a href="/ziksana-web/zcourse/1/createcontent">Upload Content</a> 
+				<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;">Upload Content</a> 
 			</h3> 
 	</div> 
 	</div> 
@@ -64,7 +46,7 @@ table tr td {
 			 </div> 
 		 <div  class="brand"> 
 			<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-			<a href="/ziksana-web/zcourse/1/weblinkcontent">Add Web Link</a> </h3> 
+			<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;">Add Web Link</a> </h3> 
 		</div> 
 			</div> 
 			<div
@@ -81,9 +63,9 @@ table tr td {
 	 	for (LearningContent content : list) {
 	 		
 	 %> 
-		 <div class="edit_content_info" id="content_<%=content.getId()%>">
+		<%--  <div class="edit_content_info" id="content_<%=content.getId()%>"> --%>
 		 <div class="Clearfix"></div> 
-		<div class="" style="padding: 10px;"> 
+		<div class=" pull-left" style="padding: 10px;width:350px"> 
 	<!--  <div class="uploadphoto pull-left" style="width: 350px">
 	 <div style="width: 100%">  
 	 </div> 
@@ -159,7 +141,7 @@ table tr td {
 
  <!--end of uploadphoto--> 
  <div class="rowfields pull-left"> <ul>
-	<li style="padding-right: 30px;">Edit Name<br> 
+	<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
 		<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" />
 	</li> 
 	</ul> 
@@ -186,8 +168,7 @@ Subject</option> </select>
 </div> </div> <!--end of continaer--> <div class="clearfix"></div> 
 
 </div> <!-- end of uploadrow-->
-
-<hr/>
+ 
 </div>
 
 <%
@@ -212,11 +193,60 @@ Subject</option> </select>
 <div class="Clearfix"></div>
 
 </div>
-
-
 <style>
+
+  .tileheadaa {
+	margin-left: 20px;
+	font-size: 20px;
+ 
+}
+
+table tr th {
+	color: #fff;
+	font-size: 18px;
+	border: none !important;
+}
+
+table tr td {
+	color: #fff;
+	font-size: 18px;
+	border: none !important;
+}
+
+.table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
+	background-color: rgba(206, 204, 204, 0.27);
+}
+
+.uploadify {
+	clear: both;
+	left: 50px;
+	margin-bottom: 1em;
+	position: relative;
+	left: 10px;
+}
+ .tile-content > a{
+ width:100%;
+  height:100%;float:left
+ }
+
+ .brand a:hover{
+ color:#fff!important;text-decoration:none
+ }
+
+ .tile-content > a >img {
+    height: 64px;
+    left: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    position: absolute;
+    top: 50%;
+    width: 64px;
+}
+ 
 .select2-container {
 	margin-right: 10px !important;
 	width: 235px;
 }
+.edit_content_info{background:#0099cc}
+.uploadify{left:0px!important}
 </style>
