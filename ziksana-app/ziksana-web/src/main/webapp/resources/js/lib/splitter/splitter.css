@@ -2,12 +2,12 @@
  width:100%;margin:0;padding:0;display:table;height:100%
 }
 #leftPane{
- width:20%;display:table-cell
+ width:20%;display:table-cell; vertical-align: top;
  
  
 }
 #rightPane{	/*Contains toolbar and horizontal splitter*/
- display:table-cell;width:auto
+ display:table-cell;width:auto; vertical-align: top;
  
 }
 
