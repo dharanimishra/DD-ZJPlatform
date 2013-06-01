@@ -169,8 +169,8 @@
 			<div class="panelhead" style="margin-top: -12px;">
 
 				<ul>
-					<li><a style="cursor: pointer" class="tagevent"> Events </a></li>
-					<li><a style="cursor: pointer" class="tagtask"> To Do </a></li>
+					<li><a style="cursor: pointer" class="tagevent"><fmt:message key="home.events"/> </a></li>
+					<li><a style="cursor: pointer" class="tagtask"> <fmt:message key="home.todo"/>  </a></li>
 
 
 				</ul>
@@ -188,7 +188,7 @@
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
-						List of Events Today</p>
+						<fmt:message key="home.listofevents"/></p>
 
 
 
@@ -257,7 +257,7 @@
 				<div class="eventfooter"
 					style="height: 31px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
 					<p class="pull-right" style="color: #fff; font-size: 10px;">
-						Manage Events <a href="#linkurl"> <img
+						<fmt:message key="home.manageevents"/> <a href="#linkurl"> <img
 							src="/ziksana-web/resources/images/icons/calendar.png"
 							style="height: 20px; margin-left: 6px; vertical-align: middle;" />
 						</a>
@@ -279,18 +279,18 @@
 			<div class="annnouncementpanel">
 
 
-				<div class="announcementmainhead pull-left">Announcement</div>
+				<div class="announcementmainhead pull-left"><fmt:message key="home.announcement"/></div>
 <div class="Clearfix"></div>
 				<div class="announcmentisotope" style="background-color: rgba(50, 50, 50, 0.75);border-bottom: 1px solid #CCCCCC;
     height: 45px; float:left;width:100%;text-align:right">
 
 					<ul>
-						<li><a style="cursor: pointer" class="Allbtn"> All </a></li>
+						<li><a style="cursor: pointer" class="Allbtn"> <fmt:message key="home.all"/></a></li>
 						<li><a style="cursor: pointer" class="Universitybtn">
-								University </a></li>
+								<fmt:message key="home.university"/> </a></li>
 						<li><a style="cursor: pointer" class="Departmentbtn">
-								Department </a></li>
-						<li><a style="cursor: pointer" class="Coursebtn"> Course
+								<fmt:message key="home.department"/> </a></li>
+						<li><a style="cursor: pointer" class="Coursebtn"> <fmt:message key="home.course"/>
 						</a></li>
 					</ul>
 
@@ -324,8 +324,8 @@
 					style="height: 50px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -12px;">
 
 					<p class="pull-left"
-						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
-						To Dos List</p>
+						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;"><fmt:message key="home.ToDosList"/>
+						</p>
 
 
 
@@ -378,7 +378,7 @@
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
-						To Dos List</p>
+						<fmt:message key="home.ToDosList"/></p>
 
 					<p class="pull-right" style="color: #fff;">
 						<a style="cursor: pointer"> <img
@@ -408,9 +408,9 @@
 							</span> <input id="todo_description"
 								style="margin-left: 22px; width: 200px; height: 28px;">
 							<a onclick="addTodo()"
-								style="cursor: pointer; margin-left: 12px; color: white;">Save</a><a
+								style="cursor: pointer; margin-left: 12px; color: white;"><fmt:message key="save"/></a><a
 								onclick="hideTodoAdd()"
-								style="cursor: pointer; margin-left: 40px; color: white;">Cancel</a>
+								style="cursor: pointer; margin-left: 40px; color: white;"><fmt:message key="profile.cancel"/> </a>
 						</div>
 						<div id="todos_placeholder_more" class="eventcontent"></div>
 
