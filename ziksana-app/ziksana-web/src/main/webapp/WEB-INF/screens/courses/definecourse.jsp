@@ -295,16 +295,16 @@ function inputLimiter(e,allow) {
 		<li style="margin-left: 40px; color: #f06c0b;"><span> <img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px; height: 22px;">
-		</span> Describe Course</li>
+		</span> <fmt:message key="course.DescribeCourse"/></li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Structure</li>
+				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Define.Structure"/></li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Associate Content</li>
+				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Associate.content"/> </li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Assignment</li>
+				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Define.assignment"/> </li>
 
 	</ul>
 
@@ -319,7 +319,7 @@ function inputLimiter(e,allow) {
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1>Provide Course Details</h1>
+		<h1><fmt:message key="Provide.Course.Details"/></h1>
 	</div>
 	<div class="widget-body form">
 		<!-- BEGIN FORM-->
