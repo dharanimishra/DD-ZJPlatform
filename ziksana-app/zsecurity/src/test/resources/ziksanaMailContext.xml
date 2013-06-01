@@ -18,8 +18,8 @@
                 <prop key="mail.smtp.port">587</prop>
             </props>
         </property>
-        <property name="username" value="" />
-        <property name="password" value="" />
+        <property name="username" value="ziksanamanager@gmail.com" />
+        <property name="password" value="ziksana@55" />
     </bean>
 
     <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">

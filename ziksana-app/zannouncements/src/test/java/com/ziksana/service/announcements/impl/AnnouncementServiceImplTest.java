@@ -63,8 +63,8 @@ public class AnnouncementServiceImplTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		ZID memberId = new StringZID("1000");
-		ZID memberPersonaId = new StringZID("100");
+		ZID memberId = new StringZID("1001");
+		ZID memberPersonaId = new StringZID("201");
 
 		SecurityToken token = new SecurityToken(memberId, memberPersonaId, null);
 		SecurityTokenUtil.setToken(token);
@@ -99,12 +99,12 @@ public class AnnouncementServiceImplTest {
 		logger.info("Class :" + getClass() + ": Leaving Method : testInsert()");
 
 	}
-	@Ignore
+	@Test
 	public void testGetAnnouncements(){
 		
 		List<Announcement> announcement = new ArrayList<Announcement>();
-		//announcement = announcementService.getAnnouncement(100);
-		Assert.assertEquals(2, announcement.size());
+		announcement = announcementService.getAnnouncement(0, 3);
+	
 		logger.info("announcement size :"+announcement.size());
 	}
 	

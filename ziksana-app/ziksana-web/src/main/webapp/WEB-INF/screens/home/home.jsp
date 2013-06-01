@@ -536,7 +536,11 @@ table tr td {
 }
 
 .show_more {
-	border: 1px solid red
+
+}
+
+.announcement_tab{
+	color: skyblue !important;
 }
 
 </style>

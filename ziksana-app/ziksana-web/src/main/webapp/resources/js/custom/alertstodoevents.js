@@ -149,6 +149,11 @@ function get_and_populate_announcements(val){
 			
 		}
 	});
+		$('.Allbtn').addClass('announcement_tab');
+		$('.Universitybtn').removeClass('announcement_tab');
+		$('.Departmentbtn').removeClass('announcement_tab');
+		$('.Coursebtn').removeClass('announcement_tab');
+
 }
 function calculatePage(val){
 	if(val == 0){		
@@ -217,7 +222,11 @@ function get_and_populate_universityannouncements(val){
 			
 		}
 	});
-	
+	$('.Allbtn').removeClass('announcement_tab');
+	$('.Universitybtn').addClass('announcement_tab');
+	$('.Departmentbtn').removeClass('announcement_tab');
+	$('.Coursebtn').removeClass('announcement_tab');
+
 }
 function get_and_populate_departmentannouncements(val){
 	$.ajax({
@@ -274,6 +283,11 @@ function get_and_populate_departmentannouncements(val){
 			
 		}
 	});
+	$('.Allbtn').removeClass('announcement_tab');
+	$('.Universitybtn').removeClass('announcement_tab');
+	$('.Departmentbtn').addClass('announcement_tab');
+	$('.Coursebtn').removeClass('announcement_tab');
+
 }
 function get_and_populate_courseannouncements(val){
 	$.ajax({
@@ -332,6 +346,11 @@ function get_and_populate_courseannouncements(val){
 			
 		}
 	});
+	$('.Allbtn').removeClass('announcement_tab');
+	$('.Universitybtn').removeClass('announcement_tab');
+	$('.Departmentbtn').removeClass('announcement_tab');
+	$('.Coursebtn').addClass('announcement_tab');
+
 }
 $(function(){
    $('.accordion-toggle').click(function(e){
@@ -394,7 +413,9 @@ function get_and_populate_todo(val){
 						 }
 						$('#todos_placeholder').html(ouputMoreTodo);
 						if(val == 0){		
-							$('#pag_active0').addClass('pactive');}else if(val == 5){$('#pag_active1').addClass('pactive');	
+							$('#pag_active0').addClass('pactive');
+						}else if(val == 5){
+							$('#pag_active1').addClass('pactive');	
 						}else if(val == 10){
 							$('#pag_active2').addClass('pactive');
 						}else if(val == 15){
@@ -410,6 +431,7 @@ function get_and_populate_todo(val){
 				});
 		}	
 	});
+	
 						  
 } 
 function calculateTodoPage(val){
