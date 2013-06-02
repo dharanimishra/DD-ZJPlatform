@@ -5,6 +5,7 @@ package com.ziksana.persistence.todos;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import com.ziksana.domain.todo.Todo;
@@ -28,5 +29,11 @@ public interface TodoMapper {
 	public int deleteTodo(int todoId);
 
 	public void createTodo(Todo todo);
+
+	public int getTodoSize(Integer memberRoleId);
+
+	public List<Todo> getTodoPagination(@Param("pageIndex")int pageIndex,@Param("itemsPerPage")int itemsPerPage, @Param("memberRoleId") Integer memberRoleId);
+
+	
 
 }

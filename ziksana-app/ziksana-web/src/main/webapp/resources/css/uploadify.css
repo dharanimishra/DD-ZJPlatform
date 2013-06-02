@@ -10,44 +10,41 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 }
 
 .uploadify-button {
-	background-color: #2F96B4;
-	background-image: linear-gradient(bottom, #2F96B4 0%, #49AFCD 100%);
-	background-image: -o-linear-gradient(bottom, #2F96B4 0%, #49AFCD 100%);
-	background-image: -moz-linear-gradient(bottom, #2F96B4 0%, #49AFCD 100%);
-	background-image: -webkit-linear-gradient(bottom, #2F96B4 0%, #49AFCD 100%);
-	background-image: -ms-linear-gradient(bottom, #2F96B4 0%, #49AFCD 100%);
-	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #2F96B4),
-		color-stop(1, #49AFCD));
-	background-position: center top;
-	background-repeat: no-repeat;
-	/*-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;*/
-	border: 1px solid #1b6d85;
-	color: #FFF;
-	font: bold 12px Arial, Helvetica, sans-serif;
+
+	    background: none repeat scroll 0 0 #43B2EC;
+    border: 0 none;
+    border-radius: 6px 6px 6px 6px;
+    color: #F9F9F9;
+    margin-bottom: 3px;
+    text-shadow: none;
+    width: 120px;
+	  font-size: 11px;
 	text-align: center;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	width: 100%;
+	
+	
 }
 
 .remove {
-	background-color: #2F96B4;
-	background-image: -moz-linear-gradient(center bottom, #2F96B4 0%, #49AFCD 100%);
-	background-position: center top;
-	background-repeat: no-repeat;
-	border: 1px solid #1B6D85;
-	color: #FFFFFF;
-	font: bold 12px Arial, Helvetica, sans-serif;
+	    background: none repeat scroll 0 0 #43B2EC;
+    border: 0 none;
+    border-radius: 6px 6px 6px 6px;
+    color: #F9F9F9;
+    margin-bottom: 3px;
+    text-shadow: none;
+    width: 120px;
 	margin-left: -11px;
 	padding: 8px;
 	position: relative;
-	text-align: center;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	text-decoration:none!important;
+	cursor:pointer!important;
 	top: 124px;
 }
-
-.uploadify:hover .uploadify-button {
+.remove:hover,.uploadify:hover .uploadify-button {
+    background: none repeat scroll 0 0 #008DC4;
+    color: #FFFFFF;
+    width: 120px;
+}
+/* .uploadify:hover .uploadify-button {
 	background-color: #6ab7cd;
 	background-image: linear-gradient(top, #6ab7cd 0%, #7fc7dc 100%);
 	background-image: -o-linear-gradient(top, #6ab7cd 0%, #7fc7dc 100%);
@@ -63,7 +60,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	background-color: #D0D0D0;
 	color: #808080;
 }
-
+ */
 .uploadify-queue {
 	margin-bottom: 1em;
 }

@@ -43,4 +43,9 @@ public class IntegerZID implements ZID, Serializable {
 	public void setStorageID(int id) {
 		this.id = id;
 	}
+	
+	public String toString(){
+		
+		return new Integer(id).toString();
+	}
 }

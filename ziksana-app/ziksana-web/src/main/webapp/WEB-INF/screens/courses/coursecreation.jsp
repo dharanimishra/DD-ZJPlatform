@@ -1,4 +1,4 @@
-
+<script type='text/javascript' src="${staticFileServer}resources/js/custom/plugins.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/z_message.js"></script>
 <script type="text/javascript"
@@ -16,61 +16,29 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/treedata.js"></script>
 
-<!-- scripts for tree -->
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/gettheme.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/core.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/buttons.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/scrollbar.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/panel.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/dragdrop.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/tree.js"></script>
- --%>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/tooltip.js"></script>
-
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/menujq.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/tree/jqxexpander.js"></script>
+<script
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validationen.js"
+	type="text/javascript" charset="utf-8"></script>
+<script
+	src="${staticFileServer}resources/js/ziksana/validation/jquery.validation.js"
+	type="text/javascript" charset="utf-8"></script>
+ 
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/css/common/tree/menu.css" />
 <link rel="stylesheet" type="text/css"
 	href="${staticFileServer}resources/js/lib/splitter/splitter.css" />
-<script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/splitter/splitter.js"></script>
+ 
 
 <script type='text/javascript'
 	src='${staticFileServer}resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#splitterContainer").splitter({
-			minAsize : 100,
-			maxAsize : 800,
-			splitVertical : true,
-			A : $('#leftPane'),
-			B : $('#rightPane')
-			//slave : $("#rightSplitterContainer")
-			//closeableto : 0
-		});
-
-	});
-</script>
+ 
 <style>
 .ds {
 	margin-left: 40px;
 	color: #0a91ac !important;
 }
 
-.select2-container {
-	margin-right: 59px;
-}
+
 </style>
 <script type="text/javascript">
 	/* function showrich() {
@@ -267,11 +235,12 @@
 		<div id="splitterContainer">
 			<div id="leftPane">
 				<div id="treeboxbox_tree"
-					style="overflow: scroll; overflow-y: hidden;" class="dhtmlxTree"
+					style="width: 250px;" class="dhtmlxTree"
 					setImagePath="${staticFileServer}resources/js/ziksana/jquerylibrary/tree/treeimages/csh_bluebooks/">
 				</div>
 			</div>
 			<!-- #leftPane -->
+			<div id="splitbarV" class="splitbarV"> </div>
 			<div id="rightPane">
 				<div class="Addmodulecontainer" id="Addmodulecontainer"
 					style="padding: 10px;">
@@ -283,17 +252,17 @@
 						<!--module form-->
 						<!--Course Name-->
 						<div class="control-group">
-							<label class="control-label nexaf" for="Course Name">Module
+							<label class="control-label nexaf" for="Course Name" style="width:120px">Module
 								Name :</label>
-							<div class="controls">
-								<input type="text" class="span6" id="Course_Module"
-									placeholder="Enter module name" style="margin-left: -45px;" />
+							<div class="controls" style="margin-left: 130px;">
+								<input type="text" class="validate[required]" id="Course_Module"
+									placeholder="Enter module name" maxlength="64" style="width:300px;" />
 							</div>
 						</div>
 
 						<!--end of course name-->
 
-						<br /> <label for="Course Description" class="labelclass"
+						  <label for="Course Description" class="labelclass"
 							style="font-weight: bold;"><b>Course Description :</b></label> <br />
 						<div class="_richTextShow">
 							<textarea id="Cmoduledescrte" name="editor1pageload"
@@ -313,14 +282,14 @@
 							</div> -->
 							<div class="clearfix"></div>
 							<div class="moduleselection">
-								<div style="width: 38%;margin-right:2px" class="f-l">
+								<div style="width: 32%;margin-right:2px" class="f-l">
 									<label class="labelclass nexaf f-l"> Module Area : </label> <select
 										name="s_example" id="Cmoduleareaddl" class="select"
 										onclick="getArea();">
 										<option value="0">choose a option...</option>
 									</select>
 								</div>
-								<div style="width: 38%;" class="f-l">
+								<div style="width: 32%;" class="f-l">
 									<label class="labelclass nexaf f-l"> Module Subject: </label> <select
 										name="s_example" class="select" id="Cmodulesubjectddl">
 										<option value="0">choose a option...</option>
@@ -337,9 +306,9 @@
 							</div>
 							<!--end of Subject Selection-->
 							<div class="control-group" style="width: 90%">
-								<label class="control-label nexaf" for="Specify Tags">Specify
+								<label class="control-label nexaf" for="Specify Tags" style="width:120px">Specify
 									Tags :</label>
-								<div class="controls">
+								<div class="controls" style="margin-left:130px;">
 									<input id="Addmoduletag" type="text" class="tags" value="" />
 								</div>
 							</div>
@@ -357,7 +326,7 @@
 			<!-- #rightPane -->
 		</div>
 		<div class="Clearfix"></div>
-		<button class="btn f-r" type="button" style="margin-right: 30px;">Save
+		<button class="btn f-r" type="button" onClick="getSaveandContinue();return false;" style="margin-right: 30px;">Save
 			and Continue</button>
 		<!-- <div id='jqxWidget' style='display: none;'>
 								<div id="splitter" style='clear: both;'>
@@ -396,3 +365,44 @@
 <div class="Clearfix"></div>
 <div class="Clearfix"></div>
 </div>
+<script>
+ $(function(){
+	$('#splitbarV').click(function(){
+		console.log("hello");
+		leftpane = $('#leftPane');
+		if(leftpane.hasClass('hidden')){
+			leftpane.removeClass('hidden').show();
+		} else {
+			leftpane.addClass('hidden').hide();
+		}
+	});
+	});
+ </script>
+ <style>
+ #treeboxbox_tree{overflow:auto!important}
+ </style>
+
+<style>
+.select2-container {
+    
+    margin-right: 10px!important;
+    
+    width: 200px;
+}
+ 
+  
+  .splitclick{
+  
+   background: url("/ziksana-web/resources/images/panevc.gif") no-repeat scroll -5px 20% #CBE1FB;
+    border: 1px solid #9CBDFF;
+    float: left;
+    font-size: 0;
+    height: 40%;
+    line-height: 0;
+    margin-left: 15px;
+    margin-top: 17px;
+    position: absolute;
+    width: 4px;
+}
+.hidetree{display:none;width:24%}
+</style>

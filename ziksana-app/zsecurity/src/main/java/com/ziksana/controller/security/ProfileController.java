@@ -148,6 +148,26 @@ public class ProfileController {
 		
 	}
 	
+	@RequestMapping(value = "/1/updateprofileimage", method = RequestMethod.POST)
+	public @ResponseBody int updateUserProfileImage(
+			@RequestParam(value = "memberId", required = true) String memberId,
+			@RequestParam(value = "profileImage", required = false) String profileImage){
+		
+			int response= 0;
+			try{
+				
+				response = memberService.updateMemberProfileImage(profileImage, Integer.parseInt(memberId));
+				
+			}
+			catch(ZiksanaException zexception){
+	
+				LOGGER.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+			}
+			
+		return response;
+		
+	}
+	
 	@RequestMapping(value = "/1/editupdateprofile", method = RequestMethod.POST)
 	public @ResponseBody int editAndUpdateUserProfile(
 			@RequestParam(value = "memberId", required = true) String memberId,

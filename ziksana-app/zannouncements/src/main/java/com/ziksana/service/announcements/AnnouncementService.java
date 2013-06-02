@@ -14,7 +14,7 @@ import com.ziksana.domain.announcements.Announcement;
 public interface AnnouncementService {
 	public List<Announcement> getAllAnnouncement();
 
-	public List<Announcement> getAnnouncement();
+	public List<Announcement> getAnnouncement(Integer startIndex, int itemsPerPage);
 
 	public void updateAnnouncement(Announcement announcement);
 
@@ -28,12 +28,18 @@ public interface AnnouncementService {
 	public List<Announcement> getAllAnnouncementsByDate(String startDate,
 			String endDate);
 
-	public List<Announcement> getInstitutionAnnouncements(String startDate,
-			String endDate);
+	public List<Announcement> getInstitutionAnnouncements(Integer startIndex,int itemsPerPage);
 
-	public List<Announcement> getInstitutionUnitAnnouncements(String startDate,
-			String endDate);
+	public List<Announcement> getdepartmentAnnouncements(Integer startIndex,int itemsPerPage);
 
-	public List<Announcement> getCourseAnnouncements(String startDate,
-			String endDate);
+	public List<Announcement> getCourseAnnouncements(Integer startIndex,
+			int itemsPerPage);
+
+	public int getAllAnnouncementsSize();
+
+	public int getUniversityAnnouncementsSize();
+
+	public int getDepartmentAnnouncementsSize();
+
+	public int getCourseAnnouncementsSize();
 }

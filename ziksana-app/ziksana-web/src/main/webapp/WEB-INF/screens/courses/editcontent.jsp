@@ -1,4 +1,9 @@
+<%@ page language="java" contentType="text/xml"%>
+<%@page import="java.util.*"%>
+<%@page import="com.ziksana.domain.course.LearningContent"%>
 
+<script type='text/javascript'
+	src="${staticFileServer}resources/js/custom/plugins.js"></script>
 <script type='text/javascript'
 	src="${staticFileServer}resources/js/lib/plupload/previewupload.js"></script>
 <script type="text/javascript"
@@ -6,11 +11,194 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/editcontentjson.js"></script>
 
+ 
+
+ 
+
+<div id="Zikbreadcrumbback" style="margin-left: 20px;"> <div
+	class="Zikbreadcrumb f-l"> <div class="fifteen columns"
+	id="page-title"> <a style="margin-top: -3px;" class="back"
+	href="javascript:history.back()"></a> <p class="page-title"> <span
+	style="font-size: 13px; color: #6bbde8;">Home</span> < Create Content </p>
+</div> </div> <!--end of breadcrumb--> </div>
+
+<div class="Clearfix"></div>
+<div id="contentpanel">
+ <div class="tilecontainer pull-left"
+			style="margin-top: 40px; width: 140px;margin-left:10px;"> 
+			<div class="tile bg-color-orange icon" id="uploadbtn" style="">
+			<div class="tile-content"> 
+				<a href="/ziksana-web/zcourse/1/createcontent">
+				<img src="${staticFileServer}resources/images/content/upload.png" /></a>
+			</div>
+			<div class="brand"> 
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"> 
+				<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;">Upload Content</a> 
+			</h3> 
+	</div> 
+	</div> 
+		
+		
+		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
+			<div class="tile-content"> 
+				<a href="/ziksana-web/zcourse/1/weblinkcontent">
+				<img src="${staticFileServer}resources/images/content/link.png" /></a>
+			 </div> 
+		 <div  class="brand"> 
+			<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+			<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;">Add Web Link</a> </h3> 
+		</div> 
+			</div> 
+			<div
+			class="Clearfix"></div> </div>
+			 <!--end of tiles container--> 
+			 <div class="contentarea pull-right" style="width: 940px;"> 
+			 <div class="createcontentwrapper"> 
+	
+<div class="uploadcontent2">
+	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
+	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
+	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
+		out.println("size:"+list.size());
+	 	for (LearningContent content : list) {
+	 		
+	 %> 
+		<%--  <div class="edit_content_info" id="content_<%=content.getId()%>"> --%>
+		 <div class="Clearfix"></div> 
+		<div class=" pull-left" style="padding: 10px;width:350px"> 
+	<!--  <div class="uploadphoto pull-left" style="width: 350px">
+	 <div style="width: 100%">  
+	 </div> 
+	 </div> -->
+
+
+				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/genetics.jpg" style="width: 100px;" align="left" />
+				<div id="message_<%=content.getId()%>"></div>
+						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
+						<div id="loaderText_<%=content.getId()%>"></div>
+						<input type="file" name="thumbnail_image_file_upload_<%=content.getId()%>" id="thumbnail_image_file_upload_<%=content.getId()%>" style="margin-left: 196px;" />
+							<input type="hidden" name="content_id[]" value="<%=content.getId()%>"/>
+							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
+							<input type="hidden" name="thumbnail_path[]" id="thumbnail_path_<%=content.getId()%>" value="<%=old_thumbnail_path%>"/>
+						<div id="status_<%=content.getId()%>"></div>
+						<script type="text/javascript">
+							$(function() {
+								$('#thumbnail_image_file_upload_<%=content.getId()%>').uploadify(
+												{'swf' : '${staticFileServer}resources/swf/uploadify.swf',
+													'queueSizeLimit' : 1,
+													'successTimeout' : 350,
+													'buttonText' : 'Upload File',
+													'uploader' : '${ms.uploadScript}',
+													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx, *.pdf',
+													'fileSizeLimit' : '10024KB',
+													'onUploadStart' : function(
+															file) {
+														$('#sbtvalidation')
+																.attr(
+																		'disabled',
+																		'disabled');
+													},
+													//'debug' : true,
+													//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+
+													'onUploadSuccess' : function(
+															file, data,
+															response) {
+														json_string = data;
+														data_object = $
+																.parseJSON(json_string);
+														console
+																.log(data_object);
+
+														if (data_object.Uploaded == 'true') {
+															content_path = data_object.ContentPath;
+															content_name = data_object.ContentName;
+															content_type_id = data_object.ContentType;
+															content_type_name = data_object.ContentTypeName;
+															thumbnail_path = data_object.ThumbnailPicturePath;
+															no_of_thumbnails = data_object.NumberOfThumbnails;
+
+															$('#thumbnail_path_<%=content.getId()%>').val(content_path);
+															$('#thumbnail_image_<%=content.getId()%>').attr('src','${ms.url}'+content_path);
+
+
+
+														} else { //there is an error in the upload process
+
+															$('#message').html(data_object.message);
+														}
+														$('#sbtvalidation').removeAttr('disabled'); //enable submit button
+
+													}
+												// Your options here
+												});
+							});
+
+
+						</script>
+					</div>
+
+ <!--end of uploadphoto--> 
+ <div class="rowfields pull-left"> <ul>
+	<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
+		<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" />
+	</li> 
+	</ul> 
+	</div> 
+<div class="clearfix"></div> 
+
+<div class="editslideup1"> 
+	<div class="editslide pull-left"> 
+	<textarea rows="4" cols="12"
+	style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]">Details for the upload image </textarea>
+	</div> 
+	<div class="editslide pull-left" style="margin-left: 5px;">
+	 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
+	
+	<select
+	class="Careaddl select" name="content_area[]"> <option>Specify Subject</option>
+</select> <br> 
+<select class="select Csubjectddl" name="content_subject[]"> <option>Specify
+Subject</option> </select> 
+
+<select class="select Ctopicddl" name="content_topic[]" > <option>Specify
+Subject</option> </select>
+
+</div> </div> <!--end of continaer--> <div class="clearfix"></div> 
+
+</div> <!-- end of uploadrow-->
+ 
+</div>
+
+<%
+	}
+%>
+<div class="createcontentpanelhead" style="margin-top: 4px;"> 
+<a	href="/ziksana-web/zcourse/1/createcontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Add Content </a>
+	<a href="#linkurl" class="btn pull-right" style="margin-left: 10px;" type="button" onClick="$('form#editcontentform').submit();"> Save </a> 
+	<!--  <a href="#linkurl" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous</a> -->
+<div class="clearfix"></div> 
+</div> <!--end of panel head--> 
+
+</form> 
+</div> <!--end of uploadcontent2-->
+</div> <!--end of image wrapper --> </div> <!--end of contentarea--> </div>
+<!--end of contentpanel-->
+
+<div class="Clearfix"></div>
+
+<!--end of body wrapper-->
+
+<div class="Clearfix"></div>
+
+</div>
 <style>
-.tileheada {
+
+  .tileheadaa {
 	margin-left: 20px;
 	font-size: 20px;
-	font-size: 30px;
+ 
 }
 
 table tr th {
@@ -28,145 +216,37 @@ table tr td {
 .table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
 	background-color: rgba(206, 204, 204, 0.27);
 }
+
+.uploadify {
+	clear: both;
+	left: 50px;
+	margin-bottom: 1em;
+	position: relative;
+	left: 10px;
+}
+ .tile-content > a{
+ width:100%;
+  height:100%;float:left
+ }
+
+ .brand a:hover{
+ color:#fff!important;text-decoration:none
+ }
+
+ .tile-content > a >img {
+    height: 64px;
+    left: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    position: absolute;
+    top: 50%;
+    width: 64px;
+}
+ 
+.select2-container {
+	margin-right: 10px !important;
+	width: 235px;
+}
+.edit_content_info{background:#0099cc}
+.uploadify{left:0px!important}
 </style>
-<div id="Zikbreadcrumbback" style="margin-left: 20px;">
-	<div class="Zikbreadcrumb f-l">
-		<div class="fifteen columns" id="page-title">
-			<a style="margin-top: -3px;" class="back"
-				href="javascript:history.back()"></a>
-			<p class="page-title">
-				<span style="font-size: 13px; color: #6bbde8;">Home</span> < Create
-				Content
-			</p>
-		</div>
-	</div>
-	<!--end of breadcrumb-->
-</div>
-
-<div class="Clearfix"></div>
-<div id="contentpanel">
-	<div class="tilecontainer pull-left"
-		style="margin-top: 40px; width: 140px;">
-		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
-			<div class="tile-content">
-				<img src="${staticFileServer}resources/images/content/upload.png" />
-			</div>
-			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="ziksana-web/zcourse/1/createcontent"></a>Upload Content
-				</h3>
-			</div>
-		</div>
-
-
-		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
-			<div class="tile-content">
-				<img src="${staticFileServer}resources/images/content/link.png" />
-			</div>
-			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="ziksana-web/zcourse/1/weblinkcontent"></a>Add Web Link
-				</h3>
-			</div>
-		</div>
-
-
-
-		<div class="Clearfix"></div>
-
-
-	</div>
-	<!--end of tiles container-->
-
-	<div class="contentarea pull-right" style="width: 940px;">
-		<div class="createcontentwrapper">
-			<div class="uploadcontent2">
-				<div class="createcontentpanelhead">Upload Content</div>
-				<!--end of panel head-->
-
-				<div class="Clearfix"></div>
-
-				<div class="uploadroweven">
-					<div class="uploadphoto pull-left">
-						<div class="fileupload fileupload-new" data-provides="fileupload">
-							<div class="fileupload-new thumbnail"
-								style="width: 80px; height: 80px;">
-								<img src="http://www.placehold.it/80x80/EFEFEF/AAAAAA" />
-							</div>
-							<div class="Clearfix"></div>
-							<div class="fileupload-preview fileupload-exists thumbnail"
-								style="width: 120px; height: 100px;"></div>
-							<div class="Clearfix"></div>
-							<span class="btn btn-file"><span class="fileupload-new">Upload
-									image</span><span class="fileupload-exists">Change</span><input
-								type="file" /></span> <a href="#" class="btn fileupload-exists"
-								data-dismiss="fileupload">Remove</a>
-						</div>
-					</div>
-					<!--end of uploadphoto-->
-
-					<div class="rowfields pull-left">
-
-						<ul>
-							<li style="padding-right: 30px;">File Name</li>
-							<li style="padding-right: 30px;"><a href="#linkurl">Edit
-									Name</a></li>
-							<li><a href="#linkurl" class="editdetailsweblink">Edit
-									Details</a></li>
-
-						</ul>
-					</div>
-					<div class="clearfix"></div>
-
-					<div class="editslideup1">
-
-						<div class="editslide pull-left">
-							<textarea rows="4" cols="12"
-								style="width: 374px; margin-bottom: 10px;">Details for the upload image </textarea>
-						</div>
-
-						<div class="editslide pull-left" style="margin-left: 5px;">
-							<input type="text" placeholder="Specify Tags"
-								style="height: 30px; margin-top: 7px; width: 220px;"> <select
-								id="Careaddl" class="select">
-								<option>Specify Subject</option>
-							</select> <br> <select class="select" id="Csubjectddl">
-								<option>Specify Subject</option>
-							</select> <select class="select" id="Ctopicddl">
-								<option>Specify Subject</option>
-							</select>
-						</div>
-					</div>
-					<!--end of continaer-->
-					<div class="clearfix"></div>
-				</div>
-				<!-- end of uploadrow-->
-				<div class="createcontentpanelhead" style="margin-top: 4px;">
-					<a href="#linkurl" class="btn pull-right saveup1"
-						style="margin-left: 10px;"> Add Content </a> <a href="#linkurl"
-						class="btn pull-right" style="margin-left: 10px;"> Save </a> <a
-						href="#linkurl" class="btn pull-right saveup1"
-						style="margin-left: 10px;"> Previous </a>
-
-					<div class="clearfix"></div>
-				</div>
-				<!--end of panel head-->
-			</div>
-			<!--end of uploadcontent2-->
-		</div>
-		<!--end of image wrapper -->
-	</div>
-	<!--end of contentarea-->
-
-</div>
-<!--end of contentpanel-->
-
-<div class="Clearfix"></div>
-
-<!--end of body wrapper-->
-
-<div class="Clearfix"></div>
-
-
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/custom/createcontent/filedrag.js"></script> --%>

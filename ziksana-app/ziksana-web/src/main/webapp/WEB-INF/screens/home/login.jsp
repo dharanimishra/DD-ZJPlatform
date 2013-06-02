@@ -1,8 +1,9 @@
-
+<script type='text/javascript' src='/ziksana-web/resources/js/custom/plugins.js'></script>
+<script type='text/javascript' src='/ziksana-web/resources/js/lib/slider/fwslider.js'></script>
 <div id="loginwrapper">
 
 
-	<div id="contentpanel">
+	<div id="contentpanel" style="margin-bottom:0px">
 
 
 		<div id="headercontainer">
@@ -137,7 +138,7 @@
 							
 						</c:if>
 						<c:if test="${accountLocked !=null}">
-						<p style="color:#d14836;"><c:out value="${accountLocked}"></c:out><a href="/unsecure/admin/contactadminstrator#">&nbsp;Administrator</a></p>
+						<p style="color:#d14836;"><fmt:message key="login.accountlock.message"/><a href="/unsecure/admin/contactadminstrator#">&nbsp;<fmt:message key="login.Administrator"/></a></p>
 						</c:if>		
 						<c:if test="${accountLocked ==null}">
 					
@@ -157,7 +158,7 @@
 					
 					<p style="color:#d14836;" id="userIdValidation">
 					<c:if test="${ not empty userIdValidationResponse}">
-							<c:out value="${userIdValidationResponse}" />
+							<fmt:message key="login.invalidusername"/>
 					</c:if>
 					</p>
 				</div>
@@ -171,7 +172,8 @@
 					</div>
 					<p style="color:#d14836;" id="passwordValidation">
 					<c:if test="${ not empty passwordValidationResponse}">
-					<c:out value="${passwordValidationResponse}"></c:out>
+						<c:if test="$"></c:if>
+							<fmt:message key="login.invalidpassword"/>
 					</c:if>
 					</p>
 				</div>
@@ -200,14 +202,14 @@
 function validate(){
 	$(".btn").addClass("button-submit"); 
 	if(document.loginfrm.username.value == ""){		
-		 $('#userIdValidation').html("Enter User ID");
+		 $('#userIdValidation').html("<fmt:message key="error.enteruser"></fmt:message>");
 		 document.getElementById("passwordValidation").innerHTML = '';
 		 document.loginfrm.username.focus();
 		 $(".btn").removeClass("button-submit");
 		 return false;
 		 
 	}else if(document.loginfrm.password.value == ""){
-		$('#passwordValidation').html("Enter Password");
+		$('#passwordValidation').html("<fmt:message key="error.enterpass"></fmt:message>");
 		document.getElementById("userIdValidation").innerHTML = '';
 			document.loginfrm.password.focus();
 			$(".btn").removeClass("button-submit");
@@ -221,18 +223,25 @@ function validate(){
 	
 	
 }
-    $(document).ready(function () {
 
-        // Populate user based on cookie language
-        var language = $.cookies.get('org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE');
-        $('#language').val(language)
-                .change(function () {
-                    var newHref = window.location.href;
-                    if (newHref.indexOf('?siteLanguage') > 0) {
-                        newHref = newHref.substring(0, newHref.indexOf('?siteLanguage'));
-                    }
-                    newHref += '?siteLanguage=' + $('#language').val();
-                    window.location.href = newHref;
-                });
-    });
+$(document).ready(function(e) {
+
+	
+	   var allcookies = document.cookie;
+	   //console.log("All Cookies : " + allcookies );
+
+	   // Get all the cookies pairs in an array
+	   cookiearray  = allcookies.split(';');
+
+	   // Now take key value pair out of this array
+	  value = new Array();
+	   for(var i=0; i<cookiearray.length; i++){
+	      name = cookiearray[i].split('=')[0];
+	      value.push(cookiearray[i].split('=')[1]);
+	      
+	      
+	
+	}
+	   console.log(value);
+	}); 
 </script>

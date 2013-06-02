@@ -71,6 +71,19 @@
 			SELECT LAST_INSERT_ID();
 		</selectKey>
 	</insert>
+	
+	<insert id="insertLearningComponentContent" parameterType="java.util.List" >
+	INSERT INTO my_table
+	   (ID_ITEM,
+	    ATT1,
+	    ATT2)
+	    VALUES
+	   <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+	    #{item.idItem, jdbcType=BIGINT},
+	    #{item.att1, jdbcType=INTEGER},
+	    #{item.att2, jdbcType=STRING}
+	   </foreach>   
+	</insert>
 
 	<update id="updateLearningComponentContent" parameterType="com.ziksana.domain.course.LearningComponentContent">
 		update corlearningcomponentcontent

@@ -1,7 +1,10 @@
 
-<script src="/ziksana-web/resources/js/custom/table/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="/ziksana-web/resources/js/custom/alertstodoevents.js"></script>
-<script type="text/javascript" src="/ziksana-web/resources/js/custom/jquery.hovercard.js"></script>
+<script
+	src="/ziksana-web/resources/js/custom/table/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/custom/alertstodoevents.js"></script>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/custom/jquery.hovercard.js"></script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
 	<div class="Zikbreadcrumb f-l">
@@ -10,8 +13,9 @@
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
 			<p class="page-title">
-				<span style="font-size: 13px; color: #6bbde8;"><fmt:message key="home.hometext"></fmt:message></span>
-				Course
+				<span style="font-size: 15px; color: #6bbde8;"><fmt:message
+						key="home.hometext"></fmt:message></span>
+
 			</p>
 
 		</div>
@@ -35,53 +39,80 @@
 
 
 
-		<div class="tile bg-color-blue" style="width:270px;">
-			 <c:if test="${empty member.picturePath}">
-			 <p><img src="<c:out value="/ziksana-web${member.picturePath}"/> " align="left" style="margin-top: 15px; margin-left: 5px; height:100px; margin-right:10px;" class="img-polaroid"/></p>
-			 </c:if>
-			 <c:if test="${not empty ms.url && not empty member.picturePath}">
-			 <p><img src="${ms.url}<c:out value="${member.picturePath}"/>" align="left" style="margin-top: 15px; margin-left: 5px; height:100px; margin-right:10px;" class="img-polaroid"/></p>
-			 </c:if>
-			 <p  class="profiletilename pull-left" style="font-size: 20px; width:120px;
-			margin-top: 15px;"><c:out value="${member.firstName}"/> <c:out value="${member.lastName}"/></p>
-			<p> <c:out value="${member.designation}"/> </p>
-			
-			 
-			  <img  src="/ziksana-web/resources/images/home/badge.png" width="146" style="width:148px; margin-left:-4px;"/>
- 
- 
-  </div>
+		<div class="tile bg-color-blue" style="width: 270px;">
+			<c:if test="${empty member.picturePath}">
+				<p>
+					<img src="/ziksana-web/resources/images/no-image.jpg" align="left"
+						style="margin-top: 10px; margin-left: 5px; height: 80px; margin-right: 10px;"
+						class="img-polaroid" />
+				</p>
+			</c:if>
+			<c:if test="${not empty ms.url && not empty member.picturePath}">
+				<p>
+					<img src="${ms.url}<c:out value="${member.picturePath}"/>"
+						align="left"
+						style="margin-top: 15px; margin-left: 5px; height: 80px; margin-right: 10px;"
+						class="img-polaroid" />
+				</p>
+			</c:if>
+			<p class="profiletilename pull-left"
+				style="font-size: 20px; width: 148px; margin-top: 15px;">
+				<c:out value="${member.firstName}" />
+				<c:out value="${member.lastName}" />
+			</p>
+			<p>
+				<c:out value="${member.designation}" />
+			</p>
 
-<a href="/ziksana-web/zcourse/createcontent">
-		<div class="tile bg-color-blueDark">
-			<img class="tileimg" src="/ziksana-web/resources/images/icons/createcontent.png" />
-			<h3><fmt:message key="home.createcontent"></fmt:message></h3>
+
+			<img src="/ziksana-web/resources/images/home/badge.png" width="126"
+				style="width: 128px; margin-left: 2px; margin-top:-2px;" />
+
 
 		</div>
+
+		<a href="/ziksana-web/zcourse/1/createcontent">
+			<div class="tile bg-color-blueDark">
+				<img class="tileimg"
+					src="/ziksana-web/resources/images/icons/createcontent.png" />
+				<h3>
+					<fmt:message key="home.createcontent"></fmt:message>
+				</h3>
+
+			</div>
+		</a> <a href="/ziksana-web/zcourse/1/mycontent">
+			<div class="tile">
+
+				<img class="tileimg"
+					src="/ziksana-web/resources/images/icons/managecourse.png" />
+				<h3>
+					<fmt:message key="home.managecontent" />
+				</h3>
+
+			</div>
 		</a>
-		<div class="tile">
-
-			<img class="tileimg" src="/ziksana-web/resources/images/icons/managecourse.png" />
-			<h3><fmt:message key="home.managecontent"/></h3>
-
-		</div>
-
 
 		<div class="tile bg-color-blueDark">
 
-			<img class="tileimg" src="/ziksana-web/resources/images/icons/editcoursecontent.png" />
-			<h3 style="width: 90px;"><fmt:message key="home.editcourse"/></h3>
+			<img class="tileimg"
+				src="/ziksana-web/resources/images/icons/editcoursecontent.png" />
+			<h3 style="width: 90px;">
+				<fmt:message key="home.editcourse" />
+			</h3>
 
 		</div>
 
-<a href="/ziksana-web/zcourse/createcourse">
-		<div class="tile bg-color-blue">
+		<a href="/ziksana-web/zcourse/createcourse">
+			<div class="tile bg-color-blue">
 
-			<img class="tileimg" src="/ziksana-web/resources/images/icons/createcourse.png" />
-			<h3 style="margin-left: 10px; font-size: 20px; width: 30px;"><fmt:message key="home.createcourse"/></h3>
+				<img class="tileimg"
+					src="/ziksana-web/resources/images/icons/createcourse.png" />
+				<h3 style="margin-left: 10px; font-size: 20px; width: 30px;">
+					<fmt:message key="home.createcourse" />
+				</h3>
 
-		</div>
-</a>
+			</div>
+		</a>
 
 
 
@@ -91,19 +122,25 @@
 				<img src="/ziksana-web/resources/images/icons/courseanaltic.png" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 6px; font-size: 22px; width:98%;"><fmt:message key="home.analytics"/></h3>
+				<h3 style="margin-left: 6px; font-size: 22px; width: 98%;">
+					<fmt:message key="home.analytics" />
+				</h3>
 			</div>
 		</div>
 
 
 
-		<div class="tile bg-color-orange icon  mt-changescene"
+		<div
+			class="tile bg-color-orange icon  mt-changescene announcement_box"
 			style="width: 200px; height: 130px;">
 			<div class="tile-content">
-				<img src="/ziksana-web/resources/images/icons/announcement.png" alt="mes" />
+				<img src="/ziksana-web/resources/images/icons/announcement.png"
+					alt="mes" />
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 22px;"><fmt:message key="home.announcement"/></h3>
+				<h3 style="margin-left: 10px; font-size: 22px;">
+					<fmt:message key="home.announcement" />
+				</h3>
 			</div>
 		</div>
 
@@ -120,11 +157,11 @@
 
 
 
-	<div class="contentarea pull-right"
+	<div class="contentarea pull-right "
 		style="height: 406px; margin-top: 22px;">
 
-		<div class="imagewrapper" style="height: 395px;">
-
+		<div class="imagewrapper scrollbar force-overflow" id="style-6"
+			style="height: 406px;">
 
 			<!-- __________________________________ Panel head ____________________ -->
 
@@ -132,16 +169,14 @@
 			<div class="panelhead" style="margin-top: -12px;">
 
 				<ul>
-					<li><a href="#" class="tagevent"> Events </a></li>
-					<li><a href="#" class="tagtask"> To Do </a></li>
+					<li><a style="cursor: pointer" class="tagevent"><fmt:message key="home.events"/> </a></li>
+					<li><a style="cursor: pointer" class="tagtask"> <fmt:message key="home.todo"/>  </a></li>
 
 
 				</ul>
 
 			</div>
 			<!--end of panel head-->
-
-
 
 			<!-- __________________________________ alert container ____________________ -->
 
@@ -153,7 +188,7 @@
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
-						List of Events Today</p>
+						<fmt:message key="home.listofevents"/></p>
 
 
 
@@ -222,7 +257,7 @@
 				<div class="eventfooter"
 					style="height: 31px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
 					<p class="pull-right" style="color: #fff; font-size: 10px;">
-						Manage Events <a href="#linkurl"> <img
+						<fmt:message key="home.manageevents"/> <a href="#linkurl"> <img
 							src="/ziksana-web/resources/images/icons/calendar.png"
 							style="height: 20px; margin-left: 6px; vertical-align: middle;" />
 						</a>
@@ -237,12 +272,95 @@
 
 
 
+
+
+			<!-- __________________________________ Announcement ____________________ -->
+
+			<div class="annnouncementpanel">
+
+
+				<div class="announcementmainhead pull-left"><fmt:message key="home.announcement"/></div>
+<div class="Clearfix"></div>
+				<div class="announcmentisotope" style="background-color: rgba(50, 50, 50, 0.75);border-bottom: 1px solid #CCCCCC;
+    height: 45px; float:left;width:100%;text-align:right">
+
+					<ul>
+						<li><a style="cursor: pointer" class="Allbtn"> <fmt:message key="home.all"/></a></li>
+						<li><a style="cursor: pointer" class="Universitybtn">
+								<fmt:message key="home.university"/> </a></li>
+						<li><a style="cursor: pointer" class="Departmentbtn">
+								<fmt:message key="home.department"/> </a></li>
+						<li><a style="cursor: pointer" class="Coursebtn"> <fmt:message key="home.course"/>
+						</a></li>
+					</ul>
+
+				</div>
+
+				<div class="Clearfix"></div>
+
+			</div>
+			<!--end of panel head-->
+
+			<div class="announcementwrapper" style='height:284px;float:left;overflow:auto'>
+				<div id="announcement_box_all" class='announcementbox All'
+					style='background-color: rgb(18, 122, 163);'>
+
+				</div>
+
+
+			</div>
+			<div id="announcementPagination" style="float: right;margin-bottom:5px"></div>
+			<div id="annaouncementFooter" class="eventfooter" style="height: 30px; width: 100%;float:left; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
+					
+
+				</div>
 			<!-- __________________________________ to do container ____________________ -->
 
 
-			<div class="contentareatodo" id="todos_placeholder" style="position: absolute; width: 690px;">
+			<div class="contentareatodo"
+				style="position: absolute; width: 690px;">
 
-				
+				<div class="eventheader"
+					style="height: 50px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -12px;">
+
+					<p class="pull-left"
+						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;"><fmt:message key="home.ToDosList"/>
+						</p>
+
+
+
+
+				</div>
+				<!--end of eventheader-->
+
+
+
+
+				<div id="todos_placeholder" class="eventcontent"
+					style="height: 270px;"></div>
+				<!--end of eventcontent-->
+
+
+
+				<div class="eventfooter"
+					style="height: 30px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
+
+					<p class="pull-right" style="color: #fff;">
+						<a style="cursor: pointer" class="managetodo"
+							coords="#fff !important;"> <img
+							src="/ziksana-web/resources/images/icons/settings.png"
+							align="Manage todo"
+							style="height: 20px; margin-left: 6px; vertical-align: middle;" />
+						</a>
+					</p>
+
+					<div class="clearfix"></div>
+
+				</div>
+				<!--end of eventfooter-->
+
+
+
 
 			</div>
 			<!--end of contentareaevent-->
@@ -256,14 +374,15 @@
 				style="position: absolute; width: 690px;">
 
 				<div class="eventheader"
-					style="height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc;">
+					style="height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -12px;">
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
-						To DO List</p>
+						<fmt:message key="home.ToDosList"/></p>
 
 					<p class="pull-right" style="color: #fff;">
-						<a href="#linkurl"> <img src="/ziksana-web/resources/images/content/plus.png"
+						<a style="cursor: pointer"> <img
+							src="/ziksana-web/resources/images/content/plus.png"
 							style="height: 25px; margin-top: 10px;" title="Add To DO"
 							class="addtodobtn" id="sample_editable_1_new" /></a>
 					</p>
@@ -275,38 +394,28 @@
 
 
 
-				<div class="eventcontent"
-					style="height: 270px; overflow: auto; overflow-x: hidden; width: 100%">
+				<div class="eventcontent" style="height: 270px; width: 100%;">
 
 
-					<div class="portlet box blue">
+					<div class="portlet-body">
+						<div id="add_todo_fields_container" style="display: none;height:50px !important;">
+							<select id="todo_categories"
+								style="margin-left: 100px; width: 150px;margin-top:5px;">
 
-						<div class="portlet-body">
-							<div class="clearfix"></div>
-							<table class="table table-striped table-hover"
-								id="sample_editable_1">
-								<thead style="display: none;">
-									<tr>
-
-										<th>Points</th>
-										<th>Notes</th>
-										<th>Edit</th>
-										<th>Delete</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="">
-
-										<td>Category</td>
-										<td class="center">To Do</td>
-										<td><a class="edit" href="javascript:;">Edit</a></td>
-										<td><a class="delete" href="javascript:;">Delete</a></td>
-									</tr>
-
-								</tbody>
-							</table>
+							</select> <span id="add_new_category_form"
+								style="display: none; margin-left: 100px;"> 
+								<input style="margin-top:8px; height:28px;width:150px;" id="todo_category_name" />
+							</span> <input id="todo_description"
+								style="margin-left: 22px; width: 200px; height: 28px; margin-top:5px;">
+							<a onclick="addTodo()"
+								style="cursor: pointer; margin-left: 12px; color: white;"><fmt:message key="save"/></a><a
+								onclick="hideTodoAdd()"
+								style="cursor: pointer; margin-left: 40px; color: white;"><fmt:message key="profile.cancel"/> </a>
 						</div>
+						<div id="todos_placeholder_more" class="eventcontent"></div>
+
 					</div>
+
 					<!-- END EXAMPLE TABLE PORTLET-->
 
 				</div>
@@ -315,7 +424,7 @@
 
 
 				<div class="eventfooter"
-					style="height: 30px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
+					style="height: 30px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
 
 
 				</div>
@@ -349,19 +458,18 @@
 </div>
 <!--end of body wrapper-->
 <style>
-.table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th {
-background-color: rgb(18, 122, 163);
+.table-striped tbody tr:nth-child(odd) td,.table-striped tbody tr:nth-child(odd) th
+	{
+	background-color: rgb(18, 122, 163);
 }
 
-*input [type="text"]
-{
-background-color:rgb(180, 200, 213);	
+* input [type="text"] {
+	background-color: rgb(180, 200, 213);
 }
 
-#sample_editable_1_info
-{
-font-size:13px;
-color:#fff;	
+#sample_editable_1_info {
+	font-size: 13px;
+	color: #fff;
 }
 
 /* .metrouicss a
@@ -373,117 +481,96 @@ color:#fff;
 {
 color:#333;	
 } */
-
-.tileheadaa
-{
-margin-left:20px;
-font-size: 20px;
-font-size:30px;	
+.tileheadaa {
+	margin-left: 20px;
+	font-size: 20px;
+	font-size: 30px;
 }
 
-table tr th
-{
-color:#fff;
-font-size:18px;	
-border:none !important;
+table tr th {
+	color: #fff;
+	font-size: 18px;
+	border: none !important;
 }
 
-table tr td
-{
-color:#fff;
-font-size:14px;	
-border:none !important;
-}
-.hc-details
-{
-width: 300px;
-background-color: rgb(56, 111, 143) !important;
-margin-top:10px; !important;
-display: none;	
+table tr td {
+	color: #fff;
+	font-size: 14px;
+	border: none !important;
 }
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-background-color: rgba(206, 204, 204, 0.27);
-}
-#sample_editable_1_length
-{
-display:none;
+.hc-details {
+	width: 300px;
+	background-color: rgb(56, 111, 143) !important;
+	margin-top: 10px; ! important;
+	display: none;
 }
 
-#sample_editable_1_filter
-{
-display:none;	
+.dddd {
+	disabled: true;
 }
+
+.table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
+	background-color: rgba(206, 204, 204, 0.27);
+}
+
+#sample_editable_1_length {
+	display: none;
+}
+
+#sample_editable_1_filter {
+	display: none;
+}
+
+.annnouncementpanel {
+	background-color: #6BBDE8;
+    height: 40px;
+
+}
+
+.announcmentisotope {
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+}
+
+.show_more {
+
+}
+
+.announcement_tab{
+	color: skyblue !important;
+}
+
 </style>
- <script src="/ziksana-web/resources/js/custom/table/breakpoints/breakpoints.js"></script>	
-	<!-- ie8 fixes -->
-	<!--[if lt IE 9]>
+<script
+	src="/ziksana-web/resources/js/custom/table/breakpoints/breakpoints.js"></script>
+<!-- ie8 fixes -->
+<!--[if lt IE 9]>
 	<script src="assets/js/excanvas.js"></script>
 	<script src="assets/js/respond.js"></script>
-	<![endif]-->	
-	
-	<script type="text/javascript" src="/ziksana-web/resources/js/custom/table/data-tables/jquery.dataTables.js"></script>
-	<script type="text/javascript" src="/ziksana-web/resources/js/custom/table/data-tables/DT_bootstrap.js"></script>
-	<script src="/ziksana-web/resources/js/custom/table/js/app.js"></script>		
-	<script>
-		jQuery(document).ready(function() {			
-			// initiate layout and plugins
-			App.setPage("table_editable");
-			App.init();		
-			$('table').dataTable({"bFilter": false,"bInfo": false});
-			
-		});
-		//TODO Ajax Call
-		var no_of_available_todo;
-		function get_and_populate_todo(){
-			$.ajax({
-			  	type: 'GET',
-				url: '/ziksana-web/ztodo/showalltodo',
-				dataType: 'xml',
-				success: function( data ) {
-						
-						var output_todo="";
-						
-						var indexValue = 0;
-						
-					
-						
-						
-						$.get('/ziksana-web/ztodo/gettodosize', {}, function(size){ 
-							no_of_available_todo = size;
-						
-							var ouputEmptyTodo="";
-							
-							
-							if(no_of_available_todo == 0){$('#todos_placeholder').html(ouputEmptyTodo);} else{
-								
+	<![endif]-->
 
-								 
-								ouputEmptyTodo+="<div class='eventheader'style='height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top:-12px;'>";
-								ouputEmptyTodo+="<p class='pull-left' style='color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;'>To DO List</p></div>";
-								ouputEmptyTodo+="<div class='eventcontent' style='height: 280px; overflow: auto; overflow-x: hidden;'>";
-								ouputEmptyTodo+="<table class='table table-hover table-striped'>";
-								ouputEmptyTodo+="<tbody>";
-								 $(data).find("todoitem").each(function(index){
-									 ouputEmptyTodo+="<tr id='todorow"+$(this).find('id').text()+"'><td><input type='checkbox'  name='checkstatus"+$(this).find('id').text()+"' /> <label><span></span></label></td><td>"+$(this).find("categoryName").text()+"</td>";
-									 ouputEmptyTodo+="<td class='todoinfo-decription'><span width='200px' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;'>"+$(this).find("subject").text()+"</span></tr>";
-									 
-								 });
-								 ouputEmptyTodo+="</tbody></table></div>";
-								 ouputEmptyTodo+="<div class='eventfooter' style='height: 30px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;'>";
-								 ouputEmptyTodo+="<p class='pull-right' style='color: #fff;'>";
-								 ouputEmptyTodo+="<a  class='managetodo' coords='#fff !important;'><img src='/ziksana-web/resources/images/icons/settings.png' align='Manage todo' style='height: 20px; margin-left: 6px; vertical-align: middle;' /></a>";
-								 ouputEmptyTodo+="</p><div class='clearfix'></div></div>";
-								 
-								$('#todos_placeholder').html(ouputEmptyTodo);
-								
-								
-							}
-							
-						});
-				}	
-			});
-								  
-		}
-	
-	</script>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/custom/table/data-tables/jquery.dataTables.js"></script>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/custom/table/data-tables/DT_bootstrap.js"></script>
+<script src="/ziksana-web/resources/js/custom/table/js/app.js"></script>
+<script>
+function toggleSeemore(link){
+  p = link.prev('p');
+   
+  if(p.hasClass('show_more')){
+   link.text('Read More');
+   p.removeClass('show_more');
+  } else {
+   link.text('Hide')
+   p.addClass('show_more');
+  }
+  
+  return false;
+}
+
+
+   </script>

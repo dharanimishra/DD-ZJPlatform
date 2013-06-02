@@ -1,53 +1,33 @@
-#splitterContainer { /* Main splitter element */
-	height: 95%;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	border-bottom: solid 1px #9cbdff;overflow: auto;
+#splitterContainer {/* Main splitter element */
+ width:100%;margin:0;padding:0;display:table;height:100%
+}
+#leftPane{
+ width:20%;display:table-cell; vertical-align: top;
+ 
+ 
+}
+#rightPane{	/*Contains toolbar and horizontal splitter*/
+ display:table-cell;width:auto; vertical-align: top;
+ 
 }
 
-#leftPane {
-  border-top: 1px solid #9CBDFF;
-  float: left;
-  height: 100%;
-  min-height: 200px;
-  overflow: auto;
-  width: 24%;
-}
-
-#rightPane { /*Contains toolbar and horizontal splitter*/
-	float: right;
-	width: 70%;
-	height: 100%;
-	border-left: 2px solid #eee;
-	margin-left: -1%;
-	min-height: 200px;
-}
-
+  
 /* Splitbar styles; these are the default class names and required styles */
-.splitbarV {
-  float: left;
-  font-size: 0;
-  height: 100% !important;
-  line-height: 0;
+.splitbarV {display:table-cell;background-image:url(img/panevc.gif);
+ background-repeat:no-repeat;background-position:-6px -3px;
+ width:4px; height:80px;
+line-height:0px;font-size:0px;border:1px solid #cbe1fb;
+  background-color: #cbe1fb;cursor:pointer
 }
-
-.splitbuttonV {
-  background: url("img/panevc.gif") repeat scroll 10px 50% transparent;
-  height: 83px;
-  margin-left: -11px;
-  position: relative;
-  width: 10px;
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{ #rightPane{	/*Contains toolbar and horizontal splitter*/
+ display:table-cell;width:auto;border-left:1px solid #cbe1fb;
+ 
 }
-
-.splitbuttonV.invert {
-	margin-left: 0px;
-	background: transparent url(img/panevc.gif) 0px 50%;
+  .splitbarV {display:table-cell;background-image:url(img/panevc.gif);
+ background-repeat:no-repeat;background-position:-10px -3px;
+ width:4px; border-left:0px solid #cbe1fb;background-color:none;
+line-height:0px;font-size:0px;height:80px;
+ cursor:pointer
 }
-
-.splitbarV.working,.splitbarH.working,.splitbuttonV.working,.splitbuttonH.working
-	{
-	-moz-opacity: .50;
-	filter: alpha(opacity =   50);
-	opacity: .50;
 }

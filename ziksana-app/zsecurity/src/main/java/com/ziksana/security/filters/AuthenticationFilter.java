@@ -34,7 +34,7 @@ public class AuthenticationFilter implements Filter {
 
 		HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
 		HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-
+          httpResponse.setCharacterEncoding("UTF-8");
 		String url = httpRequest.getRequestURL().toString();
 
 		String sessionToken = getSessionTokenCookie(httpRequest);

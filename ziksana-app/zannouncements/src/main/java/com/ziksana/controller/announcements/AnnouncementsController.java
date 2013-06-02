@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +24,15 @@ import com.ziksana.service.announcements.AnnouncementService;
  * 
  */
 @Controller
-@RequestMapping("/zannouncements")
+@RequestMapping("/zannouncements/1/")
 public class AnnouncementsController {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(AnnouncementsController.class);
+	
+
+	@Value("#{pagination['itemsperpage']}")
+	private String itemsPerPage;
 
 	@Autowired
 	private AnnouncementService announcementService;
@@ -42,10 +47,10 @@ public class AnnouncementsController {
 		ModelAndView mav = new ModelAndView("xml/announcements");
 		List<Announcement> announcementList = new ArrayList<Announcement>();
 		try{
-		announcementList = announcementService.getAllAnnouncement();
-		int announcementSize = announcementList.size();
-		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementList);
+			announcementList = announcementService.getAllAnnouncement();
+			int announcementSize = announcementList.size();
+			mav.addObject("announcementSize", announcementSize);
+			mav.addObject("announcements", announcementList);
 		}
 		catch(ZiksanaException ze){
 			mav.addObject("errorResponse", ze.getMessage());
@@ -72,18 +77,19 @@ public class AnnouncementsController {
 	}
 
 	/**
-	 * Retrive announcement to display
+	 * Retrive announcement to display get all announcements
 	 */
-	@RequestMapping(value = "/getannouncements", method = RequestMethod.GET)
+	@RequestMapping(value = "/getannouncements/{startIndex}", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView getAnnouncementById() {
+	ModelAndView getAnnouncementById(@PathVariable Integer startIndex) {
 
 		ModelAndView mav = new ModelAndView("xml/announcements");
 
 		List<Announcement> announcementList = new ArrayList<Announcement>();
 		try{
-		announcementList = announcementService.getAnnouncement();
-		int announcementSize = announcementList.size();
+		announcementList = announcementService.getAnnouncement(startIndex, Integer.parseInt(itemsPerPage));
+				
+		int announcementSize = announcementService.getAllAnnouncementsSize();
 		mav.addObject("announcements", announcementList);
 		mav.addObject("announcementSize", announcementSize);
 		}
@@ -94,6 +100,78 @@ public class AnnouncementsController {
 		return mav;
 	}
 
+	
+	/**
+	 * Retrive announcement to display University Announcements
+	 */
+	@RequestMapping(value = "/getuniversityannouncements/{startIndex}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getgetuniversityannouncements(@PathVariable Integer startIndex) {
+
+		ModelAndView mav = new ModelAndView("xml/announcements");
+
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		try{
+		announcementList = announcementService.getInstitutionAnnouncements(startIndex, Integer.parseInt(itemsPerPage));
+				
+		int announcementSize = announcementService.getUniversityAnnouncementsSize();
+		mav.addObject("announcements", announcementList);
+		mav.addObject("announcementSize", announcementSize);
+		}
+		catch(ZiksanaException ze){
+			mav.addObject("errorResponse", ze.getMessage());
+			logger.error(ze.getMessage(), ze);
+		}
+		return mav;
+	}
+	
+	/**
+	 * Retrive announcement to display University Announcements
+	 */
+	@RequestMapping(value = "/getdeptannouncements/{startIndex}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getdepartmentannouncements(@PathVariable Integer startIndex) {
+
+		ModelAndView mav = new ModelAndView("xml/announcements");
+
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		try{
+		announcementList = announcementService.getdepartmentAnnouncements(startIndex, Integer.parseInt(itemsPerPage));
+		
+				
+		int announcementSize = announcementService.getDepartmentAnnouncementsSize();
+		mav.addObject("announcements", announcementList);
+		mav.addObject("announcementSize", announcementSize);
+		}
+		catch(ZiksanaException ze){
+			mav.addObject("errorResponse", ze.getMessage());
+			logger.error(ze.getMessage(), ze);
+		}
+		return mav;
+	}
+	
+	/**
+	 * Retrive announcement to display University Announcements
+	 */
+	@RequestMapping(value = "/getcourseannouncements/{startIndex}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getcourseannouncements(@PathVariable Integer startIndex) {
+
+		ModelAndView mav = new ModelAndView("xml/announcements");
+
+		List<Announcement> announcementList = new ArrayList<Announcement>();
+		try{
+		announcementList = announcementService.getCourseAnnouncements(startIndex, Integer.parseInt(itemsPerPage));
+				
+		int announcementSize = announcementService.getCourseAnnouncementsSize();
+		mav.addObject("announcements", announcementList);
+		mav.addObject("announcementSize", announcementSize);
+		}
+		catch(ZiksanaException ze){
+			mav.addObject("errorResponse", ze.getMessage());
+			logger.error(ze.getMessage(), ze);
+		}
+		return mav;
+	}
+	
+	
 	/**
 	 * Retrive announcement to display
 	 */
@@ -142,67 +220,6 @@ public class AnnouncementsController {
 		mav.addObject("announcements",announcementList);
 		}
 		catch(ZiksanaException ze){
-			mav.addObject("errorResponse", ze.getMessage());
-			logger.error(ze.getMessage(), ze);
-		}
-		return mav;
-	}
-
-	@RequestMapping(value = "/getinstitutionannouncements", method = RequestMethod.POST)
-	public @ResponseBody
-	ModelAndView getInstitutionAnnouncements(
-			@RequestParam(value = "startDate", required = true) String startDate,
-			@RequestParam(value = "endDate", required = true) String endDate) {
-
-		ModelAndView mav = new ModelAndView("xml/announcements");
-		List<Announcement> announcementList = new ArrayList<Announcement>();
-		try{
-		announcementList = announcementService.getInstitutionAnnouncements(startDate, endDate);
-		int announcementSize = announcementList.size();
-		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementList);
-		}catch(ZiksanaException ze){
-			mav.addObject("errorResponse", ze.getMessage());
-			logger.error(ze.getMessage(), ze);
-		}
-		return mav;
-	}
-
-	@RequestMapping(value = "/getinstitutionunitannouncements", method = RequestMethod.POST)
-	public @ResponseBody
-	ModelAndView getInstitutionunitAnnouncements(
-
-	@RequestParam(value = "startDate", required = true) String startDate,
-			@RequestParam(value = "endDate", required = true) String endDate) {
-
-		ModelAndView mav = new ModelAndView("xml/announcements");
-		List<Announcement> announcementList = new ArrayList<Announcement>();
-		try{
-		announcementList = announcementService.getInstitutionUnitAnnouncements(startDate, endDate);
-		int announcementSize = announcementList.size();
-		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements", announcementList);
-		}catch(ZiksanaException ze){
-			mav.addObject("errorResponse", ze.getMessage());
-			logger.error(ze.getMessage(), ze);
-		}
-		return mav;
-	}
-
-	@RequestMapping(value = "/getcourseannouncements", method = RequestMethod.POST)
-	public @ResponseBody
-	ModelAndView getCourseAnnouncements(
-			@RequestParam(value = "startDate", required = true) String startDate,
-			@RequestParam(value = "endDate", required = true) String endDate) {
-
-		ModelAndView mav = new ModelAndView("xml/announcements");
-		List<Announcement> announcementList = new ArrayList<Announcement>();
-		try{
-		announcementList = announcementService.getCourseAnnouncements(startDate, endDate);
-		int announcementSize = announcementList.size();
-		mav.addObject("announcementSize", announcementSize);
-		mav.addObject("announcements",announcementList);
-		}catch(ZiksanaException ze){
 			mav.addObject("errorResponse", ze.getMessage());
 			logger.error(ze.getMessage(), ze);
 		}

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ziksana.persistence.course.LearningContentMapper">
 	<resultMap id="BaseResultMap" type="com.ziksana.domain.course.LearningContent">
-		<id column="learningContentId" property="learningContentId"
+		<id column="id" property="learningContentId"
 			jdbcType="INTEGER" />
 		<!-- <result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" 
 			/> --><!-- <result column="Active" property="active" jdbcType="BIT" /> -->
@@ -48,7 +48,7 @@
 	</sql>
 
 	<insert id="saveContent" parameterType="com.ziksana.domain.course.LearningContent"
-		useGeneratedKeys="true" keyProperty="learningContentId" keyColumn="ID">
+		useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
 		insert into corlearningcontent
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,
@@ -90,6 +90,9 @@
 			</if>
 			<if test="numberOfThumbnails !=null">
 				numberOfThumbnails,
+			</if>
+			<if test="subjClassificationId !=null">
+				subjclassificationid,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -133,9 +136,11 @@
 			<if test="numberOfThumbnails !=null">
 				#{numberOfThumbnails,jdbcType=INTEGER},
 			</if>
-
+			<if test="subjClassificationId !=null">
+				#{subjClassificationId,jdbcType=INTEGER},
+			</if>
 		</trim>
-		<selectKey keyProperty="learningContentId" resultType="int"
+		<selectKey keyProperty="id" resultType="int"
 			order="AFTER">
 			SELECT LAST_INSERT_ID();
 		</selectKey>
@@ -167,8 +172,16 @@
 				thumbnailpicturepath =
 				#{thumbnailPicturePath,jdbcType=VARCHAR},
 			</if>
+			<if test="subjClassificationId!=null">
+				subjclassificationid=
+				#{subjClassificationId,jdbcType=INTEGER},
+			</if>
+			<if test="screenshotPath!=null">
+				screenshotPath=
+				#{screenshotPath,jdbcType=VARCHAR},
+			</if>
 		</set>
-		where learningcontentid = #{learningContentId.storageID,
+		where ID = #{learningContentId.storageID,
 		jdbcType=INTEGER}
 	</update>
 
@@ -231,8 +244,18 @@
 		where contentpartsid = #{contentPartsId.storageID,jdbcType=INTEGER}
 	</update>
 
-
-	<!-- <update id="updateContent" parameterType="com.ziksana.domain.course.LearningContent"> 
-		update corlearningcontentparts set isdelete = #{isdelete, jdbcType=BOOLEAN} 
-		where contentpartsid = #{contentPartsId,jdbcType=INTEGER} </update> -->
+	<insert id="insertLearningContent" parameterType="java.util.List">
+		INSERT INTO my_table
+		(ID_ITEM,
+		ATT1,
+		ATT2)
+		VALUES
+		<foreach collection="list" item="item" index="index" open="("
+			close=")" separator=",">
+			#{item.idItem, jdbcType=BIGINT},
+			#{item.att1,
+			jdbcType=INTEGER},
+			#{item.att2, jdbcType=STRING}
+		</foreach>
+	</insert>
 </mapper>

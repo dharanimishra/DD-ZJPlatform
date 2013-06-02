@@ -4,7 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.ziksana.domain.utils.UTLLookup;
 import com.ziksana.util.EnumUtil;
+import com.ziksana.util.UTLLookUpUtil;
 
 /**
  * @author Ratnesh Kumar
@@ -14,24 +19,27 @@ public enum CourseStatus {
 
 	// TODO: retrieve the ids from the static data service
 	UNDER_CONSTRUCT(), REVIEW(), RELEASE(), ACTIVE(), HOLD(), ARCHIVED();
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(CourseStatus.class);
 
 	private int id;
 	private String name;
+	private static boolean initialized = false;
 
-	private final static String category = "Course Status";
+	private final static String CATEGORY = "Course Status";
 
 	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
 
-	static {
-//		EnumUtil enumUtil = new EnumUtil();
-//		mapUtil = enumUtil.getEnumData(category);
-//		UNDER_CONSTRUCT.setID(mapUtil.get("Under Construction").intValue());
-//		REVIEW.setID(mapUtil.get("Under Review").intValue());
-//		RELEASE.setID(mapUtil.get("Ready for Release").intValue());
-//		ACTIVE.setID(mapUtil.get("Active").intValue());
-//		HOLD.setID(mapUtil.get("Hold").intValue());
-//		ARCHIVED.setID(mapUtil.get("Archived").intValue());
-
+	private static synchronized void initialize(){
+        if (initialized) { return; }
+		CourseStatus[] courseStatuses = CourseStatus.values();
+		for (CourseStatus courseStatus : courseStatuses) {
+			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY, courseStatus.name());
+			courseStatus.id=utlLookup.getLookupValueId();
+			courseStatus.name=utlLookup.getLookupValue();
+		}
+        initialized = true;
+		LOGGER.debug("Content Type initialized " + courseStatuses);
 	}
 
 	private CourseStatus() {
@@ -57,6 +65,9 @@ public enum CourseStatus {
 	}
 
 	public static CourseStatus getCourseStatus(int ID) {
+		if(!initialized){ 
+			initialize();
+		}
 		for (CourseStatus t : CourseStatus.values()) {
 			if (t.getID() == ID) {
 				return t;

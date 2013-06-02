@@ -1,39 +1,39 @@
 @import "bootstrap/bootstrap.min.css";
 @import "bootstrap/bootstrap-responsive.min.css";
-@import "bootstrap/bootstrap-fileupload.css";
+	
 @import "fancybox/jquery.fancybox.css";
 @import "uniform/uniform.css";
 @import "select/select.css";
 @import "tagsinput/jquery.tagsinput.css";
-@import "multiselect/multiselect.css";
-@import "../js/plugins/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css";
-@import "icons.css";
-@import "styling.css";
+
+
 @import "stylesheet.css";
-@import "opera.css";
-@import "mystyles.css";
+
+
 
 html { height: 100%; }
 body { min-height: 100%; font-family: "Segoe UI", arial, sans-serif; font-size: 12px; position: relative; background-color:#fff; left top repeat;}
 
 
 
-.btn
+.btn, .btn.blue
 {
 -webkit-border-radius: 0px;
 border-radius: 6px;
 border: 0px;
 background:rgb(67, 178, 236);
-color: #F9F9F9;
+color: #F9F9F9 !important;
 text-shadow: none;
 margin-bottom: 3px;
 width:120px;
 }
-.btn:hover {
+.btn:hover, .btn.blue:hover {
 background: #008DC4;
 color: #FFF;
-width:120px;
+/*width:120px;*/
 }
+
+.btn:disabled { color: skyblue !important; }
 
 
 

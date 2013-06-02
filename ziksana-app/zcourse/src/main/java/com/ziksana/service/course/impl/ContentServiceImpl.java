@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.course.Content;
 import com.ziksana.domain.course.LearningContent;
-import com.ziksana.domain.course.UserContent;
 import com.ziksana.persistence.course.ContentMapper;
 import com.ziksana.persistence.course.LearningContentMapper;
 import com.ziksana.service.course.ContentService;
@@ -18,11 +17,11 @@ import com.ziksana.service.course.ContentService;
 public class ContentServiceImpl implements ContentService {
 
 	private final static Logger LOGGER = LoggerFactory
-			.getLogger(UserContentServiceImpl.class);
+			.getLogger(ContentServiceImpl.class);
 
 	@Autowired
 	ContentMapper contentMapper;
-	
+
 	@Autowired
 	LearningContentMapper learningContentMapper;
 
@@ -35,13 +34,18 @@ public class ContentServiceImpl implements ContentService {
 		LOGGER.info("Entering Class :" + getClass()
 				+ " Method Name :getUserContent(Integer memberId)");
 
-		//List<LearningContent> list = learningContentMapper.getListOfContentsByMemberRoleId(207);
+		// List<LearningContent> list =
+		// learningContentMapper.getListOfContentsByMemberRoleId(207);
 		List<LearningContent> list = contentMapper.getUserContent(memberId);
 
 		LOGGER.info("Exiting Class :" + getClass()
 				+ " Method Name :getUserContent(Integer memberId)");
-		
+
 		return list;
+	}
+
+	public LearningContent getLearningContent(Integer learningContentId) {
+		return contentMapper.getLearningContent(learningContentId);
 	}
 
 }

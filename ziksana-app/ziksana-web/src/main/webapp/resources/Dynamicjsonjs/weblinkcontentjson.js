@@ -1,5 +1,3 @@
-// JavaScript Document
-
 $(document)
 		.ready(
 				function(e) {
@@ -19,20 +17,24 @@ $(document)
 
 							option_string += option;
 						}
-						$('#Careaddl').html(option_string);
+						$('select.Careaddl').select2("destroy");
+						$('select.Careaddl').html(option_string).select2();
 
 					});
 
 					// function getSubject() {
-					$("#Careaddl")
+					$("select.Careaddl")
 							.change(
 									function(e) {
+										edit_content_info_container = $(this)
+												.parents('.addweblink');
 										token = '';
 										request_type = 'GET';
 										uri = '/ziksana-web/zcourse/getsubject';
 
 										var Course_Area = '';
-										Course_Area = $('#Careaddl').val();
+										Course_Area = edit_content_info_container
+												.find('select.Careaddl').val();
 										$
 												.get(
 														uri,
@@ -68,29 +70,28 @@ $(document)
 																option_string += option;
 															}
 
-															$('#Careaddl')
-																	.html(
-																			area_string);
-															$('#Csubjectddl')
-																	.html(
-																			option_string);
+															edit_content_info_container.find('select.Careaddl').select2("destroy").html(area_string).select2();
+															edit_content_info_container.find('select.Csubjectddl').select2("destroy").html(option_string).select2();
 
 														});
 										var topic = '<option value="Select Topic">Select Topic</option>';
-										$('#Ctopicddl').html(topic);
+										edit_content_info_container.find('select.Ctopicddl').select2("destroy").html(topic).select2();
 									});
 
 					// function getTopic() {
 
-					$("#Csubjectddl")
+					$("select.Csubjectddl")
 							.change(
 									function(e) {
+										edit_content_info_container = $(this)
+												.parents('.addweblink');
 										console
 												.log("Inside subject change handler");
 										uri = '/ziksana-web/zcourse/gettopic';
 										token = '';
 										request_type = 'GET';
-										var Course_Subject = $('#Csubjectddl')
+										var Course_Subject = edit_content_info_container
+												.find('select.Csubjectddl')
 												.val();
 										var parameters = {
 											"Course_Subject" : Course_Subject
@@ -125,49 +126,9 @@ $(document)
 
 																option_string += option;
 															}
-
-															$('#Ctopicddl')
-																	.html(
-																			option_string);
+															edit_content_info_container.find('select.Ctopicddl').select2("destroy").html(option_string).select2();
 
 														});
 
 									});
-
 				});
-
-function webLinkContent() {
-
-	// Step 1: Assign Parameters required by the sendMessage function.
-	uri = '/ziksana-web/zcourse/1/weblinkcontents';
-
-	token = ''; // dummy token for demo. you have to send real token.
-	request_type = 'POST'; // can be GET or POST. In this case, a GET request
-
-	var ContentName = $('#linkname').val();
-
-	var ContentPath = $('#linkurl').val();
-
-	var ThumbnailPicturePath = $('#ThumbnailPicturePath').val();
-
-	var NumberOfThumbnails = $('#NumberOfThumbnails').val();
-
-	var ContentType = $('#ContentType').val();
-
-	console.log("ContentType :" + ContentType);
-
-	var parameters = {
-		"ContentName" : ContentName,
-		"ContentPath" : ContentPath,
-		"ThumbnailPicturePath" : ThumbnailPicturePath,
-		"NumberOfThumbnails" : NumberOfThumbnails,
-		"ContentType" : ContentType,
-
-	};
-
-	$.post(uri, parameters, function(data) {
-		console.log(data);
-
-	});
-
-}

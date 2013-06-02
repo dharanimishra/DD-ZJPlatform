@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class TroubleLoginServiceImplTest {
 		Assert.assertEquals(true, troubleLoginService.isUserIdExists(userId));
 	}
 	
-	@Test
+	@Ignore
 	public void testIsSecurityAnswerExists(){
 		String userId = "1001";
 		String memberAnswer = "amma";

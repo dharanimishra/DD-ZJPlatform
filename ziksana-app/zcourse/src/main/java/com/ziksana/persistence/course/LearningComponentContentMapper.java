@@ -14,42 +14,58 @@ public interface LearningComponentContentMapper {
 	/**
 	 * This method saves the learning component content
 	 */
-	Integer saveLearningComponentContent(LearningComponentContent learningComponentContent);
-	
+	Integer saveLearningComponentContent(
+			LearningComponentContent learningComponentContent);
 
 	/**
 	 * This method Updates the learning component content
 	 */
-	Integer updateLearningComponentContent(LearningComponentContent learningComponentContent);
-	
+	Integer updateLearningComponentContent(
+			LearningComponentContent learningComponentContent);
 
-	@Select({"select count(*) from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}"})
+	@Select({ "select count(*) from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}" })
 	int getCompContentByLComponentId(Integer learningComponentId);
 
-	
-	@Select({"select count(*) from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}"})
+	@Select({ "select count(*) from corlearningcomponentcontent where learningcomponentid = #{learningComponentId,jdbcType=INTEGER}" })
 	int getContentByLComponentId(Integer learningComponentId);
 
+	@Select({ "select learningcomponentcontentid from corlearningcomponentcontent where isdelete = #{isdelete, jdbcType=BOOLEAN}"
+			+ " and learningcomponentid = #{learningComponentId,jdbcType=INTEGER}" })
+	@Results(value = { @Result(property = "learningcomponentcontentid", column = "learningComponentContentId"), })
+	List<Integer> getLearningComponentContentByComponentId(
+			@Param("learningComponentId") Integer learningComponentId,
+			@Param("isDelete") Boolean isDelete);
 
+	@Select({ "select learningcomponentcontentid from corlearningcomponentcontent where isdelete = #{isdelete, jdbcType=BOOLEAN}"
+			+ " and learningcomponentid = #{learningComponentId,jdbcType=INTEGER}" })
+	@Results(value = { @Result(property = "learningcomponentcontentid", column = "learningComponentContentId"), })
+	LearningComponentContent getLearningComponentContentDetails(
+			@Param("learningComponentId") Integer learningComponentId,
+			@Param("isDelete") Boolean isDelete);
 
-	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where isdelete = #{isdelete, jdbcType=BOOLEAN}" +
-			" and learningcomponentid = #{learningComponentId,jdbcType=INTEGER}"})
-	@Results(value = {
-			@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
-	})
-	List<Integer> getLearningComponentContentByComponentId(@Param("learningComponentId") Integer learningComponentId, @Param("isDelete") Boolean isDelete);
+	@Update({ "update corlearningcomponentcontent set isdelete = #{isDelete, jdbcType=BOOLEAN} where "
+			+ "ID = #{learningComponentContentId, jdbcType=INTEGER}" })
+	void delete(
+			@Param("learningComponentContentId") Integer learningComponentContentId,
+			@Param("isDelete") Boolean isDelete);
 
+	@Select({ "select learningcomponentcontentid from corlearningcomponentcontent where "
+			+ " id = #{learningComponentContentId,jdbcType=INTEGER} and isdelete = false and active = true" })
+	@Results(value = { @Result(property = "learningcomponentcontentid", column = "learningComponentContentId"), })
+	LearningComponentContent getLearningComponentContent(
+			Integer learningComponentContentId);
 
-	@Select({"select learningcomponentcontentid from corlearningcomponentcontent where isdelete = #{isdelete, jdbcType=BOOLEAN}" +
-	" and learningcomponentid = #{learningComponentId,jdbcType=INTEGER}"})
-		@Results(value = {
-				@Result(property = "learningcomponentcontentid", column = "learningComponentContentId"),
-		})
-	LearningComponentContent getLearningComponentContentDetails(@Param("learningComponentId") Integer learningComponentId, @Param("isDelete") Boolean isDelete);
+	@Select({ "select ID  from corlearningcomponentcontent where "
+			+ " learningComponentId = #{learningComponentId,jdbcType=INTEGER} and "
+			+ " learningContentId = #{learningContentId,jdbcType=INTEGER} and isdelete = false and active = true " })
+	@Results(value = { @Result(property = "id", column = "ID"), })
+	LearningComponentContent getLearningComponentContent(
+			@Param("learningComponentId") Integer learningComponentId,
+			@Param("learningContentId") Integer learningContentId);
 
-	
-	@Update({"update corlearningcomponentcontent set isdelete = #{isDelete, jdbcType=BOOLEAN} where " +
-			"learningcomponentcontentId = #{learningComponentContentId, jdbcType=INTEGER}" })
-	void delete(@Param("learningComponentContentId") Integer learningComponentContentId, @Param("isDelete") Boolean isDelete);
-
+	@Select({ "select ID  from corlearningcomponentcontent where"
+			+ " learningContentId = #{learningContentId,jdbcType=INTEGER} and isdelete = false and active = true " })
+	@Results(value = { @Result(property = "id", column = "ID"), })
+	LearningComponentContent getAssociatedLearningContent(
+			@Param("learningContentId") Integer learningContentId);
 }

@@ -24,6 +24,7 @@ import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.ContentService;
+import com.ziksana.service.course.LearningContentService;
 import com.ziksana.service.course.CourseContentService;
 import com.ziksana.service.security.MediaService;
 
@@ -39,15 +40,22 @@ public class ContentController {
 			.getLogger(ContentController.class);
 
 	@Autowired
+	LearningContentService learningContentService;
+	
+	
+
+	@Autowired
 	ContentService contentService;
 
 	@Autowired
 	MediaService mediaService;
 
+	MediaServerURL mediaServerURL = new MediaServerURL();
+
 	@Autowired
 	CourseContentService courseContentService;
 
-	@RequestMapping(value = "/slides/{contentId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/slides/{contentId}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody
 	ModelAndView slides(@PathVariable Integer contentId) {
 		ModelAndView mav = new ModelAndView("courses/Slides");
@@ -66,7 +74,7 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "/enhanceplayer/{contentId}/{componentId}/{courseId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/enhanceplayer/{contentId}/{componentId}/{courseId}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody
 	ModelAndView enhancePlayer(@PathVariable Integer contentId,
 			@PathVariable Integer componentId, @PathVariable Integer courseId) {
@@ -86,7 +94,7 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "/content/getcontent", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/content/getcontent", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody
 	Content getContent(
 			@RequestParam(value = "contentId", required = true) String contentId
@@ -115,7 +123,7 @@ public class ContentController {
 		return content;
 	}
 
-	@RequestMapping(value = "/content/getcontentinfo", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/content/getcontentinfo", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody
 	Content getContentInfo(
 			@RequestParam(value = "contentId", required = true) String contentId) {
@@ -144,132 +152,43 @@ public class ContentController {
 		return content;
 	}
 
-	@RequestMapping(value = "1/createcontents", method = RequestMethod.POST)
+	@RequestMapping(value = "/1/modalplayer/{contentId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView createContent(
-			@RequestParam(value = "ContentId", required = false) String contentId,
-			@RequestParam(value = "ContentName", required = true) String contentName,
-			@RequestParam(value = "Content_Description", required = false) String contentDescription,
-			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
-			@RequestParam(value = "Subject", required = false) String Subject,
-			@RequestParam(value = "Topic", required = false) String Topic,
-			@RequestParam(value = "Contenttag_Field", required = false) String contentTags,
-			@RequestParam(value = "AssocContent_Image", required = false) String screenshotPath,
-			@RequestParam(value = "LinkType", required = false) String linkType,
-			@RequestParam(value = "ContentUpload", required = false) String contentUpload,
-			@RequestParam(value = "ContentUrl", required = false) String contentUrl,
-			@RequestParam(value = "ContentPath", required = false) String contentPath,
-			@RequestParam(value = "ThumbnailPicturePath", required = false) String thumbnailPicturePath,
-			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
-			@RequestParam(value = "ContentType", required = false) Integer contentType) {
-
-		ModelAndView mav = new ModelAndView("mastereditcontent");
-
+	ModelAndView showModalplayer(@PathVariable Integer contentId) {
+		LOGGER.debug("Entering showmodalplayer(): ");
+		ModelAndView mv = new ModelAndView("courses/modalplayer");
 		try {
-			MemberPersona accountableMember = new MemberPersona();
-			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
-					.getToken().getMemberPersonaId().getStorageID()));
-
-			Integer learningContentId = 0;
-
-			LearningContent learningContent = new LearningContent();
-			if (!"".equals(contentId) && contentId != null) {
-				learningContentId = Integer.parseInt(contentId);
-				learningContent.setLearningContentId(learningContentId);
-			}
-			learningContent.setAuthoringMember(accountableMember);
-			learningContent.setContentName(contentName);
-			learningContent.setContentDescription(contentDescription);
-			learningContent.setContentPath(contentPath);
-			learningContent.setStatusId(1);
-			learningContent.setActive(true);
-			if (!"".equals(contentType) && contentType != null) {
-				learningContent.setContentTypeId(contentType);
-			}
-			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
-			learningContent.setScreenshotPath(screenshotPath);
-			// learningContent.setStatus(ContentStatus.ACTIVE);
-			learningContent.setNumberOfThumbnails(numberOfThumbnails);
-			learningContent.setRightsOwningMember(accountableMember);
-
-			courseContentService.saveOrUpdateLearningContent(learningContent);
-
-		} catch (CourseException exception) {
+			mediaServerURL = mediaService.getMediaContents();
+			LearningContent learningContent = learningContentService
+					.getLearningContent(contentId);
+			mv.addObject("content", learningContent);
+			mv.addObject("ms", mediaServerURL);
+		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-
-		return mav;
-
+		// test
+		return mv;
 	}
 
-	@RequestMapping(value = "1/weblinkcontents", method = RequestMethod.POST)
+	@RequestMapping(value = "/1/ev_modalplayer/{contentId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView createWeblinkContent(
-			@RequestParam(value = "ContentId", required = false) String contentId,
-			@RequestParam(value = "ContentName", required = true) String contentName,
-			@RequestParam(value = "Content_Description", required = false) String contentDescription,
-			@RequestParam(value = "Subject_Area", required = false) String SubjectArea,
-			@RequestParam(value = "Subject", required = false) String Subject,
-			@RequestParam(value = "Topic", required = false) String Topic,
-			@RequestParam(value = "Contenttag_Field", required = false) String contentTags,
-			@RequestParam(value = "AssocContent_Image", required = false) String screenshotPath,
-			@RequestParam(value = "LinkType", required = false) String linkType,
-			@RequestParam(value = "ContentUpload", required = false) String contentUpload,
-			@RequestParam(value = "ContentUrl", required = false) String contentUrl,
-			@RequestParam(value = "ContentPath", required = false) String contentPath,
-			@RequestParam(value = "ThumbnailPicturePath", required = false) String thumbnailPicturePath,
-			@RequestParam(value = "NumberOfThumbnails", required = false) Integer numberOfThumbnails,
-			@RequestParam(value = "ContentType", required = false) Integer contentType) {
-
-		ModelAndView mav = new ModelAndView("masterweblinkcontent");
+	ModelAndView showEVModalplayer(@PathVariable Integer contentId) {
+		LOGGER.debug("Entering showmodalplayer(): ");
+		ModelAndView mv = new ModelAndView("courses/ev_modalplayer");
 
 		try {
-			MemberPersona accountableMember = new MemberPersona();
-			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
-					.getToken().getMemberPersonaId().getStorageID()));
+			LearningContent learningContent = learningContentService
+					.getLearningContent(contentId);
 
-			Integer learningContentId = 0;
-
-			LearningContent learningContent = new LearningContent();
-			if (!"".equals(contentId) && contentId != null) {
-				learningContentId = Integer.parseInt(contentId);
-				learningContent.setLearningContentId(learningContentId);
-			}
-			learningContent.setAuthoringMember(accountableMember);
-			learningContent.setContentName(contentName);
-			learningContent.setContentDescription(contentDescription);
-			learningContent.setContentPath(contentPath);
-			learningContent.setStatusId(1);
-			learningContent.setActive(true);
-			if (!"".equals(contentType) && contentType != null) {
-				learningContent.setContentTypeId(contentType);
-			}
-			learningContent.setThumbnailPicturePath(thumbnailPicturePath);
-			learningContent.setScreenshotPath(screenshotPath);
-			// learningContent.setStatus(ContentStatus.ACTIVE);
-			learningContent.setNumberOfThumbnails(numberOfThumbnails);
-			learningContent.setRightsOwningMember(accountableMember);
-
-			courseContentService.saveOrUpdateLearningContent(learningContent);
-
-		} catch (CourseException exception) {
+			mv.addObject("content", learningContent);
+			mediaServerURL = mediaService.getMediaContents();
+			mv.addObject("ms", mediaServerURL);
+		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-
-		return mav;
-
+		return mv; 
 	}
 
 }

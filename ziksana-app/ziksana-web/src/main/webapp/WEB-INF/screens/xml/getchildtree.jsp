@@ -3,7 +3,7 @@
 <%@page import="java.util.*"%>
 <%@page import="com.ziksana.domain.course.NestTreeNode"%>
 <%@page import="com.ziksana.domain.course.NestContentNode"%>
-
+<%@page import="com.ziksana.domain.course.ContentType"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <?xml version='1.0' ?>
 <tree id="0"> <item text="${coursename}" id="COURSE_${courseIds}"
@@ -39,8 +39,9 @@
 						+ "\"  parentId=\"COURSE_" + node.getCourseId() + "\">");
 				if (node.getContent() != null) {
 					for (NestContentNode content : node.getContent()) {
-						if (content.getContentType().equals("1")
-								|| content.getContentType().equals("11")) {
+						System.out.println(" content ----------------------------------jkjlkjkj   " + content.getContentType());
+						if (content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName())
+								|| content.getContentType().equalsIgnoreCase(ContentType.ENHANCED_VIDEO.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ videoIcon + "\" im1=\"" + chapterIcon
@@ -52,7 +53,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("2")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.AUDIO.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ videoIcon + "\" im1=\"" + audioIcon
@@ -65,7 +66,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("3")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.TEXTUAL.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ noteIcon + "\" im1=\"" + noteIcon
@@ -78,7 +79,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("4")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.PDF.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ pdfIcon + "\" im1=\"" + pdfIcon
@@ -91,7 +92,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("5")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.DOC.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ docIcon + "\" im1=\"" + docIcon
@@ -104,7 +105,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("6")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.PPT.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ pptIcon + "\" im1=\"" + pptIcon
@@ -117,7 +118,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("7")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.EXCEL.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ excelIcon + "\" im1=\"" + excelIcon
@@ -130,7 +131,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("8")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.IMAGE.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ imageIcon + "\" im1=\"" + imageIcon
@@ -143,7 +144,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("9")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.LINK.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ linkIcon + "\" im1=\"" + linkIcon
@@ -168,8 +169,8 @@
 						+ node.getParentLearningComponentId() + "\">");
 				if (node.getContent() != null) {
 					for (NestContentNode content : node.getContent()) {
-						if (content.getContentType().equals("1")
-								|| content.getContentType().equals("11")) {
+						if (content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName())
+								|| content.getContentType().equalsIgnoreCase(ContentType.ENHANCED_VIDEO.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ videoIcon + "\" im1=\"" + chapterIcon
@@ -182,7 +183,7 @@
 									+ "\"   parentId=\"COMPONENT_"
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
-						} else if (content.getContentType().equals("2")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.AUDIO.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ videoIcon + "\" im1=\"" + audioIcon
@@ -195,7 +196,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("3")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.TEXTUAL.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ noteIcon + "\" im1=\"" + noteIcon
@@ -208,7 +209,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("4")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.PDF.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ pdfIcon + "\" im1=\"" + pdfIcon
@@ -221,7 +222,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("5")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.DOC.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ docIcon + "\" im1=\"" + docIcon
@@ -234,7 +235,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("6")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.PPT.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ pptIcon + "\" im1=\"" + pptIcon
@@ -247,7 +248,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("7")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.EXCEL.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ excelIcon + "\" im1=\"" + excelIcon
@@ -260,7 +261,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("8")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.IMAGE.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ imageIcon + "\" im1=\"" + imageIcon
@@ -273,7 +274,7 @@
 									+ node.getNestLearningComponentId()
 									+ "\"></item>");
 
-						} else if (content.getContentType().equals("9")) {
+						} else if (content.getContentType().equalsIgnoreCase(ContentType.LINK.getName())) {
 							sb.append("<item text=\""
 									+ content.getContentname() + "\" im0=\""
 									+ linkIcon + "\" im1=\"" + linkIcon

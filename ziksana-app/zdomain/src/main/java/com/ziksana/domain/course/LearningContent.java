@@ -28,9 +28,10 @@ public class LearningContent extends AuditHistory {
 	}
 
 	private ZID learningContentId;
+	private Integer id;
 	private Date creationDate = null;
 	private Boolean activeFlag = null;
-	private Boolean active = null;
+	// private Boolean active = null;
 	private ContentType contentType = null;
 	/**
 	 * Maximum Length:45
@@ -41,6 +42,8 @@ public class LearningContent extends AuditHistory {
 	private ContentStatus status = null;
 	private Integer statusId = null;
 	private Integer version = null;
+
+	private Integer subjClassificationId = null;
 
 	private Integer numberOfThumbnails = null;
 
@@ -58,7 +61,7 @@ public class LearningContent extends AuditHistory {
 	private String contentName = null;
 
 	public Boolean getActive() {
-		return active;
+		return activeFlag;
 	}
 
 	public void setActiveFlag(Boolean activeFlag) {
@@ -225,6 +228,14 @@ public class LearningContent extends AuditHistory {
 		this.thumbnailPicturePath = thumbnailPicturePath;
 	}
 
+	public Integer getSubjClassificationId() {
+		return subjClassificationId;
+	}
+
+	public void setSubjClassificationId(Integer subjClassificationId) {
+		this.subjClassificationId = subjClassificationId;
+	}
+
 	/**
 	 * @return the learningContentParts
 	 */
@@ -373,18 +384,6 @@ public class LearningContent extends AuditHistory {
 		this.linkedLearningContent = linkedLearningContent;
 	}
 
-	@Override
-	public String toString() {
-		return "LearningContent [activeFlag=" + activeFlag + ", contentPath="
-				+ contentPath + ", contentFormat=" + contentFormat
-				+ ", status=" + status + ", contentName=" + contentName
-				+ ", contentDescription=" + contentDescription
-				+ ", thumbnailPicturePath=" + thumbnailPicturePath
-				+ ", subjClassification=" + subjClassification
-				+ ", learningContentPartsList=" + learningContentPartsList
-				+ ", baseComponentContent=" + baseComponentContent + "]";
-	}
-
 	/**
 	 * @return the contentTypeId
 	 */
@@ -476,9 +475,10 @@ public class LearningContent extends AuditHistory {
 	public void setIsDelete(Boolean isDelete) {
 		this.isDelete = isDelete;
 	}
-	
+
 	private Integer contentPartid;
 	private String contentUrl;
+
 	public Integer getContentPartid() {
 		return contentPartid;
 	}
@@ -498,6 +498,39 @@ public class LearningContent extends AuditHistory {
 	public void setContentUrl(String contentUrl) {
 		this.contentUrl = contentUrl;
 	}
-	
-	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+		setLearningContentId(new IntegerZID(id));
+	}
+
+	@Override
+	public String toString() {
+		return "LearningContent [learningContentId=" + learningContentId
+				+ ", id=" + id + ", creationDate=" + creationDate
+				+ ", activeFlag=" + activeFlag + ", contentType=" + contentType
+				+ ", contentPath=" + contentPath + ", contentFormat="
+				+ contentFormat + ", contentFormatId=" + contentFormatId
+				+ ", status=" + status + ", statusId=" + statusId
+				+ ", version=" + version + ", subjClassificationId="
+				+ subjClassificationId + ", numberOfThumbnails="
+				+ numberOfThumbnails + ", contentName=" + contentName
+				+ ", contentDescription=" + contentDescription
+				+ ", thumbnailPicturePath=" + thumbnailPicturePath
+				+ ", screenshotPath=" + screenshotPath
+				+ ", rightsOwningMember=" + rightsOwningMember
+				+ ", authoringMember=" + authoringMember
+				+ ", subjClassification=" + subjClassification
+				+ ", linkedLearningContent=" + linkedLearningContent
+				+ ", learningContentPartsList=" + learningContentPartsList
+				+ ", baseComponentContent=" + baseComponentContent
+				+ ", contentTypeId=" + contentTypeId + ", isDelete=" + isDelete
+				+ ", contentPartid=" + contentPartid + ", contentUrl="
+				+ contentUrl + "]";
+	}
+
 }

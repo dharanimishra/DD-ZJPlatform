@@ -251,11 +251,11 @@
 					   
 					  
 						
-					 <p style="text-align:center; font-size:18px;">Forgot UserId?</p>
+					 <p style="text-align:center; font-size:18px;"><fmt:message key="restpass.forgotuid"/> </p>
 					 
-					  <p class="reghead" style="text-align:center;">We need your Email ID </p>
+					  <p class="reghead" style="text-align:center;"><fmt:message key="resetpass.we.needEmail"></fmt:message> </p>
 					  
-					  <p style="text-align:center;margin-top:10px; color:#999;">This protects your account from unauthorized access</p> 
+					  <p style="text-align:center;margin-top:10px; color:#999;"><fmt:message key="resetpass.unauthorized"></fmt:message></p> 
 					  <hr style="background-color:#f28920; margin-bottom:20px; width: 550px;
 					margin-left: -0px;">
 					
@@ -268,7 +268,7 @@
 					     	  
 					       
 					      
-					      <label  style="padding-top:-10px;">Email-Id</label>
+					      <label  style="padding-top:-10px;"><fmt:message key="resetpass.emailid"/></label>
 					     
 					      <input placeholder="Enter your Email-Id" autocomplete="off" type="text" id="frgtemailid" tabindex="2" data-prompt-position="inline"/> 				     
 					      
@@ -324,12 +324,12 @@ function validateUserId(){
 	 
 	forgotUserId = $('#frgtuserid').val();
 	if(forgotUserId == ''){
-		$('#errorUserIdResponse').html("Enter UserId");		
+		$('#errorUserIdResponse').html("<fmt:message key="error.enteruser"></fmt:message>");		
 	}else if(forgotUserId.indexOf(' ') >= 0){
 		  
-		   $('#errorUserIdResponse').html("Enter UserId without whitespace");
+		   $('#errorUserIdResponse').html("<fmt:message key="resetpass.whitespace"/>");
 	}else{
-		if(("#errorUserIdResponse.inside:contains('Enter UserId')")){
+		if(("#errorUserIdResponse.inside:contains('<fmt:message key="error.enteruser"></fmt:message>')")){
 			document.getElementById("errorUserIdResponse").innerHTML = '';
 		}
 		
@@ -338,10 +338,10 @@ function validateUserId(){
 			url: '${userverfyUrl}'+forgotUserId,
 			success: function( data ) {
 				console.log(data);
-				if(data == 'User ID entered is incorrect.'){
+				if(data == '<fmt:message key="resetpass.useridincorrect"/>'){
 					$('#errorUserIdResponse').html(data);
 				}
-				if(data == 'UserId Verification Successful.'){
+				if(data == '<fmt:message key="resetpass.verfication"/>'){
 					
 							$.ajax({
 							  	type: 'GET',
@@ -372,9 +372,9 @@ function securityQuestionOne(){
 	securityAnswerOne = $('#txtsec1').val();
 	memberIdSQOne = $('#memberIdSQOne').text();
 	if(securityAnswerOne == ''){
-		$('#errorAnswerOneResponse').html("* This Field is Required");		
+		$('#errorAnswerOneResponse').html("<fmt:message key="resetpass.field.required"/>");		
 	}else {
-		if(("#errorAnswerOneResponse.inside:contains('* This Field is Required')")){
+		if(("#errorAnswerOneResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
 			document.getElementById("errorAnswerOneResponse").innerHTML = '';
 		}
 		$.post( '/ziksana-web/unsecure/0/checkfirstanswer'
@@ -403,9 +403,9 @@ function securityQuestionTwo(){
 	console.log(securityAnswerTwo);
 	console.log(securityQuestionTwoText);
 	if(securityAnswerTwo == ''){
-		$('#errorAnswerTwoResponse').html("* This Field is Required");		
+		$('#errorAnswerTwoResponse').html("<fmt:message key="resetpass.field.required"/>");		
 	}else {
-		if(("#errorAnswerTwoResponse.inside:contains('* This Field is Required')")){
+		if(("#errorAnswerTwoResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
 			document.getElementById("errorAnswerTwoResponse").innerHTML = '';
 		}
 		$.post( '/ziksana-web/unsecure/0/checksecondanswer'
@@ -449,7 +449,7 @@ $(document).ready(function() {
     var x = $('#password').val();
 	 if ((x.charAt(0).match(/([0-9,!,%,&,@,#,$,^,*,?,_,~])/)))
 	 {
-		 $('#result').html('<span style="padding-left:5px;">Password should start with a charactor</span>');
+		 $('#result').html('<span style="padding-left:5px;"><fmt:message key="profile.error.password"/></span>');
 	 	return false;
 	 }
 
@@ -458,7 +458,7 @@ $(document).ready(function() {
     if (password.length < 6) { 
 		$('#result').removeClass();
 		/*$('#result').addClass('short')*/
-		$('#result').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;">Too Short</span><br/><span style="color:orange;">Password should be at least 8 characters</span>');
+		$('#result').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span><br/><span style="color:orange;"><fmt:message key="resetpass.8char"/></span>');
 		return false;
 	}
     
@@ -486,16 +486,16 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#result').removeClass();
 		$('#result').addClass('weak');
-		$('#result').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;">Weak password  </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
+		$('#result').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/>  </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
 		return false;			
 	} else if (strength == 2 ) {
 		$('#result').removeClass();
 		$('#result').addClass('good');
-		$('#result').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><span style="padding-left:5px;color:green;">Good</span>');
+		$('#result').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.good"/></span>');
 		return true;	
 	} else {
 		$('#result').removeClass();
-		$('#result').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><span style="padding-left:5px;color:green;">Strong</span>');
+		$('#result').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.strong"/></span>');
 		return true;
 	}
 }

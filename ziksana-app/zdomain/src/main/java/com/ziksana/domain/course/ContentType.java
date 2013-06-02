@@ -9,54 +9,39 @@ import org.slf4j.LoggerFactory;
 import com.ziksana.domain.utils.UTLLookup;
 import com.ziksana.util.UTLLookUpUtil;
 
+public enum ContentType {
 
-public enum ContentType  {
+	VIDEO(), ENHANCED_VIDEO(), AUDIO(), TEXTUAL(), PDF(), DOC(), PPT(), EXCEL(), IMAGE(), LINK();
 
-/*		// TODO: retrieve the ids from the static data service
-	VIDEO(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type","VIDEO"),"Video"), 
-	ENHANCED_VIDEO(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "ENHANCED_VIDEO"), "ENHANCED_VIDEO"), 
-	AUDIO(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "AUDIO"), "Audio"), 
-	//TEXTUAL(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "TEXTUAL"), "TEXTUAL"), 
-	PDF(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "PDF"), "PDF"), 
-	DOC(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "DOC"), "DOC"), 
-	PPT(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "PPT"), "PPT"), 
-	//EXCEL(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "EXCEL"), "EXCEL"), 
-	IMAGE(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "IMAGE"), "IMAGE") 
-	//LINK(UTLLookUpUtil.getUTLLookUpValueId("corLearningContent_Content Type", "LINK"), "LINK")
-	;
-*/
-	
-	VIDEO(),ENHANCED_VIDEO(),AUDIO(),PDF(),DOC(),PPT(),EXCEL(),IMAGE(),LINK();
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ContentType.class);
-	
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(ContentType.class);
+
 	private int id;
-	
+
 	private String name;
 
 	private final static String CATEGORY = "corLearningContent_Content Type";
-	
-	
-	private ContentType(){
+
+	private ContentType() {
 	}
 
 	private static boolean initialized = false;
-    
-    
-	
-	private static synchronized void initialize(){
-        if (initialized) { return; }
+
+	private static synchronized void initialize() {
+		if (initialized) {
+			return;
+		}
 		ContentType[] contentTypes = ContentType.values();
 		for (ContentType contentType : contentTypes) {
-			//System.out.println("contentType " + contentType.name());
-			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY, contentType.name());
-			contentType.id=utlLookup.getLookupValueId();
-			contentType.name=utlLookup.getLookupValue();
+			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY,
+					contentType.name());
+			contentType.id = utlLookup.getLookupValueId();
+			contentType.name = utlLookup.getLookupValue();
 		}
-        initialized = true;
+		initialized = true;
 		LOGGER.debug("Content Type initialized " + contentTypes);
 	}
-	
+
 	private ContentType(int id, String name) {
 		this.id = id;
 		this.name = name;
@@ -65,7 +50,7 @@ public enum ContentType  {
 	public int getID() {
 		return id;
 	}
-	
+
 	public void setID(Integer id) {
 		this.id = id;
 	}
@@ -73,25 +58,19 @@ public enum ContentType  {
 	public String getName() {
 		return name;
 	}
-	 public static ContentType getContentType(int ID) {
-         if (!initialized) { initialize(); }
-         	for (ContentType t : ContentType.values()) {
-         		if (t.getID() == ID) {
-         			return t;
-         		}
-         	}
 
-         throw new IndexOutOfBoundsException("ContentType ID [" + ID + "] not found");
-	 }
-
-	public static ContentType getContentType1(int ID) {
-		for (ContentType comntentType : ContentType.values()) {
-			if (comntentType.getID() == ID) {
-				return comntentType;
+	public static ContentType getContentType(int ID) {
+		if (!initialized) {
+			initialize();
+		}
+		for (ContentType t : ContentType.values()) {
+			if (t.getID() == ID) {
+				return t;
 			}
 		}
 
-		throw new NoSuchElementException("Content Type ID [" + ID + "] not found");
+		throw new IndexOutOfBoundsException("ContentType ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {

@@ -1,5 +1,5 @@
 
-
+<script type='text/javascript' src="${staticFileServer}resources/js/custom/plugins.js"></script>
 
 <script type='text/javascript'
 	src='${staticFileServer}resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
@@ -24,16 +24,17 @@
 
 <script type="text/javascript">
 	$('document').ready(function() {
-		$('#Duration').spinner({
+		$('#spinner').spinner({
+			numberFormat: "n",
 			min : 0,
 			max : 20,
-			step : 1,
+			
 		});
-		$('#Credits').spinner({
+		$('#spinner2').spinner({
 			min : 0,
 			max : 20
 		});
-		$('#ExtraCredits').spinner({
+		$('#spinner3').spinner({
 			min : 0,
 			max : 20
 		});
@@ -248,9 +249,44 @@
 		//}
 	} // End getArea()
 </script>
+<script>
+function inputLimiter(e,allow) {
+    var AllowableCharacters = '';
+     if (allow == 'Numbers'){AllowableCharacters='1234567890';}
+       var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+    if (k!=13 && k!=8 && k!=0){
+        if ((e.ctrlKey==false) && (e.altKey==false)) {
+        return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
+        } else {
+        return true;
+        }
+    } else {
+        return true;
+    }
+}
 
+</script>
 <style>
 .uploadify {margin-left:260px;}
+.remove {
+    background: none repeat scroll 0 0 #43B2EC;
+    border: 0 none;
+    border-radius: 6px 6px 6px 6px;
+    color: #F9F9F9;
+    cursor: pointer !important;
+    float: left;
+    margin-bottom: 3px;
+    margin-left: -11px;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+    text-shadow: none;
+    top: 121px;
+    width: 92px;
+}
+.remove:hover{width: 92px;}
+ 
 
 </style>
 
@@ -259,16 +295,16 @@
 		<li style="margin-left: 40px; color: #f06c0b;"><span> <img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px; height: 22px;">
-		</span> Describe Course</li>
+		</span> <fmt:message key="course.DescribeCourse"/></li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Structure</li>
+				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Define.Structure"/></li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Associate Content</li>
+				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Associate.content"/> </li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Assignment</li>
+				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Define.assignment"/> </li>
 
 	</ul>
 
@@ -283,7 +319,7 @@
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1>Provide Course Details</h1>
+		<h1><fmt:message key="Provide.Course.Details"/></h1>
 	</div>
 	<div class="widget-body form">
 		<!-- BEGIN FORM-->
@@ -291,14 +327,14 @@
 			<!--Course Name-->
 			<div class=" ">
 				<div class="control-group">
-					<input type="hidden" id="courseid" value="${courseId}" /> <input
+					<input type="hidden" id="courseid" value="${courseId}"  /> <input
 						type="hidden" id="moduleexists" value="${module}" /> <label
 						class="control-label nexaf" for="Course Name">Course Name
 						:</label>
 					<div class="controls">
 						<input type="text" autofocus
-							class="defaultvaluem treeRoot validate[required] "
-							id="defaultvalue"
+							class="defaultvaluem treeRoot validate[required]"
+							id="defaultvalue" maxlength="64"
 							style="width: 240px; margin-left: 10px; color: #666;"
 							tabindex="1" placeholder="Enter course name" />
 					</div>
@@ -336,9 +372,9 @@
 			<div class="control-group" style="margin-top: 20px;">
 				<div>
 					<label class="labelclass nexaf f-l"> Course Area : </label> <label
-						class="labelclass nexaf f-l" style="margin-left: 190px;">
+						class="labelclass nexaf f-l" style="margin-left: 217px;">
 						Course Subject: </label> <label class="labelclass nexaf f-l"
-						style="margin-left: 180px;"> Course Topic: </label>
+						style="margin-left:200px;"> Course Topic: </label>
 				</div>
 
 				<div class="clearfix"></div>
@@ -368,10 +404,10 @@
 
 			</div>
 			<!--end of Subject Selection-->
-			<div class="control-group" style="width: 69%">
-				<label class="control-label nexaf" for="Specify Tags">Specify
+			<div class="control-group" style="width: 65%">
+				<label class="control-label nexaf" for="Specify Tags" style="width:229px">Specify
 					Tags :</label>
-				<div class="controls">
+				<div class="controls" style="margin-left:229px">
 					<input type="text" class="tags" id="Ctagfield_course"
 						value="" />
 				</div>
@@ -380,17 +416,17 @@
 				<label class="control-label nexaf" for="Course Credits"
 					style="width: 230px;">Specify Course Credits :</label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner" value="1"
-						style="width: 50px;" />
+					<input type="text" name="spi" id="spinner" value="0" 
+						style="width: 50px;" maxlength="2" onkeypress="return inputLimiter(event,'Numbers')" />
 				</div>
 			</div>
 			<div class="control-group f-l">
 				<label class="control-label nexaf" for="Course Credits"
-					style="margin-left: 20px; width: 280px;">Specify Course
+					style="margin-left: 88px; width: 220px;">Specify Course
 					Extra Credits :</label>
 				<div class="controls" style="width: 212px;">
-					<input type="text" name="spi" id="spinner2" value="1"
-						style="width: 50px;" />
+					<input type="text" name="spi" id="spinner2" value="0" 
+						style="width: 50px;"  maxlength="2" onkeypress="return inputLimiter(event,'Numbers')"/>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -398,14 +434,14 @@
 				<label class="control-label nexaf" for="input" style="width: 230px;">Specify
 					Course Duration :</label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner3" value="1"
-						style="width: 50px;" />
+					<input type="text" name="spi" id="spinner3"  value="0"
+						style="width: 50px;" maxlength="2" onkeypress="return inputLimiter(event,'Numbers')" />
 				</div>
 			</div>
 
 
 			<select name="SelectArea" id="Cdurationtype" class="defaultvalue f-l"
-				style="margin-left: 20px;">
+				style="margin-left: 20px;width:110px">
 				<option value="1">Weeks</option>
 				<option value="2">Months</option>
 				<option value="3">Days</option>
@@ -454,13 +490,13 @@
 				</div>
 
 			</div> -->
-			<div style="margin-top: 30px;">
+			<div style="margin-top: 0px;">
 				<label style="width: 260px;" for="input" class="control-label nexaf">Associate
 					an Image for your Course :</label>
 
-				<div style="width: 122px; height: 120px; float: left">
+				<div style="width: 122px; height: 105px; float: left;padding-top:15px">
 					<img id="course_thumbnail_image"
-						src="${staticFileServer}resources/images/default-course.jpg"
+						src="http://www.placehold.it/100x100/EFEFEF/AAAAAA"
 						align="left" /> <input readonly="readonly" type="hidden"
 						id="Cimageupl" style="margin-left: 20px;" />
 				</div>
@@ -478,7 +514,8 @@
 										{
 											'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 											'queueSizeLimit' : 1,
-											'successTimeout' : 350,
+											 'successTimeout' : 350,
+											 'buttonText' : 'Upload Image',
 											'uploader' : '${ms.uploadScript}',
 											//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 											'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
@@ -560,4 +597,25 @@
 <!--end of body wrapper-->
 
 </div>
+<style>
+.select2-container {
+    
+    margin-right: 70px!important;
+    
+    width: 235px;
+}
+.formErrorContent {
+    
+    color: red;
+    left: 67px;
+    overflow: auto;
+    position: relative;
+    top: 81px;
+}
+.uploadify-queue{margin-left:260px}
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{ 
+   .formErrorContent  {top: 0px;}
+}
 
+</style>

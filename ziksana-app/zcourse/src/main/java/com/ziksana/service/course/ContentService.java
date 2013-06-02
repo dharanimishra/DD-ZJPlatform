@@ -24,6 +24,11 @@ public interface ContentService {
 	 */
 	public List<LearningContent> getUserContent(Integer memberId);
 
-	
+	/**
+	 * Returns the learningcontent object for the specified id
+	 * @param learningContentId
+	 * @return
+	 */
+	public LearningContent getLearningContent(Integer learningContentId);
 
 }

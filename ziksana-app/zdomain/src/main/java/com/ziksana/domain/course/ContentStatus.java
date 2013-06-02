@@ -1,10 +1,10 @@
 package com.ziksana.domain.course;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.ziksana.util.EnumUtil;
+import com.ziksana.domain.utils.UTLLookup;
+import com.ziksana.util.UTLLookUpUtil;
 
 /**
  * @author Ratnesh Kumar
@@ -12,37 +12,35 @@ import com.ziksana.util.EnumUtil;
 
 public enum ContentStatus {
 
-	// TODO: retrieve the ids from the static data service
-	DRAFT(), REVIEW(), ACTIVE(), RELEASE(), HOLD(), ARCHIVED();
+	UNDER_CONSTRUCTION(), UNDER_REVIEW(), ACTIVE(), READY_FOR_RELEASE(), HOLD(), ARCHIVED();
+
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(ContentStatus.class);
 
 	private int id;
 
 	private String name;
 
-	private final static String category = "Course Status";
-
-	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-
-	static {
-		try {
-			EnumUtil enumUtil = new EnumUtil();
-			mapUtil = enumUtil.getEnumData(category);
-
-			DRAFT.setID(mapUtil.get("Under Construction").intValue());
-			REVIEW.setID(mapUtil.get("Under Review").intValue());
-			RELEASE.setID(mapUtil.get("Ready for Release").intValue());
-			ACTIVE.setID(mapUtil.get("Active").intValue());
-			HOLD.setID(mapUtil.get("Hold").intValue());
-			ARCHIVED.setID(mapUtil.get("Archived").intValue());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+	private final static String CATEGORY = "Content Status";
 
 	private ContentStatus() {
+	}
 
+	private static boolean initialized = false;
+
+	private static synchronized void initialize() {
+		if (initialized) {
+			return;
+		}
+		ContentStatus[] contentStatus = ContentStatus.values();
+		for (ContentStatus contentState : contentStatus) {
+			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY,
+					contentState.name());
+			contentState.id = utlLookup.getLookupValueId();
+			contentState.name = utlLookup.getLookupValue();
+		}
+		initialized = true;
+		LOGGER.debug("Content Type initialized " + contentStatus);
 	}
 
 	private ContentStatus(int id, String name) {
@@ -50,13 +48,12 @@ public enum ContentStatus {
 		this.name = name;
 	}
 
-	private void setID(int id) {
-		this.id = id;
-
-	}
-
 	public int getID() {
 		return id;
+	}
+
+	public void setID(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -64,13 +61,16 @@ public enum ContentStatus {
 	}
 
 	public static ContentStatus getContentStatus(int ID) {
-		for (ContentStatus contentStatus : ContentStatus.values()) {
-			if (contentStatus.getID() == ID) {
-				return contentStatus;
+		if (!initialized) {
+			initialize();
+		}
+		for (ContentStatus t : ContentStatus.values()) {
+			if (t.getID() == ID) {
+				return t;
 			}
 		}
 
-		throw new NoSuchElementException("Content Status ID [" + ID
+		throw new IndexOutOfBoundsException("ContentStatus ID [" + ID
 				+ "] not found");
 	}
 

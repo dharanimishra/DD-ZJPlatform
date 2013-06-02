@@ -7,6 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,9 @@ import com.ziksana.service.todo.TodoService;
 @RequestMapping("/ztodo")
 public class TodoController {
 	private static final Logger logger = LoggerFactory.getLogger(TodoController.class);
+	
+	@Value("#{pagination['todoitemsperpage']}")
+	private String itemsPerPage;
 	
 	@Autowired
 	private TodoService todoService;
@@ -51,19 +55,31 @@ public class TodoController {
 	public @ResponseBody int getTodoSize() {
 
 		int todoSize = 0;
-		List<Todo> todoList = new ArrayList<Todo>();
+		
 		try{
-		todoList = todoService.getTodos();
+			todoSize = todoService.getTodosSize();
 		}catch (ZiksanaException zexception) {
 			
 			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
 		}
-		todoSize = todoList.size();
 		
-		return Integer.valueOf(todoSize);
+		
+		return todoSize;
 	}
 	
-	
+	@RequestMapping(value = "/showtodobypagination/{pageIndex}", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView listTodoByPagination(@PathVariable String pageIndex) {
+		
+		ModelAndView modelView = new ModelAndView("xml/todolist");
+		try{		
+			modelView.addObject("todoItems", todoService.getTodoPagination(Integer.parseInt(pageIndex),Integer.parseInt(itemsPerPage)));
+
+		}catch (ZiksanaException zexception) {
+			modelView.addObject("errorResponse", zexception.getMessage());
+			logger.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
+		return modelView;
+	}
 
 	/**
 	 * Retrive Three todo items to display on the dashboard

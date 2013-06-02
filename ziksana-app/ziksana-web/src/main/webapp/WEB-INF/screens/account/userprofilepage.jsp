@@ -14,7 +14,7 @@
 
 			</div>
 			<!--end of headerlogo-->
-
+<a class="btnLogin" style="" href="/ziksana-web/secure/logout"><fmt:message key="signout"></fmt:message> </a>
 			<div class="clearfix"></div>
 
 
@@ -35,10 +35,10 @@
 				<div class="associateimage" style="text-align:center;" >
             <div style="height:150px">
 					<c:if test="${empty member.picturePath}">
-						<img style="width: 185px; margin-bottom: .25em;margin-left: 40px;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg" align="center"/>
+						<img style="width: 144px; margin-bottom: .25em;margin-left: -55px;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg" align="center"/>
 					</c:if>
 					<c:if test="${not empty ms.url && not empty member.picturePath}">
-						<img style="width: 185px; margin-bottom: .25em;margin-left: 40px;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
+						<img style="width: 144px; margin-bottom: .25em;margin-left: -55px;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
 					</c:if> </div>
 					<div class="clearfix"></div>
 					<div style="width:120px;height:20px; margin-left: 37px; margin-top: 8px;"><input
@@ -168,7 +168,7 @@
 					<label class="control-label nexaf" for="Course Name"><fmt:message
 							key="profile.alternateemail"></fmt:message> </label>
 					<div class="controls">
-						<input autofocus="autofocus"
+						<input autofocus="autofocus" onblur="isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');"
 							
 							id="alternateEmailId" type="text" class="profileinput"
 							name="alt_mail" placeholder="Alternate Email" />
@@ -231,7 +231,7 @@
 							key="profile.securityanswer2"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
 						<input type="text" class="profileinput" id="securityAnswertwo"
-							name="sec_answer2" placeholder="Security Answer 2" />
+							name="sec_answer2" placeholder="<fmt:message key="profile.securityanswer2"></fmt:message>" />
 					</div>
 					<div style="color: red; padding: 5px;" id="errorsecurityAnswertwo"></div>
 				</div>
@@ -242,10 +242,10 @@
 
 
 				
-					<input onclick="clearProfileForm()" class="btn btn-primary f-r" style="margin-right: -15px;width:120px; " type="reset"
+					<input onclick="clearProfileForm()" class="btn btn-primary f-r" style=" height: 28px;margin-right: -15px;width:120px; " type="reset"
 					value="<fmt:message key="profile.cancel"></fmt:message>" />
 					<input class="btn btn-primary f-r"
-					style="margin-right: 20px;width:120px; " type="submit"
+					style=" height: 28px;margin-right: 20px;width:120px; " type="submit"
 					onclick="updateUserProfile()"
 					value="<fmt:message key="profile.submit"></fmt:message>" /> 
 				<div class="clearfix"></div>
@@ -266,7 +266,7 @@
 				<div class="icon">
 					<img src="/ziksana-web/resources/images/icons/information_icon.png"style="height: 25px;"/>
 				</div>
-				<h1>Edit Profile</h1>
+				<h1><fmt:message key="edit.profile"></fmt:message></h1>
 			</div>
 
 
@@ -318,8 +318,8 @@
 
 													if (data_object.Uploaded == 'true') {
 														$('#Cimageupl')
-																.val(
-																		data_object.ContentPath);
+																.val(data_object.ContentPath);
+															saveUploadedImage(data_object.ContentPath);
 														$(
 																'#profile_thumbnail_image')
 																.attr(
@@ -327,14 +327,14 @@
 																		'${ms.url}'
 																				+ data_object.ContentPath);
 														$(
-																'#thubmnail_upload_message')
-																.html('');
+														'#thubmnail_upload_message')
+														.html(
+																'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="position: relative;top: 33px;">Remove</a>');
 
 													} else { //there is an error in the upload process
 
 														$('#message')
-																.html(
-																		data_object.message);
+																.html(data_object.message);
 													}
 													$('#sbtvalidation')
 															.removeAttr(
@@ -350,7 +350,7 @@
 							$('#thubmnail_upload_message').html('');
 							$('#profile_thumbnail_image')
 									.attr('src',
-											'${staticFileServer}resources/images/default-course.jpg');
+											'/ziksana-web/resources/images/no-image.jpg');
 
 						}
 					</script>
@@ -402,21 +402,21 @@
 						
 						
 						<div  id="passEdit">
-					<label class="control-label nexaf" for="Change Password">Change Password :</label>
-					<label id="passwordUpdatedDate" class="control-label nexaf"  style="margin-left: 20px;width:300px"><c:out value="${passwordUpdated}"></c:out></label>	
-						 <a   id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild">Edit</a>
+					<label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
+					<label id="passwordUpdatedDate" class="control-label nexaf"  style="margin-left: 20px;width:300px;font-weight:normal"><c:out value="${passwordUpdated}"></c:out></label>	
+						 <a   id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					      
-						  <div class="editcontroll" style="display:none;" id="Edit_pass" ><a style="float:right;cursor:pointer;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
+						  <div class="editcontroll border-user"  id="Edit_pass" ><a style="float:right;cursor:pointer;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
 						  <p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetResponse"></p>
      						<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetFailResponse"></p>
-						  <label class="control-label nexaf" for="Change Password">Change Password :</label>
-						 <div class="controls"> <label class="nexaf">Current :</label><input type="password" class="passinput" id="currentPassword" name="alt_mail" placeholder="Type Current Password" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
-						   <label class="nexaf">New :</label> <input type="password" class="passinput" id="newPassword" name="alt_mail" placeholder="Type New Password" /><div class="clearfix"></div><div style="color: red;" id="errorNewPassword"></div>
-						    <label class="nexaf">Re-type new :</label><input type="password" class="passinput" id="retypePassword" name="alt_mail" placeholder="Re-Type New Password" /></div><div style="color: red;" id="errorRetypePassword"></div><div class="clearfix"></div>
+						  <label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
+						 <div class="controls"> <label class="nexaf"><fmt:message key="Current"></fmt:message> :</label><input type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="<fmt:message key="Enter.cur.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
+						   <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorNewPassword"></div>
+						    <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /></div><div style="color: red;" id="errorRetypePassword"></div><div class="clearfix"></div>
 						   <div style="margin-top:6px;">
-						   <!-- <button class="btn btn-primary f-r" type="button" style="margin-right:-15px;" onclick="hidecncl('passEdit')">Cancel</button> -->
-					  		<button class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" >Save</button>
+						   
+					  		<button class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  </div>
 						 </div>
@@ -424,20 +424,20 @@
 					      <div class="control-group"> 
 					      <div class="clearfix"></div>
 						 <div  id="lblaltEmail">
-						 <label class="control-label nexaf" for="Course Name">Alternate Email :</label>
-						 <label class="control-label nexaf" id="alternateMailLabel" for="AlternativeEmail Name" style="margin-left:20px;"><c:out value="${profileAnswerOne.alternateEmailId}"></c:out></label>
+						 <label class="control-label nexaf" for="Course Name"><fmt:message key="profile.alternateemail"></fmt:message> :</label>
+						 <label class="control-label nexaf" id="alternateMailLabel" for="AlternativeEmail Name" style="margin-left:20px;font-weight:normal"><c:out value="${profileAnswerOne.alternateEmailId}"></c:out></label>
 						 
 						
-						 <a  onclick="editFeilds('EditAlt_mail')" class="editfeild">Edit</a>
+						 <a  onclick="editFeilds('EditAlt_mail')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
 						 
 					      </div>
-						  <div class="editcontroll" style="display:none;" id="EditAlt_mail" ><a style="float:right;cursor:pointer;" onclick="showlbl('lblaltEmail');" title="Close">[X]</a>
-						   <label class="control-label nexaf" for="Course Name">Alternate Email :</label>
-						   <input type="text" style="width:380px;" id="alttenateEmailValue"  name="alt_mail" placeholder="Alternate Email" />
+						  <div class="editcontroll border-user" id="EditAlt_mail" ><a style="float:right;cursor:pointer;" onclick="showlbl('lblaltEmail');" title="Close">[X]</a>
+						   <label class="control-label nexaf" for="Course Name"><fmt:message key="profile.alternateemail"></fmt:message> :</label>
+						   <input type="text" style="width:365px;margin-left:19px;" id="alttenateEmailValue"  name="alt_mail" placeholder="Alternate Email" />
 						   <p id="alternateEmailError" style="color:red;text-align:center"></p>
 						   <div style="margin-top:6px;">
-						   <!-- <button class="btn btn-primary f-r" type="button" style="margin-right:-15px;" onclick="showlbl('lblaltEmail')">Cancel</button> -->
-					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit('${profileAnswerOne.alternateEmailId}')" type="button" style="margin-right:20px;" >Save</button>
+						  
+					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit('${profileAnswerOne.alternateEmailId}')" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  </div>
 					      </div>
@@ -446,19 +446,19 @@
 					      
 					      <div class="control-group"> 
 						  <div  id="lblsq1">
-					     <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 1 :</label>
+					     <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion1"></fmt:message> :</label>
 						  
-						 <label id="ques_text_diplayone" class="control-label nexaf" style="width:65%"><c:out value="${profileAnswerOne.securityQuestionText}"></c:out></label>
-					      <a  onclick="changesq1('Editsq1')" class="editfeild" >Edit</a>
+						 <label id="ques_text_diplayone" class="control-label nexaf" style="width:65%;font-weight:normal"><c:out value="${profileAnswerOne.securityQuestionText}"></c:out></label>
+					      <a  onclick="changesq1('Editsq1')" class="editfeild" ><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					     
 						  <div class="clearfix"></div>
 						  
-					      <div  id ="Editsq1" class="editcontroll"  style="display:none;"><a style="float:right;cursor:pointer;" onclick="showlblsq1('lblsq1')" title="Close">[X]</a>
-						  <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 1 :</label>
+					      <div  id ="Editsq1" class="editcontroll border-user"  "><a style="float:right;cursor:pointer;" onclick="showlblsq1('lblsq1')" title="Close">[X]</a>
+						  <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion1"></fmt:message> :</label>
 						   
-					    <select class="profileselect nexaf" style="font-weight:normal" id="editQuestionOne" style="margin-bottom:5px;width:380px;">
-							<option>Select the Security Question</option>
+					    <select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="editQuestionOne" >
+							<option><fmt:message key="profile.select.text"></fmt:message></option>
 							<c:forEach var="profile" items="${profileList}">
 										<c:if test="${profileAnswerOne.securityQuestionText ==profile.securityQuestionText}">
 											<option selected="selected" value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
@@ -469,14 +469,14 @@
 							</c:forEach>
 						</select>
 					
-					<label class="control-label nexaf" for="Course Name">Security Answer 1 :</label>
+					<label class="control-label nexaf" for="Course Name"><fmt:message key="profile.securityanswer1"></fmt:message></label>
 					     <div class="controls">
-					      <input type="password" class="profileinput" id="editSecAnswerOne" value="${profileAnswerOne.memberAnswer}"  name="sec_answer1" placeholder="Security Answer 1" style="width:368px;" />         
+					      <input type="password" class="profileinput" id="editSecAnswerOne" value="${profileAnswerOne.memberAnswer}"  name="sec_answer1" placeholder="Security Answer 1" style="width:365px;" />         
 					      </div>
 					      <p id="secQuesOneError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
 						   
- 					  <button class="btn btn-primary f-r" onclick="editUpdateSecuQuestion()" type="button" style="margin-right:20px;" >Save</button>
+ 					  <button class="btn btn-primary f-r" onclick="editUpdateSecuQuestion()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  
 					      </div>
@@ -487,18 +487,18 @@
 					     <div class="control-group"> 
 					     
 						 <div id="lblsq2">
-						 <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 2 :</label>
-						 <label id="ques_text_diplaytwo" class="control-label nexaf" style="width:65%"><c:out value="${profileAnswerTwo.securityQuestionText}"></c:out></label>
-					      <a  onclick="changesq2('Editsq2')" class="editfeild" >Edit</a>
+						 <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion2"></fmt:message> :</label>
+						 <label id="ques_text_diplaytwo" class="control-label nexaf" style="width:65%;font-weight:normal"><c:out value="${profileAnswerTwo.securityQuestionText}"></c:out></label>
+					      <a  onclick="changesq2('Editsq2')" class="editfeild" ><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					      
 						  <div class="clearfix"></div>
 						  
-					      <div  id ="Editsq2" class="editcontroll"  style="display:none;"><a style="float:right;cursor:pointer;" onclick="showlblsq2('lblsq2');" title="Close">[X]</a>
-						  <label class="control-label nexaf" for="Course Name" style="width:180px;">Security Question 2 :</label>
+					      <div  id ="Editsq2" class="editcontroll border-user"  ><a style="float:right;cursor:pointer;" onclick="showlblsq2('lblsq2');" title="Close">[X]</a>
+						  <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion2"></fmt:message> :</label>
 					    
-					<select class="profileselect nexaf" style="font-weight:normal" id="securityQuestionTwo" style="margin-bottom:5px;width:380px;">
-							<option >Select the Security Question</option>
+					<select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="securityQuestionTwo">
+							<option ><fmt:message key="profile.select.text"></fmt:message></option>
 							<c:forEach var="profile" items="${profileList}">
 									
 										<c:if test="${profileAnswerTwo.securityQuestionText ==profile.securityQuestionText}">
@@ -512,20 +512,20 @@
 									
 							</c:forEach>
 						</select>
-					<label class="control-label nexaf" for="Course Name">Security Answer 2 :</label>
+					<label class="control-label nexaf" for="Course Name"><fmt:message key="profile.securityanswer2"></fmt:message>:</label>
 					     <div class="controls">
-					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="${profileAnswerTwo.memberAnswer}" name="sec_answer2" placeholder="Security Answer 1" style="width:368px;"/>         
+					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="${profileAnswerTwo.memberAnswer}" name="sec_answer2" placeholder="Security Answer 1" style="width:365px;"/>         
 					      </div>
 					      <p id="secQuesTwoError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
 						   
-					  <button class="btn btn-primary f-r" onclick="editSaveSecQuesTwo()" type="button" style="margin-right:20px;" >Save</button>
+					  <button class="btn btn-primary f-r" onclick="editSaveSecQuesTwo()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  
 					      </div>
 					     </div>
 					      
-					<button class="btn btn-primary f-r" type="button" style="margin-right:-15px; " >Cancel</button>
+					<a href="/ziksana-web/secure/1/homepage"><button class="btn btn-primary f-r" type="button" style="margin-right:-15px; " ><fmt:message key="profile.cancel"></fmt:message></button></a>
 					 
 					<div class="clearfix"> </div>   
 					
@@ -579,9 +579,13 @@ function clearProfileForm(){
 		
 		secondQuestionValidation(securityQuestionTwo);
 		secondAnswerValidation(securityAnswerTwo);
-		isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');
+		
 		checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo);
-		if(firstQuestionValidation(securityQuestionOne) && firstAnswerValidation(securityAnswerone) && secondQuestionValidation(securityQuestionTwo) && secondAnswerValidation(securityAnswerTwo) && checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo)){
+		if(firstQuestionValidation(securityQuestionOne) && firstAnswerValidation(securityAnswerone) && secondQuestionValidation(securityQuestionTwo) && secondAnswerValidation(securityAnswerTwo) && checkTwoSecurityQuestions(securityQuestionOne,securityQuestionTwo))
+		{
+			if($('#errorEmailId').text().length != 0  || $('#erroralternateEmailId').text().length != 0 ){
+				
+			}else{
 			$.post( '<c:url value='/profile/1/updateprofile'/>'
 			        , {'memberId':memberId,'alternateEmailId':alternateEmailId,'firstSecurityQuestionId':securityQuestionOne,'firstSecurityAnswer':securityAnswerone,'secondSecurityQuestionId':securityQuestionTwo,'secondSecurityAnswer':securityAnswerTwo,'profileImage':profileAssoc_Image}
 			        , function( data )
@@ -589,13 +593,14 @@ function clearProfileForm(){
 			        
 			        	if(data == 'success'){
 				          	   
-				          	   $('#profile_response_success').html("Profile Updated Sucessfully");
+				          	   $('#profile_response_success').html("<fmt:message key="profile.updatemessage"></fmt:message>");
 				          	   setTimeout(doRefreshCall,3000);
 
 				             }
 					
 			        }
 					 ); 
+			}
 		}	
 		
 
@@ -604,11 +609,11 @@ function clearProfileForm(){
 		firstSelectBox = document.getElementById("securityQuestionOne");
 		if (question == 'Select the Security Question') {
 			
-			$('#errorsecurityQuestionOne').html("Security questions are mandatory");
+			$('#errorsecurityQuestionOne').html("<fmt:message key="profile.error.question"></fmt:message>");
 
 			return false;
 		} else {
-			if(("#errorsecurityQuestionOne.inside:contains('Security questions are mandatory')")){
+			if(("#errorsecurityQuestionOne.inside:contains('<fmt:message key="profile.error.question"></fmt:message>')")){
 				document.getElementById("errorsecurityQuestionOne").innerHTML = '';
 			}
 			return true;
@@ -619,11 +624,11 @@ function clearProfileForm(){
 	function firstAnswerValidation(securityAnswerone){
 		firstAnswerBox = document.getElementById("securityAnswerone");
 		if (securityAnswerone == '') {
-			$('#errorsecurityAnswerone').html("Please Answer the Security Question");
+			$('#errorsecurityAnswerone').html("<fmt:message key="profile.error.securityquestion"></fmt:message>");
 
 			return false;
 		} else{
-			if(("#errorsecurityAnswerone.inside:contains('Please Answer the Security Question')")){
+			if(("#errorsecurityAnswerone.inside:contains('<fmt:message key="profile.error.securityquestion"></fmt:message>')")){
 				document.getElementById("errorsecurityAnswerone").innerHTML = '';
 			}
 			return true;
@@ -634,11 +639,11 @@ function clearProfileForm(){
 		secondSelectBox = document.getElementById("securityQuestionTwo");
 		if (question == 'Select the Security Question') {
 			
-			$('#errorsecurityQuestionTwo').html("Security questions are mandatory");
+			$('#errorsecurityQuestionTwo').html("<fmt:message key="profile.error.question"></fmt:message>");
 			
 			return false;
 		} else{
-			if(("#errorsecurityQuestionTwo.inside:contains('Security questions are mandatory')")){
+			if(("#errorsecurityQuestionTwo.inside:contains('<fmt:message key="profile.error.question"></fmt:message>')")){
 				document.getElementById("errorsecurityQuestionTwo").innerHTML = '';
 			}
 			
@@ -651,11 +656,11 @@ function clearProfileForm(){
 	function secondAnswerValidation(securityAnswerTwo){
 		secondAnswerBox = document.getElementById("securityAnswertwo");
 		if (securityAnswerTwo == '') {
-			$('#errorsecurityAnswertwo').html("Please Answer the Security Question");
+			$('#errorsecurityAnswertwo').html("<fmt:message key="profile.error.securityquestion"></fmt:message>");
 		
 			return false;
 		} else {
-			if(("#errorsecurityAnswertwo.inside:contains('Please Answer the Security Question')")){
+			if(("#errorsecurityAnswertwo.inside:contains('<fmt:message key="profile.error.securityquestion"></fmt:message>')")){
 				document.getElementById("errorsecurityAnswertwo").innerHTML = '';
 			}
 			return true;
@@ -667,10 +672,10 @@ function clearProfileForm(){
 		if(securityQuestionTwo !='Select the Security Question'){
 		if(securityQuestionOne == securityQuestionTwo){
 			
-			$('#errorsecurityQuestionTwo').html("Please choose Different Question");
+			$('#errorsecurityQuestionTwo').html("<fmt:message key="profile.error.difquestion"></fmt:message>");
 			return false;
 		}else{
-			if(("#errorsecurityQuestionTwo.inside:contains('Please choose Different Question')")){
+			if(("#errorsecurityQuestionTwo.inside:contains('<fmt:message key="profile.error.difquestion"></fmt:message>')")){
 				document.getElementById("errorsecurityQuestionTwo").innerHTML = '';
 			}
 			return true;
@@ -683,23 +688,28 @@ function clearProfileForm(){
 		
 		if(alternateEmailId != ''){
 			if (primaryEmailId == alternateEmailId) {
-				console.log("hi");
-				$('#errorEmailId').html("Alternate email id should not be same as Primary email id");
+				
+				$('#errorEmailId').html("<fmt:message key="profile.error.altemail"></fmt:message>");
 				
 			}else{
 				if(("#errorEmailId.inside:contains('email')")){
 				document.getElementById("errorEmailId").innerHTML = '';
+				
 				}
 			}
 			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
 			if(alternateEmailId.match(mailformat))  
 			{  
 				document.getElementById("erroralternateEmailId").innerHTML = '';
+				
 			}else{
-				$('#erroralternateEmailId').html("Invalid email format");
+				$('#erroralternateEmailId').html("<fmt:message key="profile.error.invalid"/>");
 				
 			}
 		
+	}else{
+		document.getElementById("errorEmailId").innerHTML = '';
+		document.getElementById("erroralternateEmailId").innerHTML = '';
 	}
 	}
 	
@@ -750,7 +760,7 @@ function clearProfileForm(){
 			memberIdVal = $("#memberIdValue").text();
 			if(alternateEmailId != ''){
 				if (primaryEmailId == alternateEmailId) {
-					$('#alternateEmailError').html("Alternate email id should not be same as Primary email id");
+					$('#alternateEmailError').html("<fmt:message key="profile.error.altemail"></fmt:message>");
 					
 				}else{
 					if(("#alternateEmailError.inside:contains('email')")){
@@ -776,7 +786,7 @@ function clearProfileForm(){
 					
 					document.getElementById("alternateEmailError").innerHTML = '';
 				}else{
-					$('#alternateEmailError').html("Invalid email format");
+					$('#alternateEmailError').html("<fmt:message key="profile.error.invalid"/>");
 					
 				}
 			
@@ -807,7 +817,7 @@ $(document).ready(function() {
     var x = $('#newPassword').val();
 	 if ((x.charAt(0).match(/([0-9,!,%,&,@,#,$,^,*,?,_,~])/)))
 	 {
-		 $('#errorNewPassword').html('<span style="padding-left:5px;">Password should start with a charactor</span>');
+		 $('#errorNewPassword').html('<span style="padding-left:5px;"><fmt:message key="profile.error.password"/></span>');
 	 	return false;
 	 }
 
@@ -816,7 +826,7 @@ $(document).ready(function() {
     if (password.length < 6) { 
 		$('#errorNewPassword').removeClass();
 		/*$('#result').addClass('short')*/
-		$('#errorNewPassword').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;">Too Short</span><br/><span style="color:orange;">Password should be at least 8 characters</span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span></span><br/><span style="color:orange;"><fmt:message key="resetpass.8char"/></span>');
 		return false;
 	}
     
@@ -844,16 +854,16 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('weak');
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;">Weak password  </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/> </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
 		return false;			
 	} else if (strength == 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('good');
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><span style="padding-left:5px;color:green;">Good</span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.good"/></span>');
 		return true;	
 	} else {
 		$('#errorNewPassword').removeClass();
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><span style="padding-left:5px;color:green;">Strong</span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.strong"/></span>');
 		return true;
 	}
 }
@@ -865,12 +875,12 @@ function checkpass()
 	if(passwordStrength){
 		
 		if($('#currentPassword').val()==''){
-			$('#errorCurrentPassword').html("Enter Current Password");
+			$('#errorCurrentPassword').html("<fmt:message key="Enter.cur.pass"/>");
 			
 		}
 		
 		else if ($('#newPassword').val()!=$('#retypePassword').val()){
-			$('#errorRetypePassword').html("Passwords do not match");
+			$('#errorRetypePassword').html("<fmt:message key="resetpass.pass.do.match"/>");
 			
 			
 		}else{
@@ -891,7 +901,7 @@ function checkpass()
 			        	}else{
 			        	if(data != 'Password reset is not successful.'){
 			        		
-			        		$('#passwordResetResponse').html("Password reset is successful.");
+			        		$('#passwordResetResponse').html("<fmt:message key="resetpass.successful"/>");
 			        		$('#passwordUpdatedDate').html(data);
 			        		
 			        		setTimeout("showMsg()",3000);
@@ -908,7 +918,7 @@ function checkpass()
 		
 	}else{
 		if($('#newPassword').val() == ''){
-		$('#errorNewPassword').html("Please Enter Password");
+		$('#errorNewPassword').html("<fmt:message key="resetpass.enterpass"/>");
 		
 		}
 	}
@@ -947,6 +957,10 @@ function editUpdateSecuQuestion(){
 
 	editSecAnswerOne= $("#editSecAnswerOne").val();
 	console.log(alternateEmailId,memberIdVal,editQuestionOne,editQuestionOneValue,editSecAnswerOne);
+	
+	if(editSecAnswerOne == ''){
+		$('#secQuesOneError').html("Enter Answer"); 
+	}else{
 	 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
 	        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionOne,'SecurityQuestionValue':editQuestionOneValue,'SecurityAnswer':editSecAnswerOne}
 	        , function( data )
@@ -954,15 +968,17 @@ function editUpdateSecuQuestion(){
 	        
 	        	if(data == 1){
 		          	   	          	 
-	        		showlblsq2('lblsq2');
+	        		showlblsq1('lblsq1');
+	        		
 		          	$('#ques_text_diplayone').html(editQuestionOneValue);
-		          	
+		          	$('#secQuesOneError').html(""); 
 		             }else{
 		            	  $('#secQuesTwoError').html("Error"); 
 		             }
 			
 	        }
-			 );  
+			 );
+	}
 }
 
 function editSaveSecQuesTwo(){
@@ -975,7 +991,9 @@ function editSaveSecQuesTwo(){
 	var editQuestionOneValue = Select.options[Select.selectedIndex].text;
 
 	editSecAnswerTwo= $("#editSecAnswerTwo").val();
-	console.log(alternateEmailId,memberIdVal,editQuestionOne,editQuestionOneValue,editSecAnswerOne);
+	if(editSecAnswerTwo == ''){
+		$('#secQuesTwoError').html("Enter Answer");
+	}else{
 	 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
 	        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionTwo,'SecurityQuestionValue':editQuestionOneValue,'SecurityAnswer':editSecAnswerTwo}
 	        , function( data )
@@ -983,18 +1001,38 @@ function editSaveSecQuesTwo(){
 	        
 	        	if(data == 1){
 		          	   	          	 
-		          	 showlblsq1('lblsq1');
+	        		showlblsq2('lblsq2');
 		          	$('#ques_text_diplaytwo').html(editQuestionOneValue);
+		          	$('#secQuesTwoError').html("");
 		          	
 		             }else{
 		            	  $('#secQuesOneError').html("Error"); 
 		             }
 			
 	        }
-			 );  
+			 );
+	}
 }
 
+function saveUploadedImage(val){
+	member_id = $("#memberIdValue").text();
+	profileImage = val;
+	$.post( '<c:url value='/profile/1/updateprofileimage'/>'
+	        , {'memberId':member_id,'profileImage':profileImage}
+	        , function( data )
+	        {
+	        
+	        		if(data == 1){
+		          	   	console.log("Profile Image Upload Success");          	 	        		
+		          	
+		             }else{
+		          	   	console.log("Profile Image Upload Failure");   
+		             }
+			
+	        }
+			 );  
 
+}
 </script>
 <style>
 .btnupload
@@ -1024,7 +1062,6 @@ width:120px !important;
 }
 .editcontroll{
 display:none;
- background-color:#eee;
  padding:10px 20px 10px 4px;
  margin-bottom:10px;
   overflow: auto;
@@ -1060,4 +1097,23 @@ float:right;
  .uploadify-queue {
      width: 250px;
 }
+.border-user{
+display: none;
+border:1px solid #eee;
+border-radius: 6px 6px 6px 6px;"
+}
+.btnLogin {
+    border: 2px solid #FFFFFF !important;
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    font: bold 13px/9px Verdana,Tahomma,Geneva;
+    height: 10px;
+    margin-right: 50px;
+    margin-top: 20px;
+    padding: 10px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
 </style>

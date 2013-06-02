@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.ziksana.domain.course.Content;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentParts;
 
@@ -17,12 +18,12 @@ public interface LearningContentMapper {
 	/**
 	 * Saves the Learning Content
 	 */
-	Integer saveContent(LearningContent record);
+	LearningContent saveContent(LearningContent record);
 
 	/**
 	 * Updates the Learning Content
 	 */
-	Integer updateContent(LearningContent record);
+	LearningContent updateContent(LearningContent record);
 
 	/**
 	 * Saves the learningcontentparts
@@ -66,5 +67,32 @@ public interface LearningContentMapper {
 
 	@Update({ "update corlearningcontent set isDelete = true where ID =  #{learningContentId,jdbcType=INTEGER}" })
 	void learningContentdelete(Integer learningContentId);
+
+	public Content getContent(Integer contentId);
+
+	@Select({ "select ID , ContentType, Active,ContentPath,ContentName,ContentDescription,ThumbnailPicturePath,NumberOfThumbnails,ScreenshotPath from corlearningcontent where AuthoringMemberRoleId=#{memberId,jdbcType=INTEGER} and isdelete=false and active=true" })
+	@Results(value = {
+			@Result(property = "id", column = "ID"),
+			@Result(property = "contentTypeId", column = "ContentType"),
+			@Result(property = "activeFlag", column = "active"),
+			@Result(property = "contentUrl", column = "ContentPath"),
+			@Result(property = "contentName", column = "ContentName"),
+			@Result(property = "contentDescription", column = "ContentDescription"),
+			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath"),
+			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails"),
+			@Result(property = "screenshotPath", column = "ScreenshotPath") })
+	List<LearningContent> getUserContent(Integer memberId);
+
+	@Select({ "select ID , ContentType, Active,ContentPath,ContentName,ContentDescription,ThumbnailPicturePath,NumberOfThumbnails from corlearningcontent where id=#{learningContentId,jdbcType=INTEGER} " })
+	@Results(value = {
+			@Result(property = "id", column = "ID"),
+			@Result(property = "contentTypeId", column = "ContentType"),
+			@Result(property = "activeFlag", column = "active"),
+			@Result(property = "contentUrl", column = "ContentPath"),
+			@Result(property = "contentName", column = "ContentName"),
+			@Result(property = "contentDescription", column = "ContentDescription"),
+			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath"),
+			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails") })
+	public LearningContent getLearningContent(Integer learningContentId);
 
 }

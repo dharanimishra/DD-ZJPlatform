@@ -1,4 +1,3 @@
-
 <script type='text/javascript'
 	src="${staticFileServer}resources/js/lib/plupload/previewupload.js"></script>
 <script type="text/javascript"
@@ -30,12 +29,29 @@ table tr td {
 .table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
 	background-color: rgba(206, 204, 204, 0.27);
 }
+
 .uploadify {
-    clear: both;
-    left: 50px;
-    margin-bottom: 1em;
-    position: relative;
-    left:10px;
+	clear: both;
+	left: 50px;
+	margin-bottom: 1em;
+	position: relative;
+	left: 10px;
+}
+ .tile-content > a{
+ width:100%;
+  height:100%;float:left
+ }
+ .brand a:hover{
+ color:#fff!important;text-decoration:none
+ }
+ .tile-content > a >img {
+    height: 64px;
+    left: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    position: absolute;
+    top: 50%;
+    width: 64px;
 }
 </style>
 
@@ -56,182 +72,172 @@ table tr td {
 <div class="Clearfix"></div>
 <div id="contentpanel">
 	<div class="tilecontainer pull-left"
-		style="margin-top: 40px; width: 140px;">
-
-
+		style="margin-top: 40px; width: 140px;margin-left:10px;">
 
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
-				<img src="${staticFileServer}resources/images/content/upload.png" />
+				<a href="/ziksana-web/zcourse/1/createcontent">
+				<img src="${staticFileServer}resources/images/content/upload.png"   /></a>
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/1/createcontent"></a>Upload
-					Content</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+					<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;">Upload Content</a>
+				</h3>
 			</div>
 		</div>
-
-
 		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
-				<img src="${staticFileServer}resources/images/content/link.png" />
+				<a href="/ziksana-web/zcourse/1/weblinkcontent">
+				<img src="${staticFileServer}resources/images/content/link.png" /></a>
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"><a href="ziksana-web/zcourse/1/weblinkcontent"></a>Add
-					Web Link</h3>
+				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+					<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;">Add Web Link</a>
+				</h3>
 			</div>
 		</div>
-
-
-
 		<div class="Clearfix"></div>
-
-
 	</div>
 	<!--end of tilescontainer-->
-
-	<!--end of tilescontainer-->
-	<div class="contentarea pull-right" style="width: 940px;">
+ 
+	<div class="contentarea pull-right" style="width: 940px;margin-right:25px">
 		<div class="createcontentwrapper">
 			<div class="uploadcontent1">
-				<form id="createcontentform" method="post">
-					<div class="createcontentpanelhead">Upload Content</div>
-					<!--end of panel head-->
-					<div class="draganddrop pull-left">
+
+				<div class="createcontentpanelhead">Upload Content</div>
+				<!--end of panel head-->
+				<div class="draganddrop pull-left" style=height:325px>
+					<div style="margin-top: 30px; margin-left: 10px;">
+						<!-- <div style="width: 122px; height: 100px; float: left">
+								<img id="course_thumbnail_image" style="margin-left: 65px"
+									src="http://www.placehold.it/80x80/EFEFEF/AAAAAA"
+									align="center" />
+							</div> -->
 
 
-						<div style="margin-top: 30px;">
-							<!--<label style="width: 260px;" for="input"
-								class="control-label nexaf">Associate an Image for your
-								Course :</label> -->
+						<div id="message"></div>
+						<div id="thubmnail_upload_message"></div>
+						<div id="loaderText"></div>
+						<input type="file" name="thumbnail_image_file_upload"
+							tabindex="11" id="thumbnail_image_file_upload"
+							style="margin-left: 196px;" />
+						<div id="status"></div>
+						<script type="text/javascript">
+							$(function() {
+								$('#thumbnail_image_file_upload')
+										.uploadify(
+												{
+													'swf' : '${staticFileServer}resources/swf/uploadify.swf',
+													'queueSizeLimit' : 1,
+													'successTimeout' : 350,
+													'buttonText' : 'Upload File',
+													'uploader' : '${ms.uploadScript}',
+													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx, *.pdf',
+													'fileSizeLimit' : '10024KB',
+													'onUploadStart' : function(
+															file) {
+														$('#sbtvalidation')
+																.attr(
+																		'disabled',
+																		'disabled');
+													},
+													//'debug' : true,
+													//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
 
-							<div style="width: 122px; height: 120px; float: left">
-								<img id="course_thumbnail_image"
-									src="${staticFileServer}resources/images/default-course.jpg"
-									align="left" />
-							</div>
+													'onUploadSuccess' : function(
+															file, data,
+															response) {
+														json_string = data;
+														data_object = $
+																.parseJSON(json_string);
+														console
+																.log(data_object);
 
-							<input readonly="readonly" type="hidden" id="Cimageupl"
-								style="margin-left: 20px;" />
+														if (data_object.Uploaded == 'true') {
+															content_path = data_object.ContentPath;
+															content_name = data_object.ContentName;
+															content_type_id = data_object.ContentType;
+															content_type_name = data_object.ContentTypeName;
+															thumbnail_path = data_object.ThumbnailPicturePath;
+															no_of_thumbnails = data_object.NumberOfThumbnails;
 
-							<div id="message"></div>
-							<div id="thubmnail_upload_message"></div>
-							<div id="loaderText"></div>
-							<input type="file" name="thumbnail_image_file_upload"
-								tabindex="11" id="thumbnail_image_file_upload"
-								style="margin-left: 196px;" />
-							<div id="status"></div>
-							<script type="text/javascript">
-								$(function() {
-									$('#thumbnail_image_file_upload')
-											.uploadify(
-													{
-														'swf' : '${staticFileServer}resources/swf/uploadify.swf',
-														'queueSizeLimit' : 1,
-														'successTimeout' : 350,
-														'uploader' : '${ms.uploadScript}',
-														//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
-														'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-														'fileSizeLimit' : '10024KB',
-														'onUploadStart' : function(
-																file) {
-															$('#sbtvalidation')
-																	.attr(
-																			'disabled',
-																			'disabled');
-														},
-														//'debug' : true,
-														//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+															prepare_for_preview(
+																	content_path,
+																	content_name,
+																	content_type_id,
+																	content_type_name,
+																	thumbnail_path,
+																	no_of_thumbnails);
 
-														'onUploadSuccess' : function(
-																file, data,
-																response) {
-															json_string = data;
-															data_object = $
-																	.parseJSON(json_string);
-															console
-																	.log(data_object);
+														} else { //there is an error in the upload process
 
-															if (data_object.Uploaded == 'true') {
-																$('#Cimageupl')
-																		.val(
-																				data_object.ContentPath);
-																$(
-																		'#course_thumbnail_image')
-																		.attr(
-																				'src',
-																				'${ms.url}'
-																						+ data_object.ContentPath);
-																$(
-																		'#thubmnail_upload_message')
-																		.html(
-																				'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
-
-															} else { //there is an error in the upload process
-
-																$('#message')
-																		.html(
-																				data_object.message);
-															}
-															$('#sbtvalidation')
-																	.removeAttr(
-																			'disabled'); //enable submit button
-
+															$('#message')
+																	.html(
+																			data_object.message);
 														}
-													// Your options here
-													});
-								});
+														$('#sbtvalidation')
+																.removeAttr(
+																		'disabled'); //enable submit button
 
-								function remove_uploaded_thumbnail() {
-									$('#Cimageupl').val('');//clear uploaded file path
-									$('#thubmnail_upload_message').html('');
-									$('#course_thumbnail_image')
-											.attr('src',
-													'${staticFileServer}resources/images/default-course.jpg');
+													}
+												// Your options here
+												});
+							});
 
+							function prepare_for_preview(content_path,
+									content_name, content_type_id,
+									content_type_name, thumbnail_path,
+									no_of_thumbnails) {
+
+								thumbnail_image_src = '${ms.url}'
+										+ content_path;
+								if (content_type_name !== 'IMAGE') {
+									thumbnail_image_src = '${staticFileServer}resources/images/genetics.jpg';
 								}
-							</script>
-						</div>
-						<!-- 						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE"
-							value="300000" />
 
-						<div>
+								div_html = '<div class="preview_uploaded_content">';
+								div_html += '<div><img src="'+thumbnail_image_src+'" alt=""></div>';
+								div_html += '<div><span class="title">'
+										+ content_name
+										+ '</span><input type="hidden" name="contentPath[]" value="'+content_path+'" /> <input type="hidden" name="contentName[]" value="'+content_name+'"><input type="hidden" name="contentType[]" value="'+content_type_id+'"><input type="hidden" name="contentTypeName[]" value="'+content_type_name+'"><input type="hidden" name="thumbnailPath[]" value="'+thumbnail_path+'"><input type="hidden" name="noOfThumbnails[]" value="'+no_of_thumbnails+'"></div>';
+								div_html += '<div><a class="remove_this" onclick="$(this).parents(\'.preview_uploaded_content\').remove();">X</a></div>';
+								div_html += '</div>';
 
-							<input type="file" id="fileselect" name="fileselect[]"
-								multiple/ style="margin-left: 20px; margin-top: 20px;">
-							<div id="filedrag" class="uploadheadsdrop">Drag and Drop
-								files here</div>
-						</div>
+								$('.previewarea .messagecontainer').remove();
+								$('.previewarea form#multiple_content_upload')
+										.prepend(div_html);
 
-						<div id="submitbutton">
-							<button type="submit">Upload Files</button>
-						</div> -->
-
+							}
+						</script>
 					</div>
-					<!--end of drag anf drop-->
-					<div class="previewarea pull-left">
-						<div class="messagecontainer">
-							<p class="uploadheads"
-								style="font-size: 30px; margin-left: 70px; padding-top: 180px;">Preview
-								Area</p>
-
-							<div id="messages" style="min-height: 100px;"></div>
-							<!--End of Messages -->
-							<div class="ClearFix"></div>
-							<!--End of ClearFix -->
-						</div>
-						<!--End of Messagecontainer -->
+				</div>
+				<!--end of drag anf drop-->
+				<div class="previewarea pull-left">
+					<div class="messagecontainer">
+						<p class="uploadheads"
+							style="font-size: 30px; padding-top: 155px; margin-left: 245px;">Preview
+							Area</p>
+						<div id="messages" style="min-height: 100px;"></div>
+						<!--End of Messages -->
+						<div class="ClearFix"></div>
+						<!--End of ClearFix -->
 					</div>
-					<!--end of preview area-->
+					<form id="multiple_content_upload" method="post"
+						action="/ziksana-web/zcourse/1/createcontents"></form>
+					<!--End of Messagecontainer -->
+				</div>
+				<!--end of preview area-->
+				<div class="clearfix"></div>
+				<div class="createcontentpanelhead" style="margin-top: 4px;">
+					<button href="#linkurl" class="btn blue pull-right"
+						style="margin-left: 10px;"> Cancel </button> <button
+						class="btn blue pull-right saveup1" id="sbtvalidation"
+						onClick="$('form#multiple_content_upload').submit();" disabled="disabled">Next</button>
 					<div class="clearfix"></div>
-					<div class="createcontentpanelhead" style="margin-top: 4px;">
-						<a href="#linkurl" class="btn pull-right"
-							style="margin-left: 10px;"> Cancel </a> <a
-							class="btn pull-right saveup1" type="button"
-							onClick="createContent();return false;">Next</a>
-						<div class="clearfix"></div>
-					</div>
-					<!--end of panel head-->
-				</form>
+				</div>
+				<!--end of panel head-->
+
 			</div>
 			<!--end of uploadcontent1-->
 		</div>
@@ -246,8 +252,62 @@ table tr td {
 <div class="Clearfix"></div>
 <!--end of body wrapper-->
 
-<div class="Clearfix"></div>
+<style type="text/css">
+.preview_uploaded_content {
+	background: none repeat scroll 0 0 silver;
+	border-radius: 2px 2px 2px 2px;
+	display: table;
+	margin: 0.5em 2%;
+	width: 96%;
+}
 
+.preview_uploaded_content>div {
+	display: table-cell;
+	min-height: 100px;
+	padding: .5em;
+	vertical-align: center;
+	position: relative;
+}
 
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/js/custom/createcontent/filedrag.js"></script> --%>
+.preview_uploaded_content>div:first-child {
+	width: 100px;
+}
+
+.preview_uploaded_content>div:last-child {
+	width: 32px;
+}
+
+.preview_uploaded_content img {
+	width: 75px;
+}
+
+.preview_uploaded_content .title {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+a.remove_this {
+	border: 2px solid white;
+	border-radius: 60px 60px 60px 60px;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 28px;
+	height: 42px;
+	line-height: 38px;
+	text-align: center;
+	text-decoration: none;
+	width: 42px;
+}
+
+a.remove_this:hover {
+	color: red;
+	border-color: red;
+	text-decoration: none;
+}
+
+#thumbnail_image_file_upload > object, #thumbnail_image_file_upload-button {
+  cursor: pointer !important;
+  width: 230px !important;
+}
+</style>

@@ -22,8 +22,10 @@
 		  where v.CategoryName='Notification Type' and
 		  l.LookupValueId=491 and
 		 
-		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate ASC
+		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate DESC  limit 0, 5
 	</select>
+	
+	
 	
 	
 
@@ -48,11 +50,37 @@
 		  where v.CategoryName='Notification Type' and
 		  l.LookupValueId=491 and
 		 
-		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate ASC
+		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate DESC  limit 0, 5
 	</select>
 	
+	<select id="getTodoSize" resultType="java.lang.Integer" parameterType="int">
+		select distinct count(*) from memmembernotification n join utllookupvalue l ON n.NotificationType=l.LookupValueId join utllookup v ON l.LookupId=v.LookupId join utllookupvalue p ON n.Priority=p.LookupValueId join utllookup pl ON pl.LookupId=p.LookupId where v.CategoryName='Notification Type' and l.LookupValueId=491 and n.ForMemberRoleId=#{memberRoleId} order by n.ActivationDate DESC  
+	</select>
 
-
+	<select id="getTodoPagination"  resultMap="todoResultMap" parameterType="map">
+		select
+		  distinct n.*,
+		 
+		 l.LookupValue as lookupValue,
+		 p.LookupValue as priority
+		  from
+		  memmembernotification n
+		  join utllookupvalue l ON
+		  n.NotificationType=l.LookupValueId 
+		  join utllookup v ON
+		  l.LookupId=v.LookupId 
+		  join utllookupvalue p ON
+		  n.Priority=p.LookupValueId 
+		  join utllookup pl ON
+		  pl.LookupId=p.LookupId
+		  
+		  where v.CategoryName='Notification Type' and
+		  l.LookupValueId=491 and
+		 
+		  n.ForMemberRoleId=#{memberRoleId}  order by n.ActivationDate DESC  limit #{pageIndex}, #{itemsPerPage}
+	</select>
+	
+	
 	<insert id="createTodo" parameterType="com.ziksana.domain.todo.Todo"
 		useGeneratedKeys="true" keyProperty="MemberNotificationId">
 		insert into
