@@ -49,13 +49,45 @@
 		var jsonString = document.getElementById("learingContents").value;
 		var contentArray = jQuery.parseJSON( jsonString );
 		
-		for(i=0; i<contentArray.length; i++){
+		for(var i=0; i<contentArray.length; i++){
 			if(learningContentId == contentArray[i].id){
 				return contentArray[i];
 			}
 		}
 	}
 
+	function getUnAssociatedContentArray(contentArray){
+		var unAssociatedContentArray = new Array();
+		
+		var compId = $("#selectedLearningComponentId").val();
+		 
+		var childArrayString = tree.getSubItems('COMPONENT_' + compId );
+		console.log("contentArray.length" + contentArray.length + "  --------- childArrayString is " + childArrayString);
+		if(childArrayString && childArrayString.trim() != ""){
+			//var childArray = childArrayString.split(',');
+			var j =0;
+
+			for(var i=0; i < contentArray.length; i++){
+				var contentItem = contentArray[i];
+				var contentIdString = 'CONTENT_'+ contentItem.id;
+				console.log("childArrayString.indexOf(contentIdString) " + childArrayString.indexOf(contentIdString));
+				if(childArrayString.indexOf(contentIdString) == -1){
+					console.log("in side if contentIdString " + contentIdString);
+					unAssociatedContentArray[j] = contentItem;
+					j++;
+				}
+				else{
+					continue;
+				}
+			}
+		}
+		else{
+			// no associated contents found return the original array as it is
+			unAssociatedContentArray = contentArray;
+		}
+		
+		return unAssociatedContentArray;
+	}
 	
 	function getOtherLearningContents(contentType, inPageIndex){
 		//console.log("hkjhjkhjkhjkhkjhjhjhjkhkjhjkhjh");
@@ -83,30 +115,31 @@
 				j++;
 			}
 		}
+		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayBasedOnContentType);
 		//console.log("contentArray.length " + contentArray.length);
-		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
+		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
 		//console.log("noOfPages " + noOfPages + " itemsPerPage " + itemsPerPage);
 		
-		if(contentArrayBasedOnContentType.length ==0){
+		if(unAssociatedContentArray.length ==0){
 			setNoContentFoundText(contentType);
 		}
 		else{
 			setNoContentFoundText('');
 		}
 		
-		if(contentArrayBasedOnContentType.length > itemsPerPage){
-			console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length + " itemsPerPage " + itemsPerPage);
+		if(unAssociatedContentArray.length > itemsPerPage){
+			console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage " + itemsPerPage);
 			getPageDiv(noOfPages, contentType, pageIndex);
 		}
 		else{
 			$('#pageNumbers').empty();
 		}
-		console.log("In else contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length + " itemsPerPage " + itemsPerPage);
+		console.log("In else unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage " + itemsPerPage);
 		
 		var divs = '';
 		if(pageIndex == 1){
-			for(i=0;i<contentArrayBasedOnContentType.length;i++){
-				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+			for(var i=0;i<unAssociatedContentArray.length;i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i==(itemsPerPage-1)){
 					break;
 				}
@@ -114,8 +147,8 @@
 			//console.log("othersssssssssssssss " + divs);
 		}
 		else{
-			for(i=((pageIndex-1) * itemsPerPage);i<contentArrayBasedOnContentType.length;i++){
-				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+			for(var i=((pageIndex-1) * itemsPerPage);i<unAssociatedContentArray.length;i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i == ((itemsPerPage * pageIndex)-1)){
 					break;
 				}
@@ -150,17 +183,20 @@
 		}
 		console.log("contentArray.length " + contentArray.length);
 		console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length);
-		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
+		
+		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayBasedOnContentType);
+
+		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
 		console.log("noOfPages " + noOfPages);
 
-		if(contentArrayBasedOnContentType.length ==0){
+		if(unAssociatedContentArray.length ==0){
 			setNoContentFoundText(contentType);
 		}
 		else{
 			setNoContentFoundText("");
 		}
 		
-		if(contentArrayBasedOnContentType.length > itemsPerPage){
+		if(unAssociatedContentArray.length > itemsPerPage){
 			getPageDiv(noOfPages, contentType, pageIndex);
 		}
 		else{
@@ -168,16 +204,16 @@
 		}
 		var divs = '';
 		if(pageIndex == 1){
-			for(i=0;i<contentArrayBasedOnContentType.length;i++){
-				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+			for(var i=0; i < unAssociatedContentArray.length; i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i==(itemsPerPage-1)){
 					break;
 				}
 			}
 		}
 		else{
-			for(i=((pageIndex-1) * itemsPerPage);i<contentArrayBasedOnContentType.length;i++){
-				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+			for(var i=((pageIndex-1) * itemsPerPage); i < unAssociatedContentArray.length; i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i == ((itemsPerPage * pageIndex)-1)){
 					break;
 				}
@@ -202,9 +238,13 @@
 		var contentArray = new Array();
 		contentArray =  jQuery.parseJSON( jsonString );
 		console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
-		noOfPages = Math.ceil(contentArray.length/itemsPerPage);
+
+		var unAssociatedContentArray = getUnAssociatedContentArray(contentArray);
+		console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage  " + itemsPerPage);
+
+		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
 		
-		if(contentArray.length ==0){
+		if(unAssociatedContentArray.length ==0){
 			setNoContentFoundText("ALL");
 			//alert("This is " + setNoContentFoundText("ALL"));
 		}
@@ -212,7 +252,7 @@
 			setNoContentFoundText("");
 		}
 		
-		if( contentArray.length > itemsPerPage ){
+		if( unAssociatedContentArray.length > itemsPerPage ){
 			getPageDiv(noOfPages, "ALL", pageIndex);
 		}
 		else{
@@ -224,16 +264,16 @@
 		var divs = '';
 		
 		if(pageIndex == 1){
-			for(i=0;i<contentArray.length;i++){
-				divs = divs + getDiv(contentArray[i]);
+			for(var i=0; i < unAssociatedContentArray.length; i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i==(itemsPerPage-1)){
 					break;
 				}
 			}
 		}
 		else{
-			for(i=((pageIndex-1) * itemsPerPage);i<contentArray.length;i++){
-				divs = divs + getDiv(contentArray[i]);
+			for(var i=((pageIndex-1) * itemsPerPage); i < unAssociatedContentArray.length; i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i == ((itemsPerPage * pageIndex)-1)){
 					break;
 				}
@@ -420,7 +460,10 @@
 			}
 		}
 		
-		var childArray = tree.getSubItems('COMPONENT_' + compId );
+/*		
+  		// uncomment following if you need to show all the contents and then show an alert if
+  		// the content is already associated
+  		var childArray = tree.getSubItems('COMPONENT_' + compId );
 		//check if the conent is already associated if yes then throw an alert and dont allow the user to duplicate.
 		//could have done it in the loop above but for simplicity doing it again
 		for(i=0;i < selectedContentCheckBoxes.length;i++){
@@ -433,6 +476,7 @@
 			}
 			
 		}
+*/
 		$('#selectedLearningContentList').val(selectedContents); 
 		console.log("selectedContents " + selectedContents + " selected component id is " + compId);
 		if(selectedContents == "" || !selectedContents){
