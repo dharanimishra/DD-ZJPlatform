@@ -87,6 +87,13 @@
 		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
 		//console.log("noOfPages " + noOfPages + " itemsPerPage " + itemsPerPage);
 		
+		if(contentArrayBasedOnContentType.length ==0){
+			setNoContentFoundText(contentType);
+		}
+		else{
+			setNoContentFoundText('');
+		}
+		
 		if(contentArrayBasedOnContentType.length > itemsPerPage){
 			console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length + " itemsPerPage " + itemsPerPage);
 			getPageDiv(noOfPages, contentType, pageIndex);
@@ -145,6 +152,13 @@
 		console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length);
 		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
 		console.log("noOfPages " + noOfPages);
+
+		if(contentArrayBasedOnContentType.length ==0){
+			setNoContentFoundText(contentType);
+		}
+		else{
+			setNoContentFoundText("");
+		}
 		
 		if(contentArrayBasedOnContentType.length > itemsPerPage){
 			getPageDiv(noOfPages, contentType, pageIndex);
@@ -185,10 +199,18 @@
 		
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
-		var contentArray = jQuery.parseJSON( jsonString );
+		var contentArray = new Array();
+		contentArray =  jQuery.parseJSON( jsonString );
 		console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
 		noOfPages = Math.ceil(contentArray.length/itemsPerPage);
 		
+		if(contentArray.length ==0){
+			setNoContentFoundText("ALL");
+			//alert("This is " + setNoContentFoundText("ALL"));
+		}
+		else{
+			setNoContentFoundText("");
+		}
 		
 		if( contentArray.length > itemsPerPage ){
 			getPageDiv(noOfPages, "ALL", pageIndex);
@@ -333,6 +355,34 @@
 					pageDiv.append('<a onClick="' + functionName + i +')" title="'+ i + '" href="#" id="btnpg1" class="swShowPage"></a>');
 				}
 		}
+	}
+	
+	function setNoContentFoundText(category){
+		
+		var noDataText = "";
+		category = category.toUpperCase();
+		if(category != ""){
+			noDataText = 'No '+ getCategoryText(category) +'contents in repository.' ;
+		}
+		//alert("category" + category + " - noDataText " + noDataText);
+		$('#noContentFound').text(noDataText);
+	}
+	
+	function getCategoryText(category){
+		var categoryText = "";
+		if(category == "LINK"){
+			categoryText = "Web Link ";
+			
+		}
+		else if(category == "VIDEO"){
+			categoryText = "Video ";
+			
+		}
+		else if(category == "OTHERS"){
+			categoryText = "Other ";
+			
+		}
+		return categoryText;
 	}
 	
 	function isItemPresent(childArrayString, contentItem){
