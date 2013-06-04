@@ -194,3 +194,9 @@
 
 	});
 </script>
+<style>
+.createcontentimg > img {
+    padding: 0;
+}
+
+</style>
