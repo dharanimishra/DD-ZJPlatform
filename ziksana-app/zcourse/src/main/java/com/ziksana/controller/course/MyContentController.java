@@ -145,13 +145,7 @@ public class MyContentController {
 
 		ModelAndView modelView = new ModelAndView("mastereditcontent");
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
-		LOGGER.info(" -------------ContentType.AUDIO.getName() :"
-				+ ContentType.AUDIO.getName());
 
-		LOGGER.info(" -------------contentTypeName :"
-				+ contentTypeName[0]
-				+ "content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName()"
-				+ ContentType.VIDEO.getName());
 		try {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
@@ -217,8 +211,6 @@ public class MyContentController {
 
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 
-		LOGGER.info("");
-
 		try {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
@@ -227,9 +219,6 @@ public class MyContentController {
 			Integer learningContentId = 0;
 
 			for (int i = 0; i < contentId.length; i++) {
-
-				LOGGER.info("contentId[]:" + contentId[i]);
-
 				LearningContent learningContent = new LearningContent();
 				learningContent.setAuthoringMember(accountableMember);
 				learningContent.setStatusId(1);
@@ -242,17 +231,18 @@ public class MyContentController {
 						learningContent.setLearningContentId(learningContentId);
 					}
 
-					try {
+					if (!"".equals(contentName) && contentName != null) {
 						learningContent.setContentName(contentName[i]);
-						learningContent.setContentDescription(contentDesc[i]);
-						learningContent.setScreenshotPath(screenshotPath[i]);
-
-						LOGGER.info("screenshotPath:" + screenshotPath[i]);
-
-					} catch (Exception e) {
-
-						LOGGER.error("Exception screenshotPath:" + e);
 					}
+					if (!"".equals(contentDesc) && contentDesc != null) {
+						learningContent.setContentDescription(contentDesc[i]);
+					}
+
+					if (!"".equals(screenshotPath) && screenshotPath != null) {
+						learningContent.setScreenshotPath(screenshotPath[i]);
+					}
+
+					LOGGER.info("screenshotPath:" + screenshotPath[i]);
 
 					try {
 						CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
@@ -330,7 +320,7 @@ public class MyContentController {
 			} catch (Exception e) {
 				learningContent.setContentTypeId(959);
 			}
-			String screenshotPath = thumbnailPicturePath.replace(",'++'","");
+			String screenshotPath = thumbnailPicturePath.replace(",'++'", "");
 			learningContent.setThumbnailPicturePath(screenshotPath);
 			learningContent.setScreenshotPath(screenshotPath);
 			learningContent.setRightsOwningMember(accountableMember);
