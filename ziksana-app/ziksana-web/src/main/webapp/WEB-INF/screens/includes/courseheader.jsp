@@ -1,15 +1,10 @@
 
 <%@ page session="true"%>
 
-<link href="/ziksana-web/resources/css/main/styles2.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="/ziksana-web/resources/css/main/icons.css" rel="stylesheet"
-	type="text/css" />
-<link href="/ziksana-web/resources/css/stylesheets.css" rel="stylesheet"
-	type="text/css" />
+
 <div id="leftpanel">
 
-	<div id="Headerborder">
+	<div id="Headerborder" class="metrouicss">
 			<div id="HeaderLogo" class="f-l">
 
 				<img src="/ziksana-web/resources/images/home/logo2.png" />
@@ -27,21 +22,16 @@
 						<c:out value="${member.lastName}" />
 					</div>
 				</div>
-				<div id="user_menu_container">
-					<div id="AccountSetting" class="f-l">
-						<span><img class="Profilepic"
-							src="/ziksana-web/resources/images/home/actlck.png" /></span> <span
-							class="Accounthead">Account Settings</span> <img
-							id="user_menu_trigger" class="Dropdown"
-							src="/ziksana-web/resources/images/home/dropdown.png" />
-					</div>
-					<div id="user_menu">
-						<!-- /ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/> -->
-						<a
-							href="/ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/>">Manage
-							Profile</a> <a href="/ziksana-web/secure/logout">Sign Out</a>
-					</div>
-				</div>
+				<div id="user_menu_container" >
+<div id="AccountSetting" class="f-l"><span><img class="Profilepic" src="/ziksana-web/resources/images/home/actlck.png"/></span> 
+
+<span class="Accounthead"><fmt:message key="Account.Settings"></fmt:message></span> <img id="user_menu_trigger" class="Dropdown" src="/ziksana-web/resources/images/home/dropdown.png"/> </div>    
+<div id="user_menu">
+<!-- /ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/> -->
+	<a href="/ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/>"><fmt:message key="Manage.profile"></fmt:message></a>
+	<a href="/ziksana-web/secure/logout"><fmt:message key="signout"></fmt:message></a>
+</div>   
+</div> 
 
 
 			</div>

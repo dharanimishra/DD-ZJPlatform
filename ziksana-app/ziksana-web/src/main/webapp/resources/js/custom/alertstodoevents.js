@@ -396,7 +396,7 @@ function get_and_populate_todo(val){
 										
 					var ouputMoreTodo="";
 			
-					var ouputEmpty = "<span style='margin-left:250px;font-family:verdana;color:white;'>No To-Dos to display</span>";
+					var ouputEmpty = "<span style='margin-left:250px;color:white;'>No To-Dos to display</span>";
 					
 					if(no_of_available_todo == 0){$('#todos_placeholder').html(ouputEmpty);} else{
 					
@@ -404,7 +404,7 @@ function get_and_populate_todo(val){
 						ouputMoreTodo+="<tbody>";
 						 $(data).find("todoitem").each(function(index){
 							 ouputMoreTodo+="<tr id='todorow"+$(this).find('id').text()+"'><td style='width:50px'><input type='checkbox' id='c"+index +"' onchange='handleChange(this,"+$(this).find('id').text()+");' /> <label for='c"+index +"'><span></span></label></td><td>"+$(this).find("categoryName").text()+"</td>";
-							 ouputMoreTodo+="<td class='todoinfo-decription'><div class='todotip_container' >"+$(this).find("subject").text()+"<div class='categortip' style='font-family:verdana;color:white;'>"+$(this).find("subject").text()+" </div></div></td></tr>";
+							 ouputMoreTodo+="<td class='todoinfo-decription'><div class='todotip_container' >"+$(this).find("subject").text()+"<div class='categortip' style='color:white;'>"+$(this).find("subject").text()+" </div></div></td></tr>";
 						 });
 						
 						 ouputMoreTodo+="</tbody></table>";
@@ -523,7 +523,7 @@ function get_and_populate_todo_value(val){
 					
 					var ouputEmptyTodo="";
 					var updateEditValue="";
-					var ouputEmpty = "<span style='margin-left:250px;font-family:verdana;color:white;'>No To-Dos to display</span>";
+					var ouputEmpty = "<span style='margin-left:250px;color:white;'>No To-Dos to display</span>";
 					if(no_of_available_todo == 0){$('#todos_placeholder_more').html(ouputEmpty);} else{
 					
 						ouputEmptyTodo+="<table id='todo_all_tablerows' class='table table-hover table-striped' >";
