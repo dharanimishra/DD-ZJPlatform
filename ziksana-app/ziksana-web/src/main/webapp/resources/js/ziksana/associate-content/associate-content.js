@@ -460,13 +460,25 @@
 		var noDataText = "";
 		category = category.toUpperCase();
 		if(category != ""){
-			noDataText = 'No '+ getCategoryText(category) +'contents in repository.' ;
+			noDataText = getCategoryText(category);
 		}
 		//alert("category" + category + " - noDataText " + noDataText);
 		$('#noContentFound').text(noDataText);
 	}
 	
 	function getCategoryText(category){
+		var noDataText = "";
+		if(category == "ALL"){
+			noDataText = "No contents in repository.";
+			
+		}
+		else {
+			noDataText = "No contents in this category.";
+			
+		}
+		return noDataText;
+	}
+	function getCategoryText1(category){
 		var categoryText = "";
 		if(category == "LINK"){
 			categoryText = "Web Link ";
