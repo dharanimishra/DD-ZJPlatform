@@ -340,7 +340,12 @@
 					'<div class="associateright f-l">'+
 	
 	
-					'<div class="associatecategoryhead">' + learningContentObject.contentName + '</div>'+
+					'<div class="associatecategoryhead">' + 
+					'<a href="#"  style="color:#fff;font-weight:bold" onClick="viewContent(\''  + learningContentObject.contentType + '\',' + learningContentObject.id + ' )"'+
+					' >'+
+						learningContentObject.contentName + 
+					'</a>' +
+					'</div>'+
 	
 					'<div class="associatetagscontainer">'+
 						'<p class="associatecategoryname f-l"> Category :   <a href="#linkurl"> Areas</a>/<a href="#linkurl">Topic</a>/<a href="#linkurl">Subject</a> </p>'+
@@ -371,6 +376,59 @@
 		return learningContentDiv;
 	}
 	
+	function viewContent(contentType, learningContentId){
+		
+		var contentURI = getContentViewerURI(contentType, learningContentId);
+		if (contentType.toUpperCase() == 'LINK') {
+			//contentURI =  getLearningContentObject(learningContentId).contentURL;
+			window.open(contentURI);
+		}
+		else{
+		 $.fancybox({
+				'width': '85%',
+				'height': '500',
+				'autoScale': true,
+				'transitionIn': 'fade',
+				'transitionOut': 'fade',
+				'type': 'iframe',
+				'href': contentURI
+				
+			});
+		
+		}
+		
+	}
+	
+	function getContentViewerURI(contentType, learningContentId){
+		contentType = contentType.toUpperCase();
+		var viewerURL = "";
+		if (contentType == 'VIDEO') {
+			viewerURL = '/ziksana-web/zcourse/1/modalplayer/'
+					+ learningContentId;
+		} else if (contentType == 'AUDIO') {
+			viewerURL = '/ziksana-web/zcourse/1/modalplayer/'
+					+ learningContentId;
+		} else if (contentType == 'IMAGE') {
+			viewerURL = '/ziksana-web/zcourse/1/slides/'
+					+ learningContentId;
+			preview_path = '../../resources/images/preview/image.png';
+		} else if (contentType == 'DOC') {
+			viewerURL = '/ziksana-web/zcourse/1/slides/'
+					+ learningContentId;
+			preview_path = '../../resources/images/preview/doc.png';
+		} else if (contentType == 'PPT') {
+			viewerURL = '/ziksana-web/zcourse/1/slides/'
+					+ learningContentId;
+		} else if (contentType == 'PDF') {
+			viewerURL = '/ziksana-web/zcourse/1/slides/'
+					+ learningContentId;
+		}
+		else if (contentType == 'LINK') {
+			viewerURL =  getLearningContentObject(learningContentId).contentURL;
+		}
+		return viewerURL;
+			
+	}
 	
 	function getPageDiv(noOfPages, filterType, pageIndex){
 		console.log("In getPageDiv noOfPages " + noOfPages + " pageIndex " + pageIndex + " filterType " + filterType);
