@@ -16,13 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Content;
-import com.ziksana.domain.course.ContentStatus;
-import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.LearningContent;
-import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
-import com.ziksana.exception.course.CourseException;
-import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.ContentService;
 import com.ziksana.service.course.LearningContentService;
 import com.ziksana.service.course.CourseContentService;
@@ -41,8 +36,6 @@ public class ContentController {
 
 	@Autowired
 	LearningContentService learningContentService;
-	
-	
 
 	@Autowired
 	ContentService contentService;
@@ -55,7 +48,8 @@ public class ContentController {
 	@Autowired
 	CourseContentService courseContentService;
 
-	@RequestMapping(value = "/1/slides/{contentId}", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/1/slides/{contentId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView slides(@PathVariable Integer contentId) {
 		ModelAndView mav = new ModelAndView("courses/Slides");
@@ -74,7 +68,8 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "/1/enhanceplayer/{contentId}/{componentId}/{courseId}", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/1/enhanceplayer/{contentId}/{componentId}/{courseId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView enhancePlayer(@PathVariable Integer contentId,
 			@PathVariable Integer componentId, @PathVariable Integer courseId) {
@@ -94,7 +89,8 @@ public class ContentController {
 
 	}
 
-	@RequestMapping(value = "/1/content/getcontent", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/1/content/getcontent", method = {
+			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	Content getContent(
 			@RequestParam(value = "contentId", required = true) String contentId
@@ -123,7 +119,8 @@ public class ContentController {
 		return content;
 	}
 
-	@RequestMapping(value = "/1/content/getcontentinfo", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/1/content/getcontentinfo", method = {
+			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
 	Content getContentInfo(
 			@RequestParam(value = "contentId", required = true) String contentId) {
@@ -188,7 +185,7 @@ public class ContentController {
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
-		return mv; 
+		return mv;
 	}
 
 }

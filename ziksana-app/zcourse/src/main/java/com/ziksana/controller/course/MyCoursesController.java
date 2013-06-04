@@ -25,7 +25,7 @@ import com.ziksana.service.course.CourseService;
 import com.ziksana.service.security.MediaService;
 
 /**
- * @author prabu
+ * @author Ratnesh Kumar
  * 
  */
 @Controller
