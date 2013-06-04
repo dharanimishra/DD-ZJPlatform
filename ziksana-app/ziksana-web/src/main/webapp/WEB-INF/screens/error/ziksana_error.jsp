@@ -5,54 +5,97 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-.btnLogin {
-	background: #6d9ec5;
-	border: 2px solid #ffffff !important;
-	cursor: pointer;
-	padding: 11px 16px;
-	font: bold 11px/14px Verdana, Tahomma, Geneva;
-	text-shadow: rgba(0, 0, 0, 0.2) 0 1px 0px;
-	color: #fff;
-	-moz-box-shadow: inset rgba(255, 255, 255, 0.6) 0 1px 1px,
-		rgba(0, 0, 0, 0.1) 0 1px 1px;
-	-webkit-box-shadow: inset rgba(255, 255, 255, 0.6) 0 1px 1px,
-		rgba(0, 0, 0, 0.1) 0 1px 1px;
-	box-shadow: inset rgba(255, 255, 255, 0.6) 0 1px 1px, rgba(0, 0, 0, 0.1)
-		0 1px 1px;
-	margin-left: 12px;
-	float: right;
-	padding: 7px 21px;
-}
-
-.btnLogin:hover,.btnLogin:focus,.btnLogin:active {
-	background: #f28920;
-}
-
-.btnLogin:active {
-	text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0px;
-}
-body{
-background: #D7D7D7;	
-}
-</style>
+<link href="/ziksana-web/resources/css/main/styles2.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/ziksana-web/resources/css/main/icons.css" rel="stylesheet" type="text/css"/>
+<link href="/ziksana-web/resources/css/stylesheets.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
-<img src="ziksana_button_logo.png" style="float:left; margin-left:20px;">
+<div id="background">
+
+<div id="wrapper">
 
 
-<div style="width:500px;  margin-left:170px;  margin:auto;">
-		
+<section >
+
+<div id="loginwrapper"  style="padding-bottom:20px;height:450px">
+
+
+ <div id="contentpanel">
+
+<div id="headercontainer" style="overflow:auto">
+ 
+ <div id="HeaderLogo" class="f-l">
+     
+     <img src="/ziksana-web/resources/images/home/loginlogo.png" style="height:80px;"/>
+     
+ </div> <!--end of headerlogo-->
+ </div></div>
+	<div class="frgtpassmiddle"  style="margin-bottom:0px">
+ 
+   <div class="registerdtls">	
 <h1>${errorMessage} </h1><br/>
 		<p><img src="/ziksana-web/resources/images/ziksana_error_page.png" width=408px height=272px> 
-			<div style="float:right; font-weight:bold; font-family:inherit;">
-				<p >Please Login Again.</p>
-		<a href="/ziksana-web/secure/logout">
-		<input  class="btnLogin" type="submit"  value="Login"></a>
+			<div style=" margin: auto;text-align: center; font-weight:bold; font-family:inherit;">
+				<h4 >There is an Error on the page .<br>Please Login Again.</h4>
+		<a href="/ziksana-web/secure/logout"><input class="btn" type="submit"  value="Login" style="width:120px;padding:5px"></a>
 		
-		<div>
-<div>
+	</div></div>	 
+ </div></div></section></div>
+ <footer id="footercontainer">
+<div id="footerborder"> </div>
+ 
+
+<div id="footercontent">
+
+<div id="comapnyinfo">
+
+<div class="companynav">
+<ul>
+<li> <a href="#linkurl" style="color: rgb(90, 90, 90);">  Company : </a> </li>
+<li><a href="#linkurl"> About Us </a> </li>
+<li> <a href="#linkurl"> Ziksana Connect </a> </li>
+<li><a href="#linkurl"> Contact us </a> </li>
+
+</ul>
+
+
+</div> <!--end of companynav-->
+
+</div> <!--end of companyinfo-->
+
+
+<div id="locationinfo">
+
+<div class="locationnav">
+
+<ul>
+<li><a href="#linkurl" style="color: rgb(90, 90, 90);"> Location : </a> </li>
+<li><a href="#linkurl"> New york </a> </li>
+<li> <a href="#linkurl"> Amsterdam </a> </li>
+<li><a href="#linkurl"> Bangalore </a> </li>
+</ul>
+
+</div>
+
+</div> <!--end of location info-->
+
+<div class="Clearfix"> </div>
+
+<div id="socialmeadia">
+ 
+<p id="copyright"> Copyright@2013 Ziksana </p>
+
+</div> <!--end of socialmedia-->
+
+
+
+ </div> <!--end of footercontent-->
+</footer>
+
+<div class="Clearfix"> </div>
+ 
+ </div>
 </body>
 
 </html>
