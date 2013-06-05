@@ -310,7 +310,9 @@
 
 			</div>
 			<div class="Clearfix"></div>
+			<div style="width:100%;height:7px;">
 			<div id="announcementPagination" style="float: right;margin-bottom:5px"></div>
+			</div>
 			<div id="annaouncementFooter" class="eventfooter" style="height: 30px; width: 100%;float:left; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
 					
 
