@@ -121,7 +121,7 @@ function get_and_populate_announcements(val){
 					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
-					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
+					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
 					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					

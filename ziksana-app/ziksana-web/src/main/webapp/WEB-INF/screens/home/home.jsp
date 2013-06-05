@@ -301,7 +301,7 @@
 			</div>
 			<!--end of panel head-->
 
-			<div class="announcementwrapper" style='height:284px;float:left;overflow:auto'>
+			<div class="announcementwrapper" style='height:284px;width:100%;float:left;overflow:auto'>
 				<div id="announcement_box_all" class='announcementbox All'
 					style='background-color: rgb(18, 122, 163);'>
 
@@ -309,6 +309,7 @@
 
 
 			</div>
+			<div class="Clearfix"></div>
 			<div id="announcementPagination" style="float: right;margin-bottom:5px"></div>
 			<div id="annaouncementFooter" class="eventfooter" style="height: 30px; width: 100%;float:left; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
 					

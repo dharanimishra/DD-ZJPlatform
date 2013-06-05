@@ -14,15 +14,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.CourseService;
+import com.ziksana.service.course.CourseSubjectDetailService;
 import com.ziksana.service.security.MediaService;
+import com.ziksana.util.JSONUtil;
 
 /**
  * @author Ratnesh Kumar
@@ -40,6 +45,8 @@ public class MyCoursesController {
 
 	@Autowired
 	private MediaService mediaService;
+
+	MediaServerURL mediaServerURL = new MediaServerURL();
 
 	@RequestMapping(value = "/educatorcourses", method = RequestMethod.GET)
 	public @ResponseBody
@@ -184,6 +191,23 @@ public class MyCoursesController {
 			LOGGER.error(exception.getMessage(), exception);
 		}
 		return mv;
+	}
+
+	@RequestMapping(value = "1/mycourse", method = { RequestMethod.GET })
+	public @ResponseBody
+	ModelAndView myCourse() {
+		LOGGER.debug(" Entering Class " + getClass() + " myCourse()");
+		ModelAndView modelView = new ModelAndView("mastermycourse");
+		try {
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "My Course");
+
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Class " + getClass() + "Exiting myCourse(): ");
+		return modelView;
 	}
 
 }
