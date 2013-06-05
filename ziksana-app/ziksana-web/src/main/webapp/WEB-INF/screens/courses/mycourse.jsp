@@ -156,8 +156,8 @@
 	<hr>
 	<div class="announcementswrapper" style="margin-left: 50px;">
 		<form>
-			<input type="hidden" id="learingContents"
-				value='${learningContentAsJSONString}' /> <input type="hidden"
+			<input type="hidden" id="courses"
+				value='${courseAsJSONString}' /> <input type="hidden"
 				id="fileServerPath" value='${ms.uploadContent}' />
 			<!-- <div id="container4" class="createcontent-mainwrapper isotopbody"> -->
 

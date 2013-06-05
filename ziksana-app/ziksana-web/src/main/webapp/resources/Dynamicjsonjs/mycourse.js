@@ -13,7 +13,7 @@ function getOtherLearningContents(contentType, pageIndex) {
 	}
 
 	$('#container4').empty();
-	var jsonString = document.getElementById("learingContents").value;
+	var jsonString = document.getElementById("courses").value;
 	// var jsonString = getFromSessionStorage(sessionKey);
 	var contentArray = jQuery.parseJSON(jsonString);
 
@@ -27,9 +27,7 @@ function getOtherLearningContents(contentType, pageIndex) {
 			j++;
 		}
 	}
-	console.log("contentArray.length " + contentArray.length);
-	console.log("contentArrayBasedOnContentType.length "
-			+ contentArrayBasedOnContentType.length);
+
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
 	console.log("noOfPages " + noOfPages);
 
@@ -64,7 +62,7 @@ function getLearningContentsByType(contentType, pageIndex) {
 	}
 
 	$('#container4').empty();
-	var jsonString = document.getElementById("learingContents").value;
+	var jsonString = document.getElementById("courses").value;
 	// var jsonString = getFromSessionStorage(sessionKey);
 	var contentArray = jQuery.parseJSON(jsonString);
 
@@ -114,7 +112,7 @@ function getAllLearningContents(pageIndex) {
 	}
 
 	$('#container4').empty();
-	var jsonString = document.getElementById("learingContents").value;
+	var jsonString = document.getElementById("courses").value;
 	var contentArray = jQuery.parseJSON(jsonString);
 	console.log("contentArray.length " + contentArray.length
 			+ " itemsPerPage  " + itemsPerPage);

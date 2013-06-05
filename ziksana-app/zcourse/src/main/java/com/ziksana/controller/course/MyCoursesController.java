@@ -3,6 +3,7 @@
  */
 package com.ziksana.controller.course;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,15 +18,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
-import com.ziksana.domain.course.LearningContent;
-import com.ziksana.domain.course.json.JSONLearningContent;
+import com.ziksana.domain.course.json.JSONCourse;
+
 import com.ziksana.domain.institution.LearningProgram;
 import com.ziksana.domain.member.MemberRoleType;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.CourseService;
-import com.ziksana.service.course.CourseSubjectDetailService;
 import com.ziksana.service.security.MediaService;
 import com.ziksana.util.JSONUtil;
 
@@ -48,7 +48,33 @@ public class MyCoursesController {
 
 	MediaServerURL mediaServerURL = new MediaServerURL();
 
-	@RequestMapping(value = "/educatorcourses", method = RequestMethod.GET)
+	@RequestMapping(value = "1/mycourse", method = { RequestMethod.GET })
+	public @ResponseBody
+	ModelAndView myCourse() {
+		LOGGER.debug(" Entering Class " + getClass() + " myCourse()");
+		ModelAndView modelView = new ModelAndView("mastermycourse");
+		try {
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "My Course");
+
+			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
+					.getMemberPersonaId().getStorageID());
+			List<Course> courses = courseService.getListOfCourses(memberId);
+
+			List<JSONCourse> jsonCourseList = getJSONCourseObjects(courses);
+			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
+
+			modelView.addObject("courseAsJSONString", jsonString);
+
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Class " + getClass() + "Exiting myCourse(): ");
+		return modelView;
+	}
+
+	@RequestMapping(value = "1/educatorcourses", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyCourses() throws CourseException {
 
@@ -75,7 +101,7 @@ public class MyCoursesController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/myprogramsdraft", method = RequestMethod.GET)
+	@RequestMapping(value = "1/myprogramsdraft", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyProgramsDraft() {
 
@@ -124,7 +150,7 @@ public class MyCoursesController {
 
 	}
 
-	@RequestMapping(value = "/learnercourses", method = RequestMethod.GET)
+	@RequestMapping(value = "1/learnercourses", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readLearnerMyPrograms() throws CourseException {
 		ModelAndView mvLearner = new ModelAndView("courses/learner-courses");
@@ -150,7 +176,7 @@ public class MyCoursesController {
 
 	}
 
-	@RequestMapping(value = "/myprograms", method = RequestMethod.GET)
+	@RequestMapping(value = "1/myprograms", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView readMyPrograms() throws CourseException {
 
@@ -193,21 +219,20 @@ public class MyCoursesController {
 		return mv;
 	}
 
-	@RequestMapping(value = "1/mycourse", method = { RequestMethod.GET })
-	public @ResponseBody
-	ModelAndView myCourse() {
-		LOGGER.debug(" Entering Class " + getClass() + " myCourse()");
-		ModelAndView modelView = new ModelAndView("mastermycourse");
-		try {
-			mediaServerURL = mediaService.getMediaContents();
-			modelView.addObject("ms", mediaServerURL);
-			modelView.addObject("pageTitle", "My Course");
-
-		} catch (ZiksanaException exception) {
-			LOGGER.error(exception.getMessage(), exception);
+	/**
+	 * This method converts collection of {@link Course} objects into
+	 * {@link JSONCourse} objects
+	 * 
+	 * @param courseList
+	 * @return
+	 */
+	private List<JSONCourse> getJSONCourseObjects(List<Course> courseList) {
+		List<JSONCourse> jsonCourseList = new ArrayList<JSONCourse>();
+		for (Course course : courseList) {
+			jsonCourseList.add(new JSONCourse(course));
 		}
-		LOGGER.debug("Class " + getClass() + "Exiting myCourse(): ");
-		return modelView;
+		return jsonCourseList;
+
 	}
 
 }
