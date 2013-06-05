@@ -45,8 +45,8 @@
 				<div class="fifteen columns" id="page-title">
 					<a class="back" href="javascript:history.back()"></a>
 					<p class="page-title">
-						<span style="font-size: 13px; color: #6bbde8;">Home</span> <
-						Create Course
+						<span style="font-size: 13px; color: #6bbde8;"> </span><fmt:message key="home.hometext"/> <
+						<fmt:message key="home.createcourse"/>
 					</p>
 				</div>
 
@@ -76,7 +76,7 @@
 
 								<p>
 									<img src="/ziksana-web/resources/images/icons/toola.png"
-										class="tbboximg" /><span class="tbboxheadfnt"> Define
+										class="tbboximg" /><span class="tbboxheadfnt"> <fmt:message key="course.Define"/>
 									</span>
 								</p>
 
@@ -92,7 +92,7 @@
 
 							<div class="tbboxdesc">
 
-								<p>Create the course structure and course content</p>
+								<p><fmt:message key="course.structre.content"/></p>
 
 							</div>
 							<!--end of tbboxdesc  -->
@@ -111,7 +111,7 @@
 								<p>
 									<img src="/ziksana-web/resources/images/icons/review.png"
 										class="tbboximgds" /><span class="tbboxheadfntds">
-										Enrich </span>
+										<fmt:message key="course.Enrich"/> </span>
 								</p>
 
 							</div>
@@ -128,7 +128,7 @@
 
 							<div class="tbboxdescds">
 
-								<p>Personalize and enrich your content</p>
+								<p><fmt:message key="course.personalize"/></p>
 
 							</div>
 							<!--end of tbboxdesc  -->
@@ -144,7 +144,7 @@
 								<p>
 									<img src="/ziksana-web/resources/images/icons/publish1.png"
 										class="tbboximgds" /><span class="tbboxheadfntds">
-										Publish </span>
+										<fmt:message key="course.Publish"/> </span>
 								</p>
 
 							</div>
@@ -159,7 +159,7 @@
 							<!--end of tbboximg  -->
 
 							<div class="tbboxdescds">
-								<p>Publish the course created</p>
+								<p><fmt:message key="course.publish.created"/> </p>
 
 							</div>
 							<!--end of tbboxdesc  -->
