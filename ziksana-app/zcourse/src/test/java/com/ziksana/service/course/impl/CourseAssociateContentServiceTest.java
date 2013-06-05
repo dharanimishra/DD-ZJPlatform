@@ -31,23 +31,22 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 	@Autowired
 	public CourseContentService courseContentService;
 
-	@Test
 	public void testSaveOrUpdateAssociateContent() throws Exception {
 
 		LearningComponentContent learningComponentContent = null;
 
 		learningComponentContent = constructContent(learningComponentContent);
 
-//		ZID LearningComponentContentId = learningComponentContent
-//				.getLearningComponentContentId();
-//		String id = LearningComponentContentId.getStorageID();
+		// ZID LearningComponentContentId = learningComponentContent
+		// .getLearningComponentContentId();
+		// String id = LearningComponentContentId.getStorageID();
 
 		courseContentService.saveOrUpdateContent(learningComponentContent);
 
-//		LearningComponentContent expected = courseContentService
-//				.getLearningComponentContent(Integer.valueOf(id));
+		// LearningComponentContent expected = courseContentService
+		// .getLearningComponentContent(Integer.valueOf(id));
 
-		//Assert.assertNotNull(learningComponentContent);
+		// Assert.assertNotNull(learningComponentContent);
 
 	}
 
@@ -72,7 +71,6 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 	@Test
 	public void testlDeleteContentPartsOnly() throws Exception {
 
-	
 		Integer learningContentId = 6;
 
 		courseContentService.deleteContent(
@@ -84,7 +82,6 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 	@Test
 	public void testlDeleteContentAndParts() throws Exception {
 
-	
 		Integer learningContentId = 6;
 
 		courseContentService.deleteContent(
@@ -105,8 +102,6 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 
 		List<LearningContent> contentList = courseContentService
 				.getLearningContent(rightsOwningMember.getMemberRoleId());
-
-	
 
 		Assert.assertTrue(contentList.size() > 0);
 
@@ -140,7 +135,7 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 				.getID());
 		compContent.setContentDescription("Trigonommetry Introduction");
 		compContent.setBaseLearningContent(content);
-		compContent.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+		compContent.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
 
 		Assert.assertNull(compContent);
 

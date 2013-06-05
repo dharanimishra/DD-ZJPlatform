@@ -39,7 +39,6 @@ public class CourseDefineTest extends BaseTest {
 	@Autowired
 	public CourseService courseService;
 
-	@Test
 	public void testSaveCourse() throws Exception {
 		System.out
 				.println("inside Test ****************************************");
@@ -70,7 +69,6 @@ public class CourseDefineTest extends BaseTest {
 
 	}
 
-	@Test
 	public void testBuildTreeData() throws Exception {
 
 		System.out
@@ -91,8 +89,8 @@ public class CourseDefineTest extends BaseTest {
 		course1.setCourseId(150);
 		course1.setAccountableMember(authoredMember);
 		course1.setName("DMS 001");
-		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCTION);
+		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
 		course1.setDescription("Discrete Mathematics3");
 		course1.setSecurityIndicator(true);
 		CourseContentSecurity courseSecurity = new CourseContentSecurity();
@@ -122,8 +120,8 @@ public class CourseDefineTest extends BaseTest {
 		course1.setAccountableMember(authoredMember);
 
 		course1.setName("DMS 001");
-		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCTION);
+		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
 		// course1.setDescription("Discrete Mathematics3");
 
 		/*
@@ -242,8 +240,8 @@ public class CourseDefineTest extends BaseTest {
 		course1.setCourseId(150);
 		course1.setAccountableMember(authoredMember);
 		// course1.setName("DMS 001");
-		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCTION);
+		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
 		course1.setDescription("Discrete Mathematics3");
 		/*
 		 * course1.setSecurityIndicator(true); CourseContentSecurity
