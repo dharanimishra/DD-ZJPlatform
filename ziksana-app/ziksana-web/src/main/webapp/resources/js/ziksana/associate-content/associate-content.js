@@ -2,6 +2,7 @@
 	itemsPerPage = 5;
 	defaultPageIndex = 1;
 	noOfPages = new Number(0);
+	
 
 	$(document).ready(function() {
 		//var abc = '${learningContentAsJSONString}';
@@ -20,7 +21,7 @@
 		//Uncomment following line it is only to test paginatio by setting it to 2 items per page
 		//itemsPerPage = 1;
 		//else it will default to 5
-		console.log("Items per page set to" + itemsPerPage);
+		//console.log("Items per page set to" + itemsPerPage);
 	}
 	
 	//var sessionKey = "repositoryContents";
@@ -45,7 +46,7 @@
 
 	function getLearningContentObject(learningContentId){
 		
-		console.log("in getLearningContentObject id is " + learningContentId);
+		//console.log("in getLearningContentObject id is " + learningContentId);
 		var jsonString = document.getElementById("learingContents").value;
 		var contentArray = jQuery.parseJSON( jsonString );
 		
@@ -62,7 +63,7 @@
 		var compId = $("#selectedLearningComponentId").val();
 		 
 		var childArrayString = tree.getSubItems('COMPONENT_' + compId );
-		console.log("contentArray.length" + contentArray.length + "  --------- childArrayString is " + childArrayString);
+		//console.log("contentArray.length" + contentArray.length + "  --------- childArrayString is " + childArrayString);
 		if(childArrayString && childArrayString.trim() != ""){
 			//var childArray = childArrayString.split(',');
 			var j =0;
@@ -70,9 +71,9 @@
 			for(var i=0; i < contentArray.length; i++){
 				var contentItem = contentArray[i];
 				var contentIdString = 'CONTENT_'+ contentItem.id;
-				console.log("childArrayString.indexOf(contentIdString) " + childArrayString.indexOf(contentIdString));
+				//console.log("childArrayString.indexOf(contentIdString) " + childArrayString.indexOf(contentIdString));
 				if(childArrayString.indexOf(contentIdString) == -1){
-					console.log("in side if contentIdString " + contentIdString);
+					//console.log("in side if contentIdString " + contentIdString);
 					unAssociatedContentArray[j] = contentItem;
 					j++;
 				}
@@ -90,7 +91,7 @@
 	}
 	
 	function getOtherLearningContents(contentType, inPageIndex){
-		//console.log("hkjhjkhjkhjkhkjhjhjhjkhkjhjkhjh");
+		////console.log("hkjhjkhjkhjkhkjhjhjhjkhkjhjkhjh");
 		forceToAssociateSelectedContent();
 		
 		if(!inPageIndex || "" == inPageIndex){
@@ -99,7 +100,7 @@
 		else{
 			pageIndex = inPageIndex;
 		}
-		console.log("In getOtherLearningContents pageIndex is " + pageIndex);
+		//console.log("In getOtherLearningContents pageIndex is " + pageIndex);
 
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
@@ -116,9 +117,9 @@
 			}
 		}
 		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayBasedOnContentType);
-		//console.log("contentArray.length " + contentArray.length);
+		////console.log("contentArray.length " + contentArray.length);
 		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
-		//console.log("noOfPages " + noOfPages + " itemsPerPage " + itemsPerPage);
+		////console.log("noOfPages " + noOfPages + " itemsPerPage " + itemsPerPage);
 		
 		if(unAssociatedContentArray.length ==0){
 			setNoContentFoundText(contentType);
@@ -128,13 +129,13 @@
 		}
 		
 		if(unAssociatedContentArray.length > itemsPerPage){
-			console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage " + itemsPerPage);
+			//console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage " + itemsPerPage);
 			getPageDiv(noOfPages, contentType, pageIndex);
 		}
 		else{
 			$('#pageNumbers').empty();
 		}
-		console.log("In else unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage " + itemsPerPage);
+		//console.log("In else unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage " + itemsPerPage);
 		
 		var divs = '';
 		if(pageIndex == 1){
@@ -144,7 +145,7 @@
 					break;
 				}
 			}
-			//console.log("othersssssssssssssss " + divs);
+			////console.log("othersssssssssssssss " + divs);
 		}
 		else{
 			for(var i=((pageIndex-1) * itemsPerPage);i<unAssociatedContentArray.length;i++){
@@ -181,13 +182,13 @@
 				j++;
 			}
 		}
-		console.log("contentArray.length " + contentArray.length);
-		console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length);
+		//console.log("contentArray.length " + contentArray.length);
+		//console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length);
 		
 		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayBasedOnContentType);
 
 		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
-		console.log("noOfPages " + noOfPages);
+		//console.log("noOfPages " + noOfPages);
 
 		if(unAssociatedContentArray.length ==0){
 			setNoContentFoundText(contentType);
@@ -220,7 +221,7 @@
 			}
 			
 		}		
-		//console.log("divs --->> " + divs);
+		////console.log("divs --->> " + divs);
 		$('#page1').html(divs);
 		$('#ContentPanel2').show();
 	}
@@ -235,12 +236,18 @@
 		
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
+		
+		//alert("jsonString " + jsonString); 
 		var contentArray = new Array();
-		contentArray =  jQuery.parseJSON( jsonString );
-		console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
+		//contentArray =  jQuery.parseJSON( jsonString );
+		//jsonString = escape(sessionStorage.getItem('contentList'));
+		//alert("thi sis a test " + jsonString);
+		contentArray =  jQuery.parseJSON(jsonString);
+
+		//console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
 
 		var unAssociatedContentArray = getUnAssociatedContentArray(contentArray);
-		console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage  " + itemsPerPage);
+		//console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage  " + itemsPerPage);
 
 		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
 		
@@ -260,7 +267,7 @@
 		}
 		
 		
-		console.log("noOfPages " + noOfPages);
+		//console.log("noOfPages " + noOfPages);
 		var divs = '';
 		
 		if(pageIndex == 1){
@@ -286,14 +293,14 @@
 
 	function getPreviewPath(learningContentObject){
 		var staticFileServerPath = $("#fileServerPath").val();
-		console.log("In associate content getPreviewPath" + staticFileServerPath);
+		//console.log("In associate content getPreviewPath" + staticFileServerPath);
 		var content_type = learningContentObject.contentType;
 		var previewPath = learningContentObject.screenshotPath;
-		console.log("In associate content screenshotPath for " + learningContentObject.contentName + " - " +previewPath);
+		//console.log("In associate content screenshotPath for " + learningContentObject.contentName + " - " +previewPath);
 		var imagePath = '';
 		if(previewPath && (previewPath != null || previewPath.trim() != "")){
 			imagePath =staticFileServerPath + previewPath;
-			console.log("In associate content in the if  for " + learningContentObject.contentName + " - " +previewPath);
+			//console.log("In associate content in the if  for " + learningContentObject.contentName + " - " +previewPath);
 		}
 		else{
 		
@@ -313,7 +320,7 @@
 			else if (content_type.toUpperCase() == 'LINK') {
 				imagePath = '../../../resources/images/preview/link.png';
 			}
-			console.log("In associate content finallly the imagePath is ------------>>>> " + imagePath);
+			//console.log("In associate content finallly the imagePath is ------------>>>> " + imagePath);
 		}
 		return imagePath;
 	}
@@ -321,7 +328,7 @@
 	function getDiv(learningContentObject){
 		
 			var staticFileServerPath = $("#staticFileServer").val();
-			//console.log("Hello the getPreviewPath(learningContentObject) " + getPreviewPath(learningContentObject) );
+			////console.log("Hello the getPreviewPath(learningContentObject) " + getPreviewPath(learningContentObject) );
 			var readMoreLink = "";
 			
 			if(learningContentObject.contentDescription && learningContentObject.contentDescription.length > 150){
@@ -431,7 +438,7 @@
 	}
 	
 	function getPageDiv(noOfPages, filterType, pageIndex){
-		console.log("In getPageDiv noOfPages " + noOfPages + " pageIndex " + pageIndex + " filterType " + filterType);
+		//console.log("In getPageDiv noOfPages " + noOfPages + " pageIndex " + pageIndex + " filterType " + filterType);
 		var pageDiv = $('#pageNumbers');
 		var functionName = '';
 		if("ALL" == filterType.toUpperCase()){
@@ -548,7 +555,7 @@
 		}
 */
 		$('#selectedLearningContentList').val(selectedContents); 
-		console.log("selectedContents " + selectedContents + " selected component id is " + compId);
+		//console.log("selectedContents " + selectedContents + " selected component id is " + compId);
 		if(selectedContents == "" || !selectedContents){
 			alert("No content selected. Please select content to be associated.");
 			return;
@@ -563,13 +570,13 @@
 			"learningContentsToBeAssociated" : selectedContents
 		};
 		
-		console.log("courseId " + courseId + " selectedContents " + selectedContents + " selected component id is " + compId);
+		//console.log("courseId " + courseId + " selectedContents " + selectedContents + " selected component id is " + compId);
 
-		console.log("parameters.length " + parameters.length);
-		console.log("uri " + uri );
+		//console.log("parameters.length " + parameters.length);
+		//console.log("uri " + uri );
 		
 		$.post(uri, parameters, function(data) {
-			console.log(data);
+			//console.log(data);
 			if (data.response == 'success') {
 				course_id = data.id;
 				window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
@@ -597,7 +604,7 @@
 		};
 		
 		$.post(uri, parameters, function(data) {
-			console.log(data);
+			//console.log(data);
 			if (data.response == 'success') {
 				course_id = data.id;
 				window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"

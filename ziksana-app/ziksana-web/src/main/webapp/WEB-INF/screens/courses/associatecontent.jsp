@@ -176,7 +176,7 @@
 		$("#Cmodulesubjectddl")
 				.change(
 						function(e) {
-							console.log("Inside subject change handler");
+							//console.log("Inside subject change handler");
 							uri = '/ziksana-web/zcourse/gettopic';
 							token = '';
 							request_type = 'GET';
@@ -385,16 +385,20 @@
 </div>
 <!--end of contentpanel-->
 
-<script>
-
-
-
+	<script>
+		//var abc = '${learningContentAsJSONString}';
+		//alert("abc " + abc);
+		//sessionStorage.setItem('contentList',  abc );
+		//alert("got the value " + sessionStorage.getItem('contentList'));
+		//var someText = sessionStorage.getItem('contentList');
+		//alert("test length is " + jQuery.parseJSON(someText).length);
+		// do not delete this right now storing in session but while getting back throws error because of special characters
    </script>
     
    <script>
  $(function(){
 	$('#splitbarV').click(function(){
-		console.log("hello");
+		//console.log("hello");
 		leftpane = $('#leftPane');
 		if(leftpane.hasClass('hidden')){
 			leftpane.removeClass('hidden').show();
