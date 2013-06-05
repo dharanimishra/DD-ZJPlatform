@@ -91,7 +91,7 @@
 
 			</div>
 		</a>
-
+<a href="/ziksana-web/zcourse/1/mycourse">
 		<div class="tile bg-color-blueDark">
 
 			<img class="tileimg"
@@ -101,7 +101,7 @@
 			</h3>
 
 		</div>
-
+</a>
 		<a href="/ziksana-web/zcourse/createcourse">
 			<div class="tile bg-color-blue">
 
