@@ -124,7 +124,7 @@
 			<div class="brand">
 				<h3 style="margin-left: 6px; font-size: 22px; width: 98%;">
 				
-					<fmt:message key="course.define" />
+					<fmt:message key="home.analytics" />
 				</h3>
 			</div>
 		</div>
