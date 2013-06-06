@@ -114,6 +114,30 @@ public class TroubleLoginController {
 		
 	}
 	
+	@RequestMapping(value = "/0/isaccountlocked/{username}", method = RequestMethod.GET)
+	public @ResponseBody String isAccountLocked(@PathVariable String username) {
+		String pageResponse = null;
+		try{
+			
+			int isUserAccountLocked = memberService.isMemberAccountLocked(username);
+				 if(isUserAccountLocked == 1){
+					 pageResponse = "Your account was already locked ,please contact <a href='#'>Administrator</a>";
+					 
+					
+				}else{
+					pageResponse = "SUCCESS";
+				}
+			
+			
+		}
+		catch(ZiksanaException zexception){
+	
+			LOGGER.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
+		return pageResponse;
+		
+	}
+	
 	
 	@RequestMapping(value = "/0/firstsecurityverfication/{userId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView securityFormFirstPage(@PathVariable String userId) {

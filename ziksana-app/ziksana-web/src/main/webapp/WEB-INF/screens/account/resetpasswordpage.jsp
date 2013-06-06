@@ -193,8 +193,7 @@
 	    
 	    </c:if>
      	<c:if test="${resetPassword == 'Reset Password Verification' }">
-     			<p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResponse"></p>
-     			<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordFailResponse"></p>
+     			
 			    <div class="resetpassword">
 			    <label style="display:none"; id="memberIdRef">${memberId}</label>
 			     <!--  <p class="reghead" style="margin-left:150px;">Select your Password </p> --> 
@@ -204,6 +203,8 @@
 			    <p style="text-align:center;margin-top:10px; color:#999;">
 <fmt:message key="restpass.passworddes"></fmt:message> 
 </p>
+<p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResponse"></p>
+     			<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordFailResponse"></p>
 <hr style="background-color:#f28920; margin-bottom:20px; width: 550px; margin-left: -0px;">
 			<div style="width:390px;text-align:left; margin-left:150px;"> 
 			 <div class="control-group">
@@ -345,11 +346,26 @@ function validateUserId(){
 					
 							$.ajax({
 							  	type: 'GET',
-								url: '/ziksana-web/unsecure/0/isprofilecompleted/'+forgotUserId,
+								url: '/ziksana-web/unsecure/0/isaccountlocked/'+forgotUserId,
 								success: function( data ) {
 									console.log(data);
 									if(data == 'SUCCESS'){										
-										window.location.href = "/ziksana-web/unsecure/0/firstsecurityverfication/"+forgotUserId+"";
+										
+										$.ajax({
+										  	type: 'GET',
+											url: '/ziksana-web/unsecure/0/isprofilecompleted/'+forgotUserId,
+											success: function( data ) {
+												console.log(data);
+												if(data == 'SUCCESS'){										
+													window.location.href = "/ziksana-web/unsecure/0/firstsecurityverfication/"+forgotUserId+"";
+												}else{
+													$('#errorUserIdResponse').html(data);
+												}
+											
+												
+											}
+										});
+																				
 									}else{
 										$('#errorUserIdResponse').html(data);
 									}
@@ -357,6 +373,9 @@ function validateUserId(){
 									
 								}
 							});
+					
+					
+							
 			
 				}
 			
@@ -372,7 +391,7 @@ function securityQuestionOne(){
 	securityAnswerOne = $('#txtsec1').val();
 	memberIdSQOne = $('#memberIdSQOne').text();
 	if(securityAnswerOne == ''){
-		$('#errorAnswerOneResponse').html("<fmt:message key="resetpass.field.required"/>");		
+		$('#errorAnswerOneResponse').html("Enter answer to the security question. If you don’t remember the answer, please contact <a href='#'> Administrator.</a>");		
 	}else {
 		if(("#errorAnswerOneResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
 			document.getElementById("errorAnswerOneResponse").innerHTML = '';
@@ -403,7 +422,7 @@ function securityQuestionTwo(){
 	console.log(securityAnswerTwo);
 	console.log(securityQuestionTwoText);
 	if(securityAnswerTwo == ''){
-		$('#errorAnswerTwoResponse').html("<fmt:message key="resetpass.field.required"/>");		
+		$('#errorAnswerTwoResponse').html("Enter answer to the security question. If you dont remember the answer, please contact <a href='#'> Administrator.</a>");		
 	}else {
 		if(("#errorAnswerTwoResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
 			document.getElementById("errorAnswerTwoResponse").innerHTML = '';
@@ -487,7 +506,7 @@ $(document).ready(function() {
 		$('#result').removeClass();
 		$('#result').addClass('weak');
 		$('#result').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/>  </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
-		return false;			
+		return true;			
 	} else if (strength == 2 ) {
 		$('#result').removeClass();
 		$('#result').addClass('good');
@@ -528,12 +547,8 @@ function checkpass()
 			        {
 			        	if(data == 'Password reset is successful'){
 			        		
-			        		confirm_alert = confirm(data);
-							if(confirm_alert == true){
-								window.location.href = "/ziksana-web/secure/logout";
-							}else{
-							
-							}
+			        		$('#passwordResponse').html("Password reset is successful, Please<a href='/ziksana-web/secure/logout'> Login.</a>")
+			        		
 						}else{
 							$('#passwordFailResponse').html(data);
 							

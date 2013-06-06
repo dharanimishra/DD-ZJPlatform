@@ -123,7 +123,8 @@
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 6px; font-size: 22px; width: 98%;">
-					<fmt:message key="home.analytics" />
+				
+					<fmt:message key="course.define" />
 				</h3>
 			</div>
 		</div>
@@ -255,7 +256,7 @@
 
 
 				<div class="eventfooter"
-					style="height: 31px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
+					style="height: 34px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
 					<p class="pull-right" style="color: #fff; font-size: 10px;">
 						<fmt:message key="home.manageevents"/> <a href="#linkurl"> <img
 							src="/ziksana-web/resources/images/icons/calendar.png"
@@ -310,7 +311,7 @@
 
 			</div>
 			<div class="Clearfix"></div>
-			<div style="width:100%;height:7px;">
+			<div id="announcementPaginationParent" style="width:100%;height:7px;">
 			<div id="announcementPagination" style="float: right;margin-bottom:5px"></div>
 			</div>
 			<div id="annaouncementFooter" class="eventfooter" style="height: 30px; width: 100%;float:left; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
@@ -324,7 +325,7 @@
 				style="position: absolute; width: 690px;">
 
 				<div class="eventheader"
-					style="height: 50px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -12px;">
+					style="height: 50px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -19px;">
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;"><fmt:message key="home.ToDosList"/>
@@ -346,7 +347,7 @@
 
 
 				<div class="eventfooter"
-					style="height: 30px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
+					style="height: 33px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
 
 					<p class="pull-right" style="color: #fff;">
 						<a style="cursor: pointer" class="managetodo"
@@ -377,7 +378,7 @@
 				style="position: absolute; width: 690px;">
 
 				<div class="eventheader"
-					style="height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -12px;">
+					style="height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -19px;">
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
@@ -386,7 +387,7 @@
 					<p class="pull-right" style="color: #fff;">
 						<a style="cursor: pointer"> <img
 							src="/ziksana-web/resources/images/content/plus.png"
-							style="height: 25px; margin-top: 10px;" title="Add To DO"
+							style="height: 25px;" title="Add To DO"
 							class="addtodobtn" id="sample_editable_1_new" /></a>
 					</p>
 
@@ -427,7 +428,7 @@
 
 
 				<div class="eventfooter"
-					style="height: 30px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
+					style="height: 33px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
 
 
 				</div>
