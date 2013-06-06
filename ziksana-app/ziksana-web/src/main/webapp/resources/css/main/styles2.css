@@ -2814,3 +2814,6 @@ font-size:12px !important;	color:#fff
 	width:100%;
   	background-color: #168EBE
 }
+
+.textAlignRight { text-align: right; }
+.textAlignLeft {text-align : left; }
