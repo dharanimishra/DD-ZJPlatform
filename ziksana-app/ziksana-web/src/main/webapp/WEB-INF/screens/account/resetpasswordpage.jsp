@@ -339,10 +339,10 @@ function validateUserId(){
 			url: '${userverfyUrl}'+forgotUserId,
 			success: function( data ) {
 				console.log(data);
-				if(data == '<fmt:message key="resetpass.useridincorrect"/>'){
-					$('#errorUserIdResponse').html(data);
+				if(data == 'User ID entered is incorrect.'){
+					$('#errorUserIdResponse').html('<fmt:message key="resetpass.useridincorrect"/>');
 				}
-				if(data == '<fmt:message key="resetpass.verfication"/>'){
+				if(data == 'UserId Verification Successful.'){
 					
 							$.ajax({
 							  	type: 'GET',
@@ -391,7 +391,7 @@ function securityQuestionOne(){
 	securityAnswerOne = $('#txtsec1').val();
 	memberIdSQOne = $('#memberIdSQOne').text();
 	if(securityAnswerOne == ''){
-		$('#errorAnswerOneResponse').html("Enter answer to the security question. If you don’t remember the answer, please contact <a href='#'> Administrator.</a>");		
+		$('#errorAnswerOneResponse').html("<fmt:message key="restpass.enterAns"/>");		
 	}else {
 		if(("#errorAnswerOneResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
 			document.getElementById("errorAnswerOneResponse").innerHTML = '';
@@ -403,7 +403,7 @@ function securityQuestionOne(){
 		        	if(data == 'SUCCESS'){
 		        		window.location.href = "/ziksana-web/unsecure/0/secondsecurityverfication/"+memberIdSQOne+"";
 					}else{
-						$('#errorAnswerOneResponse').html(data);
+						$('#errorAnswerOneResponse').html('<fmt:message key="security.answer.fail"/><a href="#"><fmt:message key="login.Administrator"/></a>');
 						
 					}
 		        }
@@ -422,7 +422,7 @@ function securityQuestionTwo(){
 	console.log(securityAnswerTwo);
 	console.log(securityQuestionTwoText);
 	if(securityAnswerTwo == ''){
-		$('#errorAnswerTwoResponse').html("Enter answer to the security question. If you dont remember the answer, please contact <a href='#'> Administrator.</a>");		
+		$('#errorAnswerTwoResponse').html("<fmt:message key="restpass.enterAns"/>");		
 	}else {
 		if(("#errorAnswerTwoResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
 			document.getElementById("errorAnswerTwoResponse").innerHTML = '';
@@ -435,7 +435,7 @@ function securityQuestionTwo(){
 		        		window.location.href = "/ziksana-web/unsecure/0/password/newpassword/"+memberIdSQTwo+"";
 		        		 
 					}else{
-						$('#errorAnswerTwoResponse').html(data);
+						$('#errorAnswerTwoResponse').html('<fmt:message key="security.answer.fail"/><a href="#"><fmt:message key="login.Administrator"/></a>');
 						
 					}
 		        }
@@ -526,11 +526,11 @@ function checkpass()
 	if(passwordStrength){
 		
 		if($('#retypePassword').val()==''){
-			$('#result1').html("Enter Confirm Password");
+			$('#result1').html("<fmt:message key="resetpass.confirm"/>");
 		}
 		
 		else if ($('#password').val()!=$('#retypePassword').val()){
-			$('#result1').html("Passwords do not match");
+			$('#result1').html("<fmt:message key="resetpass.pass.donot.match"/>");
 			
 		}else{
 			newPassword = $('#password').val();
@@ -545,9 +545,9 @@ function checkpass()
 			        , {'newPassword':newPassword,'confirmPassword':retypePassword,'memberId':memberIdRef}
 			        , function( data )
 			        {
-			        	if(data == 'Password reset is successful'){
+			        	if(data == '<fmt:message key="password.successfull"/>'){
 			        		
-			        		$('#passwordResponse').html("Password reset is successful, Please<a href='/ziksana-web/secure/logout'> Login.</a>")
+			        		$('#passwordResponse').html("<fmt:message key="password.successfull.please"/><a href='/ziksana-web/secure/logout'> <fmt:message key="login.button"/></a>")
 			        		
 						}else{
 							$('#passwordFailResponse').html(data);
@@ -560,7 +560,7 @@ function checkpass()
 		
 	}else{
 		if($('#password').val() == ''){
-		$('#result').html("Please Enter Password");
+		$('#result').html("<fmt:message key="resetpass.enterpass"/>");
 		}
 	}
 
@@ -581,7 +581,7 @@ function validateEmailId(){
 	
 	forgotEmailId = $('#frgtemailid').val();
 	if(forgotEmailId == ''){
-		$('#errorEmailResponse').html("Enter EmailId");		
+		$('#errorEmailResponse').html("<fmt:message key="enter.email"/>");		
 	}else {
 		if(("#errorEmailResponse.inside:contains('Enter EmailId')")){
 			document.getElementById("errorEmailResponse").innerHTML = '';
@@ -592,10 +592,10 @@ function validateEmailId(){
 		        , {'emailId':forgotEmailId}
 		        , function( data )
 		        {
-		        	if(data == 'Your User ID has been sent to your Email address'){
+		        	if(data == 'Success'){
 		        		
 		        		
-		        		confirm_alert = confirm(data);
+		        		confirm_alert = confirm('<fmt:message key="userid.sent.email"/>');
 						if(confirm_alert == true){
 							window.location.href = "/ziksana-web/secure/logout";
 						}else{
@@ -603,7 +603,7 @@ function validateEmailId(){
 						}
 		        		
 					}else{
-						$('#errorEmailResponse').html(data);
+						$('#errorEmailResponse').html('<fmt:message key="userid.email.error"/>');
 						
 					}
 		        }

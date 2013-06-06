@@ -183,7 +183,7 @@ public class TroubleLoginController {
 			if(response){
 				pageResponse = "SUCCESS";
 			}else{
-				pageResponse = "Answer to the security question is incorrect. If you don't remember the answer, please contact <a href='#'> Administrator.</a>";
+				pageResponse = "FAIL";
 			}
 		}
 		catch(ZiksanaException zexception){
@@ -204,7 +204,7 @@ public class TroubleLoginController {
 			if(response){
 				pageResponse = "SUCCESS";
 			}else{
-				pageResponse = "Answer to the security question is incorrect. If you don't remember the answer, please contact <a href='#'> Administrator.</a>";
+				pageResponse = "FAIL";
 			}
 		}
 		catch(ZiksanaException zexception){
@@ -237,10 +237,10 @@ public class TroubleLoginController {
 					emailSender.sendEmailText1(member);
 				    
 				
-				response="Your User ID has been sent to your Email address";	           
+				response="Success";	           
 			}
 			else{
-				response="This Email ID is not in our records";
+				response="Fail";
 				
 			}
 		}
