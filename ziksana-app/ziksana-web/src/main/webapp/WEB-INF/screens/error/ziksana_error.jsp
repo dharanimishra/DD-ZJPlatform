@@ -33,7 +33,7 @@
  </div></div>
 	<div class="frgtpassmiddle"  style="margin-bottom:0px">
  
-   <div class="registerdtls">	
+   <div class="registerdtls" style="text-align:center">	
 <h1>${errorMessage} </h1><br/>
 		<p><img src="/ziksana-web/resources/images/ziksana_error_page.png" width=408px height=272px> 
 			<div style=" margin: auto;text-align: center; font-weight:bold; font-family:inherit;">
