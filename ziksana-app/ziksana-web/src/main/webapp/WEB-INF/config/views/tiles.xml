@@ -237,7 +237,9 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/courses/enrichcontent.jsp" />
 	</definition>
-
+   <definition name="playbook-viewHtml" template="/WEB-INF/screens/playbook/htmlview.jsp">
+   
+   </definition>
 	<!-- Common Error Page -->
 	<definition name="error-page">
 		<put-attribute name="page_title" value="Error !!" />
