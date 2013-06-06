@@ -271,7 +271,7 @@
 					      
 					      <label  style="padding-top:-10px;"><fmt:message key="resetpass.emailid"/></label>
 					     
-					      <input placeholder="Enter your Email-Id" autocomplete="off" type="text" id="frgtemailid" tabindex="2" data-prompt-position="inline"/> 				     
+					      <input placeholder="<fmt:message key="restpass.EnterEmailID"/>" autocomplete="off" type="text" id="frgtemailid" tabindex="2" data-prompt-position="inline"/> 				     
 					      
 					 </div><!-- end of separate  -->   
 					    

@@ -398,24 +398,25 @@
 
 
 
-				<div class="eventcontent" style="height: 270px; width: 100%;">
+				<div class="eventcontent" style="height: 270px; width: 100%; overflow:auto;">
 
 
 					<div class="portlet-body">
-						<div id="add_todo_fields_container" style="display: none;height:50px !important;">
+						<div id="add_todo_fields_container" style="display: none;height: 40px; padding:5px;">
 							<select id="todo_categories"
-								style="margin-left: 100px; width: 150px;margin-top:5px;">
+								style="margin-left: 50px;height: 28px; width: 200px;float:left;">
 
 							</select> <span id="add_new_category_form"
-								style="display: none; margin-left: 100px;"> 
-								<input style="margin-top:8px; height:28px;width:150px;" id="todo_category_name" />
+								style="display:none; margin-left: 50px;float:left; width:200px; padding-bottom:2px;"> 
+								<input style=" height:28px;width:200px;" id="todo_category_name" />
 							</span> <input id="todo_description"
-								style="margin-left: 22px; width: 200px; height: 28px; margin-top:5px;">
+								style="margin-left: 22px; width: 200px; height: 28px;float:left; ">
 							<a onclick="addTodo()"
 								style="cursor: pointer; margin-left: 12px; color: white;"><fmt:message key="save"/></a><a
 								onclick="hideTodoAdd()"
 								style="cursor: pointer; margin-left: 40px; color: white;"><fmt:message key="profile.cancel"/> </a>
 						</div>
+						<div class="clearfix"></div>
 						<div id="todos_placeholder_more" class="eventcontent"></div>
 
 					</div>
@@ -494,13 +495,15 @@ color:#333;
 table tr th {
 	color: #fff;
 	font-size: 18px;
-	border: none !important;
+	 border: none !important; 
+	/* border:1px solid red; */
 }
 
 table tr td {
 	color: #fff;
 	font-size: 14px;
-	border: none !important;
+	 border: none !important; 
+	/* border:1px solid red; */
 }
 
 .hc-details {
