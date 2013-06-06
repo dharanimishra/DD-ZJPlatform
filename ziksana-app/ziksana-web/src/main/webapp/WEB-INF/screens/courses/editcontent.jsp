@@ -11,8 +11,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/editcontentjson.js"></script>
 
- 
-
+ 	 
  
 
 <div id="Zikbreadcrumbback" style="margin-left: 20px;"> <div
@@ -59,7 +58,7 @@
 	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
 	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
 	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
-		out.println("size:"+list.size());
+		//out.println("size:"+list.size());
 	 	for (LearningContent content : list) {
 	 		
 	 %> 
@@ -87,7 +86,7 @@
 												{'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 													'queueSizeLimit' : 1,
 													'successTimeout' : 350,
-													'buttonText' : 'Upload File',
+													'buttonText' : 'Upload Image',
 													'uploader' : '${ms.uploadScript}',
 													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx, *.pdf',
@@ -142,7 +141,7 @@
  <!--end of uploadphoto--> 
  <div class="rowfields pull-left"> <ul>
 	<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
-		<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" />
+		<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
 	</li> 
 	</ul> 
 	</div> 
@@ -175,8 +174,9 @@ Subject</option> </select>
 	}
 %>
 <div class="createcontentpanelhead" style="margin-top: 4px;"> 
-<a	href="/ziksana-web/zcourse/1/createcontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Add Content </a>
 	<a href="#linkurl" class="btn pull-right" style="margin-left: 10px;" type="button" onClick="$('form#editcontentform').submit();"> Save </a> 
+	<a	href="/ziksana-web/zcourse/1/createcontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous </a>
+	
 	<!--  <a href="#linkurl" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous</a> -->
 <div class="clearfix"></div> 
 </div> <!--end of panel head--> 
@@ -250,3 +250,4 @@ table tr td {
 .edit_content_info{background:#0099cc}
 .uploadify{left:0px!important}
 </style>
+ 
