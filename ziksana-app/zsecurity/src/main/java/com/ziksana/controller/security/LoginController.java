@@ -111,7 +111,7 @@ public class LoginController {
 										
 										// Need to create cookie
 										response.addCookie(newSessionCookie(request, member.getUserId()));
-										mv = new ModelAndView("redirect:/secure/1/homepage");
+										mv = new ModelAndView("welcome");
 										SecurityTokenUtil.unset();
 									} else {
 										// Need to create cookie
