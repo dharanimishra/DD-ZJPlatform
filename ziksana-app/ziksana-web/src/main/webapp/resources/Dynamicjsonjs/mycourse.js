@@ -3,7 +3,7 @@ defaultPageIndex = 1;
 noOfPages = new Number(0);
 
 $(document).ready(function() {
-	getAllLearningContents();
+	getAllCourse();
 });
 
 function getOtherLearningContents(contentType, pageIndex) {
@@ -105,7 +105,7 @@ function getLearningContentsByType(contentType, pageIndex) {
 	$('#container4').html(divs);
 }
 
-function getAllLearningContents(pageIndex) {
+function getAllCourse(pageIndex) {
 
 	if (!pageIndex || "" == pageIndex) {
 		pageIndex = defaultPageIndex;
@@ -113,10 +113,10 @@ function getAllLearningContents(pageIndex) {
 
 	$('#container4').empty();
 	var jsonString = document.getElementById("courses").value;
-	var contentArray = jQuery.parseJSON(jsonString);
-	console.log("contentArray.length " + contentArray.length
-			+ " itemsPerPage  " + itemsPerPage);
-	noOfPages = Math.ceil(contentArray.length / itemsPerPage);
+	var courseArray = jQuery.parseJSON(jsonString);
+	console.log("courseArray.length " + courseArray.length + " itemsPerPage  "
+			+ itemsPerPage);
+	noOfPages = Math.ceil(courseArray.length / itemsPerPage);
 
 	getPageDiv(noOfPages, "ALL");
 
@@ -124,15 +124,15 @@ function getAllLearningContents(pageIndex) {
 	var divs = '';
 
 	if (pageIndex == 1) {
-		for (i = 0; i < contentArray.length; i++) {
-			divs = divs + getDiv(contentArray[i]);
+		for (i = 0; i < courseArray.length; i++) {
+			divs = divs + getDiv(courseArray[i]);
 			if (i == (itemsPerPage - 1)) {
 				break;
 			}
 		}
 	} else {
-		for (i = ((pageIndex - 1) * itemsPerPage); i < contentArray.length; i++) {
-			divs = divs + getDiv(contentArray[i]);
+		for (i = ((pageIndex - 1) * itemsPerPage); i < courseArray.length; i++) {
+			divs = divs + getDiv(courseArray[i]);
 			if (i == ((itemsPerPage * pageIndex) - 1)) {
 				break;
 			}
@@ -142,105 +142,34 @@ function getAllLearningContents(pageIndex) {
 	$('#container4').html(divs);
 }
 
-function getDiv(learningContentObject) {
+function getDiv(courseObject) {
 
 	var viewer_url = '';
 	var preview_path = '';
 
 	var staticFileServerPath = $("#fileServerPath").val();
 	console.log("In my content getPreviewPath" + staticFileServerPath);
-	var content_type = learningContentObject.contentType.toUpperCase();
-	var screenshotPath = learningContentObject.screenshotPath;
+	//var courseStatus = courseObject.courseStatus.toUpperCase();
+	var screenshotPath = courseObject.thumbnailPicturePath;
 
-	if (content_type == 'VIDEO') {
-		viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
-				+ learningContentObject.id;
-		if (screenshotPath
-				&& (screenshotPath != null || screenshotPath.trim() != "")) {
-			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
-		} else {
-			preview_path = '../../resources/images/preview/video.png';
-		}
-	} else if (content_type == 'AUDIO') {
-		viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
-				+ learningContentObject.id;
-		if (screenshotPath
-				&& (screenshotPath != null || screenshotPath.trim() != "")) {
-			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
-		} else {
-			preview_path = '../../resources/images/preview/audio.png';
-		}
-	} else if (content_type == 'IMAGE') {
-		viewer_url = '/ziksana-web/zcourse/1/slides/'
-				+ learningContentObject.id;
-		if (screenshotPath
-				&& (screenshotPath != null || screenshotPath.trim() != "")) {
-			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
-		} else {
-			preview_path = '../../resources/images/preview/image.png';
-		}
-	} else if (content_type == 'DOC') {
-		viewer_url = '/ziksana-web/zcourse/1/slides/'
-				+ learningContentObject.id;
-		if (screenshotPath
-				&& (screenshotPath != null || screenshotPath.trim() != "")) {
-			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
-		} else {
-			preview_path = '../../resources/images/preview/doc.png';
-		}
-	} else if (content_type == 'PPT') {
-		viewer_url = '/ziksana-web/zcourse/1/slides/'
-				+ learningContentObject.id;
-		if (screenshotPath
-				&& (screenshotPath != null || screenshotPath.trim() != "")) {
-			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
-		} else {
-			preview_path = '../../resources/images/preview/ppt.jpg';
-		}
-	} else if (content_type == 'PDF') {
-		viewer_url = '/ziksana-web/zcourse/1/slides/'
-				+ learningContentObject.id;
-		if (screenshotPath
-				&& (screenshotPath != null || screenshotPath.trim() != "")) {
-			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
-		} else {
-			preview_path = '../../resources/images/preview/pdf.png';
-		}
-	} else if (content_type == 'LINK') {
-		viewer_url = learningContentObject.contentUrl;
-		if (screenshotPath
-				&& (screenshotPath != null || screenshotPath.trim() != "")) {
-			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
-		} else {
-			preview_path = '../../resources/images/preview/link.png';
-		}
+	if (screenshotPath
+			&& (screenshotPath != null || screenshotPath.trim() != "")) {
+		preview_path = staticFileServerPath + screenshotPath;
+	} else {
+		preview_path = '../../resources/images/preview/video.png';
 	}
 
 	var learningContentDiv = '<div id="createcontent-main" class="item All">'
 			+ '<p class="createcontenthead">'
-			+ learningContentObject.contentName
+			+ courseObject.name
 			+ '</p><p class="createcontentimg">'
 			+ '<img src="'
 			+ preview_path
 			+ '" />'
 			+ '</p>'
 			+ '<div class="description">'
-			+ '<a onclick="deleteContent('
-			+ learningContentObject.id
+			+ '<a onclick="deleteCourse('
+			+ courseObject.id
 			+ ');" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.png"style="height: 35px;" /></a> <a href="'
 			+ viewer_url
 			+ '"  class="show_in_fancybox pull-right" data-fancybox-type="iframe"><img src="../../resources/images/content/view-content.png" style="height: 35px;" /></a>'
@@ -254,12 +183,12 @@ function getPageDiv(noOfPages, filterType) {
 	var pageDiv = $('#pageNumbers');
 	var functionName = '';
 	if ("ALL" == filterType) {
-		functionName = 'getAllLearningContents(';
-	} else if ("VIDEO" == filterType || "LINK" == filterType) {
-		functionName = 'getLearningContentsByType(\'' + filterType + '\',';
+		functionName = 'getAllCourse(';
+	} else if ("ACTIVE" == filterType || "DRAFT" == filterType) {
+		functionName = 'getActiveCourse(\'' + filterType + '\',';
 	}
-	if ("OTHERS" == filterType) {
-		functionName = 'getOtherLearningContents(\'' + filterType + '\',';
+	if ("REVIEW" == filterType) {
+		functionName = 'getReviewCourse(\'' + filterType + '\',';
 	}
 
 	pageDiv.empty();
@@ -272,7 +201,7 @@ function getPageDiv(noOfPages, filterType) {
 	}
 }
 
-function deleteContent(content_id) {
+function deleteCourse(course_id) {
 
 	// Checking for Content Association
 
@@ -288,7 +217,7 @@ function deleteContent(content_id) {
 						console.log(data);
 						if (data.response == 'active') {
 							confirm_delete = confirm('This content is associated with a course. Please delink the content with the course to proceed with Delete');
-							if (confirm_delete == true) {			
+							if (confirm_delete == true) {
 								window.location.href = "/ziksana-web/zcourse/1/mycontent";
 							}
 						} else {
