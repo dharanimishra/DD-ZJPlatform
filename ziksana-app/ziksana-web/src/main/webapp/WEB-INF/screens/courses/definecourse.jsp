@@ -352,7 +352,7 @@ function inputLimiter(e,allow) {
 											</textarea> -->
 					<br />
 					<div class="_richTextShow">
-						<textarea id="Cdescriptionrte" name="editor1pageload" placeholder="<fmt:message key="course.descrip.placeholder"/>"
+						<textarea id="Cdescriptionrte" name="editor1pageload" placeholder='<fmt:message key="course.descrip.placeholder"/>'
 							class="defaultvalue _focus"></textarea>
 					</div>
 					<script type="text/javascript">
@@ -386,25 +386,14 @@ function inputLimiter(e,allow) {
 					</select><select name="s_example" class="select" id="Ctopicddl">
 						<option value="0"><fmt:message key="course.choose.option"/></option>
 					</select>
-					<!-- <select name="Careaddl" id="Careaddl"
-											class="defaultvalue labelclass" onclick="getArea();">
-											<option value="0">choose a option...</option>
-										</select> -->
-					<!-- <select name="Csubjectddl" id="Csubjectddl"
-											class="defaultvalue labelclass">
-											<option value="0">choose a option...</option>
-										</select> <select name="Ctopicddl" id="Ctopicddl"
-											class="defaultvalue labelclass">
-											<option value="0">choose a option...</option>
-										</select> -->
 				</div>
 				<!-- end of moduleselection--->
 
 			</div>
 			<!--end of Subject Selection-->
 			<div class="control-group" style="width: 65%">
-				<label class="control-label nexaf" for="Specify Tags" style="width:229px">Specify
-					Tags :</label>
+				<label class="control-label nexaf" for="Specify Tags" style="width:229px"><fmt:message key="course.SpecifyTags"/>
+					</label>
 				<div class="controls" style="margin-left:229px">
 					<input type="text" class="tags" id="Ctagfield_course"
 						value="" />
@@ -412,7 +401,7 @@ function inputLimiter(e,allow) {
 			</div>
 			<div class="control-group f-l">
 				<label class="control-label nexaf" for="Course Credits"
-					style="width: 230px;">Specify Course Credits :</label>
+					style="width: 230px;"><fmt:message key="specify.courseCredits"/></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner" value="0" 
 						style="width: 50px;" maxlength="2" onkeypress="return inputLimiter(event,'Numbers')" />
@@ -420,8 +409,7 @@ function inputLimiter(e,allow) {
 			</div>
 			<div class="control-group f-l">
 				<label class="control-label nexaf" for="Course Credits"
-					style="margin-left: 88px; width: 220px;">Specify Course
-					Extra Credits :</label>
+					style="margin-left: 88px; width: 220px;"><fmt:message key="specify.courseCreditsExtra"/></label>
 				<div class="controls" style="width: 212px;">
 					<input type="text" name="spi" id="spinner2" value="0" 
 						style="width: 50px;"  maxlength="2" onkeypress="return inputLimiter(event,'Numbers')"/>
@@ -429,8 +417,7 @@ function inputLimiter(e,allow) {
 			</div>
 			<div class="clearfix"></div>
 			<div class="control-group f-l">
-				<label class="control-label nexaf" for="input" style="width: 230px;">Specify
-					Course Duration :</label>
+				<label class="control-label nexaf" for="input" style="width: 230px;"><fmt:message key="Specify.CourseDuration"/></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner3"  value="0"
 						style="width: 50px;" maxlength="2" onkeypress="return inputLimiter(event,'Numbers')" />
@@ -441,60 +428,16 @@ function inputLimiter(e,allow) {
 			<select name="SelectArea" id="Cdurationtype" class="defaultvalue f-l"
 				style="margin-left: 20px;width:110px">
 				<option value="1">Weeks</option>
-				<option value="2"></option>
-				<option value="3"></option>
+				
 			</select>
 			<div class="clearfix"></div>
-			<!--  <div class="control-group">
-									<label class="control-label nexaf" for="Asscoiate Content"
-										style="width: 230px;"> Associate an Image for the
-										Course :</label>
-									<div class="controls">
-										<div class="fileupload fileupload-new"
-											data-provides="fileupload">
-											<div class="fileupload-new thumbnail"
-												style="width: 50px; height: 50px;">
-												<img src="http://www.placehold.it/50x50/EFEFEF/AAAAAA" />
-											</div>
-											<div class="fileupload-preview fileupload-exists thumbnail"
-												style="width: 70px; height: 50px;"></div>
-											<span class="btn btn-file"><span
-												class="fileupload-new">Upload image</span><span
-												class="fileupload-exists">Change</span> <input type="file"
-												name="thumbnail_image_file_upload"
-												id="thumbnail_image_file_upload" /></span> <a href="#"
-												class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-										</div>
-										<div id="status"></div>
-									</div>
-								</div> -->
-
-			<!-- <div class="control-group">
-				<label class="control-label nexaf" for="Asscoiate Content"
-					style="width: 230px;"> Associate an Image for the Course :</label>
-				<div class="controls">
-					<div class="fileupload fileupload-new" data-provides="fileupload">
-						<div class="fileupload-new thumbnail"
-							style="width: 50px; height: 50px;">
-							<img src="http://www.placehold.it/50x50/EFEFEF/AAAAAA" />
-						</div>
-						<div class="fileupload-preview fileupload-exists thumbnail"
-							style="width: 70px; height: 50px;"></div>
-						<span class="btn btn-file"><span class="fileupload-new">Upload
-								image</span><span class="fileupload-exists">Change</span><input
-							type="file" /></span> <a href="#" class="btn fileupload-exists"
-							data-dismiss="fileupload">Remove</a>
-					</div>
-				</div>
-
-			</div> -->
+			
 			<div style="margin-top: 0px;">
-				<label style="width: 260px;" for="input" class="control-label nexaf">Associate
-					an Image for your Course :</label>
+				<label style="width: 260px;" for="input" class="control-label nexaf"><fmt:message key="Associate.Image"/></label>
 
 				<div style="width: 122px; height: 105px; float: left;padding-top:15px">
 					<img id="course_thumbnail_image"
-						src="http://www.placehold.it/100x100/EFEFEF/AAAAAA"
+						src="${staticFileServer}resources/images/preview/defaultcourse.png"
 						align="left" /> <input readonly="readonly" type="hidden"
 						id="Cimageupl" style="margin-left: 20px;" />
 				</div>
@@ -571,7 +514,7 @@ function inputLimiter(e,allow) {
 				</script>
 			</div>
 			<button class="btn f-r" type="button"
-				onClick="createCourse();return false;">Save and Continue</button>
+				onClick="createCourse();return false;"><fmt:message key="btn.save.continue"/></button>
 			<div class="clearfix"></div>
 		</form>
 	</div>
