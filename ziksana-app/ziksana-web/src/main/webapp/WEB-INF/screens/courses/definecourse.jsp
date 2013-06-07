@@ -352,10 +352,8 @@ function inputLimiter(e,allow) {
 											</textarea> -->
 					<br />
 					<div class="_richTextShow">
-						<textarea id="Cdescriptionrte" name="editor1pageload"
-							class="defaultvalue _focus">
-													<b><fmt:message key="course.descrip.placeholder"/></b>
-												</textarea>
+						<textarea id="Cdescriptionrte" name="editor1pageload" placeholder="<fmt:message key="course.descrip.placeholder"/>"
+							class="defaultvalue _focus"></textarea>
 					</div>
 					<script type="text/javascript">
 						CKEDITOR.replace('Cdescriptionrte');
@@ -567,7 +565,7 @@ function inputLimiter(e,allow) {
 						$('#thubmnail_upload_message').html('');
 						$('#course_thumbnail_image')
 								.attr('src',
-										'${staticFileServer}resources/images/default-course.jpg');
+										'${staticFileServer}resources/images/preview/defaultcourse.png');
 
 					}
 				</script>

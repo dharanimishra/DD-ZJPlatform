@@ -156,13 +156,13 @@
 	 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
 	
 	<select
-	class="Careaddl select" name="content_area[]"> <option>Specify Subject</option>
+	class="Careaddl select" name="content_area[]"> <option>Specify Area</option>
 </select> <br> 
 <select class="select Csubjectddl" name="content_subject[]"> <option>Specify
 Subject</option> </select> 
 
 <select class="select Ctopicddl" name="content_topic[]" > <option>Specify
-Subject</option> </select>
+Topic</option> </select>
 
 </div> </div> <!--end of continaer--> <div class="clearfix"></div> 
 

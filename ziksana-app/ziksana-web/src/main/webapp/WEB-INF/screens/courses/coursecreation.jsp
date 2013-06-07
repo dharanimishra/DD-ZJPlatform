@@ -312,7 +312,7 @@
 									<input id="Addmoduletag" type="text" class="tags" value="" />
 								</div>
 							</div>
-							<button class="btn f-r" type="button" style="margin-right: 10px;">Cancel</button>
+							<button class="btn f-r" type="button" onClick="getCancel();return false;" style="margin-right: 10px;">Cancel</button>
 							<button class="btn f-r" type="button"
 								onClick="getaddmodulesave();return false;"
 								style="margin-right: 20px;">Submit</button>

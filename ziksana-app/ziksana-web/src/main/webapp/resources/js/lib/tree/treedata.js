@@ -290,7 +290,7 @@ function createtree(course_id) {
 		if (node_type == "COURSE") {
 			menu.showItem('Add_Module');
 			menu.hideItem('Delete');
-			menu.showItem('CourseEdit');
+			menu.hideItem('CourseEdit');
 			menu.hideItem('ModuleEdit');
 		}
 
