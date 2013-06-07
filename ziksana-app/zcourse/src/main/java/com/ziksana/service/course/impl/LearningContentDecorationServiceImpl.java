@@ -31,21 +31,19 @@ public class LearningContentDecorationServiceImpl implements
 	/* (non-Javadoc)
 	 * @see com.ziksana.service.course.LearningContentDecorationService#saveLearningContentDecoration(com.ziksana.domain.course.LearningContentDecoration)
 	 */
-	public LearningContentDecoration saveLearningContentDecoration(
+	public void saveLearningContentDecoration(
 			LearningContentDecoration learningContentDecoration) {
-		LearningContentDecoration learningContentDecorationSaved = learningContentDecorationMapper.saveContentDecoration(learningContentDecoration);
-		LOGGER.debug("LearningContentDecorationServiceImpl.saveLearningContentDecoration() saved the learning content decoration " + learningContentDecorationSaved);
-		return learningContentDecorationSaved;
+		learningContentDecorationMapper.saveContentDecoration(learningContentDecoration);
+		LOGGER.debug("LearningContentDecorationServiceImpl.saveLearningContentDecoration() saved the learning content decoration " );
 	}
 
 	/* (non-Javadoc)
 	 * @see com.ziksana.service.course.LearningContentDecorationService#updateLearningContentDecoration(com.ziksana.domain.course.LearningContentDecoration)
 	 */
-	public LearningContentDecoration updateLearningContentDecoration(
+	public void updateLearningContentDecoration(
 			LearningContentDecoration learningContentDecoration) {
-		LearningContentDecoration learningContentDecorationUpdated = learningContentDecorationMapper.updateContentDecoration(learningContentDecoration);
+		learningContentDecorationMapper.updateContentDecoration(learningContentDecoration);
 		LOGGER.debug("LearningContentDecorationServiceImpl.updateContentDecoration() update the learningContentDecoration = " + learningContentDecoration);
-		return learningContentDecorationUpdated;
 	}
 
 	/* (non-Javadoc)
@@ -53,7 +51,7 @@ public class LearningContentDecorationServiceImpl implements
 	 */
 	public LearningContentDecoration getLearningContentDecoration(
 			Integer learningContentDecorationId) {
-		LearningContentDecoration learningContentDecoration = learningContentDecorationMapper.getLearningContentDecoration(learningContentDecorationId);  
+		LearningContentDecoration learningContentDecoration = learningContentDecorationMapper.findById(learningContentDecorationId);  
 		LOGGER.debug("LearningContentDecorationServiceImpl.getLearningContentDecoration() got the learningContentDecoration = " + learningContentDecoration);
 		return learningContentDecoration;
 	}
@@ -61,12 +59,11 @@ public class LearningContentDecorationServiceImpl implements
 	/* (non-Javadoc)
 	 * @see com.ziksana.service.course.LearningContentDecorationService#markLearningContentDecorationAsDeleted(com.ziksana.domain.course.LearningContentDecoration)
 	 */
-	public LearningContentDecoration markLearningContentDecorationAsDeleted(
+	public void markLearningContentDecorationAsDeleted(
 			LearningContentDecoration learningContentDecoration) {
 		learningContentDecoration.setDelete(true);
-		LearningContentDecoration learningContentDecorationDeleted = updateLearningContentDecoration(learningContentDecoration);
+		updateLearningContentDecoration(learningContentDecoration);
 		LOGGER.debug("LearningContentDecorationServiceImpl.markLearningContentDecorationAsDeleted() marked the learningContentDecoration as deleted = " + learningContentDecoration);
-		return learningContentDecorationDeleted;
 	}
 
 	

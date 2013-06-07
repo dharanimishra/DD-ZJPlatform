@@ -33,15 +33,14 @@ public class AnnotateContentServiceTest extends BaseTest {
 	private LearningContentDecorationService  learningContentDecorationService;
 	
 	
-	private LearningContentDecoration learningContentDecoration;
+	private Integer learningContentDecorationId = 15;
 	
-	@Test
 	public void testAll(){
 		try {
-			testSaveLearningContentDecoration();
+			//testSaveLearningContentDecoration();
 			//testUpadateLearningContentDecoration();
 			//testMarkAsDeletedLearningContentDecoration();
-			//testGetLearningContentDecoration(learningContentDecoration.getId());
+			//testGetLearningContentDecoration(learningContentDecorationId);
 			LOGGER.debug("AnnotateContentServiceTest.testAll() all tests passed ");
 		} catch (Exception e) {
 			LOGGER.error("AnnotateContentServiceTest.testAll() test failed " + e.getMessage());
@@ -51,18 +50,21 @@ public class AnnotateContentServiceTest extends BaseTest {
 	
 	public void testSaveLearningContentDecoration(){
 		
-		learningContentDecoration = learningContentDecorationService.saveLearningContentDecoration(getLearningContentDecoration());
+		learningContentDecorationService.saveLearningContentDecoration(getLearningContentDecoration());
 		LOGGER.debug("AnnotateContentServiceTest.testSaveLearningContentDecoration() test passed");
 	}
 	
 	
 	public void testUpadateLearningContentDecoration(){
 		
+		LearningContentDecoration learningContentDecoration = learningContentDecorationService.getLearningContentDecoration(learningContentDecorationId);
+		learningContentDecoration.setDescription("Arvind");
 		learningContentDecorationService.updateLearningContentDecoration(learningContentDecoration);
 		LOGGER.debug("AnnotateContentServiceTest.testUpadateLearningContentDecoration() test passed");
 		
 	}
 	public void testMarkAsDeletedLearningContentDecoration(){
+		LearningContentDecoration learningContentDecoration = learningContentDecorationService.getLearningContentDecoration(learningContentDecorationId);
 		learningContentDecorationService.markLearningContentDecorationAsDeleted(learningContentDecoration);
 		LOGGER.debug("AnnotateContentServiceTest.testMarkAsDeletedLearningContentDecoration() passed");
 	}
@@ -77,6 +79,7 @@ public class AnnotateContentServiceTest extends BaseTest {
 		learningContentDecoration.setAuthoringMemberRoleId(207);
 		learningContentDecoration.setContentDecorationType(ContentDecorationType.ANNOTATED);
 		learningContentDecoration.setContentDecorationTypeId(ContentDecorationType.ANNOTATED.getId());
+		//System.out.println(ContentDecorationType.ANNOTATED.getName());
 		learningContentDecoration.setCreatedBy("Test case");
 		learningContentDecoration.setCreationDate(new Date());
 		learningContentDecoration.setDelete(false);

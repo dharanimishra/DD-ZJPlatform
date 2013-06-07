@@ -12,11 +12,11 @@ import com.ziksana.domain.course.LearningContentDecoration;
 public interface LearningContentDecorationService {
 	
 	
-	public LearningContentDecoration saveLearningContentDecoration(LearningContentDecoration learningContentDecoration);
+	public void saveLearningContentDecoration(LearningContentDecoration learningContentDecoration);
 	
-	public LearningContentDecoration updateLearningContentDecoration(LearningContentDecoration learningContentDecoration);
+	public void updateLearningContentDecoration(LearningContentDecoration learningContentDecoration);
 	
-	public LearningContentDecoration markLearningContentDecorationAsDeleted(LearningContentDecoration learningContentDecoration);
+	public void markLearningContentDecorationAsDeleted(LearningContentDecoration learningContentDecoration);
 
 	public LearningContentDecoration getLearningContentDecoration(Integer learningContentDecorationId);
 	

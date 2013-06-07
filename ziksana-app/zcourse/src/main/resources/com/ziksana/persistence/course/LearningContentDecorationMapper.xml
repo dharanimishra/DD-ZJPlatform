@@ -96,65 +96,39 @@
 				#{isDelete,jdbcType=BOOLEAN},
 			</if>
 		</trim>
-		<selectKey keyProperty="id" resultType="int"
-			order="AFTER">
-			SELECT LAST_INSERT_ID();
-		</selectKey>
 	</insert>
 
-<!-- 
-	<update id="updateContent" parameterType="com.ziksana.domain.course.LearningContent">
-		update corlearningcontent
+	<insert id="updateContentDecoration" parameterType="com.ziksana.domain.course.LearningContentDecoration"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
+		update corlearningcontentdecoration 
 		<set>
-			<if test="contentType !=null">
-				contenttype = #{contentTypeId,jdbcType=INTEGER},
+			<if test="active !=null">
+				active = #{active,jdbcType=BOOLEAN},
 			</if>
-			<if test="contentPath !=null">
-				contentpath = #{contentPath,jdbcType=VARCHAR},
+			<if test="contentDecorationTypeId !=null">
+				contentDecorationType = #{contentDecorationTypeId,jdbcType=INTEGER},
 			</if>
-			<if test="contentFormat !=null">
-				contentformat = #{contentFormatId,jdbcType=INTEGER},
+			<if test="version !=null">
+				version = #{version,jdbcType=INTEGER},
 			</if>
-			<if test="status !=null">
-				status = #{statusId,jdbcType=INTEGER},
+			<if test="description !=null">
+				description = #{description,jdbcType=VARCHAR},
 			</if>
-			<if test="contentName !=null">
-				contentname = #{contentName,jdbcType=VARCHAR},
+			<if test="rightsOwningMember !=null">
+				rightsowningmemberroleid = #{rightsOwningMember.memberRoleId,jdbcType=INTEGER},
 			</if>
-			<if test="contentDescription !=null">
-				contentdescription =
-				#{contentDescription,jdbcType=VARCHAR},
+			<if test="authoringMember !=null">
+				authoringmemberroleid = #{authoringMember.memberRoleId,jdbcType=INTEGER},
 			</if>
-			<if test="thumbnailPicturePath !=null">
-				thumbnailpicturepath =
-				#{thumbnailPicturePath,jdbcType=VARCHAR},
+			<if test="subjClassificationId !=null">
+				subjclassificationid = #{subjClassificationId,jdbcType=INTEGER},
 			</if>
-			<if test="subjClassificationId!=null">
-				subjclassificationid=
-				#{subjClassificationId,jdbcType=INTEGER},
-			</if>
-			<if test="screenshotPath!=null">
-				screenshotPath=
-				#{screenshotPath,jdbcType=VARCHAR},
+			<if test="isDelete !=null">
+				isdelete = #{isDelete,jdbcType=BOOLEAN}
 			</if>
 		</set>
-		where ID = #{learningContentId.storageID,
+		where ID = #{learningContentDecorationtId.storageID,
 		jdbcType=INTEGER}
-	</update>
-
-	<insert id="insertLearningContent" parameterType="java.util.List">
-		INSERT INTO my_table
-		(ID_ITEM,
-		ATT1,
-		ATT2)
-		VALUES
-		<foreach collection="list" item="item" index="index" open="("
-			close=")" separator=",">
-			#{item.idItem, jdbcType=BIGINT},
-			#{item.att1,
-			jdbcType=INTEGER},
-			#{item.att2, jdbcType=STRING}
-		</foreach>
 	</insert>
- -->
+
 </mapper>
