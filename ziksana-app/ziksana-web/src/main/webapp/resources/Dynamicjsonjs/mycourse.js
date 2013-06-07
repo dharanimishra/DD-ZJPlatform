@@ -149,19 +149,19 @@ function getDiv(courseObject) {
 
 	var staticFileServerPath = $("#fileServerPath").val();
 	console.log("In my content getPreviewPath" + staticFileServerPath);
-	//var courseStatus = courseObject.courseStatus.toUpperCase();
+	// var courseStatus = courseObject.courseStatus.toUpperCase();
 	var screenshotPath = courseObject.thumbnailPicturePath;
 
 	if (screenshotPath
 			&& (screenshotPath != null || screenshotPath.trim() != "")) {
 		preview_path = staticFileServerPath + screenshotPath;
 	} else {
-		preview_path = '../../resources/images/preview/video.png';
+		preview_path = '../../resources/images/preview/defaultcourse.png';
 	}
 
 	var learningContentDiv = '<div id="createcontent-main" class="item All">'
 			+ '<p class="createcontenthead">'
-			+ courseObject.name
+			+ courseObject.courseName
 			+ '</p><p class="createcontentimg">'
 			+ '<img src="'
 			+ preview_path

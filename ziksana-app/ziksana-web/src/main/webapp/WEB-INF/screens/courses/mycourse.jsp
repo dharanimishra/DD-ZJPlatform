@@ -156,17 +156,13 @@
 	<hr>
 	<div class="announcementswrapper" style="margin-left: 50px;">
 		<form>
-			<input type="hidden" id="courses"
-				value='${courseAsJSONString}' /> <input type="hidden"
-				id="fileServerPath" value='${ms.uploadContent}' />
-			<!-- <div id="container4" class="createcontent-mainwrapper isotopbody"> -->
-
+			<input type="hidden" id="courses" value='${courseAsJSONString}' /> <input
+				type="hidden" id="fileServerPath" value='${ms.uploadContent}' />
+			<div id="container4" class="createcontent-mainwrapper isotopbody">
 				<div id="createcontent-main" class="item All Review">
-
 					<p class="createcontenthead">Science</p>
 					<p class="createcontentimg">
-						<img
-							src="${staticFileServer}resources/images/genetics.jpg" />
+						<img src="${staticFileServer}resources/images/genetics.jpg" />
 					</p>
 					<div class="description">
 
@@ -180,7 +176,7 @@
 					<div class="Clearfix"></div>
 
 				</div>
-			<!-- </div> -->
+			</div>
 			<div class="Clearfix"></div>
 			<div id="pageNumbers" class="paginationbutton f-r"
 				style="padding: 10px;"></div>
@@ -205,7 +201,7 @@
 
 <script
 	src="${staticFileServer}resources/js/custom/bootstrap/js/bootstrap.min.js"></script>
-<script src="${staticFileServer}resources/js/custom/table/js/app.js"></script>
+<%-- <script src="${staticFileServer}resources/js/custom/table/js/app.js"></script> --%>
 <script>
 	jQuery(document).ready(function() {
 		// initiate layout and plugins
