@@ -135,7 +135,7 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 				.getID());
 		compContent.setContentDescription("Trigonommetry Introduction");
 		compContent.setBaseLearningContent(content);
-		compContent.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
+		//compContent.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
 
 		Assert.assertNull(compContent);
 
