@@ -412,8 +412,8 @@
      						<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetFailResponse"></p>
 						  <label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
 						 <div class="controls"> <label class="nexaf"><fmt:message key="Current"></fmt:message> :</label><input type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="<fmt:message key="Enter.cur.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
-						   <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorNewPassword"></div>
-						    <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /></div><div style="color: red;" id="errorRetypePassword"></div><div class="clearfix"></div>
+						   <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red; margin-top:3px;" id="errorNewPassword"></div>
+						    <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /><div style="color: red;" id="errorRetypePassword"></div></div><div class="clearfix"></div>
 						   <div style="margin-top:6px;">
 						   
 					  		<button class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
@@ -880,7 +880,7 @@ function checkpass()
 		}
 		
 		else if ($('#newPassword').val()!=$('#retypePassword').val()){
-			$('#errorRetypePassword').html("<fmt:message key="resetpass.pass.do.match"/>");
+			$('#errorRetypePassword').html('<fmt:message key="resetpass.pass.donot.match"/>');
 			
 			
 		}else{
