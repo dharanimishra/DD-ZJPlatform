@@ -170,13 +170,13 @@ function getDiv(courseObject) {
 			+ '<div class="description">'
 			+ '<a onclick="deleteCourse('
 			+ courseObject.id
-			+ ');" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg" style="height: 35px;" /></a> <a href="'
+			+ ');" title="Delete" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg" style="height: 35px;" /></a> <a href="'
 			+ viewer_url
-			+ '"  class="show_in_fancybox pull-right" data-fancybox-type="iframe"><img src="../../resources/images/content/edit.svg" style="height: 35px;" /></a>'
+			+ '"  class="show_in_fancybox pull-right"  title="Edit" data-fancybox-type="iframe"><img src="../../resources/images/content/edit.svg" style="height: 35px;" /></a>'
 			
-			+'<a href="#linkurl" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>'
+			+'<a href="#linkurl"  title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>'
 
-			+'<a href="#linkurl" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
+			+'<a href="#linkurl" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
 			+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
 
 	return learningContentDiv;
