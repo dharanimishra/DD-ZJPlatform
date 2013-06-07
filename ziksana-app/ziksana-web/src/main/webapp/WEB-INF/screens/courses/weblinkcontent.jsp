@@ -194,7 +194,7 @@ table tr td {
 						<div class="clearfix"></div>
 						<div class="editslide pull-left">
 							<textarea rows="4" cols="12" name="contentDescription" 
-								style="width: 374px; margin-bottom: 10px; margin-left: 10px;">Details for the Web link </textarea>
+								style="width: 374px; margin-bottom: 10px; margin-left: 10px;" placeholder="Details for the Web link"></textarea>
 						</div>
 						<div class="editslide pull-left" style="margin-left: 5px;">
 							<input type="text" placeholder="Specify Tags" name="contentTag"

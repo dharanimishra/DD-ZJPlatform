@@ -150,7 +150,7 @@
 <div class="editslideup1"> 
 	<div class="editslide pull-left"> 
 	<textarea rows="4" cols="12"
-	style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]">Details for the upload image </textarea>
+	style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" placeholder="Details for the upload image"></textarea>
 	</div> 
 	<div class="editslide pull-left" style="margin-left: 5px;">
 	 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
