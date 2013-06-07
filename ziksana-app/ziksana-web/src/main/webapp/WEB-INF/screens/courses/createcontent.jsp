@@ -322,4 +322,7 @@ a.remove_this:hover {
 	cursor: pointer !important;
 	width: 230px !important;
 }
+#message{color: green;
+    margin-top: -25px;
+    padding-left: 35px;}
 </style>
