@@ -336,7 +336,8 @@ function inputLimiter(e,allow) {
 							class="defaultvaluem treeRoot validate[required]"
 							id="defaultvalue" maxlength="64"
 							style="width: 240px; margin-left: 10px; color: #666;"
-							tabindex="1" placeholder="<fmt:message key="course.enter.name"/>" />
+							tabindex="1" placeholder="<fmt:message key="course.enter.name"/>" onchange="return trim(this)"
+							/>
 					</div>
 
 					<br /> <label for="Course Description" class="nexaf"><fmt:message key="course.description"/></label>
@@ -560,3 +561,12 @@ function inputLimiter(e,allow) {
 }
 
 </style>
+<script type="text/javascript">
+function trim(el) {
+    el.value = el.value.
+    replace(/(^\s*)|(\s*$)/gi, ""). // removes leading and trailing spaces
+    replace(/[ ]{2,}/gi, " "). // replaces multiple spaces with one space 
+    replace(/\n +/, "\n"); // Removes spaces after newlines
+    return;
+}
+</script>

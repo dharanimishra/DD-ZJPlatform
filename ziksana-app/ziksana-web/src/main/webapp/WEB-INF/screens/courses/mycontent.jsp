@@ -139,7 +139,10 @@
 <div class="announcementcontainer">
 	<div class="headtag pull-left" style="margin-top: 10px;">My
 		Content</div>
-
+<div class="Clearfix"> </div>
+ <div class="pull-left" style="margin-left: 55px;margin-top: 20px;">
+<a href="/ziksana-web/zcourse/1/createcontent" style="width:150px;margin-top:6px;font-weight:bold">Create New Content </a>
+ </div>
 	<div class="isotophead pull-right">
 		<div class="isotoplinks">
 			<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a>|<a

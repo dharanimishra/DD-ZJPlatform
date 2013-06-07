@@ -214,6 +214,7 @@
 	</ul>
 
 </div>
+
 <div id="formcontainer">
 
 	<div class="page-header"
@@ -255,8 +256,8 @@
 							<label class="control-label nexaf" for="Course Name" style="width:120px">Module
 								Name :</label>
 							<div class="controls" style="margin-left: 130px;">
-								<input type="text" class="validate[required]" id="Course_Module"
-									placeholder="Enter module name" maxlength="64" style="width:300px;" />
+								<input type="text"   id="Course_Module"
+									placeholder="Enter module name" maxlength="64" style="width:300px;" onchange="return trim(this)" />
 							</div>
 						</div>
 
@@ -413,3 +414,12 @@
     top: 4px;
 }
 </style>
+<script type="text/javascript">
+function trim(el) {
+    el.value = el.value.
+    replace(/(^\s*)|(\s*$)/gi, ""). // removes leading and trailing spaces
+    replace(/[ ]{2,}/gi, " "). // replaces multiple spaces with one space 
+    replace(/\n +/, "\n"); // Removes spaces after newlines
+    return;
+}
+</script>
