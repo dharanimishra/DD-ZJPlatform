@@ -391,7 +391,7 @@ function securityQuestionOne(){
 	securityAnswerOne = $('#txtsec1').val();
 	memberIdSQOne = $('#memberIdSQOne').text();
 	if(securityAnswerOne == ''){
-		$('#errorAnswerOneResponse').html("<fmt:message key="restpass.enterAns"/>");		
+		$('#errorAnswerOneResponse').html("<fmt:message key="resetpass.remember.text"/><a href='#'><fmt:message key="login.Administrator"/></a>");		
 	}else {
 		if(("#errorAnswerOneResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
 			document.getElementById("errorAnswerOneResponse").innerHTML = '';
