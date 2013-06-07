@@ -278,7 +278,7 @@ table tr td {
 }
 
 .preview_uploaded_content img {
-	width: 75px;
+	width: 50px;
 }
 
 .preview_uploaded_content .title {
@@ -292,12 +292,12 @@ a.remove_this {
 	color: white;
 	cursor: pointer;
 	display: inline-block;
-	font-size: 28px;
-	height: 42px;
-	line-height: 38px;
-	text-align: center;
-	text-decoration: none;
-	width: 42px;
+	 font-size: 22px;
+    height: 32px;
+    line-height: 27px;
+    text-align: center;
+    text-decoration: none;
+    width: 33px;
 }
 
 a.remove_this:hover {
