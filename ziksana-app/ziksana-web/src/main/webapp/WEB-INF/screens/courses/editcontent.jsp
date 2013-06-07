@@ -89,7 +89,7 @@
 													'buttonText' : 'Upload Image',
 													'uploader' : '${ms.uploadScript}',
 													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
-													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx, *.pdf',
+													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 													'fileSizeLimit' : '10024KB',
 													'onUploadStart' : function(
 															file) {
