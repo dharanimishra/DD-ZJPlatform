@@ -433,7 +433,7 @@
 					      </div>
 						  <div class="editcontroll border-user" id="EditAlt_mail" ><a style="float:right;cursor:pointer;" onclick="showlbl('lblaltEmail');" title="Close">[X]</a>
 						   <label class="control-label nexaf" for="Course Name"><fmt:message key="profile.alternateemail"></fmt:message> :</label>
-						   <input type="text" style="width:365px;margin-left:19px;" id="alttenateEmailValue"  name="alt_mail" placeholder="Alternate Email" />
+						   <input type="text" style="width:365px;margin-left:19px;" id="alttenateEmailValue"  name="alt_mail" value="${profileAnswerOne.alternateEmailId}" />
 						   <p id="alternateEmailError" style="color:red;text-align:center"></p>
 						   <div style="margin-top:6px;">
 						  
