@@ -88,7 +88,7 @@ public class CreateCourseController {
 			if (courseId.isEmpty()) {
 				LOGGER.debug("CourseId is Empty");
 				courseCount = courseService.isCourseNameExists(
-						CourseStatus.UNDER_CONSTRUCT, courseName);
+						CourseStatus.DRAFT, courseName);
 				if (courseCount == 0) {
 					// Allow user to create a new course
 					iscourseExists = "COURSE NOT EXISTS";
@@ -99,7 +99,7 @@ public class CreateCourseController {
 			} else {
 				LOGGER.debug("CourseId is not is Empty");
 				courseCount = courseService.getCoursesByCoursename(
-						CourseStatus.UNDER_CONSTRUCT, courseName,
+						CourseStatus.DRAFT, courseName,
 						Integer.parseInt(courseId));
 				if (courseCount == 0) {
 					// Allow user to create a new course
@@ -281,7 +281,7 @@ public class CreateCourseController {
 		LOGGER.debug("Class :"
 				+ getClass()
 				+ " Method saveCourse :Before courseService CourseStatus.UNDER_CONSTRUCT.getID():"
-				+ CourseStatus.UNDER_CONSTRUCT.getID());
+				+ CourseStatus.DRAFT.getID());
 		Integer courseId = 0, courseDuration = 0, courseDurationUnit = 1, subjClassificationId = 0, courseIds = 0;
 		CourseJsonResponse json = new CourseJsonResponse();
 
@@ -316,8 +316,8 @@ public class CreateCourseController {
 				course.setCourseId(courseId);
 				course.setName(CourseName);
 				course.setDescription(CourseDescription);
-				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-				course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+				course.setCourseStatus(CourseStatus.DRAFT);
+				course.setCourseStatusId(CourseStatus.DRAFT.getID());
 				course.setAccountableMember(accountableMember);
 				course.setSecurityIndicator(true);
 				course.setCourseCredits(CourseCredits);
@@ -340,8 +340,8 @@ public class CreateCourseController {
 				course.setCourseCredits(CourseCredits);
 				course.setExtraCredits(CourseExtraCredits);
 				course.setThumbnailPicturePath(UploadImage);
-				course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-				course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+				course.setCourseStatus(CourseStatus.DRAFT);
+				course.setCourseStatusId(CourseStatus.DRAFT.getID());
 
 				course.setAdditionalInfoIndicator(true);
 				course.setIsDelete(false);
@@ -532,8 +532,8 @@ public class CreateCourseController {
 			Course course = new Course();
 			course.setCourseId(courseid);
 			course.setAccountableMember(accountableMember);
-			course.setCourseStatus(CourseStatus.UNDER_CONSTRUCT);
-			course.setCourseStatusId(CourseStatus.UNDER_CONSTRUCT.getID());
+			course.setCourseStatus(CourseStatus.DRAFT);
+			course.setCourseStatusId(CourseStatus.DRAFT.getID());
 			LearningComponent learningComponentParent = null;
 			if (courseLearningComponentId > 0 && learningComponentId > 0) {
 				flag = true;

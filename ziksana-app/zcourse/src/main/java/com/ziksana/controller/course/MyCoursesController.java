@@ -83,9 +83,9 @@ public class MyCoursesController {
 
 		try {
 			List<Course> draftedCourses = courseService
-					.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+					.getCoursesByStatus(CourseStatus.DRAFT);
 			List<Course> reviewedCourses = courseService
-					.getCoursesByStatus(CourseStatus.REVIEW);
+					.getCoursesByStatus(CourseStatus.READY_FOR_RELEASE);
 			List<Course> activeCourses = courseService
 					.getCoursesByStatus(CourseStatus.ACTIVE);
 
@@ -112,9 +112,9 @@ public class MyCoursesController {
 
 			if (roleType == MemberRoleType.EDUCATOR) {
 				List<Course> courses = courseService
-						.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+						.getAllCoursesByStatus(CourseStatus.DRAFT);
 				Integer courseCount = courseService
-						.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+						.totalNumberOfCoursesByStatus(CourseStatus.DRAFT);
 				mv = new ModelAndView("draftedcourses");
 				mv.addObject("courses", courses);
 				mv.addObject("courseCount", courseCount);
@@ -187,9 +187,9 @@ public class MyCoursesController {
 			MemberRoleType roleType = SecurityTokenUtil.getToken().getRole();
 			if (roleType == MemberRoleType.EDUCATOR) {
 				List<Course> courses = courseService
-						.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+						.getAllCoursesByStatus(CourseStatus.DRAFT);
 				Integer courseCount = courseService
-						.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+						.totalNumberOfCoursesByStatus(CourseStatus.DRAFT);
 				mv = new ModelAndView("mycoursesdraft");
 				mv.addObject("courses", courses);
 				mv.addObject("courseCount", courseCount);
