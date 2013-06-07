@@ -101,11 +101,11 @@ table tr td {
 				<div class="addweblink">
 					<div class="createcontentpanelhead">
 						Add Web Link
-						<!--<div class="addmpre pull-right">
+						<div class="addmpre pull-right">
 							<a class="adlink" id="weblink"><img
 								src="${staticFileServer}resources/images/content/plus.png"
 								style="height: 30px;" /></a>
-						</div> -->
+						</div> 
 						<!--end of add more-->
 						<div class="Clearfix"></div>
 					</div>
@@ -113,7 +113,7 @@ table tr td {
 					<div class="weblinkcontainer" style="background-color:#0099cc">
 						<div class="uploadroweven" style="padding: 10px;">
 							<div class="uploadphoto pull-left" style="width: 350px">
-								<img id="thumbnail_image" src="${staticFileServer}resources/images/genetics.jpg" style="width: 100px; margin-bottom: 5px;" align="left" />
+								<img id="thumbnail_image" src="${staticFileServer}resources/images/preview/link.png" style="width: 100px; margin-bottom: 5px;" align="left" />
 								<div id="message"></div>
 								<div id="thubmnail_upload_message"></div>
 								<div id="loaderText"></div>
@@ -139,11 +139,7 @@ table tr td {
 															'fileSizeLimit' : '10024KB',
 															'onUploadStart' : function(
 																	file) {
-																$(
-																		'#sbtvalidation')
-																		.attr(
-																				'disabled',
-																				'disabled');
+																//$('#sbtvalidation').attr('disabled','disabled');
 															},
 															'onUploadSuccess' : function(
 																	file, data,
@@ -166,10 +162,7 @@ table tr td {
 																			.html(
 																					data_object.message);
 																}
-																$(
-																		'#sbtvalidation')
-																		.removeAttr(
-																				'disabled'); //enable submit button
+																$('#sbtvalidation').removeAttr('disabled'); //enable submit button
 															}
 														// Your options here
 														});
@@ -200,12 +193,12 @@ table tr td {
 							<input type="text" placeholder="Specify Tags" name="contentTag"
 								style="height: 30px; margin-right: 12px; width: 233px;">
 							<select id="Careaddl" name="contentArea" class="select Careaddl">
-								<option>Specify Subject</option>
+								<option>Specify Area</option>
 							</select> <br> <select class="select Csubjectddl" id="Csubjectddl"
 								name="contentSubject">
 								<option>Specify Subject</option>
 							</select> <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic">
-								<option>Specify Subject</option>
+								<option>Specify Topic</option>
 							</select>
 						</div>
 						<div class="clearfix"></div>
@@ -216,8 +209,7 @@ table tr td {
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
 					<button class="btn blue pull-right saveup1" id="sbtvalidation"
-						onClick="$('form#createweblinkform').submit();"
-						disabled="disabled">Add Web link</button>
+						onClick="$('form#createweblinkform').submit();">Add Web link</button>
 					<div class="clearfix"></div>
 				</div>
 				<!--end of panel head-->

@@ -1,14 +1,11 @@
 package com.ziksana.domain.course;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.NoSuchElementException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ziksana.domain.utils.UTLLookup;
-import com.ziksana.util.EnumUtil;
 import com.ziksana.util.UTLLookUpUtil;
 
 /**
@@ -17,10 +14,10 @@ import com.ziksana.util.UTLLookUpUtil;
 
 public enum CourseStatus {
 
-	// TODO: retrieve the ids from the static data service
-	UNDER_CONSTRUCT(), REVIEW(), RELEASE(), ACTIVE(), HOLD(), ARCHIVED();
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(CourseStatus.class);
+	DRAFT(), UNDER_REVIEW(), READY_FOR_RELEASE(), ACTIVE(), HOLD(), ARCHIVED();
+
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(CourseStatus.class);
 
 	private int id;
 	private String name;
@@ -28,17 +25,18 @@ public enum CourseStatus {
 
 	private final static String CATEGORY = "Course Status";
 
-	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-
-	private static synchronized void initialize(){
-        if (initialized) { return; }
+	private static synchronized void initialize() {
+		if (initialized) {
+			return;
+		}
 		CourseStatus[] courseStatuses = CourseStatus.values();
 		for (CourseStatus courseStatus : courseStatuses) {
-			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY, courseStatus.name());
-			courseStatus.id=utlLookup.getLookupValueId();
-			courseStatus.name=utlLookup.getLookupValue();
+			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY,
+					courseStatus.name());
+			courseStatus.id = utlLookup.getLookupValueId();
+			courseStatus.name = utlLookup.getLookupValue();
 		}
-        initialized = true;
+		initialized = true;
 		LOGGER.debug("Content Type initialized " + courseStatuses);
 	}
 
@@ -51,7 +49,7 @@ public enum CourseStatus {
 		this.name = name;
 	}
 
-	private void setID(int id) {
+	private void setID(Integer id) {
 		this.id = id;
 
 	}
@@ -65,7 +63,7 @@ public enum CourseStatus {
 	}
 
 	public static CourseStatus getCourseStatus(int ID) {
-		if(!initialized){ 
+		if (!initialized) {
 			initialize();
 		}
 		for (CourseStatus t : CourseStatus.values()) {

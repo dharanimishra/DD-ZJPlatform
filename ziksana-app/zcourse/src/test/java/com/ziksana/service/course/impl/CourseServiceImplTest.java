@@ -79,7 +79,7 @@ public class CourseServiceImplTest {
 	public void testGetCoursesByStatus() {
 
 		List<Course> courses = courseService
-				.getCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+				.getCoursesByStatus(CourseStatus.DRAFT);
 		assertTrue(courses.size() == 1);
 
 	}
@@ -87,7 +87,7 @@ public class CourseServiceImplTest {
 	@Ignore
 	public void testGetAllCoursesByStatus() {
 		List<Course> courses = courseService
-				.getAllCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+				.getAllCoursesByStatus(CourseStatus.DRAFT);
 		assertTrue(courses.size() == 1);
 
 	}
@@ -95,7 +95,7 @@ public class CourseServiceImplTest {
 	@Ignore
 	public void testTotalNumberOfCourses() {
 		Integer total = courseService
-				.totalNumberOfCoursesByStatus(CourseStatus.UNDER_CONSTRUCT);
+				.totalNumberOfCoursesByStatus(CourseStatus.DRAFT);
 		assertTrue(total > 0);
 
 	}
