@@ -18,6 +18,9 @@
 	<bean id="courseContentService"
 		class="com.ziksana.service.course.impl.CourseContentServiceImpl">
 	</bean>
+	<bean id="learningContentDecorationService"
+		class="com.ziksana.service.course.impl.LearningContentDecorationServiceImpl">
+	</bean>
 <!--
 	<bean id="courseEditService" class="com.ziksana.service.course.impl.CourseEditServiceImpl" />
 	</bean>

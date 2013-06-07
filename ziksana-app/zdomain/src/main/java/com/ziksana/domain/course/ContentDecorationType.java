@@ -61,7 +61,7 @@ public enum ContentDecorationType {
 	 * @param ID
 	 * @return  {@link ContentDecorationType}
 	 */
-	public static ContentDecorationType getContentType(int ID) {
+	public static ContentDecorationType getContentDecorationType(int ID) {
 		if (!initialized) {
 			initialize();
 		}

@@ -3,6 +3,7 @@ package com.ziksana.domain.course;
 import java.util.Date;
 
 import com.ziksana.domain.common.AuditHistory;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
@@ -25,6 +26,8 @@ public class LearningContentDecoration extends AuditHistory {
 	private String versionRemarks;
 	private Integer authoringMemberRoleId;
 	private Integer rightsOwningMemberRoleId;
+	private MemberPersona rightsOwningMember = null;
+	private MemberPersona authoringMember = null;
 	private boolean isDelete;
 	private Integer subjClassificationId;
 	/**
@@ -188,6 +191,36 @@ public class LearningContentDecoration extends AuditHistory {
 	}
 	
 	
+	/**
+	 * @param learningContentDecorationtId the learningContentDecorationtId to set
+	 */
+	public void setLearningContentDecorationtId(ZID learningContentDecorationtId) {
+		this.learningContentDecorationtId = learningContentDecorationtId;
+	}
+	/**
+	 * @return the rightsOwningMember
+	 */
+	public MemberPersona getRightsOwningMember() {
+		return rightsOwningMember;
+	}
+	/**
+	 * @param rightsOwningMember the rightsOwningMember to set
+	 */
+	public void setRightsOwningMember(MemberPersona rightsOwningMember) {
+		this.rightsOwningMember = rightsOwningMember;
+	}
+	/**
+	 * @return the authoringMember
+	 */
+	public MemberPersona getAuthoringMember() {
+		return authoringMember;
+	}
+	/**
+	 * @param authoringMember the authoringMember to set
+	 */
+	public void setAuthoringMember(MemberPersona authoringMember) {
+		this.authoringMember = authoringMember;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
