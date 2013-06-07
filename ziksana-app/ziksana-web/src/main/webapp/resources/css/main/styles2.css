@@ -524,12 +524,16 @@ reviewtable table,td {
 	
 }
 
+/* .Profile {
+	margin-top: 10px;
+	height: 48px;
+	width:55px;
+} */
 .Profile {
 	margin-top: 10px;
 	height: 48px;
 	width:55px;
 }
-
 .Ziklogo {
 	height: 100px;
 }
@@ -2588,10 +2592,11 @@ input[type="checkbox"]:checked+label span {
   box-shadow: 0 0 4px black;
   display: none;
   left: 0;
+  margin-top: -4px;
   padding: 0.5em;
   position: absolute;
-  top: 03px;
-  width: 300px;
+  top: 0;
+  width: 350px;
   z-index: 99;
 }
 .pagination_bar {

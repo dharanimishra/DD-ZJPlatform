@@ -17,6 +17,16 @@ $("#todotype").hide();
 $(".addtodobtn").click(function(e) {
    // $("#addtodorow").toggle(200);
 	$("#add_todo_fields_container").show();
+	document.getElementById("descriptionErrorMsg").innerHTML = '';
+	for(var i=0;i<5;i++){
+		   
+		   $('#hideEditOption'+i+'').click();
+	  
+		 } 
+	for(var i=0;i<4;i++){
+		 $('#manageTodoErrorMsg'+i+'').html("");
+		 }
+	
 });
 
 
@@ -404,7 +414,7 @@ function get_and_populate_todo(val){
 						ouputMoreTodo+="<tbody>";
 						 $(data).find("todoitem").each(function(index){
 							 ouputMoreTodo+="<tr id='todorow"+$(this).find('id').text()+"'><td style='width:50px'><input type='checkbox' id='c"+index +"' onchange='handleChange(this,"+$(this).find('id').text()+");' /> <label for='c"+index +"'><span></span></label></td><td style='width:175px'>"+$(this).find("categoryName").text()+"</td>";
-							 ouputMoreTodo+="<td class='todoinfo-decription'><div class='todotip_container' >"+$(this).find("subject").text()+"<div class='categortip' style='color:white;'>"+$(this).find("subject").text()+" </div></div></td></tr>";
+							 ouputMoreTodo+="<td class='todoinfo-decription'><div class='todotip_container' >"+short_string($(this).find("subject").text())+"<div class='categortip' style='color:white;'>"+$(this).find("subject").text()+" </div></div></td></tr>";
 						 });
 						
 						 ouputMoreTodo+="</tbody></table>";
@@ -480,7 +490,7 @@ function get_and_populate_selecttag(){
 				}
 			});
 			option_string ='';
-			option_string ='<option selected="selected" value="Select a Category">Select a Category</option>';
+			option_string ='<option selected="selected" value="add_new_category">Select a Category</option>';
 			function construct_options(element, index, array){
 				option_string+= '<option value="'+capitalize(element)+'">'+capitalize(element)+'</option>';
 			}
@@ -494,12 +504,14 @@ function get_and_populate_selecttag(){
 			updateselect = '<option value="">&nbsp;</option>'+option_string + '';
 			
 			$('select#todo_categories').html(select);
-			
+			$(data).find("todoitem").each(function(index){
+				$('select#update_todo_categories'+$(this).find('id').text()+'').html(updateselect);
+			});
 		}
 	});
 }
 function get_and_populate_todo_value(val){
-	get_and_populate_selecttag();
+	
 	$.ajax({
 	  	type: 'GET',
 		url: '/ziksana-web/ztodo/showtodobypagination/'+val,
@@ -532,7 +544,8 @@ function get_and_populate_todo_value(val){
 							
 							 ouputEmptyTodo+="<tr id='moretodorow"+$(this).find('id').text()+"' style='height:40px;'>";
 							 ouputEmptyTodo+="<td width='50px'><div ><input type='checkbox' id='c"+index+2 +"' onchange='handle(this,"+$(this).find('id').text()+");' /> <label for='c"+index+2 +"'><span></span></label></td><td width='175px'><div id='category_value"+$(this).find("id").text()+"'>"+$(this).find("categoryName").text()+"</div></td>";
-							 ouputEmptyTodo+="<td width='225px'><span id='categoryDescription"+$(this).find("id").text()+"' class='todoinfo-decription' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_string($(this).find("subject").text())+"</span></td><td width='75px'><a id='todoEdithyperlink"+index+"' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Edit</a></td><td width='75px'></td></div>";
+							//" <td class='todoinfo-decription'><div class='todotip_container' >"+short_string($(this).find("subject").text())+"<div class='categortip' style='color:white;'>"+$(this).find("subject").text()+" </div></div></td></tr>"
+							 ouputEmptyTodo+="<td class='todoinfo-decription' width='225px'><div class='todotip_container' ><div class='categortip' style='color:white;'>"+$(this).find("subject").text()+" </div><span id='categoryDescription"+$(this).find("id").text()+"' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_managestring($(this).find("subject").text())+"</span></td></div><td width='75px'><a id='todoEdithyperlink"+index+"' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Edit</a></td><td width='75px'></td></div>";
 							 
 							 ouputEmptyTodo+="</tr>";
 							 ouputEmptyTodo+="<tr style='display:none;'><td></td></tr>";
@@ -542,7 +555,7 @@ function get_and_populate_todo_value(val){
 							 
 							 ouputEmptyTodo+="<td width='50px'></td><td width='200px'><select onblur='updateSelectChange("+$(this).find('id').text()+")' id='update_todo_categories"+$(this).find('id').text()+"'' style='margin-left:10px;width:190px;'><optgroup><option style='color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;' onclick='show_add_category_form("+$(this).find('id').text()+");' value='add_new_category'>Add New Category</option></optgroup>'</select><span id='add_new_edit_category_form"+$(this).find('id').text()+"' style='display:none;'><input onblur='updateTextBoxChange("+$(this).find('id').text()+");' id='update_todo_category_name"+$(this).find('id').text()+"'/></span></td>";
 							
-							 ouputEmptyTodo+="<td width='200px'><input id='todo_edit_description"+$(this).find('id').text()+"' style='width:200px;height:28px;'/></td><td width='75px'><a onclick='saveRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Update</a></td><td width='75px'><a onclick='showRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Cancel</a></td></div>";
+							 ouputEmptyTodo+="<td width='200px'><input onclick='clearManageTodoBox()' id='todo_edit_description"+$(this).find('id').text()+"' style='width:200px;height:28px;'/><span onclick='clearManageTodoBox()' style='color:red;left:290px;position:absolute;' id='manageTodoErrorMsg"+index+"'></span></td><td width='75px'><a onclick='saveRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Update</a></td><td width='75px'><a id='hideEditOption"+index+"' onclick='showRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Cancel</a></td></div>";
 							 ouputEmptyTodo+="</tr></div>";
 							
 						 });
@@ -563,43 +576,8 @@ function get_and_populate_todo_value(val){
 						}else if(val == 25){
 							$('#pag_active_more5').addClass('pactive');
 						}
-						select_options = "";
 						
-						select_option_array = [];
-						unique_select_option_array = [];
-						
-						
-						$(data).find("todoitem").each(function(index){
-							
-							select_option_array.push(capitalize($(this).find("categoryName").text()));
-																			
-						});
-						
-						$.each(select_option_array, function(i, el){
-							if(el !=''){
-						    	if($.inArray(el, unique_select_option_array) === -1) unique_select_option_array.push(el);
-							}
-						});
-						option_string ='';
-						option_string ='<option value="Select a Category">Select a Category</option>';
-						function construct_options(element, index, array){
-							option_string+= '<option value="'+capitalize(element)+'">'+capitalize(element)+'</option>';
-						}
-						
-						//console.log(unique_select_option_array);
-						
-						unique_select_option_array.forEach(construct_options);
-	
-						select = '<option value="">&nbsp;</option>'+option_string + '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
-						
-						updateselect = '<option value="">&nbsp;</option>'+option_string + '';//
-						
-						//$('select#todo_categories').html(select);
-						$(data).find("todoitem").each(function(index){
-						$('select#update_todo_categories'+$(this).find('id').text()+'').prepend(updateselect);
-						});
-						
-						
+						get_and_populate_selecttag();
 						
 					}
 					
@@ -629,6 +607,14 @@ function short_string(string){
 	
 	if(string.length > 50){
 		return string.substring(0,50)+'...';
+	} else {
+		return string;
+	}	
+} 
+function short_managestring(string){
+	
+	if(string.length > 40){
+		return string.substring(0,40)+'...';
 	} else {
 		return string;
 	}	
@@ -715,16 +701,21 @@ function add_new_category_item(){
 
 function addTodo()
 {
-	 
+
 	 todo_category = capitalize($('#todo_categories').val());
 	 todo_description = $('#todo_description').val();
 	
-	 if(todo_description ==''){return false;}
+	
 	 
 	 if(todo_category.toLowerCase() == 'add_new_category'){todo_category = '';}
 	
-	 
-
+	
+	 if(todo_description ==''){
+		
+		 $('#descriptionErrorMsg').html("Enter Description");
+		
+		 return false;
+		 }else{
 		$.post( '/ziksana-web/ztodo/createtodo'
        , {'category':todo_category,'notificationContent':todo_description}
        , function( data )
@@ -741,24 +732,26 @@ function addTodo()
 
        });           
 	
-
+	 }
 }
 
 function saveRow_hideEdit(v)
 {
-	
-	
-	
 	 editupdate_todo_category = $('#update_todo_categories'+v+'').val();
 	 editupdate_todo_description = $('#todo_edit_description'+v+'').val() ;
 	 selectedRowId = v;
 	 console.log(editupdate_todo_category);
 	 console.log( editupdate_todo_description );
 	 console.log(selectedRowId);
-	 if(editupdate_todo_description ==''){return false;}
+	// if(editupdate_todo_description ==''){return false;}
 	 
 	 if(editupdate_todo_category.toLowerCase() == 'add_new_category'){editupdate_todo_category = '';}
-
+	 if(editupdate_todo_description ==''){
+		 for(var i=0;i<4;i++){
+		 $('#manageTodoErrorMsg'+i+'').html("Enter Description");
+		 }
+		 return false;
+		 }else{
 				$.post( '/ziksana-web/ztodo/updatetodo'
 		        , {'todoItemId':selectedRowId,'category':editupdate_todo_category,'notificationContent':editupdate_todo_description}
 		        , function( data )
@@ -779,7 +772,7 @@ function saveRow_hideEdit(v)
 		 
 		        });  
 				
-	
+		 }
 	
 }
 	
@@ -832,6 +825,7 @@ function add_new_category_item_update(v){
 	$('select#update_todo_categories'+v+'').val(capitalize($('#update_todo_category_name').val()));
 }
 function edit_todorow_and_update(rowId){
+	$('#add_todo_fields_container').hide();
 	for(var i=0;i<5;i++){
 		   
 		   $('#todoEdithyperlink'+i+'').removeAttr('onclick');
@@ -857,6 +851,7 @@ function edit_todorow_and_update(rowId){
 
 }
 function showRow_hideEdit(val){
+	
 	$('#moretodorow'+val+'').show();
 	$('#update_todo_form_container'+val+'').hide();
 	
