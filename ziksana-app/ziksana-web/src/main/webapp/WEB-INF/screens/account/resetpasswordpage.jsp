@@ -195,7 +195,8 @@
      	<c:if test="${resetPassword == 'Reset Password Verification' }">
      			
 			    <div class="resetpassword">
-			    <label style="display:none"; id="memberIdRef">${memberId}</label>
+			    <label style="display:none" id="memberIdRef">${memberId}</label>
+			    <label style="display:none" id="currentPassword">${currentPassword}</label>
 			     <!--  <p class="reghead" style="margin-left:150px;">Select your Password </p> --> 
 			      <div class="separate" style="margin-left:10px; text-align:center;"> 
 			      
@@ -474,7 +475,7 @@ $(document).ready(function() {
 
    
     //if the password length is less than 6, return message.
-    if (password.length < 6) { 
+    if (password.length < 8) { 
 		$('#result').removeClass();
 		/*$('#result').addClass('short')*/
 		$('#result').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span><br/><span style="color:orange;"><fmt:message key="resetpass.8char"/></span>');
@@ -537,10 +538,8 @@ function checkpass()
 			retypePassword = $('#retypePassword').val();
 			
 			memberIdRef = $('#memberIdRef').text();
-			console.log(newPassword);
-			console.log(retypePassword);
-			console.log(memberIdRef);
-			
+			currentPassword = $('#currentPassword').text();
+			if(retypePassword != currentPassword){
 			 $.post( '/ziksana-web/unsecure/0/password/changepassword'
 			        , {'newPassword':newPassword,'confirmPassword':retypePassword,'memberId':memberIdRef}
 			        , function( data )
@@ -548,6 +547,9 @@ function checkpass()
 			        	if(data == '<fmt:message key="password.successfull"/>'){
 			        		
 			        		$('#passwordResponse').html("<fmt:message key="password.successfull.please"/><a href='/ziksana-web/secure/logout'> <fmt:message key="login.button"/></a>")
+			        	$('#passwordFailResponse').html("");
+			        		$('#result1').html("");
+			        		$('#result').html("")
 			        		
 						}else{
 							$('#passwordFailResponse').html(data);
@@ -555,6 +557,9 @@ function checkpass()
 						}
 			        }
 					 );  
+			}else{
+				$('#passwordFailResponse').html("You may not reuse a password, have already used");
+			}
 		}
 	
 		

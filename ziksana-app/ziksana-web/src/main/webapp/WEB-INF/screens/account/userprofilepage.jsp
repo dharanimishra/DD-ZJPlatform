@@ -372,6 +372,7 @@
 					<c:out value="${member.firstName}" />
 					<c:out value="${member.lastName}" />
 					<label id="memberIdValue" style="display: none;"><c:out value="${member.memberId}" /></label>
+					<label id="dbcurrentPassword" style="display: none;"><c:out value="${currentPassword}" /></label>
 					<label id="primaryEmailId" style="display: none;"><c:out value="${member.primaryEmailId}" /></label>
 				</P>
 
@@ -736,6 +737,14 @@ function clearProfileForm(){
 		}
 		function hidecncl(divid){
 		$('#'+divid).slideToggle();
+		$('#currentPassword').val('');
+		$('#newPassword').val('');
+		$('#retypePassword').val('');
+		$('#errorCurrentPassword').val('');
+		$('#errorNewPassword').val('');
+		$('#errorRetypePassword').val('');
+		$('#passwordResetFailResponse').val('');
+		document.getElementById("passwordResetResponse").innerHTML = '';
 		$("#Edit_pass").hide();
 		}
 		function changesq1()
@@ -909,7 +918,10 @@ function checkpass()
 			
 			memberIdRef = $('#memberIdValue').text();
 
-			
+			dbcurrentPassword = $('#dbcurrentPassword').text();
+			console.log(newPassword);
+			console.log(dbcurrentPassword);
+			if(dbcurrentPassword != newPassword){
 			 $.post( '/ziksana-web/secure/password/resetpassword'
 			        , {'oldPassword':oldPassword,'confirmPassword':newPassword,'memberId':memberIdRef}
 			        , function( data )
@@ -923,6 +935,7 @@ function checkpass()
 			        		$('#passwordResetResponse').html("<fmt:message key="resetpass.successful"/>");
 			        		$('#passwordUpdatedDate').html(data);
 			        		
+			        		
 			        		setTimeout("showMsg()",3000);
 			        		
 						}else{
@@ -930,8 +943,10 @@ function checkpass()
 							
 						}
 			        }
-			        }
-					 );  
+			        });
+			}else{
+				$('#passwordResetFailResponse').html("You may not reuse a password, have already used");
+			}
 		}
 	
 		
@@ -951,7 +966,7 @@ function showMsg(){
 	$('#errorCurrentPassword').val('');
 	$('#errorNewPassword').val('');
 	$('#errorRetypePassword').val('');
-	
+	$('passwordResetFailResponse').val('');
 	document.getElementById("passwordResetResponse").innerHTML = '';
 	hidecncl('passEdit');
 }
