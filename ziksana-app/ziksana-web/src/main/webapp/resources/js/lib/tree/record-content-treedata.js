@@ -238,14 +238,14 @@ function createtree(course_id) {
 			//menu.hideItem('ModuleEdit');
 			menu.hideItem('View');
 			menu.hideItem('Delete');
-			menu.hideItem('Annotate');
+			menu.hideItem('Record');
 			menu.hideItem('Search_Associate_Content');
 		}
 
 		if (node_type == "COMPONENT") {
 			menu.hideItem('View');
 			menu.hideItem('Delete');
-			menu.hideItem('Annotate');
+			menu.hideItem('Record');
 			//menu.hideItem('CourseEdit');
 			//menu.showItem('Delete');
 			//menu.showItem('Associate_Content');
@@ -254,8 +254,7 @@ function createtree(course_id) {
 
 		if (node_type == "CONTENT") {
 			menu.showItem('View');
-			console.log("Showing annnotate also");
-			menu.showItem('Annotate');
+			menu.showItem('Record');
 			menu.showItem('Delete');
 			menu.hideItem('Search_Associate_Content');
 		}
