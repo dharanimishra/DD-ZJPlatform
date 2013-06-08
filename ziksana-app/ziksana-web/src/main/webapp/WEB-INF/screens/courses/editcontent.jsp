@@ -58,20 +58,25 @@
 	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
 	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
 	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
-		//out.println("size:"+list.size());
+		int i=0;
 	 	for (LearningContent content : list) {
+	 		
 	 		
 	 %> 
 		<%--  <div class="edit_content_info" id="content_<%=content.getId()%>"> --%>
-		 <div class="Clearfix"></div> 
-		<div class=" pull-left" style="padding: 10px;width:350px"> 
-	<!--  <div class="uploadphoto pull-left" style="width: 350px">
-	 <div style="width: 100%">  
-	 </div> 
-	 </div> -->
+		 <div class="Clearfix"></div>
+		 <% if(i%2==0) {%> 
+		<div class="uploadrowodd" style="padding: 10px;width:100%"> 
+		<% } else {%>
+		<div class="uploadroweven" style="padding: 10px;width:100%"> 
+		<% 
+		}%>
+	  <div class="uploadphoto pull-left" style="width: 350px">
+	 
 
 
-				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/genetics.jpg" style="width: 100px;" align="left" />
+
+				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/preview/image.png" style="width: 100px;" align="left" />
 				<div id="message_<%=content.getId()%>"></div>
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
 						<div id="loaderText_<%=content.getId()%>"></div>
@@ -139,6 +144,7 @@
 					</div>
 
  <!--end of uploadphoto--> 
+ 
  <div class="rowfields pull-left"> <ul>
 	<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
 		<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
@@ -164,15 +170,29 @@ Subject</option> </select>
 <select class="select Ctopicddl" name="content_topic[]" > <option>Specify
 Topic</option> </select>
 
-</div> </div> <!--end of continaer--> <div class="clearfix"></div> 
+</div> 
 
-</div> <!-- end of uploadrow-->
- 
-</div>
+</div> <!--end of continaer--> 
 
-<%
+ <% if(i%2==0) {%> 
+		</div>
+		<% } else {%>
+		</div> 
+		<% 
+		}%>
+ <%
+ i++;
 	}
 %>
+
+<div class="clearfix"></div> 
+
+</div> <!-- end of uploadrow-->
+</form> 
+</div>
+
+
+
 <div class="createcontentpanelhead" style="margin-top: 4px;"> 
 	<a href="#linkurl" class="btn pull-right" style="margin-left: 10px;" type="button" onClick="$('form#editcontentform').submit();"> Save </a> 
 	<a	href="/ziksana-web/zcourse/1/createcontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous </a>
@@ -181,7 +201,7 @@ Topic</option> </select>
 <div class="clearfix"></div> 
 </div> <!--end of panel head--> 
 
-</form> 
+
 </div> <!--end of uploadcontent2-->
 </div> <!--end of image wrapper --> </div> <!--end of contentarea--> </div>
 <!--end of contentpanel-->
@@ -192,6 +212,7 @@ Topic</option> </select>
 
 <div class="Clearfix"></div>
 
+</div>
 </div>
 <style>
 

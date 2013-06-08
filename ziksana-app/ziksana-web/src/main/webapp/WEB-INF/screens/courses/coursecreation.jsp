@@ -55,7 +55,6 @@
 	} */
 
 	function getArea() {
-
 		$
 				.get(
 						'/ziksana-web/zcourse/getsubjectarea',
@@ -67,21 +66,19 @@
 								label = options[i].label;
 								value = options[i].value;
 								if (i == 0) {
-									option = '<option selected="selected" value="' + value
-						+ '">'
-											+ label
-											+ '</option>_______________________________________<option value="' + value + '">} else
-									option = '<option___________________________________________________$tag_____$tag_________________________'
-											+ label
-											+ '_$tag_____________________________________________________$tag_____$tag__________________________$tag____';
-
+									option = '<option selected="selected" value="' + value+ '">'+ label + '</option>';
+								} else
+									option = '<option value="' + value + '">'+ label + '</option>';
 								option_string += option;
 							}
-							$('#Cmoduleareaddl').html(option_string);
+							$('#Careaddl').html(option_string);
 
 						});
 
-		$("#Cmoduleareaddl")
+		//	}
+
+		//function getSubject() {
+		$("#Careaddl")
 				.change(
 						function(e) {
 							token = '';
@@ -89,7 +86,7 @@
 							uri = '/ziksana-web/zcourse/getsubject';
 
 							var Course_Area = '';
-							Course_Area = $('#Cmoduleareaddl').val();
+							Course_Area = $('#Careaddl').val();
 							$
 									.get(
 											uri,
@@ -99,25 +96,94 @@
 											function(data) {
 												options = data;
 												var option_string = '';
-												var area_string = '_$tag_____________________________________________________$tag_____$tag__________________________$tag_____$tag_____________________________________________'
+												var area_string = '<option selected="selected" value='+Course_Area+'>'
 														+ Course_Area
 														+ '</option>';
-			__________________________________________$tag_lected" v_________________________$tag_____$tag_____________										for (i in options) {
-													label =					option_string += '_$tag___________________ed" value_________________________$tag_____$tag__________________________$tag_____$tag______________________________________________$tag_____$tag______________________________________________Select Subject_$tag__________________________________________													label = options[____________									$tag_____$tag______________________________________________$tag_____$tag_______________________________________________$tag____';
+												option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
 												for (i in options) {
 													label = options[i].label;
 													value = options[i].value;
 													if (i == 0) {
-														option = '_$tag_____________________________________________________$tag_____$tag__________________________$tag_____$tag______________________________________________$tag_____$tag_______________________________________________$tag_____$tag________________________________________________'
+														option = '<option  value="'
+											+ value
+											+ '">'
 																+ label
-																+ '_$tag__________________________________											option = '<option value="'
-										_________$ta							+ g______________________________________________$tag_____$tag_______________________________________________$tag_____$tag_________________________________________________$					area_string);
-												$('#Cmodulesubjectddon = '_$tag____________________________________						+ '________$tag_____$tag__________________________$tagoption>';
+																+ '</option>';
+													} else
+
+														option = '<option value="'
+											+ value
+											+ '">'
+																+ label
+																+ '</option>';
 
 													option_string += option;
-___$tag_____$tag_______________________________').html(_______$tag_____$tag_________________________________________________$tag_____$tag_______________________________________________'
+												}
+
+												$('#Careaddl')
+														.html(area_string);
+												$('#Csubjectddl').html(
+														option_string);
+
+											});
+							var topic = '<option value="Select Topic">Select Topic</option>';
+							$('#Ctopicddl').html(topic);
+						});
+
+		//}
+
+		//function getTopic() {
+
+		$("#Csubjectddl")
+				.change(
+						function(e) {
+							console.log("Inside subject change handler");
+							uri = '/ziksana-web/zcourse/gettopic';
+							token = '';
+							request_type = 'GET';
+							var Course_Subject = $('#Csubjectddl').val();
+							var parameters = {
+								"Course_Subject" : Course_Subject
+							};
+
+							$
+									.get(
+											uri,
+											{
+												'Course_Subject' : Course_Subject
+											},
+											function(data) {
+												options = data;
+												var option_string = '';
+												option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
+												for (i in options) {
+													label = options[i].label;
+													value = options[i].value;
+													if (i == 0) {
+														option = '<option value="'
+											+ value
+											+ '">'
 																+ label
-																+ '_$tag_____
+																+ '</option>';
+													} else
+
+														option = '<option value="'
+											+ value
+											+ '">'
+																+ label
+																+ '</option>';
+
+													option_string += option;
+												}
+
+												$('#Ctopicddl').html(
+														option_string);
+
+											});
+
+						});
+		//}
+	} // End getArea()
 </script>
 <style>
 #splitter {
