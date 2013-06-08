@@ -395,7 +395,7 @@
 			<!--Course Selection-->
 			<div class="control-group" style="margin-top: 20px;">
 				<div>
-					<label class="labelclass nexaf f-l"> <fmt:message
+					<label class="labelclass nexaf f-l" sytle="width:200px;"> <fmt:message
 							key="course.area" />
 					</label> <label class="labelclass nexaf f-l" style="margin-left: 217px;">
 						<fmt:message key="course.subject" />
@@ -467,7 +467,7 @@
 
 			<select name="SelectArea" id="Cdurationtype" class="defaultvalue f-l"
 				style="margin-left: 20px; width: 110px">
-				<option value="1">Weeks</option>
+				<option value="1"><fmt:message key="course.duration.unit" /></option>
 
 			</select>
 			<div class="clearfix"></div>

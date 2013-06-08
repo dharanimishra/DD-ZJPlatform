@@ -506,7 +506,7 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#result').removeClass();
 		$('#result').addClass('weak');
-		$('#result').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/>  </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
+		$('#result').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/>  </span><br/><span style="color:orange;"> <fmt:message key="restpass.passworddes"/></span>');
 		return true;			
 	} else if (strength == 2 ) {
 		$('#result').removeClass();
@@ -558,7 +558,7 @@ function checkpass()
 			        }
 					 );  
 			}else{
-				$('#passwordFailResponse').html("You may not reuse a password, have already used");
+				$('#passwordFailResponse').html("<fmt:message key="reuse.password.error"/>");
 			}
 		}
 	

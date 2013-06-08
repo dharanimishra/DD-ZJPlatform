@@ -945,7 +945,7 @@ function checkpass()
 			        }
 			        });
 			}else{
-				$('#passwordResetFailResponse').html("You may not reuse a password, have already used");
+				$('#passwordResetFailResponse').html("<fmt:message key="reuse.password.error"/>");
 			}
 		}
 	
@@ -997,13 +997,13 @@ function editUpdateSecuQuestion(){
 	var selectValue = "<fmt:message key="profile.select.text"/>";
 
 	if(editQuestionOneValue == selectValue){
-		$('#secQuesOneError').html("Select the Security Question 1"); 
+		$('#secQuesOneError').html("<fmt:message key="select.question1"/>"); 
 	}else if(editQuestionOneValue == editQuestionTwoValue){
 		
-			$('#secQuesOneError').html("Please choose Different Question"); 		
+			$('#secQuesOneError').html("<fmt:message key="profile.error.difquestion"/>"); 		
 	}else{
 		 if(editSecAnswerOne == ''){
-				$('#secQuesOneError').html("Enter Answer"); 
+				$('#secQuesOneError').html("<fmt:message key="enter.answer"/>"); 
 			}else{
 			 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
 			        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionOne,'SecurityQuestionValue':editQuestionOneValue,'SecurityAnswer':editSecAnswerOne}
@@ -1017,7 +1017,7 @@ function editUpdateSecuQuestion(){
 				          	$('#ques_text_diplayone').html(editQuestionOneValue);
 				          	$('#secQuesOneError').html(""); 
 				             }else{
-				            	  $('#secQuesTwoError').html("Error"); 
+				            	  $('#secQuesTwoError').html("<fmt:message key="error.text"/>"); 
 				             }
 					
 			        }
@@ -1046,13 +1046,13 @@ function editSaveSecQuesTwo(){
 	var selectValue = "<fmt:message key="profile.select.text"/>";
 
 	if(editQuestionTwoValue == selectValue){
-		$('#secQuesTwoError').html("Select the Security Question 2"); 
+		$('#secQuesTwoError').html("<fmt:message key="select.question2"/>"); 
 	}else if(editQuestionTwoValue ==editQuestionOneValue){
 		
-			$('#secQuesTwoError').html("Please choose Different Question"); 		
+			$('#secQuesTwoError').html("<fmt:message key="profile.error.difquestion"/>"); 		
 	}else{
 		if(editSecAnswerTwo == ''){
-			$('#secQuesTwoError').html("Enter Answer");
+			$('#secQuesTwoError').html("<fmt:message key="enter.answer"/>");
 			
 		}else{
 			
@@ -1068,7 +1068,7 @@ function editSaveSecQuesTwo(){
 			          	$('#secQuesTwoError').html("");
 			          	
 			             }else{
-			            	  $('#secQuesTwoError').html("Error"); 
+			            	  $('#secQuesTwoError').html("<fmt:message key="error.text"/>"); 
 			             }
 				
 		        }
