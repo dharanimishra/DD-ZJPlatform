@@ -1,8 +1,6 @@
 
-<script type='text/javascript' src="${staticFileServer}resources/js/custom/plugins.js"></script>
-
 <script type='text/javascript'
-	src='${staticFileServer}resources/js/lib/tagsinput/jquery.tagsinput.min.js'></script>
+	src="${staticFileServer}resources/js/custom/plugins.js"></script>
 
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/z_message.js"></script>
@@ -25,10 +23,10 @@
 <script type="text/javascript">
 	$('document').ready(function() {
 		$('#spinner').spinner({
-			numberFormat: "n",
+			numberFormat : "n",
 			min : 0,
 			max : 20,
-			
+
 		});
 		$('#spinner2').spinner({
 			min : 0,
@@ -61,6 +59,7 @@
 						getCourse();
 						//Course Name Validation for Duplication while creating a course
 						$('#defaultvalue')
+								.not('.editmode')
 								.focusout(
 										function() {
 											var courseId = $('#courseid').val();
@@ -90,6 +89,11 @@
 																		alert("The course "
 																				+ course
 																				+ " already exists, try with another course name");
+																		$(
+																				'#defaultvalue')
+																				.val(
+																						courseName);
+
 																	}
 																}
 															});
@@ -250,61 +254,84 @@
 	} // End getArea()
 </script>
 <script>
-function inputLimiter(e,allow) {
-    var AllowableCharacters = '';
-     if (allow == 'Numbers'){AllowableCharacters='1234567890';}
-       var k = document.all?parseInt(e.keyCode): parseInt(e.which);
-    if (k!=13 && k!=8 && k!=0){
-        if ((e.ctrlKey==false) && (e.altKey==false)) {
-        return (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1);
-        } else {
-        return true;
-        }
-    } else {
-        return true;
-    }
-}
-
+	function inputLimiter(e, allow) {
+		var AllowableCharacters = '';
+		if (allow == 'Numbers') {
+			AllowableCharacters = '1234567890';
+		}
+		var k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+		if (k != 13 && k != 8 && k != 0) {
+			if ((e.ctrlKey == false) && (e.altKey == false)) {
+				return (AllowableCharacters.indexOf(String.fromCharCode(k)) != -1);
+			} else {
+				return true;
+			}
+		} else {
+			return true;
+		}
+	}
 </script>
 <style>
-.uploadify {margin-left:260px;}
-.remove {
-    background: none repeat scroll 0 0 #43B2EC;
-    border: 0 none;
-    border-radius: 6px 6px 6px 6px;
-    color: #F9F9F9;
-    cursor: pointer !important;
-    float: left;
-    margin-bottom: 3px;
-    margin-left: -11px;
-    padding: 5px;
-    position: relative;
-    text-align: center;
-    text-decoration: none !important;
-    text-shadow: none;
-    top: 121px;
-    width: 92px;
+.uploadify {
+	margin-left: 260px;
 }
-.remove:hover{width: 92px;}
- 
 
+.remove {
+	background: none repeat scroll 0 0 #43B2EC;
+	border: 0 none;
+	border-radius: 6px 6px 6px 6px;
+	color: #F9F9F9;
+	cursor: pointer !important;
+	float: left;
+	margin-bottom: 3px;
+	margin-left: -11px;
+	padding: 5px;
+	position: relative;
+	text-align: center;
+	text-decoration: none !important;
+	text-shadow: none;
+	top: 121px;
+	width: 92px;
+}
+
+.remove:hover {
+	width: 92px;
+}
 </style>
 
 <div class="navheadlp" style="padding-left: 151px;">
 	<ul>
-		<li style="margin-left: 40px; color: #f06c0b;"><span> <img
-				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px; height: 22px;">
-		</span> <fmt:message key="course.DescribeCourse"/></li>
+		<c:if test="${courseId == null}">
+			<li style="margin-left: 40px; color: #f06c0b;"><a
+				href="/ziksana-web/zcourse/createcourse"><span> <img
+						src="/ziksana-web/resources/images/navarrow.png"
+						style="margin-right: 10px; height: 22px;">
+				</span> <fmt:message key="course.DescribeCourse" /></a></li>
+		</c:if>
+		<c:if test="${courseId != null}">
+			<li style="margin-left: 40px; color: #f06c0b;"><a
+				href="/ziksana-web/zcourse/editcourse/${courseId}"><span>
+						<img src="/ziksana-web/resources/images/navarrow.png"
+						style="margin-right: 10px; height: 22px;">
+				</span> <fmt:message key="course.DescribeCourse" /></a></li>
+		</c:if>
+		<c:if test="${courseId != null}">
+			<li><a href="/ziksana-web/zcourse/createmodule/${courseId}"><span><img
+						src="/ziksana-web/resources/images/navarrowb.png"
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Define.Structure" /></a></li>
+		</c:if>
+		<c:if test="${courseId != null}">
+			<li><a
+				href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
+						src="/ziksana-web/resources/images/navarrowb.png"
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Associate.content" /></a></li>
+		</c:if>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Define.Structure"/></li>
-		<li><span><img
-				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Associate.content"/> </li>
-		<li><span><img
-				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Define.assignment"/> </li>
+				style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+				key="Define.assignment" /></li>
 
 	</ul>
 
@@ -319,7 +346,9 @@ function inputLimiter(e,allow) {
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1><fmt:message key="Provide.Course.Details"/></h1>
+		<h1>
+			<fmt:message key="Provide.Course.Details" />
+		</h1>
 	</div>
 	<div class="widget-body form">
 		<!-- BEGIN FORM-->
@@ -327,33 +356,35 @@ function inputLimiter(e,allow) {
 			<!--Course Name-->
 			<div class=" ">
 				<div class="control-group">
-					<input type="hidden" id="courseid" value="${courseId}"  /> <input
+					<input type="hidden" id="courseid" value="${courseId}" /> <input
 						type="hidden" id="moduleexists" value="${module}" /> <label
-						class="control-label nexaf" for="Course Name"><fmt:message key="Course.name"/>
-						</label>
+						class="control-label nexaf" for="Course Name"><fmt:message
+							key="Course.name" /> </label>
 					<div class="controls">
 						<input type="text" autofocus
-							class="defaultvaluem treeRoot validate[required]"
+							class="defaultvaluem treeRoot validate[required] editmode"
 							id="defaultvalue" maxlength="64"
 							style="width: 240px; margin-left: 10px; color: #666;"
-							tabindex="1" placeholder="<fmt:message key="course.enter.name"/>" onchange="return trim(this)"
-							/>
+							tabindex="1" placeholder="<fmt:message key="course.enter.name"/>"
+							onchange="return trim(this)" />
 					</div>
 
-					<br /> <label for="Course Description" class="nexaf"><fmt:message key="course.description"/></label>
-					 <!-- <a class="f-r _plainText" id="plainText"
+					<br /> <label for="Course Description" class="nexaf"><fmt:message
+							key="course.description" /></label>
+					<!-- <a class="f-r _plainText" id="plainText"
 						href="#linkurl" style="text-decoration: none;"
 						onclick="showplain()">Rich Text Editor</a> <a
 						class="f-r _richText" id="richText" href="#linkurl"
 						style="text-decoration: none; display: none;" onclick="showrich()">Plain
 						Text Editor</a> -->
-				<!-- 	<textarea cols="124" rows="8" id="Cdescription"
+					<!-- 	<textarea cols="124" rows="8" id="Cdescription"
 						class="_plainTextShow defaultvaluem labelclass"
 						style="width: 100%; color: #666;"> 
 											</textarea> -->
 					<br />
 					<div class="_richTextShow">
-						<textarea id="Cdescriptionrte" name="editor1pageload" placeholder='<fmt:message key="course.descrip.placeholder"/>'
+						<textarea id="Cdescriptionrte" name="editor1pageload"
+							placeholder='<fmt:message key="course.descrip.placeholder"/>'
 							class="defaultvalue _focus"></textarea>
 					</div>
 					<script type="text/javascript">
@@ -370,10 +401,12 @@ function inputLimiter(e,allow) {
 			<!--Course Selection-->
 			<div class="control-group" style="margin-top: 20px;">
 				<div>
-					<label class="labelclass nexaf f-l"> <fmt:message key="course.area"/> </label> <label
-						class="labelclass nexaf f-l" style="margin-left: 217px;">
-						<fmt:message key="course.subject"/></label> <label class="labelclass nexaf f-l"
-						style="margin-left:200px;"><fmt:message key="course.topic"/></label>
+					<label class="labelclass nexaf f-l"> <fmt:message
+							key="course.area" />
+					</label> <label class="labelclass nexaf f-l" style="margin-left: 217px;">
+						<fmt:message key="course.subject" />
+					</label> <label class="labelclass nexaf f-l" style="margin-left: 200px;"><fmt:message
+							key="course.topic" /></label>
 				</div>
 
 				<div class="clearfix"></div>
@@ -381,11 +414,17 @@ function inputLimiter(e,allow) {
 				<div class="moduleselection">
 					<select name="s_example" id="Careaddl" class="select"
 						onclick="getArea();">
-						<option value="0"><fmt:message key="course.choose.option"/></option>
+						<option value="0">
+							<fmt:message key="course.choose.option" />
+						</option>
 					</select> <select name="s_example" class="select" id="Csubjectddl">
-						<option value="0"><fmt:message key="course.choose.option"/></option>
+						<option value="0">
+							<fmt:message key="course.choose.option" />
+						</option>
 					</select><select name="s_example" class="select" id="Ctopicddl">
-						<option value="0"><fmt:message key="course.choose.option"/></option>
+						<option value="0">
+							<fmt:message key="course.choose.option" />
+						</option>
 					</select>
 				</div>
 				<!-- end of moduleselection--->
@@ -393,50 +432,58 @@ function inputLimiter(e,allow) {
 			</div>
 			<!--end of Subject Selection-->
 			<div class="control-group" style="width: 65%">
-				<label class="control-label nexaf" for="Specify Tags" style="width:229px"><fmt:message key="course.SpecifyTags"/>
-					</label>
-				<div class="controls" style="margin-left:229px">
-					<input type="text" class="tags" id="Ctagfield_course"
-						value="" />
+				<label class="control-label nexaf" for="Specify Tags"
+					style="width: 229px"><fmt:message key="course.SpecifyTags" />
+				</label>
+				<div class="controls" style="margin-left: 229px">
+					<input type="text" class="tags" id="Ctagfield_course" value="" />
 				</div>
 			</div>
 			<div class="control-group f-l">
 				<label class="control-label nexaf" for="Course Credits"
-					style="width: 230px;"><fmt:message key="specify.courseCredits"/></label>
+					style="width: 230px;"><fmt:message
+						key="specify.courseCredits" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner" value="0" 
-						style="width: 50px;" maxlength="2" onkeypress="return inputLimiter(event,'Numbers')" />
+					<input type="text" name="spi" id="spinner" value="0"
+						style="width: 50px;" maxlength="2"
+						onkeypress="return inputLimiter(event,'Numbers')" />
 				</div>
 			</div>
 			<div class="control-group f-l">
 				<label class="control-label nexaf" for="Course Credits"
-					style="margin-left: 88px; width: 220px;"><fmt:message key="specify.courseCreditsExtra"/></label>
+					style="margin-left: 88px; width: 220px;"><fmt:message
+						key="specify.courseCreditsExtra" /></label>
 				<div class="controls" style="width: 212px;">
-					<input type="text" name="spi" id="spinner2" value="0" 
-						style="width: 50px;"  maxlength="2" onkeypress="return inputLimiter(event,'Numbers')"/>
+					<input type="text" name="spi" id="spinner2" value="0"
+						style="width: 50px;" maxlength="2"
+						onkeypress="return inputLimiter(event,'Numbers')" />
 				</div>
 			</div>
 			<div class="clearfix"></div>
 			<div class="control-group f-l">
-				<label class="control-label nexaf" for="input" style="width: 230px;"><fmt:message key="Specify.CourseDuration"/></label>
+				<label class="control-label nexaf" for="input" style="width: 230px;"><fmt:message
+						key="Specify.CourseDuration" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner3"  value="0"
-						style="width: 50px;" maxlength="2" onkeypress="return inputLimiter(event,'Numbers')" />
+					<input type="text" name="spi" id="spinner3" value="0"
+						style="width: 50px;" maxlength="2"
+						onkeypress="return inputLimiter(event,'Numbers')" />
 				</div>
 			</div>
 
 
 			<select name="SelectArea" id="Cdurationtype" class="defaultvalue f-l"
-				style="margin-left: 20px;width:110px">
+				style="margin-left: 20px; width: 110px">
 				<option value="1">Weeks</option>
-				
+
 			</select>
 			<div class="clearfix"></div>
-			
-			<div style="margin-top: 0px;">
-				<label style="width: 260px;" for="input" class="control-label nexaf"><fmt:message key="Associate.Image"/></label>
 
-				<div style="width: 122px; height: 105px; float: left;padding-top:15px">
+			<div style="margin-top: 0px;">
+				<label style="width: 260px;" for="input" class="control-label nexaf"><fmt:message
+						key="Associate.Image" /></label>
+
+				<div
+					style="width: 122px; height: 105px; float: left; padding-top: 15px">
 					<img id="course_thumbnail_image"
 						src="${staticFileServer}resources/images/preview/defaultcourse.png"
 						align="left" /> <input readonly="readonly" type="hidden"
@@ -456,8 +503,8 @@ function inputLimiter(e,allow) {
 										{
 											'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 											'queueSizeLimit' : 1,
-											 'successTimeout' : 350,
-											 'buttonText' : 'Upload Image',
+											'successTimeout' : 350,
+											'buttonText' : 'Upload Image',
 											'uploader' : '${ms.uploadScript}',
 											//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 											'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
@@ -515,7 +562,9 @@ function inputLimiter(e,allow) {
 				</script>
 			</div>
 			<button class="btn f-r" type="button"
-				onClick="createCourse();return false;"><fmt:message key="btn.save.continue"/></button>
+				onClick="createCourse();return false;">
+				<fmt:message key="btn.save.continue" />
+			</button>
 			<div class="clearfix"></div>
 		</form>
 	</div>
@@ -541,32 +590,33 @@ function inputLimiter(e,allow) {
 </div>
 <style>
 .select2-container {
-    
-    margin-right: 70px!important;
-    
-    width: 235px;
-}
-.formErrorContent {
-    
-    color: red;
-    left: 67px;
-    overflow: auto;
-    position: relative;
-    top: 81px;
-}
-.uploadify-queue{margin-left:260px}
-@media screen and (-webkit-min-device-pixel-ratio:0)
-{ 
-   .formErrorContent  {top: 0px;}
+	margin-right: 70px !important;
+	width: 235px;
 }
 
+.formErrorContent {
+	color: red;
+	left: 67px;
+	overflow: auto;
+	position: relative;
+	top: 81px;
+}
+
+.uploadify-queue {
+	margin-left: 260px
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.formErrorContent {
+		top: 0px;
+	}
+}
 </style>
 <script type="text/javascript">
-function trim(el) {
-    el.value = el.value.
-    replace(/(^\s*)|(\s*$)/gi, ""). // removes leading and trailing spaces
-    replace(/[ ]{2,}/gi, " "). // replaces multiple spaces with one space 
-    replace(/\n +/, "\n"); // Removes spaces after newlines
-    return;
-}
+	function trim(el) {
+		el.value = el.value.replace(/(^\s*)|(\s*$)/gi, ""). // removes leading and trailing spaces
+		replace(/[ ]{2,}/gi, " "). // replaces multiple spaces with one space 
+		replace(/\n +/, "\n"); // Removes spaces after newlines
+		return;
+	}
 </script>

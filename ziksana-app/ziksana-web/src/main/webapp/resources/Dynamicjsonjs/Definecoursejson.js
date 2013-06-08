@@ -318,15 +318,14 @@ function getCourse() {
 	// course contains module is exists
 	var Course_id = $('#courseid').val();
 
-	$.ajax({
-		type : 'GET',
-		url : '/ziksana-web/zcourse/ismoduleexists/' + Course_id + '',
-		success : function(data) {
-
-			$('#moduleExists').val(data);
-
-		}
-	});
+	// $.ajax({
+	// type : 'GET',
+	// url : '/ziksana-web/zcourse/ismoduleexists/' + Course_id + '',
+	// success : function(data) {
+	// $('#moduleExists').val(data);
+	//
+	// }
+	// });
 	// validation = jQuery("#DegineCourse").validationEngine('validate');
 	// if(validation == true){
 	// Step 1: Assign Parameters required by the sendMessage function.
@@ -356,7 +355,7 @@ function getCourse() {
 							subject_area = data.subjectarea;
 							subject = data.subject;
 							topic = data.topic;
-							// tag_field = data.tagfield;
+							tag_field = data.tagfield;
 							selected_tags = data.selected_tags.split(',');
 							available_tags = data.selected_tags.split(',');
 							credits = data.credits;
@@ -366,7 +365,7 @@ function getCourse() {
 							image_upload = data.imageupload;
 
 							if (image_upload == '') {
-								thumbnail_url = '/ziksana-web/resources/images/default-course.jpg';
+								thumbnail_url = '/ziksana-web/resources/images/preview/defaultcourse.png';
 							} else {
 								thumbnail_url = media_server_url + image_upload;
 							}
@@ -374,34 +373,15 @@ function getCourse() {
 									thumbnail_url);
 							$('#thubmnail_upload_message')
 									.html(
-											'<a onclick="remove_uploaded_thumbnail();" title="Remove Image">[X] Remove</a>');
+											'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
 
 							$('#courseid').val(course_id);
 
 							$('#defaultvalue').val(course_name);
 
-							console.log(course_desc);
+							$('#Cdescriptionrte').val(course_desc);
 
-							if (course_desc.charAt(0) == '<') {
-
-								$('#Cdescriptionrte').val(course_desc);
-
-								$('#rich_text_editor').click();
-
-							} else {
-
-								$('#Cdescription').val(course_desc);
-
-							}
-
-							// $('#Ctagfield_e').val(selected_tags);
-
-							$("#Ctagfield_e").superblyTagField({
-								allowNewTags : true,
-								showTagsNumber : 10,
-								preset : selected_tags,
-								tags : available_tags
-							});
+							$('#Ctagfield_course').val(selected_tags);
 
 							$('#Credits').val(credits);
 

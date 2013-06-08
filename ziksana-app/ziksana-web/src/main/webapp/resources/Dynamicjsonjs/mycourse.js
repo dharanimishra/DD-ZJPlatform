@@ -170,20 +170,25 @@ function getDiv(courseObject) {
 			+ '<div class="description">'
 			+ '<a onclick="deleteCourse('
 			+ courseObject.id
-			+ ');" title="Delete" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg" style="height: 35px;" /></a> <a href="'
-			+ viewer_url
-			+ '"  class="show_in_fancybox pull-right"  title="Edit" data-fancybox-type="iframe"><img src="../../resources/images/content/edit.svg" style="height: 35px;" /></a>'
-			
-			+'<a href="#linkurl"  title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>'
+			+ ');" title="Delete" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg" style="height: 35px;" /></a> <a onclick="editCourse('
+			+ courseObject.id
+			+ ');"  class="pull-right"  title="Edit"><img src="../../resources/images/content/edit.svg" style="height: 35px;" /></a>'
 
-			+'<a href="#linkurl" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
+			// +'<a href="#linkurl" title="Review playbook"
+			// class="pull-right"><img class="iconcc"
+			// src="../../resources/images/content/reviewplaybook.svg"
+			// style="height:35px;"/></a>'
+
+			// +'<a href="#linkurl" title="Publish" class="pull-right"><img
+			// src="../../resources/images/content/publish.svg"
+			// style="height:35px;"/></a>'
 			+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
 
 	return learningContentDiv;
 
 }
 
-function  getPageDiv(noOfPages, filterType) {
+function getPageDiv(noOfPages, filterType) {
 	var pageDiv = $('#pageNumbers');
 	var functionName = '';
 	if ("ALL" == filterType) {
@@ -205,51 +210,35 @@ function  getPageDiv(noOfPages, filterType) {
 	}
 }
 
-function deleteCourse(course_id) {
+function editCourse(courseId) {
 
-	// Checking for Content Association
+	// Edit Course
+console.log("courseId :"+courseId);
+	if (courseId != null) {
+		window.location.href = '/ziksana-web/zcourse/editcourse/COURSE_' + courseId;
+	} else {
+		window.location.href = '/ziksana-web/zcourse/createcourse';
+	}
+}
 
-	uri = '/ziksana-web/zcourse/1/checkcontentassociation';
-	var parameters = {
-		"contentId" : content_id
-	};
-	$
-			.post(
-					uri,
-					parameters,
-					function(data) {
-						console.log(data);
-						if (data.response == 'active') {
-							confirm_delete = confirm('This content is associated with a course. Please delink the content with the course to proceed with Delete');
-							if (confirm_delete == true) {
-								window.location.href = "/ziksana-web/zcourse/1/mycontent";
-							}
-						} else {
-							confirm_delete = confirm('Are you sure to delete?');
-							if (confirm_delete == true) {
-								uri = '/ziksana-web/zcourse/1/deletecontent';
-								var parameters = {
-									"contentId" : content_id
-								};
-								$
-										.post(
-												uri,
-												parameters,
-												function(data) {
-													console.log(data);
-													if (data.response == 'success') {
-														window.location.href = "/ziksana-web/zcourse/1/mycontent";
-													} else {
-														window.location.href = "/ziksana-web/zcourse/1/mycontent";
-													}
+function deleteCourse(courseId) {
 
-												});
+	// Delete Course
 
-							}
-						}
+	confirm_delete = confirm('Are you sure to delete?');
+	if (confirm_delete == true) {
 
-					});
-
+		uri = '/ziksana-web/zcourse/1/removecourse';
+		var parameters = {
+			"courseId" : courseId
+		};
+		$.post(uri, parameters, function(data) {
+			console.log(data);
+			window.location.href = "/ziksana-web/zcourse/1/mycourse";
+		});
+	} else {
+		window.location.href = "/ziksana-web/zcourse/1/mycourse";
+	}
 }
 
 $(function() {

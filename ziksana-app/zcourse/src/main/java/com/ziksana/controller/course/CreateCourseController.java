@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.common.MediaServerURL;
+import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseEditResponse;
@@ -164,14 +165,13 @@ public class CreateCourseController {
 				LOGGER.debug("Module Size= >" + isModuleExists);
 			}
 			if (course_id > 0) {
-				modelView = new ModelAndView("createcourse");
+				modelView = new ModelAndView("mastercreatecourse");
 				mediaServerURL = mediaService.getMediaContents();
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("ms", mediaServerURL);
 				modelView.addObject("module", isModuleExists);
-			}
-			// TODO do we need this else?? secondly it can lead to null pointer.
-			else {
+			} else {
+				modelView = new ModelAndView("mastercreatecourse");
 				mediaServerURL = mediaService.getMediaContents();
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("ms", mediaServerURL);
@@ -316,6 +316,7 @@ public class CreateCourseController {
 				course.setCourseId(courseId);
 				course.setName(CourseName);
 				course.setDescription(CourseDescription);
+
 				course.setCourseStatus(CourseStatus.DRAFT);
 				course.setCourseStatusId(CourseStatus.DRAFT.getID());
 				course.setAccountableMember(accountableMember);
@@ -340,8 +341,10 @@ public class CreateCourseController {
 				course.setCourseCredits(CourseCredits);
 				course.setExtraCredits(CourseExtraCredits);
 				course.setThumbnailPicturePath(UploadImage);
+
 				course.setCourseStatus(CourseStatus.DRAFT);
 				course.setCourseStatusId(CourseStatus.DRAFT.getID());
+				LOGGER.info("CourseStatus :" + CourseStatus.DRAFT.getID());
 
 				course.setAdditionalInfoIndicator(true);
 				course.setIsDelete(false);

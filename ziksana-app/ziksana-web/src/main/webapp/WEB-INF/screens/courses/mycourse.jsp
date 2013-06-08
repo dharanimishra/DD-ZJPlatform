@@ -142,9 +142,9 @@
 
 	<div class="isotophead pull-right">
 		<div class="isotoplinks">
-			<a href="#" class="active_filter" onclick="getAllCourse()">All</a>|<a
+			<a href="#" class="active_filter" onclick="getAllCourse()">All</a>|<a href="#"
+				onclick="getDraftCourse('DRAFT')">Draft</a>|<a
 				href="#" onclick="getActiveCourse('ACTIVE')">Active</a>|<a href="#"
-				onclick="getDraftCourse('DRAFT')">Draft</a>|<a href="#"
 				onclick="getReviewCourse('REVIEW')">Review</a>
 
 		</div>

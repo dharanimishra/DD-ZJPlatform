@@ -84,8 +84,8 @@ public class MyCoursesController {
 		try {
 			List<Course> draftedCourses = courseService
 					.getCoursesByStatus(CourseStatus.DRAFT);
-			List<Course> reviewedCourses = courseService
-					.getCoursesByStatus(CourseStatus.READY_FOR_RELEASE);
+//			List<Course> reviewedCourses = courseService
+//					.getCoursesByStatus(CourseStatus.READY_FOR_RELEASE);
 			List<Course> activeCourses = courseService
 					.getCoursesByStatus(CourseStatus.ACTIVE);
 
@@ -93,7 +93,7 @@ public class MyCoursesController {
 
 			// TODO we need to add object
 			mv.addObject("DRAFTED_COURSES", draftedCourses);
-			mv.addObject("REVIEWED_COURSES", reviewedCourses);
+			//mv.addObject("REVIEWED_COURSES", reviewedCourses);
 			mv.addObject("ACTIVE_COURSES", activeCourses);
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
