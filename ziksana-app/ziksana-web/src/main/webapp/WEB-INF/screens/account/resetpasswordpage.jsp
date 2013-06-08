@@ -393,7 +393,7 @@ function securityQuestionOne(){
 	if(securityAnswerOne == ''){
 		$('#errorAnswerOneResponse').html("<fmt:message key="resetpass.remember.text"/><a href='#'><fmt:message key="login.Administrator"/></a>");		
 	}else {
-		if(("#errorAnswerOneResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
+		if(("#errorAnswerOneResponse.inside:contains('<fmt:message key="resetpass.remember.text"/>')")){
 			document.getElementById("errorAnswerOneResponse").innerHTML = '';
 		}
 		$.post( '/ziksana-web/unsecure/0/checkfirstanswer'
@@ -422,9 +422,9 @@ function securityQuestionTwo(){
 	console.log(securityAnswerTwo);
 	console.log(securityQuestionTwoText);
 	if(securityAnswerTwo == ''){
-		$('#errorAnswerTwoResponse').html("<fmt:message key="restpass.enterAns"/>");		
+		$('#errorAnswerTwoResponse').html("<fmt:message key="resetpass.remember.text"/><a href='#'><fmt:message key="login.Administrator"/></a>");		
 	}else {
-		if(("#errorAnswerTwoResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
+		if(("#errorAnswerTwoResponse.inside:contains('<fmt:message key="resetpass.remember.text"/>')")){
 			document.getElementById("errorAnswerTwoResponse").innerHTML = '';
 		}
 		$.post( '/ziksana-web/unsecure/0/checksecondanswer'

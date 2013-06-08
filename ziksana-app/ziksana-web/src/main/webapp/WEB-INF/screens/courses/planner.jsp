@@ -28,13 +28,13 @@
 		<h1>Organize your planner for course </h1>
 	</div>
 	<div class="clearfix"></div>
-<form>
+<form onsubmit="callFunction()">
 	<div id="0"> 
 		<div text="${coursename}" class="planner_data" id="COURSE_${courseIds}"
 		im0="${courseIcon}" im1="${courseIcon}" im2="${courseIcon}" call="1"
 		open="1" select="1" parentId="0">
 		<div>
-		<input type='hidden' value='COURSE' name='node_type[]'/><input type='hidden' value='${courseIds}' name='node_id[]'/>
+		<input type='hidden' value='COURSE_${coursename}' name='node_type[]'/><input type='hidden' value='COURSE_${courseIds}' name='node_id[]'/>
 		<span class='node_title'>${coursename}</span>
 		<input type='text' value="" disabled="disabled" class="duration course_duration">
 		<input type="text" class="start_week" placeholder="SW" disabled="disabled">
@@ -43,6 +43,7 @@
 		<select disabled="disabled"><option>EDay</option></select>
 		<input type="text" class="note" placeholder="Note" disabled="disabled"/>
 		</div>
+		
 	<%
 	 	List<NestTreeNode> list = (List<NestTreeNode>) request.getAttribute("parentList");
 	 	if (list != null)
@@ -101,6 +102,11 @@
 }
 
 </style>
+<script type="text/javascript">
+function callFunction(){
+	alert("Hi");
+}
+</script>
 
 <%!public String printTree(List<NestTreeNode> parents) {
 		StringBuffer sb = new StringBuffer();

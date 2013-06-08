@@ -505,7 +505,7 @@ function get_and_populate_selecttag(){
 			
 			$('select#todo_categories').html(select);
 			$(data).find("todoitem").each(function(index){
-				$('select#update_todo_categories'+$(this).find('id').text()+'').html(updateselect);
+				$('select#update_todo_categories'+$(this).find('id').text()+'').prepend(updateselect);
 			});
 		}
 	});

@@ -404,7 +404,7 @@
 						 <a   id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					      
-						  <div class="editcontroll border-user"  id="Edit_pass" ><a style="float:right;cursor:pointer;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
+						  <div class="editcontroll border-user"  id="Edit_pass" ><a style="float:right;cursor:pointer;margin-right: -17px;margin-top: -12px;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
 						  <p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetResponse"></p>
      						<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetFailResponse"></p>
 						  <label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
@@ -434,7 +434,7 @@
 						   <p id="alternateEmailError" style="color:red;text-align:center"></p>
 						   <div style="margin-top:6px;">
 						  
-					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit('${profileAnswerOne.alternateEmailId}')" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
+					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  </div>
 					      </div>
@@ -717,14 +717,14 @@ function clearProfileForm(){
 	}
 	
 	function editFeilds(divid){
-		
+
 		$('#'+divid).slideToggle();
 		$("#lblaltEmail").hide();
 		}
 	
 		function showlbl(divid){
-			var dbEmail = "<c:out value='${profileAnswerOne.alternateEmailId}'></c:out>";
-			document.getElementById("alttenateEmailValue").value = dbEmail;
+		var val = "${profileAnswerOne.alternateEmailId}";
+			document.getElementById("alttenateEmailValue").value = val;
 			document.getElementById("alternateEmailError").innerHTML = '';
 			$('#'+divid).slideToggle();
 			$("#EditAlt_mail").hide();
@@ -758,37 +758,50 @@ function clearProfileForm(){
 		$('#'+divid).slideToggle();
 		$("#Editsq2").hide();
 		}
-		function alterEmailSubmit(email){
-			
+		function alterEmailSubmit(){
+			primary = $("#primaryEmailId").text();
 			alternateEmailId = $("#alttenateEmailValue").val();
+			
 			memberIdVal = $("#memberIdValue").text();
 			if(alternateEmailId != ''){
-				if (primaryEmailId == alternateEmailId) {
-					$('#alternateEmailError').html("<fmt:message key="profile.error.altemail"></fmt:message>");
-					
-				}else{
-					if(("#alternateEmailError.inside:contains('email')")){
-					document.getElementById("alternateEmailError").innerHTML = '';
-					}
-				}
+				
 				var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
 				if(alternateEmailId.match(mailformat))  
 				{  
-					$.post( '/ziksana-web/profile/1/updatealternatemail'
-					        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId}
-					        , function( data )
-					        {
-					        
-					        	if(data == 2){
-				
-						          	   $('#alternateMailLabel').html(alternateEmailId);						          	  
-						          	 showlbl('lblaltEmail');
-						             }
-							
-					        }
-							 ); 
+					console.log(primary);
+					console.log(alternateEmailId)
+					if (primary == alternateEmailId) {
+						
+						$('#alternateEmailError').html("<fmt:message key="profile.error.altemail"></fmt:message>");
+						
+					}else{
+						if(("#alternateEmailError.inside:contains('email')")){
+						document.getElementById("alternateEmailError").innerHTML = '';
+						}
+						
+						$.post( '/ziksana-web/profile/1/updatealternatemail'
+						        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId}
+						        , function( data )
+						        {
+						        	
+						        	if(data == 2){
 					
-					document.getElementById("alternateEmailError").innerHTML = '';
+							          	   $('#alternateMailLabel').html(alternateEmailId);
+							          	 //$('#alttenateEmailValue').val(alternateEmailId);
+							          	 	//document.getElementById("alttenateEmailValue").value =;
+							          	 $('#lblaltEmail').slideToggle();
+										 $("#EditAlt_mail").hide();
+							          	// showlbl('lblaltEmail');
+							             }
+								
+						        }
+								 ); 
+						
+						document.getElementById("alternateEmailError").innerHTML = '';
+					}
+					
+					
+					
 				}else{
 					$('#alternateEmailError').html("<fmt:message key="profile.error.invalid"/>");
 					
@@ -829,7 +842,7 @@ $(document).ready(function() {
 
    
     //if the password length is less than 6, return message.
-    if (password.length < 6) { 
+    if (password.length < 8) { 
 		$('#errorNewPassword').removeClass();
 		/*$('#result').addClass('short')*/
 		$('#errorNewPassword').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span></span><br/><span style="color:orange;"><fmt:message key="resetpass.8char"/></span>');
@@ -861,7 +874,7 @@ $(document).ready(function() {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('weak');
 		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/> </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
-		return false;			
+		return true;			
 	} else if (strength == 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('good');
