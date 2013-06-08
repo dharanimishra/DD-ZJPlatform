@@ -431,7 +431,7 @@
 						  <div class="editcontroll border-user" id="EditAlt_mail" ><a style="float:right;cursor:pointer;margin-right: -16px; margin-top: -12px;" onclick="showlbl('lblaltEmail');" title="Close">[X]</a>
 						   <label class="control-label nexaf" for="Course Name"><fmt:message key="profile.alternateemail"></fmt:message> :</label>
 						   <input type="text" style="width:365px;margin-left:19px;" id="alttenateEmailValue"  name="alt_mail" value="${profileAnswerOne.alternateEmailId}" />
-						   <p id="alternateEmailError" style="color:red;text-align:center"></p>
+						   <p id="alternateEmailError" style="color:red;margin-left:184px;"></p>
 						   <div style="margin-top:6px;">
 						  
 					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
@@ -808,7 +808,7 @@ function clearProfileForm(){
 				}
 			
 		}else{
-			$('#alternateEmailError').html("Enter alternate EmailId");
+			$('#alternateEmailError').html("<fmt:message key="enter.alt.email"/>");
 		}
 		}
 		
@@ -873,7 +873,7 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('weak');
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/> </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
+		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/> </span><br/><span style="color:orange;"><fmt:message key="restpass.passworddes"/>  </span>');
 		return true;			
 	} else if (strength == 2 ) {
 		$('#errorNewPassword').removeClass();
