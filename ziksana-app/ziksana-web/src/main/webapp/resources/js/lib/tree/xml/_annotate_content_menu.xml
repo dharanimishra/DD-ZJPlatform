@@ -6,10 +6,10 @@
 		
 		<!--Menu For the Second Child Elements i.e. content node  -->
 		<item text="View Content" img="view.png"  id="View"></item>	
+		<item text="Annotate" img="annotate.svg"  id="Annotate"></item>	
 		<item text="View Content" img="view.png"  id="View"></item>	
 		<item text="Delete content" img="cross.png"  id="Delete"></item>
 		<!-- 
-		<item text="Annotate" img="annotate.svg"  id="Annotate"></item>	
 		<item text="Associate Content" img="plus.png"  id="Associate_Content"></item>	
 		<item text="Edit content" img="edit.png" id="Edit"></item>
 		<item text="Enhance content" img="enhance.png"  id="Enhance"></item> 

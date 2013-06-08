@@ -179,7 +179,7 @@ function createtree(course_id) {
 	menu.setIconsPath("/ziksana-web/resources/js/lib/tree/treeimages/images/");
 	menu.renderAsContextMenu();
 	menu.attachEvent("onClick", onButtonClick);
-	menu.loadXML("/ziksana-web/resources/js/lib/tree/xml/_associate_content_menu.xml");
+	menu.loadXML("/ziksana-web/resources/js/lib/tree/xml/_annotate_content_menu.xml");
 
 	tree = new dhtmlXTreeObject("treeboxbox_tree", "100%", "100%", 0);
 	tree.setSkin('dhx_skyblue');
@@ -238,14 +238,14 @@ function createtree(course_id) {
 			//menu.hideItem('ModuleEdit');
 			menu.hideItem('View');
 			menu.hideItem('Delete');
-			//menu.hideItem('Annotate');
+			menu.hideItem('Annotate');
 			menu.hideItem('Search_Associate_Content');
 		}
 
 		if (node_type == "COMPONENT") {
 			menu.hideItem('View');
 			menu.hideItem('Delete');
-			//menu.hideItem('Annotate');
+			menu.hideItem('Annotate');
 			//menu.hideItem('CourseEdit');
 			//menu.showItem('Delete');
 			//menu.showItem('Associate_Content');
@@ -255,7 +255,7 @@ function createtree(course_id) {
 		if (node_type == "CONTENT") {
 			menu.showItem('View');
 			console.log("Showing annnotate also");
-			//menu.showItem('Annotate');
+			menu.showItem('Annotate');
 			menu.showItem('Delete');
 			menu.hideItem('Search_Associate_Content');
 		}
