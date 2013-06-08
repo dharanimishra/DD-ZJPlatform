@@ -234,8 +234,8 @@ ___$tag_____$tag_______________________________').html(_______$tag_____$tag____
 
 						<!--end of course name-->
 
-						<label for="Course Description" class="labelclass"
-							style="font-weight: bold;"><b>Course Description :</b></label> <br />
+						<label for="Course Description" class="labelclass nexaf"
+							style="font-weight: bold;"><b>Course Description :</b></label> 
 						<div class="_richTextShow">
 							<textarea id="Cmoduledescrte" name="editor1pageload"
 								class="defaultvalue _focus">
