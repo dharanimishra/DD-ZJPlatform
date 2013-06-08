@@ -239,14 +239,14 @@
 <div class="navheadlp" style="padding-left: 151px;">
 	<ul>
 		<c:if test="${courseId == null}">
-		<li style="margin-left: 40px;"><a style="color: #f06c0b;"
+		<li style="margin-left: 40px;"><a 
 				href="/ziksana-web/zcourse/createcourse"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span> Describe Course</a></li>
 	  </c:if>
 	  
 	  	<c:if test="${courseId != null}">
-		<li style="margin-left: 40px;"><a style="color: #f06c0b;"
+		<li style="margin-left: 40px;"><a 
 				href="/ziksana-web/zcourse/editcourse/COURSE_${courseId}"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span> Describe Course</a></li>
@@ -264,13 +264,13 @@
 		</c:if>
 	
 		<c:if test="${courseId == null}">
-		<li style="color: #f06c0b;"><a
+		<li ><a style="color: #f06c0b;" 
 				href="/ziksana-web/zcourse/createcourse"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
-		<li style="color: #f06c0b;"><a
+		<li style="color: #f06c0b;"><a style="color: #f06c0b;" 
 				href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</a></li>
