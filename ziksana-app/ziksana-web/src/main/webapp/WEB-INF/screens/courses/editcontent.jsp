@@ -63,7 +63,7 @@
 	 		
 	 		
 	 %> 
-		<%--  <div class="edit_content_info" id="content_<%=content.getId()%>"> --%>
+		 <div class="edit_content_info" id="content_<%=content.getId()%>">
 		 <div class="Clearfix"></div>
 		 <% if(i%2==0) {%> 
 		<div class="uploadrowodd" style="padding: 10px;width:100%"> 
@@ -72,10 +72,6 @@
 		<% 
 		}%>
 	  <div class="uploadphoto pull-left" style="width: 350px">
-	 
-
-
-
 				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/preview/image.png" style="width: 100px;" align="left" />
 				<div id="message_<%=content.getId()%>"></div>
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
@@ -83,7 +79,7 @@
 						<input type="file" name="thumbnail_image_file_upload_<%=content.getId()%>" id="thumbnail_image_file_upload_<%=content.getId()%>" style="margin-left: 196px;" />
 							<input type="hidden" name="content_id[]" value="<%=content.getId()%>"/>
 							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
-							<input type="hidden" name="thumbnail_path[]" id="thumbnail_path_<%=content.getId()%>" value="<%=old_thumbnail_path%>"/>
+							<input type="hidden" name="thumbnail_path[]" id="thumbnail_path_<%=content.getId()%>" value=""/>
 						<div id="status_<%=content.getId()%>"></div>
 						<script type="text/javascript">
 							$(function() {
@@ -184,6 +180,7 @@ Topic</option> </select>
  i++;
 	}
 %>
+</div>
 
 <div class="clearfix"></div> 
 

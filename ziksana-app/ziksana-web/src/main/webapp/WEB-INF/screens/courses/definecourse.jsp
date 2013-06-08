@@ -407,7 +407,7 @@
 
 				<div class="moduleselection">
 					<select name="s_example" id="Careaddl" class="select"
-						onclick="getArea();">
+						onchange="getArea();">
 						<option value="0">
 							<fmt:message key="course.choose.option" />
 						</option>

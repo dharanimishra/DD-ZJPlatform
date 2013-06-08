@@ -323,7 +323,7 @@
 								<div style="width: 32%; margin-right: 2px" class="f-l">
 									<label class="labelclass nexaf f-l"> Module Area : </label> <select
 										name="s_example" id="Cmoduleareaddl" class="select"
-										onclick="getArea();">
+										onchange="getArea();">
 										<option value="0">choose a option...</option>
 									</select>
 								</div>
