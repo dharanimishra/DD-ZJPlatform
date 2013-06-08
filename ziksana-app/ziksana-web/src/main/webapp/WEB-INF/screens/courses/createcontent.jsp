@@ -290,6 +290,7 @@ table tr td {
 
 .preview_uploaded_content img {
 	width: 50px;
+	 height: 50px;
 }
 
 .preview_uploaded_content .title {
