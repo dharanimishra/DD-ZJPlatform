@@ -1208,7 +1208,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', end
 	letter-spacing: 1px;
 	margin-bottom: 20px;
 }
-
+.navheadlp li a {
+	 
+	font-size: 15px;
+	font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica,
+		sans-serif;
+	color: rgb(114, 114, 114);
+	 
+}
+.navheadlp li img {
+	 
+	width:22px;
+	
+	 
+}
 /*start of radiobutton css*/
 .radio {
 	display: none;

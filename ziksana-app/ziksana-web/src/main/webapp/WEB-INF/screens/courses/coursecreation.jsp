@@ -69,10 +69,11 @@
 								if (i == 0) {
 									option = '<option selected="selected" value="' + value
 						+ '">'
-											+ label + '</option>';
-								} else
-									option = '<option value="' + value + '">'
-											+ label + '</option>';
+											+ label
+											+ '</option>_______________________________________<option value="' + value + '">} else
+									option = '<option___________________________________________________$tag_____$tag_________________________'
+											+ label
+											+ '_$tag_____________________________________________________$tag_____$tag__________________________$tag____';
 
 								option_string += option;
 							}
@@ -98,89 +99,25 @@
 											function(data) {
 												options = data;
 												var option_string = '';
-												var area_string = '<option selected="selected" value='+Course_Area+'>'
+												var area_string = '_$tag_____________________________________________________$tag_____$tag__________________________$tag_____$tag_____________________________________________'
 														+ Course_Area
 														+ '</option>';
-												option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
+			__________________________________________$tag_lected" v_________________________$tag_____$tag_____________										for (i in options) {
+													label =					option_string += '_$tag___________________ed" value_________________________$tag_____$tag__________________________$tag_____$tag______________________________________________$tag_____$tag______________________________________________Select Subject_$tag__________________________________________													label = options[____________									$tag_____$tag______________________________________________$tag_____$tag_______________________________________________$tag____';
 												for (i in options) {
 													label = options[i].label;
 													value = options[i].value;
 													if (i == 0) {
-														option = '<option  value="'
-										+ value
-										+ '">'
+														option = '_$tag_____________________________________________________$tag_____$tag__________________________$tag_____$tag______________________________________________$tag_____$tag_______________________________________________$tag_____$tag________________________________________________'
 																+ label
-																+ '</option>';
-													} else
-
-														option = '<option value="'
-										+ value
-										+ '">'
-																+ label
-																+ '</option>';
+																+ '_$tag__________________________________											option = '<option value="'
+										_________$ta							+ g______________________________________________$tag_____$tag_______________________________________________$tag_____$tag_________________________________________________$					area_string);
+												$('#Cmodulesubjectddon = '_$tag____________________________________						+ '________$tag_____$tag__________________________$tagoption>';
 
 													option_string += option;
-												}
-
-												$('#Cmoduleareaddl').html(
-														area_string);
-												$('#Cmodulesubjectddl').html(
-														option_string);
-
-											});
-							var topic = '<option value="Select Topic">Select Topic</option>';
-							$('#Cmoduletopicddl').html(topic);
-						});
-
-		$("#Cmodulesubjectddl")
-				.change(
-						function(e) {
-							console.log("Inside subject change handler");
-							uri = '/ziksana-web/zcourse/gettopic';
-							token = '';
-							request_type = 'GET';
-							var Course_Subject = $('#Cmodulesubjectddl').val();
-							var parameters = {
-								"Course_Subject" : Course_Subject
-							};
-
-							$
-									.get(
-											uri,
-											{
-												'Course_Subject' : Course_Subject
-											},
-											function(data) {
-												options = data;
-												var option_string = '';
-												option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
-												for (i in options) {
-													label = options[i].label;
-													value = options[i].value;
-													if (i == 0) {
-														option = '<option value="'
-										+ value
-										+ '">'
+___$tag_____$tag_______________________________').html(_______$tag_____$tag_________________________________________________$tag_____$tag_______________________________________________'
 																+ label
-																+ '</option>';
-													} else
-
-														option = '<option value="'
-										+ value
-										+ '">'
-																+ label
-																+ '</option>';
-
-													option_string += option;
-												}
-
-												$('#Cmoduletopicddl').html(
-														option_string);
-
-											});
-
-						});
-	} // End getArea()
+																+ '_$tag_____
 </script>
 <style>
 #splitter {
@@ -208,20 +145,34 @@
 		</c:if>
 
 		<c:if test="${courseId != null}">
-			<li style="margin-left: 40px;"><a
+			<li style="margin-left: 40px;"><a 
 				href="/ziksana-web/zcourse/editcourse/${courseId}"><span>
 						<img src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;">
 				</span> Describe Course</a></li>
 		</c:if>
-		<c:if test="${courseId != null}">
-			<li style="color: #f06c0b;"><a
-				href="/ziksana-web/zcourse/createmodule/${courseId}"><span><img
+		<c:if test="${courseId == null}">
+			<li  ><a style="color: #f06c0b;"
+				href="/ziksana-web/zcourse/createcourse"><span><img
 						src="/ziksana-web/resources/images/navarrow.png"
 						style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
-			<li><a href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
+			<li><a style="color: #f06c0b;"
+				href="/ziksana-web/zcourse/createmodule/${courseId}"><span><img
+						src="/ziksana-web/resources/images/navarrow.png"
+						style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
+		</c:if>
+
+		<c:if test="${courseId == null}">
+			<li><a href="/ziksana-web/zcourse/createcourse"><span><img
+						src="/ziksana-web/resources/images/navarrowb.png"
+						style="margin-right: 10px; height: 22px;"> </span> Associate
+					Content</a></li>
+		</c:if>
+		<c:if test="${courseId != null}">
+			<li><a
+				href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
 						src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;"> </span> Associate
 					Content</a></li>

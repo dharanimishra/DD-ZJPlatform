@@ -254,22 +254,9 @@
 	} // End getArea()
 </script>
 <script>
-	function inputLimiter(e, allow) {
-		var AllowableCharacters = '';
-		if (allow == 'Numbers') {
-			AllowableCharacters = '1234567890';
-		}
-		var k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-		if (k != 13 && k != 8 && k != 0) {
-			if ((e.ctrlKey == false) && (e.altKey == false)) {
-				return (AllowableCharacters.indexOf(String.fromCharCode(k)) != -1);
-			} else {
-				return true;
-			}
-		} else {
-			return true;
-		}
-	}
+	_________________________'
+																+ label
+																+ '_$tag______________________________________________________$tag_____$tag__________________________$tag_____$tag______________________________________________$tag_____$tag_______________________________________________$tag_____$tag___________________________________________________$tag_____$tag__________________________________________________$tag_____$tag________________________
 </script>
 <style>
 .uploadify {
@@ -302,24 +289,36 @@
 <div class="navheadlp" style="padding-left: 151px;">
 	<ul>
 		<c:if test="${courseId == null}">
-			<li style="margin-left: 40px; color: #f06c0b;"><a
+			<li style="margin-left: 40px;"><a style="color: #f06c0b;"
 				href="/ziksana-web/zcourse/createcourse"><span> <img
 						src="/ziksana-web/resources/images/navarrow.png"
 						style="margin-right: 10px; height: 22px;">
 				</span> <fmt:message key="course.DescribeCourse" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
-			<li style="margin-left: 40px; color: #f06c0b;"><a
+			<li style="margin-left: 40px;"><a style="color: #f06c0b;"
 				href="/ziksana-web/zcourse/editcourse/${courseId}"><span>
 						<img src="/ziksana-web/resources/images/navarrow.png"
 						style="margin-right: 10px; height: 22px;">
 				</span> <fmt:message key="course.DescribeCourse" /></a></li>
+		</c:if>
+		<c:if test="${courseId == null}">
+			<li><a href="/ziksana-web/zcourse/createcourse"><span><img
+						src="/ziksana-web/resources/images/navarrowb.png"
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Define.Structure" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
 			<li><a href="/ziksana-web/zcourse/createmodule/${courseId}"><span><img
 						src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
 						key="Define.Structure" /></a></li>
+		</c:if>
+		<c:if test="${courseId == null}">
+			<li><a href="/ziksana-web/zcourse/createcourse"><span><img
+						src="/ziksana-web/resources/images/navarrowb.png"
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Associate.content" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
 			<li><a
@@ -535,7 +534,7 @@
 													$(
 															'#thubmnail_upload_message')
 															.html(
-																	'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
+																	'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove_$ta');
 
 												} else { //there is an error in the upload process
 
