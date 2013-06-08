@@ -243,9 +243,9 @@ function getDiv(learningContentObject) {
 			+ '<div class="description">'
 			+ '<a onclick="deleteContent('
 			+ learningContentObject.id
-			+ ');" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.png"style="height: 35px;" /></a> <a href="'
+			+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg"style="height: 35px;" /></a> <a href="'
 			+ viewer_url
-			+ '"  class="show_in_fancybox pull-right" data-fancybox-type="iframe"><img src="../../resources/images/content/view-content.png" style="height: 35px;" /></a>'
+			+ '"  class="show_in_fancybox pull-right" title="View content" data-fancybox-type="iframe"><img src="../../resources/images/content/view-content.svg" style="height: 35px;" /></a>'
 			+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
 
 	return learningContentDiv;

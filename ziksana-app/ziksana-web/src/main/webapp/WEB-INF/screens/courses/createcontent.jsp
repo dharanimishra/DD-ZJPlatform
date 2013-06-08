@@ -37,21 +37,26 @@ table tr td {
 	position: relative;
 	left: 10px;
 }
- .tile-content > a{
- width:100%;
-  height:100%;float:left
- }
- .brand a:hover{
- color:#fff!important;text-decoration:none
- }
- .tile-content > a >img {
-    height: 64px;
-    left: 50%;
-    margin-left: -32px;
-    margin-top: -32px;
-    position: absolute;
-    top: 50%;
-    width: 64px;
+
+.tile-content>a {
+	width: 100%;
+	height: 100%;
+	float: left
+}
+
+.brand a:hover {
+	color: #fff !important;
+	text-decoration: none
+}
+
+.tile-content>a>img {
+	height: 64px;
+	left: 50%;
+	margin-left: -32px;
+	margin-top: -32px;
+	position: absolute;
+	top: 50%;
+	width: 64px;
 }
 </style>
 
@@ -72,41 +77,44 @@ table tr td {
 <div class="Clearfix"></div>
 <div id="contentpanel">
 	<div class="tilecontainer pull-left"
-		style="margin-top: 40px; width: 140px;margin-left:10px;">
+		style="margin-top: 40px; width: 140px; margin-left: 10px;">
 
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
-				<a href="/ziksana-web/zcourse/1/createcontent">
-				<img src="${staticFileServer}resources/images/content/upload.png"   /></a>
+				<a href="/ziksana-web/zcourse/1/createcontent"> <img
+					src="${staticFileServer}resources/images/content/upload.png" /></a>
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;">Upload Content</a>
+					<a href="/ziksana-web/zcourse/1/createcontent"
+						style="font-size: 16px;">Upload Content</a>
 				</h3>
 			</div>
 		</div>
 		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
-				<a href="/ziksana-web/zcourse/1/weblinkcontent">
-				<img src="${staticFileServer}resources/images/content/link.png" /></a>
+				<a href="/ziksana-web/zcourse/1/weblinkcontent"> <img
+					src="${staticFileServer}resources/images/content/link.png" /></a>
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;">Add Web Link</a>
+					<a href="/ziksana-web/zcourse/1/weblinkcontent"
+						style="font-size: 16px;">Add Web Link</a>
 				</h3>
 			</div>
 		</div>
 		<div class="Clearfix"></div>
 	</div>
 	<!--end of tilescontainer-->
- 
-	<div class="contentarea pull-right" style="width: 940px;margin-right:25px">
+
+	<div class="contentarea pull-right"
+		style="width: 940px; margin-right: 25px">
 		<div class="createcontentwrapper">
 			<div class="uploadcontent1">
 
 				<div class="createcontentpanelhead">Upload Content</div>
 				<!--end of panel head-->
-				<div class="draganddrop pull-left" style=height:325px>
+				<div class="draganddrop pull-left" style="height: 325px">
 					<div style="margin-top: 30px; margin-left: 10px;">
 						<!-- <div style="width: 122px; height: 100px; float: left">
 								<img id="course_thumbnail_image" style="margin-left: 65px"
@@ -155,6 +163,8 @@ table tr td {
 																.log(data_object);
 
 														if (data_object.Uploaded == 'true') {
+															$('#message')
+																	.html('File uploaded successfully');
 															content_path = data_object.ContentPath;
 															content_name = data_object.ContentName;
 															content_type_id = data_object.ContentType;
@@ -230,10 +240,11 @@ table tr td {
 				<!--end of preview area-->
 				<div class="clearfix"></div>
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
-					<button href="#linkurl" class="btn blue pull-right"
-						style="margin-left: 10px;"> Cancel </button> <button
-						class="btn blue pull-right saveup1" id="sbtvalidation"
-						onClick="$('form#multiple_content_upload').submit();" disabled="disabled">Next</button>
+					<button onClick="cancelContent();" class="btn blue pull-right"
+						style="margin-left: 10px;">Cancel</button>
+					<button class="btn blue pull-right saveup1" id="sbtvalidation"
+						onClick="$('form#multiple_content_upload').submit();"
+						disabled="disabled">Next</button>
 					<div class="clearfix"></div>
 				</div>
 				<!--end of panel head-->
@@ -278,7 +289,8 @@ table tr td {
 }
 
 .preview_uploaded_content img {
-	width: 75px;
+	width: 50px;
+	 height: 50px;
 }
 
 .preview_uploaded_content .title {
@@ -292,12 +304,12 @@ a.remove_this {
 	color: white;
 	cursor: pointer;
 	display: inline-block;
-	font-size: 28px;
-	height: 42px;
-	line-height: 38px;
+	font-size: 22px;
+	height: 32px;
+	line-height: 27px;
 	text-align: center;
 	text-decoration: none;
-	width: 42px;
+	width: 33px;
 }
 
 a.remove_this:hover {
@@ -306,8 +318,12 @@ a.remove_this:hover {
 	text-decoration: none;
 }
 
-#thumbnail_image_file_upload > object, #thumbnail_image_file_upload-button {
-  cursor: pointer !important;
-  width: 230px !important;
+#thumbnail_image_file_upload>object,#thumbnail_image_file_upload-button
+	{
+	cursor: pointer !important;
+	width: 230px !important;
 }
+#message{color: green;
+    margin-top: -25px;
+    padding-left: 35px;}
 </style>

@@ -142,9 +142,9 @@
 
 	<div class="isotophead pull-right">
 		<div class="isotoplinks">
-			<a href="#" class="active_filter" onclick="getAllCourse()">All</a>|<a
+			<a href="#" class="active_filter" onclick="getAllCourse()">All</a>|<a href="#"
+				onclick="getDraftCourse('DRAFT')">Draft</a>|<a
 				href="#" onclick="getActiveCourse('ACTIVE')">Active</a>|<a href="#"
-				onclick="getDraftCourse('DRAFT')">Draft</a>|<a href="#"
 				onclick="getReviewCourse('REVIEW')">Review</a>
 
 		</div>
@@ -156,31 +156,11 @@
 	<hr>
 	<div class="announcementswrapper" style="margin-left: 50px;">
 		<form>
-			<input type="hidden" id="courses"
-				value='${courseAsJSONString}' /> <input type="hidden"
-				id="fileServerPath" value='${ms.uploadContent}' />
-			<!-- <div id="container4" class="createcontent-mainwrapper isotopbody"> -->
-
-				<div id="createcontent-main" class="item All Review">
-
-					<p class="createcontenthead">Science</p>
-					<p class="createcontentimg">
-						<img
-							src="${staticFileServer}resources/images/genetics.jpg" />
-					</p>
-					<div class="description">
-
-						<a href="#linkurl" class="pull-right"><img class="iconcc"
-							src="${staticFileServer}resources/images/content/edit.png"
-							style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
-							src="${staticFileServer}resources/images/content/deleteicon.png"
-							style="height: 35px;" /></a>
-
-					</div>
-					<div class="Clearfix"></div>
-
-				</div>
-			<!-- </div> -->
+			<input type="hidden" id="courses" value='${courseAsJSONString}' /> <input
+				type="hidden" id="fileServerPath" value='${ms.uploadContent}' />
+			<div id="container4" class="createcontent-mainwrapper isotopbody">
+		
+			</div>
 			<div class="Clearfix"></div>
 			<div id="pageNumbers" class="paginationbutton f-r"
 				style="padding: 10px;"></div>
@@ -205,15 +185,15 @@
 
 <script
 	src="${staticFileServer}resources/js/custom/bootstrap/js/bootstrap.min.js"></script>
-<script src="${staticFileServer}resources/js/custom/table/js/app.js"></script>
-<script>
+<!--  <script src="${staticFileServer}resources/js/custom/table/js/app.js"></script> -->
+<!-- <script>
 	jQuery(document).ready(function() {
 		// initiate layout and plugins
 
 		App.init();
 
 	});
-</script>
+</script> -->
 <style>
 .createcontentimg>img {
 	padding: 0;

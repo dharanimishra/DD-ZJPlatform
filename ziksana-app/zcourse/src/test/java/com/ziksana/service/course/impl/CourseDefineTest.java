@@ -89,8 +89,8 @@ public class CourseDefineTest extends BaseTest {
 		course1.setCourseId(150);
 		course1.setAccountableMember(authoredMember);
 		course1.setName("DMS 001");
-		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCTION);
-		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
+		//course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCTION);
+		//course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
 		course1.setDescription("Discrete Mathematics3");
 		course1.setSecurityIndicator(true);
 		CourseContentSecurity courseSecurity = new CourseContentSecurity();
@@ -120,8 +120,8 @@ public class CourseDefineTest extends BaseTest {
 		course1.setAccountableMember(authoredMember);
 
 		course1.setName("DMS 001");
-		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCTION);
-		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
+		//course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCTION);
+		//course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
 		// course1.setDescription("Discrete Mathematics3");
 
 		/*
@@ -240,8 +240,8 @@ public class CourseDefineTest extends BaseTest {
 		course1.setCourseId(150);
 		course1.setAccountableMember(authoredMember);
 		// course1.setName("DMS 001");
-		course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCTION);
-		course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
+		//course1.setCourseStatus(CourseStatus.UNDER_CONSTRUCTION);
+		//course1.setCourseStatusId(CourseStatus.UNDER_CONSTRUCTION.getID());
 		course1.setDescription("Discrete Mathematics3");
 		/*
 		 * course1.setSecurityIndicator(true); CourseContentSecurity

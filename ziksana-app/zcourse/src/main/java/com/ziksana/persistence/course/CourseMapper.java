@@ -34,10 +34,10 @@ public interface CourseMapper {
 	 * @param courseId
 	 * @return
 	 */
-	@Select({ "select courseid, name, description, coursestatus ",
+	@Select({ "select id, name, description, coursestatus ",
 			" from corcourse where id = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "courseId", column = "courseid"),
+			@Result(property = "courseId", column = "id"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description"),
 			@Result(property = "coursestatus", column = "coursestatus"),
@@ -45,7 +45,7 @@ public interface CourseMapper {
 	Course getBaseCourseDetails(Integer courseId);
 
 	@Select({ "select course.id as courseid, course.name, course.description, course.TotalCredits,course.ExtraCredits,course.CourseDuration,course.CourseDurationUnit,course.ThumbnailPicturePath,subjectclassification.SubjectArea,subjectclassification.SubjectCategory,subjectclassification.SubjectTopic from corcourse course,utlsubjectclassification subjectclassification where course.ID=#{courseId,jdbcType=INTEGER} and course.SubjClassificationId=subjectclassification.ID" })
-	@Results(value = { @Result(property = "id", column = "courseid"),
+	@Results(value = { @Result(property = "id", column = "id"),
 			@Result(property = "coursename", column = "name"),
 			@Result(property = "coursedesc", column = "description"),
 			@Result(property = "credits", column = "TotalCredits"),
@@ -54,8 +54,8 @@ public interface CourseMapper {
 			@Result(property = "durationtype", column = "CourseDurationUnit"),
 			@Result(property = "subjectarea", column = "SubjectArea"),
 			@Result(property = "subject", column = "SubjectCategory"),
-			@Result(property = "topic", column = "SubjectTopic"), 
-			@Result(property = "imageupload", column= "ThumbnailPicturePath")})
+			@Result(property = "topic", column = "SubjectTopic"),
+			@Result(property = "imageupload", column = "ThumbnailPicturePath") })
 	CourseEditResponse getCourseDetails(Integer courseId);
 
 	@Select({ "select cclc.ID as courseLearningComponentId, clc.id as learningComponentId, clc.name, clc.description,clc.LearningObjectIndicator,clc.PrescribedLCDuration,clc.PrescribedLCDurationUnit,subjectclassification.SubjectArea,subjectclassification.SubjectCategory,subjectclassification.SubjectTopic from corcourselearningcomponent cclc, corlearningcomponent clc,utlsubjectclassification subjectclassification where cclc.LearningComponentId=clc.ID and  clc.id = #{learningComponentId,jdbcType=INTEGER} and clc.SubjClassificationId=subjectclassification.ID " })
@@ -79,16 +79,17 @@ public interface CourseMapper {
 	 * @return
 	 */
 	@Select({
-			"select courseid, memberroleid, name, description, coursestatus, contentsecurityneededindicator, courseduration",
-			" from corcourse where memberroleid = 100 " })
+			"select id, memberroleid, name, description, coursestatus, contentsecurityneededindicator, courseduration, ThumbnailPicturePath",
+			" from corcourse where memberroleid = #{memberPersonaId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "courseId", column = "courseid"),
+			@Result(property = "courseId", column = "id"),
 			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description"),
-			@Result(property = "status", column = "coursestatus"),
+			@Result(property = "courseStatusId", column = "coursestatus"),
 			@Result(property = "securityIndicator", column = "contentsecurityneededindicator"),
-			@Result(property = "duration", column = "courseduration") })
+			@Result(property = "duration", column = "courseduration"),
+			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath") })
 	List<Course> getListOfCourses(Integer memberPersonaId);
 
 	/**
@@ -112,7 +113,7 @@ public interface CourseMapper {
 			"additionalpropertyindicator = #{additionalInfoIndicator,jdbcType=BOOLEAN},",
 			"where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "courseId", column = "courseid"),
+			@Result(property = "courseId", column = "id"),
 			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description"),
@@ -249,7 +250,7 @@ public interface CourseMapper {
 	 * @return
 	 */
 	@Select({ "select * from corcourse where memberroleid = #{memberRoleId,jdbcType=INTEGER}" })
-	@Results(value = { @Result(property = "courseId", column = "courseid"),
+	@Results(value = { @Result(property = "courseId", column = "id"),
 			@Result(property = "courseUseType", column = "courseusetype"),
 			@Result(property = "courseversion", column = "courseversion"),
 			@Result(property = "gradetype", column = "gradetype"),
@@ -267,9 +268,9 @@ public interface CourseMapper {
 	 * @param course
 	 * @return
 	 */
-	@Select({ "select courseid, name, description coursestatus, memberroleid from corcourse where courseid = #{courseId,jdbcType=INTEGER}" })
+	@Select({ "select id, name, description coursestatus, memberroleid from corcourse where courseid = #{courseId,jdbcType=INTEGER}" })
 	@Results(value = {
-			@Result(property = "courseId", column = "courseid"),
+			@Result(property = "courseId", column = "id"),
 			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
 			@Result(property = "name", column = "name"),
 			@Result(property = "description", column = "description"),
@@ -385,18 +386,22 @@ public interface CourseMapper {
 
 	Integer totalNumberOfCourses(@Param("statusId") Integer statusId,
 			@Param("memberPersonaId") Integer memberPersonaId);
-	
+
 	public Course getCourseByCourseId(Integer courseId);
 
-	public Integer saveCurriculamCourse(@Param("courseId")Integer courseId, @Param("memberRoleId") Integer memberRoleId);
+	public Integer saveCurriculamCourse(@Param("courseId") Integer courseId,
+			@Param("memberRoleId") Integer memberRoleId);
 
 	public void saveAndEnableCourse(int coursesId);
 
+	public int isCourseNameExists(@Param("statusId") Integer statusId,
+			@Param("memberPersonaId") Integer memberPersonaId,
+			@Param("courseName") String courseName);
 
-
-	public int isCourseNameExists(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId,@Param("courseName") String courseName);
-
-	public int getCoursesByCoursename(@Param("statusId") Integer statusId, @Param("memberPersonaId") Integer memberPersonaId,@Param("courseName") String courseName,@Param("courseId") int courseId);
+	public int getCoursesByCoursename(@Param("statusId") Integer statusId,
+			@Param("memberPersonaId") Integer memberPersonaId,
+			@Param("courseName") String courseName,
+			@Param("courseId") int courseId);
 
 	public int isModuleExists(Integer courseId);
 

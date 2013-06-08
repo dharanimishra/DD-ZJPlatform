@@ -524,12 +524,16 @@ reviewtable table,td {
 	
 }
 
+/* .Profile {
+	margin-top: 10px;
+	height: 48px;
+	width:55px;
+} */
 .Profile {
 	margin-top: 10px;
 	height: 48px;
 	width:55px;
 }
-
 .Ziklogo {
 	height: 100px;
 }
@@ -2566,9 +2570,15 @@ input[type="checkbox"]:checked+label span {
 	margin-top: 20px;
 }
 
+ 
 .isotoplinks a {
 	color: #fff;
 	font-size: 16px;
+}
+.isotoplinks a:hover {
+	color: #ccc!important;
+	font-size: 16px;
+	 
 }
 .headtag {
     font-size: 26px !important;
@@ -2582,10 +2592,11 @@ input[type="checkbox"]:checked+label span {
   box-shadow: 0 0 4px black;
   display: none;
   left: 0;
+  margin-top: -4px;
   padding: 0.5em;
   position: absolute;
-  top: 03px;
-  width: 300px;
+  top: 0;
+  width: 350px;
   z-index: 99;
 }
 .pagination_bar {
@@ -2814,3 +2825,29 @@ font-size:12px !important;	color:#fff
 	width:100%;
   	background-color: #168EBE
 }
+
+.textAlignRight { text-align: right; }
+.textAlignLeft {text-align : left; }
+.selectedTreeRow
+{
+border-color:#27b; background: #6D9EC5; color:#fff;
+font-weight:bold;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px; 
+padding-top:-2px;
+padding-bottom:-2px;
+padding-left:3px;
+padding-right:3px;
+}
+
+span.standartTreeRow:hover
+{
+background: rgba(85, 142, 187, 0.63);
+color:#fff; 
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+padding:3px;
+}
+

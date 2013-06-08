@@ -89,7 +89,7 @@
 													'buttonText' : 'Upload Image',
 													'uploader' : '${ms.uploadScript}',
 													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
-													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx, *.pdf',
+													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 													'fileSizeLimit' : '10024KB',
 													'onUploadStart' : function(
 															file) {
@@ -150,19 +150,19 @@
 <div class="editslideup1"> 
 	<div class="editslide pull-left"> 
 	<textarea rows="4" cols="12"
-	style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]">Details for the upload image </textarea>
+	style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" placeholder="Details for the upload image"></textarea>
 	</div> 
 	<div class="editslide pull-left" style="margin-left: 5px;">
 	 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
 	
 	<select
-	class="Careaddl select" name="content_area[]"> <option>Specify Subject</option>
+	class="Careaddl select" name="content_area[]"> <option>Specify Area</option>
 </select> <br> 
 <select class="select Csubjectddl" name="content_subject[]"> <option>Specify
 Subject</option> </select> 
 
 <select class="select Ctopicddl" name="content_topic[]" > <option>Specify
-Subject</option> </select>
+Topic</option> </select>
 
 </div> </div> <!--end of continaer--> <div class="clearfix"></div> 
 

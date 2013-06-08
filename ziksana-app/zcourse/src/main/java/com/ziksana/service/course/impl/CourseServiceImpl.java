@@ -278,13 +278,12 @@ public class CourseServiceImpl implements CourseService {
 
 		List<Course> courseList = null;
 		courseList = new ArrayList<Course>();
-		Integer memberRoleId = null;
 
 		LOGGER.debug("MemberRoleID : " + memberPersonaId);
 
-		courseList = courseMapper.getListOfCourses(memberRoleId);
+		courseList = courseMapper.getListOfCourses(memberPersonaId);
 
-		courseList = getCourseProgress(courseList, memberPersonaId);
+		// courseList = getCourseProgress(courseList, memberPersonaId);
 
 		return courseList;
 	}

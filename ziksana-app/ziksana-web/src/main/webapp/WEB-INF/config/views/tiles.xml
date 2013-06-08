@@ -161,6 +161,14 @@
 			value="/WEB-INF/screens/courses/mycourse.jsp" />
 	</definition>
 
+<!-- Planner -->
+	<definition name="mastercourseplanner" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Planner" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/planner.jsp" />
+	</definition>
+
+
 
 	<!--Common Page layout JQuery 1.7.1 version -->
 	<definition name="commonPageLayout" template="/WEB-INF/pages/layout/div-layout.jsp">

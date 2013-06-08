@@ -80,7 +80,7 @@
 			current_thumbnail = $('a.current');
 			current_thumbnail.prev('a').click();
 		});
-
+		  $('.dock-item2').first().click();
 	});
 </script>
 

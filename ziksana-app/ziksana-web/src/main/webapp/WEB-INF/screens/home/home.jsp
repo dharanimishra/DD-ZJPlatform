@@ -5,6 +5,8 @@
 	src="/ziksana-web/resources/js/custom/alertstodoevents.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.hovercard.js"></script>
+<script type='text/javascript'
+	src="/ziksana-web/resources/js/validation/jquery.validate.js"></script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
 	<div class="Zikbreadcrumb f-l">
@@ -409,8 +411,7 @@
 							</select> <span id="add_new_category_form"
 								style="display:none; margin-left: 50px;float:left; width:200px; padding-bottom:2px;"> 
 								<input style=" height:28px;width:200px;" id="todo_category_name" />
-							</span> <input id="todo_description"
-								style="margin-left: 22px; width: 200px; height: 28px;float:left; ">
+							</span> <input onclick="clearTextBox()" id="todo_description" style="margin-left: 22px; width: 200px; height: 28px;float:left; "><span onclick="clearTextBox()" style="color:red;left: 280px;position: absolute;top: 40px;" id="descriptionErrorMsg"></span>
 							<a onclick="addTodo()"
 								style="cursor: pointer; margin-left: 12px; color: white;"><fmt:message key="save"/></a><a
 								onclick="hideTodoAdd()"
@@ -578,6 +579,15 @@ function toggleSeemore(link){
   
   return false;
 }
+function clearTextBox(){
+	//$('#descriptionErrorMsg').html("");
+	document.getElementById("descriptionErrorMsg").innerHTML = '';
+}
 
+function clearManageTodoBox(){
+	for(var i=0;i<4;i++){
+		 $('#manageTodoErrorMsg'+i+'').html("");
+		 }
+}
 
    </script>

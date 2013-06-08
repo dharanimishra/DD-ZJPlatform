@@ -22,7 +22,7 @@
 		  where v.CategoryName='Notification Type' and
 		  l.LookupValueId=491 and
 		 
-		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate DESC  limit 0, 5
+		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate DESC
 	</select>
 	
 	
