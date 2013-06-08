@@ -1216,6 +1216,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', end
 	color: rgb(114, 114, 114);
 	 
 }
+.navheadlp li a:hover {
+	 
+	font-size: 15px;
+	font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica,
+		sans-serif;
+	color: rgb(114, 114, 114);
+	text-decoration:none 
+	 
+}
 .navheadlp li img {
 	 
 	width:22px;
