@@ -1,6 +1,5 @@
 package com.ziksana.util;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,7 +54,7 @@ public class UTLLookUpUtil {
 			test = getUTLLookUp(key, lookUpValue).getLookupValueId();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("" + lookUpValue);
+			//System.out.println("" + lookUpValue);
 			e.printStackTrace();
 		}
 		return test;

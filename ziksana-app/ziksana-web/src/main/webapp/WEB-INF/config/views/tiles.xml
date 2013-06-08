@@ -161,11 +161,18 @@
 			value="/WEB-INF/screens/courses/mycourse.jsp" />
 	</definition>
 
-	<!-- Metro Associate Content -->
+	<!-- Metro Annotate Content -->
 	<definition name="masterannotatecontent" extends="course-ziksana-master">
 		<put-attribute name="master_title" value="Annotate Content" />
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/annnotatecontent.jsp" />
+	</definition>
+	
+	<!-- Metro Record Content -->
+	<definition name="masterrecordcontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Record Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/recordcontent.jsp" />
 	</definition>
 
 <!-- Planner -->
@@ -257,6 +264,13 @@
 		<put-attribute name="master_title" value="Annotate Content" />
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/annotatecontent.jsp" />
+	</definition>
+
+	<!-- Metro Record Content -->
+	<definition name="recordcontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Record Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/recordcontent.jsp" />
 	</definition>
 
 	<!-- Enrich Content Page -->

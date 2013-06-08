@@ -17,7 +17,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/Menu/menu_ext.js"></script>
 <script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/tree/annotate-content-treedata.js"></script>
+	src="${staticFileServer}resources/js/lib/tree/record-content-treedata.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
 	
@@ -238,13 +238,13 @@
 
 <div class="navheadlp" style="padding-left: 300px;">
 	<ul>
-		<li style="margin-left: 40px;color: #f06c0b;"><span><img
-				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px; height: 22px;"> </span> Annotate </li>
-		<li ><span><img
+		<li style="margin-left: 40px;"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
+				style="margin-right: 10px; height: 22px;"> </span> Annotate </li>
+		<li style="color: #f06c0b;"><span><img
+				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px; height: 22px;"> </span> Record</li>
-		<li><span><img
+		<li ><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px;width:22px; height: 22px;"> </span> Enhance</li>
 
