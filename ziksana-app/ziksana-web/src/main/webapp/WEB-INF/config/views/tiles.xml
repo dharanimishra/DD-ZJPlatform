@@ -154,6 +154,13 @@
 			value="/WEB-INF/screens/courses/mycontent.jsp" />
 	</definition>
 
+	<!-- Metro My Course -->
+	<definition name="mastermycourse" extends="ziksana-home-master">
+		<put-attribute name="master_title" value="My Course" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/mycourse.jsp" />
+	</definition>
+
 
 	<!--Common Page layout JQuery 1.7.1 version -->
 	<definition name="commonPageLayout" template="/WEB-INF/pages/layout/div-layout.jsp">

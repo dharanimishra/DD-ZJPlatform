@@ -2,6 +2,7 @@
 	itemsPerPage = 5;
 	defaultPageIndex = 1;
 	noOfPages = new Number(0);
+	
 
 	$(document).ready(function() {
 		//var abc = '${learningContentAsJSONString}';
@@ -20,7 +21,7 @@
 		//Uncomment following line it is only to test paginatio by setting it to 2 items per page
 		//itemsPerPage = 1;
 		//else it will default to 5
-		console.log("Items per page set to" + itemsPerPage);
+		//console.log("Items per page set to" + itemsPerPage);
 	}
 	
 	//var sessionKey = "repositoryContents";
@@ -45,20 +46,52 @@
 
 	function getLearningContentObject(learningContentId){
 		
-		console.log("in getLearningContentObject id is " + learningContentId);
+		//console.log("in getLearningContentObject id is " + learningContentId);
 		var jsonString = document.getElementById("learingContents").value;
 		var contentArray = jQuery.parseJSON( jsonString );
 		
-		for(i=0; i<contentArray.length; i++){
+		for(var i=0; i<contentArray.length; i++){
 			if(learningContentId == contentArray[i].id){
 				return contentArray[i];
 			}
 		}
 	}
 
+	function getUnAssociatedContentArray(contentArray){
+		var unAssociatedContentArray = new Array();
+		
+		var compId = $("#selectedLearningComponentId").val();
+		 
+		var childArrayString = tree.getSubItems('COMPONENT_' + compId );
+		//console.log("contentArray.length" + contentArray.length + "  --------- childArrayString is " + childArrayString);
+		if(childArrayString && childArrayString.trim() != ""){
+			//var childArray = childArrayString.split(',');
+			var j =0;
+
+			for(var i=0; i < contentArray.length; i++){
+				var contentItem = contentArray[i];
+				var contentIdString = 'CONTENT_'+ contentItem.id;
+				//console.log("childArrayString.indexOf(contentIdString) " + childArrayString.indexOf(contentIdString));
+				if(childArrayString.indexOf(contentIdString) == -1){
+					//console.log("in side if contentIdString " + contentIdString);
+					unAssociatedContentArray[j] = contentItem;
+					j++;
+				}
+				else{
+					continue;
+				}
+			}
+		}
+		else{
+			// no associated contents found return the original array as it is
+			unAssociatedContentArray = contentArray;
+		}
+		
+		return unAssociatedContentArray;
+	}
 	
 	function getOtherLearningContents(contentType, inPageIndex){
-		//console.log("hkjhjkhjkhjkhkjhjhjhjkhkjhjkhjh");
+		////console.log("hkjhjkhjkhjkhkjhjhjhjkhkjhjkhjh");
 		forceToAssociateSelectedContent();
 		
 		if(!inPageIndex || "" == inPageIndex){
@@ -67,7 +100,7 @@
 		else{
 			pageIndex = inPageIndex;
 		}
-		console.log("In getOtherLearningContents pageIndex is " + pageIndex);
+		//console.log("In getOtherLearningContents pageIndex is " + pageIndex);
 
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
@@ -83,32 +116,40 @@
 				j++;
 			}
 		}
-		//console.log("contentArray.length " + contentArray.length);
-		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
-		//console.log("noOfPages " + noOfPages + " itemsPerPage " + itemsPerPage);
+		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayBasedOnContentType);
+		////console.log("contentArray.length " + contentArray.length);
+		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
+		////console.log("noOfPages " + noOfPages + " itemsPerPage " + itemsPerPage);
 		
-		if(contentArrayBasedOnContentType.length > itemsPerPage){
-			console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length + " itemsPerPage " + itemsPerPage);
+		if(unAssociatedContentArray.length ==0){
+			setNoContentFoundText(contentType);
+		}
+		else{
+			setNoContentFoundText('');
+		}
+		
+		if(unAssociatedContentArray.length > itemsPerPage){
+			//console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage " + itemsPerPage);
 			getPageDiv(noOfPages, contentType, pageIndex);
 		}
 		else{
 			$('#pageNumbers').empty();
 		}
-		console.log("In else contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length + " itemsPerPage " + itemsPerPage);
+		//console.log("In else unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage " + itemsPerPage);
 		
 		var divs = '';
 		if(pageIndex == 1){
-			for(i=0;i<contentArrayBasedOnContentType.length;i++){
-				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+			for(var i=0;i<unAssociatedContentArray.length;i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i==(itemsPerPage-1)){
 					break;
 				}
 			}
-			//console.log("othersssssssssssssss " + divs);
+			////console.log("othersssssssssssssss " + divs);
 		}
 		else{
-			for(i=((pageIndex-1) * itemsPerPage);i<contentArrayBasedOnContentType.length;i++){
-				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+			for(var i=((pageIndex-1) * itemsPerPage);i<unAssociatedContentArray.length;i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i == ((itemsPerPage * pageIndex)-1)){
 					break;
 				}
@@ -141,12 +182,22 @@
 				j++;
 			}
 		}
-		console.log("contentArray.length " + contentArray.length);
-		console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length);
-		noOfPages = Math.ceil(contentArrayBasedOnContentType.length/itemsPerPage);
-		console.log("noOfPages " + noOfPages);
+		//console.log("contentArray.length " + contentArray.length);
+		//console.log("contentArrayBasedOnContentType.length " + contentArrayBasedOnContentType.length);
 		
-		if(contentArrayBasedOnContentType.length > itemsPerPage){
+		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayBasedOnContentType);
+
+		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
+		//console.log("noOfPages " + noOfPages);
+
+		if(unAssociatedContentArray.length ==0){
+			setNoContentFoundText(contentType);
+		}
+		else{
+			setNoContentFoundText("");
+		}
+		
+		if(unAssociatedContentArray.length > itemsPerPage){
 			getPageDiv(noOfPages, contentType, pageIndex);
 		}
 		else{
@@ -154,23 +205,23 @@
 		}
 		var divs = '';
 		if(pageIndex == 1){
-			for(i=0;i<contentArrayBasedOnContentType.length;i++){
-				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+			for(var i=0; i < unAssociatedContentArray.length; i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i==(itemsPerPage-1)){
 					break;
 				}
 			}
 		}
 		else{
-			for(i=((pageIndex-1) * itemsPerPage);i<contentArrayBasedOnContentType.length;i++){
-				divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+			for(var i=((pageIndex-1) * itemsPerPage); i < unAssociatedContentArray.length; i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i == ((itemsPerPage * pageIndex)-1)){
 					break;
 				}
 			}
 			
 		}		
-		//console.log("divs --->> " + divs);
+		////console.log("divs --->> " + divs);
 		$('#page1').html(divs);
 		$('#ContentPanel2').show();
 	}
@@ -185,12 +236,30 @@
 		
 		$('#page1').empty();
 		var jsonString = document.getElementById("learingContents").value;
-		var contentArray = jQuery.parseJSON( jsonString );
-		console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
-		noOfPages = Math.ceil(contentArray.length/itemsPerPage);
 		
+		//alert("jsonString " + jsonString); 
+		var contentArray = new Array();
+		//contentArray =  jQuery.parseJSON( jsonString );
+		//jsonString = escape(sessionStorage.getItem('contentList'));
+		//alert("thi sis a test " + jsonString);
+		contentArray =  jQuery.parseJSON(jsonString);
+
+		//console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
+
+		var unAssociatedContentArray = getUnAssociatedContentArray(contentArray);
+		//console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage  " + itemsPerPage);
+
+		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
 		
-		if( contentArray.length > itemsPerPage ){
+		if(unAssociatedContentArray.length ==0){
+			setNoContentFoundText("ALL");
+			//alert("This is " + setNoContentFoundText("ALL"));
+		}
+		else{
+			setNoContentFoundText("");
+		}
+		
+		if( unAssociatedContentArray.length > itemsPerPage ){
 			getPageDiv(noOfPages, "ALL", pageIndex);
 		}
 		else{
@@ -198,20 +267,20 @@
 		}
 		
 		
-		console.log("noOfPages " + noOfPages);
+		//console.log("noOfPages " + noOfPages);
 		var divs = '';
 		
 		if(pageIndex == 1){
-			for(i=0;i<contentArray.length;i++){
-				divs = divs + getDiv(contentArray[i]);
+			for(var i=0; i < unAssociatedContentArray.length; i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i==(itemsPerPage-1)){
 					break;
 				}
 			}
 		}
 		else{
-			for(i=((pageIndex-1) * itemsPerPage);i<contentArray.length;i++){
-				divs = divs + getDiv(contentArray[i]);
+			for(var i=((pageIndex-1) * itemsPerPage); i < unAssociatedContentArray.length; i++){
+				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i == ((itemsPerPage * pageIndex)-1)){
 					break;
 				}
@@ -224,14 +293,14 @@
 
 	function getPreviewPath(learningContentObject){
 		var staticFileServerPath = $("#fileServerPath").val();
-		console.log("In associate content getPreviewPath" + staticFileServerPath);
+		//console.log("In associate content getPreviewPath" + staticFileServerPath);
 		var content_type = learningContentObject.contentType;
 		var previewPath = learningContentObject.screenshotPath;
-		console.log("In associate content screenshotPath for " + learningContentObject.contentName + " - " +previewPath);
+		//console.log("In associate content screenshotPath for " + learningContentObject.contentName + " - " +previewPath);
 		var imagePath = '';
 		if(previewPath && (previewPath != null || previewPath.trim() != "")){
 			imagePath =staticFileServerPath + previewPath;
-			console.log("In associate content in the if  for " + learningContentObject.contentName + " - " +previewPath);
+			//console.log("In associate content in the if  for " + learningContentObject.contentName + " - " +previewPath);
 		}
 		else{
 		
@@ -251,7 +320,7 @@
 			else if (content_type.toUpperCase() == 'LINK') {
 				imagePath = '../../../resources/images/preview/link.png';
 			}
-			console.log("In associate content finallly the imagePath is ------------>>>> " + imagePath);
+			//console.log("In associate content finallly the imagePath is ------------>>>> " + imagePath);
 		}
 		return imagePath;
 	}
@@ -259,7 +328,7 @@
 	function getDiv(learningContentObject){
 		
 			var staticFileServerPath = $("#staticFileServer").val();
-			//console.log("Hello the getPreviewPath(learningContentObject) " + getPreviewPath(learningContentObject) );
+			////console.log("Hello the getPreviewPath(learningContentObject) " + getPreviewPath(learningContentObject) );
 			var readMoreLink = "";
 			
 			if(learningContentObject.contentDescription && learningContentObject.contentDescription.length > 150){
@@ -278,7 +347,12 @@
 					'<div class="associateright f-l">'+
 	
 	
-					'<div class="associatecategoryhead">' + learningContentObject.contentName + '</div>'+
+					'<div class="associatecategoryhead">' + 
+					'<a href="#"  style="color:#fff;font-weight:bold" onClick="viewContent(\''  + learningContentObject.contentType + '\',' + learningContentObject.id + ' )"'+
+					' >'+
+						learningContentObject.contentName + 
+					'</a>' +
+					'</div>'+
 	
 					'<div class="associatetagscontainer">'+
 						'<p class="associatecategoryname f-l"> Category :   <a href="#linkurl"> Areas</a>/<a href="#linkurl">Topic</a>/<a href="#linkurl">Subject</a> </p>'+
@@ -309,9 +383,62 @@
 		return learningContentDiv;
 	}
 	
+	function viewContent(contentType, learningContentId){
+		
+		var contentURI = getContentViewerURI(contentType, learningContentId);
+		if (contentType.toUpperCase() == 'LINK') {
+			//contentURI =  getLearningContentObject(learningContentId).contentURL;
+			window.open(contentURI);
+		}
+		else{
+		 $.fancybox({
+				'width': '85%',
+				'height': '500',
+				'autoScale': true,
+				'transitionIn': 'fade',
+				'transitionOut': 'fade',
+				'type': 'iframe',
+				'href': contentURI
+				
+			});
+		
+		}
+		
+	}
+	
+	function getContentViewerURI(contentType, learningContentId){
+		contentType = contentType.toUpperCase();
+		var viewerURL = "";
+		if (contentType == 'VIDEO') {
+			viewerURL = '/ziksana-web/zcourse/1/modalplayer/'
+					+ learningContentId;
+		} else if (contentType == 'AUDIO') {
+			viewerURL = '/ziksana-web/zcourse/1/modalplayer/'
+					+ learningContentId;
+		} else if (contentType == 'IMAGE') {
+			viewerURL = '/ziksana-web/zcourse/1/slides/'
+					+ learningContentId;
+			preview_path = '../../resources/images/preview/image.png';
+		} else if (contentType == 'DOC') {
+			viewerURL = '/ziksana-web/zcourse/1/slides/'
+					+ learningContentId;
+			preview_path = '../../resources/images/preview/doc.png';
+		} else if (contentType == 'PPT') {
+			viewerURL = '/ziksana-web/zcourse/1/slides/'
+					+ learningContentId;
+		} else if (contentType == 'PDF') {
+			viewerURL = '/ziksana-web/zcourse/1/slides/'
+					+ learningContentId;
+		}
+		else if (contentType == 'LINK') {
+			viewerURL =  getLearningContentObject(learningContentId).contentURL;
+		}
+		return viewerURL;
+			
+	}
 	
 	function getPageDiv(noOfPages, filterType, pageIndex){
-		console.log("In getPageDiv noOfPages " + noOfPages + " pageIndex " + pageIndex + " filterType " + filterType);
+		//console.log("In getPageDiv noOfPages " + noOfPages + " pageIndex " + pageIndex + " filterType " + filterType);
 		var pageDiv = $('#pageNumbers');
 		var functionName = '';
 		if("ALL" == filterType.toUpperCase()){
@@ -333,6 +460,46 @@
 					pageDiv.append('<a onClick="' + functionName + i +')" title="'+ i + '" href="#" id="btnpg1" class="swShowPage"></a>');
 				}
 		}
+	}
+	
+	function setNoContentFoundText(category){
+		
+		var noDataText = "";
+		category = category.toUpperCase();
+		if(category != ""){
+			noDataText = getCategoryText(category);
+		}
+		//alert("category" + category + " - noDataText " + noDataText);
+		$('#noContentFound').text(noDataText);
+	}
+	
+	function getCategoryText(category){
+		var noDataText = "";
+		if(category == "ALL"){
+			noDataText = "No contents in repository.";
+			
+		}
+		else {
+			noDataText = "No contents in this category.";
+			
+		}
+		return noDataText;
+	}
+	function getCategoryText1(category){
+		var categoryText = "";
+		if(category == "LINK"){
+			categoryText = "Web Link ";
+			
+		}
+		else if(category == "VIDEO"){
+			categoryText = "Video ";
+			
+		}
+		else if(category == "OTHERS"){
+			categoryText = "Other ";
+			
+		}
+		return categoryText;
 	}
 	
 	function isItemPresent(childArrayString, contentItem){
@@ -370,7 +537,10 @@
 			}
 		}
 		
-		var childArray = tree.getSubItems('COMPONENT_' + compId );
+/*		
+  		// uncomment following if you need to show all the contents and then show an alert if
+  		// the content is already associated
+  		var childArray = tree.getSubItems('COMPONENT_' + compId );
 		//check if the conent is already associated if yes then throw an alert and dont allow the user to duplicate.
 		//could have done it in the loop above but for simplicity doing it again
 		for(i=0;i < selectedContentCheckBoxes.length;i++){
@@ -383,8 +553,9 @@
 			}
 			
 		}
+*/
 		$('#selectedLearningContentList').val(selectedContents); 
-		console.log("selectedContents " + selectedContents + " selected component id is " + compId);
+		//console.log("selectedContents " + selectedContents + " selected component id is " + compId);
 		if(selectedContents == "" || !selectedContents){
 			alert("No content selected. Please select content to be associated.");
 			return;
@@ -399,13 +570,13 @@
 			"learningContentsToBeAssociated" : selectedContents
 		};
 		
-		console.log("courseId " + courseId + " selectedContents " + selectedContents + " selected component id is " + compId);
+		//console.log("courseId " + courseId + " selectedContents " + selectedContents + " selected component id is " + compId);
 
-		console.log("parameters.length " + parameters.length);
-		console.log("uri " + uri );
+		//console.log("parameters.length " + parameters.length);
+		//console.log("uri " + uri );
 		
 		$.post(uri, parameters, function(data) {
-			console.log(data);
+			//console.log(data);
 			if (data.response == 'success') {
 				course_id = data.id;
 				window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
@@ -433,7 +604,7 @@
 		};
 		
 		$.post(uri, parameters, function(data) {
-			console.log(data);
+			//console.log(data);
 			if (data.response == 'success') {
 				course_id = data.id;
 				window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"

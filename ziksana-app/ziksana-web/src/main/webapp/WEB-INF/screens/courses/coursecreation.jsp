@@ -405,4 +405,11 @@
     width: 4px;
 }
 .hidetree{display:none;width:24%}
+.formErrorContent {
+    color: red;
+    left: 62px;
+    overflow: auto;
+    position: relative;
+    top: 4px;
+}
 </style>

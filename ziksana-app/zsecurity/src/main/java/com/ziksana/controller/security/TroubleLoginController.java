@@ -114,6 +114,30 @@ public class TroubleLoginController {
 		
 	}
 	
+	@RequestMapping(value = "/0/isaccountlocked/{username}", method = RequestMethod.GET)
+	public @ResponseBody String isAccountLocked(@PathVariable String username) {
+		String pageResponse = null;
+		try{
+			
+			int isUserAccountLocked = memberService.isMemberAccountLocked(username);
+				 if(isUserAccountLocked == 1){
+					 pageResponse = "Your account was already locked ,please contact <a href='#'>Administrator</a>";
+					 
+					
+				}else{
+					pageResponse = "SUCCESS";
+				}
+			
+			
+		}
+		catch(ZiksanaException zexception){
+	
+			LOGGER.error("Caught Exception. class ="+ zexception.getClass().getName() + ",message ="+ zexception.getMessage());
+		}
+		return pageResponse;
+		
+	}
+	
 	
 	@RequestMapping(value = "/0/firstsecurityverfication/{userId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView securityFormFirstPage(@PathVariable String userId) {
@@ -159,7 +183,7 @@ public class TroubleLoginController {
 			if(response){
 				pageResponse = "SUCCESS";
 			}else{
-				pageResponse = "Answer to the security question is incorrect. If you don't remember the answer, please contact <a href='#'> Administrator.</a>";
+				pageResponse = "FAIL";
 			}
 		}
 		catch(ZiksanaException zexception){
@@ -180,7 +204,7 @@ public class TroubleLoginController {
 			if(response){
 				pageResponse = "SUCCESS";
 			}else{
-				pageResponse = "Answer to the security question is incorrect. If you don't remember the answer, please contact <a href='#'> Administrator.</a>";
+				pageResponse = "FAIL";
 			}
 		}
 		catch(ZiksanaException zexception){
@@ -213,10 +237,10 @@ public class TroubleLoginController {
 					emailSender.sendEmailText1(member);
 				    
 				
-				response="Your User ID has been sent to your Email address";	           
+				response="Success";	           
 			}
 			else{
-				response="This Email ID is not in our records";
+				response="Fail";
 				
 			}
 		}

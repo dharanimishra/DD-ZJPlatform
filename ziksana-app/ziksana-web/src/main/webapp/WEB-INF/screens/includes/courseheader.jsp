@@ -1,15 +1,10 @@
 
 <%@ page session="true"%>
 
-<link href="/ziksana-web/resources/css/main/styles2.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link href="/ziksana-web/resources/css/main/icons.css" rel="stylesheet"
-	type="text/css" />
-<link href="/ziksana-web/resources/css/stylesheets.css" rel="stylesheet"
-	type="text/css" />
+
 <div id="leftpanel">
 
-	<div id="Headerborder">
+	<div id="Headerborder" class="metrouicss">
 			<div id="HeaderLogo" class="f-l">
 
 				<img src="/ziksana-web/resources/images/home/logo2.png" />
@@ -27,21 +22,16 @@
 						<c:out value="${member.lastName}" />
 					</div>
 				</div>
-				<div id="user_menu_container">
-					<div id="AccountSetting" class="f-l">
-						<span><img class="Profilepic"
-							src="/ziksana-web/resources/images/home/actlck.png" /></span> <span
-							class="Accounthead">Account Settings</span> <img
-							id="user_menu_trigger" class="Dropdown"
-							src="/ziksana-web/resources/images/home/dropdown.png" />
-					</div>
-					<div id="user_menu">
-						<!-- /ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/> -->
-						<a
-							href="/ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/>">Manage
-							Profile</a> <a href="/ziksana-web/secure/logout">Sign Out</a>
-					</div>
-				</div>
+				<div id="user_menu_container" >
+<div id="AccountSetting" class="f-l"><span><img class="Profilepic" src="/ziksana-web/resources/images/home/actlck.png"/></span> 
+
+<span class="Accounthead"><fmt:message key="Account.Settings"></fmt:message></span> <img id="user_menu_trigger" class="Dropdown" src="/ziksana-web/resources/images/home/dropdown.png"/> </div>    
+<div id="user_menu">
+<!-- /ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/> -->
+	<a href="/ziksana-web/profile/1/manageprofile/<c:out value="${member.memberId}"/>"><fmt:message key="Manage.profile"></fmt:message></a>
+	<a href="/ziksana-web/secure/logout"><fmt:message key="signout"></fmt:message></a>
+</div>   
+</div> 
 
 
 			</div>
@@ -55,8 +45,8 @@
 				<div class="fifteen columns" id="page-title">
 					<a class="back" href="javascript:history.back()"></a>
 					<p class="page-title">
-						<span style="font-size: 13px; color: #6bbde8;">Home</span> <
-						Create Course
+						<span style="font-size: 13px; color: #6bbde8;"> </span><fmt:message key="home.hometext"/> <
+						<fmt:message key="home.createcourse"/>
 					</p>
 				</div>
 
@@ -86,7 +76,7 @@
 
 								<p>
 									<img src="/ziksana-web/resources/images/icons/toola.png"
-										class="tbboximg" /><span class="tbboxheadfnt"> Define
+										class="tbboximg" /><span class="tbboxheadfnt"> <fmt:message key="course.Define"/>
 									</span>
 								</p>
 
@@ -102,7 +92,7 @@
 
 							<div class="tbboxdesc">
 
-								<p>Create the course structure and course content</p>
+								<p><fmt:message key="course.structre.content"/></p>
 
 							</div>
 							<!--end of tbboxdesc  -->
@@ -121,7 +111,7 @@
 								<p>
 									<img src="/ziksana-web/resources/images/icons/review.png"
 										class="tbboximgds" /><span class="tbboxheadfntds">
-										Enrich </span>
+										<fmt:message key="course.Enrich"/> </span>
 								</p>
 
 							</div>
@@ -138,7 +128,7 @@
 
 							<div class="tbboxdescds">
 
-								<p>Personalize and enrich your content</p>
+								<p><fmt:message key="course.personalize"/></p>
 
 							</div>
 							<!--end of tbboxdesc  -->
@@ -154,7 +144,7 @@
 								<p>
 									<img src="/ziksana-web/resources/images/icons/publish1.png"
 										class="tbboximgds" /><span class="tbboxheadfntds">
-										Publish </span>
+										<fmt:message key="course.Publish"/> </span>
 								</p>
 
 							</div>
@@ -169,7 +159,7 @@
 							<!--end of tbboximg  -->
 
 							<div class="tbboxdescds">
-								<p>Publish the course created</p>
+								<p><fmt:message key="course.publish.created"/> </p>
 
 							</div>
 							<!--end of tbboxdesc  -->

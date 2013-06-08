@@ -1,4 +1,4 @@
-package com.ziksana.test;
+package com.ziksana.service.recommendations.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -31,10 +31,10 @@ import com.ziksana.service.recommendations.RecommendationsService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
-public class RecommendationTest {
+public class RecommendationServiceImplTest {
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(RecommendationTest.class);
+			.getLogger(RecommendationServiceImplTest.class);
 	@Autowired
 	RecommendationsService recommendationService;
 

@@ -119,6 +119,9 @@
 						<a class="dock-item2" href="#"><span></span><img
 							src="${ms.url}${content.contentUrl}" /></a>
 					</c:when>
+					<c:when test="${content.numberOfThumbnails == -1}">
+						<a class="dock-item2" href="#"><span></span><img src="" /></a>
+					</c:when>
 					<c:otherwise>
 						<c:forEach var="i" begin="0" end="${content.numberOfThumbnails-1}"
 							step="1" varStatus="status">

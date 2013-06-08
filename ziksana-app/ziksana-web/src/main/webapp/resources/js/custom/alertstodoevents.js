@@ -121,7 +121,7 @@ function get_and_populate_announcements(val){
 					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
-					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
+					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
 					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					
@@ -396,15 +396,15 @@ function get_and_populate_todo(val){
 										
 					var ouputMoreTodo="";
 			
-					var ouputEmpty = "<span style='margin-left:250px;font-family:verdana;color:white;'>No To-Dos to display</span>";
+					var ouputEmpty = "<span style='margin-left:250px;color:white;'>No To-Dos to display</span>";
 					
 					if(no_of_available_todo == 0){$('#todos_placeholder').html(ouputEmpty);} else{
 					
 						ouputMoreTodo+="<table id='todo_all_tablerows' class='table table-hover table-striped'>";
 						ouputMoreTodo+="<tbody>";
 						 $(data).find("todoitem").each(function(index){
-							 ouputMoreTodo+="<tr id='todorow"+$(this).find('id').text()+"'><td style='width:50px'><input type='checkbox' id='c"+index +"' onchange='handleChange(this,"+$(this).find('id').text()+");' /> <label for='c"+index +"'><span></span></label></td><td>"+$(this).find("categoryName").text()+"</td>";
-							 ouputMoreTodo+="<td class='todoinfo-decription'><div class='todotip_container' >"+$(this).find("subject").text()+"<div class='categortip' style='font-family:verdana;color:white;'>"+$(this).find("subject").text()+" </div></div></td></tr>";
+							 ouputMoreTodo+="<tr id='todorow"+$(this).find('id').text()+"'><td style='width:50px'><input type='checkbox' id='c"+index +"' onchange='handleChange(this,"+$(this).find('id').text()+");' /> <label for='c"+index +"'><span></span></label></td><td style='width:175px'>"+$(this).find("categoryName").text()+"</td>";
+							 ouputMoreTodo+="<td class='todoinfo-decription'><div class='todotip_container' >"+$(this).find("subject").text()+"<div class='categortip' style='color:white;'>"+$(this).find("subject").text()+" </div></div></td></tr>";
 						 });
 						
 						 ouputMoreTodo+="</tbody></table>";
@@ -523,7 +523,7 @@ function get_and_populate_todo_value(val){
 					
 					var ouputEmptyTodo="";
 					var updateEditValue="";
-					var ouputEmpty = "<span style='margin-left:250px;font-family:verdana;color:white;'>No To-Dos to display</span>";
+					var ouputEmpty = "<span style='margin-left:250px;color:white;'>No To-Dos to display</span>";
 					if(no_of_available_todo == 0){$('#todos_placeholder_more').html(ouputEmpty);} else{
 					
 						ouputEmptyTodo+="<table id='todo_all_tablerows' class='table table-hover table-striped' >";
@@ -531,8 +531,8 @@ function get_and_populate_todo_value(val){
 						 $(data).find("todoitem").each(function(index){
 							
 							 ouputEmptyTodo+="<tr id='moretodorow"+$(this).find('id').text()+"' style='height:40px;'>";
-							 ouputEmptyTodo+="<td width='50px'><div ><input type='checkbox' id='c"+index+2 +"' onchange='handle(this,"+$(this).find('id').text()+");' /> <label for='c"+index+2 +"'><span></span></label></td><td width='200px'><div id='category_value"+$(this).find("id").text()+"'>"+$(this).find("categoryName").text()+"</div></td>";
-							 ouputEmptyTodo+="<td width='200px'><span id='categoryDescription"+$(this).find("id").text()+"' class='todoinfo-decription' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_string($(this).find("subject").text())+"</span></td><td width='75px'><a id='todoEdithyperlink"+index+"' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Edit</a></td><td width='75px'></td></div>";
+							 ouputEmptyTodo+="<td width='50px'><div ><input type='checkbox' id='c"+index+2 +"' onchange='handle(this,"+$(this).find('id').text()+");' /> <label for='c"+index+2 +"'><span></span></label></td><td width='175px'><div id='category_value"+$(this).find("id").text()+"'>"+$(this).find("categoryName").text()+"</div></td>";
+							 ouputEmptyTodo+="<td width='225px'><span id='categoryDescription"+$(this).find("id").text()+"' class='todoinfo-decription' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_string($(this).find("subject").text())+"</span></td><td width='75px'><a id='todoEdithyperlink"+index+"' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Edit</a></td><td width='75px'></td></div>";
 							 
 							 ouputEmptyTodo+="</tr>";
 							 ouputEmptyTodo+="<tr style='display:none;'><td></td></tr>";

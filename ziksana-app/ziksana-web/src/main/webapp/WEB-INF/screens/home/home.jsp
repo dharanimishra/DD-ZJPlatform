@@ -91,7 +91,7 @@
 
 			</div>
 		</a>
-
+<a href="/ziksana-web/zcourse/1/mycourse">
 		<div class="tile bg-color-blueDark">
 
 			<img class="tileimg"
@@ -101,7 +101,7 @@
 			</h3>
 
 		</div>
-
+</a>
 		<a href="/ziksana-web/zcourse/createcourse">
 			<div class="tile bg-color-blue">
 
@@ -123,6 +123,7 @@
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 6px; font-size: 22px; width: 98%;">
+				
 					<fmt:message key="home.analytics" />
 				</h3>
 			</div>
@@ -255,7 +256,7 @@
 
 
 				<div class="eventfooter"
-					style="height: 31px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
+					style="height: 34px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
 					<p class="pull-right" style="color: #fff; font-size: 10px;">
 						<fmt:message key="home.manageevents"/> <a href="#linkurl"> <img
 							src="/ziksana-web/resources/images/icons/calendar.png"
@@ -301,7 +302,7 @@
 			</div>
 			<!--end of panel head-->
 
-			<div class="announcementwrapper" style='height:284px;float:left;overflow:auto'>
+			<div class="announcementwrapper" style='height:284px;width:100%;float:left;overflow:auto'>
 				<div id="announcement_box_all" class='announcementbox All'
 					style='background-color: rgb(18, 122, 163);'>
 
@@ -309,7 +310,10 @@
 
 
 			</div>
+			<div class="Clearfix"></div>
+			<div id="announcementPaginationParent" style="width:100%;height:7px;">
 			<div id="announcementPagination" style="float: right;margin-bottom:5px"></div>
+			</div>
 			<div id="annaouncementFooter" class="eventfooter" style="height: 30px; width: 100%;float:left; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
 					
 
@@ -321,7 +325,7 @@
 				style="position: absolute; width: 690px;">
 
 				<div class="eventheader"
-					style="height: 50px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -12px;">
+					style="height: 50px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -19px;">
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;"><fmt:message key="home.ToDosList"/>
@@ -343,7 +347,7 @@
 
 
 				<div class="eventfooter"
-					style="height: 30px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
+					style="height: 33px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
 
 					<p class="pull-right" style="color: #fff;">
 						<a style="cursor: pointer" class="managetodo"
@@ -374,7 +378,7 @@
 				style="position: absolute; width: 690px;">
 
 				<div class="eventheader"
-					style="height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -12px;">
+					style="height: 50px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-bottom: 1px solid #ccc; margin-top: -19px;">
 
 					<p class="pull-left"
 						style="color: rgb(255, 255, 255); font-size: 15px; margin-top: 5px;">
@@ -383,7 +387,7 @@
 					<p class="pull-right" style="color: #fff;">
 						<a style="cursor: pointer"> <img
 							src="/ziksana-web/resources/images/content/plus.png"
-							style="height: 25px; margin-top: 10px;" title="Add To DO"
+							style="height: 25px;" title="Add To DO"
 							class="addtodobtn" id="sample_editable_1_new" /></a>
 					</p>
 
@@ -394,24 +398,25 @@
 
 
 
-				<div class="eventcontent" style="height: 270px; width: 100%;">
+				<div class="eventcontent" style="height: 270px; width: 100%; overflow:auto;">
 
 
 					<div class="portlet-body">
-						<div id="add_todo_fields_container" style="display: none;height:50px !important;">
+						<div id="add_todo_fields_container" style="display: none;height: 40px; padding:5px;">
 							<select id="todo_categories"
-								style="margin-left: 100px; width: 150px;margin-top:5px;">
+								style="margin-left: 50px;height: 28px; width: 200px;float:left;">
 
 							</select> <span id="add_new_category_form"
-								style="display: none; margin-left: 100px;"> 
-								<input style="margin-top:8px; height:28px;width:150px;" id="todo_category_name" />
+								style="display:none; margin-left: 50px;float:left; width:200px; padding-bottom:2px;"> 
+								<input style=" height:28px;width:200px;" id="todo_category_name" />
 							</span> <input id="todo_description"
-								style="margin-left: 22px; width: 200px; height: 28px; margin-top:5px;">
+								style="margin-left: 22px; width: 200px; height: 28px;float:left; ">
 							<a onclick="addTodo()"
 								style="cursor: pointer; margin-left: 12px; color: white;"><fmt:message key="save"/></a><a
 								onclick="hideTodoAdd()"
 								style="cursor: pointer; margin-left: 40px; color: white;"><fmt:message key="profile.cancel"/> </a>
 						</div>
+						<div class="clearfix"></div>
 						<div id="todos_placeholder_more" class="eventcontent"></div>
 
 					</div>
@@ -424,7 +429,7 @@
 
 
 				<div class="eventfooter"
-					style="height: 30px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
+					style="height: 33px; width: 690px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff; margin-top: 10px;">
 
 
 				</div>
@@ -490,13 +495,15 @@ color:#333;
 table tr th {
 	color: #fff;
 	font-size: 18px;
-	border: none !important;
+	 border: none !important; 
+	/* border:1px solid red; */
 }
 
 table tr td {
 	color: #fff;
 	font-size: 14px;
-	border: none !important;
+	 border: none !important; 
+	/* border:1px solid red; */
 }
 
 .hc-details {

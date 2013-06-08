@@ -30,25 +30,16 @@ Servers/
 *.DS_Store
 *.bak
 ~$*
-
+bin
 *.iml
 /ziksana-app/.idea/
 >>>>>>> origin/Ziksana_Platform_V0.5
 
-/ziksana-app/zutils/bin
-/ziksana-app/ztodo/bin
-/ziksana-app/zsubscription/bin
-/ziksana-app/zsecurity/bin
-/ziksana-app/zalert/bin/
-/ziksana-app/zannouncements/bin
-/ziksana-app/zassessment/bin
-/ziksana-app/zblogs/bin
-/ziksana-app/zcommon/bin
-/ziksana-app/zconfig/bin
-/ziksana-app/zcourse/bin
-/ziksana-app/zdomain/bin
-/ziksana-app/ziksana-web/bin
-/ziksana-app/zknowmebetter/bin
-/ziksana-app/zmycontacts/bin
-/ziksana-app/zpolls/bin
-/ziksana-app/zrecommendations/bin
+# STS files when we disable some of the validators for faster build
+org.eclipse.jdt.core.javabuilder.launch*
+org.eclipse.wst.common.project.facet.core.builder.launch*
+org.eclipse.wst.jsdt.core.javascriptValidator (1).launch*
+org.eclipse.wst.jsdt.core.javascriptValidator.launch*
+org.eclipse.wst.validation.validationbuilder (1).launch*
+org.eclipse.wst.validation.validationbuilder.launch*
+org.springframework.ide.eclipse.core.springbuilder.launch*

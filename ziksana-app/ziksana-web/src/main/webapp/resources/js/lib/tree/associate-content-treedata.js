@@ -75,6 +75,11 @@ function onButtonClick(menuitemId, type) {
 		//console.log("viewer_url ------------->>> " + viewer_url); 
 		// open in lightbox
 		
+		if (content_type.toUpperCase() == 'LINK') {
+			//viewer_url =  getLearningContentObject(learningContentId).contentURL;
+			window.open(viewer_url);
+		}
+		else{
 		 $.fancybox({
 				'width': '85%',
 				'height': '500',
@@ -86,7 +91,7 @@ function onButtonClick(menuitemId, type) {
 				
 			});
 		
-		
+		}
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
 		ComponentId = tree.getSelectedItemId();

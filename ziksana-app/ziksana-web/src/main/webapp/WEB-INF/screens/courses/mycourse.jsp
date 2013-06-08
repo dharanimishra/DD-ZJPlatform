@@ -1,7 +1,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/isotope/jquery.isotope.min.js"></script>
 <script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/mycontent.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/mycourse.js"></script>
 
 <script>
 	$('#container4').isotope({
@@ -126,7 +126,7 @@
 				href="javascript:history.back()"></a>
 			<p class="page-title">
 				<span style="font-size: 13px; color: #6bbde8;">Home</span> < My
-				Content
+				Course
 			</p>
 
 		</div>
@@ -138,14 +138,14 @@
 <div class="Clearfix"></div>
 <div class="announcementcontainer">
 	<div class="headtag pull-left" style="margin-top: 10px;">My
-		Content</div>
+		Course</div>
 
 	<div class="isotophead pull-right">
 		<div class="isotoplinks">
-			<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a>|<a
-				href="#" onclick="getLearningContentsByType('VIDEO')">Video</a>|<a href="#" onclick="getLearningContentsByType('LINK')">Web
-				Link</a>|<a href="#"
-				onclick="getOtherLearningContents('Others')">Others</a>
+			<a href="#" class="active_filter" onclick="getAllCourse()">All</a>|<a
+				href="#" onclick="getActiveCourse('ACTIVE')">Active</a>|<a href="#"
+				onclick="getDraftCourse('DRAFT')">Draft</a>|<a href="#"
+				onclick="getReviewCourse('REVIEW')">Review</a>
 
 		</div>
 	</div>
@@ -154,17 +154,37 @@
 
 	<div class="Clearfix"></div>
 	<hr>
-		<div class="announcementswrapper" style="margin-left: 50px;">
+	<div class="announcementswrapper" style="margin-left: 50px;">
 		<form>
-			<input type="hidden" id="learingContents"
-				value='${learningContentAsJSONString}' />
-				<input type="hidden" id="fileServerPath" value='${ms.uploadContent}'/>
-			<div id="container4" class="createcontent-mainwrapper isotopbody">
-			</div>
+			<input type="hidden" id="courses"
+				value='${courseAsJSONString}' /> <input type="hidden"
+				id="fileServerPath" value='${ms.uploadContent}' />
+			<!-- <div id="container4" class="createcontent-mainwrapper isotopbody"> -->
+
+				<div id="createcontent-main" class="item All Review">
+
+					<p class="createcontenthead">Science</p>
+					<p class="createcontentimg">
+						<img
+							src="${staticFileServer}resources/images/genetics.jpg" />
+					</p>
+					<div class="description">
+
+						<a href="#linkurl" class="pull-right"><img class="iconcc"
+							src="${staticFileServer}resources/images/content/edit.png"
+							style="height: 35px;" /></a> <a href="#linkurl" class="pull-right"><img
+							src="${staticFileServer}resources/images/content/deleteicon.png"
+							style="height: 35px;" /></a>
+
+					</div>
+					<div class="Clearfix"></div>
+
+				</div>
+			<!-- </div> -->
 			<div class="Clearfix"></div>
-			<div id="pageNumbers" class="paginationbutton f-r" style="padding:10px;">
-			</div>
-	
+			<div id="pageNumbers" class="paginationbutton f-r"
+				style="padding: 10px;"></div>
+
 			<!--end of ann-mainwrapper-->
 		</form>
 	</div>
@@ -195,8 +215,7 @@
 	});
 </script>
 <style>
-.createcontentimg > img {
-    padding: 0;
+.createcontentimg>img {
+	padding: 0;
 }
-
 </style>

@@ -132,7 +132,7 @@ table tr td {
 															'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 															'queueSizeLimit' : 1,
 															'successTimeout' : 350,
-															'buttonText' : 'Upload Preview',
+															'buttonText' : 'Upload Image',
 															'uploader' : '${ms.uploadScript}',
 															//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 															'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
@@ -268,7 +268,7 @@ a.remove_this:hover {
 #thumbnail_image_file_upload>object,#thumbnail_image_file_upload-button
 	{
 	cursor: pointer !important;
-	width: 230px !important;
+	width: 130px !important;
 }
 label.error{color:#d14836;font-size:12px;margin-left:2px}
 </style>
@@ -285,6 +285,10 @@ label.error{color:#d14836;font-size:12px;margin-left:2px}
 			contentUrl: true
         },
         
+        messages: {
+        	contentName: "Enter URL Name.",
+        	contentUrl:"Enter URL"
+        }
         });
     });
   </script>

@@ -329,18 +329,18 @@ function inputLimiter(e,allow) {
 				<div class="control-group">
 					<input type="hidden" id="courseid" value="${courseId}"  /> <input
 						type="hidden" id="moduleexists" value="${module}" /> <label
-						class="control-label nexaf" for="Course Name">Course Name
-						:</label>
+						class="control-label nexaf" for="Course Name"><fmt:message key="Course.name"/>
+						</label>
 					<div class="controls">
 						<input type="text" autofocus
 							class="defaultvaluem treeRoot validate[required]"
 							id="defaultvalue" maxlength="64"
 							style="width: 240px; margin-left: 10px; color: #666;"
-							tabindex="1" placeholder="Enter course name" />
+							tabindex="1" placeholder="<fmt:message key="course.enter.name"/>" />
 					</div>
 
-					<br /> <label for="Course Description" class="nexaf">Course
-						Description :</label> <!-- <a class="f-r _plainText" id="plainText"
+					<br /> <label for="Course Description" class="nexaf"><fmt:message key="course.description"/></label>
+					 <!-- <a class="f-r _plainText" id="plainText"
 						href="#linkurl" style="text-decoration: none;"
 						onclick="showplain()">Rich Text Editor</a> <a
 						class="f-r _richText" id="richText" href="#linkurl"
@@ -354,7 +354,7 @@ function inputLimiter(e,allow) {
 					<div class="_richTextShow">
 						<textarea id="Cdescriptionrte" name="editor1pageload"
 							class="defaultvalue _focus">
-													<b>Describe the Course being created</b>
+													<b><fmt:message key="course.descrip.placeholder"/></b>
 												</textarea>
 					</div>
 					<script type="text/javascript">
@@ -371,10 +371,10 @@ function inputLimiter(e,allow) {
 			<!--Course Selection-->
 			<div class="control-group" style="margin-top: 20px;">
 				<div>
-					<label class="labelclass nexaf f-l"> Course Area : </label> <label
+					<label class="labelclass nexaf f-l"> <fmt:message key="course.area"/> </label> <label
 						class="labelclass nexaf f-l" style="margin-left: 217px;">
-						Course Subject: </label> <label class="labelclass nexaf f-l"
-						style="margin-left:200px;"> Course Topic: </label>
+						<fmt:message key="course.subject"/></label> <label class="labelclass nexaf f-l"
+						style="margin-left:200px;"><fmt:message key="course.topic"/></label>
 				</div>
 
 				<div class="clearfix"></div>
@@ -382,11 +382,11 @@ function inputLimiter(e,allow) {
 				<div class="moduleselection">
 					<select name="s_example" id="Careaddl" class="select"
 						onclick="getArea();">
-						<option value="0">choose a option...</option>
+						<option value="0"><fmt:message key="course.choose.option"/></option>
 					</select> <select name="s_example" class="select" id="Csubjectddl">
-						<option value="0">choose a option...</option>
+						<option value="0"><fmt:message key="course.choose.option"/></option>
 					</select><select name="s_example" class="select" id="Ctopicddl">
-						<option value="0">choose a option...</option>
+						<option value="0"><fmt:message key="course.choose.option"/></option>
 					</select>
 					<!-- <select name="Careaddl" id="Careaddl"
 											class="defaultvalue labelclass" onclick="getArea();">
@@ -443,8 +443,8 @@ function inputLimiter(e,allow) {
 			<select name="SelectArea" id="Cdurationtype" class="defaultvalue f-l"
 				style="margin-left: 20px;width:110px">
 				<option value="1">Weeks</option>
-				<option value="2">Months</option>
-				<option value="3">Days</option>
+				<option value="2"></option>
+				<option value="3"></option>
 			</select>
 			<div class="clearfix"></div>
 			<!--  <div class="control-group">
