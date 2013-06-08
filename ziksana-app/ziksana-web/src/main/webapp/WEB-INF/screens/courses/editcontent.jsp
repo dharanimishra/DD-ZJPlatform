@@ -145,6 +145,7 @@
 	<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
 		<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
 	</li> 
+	<li><a href="#linkurl"  class="editdetailuplbtn">Edit Details</a></li>
 	</ul> 
 	</div> 
 <div class="clearfix"></div> 
@@ -201,6 +202,7 @@ Topic</option> </select>
 
 </div> <!--end of uploadcontent2-->
 </div> <!--end of image wrapper --> </div> <!--end of contentarea--> </div>
+
 <!--end of contentpanel-->
 
 <div class="Clearfix"></div>
@@ -209,8 +211,6 @@ Topic</option> </select>
 
 <div class="Clearfix"></div>
 
-</div>
-</div>
 <style>
 
   .tileheadaa {
@@ -267,5 +267,6 @@ table tr td {
 }
 .edit_content_info{background:#0099cc}
 .uploadify{left:0px!important}
+.editdetailuplbtn:hover{color:#ccc!important;text-decoration:none}
 </style>
  
