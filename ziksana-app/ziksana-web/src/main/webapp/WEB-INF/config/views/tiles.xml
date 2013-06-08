@@ -175,6 +175,13 @@
 			value="/WEB-INF/screens/courses/recordcontent.jsp" />
 	</definition>
 
+	<!-- Metro Enhance Content -->
+	<definition name="masterenhancecontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Enhance Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/enhancecontent.jsp" />
+	</definition>
+
 <!-- Planner -->
 	<definition name="mastercourseplanner" extends="course-ziksana-master">
 		<put-attribute name="master_title" value="Planner" />
@@ -271,6 +278,13 @@
 		<put-attribute name="master_title" value="Record Content" />
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/recordcontent.jsp" />
+	</definition>
+
+	<!-- Metro Enhance Content -->
+	<definition name="enhancecontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Enhance Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/enhancecontent.jsp" />
 	</definition>
 
 	<!-- Enrich Content Page -->

@@ -17,7 +17,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/Menu/menu_ext.js"></script>
 <script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/tree/associate-content-treedata.js"></script>
+	src="${staticFileServer}resources/js/lib/tree/enhance-content-treedata.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
 	
@@ -236,48 +236,17 @@
 </style>
 
 
-<div class="navheadlp" style="padding-left: 151px;">
+<div class="navheadlp" style="padding-left: 300px;">
 	<ul>
-		<c:if test="${courseId == null}">
-		<li style="margin-left: 40px;"><a style="color: #f06c0b;"
-				href="/ziksana-web/zcourse/createcourse"><span><img
+		<li style="margin-left: 40px;"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Describe Course</a></li>
-	  </c:if>
-	  
-	  	<c:if test="${courseId != null}">
-		<li style="margin-left: 40px;"><a style="color: #f06c0b;"
-				href="/ziksana-web/zcourse/editcourse/COURSE_${courseId}"><span><img
+				style="margin-right: 10px; height: 22px;"> </span> Annotate </li>
+		<li style="color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Describe Course</a></li>
-	  </c:if>
-	  <c:if test="${courseId == null}">
-		<li ><a href="/ziksana-web/zcourse/createcourse"><span><img
-				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
-		</c:if>
-		
-		<c:if test="${courseId != null}">
-		<li ><a href="/ziksana-web/zcourse/createmodule/COURSE_${courseId}"><span><img
-				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
-		</c:if>
-	
-		<c:if test="${courseId == null}">
-		<li style="color: #f06c0b;"><a
-				href="/ziksana-web/zcourse/createcourse"><span><img
+				style="margin-right: 10px; height: 22px;"> </span> Record</li>
+		<li ><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</a></li>
-		</c:if>
-		<c:if test="${courseId != null}">
-		<li style="color: #f06c0b;"><a
-				href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
-				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</a></li>
-		</c:if>
-		<li><span><img
-				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Assignment</li>
+				style="margin-right: 10px;width:22px; height: 22px;"> </span> Enhance</li>
 
 	</ul>
 

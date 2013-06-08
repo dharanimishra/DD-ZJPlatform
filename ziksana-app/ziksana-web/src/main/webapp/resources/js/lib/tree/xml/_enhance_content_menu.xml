@@ -6,7 +6,7 @@
 		
 		<!--Menu For the Second Child Elements i.e. content node  -->
 		<item text="View Content" img="view.png"  id="View"></item>	
-		<item text="Annotate Content" img="annotate.png"  id="Annotate"></item>	
+		<item text="Enhance Content" img="enhance.png"  id="Enhance"></item>	
 		<item text="Delete content" img="cross.png"  id="Delete"></item>
 		<!-- 
 		<item text="Associate Content" img="plus.png"  id="Associate_Content"></item>	
