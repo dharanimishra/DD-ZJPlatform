@@ -1,7 +1,5 @@
 package com.ziksana.domain.course;
 
-import java.util.Date;
-
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.IntegerZID;
@@ -15,9 +13,13 @@ import com.ziksana.id.ZID;
  */
 public class LearningContentDecoration extends AuditHistory {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
+	private Integer learningContentId;
 	private ZID learningContentDecorationtId;
-	private Date creationDate;
 	private Boolean active;
 	private ContentDecorationType contentDecorationType;
 	private Integer ContentDecorationTypeId;
@@ -42,18 +44,6 @@ public class LearningContentDecoration extends AuditHistory {
 	public void setId(Integer id) {
 		this.id = id;
 		setLearningContentDecorationtId(id);
-	}
-	/**
-	 * @return the creationDate
-	 */
-	public Date getCreationDate() {
-		return creationDate;
-	}
-	/**
-	 * @param creationDate the creationDate to set
-	 */
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
 	}
 	/**
 	 * @return the active
@@ -221,15 +211,29 @@ public class LearningContentDecoration extends AuditHistory {
 	public void setAuthoringMember(MemberPersona authoringMember) {
 		this.authoringMember = authoringMember;
 	}
+
+	
+	
+	
+	/**
+	 * @return the learningContentId
+	 */
+	public Integer getLearningContentId() {
+		return learningContentId;
+	}
+	/**
+	 * @param learningContentId the learningContentId to set
+	 */
+	public void setLearningContentId(Integer learningContentId) {
+		this.learningContentId = learningContentId;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("LearningContentDecoration [creationDate=");
-		builder.append(creationDate);
-		builder.append(", active=");
+		builder.append("LearningContentDecoration [active=");
 		builder.append(active);
 		builder.append(", contentDecorationType=");
 		builder.append(contentDecorationType);

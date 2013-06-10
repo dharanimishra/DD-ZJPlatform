@@ -18,7 +18,7 @@ public interface LearningContentMapper {
 	/**
 	 * Saves the Learning Content
 	 */
-	LearningContent saveContent(LearningContent record);
+	Integer saveContent(LearningContent record);
 
 	/**
 	 * Updates the Learning Content

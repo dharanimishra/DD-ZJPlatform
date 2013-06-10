@@ -131,6 +131,8 @@ public class AssociateContentServiceImpl implements AssociateContentService {
 			Integer newLearningContentId) {
 		
 		LearningComponentContent oldLearningComponentContent = learningComponentContentService.getLearningComponentContent(learningComponentId, previousLearningContentId);
+		
+		//mark the old one as deleted
 		learningComponentContentService.deleteLearningComponentContent(oldLearningComponentContent);
 		
 		LearningContent newlearningContent = learningContentService.getLearningContent(newLearningContentId);

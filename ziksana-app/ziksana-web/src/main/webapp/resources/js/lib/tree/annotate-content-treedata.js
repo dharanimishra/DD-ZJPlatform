@@ -92,6 +92,8 @@ function onButtonClick(menuitemId, type) {
 			});
 		
 		}
+	} else if (menuaction == "Annotate") {
+		alert("Annotate");
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
 		ComponentId = tree.getSelectedItemId();

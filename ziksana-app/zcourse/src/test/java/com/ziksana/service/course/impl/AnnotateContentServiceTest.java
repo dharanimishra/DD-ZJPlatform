@@ -80,7 +80,7 @@ public class AnnotateContentServiceTest extends BaseTest {
 		learningContentDecoration.setContentDecorationTypeId(ContentDecorationType.ANNOTATED.getId());
 		//System.out.println(ContentDecorationType.ANNOTATED.getName());
 		learningContentDecoration.setCreatedBy("Test case");
-		learningContentDecoration.setCreationDate(new Date());
+		//learningContentDecoration.setCreationDate(new Date());
 		learningContentDecoration.setDelete(false);
 		learningContentDecoration.setDescription("test description");
 		learningContentDecoration.setRightsOwningMemberRoleId(207);

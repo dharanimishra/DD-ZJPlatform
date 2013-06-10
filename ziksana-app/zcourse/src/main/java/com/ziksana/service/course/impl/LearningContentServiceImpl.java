@@ -77,7 +77,7 @@ public class LearningContentServiceImpl implements LearningContentService {
 				LOGGER.debug("Before saving the LearningContent ...");
 
 				learningContentMapper.saveContent(learningContent);
-
+				LOGGER.debug("LearningContentServiceImpl.saveOrUpdateLearningContent() saved content   " + learningContent);
 				contentParts = learningContent.getAllLearningContentParts();
 
 				// Save Or Updates the LearningContentParts
