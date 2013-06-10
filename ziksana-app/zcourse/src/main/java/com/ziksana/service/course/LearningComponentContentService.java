@@ -28,4 +28,17 @@ public interface LearningComponentContentService {
 	 * @return
 	 */
 	public LearningComponentContent getLearningComponentContent(Integer learningComponentId, Integer learningContentId);
-}
+	
+	/**
+	 * Updates the learning component content
+	 * @param learningComponentContent
+	 */
+	public void update(LearningComponentContent learningComponentContent);
+	
+	/**
+	 * Creates/Saves new LearningComponentContent
+	 * @param learningComponentContent
+	 */
+	public void saveLearningComponentContent(LearningComponentContent learningComponentContent);
+	
+	}

@@ -6,7 +6,12 @@ import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
-public class LearningComponentContent extends AuditHistory {
+public class LearningComponentContent extends AuditHistory{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public LearningComponentContent() {
 

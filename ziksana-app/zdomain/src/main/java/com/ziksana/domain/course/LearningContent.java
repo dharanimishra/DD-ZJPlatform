@@ -14,7 +14,12 @@ import com.ziksana.id.ZID;
  * @author Ratnesh Kumar
  */
 
-public class LearningContent extends AuditHistory {
+public class LearningContent extends AuditHistory{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public LearningContent() {
 	}

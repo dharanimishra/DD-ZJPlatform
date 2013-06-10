@@ -6,6 +6,8 @@ public class NestContentNode {
 	private String contentId;
 	private String contentType;
 	private String contentname;
+	private Integer decorationTypeId;
+	private String decorationType;
 	private String icon;
 	private int parentLearningComponentId;
 
@@ -67,6 +69,35 @@ public class NestContentNode {
 
 	public void setExpanded(boolean expanded) {
 		this.expanded = expanded;
+	}
+
+	/**
+	 * @return the decorationTypeId
+	 */
+	public Integer getDecorationTypeId() {
+		return decorationTypeId;
+	}
+
+	/**
+	 * @param decorationTypeId the decorationTypeId to set
+	 */
+	public void setDecorationTypeId(Integer decorationTypeId) {
+		this.decorationTypeId = decorationTypeId;
+		this.decorationType = ContentDecorationType.getContentDecorationType(decorationTypeId).getName();
+	}
+
+	/**
+	 * @return the decorationType
+	 */
+	public String getDecorationType() {
+		return decorationType;
+	}
+
+	/**
+	 * @param decorationType the decorationType to set
+	 */
+	public void setDecorationType(String decorationType) {
+		this.decorationType = decorationType;
 	}
 
 	@Override

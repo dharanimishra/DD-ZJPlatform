@@ -1,5 +1,6 @@
 package com.ziksana.domain.common;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,12 @@ import java.util.Date;
  * 
  * @author bhashasp
  */
-public class AuditHistory {
+public class AuditHistory implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * This field corresponds to the property createdBy { User who creates }
 	 */
