@@ -85,21 +85,23 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 		
 		learningContentDecorationService.saveLearningContentDecoration(
 				getLearningContentDecoration(learningContent.getId(), contentDecorationType, creator));
+		
 		associateContentService.updateAssociation(learningComponentId, previousLearningContentId, savedLearningContent.getId());
 		LOGGER.debug("EnrichContentServiceImpl.createLearningContent() content created successfully " + learningContent + " for decoration type " + contentDecorationType);
 		return savedLearningContent;
 	}
 	
+	
 	private LearningContentDecoration getLearningContentDecoration(Integer learningContentId, ContentDecorationType contentDecorationType, MemberPersona creator){
 		LearningContentDecoration learningContentDecoration = new LearningContentDecoration();
 		learningContentDecoration.setLearningContentId(learningContentId);
 		learningContentDecoration.setContentDecorationType(contentDecorationType);
+		learningContentDecoration.setContentDecorationTypeId(contentDecorationType.getId());
 		learningContentDecoration.setActive(true);
 		learningContentDecoration.setDelete(false);
-		learningContentDecoration.setContentDecorationTypeId(contentDecorationType.getId());
 		learningContentDecoration.setAuthoringMember(creator);
 		learningContentDecoration.setAuthoringMemberRoleId(creator.getMemberRoleId());
-		learningContentDecoration.setCreatedBy(creator.getMember().getFirstName() + " " + creator.getMember().getFirstName());
+		//learningContentDecoration.setCreatedBy(creator.getMember().getFirstName() + " " + creator.getMember().getFirstName());
 		learningContentDecoration.setRightsOwningMember(creator);
 		learningContentDecoration.setRightsOwningMemberRoleId(creator.getMemberRoleId());
 		return learningContentDecoration;

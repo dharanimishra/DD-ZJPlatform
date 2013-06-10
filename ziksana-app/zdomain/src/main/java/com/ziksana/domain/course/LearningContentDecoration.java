@@ -31,7 +31,6 @@ public class LearningContentDecoration extends AuditHistory {
 	private MemberPersona rightsOwningMember = null;
 	private MemberPersona authoringMember = null;
 	private boolean isDelete;
-	private Integer subjClassificationId;
 	/**
 	 * @return the id
 	 */
@@ -153,18 +152,6 @@ public class LearningContentDecoration extends AuditHistory {
 	public void setDelete(boolean isDelete) {
 		this.isDelete = isDelete;
 	}
-	/**
-	 * @return the subjClassificationId
-	 */
-	public Integer getSubjClassificationId() {
-		return subjClassificationId;
-	}
-	/**
-	 * @param subjClassificationId the subjClassificationId to set
-	 */
-	public void setSubjClassificationId(Integer subjClassificationId) {
-		this.subjClassificationId = subjClassificationId;
-	}
 
 	
 	/**
@@ -252,7 +239,6 @@ public class LearningContentDecoration extends AuditHistory {
 		builder.append(", isDelete=");
 		builder.append(isDelete);
 		builder.append(", subjClassificationId=");
-		builder.append(subjClassificationId);
 		builder.append("]");
 		return builder.toString();
 	}

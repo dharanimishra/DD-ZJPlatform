@@ -36,7 +36,6 @@
 		AuthoringMemberRoleId,
 		RightsOwningMemberRoleId,
 		IsDelete,
-		SubjClassificationId
 	</sql>
 
 	<insert id="saveContentDecoration" parameterType="com.ziksana.domain.course.LearningContentDecoration"
@@ -44,6 +43,9 @@
 		insert into corlearningcontentdecoration
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,
+			<if test="learningContentId !=null">
+				learningContentId,
+			</if>
 			<if test="active !=null">
 				active,
 			</if>
@@ -62,15 +64,15 @@
 			<if test="authoringMember !=null">
 				authoringmemberroleid,
 			</if>
-			<if test="subjClassificationId !=null">
-				subjclassificationid,
-			</if>
 			<if test="isDelete !=null">
 				isDelete,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			sysdate(),
+			<if test="learningContentId !=null">
+				#{learningContentId,jdbcType=INTEGER},
+			</if>
 			<if test="active !=null">
 				#{active,jdbcType=BOOLEAN},
 			</if>
@@ -88,9 +90,6 @@
 			</if>
 			<if test="authoringMember !=null">
 				#{authoringMember.memberRoleId,jdbcType=INTEGER},
-			</if>
-			<if test="subjClassificationId !=null">
-				#{subjClassificationId,jdbcType=INTEGER},
 			</if>
 			<if test="isDelete !=null">
 				#{isDelete,jdbcType=BOOLEAN},
@@ -119,9 +118,6 @@
 			</if>
 			<if test="authoringMember !=null">
 				authoringmemberroleid = #{authoringMember.memberRoleId,jdbcType=INTEGER},
-			</if>
-			<if test="subjClassificationId !=null">
-				subjclassificationid = #{subjClassificationId,jdbcType=INTEGER},
 			</if>
 			<if test="isDelete !=null">
 				isdelete = #{isDelete,jdbcType=BOOLEAN}

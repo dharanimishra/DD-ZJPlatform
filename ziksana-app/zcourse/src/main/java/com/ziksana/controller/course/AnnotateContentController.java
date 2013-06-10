@@ -23,7 +23,6 @@ import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
-import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.EnrichContentService;
 import com.ziksana.service.security.MediaService;
