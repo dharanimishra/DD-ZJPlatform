@@ -245,7 +245,7 @@ function getDiv(learningContentObject) {
 			+ learningContentObject.id
 			+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg"style="height: 35px;" /></a> <a href="'
 			+ viewer_url
-			+ '"  class="show_in_fancybox pull-right" title="View content" data-fancybox-type="iframe"><img src="../../resources/images/content/view-content.svg" style="height: 35px;" /></a>'
+			+ '"  class="show_in_fancybox pull-right" title="'+learningContentObject.contentName+'" data-fancybox-type="iframe"><img src="../../resources/images/content/view-content.svg" style="height: 35px;" /></a>'
 			+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
 
 	return learningContentDiv;
@@ -322,5 +322,5 @@ function deleteContent(content_id) {
 }
 
 $(function() {
-	$('.show_in_fancybox, .google').fancybox();
+	$('.show_in_fancybox, .google').fancybox({autoWidth: true});
 });

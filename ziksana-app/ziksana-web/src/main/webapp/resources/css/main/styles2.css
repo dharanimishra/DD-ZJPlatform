@@ -528,10 +528,11 @@ reviewtable table,td {
 	height: 48px;
 	width:55px;
 } */
+#ProfilePic{ margin-top: 10px; } 
 .Profile {
-	margin-top: 10px;
-	height: 48px;
-	width:55px;
+  height: 45px;
+  vertical-align: middle;
+  width: 45px;
 }
 .Ziklogo {
 	height: 100px;
