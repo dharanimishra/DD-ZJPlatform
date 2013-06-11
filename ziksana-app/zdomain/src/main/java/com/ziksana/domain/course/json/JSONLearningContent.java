@@ -16,6 +16,7 @@ public class JSONLearningContent {
 	private String thumbnailPicturePath;
 	private String screenshotPath;
 	private List<String> decorationTypeList;  
+	private String previousDecorationType;  
 
 	public JSONLearningContent(LearningContent learningContent){
 		this.setContentDescription(learningContent.getContentDescription());
@@ -109,6 +110,24 @@ public class JSONLearningContent {
 	 */
 	public void setDecorationTypeList(List<String> decorationTypeList) {
 		this.decorationTypeList = decorationTypeList;
+		if((decorationTypeList != null && !decorationTypeList.isEmpty()) && decorationTypeList.size() > 1){
+			Integer index = decorationTypeList.size()-2;
+			setPreviousDecorationType(decorationTypeList.get(index));
+		}
+	}
+
+	/**
+	 * @return the previousDecorationType
+	 */
+	public String getPreviousDecorationType() {
+		return previousDecorationType;
+	}
+
+	/**
+	 * @param previousDecorationType the previousDecorationType to set
+	 */
+	private void setPreviousDecorationType(String previousDecorationType) {
+		this.previousDecorationType = previousDecorationType;
 	}
 
 
