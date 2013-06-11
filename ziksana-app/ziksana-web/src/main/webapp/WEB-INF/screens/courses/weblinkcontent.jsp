@@ -169,7 +169,7 @@ table tr td {
 									});
 								</script>
 							</div>
-						</div>
+						
 						<!--end of uploadphoto-->
 						<div class="rowfields pull-left">
 							<ul>
@@ -185,11 +185,11 @@ table tr td {
 						</div>
 						<!--end of rowfields-->
 						<div class="clearfix"></div>
-						<div class="editslide pull-left">
+						<div class="editslide pull-left" style="display:none">
 							<textarea rows="4" cols="12" name="contentDescription" 
 								style="width: 374px; margin-bottom: 10px; margin-left: 10px;" placeholder="Details for the Web link"></textarea>
 						</div>
-						<div class="editslide pull-left" style="margin-left: 5px;">
+						<div class="editslide pull-left" style="margin-left: 5px;display:none">
 							<input type="text" placeholder="Specify Tags" name="contentTag"
 								style="height: 30px; margin-right: 12px; width: 233px;">
 							<select id="Careaddl" name="contentArea" class="select Careaddl">
@@ -204,7 +204,7 @@ table tr td {
 						<div class="clearfix"></div>
 					</div>
 					<!-- end of uploadrow-->
-
+</div>
 				</div>
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
@@ -248,6 +248,8 @@ table tr td {
 	float: left;
 	margin-top: 16px;
 }
+
+
 </style>
 
 <style type="text/css">
