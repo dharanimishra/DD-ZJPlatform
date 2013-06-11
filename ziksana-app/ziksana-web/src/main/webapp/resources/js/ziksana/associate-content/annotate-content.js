@@ -406,7 +406,7 @@
 	function getDecorationImageElement(decorationType){
 		decorationType.toUpperCase();
 		var imageElements = '';
-		var imagePath = '/ziksana-web/resources/js/lib/tree/treeimages/images/';
+		var imagePath = $('staticFileServer').val() + 'resources/js/lib/tree/treeimages/images/';
 		if("ANNOTATED" == decorationType){
 			imageElements = imageElements + '<img src="'+ imagePath +'annotate.png" title="Annotated" height="20" width="20"/>    ';
 			console.log("imageElements -->> "  + imageElements);
@@ -414,8 +414,8 @@
 		else if("RECORDED" == decorationType){
 			imageElements = imageElements +  '<img src="'+ imagePath +'record.png" title="Recorded" height="20" width="20"/>    '; 
 		}
-		else if("ENHANCED" == decorationType){
-			imageElements = imageElements +  '<img src="'+ imagePath +'enhance.png" title="Enhanced" height="20" width="20"/>    '; 
+		else if("ENRICHED" == decorationType){
+			imageElements = imageElements +  '<img src="'+ imagePath +'enrich.png" title="Enriched" height="20" width="20"/>    '; 
 		}
 		return imageElements;
 	}

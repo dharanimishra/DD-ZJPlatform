@@ -246,7 +246,7 @@
 				style="margin-right: 10px; height: 22px;"> </span> Record</li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px;width:22px; height: 22px;"> </span> Enhance</li>
+				style="margin-right: 10px;width:22px; height: 22px;"> </span> Enrich</li>
 
 	</ul>
 

@@ -1,9 +1,10 @@
 <?xml version='1.0' ?>
 <menu id="1">
 		<!-- Menu For the Roort and the First Child Elements i.e. module-->
-		
-		<item text="Associate Repository Content" img="find.png"  id="Search_Associate_Content"></item>	
-		
+		<!-- commenting first chilc element for now may need in future -->
+		<!-- 
+			<item text="Associate Repository Content" img="find.png"  id="Search_Associate_Content"></item>	
+		 -->
 		<!--Menu For the Second Child Elements i.e. content node  -->
 		<item text="View Content" img="view.png"  id="View"></item>	
 		<item text="Annotate Content" img="annotate.png"  id="Annotate"></item>	

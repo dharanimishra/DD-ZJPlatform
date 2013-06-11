@@ -43,9 +43,21 @@ function onButtonClick(menuitemId, type) {
 	} else if (menuaction == "View") {
 		learningContentId = tree.getSelectedItemId().split('_')[1];
 		var viewer_url = '';
-		content_type = getLearningContentObject(learningContentId).contentType.toUpperCase();
+		var learningContentObject = getLearningContentObject(learningContentId);
+		content_type = learningContentObject.contentType.toUpperCase();
 		//alert("content_type " + content_type);
+		
+		/* 
+		 * to display the previous content type e.g. if the content is annotated then 
+		 * display base content on click of view content
+		 * and if the content is recorded then display the annotated content on click of view content in tree
+		*/
+		var prevDecorationType = "BASE_CONTENT";
 
+		if(learningContentObject.previousDecorationType && learningContentObject.previousDecorationType.trim() != ""){
+			//alert("learningContentObject previousDecorationType is " + learningContentObject.previousDecorationType);
+			prevDecorationType = learningContentObject.previousDecorationType;
+		}
 		
 		if (content_type.toUpperCase() == 'VIDEO') {
 			viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
@@ -69,9 +81,10 @@ function onButtonClick(menuitemId, type) {
 					+ learningContentId;
 		}
 		else if (content_type.toUpperCase() == 'LINK') {
-			viewer_url =  getLearningContentObject(learningContentId).contentURL;
+			viewer_url =  learningContentObject.contentURL;
 		}
-
+		//prevDecorationType
+		viewer_url + "/" + prevDecorationType;
 		//console.log("viewer_url ------------->>> " + viewer_url); 
 		// open in lightbox
 		
@@ -96,8 +109,8 @@ function onButtonClick(menuitemId, type) {
 		alert("Annotate");
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
-		ComponentId = tree.getSelectedItemId();
-		console.log(ComponentId);
+		contentIdStr = tree.getSelectedItemId();
+		console.log(contentIdStr);
 		confirm_delete_component = confirm('Are you sure you want to delete this item?');
 		if (confirm_delete_component == true) {
 			uri = '/ziksana-web/zcourse/1/unassociatecontent';
@@ -107,16 +120,14 @@ function onButtonClick(menuitemId, type) {
 			// request
 
 			var CourseId = $('#courseid').val();
-			nodeParentId = tree.getParentId(ComponentId);
-			//alert("ComponentId " + ComponentId.split('_')[1] + " CourseId "  + CourseId + " nodeParentId " + nodeParentId.split('_')[1]);
+			componentIdStr = tree.getParentId(contentIdStr);
 
 			var parameters = {
 				"courseId" : CourseId,
-				"componentId" : nodeParentId.split('_')[1],
-				"contentId" : ComponentId.split('_')[1]
+				"componentId" : componentIdStr.split('_')[1],
+				"contentId" : contentIdStr.split('_')[1]
 			};
-			
-			console.log("delete content course id is  " + CourseId);
+			//console.log("delete content course id is  " + CourseId);
 			console.log("parameters.length " + parameters.length);
 			
 			//return;
@@ -229,8 +240,6 @@ function createtree(course_id) {
 			console.log("parent_node_id " + parent_node_id);
 		}
 		tree.selectItem(itemId, false);
-		var id = tree.getSelectedItemId();
-		// alert(id);
 
 		// tree.selectItem(id,true);
 		if (node_type == "COURSE") {
@@ -255,9 +264,16 @@ function createtree(course_id) {
 		}
 
 		if (node_type == "CONTENT") {
+			
+			contentId = itemId.split('_')[1];
 			menu.showItem('View');
-			console.log("Showing annnotate also");
-			menu.showItem('Annotate');
+			
+			if(isShowAnnoation(contentId)){
+				menu.showItem('Annotate');
+			}
+			else{
+				menu.hideItem('Annotate');
+			}
 			menu.showItem('Delete');
 			menu.hideItem('Search_Associate_Content');
 		}
@@ -270,10 +286,23 @@ function createtree(course_id) {
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
 	courseId = course_id;
 	tree.loadXML("/ziksana-web/zcourse/getchildtree/" + courseId);
-
+	console.log("XML tree is " + "/ziksana-web/zcourse/getchildtree/" + courseId);
 }
 
-
+	 function isShowAnnoation(contentId){
+		var showAnnoation = true;
+		var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
+		if(decorationTypeList && decorationTypeList.length > 0){
+			for(var i=0; i < decorationTypeList.length; i++){
+				if("RECORDED" == decorationTypeList[i].toUpperCase() || "ENRICHED" == decorationTypeList[i].toUpperCase()){
+					showAnnoation = false;
+					break;
+				}
+				
+			}
+		}
+		return showAnnoation;
+	 }
 
 $(document).ready(
 		function(e) {
