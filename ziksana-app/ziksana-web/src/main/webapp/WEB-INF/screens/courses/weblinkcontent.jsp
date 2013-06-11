@@ -174,7 +174,7 @@ table tr td {
 						<div class="rowfields pull-left">
 							<ul>
 								<li>
-								<input type="hidden" name="contentPath" value="'++'"/>
+								<input type="hidden" name="contentPath" value=""/>
 								<input type="text" placeholder="Enter Name"
 									name="contentName" class="validate[required]"
 									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
