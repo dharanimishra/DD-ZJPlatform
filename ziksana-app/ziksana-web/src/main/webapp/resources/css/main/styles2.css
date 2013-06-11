@@ -301,11 +301,10 @@ body {
 	font-family: 'CorbelBold';
 	text-shadow: 0px 1px 1px #ffffff;
 }
-
 #leftpanel {
-	float: left;
-	width: 91%;
-	background-color: #fff;
+  background-color: #FFFFFF;
+  display: inline-block;
+  width: 91%;
 }
 
 #loginwrapper {
