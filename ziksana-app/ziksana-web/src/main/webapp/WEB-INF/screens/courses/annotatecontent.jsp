@@ -64,7 +64,7 @@
 
 
 <script type="text/javascript"
-	src="${staticFileServer}resources/js/ziksana/associate-content/associate-content.js"></script>
+	src="${staticFileServer}resources/js/ziksana/associate-content/annotate-content.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
 	
