@@ -49,7 +49,7 @@ public enum CourseStatus {
 		this.name = name;
 	}
 
-	private void setID(Integer id) {
+	public void setID(Integer id) {
 		this.id = id;
 
 	}
