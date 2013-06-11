@@ -231,6 +231,12 @@ table tr td {
 </div>
 
 <style>
+.uploadrowodd { background-color: #CCCCCC;
+   
+}
+.uploadroweven {
+    background-color: #0099CC;
+}
 .select2-container {
 	margin-right: 10px !important;
 	width: 235px;
@@ -258,7 +264,12 @@ a.remove_this:hover {
 	border-color: red;
 	text-decoration: none;
 }
-
+.weblinkcontainer {
+    background-color: #525252;
+    height: 320px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 #thumbnail_image_file_upload>object,#thumbnail_image_file_upload-button
 	{
 	cursor: pointer !important;
