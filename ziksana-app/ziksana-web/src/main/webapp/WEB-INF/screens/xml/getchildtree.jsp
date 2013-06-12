@@ -11,8 +11,10 @@
 	open="1" select="1" parentId="0"> <%
  	List<NestTreeNode> list = (List<NestTreeNode>) request
  			.getAttribute("parentList");
+ 	Map<String, String> imagePathMap = (Map<String, String>) request
+ 			.getAttribute("imagePathMap");
  	if (list != null)
- 		out.println(printTree(list));
+ 		out.println(printTree(list, imagePathMap));
  %> </item> </tree>
 
 <%--
@@ -58,7 +60,7 @@ String imageIcon = "../../../../../../../../ziksana-web/resources/images/tree_ic
 String noteIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/note.png";
 String linkIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/link.png";
 
-public String printTree(List<NestTreeNode> parents) {
+public String printTree(List<NestTreeNode> parents, Map<String, String> imagePathMap) {
 		StringBuffer sb = new StringBuffer();
 
 		for (NestTreeNode node : parents) {
@@ -72,23 +74,23 @@ public String printTree(List<NestTreeNode> parents) {
 					for (NestContentNode content : node.getContent()) {
 						if (content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName())
 								|| content.getContentType().equalsIgnoreCase(ContentType.ENHANCED_VIDEO.getName())) {
-							sb.append(getImagePath(videoIcon, node, content));
+							sb.append(getImagePath(imagePathMap.get("videoIcon"), node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.AUDIO.getName())) {
-							sb.append(getImagePath(audioIcon, node, content));
+							sb.append(getImagePath(imagePathMap.get("audioIcon"), node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.TEXTUAL.getName())) {
-							sb.append(getImagePath(noteIcon, node, content));
+							sb.append(getImagePath(imagePathMap.get("noteIcon"), node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.PDF.getName())) {
-							sb.append(getImagePath(pdfIcon, node, content));
+							sb.append(getImagePath(imagePathMap.get("pdfIcon"), node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.DOC.getName())) {
-							sb.append(getImagePath(docIcon, node, content));
+							sb.append(getImagePath(imagePathMap.get("docIcon"), node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.PPT.getName())) {
-							sb.append(getImagePath(pptIcon, node, content));
+							sb.append(getImagePath(imagePathMap.get("pptIcon"), node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.EXCEL.getName())) {
-							sb.append(getImagePath(excelIcon, node, content));
+							sb.append(getImagePath(imagePathMap.get("excelIcon"), node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.IMAGE.getName())) {
-							sb.append(getImagePath(imageIcon, node, content));
+							sb.append(getImagePath(imagePathMap.get("imageIcon"), node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.LINK.getName())) {
-							sb.append(getImagePath(linkIcon, node, content));
+							sb.append(getImagePath(imagePathMap.get("linkIcon"), node, content));
 						}
 					}
 				}
@@ -125,7 +127,7 @@ public String printTree(List<NestTreeNode> parents) {
 				}
 			}
 			if (node.getChildren() != null) {
-				sb.append(printTree(node.getChildren()));
+				sb.append(printTree(node.getChildren(), imagePathMap));
 			}
 			sb.append("</item>");
 		}

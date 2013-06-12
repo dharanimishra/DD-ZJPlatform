@@ -1,6 +1,8 @@
 package com.ziksana.controller.course;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,20 +37,6 @@ public class CourseNestTreeController {
 
 	private String treeImagePath = null;
 	private String treeImageFolder = null;
-	private String courseIcon = null;
-	private String chapterIcon = null;
-	private String parentIcon = null;
-	private String videoIcon = null;
-	private String audioIcon = null;
-	private String folderClosed = null;
-	private String folderOpen = null;
-	private String pptIcon = null;
-	private String docIcon = null;
-	private String excelIcon = null;
-	private String pdfIcon = null;
-	private String imageIcon = null;
-	private String noteIcon = null;
-	private String linkIcon = null;
 
 	@RequestMapping(value = "/gettreesample", method = RequestMethod.GET)
 	public @ResponseBody
@@ -102,20 +90,7 @@ public class CourseNestTreeController {
 			modelView.addObject("parentList", treeNodeList);
 
 			modelView.addObject("courseIds", courseIds);
-			modelView.addObject("parentIcon", parentIcon);
-			modelView.addObject("courseIcon", courseIcon);
-			modelView.addObject("chapterIcon", chapterIcon);
-			modelView.addObject("docIcon", docIcon);
-			modelView.addObject("pdfIcon", pdfIcon);
-			modelView.addObject("pptIcon", pptIcon);
-			modelView.addObject("videoIcon", videoIcon);
-			modelView.addObject("linkIcon", linkIcon);
-			modelView.addObject("noteIcon", noteIcon);
-			modelView.addObject("imageIcon", imageIcon);
-			modelView.addObject("audioIcon", audioIcon);
-			modelView.addObject("excelIcon", excelIcon);
-			modelView.addObject("folderClosed", folderClosed);
-			modelView.addObject("folderOpen", folderOpen);
+			modelView.addObject("imagePathMap", getImagePathMap());
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
@@ -157,20 +132,7 @@ public class CourseNestTreeController {
 
 			modelView.addObject("parentList", treeNodeList);
 			modelView.addObject("courseIds", courseIds);
-			modelView.addObject("parentIcon", parentIcon);
-			modelView.addObject("courseIcon", courseIcon);
-			modelView.addObject("chapterIcon", chapterIcon);
-			modelView.addObject("docIcon", docIcon);
-			modelView.addObject("pdfIcon", pdfIcon);
-			modelView.addObject("pptIcon", pptIcon);
-			modelView.addObject("videoIcon", videoIcon);
-			modelView.addObject("linkIcon", linkIcon);
-			modelView.addObject("noteIcon", noteIcon);
-			modelView.addObject("imageIcon", imageIcon);
-			modelView.addObject("audioIcon", audioIcon);
-			modelView.addObject("excelIcon", excelIcon);
-			modelView.addObject("folderClosed", folderClosed);
-			modelView.addObject("folderOpen", folderOpen);
+			modelView.addObject("imagePathMap", getImagePathMap());
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
@@ -185,7 +147,6 @@ public class CourseNestTreeController {
 	ModelAndView showEnrichTree(@PathVariable String courseId)
 			throws CourseException {
 		ModelAndView modelView = new ModelAndView("xml/getenrichtree");
-		setPaths();
 		LOGGER.debug("Entering showEnrichTree(): " + courseId);
 		Integer courseIds = 0;
 		Integer courseIdValue = 0;
@@ -210,20 +171,7 @@ public class CourseNestTreeController {
 			modelView.addObject("parentList", treeNodeList);
 
 			modelView.addObject("courseIds", courseIds);
-			modelView.addObject("parentIcon", parentIcon);
-			modelView.addObject("courseIcon", courseIcon);
-			modelView.addObject("chapterIcon", chapterIcon);
-			modelView.addObject("docIcon", docIcon);
-			modelView.addObject("pdfIcon", pdfIcon);
-			modelView.addObject("pptIcon", pptIcon);
-			modelView.addObject("videoIcon", videoIcon);
-			modelView.addObject("linkIcon", linkIcon);
-			modelView.addObject("noteIcon", noteIcon);
-			modelView.addObject("imageIcon", imageIcon);
-			modelView.addObject("audioIcon", audioIcon);
-			modelView.addObject("excelIcon", excelIcon);
-			modelView.addObject("folderClosed", folderClosed);
-			modelView.addObject("folderOpen", folderOpen);
+			modelView.addObject("imagePathMap", getImagePathMap());
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
@@ -263,20 +211,7 @@ public class CourseNestTreeController {
 
 			modelView.addObject("parentList", treeNodeList);
 			modelView.addObject("courseIds", courseIds);
-			modelView.addObject("parentIcon", parentIcon);
-			modelView.addObject("courseIcon", courseIcon);
-			modelView.addObject("chapterIcon", chapterIcon);
-			modelView.addObject("docIcon", docIcon);
-			modelView.addObject("pdfIcon", pdfIcon);
-			modelView.addObject("pptIcon", pptIcon);
-			modelView.addObject("videoIcon", videoIcon);
-			modelView.addObject("linkIcon", linkIcon);
-			modelView.addObject("noteIcon", noteIcon);
-			modelView.addObject("imageIcon", imageIcon);
-			modelView.addObject("audioIcon", audioIcon);
-			modelView.addObject("excelIcon", excelIcon);
-			modelView.addObject("folderClosed", folderClosed);
-			modelView.addObject("folderOpen", folderOpen);
+			modelView.addObject("imagePathMap", getImagePathMap());
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
@@ -285,23 +220,42 @@ public class CourseNestTreeController {
 		return modelView;
 	}
 	
-	private void setPaths(){
+	
+	private Map<String, String> getImagePathMap(){
+		HashMap<String, String> imagePathMap = new HashMap<String, String>();
 		MediaServerURL mediaServerURL = mediaService.getMediaContents();
-		treeImagePath = mediaService.getMediaContents().getTreeImagePath() + mediaService.getMediaContents().getStaticFileServer();
+		treeImagePath = mediaServerURL.getTreeImagePath() + mediaServerURL.getStaticFileServer();
 		treeImageFolder = treeImagePath + "resources/images/tree_icons/";
-		courseIcon = treeImageFolder + "course.png";
-		chapterIcon =treeImageFolder + "chapter.png";
-		parentIcon = treeImageFolder + "chapter.png";
-		videoIcon = treeImageFolder + "video.png";
-		audioIcon = treeImageFolder + "audio.png";
-		folderClosed = treeImageFolder + "folderClosed.gif";
-		folderOpen = treeImageFolder + "folderOpen.gif";
-		pptIcon = treeImageFolder + "powerpoint.png";
-		docIcon = treeImageFolder + "word.png";
-		excelIcon = treeImageFolder + "excel.png";
-		pdfIcon = treeImageFolder + "pdf.png";
-		imageIcon = treeImageFolder + "image.png";
-		noteIcon = treeImageFolder + "note.png";
-		linkIcon = treeImageFolder + "link.png";
+		String courseIcon = treeImageFolder + "course.png";
+		imagePathMap.put("courseIcon", courseIcon);
+		String chapterIcon =treeImageFolder + "chapter.png";
+		imagePathMap.put("chapterIcon", chapterIcon);
+		String parentIcon = treeImageFolder + "chapter.png";
+		imagePathMap.put("parentIcon", parentIcon);
+		String videoIcon = treeImageFolder + "video.png";
+		imagePathMap.put("videoIcon", videoIcon);
+		String audioIcon = treeImageFolder + "audio.png";
+		imagePathMap.put("audioIcon", audioIcon);
+		String folderClosed = treeImageFolder + "folderClosed.gif";
+		imagePathMap.put("folderClosed", folderClosed);
+		String folderOpen = treeImageFolder + "folderOpen.gif";
+		imagePathMap.put("folderOpen", folderOpen);
+		String pptIcon = treeImageFolder + "powerpoint.png";
+		imagePathMap.put("pptIcon", pptIcon);
+		String docIcon = treeImageFolder + "word.png";
+		imagePathMap.put("docIcon", docIcon);
+		String excelIcon = treeImageFolder + "excel.png";
+		imagePathMap.put("excelIcon", excelIcon);
+		String pdfIcon = treeImageFolder + "pdf.png";
+		imagePathMap.put("pdfIcon", pdfIcon);
+		String imageIcon = treeImageFolder + "image.png";
+		imagePathMap.put("imageIcon", imageIcon);
+		String noteIcon = treeImageFolder + "note.png";
+		imagePathMap.put("noteIcon", noteIcon);
+		String linkIcon = treeImageFolder + "link.png";
+		imagePathMap.put("linkIcon", linkIcon);
+		
+		
+		return imagePathMap;
 	}
 }
