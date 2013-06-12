@@ -26,7 +26,7 @@ public enum ContentDecorationType {
 
 	private String name;
 
-	private final static String CATEGORY = "LearningContent_DecorationType";
+	private final static String CATEGORY = "Learning Content Decoration Type";
 
 	private static boolean initialized = false;
 
