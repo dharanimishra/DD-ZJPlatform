@@ -91,6 +91,8 @@
     font-family: 'Segoe UI Light','Open Sans',Verdana,Arial,Helvetica,sans-serif;
     font-size: 13px!important;
 }
+.badge-warning{background-color: #999999;}
+#enrichtab .badge1{background-color: #F89406}
 </style> 
 <style>
 .ds {
