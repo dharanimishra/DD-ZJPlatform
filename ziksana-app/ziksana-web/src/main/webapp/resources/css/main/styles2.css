@@ -497,7 +497,7 @@ reviewtable table,td {
 }
 
 .page-title {
-	font-size: 13px;
+	font-size: 13px!important;
 	margin-top: 7px;
 }
 
