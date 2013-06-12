@@ -17,6 +17,8 @@ public class MediaServerURL {
 	private String flashRecordingFolder;
 	
 	private String staticFileServer;
+	
+	private String treeImagePath;
 
 	public String getStaticFileServer() {
 		return staticFileServer;
@@ -66,4 +68,19 @@ public class MediaServerURL {
 	public void setUploadContent(String uploadContent) {
 		this.uploadContent = uploadContent;
 	}
+
+	/**
+	 * @return the treeImagePath
+	 */
+	public String getTreeImagePath() {
+		return treeImagePath;
+	}
+
+	/**
+	 * @param treeImagePath the treeImagePath to set
+	 */
+	public void setTreeImagePath(String treeImagePath) {
+		this.treeImagePath = treeImagePath;
+	}
+	
 }

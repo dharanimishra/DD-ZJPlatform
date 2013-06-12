@@ -15,20 +15,51 @@
  		out.println(printTree(list));
  %> </item> </tree>
 
-<%!public String printTree(List<NestTreeNode> parents) {
+<%--
+static String chapterIcon;
+static String videoIcon;
+static 	String audioIcon;
+static 	String folderClosed;
+static String folderOpen;
+static String pptIcon;
+static String docIcon;
+static String excelIcon;
+static String pdfIcon;
+static String imageIcon;
+static String noteIcon;
+static String linkIcon;
+
+
+	chapterIcon = (String) request.getAttribute("chapterIcon");
+	videoIcon = (String) request.getAttribute("videoIcon");
+	audioIcon = (String) request.getAttribute("audioIcon");
+	folderClosed = (String) request.getAttribute("folderClosed");
+	folderOpen = (String) request.getAttribute("folderOpen");
+	pptIcon = (String) request.getAttribute("pptIcon");
+	docIcon = (String) request.getAttribute("docIcon");
+	excelIcon = (String) request.getAttribute("excelIcon");
+	pdfIcon = (String) request.getAttribute("pdfIcon");
+	imageIcon = (String) request.getAttribute("imageIcon");
+	noteIcon = (String) request.getAttribute("noteIcon");
+	linkIcon = (String) request.getAttribute("linkIcon");
+--%>
+	
+<%!
+String chapterIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/chapter.png";
+String videoIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/video.png";
+String audioIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/audio.png";
+String folderClosed = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderClosed.gif";
+String folderOpen = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderOpen.gif";
+String pptIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/powerpoint.png";
+String docIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/word.png";
+String excelIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/excel.png";
+String pdfIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/pdf.png";
+String imageIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/image.png";
+String noteIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/note.png";
+String linkIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/link.png";
+
+public String printTree(List<NestTreeNode> parents) {
 		StringBuffer sb = new StringBuffer();
-		String chapterIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/chapter.png";
-		String videoIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/video.png";
-		String audioIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/audio.png";
-		String folderClosed = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderClosed.gif";
-		String folderOpen = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderOpen.gif";
-		String pptIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/powerpoint.png";
-		String docIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/word.png";
-		String excelIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/excel.png";
-		String pdfIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/pdf.png";
-		String imageIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/image.png";
-		String noteIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/note.png";
-		String linkIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/link.png";
 
 		for (NestTreeNode node : parents) {
 			if (node.getParentLearningComponentId() == 0) {
@@ -39,124 +70,25 @@
 						+ "\"  parentId=\"COURSE_" + node.getCourseId() + "\">");
 				if (node.getContent() != null) {
 					for (NestContentNode content : node.getContent()) {
-						System.out.println(" content ----------------------------------jkjlkjkj   " + content.getContentType());
 						if (content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName())
 								|| content.getContentType().equalsIgnoreCase(ContentType.ENHANCED_VIDEO.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ videoIcon + "\" im1=\"" + chapterIcon
-									+ "\" im2=\"" + videoIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId() + "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(videoIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.AUDIO.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ videoIcon + "\" im1=\"" + audioIcon
-									+ "\" im2=\"" + audioIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(audioIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.TEXTUAL.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ noteIcon + "\" im1=\"" + noteIcon
-									+ "\" im2=\"" + noteIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(noteIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.PDF.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ pdfIcon + "\" im1=\"" + pdfIcon
-									+ "\" im2=\"" + pdfIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(pdfIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.DOC.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ docIcon + "\" im1=\"" + docIcon
-									+ "\" im2=\"" + docIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(docIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.PPT.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ pptIcon + "\" im1=\"" + pptIcon
-									+ "\" im2=\"" + pptIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(pptIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.EXCEL.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ excelIcon + "\" im1=\"" + excelIcon
-									+ "\" im2=\"" + excelIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(excelIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.IMAGE.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ imageIcon + "\" im1=\"" + imageIcon
-									+ "\" im2=\"" + imageIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(imageIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.LINK.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ linkIcon + "\" im1=\"" + linkIcon
-									+ "\" im2=\"" + linkIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(linkIcon, node, content));
 						}
 					}
 				}
@@ -171,122 +103,23 @@
 					for (NestContentNode content : node.getContent()) {
 						if (content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName())
 								|| content.getContentType().equalsIgnoreCase(ContentType.ENHANCED_VIDEO.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ videoIcon + "\" im1=\"" + chapterIcon
-									+ "\" im2=\"" + videoIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId() + "_"
-									+ content.getContentType()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"   parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
+							sb.append(getImagePath(videoIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.AUDIO.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ videoIcon + "\" im1=\"" + audioIcon
-									+ "\" im2=\"" + audioIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(audioIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.TEXTUAL.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ noteIcon + "\" im1=\"" + noteIcon
-									+ "\" im2=\"" + noteIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(noteIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.PDF.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ pdfIcon + "\" im1=\"" + pdfIcon
-									+ "\" im2=\"" + pdfIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(pdfIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.DOC.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ docIcon + "\" im1=\"" + docIcon
-									+ "\" im2=\"" + docIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(docIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.PPT.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ pptIcon + "\" im1=\"" + pptIcon
-									+ "\" im2=\"" + pptIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(pptIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.EXCEL.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ excelIcon + "\" im1=\"" + excelIcon
-									+ "\" im2=\"" + excelIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(excelIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.IMAGE.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ imageIcon + "\" im1=\"" + imageIcon
-									+ "\" im2=\"" + imageIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(imageIcon, node, content));
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.LINK.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ linkIcon + "\" im1=\"" + linkIcon
-									+ "\" im2=\"" + linkIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-
+							sb.append(getImagePath(linkIcon, node, content));
 						}
 					}
 				}
@@ -298,4 +131,26 @@
 		}
 		return sb.toString();
 
-	}%>
+	}
+	
+	
+	private String getImagePath(String baseImagePath, NestTreeNode component, NestContentNode content){
+		StringBuffer sb = new StringBuffer(); 
+		sb.append("<item text=\""
+				+ content.getContentname() + "\" im0=\""
+				+ baseImagePath + "\" im1=\"" + chapterIcon
+				+ "\" im2=\"" + baseImagePath
+				+ "\" id=\"CONTENT_"
+				+ content.getContentId()
+				+ "\" nodeid=\"CONTENT_"
+				+ content.getContentId() + "\"  parentId=\"COMPONENT_"
+				+ component.getNestLearningComponentId()
+				+ "\"  decorationType=\""
+				+ content.getDecorationType()
+				+ "\"></item>");
+
+		return sb.toString();		
+	}
+	
+	
+	%>

@@ -102,11 +102,12 @@ public class NestContentNode {
 
 	@Override
 	public String toString() {
-		return "NestContentTreeNode [id=" + id + ", contentId=" + contentId
+		return "NestContentNode [id=" + id + ", contentId=" + contentId
 				+ ", contentType=" + contentType + ", contentname="
 				+ contentname + ", icon=" + icon
 				+ ", parentLearningComponentId=" + parentLearningComponentId
-				+ "]";
+				+ ", decorationType=" + decorationType
+				+ "]"; 
 	}
 
 	public String debugTrace() {

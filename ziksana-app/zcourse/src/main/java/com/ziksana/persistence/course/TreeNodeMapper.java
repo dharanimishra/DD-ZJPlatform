@@ -34,7 +34,7 @@ public interface TreeNodeMapper {
 		"corlearncontent.ID AS contentid, " +
 		"corlearncontent.ContentName AS contentname, " +
 		"corlearncontent.ContentPath AS contentpath, " +
-		"learning_content_decoration.ContentDecorationType, " +
+		"learning_content_decoration.ContentDecorationType AS decorationType, " +
 		"corlearncontent.ContentType AS contenttype   " +
 		"from corcourselearningcomponent cclc,corlearningcomponent clc,  " +
 		"corlearningcomponentcontent clcc, corlearningcontent corlearncontent   " +
