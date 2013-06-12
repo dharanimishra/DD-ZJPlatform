@@ -49,7 +49,7 @@
 		$('a.dock-item2').bind('click', function() {
 			thumbnail_anchor = $(this);
 			thumbnail = $(this).find('img');
-			$('#pan img').attr('src', thumbnail.attr('src'));
+			$('#pan img').attr('src', thumbnail.attr('data-src'));
 			$('#fit').click(); //fit initally.
 			thumbnail_anchor.addClass('current');
 			thumbnail_anchor.siblings().removeClass('current');
@@ -125,8 +125,8 @@
 					<c:otherwise>
 						<c:forEach var="i" begin="0" end="${content.numberOfThumbnails-1}"
 							step="1" varStatus="status">
-							<a class="dock-item2" href="#"><span>${i}</span><img
-								src="${ms.url}${content.thumbnailPicturePath}img<c:out value="${i}" />.jpg" /></a>
+							<a class="dock-item2" href="#"><span>${i}</span>
+							<img data-src="${ms.url}${content.thumbnailPicturePath}img_<c:out value="${i}" />.jpg" src="${ms.url}${content.thumbnailPicturePath}thumb_<c:out value="${i}" />.jpg" /></a>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>

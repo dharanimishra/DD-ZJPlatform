@@ -73,6 +73,26 @@ public class MyCoursesController {
 		LOGGER.debug("Class " + getClass() + "Exiting myCourse(): ");
 		return modelView;
 	}
+	
+	
+	@RequestMapping(value = "1/mycourselearner", method = { RequestMethod.GET })
+	public @ResponseBody
+	ModelAndView myLearnerCourse() {
+		LOGGER.debug(" Entering Class " + getClass() + " myLearnerCourse()");
+		ModelAndView modelView = new ModelAndView("mastermylearnercourse");
+		try {
+			String jsonString="";
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "My Course - Learner");
+			modelView.addObject("courseAsJSONString", jsonString);
+
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Class " + getClass() + "Exiting myLearnerCourse(): ");
+		return modelView;
+	}
 
 	@RequestMapping(value = "1/educatorcourses", method = RequestMethod.GET)
 	public @ResponseBody
