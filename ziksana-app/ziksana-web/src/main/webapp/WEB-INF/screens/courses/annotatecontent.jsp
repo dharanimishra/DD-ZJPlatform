@@ -70,7 +70,30 @@
 	
 
 
- 
+<style>
+.tbboxheadfnt {
+    color: #8B8B8B;}
+.tbboxdesc p {
+    color: #B1B1B1;
+    font-family: 'segoe ui',sans-serif;
+    font-size: 14px!important;
+    font-weight: 100;
+}
+.tbboxdesc {
+    float: none;
+    margin-top: 0;
+    width: 328px;
+}
+.tbboxheadfntds {
+    color: #4BB1CF;}
+.tbboxdescds p {
+    color: #4BB1CF;
+    font-family: 'Segoe UI Light','Open Sans',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 13px!important;
+}
+.badge-warning{background-color: #999999;}
+#enrichtab .badge1{background-color: #F89406}
+</style> 
 <style>
 .ds {
 	margin-left: 40px;
@@ -396,6 +419,7 @@
    </script>
     
    <script>
+   
  $(function(){
 	$('#splitbarV').click(function(){
 		//console.log("hello");

@@ -106,7 +106,17 @@ function onButtonClick(menuitemId, type) {
 		
 		}
 	} else if (menuaction == "Annotate") {
-		alert("Annotate");
+		var contentId = tree.getSelectedItemId().split('_')[1];
+		if(!isShowAnnoation(contentId)){
+			var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
+			var latestDecorationType = "";
+			if(decorationTypeList && decorationTypeList.length > 0 ){
+				latestDecorationType = decorationTypeList[(decorationTypeList.length - 1)];
+			}
+			alert("Content is already " + latestDecorationType);
+			return;
+		}
+
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
 		contentIdStr = tree.getSelectedItemId();
@@ -268,11 +278,11 @@ function createtree(course_id) {
 			contentId = itemId.split('_')[1];
 			menu.showItem('View');
 			
-			if(isShowAnnoation(contentId)){
-				menu.showItem('Annotate');
+			if(isVideo(contentId)){
+				menu.hideItem('Annotate');
 			}
 			else{
-				menu.hideItem('Annotate');
+				menu.showItem('Annotate');
 			}
 			menu.showItem('Delete');
 			menu.hideItem('Search_Associate_Content');
@@ -302,6 +312,14 @@ function createtree(course_id) {
 			}
 		}
 		return showAnnoation;
+	 }
+	 function isVideo(contentId){
+		var isVideo = false;
+		var contentType = getLearningContentObject(contentId).contentType;
+		if("VIDEO" == contentType.toUpperCase()){
+			isVideo = true; 
+		}
+		return isVideo;
 	 }
 
 $(document).ready(
