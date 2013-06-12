@@ -5,7 +5,7 @@
 
  <div id="HeaderLogo" class="f-l">
      
-     <img src="/ziksana-web/resources/images/home/logo2.png"/>
+     <img src="/ziksana-web/resources/images/home/logo2.svg" width=200px,height=79px/>
      
  </div> <!--end of headerlogo-->
 

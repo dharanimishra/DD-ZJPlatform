@@ -394,34 +394,44 @@
    										 <textarea id="ckeditor" style="height: 300px;"></textarea>  -->
 			<!--Course Selection-->
 			<div class="control-group" style="margin-top: 20px;">
-				<div>
-					<label class="labelclass nexaf f-l" sytle="width:200px;"> <fmt:message
-							key="course.area" />
-					</label> <label class="labelclass nexaf f-l" style="margin-left: 217px;">
-						<fmt:message key="course.subject" />
-					</label> <label class="labelclass nexaf f-l" style="margin-left: 200px;"><fmt:message
-							key="course.topic" /></label>
-				</div>
+				
+
+ 
 
 				<div class="clearfix"></div>
 
 				<div class="moduleselection">
+					<div style="width: 32%; margin-right: 2px" class="f-l">
+					<label class="labelclass nexaf f-l" > <fmt:message key="course.area" />
+					</label>
+
 					<select name="s_example" id="Careaddl" class="select"
 						onchange="getArea();">
 						<option value="0">
 							<fmt:message key="course.choose.option" />
 						</option>
-					</select> <select name="s_example" class="select" id="Csubjectddl">
-						<option value="0">
-							<fmt:message key="course.choose.option" />
-						</option>
-					</select><select name="s_example" class="select" id="Ctopicddl">
+					</select>
+					</div>
+
+					<div style="width: 32%;" class="f-l">
+						<label class="labelclass nexaf f-l" > <fmt:message key="course.subject" />
+						</label>
+					 <select name="s_example" class="select" id="Csubjectddl">
 						<option value="0">
 							<fmt:message key="course.choose.option" />
 						</option>
 					</select>
+					</div>
+					<div style="width: 22%;" class="f-l">
+					<label class="labelclass nexaf f-l" ><fmt:message key="course.topic" /></label>
+					<select name="s_example" class="select" id="Ctopicddl">
+						<option value="0">
+							<fmt:message key="course.choose.option" />
+						</option>
+					</select>
+					</div>
 				</div>
-				<!-- end of moduleselection--->
+				
 
 			</div>
 			<!--end of Subject Selection-->
@@ -498,7 +508,7 @@
 											'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 											'queueSizeLimit' : 1,
 											'successTimeout' : 350,
-											'buttonText' : 'Upload Image',
+											'buttonText' : '<fmt:message key="profile.button.text" />',
 											'uploader' : '${ms.uploadScript}',
 											//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 											'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',

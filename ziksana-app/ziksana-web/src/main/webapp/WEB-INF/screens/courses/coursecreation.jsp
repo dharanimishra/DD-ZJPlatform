@@ -207,7 +207,7 @@
 				href="/ziksana-web/zcourse/createcourse"><span> <img
 						src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;">
-				</span> Describe Course</a></li>
+				</span><fmt:message key="course.DescribeCourse" /></a></li>
 		</c:if>
 
 		<c:if test="${courseId != null}">
@@ -215,37 +215,40 @@
 				href="/ziksana-web/zcourse/editcourse/${courseId}"><span>
 						<img src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;">
-				</span> Describe Course</a></li>
+				</span> <fmt:message key="course.DescribeCourse" /></a></li>
 		</c:if>
 		<c:if test="${courseId == null}">
 			<li  ><a style="color: #f06c0b;"
 				href="/ziksana-web/zcourse/createcourse"><span><img
 						src="/ziksana-web/resources/images/navarrow.png"
-						style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Define.Structure" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
 			<li><a style="color: #f06c0b;"
 				href="/ziksana-web/zcourse/createmodule/${courseId}"><span><img
 						src="/ziksana-web/resources/images/navarrow.png"
-						style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Define.Structure" /></a></li>
 		</c:if>
 
 		<c:if test="${courseId == null}">
 			<li><a href="/ziksana-web/zcourse/createcourse"><span><img
 						src="/ziksana-web/resources/images/navarrowb.png"
-						style="margin-right: 10px; height: 22px;"> </span> Associate
-					Content</a></li>
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Associate.content" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
 			<li><a
 				href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
 						src="/ziksana-web/resources/images/navarrowb.png"
-						style="margin-right: 10px; height: 22px;"> </span> Associate
-					Content</a></li>
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Associate.content" /></a></li>
 		</c:if>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Assignment</li>
+				style="margin-right: 10px; height: 22px;"> </span><fmt:message
+				key="Define.assignment" /></li>
 
 	</ul>
 

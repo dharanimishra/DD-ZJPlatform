@@ -111,7 +111,7 @@
 								<p>
 									<img src="/ziksana-web/resources/images/icons/review.png"
 										class="tbboximgds" /><span class="tbboxheadfntds">
-										<fmt:message key="course.Enrich"/> </span>
+										<fmt:message key="course.Enhance"/> </span>
 								</p>
 
 							</div>
