@@ -1,7 +1,9 @@
 package com.ziksana.persistence.course;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
@@ -11,6 +13,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.ziksana.domain.course.Content;
 import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.LearningContentDecoration;
 import com.ziksana.domain.course.LearningContentParts;
 
 public interface LearningContentMapper {
@@ -18,7 +21,7 @@ public interface LearningContentMapper {
 	/**
 	 * Saves the Learning Content
 	 */
-	LearningContent saveContent(LearningContent record);
+	Integer saveContent(LearningContent record);
 
 	/**
 	 * Updates the Learning Content
@@ -78,6 +81,7 @@ public interface LearningContentMapper {
 			@Result(property = "contentUrl", column = "ContentPath"),
 			@Result(property = "contentName", column = "ContentName"),
 			@Result(property = "contentDescription", column = "ContentDescription"),
+			@Result(property="learningContentDecorationList", javaType=ArrayList.class, column="id", many=@Many(select="getLearningContentDecorations")),			
 			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath"),
 			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails"),
 			@Result(property = "screenshotPath", column = "ScreenshotPath") })
@@ -94,5 +98,16 @@ public interface LearningContentMapper {
 			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath"),
 			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails") })
 	public LearningContent getLearningContent(Integer learningContentId);
+
+	@Select({ "select ID, CreationDate, Active, ContentDecorationType, Version, description, AuthoringMemberRoleId, RightsOwningMemberRoleId, IsDelete from corlearningcontentdecoration where learningContentId=#{learningContentId,jdbcType=INTEGER} " })
+	@Results(value = {
+			@Result(property = "id", column = "ID"),
+			@Result(property = "contentDecorationTypeId", column = "ContentDecorationType"),
+			@Result(property = "active", column = "active"),
+			@Result(property = "isDelete", column = "isDelete"),
+			@Result(property = "description", column = "description"),
+			@Result(property = "version", column = "Version"),
+			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails") })
+	List<LearningContentDecoration> getLearningContentDecorations(Integer learningContentId);
 
 }

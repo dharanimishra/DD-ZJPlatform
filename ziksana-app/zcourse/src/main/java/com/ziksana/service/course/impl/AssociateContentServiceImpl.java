@@ -1,13 +1,19 @@
 package com.ziksana.service.course.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ziksana.domain.course.ComponentContentType;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.LearningComponent;
 import com.ziksana.domain.course.LearningComponentContent;
@@ -22,6 +28,8 @@ import com.ziksana.service.course.LearningContentService;
 @Service
 public class AssociateContentServiceImpl implements AssociateContentService {
 
+	private final static Logger LOGGER = LoggerFactory
+			.getLogger(AssociateContentServiceImpl.class);
 	
 	@Autowired
 	CourseService courseService;
@@ -118,4 +126,52 @@ public class AssociateContentServiceImpl implements AssociateContentService {
 		return exists;
 	}
 
+	public void updateAssociation(
+			Integer learningComponentId, Integer previousLearningContentId,
+			Integer newLearningContentId) {
+		
+		LearningComponentContent oldLearningComponentContent = learningComponentContentService.getLearningComponentContent(learningComponentId, previousLearningContentId);
+		
+		//mark the old one as deleted
+		learningComponentContentService.deleteLearningComponentContent(oldLearningComponentContent);
+		
+		LearningContent newlearningContent = learningContentService.getLearningContent(newLearningContentId);
+		LearningComponentContent newLearningComponentContent = (LearningComponentContent) copy(oldLearningComponentContent);
+		newLearningComponentContent.setId(null);
+		newLearningComponentContent.setBaseLearningContent(newlearningContent);
+		learningComponentContentService.saveLearningComponentContent(newLearningComponentContent);
+		LOGGER.debug("AssociateContentServiceImpl.updateAssociation() - associating updated successfully for learning component id " + learningComponentId + " old content id was " + previousLearningContentId + " and new learning content id is " + newLearningContentId);
+	}
+	
+	/**
+     * Returns a copy of the object, or null if the object cannot
+     * be serialized.
+     */
+	//TODO move to a utility class
+    public static Object copy(Object orig) {
+        Object obj = null;
+        try {
+            // Write the object out to a byte array
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(bos);
+            out.writeObject(orig);
+            out.flush();
+            out.close();
+
+            // Make an input stream from the byte array and read
+            // a copy of the object back in.
+            ObjectInputStream in = new ObjectInputStream(
+                new ByteArrayInputStream(bos.toByteArray()));
+            obj = in.readObject();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+        catch(ClassNotFoundException cnfe) {
+            cnfe.printStackTrace();
+        }
+        return obj;
+    }
+    
+      
 }

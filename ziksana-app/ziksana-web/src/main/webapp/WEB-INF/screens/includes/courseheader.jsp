@@ -45,7 +45,7 @@
 				<div class="fifteen columns" id="page-title">
 					<a class="back" href="javascript:history.back()"></a>
 					<p class="page-title">
-						<span style="font-size: 13px; color: #6bbde8;"> </span><fmt:message key="home.hometext"/> <
+						<span style="color: #6bbde8;"> <fmt:message key="home.hometext"/></span> <
 						<fmt:message key="home.createcourse"/>
 					</p>
 				</div>
@@ -111,7 +111,7 @@
 								<p>
 									<img src="/ziksana-web/resources/images/icons/review.png"
 										class="tbboximgds" /><span class="tbboxheadfntds">
-										<fmt:message key="course.Enrich"/> </span>
+										<fmt:message key="course.Enhance"/> </span>
 								</p>
 
 							</div>
@@ -143,7 +143,7 @@
 
 								<p>
 									<img src="/ziksana-web/resources/images/icons/publish1.png"
-										class="tbboximgds" /><span class="tbboxheadfntds">
+										class="tbboximgds" /><span class="tbboxheadfntpublish">
 										<fmt:message key="course.Publish"/> </span>
 								</p>
 
@@ -158,7 +158,7 @@
 							</div>
 							<!--end of tbboximg  -->
 
-							<div class="tbboxdescds">
+							<div class="tbboxdescpub">
 								<p><fmt:message key="course.publish.created"/> </p>
 
 							</div>

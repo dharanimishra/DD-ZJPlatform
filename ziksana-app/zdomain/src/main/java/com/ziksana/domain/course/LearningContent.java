@@ -14,7 +14,12 @@ import com.ziksana.id.ZID;
  * @author Ratnesh Kumar
  */
 
-public class LearningContent extends AuditHistory {
+public class LearningContent extends AuditHistory{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public LearningContent() {
 	}
@@ -46,7 +51,9 @@ public class LearningContent extends AuditHistory {
 	private Integer subjClassificationId = null;
 
 	private Integer numberOfThumbnails = null;
-
+	
+	private List<LearningContentDecoration> learningContentDecorationList;
+	
 	public Integer getNumberOfThumbnails() {
 		return numberOfThumbnails;
 	}
@@ -508,6 +515,21 @@ public class LearningContent extends AuditHistory {
 		setLearningContentId(new IntegerZID(id));
 	}
 
+	/**
+	 * @return the learningContentDecorationList
+	 */
+	public List<LearningContentDecoration> getLearningContentDecorationList() {
+		return learningContentDecorationList;
+	}
+
+	/**
+	 * @param learningContentDecorationList the learningContentDecorationList to set
+	 */
+	public void setLearningContentDecorationList(
+			List<LearningContentDecoration> learningContentDecorationList) {
+		this.learningContentDecorationList = learningContentDecorationList;
+	}
+
 	@Override
 	public String toString() {
 		return "LearningContent [learningContentId=" + learningContentId
@@ -530,7 +552,7 @@ public class LearningContent extends AuditHistory {
 				+ ", baseComponentContent=" + baseComponentContent
 				+ ", contentTypeId=" + contentTypeId + ", isDelete=" + isDelete
 				+ ", contentPartid=" + contentPartid + ", contentUrl="
-				+ contentUrl + "]";
+				+ contentUrl + ", learningContentDecorationList= " + learningContentDecorationList + " ]";
 	}
 
 }

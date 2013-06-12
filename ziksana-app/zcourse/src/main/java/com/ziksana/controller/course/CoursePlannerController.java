@@ -2,6 +2,8 @@ package com.ziksana.controller.course;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,9 @@ import com.ziksana.service.course.CourseNestTreeService;
 @Controller
 @RequestMapping("/zcourse/")
 public class CoursePlannerController {
+	
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(CoursePlannerController.class);
 	
 	@Autowired
 	CourseNestTreeService courseNestTreeService;
@@ -40,50 +45,54 @@ public class CoursePlannerController {
 	@RequestMapping(value = "1/planner/{courseId}", method = { RequestMethod.GET })
 	public @ResponseBody
 	ModelAndView getCoursePlannerDetails(@PathVariable String courseId) {
-		ModelAndView modelAndView = new ModelAndView("mastercourseplanner");
+		LOGGER.debug("Entering showTreenode(): " + courseId);
 		Integer courseIds = 0;
 		Integer courseIdValue = 0;
 		String coursename = null;
+
+		ModelAndView modelView = new ModelAndView("mastercourseplanner");
+
 		try {
 			courseIds = Integer.parseInt(courseId);
-		
+			LOGGER.debug("showTreenode():  courseIds :" + courseIds);
 			List<NestTreeNode> nodeList = courseNestTreeService
 					.getCourseComponent(courseIds);
 
 			for (NestTreeNode node : nodeList) {
 				courseIdValue = node.getCourseId();
 				coursename = node.getCoursename();
-				modelAndView.addObject("courseIds", courseIdValue);
-				modelAndView.addObject("coursename", coursename);
+				modelView.addObject("courseIds", courseIdValue);
+				modelView.addObject("coursename", coursename);
 				break;
 			}
 			List<NestTreeNode> treeNodeList = courseNestTreeService
 					.getModuleComponents(courseIds);
 
-			
-			modelAndView.addObject("parentList", treeNodeList);
-			modelAndView.addObject("courseIds", courseIds);
-			modelAndView.addObject("parentIcon", parentIcon);
-			modelAndView.addObject("courseIcon", courseIcon);
-			modelAndView.addObject("chapterIcon", chapterIcon);
-			modelAndView.addObject("docIcon", docIcon);
-			modelAndView.addObject("pdfIcon", pdfIcon);
-			modelAndView.addObject("pptIcon", pptIcon);
-			modelAndView.addObject("videoIcon", videoIcon);
-			modelAndView.addObject("linkIcon", linkIcon);
-			modelAndView.addObject("noteIcon", noteIcon);
-			modelAndView.addObject("imageIcon", imageIcon);
-			modelAndView.addObject("audioIcon", audioIcon);
-			modelAndView.addObject("excelIcon", excelIcon);
-			modelAndView.addObject("folderClosed", folderClosed);
-			modelAndView.addObject("folderOpen", folderOpen);
+			LOGGER.debug(NestTreeNode.debugTrace(treeNodeList));
+
+			modelView.addObject("parentList", treeNodeList);
+			modelView.addObject("courseIds", courseIds);
+			modelView.addObject("parentIcon", parentIcon);
+			modelView.addObject("courseIcon", courseIcon);
+			modelView.addObject("chapterIcon", chapterIcon);
+			modelView.addObject("docIcon", docIcon);
+			modelView.addObject("pdfIcon", pdfIcon);
+			modelView.addObject("pptIcon", pptIcon);
+			modelView.addObject("videoIcon", videoIcon);
+			modelView.addObject("linkIcon", linkIcon);
+			modelView.addObject("noteIcon", noteIcon);
+			modelView.addObject("imageIcon", imageIcon);
+			modelView.addObject("audioIcon", audioIcon);
+			modelView.addObject("excelIcon", excelIcon);
+			modelView.addObject("folderClosed", folderClosed);
+			modelView.addObject("folderOpen", folderOpen);
 		} catch (ZiksanaException exception) {
-			
+			LOGGER.error(exception.getMessage(), exception);
 		}
 
+		LOGGER.debug("Exiting showMyTreenode(): " + courseId);
+		return modelView;
+
 	
-		return modelAndView;
-		
-	}
-	
+}
 }

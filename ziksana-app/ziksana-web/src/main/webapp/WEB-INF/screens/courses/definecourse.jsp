@@ -253,24 +253,6 @@
 		//}
 	} // End getArea()
 </script>
-<script>
-	function inputLimiter(e, allow) {
-		var AllowableCharacters = '';
-		if (allow == 'Numbers') {
-			AllowableCharacters = '1234567890';
-		}
-		var k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-		if (k != 13 && k != 8 && k != 0) {
-			if ((e.ctrlKey == false) && (e.altKey == false)) {
-				return (AllowableCharacters.indexOf(String.fromCharCode(k)) != -1);
-			} else {
-				return true;
-			}
-		} else {
-			return true;
-		}
-	}
-</script>
 <style>
 .uploadify {
 	margin-left: 260px;
@@ -302,24 +284,36 @@
 <div class="navheadlp" style="padding-left: 151px;">
 	<ul>
 		<c:if test="${courseId == null}">
-			<li style="margin-left: 40px; color: #f06c0b;"><a
+			<li style="margin-left: 40px;"><a style="color: #f06c0b;"
 				href="/ziksana-web/zcourse/createcourse"><span> <img
 						src="/ziksana-web/resources/images/navarrow.png"
 						style="margin-right: 10px; height: 22px;">
 				</span> <fmt:message key="course.DescribeCourse" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
-			<li style="margin-left: 40px; color: #f06c0b;"><a
+			<li style="margin-left: 40px;"><a style="color: #f06c0b;"
 				href="/ziksana-web/zcourse/editcourse/${courseId}"><span>
 						<img src="/ziksana-web/resources/images/navarrow.png"
 						style="margin-right: 10px; height: 22px;">
 				</span> <fmt:message key="course.DescribeCourse" /></a></li>
+		</c:if>
+		<c:if test="${courseId == null}">
+			<li><a href="/ziksana-web/zcourse/createcourse"><span><img
+						src="/ziksana-web/resources/images/navarrowb.png"
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Define.Structure" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
 			<li><a href="/ziksana-web/zcourse/createmodule/${courseId}"><span><img
 						src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
 						key="Define.Structure" /></a></li>
+		</c:if>
+		<c:if test="${courseId == null}">
+			<li><a href="/ziksana-web/zcourse/createcourse"><span><img
+						src="/ziksana-web/resources/images/navarrowb.png"
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Associate.content" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
 			<li><a
@@ -400,34 +394,44 @@
    										 <textarea id="ckeditor" style="height: 300px;"></textarea>  -->
 			<!--Course Selection-->
 			<div class="control-group" style="margin-top: 20px;">
-				<div>
-					<label class="labelclass nexaf f-l"> <fmt:message
-							key="course.area" />
-					</label> <label class="labelclass nexaf f-l" style="margin-left: 217px;">
-						<fmt:message key="course.subject" />
-					</label> <label class="labelclass nexaf f-l" style="margin-left: 200px;"><fmt:message
-							key="course.topic" /></label>
-				</div>
+				
+
+ 
 
 				<div class="clearfix"></div>
 
 				<div class="moduleselection">
+					<div style="width: 32%; margin-right: 2px" class="f-l">
+					<label class="labelclass nexaf f-l" > <fmt:message key="course.area" />
+					</label>
+
 					<select name="s_example" id="Careaddl" class="select"
-						onclick="getArea();">
-						<option value="0">
-							<fmt:message key="course.choose.option" />
-						</option>
-					</select> <select name="s_example" class="select" id="Csubjectddl">
-						<option value="0">
-							<fmt:message key="course.choose.option" />
-						</option>
-					</select><select name="s_example" class="select" id="Ctopicddl">
+						onchange="getArea();">
 						<option value="0">
 							<fmt:message key="course.choose.option" />
 						</option>
 					</select>
+					</div>
+
+					<div style="width: 32%;" class="f-l">
+						<label class="labelclass nexaf f-l" > <fmt:message key="course.subject" />
+						</label>
+					 <select name="s_example" class="select" id="Csubjectddl">
+						<option value="0">
+							<fmt:message key="course.choose.option" />
+						</option>
+					</select>
+					</div>
+					<div style="width: 22%;" class="f-l">
+					<label class="labelclass nexaf f-l" ><fmt:message key="course.topic" /></label>
+					<select name="s_example" class="select" id="Ctopicddl">
+						<option value="0">
+							<fmt:message key="course.choose.option" />
+						</option>
+					</select>
+					</div>
 				</div>
-				<!-- end of moduleselection--->
+				
 
 			</div>
 			<!--end of Subject Selection-->
@@ -473,7 +477,7 @@
 
 			<select name="SelectArea" id="Cdurationtype" class="defaultvalue f-l"
 				style="margin-left: 20px; width: 110px">
-				<option value="1">Weeks</option>
+				<option value="1"><fmt:message key="course.duration.unit" /></option>
 
 			</select>
 			<div class="clearfix"></div>
@@ -504,7 +508,7 @@
 											'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 											'queueSizeLimit' : 1,
 											'successTimeout' : 350,
-											'buttonText' : 'Upload Image',
+											'buttonText' : '<fmt:message key="profile.button.text" />',
 											'uploader' : '${ms.uploadScript}',
 											//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 											'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
@@ -535,7 +539,7 @@
 													$(
 															'#thubmnail_upload_message')
 															.html(
-																	'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
+																	'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove_$ta');
 
 												} else { //there is an error in the upload process
 

@@ -23,6 +23,7 @@ import com.ziksana.exception.ZiksanaException;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.security.MediaService;
 import com.ziksana.service.security.MemberService;
+import com.ziksana.service.security.PasswordService;
 import com.ziksana.service.security.ProfileService;
 
 /**
@@ -43,6 +44,9 @@ public class ProfileController {
 	
 	@Autowired
 	private MediaService mediaService;
+	
+	@Autowired
+	private PasswordService passwordService;
 	
 	@RequestMapping(value = "/1/profilepage/{memberId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView showUserProfileForm(@PathVariable int memberId) {
@@ -71,7 +75,8 @@ public class ProfileController {
 		ModelAndView modelAndView = new ModelAndView("profilepagesetup");
 		try{		
 			List<MemberProfile> profileList = new ArrayList<MemberProfile>();
-			
+			int userId = memberId;
+			String password = passwordService.getUserPassword(String.valueOf(userId));
 			profileList = profileService.getMemberProfileList(memberId);
 			Member member = memberService.getMemberByMemberId(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
 			modelAndView.addObject("applicationTitle", "User Profile Page Edit");
@@ -80,6 +85,7 @@ public class ProfileController {
 			modelAndView.addObject("profileAnswerOne",profileService.getMemberProfileByMemberId(memberId, "1SQ%"));
 			modelAndView.addObject("profileAnswerTwo",profileService.getMemberProfileByMemberId(memberId, "2SQ%"));
 			modelAndView.addObject("member", member);
+			modelAndView.addObject("currentPassword",password);
 			modelAndView.addObject("ms", mediaService.getMediaContents());
 		}
 		catch(ZiksanaException zexception){

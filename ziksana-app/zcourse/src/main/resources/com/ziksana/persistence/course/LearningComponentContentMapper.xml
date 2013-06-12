@@ -109,10 +109,6 @@
 				learningcomponentid =
 				#{learningComponent.learningComponentId.storageID,jdbcType=INTEGER},
 			</if>
-			<if test="synchronizeWithVideo != null">
-				synchronizewithvideoid =
-				#{synchronizeWithVideo.learningComponentContentId.storageID,jdbcType=INTEGER},
-			</if>
 			<if test="baseLearningContent != null">
 				learningcontentid =
 				#{baseLearningContent.learningContentId.storageID,jdbcType=INTEGER},

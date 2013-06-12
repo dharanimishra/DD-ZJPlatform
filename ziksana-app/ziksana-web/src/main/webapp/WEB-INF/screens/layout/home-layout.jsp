@@ -4,6 +4,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+ <link rel="shortcut icon" href="/ziksana-web/resources/images/icons/favicon.ico">
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
 <title><tiles:insertAttribute name="master_title" /></title>

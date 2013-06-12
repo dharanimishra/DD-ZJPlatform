@@ -49,47 +49,7 @@ public class JSONUtil {
 		return jsonString;
 	}
 	
-	public static void main(String[] args) {
-		
-		List list = new ArrayList();
-		Man m = new Man();
-		Man m1 = new Man();
-		Man m2 = new Man();
-		
-		m.setAge(11);
-		m1.setAge(22);
-		m2.setAge(33);
-		
-		m.setName("one");
-		m1.setName("two");
-		m2.setName("three");
-		
-		list.add(m);
-		list.add(m1);
-		list.add(m2);
-		
-		
-		System.out.println(JSONUtil.objectToJSONString(list));
-	}
-}
 
-class Man{
-	
-	int age;
-	String name;
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 	
 }
 

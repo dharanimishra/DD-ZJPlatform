@@ -372,6 +372,7 @@
 					<c:out value="${member.firstName}" />
 					<c:out value="${member.lastName}" />
 					<label id="memberIdValue" style="display: none;"><c:out value="${member.memberId}" /></label>
+					<label id="dbcurrentPassword" style="display: none;"><c:out value="${currentPassword}" /></label>
 					<label id="primaryEmailId" style="display: none;"><c:out value="${member.primaryEmailId}" /></label>
 				</P>
 
@@ -404,7 +405,7 @@
 						 <a   id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					      
-						  <div class="editcontroll border-user"  id="Edit_pass" ><a style="float:right;cursor:pointer;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
+						  <div class="editcontroll border-user"  id="Edit_pass" ><a style="float:right;cursor:pointer;margin-right: -17px;margin-top: -12px;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
 						  <p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetResponse"></p>
      						<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetFailResponse"></p>
 						  <label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
@@ -431,10 +432,10 @@
 						  <div class="editcontroll border-user" id="EditAlt_mail" ><a style="float:right;cursor:pointer;margin-right: -16px; margin-top: -12px;" onclick="showlbl('lblaltEmail');" title="Close">[X]</a>
 						   <label class="control-label nexaf" for="Course Name"><fmt:message key="profile.alternateemail"></fmt:message> :</label>
 						   <input type="text" style="width:365px;margin-left:19px;" id="alttenateEmailValue"  name="alt_mail" value="${profileAnswerOne.alternateEmailId}" />
-						   <p id="alternateEmailError" style="color:red;text-align:center"></p>
+						   <p id="alternateEmailError" style="color:red;margin-left:184px;"></p>
 						   <div style="margin-top:6px;">
 						  
-					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit('${profileAnswerOne.alternateEmailId}')" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
+					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  </div>
 					      </div>
@@ -717,14 +718,14 @@ function clearProfileForm(){
 	}
 	
 	function editFeilds(divid){
-		
+
 		$('#'+divid).slideToggle();
 		$("#lblaltEmail").hide();
 		}
 	
 		function showlbl(divid){
-			var dbEmail = "<c:out value='${profileAnswerOne.alternateEmailId}'></c:out>";
-			document.getElementById("alttenateEmailValue").value = dbEmail;
+		var val = "${profileAnswerOne.alternateEmailId}";
+			document.getElementById("alttenateEmailValue").value = val;
 			document.getElementById("alternateEmailError").innerHTML = '';
 			$('#'+divid).slideToggle();
 			$("#EditAlt_mail").hide();
@@ -736,6 +737,14 @@ function clearProfileForm(){
 		}
 		function hidecncl(divid){
 		$('#'+divid).slideToggle();
+		$('#currentPassword').val('');
+		$('#newPassword').val('');
+		$('#retypePassword').val('');
+		$('#errorCurrentPassword').val('');
+		$('#errorNewPassword').val('');
+		$('#errorRetypePassword').val('');
+		$('#passwordResetFailResponse').val('');
+		document.getElementById("passwordResetResponse").innerHTML = '';
 		$("#Edit_pass").hide();
 		}
 		function changesq1()
@@ -758,44 +767,57 @@ function clearProfileForm(){
 		$('#'+divid).slideToggle();
 		$("#Editsq2").hide();
 		}
-		function alterEmailSubmit(email){
-			
+		function alterEmailSubmit(){
+			primary = $("#primaryEmailId").text();
 			alternateEmailId = $("#alttenateEmailValue").val();
+			
 			memberIdVal = $("#memberIdValue").text();
 			if(alternateEmailId != ''){
-				if (primaryEmailId == alternateEmailId) {
-					$('#alternateEmailError').html("<fmt:message key="profile.error.altemail"></fmt:message>");
-					
-				}else{
-					if(("#alternateEmailError.inside:contains('email')")){
-					document.getElementById("alternateEmailError").innerHTML = '';
-					}
-				}
+				
 				var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
 				if(alternateEmailId.match(mailformat))  
 				{  
-					$.post( '/ziksana-web/profile/1/updatealternatemail'
-					        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId}
-					        , function( data )
-					        {
-					        
-					        	if(data == 2){
-				
-						          	   $('#alternateMailLabel').html(alternateEmailId);						          	  
-						          	 showlbl('lblaltEmail');
-						             }
-							
-					        }
-							 ); 
+					console.log(primary);
+					console.log(alternateEmailId)
+					if (primary == alternateEmailId) {
+						
+						$('#alternateEmailError').html("<fmt:message key="profile.error.altemail"></fmt:message>");
+						
+					}else{
+						if(("#alternateEmailError.inside:contains('email')")){
+						document.getElementById("alternateEmailError").innerHTML = '';
+						}
+						
+						$.post( '/ziksana-web/profile/1/updatealternatemail'
+						        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId}
+						        , function( data )
+						        {
+						        	
+						        	if(data == 2){
 					
-					document.getElementById("alternateEmailError").innerHTML = '';
+							          	   $('#alternateMailLabel').html(alternateEmailId);
+							          	 //$('#alttenateEmailValue').val(alternateEmailId);
+							          	 	//document.getElementById("alttenateEmailValue").value =;
+							          	 $('#lblaltEmail').slideToggle();
+										 $("#EditAlt_mail").hide();
+							          	// showlbl('lblaltEmail');
+							             }
+								
+						        }
+								 ); 
+						
+						document.getElementById("alternateEmailError").innerHTML = '';
+					}
+					
+					
+					
 				}else{
 					$('#alternateEmailError').html("<fmt:message key="profile.error.invalid"/>");
 					
 				}
 			
 		}else{
-			$('#alternateEmailError').html("Enter alternate EmailId");
+			$('#alternateEmailError').html("<fmt:message key="enter.alt.email"/>");
 		}
 		}
 		
@@ -829,7 +851,7 @@ $(document).ready(function() {
 
    
     //if the password length is less than 6, return message.
-    if (password.length < 6) { 
+    if (password.length < 8) { 
 		$('#errorNewPassword').removeClass();
 		/*$('#result').addClass('short')*/
 		$('#errorNewPassword').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span></span><br/><span style="color:orange;"><fmt:message key="resetpass.8char"/></span>');
@@ -860,8 +882,8 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('weak');
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/> </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
-		return false;			
+		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/> </span><br/><span style="color:orange;"><fmt:message key="restpass.passworddes"/>  </span>');
+		return true;			
 	} else if (strength == 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('good');
@@ -896,7 +918,10 @@ function checkpass()
 			
 			memberIdRef = $('#memberIdValue').text();
 
-			
+			dbcurrentPassword = $('#dbcurrentPassword').text();
+			console.log(newPassword);
+			console.log(dbcurrentPassword);
+			if(dbcurrentPassword != newPassword){
 			 $.post( '/ziksana-web/secure/password/resetpassword'
 			        , {'oldPassword':oldPassword,'confirmPassword':newPassword,'memberId':memberIdRef}
 			        , function( data )
@@ -910,6 +935,7 @@ function checkpass()
 			        		$('#passwordResetResponse').html("<fmt:message key="resetpass.successful"/>");
 			        		$('#passwordUpdatedDate').html(data);
 			        		
+			        		
 			        		setTimeout("showMsg()",3000);
 			        		
 						}else{
@@ -917,8 +943,10 @@ function checkpass()
 							
 						}
 			        }
-			        }
-					 );  
+			        });
+			}else{
+				$('#passwordResetFailResponse').html("<fmt:message key="reuse.password.error"/>");
+			}
 		}
 	
 		
@@ -938,7 +966,7 @@ function showMsg(){
 	$('#errorCurrentPassword').val('');
 	$('#errorNewPassword').val('');
 	$('#errorRetypePassword').val('');
-	
+	$('passwordResetFailResponse').val('');
 	document.getElementById("passwordResetResponse").innerHTML = '';
 	hidecncl('passEdit');
 }
@@ -969,13 +997,13 @@ function editUpdateSecuQuestion(){
 	var selectValue = "<fmt:message key="profile.select.text"/>";
 
 	if(editQuestionOneValue == selectValue){
-		$('#secQuesOneError').html("Select the Security Question 1"); 
+		$('#secQuesOneError').html("<fmt:message key="select.question1"/>"); 
 	}else if(editQuestionOneValue == editQuestionTwoValue){
 		
-			$('#secQuesOneError').html("Please choose Different Question"); 		
+			$('#secQuesOneError').html("<fmt:message key="profile.error.difquestion"/>"); 		
 	}else{
 		 if(editSecAnswerOne == ''){
-				$('#secQuesOneError').html("Enter Answer"); 
+				$('#secQuesOneError').html("<fmt:message key="enter.answer"/>"); 
 			}else{
 			 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
 			        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionOne,'SecurityQuestionValue':editQuestionOneValue,'SecurityAnswer':editSecAnswerOne}
@@ -989,7 +1017,7 @@ function editUpdateSecuQuestion(){
 				          	$('#ques_text_diplayone').html(editQuestionOneValue);
 				          	$('#secQuesOneError').html(""); 
 				             }else{
-				            	  $('#secQuesTwoError').html("Error"); 
+				            	  $('#secQuesTwoError').html("<fmt:message key="error.text"/>"); 
 				             }
 					
 			        }
@@ -1018,13 +1046,13 @@ function editSaveSecQuesTwo(){
 	var selectValue = "<fmt:message key="profile.select.text"/>";
 
 	if(editQuestionTwoValue == selectValue){
-		$('#secQuesTwoError').html("Select the Security Question 2"); 
+		$('#secQuesTwoError').html("<fmt:message key="select.question2"/>"); 
 	}else if(editQuestionTwoValue ==editQuestionOneValue){
 		
-			$('#secQuesTwoError').html("Please choose Different Question"); 		
+			$('#secQuesTwoError').html("<fmt:message key="profile.error.difquestion"/>"); 		
 	}else{
 		if(editSecAnswerTwo == ''){
-			$('#secQuesTwoError').html("Enter Answer");
+			$('#secQuesTwoError').html("<fmt:message key="enter.answer"/>");
 			
 		}else{
 			
@@ -1040,7 +1068,7 @@ function editSaveSecQuesTwo(){
 			          	$('#secQuesTwoError').html("");
 			          	
 			             }else{
-			            	  $('#secQuesTwoError').html("Error"); 
+			            	  $('#secQuesTwoError').html("<fmt:message key="error.text"/>"); 
 			             }
 				
 		        }

@@ -55,7 +55,6 @@
 	} */
 
 	function getArea() {
-
 		$
 				.get(
 						'/ziksana-web/zcourse/getsubjectarea',
@@ -67,20 +66,19 @@
 								label = options[i].label;
 								value = options[i].value;
 								if (i == 0) {
-									option = '<option selected="selected" value="' + value
-						+ '">'
-											+ label + '</option>';
+									option = '<option selected="selected" value="' + value+ '">'+ label + '</option>';
 								} else
-									option = '<option value="' + value + '">'
-											+ label + '</option>';
-
+									option = '<option value="' + value + '">'+ label + '</option>';
 								option_string += option;
 							}
-							$('#Cmoduleareaddl').html(option_string);
+							$('#Careaddl').html(option_string);
 
 						});
 
-		$("#Cmoduleareaddl")
+		//	}
+
+		//function getSubject() {
+		$("#Careaddl")
 				.change(
 						function(e) {
 							token = '';
@@ -88,7 +86,7 @@
 							uri = '/ziksana-web/zcourse/getsubject';
 
 							var Course_Area = '';
-							Course_Area = $('#Cmoduleareaddl').val();
+							Course_Area = $('#Careaddl').val();
 							$
 									.get(
 											uri,
@@ -107,39 +105,43 @@
 													value = options[i].value;
 													if (i == 0) {
 														option = '<option  value="'
-										+ value
-										+ '">'
+											+ value
+											+ '">'
 																+ label
 																+ '</option>';
 													} else
 
 														option = '<option value="'
-										+ value
-										+ '">'
+											+ value
+											+ '">'
 																+ label
 																+ '</option>';
 
 													option_string += option;
 												}
 
-												$('#Cmoduleareaddl').html(
-														area_string);
-												$('#Cmodulesubjectddl').html(
+												$('#Careaddl')
+														.html(area_string);
+												$('#Csubjectddl').html(
 														option_string);
 
 											});
 							var topic = '<option value="Select Topic">Select Topic</option>';
-							$('#Cmoduletopicddl').html(topic);
+							$('#Ctopicddl').html(topic);
 						});
 
-		$("#Cmodulesubjectddl")
+		//}
+
+		//function getTopic() {
+
+		$("#Csubjectddl")
 				.change(
 						function(e) {
 							console.log("Inside subject change handler");
 							uri = '/ziksana-web/zcourse/gettopic';
 							token = '';
 							request_type = 'GET';
-							var Course_Subject = $('#Cmodulesubjectddl').val();
+							var Course_Subject = $('#Csubjectddl').val();
 							var parameters = {
 								"Course_Subject" : Course_Subject
 							};
@@ -159,27 +161,28 @@
 													value = options[i].value;
 													if (i == 0) {
 														option = '<option value="'
-										+ value
-										+ '">'
+											+ value
+											+ '">'
 																+ label
 																+ '</option>';
 													} else
 
 														option = '<option value="'
-										+ value
-										+ '">'
+											+ value
+											+ '">'
 																+ label
 																+ '</option>';
 
 													option_string += option;
 												}
 
-												$('#Cmoduletopicddl').html(
+												$('#Ctopicddl').html(
 														option_string);
 
 											});
 
 						});
+		//}
 	} // End getArea()
 </script>
 <style>
@@ -204,31 +207,48 @@
 				href="/ziksana-web/zcourse/createcourse"><span> <img
 						src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;">
-				</span> Describe Course</a></li>
+				</span><fmt:message key="course.DescribeCourse" /></a></li>
 		</c:if>
 
 		<c:if test="${courseId != null}">
-			<li style="margin-left: 40px;"><a
+			<li style="margin-left: 40px;"><a 
 				href="/ziksana-web/zcourse/editcourse/${courseId}"><span>
 						<img src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;">
-				</span> Describe Course</a></li>
+				</span> <fmt:message key="course.DescribeCourse" /></a></li>
+		</c:if>
+		<c:if test="${courseId == null}">
+			<li  ><a style="color: #f06c0b;"
+				href="/ziksana-web/zcourse/createcourse"><span><img
+						src="/ziksana-web/resources/images/navarrow.png"
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Define.Structure" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
-			<li style="color: #f06c0b;"><a
+			<li><a style="color: #f06c0b;"
 				href="/ziksana-web/zcourse/createmodule/${courseId}"><span><img
 						src="/ziksana-web/resources/images/navarrow.png"
-						style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Define.Structure" /></a></li>
+		</c:if>
+
+		<c:if test="${courseId == null}">
+			<li><a href="/ziksana-web/zcourse/createcourse"><span><img
+						src="/ziksana-web/resources/images/navarrowb.png"
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Associate.content" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
-			<li><a href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
+			<li><a
+				href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
 						src="/ziksana-web/resources/images/navarrowb.png"
-						style="margin-right: 10px; height: 22px;"> </span> Associate
-					Content</a></li>
+						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
+						key="Associate.content" /></a></li>
 		</c:if>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Assignment</li>
+				style="margin-right: 10px; height: 22px;"> </span><fmt:message
+				key="Define.assignment" /></li>
 
 	</ul>
 
@@ -283,8 +303,8 @@
 
 						<!--end of course name-->
 
-						<label for="Course Description" class="labelclass"
-							style="font-weight: bold;"><b>Course Description :</b></label> <br />
+						<label for="Course Description" class="labelclass nexaf"
+							style="font-weight: bold;"><b>Course Description :</b></label> 
 						<div class="_richTextShow">
 							<textarea id="Cmoduledescrte" name="editor1pageload"
 								class="defaultvalue _focus">
@@ -306,7 +326,7 @@
 								<div style="width: 32%; margin-right: 2px" class="f-l">
 									<label class="labelclass nexaf f-l"> Module Area : </label> <select
 										name="s_example" id="Cmoduleareaddl" class="select"
-										onclick="getArea();">
+										onchange="getArea();">
 										<option value="0">choose a option...</option>
 									</select>
 								</div>

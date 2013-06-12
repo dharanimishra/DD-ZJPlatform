@@ -58,27 +58,28 @@
 	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
 	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
 	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
-		//out.println("size:"+list.size());
+		int i=0;
 	 	for (LearningContent content : list) {
 	 		
+	 		
 	 %> 
-		<%--  <div class="edit_content_info" id="content_<%=content.getId()%>"> --%>
-		 <div class="Clearfix"></div> 
-		<div class=" pull-left" style="padding: 10px;width:350px"> 
-	<!--  <div class="uploadphoto pull-left" style="width: 350px">
-	 <div style="width: 100%">  
-	 </div> 
-	 </div> -->
-
-
-				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/genetics.jpg" style="width: 100px;" align="left" />
+		 <div class="edit_content_info" id="content_<%=content.getId()%>">
+		 <div class="Clearfix"></div>
+		 <% if(i%2==0) {%> 
+		<div class="uploadrowodd" style="padding: 10px;width:100%"> 
+		<% } else {%>
+		<div class="uploadroweven" style="padding: 10px;width:100%"> 
+		<% 
+		}%>
+	  <div class="uploadphoto pull-left" style="width: 350px">
+				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/preview/image.png" style="width: 100px;" align="left" />
 				<div id="message_<%=content.getId()%>"></div>
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
 						<div id="loaderText_<%=content.getId()%>"></div>
 						<input type="file" name="thumbnail_image_file_upload_<%=content.getId()%>" id="thumbnail_image_file_upload_<%=content.getId()%>" style="margin-left: 196px;" />
 							<input type="hidden" name="content_id[]" value="<%=content.getId()%>"/>
 							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
-							<input type="hidden" name="thumbnail_path[]" id="thumbnail_path_<%=content.getId()%>" value="<%=old_thumbnail_path%>"/>
+							<input type="hidden" name="thumbnail_path[]" id="thumbnail_path_<%=content.getId()%>" value=""/>
 						<div id="status_<%=content.getId()%>"></div>
 						<script type="text/javascript">
 							$(function() {
@@ -139,10 +140,12 @@
 					</div>
 
  <!--end of uploadphoto--> 
+ 
  <div class="rowfields pull-left"> <ul>
 	<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
 		<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
 	</li> 
+	<li><a href="#linkurl"  class="editdetailuplbtn">Edit Details</a></li>
 	</ul> 
 	</div> 
 <div class="clearfix"></div> 
@@ -164,15 +167,30 @@ Subject</option> </select>
 <select class="select Ctopicddl" name="content_topic[]" > <option>Specify
 Topic</option> </select>
 
-</div> </div> <!--end of continaer--> <div class="clearfix"></div> 
+</div> 
 
-</div> <!-- end of uploadrow-->
- 
-</div>
+</div> <!--end of continaer--> 
 
-<%
+ <% if(i%2==0) {%> 
+		</div>
+		<% } else {%>
+		</div> 
+		<% 
+		}%>
+ <%
+ i++;
 	}
 %>
+</div>
+
+<div class="clearfix"></div> 
+
+</div> <!-- end of uploadrow-->
+</form> 
+</div>
+
+
+
 <div class="createcontentpanelhead" style="margin-top: 4px;"> 
 	<a href="#linkurl" class="btn pull-right" style="margin-left: 10px;" type="button" onClick="$('form#editcontentform').submit();"> Save </a> 
 	<a	href="/ziksana-web/zcourse/1/createcontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous </a>
@@ -181,9 +199,10 @@ Topic</option> </select>
 <div class="clearfix"></div> 
 </div> <!--end of panel head--> 
 
-</form> 
+
 </div> <!--end of uploadcontent2-->
 </div> <!--end of image wrapper --> </div> <!--end of contentarea--> </div>
+
 <!--end of contentpanel-->
 
 <div class="Clearfix"></div>
@@ -192,7 +211,6 @@ Topic</option> </select>
 
 <div class="Clearfix"></div>
 
-</div>
 <style>
 
   .tileheadaa {
@@ -249,5 +267,6 @@ table tr td {
 }
 .edit_content_info{background:#0099cc}
 .uploadify{left:0px!important}
+.editdetailuplbtn:hover{color:#ccc!important;text-decoration:none}
 </style>
  

@@ -195,7 +195,8 @@
      	<c:if test="${resetPassword == 'Reset Password Verification' }">
      			
 			    <div class="resetpassword">
-			    <label style="display:none"; id="memberIdRef">${memberId}</label>
+			    <label style="display:none" id="memberIdRef">${memberId}</label>
+			    <label style="display:none" id="currentPassword">${currentPassword}</label>
 			     <!--  <p class="reghead" style="margin-left:150px;">Select your Password </p> --> 
 			      <div class="separate" style="margin-left:10px; text-align:center;"> 
 			      
@@ -393,7 +394,7 @@ function securityQuestionOne(){
 	if(securityAnswerOne == ''){
 		$('#errorAnswerOneResponse').html("<fmt:message key="resetpass.remember.text"/><a href='#'><fmt:message key="login.Administrator"/></a>");		
 	}else {
-		if(("#errorAnswerOneResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
+		if(("#errorAnswerOneResponse.inside:contains('<fmt:message key="resetpass.remember.text"/>')")){
 			document.getElementById("errorAnswerOneResponse").innerHTML = '';
 		}
 		$.post( '/ziksana-web/unsecure/0/checkfirstanswer'
@@ -422,9 +423,9 @@ function securityQuestionTwo(){
 	console.log(securityAnswerTwo);
 	console.log(securityQuestionTwoText);
 	if(securityAnswerTwo == ''){
-		$('#errorAnswerTwoResponse').html("<fmt:message key="restpass.enterAns"/>");		
+		$('#errorAnswerTwoResponse').html("<fmt:message key="resetpass.remember.text"/><a href='#'><fmt:message key="login.Administrator"/></a>");		
 	}else {
-		if(("#errorAnswerTwoResponse.inside:contains('<fmt:message key="resetpass.field.required"/>')")){
+		if(("#errorAnswerTwoResponse.inside:contains('<fmt:message key="resetpass.remember.text"/>')")){
 			document.getElementById("errorAnswerTwoResponse").innerHTML = '';
 		}
 		$.post( '/ziksana-web/unsecure/0/checksecondanswer'
@@ -474,7 +475,7 @@ $(document).ready(function() {
 
    
     //if the password length is less than 6, return message.
-    if (password.length < 6) { 
+    if (password.length < 8) { 
 		$('#result').removeClass();
 		/*$('#result').addClass('short')*/
 		$('#result').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span><br/><span style="color:orange;"><fmt:message key="resetpass.8char"/></span>');
@@ -505,7 +506,7 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#result').removeClass();
 		$('#result').addClass('weak');
-		$('#result').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/>  </span><br/><span style="color:orange;">Password should be at least 8 characters in length with at least one Capital Letter/Number/Special Character </span>');
+		$('#result').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/>  </span><br/><span style="color:orange;"> <fmt:message key="restpass.passworddes"/></span>');
 		return true;			
 	} else if (strength == 2 ) {
 		$('#result').removeClass();
@@ -537,10 +538,8 @@ function checkpass()
 			retypePassword = $('#retypePassword').val();
 			
 			memberIdRef = $('#memberIdRef').text();
-			console.log(newPassword);
-			console.log(retypePassword);
-			console.log(memberIdRef);
-			
+			currentPassword = $('#currentPassword').text();
+			if(retypePassword != currentPassword){
 			 $.post( '/ziksana-web/unsecure/0/password/changepassword'
 			        , {'newPassword':newPassword,'confirmPassword':retypePassword,'memberId':memberIdRef}
 			        , function( data )
@@ -548,6 +547,9 @@ function checkpass()
 			        	if(data == '<fmt:message key="password.successfull"/>'){
 			        		
 			        		$('#passwordResponse').html("<fmt:message key="password.successfull.please"/><a href='/ziksana-web/secure/logout'> <fmt:message key="login.button"/></a>")
+			        	$('#passwordFailResponse').html("");
+			        		$('#result1').html("");
+			        		$('#result').html("")
 			        		
 						}else{
 							$('#passwordFailResponse').html(data);
@@ -555,6 +557,9 @@ function checkpass()
 						}
 			        }
 					 );  
+			}else{
+				$('#passwordFailResponse').html("<fmt:message key="reuse.password.error"/>");
+			}
 		}
 	
 		

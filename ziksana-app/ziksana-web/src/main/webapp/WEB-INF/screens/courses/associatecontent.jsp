@@ -238,15 +238,43 @@
 
 <div class="navheadlp" style="padding-left: 151px;">
 	<ul>
-		<li style="margin-left: 40px;"><span><img
+		<c:if test="${courseId == null}">
+		<li style="margin-left: 40px;"><a 
+				href="/ziksana-web/zcourse/createcourse"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Describe Course</li>
-		<li ><span><img
+				style="margin-right: 10px; height: 22px;"> </span> Describe Course</a></li>
+	  </c:if>
+	  
+	  	<c:if test="${courseId != null}">
+		<li style="margin-left: 40px;"><a 
+				href="/ziksana-web/zcourse/editcourse/COURSE_${courseId}"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Structure</li>
-		<li style="color: #f06c0b;"><span><img
+				style="margin-right: 10px; height: 22px;"> </span> Describe Course</a></li>
+	  </c:if>
+	  <c:if test="${courseId == null}">
+		<li ><a href="/ziksana-web/zcourse/createcourse"><span><img
+				src="/ziksana-web/resources/images/navarrowb.png"
+				style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
+		</c:if>
+		
+		<c:if test="${courseId != null}">
+		<li ><a href="/ziksana-web/zcourse/createmodule/COURSE_${courseId}"><span><img
+				src="/ziksana-web/resources/images/navarrowb.png"
+				style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
+		</c:if>
+	
+		<c:if test="${courseId == null}">
+		<li ><a style="color: #f06c0b;" 
+				href="/ziksana-web/zcourse/createcourse"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</li>
+				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</a></li>
+		</c:if>
+		<c:if test="${courseId != null}">
+		<li style="color: #f06c0b;"><a style="color: #f06c0b;" 
+				href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
+				src="/ziksana-web/resources/images/navarrow.png"
+				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</a></li>
+		</c:if>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span> Define Assignment</li>
@@ -345,16 +373,21 @@
 									<!--end of paginationbutton-->
 
 									<p style="text-align: right; clear: both;margin-top:10px">
-										<a target="" style="" onClick="associateContents()"
-											class="btn btn-info" href="#">Associate Content</a> <a target=""
-											style="" href="#" onClick="resetCheckBoxes()" class="btn btn-danger">Cancel</a>
+										<a target="" style="" onClick="associateContents()" class="btn btn-info" href="#">Associate Content</a> 
+											<a target="" style="" href="#" onClick="resetCheckBoxes()" class="btn btn-danger">Cancel</a>
 									</p>
+									<!-- 
+									<p style="text-align: right; clear: both;margin-top:10px">
+										<a target="" style="" href="#" onClick="" class="btn btn-info">Save and Continue</a>
+									</p>
+									 -->
 								</div>
 								<!--end of associatewrapper-->
 
 
 
 								<div class="ClearFix"></div>
+
 							</div>
 							<!-- Content Panel End -->
 						 

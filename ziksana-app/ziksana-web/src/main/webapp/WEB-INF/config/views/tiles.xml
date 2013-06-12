@@ -161,6 +161,27 @@
 			value="/WEB-INF/screens/courses/mycourse.jsp" />
 	</definition>
 
+	<!-- Metro Annotate Content -->
+	<definition name="masterannotatecontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Annotate Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/annnotatecontent.jsp" />
+	</definition>
+	
+	<!-- Metro Record Content -->
+	<definition name="masterrecordcontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Record Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/recordcontent.jsp" />
+	</definition>
+
+	<!-- Metro Enhance Content -->
+	<definition name="masterenhancecontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Enhance Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/enhancecontent.jsp" />
+	</definition>
+
 <!-- Planner -->
 	<definition name="mastercourseplanner" extends="course-ziksana-master">
 		<put-attribute name="master_title" value="Planner" />
@@ -245,6 +266,26 @@
 			value="/WEB-INF/screens/courses/associatecontent.jsp" />
 	</definition>
 
+	<!-- Metro Annotate Content -->
+	<definition name="annotatecontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Annotate Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/annotatecontent.jsp" />
+	</definition>
+
+	<!-- Metro Record Content -->
+	<definition name="recordcontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Record Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/recordcontent.jsp" />
+	</definition>
+
+	<!-- Metro Enhance Content -->
+	<definition name="enhancecontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Enhance Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/enhancecontent.jsp" />
+	</definition>
 
 	<!-- Enrich Content Page -->
 	<definition name="organizeenrichcontent" extends="commonPageLayoutLatest">

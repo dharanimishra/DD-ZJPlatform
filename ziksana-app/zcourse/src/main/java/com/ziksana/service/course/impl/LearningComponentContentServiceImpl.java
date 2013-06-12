@@ -43,4 +43,14 @@ public class LearningComponentContentServiceImpl implements
 		return learningComponentContentMapper.findByComponentAndContentId(learningComponentId, learningContentId);
 	}
 
+	public void update(LearningComponentContent learningComponentContent) {
+		learningComponentContentMapper.updateLearningComponentContent(learningComponentContent);
+	}
+
+	public void saveLearningComponentContent(
+			LearningComponentContent learningComponentContent) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

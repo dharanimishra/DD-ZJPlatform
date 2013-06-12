@@ -66,7 +66,7 @@ table tr td {
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
 			<p class="page-title">
-				<span style="font-size: 13px; color: #6bbde8;">Home</span> < Create
+				<span style="color: #6bbde8;">Home</span> < Create
 				Content
 			</p>
 		</div>

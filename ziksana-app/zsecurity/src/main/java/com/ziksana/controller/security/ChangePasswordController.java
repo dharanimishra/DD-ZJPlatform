@@ -33,8 +33,11 @@ public class ChangePasswordController {
 	@RequestMapping(value = "/unsecure/0/password/newpassword/{memberId}", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView passwordCreationPage(@PathVariable String memberId){
 		ModelAndView modelAndView = new ModelAndView("masterresetpassword");
+		String userId = memberId;
+		String password = passwordService.getUserPassword(userId);
 		modelAndView.addObject("resetPassword", RESETPASSWORD);
 		modelAndView.addObject("memberId", memberId);
+		modelAndView.addObject("currentPassword",password);
 		return modelAndView;
 	}
 	
@@ -47,8 +50,8 @@ public class ChangePasswordController {
 		String responseMessage = null ;
 	
 			String userId = passwordService.getUserIdByMember(Integer.parseInt(memberId));
-			/*String password = passwordService.getUserPassword(userId);
-			if(userId != "" && password !=""){
+			
+			/*if(userId != "" && password !=""){
 			response = passwordService.replaceExistingPassword(newPassword,userId,password);
 			}*/
 			String response = "success";

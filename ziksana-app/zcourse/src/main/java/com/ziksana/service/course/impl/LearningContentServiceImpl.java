@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ziksana.domain.course.Content;
 import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.LearningContentDecoration;
 import com.ziksana.domain.course.LearningContentParts;
 import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningContentMapper;
@@ -41,7 +42,8 @@ public class LearningContentServiceImpl implements LearningContentService {
 		// learningContentMapper.getListOfContentsByMemberRoleId(207);
 		List<LearningContent> list = learningContentMapper
 				.getUserContent(memberId);
-
+		//TODO for testing only delete this
+		List<LearningContentDecoration>  lista = learningContentMapper.getLearningContentDecorations(11);
 		LOGGER.info("Exiting Class :" + getClass()
 				+ " Method Name :getUserContent(Integer memberId)");
 
@@ -77,7 +79,7 @@ public class LearningContentServiceImpl implements LearningContentService {
 				LOGGER.debug("Before saving the LearningContent ...");
 
 				learningContentMapper.saveContent(learningContent);
-
+				LOGGER.debug("LearningContentServiceImpl.saveOrUpdateLearningContent() saved content   " + learningContent);
 				contentParts = learningContent.getAllLearningContentParts();
 
 				// Save Or Updates the LearningContentParts

@@ -3,7 +3,7 @@
 <script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
 <script type="text/javascript" src="/ziksana-web/resources/js/jwplayer/jwplayer.js"></script>
 <style type="text/css">
-body{min-width: 490px; min-height: 270px; background: white; overflow:hidden !important;}
+body{min-width:900px; min-height: 270px; background: white; overflow:hidden !important;}
 </style>
 	<script type="text/javascript">
 		function getQueryVariable(variable) {
@@ -22,8 +22,8 @@ body{min-width: 490px; min-height: 270px; background: white; overflow:hidden !im
 			
 			jwplayer("lbmediaplayer").setup({
 				flashplayer: "/ziksana-web/resources/jwplayer/player.swf",
-				height: 385,
-				width: 640,
+				height: 480,//385
+				width: 853,//640
 				file: '${ms.url}'+'${content.contentUrl}'
 			}).play('true');		
 			
@@ -34,7 +34,7 @@ body{min-width: 490px; min-height: 270px; background: white; overflow:hidden !im
 	
 
 </head>
-<body>
+<body style="min-width:900px;">
 		<div id="lbmediaplayer">JW Player goes here</div>
 
 

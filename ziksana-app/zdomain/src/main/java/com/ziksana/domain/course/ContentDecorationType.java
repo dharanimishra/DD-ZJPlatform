@@ -17,7 +17,7 @@ import com.ziksana.util.UTLLookUpUtil;
  */
 public enum ContentDecorationType {
 	
-	ANNOTATED(), RECORDED(), ENHANCED();
+	ANNOTATED(), RECORDED(), ENRICHED();
 	
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(ContentDecorationType.class);
@@ -26,7 +26,7 @@ public enum ContentDecorationType {
 
 	private String name;
 
-	private final static String CATEGORY = "LearningContent_DecorationType";
+	private final static String CATEGORY = "Learning Content Decoration Type";
 
 	private static boolean initialized = false;
 
@@ -48,7 +48,7 @@ public enum ContentDecorationType {
 			initialized = false;
 			LOGGER.error("Content Decoration Type initialization failed ");
 			//TODO remove this once tested
-			System.exit(0);
+			//System.exit(0);
 		}
 	}
 

@@ -140,10 +140,13 @@
 				#{subjClassificationId,jdbcType=INTEGER},
 			</if>
 		</trim>
+			<!--  
 		<selectKey keyProperty="id" resultType="int"
 			order="AFTER">
+			select id from corlearningcontent order by id desc limit 1;
 			SELECT LAST_INSERT_ID();
 		</selectKey>
+			-->
 	</insert>
 
 	<update id="updateContent" parameterType="com.ziksana.domain.course.LearningContent">

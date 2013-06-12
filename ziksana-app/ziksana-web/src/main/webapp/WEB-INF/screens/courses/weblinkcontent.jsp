@@ -169,12 +169,12 @@ table tr td {
 									});
 								</script>
 							</div>
-						</div>
+						
 						<!--end of uploadphoto-->
 						<div class="rowfields pull-left">
 							<ul>
 								<li>
-								<input type="hidden" name="contentPath" value="'++'"/>
+								<input type="hidden" name="contentPath" value=""/>
 								<input type="text" placeholder="Enter Name"
 									name="contentName" class="validate[required]"
 									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
@@ -185,11 +185,11 @@ table tr td {
 						</div>
 						<!--end of rowfields-->
 						<div class="clearfix"></div>
-						<div class="editslide pull-left">
+						<div class="editslide pull-left" style="display:none">
 							<textarea rows="4" cols="12" name="contentDescription" 
 								style="width: 374px; margin-bottom: 10px; margin-left: 10px;" placeholder="Details for the Web link"></textarea>
 						</div>
-						<div class="editslide pull-left" style="margin-left: 5px;">
+						<div class="editslide pull-left" style="margin-left: 5px;display:none">
 							<input type="text" placeholder="Specify Tags" name="contentTag"
 								style="height: 30px; margin-right: 12px; width: 233px;">
 							<select id="Careaddl" name="contentArea" class="select Careaddl">
@@ -204,7 +204,7 @@ table tr td {
 						<div class="clearfix"></div>
 					</div>
 					<!-- end of uploadrow-->
-
+</div>
 				</div>
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
@@ -231,6 +231,12 @@ table tr td {
 </div>
 
 <style>
+.uploadrowodd { background-color: #CCCCCC;
+   
+}
+.uploadroweven {
+    background-color: #0099CC;
+}
 .select2-container {
 	margin-right: 10px !important;
 	width: 235px;
@@ -248,6 +254,8 @@ table tr td {
 	float: left;
 	margin-top: 16px;
 }
+
+
 </style>
 
 <style type="text/css">
@@ -256,7 +264,12 @@ a.remove_this:hover {
 	border-color: red;
 	text-decoration: none;
 }
-
+.weblinkcontainer {
+    background-color: #525252;
+    height: 320px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 #thumbnail_image_file_upload>object,#thumbnail_image_file_upload-button
 	{
 	cursor: pointer !important;

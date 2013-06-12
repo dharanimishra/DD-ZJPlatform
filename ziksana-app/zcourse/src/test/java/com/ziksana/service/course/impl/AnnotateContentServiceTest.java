@@ -5,7 +5,6 @@ package com.ziksana.service.course.impl;
 
 import java.util.Date;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,7 +80,7 @@ public class AnnotateContentServiceTest extends BaseTest {
 		learningContentDecoration.setContentDecorationTypeId(ContentDecorationType.ANNOTATED.getId());
 		//System.out.println(ContentDecorationType.ANNOTATED.getName());
 		learningContentDecoration.setCreatedBy("Test case");
-		learningContentDecoration.setCreationDate(new Date());
+		//learningContentDecoration.setCreationDate(new Date());
 		learningContentDecoration.setDelete(false);
 		learningContentDecoration.setDescription("test description");
 		learningContentDecoration.setRightsOwningMemberRoleId(207);

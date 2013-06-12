@@ -3,6 +3,7 @@
  */
 package com.ziksana.domain.member;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -11,7 +12,7 @@ import java.util.Date;
  * @author prabu
  *
  */
-public class MemberPersona {
+public class MemberPersona implements Serializable{
 	
 	  
 	/**serial versionId
