@@ -167,7 +167,7 @@
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/annnotatecontent.jsp" />
 	</definition>
-	
+
 	<!-- Metro Record Content -->
 	<definition name="masterrecordcontent" extends="course-ziksana-master">
 		<put-attribute name="master_title" value="Record Content" />
@@ -182,13 +182,20 @@
 			value="/WEB-INF/screens/courses/enhancecontent.jsp" />
 	</definition>
 
-<!-- Planner -->
+	<!-- Planner -->
 	<definition name="mastercourseplanner" extends="course-ziksana-master">
 		<put-attribute name="master_title" value="Planner" />
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/planner.jsp" />
 	</definition>
 
+
+	<!-- Metro My Course Learner -->
+	<definition name="mastermylearnercourse" extends="ziksana-home-master">
+		<put-attribute name="master_title" value="My Course - Learner" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/mycourse_learner.jsp" />
+	</definition>
 
 
 	<!--Common Page layout JQuery 1.7.1 version -->
