@@ -2,6 +2,7 @@
 	itemsPerPage = 5;
 	defaultPageIndex = 1;
 	noOfPages = new Number(0);
+	serverContext = $('#staticFileServer').val();
 	
 
 	$(document).ready(function() {
@@ -10,6 +11,8 @@
 		//putInSessionStorage("repositoryContents", '${learningContentAsJSONString}');
 		//addToSessionStorage(${learningContentAsJSONString});
 		//getAllLearningContents();
+		serverContext = $('#staticFileServer').val();
+
 		$('#ContentPanel2').hide();
 		setItemsPerPage();
 	});
@@ -50,7 +53,7 @@
 		var jsonString = document.getElementById("learingContents").value;
 		var contentArray = jQuery.parseJSON( jsonString );
 		
-		for(var i=0; i<contentArray.length; i++){
+		for(var i = 0; i<contentArray.length; i++){
 			if(learningContentId == contentArray[i].id){
 				return contentArray[i];
 			}
@@ -110,7 +113,7 @@
 		// first create a separate array based on content type
 		var contentArrayBasedOnContentType = new Array();
 		var j =0;
-		for(i=0;i<contentArray.length;i++){
+		for(var i=0;i<contentArray.length;i++){
 			if('VIDEO' != contentArray[i].contentType.toUpperCase() && 'LINK' != contentArray[i].contentType.toUpperCase()){
 				contentArrayBasedOnContentType[j] = contentArray[i];
 				j++;
@@ -139,7 +142,7 @@
 		
 		var divs = '';
 		if(pageIndex == 1){
-			for(var i=0;i<unAssociatedContentArray.length;i++){
+			for(var i = 0; i<unAssociatedContentArray.length;i++){
 				divs = divs + getDiv(unAssociatedContentArray[i]);
 				if(i==(itemsPerPage-1)){
 					break;
@@ -305,20 +308,20 @@
 		else{
 		
 			if (content_type.toUpperCase() == 'VIDEO') {
-				imagePath = '../../../resources/images/preview/video.png';
+				imagePath = serverContext + 'resources/images/preview/video.png';
 			} else if (content_type.toUpperCase() == 'AUDIO') {
-				imagePath = '../../../resources/images/preview/audio.png';
+				imagePath = serverContext + 'resources/images/preview/audio.png';
 			} else if (content_type.toUpperCase() == 'IMAGE') {
-				imagePath = '../../../resources/images/preview/image.png';
+				imagePath = serverContext + 'resources/images/preview/image.png';
 			} else if (content_type.toUpperCase() == 'DOC') {
-				imagePath = '../../../resources/images/preview/doc.png';
+				imagePath = serverContext + 'resources/images/preview/doc.png';
 			} else if (content_type.toUpperCase() == 'PPT') {
-				imagePath = '../../../resources/images/preview/ppt.jpg';
+				imagePath = serverContext + 'resources/images/preview/ppt.jpg';
 			} else if (content_type.toUpperCase() == 'PDF') {
-				imagePath = '../../../resources/images/preview/pdf.png';
+				imagePath = serverContext + 'resources/images/preview/pdf.png';
 			}
 			else if (content_type.toUpperCase() == 'LINK') {
-				imagePath = '../../../resources/images/preview/link.png';
+				imagePath = serverContext + 'resources/images/preview/link.png';
 			}
 			//console.log("In associate content finallly the imagePath is ------------>>>> " + imagePath);
 		}
@@ -352,6 +355,9 @@
 					' >'+
 						learningContentObject.contentName + 
 					'</a>' +
+					 '    ' + 
+					 getDecorations(learningContentObject.decorationTypeList) + 
+					 '' + 
 					'</div>'+
 	
 					'<div class="associatetagscontainer">'+
@@ -382,6 +388,39 @@
 		'</div> <!--end of associatelr-->';
 		return learningContentDiv;
 	}
+	function getDecorations(decorationTypeList){
+		var decorations = '';
+		if(decorationTypeList && decorationTypeList.length > 0){
+			for(var i=0; i < decorationTypeList.length; i++){
+				//decorations = decorations + "<label>" + decorationTypeList[i] + "</label>";
+				decorations = decorations + getDecorationImageElement(decorationTypeList[i]);
+			}
+		}
+		
+		
+		if(decorations != ""){
+			console.log("decorations -->> " + decorations); 
+		}
+		return decorations;
+		//return 'ABCD/XYZ';
+	}
+	
+	function getDecorationImageElement(decorationType){
+		decorationType.toUpperCase();
+		var imageElements = '';
+		var imagePath = $('#staticFileServer').val() + 'resources/js/lib/tree/treeimages/images/';
+		if("ANNOTATED" == decorationType){
+			imageElements = imageElements + '<img src="'+ imagePath +'annotate.png" title="Annotated" height="20" width="20"/>    ';
+			console.log("imageElements -->> "  + imageElements);
+		}
+		else if("RECORDED" == decorationType){
+			imageElements = imageElements +  '<img src="'+ imagePath +'record.png" title="Recorded" height="20" width="20"/>    '; 
+		}
+		else if("ENRICHED" == decorationType){
+			imageElements = imageElements +  '<img src="'+ imagePath +'enrich.png" title="Enriched" height="20" width="20"/>    '; 
+		}
+		return imageElements;
+	}
 	
 	function viewContent(contentType, learningContentId){
 		
@@ -410,24 +449,24 @@
 		contentType = contentType.toUpperCase();
 		var viewerURL = "";
 		if (contentType == 'VIDEO') {
-			viewerURL = '/ziksana-web/zcourse/1/modalplayer/'
+			viewerURL = serverContext + 'zcourse/1/modalplayer/'
 					+ learningContentId;
 		} else if (contentType == 'AUDIO') {
-			viewerURL = '/ziksana-web/zcourse/1/modalplayer/'
+			viewerURL = serverContext + 'zcourse/1/modalplayer/'
 					+ learningContentId;
 		} else if (contentType == 'IMAGE') {
-			viewerURL = '/ziksana-web/zcourse/1/slides/'
+			viewerURL = serverContext + 'zcourse/1/slides/'
 					+ learningContentId;
-			preview_path = '../../resources/images/preview/image.png';
+			preview_path = serverContext + 'resources/images/preview/image.png';
 		} else if (contentType == 'DOC') {
-			viewerURL = '/ziksana-web/zcourse/1/slides/'
+			viewerURL = serverContext + 'zcourse/1/slides/'
 					+ learningContentId;
-			preview_path = '../../resources/images/preview/doc.png';
+			preview_path = serverContext + 'resources/images/preview/doc.png';
 		} else if (contentType == 'PPT') {
-			viewerURL = '/ziksana-web/zcourse/1/slides/'
+			viewerURL = serverContext + 'zcourse/1/slides/'
 					+ learningContentId;
 		} else if (contentType == 'PDF') {
-			viewerURL = '/ziksana-web/zcourse/1/slides/'
+			viewerURL = serverContext + 'zcourse/1/slides/'
 					+ learningContentId;
 		}
 		else if (contentType == 'LINK') {
@@ -530,7 +569,7 @@
 		var selectedContentCheckBoxes = $("input:checkbox[name=learningContentToBeAssociated]:checked");
 		var selectedContents = "";
 		var compId = $("#selectedLearningComponentId").val();
-		for(i=0;i < selectedContentCheckBoxes.length;i++){
+		for(var i=0; i < selectedContentCheckBoxes.length;i++){
 			selectedContents = selectedContents + selectedContentCheckBoxes[i].value;
 			if(selectedContentCheckBoxes.length-1 != i){
 				selectedContents = selectedContents + ",";
@@ -560,7 +599,7 @@
 			alert("No content selected. Please select content to be associated.");
 			return;
 		}
-		var uri = '/ziksana-web/zcourse/1/associatecontent';
+		var uri = serverContext + 'zcourse/1/associatecontent';
 
 		var courseId = $('#courseid').val();
 		
@@ -594,7 +633,7 @@
 	function resetCheckBoxes(){
 		$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
 		var courseId = $('#courseid').val();
-		var uri = '/ziksana-web/zcourse/1/repositorycontents/' + courseId ;
+		var uri = serverContext + 'zcourse/1/repositorycontents/' + courseId ;
 
 		$.get(uri);
 		$('#ContentPanel2').hide();
