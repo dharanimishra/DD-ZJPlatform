@@ -10,7 +10,8 @@
 
 			<div id="HeaderLogo" class="f-l">
 
-				<img src="/ziksana-web/resources/images/home/loginlogo.png" style="height: 80px;" />
+				<img src="/ziksana-web/resources/images/home/loginlogo.svg" style="height:80px;width:200px" /> 
+				
 				       
 			</div>
 			<!--end of headerlogo-->
@@ -152,7 +153,7 @@
 					<label for="Username" class="login-label"><fmt:message key="login.username"></fmt:message></label>
 					<div class="controls">
 						<input  autofocus="autofocus" name="username" type="text" class="textBox"
-							style="background-image: url(/ziksana-web/resources/images/home/logintext.png); background-position: left; background-repeat: no-repeat; padding-left: 45px; height: 30px; border-radius: 0; width: 230px"
+							style="background-image: url(/ziksana-web/resources/images/home/logintext.svg); background-position: left; background-repeat: no-repeat; padding-left: 45px; height: 30px; border-radius: 0; width: 230px"
 							placeholder="<fmt:message key="login.enterusername"></fmt:message>" />
 					</div>
 					
@@ -167,7 +168,7 @@
 					<label for="Password" class="login-label"><fmt:message key="login.password"></fmt:message></label>
 					<div class="controls">
 						<input  name="password" type="Password" class="textBox"
-							style="background-image: url(/ziksana-web/resources/images/home/passwordtext.png); background-position: left; background-repeat: no-repeat; padding-left: 45px; height: 30px; border-radius: 0; width: 230px;"
+							style="background-image: url(/ziksana-web/resources/images/home/passwordtext.svg); background-position: left; background-repeat: no-repeat; padding-left: 45px; height: 30px; border-radius: 0; width: 230px;"
 							placeholder="<fmt:message key="login.enterpassword"></fmt:message>" />
 					</div>
 					<p style="color:#d14836;" id="passwordValidation">
