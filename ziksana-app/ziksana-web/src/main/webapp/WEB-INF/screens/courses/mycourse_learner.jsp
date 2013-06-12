@@ -1,7 +1,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/isotope/jquery.isotope.min.js"></script>
-<script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/mycourse_learner.js"></script>
+<%-- <script type="text/javascript"
+	src="${staticFileServer}resources/Dynamicjsonjs/mycourse_learner.js"></script> --%>
 
 <script>
 	$('#container4').isotope({
@@ -125,8 +125,7 @@
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
 			<p class="page-title">
-				<span style="color: #6bbde8;">Home</span> < My
-				Course
+				<span style="color: #6bbde8;">Home</span> < My Course
 			</p>
 
 		</div>
@@ -140,32 +139,41 @@
 	<div class="headtag pull-left" style="margin-top: 10px;">My
 		Course</div>
 
-	<div class="isotophead pull-right">
-		<div class="isotoplinks">
-			<a href="#" class="active_filter" onclick="getAllCourse()">All</a>|<a href="#"
-				onclick="getAllCourse()">Draft</a>|<a
-				href="#" onclick="getActiveCourse('ACTIVE')">Active</a>|<a href="#"
-				onclick="getReviewCourse('REVIEW')">Review</a>
-
-		</div>
-	</div>
 	<!--end of isotophead-->
-
-
 	<div class="Clearfix"></div>
 	<hr>
 	<div class="announcementswrapper" style="margin-left: 50px;">
 		<form>
 			<input type="hidden" id="courses" value='${courseAsJSONString}' /> <input
 				type="hidden" id="fileServerPath" value='${ms.uploadContent}' />
-			<div id="container4" class="createcontent-mainwrapper isotopbody">
-		
-			</div>
-			<div class="Clearfix"></div>
-			<div id="pageNumbers" class="paginationbutton f-r"
-				style="padding: 10px;"></div>
 
-			<!--end of ann-mainwrapper-->
+			<div id="container4" class="createcontent-mainwrapper isotopbody">
+				<div id="createcontent-main" class="item All">
+
+					<p class="createcontenthead">Science</p>
+					<p class="createcontentimg">
+						<img src="${staticFileServer}resources/images/preview/defaultcourse.png" />
+					</p>
+					<div class="description">
+
+						<a href="#linkurl" class="pull-right"><img class="iconcc"
+							title="View Playbook" src="${staticFileServer}resources/images/content/viewplaybook.svg"
+							style="height: 35px; margin: 5px;" /></a> <a href="#linkurl"
+							class="pull-right"><img
+							src="${staticFileServer}resources/images/content/observecourses.svg" title="Observe Course"
+							style="height: 35px; margin: 5px;" /></a>
+					</div>
+					<div class="Clearfix"></div>
+				</div>
+				<!-- end of createcontent-main-->
+				<!-- <div id="container4" class="createcontent-mainwrapper isotopbody"> -->
+
+				</div>
+				<div class="Clearfix"></div>
+				<div id="pageNumbers" class="paginationbutton f-r"
+					style="padding: 10px;"></div>
+
+				<!--end of ann-mainwrapper-->
 		</form>
 	</div>
 	<div class="Clearfix"></div>

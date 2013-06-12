@@ -3,7 +3,7 @@ defaultPageIndex = 1;
 noOfPages = new Number(0);
 
 $(document).ready(function() {
-	getAllCourse();
+	//getAllCourse();
 });
 
 function getOtherLearningContents(contentType, pageIndex) {
