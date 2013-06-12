@@ -252,9 +252,23 @@
 		<put-attribute name="body"
 			value="/WEB-INF/pages/courses/enrichcontent.jsp" />
 	</definition>
-   <definition name="playbook-viewHtml" template="/WEB-INF/screens/playbook/htmlview.jsp">
+
+   <definition name="playbook-layout" template="/WEB-INF/screens/playbook/layout.jsp">
    
    </definition>
+	
+   <definition name="playbook-viewHtml" extends="playbook-layout">
+     <put-attribute name="page_title" value="Preview" />
+     <put-attribute name="body"
+			value="/WEB-INF/screens/playbook/htmlview.jsp"/>
+   </definition>
+   
+    <definition name="create-playbook" extends="playbook-viewHtml">
+      <put-attribute name="page_title" value="Create playbook" />
+      		<put-attribute name="body"
+			value="/WEB-INF/screens/playbook/create.jsp" />
+   </definition>
+   
 	<!-- Common Error Page -->
 	<definition name="error-page">
 		<put-attribute name="page_title" value="Error !!" />

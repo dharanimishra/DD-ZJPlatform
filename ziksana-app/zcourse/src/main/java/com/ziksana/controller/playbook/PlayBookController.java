@@ -32,9 +32,11 @@ public class PlayBookController {
 		 File file = new File(resourcePath+"/" +playbookId);
 		 if(!file.exists()){
 			file.mkdirs();
+			//PdfUtil pdfUtil = new PdfUtil();
+			//pdfUtil.generatePlayBook(htmlViewURL,file.getAbsolutePath()+"/"+fileName);
+		 }
 			PdfUtil pdfUtil = new PdfUtil();
 			pdfUtil.generatePlayBook(htmlViewURL,file.getAbsolutePath()+"/"+fileName);
-		 }
 		 response.setContentType("application/pdf");
 		 response.setHeader("Content-Disposition", "attachment;filename="+fileName);
 		 System.out.println("context..." + context.getRealPath("/static/playbook/"));
@@ -59,6 +61,17 @@ public class PlayBookController {
 		}
 	}
 	
+	@RequestMapping(value = "/unsecure/create/", method =RequestMethod.GET)
+	public ModelAndView create(){
+		ModelAndView mv = new  ModelAndView("create-playbook");
+		 return mv;	
+	}
+	
+	@RequestMapping(value = "/unsecure/save/", method =RequestMethod.POST)
+	public ModelAndView save(){
+		ModelAndView mv = new  ModelAndView("redirect:home");
+		 return mv;	
+	}
 	@RequestMapping(value = "/unsecure/htmlView/{playbookId}", method =RequestMethod.GET)
 	public ModelAndView htmlView(@PathVariable String playbookId, HttpServletResponse response ){
 		ModelAndView mv = new  ModelAndView("playbook-viewHtml");
