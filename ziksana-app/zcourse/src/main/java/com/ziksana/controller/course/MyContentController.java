@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
+import com.ziksana.domain.course.ContentFormat;
 import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.CourseSubjectClassification;
@@ -140,6 +141,7 @@ public class MyContentController {
 			@RequestParam(value = "contentName[]", required = true) String[] contentName,
 			@RequestParam(value = "contentType[]", required = true) String[] contentType,
 			@RequestParam(value = "contentTypeName[]", required = true) String[] contentTypeName,
+			@RequestParam(value = "contentFormatName[]", required = true) String[] contentFormatName,
 			@RequestParam(value = "thumbnailPath[]", required = true) String[] thumbnailPath,
 			@RequestParam(value = "noOfThumbnails[]", required = true) String[] noOfThumbnails) {
 
@@ -158,20 +160,12 @@ public class MyContentController {
 				learningContent.setContentPath(contentPath[i]);
 				learningContent.setStatusId(1);
 				learningContent.setActive(true);
-				learningContent.setContentType(ContentType.getContentType(612));
-				try {
-					learningContent.setContentTypeId(ContentType.valueOf(
-							contentTypeName[i].toUpperCase()).getID());
-				} catch (Exception e) {
-					learningContent.setContentTypeId(612);
-				}
-				try {
-					learningContent.setThumbnailPicturePath(thumbnailPath[i]);
-					learningContent.setNumberOfThumbnails(Integer
-							.parseInt(noOfThumbnails[i]));
-				} catch (Exception e) {
-
-				}
+				ContentType contentTypeObj = ContentType.getValueOf(contentTypeName[i].toUpperCase());
+				learningContent.setContentType(contentTypeObj);
+				learningContent.setContentTypeId(contentTypeObj.getID());
+				ContentFormat contentFormat = ContentFormat.getValueOf(contentFormatName[i].toUpperCase());
+				learningContent.setContentFormat(contentFormat);
+				learningContent.setContentFormatId(contentFormat.getID());
 				learningContent.setStatusId(1);
 				learningContent.setRightsOwningMember(accountableMember);
 				LearningContent learningCont = myContentService

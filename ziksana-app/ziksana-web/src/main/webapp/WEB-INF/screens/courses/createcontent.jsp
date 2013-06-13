@@ -157,6 +157,7 @@ table tr td {
 															file, data,
 															response) {
 														json_string = data;
+														console.log("json_string " + json_string);
 														data_object = $
 																.parseJSON(json_string);
 														console
@@ -169,6 +170,7 @@ table tr td {
 															content_name = data_object.ContentName;
 															content_type_id = data_object.ContentType;
 															content_type_name = data_object.ContentTypeName;
+															content_format_name = data_object.ContentFormat;
 															thumbnail_path = data_object.ThumbnailPicturePath;
 															no_of_thumbnails = data_object.NumberOfThumbnails;
 
@@ -210,7 +212,7 @@ table tr td {
 								div_html += '<div><img src="'+thumbnail_image_src+'" alt=""></div>';
 								div_html += '<div><span class="title">'
 										+ content_name
-										+ '</span><input type="hidden" name="contentPath[]" value="'+content_path+'" /> <input type="hidden" name="contentName[]" value="'+content_name+'"><input type="hidden" name="contentType[]" value="'+content_type_id+'"><input type="hidden" name="contentTypeName[]" value="'+content_type_name+'"><input type="hidden" name="thumbnailPath[]" value="'+thumbnail_path+'"><input type="hidden" name="noOfThumbnails[]" value="'+no_of_thumbnails+'"></div>';
+										+ '</span><input type="hidden" name="contentPath[]" value="'+content_path+'" /> <input type="hidden" name="contentName[]" value="'+content_name+'"><input type="hidden" name="contentType[]" value="'+content_type_id+'"><input type="hidden" name="contentTypeName[]" value="'+content_type_name+'"><input type="hidden" name="contentFormatName[]" value="'+content_format_name+'"><input type="hidden" name="thumbnailPath[]" value="'+thumbnail_path+'"><input type="hidden" name="noOfThumbnails[]" value="'+no_of_thumbnails+'"></div>';
 								div_html += '<div><a class="remove_this" onclick="$(this).parents(\'.preview_uploaded_content\').remove();">X</a></div>';
 								div_html += '</div>';
 

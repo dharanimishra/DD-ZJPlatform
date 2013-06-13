@@ -43,6 +43,12 @@ public enum ContentType {
 		this.id = id;
 		this.name = name;
 	}
+	
+	public static ContentType getValueOf(String contentFormatString){
+		initialize();
+		return valueOf(contentFormatString);
+	}
+
 
 	public int getID() {
 		return id;

@@ -65,7 +65,7 @@
 				ScreenshotPath,
 			</if>
 			<if test="contentFormat !=null">
-				contentformat,
+				contentFormat,
 			</if>
 			<if test="status !=null">
 				status,

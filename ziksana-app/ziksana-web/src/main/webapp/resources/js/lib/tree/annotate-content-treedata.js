@@ -107,8 +107,13 @@ function onButtonClick(menuitemId, type) {
 		}
 	} else if (menuaction == "Annotate") {
 		var contentId = tree.getSelectedItemId().split('_')[1];
+		var learningContentObject = getLearningContentObject(contentId);
+		var contentKey = learningContentObject.contentPath;
+		var contentFormat = learningContentObject.contentFormat;
+		var numberOfImages = learningContentObject.numberOfThumbnails;
+		var decorationType = "";
 		if(!isShowAnnoation(contentId)){
-			var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
+			var decorationTypeList = learningContentObject.decorationTypeList;
 			var latestDecorationType = "";
 			if(decorationTypeList && decorationTypeList.length > 0 ){
 				latestDecorationType = decorationTypeList[(decorationTypeList.length - 1)];

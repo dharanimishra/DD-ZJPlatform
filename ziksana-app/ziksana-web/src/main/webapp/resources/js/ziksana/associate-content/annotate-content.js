@@ -671,3 +671,20 @@
 		
 		return false;
 }
+
+	
+	function ff_get_content_key(){
+	}
+
+	function ff_set_content_key(contentKey){
+	}
+
+	function ff_get_content_format(){
+	}
+
+	function ff_get_numberOfImages(){
+	}
+
+	function ff_get_decoration_type(){
+	
+	}	

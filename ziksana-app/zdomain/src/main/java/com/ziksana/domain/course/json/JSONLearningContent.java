@@ -12,19 +12,23 @@ public class JSONLearningContent {
 	private String contentDescription;
 	private String contentName;
 	private String contentType;
+	private String contentFormat;
 	private String contentURL;
 	private String thumbnailPicturePath;
 	private String screenshotPath;
 	private List<String> decorationTypeList;  
-	private String previousDecorationType;  
+	private String previousDecorationType;
+	private Integer numberOfThumbnails;
 
 	public JSONLearningContent(LearningContent learningContent){
 		this.setContentDescription(learningContent.getContentDescription());
 		this.setContentName(learningContent.getContentName());
 		this.setContentType(learningContent.getContentType().getName());
+		//this.setContentFormat(learningContent.getContentFormat().getName());
 		this.setContentURL(learningContent.getContentUrl());
 		this.id = Integer.parseInt(learningContent.getLearningContentId().getDisplayID());
 		this.setThumbnailPicturePath(learningContent.getThumbnailPicturePath());
+		this.setNumberOfThumbnails(learningContent.getNumberOfThumbnails());
 		this.setScreenshotPath(learningContent.getScreenshotPath());
 		this.setDecorationTypeList(getContentDecorationsAsString(learningContent.getLearningContentDecorationList()));
 	}
@@ -128,6 +132,34 @@ public class JSONLearningContent {
 	 */
 	private void setPreviousDecorationType(String previousDecorationType) {
 		this.previousDecorationType = previousDecorationType;
+	}
+
+	/**
+	 * @return the numberOfThumbnails
+	 */
+	public Integer getNumberOfThumbnails() {
+		return numberOfThumbnails;
+	}
+
+	/**
+	 * @param numberOfThumbnails the numberOfThumbnails to set
+	 */
+	public void setNumberOfThumbnails(Integer numberOfThumbnails) {
+		this.numberOfThumbnails = numberOfThumbnails;
+	}
+
+	/**
+	 * @return the contentFormat
+	 */
+	public String getContentFormat() {
+		return contentFormat;
+	}
+
+	/**
+	 * @param contentFormat the contentFormat to set
+	 */
+	public void setContentFormat(String contentFormat) {
+		this.contentFormat = contentFormat;
 	}
 
 
