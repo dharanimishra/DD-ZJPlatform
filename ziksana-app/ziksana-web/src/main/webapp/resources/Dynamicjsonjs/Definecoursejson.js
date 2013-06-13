@@ -263,11 +263,11 @@ function createCourse() {
 
 		console.log(Coursetag_Field);
 
-		var Course_Credits = $('#Credits').val();
+		var Course_Credits = $('#spinner').val();
 
-		var Extra_Credits = $('#ExtraCredits').val();
+		var Extra_Credits = $('#spinner1').val();
 
-		var Course_Duration = $('#Duration').val();
+		var Course_Duration = $('#spinner').val();
 
 		var Duration_Type = $('#Cdurationtype').val();
 
@@ -383,11 +383,11 @@ function getCourse() {
 
 							$('#Ctagfield_course').val(selected_tags);
 
-							$('#Credits').val(credits);
+							$('#spinner').val(credits);
 
-							$('#ExtraCredits').val(extra_credits);
+							$('#spinner1').val(extra_credits);
 
-							$('#Duration').val(duration);
+							$('#spinner2').val(duration);
 
 							$('#Cdurationtype').val(duration_type);
 
