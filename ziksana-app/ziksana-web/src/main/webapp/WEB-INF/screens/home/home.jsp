@@ -45,7 +45,7 @@
 			<c:if test="${empty member.picturePath}">
 				<p>
 					<img src="/ziksana-web/resources/images/no-image.jpg" align="left"
-						style="margin-top: 10px; margin-left: 5px; height: 80px; margin-right: 10px;"
+						style="margin-top: 10px; margin-left: 5px; height: 100px; width:100px;margin-right: 10px;"
 						class="img-polaroid" />
 				</p>
 			</c:if>
@@ -53,7 +53,7 @@
 				<p>
 					<img src="${ms.url}<c:out value="${member.picturePath}"/>"
 						align="left"
-						style="margin-top: 15px; margin-left: 5px; height: 80px; margin-right: 10px;"
+						style="margin-top: 15px; margin-left: 5px; height: 100px; width:100px; margin-right: 10px;"
 						class="img-polaroid" />
 				</p>
 			</c:if>

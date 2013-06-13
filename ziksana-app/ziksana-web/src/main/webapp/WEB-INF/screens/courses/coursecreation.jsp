@@ -264,7 +264,7 @@
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1>Organize your course into course modules/chapters</h1>
+		<h1><fmt:message key="module.organize.head" /></h1>
 	</div>
 	<!--End of page-header -->
 
@@ -293,7 +293,7 @@
 						<!--Course Name-->
 						<div class="control-group">
 							<label class="control-label nexaf" for="Course Name"
-								style="width: 120px">Module Name :</label>
+								style="width: 120px"><fmt:message key="module.name" /></label>
 							<div class="controls" style="margin-left: 130px;">
 								<input type="text" id="Course_Module"
 									placeholder="Enter module name" maxlength="64"
@@ -304,11 +304,11 @@
 						<!--end of course name-->
 
 						<label for="Course Description" class="labelclass nexaf"
-							style="font-weight: bold;"><b>Course Description :</b></label> 
+							style="font-weight: bold;"><b><fmt:message key="course.description" /></b></label> 
 						<div class="_richTextShow">
 							<textarea id="Cmoduledescrte" name="editor1pageload"
 								class="defaultvalue _focus">
-													<b>Describe the Module being created</b>
+													<b><fmt:message key="module.placeholder" /></b>
 												</textarea>
 						</div>
 						<script type="text/javascript">
@@ -324,22 +324,22 @@
 							<div class="clearfix"></div>
 							<div class="moduleselection">
 								<div style="width: 32%; margin-right: 2px" class="f-l">
-									<label class="labelclass nexaf f-l"> Module Area : </label> <select
+									<label class="labelclass nexaf f-l"><fmt:message key="module.area" /> </label> <select
 										name="s_example" id="Cmoduleareaddl" class="select"
 										onchange="getArea();">
-										<option value="0">choose a option...</option>
+										<option value="0"><fmt:message key="course.choose.option" /></option>
 									</select>
 								</div>
 								<div style="width: 32%;" class="f-l">
-									<label class="labelclass nexaf f-l"> Module Subject: </label> <select
+									<label class="labelclass nexaf f-l"> <fmt:message key="module.subject" /> </label> <select
 										name="s_example" class="select" id="Cmodulesubjectddl">
-										<option value="0">choose a option...</option>
+										<option value="0"><fmt:message key="course.choose.option" /></option>
 									</select>
 								</div>
 								<div style="width: 22%;" class="f-l">
-									<label class="labelclass nexaf f-l"> Module Topic: </label> <select
+									<label class="labelclass nexaf f-l"> <fmt:message key="module.topic" /> </label> <select
 										name="s_example" class="select" id="Cmoduletopicddl">
-										<option value="0">choose a option...</option>
+										<option value="0"><fmt:message key="course.choose.option" /></option>
 									</select>
 								</div>
 							</div>
@@ -348,16 +348,16 @@
 						<!--end of Subject Selection-->
 						<div class="control-group" style="width: 90%">
 							<label class="control-label nexaf" for="Specify Tags"
-								style="width: 120px">Specify Tags :</label>
+								style="width: 120px"><fmt:message key="course.SpecifyTags" /></label>
 							<div class="controls" style="margin-left: 130px;">
 								<input id="Addmoduletag" type="text" class="tags" value="" />
 							</div>
 						</div>
 						<button class="btn f-r" type="button"
-							onClick="getCancel();return false;" style="margin-right: 10px;">Cancel</button>
+							onClick="getCancel();return false;" style="margin-right: 10px;"><fmt:message key="profile.cancel" /> </button>
 						<button class="btn f-r" type="button"
 							onClick="getaddmodulesave();return false;"
-							style="margin-right: 20px;">Submit</button>
+							style="margin-right: 20px;"><fmt:message key="profile.submit" /> </button>
 
 						<div class="Clearfix"></div>
 
@@ -370,7 +370,7 @@
 		<div class="Clearfix"></div>
 		<button class="btn f-r" type="button"
 			onClick="getSaveandContinue();return false;"
-			style="margin-right: 30px;">Save and Continue</button>
+			style="margin-right: 30px;"><fmt:message key="btn.save.continue" /></button>
 		<!-- <div id='jqxWidget' style='display: none;'>
 								<div id="splitter" style='clear: both;'>
 
