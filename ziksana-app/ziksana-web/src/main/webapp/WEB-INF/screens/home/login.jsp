@@ -1,5 +1,8 @@
 <script type='text/javascript' src='/ziksana-web/resources/js/custom/plugins.js'></script>
 <script type='text/javascript' src='/ziksana-web/resources/js/lib/slider/fwslider.js'></script>
+<style>
+#headercontainer{margin-bottom:30px}
+</style>
 <div id="loginwrapper">
 
 

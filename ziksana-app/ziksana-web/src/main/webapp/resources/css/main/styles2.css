@@ -924,7 +924,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', end
 }
 #headercontainer {
 	background-color: rgb(26, 14, 90);
-	margin-bottom: 30px;
+
 }
 
 #profilecontainer {
@@ -2154,11 +2154,11 @@ a.circle {
 	width: 570px;
 	/*border:1px solid #ccc;*/
 	padding: 20px;
-	margin-top: 20px;
+	margin-top:  0px;
 	-moz-box-shadow: 1px 2px 15px #000000;
 	-webkit-box-shadow: 1px 2px 15px #000000;
 	box-shadow: 1px 2px 15px #000000;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .reghead {
