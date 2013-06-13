@@ -31,13 +31,14 @@
      
  </div> <!--end of headerlogo-->
  </div></div>
-	<div class="frgtpassmiddle"  style="margin-bottom:0px">
+	<div class="frgtpassmiddle"  style="margin-bottom:0px;margin-top: 120px;
+    padding: 40px;">
  
    <div class="registerdtls" style="text-align:center">	
-<h1>${errorMessage} </h1><br/>
+ 
 		<p><img src="/ziksana-web/resources/images/ziksana_error_page.png" width=408px height=272px> 
 			<div style=" margin: auto;text-align: center; font-weight:bold; font-family:inherit;">
-				<h4 >There is an Error on the page .<br>Please Login Again.</h4>
+				<h4 >There is an issue with the current session.<br> Please re-login to continue </h4>
 		<a href="/ziksana-web/secure/logout"><input class="btn" type="submit"  value="Login" style="width:120px;padding:5px"></a>
 		
 	</div></div>	 
