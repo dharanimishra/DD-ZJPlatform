@@ -228,30 +228,43 @@ public class CourseNestTreeController {
 		treeImageFolder = treeImagePath + "resources/images/tree_icons/";
 		String courseIcon = treeImageFolder + "course.png";
 		imagePathMap.put("courseIcon", courseIcon);
+		
 		String chapterIcon =treeImageFolder + "chapter.png";
 		imagePathMap.put("chapterIcon", chapterIcon);
+		
 		String parentIcon = treeImageFolder + "chapter.png";
 		imagePathMap.put("parentIcon", parentIcon);
+		
 		String videoIcon = treeImageFolder + "video.png";
 		imagePathMap.put("videoIcon", videoIcon);
+		
 		String audioIcon = treeImageFolder + "audio.png";
 		imagePathMap.put("audioIcon", audioIcon);
+		
 		String folderClosed = treeImageFolder + "folderClosed.gif";
 		imagePathMap.put("folderClosed", folderClosed);
+		
 		String folderOpen = treeImageFolder + "folderOpen.gif";
 		imagePathMap.put("folderOpen", folderOpen);
+		
 		String pptIcon = treeImageFolder + "powerpoint.png";
 		imagePathMap.put("pptIcon", pptIcon);
+		
 		String docIcon = treeImageFolder + "word.png";
 		imagePathMap.put("docIcon", docIcon);
+		
 		String excelIcon = treeImageFolder + "excel.png";
 		imagePathMap.put("excelIcon", excelIcon);
+		
 		String pdfIcon = treeImageFolder + "pdf.png";
 		imagePathMap.put("pdfIcon", pdfIcon);
+		
 		String imageIcon = treeImageFolder + "image.png";
 		imagePathMap.put("imageIcon", imageIcon);
+		
 		String noteIcon = treeImageFolder + "note.png";
 		imagePathMap.put("noteIcon", noteIcon);
+		
 		String linkIcon = treeImageFolder + "link.png";
 		imagePathMap.put("linkIcon", linkIcon);
 		

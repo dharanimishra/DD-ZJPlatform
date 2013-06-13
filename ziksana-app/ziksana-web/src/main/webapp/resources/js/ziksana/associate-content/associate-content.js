@@ -618,7 +618,7 @@
 			//console.log(data);
 			if (data.response == 'success') {
 				course_id = data.id;
-				window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
+				window.location.href = serverContext + "zcourse/1/repositorycontents/"
 						+ courseId ;
 
 			} else {

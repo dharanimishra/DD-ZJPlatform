@@ -31,7 +31,7 @@ function onButtonClick(menuitemId, type) {
 		//TODO following code is commented because right now we are handling the display through hidden parameter but in future we will need to do it at real time
 		//alert("selectedComponentId " + selectedComponentId);
 /*	
-		uri = '/ziksana-web/zcourse/1/repositorycontents/' + courseId; 
+		uri = serverContext + 'zcourse/1/repositorycontents/' + courseId; 
 		request_type = 'GET'; // can be GET or POST. In this case, a GET
 
 		var parameters = {
@@ -48,24 +48,24 @@ function onButtonClick(menuitemId, type) {
 
 		
 		if (content_type.toUpperCase() == 'VIDEO') {
-			viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
+			viewer_url = serverContext + 'zcourse/1/modalplayer/'
 					+ learningContentId;
 		} else if (content_type.toUpperCase() == 'AUDIO') {
-			viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
+			viewer_url = serverContext + 'zcourse/1/modalplayer/'
 					+ learningContentId;
 		} else if (content_type.toUpperCase() == 'IMAGE') {
-			viewer_url = '/ziksana-web/zcourse/1/slides/'
+			viewer_url = serverContext + 'zcourse/1/slides/'
 					+ learningContentId;
 			preview_path = '../../resources/images/preview/image.png';
 		} else if (content_type.toUpperCase() == 'DOC') {
-			viewer_url = '/ziksana-web/zcourse/1/slides/'
+			viewer_url = serverContext + 'zcourse/1/slides/'
 					+ learningContentId;
 			preview_path = '../../resources/images/preview/doc.png';
 		} else if (content_type.toUpperCase() == 'PPT') {
-			viewer_url = '/ziksana-web/zcourse/1/slides/'
+			viewer_url = serverContext + 'zcourse/1/slides/'
 					+ learningContentId;
 		} else if (content_type.toUpperCase() == 'PDF') {
-			viewer_url = '/ziksana-web/zcourse/1/slides/'
+			viewer_url = serverContext + 'zcourse/1/slides/'
 					+ learningContentId;
 		}
 		else if (content_type.toUpperCase() == 'LINK') {
@@ -98,7 +98,7 @@ function onButtonClick(menuitemId, type) {
 		console.log(ComponentId);
 		confirm_delete_component = confirm('Are you sure you want to delete this item?');
 		if (confirm_delete_component == true) {
-			uri = '/ziksana-web/zcourse/1/unassociatecontent';
+			uri = serverContext + 'zcourse/1/unassociatecontent';
 
 			//token = ''; // dummy token for demo. you have to send real token.
 			request_type = 'POST'; // can be GET or POST. In this case, a GET

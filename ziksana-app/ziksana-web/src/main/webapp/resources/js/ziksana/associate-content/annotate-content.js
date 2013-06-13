@@ -2,6 +2,7 @@
 	itemsPerPage = 5;
 	defaultPageIndex = 1;
 	noOfPages = new Number(0);
+	serverContext = $('#staticFileServer').val();
 	
 
 	$(document).ready(function() {
@@ -10,6 +11,7 @@
 		//putInSessionStorage("repositoryContents", '${learningContentAsJSONString}');
 		//addToSessionStorage(${learningContentAsJSONString});
 		//getAllLearningContents();
+		serverContext = $('#staticFileServer').val();
 		$('#ContentPanel2').hide();
 		setItemsPerPage();
 	});

@@ -199,15 +199,15 @@ function createtree(course_id) {
 	}
 
 	menu = new dhtmlXMenuObject();
-	menu.setIconsPath("/ziksana-web/resources/js/lib/tree/treeimages/images/");
+	menu.setIconsPath($("#staticFileServer").val() + "resources/js/lib/tree/treeimages/images/");
 	menu.renderAsContextMenu();
 	menu.attachEvent("onClick", onButtonClick);
-	menu.loadXML("/ziksana-web/resources/js/lib/tree/xml/_annotate_content_menu.xml");
+	menu.loadXML($("#staticFileServer").val() + "resources/js/lib/tree/xml/_annotate_content_menu.xml");
 
 	tree = new dhtmlXTreeObject("treeboxbox_tree", "100%", "100%", 0);
 	tree.setSkin('dhx_skyblue');
 	tree
-			.setImagePath("/ziksana-web/resources/js/lib/tree/treeimages/csh_bluebooks/");
+			.setImagePath($("#staticFileServer").val() + "resources/js/lib/tree/treeimages/csh_bluebooks/");
 	tree._getOpenState(true);
 	tree.enableDragAndDrop(true);
 	tree.enableTreeLines(true);
@@ -295,8 +295,8 @@ function createtree(course_id) {
 	tree.setImageArrays("minus", "minus_ar.png", "minus_ar.png",
 			"minus_ar.png", "minus_ar.png", "minus_ar.png");
 	courseId = course_id;
-	tree.loadXML("/ziksana-web/zcourse/getchildtree/" + courseId);
-	console.log("XML tree is " + "/ziksana-web/zcourse/getchildtree/" + courseId);
+	tree.loadXML($("#staticFileServer").val() + "zcourse/getchildtree/" + courseId);
+	console.log("XML tree is " + $("#staticFileServer").val() + "zcourse/getchildtree/" + courseId);
 }
 
 	 function isShowAnnoation(contentId){

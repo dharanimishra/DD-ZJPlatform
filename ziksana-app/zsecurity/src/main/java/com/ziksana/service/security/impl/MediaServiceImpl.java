@@ -27,6 +27,8 @@ public class MediaServiceImpl implements MediaService{
 	@Value("#{myProperties['staticFileServer']}")
 	private String staticFileServer;
 
+	@Value("#{myProperties['treeImagePath']}")
+	private String treeImagePath;
 
 	public MediaServerURL getMediaContents() {
 		MediaServerURL media = new MediaServerURL();
@@ -37,6 +39,7 @@ public class MediaServiceImpl implements MediaService{
 		media.setFlashRecordingScript(flashRecordingScript);
 		media.setFlashRecordingFolder(flashRecordingFolder);
 		media.setStaticFileServer(staticFileServer);
+		media.setTreeImagePath(treeImagePath);
 		return media;
 	}
 
