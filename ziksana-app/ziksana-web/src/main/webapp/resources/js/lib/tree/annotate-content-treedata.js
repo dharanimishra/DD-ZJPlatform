@@ -121,6 +121,9 @@ function onButtonClick(menuitemId, type) {
 			alert("Content is already " + latestDecorationType);
 			return;
 		}
+		
+		ff_open_player();
+		//alert("tomorrow never dies");
 
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
@@ -326,6 +329,44 @@ function createtree(course_id) {
 		}
 		return isVideo;
 	 }
+	 
+	//functions for annotation flash player hence they begin with ff_
+	function ff_get_content_key(){
+	}
+
+	function ff_set_content_key(contentKey){
+		//console.log
+	}
+
+	function ff_get_content_format(){
+	}
+
+	function ff_get_numberOfImages(){
+	}
+
+	function ff_get_decoration_type(){
+	}
+	
+	function ff_open_player(){
+		$('#page-header-div').hide();
+		$('#definetab').hide();
+		$('#leftPane').hide();
+		$('#annotated_content_container').show();
+		$('#annotated_content_container iframe').attr('src','/ziksana-web/zcourse/1/annotatator');
+		//alert("lklkjlkjlkjlkjlkjlkjlk");
+		//ff_close_player();
+	}
+	function ff_close_player(){
+		alert("closing");
+		$('#page-header-div').show();
+		$('#definetab').show();
+		$('#leftPane').show();
+		$('#annotated_content_container').hide();
+	}
+	
+	function ff_display_console_message(msg){
+		
+	}
 
 $(document).ready(
 		function(e) {

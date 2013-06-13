@@ -19,6 +19,7 @@ import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.ContentDecorationType;
 import com.ziksana.domain.course.ContentStatus;
 import com.ziksana.domain.course.ContentType;
+import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.domain.member.MemberPersona;
@@ -142,6 +143,13 @@ public class AnnotateContentController {
 					.add(new JSONLearningContent(learningContent));
 		}
 		return jsonLearningContentList;
+
+	}
+	@RequestMapping(value = "/1/annotatator", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView annotateContent() {
+		ModelAndView modelAndView = new ModelAndView("courses/annotator"); 
+		return modelAndView;
 
 	}
 

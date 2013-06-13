@@ -274,9 +274,11 @@
 	</ul>
 
 </div>
+
+
 <div id="formcontainer">
 
-	<div class="page-header"
+	<div id="page-header-div" class="page-header"
 		style="padding-left: 0px !important; margin-bottom: 0px !important;">
 		<div class="icon">
 			<img
@@ -302,6 +304,9 @@
 			 
 			<!-- #leftPane -->
 			<div id="rightPane">
+				<div id="annotated_content_container" style="display:none;width:100%">
+					<iframe src="" width="1050" height="591"></iframe>
+				</div>
 				<div class="definecontainer" id="definetab">
 				<form onload="" id="associateContentForm" action="/ziksana-web/zcourse/1/associatecontent" method="POST">
 					<input type="hidden" id="courseid" value="${courseId}" /> 
