@@ -544,7 +544,7 @@ function checkpass()
 			        , {'newPassword':newPassword,'confirmPassword':retypePassword,'memberId':memberIdRef}
 			        , function( data )
 			        {
-			        	if(data == '<fmt:message key="password.successfull"/>'){
+			        	if(data == 'Password reset is successful'){
 			        		
 			        		$('#passwordResponse').html("<fmt:message key="password.successfull.please"/><a href='/ziksana-web/secure/logout'> <fmt:message key="login.button"/></a>")
 			        	$('#passwordFailResponse').html("");
