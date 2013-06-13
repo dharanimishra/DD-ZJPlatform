@@ -931,7 +931,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', end
 	width: 600px;
 	margin: auto;
 	padding: 50px;
-	margin-bottom: 20px;
+	margin-bottom: 30px!improtant;
 	-moz-box-shadow: 1px 2px 15px #000000;
 	-webkit-box-shadow: 1px 2px 15px #000000;
 	box-shadow: 1px 2px 15px #000000;
@@ -962,48 +962,70 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', end
 
 .profileselect {
 	width: 103%;
+	  color: #999999 !important;
 }
 
 .profiledetail {
-	margin-left: 30px;
-	margin-top: 35px;
+	 
 }
 
 .ppname {
-	font-size: 22px;
-	font-family: Nexa;
-	color: #87e0fd;
-	margin-right: 3px;
+  color: #43B2EC;
+  font-family: Nexa;
+  font-size: 18px;
+  margin-right: 3px;
 }
 
-.ppnamespan {
-	font-size: 22px;
+.ppname span {
+	font-size: 18px;
 	font-family: Nexa;
 	color: #999;
+	margin-left: 0px !important;width:95px
+}
+.ppname label {
+	font-size: 18px;
+	font-family: Nexa;
+	color: #43B2EC;
 	margin-left: 0px !important;
 }
 
 .ppemail {
-	font-size: 16px;
-	font-family: Nexa;
-	color: #999;
-	margin-left: 0px !important;
+   
+  color: #999999;
+  font-family: Nexa;
+  font-size: 14px;
+  margin-left: 0 !important;
+  overflow: hidden;
+   
 }
-
+.ppemail span{ color: #999;
+  font-family: Nexa;width:95px;
+  font-size: 14px;float:left}
+.ppemail label {
+     
+    color: #43B2EC;
+    font-family: Nexa;
+    font-size: 14px;float:left
+}
 .ppdesg {
-	font-size: 16px;
+	font-size: 14px;
 	font-family: Nexa;
 	color: #999;
-	margin-left: 0px !important;
+	margin-left: 0px !important;float:left;width:95px
 }
 
 .ppdesgspan {
 	font-family: Nexa;
-	color: #87e0fd;
+	color: #43B2EC;
 	margin-left: 0px !important;
-	font-size: 15px;
+	font-size: 14px;
 }
-
+.ppdesgspan label {
+	font-family: Nexa;
+	color: #43B2EC;
+	margin-left: 0px !important;
+	font-size: 14px;float:left
+}
 .tbboxnumds {
 	float: left;
 	margin-left: 8px;

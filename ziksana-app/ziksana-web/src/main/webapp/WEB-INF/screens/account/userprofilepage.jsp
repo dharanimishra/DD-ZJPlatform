@@ -31,14 +31,14 @@
 			</div>
 
 
-			<div class="fileupload  f-l" style="width:250px;  ">
+			<div class="fileupload  f-l" style="width:230px;  ">
 				<div class="associateimage" style="text-align:center;" >
-            <div style="height:150px">
+            <div style="height:150px;width:150px;margin-left:20px">
 					<c:if test="${empty member.picturePath}">
-						<img style="width: 144px; margin-bottom: .25em;margin-left: -55px;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg" align="center"/>
+						<img style="width: 150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg" align="center"/>
 					</c:if>
 					<c:if test="${not empty ms.url && not empty member.picturePath}">
-						<img style="width: 144px; margin-bottom: .25em;margin-left: -55px;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
+						<img style="width: 150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
 					</c:if> </div>
 					<div class="clearfix"></div>
 					<div style="width:120px;height:20px; margin-left: 37px; margin-top: 8px;"><input
@@ -130,27 +130,27 @@
 			</div>
 
 
-			<div class="profiledetail f-l" style="width:50%; word-wrap:break-word;">
+			<div class="profiledetail f-l" style="width:60%; word-wrap:break-word;">
 
 				<P class="ppname">
 					<span class="ppnamespan"> <fmt:message key="profile.name"></fmt:message>
-					</span> :
-					<c:out value="${member.firstName}" />
-					<c:out value="${member.lastName}" />
+					:</span> 
+					<label><c:out value="${member.firstName}" />
+					<c:out value="${member.lastName}" /></label>
 					<label id="memberIdValue" style="display: none;"><c:out value="${member.memberId}" /></label>
 					<label id="memberProfileImageValue" style="display: none;"><c:out value="${member.primaryEmailId}" /></label>
 				</P>
 
 				<P class="ppemail">
-					<fmt:message key="profile.primaryemail"></fmt:message>
-					: <a href="#linkurl"> <c:out value="${member.primaryEmailId}" />
-					</a>
+				<span>	<fmt:message key="profile.primaryemail"></fmt:message>
+					: </span><label> <c:out value="${member.primaryEmailId}" /></label>
+					
 				</P>
 
 				<p class="ppdesgspan">
 					<span class="ppdesg"> <fmt:message key="profile.designation"></fmt:message>
-					</span> :
-					<c:out value="${member.designation}" />
+					:</span> 
+					<label><c:out value="${member.designation}" /></label>
 				</p>
 
 			</div>
@@ -159,9 +159,7 @@
 			<div class="clearfix"></div>
 			<div id="profile_response_message"style="color: red; text-align: center;"></div>
 			<div id="profile_response_success"style="color: green; text-align: center;"></div>
-			<hr />
-
-			<div class="formcontainer">
+		 	<div class="formcontainer">
 				
 					
 				<div class="control-group">
@@ -173,8 +171,8 @@
 							id="alternateEmailId" type="text" class="profileinput"
 							name="alt_mail" placeholder="Alternate Email" />
 					</div>
-					<div style="color: red; padding: 5px;" id="erroralternateEmailId"></div>
-					<div style="color: red; padding: 5px;" id="errorEmailId"></div>
+					<div class="err_mssg" id="erroralternateEmailId"></div>
+					<div class="err_mssg" id="errorEmailId"></div>
 				</div>
 
 
@@ -190,7 +188,7 @@
 							</c:forEach>
 						</select>
 					</div>
-					<div style="color: red; padding: 5px;" id="errorsecurityQuestionOne"></div>
+					<div class="err_mssg" id="errorsecurityQuestionOne"></div>
 				</div>
 
 
@@ -202,7 +200,7 @@
 						<input type="text" class="profileinput" id="securityAnswerone"
 							name="sec_answer1" placeholder="Security Answer 1" />
 					</div>
-					<div style="color: red; padding: 5px;" id="errorsecurityAnswerone"></div>
+					<div class="err_mssg" id="errorsecurityAnswerone"></div>
 				</div>
 
 
@@ -220,7 +218,7 @@
 							</c:forEach>
 						</select>
 					</div>
-					<div style="color: red; padding: 5px;" id="errorsecurityQuestionTwo"></div>
+					<div class="err_mssg" id="errorsecurityQuestionTwo"></div>
 				</div>
 
 
@@ -233,7 +231,7 @@
 						<input type="text" class="profileinput" id="securityAnswertwo"
 							name="sec_answer2" placeholder="<fmt:message key="profile.securityanswer2"></fmt:message>" />
 					</div>
-					<div style="color: red; padding: 5px;" id="errorsecurityAnswertwo"></div>
+					<div class="err_mssg" id="errorsecurityAnswertwo"></div>
 				</div>
 
 
@@ -1120,7 +1118,7 @@ width:120px !important;
 }
 #profilecontainer {
     box-shadow: 1px 2px 15px #000000;
-    margin: auto auto 20px;
+    margin: auto auto 30px;
     padding: 50px;
     width: 600px;
 }
@@ -1159,7 +1157,7 @@ float:right;
     text-decoration:none!important;
     }
  .uploadify-queue {
-     width: 250px;
+     width: 270px;
 }
 .border-user{
 display: none;
@@ -1180,4 +1178,23 @@ border-radius: 6px 6px 6px 6px;"
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
+.formcontainer {
+    padding-top: 20px;
+}
+.control-group {
+    margin-bottom: 0px!important;
+}
+.err_mssg{color:red;padding-bottom:5px}
+.page-header {
+  background-color: #EEEEEE;
+  border-bottom: 1px solid #E0E0E0;
+  float: left;
+  margin: 0 0 20px;
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 100%;
+}
+.page-header {
+  padding-bottom:0px;
+}
 </style>
