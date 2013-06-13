@@ -2915,3 +2915,9 @@ padding:3px;
     overflow : auto;
 }
 
+.smalltxt {
+  font-style: italic;
+  left: 111px;
+  position: relative;
+  top: -12px;
+}

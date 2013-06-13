@@ -472,14 +472,15 @@
 						style="width: 50px;" maxlength="2"
 						onkeypress="return inputLimiter(event,'Numbers')" />
 				</div>
+				<span class="smalltxt">(in weeks)</span> 
 			</div>
 
 
-			<select name="SelectArea" id="Cdurationtype" class="defaultvalue f-l"
+			<%-- <select name="SelectArea" id="Cdurationtype" class="defaultvalue f-l"
 				style="margin-left: 20px; width: 110px">
 				<option value="1"><fmt:message key="course.duration.unit" /></option>
 
-			</select>
+			</select> --%>
 			<div class="clearfix"></div>
 
 			<div style="margin-top: 0px;">
