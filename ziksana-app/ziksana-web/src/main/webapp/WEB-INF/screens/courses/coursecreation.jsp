@@ -66,9 +66,11 @@
 								label = options[i].label;
 								value = options[i].value;
 								if (i == 0) {
-									option = '<option selected="selected" value="' + value+ '">'+ label + '</option>';
+									option = '<option selected="selected" value="' + value+ '">'
+											+ label + '</option>';
 								} else
-									option = '<option value="' + value + '">'+ label + '</option>';
+									option = '<option value="' + value + '">'
+											+ label + '</option>';
 								option_string += option;
 							}
 							$('#Careaddl').html(option_string);
@@ -207,18 +209,18 @@
 				href="/ziksana-web/zcourse/createcourse"><span> <img
 						src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;">
-				</span><fmt:message key="course.DescribeCourse" /></a></li>
+				</span> <fmt:message key="course.DescribeCourse" /></a></li>
 		</c:if>
 
 		<c:if test="${courseId != null}">
-			<li style="margin-left: 40px;"><a 
+			<li style="margin-left: 40px;"><a
 				href="/ziksana-web/zcourse/editcourse/${courseId}"><span>
 						<img src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;">
 				</span> <fmt:message key="course.DescribeCourse" /></a></li>
 		</c:if>
 		<c:if test="${courseId == null}">
-			<li  ><a style="color: #f06c0b;"
+			<li><a style="color: #f06c0b;"
 				href="/ziksana-web/zcourse/createcourse"><span><img
 						src="/ziksana-web/resources/images/navarrow.png"
 						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
@@ -247,7 +249,7 @@
 		</c:if>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span><fmt:message
+				style="margin-right: 10px; height: 22px;"> </span> <fmt:message
 				key="Define.assignment" /></li>
 
 	</ul>
@@ -264,7 +266,9 @@
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1><fmt:message key="module.organize.head" /></h1>
+		<h1>
+			<fmt:message key="module.organize.head" />
+		</h1>
 	</div>
 	<!--End of page-header -->
 
@@ -304,7 +308,8 @@
 						<!--end of course name-->
 
 						<label for="Course Description" class="labelclass nexaf"
-							style="font-weight: bold;"><b><fmt:message key="course.description" /></b></label> 
+							style="font-weight: bold;"><b><fmt:message
+									key="course.description" /></b></label>
 						<div class="_richTextShow">
 							<textarea id="Cmoduledescrte" name="editor1pageload"
 								class="defaultvalue _focus">
@@ -324,22 +329,30 @@
 							<div class="clearfix"></div>
 							<div class="moduleselection">
 								<div style="width: 32%; margin-right: 2px" class="f-l">
-									<label class="labelclass nexaf f-l"><fmt:message key="module.area" /> </label> <select
-										name="s_example" id="Cmoduleareaddl" class="select"
-										onchange="getArea();">
-										<option value="0"><fmt:message key="course.choose.option" /></option>
+									<label class="labelclass nexaf f-l"><fmt:message
+											key="module.area" /> </label> <select name="s_example"
+										id="Cmoduleareaddl" class="select" onchange="getArea();">
+										<option value="0">
+											<fmt:message key="course.choose.option" />
+										</option>
 									</select>
 								</div>
 								<div style="width: 32%;" class="f-l">
-									<label class="labelclass nexaf f-l"> <fmt:message key="module.subject" /> </label> <select
-										name="s_example" class="select" id="Cmodulesubjectddl">
-										<option value="0"><fmt:message key="course.choose.option" /></option>
+									<label class="labelclass nexaf f-l"> <fmt:message
+											key="module.subject" />
+									</label> <select name="s_example" class="select" id="Cmodulesubjectddl">
+										<option value="0">
+											<fmt:message key="course.choose.option" />
+										</option>
 									</select>
 								</div>
 								<div style="width: 22%;" class="f-l">
-									<label class="labelclass nexaf f-l"> <fmt:message key="module.topic" /> </label> <select
-										name="s_example" class="select" id="Cmoduletopicddl">
-										<option value="0"><fmt:message key="course.choose.option" /></option>
+									<label class="labelclass nexaf f-l"> <fmt:message
+											key="module.topic" />
+									</label> <select name="s_example" class="select" id="Cmoduletopicddl">
+										<option value="0">
+											<fmt:message key="course.choose.option" />
+										</option>
 									</select>
 								</div>
 							</div>
@@ -348,16 +361,116 @@
 						<!--end of Subject Selection-->
 						<div class="control-group" style="width: 90%">
 							<label class="control-label nexaf" for="Specify Tags"
-								style="width: 120px"><fmt:message key="course.SpecifyTags" /></label>
+								style="width: 120px"><fmt:message
+									key="course.SpecifyTags" /></label>
 							<div class="controls" style="margin-left: 130px;">
 								<input id="Addmoduletag" type="text" class="tags" value="" />
 							</div>
 						</div>
+
+						<div class="clearfix"></div>
+
+						<div style="margin-top: 0px;">
+							<label style="width: 260px;" for="input"
+								class="control-label nexaf"><fmt:message
+									key="Associate.Image" /></label>
+
+							<div
+								style="width: 122px; height: 105px; padding-top: 15px">
+								<img id="course_thumbnail_image"
+									src="${staticFileServer}resources/images/preview/defaultcourse.png"
+									align="left" /> <input readonly="readonly" type="hidden"
+									id="Cimageupl" style="margin-left: 20px;" />
+							</div>
+
+							<div id="message"></div>
+							<div id="thubmnail_upload_message"></div>
+							<div id="loaderText"></div>
+							<input type="file" name="thumbnail_image_file_upload"
+								tabindex="11" id="thumbnail_image_file_upload"
+								style="margin-left: 196px;" />
+							<div id="status"></div>
+							<script type="text/javascript">
+								$(function() {
+									$('#thumbnail_image_file_upload')
+											.uploadify(
+													{
+														'swf' : '${staticFileServer}resources/swf/uploadify.swf',
+														'queueSizeLimit' : 1,
+														'successTimeout' : 350,
+														'buttonText' : '<fmt:message key="profile.button.text" />',
+														'uploader' : '${ms.uploadScript}',
+														//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+														'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+														'fileSizeLimit' : '10024KB',
+														'onUploadStart' : function(
+																file) {
+															$('#sbtvalidation')
+																	.attr(
+																			'disabled',
+																			'disabled');
+														},
+														//'debug' : true,
+														//'scriptData':{'contentId': $('#learningContentId').val().split('_')[1]},
+
+														'onUploadSuccess' : function(
+																file, data,
+																response) {
+															json_string = data;
+															data_object = $
+																	.parseJSON(json_string);
+															console
+																	.log(data_object);
+
+															if (data_object.Uploaded == 'true') {
+																$('#Cimageupl')
+																		.val(
+																				data_object.ContentPath);
+																$(
+																		'#course_thumbnail_image')
+																		.attr(
+																				'src',
+																				'${ms.url}'
+																						+ data_object.ContentPath);
+																$(
+																		'#thubmnail_upload_message')
+																		.html(
+																				'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove_$ta');
+
+															} else { //there is an error in the upload process
+
+																$('#message')
+																		.html(
+																				data_object.message);
+															}
+															$('#sbtvalidation')
+																	.removeAttr(
+																			'disabled'); //enable submit button
+
+														}
+													// Your options here
+													});
+								});
+
+								function remove_uploaded_thumbnail() {
+									$('#Cimageupl').val('');//clear uploaded file path
+									$('#thubmnail_upload_message').html('');
+									$('#course_thumbnail_image')
+											.attr('src',
+													'${staticFileServer}resources/images/preview/defaultcourse.png');
+
+								}
+							</script>
+						</div>
 						<button class="btn f-r" type="button"
-							onClick="getCancel();return false;" style="margin-right: 10px;"><fmt:message key="profile.cancel" /> </button>
+							onClick="getCancel();return false;" style="margin-right: 10px;">
+							<fmt:message key="profile.cancel" />
+						</button>
 						<button class="btn f-r" type="button"
 							onClick="getaddmodulesave();return false;"
-							style="margin-right: 20px;"><fmt:message key="profile.submit" /> </button>
+							style="margin-right: 20px;">
+							<fmt:message key="profile.submit" />
+						</button>
 
 						<div class="Clearfix"></div>
 
@@ -370,7 +483,9 @@
 		<div class="Clearfix"></div>
 		<button class="btn f-r" type="button"
 			onClick="getSaveandContinue();return false;"
-			style="margin-right: 30px;"><fmt:message key="btn.save.continue" /></button>
+			style="margin-right: 30px;">
+			<fmt:message key="btn.save.continue" />
+		</button>
 		<!-- <div id='jqxWidget' style='display: none;'>
 								<div id="splitter" style='clear: both;'>
 

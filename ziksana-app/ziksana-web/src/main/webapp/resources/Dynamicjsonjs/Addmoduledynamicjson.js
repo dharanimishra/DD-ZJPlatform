@@ -324,6 +324,7 @@ function getaddmodulesave() {
 		var Subject = $('#Cmodulesubjectddl').val();
 		var Topic = $('#Cmoduletopicddl').val();
 		var Moduletag_Field = $('#Addmoduletag').val();
+		var Assoc_Image = $('#Cimageupl').val();
 
 		var parameters = {
 			"Course_id" : course_id,
@@ -335,7 +336,8 @@ function getaddmodulesave() {
 			"Subject_Area" : Subject_Area,
 			"Subject" : Subject,
 			"Topic" : Topic,
-			"Moduletag_Field" : Moduletag_Field
+			"Moduletag_Field" : Moduletag_Field,
+			"Assoc_Image" : Assoc_Image
 
 		};
 

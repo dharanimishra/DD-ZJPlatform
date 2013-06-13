@@ -67,6 +67,20 @@ function onButtonClick(menuitemId, type) {
 								subject_area = data.subjectarea;
 								subject = data.subject;
 								topic = data.topic;
+								image_upload = data.imageupload;
+
+								if (image_upload == '') {
+									thumbnail_url = '/ziksana-web/resources/images/preview/defaultcourse.png';
+								} else {
+									thumbnail_url = media_server_url + image_upload;
+								}
+								$('#course_thumbnail_image').attr('src',
+										thumbnail_url);
+								$('#thubmnail_upload_message')
+										.html(
+												'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
+								
+								
 
 								$('#courseid').val(Course_id);
 
@@ -84,6 +98,8 @@ function onButtonClick(menuitemId, type) {
 
 								CKEDITOR.instances['Cmoduledescrte']
 										.setData(removeNewline(module_desc));
+								
+								$('#Cimageupl').val(image_upload);
 
 								// populate subject area
 
