@@ -24,7 +24,10 @@ public class JSONLearningContent {
 		this.setContentDescription(learningContent.getContentDescription());
 		this.setContentName(learningContent.getContentName());
 		this.setContentType(learningContent.getContentType().getName());
-		//this.setContentFormat(learningContent.getContentFormat().getName());
+		//bad need to handle correctly but for now it is like that as we may have some old data.
+		if(learningContent.getContentFormat() != null){
+			this.setContentFormat(learningContent.getContentFormat().getName());
+		}
 		this.setContentURL(learningContent.getContentUrl());
 		this.id = Integer.parseInt(learningContent.getLearningContentId().getDisplayID());
 		this.setThumbnailPicturePath(learningContent.getThumbnailPicturePath());

@@ -420,6 +420,10 @@ public class LearningContent extends AuditHistory{
 	 */
 	public void setContentFormatId(Integer contentFormatId) {
 		this.contentFormatId = contentFormatId;
+		//bad need to handle correctly but for now it is like that as we may have some old data.
+		if(contentFormatId != 0){
+			this.setContentFormat(ContentFormat.getContentFormat(contentFormatId));
+		}
 	}
 
 	/**
