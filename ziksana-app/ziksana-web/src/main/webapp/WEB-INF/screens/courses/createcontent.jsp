@@ -166,7 +166,7 @@ table tr td {
 														if (data_object.Uploaded == 'true') {
 															$('#message')
 																	.html('File uploaded successfully');
-															content_path = data_object.ContentPath;
+															content_path = data_object.ContentKey;
 															content_name = data_object.ContentName;
 															content_type_id = data_object.ContentType;
 															content_type_name = data_object.ContentTypeName;
