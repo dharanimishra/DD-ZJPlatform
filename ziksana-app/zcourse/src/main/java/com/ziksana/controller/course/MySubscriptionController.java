@@ -41,4 +41,18 @@ public class MySubscriptionController {
 
 		return mv;
 	}
+
+	@RequestMapping(value = "1/mylearnercourse", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView MyCourse() {
+		LOGGER.info("Entering Class " + getClass() + " MyCourse()");
+
+		ModelAndView mv = new ModelAndView("courses/course_consumption");
+
+		LOGGER.info("Exiting Class " + getClass() + " MyCourse(): ");
+
+		return mv;
+	}
+
 }

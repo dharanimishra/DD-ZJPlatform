@@ -127,7 +127,7 @@ public class CourseAssociateContentServiceTest extends BaseTest {
 		content.setContentPath("/content/");
 		content.setContentTypeId(ContentType.DOC.getID());
 		content.setRightsOwningMember(authoredMember);
-		content.setContentFormatId(ContentFormat.WORD.getID());
+		content.setContentFormatId(ContentFormat.AUDIO.getID());
 
 		LearningComponentContent compContent = new LearningComponentContent();
 		compContent.setLearningComponent(component);
