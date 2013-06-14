@@ -1,38 +1,17 @@
+<!doctype html>
+<html>
+<head>
 <style>
-
-.tbboxheadfnt {
-    color: #8B8B8B;}
-.tbboxdesc p {
-    color: #B1B1B1;
-    font-family: 'segoe ui',sans-serif;
-    font-size: 14px!important;
-    font-weight: 100;
-}
-.tbboxdesc {
-    float: none;
-    margin-top: 0;
-    width: 328px;
-}
-.tbboxheadfntds {
-    color: #4BB1CF;}
-.tbboxdescds p {
-    color: #4BB1CF;
-    font-family: 'Segoe UI Light','Open Sans',Verdana,Arial,Helvetica,sans-serif;
-    font-size: 13px!important;
-}
-.badge-warning{background-color: #999999;}
-#publishtab .badge1{background-color: #F89406}
-
-/*styles for the Playbook starts*/
+body{font-family:"Segoe UI";margin:0;padding:0;}
 .playbookconatiner{display:block;
-overflow:auto;border:0px solid #000;padding:4px;
+overflow:auto;border:1px solid #000;padding:4px;width:1055px;margin:auto;
 }
 .pbheader{
 display:block;height:149px;
 
 
 }
-.pheaderL{float:left;width:27%}
+.pheaderL{float:left;width:28%}
 .phbox {
   
   float: left;
@@ -40,7 +19,7 @@ display:block;height:149px;
   width: 134px;
 }
 .phboxblue{height: 135px;
-  width: 134px;
+  width: 126px;
   border-radius:16px 0px 16px 0px;
   background-color:#00c1e5}
 .roundRb{border-radius:0px 16px 0px 16px}
@@ -61,7 +40,7 @@ background:#3e3f13;margin-bottom:10px
 width:305px;float:left;}
 .imgcontentR > img {
   height: 459px;
-  border-radius: 20px 0 0 0;
+  border-radius: 20px 0 0 0;width: 100%;
 }
 .imgcontent{
 display:block;overflow:auto;
@@ -72,10 +51,17 @@ display:block;overflow:auto;
   display: block;
   float: left;
   height: 140px;
-  margin-right: 5px;
+  margin-right: 7px;
   width: 120px;
 }
-.userimg p{text-align:center;color:#FFFFFF;float:left;margin-top:50px}
+.userimg p {
+  
+  color: #FFFFFF;
+  float: left;
+  margin-top: 50px;
+  text-align: center;
+  width: 50%;
+}
 .Clearfix {
 	clear: both;
 }
@@ -109,10 +95,10 @@ background:#3e3f13;}
   height: 146px;
 }
 .pheadmiddle label {
-   
+   display:block;
   color: #006666;
   font-size: 40px;
-  line-height: 2;
+ 
   padding-top: 20px;
   text-align: center;
   width: 100%;
@@ -125,7 +111,7 @@ display:block;margin-top:10px
 .coursedescription b{padding :0px 30px;clear:both;font-size:16px;font-weight:bold}
 .chapeterfotter{display:block;
 background-image:url(/ziksana-web/resources/images/playbook/footer.png);
-background-position:10px -70px;
+background-position:-77px -70px;
 background-repeat:no-repeat;height:229px;
 
 }
@@ -135,49 +121,27 @@ display:block;width:50px;height:45px;float:right;color:#fff;line-height:1.8;font
 position:relative;top:182px;right:45px;
 }
 .toplink{float:right;
-font-size:16px;
+font-size:12px;
 margin-right: 30px;
 font-weight: bold;}
-/*styles for the Playbook ends*/
 </style>
-<div class="navheadlp">
- 
- <ul>
- <li style="margin-left:40px; color: #f06c0b;"><span><img src="/ziksana-web/resources/images/navarrow.png" style="margin-right:10px; height:22px;"> </span>Define Planner  </li>
- 
- <li> <span><img src="/ziksana-web/resources/images/navarrowb.png" style="margin-right:10px; height:22px;"> </span>  Review Playbook </li>
- 
- 
- </ul>
- 
- </div> <!--end of navheadlp-->
-  <div class="clearfix"></div>
-<div id="definestructureformcontainer">
-
-          <!--  <div class="page-header" style="padding-left:0px !important; margin-bottom:0px !important;">
-                <div class="icon">
-                    <img src="../images/icons/information_icon.png" style="height:25px;"/>
-                </div>
-                 <h1>Organize your course into course modules/chapters</h1>
-            </div>End of page-header -->
-                
-
-  <div class="clearfix"></div>
-
-<div style="margin-top:15px" > 
-     <div class="playbookconatiner">
+</head>
+<body>
+<div class="playbookconatiner">
 <div class="pbheader"><div class="pheaderL"><div class="phbox roundRb" style=" margin-right: 27px;background-color:#afb85b"></div>
 <div class="phbox roundLB" style="background-color:#f2db75"></div></div>
 <div class="pheadmiddle"> <label>${course.name }</label></div>
 <div class="headerright"><div class="phboxblue"></div></div></div>
+<div class="Clearfix"></div>
 <div class="imgcontent">
 <div class="imgcontentL">
 <div class="userimg">
- <div style="overflow:auto;text-align:center;width:80%;padding:6px;">
+ <div style="overflow:hidden;text-align:center;width:90%;padding:6px;">
   <img src="/ziksana-web/resources/images/playbook/usericon.png"  class="borderRb">
   <p>
     <label>${member.firstName }&nbsp; ${member.lastName }</label>
-    <label>${member.designation } </label>
+ 
+    <label>${member.designation }</label>
   </p></div>
 </div>
 
@@ -191,7 +155,7 @@ font-weight: bold;}
 </div>
 </div>
 </div>
- <div class="imgcontentR" style="float:left;width:72%;text-align:right;margin-left:10px;"><img src="/ziksana-web/resources/images/playbook/medicalproffesional.png"></div>
+ <div class="imgcontentR" style="float:left;width:70%;text-align:right;margin-left:10px;"><img src="/ziksana-web/resources/images/playbook/medicalproffesional.png"></div>
 </div>
 <div class="Clearfix"></div>
 <div class="coursedescription" id="cd">
@@ -211,6 +175,8 @@ This chapter lays out recommendations for what knowledge of the way science work
 <div class="Clearfix"> </div>
 <div class="chapeterfotter"><label class="pageno">01</label></div>
 </div>
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
 <div class="coursedescription" id="md"><b>Module Discription with Content Listing</b>
 <p>Over the course of human history, people have developed many interconnected and validated ideas about the physical, biological, psychological, and social worlds. Those ideas have enabled successive generations to achieve an increasingly comprehensive and reliable understanding of the human species and its environment. The means used to develop these ideas are particular ways of observing, thinking, experimenting, and validating. These ways represent a fundamental aspect of the nature of science and reflect how science tends to differ from other modes of knowing.</p><p>
 
@@ -227,6 +193,8 @@ This chapter lays out recommendations for what knowledge of the way science work
 <div class="Clearfix"> </div>
 <div class="chapeterfotter"><label class="pageno">02</label></div>
 </div>
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
 <div class="coursedescription" id="pd"><b>Planner Details</b>
 <p>Over the course of human history, people have developed many interconnected and validated ideas about the physical, biological, psychological, and social worlds. Those ideas have enabled successive generations to achieve an increasingly comprehensive and reliable understanding of the human species and its environment. The means used to develop these ideas are particular ways of observing, thinking, experimenting, and validating. These ways represent a fundamental aspect of the nature of science and reflect how science tends to differ from other modes of knowing.</p><p>
 
@@ -241,11 +209,13 @@ This chapter lays out recommendations for what knowledge of the way science work
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
 <div class="Clearfix"> </div>
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
 <div class="chapeterfotter"><label class="pageno">03</label></div>
 </div>
 </div>
-                          
-                             
-    </div> <!--End of contentarea -->
-  
-</div> <!--End of definestructureformcontainer -->      
+</body>
+</html>

@@ -11,9 +11,12 @@
 		<li style="margin-left: 40px; color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px; height: 22px;"> </span>Define Planner</li></a>
-		<li style=""><span><img
+		<li style="">
+		<a href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}"><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span>Review Playbook </li>
+				style="margin-right: 10px; height: 22px;"> </span>Review Playbook
+				</a>
+		</li>
 	
 
 	</ul>

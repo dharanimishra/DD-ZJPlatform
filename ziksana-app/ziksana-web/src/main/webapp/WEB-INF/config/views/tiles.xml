@@ -312,10 +312,16 @@
    
    </definition>
 	
-   <definition name="playbook-viewHtml" extends="playbook-layout">
+   <definition name="playbook-viewHtml" extends="course-ziksana-master">
+     <put-attribute name="page_title" value="Preview" />
+     <put-attribute name="content"
+			value="/WEB-INF/screens/playbook/htmlview.jsp"/>
+   </definition>
+
+   <definition name="playbook-pdfviewHtml" extends="playbook-layout">
      <put-attribute name="page_title" value="Preview" />
      <put-attribute name="body"
-			value="/WEB-INF/screens/playbook/htmlview.jsp"/>
+			value="/WEB-INF/screens/playbook/pdfhtmlview.jsp"/>
    </definition>
    
     <definition name="create-playbook" extends="playbook-viewHtml">
