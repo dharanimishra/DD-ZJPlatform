@@ -136,6 +136,7 @@ font-weight: bold;}
 <div class="imgcontent">
 <div class="imgcontentL">
 <div class="userimg">
+222${member.picturePath}222
  <div style="overflow:hidden;text-align:center;width:90%;padding:6px;">
   <img src="/ziksana-web/resources/images/playbook/usericon.png"  class="borderRb">
   <p>
