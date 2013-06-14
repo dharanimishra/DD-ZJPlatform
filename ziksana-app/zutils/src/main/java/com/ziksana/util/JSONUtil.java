@@ -1,8 +1,6 @@
 package com.ziksana.util;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -34,6 +32,7 @@ public class JSONUtil {
 		String jsonString = null;
 		try {
 			jsonString = mapper.writeValueAsString(object);
+			//mapper.readValue(content, valueType)
 		} catch (JsonGenerationException e) {
 			// TODO throw zikasana specific exception
 			e.printStackTrace();
@@ -49,7 +48,6 @@ public class JSONUtil {
 		return jsonString;
 	}
 	
-
 	
 }
 

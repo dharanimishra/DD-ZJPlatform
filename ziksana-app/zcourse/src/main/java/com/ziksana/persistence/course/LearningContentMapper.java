@@ -73,7 +73,7 @@ public interface LearningContentMapper {
 
 	public Content getContent(Integer contentId);
 
-	@Select({ "select ID , ContentType, Active,ContentPath,ContentName,ContentFormat,ContentDescription,ThumbnailPicturePath,NumberOfThumbnails,ScreenshotPath from corlearningcontent where AuthoringMemberRoleId=#{memberId,jdbcType=INTEGER} and isdelete=false and active=true" })
+	@Select({ "select ID , ContentType, Active,ContentPath,ContentName,ContentFormat,ContentDescription,ThumbnailPicturePath,NumberOfThumbnails,ScreenshotPath from corlearningcontent where AuthoringMemberRoleId=#{memberId,jdbcType=INTEGER} and isdelete=false and active=true and (linkedLearningContentId is null or linkedLearningContentId = 0)" })
 	@Results(value = {
 			@Result(property = "id", column = "ID"),
 			@Result(property = "contentTypeId", column = "ContentType"),
@@ -88,13 +88,14 @@ public interface LearningContentMapper {
 			@Result(property = "screenshotPath", column = "ScreenshotPath") })
 	List<LearningContent> getUserContent(Integer memberId);
 
-	@Select({ "select ID , ContentType, Active,ContentPath,ContentName,ContentDescription,ThumbnailPicturePath,NumberOfThumbnails from corlearningcontent where id=#{learningContentId,jdbcType=INTEGER} " })
+	@Select({ "select ID , ContentType, Active,ContentPath,ContentName,ContentFormat, ContentDescription,ThumbnailPicturePath,NumberOfThumbnails from corlearningcontent where id=#{learningContentId,jdbcType=INTEGER} " })
 	@Results(value = {
 			@Result(property = "id", column = "ID"),
 			@Result(property = "contentTypeId", column = "ContentType"),
 			@Result(property = "activeFlag", column = "active"),
 			@Result(property = "contentUrl", column = "ContentPath"),
 			@Result(property = "contentName", column = "ContentName"),
+			@Result(property = "contentFormatId", column = "ContentFormat"),
 			@Result(property = "contentDescription", column = "ContentDescription"),
 			@Result(property = "thumbnailPicturePath", column = "ThumbnailPicturePath"),
 			@Result(property = "numberOfThumbnails", column = "NumberOfThumbnails") })

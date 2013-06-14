@@ -37,6 +37,7 @@
         <!-- END Browser History required section -->  
             
         <script type="text/javascript" src="/ziksana-web/resources/swf/annotate-swfobject.js"></script>
+		<script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
  		<script type="text/javascript"	src="/ziksana-web/resources/js/ziksana/enhance-content/annotator.js"></script>
        <script type="text/javascript">
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 

@@ -1,32 +1,83 @@
 
 
-var response = "";
+var jsonObject = null;
 var originalContentPath = "";
 var componentId = parent.selectedTreeContentComponentId;
 var contentId = parent.selectedTreeContentId;
+var courseId = parent.courseId;
+var learningContentObject = parent.getLearningContentObject(contentId);
 
 
 
 
-//var staticResponse = '{"}';
 function ff_get_content_key()
 {
-	console.log('inside ff_get_content_key');
-	originalContentPath = parent.getLearningContentObject(contentId).contentURL;
-	//alert("originalContentPath " + originalContentPath);
-	console.log("the key is " + parent.getJsonObject().ContentKey);
+	originalContentPath = learningContentObject.contentURL;
+	
+	//TODO delete later for testing only
+	//var testVar = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
+	//jsonObject = parent.getJsonObject(testVar);
+	//console.log("got the json object " + jsonObject.Uploaded);
+	//createContent();
+	console.log(contentId + "     originalContentPath ---------->>>>> " + originalContentPath);
 	return originalContentPath;
 }
 
 function ff_set_response(annotationResponse)
 {
-	response = annotationResponse;
-	alert("response " + response);
+	alert("annotationResponse " + annotationResponse);
+	//TODO delete later for testing only
+	//annotationResponse = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
+
+	jsonObject = parent.getJsonObject(annotationResponse);
+	if(jsonObject.ContentKey != originalContentPath){
+		alert("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		createContent();
+	}
+	//TODO delete later
+	else{
+		alert("Doing nothing old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+	}
+	
+}
+
+function createContent(){
+	
+	var uri = '/ziksana-web/zcourse/1/annotate';
+	console.log("came here jsonObject.NumberOfThumbnails " + jsonObject.NumberOfThumbnails);
+	console.log("the values are " + jsonObject.ThumbnailPicturePath + " " + jsonObject.Decoration + " " + jsonObject.ContentKey);
+	var parameters = {
+		"contentPath" : jsonObject.ContentKey,
+		"decorationTypeName" : jsonObject.Decoration,
+		"thumbnailPath" : jsonObject.ThumbnailPicturePath,
+		"noOfThumbnails" : jsonObject.NumberOfThumbnails,
+		"learningComponentId" : componentId,
+		"previousLearningContentId" : contentId
+	};
+	//console.log("delete content course id is  " + CourseId);
+	console.log("parameters.length " + parameters.length);
+	
+	//return;
+	$.post(uri, parameters, function(data) {
+		console.log(data);
+		if (data.response == 'success') {
+			// what to do here?
+			console.log("Annoation saved");
+			return "SUCCESS";
+		} else {
+			$('#tempdiv1').html(
+					'<span style="color:red;">'
+							+ "Failed" + '</span>');
+			return "FAIL";
+		}
+		console.log("reached here.......................");
+	});
 }
 
 function ff_get_content_format()
 {
-	return "document";
+	// video linux server needs it in lower case
+	return learningContentObject.contentFormat.toLowerCase();
 }
 
 

@@ -132,14 +132,10 @@ public class AssociateContentServiceImpl implements AssociateContentService {
 		
 		LearningComponentContent oldLearningComponentContent = learningComponentContentService.getLearningComponentContent(learningComponentId, previousLearningContentId);
 		
-		//mark the old one as deleted
-		learningComponentContentService.deleteLearningComponentContent(oldLearningComponentContent);
 		
 		LearningContent newlearningContent = learningContentService.getLearningContent(newLearningContentId);
-		LearningComponentContent newLearningComponentContent = (LearningComponentContent) copy(oldLearningComponentContent);
-		newLearningComponentContent.setId(null);
-		newLearningComponentContent.setBaseLearningContent(newlearningContent);
-		learningComponentContentService.saveLearningComponentContent(newLearningComponentContent);
+		oldLearningComponentContent.setBaseLearningContent(newlearningContent);
+		learningComponentContentService.update(oldLearningComponentContent);
 		LOGGER.debug("AssociateContentServiceImpl.updateAssociation() - associating updated successfully for learning component id " + learningComponentId + " old content id was " + previousLearningContentId + " and new learning content id is " + newLearningContentId);
 	}
 	

@@ -3,7 +3,7 @@
 	serverContext = $('#staticFileServer').val();
 	selectedTreeContentId = 0;
 	selectedTreeContentComponentId = 0;
-	
+	courseId = $("#courseid").val();
 
 	$(document).ready(function() {
 		//var abc = '${learningContentAsJSONString}';

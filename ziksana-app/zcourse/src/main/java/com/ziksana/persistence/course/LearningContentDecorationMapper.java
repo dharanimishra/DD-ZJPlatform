@@ -13,7 +13,7 @@ public interface LearningContentDecorationMapper {
 	/**
 	 * Saves the Learning Content Decoration
 	 */
-	public LearningContentDecoration saveContentDecoration(LearningContentDecoration learningContentDecoration);
+	public Integer saveContentDecoration(LearningContentDecoration learningContentDecoration);
 
 	/**
 	 * Updates the Learning Content Decoration

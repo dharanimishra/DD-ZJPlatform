@@ -77,16 +77,15 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 		return exists;
 	}
 
-	public LearningContent createLearningContent(LearningContent learningContent, ContentDecorationType contentDecorationType, MemberPersona creator, Integer learningComponentId,Integer previousLearningContentId) {
+	public LearningContent createLearningContent(LearningContent learningContent, ContentDecorationType contentDecorationType, MemberPersona creator, Integer learningComponentId,LearningContent previousLearningContent) {
 		
-		LearningContent previousLearningContent = learningContentService.getLearningContent(previousLearningContentId);
 		learningContent.setLinkedLearningContent(previousLearningContent);
 		LearningContent savedLearningContent =  learningContentService.saveOrUpdateLearningContent(learningContent);
 		
 		learningContentDecorationService.saveLearningContentDecoration(
 				getLearningContentDecoration(learningContent.getId(), contentDecorationType, creator));
 		
-		associateContentService.updateAssociation(learningComponentId, previousLearningContentId, savedLearningContent.getId());
+		associateContentService.updateAssociation(learningComponentId, previousLearningContent.getId(), savedLearningContent.getId());
 		LOGGER.debug("EnrichContentServiceImpl.createLearningContent() content created successfully " + learningContent + " for decoration type " + contentDecorationType);
 		return savedLearningContent;
 	}

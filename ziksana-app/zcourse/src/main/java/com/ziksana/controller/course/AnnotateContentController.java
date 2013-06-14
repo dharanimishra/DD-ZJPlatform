@@ -88,45 +88,46 @@ public class AnnotateContentController {
 	@RequestMapping(value = "1/annotate", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView createContent(
+	void createContent(
 			@RequestParam(value = "previousLearningContentId", required = true) Integer previousLearningContentId,
 			@RequestParam(value = "learningComponentId", required = true) Integer learningComponentId,
 			@RequestParam(value = "contentPath", required = true) String contentPath,
-			@RequestParam(value = "contentName", required = true) String contentName,
-			@RequestParam(value = "contentType", required = true) String contentType,
-			@RequestParam(value = "contentTypeName", required = true) String contentTypeName,
 			@RequestParam(value = "decorationTypeName", required = true) String decorationTypeName,
 			@RequestParam(value = "thumbnailPath", required = true) String thumbnailPath,
-			@RequestParam(value = "noOfThumbnails", required = true) String noOfThumbnails) {
+			@RequestParam(value = "noOfThumbnails", required = true) Integer noOfThumbnails) {
 
-		ModelAndView modelView = new ModelAndView("mastereditcontent");
 
 		try {
 			MemberPersona creator = new MemberPersona();
 			creator.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
 
+			LearningContent previousLearningContent = enrichContentService.getLearningContent(previousLearningContentId);
 				LearningContent learningContent = new LearningContent();
 				learningContent.setAuthoringMember(creator);
-				learningContent.setContentName(contentName);
+				learningContent.setContentName(previousLearningContent.getContentName());
 				learningContent.setContentPath(contentPath);
 				//TODO need to pass the correct value here
 				learningContent.setStatusId(ContentStatus.UNDER_CONSTRUCTION.getID());
 				learningContent.setActive(true);
-					learningContent.setContentTypeId(ContentType.valueOf(
-							contentTypeName.toUpperCase()).getID());
-					learningContent.setThumbnailPicturePath(thumbnailPath);
-					learningContent.setNumberOfThumbnails(Integer
-							.parseInt(noOfThumbnails));
+				learningContent.setContentTypeId(previousLearningContent.getContentTypeId());
+				learningContent.setContentType(previousLearningContent.getContentType());
+				learningContent.setThumbnailPicturePath(thumbnailPath);
+				learningContent.setNumberOfThumbnails(noOfThumbnails);
 				learningContent.setRightsOwningMember(creator);
+				learningContent.setLinkedLearningContent(previousLearningContent);
+				learningContent.setContentFormat(previousLearningContent.getContentFormat());
+				learningContent.setContentFormatId(previousLearningContent.getContentFormatId());
+				learningContent.setContentDescription(previousLearningContent.getContentDescription());
+				learningContent.setScreenshotPath(previousLearningContent.getScreenshotPath());
 				enrichContentService.createLearningContent(learningContent, 
 						ContentDecorationType.valueOf(decorationTypeName.toUpperCase()), creator, 
-						learningComponentId, previousLearningContentId);
+						learningComponentId, previousLearningContent);
+				
 				LOGGER.debug("AnnotateContentController.createContent() new learning content created for " + decorationTypeName);
 		} catch (ZiksanaException  exception) {
 			LOGGER.error(exception.getMessage(), exception);	
 		}
-		return modelView;
 	}
 	/**
 	 * This method converts collection of {@link LearningContent} objects into

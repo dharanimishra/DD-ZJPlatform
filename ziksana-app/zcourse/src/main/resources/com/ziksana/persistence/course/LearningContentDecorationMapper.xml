@@ -39,7 +39,7 @@
 	</sql>
 
 	<insert id="saveContentDecoration" parameterType="com.ziksana.domain.course.LearningContentDecoration"
-		useGeneratedKeys="true" keyProperty="LearningContentDecorationId" keyColumn="ID">
+		useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
 		insert into corlearningcontentdecoration
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			creationdate,

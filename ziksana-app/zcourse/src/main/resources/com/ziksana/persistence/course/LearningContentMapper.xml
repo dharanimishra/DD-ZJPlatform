@@ -88,6 +88,9 @@
 			<if test="authoringMember !=null">
 				authoringmemberroleid,
 			</if>
+			<if test="linkedLearningContent !=null">
+				linkedLearningContentId,
+			</if>
 			<if test="numberOfThumbnails !=null">
 				numberOfThumbnails,
 			</if>
@@ -132,6 +135,9 @@
 			</if>
 			<if test="authoringMember !=null">
 				#{authoringMember.memberRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="linkedLearningContent !=null">
+				#{linkedLearningContent.id,jdbcType=INTEGER},
 			</if>
 			<if test="numberOfThumbnails !=null">
 				#{numberOfThumbnails,jdbcType=INTEGER},

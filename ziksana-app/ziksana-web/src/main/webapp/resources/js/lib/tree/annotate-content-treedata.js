@@ -1,5 +1,4 @@
 var counter = 0;
-var jsonDataElement = $
 function onButtonClick(menuitemId, type) {
 	var menuaction = menuitemId;
 	selectedTreeContentId = tree.getSelectedItemId().split('_')[1];
@@ -327,10 +326,8 @@ function createtree(course_id) {
 	}
 	
 	
-	function getJsonObject (){ 
-		var staticResponse = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
-		var json_data = $.parseJSON(staticResponse);
-		
+	function getJsonObject (jsonResponse){ 
+		var json_data = $.parseJSON(jsonResponse);
 		return json_data;
 	}	
 
