@@ -22,7 +22,7 @@
 
 <script type="text/javascript">
 	$('document').ready(function() {
-		$('#spinner').spinner({
+		$('#spinner1').spinner({
 			numberFormat : "n",
 			min : 0,
 			max : 20,
@@ -454,7 +454,7 @@ $(document).ready(function() { // On page load
 					style="width: 230px;"><fmt:message
 						key="specify.courseCredits" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner" value="0"
+					<input type="text" name="spi" id="spinner1" value="0"
 						style="width: 50px;" maxlength="2"
 						 onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>

@@ -33,9 +33,15 @@ function getOtherLearningContents(contentType, pageIndex) {
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
 	console.log("noOfPages " + noOfPages);
 
-	getPageDiv(noOfPages, "OTHERS");
-	console.log("getPageDiv(noOfPages, OTHERS)"
-			+ getPageDiv(noOfPages, "OTHERS"));
+	
+	
+	if(contentArrayBasedOnContentType.length > itemsPerPage){
+		getPageDiv(noOfPages, "OTHERS", pageIndex);
+	}
+	else{
+		$('#pageNumbers').empty();
+	}
+
 	var divs = '';
 	if (pageIndex == 1) {
 		for (i = 0; i < contentArrayBasedOnContentType.length; i++) {
@@ -83,8 +89,13 @@ function getLearningContentsByType(contentType, pageIndex) {
 			+ contentArrayBasedOnContentType.length);
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
 	console.log("noOfPages " + noOfPages);
-
-	getPageDiv(noOfPages, contentType);
+	
+	if(contentArrayBasedOnContentType.length > itemsPerPage){
+		getPageDiv(noOfPages, contentType, pageIndex);
+	}
+	else{
+		$('#pageNumbers').empty();
+	}
 
 	var divs = '';
 	if (pageIndex == 1) {
@@ -119,8 +130,13 @@ function getAllLearningContents(pageIndex) {
 	console.log("contentArray.length " + contentArray.length
 			+ " itemsPerPage  " + itemsPerPage);
 	noOfPages = Math.ceil(contentArray.length / itemsPerPage);
-
-	getPageDiv(noOfPages, "ALL");
+	
+	if(contentArray.length > itemsPerPage){
+		getPageDiv(noOfPages, "ALL", pageIndex);
+	}
+	else{
+		$('#pageNumbers').empty();
+	}
 
 	console.log("noOfPages " + noOfPages);
 	var divs = '';
@@ -252,7 +268,7 @@ function getDiv(learningContentObject) {
 
 }
 
-function getPageDiv(noOfPages, filterType) {
+function getPageDiv(noOfPages, filterType,pageIndex) {
 	var pageDiv = $('#pageNumbers');
 	var functionName = '';
 	if ("ALL" == filterType) {
@@ -266,11 +282,12 @@ function getPageDiv(noOfPages, filterType) {
 
 	pageDiv.empty();
 	for (i = 1; i <= noOfPages; i++) {
-		pageDiv
-				.append('<span class="pagination_bar pactive"><a onClick="'
-						+ functionName
-						+ i
-						+ ')" href="#" id="btnpg1" class="swShowPageActive pagination_bar"></a></span>');
+		if(pageIndex == i){
+			pageDiv.append('<a onClick="' + functionName + i +')" title="'+ i + '" href="#" id="btnpg1" class="swShowPageActive"></a>');
+		}
+		else{
+			pageDiv.append('<a onClick="' + functionName + i +')" title="'+ i + '" href="#" id="btnpg1" class="swShowPage"></a>');
+		}
 	}
 }
 
@@ -324,3 +341,16 @@ function deleteContent(content_id) {
 $(function() {
 	$('.show_in_fancybox, .google').fancybox({autoWidth: true});
 });
+
+function calculatePage(val){
+	if(val == 0){		
+		return 0;
+	}else if(val == 1){
+		
+		return 3;	
+	}else if(val == 2){
+	
+		return 6;
+	}
+	
+}

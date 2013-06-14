@@ -2921,3 +2921,14 @@ padding:3px;
   position: relative;
   top: -12px;
 }
+.paginationbutton a{float:left;margin-left:4px;margin-right:4px}
+.swShowPageActive {
+  background-color: #FFCC33;
+  display: block;
+  height: 4px;
+  width: 40px;
+}
+.swShowPage{ background-color: #000;
+  display: block;
+  height: 4px;
+  width: 40px;}
