@@ -255,12 +255,12 @@
 		var contentArrayForBaseContent = new Array();
 		var j =0;
 		for(var i=0;i<contentArray.length;i++){
-			if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
+			//if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
 				if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
 					contentArrayForBaseContent[j] = contentArray[i];
 					j++;
 				}
-			}
+			//}
 		}
 
 		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayForBaseContent);
