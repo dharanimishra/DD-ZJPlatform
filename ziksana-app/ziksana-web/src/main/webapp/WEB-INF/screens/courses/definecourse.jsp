@@ -29,10 +29,12 @@
 
 		});
 		$('#spinner2').spinner({
+			numberFormat : "n",
 			min : 0,
 			max : 20
 		});
 		$('#spinner3').spinner({
+			numberFormat : "n",
 			min : 0,
 			max : 20
 		});
@@ -450,7 +452,7 @@
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner" value="0"
 						style="width: 50px;" maxlength="2"
-						onkeypress="return inputLimiter(event,'Numbers')" />
+						 onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
 			</div>
 			<div class="control-group f-l">
@@ -460,7 +462,7 @@
 				<div class="controls" style="width: 212px;">
 					<input type="text" name="spi" id="spinner2" value="0"
 						style="width: 50px;" maxlength="2"
-						onkeypress="return inputLimiter(event,'Numbers')" />
+						 onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -470,7 +472,7 @@
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner3" value="0"
 						style="width: 50px;" maxlength="2"
-						onkeypress="return inputLimiter(event,'Numbers')" />
+						 onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
 				<span class="smalltxt">(in weeks)</span> 
 			</div>
@@ -624,4 +626,24 @@
 		replace(/\n +/, "\n"); // Removes spaces after newlines
 		return;
 	}
+</script>
+<script type="text/javascript">
+     function inputLimiter(e, allow, value) {
+        var AllowableCharacters = '';
+        
+        if (allow == 'Numbers') { AllowableCharacters = '1234567890'; }
+         var k;
+        k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+        if (k != 13 && k != 8 && k != 0) {
+            if ((e.ctrlKey == false) && (e.altKey == false)) {
+                return ((AllowableCharacters.indexOf(String.fromCharCode(k)) != -1) && (value.length < 5));
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+
+
 </script>
