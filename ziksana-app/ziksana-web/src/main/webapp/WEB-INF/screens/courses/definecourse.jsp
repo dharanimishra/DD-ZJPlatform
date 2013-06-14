@@ -540,7 +540,7 @@
 													$(
 															'#thubmnail_upload_message')
 															.html(
-																	'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove_$ta');
+																	'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
 
 												} else { //there is an error in the upload process
 

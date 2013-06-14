@@ -58,7 +58,7 @@ public interface CourseMapper {
 			@Result(property = "imageupload", column = "ThumbnailPicturePath") })
 	CourseEditResponse getCourseDetails(Integer courseId);
 
-	@Select({ "select cclc.ID as courseLearningComponentId, clc.id as learningComponentId, clc.name, clc.description,clc.LearningObjectIndicator,clc.PrescribedLCDuration,clc.PrescribedLCDurationUnit,subjectclassification.SubjectArea,subjectclassification.SubjectCategory,subjectclassification.SubjectTopic from corcourselearningcomponent cclc, corlearningcomponent clc,utlsubjectclassification subjectclassification where cclc.LearningComponentId=clc.ID and  clc.id = #{learningComponentId,jdbcType=INTEGER} and clc.SubjClassificationId=subjectclassification.ID " })
+	@Select({ "select cclc.ID as courseLearningComponentId, clc.id as learningComponentId, clc.name, clc.description,clc.LearningObjectIndicator,clc.PrescribedLCDuration,clc.PrescribedLCDurationUnit,subjectclassification.SubjectArea,subjectclassification.SubjectCategory,subjectclassification.SubjectTopic,clc.ThumbnailPicturePath from corcourselearningcomponent cclc, corlearningcomponent clc,utlsubjectclassification subjectclassification where cclc.LearningComponentId=clc.ID and  clc.id = #{learningComponentId,jdbcType=INTEGER} and clc.SubjClassificationId=subjectclassification.ID " })
 	@Results(value = {
 			@Result(property = "courseLearningComponentId", column = "courseLearningComponentId"),
 			@Result(property = "learningComponentId", column = "learningComponentId"),
@@ -69,7 +69,8 @@ public interface CourseMapper {
 			@Result(property = "prescribedLCDurationUnit", column = "PrescribedLCDurationUnit"),
 			@Result(property = "subjectarea", column = "SubjectArea"),
 			@Result(property = "subject", column = "SubjectCategory"),
-			@Result(property = "topic", column = "SubjectTopic") })
+			@Result(property = "topic", column = "SubjectTopic"),
+			@Result(property = "imageupload", column = "ThumbnailPicturePath") })
 	ModuleEditResponse getModuleDetails(Integer learningComponentId);
 
 	/**

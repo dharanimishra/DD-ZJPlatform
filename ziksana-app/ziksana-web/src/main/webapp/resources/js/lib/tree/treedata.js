@@ -1,4 +1,6 @@
 var counter = 0;
+
+var media_server_url = 'http://54.243.235.88/zikload-xml/uploads';
 function onButtonClick(menuitemId, type) {
 	var menuaction = menuitemId;
 
@@ -69,10 +71,12 @@ function onButtonClick(menuitemId, type) {
 								topic = data.topic;
 								image_upload = data.imageupload;
 
+								console.log('image_upload:'+image_upload);
 								if (image_upload == '') {
 									thumbnail_url = '/ziksana-web/resources/images/preview/defaultcourse.png';
 								} else {
 									thumbnail_url = media_server_url + image_upload;
+									console.log('thumbnail_url:'+thumbnail_url);
 								}
 								$('#course_thumbnail_image').attr('src',
 										thumbnail_url);
@@ -94,7 +98,7 @@ function onButtonClick(menuitemId, type) {
 
 								console.log('module_desc : ' + module_desc);
 
-								// $('#Cmoduledescrte').val(module_desc);
+							//	 $('#Cmoduledescrte').val(module_desc);
 
 								CKEDITOR.instances['Cmoduledescrte']
 										.setData(removeNewline(module_desc));
