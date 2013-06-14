@@ -278,24 +278,10 @@ public class CreateCourseController {
 				+ CourseExtraCredits + " Course_Duration :" + CourseDuration
 				+ " CourseDurationUnit :" + CourseDurationUnit);
 
-		LOGGER.debug("Class :"
-				+ getClass()
-				+ " Method saveCourse :Before courseService CourseStatus.UNDER_CONSTRUCT.getID():"
-				+ CourseStatus.DRAFT.getID());
 		Integer courseId = 0, courseDuration = 0, courseDurationUnit = 1, subjClassificationId = 0, courseIds = 0;
 		CourseJsonResponse json = new CourseJsonResponse();
 
 		try {
-			if (!"".equals(CourseId) && CourseId != null) {
-				courseId = Integer.parseInt(CourseId);
-			}
-
-			if (!"".equals(CourseDuration) && CourseDuration != null) {
-				courseDuration = Integer.parseInt(CourseDuration);
-			}
-			if (!"".equals(CourseDurationUnit) && CourseDurationUnit != null) {
-				courseDurationUnit = Integer.parseInt(CourseDurationUnit);
-			}
 
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
@@ -312,11 +298,21 @@ public class CreateCourseController {
 			// Creating Course Object for adding parameters
 			Course course = new Course();
 
+			if (!"".equals(CourseId) && CourseId != null) {
+				courseId = Integer.parseInt(CourseId.split("_")[1]);
+			}
+
+			if (!"".equals(CourseDuration) && CourseDuration != null) {
+				courseDuration = Integer.parseInt(CourseDuration);
+			}
+			if (!"".equals(CourseDurationUnit) && CourseDurationUnit != null) {
+				courseDurationUnit = Integer.parseInt(CourseDurationUnit);
+			}
+
 			if (courseId > 0) {
 				course.setCourseId(courseId);
 				course.setName(CourseName);
 				course.setDescription(CourseDescription);
-
 				course.setCourseStatus(CourseStatus.DRAFT);
 				course.setCourseStatusId(CourseStatus.DRAFT.getID());
 				course.setAccountableMember(accountableMember);

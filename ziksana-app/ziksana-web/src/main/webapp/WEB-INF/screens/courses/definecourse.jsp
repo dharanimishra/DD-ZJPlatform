@@ -111,22 +111,6 @@
 </script>
 
 <script type="text/javascript">
-	/* function showrich() {
-
-		$('._richTextShow').css("display", "none");
-		$('#richText').css("display", "none");
-		$('._plainTextShow').show();
-		$('#plainText').css("display", "block");
-	}
-	function showplain() {
-
-		$('._richTextShow').css("display", "block");
-		$('#richText').css("display", "block");
-		$('._plainTextShow').css("display", "none");
-		$('#plainText').css("display", "none");
-	} */
-
-
 	function getArea() {
 		$
 				.get(
@@ -290,6 +274,13 @@
 }
 </style>
 
+<script>
+$(document).ready(function() { // On page load
+  $("#navcourse").addClass("active");  
+ 
+});
+</script>
+
 <div class="navheadlp" style="padding-left: 151px;">
 	<ul>
 		<c:if test="${courseId == null}">
@@ -421,8 +412,7 @@
 					<label class="labelclass nexaf f-l" > <fmt:message key="course.area" />
 					</label>
 
-					<select name="s_example" id="Careaddl" class="select"
-						onchange="getArea();">
+					<select name="s_example" id="Careaddl" class="select">
 						<option value="0">
 							<fmt:message key="course.choose.option" />
 						</option>

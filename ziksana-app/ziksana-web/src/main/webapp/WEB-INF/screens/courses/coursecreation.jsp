@@ -51,7 +51,12 @@
 }
 </style>
 
-
+<script>
+$(document).ready(function() { // On page load
+  $("#navcourse").addClass("active");  
+ 
+});
+</script>
 <div class="navheadlp" style="padding-left: 151px;">
 
 

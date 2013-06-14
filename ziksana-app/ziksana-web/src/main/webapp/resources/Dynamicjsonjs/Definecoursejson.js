@@ -20,6 +20,7 @@ $(document)
 							option_string += option;
 						}
 						$('#Careaddl').html(option_string);
+						console.log("Careaddl is: " + option_string);
 
 					});
 
@@ -71,25 +72,6 @@ $(document)
 										var topic = '<option value="Select Topic">Select Topic</option>';
 										$('#Ctopicddl').html(topic);
 									});
-
-					function noteSuccessCallbackcoursearea(data) {
-
-						var msgbody = parseZiksanaMessage(data);
-						Course_Area = msgbody.C_Area;
-						$('#tempdiv').append(
-								'Course_Area: <strong>' + Course_Area
-										+ '</strong><br/>');
-
-					}
-
-					function noteSuccessCallbackcoursearea2(data) {
-
-						Course_Area = data.C_Area;
-
-						$('#tempdiv').append(
-								'Course_Area: <strong>' + Course_Area
-										+ '</strong><br/>');
-					}
 
 					// /Function for Course subject drop down list on change of
 					// a value
@@ -148,22 +130,6 @@ $(document)
 
 									});
 
-					function noteSuccessCallbackcoursesubject(data) {
-
-						var msgbody = parseZiksanaMessage(data);
-						Course_Subject = msgbody.C_Subject
-						$('#tempdiv').append(
-								'Course Subject: <strong>' + Course_Subject
-										+ '</strong><br/>');
-
-					}
-
-					function noteSuccessCallbackcoursesubject2(data) {
-						Course_Subject = data.C_Subject;
-						$('#tempdiv').append(
-								'Course Subject: <strong>' + Course_Subject
-										+ '</strong><br/>');
-					}
 					$("#Ctopicddl").change(function(e) {
 
 						uri = '/ziksana-web/zcourse/gettopic';
@@ -176,60 +142,6 @@ $(document)
 						};
 
 					});
-
-					function noteSuccessCallbackcoursetopic(data) {
-
-						var msgbody = parseZiksanaMessage(data);
-						Course_Topic = msgbody.C_Topic;
-						// let's add the contents of the message into the div
-						// with an id of 'note_container'
-						$('#tempdiv').append(
-								'Course Topic: <strong>' + Course_Topic
-										+ '</strong><br/>');
-
-					}
-
-					function noteSuccessCallbackcoursetopic2(data) {
-						Course_Topic = data.C_Topic;
-						$('#tempdiv').append(
-								'Course Topic: <strong>' + Course_Topic
-										+ '</strong><br/>');
-					}
-
-					$("#Cimageupl").mouseout(function(e) {
-
-						uri = '/ziksana-web/secure/uploadFile';
-						token = '';
-						request_type = 'POST';
-						var Assoc_Image = $('#Cimageupl').val();
-						var parameters = {
-							"Assoc_Image" : Assoc_Image
-						};
-
-						successCallback = noteSuccessCallbackimgupl2;
-
-						errorCallback = commonErrorCallback;
-					});
-
-					function noteSuccessCallbackimgupl(data) {
-
-						var msgbody = parseZiksanaMessage(data);
-						Assoc_Image = msgbody.A_Image;
-						// let's add the contents of the message into the div
-						// with an id of 'note_container'
-						$('#tempdiv').append(
-								'Assoc Image: <strong>' + Assoc_Image
-										+ '</strong><br/>');
-
-					}
-
-					function noteSuccessCallbackimgupl2(data) {
-						Assoc_Image = data.A_Image;
-						$('#tempdiv').append(
-								'Assoc Image: <strong>' + Assoc_Image
-										+ '</strong><br/>');
-					}
-
 				});
 
 function createCourse() {
@@ -244,6 +156,8 @@ function createCourse() {
 		// request
 
 		var Course_id = $('#courseid').val();
+		
+		console.log("Course_id :"+Course_id);
 
 		var Course_Name = $('#defaultvalue').val();
 
@@ -380,7 +294,17 @@ function getCourse() {
 							$('#defaultvalue').val(course_name);
 
 							$('#Cdescriptionrte').val(course_desc);
+							
+							$('#Careaddl').select2("val",subject_area);
+							console.log("subject area is: "+ subject_area);
 
+							$('#Csubjectddl').select2("val",subject);
+							console.log("subject is: "+ subject);
+							
+							$('#Ctopicddl').select2("val",topic);
+							console.log("topic is: "+ topic);
+							
+							
 							$('#Ctagfield_course').val(selected_tags);
 
 							$('#spinner').val(credits);
@@ -389,106 +313,106 @@ function getCourse() {
 
 							$('#spinner2').val(duration);
 
-							$('#Cdurationtype').val(duration_type);
+							//$('#Cdurationtype').val(duration_type);
 
 							$('#Cimageupl').val(image_upload);
 
 							// // populate subject area
 
-							$.get('/ziksana-web/zcourse/getsubjectarea', {},
-									function(data) {
-										options = data;
-										var option_string = '';
-										// option_string += '<option
-										// value="Select Subject Area">Select
-										// Subject Area</option>';
-
-										for (i in options) {
-											label = options[i].label;
-											value = options[i].value;
-
-											option = '<option value="' + value
-													+ '">' + label
-													+ '</option>';
-
-											option_string += option;
-										}
-										$('#Careaddl').html(option_string);
-										// now select the value already
-										// selected by the
-										// user
-										$('#Careaddl').val(subject_area);
-
-									});
-
-							// // end populating subject area
-							// // start populating subject
-							token = '';
-							request_type = 'GET';
-							uri = '/ziksana-web/zcourse/getsubject';
-
-							$
-									.get(
-											uri,
-											{
-												'Course_Area' : subject_area
-											},
-											function(data) {
-												options = data;
-												var option_string = '';
-												option_string += '<option value="Select Subject">Select Subject</option>';
-												for (i in options) {
-													label = options[i].label;
-													value = options[i].value;
-
-													option = '<option value="'
-															+ value + '">'
-															+ label
-															+ '</option>';
-
-													option_string += option;
-												}
-
-												$('#Csubjectddl').html(
-														option_string);
-												$('#Csubjectddl').val(subject);
-
-											});
-
-							// // end populating subject
-
-							// Start populating topic
-
-							uri = '/ziksana-web/zcourse/gettopic';
-							token = '';
-							request_type = 'GET';
-							$
-									.get(
-											uri,
-											{
-												'Course_Subject' : subject
-											},
-											function(data) {
-												options = data;
-												var option_string = '';
-												option_string += '<option value="Select Topic">Select Topic</option>';
-												for (i in options) {
-													label = options[i].label;
-													value = options[i].value;
-
-													option = '<option value="'
-															+ value + '">'
-															+ label
-															+ '</option>';
-
-													option_string += option;
-												}
-
-												$('#Ctopicddl').html(
-														option_string);
-												$('#Ctopicddl').val(topic);
-
-											});
+//							$.get('/ziksana-web/zcourse/getsubjectarea', {},
+//									function(data) {
+//										options = data;
+//										var option_string = '';
+//										// option_string += '<option
+//										// value="Select Subject Area">Select
+//										// Subject Area</option>';
+//
+//										for (i in options) {
+//											label = options[i].label;
+//											value = options[i].value;
+//
+//											option = '<option value="' + value
+//													+ '">' + label
+//													+ '</option>';
+//
+//											option_string += option;
+//										}
+//										$('#Careaddl').html(option_string);
+//										// now select the value already
+//										// selected by the
+//										// user
+//										$('#Careaddl').val(subject_area);
+//
+//									});
+//
+//							// // end populating subject area
+//							// // start populating subject
+//							token = '';
+//							request_type = 'GET';
+//							uri = '/ziksana-web/zcourse/getsubject';
+//
+//							$
+//									.get(
+//											uri,
+//											{
+//												'Course_Area' : subject_area
+//											},
+//											function(data) {
+//												options = data;
+//												var option_string = '';
+//												option_string += '<option value="Select Subject">Select Subject</option>';
+//												for (i in options) {
+//													label = options[i].label;
+//													value = options[i].value;
+//
+//													option = '<option value="'
+//															+ value + '">'
+//															+ label
+//															+ '</option>';
+//
+//													option_string += option;
+//												}
+//
+//												$('#Csubjectddl').html(
+//														option_string);
+//												$('#Csubjectddl').val(subject);
+//
+//											});
+//
+//							// // end populating subject
+//
+//							// Start populating topic
+//
+//							uri = '/ziksana-web/zcourse/gettopic';
+//							token = '';
+//							request_type = 'GET';
+//							$
+//									.get(
+//											uri,
+//											{
+//												'Course_Subject' : subject
+//											},
+//											function(data) {
+//												options = data;
+//												var option_string = '';
+//												option_string += '<option value="Select Topic">Select Topic</option>';
+//												for (i in options) {
+//													label = options[i].label;
+//													value = options[i].value;
+//
+//													option = '<option value="'
+//															+ value + '">'
+//															+ label
+//															+ '</option>';
+//
+//													option_string += option;
+//												}
+//
+//												$('#Ctopicddl').html(
+//														option_string);
+//												$('#Ctopicddl').val(topic);
+//
+//											});
 							// end populating topic
 
 						} else {
