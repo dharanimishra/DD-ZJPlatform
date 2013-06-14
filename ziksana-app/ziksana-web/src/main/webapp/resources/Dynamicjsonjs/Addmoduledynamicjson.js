@@ -50,9 +50,8 @@ $(document)
 															$('#Cmoduleareaddl')
 																	.html(
 																			option_string);
-															console
-																	.log("subject area is: "
-																			+ subject_area_pre);
+															$('#Cmoduleareaddl').select2("val",subject_area_pre);
+															console.log("subject area is: "+ subject_area_pre);
 
 														});
 
@@ -90,10 +89,9 @@ $(document)
 																option_string += option;
 															}
 
-															$(
-																	'#Cmodulesubjectddl')
-																	.html(
-																			option_string);
+															$('#Cmodulesubjectddl').html(option_string);
+															$('#Cmodulesubjectddl').select2("val",subject_pre);
+															console.log("subject_pre is: "+ subject_pre);
 														});
 
 										uri = '/ziksana-web/zcourse/gettopic';
@@ -127,10 +125,9 @@ $(document)
 																}
 																option_string += option;
 															}
-															$(
-																	'#Cmoduletopicddl')
-																	.html(
-																			option_string);
+															$('#Cmoduletopicddl').html(option_string);
+															$('#Cmoduletopicddl').select2("val",topic_pre);
+															console.log("topic_pre is: "+ topic_pre);
 
 														});
 
@@ -175,38 +172,13 @@ $(document)
 																option_string += option;
 															}
 
-															$(
-																	'#Cmodulesubjectddl')
-																	.html(
-																			option_string);
-
+															$('#Cmodulesubjectddl').html(option_string);
 															var topic = '<option value="Select Topic">Select Topic</option>';
-															$(
-																	'#Cmoduletopicddl')
-																	.html(topic);
+															$('#Cmoduletopicddl').html(topic);
 
 														});
 
 									});
-
-					function noteSuccessCallbackcoursearea(data) {
-
-						var msgbody = parseZiksanaMessage(data);
-						Course_Area = msgbody.C_Area;
-						$('#tempdiv').append(
-								'Course_Area: <strong>' + Course_Area
-										+ '</strong><br/>');
-
-					}
-
-					function noteSuccessCallbackcoursearea2(data) {
-
-						Course_Area = data.C_Area;
-
-						$('#tempdiv').append(
-								'Course_Area: <strong>' + Course_Area
-										+ '</strong><br/>');
-					}
 
 					$("#Cmodulesubjectddl").change(
 							function(e) {
@@ -243,22 +215,6 @@ $(document)
 
 							});
 
-					function noteSuccessCallbackcoursesubject(data) {
-
-						var msgbody = parseZiksanaMessage(data);
-						Course_Subject = msgbody.C_Subject;
-						$('#tempdiv').append(
-								'Course Subject: <strong>' + Course_Subject
-										+ '</strong><br/>');
-
-					}
-
-					function noteSuccessCallbackcoursesubject2(data) {
-						Course_Subject = data.C_Subject;
-						$('#tempdiv').append(
-								'Course Subject: <strong>' + Course_Subject
-										+ '</strong><br/>');
-					}
 					$("#Cmoduletopicddl").change(function(e) {
 
 						uri = '/ziksana-web/zcourse/gettopic';
@@ -271,24 +227,6 @@ $(document)
 						};
 
 					});
-
-					function noteSuccessCallbackcoursetopic(data) {
-						var msgbody = parseZiksanaMessage(data);
-						Course_Topic = msgbody.C_Topic;
-						// let's add the contents of the message into the div
-						// with an id of 'note_container'
-						$('#tempdiv').append(
-								'Course Topic: <strong>' + Course_Topic
-										+ '</strong><br/>');
-
-					}
-
-					function noteSuccessCallbackcoursetopic2(data) {
-						Course_Topic = data.C_Topic;
-						$('#tempdiv').append(
-								'Course Topic: <strong>' + Course_Topic
-										+ '</strong><br/>');
-					}
 
 				});
 
