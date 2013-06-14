@@ -146,8 +146,11 @@ font-weight: bold;}
  <li style="margin-left:40px; color: #f06c0b;"><span><img src="/ziksana-web/resources/images/navarrow.png" style="margin-right:10px; height:22px;"> </span>Define Planner  </li>
  
  <li> <span><img src="/ziksana-web/resources/images/navarrowb.png" style="margin-right:10px; height:22px;"> </span>  Review Playbook </li>
- 
- 
+ <li>
+  <a href="/ziksana-web/zplaybook/unsecure/downloadPlayBook/${course.courseId }">
+ <span><img src="/ziksana-web/resources/images/navarrowb.png" style="margin-right:10px; height:22px;"> </span>  Download Playbook
+ </a>
+  </li>
  </ul>
  
  </div> <!--end of navheadlp-->
@@ -174,6 +177,7 @@ font-weight: bold;}
 <div class="imgcontentL">
 <div class="userimg">
  <div style="overflow:auto;text-align:center;width:80%;padding:6px;">
+ 
   <img src="/ziksana-web/resources/images/playbook/usericon.png"  class="borderRb">
   <p>
     <label>${member.firstName }&nbsp; ${member.lastName }</label>
