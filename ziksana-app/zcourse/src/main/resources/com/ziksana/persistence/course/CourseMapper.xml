@@ -162,13 +162,13 @@
 		</selectKey>
 	</insert>
 	
-	<select id="getCourseByCourseId" resultMap="mapCourseResult"
+	<select id="getCourseByCourseId" resultMap="courseResultMap"
 		parameterType="int">
-		select
-		id,name,description,memberroleid
+			select
+		id,name,description,thumbnailPicturePath,CourseDuration,CourseDurationUnit
 		from
 		corcourse
-		where id=#{courseId}
+		where  id = #{courseId}
 		
 	</select>
 	
@@ -191,7 +191,7 @@
 		parameterType="map">
 
 		select
-		id,name,description,thumbnailPicturePath
+		id,name,description,thumbnailPicturePath,CourseDuration,CourseDurationUnit
 		from
 		corcourse
 		where
@@ -200,6 +200,8 @@
 		IsDelete = 0
 
 	</select>
+	
+	
 
 	<select id="isCourseNameExists" resultType="java.lang.Integer" parameterType="map">
 		select distinct
@@ -278,6 +280,8 @@
 		<result property="description" column="description" />
 		<result property="Rating" column="courseProgress" />
 		<result property="thumbnailPicturePath" column="thumbnailPicturePath"/>
+		<result property="duration" column="CourseDuration"/>
+		<result property="durationUnits" column="CourseDurationUnit"/>
 
 	</resultMap>
 

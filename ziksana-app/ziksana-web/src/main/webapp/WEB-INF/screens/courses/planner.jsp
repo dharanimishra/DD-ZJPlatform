@@ -5,14 +5,15 @@
 <%@page import="com.ziksana.domain.course.NestContentNode"%>
 <%@page import="com.ziksana.domain.course.ContentType"%>
 
-<div class="navheadlp" style="padding-left: 151px;">
+<div class="navheadlp" style="padding-left: 20px;">
 	<ul>
-		<li style="margin-left: 40px;"><span><img
-				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Describe Planner</li>
-		<li style="color: #f06c0b;"><span><img
+	<a href="/ziksana-web/zcourse/1/planner/${courseIds}" >
+		<li style="margin-left: 40px; color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px; height: 22px;"> </span> Planner </li>
+				style="margin-right: 10px; height: 22px;"> </span>Define Planner</li></a>
+		<li style=""><span><img
+				src="/ziksana-web/resources/images/navarrowb.png"
+				style="margin-right: 10px; height: 22px;"> </span>Review Playbook </li>
 	
 
 	</ul>
@@ -20,30 +21,29 @@
 </div>
 <div id="formcontainer">
 
-	<div class="page-header"
+<%-- 	<div class="page-header"
 		style="padding-left: 0px !important; margin-bottom: 10px !important;">
 		<div class="icon">
 			<img
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1>Organize your planner for course </h1>
-	</div>
+		<h1>Create Planner</h1>
+	</div> --%>
 	<div class="clearfix"></div>
-<form onsubmit="callFunction()">
-	<div id="0"> 
-		<div text="${coursename}" class="planner_data" id="COURSE_${courseIds}"
-		im0="${courseIcon}" im1="${courseIcon}" im2="${courseIcon}" call="1"
-		open="1" select="1" parentId="0">
+<form action="/ziksana-web/zcourse/1/submitplanner" ">
+	<div id="planner_error"></div>
+	<div id="planner_container"> 
+		<div text="${coursename}" class="planner_data" id="COURSE_${courseIds}">
+		<input type="hidden" id="course_duration_in_weeks"  class="" value="${course.coursesId}"/>
+		<input type="hidden" id="course_duration_in_days"  class="duration" value="${course.duration}"/>
 		<div>
-		<input type='hidden' value='COURSE_${coursename}' name='node_type[]'/><input type='hidden' value='COURSE_${courseIds}' name='node_id[]'/>
-		<span class='node_title'>${coursename}</span>
-		<input type='text' value="" disabled="disabled" class="duration course_duration">
-		<input type="text" class="start_week" placeholder="SW" disabled="disabled">
-		<select disabled="disabled"><option>SDay</option></select>
-		<input type="text" class="end_week" placeholder="EW" disabled="disabled">
-		<select disabled="disabled"><option>EDay</option></select>
-		<input type="text" class="note" placeholder="Note" disabled="disabled"/>
+		<input type='hidden' value='COURSE_${coursename}' name='course_name'/>
+		<input type='hidden' value='${courseIds}' id="courseId" name='course_id'/>
+		
+		<span class='node_title'><img class="node_icon" src="${courseIcon}"/> ${coursename}</span>
+
+		Course Duration in Weeks: <strong>${course.duration}</strong>
 		</div>
 		
 	<%
@@ -54,7 +54,7 @@
 	 </div>
 	 <hr/>
 	 <div class="textAlignRight">
- 	<button type="submit" class="btn blue">Save/Update</button> <button class="btn blue">Generate</button>
+ 	<button type="submit" class="btn blue">Save/Update</button> <button onclick="goViewPlanner()"  class="btn blue">Generate</button>
  	</div>
  	<hr/>
  </form>	
@@ -96,436 +96,299 @@
   text-align: left;
 }
 .planner_data div select {
-  width: 55px;
+  width: 90px;
 }
 
-.start_week, .end_week, .duration {
+.start_week, .end_week, .duration, .starts_at {
   width: 32px;
 }
 
+.starts_at {border-color: pink !important; background: #eee !important; display:none !important;}
+.duration {border-color: green !important;}
+
+.node_icon {
+  height: 18px;
+  margin-right: 0.25em;
+  vertical-align: top;
+  width: 18px;
+}
+.node_module {font-weight: bold; color: steelblue;}
+
+#planner_error:not(:empty) { color: red; font-size: 12px; padding: .5em;}
+.duration_error { color: red !important; border: 2px solid red !important}
 </style>
 <script type="text/javascript">
-function callFunction(){
-	alert("Hi");
+function goViewPlanner(){
+	var curCourseId = $('#courseId').val();	
+	window.location.href ='ziksana-web/zcourse/1/'+curCourseId+'/viewplanner';
+
 }
+function get_and_populate_planner_data(courseId){
+	$.ajax({
+	  	type: 'GET',
+		url: '/ziksana-web/zcourse/1/getplannerlist/'+courseId,
+		success: function( dataList ) {
+			square_pixel = 24; //the width of the day in pixels
+			
+			course_duration_in_days = $('#course_duration_in_days').val(); //set it dynamically
+			course_pixellength = (course_duration_in_days * square_pixel )+ 'px'; //remove when course duration is set
+			
+			
+			
+			
+			for (var i = 0; i < dataList.length; i++) { 
+						console.log(dataList[i]);
+						node = dataList[i];
+						id = node.id;
+						unique_id = node.nodeUniqueId;
+						//console.log('unique i'+unique_id);
+						course_id = node.courseId;
+						duration = node.duration;
+						component_id = node.learningComponentId;
+						content_id = node.learningContentId;
+						note = node.note;
+						start_day = node.startDay;
+						start_week = node.startWeek;
+						starts_at = node.startsAt;
+						
+						if(!"".contains(id) && id != null){
+							n_id = "0_course_"+course_id+"_component_"+component_id+"";
+							$('[name="'+n_id+'"]').val(id);
+							
+							c_id = "0_course_"+course_id+"_component_"+component_id+"_content_"+content_id+"";
+							$('[name="'+c_id+'"]').val(id);
+							
+						}
+						//course_"+node.getCourseId()+"_component_"+node.getId()
+					//Modules Data Population
+						if(!"".contains(duration) && duration != null){
+							n_duration = "course_"+courseId+"_component_"+component_id+"_duration";
+							$('[name="'+n_duration+'"]').val(duration);
+						//course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startweek
+							c_duration = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_duration";
+							$('[name="'+c_duration+'"]').val(duration);
+						}
+						if(!"".contains(start_week) && start_week != null){
+							n_startweek = "course_"+courseId+"_component_"+component_id+"_startweek";
+							$('[name="'+n_startweek+'"]').val(start_week);
+							c_startweek = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_startweek";
+							$('[name="'+c_startweek+'"]').val(start_week);
+						}
+						if(!"".contains(start_day) && start_day != null){
+							n_startday = "course_"+courseId+"_component_"+component_id+"_startday";
+							$('[name="'+n_startday+'"]').val(start_day);
+							c_startday = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_startday";
+							$('[name="'+c_startday+'"]').val(start_day);
+						}
+						if(!"".contains(note) && note != null){
+							n_note = "course_"+courseId+"_component_"+component_id+"_note";
+							$('[name="'+n_note+'"]').val(note);
+							
+							c_note = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_note";
+							$('[name="'+c_note+'"]').val(note);
+						}
+						
+						
+				}//end of for loop
+				
+			
+			
+			}//end of ajax success function
+
+		});
+}
+
+
+
+$(function(){
+
+//reset planner node values
+$('.start_week, .start_day').val('0');
+$('.duration:not(#course_duration_in_days), .starts_at').val('');
+get_and_populate_planner_data($('#courseId').val());	
+$('.start_week, .start_day').change(function(){
+    select = $(this);
+    parent = select.parent('div');
+    
+    
+    var week = parent.find('> .start_week').val();
+    var day = parent.find('> .start_day').val();
+    parent.find('> input.starts_at').val('');
+    var start_at = '';
+    if(day !== '' && week != ''){
+        starts_at_day = (week*7)-(7-day);
+        console.log(starts_at_day);
+        parent.find('> input.starts_at').val(starts_at_day);
+    } 
+
+});
+
+
+// Duration Validation
+$('.duration').change(function(){
+    duration_input = $(this);
+    
+    $('#planner_error').html('');
+    		
+    duration_input.removeClass('duration_error');
+    duration = parseInt(duration_input.val());
+    parent_duration = parseInt(duration_input.parent('div').parent('div').find('> .duration').val());
+    console.log(duration_input);
+    console.log('duration :'+ duration);
+    console.log('parend duration: '+ parent_duration);
+    
+    course_duration = parseInt($('#course_duration_in_days').val());
+    if(duration > parent_duration){
+        duration_input.addClass('duration_error');
+        $('#planner_error').html('The node duration <strong>'+duration+'</strong> exceeds its parent node duration of <strong>'+parent_duration+'</strong> Days.').focus();
+    } 
+    
+    
+});
+//end of duration validation
+
+
+});// end of doc ready
 </script>
+<%!
+	public String build_options_for_startweek(){
+	String option_html = "";
+	int total_no_of_weeks = 10;
+	option_html += "<option value='' selected='selected'>Start Week</option>";
+	for(int i=1; i<=total_no_of_weeks; i++){
+		option_html += "<option value='"+i+"'>Week "+i+"</option>";
+	}
+	return option_html;
+}
+%>
 
 <%!public String printTree(List<NestTreeNode> parents) {
 		StringBuffer sb = new StringBuffer();
-	
-		String videoIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/video.png";
-		String audioIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/audio.png";
-		String folderClosed = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderClosed.gif";
-		String folderOpen = "../../../../../../../../ziksana-web/resources/images/tree_icons/folderOpen.gif";
-		String pptIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/powerpoint.png";
-		String docIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/word.png";
-		String excelIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/excel.png";
-		String pdfIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/pdf.png";
-		String imageIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/image.png";
-		String noteIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/note.png";
-		String linkIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/link.png";
-		String chapterIcon = "../../../../../../../../ziksana-web/resources/images/tree_icons/chapter.png";
+		int initialValue = 0;
+		String videoIcon = "/ziksana-web/resources/images/tree_icons/video.png";
+		String audioIcon = "/ziksana-web/resources/images/tree_icons/audio.png";
+		String folderClosed = "/ziksana-web/resources/images/tree_icons/folderClosed.gif";
+		String folderOpen = "/ziksana-web/resources/images/tree_icons/folderOpen.gif";
+		String pptIcon = "/ziksana-web/resources/images/tree_icons/powerpoint.png";
+		String docIcon = "/ziksana-web/resources/images/tree_icons/word.png";
+		String excelIcon = "/ziksana-web/resources/images/tree_icons/excel.png";
+		String pdfIcon = "/ziksana-web/resources/images/tree_icons/pdf.png";
+		String imageIcon = "/ziksana-web/resources/images/tree_icons/image.png";
+		String noteIcon = "/ziksana-web/resources/images/tree_icons/note.png";
+		String linkIcon = "/ziksana-web/resources/images/tree_icons/link.png";
+		String chapterIcon = "/ziksana-web/resources/images/tree_icons/chapter.png";
 		
 		for (NestTreeNode node : parents) {
 			if (node.getParentLearningComponentId() == 0){
-				sb.append("<div text=\"" + node.getTitle() + "\" im0=\""
-						+ chapterIcon + "\" im1=\"" + chapterIcon + "\" im2=\""
-						+ chapterIcon + "\" id=\"COMPONENT_" + node.getId()
-						+ "\" nodeid=\"COMPONENT_" + node.getId()
-						+ "\"  parentId=\"COURSE_" + node.getCourseId() + "\">");
-				sb.append("<input type='hidden' value='' name='node_type[]'/><input type='hidden' value='"+ node.getId()+"' name='node_id[]'/>");
-				sb.append("<span class='node_title'>" + node.getTitle() +"</span>");
-				sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-				sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-				sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-				sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-				sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-				sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/>");
+				sb.append("<div>");
+				sb.append("<input type='text' value='' style='display:none' name='"+initialValue+"_course_"+node.getCourseId()+"_component_"+node.getId()+"'/>");
+				sb.append("<input type='hidden' value='"+node.getId()+"' name='course_"+node.getCourseId()+"_component'/>");
+				sb.append("<span class='node_title'><img class='node_icon' src='"+folderOpen+"'/> " + node.getTitle() +"</span>");
+				sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek()+"</select>");
+				sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_duration' class='duration' title='Duration in Days'/>");
+				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_starts_at' class='starts_at' title='Starts At'/>");
+				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_note' class='note' title='Note'/>");
 				if (node.getContent() != null) {
 					for (NestContentNode content : node.getContent()) {
-				
-						if (content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName())
-								|| content.getContentType().equalsIgnoreCase(ContentType.ENHANCED_VIDEO.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ videoIcon + "\" im1=\"" + chapterIcon
-									+ "\" im2=\"" + videoIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId() + "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						if (content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName()) || content.getContentType().equalsIgnoreCase(ContentType.ENHANCED_VIDEO.getName())) {
+							
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+videoIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.AUDIO.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ videoIcon + "\" im1=\"" + audioIcon
-									+ "\" im2=\"" + audioIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.AUDIO.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+audioIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.TEXTUAL.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ noteIcon + "\" im1=\"" + noteIcon
-									+ "\" im2=\"" + noteIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.TEXTUAL.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+noteIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.PDF.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ pdfIcon + "\" im1=\"" + pdfIcon
-									+ "\" im2=\"" + pdfIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.PDF.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+pdfIcon+"'/> " + content.getContentname()+"</span>");
 
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.DOC.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ docIcon + "\" im1=\"" + docIcon
-									+ "\" im2=\"" + docIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+docIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.PPT.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ pptIcon + "\" im1=\"" + pptIcon
-									+ "\" im2=\"" + pptIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.PPT.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+pptIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.EXCEL.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ excelIcon + "\" im1=\"" + excelIcon
-									+ "\" im2=\"" + excelIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.EXCEL.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+excelIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.IMAGE.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ imageIcon + "\" im1=\"" + imageIcon
-									+ "\" im2=\"" + imageIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
-
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.LINK.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ linkIcon + "\" im1=\"" + linkIcon
-									+ "\" im2=\"" + linkIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
-
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.IMAGE.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+imageIcon+"'/> " + content.getContentname()+"</span>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.LINK.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+linkIcon+"'/> " + content.getContentname()+"</span>");
 						}
+						
+						
+						//
+							sb.append("<input type='text' style='display:none' value='' name='"+initialValue+"_course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"'/>");
+							sb.append("<input type='hidden' value='"+content.getContentId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content'/>");
+							sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek()+"</select>");
+							sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+							sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_duration' class='duration' title='Duration in Days'/>");
+							sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_starts_at' class='starts_at' title='Starts At'/>");
+							sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_note' class='note' title='Note'/></div>");
+						//
+							
+
+						
 					}
 				}
 			}else{
-				sb.append("<div text=\"" + node.getTitle() + "\" im0=\""
-						+ chapterIcon + "\" im1=\"" + chapterIcon + "\" im2=\""
-						+ chapterIcon + "\" id=\"COMPONENT_" + node.getId()
-						+ "\" nodeid=\"COMPONENT_" + node.getId()
-						+ "\"  parentId=\"COMPONENT_"
-						+ node.getParentLearningComponentId() + "\">");
-				sb.append("<input type='hidden' value='' name='node_type[]'/><input type='hidden' value='"+ node.getId()+"' name='node_id[]'/>");
-				sb.append("<span class='node_title'>" + node.getTitle() +"</span>");
-				sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-				sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-				sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-				sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-				sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-				sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/>");
+				sb.append("<div>");
+				sb.append("<input type='text' style='display:none' value='' name='"+initialValue+"_course_"+node.getCourseId()+"_component_"+node.getId()+"'/>");
+				sb.append("<input type='hidden' value='"+node.getId()+"' name='course_"+node.getCourseId()+"_component'/>");
+				sb.append("<span class='node_title node_module'><img class='node_icon' src='"+folderOpen+"'/> " + node.getTitle() +"</span>");
+				sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek()+"</select>");
+				sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_duration' class='duration' title='Duration in Days'/>");
+				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_starts_at' class='starts_at' title='Starts At'/>");
+				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_note' class='note' title='Note'/>");
 				if (node.getContent() != null) {
 					for (NestContentNode content : node.getContent()) {
 						
+				
+					
 						if (content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName())
 								|| content.getContentType().equalsIgnoreCase(ContentType.ENHANCED_VIDEO.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ videoIcon + "\" im1=\"" + chapterIcon
-									+ "\" im2=\"" + videoIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId() + "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+							
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+videoIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.AUDIO.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ videoIcon + "\" im1=\"" + audioIcon
-									+ "\" im2=\"" + audioIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.AUDIO.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+audioIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.TEXTUAL.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ noteIcon + "\" im1=\"" + noteIcon
-									+ "\" im2=\"" + noteIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.TEXTUAL.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+noteIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.PDF.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ pdfIcon + "\" im1=\"" + pdfIcon
-									+ "\" im2=\"" + pdfIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.PDF.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+pdfIcon+"'/> " + content.getContentname()+"</span>");
 
 						} else if (content.getContentType().equalsIgnoreCase(ContentType.DOC.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ docIcon + "\" im1=\"" + docIcon
-									+ "\" im2=\"" + docIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+docIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.PPT.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ pptIcon + "\" im1=\"" + pptIcon
-									+ "\" im2=\"" + pptIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.PPT.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+pptIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.EXCEL.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ excelIcon + "\" im1=\"" + excelIcon
-									+ "\" im2=\"" + excelIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.EXCEL.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+excelIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.IMAGE.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ imageIcon + "\" im1=\"" + imageIcon
-									+ "\" im2=\"" + imageIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.IMAGE.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+imageIcon+"'/> " + content.getContentname()+"</span>");
 
-						} else if (content.getContentType().equalsIgnoreCase(ContentType.LINK.getName())) {
-							sb.append("<item text=\""
-									+ content.getContentname() + "\" im0=\""
-									+ linkIcon + "\" im1=\"" + linkIcon
-									+ "\" im2=\"" + linkIcon
-									+ "\" id=\"CONTENT_"
-									+ content.getContentId()
-									+ "\" nodeid=\"CONTENT_"
-									+ content.getContentId()
-									+ "\"  parentId=\"COMPONENT_"
-									+ node.getNestLearningComponentId()
-									+ "\"></item>");
-							sb.append("<div class='node_title'><span class='node_title'>" + content.getContentname()+"</span>");
-							sb.append("<input type='text' value='' name='duration[]' class='duration' title='Duration in Weeks'/>");
-							sb.append("<input type='text' value='' name='start_week[]' class='start_week' title='Start Week'/>");
-							sb.append("<select name='start_day' title='Start Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='end_week[]' class='end_week' title='End Week'/>");
-							sb.append("<select name='end_day' title='End Day'><option value='0'>SUN</option><option value='1'>MON</option><option value='2'>TUE</option><option value='3'>WED</option><option value='4'>THU</option><option value='5'>FRI</option><option value='6'>SAT</option></select>");
-							sb.append("<input type='text' value='' name='note[]' class='note' title='Note'/></div>");
-
+						}else if (content.getContentType().equalsIgnoreCase(ContentType.LINK.getName())) {
+							sb.append("<div class='node_title'><span class='node_title'><img class='node_icon' src='"+linkIcon+"'/> " + content.getContentname()+"</span>");
 						}
+						
+					//
+					sb.append("<input type='text' style='display:none' value='' name='"+initialValue+"_course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"'/>");
+						sb.append("<input type='hidden' value='"+content.getContentId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content'/>");
+						sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek()+"</select>");
+						sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+						sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_duration' class='duration' title='Duration in Days'/>");
+						sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_starts_at' class='starts_at' title='Starts At'/>");
+						sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_note' class='note' title='Note'/></div>");
+					//
+						 
 					}
 				}
 			}

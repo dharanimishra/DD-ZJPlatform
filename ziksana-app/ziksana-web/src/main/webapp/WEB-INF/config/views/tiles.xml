@@ -188,6 +188,13 @@
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/planner.jsp" />
 	</definition>
+	
+	<!-- View Planner -->
+	<definition name="masterviewplanner" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Planner" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/viewPlanner.jsp" />
+	</definition>
 
 
 	<!-- Metro My Course Learner -->
