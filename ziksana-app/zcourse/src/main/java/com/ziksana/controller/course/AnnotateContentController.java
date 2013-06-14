@@ -145,7 +145,7 @@ public class AnnotateContentController {
 		return jsonLearningContentList;
 
 	}
-	@RequestMapping(value = "/1/annotatator", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/annotator", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView annotateContent() {
 		ModelAndView modelAndView = new ModelAndView("courses/annotator"); 

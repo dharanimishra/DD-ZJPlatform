@@ -37,7 +37,8 @@
         <!-- END Browser History required section -->  
             
         <script type="text/javascript" src="/ziksana-web/resources/swf/annotate-swfobject.js"></script>
-        <script type="text/javascript">
+ 		<script type="text/javascript"	src="/ziksana-web/resources/js/ziksana/enhance-content/annotator.js"></script>
+       <script type="text/javascript">
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
             var swfVersionStr = "11.4.0";
             // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
@@ -62,7 +63,6 @@
         </script>
     </head>
     <body>
-    <form action="">
         <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 
              JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
              when JavaScript is disabled.
@@ -76,50 +76,6 @@
                 var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
                 document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
                                 + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
-				
-				var response = "";
-                
-                function ff_get_content_key()
-				{
-					return "f1371130839";
-				}
-
-				function ff_set_content_key(abc)
-				{
-					alert(abc);
-					console.log("abc is " + abc);
-					response = abc;
-				}
-
-				function ff_get_content_format()
-				{
-					return "document";
-				}
-
-				function ff_get_numberOfImages()
-				{
-					return "1";
-				}
-
-				function ff_get_decoration_type()
-				{
-					return "Decoration:Annotated";
-				}
-				function ff_close_player(){
-					//alert("closing");
-					//window.parent.$(elementid).attr(attributeName);
-					window.parent.$('#page-header-div').show();
-					window.parent.$('#definetab').show();
-					window.parent.$('#leftPane').show();
-					window.parent.$('#annotated_content_container').hide();
-				}
-				
-				function ff_display_console_message(msg){
-					console.log(msg);
-					
-				}
-				
-				
             </script> 
         </div>
         
@@ -151,6 +107,5 @@
                 <!--<![endif]-->
             </object>
         </noscript>     
-   	</form>
    </body>
 </html>

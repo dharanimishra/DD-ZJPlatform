@@ -1,6 +1,10 @@
 var counter = 0;
+var jsonDataElement = $
 function onButtonClick(menuitemId, type) {
 	var menuaction = menuitemId;
+	selectedTreeContentId = tree.getSelectedItemId().split('_')[1];
+	selectedTreeContentComponentId = tree.getParentId(tree.getSelectedItemId()).split('_')[1];
+
 	//alert("menuaction " + menuaction);
 	if (menuaction == "Add_Module") {
 		// alert("open the menu for add module.");
@@ -22,24 +26,6 @@ function onButtonClick(menuitemId, type) {
 					fixImage(d.valueOf());
 					tree.refreshItem(tree.getSelectedItemId());
 				});
-	} else if (menuaction == "Search_Associate_Content") {
-		//alert("open the menu for Search_Associate_Content module.");
-		var courseId = $('#courseid').val();
-		componentId = tree.getSelectedItemId();
-		var selectedComponentId = document.getElementById('selectedLearningComponentId').value = componentId.split('_')[1];
-		//alert("selectedComponentId " + selectedComponentId);
-		//TODO following code is commented because right now we are handling the display through hidden parameter but in future we will need to do it at real time
-		//alert("selectedComponentId " + selectedComponentId);
-/*	
-		uri = '/ziksana-web/zcourse/1/repositorycontents/' + courseId; 
-		request_type = 'GET'; // can be GET or POST. In this case, a GET
-
-		var parameters = {
-				"courseId" : courseId,
-				"componentId" : nodeParentId.split('_')[1]
-			};
-*/
-		getAllLearningContents();
 	} else if (menuaction == "View") {
 		learningContentId = tree.getSelectedItemId().split('_')[1];
 		var viewer_url = '';
@@ -107,11 +93,11 @@ function onButtonClick(menuitemId, type) {
 		}
 	} else if (menuaction == "Annotate") {
 		var contentId = tree.getSelectedItemId().split('_')[1];
-		var learningContentObject = getLearningContentObject(contentId);
-		var contentKey = learningContentObject.contentPath;
-		var contentFormat = learningContentObject.contentFormat;
-		var numberOfImages = learningContentObject.numberOfThumbnails;
-		var decorationType = "";
+		//var learningContentObject = getLearningContentObject(contentId);
+	//	var contentKey = learningContentObject.contentPath;
+		//var contentFormat = learningContentObject.contentFormat;
+		//var numberOfImages = learningContentObject.numberOfThumbnails;
+		//var decorationType = "";
 		if(!isShowAnnoation(contentId)){
 			var decorationTypeList = learningContentObject.decorationTypeList;
 			var latestDecorationType = "";
@@ -330,43 +316,23 @@ function createtree(course_id) {
 		return isVideo;
 	 }
 	 
-	//functions for annotation flash player hence they begin with ff_
-	function ff_get_content_key(){
-	}
-
-	function ff_set_content_key(contentKey){
-		//console.log
-	}
-
-	function ff_get_content_format(){
-	}
-
-	function ff_get_numberOfImages(){
-	}
-
-	function ff_get_decoration_type(){
-	}
 	
 	function ff_open_player(){
 		$('#page-header-div').hide();
 		$('#definetab').hide();
 		$('#leftPane').hide();
 		$('#annotated_content_container').show();
-		$('#annotated_content_container iframe').attr('src','/ziksana-web/zcourse/1/annotatator');
-		//alert("lklkjlkjlkjlkjlkjlkjlk");
-		//ff_close_player();
-	}
-	function ff_close_player(){
-		alert("closing");
-		$('#page-header-div').show();
-		$('#definetab').show();
-		$('#leftPane').show();
-		$('#annotated_content_container').hide();
+		$('#annotated_content_container iframe').attr('src','/ziksana-web/zcourse/1/annotator');
+		//alert("Tomorrow nver dies");
 	}
 	
-	function ff_display_console_message(msg){
+	
+	function getJsonObject (){ 
+		var staticResponse = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
+		var json_data = $.parseJSON(staticResponse);
 		
-	}
+		return json_data;
+	}	
 
 $(document).ready(
 		function(e) {
