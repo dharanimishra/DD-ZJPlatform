@@ -40,20 +40,6 @@
 }
 </style>
 <script type="text/javascript">
-	/* function showrich() {
-		$('._richTextShow').css("display", "none");
-		$('#richText').css("display", "none");
-		$('._plainTextShow').show();
-		$('#plainText').css("display", "block");
-	}
-	function showplain() {
-
-		$('._richTextShow').css("display", "block");
-		$('#richText').css("display", "block");
-		$('._plainTextShow').css("display", "none");
-		$('#plainText').css("display", "none");
-	} */
-
 	function getArea() {
 		$
 				.get(
