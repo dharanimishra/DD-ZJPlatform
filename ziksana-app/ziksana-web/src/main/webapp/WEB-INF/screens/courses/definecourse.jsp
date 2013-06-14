@@ -54,9 +54,15 @@
 	var media_server_url = '${ms.url}';
 </script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
+/* function hideplaceholder(){
+	alert("innn");
+	$("#desplaceholder").css('display','none');
+	
+} */
+
+
+	$(document).ready( function() {
+					 
 						//Fetch course details and populate the form
 						getCourse();
 						//Course Name Validation for Duplication while creating a course
@@ -119,6 +125,7 @@
 		$('._plainTextShow').css("display", "none");
 		$('#plainText').css("display", "none");
 	} */
+
 
 	function getArea() {
 		$
@@ -379,12 +386,19 @@
 											</textarea> -->
 					<br />
 					<div class="_richTextShow">
-						<textarea id="Cdescriptionrte" name="editor1pageload"
-							placeholder='<fmt:message key="course.descrip.placeholder"/>'
-							class="defaultvalue _focus"></textarea>
-					</div>
+							<textarea id="Cdescriptionrte" name="editor1pageload"
+								class="defaultvalue _focus">
+													
+												</textarea>
+						</div>
+				
+					
+					
 					<script type="text/javascript">
 						CKEDITOR.replace('Cdescriptionrte');
+						 
+						
+						
 					</script>
 
 				</div>
@@ -645,5 +659,18 @@
         }
     }
 
+     
+     //Placeholder for CKEditor	
+	var editor = CKEDITOR.instances.Cdescriptionrte;
+	original_editor_data = editor.getData();
+	var editor_placeholder_text = 'Please Enter a Description';
+	if(original_editor_data == ""){
+		editor.setData(editor_placeholder_text);
+	}
+	
+	editor.on( 'click', function( ev ) {
+	       console.log('hello world');
+	       if(editor.getData() == editor_placeholder_text){ editor.setData('');}
+	   });
 
 </script>
