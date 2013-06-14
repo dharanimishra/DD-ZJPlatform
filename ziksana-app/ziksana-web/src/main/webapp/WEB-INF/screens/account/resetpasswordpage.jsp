@@ -269,7 +269,7 @@
 					       
 					     	  
 					       
-					      
+					       <span  id='successEmailResponse' style="color:green; "></span> 
 					      <label  style="padding-top:-10px;"><fmt:message key="resetpass.emailid"/></label>
 					     
 					      <input placeholder="<fmt:message key="restpass.EnterEmailID"/>" autocomplete="off" type="text" id="frgtemailid" tabindex="2" data-prompt-position="inline"/> 				     
@@ -600,7 +600,7 @@ function validateEmailId(){
 		        	if(data == 'Success'){
 		        		
 		        		
-		        		confirm_alert = confirm('<fmt:message key="userid.sent.email"/>');
+		        		confirm_alert = $('#successEmailResponse').html('<fmt:message key="userid.sent.email"/><a href="/ziksana-web/secure/logout"> <fmt:message key="login.button"/></a>');
 						if(confirm_alert == true){
 							window.location.href = "/ziksana-web/secure/logout";
 						}else{

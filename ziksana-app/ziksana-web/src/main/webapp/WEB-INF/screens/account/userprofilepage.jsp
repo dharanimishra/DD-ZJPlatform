@@ -31,14 +31,14 @@
 			</div>
 
 
-			<div class="fileupload  f-l" style="width:230px;  ">
+			<div class="fileupload  f-l" style="width:230px;">
 				<div class="associateimage" style="text-align:center;" >
             <div style="height:150px;width:150px;margin-left:20px">
 					<c:if test="${empty member.picturePath}">
-						<img style="width: 150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg" align="center"/>
+						<img style="width: 150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/usericon.png" align="center"/>
 					</c:if>
 					<c:if test="${not empty ms.url && not empty member.picturePath}">
-						<img style="width: 150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
+						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
 					</c:if> </div>
 					<div class="clearfix"></div>
 					<div style="width:120px;height:20px; margin-left: 37px; margin-top: 8px;"><input
@@ -113,7 +113,7 @@
 							$('#Cimageupl').val('');//clear uploaded file path
 							$('#thubmnail_upload_message').html('');
 							$('#profile_thumbnail_image')
-									.attr('src','/ziksana-web/resources/images/no-image.jpg');
+									.attr('src','/ziksana-web/resources/images/usericon.png');
 
 						}
 					</script>
@@ -268,15 +268,15 @@
 			</div>
 
 
-			<div class="fileupload  f-l">
-				<div class="associateimage" width="300px">
-
+			<div class="fileupload  f-l" style="width:230px;">
+				<div class="associateimage" style="text-align:center;">
+ 				<div style="height:150px;width:150px;margin-left:20px">
 					<c:if test="${empty member.picturePath}">
-						<img style="width: 122px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/no-image.jpg"/>
+						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/usericon.png"/>
 					</c:if>
 					<c:if test="${not empty ms.url && not empty member.picturePath}">
-						<img style="width: 122px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
-					</c:if> 
+						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
+					</c:if> </div>
 					<input readonly="readonly" type="hidden" id="Cimageupl" />
 
 
@@ -341,7 +341,7 @@
 							$('#thubmnail_upload_message').html('');
 							$('#profile_thumbnail_image')
 									.attr('src',
-											'/ziksana-web/resources/images/no-image.jpg');
+											'/ziksana-web/resources/images/usericon.png');
 
 						}
 					<c:if test="${not empty member.picturePath}">
@@ -362,35 +362,34 @@
 			</div>
 
 
-			<div class="profiledetail f-l">
+						<div class="profiledetail f-l" style="width:60%; word-wrap:break-word;">
 
 				<P class="ppname">
 					<span class="ppnamespan"> <fmt:message key="profile.name"></fmt:message>
-					</span> :
-					<c:out value="${member.firstName}" />
-					<c:out value="${member.lastName}" />
+					:</span> 
+					<label><c:out value="${member.firstName}" />
+					<c:out value="${member.lastName}" /></label>
 					<label id="memberIdValue" style="display: none;"><c:out value="${member.memberId}" /></label>
-					<label id="dbcurrentPassword" style="display: none;"><c:out value="${currentPassword}" /></label>
-					<label id="primaryEmailId" style="display: none;"><c:out value="${member.primaryEmailId}" /></label>
+					<label id="memberProfileImageValue" style="display: none;"><c:out value="${member.primaryEmailId}" /></label>
 				</P>
 
 				<P class="ppemail">
-					<fmt:message key="profile.primaryemail"></fmt:message>
-					: <a href="#linkurl"> <c:out value="${member.primaryEmailId}" />
-					</a>
+				<span>	<fmt:message key="profile.primaryemail"></fmt:message>
+					: </span><label> <c:out value="${member.primaryEmailId}" /></label>
+					
 				</P>
 
 				<p class="ppdesgspan">
 					<span class="ppdesg"> <fmt:message key="profile.designation"></fmt:message>
-					</span> :
-					<c:out value="${member.designation}" />
+					:</span> 
+					<label><c:out value="${member.designation}" /></label>
 				</p>
 
 			</div>
 
 
 			<div class="clearfix"></div>
-		<hr/>
+	
 							
 					<div class="formcontainer form-horizontal">
 					   
@@ -521,7 +520,7 @@
 					      </div>
 					     </div>
 					      
-					<a href="/ziksana-web/secure/1/homepage"><button class="btn btn-primary f-r" type="button" style="margin-right:-15px; " ><fmt:message key="profile.cancel"></fmt:message></button></a>
+					<a href="/ziksana-web/secure/1/homepage"><button class="btn btn-primary f-r" type="button" style="margin-right:-15px; " ><fmt:message key="profile.close"></fmt:message></button></a>
 					 
 					<div class="clearfix"> </div>   
 					
