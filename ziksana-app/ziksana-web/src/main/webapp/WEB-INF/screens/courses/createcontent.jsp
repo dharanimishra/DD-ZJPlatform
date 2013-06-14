@@ -171,6 +171,7 @@ $(document).ready(function() { // On page load
 														if (data_object.Uploaded == 'true') {
 															$('#message')
 																	.html('File uploaded successfully');
+															//setTimeout( "jQuery('#message').hide();",1000 );
 															content_path = data_object.ContentKey;
 															content_name = data_object.ContentName;
 															content_type_id = data_object.ContentType;
