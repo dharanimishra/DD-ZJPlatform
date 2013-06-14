@@ -9,6 +9,7 @@ import com.ziksana.domain.course.LearningContentDecoration;
 
 public class JSONLearningContent {
 	private Integer id;
+	private Integer parentLearningContentId;
 	private String contentDescription;
 	private String contentName;
 	private String contentType;
@@ -34,6 +35,9 @@ public class JSONLearningContent {
 		this.setNumberOfThumbnails(learningContent.getNumberOfThumbnails());
 		this.setScreenshotPath(learningContent.getScreenshotPath());
 		this.setDecorationTypeList(getContentDecorationsAsString(learningContent.getLearningContentDecorationList()));
+		if(learningContent.getLinkedLearningContent() != null){
+			this.parentLearningContentId = learningContent.getLinkedLearningContent().getId();
+		}	
 	}
 
 	private List<String> getContentDecorationsAsString(List<LearningContentDecoration> learningContentDecorationList){
@@ -163,6 +167,20 @@ public class JSONLearningContent {
 	 */
 	public void setContentFormat(String contentFormat) {
 		this.contentFormat = contentFormat;
+	}
+
+	/**
+	 * @return the parentLearningContentId
+	 */
+	public Integer getParentLearningContentId() {
+		return parentLearningContentId;
+	}
+
+	/**
+	 * @param parentLearningContentId the parentLearningContentId to set
+	 */
+	public void setParentLearningContentId(Integer parentLearningContentId) {
+		this.parentLearningContentId = parentLearningContentId;
 	}
 
 

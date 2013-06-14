@@ -115,8 +115,10 @@
 		var j =0;
 		for(var i=0;i<contentArray.length;i++){
 			if('VIDEO' != contentArray[i].contentType.toUpperCase() && 'LINK' != contentArray[i].contentType.toUpperCase()){
-				contentArrayBasedOnContentType[j] = contentArray[i];
-				j++;
+				if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
+					contentArrayBasedOnContentType[j] = contentArray[i];
+					j++;
+				}
 			}
 		}
 		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayBasedOnContentType);
@@ -181,8 +183,10 @@
 		var j =0;
 		for(i=0;i<contentArray.length;i++){
 			if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
-				contentArrayBasedOnContentType[j] = contentArray[i];
-				j++;
+				if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
+					contentArrayBasedOnContentType[j] = contentArray[i];
+					j++;
+				}
 			}
 		}
 		//console.log("contentArray.length " + contentArray.length);
@@ -248,8 +252,18 @@
 		contentArray =  jQuery.parseJSON(jsonString);
 
 		//console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
+		var contentArrayForBaseContent = new Array();
+		var j =0;
+		for(var i=0;i<contentArray.length;i++){
+			if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
+				if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
+					contentArrayForBaseContent[j] = contentArray[i];
+					j++;
+				}
+			}
+		}
 
-		var unAssociatedContentArray = getUnAssociatedContentArray(contentArray);
+		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayForBaseContent);
 		//console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage  " + itemsPerPage);
 
 		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);

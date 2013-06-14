@@ -23,8 +23,10 @@ function getOtherLearningContents(contentType, pageIndex) {
 	for (i = 0; i < contentArray.length; i++) {
 		if ('VIDEO' != contentArray[i].contentType.toUpperCase()
 				&& 'LINK' != contentArray[i].contentType.toUpperCase()) {
-			contentArrayBasedOnContentType[j] = contentArray[i];
-			j++;
+			if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
+				contentArrayBasedOnContentType[j] = contentArray[i];
+				j++;
+			}
 		}
 	}
 	console.log("contentArray.length " + contentArray.length);
@@ -80,8 +82,10 @@ function getLearningContentsByType(contentType, pageIndex) {
 	for (i = 0; i < contentArray.length; i++) {
 		if (contentType.toUpperCase() == contentArray[i].contentType
 				.toUpperCase()) {
-			contentArrayBasedOnContentType[j] = contentArray[i];
-			j++;
+			if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
+				contentArrayBasedOnContentType[j] = contentArray[i];
+				j++;
+			}
 		}
 	}
 	console.log("contentArray.length " + contentArray.length);
@@ -127,11 +131,22 @@ function getAllLearningContents(pageIndex) {
 	$('#container4').empty();
 	var jsonString = document.getElementById("learingContents").value;
 	var contentArray = jQuery.parseJSON(jsonString);
-	console.log("contentArray.length " + contentArray.length
-			+ " itemsPerPage  " + itemsPerPage);
-	noOfPages = Math.ceil(contentArray.length / itemsPerPage);
+
+	var contentArrayWithoutParent = new Array();
+	var j = 0;
+	for (i = 0; i < contentArray.length; i++) {
+		if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
+			contentArrayWithoutParent[j] = contentArray[i];
+			j++;
+		}
+	}
 	
-	if(contentArray.length > itemsPerPage){
+	
+	console.log("contentArray.length " + contentArrayWithoutParent.length
+			+ " itemsPerPage  " + itemsPerPage);
+	noOfPages = Math.ceil(contentArrayWithoutParent.length / itemsPerPage);
+	
+	if(contentArrayWithoutParent.length > itemsPerPage){
 		getPageDiv(noOfPages, "ALL", pageIndex);
 	}
 	else{
@@ -142,15 +157,15 @@ function getAllLearningContents(pageIndex) {
 	var divs = '';
 
 	if (pageIndex == 1) {
-		for (i = 0; i < contentArray.length; i++) {
-			divs = divs + getDiv(contentArray[i]);
+		for (i = 0; i < contentArrayWithoutParent.length; i++) {
+			divs = divs + getDiv(contentArrayWithoutParent[i]);
 			if (i == (itemsPerPage - 1)) {
 				break;
 			}
 		}
 	} else {
-		for (i = ((pageIndex - 1) * itemsPerPage); i < contentArray.length; i++) {
-			divs = divs + getDiv(contentArray[i]);
+		for (i = ((pageIndex - 1) * itemsPerPage); i < contentArrayWithoutParent.length; i++) {
+			divs = divs + getDiv(contentArrayWithoutParent[i]);
 			if (i == ((itemsPerPage * pageIndex) - 1)) {
 				break;
 			}

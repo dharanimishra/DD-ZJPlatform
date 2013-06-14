@@ -42,10 +42,14 @@ function onButtonClick(menuitemId, type) {
 		getAllLearningContents();
 	} else if (menuaction == "View") {
 		learningContentId = tree.getSelectedItemId().split('_')[1];
+		//alert("learningContentId " + learningContentId);
 		var viewer_url = '';
 		content_type = getLearningContentObject(learningContentId).contentType.toUpperCase();
+		var parentContentId = getLearningContentObject(learningContentId).parentLearningContentId;
 		//alert("content_type " + content_type);
-
+		if(parentContentId && parentContentId >0){
+			learningContentId = parentContentId;
+		}
 		
 		if (content_type.toUpperCase() == 'VIDEO') {
 			viewer_url = serverContext + 'zcourse/1/modalplayer/'
