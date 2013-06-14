@@ -25,18 +25,18 @@ function ff_get_content_key()
 
 function ff_set_response(annotationResponse)
 {
-	alert("annotationResponse " + annotationResponse);
+	console.log("annotationResponse " + annotationResponse);
 	//TODO delete later for testing only
 	//annotationResponse = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
 
 	jsonObject = parent.getJsonObject(annotationResponse);
 	if(jsonObject.ContentKey != originalContentPath){
-		alert("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
 		createContent();
 	}
 	//TODO delete later
 	else{
-		alert("Doing nothing old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		console.log("Doing nothing old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
 	}
 	
 }

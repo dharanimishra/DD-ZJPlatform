@@ -92,18 +92,24 @@ function onButtonClick(menuitemId, type) {
 		}
 	} else if (menuaction == "Annotate") {
 		var contentId = tree.getSelectedItemId().split('_')[1];
+		console.log("annotate content tree js ----  contentId - " + contentId);
 		//var learningContentObject = getLearningContentObject(contentId);
 	//	var contentKey = learningContentObject.contentPath;
 		//var contentFormat = learningContentObject.contentFormat;
 		//var numberOfImages = learningContentObject.numberOfThumbnails;
 		//var decorationType = "";
 		if(!isShowAnnoation(contentId)){
-			var decorationTypeList = learningContentObject.decorationTypeList;
+			var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
 			var latestDecorationType = "";
 			if(decorationTypeList && decorationTypeList.length > 0 ){
 				latestDecorationType = decorationTypeList[(decorationTypeList.length - 1)];
 			}
 			alert("Content is already " + latestDecorationType);
+			return;
+		}
+		//console.log();
+		if("VIDEO" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
+			alert("Video annotation is not supported for this version.");
 			return;
 		}
 		
@@ -270,13 +276,15 @@ function createtree(course_id) {
 			
 			contentId = itemId.split('_')[1];
 			menu.showItem('View');
-			
+			/*
 			if(isVideo(contentId)){
 				menu.hideItem('Annotate');
 			}
 			else{
 				menu.showItem('Annotate');
 			}
+			*/
+			menu.showItem('Annotate');
 			menu.showItem('Delete');
 			menu.hideItem('Search_Associate_Content');
 		}
