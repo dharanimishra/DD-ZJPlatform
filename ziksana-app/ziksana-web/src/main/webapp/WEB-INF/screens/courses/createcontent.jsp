@@ -59,7 +59,12 @@ table tr td {
 	width: 64px;
 }
 </style>
-
+<script>
+$(document).ready(function() { // On page load
+  $("#navstudent").addClass("active");  
+ 
+});
+</script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 	<div class="Zikbreadcrumb f-l">
 		<div class="fifteen columns" id="page-title">
