@@ -132,14 +132,14 @@ body {
 }
 
 #Nav_bar ul li.navcourse.active a {
-	background-position: -72px 0px;
+	background-position: -72px 2px;
 	color: rgb(14, 169, 207);
 	font-family: Nexa;
 	font-weight: bold;
 }
 
 #Nav_bar ul li.navcourse:hover a {
-	background-position: -72px 0px;
+	background-position: -72px 2px;
 	color: rgb(14, 169, 207);
 	text-shadow: none;
 }
@@ -149,11 +149,11 @@ body {
 }
 
 #Nav_bar ul li.navstudent.active a {
-	background-position: -432px 0px;
+	background-position: -432px 3px;
 }
 
 #Nav_bar ul li.navstudent:hover a {
-	background-position: -432px 0px;
+	background-position: -432px 3px;
 	color: rgb(14, 169, 207);
 	text-shadow: none;
 }
