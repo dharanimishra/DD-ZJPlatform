@@ -457,20 +457,13 @@
 }
 
 .formErrorContent {
-	color: red;
-	left: 67px;
-	overflow: auto;
-	position: relative;
-	top: 81px;
-}
-
-#forerror .formErrorContent {
-	color: red;
-	left: 67px;
-	overflow: auto;
-	position: relative;
-	top: 4px;
-	width: 140px;
+  
+  color: red;
+  left: 67px;
+  overflow: auto;
+  position: absolute;
+  top: 5px;
+  width: 150px;
 }
 
 .uploadify-queue {
