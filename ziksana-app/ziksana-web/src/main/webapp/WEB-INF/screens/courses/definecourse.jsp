@@ -89,7 +89,7 @@
 																		var course = "' "+ courseName.toUpperCase()+ " '";
 																			alert("The course "+ course+ " already exists, try with another course name");
 																		
-																		$('#defaultvalue').val(courseName);
+																		//$('#defaultvalue').val(courseName);
 
 																	//}
 																}
