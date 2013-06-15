@@ -186,7 +186,7 @@ function isShowRecording(contentId){
 	var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
 	if(decorationTypeList && decorationTypeList.length > 0){
 		for(var i=0; i < decorationTypeList.length; i++){
-			if("RECORDED" == decorationTypeList[i].toUpperCase() || "ENRICHED" == decorationTypeList[i].toUpperCase()){
+			if("ENRICHED" == decorationTypeList[i].toUpperCase()){
 				showRecording = false;
 				break;
 			}
