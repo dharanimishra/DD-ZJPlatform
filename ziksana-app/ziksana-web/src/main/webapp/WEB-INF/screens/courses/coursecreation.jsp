@@ -170,7 +170,7 @@ $(document).ready(function() { // On page load
 						<div class="_richTextShow">
 							<textarea id="Cmoduledescrte" name="editor1pageload"
 								class="defaultvalue _focus">
-													<b><fmt:message key="module.placeholder" /></b>
+													 
 												</textarea>
 						</div>
 						<script type="text/javascript">
@@ -231,22 +231,21 @@ $(document).ready(function() { // On page load
 							<label style="width: 260px;" for="input"
 								class="control-label nexaf"><fmt:message
 									key="Associate.Image" /></label>
-
-							<div
-								style="width: 122px; height: 105px; padding-top: 15px">
+                            <div class="clearfix"></div>
+							<div style="width: 100px; height: 105px; border:0px solid red">
 								<img id="course_thumbnail_image"
 									src="${staticFileServer}resources/images/preview/defaultcourse.png"
-									align="left" /> <input readonly="readonly" type="hidden"
-									id="Cimageupl" style="margin-left: 20px;" />
+									align="center" /> <input readonly="readonly" type="hidden"
+									id="Cimageupl" style="margin-left: 20px;height:100px" />
 							</div>
-
-							<div id="message"></div>
-							<div id="thubmnail_upload_message"></div>
-							<div id="loaderText"></div>
-							<input type="file" name="thumbnail_image_file_upload"
+                         <div style="border:0px solid #000;position:relative;margin-top:4px;margin-bottom:6px">   <input type="file" name="thumbnail_image_file_upload"
 								tabindex="11" id="thumbnail_image_file_upload"
-								style="margin-left: 196px;" />
-							<div id="status"></div>
+								style="margin-left: 196px;" /><div id="thubmnail_upload_message"></div></div>
+							<div id="status">
+							<div id="message"></div>
+							
+							<div id="loaderText"></div>
+							</div>
 							<script type="text/javascript">
 								$(function() {
 									$('#thumbnail_image_file_upload')
@@ -292,7 +291,7 @@ $(document).ready(function() { // On page load
 																$(
 																		'#thubmnail_upload_message')
 																		.html(
-																				'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
+																				'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove">Remove</a>');
 
 															} else { //there is an error in the upload process
 
@@ -314,7 +313,7 @@ $(document).ready(function() { // On page load
 									$('#thubmnail_upload_message').html('');
 									$('#course_thumbnail_image')
 											.attr('src',
-													'${staticFileServer}resources/images/preview/defaultcourse.png');
+													'${staticFileServer}resources/images/preview/defaultcourse.png' );
 
 								}
 							</script>
@@ -396,6 +395,36 @@ $(document).ready(function() { // On page load
 <style>
 #treeboxbox_tree {
 	overflow: auto !important
+}
+.remove {
+  background: none repeat scroll 0 0 #43B2EC;
+  border: 0 none;
+  border-radius: 6px 6px 6px 6px;
+  color: #F9F9F9;
+  cursor: pointer !important;
+  display: block;
+  
+  margin-left:4px;
+  padding: 5px;
+  position: relative;
+  text-align: center;
+  text-decoration: none !important;
+  text-shadow: none;
+  top: -3px;
+  width: 120px;
+}
+#thubmnail_upload_message {
+  
+  height: 24px;
+  margin-left: 120px;
+  position: relative;
+  top: -39px;
+  width: 130px;
+}
+.uploadify-queue {
+  
+  position: absolute;
+  width:300px; 
 }
 </style>
 
