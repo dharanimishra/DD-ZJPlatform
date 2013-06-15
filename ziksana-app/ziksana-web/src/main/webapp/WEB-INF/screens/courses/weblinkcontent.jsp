@@ -102,7 +102,7 @@ $(document).ready(function() { // On page load
 	<div class="contentarea pull-right" style="width: 940px;margin-right:25px">
 		<div class="createcontentwrapper">
 			<form id="createweblinkform" method="post"
-				action="/ziksana-web/zcourse/1/weblinkcontents">
+				action="/ziksana-web/zcourse/1/multiweblinkcontents">
 				<div class="addweblink">
 					<div class="createcontentpanelhead">
 						Add Web Link
@@ -115,8 +115,9 @@ $(document).ready(function() { // On page load
 						<div class="Clearfix"></div>
 					</div>
 					<!--end of panel head-->
-					<div class="weblinkcontainer" style="background-color:#0099cc">
-						<div class="uploadroweven" style="padding: 10px;">
+					<!-- <div id="web_link_container"> -->
+					<div id="web_link_container"  class="weblinkcontainer" style="background-color:#0099cc">
+						<div class="weblink_row">
 							<div class="uploadphoto pull-left" style="width: 350px">
 								<img id="thumbnail_image" src="${staticFileServer}resources/images/preview/link.png" style="width: 100px; margin-bottom: 5px;" align="left" />
 								<div id="message"></div>
@@ -179,11 +180,11 @@ $(document).ready(function() { // On page load
 						<div class="rowfields pull-left">
 							<ul>
 								<li>
-								<input type="hidden" name="contentPath" value=""/>
+								<input type="hidden" name="contentPath[]" value=""/>
 								<input type="text" placeholder="Enter Name"
-									name="contentName" class="validate[required]"
+									name="contentName[]" class="validate[required]"
 									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
-								<li><input type="url" placeholder="http://" id="linkurl" name="contentUrl"
+								<li><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
 									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" class="validate[required]"/></li>
 								<li><a href="#" class="editdetailsweblink">Edit Details</a></li>
 							</ul>
@@ -191,25 +192,26 @@ $(document).ready(function() { // On page load
 						<!--end of rowfields-->
 						<div class="clearfix"></div>
 						<div class="editslide pull-left" style="display:none">
-							<textarea rows="4" cols="12" name="contentDescription" 
+							<textarea rows="4" cols="12" name="contentDescription[]" 
 								style="width: 374px; margin-bottom: 10px; margin-left: 10px;" placeholder="Details for the Web link"></textarea>
 						</div>
 						<div class="editslide pull-left" style="margin-left: 5px;display:none">
-							<input type="text" placeholder="Specify Tags" name="contentTag"
+							<input type="text" placeholder="Specify Tags" name="contentTag[]"
 								style="height: 30px; margin-right: 12px; width: 233px;">
-							<select id="Careaddl" name="contentArea" class="select Careaddl">
+							<select id="Careaddl" name="contentArea[]" class="select Careaddl">
 								<option>Specify Area</option>
 							</select> <br> <select class="select Csubjectddl" id="Csubjectddl"
-								name="contentSubject">
+								name="contentSubject[]">
 								<option>Specify Subject</option>
-							</select> <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic">
+							</select> <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic[]">
 								<option>Specify Topic</option>
 							</select>
 						</div>
 						<div class="clearfix"></div>
 					</div>
 					<!-- end of uploadrow-->
-</div>
+					</div>
+					<!-- </div> -->
 				</div>
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
@@ -281,6 +283,11 @@ a.remove_this:hover {
 	width: 130px !important;
 }
 label.error{color:#d14836;font-size:12px;margin-left:2px}
+
+.weblink_row { padding: .5em;}
+#web_link_container div.weblink_row:nth-child(2n+1) {
+  background: none repeat scroll 0 0 #CCCCCC;
+}
 </style>
 
 <script type="text/javascript">

@@ -4,6 +4,8 @@
 <%@page import="com.ziksana.domain.course.NestTreeNode"%>
 <%@page import="com.ziksana.domain.course.NestContentNode"%>
 <%@page import="com.ziksana.domain.course.ContentType"%>
+<%@page import="com.ziksana.domain.course.Course"%>
+
 
 <div class="navheadlp" style="padding-left: 20px;">
 	<ul>
@@ -11,12 +13,9 @@
 		<li style="margin-left: 40px; color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px; height: 22px;"> </span>Define Planner</li></a>
-		<li style="">
-		<a href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}"><img
+		<li style=""><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span>Review Playbook
-				</a>
-		</li>
+				style="margin-right: 10px; height: 22px;"> </span>Review Playbook </li>
 	
 
 	</ul>
@@ -38,26 +37,31 @@
 	<div id="planner_error"></div>
 	<div id="planner_container"> 
 		<div text="${coursename}" class="planner_data" id="COURSE_${courseIds}">
-		<input type="hidden" id="course_duration_in_weeks"  class="" value="${course.coursesId}"/>
-		<input type="hidden" id="course_duration_in_days"  class="duration" value="${course.duration}"/>
+		<input type="hidden" name="${courseIds}courseDuration" id="course_duration_in_weeks" value="${courseDuration}"/>
+		<input type="hidden" id="course_duration_in_days"  class="duration" value="${course.duration * 7}"/>
 		<div>
 		<input type='hidden' value='COURSE_${coursename}' name='course_name'/>
 		<input type='hidden' value='${courseIds}' id="courseId" name='course_id'/>
 		
 		<span class='node_title'><img class="node_icon" src="${courseIcon}"/> ${coursename}</span>
 
-		Course Duration in Weeks: <strong>${course.duration}</strong>
+		<span class="duration_display">Course Duration in Weeks: <strong>${course.duration}</strong></span>
 		</div>
 		
 	<%
 	 	List<NestTreeNode> list = (List<NestTreeNode>) request.getAttribute("parentList");
+
 	 	if (list != null)
 	 		out.println(printTree(list));
 	 %> </div> 
 	 </div>
 	 <hr/>
 	 <div class="textAlignRight">
- 	<button type="submit" class="btn blue">Save/Update</button> <button onclick="goViewPlanner()"  class="btn blue">Generate</button>
+ 		<button type="submit" class="btn blue"> Save </button> <a href="/ziksana-web/zcourse/1/${courseIds}/viewplanner"  class="btn blue">Generate</a>
+ 	</div>
+ 	<hr/>
+ 	 <div class="textAlignRight">
+ 		<a href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}"  class="btn blue">Save and Continue</a>
  	</div>
  	<hr/>
  </form>	
@@ -66,34 +70,31 @@
 <style type="text/css">
 
 .planner_data {
-  background: none repeat scroll 0 0 #E5E5E5;
-  padding: 0.5em;
+  background: url("/ziksana-web/resources/images/planner_div_bg.png") repeat scroll 0 0 transparent;
   width: 1028px;
+  color: white;
 }
 .planner_data div {
-  background: none repeat scroll 0 0 #eee;
-  margin: 0.75em 0;
-  padding-left: 10px;
-  text-align: right; 
   clear: both;
+  height: 32px;
+  padding-left: 10px;
+  text-align: right;
+  line-height: 32px;
 }
 .planner_data > div {
-  border-radius: 3px 3px 3px 3px;
-  box-shadow: 0 0 2px #999999 inset;
-  padding: 0.5em;
 }
 .planner_data > div  div { padding-left: 15px;}
 .planner_data div span.node_title {
   float: left;
 }
 .planner_data > div > span.node_title {
-  color: steelblue;
   font-weight: bold;
 }
 .planner_data select, .planner_data input {
-  border: 1px solid #CECECE;
+  border: 1px solid white;
+  border-radius: 2px 2px 2px 2px;
   font-size: 12px;
-  height: 24px;
+  height: 22px;
   margin: 0 0.25em;
   padding: 2px;
   text-align: left;
@@ -101,21 +102,28 @@
 .planner_data div select {
   width: 90px;
 }
+.planner_data input {
+  height: 16px !important;
+}
+input.note {
+  margin-right: 0.5em !important;
+}
 
 .start_week, .end_week, .duration, .starts_at {
   width: 32px;
 }
 
-.starts_at {border-color: pink !important; background: #eee !important; display:none !important;}
-.duration {border-color: green !important;}
+.starts_at {border-color: pink !important; background: #eee !important; display:none !important; }
+.duration_display { margin-right: .5em; }
 
 .node_icon {
   height: 18px;
   margin-right: 0.25em;
   vertical-align: top;
   width: 18px;
+  vertical-align: middle;
 }
-.node_module {font-weight: bold; color: steelblue;}
+.node_module {font-weight: bold;}
 
 #planner_error:not(:empty) { color: red; font-size: 12px; padding: .5em;}
 .duration_error { color: red !important; border: 2px solid red !important}
@@ -123,7 +131,7 @@
 <script type="text/javascript">
 function goViewPlanner(){
 	var curCourseId = $('#courseId').val();	
-	window.location.href ='ziksana-web/zcourse/1/'+curCourseId+'/viewplanner';
+	window.location.href ='';
 
 }
 function get_and_populate_planner_data(courseId){
@@ -144,7 +152,7 @@ function get_and_populate_planner_data(courseId){
 						node = dataList[i];
 						id = node.id;
 						unique_id = node.nodeUniqueId;
-						//console.log('unique i'+unique_id);
+						console.log('unique i'+unique_id);
 						course_id = node.courseId;
 						duration = node.duration;
 						component_id = node.learningComponentId;
@@ -155,49 +163,44 @@ function get_and_populate_planner_data(courseId){
 						starts_at = node.startsAt;
 						
 						if(!"".contains(id) && id != null){
-							n_id = "0_course_"+course_id+"_component_"+component_id+"";
+							
+							n_id = "0"+unique_id+"";
 							$('[name="'+n_id+'"]').val(id);
 							
-							c_id = "0_course_"+course_id+"_component_"+component_id+"_content_"+content_id+"";
+							c_id = "0"+unique_id+"";
 							$('[name="'+c_id+'"]').val(id);
-							
+						
 						}
-						//course_"+node.getCourseId()+"_component_"+node.getId()
+					
 					//Modules Data Population
 						if(!"".contains(duration) && duration != null){
-							n_duration = "course_"+courseId+"_component_"+component_id+"_duration";
-							console.log(n_duration);
+							
+							n_duration = ""+unique_id+"_duration";
+							
 							$('[name="'+n_duration+'"]').val(duration);
-						//course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startweek
-							c_duration = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_duration";
-							console.log(c_duration);
-							$('[name="'+c_duration+'"]').val(duration);
+						
+						
 						}
 						if(!"".contains(start_week) && start_week != null){
-							n_startweek = "course_"+courseId+"_component_"+component_id+"_startweek";
-							console.log(n_startweek);
+							n_startweek = ""+unique_id+"_startweek";
 							$('[name="'+n_startweek+'"]').val(start_week);
-							c_startweek = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_startweek";
-							console.log(c_startweek);
-							$('[name="'+c_startweek+'"]').val(start_week);
+							
 						}
 						if(!"".contains(start_day) && start_day != null){
-							n_startday = "course_"+courseId+"_component_"+component_id+"_startday";
-							console.log(n_startday);
-							
+							n_startday = ""+unique_id+"_startday";
 							$('[name="'+n_startday+'"]').val(start_day);
-							c_startday = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_startday";
-							console.log(n_startday);
-							$('[name="'+c_startday+'"]').val(start_day);
+							
 						}
 						if(!"".contains(note) && note != null){
-							n_note = "course_"+courseId+"_component_"+component_id+"_note";
-							console.log(n_note);
+							n_note = ""+unique_id+"_note";
 							$('[name="'+n_note+'"]').val(note);
 							
-							c_note = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_note";
-							console.log(c_note);
-							$('[name="'+c_note+'"]').val(note);
+						}
+						
+						if(!"".contains(starts_at) && starts_at != null){
+							n_startsAt = ""+unique_id+"_starts_at";
+							$('[name="'+n_startsAt+'"]').val(starts_at);
+							
 						}
 						
 						
@@ -261,11 +264,16 @@ $('.duration').change(function(){
 
 
 });// end of doc ready
+
 </script>
+
+
 <%!
-	public String build_options_for_startweek(){
+	public String build_options_for_startweek( int total_no_of_weeks){
 	String option_html = "";
-	int total_no_of_weeks = 10;
+	
+	
+	
 	option_html += "<option value='' selected='selected'>Start Week</option>";
 	for(int i=1; i<=total_no_of_weeks; i++){
 		option_html += "<option value='"+i+"'>Week "+i+"</option>";
@@ -274,7 +282,7 @@ $('.duration').change(function(){
 }
 %>
 
-<%!public String printTree(List<NestTreeNode> parents) {
+<%! public String printTree(List<NestTreeNode> parents) {
 		StringBuffer sb = new StringBuffer();
 		int initialValue = 0;
 		String videoIcon = "/ziksana-web/resources/images/tree_icons/video.png";
@@ -289,18 +297,20 @@ $('.duration').change(function(){
 		String noteIcon = "/ziksana-web/resources/images/tree_icons/note.png";
 		String linkIcon = "/ziksana-web/resources/images/tree_icons/link.png";
 		String chapterIcon = "/ziksana-web/resources/images/tree_icons/chapter.png";
-		
+
 		for (NestTreeNode node : parents) {
 			if (node.getParentLearningComponentId() == 0){
 				sb.append("<div>");
-				sb.append("<input type='text' value='' style='display:none' name='"+initialValue+"_course_"+node.getCourseId()+"_component_"+node.getId()+"'/>");
-				sb.append("<input type='hidden' value='"+node.getId()+"' name='course_"+node.getCourseId()+"_component'/>");
-				sb.append("<span class='node_title'><img class='node_icon' src='"+folderOpen+"'/> " + node.getTitle() +"</span>");
-				sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek()+"</select>");
-				sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
-				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_duration' class='duration' title='Duration in Days'/>");
-				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_starts_at' class='starts_at' title='Starts At'/>");
-				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_note' class='note' title='Note'/>");
+				//course-423_component-348
+				sb.append("<input type='text' value='' style='display:none' name='"+initialValue+"course-"+node.getCourseId()+"_component-"+node.getId()+"'/>");
+				sb.append("<input type='hidden' value='course-"+node.getCourseId()+"_component-"+node.getId()+"' name='coursecomponents'/>");
+				//sb.append("<input type='hidden' value='"+node.getId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId+"'/>");
+				 sb.append("<span class='node_title'><img class='node_icon' src='"+folderOpen+"'/> " + node.getTitle() +"</span>");
+				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek(node.getDuration())+"</select>");
+				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_duration' class='duration' title='Duration in Days'/>");
+				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_starts_at' class='starts_at' title='Starts At'/>");
+				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_note' class='note' title='Note'/>"); 
 				if (node.getContent() != null) {
 					for (NestContentNode content : node.getContent()) {
 						if (content.getContentType().equalsIgnoreCase(ContentType.VIDEO.getName()) || content.getContentType().equalsIgnoreCase(ContentType.ENHANCED_VIDEO.getName())) {
@@ -332,14 +342,15 @@ $('.duration').change(function(){
 						}
 						
 						
-						//
-							sb.append("<input type='text' style='display:none' value='' name='"+initialValue+"_course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"'/>");
-							sb.append("<input type='hidden' value='"+content.getContentId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content'/>");
-							sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek()+"</select>");
-							sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
-							sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_duration' class='duration' title='Duration in Days'/>");
-							sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_starts_at' class='starts_at' title='Starts At'/>");
-							sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_note' class='note' title='Note'/></div>");
+																									
+						sb.append("<input type='text' style='display:none' value='' name='"+initialValue+"course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"'/>");
+							sb.append("<input type='hidden' value='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"' name='coursecontents'/>");
+							//sb.append("<input type='hidden' value='"+content.getContentId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"'/>");
+							 sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek(node.getDuration())+"</select>");
+							sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_duration' class='duration' title='Duration in Days'/>");
+							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_starts_at' class='starts_at' title='Starts At'/>");
+							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_note' class='note' title='Note'/></div>");
 						//
 							
 
@@ -347,15 +358,16 @@ $('.duration').change(function(){
 					}
 				}
 			}else{
-				sb.append("<div>");												
-				sb.append("<input type='text' style='display:none' value='' name='"+initialValue+"_course_"+node.getCourseId()+"_component_"+node.getId()+"'/>");
-				sb.append("<input type='hidden' value='"+node.getId()+"' name='course_"+node.getCourseId()+"_component'/>");
-				sb.append("<span class='node_title node_module'><img class='node_icon' src='"+folderOpen+"'/> " + node.getTitle() +"</span>");
-				sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek()+"</select>");
-				sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
-				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_duration' class='duration' title='Duration in Days'/>");
-				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_starts_at' class='starts_at' title='Starts At'/>");
-				sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_note' class='note' title='Note'/>");
+				sb.append("<div>");
+				sb.append("<input type='text' value='' style='display:none' name='"+initialValue+"course-"+node.getCourseId()+"_component-"+node.getId()+"'/>");
+				sb.append("<input type='hidden' value='course-"+node.getCourseId()+"_component-"+node.getId()+"' name='coursecomponents'/>");
+				//sb.append("<input type='hidden' value='"+node.getId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId+"'/>");
+				 sb.append("<span class='node_title'><img class='node_icon' src='"+folderOpen+"'/> " + node.getTitle() +"</span>");
+				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek(node.getDuration())+"</select>");
+				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_duration' class='duration' title='Duration in Days'/>");
+				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_starts_at' class='starts_at' title='Starts At'/>");
+				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_note' class='note' title='Note'/>"); 
 				if (node.getContent() != null) {
 					for (NestContentNode content : node.getContent()) {
 						
@@ -392,13 +404,14 @@ $('.duration').change(function(){
 						}
 						
 					//
-					sb.append("<input type='text' style='display:none' value='' name='"+initialValue+"_course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"'/>");
-						sb.append("<input type='hidden' value='"+content.getContentId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content'/>");
-						sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek()+"</select>");
-						sb.append("<select name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
-						sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_duration' class='duration' title='Duration in Days'/>");
-						sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_starts_at' class='starts_at' title='Starts At'/>");
-						sb.append("<input type='text' value='' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_note' class='note' title='Note'/></div>");
+							sb.append("<input type='text' style='display:none' value='' name='"+initialValue+"course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"'/>");
+							sb.append("<input type='hidden' value='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"' name='coursecontents'/>");
+							//sb.append("<input type='hidden' value='"+content.getContentId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"'/>");
+							 sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek(node.getDuration())+"</select>");
+							sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_duration' class='duration' title='Duration in Days'/>");
+							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_starts_at' class='starts_at' title='Starts At'/>");
+							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_note' class='note' title='Note'/></div>");
 					//
 						 
 					}
@@ -409,8 +422,9 @@ $('.duration').change(function(){
 			}
 			
 			sb.append("</div>");
-			
+			System.out.println(sb.toString());
 		}
+		
 		return sb.toString();
 
 	}%>

@@ -2932,3 +2932,9 @@ padding:3px;
   display: block;
   height: 4px;
   width: 40px;}
+
+/* Hide the 4th tab define Assignment */
+  .navheadlp ul > li:nth-child(4) {
+display: none;
+}
+/* Hide the 4th tab define Assignment */

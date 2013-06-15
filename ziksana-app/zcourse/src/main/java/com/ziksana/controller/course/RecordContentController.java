@@ -11,12 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
+import com.ziksana.domain.course.ContentDecorationType;
+import com.ziksana.domain.course.ContentStatus;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.EnrichContentService;
@@ -79,10 +83,61 @@ public class RecordContentController {
 		return modelView;
 	}
 
-	public ModelAndView annotateContent(){
-		LOGGER.debug("In AnnotateContentController.annotateContent()");
-		return null;
+	@RequestMapping(value = "1/record", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	void createContent(
+			@RequestParam(value = "previousLearningContentId", required = true) Integer previousLearningContentId,
+			@RequestParam(value = "learningComponentId", required = true) Integer learningComponentId,
+			@RequestParam(value = "contentPath", required = true) String contentPath,
+			@RequestParam(value = "decorationTypeName", required = true) String decorationTypeName,
+			@RequestParam(value = "thumbnailPath", required = true) String thumbnailPath,
+			@RequestParam(value = "noOfThumbnails", required = true) Integer noOfThumbnails) {
+
+
+		try {
+			MemberPersona creator = new MemberPersona();
+			creator.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
+					.getToken().getMemberPersonaId().getStorageID()));
+
+			LearningContent previousLearningContent = enrichContentService.getLearningContent(previousLearningContentId);
+				LearningContent learningContent = new LearningContent();
+				learningContent.setAuthoringMember(creator);
+				learningContent.setContentName(previousLearningContent.getContentName());
+				learningContent.setContentPath(contentPath);
+				//TODO need to pass the correct value here
+				learningContent.setStatusId(ContentStatus.UNDER_CONSTRUCTION.getID());
+				learningContent.setActive(true);
+				learningContent.setContentTypeId(previousLearningContent.getContentTypeId());
+				learningContent.setContentType(previousLearningContent.getContentType());
+				learningContent.setThumbnailPicturePath(thumbnailPath);
+				learningContent.setNumberOfThumbnails(noOfThumbnails);
+				learningContent.setRightsOwningMember(creator);
+				learningContent.setLinkedLearningContent(previousLearningContent);
+				learningContent.setContentFormat(previousLearningContent.getContentFormat());
+				learningContent.setContentFormatId(previousLearningContent.getContentFormatId());
+				learningContent.setContentDescription(previousLearningContent.getContentDescription());
+				learningContent.setScreenshotPath(previousLearningContent.getScreenshotPath());
+				enrichContentService.createLearningContent(learningContent, 
+						ContentDecorationType.valueOf(decorationTypeName.toUpperCase()), creator, 
+						learningComponentId, previousLearningContent);
+				
+				LOGGER.debug("RecordContentController.createContent() new learning content created for " + decorationTypeName);
+		} catch (ZiksanaException  exception) {
+			LOGGER.error(exception.getMessage(), exception);	
+		}
 	}
+	
+	@RequestMapping(value = "/1/recorder", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView annotateContent() {
+		ModelAndView modelAndView = new ModelAndView("courses/recorder"); 
+		return modelAndView;
+
+	}
+	
+	
+	
 	/**
 	 * This method converts collection of {@link LearningContent} objects into
 	 * {@link JSONLearningContent} objects

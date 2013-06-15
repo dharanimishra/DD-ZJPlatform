@@ -11,12 +11,9 @@
 		<li style="margin-left: 40px; color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px; height: 22px;"> </span>Define Planner</li></a>
-		<li style="">
-		<a href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}"><img
+		<li style=""><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span>Review Playbook
-				</a>
-		</li>
+				style="margin-right: 10px; height: 22px;"> </span>Review Playbook </li>
 	
 
 	</ul>
@@ -38,15 +35,15 @@
 	<div id="planner_error"></div>
 	<div id="planner_container"> 
 		<div text="${coursename}" class="planner_data" id="COURSE_${courseIds}">
-		<input type="hidden" id="course_duration_in_weeks"  class="" value="${course.coursesId}"/>
-		<input type="hidden" id="course_duration_in_days"  class="duration" value="${course.duration}"/>
+		<input type="hidden" id="course_duration_in_weeks"  class="" value="10"/>
+		<input type="hidden" id="course_duration_in_days"  class="duration" value="70"/>
 		<div>
 		<input type='hidden' value='COURSE_${coursename}' name='course_name'/>
 		<input type='hidden' value='${courseIds}' id="courseId" name='course_id'/>
 		
 		<span class='node_title'><img class="node_icon" src="${courseIcon}"/> ${coursename}</span>
 
-		Course Duration in Weeks: <strong>${course.duration}</strong>
+		Course Duration in Weeks: <strong>10</strong>
 		</div>
 		
 	<%
@@ -140,7 +137,7 @@ function get_and_populate_planner_data(courseId){
 			
 			
 			for (var i = 0; i < dataList.length; i++) { 
-						//console.log(dataList[i]);
+						console.log(dataList[i]);
 						node = dataList[i];
 						id = node.id;
 						unique_id = node.nodeUniqueId;
@@ -166,37 +163,28 @@ function get_and_populate_planner_data(courseId){
 					//Modules Data Population
 						if(!"".contains(duration) && duration != null){
 							n_duration = "course_"+courseId+"_component_"+component_id+"_duration";
-							console.log(n_duration);
 							$('[name="'+n_duration+'"]').val(duration);
 						//course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"_startweek
 							c_duration = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_duration";
-							console.log(c_duration);
 							$('[name="'+c_duration+'"]').val(duration);
 						}
 						if(!"".contains(start_week) && start_week != null){
 							n_startweek = "course_"+courseId+"_component_"+component_id+"_startweek";
-							console.log(n_startweek);
 							$('[name="'+n_startweek+'"]').val(start_week);
 							c_startweek = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_startweek";
-							console.log(c_startweek);
 							$('[name="'+c_startweek+'"]').val(start_week);
 						}
 						if(!"".contains(start_day) && start_day != null){
 							n_startday = "course_"+courseId+"_component_"+component_id+"_startday";
-							console.log(n_startday);
-							
 							$('[name="'+n_startday+'"]').val(start_day);
 							c_startday = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_startday";
-							console.log(n_startday);
 							$('[name="'+c_startday+'"]').val(start_day);
 						}
 						if(!"".contains(note) && note != null){
 							n_note = "course_"+courseId+"_component_"+component_id+"_note";
-							console.log(n_note);
 							$('[name="'+n_note+'"]').val(note);
 							
 							c_note = "course_"+courseId+"_component_"+component_id+"_content_"+content_id+"_note";
-							console.log(c_note);
 							$('[name="'+c_note+'"]').val(note);
 						}
 						
@@ -347,7 +335,7 @@ $('.duration').change(function(){
 					}
 				}
 			}else{
-				sb.append("<div>");												
+				sb.append("<div>");
 				sb.append("<input type='text' style='display:none' value='' name='"+initialValue+"_course_"+node.getCourseId()+"_component_"+node.getId()+"'/>");
 				sb.append("<input type='hidden' value='"+node.getId()+"' name='course_"+node.getCourseId()+"_component'/>");
 				sb.append("<span class='node_title node_module'><img class='node_icon' src='"+folderOpen+"'/> " + node.getTitle() +"</span>");

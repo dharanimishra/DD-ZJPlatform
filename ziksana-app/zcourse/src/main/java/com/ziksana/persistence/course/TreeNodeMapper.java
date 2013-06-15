@@ -11,18 +11,20 @@ import com.ziksana.domain.course.NestTreeNode;
 
 public interface TreeNodeMapper {
 
-	@Select({ "select ID as courseid,Name as coursename  from  corcourse where ID=#{courseId,jdbcType=INTEGER} and isdelete=false" })
+	@Select({ "select ID as courseid,Name as coursename,CourseDuration as duration  from  corcourse where ID=#{courseId,jdbcType=INTEGER} and isdelete=false" })
 	@Results(value = { @Result(property = "courseId", column = "courseid"),
-			@Result(property = "coursename", column = "coursename") })
+			@Result(property = "coursename", column = "coursename"),
+			@Result(property = "duration", column = "duration")})
 	List<NestTreeNode> getCourseComponent(Integer courseId);
 
-	@Select({ "select cclc.CourseId as courseid,c.ID as learningcomponentid, c.Name as modulename,nest.ParentLearningComponentId as ParentLearningComponentId,nest.NestLearningComponentId as NestLearningComponentId  from corcourse course, corcourselearningcomponent cclc, corlearningcomponent c,corlearningcomponentnest nest where cclc.LearningComponentId=c.ID and  cclc.courseid=#{courseId,jdbcType=INTEGER} and c.isdelete=false and course.ID= cclc.courseid and course.IsDelete=false and c.ID=nest.NestLearningComponentId" })
+	@Select({ "select cclc.CourseId as courseid,course.CourseDuration as duration,c.ID as learningcomponentid, c.Name as modulename,nest.ParentLearningComponentId as ParentLearningComponentId,nest.NestLearningComponentId as NestLearningComponentId  from corcourse course, corcourselearningcomponent cclc, corlearningcomponent c,corlearningcomponentnest nest where cclc.LearningComponentId=c.ID and  cclc.courseid=#{courseId,jdbcType=INTEGER} and c.isdelete=false and course.ID= cclc.courseid and course.IsDelete=false and c.ID=nest.NestLearningComponentId" })
 	@Results(value = {
 			@Result(property = "courseId", column = "courseid"),
 			@Result(property = "id", column = "learningcomponentid"),
 			@Result(property = "title", column = "modulename"),
 			@Result(property = "parentLearningComponentId", column = "ParentLearningComponentId"),
-			@Result(property = "nestLearningComponentId", column = "NestLearningComponentId")
+			@Result(property = "nestLearningComponentId", column = "NestLearningComponentId"),
+			@Result(property = "duration", column = "duration")
 
 	})
 	List<NestTreeNode> getModuleComponents(Integer courseId);
