@@ -698,3 +698,12 @@
 		
 		return false;
 }
+	
+	function showAnnotation(){
+		
+		alert("I am here");
+		
+		var courseId = $('#courseid').val();
+		var uri = '/ziksana-web/zcourse/1/annotate/'+courseId;
+		window.location.href = uri ;		
+	}	

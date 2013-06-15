@@ -404,6 +404,9 @@
 		<div class="Clearfix"></div>
 		<!-- END FORM -->
 
+									<p style="text-align: right; clear: both;margin-top:10px">
+										<a href='${staticFileServer}zcourse/1/recordcontents/${courseId}' class="btn btn-info">Save and Continue</a>
+									</p>
 	</div>
 	<!--End of contentarea -->
 
