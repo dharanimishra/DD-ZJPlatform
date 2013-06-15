@@ -1,6 +1,10 @@
 var counter = 0;
 function onButtonClick(menuitemId, type) {
 	var menuaction = menuitemId;
+	//following values are used by flash player
+	selectedTreeContentId = tree.getSelectedItemId().split('_')[1];
+	selectedTreeContentComponentId = tree.getParentId(tree.getSelectedItemId()).split('_')[1];
+
 	//alert("menuaction " + menuaction);
 	if (menuaction == "Add_Module") {
 		// alert("open the menu for add module.");
@@ -149,9 +153,64 @@ function onButtonClick(menuitemId, type) {
 			$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
 			$('#ContentPanel2').hide();
 		}
-	}else if (menuaction == "Associate_Content") {
-		alert("in associate content");
+	}else if (menuaction == "Record") {
+		var contentId = tree.getSelectedItemId().split('_')[1];
+		console.log("annotate content tree js ----  contentId - " + contentId);
+		//var learningContentObject = getLearningContentObject(contentId);
+	//	var contentKey = learningContentObject.contentPath;
+		//var contentFormat = learningContentObject.contentFormat;
+		//var numberOfImages = learningContentObject.numberOfThumbnails;
+		//var decorationType = "";
+		if(!isShowRecording(contentId)){
+			var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
+			var latestDecorationType = "";
+			if(decorationTypeList && decorationTypeList.length > 0 ){
+				latestDecorationType = decorationTypeList[(decorationTypeList.length - 1)];
+			}
+			alert("Content is already " + latestDecorationType);
+			return;
+		}
+		//console.log();
+		if("VIDEO" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
+			alert("Video recording is not supported for this version.");
+			return;
+		}
+		
+		ff_open_player();
+		//alert("tomorrow never dies");
+
+	} 
+}
+function isShowRecording(contentId){
+	var showRecording = true;
+	var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
+	if(decorationTypeList && decorationTypeList.length > 0){
+		for(var i=0; i < decorationTypeList.length; i++){
+			if("RECORDED" == decorationTypeList[i].toUpperCase() || "ENRICHED" == decorationTypeList[i].toUpperCase()){
+				showRecording = false;
+				break;
+			}
+		}
 	}
+	return showRecording;
+ }
+function isVideo(contentId){
+	var isVideo = false;
+	var contentType = getLearningContentObject(contentId).contentType;
+	if("VIDEO" == contentType.toUpperCase()){
+		isVideo = true; 
+	}
+	return isVideo;
+ }
+ 
+
+function ff_open_player(){
+	$('#page-header-div').hide();
+	$('#definetab').hide();
+	$('#leftPane').hide();
+	$('#recorded_content_container').show();
+	$('#recorded_content_container iframe').attr('src','/ziksana-web/zcourse/1/recorder');
+	//alert("Die another day");
 }
 
 function fixImage(id) {
