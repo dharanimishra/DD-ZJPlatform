@@ -168,8 +168,9 @@ $(document).ready(function() { // On page load
 																.log(data_object);
 
 														if (data_object.Uploaded == 'true') {
+															$('#message').show();
 															$('#message').html('<fmt:message key="file.upload.sucess"/>');
-															//setTimeout( "jQuery('#message').hide();",1000 );
+															setTimeout( "jQuery('#message').hide();",3000 );
 															content_path = data_object.ContentKey;
 															content_name = data_object.ContentName;
 															content_type_id = data_object.ContentType;
