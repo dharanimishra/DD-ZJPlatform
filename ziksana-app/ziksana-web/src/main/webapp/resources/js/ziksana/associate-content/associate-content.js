@@ -46,7 +46,20 @@
 			}
 		}
 	}
-
+	
+	function getBaseLearingContent(learningContentId){
+		var jsonString = document.getElementById("learingContents").value;
+		var contentArray = jQuery.parseJSON( jsonString );
+		for(var i = 0; i<contentArray.length; i++){
+			if(learningContentId == contentArray[i].id && (!contentArray[i].id || contentArray[i].id > 0)){
+				getBaseLearingContent(contentArray[i].id);
+			}
+			else{
+				return contentArray[i];
+			}
+		}
+	}
+	
 	function getLearningContentObject(learningContentId){
 		
 		//console.log("in getLearningContentObject id is " + learningContentId);

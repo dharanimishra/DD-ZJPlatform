@@ -42,14 +42,17 @@ function onButtonClick(menuitemId, type) {
 		getAllLearningContents();
 	} else if (menuaction == "View") {
 		learningContentId = tree.getSelectedItemId().split('_')[1];
-		//alert("learningContentId " + learningContentId);
 		var viewer_url = '';
 		content_type = getLearningContentObject(learningContentId).contentType.toUpperCase();
 		var parentContentId = getLearningContentObject(learningContentId).parentLearningContentId;
 		//alert("content_type " + content_type);
 		if(parentContentId && parentContentId >0){
-			learningContentId = parentContentId;
+			//may be needed later we have a use case where in we have to show the last state of the content if viewed
+			//learningContentId = parentContentId;
+			
 		}
+		learningContentId = getBaseLearingContent(learningContentId).id;
+		//alert("learningContentId " + learningContentId);
 		
 		if (content_type.toUpperCase() == 'VIDEO') {
 			viewer_url = serverContext + 'zcourse/1/modalplayer/'
