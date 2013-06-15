@@ -52,6 +52,10 @@ public enum ContentDecorationType {
 		}
 	}
 
+	public static ContentDecorationType getValueOf(String contentFormatString){
+		initialize();
+		return valueOf(contentFormatString);
+	}
 	
 	/**
 	 * Returns the {@link ContentDecorationType} for the provided id.

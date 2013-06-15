@@ -119,7 +119,7 @@ public class AnnotateContentController {
 				learningContent.setContentDescription(previousLearningContent.getContentDescription());
 				learningContent.setScreenshotPath(previousLearningContent.getScreenshotPath());
 				enrichContentService.createLearningContent(learningContent, 
-						ContentDecorationType.valueOf(decorationTypeName.toUpperCase()), creator, 
+						getDecorationTypeList(decorationTypeName.toUpperCase()), creator, 
 						learningComponentId, previousLearningContent);
 				
 				LOGGER.debug("AnnotateContentController.createContent() new learning content created for " + decorationTypeName);
@@ -127,6 +127,28 @@ public class AnnotateContentController {
 			LOGGER.error(exception.getMessage(), exception);	
 		}
 	}
+	
+	private List<ContentDecorationType> getDecorationTypeList(String decorationTypesAsString){
+		List<ContentDecorationType> decorationTypeList = new ArrayList<ContentDecorationType>();
+		if(decorationTypesAsString != null && !"".equals(decorationTypesAsString.trim())){
+			String[] types = decorationTypesAsString.split(",");
+			for (String decorationType : types) {
+				if(decorationType != null && !"".equals(decorationType.trim())){
+					decorationTypeList.add(ContentDecorationType.getValueOf(decorationType.toUpperCase()));
+				}
+				else{
+					LOGGER.debug("RecordContentController.getDecorationTypeList() wrong value received for decoration type");
+				}
+			}
+		}
+		else{
+			LOGGER.error("The decoration type is required to save the content");
+			//for now putting it as annotated
+			decorationTypeList.add(ContentDecorationType.getValueOf("Annotated".toUpperCase()));
+		}
+		return decorationTypeList;
+	}
+	
 	/**
 	 * This method converts collection of {@link LearningContent} objects into
 	 * {@link JSONLearningContent} objects

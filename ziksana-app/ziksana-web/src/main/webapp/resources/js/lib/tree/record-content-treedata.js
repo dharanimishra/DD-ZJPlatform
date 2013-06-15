@@ -329,6 +329,10 @@ function createtree(course_id) {
 
 }
 
+function getJsonObject (jsonResponse){ 
+	var json_data = $.parseJSON(jsonResponse);
+	return json_data;
+}	
 
 
 $(document).ready(

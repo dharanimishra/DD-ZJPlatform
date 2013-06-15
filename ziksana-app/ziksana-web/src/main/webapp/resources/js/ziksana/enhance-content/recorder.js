@@ -12,25 +12,16 @@ var learningContentObject = parent.getLearningContentObject(contentId);
 
 function ff_get_content_key()
 {
-	//alert("I am here " + contentId);
 	originalContentPath = learningContentObject.contentURL;
-	//TODO delete later for testing only
-	//var testVar = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
-	//jsonObject = parent.getJsonObject(testVar);
-	//console.log("got the json object " + jsonObject.Uploaded);
-	//createContent();
-	console.log(contentId + "     originalContentPath ---------->>>>> " + originalContentPath);
 	return originalContentPath;
 }
 
-function ff_set_response(annotationResponse)
+function ff_set_response(recordingResponse)
 {
-	console.log("annotationResponse " + annotationResponse);
-	//TODO delete later for testing only
-	//annotationResponse = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
+	console.log("recording Response is " + recordingResponse);
 
-	jsonObject = parent.getJsonObject(annotationResponse);
-	alert(jsonObject.ContentKey + "<<<<<<<<<<<<<<<<<<<<<<<< ------------- >>>>>>>>>>>>>>>>>   "+ originalContentPath);
+	jsonObject = parent.getJsonObject(recordingResponse);
+	console.log(jsonObject.ContentKey + "<<<<<<<<<<<<<<<<<<<<<<<< ------------- >>>>>>>>>>>>>>>>>   "+ originalContentPath);
 	if(jsonObject.ContentKey != originalContentPath){
 		console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
 		createContent();
@@ -71,7 +62,7 @@ function createContent(){
 							+ "Failed" + '</span>');
 			return "FAIL";
 		}
-		console.log("reached here.......................");
+		console.log("reconrd content response is ------>>>>>  " + data.response);
 	});
 }
 
@@ -95,7 +86,7 @@ function ff_close_player(){
 }
 
 function ff_display_console_message(msg){
-	console.log(msg);
-	
+	//swithc on this if you want log messages from flash
+	//console.log(msg);
 }
 

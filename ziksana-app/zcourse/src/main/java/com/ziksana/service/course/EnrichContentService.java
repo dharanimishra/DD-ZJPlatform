@@ -25,6 +25,6 @@ public interface EnrichContentService {
 
 	public LearningContent createLearningContent(
 			LearningContent learningContent,
-			ContentDecorationType contentDecorationType, MemberPersona creator,
+			List<ContentDecorationType> contentDecorationTypeList, MemberPersona creator,
 			Integer learningComponentId, LearningContent previousLearningContent);
 }

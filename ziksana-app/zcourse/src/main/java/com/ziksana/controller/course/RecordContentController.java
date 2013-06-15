@@ -90,7 +90,7 @@ public class RecordContentController {
 			@RequestParam(value = "previousLearningContentId", required = true) Integer previousLearningContentId,
 			@RequestParam(value = "learningComponentId", required = true) Integer learningComponentId,
 			@RequestParam(value = "contentPath", required = true) String contentPath,
-			@RequestParam(value = "decorationTypeName", required = true) String decorationTypeName,
+			@RequestParam(value = "decorationTypeName", required = true) String decorationTypes,
 			@RequestParam(value = "thumbnailPath", required = true) String thumbnailPath,
 			@RequestParam(value = "noOfThumbnails", required = true) Integer noOfThumbnails) {
 
@@ -119,13 +119,35 @@ public class RecordContentController {
 				learningContent.setContentDescription(previousLearningContent.getContentDescription());
 				learningContent.setScreenshotPath(previousLearningContent.getScreenshotPath());
 				enrichContentService.createLearningContent(learningContent, 
-						ContentDecorationType.valueOf(decorationTypeName.toUpperCase()), creator, 
+						getDecorationTypeList(decorationTypes), creator, 
 						learningComponentId, previousLearningContent);
 				
-				LOGGER.debug("RecordContentController.createContent() new learning content created for " + decorationTypeName);
+				LOGGER.debug("RecordContentController.createContent() new learning content created for " + decorationTypes);
 		} catch (ZiksanaException  exception) {
 			LOGGER.error(exception.getMessage(), exception);	
 		}
+	}
+	
+	private List<ContentDecorationType> getDecorationTypeList(String decorationTypesAsString){
+		List<ContentDecorationType> decorationTypeList = new ArrayList<ContentDecorationType>();
+		if(decorationTypesAsString != null && !"".equals(decorationTypesAsString.trim())){
+			String[] types = decorationTypesAsString.split(",");
+			for (String decorationType : types) {
+				if(decorationType != null && !"".equals(decorationType.trim())){
+					decorationTypeList.add(ContentDecorationType.getValueOf(decorationType.toUpperCase()));
+				}
+				else{
+					LOGGER.debug("RecordContentController.getDecorationTypeList() wrong value received for decoration type");
+				}
+			}
+		}
+		else{
+			LOGGER.error("The decoration type is required to save the content");
+			//for now putting it as recorded but this is not full proof
+			//decorationTypeList.add(ContentDecorationType.getValueOf("Annotated".toUpperCase()));
+			decorationTypeList.add(ContentDecorationType.getValueOf("Recorded".toUpperCase()));
+		}
+		return decorationTypeList;
 	}
 	
 	@RequestMapping(value = "/1/recorder", method = RequestMethod.GET)
