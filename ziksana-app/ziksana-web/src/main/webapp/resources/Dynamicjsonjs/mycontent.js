@@ -107,6 +107,14 @@ function getLearningContentsByType(contentType, pageIndex) {
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
 	console.log("noOfPages " + noOfPages);
 	
+	if(contentArrayBasedOnContentType.length ==0){
+		setNoContentFoundText(contentType);
+	}
+	else{
+		setNoContentFoundText('');
+	}
+	
+	
 	if(contentArrayBasedOnContentType.length > itemsPerPage){
 		getPageDiv(noOfPages, contentType, pageIndex);
 	}
@@ -158,6 +166,13 @@ function getAllLearningContents(pageIndex) {
 	console.log("contentArray.length " + contentArrayWithoutParent.length
 			+ " itemsPerPage  " + itemsPerPage);
 	noOfPages = Math.ceil(contentArrayWithoutParent.length / itemsPerPage);
+	
+	if(contentArrayWithoutParent.length ==0){
+		setNoContentFoundText("ALL");
+	}
+	else{
+		setNoContentFoundText('');
+	}
 	
 	if(contentArrayWithoutParent.length > itemsPerPage){
 		getPageDiv(noOfPages, "ALL", pageIndex);
@@ -381,4 +396,29 @@ function calculatePage(val){
 		return 6;
 	}
 	
+}
+
+function getCategoryText(category){
+	var noDataText = "";
+	if(category == "ALL"){
+		noDataText = "No contents in repository.";
+		$('#container4').empty();
+	}
+	else {
+		noDataText = "No contents in this category.";
+		$('#container4').empty();
+		
+	}
+	return noDataText;
+}
+
+function setNoContentFoundText(category){
+	
+	var noDataText = "";
+	category = category.toUpperCase();
+	if(category != ""){
+		noDataText = getCategoryText(category);
+	}
+	//alert("category" + category + " - noDataText " + noDataText);
+	$('#noContentFound').text(noDataText);
 }

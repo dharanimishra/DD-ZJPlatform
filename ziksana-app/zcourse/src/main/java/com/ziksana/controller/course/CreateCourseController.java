@@ -712,13 +712,7 @@ public class CreateCourseController {
 			LearningComponentTagcloud tagcloudObj = new LearningComponentTagcloud();
 			getTagcloud = learningComponentTagCloudService
 					.getComponentTagClouds(learningComponentId);
-			LOGGER.error("Class :"
-					+ getClass()
-					+ " Method saveCourse : After getComponentTagClouds: tagcloud"
-					+ getTagcloud + "getTagcloud.getTagCloudId() :"
-					+ getTagcloud.getComponentTagCloudId()
-					+ "learningComponentId, courseIds" + learningComponentId
-					+ courseIds);
+
 			LearningComponentTagcloud tagcloud = new LearningComponentTagcloud();
 			if (flag) {
 				tagcloud.setTagCloudId(getTagcloud.getTagCloudId());
@@ -934,7 +928,7 @@ public class CreateCourseController {
 			json.setResponse("success");
 			json.setSelected_tags(selected_tags);
 			json.setAvailable_tags(available_tags);
-		} catch (ZiksanaException exception) {
+		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
 
