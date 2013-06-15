@@ -371,13 +371,6 @@ public class MyContentController {
 			for (int i = 0; i < contentName.length; i++) {
 				LearningContent learningContent = new LearningContent();
 
-				CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
-						.getSubjectClassification(contentTopic[i]);
-
-				LOGGER.info("Class :" + getClass() + " contentName :"
-						+ contentName[i] + "contentUrl:" + contentUrl[i]
-						+ "thumbnailPicturePath: " + thumbnailPicturePath[i]);
-
 				learningContent.setAuthoringMember(accountableMember);
 				learningContent.setContentName(contentName[i]);
 				learningContent.setContentDescription(contentDescription[i]);
@@ -391,13 +384,19 @@ public class MyContentController {
 				} catch (Exception e) {
 					learningContent.setContentTypeId(959);
 				}
-				String screenshotPath = thumbnailPicturePath[i].replace(
-						",'++'", "");
-				learningContent.setThumbnailPicturePath(screenshotPath);
-				learningContent.setScreenshotPath(screenshotPath);
+				try {
+					String screenshotPath = thumbnailPicturePath[i].replace(
+							",'++'", "");
+					learningContent.setThumbnailPicturePath(screenshotPath);
+					learningContent.setScreenshotPath(screenshotPath);
+				} catch (Exception e) {
+
+				}
 				learningContent.setRightsOwningMember(accountableMember);
 
 				try {
+					CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
+							.getSubjectClassification(contentTopic[i]);
 					learningContent
 							.setSubjClassificationId(courseSubjectClassification
 									.getSubjClassificationId());

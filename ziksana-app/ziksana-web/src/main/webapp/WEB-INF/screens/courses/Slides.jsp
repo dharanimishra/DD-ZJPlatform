@@ -113,11 +113,10 @@
   <a class="dock-item2" href="#"><span>2</span><img src="sample2.png" /></a> 
   <a class="dock-item2" href="#"><span>3</span><img src="sample2.png" /></a>  -->
 
-
 				<c:choose>
 					<c:when test="${content.contentTypeString == 'IMAGE'}">
 						<a class="dock-item2" href="#"><span></span><img
-							src="${ms.url}${content.contentUrl}" /></a>
+							src="${ms.url}/image/${content.contentUrl}/${content.contentUrl}.jpg" /></a>
 					</c:when>
 					<c:when test="${content.numberOfThumbnails == -1}">
 						<a class="dock-item2" href="#"><span></span><img src="" /></a>
