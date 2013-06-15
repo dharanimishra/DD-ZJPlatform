@@ -22,22 +22,25 @@ public class JSONLearningContent {
 	private Integer numberOfThumbnails;
 
 	public JSONLearningContent(LearningContent learningContent){
-		this.setContentDescription(learningContent.getContentDescription());
-		this.setContentName(learningContent.getContentName());
-		this.setContentType(learningContent.getContentType().getName());
-		//bad need to handle correctly but for now it is like that as we may have some old data.
-		if(learningContent.getContentFormat() != null){
-			this.setContentFormat(learningContent.getContentFormat().getName());
+		
+		if(learningContent != null){
+			this.setContentDescription(learningContent.getContentDescription());
+			this.setContentName(learningContent.getContentName());
+			this.setContentType(learningContent.getContentType().getName());
+			//bad need to handle correctly but for now it is like that as we may have some old data.
+			if(learningContent.getContentFormat() != null){
+				this.setContentFormat(learningContent.getContentFormat().getName());
+			}
+			this.setContentURL(learningContent.getContentUrl());
+			this.id = Integer.parseInt(learningContent.getLearningContentId().getDisplayID());
+			this.setThumbnailPicturePath(learningContent.getThumbnailPicturePath());
+			this.setNumberOfThumbnails(learningContent.getNumberOfThumbnails());
+			this.setScreenshotPath(learningContent.getScreenshotPath());
+			this.setDecorationTypeList(getContentDecorationsAsString(learningContent.getLearningContentDecorationList()));
+			if(learningContent.getLinkedLearningContent() != null){
+				this.parentLearningContentId = learningContent.getLinkedLearningContent().getId();
+			}
 		}
-		this.setContentURL(learningContent.getContentUrl());
-		this.id = Integer.parseInt(learningContent.getLearningContentId().getDisplayID());
-		this.setThumbnailPicturePath(learningContent.getThumbnailPicturePath());
-		this.setNumberOfThumbnails(learningContent.getNumberOfThumbnails());
-		this.setScreenshotPath(learningContent.getScreenshotPath());
-		this.setDecorationTypeList(getContentDecorationsAsString(learningContent.getLearningContentDecorationList()));
-		if(learningContent.getLinkedLearningContent() != null){
-			this.parentLearningContentId = learningContent.getLinkedLearningContent().getId();
-		}	
 	}
 
 	private List<String> getContentDecorationsAsString(List<LearningContentDecoration> learningContentDecorationList){
