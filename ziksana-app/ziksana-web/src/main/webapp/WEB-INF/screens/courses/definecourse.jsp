@@ -85,13 +85,13 @@
 															function(data) {
 																console.log(data);
 																if (data == 'COURSE EXISTS') {
-																	if (courseName != "") {
+																	//if (courseName != "") {
 																		var course = "' "+ courseName.toUpperCase()+ " '";
 																			alert("The course "+ course+ " already exists, try with another course name");
 																		
 																		$('#defaultvalue').val(courseName);
 
-																	}
+																	//}
 																}
 															});
 										});
