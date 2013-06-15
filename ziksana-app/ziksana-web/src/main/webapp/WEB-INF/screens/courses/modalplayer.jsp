@@ -23,7 +23,7 @@ body{min-width:900px; min-height: 270px; background: white; overflow:hidden !imp
 				flashplayer: "/ziksana-web/resources/jwplayer/player.swf",
 				height: 480,//385
 				width: 853,//640
-				file: '${ms.url}/video/'+'${content.contentUrl}/'+'${content.contentUrl}'.mp4
+				file: '${ms.url}/video/'+'${content.contentUrl}/'+'${content.contentUrl}'
 			}).play('true');		
 			
 		});

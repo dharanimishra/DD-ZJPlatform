@@ -59,6 +59,7 @@
 	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
 	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
 		int i=0;
+		try {
 	 	for (LearningContent content : list) {
 	 		
 	 		
@@ -180,6 +181,9 @@ Topic</option> </select>
  <%
  i++;
 	}
+		}catch(Exception e){
+		e.printStackTrace();	
+		}
 %>
 </div>
 

@@ -170,6 +170,14 @@ public class MyContentController {
 				learningContent.setContentFormatId(contentFormat.getID());
 				learningContent.setStatusId(1);
 				learningContent.setRightsOwningMember(accountableMember);
+				try {
+					learningContent.setThumbnailPicturePath(thumbnailPath[i]);
+					learningContent.setNumberOfThumbnails(Integer
+							.parseInt(noOfThumbnails[i]));
+				} catch (Exception e) {
+					LOGGER.error("setThumbnailPicturePath :" + thumbnailPath[i]);
+
+				}
 				LearningContent learningCont = myContentService
 						.saveOrUpdate(learningContent);
 				learningContentlist.add(learningCont);
