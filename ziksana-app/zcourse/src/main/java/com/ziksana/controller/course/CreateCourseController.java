@@ -90,7 +90,7 @@ public class CreateCourseController {
 				LOGGER.debug("CourseId is Empty");
 				courseCount = courseService.isCourseNameExists(
 						CourseStatus.DRAFT, courseName);
-				LOGGER.debug("courseCount is :"+courseCount);
+				LOGGER.debug("courseCount is :" + courseCount);
 				if (courseCount == 0) {
 					// Allow user to create a new course
 					iscourseExists = "COURSE NOT EXISTS";
@@ -103,8 +103,8 @@ public class CreateCourseController {
 				courseCount = courseService.getCoursesByCoursename(
 						CourseStatus.DRAFT, courseName,
 						Integer.parseInt(courseId));
-				
-				LOGGER.debug("courseCount is :"+courseCount);
+
+				LOGGER.debug("courseCount is :" + courseCount);
 				if (courseCount >= 1) {
 					// Allow user to create a new course
 					iscourseExists = "COURSE EXISTS";
@@ -196,9 +196,14 @@ public class CreateCourseController {
 	ModelAndView editCourse(@PathVariable String courseId) {
 		LOGGER.debug(" Entering Class " + getClass() + " showCourse()");
 		ModelAndView modelView = null;
+		Integer course_id = 0;
 
 		try {
-			Integer course_id = Integer.parseInt(courseId.split("_")[1]);
+			course_id = Integer.parseInt(courseId.split("_")[1]);
+		} catch (Exception e) {
+		}
+
+		try {
 			int isModuleExists = 0;
 			if (course_id != null) {
 				isModuleExists = courseService.isModuleExists(course_id);
@@ -206,7 +211,6 @@ public class CreateCourseController {
 			}
 			mediaServerURL = mediaService.getMediaContents();
 			if (course_id > 0) {
-
 				modelView = new ModelAndView("mastercreatemodule");
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("ms", mediaServerURL);

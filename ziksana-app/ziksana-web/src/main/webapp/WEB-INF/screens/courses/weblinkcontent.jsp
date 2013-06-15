@@ -285,7 +285,7 @@ a.remove_this:hover {
 label.error{color:#d14836;font-size:12px;margin-left:2px}
 
 .weblink_row { padding: .5em;}
-#web_link_container div.weblink_row:nth-child(2n+1) {
+#web_link_container div.weblink_row:nth-child(even) {
   background: none repeat scroll 0 0 #CCCCCC;
 }
 </style>

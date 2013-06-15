@@ -160,10 +160,12 @@ public class MyContentController {
 				learningContent.setContentPath(contentPath[i]);
 				learningContent.setStatusId(1);
 				learningContent.setActive(true);
-				ContentType contentTypeObj = ContentType.getValueOf(contentTypeName[i].toUpperCase());
+				ContentType contentTypeObj = ContentType
+						.getValueOf(contentTypeName[i].toUpperCase());
 				learningContent.setContentType(contentTypeObj);
 				learningContent.setContentTypeId(contentTypeObj.getID());
-				ContentFormat contentFormat = ContentFormat.getValueOf(contentFormatName[i].toUpperCase());
+				ContentFormat contentFormat = ContentFormat
+						.getValueOf(contentFormatName[i].toUpperCase());
 				learningContent.setContentFormat(contentFormat);
 				learningContent.setContentFormatId(contentFormat.getID());
 				learningContent.setStatusId(1);
@@ -329,6 +331,82 @@ public class MyContentController {
 			}
 
 			myContentService.saveOrUpdate(learningContent);
+
+		} catch (CourseException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return modelView;
+
+	}
+
+	@RequestMapping(value = "1/multiweblinkcontents", method = RequestMethod.POST)
+	public @ResponseBody
+	ModelAndView createMultiWeblinkContent(
+			@RequestParam(value = "contentPath[]", required = false) String[] thumbnailPicturePath,
+			@RequestParam(value = "contentName[]", required = true) String[] contentName,
+			@RequestParam(value = "contentUrl[]", required = true) String[] contentUrl,
+			@RequestParam(value = "contentDescription[]", required = false) String[] contentDescription,
+			@RequestParam(value = "contentTag[]", required = false) String[] Topic,
+			@RequestParam(value = "contentArea[]", required = false) String[] contentArea,
+			@RequestParam(value = "contentSubject[]", required = false) String[] contentSubject,
+			@RequestParam(value = "contentTopic[]", required = false) String[] contentTopic) {
+
+		ModelAndView modelView = new ModelAndView("masterweblinkcontent");
+
+		LOGGER.info("Class :" + getClass() + " thumbnailPicturePath :"
+				+ thumbnailPicturePath);
+
+		try {
+			MemberPersona accountableMember = new MemberPersona();
+			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
+					.getToken().getMemberPersonaId().getStorageID()));
+
+			for (int i = 0; i < contentName.length; i++) {
+				LearningContent learningContent = new LearningContent();
+
+				CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
+						.getSubjectClassification(contentTopic[i]);
+
+				LOGGER.info("Class :" + getClass() + " contentName :"
+						+ contentName[i] + "contentUrl:" + contentUrl[i]
+						+ "thumbnailPicturePath: " + thumbnailPicturePath[i]);
+
+				learningContent.setAuthoringMember(accountableMember);
+				learningContent.setContentName(contentName[i]);
+				learningContent.setContentDescription(contentDescription[i]);
+				learningContent.setContentPath(contentUrl[i]);
+				learningContent.setStatusId(1);
+				learningContent.setActive(true);
+				learningContent.setContentType(ContentType.getContentType(612));
+				try {
+					learningContent.setContentTypeId(ContentType.valueOf(
+							"Link".toUpperCase()).getID());
+				} catch (Exception e) {
+					learningContent.setContentTypeId(959);
+				}
+				String screenshotPath = thumbnailPicturePath[i].replace(
+						",'++'", "");
+				learningContent.setThumbnailPicturePath(screenshotPath);
+				learningContent.setScreenshotPath(screenshotPath);
+				learningContent.setRightsOwningMember(accountableMember);
+
+				try {
+					learningContent
+							.setSubjClassificationId(courseSubjectClassification
+									.getSubjClassificationId());
+				} catch (Exception e) {
+					LOGGER.error("Class " + getClass()
+							+ "Subject Classification not found:" + e);
+				}
+				myContentService.saveOrUpdate(learningContent);
+			}
 
 		} catch (CourseException exception) {
 			LOGGER.error(exception.getMessage(), exception);
