@@ -168,6 +168,7 @@ public class CreateCourseController {
 				modelView = new ModelAndView("mastercreatecourse");
 				mediaServerURL = mediaService.getMediaContents();
 				modelView.addObject("CourseId", course_id);
+				modelView.addObject("courseId", courseId);
 				modelView.addObject("ms", mediaServerURL);
 				modelView.addObject("module", isModuleExists);
 			} else {
@@ -175,6 +176,7 @@ public class CreateCourseController {
 				mediaServerURL = mediaService.getMediaContents();
 				modelView.addObject("CourseId", course_id);
 				modelView.addObject("ms", mediaServerURL);
+				modelView.addObject("courseId", courseId);
 				modelView.addObject("module", isModuleExists);
 			}
 		} catch (ZiksanaException exception) {

@@ -1,8 +1,12 @@
 // JavaScript Document
 
+	Course_ID = "";
+
 $(document)
 		.ready(
 				function(e) {
+					var course_id = $('#courseid').val();
+					Course_ID = $('#courseid').val();
 					$.get('/ziksana-web/zcourse/getsubjectarea', {}, function(
 							data) {
 						options = data;
@@ -155,8 +159,8 @@ function createCourse() {
 		request_type = 'POST'; // can be GET or POST. In this case, a GET
 		// request
 
-		var Course_id = $('#courseid').val();
-		
+		var Course_id = Course_ID;
+
 		console.log("Course_id :"+Course_id);
 
 		var Course_Name = $('#defaultvalue').val();
@@ -264,6 +268,7 @@ function getCourse() {
 						console.log(data);
 						if (data.response == 'success') {
 							course_id = data.id;
+							$('#courseid').val(course_id);
 							course_name = data.coursename;
 							course_desc = data.coursedesc;
 							subject_area = data.subjectarea;
