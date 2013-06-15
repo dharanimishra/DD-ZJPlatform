@@ -917,7 +917,11 @@ public class CreateCourseController {
 		CourseEditResponse json = null;
 		try {
 			Integer courseid = 0;
-			courseid = Integer.parseInt(CourseId.split("_")[1]);
+			try {
+				courseid = Integer.parseInt(CourseId.split("_")[1]);
+			} catch (Exception e) {
+
+			}
 			String selected_tags = "";
 			String available_tags = "";
 			CourseTagcloud tag = null;
