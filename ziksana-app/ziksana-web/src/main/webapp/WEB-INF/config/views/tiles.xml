@@ -186,14 +186,14 @@
 	<definition name="mastercourseplanner" extends="course-ziksana-master">
 		<put-attribute name="master_title" value="Planner" />
 		<put-attribute name="content"
-			value="/WEB-INF/screens/courses/planner.jsp" />
+			value="/WEB-INF/screens/planner/planner.jsp" />
 	</definition>
 	
 	<!-- View Planner -->
 	<definition name="masterviewplanner" extends="course-ziksana-master">
 		<put-attribute name="master_title" value="Planner" />
 		<put-attribute name="content"
-			value="/WEB-INF/screens/courses/viewPlanner.jsp" />
+			value="/WEB-INF/screens/planner/viewPlanner.jsp" />
 	</definition>
 
 

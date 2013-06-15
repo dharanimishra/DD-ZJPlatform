@@ -11,6 +11,8 @@ public class NestTreeNode {
 	private int parentLearningComponentId;
 	private int nestLearningComponentId;
 
+	private int duration;
+	
 	private List<NestTreeNode> children = null;
 	private List<NestContentNode> contents = null;
 
@@ -138,5 +140,13 @@ public class NestTreeNode {
 		sb.append("]**");
 
 		return sb.toString();
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
 	}
 }

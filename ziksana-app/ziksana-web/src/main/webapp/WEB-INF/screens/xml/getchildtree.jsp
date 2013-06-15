@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/xml"%>
-
+<%@page pageEncoding="UTF-8"%>
 <%@page import="java.util.*"%>
 <%@page import="com.ziksana.domain.course.NestTreeNode"%>
 <%@page import="com.ziksana.domain.course.NestContentNode"%>
 <%@page import="com.ziksana.domain.course.ContentType"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<?xml version='1.0' ?>
 <tree id="0"> <item text="${coursename}" id="COURSE_${courseIds}"
 	im0='${imagePathMap.get("courseIcon")}' im1='${imagePathMap.get("courseIcon")}' im2='${imagePathMap.get("courseIcon")}' call="1"
 	open="1" select="1" parentId="0"> <%
