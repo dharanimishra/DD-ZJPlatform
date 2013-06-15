@@ -125,8 +125,7 @@
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
 			<p class="page-title">
-				<span style="color: #6bbde8;">Home</span> < My
-				Course
+				<a href="/ziksana-web/secure/1/homepage"><fmt:message key="home.hometext"/></a></span> < <fmt:message key="home.mycourselearner"/>
 			</p>
 
 		</div>
@@ -137,15 +136,14 @@
 
 <div class="Clearfix"></div>
 <div class="announcementcontainer">
-	<div class="headtag pull-left" style="margin-top: 10px;">My
-		Course</div>
+	<div class="headtag pull-left" style="margin-top: 10px;"><fmt:message key="home.mycourselearner"/></div>
 
 	<div class="isotophead pull-right">
 		<div class="isotoplinks">
-			<a href="#" class="active_filter" onclick="getAllCourse()">All</a>|<a href="#"
-				onclick="getAllCourse()">Draft</a>|<a
-				href="#" onclick="getActiveCourse('ACTIVE')">Active</a>|<a href="#"
-				onclick="getReviewCourse('REVIEW')">Review</a>
+			<a href="#" class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a>|<a href="#"
+				onclick="getAllCourse()"><fmt:message key="draft.txt"/></a>|<a
+				href="#" onclick="getActiveCourse('ACTIVE')"><fmt:message key="active.txt"/></a>|<a href="#"
+				onclick="getReviewCourse('REVIEW')"><fmt:message key="review.txt"/></a>
 
 		</div>
 	</div>

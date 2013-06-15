@@ -125,8 +125,7 @@
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
 			<p class="page-title">
-				<span style="color: #6bbde8;">Home</span> < My
-				Content
+				<a href="/ziksana-web/secure/1/homepage"><fmt:message key="home.hometext"/></a></span> < <fmt:message key="nav.mycontent"/>
 			</p>
 
 		</div>
@@ -137,18 +136,16 @@
 
 <div class="Clearfix"></div>
 <div class="announcementcontainer">
-	<div class="headtag pull-left" style="margin-top: 10px;">My
-		Content</div>
+	<div class="headtag pull-left" style="margin-top: 10px;"><fmt:message key="nav.mycontent"/></div>
 <div class="Clearfix"> </div>
  <div class="pull-left" style="margin-left: 55px;margin-top: 20px;">
-<a href="/ziksana-web/zcourse/1/createcontent" style="width:150px;margin-top:6px;font-weight:bold">Create New Content </a>
+<a href="/ziksana-web/zcourse/1/createcontent" style="width:150px;margin-top:6px;font-weight:bold"><fmt:message key="Create.New.Content"/> </a>
  </div>
 	<div class="isotophead pull-right">
 		<div class="isotoplinks">
-			<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a>|<a
-				href="#" onclick="getLearningContentsByType('VIDEO')">Video</a>|<a href="#" onclick="getLearningContentsByType('LINK')">Web
-				Link</a>|<a href="#"
-				onclick="getOtherLearningContents('Others')">Others</a>
+			<a href="#" class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a>|<a
+				href="#" onclick="getLearningContentsByType('VIDEO')"><fmt:message key="Video.txt"/></a>|<a href="#" onclick="getLearningContentsByType('LINK')"><fmt:message key="web.link"/></a>|<a href="#"
+				onclick="getOtherLearningContents('Others')"><fmt:message key="other.txt"/></a>
 
 		</div>
 	</div>
