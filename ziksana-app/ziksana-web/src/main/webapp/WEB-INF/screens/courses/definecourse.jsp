@@ -35,8 +35,8 @@
 		});
 		$('#spinner3').spinner({
 			numberFormat : "n",
-			min : 0,
-			max : 20
+			min : 1,
+			max : 52
 		});
 
 	});
@@ -321,8 +321,8 @@
 				<label class="control-label nexaf" for="input" style="width: 230px;"><fmt:message
 						key="Specify.CourseDuration" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner3" value="0"
-						style="width: 50px;" maxlength="2" id="forerror"
+					<input type="text" name="spi" id="spinner3" value=""
+						style="width: 50px;" maxlength="2" id="forerror" placeholder="0"
 						class="validate[required]"
 						onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>

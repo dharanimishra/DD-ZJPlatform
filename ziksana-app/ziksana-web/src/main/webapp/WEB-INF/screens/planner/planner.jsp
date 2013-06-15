@@ -74,9 +74,9 @@
 
 .planner_data {
   background: url("/ziksana-web/resources/images/planner_div_bg.png") repeat scroll 0 0 transparent;
-  width: 1028px;
   color: white;
-  padding-bottom: 35px;
+  display: inline-block;
+  width: 1028px;
 }
 .planner_data div {
   clear: both;
