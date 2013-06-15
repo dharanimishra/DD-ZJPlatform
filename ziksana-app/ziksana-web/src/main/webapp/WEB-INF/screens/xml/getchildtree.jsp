@@ -4,10 +4,8 @@
 <%@page import="com.ziksana.domain.course.NestTreeNode"%>
 <%@page import="com.ziksana.domain.course.NestContentNode"%>
 <%@page import="com.ziksana.domain.course.ContentType"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<tree id="0"> <item text="${coursename}" id="COURSE_${courseIds}"
-	im0='${imagePathMap.get("courseIcon")}' im1='${imagePathMap.get("courseIcon")}' im2='${imagePathMap.get("courseIcon")}' call="1"
-	open="1" select="1" parentId="0"> <%
+<tree id="0"> <item text='${coursename}' im0='${cIcon}' id='COURSE_${courseIds}' im1='${cIcon}' im2='${cIcon}' call="1" open="1" select="1" parentId="0"> 
+<%
  	List<NestTreeNode> list = (List<NestTreeNode>) request
  			.getAttribute("parentList");
  	Map<String, String> imagePathMap = (Map<String, String>) request
