@@ -59,8 +59,7 @@ $(document).ready(function() { // On page load
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
 			<p class="page-title">
-				<span style="font-size: 13px; color: #6bbde8;">Home</span> < Create
-				Content
+				<span style="color: #6bbde8;"><a href="/ziksana-web/secure/1/homepage"><fmt:message key="home.hometext"/></a></span> < <fmt:message key="home.createcontent"/> 
 			</p>
 		</div>
 	</div>
@@ -74,11 +73,11 @@ $(document).ready(function() { // On page load
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
 				<a href="/ziksana-web/zcourse/1/createcontent"> <img
-					src="/ziksana-web/resources/images/content/upload.png" /></a>
+					src="/ziksana-web/resources/images/content/upload.png" style="margin-top: -40px;" /></a>
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;">Upload Content</a>
+				<h3 style="margin-left:-2px;margin-top:0px; 0px; font-size: 15px; width: 100%;text-align:center;">
+					<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 15px;"><fmt:message key="Upload.Content"/></a>
 				</h3>
 			</div>
 		</div>
@@ -87,11 +86,11 @@ $(document).ready(function() { // On page load
 		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
 				<a href="/ziksana-web/zcourse/1/weblinkcontent"> <img
-					src="/ziksana-web/resources/images/content/link.png" /></a>
+					src="/ziksana-web/resources/images/content/link.png" style="margin-top: -40px;" /></a>
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-					<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;">Add Web Link</a>
+				<h3 style="margin-left:-2px;margin-top:0px; 0px; font-size: 15px; width: 100%;text-align:center;">
+					<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 15px;"><fmt:message key="Add.Web.Link"/></a>
 				</h3>
 			</div>
 		</div>
@@ -105,7 +104,7 @@ $(document).ready(function() { // On page load
 				action="/ziksana-web/zcourse/1/weblinkcontents">
 				<div class="addweblink">
 					<div class="createcontentpanelhead">
-						Add Web Link
+						<fmt:message key="Add.Web.Link"/>
 						<div class="addmpre pull-right">
 							<a class="adlink" id="weblink"><img
 								src="${staticFileServer}resources/images/content/plus.png"
@@ -137,7 +136,7 @@ $(document).ready(function() { // On page load
 															'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 															'queueSizeLimit' : 1,
 															'successTimeout' : 350,
-															'buttonText' : 'Upload Image',
+															'buttonText' : '<fmt:message key="profile.button.text"/>',
 															'uploader' : '${ms.uploadScript}',
 															//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 															'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
@@ -180,30 +179,30 @@ $(document).ready(function() { // On page load
 							<ul>
 								<li>
 								<input type="hidden" name="contentPath" value=""/>
-								<input type="text" placeholder="Enter Name"
+								<input type="text" placeholder="<fmt:message key="enter.name"/>"
 									name="contentName" class="validate[required]"
 									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
 								<li><input type="url" placeholder="http://" id="linkurl" name="contentUrl"
 									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" class="validate[required]"/></li>
-								<li><a href="#" class="editdetailsweblink">Edit Details</a></li>
+								<li><a href="#" class="editdetailsweblink"><fmt:message key="Edit.Details"/></a></li>
 							</ul>
 						</div>
 						<!--end of rowfields-->
 						<div class="clearfix"></div>
 						<div class="editslide pull-left" style="display:none">
 							<textarea rows="4" cols="12" name="contentDescription" 
-								style="width: 374px; margin-bottom: 10px; margin-left: 10px;" placeholder="Details for the Web link"></textarea>
+								style="width: 374px; margin-bottom: 10px; margin-left: 10px;" placeholder="<fmt:message key="details.addweb"/>"></textarea>
 						</div>
 						<div class="editslide pull-left" style="margin-left: 5px;display:none">
-							<input type="text" placeholder="Specify Tags" name="contentTag"
+							<input type="text" placeholder="<fmt:message key="course.SpecifyTags"/>" name="contentTag"
 								style="height: 30px; margin-right: 12px; width: 233px;">
 							<select id="Careaddl" name="contentArea" class="select Careaddl">
-								<option>Specify Area</option>
+								<option><fmt:message key="Specify.Area"/></option>
 							</select> <br> <select class="select Csubjectddl" id="Csubjectddl"
 								name="contentSubject">
-								<option>Specify Subject</option>
+								<option><fmt:message key="Specify.Subject"/></option>
 							</select> <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic">
-								<option>Specify Topic</option>
+								<option><fmt:message key="Specify.Topic"/></option>
 							</select>
 						</div>
 						<div class="clearfix"></div>
@@ -213,8 +212,8 @@ $(document).ready(function() { // On page load
 				</div>
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
-					<button class="btn blue pull-right saveup1" id="sbtvalidation"
-						onClick="$('form#createweblinkform').submit();">Add Web link</button>
+					<button class="btn f-r"  id="sbtvalidation"
+						onClick="$('form#createweblinkform').submit();" style="background:#43B2EC;"><fmt:message key="Add.Web.Link"/></button>
 					<div class="clearfix"></div>
 				</div>
 				<!--end of panel head-->
@@ -296,8 +295,8 @@ label.error{color:#d14836;font-size:12px;margin-left:2px}
         },
         
         messages: {
-        	contentName: "Enter URL Name.",
-        	contentUrl:"Enter URL"
+        	contentName: "<fmt:message key="enter.url.name"/>",
+        	contentUrl:"<fmt:message key="enter.url"/>"
         }
         });
     });

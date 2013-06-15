@@ -71,8 +71,7 @@ $(document).ready(function() { // On page load
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
 			<p class="page-title">
-				<span style="color: #6bbde8;">Home</span> < Create
-				Content
+				<span style="color: #6bbde8;"><a href="/ziksana-web/secure/1/homepage"><fmt:message key="home.hometext"/></a></span> < <fmt:message key="home.createcontent"/> 
 			</p>
 		</div>
 	</div>
@@ -87,24 +86,24 @@ $(document).ready(function() { // On page load
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
 				<a href="/ziksana-web/zcourse/1/createcontent"> <img
-					src="${staticFileServer}resources/images/content/upload.png" /></a>
+					src="${staticFileServer}resources/images/content/upload.png" style="margin-top: -40px;"/></a>
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+				<h3 style="margin-left:-2px;margin-top:0px; 0px; font-size: 15px; width: 100%;text-align:center;">
 					<a href="/ziksana-web/zcourse/1/createcontent"
-						style="font-size: 16px;">Upload Content</a>
+						style="font-size: 15px;"><fmt:message key="Upload.Content"/></a>
 				</h3>
 			</div>
 		</div>
 		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content">
 				<a href="/ziksana-web/zcourse/1/weblinkcontent"> <img
-					src="${staticFileServer}resources/images/content/link.png" /></a>
+					src="${staticFileServer}resources/images/content/link.png" style="margin-top: -40px;"/></a>
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+				<h3 style="margin-left:-2px; 0px; font-size: 15px; width: 100%;text-align:center;">
 					<a href="/ziksana-web/zcourse/1/weblinkcontent"
-						style="font-size: 16px;">Add Web Link</a>
+						style="font-size: 15px;"><fmt:message key="Add.Web.Link"/></a>
 				</h3>
 			</div>
 		</div>
@@ -117,7 +116,7 @@ $(document).ready(function() { // On page load
 		<div class="createcontentwrapper">
 			<div class="uploadcontent1">
 
-				<div class="createcontentpanelhead">Upload Content</div>
+				<div class="createcontentpanelhead"><fmt:message key="Upload.Content"/></div>
 				<!--end of panel head-->
 				<div class="draganddrop pull-left" style="height: 325px">
 					<div style="margin-top: 30px; margin-left: 10px;">
@@ -143,7 +142,7 @@ $(document).ready(function() { // On page load
 													'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 													'queueSizeLimit' : 1,
 													'successTimeout' : 350,
-													'buttonText' : 'Upload File',
+													'buttonText' : '<fmt:message key="upload.file"/>',
 													'uploader' : '${ms.uploadScript}',
 													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx; *.pdf;*.jpg',
@@ -169,8 +168,7 @@ $(document).ready(function() { // On page load
 																.log(data_object);
 
 														if (data_object.Uploaded == 'true') {
-															$('#message')
-																	.html('File uploaded successfully');
+															$('#message').html('<fmt:message key="file.upload.sucess"/>');
 															//setTimeout( "jQuery('#message').hide();",1000 );
 															content_path = data_object.ContentKey;
 															content_name = data_object.ContentName;
@@ -234,8 +232,7 @@ $(document).ready(function() { // On page load
 				<div class="previewarea pull-left">
 					<div class="messagecontainer">
 						<p class="uploadheads"
-							style="font-size: 30px; padding-top: 155px; margin-left: 245px;">Preview
-							Area</p>
+							style="font-size: 30px; padding-top: 155px; margin-left: 245px;"><fmt:message key="Preview.Area"/></p>
 						<div id="messages" style="min-height: 100px;"></div>
 						<!--End of Messages -->
 						<div class="ClearFix"></div>
@@ -249,10 +246,10 @@ $(document).ready(function() { // On page load
 				<div class="clearfix"></div>
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
 					<button onClick="cancelContent();" class="btn blue pull-right"
-						style="margin-left: 10px;">Cancel</button>
+						style="margin-left: 10px;"><fmt:message key="profile.cancel"/></button>
 					<button class="btn blue pull-right saveup1" id="sbtvalidation"
 						onClick="$('form#multiple_content_upload').submit();"
-						disabled="disabled">Next</button>
+						disabled="disabled"><fmt:message key="home.next"/></button>
 					<div class="clearfix"></div>
 				</div>
 				<!--end of panel head-->
