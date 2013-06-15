@@ -90,6 +90,7 @@ public class CreateCourseController {
 				LOGGER.debug("CourseId is Empty");
 				courseCount = courseService.isCourseNameExists(
 						CourseStatus.DRAFT, courseName);
+				LOGGER.debug("courseCount is :"+courseCount);
 				if (courseCount == 0) {
 					// Allow user to create a new course
 					iscourseExists = "COURSE NOT EXISTS";
@@ -102,7 +103,9 @@ public class CreateCourseController {
 				courseCount = courseService.getCoursesByCoursename(
 						CourseStatus.DRAFT, courseName,
 						Integer.parseInt(courseId));
-				if (courseCount == 0) {
+				
+				LOGGER.debug("courseCount is :"+courseCount);
+				if (courseCount == 1) {
 					// Allow user to create a new course
 					iscourseExists = "COURSE NOT EXISTS";
 				} else {

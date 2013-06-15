@@ -54,15 +54,16 @@
 	var media_server_url = '${ms.url}';
 </script>
 <script type="text/javascript">
-/* function hideplaceholder(){
-	alert("innn");
-	$("#desplaceholder").css('display','none');
+	/* function hideplaceholder(){
+	 alert("innn");
+	 $("#desplaceholder").css('display','none');
 	
-} */
+	 } */
 
+	$(document)
+			.ready(
+					function() {
 
-	$(document).ready( function() {
-					 
 						//Fetch course details and populate the form
 						getCourse();
 						//Course Name Validation for Duplication while creating a course
@@ -80,33 +81,20 @@
 
 											};
 
-											$
-													.post(
-															uri,
-															parameters,
+											$.post(uri,parameters,
 															function(data) {
-																console
-																		.log(data);
+																console.log(data);
 																if (data == 'COURSE EXISTS') {
 																	if (courseName != "") {
-																		var course = "' "
-																				+ courseName
-																						.toUpperCase()
-																				+ " '";
-
-																		alert("The course "
-																				+ course
-																				+ " already exists, try with another course name");
-																		$(
-																				'#defaultvalue')
-																				.val(
-																						courseName);
+																		var course = "' "+ courseName.toUpperCase()+ " '";
+																			alert("The course "+ course+ " already exists, try with another course name");
+																		
+																		$('#defaultvalue').val(courseName);
 
 																	}
 																}
 															});
 										});
-
 					});
 </script>
 
@@ -139,10 +127,10 @@
 </style>
 
 <script>
-$(document).ready(function() { // On page load
-  $("#navcourse").addClass("active");  
- 
-});
+	$(document).ready(function() { // On page load
+		$("#navcourse").addClass("active");
+
+	});
 </script>
 
 <div class="navheadlp" style="padding-left: 151px;">
@@ -241,19 +229,16 @@ $(document).ready(function() { // On page load
 											</textarea> -->
 					<br />
 					<div class="_richTextShow">
-							<textarea id="Cdescriptionrte" name="editor1pageload"
-								class="defaultvalue _focus">
+						<textarea id="Cdescriptionrte" name="editor1pageload"
+							class="defaultvalue _focus">
 													
 												</textarea>
-						</div>
-				
-					
-					
+					</div>
+
+
+
 					<script type="text/javascript">
 						CKEDITOR.replace('Cdescriptionrte');
-						 
-						
-						
 					</script>
 
 				</div>
@@ -265,43 +250,43 @@ $(document).ready(function() { // On page load
    										 <textarea id="ckeditor" style="height: 300px;"></textarea>  -->
 			<!--Course Selection-->
 			<div class="control-group" style="margin-top: 20px;">
-				
 
- 
+
+
 
 				<div class="clearfix"></div>
 
 				<div class="moduleselection">
 					<div style="width: 32%; margin-right: 2px" class="f-l">
-					<label class="labelclass nexaf f-l" > <fmt:message key="course.area" />
-					</label>
-
-					<select name="s_example" id="Careaddl" class="select">
-						<option value="0">
-							<fmt:message key="course.choose.option" />
-						</option>
-					</select>
+						<label class="labelclass nexaf f-l"> <fmt:message
+								key="course.area" />
+						</label> <select name="s_example" id="Careaddl" class="select">
+							<option value="0">
+								<fmt:message key="course.choose.option" />
+							</option>
+						</select>
 					</div>
 
 					<div style="width: 32%;" class="f-l">
-						<label class="labelclass nexaf f-l" > <fmt:message key="course.subject" />
-						</label>
-					 <select name="s_example" class="select" id="Csubjectddl">
-						<option value="0">
-							<fmt:message key="course.choose.option" />
-						</option>
-					</select>
+						<label class="labelclass nexaf f-l"> <fmt:message
+								key="course.subject" />
+						</label> <select name="s_example" class="select" id="Csubjectddl">
+							<option value="0">
+								<fmt:message key="course.choose.option" />
+							</option>
+						</select>
 					</div>
 					<div style="width: 22%;" class="f-l">
-					<label class="labelclass nexaf f-l" ><fmt:message key="course.topic" /></label>
-					<select name="s_example" class="select" id="Ctopicddl">
-						<option value="0">
-							<fmt:message key="course.choose.option" />
-						</option>
-					</select>
+						<label class="labelclass nexaf f-l"><fmt:message
+								key="course.topic" /></label> <select name="s_example" class="select"
+							id="Ctopicddl">
+							<option value="0">
+								<fmt:message key="course.choose.option" />
+							</option>
+						</select>
 					</div>
 				</div>
-				
+
 
 			</div>
 			<!--end of Subject Selection-->
@@ -320,7 +305,7 @@ $(document).ready(function() { // On page load
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner1" value="0"
 						style="width: 50px;" maxlength="2"
-						 onkeypress="return inputLimiter(event,'Numbers', this.value)" />
+						onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
 			</div>
 			<div class="control-group f-l">
@@ -330,7 +315,7 @@ $(document).ready(function() { // On page load
 				<div class="controls" style="width: 212px;">
 					<input type="text" name="spi" id="spinner2" value="0"
 						style="width: 50px;" maxlength="2"
-						 onkeypress="return inputLimiter(event,'Numbers', this.value)" />
+						onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -339,10 +324,12 @@ $(document).ready(function() { // On page load
 						key="Specify.CourseDuration" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner3" value="0"
-						style="width: 50px;" maxlength="2" id="forerror" class="validate[required]"
-						 onkeypress="return inputLimiter(event,'Numbers', this.value)" />
+						style="width: 50px;" maxlength="2" id="forerror"
+						class="validate[required]"
+						onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
-				<span class="smalltxt">(<fmt:message key="in.week"/>)</span>
+				<span class="smalltxt">(<fmt:message key="in.week" />)
+				</span>
 			</div>
 
 
@@ -476,15 +463,16 @@ $(document).ready(function() { // On page load
 	position: relative;
 	top: 81px;
 }
+
 #forerror .formErrorContent {
-   
-  color: red;
-  left: 67px;
-  overflow: auto;
-  position: relative;
-  top: 4px;
-  width: 140px;
+	color: red;
+	left: 67px;
+	overflow: auto;
+	position: relative;
+	top: 4px;
+	width: 140px;
 }
+
 .uploadify-queue {
 	margin-left: 260px
 }
@@ -504,35 +492,37 @@ $(document).ready(function() { // On page load
 	}
 </script>
 <script type="text/javascript">
-     function inputLimiter(e, allow, value) {
-        var AllowableCharacters = '';
-        
-        if (allow == 'Numbers') { AllowableCharacters = '1234567890'; }
-         var k;
-        k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-        if (k != 13 && k != 8 && k != 0) {
-            if ((e.ctrlKey == false) && (e.altKey == false)) {
-                return ((AllowableCharacters.indexOf(String.fromCharCode(k)) != -1) && (value.length < 5));
-            } else {
-                return true;
-            }
-        } else {
-            return true;
-        }
-    }
+	function inputLimiter(e, allow, value) {
+		var AllowableCharacters = '';
 
-     
-     //Placeholder for CKEditor	
+		if (allow == 'Numbers') {
+			AllowableCharacters = '1234567890';
+		}
+		var k;
+		k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+		if (k != 13 && k != 8 && k != 0) {
+			if ((e.ctrlKey == false) && (e.altKey == false)) {
+				return ((AllowableCharacters.indexOf(String.fromCharCode(k)) != -1) && (value.length < 5));
+			} else {
+				return true;
+			}
+		} else {
+			return true;
+		}
+	}
+
+	//Placeholder for CKEditor	
 	var editor = CKEDITOR.instances.Cdescriptionrte;
 	original_editor_data = editor.getData();
 	var editor_placeholder_text = 'Please Enter a Description';
-	if(original_editor_data == ""){
+	if (original_editor_data == "") {
 		editor.setData(editor_placeholder_text);
 	}
-	
-	editor.on( 'click', function( ev ) {
-	       console.log('hello world');
-	       if(editor.getData() == editor_placeholder_text){ editor.setData('');}
-	   });
 
+	editor.on('click', function(ev) {
+		console.log('hello world');
+		if (editor.getData() == editor_placeholder_text) {
+			editor.setData('');
+		}
+	});
 </script>
