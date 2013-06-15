@@ -76,7 +76,7 @@ public class AssociateContentController {
 					modelView.addObject("ms", mediaServerURL);
 				} else {
 					return new ModelAndView("redirect:/zcourse/createmodule/COURSE_"
-							+ courseId + "");
+							+ courseId);
 				}
 			}
 		} catch (ZiksanaException exception) {
