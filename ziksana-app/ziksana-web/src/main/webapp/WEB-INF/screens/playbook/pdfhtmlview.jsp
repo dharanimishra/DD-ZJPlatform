@@ -107,7 +107,11 @@ background:#3e3f13;}
 display:block;margin-top:10px
 
 }
-.coursedescription p{padding :0px 30px;clear:both;text-align:justify;font-size:16px}
+
+.coursedescription{
+ display:block;margin-top:10px;page-break-after : always
+}
+
 .coursedescription b{padding :0px 30px;clear:both;font-size:16px;font-weight:bold}
 .chapeterfotter{display:block;
 background-image:url(/ziksana-web/resources/images/playbook/footer.png);
