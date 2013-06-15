@@ -303,28 +303,7 @@ $('.start_week, .start_day').change(function(){
 });
 
 
-// Duration Validation
-$('.duration').change(function(){
-    duration_input = $(this);
-    
-    $('#planner_error').html('');
-    		
-    duration_input.removeClass('duration_error');
-    duration = parseInt(duration_input.val());
-    parent_duration = parseInt(duration_input.parent('div').parent('div').find('> .duration').val());
-    console.log(duration_input);
-    console.log('duration :'+ duration);
-    console.log('parend duration: '+ parent_duration);
-    
-    course_duration = parseInt($('#course_duration_in_days').val());
-    if(duration > parent_duration){
-        duration_input.addClass('duration_error');
-        $('#planner_error').html('The node duration <strong>'+duration+'</strong> exceeds its parent node duration of <strong>'+parent_duration+'</strong> Days.').focus();
-    } 
-    
-    
-});
-//end of duration validation
+
 
 
 });// end of doc ready

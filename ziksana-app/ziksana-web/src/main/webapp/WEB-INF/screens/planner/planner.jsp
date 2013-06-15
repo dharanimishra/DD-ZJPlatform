@@ -13,13 +13,14 @@
 		<li style="margin-left: 40px; color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px; height: 22px;"> </span>Define Planner</li></a>
+		
 		<li style="">
 		<a href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}">
 		<span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span>Review Playbook 
-	   </a>			
-				</li>
+				style="margin-right: 10px; height: 22px;"> </span>Review Playbook
+				</a>
+				 </li>
 	
 
 	</ul>
@@ -61,10 +62,8 @@
 	 </div>
 	 <hr/>
 	 <div class="textAlignRight">
- 		<button type="submit" class="btn blue"> Save </button> <a href="/ziksana-web/zcourse/1/${courseIds}/viewplanner"  class="btn blue">Generate</a>
- 	</div>
- 	<hr/>
- 	 <div class="textAlignRight">
+ 		<button type="submit" id="submit_planner_data" class="btn blue"> Save </button>
+ 		<a href="/ziksana-web/zcourse/1/${courseIds}/viewplanner"  class="btn blue">Generate</a>
  		<a href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}"  class="btn blue">Save and Continue</a>
  	</div>
  	<hr/>
@@ -77,6 +76,7 @@
   background: url("/ziksana-web/resources/images/planner_div_bg.png") repeat scroll 0 0 transparent;
   width: 1028px;
   color: white;
+  padding-bottom: 35px;
 }
 .planner_data div {
   clear: both;
@@ -156,7 +156,7 @@ function get_and_populate_planner_data(courseId){
 						node = dataList[i];
 						id = node.id;
 						unique_id = node.nodeUniqueId;
-						console.log('unique i'+unique_id);
+						//console.log('unique i'+unique_id);
 						course_id = node.courseId;
 						duration = node.duration;
 						component_id = node.learningComponentId;
@@ -243,18 +243,27 @@ $('.start_week, .start_day').change(function(){
 });
 
 
-// Duration Validation
+//Duration Validation
 $('.duration').change(function(){
+	//re-enable disabled submit button
+	$('#submit_planner_data').removeAttr('disabled');
     duration_input = $(this);
     
     $('#planner_error').html('');
     		
     duration_input.removeClass('duration_error');
     duration = parseInt(duration_input.val());
-    parent_duration = parseInt(duration_input.parent('div').parent('div').find('> .duration').val());
-    console.log(duration_input);
-    console.log('duration :'+ duration);
-    console.log('parend duration: '+ parent_duration);
+    parent_duration_element = duration_input.parent('div').parent('div').find('> .duration');
+    parent_duration = parent_duration_element.val();
+    if(parent_duration == ''){ 
+    	$('#planner_error').html('Please enter duration for the parent node.');
+    	//$('#submit_planner_data').attr('disabled','disabled'); //disable submit button
+    	duration_input.val(''); //clear duration
+    	parent_duration_element.focus().addClass('duration_error');
+    	return false;
+    }
+ 	parent_duration = parseInt(parent_duration);
+
     
     course_duration = parseInt($('#course_duration_in_days').val());
     if(duration > parent_duration){
@@ -268,6 +277,8 @@ $('.duration').change(function(){
 
 
 });// end of doc ready
+
+
 
 </script>
 
@@ -311,8 +322,8 @@ $('.duration').change(function(){
 				//sb.append("<input type='hidden' value='"+node.getId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId+"'/>");
 				 sb.append("<span class='node_title'><img class='node_icon' src='"+folderOpen+"'/> " + node.getTitle() +"</span>");
 				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek(node.getDuration())+"</select>");
-				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
-				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_duration' class='duration' title='Duration in Days'/>");
+				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='1'>Sunday</option><option value='2' selected='selected'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_duration' class='duration number' title='Duration in Days'/>");
 				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_starts_at' class='starts_at' title='Starts At'/>");
 				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_note' class='note' title='Note'/>"); 
 				if (node.getContent() != null) {
@@ -351,8 +362,8 @@ $('.duration').change(function(){
 							sb.append("<input type='hidden' value='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"' name='coursecontents'/>");
 							//sb.append("<input type='hidden' value='"+content.getContentId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"'/>");
 							 sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek(node.getDuration())+"</select>");
-							sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
-							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_duration' class='duration' title='Duration in Days'/>");
+							sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='1'>Sunday</option><option value='2' selected='selected'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_duration' class='duration number' title='Duration in Days'/>");
 							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_starts_at' class='starts_at' title='Starts At'/>");
 							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_note' class='note' title='Note'/></div>");
 						//
@@ -368,8 +379,8 @@ $('.duration').change(function(){
 				//sb.append("<input type='hidden' value='"+node.getId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId+"'/>");
 				 sb.append("<span class='node_title'><img class='node_icon' src='"+folderOpen+"'/> " + node.getTitle() +"</span>");
 				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek(node.getDuration())+"</select>");
-				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
-				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_duration' class='duration' title='Duration in Days'/>");
+				sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_startday' class='start_day' title='Start Day'><option value='1'>Sunday</option><option value='2' selected='selected'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_duration' class='duration number' title='Duration in Days'/>");
 				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_starts_at' class='starts_at' title='Starts At'/>");
 				sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_note' class='note' title='Note'/>"); 
 				if (node.getContent() != null) {
@@ -412,8 +423,8 @@ $('.duration').change(function(){
 							sb.append("<input type='hidden' value='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"' name='coursecontents'/>");
 							//sb.append("<input type='hidden' value='"+content.getContentId()+"' name='course_"+node.getCourseId()+"_component_"+node.getId()+"_content_"+content.getContentId()+"'/>");
 							 sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startweek' class='start_week' title='Start Week'>"+build_options_for_startweek(node.getDuration())+"</select>");
-							sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='' selected='selected'>Start Day</option><option value='1'>Sunday</option><option value='2'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
-							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_duration' class='duration' title='Duration in Days'/>");
+							sb.append("<select name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_startday' class='start_day' title='Start Day'><option value='1'>Sunday</option><option value='2' selected='selected'>Monday</option><option value='3'>Tuesday</option><option value='4'>Wednesday</option><option value='5'>Thruday</option><option value='6'>Friday</option><option value='7'>Saturday</option></select>");
+							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_duration' class='duration number' title='Duration in Days'/>");
 							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_starts_at' class='starts_at' title='Starts At'/>");
 							sb.append("<input type='text' value='' name='course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+"_note' class='note' title='Note'/></div>");
 					//

@@ -18,3 +18,10 @@
 
 <script type='text/javascript' src='/ziksana-web/resources/js/custom/jqueryeasing.js'></script>
 <script type='text/javascript' src='/ziksana-web/resources/js/fancybox/jquery.fancybox.js'></script>
+<script type="text/javascript" src='/ziksana-web/resources/js/validation/jquery.validate.js'></script>
+<script type="text/javascript" src='/ziksana-web/resources/js/validation/additional-methods.min.js'></script>
+<script>
+$(function(){
+	$('form').validate();
+});
+</script>

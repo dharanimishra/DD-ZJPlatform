@@ -72,14 +72,14 @@
     <url-pattern>*.ico</url-pattern>
   </servlet-mapping>
 
-	 <!-- include prelude.jspf to every jsp -->
+	 <!-- include prelude.jspf to every jsp  -->
 	    <jsp-config>
 	      <jsp-property-group>
 	        <url-pattern>*.jsp</url-pattern>
 	        <include-prelude>/prelude.jspf</include-prelude>
 	      </jsp-property-group>
 	    </jsp-config>  
-    
+   
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list> 

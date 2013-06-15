@@ -73,7 +73,7 @@ public class CoursePlannerController {
 			LOGGER.debug("showTreenode():  courseIds :" + courseIds);
 			List<NestTreeNode> nodeList = courseNestTreeService
 					.getCourseComponent(courseIds);
-
+		
 			for (NestTreeNode node : nodeList) {
 				courseIdValue = node.getCourseId();
 				coursename = node.getCoursename();
@@ -257,7 +257,7 @@ public class CoursePlannerController {
 			planner.setDuration(Integer.parseInt(durationInWeeks));
 			plannerList.add(planner);			
 		}
-		
+		if(components != null){
 		for(String component:components){
 				Planner modPlanner = new Planner();
 				modPlanner.setCourseId(Integer.parseInt(courseId));
@@ -311,11 +311,13 @@ public class CoursePlannerController {
 				
 				plannerList.add(modPlanner);
 			}
-		
+		}
 		
 		//Content
 		String contents[] = request.getParameterValues("coursecontents");
 		List<Planner> saveContentList = new ArrayList<Planner>();
+		
+		if(contents != null){
 		for(String content:contents){
 			//course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+
 			Planner planner1 = new Planner();
@@ -374,7 +376,7 @@ public class CoursePlannerController {
 			saveContentList.add(planner1);
 		}
 		//content end
-		
+		}
 		
 		System.out.println("------------------------------------");
 

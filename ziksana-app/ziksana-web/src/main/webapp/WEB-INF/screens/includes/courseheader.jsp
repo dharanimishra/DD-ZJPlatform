@@ -140,13 +140,27 @@
 						<div id="publishtab" class="lpboxtab1">
 
 							<div class="tbboxheadds">
-
+							
+							<c:if test="${courseId != null}">
+							<c:set var="courseId" value="${fn:split(courseId, '_')}" />
+								<p>
+									<img src="/ziksana-web/resources/images/icons/publish1.png"
+										class="tbboximgds" />
+										<a class="no_text_decoration" href="/ziksana-web/zcourse/1/planner/${courseId[1]}" style="cursor:pointer">
+										<span class="tbboxheadfntpublish">
+											<fmt:message key="course.Publish"/> 
+										</span>
+										</a>
+								</p>
+							 </c:if>
+							 <c:if test="${courseId == null}">
+							
 								<p>
 									<img src="/ziksana-web/resources/images/icons/publish1.png"
 										class="tbboximgds" /><span class="tbboxheadfntpublish">
-										<fmt:message key="course.Publish"/> </span>
+										<fmt:message key="course.Publish"/></span>
 								</p>
-
+							 </c:if>
 							</div>
 							<!--end of tbboxhead  -->
 
@@ -189,3 +203,10 @@
 
 
 			</div>
+<script type="text/javascript">
+function plannerPage(courseId){
+	var str_array = courseId.split('_');
+	
+	window.location.href = "/ziksana-web/zcourse/1/planner"+courseId+"";
+}
+</script>

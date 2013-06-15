@@ -2938,3 +2938,17 @@ padding:3px;
 display: none;
 }
 /* Hide the 4th tab define Assignment */
+
+input.error, select.error, textarea.error {color: red !important;}
+label.error {
+  color: red;
+  position: relative;
+}
+label.error {
+	background: none repeat scroll 0 0 indianred;
+	color: white;
+	border-radius: 3px 3px 3px 3px;
+	display: inline-block;
+	padding: 0 5px;
+	
+}
