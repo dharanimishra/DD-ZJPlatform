@@ -25,7 +25,7 @@
 		$('#spinner1').spinner({
 			numberFormat : "n",
 			min : 0,
-			max : 20,
+			max : 20
 
 		});
 		$('#spinner2').spinner({
@@ -220,7 +220,7 @@ $(document).ready(function() { // On page load
 							key="Course.name" /> </label>
 					<div class="controls">
 						<input type="text" autofocus
-							class="defaultvaluem treeRoot validate[required] editmode"
+							class="defaultvaluem treeRoot validate[required]"
 							id="defaultvalue" maxlength="64"
 							style="width: 240px; margin-left: 10px; color: #666;"
 							tabindex="1" placeholder="<fmt:message key="course.enter.name"/>"
@@ -334,15 +334,15 @@ $(document).ready(function() { // On page load
 				</div>
 			</div>
 			<div class="clearfix"></div>
-			<div class="control-group f-l">
+			<div class="control-group f-l" id="forerror">
 				<label class="control-label nexaf" for="input" style="width: 230px;"><fmt:message
 						key="Specify.CourseDuration" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner3" value="0"
-						style="width: 50px;" maxlength="2"
+						style="width: 50px;" maxlength="2" id="forerror" class="validate[required]"
 						 onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
-				<span class="smalltxt">(in weeks)</span> 
+				<span class="smalltxt">(<fmt:message key="in.week"/>)</span>
 			</div>
 
 
@@ -476,7 +476,15 @@ $(document).ready(function() { // On page load
 	position: relative;
 	top: 81px;
 }
-
+#forerror .formErrorContent {
+   
+  color: red;
+  left: 67px;
+  overflow: auto;
+  position: relative;
+  top: 4px;
+  width: 140px;
+}
 .uploadify-queue {
 	margin-left: 260px
 }
