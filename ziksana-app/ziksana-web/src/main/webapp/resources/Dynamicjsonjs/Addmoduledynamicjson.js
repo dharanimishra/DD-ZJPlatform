@@ -329,7 +329,7 @@ function noteSuccessCallbackaddmodule(data) {
 
 function onSuccessfulModuleCreation(data) {
 	course_id = data.id;
-	if (course_id != '' & course_id != null) {
+	if (course_id != '' || course_id != null) {
 		window.location.href = window.location.href;
 	}
 
@@ -339,11 +339,12 @@ function getSaveandContinue() {
 
 	var course_id = $('#courseid').val();
 	var courseId = course_id.split('_')[1];
-	if (courseId != '' & courseId != null) {
-		window.location.href = '/ziksana-web/zcourse/1/repositorycontents/'
-				+ courseId;
+	
+	console.log("courseId :"+courseId);
+	if (courseId != '' || courseId != null) {
+		window.location.href = '/ziksana-web/zcourse/1/repositorycontents/'+ courseId;
 	} else {
-		window.location.href = '/ziksana-web/zcourse/1/createcourse';
+		window.location.href = '/ziksana-web/zcourse/createcourse';
 	}
 
 }
@@ -352,7 +353,7 @@ function getCancel() {
 
 	var course_id = $('#courseid').val();
 	var courseId = course_id.split('_')[1];
-	if (courseId != '' & courseId != null) {
+	if (courseId != '' || courseId != null) {
 		window.location.href = "/ziksana-web/zcourse/createmodule/" + course_id;
 	} else {
 		window.location.href = "/ziksana-web/zcourse/createcourse";
