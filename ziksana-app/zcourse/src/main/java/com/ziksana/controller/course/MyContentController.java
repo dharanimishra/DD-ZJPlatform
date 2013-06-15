@@ -177,7 +177,7 @@ public class MyContentController {
 			}
 			modelView.addObject("learningContentlist", learningContentlist);
 
-		} catch (CourseException exception) {
+		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -262,7 +262,7 @@ public class MyContentController {
 
 			modelView.addObject("learningContentlist", learningContentlist);
 
-		} catch (CourseException exception) {
+		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -332,7 +332,7 @@ public class MyContentController {
 
 			myContentService.saveOrUpdate(learningContent);
 
-		} catch (CourseException exception) {
+		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -408,7 +408,7 @@ public class MyContentController {
 				myContentService.saveOrUpdate(learningContent);
 			}
 
-		} catch (CourseException exception) {
+		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block

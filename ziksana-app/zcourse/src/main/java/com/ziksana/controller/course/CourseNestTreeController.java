@@ -111,6 +111,9 @@ public class CourseNestTreeController {
 		String coursename = null;
 
 		ModelAndView modelView = new ModelAndView("xml/getchildtree");
+		modelView.addObject("courseIds", courseIds);
+		modelView.addObject("imagePathMap", getImagePathMap());
+		modelView.addObject("cIcon", getCourseIcon());
 
 		try {
 			courseIds = Integer.parseInt(courseId);
@@ -131,14 +134,20 @@ public class CourseNestTreeController {
 			LOGGER.debug(NestTreeNode.debugTrace(treeNodeList));
 
 			modelView.addObject("parentList", treeNodeList);
-			modelView.addObject("courseIds", courseIds);
-			modelView.addObject("imagePathMap", getImagePathMap());
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
 
 		LOGGER.debug("Exiting showMyTreenode(): " + courseId);
 		return modelView;
+	}
+	
+	private String getCourseIcon(){
+		MediaServerURL mediaServerURL = mediaService.getMediaContents();
+		treeImagePath = mediaServerURL.getTreeImagePath() + mediaServerURL.getStaticFileServer();
+		treeImageFolder = treeImagePath + "resources/images/tree_icons/";
+		String courseIcon = treeImageFolder + "course.png";
+		return courseIcon;
 	}
 
 	@RequestMapping(value = "/getenrichtree/{courseId}", method = {
