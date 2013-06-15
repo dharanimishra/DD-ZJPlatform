@@ -73,9 +73,9 @@ public class RecordContentController {
 					mediaServerURL = mediaService.getMediaContents();
 					modelView.addObject("ms", mediaServerURL);
 				} else {
-					return new ModelAndView("redirect:/zcourse/createcourse/"
-							+ courseId + "");
-				}
+					return new ModelAndView("redirect:/zcourse/createmodule/COURSE_"
+							+ courseId);
+					}
 			}
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage() + exception);

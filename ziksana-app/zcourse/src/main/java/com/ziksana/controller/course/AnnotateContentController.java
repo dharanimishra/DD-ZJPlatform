@@ -18,8 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.ContentDecorationType;
 import com.ziksana.domain.course.ContentStatus;
-import com.ziksana.domain.course.ContentType;
-import com.ziksana.domain.course.CourseJsonResponse;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.domain.member.MemberPersona;
@@ -75,8 +73,8 @@ public class AnnotateContentController {
 					mediaServerURL = mediaService.getMediaContents();
 					modelView.addObject("ms", mediaServerURL);
 				} else {
-					return new ModelAndView("redirect:/zcourse/createcourse/"
-							+ courseId + "");
+					return new ModelAndView("redirect:/zcourse/createmodule/COURSE_"
+							+ courseId);
 				}
 			}
 		} catch (ZiksanaException exception) {
