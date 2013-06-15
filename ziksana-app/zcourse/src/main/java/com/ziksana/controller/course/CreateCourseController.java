@@ -107,7 +107,7 @@ public class CreateCourseController {
 				LOGGER.debug("courseCount is :" + courseCount);
 				if (courseCount >= 1) {
 					// Allow user to create a new course
-					iscourseExists = "COURSE EXISTS";
+					iscourseExists = "COURSE ALREADY EXISTS";
 				} else {
 					// Don't allow user to create a new course
 					iscourseExists = "COURSE NOT EXISTS";
