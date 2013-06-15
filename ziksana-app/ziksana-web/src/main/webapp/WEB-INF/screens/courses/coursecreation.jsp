@@ -454,11 +454,12 @@ $(document).ready(function() { // On page load
 }
 
 .formErrorContent {
-	color: red;
-	left: 62px;
-	overflow: auto;
-	position: relative;
-	top: 4px;
+  color: red;
+  left: 62px;
+  overflow: auto;
+  position: absolute;
+  top: 3px;
+  width: 131px;
 }
 </style>
 <script type="text/javascript">
