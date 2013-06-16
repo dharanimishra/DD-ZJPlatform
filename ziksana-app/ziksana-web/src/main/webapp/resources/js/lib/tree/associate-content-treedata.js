@@ -42,6 +42,7 @@ function onButtonClick(menuitemId, type) {
 		getAllLearningContents();
 	} else if (menuaction == "View") {
 		learningContentId = tree.getSelectedItemId().split('_')[1];
+		//console.log("learningContentId First :"+learningContentId);
 		var viewer_url = '';
 		content_type = getLearningContentObject(learningContentId).contentType.toUpperCase();
 		var parentContentId = getLearningContentObject(learningContentId).parentLearningContentId;
@@ -51,7 +52,12 @@ function onButtonClick(menuitemId, type) {
 			//learningContentId = parentContentId;
 			
 		}
-		learningContentId = getBaseLearingContent(learningContentId).id;
+		if(getBaseLearingContent(learningContentId)){
+			learningContentId = getBaseLearingContent(learningContentId).id;
+		}
+		//else{}
+		//console.log("learningContentId second:"+learningContentId);
+		
 		//alert("learningContentId " + learningContentId);
 		
 		if (content_type.toUpperCase() == 'VIDEO') {

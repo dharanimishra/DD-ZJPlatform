@@ -50,12 +50,15 @@
 	function getBaseLearingContent(learningContentId){
 		var jsonString = document.getElementById("learingContents").value;
 		var contentArray = jQuery.parseJSON( jsonString );
+		//console.log("getBaseLearingContent " + learningContentId);
 		for(var i = 0; i<contentArray.length; i++){
-			if(learningContentId == contentArray[i].id && (!contentArray[i].id || contentArray[i].id > 0)){
-				getBaseLearingContent(contentArray[i].id);
+			//console.log("contentArray[i].parentLearningContentId " + contentArray[i].parentLearningContentId + " contentArray[i].id " + contentArray[i].id);
+			if(learningContentId == contentArray[i].id && (contentArray[i].parentLearningContentId > 0)){
+				getBaseLearingContent(contentArray[i].parentLearningContentId);
 			}
 			else{
-				return contentArray[i];
+				//console.log("getBaseLearingContent contentArray[i] " + contentArray[i].id);
+				return getLearningContentObject(learningContentId);
 			}
 		}
 	}

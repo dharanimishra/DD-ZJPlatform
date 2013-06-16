@@ -40,6 +40,9 @@ public class JSONLearningContent {
 			if(learningContent.getLinkedLearningContent() != null){
 				this.parentLearningContentId = learningContent.getLinkedLearningContent().getId();
 			}
+			else{
+				this.parentLearningContentId = 0;
+			}
 		}
 	}
 

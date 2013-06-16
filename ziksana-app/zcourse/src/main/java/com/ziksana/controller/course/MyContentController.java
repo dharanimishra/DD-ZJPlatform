@@ -154,34 +154,39 @@ public class MyContentController {
 					.getToken().getMemberPersonaId().getStorageID()));
 
 			for (int i = 0; i < contentPath.length; i++) {
-				LearningContent learningContent = new LearningContent();
-				learningContent.setAuthoringMember(accountableMember);
-				learningContent.setContentName(contentName[i]);
-				learningContent.setContentPath(contentPath[i]);
-				learningContent.setStatusId(1);
-				learningContent.setActive(true);
-				ContentType contentTypeObj = ContentType
-						.getValueOf(contentTypeName[i].toUpperCase());
-				learningContent.setContentType(contentTypeObj);
-				learningContent.setContentTypeId(contentTypeObj.getID());
-				ContentFormat contentFormat = ContentFormat
-						.getValueOf(contentFormatName[i].toUpperCase());
-				learningContent.setContentFormat(contentFormat);
-				learningContent.setContentFormatId(contentFormat.getID());
-				learningContent.setStatusId(1);
-				learningContent.setRightsOwningMember(accountableMember);
 				try {
-					learningContent.setThumbnailPicturePath(thumbnailPath[i]);
-					learningContent.setNumberOfThumbnails(Integer
-							.parseInt(noOfThumbnails[i]));
-				} catch (Exception e) {
-					LOGGER.error("setThumbnailPicturePath :" + thumbnailPath[i]);
+					LearningContent learningContent = new LearningContent();
+					learningContent.setAuthoringMember(accountableMember);
+					learningContent.setContentName(contentName[i]);
+					learningContent.setContentPath(contentPath[i]);
+					learningContent.setStatusId(1);
+					learningContent.setActive(true);
+					ContentType contentTypeObj = ContentType
+							.getValueOf(contentTypeName[i].toUpperCase());
+					learningContent.setContentType(contentTypeObj);
+					learningContent.setContentTypeId(contentTypeObj.getID());
+					ContentFormat contentFormat = ContentFormat
+							.getValueOf(contentFormatName[i].toUpperCase());
+					learningContent.setContentFormat(contentFormat);
+					learningContent.setContentFormatId(contentFormat.getID());
+					learningContent.setStatusId(1);
+					learningContent.setRightsOwningMember(accountableMember);
+					try {
+						learningContent
+								.setThumbnailPicturePath(thumbnailPath[i]);
+						learningContent.setNumberOfThumbnails(Integer
+								.parseInt(noOfThumbnails[i]));
+					} catch (Exception e) {
+						LOGGER.error("setThumbnailPicturePath :");
 
+					}
+					LearningContent learningCont = myContentService
+							.saveOrUpdate(learningContent);
+					learningContentlist.add(learningCont);
+					modelView.addObject("contentId", learningCont.getId());
+				} catch (Exception e) {
+					LOGGER.error("Content Exception  :" + e);
 				}
-				LearningContent learningCont = myContentService
-						.saveOrUpdate(learningContent);
-				learningContentlist.add(learningCont);
-				modelView.addObject("contentId", learningCont.getId());
 			}
 			modelView.addObject("learningContentlist", learningContentlist);
 
