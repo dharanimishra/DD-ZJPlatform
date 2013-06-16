@@ -80,6 +80,7 @@
 		var unAssociatedContentArray = new Array();
 		
 		var compId = $("#selectedLearningComponentId").val();
+		//alert("compId "+ compId);
 		 
 		var childArrayString = tree.getSubItems('COMPONENT_' + compId );
 		//console.log("contentArray.length" + contentArray.length + "  --------- childArrayString is " + childArrayString);
@@ -90,7 +91,15 @@
 			for(var i=0; i < contentArray.length; i++){
 				var contentItem = contentArray[i];
 				var contentIdString = 'CONTENT_'+ contentItem.id;
-				//console.log("childArrayString.indexOf(contentIdString) " + childArrayString.indexOf(contentIdString));
+				var baseContentId = getBaseLearingContent(contentItem.id).id;
+				//alert("baseContentId " + baseContentId);
+				if(baseContentId > 0){
+					contentIdString = 'CONTENT_'+ baseContentId;
+					continue;
+				}
+				
+				//alert("childArrayString.indexOf(contentIdString) " + childArrayString.indexOf(contentIdString));
+				
 				if(childArrayString.indexOf(contentIdString) == -1){
 					//console.log("in side if contentIdString " + contentIdString);
 					unAssociatedContentArray[j] = contentItem;
@@ -280,7 +289,7 @@
 		var j =0;
 		for(var i=0;i<contentArray.length;i++){
 			//if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
-				if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
+				if(contentArray[i].parentLearningContentId == 0){
 					contentArrayForBaseContent[j] = contentArray[i];
 					j++;
 				}
