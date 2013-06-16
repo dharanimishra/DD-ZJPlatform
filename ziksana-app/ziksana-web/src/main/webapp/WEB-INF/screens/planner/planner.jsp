@@ -125,6 +125,36 @@ input.note {
 #planner_error:not(:empty) { color: red; font-size: 12px; padding: .5em;}
 .duration_error { color: red !important; border: 2px solid red !important}
 </style>
+
+<!-- style for Active Tab for Publish -->
+<style>
+.tbboxheadfntds  {
+    color: #8B8B8B;}
+.tbboxheadfnt {
+    color: #8B8B8B;}
+.tbboxdesc p {
+    color: #B1B1B1;
+    font-family: 'segoe ui',sans-serif;
+    font-size: 14px!important;
+    font-weight: 100;
+}
+.tbboxdesc {
+    float: none;
+    margin-top: 0;
+    width: 328px;
+    
+}
+.tbboxheadfntpublish {
+    color: #4BB1CF;}
+.tbboxdescds p {
+    color: #b1b1b1;
+    font-family: 'Segoe UI Light','Open Sans',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 13px!important;
+}
+.badge-warning{background-color: #999999;}
+#publishtab.badge1{background-color: #F89406}
+</style> 
+
 <script type="text/javascript">
 function saveandcontinue(courseId){
 	
@@ -267,6 +297,24 @@ $('.duration').change(function(){
         duration_input.addClass('duration_error');
         $('#planner_error').html('The node duration <strong>'+duration+'</strong> exceeds its parent node duration of <strong>'+parent_duration+'</strong> Days.').focus();
     } 
+    
+    children_duration_inputs = duration_input.siblings('div.node_title').find('.duration');
+    console.log("hello");
+    console.log(children_duration_inputs);
+    if(children_duration_inputs.length > 0){
+    	console.log('There are child duration inputs');
+    	children_duration_inputs.each(function(){
+    		child_duration = $(this).val();
+    		if(child_duration > duration){ //one of the child duration is higher than the newly added/edited duration
+    			$('#planner_error').html('One of this node\'s child duration ('+child_duration+') is higher than that of the duration ['+duration+'] you have currently added');
+    			duration_input.val('').addClass('duration_error').focus();
+    			return false;
+    		}
+    		
+    	});
+    	
+    } 
+
     
     
 });

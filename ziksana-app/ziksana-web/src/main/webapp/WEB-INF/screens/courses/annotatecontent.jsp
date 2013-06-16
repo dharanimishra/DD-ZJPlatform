@@ -261,16 +261,45 @@
 
 <div class="navheadlp" style="padding-left: 300px;">
 	<ul>
+	<c:if test="${not empty courseId}" >
+	<a class="no_text_decoration" href="/ziksana-web/zcourse/1/annotatecontents/${courseId}" >
+		<li style="margin-left: 40px;color: #f06c0b;">
+			<span><img 
+				src="/ziksana-web/resources/images/navarrow.png"
+				style="margin-right: 10px; height: 22px;"> 
+			</span> Annotate 
+		</li>
+	</a>
+	<a class="no_text_decoration" href="/ziksana-web/zcourse/1/recordcontents/${courseId}" >
+		<li >
+			<span><img
+					src="/ziksana-web/resources/images/navarrowb.png"
+					style="margin-right: 10px; height: 22px;"> 
+			</span> Record
+		</li>
+		</a>
+		<a class="no_text_decoration" href="/ziksana-web/zcourse/1/enrichcontents/${courseId}" >
+		<li>
+			<span><img
+					src="/ziksana-web/resources/images/navarrowb.png"
+					style="margin-right: 10px;width:22px; height: 22px;"> 
+			</span> Enrich
+		</li>
+		</a>
+	</c:if>
+	<c:if test="${empty courseId}" >
+	
 		<li style="margin-left: 40px;color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px; height: 22px;"> </span> Annotate </li>
+
 		<li ><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span> Record</li>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px;width:22px; height: 22px;"> </span> Enrich</li>
-
+	</c:if>
 	</ul>
 
 </div>

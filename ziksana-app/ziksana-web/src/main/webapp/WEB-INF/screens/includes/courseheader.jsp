@@ -70,7 +70,7 @@
 
 						<div class="bordertop"></div>
 						<!--end of bordertop-->
-					
+					<c:if test="${empty courseId}">
 	 					<a class="no_text_decoration" href="/ziksana-web/zcourse/createcourse" >	
 						<div id="buildtab" class="lpboxtab1 all-box-shadow" style="">
 
@@ -103,6 +103,41 @@
 						</div>
 						<!--end of lptab1 -->
 					</a>
+					</c:if>
+					<c:if test="${not empty courseId}">
+						<a class="no_text_decoration" href="/ziksana-web/zcourse/editcourse/COURSE_${courseId}" >	
+						<div id="buildtab" class="lpboxtab1 all-box-shadow" style="">
+
+							<div class="tbboxhead">
+
+								<p>
+									<img src="/ziksana-web/resources/images/icons/toola.png"
+										class="tbboximg" /><span class="tbboxheadfnt"> <fmt:message key="course.Define"/>
+									</span>
+								</p>
+
+							</div>
+							<!--end of tbboxhead  -->
+
+							<div class="tbboxnum">
+
+								<span class="badge1 badge-warning" style="font-size: 15px;">
+									1. </span>
+							</div>
+							<!--end of tbboximg  -->
+
+							<div class="tbboxdesc">
+
+								<p><fmt:message key="course.structre.content"/></p>
+
+							</div>
+							<!--end of tbboxdesc  -->
+
+
+						</div>
+						<!--end of lptab1 -->
+					</a>
+					</c:if>	
 				<c:if test="${courseId != null}">
 							<c:if test="${fn:contains(courseId, 'COURSE')}">
 								<c:set var="annotate" value="${fn:split(courseId, '_')}" />

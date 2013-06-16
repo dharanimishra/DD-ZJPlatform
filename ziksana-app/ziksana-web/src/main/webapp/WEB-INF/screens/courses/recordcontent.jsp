@@ -70,7 +70,30 @@
 	
 
 
- 
+ <style>
+.tbboxheadfnt {
+    color: #8B8B8B;}
+.tbboxdesc p {
+    color: #B1B1B1;
+    font-family: 'segoe ui',sans-serif;
+    font-size: 14px!important;
+    font-weight: 100;
+}
+.tbboxdesc {
+    float: none;
+    margin-top: 0;
+    width: 328px;
+}
+.tbboxheadfntds {
+    color: #4BB1CF;}
+.tbboxdescds p {
+    color: #4BB1CF;
+    font-family: 'Segoe UI Light','Open Sans',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 13px!important;
+}
+.badge-warning{background-color: #999999;}
+#enrichtab .badge1{background-color: #F89406}
+</style> 
 <style>
 .ds {
 	margin-left: 40px;
@@ -238,16 +261,45 @@
 
 <div class="navheadlp" style="padding-left: 300px;">
 	<ul>
-		<li style="margin-left: 40px;"><span><img
+	<c:if test="${not empty courseId}" >
+	<a class="no_text_decoration" href="/ziksana-web/zcourse/1/annotatecontents/${courseId}" >
+		<li >
+			<span><img 
+				src="/ziksana-web/resources/images/navarrowb.png"
+				style="margin-right: 10px; height: 22px;"> 
+			</span> Annotate 
+		</li>
+	</a>
+	<a class="no_text_decoration" href="/ziksana-web/zcourse/1/recordcontents/${courseId}" >
+		<li style="margin-left: 40px;color: #f06c0b;">
+			<span><img
+					src="/ziksana-web/resources/images/navarrow.png"
+					style="margin-right: 10px; height: 22px;"> 
+			</span> Record
+		</li>
+		</a>
+		<a class="no_text_decoration" href="/ziksana-web/zcourse/1/enrichcontents/${courseId}" >
+		<li>
+			<span><img
+					src="/ziksana-web/resources/images/navarrowb.png"
+					style="margin-right: 10px;width:22px; height: 22px;"> 
+			</span> Enrich
+		</li>
+		</a>
+	</c:if>
+	<c:if test="${empty courseId}" >
+	
+		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span> Annotate </li>
-		<li style="color: #f06c0b;"><span><img
+
+		<li style="margin-left: 40px;color: #f06c0b;"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
 				style="margin-right: 10px; height: 22px;"> </span> Record</li>
-		<li ><span><img
+		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px;width:22px; height: 22px;"> </span> Enhance</li>
-
+				style="margin-right: 10px;width:22px; height: 22px;"> </span> Enrich</li>
+	</c:if>
 	</ul>
 
 </div>
