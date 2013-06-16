@@ -215,7 +215,9 @@ function get_and_populate_planner_data(courseId){
 
 
 $(function(){
-
+//Active Tab for left side menu
+$('#navcourse').addClass('active');
+	
 //reset planner node values
 $('.start_week, .start_day').val('0');
 $('.duration:not(#course_duration_in_days), .starts_at').val('');

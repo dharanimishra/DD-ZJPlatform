@@ -136,8 +136,13 @@
 						</div>
 						<!--end of lptab1-->
 						<c:if test="${courseId != null}">
-							<c:set var="courseId" value="${fn:split(courseId, '_')}" />
- 						<a class="no_text_decoration" href="/ziksana-web/zcourse/1/planner/${courseId[1]}" >	
+							<c:if test="${fn:contains(courseId, 'COURSE')}">
+								<c:set var="id" value="${fn:split(courseId, '_')}" />
+	 							<a class="no_text_decoration" href="/ziksana-web/zcourse/1/planner/${id[1]}" >
+							</c:if>
+							<c:if test="${not fn:contains(courseId, 'COURSE')}">
+	 							<a class="no_text_decoration" href="/ziksana-web/zcourse/1/planner/${courseId}" >
+	 						</c:if>	
 						<div id="publishtab" class="lpboxtab1">
 
 							<div class="tbboxheadds">

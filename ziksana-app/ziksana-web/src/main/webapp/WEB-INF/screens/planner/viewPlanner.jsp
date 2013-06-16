@@ -278,6 +278,9 @@ function create_node_unique_id(course_id, component_id, content_id){
 }
 
 $(function(){
+	//Active Tab for left side menu
+	$('#navcourse').addClass('active');
+	
 	$( document ).tooltip(); //enable tooltip
 	
 	get_and_populate_planner_data($('#courseId').val());
