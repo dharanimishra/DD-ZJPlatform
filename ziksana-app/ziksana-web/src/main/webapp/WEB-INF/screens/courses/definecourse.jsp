@@ -166,11 +166,14 @@
 						key="Associate.content" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
-			<li><a
-				href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
+			<li>
+       		<c:set var="id" value="${fn:split(courseId, '_')}" />
+				<a
+				href="/ziksana-web/zcourse/1/repositorycontents/${id[1]}"><span><img
 						src="/ziksana-web/resources/images/navarrowb.png"
 						style="margin-right: 10px; height: 22px;"> </span> <fmt:message
-						key="Associate.content" /></a></li>
+						key="Associate.content" /></a>
+			</li>
 		</c:if>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
