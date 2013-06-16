@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,8 +65,9 @@ public class PlayBookController {
 		    fileName = course.getName().replaceAll(" ", "");
 		   }
 		  fileName = fileName+".pdf";
+		  String userName = (String) RequestContextHolder.currentRequestAttributes().getAttribute("userName", RequestAttributes.SCOPE_SESSION);
 		 System.out.println("downloading file name " + fileName);
-		 String htmlViewURL ="http://localhost:8080/ziksana-web/zplaybook/unsecure/pdfviewHtml/"+courseId;
+		 String htmlViewURL ="http://localhost:8080/ziksana-web/zplaybook/unsecure/pdfviewHtml/"+courseId+"?userName="+userName;
 		 System.out.println("htmlViewURL " + htmlViewURL);
 		 File file = new File(resourcePath+"/" +courseId);
 		 if(!file.exists()){
@@ -133,8 +135,8 @@ public class PlayBookController {
 	}
 
 	@RequestMapping(value = "/unsecure/pdfviewHtml/{courseId}", method =RequestMethod.GET)
-	public ModelAndView pdfviewHtml(@PathVariable Integer courseId){
-		String userName = (String) RequestContextHolder.currentRequestAttributes().getAttribute("userName", RequestAttributes.SCOPE_SESSION);
+	public ModelAndView pdfviewHtml(@PathVariable Integer courseId,@RequestParam String userName){
+		//String userName = (String) RequestContextHolder.currentRequestAttributes().getAttribute("userName", RequestAttributes.SCOPE_SESSION);
 		Member member = memberService.getMemberByUser(userName);
 		Course course = courseService.getCourseByCourseId(courseId);
 		System.out.println("##############current loggedin user" + userName);
