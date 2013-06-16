@@ -140,8 +140,9 @@ font-weight: bold;}
 <div class="imgcontent">
 <div class="imgcontentL">
 <div class="userimg">
-222${member.picturePath}222
  <div style="overflow:hidden;text-align:center;width:90%;padding:6px;">
+ 
+ <!-- img src="http://54.243.235.88/zikload-xml/uploads${member.picturePath}"  class="borderRb"-->
   <img src="/ziksana-web/resources/images/playbook/usericon.png"  class="borderRb">
   <p>
     <label>${member.firstName }&nbsp; ${member.lastName }</label>
@@ -160,7 +161,10 @@ font-weight: bold;}
 </div>
 </div>
 </div>
- <div class="imgcontentR" style="float:left;width:70%;text-align:right;margin-left:10px;"><img src="/ziksana-web/resources/images/playbook/medicalproffesional.png"></div>
+ <div class="imgcontentR" style="float:left;width:70%;text-align:right;margin-left:10px;">
+ <img src="/ziksana-web/resources/images/playbook/medicalproffesional.png">
+ <!--  img src="http://54.243.235.88/zikload-xml/uploads${course.thumbnailPicturePath}" -->
+ </div>
 </div>
 <div class="Clearfix"></div>
 <div class="coursedescription" id="cd">

@@ -57,9 +57,16 @@ public class PlayBookController {
 	public void downloadPlayBook(@PathVariable Integer courseId, HttpServletResponse response ){
 		 System.out.println("this is path variable..  "+ courseId);
 		 String resourcePath = context.getRealPath("/static/playbook");
+		 System.out.println("resourcePath " + resourcePath);
 		 Course course = courseService.getCourseByCourseId(courseId);
-		 String fileName = course.getName()+".pdf";
+		 String fileName = "pdffile"; 
+		   if(course.getName()!=null){
+		    fileName = course.getName().replaceAll(" ", "");
+		   }
+		  fileName = course.getName()+".pdf";
+		 System.out.println("downloading file name " + fileName);
 		 String htmlViewURL ="http://localhost:8080/ziksana-web/zplaybook/unsecure/pdfviewHtml/"+courseId;
+		 System.out.println("htmlViewURL " + htmlViewURL);
 		 File file = new File(resourcePath+"/" +courseId);
 		 if(!file.exists()){
 			file.mkdirs();
