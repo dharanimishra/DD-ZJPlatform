@@ -207,10 +207,17 @@ $(document).ready(function() { // On page load
 									content_type_name, thumbnail_path,
 									no_of_thumbnails) {
 
-								thumbnail_image_src = '${ms.url}'
-										+ content_path;
-								if (content_type_name !== 'IMAGE') {
-									thumbnail_image_src = '${staticFileServer}resources/images/genetics.jpg';
+								thumbnail_image_src = '${ms.url}'+ content_path;
+								if (content_type_name == 'VIDEO') {
+									thumbnail_image_src = '${staticFileServer}resources/images/preview/video.png';
+								} else if(content_type_name == 'AUDIO'){
+									thumbnail_image_src = '${staticFileServer}resources/images/preview/audio.png';
+								} else if(content_type_name == 'PPT'){
+									thumbnail_image_src = '${staticFileServer}resources/images/preview/ppt.png';
+								} else if(content_type_name == 'DOC'){
+									thumbnail_image_src = '${staticFileServer}resources/images/preview/doc.png';
+								} else if(content_type_name == 'PDF'){
+									thumbnail_image_src = '${staticFileServer}resources/images/preview/pdf.png';
 								}
 
 								div_html = '<div class="preview_uploaded_content">';

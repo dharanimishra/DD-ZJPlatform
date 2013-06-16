@@ -73,6 +73,8 @@
 		<% 
 		}%>
 	  <div class="uploadphoto pull-left" style="width: 350px">
+	  
+	  
 				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/preview/image.png" style="width: 100px;" align="left" />
 				<div id="message_<%=content.getId()%>"></div>
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
