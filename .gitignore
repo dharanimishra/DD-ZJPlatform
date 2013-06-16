@@ -9,7 +9,6 @@
 *.zip
 *.tar
 *.tar.gz
-*.swf
 
 # media files
 *.flv
