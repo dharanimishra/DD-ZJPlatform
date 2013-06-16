@@ -373,7 +373,7 @@
 									<!--end of paginationbutton-->
 
 									<p style="text-align: right; clear: both;margin-top:10px">
-										<a target="" style="" onClick="associateContents()" class="btn btn-info" href="#">Associate Content</a> 
+										<a id="associate-content-anchor" target="" style="" onClick="associateContents()" class="btn btn-info" href="#">Associate Content</a> 
 											<a target="" style="" href="#" onClick="resetCheckBoxes()" class="btn btn-danger">Cancel</a>
 									</p>
 									 

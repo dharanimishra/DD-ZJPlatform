@@ -48,6 +48,14 @@ function getOtherLearningContents(contentType, pageIndex) {
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
 	console.log("noOfPages " + noOfPages);
 
+	if(contentArrayBasedOnContentType.length ==0){
+		setNoContentFoundText(contentType);
+		//$("#content_type_filter").hide();
+	}
+	else{
+		setNoContentFoundText('');
+		$("#content_type_filter").show();
+	}
 	
 	
 	if(contentArrayBasedOnContentType.length > itemsPerPage){
@@ -109,9 +117,11 @@ function getLearningContentsByType(contentType, pageIndex) {
 	
 	if(contentArrayBasedOnContentType.length ==0){
 		setNoContentFoundText(contentType);
+		//$("#content_type_filter").hide();
 	}
 	else{
 		setNoContentFoundText('');
+		$("#content_type_filter").show();
 	}
 	
 	
@@ -169,9 +179,11 @@ function getAllLearningContents(pageIndex) {
 	
 	if(contentArrayWithoutParent.length ==0){
 		setNoContentFoundText("ALL");
+		$("#content_type_filter").hide();
 	}
 	else{
 		setNoContentFoundText('');
+		$("#content_type_filter").show();
 	}
 	
 	if(contentArrayWithoutParent.length > itemsPerPage){

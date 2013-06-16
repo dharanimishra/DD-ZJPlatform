@@ -142,7 +142,7 @@
 <a href="/ziksana-web/zcourse/1/createcontent" style="width:150px;margin-top:6px;font-weight:bold"><fmt:message key="Create.New.Content"/> </a>
  </div>
 	<div class="isotophead pull-right">
-		<div class="isotoplinks">
+		<div class="isotoplinks" id="content_type_filter">
 			<a href="#" class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a>|<a
 				href="#" onclick="getLearningContentsByType('VIDEO')"><fmt:message key="Video.txt"/></a>|<a href="#" onclick="getLearningContentsByType('LINK')"><fmt:message key="web.link"/></a>|<a href="#"
 				onclick="getOtherLearningContents('Others')"><fmt:message key="other.txt"/></a>

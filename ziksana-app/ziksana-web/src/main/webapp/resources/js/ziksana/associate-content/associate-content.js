@@ -144,9 +144,13 @@
 		
 		if(unAssociatedContentArray.length ==0){
 			setNoContentFoundText(contentType);
+			//$("#content_type_filter").hide();
+			$("#associate-content-anchor").hide();
 		}
 		else{
 			setNoContentFoundText('');
+			//$("#content_type_filter").show();
+			$("#associate-content-anchor").show();
 		}
 		
 		if(unAssociatedContentArray.length > itemsPerPage){
@@ -215,9 +219,13 @@
 
 		if(unAssociatedContentArray.length ==0){
 			setNoContentFoundText(contentType);
+			//$("#content_type_filter").hide();
+			//$("#associate-content-anchor").hide();
 		}
 		else{
 			setNoContentFoundText("");
+			//$("#content_type_filter").show();
+			$("#associate-content-anchor").show();
 		}
 		
 		if(unAssociatedContentArray.length > itemsPerPage){
@@ -287,9 +295,13 @@
 		if(unAssociatedContentArray.length ==0){
 			setNoContentFoundText("ALL");
 			//alert("This is " + setNoContentFoundText("ALL"));
+			$("#content_type_filter").hide();
+			$("#associate-content-anchor").hide();
 		}
 		else{
 			setNoContentFoundText("");
+			$("#content_type_filter").show();
+			$("#associate-content-anchor").show();
 		}
 		
 		if( unAssociatedContentArray.length > itemsPerPage ){

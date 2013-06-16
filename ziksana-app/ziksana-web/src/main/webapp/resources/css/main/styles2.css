@@ -354,9 +354,12 @@ body {
 }
 
 .isotophead {
-	padding: 10px;
 	height: 40px;
 	background-color: #00F;
+}
+
+.isotoplinks a {
+    line-height: 40px;
 }
 
 .previewarea {
