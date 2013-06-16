@@ -69,7 +69,7 @@
 						//Course Name Validation for Duplication while creating a course
 						$('#defaultvalue')
 								.not('.editmode')
-								.focusout(
+								.change(
 										function() {
 											var courseId = $('#courseid').val();
 											var courseName = $('#defaultvalue')
