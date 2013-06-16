@@ -290,7 +290,9 @@ label.error {
   position: relative;
   top: 3px;
 }
-
+input.error {
+    color: #555 !important;
+}
 .weblink_row { padding: .5em;}
 #web_link_container div.weblink_row:nth-child(even) {
   background: none repeat scroll 0 0 #CCCCCC;
