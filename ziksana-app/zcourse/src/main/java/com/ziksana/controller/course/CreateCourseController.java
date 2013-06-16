@@ -322,7 +322,7 @@ public class CreateCourseController {
 				courseDurationUnit = Integer.parseInt(CourseDurationUnit);
 			}
 
-			if (courseId != null && courseId !=0) {
+			if (courseId != null && courseId != 0) {
 				course.setCourseId(courseId);
 				course.setName(CourseName);
 				course.setDescription(CourseDescription);
@@ -806,35 +806,30 @@ public class CreateCourseController {
 		return json;
 	}
 
-	@RequestMapping(value = "/removecourse/{courseId}", method = {
-			RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "1/removecourse", method = { RequestMethod.GET,
+			RequestMethod.POST })
 	public @ResponseBody
-	CourseJsonResponse removeCourse(@PathVariable String courseId)
+	void removeCourse(
+			@RequestParam(value = "courseId", required = true) String courseId)
 			throws CourseException {
 		LOGGER.debug("Entering Class " + getClass()
 				+ " removeCourse(): CourseId :" + courseId);
 
-		CourseJsonResponse json = new CourseJsonResponse();
+		Integer courseid = 0;
 		try {
-			Integer courseIds = 0;
-			try {
-				courseIds = Integer.parseInt(courseId.split("_")[1]);
-			} catch (NumberFormatException nfe) {
-				LOGGER.debug(" Class :" + getClass()
-						+ " Method: removeCourse : NumberFormatException" + nfe);
-			}
-			courseService.removeCourse(courseIds);
-
-			json.setId(courseId);
-			json.setResponse("success");
-		} catch (ZiksanaException exception) {
+			courseid = Integer.parseInt(courseId);
+		} catch (Exception exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		try {
+			courseService.removeCourse(courseid);
+		} catch (Exception exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
 
 		LOGGER.debug("Class :" + getClass()
 				+ " Method removeCourse : After courseService: CourseId :"
 				+ courseId);
-		return json;
 
 	}
 

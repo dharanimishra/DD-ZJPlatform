@@ -81,7 +81,7 @@ public interface CourseMapper {
 	 */
 	@Select({
 			"select id, memberroleid, name, description, coursestatus, contentsecurityneededindicator, courseduration, ThumbnailPicturePath",
-			" from corcourse where memberroleid = #{memberPersonaId,jdbcType=INTEGER}" })
+			" from corcourse where memberroleid = #{memberPersonaId,jdbcType=INTEGER} and isdelete = false" })
 	@Results(value = {
 			@Result(property = "courseId", column = "id"),
 			@Result(property = "accountableMember.memberRoleId", column = "memberroleid"),
