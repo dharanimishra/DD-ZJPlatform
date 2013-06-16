@@ -178,14 +178,14 @@ $(document).ready(function() { // On page load
 						
 						<!--end of uploadphoto-->
 						<div class="rowfields pull-left">
-							<ul>
-								<li>
+							<ul style="overflow: hidden; position: absolute; width: 500px;">
+								<li style="width: 180px;">
 								<input type="hidden" name="contentPath[]" value=""/>
 								<input type="text" placeholder="Enter Name"
-									name="contentName[]" class="validate[required]"
+									name="contentName[]" class="required validate[required]"
 									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
-								<li><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
-									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" class="validate[required]"/></li>
+								<li style="width: 180px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
+									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" class="required validate[required]"/></li>
 								<li><a href="#" class="editdetailsweblink">Edit Details</a></li>
 							</ul>
 						</div>
@@ -282,7 +282,14 @@ a.remove_this:hover {
 	cursor: pointer !important;
 	width: 130px !important;
 }
-label.error{color:#d14836;font-size:12px;margin-left:2px}
+label.error {
+  background: none repeat scroll 0 0 transparent;
+  color: #D14836;
+  font-size: 12px;
+  margin-left: 2px;
+  position: relative;
+  top: 3px;
+}
 
 .weblink_row { padding: .5em;}
 #web_link_container div.weblink_row:nth-child(even) {
