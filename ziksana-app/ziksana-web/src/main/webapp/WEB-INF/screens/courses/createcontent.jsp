@@ -218,6 +218,8 @@ $(document).ready(function() { // On page load
 									thumbnail_image_src = '${staticFileServer}resources/images/preview/doc.png';
 								} else if(content_type_name == 'PDF'){
 									thumbnail_image_src = '${staticFileServer}resources/images/preview/pdf.png';
+								} else {
+									thumbnail_image_src = '${staticFileServer}resources/images/preview/image.png';					
 								}
 
 								div_html = '<div class="preview_uploaded_content">';
