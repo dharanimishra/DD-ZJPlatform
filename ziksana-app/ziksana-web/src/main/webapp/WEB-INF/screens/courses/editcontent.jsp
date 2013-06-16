@@ -144,7 +144,7 @@
 
  <!--end of uploadphoto--> 
  <div class="uploaded_file_contents">
- 	<div class="rowfields pull-left"> 
+ 	<div class="rowfields pull-left" style="height: 145px;"> 
  	<ul>
 		<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
 			<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
