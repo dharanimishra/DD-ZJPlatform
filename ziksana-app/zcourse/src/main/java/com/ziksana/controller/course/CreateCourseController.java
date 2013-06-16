@@ -307,8 +307,12 @@ public class CreateCourseController {
 			// Creating Course Object for adding parameters
 			Course course = new Course();
 
-			if (!"".equals(CourseId) && CourseId != null) {
+			try {
 				courseId = Integer.parseInt(CourseId.split("_")[1]);
+				LOGGER.info("Course id  exist :" + courseId);
+			} catch (Exception e) {
+				LOGGER.info("Course id not exist :" + e);
+
 			}
 
 			if (!"".equals(CourseDuration) && CourseDuration != null) {
@@ -318,7 +322,7 @@ public class CreateCourseController {
 				courseDurationUnit = Integer.parseInt(CourseDurationUnit);
 			}
 
-			if (courseId > 0) {
+			if (courseId != null && courseId !=0) {
 				course.setCourseId(courseId);
 				course.setName(CourseName);
 				course.setDescription(CourseDescription);

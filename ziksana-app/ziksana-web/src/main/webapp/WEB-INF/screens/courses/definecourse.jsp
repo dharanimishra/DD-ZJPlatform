@@ -65,7 +65,7 @@
 					function() {
 
 						//Fetch course details and populate the form
-						getCourse();
+					
 						//Course Name Validation for Duplication while creating a course
 						$('#defaultvalue')
 								.not('.editmode')

@@ -143,36 +143,38 @@
 					</div>
 
  <!--end of uploadphoto--> 
- 
- <div class="rowfields pull-left"> <ul>
-	<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
-		<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
-	</li> 
-	<li><a href="#linkurl"  class="editdetailuplbtn">Edit Details</a></li>
+ <div class="uploaded_file_contents">
+ 	<div class="rowfields pull-left"> 
+ 	<ul>
+		<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
+			<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
+		</li> 
+		<li><a class="editdetailuplbtn toggle_details">Edit Details</a></li>
 	</ul> 
 	</div> 
-<div class="clearfix"></div> 
 
-<div class="editslideup1"> 
-	<div class="editslide pull-left"> 
-	<textarea rows="4" cols="12"
-	style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" placeholder="Details for the upload image"></textarea>
-	</div> 
-	<div class="editslide pull-left" style="margin-left: 5px;">
-	 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
+	<div class="editslideup1 clearfix details" style="display:none"> 
+		<div class="editslide pull-left"> 
+		<textarea rows="4" cols="12"
+		style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" placeholder="Details for the upload image"></textarea>
+		</div> 
+		<div class="editslide pull-left" style="margin-left: 5px;">
+			 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
+			
+			<select
+				class="Careaddl select" name="content_area[]"> <option>Specify Area</option>
+			</select> <br> 
+			<select class="select Csubjectddl" name="content_subject[]"> <option>Specify
+			Subject</option> </select> 
+			
+			<select class="select Ctopicddl" name="content_topic[]" > <option>Specify
+			Topic</option> </select>
+		
+		</div> 
+
+	</div> <!--end of continaer--> 
 	
-	<select
-	class="Careaddl select" name="content_area[]"> <option>Specify Area</option>
-</select> <br> 
-<select class="select Csubjectddl" name="content_subject[]"> <option>Specify
-Subject</option> </select> 
-
-<select class="select Ctopicddl" name="content_topic[]" > <option>Specify
-Topic</option> </select>
-
-</div> 
-
-</div> <!--end of continaer--> 
+</div>	
 
  <% if(i%2==0) {%> 
 		</div>
@@ -275,4 +277,22 @@ table tr td {
 .uploadify{left:0px!important}
 .editdetailuplbtn:hover{color:#ccc!important;text-decoration:none}
 </style>
+
+<script type="text/javascript">
+$(function(){
+
+
+$('.toggle_details').on('click', function(){
+	toggle_handle = $(this);
+	parent_container = toggle_handle.parents('.uploaded_file_contents');
+	details_container = parent_container.find('div.details');
+	if(details_container.is(':visible')){ //details container is visible
+		details_container.hide();
+	} else {
+		details_container.show();
+	}
+});
+
+});//end of doc ready
+</script>
  
