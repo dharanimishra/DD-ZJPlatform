@@ -109,7 +109,15 @@ function onButtonClick(menuitemId, type) {
 		}
 		//console.log();
 		if("VIDEO" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
-			alert("Video annotation is not supported for this version.");
+			alert("Annotation over a Video is not supported for this version. At the moment we only support documents.");
+			return;
+		}
+		if("AUDIO" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
+			alert("Annotation over an Audio is not supported for this version. At the moment we only support documents.");
+			return;
+		}
+		if("IMAGE" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
+			alert("Annotation over an Image is not supported for this version. At the moment we only support documents.");
 			return;
 		}
 		

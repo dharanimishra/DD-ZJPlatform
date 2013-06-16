@@ -172,10 +172,18 @@ function onButtonClick(menuitemId, type) {
 		}
 		//console.log();
 		if("VIDEO" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
-			alert("Video recording is not supported for this version.");
+			alert("Recording over a Video is not supported for this version. At the moment we only support documents.");
 			return;
 		}
-		
+		if("AUDIO" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
+			alert("Recording over an Audio is not supported for this version. At the moment we only support documents.");
+			return;
+		}
+		if("IMAGE" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
+			alert("Recording over an Image is not supported for this version. At the moment we only support documents.");
+			return;
+		}
+			
 		ff_open_player();
 		//alert("tomorrow never dies");
 
