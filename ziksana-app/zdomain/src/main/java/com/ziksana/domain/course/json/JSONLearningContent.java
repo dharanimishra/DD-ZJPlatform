@@ -24,7 +24,12 @@ public class JSONLearningContent {
 	public JSONLearningContent(LearningContent learningContent){
 		
 		if(learningContent != null){
-			this.setContentDescription(learningContent.getContentDescription());
+			if(learningContent.getContentDescription() != null){
+				this.setContentDescription(learningContent.getContentDescription());
+			}
+			else{
+				this.setContentDescription("");
+			}
 			this.setContentName(learningContent.getContentName());
 			this.setContentType(learningContent.getContentType().getName());
 			//bad need to handle correctly but for now it is like that as we may have some old data.

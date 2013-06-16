@@ -176,10 +176,10 @@
 	</definition>
 
 	<!-- Metro Enhance Content -->
-	<definition name="masterenhancecontent" extends="course-ziksana-master">
-		<put-attribute name="master_title" value="Enhance Content" />
+	<definition name="masterenrichcontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Enrich Content" />
 		<put-attribute name="content"
-			value="/WEB-INF/screens/courses/enhancecontent.jsp" />
+			value="/WEB-INF/screens/courses/enrichcontent.jsp" />
 	</definition>
 
 	<!-- Planner -->
@@ -295,10 +295,10 @@
 	</definition>
 
 	<!-- Metro Enhance Content -->
-	<definition name="enhancecontent" extends="course-ziksana-master">
-		<put-attribute name="master_title" value="Enhance Content" />
+	<definition name="enrichcontent" extends="course-ziksana-master">
+		<put-attribute name="master_title" value="Enrich Content" />
 		<put-attribute name="content"
-			value="/WEB-INF/screens/courses/enhancecontent.jsp" />
+			value="/WEB-INF/screens/courses/enrichcontent.jsp" />
 	</definition>
 
 	<!-- Enrich Content Page -->

@@ -17,7 +17,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/Menu/menu_ext.js"></script>
 <script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/tree/record-content-treedata.js"></script>
+	src="${staticFileServer}resources/js/lib/tree/enrich-content-treedata.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
 	
@@ -64,7 +64,7 @@
 
 
 <script type="text/javascript"
-	src="${staticFileServer}resources/js/ziksana/associate-content/associate-content.js"></script>
+	src="${staticFileServer}resources/js/ziksana/enhance-content/enrich-content.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
 	
@@ -241,12 +241,12 @@
 		<li style="margin-left: 40px;"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span> Annotate </li>
-		<li style="color: #f06c0b;"><span><img
-				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px; height: 22px;"> </span> Record</li>
 		<li ><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px;width:22px; height: 22px;"> </span> Enhance</li>
+				style="margin-right: 10px; height: 22px;"> </span> Record</li>
+		<li style="color: #f06c0b;"><span><img
+				src="/ziksana-web/resources/images/navarrow.png"
+				style="margin-right: 10px;width:22px; height: 22px;"> </span> Enrich</li>
 
 	</ul>
 
@@ -279,9 +279,6 @@
 			 
 			<!-- #leftPane -->
 			<div id="rightPane">
-				<div id="recorded_content_container" style="display:none;width:100%">
-					<iframe src="" width="1050" height="591"></iframe>
-				</div>
 				<div class="definecontainer" id="definetab">
 				<form onload="" id="associateContentForm" action="/ziksana-web/zcourse/1/associatecontent" method="POST">
 					<input type="hidden" id="courseid" value="${courseId}" /> 
@@ -343,7 +340,7 @@
 									<div id="pageNumbers" class="paginationbutton f-r" style="padding:10px">
 									</div>
 									<!--end of paginationbutton-->
-
+									</p>
 								</div>
 								<!--end of associatewrapper-->
 
@@ -373,7 +370,7 @@
 		<!-- END FORM -->
 
 									<p style="text-align: right; clear: both;margin-top:10px">
-										<a href='${staticFileServer}zcourse/1/enrichcontents/${courseId}' class="btn btn-info">Save and Continue</a>
+										<a href='${staticFileServer}zcourse/1/planner/${courseId}' class="btn btn-info">Save and Continue</a>
 									</p>
 	</div>
 	<!--End of contentarea -->
