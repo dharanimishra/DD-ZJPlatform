@@ -254,7 +254,7 @@ public class CoursePlannerController {
 	}
 
 	
-	@RequestMapping(value = "1/submitplanner")
+	@RequestMapping(value = "1/submitplanner" ,params="savePlanner")
 	public String submitCoursePlanner(HttpServletRequest request) {
 		String response = null;
 		String nodeId = null;
@@ -442,6 +442,197 @@ public class CoursePlannerController {
 		return response;
 	}
 	
+	//Save And Continue Duplication
+	
+	@RequestMapping(value = "1/submitplanner" ,params="savePlannerAndContinue")
+	public String saveAndContinueCoursePlanner(HttpServletRequest request) {
+		String response = null;
+		String nodeId = null;
+		String startWeek = null;
+		String startday = null;
+		String startsAt = null;
+		String duration = null;
+		String note = null;
+		
+		int saveResponse = 0;
+		
+		List<Planner> plannerList = new ArrayList<Planner>();
+		String courseId = request.getParameter("course_id");
+		String durationInWeeks = request.getParameter(""+courseId+"courseDuration");
+		String components[] = request.getParameterValues("coursecomponents");
+		if (courseId != null) {
+			Planner planner = new Planner();
+			planner.setCourseId(Integer.parseInt(courseId));
+			planner.setDuration(Integer.parseInt(durationInWeeks));
+			plannerList.add(planner);			
+		}
+		if(components != null){
+		for(String component:components){
+				Planner modPlanner = new Planner();
+				modPlanner.setCourseId(Integer.parseInt(courseId));
+				//course-"+node.getCourseId()+"_component-"+node.getId()
+				String moduleComponentId[] = component.split("-");
+				modPlanner.setLearningComponentId(Integer.parseInt(moduleComponentId[2]));
+				
+				startWeek = request.getParameter(component+"_startweek");
+				
+				if (!"".equals(startWeek) && startWeek != null) {
+					modPlanner.setStartWeek(startWeek);
+				}
+				startday = request.getParameter(component+"_startday");
+				
+				if (!"".equals(startday) && startday != null) {
+
+					modPlanner.setStartDay(startday);
+				}
+				
+				duration =  request.getParameter(component+"_duration");
+				if (!"".equals(duration) && duration != null) {
+
+					modPlanner.setDuration(Integer.parseInt(duration));
+				}
+				startsAt = request.getParameter(component+"_starts_at");
+				if (!"".equals(startsAt) && startsAt != null) {
+
+					modPlanner.setStartsAt(startsAt);
+				}
+				note =  request.getParameter(component+"_note");
+				if (!"".equals(note) && note != null) {
+
+					modPlanner.setNote(note);
+					System.out.println(note);
+				}
+				
+				//Node Id save/update initialValue+"course-"+node.getCourseId()+"_component-"+node.getId()
+				nodeId = request.getParameter("0course-" + courseId+ "_component-" + moduleComponentId[2] + "");
+				System.out.println(nodeId);
+				if (nodeId != null) {
+					if ("".equals(nodeId)) {
+						modPlanner.setId(0);
+
+					} else {
+						modPlanner.setId(Integer.parseInt(nodeId));
+					}
+				}
+				
+				
+				
+				
+				plannerList.add(modPlanner);
+			}
+		}
+		
+		//Content
+		String contents[] = request.getParameterValues("coursecontents");
+		List<Planner> saveContentList = new ArrayList<Planner>();
+		
+		if(contents != null){
+		for(String content:contents){
+			//course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()+
+			Planner planner1 = new Planner();
+			String moduleContentId[] = content.split("-");
+
+			String con[] =moduleContentId[2].split("_");
+			
+			planner1.setCourseId(Integer.parseInt(courseId));
+			planner1.setLearningComponentId(Integer.parseInt(con[0]));
+			planner1.setLearningContentId(Integer.parseInt(moduleContentId[3]));
+			
+			startWeek = request.getParameter(content+"_startweek");
+			
+			if (!"".equals(startWeek) && startWeek != null) {
+				planner1.setStartWeek(startWeek);
+			}
+			startday = request.getParameter(content+"_startday");
+			
+			if (!"".equals(startday) && startday != null) {
+
+				planner1.setStartDay(startday);
+			}
+			
+			duration =  request.getParameter(content+"_duration");
+			if (!"".equals(duration) && duration != null) {
+
+				planner1.setDuration(Integer.parseInt(duration));
+			}
+			startsAt = request.getParameter(content+"_starts_at");
+			if (!"".equals(startsAt) && startsAt != null) {
+
+				planner1.setStartsAt(startsAt);
+			}
+			note =  request.getParameter(content+"_note");
+			if (!"".equals(note) && note != null) {
+
+				planner1.setNote(note);
+			}
+			
+			///initialValue+"_course_"+node.getCourseId()+"_content_"+content.getContentId()
+			//0_course_423_content_376
+
+			//course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()
+			
+			nodeId = request.getParameter("0course-"+ courseId + "_component-" + con[0]+ "_content-" + moduleContentId[3] + "");
+
+			if (nodeId != null) {
+				if ("".equals(nodeId)) {
+					planner1.setId(0);
+
+				} else {
+					planner1.setId(Integer.parseInt(nodeId));
+				}
+			}
+			
+			saveContentList.add(planner1);
+		}
+		//content end
+		}
+		
+		System.out.println("------------------------------------");
+
+		// Save or Update Operation
+		List<Planner> updatePlannerList = plannerService
+				.getPlannerByCourseId(Integer.parseInt(courseId));
+		if (updatePlannerList.size() == 0) {
+			plannerService.savePlanner(plannerList);
+			response = "redirect:/zplaybook/unsecure/htmlView/"+Integer.parseInt(courseId)+ "";
+
+		} 
+		
+		if(updatePlannerList.size() != 0){
+			//Component to save
+			for (Planner currentList : plannerList) {
+
+				if (currentList.getId() != null
+						&& currentList.getId() == 0) {
+					
+					plannerService.savePlannerPojo(currentList);
+			
+				} else {
+					
+					plannerService.updatePlanner(currentList);
+				}
+
+			}
+			for(Planner contentList:saveContentList){
+				if (contentList.getId() != null
+						&& contentList.getId() == 0) {
+					
+					plannerService.savePlannerPojo(contentList);
+					
+
+				} else {
+					
+					plannerService.updatePlanner(contentList);
+				}
+			}
+			
+			response = "redirect:/zplaybook/unsecure/htmlView/"+Integer.parseInt(courseId)+ "";
+		}
+
+		return response;
+	}
+	
+	//END
 	
 	public String submitCoursePlannerDetails(HttpServletRequest request) {
 
@@ -603,8 +794,7 @@ public class CoursePlannerController {
 						.getPlannerByCourseId(Integer.parseInt(courseId));
 				if (updatePlannerList.size() == 0) {
 					plannerService.savePlanner(plannerList);
-					response = "redirect:/zcourse/1/"
-							+ Integer.parseInt(courseId) + "/viewplanner";
+					response = "redirect:/zcourse/1/"+ Integer.parseInt(courseId) + "/viewplanner";
 
 				} else {
 

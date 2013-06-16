@@ -28,17 +28,9 @@
 </div>
 <div id="formcontainer">
 
-<%-- 	<div class="page-header"
-		style="padding-left: 0px !important; margin-bottom: 10px !important;">
-		<div class="icon">
-			<img
-				src="${staticFileServer}resources/images/icons/information_icon.png"
-				style="height: 25px;" />
-		</div>
-		<h1>Create Planner</h1>
-	</div> --%>
-	<div class="clearfix"></div>
-<form action="/ziksana-web/zcourse/1/submitplanner" ">
+
+<div class="clearfix"></div>
+<form action="/ziksana-web/zcourse/1/submitplanner"  ">
 	<div id="planner_error"></div><div id="planner_success_message"></div>
 	<div id="planner_container"> 
 		<div text="${course.name}" class="planner_data" id="COURSE_${courseIds}">
@@ -62,12 +54,13 @@
 	 </div>
 	 <hr/>
 	 <div class="textAlignRight">
- 		<button type="submit" id="submit_planner_data" class="btn blue"> Save </button>
+ 		<button  type="submit" name="savePlanner" id="submit_planner_data" class="btn blue"> Save </button>
  		<a href="/ziksana-web/zcourse/1/${courseIds}/viewplanner"  class="btn blue">Generate</a><br/><br/>
- 		<a onclick="saveandcontinue(${courseIds});" href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}"  class="btn blue">Save and Continue</a>
+ 		<button  type="submit" name="savePlannerAndContinue" id="submit_planner_data" class="btn blue"> Save and Continue </button>
+
  	</div>
  	<hr/>
- </form>	
+ </form>
 </div>
 
 <style type="text/css">
@@ -133,8 +126,11 @@ input.note {
 .duration_error { color: red !important; border: 2px solid red !important}
 </style>
 <script type="text/javascript">
-function saveandcontinue(){
+function saveandcontinue(courseId){
 	
+	document.getElementById('submit_planner_data').click(); 
+	
+	window.location.href = "/ziksana-web/zplaybook/unsecure/htmlView/"+courseId+"";
 }
 
 function get_and_populate_planner_data(courseId){
