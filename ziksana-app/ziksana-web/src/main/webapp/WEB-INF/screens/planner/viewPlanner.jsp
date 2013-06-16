@@ -31,7 +31,7 @@
 
 		<div id="course-${courseIds}" >
 			<div class='node_bar course_node' style="">
-				<img class="node_icon" src="${courseIcon}"/> <span class="node_title">${coursename}</span>
+				<img class="node_icon" src="${courseIcon}"/> <span class="node_title">${course.name}</span>
 				<span class="tip"><strong>${coursename}</strong><hr><strong>Start Week: </strong>1<br><strong>Start Day: </strong>1<br><strong>Duration: </strong>${courseDuration * 7} days (${courseDuration} weeks)<br><strong>Note: </strong>null</span>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 	 </div>
 	  <hr/>
 	 <div class="textAlignRight">
- 		 <a href="/ziksana-web/zcourse/1/planner/${courseIds}"  class="btn blue">Edit Planner</a>  
+ 		 <a href="/ziksana-web/zcourse/1/planner/${course.coursesId}"  class="btn blue">Edit Planner</a>  
  	</div>
  	<hr/>
 	

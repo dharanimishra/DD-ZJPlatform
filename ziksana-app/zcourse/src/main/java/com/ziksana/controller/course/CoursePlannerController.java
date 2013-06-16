@@ -22,6 +22,7 @@ import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.NestTreeNode;
 import com.ziksana.domain.course.Planner;
 import com.ziksana.exception.ZiksanaException;
+import com.ziksana.service.course.AssociateContentService;
 import com.ziksana.service.course.CourseNestTreeService;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.PlannerService;
@@ -35,6 +36,9 @@ public class CoursePlannerController {
 
 	@Autowired
 	CourseNestTreeService courseNestTreeService;
+	
+	@Autowired
+	private AssociateContentService associateContentService;
 
 	@Autowired
 	private PlannerService plannerService;
@@ -71,6 +75,8 @@ public class CoursePlannerController {
 		try {
 			courseIds = Integer.parseInt(courseId);
 			LOGGER.debug("showTreenode():  courseIds :" + courseIds);
+			
+			if(associateContentService.isModuleExist(Integer.parseInt(courseId))){
 			List<NestTreeNode> nodeList = courseNestTreeService
 					.getCourseComponent(courseIds);
 		
@@ -81,14 +87,19 @@ public class CoursePlannerController {
 				modelView.addObject("coursename", coursename);
 				break;
 			}
+			
 			List<NestTreeNode> treeNodeList = courseNestTreeService
 					.getModuleComponents(courseIds);
-
-			Course course = courseService.getCourseByCourseId(courseIds);
 			
 			LOGGER.debug(NestTreeNode.debugTrace(treeNodeList));
-
+			
 			modelView.addObject("parentList", treeNodeList);
+			
+			}
+			Course course = courseService.getCourseByCourseId(courseIds);
+			
+		
+			
 			modelView.addObject("courseIds", courseIds);
 			modelView.addObject("course", course);
 			modelView.addObject("courseDuration", course.getDuration());
@@ -136,6 +147,8 @@ public class CoursePlannerController {
 		ModelAndView modelView = new ModelAndView("masterviewplanner");
 
 		try {
+			
+			if(associateContentService.isModuleExist(Integer.parseInt(courseId))){
 			courseIds = Integer.parseInt(courseId);
 			LOGGER.debug("showTreenode():  courseIds :" + courseIds);
 			List<NestTreeNode> nodeList = courseNestTreeService
@@ -152,11 +165,14 @@ public class CoursePlannerController {
 					.getModuleComponents(courseIds);
 
 			LOGGER.debug(NestTreeNode.debugTrace(treeNodeList));
-
+			
+			modelView.addObject("parentList", treeNodeList);
+			
+			}
 			List<Planner> plannerList = plannerService
 					.getPlannerByCourseId(Integer.parseInt(courseId));
 
-			Course course = courseService.getCourseByCourseId(courseIds);
+			Course course = courseService.getCourseByCourseId(Integer.parseInt(courseId));
 			
 			for (Planner planner : plannerList) {
 				String course_id = (planner.getCourseId() != null) ? planner
@@ -169,9 +185,10 @@ public class CoursePlannerController {
 						component_id, content_id));
 			}
 
-			modelView.addObject("parentList", treeNodeList);
+			
 			modelView.addObject("courseIds", courseIds);
 			modelView.addObject("plannerList", plannerList);
+			modelView.addObject("course", course);
 			modelView.addObject("courseDuration", course.getDuration());
 			modelView.addObject("parentIcon", parentIcon);
 			modelView.addObject("courseIcon", courseIcon);
@@ -246,6 +263,8 @@ public class CoursePlannerController {
 		String startsAt = null;
 		String duration = null;
 		String note = null;
+		
+		int saveResponse = 0;
 		
 		List<Planner> plannerList = new ArrayList<Planner>();
 		String courseId = request.getParameter("course_id");
@@ -395,11 +414,11 @@ public class CoursePlannerController {
 
 				if (currentList.getId() != null
 						&& currentList.getId() == 0) {
-					System.out.println("currentList.getId() save"+currentList);
+					
 					plannerService.savePlannerPojo(currentList);
-
+			
 				} else {
-					System.out.println("currentList.getId() update"+currentList);
+					
 					plannerService.updatePlanner(currentList);
 				}
 
@@ -407,11 +426,12 @@ public class CoursePlannerController {
 			for(Planner contentList:saveContentList){
 				if (contentList.getId() != null
 						&& contentList.getId() == 0) {
-					System.out.println("currentList.getId() content save"+contentList);
+					
 					plannerService.savePlannerPojo(contentList);
+					
 
 				} else {
-					System.out.println("currentList.getId() content update"+contentList);
+					
 					plannerService.updatePlanner(contentList);
 				}
 			}

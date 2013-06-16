@@ -39,16 +39,16 @@
 	</div> --%>
 	<div class="clearfix"></div>
 <form action="/ziksana-web/zcourse/1/submitplanner" ">
-	<div id="planner_error"></div>
+	<div id="planner_error"></div><div id="planner_success_message"></div>
 	<div id="planner_container"> 
-		<div text="${coursename}" class="planner_data" id="COURSE_${courseIds}">
+		<div text="${course.name}" class="planner_data" id="COURSE_${courseIds}">
 		<input type="hidden" name="${courseIds}courseDuration" id="course_duration_in_weeks" value="${courseDuration}"/>
 		<input type="hidden" id="course_duration_in_days"  class="duration" value="${course.duration * 7}"/>
 		<div>
 		<input type='hidden' value='COURSE_${coursename}' name='course_name'/>
 		<input type='hidden' value='${courseIds}' id="courseId" name='course_id'/>
 		
-		<span class='node_title'><img class="node_icon" src="${courseIcon}"/> ${coursename}</span>
+		<span class='node_title'><img class="node_icon" src="${courseIcon}"/> ${course.name}</span>
 
 		<span class="duration_display">Course Duration in Weeks: <strong>${course.duration}</strong></span>
 		</div>
@@ -63,8 +63,8 @@
 	 <hr/>
 	 <div class="textAlignRight">
  		<button type="submit" id="submit_planner_data" class="btn blue"> Save </button>
- 		<a href="/ziksana-web/zcourse/1/${courseIds}/viewplanner"  class="btn blue">Generate</a>
- 		<a href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}"  class="btn blue">Save and Continue</a>
+ 		<a href="/ziksana-web/zcourse/1/${courseIds}/viewplanner"  class="btn blue">Generate</a><br/><br/>
+ 		<a onclick="saveandcontinue(${courseIds});" href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}"  class="btn blue">Save and Continue</a>
  	</div>
  	<hr/>
  </form>	
@@ -133,11 +133,10 @@ input.note {
 .duration_error { color: red !important; border: 2px solid red !important}
 </style>
 <script type="text/javascript">
-function goViewPlanner(){
-	var curCourseId = $('#courseId').val();	
-	window.location.href ='';
-
+function saveandcontinue(){
+	
 }
+
 function get_and_populate_planner_data(courseId){
 	$.ajax({
 	  	type: 'GET',
@@ -277,7 +276,6 @@ $('.duration').change(function(){
 
 
 });// end of doc ready
-
 
 
 </script>

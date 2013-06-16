@@ -135,36 +135,61 @@
 
 						</div>
 						<!--end of lptab1-->
-
-
+						<c:if test="${courseId != null}">
+							<c:set var="courseId" value="${fn:split(courseId, '_')}" />
+ 						<a class="no_text_decoration" href="/ziksana-web/zcourse/1/planner/${courseId[1]}" >	
 						<div id="publishtab" class="lpboxtab1">
 
 							<div class="tbboxheadds">
 							
-							<c:if test="${courseId != null}">
-							<c:set var="courseId" value="${fn:split(courseId, '_')}" />
-								<p>
-									<img src="/ziksana-web/resources/images/icons/publish1.png"
-										class="tbboximgds" />
-										<a class="no_text_decoration" href="/ziksana-web/zcourse/1/planner/${courseId[1]}" style="cursor:pointer">
-										<span class="tbboxheadfntpublish">
-											<fmt:message key="course.Publish"/> 
-										</span>
-										</a>
-								</p>
-							 </c:if>
-							 <c:if test="${courseId == null}">
 							
 								<p>
 									<img src="/ziksana-web/resources/images/icons/publish1.png"
-										class="tbboximgds" /><span class="tbboxheadfntpublish">
-										<fmt:message key="course.Publish"/></span>
+										class="tbboximgds" />
+										
+										<span class="tbboxheadfntpublish">
+											<fmt:message key="course.Publish"/> 
+										</span>
+										
 								</p>
-							 </c:if>
 							</div>
 							<!--end of tbboxhead  -->
+							<div class="tbboxnumds">
 
+								<span class="badge1 badge-warningds" style="font-size: 15px;">
+									3. </span>
+							</div>
+							<!--end of tbboximg  -->
 
+							<div class="tbboxdescpub">
+								<p><fmt:message key="course.publish.created"/> </p>
+
+							</div>
+							<!--end of tbboxdesc  -->
+
+						</div>
+						</a>
+						<!--end of lptab1-->
+						</c:if>
+						<c:if test="${courseId == null}">
+							<c:set var="courseId" value="${fn:split(courseId, '_')}" />
+ 							
+						<div id="publishtab" class="lpboxtab1">
+
+							<div class="tbboxheadds">
+							
+							
+								<p>
+									<img src="/ziksana-web/resources/images/icons/publish1.png"
+										class="tbboximgds" />
+										
+										<span class="tbboxheadfntpublish">
+											<fmt:message key="course.Publish"/> 
+										</span>
+										
+								</p>
+							</div>
+							<!--end of tbboxhead  -->
 							<div class="tbboxnumds">
 
 								<span class="badge1 badge-warningds" style="font-size: 15px;">
@@ -180,7 +205,7 @@
 
 						</div>
 						<!--end of lptab1-->
-
+						</c:if>
 
 
 					</div>
