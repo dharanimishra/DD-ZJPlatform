@@ -502,7 +502,7 @@ function getCourse() {
 
 											});
 
-							$("#Ctopicddl").change(
+							$("#Csubjectddl").change(
 									function(e) {
 										uri = '/ziksana-web/zcourse/gettopic';
 										token = '';
