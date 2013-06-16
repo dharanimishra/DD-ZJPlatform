@@ -18,12 +18,19 @@ body{min-width:900px; min-height: 270px; background: white; overflow:hidden !imp
 		    console.log('Query variable %s not found', variable);
 		}
 		$(function(){
-			console.log("content :"+'${content.contentUrl}/'+'${content.contentUrl}.mp4');
+			//console.log("content :"+'${content.contentUrl}/'+'${content.contentUrl}.mp4'+'${content.contentFormat}');
+			var contentPath='';
+			if('VIDEO'== '${content.contentFormat}'){
+				contentPath='${ms.url}/video/'+'${content.contentUrl}/'+'${content.contentUrl}.mp4';
+			} 
+			if ('AUDIO'== '${content.contentFormat}') {
+				contentPath='${ms.url}/audio/'+'${content.contentUrl}/'+'${content.contentUrl}.mp3';	
+			}
 			jwplayer("lbmediaplayer").setup({
 				flashplayer: "/ziksana-web/resources/jwplayer/player.swf",
 				height: 480,//385
 				width: 853,//640
-				file: '${ms.url}/video/'+'${content.contentUrl}/'+'${content.contentUrl}.mp4'
+				file: contentPath
 			}).play('true');		
 			
 		});

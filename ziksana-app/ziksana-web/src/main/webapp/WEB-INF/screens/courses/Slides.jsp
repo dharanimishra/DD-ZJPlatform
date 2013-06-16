@@ -117,6 +117,11 @@
 					<c:when test="${content.contentTypeString == 'IMAGE'}">
 						<a class="dock-item2" href="#"><span></span><img
 							data-src="${ms.url}/image/${content.contentUrl}/${content.contentUrl}.jpg" src="${ms.url}/image/${content.contentUrl}/${content.contentUrl}.jpg" /></a>
+						<script type="text/javascript">
+							$(function(){
+								$('#thumb_next, #thumb_previous').hide();	
+							});
+						</script>
 					</c:when>
 					<c:when test="${content.numberOfThumbnails == -1}">
 						<a class="dock-item2" href="#"><span></span><img src="" /></a>
@@ -124,7 +129,7 @@
 					<c:otherwise>
 						<c:forEach var="i" begin="0" end="${content.numberOfThumbnails-1}"
 							step="1" varStatus="status">
-							<a class="dock-item2" href="#"><span>${i}</span>
+							<a class="dock-item2" href="#"><span>${i+1}</span>
 							<img data-src="${ms.url}${content.thumbnailPicturePath}img_<c:out value="${i}" />.jpg" src="${ms.url}${content.thumbnailPicturePath}thumb_<c:out value="${i}" />.jpg" /></a>
 						</c:forEach>
 					</c:otherwise>
@@ -133,7 +138,7 @@
 
 			</div>
 		</div>
-		<a id="thumb_next">></a> <a id="thumb_previous"></a>
+		<a id="thumb_next">></a> <a id="thumb_previous"><</a>
 		<div id="controls" title="Drag to move the control bar">
 			<table>
 				<tr>
