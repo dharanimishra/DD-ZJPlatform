@@ -63,7 +63,7 @@ public class PlayBookController {
 		   if(course.getName()!=null){
 		    fileName = course.getName().replaceAll(" ", "");
 		   }
-		  fileName = course.getName()+".pdf";
+		  fileName = fileName+".pdf";
 		 System.out.println("downloading file name " + fileName);
 		 String htmlViewURL ="http://localhost:8080/ziksana-web/zplaybook/unsecure/pdfviewHtml/"+courseId;
 		 System.out.println("htmlViewURL " + htmlViewURL);
