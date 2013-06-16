@@ -70,6 +70,8 @@
 
 						<div class="bordertop"></div>
 						<!--end of bordertop-->
+					
+	 					<a class="no_text_decoration" href="/ziksana-web/zcourse/createcourse" >	
 						<div id="buildtab" class="lpboxtab1 all-box-shadow" style="">
 
 							<div class="tbboxhead">
@@ -99,9 +101,16 @@
 
 
 						</div>
-						<!--end of lptab1-->
-
-
+						<!--end of lptab1 -->
+					</a>
+				<c:if test="${courseId != null}">
+							<c:if test="${fn:contains(courseId, 'COURSE')}">
+								<c:set var="annotate" value="${fn:split(courseId, '_')}" />
+	 							<a class="no_text_decoration" href="/ziksana-web/zcourse/1/annotatecontents/${annotate[1]}" >
+							</c:if>
+							<c:if test="${not fn:contains(courseId, 'COURSE')}">
+	 							<a class="no_text_decoration" href="/ziksana-web/zcourse/1/annotatecontents/${courseId}" >
+	 						</c:if>	
 
 						<div id="enrichtab" class="lpboxtab1">
 
@@ -134,6 +143,41 @@
 							<!--end of tbboxdesc  -->
 
 						</div>
+					</c:if>
+					<c:if test="${courseId == null}">
+					<div id="enrichtab" class="lpboxtab1">
+
+
+							<div class="tbboxheadds">
+
+								<p>
+									<img src="/ziksana-web/resources/images/icons/review.png"
+										class="tbboximgds" /><span class="tbboxheadfntds">
+										<fmt:message key="course.Enhance"/> </span>
+								</p>
+
+							</div>
+							<!--end of tbboxhead  -->
+
+
+							<div class="tbboxnumds">
+
+								<span class="badge1" style="font-size: 15px;"> 2. </span>
+							</div>
+							<!--end of tbboximg  -->
+
+
+
+							<div class="tbboxdescds">
+
+								<p><fmt:message key="course.personalize"/></p>
+
+							</div>
+							<!--end of tbboxdesc  -->
+
+						</div>
+					</c:if>
+					
 						<!--end of lptab1-->
 						<c:if test="${courseId != null}">
 							<c:if test="${fn:contains(courseId, 'COURSE')}">
