@@ -325,6 +325,7 @@ function createtree(course_id) {
 			menu.hideItem('Add_Module');
 			menu.hideItem('ModuleEdit');
 			menu.hideItem('CourseEdit');
+			menu.hideItem('Edit');
 			menu.hideItem('Delete');
 
 		}
