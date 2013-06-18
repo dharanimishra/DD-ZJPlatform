@@ -125,7 +125,7 @@ $(document).ready(function() { // On page load
 					<div id="web_link_container"  class="weblinkcontainer" style="background-color:#0099cc">
 						<div class="weblink_row">
 							<div class="uploadphoto pull-left" style="width: 350px">
-								<img id="thumbnail_image" src="${staticFileServer}resources/images/preview/link.png" style="width: 80px;height:80px; margin-bottom: 5px;" align="left" />
+								<img id="thumbnail_image" src="${staticFileServer}resources/images/preview/link.png" style="width: 80px;height:80px;margin-left: 20px; margin-bottom: 5px;" align="left" />
 								<div id="message"></div>
 								<div id="thubmnail_upload_message"></div>
 								<div id="loaderText"></div>
@@ -189,16 +189,16 @@ $(document).ready(function() { // On page load
 								<input type="hidden" name="contentPath[]" value=""/>
 								<input type="text" placeholder="Enter Name"
 									name="contentName[]" class="required validate[required]"
-									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
+									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
 								<li style="width: 180px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
-									style="height: 25px; margin-top: 15px; width: 170px;margin-bottom:0px" class="required validate[required]"/></li>
+									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" class="required validate[required]"/></li>
 								<li><a href="#" class="editdetailsweblink">Edit Details</a></li>
 							</ul>
 						</div>
 						<!--end of rowfields-->
 						<div class="clearfix"></div>
 						<div class="editslide pull-left" style="display:none">
-						<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px; padding-left: 8px;">Description</label>
+						<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px; padding-left: 10px;">Description</label>
 							<textarea rows="4" cols="12" name="contentDescription[]" 
 								style="width: 330px; margin-bottom: 10px; margin-left: 10px;" placeholder="Describe the content for  Web link"></textarea>
 						</div>
@@ -275,10 +275,10 @@ $(document).ready(function() { // On page load
 	float: left;
 	margin-top: 16px;
 }
-.editslide label{ color:#fff;padding-left:6px;margin-bottom: 4px;}
+.editslide label{ color:#fff;margin-bottom: 4px;}
 .editslide ul{
 list-style: none ;
-width: 559px;overflow:hidden}
+width: 530px;overflow:hidden}
   
 .editslide li {
   float: left; 
