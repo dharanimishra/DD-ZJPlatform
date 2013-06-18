@@ -2955,3 +2955,11 @@ label.error {
 	padding: 0 5px;
 	
 }
+.sucessmssg {
+   
+  color: green;
+  margin:auto;
+  position: absolute;
+  text-align: center;
+  width: 70%;
+}
