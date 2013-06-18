@@ -137,6 +137,10 @@
 <div class="Clearfix"></div>
 <div class="announcementcontainer">
 	<div class="headtag pull-left" style="margin-top: 10px;"><fmt:message key="home.mycourselearner"/></div>
+	<div class="Clearfix"> </div>
+	 <div class="pull-left" style="margin-left: 55px;margin-top: 20px;text-align: right;width: 77%;">
+		<a href="/ziksana-web/zcourse/createcourse" style="width:150px;margin-top:6px;font-weight:bold"><fmt:message key="Create.New.Course"/> </a>
+ </div>
 
 	<div class="isotophead pull-right">
 		<div class="isotoplinks">

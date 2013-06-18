@@ -25,7 +25,6 @@ import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
-import com.ziksana.exception.course.CourseException;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.CourseSubjectDetailService;
 import com.ziksana.service.course.MyContentService;
@@ -217,7 +216,7 @@ public class MyContentController {
 			@RequestParam(value = "content_subject[]", required = false) String[] contentSubject,
 			@RequestParam(value = "content_topic[]", required = false) String[] contentTopic) {
 
-		ModelAndView modelView = new ModelAndView("mastercreatecontent");
+		ModelAndView modelView = new ModelAndView("mastermycontent");
 
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 
@@ -273,9 +272,22 @@ public class MyContentController {
 
 				learningContentlist.add(learningCont);
 			}
-
-			modelView.addObject("learningContentlist", learningContentlist);
+	
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "My Content");
 			modelView.addObject("message", "Content uploaded successfully.");
+
+			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
+					.getMemberPersonaId().getStorageID());
+			List<LearningContent> learningContents = myContentService
+					.getMyContents(memberId);
+			List<JSONLearningContent> jsonLearningContentlList = getJSONLearningContentObjects(learningContents);
+			String jsonString = JSONUtil
+					.objectToJSONString(jsonLearningContentlList);
+
+			modelView.addObject("learningContentAsJSONString", jsonString);
+	
 
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
@@ -374,7 +386,7 @@ public class MyContentController {
 			@RequestParam(value = "contentSubject[]", required = false) String[] contentSubject,
 			@RequestParam(value = "contentTopic[]", required = false) String[] contentTopic) {
 
-		ModelAndView modelView = new ModelAndView("masterweblinkcontent");
+		ModelAndView modelView = new ModelAndView("mastermycontent");
 
 		LOGGER.info("Class :" + getClass() + " thumbnailPicturePath :"
 				+ thumbnailPicturePath);
@@ -434,9 +446,23 @@ public class MyContentController {
 							+ "Subject Classification not found:" + e);
 				}
 				myContentService.saveOrUpdate(learningContent);
-				modelView
-						.addObject("message", "Content uploaded successfully.");
+				
 			}
+			
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "My Content");
+			modelView.addObject("message", "Content uploaded successfully.");
+
+			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
+					.getMemberPersonaId().getStorageID());
+			List<LearningContent> learningContents = myContentService
+					.getMyContents(memberId);
+			List<JSONLearningContent> jsonLearningContentlList = getJSONLearningContentObjects(learningContents);
+			String jsonString = JSONUtil
+					.objectToJSONString(jsonLearningContentlList);
+
+			modelView.addObject("learningContentAsJSONString", jsonString);
 
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
