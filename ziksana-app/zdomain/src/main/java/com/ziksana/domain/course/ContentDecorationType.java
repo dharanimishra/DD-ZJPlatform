@@ -17,7 +17,7 @@ import com.ziksana.util.UTLLookUpUtil;
  */
 public enum ContentDecorationType {
 	
-	ANNOTATED(), RECORDED(), ENRICHED();
+	ANNOTATED(), RECORDING(), RECORDED(), ENRICHED();
 	
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(ContentDecorationType.class);
