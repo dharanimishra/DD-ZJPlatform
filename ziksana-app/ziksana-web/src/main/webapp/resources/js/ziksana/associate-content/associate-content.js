@@ -84,20 +84,20 @@
 		//alert("compId "+ compId);
 		 
 		var childArrayString = tree.getSubItems('COMPONENT_' + compId );
-		alert("  --------- childArrayString is " + childArrayString);
+		//alert("  --------- childArrayString is " + childArrayString);
 		if(childArrayString && childArrayString.trim() != ""){
-			var childArray = childArrayString.split(',');
+			//var childArray = childArrayString.split(',');
 			var j =0;
 
 			for(var i=0; i < contentArray.length; i++){
 				var contentItem = contentArray[i];
 				var contentIdString = 'CONTENT_'+ contentItem.id;
-				alert("contentItem.id " + contentItem.id);
+				//alert("contentItem.id " + contentItem.id);
 				//alert("baseContentId " + baseContentId);
 				if(getBaseLearingContent(contentItem.id)){
 					var baseContentId = getBaseLearingContent(contentItem.id).id;
 					contentIdString = 'CONTENT_'+ baseContentId;
-					alert("baseContentId " + baseContentId);
+					//alert("baseContentId " + baseContentId);
 					continue;
 				}
 				
