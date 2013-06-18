@@ -166,7 +166,7 @@ function editContent() {
 	};
 
 	$.post(uri, parameters, function(data) {
-		console.log(data);
+		//console.log(data);
 
 	});
 

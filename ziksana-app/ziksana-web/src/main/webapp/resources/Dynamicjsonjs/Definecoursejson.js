@@ -15,7 +15,7 @@ $(document)
 											'CourseId' : course_id
 										},
 										function(data) {
-											console.log(data);
+											//console.log(data);
 											var subClassificationId = data.subjClassificationId;
 											var subject_area_pre = data.subjectArea;
 											var subject_pre = data.subjectCategory;
@@ -187,8 +187,8 @@ $(document)
 												option_string += option;
 											}
 											$('#Careaddl').html(option_string);
-											console.log("Careaddl is: "
-													+ option_string);
+											//console.log("Careaddl is: "
+												//	+ option_string);
 
 										});
 					}
@@ -325,7 +325,7 @@ function createCourse() {
 
 		var Course_id = $('#courseid').val();
 
-		console.log("Course_id :" + Course_id);
+		//console.log("Course_id :" + Course_id);
 
 		var Course_Name = $('#defaultvalue').val();
 
@@ -343,7 +343,7 @@ function createCourse() {
 
 		var Coursetag_Field = $('#Ctagfield_course').val();
 
-		console.log(Coursetag_Field);
+		//console.log(Coursetag_Field);
 
 		var Course_Credits = $('#spinner1').val();
 
@@ -355,7 +355,7 @@ function createCourse() {
 
 		var Assoc_Image = $('#Cimageupl').val();
 
-		console.log('Assoc_Image ..' + Assoc_Image);
+		//console.log('Assoc_Image ..' + Assoc_Image);
 
 		var parameters = {
 			"Course_id" : Course_id,
@@ -377,7 +377,7 @@ function createCourse() {
 						uri,
 						parameters,
 						function(data) {
-							console.log(data);
+							//console.log(data);
 							if (data.response == 'success') {
 								course_id = data.id;
 								$('#courseid').val(course_id);
@@ -429,7 +429,7 @@ function getCourse() {
 					uri,
 					parameters,
 					function(data) {
-						console.log(data);
+						//console.log(data);
 						if (data.response == 'success') {
 							course_id = data.id;
 							//$('#courseid').val(course_id);

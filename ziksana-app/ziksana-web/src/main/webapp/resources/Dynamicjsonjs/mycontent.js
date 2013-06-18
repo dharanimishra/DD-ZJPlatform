@@ -42,11 +42,11 @@ function getOtherLearningContents(contentType, pageIndex) {
 			}
 		}
 	}
-	console.log("contentArray.length " + contentArray.length);
-	console.log("contentArrayBasedOnContentType.length "
-			+ contentArrayBasedOnContentType.length);
+	//console.log("contentArray.length " + contentArray.length);
+	//console.log("contentArrayBasedOnContentType.length "
+	//		+ contentArrayBasedOnContentType.length);
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
-	console.log("noOfPages " + noOfPages);
+	//console.log("noOfPages " + noOfPages);
 
 	if(contentArrayBasedOnContentType.length ==0){
 		setNoContentFoundText(contentType);
@@ -109,11 +109,11 @@ function getLearningContentsByType(contentType, pageIndex) {
 			}
 		}
 	}
-	console.log("contentArray.length " + contentArray.length);
-	console.log("contentArrayBasedOnContentType.length "
-			+ contentArrayBasedOnContentType.length);
+	//console.log("contentArray.length " + contentArray.length);
+	//console.log("contentArrayBasedOnContentType.length "
+	//		+ contentArrayBasedOnContentType.length);
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
-	console.log("noOfPages " + noOfPages);
+	//console.log("noOfPages " + noOfPages);
 	
 	if(contentArrayBasedOnContentType.length ==0){
 		setNoContentFoundText(contentType);
@@ -173,8 +173,8 @@ function getAllLearningContents(pageIndex) {
 	}
 	
 	
-	console.log("contentArray.length " + contentArrayWithoutParent.length
-			+ " itemsPerPage  " + itemsPerPage);
+	//console.log("contentArray.length " + contentArrayWithoutParent.length
+	//		+ " itemsPerPage  " + itemsPerPage);
 	noOfPages = Math.ceil(contentArrayWithoutParent.length / itemsPerPage);
 	
 	if(contentArrayWithoutParent.length ==0){
@@ -193,7 +193,7 @@ function getAllLearningContents(pageIndex) {
 		$('#pageNumbers').empty();
 	}
 
-	console.log("noOfPages " + noOfPages);
+	//console.log("noOfPages " + noOfPages);
 	var divs = '';
 
 	if (pageIndex == 1) {
@@ -221,7 +221,7 @@ function getDiv(learningContentObject) {
 	var preview_path = '';
 
 	var staticFileServerPath = $("#fileServerPath").val();
-	console.log("In my content getPreviewPath" + staticFileServerPath);
+	//console.log("In my content getPreviewPath" + staticFileServerPath);
 	var content_type = learningContentObject.contentType.toUpperCase();
 	var screenshotPath = learningContentObject.screenshotPath;
 
@@ -231,8 +231,8 @@ function getDiv(learningContentObject) {
 		if (screenshotPath
 				&& (screenshotPath != null || screenshotPath.trim() != "")) {
 			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
+			//console.log("In my content in the if  for "
+			//		+ learningContentObject.contentName + " - " + preview_path);
 		} else {
 			preview_path = '../../resources/images/preview/video.png';
 		}
@@ -242,8 +242,8 @@ function getDiv(learningContentObject) {
 		if (screenshotPath
 				&& (screenshotPath != null || screenshotPath.trim() != "")) {
 			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
+			//console.log("In my content in the if  for "
+			//		+ learningContentObject.contentName + " - " + preview_path);
 		} else {
 			preview_path = '../../resources/images/preview/audio.png';
 		}
@@ -253,8 +253,8 @@ function getDiv(learningContentObject) {
 		if (screenshotPath
 				&& (screenshotPath != null || screenshotPath.trim() != "")) {
 			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
+			//console.log("In my content in the if  for "
+			//		+ learningContentObject.contentName + " - " + preview_path);
 		} else {
 			preview_path = '../../resources/images/preview/image.png';
 		}
@@ -264,8 +264,8 @@ function getDiv(learningContentObject) {
 		if (screenshotPath
 				&& (screenshotPath != null || screenshotPath.trim() != "")) {
 			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
+			//console.log("In my content in the if  for "
+			//		+ learningContentObject.contentName + " - " + preview_path);
 		} else {
 			preview_path = '../../resources/images/preview/doc.png';
 		}
@@ -275,8 +275,8 @@ function getDiv(learningContentObject) {
 		if (screenshotPath
 				&& (screenshotPath != null || screenshotPath.trim() != "")) {
 			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
+			//console.log("In my content in the if  for "
+			//		+ learningContentObject.contentName + " - " + preview_path);
 		} else {
 			preview_path = '../../resources/images/preview/ppt.jpg';
 		}
@@ -286,8 +286,8 @@ function getDiv(learningContentObject) {
 		if (screenshotPath
 				&& (screenshotPath != null || screenshotPath.trim() != "")) {
 			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
+			//console.log("In my content in the if  for "
+			//		+ learningContentObject.contentName + " - " + preview_path);
 		} else {
 			preview_path = '../../resources/images/preview/pdf.png';
 		}
@@ -296,8 +296,8 @@ function getDiv(learningContentObject) {
 		if (screenshotPath
 				&& (screenshotPath != null || screenshotPath.trim() != "")) {
 			preview_path = staticFileServerPath + screenshotPath;
-			console.log("In my content in the if  for "
-					+ learningContentObject.contentName + " - " + preview_path);
+			//console.log("In my content in the if  for "
+			//		+ learningContentObject.contentName + " - " + preview_path);
 		} else {
 			preview_path = '../../resources/images/preview/link.png';
 		}
@@ -359,7 +359,7 @@ function deleteContent(content_id) {
 					uri,
 					parameters,
 					function(data) {
-						console.log(data);
+						//console.log(data);
 						if (data.response == 'active') {
 							confirm_delete = confirm('This content is associated with a course. Please delink the content with the course to proceed with Delete');
 							if (confirm_delete == true) {			
@@ -377,7 +377,7 @@ function deleteContent(content_id) {
 												uri,
 												parameters,
 												function(data) {
-													console.log(data);
+													//console.log(data);
 													if (data.response == 'success') {
 														window.location.href = "/ziksana-web/zcourse/1/mycontent";
 													} else {

@@ -10,7 +10,7 @@ $(document)
 										'CourseId' : course_id
 									},
 									function(data) {
-										console.log(data);
+										//console.log(data);
 										var subClassificationId = data.subjClassificationId;
 										var subject_area_pre = data.subjectArea;
 										var subject_pre = data.subjectCategory;
@@ -51,7 +51,7 @@ $(document)
 																	.html(
 																			option_string);
 															$('#Cmoduleareaddl').select2("val",subject_area_pre);
-															console.log("subject area is: "+ subject_area_pre);
+															//console.log("subject area is: "+ subject_area_pre);
 
 														});
 
@@ -91,7 +91,7 @@ $(document)
 
 															$('#Cmodulesubjectddl').html(option_string);
 															$('#Cmodulesubjectddl').select2("val",subject_pre);
-															console.log("subject_pre is: "+ subject_pre);
+															//console.log("subject_pre is: "+ subject_pre);
 														});
 
 										uri = '/ziksana-web/zcourse/gettopic';
@@ -127,7 +127,7 @@ $(document)
 															}
 															$('#Cmoduletopicddl').html(option_string);
 															$('#Cmoduletopicddl').select2("val",topic_pre);
-															console.log("topic_pre is: "+ topic_pre);
+															//console.log("topic_pre is: "+ topic_pre);
 
 														});
 
@@ -280,7 +280,7 @@ function getaddmodulesave() {
 		};
 
 		$.post(uri, parameters, function(data) {
-			console.log(data);
+			//console.log(data);
 			if (data.response == 'success') {
 				course_id = data.id;
 				$('#courseid').val(course_id);
@@ -340,7 +340,7 @@ function getSaveandContinue() {
 	var course_id = $('#courseid').val();
 	var courseId = course_id.split('_')[1];
 	
-	console.log("courseId :"+courseId);
+	//console.log("courseId :"+courseId);
 	if (courseId != '' || courseId != null) {
 		window.location.href = '/ziksana-web/zcourse/1/repositorycontents/'+ courseId;
 	} else {

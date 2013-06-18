@@ -29,11 +29,11 @@ function getOtherLearningContents(contentType, pageIndex) {
 	}
 
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
-	console.log("noOfPages " + noOfPages);
+	//console.log("noOfPages " + noOfPages);
 
 	getPageDiv(noOfPages, "OTHERS");
-	console.log("getPageDiv(noOfPages, OTHERS)"
-			+ getPageDiv(noOfPages, "OTHERS"));
+	//console.log("getPageDiv(noOfPages, OTHERS)"
+	//		+ getPageDiv(noOfPages, "OTHERS"));
 	var divs = '';
 	if (pageIndex == 1) {
 		for (i = 0; i < contentArrayBasedOnContentType.length; i++) {
@@ -76,11 +76,11 @@ function getLearningContentsByType(contentType, pageIndex) {
 			j++;
 		}
 	}
-	console.log("contentArray.length " + contentArray.length);
-	console.log("contentArrayBasedOnContentType.length "
-			+ contentArrayBasedOnContentType.length);
+	//console.log("contentArray.length " + contentArray.length);
+	//console.log("contentArrayBasedOnContentType.length "
+	//		+ contentArrayBasedOnContentType.length);
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
-	console.log("noOfPages " + noOfPages);
+	//console.log("noOfPages " + noOfPages);
 
 	getPageDiv(noOfPages, contentType);
 
@@ -114,13 +114,13 @@ function getAllCourse(pageIndex) {
 	$('#container4').empty();
 	var jsonString = document.getElementById("courses").value;
 	var courseArray = jQuery.parseJSON(jsonString);
-	console.log("courseArray.length " + courseArray.length + " itemsPerPage  "
-			+ itemsPerPage);
+	//console.log("courseArray.length " + courseArray.length + " itemsPerPage  "
+	//		+ itemsPerPage);
 	noOfPages = Math.ceil(courseArray.length / itemsPerPage);
 
 	getPageDiv(noOfPages, "ALL");
 
-	console.log("noOfPages " + noOfPages);
+	//console.log("noOfPages " + noOfPages);
 	var divs = '';
 
 	if (pageIndex == 1) {
@@ -148,7 +148,7 @@ function getDiv(courseObject) {
 	var preview_path = '';
 
 	var staticFileServerPath = $("#fileServerPath").val();
-	console.log("In my content getPreviewPath" + staticFileServerPath);
+	//console.log("In my content getPreviewPath" + staticFileServerPath);
 	// var courseStatus = courseObject.courseStatus.toUpperCase();
 	var screenshotPath = courseObject.thumbnailPicturePath;
 
@@ -213,7 +213,7 @@ function getPageDiv(noOfPages, filterType) {
 function editCourse(courseId) {
 
 	// Edit Course
-console.log("courseId :"+courseId);
+//console.log("courseId :"+courseId);
 	if (courseId != null) {
 		window.location.href = '/ziksana-web/zcourse/editcourse/COURSE_' + courseId;
 	} else {
@@ -233,7 +233,7 @@ function deleteCourse(courseId) {
 			"courseId" : courseId
 		};
 		$.post(uri, parameters, function(data) {
-			console.log(data);
+			//console.log(data);
 			window.location.href = "/ziksana-web/zcourse/1/mycourse";
 		});
 	} else {

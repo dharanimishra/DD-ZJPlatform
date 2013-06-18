@@ -60,7 +60,7 @@ function onButtonClick(menuitemId, type) {
 						uri,
 						parameters,
 						function(data) {
-							console.log(data);
+							//console.log(data);
 							if (data.response == 'success') {
 								courseLearningComponentId = data.courseLearningComponentId;
 								learningComponentId = data.learningComponentId;
@@ -71,12 +71,12 @@ function onButtonClick(menuitemId, type) {
 								topic = data.topic;
 								image_upload = data.imageupload;
 
-								console.log('image_upload:'+image_upload);
+								//console.log('image_upload:'+image_upload);
 								if (image_upload == '') {
 									thumbnail_url = '/ziksana-web/resources/images/preview/defaultcourse.png';
 								} else {
 									thumbnail_url = media_server_url + image_upload;
-									console.log('thumbnail_url:'+thumbnail_url);
+								//	console.log('thumbnail_url:'+thumbnail_url);
 								}
 								$('#course_thumbnail_image').attr('src',
 										thumbnail_url);
@@ -96,7 +96,7 @@ function onButtonClick(menuitemId, type) {
 
 								$('#Course_Module').val(module_name);
 
-								console.log('module_desc : ' + module_desc);
+								//console.log('module_desc : ' + module_desc);
 
 							//	 $('#Cmoduledescrte').val(module_desc);
 
@@ -198,7 +198,7 @@ function onButtonClick(menuitemId, type) {
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
 		ComponentId = tree.getSelectedItemId();
-		console.log(ComponentId);
+		//console.log(ComponentId);
 		confirm_delete_component = confirm('Are you sure you want to delete this item?');
 		if (confirm_delete_component == true) {
 			uri = '/ziksana-web/zcourse/removecoursecomponents';
@@ -215,7 +215,7 @@ function onButtonClick(menuitemId, type) {
 			};
 
 			$.post(uri, parameters, function(data) {
-				console.log(data);
+				//console.log(data);
 				if (data.response == 'success') {
 					course_id = data.id;
 				} else {

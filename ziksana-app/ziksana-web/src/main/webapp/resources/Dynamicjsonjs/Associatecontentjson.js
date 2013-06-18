@@ -5,12 +5,12 @@ $(document)
 				function(e) {
 
 					var course_id = $('#courseid').val();
-					console.log(course_id);
+					//console.log(course_id);
 					
 					$.post('/ziksana-web/zcourse/getsubclassification', {
 						'CourseId' : course_id
 					}, function(data) {
-						console.log(data);
+						//console.log(data);
 						var subClassificationId = data.subjClassificationId;
 						var subject_area_pre = data.subjectArea;
 						var subject_pre = data.subjectCategory;
@@ -37,7 +37,7 @@ $(document)
 										option_string += option;
 									}
 									$('#Careaddl').html(option_string);
-									console.log("subject area is: "+subject_area_pre);
+									//console.log("subject area is: "+subject_area_pre);
 								});
 
 						token = '';
@@ -380,7 +380,7 @@ function getAssociateContentSave() {
 		};
 
 		$.post(uri, parameters, function(data) {
-			console.log(data);
+			//console.log(data);
 			if (data.response == 'success') {
 				course_id = data.id;
 				$('#courseid').val(course_id);
@@ -403,7 +403,7 @@ function getAssociateContentSave() {
 function assoicateEnhancedVideo(course_id, component_id, parent_content_id,
 		enhanced_video_path, enhanced_video_name) {
 
-	console.log('inside associateEnhancedVideo');
+	//console.log('inside associateEnhancedVideo');
 
 	// Step 1: Assign Parameters required by the sendMessage function.
 	uri = '/ziksana-web/zcourse/saveorupdatecontent';
@@ -474,7 +474,7 @@ function assoicateEnhancedVideo(course_id, component_id, parent_content_id,
 
 	$.post(uri, parameters,
 			function(data) {
-				console.log(data);
+				//console.log(data);
 				if (data.response == 'success') {
 					course_id = data.id;
 					$('#courseid').val(course_id);

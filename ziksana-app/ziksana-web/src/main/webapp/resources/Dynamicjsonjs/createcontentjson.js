@@ -11,7 +11,7 @@ function createContent() {
 	var parameters = $('form#multiple_content_upload').serialize();
 
 	$.post(uri, parameters, function(data) {
-		console.log(data);
+		//console.log(data);
 		window.location.href = "/ziksana-web/zcourse/1/editcontent";
 
 	});
