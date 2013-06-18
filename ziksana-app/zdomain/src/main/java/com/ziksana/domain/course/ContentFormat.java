@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import com.ziksana.domain.utils.UTLLookup;
 import com.ziksana.util.UTLLookUpUtil;
 
-
 /**
  * @author Ratnesh Kumar
  */
@@ -14,21 +13,21 @@ import com.ziksana.util.UTLLookUpUtil;
 public enum ContentFormat {
 
 	// TODO: retrieve the ids from the static data service
-	DOCUMENT(),	IMAGE(), VIDEO(),AUDIO();
-	
-	// static initialzer to initialize as it does not initialize on call of valueOf method. valueOf
+	DOCUMENT(), IMAGE(), VIDEO(), AUDIO(), LINK();
+
+	// static initialzer to initialize as it does not initialize on call of
+	// valueOf method. valueOf
 	static {
-		
+
 	}
-	
+
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(ContentFormat.class);
 
-
 	private int id;
-	
+
 	private String name;
-	
+
 	private final static String CATEGORY = "Learning Content Format";
 
 	private static boolean initialized = false;
@@ -36,13 +35,13 @@ public enum ContentFormat {
 	private ContentFormat() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	private ContentFormat(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
-	
-	public static ContentFormat getValueOf(String contentFormatString){
+
+	public static ContentFormat getValueOf(String contentFormatString) {
 		initialize();
 		return valueOf(contentFormatString);
 	}
@@ -69,6 +68,7 @@ public enum ContentFormat {
 	public String getName() {
 		return name;
 	}
+
 	public static ContentFormat getContentFormat(int ID) {
 		if (!initialized) {
 			initialize();
@@ -82,7 +82,6 @@ public enum ContentFormat {
 		throw new IndexOutOfBoundsException("ContentType ID [" + ID
 				+ "] not found");
 	}
-
 
 	public String toString() {
 		return "Content Format [" + getName() + "] ID [" + getID() + "]";

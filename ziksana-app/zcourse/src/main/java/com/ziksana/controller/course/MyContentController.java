@@ -217,7 +217,7 @@ public class MyContentController {
 			@RequestParam(value = "content_subject[]", required = false) String[] contentSubject,
 			@RequestParam(value = "content_topic[]", required = false) String[] contentTopic) {
 
-		ModelAndView modelView = new ModelAndView("mastermycontent");
+		ModelAndView modelView = new ModelAndView("mastercreatecontent");
 
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 
@@ -374,7 +374,7 @@ public class MyContentController {
 			@RequestParam(value = "contentSubject[]", required = false) String[] contentSubject,
 			@RequestParam(value = "contentTopic[]", required = false) String[] contentTopic) {
 
-		ModelAndView modelView = new ModelAndView("mastermycontent");
+		ModelAndView modelView = new ModelAndView("masterweblinkcontent");
 
 		LOGGER.info("Class :" + getClass() + " thumbnailPicturePath :"
 				+ thumbnailPicturePath);
@@ -386,27 +386,40 @@ public class MyContentController {
 
 			for (int i = 0; i < contentName.length; i++) {
 				LearningContent learningContent = new LearningContent();
-
 				learningContent.setAuthoringMember(accountableMember);
 				learningContent.setContentName(contentName[i]);
-				learningContent.setContentDescription(contentDescription[i]);
 				learningContent.setContentPath(contentUrl[i]);
 				learningContent.setStatusId(1);
 				learningContent.setActive(true);
-				learningContent.setContentType(ContentType.getContentType(612));
+
 				try {
-					learningContent.setContentTypeId(ContentType.valueOf(
-							"Link".toUpperCase()).getID());
+					ContentType contentTypeObj = ContentType.getValueOf("LINK"
+							.toUpperCase());
+					learningContent.setContentType(contentTypeObj);
+					learningContent.setContentTypeId(contentTypeObj.getID());
+					ContentFormat contentFormat = ContentFormat
+							.getValueOf("LINK".toUpperCase());
+					learningContent.setContentFormat(contentFormat);
+					learningContent.setContentFormatId(contentFormat.getID());
+
 				} catch (Exception e) {
-					learningContent.setContentTypeId(959);
+					learningContent.setContentTypeId(960);
+					learningContent.setContentFormatId(969);
+					LOGGER.error("Class " + getClass()
+							+ "Exception found:" + e);
+
 				}
 				try {
-					String screenshotPath = thumbnailPicturePath[i].replace(
-							",'++'", "");
+					String screenshotPath = thumbnailPicturePath[i];
+					LOGGER.error("Class " + getClass()
+							+ "screenshotPath found:" + screenshotPath);
+					learningContent
+							.setContentDescription(contentDescription[i]);
 					learningContent.setThumbnailPicturePath(screenshotPath);
 					learningContent.setScreenshotPath(screenshotPath);
 				} catch (Exception e) {
-
+					LOGGER.error("Class " + getClass()
+							+ "screenshotPath not found:" + e);
 				}
 				learningContent.setRightsOwningMember(accountableMember);
 
