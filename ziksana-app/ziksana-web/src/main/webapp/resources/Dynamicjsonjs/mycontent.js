@@ -317,9 +317,13 @@ function getDiv(learningContentObject) {
 				+ '<div class="description">'
 				+ '<a onclick="deleteContent('
 				+ learningContentObject.id
-				+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg"style="height: 35px;" /></a> <a href="'
+				+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg" style="height: 35px;cursor:pointer;" /></a>' 
+				+'<a onclick="editWeblinkContent('
+				+ learningContentObject.id
+				+ ');" title="Edit Content Detail" class="pull-right"><img class="iconcc" src="../../resources/images/content/edit.svg" style="height: 35px;cursor:pointer;" /></a>'
+				+'<a href="'
 				+ learningContentObject.contentURL
-				+ '"  title="'+learningContentObject.contentName+'" target="_new"><img src="../../resources/images/content/view-content.svg" style="height: 35px;" /></a>'
+				+ '"  title="View Content" target="_new" class="pull-right"><img src="../../resources/images/content/view-content.svg" style="height: 35px;" /></a>'
 				+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
 		
 	} else {
@@ -335,10 +339,13 @@ function getDiv(learningContentObject) {
 			+ '<div class="description">'
 			+ '<a onclick="deleteContent('
 			+ learningContentObject.id
-			+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg"style="height: 35px;" /></a>'
+			+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg" style="height: 35px;cursor:pointer;" /></a>'
+			+'<a onclick="editContent('
+				+ learningContentObject.id
+				+ ');" title="Edit Content Detail" class="pull-right"><img class="iconcc" src="../../resources/images/content/edit.svg" style="height: 35px;cursor:pointer;" /></a>'
 			+'<a href="'
 			+ viewer_url
-			+ '"  class="show_in_fancybox pull-right" title="'+learningContentObject.contentName+'" data-fancybox-type="iframe"><img src="../../resources/images/content/view-content.svg" style="height: 35px;" /></a>'
+			+ '"  class="show_in_fancybox pull-right" title="View Content" data-fancybox-type="iframe"><img src="../../resources/images/content/view-content.svg" style="height: 35px;" /></a>'
 			+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
 	}
 
@@ -414,6 +421,14 @@ function deleteContent(content_id) {
 
 					});
 
+}
+
+function editContent(content_id) {
+	window.location.href = '/ziksana-web/zcourse/1/createeditcontent';	
+}
+
+function editWeblinkContent(content_id) {
+	window.location.href = '/ziksana-web/zcourse/1/editweblinkcontent';	
 }
 
 $(function() {

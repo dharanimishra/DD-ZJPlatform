@@ -88,6 +88,23 @@ public class MyContentController {
 		return mv;
 	}
 
+	@RequestMapping(value = "1/createeditcontent", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView createEditContent() {
+		LOGGER.debug(" Entering Class " + getClass() + " editContent()");
+		ModelAndView mv = new ModelAndView("mastercreateeditcontent");
+		try {
+			mediaServerURL = mediaService.getMediaContents();
+			mv.addObject("ms", mediaServerURL);
+			mv.addObject("pageTitle", "EditContent");
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Class " + getClass() + "Exiting editContent(): ");
+		return mv;
+	}
+	
 	@RequestMapping(value = "1/weblinkcontent", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
@@ -105,6 +122,23 @@ public class MyContentController {
 		return mv;
 	}
 
+	@RequestMapping(value = "1/editweblinkcontent", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView editWebLinkContent() {
+		LOGGER.debug(" Entering Class " + getClass() + " webLinkContent()");
+		ModelAndView mv = new ModelAndView("masterweblinkcontent");
+		try {
+			mediaServerURL = mediaService.getMediaContents();
+			mv.addObject("ms", mediaServerURL);
+			mv.addObject("pageTitle", "WeblinkContent");
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Class " + getClass() + "Exiting webLinkContent(): ");
+		return mv;
+	}
+	
 	@RequestMapping(value = "1/mycontent", method = { RequestMethod.GET })
 	public @ResponseBody
 	ModelAndView myContent() {

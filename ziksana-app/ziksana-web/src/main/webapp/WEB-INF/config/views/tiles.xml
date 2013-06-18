@@ -138,6 +138,12 @@
 			value="/WEB-INF/screens/courses/editcontent.jsp" />
 	</definition>
 
+	<!-- Metro Edit Content -->
+	<definition name="mastercreateeditcontent" extends="ziksana-home-master">
+		<put-attribute name="master_title" value="Edit Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/createeditcontent.jsp" />
+	</definition>
 
 	<!-- Metro Weblink Content -->
 	<definition name="masterweblinkcontent" extends="ziksana-home-master">
@@ -146,6 +152,12 @@
 			value="/WEB-INF/screens/courses/weblinkcontent.jsp" />
 	</definition>
 
+	<!-- Metro Edit Weblink Content -->
+	<definition name="editweblinkcontent" extends="ziksana-home-master">
+		<put-attribute name="master_title" value="Weblink Content" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/editweblinkcontent.jsp" />
+	</definition>
 
 	<!-- Metro My Content -->
 	<definition name="mastermycontent" extends="ziksana-home-master">
