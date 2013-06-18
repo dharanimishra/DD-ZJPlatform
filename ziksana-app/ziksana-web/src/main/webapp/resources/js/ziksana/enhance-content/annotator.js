@@ -19,24 +19,24 @@ function ff_get_content_key()
 	//jsonObject = parent.getJsonObject(testVar);
 	//console.log("got the json object " + jsonObject.Uploaded);
 	//createContent();
-	console.log(contentId + "     originalContentPath ---------->>>>> " + originalContentPath);
+	//console.log(contentId + "     originalContentPath ---------->>>>> " + originalContentPath);
 	return originalContentPath;
 }
 
 function ff_set_response(annotationResponse)
 {
-	console.log("annotationResponse " + annotationResponse);
+	//console.log("annotationResponse " + annotationResponse);
 	//TODO delete later for testing only
 	//annotationResponse = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
 
 	jsonObject = parent.getJsonObject(annotationResponse);
 	if(jsonObject.ContentKey != originalContentPath){
-		console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		//console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
 		createContent();
 	}
 	//TODO delete later
 	else{
-		console.log("Doing nothing old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		//console.log("Doing nothing old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
 	}
 	
 }
@@ -44,8 +44,8 @@ function ff_set_response(annotationResponse)
 function createContent(){
 	
 	var uri = parent.serverContext  + 'zcourse/1/annotate';
-	console.log("came here jsonObject.NumberOfThumbnails " + jsonObject.NumberOfThumbnails);
-	console.log("the values are " + jsonObject.ThumbnailPicturePath + " " + jsonObject.Decoration + " " + jsonObject.ContentKey);
+	//console.log("came here jsonObject.NumberOfThumbnails " + jsonObject.NumberOfThumbnails);
+	//console.log("the values are " + jsonObject.ThumbnailPicturePath + " " + jsonObject.Decoration + " " + jsonObject.ContentKey);
 	var parameters = {
 		"contentPath" : jsonObject.ContentKey,
 		"decorationTypeName" : jsonObject.Decoration,
@@ -55,14 +55,14 @@ function createContent(){
 		"previousLearningContentId" : contentId
 	};
 	//console.log("delete content course id is  " + CourseId);
-	console.log("parameters.length " + parameters.length);
+	//console.log("parameters.length " + parameters.length);
 	
 	//return;
 	$.post(uri, parameters, function(data) {
-		console.log(data);
+		//console.log(data);
 		if (data.response == 'success') {
 			// what to do here?
-			console.log("Annoation saved");
+			//console.log("Annoation saved");
 			return "SUCCESS";
 		} else {
 			$('#tempdiv1').html(
@@ -70,7 +70,7 @@ function createContent(){
 							+ "Failed" + '</span>');
 			return "FAIL";
 		}
-		console.log("reached here.......................");
+		//console.log("reached here.......................");
 	});
 }
 

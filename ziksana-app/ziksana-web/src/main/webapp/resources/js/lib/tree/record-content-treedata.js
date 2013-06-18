@@ -99,7 +99,7 @@ function onButtonClick(menuitemId, type) {
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
 		ComponentId = tree.getSelectedItemId();
-		console.log(ComponentId);
+		//console.log(ComponentId);
 		confirm_delete_component = confirm('Are you sure you want to delete this item?');
 		if (confirm_delete_component == true) {
 			uri = '/ziksana-web/zcourse/1/unassociatecontent';
@@ -118,12 +118,12 @@ function onButtonClick(menuitemId, type) {
 				"contentId" : ComponentId.split('_')[1]
 			};
 			
-			console.log("delete content course id is  " + CourseId);
-			console.log("parameters.length " + parameters.length);
+			//console.log("delete content course id is  " + CourseId);
+			//console.log("parameters.length " + parameters.length);
 			
 			//return;
 			$.post(uri, parameters, function(data) {
-				console.log(data);
+				//console.log(data);
 				if (data.response == 'success') {
 					course_id = data.id;
 					window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
@@ -137,7 +137,7 @@ function onButtonClick(menuitemId, type) {
 			});
 					
 /*			$.post(uri, parameters, function(data) {
-				console.log(data);
+				//console.log(data);
 				if (data.response == 'success') {
 					course_id = data.id;
 				} else {
@@ -155,7 +155,7 @@ function onButtonClick(menuitemId, type) {
 		}
 	}else if (menuaction == "Record") {
 		var contentId = tree.getSelectedItemId().split('_')[1];
-		console.log("annotate content tree js ----  contentId - " + contentId);
+		//console.log("annotate content tree js ----  contentId - " + contentId);
 		//var learningContentObject = getLearningContentObject(contentId);
 	//	var contentKey = learningContentObject.contentPath;
 		//var contentFormat = learningContentObject.contentFormat;
@@ -273,25 +273,25 @@ function createtree(course_id) {
 
 		if (node_type == "COURSE") {
 			$('#courseid').val(itemId);
-			console.log("COURSE " + itemId);
+			//console.log("COURSE " + itemId);
 		}
 
 		if (node_type == "COMPONENT") {
 			$('#courseLearningComponentId').val(itemId);
-			console.log("COMPONENT " + itemId);
+			//console.log("COMPONENT " + itemId);
 		}
 
 		parent_node_id = tree.getParentId(itemId);
 
 		if (parent_node_id == '0') {
-			console.log('Node parent id is: ' + parent_node_id);
+			//console.log('Node parent id is: ' + parent_node_id);
 		} else {
-			console.log('Node parent id is COMPONENT: ' + parent_node_id);
+			//console.log('Node parent id is COMPONENT: ' + parent_node_id);
 			parent_node_type = parent_node_id.split('_')[0];
 			if (parent_node_type = "COMPONENT") {
 				$('#parentLearningComponentId').val(itemId);
 			}
-			console.log("parent_node_id " + parent_node_id);
+			//console.log("parent_node_id " + parent_node_id);
 		}
 		tree.selectItem(itemId, false);
 		var id = tree.getSelectedItemId();
