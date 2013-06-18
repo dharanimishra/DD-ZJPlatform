@@ -125,7 +125,7 @@ $(document).ready(function() { // On page load
 					<div id="web_link_container"  class="weblinkcontainer" style="background-color:#0099cc">
 						<div class="weblink_row">
 							<div class="uploadphoto pull-left" style="width: 350px">
-								<img id="thumbnail_image" src="${staticFileServer}resources/images/preview/link.png" style="width: 100px; margin-bottom: 5px;" align="left" />
+								<img id="thumbnail_image" src="${staticFileServer}resources/images/preview/link.png" style="width: 80px;height:80px; margin-bottom: 5px;" align="left" />
 								<div id="message"></div>
 								<div id="thubmnail_upload_message"></div>
 								<div id="loaderText"></div>
@@ -198,21 +198,29 @@ $(document).ready(function() { // On page load
 						<!--end of rowfields-->
 						<div class="clearfix"></div>
 						<div class="editslide pull-left" style="display:none">
+						<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px; padding-left: 8px;">Description</label>
 							<textarea rows="4" cols="12" name="contentDescription[]" 
-								style="width: 374px; margin-bottom: 10px; margin-left: 10px;" placeholder="Details for the Web link"></textarea>
+								style="width: 330px; margin-bottom: 10px; margin-left: 10px;" placeholder="Describe the content for  Web link"></textarea>
 						</div>
-						<div class="editslide pull-left" style="margin-left: 5px;display:none">
-							<input type="text" placeholder="Specify Tags" name="contentTag[]"
-								style="height: 30px; margin-right: 12px; width: 233px;">
+						<div class="editslide pull-left" style="margin-left: 10px;display:none">
+							<ul><li style="margin-bottom: 10px;">	<label>Select Area</label>
 							<select id="Careaddl" name="contentArea[]" class="select Careaddl">
 								<option>Specify Area</option>
-							</select> <br> <select class="select Csubjectddl" id="Csubjectddl"
+							</select> </li><li  style="margin-bottom: 10px;">
+							<label>Select Subject</label>
+							 <select class="select Csubjectddl" id="Csubjectddl"
 								name="contentSubject[]">
 								<option>Specify Subject</option>
-							</select> <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic[]">
+							</select></li>
+							 <li>
+		                	<label>Select Topic</label>
+			           <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic[]">
 								<option>Specify Topic</option>
-							</select>
-						</div>
+							</select></li>
+		       <li>	<label>Specify Tags</label>
+							<input type="text" placeholder="Specify Tags" name="contentTag[]"
+								style="height: 30px; margin-right: 12px; width: 233px;">
+						</li></ul></div>
 						<div class="clearfix"></div>
 					</div>
 					<!-- end of uploadrow-->
@@ -267,7 +275,14 @@ $(document).ready(function() { // On page load
 	float: left;
 	margin-top: 16px;
 }
-
+.editslide label{ color:#fff;padding-left:6px;margin-bottom: 4px;}
+.editslide ul{
+list-style: none ;
+width: 559px;overflow:hidden}
+  
+.editslide li {
+  float: left; 
+}
 
 </style>
 

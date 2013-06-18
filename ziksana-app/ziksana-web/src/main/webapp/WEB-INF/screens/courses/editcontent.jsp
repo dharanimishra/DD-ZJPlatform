@@ -180,7 +180,7 @@
 		<div class="editslide pull-left"> 
 		<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px;">Description</label>
 		<textarea rows="4" cols="12"
-		style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" placeholder="Details for the upload image"></textarea>
+		style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" placeholder="Describe the content uploaded"></textarea>
 		</div>
 		<div class="editslide pull-left" style="margin-left: 5px;">
 		<ul><li style="margin-bottom: 10px;">	<label>Select Area</label>
