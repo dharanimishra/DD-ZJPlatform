@@ -159,6 +159,9 @@
 			<input type="hidden" id="learingContents"
 				value='${learningContentAsJSONString}' />
 				<input type="hidden" id="fileServerPath" value='${ms.uploadContent}'/>
+				<c:if test="${message != null}">
+    				<div><p>${message}</p></div>
+				</c:if>
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
 				
 			</div>

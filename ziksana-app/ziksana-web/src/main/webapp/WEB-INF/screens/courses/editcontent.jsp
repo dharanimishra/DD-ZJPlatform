@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/xml"%>
 <%@page import="java.util.*"%>
 <%@page import="com.ziksana.domain.course.LearningContent"%>
+<%@page import="com.ziksana.domain.course.ContentType"%>
 
 <script type='text/javascript'
 	src="${staticFileServer}resources/js/custom/plugins.js"></script>
@@ -76,9 +77,23 @@
 		<% 
 		}%>
 	  <div class="uploadphoto pull-left" style="width: 260px">
+	  <% 
 	  
+	 	 String imagePath="../../resources/images/preview/image.png";
+			if ("VIDEO".equalsIgnoreCase(ContentType.VIDEO.getName())){
+				imagePath="../../resources/images/preview/video.png";
+			} else if("AUDIO".equalsIgnoreCase(ContentType.AUDIO.getName())){
+				imagePath="../../resources/images/preview/audio.png";
+			} else if("PDF".equalsIgnoreCase(ContentType.PDF.getName())){
+				imagePath="../../resources/images/preview/pdf.png";
+			}else if("PPT".equalsIgnoreCase(ContentType.PPT.getName())){
+				imagePath="../../resources/images/preview/ppt.png";
+			} else if("DOC".equalsIgnoreCase(ContentType.DOC.getName())){
+				imagePath="../../resources/images/preview/doc.png";
+			}
+	  %>
 	  
-				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/preview/image.png" style="width: 70px;height:70px;margin-bottom: 4px;" align="left" />
+				<img id="thumbnail_image_<%=content.getId()%>" src="<%=imagePath%>" style="width: 70px;height:70px;margin-bottom: 4px;" align="left" />
 				<div id="message_<%=content.getId()%>"></div>
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
 						<div id="loaderText_<%=content.getId()%>"></div>

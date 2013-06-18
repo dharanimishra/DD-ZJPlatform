@@ -217,7 +217,7 @@ public class MyContentController {
 			@RequestParam(value = "content_subject[]", required = false) String[] contentSubject,
 			@RequestParam(value = "content_topic[]", required = false) String[] contentTopic) {
 
-		ModelAndView modelView = new ModelAndView("mastercreatecontent");
+		ModelAndView modelView = new ModelAndView("mastermycontent");
 
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 
