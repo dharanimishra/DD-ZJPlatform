@@ -228,7 +228,7 @@
 
 <div class="createcontentpanelhead" style="margin-top: 4px;"> 
 	<a href="#linkurl" class="btn pull-right" style="margin-left: 10px;" type="button" onClick="$('form#editcontentform').submit();"> Save </a> 
-	<a	href="/ziksana-web/zcourse/1/createcontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous </a>
+	<a	href="/ziksana-web/zcourse/1/mycontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Cancel </a>
 	
 	<!--  <a href="#linkurl" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous</a> -->
 <div class="clearfix"></div> 

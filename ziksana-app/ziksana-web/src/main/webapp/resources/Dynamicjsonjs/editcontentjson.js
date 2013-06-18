@@ -171,3 +171,44 @@ function editContent() {
 	});
 
 }
+
+function deleteContent(content_id) {
+
+	// Checking for Content Association
+
+	uri = '/ziksana-web/zcourse/1/checkcontentassociation';
+	var parameters = {
+		"contentId" : content_id
+	};
+	$
+			.post(
+					uri,
+					parameters,
+					function(data) {
+						//console.log(data);
+						if (data.response == 'active') {
+							confirm_delete = confirm('This content is associated with a course. Please delink the content with the course to proceed with Delete');
+							if (confirm_delete == true) {			
+								window.location.href = "/ziksana-web/zcourse/1/mycontent";
+							}
+						} else {
+							confirm_delete = confirm('Are you sure to delete?');
+							if (confirm_delete == true) {
+								uri = '/ziksana-web/zcourse/1/deletecontent';
+								var parameters = {
+									"contentId" : content_id
+								};
+								$
+										.post(
+												uri,
+												parameters,
+												function(data) {
+												
+												});
+
+							}
+						}
+
+					});
+
+}

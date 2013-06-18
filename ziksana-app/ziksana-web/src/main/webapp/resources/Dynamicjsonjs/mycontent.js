@@ -424,11 +424,11 @@ function deleteContent(content_id) {
 }
 
 function editContent(content_id) {
-	window.location.href = '/ziksana-web/zcourse/1/createeditcontent';	
+	window.location.href = '/ziksana-web/zcourse/1/createeditcontent/'+content_id;	
 }
 
 function editWeblinkContent(content_id) {
-	window.location.href = '/ziksana-web/zcourse/1/editweblinkcontent';	
+	window.location.href = '/ziksana-web/zcourse/1/editweblinkcontent/'+content_id;	
 }
 
 $(function() {

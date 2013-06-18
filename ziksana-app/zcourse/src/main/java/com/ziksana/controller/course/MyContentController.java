@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -88,23 +89,28 @@ public class MyContentController {
 		return mv;
 	}
 
-	@RequestMapping(value = "1/createeditcontent", method = { RequestMethod.GET,
-			RequestMethod.POST })
+	@RequestMapping(value = "1/createeditcontent/{contentId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView createEditContent() {
-		LOGGER.debug(" Entering Class " + getClass() + " editContent()");
-		ModelAndView mv = new ModelAndView("mastercreateeditcontent");
+	ModelAndView createEditContent(@PathVariable Integer contentId) {
+		LOGGER.debug(" Entering Class " + getClass() + " createEditContent()");
+		ModelAndView modelView = new ModelAndView("mastercreateeditcontent");
+		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 		try {
+			LearningContent learningContent = myContentService
+					.getContent(contentId);
+			learningContentlist.add(learningContent);
 			mediaServerURL = mediaService.getMediaContents();
-			mv.addObject("ms", mediaServerURL);
-			mv.addObject("pageTitle", "EditContent");
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "EditContent");
+			modelView.addObject("learningContentlist", learningContentlist);
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
-		LOGGER.debug("Class " + getClass() + "Exiting editContent(): ");
-		return mv;
+		LOGGER.debug("Class " + getClass() + "Exiting createEditContent(): ");
+		return modelView;
 	}
-	
+
 	@RequestMapping(value = "1/weblinkcontent", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
@@ -122,23 +128,29 @@ public class MyContentController {
 		return mv;
 	}
 
-	@RequestMapping(value = "1/editweblinkcontent", method = { RequestMethod.GET,
-			RequestMethod.POST })
+	@RequestMapping(value = "1/editweblinkcontent/{contentId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView editWebLinkContent() {
+	ModelAndView editWebLinkContent(@PathVariable Integer contentId) {
 		LOGGER.debug(" Entering Class " + getClass() + " webLinkContent()");
-		ModelAndView mv = new ModelAndView("masterweblinkcontent");
+		ModelAndView modelView = new ModelAndView("masterweblinkcontent");
+		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 		try {
+			LearningContent learningContent = myContentService
+					.getContent(contentId);
+			learningContentlist.add(learningContent);
 			mediaServerURL = mediaService.getMediaContents();
-			mv.addObject("ms", mediaServerURL);
-			mv.addObject("pageTitle", "WeblinkContent");
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "EditContent");
+			modelView.addObject("learningContentlist", learningContentlist);
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
-		LOGGER.debug("Class " + getClass() + "Exiting webLinkContent(): ");
-		return mv;
+
+		LOGGER.debug("Class " + getClass() + "Exiting editWebLinkContent(): ");
+		return modelView;
 	}
-	
+
 	@RequestMapping(value = "1/mycontent", method = { RequestMethod.GET })
 	public @ResponseBody
 	ModelAndView myContent() {
@@ -306,7 +318,7 @@ public class MyContentController {
 
 				learningContentlist.add(learningCont);
 			}
-	
+
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("pageTitle", "My Content");
@@ -321,7 +333,6 @@ public class MyContentController {
 					.objectToJSONString(jsonLearningContentlList);
 
 			modelView.addObject("learningContentAsJSONString", jsonString);
-	
 
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
@@ -451,8 +462,7 @@ public class MyContentController {
 				} catch (Exception e) {
 					learningContent.setContentTypeId(960);
 					learningContent.setContentFormatId(969);
-					LOGGER.error("Class " + getClass()
-							+ "Exception found:" + e);
+					LOGGER.error("Class " + getClass() + "Exception found:" + e);
 
 				}
 				try {
@@ -480,9 +490,9 @@ public class MyContentController {
 							+ "Subject Classification not found:" + e);
 				}
 				myContentService.saveOrUpdate(learningContent);
-				
+
 			}
-			
+
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("pageTitle", "My Content");
