@@ -189,6 +189,7 @@ public class MyContentController {
 				}
 			}
 			modelView.addObject("learningContentlist", learningContentlist);
+			modelView.addObject("message", "Content uploaded successfully.");
 
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
@@ -274,6 +275,7 @@ public class MyContentController {
 			}
 
 			modelView.addObject("learningContentlist", learningContentlist);
+			modelView.addObject("message", "Content uploaded successfully.");
 
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
@@ -344,6 +346,7 @@ public class MyContentController {
 			}
 
 			myContentService.saveOrUpdate(learningContent);
+			modelView.addObject("message", "Content uploaded successfully.");
 
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
@@ -418,6 +421,8 @@ public class MyContentController {
 							+ "Subject Classification not found:" + e);
 				}
 				myContentService.saveOrUpdate(learningContent);
+				modelView
+						.addObject("message", "Content uploaded successfully.");
 			}
 
 		} catch (ZiksanaException exception) {

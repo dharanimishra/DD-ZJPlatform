@@ -56,6 +56,9 @@
 	
 <div class="uploadcontent2">
 	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
+		<c:if test="${message != null}">
+    				<div><p>${message}</p></div>
+				</c:if>
 	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
 	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
 		int i=0;

@@ -104,13 +104,19 @@ $(document).ready(function() { // On page load
 			<form id="createweblinkform" method="post"
 				action="/ziksana-web/zcourse/1/multiweblinkcontents">
 				<div class="addweblink">
+		
 					<div class="createcontentpanelhead">
 						Add Web Link
+						<c:if test="${message != null}">
+    						<div><p>${message}</p></div>
+						</c:if>
+			
 						<div class="addmpre pull-right">
 							<a class="adlink" id="weblink"><img
 								src="${staticFileServer}resources/images/content/plus.png"
 								style="height: 30px;" /></a>
 						</div> 
+						
 						<!--end of add more-->
 						<div class="Clearfix"></div>
 					</div>

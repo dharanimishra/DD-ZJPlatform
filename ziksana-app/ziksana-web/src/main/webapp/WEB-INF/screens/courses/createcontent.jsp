@@ -116,7 +116,12 @@ $(document).ready(function() { // On page load
 		<div class="createcontentwrapper">
 			<div class="uploadcontent1">
 
+				
 				<div class="createcontentpanelhead"><fmt:message key="Upload.Content"/></div>
+				<c:if test="${message != null}">
+    				<div><p>${message}</p></div>
+				</c:if>
+				
 				<!--end of panel head-->
 				<div class="draganddrop pull-left" style="height: 325px">
 					<div style="margin-top: 30px; margin-left: 10px;">
@@ -125,8 +130,8 @@ $(document).ready(function() { // On page load
 									src="http://www.placehold.it/80x80/EFEFEF/AAAAAA"
 									align="center" />
 							</div> -->
-
-
+			
+				
 						<div id="message"></div>
 						<div id="thubmnail_upload_message"></div>
 						<div id="loaderText"></div>
