@@ -206,7 +206,8 @@ $(document).ready(function() { // On page load
 									content_name, content_type_id,
 									content_type_name, thumbnail_path,
 									no_of_thumbnails) {
-
+							
+								thumbnail_image_preview='${ms.url}/image/'+ content_path+'/'+content_path+'.jpg';
 								thumbnail_image_src = '${ms.url}'+ content_path;
 								if (content_type_name == 'VIDEO') {
 									thumbnail_image_src = '${staticFileServer}resources/images/preview/video.png';
@@ -218,8 +219,8 @@ $(document).ready(function() { // On page load
 									thumbnail_image_src = '${staticFileServer}resources/images/preview/doc.png';
 								} else if(content_type_name == 'PDF'){
 									thumbnail_image_src = '${staticFileServer}resources/images/preview/pdf.png';
-								} else {
-									thumbnail_image_src = '${staticFileServer}resources/images/preview/image.png';					
+								} else if(content_type_name == 'IMAGE'){
+									thumbnail_image_src = thumbnail_image_preview;					
 								}
 
 								div_html = '<div class="preview_uploaded_content">';
