@@ -46,20 +46,37 @@
 			}
 		}
 	}
-	
+	function getChildrenLearingContent(learningContentId, contentArray){
+		
+		var childArray = new Array();
+		var j = 0;
+		for(var i=0; i < contentArray.length; i++){
+			if(contentArray[i].parentLearningContentId == learningContentId){
+				childArray[j] = contentArray[i];
+			}
+		}
+		return childArray;
+	}
 	function getBaseLearingContent(learningContentId){
 		var jsonString = document.getElementById("learingContents").value;
 		var contentArray = jQuery.parseJSON( jsonString );
+		var isParentPresent = false;
 		//console.log("getBaseLearingContent " + learningContentId);
 		for(var i = 0; i<contentArray.length; i++){
 			//console.log("contentArray[i].parentLearningContentId " + contentArray[i].parentLearningContentId + " contentArray[i].id " + contentArray[i].id);
 			if(learningContentId == contentArray[i].id && (contentArray[i].parentLearningContentId > 0)){
-				getBaseLearingContent(contentArray[i].parentLearningContentId);
-			}
-			else{
-				//console.log("getBaseLearingContent contentArray[i] " + contentArray[i].id);
-				//return getLearningContentObject(learningContentId);
-				return null;
+				
+				var parentObject = getLearningContentObject(contentArray[i].parentLearningContentId);
+				//alert("parentObject " + parentObject.id + " parent is " + parentObject.parentLearningContentId);
+				 
+				if(parentObject.parentLearningContentId > 0){
+					isParentPresent = true;
+					getBaseLearingContent(parentObject.parentLearningContentId);
+				}
+				else{
+					isParentPresent = false;
+					return parentObject;
+				}
 			}
 		}
 	}
@@ -77,6 +94,15 @@
 		}
 	}
 
+	
+	function isChildAssociated(childArray, contentAssociatedInTree){
+		
+		for(var i=0; i < childArray.length; i++){
+			if(contentAssociatedInTree.contains(childArray[i].id)){
+				return true;
+			}
+		}
+	}
 	function getUnAssociatedContentArray(contentArray){
 		var unAssociatedContentArray = new Array();
 		
@@ -84,39 +110,38 @@
 		//alert("compId "+ compId);
 		 
 		var childArrayString = tree.getSubItems('COMPONENT_' + compId );
-		//alert("  --------- childArrayString is " + childArrayString);
-		if(childArrayString && childArrayString.trim() != ""){
-			//var childArray = childArrayString.split(',');
 			var j =0;
 
 			for(var i=0; i < contentArray.length; i++){
 				var contentItem = contentArray[i];
-				var contentIdString = 'CONTENT_'+ contentItem.id;
-				//alert("contentItem.id " + contentItem.id);
-				//alert("baseContentId " + baseContentId);
+				//var contentIdString = 'CONTENT_'+ contentItem.id;
+				//var baseContentId = 0;
+				//alert("getBaseLearingContent(contentItem.id) " + getBaseLearingContent(contentItem.id));
 				if(getBaseLearingContent(contentItem.id)){
-					var baseContentId = getBaseLearingContent(contentItem.id).id;
-					contentIdString = 'CONTENT_'+ baseContentId;
-					//alert("baseContentId " + baseContentId);
+					continue;
+				}
+				else{
+					if(childArrayString.contains(contentItem.id)){
+						continue;
+					}
+				}
+				if(isChildAssociated(getChildrenLearingContent(contentItem.id, contentArray), childArrayString)){
 					continue;
 				}
 				
 				//alert("childArrayString.indexOf(contentIdString) " + childArrayString.indexOf(contentIdString));
 				
-				if(childArrayString.indexOf(contentIdString) == -1){
+				//if(childArrayString.indexOf(contentIdString) == -1){
 					//console.log("in side if contentIdString " + contentIdString);
 					unAssociatedContentArray[j] = contentItem;
 					j++;
-				}
-				else{
+				//}
+				/*
+					else{
 					continue;
 				}
+				*/
 			}
-		}
-		else{
-			// no associated contents found return the original array as it is
-			unAssociatedContentArray = contentArray;
-		}
 		
 		return unAssociatedContentArray;
 	}
@@ -143,10 +168,10 @@
 		var j =0;
 		for(var i=0;i<contentArray.length;i++){
 			if('VIDEO' != contentArray[i].contentType.toUpperCase() && 'LINK' != contentArray[i].contentType.toUpperCase()){
-				if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
+				//if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
 					contentArrayBasedOnContentType[j] = contentArray[i];
 					j++;
-				}
+				//}
 			}
 		}
 		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayBasedOnContentType);
@@ -215,10 +240,10 @@
 		var j =0;
 		for(i=0;i<contentArray.length;i++){
 			if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
-				if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
+				//if(!contentArray[i].parentLearningContentId || contentArray[i].parentLearningContentId == 0){
 					contentArrayBasedOnContentType[j] = contentArray[i];
 					j++;
-				}
+				//}
 			}
 		}
 		//console.log("contentArray.length " + contentArray.length);
@@ -292,14 +317,14 @@
 		var j =0;
 		for(var i=0;i<contentArray.length;i++){
 			//if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
-				if(contentArray[i].parentLearningContentId == 0){
+				//if(contentArray[i].parentLearningContentId == 0){
 					contentArrayForBaseContent[j] = contentArray[i];
 					j++;
-				}
+				//}
 			//}
 		}
 
-		var unAssociatedContentArray = getUnAssociatedContentArray(contentArrayForBaseContent);
+		var unAssociatedContentArray = getUnAssociatedContentArray(contentArray);
 		//console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage  " + itemsPerPage);
 
 		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
