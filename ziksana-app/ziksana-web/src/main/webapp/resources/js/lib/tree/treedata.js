@@ -315,16 +315,13 @@ function createtree(course_id) {
 
 		if (node_type == "COMPONENT") {
 			menu.showItem('Add_Module');
-			menu.showItem('ModuleEdit');
-			menu.hideItem('CourseEdit');
+			menu.showItem('Edit');
 			menu.showItem('Delete');
 			// menu.showItem('View');
 		}
 
 		if (node_type == "CONTENT") {
 			menu.hideItem('Add_Module');
-			menu.hideItem('ModuleEdit');
-			menu.hideItem('CourseEdit');
 			menu.hideItem('Edit');
 			menu.hideItem('Delete');
 
