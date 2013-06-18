@@ -219,5 +219,25 @@ $(document).ready(function(){
 .createcontentimg > img {
     padding: 0;
 }
+a.remove_this {
+  border: 2px solid white;
+  border-radius: 60px 60px 60px 60px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 11px !important;
+  height: 25px;
+  line-height: 21px;
+  margin-right: 2px;
+  margin-top: 5px;
+  text-align: center;
+  text-decoration: none;
+  width: 25px;
+}
 
+a.remove_this:hover {
+	color: red!important;
+	border-color: red;
+	text-decoration: none;
+}
 </style>

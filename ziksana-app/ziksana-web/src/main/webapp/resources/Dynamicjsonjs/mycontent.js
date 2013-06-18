@@ -317,7 +317,7 @@ function getDiv(learningContentObject) {
 				+ '<div class="description">'
 				+ '<a onclick="deleteContent('
 				+ learningContentObject.id
-				+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg" style="height: 35px;cursor:pointer;" /></a>' 
+				+ ');" title="Delete Content" class="remove_this pull-right">X</a>' 
 				+'<a onclick="editWeblinkContent('
 				+ learningContentObject.id
 				+ ');" title="Edit Content Detail" class="pull-right"><img class="iconcc" src="../../resources/images/content/edit.svg" style="height: 35px;cursor:pointer;" /></a>'
@@ -339,7 +339,7 @@ function getDiv(learningContentObject) {
 			+ '<div class="description">'
 			+ '<a onclick="deleteContent('
 			+ learningContentObject.id
-			+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg" style="height: 35px;cursor:pointer;" /></a>'
+			+ ');" title="Delete Content" class="remove_this pull-right">X</a>'
 			+'<a onclick="editContent('
 				+ learningContentObject.id
 				+ ');" title="Edit Content Detail" class="pull-right"><img class="iconcc" src="../../resources/images/content/edit.svg" style="height: 35px;cursor:pointer;" /></a>'
