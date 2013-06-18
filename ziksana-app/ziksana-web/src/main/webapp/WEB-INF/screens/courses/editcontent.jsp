@@ -49,17 +49,18 @@
 			<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;">Add Web Link</a> </h3> 
 		</div> 
 			</div> 
-			<div
-			class="Clearfix"></div> </div>
+			
+			<div class="Clearfix"></div> </div>
 			 <!--end of tiles container--> 
 			 <div class="contentarea pull-right" style="width: 940px;"> 
+			<%--  <c:if test="${message != null}">
+    				<div class="sucessmssg" id="sucessmsg"><p>${message}</p></div>
+				</c:if> --%>
 			 <div class="createcontentwrapper"> 
-	
+		<script>setTimeout( "jQuery('#sucessmsg').hide();",3000 );</script>
 <div class="uploadcontent2">
 	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
-		<c:if test="${message != null}">
-    				<div><p>${message}</p></div>
-				</c:if>
+		
 	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
 	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
 		int i=0;
@@ -165,32 +166,37 @@
  <div class="uploaded_file_contents">
  	<div class="rowfields pull-left" style="height: 145px;width:70%;"> 
  	<ul>
-		<li style="padding-right: 30px;color:#fff;font-size:15px">File Name<br> 
+		<li style="padding-right: 30px;color:#fff;font-size:15px">  
 			<label id="labelContentId<%=content.getId()%>" name="content_name[]"><%=content.getContentName()%></label>
 			<input style="display:none" type="text" id="EditName<%=content.getId()%>" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
 		</li> 
-		<li style="padding-right: 30px;color:#fff;font-size:15px;text-align:left"><a onclick="shotxtbox(<%=content.getId()%>)" style="cursor:pointer" >Edit Name</a></li>
-		<li><a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center">Edit Details</a></li>
+		<li style="padding-right: 30px;color:#fff;font-size:15px;text-align:left"><a onclick="shotxtbox(<%=content.getId()%>)" style="cursor:pointer;font-size:13px;" >Edit Name</a></li>
+		<li><a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;">Edit Details</a></li>
 	</ul> 
 	</div> 
 
 	<div class="editslideup1 clearfix details" style="display:none"> 
+		<div class="editslideup1 clearfix details" style="display:none"> 
 		<div class="editslide pull-left"> 
+		<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px;">Description</label>
 		<textarea rows="4" cols="12"
 		style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" placeholder="Details for the upload image"></textarea>
-		</div> 
+		</div>
 		<div class="editslide pull-left" style="margin-left: 5px;">
-			 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
-			
+		<ul><li style="margin-bottom: 10px;">	<label>Select Area</label>
 			<select
 				class="Careaddl select" name="content_area[]"> <option>Specify Area</option>
-			</select> <br> 
+			</select></li><li  style="margin-bottom: 10px;">
+			<label>Select Subject</label> 
 			<select class="select Csubjectddl" name="content_subject[]"> <option>Specify
-			Subject</option> </select> 
-			
+			Subject</option> </select></li>
+			 <li>
+			<label>Select Topic</label>
 			<select class="select Ctopicddl" name="content_topic[]" > <option>Specify
-			Topic</option> </select>
-		
+			Topic</option> </select> </li>
+		 <li>	<label>Specify Tags</label>
+		 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
+			</li></ul>
 		</div> 
 
 	</div> <!--end of continaer--> 
@@ -241,13 +247,35 @@
 <div class="Clearfix"></div>
 
 <style>
+.editslide label{ color:#fff;padding-left:6px;margin-bottom: 4px;}
+.editslide ul{
+list-style: none ;
+width: 559px;overflow:hidden}
+  
+.editslide li {
+  float: left; 
+}
+.sucessmssg {
+   
+  color: green;
+  margin-top: -29px;
+  position: absolute;
+  text-align: center;
+  width: 70%;
+}
 
-  .tileheadaa {
+.tileheadaa {
 	margin-left: 20px;
 	font-size: 20px;
  
 }
 
+.tileheadaa {
+	margin-left: 20px;
+	font-size: 20px;
+
+ 
+}
 table tr th {
 	color: #fff;
 	font-size: 18px;
