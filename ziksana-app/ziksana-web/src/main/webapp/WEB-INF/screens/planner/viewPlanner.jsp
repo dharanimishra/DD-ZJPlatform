@@ -32,7 +32,7 @@
 		<div id="course-${courseIds}" >
 			<div class='node_bar course_node' style="">
 				<img class="node_icon" src="${courseIcon}"/> <span class="node_title">${course.name}</span>
-				<span class="tip"><strong>${coursename}</strong><hr><strong>Start Week: </strong>1<br><strong>Start Day: </strong>1<br><strong>Duration: </strong>${courseDuration * 7} days (${courseDuration} weeks)<br><strong>Note: </strong>null</span>
+				<span class="tip"><strong>${coursename}</strong><hr><strong>Start Week: </strong>1<br><strong>Start Day: </strong>SUNDAY<br><strong>Duration: </strong>${courseDuration * 7} days (${courseDuration} weeks)<br><strong>Note: </strong>null</span>
 			</div>
 		</div>
 		
@@ -212,17 +212,17 @@ function get_and_populate_planner_data(courseId){
 			
 			
 			for (var i = 1; i < dataList.length; i++) { 
-						//console.log(dataList[i]);
+
 						node = dataList[i];
 						
 						unique_id = node.nodeUniqueId;
-						//console.log('unique i'+unique_id);
+
 						course_id = node.courseId;
 						duration = node.duration;
 						component_id = node.learningComponentId;
 						content_id = node.learningContentId;
 						note = node.note;
-						start_day = node.startDay;
+						start_day = week_calculation_text(node.startDay);
 						start_week = node.startWeek;
 						starts_at = node.startsAt;
 
@@ -268,6 +268,30 @@ function get_and_populate_planner_data(courseId){
 		});
 }
 
+function week_calculation_text(day){
+	var week_day = '';
+	for(var s=1;s<=7;s++){
+		if(day != null){
+			
+			if(day == 1){
+				week_day = 'SUNDAY';
+			}else if(day == 2){
+				week_day = 'MONDAY';
+			}else if(day == 3){
+				week_day = 'TUESDAY';
+			} else if(day == 4){
+				week_day = 'WEDNESDAY';
+			} else if(day == 5){
+				week_day ='THURSDAY';
+			} else if(day == 6){
+				week_day = 'FRIDAY';
+			} else if(day == 7){
+				week_day = 'SATURDAY';
+			}
+	}
+	}
+	return week_day;
+}
 
 function create_node_unique_id(course_id, component_id, content_id){
 	var id = '';
@@ -299,7 +323,7 @@ $('.start_week, .start_day').change(function(){
     var start_at = '';
     if(day !== '' && week != ''){
         starts_at_day = (week*7)-(7-day);
-        console.log(starts_at_day);
+       
         parent.find('> input.starts_at').val(starts_at_day);
     } 
 
@@ -320,19 +344,6 @@ $('.start_week, .start_day').change(function(){
 
 
 </script>
-<%!
-	public String build_options_for_startweek(){
-	String option_html = "";
-	int total_no_of_weeks = 35;
-	option_html += "<option value='' selected='selected'>Start Week</option>";
-	for(int i=1; i<=total_no_of_weeks; i++){
-		option_html += "<option value='"+i+"'>Week "+i+"</option>";
-	}
-	return option_html;
-}
-
-
-%>
 
 <%!public String printTree(List<NestTreeNode> parents) {
 		StringBuffer sb = new StringBuffer();
