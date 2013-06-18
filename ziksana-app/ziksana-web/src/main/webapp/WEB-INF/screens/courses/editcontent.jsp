@@ -67,23 +67,24 @@
 		 <div class="edit_content_info" id="content_<%=content.getId()%>">
 		 <div class="Clearfix"></div>
 		 <% if(i%2==0) {%> 
-		<div class="uploadrowodd" style="padding: 10px;width:100%"> 
+		<div class="uploadrowodd" style="padding: 10px;width:100%;overflow: hidden;margin:auto"> 
 		<% } else {%>
-		<div class="uploadroweven" style="padding: 10px;width:100%"> 
+		<div class="uploadroweven" style="padding: 10px;width:100%;margin:auto"> 
 		<% 
 		}%>
-	  <div class="uploadphoto pull-left" style="width: 350px">
+	  <div class="uploadphoto pull-left" style="width: 260px">
 	  
 	  
-				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/preview/image.png" style="width: 100px;" align="left" />
+				<img id="thumbnail_image_<%=content.getId()%>" src="${staticFileServer}resources/images/preview/image.png" style="width: 70px;height:70px;margin-bottom: 4px;" align="left" />
 				<div id="message_<%=content.getId()%>"></div>
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
 						<div id="loaderText_<%=content.getId()%>"></div>
-						<input type="file" name="thumbnail_image_file_upload_<%=content.getId()%>" id="thumbnail_image_file_upload_<%=content.getId()%>" style="margin-left: 196px;" />
+						<input type="file" name="thumbnail_image_file_upload_<%=content.getId()%>" id="thumbnail_image_file_upload_<%=content.getId()%>" style="width: 70px;height:70px;margin-bottom: 4px;" />
 							<input type="hidden" name="content_id[]" value="<%=content.getId()%>"/>
 							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
 							<input type="hidden" name="thumbnail_path[]" id="thumbnail_path_<%=content.getId()%>" value=""/>
 						<div id="status_<%=content.getId()%>"></div>
+
 						<script type="text/javascript">
 							$(function() {
 								$('#thumbnail_image_file_upload_<%=content.getId()%>').uploadify(
@@ -144,12 +145,14 @@
 
  <!--end of uploadphoto--> 
  <div class="uploaded_file_contents">
- 	<div class="rowfields pull-left" style="height: 145px;"> 
+ 	<div class="rowfields pull-left" style="height: 145px;width:70%;"> 
  	<ul>
-		<li style="padding-right: 30px;color:#fff;font-size:15px">Edit Name<br> 
-			<input type="text" id="EditName" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
+		<li style="padding-right: 30px;color:#fff;font-size:15px">File Name<br> 
+			<label id="labelContentId<%=content.getId()%>" name="content_name[]"><%=content.getContentName()%></label>
+			<input style="display:none" type="text" id="EditName<%=content.getId()%>" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
 		</li> 
-		<li><a class="editdetailuplbtn toggle_details">Edit Details</a></li>
+		<li style="padding-right: 30px;color:#fff;font-size:15px;text-align:left"><a onclick="shotxtbox(<%=content.getId()%>)" style="cursor:pointer" >Edit Name</a></li>
+		<li><a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center">Edit Details</a></li>
 	</ul> 
 	</div> 
 
@@ -276,6 +279,16 @@ table tr td {
 .edit_content_info{background:#0099cc}
 .uploadify{left:0px!important}
 .editdetailuplbtn:hover{color:#ccc!important;text-decoration:none}
+.rowfields ul {
+overflow:hidden
+}
+.rowfields li {
+  width: 33%;
+}
+.rowfields li input{
+  height: 26px;
+  width: 180px;
+}
 </style>
 
 <script type="text/javascript">
@@ -294,5 +307,12 @@ $('.toggle_details').on('click', function(){
 });
 
 });//end of doc ready
+
+function shotxtbox(val){
+$('#labelContentId'+val+'').hide();
+$('#EditName'+val+'').show();
+
+
+}
 </script>
  
