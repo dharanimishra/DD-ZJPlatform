@@ -233,7 +233,7 @@ $(document).ready(function() { // On page load
 								div_html += '<div><span class="title">'
 										+ content_name
 										+ '</span><input type="hidden" name="contentPath[]" value="'+content_path+'" /> <input type="hidden" name="contentName[]" value="'+content_name+'"><input type="hidden" name="contentType[]" value="'+content_type_id+'"><input type="hidden" name="contentTypeName[]" value="'+content_type_name+'"><input type="hidden" name="contentFormatName[]" value="'+content_format_name+'"><input type="hidden" name="thumbnailPath[]" value="'+thumbnail_path+'"><input type="hidden" name="noOfThumbnails[]" value="'+no_of_thumbnails+'"></div>';
-								div_html += '<div><a class="remove_this" onclick="$(this).parents(\'.preview_uploaded_content\').remove();">X</a></div>';
+								div_html += '<div><a title="Delete" class="remove_this" onclick="$(this).parents(\'.preview_uploaded_content\').remove();">X</a></div>';
 								div_html += '</div>';
 
 								$('.previewarea .messagecontainer').remove();

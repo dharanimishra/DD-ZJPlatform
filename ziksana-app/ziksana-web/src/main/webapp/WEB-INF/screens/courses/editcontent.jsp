@@ -177,7 +177,7 @@
 		<li style="width:15%;text-align:center;">
 		<a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;" class="editdtls">
 		<img src="../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/>Edit Details</a></li>
-		<li style="width:15%;text-align:center;padding-top:4px"><a class="remove_this">X</a></li>
+		<li style="width:15%;text-align:center;padding-top:4px"><a title="Delete" class="remove_this">X</a></li>
 	</ul> 
 	</div> 
 
@@ -268,7 +268,7 @@ a.remove_this {
 }
 
 a.remove_this:hover {
-	color: red;
+	color: red!important;
 	border-color: red;
 	text-decoration: none;
 }

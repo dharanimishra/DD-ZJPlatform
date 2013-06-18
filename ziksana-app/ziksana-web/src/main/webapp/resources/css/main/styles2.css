@@ -391,11 +391,7 @@ body {
 	color: #FFFFFF;
 	font-size: 15px;
 }
-.rowfields ul li a:hover {
-	color: #ccc;
-	font-size: 15px;
-	text-decoration:none
-}
+ 
 .rowfields  ul {
 	width: 100%;
 	list-style: none

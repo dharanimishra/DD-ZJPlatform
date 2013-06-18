@@ -170,7 +170,7 @@ function getDiv(courseObject) {
 			+ '<div class="description">'
 			+ '<a onclick="deleteCourse('
 			+ courseObject.id
-			+ ');" title="Delete" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg" style="height: 35px;" /></a> <a onclick="editCourse('
+			+ ');" title="Delete" class="remove_this pull-right">X</a> <a onclick="editCourse('
 			+ courseObject.id
 			+ ');"  class="pull-right"  title="Edit"><img src="../../resources/images/content/edit.svg" style="height: 35px;" /></a>'
 
