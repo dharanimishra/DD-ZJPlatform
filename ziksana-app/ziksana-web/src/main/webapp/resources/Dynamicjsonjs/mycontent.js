@@ -224,6 +224,8 @@ function getDiv(learningContentObject) {
 	//console.log("In my content getPreviewPath" + staticFileServerPath);
 	var content_type = learningContentObject.contentType.toUpperCase();
 	var screenshotPath = learningContentObject.screenshotPath;
+	
+	//console.log(" content_type :"+content_type);
 
 	if (content_type == 'VIDEO') {
 		viewer_url = '/ziksana-web/zcourse/1/modalplayer/'
@@ -291,19 +293,38 @@ function getDiv(learningContentObject) {
 		} else {
 			preview_path = '../../resources/images/preview/pdf.png';
 		}
-	} else if (content_type == 'LINK') {
-		viewer_url = learningContentObject.contentUrl;
+	} else {
 		if (screenshotPath
 				&& (screenshotPath != null || screenshotPath.trim() != "")) {
 			preview_path = staticFileServerPath + screenshotPath;
-			//console.log("In my content in the if  for "
-			//		+ learningContentObject.contentName + " - " + preview_path);
+		console.log("In my content in the if  for "
+					+ learningContentObject.contentName + " - " + preview_path+" content_type"+content_type);
 		} else {
 			preview_path = '../../resources/images/preview/link.png';
 		}
 	}
+	var learningContentDiv='';
+	
+	if(content_type == 'LINK'){
+		 learningContentDiv = '<div id="createcontent-main" class="item All">'
+				+ '<p class="createcontenthead">'
+				+ learningContentObject.contentName
+				+ '</p><p class="createcontentimg">'
+				+ '<img src="'
+				+ preview_path
+				+ '" />'
+				+ '</p>'
+				+ '<div class="description">'
+				+ '<a onclick="deleteContent('
+				+ learningContentObject.id
+				+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg"style="height: 35px;" /></a> <a href="'
+				+ learningContentObject.contentURL
+				+ '"  title="'+learningContentObject.contentName+'" target="_new"><img src="../../resources/images/content/view-content.svg" style="height: 35px;" /></a>'
+				+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
+		
+	} else {
 
-	var learningContentDiv = '<div id="createcontent-main" class="item All">'
+	learningContentDiv = '<div id="createcontent-main" class="item All">'
 			+ '<p class="createcontenthead">'
 			+ learningContentObject.contentName
 			+ '</p><p class="createcontentimg">'
@@ -314,10 +335,12 @@ function getDiv(learningContentObject) {
 			+ '<div class="description">'
 			+ '<a onclick="deleteContent('
 			+ learningContentObject.id
-			+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg"style="height: 35px;" /></a> <a href="'
+			+ ');" title="Delete Content" class="pull-right"><img class="iconcc" src="../../resources/images/content/deleteicon.svg"style="height: 35px;" /></a>'
+			+'<a href="'
 			+ viewer_url
 			+ '"  class="show_in_fancybox pull-right" title="'+learningContentObject.contentName+'" data-fancybox-type="iframe"><img src="../../resources/images/content/view-content.svg" style="height: 35px;" /></a>'
 			+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
+	}
 
 	return learningContentDiv;
 
