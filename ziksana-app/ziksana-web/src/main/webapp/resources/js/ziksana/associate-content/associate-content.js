@@ -58,7 +58,8 @@
 			}
 			else{
 				//console.log("getBaseLearingContent contentArray[i] " + contentArray[i].id);
-				return getLearningContentObject(learningContentId);
+				//return getLearningContentObject(learningContentId);
+				return null;
 			}
 		}
 	}
@@ -83,18 +84,20 @@
 		//alert("compId "+ compId);
 		 
 		var childArrayString = tree.getSubItems('COMPONENT_' + compId );
-		//console.log("contentArray.length" + contentArray.length + "  --------- childArrayString is " + childArrayString);
+		alert("  --------- childArrayString is " + childArrayString);
 		if(childArrayString && childArrayString.trim() != ""){
-			//var childArray = childArrayString.split(',');
+			var childArray = childArrayString.split(',');
 			var j =0;
 
 			for(var i=0; i < contentArray.length; i++){
 				var contentItem = contentArray[i];
 				var contentIdString = 'CONTENT_'+ contentItem.id;
-				var baseContentId = getBaseLearingContent(contentItem.id).id;
+				alert("contentItem.id " + contentItem.id);
 				//alert("baseContentId " + baseContentId);
-				if(baseContentId > 0){
+				if(getBaseLearingContent(contentItem.id)){
+					var baseContentId = getBaseLearingContent(contentItem.id).id;
 					contentIdString = 'CONTENT_'+ baseContentId;
+					alert("baseContentId " + baseContentId);
 					continue;
 				}
 				
