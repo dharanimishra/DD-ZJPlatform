@@ -117,6 +117,16 @@
 		});
 	});
 </script>
+<script>
+$(document).ready(function(){
+        $('.isotoplinks li').click(function () {
+            $('.isotoplinks li').removeClass('current').addClass('link');
+            $(this).removeClass('link').addClass('current');
+            var divname= this.name;
+            $("#"+divname).show("fast").siblings().hide("fast");
+        });
+    });
+</script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
 	<div class="Zikbreadcrumb f-l">
@@ -138,22 +148,27 @@
 <div class="announcementcontainer">
 	<div class="headtag pull-left" style="margin-top: 10px;"><fmt:message key="nav.mycontent"/></div>
 <div class="Clearfix"> </div>
- <div class="pull-left" style="margin-left: 55px;margin-top: 20px;text-align: right;width: 77%;">
+ <div class="pull-left" style="margin-left: 55px;margin-top: 20px;text-align: right;width:68%;">
 <a href="/ziksana-web/zcourse/1/createcontent" style="width:150px;margin-top:6px;font-weight:bold"><fmt:message key="Create.New.Content"/> </a>
  </div>
-	<div class="isotophead pull-right">
+	<div class="isotophead pull-right" style="width: 306px;">
 		<div class="isotoplinks" id="content_type_filter">
-			<a href="#" class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a>|<a
-				href="#" onclick="getLearningContentsByType('VIDEO')"><fmt:message key="Video.txt"/></a>|<a href="#" onclick="getLearningContentsByType('LINK')"><fmt:message key="web.link"/></a>|<a href="#"
+			 <ul><li class="current">
+			 <a href="#" class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a></li>
+			<li><a
+				href="#" onclick="getLearningContentsByType('VIDEO')"><fmt:message key="Video.txt"/></a></li>
+			<li><a href="#" onclick="getLearningContentsByType('LINK')"><fmt:message key="web.link"/></a></li>
+			<li><a href="#"
 				onclick="getOtherLearningContents('Others')"><fmt:message key="other.txt"/></a>
-
+</li>
+			</ul> 
 		</div>
 	</div>
 	<!--end of isotophead-->
 
 
 	<div class="Clearfix"></div>
-	<hr>
+	<hr style="margin-top:0px">
 		<div class="announcementswrapper" style="margin-left: 50px;">
 		<form>
 			<input type="hidden" id="learingContents"

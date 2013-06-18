@@ -117,6 +117,16 @@
 		});
 	});
 </script>
+<script>
+$(document).ready(function(){
+        $('.isotoplinks li').click(function () {
+            $('.isotoplinks li').removeClass('current').addClass('link');
+            $(this).removeClass('link').addClass('current');
+            var divname= this.name;
+            $("#"+divname).show("fast").siblings().hide("fast");
+        });
+    });
+</script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
 	<div class="Zikbreadcrumb f-l">
@@ -138,24 +148,29 @@
 <div class="announcementcontainer">
 	<div class="headtag pull-left" style="margin-top: 10px;"><fmt:message key="home.mycourselearner"/></div>
 	<div class="Clearfix"> </div>
-	 <div class="pull-left" style="margin-left: 55px;margin-top: 20px;text-align: right;width: 77%;">
+	 <div class="pull-left" style="margin-left: 55px;margin-top: 20px;text-align: right;width: 68%;">
 		<a href="/ziksana-web/zcourse/createcourse" style="width:150px;margin-top:6px;font-weight:bold"><fmt:message key="Create.New.Course"/> </a>
  </div>
 
-	<div class="isotophead pull-right">
+	<div class="isotophead pull-right" style="width: 306px;">
 		<div class="isotoplinks">
-			<a href="#" class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a>|<a href="#"
-				onclick="getAllCourse()"><fmt:message key="draft.txt"/></a>|<a
-				href="#" onclick="getActiveCourse('ACTIVE')"><fmt:message key="active.txt"/></a>|<a href="#"
+		   <ul><li class="current">
+			<a href="#" class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a></li>
+			<li><a href="#"
+				onclick="getAllCourse()"><fmt:message key="draft.txt"/></a></li>
+			<li><a
+				href="#" onclick="getActiveCourse('ACTIVE')"><fmt:message key="active.txt"/></a></li>
+			<li><a href="#"
 				onclick="getReviewCourse('REVIEW')"><fmt:message key="review.txt"/></a>
-
+</li>
+			</ul> 
 		</div>
 	</div>
 	<!--end of isotophead-->
 
 
 	<div class="Clearfix"></div>
-	<hr>
+	<hr style="margin-top:0px;">
 	<div class="announcementswrapper" style="margin-left: 50px;">
 		<form>
 			<input type="hidden" id="courses" value='${courseAsJSONString}' /> <input

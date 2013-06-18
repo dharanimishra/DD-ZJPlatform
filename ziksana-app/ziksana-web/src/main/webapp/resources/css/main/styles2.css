@@ -355,13 +355,25 @@ body {
 
 .isotophead {
 	height: 40px;
-	background-color: #00F;
+	background-color: #0066FF;
+	padding-left:4px;padding-right:4px;margin-right:4px;border-radius: 4px 4px 0 0;
 }
 
 .isotoplinks a {
     line-height: 40px;
 }
-
+.isotoplinks a:hover {
+    text-decoration:none
+}
+.isotoplinks > ul {
+ 
+  margin-top: 5px;
+}
+.isotoplinks ul{width:100%;float:left;list-style:none}
+.isotoplinks li{float:left;width:25%;text-align:center}
+.current{background-color:#fff;border-radius:4px;}
+.current a{color:#000!important}
+.current a:hover{color:#0000FF!important;text-decoration:none}
 .previewarea {
 	overflow: auto;
 	margin-left: 10px;
