@@ -77,7 +77,7 @@
 		<div class="uploadroweven" style="padding: 10px;width:100%;margin:auto"> 
 		<% 
 		}%>
-	  <div class="uploadphoto pull-left" style="width: 260px">
+	  <div class="uploadphoto pull-left" style="width: 150px">
 	  <% 
 	  
 	 	 String imagePath="../../resources/images/preview/image.png";
@@ -94,7 +94,7 @@
 			}
 	  %>
 	  
-				<img id="thumbnail_image_<%=content.getId()%>" src="<%=imagePath%>" style="width: 70px;height:70px;margin-bottom: 4px;" align="left" />
+				<img id="thumbnail_image_<%=content.getId()%>" src="<%=imagePath%>" style="width: 70px;height:70px;margin-bottom: 4px;margin-left: 20px;" align="left" />
 				<div id="message_<%=content.getId()%>"></div>
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
 						<div id="loaderText_<%=content.getId()%>"></div>
@@ -164,14 +164,20 @@
 
  <!--end of uploadphoto--> 
  <div class="uploaded_file_contents">
- 	<div class="rowfields pull-left" style="height: 145px;width:70%;"> 
+ 	<div class="rowfields pull-left" style="height: 145px;width:82%;"> 
  	<ul>
-		<li style="padding-right: 30px;color:#fff;font-size:15px">  
+		<li style="padding-right: 30px;color:#fff;font-size:15px;width:55%">  
 			<label id="labelContentId<%=content.getId()%>" name="content_name[]"><%=content.getContentName()%></label>
 			<input style="display:none" type="text" id="EditName<%=content.getId()%>" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
 		</li> 
-		<li style="padding-right: 30px;color:#fff;font-size:15px;text-align:left"><a onclick="shotxtbox(<%=content.getId()%>)" style="cursor:pointer;font-size:13px;" >Edit Name</a></li>
-		<li><a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;">Edit Details</a></li>
+		<li style="color:#fff;font-size:15px;text-align:center;width:15%">
+		
+		<a onclick="shotxtbox(<%=content.getId()%>)" style="cursor:pointer;font-size:13px;" class="editcntent" >
+		<img src="../../resources/images/content/edit.svg" style="width:19px; height:30px"/> Edit Name</a></li>
+		<li style="width:15%;text-align:center;">
+		<a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;" class="editdtls">
+		<img src="../../resources/images/content/edit.svg" style="width:19px; height:30px"/>Edit Details</a></li>
+		<li style="width:15%;text-align:center;"><a style="font-size:13px;" class="deletecnt"><img src="../../resources/images/content/deleteicon.svg" style="width:19px; height:30px"/>Delete</a></li>
 	</ul> 
 	</div> 
 
@@ -182,16 +188,16 @@
 		<textarea rows="4" cols="12"
 		style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" placeholder="Describe the content uploaded"></textarea>
 		</div>
-		<div class="editslide pull-left" style="margin-left: 5px;">
-		<ul><li style="margin-bottom: 10px;">	<label>Select Area</label>
+		<div class="editslide pull-left" style="margin-left: 15px;width: 56%;">
+		<ul><li style="margin-bottom: 10px;">	<label> Area</label>
 			<select
 				class="Careaddl select" name="content_area[]"> <option>Specify Area</option>
 			</select></li><li  style="margin-bottom: 10px;">
-			<label>Select Subject</label> 
+			<label> Subject</label> 
 			<select class="select Csubjectddl" name="content_subject[]"> <option>Specify
 			Subject</option> </select></li>
 			 <li>
-			<label>Select Topic</label>
+			<label> Topic</label>
 			<select class="select Ctopicddl" name="content_topic[]" > <option>Specify
 			Topic</option> </select> </li>
 		 <li>	<label>Specify Tags</label>
@@ -299,6 +305,7 @@ table tr td {
 	position: relative;
 	left: 10px;
 }
+ 
  .tile-content > a{
  width:100%;
   height:100%;float:left
