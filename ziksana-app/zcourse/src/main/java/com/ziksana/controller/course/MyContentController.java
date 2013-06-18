@@ -374,7 +374,7 @@ public class MyContentController {
 			@RequestParam(value = "contentSubject[]", required = false) String[] contentSubject,
 			@RequestParam(value = "contentTopic[]", required = false) String[] contentTopic) {
 
-		ModelAndView modelView = new ModelAndView("masterweblinkcontent");
+		ModelAndView modelView = new ModelAndView("mastermycontent");
 
 		LOGGER.info("Class :" + getClass() + " thumbnailPicturePath :"
 				+ thumbnailPicturePath);
