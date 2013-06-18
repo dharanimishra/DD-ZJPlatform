@@ -176,8 +176,8 @@
 		<img src="../../resources/images/content/edit.svg" style="width:19px; height:30px"/> Edit Name</a></li>
 		<li style="width:15%;text-align:center;">
 		<a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;" class="editdtls">
-		<img src="../../resources/images/content/edit.svg" style="width:19px; height:30px"/>Edit Details</a></li>
-		<li style="width:15%;text-align:center;"><a style="font-size:13px;" class="deletecnt"><img src="../../resources/images/content/deleteicon.svg" style="width:19px; height:30px"/>Delete</a></li>
+		<img src="../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/>Edit Details</a></li>
+		<li style="width:15%;text-align:center;"><a class="remove_this">X</a></li>
 	</ul> 
 	</div> 
 
@@ -253,6 +253,25 @@
 <div class="Clearfix"></div>
 
 <style>
+a.remove_this {
+  border: 1px solid white;
+  border-radius: 60px 60px 60px 60px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 11px !important;
+  height: 19px;
+  line-height: 18px;
+  text-align: center;
+  text-decoration: none;
+  width: 19px;
+}
+
+a.remove_this:hover {
+	color: red;
+	border-color: red;
+	text-decoration: none;
+}
 .editslide label{ color:#fff;padding-left:6px;margin-bottom: 4px;}
 .editslide ul{
 list-style: none ;

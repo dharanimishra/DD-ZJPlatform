@@ -320,17 +320,17 @@ $(document).ready(function() { // On page load
 }
 
 a.remove_this {
-	border: 2px solid white;
-	border-radius: 60px 60px 60px 60px;
-	color: white;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 22px;
-	height: 32px;
-	line-height: 27px;
-	text-align: center;
-	text-decoration: none;
-	width: 33px;
+  border: 2px solid white;
+  border-radius: 60px 60px 60px 60px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  height: 23px;
+  line-height: 18px;
+  text-align: center;
+  text-decoration: none;
+  width: 23px;
 }
 
 a.remove_this:hover {
