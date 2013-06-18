@@ -353,7 +353,7 @@
 						 
  
 							<div id="ContentPanel2"
-								style="font-size: 11px; background-image: none; margin-left: 15px;">
+								style="font-size: 11px; background-image: none; margin-left: 15px;display:none">
 
 
 								<!--start of associate content container-->

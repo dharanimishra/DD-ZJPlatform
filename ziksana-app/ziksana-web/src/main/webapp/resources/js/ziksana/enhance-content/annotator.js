@@ -43,7 +43,7 @@ function ff_set_response(annotationResponse)
 
 function createContent(){
 	
-	var uri = '/ziksana-web/zcourse/1/annotate';
+	var uri = parent.serverContext  + 'zcourse/1/annotate';
 	console.log("came here jsonObject.NumberOfThumbnails " + jsonObject.NumberOfThumbnails);
 	console.log("the values are " + jsonObject.ThumbnailPicturePath + " " + jsonObject.Decoration + " " + jsonObject.ContentKey);
 	var parameters = {
@@ -86,14 +86,15 @@ function ff_get_decoration_type()
 	return "Decoration:Annotated";
 }
 function ff_close_player(){
-	window.parent.$('#page-header-div').show();
-	window.parent.$('#definetab').show();
-	window.parent.$('#leftPane').show();
-	window.parent.$('#annotated_content_container').hide();
+	refreshTree();
 }
 
 function ff_display_console_message(msg){
-	console.log(msg);
+	//switch on this if you want log messages from flash
+	//console.log(msg);
 	
 }
 
+function refreshTree(){
+	parent.document.location.reload(true);
+}

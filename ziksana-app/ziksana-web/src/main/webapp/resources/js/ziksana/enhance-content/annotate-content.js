@@ -6,14 +6,9 @@
 	courseId = $("#courseid").val();
 
 	$(document).ready(function() {
-		//var abc = '${learningContentAsJSONString}';
-		//alert("kjkjkjk "+ abc);
-		//putInSessionStorage("repositoryContents", '${learningContentAsJSONString}');
-		//addToSessionStorage(${learningContentAsJSONString});
-		//getAllLearningContents();
+		//alert("Refreshed page");
 		serverContext = $('#staticFileServer').val();
 		$('#ContentPanel2').hide();
-		setItemsPerPage();
 	});
 	function getLearningContentObject(learningContentId){
 		//console.log("in getLearningContentObject id is " + learningContentId);

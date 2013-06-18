@@ -13,6 +13,7 @@ var learningContentObject = parent.getLearningContentObject(contentId);
 function ff_get_content_key()
 {
 	originalContentPath = learningContentObject.contentURL;
+	console.log("originalContentPath " + originalContentPath);
 	return originalContentPath;
 }
 
@@ -54,7 +55,7 @@ function createContent(){
 		console.log(data);
 		if (data.response == 'success') {
 			// what to do here?
-			console.log("Annoation saved");
+			console.log("Recording saved");
 			return "SUCCESS";
 		} else {
 			$('#tempdiv1').html(
@@ -79,14 +80,23 @@ function ff_get_decoration_type()
 }
 function ff_close_player(){
 	//alert("Hissssssssssss I am here");
-	window.parent.$('#page-header-div').show();
-	window.parent.$('#definetab').show();
-	window.parent.$('#leftPane').show();
-	window.parent.$('#recorded_content_container').hide();
+	//window.parent.$('#page-header-div').show();
+	//window.parent.$('#definetab').show();
+	//window.parent.$('#leftPane').show();
+	//window.parent.$('#recorded_content_container').hide();
+	refreshTree();
 }
 
 function ff_display_console_message(msg){
-	//swithc on this if you want log messages from flash
+	//switch on this if you want log messages from flash
 	//console.log(msg);
 }
 
+function refreshTree(){
+	parent.document.location.reload(true);
+}
+
+function refreshTree(){
+	parent.document.location.reload(true);
+	
+}
