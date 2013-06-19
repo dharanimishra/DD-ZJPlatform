@@ -25,7 +25,7 @@
 		<module>zrecommendations</module>
 		<module>zsubscription</module>
 		<module>zannouncements</module>
-
+		<module>zcalendar</module>
 	</modules>
 
 	<properties>
