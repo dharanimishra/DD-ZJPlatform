@@ -1,26 +1,27 @@
 // JavaScript Document
 
-Course_ID = "";
-
 $(document)
 		.ready(
 				function(e) {
 					var course_id = $('#courseid').val();
-					if (course_id != "") {
+					if (course_id != "") {	
 						getCourse();
-						$
-								.post(
-										'/ziksana-web/zcourse/getsubclassification',
+						var subject_area_pre = '';
+						var subject_pre = '';
+						var topic_pre = '';
+						$.post('/ziksana-web/zcourse/getsubclassification',
 										{
 											'CourseId' : course_id
 										},
 										function(data) {
 											//console.log(data);
 											var subClassificationId = data.subjClassificationId;
-											var subject_area_pre = data.subjectArea;
-											var subject_pre = data.subjectCategory;
-											var topic_pre = data.subjectTopic;
-
+											subject_area_pre = data.subjectArea;
+											subject_pre = data.subjectCategory;
+											topic_pre = data.subjectTopic;
+											console.log("subject_area_pre: "+subject_area_pre);
+											console.log("subject_pre: "+subject_pre);
+											console.log("topic_pre: "+topic_pre);
 											// Start
 
 											$
@@ -34,7 +35,7 @@ $(document)
 																	label = options[i].label;
 																	value = options[i].value;
 
-																	if (value == subject_area) {
+																	if (value == subject_area_pre) {
 																		option = '<option selected="selected" value="'
 																				+ value
 																				+ '">'
@@ -52,16 +53,9 @@ $(document)
 
 																	option_string += option;
 																}
-																$('#Careaddl')
-																		.html(
-																				option_string);
-																$('#Careaddl')
-																		.select2(
-																				"val",
-																				subject_area);
-																console
-																		.log("subject area is: "
-																				+ subject_area);
+																$('#Careaddl').html(option_string);
+																$('#Careaddl').select2("val",subject_area_pre);
+																console.log("subject area is: "+ subject_area_pre);
 
 															});
 
@@ -73,7 +67,7 @@ $(document)
 													.get(
 															uri,
 															{
-																'Course_Area' : subject_area
+																'Course_Area' : subject_area_pre
 															},
 															function(data) {
 																options = data;
@@ -82,7 +76,7 @@ $(document)
 																for (i in options) {
 																	label = options[i].label;
 																	value = options[i].value;
-																	if (value == subject) {
+																	if (value == subject_pre) {
 																		option = '<option selected="selected" value="'
 																				+ value
 																				+ '">'
@@ -99,18 +93,9 @@ $(document)
 																	option_string += option;
 																}
 
-																$(
-																		'#Csubjectddl')
-																		.html(
-																				option_string);
-																$(
-																		'#Csubjectddl')
-																		.select2(
-																				"val",
-																				subject);
-																console
-																		.log("subject_pre is: "
-																				+ subject);
+																$('#Csubjectddl').html(option_string);
+																$('#Csubjectddl').select2("val",subject_pre);
+																console.log("subject_pre is: "+ subject_pre);
 															});
 
 											uri = '/ziksana-web/zcourse/gettopic';
@@ -120,7 +105,7 @@ $(document)
 													.get(
 															uri,
 															{
-																'Course_Subject' : subject
+																'Course_Subject' : subject_pre
 															},
 															function(data) {
 																options = data;
@@ -129,7 +114,7 @@ $(document)
 																for (i in options) {
 																	label = options[i].label;
 																	value = options[i].value;
-																	if (value == topic) {
+																	if (value == topic_pre) {
 																		option = '<option selected="selected" value="'
 																				+ value
 																				+ '">'
@@ -144,22 +129,17 @@ $(document)
 																	}
 																	option_string += option;
 																}
-																$('#Ctopicddl')
-																		.html(
-																				option_string);
-																$('#Ctopicddl')
-																		.select2(
-																				"val",
-																				topic);
-																console
-																		.log("topic_pre is: "
-																				+ topic);
+																$('#Ctopicddl').html(option_string);
+																$('#Ctopicddl').select2("val",topic_pre);
+																console.log("topic_pre is: "+ topic_pre);
 
 															});
 
 											// End
+										
 
 										});
+					
 
 					} else {
 						$
