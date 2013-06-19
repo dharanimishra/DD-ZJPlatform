@@ -305,7 +305,7 @@
 </div>
 <div id="formcontainer">
 
-	<div class="page-header"
+	<div id="page-header-div" class="page-header"
 		style="padding-left: 0px !important; margin-bottom: 0px !important;">
 		<div class="icon">
 			<img
