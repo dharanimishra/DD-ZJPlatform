@@ -184,13 +184,13 @@ $(document).ready(function() { // On page load
 						
 						<!--end of uploadphoto-->
 						<div class="rowfields pull-left" style="width: 745px;">
-							<ul style="overflow: hidden; width: 90%;">
+							<ul style="overflow: hidden; width: 98%;">
 								<li style="width: 180px;">
 								<input type="hidden" name="contentPath[]" value=""/>
 								<input type="text" placeholder="Enter Name"
 									name="contentName[]" class="required validate[required]"
 									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
-								<li style="width: 290px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
+								<li style="width: 350px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
 									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" class="required validate[required]"/></li>
 								<li  style="width: 150px;"><a href="#" class="editdetailsweblink" style="font-size:13px;"><img src="../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/>
 								Edit Details</a></li>
@@ -265,7 +265,7 @@ a.remove_this {
   line-height: 18px;
   text-align: center;
   text-decoration: none;
-  width: 19px;
+  width: 19px;float: right !important;
 }
 
 a.remove_this:hover {

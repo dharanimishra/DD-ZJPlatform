@@ -69,15 +69,15 @@
 	 		
 	 		
 	 %> 
-		 <div class="edit_content_info" id="content_<%=content.getId()%>">
+		 <div class="edit_content_info" id="content_<%=content.getId()%>" style="min-height: 320px;">
 		 <div class="Clearfix"></div>
 		 <% if(i%2==0) {%> 
-		<div class="uploadrowodd" style="padding: 10px;width:100%;overflow: hidden;margin:auto"> 
+		<div class="uploadrowodd" style="width:100%;overflow: hidden;margin:auto"> 
 		<% } else {%>
-		<div class="uploadroweven" style="padding: 10px;width:100%;margin:auto"> 
+		<div class="uploadroweven" style="width:100%;margin:auto"> 
 		<% 
 		}%>
-	  <div class="uploadphoto pull-left" style="width: 150px">
+	  <div class="uploadphoto pull-left" style="width: 150px;padding: 10px;">
 	  <% 
 	  
 	 	 String imagePath="../../resources/images/preview/image.png";
@@ -253,6 +253,7 @@
 <div class="Clearfix"></div>
 
 <style>
+.editdetailsweblink:hover{color:#333!important;text-decoration:none}
 a.remove_this {
   border: 1px solid white;
   border-radius: 60px 60px 60px 60px;
