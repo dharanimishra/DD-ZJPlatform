@@ -68,7 +68,16 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
 	
-
+<script>
+$(document).ready(function(){
+        $('.isotoplinks li').click(function () {
+            $('.isotoplinks li').removeClass('current').addClass('link');
+            $(this).removeClass('link').addClass('current');
+            var divname= this.name;
+            $("#"+divname).show("fast").siblings().hide("fast");
+        });
+    });
+</script>
 
  
 <style>
@@ -341,9 +350,13 @@
 
 									<div id="associateul">
 										<div id="content_type_filter">
-											<a href="#" class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a><a href="#" onclick="getLearningContentsByType('VIDEO')"><fmt:message key="video.content" />
-												</a><a href="#" onclick="getLearningContentsByType('LINK')"><fmt:message key="weblink.content"/></a><a href="#" onclick="getOtherLearningContents('Others')"><fmt:message key="other.txt" /></a>
-										</div>
+										<ul><li>	<a  class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a>
+										</li><li><a  onclick="getLearningContentsByType('VIDEO')"><fmt:message key="video.content" />
+												</a></li>
+												<li>
+												<a onclick="getLearningContentsByType('LINK')"><fmt:message key="weblink.content"/></a>
+												</li><li><a  onclick="getOtherLearningContents('Others')"><fmt:message key="other.txt" /></a></li>
+										</ul></div>
 										<!--  <p style="font-size:14px; color:#0a91ac; cursor:pointer; text-align: right; "><a href="#linkurl" id="cereatecontent"> Create Content </a></p>
  <p class="associatecategory">Sort by : <a href="#linkurl">Tag</a>/<a href="#linkurl">Category</a>/<a href="#linkurl">Name </a></p>
 <p class="associatesearch"> 
