@@ -4,12 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +25,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.NestTreeNode;
 import com.ziksana.domain.member.Member;
+import com.ziksana.exception.ZiksanaException;
+import com.ziksana.service.course.AssociateContentService;
 import com.ziksana.service.course.CourseNestTreeService;
 import com.ziksana.service.course.CourseService;
+import com.ziksana.service.course.PlannerService;
 import com.ziksana.service.security.AuthenticationService;
 import com.ziksana.service.security.MediaService;
 import com.ziksana.service.security.MemberService;
@@ -36,6 +42,9 @@ public class PlayBookController {
     @Autowired
     ServletContext context;
 	
+	@Value("#{myProperties['url']}")
+	private String url;
+    
     @Autowired
 	private CourseService courseService;
 	
@@ -53,6 +62,29 @@ public class PlayBookController {
     
 	@Autowired
 	CourseNestTreeService courseNestTreeService;
+	
+
+	
+	@Autowired
+	private AssociateContentService associateContentService;
+
+	@Autowired
+	private PlannerService plannerService;
+	
+/*	private String courseIcon = "/ziksana-web/resources/images/tree_icons/course.png";
+	private String chapterIcon = "/ziksana-web/resources/images/tree_icons/chapter.png";
+	private String parentIcon = "/ziksana-web/resources/images/tree_icons/chapter.png";
+	private String videoIcon = "/ziksana-web/resources/images/tree_icons/video.png";
+	private String audioIcon = "/ziksana-web/resources/images/tree_icons/audio.png";
+	private String folderClosed = "/ziksana-web/resources/images/tree_icons/folderClosed.gif";
+	private String folderOpen = "/ziksana-web/resources/images/tree_icons/folderOpen.gif";
+	private String pptIcon = "/ziksana-web/resources/images/tree_icons/powerpoint.png";
+	private String docIcon = "/ziksana-web/resources/images/tree_icons/word.png";
+	private String excelIcon = "/ziksana-web/resources/images/tree_icons/excel.png";
+	private String pdfIcon = "/ziksana-web/resources/images/tree_icons/pdf.png";
+	private String imageIcon = "/ziksana-web/resources/images/tree_icons/image.png";
+	private String noteIcon = "/ziksana-web/resources/images/tree_icons/note.png";
+	private String linkIcon = "/ziksana-web/resources/images/tree_icons/link.png";*/
 	
 	@RequestMapping(value = "/unsecure/downloadPlayBook/{courseId}", method =RequestMethod.GET)
 	public void downloadPlayBook(@PathVariable Integer courseId, HttpServletResponse response ){
@@ -114,6 +146,8 @@ public class PlayBookController {
 	}
 	@RequestMapping(value = "/unsecure/htmlView/{courseId}", method =RequestMethod.GET)
 	public ModelAndView htmlView(@PathVariable Integer courseId, HttpServletResponse response ){
+		ModelAndView modelView = new  ModelAndView("playbook-viewHtml");
+		System.out.println("mediaserver url " + url);
 		System.out.println("##############3playbook controller courseId" + courseId);
 		Course course = courseService.getCourseByCourseId(courseId);
 		System.out.println("##############course description" + course.getDescription());
@@ -124,27 +158,139 @@ public class PlayBookController {
 		Member member = memberService.getMemberByUser(userName);
 		//CourseLearningComponent clc =
 		//courseService.getCourseComponents(courseId)
-		List<NestTreeNode> nodeList = courseNestTreeService
-				.getCourseComponent(courseId);
+		List<NestTreeNode> treeNodeList = new ArrayList<NestTreeNode>();
+	
 		
+		//Get Tree Datas
+		try {
+			
+			 treeNodeList = courseNestTreeService
+						.getModuleComponents(courseId);
+			
+			if(associateContentService.isModuleExist(courseId)){
+			List<NestTreeNode> nodeList = courseNestTreeService
+					.getCourseComponent(courseId);
+		
+			/*for (NestTreeNode node : nodeList) {
+				courseIdValue = node.getCourseId();
+				coursename = node.getCoursename();
+				modelView.addObject("courseIds", courseIdValue);
+				modelView.addObject("coursename", coursename);
+				break;
+			}*/
+			
+	
+			
+			
+			
+			
+			
+			}
+			
+		} catch (ZiksanaException exception) {
+			//Logger.error(exception.getMessage(), exception);
+		}
+		
+			modelView.addObject("parentList", treeNodeList);
+			modelView.addObject("courseIds", courseId);
+			modelView.addObject("course", course);
+			modelView.addObject("courseDuration", course.getDuration());
+
+/*			modelView.addObject("parentIcon", parentIcon);
+			modelView.addObject("courseIcon", courseIcon);
+			modelView.addObject("chapterIcon", chapterIcon);
+			modelView.addObject("docIcon", docIcon);
+			modelView.addObject("pdfIcon", pdfIcon);
+			modelView.addObject("pptIcon", pptIcon);
+			modelView.addObject("videoIcon", videoIcon);
+			modelView.addObject("linkIcon", linkIcon);
+			modelView.addObject("noteIcon", noteIcon);
+			modelView.addObject("imageIcon", imageIcon);
+			modelView.addObject("audioIcon", audioIcon);
+			modelView.addObject("excelIcon", excelIcon);
+			modelView.addObject("folderClosed", folderClosed);
+			modelView.addObject("folderOpen", folderOpen);*/
+		
+		//End
 		System.out.println("##############current loggedin user" + userName);
-		ModelAndView mv = new  ModelAndView("playbook-viewHtml");
-		mv.addObject("member",member);
-		mv.addObject("course",course);
-		 return mv;
+		
+		modelView.addObject("member",member);
+		modelView.addObject("course",course);
+		modelView.addObject("mediaserver",url);
+		modelView.addObject("treeNodeList",treeNodeList);
+		System.out.println("mediaserver url " + url);
+		 return modelView;
 	}
 
 	@RequestMapping(value = "/unsecure/pdfviewHtml/{courseId}", method =RequestMethod.GET)
 	public ModelAndView pdfviewHtml(@PathVariable Integer courseId,@RequestParam String userName){
 		//String userName = (String) RequestContextHolder.currentRequestAttributes().getAttribute("userName", RequestAttributes.SCOPE_SESSION);
+		ModelAndView modelView = new  ModelAndView("playbook-pdfviewHtml");
 		Member member = memberService.getMemberByUser(userName);
 		Course course = courseService.getCourseByCourseId(courseId);
 		System.out.println("##############current loggedin user" + userName);
-		ModelAndView mv = new  ModelAndView("playbook-pdfviewHtml");
-		mv.addObject("member",member);
-		mv.addObject("course",course);
 		
-		 return mv;
+		List<NestTreeNode> treeNodeList = new ArrayList<NestTreeNode>();
+
+		
+		//Get Tree Datas
+		try {
+			
+		
+			 treeNodeList = courseNestTreeService
+						.getModuleComponents(courseId);
+			if(associateContentService.isModuleExist(courseId)){
+			List<NestTreeNode> nodeList = courseNestTreeService
+					.getCourseComponent(courseId);
+		
+			/*for (NestTreeNode node : nodeList) {
+				courseIdValue = node.getCourseId();
+				coursename = node.getCoursename();
+				modelView.addObject("courseIds", courseIdValue);
+				modelView.addObject("coursename", coursename);
+				break;
+			}*/
+			
+	
+			
+			
+			
+			
+			
+			}
+			
+		} catch (ZiksanaException exception) {
+			//Logger.error(exception.getMessage(), exception);
+		}
+		
+			modelView.addObject("parentList", treeNodeList);
+			modelView.addObject("courseIds", courseId);
+			modelView.addObject("course", course);
+			modelView.addObject("courseDuration", course.getDuration());
+      	 /*
+			modelView.addObject("parentIcon", parentIcon);
+			modelView.addObject("courseIcon", courseIcon);
+			modelView.addObject("chapterIcon", chapterIcon);
+			modelView.addObject("docIcon", docIcon);
+			modelView.addObject("pdfIcon", pdfIcon);
+			modelView.addObject("pptIcon", pptIcon);
+			modelView.addObject("videoIcon", videoIcon);
+			modelView.addObject("linkIcon", linkIcon);
+			modelView.addObject("noteIcon", noteIcon);
+			modelView.addObject("imageIcon", imageIcon);
+			modelView.addObject("audioIcon", audioIcon);
+			modelView.addObject("excelIcon", excelIcon);
+			modelView.addObject("folderClosed", folderClosed);
+			modelView.addObject("folderOpen", folderOpen);*/
+		
+		//End
+		
+		modelView.addObject("member",member);
+		modelView.addObject("course",course);
+		modelView.addObject("treeNodeList",treeNodeList);
+		modelView.addObject("mediaserver",url);
+		
+		 return modelView;
 	}
 	
 }

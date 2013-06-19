@@ -10,8 +10,10 @@ public class NestTreeNode {
 	private String title;
 	private int parentLearningComponentId;
 	private int nestLearningComponentId;
-
+    
 	private int duration;
+	private String nodeDescription;
+	private String thumbnailPicturePath; 
 	
 	private List<NestTreeNode> children = null;
 	private List<NestContentNode> contents = null;
@@ -78,6 +80,15 @@ public class NestTreeNode {
 
 	public void setNestLearningComponentId(Integer nestLearningComponentId) {
 		this.nestLearningComponentId = nestLearningComponentId;
+	}
+   
+	
+	public String getNodeDescription() {
+		return nodeDescription;
+	}
+
+	public void setNodeDescription(String nodeDescription) {
+		this.nodeDescription = nodeDescription;
 	}
 
 	@Override
@@ -149,4 +160,13 @@ public class NestTreeNode {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
+
+	public String getThumbnailPicturePath() {
+		return thumbnailPicturePath;
+	}
+
+	public void setThumbnailPicturePath(String thumbnailPicturePath) {
+		this.thumbnailPicturePath = thumbnailPicturePath;
+	}
+	
 }

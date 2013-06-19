@@ -12,7 +12,8 @@ public class NestContentNode {
 	private int parentLearningComponentId;
 
 	private boolean expanded = true;
-
+    private String componentDescription;
+    
 	public int getId() {
 		return id;
 	}
@@ -92,6 +93,16 @@ public class NestContentNode {
 	public String getDecorationType() {
 		return decorationType;
 	}
+    
+	
+
+	public String getComponentDescription() {
+		return componentDescription;
+	}
+
+	public void setComponentDescription(String componentDescription) {
+		this.componentDescription = componentDescription;
+	}
 
 	/**
 	 * @param decorationType the decorationType to set
@@ -107,6 +118,7 @@ public class NestContentNode {
 				+ contentname + ", icon=" + icon
 				+ ", parentLearningComponentId=" + parentLearningComponentId
 				+ ", decorationType=" + decorationType
+				+", description=" + componentDescription
 				+ "]"; 
 	}
 

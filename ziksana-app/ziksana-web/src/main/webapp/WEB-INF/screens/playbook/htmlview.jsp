@@ -126,6 +126,11 @@ display:block;margin-top:10px
 display:block;margin-top:10px;page-break-after : always
 
 }
+
+.detailswrrapper{padding :0px 30px;clear:both;text-align:justify;font-size:16px;min-height: 200px; }
+
+.coursedescription div.bottom{padding :0px 30px;clear:both;text-align:justify;font-size:16px;min-height: 1200px; vertical-align:top }
+
 .coursedescription b{padding :0px 30px;clear:both;font-size:16px;font-weight:bold}
 .chapeterfotter{display:block;
 background-image:url(/ziksana-web/resources/images/playbook/footer.png);
@@ -184,8 +189,16 @@ font-weight: bold;}
 <div class="imgcontentL">
 <div class="userimg">
  <div style="overflow:auto;text-align:center;width:80%;padding:6px;">
+  <c:choose>
+   <c:when test="${! empty member.picturePath}">
+       <img src="${mediaserver}${member.picturePath}"  class="borderRb">
+   </c:when>
+   <c:otherwise>
+   <img src="/ziksana-web/resources/images/playbook/usericon.png"  class="borderRb">
+   </c:otherwise>
+  </c:choose>
+  
  
-  <img src="/ziksana-web/resources/images/playbook/usericon.png"  class="borderRb">
   <p>
     <label>${member.firstName }&nbsp; ${member.lastName }</label>
     <label>${member.designation } </label>
@@ -202,53 +215,77 @@ font-weight: bold;}
 </div>
 </div>
 </div>
- <div class="imgcontentR" style="float:left;width:72%;text-align:right;margin-left:10px;"><img src="/ziksana-web/resources/images/playbook/medicalproffesional.png"></div>
+ <div class="imgcontentR" style="float:left;width:72%;text-align:right;margin-left:10px;">
+  <c:choose>
+   <c:when test="${! empty course.thumbnailPicturePath}">
+       <img src="${mediaserver}${course.thumbnailPicturePath}" width="826px" height="459px"/>       
+   </c:when>
+   <c:otherwise>
+   <img src="/ziksana-web/resources/images/playbook/medicalproffesional.png">
+   </c:otherwise>
+  </c:choose>
+ 
+ </div>
 </div>
 <div class="Clearfix"></div>
 <div class="coursedescription" id="cd">
 <b>Course Description</b>
-<p>Over the course of human history, people have developed many interconnected and validated ideas about the physical, biological, psychological, and social worlds. Those ideas have enabled successive generations to achieve an increasingly comprehensive and reliable understanding of the human species and its environment. The means used to develop these ideas are particular ways of observing, thinking, experimenting, and validating. These ways represent a fundamental aspect of the nature of science and reflect how science tends to differ from other modes of knowing.</p><p>
-
-It is the union of science, mathematics, and technology that forms the scientific endeavor and that makes it so successful. Although each of these human enterprises has a character and history of its own, each is dependent on and reinforces the others. Accordingly, the first three chapters of recommendations draw portraits of science, mathematics, and technology that emphasize their roles in the scientific endeavor and reveal some of the similarities and connections among them.</p><p>
-
-This chapter lays out recommendations for what knowledge of the way science works is requisite for scientific literacy. The chapter focuses on three principal subjects: the scientific world view, scientific methods of inquiry, and the nature of the scientific enterprise. Chapters 2 and 3 consider ways in which mathematics and technology differ from science in general. Chapters 4 through 9 present views of the world as depicted by current science; Chapter 10, Historical Perspectives, covers key episodes in the development of science; and Chapter 11, </p>
-<p>Over the course of human history, people have developed many interconnected and validated ideas about the physical, biological, psychological, and social worlds. Those ideas have enabled successive generations to achieve an increasingly comprehensive and reliable understanding of the human species and its environment. The means used to develop these ideas are particular ways of observing, thinking, experimenting, and validating. These ways represent a fundamental aspect of the nature of science and reflect how science tends to differ from other modes of knowing.</p><p>
-
-It is the union of science, mathematics, and technology that forms the scientific endeavor and that makes it so successful. Although each of these human enterprises has a character and history of its own, each is dependent on and reinforces the others. Accordingly, the first three chapters of recommendations draw portraits of science, mathematics, and technology that emphasize their roles in the scientific endeavor and reveal some of the similarities and connections among them.</p><p>
-
-This chapter lays out recommendations for what knowledge of the way science works is requisite for scientific literacy. The chapter focuses on three principal subjects: the scientific world view, scientific methods of inquiry, and the nature of the scientific enterprise. Chapters 2 and 3 consider ways in which mathematics and technology differ from science in general. Chapters 4 through 9 present views of the world as depicted by current science; Chapter 10, Historical Perspectives, covers key episodes in the development of science; and Chapter 11, </p>
+${course.description}
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
 <div class="Clearfix"> </div>
 <div class="chapeterfotter"><label class="pageno">01</label></div>
 </div>
 <div class="coursedescription" id="md"><b>Module Discription with Content Listing</b>
-<p>Over the course of human history, people have developed many interconnected and validated ideas about the physical, biological, psychological, and social worlds. Those ideas have enabled successive generations to achieve an increasingly comprehensive and reliable understanding of the human species and its environment. The means used to develop these ideas are particular ways of observing, thinking, experimenting, and validating. These ways represent a fundamental aspect of the nature of science and reflect how science tends to differ from other modes of knowing.</p><p>
 
-It is the union of science, mathematics, and technology that forms the scientific endeavor and that makes it so successful. Although each of these human enterprises has a character and history of its own, each is dependent on and reinforces the others. Accordingly, the first three chapters of recommendations draw portraits of science, mathematics, and technology that emphasize their roles in the scientific endeavor and reveal some of the similarities and connections among them.</p><p>
+<div class="contentdetails">
+ <c:forEach var="node" items="${treeNodeList}">
+	 <div class="detailswrrapper">
+         <c:choose>
+      <c:when test="${! empty node.thumbnailPicturePath}">
+         <img src="${mediaserver}${node.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
+      </c:when>
+      <c:otherwise>
+      <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+   </c:otherwise>
+  </c:choose>
+	  <b style="padding:0px">${node.title}</b><label style="float:right;font-weight:bold">Parent: Maths</label ><br/>
+	  ${node.nodeDescription}
+	   <br>
+	   <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
+	  </div>
+   <c:if test="${! empty node.children}">
+     <c:forEach var="cnode" items="${node.children}">    
+        <div class="detailswrrapper">   
+		     <c:choose>
+		      <c:when test="${! empty cnode.thumbnailPicturePath}">
+		         <img src="${mediaserver}${cnode.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
+		      </c:when>
+		      <c:otherwise>
+		   <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+		   </c:otherwise>
+		  </c:choose>
+		    <b style="padding:0px">${cnode.title}</b><label style="float:right;font-weight:bold">Parent: Maths</label ><br/>    
+		    ${cnode.nodeDescription}<br>
+		    <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
+		   </div>   
+      </c:forEach>  
+     </c:if>	  
+</c:forEach> 
 
-This chapter lays out recommendations for what knowledge of the way science works is requisite for scientific literacy. The chapter focuses on three principal subjects: the scientific world view, scientific methods of inquiry, and the nature of the scientific enterprise. Chapters 2 and 3 consider ways in which mathematics and technology differ from science in general. Chapters 4 through 9 present views of the world as depicted by current science; Chapter 10, Historical Perspectives, covers key episodes in the development of science; and Chapter 11, </p>
-<p>Over the course of human history, people have developed many interconnected and validated ideas about the physical, biological, psychological, and social worlds. Those ideas have enabled successive generations to achieve an increasingly comprehensive and reliable understanding of the human species and its environment. The means used to develop these ideas are particular ways of observing, thinking, experimenting, and validating. These ways represent a fundamental aspect of the nature of science and reflect how science tends to differ from other modes of knowing.</p><p>
+ 
+ 
 
-It is the union of science, mathematics, and technology that forms the scientific endeavor and that makes it so successful. Although each of these human enterprises has a character and history of its own, each is dependent on and reinforces the others. Accordingly, the first three chapters of recommendations draw portraits of science, mathematics, and technology that emphasize their roles in the scientific endeavor and reveal some of the similarities and connections among them.</p><p>
+ </div>
 
-This chapter lays out recommendations for what knowledge of the way science works is requisite for scientific literacy. The chapter focuses on three principal subjects: the scientific world view, scientific methods of inquiry, and the nature of the scientific enterprise. Chapters 2 and 3 consider ways in which mathematics and technology differ from science in general. Chapters 4 through 9 present views of the world as depicted by current science; Chapter 10, Historical Perspectives, covers key episodes in the development of science; and Chapter 11, </p>
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
 <div class="Clearfix"> </div>
 <div class="chapeterfotter"><label class="pageno">02</label></div>
 </div>
 <div class="coursedescription" id="pd"><b>Planner Details</b>
-<p>Over the course of human history, people have developed many interconnected and validated ideas about the physical, biological, psychological, and social worlds. Those ideas have enabled successive generations to achieve an increasingly comprehensive and reliable understanding of the human species and its environment. The means used to develop these ideas are particular ways of observing, thinking, experimenting, and validating. These ways represent a fundamental aspect of the nature of science and reflect how science tends to differ from other modes of knowing.</p><p>
-
-It is the union of science, mathematics, and technology that forms the scientific endeavor and that makes it so successful. Although each of these human enterprises has a character and history of its own, each is dependent on and reinforces the others. Accordingly, the first three chapters of recommendations draw portraits of science, mathematics, and technology that emphasize their roles in the scientific endeavor and reveal some of the similarities and connections among them.</p><p>
-
-This chapter lays out recommendations for what knowledge of the way science works is requisite for scientific literacy. The chapter focuses on three principal subjects: the scientific world view, scientific methods of inquiry, and the nature of the scientific enterprise. Chapters 2 and 3 consider ways in which mathematics and technology differ from science in general. Chapters 4 through 9 present views of the world as depicted by current science; Chapter 10, Historical Perspectives, covers key episodes in the development of science; and Chapter 11, </p>
-<p>Over the course of human history, people have developed many interconnected and validated ideas about the physical, biological, psychological, and social worlds. Those ideas have enabled successive generations to achieve an increasingly comprehensive and reliable understanding of the human species and its environment. The means used to develop these ideas are particular ways of observing, thinking, experimenting, and validating. These ways represent a fundamental aspect of the nature of science and reflect how science tends to differ from other modes of knowing.</p><p>
-
-It is the union of science, mathematics, and technology that forms the scientific endeavor and that makes it so successful. Although each of these human enterprises has a character and history of its own, each is dependent on and reinforces the others. Accordingly, the first three chapters of recommendations draw portraits of science, mathematics, and technology that emphasize their roles in the scientific endeavor and reveal some of the similarities and connections among them.</p><p>
-
-This chapter lays out recommendations for what knowledge of the way science works is requisite for scientific literacy. The chapter focuses on three principal subjects: the scientific world view, scientific methods of inquiry, and the nature of the scientific enterprise. Chapters 2 and 3 consider ways in which mathematics and technology differ from science in general. Chapters 4 through 9 present views of the world as depicted by current science; Chapter 10, Historical Perspectives, covers key episodes in the development of science; and Chapter 11, </p>
+<p>
+<%@include file="viewPlanner.jsp"%>
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
 <div class="Clearfix"> </div>
