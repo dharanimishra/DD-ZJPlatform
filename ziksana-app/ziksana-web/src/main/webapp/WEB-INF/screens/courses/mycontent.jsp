@@ -175,8 +175,9 @@ $(document).ready(function(){
 				value='${learningContentAsJSONString}' />
 				<input type="hidden" id="fileServerPath" value='${ms.uploadContent}'/>
 				<c:if test="${message != null}">
-    				<div><p>${message}</p></div>
+    				<div class="sucessmssg" ><p>${message}</p></div>
 				</c:if>
+				<script>setTimeout( "jQuery('.sucessmssg').hide();",3000 );</script>
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
 				
 			</div>
@@ -239,5 +240,13 @@ a.remove_this:hover {
 	color: red!important;
 	border-color: red;
 	text-decoration: none;
+}
+ .sucessmssg {
+   
+  color: green;
+  margin-top: -42px;
+  position: absolute;
+  text-align: center;
+  width: 70%;
 }
 </style>

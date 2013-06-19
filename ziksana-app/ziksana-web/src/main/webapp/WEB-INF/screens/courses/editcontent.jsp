@@ -61,9 +61,9 @@
 			 <div class="contentarea pull-right" style="width: 940px;"> 
 			<%--  <c:if test="${message != null}">
     				<div class="sucessmssg" id="sucessmsg"><p>${message}</p></div>
-				</c:if> --%>
+				</c:if> 
 			 <div class="createcontentwrapper"> 
-		<script>setTimeout( "jQuery('#sucessmsg').hide();",3000 );</script>
+		<script>setTimeout( "jQuery('#sucessmsg').hide();",3000 );</script>--%>
 <div class="uploadcontent2">
 	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
 		

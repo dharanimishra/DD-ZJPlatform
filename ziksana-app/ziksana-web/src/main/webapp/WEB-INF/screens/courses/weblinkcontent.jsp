@@ -343,6 +343,8 @@ input.error {
 #web_link_container div.weblink_row:nth-child(even) {
   background: none repeat scroll 0 0 #CCCCCC;
 }
+.editcntent:hover{color:#fff!important;text-decoration:none}
+.editdetailuplbtn:hover{color:#fff!important;text-decoration:none;}
 </style>
 
 <script type="text/javascript">
