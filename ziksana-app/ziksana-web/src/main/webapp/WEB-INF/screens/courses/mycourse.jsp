@@ -153,15 +153,15 @@ $(document).ready(function(){
  </div>
 
 	<div class="isotophead pull-right" style="width: 306px;">
-		<div class="isotoplinks">
+		<div class="isotoplinks" id="content_type_filter">
 		   <ul><li class="current">
 			<a href="#" class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a></li>
 			<li><a href="#"
 				onclick="getAllCourse()"><fmt:message key="draft.txt"/></a></li>
 			<li><a
-				href="#" onclick="getActiveCourse('ACTIVE')"><fmt:message key="active.txt"/></a></li>
+				href="#" onclick="getOtherCourses('ACTIVE')"><fmt:message key="active.txt"/></a></li>
 			<li><a href="#"
-				onclick="getReviewCourse('REVIEW')"><fmt:message key="review.txt"/></a>
+				onclick="getOtherCourses('REVIEW')"><fmt:message key="review.txt"/></a>
 </li>
 			</ul> 
 		</div>
@@ -177,6 +177,8 @@ $(document).ready(function(){
 				type="hidden" id="fileServerPath" value='${ms.uploadContent}' />
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
 		
+			</div>
+			<div id="noCourseFound" style="margin: auto; text-align: center; color:#000; font-weight: bold; font-size: 15px; padding: 20px;">						
 			</div>
 			<div class="Clearfix"></div>
 			<div id="pageNumbers" class="paginationbutton f-r"

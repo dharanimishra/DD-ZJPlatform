@@ -3,10 +3,10 @@ defaultPageIndex = 1;
 noOfPages = new Number(0);
 
 $(document).ready(function() {
-	getAllCourse();
+	getAllCourse("ALL");
 });
 
-function getOtherLearningContents(contentType, pageIndex) {
+function getOtherCourses(contentType, pageIndex) {
 
 	if (!pageIndex || "" == pageIndex) {
 		pageIndex = defaultPageIndex;
@@ -21,8 +21,8 @@ function getOtherLearningContents(contentType, pageIndex) {
 	var contentArrayBasedOnContentType = new Array();
 	var j = 0;
 	for (i = 0; i < contentArray.length; i++) {
-		if ('VIDEO' != contentArray[i].contentType.toUpperCase()
-				&& 'LINK' != contentArray[i].contentType.toUpperCase()) {
+		if ('REVIEW' != contentArray[i].contentType.toUpperCase()
+				&& 'ACTIVE' != contentArray[i].contentType.toUpperCase()) {
 			contentArrayBasedOnContentType[j] = contentArray[i];
 			j++;
 		}
@@ -30,8 +30,25 @@ function getOtherLearningContents(contentType, pageIndex) {
 
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
 	//console.log("noOfPages " + noOfPages);
+	
+	if(contentArrayBasedOnContentType.length ==0){
+		setNoContentFoundText(contentType);
+		$("#content_type_filter").hide();
+	}
+	else{
+		setNoContentFoundText('');
+		$("#content_type_filter").show();
+	}
+	
+	if(contentArrayBasedOnContentType.length > itemsPerPage){
+		getPageDiv(noOfPages, contentType, pageIndex);
+	}
+	else{
+		$('#pageNumbers').empty();
+	}
 
-	getPageDiv(noOfPages, "OTHERS");
+
+	getPageDiv(noOfPages,contentType,pageIndex);
 	//console.log("getPageDiv(noOfPages, OTHERS)"
 	//		+ getPageDiv(noOfPages, "OTHERS"));
 	var divs = '';
@@ -81,8 +98,24 @@ function getLearningContentsByType(contentType, pageIndex) {
 	//		+ contentArrayBasedOnContentType.length);
 	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
 	//console.log("noOfPages " + noOfPages);
+	
+	if(contentArrayBasedOnContentType.length ==0){
+		setNoContentFoundText(contentType);
+		$("#content_type_filter").hide();
+	}
+	else{
+		setNoContentFoundText('');
+		$("#content_type_filter").show();
+	}
+	
+	if(contentArrayBasedOnContentType.length > itemsPerPage){
+		getPageDiv(noOfPages, contentType, pageIndex);
+	}
+	else{
+		$('#pageNumbers').empty();
+	}
 
-	getPageDiv(noOfPages, contentType);
+	getPageDiv(noOfPages, contentType,pageIndex);
 
 	var divs = '';
 	if (pageIndex == 1) {
@@ -105,20 +138,33 @@ function getLearningContentsByType(contentType, pageIndex) {
 	$('#container4').html(divs);
 }
 
-function getAllCourse(pageIndex) {
+function getAllCourse(contentType,pageIndex) {
 
 	if (!pageIndex || "" == pageIndex) {
 		pageIndex = defaultPageIndex;
 	}
-
 	$('#container4').empty();
 	var jsonString = document.getElementById("courses").value;
 	var courseArray = jQuery.parseJSON(jsonString);
 	//console.log("courseArray.length " + courseArray.length + " itemsPerPage  "
 	//		+ itemsPerPage);
 	noOfPages = Math.ceil(courseArray.length / itemsPerPage);
-
-	getPageDiv(noOfPages, "ALL");
+	
+	if(courseArray.length ==0){
+		setNoContentFoundText(contentType);
+		$("#content_type_filter").hide();
+	}
+	else{
+		setNoContentFoundText('');
+		$("#content_type_filter").show();
+	}
+	
+	if(courseArray.length > itemsPerPage){
+		getPageDiv(noOfPages, contentType, pageIndex);
+	}
+	else{
+		$('#pageNumbers').empty();
+	}
 
 	//console.log("noOfPages " + noOfPages);
 	var divs = '';
@@ -188,7 +234,7 @@ function getDiv(courseObject) {
 
 }
 
-function getPageDiv(noOfPages, filterType) {
+function getPageDiv(noOfPages, filterType,pageIndex) {
 	var pageDiv = $('#pageNumbers');
 	var functionName = '';
 	if ("ALL" == filterType) {
@@ -202,18 +248,16 @@ function getPageDiv(noOfPages, filterType) {
 
 	pageDiv.empty();
 	for (i = 1; i <= noOfPages; i++) {
-		pageDiv
-				.append('<span class="pagination_bar pactive"><a onClick="'
-						+ functionName
-						+ i
-						+ ')" href="#" id="btnpg1" class="swShowPageActive pagination_bar"></a></span>');
+		if(pageIndex == i){
+			pageDiv.append('<a onClick="' + functionName + i +')" title="'+ i + '" href="#" id="btnpg1" class="swShowPageActive"></a>');
+		}
+		else{
+			pageDiv.append('<a onClick="' + functionName + i +')" title="'+ i + '" href="#" id="btnpg1" class="swShowPage"></a>');
+		}
 	}
 }
 
 function editCourse(courseId) {
-
-	// Edit Course
-//console.log("courseId :"+courseId);
 	if (courseId != null) {
 		window.location.href = '/ziksana-web/zcourse/editcourse/COURSE_' + courseId;
 	} else {
@@ -244,3 +288,42 @@ function deleteCourse(courseId) {
 $(function() {
 	$('.show_in_fancybox, .google').fancybox();
 });
+
+function calculatePage(val){
+	if(val == 0){		
+		return 0;
+	}else if(val == 1){
+		
+		return 3;	
+	}else if(val == 2){
+	
+		return 6;
+	}
+	
+}
+
+function getCategoryText(category){
+	var noDataText = "";
+	if(category == "ALL"){
+		noDataText = "No courses in repository.";
+		$('#container4').empty();
+	}
+	else {
+		noDataText = "No courses in this category.";
+		$('#container4').empty();
+		
+	}
+	return noDataText;
+}
+
+function setNoContentFoundText(category){
+	
+	var noDataText = "";
+	category = category.toUpperCase();
+	if(category != ""){
+		noDataText = getCategoryText(category);
+	}
+	alert("category" + category + " - noDataText " + noDataText);
+	$('#noCourseFound').text(noDataText);
+}
+
