@@ -242,42 +242,42 @@
 		<li style="margin-left: 40px;"><a 
 				href="/ziksana-web/zcourse/createcourse"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Describe Course</a></li>
+				style="margin-right: 10px; height: 22px;"> </span> <fmt:message key="course.DescribeCourse" /></a></li>
 	  </c:if>
 	  
 	  	<c:if test="${courseId != null}">
 		<li style="margin-left: 40px;"><a 
 				href="/ziksana-web/zcourse/editcourse/COURSE_${courseId}"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Describe Course</a></li>
+				style="margin-right: 10px; height: 22px;"> </span> <fmt:message key="course.DescribeCourse" /></a></li>
 	  </c:if>
 	  <c:if test="${courseId == null}">
 		<li ><a href="/ziksana-web/zcourse/createcourse"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
+				style="margin-right: 10px; height: 22px;"> </span> <fmt:message key="Define.Structure" /></a></li>
 		</c:if>
 		
 		<c:if test="${courseId != null}">
 		<li ><a href="/ziksana-web/zcourse/createmodule/COURSE_${courseId}"><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Structure</a></li>
+				style="margin-right: 10px; height: 22px;"> </span> <fmt:message key="Define.Structure" /></a></li>
 		</c:if>
 	
 		<c:if test="${courseId == null}">
 		<li ><a style="color: #f06c0b;" 
 				href="/ziksana-web/zcourse/createcourse"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</a></li>
+				style="margin-right: 10px;width:22px; height: 22px;"> </span> <fmt:message key="Associate.content" /></a></li>
 		</c:if>
 		<c:if test="${courseId != null}">
 		<li style="color: #f06c0b;"><a style="color: #f06c0b;" 
 				href="/ziksana-web/zcourse/1/repositorycontents/${courseId}"><span><img
 				src="/ziksana-web/resources/images/navarrow.png"
-				style="margin-right: 10px;width:22px; height: 22px;"> </span> Associate Content</a></li>
+				style="margin-right: 10px;width:22px; height: 22px;"> </span> <fmt:message key="Associate.content" /></a></li>
 		</c:if>
 		<li><span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
-				style="margin-right: 10px; height: 22px;"> </span> Define Assignment</li>
+				style="margin-right: 10px; height: 22px;"> </span><fmt:message key="Define.assignment" /> </li>
 
 	</ul>
 
@@ -291,7 +291,7 @@
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1>Organize your course into course modules/chapters</h1>
+		<h1><fmt:message key="module.organize.head" /></h1>
 	</div>
 	<!--End of page-header -->
 
@@ -341,8 +341,8 @@
 
 									<div id="associateul">
 										<div id="content_type_filter">
-											<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a><a href="#" onclick="getLearningContentsByType('VIDEO')">Video
-												Contents</a><a href="#" onclick="getLearningContentsByType('LINK')">Web Link Contents</a><a href="#" onclick="getOtherLearningContents('Others')">Others</a>
+											<a href="#" class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a><a href="#" onclick="getLearningContentsByType('VIDEO')"><fmt:message key="video.content" />
+												</a><a href="#" onclick="getLearningContentsByType('LINK')"><fmt:message key="weblink.content"/></a><a href="#" onclick="getOtherLearningContents('Others')"><fmt:message key="other.txt" /></a>
 										</div>
 										<!--  <p style="font-size:14px; color:#0a91ac; cursor:pointer; text-align: right; "><a href="#linkurl" id="cereatecontent"> Create Content </a></p>
  <p class="associatecategory">Sort by : <a href="#linkurl">Tag</a>/<a href="#linkurl">Category</a>/<a href="#linkurl">Name </a></p>
@@ -373,8 +373,8 @@
 									<!--end of paginationbutton-->
 
 									<p style="text-align: right; clear: both;margin-top:10px">
-										<a id="associate-content-anchor" target="" style="" onClick="associateContents()" class="btn btn-info" href="#">Associate Content</a> 
-											<a target="" style="" href="#" onClick="resetCheckBoxes()" class="btn btn-danger">Cancel</a>
+										<a id="associate-content-anchor" target="" style="" onClick="associateContents()" class="btn btn-info" href="#"><fmt:message key="Associate.content"/></a> 
+											<a target="" style="" href="#" onClick="resetCheckBoxes()" class="btn btn-danger"><fmt:message key="profile.cancel"/></a>
 									</p>
 									 
 									<!-- -->
@@ -406,7 +406,7 @@
 		<div class="Clearfix"></div>
 		<!-- END FORM -->
 									<p style="text-align: right; clear: both;margin-top:10px">
-										<a href='${staticFileServer}zcourse/1/annotatecontents/${courseId}' class="btn btn-info">Save and Continue</a>
+										<a href='${staticFileServer}zcourse/1/annotatecontents/${courseId}' class="btn btn-info"><fmt:message key="btn.save.continue"/></a>
 									</p>
 
 	</div>
