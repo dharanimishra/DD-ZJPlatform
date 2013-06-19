@@ -8,6 +8,10 @@
 	src="${staticFileServer}resources/Dynamicjsonjs/weblinkcontentjson.js"></script>
 	<script type='text/javascript'
 	src="${staticFileServer}resources/js/validation/jquery.validate.js"></script>
+	
+<style>
+ 	footer{display:none}
+</style> 	
 <style>
 .tileheadaa {
 	margin-left: 20px;
@@ -184,7 +188,7 @@ $(document).ready(function() { // On page load
 						
 						<!--end of uploadphoto-->
 						<div class="rowfields pull-left" style="width: 745px;">
-							<ul style="overflow: hidden; width: 98%;">
+							<ul style="overflow: hidden; width: 98%;margin-top: 0;">
 								<li style="width: 180px;">
 								<input type="hidden" name="contentPath[]" value=""/>
 								<input type="text" placeholder="Enter Name"

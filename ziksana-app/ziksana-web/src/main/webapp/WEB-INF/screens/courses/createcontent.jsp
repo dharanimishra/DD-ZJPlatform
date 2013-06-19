@@ -6,7 +6,9 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/createcontentjson.js"></script>
 
-
+<style>
+ 	footer{display:none}
+ 	</style> 
 <style>
 .tileheadaa {
 	margin-left: 20px;
@@ -150,7 +152,7 @@ $(document).ready(function() { // On page load
 													'buttonText' : '<fmt:message key="upload.file"/>',
 													'uploader' : '${ms.uploadScript}',
 													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
-													'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png; *.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx; *.pdf;*.jpg',
+													'fileTypeExts' : '*.jpg; *.jpeg;*.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx; *.pdf;*.jpg',
 													'fileSizeLimit' : '10024KB',
 													'onUploadStart' : function(
 															file) {

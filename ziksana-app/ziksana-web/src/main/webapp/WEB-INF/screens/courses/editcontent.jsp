@@ -12,15 +12,21 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/editcontentjson.js"></script>
 
- 	 
+<style>
+ 	footer{display:none}
+</style> 
  
 
-<div id="Zikbreadcrumbback" style="margin-left: 20px;"> <div
-	class="Zikbreadcrumb f-l"> <div class="fifteen columns"
+<div id="Zikbreadcrumbback" style="margin-left: 20px;"> 
+<div
+	class="Zikbreadcrumb f-l"> 
+	<div class="fifteen columns"
 	id="page-title"> <a style="margin-top: -3px;" class="back"
 	href="javascript:history.back()"></a> <p class="page-title"> <span
 	style="font-size: 13px; color: #6bbde8;">Home</span> < Create Content </p>
-</div> </div> <!--end of breadcrumb--> </div>
+</div> 
+</div> <!--end of breadcrumb--> 
+</div>
 
 <div class="Clearfix"></div>
 <div id="contentpanel">
@@ -63,7 +69,6 @@
 		
 	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
 	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
-		int i=0;
 		try {
 	 	for (LearningContent content : list) {
 	 		
@@ -71,12 +76,6 @@
 	 %> 
 		 <div class="edit_content_info" id="content_<%=content.getId()%>" style="min-height: 320px;">
 		 <div class="Clearfix"></div>
-		 <% if(i%2==0) {%> 
-		<div class="uploadrowodd" style="width:100%;overflow: hidden;margin:auto"> 
-		<% } else {%>
-		<div class="uploadroweven" style="width:100%;margin:auto"> 
-		<% 
-		}%>
 	  <div class="uploadphoto pull-left" style="width: 150px;padding: 10px;">
 	  <% 
 	  
@@ -165,17 +164,17 @@
  <!--end of uploadphoto--> 
  <div class="uploaded_file_contents">
  	<div class="rowfields pull-left" style="height: 145px;width:82%;"> 
- 	<ul>
+ 	<ul style="margin-top: 30px;">
 		<li style="padding-right: 30px;color:#fff;font-size:15px;width:55%">  
 			<label id="labelContentId<%=content.getId()%>" name="content_name[]"><%=content.getContentName()%></label>
 			<input style="display:none" type="text" id="EditName<%=content.getId()%>" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
 		</li> 
-		<li style="color:#fff;font-size:15px;text-align:center;width:15%">
+		<li style="color:#fff;font-size:15px;text-align:center;width:16%">
 		
 		<a onclick="shotxtbox(<%=content.getId()%>)" style="cursor:pointer;font-size:13px;" class="editcntent" >
 		<img src="../../resources/images/content/edit.svg" style="width:19px; height:30px"/> Edit Name</a></li>
-		<li style="width:15%;text-align:center;">
-		<a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;" class="editdtls">
+		<li style="width:13%;text-align:center;">
+		<a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;" >
 		<img src="../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/>Edit Details</a></li>
 		<li style="width:15%;text-align:center;padding-top:4px"><a title="Delete" onclick="deleteContent(<%=content.getId()%>);" class="remove_this">X</a></li>
 	</ul> 
@@ -208,16 +207,7 @@
 	</div> <!--end of continaer--> 
 	
 </div>	
-
- <% if(i%2==0) {%> 
-		</div>
-		<% } else {%>
-		</div> 
-		<% 
-		}%>
- <%
- i++;
-	}
+ <%}
 		}catch(Exception e){
 		e.printStackTrace();	
 		}
@@ -242,18 +232,17 @@
 
 
 </div> <!--end of uploadcontent2-->
-</div> <!--end of image wrapper --> </div> <!--end of contentarea--> </div>
+</div> <!--end of image wrapper --> </div> <!--end of contentarea--> 
+</div>
 
 <!--end of contentpanel-->
-
-<div class="Clearfix"></div>
-
 <!--end of body wrapper-->
 
 <div class="Clearfix"></div>
 
 <style>
-.editdetailsweblink:hover{color:#333!important;text-decoration:none}
+.editcntent:hover{color:#fff!important;text-decoration:none}
+.editdetailuplbtn:hover{color:#fff!important;text-decoration:none;}
 a.remove_this {
   border: 1px solid white;
   border-radius: 60px 60px 60px 60px;
@@ -351,7 +340,7 @@ table tr td {
 }
 .edit_content_info{background:#0099cc}
 .uploadify{left:0px!important}
-.editdetailuplbtn:hover{color:#ccc!important;text-decoration:none}
+
 .rowfields ul {
 overflow:hidden
 }
@@ -366,7 +355,6 @@ overflow:hidden
 
 <script type="text/javascript">
 $(function(){
-
 
 $('.toggle_details').on('click', function(){
 	toggle_handle = $(this);

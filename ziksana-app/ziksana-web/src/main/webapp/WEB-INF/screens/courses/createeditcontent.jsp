@@ -12,8 +12,9 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/editcontentjson.js"></script>
 
- 	 
- 
+ <style>
+ 	footer{display:none}
+</style> 
 
 <div id="Zikbreadcrumbback" style="margin-left: 20px;"> <div
 	class="Zikbreadcrumb f-l"> <div class="fifteen columns"
@@ -69,7 +70,7 @@
 	 		
 	 		
 	 %> 
-		 <div class="edit_content_info" id="content_<%=content.getId()%>">
+		 <div class="edit_content_info" id="content_<%=content.getId()%>" style="min-height: 320px;">
 		 <div class="Clearfix"></div>
 		 <% if(i%2==0) {%> 
 		<div class="uploadrowodd" style="padding: 10px;width:100%;overflow: hidden;margin:auto"> 
@@ -80,17 +81,17 @@
 	  <div class="uploadphoto pull-left" style="width: 260px">
 	  <% 
 	  
-	 	 String imagePath="../../resources/images/preview/image.png";
+	 	 String imagePath="../../../resources/images/preview/image.png";
 			if ("VIDEO".equalsIgnoreCase(ContentType.VIDEO.getName())){
-				imagePath="../../resources/images/preview/video.png";
+				imagePath="../../../resources/images/preview/video.png";
 			} else if("AUDIO".equalsIgnoreCase(ContentType.AUDIO.getName())){
-				imagePath="../../resources/images/preview/audio.png";
+				imagePath="../../../resources/images/preview/audio.png";
 			} else if("PDF".equalsIgnoreCase(ContentType.PDF.getName())){
-				imagePath="../../resources/images/preview/pdf.png";
+				imagePath="../../../resources/images/preview/pdf.png";
 			}else if("PPT".equalsIgnoreCase(ContentType.PPT.getName())){
-				imagePath="../../resources/images/preview/ppt.png";
+				imagePath="../../../resources/images/preview/ppt.png";
 			} else if("DOC".equalsIgnoreCase(ContentType.DOC.getName())){
-				imagePath="../../resources/images/preview/doc.png";
+				imagePath="../../../resources/images/preview/doc.png";
 			}
 	  %>
 	  
