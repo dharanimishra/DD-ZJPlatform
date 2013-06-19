@@ -37,7 +37,7 @@ public enum CourseStatus {
 			courseStatus.name = utlLookup.getLookupValue();
 		}
 		initialized = true;
-		LOGGER.debug("Content Type initialized " + courseStatuses);
+		LOGGER.debug("Course Status initialized " + courseStatuses);
 	}
 
 	private CourseStatus() {
@@ -60,6 +60,11 @@ public enum CourseStatus {
 
 	public String getName() {
 		return name;
+	}
+
+	public static CourseStatus getValueOf(String courseFormatString) {
+		initialize();
+		return valueOf(courseFormatString);
 	}
 
 	public static CourseStatus getCourseStatus(int ID) {

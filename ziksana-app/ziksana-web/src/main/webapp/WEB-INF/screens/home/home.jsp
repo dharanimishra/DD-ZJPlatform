@@ -153,7 +153,7 @@
 
 				</div>
 			</a>
-			<a href="/ziksana-web/zcourse/createcourse">
+			<a href="/ziksana-web/zcourse/1/mycourselearner">
 				<div class="tile bg-color-blue">
 
 					<img class="tileimg"

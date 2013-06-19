@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.common.MediaServerURL;
-import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseEditResponse;
