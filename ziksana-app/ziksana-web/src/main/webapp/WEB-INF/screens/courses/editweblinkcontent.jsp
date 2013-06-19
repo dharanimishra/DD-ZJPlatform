@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/xml"%>
+<%@page import="java.util.*"%>
+<%@page import="com.ziksana.domain.course.LearningContent"%>
+<%@page import="com.ziksana.domain.course.ContentType"%>
+
 <script type='text/javascript'
 	src="${staticFileServer}resources/js/custom/plugins.js"></script>
 <script type='text/javascript'
@@ -103,20 +108,18 @@ $(document).ready(function() { // On page load
 		<div class="createcontentwrapper">
 			<form id="createweblinkform" method="post"
 				action="/ziksana-web/zcourse/1/weblinkcontents">
+				
+	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
+		int i=0;
+		try {
+	 	for (LearningContent content : list) {
+	 		
+	 		
+	 %> 
 				<div class="addweblink">
 		
 					<div class="createcontentpanelhead">
-						Add Web Link
-						<%-- <c:if test="${message != null}">
-    						<div><p>${message}</p></div>
-						</c:if>
-			
-						<div class="addmpre pull-right">
-							<a class="adlink" id="weblink"><img
-								src="${staticFileServer}resources/images/content/plus.png"
-								style="height: 30px;" /></a>
-						</div>  --%>
-						
+						Edit Web Link
 						<!--end of add more-->
 						<div class="Clearfix"></div>
 					</div>
@@ -132,7 +135,7 @@ $(document).ready(function() { // On page load
 								<input type="file" name="thumbnail_image_file_upload"
 									tabindex="11" id="thumbnail_image_file_upload"
 									style="margin-left: 196px;" />
-									
+							<input type="hidden" name="contentId" value="<%=content.getId()%>"/>					
 							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
 							<input type="hidden" name="contentPath" id="thumbnail_path" value="<%=old_thumbnail_path%>"/>
 								<div id="status"></div>
@@ -186,11 +189,11 @@ $(document).ready(function() { // On page load
 						<div class="rowfields pull-left">
 							<ul style="overflow: hidden; position: absolute; width: 500px;">
 								<li style="width: 180px;">
-								<input type="hidden" name="contentPath[]" value=""/>
+								<input type="hidden" name="contentPath" value=""/>
 								<input type="text" placeholder="Enter Name"
-									name="contentName[]" class="required validate[required]"
+									name="contentName" value="<%=content.getContentName()%>" class="required validate[required]"
 									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
-								<li style="width: 180px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
+								<li style="width: 180px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl" value="<%=content.getContentUrl()%>"
 									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" class="required validate[required]"/></li>
 								<li><a href="#" class="editdetailsweblink">Edit Details</a></li>
 							</ul>
@@ -199,26 +202,26 @@ $(document).ready(function() { // On page load
 						<div class="clearfix"></div>
 						<div class="editslide pull-left" style="display:none">
 						<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px; padding-left: 10px;">Description</label>
-							<textarea rows="4" cols="12" name="contentDescription[]" 
+							<textarea rows="4" cols="12" name="contentDescription" value="<%=content.getContentDescription()%>"
 								style="width: 330px; margin-bottom: 10px; margin-left: 10px;" placeholder="Describe the content for  Web link"></textarea>
 						</div>
 						<div class="editslide pull-left" style="margin-left: 10px;display:none">
 							<ul><li style="margin-bottom: 10px;">	<label>Select Area</label>
-							<select id="Careaddl" name="contentArea[]" class="select Careaddl">
+							<select id="Careaddl" name="contentArea" class="select Careaddl"  value="">
 								<option>Specify Area</option>
 							</select> </li><li  style="margin-bottom: 10px;">
 							<label>Select Subject</label>
 							 <select class="select Csubjectddl" id="Csubjectddl"
-								name="contentSubject[]">
+								name="contentSubject"  value="">
 								<option>Specify Subject</option>
 							</select></li>
 							 <li>
 		                	<label>Select Topic</label>
-			           <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic[]">
+			           <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic"  value="">
 								<option>Specify Topic</option>
 							</select></li>
-		       <li>	<label>Specify Tags</label>
-							<input type="text" placeholder="Specify Tags" name="contentTag[]"
+		      			 <li><label>Specify Tags</label>
+							<input type="text" placeholder="Specify Tags" name="contentTag" value=""
 								style="height: 30px; margin-right: 12px; width: 233px;">
 						</li></ul></div>
 						<div class="clearfix"></div>
@@ -230,9 +233,14 @@ $(document).ready(function() { // On page load
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
 					<button class="btn blue pull-right saveup1" id="sbtvalidation"
-						onClick="$('form#createweblinkform').submit();">Add Web link</button>
+						onClick="$('form#createweblinkform').submit();">Edit Web link</button>
 					<div class="clearfix"></div>
 				</div>
+				<% }	
+				}catch(Exception e){
+			e.printStackTrace();	
+			}
+	 	%>
 				<!--end of panel head-->
 			</form>
 			<!--end of weblink-->

@@ -133,7 +133,7 @@ public class MyContentController {
 	public @ResponseBody
 	ModelAndView editWebLinkContent(@PathVariable Integer contentId) {
 		LOGGER.debug(" Entering Class " + getClass() + " webLinkContent()");
-		ModelAndView modelView = new ModelAndView("masterweblinkcontent");
+		ModelAndView modelView = new ModelAndView("editweblinkcontent");
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
 		try {
 			LearningContent learningContent = myContentService
@@ -351,6 +351,7 @@ public class MyContentController {
 	@RequestMapping(value = "1/weblinkcontents", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView createWeblinkContent(
+			@RequestParam(value = "contentId", required = true) String contentId,
 			@RequestParam(value = "contentPath", required = false) String thumbnailPicturePath,
 			@RequestParam(value = "contentName", required = true) String contentName,
 			@RequestParam(value = "contentUrl", required = true) String contentUrl,
@@ -374,7 +375,7 @@ public class MyContentController {
 					.getSubjectClassification(Topic);
 
 			LearningContent learningContent = new LearningContent();
-
+			learningContent.setLearningContentId(Integer.parseInt(contentId));
 			learningContent.setAuthoringMember(accountableMember);
 			learningContent.setContentName(contentName);
 			learningContent.setContentDescription(contentDescription);
