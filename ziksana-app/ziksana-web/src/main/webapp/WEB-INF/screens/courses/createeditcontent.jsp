@@ -15,7 +15,12 @@
  <style>
  	footer{display:none}
 </style> 
-
+<script>
+$(document).ready(function() { // On page load
+  $("#navstudent").addClass("active");  
+ 
+});
+</script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;"> <div
 	class="Zikbreadcrumb f-l"> <div class="fifteen columns"
 	id="page-title"> <a style="margin-top: -3px;" class="back"

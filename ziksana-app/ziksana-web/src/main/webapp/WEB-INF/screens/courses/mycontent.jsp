@@ -127,6 +127,12 @@ $(document).ready(function(){
         });
     });
 </script>
+<script>
+$(document).ready(function() { // On page load
+  $("#navstudent").addClass("active");  
+ 
+});
+</script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
 	<div class="Zikbreadcrumb f-l">
