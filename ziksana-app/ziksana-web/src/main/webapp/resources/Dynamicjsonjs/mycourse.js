@@ -323,7 +323,7 @@ function setNoContentFoundText(category){
 	if(category != ""){
 		noDataText = getCategoryText(category);
 	}
-	alert("category" + category + " - noDataText " + noDataText);
+	//alert("category" + category + " - noDataText " + noDataText);
 	$('#noCourseFound').text(noDataText);
 }
 
