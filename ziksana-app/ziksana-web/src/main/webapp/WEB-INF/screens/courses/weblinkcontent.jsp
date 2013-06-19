@@ -117,7 +117,7 @@ $(document).ready(function() { // On page load
 			
 						<div class="addmpre pull-right">
 							<a class="adlink" id="weblink"><img
-								src="${staticFileServer}resources/images/content/plus.png"
+								src="/ziksana-web/resources/images/content/plus.png"
 								style="height: 30px;" /></a>
 						</div> 
 						
@@ -129,7 +129,7 @@ $(document).ready(function() { // On page load
 					<div id="web_link_container"  class="weblinkcontainer" style="background-color:#0099cc">
 						<div class="weblink_row">
 							<div class="uploadphoto pull-left" style="width:150px">
-								<img id="thumbnail_image" src="${staticFileServer}resources/images/preview/link.png" style="width: 80px;height:80px;margin-left: 20px; margin-bottom: 5px;" align="left" />
+								<img id="thumbnail_image" src="/ziksana-web/resources/images/preview/link.png" style="width: 80px;height:80px;margin-left: 20px; margin-bottom: 5px;" align="left" />
 								<div id="message"></div>
 								<div id="thubmnail_upload_message"></div>
 								<div id="loaderText"></div>
@@ -343,6 +343,8 @@ input.error {
 #web_link_container div.weblink_row:nth-child(even) {
   background: none repeat scroll 0 0 #CCCCCC;
 }
+.editcntent:hover{color:#fff!important;text-decoration:none}
+.editdetailuplbtn:hover{color:#fff!important;text-decoration:none;}
 </style>
 
 <script type="text/javascript">

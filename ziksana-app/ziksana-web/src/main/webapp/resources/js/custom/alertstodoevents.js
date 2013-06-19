@@ -11,8 +11,7 @@ $("#todotype").hide();
 
 //$(".todocontainer").hide();
 
-
-
+ 
 
 $(".addtodobtn").click(function(e) {
    // $("#addtodorow").toggle(200);
@@ -93,6 +92,7 @@ $(".managetodo").click(function(e) {
 	});
 
 });
+
 //Close Announcements
 function close_announcements(){
 	$(".annnouncementpanel").hide(); 
@@ -575,7 +575,9 @@ function get_and_populate_todo_value(val){
 						$('#todos_placeholder_more').html(ouputEmptyTodo);
 						
 						if(val == 0){		
-							$('#pag_active_more0').addClass('pactive');}else if(val == 5){$('#pag_active_more1').addClass('pactive');	
+							$('#pag_active_more0').addClass('pactive');
+						}else if(val == 5){
+							$('#pag_active_more1').addClass('pactive');	
 						}else if(val == 10){
 							$('#pag_active_more2').addClass('pactive');
 						}else if(val == 15){
@@ -785,9 +787,80 @@ function saveRow_hideEdit(v)
 	
 }
 	
-
-
-
+$(document).ready(function() {
+	
+	getTodayCalendarEvents(0);
+	
+});
+function getTodayCalendarEvents(val){
+	$.ajax({
+	  	type: 'GET',
+		url: '/ziksana-web/calendarevents/'+val+'',
+		dataType: 'xml',
+		success: function( data ) {
+			
+			outputCalendar = '';
+			$(data).find("calendarlist").each(function(){
+			if($(this).find("calendarSize").text()==0){
+				
+				console.log($(this).find("calendarSize").text());
+				outputCalendar+="<span style='margin-left:250px;color:white;'>No Events to display</span>";
+				$('#calendarEvent').html(outputCalendar);
+			}else{
+				totalSize = $(this).find("calendarSize").text();
+				pagination ="";
+				calPages = totalSize/7;
+				
+				for(var i=0;i<calPages;i++){
+					
+					pagination+= "<span onclick='getTodayCalendarEvents(calculateEventsPage("+i+"))' id='pag_active"+i+"' class='pagination_bar'/>";
+					
+				}
+			
+			outputCalendar += "<table class='table table-hover table-striped'>";
+			outputCalendar += "<tbody>";
+			 $(data).find("calendar").each(function(index){
+				outputCalendar += "<tr>";
+				outputCalendar += "<td>"+$(this).find('startdate').text()+"</td>";
+				outputCalendar += "<td>"+$(this).find('enddate').text()+"</td>";
+				outputCalendar += "<td>"+$(this).find('eventname').text()+"</td>";
+				outputCalendar += "</tr>";
+			 });
+			outputCalendar += "</tbody>";
+			outputCalendar += "</table>";
+			 if(calPages > 1){
+				 	outputCalendar+="<div id='pagingControlsMore' style='float:right;margin-right:50px;'>"+pagination+"</div>";
+			 }
+			
+			$('#calendarEvent').html(outputCalendar);
+			 if(val == 0){		
+					$('#pag_active0').addClass('pactive');
+				}else if(val == 7){
+					$('#pag_active1').addClass('pactive');	
+				}else if(val == 14){
+					$('#pag_active2').addClass('pactive');
+				}else if(val == 21){
+					$('#pag_active3').addClass('pactive');
+				}
+		}
+		});
+		}
+	});
+}
+function calculateEventsPage(val){
+	if(val == 0){		
+		return 0;
+	}else if(val == 1){
+		
+		return 7;	
+	}else if(val == 2){
+	
+		return 14;
+	}else if(val == 3){
+	
+		return 21;
+	}
+}
 $(document).ready(function() {
 	//ADD NEW CATEGORY
 	$('#todo_category_name').focusout(function(){add_new_category_item();});

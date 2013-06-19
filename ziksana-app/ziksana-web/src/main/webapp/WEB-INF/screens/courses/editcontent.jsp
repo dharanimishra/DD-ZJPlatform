@@ -29,7 +29,7 @@
 </div>
 
 <div class="Clearfix"></div>
-<div id="contentpanel">
+<div id="contentpanel" style="min-height: 500px;">
  <div class="tilecontainer pull-left"
 			style="margin-top: 40px; width: 140px;margin-left:10px;"> 
 			<div class="tile bg-color-orange icon" id="uploadbtn" style="">
@@ -58,24 +58,23 @@
 			
 			<div class="Clearfix"></div> </div>
 			 <!--end of tiles container--> 
-			 <div class="contentarea pull-right" style="width: 940px;"> 
-			<%--  <c:if test="${message != null}">
-    				<div class="sucessmssg" id="sucessmsg"><p>${message}</p></div>
-				</c:if> --%>
-			 <div class="createcontentwrapper"> 
-		<script>setTimeout( "jQuery('#sucessmsg').hide();",3000 );</script>
+<div class="contentarea pull-right" style="width: 940px;"> 
 <div class="uploadcontent2">
 	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
 		
 	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
 	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
 		try {
+		int i=0;
 	 	for (LearningContent content : list) {
 	 		
 	 		
 	 %> 
-		 <div class="edit_content_info" id="content_<%=content.getId()%>" style="min-height: 320px;">
+		 <div class="edit_content_info" id="content_<%=content.getId()%>" style="min-height:240px;">
 		 <div class="Clearfix"></div>
+
+		<div style="padding: 10px;width:100%"> 
+
 	  <div class="uploadphoto pull-left" style="width: 150px;padding: 10px;">
 	  <% 
 	  
@@ -163,7 +162,7 @@
 
  <!--end of uploadphoto--> 
  <div class="uploaded_file_contents">
- 	<div class="rowfields pull-left" style="height: 145px;width:82%;"> 
+ 	<div class="rowfields pull-left" style="height: 145px;width:81%;"> 
  	<ul style="margin-top: 30px;">
 		<li style="padding-right: 30px;color:#fff;font-size:15px;width:55%">  
 			<label id="labelContentId<%=content.getId()%>" name="content_name[]"><%=content.getContentName()%></label>
@@ -206,29 +205,32 @@
 
 	</div> <!--end of continaer--> 
 	
-</div>	
+	</div>	
+</div> 
+</div>
+</div>
  <%}
+	 	 i++;
 		}catch(Exception e){
 		e.printStackTrace();	
 		}
 %>
-</div>
+
 
 <div class="clearfix"></div> 
 
 </div> <!-- end of uploadrow-->
 </form> 
-</div>
-
-
-
 <div class="createcontentpanelhead" style="margin-top: 4px;"> 
 	<a href="#linkurl" class="btn pull-right" style="margin-left: 10px;" type="button" onClick="$('form#editcontentform').submit();"> Save </a> 
 	<a	href="/ziksana-web/zcourse/1/createcontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous </a>
 	
 	<!--  <a href="#linkurl" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous</a> -->
 <div class="clearfix"></div> 
-</div> <!--end of panel head--> 
+</div>
+</div>
+
+ <!--end of panel head--> 
 
 
 </div> <!--end of uploadcontent2-->
@@ -350,6 +352,9 @@ overflow:hidden
 .rowfields li input{
   height: 26px;
   width: 180px;
+}
+.edit_content_info:nth-child(2n) {
+  background: none repeat scroll 0 0 #CCCCCC;
 }
 </style>
 

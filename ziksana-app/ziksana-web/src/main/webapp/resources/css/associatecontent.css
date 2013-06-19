@@ -9,7 +9,7 @@ margin-bottom: 15px;
 #associatewrapper
 {
 margin-bottom: 20px;
-margin-top: 20px; 
+margin-top: 40px; 
  padding:0px;
  background-color: #168EBE;
  
@@ -25,10 +25,9 @@ box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 
 #associateul
 {
-margin-bottom:2px;
-padding-bottom: 5px;
-border-bottom: 0px solid #ccc;
-text-align:right
+margin-top: -35px;
+    overflow: auto;
+    padding-bottom: 5px;
 }
 
 .associatecategory
@@ -92,7 +91,7 @@ padding: 5px;
 }
 
 .associatesearchitemodd{
-background:none;
+background:#168EBE;
 overflow: auto;
     padding: 5px;
 padding: 5px;
@@ -138,7 +137,8 @@ text-align: justify;
 line-height: 18px;
 color:#fff;
 height:32px;
-overflow:hidden
+overflow:hidden;
+
 }
 
 
@@ -263,16 +263,29 @@ a.swShowPage:hover{
   text-align: center;
   text-decoration: none;
 }
-
-#content_type_filter {display: inline-block;}
+#content_type_filter {
+  background: none repeat scroll 0 0 #168EBE;
+  border-radius: 4px 4px 0 0;
+  display: inline-block;
+  float: right;
+}
+ 
 #content_type_filter a {
-   
-    color: white;
+   line-height:1.2;
+    color: white;cursor:pointer;
     display: inline-block;
     padding: 0.5em;
-    text-decoration: none;
+    text-decoration: none;font-size:16px;
 }
-#content_type_filter a:hover {   text-decoration: underline;color: #333; }
+#content_type_filter ul {
+  list-style: none outside none;
+  margin: 0;
+  width: 430px;
+}
+#content_type_filter li {
+  float: left;
+}
+#content_type_filter a:hover {   text-decoration: underline;color: #ccc; }
 #content_type_filter a.active_filter {opacity: 0.8;padding-left:30px; padding-right:30px;}
 
 /* Metro css */

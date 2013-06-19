@@ -15,7 +15,12 @@
  <style>
  	footer{display:none}
 </style> 
-
+<script>
+$(document).ready(function() { // On page load
+  $("#navstudent").addClass("active");  
+ 
+});
+</script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;"> <div
 	class="Zikbreadcrumb f-l"> <div class="fifteen columns"
 	id="page-title"> <a style="margin-top: -3px;" class="back"
@@ -30,7 +35,7 @@
 			<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content"> 
 				<a href="/ziksana-web/zcourse/1/createcontent">
-				<img src="${staticFileServer}resources/images/content/upload.png" /></a>
+				<img src="/ziksana-web/resources/images/content/upload.png" /></a>
 			</div>
 			<div class="brand"> 
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"> 
@@ -43,7 +48,7 @@
 		<div class="tile bg-color-grayDark icon" id="addweblinkbtn" style="">
 			<div class="tile-content"> 
 				<a href="/ziksana-web/zcourse/1/weblinkcontent">
-				<img src="${staticFileServer}resources/images/content/link.png" /></a>
+				<img src="/ziksana-web/resources/images/content/link.png" /></a>
 			 </div> 
 		 <div  class="brand"> 
 			<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
@@ -78,7 +83,7 @@
 		<div class="uploadroweven" style="padding: 10px;width:100%;margin:auto"> 
 		<% 
 		}%>
-	  <div class="uploadphoto pull-left" style="width: 260px">
+	  <div class="uploadphoto pull-left"  style="width: 150px;padding: 10px;">
 	  <% 
 	  
 	 	 String imagePath="../../../resources/images/preview/image.png";
@@ -95,7 +100,7 @@
 			}
 	  %>
 	  
-				<img id="thumbnail_image_<%=content.getId()%>" src="<%=imagePath%>" style="width: 70px;height:70px;margin-bottom: 4px;" align="left" />
+				<img id="thumbnail_image_<%=content.getId()%>" src="<%=imagePath%>" style="width: 70px;height:70px;margin-bottom: 4px;margin-left: 20px;" align="left" />
 				<div id="message_<%=content.getId()%>"></div>
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
 						<div id="loaderText_<%=content.getId()%>"></div>
@@ -165,14 +170,20 @@
 
  <!--end of uploadphoto--> 
  <div class="uploaded_file_contents">
- 	<div class="rowfields pull-left" style="height: 145px;width:70%;"> 
- 	<ul>
-		<li style="padding-right: 30px;color:#fff;font-size:15px">  
+ 	<div class="rowfields pull-left" style="height: 145px;width:82%;"> 
+ 	<ul style="margin-top: 30px;">
+		<li style="padding-right: 30px;color:#fff;font-size:15px;width:55%">  
 			<label id="labelContentId<%=content.getId()%>" name="content_name[]"><%=content.getContentName()%></label>
 			<input style="display:none" type="text" id="EditName<%=content.getId()%>" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
 		</li> 
-		<li style="padding-right: 30px;color:#fff;font-size:15px;text-align:left"><a onclick="shotxtbox(<%=content.getId()%>)" style="cursor:pointer;font-size:13px;" >Edit Name</a></li>
-		<li><a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;">Edit Details</a></li>
+		<li style="color:#fff;font-size:15px;text-align:center;width:16%">
+		
+		<a onclick="shotxtbox(<%=content.getId()%>)" style="cursor:pointer;font-size:13px;" class="editcntent" >
+		<img src="../../../resources/images/content/edit.svg" style="width:19px; height:30px"/> Edit Name</a></li>
+		<li style="width:13%;text-align:center;">
+		<a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;" >
+		<img src="../../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/>Edit Details</a></li>
+		<li style="width:15%;text-align:center;padding-top:4px"><a title="Delete" onclick="deleteContent(<%=content.getId()%>);" class="remove_this">X</a></li>
 	</ul> 
 	</div> 
 
@@ -248,6 +259,25 @@
 <div class="Clearfix"></div>
 
 <style>
+a.remove_this {
+  border: 1px solid white;
+  border-radius: 60px 60px 60px 60px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 11px !important;
+  height: 19px;
+  line-height: 18px;
+  text-align: center;
+  text-decoration: none;
+  width: 19px;
+}
+
+a.remove_this:hover {
+	color: red!important;
+	border-color: red;
+	text-decoration: none;
+}
 .editslide label{ color:#fff;padding-left:6px;margin-bottom: 4px;}
 .editslide ul{
 list-style: none ;

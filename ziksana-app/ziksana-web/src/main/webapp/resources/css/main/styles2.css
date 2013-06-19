@@ -2990,4 +2990,10 @@ label.error {
 :-ms-input-placeholder {  
    color: #555; 
 }
- 
+ .sucessmssg {
+   
+  color: green;
+  
+  text-align: center;
+   
+}

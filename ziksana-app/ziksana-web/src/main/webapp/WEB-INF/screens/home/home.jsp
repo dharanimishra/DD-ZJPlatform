@@ -1,12 +1,14 @@
 
-<script
-	src="/ziksana-web/resources/js/custom/table/js/jquery-1.8.3.min.js"></script>
+<!-- <script
+	src="/ziksana-web/resources/js/custom/table/js/jquery-1.8.3.min.js"></script> -->
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/alertstodoevents.js"></script>
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/jquery.hovercard.js"></script>
 <script type='text/javascript'
 	src="/ziksana-web/resources/js/validation/jquery.validate.js"></script>
+<script type="text/javascript"
+	src="/ziksana-web/resources/js/lib/isotope/jquery.isotope.min.js"></script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
 	<div class="Zikbreadcrumb f-l">
@@ -153,7 +155,7 @@
 
 				</div>
 			</a>
-			<a href="/ziksana-web/zcourse/1/mycourselearner">
+			<a href="/ziksana-web/zcourse/createcourse">
 				<div class="tile bg-color-blue">
 
 					<img class="tileimg"
@@ -255,9 +257,9 @@
 
 
 
-				<div class="eventcontent"
+				<div class="eventcontent" id="calendarEvent"
 					style="height: 280px; overflow: auto; overflow-x: hidden;">
-					<table class="table table-hover table-striped">
+					<!-- <table class="table table-hover table-striped">
 
 						<tbody>
 							<tr>
@@ -304,7 +306,7 @@
 
 						</tbody>
 					</table>
-
+ -->
 				</div>
 				<!--end of eventcontent-->
 
@@ -314,10 +316,9 @@
 					style="height: 34px; background-color: rgba(50, 50, 50, 0.75); padding: 10px; border-top: 1px solid #ccc; padding: 5px; padding-left: 10px; color: #fff;">
 					<p class="pull-right" style="color: #fff; font-size: 10px;">
 						<fmt:message key="home.manageevents" />
-						<a href="#linkurl"> <img
-							src="/ziksana-web/resources/images/icons/calendar.png"
-							style="height: 20px; margin-left: 6px; vertical-align: middle;" />
-						</a>
+						<a  href="/ziksana-web/01_simple_init" class="show_in_fancybox"  data-fancybox-type="iframe"> <img  src="/ziksana-web/resources/images/icons/calendar.png"
+							style="height: 20px; margin-left: 6px; vertical-align: middle;" /></a>
+						
 					</p>
 
 				</div>
@@ -325,6 +326,9 @@
 
 
 			</div>
+			<!-- Manage Events -->
+			
+			
 			<!--end of contentareaevent-->
 
 
@@ -514,7 +518,7 @@
 
 		</div>
 		<!--end of image wrapper -->
-
+		
 	</div>
 	<!--end of contentarea-->
 
@@ -634,7 +638,13 @@ table tr td {
 <script type="text/javascript"
 	src="/ziksana-web/resources/js/custom/table/data-tables/DT_bootstrap.js"></script>
 <script src="/ziksana-web/resources/js/custom/table/js/app.js"></script>
-<script>
+<script type="text/javascript" >
+
+	$(function() {
+	 	$('.show_in_fancybox, .google').fancybox({"width":950,"height":300, afterClose: getTodayCalendarEvents(0)});
+	});
+
+	
 	function toggleSeemore(link) {
 		p = link.prev('p');
 
@@ -652,10 +662,13 @@ table tr td {
 		//$('#descriptionErrorMsg').html("");
 		document.getElementById("descriptionErrorMsg").innerHTML = '';
 	}
+	
 
 	function clearManageTodoBox() {
 		for ( var i = 0; i < 4; i++) {
 			$('#manageTodoErrorMsg' + i + '').html("");
 		}
 	}
+
+	
 </script>

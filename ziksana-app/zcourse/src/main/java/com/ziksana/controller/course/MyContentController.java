@@ -281,33 +281,27 @@ public class MyContentController {
 				learningContent.setRightsOwningMember(accountableMember);
 
 				try {
-					if (!"".equals(contentId) && contentId != null) {
+					if (contentId != null && contentId.length > 0) {
 						learningContentId = Integer.parseInt(contentId[i]);
 						learningContent.setLearningContentId(learningContentId);
 					}
-
-					if (!"".equals(contentName) && contentName != null) {
+					if (contentName != null && contentName.length > 0) {
 						learningContent.setContentName(contentName[i]);
 					}
-					if (!"".equals(contentDesc) && contentDesc != null) {
+					if (contentDesc != null && contentDesc.length > 0) {
 						learningContent.setContentDescription(contentDesc[i]);
 					}
-
-					if (!"".equals(screenshotPath) && screenshotPath != null) {
+					if (screenshotPath != null && screenshotPath.length > 0) {
 						learningContent.setScreenshotPath(screenshotPath[i]);
 					}
-
-					LOGGER.info("screenshotPath:" + screenshotPath[i]);
-
-					try {
+					if (contentTopic != null && contentTopic.length > 0) {
 						CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
 								.getSubjectClassification(contentTopic[i]);
 						learningContent
 								.setSubjClassificationId(courseSubjectClassification
 										.getSubjClassificationId());
-					} catch (Exception e) {
-
 					}
+
 				} catch (Exception e) {
 					LOGGER.error("Class " + getClass()
 							+ "Subject Classification not found:" + e);
@@ -371,9 +365,6 @@ public class MyContentController {
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
 
-			CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
-					.getSubjectClassification(Topic);
-
 			LearningContent learningContent = new LearningContent();
 			learningContent.setLearningContentId(Integer.parseInt(contentId));
 			learningContent.setAuthoringMember(accountableMember);
@@ -395,6 +386,8 @@ public class MyContentController {
 			learningContent.setRightsOwningMember(accountableMember);
 
 			try {
+				CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
+						.getSubjectClassification(Topic);
 				learningContent
 						.setSubjClassificationId(courseSubjectClassification
 								.getSubjClassificationId());
@@ -445,10 +438,15 @@ public class MyContentController {
 			for (int i = 0; i < contentName.length; i++) {
 				LearningContent learningContent = new LearningContent();
 				learningContent.setAuthoringMember(accountableMember);
-				learningContent.setContentName(contentName[i]);
-				learningContent.setContentPath(contentUrl[i]);
+				if (contentName != null && contentName.length > 0) {
+					learningContent.setContentName(contentName[i]);
+				}
+				if (contentUrl != null && contentUrl.length > 0) {
+					learningContent.setContentPath(contentUrl[i]);
+				}
 				learningContent.setStatusId(1);
 				learningContent.setActive(true);
+				learningContent.setRightsOwningMember(accountableMember);
 
 				try {
 					ContentType contentTypeObj = ContentType.getValueOf("LINK"
@@ -466,26 +464,27 @@ public class MyContentController {
 					LOGGER.error("Class " + getClass() + "Exception found:" + e);
 
 				}
-				try {
+				if (thumbnailPicturePath != null
+						&& thumbnailPicturePath.length > 0) {
 					String screenshotPath = thumbnailPicturePath[i];
-					LOGGER.error("Class " + getClass()
-							+ "screenshotPath found:" + screenshotPath);
-					learningContent
-							.setContentDescription(contentDescription[i]);
 					learningContent.setThumbnailPicturePath(screenshotPath);
 					learningContent.setScreenshotPath(screenshotPath);
-				} catch (Exception e) {
 					LOGGER.error("Class " + getClass()
-							+ "screenshotPath not found:" + e);
+							+ "screenshotPath found:" + screenshotPath);
 				}
-				learningContent.setRightsOwningMember(accountableMember);
+				if (contentDescription != null && contentDescription.length > 0) {
+					learningContent
+							.setContentDescription(contentDescription[i]);
+				}
 
 				try {
+					if (contentTopic != null && contentTopic.length > 0) {
 					CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
 							.getSubjectClassification(contentTopic[i]);
 					learningContent
 							.setSubjClassificationId(courseSubjectClassification
 									.getSubjClassificationId());
+					}
 				} catch (Exception e) {
 					LOGGER.error("Class " + getClass()
 							+ "Subject Classification not found:" + e);

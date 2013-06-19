@@ -127,7 +127,7 @@ $(document).ready(function() { // On page load
 					<!-- <div id="web_link_container"> -->
 					<div id="web_link_container"  class="weblinkcontainer" style="background-color:#0099cc">
 						<div class="weblink_row">
-							<div class="uploadphoto pull-left" style="width: 350px">
+							<div class="uploadphoto pull-left" style="width: 150px">
 								<img id="thumbnail_image" src="${staticFileServer}resources/images/preview/link.png" style="width: 80px;height:80px;margin-left: 20px; margin-bottom: 5px;" align="left" />
 								<div id="message"></div>
 								<div id="thubmnail_upload_message"></div>
@@ -186,16 +186,18 @@ $(document).ready(function() { // On page load
 							</div>
 						
 						<!--end of uploadphoto-->
-						<div class="rowfields pull-left">
-							<ul style="overflow: hidden; position: absolute; width: 500px;">
+						<div class="rowfields pull-left" style="width: 745px;">
+							<ul style="overflow: hidden; width: 98%;margin-top: 0;">
 								<li style="width: 180px;">
 								<input type="hidden" name="contentPath[]" value=""/>
 								<input type="text" placeholder="Enter Name"
 									name="contentName[]" class="required validate[required]"
 									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
-								<li style="width: 180px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
+								<li style="width: 350px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
 									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" class="required validate[required]"/></li>
-								<li><a href="#" class="editdetailsweblink">Edit Details</a></li>
+								<li  style="width: 150px;"><a href="#" class="editdetailsweblink" style="font-size:13px;"><img src="../../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/>
+								Edit Details</a></li>
+								<li style="width:50px;text-align:center;padding-top:13px"><a title="Delete" class="remove_this">X</a></li>
 							</ul>
 						</div>
 						<!--end of rowfields-->
@@ -255,6 +257,25 @@ $(document).ready(function() { // On page load
 </div>
 
 <style>
+a.remove_this {
+  border: 1px solid white;
+  border-radius: 60px 60px 60px 60px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 11px !important;
+  height: 19px;
+  line-height: 18px;
+  text-align: center;
+  text-decoration: none;
+  width: 19px;float: right !important;
+}
+
+a.remove_this:hover {
+	color: red!important;
+	border-color: red;
+	text-decoration: none;
+}
 .uploadrowodd { background-color: #CCCCCC;
    
 }
@@ -286,7 +307,8 @@ width: 530px;overflow:hidden}
 .editslide li {
   float: left; 
 }
-
+.editcntent:hover{color:#fff!important;text-decoration:none}
+.editdetailsweblink:hover{color:#fff!important;text-decoration:none;}
 </style>
 
 <style type="text/css">

@@ -25,6 +25,7 @@
 		<module>zrecommendations</module>
 		<module>zsubscription</module>
 		<module>zannouncements</module>
+		<module>zcalendar</module>
 	</modules>
 
 	<properties>
@@ -292,7 +293,13 @@
             <artifactId>mail</artifactId>
             <version>1.4.5</version>
         </dependency>
-
+        
+        <!-- Java Planner for DHTMLX -->
+		<dependency>
+		 	<groupId>com.dhtmlx</groupId>
+            <artifactId>javaplanner</artifactId>
+            <version>v1.2</version>
+		</dependency>
 	</dependencies>
 
 </project>
