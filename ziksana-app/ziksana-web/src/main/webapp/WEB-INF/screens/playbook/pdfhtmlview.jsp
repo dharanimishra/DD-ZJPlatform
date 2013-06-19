@@ -199,7 +199,7 @@ font-weight: bold;}
       <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
    </c:otherwise>
   </c:choose>
-	  <b style="padding:0px">${node.title}</b><label style="float:right;font-weight:bold">Parent: Maths</label ><br/>
+	  <b style="padding:0px">${node.title}</b><label style="float:right;font-weight:bold">${course.name}</label ><br/>
 	  ${node.nodeDescription}
 	   <br>
 	   <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
@@ -215,7 +215,7 @@ font-weight: bold;}
 		   <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
 		   </c:otherwise>
 		  </c:choose>
-		    <b style="padding:0px">${cnode.title}</b><label style="float:right;font-weight:bold">Parent: Maths</label ><br/>    
+		    <b style="padding:0px">${cnode.title}</b><label style="float:right;font-weight:bold">${node.title}</label ><br/>    
 		    ${cnode.nodeDescription}<br>
 		    <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
 		   </div>   
