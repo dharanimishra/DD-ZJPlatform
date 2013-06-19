@@ -148,12 +148,12 @@ $(document).ready(function() { // On page load
 												{
 													'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 													'queueSizeLimit' : 1,
-													'successTimeout' : 350,
+													'successTimeout' : 18000,
 													'buttonText' : '<fmt:message key="upload.file"/>',
 													'uploader' : '${ms.uploadScript}',
 													//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
 													'fileTypeExts' : '*.jpg; *.jpeg;*.mp4; *.mp3; *.flv; *.doc; *.docx; *.ppt; *.pptx; *.pdf;*.jpg',
-													'fileSizeLimit' : '10024KB',
+													'fileSizeLimit' : '512000KB',
 													'onUploadStart' : function(
 															file) {
 														$('#sbtvalidation')
