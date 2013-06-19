@@ -152,8 +152,8 @@ $(document).ready(function(){
 		<a href="/ziksana-web/zcourse/createcourse" style="width:150px;margin-top:6px;font-weight:bold"><fmt:message key="Create.New.Course"/> </a>
  </div>
 
-	<div class="isotophead pull-right" style="width: 306px;">
-		<div class="isotoplinks" id="content_type_filter">
+	<div class="isotophead pull-right" style="width: 306px;" id="content_type_filter">
+		<div class="isotoplinks" >
 		   <ul><li class="current">
 			<a href="#" class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a></li>
 			<li><a href="#"

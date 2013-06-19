@@ -151,8 +151,8 @@ $(document).ready(function(){
  <div class="pull-left" style="margin-left: 55px;margin-top: 20px;text-align: right;width:68%;">
 <a href="/ziksana-web/zcourse/1/createcontent" style="width:150px;margin-top:6px;font-weight:bold"><fmt:message key="Create.New.Content"/> </a>
  </div>
-	<div class="isotophead pull-right" style="width: 306px;">
-		<div class="isotoplinks" id="content_type_filter">
+	<div class="isotophead pull-right" style="width: 306px;" id="content_type_filter">
+		<div class="isotoplinks">
 			 <ul><li class="current">
 			 <a href="#" class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a></li>
 			<li><a
