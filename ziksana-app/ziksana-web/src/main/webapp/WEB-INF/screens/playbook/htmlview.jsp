@@ -168,15 +168,18 @@ font-weight: bold;}
 
  <li style="color: #f06c0b;"> <span><img src="/ziksana-web/resources/images/navarrow.png" style="margin-right:10px; height:22px;"> </span>  Review Playbook 
  </li>
- <li>
+ <%-- <li>
   <a href="/ziksana-web/zplaybook/unsecure/downloadPlayBook/${course.courseId }">
  <span><img src="/ziksana-web/resources/images/navarrowb.png" style="margin-right:10px; height:22px;"> </span>  Download Playbook
  </a>
-  </li>
+  </li> --%>
  </ul>
  
  </div> <!--end of navheadlp-->
   <div class="clearfix"></div>
+  
+  <div style="float:right;margin-right:20px;margin-top:10px;margin-bottom:10px"><a class="btn">Download PDF</a></div>
+<div class="Clearfix"> </div>
 <div id="definestructureformcontainer">
 
           <!--  <div class="page-header" style="padding-left:0px !important; margin-bottom:0px !important;">
@@ -303,7 +306,7 @@ ${course.description}
 </div>
 </div>
     <div class="Clearfix"> </div>                      
-     <a class="btn pull-right" style="margin-top:20px;margin-right:10px" >Complete Course</a>                        
+      <div style="float:right;margin-right:20px;margin-top:20px;margin-bottom:20px"><a class="btn">Download PDF</a> <a class="btn">Complete Course</a></div>                        
     </div> <!--End of contentarea -->
   
 </div> <!--End of definestructureformcontainer -->      
