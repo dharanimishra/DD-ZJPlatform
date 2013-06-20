@@ -259,7 +259,7 @@ ${course.description}
          <img src="${mediaserver}${node.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
       </c:when>
       <c:otherwise>
-      <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+      <img src="/ziksana-web/resources/images/preview/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
    </c:otherwise>
   </c:choose>
 	  <b style="padding:0px">${node.title}</b><label style="float:right;font-weight:bold">${course.name}</label ><br/>
@@ -275,7 +275,7 @@ ${course.description}
 		         <img src="${mediaserver}${cnode.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
 		      </c:when>
 		      <c:otherwise>
-		   <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+		   <img src="/ziksana-web/resources/images/preview/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
 		   </c:otherwise>
 		  </c:choose>
 		    <b style="padding:0px">${cnode.title}</b><label style="float:right;font-weight:bold">${node.title}</label ><br/>    
