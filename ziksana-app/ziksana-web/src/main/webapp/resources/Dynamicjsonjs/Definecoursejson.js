@@ -325,7 +325,7 @@ function createCourse() {
 
 		//console.log(Coursetag_Field);
 
-		var Course_Credits = $('#spinner1').val();
+		var Course_Credits = $('#spinner').val();
 
 		var Extra_Credits = $('#spinner2').val();
 
@@ -446,7 +446,7 @@ function getCourse() {
 
 							$('#Ctagfield_course').val(selected_tags);
 
-							$('#spinner1').val(credits);
+							$('#spinner').val(credits);
 
 							$('#spinner2').val(extra_credits);
 

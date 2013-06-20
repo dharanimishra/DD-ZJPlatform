@@ -189,7 +189,7 @@ function deleteContent(content_id) {
 						if (data.response == 'active') {
 							confirm_delete = confirm('This content is associated with a course. Please delink the content with the course to proceed with Delete');
 							if (confirm_delete == true) {			
-								window.location.href = "/ziksana-web/zcourse/1/mycontent";
+								
 							}
 						} else {
 							confirm_delete = confirm('Are you sure to delete?');
@@ -198,13 +198,13 @@ function deleteContent(content_id) {
 								var parameters = {
 									"contentId" : content_id
 								};
-								$
-										.post(
-												uri,
-												parameters,
-												function(data) {
-												
-												});
+								$.post(uri,parameters,function(data) {
+									if (data.response == 'success') {
+									console.log("content_content_id"+content_id);
+							     	$('#content_'+content_id).remove();
+							     	console.log("$('#content_'+content_id).remove() ");
+									}
+								});
 
 							}
 						}

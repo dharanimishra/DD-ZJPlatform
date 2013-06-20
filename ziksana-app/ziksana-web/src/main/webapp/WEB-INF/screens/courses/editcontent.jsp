@@ -166,7 +166,7 @@
  	<ul style="margin-top: 30px;">
 		<li style="padding-right: 30px;color:#fff;font-size:15px;width:55%">  
 			<label id="labelContentId<%=content.getId()%>" name="content_name[]"><%=content.getContentName()%></label>
-			<input style="display:none" type="text" id="EditName<%=content.getId()%>" name="content_name[]" value="<%=content.getContentName()%>" style="height:30px;width:238px"/>
+			<input class="required" type="text" id="EditName<%=content.getId()%>" name="content_name[]" value="<%=content.getContentName()%>" style="display:none;height:30px;width:238px"/>
 		</li> 
 		<li style="color:#fff;font-size:15px;text-align:center;width:16%">
 		
@@ -223,7 +223,7 @@
 </form> 
 <div class="createcontentpanelhead" style="margin-top: 4px;"> 
 	<a href="#linkurl" class="btn pull-right" style="margin-left: 10px;" type="button" onClick="$('form#editcontentform').submit();"> Save </a> 
-	<a	href="/ziksana-web/zcourse/1/createcontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous </a>
+	<!-- <a	href="/ziksana-web/zcourse/1/createcontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous </a> -->
 	
 	<!--  <a href="#linkurl" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous</a> -->
 <div class="clearfix"></div> 
