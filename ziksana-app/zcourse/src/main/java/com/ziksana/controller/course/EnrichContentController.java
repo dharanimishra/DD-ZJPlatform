@@ -79,9 +79,11 @@ public class EnrichContentController {
 		return modelView;
 	}
 
-	public ModelAndView enrichContent(){
-		LOGGER.debug("In AnnotateContentController.annotateContent()");
-		return null;
+	@RequestMapping(value = "/1/enricher", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView annotateContent() {
+		ModelAndView modelAndView = new ModelAndView("courses/enricher"); 
+		return modelAndView;
 	}
 	/**
 	 * This method converts collection of {@link LearningContent} objects into

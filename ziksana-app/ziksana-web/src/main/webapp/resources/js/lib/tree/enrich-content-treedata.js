@@ -2,6 +2,10 @@ var counter = 0;
 function onButtonClick(menuitemId, type) {
 	var menuaction = menuitemId;
 	//alert("menuaction " + menuaction);
+	
+	selectedTreeContentId = tree.getSelectedItemId().split('_')[1];
+	selectedTreeContentComponentId = tree.getParentId(tree.getSelectedItemId()).split('_')[1];
+	
 	if (menuaction == "Add_Module") {
 		// alert("open the menu for add module.");
 		$('#Viewmodulecontainer').hide();
@@ -150,9 +154,41 @@ function onButtonClick(menuitemId, type) {
 			$('#ContentPanel2').hide();
 		}
 	}else if (menuaction == "Enrich") {
-		alert("Work in progress");
-		return;
+		//alert("Work in progress");
+		//var contentId = tree.getSelectedItemId().split('_')[1];
+		//console.log("annotate content tree js ----  contentId - " + contentId);
+		//var learningContentObject = getLearningContentObject(contentId);
+	//	var contentKey = learningContentObject.contentPath;
+		//var contentFormat = learningContentObject.contentFormat;
+		//var numberOfImages = learningContentObject.numberOfThumbnails;
+		//var decorationType = "";
+		
+		//console.log();
+		if("DOCUMENT" == getLearningContentObject(selectedTreeContentId).contentFormat.toUpperCase()){
+			alert("Enrichiment over a Document is not supported for this version. At the moment we only support videos.");
+			return;
+		}
+		if("AUDIO" == getLearningContentObject(selectedTreeContentId).contentFormat.toUpperCase()){
+			alert("Enrichiment over an Audio is not supported for this version. At the moment we only support videos.");
+			return;
+		}
+		if("IMAGE" == getLearningContentObject(selectedTreeContentId).contentFormat.toUpperCase()){
+			alert("Enrichiment over an Image is not supported for this version. At the moment we only support videos.");
+			return;
+		}
+			
+		ff_open_player();
+		//alert("tomorrow never dies");
 	}
+}
+
+function ff_open_player(){
+	$('#page-header-div').hide();
+	$('#definetab').hide();
+	$('#leftPane').hide();
+	$('#enrich_content_container').show();
+	$('#enrich_content_container iframe').attr('src','/ziksana-web/zcourse/1/enricher');
+	console.log("Tomorrow nver dies");
 }
 
 function fixImage(id) {
@@ -271,6 +307,28 @@ function createtree(course_id) {
 
 }
 
+function isShowEnrich(contentId){
+	var showAnnoation = true;
+	var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
+	if(decorationTypeList && decorationTypeList.length > 0){
+		for(var i=0; i < decorationTypeList.length; i++){
+			if("RECORDED" == decorationTypeList[i].toUpperCase() || "ENRICHED" == decorationTypeList[i].toUpperCase()){
+				showAnnoation = false;
+				break;
+			}
+			
+		}
+	}
+	return showAnnoation;
+ }
+ function isVideo(contentId){
+	var isVideo = false;
+	var contentType = getLearningContentObject(contentId).contentType;
+	if("VIDEO" == contentType.toUpperCase()){
+		isVideo = true; 
+	}
+	return isVideo;
+ }
 
 
 $(document).ready(
