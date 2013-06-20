@@ -157,11 +157,11 @@ $(document).ready(function(){
 		   <ul><li class="current">
 			<a href="#" class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a></li>
 			<li><a href="#"
-				onclick="getAllCourse()"><fmt:message key="draft.txt"/></a></li>
-			<li><a
-				href="#" onclick="getOtherCourses('ACTIVE')"><fmt:message key="active.txt"/></a></li>
+				onclick="getDraftCourses('DRAFT')"><fmt:message key="draft.txt"/></a></li>
 			<li><a href="#"
-				onclick="getOtherCourses('REVIEW')"><fmt:message key="review.txt"/></a>
+				onclick="getCourseByType('REVIEW')"><fmt:message key="review.txt"/></a>
+			<li><a
+				href="#" onclick="getCourseByType('ACTIVE')"><fmt:message key="active.txt"/></a></li>
 </li>
 			</ul> 
 		</div>

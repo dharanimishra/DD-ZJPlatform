@@ -6,7 +6,7 @@ $(document).ready(function() {
 	getAllCourse("ALL");
 });
 
-function getOtherCourses(contentType, pageIndex) {
+function getDraftCourses(contentType, pageIndex) {
 
 	if (!pageIndex || "" == pageIndex) {
 		pageIndex = defaultPageIndex;
@@ -21,8 +21,7 @@ function getOtherCourses(contentType, pageIndex) {
 	var contentArrayBasedOnContentType = new Array();
 	var j = 0;
 	for (i = 0; i < contentArray.length; i++) {
-		if ('REVIEW' != contentArray[i].contentType.toUpperCase()
-				&& 'ACTIVE' != contentArray[i].contentType.toUpperCase()) {
+		if ('DRAFT' != contentArray[i].contentType.toUpperCase()) {
 			contentArrayBasedOnContentType[j] = contentArray[i];
 			j++;
 		}
@@ -72,7 +71,7 @@ function getOtherCourses(contentType, pageIndex) {
 	$('#container4').html(divs);
 }
 
-function getLearningContentsByType(contentType, pageIndex) {
+function getCourseByType(contentType, pageIndex) {
 
 	if (!pageIndex || "" == pageIndex) {
 		pageIndex = defaultPageIndex;

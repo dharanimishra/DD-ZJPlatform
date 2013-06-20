@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.assessment.TagType;
 import com.ziksana.domain.common.MediaServerURL;
+import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseDetails;
 import com.ziksana.domain.course.CourseEditResponse;
@@ -325,8 +326,17 @@ public class CreateCourseController {
 				course.setCourseId(courseId);
 				course.setName(CourseName);
 				course.setDescription(CourseDescription);
-				course.setCourseStatus(CourseStatus.DRAFT);
-				course.setCourseStatusId(CourseStatus.DRAFT.getID());
+
+				course.setCourseStatus(CourseStatus.getCourseStatus(586));
+				try {
+					course.setCourseStatusId(CourseStatus.valueOf(
+							"DRAFT".toUpperCase()).getID());
+					LOGGER.info("CourseStatus.valueOf(DRAFT.toUpperCase()).getID()"+CourseStatus.valueOf("DRAFT".toUpperCase()).getID());
+				} catch (Exception e) {
+					course.setCourseStatusId(586);
+					LOGGER.error("Exception :CourseStatus.valueOf(DRAFT.toUpperCase()).getID()"+CourseStatus.valueOf("DRAFT".toUpperCase()).getID());
+				}
+
 				course.setAccountableMember(accountableMember);
 				course.setSecurityIndicator(true);
 				course.setCourseCredits(CourseCredits);
@@ -350,9 +360,15 @@ public class CreateCourseController {
 				course.setExtraCredits(CourseExtraCredits);
 				course.setThumbnailPicturePath(UploadImage);
 
-				course.setCourseStatus(CourseStatus.DRAFT);
-				course.setCourseStatusId(CourseStatus.DRAFT.getID());
-				LOGGER.info("CourseStatus :" + CourseStatus.DRAFT.getID());
+				course.setCourseStatus(CourseStatus.getCourseStatus(586));
+				try {
+					course.setCourseStatusId(CourseStatus.valueOf(
+							"DRAFT".toUpperCase()).getID());
+					LOGGER.info("CourseStatus.valueOf(DRAFT.toUpperCase()).getID()"+CourseStatus.valueOf("DRAFT".toUpperCase()).getID());
+				} catch (Exception e) {
+					course.setCourseStatusId(586);
+					LOGGER.error("Exception :CourseStatus.valueOf(DRAFT.toUpperCase()).getID()"+CourseStatus.valueOf("DRAFT".toUpperCase()).getID());
+				}
 
 				course.setAdditionalInfoIndicator(true);
 				course.setIsDelete(false);
