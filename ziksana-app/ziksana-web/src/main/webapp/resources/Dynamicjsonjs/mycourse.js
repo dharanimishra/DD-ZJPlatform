@@ -260,13 +260,14 @@ function getDiv(courseObject) {
 	var reviewDiv='';
 	var totalDiv='';
 	if('ACTIVE' ==courseStatus ){
-		totalDiv='<a onclick="ReviewPlaybook('+ courseObject.id + ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>';
-	} else if('READY_FOR_RELEASE'==courseStatus){
-		totalDiv='<a onclick="reviewCourse('+ courseObject.id + ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
+		totalDiv='<a onclick="activeCourse('+ courseObject.id + ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
 		+'<a onclick="reviewCourse('
 		+ courseObject.id
 		+ ');" title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>';
+	} 
 	
+	if('READY_FOR_RELEASE'==courseStatus){
+		totalDiv='<a onclick="activeCourse('+ courseObject.id + ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>';
 	}
 	var learningContentDiv = '<div id="createcontent-main" class="item All">'
 			+ '<p class="createcontenthead">'
