@@ -306,7 +306,21 @@ ${course.description}
 </div>
 </div>
     <div class="Clearfix"> </div>                      
-      <div style="float:right;margin-right:20px;margin-top:20px;margin-bottom:20px"><a class="btn">Download PDF</a> <a class="btn">Complete Course</a></div>                        
+      <div style="float:right;margin-right:20px;margin-top:20px;margin-bottom:20px"><a class="btn">Download PDF</a> <a onclick="activeCourse(${course.id});" class="btn">Complete Course</a></div>                        
     </div> <!--End of contentarea -->
   
-</div> <!--End of definestructureformcontainer -->      
+</div> <!--End of definestructureformcontainer -->  
+
+<script type="text/javascript">
+function activeCourse(courseId) {
+	confirm_delete = confirm('Are you sure to complete course?');
+	if (confirm_delete == true) {
+		uri = '/ziksana-web/zcourse/1/activecourse';
+		var parameters = {
+			"courseId" : courseId
+		};
+		$.post(uri, parameters, function(data) {
+			
+		});
+	}
+}</script>    
