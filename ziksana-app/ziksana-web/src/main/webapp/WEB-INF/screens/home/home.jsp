@@ -80,7 +80,7 @@
 			<a href="/ziksana-web/zcourse/1/createcontent">
 				<div class="tile bg-color-blueDark">
 					<img class="tileimg"
-						src="/ziksana-web/resources/images/icons/createcontent.png" />
+						src="/ziksana-web/resources/images/icons/createcontent.svg" />
 					<h3>
 						<fmt:message key="home.createcontent"></fmt:message>
 					</h3>
@@ -102,7 +102,7 @@
 				<div class="tile bg-color-blueDark">
 
 					<img class="tileimg"
-						src="/ziksana-web/resources/images/icons/editcoursecontent.png" />
+						src="/ziksana-web/resources/images/icons/editcoursecontent.svg" />
 					<h3 style="width: 90px;">
 						<fmt:message key="home.editcourse" />
 					</h3>
@@ -172,7 +172,7 @@
 		<div class="tile bg-color-orange icon"
 			style="width: 200px; height: 130px;">
 			<div class="tile-content">
-				<img src="/ziksana-web/resources/images/icons/courseanaltic.png" />
+				<img src="/ziksana-web/resources/images/icons/courseanaltic.svg" />
 			</div>
 			<div class="brand">
 				<h3 style="margin-left: 6px; font-size: 22px; width: 98%;">
@@ -188,7 +188,7 @@
 			class="tile bg-color-orange icon  mt-changescene announcement_box"
 			style="width: 200px; height: 130px;">
 			<div class="tile-content">
-				<img src="/ziksana-web/resources/images/icons/announcement.png"
+				<img src="/ziksana-web/resources/images/icons/announcement.svg"
 					alt="mes" />
 			</div>
 			<div class="brand">
