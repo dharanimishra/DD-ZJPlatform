@@ -256,18 +256,19 @@ function getDiv(courseObject) {
 	} else {
 		preview_path = '../../resources/images/preview/defaultcourse.png';
 	}
-	var activeDiv='';
-	var reviewDiv='';
+
 	var totalDiv='';
 	if('ACTIVE' ==courseStatus ){
-		totalDiv='<a onclick="activeCourse('+ courseObject.id + ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
-		+'<a onclick="reviewCourse('
+		totalDiv='<a onclick="reviewCourse('
 		+ courseObject.id
 		+ ');" title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>';
 	} 
 	
 	if('READY_FOR_RELEASE'==courseStatus){
-		totalDiv='<a onclick="activeCourse('+ courseObject.id + ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>';
+		totalDiv='<a onclick="activeCourse('+ courseObject.id + ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
+		+'<a onclick="reviewPlayBook('
+		+ courseObject.id
+		+ ');" title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>';
 	}
 	var learningContentDiv = '<div id="createcontent-main" class="item All">'
 			+ '<p class="createcontenthead">'
@@ -350,16 +351,12 @@ function reviewCourse(courseId) {
 	}
 }
 
-function activeCourse(courseId) {
-	confirm_delete = confirm('Are you sure to active?');
-	if (confirm_delete == true) {
-		uri = '/ziksana-web/zcourse/1/activecourse';
-		var parameters = {
-			"courseId" : courseId
-		};
-		$.post(uri, parameters, function(data) {
-			
-		});
+
+
+function reviewPlayBook(courseId) {
+	if(courseId != null){
+		window.location.href = "/ziksana-web/zplaybook/unsecure/htmlView/"
+			+ courseId;
 	}
 }
 
