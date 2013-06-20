@@ -91,7 +91,7 @@
 				<div class="tile">
 
 					<img class="tileimg"
-						src="/ziksana-web/resources/images/icons/managecourse.png" />
+						src="/ziksana-web/resources/images/icons/managecourse.svg" />
 					<h3>
 						<fmt:message key="home.managecontent" />
 					</h3>
@@ -113,7 +113,7 @@
 				<div class="tile bg-color-blue">
 
 					<img class="tileimg"
-						src="/ziksana-web/resources/images/icons/createcourse.png" />
+						src="/ziksana-web/resources/images/icons/createcourse.svg" />
 					<h3 style="margin-left: 10px; font-size: 20px; width: 30px;">
 						<fmt:message key="home.createcourse" />
 					</h3>

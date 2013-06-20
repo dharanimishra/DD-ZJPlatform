@@ -312,7 +312,7 @@
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1>Organize your course into course modules/chapters</h1>
+		<h1>Enrich content with additional references</h1>
 	</div>
 	<!--End of page-header -->
 
