@@ -518,9 +518,9 @@ function get_and_populate_selecttag(){
 			
 			unique_select_option_array.forEach(construct_options);
 
-			select += '<option value="">&nbsp;</option>'+option_string + '';
+			select += option_string;
 			
-			updateselect = '<option value="">&nbsp;</option>'+option_string + '';
+			updateselect = option_string;
 			
 			$('select#todo_categories').html(select);
 			$(data).find("todoitem").each(function(index){
@@ -931,14 +931,14 @@ function edit_todorow_and_update(rowId){
 	$('#moretodorow'+rowId+'').hide();
 	$('#update_todo_form_container'+rowId+'').show();
 	var categorySelectedValue = $('#category_value'+rowId+'').text();
-	console.log('Category value: '+categorySelectedValue); 
+	 
 
 
 		
 	$('select#update_todo_categories'+rowId).val(categorySelectedValue);
 	
 	var cateDescriptionSelectedValue = $('#categoryDescription'+rowId+'').text();
-	console.log(cateDescriptionSelectedValue);
+	
 	$('#todo_edit_description'+rowId+'').val(cateDescriptionSelectedValue);
 	
 	

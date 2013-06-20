@@ -89,10 +89,12 @@
 																		'src',
 																		'${ms.url}'
 																				+ data_object.ContentPath);
+													
 														$(
 														'#thubmnail_upload_message')
 														.html(
 																'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="margin-left:20px">Remove</a>');
+														
 
 											} else { //there is an error in the upload process
 
@@ -739,7 +741,8 @@ function clearProfileForm(){
 		$('#newPassword').val('');
 		$('#retypePassword').val('');
 		$('#errorCurrentPassword').val('');
-		$('#errorNewPassword').val('');
+		document.getElementById("errorNewPassword").innerHTML = '';
+		document.getElementById("passwordResetFailResponse").innerHTML = '';
 		$('#errorRetypePassword').val('');
 		$('#passwordResetFailResponse').val('');
 		document.getElementById("passwordResetResponse").innerHTML = '';
@@ -962,7 +965,9 @@ function showMsg(){
 	$('#newPassword').val('');
 	$('#retypePassword').val('');
 	$('#errorCurrentPassword').val('');
-	$('#errorNewPassword').val('');
+	document.getElementById("errorNewPassword").innerHTML = '';
+	document.getElementById("passwordResetFailResponse").innerHTML = '';
+	
 	$('#errorRetypePassword').val('');
 	$('passwordResetFailResponse').val('');
 	document.getElementById("passwordResetResponse").innerHTML = '';
