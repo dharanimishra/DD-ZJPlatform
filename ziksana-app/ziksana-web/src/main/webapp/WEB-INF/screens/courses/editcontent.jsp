@@ -372,7 +372,6 @@ input.error {
 
 <script type="text/javascript">
 $(function(){
-
 $('.toggle_details').on('click', function(){
 	toggle_handle = $(this);
 	parent_container = toggle_handle.parents('.uploaded_file_contents');
@@ -383,6 +382,7 @@ $('.toggle_details').on('click', function(){
 		details_container.show();
 	}
 });
+
 
 });//end of doc ready
 
