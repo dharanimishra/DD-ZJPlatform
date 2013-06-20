@@ -16,11 +16,6 @@ $("#todotype").hide();
 $(".addtodobtn").click(function(e) {
    // $("#addtodorow").toggle(200);
 	$("#add_todo_fields_container").show();
-	addselect='';
-	addselect ='<option selected="selected" value="add_new_category">Select a Category</option>';
-	addselect+= '<optgroup><option style="color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
-	
-	$('select#todo_categories').html(addselect);
 	
 	document.getElementById("descriptionErrorMsg").innerHTML = '';
 	for(var i=0;i<5;i++){
@@ -31,7 +26,14 @@ $(".addtodobtn").click(function(e) {
 	for(var i=0;i<4;i++){
 		 $('#manageTodoErrorMsg'+i+'').html("");
 		 }
-	
+	$.get('/ziksana-web/ztodo/gettodosize', {}, function(data){ 
+		if(data == 0){
+			select ='<option selected="selected" value="add_new_category">Select a Category</option>';
+			select += '<optgroup><option style="color: white; font-weight: bold; padding: 5px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
+			
+			$('select#todo_categories').html(select);
+		}
+	});
 });
 
 
@@ -211,7 +213,7 @@ function get_and_populate_universityannouncements(val){
 					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
-					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
+					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
 					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					
@@ -272,7 +274,7 @@ function get_and_populate_departmentannouncements(val){
 					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
-					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
+					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
 					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					
@@ -334,7 +336,7 @@ function get_and_populate_courseannouncements(val){
 					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
-					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("description").text()+"</p>";
+					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
 					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					
@@ -473,6 +475,8 @@ function calculateTodoPage(val){
 
 
 function get_and_populate_selecttag(){
+	
+	
 	$.ajax({
 	  	type: 'GET',
 		url: '/ziksana-web/ztodo/showalltodo',
@@ -505,13 +509,20 @@ function get_and_populate_selecttag(){
 			
 			//console.log(unique_select_option_array);
 			
+			
+			
+			
+			select = '<optgroup><option style="color: white; font-weight: bold; padding: 5px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
+			
+			
+			
 			unique_select_option_array.forEach(construct_options);
 
-			select = '<option value="">&nbsp;</option>'+option_string + '';
+			select += '<option value="">&nbsp;</option>'+option_string + '';
 			
 			updateselect = '<option value="">&nbsp;</option>'+option_string + '';
 			
-			$('select#todo_categories').prepend(select);
+			$('select#todo_categories').html(select);
 			$(data).find("todoitem").each(function(index){
 				$('select#update_todo_categories'+$(this).find('id').text()+'').prepend(updateselect);
 			});
@@ -562,7 +573,7 @@ function get_and_populate_todo_value(val){
 							 ouputEmptyTodo+="<tr id = 'update_todo_form_container"+$(this).find('id').text()+"' style='height:40px;display:none;'>";
 							 ouputEmptyTodo+="<div class='updatetodo'>";
 							 
-							 ouputEmptyTodo+="<td width='50px'></td><td width='200px'><select onblur='updateSelectChange("+$(this).find('id').text()+")' id='update_todo_categories"+$(this).find('id').text()+"'' style='margin-left:10px;width:190px;'><optgroup><option style='color: white; font-weight: bold; padding: 0px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;' onclick='show_add_category_form("+$(this).find('id').text()+");' value='add_new_category'>Add New Category</option></optgroup>'</select><span id='add_new_edit_category_form"+$(this).find('id').text()+"' style='display:none;'><input style='height: 28px; width: 200px;' onblur='updateTextBoxChange("+$(this).find('id').text()+");' id='update_todo_category_name"+$(this).find('id').text()+"'/></span></td>";
+							 ouputEmptyTodo+="<td width='50px'></td><td width='200px'><select onblur='updateSelectChange("+$(this).find('id').text()+")' id='update_todo_categories"+$(this).find('id').text()+"'' style='margin-left:10px;width:190px;'><optgroup><option style='color: white; font-weight: bold; padding: 5px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;' onclick='show_add_category_form("+$(this).find('id').text()+");' value='add_new_category'>Add New Category</option></optgroup>'</select><span id='add_new_edit_category_form"+$(this).find('id').text()+"' style='display:none;'><input style='height: 28px; width: 200px;' onblur='updateTextBoxChange("+$(this).find('id').text()+");' id='update_todo_category_name"+$(this).find('id').text()+"'/></span></td>";
 							
 							 ouputEmptyTodo+="<td width='200px'><input onclick='clearManageTodoBox()' id='todo_edit_description"+$(this).find('id').text()+"' style='width:200px;height:28px;'/><span onclick='clearManageTodoBox()' style='color:red;left:290px;position:absolute;' id='manageTodoErrorMsg"+index+"'></span></td><td width='75px'><a onclick='saveRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Update</a></td><td width='75px'><a id='hideEditOption"+index+"' onclick='showRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Cancel</a></td></div>";
 							 ouputEmptyTodo+="</tr></div>";
@@ -821,6 +832,7 @@ function getTodayCalendarEvents(val){
 			outputCalendar += "<tbody>";
 			 $(data).find("calendar").each(function(index){
 				outputCalendar += "<tr>";
+				
 				outputCalendar += "<td>"+$(this).find('startdate').text()+"</td>";
 				outputCalendar += "<td>"+$(this).find('enddate').text()+"</td>";
 				outputCalendar += "<td>"+$(this).find('eventname').text()+"</td>";

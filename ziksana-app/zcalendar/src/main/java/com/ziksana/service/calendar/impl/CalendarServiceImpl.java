@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ziksana.domain.calendar.Calendar;
 import com.ziksana.persistence.calendar.CalendarMapper;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.calendar.ICalendarService;
 
 
@@ -39,12 +40,12 @@ public class CalendarServiceImpl implements ICalendarService {
 
 	public List<Calendar> getTodayCalenderEvents(int pageIndex, int itemsPerPage) {
 		// TODO Auto-generated method stub
-		return calenderMapper.getTodayCalenderEvents(pageIndex,itemsPerPage);
+		return calenderMapper.getTodayCalenderEvents(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()),pageIndex,itemsPerPage);
 	}
 
 	public int getCalendarSize() {
 		// TODO Auto-generated method stub
-		return calenderMapper.getTodayCalendarSize();
+		return calenderMapper.getTodayCalendarSize(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
 	}
 	
 	

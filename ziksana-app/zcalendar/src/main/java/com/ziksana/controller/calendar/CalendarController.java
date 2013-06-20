@@ -22,6 +22,7 @@ import com.dhtmlx.planner.DHXSkin;
 import com.dhtmlx.planner.DHXStatus;
 import com.dhtmlx.planner.data.DHXDataFormat;
 import com.ziksana.domain.calendar.Calendar;
+import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.calendar.ICalendarService;
 
 @Controller
@@ -98,7 +99,7 @@ private String itemsPerPage;
 	        calendarList = calendarService.getAllCalenderEvents();
 	        for(Calendar c :calendarList){
 	        	DHXEvent ev = new DHXEvent();
-	        	ev.setId(c.getEventId());
+	        	ev.setId(c.getEventId());	        	
 	        	ev.setText(c.getEventName());
 	        	ev.setStart_date(c.getStartDate());
 	        	ev.setEnd_date(c.getEndDate());
@@ -121,6 +122,7 @@ private String itemsPerPage;
 				}else if (status == DHXStatus.DELETE){
 					calendarService.deleteCalendarInfo(event.getId());
 				}else if (status == DHXStatus.INSERT){
+					cal.setMemberRoleId(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
 					cal.setEventName(event.getText());
 					cal.setStartDate(event.getStart_date());
 					cal.setEndDate(event.getEnd_date());

@@ -10,6 +10,8 @@ public class Calendar {
 	
 	
 	private int eventId;
+	
+	private int memberRoleId;
 
 	private String eventName;
 
@@ -67,6 +69,14 @@ public class Calendar {
 
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+
+	public int getMemberRoleId() {
+		return memberRoleId;
+	}
+
+	public void setMemberRoleId(int memberRoleId) {
+		this.memberRoleId = memberRoleId;
 	}
 
 }

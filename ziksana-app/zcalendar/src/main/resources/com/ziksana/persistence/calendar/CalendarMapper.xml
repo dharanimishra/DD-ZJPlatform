@@ -5,15 +5,15 @@
 	
 	<insert id="saveCalendarObject" parameterType="com.ziksana.domain.calendar.Calendar"
 		useGeneratedKeys="true">
-		INSERT INTO events (eventname, startdate, enddate)	values( #{eventName}, #{startDate},#{endDate})
+		INSERT INTO events (memberroleid, eventname, startdate, enddate)	values(#{memberRoleId}, #{eventName}, #{startDate},#{endDate})
 	</insert>
 	
 	<select id="getTodayCalenderEvents" resultMap="calendarResultMap">
-		select eventid,eventname,startdate,enddate from events where DATE(startdate) = DATE(NOW()) order by startdate asc limit #{pageIndex},#{itemsPerPage}
+		select eventid,eventname,startdate,enddate from events where memberroleid =#{memberRoleId} and DATE(startdate) = DATE(NOW()) order by startdate asc limit #{pageIndex},#{itemsPerPage}
 	</select>
 	
-	<select id="getTodayCalendarSize" resultType="java.lang.Integer">
-		select count(*) from events where DATE(startdate) = DATE(NOW())
+	<select id="getTodayCalendarSize" resultType="java.lang.Integer" parameterType="int">
+		select count(*) from events where memberroleid =#{memberRoleId} and DATE(startdate) = DATE(NOW())
 	</select>
 	
 	<resultMap id="calendarResultMap" type="com.ziksana.domain.calendar.Calendar" >		

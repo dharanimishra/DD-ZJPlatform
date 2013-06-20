@@ -370,7 +370,8 @@
 					<label><c:out value="${member.firstName}" />
 					<c:out value="${member.lastName}" /></label>
 					<label id="memberIdValue" style="display: none;"><c:out value="${member.memberId}" /></label>
-					<label id="memberProfileImageValue" style="display: none;"><c:out value="${member.primaryEmailId}" /></label>
+					<label id="dbcurrentPassword" style="display: none;"><c:out value="${currentPassword}" /></label>
+					<label id="primaryEmailId" style="display: none;"><c:out value="${member.primaryEmailId}" /></label>
 				</P>
 
 				<P class="ppemail">

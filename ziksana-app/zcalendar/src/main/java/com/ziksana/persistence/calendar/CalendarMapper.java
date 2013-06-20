@@ -23,7 +23,7 @@ public interface CalendarMapper {
 
 	
 	
-	public List<Calendar> getTodayCalenderEvents(@Param("pageIndex")int pageIndex,@Param("itemsPerPage")int itemsPerPage);
+	public List<Calendar> getTodayCalenderEvents(@Param("memberRoleId")int memberRoleId,@Param("pageIndex")int pageIndex,@Param("itemsPerPage")int itemsPerPage);
 	
 	public void updateCalendarInfo(Calendar cal);
 
@@ -32,5 +32,5 @@ public interface CalendarMapper {
 	public void saveCalendarObject(Calendar cal);
 
 
-	public int getTodayCalendarSize();
+	public int getTodayCalendarSize(int memberRoleId);
 }
