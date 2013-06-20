@@ -181,7 +181,7 @@ $(document).ready(function() { // On page load
 				<c:if test="${message != null}">
     				<div class="sucessmssg" ><p>${message}</p></div>
 				</c:if>
-				<script>setTimeout( "jQuery('.sucessmssg').hide();",3000 );</script>
+				<script>setTimeout( "jQuery('.sucessmssg').hide();",5000 );</script>
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
 				
 			</div>
@@ -248,9 +248,18 @@ a.remove_this:hover {
  .sucessmssg {
    
   color: green;
-  margin-top: -42px;
+  margin-top: -52px;
   position: absolute;
   text-align: center;
   width: 70%;
+}
+.sucessmssg > p {
+  background: none repeat scroll 0 0 green;
+  
+  color: #FFFFFF;
+  margin: auto;
+  padding: 4px;
+  width: 260px;
+  border-radius: 6px;
 }
 </style>

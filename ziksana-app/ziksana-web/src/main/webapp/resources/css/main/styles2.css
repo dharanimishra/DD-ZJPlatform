@@ -360,7 +360,7 @@ body {
 }
 
 .isotoplinks a {
-    line-height: 40px;
+    line-height: 40px;cursor:pointer
 }
 .isotoplinks a:hover {
     text-decoration:none
