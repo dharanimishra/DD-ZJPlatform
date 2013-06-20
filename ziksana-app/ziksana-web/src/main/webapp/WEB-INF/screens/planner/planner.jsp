@@ -133,10 +133,9 @@ input.note {
 .tbboxheadfnt {
     color: #8B8B8B;}
 .tbboxdesc p {
-    color: #B1B1B1;
-    font-family: 'segoe ui',sans-serif;
-    font-size: 14px!important;
-    font-weight: 100;
+     color: #B1B1B1;
+    font-family: 'Segoe UI Light','Open Sans',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 14px !important;width: 352px; 
 }
 .tbboxdesc {
     float: none;
@@ -147,12 +146,20 @@ input.note {
 .tbboxheadfntpublish {
     color: #4BB1CF;}
 .tbboxdescds p {
-    color: #b1b1b1;
+    color: #B1B1B1;
     font-family: 'Segoe UI Light','Open Sans',Verdana,Arial,Helvetica,sans-serif;
-    font-size: 13px!important;
+    font-size: 14px!important;
 }
-.badge-warning{background-color: #999999;}
-#publishtab.badge1{background-color: #F89406}
+#buildtab .badge-warning{background-color: #999999;}
+#publishtab .badge1  {background-color: #F89406!important}
+.tbboxdescpub p {
+    color: #4BB1CF;
+    font-family: 'segoe ui',sans-serif;
+    font-size: 13px;
+    font-weight: 100;
+}
+ #buildtab{width: 363px;}
+ #publishtab{width:320px}
 </style> 
 
 <script type="text/javascript">
