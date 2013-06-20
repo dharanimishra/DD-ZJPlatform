@@ -311,16 +311,16 @@ public class MyCoursesController {
 		Course course = new Course();
 		try {
 			course.setCourseId(courseId);
-			course.setCourseStatus(CourseStatus.getCourseStatus(588));
+			course.setCourseStatus(CourseStatus.getCourseStatus(589));
 			try {
 				course.setCourseStatusId(CourseStatus.valueOf(
-						"READY_FOR_RELEASE".toUpperCase()).getID());
-				LOGGER.info("CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
-						+ CourseStatus.valueOf("READY_FOR_RELEASE".toUpperCase()).getID());
+						"ACTIVE".toUpperCase()).getID());
+				LOGGER.info("CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
+						+ CourseStatus.valueOf("ACTIVE".toUpperCase()).getID());
 			} catch (Exception e) {
-				course.setCourseStatusId(588);
+				course.setCourseStatusId(589);
 				LOGGER.error("Exception :CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
-						+ CourseStatus.valueOf("READY_FOR_RELEASE".toUpperCase()).getID());
+						+ CourseStatus.valueOf("ACTIVE".toUpperCase()).getID());
 			}
 
 			courseService.saveOrUpdateCourse(course);
