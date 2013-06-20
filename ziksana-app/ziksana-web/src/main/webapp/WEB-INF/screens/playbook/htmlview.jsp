@@ -1,27 +1,37 @@
 <style>
 
+.tbboxheadfntds  {
+    color: #8B8B8B;}
 .tbboxheadfnt {
     color: #8B8B8B;}
 .tbboxdesc p {
-    color: #B1B1B1;
-    font-family: 'segoe ui',sans-serif;
-    font-size: 14px!important;
-    font-weight: 100;
+     color: #B1B1B1;
+    font-family: 'Segoe UI Light','Open Sans',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 14px !important;width: 352px; 
 }
 .tbboxdesc {
     float: none;
     margin-top: 0;
     width: 328px;
+    
 }
-.tbboxheadfntds {
+.tbboxheadfntpublish {
     color: #4BB1CF;}
 .tbboxdescds p {
-    color: #4BB1CF;
+    color: #B1B1B1;
     font-family: 'Segoe UI Light','Open Sans',Verdana,Arial,Helvetica,sans-serif;
-    font-size: 13px!important;
+    font-size: 14px!important;
 }
-.badge-warning{background-color: #999999;}
-#publishtab .badge1{background-color: #F89406}
+#buildtab .badge-warning{background-color: #999999;}
+#publishtab .badge1  {background-color: #F89406!important}
+.tbboxdescpub p {
+    color: #4BB1CF;
+    font-family: 'segoe ui',sans-serif;
+    font-size: 13px;
+    font-weight: 100;
+}
+ #buildtab{width: 363px;}
+ #publishtab{width:320px}
 
 /*styles for the Playbook starts*/
 .playbookconatiner{display:block;
@@ -153,10 +163,10 @@ font-weight: bold;}
  
  <ul>
   <a class="no_text_decoration" href="/ziksana-web/zcourse/1/planner/${course.courseId}" >
- <li style="margin-left:40px; color: #f06c0b;"><span><img src="/ziksana-web/resources/images/navarrow.png" style="margin-right:10px; height:22px;"> </span>Define Planner  </li>
+ <li style="margin-left:40px; "><span><img src="/ziksana-web/resources/images/navarrowb.png" style="margin-right:10px; height:22px;"> </span>Define Planner  </li>
  </a>
 
- <li> <span><img src="/ziksana-web/resources/images/navarrowb.png" style="margin-right:10px; height:22px;"> </span>  Review Playbook 
+ <li style="color: #f06c0b;"> <span><img src="/ziksana-web/resources/images/navarrow.png" style="margin-right:10px; height:22px;"> </span>  Review Playbook 
  </li>
  <li>
   <a href="/ziksana-web/zplaybook/unsecure/downloadPlayBook/${course.courseId }">
@@ -292,8 +302,8 @@ ${course.description}
 <div class="chapeterfotter"><label class="pageno">03</label></div>
 </div>
 </div>
-                          
-                             
+    <div class="Clearfix"> </div>                      
+     <a class="btn pull-right" style="margin-top:20px;margin-right:10px" >Complete Course</a>                        
     </div> <!--End of contentarea -->
   
 </div> <!--End of definestructureformcontainer -->      
