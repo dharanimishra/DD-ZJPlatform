@@ -13,7 +13,6 @@
 		//getAllLearningContents();
 		serverContext = $('#staticFileServer').val();
 		$('#ContentPanel2').hide();
-		setItemsPerPage();
 	});
 	function getLearningContentObject(learningContentId){
 		//console.log("in getLearningContentObject id is " + learningContentId);

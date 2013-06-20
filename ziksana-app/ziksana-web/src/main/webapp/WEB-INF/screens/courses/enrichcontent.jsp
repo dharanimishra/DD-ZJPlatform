@@ -312,7 +312,7 @@
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1>Enrich content with additional references</h1>
+		<h1>Organize your course into course modules/chapters</h1>
 	</div>
 	<!--End of page-header -->
 
@@ -331,6 +331,9 @@
 			 
 			<!-- #leftPane -->
 			<div id="rightPane">
+				<div id="enrich_content_container" style="display:none;width:100%">
+					<iframe src="" width="1050" height="591"></iframe>
+				</div>
 				<div class="definecontainer" id="definetab">
 				<form onload="" id="associateContentForm" action="/ziksana-web/zcourse/1/associatecontent" method="POST">
 					<input type="hidden" id="courseid" value="${courseId}" /> 
