@@ -238,7 +238,7 @@ $(document).ready(function() { // On page load
 				<%}
 	
 		}catch(Exception e){
-		e.printStackTrace();	
+					e.printStackTrace();	
 		}
 %>
 				<!--End of weblink container -->
@@ -265,7 +265,7 @@ $(document).ready(function() { // On page load
 <div class="Clearfix"></div>
 </div>
 
-<style>
+<style  type="text/css">
 a.remove_this {
   border: 1px solid white;
   border-radius: 60px 60px 60px 60px;
