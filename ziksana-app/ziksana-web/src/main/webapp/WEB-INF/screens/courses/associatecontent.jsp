@@ -300,7 +300,7 @@ $(document).ready(function(){
 				src="${staticFileServer}resources/images/icons/information_icon.png"
 				style="height: 25px;" />
 		</div>
-		<h1><fmt:message key="module.organize.head" /></h1>
+		<h1><fmt:message key="module.associate.head" /></h1>
 	</div>
 	<!--End of page-header -->
 
