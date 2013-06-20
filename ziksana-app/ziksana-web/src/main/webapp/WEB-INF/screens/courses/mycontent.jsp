@@ -160,13 +160,11 @@ $(document).ready(function() { // On page load
 	<div class="isotophead pull-right" style="width: 306px;" id="content_type_filter">
 		<div class="isotoplinks">
 			 <ul><li class="current">
-			 <a href="#" class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a></li>
-			<li><a
-				href="#" onclick="getLearningContentsByType('VIDEO')"><fmt:message key="Video.txt"/></a></li>
-			<li><a href="#" onclick="getLearningContentsByType('LINK')"><fmt:message key="web.link"/></a></li>
-			<li><a href="#"
-				onclick="getOtherLearningContents('Others')"><fmt:message key="other.txt"/></a>
-</li>
+			 <a onclick="getAllLearningContents()"><fmt:message key="home.all"/></a></li>
+			<li><a onclick="getLearningContentsByType('VIDEO')"><fmt:message key="Video.txt"/></a></li>
+			<li><a onclick="getLearningContentsByType('LINK')"><fmt:message key="web.link"/></a></li>
+			<li><a onclick="getOtherLearningContents('Others')"><fmt:message key="other.txt"/></a>
+		</li>
 			</ul> 
 		</div>
 	</div></div>

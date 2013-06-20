@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -256,10 +257,10 @@ public class MyCoursesController {
 
 	}
 
-	@RequestMapping(value = "1/reviewcourse/{courseId}", method = {
+	@RequestMapping(value = "1/reviewcourse", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView reviewCourse(@PathVariable Integer courseId) {
+	ModelAndView reviewCourse(@RequestParam(value = "courseId", required = true) Integer courseId) {
 		LOGGER.debug(" Entering Class " + getClass() + " reviewCourse()");
 		ModelAndView modelView = new ModelAndView("mastermycourse");
 		Course course = new Course();
@@ -301,10 +302,10 @@ public class MyCoursesController {
 		return modelView;
 	}
 
-	@RequestMapping(value = "1/activecourse/{courseId}", method = {
+	@RequestMapping(value = "1/activecourse", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView activeCourse(@PathVariable Integer courseId) {
+	ModelAndView activeCourse(@RequestParam(value = "courseId", required = true) Integer courseId) {
 		LOGGER.debug(" Entering Class " + getClass() + " activeCourse()");
 		ModelAndView modelView = new ModelAndView("mastermycourse");
 		Course course = new Course();
@@ -314,7 +315,7 @@ public class MyCoursesController {
 			try {
 				course.setCourseStatusId(CourseStatus.valueOf(
 						"ACTIVE".toUpperCase()).getID());
-				LOGGER.info("CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
+				LOGGER.info("CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
 						+ CourseStatus.valueOf("ACTIVE".toUpperCase()).getID());
 			} catch (Exception e) {
 				course.setCourseStatusId(589);

@@ -6,32 +6,33 @@ $(document).ready(function() {
 	getAllCourse("ALL");
 });
 
-function getDraftCourses(contentType, pageIndex) {
+function getDraftCourses(courseStatus, pageIndex) {
 
 	if (!pageIndex || "" == pageIndex) {
 		pageIndex = defaultPageIndex;
 	}
-
+	
 	$('#container4').empty();
 	var jsonString = document.getElementById("courses").value;
 	// var jsonString = getFromSessionStorage(sessionKey);
-	var contentArray = jQuery.parseJSON(jsonString);
+	var courseArray = jQuery.parseJSON(jsonString);
 
 	// first create a separate array based on content type
-	var contentArrayBasedOnContentType = new Array();
+	var courseArrayBasedOnStatus = new Array();
 	var j = 0;
-	for (i = 0; i < contentArray.length; i++) {
-		if ('DRAFT' != contentArray[i].contentType.toUpperCase()) {
-			contentArrayBasedOnContentType[j] = contentArray[i];
+	for (i = 0; i < courseArray.length; i++) {
+		if ('DRAFT' == courseArray[i].courseStatus.toUpperCase()) {
+			courseArrayBasedOnStatus[j] = courseArray[i];
+			
 			j++;
 		}
 	}
 
-	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
+	noOfPages = Math.ceil(courseArrayBasedOnStatus.length / itemsPerPage);
 	//console.log("noOfPages " + noOfPages);
 	
-	if(contentArrayBasedOnContentType.length ==0){
-		setNoContentFoundText(contentType);
+	if(courseArrayBasedOnStatus.length ==0){
+		setNoContentFoundText(courseStatus);
 		$("#content_type_filter").hide();
 	}
 	else{
@@ -39,29 +40,24 @@ function getDraftCourses(contentType, pageIndex) {
 		$("#content_type_filter").show();
 	}
 	
-	if(contentArrayBasedOnContentType.length > itemsPerPage){
-		getPageDiv(noOfPages, contentType, pageIndex);
+	if(courseArrayBasedOnStatus.length > itemsPerPage){
+		getPageDiv(noOfPages, courseStatus, pageIndex);
 	}
 	else{
 		$('#pageNumbers').empty();
 	}
-
-
-	getPageDiv(noOfPages,contentType,pageIndex);
-	//console.log("getPageDiv(noOfPages, OTHERS)"
-	//		+ getPageDiv(noOfPages, "OTHERS"));
+	getPageDiv(noOfPages,courseStatus,pageIndex);
 	var divs = '';
 	if (pageIndex == 1) {
-		for (i = 0; i < contentArrayBasedOnContentType.length; i++) {
-			divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+		for (i = 0; i < courseArrayBasedOnStatus.length; i++) {
+			divs = divs + getDiv(courseArrayBasedOnStatus[i]);
 			if (i == (itemsPerPage - 1)) {
 				break;
 			}
 		}
-		// console.log("othersssssssssssssss " + divs);
 	} else {
-		for (i = ((pageIndex - 1) * itemsPerPage); i < contentArrayBasedOnContentType.length; i++) {
-			divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+		for (i = ((pageIndex - 1) * itemsPerPage); i < courseArrayBasedOnStatus.length; i++) {
+			divs = divs + getDiv(courseArrayBasedOnStatus[i]);
 			if (i == ((itemsPerPage * pageIndex) - 1)) {
 				break;
 			}
@@ -71,35 +67,35 @@ function getDraftCourses(contentType, pageIndex) {
 	$('#container4').html(divs);
 }
 
-function getCourseByType(contentType, pageIndex) {
+
+
+function getReviewCourses(courseStatus, pageIndex) {
 
 	if (!pageIndex || "" == pageIndex) {
 		pageIndex = defaultPageIndex;
 	}
-
+	
 	$('#container4').empty();
 	var jsonString = document.getElementById("courses").value;
 	// var jsonString = getFromSessionStorage(sessionKey);
-	var contentArray = jQuery.parseJSON(jsonString);
-
+	var courseArray = jQuery.parseJSON(jsonString);
+	
 	// first create a separate array based on content type
-	var contentArrayBasedOnContentType = new Array();
+	var courseArrayBasedOnStatus = new Array();
 	var j = 0;
-	for (i = 0; i < contentArray.length; i++) {
-		if (contentType.toUpperCase() == contentArray[i].contentType
-				.toUpperCase()) {
-			contentArrayBasedOnContentType[j] = contentArray[i];
+	for (i = 0; i < courseArray.length; i++) {		
+		if ('READY_FOR_RELEASE' == courseArray[i].courseStatus.toUpperCase()) {
+			courseArrayBasedOnStatus[j] = courseArray[i];
+			
 			j++;
 		}
 	}
-	//console.log("contentArray.length " + contentArray.length);
-	//console.log("contentArrayBasedOnContentType.length "
-	//		+ contentArrayBasedOnContentType.length);
-	noOfPages = Math.ceil(contentArrayBasedOnContentType.length / itemsPerPage);
+
+	noOfPages = Math.ceil(courseArrayBasedOnStatus.length / itemsPerPage);
 	//console.log("noOfPages " + noOfPages);
 	
-	if(contentArrayBasedOnContentType.length ==0){
-		setNoContentFoundText(contentType);
+	if(courseArrayBasedOnStatus.length ==0){
+		setNoContentFoundText(courseStatus);
 		$("#content_type_filter").hide();
 	}
 	else{
@@ -107,37 +103,96 @@ function getCourseByType(contentType, pageIndex) {
 		$("#content_type_filter").show();
 	}
 	
-	if(contentArrayBasedOnContentType.length > itemsPerPage){
-		getPageDiv(noOfPages, contentType, pageIndex);
+	if(courseArrayBasedOnStatus.length > itemsPerPage){
+		getPageDiv(noOfPages, courseStatus, pageIndex);
 	}
 	else{
 		$('#pageNumbers').empty();
 	}
-
-	getPageDiv(noOfPages, contentType,pageIndex);
-
+	getPageDiv(noOfPages,courseStatus,pageIndex);
 	var divs = '';
 	if (pageIndex == 1) {
-		for (i = 0; i < contentArrayBasedOnContentType.length; i++) {
-			divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+		for (i = 0; i < courseArrayBasedOnStatus.length; i++) {
+			divs = divs + getDiv(courseArrayBasedOnStatus[i]);
 			if (i == (itemsPerPage - 1)) {
 				break;
 			}
 		}
 	} else {
-		for (i = ((pageIndex - 1) * itemsPerPage); i < contentArrayBasedOnContentType.length; i++) {
-			divs = divs + getDiv(contentArrayBasedOnContentType[i]);
+		for (i = ((pageIndex - 1) * itemsPerPage); i < courseArrayBasedOnStatus.length; i++) {
+			divs = divs + getDiv(courseArrayBasedOnStatus[i]);
 			if (i == ((itemsPerPage * pageIndex) - 1)) {
 				break;
 			}
 		}
 
 	}
-	// console.log("divs --->> " + divs);
 	$('#container4').html(divs);
 }
 
-function getAllCourse(contentType,pageIndex) {
+function getActiveCourses(courseStatus, pageIndex) {
+
+	if (!pageIndex || "" == pageIndex) {
+		pageIndex = defaultPageIndex;
+	}
+	
+	$('#container4').empty();
+	var jsonString = document.getElementById("courses").value;
+	// var jsonString = getFromSessionStorage(sessionKey);
+	var courseArray = jQuery.parseJSON(jsonString);
+	
+	// first create a separate array based on content type
+	var courseArrayBasedOnStatus = new Array();
+	var j = 0;
+	for (i = 0; i < courseArray.length; i++) {
+		if ('ACTIVE' == courseArray[i].courseStatus.toUpperCase()) {
+			courseArrayBasedOnStatus[j] = courseArray[i];
+			
+			j++;
+		}
+	}
+
+	noOfPages = Math.ceil(courseArrayBasedOnStatus.length / itemsPerPage);
+	//console.log("noOfPages " + noOfPages);
+	
+	if(courseArrayBasedOnStatus.length ==0){
+		setNoContentFoundText(courseStatus);
+		$("#content_type_filter").hide();
+	}
+	else{
+		setNoContentFoundText('');
+		$("#content_type_filter").show();
+	}
+	
+	if(courseArrayBasedOnStatus.length > itemsPerPage){
+		getPageDiv(noOfPages, courseStatus, pageIndex);
+	}
+	else{
+		$('#pageNumbers').empty();
+	}
+	getPageDiv(noOfPages,courseStatus,pageIndex);
+	var divs = '';
+	if (pageIndex == 1) {
+		for (i = 0; i < courseArrayBasedOnStatus.length; i++) {
+			divs = divs + getDiv(courseArrayBasedOnStatus[i]);
+			if (i == (itemsPerPage - 1)) {
+				break;
+			}
+		}
+	} else {
+		for (i = ((pageIndex - 1) * itemsPerPage); i < courseArrayBasedOnStatus.length; i++) {
+			divs = divs + getDiv(courseArrayBasedOnStatus[i]);
+			if (i == ((itemsPerPage * pageIndex) - 1)) {
+				break;
+			}
+		}
+
+	}
+	$('#container4').html(divs);
+}
+
+
+function getAllCourse(courseStatus,pageIndex) {
 
 	if (!pageIndex || "" == pageIndex) {
 		pageIndex = defaultPageIndex;
@@ -150,7 +205,7 @@ function getAllCourse(contentType,pageIndex) {
 	noOfPages = Math.ceil(courseArray.length / itemsPerPage);
 	
 	if(courseArray.length ==0){
-		setNoContentFoundText(contentType);
+		setNoContentFoundText(courseStatus);
 		$("#content_type_filter").hide();
 	}
 	else{
@@ -159,7 +214,7 @@ function getAllCourse(contentType,pageIndex) {
 	}
 	
 	if(courseArray.length > itemsPerPage){
-		getPageDiv(noOfPages, contentType, pageIndex);
+		getPageDiv(noOfPages, courseStatus, pageIndex);
 	}
 	else{
 		$('#pageNumbers').empty();
@@ -189,12 +244,10 @@ function getAllCourse(contentType,pageIndex) {
 
 function getDiv(courseObject) {
 
-	var viewer_url = '';
 	var preview_path = '';
 
 	var staticFileServerPath = $("#fileServerPath").val();
-	//console.log("In my content getPreviewPath" + staticFileServerPath);
-	// var courseStatus = courseObject.courseStatus.toUpperCase();
+	var courseStatus = courseObject.courseStatus.toUpperCase();
 	var screenshotPath = courseObject.thumbnailPicturePath;
 
 	if (screenshotPath
@@ -219,14 +272,12 @@ function getDiv(courseObject) {
 			+ courseObject.id
 			+ ');"  class="pull-right"  title="Edit"><img src="../../resources/images/content/edit.svg" style="height: 35px;" /></a>'
 
-			// +'<a href="#linkurl" title="Review playbook"
-			// class="pull-right"><img class="iconcc"
-			// src="../../resources/images/content/reviewplaybook.svg"
-			// style="height:35px;"/></a>'
-
-			// +'<a href="#linkurl" title="Publish" class="pull-right"><img
-			// src="../../resources/images/content/publish.svg"
-			// style="height:35px;"/></a>'
+			+'<a onclick="reviewCourse('
+			+ courseObject.id
+			+ ');" title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>'
+			+'<a onclick="activeCourse('
+			+ courseObject.id
+			+ ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
 			+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
 
 	return learningContentDiv;
@@ -238,11 +289,14 @@ function getPageDiv(noOfPages, filterType,pageIndex) {
 	var functionName = '';
 	if ("ALL" == filterType) {
 		functionName = 'getAllCourse(';
-	} else if ("ACTIVE" == filterType || "DRAFT" == filterType) {
-		functionName = 'getActiveCourse(\'' + filterType + '\',';
+	} else if ("ACTIVE" == filterType) {
+		functionName = 'getActiveCourses(\'' + filterType + '\',';
 	}
-	if ("REVIEW" == filterType) {
-		functionName = 'getReviewCourse(\'' + filterType + '\',';
+	if ("READY_FOR_RELEASE" == filterType) {
+		functionName = 'getReviewCourses(\'' + filterType + '\',';
+	}
+	if ("DRAFT" == filterType) {
+		functionName = 'getDraftCourses(\'' + filterType + '\',';
 	}
 
 	pageDiv.empty();
@@ -261,6 +315,33 @@ function editCourse(courseId) {
 		window.location.href = '/ziksana-web/zcourse/editcourse/COURSE_' + courseId;
 	} else {
 		window.location.href = '/ziksana-web/zcourse/createcourse';
+	}
+}
+
+
+function reviewCourse(courseId) {
+	confirm_delete = confirm('Are you sure to delete?');
+	if (confirm_delete == true) {
+		uri = '/ziksana-web/zcourse/1/reviewcourse';
+		var parameters = {
+			"courseId" : courseId
+		};
+		$.post(uri, parameters, function(data) {
+			
+		});
+	}
+}
+
+function activeCourse(courseId) {
+	confirm_delete = confirm('Are you sure to delete?');
+	if (confirm_delete == true) {
+		uri = '/ziksana-web/zcourse/1/activecourse';
+		var parameters = {
+			"courseId" : courseId
+		};
+		$.post(uri, parameters, function(data) {
+			
+		});
 	}
 }
 

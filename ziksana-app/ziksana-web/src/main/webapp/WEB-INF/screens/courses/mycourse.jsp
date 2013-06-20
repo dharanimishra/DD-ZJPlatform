@@ -154,15 +154,19 @@ $(document).ready(function(){
 
 	<div class="isotophead pull-right" style="width: 306px;" id="content_type_filter">
 		<div class="isotoplinks" >
-		   <ul><li class="current">
-			<a href="#" class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a></li>
-			<li><a href="#"
-				onclick="getDraftCourses('DRAFT')"><fmt:message key="draft.txt"/></a></li>
-			<li><a href="#"
-				onclick="getCourseByType('REVIEW')"><fmt:message key="review.txt"/></a>
-			<li><a
-				href="#" onclick="getCourseByType('ACTIVE')"><fmt:message key="active.txt"/></a></li>
-</li>
+		   <ul>
+			<li class="current">
+				<a  class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a>
+			</li>
+			<li>
+				<a onclick="getDraftCourses('DRAFT')"><fmt:message key="draft.txt"/></a>
+			</li>
+			<li>	
+				<a onclick="getReviewCourses('READY_FOR_RELEASE')"><fmt:message key="review.txt"/></a>
+			</li>
+			<li>
+				<a onclick="getActiveCourses('ACTIVE')"><fmt:message key="active.txt"/></a>
+			</li>
 			</ul> 
 		</div>
 	</div></div>

@@ -631,6 +631,7 @@ public class Course extends AuditHistory {
 	 */
 	public void setCourseStatusId(Integer courseStatusId) {
 		this.courseStatusId = courseStatusId;
+		setCourseStatus(CourseStatus.getCourseStatus(courseStatusId));
 	}
 
 }

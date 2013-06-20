@@ -20,8 +20,8 @@ public class JSONCourse {
 
 		this.id = Integer.parseInt(course.getCourseId().getDisplayID());
 		this.setCourseName(course.getName());
-		this.setCourseDescription(course.getDescription());
-		//this.setCourseStatus(course.getCourseStatus().getName());
+		//this.setCourseDescription(course.getDescription());
+		this.setCourseStatus(course.getCourseStatus().getName());
 		this.setThumbnailPicturePath(course.getThumbnailPicturePath());
 
 	}
