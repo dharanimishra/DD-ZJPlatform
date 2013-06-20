@@ -180,11 +180,13 @@
 		////console.log("noOfPages " + noOfPages + " itemsPerPage " + itemsPerPage);
 		
 		if(unAssociatedContentArray.length ==0){
+			$('#noContentFound').show();
 			setNoContentFoundText(contentType);
 			//$("#content_type_filter").hide();
 			$("#associate-content-anchor").hide();
 		}
 		else{
+			$('#noContentFound').hide();
 			setNoContentFoundText('');
 			//$("#content_type_filter").show();
 			$("#associate-content-anchor").show();
@@ -255,12 +257,14 @@
 		//console.log("noOfPages " + noOfPages);
 
 		if(unAssociatedContentArray.length ==0){
+			$('#noContentFound').show();
 			setNoContentFoundText(contentType);
 			//$("#content_type_filter").hide();
-			//$("#associate-content-anchor").hide();
+			$("#associate-content-anchor").hide();
 		}
 		else{
 			setNoContentFoundText("");
+			$('#noContentFound').hide();
 			//$("#content_type_filter").show();
 			$("#associate-content-anchor").show();
 		}
@@ -330,6 +334,7 @@
 		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
 		
 		if(unAssociatedContentArray.length ==0){
+			$('#noContentFound').show();
 			setNoContentFoundText("ALL");
 			//alert("This is " + setNoContentFoundText("ALL"));
 			$("#content_type_filter").hide();
@@ -337,6 +342,7 @@
 		}
 		else{
 			setNoContentFoundText("");
+			$('#noContentFound').hide();
 			$("#content_type_filter").show();
 			$("#associate-content-anchor").show();
 		}
