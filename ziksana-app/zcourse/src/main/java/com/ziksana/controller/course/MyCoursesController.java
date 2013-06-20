@@ -269,15 +269,15 @@ public class MyCoursesController {
 			course.setCourseStatus(CourseStatus.getCourseStatus(588));
 			try {
 				course.setCourseStatusId(CourseStatus.valueOf(
-						"READY_FOR_RELEASE".toUpperCase()).getID());
-				LOGGER.info("CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
+						"ACTIVE".toUpperCase()).getID());
+				LOGGER.info("CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
 						+ CourseStatus.valueOf(
-								"READY_FOR_RELEASE".toUpperCase()).getID());
+								"ACTIVE".toUpperCase()).getID());
 			} catch (Exception e) {
 				course.setCourseStatusId(588);
-				LOGGER.error("Exception :CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
+				LOGGER.error("Exception :CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
 						+ CourseStatus.valueOf(
-								"READY_FOR_RELEASE".toUpperCase()).getID());
+								"ACTIVE".toUpperCase()).getID());
 			}
 
 			courseService.saveOrUpdateCourse(course);

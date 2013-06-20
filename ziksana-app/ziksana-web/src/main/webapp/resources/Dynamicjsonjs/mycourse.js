@@ -324,11 +324,10 @@ function editCourse(courseId) {
 	}
 }
 
-
-function ReviewPlaybook(courseId) {
+function activeCourse(courseId) {
+	confirm_delete = confirm('Are you sure you want to active this course?');
 	if (confirm_delete == true) {
-		uri = '/ziksana-web/zcourse/1/reviewplaybook';
-		confirm_delete = confirm('Are you sure to review playbook?');
+		uri = '/ziksana-web/zcourse/1/activecourse';
 		var parameters = {
 			"courseId" : courseId
 		};
@@ -337,7 +336,6 @@ function ReviewPlaybook(courseId) {
 		});
 	}
 }
-
 function reviewCourse(courseId) {
 	confirm_delete = confirm('Are you sure to review?');
 	if (confirm_delete == true) {
