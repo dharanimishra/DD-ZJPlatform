@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
+import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONCourse;
 
 import com.ziksana.domain.institution.LearningProgram;
@@ -73,15 +75,14 @@ public class MyCoursesController {
 		LOGGER.debug("Class " + getClass() + "Exiting myCourse(): ");
 		return modelView;
 	}
-	
-	
+
 	@RequestMapping(value = "1/mycourselearner", method = { RequestMethod.GET })
 	public @ResponseBody
 	ModelAndView myLearnerCourse() {
 		LOGGER.debug(" Entering Class " + getClass() + " myLearnerCourse()");
 		ModelAndView modelView = new ModelAndView("mastermylearnercourse");
 		try {
-			String jsonString="";
+			String jsonString = "";
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("pageTitle", "My Course - Learner");
@@ -104,8 +105,8 @@ public class MyCoursesController {
 		try {
 			List<Course> draftedCourses = courseService
 					.getCoursesByStatus(CourseStatus.DRAFT);
-//			List<Course> reviewedCourses = courseService
-//					.getCoursesByStatus(CourseStatus.READY_FOR_RELEASE);
+			// List<Course> reviewedCourses = courseService
+			// .getCoursesByStatus(CourseStatus.READY_FOR_RELEASE);
 			List<Course> activeCourses = courseService
 					.getCoursesByStatus(CourseStatus.ACTIVE);
 
@@ -113,7 +114,7 @@ public class MyCoursesController {
 
 			// TODO we need to add object
 			mv.addObject("DRAFTED_COURSES", draftedCourses);
-			//mv.addObject("REVIEWED_COURSES", reviewedCourses);
+			// mv.addObject("REVIEWED_COURSES", reviewedCourses);
 			mv.addObject("ACTIVE_COURSES", activeCourses);
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
@@ -255,4 +256,91 @@ public class MyCoursesController {
 
 	}
 
+	@RequestMapping(value = "1/reviewcourse/{courseId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView reviewCourse(@PathVariable Integer courseId) {
+		LOGGER.debug(" Entering Class " + getClass() + " reviewCourse()");
+		ModelAndView modelView = new ModelAndView("mastermycourse");
+		Course course = new Course();
+		try {
+			course.setCourseId(courseId);
+			course.setCourseStatus(CourseStatus.getCourseStatus(588));
+			try {
+				course.setCourseStatusId(CourseStatus.valueOf(
+						"READY_FOR_RELEASE".toUpperCase()).getID());
+				LOGGER.info("CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
+						+ CourseStatus.valueOf(
+								"READY_FOR_RELEASE".toUpperCase()).getID());
+			} catch (Exception e) {
+				course.setCourseStatusId(588);
+				LOGGER.error("Exception :CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
+						+ CourseStatus.valueOf(
+								"READY_FOR_RELEASE".toUpperCase()).getID());
+			}
+
+			courseService.saveOrUpdateCourse(course);
+
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "My Course");
+
+			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
+					.getMemberPersonaId().getStorageID());
+			List<Course> courses = courseService.getListOfCourses(memberId);
+
+			List<JSONCourse> jsonCourseList = getJSONCourseObjects(courses);
+			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
+
+			modelView.addObject("courseAsJSONString", jsonString);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+
+		LOGGER.debug("Class " + getClass() + "Exiting reviewCourse(): ");
+		return modelView;
+	}
+
+	@RequestMapping(value = "1/activecourse/{courseId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView activeCourse(@PathVariable Integer courseId) {
+		LOGGER.debug(" Entering Class " + getClass() + " activeCourse()");
+		ModelAndView modelView = new ModelAndView("mastermycourse");
+		Course course = new Course();
+		try {
+			course.setCourseId(courseId);
+			course.setCourseStatus(CourseStatus.getCourseStatus(589));
+			try {
+				course.setCourseStatusId(CourseStatus.valueOf(
+						"ACTIVE".toUpperCase()).getID());
+				LOGGER.info("CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
+						+ CourseStatus.valueOf("ACTIVE".toUpperCase()).getID());
+			} catch (Exception e) {
+				course.setCourseStatusId(589);
+				LOGGER.error("Exception :CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
+						+ CourseStatus.valueOf("ACTIVE".toUpperCase()).getID());
+			}
+
+			courseService.saveOrUpdateCourse(course);
+
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "My Course");
+
+			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
+					.getMemberPersonaId().getStorageID());
+			List<Course> courses = courseService.getListOfCourses(memberId);
+
+			List<JSONCourse> jsonCourseList = getJSONCourseObjects(courses);
+			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
+
+			modelView.addObject("courseAsJSONString", jsonString);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+
+		LOGGER.debug("Class " + getClass() + "Exiting activeCourse(): ");
+		return modelView;
+	}
 }
