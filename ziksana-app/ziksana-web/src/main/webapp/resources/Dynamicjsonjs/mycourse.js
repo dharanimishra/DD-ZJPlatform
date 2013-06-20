@@ -256,7 +256,18 @@ function getDiv(courseObject) {
 	} else {
 		preview_path = '../../resources/images/preview/defaultcourse.png';
 	}
-
+	var activeDiv='';
+	var reviewDiv='';
+	var totalDiv='';
+	if('ACTIVE' ==courseStatus ){
+		totalDiv='<a onclick="ReviewPlaybook('+ courseObject.id + ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>';
+	} else if('READY_FOR_RELEASE'==courseStatus){
+		totalDiv='<a onclick="reviewCourse('+ courseObject.id + ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
+		+'<a onclick="reviewCourse('
+		+ courseObject.id
+		+ ');" title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>';
+	
+	}
 	var learningContentDiv = '<div id="createcontent-main" class="item All">'
 			+ '<p class="createcontenthead">'
 			+ courseObject.courseName
@@ -270,14 +281,7 @@ function getDiv(courseObject) {
 			+ courseObject.id
 			+ ');" title="Delete" class="remove_this pull-right">X</a> <a onclick="editCourse('
 			+ courseObject.id
-			+ ');"  class="pull-right"  title="Edit"><img src="../../resources/images/content/edit.svg" style="height: 35px;" /></a>'
-
-			+'<a onclick="reviewCourse('
-			+ courseObject.id
-			+ ');" title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>'
-			+'<a onclick="activeCourse('
-			+ courseObject.id
-			+ ');" title="Publish" class="pull-right"><img src="../../resources/images/content/publish.svg" style="height:35px;"/></a>'
+			+ ');"  class="pull-right"  title="Edit"><img src="../../resources/images/content/edit.svg" style="height: 35px;" /></a>'+totalDiv	
 			+ '</div>' + '<div class="Clearfix"></div>' + '</div>';
 
 	return learningContentDiv;
@@ -319,8 +323,21 @@ function editCourse(courseId) {
 }
 
 
+function ReviewPlaybook(courseId) {
+	if (confirm_delete == true) {
+		uri = '/ziksana-web/zcourse/1/reviewplaybook';
+		confirm_delete = confirm('Are you sure to review playbook?');
+		var parameters = {
+			"courseId" : courseId
+		};
+		$.post(uri, parameters, function(data) {
+			
+		});
+	}
+}
+
 function reviewCourse(courseId) {
-	confirm_delete = confirm('Are you sure to delete?');
+	confirm_delete = confirm('Are you sure to review?');
 	if (confirm_delete == true) {
 		uri = '/ziksana-web/zcourse/1/reviewcourse';
 		var parameters = {
@@ -333,7 +350,7 @@ function reviewCourse(courseId) {
 }
 
 function activeCourse(courseId) {
-	confirm_delete = confirm('Are you sure to delete?');
+	confirm_delete = confirm('Are you sure to active?');
 	if (confirm_delete == true) {
 		uri = '/ziksana-web/zcourse/1/activecourse';
 		var parameters = {

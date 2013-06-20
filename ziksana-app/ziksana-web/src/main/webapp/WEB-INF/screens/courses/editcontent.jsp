@@ -23,7 +23,7 @@
 	<div class="fifteen columns"
 	id="page-title"> <a style="margin-top: -3px;" class="back"
 	href="javascript:history.back()"></a> <p class="page-title"> <span
-	style="font-size: 13px; color: #6bbde8;">Home</span> < Create Content </p>
+	style="font-size: 13px; color: #6bbde8;"><a href="/ziksana-web/secure/1/homepage" style="font-size: 13px; color: #6bbde8;"><fmt:message key="home.hometext"/></a></span> < <fmt:message key="home.createcontent"/> </p>
 </div> 
 </div> <!--end of breadcrumb--> 
 </div>
