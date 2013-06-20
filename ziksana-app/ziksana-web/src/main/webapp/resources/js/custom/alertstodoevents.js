@@ -120,7 +120,7 @@ function get_and_populate_announcements(val){
 			$(data).find("announcementsList").each(function(){
 				if($(this).find("announcementSize").text()==0){
 					
-					announcement_all+="No New Announcements";
+					announcement_all+="<span style='color: white;padding:6px;text-align:center;float:left;width:100%'>No New Announcements</span>";
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
@@ -197,7 +197,7 @@ function get_and_populate_universityannouncements(val){
 			$(data).find("announcementsList").each(function(){
 				if($(this).find("announcementSize").text()==0){
 					console.log( $(this).find("announcementSize").text());
-					announcement_all+="No New Announcements";
+					announcement_all+="<span style='color: white;padding:6px;text-align:center;float:left;width:100%'>No New Announcements</span>";
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
@@ -258,7 +258,7 @@ function get_and_populate_departmentannouncements(val){
 			$(data).find("announcementsList").each(function(){
 				if($(this).find("announcementSize").text()==0){
 					console.log( $(this).find("announcementSize").text());
-					announcement_all+="No New Announcements";
+					announcement_all+="<span style='color:white;padding:6px;text-align:center;float:left;width:100%'>No New Announcements</span>";
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
@@ -319,7 +319,7 @@ function get_and_populate_courseannouncements(val){
 			$(data).find("announcementsList").each(function(){
 				if($(this).find("announcementSize").text()==0){
 					console.log( $(this).find("announcementSize").text());
-					announcement_all+="No New Announcements";
+					announcement_all+="<span style='color:white;padding:6px;text-align:center;float:left;width:100%'>No New Announcements</span>";
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
