@@ -259,7 +259,7 @@ function getDiv(courseObject) {
 
 	var totalDiv='';
 	if('ACTIVE' ==courseStatus ){
-		totalDiv='<a onclick="reviewCourse('
+		totalDiv='<a onclick="reviewPlayBook('
 		+ courseObject.id
 		+ ');" title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>';
 	} 
