@@ -355,7 +355,7 @@ body {
 
 .isotophead {
 	height: 40px;
-	background-color: #0066FF;
+	background-color:#168EBE;
 	padding-left:4px;padding-right:4px;margin-right:4px;border-radius: 4px 4px 0 0;
 }
 
@@ -2587,7 +2587,7 @@ input[type="checkbox"]:checked+label span {
 
 .createcontenthead {
 	height: 40px;
-	background-color: #06F;
+	background-color: #168EBE;
 	padding: 10px;
 	color: #fff;
 	font-size: 14px !important;

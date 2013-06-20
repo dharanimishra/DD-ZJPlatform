@@ -70,7 +70,7 @@
 	 		
 	 		
 	 %> 
-		 <div class="edit_content_info" id="content_<%=content.getId()%>" style="min-height:240px;">
+		 <div class="edit_content_info" id="content_<%=content.getId()%>" style="min-height:150px;">
 		 <div class="Clearfix"></div>
 
 		<div style="padding: 10px;width:100%"> 
@@ -354,7 +354,7 @@ overflow:hidden
   width: 180px;
 }
 .edit_content_info:nth-child(2n) {
-  background: none repeat scroll 0 0 #CCCCCC;
+  background: none repeat scroll 0 0 #168EBE;
 }
 label.error {
   background: none repeat scroll 0 0 transparent;

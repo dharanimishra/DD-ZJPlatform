@@ -337,7 +337,7 @@ input.error {
 }
 .weblink_row { padding: .5em;}
 #web_link_container div.weblink_row:nth-child(even) {
-  background: none repeat scroll 0 0 #CCCCCC;
+  background: none repeat scroll 0 0 #168EBE;
 }
 .editdetailsweblink:hover{color:#fff!important;text-decoration:none}
 
