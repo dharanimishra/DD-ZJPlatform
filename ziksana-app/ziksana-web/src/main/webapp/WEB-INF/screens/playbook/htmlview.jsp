@@ -305,12 +305,8 @@ ${course.description}
 <div class="chapeterfotter"><label class="pageno">03</label></div>
 </div>
 </div>
-<<<<<<< HEAD
-    <div class="Clearfix"> </div>                      
-      <div style="float:right;margin-right:20px;margin-top:20px;margin-bottom:20px"><a class="btn" href="/ziksana-web/zplaybook/unsecure/downloadPlayBook/${course.courseId }">Download PDF</a> <a onclick="activeCourse(${course.id});" class="btn">Complete Course</a></div>                        
-=======
-    <div class="Clearfix"> </div>                              
->>>>>>> 19296dd613e287569fc4907f7bb2b95e3fc28ea1
+<div class="Clearfix"> </div>                              
+
     </div> <!--End of contentarea -->
   
 </div> <!--End of definestructureformcontainer -->  
