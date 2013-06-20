@@ -344,4 +344,47 @@ public class MyCoursesController {
 		LOGGER.debug("Class " + getClass() + "Exiting activeCourse(): ");
 		return modelView;
 	}
+	
+	@RequestMapping(value = "1/activatecourse/{courseId}", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	ModelAndView activateCourse(@PathVariable Integer courseId) {
+		LOGGER.debug(" Entering Class " + getClass() + " activateCourse()");
+		ModelAndView modelView = new ModelAndView("mastermycourse");
+		Course course = new Course();
+		try {
+			course.setCourseId(courseId);
+			course.setCourseStatus(CourseStatus.getCourseStatus(588));
+			try {
+				course.setCourseStatusId(CourseStatus.valueOf(
+						"ACTIVE".toUpperCase()).getID());
+				LOGGER.info("CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
+						+ CourseStatus.valueOf("READY_FOR_RELEASE".toUpperCase()).getID());
+			} catch (Exception e) {
+				course.setCourseStatusId(588);
+				LOGGER.error("Exception :CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
+						+ CourseStatus.valueOf("READY_FOR_RELEASE".toUpperCase()).getID());
+			}
+
+			courseService.saveOrUpdateCourse(course);
+
+			mediaServerURL = mediaService.getMediaContents();
+			modelView.addObject("ms", mediaServerURL);
+			modelView.addObject("pageTitle", "My Course");
+
+			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
+					.getMemberPersonaId().getStorageID());
+			List<Course> courses = courseService.getListOfCourses(memberId);
+
+			List<JSONCourse> jsonCourseList = getJSONCourseObjects(courses);
+			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
+
+			modelView.addObject("courseAsJSONString", jsonString);
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+
+		LOGGER.debug("Class " + getClass() + "Exiting activateCourse(): ");
+		return modelView;
+	}
 }

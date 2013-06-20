@@ -259,7 +259,7 @@ ${course.description}
          <img src="${mediaserver}${node.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
       </c:when>
       <c:otherwise>
-      <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+      <img src="/ziksana-web/resources/images/preview/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
    </c:otherwise>
   </c:choose>
 	  <b style="padding:0px">${node.title}</b><label style="float:right;font-weight:bold">${course.name}</label ><br/>
@@ -275,7 +275,7 @@ ${course.description}
 		         <img src="${mediaserver}${cnode.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
 		      </c:when>
 		      <c:otherwise>
-		   <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+		   <img src="/ziksana-web/resources/images/preview/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
 		   </c:otherwise>
 		  </c:choose>
 		    <b style="padding:0px">${cnode.title}</b><label style="float:right;font-weight:bold">${node.title}</label ><br/>    
@@ -305,22 +305,14 @@ ${course.description}
 <div class="chapeterfotter"><label class="pageno">03</label></div>
 </div>
 </div>
+<<<<<<< HEAD
     <div class="Clearfix"> </div>                      
       <div style="float:right;margin-right:20px;margin-top:20px;margin-bottom:20px"><a class="btn" href="/ziksana-web/zplaybook/unsecure/downloadPlayBook/${course.courseId }">Download PDF</a> <a onclick="activeCourse(${course.id});" class="btn">Complete Course</a></div>                        
+=======
+    <div class="Clearfix"> </div>                              
+>>>>>>> 19296dd613e287569fc4907f7bb2b95e3fc28ea1
     </div> <!--End of contentarea -->
   
 </div> <!--End of definestructureformcontainer -->  
-
-<script type="text/javascript">
-function activeCourse(courseId) {
-	confirm_delete = confirm('Are you sure to complete course?');
-	if (confirm_delete == true) {
-		uri = '/ziksana-web/zcourse/1/activecourse';
-		var parameters = {
-			"courseId" : courseId
-		};
-		$.post(uri, parameters, function(data) {
-			
-		});
-	}
-}</script>    
+<div style="float:right;margin-right:20px; margin-top:20px; margin-bottom:20px"><a class="btn">Download PDF</a> 
+<a href="/ziksana-web/zcourse/1/activatecourse/${courseIds}" class="btn">Complete Course</a></div>
