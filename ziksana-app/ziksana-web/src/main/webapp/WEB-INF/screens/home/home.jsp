@@ -46,7 +46,7 @@
 		<div class="tile bg-color-blue" style="width: 270px;">
 			<c:if test="${empty member.picturePath}">
 				<p>
-					<img src="/ziksana-web/resources/images/no-image.jpg" align="left"
+					<img src="/ziksana-web/resources/images/usericon.png" align="left"
 						style="margin-top: 10px; margin-left: 5px; height: 100px; width:100px;margin-right: 10px;"
 						class="img-polaroid" />
 				</p>

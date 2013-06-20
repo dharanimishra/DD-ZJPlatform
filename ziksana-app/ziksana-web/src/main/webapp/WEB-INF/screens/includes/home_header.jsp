@@ -15,12 +15,13 @@
 <div id="ProfilePic" class="f-r ">
 
 <c:if test="${empty member.picturePath}">
-<img src="/ziksana-web/resources/images/no-image.jpg" align="middle" class=" rounded_image Profile">
+<img src="/ziksana-web/resources/images/usericon.png" align="middle" class=" rounded_image Profile">
 </c:if>
 <c:if test="${not empty ms.url && not empty member.picturePath}">
 <img src="${ms.url}<c:out value="${member.picturePath}"/>" align="middle" class=" rounded_image Profile">
 </c:if>  
- <c:out value="${member.firstName}"/> <c:out value="${member.lastName}"/> </div>
+ <c:out value="${member.firstName}"/> <c:out value="${member.lastName}"/> 
+ </div>
 </div> 
 <div id="user_menu_container">
 <div id="AccountSetting" class="f-l"><span><img class="Profilepic" src="/ziksana-web/resources/images/home/actlck.png"/></span> 
