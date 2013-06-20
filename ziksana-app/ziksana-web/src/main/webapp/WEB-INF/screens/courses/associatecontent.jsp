@@ -70,9 +70,9 @@
 	
 <script>
 $(document).ready(function(){
-        $('.isotoplinks li').click(function () {
-            $('.isotoplinks li').removeClass('current').addClass('link');
-            $(this).removeClass('link').addClass('current');
+        $('#content_type_filter li').click(function () {
+            $('#content_type_filter li').removeClass('currentAC').addClass('link');
+            $(this).removeClass('link').addClass('currentAC');
             var divname= this.name;
             $("#"+divname).show("fast").siblings().hide("fast");
         });
@@ -350,10 +350,10 @@ $(document).ready(function(){
 
 									<div id="associateul">
 										<div id="content_type_filter">
-										<ul><li>	<a  class="active_filter" onclick="getAllLearningContents()"><fmt:message key="home.all"/></a>
-										</li><li><a  onclick="getLearningContentsByType('VIDEO')"><fmt:message key="video.content" />
+										<ul><li class="currentAC"><a onclick="getAllLearningContents()"><fmt:message key="home.all"/></a>
+										</li><li style="width:130px"><a  onclick="getLearningContentsByType('VIDEO')"><fmt:message key="video.content" />
 												</a></li>
-												<li>
+												<li style="width:150px">
 												<a onclick="getLearningContentsByType('LINK')"><fmt:message key="weblink.content"/></a>
 												</li><li><a  onclick="getOtherLearningContents('Others')"><fmt:message key="other.txt" /></a></li>
 										</ul></div>

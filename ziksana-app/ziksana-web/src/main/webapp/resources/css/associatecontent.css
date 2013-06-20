@@ -9,7 +9,7 @@ margin-bottom: 15px;
 #associatewrapper
 {
 margin-bottom: 20px;
-margin-top: 40px; 
+margin-top: 50px; 
  padding:0px;
  background-color: #168EBE;
  
@@ -25,7 +25,7 @@ box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 
 #associateul
 {
-margin-top: -35px;
+margin-top: -45px;
     overflow: auto;
     padding-bottom: 5px;
 }
@@ -123,10 +123,11 @@ margin-right:10px;
     padding-top: 6px;
     text-transform: capitalize;
 }
+.associatecategoryhead a{font-size:14px;font-weight:normal!important}
 .associatetagscontainer
 {
 padding-top:5px;
-margin-bottom: 14px;	
+ 	
 border-bottom:1px solid #ccc;
 }
 .associatecategorydesc
@@ -137,7 +138,7 @@ text-align: justify;
 line-height: 18px;
 color:#fff;
 height:32px;
-overflow:hidden;
+overflow:hidden;font-size:14px
 
 }
 
@@ -283,11 +284,19 @@ a.swShowPage:hover{
   width: 430px;
 }
 #content_type_filter li {
-  float: left;
+  float: left; text-align: center;
+    width: 70px;
 }
-#content_type_filter a:hover {   text-decoration: underline;color: #ccc; }
+#content_type_filter a:hover {   text-decoration: none;color: #ccc; }
 #content_type_filter a.active_filter {opacity: 0.8;padding-left:30px; padding-right:30px;}
-
+.currentAC {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-radius: 4px 4px 0 0;
+  
+  margin-left: 4px;
+  margin-top: 4px;
+}
+.currentAC a{color:#000!important}
 /* Metro css */
 
  
