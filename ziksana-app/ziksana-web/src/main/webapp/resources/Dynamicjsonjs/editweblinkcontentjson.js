@@ -163,7 +163,8 @@ function deleteContent(content_id) {
 								$.post(uri,parameters,function(data) {
 									if (data.response == 'success') {
 									console.log("content_content_id"+content_id);
-							     	$('#content_'+content_id).remove();
+							     	$('#addweblink').remove();
+							     	window.location.href = "/ziksana-web/zcourse/1/mycontent";
 							     	console.log("$('#content_'+content_id).remove() ");
 									}
 								});

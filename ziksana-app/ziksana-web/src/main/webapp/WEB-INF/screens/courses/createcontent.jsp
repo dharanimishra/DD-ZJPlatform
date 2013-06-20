@@ -227,7 +227,7 @@ $(document).ready(function() { // On page load
 								} else if(content_type_name == 'PDF'){
 									thumbnail_image_src = '${staticFileServer}resources/images/preview/pdf.png';
 								} else if(content_type_name == 'IMAGE'){
-									thumbnail_image_src = thumbnail_image_preview;					
+									thumbnail_image_src = '${staticFileServer}resources/images/preview/image.png';				
 								}
 
 								div_html = '<div class="preview_uploaded_content">';

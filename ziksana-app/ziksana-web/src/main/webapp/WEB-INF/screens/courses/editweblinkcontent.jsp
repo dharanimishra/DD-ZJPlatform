@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/xml"%>
+<%@page import="java.util.*"%>
+<%@page import="com.ziksana.domain.course.LearningContent"%>
+<%@page import="com.ziksana.domain.course.ContentType"%>
 <script type='text/javascript'
 	src="${staticFileServer}resources/js/custom/plugins.js"></script>
 <script type='text/javascript'
@@ -5,7 +9,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/custom/createcontent/addweblink.js"></script>
 <script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/weblinkcontentjson.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/editweblinkcontentjson.js"></script>
 	<script type='text/javascript'
 	src="${staticFileServer}resources/js/validation/jquery.validate.js"></script>
 <style>
@@ -106,20 +110,18 @@ $(document).ready(function() { // On page load
 		<div class="createcontentwrapper">
 			<form id="createweblinkform" method="post"
 				action="/ziksana-web/zcourse/1/weblinkcontents">
+				
+	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
+		try {
+		int i=0;
+	 	for (LearningContent content : list) {
+	 		
+	 		
+	 %> 
 				<div class="addweblink">
 		
 					<div class="createcontentpanelhead">
-						Add Web Link
-						<%-- <c:if test="${message != null}">
-    						<div><p>${message}</p></div>
-						</c:if>
-			
-						<div class="addmpre pull-right">
-							<a class="adlink" id="weblink"><img
-								src="${staticFileServer}resources/images/content/plus.png"
-								style="height: 30px;" /></a>
-						</div>  --%>
-						
+						Edit Web Link
 						<!--end of add more-->
 						<div class="Clearfix"></div>
 					</div>
@@ -132,12 +134,13 @@ $(document).ready(function() { // On page load
 								<div id="message"></div>
 								<div id="thubmnail_upload_message"></div>
 								<div id="loaderText"></div>
+								<input type="hidden" name="contentId" value="<%=content.getId()%>"/>
 								<input type="file" name="thumbnail_image_file_upload"
 									tabindex="11" id="thumbnail_image_file_upload"
 									style="margin-left: 196px;" />
 									
 							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
-							<input type="hidden" name="contentPath" id="thumbnail_path" value="<%=old_thumbnail_path%>"/>
+							<%-- <input type="hidden" name="contentPath" id="thumbnail_path" value="<%=old_thumbnail_path%>"/> --%>
 								<div id="status"></div>
 								<script type="text/javascript">
 									$(function() {
@@ -189,41 +192,41 @@ $(document).ready(function() { // On page load
 						<div class="rowfields pull-left" style="width: 745px;">
 							<ul style="overflow: hidden; width: 98%;margin-top: 0;">
 								<li style="width: 180px;">
-								<input type="hidden" name="contentPath[]" value=""/>
+								<input type="hidden" name="contentPath" id="thumbnail_path" value="<%=content.getId()%>"/>
 								<input type="text" placeholder="Enter Name"
-									name="contentName[]" class="required validate[required]"
+									name="contentName" class="required validate[required]" value="<%=content.getContentName()%>"
 									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
-								<li style="width: 350px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
+								<li style="width: 350px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl" value="<%=content.getContentUrl()%>"
 									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" class="required validate[required]"/></li>
 								<li  style="width: 150px;"><a href="#" class="editdetailsweblink" style="font-size:13px;"><img src="../../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/>
 								Edit Details</a></li>
-								<li style="width:50px;text-align:center;padding-top:13px"><a title="Delete" class="remove_this">X</a></li>
+								<li style="width:50px;text-align:center;padding-top:13px"><a title="Delete" onclick="deleteContent(<%=content.getId()%>);" class="remove_this">X</a></li>
 							</ul>
 						</div>
 						<!--end of rowfields-->
 						<div class="clearfix"></div>
 						<div class="editslide pull-left" style="display:none">
 						<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px; padding-left: 10px;">Description</label>
-							<textarea rows="4" cols="12" name="contentDescription[]" 
+							<textarea rows="4" cols="12" name="contentDescription" value="<%=content.getContentDescription()%>"
 								style="width: 330px; margin-bottom: 10px; margin-left: 10px;" placeholder="Describe the content for  Web link"></textarea>
 						</div>
 						<div class="editslide pull-left" style="margin-left: 10px;display:none">
 							<ul><li style="margin-bottom: 10px;">	<label>Select Area</label>
-							<select id="Careaddl" name="contentArea[]" class="select Careaddl">
+							<select id="Careaddl" name="contentArea" class="select Careaddl">
 								<option>Specify Area</option>
 							</select> </li><li  style="margin-bottom: 10px;">
 							<label>Select Subject</label>
 							 <select class="select Csubjectddl" id="Csubjectddl"
-								name="contentSubject[]">
+								name="contentSubject">
 								<option>Specify Subject</option>
 							</select></li>
 							 <li>
 		                	<label>Select Topic</label>
-			           <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic[]">
+			           <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic">
 								<option>Specify Topic</option>
 							</select></li>
 		       <li>	<label>Specify Tags</label>
-							<input type="text" placeholder="Specify Tags" name="contentTag[]"
+							<input type="text" placeholder="Specify Tags" name="contentTag"
 								style="height: 30px; margin-right: 12px; width: 233px;">
 						</li></ul></div>
 						<div class="clearfix"></div>
@@ -232,6 +235,12 @@ $(document).ready(function() { // On page load
 					</div>
 					<!-- </div> -->
 				</div>
+				<%}
+	
+		}catch(Exception e){
+		e.printStackTrace();	
+		}
+%>
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
 					<button class="btn blue pull-right saveup1" id="sbtvalidation"
