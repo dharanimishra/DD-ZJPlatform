@@ -193,9 +193,9 @@ $(document).ready(function() { // On page load
 								<input type="hidden" name="contentPath[]" value=""/>
 								<input type="text" placeholder="Enter Name"
 									name="contentName[]" class="required validate[required]"
-									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" /></li>
+									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px;" /></li>
 								<li style="width: 350px;"><input type="url" placeholder="http://" id="linkurl" name="contentUrl[]"
-									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px" class="required validate[required]"/></li>
+									style="height: 28px; margin-top: 15px; width: 170px;margin-bottom:0px;margin-right: 23px;" class="required validate[required]"/></li>
 								<li  style="width: 150px;"><a href="#" class="editdetailsweblink" style="font-size:13px;"><img src="../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/>
 								Edit Details</a></li>
 								<li style="width:50px;text-align:center;padding-top:13px"><a title="Delete" class="remove_this">X</a></li>
@@ -312,11 +312,7 @@ width: 530px;overflow:hidden}
 </style>
 
 <style type="text/css">
-a.remove_this:hover {
-	color: red;
-	border-color: red;
-	text-decoration: none;
-}
+ 
 .weblinkcontainer {
     background-color: #525252;
     height: 320px;
@@ -343,8 +339,8 @@ input.error {
 #web_link_container div.weblink_row:nth-child(even) {
   background: none repeat scroll 0 0 #CCCCCC;
 }
-.editcntent:hover{color:#fff!important;text-decoration:none}
-.editdetailuplbtn:hover{color:#fff!important;text-decoration:none;}
+.editdetailsweblink:hover{color:#fff!important;text-decoration:none}
+
 </style>
 
 <script type="text/javascript">

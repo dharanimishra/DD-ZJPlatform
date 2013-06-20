@@ -62,7 +62,7 @@
 <div class="uploadcontent2">
 	<div class="createcontentpanelhead">Upload Content</div> <!--end of panel head-->
 		
-	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post"> 
+	<form  id="editcontentform" action="/ziksana-web/zcourse/1/editcontents" method="post" style=" min-height: 350px;"> 
 	<% List<LearningContent> list = (List<LearningContent>) request.getAttribute("learningContentlist");
 		try {
 		int i=0;
@@ -164,7 +164,7 @@
  <div class="uploaded_file_contents">
  	<div class="rowfields pull-left" style="height: 145px;width:81%;"> 
  	<ul style="margin-top: 30px;">
-		<li style="padding-right: 30px;color:#fff;font-size:15px;width:55%">  
+		<li style="padding-right: 30px;color:#fff;font-size:15px;width:55%;height:50px">  
 			<label id="labelContentId<%=content.getId()%>" name="content_name[]"><%=content.getContentName()%></label>
 			<input class="required" type="text" id="EditName<%=content.getId()%>" name="content_name[]" value="<%=content.getContentName()%>" style="display:none;height:30px;width:238px"/>
 		</li> 
@@ -355,6 +355,18 @@ overflow:hidden
 }
 .edit_content_info:nth-child(2n) {
   background: none repeat scroll 0 0 #CCCCCC;
+}
+label.error {
+  background: none repeat scroll 0 0 transparent;
+  color: #D14836;
+  font-size: 12px;
+  margin-left: 2px;
+  position: relative;
+  top: 19px;
+left: -238px;
+}
+input.error {
+    color: #555 !important;
 }
 </style>
 
