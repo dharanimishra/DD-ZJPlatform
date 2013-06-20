@@ -9,7 +9,7 @@
 	</insert>
 	
 	<select id="getTodayCalenderEvents" resultMap="calendarResultMap">
-		select eventid,eventname,startdate,enddate from events where DATE(startdate) = DATE(NOW()) limit #{pageIndex},#{itemsPerPage}
+		select eventid,eventname,startdate,enddate from events where DATE(startdate) = DATE(NOW()) order by startdate asc limit #{pageIndex},#{itemsPerPage}
 	</select>
 	
 	<select id="getTodayCalendarSize" resultType="java.lang.Integer">

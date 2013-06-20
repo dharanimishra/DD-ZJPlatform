@@ -641,7 +641,7 @@ table tr td {
 <script type="text/javascript" >
 
 	$(function() {
-	 	$('.show_in_fancybox, .google').fancybox({"width":950,"height":300, afterClose: getTodayCalendarEvents(0)});
+	 	$('.show_in_fancybox, .google').fancybox({"width":950,"height":300, afterClose: getEvents});
 	});
 
 	
@@ -669,6 +669,9 @@ table tr td {
 			$('#manageTodoErrorMsg' + i + '').html("");
 		}
 	}
-
+	
+	function getEvents(){
+		getTodayCalendarEvents(0);
+	}
 	
 </script>
