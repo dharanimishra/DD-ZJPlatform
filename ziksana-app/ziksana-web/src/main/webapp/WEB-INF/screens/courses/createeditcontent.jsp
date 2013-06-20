@@ -24,8 +24,8 @@ $(document).ready(function() { // On page load
 <div id="Zikbreadcrumbback" style="margin-left: 20px;"> <div
 	class="Zikbreadcrumb f-l"> <div class="fifteen columns"
 	id="page-title"> <a style="margin-top: -3px;" class="back"
-	href="javascript:history.back()"></a> <p class="page-title"> <span
-	style="font-size: 13px; color: #6bbde8;">Home</span> < Create Content </p>
+	href="javascript:history.back()"></a> <p class="page-title"> 
+	<span style="color: #6bbde8;"><a href="/ziksana-web/secure/1/homepage"><fmt:message key="home.hometext"/></a></span> < <fmt:message key="home.createcontent"/>
 </div> </div> <!--end of breadcrumb--> </div>
 
 <div class="Clearfix"></div>
@@ -39,7 +39,7 @@ $(document).ready(function() { // On page load
 			</div>
 			<div class="brand"> 
 				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"> 
-				<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;">Upload Content</a> 
+				<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;"><fmt:message key="Upload.Content"/></a> 
 			</h3> 
 	</div> 
 	</div> 
@@ -52,7 +52,7 @@ $(document).ready(function() { // On page load
 			 </div> 
 		 <div  class="brand"> 
 			<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
-			<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;">Add Web Link</a> </h3> 
+			<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;"><fmt:message key="Add.Web.Link"/></a> </h3> 
 		</div> 
 			</div> 
 			
@@ -179,10 +179,10 @@ $(document).ready(function() { // On page load
 		<li style="color:#fff;font-size:15px;text-align:center;width:16%">
 		
 		<a onclick="shotxtbox(<%=content.getId()%>)" style="cursor:pointer;font-size:13px;" class="editcntent" >
-		<img src="../../../resources/images/content/edit.svg" style="width:19px; height:30px"/> Edit Name</a></li>
+		<img src="../../../resources/images/content/edit.svg" style="width:19px; height:30px"/><fmt:message key="Edit.Name"/> </a></li>
 		<li style="width:13%;text-align:center;">
 		<a class="editdetailuplbtn toggle_details" style="cursor:pointer;text-align:center;font-size:13px;" >
-		<img src="../../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/>Edit Details</a></li>
+		<img src="../../../resources/images/content/edit.svg" style="width:19px;margin-right: 3px; height:30px"/><fmt:message key="Edit.Details"/></a></li>
 		<li style="width:15%;text-align:center;padding-top:4px"><a title="Delete" onclick="deleteContent(<%=content.getId()%>);" class="remove_this">X</a></li>
 	</ul> 
 	</div> 
@@ -190,24 +190,23 @@ $(document).ready(function() { // On page load
 	<div class="editslideup1 clearfix details" style="display:none"> 
 		<div class="editslideup1 clearfix details" style="display:none"> 
 		<div class="editslide pull-left"> 
-		<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px;">Description</label>
+		<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px;"><fmt:message key="Description.txt"/></label>
 		<textarea rows="4" cols="12"
 		style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" placeholder="Describe the content uploaded"></textarea>
 		</div>
 		<div class="editslide pull-left" style="margin-left: 5px;">
-		<ul><li style="margin-bottom: 10px;">	<label>Select Area</label>
+		<ul><li style="margin-bottom: 10px;">	<label><fmt:message key="Select.Area"/></label>
 			<select
-				class="Careaddl select" name="content_area[]"> <option>Specify Area</option>
+				class="Careaddl select" name="content_area[]"> <option><fmt:message key="Specify.Area"/></option>
 			</select></li><li  style="margin-bottom: 10px;">
-			<label>Select Subject</label> 
-			<select class="select Csubjectddl" name="content_subject[]"> <option>Specify
-			Subject</option> </select></li>
+			<label><fmt:message key="Select.Subject"/></label> 
+			<select class="select Csubjectddl" name="content_subject[]"> <option><fmt:message key="Specify.Subject"/></option> </select></li>
 			 <li>
 			<label>Select Topic</label>
-			<select class="select Ctopicddl" name="content_topic[]" > <option>Specify
-			Topic</option> </select> </li>
-		 <li>	<label>Specify Tags</label>
-		 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
+			<select class="select Ctopicddl" name="content_topic[]" > <option><fmt:message key="Specify.Topic"/>
+		</option> </select> </li>
+		 <li>	<label><fmt:message key="Specify.Tags"/></label>
+		 <input type="text" placeholder="<fmt:message key="Specify.Tags"/>" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
 			</li></ul>
 		</div> 
 
@@ -239,8 +238,8 @@ $(document).ready(function() { // On page load
 
 
 <div class="createcontentpanelhead" style="margin-top: 4px;"> 
-	<a href="#linkurl" class="btn pull-right" style="margin-left: 10px;" type="button" onClick="$('form#editcontentform').submit();"> Save </a> 
-	<a	href="/ziksana-web/zcourse/1/mycontent" class="btn pull-right saveup1" style="margin-left: 10px;"> Cancel </a>
+	<a href="#linkurl" class="btn pull-right" style="margin-left: 10px;" type="button" onClick="$('form#editcontentform').submit();"><fmt:message key="save"/>  </a> 
+	<a	href="/ziksana-web/zcourse/1/mycontent" class="btn pull-right saveup1" style="margin-left: 10px;"> <fmt:message key="profile.cancel"/> </a>
 	
 	<!--  <a href="#linkurl" class="btn pull-right saveup1" style="margin-left: 10px;"> Previous</a> -->
 <div class="clearfix"></div> 
