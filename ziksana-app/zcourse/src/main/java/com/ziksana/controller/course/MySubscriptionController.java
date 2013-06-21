@@ -48,7 +48,7 @@ public class MySubscriptionController {
 	ModelAndView MyCourse() {
 		LOGGER.info("Entering Class " + getClass() + " MyCourse()");
 
-		ModelAndView mv = new ModelAndView("courses/course_consumption");
+		ModelAndView mv = new ModelAndView("mastermycourseconsumption");
 
 		LOGGER.info("Exiting Class " + getClass() + " MyCourse(): ");
 

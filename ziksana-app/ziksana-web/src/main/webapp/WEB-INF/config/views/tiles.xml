@@ -215,6 +215,14 @@
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/mycourse_learner.jsp" />
 	</definition>
+	
+	
+	<!-- Metro My Course Consumption Learner -->
+	<definition name="mastermycourseconsumption" extends="ziksana-home-master">
+		<put-attribute name="master_title" value="My Course - Consumption" />
+		<put-attribute name="content"
+			value="/WEB-INF/screens/courses/course_consumption.jsp" />
+	</definition>
 
 
 	<!--Common Page layout JQuery 1.7.1 version -->
