@@ -186,7 +186,7 @@
 					
 						<!-- Questions -->
 					
-					<div id="questions_container" data-tabpane="questions1" style="display:none;">
+					<div id="questions" data-tabpane="questions1" style="display:none;">
 					<div class="column_title"><img src="${ms.staticResources}images/icons/viewquestions.png" style="margin-left:5px;"><span class="titleclass">Questions<br/></span>
 					</div>
 						
@@ -469,7 +469,7 @@ function showref()
 $("#table_of_contents_container").show();
 $("#notes_and_bookmarks_container").hide();
 $("#TOC").hide();
-$("#questions_container").hide();
+$("#questions").hide();
 }
 function shownotes()
 {
@@ -477,7 +477,7 @@ function shownotes()
 $("#table_of_contents_container").hide();
 $("#notes_and_bookmarks_container").show();
 $("#TOC").hide();
-$("#questions_container").hide();
+$("#questions").hide();
 }
 function showtoc()
 {
@@ -485,14 +485,14 @@ function showtoc()
 $("#TOC").show();
 	$("#table_of_contents_container").hide();
 	$("#notes_and_bookmarks_container").hide();
-	$("#questions_container").hide();
+	$("#questions").hide();
 
 }
 function showquestion()
 {
 $("#table_of_contents_container").hide();
 $("#notes_and_bookmarks_container").hide();
-$("#questions_container").show();
+$("#questions").show();
 $("#TOC").hide();
 
 }
