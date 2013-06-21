@@ -19,6 +19,16 @@ public class MediaServerURL {
 	private String staticFileServer;
 	
 	private String treeImagePath;
+	
+	private String staticResources;
+
+	public String getStaticResources() {
+		return staticResources;
+	}
+
+	public void setStaticResources(String staticResources) {
+		this.staticResources = staticResources;
+	}
 
 	public String getStaticFileServer() {
 		return staticFileServer;
