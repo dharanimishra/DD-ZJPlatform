@@ -15,7 +15,7 @@
 /* Splitbar styles; these are the default class names and required styles */
 .splitbarV {display:table-cell;background-image:url(img/panevc.gif);
  background-repeat:no-repeat;background-position:-6px -3px;
- width:4px; height:180px;
+ width:4px;height: 265px;
 line-height:0px;font-size:0px;border:1px solid #cbe1fb;
   background-color: #cbe1fb;cursor:pointer
 }
