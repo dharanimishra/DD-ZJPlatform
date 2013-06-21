@@ -1,4 +1,5 @@
 
+ 
 <!--Body Style sheet-->
 
 <link href="${ms.staticResources}css/ContentConsumption.css"
@@ -21,6 +22,9 @@
 <script type='text/javascript' src='${ms.staticResources}jwplayer/swfobject.js'></script>
 <script src="${ms.staticResources}js/custom/table/js/jquery-1.8.3.min.js"></script>
 
+<style>
+ 	footer{display:none}
+</style>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
 
 	<div class="Zikbreadcrumb f-l">
