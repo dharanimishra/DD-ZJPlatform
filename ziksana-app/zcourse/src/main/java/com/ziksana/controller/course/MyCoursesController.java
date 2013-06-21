@@ -300,11 +300,15 @@ public class MyCoursesController {
 		return modelView;
 	}
 
-	@RequestMapping(value = "1/activecourse", method = { RequestMethod.GET,
+	@RequestMapping(value = "1/activecourse/{courseId}", method = {
+			RequestMethod.GET,
+
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView activeCourse(
-			@RequestParam(value = "courseId", required = true) Integer courseId) {
+
+	@PathVariable Integer courseId) {
+
 		LOGGER.debug(" Entering Class " + getClass() + " activeCourse()");
 		ModelAndView modelView = new ModelAndView("mastermycourse");
 		Course course = new Course();

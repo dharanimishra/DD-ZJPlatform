@@ -254,7 +254,7 @@ function getDiv(courseObject) {
 			&& (screenshotPath != null || screenshotPath.trim() != "")) {
 		preview_path = staticFileServerPath + screenshotPath;
 	} else {
-		preview_path = '../../resources/images/preview/defaultcourse.png';
+		preview_path = "../../resources/images/preview/defaultcourse.png";
 	}
 
 	var totalDiv='';
@@ -327,13 +327,7 @@ function editCourse(courseId) {
 function activeCourse(courseId) {
 	confirm_delete = confirm('Are you sure you want to activate this course?');
 	if (confirm_delete == true) {
-		uri = '/ziksana-web/zcourse/1/activecourse';
-		var parameters = {
-			"courseId" : courseId
-		};
-		$.post(uri, parameters, function(data) {
-			
-		});
+		window.location.href = "/ziksana-web/zcourse/1/activecourse/"+courseId;	
 	}
 }
 function reviewCourse(courseId) {
