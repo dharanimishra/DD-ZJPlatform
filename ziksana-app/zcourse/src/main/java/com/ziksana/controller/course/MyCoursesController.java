@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.CourseStatus;
-import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONCourse;
 
 import com.ziksana.domain.institution.LearningProgram;
@@ -257,10 +256,11 @@ public class MyCoursesController {
 
 	}
 
-	@RequestMapping(value = "1/reviewcourse", method = {
-			RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "1/reviewcourse", method = { RequestMethod.GET,
+			RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView reviewCourse(@RequestParam(value = "courseId", required = true) Integer courseId) {
+	ModelAndView reviewCourse(
+			@RequestParam(value = "courseId", required = true) Integer courseId) {
 		LOGGER.debug(" Entering Class " + getClass() + " reviewCourse()");
 		ModelAndView modelView = new ModelAndView("mastermycourse");
 		Course course = new Course();
@@ -271,13 +271,11 @@ public class MyCoursesController {
 				course.setCourseStatusId(CourseStatus.valueOf(
 						"ACTIVE".toUpperCase()).getID());
 				LOGGER.info("CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
-						+ CourseStatus.valueOf(
-								"ACTIVE".toUpperCase()).getID());
+						+ CourseStatus.valueOf("ACTIVE".toUpperCase()).getID());
 			} catch (Exception e) {
 				course.setCourseStatusId(588);
 				LOGGER.error("Exception :CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
-						+ CourseStatus.valueOf(
-								"ACTIVE".toUpperCase()).getID());
+						+ CourseStatus.valueOf("ACTIVE".toUpperCase()).getID());
 			}
 
 			courseService.saveOrUpdateCourse(course);
@@ -302,10 +300,11 @@ public class MyCoursesController {
 		return modelView;
 	}
 
-	@RequestMapping(value = "1/activecourse", method = {
-			RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "1/activecourse", method = { RequestMethod.GET,
+			RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView activeCourse(@RequestParam(value = "courseId", required = true) Integer courseId) {
+	ModelAndView activeCourse(
+			@RequestParam(value = "courseId", required = true) Integer courseId) {
 		LOGGER.debug(" Entering Class " + getClass() + " activeCourse()");
 		ModelAndView modelView = new ModelAndView("mastermycourse");
 		Course course = new Course();
@@ -318,7 +317,6 @@ public class MyCoursesController {
 				LOGGER.info("CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
 						+ CourseStatus.valueOf("ACTIVE".toUpperCase()).getID());
 			} catch (Exception e) {
-				course.setCourseStatusId(589);
 				LOGGER.error("Exception :CourseStatus.valueOf(ACTIVE.toUpperCase()).getID()"
 						+ CourseStatus.valueOf("ACTIVE".toUpperCase()).getID());
 			}
@@ -344,7 +342,7 @@ public class MyCoursesController {
 		LOGGER.debug("Class " + getClass() + "Exiting activeCourse(): ");
 		return modelView;
 	}
-	
+
 	@RequestMapping(value = "1/activatecourse/{courseId}", method = {
 			RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
@@ -359,11 +357,12 @@ public class MyCoursesController {
 				course.setCourseStatusId(CourseStatus.valueOf(
 						"READY_FOR_RELEASE".toUpperCase()).getID());
 				LOGGER.info("CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
-						+ CourseStatus.valueOf("READY_FOR_RELEASE".toUpperCase()).getID());
+						+ CourseStatus.valueOf(
+								"READY_FOR_RELEASE".toUpperCase()).getID());
 			} catch (Exception e) {
-				course.setCourseStatusId(588);
 				LOGGER.error("Exception :CourseStatus.valueOf(READY_FOR_RELEASE.toUpperCase()).getID()"
-						+ CourseStatus.valueOf("READY_FOR_RELEASE".toUpperCase()).getID());
+						+ CourseStatus.valueOf(
+								"READY_FOR_RELEASE".toUpperCase()).getID());
 			}
 
 			courseService.saveOrUpdateCourse(course);
