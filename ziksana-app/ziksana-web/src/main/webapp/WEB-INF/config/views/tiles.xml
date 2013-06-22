@@ -342,6 +342,12 @@
 			value="/WEB-INF/screens/playbook/create.jsp" />
    </definition>
    
+       <definition name="playbook-extrapdfviewHtml" extends="playbook-layout">
+      <put-attribute name="page_title" value="Create playbook" />
+      		<put-attribute name="body"
+			value="/WEB-INF/screens/playbook/extrapdfviewHtml.jsp" />
+   </definition>
+   
 	<!-- Common Error Page -->
 	<definition name="error-page">
 		<put-attribute name="page_title" value="Error !!" />

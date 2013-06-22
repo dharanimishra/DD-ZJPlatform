@@ -106,7 +106,7 @@ background:#3e3f13;}
 }
 
 .coursedescription{
- display:block;margin-top:10px;page-break-after : always
+ display:block;margin-top:10px;
 }
 .detailswrrapper{padding :0px 30px;clear:both;text-align:justify;font-size:16px;min-height: 200px; }
 
@@ -162,8 +162,8 @@ font-weight: bold;}
 <div class="Clearfix"></div>
 <div class="coursetitlecontent" >
 <div class="coursetitle" ><a href="#cd">Course Description</a><label><a href="#cd">P1</a></label></div>
-<div class="coursetitle" ><a href="#md">Module Discription with Content Listing</a><label><a href="#md">P2</a></label></div>
-<div class="coursetitle" ><a href="#pd">Planner Details</a><label><a href="#pd">P3</a></label></div>
+<div class="coursetitle" ><a href="#md">Module Discription with Content Listing</a><label><a href="#md">P${coursModuleOnPage}</a></label></div>
+<div class="coursetitle" ><a href="#pd">Planner Details</a><label><a href="#pd">P${plannerOnPage}</a></label></div>
 </div>
 </div>
 </div>
@@ -184,7 +184,6 @@ font-weight: bold;}
   <b>Course Description</b>
    <p class="top"> ${course.description}</p>
    <div class="Clearfix"> </div>
-<div class="chapeterfotter"><label class="pageno">01</label></div>
 </div>
 
 <div class="coursedescription" id="md" style="min-height:500px"><b>Module Discription with Content Listing</b>
@@ -228,14 +227,12 @@ font-weight: bold;}
 
  </div>
 <div class="Clearfix"> </div>
-<div class="chapeterfotter"><label class="pageno">02</label></div>
 </div>
 <div class="coursedescription" id="pd"><b>Planner Details</b>
 <%@include file="viewPlanner.jsp"%>
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
 <div class="Clearfix"> </div>
-<div class="chapeterfotter"><label class="pageno">03</label></div>
 </div>
 </div>
 </body>

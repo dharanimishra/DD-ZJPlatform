@@ -5,11 +5,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -144,11 +148,13 @@ public class PlayBookController {
 		ModelAndView mv = new  ModelAndView("redirect:home");
 		 return mv;	
 	}
+	
 	@RequestMapping(value = "/unsecure/htmlView/{courseId}", method =RequestMethod.GET)
 	public ModelAndView htmlView(@PathVariable Integer courseId, HttpServletResponse response ){
 		ModelAndView modelView = new  ModelAndView("playbook-viewHtml");
 		System.out.println("mediaserver url " + url);
 		System.out.println("##############3playbook controller courseId" + courseId);
+
 		Course course = courseService.getCourseByCourseId(courseId);
 		System.out.println("##############course description" + course.getDescription());
 		System.out.println("##############course created by" + course.getCreatedBy());
@@ -159,8 +165,8 @@ public class PlayBookController {
 		//CourseLearningComponent clc =
 		//courseService.getCourseComponents(courseId)
 		List<NestTreeNode> treeNodeList = new ArrayList<NestTreeNode>();
-	
-		
+		Map<String, String>  pdfInfo = null;
+	    	
 		//Get Tree Datas
 		try {
 			
@@ -170,19 +176,7 @@ public class PlayBookController {
 			if(associateContentService.isModuleExist(courseId)){
 			List<NestTreeNode> nodeList = courseNestTreeService
 					.getCourseComponent(courseId);
-		
-			/*for (NestTreeNode node : nodeList) {
-				courseIdValue = node.getCourseId();
-				coursename = node.getCoursename();
-				modelView.addObject("courseIds", courseIdValue);
-				modelView.addObject("coursename", coursename);
-				break;
-			}*/
-			
-	
-			
-			
-			
+			 pdfInfo = getPDFInfo(nodeList, course);
 			
 			
 			}
@@ -214,6 +208,10 @@ public class PlayBookController {
 		//End
 		System.out.println("##############current loggedin user" + userName);
 		
+	//End
+    modelView.addObject("coursModuleOnPage", pdfInfo.get("coursModuleOnPage"));
+	modelView.addObject("plannerOnPage", pdfInfo.get("plannerOnPage"));
+		
 		modelView.addObject("member",member);
 		modelView.addObject("course",course);
 		modelView.addObject("mediaserver",url);
@@ -221,28 +219,53 @@ public class PlayBookController {
 		System.out.println("mediaserver url " + url);
 		 return modelView;
 	}
+    
+	@RequestMapping(value = "/unsecure/extraPDFHtml/{courseId}", method =RequestMethod.GET)
+	public ModelAndView extraPDFHtml(@PathVariable Integer courseId, HttpSession session){
+		ModelAndView modelView = new  ModelAndView("playbook-extrapdfviewHtml");
 
+		System.out.println("adfpdding view............. ");
+		Integer pgNumber= (Integer) session.getAttribute("pgNumber");
+		//Integer pgNumber= (Integer) RequestContextHolder.currentRequestAttributes().getAttribute("pgNumber", RequestAttributes.SCOPE_SESSION);
+		if(pgNumber==null){
+		  pgNumber = 0;	
+		}
+		pgNumber = pgNumber+1;
+		//RequestContextHolder.currentRequestAttributes().setAttribute("pgNumber", RequestAttributes.SCOPE_SESSION,pgNumber);
+		session.setAttribute("pgNumber",pgNumber);
+		modelView.addObject("pgNumber", pgNumber);
+		return modelView;
+	}
+	
 	@RequestMapping(value = "/unsecure/pdfviewHtml/{courseId}", method =RequestMethod.GET)
 	public ModelAndView pdfviewHtml(@PathVariable Integer courseId,@RequestParam String userName){
 		//String userName = (String) RequestContextHolder.currentRequestAttributes().getAttribute("userName", RequestAttributes.SCOPE_SESSION);
+		
+
+		
 		ModelAndView modelView = new  ModelAndView("playbook-pdfviewHtml");
 		Member member = memberService.getMemberByUser(userName);
 		Course course = courseService.getCourseByCourseId(courseId);
 		System.out.println("##############current loggedin user" + userName);
 		
 		List<NestTreeNode> treeNodeList = new ArrayList<NestTreeNode>();
-
+		Map<String, String>  pdfInfo = null;
 		
 		//Get Tree Datas
 		try {
-			
+
 		
 			 treeNodeList = courseNestTreeService
 						.getModuleComponents(courseId);
 			if(associateContentService.isModuleExist(courseId)){
 			List<NestTreeNode> nodeList = courseNestTreeService
 					.getCourseComponent(courseId);
-		
+		   
+			pdfInfo = getPDFInfo(nodeList, course);
+			
+	
+			
+			
 			/*for (NestTreeNode node : nodeList) {
 				courseIdValue = node.getCourseId();
 				coursename = node.getCoursename();
@@ -282,9 +305,10 @@ public class PlayBookController {
 			modelView.addObject("excelIcon", excelIcon);
 			modelView.addObject("folderClosed", folderClosed);
 			modelView.addObject("folderOpen", folderOpen);*/
-		
+			
 		//End
-		
+	    modelView.addObject("coursModuleOnPage", pdfInfo.get("coursModuleOnPage"));
+		modelView.addObject("plannerOnPage", pdfInfo.get("plannerOnPage"));
 		modelView.addObject("member",member);
 		modelView.addObject("course",course);
 		modelView.addObject("treeNodeList",treeNodeList);
@@ -293,4 +317,38 @@ public class PlayBookController {
 		 return modelView;
 	}
 	
+	public Map<String, String> getPDFInfo(List<NestTreeNode> nodeList,Course course)
+	{
+        int numberOfPages=1;//dfault is one page... Now calculate the number of pages and insert footer at the end of page..
+        int coursModuleOnPage=1;
+        int plannerOnPage=1;
+    	Map<String, String>  pdfInfo = new HashMap<String, String>();
+	    int contentLength = 0; 
+    	if(course.getDescription() !=null)
+    		contentLength = course.getDescription().length();
+    	
+    	if(contentLength>5000){
+    		coursModuleOnPage = 2;
+    	    numberOfPages =2;
+    	    pdfInfo.put("coursDescriptionFooter", "YES");
+    	}
+        
+	    int countNode =0;
+		for (NestTreeNode node : nodeList) {
+			countNode++;
+			if(node.getTitle()!=null)
+			  contentLength = node.getTitle().length();
+            if(node.getNodeDescription()!=null)	
+            	contentLength = node.getNodeDescription().length();	
+            if(countNode>3){
+            	numberOfPages++;
+            	countNode=0;
+            	pdfInfo.put("coursModuleFooterId",""+node.getId());
+            }
+		}
+		plannerOnPage=numberOfPages;
+		pdfInfo.put("plannerOnPage", ""+plannerOnPage);
+		pdfInfo.put("coursModuleOnPage", ""+coursModuleOnPage);
+		return pdfInfo;
+	}
 }

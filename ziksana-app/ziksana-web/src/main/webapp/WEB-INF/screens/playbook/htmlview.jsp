@@ -223,8 +223,8 @@ font-weight: bold;}
 <div class="Clearfix"></div>
 <div class="coursetitlecontent" >
 <div class="coursetitle" ><a href="#cd">Course Description</a><label><a href="#cd">P1</a></label></div>
-<div class="coursetitle" ><a href="#md">Module Discription with Content Listing</a><label><a href="#md">P2</a></label></div>
-<div class="coursetitle" ><a href="#pd">Planner Details</a><label><a href="#pd">P3</a></label></div>
+<div class="coursetitle" ><a href="#md">Module Discription with Content Listing</a><label><a href="#md">P${coursModuleOnPage}</a></label></div>
+<div class="coursetitle" ><a href="#pd">Planner Details</a><label><a href="#pd">P${plannerOnPage}</a></label></div>
 </div>
 </div>
 </div>
@@ -247,7 +247,9 @@ ${course.description}
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
 <div class="Clearfix"> </div>
-<div class="chapeterfotter"><label class="pageno">01</label></div>
+<c:if test="${coursDescriptionFooter=='YES' }">
+  <div class="chapeterfotter"><label class="pageno">01</label></div>
+</c:if>
 </div>
 <div class="coursedescription" id="md"><b>Module Discription with Content Listing</b>
 
@@ -283,7 +285,13 @@ ${course.description}
 		    <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
 		   </div>   
       </c:forEach>  
-     </c:if>	  
+     </c:if>
+   <c:if test=" ${coursModuleFooterId== node.id}">
+     <div class="Clearfix"> </div>
+     <div class="toplink"><a href="#ctc">Top</a></div>
+     <div class="Clearfix"> </div>
+     <div class="chapeterfotter"><label class="pageno"></label></div>
+  </c:if>	  
 </c:forEach> 
 
  
@@ -291,28 +299,21 @@ ${course.description}
 
  </div>
 
-<div class="Clearfix"> </div>
-<div class="toplink"><a href="#ctc">Top</a></div>
-<div class="Clearfix"> </div>
-<div class="chapeterfotter"><label class="pageno">02</label></div>
+
 </div>
-<div class="coursedescription" id="pd"><b>Planner Details</b>
-<p>
+<div class="coursedescription" id="pd" style="border:1px solid #000"><b>Planner Details</b>
 <%@include file="viewPlanner.jsp"%>
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
 <div class="Clearfix"> </div>
-<div class="chapeterfotter"><label class="pageno">03</label></div>
+<div class="chapeterfotter"><label class="pageno"></label></div>
 </div>
 </div>
-<<<<<<< HEAD
     <div class="Clearfix"> </div>                      
-      <div style="float:right;margin-right:20px;margin-top:20px;margin-bottom:20px"><a class="btn" href="/ziksana-web/zplaybook/unsecure/downloadPlayBook/${course.courseId }">Download PDF</a> <a onclick="activeCourse(${course.id});" class="btn">Complete Course</a></div>                        
-=======
+                         
     <div class="Clearfix"> </div>                              
->>>>>>> 19296dd613e287569fc4907f7bb2b95e3fc28ea1
     </div> <!--End of contentarea -->
-  
+ <div style="float:right;margin-right:20px; margin-top:20px; margin-bottom:20px"><a class="btn">Download PDF</a> 
+<a href="/ziksana-web/zcourse/1/activatecourse/${courseIds}" class="btn">Complete Course</a></div> 
 </div> <!--End of definestructureformcontainer -->  
-<div style="float:right;margin-right:20px; margin-top:20px; margin-bottom:20px"><a class="btn">Download PDF</a> 
-<a href="/ziksana-web/zcourse/1/activatecourse/${courseIds}" class="btn">Complete Course</a></div>
+
