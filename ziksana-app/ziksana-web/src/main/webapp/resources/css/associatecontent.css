@@ -325,32 +325,6 @@ color:#fff;
 
 }
 
-.isotopbutton
-{
-float:right; 
-width:450px; 
-margin-top:-30px; 
-background:none; 
-border:none;
-}
-
-.isotophead
-{
-	padding:10px;
-	height:40px;
-	background-color:#00F;
-}
-
-.isotoplinks a
-{
-	color:#fff;
-	font-size:16px;
-}
-
-.isotopbody img
-{
-	padding:5px;
-}
 
 .crtnew
 {
@@ -425,22 +399,7 @@ text-decoration:line-through;
 
 
 
-#ProfileName
-{	
-font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
-color: #6bbde8;
-font-weight: 200;
-font-size: 13pt;
-letter-spacing: 0.01em;
-margin-top: 26px;
-margin-left: 10px;
-}
 
-.page-title
-{
-font-size: 13px;
-margin-top: 7px;
-}
 
 .btn
 {
@@ -467,51 +426,9 @@ color:#099;
 {
 }
 
-.Profile
-{
-margin-top:10px;
-height:55px;
-}	
+ 	
 
-.Ziklogo
-{
-height:100px;	
-}
-
-.Accounthead
-{
-font-family: 'Segoe UI Light', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
-font-weight: 200;
-font-size: 10pt;
-letter-spacing: 0.01em;	
-}
-
-#AccountSetting
-{
-font-family: segoeui;
-color: #fff;
-font-size: 14px;
-margin-top:24px;
-margin-left:10px;
-width:150px;
-background-color:#73ab3e;
-padding:6px;	
-text-align:center;
-border-radius:4px;
-margin-right: 10px;
-}
-
-.Profilepic
-{
-vertical-align:sub;	
-}
-
-.Dropdown
-{
-vertical-align:middle;
-margin-top:-2px;	
-}
-
+ 
 .ProfileRibbon
 {
 margin-top: -20px;
