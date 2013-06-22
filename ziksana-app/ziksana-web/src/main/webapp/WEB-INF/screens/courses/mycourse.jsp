@@ -182,7 +182,7 @@ $(document).ready(function(){
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
 		
 			</div>
-			<div id="noCourseFound" style="margin: auto; text-align: center; color:#000; font-weight: bold; font-size: 15px; padding: 20px;">						
+			<div id="noCourseFound" style="margin: auto;position:relative;top:-134px; text-align: center; color:#000; font-weight: bold; font-size: 15px; padding: 20px;">						
 			</div>
 			<div class="Clearfix"></div>
 			<div id="pageNumbers" class="paginationbutton f-r"
