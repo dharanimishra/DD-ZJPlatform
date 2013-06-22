@@ -25,7 +25,6 @@ import com.ziksana.service.security.AuthenticationService;
 import com.ziksana.service.security.MediaService;
 import com.ziksana.service.security.MemberService;
 import com.ziksana.service.security.ProfileService;
-import com.ziksana.service.security.impl.EncryptString;
 
 @Controller
 public class LoginController {
@@ -71,8 +70,6 @@ public class LoginController {
 					HttpSession session = request.getSession(true);
 					boolean userAuthenticated = false;
 					logger.debug(" going to auth service");
-					System.out.println("Password ==>"+password);
-					System.out.println("Password Encryption ==>"+EncryptString.byteArrayToHexString(EncryptString.computeHash(password)));
 					
 					if(!memberService.isUserNameExists(username)){
 						
