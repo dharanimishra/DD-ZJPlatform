@@ -1,0 +1,298 @@
+
+		
+			
+	a.vplayer:link { color: gray }
+	a.vplayer:visited { color: white;  }
+	a.vplayer:hover { color: green }
+	a.vplayer { text-decoration:none }
+	a.vplayer:active { color: black }
+		a.note:before{content: url(icons/note_16.png); vertical-align: middle; margin-right: .25em;}
+		.mainbar{
+		opacity:0.8;
+		position:absolute; 
+		width:80px;
+		height: 265px;
+		left:0px; 
+		top:0px; 
+		z-index:990;
+		background: #000;
+		border-radius: 0 0px 5px 0;
+		box-shadow: 0 0 8px black;
+		padding: .5em;
+		text-align:left;
+	 }
+	 
+	 .sidebar{
+	 	text-align:left;
+		opacity:0.7;
+		position:absolute; 
+		width:80px;
+		left:0px; 
+		top:0px; 
+		z-index:990;
+		background: #000;
+		border-radius: 0 0px 0px 5px;
+		box-shadow: 0 0 8px black;
+		padding: .2em;
+	 }
+	 
+	.iconbar{
+	opacity:0.9;
+		position:absolute; 
+		left:300px; 
+		top:0px;
+		height:40px;
+		width: 40px
+		z-index:990;
+		background: #000;
+		border-radius: 0px 0px 0px 0px;
+		box-shadow: 0 0 4px black;
+	 }
+
+	 
+	 .extensionbar{
+		opacity:0.6;
+		text-align:left;
+		position:absolute; 
+		left:91px; 
+		top:2px; 
+		width: 240px; 
+		height: 272px;
+		z-index:990;
+		background: #000;
+		border-radius: 0 5px 5px 0;
+	 }
+	.chatbox_title {
+	  padding: 0.1em;
+	  padding-bottom:0px;
+	  padding-left:0.5em;
+	  margin-left:-0.2em;
+	  padding-top:0.5em;
+	  width: 243px;
+	  z-index: 990;
+	  background: #555;
+	  text-align:left;
+	}
+	.chatbox_options {
+	  opacity: 0.5;
+	  text-align:left;
+	  padding: 0.1em;
+	  padding-top:0.5em;
+	  width: 243px;
+	  z-index: 990;
+	  border-bottom:1px solid gray;
+	}
+	
+		
+	.chatbox_title{ font-size: 18px; color: white; border-bottom: 4px solid silver; display: inline-block; background: silver;}
+	.chatbox_user_video { color: white; padding: .25em; border-bottom: 1px solid #222; text-align:left; }
+#tabs_container {
+	display: table;
+	font-family: verdana, arial, sans-serif;
+	font-size: 12px;
+}
+
+#tabs_container ul {
+	display: table-cell;
+	margin: 0;
+}
+
+#tabs-titles {
+	padding: 0;
+}
+
+#tabs-titles li {
+	padding: .5em;
+	cursor: pointer;
+	background: #555;
+	color: white;
+	list-style: none;
+}
+
+#tabs-titles li.current {
+	font-weight: bolder;
+	background: #000000;
+	border-radius: 3px 0 0 3px;
+	color: #222;
+}
+
+#tabs-titles img {
+	max-height: 50px;
+}
+
+#tabs-contents {
+	background: #F2F2F2;
+	padding: 0;
+	vertical-align: top;
+	max-width: 250px;
+	border-radius: 0 3px 3px 3px;
+}
+
+#tabs-contents div.content {
+	min-width: 200px;
+	padding: .5em;
+}
+
+#tabs-contents div.content a {
+	display: block;
+	padding: .25em;
+	text-decoration: none;
+}
+
+
+a[data-iconprefix="note"] {
+    background: url("icons/note_16.png") no-repeat scroll left center transparent;
+    padding-left: 20px !important;
+    vertical-align: middle;
+}
+a[data-iconprefix="question"] {
+    background: url("icons/question_16.png") no-repeat scroll left center transparent;
+    padding-left: 20px !important;
+    vertical-align: middle;
+}
+
+a[data-iconprefix="star"] {
+    background: url("icons/star_16.png") no-repeat scroll left center transparent;
+    padding-left: 20px !important;
+    vertical-align: middle;
+}
+
+
+a[data-iconprefix="link"] {
+    background: url("icons/link_16.png") no-repeat scroll left center transparent;
+    padding-left: 20px !important;
+    vertical-align: middle;
+}
+
+
+a[data-iconprefix="pdf"] {
+    background: url("icons/pdf_16.png") no-repeat scroll left center transparent;
+    padding-left: 20px !important;
+    vertical-align: middle;
+}
+
+
+a[data-iconprefix="word"] {
+    background: url("icons/word_16.png") no-repeat scroll left center transparent;
+    padding-left: 20px !important;
+    vertical-align: middle;
+}
+
+a[data-iconprefix="powerpoint"] {
+    background: url("icons/powerpoint_16.png") no-repeat scroll left center transparent;
+    padding-left: 20px !important;
+    vertical-align: middle;
+}
+
+#tabs-contents li {
+	display: none;
+	list-style: none;
+}
+
+#tabs-contents li:first-child {
+	display: block;
+}
+
+
+
+.chatbox_user {
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 0 22px black inset;
+  color: white;
+  margin-bottom: 0.25em;
+  padding: 0.5em;
+  text-align: left;
+} 
+.chatbox_user:hover {
+  box-shadow: 0 0 22px #2277BB inset;
+}
+.chatbox_user img {vertical-align: middle; margin-right: .5em; border-radius: 3px; }
+
+#video_actions {
+background: #214255;
+text-align:center;
+  display: block;
+  width: 640px;
+  height:60px;
+}
+#video_actions img { margin-right: 2em; padding:5px;}
+#content_utilities_container {
+background: #2b4954;
+  text-align: left;
+  width: 240px;
+  max-width: 230px;
+}
+.utilites_title {
+  background: #137aa3;
+  height:50px;
+  color: white;
+  display: block;
+  width:230px;
+  
+  text-align: left;
+ 
+}
+.titleclass{
+ clear:both;
+  font-size: 16px;
+  font-weight: bold;
+ margin-left:10px;
+ margin-bottom:20px;
+  
+  
+  
+}
+
+#content_container {
+  background-color: #168fbe;
+  display: table;
+  height: 445px;
+  margin: 0 auto;
+  width: 100%;
+  color: #ffffff;
+}
+#content_container > div{
+	display:table-cell;
+	vertical-align: top;
+	
+	
+}
+span.column_title {
+  background-color: #009ad8;
+  width:100%;
+  color: white;
+  display: block;
+  
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 1em;
+  padding: 0.5em 0;
+  text-align: left;
+  text-shadow: none;
+}
+.column_title {
+  background-color: #009ad8;
+  width:100%;
+  
+  
+ 
+  margin-bottom: 1em;
+  padding: 0.5em 0;
+  text-align: left;
+  
+}
+#contentpanel
+{
+background: #2b4954 url(../../images/home/body-bg.png);
+margin-left: 23px;
+    width: 98%;
+
+}
+#tree_container
+{
+background:#168fbe;
+height:385px; 
+overflow:auto;
+border-bottom:1px solid #fff;
+  margin-left: 6px;
+}

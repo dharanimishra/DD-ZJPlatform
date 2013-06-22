@@ -58,7 +58,7 @@ public class AuthenticationFilter implements Filter {
 			if (!url.endsWith(LOGIN_URL)) {
 					if(shouldExclude(servletRequest)){
 						
-						filterChain.doFilter(servletRequest, servletResponse);
+						//filterChain.doFilter(servletRequest, servletResponse);
 						
 					}else {
 						

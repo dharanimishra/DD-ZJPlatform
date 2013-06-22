@@ -254,12 +254,12 @@ function getDiv(courseObject) {
 			&& (screenshotPath != null || screenshotPath.trim() != "")) {
 		preview_path = staticFileServerPath + screenshotPath;
 	} else {
-		preview_path = '../../resources/images/preview/defaultcourse.png';
+		preview_path = "../../resources/images/preview/defaultcourse.png";
 	}
 
 	var totalDiv='';
 	if('ACTIVE' ==courseStatus ){
-		totalDiv='<a onclick="reviewCourse('
+		totalDiv='<a onclick="reviewPlayBook('
 		+ courseObject.id
 		+ ');" title="Review playbook" class="pull-right"><img class="iconcc" src="../../resources/images/content/reviewplaybook.svg" style="height:35px;"/></a>';
 	} 
@@ -324,20 +324,12 @@ function editCourse(courseId) {
 	}
 }
 
-
-function ReviewPlaybook(courseId) {
+function activeCourse(courseId) {
+	confirm_delete = confirm('Are you sure you want to activate this course?');
 	if (confirm_delete == true) {
-		uri = '/ziksana-web/zcourse/1/reviewplaybook';
-		confirm_delete = confirm('Are you sure to review playbook?');
-		var parameters = {
-			"courseId" : courseId
-		};
-		$.post(uri, parameters, function(data) {
-			
-		});
+		window.location.href = "/ziksana-web/zcourse/1/activecourse/"+courseId;	
 	}
 }
-
 function reviewCourse(courseId) {
 	confirm_delete = confirm('Are you sure to review?');
 	if (confirm_delete == true) {

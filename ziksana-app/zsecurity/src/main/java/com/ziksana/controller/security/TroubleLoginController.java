@@ -38,6 +38,8 @@ public class TroubleLoginController {
 	private static final String SQ2_VERIFICATION_PAGE = "Sec Ques 2 Verfication Page";
 	private static final String EMAIL_VERIFICATION_PAGE = "Email Verfication Page";
 	
+	private static final String RESETMAIL_SUCCESS = "Mail Send Successful";
+	
 	@Autowired
 	private TroubleLoginService troubleLoginService;
 	
@@ -69,6 +71,18 @@ public class TroubleLoginController {
 		return modelAndView;
 		
 	}
+	
+	
+	@RequestMapping(value = "/0/success", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView emailSendSuccess(){
+		ModelAndView modelAndView = new ModelAndView("masterresetpassword");
+	
+		modelAndView.addObject("resetEmailSuccess", RESETMAIL_SUCCESS);
+		
+		
+		return modelAndView;
+	}
+	
 	@RequestMapping(value = "/0/isuseridexists/{userId}", method = RequestMethod.GET)
 	public @ResponseBody String isUserIdExists(@PathVariable String userId) {
 		String pageResponse = null;

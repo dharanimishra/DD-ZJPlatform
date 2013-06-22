@@ -115,7 +115,7 @@
 	text-align: center;
 	text-decoration: none !important;
 	text-shadow: none;
-	top: 121px;
+	top: 111px;
 	width: 92px;
 }
 
@@ -346,11 +346,11 @@
 						key="Associate.Image" /></label>
 
 				<div
-					style="width: 122px; height: 105px; float: left; padding-top: 15px">
+					style="width: 122px; height: 105px; float: left; margin-bottom:5px;">
 					<img id="course_thumbnail_image"
 						src="${staticFileServer}resources/images/preview/defaultcourse.png"
-						align="left" /> <input readonly="readonly" type="hidden"
-						id="Cimageupl" style="margin-left: 20px;" />
+						align="left"  style="width: 122px; height: 105px;"/> <input readonly="readonly" type="hidden"
+						id="Cimageupl" style="margin-left: 20px;width: 122px; height: 105px;" />
 				</div>
 
 				<div id="message"></div>

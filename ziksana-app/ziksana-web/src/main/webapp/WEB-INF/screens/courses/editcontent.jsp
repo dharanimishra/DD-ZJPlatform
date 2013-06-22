@@ -78,16 +78,20 @@
 	  <div class="uploadphoto pull-left" style="width: 150px;padding: 10px;">
 	  <% 
 	  
-	 	 String imagePath="../../resources/images/preview/image.png";
+	 	 	String imagePath="../../resources/images/preview/image.png";
 			if ("VIDEO".equalsIgnoreCase(ContentType.VIDEO.getName())){
 				imagePath="../../resources/images/preview/video.png";
-			} else if("AUDIO".equalsIgnoreCase(ContentType.AUDIO.getName())){
+			} 
+			if("AUDIO".equalsIgnoreCase(ContentType.AUDIO.getName())){
 				imagePath="../../resources/images/preview/audio.png";
-			} else if("PDF".equalsIgnoreCase(ContentType.PDF.getName())){
+			}
+			if("PDF".equalsIgnoreCase(ContentType.PDF.getName())){
 				imagePath="../../resources/images/preview/pdf.png";
-			}else if("PPT".equalsIgnoreCase(ContentType.PPT.getName())){
+			}
+			if("PPT".equalsIgnoreCase(ContentType.PPT.getName())){
 				imagePath="../../resources/images/preview/ppt.png";
-			} else if("DOC".equalsIgnoreCase(ContentType.DOC.getName())){
+			}
+			if("DOC".equalsIgnoreCase(ContentType.DOC.getName())){
 				imagePath="../../resources/images/preview/doc.png";
 			}
 	  %>

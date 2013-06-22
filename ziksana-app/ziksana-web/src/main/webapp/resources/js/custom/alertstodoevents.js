@@ -140,8 +140,10 @@ function get_and_populate_announcements(val){
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
-					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
-					announcement_all+="<div class='Clearfix'> </div>";
+						if($(this).find("description").text() !=null && ($(this).find("description").text()).length > 70){
+							announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a>";
+						}
+					announcement_all+="</div><div class='Clearfix'> </div>";
 					
 				});
 				
@@ -214,8 +216,10 @@ function get_and_populate_universityannouncements(val){
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
-					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
-					announcement_all+="<div class='Clearfix'> </div>";
+					if($(this).find("description").text() !=null && ($(this).find("description").text()).length > 70){
+						announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a>";
+					}
+					announcement_all+="</div><div class='Clearfix'> </div>";
 					
 				});
 				
@@ -275,8 +279,10 @@ function get_and_populate_departmentannouncements(val){
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
-					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
-					announcement_all+="<div class='Clearfix'> </div>";
+					if($(this).find("description").text() !=null && ($(this).find("description").text()).length > 70){
+						announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a>";
+					}
+					announcement_all+="</div><div class='Clearfix'> </div>";
 					
 				});
 				
@@ -337,8 +343,10 @@ function get_and_populate_courseannouncements(val){
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
-					announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a></div>";
-					announcement_all+="<div class='Clearfix'> </div>";
+					if($(this).find("description").text() !=null && ($(this).find("description").text()).length > 70){
+						announcement_all+="<a class='accordion-toggle pull-right' data-toggle='collapse' data-parent='#accordion2' onclick='toggleSeemore($(this));' style='color:#fff'>Read More</a>";
+					}
+					announcement_all+="</div><div class='Clearfix'> </div>";
 					
 				});
 				

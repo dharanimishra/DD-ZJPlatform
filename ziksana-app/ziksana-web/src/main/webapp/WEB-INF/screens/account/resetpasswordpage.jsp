@@ -245,7 +245,23 @@
 			   
      	
      	</c:if>
-<!-- Retrive UserId -->
+     	 <c:if test="${resetPasswordSuccess == 'Password Reset Successful Page'}">
+	     	 <div class="resetpassword" style="text-align:center;height:190px">
+	     	 		<h2 style="color:green;margin:auto;font-size:14pt;font-weight: 600;">Password Reset Successful</h2>
+	     	 		<br/>
+	     	 		<span>Please Login with your new Password</span><br/><br/>
+	     	 		<a class="btn" href="/ziksana-web/login">Login</a>
+	     	 </div>
+     	 </c:if>
+     	  <c:if test="${resetEmailSuccess == 'Mail Send Successful'}">
+	     	 <div class="resetpassword" style="text-align:center;height:190px">
+	     	 		<h2 style="color:green;margin:auto;font-size:14pt;font-weight: 600;">Your UserId send Successful</h2>
+	     	 		<br/>
+	     	 		<span>Please Login with your credentials</span><br/><br/>
+	     	 		<a class="btn" href="/ziksana-web/login">Login</a>
+	     	 </div>
+     	 </c:if>
+<!--  -->
   <c:if test="${emailVerfication == 'Email Verfication Page'}">
 		   <div class="frmforgotpass">
 		  
@@ -545,11 +561,12 @@ function checkpass()
 			        , function( data )
 			        {
 			        	if(data == 'Password reset is successful'){
-			        		
+			        		 window.location.href ="/ziksana-web/unsecure/0/passwordresetsuccess" ;
+			        		/* 
 			        		$('#passwordResponse').html("<fmt:message key="password.successfull.please"/><a href='/ziksana-web/secure/logout'> <fmt:message key="login.button"/></a>")
 			        	$('#passwordFailResponse').html("");
 			        		$('#result1').html("");
-			        		$('#result').html("")
+			        		$('#result').html("") */
 			        		
 						}else{
 							$('#passwordFailResponse').html(data);
@@ -599,13 +616,13 @@ function validateEmailId(){
 		        {
 		        	if(data == 'Success'){
 		        		
-		        		
-		        		confirm_alert = $('#successEmailResponse').html('<fmt:message key="userid.sent.email"/><a href="/ziksana-web/secure/logout"> <fmt:message key="login.button"/></a>');
+		        		window.location.href = "/ziksana-web/unsecure/0/success";
+		        		/* confirm_alert = $('#successEmailResponse').html('<fmt:message key="userid.sent.email"/><a href="/ziksana-web/secure/logout"> <fmt:message key="login.button"/></a>');
 						if(confirm_alert == true){
 							window.location.href = "/ziksana-web/secure/logout";
 						}else{
 						
-						}
+						} */
 		        		
 					}else{
 						$('#errorEmailResponse').html('<fmt:message key="userid.email.error"/>');

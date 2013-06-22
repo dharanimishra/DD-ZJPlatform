@@ -67,7 +67,12 @@
 	src="${staticFileServer}resources/js/ziksana/associate-content/associate-content.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
-	
+	<script>
+$(document).ready(function() { // On page load
+  $("#navcourse").addClass("active");  
+ 
+});
+</script>
 <script>
 $(document).ready(function(){
         $('#content_type_filter li').click(function () {
@@ -291,7 +296,7 @@ $(document).ready(function(){
 	</ul>
 
 </div>
-<div id="formcontainer">
+<div id="formcontainer" style="min-height: 410px;">
 
 	<div class="page-header"
 		style="padding-left: 0px !important; margin-bottom: 0px !important;">

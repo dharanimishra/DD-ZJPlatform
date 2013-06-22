@@ -100,3 +100,7 @@ function refreshTree(){
 	parent.document.location.reload(true);
 	
 }
+
+function ff_in_progress(){
+	 alert("Work in progress");
+}
