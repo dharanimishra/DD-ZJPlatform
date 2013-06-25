@@ -11,12 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
+import com.ziksana.domain.course.ContentDecorationType;
+import com.ziksana.domain.course.ContentStatus;
+import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
 import com.ziksana.security.util.SecurityTokenUtil;
 import com.ziksana.service.course.EnrichContentService;
@@ -79,6 +84,77 @@ public class EnrichContentController {
 		return modelView;
 	}
 
+	
+	@RequestMapping(value = "1/enrich", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	void createContent(
+			@RequestParam(value = "previousLearningContentId", required = true) Integer previousLearningContentId,
+			@RequestParam(value = "learningComponentId", required = true) Integer learningComponentId,
+			@RequestParam(value = "contentPath", required = true) String contentPath,
+			@RequestParam(value = "decorationTypeName", required = true) String decorationTypes,
+			@RequestParam(value = "thumbnailPath", required = true) String thumbnailPath,
+			@RequestParam(value = "contentType", required = true) String contentType,
+			@RequestParam(value = "noOfThumbnails", required = true) Integer noOfThumbnails) {
+
+
+		try {
+			MemberPersona creator = new MemberPersona();
+			creator.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
+					.getToken().getMemberPersonaId().getStorageID()));
+
+			LearningContent previousLearningContent = enrichContentService.getLearningContent(previousLearningContentId);
+				LearningContent learningContent = new LearningContent();
+				learningContent.setAuthoringMember(creator);
+				learningContent.setContentName(previousLearningContent.getContentName());
+				learningContent.setContentPath(contentPath);
+				//TODO need to pass the correct value here
+				learningContent.setStatusId(ContentStatus.UNDER_CONSTRUCTION.getID());
+				learningContent.setActive(true);
+				ContentType contentTypeObject = ContentType.getValueOf(contentType.toUpperCase());
+				learningContent.setContentTypeId(contentTypeObject.getID());
+				learningContent.setContentType(contentTypeObject);
+				learningContent.setThumbnailPicturePath(thumbnailPath);
+				learningContent.setNumberOfThumbnails(noOfThumbnails);
+				learningContent.setRightsOwningMember(creator);
+				learningContent.setLinkedLearningContent(previousLearningContent);
+				learningContent.setContentFormat(previousLearningContent.getContentFormat());
+				learningContent.setContentFormatId(previousLearningContent.getContentFormatId());
+				learningContent.setContentDescription(previousLearningContent.getContentDescription());
+				learningContent.setScreenshotPath(previousLearningContent.getScreenshotPath());
+				enrichContentService.createLearningContent(learningContent, 
+						getDecorationTypeList(decorationTypes), creator, 
+						learningComponentId, previousLearningContent);
+				
+				LOGGER.debug("RecordContentController.createContent() new learning content created for " + decorationTypes);
+		} catch (ZiksanaException  exception) {
+			LOGGER.error(exception.getMessage(), exception);	
+		}
+	}
+	
+	private List<ContentDecorationType> getDecorationTypeList(String decorationTypesAsString){
+		List<ContentDecorationType> decorationTypeList = new ArrayList<ContentDecorationType>();
+		if(decorationTypesAsString != null && !"".equals(decorationTypesAsString.trim())){
+			String[] types = decorationTypesAsString.split(",");
+			for (String decorationType : types) {
+				if(decorationType != null && !"".equals(decorationType.trim())){
+					decorationTypeList.add(ContentDecorationType.getValueOf(decorationType.toUpperCase()));
+				}
+				else{
+					LOGGER.debug("RecordContentController.getDecorationTypeList() wrong value received for decoration type");
+				}
+			}
+		}
+		else{
+			LOGGER.error("The decoration type is required to save the content");
+			//for now putting it as recorded but this is not full proof
+			//decorationTypeList.add(ContentDecorationType.getValueOf("Annotated".toUpperCase()));
+			decorationTypeList.add(ContentDecorationType.getValueOf("Recorded".toUpperCase()));
+		}
+		return decorationTypeList;
+	}
+	
+	
 	@RequestMapping(value = "/1/enricher", method = RequestMethod.GET)
 	public @ResponseBody
 	ModelAndView annotateContent() {

@@ -12,19 +12,18 @@ var learningContentObject = parent.getLearningContentObject(contentId);
 
 function ff_get_content_key()
 {
-	originalContentPath = learningContentObject.contentURL;
-	
+	if("" == originalContentPath.trim()){
+		originalContentPath = learningContentObject.contentURL;
+	}
 	//TODO delete later for testing only
 	//var testVar = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
-	//jsonObject = parent.getJsonObject(testVar);
-	//console.log("got the json object " + jsonObject.Uploaded);
-	//createContent();
 	//console.log(contentId + "     originalContentPath ---------->>>>> " + originalContentPath);
-	return originalContentPath;
+	return originalContentPath;  
 }
 
 function ff_set_response(annotationResponse)
 {
+	//alert("Hello - annotationResponse ----->>>>> " + annotationResponse);
 	//console.log("annotationResponse " + annotationResponse);
 	//TODO delete later for testing only
 	//annotationResponse = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
@@ -32,7 +31,9 @@ function ff_set_response(annotationResponse)
 	jsonObject = parent.getJsonObject(annotationResponse);
 	if(jsonObject.ContentKey != originalContentPath){
 		//console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		originalContentPath = jsonObject.ContentKey;
 		createContent();
+		//alert(originalContentPath + "   i got it " + ff_get_content_key());
 	}
 	//TODO delete later
 	else{

@@ -17,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.ContentDecorationType;
+import com.ziksana.domain.course.ContentFormat;
 import com.ziksana.domain.course.ContentStatus;
+import com.ziksana.domain.course.ContentType;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.domain.member.MemberPersona;
@@ -108,14 +110,24 @@ public class RecordContentController {
 				//TODO need to pass the correct value here
 				learningContent.setStatusId(ContentStatus.UNDER_CONSTRUCTION.getID());
 				learningContent.setActive(true);
-				learningContent.setContentTypeId(previousLearningContent.getContentTypeId());
-				learningContent.setContentType(previousLearningContent.getContentType());
+				if(isRecordingComplete(decorationTypes)){
+					ContentType contentType = ContentType.getValueOf("ENHANCED_VIDEO");
+					learningContent.setContentTypeId(contentType.getID());
+					learningContent.setContentType(contentType);
+					ContentFormat contentFormat = ContentFormat.getValueOf("VIDEO"); 
+					learningContent.setContentFormat(contentFormat);
+					learningContent.setContentFormatId(contentFormat.getID());
+				}
+				else{
+					learningContent.setContentTypeId(previousLearningContent.getContentTypeId());
+					learningContent.setContentType(previousLearningContent.getContentType());
+					learningContent.setContentFormat(previousLearningContent.getContentFormat());
+					learningContent.setContentFormatId(previousLearningContent.getContentFormatId());
+				}
 				learningContent.setThumbnailPicturePath(thumbnailPath);
 				learningContent.setNumberOfThumbnails(noOfThumbnails);
 				learningContent.setRightsOwningMember(creator);
 				learningContent.setLinkedLearningContent(previousLearningContent);
-				learningContent.setContentFormat(previousLearningContent.getContentFormat());
-				learningContent.setContentFormatId(previousLearningContent.getContentFormatId());
 				learningContent.setContentDescription(previousLearningContent.getContentDescription());
 				learningContent.setScreenshotPath(previousLearningContent.getScreenshotPath());
 				enrichContentService.createLearningContent(learningContent, 
@@ -126,6 +138,18 @@ public class RecordContentController {
 		} catch (ZiksanaException  exception) {
 			LOGGER.error(exception.getMessage(), exception);	
 		}
+	}
+	
+	private boolean isRecordingComplete(String decorationTypesAsString){
+		List<ContentDecorationType> contentDecorationTypes = getDecorationTypeList(decorationTypesAsString);
+		boolean isRecordingComplete = false;
+		for (ContentDecorationType decorationType : contentDecorationTypes) {
+			if("RECORDED".equals(decorationType.getName().toUpperCase())){
+				isRecordingComplete = true;
+				break;
+			}
+		}
+		return isRecordingComplete;
 	}
 	
 	private List<ContentDecorationType> getDecorationTypeList(String decorationTypesAsString){

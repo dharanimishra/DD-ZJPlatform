@@ -13,7 +13,7 @@ var learningContentObject = parent.getLearningContentObject(contentId);
 function ff_get_content_key()
 {
 	originalContentPath = learningContentObject.contentURL;
-	console.log("originalContentPath ---->>>>>>>  " + originalContentPath);
+	//console.log("originalContentPath ---->>>>>>>  " + originalContentPath);
 	var uri = "http://54.243.235.88/zikload-xml/uploads/video/" + originalContentPath + "/" + originalContentPath +".mp4";
 	return uri;
 }
@@ -21,27 +21,26 @@ function ff_get_content_key()
 function ff_set_response(recordingResponse)
 {
 	console.log("recording Response is " + recordingResponse);
-/*
 	jsonObject = parent.getJsonObject(recordingResponse);
 	console.log(jsonObject.ContentKey + "<<<<<<<<<<<<<<<<<<<<<<<< ------------- >>>>>>>>>>>>>>>>>   "+ originalContentPath);
 	if(jsonObject.ContentKey != originalContentPath){
-		console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
-		createContent();
+		//console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		//createContent();
 	}
 	//TODO delete later
 	else{
-		console.log("Doing nothing old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		//console.log("Doing nothing old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
 	}
-*/	
 }
 
 function createContent(){
 	
-	var uri = '/ziksana-web/zcourse/1/record';
+	var uri = '/ziksana-web/zcourse/1/enrich';
 	console.log("came here jsonObject.NumberOfThumbnails " + jsonObject.NumberOfThumbnails);
 	console.log("the values are " + jsonObject.ThumbnailPicturePath + " " + jsonObject.Decoration + " " + jsonObject.ContentKey);
 	var parameters = {
 		"contentPath" : jsonObject.ContentKey,
+		"contentType" : jsonObject.ContentType,
 		"decorationTypeName" : jsonObject.Decoration,
 		"thumbnailPath" : jsonObject.ThumbnailPicturePath,
 		"noOfThumbnails" : jsonObject.NumberOfThumbnails,

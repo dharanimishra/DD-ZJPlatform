@@ -12,24 +12,28 @@ var learningContentObject = parent.getLearningContentObject(contentId);
 
 function ff_get_content_key()
 {
-	originalContentPath = learningContentObject.contentURL;
-	console.log("originalContentPath " + originalContentPath);
+	if("" == originalContentPath.trim()){
+		originalContentPath = learningContentObject.contentURL;
+	}
+	//console.log("originalContentPath " + originalContentPath);
 	return originalContentPath;
 }
 
 function ff_set_response(recordingResponse)
 {
-	console.log("recording Response is " + recordingResponse);
+	//console.log("recording Response is " + recordingResponse);
 
 	jsonObject = parent.getJsonObject(recordingResponse);
 	console.log(jsonObject.ContentKey + "<<<<<<<<<<<<<<<<<<<<<<<< ------------- >>>>>>>>>>>>>>>>>   "+ originalContentPath);
 	if(jsonObject.ContentKey != originalContentPath){
 		console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		originalContentPath = jsonObject.ContentKey;
 		createContent();
+		//console.log("ff_get_content_key() ===============  " + ff_get_content_key());
 	}
 	//TODO delete later
 	else{
-		console.log("Doing nothing old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		//console.log("Doing nothing old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
 	}
 	
 }
@@ -48,7 +52,7 @@ function createContent(){
 		"previousLearningContentId" : contentId
 	};
 	//console.log("delete content course id is  " + CourseId);
-	console.log("parameters.length " + parameters.length);
+	//console.log("parameters.length " + parameters.length);
 	
 	//return;
 	$.post(uri, parameters, function(data) {
@@ -63,7 +67,7 @@ function createContent(){
 							+ "Failed" + '</span>');
 			return "FAIL";
 		}
-		console.log("reconrd content response is ------>>>>>  " + data.response);
+		//console.log("reconrd content response is ------>>>>>  " + data.response);
 	});
 }
 

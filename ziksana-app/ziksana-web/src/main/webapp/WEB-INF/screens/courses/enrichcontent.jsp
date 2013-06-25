@@ -332,7 +332,7 @@
 			<!-- #leftPane -->
 			<div id="rightPane">
 				<div id="enrich_content_container" style="display:none;width:100%">
-					<iframe src="" width="1050" height="591"></iframe>
+					<iframe id="flash_iframe" src="" width="1050" height="591"></iframe>
 				</div>
 				<div class="definecontainer" id="definetab">
 				<form onload="" id="associateContentForm" action="/ziksana-web/zcourse/1/associatecontent" method="POST">
