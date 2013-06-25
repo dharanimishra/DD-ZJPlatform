@@ -356,7 +356,7 @@ function deleteCourse(courseId) {
 
 	// Delete Course
 
-	confirm_delete = confirm('Are you sure to delete?');
+	confirm_delete = confirm('Do you want to delete this course?');
 	if (confirm_delete == true) {
 
 		uri = '/ziksana-web/zcourse/1/removecourse';

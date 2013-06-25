@@ -396,7 +396,7 @@ function deleteContent(content_id) {
 								window.location.href = "/ziksana-web/zcourse/1/mycontent";
 							}
 						} else {
-							confirm_delete = confirm('Are you sure to delete?');
+							confirm_delete = confirm('Do you want to delete this content?');
 							if (confirm_delete == true) {
 								uri = '/ziksana-web/zcourse/1/deletecontent';
 								var parameters = {
