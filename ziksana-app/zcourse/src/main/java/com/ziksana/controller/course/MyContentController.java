@@ -182,13 +182,13 @@ public class MyContentController {
 			RequestMethod.POST })
 	public @ResponseBody
 	ModelAndView createContent(
-			@RequestParam(value = "contentPath[]", required = true) String[] contentPath,
-			@RequestParam(value = "contentName[]", required = true) String[] contentName,
-			@RequestParam(value = "contentType[]", required = true) String[] contentType,
-			@RequestParam(value = "contentTypeName[]", required = true) String[] contentTypeName,
-			@RequestParam(value = "contentFormatName[]", required = true) String[] contentFormatName,
-			@RequestParam(value = "thumbnailPath[]", required = true) String[] thumbnailPath,
-			@RequestParam(value = "noOfThumbnails[]", required = true) String[] noOfThumbnails) {
+			@RequestParam(value = "contentPath", required = true) String[] contentPath,
+			@RequestParam(value = "contentName", required = true) String[] contentName,
+			@RequestParam(value = "contentType", required = true) String[] contentType,
+			@RequestParam(value = "contentTypeName", required = true) String[] contentTypeName,
+			@RequestParam(value = "contentFormatName", required = true) String[] contentFormatName,
+			@RequestParam(value = "thumbnailPath", required = true) String[] thumbnailPath,
+			@RequestParam(value = "noOfThumbnails", required = true) String[] noOfThumbnails) {
 
 		ModelAndView modelView = new ModelAndView("mastereditcontent");
 		List<LearningContent> learningContentlist = new ArrayList<LearningContent>();
@@ -197,7 +197,7 @@ public class MyContentController {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
-
+              System.out.println("contentPath  ###################    " + contentPath.length);
 			for (int i = 0; i < contentPath.length; i++) {
 				try {
 					LearningContent learningContent = new LearningContent();
@@ -227,6 +227,9 @@ public class MyContentController {
 					}
 					LearningContent learningCont = myContentService
 							.saveOrUpdate(learningContent);
+					LOGGER.info("learningContent created ################### " + i +"   " + learningCont.getId());
+					LOGGER.debug("learningContent create ################### " +i  +"  " + learningCont.getContentName());
+					System.out.println("learningContent created  ################### " +i+ " " + learningCont.getContentPath());
 					learningContentlist.add(learningCont);
 					modelView.addObject("contentId", learningCont.getId());
 				} catch (Exception e) {
@@ -245,7 +248,10 @@ public class MyContentController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		LOGGER.info("contentPath  ###################    " + contentPath.length);
+		LOGGER.debug("contentPath  ###################    " + contentPath.length);
+		System.out.println("contentPath  ###################    " + contentPath.length);
 		return modelView;
 
 	}
