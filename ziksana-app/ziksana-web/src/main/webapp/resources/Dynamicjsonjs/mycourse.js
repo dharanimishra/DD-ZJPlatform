@@ -33,11 +33,11 @@ function getDraftCourses(courseStatus, pageIndex) {
 	
 	if(courseArrayBasedOnStatus.length ==0){
 		setNoContentFoundText(courseStatus);
-		$("#content_type_filter").hide();
+		//$("#content_type_filter").hide();
 	}
 	else{
 		setNoContentFoundText('');
-		$("#content_type_filter").show();
+		//$("#content_type_filter").show();
 	}
 	
 	if(courseArrayBasedOnStatus.length > itemsPerPage){
@@ -96,11 +96,11 @@ function getReviewCourses(courseStatus, pageIndex) {
 	
 	if(courseArrayBasedOnStatus.length ==0){
 		setNoContentFoundText(courseStatus);
-		$("#content_type_filter").hide();
+		//$("#content_type_filter").hide();
 	}
 	else{
 		setNoContentFoundText('');
-		$("#content_type_filter").show();
+		//$("#content_type_filter").show();
 	}
 	
 	if(courseArrayBasedOnStatus.length > itemsPerPage){
@@ -157,11 +157,11 @@ function getActiveCourses(courseStatus, pageIndex) {
 	
 	if(courseArrayBasedOnStatus.length ==0){
 		setNoContentFoundText(courseStatus);
-		$("#content_type_filter").hide();
+		//$("#content_type_filter").hide();
 	}
 	else{
 		setNoContentFoundText('');
-		$("#content_type_filter").show();
+		//$("#content_type_filter").show();
 	}
 	
 	if(courseArrayBasedOnStatus.length > itemsPerPage){
@@ -206,11 +206,11 @@ function getAllCourse(courseStatus,pageIndex) {
 	
 	if(courseArray.length ==0){
 		setNoContentFoundText(courseStatus);
-		$("#content_type_filter").hide();
+		//$("#content_type_filter").hide();
 	}
 	else{
 		setNoContentFoundText('');
-		$("#content_type_filter").show();
+		//$("#content_type_filter").show();
 	}
 	
 	if(courseArray.length > itemsPerPage){

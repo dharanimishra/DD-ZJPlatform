@@ -179,7 +179,7 @@ function getAllLearningContents(pageIndex) {
 	
 	if(contentArrayWithoutParent.length ==0){
 		setNoContentFoundText("ALL");
-		$("#content_type_filter").hide();
+		//$("#content_type_filter").hide();
 	}
 	else{
 		setNoContentFoundText('');
