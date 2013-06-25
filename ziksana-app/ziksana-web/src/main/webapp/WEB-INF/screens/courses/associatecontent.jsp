@@ -377,7 +377,7 @@ $(document).ready(function(){
 									<!--end of associateul-->
 
 
-									<div id="noContentFound" style="margin: auto; text-align: center; color: rgb(255, 255, 255); font-weight: bold; font-size: 15px; padding: 20px;">
+									<div id="noContentFound" style="margin: auto; text-align: center; color: rgb(255, 255, 255); font-weight: bold; font-size: 15px; padding: 20px;margin-top: 50px;">
 										
 									</div>
 

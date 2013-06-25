@@ -81,6 +81,7 @@
 		}
 	}
 	
+	
 	function getLearningContentObject(learningContentId){
 		
 		//console.log("in getLearningContentObject id is " + learningContentId);
@@ -95,55 +96,47 @@
 	}
 
 	
-	function isChildAssociated(childArray, contentAssociatedInTree){
+	function hasChild(contentId, contentArray){
 		
-		for(var i=0; i < childArray.length; i++){
-			if(contentAssociatedInTree.contains(childArray[i].id)){
+		for(var i=0; i < contentArray.length; i++){
+			if(contentArray[i].parentLearningContentId == contentId){
 				return true;
 			}
 		}
 	}
 	function getUnAssociatedContentArray(contentArray){
+		
+		//alert("Innnnnnn");
 		var unAssociatedContentArray = new Array();
 		
 		var compId = $("#selectedLearningComponentId").val();
 		//alert("compId "+ compId);
 		 
 		var childArrayString = tree.getSubItems('COMPONENT_' + compId );
-			var j =0;
-
-			for(var i=0; i < contentArray.length; i++){
-				var contentItem = contentArray[i];
-				//var contentIdString = 'CONTENT_'+ contentItem.id;
-				//var baseContentId = 0;
-				//alert("getBaseLearingContent(contentItem.id) " + getBaseLearingContent(contentItem.id));
-				if(getBaseLearingContent(contentItem.id)){
-					continue;
-				}
-				else{
-					if(childArrayString.contains(contentItem.id)){
-						continue;
-					}
-				}
-				if(isChildAssociated(getChildrenLearingContent(contentItem.id, contentArray), childArrayString)){
-					continue;
-				}
-				
-				//alert("childArrayString.indexOf(contentIdString) " + childArrayString.indexOf(contentIdString));
-				
-				//if(childArrayString.indexOf(contentIdString) == -1){
-					//console.log("in side if contentIdString " + contentIdString);
-					unAssociatedContentArray[j] = contentItem;
-					j++;
-				//}
-				/*
-					else{
-					continue;
-				}
-				*/
+		var j = 0;
+		for(var i=0; i < contentArray.length; i++){
+			var contentItem = contentArray[i];
+			if(!childArrayString.contains(contentItem.id) && contentItem.parentLearningContentId == 0 && !hasChild(contentItem.id, contentArray)){
+				unAssociatedContentArray[j] = contentItem;
+				j++;
 			}
-		
+		}
 		return unAssociatedContentArray;
+	}
+
+	function isAssociated(associatedContentAsString, contentArray){
+		//alert("associatedContentAsString " + associatedContentAsString);
+		var contentId = associatedContentAsString.split('_')[1];
+		var associated = false;
+		/*
+		for(var i=0; i < contentArray.length; i++){
+			if(contentId == contentArray[i].id){
+				associated true;
+				break;
+			}
+		}
+		*/
+		return associated;
 	}
 	
 	function getOtherLearningContents(contentType, inPageIndex){
@@ -317,25 +310,17 @@
 		contentArray =  jQuery.parseJSON(jsonString);
 
 		//console.log("contentArray.length " + contentArray.length + " itemsPerPage  " + itemsPerPage);
-		var contentArrayForBaseContent = new Array();
-		var j =0;
-		for(var i=0;i<contentArray.length;i++){
-			//if(contentType.toUpperCase() == contentArray[i].contentType.toUpperCase()){
-				//if(contentArray[i].parentLearningContentId == 0){
-					contentArrayForBaseContent[j] = contentArray[i];
-					j++;
-				//}
-			//}
-		}
 
 		var unAssociatedContentArray = getUnAssociatedContentArray(contentArray);
 		//console.log("unAssociatedContentArray.length " + unAssociatedContentArray.length + " itemsPerPage  " + itemsPerPage);
 
-		noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
-		
+		//alert("unAssociatedContentArray.length " + unAssociatedContentArray.length);
+		if(unAssociatedContentArray.length > 0){
+			noOfPages = Math.ceil(unAssociatedContentArray.length/itemsPerPage);
+		}
 		if(unAssociatedContentArray.length ==0){
-			$('#noContentFound').show();
 			setNoContentFoundText("ALL");
+			$('#noContentFound').show();
 			//alert("This is " + setNoContentFoundText("ALL"));
 			$("#content_type_filter").hide();
 			$("#associate-content-anchor").hide();
@@ -600,6 +585,7 @@
 	function getCategoryText(category){
 		var noDataText = "";
 		if(category == "ALL"){
+			//alert("Innnnnn getCategoryText(category) " + category);
 			noDataText = "No contents in repository.";
 			
 		}
@@ -759,7 +745,7 @@
 	
 	function showAnnotation(){
 		
-		alert("I am here");
+		//alert("I am here");
 		
 		var courseId = $('#courseid').val();
 		var uri = '/ziksana-web/zcourse/1/annotate/'+courseId;
