@@ -41,14 +41,14 @@
 						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
 					</c:if> </div>
 					<div class="clearfix"></div>
-					<div style="width:120px;height:20px; margin-left: 37px; margin-top: 8px;"><input
+					<div style="width:120px;height:20px; margin-left: 20px; margin-top: 8px;"><input
 						style="height: 25px; width: 120px;border:1px solid"
 						type="file" name="thumbnail_image_file_upload" 
 						id="thumbnail_image_file_upload" /></div>
 					 <input readonly="readonly" type="hidden" id="Cimageupl" /> 
 
 
-					<div id="thubmnail_upload_message" ></div>
+					<div id="thubmnail_upload_message" style="margin-top: -20px; position: relative;" ></div>
 					<div id="loaderText"></div>
  
 					
@@ -93,7 +93,7 @@
 														$(
 														'#thubmnail_upload_message')
 														.html(
-																'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="margin-left:20px">Remove</a>');
+																'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="position:absolute; top:0px;margin-left:20px;left:130px;">Remove</a>');
 														
 
 											} else { //there is an error in the upload process
@@ -161,11 +161,11 @@
 			<div class="clearfix"></div>
 			<div id="profile_response_message"style="color: red; text-align: center;"></div>
 			<div id="profile_response_success"style="color: green; text-align: center;"></div>
-		 	<div class="formcontainer">
+		 	<div class="formcontainer" style="margin-top:15px;">
 				
 					
 				<div class="control-group">
-					<label class="control-label nexaf" for="Course Name"><fmt:message
+					<label class="control-label nexaf" for="Alternative Email"><fmt:message
 							key="profile.alternateemail"></fmt:message> </label>
 					<div class="controls">
 						<input autofocus="autofocus" onblur="isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');"
@@ -282,7 +282,7 @@
 					<input readonly="readonly" type="hidden" id="Cimageupl" />
 
 
-					<div id="thubmnail_upload_message" ></div>
+					<div id="thubmnail_upload_message"  ></div>
 					<div id="loaderText"></div>
 
 					<input
@@ -724,11 +724,21 @@ function clearProfileForm(){
 		}
 	
 		function showlbl(divid){
+			
+			
+			var consave= confirm("Do you wants to Save the Email?");
+			if (consave==true)
+				{
+				alterEmailSubmit();
+				}
+			else
+			  {
 		var val = "${profileAnswerOne.alternateEmailId}";
 			document.getElementById("alttenateEmailValue").value = val;
 			document.getElementById("alternateEmailError").innerHTML = '';
 			$('#'+divid).slideToggle();
 			$("#EditAlt_mail").hide();
+			  }
 		}
 		
 		function showchangepwd(divid){
