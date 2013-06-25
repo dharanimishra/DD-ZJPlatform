@@ -146,8 +146,7 @@ $(document).ready(function() { // On page load
 								$('#thumbnail_image_file_upload')
 										.uploadify(
 												{
-													'swf' : '${staticFileServer}resources/swf/uploadify.swf',
-													'queueSizeLimit' : 1,
+													'swf' : '${staticFileServer}resources/swf/uploadify.swf',												
 													'successTimeout' : 18000,
 													'buttonText' : '<fmt:message key="upload.file"/>',
 													'uploader' : '${ms.uploadScript}',
