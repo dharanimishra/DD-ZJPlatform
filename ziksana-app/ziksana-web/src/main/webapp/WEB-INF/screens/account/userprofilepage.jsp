@@ -726,19 +726,13 @@ function clearProfileForm(){
 		function showlbl(divid){
 			
 			
-			var consave= confirm("Do you wants to Save the Email?");
-			if (consave==true)
-				{
-				alterEmailSubmit();
-				}
-			else
-			  {
+			
+			
 		var val = "${profileAnswerOne.alternateEmailId}";
 			document.getElementById("alttenateEmailValue").value = val;
 			document.getElementById("alternateEmailError").innerHTML = '';
 			$('#'+divid).slideToggle();
 			$("#EditAlt_mail").hide();
-			  }
 		}
 		
 		function showchangepwd(divid){
