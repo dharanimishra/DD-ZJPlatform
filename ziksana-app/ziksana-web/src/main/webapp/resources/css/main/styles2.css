@@ -2605,7 +2605,7 @@ input[type="checkbox"]:checked+label span {
 	-webkit-transition: all 1.2s;
 	-o-transition: all 1.2s;
 	transition: all 1.2s;
-	overflow: hidden;
+	overflow: hidden;height: 210px;
 }
 
 .createcontentimg img:hover {
