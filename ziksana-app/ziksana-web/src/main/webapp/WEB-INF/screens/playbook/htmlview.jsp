@@ -251,7 +251,7 @@ ${course.description}
   <div class="chapeterfotter"><label class="pageno">01</label></div>
 </c:if>
 </div>
-<div class="coursedescription" id="md"><b>Module Discription with Content Listing</b>
+<div class="coursedescription" id="md"><h2>Module Discription with Content Listing</h2>
 
 <div class="contentdetails">
  <c:forEach var="node" items="${treeNodeList}">
@@ -264,7 +264,7 @@ ${course.description}
       <img src="/ziksana-web/resources/images/preview/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
    </c:otherwise>
   </c:choose>
-	  <b style="padding:0px">${node.title}</b><label style="float:right;font-weight:bold">${course.name}</label ><br/>
+	  <b style="padding:0px;color:#A53232;">${node.title}</b><label style="float:right;font-weight:bold;color:#A53232;">${course.name}</label ><br/>
 	  ${node.nodeDescription}
 	   <br>
 	   <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
