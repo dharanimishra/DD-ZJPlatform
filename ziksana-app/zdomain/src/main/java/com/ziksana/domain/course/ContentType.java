@@ -44,9 +44,9 @@ public enum ContentType {
 		this.name = name;
 	}
 	
-	public static ContentType getValueOf(String contentFormatString){
+	public static ContentType getValueOf(String contentTypeString){
 		initialize();
-		return valueOf(contentFormatString);
+		return valueOf(contentTypeString);
 	}
 
 
