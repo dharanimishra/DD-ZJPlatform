@@ -109,7 +109,7 @@ function onButtonClick(menuitemId, type) {
 		// alert("open the menu for Delete module.");
 		ComponentId = tree.getSelectedItemId();
 		//console.log(ComponentId);
-		confirm_delete_component = confirm('Are you sure you want to delete this item?');
+		confirm_delete_component = confirm('Do you want to delete this Content?');
 		if (confirm_delete_component == true) {
 			uri = serverContext + 'zcourse/1/unassociatecontent';
 
