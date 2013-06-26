@@ -82,10 +82,16 @@ public class MyCoursesController {
 		LOGGER.debug(" Entering Class " + getClass() + " myLearnerCourse()");
 		ModelAndView modelView = new ModelAndView("mastermylearnercourse");
 		try {
-			String jsonString = "";
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("pageTitle", "My Course - Learner");
+			
+			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
+					.getMemberPersonaId().getStorageID());
+			List<Course> courses = courseService.getListOfCourses(memberId);
+
+			List<JSONCourse> jsonCourseList = getJSONCourseObjects(courses);
+			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
 			modelView.addObject("courseAsJSONString", jsonString);
 
 		} catch (ZiksanaException exception) {

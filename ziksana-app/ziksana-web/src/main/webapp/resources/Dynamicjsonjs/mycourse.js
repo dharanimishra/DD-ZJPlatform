@@ -347,7 +347,7 @@ function reviewCourse(courseId) {
 
 function reviewPlayBook(courseId) {
 	if(courseId != null){
-		window.location.href = "/ziksana-web/zplaybook/unsecure/htmlView/"
+		window.location.href = "/ziksana-web/zplaybook/unsecure/downloadPlayBook/"
 			+ courseId;
 	}
 }

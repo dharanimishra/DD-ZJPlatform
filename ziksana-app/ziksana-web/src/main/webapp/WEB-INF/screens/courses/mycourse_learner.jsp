@@ -1,7 +1,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/isotope/jquery.isotope.min.js"></script>
-<%-- <script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/mycourse_learner.js"></script> --%>
+<script type="text/javascript"
+	src="${staticFileServer}resources/Dynamicjsonjs/mycourse_learner.js"></script> 
 
 <script>
 	$('#container4').isotope({
