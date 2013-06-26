@@ -85,6 +85,11 @@ background:#3e3f13;}
  
   padding: 10px;
 }
+
+h2{font-size:25px;margin-left:20px}
+.b1{padding:0px;color:#A53232; font-size:20px}
+.b2{padding:0px;color:#A53232;font-size:16px;float:right}
+
 .coursetitle{ overflow: hidden;width:100%;margin-bottom:35px;}
 .coursetitle a {color:#fff;float: left;
     text-decoration: none;font-size:14px;
@@ -181,12 +186,13 @@ font-weight: bold;}
 <div class="Clearfix"></div>
 
 <div class="coursedescription" id="cd">
-  <b>Course Description</b>
+  <!-- b>Course Description</b -->
    <p class="top"> ${course.description}</p>
    <div class="Clearfix"> </div>
 </div>
 
-<div class="coursedescription" id="md" style="min-height:500px"><b>Module Discription with Content Listing</b>
+<div class="coursedescription" id="md" style="min-height:500px">
+<h2>Module Discription with Content Listing</h2>
  <div class="contentdetails">
  <c:forEach var="node" items="${treeNodeList}">
 	 <div class="detailswrrapper">
@@ -198,10 +204,10 @@ font-weight: bold;}
       <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
    </c:otherwise>
   </c:choose>
-	  <b style="padding:0px">${node.title}</b><label style="float:right;font-weight:bold">${course.name}</label ><br/>
+	  <div><label class="b1">${node.title}</label><label  class="b2">${course.name}</label ></div>   
 	  ${node.nodeDescription}
 	   <br>
-	   <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
+	   <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div-->
 	  </div>
    <c:if test="${! empty node.children}">
      <c:forEach var="cnode" items="${node.children}">    
@@ -214,9 +220,9 @@ font-weight: bold;}
 		   <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
 		   </c:otherwise>
 		  </c:choose>
-		    <b style="padding:0px">${cnode.title}</b><label style="float:right;font-weight:bold">${node.title}</label ><br/>    
+		    <div><label class="b1">${cnode.title}</label><label  class="b2">${node.title}</label ></div>   
 		    ${cnode.nodeDescription}<br>
-		    <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
+		    <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div-->
 		   </div>   
       </c:forEach>  
      </c:if>	  
@@ -228,7 +234,8 @@ font-weight: bold;}
  </div>
 <div class="Clearfix"> </div>
 </div>
-<div class="coursedescription" id="pd"><b>Planner Details</b>
+<div class="coursedescription" id="pd">
+<h2>Planner Details</h2>
 <%@include file="viewPlanner.jsp"%>
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>

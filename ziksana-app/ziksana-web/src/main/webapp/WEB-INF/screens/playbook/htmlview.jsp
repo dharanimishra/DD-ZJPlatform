@@ -108,7 +108,11 @@ background:#3e3f13;}
  
   padding: 10px;
 }
-.coursetitle{ overflow: hidden;width:100%;margin-bottom:35px;}
+h2{font-size:25px;margin-left:20px}
+.b1{padding:0px;color:#A53232; font-size:20px}
+.b2{padding:0px;color:#A53232;font-size:16px;float:right}
+
+.coursetitle{ overflow:; hidden;width:100%;margin-bottom:35px;}
 .coursetitle a {color:#fff;float: left;
     text-decoration: none;font-size:14px;
     width: 90%;}
@@ -264,10 +268,10 @@ ${course.description}
       <img src="/ziksana-web/resources/images/preview/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
    </c:otherwise>
   </c:choose>
-	  <b style="padding:0px;color:#A53232;">${node.title}</b><label style="float:right;font-weight:bold;color:#A53232;">${course.name}</label ><br/>
+	  <div><label class="b1">${node.title}</label><label class="b2">${course.name}</label ></div>
 	  ${node.nodeDescription}
 	   <br>
-	   <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
+	   <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div -->
 	  </div>
    <c:if test="${! empty node.children}">
      <c:forEach var="cnode" items="${node.children}">    
@@ -301,7 +305,7 @@ ${course.description}
 
 
 </div>
-<div class="coursedescription" id="pd" style="border:1px solid #000"><b>Planner Details</b>
+<div class="coursedescription" id="pd"><h2>Planner Details</h2>
 <%@include file="viewPlanner.jsp"%>
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
