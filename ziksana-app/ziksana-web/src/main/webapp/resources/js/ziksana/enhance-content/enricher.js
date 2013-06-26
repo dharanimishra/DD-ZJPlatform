@@ -100,3 +100,25 @@ function refreshTree(){
 	parent.document.location.reload(true);
 	
 }
+
+function saveEnrichment(jsonString){
+	
+	//alert("jsonString ====  " + jsonString);
+	var uri = '/ziksana-web/zcourse/1/enrichment';
+	var parameters = {
+		"courseId" : courseId,
+		"jsonResponse" : jsonString,
+		"learningComponentId" : componentId,
+		"learningContentId" : contentId
+	};
+	
+	//return;
+	$.post(uri, parameters, function(data) {
+		
+		if(!data){
+			data = -1;
+		}
+		//alert(data);
+		return data;
+	});
+}

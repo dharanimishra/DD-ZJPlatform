@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.ContentEnrichmentMapper">
+	<resultMap id="BaseResultMap" type="com.ziksana.domain.course.ContentEnrichment">
+		<id column="id" property="id"
+			jdbcType="INTEGER" />
+		<result column="StartTime" property="startTime" jdbcType="DOUBLE" />
+		<result column="EndTime" property="endTime" jdbcType="DOUBLE" />
+		<result column="LinkType" property="linkTypeId" jdbcType="INTEGER" />
+		<result column="EnrichmentType" property="enrichmentTypeId" jdbcType="INTEGER" />
+		<result column="LinkElement" property="linkElement" jdbcType="VARCHAR" />
+		<result column="InternalIndicator" property="internalIndicator" jdbcType="BIT" />
+		<result column="ContentName" property="contentName" jdbcType="VARCHAR" />
+		<result column="LinkName" property="linkName" jdbcType="VARCHAR" />
+		<result column="LinkDescription" property="linkDescription" jdbcType="VARCHAR" />
+		<result column="LinkItemAuthor" property="linkItemAuthor" jdbcType="VARCHAR" />
+		<result column="LinkItemCost" property="linkItemCost" jdbcType="INTEGER" />
+		<result column="LinkSource" property="linkSourceId" jdbcType="INTEGER" />
+		<result column="Duration" property="duration" jdbcType="DOUBLE" />
+		<result column="ZeniSuggestedIndicator" property="zeniSuggestedIndicator" jdbcType="BIT" />
+		<result column="Active" property="active" jdbcType="BIT" />
+		<result column="isdelete" property="isDelete" jdbcType="BIT" />
+		<result column="Coordinates" property="coordinates" jdbcType="VARCHAR" />
+		<result column="ParentContent" property="parentContent.id" jdbcType="INTEGER" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+			ID,
+			StartTime,
+			EndTime,
+			EnrichmentType,
+			LinkType,
+			LinkName,
+			LinkElement,
+			InternalIndicator,
+			LinkDescription,
+			LinkItemAuthor,
+			LinkItemCost,
+			LinkSource,
+			ZeniSuggestedIndicator,
+			Active,
+			IsDelete,
+			duration,
+			coordinates,
+			parentContent
+	</sql>
+
+	<insert id="saveContentEnrichment" parameterType="com.ziksana.domain.course.ContentEnrichment"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
+		insert into corContentEnrichment 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="startTime !=null">
+				StartTime,
+			</if>	
+			<if test="endTime !=null">
+				EndTime,
+			</if>	
+			<if test="enrichmentType !=null">
+				EnrichmentType,
+			</if>	
+			<if test="linkType !=null">
+				LinkType,
+			</if>	
+			<if test="linkName !=null">
+				LinkName,
+			</if>	
+			<if test="linkElement !=null">
+				LinkElement,
+			</if>	
+			<if test="internalIndicator !=null">
+				InternalIndicator,
+			</if>	
+			<if test="linkDescription !=null">
+				LinkDescription,
+			</if>	
+			<if test="linkItemAuthor !=null">
+				LinkItemAuthor,
+			</if>	
+			<if test="linkItemCost !=null">
+				LinkItemCost,
+			</if>	
+			<if test="linkSource !=null">
+				LinkSource,
+			</if>	
+			<if test="zeniSuggestedIndicator !=null">
+				ZeniSuggestedIndicator,
+			</if>	
+			<if test="active !=null">
+				Active,
+			</if>	
+			<if test="isDelete !=null">
+				IsDelete,
+			</if>	
+			<if test="duration !=null">
+				duration,
+			</if>	
+			<if test="coordinates !=null">
+				coordinates,
+			</if>	
+			<if test="parentContent !=null">
+				parentContent
+			</if>	
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="startTime !=null">
+				#{startTime,jdbcType=DOUBLE},
+			</if>	
+			<if test="endTime !=null">
+				#{endTime,jdbcType=DOUBLE},
+			</if>	
+			<if test="enrichmentType !=null">
+				#{enrichmentType.id,jdbcType=INTEGER},
+			</if>	
+			<if test="linkType !=null">
+				#{linkType.id,jdbcType=INTEGER},
+			</if>	
+			<if test="linkName !=null">
+				#{linkName,jdbcType=VARCHAR},
+			</if>	
+			<if test="linkElement !=null">
+				#{linkElement,jdbcType=VARCHAR},
+			</if>	
+			<if test="internalIndicator !=null">
+				#{internalIndicator,jdbcType=BIT},
+			</if>	
+			<if test="linkDescription !=null">
+				#{linkDescription,jdbcType=VARCHAR},
+			</if>	
+			<if test="linkItemAuthor !=null">
+				#{linkItemAuthor,jdbcType=VARCHAR},
+			</if>	
+			<if test="linkItemCost !=null">
+				#{linkItemCost,jdbcType=DOUBLE},
+			</if>	
+			<if test="linkSource !=null">
+				#{linkSource.id,jdbcType=INTEGER},
+			</if>	
+			<if test="zeniSuggestedIndicator !=null">
+				#{zeniSuggestedIndicator,jdbcType=BIT},
+			</if>	
+			<if test="active !=null">
+				#{active,jdbcType=BIT},
+			</if>	
+			<if test="isDelete !=null">
+				#{isDelete,jdbcType=BIT},
+			</if>	
+			<if test="duration !=null">
+				#{duration,jdbcType=DOUBLE},
+			</if>	
+			<if test="coordinates !=null">
+				#{coordinates,jdbcType=VARCHAR},
+			</if>	
+			<if test="parentContent !=null">
+				#{parentContent.id,jdbcType=INTEGER}
+			</if>	
+		</trim>
+	</insert>
+
+	<update id="updateContentEnrichment" parameterType="com.ziksana.domain.course.ContentEnrichment">
+		update corContentEnrichment
+		<set>
+			<if test="startTime !=null">
+				startTime = #{startTime,jdbcType=DOUBLE},
+			</if>	
+			<if test="endTime !=null">
+				endTime = #{endTime,jdbcType=DOUBLE},
+			</if>	
+			<if test="enrichmentType !=null">
+				enrichmentType = #{enrichmentType.id,jdbcType=INTEGER},
+			</if>	
+			<if test="linkType !=null">
+				linkType = #{linkType.id,jdbcType=INTEGER},
+			</if>	
+			<if test="linkName !=null">
+				linkName = #{linkName,jdbcType=VARCHAR},
+			</if>	
+			<if test="linkElement !=null">
+				linkElement = #{linkElement,jdbcType=VARCHAR},
+			</if>	
+			<if test="internalIndicator !=null">
+				internalIndicator = #{internalIndicator,jdbcType=BIT},
+			</if>	
+			<if test="linkDescription !=null">
+				linkDescription = #{linkDescription,jdbcType=VARCHAR},
+			</if>	
+			<if test="linkItemAuthor !=null">
+				linkItemAuthor = #{linkItemAuthor,jdbcType=VARCHAR},
+			</if>	
+			<if test="linkItemCost !=null">
+				linkItemCost = #{linkItemCost,jdbcType=DOUBLE},
+			</if>	
+			<if test="linkSource !=null">
+				linkSource = #{linkSource.id,jdbcType=INTEGER},
+			</if>	
+			<if test="zeniSuggestedIndicator !=null">
+				zeniSuggestedIndicator = #{zeniSuggestedIndicator,jdbcType=BIT},
+			</if>	
+			<if test="active !=null">
+				active = #{active,jdbcType=BIT},
+			</if>	
+			<if test="isDelete !=null">
+				isDelete = #{isDelete,jdbcType=BIT},
+			</if>	
+			<if test="duration !=null">
+				duration = #{duration,jdbcType=DOUBLE},
+			</if>	
+			<if test="coordinates !=null">
+				coordinates = #{coordinates,jdbcType=VARCHAR},
+			</if>	
+			<if test="parentContent !=null">
+				parentContent = #{parentContent.id,jdbcType=INTEGER}
+			</if>	
+		</set>
+		where ID = #{contentEnrichmentId.storageID,
+		jdbcType=INTEGER}
+	</update>
+
+</mapper>

@@ -24,7 +24,7 @@ public enum EnrichmentType {
 
 	private String name;
 
-	private final static String CATEGORY = "'Learning Content Enrichment Types";
+	private final static String CATEGORY = "Learning Content Enrichment Types";
 
 	private EnrichmentType() {
 	}
@@ -58,6 +58,7 @@ public enum EnrichmentType {
 
 
 	public int getID() {
+		initialize();
 		return id;
 	}
 
@@ -66,6 +67,7 @@ public enum EnrichmentType {
 	}
 
 	public String getName() {
+		initialize();
 		return name;
 	}
 

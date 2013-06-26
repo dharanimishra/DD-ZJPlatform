@@ -21,6 +21,10 @@ public interface EnrichContentService {
 	public List<LearningContent> getLearningContents(Integer authMemberRoleId);
 
 	public LearningContent getLearningContent(Integer learningContentId);
+	
+	public LearningComponentContent getLearningComponentContent(Integer learningComponentContentId);
+	
+	public LearningComponentContent getLearningComponentContent(Integer learningComponentId, Integer learningContentId);
 
 	public Course getCourse(Integer courseId);
 
@@ -31,9 +35,9 @@ public interface EnrichContentService {
 			List<ContentDecorationType> contentDecorationTypeList, MemberPersona creator,
 			Integer learningComponentId, LearningContent previousLearningContent);
 	
-	public ContentEnrichment saveContentEnrichment(LearningComponentContent learningComponentContent, ContentEnrichment contentEnrichment); 
+	public ContentEnrichment saveContentEnrichment(Course course, LearningComponentContent learningComponentContent, ContentEnrichment contentEnrichment, MemberPersona creator); 
 	public ContentEnrichment updateContentEnrichment(LearningComponentContent learningComponentContent, ContentEnrichment contentEnrichment); 
-	public Boolean deleteContentEnrichment(LearningComponentContent learningComponentContent, Integer contentEnrichmentId); 
+	public void deleteContentEnrichment(LearningComponentContent learningComponentContent, Integer contentEnrichmentId); 
 	public ContentEnrichment getContentEnrichment(Integer contentEnrichmentId); 
 	public List<LearningComponentContentEnrichment> getLearningComponentContentEnrichments(LearningComponentContent learningComponentContent); 
 }

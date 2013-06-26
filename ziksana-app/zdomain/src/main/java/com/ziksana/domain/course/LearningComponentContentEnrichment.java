@@ -2,6 +2,7 @@ package com.ziksana.domain.course;
 
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.domain.institution.CurriculumCourse;
+import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
@@ -20,8 +21,10 @@ public class LearningComponentContentEnrichment extends AuditHistory {
 	private Course						course = null;
 	private CurriculumCourse curriculumCourse = null;
 	private Boolean isDelete;
-	private Integer visibilit;
+	private Integer visibility;
 	private Integer overrideAt;
+	private MemberPersona creatingMember = null;
+
 	
 	
 	
@@ -100,16 +103,16 @@ public class LearningComponentContentEnrichment extends AuditHistory {
 		setLearningComponentContentEnrichmentId(new IntegerZID(id));
 	}
 	/**
-	 * @return the visibilit
+	 * @return the visibility
 	 */
-	public Integer getVisibilit() {
-		return visibilit;
+	public Integer getVisibility() {
+		return visibility;
 	}
 	/**
-	 * @param visibilit the visibilit to set
+	 * @param visibility the visibility to set
 	 */
-	public void setVisibilit(Integer visibilit) {
-		this.visibilit = visibilit;
+	public void setVisibility(Integer visibility) {
+		this.visibility = visibility;
 	}
 	/**
 	 * @return the overrideAt
@@ -153,6 +156,18 @@ public class LearningComponentContentEnrichment extends AuditHistory {
 	private void setLearningComponentContentEnrichmentId(
 			ZID learningComponentContentEnrichmentId) {
 		LearningComponentContentEnrichmentId = learningComponentContentEnrichmentId;
+	}
+	/**
+	 * @return the creatingMember
+	 */
+	public MemberPersona getCreatingMember() {
+		return creatingMember;
+	}
+	/**
+	 * @param creatingMember the creatingMember to set
+	 */
+	public void setCreatingMember(MemberPersona creatingMember) {
+		this.creatingMember = creatingMember;
 	}
 	
 	

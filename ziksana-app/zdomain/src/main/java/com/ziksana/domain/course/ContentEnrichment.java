@@ -1,7 +1,5 @@
 package com.ziksana.domain.course;
 
-import java.sql.Timestamp;
-
 import com.ziksana.domain.common.AuditHistory;
 import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
@@ -28,15 +26,6 @@ public class ContentEnrichment extends AuditHistory {
 		this.contentEnrichmentId = new IntegerZID(contentEnrichmentId);
 	}
 
-	public ContentEnrichment(LinkType linkType,
-			String linkElement, String linkItemAuthor, LinkSource linkSource,
-			Boolean active) {
-		this.linkType = linkType;
-		this.linkElement = linkElement;
-		this.linkItemAuthor = linkItemAuthor;
-		this.linkSource = linkSource;
-		this.active = active;
-	}
 
 	public ContentEnrichment() {
 		
@@ -44,30 +33,28 @@ public class ContentEnrichment extends AuditHistory {
 
 	private ZID 						contentEnrichmentId;
 	private Integer 					id;
-	private Timestamp 					startTime 					= null;
-	private Timestamp					endTime 					= null;
+	private Double 					startTime 					= null;
+	private Double					endTime 					= null;
 	private LinkType 					linkType 					= null;
 	private EnrichmentType 				enrichmentType 				= null;
-	private Integer 					linkTypeId 					= null;
 	private String 						linkElement 				= null;
 	private Boolean 					internalIndicator 			= null;
 	private String 						linkName 					= null;
 	private String 						linkDescription 			= null;
 	private String 						linkItemAuthor 				= null;
-	private Integer 					linkItemCost 				= null;
+	private Double	 					linkItemCost 				= null;
 	private LinkSource 					linkSource 					= null;
-	private Integer 					linkSourceId 				= null;
-	private Integer 					duration	 				= null;
+	private Double 					duration	 				= null;
 	private Boolean 					zeniSuggestedIndicator 		= null;
 	private Boolean 					active 						= null;
-//	private Enrichment 					enrichment 					= null;
 	private Boolean						isDelete					= null;
 	private String 						coordinates					= null;					
 	private LearningContent parentContent;
-		/**
-	 * @return the startTime
-	 */
-	public Timestamp getStartTime() {
+
+	/**
+	* @return the startTime
+	*/
+	public Double getStartTime() {
 		return startTime;
 	}
 
@@ -75,14 +62,14 @@ public class ContentEnrichment extends AuditHistory {
 	 * @param startTime
 	 *            the startTime to set
 	 */
-	public void setStartTime(Timestamp startTime) {
+	public void setStartTime(Double startTime) {
 		this.startTime = startTime;
 	}
 
 	/**
 	 * @return the endTime
 	 */
-	public Timestamp getEndTime() {
+	public Double getEndTime() {
 		return endTime;
 	}
 
@@ -90,7 +77,7 @@ public class ContentEnrichment extends AuditHistory {
 	 * @param endTime
 	 *            the endTime to set
 	 */
-	public void setEndTime(Timestamp endTime) {
+	public void setEndTime(Double endTime) {
 		this.endTime = endTime;
 	}
 
@@ -107,9 +94,6 @@ public class ContentEnrichment extends AuditHistory {
 	 */
 	public void setLinkType(LinkType linkType) {
 		
-		if(linkTypeId!=null){
-			linkType = LinkType.getLinkType(linkTypeId);
-		}
 		this.linkType = linkType;
 	}
 
@@ -176,7 +160,7 @@ public class ContentEnrichment extends AuditHistory {
 	/**
 	 * @return the linkItemCost
 	 */
-	public Integer getLinkItemCost() {
+	public Double getLinkItemCost() {
 		return linkItemCost;
 	}
 
@@ -184,7 +168,7 @@ public class ContentEnrichment extends AuditHistory {
 	 * @param linkItemCost
 	 *            the linkItemCost to set
 	 */
-	public void setLinkItemCost(Integer linkItemCost) {
+	public void setLinkItemCost(Double linkItemCost) {
 		this.linkItemCost = linkItemCost;
 	}
 
@@ -234,32 +218,20 @@ public class ContentEnrichment extends AuditHistory {
 	}
 
 
-	/**
-	 * @return the linkTypeId
-	 */
-	public Integer getLinkTypeId() {
-		return linkTypeId;
-	}
 
 	/**
-	 * @param linkTypeId the linkTypeId to set
+	 * @param linkTypeId the linkType to set
 	 */
-	public void setLinkTypeId(Integer linkTypeId) {
-		this.linkTypeId = linkTypeId;
+	public void setLinkType(Integer linkTypeId) {
+		linkType = LinkType.getLinkType(linkTypeId);
 	}
 
-	/**
-	 * @return the linkSourceId
-	 */
-	public Integer getLinkSourceId() {
-		return linkSourceId;
-	}
 
 	/**
-	 * @param linkSourceId the linkSourceId to set
+	 * @param linkSourceId the linkSource to set
 	 */
-	public void setLinkSourceId(Integer linkSourceId) {
-		this.linkSourceId = linkSourceId;
+	public void setLinkSource(Integer linkSourceId) {
+		linkSource = LinkSource.getLinkSource(linkSourceId);
 	}
 
 	/**
@@ -329,14 +301,14 @@ public class ContentEnrichment extends AuditHistory {
 	/**
 	 * @return the duration
 	 */
-	public Integer getDuration() {
+	public Double getDuration() {
 		return duration;
 	}
 
 	/**
 	 * @param duration the duration to set
 	 */
-	public void setDuration(Integer duration) {
+	public void setDuration(Double duration) {
 		this.duration = duration;
 	}
 
@@ -373,6 +345,14 @@ public class ContentEnrichment extends AuditHistory {
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+
+	/**
+	 * @param enrichmentTypeId the enrichmentType to set
+	 */
+	public void setEnrichmentType(Integer enrichmentTypeId) {
+		enrichmentType = EnrichmentType.getEnrichmentType(enrichmentTypeId);
 	}
 
 }

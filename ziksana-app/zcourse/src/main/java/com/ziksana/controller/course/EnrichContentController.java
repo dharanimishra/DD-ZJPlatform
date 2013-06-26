@@ -3,6 +3,8 @@ package com.ziksana.controller.course;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +19,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.ContentDecorationType;
+import com.ziksana.domain.course.ContentEnrichment;
 import com.ziksana.domain.course.ContentStatus;
 import com.ziksana.domain.course.ContentType;
+import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.EnrichmentType;
+import com.ziksana.domain.course.LearningComponentContent;
 import com.ziksana.domain.course.LearningContent;
+import com.ziksana.domain.course.LinkSource;
+import com.ziksana.domain.course.LinkType;
 import com.ziksana.domain.course.json.JSONLearningContent;
 import com.ziksana.domain.member.MemberPersona;
 import com.ziksana.exception.ZiksanaException;
@@ -157,10 +165,71 @@ public class EnrichContentController {
 	
 	@RequestMapping(value = "/1/enricher", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView annotateContent() {
+	ModelAndView enrichContent() {
 		ModelAndView modelAndView = new ModelAndView("courses/enricher"); 
 		return modelAndView;
 	}
+
+	@RequestMapping(value = "/1/enrichment", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	Integer saveEnrichment(
+			@RequestParam(value = "jsonResponse", required = true) String jsonResponse,
+			@RequestParam(value = "courseId", required = true) Integer courseId,
+			@RequestParam(value = "learningContentId", required = true) Integer learningContentId,
+			@RequestParam(value = "learningComponentId", required = true) Integer learningComponentId
+			) {
+		
+		Integer contentEnrichmentId = -1;
+		try {
+			
+			Course course = enrichContentService.getCourse(courseId);
+			LearningComponentContent learningComponentContent = enrichContentService.getLearningComponentContent(learningComponentId, learningContentId);
+			MemberPersona creator = new MemberPersona();
+			creator.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
+					.getToken().getMemberPersonaId().getStorageID()));
+			ContentEnrichment contentEnrichment = getContentEnrichment(jsonResponse);
+			enrichContentService.saveContentEnrichment(course, learningComponentContent, contentEnrichment, creator);
+			contentEnrichmentId = contentEnrichment.getId();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return contentEnrichmentId;
+	}
+	
+	private ContentEnrichment getContentEnrichment(String jsonString) throws JSONException{
+		JSONObject jsonObject = new JSONObject(jsonString);
+		ContentEnrichment contentEnrichment = new ContentEnrichment();
+		contentEnrichment.setActive(true);
+		contentEnrichment.setCoordinates(jsonObject.getString("cordinates"));
+		//contentEnrichment.setDuration(jsonObject.getString("duration"));
+		try {
+			contentEnrichment.setEndTime(Double.parseDouble(jsonObject.getString("EndTime")));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			contentEnrichment.setEndTime(00.00d);
+		}
+		contentEnrichment.setEnrichmentType(EnrichmentType.getValueOf(jsonObject.getString("EnrichmentType").toUpperCase()));
+		//contentEnrichment.setInternalIndicator(Boolean.parseBoolean(jsonObject.getString("InternalIndicator")));
+		contentEnrichment.setIsDelete(false);
+		contentEnrichment.setLinkDescription(jsonObject.getString("LinkDescription"));
+		contentEnrichment.setLinkElement(jsonObject.getString("LinkElement"));
+		//contentEnrichment.setLinkItemAuthor("");
+		contentEnrichment.setLinkName(jsonObject.getString("LinkName"));
+		//TODO what should be set here?
+		contentEnrichment.setLinkSource(LinkSource.ZIKSANA_INTERNAL);
+		contentEnrichment.setLinkType(LinkType.getValueOf("REFERENCE"));
+		try {
+			contentEnrichment.setStartTime(Double.parseDouble(jsonObject.getString("StartTime")));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			contentEnrichment.setStartTime(00.00d);
+		}
+		//contentEnrichment.setZeniSuggestedIndicator(null);
+		return contentEnrichment;
+	}
+	
 	/**
 	 * This method converts collection of {@link LearningContent} objects into
 	 * {@link JSONLearningContent} objects
