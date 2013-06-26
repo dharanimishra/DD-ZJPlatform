@@ -494,7 +494,7 @@ $(document).ready(function() {
     if (password.length < 8) { 
 		$('#result').removeClass();
 		/*$('#result').addClass('short')*/
-		$('#result').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span><br/><span style="color:orange;"><fmt:message key="resetpass.8char"/></span>');
+		$('#result').html('<div style="width:180px;margin-top:7px;border:1px solid #fff;"><div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><div style="margin-top: -7px;">&nbsp;&nbsp;<fmt:message key="resetpass.tooshort"/></div><div style="color:orange;"><fmt:message key="resetpass.8char"/></div></div>');
 		return false;
 	}
     
@@ -522,16 +522,16 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#result').removeClass();
 		$('#result').addClass('weak');
-		$('#result').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/>  </span><br/><span style="color:orange;"> <fmt:message key="restpass.passworddes"/></span>');
+		$('#result').html('<div style="width:180px; margin-top:7px;border:1px solid #fff;"><div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><div style="margin-top: -7px;color:red;">&nbsp;&nbsp;<fmt:message key="resetpass.weekpass"/> </div><div style="color:orange;"><fmt:message key="restpass.passworddes"/>  </div></div>');
 		return true;			
 	} else if (strength == 2 ) {
 		$('#result').removeClass();
 		$('#result').addClass('good');
-		$('#result').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.good"/></span>');
+		$('#result').html('<div style="width:180px;margin-top:7px;border:1px solid #fff;"><div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><div style="margin-top: -7px;color:green;">&nbsp;&nbsp;<fmt:message key="resetpass.good"/></div></div>');
 		return true;	
 	} else {
 		$('#result').removeClass();
-		$('#result').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.strong"/></span>');
+		$('#result').html('<div style="width:180px;margin-top:7px;border:1px solid #fff;"><div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><div style="margin-top: -7px;color:green;">&nbsp;&nbsp;<fmt:message key="resetpass.strong"/></div></div> ');
 		return true;
 	}
 }
@@ -640,54 +640,7 @@ function validateEmailId(){
 </script>
  
  <style>
- #red{
-	width:10px;
-	height:10px;
-	background: red;
-	border:1px solid black;
-	float: left;
-	margin-left: 2px;
-	
-}
-#blank{
-	width:10px;
-	height:10px;
-	border:1px solid black;
-	float: left;
-	margin-left: 2px;
-	
-}
-#blue{
-	width:10px;
-	height:10px;
-	background: blue;
-	border:1px solid black;
-	float: left;
-	margin-left: 2px;
-}
-#green{
-	width:10px;
-	height:10px;
-	background: green;
-	border:1px solid black;
-	float: left;
-	margin-left: 2px;
-}
-#orange{
-	width:10px;
-	height:10px;
-	background: #dd5605;
-	border:1px solid black;
-	float: left;
-	margin-left: 2px;
-}#result {
-    float: right;
-   /*  margin-left: 300px;
-    margin-top: -23px; */
-    position: relative;
-    top: 10px;
-    width: 150px;
-}
+ 
 #result1{
 	color:red;
 }

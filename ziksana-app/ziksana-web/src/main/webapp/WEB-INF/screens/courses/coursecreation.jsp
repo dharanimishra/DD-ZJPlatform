@@ -233,7 +233,7 @@ $(document).ready(function() { // On page load
 						<div style="margin-top: 0px;">
 							<label style="width: 260px;" for="input"
 								class="control-label nexaf"><fmt:message
-									key="Associate.Image" /></label>
+									key="Module.Associate.Image" /></label>
                             <div class="clearfix"></div>
 							<div style="width: 100px; height: 105px; border:0px solid red">
 								<img id="course_thumbnail_image"
