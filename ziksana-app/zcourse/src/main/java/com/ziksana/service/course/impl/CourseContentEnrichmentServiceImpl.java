@@ -118,7 +118,7 @@ public class CourseContentEnrichmentServiceImpl implements
 
 			contentEnrichment = enrichment.getContentEnrich();
 
-			contentEnrichment.setApplyEnrichment(enrichment);
+			//contentEnrichment.setApplyEnrichment(enrichment);
 
 			contentEnrichment.setLinkTypeId(enrichLinkType.getID());
 
@@ -214,9 +214,9 @@ public class CourseContentEnrichmentServiceImpl implements
 				}
 			}
 
-			enrichmentMap.put(EnrichmentType.TOPIC, topicContentEnrichList);
+			//enrichmentMap.put(EnrichmentType.TOPIC, topicContentEnrichList);
 			enrichmentMap.put(EnrichmentType.REFERENCE, refContentEnrichList);
-			enrichmentMap.put(EnrichmentType.NOTES, notesContentEnrichList);
+			//enrichmentMap.put(EnrichmentType.NOTES, notesContentEnrichList);
 
 		}
 

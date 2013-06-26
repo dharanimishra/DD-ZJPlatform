@@ -68,7 +68,7 @@ public class CourseEnrichmentServiceTest extends BaseTest {
 				System.currentTimeMillis() + 10000));
 		contEnrichment.setLinkTypeId(linkType.getID());
 		contEnrichment.setLinkDescription("Enrichment 1");
-		contEnrichment.setApplyEnrichment(enrichment);
+		//contEnrichment.setApplyEnrichment(enrichment);
 
 		enrichment.setContentEnrich(contEnrichment);
 

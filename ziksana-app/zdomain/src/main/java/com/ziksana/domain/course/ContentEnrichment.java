@@ -9,6 +9,12 @@ import com.ziksana.id.ZID;
 public class ContentEnrichment extends AuditHistory {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	/**
 	 * @return the contentEnrichmentId
 	 */
 	public ZID getContentEnrichmentId() {
@@ -37,23 +43,27 @@ public class ContentEnrichment extends AuditHistory {
 	}
 
 	private ZID 						contentEnrichmentId;
+	private Integer 					id;
 	private Timestamp 					startTime 					= null;
 	private Timestamp					endTime 					= null;
 	private LinkType 					linkType 					= null;
+	private EnrichmentType 				enrichmentType 				= null;
 	private Integer 					linkTypeId 					= null;
 	private String 						linkElement 				= null;
 	private Boolean 					internalIndicator 			= null;
+	private String 						linkName 					= null;
 	private String 						linkDescription 			= null;
 	private String 						linkItemAuthor 				= null;
 	private Integer 					linkItemCost 				= null;
 	private LinkSource 					linkSource 					= null;
 	private Integer 					linkSourceId 				= null;
+	private Integer 					duration	 				= null;
 	private Boolean 					zeniSuggestedIndicator 		= null;
 	private Boolean 					active 						= null;
-	private Enrichment 					enrichment 					= null;
+//	private Enrichment 					enrichment 					= null;
 	private Boolean						isDelete					= null;
-	
-
+	private String 						coordinates					= null;					
+	private LearningContent parentContent;
 		/**
 	 * @return the startTime
 	 */
@@ -223,19 +233,6 @@ public class ContentEnrichment extends AuditHistory {
 		this.active = active;
 	}
 
-	/**
-	 * @return the applyEnrichment
-	 */
-	public Enrichment getApplyEnrichment() {
-		return enrichment;
-	}
-
-	/**
-	 * @param enrichment the applyEnrichment to set
-	 */
-	public void setApplyEnrichment(Enrichment enrichment) {
-		this.enrichment = enrichment;
-	}
 
 	/**
 	 * @return the linkTypeId
@@ -279,5 +276,103 @@ public class ContentEnrichment extends AuditHistory {
 		this.isDelete = isDelete;
 	}
 
+	/**
+	 * @return the enrichmentType
+	 */
+	public EnrichmentType getEnrichmentType() {
+		return enrichmentType;
+	}
+
+	/**
+	 * @param enrichmentType the enrichmentType to set
+	 */
+	public void setEnrichmentType(EnrichmentType enrichmentType) {
+		this.enrichmentType = enrichmentType;
+	}
+
+	/**
+	 * @return the linkName
+	 */
+	public String getLinkName() {
+		return linkName;
+	}
+
+	/**
+	 * @param linkName the linkName to set
+	 */
+	public void setLinkName(String linkName) {
+		this.linkName = linkName;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+		setContentEnrichmentId(new IntegerZID(id));
+	}
+
+	/**
+	 * @param contentEnrichmentId the contentEnrichmentId to set
+	 */
+	private void setContentEnrichmentId(ZID contentEnrichmentId) {
+		this.contentEnrichmentId = contentEnrichmentId;
+	}
+
+	/**
+	 * @return the duration
+	 */
+	public Integer getDuration() {
+		return duration;
+	}
+
+	/**
+	 * @param duration the duration to set
+	 */
+	public void setDuration(Integer duration) {
+		this.duration = duration;
+	}
+
+	/**
+	 * @return the coordinates
+	 */
+	public String getCoordinates() {
+		return coordinates;
+	}
+
+	/**
+	 * @param coordinates the coordinates to set
+	 */
+	public void setCoordinates(String coordinates) {
+		this.coordinates = coordinates;
+	}
+
+	/**
+	 * @return the parentContent
+	 */
+	public LearningContent getParentContent() {
+		return parentContent;
+	}
+
+	/**
+	 * @param parentContent the parentContent to set
+	 */
+	public void setParentContent(LearningContent parentContent) {
+		this.parentContent = parentContent;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }
