@@ -22,6 +22,7 @@
 		<result column="isdelete" property="isDelete" jdbcType="BIT" />
 		<result column="Coordinates" property="coordinates" jdbcType="VARCHAR" />
 		<result column="ParentContent" property="parentContent.id" jdbcType="INTEGER" />
+		<result column="ParentEnrichment" property="parentEnrichment.id" jdbcType="INTEGER" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -42,7 +43,8 @@
 			IsDelete,
 			duration,
 			coordinates,
-			parentContent
+			parentContent,
+			parentEnrichment
 	</sql>
 
 	<insert id="saveContentEnrichment" parameterType="com.ziksana.domain.course.ContentEnrichment"
@@ -98,7 +100,10 @@
 				coordinates,
 			</if>	
 			<if test="parentContent !=null">
-				parentContent
+				parentContent,
+			</if>	
+			<if test="parentEnrichment !=null">
+				parentEnrichment
 			</if>	
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -151,7 +156,10 @@
 				#{coordinates,jdbcType=VARCHAR},
 			</if>	
 			<if test="parentContent !=null">
-				#{parentContent.id,jdbcType=INTEGER}
+				#{parentContent.id,jdbcType=INTEGER},
+			</if>	
+			<if test="parentEnrichment !=null">
+				#{parentEnrichment.id,jdbcType=INTEGER}
 			</if>	
 		</trim>
 	</insert>
@@ -209,6 +217,9 @@
 			</if>	
 			<if test="parentContent !=null">
 				parentContent = #{parentContent.id,jdbcType=INTEGER}
+			</if>	
+			<if test="parentEnrichment !=null">
+				parentEnrichment = #{parentEnrichment.id,jdbcType=INTEGER}
 			</if>	
 		</set>
 		where ID = #{contentEnrichmentId.storageID,

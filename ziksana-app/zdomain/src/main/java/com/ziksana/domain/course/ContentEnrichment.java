@@ -50,7 +50,7 @@ public class ContentEnrichment extends AuditHistory {
 	private Boolean						isDelete					= null;
 	private String 						coordinates					= null;					
 	private LearningContent parentContent;
-
+	private ContentEnrichment parentEnrichment;
 	/**
 	* @return the startTime
 	*/
@@ -353,6 +353,20 @@ public class ContentEnrichment extends AuditHistory {
 	 */
 	public void setEnrichmentType(Integer enrichmentTypeId) {
 		enrichmentType = EnrichmentType.getEnrichmentType(enrichmentTypeId);
+	}
+
+	/**
+	 * @return the parentEnrichment
+	 */
+	public ContentEnrichment getParentEnrichment() {
+		return parentEnrichment;
+	}
+
+	/**
+	 * @param parentEnrichment the parentEnrichment to set
+	 */
+	public void setParentEnrichment(ContentEnrichment parentEnrichment) {
+		this.parentEnrichment = parentEnrichment;
 	}
 
 }
