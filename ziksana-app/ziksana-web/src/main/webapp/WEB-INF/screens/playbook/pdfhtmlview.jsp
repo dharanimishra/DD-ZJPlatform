@@ -238,7 +238,7 @@ font-weight: bold;}
 <h2>Planner Details</h2>
 <%@include file="viewPlanner.jsp"%>
 <div class="Clearfix"> </div>
-<div class="toplink"><a href="#ctc">Top</a></div>
+<div class="toplink"></div>
 <div class="Clearfix"> </div>
 </div>
 </div>

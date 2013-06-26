@@ -28,7 +28,7 @@
 
 <style type="text/css">
 
-#planner_container {padding: .5em; border: 1px solid silver; width: 99%; overflow: auto; min-height:200px }
+#planner_container {padding: .5em; width: 97%; overflow: auto; min-height:200px }
 #planner_data {
   background: url('/ziksana-web/resources/images/planner_bg_week.png') repeat scroll 24px 0 #fefefe; 
 }

@@ -246,7 +246,6 @@ font-weight: bold;}
 </div>
 <div class="Clearfix"></div>
 <div class="coursedescription" id="cd">
-<b>Course Description</b>
 ${course.description}
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
