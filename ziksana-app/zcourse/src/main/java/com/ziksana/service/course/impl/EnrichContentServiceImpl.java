@@ -9,10 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ziksana.domain.course.ContentDecorationType;
+import com.ziksana.domain.course.ContentEnrichment;
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.LearningComponentContent;
+import com.ziksana.domain.course.LearningComponentContentEnrichment;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentDecoration;
 import com.ziksana.domain.member.MemberPersona;
@@ -108,5 +110,54 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 		learningContentDecoration.setRightsOwningMemberRoleId(creator.getMemberRoleId());
 		return learningContentDecoration;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.ziksana.service.course.EnrichContentService#saveContentEnrichment(com.ziksana.domain.course.LearningComponentContent, com.ziksana.domain.course.ContentEnrichment)
+	 */
+	public ContentEnrichment saveContentEnrichment(
+			LearningComponentContent learningComponentContent,
+			ContentEnrichment contentEnrichment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ziksana.service.course.EnrichContentService#updateContentEnrichment(com.ziksana.domain.course.LearningComponentContent, com.ziksana.domain.course.ContentEnrichment)
+	 */
+	public ContentEnrichment updateContentEnrichment(
+			LearningComponentContent learningComponentContent,
+			ContentEnrichment contentEnrichment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ziksana.service.course.EnrichContentService#deleteContentEnrichment(com.ziksana.domain.course.LearningComponentContent, java.lang.Integer)
+	 */
+	public Boolean deleteContentEnrichment(
+			LearningComponentContent learningComponentContent,
+			Integer contentEnrichmentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ziksana.service.course.EnrichContentService#getContentEnrichment(java.lang.Integer)
+	 */
+	public ContentEnrichment getContentEnrichment(Integer contentEnrichmentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ziksana.service.course.EnrichContentService#getLearningComponentContentEnrichments(com.ziksana.domain.course.LearningComponentContent)
+	 */
+	public List<LearningComponentContentEnrichment> getLearningComponentContentEnrichments(
+			LearningComponentContent learningComponentContent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }

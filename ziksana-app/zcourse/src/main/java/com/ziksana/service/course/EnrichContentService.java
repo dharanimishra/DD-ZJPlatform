@@ -6,7 +6,10 @@ package com.ziksana.service.course;
 import java.util.List;
 
 import com.ziksana.domain.course.ContentDecorationType;
+import com.ziksana.domain.course.ContentEnrichment;
 import com.ziksana.domain.course.Course;
+import com.ziksana.domain.course.LearningComponentContent;
+import com.ziksana.domain.course.LearningComponentContentEnrichment;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.member.MemberPersona;
 
@@ -27,4 +30,10 @@ public interface EnrichContentService {
 			LearningContent learningContent,
 			List<ContentDecorationType> contentDecorationTypeList, MemberPersona creator,
 			Integer learningComponentId, LearningContent previousLearningContent);
+	
+	public ContentEnrichment saveContentEnrichment(LearningComponentContent learningComponentContent, ContentEnrichment contentEnrichment); 
+	public ContentEnrichment updateContentEnrichment(LearningComponentContent learningComponentContent, ContentEnrichment contentEnrichment); 
+	public Boolean deleteContentEnrichment(LearningComponentContent learningComponentContent, Integer contentEnrichmentId); 
+	public ContentEnrichment getContentEnrichment(Integer contentEnrichmentId); 
+	public List<LearningComponentContentEnrichment> getLearningComponentContentEnrichments(LearningComponentContent learningComponentContent); 
 }
