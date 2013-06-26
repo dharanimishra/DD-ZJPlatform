@@ -851,7 +851,7 @@ $(document).ready(function() {
     var x = $('#newPassword').val();
 	 if ((x.charAt(0).match(/([0-9,!,%,&,@,#,$,^,*,?,_,~])/)))
 	 {
-		 $('#errorNewPassword').html('<span style="padding-left:5px;"><fmt:message key="profile.error.password"/></span>');
+		 $('#errorNewPassword').html('<div style="width:300px;margin-top:7px;"><span style="padding-left:5px;"><fmt:message key="profile.error.password"/></span></div>');
 	 	return false;
 	 }
 
@@ -860,7 +860,7 @@ $(document).ready(function() {
     if (password.length < 8) { 
 		$('#errorNewPassword').removeClass();
 		/*$('#result').addClass('short')*/
-		$('#errorNewPassword').html('<div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></span></span><br/><span style="color:orange;"><fmt:message key="resetpass.8char"/></span>');
+		$('#errorNewPassword').html('<div style="width:300px;margin-top:7px;"><div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><div style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></div><div style="color:orange;"><fmt:message key="resetpass.8char"/></div></div>');
 		return false;
 	}
     
@@ -888,16 +888,16 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('weak');
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><span style="padding-left:5px;"><fmt:message key="resetpass.weekpass"/> </span><br/><span style="color:orange;"><fmt:message key="restpass.passworddes"/>  </span>');
+		$('#errorNewPassword').html('<div style="width:300px; margin-top:7px;"><div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><div style="clear: both;float: left;margin-left: 70px;margin-top: -15px;"><fmt:message key="resetpass.weekpass"/> </div><br/><span style="color:orange;"><fmt:message key="restpass.passworddes"/>  </span></div>');
 		return true;			
 	} else if (strength == 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('good');
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.good"/></span>');
+		$('#errorNewPassword').html('<div style="width:300px;margin-top:7px;"><div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><div style="clear: both;float: left;margin-left: 70px;margin-top: -15px;color:green;"><fmt:message key="resetpass.good"/></div></div>');
 		return true;	
 	} else {
 		$('#errorNewPassword').removeClass();
-		$('#errorNewPassword').html('<div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><span style="padding-left:5px;color:green;"><fmt:message key="resetpass.strong"/></span>');
+		$('#errorNewPassword').html('<div style="width:300px;margin-top:7px;"><div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><div style="padding-left:5px;color:green;clear: both;float: left;margin-left: 70px;margin-top: -15px;"><fmt:message key="resetpass.strong"/></div></div>');
 		return true;
 	}
 }
@@ -915,7 +915,9 @@ function checkpass()
 		
 		else if ($('#newPassword').val()!=$('#retypePassword').val()){
 			$('#errorRetypePassword').html('<fmt:message key="resetpass.pass.donot.match"/>');
-			
+			document.getElementById("currentPassword").value = '';
+    		document.getElementById("newPassword").value = '';
+    		document.getElementById("retypePassword").value = '';
 			
 		}else{
 			oldPassword = $('#currentPassword').val();
@@ -925,8 +927,7 @@ function checkpass()
 			memberIdRef = $('#memberIdValue').text();
 
 			dbcurrentPassword = $('#dbcurrentPassword').text();
-			console.log(newPassword);
-			console.log(dbcurrentPassword);
+
 			if(dbcurrentPassword != newPassword){
 			 $.post( '/ziksana-web/secure/password/resetpassword'
 			        , {'oldPassword':oldPassword,'confirmPassword':newPassword,'memberId':memberIdRef}
@@ -934,7 +935,9 @@ function checkpass()
 			        {
 			        	if(data == 'Old Password is incorrect'){
 			        		$('#errorCurrentPassword').html(data);
-			        		
+			        		document.getElementById("currentPassword").value = '';
+			        		document.getElementById("newPassword").value = '';
+			        		document.getElementById("retypePassword").value = '';
 			        	}else{
 			        	if(data != 'Password reset is not successful.'){
 			        		
@@ -952,6 +955,9 @@ function checkpass()
 			        });
 			}else{
 				$('#passwordResetFailResponse').html("<fmt:message key="reuse.password.error"/>");
+				document.getElementById("currentPassword").value = '';
+	    		document.getElementById("newPassword").value = '';
+	    		document.getElementById("retypePassword").value = '';
 			}
 		}
 	

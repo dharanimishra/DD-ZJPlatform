@@ -2490,8 +2490,8 @@ input[type="checkbox"]:checked+label span {
 }
 
 #red {
-	width: 10px;
-	height: 10px;
+	width: 12px;
+	height: 6px;
 	background: red;
 	border: 1px solid black;
 	float: left;
@@ -2499,16 +2499,16 @@ input[type="checkbox"]:checked+label span {
 }
 
 #blank {
-	width: 10px;
-	height: 10px;
+	width: 12px;
+	height: 6px;
 	border: 1px solid black;
 	float: left;
 	margin-left: 2px;
 }
 
 #blue {
-	width: 10px;
-	height: 10px;
+	width: 12px;
+	height: 6px;
 	background: blue;
 	border: 1px solid black;
 	float: left;
@@ -2516,8 +2516,8 @@ input[type="checkbox"]:checked+label span {
 }
 
 #green {
-	width: 10px;
-	height: 10px;
+	width: 12px;
+	height: 6px;
 	background: green;
 	border: 1px solid black;
 	float: left;
@@ -2525,8 +2525,8 @@ input[type="checkbox"]:checked+label span {
 }
 
 #orange {
-	width: 10px;
-	height: 10px;
+	width: 12px;
+	height: 6px;
 	background: #dd5605;
 	border: 1px solid black;
 	float: left;
