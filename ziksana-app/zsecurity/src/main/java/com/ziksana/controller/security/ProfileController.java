@@ -70,7 +70,7 @@ public class ProfileController {
 		
 	}
 	
-	@RequestMapping(value = "/1/manageprofile/{memberId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/manageprofile/{memberId}", method = RequestMethod.GET )
 	public @ResponseBody ModelAndView showManageProfile(@PathVariable int memberId) {
 		ModelAndView modelAndView = new ModelAndView("profilepagesetup");
 		try{		
@@ -94,6 +94,32 @@ public class ProfileController {
 		}
 		return modelAndView;
 		
+	}
+	
+	@RequestMapping(value = "/1/profilequestions/{memberId}", method = RequestMethod.GET )
+	public @ResponseBody List<MemberProfile> getMemberProfileQuestions(@PathVariable int memberId) {
+		
+		List<MemberProfile> profileList = new ArrayList<MemberProfile>();
+		profileList = profileService.getMemberProfileList(memberId);
+		
+		return profileList;
+	}
+	
+	@RequestMapping(value = "/1/memberpassword/{userId}", method = RequestMethod.GET )
+	public @ResponseBody String getMemberPassword(@PathVariable String userId) {
+		
+		String password = passwordService.getUserPassword(userId);
+		
+		return password;
+	}
+	
+	
+	@RequestMapping(value = "/1/member/{memberId}", method = RequestMethod.GET )
+	public @ResponseBody Member getMember(@PathVariable int memberId) {
+		Member member = new Member();
+		member = memberService.getMemberByMemberId(memberId);
+		
+		return member;
 	}
 	
 	@RequestMapping(value = "/1/updateprofile", method = RequestMethod.POST)

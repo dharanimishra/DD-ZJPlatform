@@ -273,12 +273,13 @@
 			<div class="fileupload  f-l" style="width:230px;">
 				<div class="associateimage" style="text-align:center;">
  				<div style="height:150px;width:150px;margin-left:20px">
-					<c:if test="${empty member.picturePath}">
+					<%-- <c:if test="${empty member.picturePath}">
 						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/usericon.png"/>
 					</c:if>
-					<c:if test="${not empty ms.url && not empty member.picturePath}">
-						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
-					</c:if> </div>
+					<c:if test="${not empty ms.url && not empty member.picturePath}"> --%>
+						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="" />
+				<%-- 	</c:if>  --%>
+					</div>
 					<input readonly="readonly" type="hidden" id="Cimageupl" />
 
 
@@ -372,7 +373,7 @@
 					<label><c:out value="${member.firstName}" />
 					<c:out value="${member.lastName}" /></label>
 					<label id="memberIdValue" style="display: none;"><c:out value="${member.memberId}" /></label>
-					<label id="dbcurrentPassword" style="display: none;"><c:out value="${currentPassword}" /></label>
+					<label id="dbcurrentPassword" style="display: none;"></label>
 					<label id="primaryEmailId" style="display: none;"><c:out value="${member.primaryEmailId}" /></label>
 				</P>
 
@@ -1103,6 +1104,37 @@ function saveUploadedImage(val){
 	        }
 			 );  
 
+}
+$(document).ready(function() {
+	get_latest_member_object($("#memberIdValue").text());
+	
+	//getSecurity_questions();
+	
+});
+function get_latest_member_object(val){
+	$.ajax({
+	  	type: 'GET',
+		url: '/ziksana-web/profile/1/member/'+val+'',
+		success: function( data ) {
+			get_current_user_password(data.memberId);
+			if(data.picturePath != null){
+				$('#profile_thumbnail_image').attr('src', '${ms.url}'+data.picturePath);
+			}else{
+				$('#profile_thumbnail_image').attr('src', '/ziksana-web/resources/images/usericon.png');
+			}
+		}
+	});
+}
+function get_current_user_password(memberId){
+	$.ajax({
+	  	type: 'GET',
+		url: '/ziksana-web/profile/1/memberpassword/'+memberId+'',
+		success: function( data ) {
+			
+			$('#dbcurrentPassword').text(data);
+			
+		}
+	});
 }
 </script>
 <style>

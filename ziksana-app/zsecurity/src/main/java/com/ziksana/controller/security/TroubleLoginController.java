@@ -38,7 +38,7 @@ public class TroubleLoginController {
 	private static final String SQ2_VERIFICATION_PAGE = "Sec Ques 2 Verfication Page";
 	private static final String EMAIL_VERIFICATION_PAGE = "Email Verfication Page";
 	
-	private static final String RESETMAIL_SUCCESS = "Mail Send Successful";
+	private static final String RESETMAIL_SUCCESS = "Your Use Id has been sent to email address successfully";
 	
 	@Autowired
 	private TroubleLoginService troubleLoginService;

@@ -28,8 +28,8 @@ $(".addtodobtn").click(function(e) {
 		 }
 	$.get('/ziksana-web/ztodo/gettodosize', {}, function(data){ 
 		if(data == 0){
-			select ='<option selected="selected" value="add_new_category">Select a Category</option>';
-			select += '<optgroup><option style="color: white; font-weight: bold; padding: 5px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
+
+			select = '<option selected="selected" value="add_new_category">Select a Category</option><optgroup><option style="color: white; font-weight: bold; padding: 5px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
 			
 			$('select#todo_categories').html(select);
 		}
@@ -520,7 +520,7 @@ function get_and_populate_selecttag(){
 			
 			
 			
-			select = '<optgroup><option style="color: white; font-weight: bold; padding: 5px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
+			select = '<option selected="selected" value="add_new_category">Select a Category</option><optgroup><option style="color: white; font-weight: bold; padding: 5px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;" onclick="show_category_form();" value="add_new_category">Add New Category</option></optgroup>';
 			
 			
 			
@@ -528,7 +528,7 @@ function get_and_populate_selecttag(){
 
 			select += option_string;
 			
-			updateselect = option_string;
+			updateselect = '<option selected="selected" value="add_new_category">Select a Category</option>'+option_string;
 			
 			$('select#todo_categories').html(select);
 			$(data).find("todoitem").each(function(index){
@@ -573,7 +573,7 @@ function get_and_populate_todo_value(val){
 							 ouputEmptyTodo+="<tr id='moretodorow"+$(this).find('id').text()+"' style='height:40px;'>";
 							 ouputEmptyTodo+="<td width='50px'><div ><input type='checkbox' id='c"+index+2 +"' onchange='handle(this,"+$(this).find('id').text()+");' /> <label for='c"+index+2 +"'><span></span></label></td><td width='175px'><div id='category_value"+$(this).find("id").text()+"'>"+$(this).find("categoryName").text()+"</div></td>";
 							//" <td class='todoinfo-decription'><div class='todotip_container' >"+short_string($(this).find("subject").text())+"<div class='categortip' style='color:white;'>"+$(this).find("subject").text()+" </div></div></td></tr>"
-							 ouputEmptyTodo+="<td class='todoinfo-decription' width='225px'><div class='todotip_container' ><div class='categortip' style='color:white;'>"+$(this).find("subject").text()+" </div><span id='categoryDescription"+$(this).find("id").text()+"' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_managestring($(this).find("subject").text())+"</span></td></div><td width='75px'><a id='todoEdithyperlink"+index+"' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Edit</a></td><td width='75px'></td></div>";
+							 ouputEmptyTodo+="<td class='todoinfo-decription' width='225px'><div class='todotip_container' ><div class='categortip' style='color:white;'>"+$(this).find("subject").text()+" </div><label style='display:none;' id='categoryDesc"+$(this).find("id").text()+"'>"+$(this).find("subject").text()+"</label><span id='categoryDescription"+$(this).find("id").text()+"' id='demo-basic' style='cursor: pointer; margin-bottom: 6px;background-color:transparent!important;'>"+short_managestring($(this).find("subject").text())+"</span></td></div><td width='75px'><a id='todoEdithyperlink"+index+"' onclick='edit_todorow_and_update("+$(this).find("id").text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Edit</a></td><td width='75px'></td></div>";
 							 
 							 ouputEmptyTodo+="</tr>";
 							 ouputEmptyTodo+="<tr style='display:none;'><td></td></tr>";
@@ -945,7 +945,7 @@ function edit_todorow_and_update(rowId){
 		
 	$('select#update_todo_categories'+rowId).val(categorySelectedValue);
 	
-	var cateDescriptionSelectedValue = $('#categoryDescription'+rowId+'').text();
+	var cateDescriptionSelectedValue = $('#categoryDesc'+rowId+'').text();
 	
 	$('#todo_edit_description'+rowId+'').val(cateDescriptionSelectedValue);
 	
