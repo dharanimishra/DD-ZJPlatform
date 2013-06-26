@@ -860,7 +860,7 @@ $(document).ready(function() {
     if (password.length < 8) { 
 		$('#errorNewPassword').removeClass();
 		/*$('#result').addClass('short')*/
-		$('#errorNewPassword').html('<div style="width:300px;margin-top:7px;"><div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><div style="padding-left:5px;"><fmt:message key="resetpass.tooshort"/></div><div style="color:orange;"><fmt:message key="resetpass.8char"/></div></div>');
+		$('#errorNewPassword').html('<div style="width:300px;margin-top:7px;border:1px solid #fff;"><div id="red"></div><div id="blank"></div><div id="blank"></div><div id="blank"></div><div style="margin-top: -7px;">&nbsp;&nbsp;<fmt:message key="resetpass.tooshort"/></div><div style="color:orange;"><fmt:message key="resetpass.8char"/></div></div>');
 		return false;
 	}
     
@@ -888,16 +888,16 @@ $(document).ready(function() {
 	if (strength < 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('weak');
-		$('#errorNewPassword').html('<div style="width:300px; margin-top:7px;"><div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><div style="clear: both;float: left;margin-left: 70px;margin-top: -15px;"><fmt:message key="resetpass.weekpass"/> </div><br/><span style="color:orange;"><fmt:message key="restpass.passworddes"/>  </span></div>');
+		$('#errorNewPassword').html('<div style="width:350px; margin-top:7px;border:1px solid #fff;;"><div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><div style="margin-top: -7px;color:red;">&nbsp;&nbsp;<fmt:message key="resetpass.weekpass"/> </div><div style="color:orange;"><fmt:message key="restpass.passworddes"/>  </div></div>');
 		return true;			
 	} else if (strength == 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('good');
-		$('#errorNewPassword').html('<div style="width:300px;margin-top:7px;"><div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><div style="clear: both;float: left;margin-left: 70px;margin-top: -15px;color:green;"><fmt:message key="resetpass.good"/></div></div>');
+		$('#errorNewPassword').html('<div style="width:300px;margin-top:7px;border:1px solid #fff;;"><div id="red"></div><div id="blue"></div><div id="orange"></div><div id="blank"></div><div style="margin-top: -7px;color:green;">&nbsp;&nbsp;<fmt:message key="resetpass.good"/></div></div>');
 		return true;	
 	} else {
 		$('#errorNewPassword').removeClass();
-		$('#errorNewPassword').html('<div style="width:300px;margin-top:7px;"><div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><div style="padding-left:5px;color:green;clear: both;float: left;margin-left: 70px;margin-top: -15px;"><fmt:message key="resetpass.strong"/></div></div>');
+		$('#errorNewPassword').html('<div style="width:300px;margin-top:7px;border:1px solid #fff;"><div id="red"></div><div id="blue"></div><div id="orange"></div><div id="green"></div><div style="margin-top: -7px;color:green;">&nbsp;&nbsp;<fmt:message key="resetpass.strong"/></div></div>');
 		return true;
 	}
 }
