@@ -106,7 +106,12 @@
 	width: auto;
 }
 </style>
-
+<script>
+$(document).ready(function() { // On page load
+  $("#navcourse").addClass("active");  
+ 
+});
+</script>
 <div id="formcontainer">
 
 	<div id="page-header-div" class="page-header"
