@@ -87,9 +87,9 @@ function ff_close_player(){
 	refreshTree();
 }
 
-function ff_display_console_message(msg){
+function  ff_console_log(msg){
 	//switch on this if you want log messages from flash
-	//console.log(msg);
+	console.log(msg);
 }
 
 function refreshTree(){
@@ -112,13 +112,67 @@ function saveEnrichment(jsonString){
 		"learningContentId" : contentId
 	};
 	
-	//return;
-	$.post(uri, parameters, function(data) {
-		
-		if(!data){
-			data = -1;
-		}
-		//alert(data);
-		return data;
-	});
+	//return 787878;
+	var id = -1;
+	jQuery.ajax({
+        url:    uri,
+        success: function(result) {
+	        id = result;
+        },
+        async:   false,
+        data: parameters
+   });
+	//alert("id is " + id);
+	return id;
+}
+
+function getEnrichmentId(){
+	return $('#enrich_id').val();
+}
+
+function editEnrichment(jsonString){
+	
+	//alert("jsonString ====  " + jsonString);
+	var uri = '/ziksana-web/zcourse/1/enrichment';
+	var parameters = {
+		"courseId" : courseId,
+		"jsonResponse" : jsonString,
+		"learningComponentId" : componentId,
+		"learningContentId" : contentId
+	};
+	
+	var id = -1;
+	jQuery.ajax({
+        url:    uri,
+        success: function(result) {
+	        id = result;
+        },
+        async:   false,
+        data: parameters
+   });
+	return id;
+}
+
+
+function deleteEnrichment(jsonString){
+	
+	//alert("jsonString ====  " + jsonString);
+	var uri = '/ziksana-web/zcourse/1/enrichment/3';
+	var parameters = {
+		"courseId" : courseId,
+		"jsonResponse" : jsonString,
+		"learningComponentId" : componentId,
+		"learningContentId" : contentId
+	};
+	
+	var success = false;
+	jQuery.ajax({
+        url:    uri,
+        success: function(result) {
+        	success = result;
+        },
+        async:   false,
+        data: parameters
+   });
+	return success;
 }

@@ -170,6 +170,39 @@ public class EnrichContentController {
 		return modelAndView;
 	}
 
+	@RequestMapping(value = "/1/enrichment/3", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody
+	Boolean deleteEnrichment(
+			@RequestParam(value = "jsonResponse", required = true) String jsonResponse,
+			@RequestParam(value = "courseId", required = true) Integer courseId,
+			@RequestParam(value = "learningContentId", required = true) Integer learningContentId,
+			@RequestParam(value = "learningComponentId", required = true) Integer learningComponentId
+			) {
+		
+		Boolean success = false;
+		try {
+			
+			LearningComponentContent learningComponentContent = enrichContentService.getLearningComponentContent(learningComponentId, learningContentId);
+			JSONObject jsonObject = new JSONObject(jsonResponse);
+			String strEnrichmentID = jsonObject.getString("id");
+			Integer contentEnrichmentId = -1;
+			try {
+				contentEnrichmentId = Integer.parseInt(strEnrichmentID);
+			} catch (Exception e) {
+				// TODO Log it
+				e.printStackTrace();
+			}
+			if(contentEnrichmentId > 0){
+				enrichContentService.deleteContentEnrichment(learningComponentContent, contentEnrichmentId);
+				success = true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return success;
+	}
 	@RequestMapping(value = "/1/enrichment", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
@@ -189,42 +222,77 @@ public class EnrichContentController {
 			creator.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
 			ContentEnrichment contentEnrichment = getContentEnrichment(jsonResponse);
-			enrichContentService.saveContentEnrichment(course, learningComponentContent, contentEnrichment, creator);
+			if(contentEnrichment.getId() < 0){
+				enrichContentService.saveContentEnrichment(course, learningComponentContent, contentEnrichment, creator);
+			}
+			else{
+				enrichContentService.updateContentEnrichment(learningComponentContent, contentEnrichment);
+			}
 			contentEnrichmentId = contentEnrichment.getId();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// TODO remove this later
 			e.printStackTrace();
 		}
 		return contentEnrichmentId;
 	}
 	
 	private ContentEnrichment getContentEnrichment(String jsonString) throws JSONException{
+
 		JSONObject jsonObject = new JSONObject(jsonString);
+		
 		ContentEnrichment contentEnrichment = new ContentEnrichment();
-		contentEnrichment.setActive(true);
-		contentEnrichment.setCoordinates(jsonObject.getString("cordinates"));
-		//contentEnrichment.setDuration(jsonObject.getString("duration"));
-		try {
-			contentEnrichment.setEndTime(Double.parseDouble(jsonObject.getString("EndTime")));
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			contentEnrichment.setEndTime(00.00d);
+		String strEnrichmentID = jsonObject.getString("id");
+		Integer enrichmentId = -1;
+		if(strEnrichmentID != null && !"".equals(strEnrichmentID.trim())){
+			try {
+				enrichmentId = Integer.parseInt(strEnrichmentID);
+			} catch (NumberFormatException e) {
+				// TODO remove this later
+				e.printStackTrace();
+			}
 		}
-		contentEnrichment.setEnrichmentType(EnrichmentType.getValueOf(jsonObject.getString("EnrichmentType").toUpperCase()));
+		
+		contentEnrichment.setId(enrichmentId);
+		contentEnrichment.setActive(true);
+		if(jsonObject.getString("coordinates") != null && !"".equals(jsonObject.getString("coordinates").trim()) ){
+			contentEnrichment.setCoordinates(jsonObject.getString("coordinates"));
+		}
+		//contentEnrichment.setDuration(jsonObject.getString("duration"));
+		if(jsonObject.getString("EndTime") != null && !"".equals(jsonObject.getString("EndTime").trim()) ){
+			try {
+				contentEnrichment.setEndTime(Double.parseDouble(jsonObject.getString("EndTime")));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				contentEnrichment.setEndTime(00.00d);
+			}
+		}
+		if(jsonObject.getString("EnrichmentType") != null && !"".equals(jsonObject.getString("EnrichmentType").trim()) ){
+			contentEnrichment.setEnrichmentType(EnrichmentType.getValueOf(jsonObject.getString("EnrichmentType").toUpperCase()));	
+		}
+		
 		//contentEnrichment.setInternalIndicator(Boolean.parseBoolean(jsonObject.getString("InternalIndicator")));
 		contentEnrichment.setIsDelete(false);
-		contentEnrichment.setLinkDescription(jsonObject.getString("LinkDescription"));
-		contentEnrichment.setLinkElement(jsonObject.getString("LinkElement"));
+		if(jsonObject.getString("LinkDescription") != null && !"".equals(jsonObject.getString("LinkDescription").trim()) ){
+			contentEnrichment.setLinkDescription(jsonObject.getString("LinkDescription"));
+		}
+		if(jsonObject.getString("LinkElement") != null && !"".equals(jsonObject.getString("LinkElement").trim()) ){
+			contentEnrichment.setLinkElement(jsonObject.getString("LinkElement"));
+		}
 		//contentEnrichment.setLinkItemAuthor("");
-		contentEnrichment.setLinkName(jsonObject.getString("LinkName"));
+		
+		if(jsonObject.getString("LinkName") != null && !"".equals(jsonObject.getString("LinkName").trim()) ){
+			contentEnrichment.setLinkName(jsonObject.getString("LinkName"));
+		}
 		//TODO what should be set here?
 		contentEnrichment.setLinkSource(LinkSource.ZIKSANA_INTERNAL);
 		contentEnrichment.setLinkType(LinkType.getValueOf("REFERENCE"));
-		try {
-			contentEnrichment.setStartTime(Double.parseDouble(jsonObject.getString("StartTime")));
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			contentEnrichment.setStartTime(00.00d);
+		if(jsonObject.getString("StartTime") != null && !"".equals(jsonObject.getString("StartTime").trim()) ){
+			try {
+				contentEnrichment.setStartTime(Double.parseDouble(jsonObject.getString("StartTime")));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				contentEnrichment.setStartTime(00.00d);
+			}
 		}
 		//contentEnrichment.setZeniSuggestedIndicator(null);
 		return contentEnrichment;

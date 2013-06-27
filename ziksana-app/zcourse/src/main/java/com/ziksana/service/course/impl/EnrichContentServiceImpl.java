@@ -155,8 +155,8 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 	public ContentEnrichment updateContentEnrichment(
 			LearningComponentContent learningComponentContent,
 			ContentEnrichment contentEnrichment) {
-		// TODO Auto-generated method stub
-		return null;
+		contentEnrichmentMapper.updateContentEnrichment(contentEnrichment);
+		return contentEnrichment;
 	}
 
 	/* (non-Javadoc)
@@ -165,6 +165,8 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 	public void deleteContentEnrichment(
 			LearningComponentContent learningComponentContent,
 			Integer contentEnrichmentId) {
+		contentEnrichmentMapper.deleteContentEnrichment(contentEnrichmentId);
+		LOGGER.debug("The content enrichment deleted successfully for " + contentEnrichmentId);
 	}
 
 	/* (non-Javadoc)

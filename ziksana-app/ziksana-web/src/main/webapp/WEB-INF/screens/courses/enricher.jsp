@@ -104,5 +104,6 @@
                 <!--<![endif]-->
             </object>
         </noscript>     
-   </body>
+  		 <input type="hidden" id="enrich_id" value="-1"/>
+    </body>
 </html>
