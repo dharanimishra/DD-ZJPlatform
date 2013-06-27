@@ -128,7 +128,6 @@ function onButtonClick(menuitemId, type) {
 					course_id = data.id;
 					window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
 							+ CourseId ;
-
 				} else {
 					$('#tempdiv1').html(
 							'<span style="color:red;">'
@@ -154,7 +153,6 @@ function onButtonClick(menuitemId, type) {
 			$('#ContentPanel2').hide();
 		}
 	}else if (menuaction == "Play") {
-		var contentId = tree.getSelectedItemId().split('_')[1];	
 		ff_open_player();
 		alert("tomorrow never dies");
 

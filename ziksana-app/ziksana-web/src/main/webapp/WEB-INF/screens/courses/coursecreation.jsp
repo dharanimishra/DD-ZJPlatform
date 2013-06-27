@@ -325,7 +325,7 @@ $(document).ready(function() { // On page load
 							onClick="getCancel();return false;" style="margin-right: 10px;">
 							<fmt:message key="profile.cancel" />
 						</button>
-						<button class="btn f-r" type="button"
+						<button class="btn f-r" type="button" id="Btnsbtcmodule"
 							onClick="getaddmodulesave();return false;"
 							style="margin-right: 20px;">
 							<fmt:message key="profile.submit" />

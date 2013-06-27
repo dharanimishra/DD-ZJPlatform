@@ -235,7 +235,7 @@ function getaddmodulesave() {
 	validation = jQuery("#AddModule").validationEngine('validate');
 	if (validation == true) {
 		// Step 1: Assign Parameters required by the sendMessage function.
-		// $('#Btnsbtcmodule').attr('disabled', 'disabled'); // disables the
+		$('#Btnsbtcmodule').attr('disabled', 'disabled'); // disables the
 
 		uri = '/ziksana-web/zcourse/savelearningcomponent';
 
