@@ -85,7 +85,7 @@ public class MyCoursesController {
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("pageTitle", "My Course - Learner");
-			
+
 			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 			List<Course> courses = courseService.getListOfCourses(memberId);
@@ -311,9 +311,7 @@ public class MyCoursesController {
 
 			RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView activeCourse(
-
-	@PathVariable Integer courseId) {
+	ModelAndView activeCourse(@PathVariable Integer courseId) {
 
 		LOGGER.debug(" Entering Class " + getClass() + " activeCourse()");
 		ModelAndView modelView = new ModelAndView("mastermycourse");
