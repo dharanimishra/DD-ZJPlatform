@@ -17,7 +17,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/lib/tree/Menu/menu_ext.js"></script>
 <script type="text/javascript"
-	src="${staticFileServer}resources/js/lib/tree/record-content-treedata.js"></script>
+	src="${staticFileServer}resources/js/lib/tree/content-consumption-treedata.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
 
@@ -55,7 +55,7 @@
 
 
 <script type="text/javascript"
-	src="${staticFileServer}resources/js/ziksana/associate-content/associate-content.js"></script>
+	src="${staticFileServer}resources/js/ziksana/content-consumption/content-consumption.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/ziksana/common/session-storage/main.js"></script>
 	
@@ -95,148 +95,6 @@
 }
  
 </style>
-<script type="text/javascript">
-	/* function showrich() {
-		$('._richTextShow').css("display", "none");
-		$('#richText').css("display", "none");
-		$('._plainTextShow').show();
-		$('#plainText').css("display", "block");
-	}
-	function showplain() {
-
-		$('._richTextShow').css("display", "block");
-		$('#richText').css("display", "block");
-		$('._plainTextShow').css("display", "none");
-		$('#plainText').css("display", "none");
-	} */
-	function getArea() {
-
-		$
-				.get(
-						'/ziksana-web/zcourse/getsubjectarea',
-						{},
-						function(data) {
-							options = data;
-							var option_string = '';
-							for (i in options) {
-								label = options[i].label;
-								value = options[i].value;
-								if (i == 0) {
-									option = '<option selected="selected" value="' + value
-						+ '">'
-											+ label + '</option>';
-								} else
-									option = '<option value="' + value + '">'
-											+ label + '</option>';
-
-								option_string += option;
-							}
-							$('#Cmoduleareaddl').html(option_string);
-
-						});
-
-		$("#Cmoduleareaddl")
-				.change(
-						function(e) {
-							token = '';
-							request_type = 'GET';
-							uri = '/ziksana-web/zcourse/getsubject';
-
-							var Course_Area = '';
-							Course_Area = $('#Cmoduleareaddl').val();
-							$
-									.get(
-											uri,
-											{
-												'Course_Area' : Course_Area
-											},
-											function(data) {
-												options = data;
-												var option_string = '';
-												var area_string = '<option selected="selected" value='+Course_Area+'>'
-														+ Course_Area
-														+ '</option>';
-												option_string += '<option selected="selected" value="Select Subject">Select Subject</option>';
-												for (i in options) {
-													label = options[i].label;
-													value = options[i].value;
-													if (i == 0) {
-														option = '<option  value="'
-										+ value
-										+ '">'
-																+ label
-																+ '</option>';
-													} else
-
-														option = '<option value="'
-										+ value
-										+ '">'
-																+ label
-																+ '</option>';
-
-													option_string += option;
-												}
-
-												$('#Cmoduleareaddl').html(
-														area_string);
-												$('#Cmodulesubjectddl').html(
-														option_string);
-
-											});
-							var topic = '<option value="Select Topic">Select Topic</option>';
-							$('#Cmoduletopicddl').html(topic);
-						});
-
-		$("#Cmodulesubjectddl")
-				.change(
-						function(e) {
-							//console.log("Inside subject change handler");
-							uri = '/ziksana-web/zcourse/gettopic';
-							token = '';
-							request_type = 'GET';
-							var Course_Subject = $('#Cmodulesubjectddl').val();
-							var parameters = {
-								"Course_Subject" : Course_Subject
-							};
-
-							$
-									.get(
-											uri,
-											{
-												'Course_Subject' : Course_Subject
-											},
-											function(data) {
-												options = data;
-												var option_string = '';
-												option_string += '<option selected="selected" value="Select Topic">Select Topic</option>';
-												for (i in options) {
-													label = options[i].label;
-													value = options[i].value;
-													if (i == 0) {
-														option = '<option value="'
-										+ value
-										+ '">'
-																+ label
-																+ '</option>';
-													} else
-
-														option = '<option value="'
-										+ value
-										+ '">'
-																+ label
-																+ '</option>';
-
-													option_string += option;
-												}
-
-												$('#Cmoduletopicddl').html(
-														option_string);
-
-											});
-
-						});
-	} // End getArea()
-</script>
 <style>
 #splitter {
 	width: 100%;
@@ -264,7 +122,7 @@
 
 	<div class="clearfix"></div>
 
-	<div>
+	<div style="min-height: 400px;">
 
 		<!-- BEGIN FORM-->
 		<div id="splitterContainer">
@@ -281,7 +139,7 @@
 					<iframe src="" width="1050" height="591"></iframe>
 				</div>
 				<div class="definecontainer" id="definetab">
-				<form onload="" id="associateContentForm" action="/ziksana-web/zcourse/1/associatecontent" method="POST">
+				<form onload="" id="contentConsuptionForm" action="/ziksana-web/zcourse/1/contentconsuption" method="POST">
 					<input type="hidden" id="courseid" value="${courseId}" /> 
 					<input type="hidden" id="itemsToBeDisplayedPerPage" value="${itemsPerPage}" /> 
 					<input type="hidden" id="courseLearningComponentId" value=""/> 
@@ -308,34 +166,15 @@
 								<!--start of associate content container-->
 
 								<div id="associatewrapper">
-
 									<div id="associateul">
-										<div id="content_type_filter">
-											<a href="#" class="active_filter" onclick="getAllLearningContents()">All</a><a href="#" onclick="getLearningContentsByType('VIDEO')">Video
-												Contents</a><a href="#" onclick="getLearningContentsByType('LINK')">Web Link Contents</a><a href="#" onclick="getOtherLearningContents('Others')">Others</a>
-										</div>
-										<!--  <p style="font-size:14px; color:#0a91ac; cursor:pointer; text-align: right; "><a href="#linkurl" id="cereatecontent"> Create Content </a></p>
- <p class="associatecategory">Sort by : <a href="#linkurl">Tag</a>/<a href="#linkurl">Category</a>/<a href="#linkurl">Name </a></p>
-<p class="associatesearch"> 
- <form method="get" action="/search" id="search" style="margin-bottom:0;">
- <input type="text" id="field" name="q" placeholder="Search" />
- <div id="delete"><span id="x">x</span></div>
- </form>
- </p>  -->
-
 										<div class="ClearFix"></div>
 
 									</div>
 									<!--end of associateul-->
 
-
-									<div id="noContentFound" style="margin: auto; text-align: center; color: rgb(255, 255, 255); font-weight: bold; font-size: 15px; padding: 20px;">
-										
+									<div id="noContentFound" style="margin: auto; text-align: center; color: rgb(255, 255, 255); font-weight: bold; font-size: 15px; padding: 20px;">										
 									</div>
-
 									<div id="page1">
-
-
 									</div>
 									<!--end of page 1-->
 									<div id="pageNumbers" class="paginationbutton f-r" style="padding:10px">
