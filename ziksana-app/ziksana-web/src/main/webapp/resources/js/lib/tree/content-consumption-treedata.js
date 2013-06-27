@@ -153,39 +153,10 @@ function onButtonClick(menuitemId, type) {
 			$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
 			$('#ContentPanel2').hide();
 		}
-	}else if (menuaction == "Record") {
-		var contentId = tree.getSelectedItemId().split('_')[1];
-		//console.log("annotate content tree js ----  contentId - " + contentId);
-		//var learningContentObject = getLearningContentObject(contentId);
-	//	var contentKey = learningContentObject.contentPath;
-		//var contentFormat = learningContentObject.contentFormat;
-		//var numberOfImages = learningContentObject.numberOfThumbnails;
-		//var decorationType = "";
-		if(!isShowRecording(contentId)){
-			var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
-			var latestDecorationType = "";
-			if(decorationTypeList && decorationTypeList.length > 0 ){
-				latestDecorationType = decorationTypeList[(decorationTypeList.length - 1)];
-			}
-			alert("Content is already " + latestDecorationType);
-			return;
-		}
-		//console.log();
-		if("VIDEO" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
-			alert("Recording over a Video is not supported for this version. At the moment we only support documents.");
-			return;
-		}
-		if("AUDIO" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
-			alert("Recording over an Audio is not supported for this version. At the moment we only support documents.");
-			return;
-		}
-		if("IMAGE" == getLearningContentObject(contentId).contentFormat.toUpperCase()){
-			alert("Recording over an Image is not supported for this version. At the moment we only support documents.");
-			return;
-		}
-			
+	}else if (menuaction == "Play") {
+		var contentId = tree.getSelectedItemId().split('_')[1];	
 		ff_open_player();
-		//alert("tomorrow never dies");
+		alert("tomorrow never dies");
 
 	} 
 }

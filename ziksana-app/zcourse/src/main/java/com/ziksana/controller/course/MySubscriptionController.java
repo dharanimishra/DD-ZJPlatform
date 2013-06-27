@@ -54,5 +54,14 @@ public class MySubscriptionController {
 
 		return modelView;
 	}
+	
+	@RequestMapping(value = "/1/consumption", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView annotateContent() {
+		ModelAndView modelAndView = new ModelAndView("courses/consumption"); 
+		return modelAndView;
+
+	}
+	
 
 }
