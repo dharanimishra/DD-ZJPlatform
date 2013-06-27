@@ -3000,3 +3000,18 @@ label.error {
 .description a {
     cursor: pointer;
 }
+.announcement_container {position: relative;}
+.announcement_container:hover .announcementtip{display: inline-block;}
+.announcementtip {
+  background-color: #386F8F !important;
+  border-radius: 2px 2px 2px 2px;
+  box-shadow: 0 0 4px black;
+  display: none;
+  left: 0;
+  margin-top: -4px;
+  padding: 0.5em;
+  position: absolute;
+  top: 0;
+  width: 500px;
+  z-index: 99;
+}
