@@ -211,6 +211,16 @@ public class ProfileController {
 		
 	}
 	
+	@RequestMapping(value = "/1/deleteprofileimage/{memberId}", method = RequestMethod.GET)
+	public @ResponseBody int deleteProfileImage(@PathVariable int memberId){
+		int response = 0;
+		
+		response = memberService.deleteMemberProfileImage(memberId);
+		
+		return response;
+	}
+			
+	
 	@RequestMapping(value = "/1/editupdateprofile", method = RequestMethod.POST)
 	public @ResponseBody int editAndUpdateUserProfile(
 			@RequestParam(value = "memberId", required = true) String memberId,

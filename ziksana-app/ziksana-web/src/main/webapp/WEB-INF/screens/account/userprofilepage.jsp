@@ -116,7 +116,7 @@
 							$('#thubmnail_upload_message').html('');
 							$('#profile_thumbnail_image')
 									.attr('src','/ziksana-web/resources/images/usericon.png');
-
+							removeUserProfileImage();
 						}
 					</script>
 
@@ -296,7 +296,9 @@
 												'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 												'queueSizeLimit' : 1,
 												'successTimeout' : 350,
+												
 												'buttonText' : 'Change Image',
+											
 												'uploader' : '${ms.uploadScript}',
 												'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 												'fileSizeLimit' : '1024KB',
@@ -342,7 +344,7 @@
 							$('#profile_thumbnail_image')
 									.attr('src',
 											'/ziksana-web/resources/images/usericon.png');
-
+							removeUserProfileImage();
 						}
 					<c:if test="${not empty member.picturePath}">
 						$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="position: relative;top: 33px;">Remove</a>');
@@ -1256,6 +1258,17 @@ function getSecurity_Answer2(memberId){
 			 $('select#hiddensecurityQuestionTwo').val(data.securityQuestionId);
 			 
 				$('#ques_text_diplaytwo').text(data.securityQuestionText)
+	        }
+	);
+}
+function removeUserProfileImage(){
+	var ID = $("#memberIdValue").text();
+	$.get( '/ziksana-web/profile/1/deleteprofileimage/'+ID+''
+		    
+		 , function( data )
+	        {
+			 
+			
 	        }
 	);
 }

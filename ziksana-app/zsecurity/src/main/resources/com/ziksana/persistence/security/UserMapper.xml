@@ -165,6 +165,10 @@
 		where userName=#{userId}
 	</update>
 	
+	<update id="deleteMemberProfileImage" parameterType="int">
+		update memmember set PicturePath = null where ID = #{memberId}
+	</update>
+	
 	<select id="isUserNameExists" resultType="java.lang.Boolean" parameterType="String">
 		select count(*) from secmembercredential where BINARY userName=#{username}
 	</select>
