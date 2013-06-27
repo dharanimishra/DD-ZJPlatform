@@ -6,22 +6,6 @@
 <script>
 	$('#container4').isotope({
 
-	/* itemSelector : '.element',
-	 masonry : {
-	   columnWidth : 120,
-	  rowHeight: auto
-	 },
-	 masonryHorizontal : {
-	   rowHeight: auto
-	 },
-	 cellsByRow : {
-	   columnWidth : 240,
-	   rowHeight : auto
-	 },
-	 cellsByColumn : {
-	   columnWidth : 240,
-	   rowHeight : auto
-	 }*/
 	});
 
 	$(function() {
@@ -182,11 +166,12 @@ $(document).ready(function() { // On page load
     				<div class="sucessmssg" ><p>${message}</p></div>
 				</c:if>
 				<script>setTimeout( "jQuery('.sucessmssg').hide();",5000 );</script>
+			<div id="noContentFound" style="margin: auto; text-align: center; color:#000; font-weight: bold; font-size: 15px; ">						
+			</div>
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
 				
 			</div>
-			<div id="noContentFound" style="margin: auto; text-align: center; color:#000; font-weight: bold; font-size: 15px; padding: 20px;">						
-			</div>
+			
 			<div class="Clearfix"></div>
 			<div id="pageNumbers" class="paginationbutton f-r" style="padding:10px;">
 			</div>
@@ -211,7 +196,7 @@ $(document).ready(function() { // On page load
 
 <script
 	src="${staticFileServer}resources/js/custom/bootstrap/js/bootstrap.min.js"></script>
-<script src="${staticFileServer}resources/js/custom/table/js/app.js"></script>
+<%-- <script src="${staticFileServer}resources/js/custom/table/js/app.js"></script>
 <script>
 	jQuery(document).ready(function() {
 		// initiate layout and plugins
@@ -219,7 +204,7 @@ $(document).ready(function() { // On page load
 		App.init();
 
 	});
-</script>
+</script> --%>
 <style>
 .createcontentimg > img {
     padding: 0;
