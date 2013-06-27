@@ -33,7 +33,7 @@
 
 			<div class="fileupload  f-l" style="width:230px;">
 				<div class="associateimage" style="text-align:center;" >
-            <div style="height:150px;width:150px;margin-left:20px">
+            <div style="height:150px;width:150px;margin-left:0px">
 					<c:if test="${empty member.picturePath}">
 						<img style="width: 150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/usericon.png" align="center"/>
 					</c:if>
@@ -272,7 +272,7 @@
 
 			<div class="fileupload  f-l" style="width:230px;">
 				<div class="associateimage" style="text-align:center;">
- 				<div style="height:150px;width:150px;margin-left:20px">
+ 				<div style="height:150px;width:150px;margin-left:0px">
 					
 						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="" />
 
@@ -1295,7 +1295,7 @@ width:120px !important;
 }
 #profilecontainer {
     box-shadow: 1px 2px 15px #000000;
-    margin: auto auto 30px;
+    margin: 20px auto 30px;
     padding: 50px;
     width: 600px;
 }
@@ -1342,19 +1342,23 @@ border:1px solid #eee;
 border-radius: 6px 6px 6px 6px;"
 }
 .btnLogin {
-    border: 2px solid #FFFFFF !important;
+     background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 7px 7px 0 0;
     box-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) inset, 0 1px 1px rgba(0, 0, 0, 0.1);
-    color: #FFFFFF;
+    color: navy;
     cursor: pointer;
     float: right;
     font: bold 13px/9px Verdana,Tahomma,Geneva;
     height: 10px;
     margin-right: 50px;
-    margin-top: 20px;
+    margin-top: 44px;
     padding: 10px;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
-
+.btnLogin:hover {
+    color: gray;
+    text-decoration: none;
+}
 .formcontainer {
     padding-top: 20px;
 }
