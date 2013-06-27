@@ -174,9 +174,9 @@ public class PlayBookController {
 						.getModuleComponents(courseId);
 			
 			if(associateContentService.isModuleExist(courseId)){
-			List<NestTreeNode> nodeList = courseNestTreeService
-					.getCourseComponent(courseId);
-			 pdfInfo = getPDFInfo(nodeList, course);
+/*			List<NestTreeNode> nodeList = courseNestTreeService
+					.getCourseComponent(courseId);*/
+			 pdfInfo = getPDFInfo(treeNodeList, course);
 			
 			
 			}
@@ -258,10 +258,10 @@ public class PlayBookController {
 			 treeNodeList = courseNestTreeService
 						.getModuleComponents(courseId);
 			if(associateContentService.isModuleExist(courseId)){
-			List<NestTreeNode> nodeList = courseNestTreeService
+			/*List<NestTreeNode> nodeList = courseNestTreeService
 					.getCourseComponent(courseId);
-		   
-			pdfInfo = getPDFInfo(nodeList, course);
+		   */
+			pdfInfo = getPDFInfo(treeNodeList, course);
 			
 	
 			
@@ -332,20 +332,31 @@ public class PlayBookController {
     	    numberOfPages =2;
     	    pdfInfo.put("coursDescriptionFooter", "YES");
     	}
-        
+    	//contentLength =0;
 	    int countNode =0;
+	    System.out.println("content lenght nodelist size... " + nodeList.size());
 		for (NestTreeNode node : nodeList) {
 			countNode++;
+			
 			if(node.getTitle()!=null)
-			  contentLength = node.getTitle().length();
+			  contentLength =contentLength + node.getTitle().length();
+			
             if(node.getNodeDescription()!=null)	
-            	contentLength = node.getNodeDescription().length();	
-            if(countNode>3){
+            	contentLength = contentLength+ node.getNodeDescription().length();
+            
+            System.out.println("nodeDescription "  + node.getNodeDescription());
+            System.out.println("content lenght " + contentLength+ "  " + countNode);
+            if(contentLength>2500 || countNode>3){
+				numberOfPages++;
+				countNode=0;
+			 }
+            /*if(countNode>3){
             	numberOfPages++;
             	countNode=0;
             	pdfInfo.put("coursModuleFooterId",""+node.getId());
-            }
+            }*/
 		}
+		 System.out.println("content lenght " + contentLength+ "  " + countNode);
 		plannerOnPage=numberOfPages;
 		pdfInfo.put("plannerOnPage", ""+plannerOnPage);
 		pdfInfo.put("coursModuleOnPage", ""+coursModuleOnPage);

@@ -186,22 +186,18 @@ font-weight: bold;}
 <div class="Clearfix"> </div>
 <div id="definestructureformcontainer">
 
-          <!--  <div class="page-header" style="padding-left:0px !important; margin-bottom:0px !important;">
-                <div class="icon">
-                    <img src="../images/icons/information_icon.png" style="height:25px;"/>
-                </div>
-                 <h1>Organize your course into course modules/chapters</h1>
-            </div>End of page-header -->
-                
+<!-- ************************Course Description and Images************************* -->
 
-  <div class="clearfix"></div>
-
-<div style="margin-top:15px" > 
-     <div class="playbookconatiner">
-<div class="pbheader"><div class="pheaderL"><div class="phbox roundRb" style=" margin-right: 27px;background-color:#afb85b"></div>
-<div class="phbox roundLB" style="background-color:#f2db75"></div></div>
+<div id="course">
+      <div class="pheaderL">
+         <div class="phbox roundRb" style=" margin-right: 27px;background-color:#afb85b"></div>
+         <div class="phbox roundLB" style="background-color:#f2db75"></div>
+      </div>
+       <div class="pbheader">
 <div class="pheadmiddle"> <label>${course.name }</label></div>
-<div class="headerright"><div class="phboxblue"></div></div></div>
+<div class="headerright"><div class="phboxblue"></div></div>
+</div>
+
 <div class="imgcontent">
 <div class="imgcontentL">
 <div class="userimg">
@@ -214,8 +210,6 @@ font-weight: bold;}
    <img src="/ziksana-web/resources/images/playbook/usericon.png"  class="borderRb">
    </c:otherwise>
   </c:choose>
-  
- 
   <p>
     <label>${member.firstName }&nbsp; ${member.lastName }</label>
     <label>${member.designation } </label>
@@ -227,8 +221,8 @@ font-weight: bold;}
 <div class="Clearfix"></div>
 <div class="coursetitlecontent" >
 <div class="coursetitle" ><a href="#cd">Course Description</a><label><a href="#cd">P1</a></label></div>
-<div class="coursetitle" ><a href="#md">Module Discription with Content Listing</a><label><a href="#md">P${coursModuleOnPage}</a></label></div>
-<div class="coursetitle" ><a href="#pd">Planner Details</a><label><a href="#pd">P${plannerOnPage}</a></label></div>
+<div class="coursetitle" ><a href="#md">Module Discription with Content Listing</a><label><a href="#md" id="mdd">P${coursModuleOnPage}</a></label></div>
+<div class="coursetitle" ><a href="#pd">Planner Details</a><label><a href="#pd" id="pdd">P1</a></label></div>
 </div>
 </div>
 </div>
@@ -238,14 +232,13 @@ font-weight: bold;}
        <img src="${mediaserver}${course.thumbnailPicturePath}" width="826px" height="459px"/>       
    </c:when>
    <c:otherwise>
-   <img src="/ziksana-web/resources/images/playbook/medicalproffesional.png">
+   <img src="/ziksana-web/resources/images/playbook/defaultcourse.jpg">
    </c:otherwise>
   </c:choose>
- 
  </div>
 </div>
-<div class="Clearfix"></div>
-<div class="coursedescription" id="cd">
+   
+   <div class="coursedescription" id="cd">
 ${course.description}
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
@@ -254,7 +247,11 @@ ${course.description}
   <div class="chapeterfotter"><label class="pageno">01</label></div>
 </c:if>
 </div>
-<div class="coursedescription" id="md"><h2>Module Discription with Content Listing</h2>
+   
+</div>
+<!-- ************** Module div ************************** -->
+<div id="courseModule">
+	<h2>Module Discription with Content Listing</h2>
 
 <div class="contentdetails">
  <c:forEach var="node" items="${treeNodeList}">
@@ -264,7 +261,7 @@ ${course.description}
          <img src="${mediaserver}${node.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
       </c:when>
       <c:otherwise>
-      <img src="/ziksana-web/resources/images/preview/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+      <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
    </c:otherwise>
   </c:choose>
 	  <div><label class="b1">${node.title}</label><label class="b2">${course.name}</label ></div>
@@ -280,7 +277,7 @@ ${course.description}
 		         <img src="${mediaserver}${cnode.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
 		      </c:when>
 		      <c:otherwise>
-		   <img src="/ziksana-web/resources/images/preview/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+		   <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
 		   </c:otherwise>
 		  </c:choose>
 		    <b style="padding:0px">${cnode.title}</b><label style="float:right;font-weight:bold">${node.title}</label ><br/>    
@@ -301,22 +298,53 @@ ${course.description}
  
 
  </div>
-
-
 </div>
-<div class="coursedescription" id="pd"><h2>Planner Details</h2>
+<!-- ***********Planner Div ************** -->
+<div id="planner">
+ <h2>Planner Details</h2>
 <%@include file="viewPlanner.jsp"%>
 <div class="Clearfix"> </div>
 <div class="toplink"><a href="#ctc">Top</a></div>
 <div class="Clearfix"> </div>
+
+</div>
 <div class="chapeterfotter"><label class="pageno"></label></div>
 </div>
+<div style="margin-top:15px" > 
+    <!-- 
+     <div class="playbookconatiner">
+
+
+<div class="Clearfix"></div>
+
+<div class="coursedescription" id="md">
+
+
+
+</div>
+<div class="coursedescription" id="pd">
+
 </div>
     <div class="Clearfix"> </div>                      
                          
     <div class="Clearfix"> </div>                              
-    </div> <!--End of contentarea -->
+    </div> --> <!--End of contentarea -->
+ 
+ 
  <div style="float:right;margin-right:20px; margin-top:20px; margin-bottom:20px"><a class="btn">Download PDF</a> 
 <a href="/ziksana-web/zcourse/1/activatecourse/${courseIds}" class="btn">Complete Course</a></div> 
 </div> <!--End of definestructureformcontainer -->  
 
+<script>
+$(document).ready(function(){
+	//var totalHieght = $("#definestructureformcontainer").height()/1100;
+	var courseHieght = $("#course").height();
+	var moduleHieght = $("#courseModule").height();	
+	var coursemoduleOnPg=Math.ceil((courseHieght)/1100);;	 
+	var plannerOnPg = Math.ceil((courseHieght+moduleHieght)/1100);
+	 //alert(" " +coursemoduleOnPg +" "+ plannerOnPg);
+	$("#mdd").text("P"+coursemoduleOnPg);
+	$("#pdd").text("P"+plannerOnPg);
+	//alert("hi" +);	
+});
+</script>

@@ -139,7 +139,8 @@ font-weight: bold;}
 <script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
 <script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-ui-1.10.1.custom.min.js'></script>
 <div class="playbookconatiner">
-<div class="pbheader"><div class="pheaderL"><div class="phbox roundRb" style=" margin-right: 27px;background-color:#afb85b"></div>
+<div id="course" style="border:1px solid red">
+<div class="pbheader"><div class="pheaderL"><div class="phbox roundRb" style=" margin-right: 25px;background-color:#afb85b"></div>
 <div class="phbox roundLB" style="background-color:#f2db75"></div></div>
 <div class="pheadmiddle"> <label>${course.name }</label></div>
 <div class="headerright"><div class="phboxblue"></div></div></div>
@@ -167,8 +168,8 @@ font-weight: bold;}
 <div class="Clearfix"></div>
 <div class="coursetitlecontent" >
 <div class="coursetitle" ><a href="#cd">Course Description</a><label><a href="#cd">P1</a></label></div>
-<div class="coursetitle" ><a href="#md">Module Discription with Content Listing</a><label><a href="#md">P${coursModuleOnPage}</a></label></div>
-<div class="coursetitle" ><a href="#pd">Planner Details</a><label><a href="#pd">P${plannerOnPage}</a></label></div>
+<div class="coursetitle" ><a href="#md">Module Discription with Content Listing</a><label><a href="#md" id="mdd">P1</a></label></div>
+<div class="coursetitle" ><a href="#pd">Planner Details</a><label><a href="#pd" id="pdd">P1</a></label></div>
 </div>
 </div>
 </div>
@@ -178,18 +179,20 @@ font-weight: bold;}
        <img src="${mediaserver}${course.thumbnailPicturePath}" width="826px" height="459px"/>       
    </c:when>
    <c:otherwise>
-   <img src="/ziksana-web/resources/images/playbook/medicalproffesional.png">
+   <img src="/ziksana-web/resources/images/playbook/defaultcourse.jpg">
    </c:otherwise>
   </c:choose>
  </div>
 </div>
-<div class="Clearfix"></div>
+
 
 <div class="coursedescription" id="cd">
   <!-- b>Course Description</b -->
    <p class="top"> ${course.description}</p>
    <div class="Clearfix"> </div>
 </div>
+</div>
+<div id="courseModule">
 
 <div class="coursedescription" id="md" style="min-height:500px">
 <h2>Module Discription with Content Listing</h2>
@@ -201,7 +204,7 @@ font-weight: bold;}
          <img src="${mediaserver}${node.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
       </c:when>
       <c:otherwise>
-      <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+      <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
    </c:otherwise>
   </c:choose>
 	  <div><label class="b1">${node.title}</label><label  class="b2">${course.name}</label ></div>   
@@ -217,7 +220,7 @@ font-weight: bold;}
 		         <img src="${mediaserver}${cnode.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
 		      </c:when>
 		      <c:otherwise>
-		   <img src="/ziksana-web/resources/images/playbook/usericon.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+		   <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
 		   </c:otherwise>
 		  </c:choose>
 		    <div><label class="b1">${cnode.title}</label><label  class="b2">${node.title}</label ></div>   
@@ -234,13 +237,27 @@ font-weight: bold;}
  </div>
 <div class="Clearfix"> </div>
 </div>
-<div class="coursedescription" id="pd">
-<h2>Planner Details</h2>
-<%@include file="viewPlanner.jsp"%>
-<div class="Clearfix"> </div>
-<div class="toplink"></div>
-<div class="Clearfix"> </div>
 </div>
+	<div id="planner">
+		<div class="coursedescription">
+			<h2>Planner Details</h2>
+			<%@include file="viewPlanner.jsp"%>
+		</div>
+	</div>
+
 </div>
+<script>
+$(document).ready(function(){
+	//var totalHieght = $("#definestructureformcontainer").height()/1100;
+	var courseHieght = $("#course").height();
+	var moduleHieght = $("#courseModule").height();	
+	var coursemoduleOnPg=Math.ceil((courseHieght)/1100);;	 
+	var plannerOnPg = Math.ceil((courseHieght+moduleHieght)/1100);
+	 //alert(" " +coursemoduleOnPg +" "+ plannerOnPg);
+	$("#mdd").text("P"+coursemoduleOnPg);
+	$("#pdd").text("P"+plannerOnPg);
+	//alert("hi" +);	
+});
+</script>
 </body>
 </html>
