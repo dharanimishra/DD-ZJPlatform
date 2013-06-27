@@ -37,12 +37,15 @@ public class ContentEnrichment extends AuditHistory {
 	private Double					endTime 					= null;
 	private LinkType 					linkType 					= null;
 	private EnrichmentType 				enrichmentType 				= null;
+	private Integer 					linkTypeId 					= null;
+	private Integer 					enrichmentTypeId 			= null;
 	private String 						linkElement 				= null;
 	private Boolean 					internalIndicator 			= null;
 	private String 						linkName 					= null;
 	private String 						linkDescription 			= null;
 	private String 						linkItemAuthor 				= null;
 	private Double	 					linkItemCost 				= null;
+	private Integer 					linkSourceId				= null;
 	private LinkSource 					linkSource 					= null;
 	private Double 					duration	 				= null;
 	private Boolean 					zeniSuggestedIndicator 		= null;
@@ -367,6 +370,51 @@ public class ContentEnrichment extends AuditHistory {
 	 */
 	public void setParentEnrichment(ContentEnrichment parentEnrichment) {
 		this.parentEnrichment = parentEnrichment;
+	}
+
+	/**
+	 * @return the linkTypeId
+	 */
+	public Integer getLinkTypeId() {
+		return linkTypeId;
+	}
+
+	/**
+	 * @param linkTypeId the linkTypeId to set
+	 */
+	public void setLinkTypeId(Integer linkTypeId) {
+		this.linkTypeId = linkTypeId;
+		setLinkTypeId(linkTypeId);
+	}
+
+	/**
+	 * @return the enrichmentTypeId
+	 */
+	public Integer getEnrichmentTypeId() {
+		return enrichmentTypeId;
+	}
+
+	/**
+	 * @param enrichmentTypeId the enrichmentTypeId to set
+	 */
+	public void setEnrichmentTypeId(Integer enrichmentTypeId) {
+		this.enrichmentTypeId = enrichmentTypeId;
+		setEnrichmentType(enrichmentTypeId);
+	}
+
+	/**
+	 * @return the linkSourceId
+	 */
+	public Integer getLinkSourceId() {
+		return linkSourceId;
+	}
+
+	/**
+	 * @param linkSourceId the linkSourceId to set
+	 */
+	public void setLinkSourceId(Integer linkSourceId) {
+		this.linkSourceId = linkSourceId;
+		setLinkSourceId(linkSourceId);
 	}
 
 }

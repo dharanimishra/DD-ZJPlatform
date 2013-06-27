@@ -163,10 +163,22 @@ public class EnrichContentController {
 	}
 	
 	
-	@RequestMapping(value = "/1/enricher", method = RequestMethod.GET)
+	@RequestMapping(value = "/1/enricher/{courseId}/{learningComponentId}/{learningContentId}", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView enrichContent() {
-		ModelAndView modelAndView = new ModelAndView("courses/enricher"); 
+	ModelAndView enrichContent(
+			@PathVariable  Integer courseId,
+			@PathVariable Integer learningComponentId,
+			@PathVariable Integer learningContentId
+			) {
+		ModelAndView modelAndView = new ModelAndView("courses/enricher");
+		Course course = enrichContentService.getCourse(courseId);
+		LearningComponentContent learningComponentContent = enrichContentService.getLearningComponentContent(learningComponentId, learningContentId);
+		MemberPersona creator = new MemberPersona();
+		creator.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
+				.getToken().getMemberPersonaId().getStorageID()));
+		List<ContentEnrichment> contentEnrichmentList = enrichContentService.getEnrichments(course, learningComponentContent, creator);
+		String jsonString = JSONUtil.objectToJSONString(contentEnrichmentList);
+		modelAndView.addObject("enrichmentList", jsonString);
 		return modelAndView;
 	}
 

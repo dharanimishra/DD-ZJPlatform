@@ -38,6 +38,6 @@ public interface EnrichContentService {
 	public ContentEnrichment saveContentEnrichment(Course course, LearningComponentContent learningComponentContent, ContentEnrichment contentEnrichment, MemberPersona creator); 
 	public ContentEnrichment updateContentEnrichment(LearningComponentContent learningComponentContent, ContentEnrichment contentEnrichment); 
 	public void deleteContentEnrichment(LearningComponentContent learningComponentContent, Integer contentEnrichmentId); 
-	public ContentEnrichment getContentEnrichment(Integer contentEnrichmentId); 
+	public List<ContentEnrichment> getEnrichments(Course course, LearningComponentContent learningComponentContent, MemberPersona creator); 
 	public List<LearningComponentContentEnrichment> getLearningComponentContentEnrichments(LearningComponentContent learningComponentContent); 
 }

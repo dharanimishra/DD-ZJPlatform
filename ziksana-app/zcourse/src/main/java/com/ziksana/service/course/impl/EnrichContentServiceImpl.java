@@ -169,13 +169,6 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 		LOGGER.debug("The content enrichment deleted successfully for " + contentEnrichmentId);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ziksana.service.course.EnrichContentService#getContentEnrichment(java.lang.Integer)
-	 */
-	public ContentEnrichment getContentEnrichment(Integer contentEnrichmentId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	/* (non-Javadoc)
 	 * @see com.ziksana.service.course.EnrichContentService#getLearningComponentContentEnrichments(com.ziksana.domain.course.LearningComponentContent)
@@ -189,6 +182,14 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 	public LearningComponentContent getLearningComponentContent(
 			Integer learningComponentId, Integer learningContentId) {
 		return learningComponentContentService.getLearningComponentContent(learningComponentId, learningContentId);
+	}
+
+	public List<ContentEnrichment> getEnrichments(Course course,
+			LearningComponentContent learningComponentContent,
+			MemberPersona creator) {
+		Integer courseId = Integer.parseInt(course.getCourseId().getStorageID());
+		List<ContentEnrichment> contentEnrichmentList =  componentContentEnrichmentMapper.getEnrichments(courseId, learningComponentContent.getId(), creator.getMemberRoleId());
+		return contentEnrichmentList;
 	}
 	
 	

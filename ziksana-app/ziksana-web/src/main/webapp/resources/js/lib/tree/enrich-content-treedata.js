@@ -154,16 +154,7 @@ function onButtonClick(menuitemId, type) {
 			$('#ContentPanel2').hide();
 		}
 	}else if (menuaction == "Enrich") {
-		//alert("Work in progress");
-		//var contentId = tree.getSelectedItemId().split('_')[1];
-		//console.log("annotate content tree js ----  contentId - " + contentId);
-		//var learningContentObject = getLearningContentObject(contentId);
-	//	var contentKey = learningContentObject.contentPath;
-		//var contentFormat = learningContentObject.contentFormat;
-		//var numberOfImages = learningContentObject.numberOfThumbnails;
-		//var decorationType = "";
 		
-		//console.log();
 		if("DOCUMENT" == getLearningContentObject(selectedTreeContentId).contentFormat.toUpperCase()){
 			alert("Enrichiment over a Document is not supported for this version. At the moment we only support videos.");
 			return;
@@ -178,7 +169,6 @@ function onButtonClick(menuitemId, type) {
 		}
 			
 		ff_open_player();
-		//alert("tomorrow never dies");
 	}
 }
 
@@ -187,8 +177,9 @@ function ff_open_player(){
 	$('#definetab').hide();
 	$('#leftPane').hide();
 	$('#enrich_content_container').show();
-	$('#enrich_content_container iframe').attr('src','/ziksana-web/zcourse/1/enricher');
-	console.log("Tomorrow nver dies");
+	var courseId = $('#courseid').val();
+	var uri = "/ziksana-web/zcourse/1/enricher/" + courseId + "/"+ selectedTreeContentComponentId + "/" +  selectedTreeContentId;
+	$('#enrich_content_container iframe').attr('src',uri);
 }
 
 function fixImage(id) {

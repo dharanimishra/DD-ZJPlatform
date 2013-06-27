@@ -104,6 +104,7 @@
                 <!--<![endif]-->
             </object>
         </noscript>     
-  		 <input type="hidden" id="enrich_id" value="-1"/>
-    </body>
+  		<input type="hidden" id="enrich_id" value="-1"/>
+		<input type="hidden" id="enrichmentList" value='${enrichmentList}'/>    
+	</body>
 </html>
