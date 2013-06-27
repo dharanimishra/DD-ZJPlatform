@@ -237,7 +237,7 @@ $(document).ready(function() { // On page load
                             <div class="clearfix"></div>
 							<div style="width: 100px; height: 105px; border:0px solid red">
 								<img id="course_thumbnail_image"
-									src="${staticFileServer}resources/images/preview/defaultcourse.png"
+									src="${staticFileServer}resources/images/preview/defaultmodule.png"
 									align="center" /> <input readonly="readonly" type="hidden"
 									id="Cimageupl" style="margin-left: 20px;height:100px" />
 							</div>

@@ -156,9 +156,9 @@
 					</p>
 					<div class="description">
 
-						<a href="#linkurl" class="pull-right"><img class="iconcc"
+						<a href="/ziksana-web/unsecure/downloadPlayBook/488" class="pull-right"><img class="iconcc"
 							title="View Playbook" src="${staticFileServer}resources/images/content/viewplaybook.svg"
-							style="height: 35px; margin: 5px;" /></a> <a href="#linkurl"
+							style="height: 35px; margin: 5px;" /></a> <a href="/ziksana-web/zcourse/1/mylearnercourse/488"
 							class="pull-right"><img
 							src="${staticFileServer}resources/images/content/observecourses.svg" title="Observe Course"
 							style="height: 35px; margin: 5px;" /></a>
