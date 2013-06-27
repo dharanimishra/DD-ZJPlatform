@@ -253,7 +253,7 @@
 	     	 		<a class="btn" href="/ziksana-web/login">Login</a>
 	     	 </div>
      	 </c:if>
-     	  <c:if test="${resetEmailSuccess == 'Mail Send Successful'}">
+     	  <c:if test="${resetEmailSuccess == 'Your Use Id has been sent to email address successfully'}">
 	     	 <div class="resetpassword" style="text-align:center;height:190px">
 	     	 		<h2 style="color:green;margin:auto;font-size:14pt;font-weight: 600;">Your Use Id has been sent to email address successfully.</h2>
 	     	 		<br/>
