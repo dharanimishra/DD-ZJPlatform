@@ -372,6 +372,10 @@ left: -238px;
 input.error {
     color: #555 !important;
 }
+.uploadify-queue{
+    position: absolute;
+    width: 350px;}
+.editslide{margin-top:32px;}
 </style>
 
 <script type="text/javascript">
