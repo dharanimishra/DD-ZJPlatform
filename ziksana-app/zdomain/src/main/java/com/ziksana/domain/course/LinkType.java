@@ -1,10 +1,10 @@
 package com.ziksana.domain.course;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.ziksana.util.EnumUtil;
+import com.ziksana.domain.utils.UTLLookup;
+import com.ziksana.util.UTLLookUpUtil;
 
 /**
  * @author Ratnesh Kumar
@@ -13,48 +13,51 @@ import com.ziksana.util.EnumUtil;
 public enum LinkType {
 
 	// TODO: retrieve the ids from the static data service
-	REFERENCE(), ADDITIONAL_INFO(), VARIATION_INFO(), LOCALIZATION_INFO(), EXAMPLE_INFO(), TEST_INFO(), TOC(), NOTE();
+	REFERENCE(-1, "Reference"), ADDITIONAL_INFO(-2, "Additional Information"), VARIATION_INFO(-3, "Variation Information"), LOCALIZATION_INFO(-4, "Localization Information"), EXAMPLE_INFO(-5, "Example Information"), TEST_INFO(-6, "Test Information");
+
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(LinkType.class);
 
 	private int id;
 	private String name;
 
-	private final static String category = "Link Type";
-
-	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-
-	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-
-		REFERENCE.setID(mapUtil.get("Reference").intValue());
-		ADDITIONAL_INFO.setID(mapUtil.get("Additional information").intValue());
-		VARIATION_INFO.setID(mapUtil.get("Variation information").intValue());
-		LOCALIZATION_INFO.setID(mapUtil.get("Localization information")
-				.intValue());
-
-		EXAMPLE_INFO.setID(mapUtil.get("External URI").intValue());
-		TEST_INFO.setID(mapUtil.get("Test information").intValue());
-		TOC.setID(mapUtil.get("Table of Contents / Topic").intValue());
-		NOTE.setID(mapUtil.get("Note").intValue());
-
-	}
+	private final static String CATEGORY = "Link Type";
 
 	private LinkType() {
+	}
 
+	private static boolean initialized = false;
+
+	private static synchronized void initialize() {
+		if (initialized) {
+			return;
+		}
+		for (LinkType linkType : LinkType.values()) {
+			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY,
+					linkType.getName());
+			linkType.id = utlLookup.getLookupValueId();
+		}
+		initialized = true;
+		LOGGER.debug("LinkType initialized "); 
 	}
 
 	private LinkType(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
-
-	private void setID(int id) {
-		this.id = id;
-
+	
+	public static LinkType getValueOf(String linkTypeString){
+		initialize();
+		return valueOf(linkTypeString);
 	}
+
 
 	public int getID() {
 		return id;
+	}
+
+	public void setID(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -62,16 +65,20 @@ public enum LinkType {
 	}
 
 	public static LinkType getLinkType(int ID) {
+		if (!initialized) {
+			initialize();
+		}
 		for (LinkType t : LinkType.values()) {
 			if (t.getID() == ID) {
 				return t;
 			}
 		}
 
-		throw new NoSuchElementException("LinkType ID [" + ID + "] not found");
+		throw new IndexOutOfBoundsException("LinkType ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {
-		return "Link Type [" + getName() + "] ID [" + getID() + "]";
+		return "LinkType [" + getName() + "] ID [" + getID() + "]";
 	}
 }

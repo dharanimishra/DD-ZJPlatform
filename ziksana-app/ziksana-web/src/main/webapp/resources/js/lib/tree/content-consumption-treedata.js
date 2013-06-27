@@ -1,11 +1,11 @@
 var counter = 0;
 function onButtonClick(menuitemId, type) {
 	var menuaction = menuitemId;
-	//alert("menuaction " + menuaction);
-	
+	//following values are used by flash player
 	selectedTreeContentId = tree.getSelectedItemId().split('_')[1];
 	selectedTreeContentComponentId = tree.getParentId(tree.getSelectedItemId()).split('_')[1];
-	
+
+	//alert("menuaction " + menuaction);
 	if (menuaction == "Add_Module") {
 		// alert("open the menu for add module.");
 		$('#Viewmodulecontainer').hide();
@@ -99,7 +99,7 @@ function onButtonClick(menuitemId, type) {
 	} else if (menuaction == "Delete") {
 		// alert("open the menu for Delete module.");
 		ComponentId = tree.getSelectedItemId();
-		console.log(ComponentId);
+		//console.log(ComponentId);
 		confirm_delete_component = confirm('Are you sure you want to delete this item?');
 		if (confirm_delete_component == true) {
 			uri = '/ziksana-web/zcourse/1/unassociatecontent';
@@ -118,17 +118,16 @@ function onButtonClick(menuitemId, type) {
 				"contentId" : ComponentId.split('_')[1]
 			};
 			
-			console.log("delete content course id is  " + CourseId);
-			console.log("parameters.length " + parameters.length);
+			//console.log("delete content course id is  " + CourseId);
+			//console.log("parameters.length " + parameters.length);
 			
 			//return;
 			$.post(uri, parameters, function(data) {
-				console.log(data);
+				//console.log(data);
 				if (data.response == 'success') {
 					course_id = data.id;
 					window.location.href = "/ziksana-web/zcourse/1/repositorycontents/"
 							+ CourseId ;
-
 				} else {
 					$('#tempdiv1').html(
 							'<span style="color:red;">'
@@ -137,7 +136,7 @@ function onButtonClick(menuitemId, type) {
 			});
 					
 /*			$.post(uri, parameters, function(data) {
-				console.log(data);
+				//console.log(data);
 				if (data.response == 'success') {
 					course_id = data.id;
 				} else {
@@ -153,33 +152,42 @@ function onButtonClick(menuitemId, type) {
 			$('input:checkbox[name=learningContentToBeAssociated]').removeAttr('checked');
 			$('#ContentPanel2').hide();
 		}
-	}else if (menuaction == "Enrich") {
-		
-		if("DOCUMENT" == getLearningContentObject(selectedTreeContentId).contentFormat.toUpperCase()){
-			alert("Enrichiment over a Document is not supported for this version. At the moment we only support videos.");
-			return;
-		}
-		if("AUDIO" == getLearningContentObject(selectedTreeContentId).contentFormat.toUpperCase()){
-			alert("Enrichiment over an Audio is not supported for this version. At the moment we only support videos.");
-			return;
-		}
-		if("IMAGE" == getLearningContentObject(selectedTreeContentId).contentFormat.toUpperCase()){
-			alert("Enrichiment over an Image is not supported for this version. At the moment we only support videos.");
-			return;
-		}
-			
+	}else if (menuaction == "Play") {
 		ff_open_player();
-	}
+		alert("tomorrow never dies");
+
+	} 
 }
+function isShowRecording(contentId){
+	var showRecording = true;
+	var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
+	if(decorationTypeList && decorationTypeList.length > 0){
+		for(var i=0; i < decorationTypeList.length; i++){
+			if("ENRICHED" == decorationTypeList[i].toUpperCase()){
+				showRecording = false;
+				break;
+			}
+		}
+	}
+	return showRecording;
+ }
+function isVideo(contentId){
+	var isVideo = false;
+	var contentType = getLearningContentObject(contentId).contentType;
+	if("VIDEO" == contentType.toUpperCase()){
+		isVideo = true; 
+	}
+	return isVideo;
+ }
+ 
 
 function ff_open_player(){
 	$('#page-header-div').hide();
 	$('#definetab').hide();
 	$('#leftPane').hide();
-	$('#enrich_content_container').show();
-	var courseId = $('#courseid').val();
-	var uri = "/ziksana-web/zcourse/1/enricher/" + courseId + "/"+ selectedTreeContentComponentId + "/" +  selectedTreeContentId;
-	$('#enrich_content_container iframe').attr('src',uri);
+	$('#recorded_content_container').show();
+	$('#recorded_content_container iframe').attr('src','/ziksana-web/zcourse/1/consumption');
+	alert("Die another day");
 }
 
 function fixImage(id) {
@@ -207,7 +215,7 @@ function createtree(course_id) {
 	menu.setIconsPath("/ziksana-web/resources/js/lib/tree/treeimages/images/");
 	menu.renderAsContextMenu();
 	menu.attachEvent("onClick", onButtonClick);
-	menu.loadXML("/ziksana-web/resources/js/lib/tree/xml/_enrich_content_menu.xml");
+	menu.loadXML("/ziksana-web/resources/js/lib/tree/xml/_content_consumption_menu.xml");
 
 	tree = new dhtmlXTreeObject("treeboxbox_tree", "100%", "100%", 0);
 	tree.setSkin('dhx_skyblue');
@@ -234,25 +242,25 @@ function createtree(course_id) {
 
 		if (node_type == "COURSE") {
 			$('#courseid').val(itemId);
-			console.log("COURSE " + itemId);
+			//console.log("COURSE " + itemId);
 		}
 
 		if (node_type == "COMPONENT") {
 			$('#courseLearningComponentId').val(itemId);
-			console.log("COMPONENT " + itemId);
+			//console.log("COMPONENT " + itemId);
 		}
 
 		parent_node_id = tree.getParentId(itemId);
 
 		if (parent_node_id == '0') {
-			console.log('Node parent id is: ' + parent_node_id);
+			//console.log('Node parent id is: ' + parent_node_id);
 		} else {
-			console.log('Node parent id is COMPONENT: ' + parent_node_id);
+			//console.log('Node parent id is COMPONENT: ' + parent_node_id);
 			parent_node_type = parent_node_id.split('_')[0];
 			if (parent_node_type = "COMPONENT") {
 				$('#parentLearningComponentId').val(itemId);
 			}
-			console.log("parent_node_id " + parent_node_id);
+			//console.log("parent_node_id " + parent_node_id);
 		}
 		tree.selectItem(itemId, false);
 		var id = tree.getSelectedItemId();
@@ -264,27 +272,27 @@ function createtree(course_id) {
 			//menu.hideItem('Delete');
 			//menu.showItem('CourseEdit');
 			//menu.hideItem('ModuleEdit');
-			//menu.hideItem('View');
-			//menu.hideItem('Delete');
-			menu.hideItem('Enrich');
-			//menu.hideItem('Search_Associate_Content');
+			menu.hideItem('View');
+			menu.hideItem('Delete');
+			menu.hideItem('Record');
+			menu.hideItem('Search_Associate_Content');
 		}
 
 		if (node_type == "COMPONENT") {
-			//menu.hideItem('View');
-			//menu.hideItem('Delete');
-			menu.hideItem('Enrich');
+			menu.hideItem('View');
+			menu.hideItem('Delete');
+			menu.hideItem('Record');
 			//menu.hideItem('CourseEdit');
 			//menu.showItem('Delete');
 			//menu.showItem('Associate_Content');
-			//menu.showItem('Search_Associate_Content');
+			menu.showItem('Search_Associate_Content');
 		}
 
 		if (node_type == "CONTENT") {
-			//menu.showItem('View');
-			menu.showItem('Enrich');
-			//menu.showItem('Delete');
-			//menu.hideItem('Search_Associate_Content');
+			menu.showItem('View');
+			menu.showItem('Play');
+			menu.showItem('Delete');
+			menu.hideItem('Search_Associate_Content');
 		}
 		return true;
 	});
@@ -298,28 +306,10 @@ function createtree(course_id) {
 
 }
 
-function isShowEnrich(contentId){
-	var showAnnoation = true;
-	var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
-	if(decorationTypeList && decorationTypeList.length > 0){
-		for(var i=0; i < decorationTypeList.length; i++){
-			if("RECORDED" == decorationTypeList[i].toUpperCase() || "ENRICHED" == decorationTypeList[i].toUpperCase()){
-				showAnnoation = false;
-				break;
-			}
-			
-		}
-	}
-	return showAnnoation;
- }
- function isVideo(contentId){
-	var isVideo = false;
-	var contentType = getLearningContentObject(contentId).contentType;
-	if("VIDEO" == contentType.toUpperCase()){
-		isVideo = true; 
-	}
-	return isVideo;
- }
+function getJsonObject (jsonResponse){ 
+	var json_data = $.parseJSON(jsonResponse);
+	return json_data;
+}	
 
 
 $(document).ready(

@@ -179,11 +179,12 @@ $(document).ready(function(){
 		<form>
 			<input type="hidden" id="courses" value='${courseAsJSONString}' /> <input
 				type="hidden" id="fileServerPath" value='${ms.uploadContent}' />
+			<div id="noCourseFound" style="margin: auto;position:relative;text-align: center; color:#000; font-weight: bold; font-size: 15px; padding: 20px;">						
+			</div>
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
 		
 			</div>
-			<div id="noCourseFound" style="margin: auto;position:relative;top:-134px; text-align: center; color:#000; font-weight: bold; font-size: 15px; padding: 20px;">						
-			</div>
+			
 			<div class="Clearfix"></div>
 			<div id="pageNumbers" class="paginationbutton f-r"
 				style="padding: 10px;"></div>

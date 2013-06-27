@@ -380,9 +380,9 @@ public class CoursePlannerController {
 			//0_course_423_content_376
 
 			//course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()
-			
+			//course-"+node.getCourseId()+"_component-"+node.getId()+"_content-"+content.getContentId()
 			nodeId = request.getParameter("0course-"+ courseId + "_component-" + con[0]+ "_content-" + moduleContentId[3] + "");
-
+			System.out.println(nodeId);
 			if (nodeId != null) {
 				if ("".equals(nodeId)) {
 					planner1.setId(0);
@@ -404,6 +404,7 @@ public class CoursePlannerController {
 				.getPlannerByCourseId(Integer.parseInt(courseId));
 		if (updatePlannerList.size() == 0) {
 			plannerService.savePlanner(plannerList);
+			plannerService.savePlanner(saveContentList);
 			response = "redirect:/zcourse/1/planner/"+Integer.parseInt(courseId)+ "";
 
 		} 
@@ -416,6 +417,7 @@ public class CoursePlannerController {
 						&& currentList.getId() == 0) {
 					
 					plannerService.savePlannerPojo(currentList);
+					System.out.println("To save component== "+currentList);
 			
 				} else {
 					
@@ -428,7 +430,7 @@ public class CoursePlannerController {
 						&& contentList.getId() == 0) {
 					
 					plannerService.savePlannerPojo(contentList);
-					
+					System.out.println("To save content== "+contentList);
 
 				} else {
 					
@@ -594,6 +596,7 @@ public class CoursePlannerController {
 				.getPlannerByCourseId(Integer.parseInt(courseId));
 		if (updatePlannerList.size() == 0) {
 			plannerService.savePlanner(plannerList);
+			plannerService.savePlanner(saveContentList);
 			response = "redirect:/zplaybook/unsecure/htmlView/"+Integer.parseInt(courseId)+ "";
 
 		} 

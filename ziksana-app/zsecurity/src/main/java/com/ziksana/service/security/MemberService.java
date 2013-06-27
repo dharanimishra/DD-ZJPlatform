@@ -30,6 +30,8 @@ public interface MemberService {
 	public boolean isPrimaryEmailIdExists(String emailId);
 
 	public String getPasswordUpdatedOn(int memberId);
+
+	public int deleteMemberProfileImage(int memberId);
 	
 
 }

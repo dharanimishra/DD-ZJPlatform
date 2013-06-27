@@ -80,7 +80,7 @@ public class CourseContentEnrichmentServiceImpl implements
 	public void saveTOC(Enrichment enrichment, LinkType enrichLinkType)
 			throws CourseException {
 
-		saveReferenceOrTopicOrNotes(enrichment, LinkType.TOC);
+		//saveReferenceOrTopicOrNotes(enrichment, LinkType.TOC);
 
 	}
 
@@ -120,10 +120,9 @@ public class CourseContentEnrichmentServiceImpl implements
 
 			//contentEnrichment.setApplyEnrichment(enrichment);
 
-			contentEnrichment.setLinkTypeId(enrichLinkType.getID());
+			//contentEnrichment.setLinkTypeId(enrichLinkType.getID());
 
-			LOGGER.debug("Before Saving the Enrichment Content ....:"
-					+ contentEnrichment.getLinkTypeId());
+			//LOGGER.debug("Before Saving the Enrichment Content ....:"+ contentEnrichment.getLinkTypeId());
 			enrichMapper.saveRefenceContent(contentEnrichment);
 
 		}
@@ -197,11 +196,7 @@ public class CourseContentEnrichmentServiceImpl implements
 
 				contentEnrichment = enrichment.getContentEnrich();
 
-				if (contentEnrichment.getLinkType().equals(LinkType.TOC)) {
-
-					topicContentEnrichList.add(contentEnrichment);
-
-				} else if (contentEnrichment.getLinkType().equals(
+				if (contentEnrichment.getLinkType().equals(
 						LinkType.REFERENCE)) {
 
 					refContentEnrichList.add(contentEnrichment);

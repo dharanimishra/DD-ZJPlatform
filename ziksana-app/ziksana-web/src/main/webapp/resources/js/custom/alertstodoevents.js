@@ -136,7 +136,14 @@ function get_and_populate_announcements(val){
 				$(data).find("announcements").each(function(index){
 
 					announcement_all+="<div id='announcement"+index+"' class='announcementhead'>";
-					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
+					
+					
+					if(($(this).find("message").text()).length > 50){
+						announcement_all+="<div class='announcementname pull-left announcement_container' >"+short_string($(this).find("message").text())+"<div class='announcementtip' style='color:white;'>"+$(this).find("message").text()+" </div></div>";
+					}else{
+						announcement_all+="<p class='announcementname pull-left'>"+$(this).find("message").text()+"</p>";
+					}
+					
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
@@ -212,7 +219,11 @@ function get_and_populate_universityannouncements(val){
 				$(data).find("announcements").each(function(index){
 
 					announcement_all+="<div id='announcement"+index+"' class='announcementhead'>";
-					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
+					if(($(this).find("message").text()).length > 50){
+						announcement_all+="<div class='announcementname pull-left announcement_container' >"+short_string($(this).find("message").text())+"<div class='announcementtip' style='color:white;'>"+$(this).find("message").text()+" </div></div>";
+					}else{
+						announcement_all+="<p class='announcementname pull-left'>"+$(this).find("message").text()+"</p>";
+					}
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
@@ -275,7 +286,11 @@ function get_and_populate_departmentannouncements(val){
 				$(data).find("announcements").each(function(index){
 
 					announcement_all+="<div id='announcement"+index+"' class='announcementhead'>";
-					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
+					if(($(this).find("message").text()).length > 50){
+						announcement_all+="<div class='announcementname pull-left announcement_container' >"+short_string($(this).find("message").text())+"<div class='announcementtip' style='color:white;'>"+$(this).find("message").text()+" </div></div>";
+					}else{
+						announcement_all+="<p class='announcementname pull-left'>"+$(this).find("message").text()+"</p>";
+					}
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";
@@ -339,7 +354,11 @@ function get_and_populate_courseannouncements(val){
 				$(data).find("announcements").each(function(index){
 
 					announcement_all+="<div id='announcement"+index+"' class='announcementhead'>";
-					announcement_all+="<p class='announcementname pull-left'>"+ $(this).find("message").text()+"</p>";
+					if(($(this).find("message").text()).length > 50){
+						announcement_all+="<div class='announcementname pull-left announcement_container' >"+short_string($(this).find("message").text())+"<div class='announcementtip' style='color:white;'>"+$(this).find("message").text()+" </div></div>";
+					}else{
+						announcement_all+="<p class='announcementname pull-left'>"+$(this).find("message").text()+"</p>";
+					}
 					announcement_all+="<p class='announcementdate pull-right'>"+$(this).find("announcementDate").text()+"</p>";
 					announcement_all+="<div class='Clearfix'> </div>";
 					announcement_all+="<p class='announcementdate'>"+$(this).find("description").text()+"</p>";

@@ -44,4 +44,6 @@ public interface UserMapper {
 
 	public String getPasswordUpdatedOn(int memberId);
 
+	public int deleteMemberProfileImage(int memberId);
+
 }

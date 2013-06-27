@@ -212,7 +212,7 @@
 			      <label class="control-label" style="padding-top:-10px;"><fmt:message key="new.password"></fmt:message></label>
 			      <div class="controls">
 				<div style="color: red;" id="result"></div>
-			      <input value="" placeholder="<fmt:message key="new.password"></fmt:message>"  type="password" name="password" id="password" data-prompt-position="inline"/>
+			      <input onchange="removeFocusPassword()" value="" placeholder="<fmt:message key="new.password"></fmt:message>"  type="password" name="password" id="password" data-prompt-position="inline"/>
 			      
 			      </div></div> 
 			      
@@ -253,7 +253,7 @@
 	     	 		<a class="btn" href="/ziksana-web/login">Login</a>
 	     	 </div>
      	 </c:if>
-     	  <c:if test="${resetEmailSuccess == 'Mail Send Successful'}">
+     	  <c:if test="${resetEmailSuccess == 'Your Use Id has been sent to email address successfully'}">
 	     	 <div class="resetpassword" style="text-align:center;height:190px">
 	     	 		<h2 style="color:green;margin:auto;font-size:14pt;font-weight: 600;">Your Use Id has been sent to email address successfully.</h2>
 	     	 		<br/>
@@ -523,7 +523,7 @@ $(document).ready(function() {
 		$('#result').removeClass();
 		$('#result').addClass('weak');
 		$('#result').html('<div style="width:180px; margin-top:7px;border:1px solid #fff;"><div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><div style="margin-top: -7px;color:red;">&nbsp;&nbsp;<fmt:message key="resetpass.weekpass"/> </div><div style="color:orange;"><fmt:message key="restpass.passworddes"/>  </div></div>');
-		return true;			
+		return false;			
 	} else if (strength == 2 ) {
 		$('#result').removeClass();
 		$('#result').addClass('good');
@@ -583,11 +583,17 @@ function checkpass()
 	}else{
 		if($('#password').val() == ''){
 		$('#result').html("<fmt:message key="resetpass.enterpass"/>");
+		$('#password').focus();
+		$('#password').addClass('error_password');
 		}
 	}
 
 }
-
+function removeFocusPassword(){
+	$('#password').focusout();
+	$('#password').removeClass('error_password');
+	document.getElementById("result").innerHTML = '';
+}
 
 function passwordStartCharectors(val){
 	
@@ -637,12 +643,16 @@ function validateEmailId(){
 	}
 
 }
+
 </script>
  
  <style>
  
 #result1{
 	color:red;
+}
+.error_password{
+	border:1px solid red!important;
 }
  </style>
   

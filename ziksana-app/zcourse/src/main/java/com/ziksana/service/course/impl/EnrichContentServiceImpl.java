@@ -18,6 +18,8 @@ import com.ziksana.domain.course.LearningComponentContentEnrichment;
 import com.ziksana.domain.course.LearningContent;
 import com.ziksana.domain.course.LearningContentDecoration;
 import com.ziksana.domain.member.MemberPersona;
+import com.ziksana.persistence.course.ContentEnrichmentMapper;
+import com.ziksana.persistence.course.LearningComponentContentEnrichmentMapper;
 import com.ziksana.service.course.AssociateContentService;
 import com.ziksana.service.course.CourseService;
 import com.ziksana.service.course.EnrichContentService;
@@ -53,7 +55,12 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 	
 	@Autowired
 	AssociateContentService associateContentService;
+	
+	@Autowired
+	LearningComponentContentEnrichmentMapper componentContentEnrichmentMapper;
 
+	@Autowired
+	ContentEnrichmentMapper contentEnrichmentMapper;
 	
 	public List<LearningContent> getLearningContents(Integer authMemberRoleId) {
 		return learningContentService.getUserContent(authMemberRoleId);
@@ -78,6 +85,10 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 			exists = false;
 		}
 		return exists;
+	}
+
+	public LearningComponentContent getLearningComponentContent(Integer learningComponentContentId){
+		return learningComponentContentService.getLearningComponentContent(learningComponentContentId);
 	}
 
 	public LearningContent createLearningContent(LearningContent learningContent, List<ContentDecorationType> contentDecorationTypeList, MemberPersona creator, Integer learningComponentId,LearningContent previousLearningContent) {
@@ -115,10 +126,27 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 	 * @see com.ziksana.service.course.EnrichContentService#saveContentEnrichment(com.ziksana.domain.course.LearningComponentContent, com.ziksana.domain.course.ContentEnrichment)
 	 */
 	public ContentEnrichment saveContentEnrichment(
+			Course course,
 			LearningComponentContent learningComponentContent,
-			ContentEnrichment contentEnrichment) {
-		// TODO Auto-generated method stub
-		return null;
+			ContentEnrichment contentEnrichment, MemberPersona creator) {
+		contentEnrichmentMapper.saveContentEnrichment(contentEnrichment);
+		componentContentEnrichmentMapper.saveLearningComponentContentEnrichment(
+				getLearningComponentContentEnrichment(course, learningComponentContent, contentEnrichment, creator));
+		return contentEnrichment;
+	}
+	
+	private LearningComponentContentEnrichment getLearningComponentContentEnrichment(Course course,
+			LearningComponentContent learningComponentContent,
+			ContentEnrichment contentEnrichment, MemberPersona creator){
+		LearningComponentContentEnrichment  componentContentEnrichment = new LearningComponentContentEnrichment();
+		componentContentEnrichment.setActive(true);
+		componentContentEnrichment.setContentEnrichment(contentEnrichment);
+		componentContentEnrichment.setCourse(course);
+		//componentContentEnrichment.setCurriculumCourse(curriculumCourse)
+		componentContentEnrichment.setIsDelete(false);
+		componentContentEnrichment.setLearningComponentContent(learningComponentContent);
+		componentContentEnrichment.setCreatingMember(creator);
+		return componentContentEnrichment;
 	}
 
 	/* (non-Javadoc)
@@ -127,27 +155,20 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 	public ContentEnrichment updateContentEnrichment(
 			LearningComponentContent learningComponentContent,
 			ContentEnrichment contentEnrichment) {
-		// TODO Auto-generated method stub
-		return null;
+		contentEnrichmentMapper.updateContentEnrichment(contentEnrichment);
+		return contentEnrichment;
 	}
 
 	/* (non-Javadoc)
 	 * @see com.ziksana.service.course.EnrichContentService#deleteContentEnrichment(com.ziksana.domain.course.LearningComponentContent, java.lang.Integer)
 	 */
-	public Boolean deleteContentEnrichment(
+	public void deleteContentEnrichment(
 			LearningComponentContent learningComponentContent,
 			Integer contentEnrichmentId) {
-		// TODO Auto-generated method stub
-		return null;
+		contentEnrichmentMapper.deleteContentEnrichment(contentEnrichmentId);
+		LOGGER.debug("The content enrichment deleted successfully for " + contentEnrichmentId);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ziksana.service.course.EnrichContentService#getContentEnrichment(java.lang.Integer)
-	 */
-	public ContentEnrichment getContentEnrichment(Integer contentEnrichmentId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	/* (non-Javadoc)
 	 * @see com.ziksana.service.course.EnrichContentService#getLearningComponentContentEnrichments(com.ziksana.domain.course.LearningComponentContent)
@@ -156,6 +177,19 @@ public class EnrichContentServiceImpl implements EnrichContentService {
 			LearningComponentContent learningComponentContent) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public LearningComponentContent getLearningComponentContent(
+			Integer learningComponentId, Integer learningContentId) {
+		return learningComponentContentService.getLearningComponentContent(learningComponentId, learningContentId);
+	}
+
+	public List<ContentEnrichment> getEnrichments(Course course,
+			LearningComponentContent learningComponentContent,
+			MemberPersona creator) {
+		Integer courseId = Integer.parseInt(course.getCourseId().getStorageID());
+		List<ContentEnrichment> contentEnrichmentList =  componentContentEnrichmentMapper.getEnrichments(courseId, learningComponentContent.getId(), creator.getMemberRoleId());
+		return contentEnrichmentList;
 	}
 	
 	

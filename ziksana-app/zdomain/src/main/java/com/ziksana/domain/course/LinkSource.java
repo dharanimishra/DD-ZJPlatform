@@ -1,10 +1,10 @@
 package com.ziksana.domain.course;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.ziksana.util.EnumUtil;
+import com.ziksana.domain.utils.UTLLookup;
+import com.ziksana.util.UTLLookUpUtil;
 
 /**
  * @author Ratnesh Kumar
@@ -12,43 +12,54 @@ import com.ziksana.util.EnumUtil;
 
 public enum LinkSource {
 
-	// TODO: retrieve the ids from the static data service
-	ZIKSANA_INTERNAL(), UNIVERSITY_INTERNAL(), PRIVATE(), PUBLIC();
+	ZIKSANA_INTERNAL(-1, "Ziksana Internal"), UNIVERSITY_INTERNAL(-2, "University Internal"), PRIVATE(-3, "Private"), PUBLIC(-4, "Public");
+
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(LinkSource.class);
+
 
 	private int id;
 	private String name;
 
-	private final static String category = "Link Source";
+	private final static String CATEGORY = "Link Source";
 
-	private static Map<String, Integer> mapUtil = new HashMap<String, Integer>();
-
-	static {
-		EnumUtil enumUtil = new EnumUtil();
-		mapUtil = enumUtil.getEnumData(category);
-
-		ZIKSANA_INTERNAL.setID(mapUtil.get("Ziksana Internal").intValue());
-		UNIVERSITY_INTERNAL
-				.setID(mapUtil.get("University Internal").intValue());
-		PRIVATE.setID(mapUtil.get("Relative Private").intValue());
-		PUBLIC.setID(mapUtil.get("Public").intValue());
-
-	}
 
 	private LinkSource() {
+	}
 
+	private static boolean initialized = false;
+
+	private static synchronized void initialize() {
+		if (initialized) {
+			return;
+		}
+		LinkSource[] linkSources = LinkSource.values();
+		for (LinkSource linkSource : linkSources) {
+			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY,
+					linkSource.getName());
+			linkSource.id = utlLookup.getLookupValueId();
+		}
+		initialized = true;
+		LOGGER.debug("LinkSource initialized " );
 	}
 
 	private LinkSource(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
-
-	private void setID(int id) {
-		this.id = id;
+	
+	public static LinkSource getValueOf(String linkSourceString){
+		initialize();
+		return valueOf(linkSourceString);
 	}
+
 
 	public int getID() {
 		return id;
+	}
+
+	public void setID(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -56,13 +67,17 @@ public enum LinkSource {
 	}
 
 	public static LinkSource getLinkSource(int ID) {
+		if (!initialized) {
+			initialize();
+		}
 		for (LinkSource t : LinkSource.values()) {
 			if (t.getID() == ID) {
 				return t;
 			}
 		}
 
-		throw new NoSuchElementException("LinkSource ID [" + ID + "] not found");
+		throw new IndexOutOfBoundsException("LinkSource ID [" + ID
+				+ "] not found");
 	}
 
 	public String toString() {

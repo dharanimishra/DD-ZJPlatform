@@ -30,16 +30,19 @@
         
         <!-- Enable Browser History by replacing useBrowserHistory tokens with two hyphens -->
         <!-- BEGIN Browser History required section -->
-        <script type="text/javascript" src="/ziksana-web/resources/swf/enricher-swfobject.js"></script>
-		<script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
- 		<script type="text/javascript"	src="/ziksana-web/resources/js/ziksana/enhance-content/enricher.js"></script>
+        <link rel="stylesheet" type="text/css" href="history/history.css" />
+        <script type="text/javascript" src="history/history.js"></script>
         <!-- END Browser History required section -->  
             
+        <script type="text/javascript" src="/ziksana-web/resources/swf/content-consumption.js"></script>
+		<script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
+		<script type="text/javascript"	src="/ziksana-web/resources/js/ziksana/content-consumption/consumption.js"></script>
         <script type="text/javascript">
-	       // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
+
+            // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
             var swfVersionStr = "11.4.0";
             // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
-            var xiSwfUrlStr = "playerProductInstall.swf";
+            var xiSwfUrlStr = "ConsumptionPlayer.swf";
             var flashvars = {};
             var params = {};
             params.quality = "high";
@@ -47,11 +50,11 @@
             params.allowscriptaccess = "sameDomain";
             params.allowfullscreen = "true";
             var attributes = {};
-            attributes.id = "BootStrap";
-            attributes.name = "BootStrap";
+            attributes.id = "ApplicationStage";
+            attributes.name = "ApplicationStage";
             attributes.align = "middle";
             swfobject.embedSWF(
-                "/ziksana-web/resources/swf/enricher.swf", "flashContent", 
+                "/ziksana-web/resources/swf/ConsumptionPlayer.swf", "flashContent", 
                 "100%", "100%", 
                 swfVersionStr, xiSwfUrlStr, 
                 flashvars, params, attributes);
@@ -77,14 +80,14 @@
         </div>
         
         <noscript>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="BootStrap">
-                <param name="movie" value="/ziksana-web/resources/swf/enricher.swf" />
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="ApplicationStage">
+                <param name="movie" value="ConsumptionPlayer.swf" />
                 <param name="quality" value="high" />
                 <param name="bgcolor" value="#ffffff" />
                 <param name="allowScriptAccess" value="sameDomain" />
                 <param name="allowFullScreen" value="true" />
                 <!--[if !IE]>-->
-                <object type="application/x-shockwave-flash" data="/ziksana-web/resources/swf/enricher.swf" width="100%" height="100%">
+                <object type="application/x-shockwave-flash" data="ConsumptionPlayer.swf" width="100%" height="100%">
                     <param name="quality" value="high" />
                     <param name="bgcolor" value="#ffffff" />
                     <param name="allowScriptAccess" value="sameDomain" />
@@ -104,7 +107,5 @@
                 <!--<![endif]-->
             </object>
         </noscript>     
-  		<input type="hidden" id="enrich_id" value="-1"/>
-		<input type="hidden" id="enrichmentList" value='${enrichmentList}'/>    
-	</body>
+   </body>
 </html>

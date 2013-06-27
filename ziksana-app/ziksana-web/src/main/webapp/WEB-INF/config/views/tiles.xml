@@ -70,7 +70,21 @@
 		<put-attribute name="content" value="" />
 	</definition>
 
+	<!-- Learner Layout -->
 
+	<definition name="ziksana-home-learner-master" template="/WEB-INF/screens/layout/home-layout.jsp">
+		<put-attribute name="master_title" value="Ziksana!" />
+		<put-attribute name="common_css"
+			value="/WEB-INF/screens/includes/common_css.jsp" />
+		<put-attribute name="common_js"
+			value="/WEB-INF/screens/includes/common_js.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/screens/includes/home_header.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/screens/includes/coursenav_learner.jsp" />
+		<put-attribute name="content" value="" />
+
+	</definition>
 	<!--Login Page -->
 	<definition name="profilepagesetup" extends="ziksana-master">
 		<put-attribute name="master_title" value="Profile Setup" />
@@ -210,7 +224,7 @@
 
 
 	<!-- Metro My Course Learner -->
-	<definition name="mastermylearnercourse" extends="ziksana-home-master">
+	<definition name="mastermylearnercourse" extends="ziksana-home-learner-master">
 		<put-attribute name="master_title" value="My Course - Learner" />
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/mycourse_learner.jsp" />
@@ -218,7 +232,7 @@
 	
 	
 	<!-- Metro My Course Consumption Learner -->
-	<definition name="mastermycourseconsumption" extends="ziksana-home-master">
+	<definition name="mastermycourseconsumption" extends="ziksana-home-learner-master">
 		<put-attribute name="master_title" value="My Course - Consumption" />
 		<put-attribute name="content"
 			value="/WEB-INF/screens/courses/course_consumption.jsp" />

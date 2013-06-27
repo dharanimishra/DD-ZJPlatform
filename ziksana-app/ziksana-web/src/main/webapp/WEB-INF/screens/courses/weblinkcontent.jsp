@@ -105,13 +105,13 @@ $(document).ready(function() { // On page load
 		<div class="createcontentwrapper">
 			<form id="createweblinkform" method="post"
 				action="/ziksana-web/zcourse/1/multiweblinkcontents">
-				<div class="addweblink">
+				<div class="addweblink" style="min-height: 418px;">
 		
 					<div class="createcontentpanelhead">
 						Add Web Link
-						<c:if test="${message != null}">
+						<%-- <c:if test="${message != null}">
     						<div><p>${message}</p></div>
-						</c:if>
+						</c:if> --%>
 			
 						<div class="addmpre pull-right">
 							<a class="adlink" id="weblink"><img
@@ -124,64 +124,20 @@ $(document).ready(function() { // On page load
 					</div>
 					<!--end of panel head-->
 					<!-- <div id="web_link_container"> -->
-					<div id="web_link_container"  class="weblinkcontainer" style="background-color:#0099cc">
-						<div class="weblink_row">
-							<div class="uploadphoto pull-left" style="width:150px">
-								<img id="thumbnail_image" src="/ziksana-web/resources/images/preview/link.png" style="width: 80px;height:80px;margin-left: 20px; margin-bottom: 5px;" align="left" />
-								<div id="message"></div>
-								<div id="thubmnail_upload_message"></div>
-								<div id="loaderText"></div>
-								<input type="file" name="thumbnail_image_file_upload"
-									tabindex="11" id="thumbnail_image_file_upload"
+					<div id="web_link_container"  class="weblinkcontainer" style="height:350px;overflow:auto">
+						<div class="weblink_row"  >
+							<div class="uploadphoto pull-left upload_wrapper" style="width:150px">
+								<img class="thumbnail_image" src="/ziksana-web/resources/images/preview/link.png" style="width: 80px;height:80px;margin-left: 20px; margin-bottom: 5px;" align="left" />
+								<div class="message"></div>
+								<div class="thubmnail_upload_message"></div>
+								<div class="loaderText"></div>
+								<input type="file" name="thumbnail_image_file_upload[]"
+									id="" class="upload_input"
 									style="margin-left: 196px;" />
 									
-							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
-							<input type="hidden" name="contentPath" id="thumbnail_path" value="<%=old_thumbnail_path%>"/>
-								<div id="status"></div>
-								<script type="text/javascript">
-									$(function() {
-										$('#thumbnail_image_file_upload')
-												.uploadify(
-														{
-															'swf' : '${staticFileServer}resources/swf/uploadify.swf',
-															'queueSizeLimit' : 1,
-															'successTimeout' : 350,
-															'buttonText' : 'Upload Image',
-															'uploader' : '${ms.uploadScript}',
-															//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
-															'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
-															'fileSizeLimit' : '10024KB',
-															'onUploadStart' : function(
-																	file) {
-																//$('#sbtvalidation').attr('disabled','disabled');
-															},
-															'onUploadSuccess' : function(
-																	file, data,
-																	response) {
-																json_string = data;
-																data_object = $
-																		.parseJSON(json_string);
-																console
-																		.log(data_object);
-
-																if (data_object.Uploaded == 'true') {
-																	content_path = data_object.ContentPath;
-																	$('#thumbnail_image').attr('src','${ms.url}'+content_path);
-																	$('#thumbnail_path').val(content_path);
-																	console.log("content_path :"+content_path);
-																} else { //there is an error in the upload process
-
-																	$(
-																			'#message')
-																			.html(
-																					data_object.message);
-																}
-																$('#sbtvalidation').removeAttr('disabled'); //enable submit button
-															}
-														// Your options here
-														});
-									});
-								</script>
+								<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
+								<input type="hidden" name="contentPath" class="thumbnail_path" value="<%=old_thumbnail_path%>"/>
+								<div class="status"></div>
 							</div>
 						
 						<!--end of uploadphoto-->
@@ -207,18 +163,18 @@ $(document).ready(function() { // On page load
 								style="width: 330px; margin-bottom: 10px; margin-left: 10px;" placeholder="Describe the content for  Web link"></textarea>
 						</div>
 						<div class="editslide pull-left" style="margin-left: 10px;display:none">
-							<ul><li style="margin-bottom: 10px;">	<label>Select Area</label>
-							<select id="Careaddl" name="contentArea[]" class="select Careaddl">
+							<ul class="select_container" ><li style="margin-bottom: 10px;">	<label>Select Area</label>
+							<select name="contentArea[]" class="Careaddl select_area">
 								<option>Specify Area</option>
 							</select> </li><li  style="margin-bottom: 10px;">
 							<label>Select Subject</label>
-							 <select class="select Csubjectddl" id="Csubjectddl"
+							 <select class="Csubjectddl select_subject"
 								name="contentSubject[]">
 								<option>Specify Subject</option>
 							</select></li>
 							 <li>
 		                	<label>Select Topic</label>
-			           <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic[]">
+			           <select class="Ctopicddl select_topic" name="contentTopic[]">
 								<option>Specify Topic</option>
 							</select></li>
 		       <li>	<label>Specify Tags</label>
@@ -256,6 +212,7 @@ $(document).ready(function() { // On page load
 </div>
 
 <style>
+.uploadify-queue{width:350px}
 a.remove_this {
   border: 1px solid white;
   border-radius: 60px 60px 60px 60px;
@@ -312,8 +269,8 @@ width: 530px;overflow:hidden}
 <style type="text/css">
  
 .weblinkcontainer {
-    background-color: #525252;
-    height: 320px;
+   /*  background-color: #525252; */
+   /*  height: 320px; */
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -334,29 +291,59 @@ input.error {
     color: #555 !important;
 }
 .weblink_row { padding: .5em;}
-#web_link_container div.weblink_row:nth-child(even) {
-  background: none repeat scroll 0 0 #168EBE;
+#web_link_container div.weblink_row:nth-child(odd) {
+  background: none repeat scroll 0 0 #0099cc;
 }
 .editdetailsweblink:hover{color:#fff!important;text-decoration:none}
 
 </style>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-      $("#createweblinkform").validate({
-        rules: {
-        	contentName: "required",
-        	  contentUrl: "required",
-          
-        },
-        contentUrl: {
-			contentUrl: true
-        },
-        
-        messages: {
-        	contentName: "Enter URL Name.",
-        	contentUrl:"Enter URL"
-        }
-        });
-    });
+  function init_uploadify(upload_element) { 
+		console.log("into init uploadify");
+		console.log(upload_element);
+		
+    	var upload_wrapper = upload_element.parents('.upload_wrapper');
+    	var thumbnail_image_element = upload_wrapper.find('.thumbnail_image');
+    	var thumbnail_path_element = upload_wrapper.find('.thumbnail_path');
+    	
+    	upload_element
+    			.uploadify(
+    					{
+    						'swf' : '${staticFileServer}resources/swf/uploadify.swf',
+    						'queueSizeLimit' : 1,
+    						'successTimeout' : 350,
+    						'buttonText' : 'Upload Image',
+    						'uploader' : '${ms.uploadScript}',
+    						//'uploader' : 'http://54.243.235.88/zikload-xml/uploadify.php',
+    						'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
+    						'fileSizeLimit' : '10024KB',
+    						'onUploadStart' : function(file) {
+    							//$('#sbtvalidation').attr('disabled','disabled');
+    						},
+    						'onUploadSuccess' : function(file, data, response) {
+    							json_string = data;
+    							data_object = $.parseJSON(json_string);
+    							console.log(data_object);
+
+    							if (data_object.Uploaded == 'true') {
+    								content_path = data_object.ContentPath;
+    								thumbnail_image_element.attr('src','${ms.url}'+content_path);
+    								thumbnail_path_element.val(content_path);
+    								console.log("content_path :"+content_path);
+    							} else { //there is an error in the upload process
+    								upload_wrapper.find('.message').html(data_object.message);
+    							}
+    							$('#sbtvalidation').removeAttr('disabled'); //enable submit button
+    						}
+    					// Your options here
+    					});
+    } 
+  
+	$(function(){
+		upload_element = $('#web_link_container').find('div.weblink_row').first().find('.upload_input').attr('id','upload_input_1');
+		init_uploadify($('#upload_input_1'));
+	});
+  
+    
   </script>

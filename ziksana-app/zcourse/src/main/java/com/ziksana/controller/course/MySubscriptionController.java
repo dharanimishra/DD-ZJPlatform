@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -42,17 +43,25 @@ public class MySubscriptionController {
 		return mv;
 	}
 
-	@RequestMapping(value = "1/mylearnercourse", method = { RequestMethod.GET,
+	@RequestMapping(value = "1/mylearnercourse/{courseId}", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
-	ModelAndView MyCourse() {
-		LOGGER.info("Entering Class " + getClass() + " MyCourse()");
+	ModelAndView MySubscriptionCourse(@PathVariable Integer courseId) {
+		LOGGER.info("Entering Class " + getClass() + " MySubscriptionCourse()");
+		ModelAndView modelView = new ModelAndView("mastermycourseconsumption");
+		modelView.addObject("courseId", courseId);
+		LOGGER.info("Exiting Class " + getClass() + " MySubscriptionCourse(): ");
 
-		ModelAndView mv = new ModelAndView("mastermycourseconsumption");
-
-		LOGGER.info("Exiting Class " + getClass() + " MyCourse(): ");
-
-		return mv;
+		return modelView;
 	}
+	
+	@RequestMapping(value = "/1/consumption", method = RequestMethod.GET)
+	public @ResponseBody
+	ModelAndView annotateContent() {
+		ModelAndView modelAndView = new ModelAndView("courses/consumption"); 
+		return modelAndView;
+
+	}
+	
 
 }

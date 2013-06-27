@@ -79,4 +79,9 @@ public class MemberServiceImpl implements MemberService {
 		return userMapper.getPasswordUpdatedOn(memberId);
 	}
 
+	public int deleteMemberProfileImage(int memberId) {
+		// TODO Auto-generated method stub
+		return userMapper.deleteMemberProfileImage(memberId);
+	}
+
 }

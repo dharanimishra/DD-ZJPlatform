@@ -21,6 +21,9 @@
 	<bean id="learningContentDecorationService"
 		class="com.ziksana.service.course.impl.LearningContentDecorationServiceImpl">
 	</bean>
+	<bean id="enrichContentService"
+		class="com.ziksana.service.course.impl.EnrichContentServiceImpl">
+	</bean>
 
 <!--
 
