@@ -74,18 +74,18 @@ public class ProfileController {
 	public @ResponseBody ModelAndView showManageProfile(@PathVariable int memberId) {
 		ModelAndView modelAndView = new ModelAndView("profilepagesetup");
 		try{		
-			List<MemberProfile> profileList = new ArrayList<MemberProfile>();
-			int userId = memberId;
-			String password = passwordService.getUserPassword(String.valueOf(userId));
-			profileList = profileService.getMemberProfileList(memberId);
+			//List<MemberProfile> profileList = new ArrayList<MemberProfile>();
+			//int userId = memberId;
+			//String password = passwordService.getUserPassword(String.valueOf(userId));
+			//profileList = profileService.getMemberProfileList(memberId);
 			Member member = memberService.getMemberByMemberId(Integer.valueOf(SecurityTokenUtil.getToken().getMemberPersonaId().getStorageID()));
 			modelAndView.addObject("applicationTitle", "User Profile Page Edit");
-			modelAndView.addObject("profileList", profileList);
+			//modelAndView.addObject("profileList", profileList);
 			modelAndView.addObject("passwordUpdated", getFormattedDate(memberService.getPasswordUpdatedOn(memberId)));
-			modelAndView.addObject("profileAnswerOne",profileService.getMemberProfileByMemberId(memberId, "1SQ%"));
-			modelAndView.addObject("profileAnswerTwo",profileService.getMemberProfileByMemberId(memberId, "2SQ%"));
+			//modelAndView.addObject("profileAnswerOne",profileService.getMemberProfileByMemberId(memberId, "1SQ%"));
+			//modelAndView.addObject("profileAnswerTwo",profileService.getMemberProfileByMemberId(memberId, "2SQ%"));
 			modelAndView.addObject("member", member);
-			modelAndView.addObject("currentPassword",password);
+			//modelAndView.addObject("currentPassword",password);
 			modelAndView.addObject("ms", mediaService.getMediaContents());
 		}
 		catch(ZiksanaException zexception){
@@ -94,6 +94,17 @@ public class ProfileController {
 		}
 		return modelAndView;
 		
+	}
+	
+	@RequestMapping(value = "/1/profilequestion", method = RequestMethod.GET )
+	public @ResponseBody MemberProfile getMemberProfileQuestion(
+		@RequestParam(value = "memberId", required = true) int memberId,
+		@RequestParam(value = "securityQuestion", required = true) String securityQuestion){
+		
+		MemberProfile profile = new MemberProfile();
+		profile = profileService.getMemberProfileByMemberId(memberId, securityQuestion);
+		
+		return profile;
 	}
 	
 	@RequestMapping(value = "/1/profilequestions/{memberId}", method = RequestMethod.GET )

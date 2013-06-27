@@ -183,7 +183,7 @@
 						style="width: 180px;"><fmt:message
 							key="profile.securityquestion1"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
-						<select class="profileselect nexaf" style="font-weight:normal" id="securityQuestionOne">
+						<select onchange="removeSQ1Focus()" class="profileselect nexaf" style="font-weight:normal" id="securityQuestionOne1">
 							<option selected="selected">Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
 								<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
@@ -199,7 +199,7 @@
 					<label class="control-label nexaf" for="Course Name"><fmt:message
 							key="profile.securityanswer1"></fmt:message><span class="requiredField">*</span></label>
 					<div class="controls">
-						<input type="text" class="profileinput" id="securityAnswerone"
+						<input onchange="removeAns1Focus()" type="text" class="profileinput" id="securityAnswerone1"
 							name="sec_answer1" placeholder="Security Answer 1" />
 					</div>
 					<div class="err_mssg" id="errorsecurityAnswerone"></div>
@@ -213,7 +213,7 @@
 							key="profile.securityquestion2"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
 
-						<select class="profileselect nexaf" style="font-weight:normal" id="securityQuestionTwo">
+						<select onchange="removeSQ2Focus()" class="profileselect nexaf" style="font-weight:normal" id="securityQuestionTwo2">
 							<option selected="selected">Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
 								<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
@@ -230,7 +230,7 @@
 						style="width: 180px;"><fmt:message
 							key="profile.securityanswer2"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
-						<input type="text" class="profileinput" id="securityAnswertwo"
+						<input onchange="removeAns2Focus()" type="text" class="profileinput" id="securityAnswertwo2"
 							name="sec_answer2" placeholder="<fmt:message key="profile.securityanswer2"></fmt:message>" />
 					</div>
 					<div class="err_mssg" id="errorsecurityAnswertwo"></div>
@@ -273,12 +273,9 @@
 			<div class="fileupload  f-l" style="width:230px;">
 				<div class="associateimage" style="text-align:center;">
  				<div style="height:150px;width:150px;margin-left:20px">
-					<%-- <c:if test="${empty member.picturePath}">
-						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/usericon.png"/>
-					</c:if>
-					<c:if test="${not empty ms.url && not empty member.picturePath}"> --%>
+					
 						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="" />
-				<%-- 	</c:if>  --%>
+
 					</div>
 					<input readonly="readonly" type="hidden" id="Cimageupl" />
 
@@ -414,8 +411,8 @@
 						   <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red; margin-top:3px;" id="errorNewPassword"></div>
 						    <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /><div style="color: red;" id="errorRetypePassword"></div></div><div class="clearfix"></div>
 						   <div style="margin-top:6px;">
-						   
-					  		<button class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
+						   <div class="loader_password" style="width:200px;"></div>
+					  		<button id="savePasswordReset" class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  </div>
 						 </div>
@@ -424,7 +421,7 @@
 					      <div class="clearfix"></div>
 						 <div  id="lblaltEmail">
 						 <label class="control-label nexaf" for="Course Name"><fmt:message key="profile.alternateemail"></fmt:message> :</label>
-						 <label class="control-label nexaf" id="alternateMailLabel" for="AlternativeEmail Name" style="margin-left:20px;font-weight:normal"><c:out value="${profileAnswerOne.alternateEmailId}"></c:out></label>
+						 <label class="control-label nexaf" id="alternateMailLabel" for="AlternativeEmail Name" style="margin-left:20px;font-weight:normal"></label>
 						 
 						
 						 <a  onclick="editFeilds('EditAlt_mail')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
@@ -432,11 +429,12 @@
 					      </div>
 						  <div class="editcontroll border-user" id="EditAlt_mail" ><a style="float:right;cursor:pointer;margin-right: -16px; margin-top: -12px;" onclick="showlbl('lblaltEmail');" title="Close">[X]</a>
 						   <label class="control-label nexaf" for="Course Name"><fmt:message key="profile.alternateemail"></fmt:message> :</label>
-						   <input type="text" style="width:365px;margin-left:19px;" id="alttenateEmailValue"  name="alt_mail" value="${profileAnswerOne.alternateEmailId}" />
+						   <input type="text" style="width:365px;margin-left:19px;" id="alttenateEmailValue"  name="alt_mail" value="" />
+						   <input type="hidden" style="width:365px;margin-left:19px;" id="hiddenalttenateEmailValue"  name="alt_mail" value="" />
 						   <p id="alternateEmailError" style="color:red;margin-left:184px;"></p>
 						   <div style="margin-top:6px;">
 						  
-					  <button class="btn btn-primary f-r" onclick="alterEmailSubmit()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
+					  <button class="btn btn-primary f-r altermail" onclick="alterEmailSubmit()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  </div>
 					      </div>
@@ -447,7 +445,7 @@
 						  <div  id="lblsq1">
 					     <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion1"></fmt:message> :</label>
 						  
-						 <label id="ques_text_diplayone" class="control-label nexaf" style="width:65%;font-weight:normal"><c:out value="${profileAnswerOne.securityQuestionText}"></c:out></label>
+						 <label id="ques_text_diplayone" class="control-label nexaf" style="width:65%;font-weight:normal"></label>
 					      <a  onclick="changesq1('Editsq1')" class="editfeild" ><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					     
@@ -457,20 +455,15 @@
 						  <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion1"></fmt:message> :</label>
 						   
 					    <select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="editQuestionOne" >
-							<option><fmt:message key="profile.select.text"></fmt:message></option>
-							<c:forEach var="profile" items="${profileList}">
-										<c:if test="${profileAnswerOne.securityQuestionText ==profile.securityQuestionText}">
-											<option selected="selected" value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
-										</c:if>
-										<c:if test="${profileAnswerOne.securityQuestionText != profile.securityQuestionText}">
-											<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
-										</c:if>
-							</c:forEach>
+						
+						</select>
+						 <select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;display:none;" id="hiddeneditQuestionOne" >
+						
 						</select>
 					
 					<label class="control-label nexaf" for="Course Name"><fmt:message key="profile.securityanswer1"></fmt:message></label>
 					     <div class="controls">
-					      <input type="password" class="profileinput" id="editSecAnswerOne" value="${profileAnswerOne.memberAnswer}"  name="sec_answer1" placeholder="Security Answer 1" style="width:365px;" />         
+					      <input type="password" class="profileinput" id="editSecAnswerOne" value=""  name="sec_answer1" placeholder="Security Answer 1" style="width:365px;" />         
 					      </div>
 					      <p id="secQuesOneError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
@@ -487,7 +480,7 @@
 					     
 						 <div id="lblsq2">
 						 <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion2"></fmt:message> :</label>
-						 <label id="ques_text_diplaytwo" class="control-label nexaf" style="width:65%;font-weight:normal"><c:out value="${profileAnswerTwo.securityQuestionText}"></c:out></label>
+						 <label id="ques_text_diplaytwo" class="control-label nexaf" style="width:65%;font-weight:normal"></label>
 					      <a  onclick="changesq2('Editsq2')" class="editfeild" ><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					      
@@ -496,24 +489,15 @@
 					      <div  id ="Editsq2" class="editcontroll border-user"  ><a style="float:right;cursor:pointer;margin-right: -17px;margin-top: -12px;" onclick="showlblsq2('lblsq2');" title="Close">[X]</a>
 						  <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion2"></fmt:message> :</label>
 					    
-					<select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="securityQuestionTwo">
-							<option ><fmt:message key="profile.select.text"></fmt:message></option>
-							<c:forEach var="profile" items="${profileList}">
-									
-										<c:if test="${profileAnswerTwo.securityQuestionText ==profile.securityQuestionText}">
-											<option selected="selected" value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
-										</c:if>
-										<c:if test="${profileAnswerTwo.securityQuestionText != profile.securityQuestionText}">
-											<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
-										</c:if>
-									
-										
-									
-							</c:forEach>
+						<select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="securityQuestionTwo">
+						
+						</select>
+						<select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px;display:none; width: 377px;" id="hiddensecurityQuestionTwo">
+						
 						</select>
 					<label class="control-label nexaf" for="Course Name"><fmt:message key="profile.securityanswer2"></fmt:message>:</label>
 					     <div class="controls">
-					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="${profileAnswerTwo.memberAnswer}" name="sec_answer2" placeholder="Security Answer 1" style="width:365px;"/>         
+					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="" name="sec_answer2" placeholder="Security Answer 1" style="width:365px;"/>         
 					      </div>
 					      <p id="secQuesTwoError" style="color:red;text-align:center"></p>
 					<div style="margin-top:6px;">
@@ -566,10 +550,10 @@ function clearProfileForm(){
 	function updateUserProfile() {
 		var memberId = $('#memberIdValue').text();
 		var alternateEmailId = $('#alternateEmailId').val();
-		var securityQuestionOne = $("#securityQuestionOne").val();
-		var securityAnswerone = $("#securityAnswerone").val();
-		var securityQuestionTwo = $("#securityQuestionTwo").val();
-		var securityAnswerTwo = $("#securityAnswertwo").val();
+		var securityQuestionOne = $("#securityQuestionOne1").val();
+		var securityAnswerone = $("#securityAnswerone1").val();
+		var securityQuestionTwo = $("#securityQuestionTwo2").val();
+		var securityAnswerTwo = $("#securityAnswertwo2").val();
 		var profileAssoc_Image = $('#Cimageupl').val();
 
 		
@@ -604,32 +588,60 @@ function clearProfileForm(){
 		
 
 	}
+function removeSQ1Focus(){
+	$('#securityQuestionOne1').focusout();
+	$('#securityQuestionOne1').removeClass('error_profile');
+	document.getElementById("errorsecurityQuestionOne").innerHTML = '';
+}
+function removeAns1Focus(){
+	$('#securityAnswerone1').focusout();
+	$('#securityAnswerone1').removeClass('error_profile');
+	document.getElementById("errorsecurityAnswerone").innerHTML = '';
+}
+function removeSQ2Focus(){
+	$('#securityQuestionTwo2').focusout();
+	$('#securityQuestionTwo2').removeClass('error_profile');
+	document.getElementById("errorsecurityQuestionTwo").innerHTML = '';
+}
+function removeAns2Focus(){
+	$('#securityAnswertwo2').focusout();
+	$('#securityAnswertwo2').removeClass('error_profile');
+	document.getElementById("errorsecurityAnswertwo").innerHTML = '';
+}
 	function firstQuestionValidation(question) {
-		firstSelectBox = document.getElementById("securityQuestionOne");
+		//firstSelectBox = document.getElementById("securityQuestionOne");
 		if (question == 'Select the Security Question') {
 			
 			$('#errorsecurityQuestionOne').html("<fmt:message key="profile.error.question"></fmt:message>");
-
+			$('#securityQuestionOne1').focus();
+			$('#securityQuestionOne1').addClass('error_profile');
+			
 			return false;
 		} else {
 			if(("#errorsecurityQuestionOne.inside:contains('<fmt:message key="profile.error.question"></fmt:message>')")){
 				document.getElementById("errorsecurityQuestionOne").innerHTML = '';
 			}
+			$('#securityQuestionOne1').focusout();
+			$('#securityQuestionOne1').removeClass('error_profile');
 			return true;
 		}
 		
 	}
 
 	function firstAnswerValidation(securityAnswerone){
-		firstAnswerBox = document.getElementById("securityAnswerone");
+		//firstAnswerBox = document.getElementById("securityAnswerone");
 		if (securityAnswerone == '') {
 			$('#errorsecurityAnswerone').html("<fmt:message key="profile.error.securityquestion"></fmt:message>");
-
+			
+			$('#securityAnswerone1').focus();
+			$('#securityAnswerone1').addClass('error_profile');
 			return false;
 		} else{
 			if(("#errorsecurityAnswerone.inside:contains('<fmt:message key="profile.error.securityquestion"></fmt:message>')")){
 				document.getElementById("errorsecurityAnswerone").innerHTML = '';
 			}
+			$('#securityAnswerone1').focusout();
+			$('#securityAnswerone1').removeClass('error_profile');
 			return true;
 		}
 	}
@@ -639,13 +651,15 @@ function clearProfileForm(){
 		if (question == 'Select the Security Question') {
 			
 			$('#errorsecurityQuestionTwo').html("<fmt:message key="profile.error.question"></fmt:message>");
-			
+			$('#securityQuestionTwo2').focus();
+			$('#securityQuestionTwo2').addClass('error_profile');
 			return false;
 		} else{
 			if(("#errorsecurityQuestionTwo.inside:contains('<fmt:message key="profile.error.question"></fmt:message>')")){
 				document.getElementById("errorsecurityQuestionTwo").innerHTML = '';
 			}
-			
+			$('#securityQuestionTwo2').focusout();
+			$('#securityQuestionTwo2').removeClass('error_profile');
 			return true;
 		}
 		
@@ -656,12 +670,15 @@ function clearProfileForm(){
 		secondAnswerBox = document.getElementById("securityAnswertwo");
 		if (securityAnswerTwo == '') {
 			$('#errorsecurityAnswertwo').html("<fmt:message key="profile.error.securityquestion"></fmt:message>");
-		
+			$('#securityAnswertwo2').focus();
+			$('#securityAnswertwo2').addClass('error_profile');
 			return false;
 		} else {
 			if(("#errorsecurityAnswertwo.inside:contains('<fmt:message key="profile.error.securityquestion"></fmt:message>')")){
 				document.getElementById("errorsecurityAnswertwo").innerHTML = '';
 			}
+			$('#securityAnswertwo2').focusout();
+			$('#securityAnswertwo2').removeClass('error_profile');
 			return true;
 		}
 	}
@@ -725,15 +742,31 @@ function clearProfileForm(){
 		}
 	
 		function showlbl(divid){
-			
-			
-			
-			
-		var val = "${profileAnswerOne.alternateEmailId}";
-			document.getElementById("alttenateEmailValue").value = val;
-			document.getElementById("alternateEmailError").innerHTML = '';
-			$('#'+divid).slideToggle();
-			$("#EditAlt_mail").hide();
+			//Validation For Before Collapse User Enter some value Save or Not
+				
+				if($("#alttenateEmailValue").val() != $("#hiddenalttenateEmailValue").val() || $("#alttenateEmailValue").val() == ''){
+					confirm_save = confirm('Do you want to save your changes for alternate mailId?');
+					if (confirm_save == true) {	
+						alterEmailSubmit();
+						//getSecurity_Answer1($("#memberIdValue").text());
+					}else{
+						var val = "${profileAnswerOne.alternateEmailId}";
+						document.getElementById("alttenateEmailValue").value = val;
+						document.getElementById("alternateEmailError").innerHTML = '';
+						$('#'+divid).slideToggle();
+						$("#EditAlt_mail").hide();
+						getSecurity_Answer1($("#memberIdValue").text());
+					}
+					
+				}else{
+					var val = "${profileAnswerOne.alternateEmailId}";
+					document.getElementById("alttenateEmailValue").value = val;
+					document.getElementById("alternateEmailError").innerHTML = '';
+					$('#'+divid).slideToggle();
+					$("#EditAlt_mail").hide();
+					getSecurity_Answer1($("#memberIdValue").text());
+				}
+				
 		}
 		
 		function showchangepwd(divid){
@@ -745,9 +778,11 @@ function clearProfileForm(){
 		$('#currentPassword').val('');
 		$('#newPassword').val('');
 		$('#retypePassword').val('');
-		$('#errorCurrentPassword').val('');
+		
+		document.getElementById("errorCurrentPassword").innerHTML = '';
 		document.getElementById("errorNewPassword").innerHTML = '';
 		document.getElementById("passwordResetFailResponse").innerHTML = '';
+		document.getElementById("errorRetypePassword").innerHTML = '';
 		$('#errorRetypePassword').val('');
 		$('#passwordResetFailResponse').val('');
 		document.getElementById("passwordResetResponse").innerHTML = '';
@@ -762,6 +797,9 @@ function clearProfileForm(){
 		function showlblsq1(divid){
 		$('#'+divid).slideToggle();
 		$("#Editsq1").hide();
+		$('#secQuesOneError').html("");
+		get_latest_member_object($("#memberIdValue").text());
+		
 		}
 		function changesq2()
 		{
@@ -772,6 +810,8 @@ function clearProfileForm(){
 		function showlblsq2(divid){
 		$('#'+divid).slideToggle();
 		$("#Editsq2").hide();
+		$('#secQuesTwoError').html("");
+		get_latest_member_object($("#memberIdValue").text());
 		}
 		function alterEmailSubmit(){
 			primary = $("#primaryEmailId").text();
@@ -783,8 +823,7 @@ function clearProfileForm(){
 				var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
 				if(alternateEmailId.match(mailformat))  
 				{  
-					console.log(primary);
-					console.log(alternateEmailId)
+
 					if (primary == alternateEmailId) {
 						
 						$('#alternateEmailError').html("<fmt:message key="profile.error.altemail"></fmt:message>");
@@ -889,7 +928,7 @@ $(document).ready(function() {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('weak');
 		$('#errorNewPassword').html('<div style="width:350px; margin-top:7px;border:1px solid #fff;;"><div id="red"></div><div id="blue"></div><div id="blank"></div><div id="blank"></div><div style="margin-top: -7px;color:red;">&nbsp;&nbsp;<fmt:message key="resetpass.weekpass"/> </div><div style="color:orange;"><fmt:message key="restpass.passworddes"/>  </div></div>');
-		return true;			
+		return false;			
 	} else if (strength == 2 ) {
 		$('#errorNewPassword').removeClass();
 		$('#errorNewPassword').addClass('good');
@@ -918,6 +957,7 @@ function checkpass()
 			document.getElementById("currentPassword").value = '';
     		document.getElementById("newPassword").value = '';
     		document.getElementById("retypePassword").value = '';
+    		document.getElementById("errorNewPassword").innerHTML = '';
 			
 		}else{
 			oldPassword = $('#currentPassword').val();
@@ -929,6 +969,7 @@ function checkpass()
 			dbcurrentPassword = $('#dbcurrentPassword').text();
 
 			if(dbcurrentPassword != newPassword){
+
 			 $.post( '/ziksana-web/secure/password/resetpassword'
 			        , {'oldPassword':oldPassword,'confirmPassword':newPassword,'memberId':memberIdRef}
 			        , function( data )
@@ -943,8 +984,6 @@ function checkpass()
 			        		
 			        		$('#passwordResetResponse').html("<fmt:message key="resetpass.successful"/>");
 			        		$('#passwordUpdatedDate').html(data);
-			        		
-			        		
 			        		setTimeout("showMsg()",3000);
 			        		
 						}else{
@@ -958,6 +997,8 @@ function checkpass()
 				document.getElementById("currentPassword").value = '';
 	    		document.getElementById("newPassword").value = '';
 	    		document.getElementById("retypePassword").value = '';
+	    		document.getElementById("errorNewPassword").innerHTML = '';
+	    		
 			}
 		}
 	
@@ -1002,8 +1043,14 @@ function editUpdateSecuQuestion(){
 	var Select = document.getElementById("editQuestionOne");
 	var editQuestionOneValue = Select.options[Select.selectedIndex].text;
 	
+	
+	
 	var SelectTwo = document.getElementById("securityQuestionTwo");
 	var editQuestionTwoValue = Select.options[SelectTwo.selectedIndex].text;
+	
+	//hiddenvalue
+	var hiddenSelectTwo = document.getElementById("hiddensecurityQuestionTwo");
+	var hiddeneditQuestionTwoValue = Select.options[hiddenSelectTwo.selectedIndex].text;
 	
 	editSecAnswerOne= $("#editSecAnswerOne").val();
 
@@ -1012,7 +1059,7 @@ function editUpdateSecuQuestion(){
 
 	if(editQuestionOneValue == selectValue){
 		$('#secQuesOneError').html("<fmt:message key="select.question1"/>"); 
-	}else if(editQuestionOneValue == editQuestionTwoValue){
+	}else if(editQuestionOneValue == hiddeneditQuestionTwoValue){
 		
 			$('#secQuesOneError').html("<fmt:message key="profile.error.difquestion"/>"); 		
 	}else{
@@ -1053,6 +1100,10 @@ function editSaveSecQuesTwo(){
 	var SelectOne = document.getElementById("editQuestionOne");
 	var editQuestionOneValue = Select.options[SelectOne.selectedIndex].text;
 	
+	//hiddenvalue
+	var hiddenSelect = document.getElementById("hiddeneditQuestionOne");
+	var hiddeneditQuestionOneValue = Select.options[hiddenSelect.selectedIndex].text;
+	
 	editSecAnswerTwo= $("#editSecAnswerTwo").val();
 	
 	editQuestionOne = $("#editQuestionOne").val();
@@ -1061,7 +1112,7 @@ function editSaveSecQuesTwo(){
 
 	if(editQuestionTwoValue == selectValue){
 		$('#secQuesTwoError').html("<fmt:message key="select.question2"/>"); 
-	}else if(editQuestionTwoValue ==editQuestionOneValue){
+	}else if(editQuestionTwoValue ==hiddeneditQuestionOneValue){
 		
 			$('#secQuesTwoError').html("<fmt:message key="profile.error.difquestion"/>"); 		
 	}else{
@@ -1123,6 +1174,9 @@ function get_latest_member_object(val){
 		url: '/ziksana-web/profile/1/member/'+val+'',
 		success: function( data ) {
 			get_current_user_password(data.memberId);
+			getSecurity_questions(data.memberId);
+			getSecurity_Answer1(data.memberId);
+			getSecurity_Answer2(data.memberId);
 			if(data.picturePath != null){
 				$('#profile_thumbnail_image').attr('src', '${ms.url}'+data.picturePath);
 			}else{
@@ -1141,6 +1195,69 @@ function get_current_user_password(memberId){
 			
 		}
 	});
+}
+function getSecurity_questions(memberId){
+	
+	$.ajax({
+	  	type: 'GET',
+		url: '/ziksana-web/profile/1/profilequestions/'+memberId+'',
+		success: function( data ) {
+			select_option_array = [];
+			unique_select_option_array = [];
+			var unique = '';
+			unique +="<option selected='selected'><fmt:message key="profile.select.text"></fmt:message></option>";
+			for(var i=data.length;i--;){
+				
+				select_option_array.push("<option value="+data[i].securityQuestionId+">"+data[i].securityQuestionText+"</option>")
+				
+			}
+			select_option_array.push("");
+			function onlyUnique(value, index, self) { 
+			    return self.indexOf(value) === index;
+			}
+			unique += select_option_array.filter( onlyUnique );
+			
+			
+			$('select#editQuestionOne').html(unique);
+			$('select#securityQuestionTwo').html(unique);
+			$('select#hiddeneditQuestionOne').html(unique);
+			$('select#hiddensecurityQuestionTwo').html(unique);
+			
+		}
+	});
+}
+function getSecurity_Answer1(memberId){
+	var seqone = '1SQ%';
+	 $.get( '/ziksana-web/profile/1/profilequestion/'
+		     , {'memberId':memberId,'securityQuestion':seqone}
+		 , function( data )
+	        {
+			 
+			 	$('#alttenateEmailValue').val(data.alternateEmailId);
+			 	$('#hiddenalttenateEmailValue').val(data.alternateEmailId);
+				$('#editSecAnswerOne').val(data.memberAnswer);
+				$('select#editQuestionOne').val(data.securityQuestionId);
+				$('select#hiddeneditQuestionOne').val(data.securityQuestionId);
+				
+				$('#alternateMailLabel').text(data.alternateEmailId);
+				$('#ques_text_diplayone').text(data.securityQuestionText)
+	        }
+	);
+}
+function getSecurity_Answer2(memberId){
+	var seqtwo = '2SQ%';
+	 $.get( '/ziksana-web/profile/1/profilequestion/'
+		     , {'memberId':memberId,'securityQuestion':seqtwo}
+		 , function( data )
+	        {
+			 
+			 $('#editSecAnswerTwo').val(data.memberAnswer);
+			 $('select#securityQuestionTwo').val(data.securityQuestionId);
+			 $('select#hiddensecurityQuestionTwo').val(data.securityQuestionId);
+			 
+				$('#ques_text_diplaytwo').text(data.securityQuestionText)
+	        }
+	);
 }
 </script>
 <style>
@@ -1243,5 +1360,15 @@ border-radius: 6px 6px 6px 6px;"
 }
 .page-header {
   padding-bottom:0px;
+}
+.error_profile{
+	border:1px solid red!important;
+}
+.loader_password{
+	background-image:url(/ziksana-web/resources/images/home/loader.gif)
+
+}
+.button_disable{
+	
 }
 </style>
