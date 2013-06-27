@@ -36,17 +36,9 @@
             
         <script type="text/javascript" src="/ziksana-web/resources/swf/content-consumption.js"></script>
 		<script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
+		<script type="text/javascript"	src="/ziksana-web/resources/js/ziksana/content-consumption/consumption.js"></script>
         <script type="text/javascript">
-		function saveEnrichment(e) {
-			console.log(e);
-			return 2;
-		}
-		function deleteEnrichment(e) {
-			console.log(e);
-		}
-		function editEnrichment(e) {
-			console.log(e);
-		}
+
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
             var swfVersionStr = "11.4.0";
             // To use express install, set to playerProductInstall.swf, otherwise the empty string. 

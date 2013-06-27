@@ -188,8 +188,8 @@ function ff_open_player(){
 	$('#definetab').hide();
 	$('#leftPane').hide();
 	$('#recorded_content_container').show();
-	$('#recorded_content_container iframe').attr('src','/ziksana-web/zcourse/1/recorder');
-	//alert("Die another day");
+	$('#recorded_content_container iframe').attr('src','/ziksana-web/zcourse/1/consumption');
+	alert("Die another day");
 }
 
 function fixImage(id) {
