@@ -15,7 +15,7 @@ function ff_get_content_key()
 	if("" == originalContentPath.trim()){
 		originalContentPath = learningContentObject.contentURL;
 	}
-	//console.log("originalContentPath " + originalContentPath);
+	console.log("originalContentPath " + originalContentPath);
 	return originalContentPath;
 }
 
@@ -28,7 +28,7 @@ function ff_set_response(recordingResponse)
 	if(jsonObject.ContentKey != originalContentPath){
 		console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
 		originalContentPath = jsonObject.ContentKey;
-		createContent();
+		createContent(jsonObject);
 		//console.log("ff_get_content_key() ===============  " + ff_get_content_key());
 	}
 	//TODO delete later
@@ -38,7 +38,7 @@ function ff_set_response(recordingResponse)
 	
 }
 
-function createContent(){
+function createContent(jsonObject){
 	
 	var uri = '/ziksana-web/zcourse/1/record';
 	console.log("came here jsonObject.NumberOfThumbnails " + jsonObject.NumberOfThumbnails);
@@ -53,7 +53,7 @@ function createContent(){
 	};
 	//console.log("delete content course id is  " + CourseId);
 	//console.log("parameters.length " + parameters.length);
-	
+	/*
 	//return;
 	$.post(uri, parameters, function(data) {
 		console.log(data);
@@ -69,6 +69,16 @@ function createContent(){
 		}
 		//console.log("reconrd content response is ------>>>>>  " + data.response);
 	});
+	*/
+	jQuery.ajax({
+        url:    uri,
+        success: function(result) {
+	        //id = result;
+        },
+        async:   false,
+        data: parameters
+   });
+	
 }
 
 function ff_get_content_format()

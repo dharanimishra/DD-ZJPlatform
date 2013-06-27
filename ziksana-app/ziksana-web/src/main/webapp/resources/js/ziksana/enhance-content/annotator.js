@@ -17,7 +17,7 @@ function ff_get_content_key()
 	}
 	//TODO delete later for testing only
 	//var testVar = '{"Uploaded":"true", "ContentPath":"/var/www/html/zikload-xml/uploads/document/f1371192015", "ThumbnailPicturePath":"/var/www/html/zikload-xml/uploads/document/f1371192015/thumbnails/", "NumberOfThumbnails":"1", "ContentType":"pdf", "ContentKey":"f1371192015","Decoration":"Annotated"}';
-	//console.log(contentId + "     originalContentPath ---------->>>>> " + originalContentPath);
+	console.log(contentId + "     originalContentPath ---------->>>>> " + originalContentPath);
 	return originalContentPath;  
 }
 
@@ -30,9 +30,9 @@ function ff_set_response(annotationResponse)
 
 	jsonObject = parent.getJsonObject(annotationResponse);
 	if(jsonObject.ContentKey != originalContentPath){
-		//console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
+		console.log("Creating a new content old key was "  + originalContentPath + " and the new key is  " + jsonObject.ContentKey);
 		originalContentPath = jsonObject.ContentKey;
-		createContent();
+		createContent(jsonObject);
 		//alert(originalContentPath + "   i got it " + ff_get_content_key());
 	}
 	//TODO delete later
@@ -42,7 +42,7 @@ function ff_set_response(annotationResponse)
 	
 }
 
-function createContent(){
+function createContent(jsonObject){
 	
 	var uri = parent.serverContext  + 'zcourse/1/annotate';
 	//console.log("came here jsonObject.NumberOfThumbnails " + jsonObject.NumberOfThumbnails);
@@ -57,7 +57,7 @@ function createContent(){
 	};
 	//console.log("delete content course id is  " + CourseId);
 	//console.log("parameters.length " + parameters.length);
-	
+	/*
 	//return;
 	$.post(uri, parameters, function(data) {
 		//console.log(data);
@@ -73,6 +73,17 @@ function createContent(){
 		}
 		//console.log("reached here.......................");
 	});
+	*/
+	
+	jQuery.ajax({
+        url:    uri,
+        success: function(result) {
+	        //id = result;
+        },
+        async:   false,
+        data: parameters
+   });
+
 }
 
 function ff_get_content_format()
