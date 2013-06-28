@@ -79,21 +79,22 @@
 	  <% 
 	  
 	 	 	String imagePath="../../resources/images/preview/image.png";
-			if ("VIDEO".equalsIgnoreCase(ContentType.VIDEO.getName())){
+			if ("VIDEO".equalsIgnoreCase(content.getContentType().getName())){
 				imagePath="../../resources/images/preview/video.png";
 			} 
-			if("AUDIO".equalsIgnoreCase(ContentType.AUDIO.getName())){
+			if("AUDIO".equalsIgnoreCase(content.getContentType().getName())){
 				imagePath="../../resources/images/preview/audio.png";
 			}
-			if("PDF".equalsIgnoreCase(ContentType.PDF.getName())){
+			if("PDF".equalsIgnoreCase(content.getContentType().getName())){
 				imagePath="../../resources/images/preview/pdf.png";
 			}
-			if("PPT".equalsIgnoreCase(ContentType.PPT.getName())){
+			if("PPT".equalsIgnoreCase(content.getContentType().getName())){
 				imagePath="../../resources/images/preview/ppt.png";
 			}
-			if("DOC".equalsIgnoreCase(ContentType.DOC.getName())){
+			if("DOC".equalsIgnoreCase(content.getContentType().getName())){
 				imagePath="../../resources/images/preview/doc.png";
 			}
+		
 	  %>
 	  
 				<img id="thumbnail_image_<%=content.getId()%>" src="<%=imagePath%>" style="width: 70px;height:70px;margin-bottom: 4px;margin-left: 20px;" align="left" />
