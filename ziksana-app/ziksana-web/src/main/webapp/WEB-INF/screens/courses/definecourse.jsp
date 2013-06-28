@@ -295,8 +295,8 @@
 				<label class="control-label nexaf" for="Specify Tags"
 					style="width: 229px"><fmt:message key="course.SpecifyTags" />
 				</label>
-				<div class="controls" style="margin-left: 229px">
-					<input type="text" class="tags" id="Ctagfield_course" value="" />
+				<div style="margin-left: 229px">
+					<input  name="tags" id="Ctagfield_course" class="tags" value="${selected_tags}" />
 				</div>
 			</div>
 			<div class="control-group f-l">
