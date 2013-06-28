@@ -168,9 +168,14 @@ public class CreateCourseController {
 				LOGGER.debug("Module Size= >" + isModuleExists);
 			}
 			if (course_id > 0) {
+				CourseTagcloud tag = null;
+				tag = tagCloudService.getCourseTagClouds(course_id);
+				String selected_tags = tag.getTagName();
+			
 				modelView = new ModelAndView("mastercreatecourse");
 				mediaServerURL = mediaService.getMediaContents();
 				modelView.addObject("CourseId", course_id);
+				modelView.addObject("selected_tags", selected_tags);
 				modelView.addObject("courseId", courseId);
 				modelView.addObject("ms", mediaServerURL);
 				modelView.addObject("module", isModuleExists);

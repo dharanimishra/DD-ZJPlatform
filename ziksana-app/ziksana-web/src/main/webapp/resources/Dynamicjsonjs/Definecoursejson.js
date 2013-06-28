@@ -444,7 +444,8 @@ function getCourse() {
 
 							$('#Cdescriptionrte').val(course_desc);
 
-							$('#Ctagfield_course').val(selected_tags);
+							//$('#Ctagfield_course').val(selected_tags);
+							console.log("Ctagfield_course :"+selected_tags);
 
 							$('#spinner').val(credits);
 
