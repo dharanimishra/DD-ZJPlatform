@@ -661,6 +661,7 @@ table tr td {
 	function clearTextBox() {
 		//$('#descriptionErrorMsg').html("");
 		document.getElementById("descriptionErrorMsg").innerHTML = '';
+		//$("#todo_description").attr("placeholder"," ");
 	}
 	
 
