@@ -16,8 +16,8 @@ $("#todotype").hide();
 $(".addtodobtn").click(function(e) {
    // $("#addtodorow").toggle(200);
 	$("#add_todo_fields_container").show();
-	$('#todo_description').css("border","0px solid ");
-	$("#todo_description").attr("placeholder","Enter Your Description Here");
+	//$('#todo_description').css("border","0px solid ");
+	$("#todo_description").attr("placeholder","Enter Your Description");
 	document.getElementById("descriptionErrorMsg").innerHTML = '';
 	for(var i=0;i<5;i++){
 		   
@@ -763,7 +763,7 @@ function addTodo()
 	 if(todo_description ==''){
 		
 		 $('#descriptionErrorMsg').html("Enter Description");
-		$('#todo_description').css("border","1px solid red");
+		//$('#todo_description').css("border","1px solid red");
 		$("#todo_description").attr("placeholder"," ");
 		 return false;
 		 }else{
