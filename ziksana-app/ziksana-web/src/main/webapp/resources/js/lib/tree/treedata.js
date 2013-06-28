@@ -96,7 +96,7 @@ function onButtonClick(menuitemId, type) {
 								CKEDITOR.instances['Cmoduledescrte']
 								.setData(removeNewline(module_desc));	
 								
-								$('#Addmoduletag').val(moduletagfield);
+								$('#Addmoduletag').importTags(moduletagfield);
 								console.log("Addmoduletag :"+Addmoduletag);
 						
 								$('#Cimageupl').val(image_upload);
