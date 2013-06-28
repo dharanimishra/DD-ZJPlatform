@@ -88,7 +88,7 @@ public class RecordContentController {
 	@RequestMapping(value = "1/record", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public @ResponseBody
-	void createContent(
+	Integer createContent(
 			@RequestParam(value = "previousLearningContentId", required = true) Integer previousLearningContentId,
 			@RequestParam(value = "learningComponentId", required = true) Integer learningComponentId,
 			@RequestParam(value = "contentPath", required = true) String contentPath,
@@ -96,7 +96,7 @@ public class RecordContentController {
 			@RequestParam(value = "thumbnailPath", required = true) String thumbnailPath,
 			@RequestParam(value = "noOfThumbnails", required = true) Integer noOfThumbnails) {
 
-
+		Integer savedLearningContentId = -1;
 		try {
 			MemberPersona creator = new MemberPersona();
 			creator.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
@@ -130,14 +130,15 @@ public class RecordContentController {
 				learningContent.setLinkedLearningContent(previousLearningContent);
 				learningContent.setContentDescription(previousLearningContent.getContentDescription());
 				learningContent.setScreenshotPath(previousLearningContent.getScreenshotPath());
-				enrichContentService.createLearningContent(learningContent, 
+				LearningContent savedLearningContent =  enrichContentService.createLearningContent(learningContent, 
 						getDecorationTypeList(decorationTypes), creator, 
 						learningComponentId, previousLearningContent);
-				
+				savedLearningContentId = savedLearningContent.getId();
 				LOGGER.debug("RecordContentController.createContent() new learning content created for " + decorationTypes);
 		} catch (ZiksanaException  exception) {
 			LOGGER.error(exception.getMessage(), exception);	
 		}
+		return savedLearningContentId;
 	}
 	
 	private boolean isRecordingComplete(String decorationTypesAsString){
