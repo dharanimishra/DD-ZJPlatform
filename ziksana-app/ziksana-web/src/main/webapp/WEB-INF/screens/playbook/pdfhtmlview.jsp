@@ -139,7 +139,7 @@ font-weight: bold;}
 <script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-1.9.1.min.js'></script>
 <script type='text/javascript' src='/ziksana-web/resources/js/lib/jquery/jquery-ui-1.10.1.custom.min.js'></script>
 <div class="playbookconatiner">
-<div id="course" style="border:1px solid red">
+<div id="course">
 <div class="pbheader"><div class="pheaderL"><div class="phbox roundRb" style=" margin-right: 25px;background-color:#afb85b"></div>
 <div class="phbox roundLB" style="background-color:#f2db75"></div></div>
 <div class="pheadmiddle"> <label>${course.name }</label></div>
