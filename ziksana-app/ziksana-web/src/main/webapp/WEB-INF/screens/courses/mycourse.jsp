@@ -243,4 +243,11 @@ a.remove_this:hover {
 	border-color: red;
 	text-decoration: none;
 }
+.createcontenthead {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+   
+}
 </style>
