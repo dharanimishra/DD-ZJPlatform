@@ -33,9 +33,9 @@
 
 			<div class="fileupload  f-l" style="width:230px;">
 				<div class="associateimage" style="text-align:center;" >
-            <div style="height:150px;width:150px;margin-left:0px">
+            <div style="height:150px;width:150px;margin-left:20px">
 					<c:if test="${empty member.picturePath}">
-						<img style="width: 150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/usericon.png" align="center"/>
+						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="/ziksana-web/resources/images/usericon.png" align="center"/>
 					</c:if>
 					<c:if test="${not empty ms.url && not empty member.picturePath}">
 						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="${ms.url}<c:out value="${member.picturePath}"/>" />
@@ -92,9 +92,8 @@
 													
 														$(
 														'#thubmnail_upload_message')
-														.html(
-																'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="position:absolute; top:0px;margin-left:20px;left:130px;">Remove</a>');
-														
+														.html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="position:absolute; top:0px;margin-left:20px;left:130px;">Remove</a>');
+														$('#thumbnail_image_file_upload').uploadify('settings','buttonText','Change Image');
 
 											} else { //there is an error in the upload process
 
@@ -117,6 +116,7 @@
 							$('#profile_thumbnail_image')
 									.attr('src','/ziksana-web/resources/images/usericon.png');
 							removeUserProfileImage();
+							$('#thumbnail_image_file_upload').uploadify('settings','buttonText','Upload Image');
 						}
 					</script>
 
@@ -272,7 +272,7 @@
 
 			<div class="fileupload  f-l" style="width:230px;">
 				<div class="associateimage" style="text-align:center;">
- 				<div style="height:150px;width:150px;margin-left:0px">
+ 				<div style="height:150px;width:150px;margin-left:20px">
 					
 						<img style="width: 150px;height:150px; margin-bottom: .25em;" id="profile_thumbnail_image" src="" />
 
@@ -296,9 +296,12 @@
 												'swf' : '${staticFileServer}resources/swf/uploadify.swf',
 												'queueSizeLimit' : 1,
 												'successTimeout' : 350,
-												
+												<c:if test="${not empty member.picturePath}">
 												'buttonText' : 'Change Image',
-											
+												</c:if>
+												<c:if test="${empty member.picturePath}">
+												'buttonText' : 'Upload Image',
+												</c:if> 
 												'uploader' : '${ms.uploadScript}',
 												'fileTypeExts' : '*.gif; *.jpg; *.jpeg; *.png',
 												'fileSizeLimit' : '1024KB',
@@ -322,7 +325,7 @@
 															saveUploadedImage(data_object.ContentPath);
 														$('#profile_thumbnail_image').attr('src','${ms.url}'+ data_object.ContentPath);
 														$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="position: relative;top: 33px;">Remove</a>');
-														
+														$('#thumbnail_image_file_upload').uploadify('settings','buttonText','Change Image');
 
 													} else { //there is an error in the upload process
 
@@ -345,6 +348,7 @@
 									.attr('src',
 											'/ziksana-web/resources/images/usericon.png');
 							removeUserProfileImage();
+							$('#thumbnail_image_file_upload').uploadify('settings','buttonText','Upload Image');
 						}
 					<c:if test="${not empty member.picturePath}">
 						$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="rmv" style="position: relative;top: 33px;">Remove</a>');
@@ -967,7 +971,8 @@ function checkpass()
 			retypePassword = $('#retypePassword').val();
 			
 			memberIdRef = $('#memberIdValue').text();
-
+			
+			
 			dbcurrentPassword = $('#dbcurrentPassword').text();
 
 			if(dbcurrentPassword != newPassword){

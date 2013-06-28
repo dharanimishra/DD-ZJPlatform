@@ -60,28 +60,33 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	public boolean isUserNameExists(String username) {
-		// TODO Auto-generated method stub
+		
 		return userMapper.isUserNameExists(username);
 	}
 
-	public boolean isPasswordExists(String password) {
-		// TODO Auto-generated method stub
-		return userMapper.isPasswordExists(password);
+	public boolean isPasswordExists(String userName,String password) {
+		
+		return userMapper.isPasswordExists(userName, password);
 	}
 
 	public boolean isPrimaryEmailIdExists(String emailId) {
-		// TODO Auto-generated method stub
+		
 		return userMapper.isPrimaryEmailIdExists(emailId) ;
 	}
 
 	public String getPasswordUpdatedOn(int memberId) {
-		// TODO Auto-generated method stub
+		
 		return userMapper.getPasswordUpdatedOn(memberId);
 	}
 
 	public int deleteMemberProfileImage(int memberId) {
-		// TODO Auto-generated method stub
+		
 		return userMapper.deleteMemberProfileImage(memberId);
+	}
+
+	public boolean isPasswordExistsByMemberId(int memberId, String oldPassword) {
+		
+		return userMapper.isPasswordExistsByMemberId(memberId,oldPassword);
 	}
 
 }

@@ -125,7 +125,7 @@ public class ChangePasswordController {
 			response = passwordService.replaceExistingPassword(newPassword,userId,password);
 			}*/
 			Member member = memberService.getMemberByMemberId(Integer.parseInt(memberId));
-			if(memberService.isPasswordExists(oldPassword)){
+			if(memberService.isPasswordExistsByMemberId(Integer.parseInt(memberId),oldPassword)){
 				int i = 0;
 				i = passwordService.updateSecMemberCredentional(confirmPassword,userId);
 				if(i == 1){

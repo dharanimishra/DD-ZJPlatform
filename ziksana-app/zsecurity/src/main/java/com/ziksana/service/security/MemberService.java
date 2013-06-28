@@ -25,13 +25,15 @@ public interface MemberService {
 
 	public boolean isUserNameExists(String username);
 
-	public boolean isPasswordExists(String password);
+	public boolean isPasswordExists(String username, String password);
 
 	public boolean isPrimaryEmailIdExists(String emailId);
 
 	public String getPasswordUpdatedOn(int memberId);
 
 	public int deleteMemberProfileImage(int memberId);
+
+	public boolean isPasswordExistsByMemberId(int memberId, String oldPassword);
 	
 
 }

@@ -77,12 +77,12 @@ public class LoginController {
 						userIdValidationResponse = "User ID entered is incorrect";
 						
 						
-					}else if(!memberService.isPasswordExists(password)){
+					}else if(!memberService.isPasswordExists(username,password)){
 						
 						userAuthenticated = false;
 						passwordValidationResponse = "Password entered is incorrect";
 						
-					}else if(memberService.isUserNameExists(username) && memberService.isPasswordExists(password)){
+					}else if(memberService.isUserNameExists(username) && memberService.isPasswordExists(username,password)){
 						
 						
 						//userAuthenticated= authService.authenticateUser(username, password);

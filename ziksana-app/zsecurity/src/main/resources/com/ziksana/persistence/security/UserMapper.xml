@@ -157,6 +157,8 @@
 		select password from secmembercredential where userName=(select userId from memmember where id=#{userId})     
 	</select>
 	
+	
+	
 	<update id="updateSecMemberCredentional" parameterType="map">
 		update secmembercredential		
 		<set>
@@ -172,9 +174,14 @@
 	<select id="isUserNameExists" resultType="java.lang.Boolean" parameterType="String">
 		select count(*) from secmembercredential where BINARY userName=#{username}
 	</select>
-	<select id="isPasswordExists" resultType="java.lang.Boolean" parameterType="String">
-		select count(*) from secmembercredential where BINARY password=#{password}
+	<select id="isPasswordExists" resultType="java.lang.Boolean" parameterType="map">
+		select count(*) from secmembercredential where userName=#{username} and BINARY password=#{password}
 	</select>
+	
+	<select id="isPasswordExistsByMemberId" resultType="java.lang.Boolean" parameterType="map">
+		select count(*) from secmembercredential where memberId=#{memberId} and BINARY password=#{oldPassword}
+	</select>
+	
 	<select id="isPrimaryEmailIdExists" resultType="java.lang.Boolean" parameterType="String">
 		select count(*) from memmember where primaryemailId=#{emailId}
 		
