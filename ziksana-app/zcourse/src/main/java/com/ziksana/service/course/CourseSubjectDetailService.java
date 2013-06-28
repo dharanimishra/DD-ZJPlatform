@@ -22,5 +22,7 @@ public interface CourseSubjectDetailService {
 			String subjectTopic);
 
 	public CourseSubjectClassification getCourseClassification(Integer courseId);
+	
+	public CourseSubjectClassification getContentClassification(Integer contentId);
 
 }

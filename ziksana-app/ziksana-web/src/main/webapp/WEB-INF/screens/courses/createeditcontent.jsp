@@ -10,7 +10,7 @@
 <script type="text/javascript"
 	src="${staticFileServer}resources/js/custom/createcontent/addweblink.js"></script>
 <script type="text/javascript"
-	src="${staticFileServer}resources/Dynamicjsonjs/editcontentjson.js"></script>
+	src="${staticFileServer}resources/Dynamicjsonjs/createeditcontentjson.js"></script>
 
  <style>
  	footer{display:none}
@@ -111,7 +111,7 @@ $(document).ready(function() { // On page load
 						<div id="thubmnail_upload_message_<%=content.getId()%>"></div>
 						<div id="loaderText_<%=content.getId()%>"></div>
 						<input type="file" name="thumbnail_image_file_upload_<%=content.getId()%>" id="thumbnail_image_file_upload_<%=content.getId()%>" style="width: 70px;height:70px;margin-bottom: 4px;" />
-							<input type="hidden" name="content_id[]" value="<%=content.getId()%>"/>
+							<input type="hidden" id="content_id" name="content_id[]" value="<%=content.getId()%>"/>
 							<% String old_thumbnail_path = "${staticFileServer}resources/images/genetics.jpg"; %>
 							<input type="hidden" name="thumbnail_path[]" id="thumbnail_path_<%=content.getId()%>" value=""/>
 						<div id="status_<%=content.getId()%>"></div>
@@ -202,13 +202,13 @@ $(document).ready(function() { // On page load
 		<div class="editslide pull-left" style="margin-left: 5px;">
 		<ul><li style="margin-bottom: 10px;">	<label><fmt:message key="Select.Area"/></label>
 			<select
-				class="Careaddl select" name="content_area[]"> <option><fmt:message key="Specify.Area"/></option>
+				class="Careaddl select" id="Careaddl" name="content_area[]"> <option><fmt:message key="Specify.Area"/></option>
 			</select></li><li  style="margin-bottom: 10px;">
 			<label><fmt:message key="Select.Subject"/></label> 
-			<select class="select Csubjectddl" name="content_subject[]"> <option><fmt:message key="Specify.Subject"/></option> </select></li>
+			<select class="select Csubjectddl" id="Csubjectddl" name="content_subject[]"> <option><fmt:message key="Specify.Subject"/></option> </select></li>
 			 <li>
 			<label>Select Topic</label>
-			<select class="select Ctopicddl" name="content_topic[]" > <option><fmt:message key="Specify.Topic"/>
+			<select class="select Ctopicddl" id="Ctopicddl" name="content_topic[]" > <option><fmt:message key="Specify.Topic"/>
 		</option> </select> </li>
 		 <li>	<label><fmt:message key="Specify.Tags"/></label>
 		 <input type="text" placeholder="<fmt:message key="Specify.Tags"/>" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 

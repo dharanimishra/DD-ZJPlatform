@@ -103,5 +103,21 @@ public class CourseSubjectDetailsServiceImpl implements
 
 		return courseSubjectClassification;
 	}
+	
+	public CourseSubjectClassification getContentClassification(Integer contentId) {
+		CourseSubjectClassification courseSubjectClassification = null;
+		LOGGER.debug("Entering Class :" + getClass()
+				+ " Method Name :getContentClassification(Integer courseId) : "
+
+				+ " contentId :" + contentId);
+		courseSubjectClassification = courseSubjectDetailMapper
+				.getContentClassification(contentId);
+		LOGGER.debug("Exiting Class :"
+				+ getClass()
+				+ " Method Name :getContentClassification(Integer contentId): contentId :"
+				+ contentId);
+
+		return courseSubjectClassification;
+	}
 
 }

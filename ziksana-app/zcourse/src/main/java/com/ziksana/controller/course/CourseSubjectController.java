@@ -122,4 +122,25 @@ public class CourseSubjectController {
 
 		return courseSubjectClassification;
 	}
+	
+	@RequestMapping(value = "/getcontentsubclassification", method = {
+			RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	CourseSubjectClassification getContentSubClassification(
+			@RequestParam(value = "content_id", required = false) String contentId) {
+
+		LOGGER.debug("Entering Class " + getClass()
+				+ " getContentSubClassification():contentId:" + contentId);
+		CourseSubjectClassification courseSubjectClassification = null;
+		try {
+			courseSubjectClassification = courseSubjectDetailService
+					.getContentClassification(Integer.parseInt(contentId));
+		} catch (ZiksanaException exception) {
+			LOGGER.error(exception.getMessage(), exception);
+		}
+		LOGGER.debug("Exiting Class " + getClass()
+				+ " getContentSubClassification(): contentId:" + contentId);
+
+		return courseSubjectClassification;
+	}
 }

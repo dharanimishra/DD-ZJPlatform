@@ -197,7 +197,8 @@ public class MyContentController {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
-              System.out.println("contentPath  ###################    " + contentPath.length);
+			System.out.println("contentPath  ###################    "
+					+ contentPath.length);
 			for (int i = 0; i < contentPath.length; i++) {
 				try {
 					LearningContent learningContent = new LearningContent();
@@ -227,9 +228,13 @@ public class MyContentController {
 					}
 					LearningContent learningCont = myContentService
 							.saveOrUpdate(learningContent);
-					LOGGER.info("learningContent created ################### " + i +"   " + learningCont.getId());
-					LOGGER.debug("learningContent create ################### " +i  +"  " + learningCont.getContentName());
-					System.out.println("learningContent created  ################### " +i+ " " + learningCont.getContentPath());
+					LOGGER.info("learningContent created ################### "
+							+ i + "   " + learningCont.getId());
+					LOGGER.debug("learningContent create ################### "
+							+ i + "  " + learningCont.getContentName());
+					System.out
+							.println("learningContent created  ################### "
+									+ i + " " + learningCont.getContentPath());
 					learningContentlist.add(learningCont);
 					modelView.addObject("contentId", learningCont.getId());
 				} catch (Exception e) {
@@ -248,10 +253,12 @@ public class MyContentController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		LOGGER.info("contentPath  ###################    " + contentPath.length);
-		LOGGER.debug("contentPath  ###################    " + contentPath.length);
-		System.out.println("contentPath  ###################    " + contentPath.length);
+		LOGGER.debug("contentPath  ###################    "
+				+ contentPath.length);
+		System.out.println("contentPath  ###################    "
+				+ contentPath.length);
 		return modelView;
 
 	}
@@ -403,7 +410,7 @@ public class MyContentController {
 			}
 
 			myContentService.saveOrUpdate(learningContent);
-			
+
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("pageTitle", "My Content");
@@ -499,11 +506,11 @@ public class MyContentController {
 
 				try {
 					if (contentTopic != null && contentTopic.length > 0) {
-					CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
-							.getSubjectClassification(contentTopic[i]);
-					learningContent
-							.setSubjClassificationId(courseSubjectClassification
-									.getSubjClassificationId());
+						CourseSubjectClassification courseSubjectClassification = courseSubjectDetailService
+								.getSubjectClassification(contentTopic[i]);
+						learningContent
+								.setSubjClassificationId(courseSubjectClassification
+										.getSubjClassificationId());
 					}
 				} catch (Exception e) {
 					LOGGER.error("Class " + getClass()

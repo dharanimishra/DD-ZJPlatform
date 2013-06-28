@@ -53,5 +53,13 @@ public interface CourseSubjectDetailMapper {
 			@Result(property = "subjectCategory", column = "SubjectCategory"),
 			@Result(property = "subjectTopic", column = "SubjectTopic") })
 	CourseSubjectClassification getCourseClassification(Integer courseId);
+	
+	@Select({ "select utl.ID as ID, SubjectArea, SubjectCategory,SubjectTopic from utlsubjectclassification utl,corlearningcontent corlearningcontent where utl.ID=corlearningcontent.SubjClassificationId and corlearningcontent.id= #{contentId,jdbcType=INTEGER}" })
+	@Results(value = {
+			@Result(property = "subjClassificationId", column = "ID"),
+			@Result(property = "subjectArea", column = "SubjectArea"),
+			@Result(property = "subjectCategory", column = "SubjectCategory"),
+			@Result(property = "subjectTopic", column = "SubjectTopic") })
+	CourseSubjectClassification getContentClassification(Integer contentId);
 
 }

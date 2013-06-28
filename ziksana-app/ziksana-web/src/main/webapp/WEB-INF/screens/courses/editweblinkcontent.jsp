@@ -114,11 +114,8 @@ $(document).ready(function() { // On page load
 		try {
 		int i=0;
 	 	for (LearningContent content : list) {
-	 		
-	 		
-	 %> 
-				<div class="addweblink">
-		
+	 %> 				
+	 <div class="addweblink">
 					<div class="createcontentpanelhead">
 						Edit Web Link
 						<!--end of add more-->
@@ -133,7 +130,7 @@ $(document).ready(function() { // On page load
 								<div id="message"></div>
 								<div id="thubmnail_upload_message"></div>
 								<div id="loaderText"></div>
-								<input type="hidden" name="contentId" value="<%=content.getId()%>"/>
+								<input type="hidden" name="contentId" id="contentId" value="<%=content.getId()%>"/>
 								<input type="file" name="thumbnail_image_file_upload"
 									tabindex="11" id="thumbnail_image_file_upload"
 									style="margin-left: 196px;" />
@@ -204,12 +201,12 @@ $(document).ready(function() { // On page load
 						</div>
 						<!--end of rowfields-->
 						<div class="clearfix"></div>
-						<div class="editslide pull-left" style="display:none">
+						<div class="editslide pull-left" style="display:block">
 						<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px; padding-left: 10px;">Description</label>
-							<textarea rows="4" cols="12" name="contentDescription" value="<%=content.getContentDescription()%>"
-								style="width: 330px; margin-bottom: 10px; margin-left: 10px;" placeholder="Describe the content for  Web link"></textarea>
+							<textarea rows="4" cols="12" name="contentDescription" 
+								style="width: 330px; margin-bottom: 10px; margin-left: 10px;" placeholder="Describe the content for  Web link"><%=content.getContentDescription()%></textarea>
 						</div>
-						<div class="editslide pull-left" style="margin-left: 10px;display:none">
+						<div class="editslide pull-left" style="margin-left: 10px;display:block">
 							<ul><li style="margin-bottom: 10px;">	<label>Select Area</label>
 							<select id="Careaddl" name="contentArea" class="select Careaddl">
 								<option>Specify Area</option>

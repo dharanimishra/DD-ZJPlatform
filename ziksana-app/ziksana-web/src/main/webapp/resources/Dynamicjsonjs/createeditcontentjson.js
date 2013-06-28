@@ -1,8 +1,11 @@
+// JavaScript Document
+
 $(document)
 		.ready(
 				function(e) {
-					var content_id = $('#contentId').val();
-					console.log("subject classification content_id :"+contentId);
+					
+					var content_id = $('#content_id').val();
+					console.log("subject classification content_id :"+content_id);
 					var subject_area_pre = '';
 					var subject_pre = '';
 					var topic_pre = '';
@@ -136,6 +139,45 @@ $(document)
 									});
 				});
 
+function editContent() {
+
+	// Step 1: Assign Parameters required by the sendMessage function.
+	uri = '/ziksana-web/zcourse/1/editcontents';
+
+	token = ''; // dummy token for demo. you have to send real token.
+	request_type = 'POST'; // can be GET or POST. In this case, a GET request
+
+	var ContentId = $('#contentId').val();
+
+	var ContentName = $('#EditName').val();
+
+	var ContentDescription = $('#ContentDescription').val();
+
+	var ThumbnailPicturePath = $('#Cimageupl').val();
+
+	var Subject_Area = $('#Careaddl').val();
+
+	var Subject = $('#Csubjectddl').val();
+
+	var Topic = $('#Ctopicddl').val();
+
+	var parameters = {
+		"ContentId" : ContentId,
+		"ContentName" : ContentName,
+		"ContentDescription" : ContentDescription,
+		"ThumbnailPicturePath" : ThumbnailPicturePath,
+		"Subject_Area" : Subject_Area,
+		"Subject" : Subject,
+		"Topic" : Topic
+
+	};
+
+	$.post(uri, parameters, function(data) {
+		//console.log(data);
+
+	});
+
+}
 
 function deleteContent(content_id) {
 
@@ -166,8 +208,7 @@ function deleteContent(content_id) {
 								$.post(uri,parameters,function(data) {
 									if (data.response == 'success') {
 									console.log("content_content_id"+content_id);
-							     	$('#addweblink').remove();
-							     	window.location.href = "/ziksana-web/zcourse/1/mycontent";
+							     	$('#content_'+content_id).remove();
 							     	console.log("$('#content_'+content_id).remove() ");
 									}
 								});
