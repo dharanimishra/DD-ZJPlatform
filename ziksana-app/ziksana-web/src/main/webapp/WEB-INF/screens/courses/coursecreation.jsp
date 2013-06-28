@@ -316,7 +316,7 @@ $(document).ready(function() { // On page load
 									$('#thubmnail_upload_message').html('');
 									$('#course_thumbnail_image')
 											.attr('src',
-													'${staticFileServer}resources/images/preview/defaultcourse.png' );
+													'${staticFileServer}resources/images/preview/defaultmodule.png' );
 
 								}
 							</script>

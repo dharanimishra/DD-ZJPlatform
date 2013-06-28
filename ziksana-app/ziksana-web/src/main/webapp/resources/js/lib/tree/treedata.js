@@ -70,22 +70,19 @@ function onButtonClick(menuitemId, type) {
 								subject = data.subject;
 								topic = data.topic;
 								image_upload = data.imageupload;
+								moduletagfield =data.tagfield;
 
 								//console.log('image_upload:'+image_upload);
 								if (image_upload == '') {
-									thumbnail_url = '/ziksana-web/resources/images/preview/defaultcourse.png';
+									thumbnail_url = '/ziksana-web/resources/images/preview/defaultmodule.png';
 								} else {
 									thumbnail_url = media_server_url + image_upload;
 								//	console.log('thumbnail_url:'+thumbnail_url);
 								}
 								$('#course_thumbnail_image').attr('src',
 										thumbnail_url);
-								$('#thubmnail_upload_message')
-										.html(
-												'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
+								$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
 								
-								
-
 								$('#courseid').val(Course_id);
 
 								$('#courseLearningComponentId').val(
@@ -95,14 +92,13 @@ function onButtonClick(menuitemId, type) {
 										learningComponentId);
 
 								$('#Course_Module').val(module_name);
-
-								//console.log('module_desc : ' + module_desc);
-
-							//	 $('#Cmoduledescrte').val(module_desc);
-
-								CKEDITOR.instances['Cmoduledescrte']
-										.setData(removeNewline(module_desc));
 								
+								CKEDITOR.instances['Cmoduledescrte']
+								.setData(removeNewline(module_desc));	
+								
+								$('#Addmoduletag').val(moduletagfield);
+								console.log("Addmoduletag :"+Addmoduletag);
+						
 								$('#Cimageupl').val(image_upload);
 
 								// populate subject area

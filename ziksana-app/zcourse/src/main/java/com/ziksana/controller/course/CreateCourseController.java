@@ -973,6 +973,7 @@ public class CreateCourseController {
 				+ " learningComponentId :" + ComponentId);
 
 		ModuleEditResponse json = null;
+		ModelAndView modelView = new ModelAndView();
 		try {
 			Integer courseid = 0, learningComponentId = 0;
 			learningComponentId = Integer.parseInt(ComponentId.split("_")[1]);
@@ -988,6 +989,8 @@ public class CreateCourseController {
 			json = courseEditService.getModuleDetails(learningComponentId);
 			json.setResponse("success");
 			json.setTagfield(tagfield);
+			modelView.addObject("tagfield", tagfield);
+			
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
