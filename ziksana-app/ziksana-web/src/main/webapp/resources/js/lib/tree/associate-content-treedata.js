@@ -106,25 +106,32 @@ function onButtonClick(menuitemId, type) {
 		
 		}
 	} else if (menuaction == "Delete") {
-		// alert("open the menu for Delete module.");
-		ComponentId = tree.getSelectedItemId();
-		//console.log(ComponentId);
+		//alert("open the menu for Delete module.");
+		var contentId = tree.getSelectedItemId().split('_')[1];
+
+		var decorationTypeList = getLearningContentObject(contentId).decorationTypeList;
+		var latestDecorationType = "";
+		if(decorationTypeList && decorationTypeList.length > 0 ){
+			latestDecorationType = decorationTypeList[(decorationTypeList.length - 1)];
+		}
+		//alert("latestDecorationType " + latestDecorationType);
+		if("" != latestDecorationType){
+			alert("Cannot delete this content as it is already " + latestDecorationType); 
+			return;
+		}
+		
 		confirm_delete_component = confirm('Do you want to delete this Content?');
 		if (confirm_delete_component == true) {
 			uri = serverContext + 'zcourse/1/unassociatecontent';
 
-			//token = ''; // dummy token for demo. you have to send real token.
-			request_type = 'POST'; // can be GET or POST. In this case, a GET
-			// request
 
 			var CourseId = $('#courseid').val();
-			nodeParentId = tree.getParentId(ComponentId);
-			//alert("ComponentId " + ComponentId.split('_')[1] + " CourseId "  + CourseId + " nodeParentId " + nodeParentId.split('_')[1]);
+			nodeParentId = tree.getParentId(contentId);
 
 			var parameters = {
 				"courseId" : CourseId,
 				"componentId" : nodeParentId.split('_')[1],
-				"contentId" : ComponentId.split('_')[1]
+				"contentId" : contentId
 			};
 			
 			//console.log("delete content course id is  " + CourseId);
