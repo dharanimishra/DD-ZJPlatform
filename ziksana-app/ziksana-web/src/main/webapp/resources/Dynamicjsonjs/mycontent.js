@@ -308,7 +308,10 @@ function getDiv(learningContentObject) {
 	if(content_type == 'LINK'){
 		 learningContentDiv = '<div id="createcontent-main" class="item All">'
 				+ '<p class="createcontenthead">'
-				+ learningContentObject.contentName
+				
+				+ truncate_content_name(learningContentObject.contentName)
+				
+				
 				+ '</p><p class="createcontentimg">'
 				+ '<img src="'
 				+ preview_path
@@ -330,7 +333,9 @@ function getDiv(learningContentObject) {
 
 	learningContentDiv = '<div id="createcontent-main" class="item All">'
 			+ '<p class="createcontenthead">'
-			+ learningContentObject.contentName
+			
+				+ truncate_content_name(learningContentObject.contentName)
+			
 			+ '</p><p class="createcontentimg">'
 			+ '<img src="'
 			+ preview_path
@@ -351,6 +356,20 @@ function getDiv(learningContentObject) {
 
 	return learningContentDiv;
 
+}
+
+function truncate_content_name(contentName){
+	var contentArray = [];
+	contentArray= contentName.split('.');
+
+	if(contentArray[0].length > 22){
+			return contentArray[0].substring(0,22)+'.'+contentArray[1];
+		}else{
+			return contentName;
+		}
+		
+
+	
 }
 
 function getPageDiv(noOfPages, filterType,pageIndex) {
