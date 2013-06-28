@@ -87,7 +87,7 @@ $(document).ready(function() { // On page load
 	  <% 
 	  
 		  String imagePath="../../../resources/images/preview/image.png";
-		  if(content.getScreenshotPath().length()==0){
+	
 			if ("VIDEO".equalsIgnoreCase(content.getContentType().getName())){
 				imagePath="../../../resources/images/preview/video.png";
 			}
@@ -103,9 +103,7 @@ $(document).ready(function() { // On page load
 			if("DOC".equalsIgnoreCase(content.getContentType().getName())){
 				imagePath="../../../resources/images/preview/doc.png";
 			}		 
-	  }	else { 	
-		  imagePath=content.getScreenshotPath();
-	  }
+	 
 	  %>
 	  
 				<img id="thumbnail_image_<%=content.getId()%>" src="<%=imagePath%>" style="width: 70px;height:70px;margin-bottom: 4px;margin-left: 20px;" align="left" />
@@ -199,7 +197,7 @@ $(document).ready(function() { // On page load
 		<div class="editslideup1 clearfix details" style="display:block"> 
 		<div class="editslide pull-left"> 
 		<label for="ContentDescription" style="width:100%;clear:both; margin-top: 6px;"><fmt:message key="Description.txt"/></label>
-		<textarea rows="4" cols="12" style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]" value="<%=content.getContentDescription()%>" placeholder="Describe the content uploaded"></textarea>
+		<textarea rows="4" cols="12" style="width: 350px; margin-bottom: 10px; margin-left: 5px;" id="ContentDescription"  name="content_desc[]"  placeholder="Describe the content uploaded"><%=content.getContentDescription()%></textarea>
 		</div>
 		<div class="editslide pull-left" style="margin-left: 5px;">
 		<ul><li style="margin-bottom: 10px;">	<label><fmt:message key="Select.Area"/></label>
