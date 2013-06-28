@@ -236,8 +236,7 @@ font-weight: bold;}
    </c:otherwise>
   </c:choose>
  </div>
-</div>
-   
+</div>   
    <div class="coursedescription" id="cd">
 ${course.description}
 <div class="Clearfix"> </div>
@@ -256,15 +255,16 @@ ${course.description}
 <div class="contentdetails">
  <c:forEach var="node" items="${treeNodeList}">
 	 <div class="detailswrrapper">
-         <c:choose>
+     <c:choose>
       <c:when test="${! empty node.thumbnailPicturePath}">
-         <img src="${mediaserver}${node.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
-      </c:when>
-      <c:otherwise>
-      <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
-   </c:otherwise>
+          <img src="${mediaserver}${node.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
+       </c:when>
+       <c:otherwise>
+        <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+      </c:otherwise>
   </c:choose>
 	  <div><label class="b1">${node.title}</label><label class="b2">${course.name}</label ></div>
+	  <div style="clear:both"></div>
 	  ${node.nodeDescription}
 	   <br>
 	   <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div -->
@@ -283,15 +283,47 @@ ${course.description}
 		    <b style="padding:0px">${cnode.title}</b><label style="float:right;font-weight:bold">${node.title}</label ><br/>    
 		    ${cnode.nodeDescription}<br>
 		    <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
-		   </div>   
+		   </div>
+		   
+    <c:if test="${! empty cnode.children}">
+     <c:forEach var="cnode2" items="${cnode.children}">    
+        <div class="detailswrrapper">   
+		     <c:choose>
+		      <c:when test="${! empty cnode.thumbnailPicturePath}">
+		         <img src="${mediaserver}${cnode.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
+		      </c:when>
+		      <c:otherwise>
+		   <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+		   </c:otherwise>
+		  </c:choose>
+		    <b style="padding:0px">${cnode2.title}</b><label style="float:right;font-weight:bold">${cnode.title}</label ><br/>    
+		    ${cnode2.nodeDescription}<br>		  
+		   </div>
+		   
+	         <c:if test="${! empty cnode2.children}">
+			     <c:forEach var="cnode3" items="${cnode2.children}">    
+			        <div class="detailswrrapper">   
+					     <c:choose>
+					      <c:when test="${! empty cnode.thumbnailPicturePath}">
+					         <img src="${mediaserver}${cnode.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
+					      </c:when>
+					      <c:otherwise>
+					   <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+					   </c:otherwise>
+					  </c:choose>
+					    <b style="padding:0px">${cnode3.title}</b><label style="float:right;font-weight:bold">${cnode2.title}</label ><br/>    
+					    ${cnode3.nodeDescription}<br>		  
+					   </div>   
+			      </c:forEach>  
+		     </c:if>
+		      
+      </c:forEach>  
+     </c:if>		   
+		   
+		      
       </c:forEach>  
      </c:if>
-   <c:if test=" ${coursModuleFooterId== node.id}">
-     <div class="Clearfix"> </div>
-     <div class="toplink"><a href="#ctc">Top</a></div>
-     <div class="Clearfix"> </div>
-     <div class="chapeterfotter"><label class="pageno"></label></div>
-  </c:if>	  
+  
 </c:forEach> 
 
  

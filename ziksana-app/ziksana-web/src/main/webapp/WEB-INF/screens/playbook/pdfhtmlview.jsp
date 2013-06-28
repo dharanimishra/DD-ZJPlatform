@@ -226,7 +226,45 @@ font-weight: bold;}
 		    <div><label class="b1">${cnode.title}</label><label  class="b2">${node.title}</label ></div>   
 		    ${cnode.nodeDescription}<br>
 		    <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div-->
-		   </div>   
+		   </div>
+		   <c:if test="${! empty cnode.children}">
+		     <c:forEach var="cnode2" items="${cnode.children}">    
+		        <div class="detailswrrapper">   
+				     <c:choose>
+				      <c:when test="${! empty cnode.thumbnailPicturePath}">
+				         <img src="${mediaserver}${cnode.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
+				      </c:when>
+				      <c:otherwise>
+				   <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+				   </c:otherwise>
+				  </c:choose>
+				    <div><label class="b1">${cnode2.title}</label><label  class="b2">${cnode.title}</label ></div>   
+				    ${cnode2.nodeDescription}<br>
+				    <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div-->
+				   </div>
+				   
+				   		   <c:if test="${! empty cnode.children}">
+		     <c:forEach var="cnode3" items="${cnode2.children}">    
+		        <div class="detailswrrapper">   
+				     <c:choose>
+				      <c:when test="${! empty cnode.thumbnailPicturePath}">
+				         <img src="${mediaserver}${cnode.thumbnailPicturePath}" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"/>       
+				      </c:when>
+				      <c:otherwise>
+				   <img src="/ziksana-web/resources/images/playbook/defaultmodule.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left">
+				   </c:otherwise>
+				  </c:choose>
+				    <div><label class="b1">${cnode3.title}</label><label  class="b2">${cnode2.title}</label ></div>   
+				    ${cnode3.nodeDescription}<br>
+				    <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div-->
+				   </div>   
+		      </c:forEach>  
+           </c:if>
+				   
+				      
+		      </c:forEach>  
+           </c:if>  
+		       
       </c:forEach>  
      </c:if>	  
 </c:forEach> 
