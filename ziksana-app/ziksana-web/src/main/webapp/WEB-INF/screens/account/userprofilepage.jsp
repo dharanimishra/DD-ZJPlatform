@@ -413,11 +413,11 @@
 						  <p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetResponse"></p>
      						<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetFailResponse"></p>
 						  <label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
-						 <div class="controls"> <label class="nexaf"><fmt:message key="Current"></fmt:message> :</label><input type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="<fmt:message key="Enter.cur.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
-						   <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red; margin-top:3px;" id="errorNewPassword"></div>
-						    <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /><div style="color: red;" id="errorRetypePassword"></div></div><div class="clearfix"></div>
+						 <div class="controls"> <label class="nexaf"><fmt:message key="Current"></fmt:message> :</label><input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="<fmt:message key="Enter.cur.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
+						   <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red; margin-top:3px;" id="errorNewPassword"></div>
+						    <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /><div style="color: red;" id="errorRetypePassword"></div></div><div class="clearfix"></div>
 						   <div style="margin-top:6px;">
-						   <div class="loader_password" style="width:200px;"></div>
+						   
 					  		<button id="savePasswordReset" class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
 						  </div>
 						  </div>
@@ -613,6 +613,13 @@ function removeAns2Focus(){
 	$('#securityAnswertwo2').focusout();
 	$('#securityAnswertwo2').removeClass('error_profile');
 	document.getElementById("errorsecurityAnswertwo").innerHTML = '';
+}
+function editpasswordFocus(){
+	
+	$("#errorCurrentPassword").html(' ');
+	$("#errorNewPassword").html('');
+	$("#errorRetypePassword").html('');
+	
 }
 	function firstQuestionValidation(question) {
 		//firstSelectBox = document.getElementById("securityQuestionOne");
