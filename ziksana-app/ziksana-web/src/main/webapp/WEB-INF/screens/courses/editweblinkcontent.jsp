@@ -221,9 +221,8 @@ $(document).ready(function() { // On page load
 			           <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic">
 								<option>Specify Topic</option>
 							</select></li>
-		       <li>	<label>Specify Tags</label>
-							<input type="text" placeholder="Specify Tags" name="contentTag"
-								style="height: 30px; margin-right: 12px; width: 233px;">
+		      			 <li><label>Specify Tags</label>
+						<input type="text" placeholder="Specify Tags" class="tags" value=""  name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;">
 						</li></ul></div>
 						<div class="clearfix"></div>
 					</div>
@@ -349,6 +348,7 @@ input.error {
 #web_link_container div.weblink_row:nth-child(even) {
   background: none repeat scroll 0 0 #CCCCCC;
 }
+.tagsinput input{width:233px!important}
 </style>
 
 <script type="text/javascript">

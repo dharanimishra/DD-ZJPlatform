@@ -390,7 +390,7 @@ public class MyCoursesController {
 			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
 
 			modelView.addObject("courseAsJSONString", jsonString);
-			modelView.addObject("message", "This courses has been activated successfully.");
+			modelView.addObject("message", "This courses has been completed successfully.");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}

@@ -15,7 +15,12 @@
 <style>
  	footer{display:none}
 </style> 
+ <script>
+$(document).ready(function() { // On page load
+  $("#navstudent").addClass("active");  
  
+});
+</script>
 
 <div id="Zikbreadcrumbback" style="margin-left: 20px;"> 
 <div
@@ -203,8 +208,8 @@
 			<label> Topic</label>
 			<select class="select Ctopicddl" name="content_topic[]" > <option>Specify
 			Topic</option> </select> </li>
-		 <li>	<label>Specify Tags</label>
-		 <input type="text" placeholder="Specify Tags" name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
+		 	<li><label>Specify Tags</label>
+		 	<input type="text" placeholder="Specify Tags" class="tags" value=""  name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;"> 
 			</li></ul>
 		</div> 
 
@@ -377,6 +382,7 @@ input.error {
     position: absolute;
     width: 350px;}
 .editslide{margin-top:32px;}
+.tagsinput input{width:233px!important}
 </style>
 
 <script type="text/javascript">
