@@ -299,6 +299,7 @@ public class MyCoursesController {
 			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
 
 			modelView.addObject("courseAsJSONString", jsonString);
+			modelView.addObject("message", "Course Added successfully.");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
@@ -344,6 +345,7 @@ public class MyCoursesController {
 			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
 
 			modelView.addObject("courseAsJSONString", jsonString);
+			modelView.addObject("message", "Course Added successfully.");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
@@ -388,6 +390,7 @@ public class MyCoursesController {
 			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
 
 			modelView.addObject("courseAsJSONString", jsonString);
+			modelView.addObject("message", "Course Added successfully.");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
