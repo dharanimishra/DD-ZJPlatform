@@ -21,7 +21,7 @@ public class PdfUtil {
 	pb.directory(new File("D:/dev"));*/
 	 try {
 		 Runtime rt = Runtime.getRuntime();
-		 Process p = rt.exec("wkhtmltopdf --margin-bottom 50mm --footer-html http://localhost:8080/ziksana-web/zplaybook/unsecure/extraPDFHtml/472 " +idStr+" " + outputfile);
+		 Process p = rt.exec("wkhtmltopdf --margin-bottom 63mm --footer-html http://localhost:8080/ziksana-web/zplaybook/unsecure/extraPDFHtml/472 " +idStr+" " + outputfile);
 		//Process p = pb.start();
 		processLog(p.getErrorStream());
 		processLog(p.getErrorStream());

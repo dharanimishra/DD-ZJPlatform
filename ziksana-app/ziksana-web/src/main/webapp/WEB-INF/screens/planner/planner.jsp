@@ -15,7 +15,7 @@
 				style="margin-right: 10px; height: 22px;"> </span>Define Planner</li></a>
 		
 		<li style="">
-		<a href="/ziksana-web/zplaybook/unsecure/htmlView/${courseIds}">
+		<a href="/ziksana-web/zplaybook/1/htmlView/${courseIds}">
 		<span><img
 				src="/ziksana-web/resources/images/navarrowb.png"
 				style="margin-right: 10px; height: 22px;"> </span>Review Playbook
@@ -167,7 +167,7 @@ function saveandcontinue(courseId){
 	
 	document.getElementById('submit_planner_data').click(); 
 	
-	window.location.href = "/ziksana-web/zplaybook/unsecure/htmlView/"+courseId+"";
+	window.location.href = "/ziksana-web/zplaybook/1/htmlView/"+courseId+"";
 }
 
 function get_and_populate_planner_data(courseId){

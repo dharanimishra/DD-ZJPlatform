@@ -90,7 +90,7 @@ public class PlayBookController {
 	private String noteIcon = "/ziksana-web/resources/images/tree_icons/note.png";
 	private String linkIcon = "/ziksana-web/resources/images/tree_icons/link.png";*/
 	
-	@RequestMapping(value = "/unsecure/downloadPlayBook/{courseId}", method =RequestMethod.GET)
+	@RequestMapping(value = "/1/downloadPlayBook/{courseId}", method =RequestMethod.GET)
 	public void downloadPlayBook(@PathVariable Integer courseId, HttpServletResponse response ){
 		 System.out.println("this is path variable..  "+ courseId);
 		 String resourcePath = context.getRealPath("/static/playbook");
@@ -129,8 +129,10 @@ public class PlayBookController {
 				os.write(bytes, 0, read);
 			}
 			//os.write(download.getBytes());
-			os.flush();
-			os.close();	
+			
+			  os.flush();
+			  os.close();	
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -143,13 +145,13 @@ public class PlayBookController {
 		 return mv;	
 	}
 	
-	@RequestMapping(value = "/unsecure/save/", method =RequestMethod.POST)
+	@RequestMapping(value = "/1/save/", method =RequestMethod.POST)
 	public ModelAndView save(){
 		ModelAndView mv = new  ModelAndView("redirect:home");
 		 return mv;	
 	}
 	
-	@RequestMapping(value = "/unsecure/htmlView/{courseId}", method =RequestMethod.GET)
+	@RequestMapping(value = "/1/htmlView/{courseId}", method =RequestMethod.GET)
 	public ModelAndView htmlView(@PathVariable Integer courseId, HttpServletResponse response ){
 		ModelAndView modelView = new  ModelAndView("playbook-viewHtml");
 		System.out.println("mediaserver url " + url);
@@ -165,22 +167,13 @@ public class PlayBookController {
 		//CourseLearningComponent clc =
 		//courseService.getCourseComponents(courseId)
 		List<NestTreeNode> treeNodeList = new ArrayList<NestTreeNode>();
-		Map<String, String>  pdfInfo = null;
+		
 	    	
 		//Get Tree Datas
 		try {
 			
 			 treeNodeList = courseNestTreeService
 						.getModuleComponents(courseId);
-			
-			if(associateContentService.isModuleExist(courseId)){
-/*			List<NestTreeNode> nodeList = courseNestTreeService
-					.getCourseComponent(courseId);*/
-			 pdfInfo = getPDFInfo(treeNodeList, course);
-			
-			
-			}
-			
 		} catch (ZiksanaException exception) {
 			//Logger.error(exception.getMessage(), exception);
 		}
@@ -190,27 +183,9 @@ public class PlayBookController {
 			modelView.addObject("course", course);
 			modelView.addObject("courseDuration", course.getDuration());
 
-/*			modelView.addObject("parentIcon", parentIcon);
-			modelView.addObject("courseIcon", courseIcon);
-			modelView.addObject("chapterIcon", chapterIcon);
-			modelView.addObject("docIcon", docIcon);
-			modelView.addObject("pdfIcon", pdfIcon);
-			modelView.addObject("pptIcon", pptIcon);
-			modelView.addObject("videoIcon", videoIcon);
-			modelView.addObject("linkIcon", linkIcon);
-			modelView.addObject("noteIcon", noteIcon);
-			modelView.addObject("imageIcon", imageIcon);
-			modelView.addObject("audioIcon", audioIcon);
-			modelView.addObject("excelIcon", excelIcon);
-			modelView.addObject("folderClosed", folderClosed);
-			modelView.addObject("folderOpen", folderOpen);*/
-		
-		//End
 		System.out.println("##############current loggedin user" + userName);
 		
 	//End
-    modelView.addObject("coursModuleOnPage", pdfInfo.get("coursModuleOnPage"));
-	modelView.addObject("plannerOnPage", pdfInfo.get("plannerOnPage"));
 		
 		modelView.addObject("member",member);
 		modelView.addObject("course",course);
@@ -249,39 +224,14 @@ public class PlayBookController {
 		System.out.println("##############current loggedin user" + userName);
 		
 		List<NestTreeNode> treeNodeList = new ArrayList<NestTreeNode>();
-		Map<String, String>  pdfInfo = null;
+		
 		
 		//Get Tree Datas
 		try {
 
 		
 			 treeNodeList = courseNestTreeService
-						.getModuleComponents(courseId);
-			if(associateContentService.isModuleExist(courseId)){
-			/*List<NestTreeNode> nodeList = courseNestTreeService
-					.getCourseComponent(courseId);
-		   */
-			pdfInfo = getPDFInfo(treeNodeList, course);
-			
-	
-			
-			
-			/*for (NestTreeNode node : nodeList) {
-				courseIdValue = node.getCourseId();
-				coursename = node.getCoursename();
-				modelView.addObject("courseIds", courseIdValue);
-				modelView.addObject("coursename", coursename);
-				break;
-			}*/
-			
-	
-			
-			
-			
-			
-			
-			}
-			
+						.getModuleComponents(courseId);			
 		} catch (ZiksanaException exception) {
 			//Logger.error(exception.getMessage(), exception);
 		}
@@ -290,25 +240,8 @@ public class PlayBookController {
 			modelView.addObject("courseIds", courseId);
 			modelView.addObject("course", course);
 			modelView.addObject("courseDuration", course.getDuration());
-      	 /*
-			modelView.addObject("parentIcon", parentIcon);
-			modelView.addObject("courseIcon", courseIcon);
-			modelView.addObject("chapterIcon", chapterIcon);
-			modelView.addObject("docIcon", docIcon);
-			modelView.addObject("pdfIcon", pdfIcon);
-			modelView.addObject("pptIcon", pptIcon);
-			modelView.addObject("videoIcon", videoIcon);
-			modelView.addObject("linkIcon", linkIcon);
-			modelView.addObject("noteIcon", noteIcon);
-			modelView.addObject("imageIcon", imageIcon);
-			modelView.addObject("audioIcon", audioIcon);
-			modelView.addObject("excelIcon", excelIcon);
-			modelView.addObject("folderClosed", folderClosed);
-			modelView.addObject("folderOpen", folderOpen);*/
-			
-		//End
-	    modelView.addObject("coursModuleOnPage", pdfInfo.get("coursModuleOnPage"));
-		modelView.addObject("plannerOnPage", pdfInfo.get("plannerOnPage"));
+
+	  
 		modelView.addObject("member",member);
 		modelView.addObject("course",course);
 		modelView.addObject("treeNodeList",treeNodeList);

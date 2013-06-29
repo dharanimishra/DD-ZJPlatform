@@ -182,7 +182,7 @@ font-weight: bold;}
  </div> <!--end of navheadlp-->
   <div class="clearfix"></div>
   
-  <div style="float:right;margin-right:20px;margin-top:10px;margin-bottom:10px"><a href="/ziksana-web/zplaybook/unsecure/downloadPlayBook/${course.courseId }" class="btn">Download PDF</a></div>
+  <div style="float:right;margin-right:20px;margin-top:10px;margin-bottom:10px"><a href="/ziksana-web/zplaybook/1/downloadPlayBook/${course.courseId }" class="btn">Download PDF</a></div>
 <div class="Clearfix"> </div>
 <div id="definestructureformcontainer">
 
