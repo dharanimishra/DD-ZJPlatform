@@ -52,14 +52,15 @@ public class MyCoursesController {
 
 	@RequestMapping(value = "1/mycourse", method = { RequestMethod.GET })
 	public @ResponseBody
-	ModelAndView myCourse() {
+	ModelAndView myCourse(
+			@RequestParam(value = "draftCourse", required = false) String draftCourse) {
 		LOGGER.debug(" Entering Class " + getClass() + " myCourse()");
 		ModelAndView modelView = new ModelAndView("mastermycourse");
 		try {
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("pageTitle", "My Course");
-
+			modelView.addObject("DRAFT",draftCourse);
 			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 			List<Course> courses = courseService.getListOfCourses(memberId);
@@ -298,6 +299,7 @@ public class MyCoursesController {
 			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
 
 			modelView.addObject("courseAsJSONString", jsonString);
+			modelView.addObject("message", "This courses has been activated successfully.");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
@@ -343,6 +345,7 @@ public class MyCoursesController {
 			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
 
 			modelView.addObject("courseAsJSONString", jsonString);
+			modelView.addObject("message", "This courses has been activated successfully.");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}
@@ -387,6 +390,7 @@ public class MyCoursesController {
 			String jsonString = JSONUtil.objectToJSONString(jsonCourseList);
 
 			modelView.addObject("courseAsJSONString", jsonString);
+			modelView.addObject("message", "This courses has been completed successfully.");
 		} catch (ZiksanaException exception) {
 			LOGGER.error(exception.getMessage(), exception);
 		}

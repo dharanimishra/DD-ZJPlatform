@@ -273,9 +273,120 @@ $('.start_week, .start_day').change(function(){
         console.log(starts_at_day);
         parent.find('> input.starts_at').val(starts_at_day);
     } 
+    
+ 
 
 });
 
+//Start week Calculation
+$('.start_week').change(function(){
+	 select_start_week = $(this);
+	 
+    parent_week_element = select_start_week.parent('div').parent('div').find('> .start_week');
+ 	
+    //child_week_element = $(this).siblings('div');
+    $(this).siblings('div').each(function(){ 
+    	
+    	if($(this).find('.start_week').val() > select_start_week.val()){
+    		if($(this).find('.start_week').text() !='Start Week'){
+	    		$(this).find('.start_week').find("option:first").attr("selected", true);
+	    		$(this).find('.start_week').removeClass('duration_error');
+	    		$(this).find('.start_day').find("option:first").attr("selected", true);
+	    		$(this).find('.start_day').removeClass('duration_error');
+	    		$(this).find('.duration').val('');
+	    		$('#submit_planner_data').attr('disabled',false);
+	    		//console.log("Matched"+$(this).find('.start_week').val());
+    		}
+    	}else{
+    		if($(this).find('.start_week').text() !='Start Week'){
+    			//console.log("NOT Matched"+$(this).find('.start_week').val());
+    			$(this).find('.start_day').removeClass('duration_error');
+    			$(this).find('.start_week').removeClass('duration_error');
+    			$('#submit_planner_data').attr('disabled',false);
+    		}
+    	}
+    	
+    });
+
+    
+    if(parent_week_element.val() > select_start_week.val()){
+    	select_start_week.addClass('duration_error');
+    	
+    	 $('#planner_error').html('The Start Week <strong> week '+select_start_week.val()+'</strong> unexceed  its parent node startweek of <strong>week '+parent_week_element.val()+'</strong>');
+    	 $('#submit_planner_data').attr('disabled',true);
+    	 
+    }else {
+    	select_start_week.removeClass('duration_error');
+    	select_start_week.focusout();
+    	
+    	$('#planner_error').html('');
+    	$('#submit_planner_data').attr('disabled',false);
+    } 
+    
+    //Again user Changed Start week
+    var course_duration_in_days = $('#course_duration_in_days').val();
+  	var starts_at = select_start_week.siblings('.starts_at').val();
+  	var duration = select_start_week.siblings('.duration').val();
+    var available_days = course_duration_in_days - starts_at;
+    
+    if(duration != ''){
+    if(duration > (available_days+1)){
+    	//throw error
+  		$('#planner_error').html('The node duration <strong>'+duration+'</strong> exceeds the available days <strong>'+(available_days+1)+'</strong> Days.');
+  		select_start_week.siblings('.duration').addClass('duration_error').focus();
+  		$('#submit_planner_data').attr('disabled',true);
+    }else{
+    	select_start_week.siblings('.duration').removeClass('duration_error').focusout();
+    	$('#submit_planner_data').attr('disabled',false);
+    }
+    }
+});
+
+//Start Day Validation
+$('.start_day').change(function(){
+	 select_start_day = $(this);
+	 
+	    parent_day_element = select_start_day.parent('div').parent('div').find('> .start_day');
+	    
+/* 	    console.log("select_start_day "+select_start_day.val());
+	    console.log("parent_day_element "+parent_day_element.val()) */
+	    if(parent_day_element.val() > select_start_day.val()){
+	    	select_start_day.addClass('duration_error');
+	    	
+	    	 $('#planner_error').html('The Start Day <strong> '+generate_numbers_to_days(select_start_day.val())+'</strong> unexceed  its parent node startday of <strong>'+generate_numbers_to_days(parent_day_element.val())+'</strong>');
+	    	 $('#submit_planner_data').attr('disabled',true);
+	    	 
+	    }else {
+	    	select_start_day.removeClass('duration_error');
+	    	select_start_day.focusout();
+	    	$('#planner_error').html('');
+	    	$('#submit_planner_data').attr('disabled',false);
+	    } 
+	    
+	    //Child Week 
+	    //child_week_element = $(this).siblings('div');
+	    $(this).siblings('div').each(function(){ 
+	    	
+	    	if($(this).find('.start_day').val() > select_start_week.val()){
+	    		
+
+		    		$(this).find('.start_day').find("option:first").attr("selected", true);
+		    		$(this).find('.start_day').removeClass('duration_error');
+		    		$(this).find('.duration').val('');
+		    		$('#submit_planner_data').attr('disabled',false);
+		    		//console.log("Matched"+$(this).find('.start_day').val());
+	    		
+	    	}else{
+	    	
+	    			//console.log("NOT Matched"+$(this).find('.start_day').val());
+	    			$(this).find('.start_day').removeClass('duration_error');
+
+	    			$('#submit_planner_data').attr('disabled',false);
+	    		
+	    	}
+	    	
+	    });
+});
 
 //Duration Validation
 $('.duration').change(function(){
@@ -294,6 +405,7 @@ $('.duration').change(function(){
     	//$('#submit_planner_data').attr('disabled','disabled'); //disable submit button
     	duration_input.val(''); //clear duration
     	parent_duration_element.focus().addClass('duration_error');
+    	$('#submit_planner_data').attr('disabled',true);
     	return false;
     }
  	parent_duration = parseInt(parent_duration);
@@ -303,18 +415,19 @@ $('.duration').change(function(){
     if(duration > parent_duration){
         duration_input.addClass('duration_error');
         $('#planner_error').html('The node duration <strong>'+duration+'</strong> exceeds its parent node duration of <strong>'+parent_duration+'</strong> Days.').focus();
+        $('#submit_planner_data').attr('disabled',true);
     } 
     
     children_duration_inputs = duration_input.siblings('div.node_title').find('.duration');
-    console.log("hello");
-    console.log(children_duration_inputs);
+  
     if(children_duration_inputs.length > 0){
-    	console.log('There are child duration inputs');
+    	
     	children_duration_inputs.each(function(){
     		child_duration = $(this).val();
     		if(child_duration > duration){ //one of the child duration is higher than the newly added/edited duration
     			$('#planner_error').html('One of this node\'s child duration ('+child_duration+') is higher than that of the duration ['+duration+'] you have currently added');
     			duration_input.val('').addClass('duration_error').focus();
+    			$('#submit_planner_data').attr('disabled',true);
     			return false;
     		}
     		
@@ -322,7 +435,21 @@ $('.duration').change(function(){
     	
     } 
 
+   //
+   
     
+
+    var course_duration_in_days = $('#course_duration_in_days').val();
+  	var starts_at = duration_input.siblings('.starts_at').val();
+    var available_days = course_duration_in_days - starts_at;
+    if(duration > (available_days+1)){
+    	//throw error
+  		$('#planner_error').html('The node duration <strong>'+duration+'</strong> exceeds the available days <strong>'+(available_days+1)+'</strong> Days.');
+  		duration_input.val('').addClass('duration_error').focus();
+  		$('#submit_planner_data').attr('disabled',true);
+    }
+    
+   
     
 });
 //end of duration validation
@@ -330,7 +457,24 @@ $('.duration').change(function(){
 
 });// end of doc ready
 
-
+//Convert Numbers to Days
+function generate_numbers_to_days(value){
+	if(value == 1){
+		return 'SUNDAY';
+	}else if(value == 2){
+		return 'MONDAY'
+	}else if(value == 3){
+		return 'TUESDAY';
+	}else if(value == 4){
+		return 'WEDNESDAY';
+	}else if(value == 5){
+		return 'THURSDAY';
+	}else if(value == 6){
+		return 'FRIDAY';
+	}else if(value == 7){
+		return 'SATURDAY';
+	}
+}
 </script>
 
 

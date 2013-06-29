@@ -21,7 +21,7 @@ function ff_get_content_key()
 
 function ff_set_response(recordingResponse)
 {
-	//console.log("recording Response is " + recordingResponse);
+	//alert("recording Response is " + recordingResponse);
 
 	jsonObject = parent.getJsonObject(recordingResponse);
 	console.log(jsonObject.ContentKey + "<<<<<<<<<<<<<<<<<<<<<<<< ------------- >>>>>>>>>>>>>>>>>   "+ originalContentPath);
@@ -73,7 +73,8 @@ function createContent(jsonObject){
 	jQuery.ajax({
         url:    uri,
         success: function(result) {
-	        //id = result;
+        	contentId = result;
+        	//alert("contentId " + contentId);
         },
         async:   false,
         data: parameters

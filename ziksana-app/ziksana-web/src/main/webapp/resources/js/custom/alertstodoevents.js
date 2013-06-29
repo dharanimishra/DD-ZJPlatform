@@ -121,7 +121,7 @@ function get_and_populate_announcements(val){
 			$(data).find("announcementsList").each(function(){
 				if($(this).find("announcementSize").text()==0){
 					
-					announcement_all+="<span style='color: white;padding:6px;text-align:center;float:left;width:100%'>No New Announcements</span>";
+					announcement_all+="<span style='color: white;padding:6px;text-align:center;float:left;width:100%'>No announcement in the selected category</span>";
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
@@ -207,7 +207,7 @@ function get_and_populate_universityannouncements(val){
 			$(data).find("announcementsList").each(function(){
 				if($(this).find("announcementSize").text()==0){
 					console.log( $(this).find("announcementSize").text());
-					announcement_all+="<span style='color: white;padding:6px;text-align:center;float:left;width:100%'>No New Announcements</span>";
+					announcement_all+="<span style='color: white;padding:6px;text-align:center;float:left;width:100%'>No announcement in the selected category</span>";
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
@@ -274,7 +274,7 @@ function get_and_populate_departmentannouncements(val){
 			$(data).find("announcementsList").each(function(){
 				if($(this).find("announcementSize").text()==0){
 					console.log( $(this).find("announcementSize").text());
-					announcement_all+="<span style='color:white;padding:6px;text-align:center;float:left;width:100%'>No New Announcements</span>";
+					announcement_all+="<span style='color:white;padding:6px;text-align:center;float:left;width:100%'>No announcement in the selected category</span>";
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
@@ -341,7 +341,7 @@ function get_and_populate_courseannouncements(val){
 			$(data).find("announcementsList").each(function(){
 				if($(this).find("announcementSize").text()==0){
 					console.log( $(this).find("announcementSize").text());
-					announcement_all+="<span style='color:white;padding:6px;text-align:center;float:left;width:100%'>No New Announcements</span>";
+					announcement_all+="<span style='color:white;padding:6px;text-align:center;float:left;width:100%'>No announcement in the selected category</span>";
 				}
 				totalSize = $(this).find("announcementSize").text();
 					paginationString ="";
@@ -603,7 +603,7 @@ function get_and_populate_todo_value(val){
 							 
 							 ouputEmptyTodo+="<td width='50px'></td><td width='200px'><select onblur='updateSelectChange("+$(this).find('id').text()+")' id='update_todo_categories"+$(this).find('id').text()+"'' style='margin-left:10px;width:190px;'><optgroup><option style='color: white; font-weight: bold; padding: 5px; margin-top: 0.5em; cursor: pointer; background: seagreen !important;' onclick='show_add_category_form("+$(this).find('id').text()+");' value='add_new_category'>Add New Category</option></optgroup>'</select><span id='add_new_edit_category_form"+$(this).find('id').text()+"' style='display:none;'><input style='height: 28px; width: 200px;' onblur='updateTextBoxChange("+$(this).find('id').text()+");' id='update_todo_category_name"+$(this).find('id').text()+"'/></span></td>";
 							
-							 ouputEmptyTodo+="<td width='200px'><input onclick='clearManageTodoBox()' id='todo_edit_description"+$(this).find('id').text()+"' style='width:200px;height:28px;'/><span onclick='clearManageTodoBox()' style='color:red;left:290px;position:absolute;' id='manageTodoErrorMsg"+index+"'></span></td><td width='75px'><a onclick='saveRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Update</a></td><td width='75px'><a id='hideEditOption"+index+"' onclick='showRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Cancel</a></td></div>";
+							 ouputEmptyTodo+="<td width='200px'><input maxlength='239' onclick='clearManageTodoBox()' id='todo_edit_description"+$(this).find('id').text()+"' style='width:200px;height:28px;'/><span onclick='clearManageTodoBox()' style='color:red;left:290px;position:absolute;' id='manageTodoErrorMsg"+index+"'></span></td><td width='75px'><a onclick='saveRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Update</a></td><td width='75px'><a id='hideEditOption"+index+"' onclick='showRow_hideEdit("+$(this).find('id').text()+")' style='cursor:pointer;margin-left:30px;color:white;'>Cancel</a></td></div>";
 							 ouputEmptyTodo+="</tr></div>";
 							
 						 });
@@ -767,21 +767,23 @@ function addTodo()
 		$("#todo_description").attr("placeholder"," ");
 		 return false;
 		 }else{
-		$.post( '/ziksana-web/ztodo/createtodo'
-       , {'category':todo_category,'notificationContent':todo_description}
-       , function( data )
-       {
-       	
-          if(data == 'TODO INSERTED SUCCESSFULLY'){
-        	  
-        	  $(".managetodo").click();
-        	 $('input:text').val('');
-          }
-          if(data == 'Insert query problem'){
-        	  console.log(data);
-          }
-
-       });           
+	 
+			$.post( '/ziksana-web/ztodo/createtodo'
+	       , {'category':todo_category,'notificationContent':todo_description}
+	       , function( data )
+	       {
+	       	
+	          if(data == 'TODO INSERTED SUCCESSFULLY'){
+	        	  
+	        	  $(".managetodo").click();
+	        	 $('input:text').val('');
+	          }
+	          if(data == 'Insert query problem'){
+	        	  console.log(data);
+	          }
+	
+	       });  
+		
 	
 	 }
 }

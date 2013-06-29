@@ -221,9 +221,8 @@ $(document).ready(function() { // On page load
 			           <select class="select Ctopicddl" id="Ctopicddl" name="contentTopic">
 								<option>Specify Topic</option>
 							</select></li>
-		       <li>	<label>Specify Tags</label>
-							<input type="text" placeholder="Specify Tags" name="contentTag"
-								style="height: 30px; margin-right: 12px; width: 233px;">
+		      			 <li><label>Specify Tags</label>
+						<input type="text" placeholder="Specify Tags" class="tags" value=""  name="content_tags[]" style="height: 30px; margin-right: 12px; width: 233px;">
 						</li></ul></div>
 						<div class="clearfix"></div>
 					</div>
@@ -239,6 +238,7 @@ $(document).ready(function() { // On page load
 %>
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
+				<a	href="/ziksana-web/zcourse/1/mycontent" class="btn blue pull-right saveup1" style="margin-left: 10px;"> <fmt:message key="profile.cancel"/> </a>
 					<button class="btn blue pull-right saveup1" id="sbtvalidation"
 						onClick="$('form#createweblinkform').submit();">Add Web link</button>
 					<div class="clearfix"></div>
@@ -348,6 +348,7 @@ input.error {
 #web_link_container div.weblink_row:nth-child(even) {
   background: none repeat scroll 0 0 #CCCCCC;
 }
+.tagsinput input{width:233px!important}
 </style>
 
 <script type="text/javascript">

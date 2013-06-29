@@ -125,6 +125,8 @@ $(document).ready(function(){
             var divname= this.name;
             $("#"+divname).show("fast").siblings().hide("fast");
         });
+
+     
     });
 </script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
@@ -155,12 +157,26 @@ $(document).ready(function(){
 	<div class="isotophead pull-right" style="width: 306px;" id="content_type_filter">
 		<div class="isotoplinks" >
 		   <ul>
-			<li class="current">
-				<a  class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a>
-			</li>
-			<li>
-				<a onclick="getDraftCourses('DRAFT')"><fmt:message key="draft.txt"/></a>
-			</li>
+		   	<c:if test="${empty DRAFT}">
+				<li class="current">
+					<a  class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a>
+				</li>
+			</c:if>
+			<c:if test="${not empty DRAFT}">
+				<li>
+					<a  class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a>
+				</li>
+			</c:if>
+			<c:if test="${not empty DRAFT}">
+				<li class="current">
+					<a onclick="getDraftCourses('DRAFT')"><fmt:message key="draft.txt"/></a>
+				</li>
+			</c:if>
+			<c:if test="${empty DRAFT}">
+				<li>
+					<a onclick="getDraftCourses('DRAFT')"><fmt:message key="draft.txt"/></a>
+				</li>
+			</c:if>
 			<li>	
 				<a onclick="getReviewCourses('READY_FOR_RELEASE')"><fmt:message key="review.txt"/></a>
 			</li>
@@ -179,6 +195,10 @@ $(document).ready(function(){
 		<form>
 			<input type="hidden" id="courses" value='${courseAsJSONString}' /> <input
 				type="hidden" id="fileServerPath" value='${ms.uploadContent}' />
+				<c:if test="${message != null}">
+    				<div class="sucessmssg" ><p>${message}</p></div>
+				</c:if>
+				<script>setTimeout( "jQuery('.sucessmssg').hide();",5000 );</script>
 			<div id="noCourseFound" style="margin: auto;position:relative;text-align: center; color:#000; font-weight: bold; font-size: 15px; padding: 20px;">						
 			</div>
 			<div id="container4" class="createcontent-mainwrapper isotopbody">
@@ -249,5 +269,22 @@ a.remove_this:hover {
     text-overflow:ellipsis;
     -o-text-overflow:ellipsis;
    
+}
+ .sucessmssg {
+   
+  color: green;
+  margin-top: -52px;
+  position: absolute;
+  text-align: center;
+  width: 70%;
+}
+.sucessmssg > p {
+  background: none repeat scroll 0 0 green;
+  
+  color: #FFFFFF;
+  margin: auto;
+  padding: 4px;
+  width: 260px;
+  border-radius: 6px;
 }
 </style>
