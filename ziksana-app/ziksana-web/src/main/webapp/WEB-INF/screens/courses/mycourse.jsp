@@ -125,6 +125,8 @@ $(document).ready(function(){
             var divname= this.name;
             $("#"+divname).show("fast").siblings().hide("fast");
         });
+
+     
     });
 </script>
 <div id="Zikbreadcrumbback" style="margin-left: 20px;">
@@ -155,12 +157,26 @@ $(document).ready(function(){
 	<div class="isotophead pull-right" style="width: 306px;" id="content_type_filter">
 		<div class="isotoplinks" >
 		   <ul>
-			<li class="current">
-				<a  class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a>
-			</li>
-			<li>
-				<a onclick="getDraftCourses('DRAFT')"><fmt:message key="draft.txt"/></a>
-			</li>
+		   	<c:if test="${empty DRAFT}">
+				<li class="current">
+					<a  class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a>
+				</li>
+			</c:if>
+			<c:if test="${not empty DRAFT}">
+				<li>
+					<a  class="active_filter" onclick="getAllCourse()"><fmt:message key="home.all"/></a>
+				</li>
+			</c:if>
+			<c:if test="${not empty DRAFT}">
+				<li class="current">
+					<a onclick="getDraftCourses('DRAFT')"><fmt:message key="draft.txt"/></a>
+				</li>
+			</c:if>
+			<c:if test="${empty DRAFT}">
+				<li>
+					<a onclick="getDraftCourses('DRAFT')"><fmt:message key="draft.txt"/></a>
+				</li>
+			</c:if>
 			<li>	
 				<a onclick="getReviewCourses('READY_FOR_RELEASE')"><fmt:message key="review.txt"/></a>
 			</li>

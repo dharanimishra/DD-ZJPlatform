@@ -52,14 +52,15 @@ public class MyCoursesController {
 
 	@RequestMapping(value = "1/mycourse", method = { RequestMethod.GET })
 	public @ResponseBody
-	ModelAndView myCourse() {
+	ModelAndView myCourse(
+			@RequestParam(value = "draftCourse", required = false) String draftCourse) {
 		LOGGER.debug(" Entering Class " + getClass() + " myCourse()");
 		ModelAndView modelView = new ModelAndView("mastermycourse");
 		try {
 			mediaServerURL = mediaService.getMediaContents();
 			modelView.addObject("ms", mediaServerURL);
 			modelView.addObject("pageTitle", "My Course");
-
+			modelView.addObject("DRAFT",draftCourse);
 			Integer memberId = Integer.valueOf(SecurityTokenUtil.getToken()
 					.getMemberPersonaId().getStorageID());
 			List<Course> courses = courseService.getListOfCourses(memberId);
