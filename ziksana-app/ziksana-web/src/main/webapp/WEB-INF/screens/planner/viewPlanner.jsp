@@ -42,11 +42,12 @@
 	 		out.println(printTree(list));
 	 %> </div> 
 	 </div>
-	  <hr/>
+	 <br/>
 	 <div class="textAlignRight">
- 		 <a href="/ziksana-web/zcourse/1/planner/${course.coursesId}"  class="btn blue">Edit Planner</a>  
+ 		 <a href="/ziksana-web/zcourse/1/planner/${course.coursesId}"  class="btn blue"  style="margin-right:5px;">Edit Planner</a> 
+ 		 <a href="/ziksana-web/zplaybook/unsecure/htmlView/${course.coursesId}"  class="btn blue" style="margin-right:25px;margin-left:20px;"> Save and Continue </a>
  	</div>
- 	<hr/>
+ 	
 	
 </div>
 <style>
@@ -243,7 +244,9 @@ function get_and_populate_planner_data(courseId){
 			$('#planner_data').prepend(week_day_label_div);
 			$('#planner_data').prepend(week_label_div);
 			
-			
+			if(dataList.length== 0){
+				
+			}
 			
 			
 			for (var i = 1; i < dataList.length; i++) { 
@@ -294,6 +297,7 @@ function get_and_populate_planner_data(courseId){
 						
 				
 				}//end of for loop
+			
 				
 			$('#planner_data').css({'width': course_pixellength});	
 			$('.node_bar').first().css({'width': course_pixellength});

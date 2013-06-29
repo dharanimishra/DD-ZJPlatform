@@ -2672,6 +2672,7 @@ input[type="checkbox"]:checked+label span {
   top: 0;
   width: 350px;
   z-index: 99;
+  word-wrap: break-word;
 }
 .pagination_bar {
     background-color: #000000;

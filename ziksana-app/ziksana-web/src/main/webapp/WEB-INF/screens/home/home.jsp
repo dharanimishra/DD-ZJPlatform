@@ -480,9 +480,9 @@
 
 							</select> <span id="add_new_category_form"
 								style="display: none; margin-left: 50px; float: left; width: 200px; padding-bottom: 2px;">
-								<input style="height: 28px; width: 200px;"
+								<input  maxlength="44"  style="height: 28px; width: 200px;"
 								id="todo_category_name" />
-							</span> <input placeholder="Enter Your Description Here" onclick="clearTextBox()" id="todo_description"
+							</span> <input maxlength="239" placeholder="Enter Your Description Here" onclick="clearTextBox()" id="todo_description"
 								style="margin-left: 22px; width: 200px; height: 28px; float: left;"><span
 								onclick="clearTextBox()"
 								style="color: red; left: 280px; position: absolute; top: 40px;"
