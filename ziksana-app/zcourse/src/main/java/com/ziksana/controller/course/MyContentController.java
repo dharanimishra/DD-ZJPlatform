@@ -197,8 +197,6 @@ public class MyContentController {
 			MemberPersona accountableMember = new MemberPersona();
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
-			System.out.println("contentPath  ###################    "
-					+ contentPath.length);
 			for (int i = 0; i < contentPath.length; i++) {
 				try {
 					LearningContent learningContent = new LearningContent();
@@ -232,9 +230,6 @@ public class MyContentController {
 							+ i + "   " + learningCont.getId());
 					LOGGER.debug("learningContent create ################### "
 							+ i + "  " + learningCont.getContentName());
-					System.out
-							.println("learningContent created  ################### "
-									+ i + " " + learningCont.getContentPath());
 					learningContentlist.add(learningCont);
 					modelView.addObject("contentId", learningCont.getId());
 				} catch (Exception e) {
@@ -253,12 +248,6 @@ public class MyContentController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		LOGGER.info("contentPath  ###################    " + contentPath.length);
-		LOGGER.debug("contentPath  ###################    "
-				+ contentPath.length);
-		System.out.println("contentPath  ###################    "
-				+ contentPath.length);
 		return modelView;
 
 	}
