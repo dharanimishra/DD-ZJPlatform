@@ -212,7 +212,7 @@
 							class="defaultvaluem treeRoot validate[required]"
 							id="defaultvalue" maxlength="64"
 							style="width: 240px; margin-left: 10px; color: #666;"
-							tabindex="1" placeholder="<fmt:message key="course.enter.name"/>"
+							 placeholder="<fmt:message key="course.enter.name"/>"
 							onchange="return trim(this)" />
 					</div>
 
@@ -356,7 +356,7 @@
 				<div id="message"></div>
 				<div id="thubmnail_upload_message"></div>
 				<div id="loaderText"></div>
-				<input type="file" name="thumbnail_image_file_upload" tabindex="11"
+				<input type="file" name="thumbnail_image_file_upload" 
 					id="thumbnail_image_file_upload" style="margin-left: 196px;" />
 				<div id="status"></div>
 				<script type="text/javascript">

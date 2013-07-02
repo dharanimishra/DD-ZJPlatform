@@ -6,8 +6,7 @@
 	src="${staticFileServer}resources/js/custom/createcontent/addweblink.js"></script>
 <script type="text/javascript"
 	src="${staticFileServer}resources/Dynamicjsonjs/weblinkcontentjson.js"></script>
-	<script type='text/javascript'
-	src="${staticFileServer}resources/js/validation/jquery.validate.js"></script>
+
 	
 <style>
  	footer{display:none}
@@ -72,14 +71,14 @@ $(document).ready(function() { // On page load
 <div class="Clearfix"></div>
 <div id="contentpanel">
 	<div class="tilecontainer pull-left"
-		style="margin-top: 40px; width: 140px;margin-left:10px;">
+		style="margin-top: 90px; width: 140px;margin-left:10px;">
 		<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content">
 				<a href="/ziksana-web/zcourse/1/createcontent"> <img
 					src="/ziksana-web/resources/images/content/upload.png" /></a>
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+				<h3 style="margin-left: 6px; font-size: 16px; width: 160px;">
 					<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;">Upload Content</a>
 				</h3>
 			</div>
@@ -92,7 +91,7 @@ $(document).ready(function() { // On page load
 					src="/ziksana-web/resources/images/content/link.png" /></a>
 			</div>
 			<div class="brand">
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;">
+				<h3 style="margin-left: 12px; font-size: 16px; width: 160px;">
 					<a href="/ziksana-web/zcourse/1/weblinkcontent" style="font-size: 16px;">Add Web Link</a>
 				</h3>
 			</div>
@@ -189,7 +188,7 @@ $(document).ready(function() { // On page load
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
 					<a	href="/ziksana-web/zcourse/1/mycontent" class="btn blue pull-right saveup1" style="margin-left: 10px;"> <fmt:message key="profile.cancel"/> </a>
-					<button class="btn blue pull-right saveup1" id="sbtvalidation"
+					<button class="btn blue pull-right saveup1" id="sbtvalidation" style="height:28px;line-height:20px;min-height:20px"
 						onClick="$('form#createweblinkform').submit();">Add Web link</button>
 				
 					<div class="clearfix"></div>
