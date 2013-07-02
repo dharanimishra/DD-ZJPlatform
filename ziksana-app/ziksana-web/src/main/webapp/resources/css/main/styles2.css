@@ -3016,3 +3016,8 @@ label.error {
   width: 500px;
   z-index: 99;
 }
+
+input.error, select.error, textarea.error {
+  border: 2px solid red !important;
+  color: red !important;
+}

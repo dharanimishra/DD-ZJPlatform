@@ -108,6 +108,7 @@ $.extend($.fn, {
 			return valid;
 		}
 	},
+
 	// attributes: space seperated list of attributes to retrieve and remove
 	removeAttrs: function( attributes ) {
 		var result = {},
@@ -225,6 +226,16 @@ $.extend($.validator, {
 		ignore: ":hidden",
 		ignoreTitle: true,
 		onfocusin: function( element, event ) {
+
+			/////
+			error_label = this.errorsFor(element);
+			error_label_text = error_label.text();
+			if(error_label_text != '' && $(element).hasClass('error')){
+				$('#gv_message_container').html('<p><strong>CURRENT ERROR:</strong> '+error_label_text+'</p>').show();
+			}
+			/////
+			
+			
 			this.lastActive = element;
 
 			// hide error label and remove error class on focus if enabled
@@ -233,14 +244,24 @@ $.extend($.validator, {
 					this.settings.unhighlight.call( this, element, this.settings.errorClass, this.settings.validClass );
 				}
 				this.addWrapper(this.errorsFor(element)).hide();
+				
 			}
+			
 		},
 		onfocusout: function( element, event ) {
+			$('#gv_message_container').html('').hide();
 			if ( !this.checkable(element) && (element.name in this.submitted || !this.optional(element)) ) {
 				this.element(element);
 			}
 		},
 		onkeyup: function( element, event ) {
+			/////
+			error_label = this.errorsFor(element);
+			error_label_text = error_label.text();
+			if(error_label_text != '' && $(element).hasClass('error')){
+				$('#gv_message_container').html('<p><strong>CURRENT ERROR:</strong> '+error_label_text+'</p>').show();
+			}
+			/////
 			if ( event.which === 9 && this.elementValue(element) === "" ) {
 				return;
 			} else if ( element.name in this.submitted || element === this.lastElement ) {
@@ -263,6 +284,14 @@ $.extend($.validator, {
 			} else {
 				$(element).addClass(errorClass).removeClass(validClass);
 			}
+			/////
+			error_label = this.errorsFor(element);
+			error_label_text = error_label.text();
+			if(error_label_text != '' && $(element).hasClass('error')){
+				$('#gv_message_container').html('<p><strong>CURRENT ERROR:</strong> '+error_label_text+'</p>').show();
+			}
+			/////
+			
 		},
 		unhighlight: function( element, errorClass, validClass ) {
 			if ( element.type === "radio" ) {
@@ -270,6 +299,7 @@ $.extend($.validator, {
 			} else {
 				$(element).removeClass(errorClass).addClass(validClass);
 			}
+			$('#gv_message_container').html('').hide();
 		}
 	},
 
@@ -359,13 +389,20 @@ $.extend($.validator, {
 			return this.valid();
 		},
 
-		checkForm: function() {
-			this.prepareForm();
-			for ( var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++ ) {
-				this.check( elements[i] );
-			}
-			return this.valid();
-		},
+				
+	    checkForm: function() {
+	        this.prepareForm();
+	        for ( var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++ ) {
+	            if (this.findByName( elements[i].name ).length != undefined && this.findByName( elements[i].name ).length > 1) {
+	                for (var cnt = 0; cnt < this.findByName( elements[i].name ).length; cnt++) {
+	                        this.check( this.findByName( elements[i].name )[cnt] );
+	                }
+	            } else {
+	                this.check( elements[i] );
+	            }
+	        }
+	        return this.valid();
+	    },
 
 		// http://docs.jquery.com/Plugins/Validation/Validator/element
 		element: function( element ) {
@@ -1229,3 +1266,36 @@ $.format = $.validator.format;
 		}
 	});
 }(jQuery));
+
+
+
+/// Custom Hover Validation - Ziksana
+$(function(){
+	$('body').prepend('<div id="gv_message_container"></div>');
+
+	$('body').on('mouseenter','.error:not(label)', function(){ custom_validation_message_for($(this)); });
+
+
+
+	$('body').on('mouseleave','.error:not(label)', function(){
+	 $('#gv_message_container').html('').hide();
+	});
+	
+});		//end of doc ready
+
+function custom_validation_message_for(element){
+	msg = 'This field:';
+    if(element.hasClass('required')){
+        msg += '<span>Is a required field</span>';
+    }
+    if(element.hasClass('url') || (element.attr('type') == 'url')){
+        msg += '<span>Needs a valid URL</span>';
+    }
+    if(element.hasClass('email') || (element.attr('type') == 'email')){
+        msg += '<span>Needs a valid Email</span>';
+    }
+    
+    $('#gv_message_container').html(msg).slideDown();
+}
+
+var hobject = '';

@@ -279,16 +279,47 @@ width: 530px;overflow:hidden}
 	cursor: pointer !important;
 	width: 130px !important;
 }
-label.error {
+label.error[for="contentName[]"] {
   background: none repeat scroll 0 0 transparent;
   color: #D14836;
   font-size: 12px;
   margin-left: 2px;
   position: relative;
-  top: 3px;
+  top: 3px;display:none!important;
+}
+ 
+label.error[for="linkurl"] {
+  background: none repeat scroll 0 0 transparent;
+  color: #D14836;
+  font-size: 16px;
+  left: 45%;
+  margin-left: 2px;
+  position: absolute;
+  top: 149px;
+  z-index: 999;display:none!important;
 }
 input.error {
     color: #555 !important;
+}
+#gv_message_container:not(:empty) {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+  border-radius: 0 0 7px 7px;
+  box-shadow: 0 2px 10px #222222;
+  color: red;
+  display: block;
+  left: 33.33%;
+  margin: 0 auto;
+  padding: 0.5em 1em;
+  position: fixed;
+  top: 0;
+  width: 33.33%;
+  z-index: 99;
+  font-family: arial, sans;
+}
+#gv_message_container span {
+  background: url("/ziksana-web/resources/images/icons/hand_pointer_left.png") no-repeat scroll left center transparent;
+  display: block;
+  padding: 0.25em 0.5em 0.25em 20px;
 }
 .weblink_row { padding: .5em;}
 #web_link_container div.weblink_row:nth-child(odd) {
