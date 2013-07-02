@@ -202,10 +202,12 @@
 		<form id="DegineCourse" method="post" class="form-horizontal">
 			<!--Course Name-->
 			<div class=" ">
+			<div class="req_message">( * marked fields are required )</div>
+			<div class="clearfix"></div>
 				<div class="control-group">
 					<input type="hidden" id="courseid" value="${courseId}" /> <input
 						type="hidden" id="moduleexists" value="${module}" /> <label
-						class="control-label nexaf" for="Course Name"><fmt:message
+						class="control-label nexaf mandatory" for="Course Name"><fmt:message
 							key="Course.name" /> </label>
 					<div class="controls">
 						<input type="text" autofocus
@@ -321,7 +323,7 @@
 			</div>
 			<div class="clearfix"></div>
 			<div class="control-group f-l" id="forerror">
-				<label class="control-label nexaf" for="input" style="width: 230px;"><fmt:message
+				<label class="control-label nexaf mandatory" for="input" style="width: 230px;"><fmt:message
 						key="Specify.CourseDuration" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner3" value=""

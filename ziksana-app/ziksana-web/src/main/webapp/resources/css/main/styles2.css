@@ -3021,3 +3021,12 @@ input.error, select.error, textarea.error {
   border: 2px solid red !important;
   color: red !important;
 }
+ 
+label.mandatory:before {
+  color: red;
+  content: "*";
+}
+.req_message {
+  color: red;
+  float: right;
+}
