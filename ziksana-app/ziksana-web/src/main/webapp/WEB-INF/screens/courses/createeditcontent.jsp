@@ -31,14 +31,14 @@ $(document).ready(function() { // On page load
 <div class="Clearfix"></div>
 <div id="contentpanel">
  <div class="tilecontainer pull-left"
-			style="margin-top: 40px; width: 140px;margin-left:10px;"> 
+			style="margin-top: 70px; width: 140px;margin-left:10px;"> 
 			<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content"> 
 				<a href="/ziksana-web/zcourse/1/createcontent">
 				<img src="/ziksana-web/resources/images/content/upload.png" /></a>
 			</div>
 			<div class="brand"> 
-				<h3 style="margin-left: 10px; font-size: 16px; width: 160px;"> 
+				<h3 style="margin-left: 6px; font-size: 16px; width: 160px;"> 
 				<a href="/ziksana-web/zcourse/1/createcontent" style="font-size: 16px;"><fmt:message key="Upload.Content"/></a> 
 			</h3> 
 	</div> 

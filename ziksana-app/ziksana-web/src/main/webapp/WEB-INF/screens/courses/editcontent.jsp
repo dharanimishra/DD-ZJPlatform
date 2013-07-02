@@ -36,7 +36,7 @@ $(document).ready(function() { // On page load
 <div class="Clearfix"></div>
 <div id="contentpanel" style="min-height: 500px;">
  <div class="tilecontainer pull-left"
-			style="margin-top: 40px; width: 140px;margin-left:10px;"> 
+			style="margin-top: 70px; width: 140px;margin-left:10px;"> 
 			<div class="tile bg-color-orange icon" id="uploadbtn" style="">
 			<div class="tile-content"> 
 				<a href="/ziksana-web/zcourse/1/createcontent">
