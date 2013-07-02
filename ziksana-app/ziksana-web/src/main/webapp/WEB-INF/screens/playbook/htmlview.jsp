@@ -109,10 +109,10 @@ background:#3e3f13;}
   padding: 10px;
 }
 h2{font-size:25px;margin-left:20px}
-.b1{padding:0px;color:#A53232; font-size:20px}
-.b2{padding:0px;color:#A53232;font-size:16px;float:right}
+.b1{padding:0px;color:#A53232; font-size:20px;width:40%;float:left; text-transform:capitalize}
+.b2{padding:0px;color:#A53232;font-size:16px;float:right; text-transform:capitalize}
 
-.coursetitle{ overflow:; hidden;width:100%;margin-bottom:35px;}
+.coursetitle{ overflow:; hidden;width:100%;margin-bottom:30px;height: 20px;}
 .coursetitle a {color:#fff;float: left;
     text-decoration: none;font-size:14px;
     width: 90%;}
@@ -125,14 +125,16 @@ h2{font-size:25px;margin-left:20px}
 .pheadmiddle label {
    
   color: #006666;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 2;
-  padding-top: 20px;
+  padding-top: 0px;
   text-align: center;
   width: 100%;
+  text-transform:capitalize
+  
 }
 .coursedescription{
-display:block;margin-top:10px
+display:block;margin-top:10px;padding :0px 30px;
 
 }
 
