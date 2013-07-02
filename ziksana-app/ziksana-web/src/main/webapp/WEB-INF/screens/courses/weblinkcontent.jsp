@@ -189,7 +189,7 @@ $(document).ready(function() { // On page load
 				<!--End of weblink container -->
 				<div class="createcontentpanelhead" style="margin-top: 4px;">
 					<a	href="/ziksana-web/zcourse/1/mycontent" class="btn blue pull-right saveup1" style="margin-left: 10px;"> <fmt:message key="profile.cancel"/> </a>
-					<button class="btn blue pull-right saveup1" id="sbtvalidation"
+					<button class="btn blue pull-right saveup1" id="sbtvalidation" style="height:28px;line-height:20px;min-height:20px"
 						onClick="$('form#createweblinkform').submit();">Add Web link</button>
 				
 					<div class="clearfix"></div>
