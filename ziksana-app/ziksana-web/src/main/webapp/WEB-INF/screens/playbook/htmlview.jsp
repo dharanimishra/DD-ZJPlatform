@@ -363,7 +363,7 @@ ${course.description}
     </div> --> <!--End of contentarea -->
  
  
- <div style="float:right;margin-right:20px; margin-top:20px; margin-bottom:20px"><a class="btn">Download PDF</a> 
+ <div style="float:right;margin-right:20px; margin-top:20px; margin-bottom:20px"><a href="/ziksana-web/zplaybook/1/downloadPlayBook/${course.courseId }" class="btn">Download PDF</a> 
 <a href="/ziksana-web/zcourse/1/activatecourse/${courseIds}" class="btn">Complete Course</a></div> 
 </div> <!--End of definestructureformcontainer -->  
 
