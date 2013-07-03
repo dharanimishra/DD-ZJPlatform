@@ -202,12 +202,10 @@
 		<form id="DegineCourse" method="post" class="form-horizontal">
 			<!--Course Name-->
 			<div class=" ">
-			<div class="req_message">( * marked are mandatory fields)</div>
-			<div class="clearfix"></div>
 				<div class="control-group">
 					<input type="hidden" id="courseid" value="${courseId}" /> <input
 						type="hidden" id="moduleexists" value="${module}" /> <label
-						class="control-label nexaf mandatory" for="Course Name"><fmt:message
+						class="control-label nexaf" for="Course Name"><fmt:message
 							key="Course.name" /> </label>
 					<div class="controls">
 						<input type="text" autofocus
@@ -306,7 +304,7 @@
 					style="width: 230px;"><fmt:message
 						key="specify.courseCredits" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner" value="" placeholder="0"
+					<input type="text" name="spi" id="spinner" value="0"
 						style="width: 50px;" maxlength="2"
 						onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
@@ -316,14 +314,14 @@
 					style="margin-left: 88px; width: 220px;"><fmt:message
 						key="specify.courseCreditsExtra" /></label>
 				<div class="controls" style="width: 212px;">
-					<input type="text" name="spi" id="spinner2" value="" placeholder="0"
+					<input type="text" name="spi" id="spinner2" value="0"
 						style="width: 50px;" maxlength="2"
 						onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
 			</div>
 			<div class="clearfix"></div>
 			<div class="control-group f-l" id="forerror">
-				<label class="control-label nexaf mandatory" for="input" style="width: 230px;"><fmt:message
+				<label class="control-label nexaf" for="input" style="width: 230px;"><fmt:message
 						key="Specify.CourseDuration" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
 					<input type="text" name="spi" id="spinner3" value=""

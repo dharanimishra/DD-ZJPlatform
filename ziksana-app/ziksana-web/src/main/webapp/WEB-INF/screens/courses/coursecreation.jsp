@@ -244,7 +244,7 @@ $(document).ready(function() { // On page load
 									id="Cimageupl" style="margin-left: 20px;height:100px" />
 							</div>
                          <div style="border:0px solid #000;position:relative;margin-top:4px;margin-bottom:6px">   <input type="file" name="thumbnail_image_file_upload"
-								tabindex="11" id="thumbnail_image_file_upload"
+								 id="thumbnail_image_file_upload"
 								style="margin-left: 196px;" /><div id="thubmnail_upload_message"></div></div>
 							<div id="status">
 							<div id="message"></div>
