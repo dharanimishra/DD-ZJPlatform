@@ -21,9 +21,15 @@ public class MediaServiceImpl implements MediaService{
 	@Value("#{myProperties['flashrecordingscript']}")
 	private String flashRecordingScript;
 	
-	@Value("#{myProperties['flashrecordingfolder']}")
-	private String flashRecordingFolder;
+	@Value("#{myProperties['CONTENT_SERVER']}")
+	private String CONTENT_SERVER;
 	
+	@Value("#{myProperties['CONTENT_SERVER_PORT']}")
+	private String CONTENT_SERVER_PORT;
+	
+	@Value("#{myProperties['CONTENT_SERVER_PROTOCOL']}")
+	private String CONTENT_SERVER_PROTOCOL;
+
 	@Value("#{myProperties['staticFileServer']}")
 	private String staticFileServer;
 
@@ -40,7 +46,7 @@ public class MediaServiceImpl implements MediaService{
 		media.setUploadScript(uploadScript);
 		media.setUploadContent(uploadContent);
 		media.setFlashRecordingScript(flashRecordingScript);
-		media.setFlashRecordingFolder(flashRecordingFolder);
+		//media.setFlashRecordingFolder(flashRecordingFolder);
 		media.setStaticFileServer(staticFileServer);
 		media.setTreeImagePath(treeImagePath);
 		media.setStaticResources(staticResources);
