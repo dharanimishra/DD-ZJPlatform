@@ -1,0 +1,23 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<tree id="0">
+	<item text="Model Thinking" id="Model Thinking" im0="Tree.png" im1="Tree.png" im2="Tree.png" call="1" open="1" select="1">
+		<item text="Why Model Thinking" im0="notesIcon.png" im1="notesIcon.png" im2="notesIcon.png" id="Child Why Model Thinking">
+		<item text = "Why Model" im0="ppt.png" im1="ppt.png" im2="ppt.png" id="ppt Why Model"/>
+		<item text = "Intelligent Citizens of The World" im0="pdf.png" im1="pdf.png" im2="pdf.png" id="pdf Intelligent Citizens of The world"/>
+		<item text = "Qualifier-1" im0="notesIcon.png" im1="notesIcon.png" im2="notesIcon.png" id="Qualifier"/>
+		</item>
+		
+		<item text="Aggregation" im0="notesIcon.png" im1="notesIcon.png" im2="notesIcon.png" id="Child Aggregation">
+		<item text = "Aggregtion" im0="word.png" im1="word.png" im2="word.png" id="word Aggregation"/>
+		<item text = "Six Sigma" im0="video.png" im1="video.png" im2="video.png" id="video Six Sigma"/>
+		<item text = "Preference Aggregation" im0="ppt.png" im1="ppt.png" im2="ppt.png" id="ppt Preference Aggregation"/>
+		<item text = "Qualifier-2" im0="notesIcon.png" im1="notesIcon.png" im2="notesIcon.png" id="Qualifier"/>
+		</item>
+		
+		<item text="Decision Models" im0="notesIcon.png" im1="notesIcon.png" im2="notesIcon.png" id="Child Decision Models">
+		<item text = "Intro to Decision models" im0="link.png" im1="link.png" im2="link.png" id="link Intro to Decision models"/>
+		<item text = "Probablity the Basics" im0="video.png" im1="video.png" im2="video.png" id="video Probablity the Basics"/>
+		</item>
+</item>
+</tree> 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.data.EnumStaticDataMapper">
+
+	<select id="fetchData" resultMap="dataResultMap" parameterType="int">
+		select
+		v.LookupValueId,
+		v.LookupValue
+		from
+		utllookup l join
+		utllookupvalue v on
+		l.LookupId=v.LookupId
+		where
+		l.CategoryName=#{category}
+
+	</select>
+
+
+
+	<resultMap id="dataResultMap" type="com.ziksana.domain.common.NameValue">
+		<result property="name" column="LookupValue" />
+		<result property="value" column="ValueId" />
+
+	</resultMap>
+</mapper>

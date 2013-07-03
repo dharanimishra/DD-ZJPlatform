@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.PlannerMapper">
+
+	<insert id="savePlanner" parameterType="com.ziksana.domain.course.Planner"
+		useGeneratedKeys="true" keyProperty="ID">
+		insert into corcourselearningplanner(courseId,learningComponentId,learningContentId,StartWeek,StartDay,startsAt,Duration,Note)
+		
+		values(#{courseId},#{learningComponentId},#{learningContentId},#{startWeek},#{startDay},#{startsAt},#{duration},#{note})
+		
+		
+		
+	</insert>
+
+	<select id="getPlannerByCourseId" resultMap="plannerResultMap" parameterType="int">
+		select * from corcourselearningplanner where courseId = #{courseId}
+	</select>
+
+	<update id="updatePlanner" parameterType="com.ziksana.domain.course.Planner">
+		update corcourselearningplanner
+		<set>
+			
+				courseId = #{courseId},
+			
+			
+				learningComponentId = #{learningComponentId},
+			
+				learningContentId = #{learningContentId},
+		
+				StartWeek = #{startWeek},
+			
+				StartDay = #{startDay},
+			
+				startsAt = #{startsAt},
+			
+				Duration = #{duration},
+			
+				Note = #{note}
+			
+		</set>		
+		where ID = #{Id}
+			
+			
+	</update>
+
+	<resultMap type="com.ziksana.domain.course.Planner" id="plannerResultMap">
+		<result property="Id" column="ID" />
+		<result property="courseId" column="courseId" />
+		<result property="learningComponentId" column="learningComponentId" />
+		<result property="learningContentId" column="learningContentId" />
+		<result property="startWeek" column="StartWeek" />
+		<result property="startDay" column="StartDay" />
+		<result property="startsAt" column="startsAt" />
+		<result property="duration" column="Duration" />
+		<result property="note" column="Note" />
+	
+	</resultMap>
+	<!-- <insert id="saveReference" parameterType="com.ziksana.domain.course.Enrichment" 
+		useGeneratedKeys="true" keyProperty="enrichmentId" keyColumn="enrichmentid"> 
+		insert into corenrichment ( creationdate, active, visibility, overrideat, 
+		learningcontentid, creatormemberroleid) values (sysdate(), #{active,jdbcType=BOOLEAN}, 
+		#{visibilityId,jdbcType=INTEGER}, #{overrideAt,jdbcType=INTEGER}, #{learningContent.learningContentId,jdbcType=INTEGER}, 
+		#{creatorMemberPersona.memberRoleId,jdbcType=INTEGER}) <selectKey keyProperty="enrichmentId" 
+		resultType="int" order="AFTER"> SELECT LAST_INSERT_ID(); </selectKey> </insert> -->
+
+	<!-- <insert id="saveRefenceContent" parameterType="com.ziksana.domain.course.ContentEnrichment" 
+		useGeneratedKeys="true" keyProperty="contentEnrichmentId" keyColumn="contentenrichmentid"> 
+		insert into corcontentenrichment (starttime, endtime, linktype, linkelement, 
+		linkdescription, linkitemcost, linksource, active, isdelete, enrichmentid 
+		) values (#{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+		#{linkTypeId,jdbcType=INTEGER}, #{linkElement,jdbcType=VARCHAR}, #{linkDescription,jdbcType=VARCHAR}, 
+		#{linkItemCost,jdbcType=INTEGER}, #{linkSourceId,jdbcType=INTEGER}, #{active,jdbcType=BOOLEAN}, 
+		#{isDelete,jdbcType=BOOLEAN}, #{enrichment.enrichmentId,jdbcType=INTEGER}) 
+		}) <selectKey keyProperty="contentEnrichmentId" resultType="int" order="AFTER"> 
+		SELECT LAST_INSERT_ID(); </selectKey> </insert> -->
+</mapper>

@@ -1,0 +1,145 @@
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.ziksana</groupId>
+		<artifactId>ziksana-app</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>ziksana-web</artifactId>
+	<packaging>war</packaging>
+	<name>ziksana-web</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zdomain</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zconfig</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zpolls</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zsubscription</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zblogs</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zalert</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>ztodo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zcourse</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zannouncements</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zknowmebetter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zcalendar</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Apache Tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
+		<!-- JSTL -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ziksana</groupId>
+			<artifactId>zrecommendations</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Apache Commons Upload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		<!-- Apache Commons Upload -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		
+
+	</dependencies>
+
+	<build>
+		<finalName>ziksana-web</finalName>
+		<plugins>
+		 <plugin> 
+          <groupId>org.apache.maven.plugins</groupId> 
+          <artifactId>maven-compiler-plugin</artifactId> 
+          <configuration> 
+              <source>1.7</source> 
+              <target>1.7</target> 
+          </configuration> 
+      </plugin> 
+      </plugins>
+	</build>
+</project>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.calendar.CalendarMapper">
+	
+	
+	<insert id="saveCalendarObject" parameterType="com.ziksana.domain.calendar.Calendar"
+		useGeneratedKeys="true">
+		INSERT INTO events (memberroleid, eventname, startdate, enddate)	values(#{memberRoleId}, #{eventName}, #{startDate},#{endDate})
+	</insert>
+	
+	<select id="getTodayCalenderEvents" resultMap="calendarResultMap">
+		select eventid,eventname,startdate,enddate from events where memberroleid =#{memberRoleId} and DATE(startdate) = DATE(NOW()) order by startdate asc limit #{pageIndex},#{itemsPerPage}
+	</select>
+	
+	<select id="getTodayCalendarSize" resultType="java.lang.Integer" parameterType="int">
+		select count(*) from events where memberroleid =#{memberRoleId} and DATE(startdate) = DATE(NOW())
+	</select>
+	
+	<resultMap id="calendarResultMap" type="com.ziksana.domain.calendar.Calendar" >		
+		<result property="eventName" column="eventname" />
+		<result property="startDate" column="startdate" />
+		<result property="endDate" column="enddate" />
+		
+	</resultMap>
+	
+	<update id="updateCalendarInfo" parameterType="com.ziksana.domain.calendar.Calendar">
+	update events
+		<set>
+			
+				eventname=#{eventName},
+
+				startdate=#{startDate},
+		
+				enddate=#{endDate}
+
+			where eventid = #{eventId}
+		</set>
+	</update>
+	<delete id="deleteCalendarInfo" parameterType="int">
+		delete from
+		events where eventid =
+		#{eventId}
+	</delete>
+</mapper>

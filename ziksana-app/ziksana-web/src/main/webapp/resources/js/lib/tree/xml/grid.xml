@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rows>
+	<row id="1" selected="1">
+		<cell>Course</cell>
+		<cell>Model Thinking</cell>
+	</row>
+	<row id="2">
+		<cell>Content</cell>
+		<cell>Preference Aggregation</cell>
+	</row>
+	<row id="3">
+		<cell>Module</cell>
+		<cell>Aggregation</cell>
+	</row>
+</rows>

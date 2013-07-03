@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.LearningComponentContentEnrichmentMapper">
+	<resultMap id="BaseResultMap" type="com.ziksana.domain.course.LearningComponentContentEnrichment">
+		<id column="id" property="id"
+			jdbcType="INTEGER" />
+		<result column="enrichmentId" property="enrichmentId" jdbcType="INTEGER" />
+		<result column="Active" property="active" jdbcType="BIT" />
+		<result column="Visibility" property="visibility" jdbcType="INTEGER" />
+		<result column="OverrideAt" property="overrideAt" jdbcType="INTEGER" />
+		<result column="LearningComponentContentId" property="learningComponentContent.id" jdbcType="INTEGER" />
+		<result column="CourseId" property="course.id" jdbcType="INTEGER" />
+		<result column="CurriculumCourseId" property="curriculumCourse.id" jdbcType="INTEGER" />
+		<result column="CreatorMemberRoleId" property="creatingMember.memberRoleId" jdbcType="INTEGER" />
+		<result column="isDelete" property="isDelete" jdbcType="BIT" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		ID,
+		enrichmentId,
+		CreationDate,
+		Active,
+		Visibility,
+		OverrideAt,
+		LearningComponentContentId, 
+		CourseId,
+		CurriculumCourseId,
+		CreatorMemberRoleId,
+		isDelete
+	</sql>
+
+	<insert id="saveLearningComponentContentEnrichment" parameterType="com.ziksana.domain.course.LearningComponentContentEnrichment"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
+		insert into CorApplyEnrichment  
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="contentEnrichment !=null">
+				enrichmentId, 
+			</if>	
+			<if test="active !=null">
+				Active,
+			</if>	
+			<if test="visibility !=null">
+				Visibility,
+			</if>	
+			<if test="overrideAt !=null">
+				OverrideAt,
+			</if>	
+			<if test="learningComponentContent !=null">
+				LearningComponentContentId, 
+			</if>	
+			<if test="course !=null">
+				CourseId,
+			</if>	
+			<if test="curriculumCourse !=null">
+				CurriculumCourseId,
+			</if>	
+			<if test="creatingMember !=null">
+				CreatorMemberRoleId,
+			</if>	
+			<if test="isDelete !=null">
+				isDelete
+			</if>	
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="contentEnrichment !=null">
+				#{contentEnrichment.id,jdbcType=INTEGER}, 
+			</if>	
+			<if test="active !=null">
+				#{active,jdbcType=BIT},
+			</if>	
+			<if test="visibility !=null">
+				#{visibility,jdbcType=INTEGER},
+			</if>	
+			<if test="overrideAt !=null">
+				#{overrideAt,jdbcType=INTEGER},
+			</if>	
+			<if test="learningComponentContent !=null">
+				#{learningComponentContent.id,jdbcType=INTEGER}, 
+			</if>	
+			<if test="course !=null">
+				#{course.courseId.storageID,jdbcType=INTEGER},
+			</if>	
+			<if test="curriculumCourse !=null">
+				#{curriculumCourse.curriculumCourseId.storageID,jdbcType=INTEGER},
+			</if>	
+			<if test="creatingMember !=null">
+				#{creatingMember.memberRoleId,jdbcType=INTEGER},
+			</if>	
+			<if test="isDelete !=null">
+				#{isDelete,jdbcType=BIT}
+			</if>	
+		</trim>
+	</insert>
+
+	<update id="updateLearningComponentContentEnrichment" parameterType="com.ziksana.domain.course.LearningComponentContentEnrichment">
+		update CorApplyEnrichment
+		<set>
+			<if test="contentEnrichment !=null">
+				enrichmentId = #{contentEnrichment.id,jdbcType=INTEGER}, 
+			</if>	
+			<if test="active !=null">
+				active = #{active,jdbcType=BIT},
+			</if>	
+			<if test="visibility !=null">
+				visibility = #{visibility,jdbcType=INTEGER},
+			</if>	
+			<if test="overrideAt !=null">
+				overrideAt = #{overrideAt,jdbcType=INTEGER},
+			</if>	
+			<if test="learningComponentContent !=null">
+				parentContent = #{learningComponentContent.id,jdbcType=INTEGER}, 
+			</if>	
+			<if test="course !=null">
+				CourseId = #{course.courseId.storageID,jdbcType=INTEGER},
+			</if>	
+			<if test="curriculumCourse !=null">
+				CurriculumCourseId = #{curriculumCourse.curriculumCourseId.storageID,jdbcType=INTEGER},
+			</if>	
+			<if test="creatingMember !=null">
+				CreatorMemberRoleId = #{creatingMember.memberRoleId,jdbcType=INTEGER},
+			</if>	
+			<if test="isDelete !=null">
+				isDelete = #{isDelete,jdbcType=BIT}
+			</if>	
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

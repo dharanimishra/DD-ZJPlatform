@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.security.ProfileMapper">
+	
+	<select id="getMemberProfile" resultMap="profileResultMap" parameterType="map">
+		select * from memmemberprofile where memberId = (select ID from memmember where userId =#{userId}) and securityQuestionId like #{securityQuestionId}
+	</select>
+	
+	<select id="getMemberProfileList" resultMap="profileResultMap" parameterType="int">
+		select * from memmemberprofile where memberId = #{memberId}
+	</select>
+	
+	<select id="getMemberProfileByMemberId" resultMap="profileResultMap" parameterType="map">
+		select * from memmemberprofile where memberId = #{memberId}  and securityQuestionId like #{securityQuestionId}
+	</select>
+	
+	<update id="updateProfileAlternateMail"  parameterType="map">
+	update memmemberprofile		
+		<set>
+			alternateEmailId=#{alternateEmailId}
+		</set>
+		where memberId=#{memberId}
+	</update>
+	
+	
+	<update id="updateMemberProfile" parameterType="com.ziksana.domain.member.MemberProfile">
+	update memmemberprofile
+		<set>
+			<if test="memberAnswer != null">
+				memberAnswer=#{memberAnswer},
+			</if>
+			<if test="alternateEmailId != ''">
+				alternateEmailId=#{alternateEmailId},
+			</if>
+			<if test="active != null">
+				active=1
+			</if>
+			where securityQuestionId = #{securityQuestionId} and memberId = #{memberId}
+		</set>
+	</update>
+	
+	<select id="isProfileCompleted" resultType="java.lang.Integer" parameterType="String">
+		select distinct active from memmemberprofile where memberId = (select id from memmember where userId=#{userId})
+	</select>
+	
+	<resultMap id="profileResultMap" type="com.ziksana.domain.member.MemberProfile" >
+		<result property="profileId" column="ID"/>
+		<result property="memberId" column="memberId"/>
+		<result property="securityQuestionId" column="securityQuestionId"/>
+		<result property="securityQuestionText" column="SecurityQuestionText"/>
+		<result property="memberAnswer" column="memberAnswer"/>
+		<result property="alternateEmailId" column="alternateEmailId"/>
+		<result property="active" column="Active"/>
+		<result property="profileUpdated" column="profileUpdated"/>
+	</resultMap>
+
+</mapper>

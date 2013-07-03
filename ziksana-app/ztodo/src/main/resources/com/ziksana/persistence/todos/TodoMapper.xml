@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.todos.TodoMapper">
+
+	<select id="getTodos" resultMap="todoResultMap" parameterType="int">
+		select
+		  distinct n.*,
+		 
+		 l.LookupValue as lookupValue,
+		 p.LookupValue as priority
+		  from
+		  memmembernotification n
+		  join utllookupvalue l ON
+		  n.NotificationType=l.LookupValueId 
+		  join utllookup v ON
+		  l.LookupId=v.LookupId 
+		  join utllookupvalue p ON
+		  n.Priority=p.LookupValueId 
+		  join utllookup pl ON
+		  pl.LookupId=p.LookupId
+		  
+		  where v.CategoryName='Notification Type' and
+		  l.LookupValueId=491 and
+		 
+		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate DESC
+	</select>
+	
+	
+	
+	
+
+	
+	<select id="getMapperTodos" resultMap="todoResultMap" parameterType="int">
+		select
+		  distinct n.*,
+		 
+		 l.LookupValue as lookupValue,
+		 p.LookupValue as priority
+		  from
+		  memmembernotification n
+		  join utllookupvalue l ON
+		  n.NotificationType=l.LookupValueId 
+		  join utllookup v ON
+		  l.LookupId=v.LookupId 
+		  join utllookupvalue p ON
+		  n.Priority=p.LookupValueId 
+		  join utllookup pl ON
+		  pl.LookupId=p.LookupId
+		  
+		  where v.CategoryName='Notification Type' and
+		  l.LookupValueId=491 and
+		 
+		  n.ForMemberRoleId=#{userMemberRoleId}  order by n.ActivationDate DESC  limit 0, 5
+	</select>
+	
+	<select id="getTodoSize" resultType="java.lang.Integer" parameterType="int">
+		select distinct count(*) from memmembernotification n join utllookupvalue l ON n.NotificationType=l.LookupValueId join utllookup v ON l.LookupId=v.LookupId join utllookupvalue p ON n.Priority=p.LookupValueId join utllookup pl ON pl.LookupId=p.LookupId where v.CategoryName='Notification Type' and l.LookupValueId=491 and n.ForMemberRoleId=#{memberRoleId} order by n.ActivationDate DESC  
+	</select>
+
+	<select id="getTodoPagination"  resultMap="todoResultMap" parameterType="map">
+		select
+		  distinct n.*,
+		 
+		 l.LookupValue as lookupValue,
+		 p.LookupValue as priority
+		  from
+		  memmembernotification n
+		  join utllookupvalue l ON
+		  n.NotificationType=l.LookupValueId 
+		  join utllookup v ON
+		  l.LookupId=v.LookupId 
+		  join utllookupvalue p ON
+		  n.Priority=p.LookupValueId 
+		  join utllookup pl ON
+		  pl.LookupId=p.LookupId
+		  
+		  where v.CategoryName='Notification Type' and
+		  l.LookupValueId=491 and
+		 
+		  n.ForMemberRoleId=#{memberRoleId}  order by n.ActivationDate DESC  limit #{pageIndex}, #{itemsPerPage}
+	</select>
+	
+	
+	<insert id="createTodo" parameterType="com.ziksana.domain.todo.Todo"
+		useGeneratedKeys="true" keyProperty="MemberNotificationId">
+		insert into
+		memmembernotification(Category,ActivationDate,CreationDate,NotificationType,NotificationContent,
+		Priority,ForMemberRoleId,CreatingMemberRoleId)
+		values(#{category}, #{activationDate}, #{creationDate},#{notificationType},
+		#{notificationContent},
+		#{priority},
+		#{forMember.memberRoleId},
+		#{creatingMember.memberRoleId} )
+	</insert>
+
+	<update id="updateTodo" parameterType="com.ziksana.domain.todo.Todo">
+		update memmembernotification
+		<set>
+			Category=#{category},
+			ActivationDate=#{activationDate},
+			CreationDate=#{creationDate},
+			NotificationContent=#{notificationContent}				
+		</set>
+		where
+		ID = #{id}
+	</update>
+
+	<delete id="deleteTodo" parameterType="int">
+		delete from
+		memmembernotification where ID =
+		#{memberNotificationId}
+	</delete>
+
+	<resultMap id="todoResultMap" type="com.ziksana.domain.todo.Todo">
+		<result property="id" column="MemberNotificationId" />
+		<result property="category" column="Category" />
+		<result property="activationDate" column="ActivationDate" />
+		<result property="creationDate" column="CreationDate" />
+		<result property="notificationType" column="NotificationType" />
+		<result property="notificationContent" column="NotificationContent" />
+		<result property="priority" column="Priority" />
+	</resultMap>
+</mapper>

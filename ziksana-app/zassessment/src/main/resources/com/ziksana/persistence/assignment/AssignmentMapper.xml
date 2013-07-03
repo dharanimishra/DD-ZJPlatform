@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.assignment.AssignmentMapper">
+
+
+
+	
+	<insert id="insertAssignment" parameterType="com.ziksana.model.assignment.Assignment"
+		useGeneratedKeys="true" keyProperty="id">
+
+		insert into asmassignment(
+		Name,
+		AssignmentContent, 
+		LearningComponentId,
+		CreatingMemberRoleId
+		)
+		values(
+		#{name},
+		#{content},
+		#{learningComponentId},
+		#{creatingMemberRoleId}
+		 )
+
+		<selectKey keyProperty="id" resultType="java.lang.Integer" 
+			order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+
+
+
+
+	</insert>
+	
+	<select id="getAssignmentById" resultType="com.ziksana.model.assignment.Assignment"
+		parameterType="java.lang.Integer">
+
+
+		select * from asmassignment where id=#{assignmentId}
+
+
+
+
+	</select>
+
+
+
+</mapper>

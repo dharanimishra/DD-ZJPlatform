@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.course.LearningContentDecorationMapper">
+	<resultMap id="BaseResultMap" type="com.ziksana.domain.course.LearningContentDecoration">
+		<id column="id" property="id"
+			jdbcType="INTEGER" />
+		<!-- <result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" 
+			/> --><!-- <result column="Active" property="active" jdbcType="BIT" /> -->
+		<result column="contentDecorationType" property="contentDecorationTypeId" jdbcType="INTEGER" />
+		<result column="description" property="description"
+			jdbcType="VARCHAR" />
+		<result column="RightsOwningMemberRoleId" property="rightsOwningMember.rightsOwningMemberRoleId"
+			jdbcType="INTEGER" />
+		<!-- <result column="AuthoringMemberRoleId" property="authoringMember.authoringMemberRoleId" 
+			jdbcType="INTEGER" /> -->
+		<result column="isdelete" property="isDelete" jdbcType="BIT" />
+		<!-- <result column="linkedlearningcontentid" property="linkedLearningContent.learningContentId" 
+			jdbcType="INTEGER" /> -->		<!-- <collection property="learningContentPartsList" javaType="ArrayList" 
+			column="learningcontentid" ofType="com.ziksana.domain.course.LearningContentParts"> 
+			<id column="contentpartsid" property="contentPartsId" jdbcType="INTEGER" 
+			/> <result column="CreationDate" property="creationDate" jdbcType="TIMESTAMP" 
+			/> <result column="PartPath" property="partPath" jdbcType="VARCHAR" /> <result 
+			column="isdelete" property="isDelete" jdbcType="BIT" /> <result column="PartSequence" 
+			property="partSequence" jdbcType="VARCHAR" /> <result column="learningcontentid" 
+			property="learningContent.learningContentId" jdbcType="VARCHAR" /> </collection> -->
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		ID, 
+		CreationDate,
+		Active,
+		ContentDecorationType,
+		Version,
+		description,
+		VersionRemarks,
+		AuthoringMemberRoleId,
+		RightsOwningMemberRoleId,
+		IsDelete,
+	</sql>
+
+	<insert id="saveContentDecoration" parameterType="com.ziksana.domain.course.LearningContentDecoration"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
+		insert into corlearningcontentdecoration
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			creationdate,
+			<if test="learningContentId !=null">
+				learningContentId,
+			</if>
+			<if test="active !=null">
+				active,
+			</if>
+			<if test="contentDecorationTypeId !=null">
+				contentDecorationType,
+			</if>
+			<if test="version !=null">
+				version,
+			</if>
+			<if test="description !=null">
+				description,
+			</if>
+			<if test="rightsOwningMember !=null">
+				rightsowningmemberroleid,
+			</if>
+			<if test="authoringMember !=null">
+				authoringmemberroleid,
+			</if>
+			<if test="isDelete !=null">
+				isDelete,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			sysdate(),
+			<if test="learningContentId !=null">
+				#{learningContentId,jdbcType=INTEGER},
+			</if>
+			<if test="active !=null">
+				#{active,jdbcType=BOOLEAN},
+			</if>
+			<if test="contentDecorationTypeId !=null">
+				#{contentDecorationTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="version !=null">
+				#{version,jdbcType=INTEGER},
+			</if>
+			<if test="description !=null">
+				#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="rightsOwningMember !=null">
+				#{rightsOwningMember.memberRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="authoringMember !=null">
+				#{authoringMember.memberRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete !=null">
+				#{isDelete,jdbcType=BOOLEAN},
+			</if>
+		</trim>
+	</insert>
+
+	<insert id="updateContentDecoration" parameterType="com.ziksana.domain.course.LearningContentDecoration"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
+		update corlearningcontentdecoration 
+		<set>
+			<if test="active !=null">
+				active = #{active,jdbcType=BOOLEAN},
+			</if>
+			<if test="contentDecorationTypeId !=null">
+				contentDecorationType = #{contentDecorationTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="version !=null">
+				version = #{version,jdbcType=INTEGER},
+			</if>
+			<if test="description !=null">
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="rightsOwningMember !=null">
+				rightsowningmemberroleid = #{rightsOwningMember.memberRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="authoringMember !=null">
+				authoringmemberroleid = #{authoringMember.memberRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="isDelete !=null">
+				isdelete = #{isDelete,jdbcType=BOOLEAN}
+			</if>
+		</set>
+		where ID = #{learningContentDecorationtId.storageID,
+		jdbcType=INTEGER}
+	</insert>
+
+</mapper>

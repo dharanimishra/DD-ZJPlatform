@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.subscription.SubscriptionContentMapper">
+	<select id="getContent" resultMap="contenteResultMap"
+		parameterType="int">
+
+		select * from corlearningcontent where id=#{contentId}
+	</select>
+
+	<resultMap id="contenteResultMap" type="com.ziksana.domain.course.Content">
+		<result property="contentId" column="ID" />
+		<result property="contentType" column="ContentType" />
+		<result property="contentUrl" column="ContentPath" />
+		<result property="contentName" column="ContentName" />
+		<result property="numberOfThumbnails" column="NumberOfThumbnails" />
+	</resultMap>
+</mapper>

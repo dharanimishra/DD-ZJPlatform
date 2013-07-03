@@ -1,0 +1,33 @@
+#splitterContainer {/* Main splitter element */
+ width:100%;margin:0;padding:0;display:table;height:100%
+}
+#leftPane{
+ width:20%;display:table-cell; vertical-align: top;
+ 
+ 
+}
+#rightPane{	/*Contains toolbar and horizontal splitter*/
+ display:table-cell;width:auto; vertical-align: top;
+ 
+}
+
+  
+/* Splitbar styles; these are the default class names and required styles */
+.splitbarV {display:table-cell;background-image:url(img/panevc.gif);
+ background-repeat:no-repeat;background-position:-6px -3px;
+ width:4px;height: 265px;
+line-height:0px;font-size:0px;border:1px solid #cbe1fb;
+  background-color: #cbe1fb;cursor:pointer
+}
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{ #rightPane{	/*Contains toolbar and horizontal splitter*/
+ display:table-cell;width:auto;border-left:1px solid #cbe1fb;
+ 
+}
+  .splitbarV {display:table-cell;background-image:url(img/panevc.gif);
+ background-repeat:no-repeat;background-position:-10px -3px;
+ width:4px; border-left:0px solid #cbe1fb;background-color:none;
+line-height:0px;font-size:0px;height:80px;
+ cursor:pointer
+}
+}

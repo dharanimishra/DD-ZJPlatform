@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziksana.persistence.subscription.SubscriptionMapper">
+
+
+
+	<select id="getLearningPrograms" resultMap="programResultMap"
+		parameterType="java.lang.Integer">
+
+
+		select
+		program.*
+		from
+		sbnmembersubscriptionprogram subpgm
+		join
+		corlearningprogram program ON
+		subpgm.LearningProgramId=program.ID
+		where
+		subpgm.MemberRoleId=#{memberRoleId}
+
+
+
+
+
+	</select>
+
+
+
+	<select id="getLinkedLearningContent" resultMap="lcResultMap"
+		parameterType="java.lang.Integer">
+
+		select link.ID, link.ContentName,link.ContentPath
+		from
+		corlearningcontent lc join
+		corlearningcontent link on
+		lc.LinkedLearningContentId=link.ID
+		where
+		lc.ID=#{learningContentId}
+
+	</select>
+
+	<select id="getCoursesByLearningProgram" resultMap="courseResultMap"
+		parameterType="map">
+
+
+		select
+		course.ID as courseId,
+		course.Name,
+		course.Description
+		from
+		sbnmembersubscriptionprogram sbnpgm
+		JOIN
+		sbnsubscriptioncourse
+		subcourse ON
+		sbnpgm.ID=subcourse.MemSubscriptionProgId
+		JOIN
+		corcurriculumcourse
+		curcourse ON
+		subcourse.CurriculumCourseId=curcourse.ID
+		JOIN
+		corcourse
+		course ON
+		curcourse.CourseId=course.ID
+		where
+		sbnpgm.MemberRoleId=#{memberRoleId}
+		and
+		sbnpgm.LearningProgramId=#{learningProgramId}
+
+
+
+	</select>
+
+
+	<select id="getThreeCoursesByLearningProgram" resultMap="courseResultMap"
+		parameterType="map">
+
+
+		select
+		course.ID as courseId,
+		course.Name,
+		course.Description
+		from
+		sbnmembersubscriptionprogram sbnpgm
+		JOIN
+		sbnsubscriptioncourse
+		subcourse ON
+		sbnpgm.ID=subcourse.MemSubscriptionProgId
+		JOIN
+		corcurriculumcourse
+		curcourse ON
+		subcourse.CurriculumCourseId=curcourse.ID
+		JOIN
+		corcourse
+		course ON
+		curcourse.CourseId=course.ID
+		where
+		sbnpgm.MemberRoleId=#{memberRoleId}
+		and
+		sbnpgm.LearningProgramId=#{learningProgramId} order by
+		course.CreationDate DESC LIMIT 0, 3
+
+
+
+	</select>
+
+
+
+
+
+	<select id="getLearnerNotes" resultMap="learnerNotesResultMap"
+		parameterType="map">
+
+
+		select notes.*
+		from
+		sbnsubscribernotes notes join
+		sbnmembersubscriptionprogram program on
+		notes.MemSubscriptionProgId=program.ID
+		join
+		sbnsubscriptioncourse sbn on
+		sbn.ID=notes.SubscriptionCourseId
+		join
+		corcurriculumcourse cor on
+		cor.ID
+		=
+		sbn.CurriculumCourseId
+		join corlearningcomponentcontent corlc on
+		notes.LearningComponentContentId=corlc.ID
+		where
+		notes.LearningComponentId=#{learnCompId} and
+		corlc.LearningComponentId=#{learnCompId} and
+		corlc.LearningContentId=#{learnCmpContId} and
+		cor.CourseId=#{subscrCourseId} and
+		program.MemberRoleId=#{memberRoleId} and
+		notes.NotesType=#{type}
+
+	</select>
+
+
+	<select id="getEducatorNotes" resultMap="notesResultMap"
+		parameterType="map">
+
+
+
+
+
+		select
+		cntenr.LinkElement,
+		cntenr.LinkDescription as NotesContent,
+		cntenr.duration
+		from
+		corcontentenrichment cntenr
+		JOIN
+		corenrichment enr ON
+		cntenr.enrichmentid= enr.enrichmentId
+		JOIN
+		sbnsubscriptioncourse
+		sbncourse ON
+		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
+		JOIN
+		sbnmembersubscriptionprogram subprgm ON
+		sbncourse.MemSubscriptionProgId=subprgm.id
+		where
+		cntenr.LinkType=#{contentType}
+		<if test="subscrCourseId != null">
+			AND enr.CourseId=#{subscrCourseId}
+		</if>
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
+		subprgm.MemberRoleId=#{memberRoleId}
+
+
+
+
+
+	</select>
+
+
+	<select id="getAllEducatorContent" resultMap="educatorContentResultMap"
+		parameterType="map">
+
+
+
+
+
+		select
+		cntenr.*
+		from
+		corcontentenrichment cntenr
+		JOIN
+		corenrichment enr ON
+		cntenr.enrichmentid= enr.enrichmentId
+
+		where
+
+		<if test="subscrCourseId != null">
+			enr.CourseId=#{subscrCourseId}
+		</if>
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
+		enr.CreatorMemberRoleId=#{memberRoleId}
+
+
+
+
+
+	</select>
+
+
+
+
+
+
+
+	<select id="getEducatorHotspots" resultMap="hotspotsResultMap"
+		parameterType="map">
+
+
+
+
+
+		select
+		cntenr.LinkElement,
+		cntenr.LinkDescription as NotesContent,
+		cntenr.duration
+		from
+		corcontentenrichment cntenr
+		JOIN
+		corenrichment enr ON
+		cntenr.enrichmentid= enr.enrichmentId
+		JOIN
+		sbnsubscriptioncourse
+		sbncourse ON
+		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
+		JOIN
+		sbnmembersubscriptionprogram subprgm ON
+		sbncourse.MemSubscriptionProgId=subprgm.id
+		where
+		cntenr.LinkType=#{contentType}
+		<if test="subscrCourseId != null">
+			AND enr.CourseId=#{subscrCourseId}
+		</if>
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
+		subprgm.MemberRoleId=#{memberRoleId}
+
+
+
+
+
+	</select>
+
+
+
+
+
+
+
+
+	<select id="getEducatorReferences" resultMap="refResultMap"
+		parameterType="map">
+
+
+
+
+
+		select
+		cntenr.LinkElement,
+		cntenr.uri,
+		cntenr.duration
+		from
+		corcontentenrichment cntenr
+		JOIN
+		corenrichment enr ON
+		cntenr.enrichmentid= enr.enrichmentId
+		JOIN
+		sbnsubscriptioncourse
+		sbncourse ON
+		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
+		JOIN
+		sbnmembersubscriptionprogram subprgm ON
+		sbncourse.MemSubscriptionProgId=subprgm.id
+		where
+		cntenr.LinkType =
+		#{contentType}
+		<if test="subscrCourseId != null">
+			AND enr.CourseId=#{subscrCourseId}
+		</if>
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
+		subprgm.MemberRoleId=#{memberRoleId}
+
+
+
+
+
+	</select>
+
+
+	<select id="getContentTOC" resultMap="contentResultMap"
+		parameterType="map">
+
+
+		select
+		cntenr.LinkElement,
+		cntenr.duration,
+		cntenr.ID,
+		cntenr.parentContent
+
+
+		from
+		corcontentenrichment
+		cntenr
+		JOIN
+		corenrichment
+		enr ON
+		cntenr.enrichmentid= enr.enrichmentId
+		JOIN
+		sbnsubscriptioncourse
+		sbncourse ON
+		sbncourse.CurriculumCourseId=enr.CurriculumCourseId
+		JOIN
+		sbnmembersubscriptionprogram subprgm ON
+		sbncourse.MemSubscriptionProgId=subprgm.id
+		where
+		cntenr.LinkType = 7 AND
+		enr.CourseId=#{subscrCourseId}
+
+		and
+		enr.LearningComponentId=#{learnCompId} and
+		enr.LearningContentId=#{learnCmpContId} and
+		subprgm.MemberRoleId=#{memberRoleId}
+
+
+
+
+
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<select id="getContentByType" resultMap="notesResultMap"
+		parameterType="map">
+
+		select *
+		from
+		sbnsubscribernotes notes join
+		sbnmembersubscriptionprogram program on
+		notes.MemSubscriptionProgId=program.MemSubscriptionProgId
+		where
+		notes.SubscriptionCourseId=#{subscrCourseId} and
+		notes.LearningComponentId=#{learnCompId} and
+		notes.LearningComponentContentId=#{learnCmpContId} and
+		program.MemberRoleId=#{memberRoleId} and
+		notes.NotesType=#{noteType}
+
+	</select>
+
+
+
+	<insert id="addNote" parameterType="com.ziksana.domain.course.subscription.Note"
+		useGeneratedKeys="true" keyProperty="SubcribeNotesId">
+
+		insert into
+		sbnsubscribernotes(CreationDate, NoteTitle, NoteDescription,
+		NoteDuration,
+		NotesType,NotesContent,SubscriptionCourseId,LearningComponentId,LearningComponentContentId,MemSubscriptionProgId)
+		values(now(), #{noteTitle}, #{noteDescription}, #{noteDuration},
+		#{type},#{content},
+		(select subcourse.ID
+		from
+		sbnsubscriptioncourse
+		subcourse,corcurriculumcourse curcourse
+		where
+		subcourse.CurriculumCourseId=curcourse.ID and
+		curcourse.courseId=#{courseId}),
+		#{learnCompId},
+		(select
+		ID from
+		corlearningcomponentcontent where
+		LearningComponentId=#{learnCompId}
+		and
+		LearningContentId=#{learnCmpContId}
+		),
+		(select
+		ID
+		from
+		sbnmembersubscriptionprogram
+		where
+		memberroleid=#{memberRoleId})
+		)
+
+
+
+	</insert>
+
+	<insert id="addEducatorContent" parameterType="map"
+		useGeneratedKeys="true" keyProperty="ContentEnrichmentId">
+
+		insert into corcontentenrichment(LinkType,
+		LinkDescription,uri,coordinates,duration,LinkElement,parentContent,
+		enrichmentid)
+		values(#{type},#{description} ,#{url} ,
+		#{coordinates},#{duration},#{title},#{parentId},
+		(select enrichmentid
+		from
+		corenrichment
+		where
+		LearningComponentId=#{learningCompId} and
+		learningcontentid=#{learningContId}
+		and courseid=#{courseId} and
+		CreatorMemberRoleId=#{memberRoleId}) )
+
+		<selectKey keyProperty="ContentEnrichmentId" resultType="java.lang.Integer"
+			order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+
+
+
+
+	</insert>
+
+	<delete id="deleteNote" parameterType="java.lang.Integer">
+		delete from
+		sbnsubscribernotes where ID=#{noteId}
+	</delete>
+
+	<delete id="deleteEducatorContent" parameterType="java.lang.Integer">
+		delete from
+		corcontentenrichment where id=#{contentId}
+	</delete>
+
+
+	<update id="updateNote" parameterType="map">
+
+		update sbnsubscribernotes
+		set
+		NoteDescription=#{desc},NoteDuration=#{duration},NoteTitle=#{title}
+		where
+		ID=#{noteId}
+
+	</update>
+
+
+	<update id="editEducatorContent" parameterType="map">
+
+		update
+		corcontentenrichment
+		set uri=#{url},
+		duration=#{duration},
+		coordinates=#{coordinates},
+		LinkDescription=#{description},
+		LinkElement=#{title},
+		parentContent=#{parentId}
+		where
+		ID=#{contentEnrId}
+
+	</update>
+
+
+
+
+
+
+
+	<resultMap id="notesResultMap" type="com.ziksana.domain.course.EducatorNote">
+
+		<result property="title" column="LinkElement" />
+		<result property="description" column="NotesContent" />
+
+	</resultMap>
+
+	<resultMap id="educatorContentResultMap" type="com.ziksana.domain.course.EducatorContent">
+
+		<result property="id" column="id" />
+		<result property="contentType" column="LinkType" />
+		<result property="title" column="LinkElement" />
+		<result property="description" column="LinkDescription" />
+		<result property="url" column="uri" />
+		<result property="duration" column="duration" />
+		<result property="coordinates" column="coordinates" />
+		<result property="parentId" column="parentContent" />
+
+
+	</resultMap>
+
+
+	<resultMap id="hotspotsResultMap" type="com.ziksana.domain.course.Hotspot">
+
+		<result property="title" column="LinkElement" />
+		<result property="description" column="NotesContent" />
+
+	</resultMap>
+
+
+
+
+
+	<resultMap id="refResultMap" type="com.ziksana.domain.course.Reference">
+
+		<result property="title" column="LinkElement" />
+		<result property="uri" column="uri" />
+		<result property="duration" column="duration" />
+
+	</resultMap>
+
+
+	<resultMap id="learnerNotesResultMap" type="com.ziksana.domain.course.subscription.Note">
+		<result property="id" column="SubcribeNotesId" />
+		<result property="noteTitle" column="NoteTitle" />
+		<result property="noteDescription" column="NoteDescription" />
+		<result property="noteDuration" column="NoteDuration" />
+
+	</resultMap>
+
+
+	<resultMap id="contentResultMap"
+		type="com.ziksana.domain.course.subscription.ContentReference">
+
+		<result property="title" column="LinkElement" />
+		<result property="duration" column="duration" />
+
+
+	</resultMap>
+
+
+	<resultMap id="programResultMap"
+		type="com.ziksana.domain.institution.LearningProgram">
+
+		<result property="learningProgramId" column="ID" />
+		<result property="name" column="ProgramName" />
+
+
+	</resultMap>
+
+
+	<resultMap id="courseResultMap" type="com.ziksana.domain.course.Course">
+
+		<result property="courseId" column="courseid" />
+		<result property="coursesId" column="courseid" />
+
+		<result property="name" column="name" />
+		<result property="description" column="description" />
+
+
+	</resultMap>
+
+
+	<resultMap type="com.ziksana.domain.course.LearningContent"
+		id="lcResultMap">
+
+		<result property="learningContentId" column="ID" />
+		<result property="contentPath" column="ContentPath" />
+		<result property="contentName" column="ContentName" />
+
+	</resultMap>
+
+	<select id="getEducatorTOCByContentEnrichId" resultMap="educatorContentResultMap"
+		parameterType="map">
+		select * from corcontentenrichment where id=#{eduContentEnrichId} and LinkType = 7
+
+	</select>
+
+	<select id="getEducatorTOCByParentEnrichId" resultMap="educatorContentResultMap"
+		parameterType="map">
+		select * from corcontentenrichment where parentContent=#{parentEnrichId} and LinkType = 7
+
+	</select>
+
+
+</mapper>
