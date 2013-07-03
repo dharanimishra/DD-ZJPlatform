@@ -37,8 +37,6 @@ public class CourseContentController {
 	@Autowired
 	public CourseContentService courseContentService;
 
-	@Autowired
-	CourseEnrichmentService enrichService;
 
 	@RequestMapping(value = "/saveorupdatecontent", method = {
 			RequestMethod.GET, RequestMethod.POST })
@@ -125,15 +123,6 @@ public class CourseContentController {
 
 			courseContentService.saveOrUpdateContent(compContent);
 
-			Enrichment enrichment = new Enrichment();
-			enrichment.setCourse(course);
-			enrichment.setCourse(course);
-			enrichment.setLearningComponent(component);
-			enrichment.setCreatorMemberPersona(accountableMember);
-			enrichment.setLearningContent(content);
-			enrichment.setActive(true);
-
-			enrichService.saveReference(enrichment);
 
 			json = new CourseJsonResponse();
 

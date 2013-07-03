@@ -216,7 +216,7 @@
 				coordinates = #{coordinates,jdbcType=VARCHAR},
 			</if>	
 			<if test="parentContent !=null">
-				parentContent = #{parentContent.id,jdbcType=INTEGER}
+				parentContent = #{parentContent.id,jdbcType=INTEGER},
 			</if>	
 			<if test="parentEnrichment !=null">
 				parentEnrichment = #{parentEnrichment.id,jdbcType=INTEGER}

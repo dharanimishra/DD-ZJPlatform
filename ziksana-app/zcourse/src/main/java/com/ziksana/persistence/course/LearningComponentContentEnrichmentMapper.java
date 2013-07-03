@@ -24,12 +24,12 @@ public interface LearningComponentContentEnrichmentMapper {
 	LearningComponentContentEnrichment updateLearningComponentContentEnrichment(LearningComponentContentEnrichment record);
 
 
-	@Update({ "update LearningComponentContentEnrichment set isdelete = true where ID =  #{learningComponentContentEnrichmentId,jdbcType=INTEGER}" })
-	void deleteContentEnrichment(@Param("learningComponentContentEnrichmentId") Integer learningComponentContentEnrichmentId);
+	@Update({ "update CorApplyEnrichment set isdelete = true where ID =  #{corApplyEnrichmentId,jdbcType=INTEGER}" })
+	void deleteContentEnrichment(@Param("corApplyEnrichmentId") Integer corApplyEnrichmentId);
 
 	@Select({"select cce.id, cce.enrichmentType, cce.StartTime, cce.EndTime," 
 			+ " cce.LinkName, cce.LinkDescription, cce.coordinates " 
-			+ " from corcontentenrichment cce, corlearningcomponentcontentenrichment clcce"
+			+ " from corcontentenrichment cce, CorApplyEnrichment clcce"
 			+ " where cce.ID = clcce.enrichmentId"
 			+ " and "
 			+ " clcce.CourseId=#{courseId,jdbcType=INTEGER}"

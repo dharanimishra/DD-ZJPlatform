@@ -30,7 +30,6 @@ import com.ziksana.persistence.course.CourseContentSecurityMapper;
 import com.ziksana.persistence.course.CourseLearningComponentMapper;
 import com.ziksana.persistence.course.CourseMapper;
 import com.ziksana.persistence.course.CourseTagcloudMapper;
-import com.ziksana.persistence.course.EnrichmentMapper;
 import com.ziksana.persistence.course.LearningComponentContentMapper;
 import com.ziksana.persistence.course.LearningComponentMapper;
 import com.ziksana.persistence.course.LearningComponentNestMapper;
@@ -66,8 +65,6 @@ public class CourseServiceImpl implements CourseService {
 	public CourseLearningComponentMapper courseLComponentMapper;
 	@Autowired
 	public LearningComponentContentMapper learningComponentContentMapper;
-	@Autowired
-	public EnrichmentMapper enrichMapper;
 
 	@Autowired
 	public SubscriptionMapper subscriptionMapper;
@@ -370,7 +367,7 @@ public class CourseServiceImpl implements CourseService {
 
 							if (learningContentSize > 0) {
 
-								enrichSize = enrichMapper
+/*								enrichSize = enrichMapper
 										.getEnrichByContentIdOrComponentId(
 												lCompId, courseId);
 								LOGGER.debug("lCompId : " + lCompId);
@@ -450,7 +447,7 @@ public class CourseServiceImpl implements CourseService {
 									// }
 									// }
 								}
-							}
+*/							}
 
 						}
 					}

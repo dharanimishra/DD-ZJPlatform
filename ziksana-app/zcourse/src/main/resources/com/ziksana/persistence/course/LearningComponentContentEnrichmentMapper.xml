@@ -31,7 +31,7 @@
 
 	<insert id="saveLearningComponentContentEnrichment" parameterType="com.ziksana.domain.course.LearningComponentContentEnrichment"
 		useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
-		insert into corLearningComponentContentEnrichment  
+		insert into CorApplyEnrichment  
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="contentEnrichment !=null">
 				enrichmentId, 
@@ -93,7 +93,7 @@
 	</insert>
 
 	<update id="updateLearningComponentContentEnrichment" parameterType="com.ziksana.domain.course.LearningComponentContentEnrichment">
-		update corLearningComponentContentEnrichment
+		update CorApplyEnrichment
 		<set>
 			<if test="contentEnrichment !=null">
 				enrichmentId = #{contentEnrichment.id,jdbcType=INTEGER}, 
