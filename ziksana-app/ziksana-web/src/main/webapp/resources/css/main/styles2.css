@@ -19,6 +19,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
 a:focus {
   outline: thin dotted !important;
 }
+a.btn:focus{ outline: thin dotted #000 !important;}
 /*@font-face
 {
 font-family: segoeui;
@@ -3034,4 +3035,11 @@ label.mandatory:before {
 .req_message {
   color: red;
   float: right;
+}
+
+.btnseperate {
+  
+  margin-right: 10px;
+  overflow: hidden;
+  text-align: right;
 }
