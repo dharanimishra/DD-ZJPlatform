@@ -269,6 +269,23 @@ ${course.description}
 	  <div style="clear:both"></div>
 	  ${node.nodeDescription}
 	   <br>
+	   	    <!-- Module Content -->
+	       <c:if test="${! empty node.contents!=null }">
+	       Content Details:
+	         <c:forEach var="content" items="${node.contents}">
+	          <div class="detailswrrapper">
+	          <div>
+	          <label class="b1">
+	          <img src="/ziksana-web/resources/images/preview/doc.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"-->
+	          ${content.contentname}</label>
+	          <label class="b2">parent: ${node.title }</label >
+	          </div>
+	           <div style="clear:both"></div>
+	           ${content.componentDescription }
+	          </div>
+	         </c:forEach>
+	       </c:if>
+
 	   <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div -->
 	  </div>
    <c:if test="${! empty node.children}">
@@ -284,8 +301,25 @@ ${course.description}
 		  </c:choose>
 		    <b style="padding:0px">${cnode.title}</b><label style="float:right;font-weight:bold">${node.title}</label ><br/>    
 		    ${cnode.nodeDescription}<br>
-		    <div style="width:60%;margin:auto;font-weight:bold">Course Name :</div>
-		   </div>
+		   
+		   	    <!-- Module Content -->
+	       <c:if test="${! empty cnode.contents!=null }">
+	       Content Details:
+	         <c:forEach var="content" items="${cnode.contents}">
+	          <div class="detailswrrapper">
+	          <div>
+	          <label class="b1">
+	          <img src="/ziksana-web/resources/images/preview/doc.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"-->
+	          ${content.contentname}</label>
+	          <label class="b2">parent: ${cnode.title }</label >
+	          </div>
+	           <div style="clear:both"></div>
+	           ${content.componentDescription }
+	          </div>
+	         </c:forEach>
+	       </c:if>
+		   
+		  </div>
 		   
     <c:if test="${! empty cnode.children}">
      <c:forEach var="cnode2" items="${cnode.children}">    
@@ -299,7 +333,25 @@ ${course.description}
 		   </c:otherwise>
 		  </c:choose>
 		    <b style="padding:0px">${cnode2.title}</b><label style="float:right;font-weight:bold">${cnode.title}</label ><br/>    
-		    ${cnode2.nodeDescription}<br>		  
+		    ${cnode2.nodeDescription}<br>
+		<!-- Module Content -->
+	       <c:if test="${! empty cnode2.contents!=null }">
+	       Content Details:
+	         <c:forEach var="content" items="${cnode3.contents}">
+	          <div class="detailswrrapper">
+	          <div>
+	          <label class="b1">
+	          <img src="/ziksana-web/resources/images/preview/doc.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"-->
+	          ${content.contentname}</label>
+	          <label class="b2">parent: ${cnode2.title }</label >
+	          </div>
+	           <div style="clear:both"></div>
+	           ${content.componentDescription }
+	          </div>
+	         </c:forEach>
+	       </c:if>	
+		    
+		    		  
 		   </div>
 		   
 	         <c:if test="${! empty cnode2.children}">
@@ -314,7 +366,23 @@ ${course.description}
 					   </c:otherwise>
 					  </c:choose>
 					    <b style="padding:0px">${cnode3.title}</b><label style="float:right;font-weight:bold">${cnode2.title}</label ><br/>    
-					    ${cnode3.nodeDescription}<br>		  
+					    ${cnode3.nodeDescription}<br>
+		 <!-- Module Content -->
+	       <c:if test="${! empty cnode3.contents!=null }">
+	       Content Details:
+	         <c:forEach var="content" items="${cnode3.contents}">
+	          <div class="detailswrrapper">
+	          <div>
+	          <label class="b1">
+	          <img src="/ziksana-web/resources/images/preview/doc.png" width="150px" height="150px" style="padding:20px;Padding-top:0px;" align="left"-->
+	          ${content.contentname}</label>
+	          <label class="b2">parent: ${cnode3.title }</label >
+	          </div>
+	           <div style="clear:both"></div>
+	           ${content.componentDescription }
+	          </div>
+	         </c:forEach>
+	       </c:if>		  
 					   </div>   
 			      </c:forEach>  
 		     </c:if>

@@ -16,8 +16,7 @@ public class NestTreeNode {
 	private String thumbnailPicturePath; 
 	
 	private List<NestTreeNode> children = null;
-	private List<NestContentNode> contents = null;
-
+	private List<NestContentNode> contents = null; //TODO remove old setter and getter methods.
 	public int getCourseId() {
 		return courseId;
 	}
@@ -44,6 +43,14 @@ public class NestTreeNode {
 
 	public List<NestContentNode> getContent() {
 		return contents;
+	}
+
+	public List<NestContentNode> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<NestContentNode> contents) {
+		this.contents = contents;
 	}
 
 	public void setContent(List<NestContentNode> contents) {
