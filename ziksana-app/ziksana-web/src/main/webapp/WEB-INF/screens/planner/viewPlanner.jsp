@@ -45,7 +45,7 @@
 	 <br/>
 	 <div class="textAlignRight">
  		 <a href="/ziksana-web/zcourse/1/planner/${course.coursesId}"  class="btn blue"  style="margin-right:5px;">Edit Planner</a> 
- 		 <a href="/ziksana-web/zplaybook/unsecure/htmlView/${course.coursesId}"  class="btn blue" style="margin-right:25px;margin-left:20px;"> Save and Continue </a>
+ 		 <a href="/ziksana-web/zplaybook/1/htmlView/${course.coursesId}"  class="btn blue" style="margin-right:25px;margin-left:20px;"> Save and Continue </a>
  	</div>
  	
 	

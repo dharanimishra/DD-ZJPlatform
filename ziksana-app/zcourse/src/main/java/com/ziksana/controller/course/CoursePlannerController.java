@@ -597,7 +597,7 @@ public class CoursePlannerController {
 		if (updatePlannerList.size() == 0) {
 			plannerService.savePlanner(plannerList);
 			plannerService.savePlanner(saveContentList);
-			response = "redirect:/zplaybook/unsecure/htmlView/"+Integer.parseInt(courseId)+ "";
+			response = "redirect:/zplaybook/1/htmlView/"+Integer.parseInt(courseId)+ "";
 
 		} 
 		
@@ -629,7 +629,7 @@ public class CoursePlannerController {
 				}
 			}
 			
-			response = "redirect:/zplaybook/unsecure/htmlView/"+Integer.parseInt(courseId)+ "";
+			response = "redirect:/zplaybook/1/htmlView/"+Integer.parseInt(courseId)+ "";
 		}
 
 		return response;

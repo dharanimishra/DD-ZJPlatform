@@ -30,7 +30,7 @@
 
 
 <div class="clearfix"></div>
-<form action="/ziksana-web/zcourse/1/submitplanner"  ">
+<form action="/ziksana-web/zcourse/1/submitplanner" style="min-height:350px;">
 	<div id="planner_error"></div><div id="planner_success_message"></div>
 	<div id="planner_container"> 
 		<div text="${course.name}" class="planner_data" id="COURSE_${courseIds}">
@@ -53,9 +53,9 @@
 	 %> </div> 
 	 </div>
 	 <hr/>
-	 <div class="textAlignRight">
+	 <div class="textAlignRight" style="margin-right:11px;">
  		<button  type="submit" name="savePlanner" id="submit_planner_data" class="btn blue"> Save </button>
- 		<a href="/ziksana-web/zcourse/1/${courseIds}/viewplanner"  class="btn blue">Generate</a><br/><br/>
+ 		<a href="/ziksana-web/zcourse/1/${courseIds}/viewplanner"  class="btn blue" style="width:92px;">Generate</a><br/><br/>
  		<button  type="submit" name="savePlannerAndContinue" id="submit_planner_data" class="btn blue"> Save and Continue </button>
 
  	</div>
