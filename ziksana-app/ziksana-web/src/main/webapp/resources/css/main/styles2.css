@@ -971,7 +971,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', end
 
 #contentpanel {
     margin-bottom: 30px;
-    overflow: auto;
+    overflow: auto;min-height: 494px;
 }
 
 .profileinput {

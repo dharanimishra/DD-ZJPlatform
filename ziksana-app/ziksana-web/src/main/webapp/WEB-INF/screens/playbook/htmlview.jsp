@@ -109,8 +109,8 @@ background:#3e3f13;}
   padding: 10px;
 }
 h2{font-size:25px;margin-left:20px}
-.b1{padding:0px;color:#A53232; font-size:20px;width:40%;float:left; text-transform:capitalize}
-.b2{padding:0px;color:#A53232;font-size:16px;float:right; text-transform:capitalize}
+.b1{padding:0px;color:navy; font-size:20px;width:40%;float:left; text-transform:capitalize;line-height:1;}
+.b2{padding:0px;color:#A53232;font-size:14px;float:left; text-transform:capitalize;width:42%;text-align:right;line-height:1.5}
 
 .coursetitle{ overflow:; hidden;width:100%;margin-bottom:30px;height: 20px;}
 .coursetitle a {color:#fff;float: left;
