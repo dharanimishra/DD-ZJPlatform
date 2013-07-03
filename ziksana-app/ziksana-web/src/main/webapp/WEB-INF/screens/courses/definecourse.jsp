@@ -202,7 +202,7 @@
 		<form id="DegineCourse" method="post" class="form-horizontal">
 			<!--Course Name-->
 			<div class=" ">
-			<div class="req_message">( * marked fields are required )</div>
+			<div class="req_message">( * marked are mandatory fields)</div>
 			<div class="clearfix"></div>
 				<div class="control-group">
 					<input type="hidden" id="courseid" value="${courseId}" /> <input
