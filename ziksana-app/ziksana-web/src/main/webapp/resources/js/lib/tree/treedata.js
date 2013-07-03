@@ -1,6 +1,4 @@
 var counter = 0;
-
-var media_server_url = 'http://54.243.235.88/zikload-xml/uploads';
 function onButtonClick(menuitemId, type) {
 	var menuaction = menuitemId;
 
@@ -75,13 +73,13 @@ function onButtonClick(menuitemId, type) {
 								//console.log('image_upload:'+image_upload);
 								if (image_upload == '') {
 									thumbnail_url = '/ziksana-web/resources/images/preview/defaultmodule.png';
+									$('#course_thumbnail_image').attr('src',thumbnail_url);
+									$('#thubmnail_upload_message').html('');		
 								} else {
 									thumbnail_url = media_server_url + image_upload;
-								//	console.log('thumbnail_url:'+thumbnail_url);
+									$('#course_thumbnail_image').attr('src',thumbnail_url);
+									$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
 								}
-								$('#course_thumbnail_image').attr('src',
-										thumbnail_url);
-								$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
 								
 								$('#courseid').val(Course_id);
 
@@ -117,12 +115,8 @@ function onButtonClick(menuitemId, type) {
 
 												option_string += option;
 											}
-											$('#Cmoduleareaddl').html(
-													option_string);
-
-											$('#Cmoduleareaddl').val(
-													subject_area);
-
+											$('#Cmoduleareaddl').html(option_string);
+											$('#Cmoduleareaddl').val(subject_area);
 										});
 
 								token = '';

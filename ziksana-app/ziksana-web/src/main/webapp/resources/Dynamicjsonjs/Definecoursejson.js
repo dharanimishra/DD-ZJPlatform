@@ -429,15 +429,15 @@ function getCourse() {
 
 							if (image_upload == '') {
 								thumbnail_url = '/ziksana-web/resources/images/preview/defaultcourse.png';
+								$('#course_thumbnail_image').attr('src',thumbnail_url);
+								$('#thubmnail_upload_message').html('');
 							} else {
 								thumbnail_url = media_server_url + image_upload;
-							}
-							$('#course_thumbnail_image').attr('src',
-									thumbnail_url);
-							$('#thubmnail_upload_message')
-									.html(
-											'<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
+								$('#course_thumbnail_image').attr('src',thumbnail_url);
+								$('#thubmnail_upload_message').html('<a onclick="remove_uploaded_thumbnail();" title="Remove Image" class="remove" style="margin-left:20px">Remove</a>');
 
+							}
+							
 							//$('#courseid').val(course_id);
 
 							$('#defaultvalue').val(course_name);

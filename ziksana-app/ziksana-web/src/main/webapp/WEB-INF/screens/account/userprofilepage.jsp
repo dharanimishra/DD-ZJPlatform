@@ -168,7 +168,7 @@
 					<label class="control-label nexaf" for="Alternative Email"><fmt:message
 							key="profile.alternateemail"></fmt:message> </label>
 					<div class="controls">
-						<input autofocus="autofocus" onblur="isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');"
+						<input  autofocus="autofocus" onblur="isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');"
 							
 							id="alternateEmailId" type="text" class="profileinput"
 							name="alt_mail" placeholder="Alternate Email" />
@@ -404,18 +404,18 @@
 						
 						
 						<div  id="passEdit">
-					<label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
-					<label id="passwordUpdatedDate" class="control-label nexaf"  style="margin-left: 20px;width:300px;font-weight:normal"><c:out value="${passwordUpdated}"></c:out></label>	
-						 <a   id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
+							<label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
+							<label id="passwordUpdatedDate" class="control-label nexaf"  style="margin-left: 20px;width:300px;font-weight:normal"><c:out value="${passwordUpdated}"></c:out></label>	
+						 	<a id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					      
 						  <div class="editcontroll border-user"  id="Edit_pass" ><a style="float:right;cursor:pointer;margin-right: -17px;margin-top: -12px;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
-						  <p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetResponse"></p>
+						  	<p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetResponse"></p>
      						<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetFailResponse"></p>
-						  <label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
+						 	 <label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
 						 <div class="controls"> <label class="nexaf"><fmt:message key="Current"></fmt:message> :</label><input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="<fmt:message key="Enter.cur.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
-						   <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red; margin-top:3px;" id="errorNewPassword"></div>
-						    <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /><div style="color: red;" id="errorRetypePassword"></div></div><div class="clearfix"></div>
+						  	 <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red; margin-top:3px;" id="errorNewPassword"></div>
+						   	 <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /><div style="color: red;" id="errorRetypePassword"></div></div><div class="clearfix"></div>
 						   <div style="margin-top:6px;">
 						   
 					  		<button id="savePasswordReset" class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
@@ -621,6 +621,8 @@ function editpasswordFocus(){
 	$("#errorRetypePassword").html('');
 	
 }
+
+
 	function firstQuestionValidation(question) {
 		//firstSelectBox = document.getElementById("securityQuestionOne");
 		if (question == 'Select the Security Question') {
@@ -719,10 +721,14 @@ function editpasswordFocus(){
 			if (primaryEmailId == alternateEmailId) {
 				
 				$('#errorEmailId').html("<fmt:message key="profile.error.altemail"></fmt:message>");
+				$('#alternateEmailId').focus();
+				$('#alternateEmailId').addClass('error_profile');
 				
 			}else{
 				if(("#errorEmailId.inside:contains('email')")){
 				document.getElementById("errorEmailId").innerHTML = '';
+				$('#alternateEmailId').focusout();
+				$('#alternateEmailId').removeClass('error_profile');
 				
 				}
 			}
@@ -730,15 +736,20 @@ function editpasswordFocus(){
 			if(alternateEmailId.match(mailformat))  
 			{  
 				document.getElementById("erroralternateEmailId").innerHTML = '';
+				$('#alternateEmailId').focusout();
+				$('#alternateEmailId').removeClass('error_profile');
 				
 			}else{
 				$('#erroralternateEmailId').html("<fmt:message key="profile.error.invalid"/>");
+				$('#alternateEmailId').focus();
+				$('#alternateEmailId').addClass('error_profile');
 				
 			}
 		
 	}else{
 		document.getElementById("errorEmailId").innerHTML = '';
 		document.getElementById("erroralternateEmailId").innerHTML = '';
+		$('#alternateEmailId').focusout();
 	}
 	}
 	
