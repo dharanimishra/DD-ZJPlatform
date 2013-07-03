@@ -6,9 +6,11 @@ import com.ziksana.id.IntegerZID;
 import com.ziksana.id.ZID;
 
 /**
- * @author bhashasp
+ * @author Ratnesh Kumar
  */
 public class LearningComponentTagcloud extends TagCloud {
+
+	private static final long serialVersionUID = 8705387066802080147L;
 
 	public LearningComponentTagcloud() {
 

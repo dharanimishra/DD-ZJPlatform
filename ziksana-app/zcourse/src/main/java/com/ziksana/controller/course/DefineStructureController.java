@@ -202,6 +202,8 @@ public class DefineStructureController {
 					.getSubjectClassification(subjectTopic);
 
 			MemberPersona accountableMember = new MemberPersona();
+			Integer memberRoleId = Integer.valueOf(SecurityTokenUtil.getToken()
+					.getMemberPersonaId().getStorageID());
 			accountableMember.setMemberRoleId(Integer.valueOf(SecurityTokenUtil
 					.getToken().getMemberPersonaId().getStorageID()));
 
@@ -392,6 +394,7 @@ public class DefineStructureController {
 				tagcloud.setTagName(ModuleTags);
 				tagcloud.setZeniSuggestedIndicator(true);
 				tagcloud.setLearningComponentId(updatedLearningComponentId);
+				tagcloud.setCreatingMemberID(memberRoleId);
 				try {
 					tagcloudObj = learningComponentTagCloudService
 							.saveOrUpadteTags(tagcloud);
@@ -415,8 +418,8 @@ public class DefineStructureController {
 				tagcloud.setTagName(ModuleTags);
 				tagcloud.setZeniSuggestedIndicator(true);
 				tagcloud.setLearningComponentId(updatedLearningComponentId);
+				tagcloud.setCreatingMemberID(memberRoleId);
 				tagcloud.setTagType(TagType.TAG_TYPE1);
-
 				try {
 					tagcloudObj = learningComponentTagCloudService
 							.saveOrUpadteTags(tagcloud);
@@ -495,10 +498,14 @@ public class DefineStructureController {
 			try {
 				tag = learningComponentTagCloudService
 						.getComponentTagClouds(learningComponentId);
+				if (!"".equals(tag) && tag != null) {
+					tagfield = tag.getTagName();
+				}
 			} catch (Exception e) {
-
+				LOGGER.debug("Entering Class " + getClass() + " exception :"
+						+ e);
 			}
-			tagfield = tag.getTagName();
+
 			LOGGER.error("Class " + getClass()
 					+ "Method Name :getCourseModule : tag  :" + tag
 					+ "tagfield :" + tagfield);
