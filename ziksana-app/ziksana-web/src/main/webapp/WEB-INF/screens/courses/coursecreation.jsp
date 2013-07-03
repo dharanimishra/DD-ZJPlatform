@@ -148,6 +148,8 @@ $(document).ready(function() { // On page load
 			<div id="rightPane">
 				<div class="Addmodulecontainer" id="Addmodulecontainer"
 					style="padding: 10px;">
+					<div class="req_message">( * marked are mandatory fields)</div>
+						<div class="clearfix"></div>
 					<form id="AddModule" method="post" class="form-horizontal">
 						<input type="hidden" id="courseid" value="${courseId}" /> <input
 							type="hidden" id="courseLearningComponentId" value="" /> <input
@@ -156,7 +158,7 @@ $(document).ready(function() { // On page load
 						<!--module form-->
 						<!--Course Name-->
 						<div class="control-group">
-							<label class="control-label nexaf" for="Course Name"
+							<label class="control-label nexaf mandatory" for="Course Name"
 								style="width: 120px"><fmt:message key="module.name" /></label>
 							<div class="controls" style="margin-left: 130px;">
 								<input type="text" id="Course_Module" class="defaultvaluem treeRoot validate[required]"

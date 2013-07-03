@@ -306,7 +306,7 @@
 					style="width: 230px;"><fmt:message
 						key="specify.courseCredits" /></label>
 				<div class="controls" style="margin-left: 230px; width: 92px">
-					<input type="text" name="spi" id="spinner" value="0"
+					<input type="text" name="spi" id="spinner" value="" placeholder="0"
 						style="width: 50px;" maxlength="2"
 						onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>
@@ -316,7 +316,7 @@
 					style="margin-left: 88px; width: 220px;"><fmt:message
 						key="specify.courseCreditsExtra" /></label>
 				<div class="controls" style="width: 212px;">
-					<input type="text" name="spi" id="spinner2" value="0"
+					<input type="text" name="spi" id="spinner2" value="" placeholder="0"
 						style="width: 50px;" maxlength="2"
 						onkeypress="return inputLimiter(event,'Numbers', this.value)" />
 				</div>

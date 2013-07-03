@@ -3026,6 +3026,9 @@ label.mandatory:before {
   color: red;
   content: "*";
 }
+.mandatory {
+  margin-left: -8px;
+}
 .req_message {
   color: red;
   float: right;
