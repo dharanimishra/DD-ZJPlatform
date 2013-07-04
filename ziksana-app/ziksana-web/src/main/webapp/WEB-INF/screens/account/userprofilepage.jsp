@@ -471,7 +471,7 @@
 					     <div class="controls">
 					      <input type="password" class="profileinput" id="editSecAnswerOne" value=""  name="sec_answer1" placeholder="Security Answer 1" style="width:365px;" />         
 					      </div>
-					      <p id="secQuesOneError" style="color:red;text-align:center"></p>
+					      <p id="secQuesOneError" style="color:red;text-align:left;margin-left:180px;margin-top:6px;"></p>
 					<div style="margin-top:6px;">
 						   
  					  <button class="btn btn-primary f-r" onclick="editUpdateSecuQuestion()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
@@ -505,7 +505,7 @@
 					     <div class="controls">
 					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="" name="sec_answer2" placeholder="Security Answer 1" style="width:365px;"/>         
 					      </div>
-					      <p id="secQuesTwoError" style="color:red;text-align:center"></p>
+					      <p id="secQuesTwoError" style="color:red;text-align:left;margin-left:180px;margin-top:6px;"></p>
 					<div style="margin-top:6px;">
 						   
 					  <button class="btn btn-primary f-r" onclick="editSaveSecQuesTwo()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
@@ -822,6 +822,9 @@ function editpasswordFocus(){
 		$('#'+divid).slideToggle();
 		$("#Editsq1").hide();
 		$('#secQuesOneError').html("");
+		
+		$('#editQuestionOne').removeClass('error_profile');
+		 $('#editSecAnswerOne').removeClass('error_profile');
 		get_latest_member_object($("#memberIdValue").text());
 		
 		}
@@ -835,6 +838,8 @@ function editpasswordFocus(){
 		$('#'+divid).slideToggle();
 		$("#Editsq2").hide();
 		$('#secQuesTwoError').html("");
+		$('#securityQuestionTwo').removeClass('error_profile');
+		 $('#editSecAnswerTwo').removeClass('error_profile');
 		get_latest_member_object($("#memberIdValue").text());
 		}
 		function alterEmailSubmit(){
@@ -1084,13 +1089,19 @@ function editUpdateSecuQuestion(){
 
 	if(editQuestionOneValue == selectValue){
 		$('#secQuesOneError').html("<fmt:message key="select.question1"/>"); 
+		
+		$('#editQuestionOne').addClass('error_profile');			
 	}else if(editQuestionOneValue == hiddeneditQuestionTwoValue){
 		
-			$('#secQuesOneError').html("<fmt:message key="profile.error.difquestion"/>"); 		
+			$('#secQuesOneError').html("<fmt:message key="profile.error.difquestion"/>"); 	
+			$('#editQuestionOne').addClass('error_profile');
 	}else{
 		 if(editSecAnswerOne == ''){
+			 $('#editSecAnswerOne').addClass('error_profile');
 				$('#secQuesOneError').html("<fmt:message key="enter.answer"/>"); 
 			}else{
+				$('#editQuestionOne').removeClass('error_profile');
+				 $('#editSecAnswerOne').removeClass('error_profile');
 			 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
 			        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionOne,'SecurityQuestionValue':editQuestionOneValue,'SecurityAnswer':editSecAnswerOne}
 			        , function( data )
@@ -1105,6 +1116,7 @@ function editUpdateSecuQuestion(){
 				             }else{
 				            	  $('#secQuesTwoError').html("<fmt:message key="error.text"/>"); 
 				             }
+			        	
 					
 			        }
 					 );
@@ -1137,15 +1149,19 @@ function editSaveSecQuesTwo(){
 
 	if(editQuestionTwoValue == selectValue){
 		$('#secQuesTwoError').html("<fmt:message key="select.question2"/>"); 
+		$('#securityQuestionTwo').addClass('error_profile');
 	}else if(editQuestionTwoValue ==hiddeneditQuestionOneValue){
 		
-			$('#secQuesTwoError').html("<fmt:message key="profile.error.difquestion"/>"); 		
+			$('#secQuesTwoError').html("<fmt:message key="profile.error.difquestion"/>"); 
+			$('#securityQuestionTwo').addClass('error_profile');
 	}else{
 		if(editSecAnswerTwo == ''){
 			$('#secQuesTwoError').html("<fmt:message key="enter.answer"/>");
+			 $('#editSecAnswerTwo').addClass('error_profile');
 			
 		}else{
-			
+			$('#securityQuestionTwo').removeClass('error_profile');
+			 $('#editSecAnswerTwo').removeClass('error_profile');
 		 $.post( '<c:url value='/profile/1/editupdateprofile'/>'
 		        , {'memberId':memberIdVal,'alternateEmailId':alternateEmailId,'SecurityQuestionId':editQuestionTwo,'SecurityQuestionValue':editQuestionTwoValue,'SecurityAnswer':editSecAnswerTwo}
 		        , function( data )
