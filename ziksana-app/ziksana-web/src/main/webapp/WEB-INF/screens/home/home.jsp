@@ -16,11 +16,11 @@
 		<div class="fifteen columns" id="page-title">
 			<a style="margin-top: -3px;" class="back"
 				href="javascript:history.back()"></a>
-			<p class="page-title">
+			<%-- <p class="page-title">
 				<span style="font-size: 15px; color: #6bbde8;"><fmt:message
 						key="home.hometext"></fmt:message></span>
 
-			</p>
+			</p> --%>
 
 		</div>
 
