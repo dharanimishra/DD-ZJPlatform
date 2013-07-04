@@ -40,6 +40,7 @@
 			confirm_delete_component = confirm('Are you sure you don\'t want to associate the selected contents? \nClick OK if you want associate the selected content else click Cancel.');
 			if (confirm_delete_component == true) {
 				associateContents();
+				return true;
 			}
 			else{
 				return;
@@ -750,4 +751,14 @@
 		var courseId = $('#courseid').val();
 		var uri = '/ziksana-web/zcourse/1/annotate/'+courseId;
 		window.location.href = uri ;		
-	}	
+	}
+	
+	function saveAndContinue(){
+		var associated = forceToAssociateSelectedContent();
+		if(associated){
+			return;
+		}
+		var uri = serverContext + "zcourse/1/annotatecontents/" + $('#courseid').val();
+		//alert("Innnnnnnnnnn uri is " + uri);
+		window.location = uri;
+	}

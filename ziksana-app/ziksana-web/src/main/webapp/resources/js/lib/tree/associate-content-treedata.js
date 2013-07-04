@@ -126,8 +126,9 @@ function onButtonClick(menuitemId, type) {
 
 
 			var CourseId = $('#courseid').val();
-			nodeParentId = tree.getParentId(contentId);
+			nodeParentId = tree.getParentId(tree.getSelectedItemId());
 
+			//alert("courseId " + CourseId + " componentId " + nodeParentId.split('_')[1] + "  contentId " + contentId);
 			var parameters = {
 				"courseId" : CourseId,
 				"componentId" : nodeParentId.split('_')[1],
