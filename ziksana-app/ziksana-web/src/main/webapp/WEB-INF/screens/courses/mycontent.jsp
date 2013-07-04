@@ -136,7 +136,7 @@ $(document).ready(function() { // On page load
 
 <div class="Clearfix"></div>
 <div class="announcementcontainer">
-	<div class="headtag pull-left" style="margin-top: 10px;"><fmt:message key="nav.mycontent"/></div>
+<%-- 	<div class="headtag pull-left" style="margin-top: 10px;"><fmt:message key="nav.mycontent"/></div> --%>
 <div class="Clearfix"> </div>
  <div class="pull-left" style="margin-top: 20px;text-align: right;width:100%;">
 <a href="/ziksana-web/zcourse/1/createcontent" style="line-height: 41px;margin-right: 4px;font-weight:bold"><fmt:message key="Create.New.Content"/> </a>
