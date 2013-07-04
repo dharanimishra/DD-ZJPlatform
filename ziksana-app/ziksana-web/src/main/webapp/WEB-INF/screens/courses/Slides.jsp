@@ -80,6 +80,15 @@
 			current_thumbnail = $('a.current');
 			current_thumbnail.prev('a').click();
 		});
+		
+		$('#thumb_first').click(function(){
+			$('a.dock-item2').first().click();	
+		});
+		
+		$('#thumb_last').click(function(){
+			$('a.dock-item2').last().click();	
+		});
+		
 		  $('.dock-item2').first().click();
 	});
 </script>
@@ -119,7 +128,7 @@
 							data-src="${ms.url}/image/${content.contentUrl}/${content.contentUrl}.jpg" src="${ms.url}/image/${content.contentUrl}/${content.contentUrl}.jpg" /></a>
 						<script type="text/javascript">
 							$(function(){
-								$('#thumb_next, #thumb_previous').hide();	
+								$('#thumb_next, #thumb_previous, #thumb_first, #thumb_last').hide();	
 							});
 						</script>
 					</c:when>
@@ -138,7 +147,10 @@
 
 			</div>
 		</div>
-		<a id="thumb_next">></a> <a id="thumb_previous"><</a>
+		<a id="thumb_next" title="View Next">></a> 
+		<a id="thumb_previous" title="View Previous"><</a>
+		<a id="thumb_first" title="View First"> << </a>
+		<a id="thumb_last" title="View Last"> >></a>
 		<div id="controls" title="Drag to move the control bar">
 			<table>
 				<tr>

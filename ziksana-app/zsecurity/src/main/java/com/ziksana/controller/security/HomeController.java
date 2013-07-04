@@ -103,7 +103,7 @@ public class HomeController {
 			session.setAttribute("member", member);
 			modelAndView = new ModelAndView("masterhome");
 			modelAndView.addObject("applicationTitle", "Home");
-			SecurityTokenUtil.unset();
+			SecurityTokenUtil.setToken(token);
 
 		}
 		catch(ZiksanaException exception){

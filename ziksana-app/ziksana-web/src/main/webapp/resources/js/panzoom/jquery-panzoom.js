@@ -13,6 +13,16 @@
  *   http://www.gnu.org/licenses/gpl.html
 */
 
+//
+var pz_x1 = '';
+var pz_x2 = '';
+var pz_y1 = '';
+var pz_y2 = '';
+var pz_fit_width = '';
+var pz_fit_height = '';
+
+//
+
 (function( $ ){
 
   $.fn.panZoom = function(method) {
@@ -106,11 +116,26 @@
 
     'fit': function () {
       var data = this.data('panZoom');
+/*      data.position.x1 = 0;
+      data.position.y1 = 0;
+      data.position.x2 = data.viewport_dimensions.x;
+      data.position.y2 = data.viewport_dimensions.y;*/
+      
       data.position.x1 = 0;
       data.position.y1 = 0;
       data.position.x2 = data.viewport_dimensions.x;
       data.position.y2 = data.viewport_dimensions.y;
+      
       methods.updatePosition.apply(this);
+      // arun ++
+      pz_x1 = data.position.x1;
+      pz_x2 = data.position.x2;
+      pz_y1 = data.position.y1;
+      pz_y2 = data.position.y2;
+      
+      pz_fit_width = pz_x2 - pz_x1;
+      pz_fit_height = pz_y2 - pz_y1;
+      // arun ++
     },
 
     'zoomIn': function (steps) {
@@ -118,22 +143,46 @@
       if (typeof(steps) == 'undefined') {
         var steps = getStepDimensions.apply(this);
       }
+      
       data.position.x1 = data.position.x1*1 - steps.zoom.x;
       data.position.x2 = data.position.x2*1 + steps.zoom.x;
       data.position.y1 = data.position.y1*1 - steps.zoom.y;
       data.position.y2 = data.position.y2*1 + steps.zoom.y;
+      
       methods.updatePosition.apply(this);
     },
 
     'zoomOut': function (steps) {
       var data = this.data('panZoom');
+
       if (typeof(steps) == 'undefined') {
         var steps = getStepDimensions.apply(this);
       }
+      // arun ++
+      var target_element = data.target_element;
+      
+      x1_tobe = data.position.x1*1 + steps.zoom.x;
+      x2_tobe = data.position.x2*1 - steps.zoom.x;
+      y1_tobe = data.position.y1*1 + steps.zoom.y;
+      y2_tobe = data.position.y2*1 - steps.zoom.y;
+      
+      width_tobe = x2_tobe - x1_tobe;
+      height_tobe = y2_tobe - y1_tobe;
+      
+      
+      if((width_tobe < pz_fit_width) || (height_tobe < pz_fit_height)){
+    	  target_element.panZoom('fit');
+    	  return false;
+      }
+// arun ++
+      
       data.position.x1 = data.position.x1*1 + steps.zoom.x;
       data.position.x2 = data.position.x2*1 - steps.zoom.x;
       data.position.y1 = data.position.y1*1 + steps.zoom.y;
       data.position.y2 = data.position.y2*1 - steps.zoom.y;
+      
+
+      
       methods.updatePosition.apply(this);
     },
 

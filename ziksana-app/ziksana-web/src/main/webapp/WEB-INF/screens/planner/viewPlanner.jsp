@@ -245,7 +245,7 @@ function get_and_populate_planner_data(courseId){
 			$('#planner_data').prepend(week_label_div);
 			
 			if(dataList.length== 0){
-				
+				$('.node_bar:not(:first)').addClass('node_duration_undefined').find('.node_title').append(" [Duration Not Available]");
 			}
 			
 			
