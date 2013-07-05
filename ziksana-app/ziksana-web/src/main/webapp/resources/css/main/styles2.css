@@ -3046,6 +3046,13 @@ label.mandatory:before {
 }
 .page-header{background-color:transparent!important;border-bottom:0px none!important}
 .page-header h1,.page-header .icon{display:none!important}
-
 .preview_uploaded_content:nth-child(even) {background: #168EBE}
 .preview_uploaded_content:nth-child(odd) {background:#17A5D8}
+.nexafN {
+  color: #414141;
+  font-family: Nexa;
+  font-size: 13px;
+  font-weight: normal;
+  letter-spacing: 1.1px;
+}
+
