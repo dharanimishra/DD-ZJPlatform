@@ -3,16 +3,22 @@ function onButtonClick(menuitemId, type) {
 	var menuaction = menuitemId;
 
 	if (menuaction == "Add_Module") {
-		// alert("open the menu for add module.");
+		// alert("open the menu for add module.");		
 		$('#Viewmodulecontainer').hide();
 		$('#instruction').hide();
 		$('#searchassociatecontainer').hide();
 		$('#DegineCourse2').hide();
 		$('#definequalifiercontainer').hide();
-		$('#Addmodulecontainer').show();
+		$('#Addmodulecontainer').show();	
+		
+		// Start Reset Form Field
 		document.getElementById('AddModule').reset();
 		$("#courseLearningComponentId").remove();
+		CKEDITOR.instances['Cmoduledescrte'].setData('');		
+		$('#Addmoduletag').importTags('');
 		$("#learningComponentId").remove();
+		
+		// Stop Reset Form Field 
 		$("#Btnsbtcmodule").click(
 				function(event) {
 					var d = new Date();
@@ -43,8 +49,7 @@ function onButtonClick(menuitemId, type) {
 		uri = '/ziksana-web/zcourse/getcoursemodule';
 
 		token = ''; // dummy token for demo. you have to send real token.
-		request_type = 'POST'; // can be GET or POST. In this case, a GET
-		// request
+		request_type = 'POST'; // can be GET or POST. In this case, a GET request
 
 		var Course_id = $('#courseid').val();
 
@@ -58,7 +63,6 @@ function onButtonClick(menuitemId, type) {
 						uri,
 						parameters,
 						function(data) {
-							//console.log(data);
 							if (data.response == 'success') {
 								courseLearningComponentId = data.courseLearningComponentId;
 								learningComponentId = data.learningComponentId;
