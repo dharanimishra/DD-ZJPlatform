@@ -14,7 +14,7 @@ import com.ziksana.util.UTLLookUpUtil;
 
 public enum CourseStatus {
 
-	DRAFT(), UNDER_REVIEW(), READY_FOR_RELEASE(), ACTIVE(), HOLD(), ARCHIVED();
+	DRAFT(-1, "Draft"), UNDER_REVIEW(-2, "Under Review"), READY_FOR_RELEASE(-3, "Ready for Release"), ACTIVE(-4, "Active"), HOLD(-5, "Hold"), ARCHIVED(-6, "Archived");
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(CourseStatus.class);
@@ -32,7 +32,7 @@ public enum CourseStatus {
 		CourseStatus[] courseStatuses = CourseStatus.values();
 		for (CourseStatus courseStatus : courseStatuses) {
 			UTLLookup utlLookup = UTLLookUpUtil.getUTLLookUp(CATEGORY,
-					courseStatus.name());
+					courseStatus.getName());
 			courseStatus.id = utlLookup.getLookupValueId();
 			courseStatus.name = utlLookup.getLookupValue();
 		}
