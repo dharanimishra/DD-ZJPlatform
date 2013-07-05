@@ -287,7 +287,7 @@ $(document).ready(function() { // On page load
 
 <style type="text/css">
 .preview_uploaded_content {
-	background: none repeat scroll 0 0 #2A7D99;
+	 
 	border-radius: 2px 2px 2px 2px;
 	display: table;
 	margin: 0.5em 2%;
