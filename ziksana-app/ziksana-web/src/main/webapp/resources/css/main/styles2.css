@@ -3044,6 +3044,9 @@ label.mandatory:before {
   text-align: right;
   padding:2px;
 }
+.error_profile{
+	border:1px solid red!important;
+}
 .page-header{background-color:transparent!important;border-bottom:0px none!important}
 .page-header h1,.page-header .icon{display:none!important}
 .preview_uploaded_content:nth-child(even) {background: #168EBE}

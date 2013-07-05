@@ -62,14 +62,14 @@
 					     	  
 					       
 					      
-					      <label  style="padding-top:-10px;"><fmt:message key="restpass.userid"></fmt:message></label>
+					      <label class="nexaf"  style="padding-top:-10px;"><fmt:message key="restpass.userid"></fmt:message></label>
 					     
-					      <input placeholder="<fmt:message key="restpass.Enteruid"></fmt:message>" autocomplete="off" type="text" name="frgtuserid" id="frgtuserid"  autofocus="autofocus"  data-prompt-position="inline"/>
+					      <input  class="nexafN" placeholder="<fmt:message key="restpass.Enteruid"></fmt:message>" autocomplete="off" type="text" name="frgtuserid" id="frgtuserid"  autofocus="autofocus"  data-prompt-position="inline"/>
 					       <a  style=" float:right; font-size:14px;" href="/ziksana-web/unsecure/0/forgotuserid"><fmt:message key="restpass.forgotuid"></fmt:message></a>				     
 					      
 					 </div><!-- end of separate  -->   
 					    
-					     <span  id='errorUserIdResponse' style="color:red;margin-left:160px;"></span> 
+					     <span  id='errorUserIdResponse'  class="nexafN" style="color:red;margin-left:160px;"></span> 
 					 <div class="clearfix"> </div>
 					
 					<br>
@@ -105,13 +105,13 @@
 				
 				 <label  style="font-weight:bold; padding-top:-10px; margin-left:50px;"><fmt:message key="restpass.qust10f2"></fmt:message></label>   
 					        
-				 <p id="securityQuestionOneText" style="margin-top:10px; margin-bottom:7px;">${profile.securityQuestionText}</p>
+				 <p id="securityQuestionOneText" class="nexaf" style="margin-top:10px; margin-bottom:7px;">${profile.securityQuestionText}</p>
 				 <label style ="display:none;" id="securityQuestionOneId">${profile.securityQuestionId}</label>
 				 <label style ="display:none;" id="memberIdSQOne">${profile.memberId}</label>
-					  <input type="text" class="validate[required] text-input" autocomplete="off" value="" id="txtsec1"  
+					  <input type="text" class="validate[required] text-input nexafN" autocomplete="off" value="" id="txtsec1"  
 				      placeholder="<fmt:message key="restpass.enterAns"></fmt:message>" autofocus="autofocus" data-prompt-position="inline"/>
 				       
-				<p  id='errorAnswerOneResponse' style="margin-top:5px; color:red;"></p>
+				<p  id='errorAnswerOneResponse' class="nexafN" style="margin-top:5px; color:red;"></p>
 				<p style="margin-top:5px; color:#999; font-size:10px;"> </p>
 					
 				
@@ -157,13 +157,13 @@
 				
 				 <label  style="font-weight:bold; padding-top:-10px; margin-left:50px;"><fmt:message key="restpass.qust20f2"></fmt:message></label>   
 					        
-				 <p id="securityQuestionTwoText" style="margin-top:10px; margin-bottom:7px;">${profile.securityQuestionText}</p>
+				 <p id="securityQuestionTwoText" class="nexaf" style="margin-top:10px; margin-bottom:7px;">${profile.securityQuestionText}</p>
 				 <label style ="display:none;" id="securityQuestionTwo">${profile.securityQuestionId}</label>
 				 <label style ="display:none;" id="memberIdSQTwo">${profile.memberId}</label>
-					  <input type="text" class="validate[required] text-input" autocomplete="off" value="" id="txtsec2" 
+					  <input type="text" class="validate[required] text-input nexafN" autocomplete="off" value="" id="txtsec2" 
 				      placeholder="<fmt:message key="restpass.enterAns"></fmt:message>" autofocus="autofocus"  data-prompt-position="inline"/>
 				       
-				<p  id='errorAnswerTwoResponse' style="margin-top:5px; color:red;"></p>
+				<p  id='errorAnswerTwoResponse' class="nexafN" style="margin-top:5px; color:red;"></p>
 				<p style="margin-top:5px; color:#999; font-size:10px;"> </p>
 					
 				
@@ -207,24 +207,27 @@
      			<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordFailResponse"></p>
 <hr style="background-color:#f28920; margin-bottom:20px; width: 550px; margin-left: -0px;">
 			<div style="width:390px;text-align:left; margin-left:150px;"> 
+			 <div class="Clearfix"></div>
+					 <div class="req_message">( All fields are mandatory)</div>
+					 <div class="Clearfix"></div>
 			 <div class="control-group">
-			      <label class="control-label" style="padding-top:-10px;"><fmt:message key="new.password"></fmt:message></label>
+			      <label class="control-label nexaf" style="padding-top:-10px;"><fmt:message key="new.password"></fmt:message></label>
 			      <div class="controls">
-				<div style="color: red;" id="result"></div>
-			      <input onchange="removeFocusPassword()" value="" autofocus="autofocus" placeholder="<fmt:message key="new.password"></fmt:message>"  type="password" name="password" id="password" data-prompt-position="inline"/>
+				<div style="color: red;" class="nexafN" id="result"></div>
+			      <input class="nexafN" onchange="removeFocusPassword()" value="" autofocus="autofocus" placeholder="<fmt:message key="new.password"></fmt:message>"  type="password" name="password" id="password" data-prompt-position="inline"/>
 			      
 			      </div></div> 
 			      
 			      
 			        <div class="control-group">
-			      <label class="control-label" style=""><fmt:message key="confirm.password"></fmt:message></label>
+			      <label class="control-label nexaf " style=""><fmt:message key="confirm.password"></fmt:message></label>
 			      <div class="controls">
 				
-			     <input value="" placeholder="<fmt:message key="confirm.password"></fmt:message>"  type="password" name="passwordcng" id="retypePassword" data-prompt-position="inline"  />
+			     <input class="nexafN" value="" placeholder="<fmt:message key="confirm.password"></fmt:message>"  type="password" name="passwordcng" id="retypePassword" data-prompt-position="inline"  />
 			      </div>
 			       
 			      </div>
-			    <div id="result1"></div>
+			    <div id="result1" class="nexafN"></div>
 			 <div class="btnseperate" >
 			<br/><br/>
 			<a href="javascript:checkpass()"  id="idnext" class="btn" style=" margin-left: 16px;width:80px; "> <fmt:message key="profile.submit"></fmt:message> </a> 	
@@ -285,22 +288,22 @@
 					     	  
 					       
 					       <span  id='successEmailResponse' style="color:green; "></span> 
-					      <label  style="padding-top:-10px;"><fmt:message key="resetpass.emailid"/></label>
+					      <label class="nexaf" style="padding-top:-10px;"><fmt:message key="resetpass.emailid"/></label>
 					     
-					      <input placeholder="<fmt:message key="restpass.EnterEmailID"/>" autocomplete="off" type="text" id="frgtemailid"  data-prompt-position="inline"/> 				     
+					      <input class="nexafN" placeholder="<fmt:message key="restpass.EnterEmailID"/>" autocomplete="off" autofocus="autofocus" type="text" id="frgtemailid"  data-prompt-position="inline"/> 				     
 					      
 					 </div><!-- end of separate  -->   
 					    
-					     <span  id='errorEmailResponse' style="color:red;margin-left:160px;"></span> 
+					     <span  id='errorEmailResponse' class="nexafN" style="color:red;margin-left:160px;"></span> 
 					 <div class="clearfix"> </div>
 					
 					<br>
 					<br>
 					
-					<div class="btnseperate" style="margin-right:80px;">
+					<div class="btnseperate" >
+						<a href="javascript:validateEmailId()"  id="idnext" class="btn " style=" margin-left: 16px;width:80px; "><fmt:message key="profile.submit"></fmt:message> </a> 	
+						<a href="/ziksana-web/secure/logout"  class="btn " style=" margin-left: 16px;width:80px;"> <fmt:message key="profile.cancel"></fmt:message> </a> 	
 						
-						<a href="/ziksana-web/secure/logout"  class="btn f-r" style=" margin-left: 16px;width:80px;"> <fmt:message key="profile.cancel"></fmt:message> </a> 	
-						<a onclick="validateEmailId()"  id="idnext" class="btn f-r" style=" margin-left: 16px;width:80px; "><fmt:message key="profile.submit"></fmt:message> </a> 	
 								
 					  
 					  <div class="clearfix"> </div>
@@ -343,14 +346,17 @@ function validateUserId(){
 	if(forgotUserId == ''){
 		$('#errorUserIdResponse').html("<fmt:message key="error.enteruser"></fmt:message>");
 		$('#frgtuserid').focus();
+		$('#frgtuserid').addClass('error_profile');
 	}else if(forgotUserId.indexOf(' ') >= 0){
 		  
 		   $('#errorUserIdResponse').html("<fmt:message key="resetpass.whitespace"/>");
 		   $('#frgtuserid').focus();
+		   $('#frgtuserid').addClass('error_profile');
 	}else{
 		if(("#errorUserIdResponse.inside:contains('<fmt:message key="error.enteruser"></fmt:message>')")){
 			document.getElementById("errorUserIdResponse").innerHTML = '';
 			$('#frgtuserid').focus();
+			$('#frgtuserid').addClass('error_profile');
 		}
 		
 		$.ajax({
@@ -369,7 +375,7 @@ function validateUserId(){
 								success: function( data ) {
 									console.log(data);
 									if(data == 'SUCCESS'){										
-										
+										$('#frgtuserid').removeClass('error_profile');
 										$.ajax({
 										  	type: 'GET',
 											url: '/ziksana-web/unsecure/0/isprofilecompleted/'+forgotUserId,
@@ -412,6 +418,7 @@ function securityQuestionOne(){
 	if(securityAnswerOne == ''){
 		$('#errorAnswerOneResponse').html("<fmt:message key="resetpass.remember.text"/><a href='#'><fmt:message key="login.Administrator"/></a>");		
 		$('#txtsec1').focus();
+		$('#txtsec1').addClass('error_profile');
 	}else {
 		if(("#errorAnswerOneResponse.inside:contains('<fmt:message key="resetpass.remember.text"/>')")){
 			document.getElementById("errorAnswerOneResponse").innerHTML = '';
@@ -421,10 +428,12 @@ function securityQuestionOne(){
 		        , function( data )
 		        {
 		        	if(data == 'SUCCESS'){
+		        		$('#txtsec1').removeClass('error_profile');
 		        		window.location.href = "/ziksana-web/unsecure/0/secondsecurityverfication/"+memberIdSQOne+"";
 					}else{
 						$('#errorAnswerOneResponse').html('<fmt:message key="security.answer.fail"/><a href="#"><fmt:message key="login.Administrator"/></a>');
 						$('#txtsec1').focus();
+						$('#txtsec1').addClass('error_profile');
 					}
 		        }
 				 ); 
@@ -444,6 +453,7 @@ function securityQuestionTwo(){
 	if(securityAnswerTwo == ''){
 		$('#errorAnswerTwoResponse').html("<fmt:message key="resetpass.remember.text"/><a href='#'><fmt:message key="login.Administrator"/></a>");		
 		$('#txtsec2').focus();
+		$('#txtsec2').addClass('error_profile');
 	}else {
 		if(("#errorAnswerTwoResponse.inside:contains('<fmt:message key="resetpass.remember.text"/>')")){
 			document.getElementById("errorAnswerTwoResponse").innerHTML = '';
@@ -453,11 +463,13 @@ function securityQuestionTwo(){
 		        , function( data )
 		        {
 		        	if(data == 'SUCCESS'){
+		        		$('#txtsec2').removeClass('error_profile');
 		        		window.location.href = "/ziksana-web/unsecure/0/password/newpassword/"+memberIdSQTwo+"";
 		        		 
 					}else{
 						$('#errorAnswerTwoResponse').html('<fmt:message key="security.answer.fail"/><a href="#"><fmt:message key="login.Administrator"/></a>');
 						$('#txtsec2').focus();
+						$('#txtsec2').addClass('error_profile');
 					}
 		        }
 				 ); 
@@ -548,11 +560,12 @@ function checkpass()
 		
 		if($('#retypePassword').val()==''){
 			$('#result1').html("<fmt:message key="resetpass.confirm"/>");
+			$('#retypePassword').addClass('error_profile');
 		}
 		
 		else if ($('#password').val()!=$('#retypePassword').val()){
 			$('#result1').html("<fmt:message key="resetpass.pass.donot.match"/>");
-			
+			$('#password').addClass('error_profile');
 		}else{
 			newPassword = $('#password').val();
 			retypePassword = $('#retypePassword').val();
@@ -566,6 +579,7 @@ function checkpass()
 			        {
 			        	if(data == 'Password reset is successful'){
 			        		 window.location.href ="/ziksana-web/unsecure/0/passwordresetsuccess" ;
+			        		 $('#password').removeClass('error_profile');
 			        		/* 
 			        		$('#passwordResponse').html("<fmt:message key="password.successfull.please"/><a href='/ziksana-web/secure/logout'> <fmt:message key="login.button"/></a>")
 			        	$('#passwordFailResponse').html("");
@@ -574,7 +588,7 @@ function checkpass()
 			        		
 						}else{
 							$('#passwordFailResponse').html(data);
-							
+							$('#password').addClass('error_profile');
 						}
 			        }
 					 );  
@@ -613,7 +627,8 @@ function validateEmailId(){
 	
 	forgotEmailId = $('#frgtemailid').val();
 	if(forgotEmailId == ''){
-		$('#errorEmailResponse').html("<fmt:message key="enter.email"/>");		
+		$('#errorEmailResponse').html("<fmt:message key="enter.email"/>");
+		$('#frgtemailid').addClass('error_profile');
 	}else {
 		if(("#errorEmailResponse.inside:contains('Enter EmailId')")){
 			document.getElementById("errorEmailResponse").innerHTML = '';
@@ -625,7 +640,7 @@ function validateEmailId(){
 		        , function( data )
 		        {
 		        	if(data == 'Success'){
-		        		
+		        		$('#frgtemailid').removeClass('error_profile');
 		        		window.location.href = "/ziksana-web/unsecure/0/success";
 		        		/* confirm_alert = $('#successEmailResponse').html('<fmt:message key="userid.sent.email"/><a href="/ziksana-web/secure/logout"> <fmt:message key="login.button"/></a>');
 						if(confirm_alert == true){
@@ -636,7 +651,7 @@ function validateEmailId(){
 		        		
 					}else{
 						$('#errorEmailResponse').html('<fmt:message key="userid.email.error"/>');
-						
+						$('#frgtemailid').addClass('error_profile');
 					}
 		        }
 				 ); 

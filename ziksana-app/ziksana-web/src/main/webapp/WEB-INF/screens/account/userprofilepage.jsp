@@ -131,7 +131,6 @@
 					data-dismiss="fileupload">Remove</a> -->
 			</div>
 
-
 			<div class="profiledetail f-l" style="width:60%; word-wrap:break-word;">
 
 				<P class="ppname">
@@ -157,8 +156,10 @@
 
 			</div>
 
-
-			<div class="clearfix"></div>
+					<div class="Clearfix"></div>
+					 <div class="req_message" style="margin-top:10px;">( * marked are mandatory fields)</div>
+					 <div class="Clearfix"></div>
+			
 				
 			<div id="profile_response_message"style="color: red; text-align: center;"></div>
 			<div id="profile_response_success"style="color: green; text-align: center;"></div>
@@ -170,7 +171,7 @@
 					<div class="controls">
 						<input  autofocus="autofocus" onblur="isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');"
 							
-							id="alternateEmailId" type="text" class="profileinput nexaf"
+							id="alternateEmailId" type="text" class="profileinput nexafN"
 							name="alt_mail" placeholder="Alternate Email" />
 					</div>
 					<div class="err_mssg" id="erroralternateEmailId"></div>
@@ -179,61 +180,61 @@
 
 
 				<div class="control-group">
-					<label class="control-label nexaf" for="Course Name"
+					<label class="control-label nexaf mandatory" for="Security question1"
 						style="width: 180px;"><fmt:message
-							key="profile.securityquestion1"></fmt:message><span class="requiredField">*</span> </label>
+							key="profile.securityquestion1"></fmt:message> </label>
 					<div class="controls">
-						<select onchange="removeSQ1Focus()" class="profileselect nexaf" style="font-weight:normal" id="securityQuestionOne1">
+						<select onchange="removeSQ1Focus()" class="profileselect nexafN" style="font-weight:normal" id="securityQuestionOne1">
 							<option selected="selected">Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
 								<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
 							</c:forEach>
 						</select>
 					</div>
-					<div class="err_mssg" id="errorsecurityQuestionOne"></div>
+					<div class="err_mssg nexafN" id="errorsecurityQuestionOne" ></div>
 				</div>
 
 
 
 				<div class="control-group">
-					<label class="control-label nexaf" for="Course Name"><fmt:message
-							key="profile.securityanswer1"></fmt:message><span class="requiredField">*</span></label>
+					<label class="control-label nexaf mandatory" for="Course Name"><fmt:message
+							key="profile.securityanswer1"></fmt:message></label>
 					<div class="controls">
-						<input onchange="removeAns1Focus()" type="text" class="profileinput nexaf" id="securityAnswerone1"
+						<input onchange="removeAns1Focus()" type="text" class="profileinput nexafN" id="securityAnswerone1"
 							name="sec_answer1" placeholder="Security Answer 1" />
 					</div>
-					<div class="err_mssg" id="errorsecurityAnswerone"></div>
+					<div class="err_mssg nexafN" id="errorsecurityAnswerone"></div>
 				</div>
 
 
 
 				<div class="control-group">
-					<label class="control-label nexaf" for="Course Name"
+					<label class="control-label nexaf mandatory" for="Course Name"
 						style="width: 180px;"><fmt:message
-							key="profile.securityquestion2"></fmt:message><span class="requiredField">*</span> </label>
+							key="profile.securityquestion2"></fmt:message> </label>
 					<div class="controls">
 
-						<select onchange="removeSQ2Focus()" class="profileselect nexaf" style="font-weight:normal" id="securityQuestionTwo2">
+						<select onchange="removeSQ2Focus()" class="profileselect nexafN" style="font-weight:normal" id="securityQuestionTwo2">
 							<option selected="selected">Select the Security Question</option>
 							<c:forEach var="profile" items="${profileList}">
 								<option value="${profile.securityQuestionId}">${profile.securityQuestionText}</option>
 							</c:forEach>
 						</select>
 					</div>
-					<div class="err_mssg" id="errorsecurityQuestionTwo"></div>
+					<div class="err_mssg nexafN" id="errorsecurityQuestionTwo"></div>
 				</div>
 
 
 
 				<div class="control-group">
-					<label class="control-label nexaf" for="Course Name"
+					<label class="control-label nexaf mandatory" for="Course Name"
 						style="width: 180px;"><fmt:message
-							key="profile.securityanswer2"></fmt:message><span class="requiredField">*</span> </label>
+							key="profile.securityanswer2"></fmt:message> </label>
 					<div class="controls">
-						<input onchange="removeAns2Focus()" type="text" class="profileinput nexaf" id="securityAnswertwo2"
+						<input onchange="removeAns2Focus()" type="text" class="profileinput nexafN" id="securityAnswertwo2"
 							name="sec_answer2" placeholder="<fmt:message key="profile.securityanswer2"></fmt:message>" />
 					</div>
-					<div class="err_mssg" id="errorsecurityAnswertwo"></div>
+					<div class="err_mssg nexafN" id="errorsecurityAnswertwo"></div>
 				</div>
 
 
@@ -241,13 +242,18 @@
 
 
 
+				<div class="btnseperate" style="margin-right:-15px;">
 				
-					<input onclick="clearProfileForm()" class="btn btn-primary f-r" style=" height: 28px;margin-right: -15px;width:120px; " type="reset"
-					value="<fmt:message key="profile.cancel"></fmt:message>" />
-					<input class="btn btn-primary f-r"
-					style=" height: 28px;margin-right: 20px;width:120px; " type="submit"
+				<input class="btn btn-primary"
+					style="height: 28px;margin-right:15px;width:120px; " type="submit"
 					onclick="updateUserProfile()"
 					value="<fmt:message key="profile.submit"></fmt:message>" /> 
+				
+				
+					<input onclick="clearProfileForm()" class="btn btn-primary " style="height: 28px;width:120px;" type="reset"
+					value="<fmt:message key="profile.cancel"></fmt:message>" />
+				</div>
+					
 				<div class="clearfix"></div>
 
 

@@ -161,7 +161,7 @@ $(document).ready(function() { // On page load
 							<label class="control-label nexaf mandatory" for="Course Name"
 								style="width: 120px"><fmt:message key="module.name" /></label>
 							<div class="controls" style="margin-left: 130px;">
-								<input type="text" id="Course_Module" class="defaultvaluem treeRoot validate[required]"
+								<input type="text" id="Course_Module" autofocus="autofocus" class="defaultvaluem treeRoot validate[required]"
 									placeholder="Enter module name" maxlength="64"
 									style="width: 300px;" onchange="return trim(this)" />
 							</div>
@@ -323,15 +323,17 @@ $(document).ready(function() { // On page load
 								}
 							</script>
 						</div>
-						<button class="btn f-r" type="button"
-							onClick="getCancel();return false;" style="margin-right: 10px;">
-							<fmt:message key="profile.cancel" />
-						</button>
-						<button class="btn f-r" type="button" id="Btnsbtcmodule"
+						<div class="btnseperate" style="margin-right:-13px;">
+						<button class="btn" type="button" id="Btnsbtcmodule"
 							onClick="getaddmodulesave();return false;"
-							style="margin-right: 20px;">
+							style="margin-right: 10px;">
 							<fmt:message key="profile.submit" />
 						</button>
+						<button class="btn" type="button"
+							onClick="getCancel();return false;" style="margin-right: 20px;">
+							<fmt:message key="profile.cancel" />
+						</button>
+						</div>
 
 						<div class="Clearfix"></div>
 
@@ -344,7 +346,7 @@ $(document).ready(function() { // On page load
 		<div class="Clearfix"></div>
 		<button class="btn f-r" type="button"
 			onClick="getSaveandContinue();return false;"
-			style="margin-right: 30px;">
+			style="margin-right: 20px;">
 			<fmt:message key="btn.save.continue" />
 		</button>
 		<!-- <div id='jqxWidget' style='display: none;'>
