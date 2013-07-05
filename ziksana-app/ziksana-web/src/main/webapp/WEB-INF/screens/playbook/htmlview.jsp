@@ -281,10 +281,11 @@ ${course.description}
 	          <h4> Content Details  </h4><div class="Clearfix"> </div>
 	           <c:forEach var="content" items="${node.contents}">         
 	            <div>	            
-	             <img src="/ziksana-web/resources/images/preview/doc.png" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+	             <img src="/ziksana-web/${imagePathMap[content.contentType]}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
 	              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
 	              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${node.title }</b> </span>
 	             ${content.componentDescription }
+	             
 	          </div>
 	          <div class="Clearfix"> </div>	           
 	         </c:forEach>
@@ -317,7 +318,7 @@ ${course.description}
 		          <h4> Content Details  </h4><div class="Clearfix"> </div>
 		           <c:forEach var="content" items="${cnode.contents}">         
 		            <div>	            
-		             <img src="/ziksana-web/resources/images/preview/doc.png" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+		             <img src="/ziksana-web/${imagePathMap[content.contentType]}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
 		              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
 		              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${cnode.title }</b> </span>
 		             ${content.componentDescription }
@@ -350,7 +351,7 @@ ${course.description}
 				          <h4> Content Details  </h4><div class="Clearfix"> </div>
 				           <c:forEach var="content" items="${cnode2.contents}">         
 				            <div>	            
-				             <img src="/ziksana-web/resources/images/preview/doc.png" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+				             <img src="/ziksana-web/${imagePathMap[content.contentType]}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
 				              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
 				              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${cnode2.title }</b> </span>
 				             ${content.componentDescription }
@@ -382,7 +383,7 @@ ${course.description}
 				          <h4> Content Details  </h4><div class="Clearfix"> </div>
 				           <c:forEach var="content" items="${cnode3.contents}">         
 				            <div>	            
-				             <img src="/ziksana-web/resources/images/preview/doc.png" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+				             <img src="/ziksana-web/${imagePathMap[content.contentType]}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
 				              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
 				              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${cnode3.title }</b> </span>
 				             ${content.componentDescription }
