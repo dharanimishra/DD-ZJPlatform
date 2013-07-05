@@ -312,7 +312,7 @@ $('.start_week').change(function(){
     if(parent_week_element.val() > select_start_week.val()){
     	select_start_week.addClass('duration_error');
     	
-    	 $('#planner_error').html('The Start Week <strong> week '+select_start_week.val()+'</strong> unexceed  its parent node startweek of <strong>week '+parent_week_element.val()+'</strong>');
+    	 $('#planner_error').html('The node\'s start week <strong> '+select_start_week.val()+'</strong> exceeds its parent node start week <strong>'+parent_week_element.val()+'</strong>');
     	 $('#submit_planner_data').attr('disabled',true);
     	 
     }else {

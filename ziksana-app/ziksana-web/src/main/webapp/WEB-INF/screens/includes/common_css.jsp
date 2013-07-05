@@ -4,3 +4,4 @@
 <link href="/ziksana-web/resources/css/uploadify.css" rel="stylesheet" />
 <link href="/ziksana-web/resources/css/main/modern.css" rel="stylesheet" type="text/css" />
 <link href="/ziksana-web/resources/js/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+<link href="/ziksana-web/resources/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />

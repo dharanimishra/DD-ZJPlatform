@@ -3059,3 +3059,8 @@ label.mandatory:before {
   letter-spacing: 1.1px;
 }
 
+.ui-buttonset label {
+  display: inline-block;
+  margin-right: -4px;
+  padding: 0.25em;
+}

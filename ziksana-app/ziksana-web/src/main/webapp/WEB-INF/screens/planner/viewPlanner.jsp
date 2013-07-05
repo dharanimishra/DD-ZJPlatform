@@ -27,6 +27,12 @@
 	<input id="courseId" type='hidden' value='${courseIds}' name='course_id'/>
 	<input id="course_duration_in_days" type="hidden" value="${courseDuration * 7}" name="course_duration_in_days" />
 	<div id="planner_error"></div>
+	<div>
+		<div id="planner_view">
+			<input type="radio" id="planner_day_view" name="planner_view" checked="checked" onclick="show_planner_in_days();" /><label for="planner_day_view">Day View</label>
+			<input type="radio" id="planner_week_view" name="planner_view" onclick="show_planner_in_weeks();" /><label for="planner_week_view">Week View</label>
+		</div>
+	</div>
 	<div id="planner_container"> 
 		<div class="planner_data planner-${courseIds}" id="planner_data">
 
@@ -90,6 +96,7 @@
 #planner_container {padding: .5em; border: 1px solid silver; width: 1000px;min-height:300px; overflow: auto; }
 #planner_data {
   background: url('/ziksana-web/resources/images/planner_bg_week.png') repeat scroll 24px 0 #fefefe; 
+  border: 1px solid #ddd;
 }
 #planner_data div {
   clear: both;
@@ -113,7 +120,9 @@
   position: relative;
   border-radius: 2px;
   padding: 0 2.5px;
+  overflow: hidden;
 }
+.node_bar:hover { overflow: visible; }
 .node_bar.module_node {
 background: #ffc578;
 background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmYzU3OCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmYjlkMjMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
@@ -198,7 +207,7 @@ i.sunday {
 <script type="text/javascript">
 
 function generate_days_label(days){
-	html = '<div>';
+	html = '<div id="day_label">';
 	for (var i=1; i <= days; i++){
 		html += '<i>'+i+'</i>';
 	}
@@ -206,16 +215,24 @@ function generate_days_label(days){
 	return html;
 }
 function generate_week_label(weeks){
-	html = '<div class="week_no_label">';
+	html = '<div id="week_label" class="week_no_label">';
 	for (var i=1; i <= weeks; i++){
 		html += '<i>Week '+i+'</i>';
 	}
 	html +='</div>';
 	return html;
 }
+function generate_week_number_label(weeks){
+	html = '<div id="week_number_label" class="">';
+	for (var i=1; i <= weeks; i++){
+		html += '<i>'+i+'</i>';
+	}
+	html +='</div>';
+	return html;
+}
 
 function generate_week_day_label(weeks){
-	html = '<div class="week_day_label">';
+	html = '<div id="week_day_label" class="week_day_label">';
 	week_string = '<i class="sunday">S</i><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i>';
 	for (var i=1; i <= weeks; i++){
 		html += week_string;
@@ -231,18 +248,29 @@ function get_and_populate_planner_data(courseId){
 		url: '/ziksana-web/zcourse/1/getplannerlist/'+courseId,
 		success: function( dataList ) {
 			square_pixel = 24; //the width of the day in pixels
+			week_view_day_pixel = 3.42857143;
+			
 			
 			course_duration_in_days = $('#course_duration_in_days').val(); //set it dynamically
-			course_pixellength = (course_duration_in_days * square_pixel )+ 'px'; //remove when course duration is set
+			course_duration_in_weeks = (course_duration_in_days/7);
+
+			course_node_width_dayview = (course_duration_in_days * square_pixel )-5+ 'px'; //remove when course duration is set
+			course_node_width_weekview = (course_duration_in_weeks * square_pixel )-5+ 'px'; //remove when course duration is set
+			
+			planner_data_width_dayview = (course_duration_in_days * square_pixel )+ 'px'; //remove when course duration is set
+			planner_data_width_weekview = (course_duration_in_weeks * square_pixel )+ 'px'; //remove when course duration is set
 			
 			var day_label_div = generate_days_label(course_duration_in_days);
 			var week_label_div = generate_week_label(Math.floor(course_duration_in_days/7));
 			var week_day_label_div = generate_week_day_label(Math.floor(course_duration_in_days/7));
+			var week_number_label_div = generate_week_number_label(Math.floor(course_duration_in_days/7));
 		
 			
 			//$('#planner_data').prepend(day_label_div);
 			$('#planner_data').prepend(week_day_label_div);
 			$('#planner_data').prepend(week_label_div);
+			$('#planner_data').prepend(week_number_label_div)
+			$('#week_number_label').hide();
 			
 			if(dataList.length== 0){
 				$('.node_bar:not(:first)').addClass('node_duration_undefined').find('.node_title').append(" [Duration Not Available]");
@@ -257,6 +285,7 @@ function get_and_populate_planner_data(courseId){
 
 						course_id = node.courseId;
 						duration = node.duration;
+						node_duration_in_weeks= Math.floor(duration/7);
 						component_id = node.learningComponentId;
 						content_id = node.learningContentId;
 						note = node.note;
@@ -270,12 +299,20 @@ function get_and_populate_planner_data(courseId){
 						node_title = node_bar.find('.node_title').text();
 						
 						
-						node_bar_width = ((duration * square_pixel)-5)+'px';
+						node_bar_day_width = ((duration * square_pixel)-5)+'px';
+						node_bar_week_width = ((duration * week_view_day_pixel)-5)+'px';
+						
 
-						node_bar_left_position = ((starts_at * square_pixel)-square_pixel)+'px';
+						node_bar_day_left_position = ((starts_at * square_pixel)-square_pixel)+'px';
+						node_bar_week_left_position = ((starts_at * week_view_day_pixel)-week_view_day_pixel)+'px';
+						
 						if((start_week == 1 || start_week == null) && (starts_at == 1 || starts_at == null)){
-							node_bar_left_position = ((starts_at * square_pixel))+'px';
+							node_bar_day_left_position = ((starts_at * square_pixel))+'px';
+							node_bar_week_left_position = ((starts_at * week_view_day_pixel))+'px';
 						} 
+						
+						
+
 						
 						
 		
@@ -289,8 +326,14 @@ function get_and_populate_planner_data(courseId){
 						
 						tooltip_html += '</span>';
 						node_bar.append(tooltip_html);
+						
 						if(duration != null){
-							node_bar.css({'width': node_bar_width, 'left': node_bar_left_position});
+							node_bar.attr('data-d_width', node_bar_day_width)
+							.attr('data-w_width', node_bar_week_width)
+							.attr('data-d_left', node_bar_day_left_position)
+							.attr('data-w_left', node_bar_week_left_position);
+							
+							node_bar.css({'width': node_bar_day_width, 'left': node_bar_day_left_position});
 						} else {
 							node_bar.addClass('node_duration_undefined').find('.node_title').append(" [Duration Not Available]");
 						}
@@ -299,12 +342,54 @@ function get_and_populate_planner_data(courseId){
 				}//end of for loop
 			
 				
-			$('#planner_data').css({'width': course_pixellength});	
-			$('.node_bar').first().css({'width': course_pixellength});
+			$('#planner_data').css({'width': planner_data_width_dayview})
+				.attr('data-d_width', planner_data_width_dayview )
+				.attr('data-w_width', planner_data_width_weekview);
+			$('.node_bar').first().css({'width': course_node_width_dayview})
+				.attr('data-d_width', course_node_width_dayview )
+				.attr('data-w_width', course_node_width_weekview);
+			
+			
+			
+			if(course_duration_in_weeks > 6){
+				$('#planner_week_view').click();
+			} else {
+				$('#planner_day_view').click();
+			} //end if course duration_in_weeks > 5
 			
 			}//end of ajax success function
 
 		});
+}
+
+
+function show_planner_in_weeks(){
+	
+	$('#week_day_label, #week_label').hide();
+	$('#week_number_label').show();
+	
+    $('.node_bar').each(function(){
+        nodebar = $(this);
+        width = nodebar.attr('data-w_width');
+        left = nodebar.attr('data-w_left');
+        nodebar.css({'width':width, 'left':left});
+    });
+
+    $('#planner_data').css('width', $('#planner_data').attr('data-w_width'));
+    $('.course_node').css('width', $(this).attr('data-w_width'));
+}
+function show_planner_in_days(){
+	$('#week_day_label, #week_label').show();
+	$('#week_number_label').hide();
+	
+    $('.node_bar').each(function(){
+        nodebar = $(this);
+        width = nodebar.attr('data-d_width');
+        left = nodebar.attr('data-d_left');
+        nodebar.css({'width':width, 'left':left});
+    });
+    $('#planner_data').css('width', $('#planner_data').attr('data-d_width'));
+    $('.course_node').css('width', $(this).attr('data-d_width'));
 }
 
 function week_calculation_text(day){
@@ -368,6 +453,9 @@ $('.start_week, .start_day').change(function(){
 
 });
 
+
+$( "#planner_view" ).buttonset();
+$('#planner_day_view').click();
 
 
 
