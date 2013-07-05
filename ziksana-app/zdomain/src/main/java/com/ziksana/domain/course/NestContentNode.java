@@ -10,6 +10,9 @@ public class NestContentNode {
 	private String decorationType;
 	private String icon;
 	private int parentLearningComponentId;
+	
+	private String screenshotPath;
+	
 
 	private boolean expanded = true;
     private String componentDescription;
@@ -109,6 +112,14 @@ public class NestContentNode {
 	 */
 	public void setDecorationType(String decorationType) {
 		this.decorationType = decorationType;
+	}
+
+	public String getScreenshotPath() {
+		return screenshotPath;
+	}
+
+	public void setScreenshotPath(String screenshotPath) {
+		this.screenshotPath = screenshotPath;
 	}
 
 	@Override

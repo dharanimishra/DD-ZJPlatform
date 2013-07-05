@@ -26,6 +26,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ziksana.domain.common.MediaServerURL;
 import com.ziksana.domain.course.Course;
 import com.ziksana.domain.course.NestTreeNode;
 import com.ziksana.domain.member.Member;
@@ -74,6 +75,10 @@ public class PlayBookController {
 
 	@Autowired
 	private PlannerService plannerService;
+	
+
+	private String treeImagePath = null;
+	private String treeImageFolder = null;
 	
 /*	private String courseIcon = "/ziksana-web/resources/images/tree_icons/course.png";
 	private String chapterIcon = "/ziksana-web/resources/images/tree_icons/chapter.png";
@@ -192,6 +197,7 @@ public class PlayBookController {
 		modelView.addObject("mediaserver",url);
 		modelView.addObject("treeNodeList",treeNodeList);
 		System.out.println("mediaserver url " + url);
+		modelView.addObject("imagePathMap", getImagePathMap());
 		 return modelView;
 	}
     
@@ -209,6 +215,7 @@ public class PlayBookController {
 		//RequestContextHolder.currentRequestAttributes().setAttribute("pgNumber", RequestAttributes.SCOPE_SESSION,pgNumber);
 		session.setAttribute("pgNumber",pgNumber);
 		modelView.addObject("pgNumber", pgNumber);
+		
 		return modelView;
 	}
 	
@@ -246,7 +253,7 @@ public class PlayBookController {
 		modelView.addObject("course",course);
 		modelView.addObject("treeNodeList",treeNodeList);
 		modelView.addObject("mediaserver",url);
-		
+		modelView.addObject("imagePathMap", getImagePathMap());
 		 return modelView;
 	}
 	
@@ -294,5 +301,65 @@ public class PlayBookController {
 		pdfInfo.put("plannerOnPage", ""+plannerOnPage);
 		pdfInfo.put("coursModuleOnPage", ""+coursModuleOnPage);
 		return pdfInfo;
+	}
+	
+	private Map<String, String> getImagePathMap(){
+		HashMap<String, String> imagePathMap = new HashMap<String, String>();
+		MediaServerURL mediaServerURL = mediaService.getMediaContents();
+		treeImagePath = mediaServerURL.getTreeImagePath() + mediaServerURL.getStaticFileServer();
+		treeImageFolder = treeImagePath + "resources/images/tree_icons/";
+		//String courseIcon = treeImageFolder + "course.png";
+		
+		//ENHANCED_VIDEO, DOC,PPT, EXCEL, IMAGE, LINK,PDF		
+		//imagePathMap.put("courseIcon", courseIcon);
+		imagePathMap.put("ENHANCED_VIDEO", "resources/images/preview/video.png");
+		imagePathMap.put("DOC", "resources/images/preview/doc.png");
+		imagePathMap.put("PPT", "resources/images/preview/ppt.png");
+		imagePathMap.put("EXCEL", "resources/images/preview/excel.png");
+		imagePathMap.put("VIDEO", "resources/images/preview/video.png");
+		imagePathMap.put("LINK", "resources/images/preview/link.png");
+		imagePathMap.put("IMAGE", "resources/images/preview/image.png");
+		
+		String chapterIcon =treeImageFolder + "chapter.png";
+		imagePathMap.put("chapterIcon", chapterIcon);
+		
+		String parentIcon = treeImageFolder + "chapter.png";
+		imagePathMap.put("parentIcon", parentIcon);
+		
+		String videoIcon = treeImageFolder + "video.png";
+		imagePathMap.put("videoIcon", videoIcon);
+		
+		String audioIcon = treeImageFolder + "audio.png";
+		imagePathMap.put("audioIcon", audioIcon);
+		
+		String folderClosed = treeImageFolder + "folderClosed.gif";
+		imagePathMap.put("folderClosed", folderClosed);
+		
+		String folderOpen = treeImageFolder + "folderOpen.gif";
+		imagePathMap.put("folderOpen", folderOpen);
+		
+		String pptIcon = treeImageFolder + "powerpoint.png";
+		imagePathMap.put("pptIcon", pptIcon);
+		
+		String docIcon = treeImageFolder + "word.png";
+		imagePathMap.put("docIcon", docIcon);
+		
+		String excelIcon = treeImageFolder + "excel.png";
+		imagePathMap.put("excelIcon", excelIcon);
+		
+		String pdfIcon = treeImageFolder + "pdf.png";
+		imagePathMap.put("pdfIcon", pdfIcon);
+		
+		String imageIcon = treeImageFolder + "image.png";
+		imagePathMap.put("imageIcon", imageIcon);
+		
+		String noteIcon = treeImageFolder + "note.png";
+		imagePathMap.put("noteIcon", noteIcon);
+		
+		String linkIcon = treeImageFolder + "link.png";
+		imagePathMap.put("linkIcon", linkIcon);
+		
+		
+		return imagePathMap;
 	}
 }

@@ -133,6 +133,12 @@ position:relative;top:182px;right:45px;
 font-size:12px;
 margin-right: 30px;
 font-weight: bold;}
+
+#contentdescription > div {
+  font-size: 16px;
+  padding-bottom: 6px;
+}
+
 </style>
 </head>
 <body>
@@ -210,6 +216,27 @@ font-weight: bold;}
 	  <div><label class="b1">${node.title}</label><label  class="b2">${course.name}</label ></div>   
 	  ${node.nodeDescription}
 	   <br>
+	  	   	    <!-- Module Content -->
+	       <c:if test="${! empty node.contents!=null }">
+	       <div class="Clearfix"> </div>
+	       <div id="contentdescription" style="padding:20px;text-align:justify">
+	          <h4> Content Details  </h4><div class="Clearfix"> </div>
+	           <c:forEach var="content" items="${node.contents}">         
+				<c:set var="imagePath" value="/ziksana-web/${imagePathMap[content.contentType]}"/>
+	            <c:if test="${!empty content.screenshotPath }">
+	              <c:set var="imagePath" value="${mediaserver}${content.screenshotPath}"/>
+	            </c:if>         
+	            <div>	            
+	             <img src="${imagePath}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+	              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
+	              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${node.title }</b> </span>
+	             ${content.componentDescription }
+	          </div>
+	          <div class="Clearfix"> </div>	           
+	         </c:forEach>
+	         	         
+	         </div>
+	       </c:if> 
 	   <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div-->
 	  </div>
    <c:if test="${! empty node.children}">
@@ -225,6 +252,28 @@ font-weight: bold;}
 		  </c:choose>
 		    <div><label class="b1">${cnode.title}</label><label  class="b2">${node.title}</label ></div>   
 		    ${cnode.nodeDescription}<br>
+		   
+		   <!-- Module Content -->
+	       <c:if test="${! empty cnode.contents!=null }">
+	       <div class="Clearfix"> </div>
+	       <div id="contentdescription" style="padding:20px;text-align:justify">
+	          <h4> Content Details  </h4><div class="Clearfix"> </div>
+	           <c:forEach var="content" items="${cnode.contents}">         
+				<c:set var="imagePath" value="/ziksana-web/${imagePathMap[content.contentType]}"/>
+	            <c:if test="${!empty content.screenshotPath }">
+	              <c:set var="imagePath" value="${mediaserver}${content.screenshotPath}"/>
+	            </c:if>         
+	            <div>	            
+	             <img src="${imagePath}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+	              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
+	              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${cnode.title }</b> </span>
+	             ${content.componentDescription }
+	          </div>
+	          <div class="Clearfix"> </div>	           
+	         </c:forEach>
+	         	         
+	         </div>
+	       </c:if> 
 		    <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div-->
 		   </div>
 		   <c:if test="${! empty cnode.children}">
@@ -240,6 +289,29 @@ font-weight: bold;}
 				  </c:choose>
 				    <div><label class="b1">${cnode2.title}</label><label  class="b2">${cnode.title}</label ></div>   
 				    ${cnode2.nodeDescription}<br>
+				  
+				  		   <!-- Module Content -->
+	       <c:if test="${! empty cnode2.contents!=null }">
+	       <div class="Clearfix"> </div>
+	       <div id="contentdescription" style="padding:20px;text-align:justify">
+	          <h4> Content Details  </h4><div class="Clearfix"> </div>
+	           <c:forEach var="content" items="${cnode2.contents}">         
+				<c:set var="imagePath" value="/ziksana-web/${imagePathMap[content.contentType]}"/>
+	            <c:if test="${!empty content.screenshotPath }">
+	              <c:set var="imagePath" value="${mediaserver}${content.screenshotPath}"/>
+	            </c:if>         
+	            <div>	            
+	             <img src="${imagePath}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+	              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
+	              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${cnode2.title }</b> </span>
+	             ${content.componentDescription }
+	          </div>
+	          <div class="Clearfix"> </div>	           
+	         </c:forEach>
+	         	         
+	         </div>
+	       </c:if>  
+				    
 				    <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div-->
 				   </div>
 				   
@@ -256,6 +328,28 @@ font-weight: bold;}
 				  </c:choose>
 				    <div><label class="b1">${cnode3.title}</label><label  class="b2">${cnode2.title}</label ></div>   
 				    ${cnode3.nodeDescription}<br>
+				  		   <!-- Module Content -->
+	       <c:if test="${! empty cnode3.contents!=null }">
+	       <div class="Clearfix"> </div>
+	       <div id="contentdescription" style="padding:20px;text-align:justify">
+	          <h4> Content Details  </h4><div class="Clearfix"> </div>
+	           <c:forEach var="content" items="${cnode3.contents}">         
+				<c:set var="imagePath" value="/ziksana-web/${imagePathMap[content.contentType]}"/>
+	            <c:if test="${!empty content.screenshotPath }">
+	              <c:set var="imagePath" value="${mediaserver}${content.screenshotPath}"/>
+	            </c:if>         
+	            <div>	            
+	             <img src="${imagePath}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+	              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
+	              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${cnode3.title }</b> </span>
+	             ${content.componentDescription }
+	          </div>
+	          <div class="Clearfix"> </div>	           
+	         </c:forEach>
+	         	         
+	         </div>
+	       </c:if> 
+				    
 				    <!--  div style="width:60%;margin:auto;font-weight:bold">Course Name :</div-->
 				   </div>   
 		      </c:forEach>  
