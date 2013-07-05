@@ -324,7 +324,7 @@ public class CreateCourseController {
 				course.setExtraCredits(CourseExtraCredits);
 				course.setThumbnailPicturePath(UploadImage);
 
-				course.setCourseStatus(CourseStatus.getValueOf("DRAFT"));
+				course.setCourseStatus(CourseStatus.getCourseStatus(586));
 				try {
 					course.setCourseStatusId(CourseStatus.valueOf(
 							"DRAFT".toUpperCase()).getID());

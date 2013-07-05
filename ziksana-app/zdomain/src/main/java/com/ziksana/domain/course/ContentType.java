@@ -8,7 +8,7 @@ import com.ziksana.util.UTLLookUpUtil;
 
 public enum ContentType {
 
-	VIDEO(-1, "Video"), ENHANCED_VIDEO(-2, "Enhanced Video"), AUDIO(-3, "Audio"), TEXTUAL(-4, "Textual"), PDF(-5, "Pdf"), DOC(-6, "Doc"), PPT(-7, "Ppt"), EXCEL(-8, "Excel"), IMAGE(-9, "Image"), LINK(-10, "Link");
+	VIDEO(), ENHANCED_VIDEO(), AUDIO(), TEXTUAL(), PDF(), DOC(), PPT(), EXCEL(), IMAGE(), LINK();
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(ContentType.class);
@@ -17,7 +17,7 @@ public enum ContentType {
 
 	private String name;
 
-	private final static String CATEGORY = "Learning Content Type";
+	private final static String CATEGORY = "corLearningContent_Content Type";
 
 	private ContentType() {
 	}
