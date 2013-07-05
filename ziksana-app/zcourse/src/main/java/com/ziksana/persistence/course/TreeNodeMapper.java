@@ -39,7 +39,7 @@ public interface TreeNodeMapper {
 		"corlearncontent.ContentName AS contentname, " +
 		"corlearncontent.ContentPath AS contentpath, " +
 		"learning_content_decoration.ContentDecorationType AS decorationType, " +
-		"corlearncontent.ContentType AS contenttype,   " +
+		"corlearncontent.ContentType AS contenttype, corlearncontent.ScreenshotPath AS screenshotPath, " +
 		"clc.Description AS Description   " +
 		"from corcourselearningcomponent cclc,corlearningcomponent clc,  " +
 		"corlearningcomponentcontent clcc, corlearningcontent corlearncontent   " +
@@ -62,7 +62,8 @@ public interface TreeNodeMapper {
 			@Result(property = "decorationTypeId", column = "decorationType"),
 			@Result(property = "icon", column = "contentpath"),
 			@Result(property = "contentType", column = "contenttype"),
-			@Result(property = "componentDescription", column = "Description")
+			@Result(property = "componentDescription", column = "Description"),
+			@Result(property = "screenshotPath", column = "screenshotPath")
 			})
 	List<NestContentNode> getContentComponents(Integer courseId);
 

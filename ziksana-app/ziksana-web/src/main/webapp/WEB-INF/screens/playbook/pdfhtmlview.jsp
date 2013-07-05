@@ -222,8 +222,12 @@ font-weight: bold;}
 	       <div id="contentdescription" style="padding:20px;text-align:justify">
 	          <h4> Content Details  </h4><div class="Clearfix"> </div>
 	           <c:forEach var="content" items="${node.contents}">         
+				<c:set var="imagePath" value="/ziksana-web/${imagePathMap[content.contentType]}"/>
+	            <c:if test="${!empty content.screenshotPath }">
+	              <c:set var="imagePath" value="${mediaserver}${content.screenshotPath}"/>
+	            </c:if>         
 	            <div>	            
-	             <img src="/ziksana-web/${imagePathMap[content.contentType]}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+	             <img src="${imagePath}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
 	              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
 	              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${node.title }</b> </span>
 	             ${content.componentDescription }
@@ -255,8 +259,12 @@ font-weight: bold;}
 	       <div id="contentdescription" style="padding:20px;text-align:justify">
 	          <h4> Content Details  </h4><div class="Clearfix"> </div>
 	           <c:forEach var="content" items="${cnode.contents}">         
+				<c:set var="imagePath" value="/ziksana-web/${imagePathMap[content.contentType]}"/>
+	            <c:if test="${!empty content.screenshotPath }">
+	              <c:set var="imagePath" value="${mediaserver}${content.screenshotPath}"/>
+	            </c:if>         
 	            <div>	            
-	             <img src="/ziksana-web/${imagePathMap[content.contentType]}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+	             <img src="${imagePath}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
 	              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
 	              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${cnode.title }</b> </span>
 	             ${content.componentDescription }
@@ -288,8 +296,12 @@ font-weight: bold;}
 	       <div id="contentdescription" style="padding:20px;text-align:justify">
 	          <h4> Content Details  </h4><div class="Clearfix"> </div>
 	           <c:forEach var="content" items="${cnode2.contents}">         
+				<c:set var="imagePath" value="/ziksana-web/${imagePathMap[content.contentType]}"/>
+	            <c:if test="${!empty content.screenshotPath }">
+	              <c:set var="imagePath" value="${mediaserver}${content.screenshotPath}"/>
+	            </c:if>         
 	            <div>	            
-	             <img src="/ziksana-web/${imagePathMap[content.contentType]}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+	             <img src="${imagePath}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
 	              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
 	              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${cnode2.title }</b> </span>
 	             ${content.componentDescription }
@@ -322,8 +334,12 @@ font-weight: bold;}
 	       <div id="contentdescription" style="padding:20px;text-align:justify">
 	          <h4> Content Details  </h4><div class="Clearfix"> </div>
 	           <c:forEach var="content" items="${cnode3.contents}">         
+				<c:set var="imagePath" value="/ziksana-web/${imagePathMap[content.contentType]}"/>
+	            <c:if test="${!empty content.screenshotPath }">
+	              <c:set var="imagePath" value="${mediaserver}${content.screenshotPath}"/>
+	            </c:if>         
 	            <div>	            
-	             <img src="/ziksana-web/${imagePathMap[content.contentType]}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
+	             <img src="${imagePath}" width="150px" height="150px" style="float:left;padding-right:6px;"/>
 	              <span style="width:40%;float:left;font-weight:bold;color:navy"> ${content.contentname}</span>
 	              <span style="width:45%;float:left;text-align:right;margin-right:6px;"><b>Parent:${cnode3.title }</b> </span>
 	             ${content.componentDescription }
