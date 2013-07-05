@@ -91,10 +91,10 @@
 }
 
 #fancybox-loading div {
-  background: url("ziksana_loader.gif") no-repeat scroll center center white;
-  border-radius: 5px 5px 5px 5px;
-  height: 100px;
-  width: 100px;
+  background: url("ziksana_loader.gif") no-repeat scroll center center transparent;
+ 
+  height: 157px;
+  width: 157px;
 }
 
 .fancybox-close {

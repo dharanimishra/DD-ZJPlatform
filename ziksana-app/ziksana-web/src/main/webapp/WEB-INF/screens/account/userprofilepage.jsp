@@ -159,18 +159,18 @@
 
 
 			<div class="clearfix"></div>
+				
 			<div id="profile_response_message"style="color: red; text-align: center;"></div>
 			<div id="profile_response_success"style="color: green; text-align: center;"></div>
 		 	<div class="formcontainer" style="margin-top:15px;">
 				
-					
+				
 				<div class="control-group">
-					<label class="control-label nexaf" for="Alternative Email"><fmt:message
-							key="profile.alternateemail"></fmt:message> </label>
+					<label class="control-label nexaf" for="Alternative Email"><fmt:message key="profile.alternateemail"></fmt:message> </label>
 					<div class="controls">
 						<input  autofocus="autofocus" onblur="isEmailAlreadyExists('<c:out value="${member.primaryEmailId}" />');"
 							
-							id="alternateEmailId" type="text" class="profileinput"
+							id="alternateEmailId" type="text" class="profileinput nexaf"
 							name="alt_mail" placeholder="Alternate Email" />
 					</div>
 					<div class="err_mssg" id="erroralternateEmailId"></div>
@@ -199,7 +199,7 @@
 					<label class="control-label nexaf" for="Course Name"><fmt:message
 							key="profile.securityanswer1"></fmt:message><span class="requiredField">*</span></label>
 					<div class="controls">
-						<input onchange="removeAns1Focus()" type="text" class="profileinput" id="securityAnswerone1"
+						<input onchange="removeAns1Focus()" type="text" class="profileinput nexaf" id="securityAnswerone1"
 							name="sec_answer1" placeholder="Security Answer 1" />
 					</div>
 					<div class="err_mssg" id="errorsecurityAnswerone"></div>
@@ -230,7 +230,7 @@
 						style="width: 180px;"><fmt:message
 							key="profile.securityanswer2"></fmt:message><span class="requiredField">*</span> </label>
 					<div class="controls">
-						<input onchange="removeAns2Focus()" type="text" class="profileinput" id="securityAnswertwo2"
+						<input onchange="removeAns2Focus()" type="text" class="profileinput nexaf" id="securityAnswertwo2"
 							name="sec_answer2" placeholder="<fmt:message key="profile.securityanswer2"></fmt:message>" />
 					</div>
 					<div class="err_mssg" id="errorsecurityAnswertwo"></div>
@@ -397,8 +397,9 @@
 
 			<div class="clearfix"></div>
 	
-							
+						
 					<div class="formcontainer form-horizontal">
+					
 					   
 					    <div class="control-group"> 
 						
@@ -409,13 +410,15 @@
 						 	<a id="lblpass " onclick="showchangepwd('Edit_pass')" class="editfeild"><fmt:message key="Edit"></fmt:message></a>
 						 </div>
 					      
-						  <div class="editcontroll border-user"  id="Edit_pass" ><a style="float:right;cursor:pointer;margin-right: -17px;margin-top: -12px;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
+						  <div class="editcontroll border-user"  id="Edit_pass" >
+						    <a style="float:right;cursor:pointer;margin-right: -17px;margin-top: -12px;" onclick="hidecncl('passEdit');" title="Close">[X]</a>
+						  	<div class="req_message">( * marked are mandatory fields)</div>
 						  	<p style="color:green;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetResponse"></p>
      						<p style="color:red;padding: 0 .5em;border-radius: 3px;text-align:center" id="passwordResetFailResponse"></p>
 						 	 <label class="control-label nexaf" for="Change Password"><fmt:message key="login.password"></fmt:message> :</label>
-						 <div class="controls"> <label class="nexaf"><fmt:message key="Current"></fmt:message> :</label><input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="<fmt:message key="Enter.cur.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
-						  	 <label class="nexaf"><fmt:message key="New"></fmt:message> :</label> <input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red; margin-top:3px;" id="errorNewPassword"></div>
-						   	 <label class="nexaf"><fmt:message key="retype.new"></fmt:message>:</label><input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /><div style="color: red;" id="errorRetypePassword"></div></div><div class="clearfix"></div>
+						 <div class="controls"> <label class="nexaf mandatory"><fmt:message key="Current"></fmt:message> :</label><input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="currentPassword" name="alt_mail" placeholder="<fmt:message key="Enter.cur.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red;" id="errorCurrentPassword"></div>
+						  	 <label class="nexaf mandatory"><fmt:message key="New"></fmt:message> :</label> <input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="newPassword" name="alt_mail" placeholder="<fmt:message key="Enter.new.pass"></fmt:message>" /><div class="clearfix"></div><div style="color: red; margin-top:3px;" id="errorNewPassword"></div>
+						   	 <label class="nexaf mandatory"><fmt:message key="retype.new"></fmt:message>:</label><input onfocus="editpasswordFocus()" type="password" style="width:365px;" class="passinput" id="retypePassword" name="alt_mail" placeholder="<fmt:message key="re.new.pass"></fmt:message>" /><div style="color: red;" id="errorRetypePassword"></div></div><div class="clearfix"></div>
 						   <div style="margin-top:6px;">
 						   
 					  		<button id="savePasswordReset" class="btn btn-primary f-r" onclick="checkpass()" type="button" style="margin-right:20px;" ><fmt:message key="save"></fmt:message></button>
@@ -458,18 +461,19 @@
 						  <div class="clearfix"></div>
 						  
 					      <div  id ="Editsq1" class="editcontroll border-user"  "><a style="float:right;cursor:pointer;margin-right: -17px;margin-top: -12px;" onclick="showlblsq1('lblsq1')" title="Close">[X]</a>
-						  <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion1"></fmt:message> :</label>
+						  <div class="req_message">( * marked are mandatory fields)</div><br/>
+						  <label class="control-label nexaf mandatory" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion1"></fmt:message> :</label>
 						   
-					    <select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="editQuestionOne" >
+					    <select class="profileselect nexaf" onfocus="clearerrorMsg()" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="editQuestionOne" >
 						
 						</select>
 						 <select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;display:none;" id="hiddeneditQuestionOne" >
 						
 						</select>
 					
-					<label class="control-label nexaf" for="Course Name"><fmt:message key="profile.securityanswer1"></fmt:message></label>
+					<label class="control-label nexaf mandatory" for="Course Name"><fmt:message key="profile.securityanswer1"></fmt:message></label>
 					     <div class="controls">
-					      <input type="password" class="profileinput" id="editSecAnswerOne" value=""  name="sec_answer1" placeholder="Security Answer 1" style="width:365px;" />         
+					      <input type="password"  class="profileinput" id="editSecAnswerOne" value=""  name="sec_answer1" placeholder="Security Answer 1" style="width:365px;" />         
 					      </div>
 					      <p id="secQuesOneError" style="color:red;text-align:left;margin-left:180px;margin-top:6px;"></p>
 					<div style="margin-top:6px;">
@@ -493,15 +497,16 @@
 						  <div class="clearfix"></div>
 						  
 					      <div  id ="Editsq2" class="editcontroll border-user"  ><a style="float:right;cursor:pointer;margin-right: -17px;margin-top: -12px;" onclick="showlblsq2('lblsq2');" title="Close">[X]</a>
-						  <label class="control-label nexaf" for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion2"></fmt:message> :</label>
+						  <div class="req_message">( * marked are mandatory fields)</div><br/>
+						  <label class="control-label nexaf mandatory " for="Course Name" style="width:180px;"><fmt:message key="profile.securityquestion2"></fmt:message> :</label>
 					    
-						<select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="securityQuestionTwo">
+						<select class="profileselect nexaf" onfocus="clearerrorMsg()" style="font-weight:normal;margin-bottom: 10px; width: 377px;" id="securityQuestionTwo">
 						
 						</select>
 						<select class="profileselect nexaf" style="font-weight:normal;margin-bottom: 10px;display:none; width: 377px;" id="hiddensecurityQuestionTwo">
 						
 						</select>
-					<label class="control-label nexaf" for="Course Name"><fmt:message key="profile.securityanswer2"></fmt:message>:</label>
+					<label class="control-label nexaf mandatory" for="Course Name"><fmt:message key="profile.securityanswer2"></fmt:message>:</label>
 					     <div class="controls">
 					      <input type="password" class="profileinput" id="editSecAnswerTwo" value="" name="sec_answer2" placeholder="Security Answer 1" style="width:365px;"/>         
 					      </div>
@@ -616,7 +621,10 @@ function removeAns2Focus(){
 }
 function editpasswordFocus(){
 	
-	$("#errorCurrentPassword").html(' ');
+	$('#errorCurrentPassword').html(' ');
+	$('#currentPassword').removeClass('error_profile');
+	$('#newPassword').removeClass('error_profile');
+	$('#passwordResetFailResponse').html(' ');
 	$("#errorNewPassword").html('');
 	$("#errorRetypePassword").html('');
 	
@@ -666,14 +674,14 @@ function editpasswordFocus(){
 		if (question == 'Select the Security Question') {
 			
 			$('#errorsecurityQuestionTwo').html("<fmt:message key="profile.error.question"></fmt:message>");
-			$('#securityQuestionTwo2').focus();
+			
 			$('#securityQuestionTwo2').addClass('error_profile');
 			return false;
 		} else{
 			if(("#errorsecurityQuestionTwo.inside:contains('<fmt:message key="profile.error.question"></fmt:message>')")){
 				document.getElementById("errorsecurityQuestionTwo").innerHTML = '';
 			}
-			$('#securityQuestionTwo2').focusout();
+			
 			$('#securityQuestionTwo2').removeClass('error_profile');
 			return true;
 		}
@@ -978,7 +986,7 @@ function checkpass()
 		
 		if($('#currentPassword').val()==''){
 			$('#errorCurrentPassword').html("<fmt:message key="Enter.cur.pass"/>");
-			
+			$('#currentPassword').addClass('error_profile');
 		}
 		
 		else if ($('#newPassword').val()!=$('#retypePassword').val()){
@@ -987,6 +995,7 @@ function checkpass()
     		document.getElementById("newPassword").value = '';
     		document.getElementById("retypePassword").value = '';
     		document.getElementById("errorNewPassword").innerHTML = '';
+    		$('#currentPassword').addClass('error_profile');
 			
 		}else{
 			oldPassword = $('#currentPassword').val();
@@ -1009,6 +1018,7 @@ function checkpass()
 			        		document.getElementById("currentPassword").value = '';
 			        		document.getElementById("newPassword").value = '';
 			        		document.getElementById("retypePassword").value = '';
+			        		$('#currentPassword').addClass('error_profile');
 			        	}else{
 			        	if(data != 'Password reset is not successful.'){
 			        		
@@ -1018,7 +1028,7 @@ function checkpass()
 			        		
 						}else{
 							$('#passwordResetFailResponse').html(data);
-							
+							$('#currentPassword').addClass('error_profile');
 						}
 			        }
 			        });
@@ -1028,6 +1038,7 @@ function checkpass()
 	    		document.getElementById("newPassword").value = '';
 	    		document.getElementById("retypePassword").value = '';
 	    		document.getElementById("errorNewPassword").innerHTML = '';
+	    		$('#currentPassword').addClass('error_profile');
 	    		
 			}
 		}
@@ -1036,6 +1047,7 @@ function checkpass()
 	}else{
 		if($('#newPassword').val() == ''){
 		$('#errorNewPassword').html("<fmt:message key="resetpass.enterpass"/>");
+		$('#newPassword').addClass('error_profile');
 		
 		}
 	}
@@ -1055,7 +1067,14 @@ function showMsg(){
 	document.getElementById("passwordResetResponse").innerHTML = '';
 	hidecncl('passEdit');
 }
-
+function clearerrorMsg()
+{
+	$('#securityQuestionTwo').removeClass('error_profile');
+	$('#editQuestionOne').removeClass('error_profile');
+	$('#secQuesOneError').html(' ');
+	$('#secQuesTwoError').html(' ');
+	
+	}
 function passwordStartCharectors(val){
 	
 	console.log(val);
@@ -1426,5 +1445,8 @@ border-radius: 6px 6px 6px 6px;"
 }
 .button_disable{
 	
+}
+.mandatory {
+  margin-left: 0px;
 }
 </style>
