@@ -17,7 +17,7 @@
 		memmember.active as active,
 		memmember.primaryEmailId,
 		memmember.PicturePath as PicturePath,
-		Role.LookupValue as RoleType,
+		UPPER(Role.LookupValue) as RoleType,
 		Rating.LookupValue as Rating
 		from 
 		memmember,
@@ -73,7 +73,7 @@
 		memmember.active as active,
 		memmember.primaryEmailId,
 		memmember.PicturePath as PicturePath,
-		Role.LookupValue as RoleType,
+		UPPER(Role.LookupValue) as RoleType,
 		Rating.LookupValue as Rating
 		from 
 		memmember,
